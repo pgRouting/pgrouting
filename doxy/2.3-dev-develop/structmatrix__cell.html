@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('structmatrix__cell.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,15 +107,77 @@ $(document).ready(function(){initNavTree('structmatrix__cell.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structmatrix__cell-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">matrix_cell Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>&quot;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a938fb9d685bbcd6ca9f1e85e525fdefe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmatrix__cell.html#a938fb9d685bbcd6ca9f1e85e525fdefe">cost</a></td></tr>
+<tr class="separator:a938fb9d685bbcd6ca9f1e85e525fdefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab28cdf0c3643ac5bf0f42b70b4f6398d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmatrix__cell.html#ab28cdf0c3643ac5bf0f42b70b4f6398d">from_vid</a></td></tr>
+<tr class="separator:ab28cdf0c3643ac5bf0f42b70b4f6398d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af970a7b211030451819a6397501e685d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmatrix__cell.html#af970a7b211030451819a6397501e685d">to_vid</a></td></tr>
+<tr class="separator:af970a7b211030451819a6397501e685d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00105">105</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00117">117</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a938fb9d685bbcd6ca9f1e85e525fdefe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double matrix_cell::cost</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00120">120</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="distances__input_8c_source.html#l00035">pgr_fetch_distance()</a>, and <a class="el" href="warshall_8hpp_source.html#l00024">process_warshall()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab28cdf0c3643ac5bf0f42b70b4f6398d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t matrix_cell::from_vid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00118">118</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="distances__input_8c_source.html#l00035">pgr_fetch_distance()</a>, and <a class="el" href="warshall_8hpp_source.html#l00024">process_warshall()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af970a7b211030451819a6397501e685d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t matrix_cell::to_vid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00119">119</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="distances__input_8c_source.html#l00035">pgr_fetch_distance()</a>, and <a class="el" href="warshall_8hpp_source.html#l00024">process_warshall()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="pgr__types_8h_source.html">pgr_types.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -123,7 +186,7 @@ $(document).ready(function(){initNavTree('structmatrix__cell.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structmatrix__cell.html">matrix_cell</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

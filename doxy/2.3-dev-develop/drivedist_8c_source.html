@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('drivedist_8c_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('drivedist_8c_source.html','');});
 <div class="title">drivedist.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="drivedist_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">File: drivedist.c </span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Copyright (c) 2015 Celia Virginia Vergara Castillo</span></div>
@@ -130,7 +132,7 @@ $(document).ready(function(){initNavTree('drivedist_8c_source.html','');});
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;postgres.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="postgres_8h.html">postgres.h</a>&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;executor/spi.h&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;funcapi.h&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;catalog/pg_type.h&quot;</span></div>
@@ -146,57 +148,57 @@ $(document).ready(function(){initNavTree('drivedist_8c_source.html','');});
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/postgres_connection.h&quot;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/edges_input.h&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;./boost_interface_drivedist.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="boost__interface__drivedist_8h.html">./boost_interface_drivedist.h</a>&quot;</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;PG_FUNCTION_INFO_V1(driving_distance);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="drivedist_8c.html#a98222bcd6486c76a59ba70cda7fbc628">PG_FUNCTION_INFO_V1</a>(<a class="code" href="drivedist_8c.html#a7ff522c852062815c7e6b88e8fafe02c">driving_distance</a>);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifndef _MSC_VER</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span>Datum</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#else  // _MSC_VER</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor"></span>PGDLLEXPORT Datum</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span>driving_distance(PG_FUNCTION_ARGS); </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span><a class="code" href="drivedist_8c.html#a7ff522c852062815c7e6b88e8fafe02c">driving_distance</a>(PG_FUNCTION_ARGS); </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> compute_driving_distance(</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="drivedist_8c.html#a93097e2a0251153c53730d9ca2d772e8">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="drivedist_8c.html#a93097e2a0251153c53730d9ca2d772e8">compute_driving_distance</a>(</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;     <span class="keywordtype">char</span>* sql,</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;     int64_t start_vertex,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;     float8 distance,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;     <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> distance,</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;     <span class="keywordtype">bool</span> directed,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;     <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **path, <span class="keywordtype">size_t</span> *path_count) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  pgr_SPI_connect();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;     <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a>();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *edges = NULL;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a> = NULL;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">size_t</span> total_edges = 0;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">char</span> *err_msg = (<span class="keywordtype">char</span> *)<span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">char</span> *<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a> = (<span class="keywordtype">char</span> *)<span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  PGR_DBG(<span class="stringliteral">&quot;Load data&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Load data&quot;</span>);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  pgr_get_data_5_columns(sql, &amp;edges, &amp;total_edges);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="edges__input_8c.html#a5598918a215c72c9bda7a7f016401b73">pgr_get_edges</a>(sql, &amp;edges, &amp;total_edges);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">if</span> (total_edges == 0) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    PGR_DBG(<span class="stringliteral">&quot;No edges found&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;No edges found&quot;</span>);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    *path = NULL;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    (*path_count) = 0;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    pgr_SPI_finish();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  PGR_DBG(<span class="stringliteral">&quot;total edges read %ld\n&quot;</span>, total_edges);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;total edges read %ld\n&quot;</span>, total_edges);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  clock_t start_t = clock();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  do_pgr_driving_distance(edges, total_edges,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="boost__interface__drivedist_8cpp.html#a21af5ff5e1aa4d33ca85020f0641277c">do_pgr_driving_distance</a>(edges, total_edges,</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        start_vertex, distance,</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        directed, </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        path, path_count, &amp;err_msg);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  time_msg(<span class="stringliteral">&quot; processing Driving Distance one start&quot;</span>, start_t, clock());</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <a class="code" href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe">time_msg</a>(<span class="stringliteral">&quot; processing Driving Distance one start&quot;</span>, start_t, clock());</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  PGR_DBG(<span class="stringliteral">&quot;total tuples found %ld\n&quot;</span>, *path_count);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  PGR_DBG(<span class="stringliteral">&quot;Returned message = %s\n&quot;</span>, err_msg);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;total tuples found %ld\n&quot;</span>, *path_count);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned message = %s\n&quot;</span>, err_msg);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  pfree(edges);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  pgr_SPI_finish();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
@@ -205,7 +207,7 @@ $(document).ready(function(){initNavTree('drivedist_8c_source.html','');});
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#else  // _MSC_VER</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span>PGDLLEXPORT Datum</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor"></span>driving_distance(PG_FUNCTION_ARGS) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="drivedist_8c.html#a7ff522c852062815c7e6b88e8fafe02c">  100</a></span>&#160;<span class="preprocessor"></span><a class="code" href="drivedist_8c.html#a7ff522c852062815c7e6b88e8fafe02c">driving_distance</a>(PG_FUNCTION_ARGS) {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  FuncCallContext     *funcctx;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  uint32_t             call_cntr;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  uint32_t             max_calls;</div>
@@ -215,7 +217,7 @@ $(document).ready(function(){initNavTree('drivedist_8c_source.html','');});
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="comment">/* stuff done only on the first call of the function */</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">if</span> (SRF_IS_FIRSTCALL()) {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      MemoryContext   oldcontext;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordtype">size_t</span> path_count = 0;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <span class="keywordtype">size_t</span> <a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a> = 0;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="comment">/* create a function context for cross-call persistence */</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      funcctx = SRF_FIRSTCALL_INIT();</div>
@@ -228,9 +230,9 @@ $(document).ready(function(){initNavTree('drivedist_8c_source.html','');});
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">       CREATE OR REPLACE FUNCTION _pgr_drivingDistance(edges_sql text, start_vid bigint, distance float8, directed BOOLEAN,</span></div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">      *************************************************************************************************************/</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      PGR_DBG(<span class="stringliteral">&quot;Sub query  %s\n&quot;</span>, pgr_text2char(PG_GETARG_TEXT_P(0)));</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Sub query  %s\n&quot;</span>, <a class="code" href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a>(PG_GETARG_TEXT_P(0)));</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      compute_driving_distance(pgr_text2char(PG_GETARG_TEXT_P(0)),       <span class="comment">// edges_sql</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <a class="code" href="drivedist_8c.html#a93097e2a0251153c53730d9ca2d772e8">compute_driving_distance</a>(<a class="code" href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a>(PG_GETARG_TEXT_P(0)),       <span class="comment">// edges_sql</span></div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                               PG_GETARG_INT64(1),         <span class="comment">// start_vid</span></div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                               PG_GETARG_FLOAT8(2),        <span class="comment">// distance</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                               PG_GETARG_BOOL(3),          <span class="comment">// directed</span></div>
@@ -299,16 +301,33 @@ $(document).ready(function(){initNavTree('drivedist_8c_source.html','');});
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  }</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00090">pgr_types.h:90</a></div></div>
+<div class="ttc" id="drivedist_8c_html_a98222bcd6486c76a59ba70cda7fbc628"><div class="ttname"><a href="drivedist_8c.html#a98222bcd6486c76a59ba70cda7fbc628">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(driving_distance)</div></div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00102">pgr_types.h:102</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00061">tester/BiDirAStar.h:61</a></div></div>
-<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00065">pgr_types.h:65</a></div></div>
+<div class="ttc" id="boost__interface__drivedist_8cpp_html_a21af5ff5e1aa4d33ca85020f0641277c"><div class="ttname"><a href="boost__interface__drivedist_8cpp.html#a21af5ff5e1aa4d33ca85020f0641277c">do_pgr_driving_distance</a></div><div class="ttdeci">void do_pgr_driving_distance(pgr_edge_t *data_edges, size_t total_edges, int64_t start_vertex, float8 distance, bool directedFlag, General_path_element_t **ret_path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="boost__interface__drivedist_8cpp_source.html#l00108">boost_interface_drivedist.cpp:108</a></div></div>
+<div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
+<div class="ttc" id="time__msg_8c_html_a989d9723eb6d9be4cbf1214136286dbe"><div class="ttname"><a href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe">time_msg</a></div><div class="ttdeci">void time_msg(char *msg, clock_t start_t, clock_t end_t)</div><div class="ttdef"><b>Definition:</b> <a href="time__msg_8c_source.html#l00009">time_msg.c:9</a></div></div>
+<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00077">pgr_types.h:77</a></div></div>
+<div class="ttc" id="edges__input_8c_html_a5598918a215c72c9bda7a7f016401b73"><div class="ttname"><a href="edges__input_8c.html#a5598918a215c72c9bda7a7f016401b73">pgr_get_edges</a></div><div class="ttdeci">void pgr_get_edges(char *sql, pgr_edge_t **edges, size_t *total_edges)</div><div class="ttdoc">read edges </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00314">edges_input.c:314</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00061">postgres_connection.c:61</a></div></div>
+<div class="ttc" id="dijkstra_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00047">dijkstra.h:47</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
+<div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00071">postgres_connection.c:71</a></div></div>
+<div class="ttc" id="boost__interface__drivedist_8h_html"><div class="ttname"><a href="boost__interface__drivedist_8h.html">boost_interface_drivedist.h</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
+<div class="ttc" id="drivedist_8c_html_a7ff522c852062815c7e6b88e8fafe02c"><div class="ttname"><a href="drivedist_8c.html#a7ff522c852062815c7e6b88e8fafe02c">driving_distance</a></div><div class="ttdeci">Datum driving_distance(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="drivedist_8c_source.html#l00100">drivedist.c:100</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
+<div class="ttc" id="drivedist_8c_html_a93097e2a0251153c53730d9ca2d772e8"><div class="ttname"><a href="drivedist_8c.html#a93097e2a0251153c53730d9ca2d772e8">compute_driving_distance</a></div><div class="ttdeci">static void compute_driving_distance(char *sql, int64_t start_vertex, float8 distance, bool directed, General_path_element_t **path, size_t *path_count)</div><div class="ttdef"><b>Definition:</b> <a href="drivedist_8c_source.html#l00052">drivedist.c:52</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_ae5ca58a293115d0ec1ca944f56f4faa1"><div class="ttname"><a href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a></div><div class="ttdeci">char * pgr_text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00050">postgres_connection.c:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><b>drivedist.c</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:33 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><a class="el" href="drivedist_8c.html">drivedist.c</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

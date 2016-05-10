@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classPgr__ksp.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,22 +108,34 @@ $(document).ready(function(){initNavTree('classPgr__ksp.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classPgr__ksp-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgr_ksp&lt; G &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="pgr__ksp_8hpp_source.html">pgr_ksp.hpp</a>&quot;</code></p>
 <div class="dynheader">
 Collaboration diagram for Pgr_ksp&lt; G &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPgr__ksp__coll__graph.png" border="0" usemap="#Pgr__ksp_3_01G_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="Pgr__ksp_3_01G_01_4_coll__map" id="Pgr__ksp_3_01G_01_4_coll__map">
+</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp_1_1compPaths.html">compPaths</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8c4a810ebc0c9d3b5b24c0353075fc96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a8c4a810ebc0c9d3b5b24c0353075fc96">clear</a> ()</td></tr>
+<tr class="separator:a8c4a810ebc0c9d3b5b24c0353075fc96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f84d74e3ead8e43ec907dcabaadeac"><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac">Yen</a> (G &amp;graph, int64_t source, int64_t target, int <a class="el" href="alpha__drivedist_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> heap_paths)</td></tr>
+<tr class="separator:a20f84d74e3ead8e43ec907dcabaadeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -136,22 +149,20 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a1e5476d1b0d125fef8f3e5aa634b5782"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a1e5476d1b0d125fef8f3e5aa634b5782">doNextCycle</a> (G &amp;graph)</td></tr>
 <tr class="memdesc:a1e5476d1b0d125fef8f3e5aa634b5782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the next cycle of the algorithm.  <a href="#a1e5476d1b0d125fef8f3e5aa634b5782">More...</a><br/></td></tr>
 <tr class="separator:a1e5476d1b0d125fef8f3e5aa634b5782"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc9f355a52aee675dfe5df77fd6bae71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#abc9f355a52aee675dfe5df77fd6bae71">removeVertices</a> (G &amp;graph, const <a class="el" href="classPath.html">Path</a> &amp;path)</td></tr>
+<tr class="memitem:abc9f355a52aee675dfe5df77fd6bae71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#abc9f355a52aee675dfe5df77fd6bae71">removeVertices</a> (G &amp;graph, const <a class="el" href="classPath.html">Path</a> &amp;<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>)</td></tr>
 <tr class="memdesc:abc9f355a52aee675dfe5df77fd6bae71"><td class="mdescLeft">&#160;</td><td class="mdescRight">stores in subPath the first i elements of path  <a href="#abc9f355a52aee675dfe5df77fd6bae71">More...</a><br/></td></tr>
 <tr class="separator:abc9f355a52aee675dfe5df77fd6bae71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 members</h2></td></tr>
-<tr class="memitem:af88d272ba3e52e4f6f82368344361fb0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af88d272ba3e52e4f6f82368344361fb0"></a>
-typedef G::V&#160;</td><td class="memItemRight" valign="bottom"><b>V</b></td></tr>
+<tr class="memitem:af88d272ba3e52e4f6f82368344361fb0"><td class="memItemLeft" align="right" valign="top">typedef G::V&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#af88d272ba3e52e4f6f82368344361fb0">V</a></td></tr>
 <tr class="separator:af88d272ba3e52e4f6f82368344361fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b58c602264018d06b7408e50220a7b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b58c602264018d06b7408e50220a7b6"></a>
-typedef std::set&lt; <a class="el" href="classPath.html">Path</a>, <a class="el" href="classPgr__ksp_1_1compPaths.html">compPaths</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pSet</b></td></tr>
+<tr class="memitem:a5b58c602264018d06b7408e50220a7b6"><td class="memItemLeft" align="right" valign="top">typedef std::set&lt; <a class="el" href="classPath.html">Path</a>, <a class="el" href="classPgr__ksp_1_1compPaths.html">compPaths</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6">pSet</a></td></tr>
 <tr class="separator:a5b58c602264018d06b7408e50220a7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6b6d396332500f0cbcba86bce9b480"><td class="memItemLeft" align="right" valign="top">V&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480">v_source</a></td></tr>
+<tr class="memitem:a2d6b6d396332500f0cbcba86bce9b480"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPgr__ksp.html#af88d272ba3e52e4f6f82368344361fb0">V</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480">v_source</a></td></tr>
 <tr class="memdesc:a2d6b6d396332500f0cbcba86bce9b480"><td class="mdescLeft">&#160;</td><td class="mdescRight">source descriptor  <a href="#a2d6b6d396332500f0cbcba86bce9b480">More...</a><br/></td></tr>
 <tr class="separator:a2d6b6d396332500f0cbcba86bce9b480"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a272c77dfb567322b855a83887339a979"><td class="memItemLeft" align="right" valign="top">V&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a272c77dfb567322b855a83887339a979">v_target</a></td></tr>
+<tr class="memitem:a272c77dfb567322b855a83887339a979"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPgr__ksp.html#af88d272ba3e52e4f6f82368344361fb0">V</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a272c77dfb567322b855a83887339a979">v_target</a></td></tr>
 <tr class="memdesc:a272c77dfb567322b855a83887339a979"><td class="mdescLeft">&#160;</td><td class="mdescRight">target descriptor  <a href="#a272c77dfb567322b855a83887339a979">More...</a><br/></td></tr>
 <tr class="separator:a272c77dfb567322b855a83887339a979"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abae118da08007fc1c69ff04b442ca5cf"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#abae118da08007fc1c69ff04b442ca5cf">m_start</a></td></tr>
@@ -163,10 +174,10 @@ typedef std::set&lt; <a class="el" href="classPath.html">Path</a>, <a class="el"
 <tr class="memitem:afd9e2136d3e354ec074773d8f3d533aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPath.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#afd9e2136d3e354ec074773d8f3d533aa">curr_result_path</a></td></tr>
 <tr class="memdesc:afd9e2136d3e354ec074773d8f3d533aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">storage for the current result  <a href="#afd9e2136d3e354ec074773d8f3d533aa">More...</a><br/></td></tr>
 <tr class="separator:afd9e2136d3e354ec074773d8f3d533aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68c881a727ecb17f5e4db3b5d7f5fa34"><td class="memItemLeft" align="right" valign="top">pSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34">m_ResultSet</a></td></tr>
+<tr class="memitem:a68c881a727ecb17f5e4db3b5d7f5fa34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6">pSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34">m_ResultSet</a></td></tr>
 <tr class="memdesc:a68c881a727ecb17f5e4db3b5d7f5fa34"><td class="mdescLeft">&#160;</td><td class="mdescRight">ordered set of shortest paths  <a href="#a68c881a727ecb17f5e4db3b5d7f5fa34">More...</a><br/></td></tr>
 <tr class="separator:a68c881a727ecb17f5e4db3b5d7f5fa34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac29356ebe96bd910808af028e0e508b6"><td class="memItemLeft" align="right" valign="top">pSet&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6">m_Heap</a></td></tr>
+<tr class="memitem:ac29356ebe96bd910808af028e0e508b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6">pSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6">m_Heap</a></td></tr>
 <tr class="memdesc:ac29356ebe96bd910808af028e0e508b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the heap  <a href="#ac29356ebe96bd910808af028e0e508b6">More...</a><br/></td></tr>
 <tr class="separator:ac29356ebe96bd910808af028e0e508b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -176,7 +187,75 @@ class Pgr_ksp&lt; G &gt;</h3>
 
 
 <p>Definition at line <a class="el" href="pgr__ksp_8hpp_source.html#l00042">42</a> of file <a class="el" href="pgr__ksp_8hpp_source.html">pgr_ksp.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a5b58c602264018d06b7408e50220a7b6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::set&lt;<a class="el" href="classPath.html">Path</a>, <a class="el" href="classPgr__ksp_1_1compPaths.html">compPaths</a>&gt; <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::<a class="el" href="classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6">pSet</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__ksp_8hpp_source.html#l00095">95</a> of file <a class="el" href="pgr__ksp_8hpp_source.html">pgr_ksp.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af88d272ba3e52e4f6f82368344361fb0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef G::V <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::<a class="el" href="classPgr__ksp.html#af88d272ba3e52e4f6f82368344361fb0">V</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__ksp_8hpp_source.html#l00087">87</a> of file <a class="el" href="pgr__ksp_8hpp_source.html">pgr_ksp.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a8c4a810ebc0c9d3b5b24c0353075fc96"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00038">38</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a1e5476d1b0d125fef8f3e5aa634b5782"></a>
 <div class="memitem">
 <div class="memproto">
@@ -203,9 +282,9 @@ template&lt;class G &gt; </div>
 
 <p>Performs the next cycle of the algorithm. </p>
 
-<p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00089">89</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00092">92</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00535">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
+<p>References <a class="el" href="basePath__SSEC_8cpp_source.html#l00115">Path::appendPath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00070">Path::clear()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00535">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00094">Path::getSubpath()</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">Path::size()</a>.</p>
 
 </div>
 </div>
@@ -245,7 +324,7 @@ template&lt;class G &gt; </div>
 
 <p>the actual algorithm </p>
 
-<p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00129">129</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00132">132</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
 
 </div>
 </div>
@@ -277,7 +356,7 @@ template&lt;class G &gt; </div>
 
 <p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00043">43</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00535">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
+<p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00535">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00063">Path::empty()</a>, and <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>.</p>
 
 </div>
 </div>
@@ -317,7 +396,57 @@ template&lt;class G &gt; </div>
 
 <p>stores in subPath the first i elements of path </p>
 
-<p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00083">83</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00086">86</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a20f84d74e3ead8e43ec907dcabaadeac"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::Yen </td>
+          <td>(</td>
+          <td class="paramtype">G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>K</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramname"><em>heap_paths</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__ksp_8cpp_source.html#l00056">56</a> of file <a class="el" href="pgr__ksp_8cpp_source.html">pgr_ksp.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="ksp__driver_8cpp_source.html#l00047">do_pgr_ksp()</a>, <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00059">do_pgr_withPointsKsp()</a>, and <a class="el" href="ksp_8cpp_source.html#l00004">process_ksp()</a>.</p>
 
 </div>
 </div>
@@ -384,7 +513,7 @@ template&lt;class G&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pSet <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::m_Heap</td>
+          <td class="memname"><a class="el" href="classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6">pSet</a> <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::m_Heap</td>
         </tr>
       </table>
   </td>
@@ -410,7 +539,7 @@ template&lt;class G&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pSet <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::m_ResultSet</td>
+          <td class="memname"><a class="el" href="classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6">pSet</a> <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::m_ResultSet</td>
         </tr>
       </table>
   </td>
@@ -462,7 +591,7 @@ template&lt;class G&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">V <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::v_source</td>
+          <td class="memname"><a class="el" href="classPgr__ksp.html#af88d272ba3e52e4f6f82368344361fb0">V</a> <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::v_source</td>
         </tr>
       </table>
   </td>
@@ -488,7 +617,7 @@ template&lt;class G&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">V <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::v_target</td>
+          <td class="memname"><a class="el" href="classPgr__ksp.html#af88d272ba3e52e4f6f82368344361fb0">V</a> <a class="el" href="classPgr__ksp.html">Pgr_ksp</a>&lt; G &gt;::v_target</td>
         </tr>
       </table>
   </td>
@@ -514,7 +643,7 @@ template&lt;class G&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPgr__ksp.html">Pgr_ksp</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

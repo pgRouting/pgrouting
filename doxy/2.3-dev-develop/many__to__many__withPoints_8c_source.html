@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="title">many_to_many_withPoints.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="many__to__many__withPoints_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">File: one_to_many_withPoints.c</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Generated with Template by:</span></div>
@@ -135,7 +137,7 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;postgres.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="postgres_8h.html">postgres.h</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;executor/spi.h&quot;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;funcapi.h&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;utils/array.h&quot;</span></div>
@@ -154,23 +156,23 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/edges_input.h&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/arrays_input.h&quot;</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/points_input.h&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;./get_new_queries.h&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;./many_to_many_withPoints_driver.h&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="get__new__queries_8h.html">./get_new_queries.h</a>&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="many__to__many__withPoints__driver_8h.html">./many_to_many_withPoints_driver.h</a>&quot;</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;PG_FUNCTION_INFO_V1(many_to_many_withPoints);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<a class="code" href="many__to__many__withPoints_8c.html#a611e25164ba8f84620fef92625f168d9">PG_FUNCTION_INFO_V1</a>(<a class="code" href="many__to__many__withPoints_8c.html#ad721d41f23b459be6ab20b673d78fd30">many_to_many_withPoints</a>);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifndef _MSC_VER</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span>Datum</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#else  // _MSC_VER</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor"></span>PGDLLEXPORT Datum</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span>many_to_many_withPoints(PG_FUNCTION_ARGS);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor"></span><a class="code" href="many__to__many__withPoints_8c.html#ad721d41f23b459be6ab20b673d78fd30">many_to_many_withPoints</a>(PG_FUNCTION_ARGS);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*******************************************************************************/</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*                          MODIFY AS NEEDED                                   */</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">static</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;process(</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="many__to__many__withPoints_8c.html#a95dd26151729818ff7cabb194f782ff3">   65</a></span>&#160;<a class="code" href="many__to__many__withPoints_8c.html#a95dd26151729818ff7cabb194f782ff3">process</a>(</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">char</span>* edges_sql,</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">char</span>* points_sql,</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
@@ -187,18 +189,18 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **result_tuples,</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">size_t</span> *result_count) {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    driving_side[0] = tolower(driving_side[0]);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    driving_side[0] = (char) tolower(driving_side[0]);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    pgr_SPI_connect();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a>();</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> *points = NULL;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">size_t</span> total_points = 0;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    pgr_get_points(points_sql, &amp;points, &amp;total_points);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="points__input_8c.html#ac232d3ed3b477a88ecbb17992c083aa8">pgr_get_points</a>(points_sql, &amp;points, &amp;total_points);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">char</span> *edges_of_points_query = NULL;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">char</span> *edges_no_points_query = NULL;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    get_new_queries(</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="get__new__queries_8cpp.html#abb3ebd1def182bad8e1785197af280d4">get_new_queries</a>(</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            edges_sql, points_sql,</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            &amp;edges_of_points_query,</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            &amp;edges_no_points_query);</div>
@@ -206,12 +208,12 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *edges_of_points = NULL;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">size_t</span> total_edges_of_points = 0;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    pgr_get_data_5_columns(edges_of_points_query, &amp;edges_of_points, &amp;total_edges_of_points);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="edges__input_8c.html#a5598918a215c72c9bda7a7f016401b73">pgr_get_edges</a>(edges_of_points_query, &amp;edges_of_points, &amp;total_edges_of_points);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *edges = NULL;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a> = NULL;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">size_t</span> total_edges = 0;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    pgr_get_data_5_columns(edges_no_points_query, &amp;edges, &amp;total_edges);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="edges__input_8c.html#a5598918a215c72c9bda7a7f016401b73">pgr_get_edges</a>(edges_no_points_query, &amp;edges, &amp;total_edges);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    free(edges_of_points_query);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    free(edges_no_points_query);</div>
@@ -219,40 +221,40 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span> ( (total_edges + total_edges_of_points) == 0) {</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        (*result_count) = 0;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        (*result_tuples) = NULL;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        pgr_SPI_finish();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">char</span> *err_msg = NULL;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    clock_t start_t = clock();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">int</span>  errcode = do_pgr_many_to_many_withPoints(</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            edges,  total_edges,</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            points, total_points,</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            edges_of_points, total_edges_of_points,</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            start_pidsArr, size_start_pidsArr,</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            end_pidsArr, size_end_pidsArr,</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            driving_side[0],</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            details,</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            directed,</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            only_cost,</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            result_tuples,</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            result_count,</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            &amp;err_msg);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    time_msg(<span class="stringliteral">&quot; processing withPoints many to many&quot;</span>, start_t, clock());</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    PGR_DBG(<span class="stringliteral">&quot;Returning %ld tuples\n&quot;</span>, *result_count);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    PGR_DBG(<span class="stringliteral">&quot;Returned message = %s\n&quot;</span>, err_msg);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    free(err_msg);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    pfree(edges);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    pgr_SPI_finish();</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">if</span> (errcode)  {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        free(start_pidsArr);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        free(end_pidsArr);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        pgr_send_error(errcode);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a> = NULL;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">char</span> *log_msg = NULL;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    clock_t start_t = clock();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="many__to__many__withPoints__driver_8cpp.html#a9e301cd1411dd1f8d92563ed5c65f5c5">do_pgr_many_to_many_withPoints</a>(</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            edges,  total_edges,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            points, total_points,</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            edges_of_points, total_edges_of_points,</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            start_pidsArr, size_start_pidsArr,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            end_pidsArr, size_end_pidsArr,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            driving_side[0],</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            details,</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            directed,</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            only_cost,</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            result_tuples,</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            result_count,</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            &amp;err_msg);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe">time_msg</a>(<span class="stringliteral">&quot;Processing withPoints many to many&quot;</span>, start_t, clock());</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returning %ld tuples\n&quot;</span>, *result_count);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;LOG: %s\n&quot;</span>, err_msg);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    free(log_msg);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">if</span> (err_msg) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        free(start_pidsArr);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        free(end_pidsArr);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        free(*result_tuples);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        elog(ERROR, <span class="stringliteral">&quot;%s&quot;</span>, err_msg);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        free(err_msg);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    pfree(edges);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/*                                                                             */</span></div>
@@ -263,7 +265,7 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#else  // _MSC_VER</span></div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor"></span>PGDLLEXPORT Datum</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor"></span>many_to_many_withPoints(PG_FUNCTION_ARGS) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="many__to__many__withPoints_8c.html#ad721d41f23b459be6ab20b673d78fd30">  158</a></span>&#160;<span class="preprocessor"></span><a class="code" href="many__to__many__withPoints_8c.html#ad721d41f23b459be6ab20b673d78fd30">many_to_many_withPoints</a>(PG_FUNCTION_ARGS) {</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    FuncCallContext     *funcctx;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    uint32_t              call_cntr;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    uint32_t               max_calls;</div>
@@ -299,20 +301,20 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        int64_t* start_pidsArr;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordtype">size_t</span> size_start_pidsArr;</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        start_pidsArr = (int64_t*)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            pgr_get_bigIntArray(&amp;size_start_pidsArr, PG_GETARG_ARRAYTYPE_P(2));</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <a class="code" href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a>(&amp;size_start_pidsArr, PG_GETARG_ARRAYTYPE_P(2));</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        int64_t* end_pidsArr;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordtype">size_t</span> size_end_pidsArr;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        end_pidsArr = (int64_t*)</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            pgr_get_bigIntArray(&amp;size_end_pidsArr, PG_GETARG_ARRAYTYPE_P(3));</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <a class="code" href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a>(&amp;size_end_pidsArr, PG_GETARG_ARRAYTYPE_P(3));</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        process(</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                pgr_text2char(PG_GETARG_TEXT_P(0)),</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                pgr_text2char(PG_GETARG_TEXT_P(1)),</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="many__to__many__withPoints_8c.html#a95dd26151729818ff7cabb194f782ff3">process</a>(</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                <a class="code" href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a>(PG_GETARG_TEXT_P(0)),</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <a class="code" href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a>(PG_GETARG_TEXT_P(1)),</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                start_pidsArr, size_start_pidsArr,</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                end_pidsArr, size_end_pidsArr,</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                PG_GETARG_BOOL(4),</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                pgr_text2char(PG_GETARG_TEXT_P(5)),</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <a class="code" href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a>(PG_GETARG_TEXT_P(5)),</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                PG_GETARG_BOOL(6),</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                PG_GETARG_BOOL(7),</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                &amp;result_tuples,</div>
@@ -388,17 +390,35 @@ $(document).ready(function(){initNavTree('many__to__many__withPoints_8c_source.h
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    }</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00090">pgr_types.h:90</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00102">pgr_types.h:102</a></div></div>
+<div class="ttc" id="many__to__many__withPoints_8c_html_ad721d41f23b459be6ab20b673d78fd30"><div class="ttname"><a href="many__to__many__withPoints_8c.html#ad721d41f23b459be6ab20b673d78fd30">many_to_many_withPoints</a></div><div class="ttdeci">Datum many_to_many_withPoints(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="many__to__many__withPoints_8c_source.html#l00158">many_to_many_withPoints.c:158</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00061">tester/BiDirAStar.h:61</a></div></div>
-<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00065">pgr_types.h:65</a></div></div>
-<div class="ttc" id="structPoint__on__edge__t_html"><div class="ttname"><a href="structPoint__on__edge__t.html">Point_on_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00122">pgr_types.h:122</a></div></div>
+<div class="ttc" id="many__to__many__withPoints_8c_html_a95dd26151729818ff7cabb194f782ff3"><div class="ttname"><a href="many__to__many__withPoints_8c.html#a95dd26151729818ff7cabb194f782ff3">process</a></div><div class="ttdeci">static void process(char *edges_sql, char *points_sql, int64_t *start_pidsArr, size_t size_start_pidsArr, int64_t *end_pidsArr, size_t size_end_pidsArr, bool directed, char *driving_side, bool details, bool only_cost, General_path_element_t **result_tuples, size_t *result_count)</div><div class="ttdef"><b>Definition:</b> <a href="many__to__many__withPoints_8c_source.html#l00065">many_to_many_withPoints.c:65</a></div></div>
+<div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
+<div class="ttc" id="many__to__many__withPoints__driver_8cpp_html_a9e301cd1411dd1f8d92563ed5c65f5c5"><div class="ttname"><a href="many__to__many__withPoints__driver_8cpp.html#a9e301cd1411dd1f8d92563ed5c65f5c5">do_pgr_many_to_many_withPoints</a></div><div class="ttdeci">int do_pgr_many_to_many_withPoints(pgr_edge_t *edges, size_t total_edges, Point_on_edge_t *points_p, size_t total_points, pgr_edge_t *edges_of_points, size_t total_edges_of_points, int64_t *start_pidsArr, size_t size_start_pidsArr, int64_t *end_pidsArr, size_t size_end_pidsArr, char driving_side, bool details, bool directed, bool only_cost, General_path_element_t **return_tuples, size_t *return_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="many__to__many__withPoints__driver_8cpp_source.html#l00064">many_to_many_withPoints_driver.cpp:64</a></div></div>
+<div class="ttc" id="many__to__many__withPoints_8c_html_a611e25164ba8f84620fef92625f168d9"><div class="ttname"><a href="many__to__many__withPoints_8c.html#a611e25164ba8f84620fef92625f168d9">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(many_to_many_withPoints)</div></div>
+<div class="ttc" id="points__input_8c_html_ac232d3ed3b477a88ecbb17992c083aa8"><div class="ttname"><a href="points__input_8c.html#ac232d3ed3b477a88ecbb17992c083aa8">pgr_get_points</a></div><div class="ttdeci">void pgr_get_points(char *points_sql, Point_on_edge_t **points, size_t *total_points)</div><div class="ttdef"><b>Definition:</b> <a href="points__input_8c_source.html#l00062">points_input.c:62</a></div></div>
+<div class="ttc" id="arrays__input_8c_html_a8b3b624e84ed449440408d11251384c1"><div class="ttname"><a href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a></div><div class="ttdeci">int64_t * pgr_get_bigIntArray(size_t *arrlen, ArrayType *input)</div><div class="ttdef"><b>Definition:</b> <a href="arrays__input_8c_source.html#l00038">arrays_input.c:38</a></div></div>
+<div class="ttc" id="time__msg_8c_html_a989d9723eb6d9be4cbf1214136286dbe"><div class="ttname"><a href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe">time_msg</a></div><div class="ttdeci">void time_msg(char *msg, clock_t start_t, clock_t end_t)</div><div class="ttdef"><b>Definition:</b> <a href="time__msg_8c_source.html#l00009">time_msg.c:9</a></div></div>
+<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00077">pgr_types.h:77</a></div></div>
+<div class="ttc" id="edges__input_8c_html_a5598918a215c72c9bda7a7f016401b73"><div class="ttname"><a href="edges__input_8c.html#a5598918a215c72c9bda7a7f016401b73">pgr_get_edges</a></div><div class="ttdeci">void pgr_get_edges(char *sql, pgr_edge_t **edges, size_t *total_edges)</div><div class="ttdoc">read edges </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00314">edges_input.c:314</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00061">postgres_connection.c:61</a></div></div>
+<div class="ttc" id="get__new__queries_8cpp_html_abb3ebd1def182bad8e1785197af280d4"><div class="ttname"><a href="get__new__queries_8cpp.html#abb3ebd1def182bad8e1785197af280d4">get_new_queries</a></div><div class="ttdeci">void get_new_queries(char *edges_sql, char *points_sql, char **edges_of_points_query, char **edges_no_points_query)</div><div class="ttdef"><b>Definition:</b> <a href="get__new__queries_8cpp_source.html#l00036">get_new_queries.cpp:36</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
+<div class="ttc" id="structPoint__on__edge__t_html"><div class="ttname"><a href="structPoint__on__edge__t.html">Point_on_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00134">pgr_types.h:134</a></div></div>
+<div class="ttc" id="many__to__many__withPoints__driver_8h_html"><div class="ttname"><a href="many__to__many__withPoints__driver_8h.html">many_to_many_withPoints_driver.h</a></div></div>
+<div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00071">postgres_connection.c:71</a></div></div>
+<div class="ttc" id="get__new__queries_8h_html"><div class="ttname"><a href="get__new__queries_8h.html">get_new_queries.h</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_ae5ca58a293115d0ec1ca944f56f4faa1"><div class="ttname"><a href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a></div><div class="ttdeci">char * pgr_text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00050">postgres_connection.c:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_db4188eb592e899b4ab759c326d3f65f.html">withPoints</a></li><li class="navelem"><a class="el" href="dir_8dc78dc14affe115084060e017054e86.html">src</a></li><li class="navelem"><b>many_to_many_withPoints.c</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_db4188eb592e899b4ab759c326d3f65f.html">withPoints</a></li><li class="navelem"><a class="el" href="dir_8dc78dc14affe115084060e017054e86.html">src</a></li><li class="navelem"><a class="el" href="many__to__many__withPoints_8c.html">many_to_many_withPoints.c</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

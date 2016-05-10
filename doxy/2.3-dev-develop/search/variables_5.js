@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['v_5fsource',['v_source',['../classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480',1,'Pgr_ksp']]],
-  ['v_5ftarget',['v_target',['../classPgr__ksp.html#a272c77dfb567322b855a83887339a979',1,'Pgr_ksp']]],
-  ['vertices_5fmap',['vertices_map',['../classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb',1,'Pgr_base_graph']]]
+  ['first',['first',['../classpgRouting_1_1Basic__edge.html#a3df14236e455fa694c9fc85772371729',1,'pgRouting::Basic_edge']]],
+  ['fraction',['fraction',['../structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19',1,'Point_on_edge_t']]],
+  ['from_5fvid',['from_vid',['../structmatrix__cell.html#ab28cdf0c3643ac5bf0f42b70b4f6398d',1,'matrix_cell']]]
 ];

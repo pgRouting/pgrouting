@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('structboost_1_1AStarHeuristicConcept.h
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,18 +107,103 @@ $(document).ready(function(){initNavTree('structboost_1_1AStarHeuristicConcept.h
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structboost_1_1AStarHeuristicConcept-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">boost::AStarHeuristicConcept&lt; Heuristic, Graph &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>&quot;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ad359bb5470fe40f37defc9de8cf8b1b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1AStarHeuristicConcept.html#ad359bb5470fe40f37defc9de8cf8b1b8">constraints</a> ()</td></tr>
+<tr class="separator:ad359bb5470fe40f37defc9de8cf8b1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a8f795c807143a72a3fc1a81aab998aae"><td class="memItemLeft" align="right" valign="top">Heuristic&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1AStarHeuristicConcept.html#a8f795c807143a72a3fc1a81aab998aae">h</a></td></tr>
+<tr class="separator:a8f795c807143a72a3fc1a81aab998aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4727e1d4af440b290b42f20b5d26cd9"><td class="memItemLeft" align="right" valign="top">graph_traits&lt; Graph &gt;<br class="typebreak"/>
+::vertex_descriptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1AStarHeuristicConcept.html#ae4727e1d4af440b290b42f20b5d26cd9">u</a></td></tr>
+<tr class="separator:ae4727e1d4af440b290b42f20b5d26cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class Heuristic, class Graph&gt;<br/>
 struct boost::AStarHeuristicConcept&lt; Heuristic, Graph &gt;</h3>
 
 
 <p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00080">80</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad359bb5470fe40f37defc9de8cf8b1b8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Heuristic , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1AStarHeuristicConcept.html">boost::AStarHeuristicConcept</a>&lt; Heuristic, Graph &gt;::constraints </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00082">82</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00087">boost::AStarHeuristicConcept&lt; Heuristic, Graph &gt;::h</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00088">boost::AStarHeuristicConcept&lt; Heuristic, Graph &gt;::u</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a8f795c807143a72a3fc1a81aab998aae"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Heuristic , class Graph &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Heuristic <a class="el" href="structboost_1_1AStarHeuristicConcept.html">boost::AStarHeuristicConcept</a>&lt; Heuristic, Graph &gt;::h</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00087">87</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00082">boost::AStarHeuristicConcept&lt; Heuristic, Graph &gt;::constraints()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae4727e1d4af440b290b42f20b5d26cd9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Heuristic , class Graph &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">graph_traits&lt;Graph&gt;::vertex_descriptor <a class="el" href="structboost_1_1AStarHeuristicConcept.html">boost::AStarHeuristicConcept</a>&lt; Heuristic, Graph &gt;::u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00088">88</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00082">boost::AStarHeuristicConcept&lt; Heuristic, Graph &gt;::constraints()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a></li>
 </ul>
 </div><!-- contents -->
@@ -125,8 +211,8 @@ struct boost::AStarHeuristicConcept&lt; Heuristic, Graph &gt;</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>boost</b></li><li class="navelem"><a class="el" href="structboost_1_1AStarHeuristicConcept.html">AStarHeuristicConcept</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="namespaceboost.html">boost</a></li><li class="navelem"><a class="el" href="structboost_1_1AStarHeuristicConcept.html">AStarHeuristicConcept</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

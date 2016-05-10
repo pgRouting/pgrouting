@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('dijkstra_8h_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('dijkstra_8h_source.html','');});
 <div class="title">dijkstra.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="dijkstra_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
@@ -152,43 +154,59 @@ $(document).ready(function(){initNavTree('dijkstra_8h_source.html','');});
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifndef _DIJKSTRA_H</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _DIJKSTRA_H</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">double</span> float8;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">   47</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">double</span> <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structedge.html">edge</a> </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> id;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> source;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> target;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    float8 cost;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    float8 reverse_cost;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <a class="code" href="structedge__t.html">edge_t</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">   54</a></span>&#160;    <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> <a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">   55</a></span>&#160;    <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> <a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} <a class="code" href="dijkstra_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structpath__element.html">path_element</a> </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">int</span> vertex_id;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> edge_id;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    float8 cost;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <a class="code" href="structpath__element__t.html">path_element_t</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structpath__element.html#a5ebbbb2b329f0b071a4c28ef8969b030">vertex_id</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structpath__element.html#a40a950d0c03df2431880b0964dede36e">edge_id</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structpath__element.html#a3613c151128d4d69e5e511a1e57b7abe">   62</a></span>&#160;    <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> <a class="code" href="structpath__element.html#a3613c151128d4d69e5e511a1e57b7abe">cost</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <a class="code" href="dijkstra_8h.html#a0d9814712039cb4b46fb2ab88751878e">path_element_t</a>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span><span class="keywordtype">int</span> boost_dijkstra(<a class="code" href="structedge__t.html">edge_t</a> *edges, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> start_vertex, <span class="keywordtype">int</span> end_vertex,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor"></span><span class="keywordtype">int</span> <a class="code" href="dijkstra_8h.html#a7e1f8129b307b0a237b51749d76d7197">boost_dijkstra</a>(<a class="code" href="structedge__t.html">edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> start_vertex, <span class="keywordtype">int</span> end_vertex,</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;           <span class="keywordtype">bool</span> directed, <span class="keywordtype">bool</span> has_reverse_cost,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                   <a class="code" href="structpath__element__t.html">path_element_t</a> **path, <span class="keywordtype">int</span> *path_count, <span class="keywordtype">char</span> **err_msg);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                   <a class="code" href="structpath__element__t.html">path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <span class="keywordtype">int</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>, <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="structedge__t_html"><div class="ttname"><a href="structedge__t.html">edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00034">k_targets_boost_wrapper.h:34</a></div></div>
+<div class="ttc" id="structpath__element_html_a40a950d0c03df2431880b0964dede36e"><div class="ttname"><a href="structpath__element.html#a40a950d0c03df2431880b0964dede36e">path_element::edge_id</a></div><div class="ttdeci">int edge_id</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00077">tester/BiDirAStar.h:77</a></div></div>
+<div class="ttc" id="structedge_html_a004cd70e32ea3f6ce31d5318b46158bd"><div class="ttname"><a href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">edge::cost</a></div><div class="ttdeci">float8 cost</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00054">dijkstra.h:54</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
+<div class="ttc" id="dijkstra_8h_html_a0d9814712039cb4b46fb2ab88751878e"><div class="ttname"><a href="dijkstra_8h.html#a0d9814712039cb4b46fb2ab88751878e">path_element_t</a></div><div class="ttdeci">struct path_element path_element_t</div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00061">tester/BiDirAStar.h:61</a></div></div>
+<div class="ttc" id="structedge_html_a123c11d0720940e8a2556269ad340118"><div class="ttname"><a href="structedge.html#a123c11d0720940e8a2556269ad340118">edge::source</a></div><div class="ttdeci">int source</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00064">tester/BiDirAStar.h:64</a></div></div>
 <div class="ttc" id="structpath__element_html"><div class="ttname"><a href="structpath__element.html">path_element</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00074">tester/BiDirAStar.h:74</a></div></div>
-<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00045">pgr_types.h:45</a></div></div>
+<div class="ttc" id="dijkstra_8h_html_aff905ba824de026b4ae434817a5b923c"><div class="ttname"><a href="dijkstra_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a></div><div class="ttdeci">struct edge edge_t</div></div>
+<div class="ttc" id="structpath__element_html_a3613c151128d4d69e5e511a1e57b7abe"><div class="ttname"><a href="structpath__element.html#a3613c151128d4d69e5e511a1e57b7abe">path_element::cost</a></div><div class="ttdeci">float8 cost</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00062">dijkstra.h:62</a></div></div>
+<div class="ttc" id="dijkstra_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00047">dijkstra.h:47</a></div></div>
+<div class="ttc" id="structpath__element_html_a5ebbbb2b329f0b071a4c28ef8969b030"><div class="ttname"><a href="structpath__element.html#a5ebbbb2b329f0b071a4c28ef8969b030">path_element::vertex_id</a></div><div class="ttdeci">int vertex_id</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00076">tester/BiDirAStar.h:76</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
+<div class="ttc" id="dijkstra_8h_html_a7e1f8129b307b0a237b51749d76d7197"><div class="ttname"><a href="dijkstra_8h.html#a7e1f8129b307b0a237b51749d76d7197">boost_dijkstra</a></div><div class="ttdeci">int boost_dijkstra(edge_t *edges, unsigned int count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost, path_element_t **path, int *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="boost__wrapper_8cpp_source.html#l00068">boost_wrapper.cpp:68</a></div></div>
+<div class="ttc" id="structedge_html_a64bbff727caf35c372648e9de602a549"><div class="ttname"><a href="structedge.html#a64bbff727caf35c372648e9de602a549">edge::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00063">tester/BiDirAStar.h:63</a></div></div>
+<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00057">pgr_types.h:57</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
+<div class="ttc" id="structedge_html_a35006226be4289b23c1303ec5df12c07"><div class="ttname"><a href="structedge.html#a35006226be4289b23c1303ec5df12c07">edge::target</a></div><div class="ttdeci">int target</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00065">tester/BiDirAStar.h:65</a></div></div>
+<div class="ttc" id="structedge_html_aea228cd3916bb0978fd1d8dc512a8f38"><div class="ttname"><a href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">edge::reverse_cost</a></div><div class="ttdeci">float8 reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00055">dijkstra.h:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_ce23c288b464aca7c49a3c0531c520b0.html">tester</a></li><li class="navelem"><b>dijkstra.h</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:33 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_ce23c288b464aca7c49a3c0531c520b0.html">tester</a></li><li class="navelem"><a class="el" href="dijkstra_8h.html">dijkstra.h</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

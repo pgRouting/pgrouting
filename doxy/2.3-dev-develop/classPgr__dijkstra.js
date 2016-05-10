@@ -1,9 +1,11 @@
 var classPgr__dijkstra =
 [
-    [ "dijkstra_distance_visitor", "classPgr__dijkstra_1_1dijkstra__distance__visitor.html", null ],
-    [ "dijkstra_many_goal_visitor", "classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html", null ],
-    [ "dijkstra_one_goal_visitor", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html", null ],
+    [ "dijkstra_distance_visitor", "classPgr__dijkstra_1_1dijkstra__distance__visitor.html", "classPgr__dijkstra_1_1dijkstra__distance__visitor" ],
+    [ "dijkstra_many_goal_visitor", "classPgr__dijkstra_1_1dijkstra__many__goal__visitor.html", "classPgr__dijkstra_1_1dijkstra__many__goal__visitor" ],
+    [ "dijkstra_one_goal_visitor", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor.html", "classPgr__dijkstra_1_1dijkstra__one__goal__visitor" ],
     [ "found_goals", "structPgr__dijkstra_1_1found__goals.html", null ],
+    [ "V", "classPgr__dijkstra.html#ad2e2c37df0da33c877cfc1ea6b979f4d", null ],
+    [ "clear", "classPgr__dijkstra.html#a2f5d0a4536457dd08f4d541ea5e5ffca", null ],
     [ "dijkstra", "classPgr__dijkstra.html#ad1428b778a0103402f9db8790ba3011a", null ],
     [ "dijkstra", "classPgr__dijkstra.html#ab64f507b1160f188c444a44ed5e48275", null ],
     [ "dijkstra", "classPgr__dijkstra.html#aec5bbe26fc7d7a6f77d1aceb498f5823", null ],
@@ -12,5 +14,13 @@ var classPgr__dijkstra =
     [ "dijkstra_1_to_distance", "classPgr__dijkstra.html#a9000bca304955c3feb4f9d249c511295", null ],
     [ "dijkstra_1_to_many", "classPgr__dijkstra.html#a86b8c09f9cbbf58f2e92475de14766d8", null ],
     [ "drivingDistance", "classPgr__dijkstra.html#a446d81e7aa6ba7d97e4caae7a16ef674", null ],
-    [ "drivingDistance", "classPgr__dijkstra.html#a0298c7e5b09fb4133bde842bb1455d23", null ]
+    [ "drivingDistance", "classPgr__dijkstra.html#a0298c7e5b09fb4133bde842bb1455d23", null ],
+    [ "get_cost", "classPgr__dijkstra.html#aefe1748b086f416801d9af859f77ad8e", null ],
+    [ "get_cost", "classPgr__dijkstra.html#a722d3ed03b06b7fd13a16c408316e052", null ],
+    [ "get_nodesInDistance", "classPgr__dijkstra.html#aaa56567a97ef9d86f2b693f350519ddb", null ],
+    [ "get_path", "classPgr__dijkstra.html#a8bf86b02be4930850e9930eda13e672f", null ],
+    [ "get_path", "classPgr__dijkstra.html#a7a4056add43b649746097a8ecc03424e", null ],
+    [ "distances", "classPgr__dijkstra.html#abb45493b234950e9f4466412169b3905", null ],
+    [ "nodesInDistance", "classPgr__dijkstra.html#a0c015629879ec92a2160bcc64ddcc7f1", null ],
+    [ "predecessors", "classPgr__dijkstra.html#a9ef39b953a6e26c217548bd480a639b1", null ]
 ];

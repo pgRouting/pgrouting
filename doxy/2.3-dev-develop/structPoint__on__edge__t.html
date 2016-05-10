@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('structPoint__on__edge__t.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,15 +107,111 @@ $(document).ready(function(){initNavTree('structPoint__on__edge__t.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structPoint__on__edge__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Point_on_edge_t Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>&quot;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a0c5852ca1bbd99b96c92ca5c1f1cc9b4"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">edge_id</a></td></tr>
+<tr class="separator:a0c5852ca1bbd99b96c92ca5c1f1cc9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07e57c7143c82311b10fd870b067cb19"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a></td></tr>
+<tr class="separator:a07e57c7143c82311b10fd870b067cb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4b5a08f42736890f38a77f1ef9c8e9"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a></td></tr>
+<tr class="separator:acf4b5a08f42736890f38a77f1ef9c8e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae859f164d035909491b099e6d490705e"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">side</a></td></tr>
+<tr class="separator:ae859f164d035909491b099e6d490705e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e2fd8b1770612706fe6a0b337ed54d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPoint__on__edge__t.html#a38e2fd8b1770612706fe6a0b337ed54d">vertex_id</a></td></tr>
+<tr class="separator:a38e2fd8b1770612706fe6a0b337ed54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00122">122</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00134">134</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a0c5852ca1bbd99b96c92ca5c1f1cc9b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Point_on_edge_t::edge_id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00136">136</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">check_points()</a>, and <a class="el" href="points__input_8c_source.html#l00034">fetch_point()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a07e57c7143c82311b10fd870b067cb19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Point_on_edge_t::fraction</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00138">138</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">check_points()</a>, <a class="el" href="points__input_8c_source.html#l00034">fetch_point()</a>, and <a class="el" href="pgr__withPoints_8cpp_source.html#l00215">pointCompare::operator()()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acf4b5a08f42736890f38a77f1ef9c8e9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Point_on_edge_t::pid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00135">135</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">check_points()</a>, <a class="el" href="points__input_8c_source.html#l00034">fetch_point()</a>, and <a class="el" href="pgr__withPoints_8cpp_source.html#l00215">pointCompare::operator()()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae859f164d035909491b099e6d490705e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Point_on_edge_t::side</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00137">137</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">check_points()</a>, and <a class="el" href="points__input_8c_source.html#l00034">fetch_point()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a38e2fd8b1770612706fe6a0b337ed54d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Point_on_edge_t::vertex_id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00139">139</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="pgr__types_8h_source.html">pgr_types.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -123,7 +220,7 @@ $(document).ready(function(){initNavTree('structPoint__on__edge__t.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structPoint__on__edge__t.html">Point_on_edge_t</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

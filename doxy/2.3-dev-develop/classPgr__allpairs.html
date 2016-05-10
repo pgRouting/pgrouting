@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classPgr__allpairs.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,24 +108,371 @@ $(document).ready(function(){initNavTree('classPgr__allpairs.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classPgr__allpairs-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Pgr_allpairs&lt; G &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>&quot;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPgr__allpairs_1_1inf__plus.html">inf_plus</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a318e417ba9ba05931990de83d7ee6176"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__allpairs.html#a318e417ba9ba05931990de83d7ee6176">floydWarshall</a> (G &amp;graph, size_t &amp;result_tuple_count, <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> **postgres_rows)</td></tr>
+<tr class="separator:a318e417ba9ba05931990de83d7ee6176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75634efabdba822e57cefb4f3286567c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__allpairs.html#a75634efabdba822e57cefb4f3286567c">floydWarshall</a> (G &amp;graph, std::vector&lt; <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> &gt; &amp;rows)</td></tr>
+<tr class="separator:a75634efabdba822e57cefb4f3286567c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbf7d46c07a89b9568dd266b97cc4781"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__allpairs.html#abbf7d46c07a89b9568dd266b97cc4781">johnson</a> (G &amp;graph, size_t &amp;result_tuple_count, <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> **postgres_rows)</td></tr>
+<tr class="separator:abbf7d46c07a89b9568dd266b97cc4781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cd08f053e51b7169c2f3b29b3e0fa9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__allpairs.html#a9cd08f053e51b7169c2f3b29b3e0fa9f">johnson</a> (G &amp;graph, std::vector&lt; <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> &gt; &amp;rows)</td></tr>
+<tr class="separator:a9cd08f053e51b7169c2f3b29b3e0fa9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a6c65d764e29dffee18451019c4da0865"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__allpairs.html#a6c65d764e29dffee18451019c4da0865">count_rows</a> (const G &amp;graph, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix) const </td></tr>
+<tr class="separator:a6c65d764e29dffee18451019c4da0865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b54e6286cca3290ac107dbf76cce130"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__allpairs.html#a0b54e6286cca3290ac107dbf76cce130">make_matrix</a> (size_t v_size, std::vector&lt; std::vector&lt; double &gt;&gt; &amp;matrix) const </td></tr>
+<tr class="separator:a0b54e6286cca3290ac107dbf76cce130"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51687b103791fd97b3743e8f05d72aa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__allpairs.html#a51687b103791fd97b3743e8f05d72aa2">make_result</a> (const G &amp;graph, const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix, size_t &amp;result_tuple_count, <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> **postgres_rows) const </td></tr>
+<tr class="separator:a51687b103791fd97b3743e8f05d72aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3978f56a3f11ee235fea38b2408ef8ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPgr__allpairs.html#a3978f56a3f11ee235fea38b2408ef8ac">make_result</a> (G &amp;graph, std::vector&lt; std::vector&lt; double &gt; &gt; &amp;matrix, std::vector&lt; <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> &gt; &amp;rows)</td></tr>
+<tr class="separator:a3978f56a3f11ee235fea38b2408ef8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class G&gt;<br/>
 class Pgr_allpairs&lt; G &gt;</h3>
 
 
-<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00052">52</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00060">60</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6c65d764e29dffee18451019c4da0865"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a>&lt; G &gt;::count_rows </td>
+          <td>(</td>
+          <td class="paramtype">const G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00261">261</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00047">max</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a318e417ba9ba05931990de83d7ee6176"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a>&lt; G &gt;::floydWarshall </td>
+          <td>(</td>
+          <td class="paramtype">G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>result_tuple_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> **&#160;</td>
+          <td class="paramname"><em>postgres_rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00167">167</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+
+<p>References <a class="el" href="basic__edge_8h_source.html#l00046">pgRouting::Basic_edge::cost</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00047">max</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__allpairs_8hpp_source.html#l00072">pgr_floydWarshall()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a75634efabdba822e57cefb4f3286567c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a>&lt; G &gt;::floydWarshall </td>
+          <td>(</td>
+          <td class="paramtype">G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00187">187</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+
+<p>References <a class="el" href="basic__edge_8h_source.html#l00046">pgRouting::Basic_edge::cost</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00047">max</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abbf7d46c07a89b9568dd266b97cc4781"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a>&lt; G &gt;::johnson </td>
+          <td>(</td>
+          <td class="paramtype">G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>result_tuple_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> **&#160;</td>
+          <td class="paramname"><em>postgres_rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00205">205</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+
+<p>References <a class="el" href="basic__edge_8h_source.html#l00046">pgRouting::Basic_edge::cost</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00047">max</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__allpairs_8hpp_source.html#l00065">pgr_johnson()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9cd08f053e51b7169c2f3b29b3e0fa9f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a>&lt; G &gt;::johnson </td>
+          <td>(</td>
+          <td class="paramtype">G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00225">225</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+
+<p>References <a class="el" href="basic__edge_8h_source.html#l00046">pgRouting::Basic_edge::cost</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00047">max</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b54e6286cca3290ac107dbf76cce130"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a>&lt; G &gt;::make_matrix </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>v_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; double &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00251">251</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a51687b103791fd97b3743e8f05d72aa2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a>&lt; G &gt;::make_result </td>
+          <td>(</td>
+          <td class="paramtype">const G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>result_tuple_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> **&#160;</td>
+          <td class="paramname"><em>postgres_rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00279">279</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00047">max</a>, and <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3978f56a3f11ee235fea38b2408ef8ac"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class G &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a>&lt; G &gt;::make_result </td>
+          <td>(</td>
+          <td class="paramtype">G &amp;&#160;</td>
+          <td class="paramname"><em>graph</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; double &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__allpairs_8hpp_source.html#l00305">305</a> of file <a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00047">max</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="pgr__allpairs_8hpp_source.html">pgr_allpairs.hpp</a></li>
 </ul>
 </div><!-- contents -->
@@ -133,7 +481,7 @@ class Pgr_allpairs&lt; G &gt;</h3>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPgr__allpairs.html">Pgr_allpairs</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

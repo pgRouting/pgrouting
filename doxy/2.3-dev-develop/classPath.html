@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classPath.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,11 +107,17 @@ $(document).ready(function(){initNavTree('classPath.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classPath-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Path Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>&quot;</code></p>
 <div class="dynheader">
 Collaboration diagram for Path:</div>
 <div class="dyncontent">
@@ -118,10 +125,1299 @@ Collaboration diagram for Path:</div>
 <map name="Path_coll__map" id="Path_coll__map">
 <area shape="rect" id="node3" href="structPath__t.html" title="Path_t" alt="" coords="47,5,107,32"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af26cfab021ddf49af73da3b2beca85ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#af26cfab021ddf49af73da3b2beca85ac">Path</a> ()</td></tr>
+<tr class="separator:af26cfab021ddf49af73da3b2beca85ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af35ad991c5b32a5f03d07ad5831956d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#af35ad991c5b32a5f03d07ad5831956d0">Path</a> (int64_t s_id, int64_t e_id)</td></tr>
+<tr class="separator:af35ad991c5b32a5f03d07ad5831956d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cb45e3a413a03f1c4224b840af1fe83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a9cb45e3a413a03f1c4224b840af1fe83">appendPath</a> (const <a class="el" href="classPath.html">Path</a> &amp;o_path)</td></tr>
+<tr class="separator:a9cb45e3a413a03f1c4224b840af1fe83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d7914dd43375d1c534e92ba64331c56"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structPath__t.html">Path_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a9d7914dd43375d1c534e92ba64331c56">back</a> () const </td></tr>
+<tr class="separator:a9d7914dd43375d1c534e92ba64331c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cec8cc626f16ea03c5b9d004b2c6105"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPath__t.html">Path_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a7cec8cc626f16ea03c5b9d004b2c6105">back</a> ()</td></tr>
+<tr class="separator:a7cec8cc626f16ea03c5b9d004b2c6105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79263f46d8f986d822fb5b656a94fd9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a79263f46d8f986d822fb5b656a94fd9a">begin</a> ()</td></tr>
+<tr class="separator:a79263f46d8f986d822fb5b656a94fd9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46361875866d952a7f30e147cbf6eb04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPath.html#a170e524b86767313c6fc5df8b9e59ee7">ConstpthIt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a46361875866d952a7f30e147cbf6eb04">begin</a> () const </td></tr>
+<tr class="separator:a46361875866d952a7f30e147cbf6eb04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e94fc24f7c713442f3d52478d0772fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">clear</a> ()</td></tr>
+<tr class="separator:a3e94fc24f7c713442f3d52478d0772fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad413fcb7c6c703e711d4be9b8cf91bf4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a> () const </td></tr>
+<tr class="separator:ad413fcb7c6c703e711d4be9b8cf91bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a142188f4775eaec32a14d3fb9e2dfb7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a142188f4775eaec32a14d3fb9e2dfb7a">empty_path</a> (unsigned int d_vertex)</td></tr>
+<tr class="separator:a142188f4775eaec32a14d3fb9e2dfb7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b6bcfb3ff2bdd0b5861a2c3022cb85f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a0b6bcfb3ff2bdd0b5861a2c3022cb85f">end</a> ()</td></tr>
+<tr class="separator:a0b6bcfb3ff2bdd0b5861a2c3022cb85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad6cbc1894d2fa8b45eeb17a678c6bfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPath.html#a170e524b86767313c6fc5df8b9e59ee7">ConstpthIt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#aad6cbc1894d2fa8b45eeb17a678c6bfd">end</a> () const </td></tr>
+<tr class="separator:aad6cbc1894d2fa8b45eeb17a678c6bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af813241de9d44cf689932d9166147cf0"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a> () const </td></tr>
+<tr class="separator:af813241de9d44cf689932d9166147cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe156eb53466018aaa08f0cc9ae7e7e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#afe156eb53466018aaa08f0cc9ae7e7e5">end_id</a> (int64_t value)</td></tr>
+<tr class="separator:afe156eb53466018aaa08f0cc9ae7e7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add4fa7f957c3d0060613d69c547d07db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#add4fa7f957c3d0060613d69c547d07db">erase</a> (<a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a> pos)</td></tr>
+<tr class="separator:add4fa7f957c3d0060613d69c547d07db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1423e88876ea4e9098033f4f522defa"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structPath__t.html">Path_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ae1423e88876ea4e9098033f4f522defa">front</a> () const </td></tr>
+<tr class="separator:ae1423e88876ea4e9098033f4f522defa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fc87e41a998bdfe9fd94c3647e6f2ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPath__t.html">Path_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a6fc87e41a998bdfe9fd94c3647e6f2ba">front</a> ()</td></tr>
+<tr class="separator:a6fc87e41a998bdfe9fd94c3647e6f2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1f419fc9e3cb3d6d4a51621b7f0beba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba">generate_postgres_data</a> (<a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **postgres_data, size_t &amp;sequence) const </td></tr>
+<tr class="separator:ae1f419fc9e3cb3d6d4a51621b7f0beba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a3dbe49a76b4057460266cbbd9225c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a6a3dbe49a76b4057460266cbbd9225c8">get_pg_dd_path</a> (<a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path, size_t &amp;sequence) const </td></tr>
+<tr class="separator:a6a3dbe49a76b4057460266cbbd9225c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41e7ec521ecff8c58aa091a7e1bfe0aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a41e7ec521ecff8c58aa091a7e1bfe0aa">get_pg_ksp_path</a> (<a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path, size_t &amp;sequence, int routeId) const </td></tr>
+<tr class="separator:a41e7ec521ecff8c58aa091a7e1bfe0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9db12aac6bf4f045a25c3fd1e70fd20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPath.html">Path</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20">getSubpath</a> (unsigned int j) const </td></tr>
+<tr class="separator:ac9db12aac6bf4f045a25c3fd1e70fd20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf67930d9eaea5c23c9a5262fc846a73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#adf67930d9eaea5c23c9a5262fc846a73">isEqual</a> (const <a class="el" href="classPath.html">Path</a> &amp;subpath) const </td></tr>
+<tr class="separator:adf67930d9eaea5c23c9a5262fc846a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88118f86efd61d7e3325da3eef26fb32"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structPath__t.html">Path_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a88118f86efd61d7e3325da3eef26fb32">operator[]</a> (size_t i) const </td></tr>
+<tr class="separator:a88118f86efd61d7e3325da3eef26fb32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c9553ffd9565ac58facdf8777c5e7e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPath__t.html">Path_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a3c9553ffd9565ac58facdf8777c5e7e3">operator[]</a> (size_t i)</td></tr>
+<tr class="separator:a3c9553ffd9565ac58facdf8777c5e7e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b5d58e304f85ef96637a260917c30ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">push_back</a> (<a class="el" href="structPath__t.html">Path_t</a> data)</td></tr>
+<tr class="separator:a5b5d58e304f85ef96637a260917c30ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46140ad11410c4c8ddb3c0c1feeee895"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a46140ad11410c4c8ddb3c0c1feeee895">push_front</a> (<a class="el" href="structPath__t.html">Path_t</a> data)</td></tr>
+<tr class="separator:a46140ad11410c4c8ddb3c0c1feeee895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab5ee4adf3e656bde28622c4db1eecb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#aab5ee4adf3e656bde28622c4db1eecb6">push_front</a> (int64_t d_vertex, int64_t d_edge, <a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> d_cost, <a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> d_tot_cost)</td></tr>
+<tr class="separator:aab5ee4adf3e656bde28622c4db1eecb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bba11c6c32823d91b1e9bf00a6baa2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e">reverse</a> ()</td></tr>
+<tr class="separator:a7bba11c6c32823d91b1e9bf00a6baa2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e66574567b0b50454221d6f24606a00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPath__t.html">Path_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a5e66574567b0b50454221d6f24606a00">set_data</a> (int64_t d_from, int64_t d_to, int64_t d_vertex, int64_t d_edge, <a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> d_cost, <a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> d_tot_cost)</td></tr>
+<tr class="separator:a5e66574567b0b50454221d6f24606a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a173f5f76fcc498b81b97261251d6a9a3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a> () const </td></tr>
+<tr class="separator:a173f5f76fcc498b81b97261251d6a9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7035439d26c9e76a20ca1a06541923e"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a> () const </td></tr>
+<tr class="separator:ac7035439d26c9e76a20ca1a06541923e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4316efe698e74adf1e0a119da1db2469"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a4316efe698e74adf1e0a119da1db2469">start_id</a> (int64_t value)</td></tr>
+<tr class="separator:a4316efe698e74adf1e0a119da1db2469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52970ece6b99b8001595b1989120ce84"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a52970ece6b99b8001595b1989120ce84">tot_cost</a> () const </td></tr>
+<tr class="separator:a52970ece6b99b8001595b1989120ce84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a170e524b86767313c6fc5df8b9e59ee7"><td class="memItemLeft" align="right" valign="top">typedef std::deque&lt; <a class="el" href="structPath__t.html">Path_t</a> &gt;<br class="typebreak"/>
+::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a170e524b86767313c6fc5df8b9e59ee7">ConstpthIt</a></td></tr>
+<tr class="separator:a170e524b86767313c6fc5df8b9e59ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c943dfaa5339a732fd3e2e552e80d1"><td class="memItemLeft" align="right" valign="top">typedef std::deque&lt; <a class="el" href="structPath__t.html">Path_t</a> &gt;<br class="typebreak"/>
+::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a></td></tr>
+<tr class="separator:ad4c943dfaa5339a732fd3e2e552e80d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8c5819a5378819252ee3e99a5104c43d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a8c5819a5378819252ee3e99a5104c43d">m_end_id</a></td></tr>
+<tr class="separator:a8c5819a5378819252ee3e99a5104c43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac83e28d421e342efe8f03428036f4bf7"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ac83e28d421e342efe8f03428036f4bf7">m_start_id</a></td></tr>
+<tr class="separator:ac83e28d421e342efe8f03428036f4bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac00aa75927faa25fbf59f6696c47a741"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ac00aa75927faa25fbf59f6696c47a741">m_tot_cost</a></td></tr>
+<tr class="separator:ac00aa75927faa25fbf59f6696c47a741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0078a9d54940355ab4e63f7d90c9b911"><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="structPath__t.html">Path_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a0078a9d54940355ab4e63f7d90c9b911">path</a></td></tr>
+<tr class="separator:a0078a9d54940355ab4e63f7d90c9b911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a19c6d298dcf1b394bb1d0269055f45f0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a19c6d298dcf1b394bb1d0269055f45f0">collapse_paths</a> (<a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path, const std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;paths)</td></tr>
+<tr class="separator:a19c6d298dcf1b394bb1d0269055f45f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a704d92207109d41b1df3e14e14579ba1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a704d92207109d41b1df3e14e14579ba1">count_tuples</a> (const std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;paths)</td></tr>
+<tr class="separator:a704d92207109d41b1df3e14e14579ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ec42f9cedce93c209092bc259b9c56c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#a5ec42f9cedce93c209092bc259b9c56c">equi_cost</a> (std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;paths)</td></tr>
+<tr class="separator:a5ec42f9cedce93c209092bc259b9c56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6ec5039de3fbdc106eff0222a7c8ffe"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPath.html#ac6ec5039de3fbdc106eff0222a7c8ffe">operator&lt;&lt;</a> (std::ostream &amp;log, const <a class="el" href="classPath.html">Path</a> &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</td></tr>
+<tr class="separator:ac6ec5039de3fbdc106eff0222a7c8ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00033">33</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00041">41</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a170e524b86767313c6fc5df8b9e59ee7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::deque&lt; <a class="el" href="structPath__t.html">Path_t</a> &gt;::const_iterator Path::ConstpthIt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00043">43</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4c943dfaa5339a732fd3e2e552e80d1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::deque&lt; <a class="el" href="structPath__t.html">Path_t</a> &gt;::iterator Path::pthIt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00042">42</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af26cfab021ddf49af73da3b2beca85ac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Path::Path </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00052">52</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af35ad991c5b32a5f03d07ad5831956d0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Path::Path </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>s_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>e_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00053">53</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a9cb45e3a413a03f1c4224b840af1fe83"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::appendPath </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPath.html">Path</a> &amp;&#160;</td>
+          <td class="paramname"><em>o_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00115">115</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00049">m_tot_cost</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__ksp_8cpp_source.html#l00092">Pgr_ksp&lt; G &gt;::doNextCycle()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d7914dd43375d1c534e92ba64331c56"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structPath__t.html">Path_t</a>&amp; Path::back </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00077">77</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7cec8cc626f16ea03c5b9d004b2c6105"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPath__t.html">Path_t</a>&amp; Path::back </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00078">78</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a79263f46d8f986d822fb5b656a94fd9a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a> Path::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00070">70</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+<p>Referenced by <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00202">do_pgr_withPointsDD()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00499">Pgr_dijkstra&lt; G &gt;::drivingDistance()</a>, and <a class="el" href="basePath__SSEC_8cpp_source.html#l00104">isEqual()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a46361875866d952a7f30e147cbf6eb04"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPath.html#a170e524b86767313c6fc5df8b9e59ee7">ConstpthIt</a> Path::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00072">72</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e94fc24f7c713442f3d52478d0772fb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00070">70</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00048">m_end_id</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00047">m_start_id</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00049">m_tot_cost</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__astar_8hpp_source.html#l00253">Pgr_astar&lt; G &gt;::astar()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00535">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="pgr__ksp_8cpp_source.html#l00092">Pgr_ksp&lt; G &gt;::doNextCycle()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00436">Pgr_astar&lt; G &gt;::get_cost()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00437">Pgr_dijkstra&lt; G &gt;::get_cost()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00335">Pgr_dijkstra&lt; G &gt;::get_nodesInDistance()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00479">Pgr_astar&lt; G &gt;::get_path()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00360">Pgr_dijkstra&lt; G &gt;::get_path()</a>, <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00051">pgr_dijkstraViaVertex()</a>, and <a class="el" href="dijkstra_8hpp_source.html#l00026">process_dijkstra()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad413fcb7c6c703e711d4be9b8cf91bf4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> Path::empty </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00063">63</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00166">adjust_pids()</a>, <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00108">do_pgr_driving_distance()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00121">eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00100">eliminate_details_dd()</a>, <a class="el" href="pgr__ksp_8cpp_source.html#l00043">Pgr_ksp&lt; G &gt;::getFirstSolution()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00104">isEqual()</a>, and <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00051">pgr_dijkstraViaVertex()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a142188f4775eaec32a14d3fb9e2dfb7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::empty_path </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>d_vertex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0b6bcfb3ff2bdd0b5861a2c3022cb85f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a> Path::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00071">71</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+<p>Referenced by <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00202">do_pgr_withPointsDD()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00499">Pgr_dijkstra&lt; G &gt;::drivingDistance()</a>, and <a class="el" href="basePath__SSEC_8cpp_source.html#l00104">isEqual()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aad6cbc1894d2fa8b45eeb17a678c6bfd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPath.html#a170e524b86767313c6fc5df8b9e59ee7">ConstpthIt</a> Path::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00073">73</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af813241de9d44cf689932d9166147cf0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Path::end_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00058">58</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00048">m_end_id</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00166">adjust_pids()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00294">Pgr_astar&lt; G &gt;::astar()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00573">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00121">eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00100">eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00121">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00151">get_pg_ksp_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00094">getSubpath()</a>, and <a class="el" href="basePath__SSEC_8cpp_source.html#l00077">operator&lt;&lt;()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afe156eb53466018aaa08f0cc9ae7e7e5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::end_id </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00059">59</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00048">m_end_id</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="add4fa7f957c3d0060613d69c547d07db"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::erase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classPath.html#ad4c943dfaa5339a732fd3e2e552e80d1">pthIt</a>&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00076">76</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1423e88876ea4e9098033f4f522defa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structPath__t.html">Path_t</a>&amp; Path::front </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00079">79</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6fc87e41a998bdfe9fd94c3647e6f2ba"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPath__t.html">Path_t</a>&amp; Path::front </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00080">80</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1f419fc9e3cb3d6d4a51621b7f0beba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::generate_postgres_data </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **&#160;</td>
+          <td class="paramname"><em>postgres_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>sequence</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00121">121</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00058">end_id()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00056">start_id()</a>.</p>
+
+<p>Referenced by <a class="el" href="astarOneToOne__driver_8cpp_source.html#l00076">do_pgr_astarOneToOne()</a>, <a class="el" href="one__to__one__dijkstra__driver_8cpp_source.html#l00056">do_pgr_one_to_one_dijkstra()</a>, and <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6a3dbe49a76b4057460266cbbd9225c8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::get_pg_dd_path </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **&#160;</td>
+          <td class="paramname"><em>ret_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>sequence</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00134">134</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00056">start_id()</a>.</p>
+
+<p>Referenced by <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00108">do_pgr_driving_distance()</a>, and <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00202">do_pgr_withPointsDD()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a41e7ec521ecff8c58aa091a7e1bfe0aa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::get_pg_ksp_path </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **&#160;</td>
+          <td class="paramname"><em>ret_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>sequence</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>routeId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00151">151</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00058">end_id()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9db12aac6bf4f045a25c3fd1e70fd20"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPath.html">Path</a> Path::getSubpath </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>j</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00094">94</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00058">end_id()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00046">push_back()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00056">start_id()</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__ksp_8cpp_source.html#l00092">Pgr_ksp&lt; G &gt;::doNextCycle()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adf67930d9eaea5c23c9a5262fc846a73"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> Path::isEqual </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPath.html">Path</a> &amp;&#160;</td>
+          <td class="paramname"><em>subpath</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00104">104</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00070">begin()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00063">empty()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00071">end()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">size()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a88118f86efd61d7e3325da3eef26fb32"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structPath__t.html">Path_t</a>&amp; Path::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00067">67</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3c9553ffd9565ac58facdf8777c5e7e3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPath__t.html">Path_t</a>&amp; Path::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00068">68</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5b5d58e304f85ef96637a260917c30ac"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::push_back </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPath__t.html">Path_t</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00046">46</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="pgr__types_8h_source.html#l00069">Path_t::cost</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00049">m_tot_cost</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__dijkstra_8hpp_source.html#l00499">Pgr_dijkstra&lt; G &gt;::drivingDistance()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00121">eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00100">eliminate_details_dd()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00335">Pgr_dijkstra&lt; G &gt;::get_nodesInDistance()</a>, and <a class="el" href="basePath__SSEC_8cpp_source.html#l00094">getSubpath()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a46140ad11410c4c8ddb3c0c1feeee895"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::push_front </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPath__t.html">Path_t</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00041">41</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="pgr__types_8h_source.html#l00069">Path_t::cost</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00049">m_tot_cost</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__astar_8hpp_source.html#l00436">Pgr_astar&lt; G &gt;::get_cost()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00453">Pgr_dijkstra&lt; G &gt;::get_cost()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00495">Pgr_astar&lt; G &gt;::get_path()</a>, and <a class="el" href="pgr__dijkstra_8hpp_source.html#l00376">Pgr_dijkstra&lt; G &gt;::get_path()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aab5ee4adf3e656bde28622c4db1eecb6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::push_front </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>d_vertex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>d_edge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>&#160;</td>
+          <td class="paramname"><em>d_cost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>&#160;</td>
+          <td class="paramname"><em>d_tot_cost</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7bba11c6c32823d91b1e9bf00a6baa2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::reverse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00051">51</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5e66574567b0b50454221d6f24606a00"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPath__t.html">Path_t</a> Path::set_data </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>d_from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>d_to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>d_vertex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>d_edge</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>&#160;</td>
+          <td class="paramname"><em>d_cost</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>&#160;</td>
+          <td class="paramname"><em>d_tot_cost</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a173f5f76fcc498b81b97261251d6a9a3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Path::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">62</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">path</a>.</p>
+
+<p>Referenced by <a class="el" href="astarOneToOne__driver_8cpp_source.html#l00076">do_pgr_astarOneToOne()</a>, <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00108">do_pgr_driving_distance()</a>, <a class="el" href="one__to__one__dijkstra__driver_8cpp_source.html#l00056">do_pgr_one_to_one_dijkstra()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00202">do_pgr_withPointsDD()</a>, <a class="el" href="pgr__ksp_8cpp_source.html#l00092">Pgr_ksp&lt; G &gt;::doNextCycle()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00104">isEqual()</a>, <a class="el" href="pgr__ksp_8hpp_source.html#l00050">Pgr_ksp&lt; G &gt;::compPaths::operator()()</a>, and <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00051">pgr_dijkstraViaVertex()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac7035439d26c9e76a20ca1a06541923e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Path::start_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00056">56</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00047">m_start_id</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00166">adjust_pids()</a>, <a class="el" href="pgr__astar_8hpp_source.html#l00342">Pgr_astar&lt; G &gt;::astar()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00618">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00121">eliminate_details()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00100">eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00121">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00134">get_pg_dd_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00094">getSubpath()</a>, and <a class="el" href="basePath__SSEC_8cpp_source.html#l00077">operator&lt;&lt;()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4316efe698e74adf1e0a119da1db2469"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Path::start_id </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00057">57</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00047">m_start_id</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a52970ece6b99b8001595b1989120ce84"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Path::tot_cost </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00060">60</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00049">m_tot_cost</a>.</p>
+
+<p>Referenced by <a class="el" href="pgr__ksp_8hpp_source.html#l00050">Pgr_ksp&lt; G &gt;::compPaths::operator()()</a>, and <a class="el" href="performance_2dijkstra_2dijkstra_8hpp_source.html#l00029">process_dijkstra()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="a19c6d298dcf1b394bb1d0269055f45f0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t collapse_paths </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **&#160;</td>
+          <td class="paramname"><em>ret_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>paths</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00122">122</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a704d92207109d41b1df3e14e14579ba1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t count_tuples </td>
+          <td>(</td>
+          <td class="paramtype">const std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>paths</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00205">205</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ec42f9cedce93c209092bc259b9c56c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void equi_cost </td>
+          <td>(</td>
+          <td class="paramtype">std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>paths</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00149">149</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac6ec5039de3fbdc106eff0222a7c8ffe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>log</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPath.html">Path</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8cpp_source.html#l00077">77</a> of file <a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a8c5819a5378819252ee3e99a5104c43d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Path::m_end_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00048">48</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="basePath__SSEC_8cpp_source.html#l00070">clear()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00058">end_id()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac83e28d421e342efe8f03428036f4bf7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t Path::m_start_id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00047">47</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="basePath__SSEC_8cpp_source.html#l00070">clear()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00056">start_id()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac00aa75927faa25fbf59f6696c47a741"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Path::m_tot_cost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00049">49</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="basePath__SSEC_8cpp_source.html#l00115">appendPath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00070">clear()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00046">push_back()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00041">push_front()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00060">tot_cost()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0078a9d54940355ab4e63f7d90c9b911"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::deque&lt; <a class="el" href="structPath__t.html">Path_t</a> &gt; Path::path</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="basePath__SSEC_8hpp_source.html#l00046">46</a> of file <a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="basePath__SSEC_8cpp_source.html#l00115">appendPath()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00077">back()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00070">begin()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00070">clear()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00063">empty()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00071">end()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00076">erase()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00079">front()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00121">generate_postgres_data()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00134">get_pg_dd_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00151">get_pg_ksp_path()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00094">getSubpath()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00104">isEqual()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00067">operator[]()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00046">push_back()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00041">push_front()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00051">reverse()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">size()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="basePath__SSEC_8hpp_source.html">basePath_SSEC.hpp</a></li>
 <li><a class="el" href="basePath__SSEC_8cpp_source.html">basePath_SSEC.cpp</a></li>
 </ul>
@@ -131,7 +1427,7 @@ Collaboration diagram for Path:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPath.html">Path</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

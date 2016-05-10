@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('structboost_1_1detail_1_1shooting__sta
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,18 +107,1190 @@ $(document).ready(function(){initNavTree('structboost_1_1detail_1_1shooting__sta
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structboost_1_1detail_1_1shooting__star__bfs__visitor-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>&quot;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:ad6f14dcf08f3835879caf2d16fdc8c8f"><td class="memItemLeft" align="right" valign="top">typedef property_traits<br class="typebreak"/>
+&lt; CostMap &gt;::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ad6f14dcf08f3835879caf2d16fdc8c8f">C</a></td></tr>
+<tr class="separator:ad6f14dcf08f3835879caf2d16fdc8c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d2817f715a5cb8a6e6ddaa76e7f0be1"><td class="memItemLeft" align="right" valign="top">typedef color_traits&lt; <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a324438de41055ceb05f73fe1dea85cbc">ColorValue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a0d2817f715a5cb8a6e6ddaa76e7f0be1">Color</a></td></tr>
+<tr class="separator:a0d2817f715a5cb8a6e6ddaa76e7f0be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324438de41055ceb05f73fe1dea85cbc"><td class="memItemLeft" align="right" valign="top">typedef property_traits<br class="typebreak"/>
+&lt; ColorMap &gt;::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a324438de41055ceb05f73fe1dea85cbc">ColorValue</a></td></tr>
+<tr class="separator:a324438de41055ceb05f73fe1dea85cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0530f0429c1ad6e783d653f05abf3cc2"><td class="memItemLeft" align="right" valign="top">typedef property_traits<br class="typebreak"/>
+&lt; DistanceMap &gt;::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a0530f0429c1ad6e783d653f05abf3cc2">distance_type</a></td></tr>
+<tr class="separator:a0530f0429c1ad6e783d653f05abf3cc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a505884634ac2d5dfe4f3aef1099da3ed"><td class="memItemLeft" align="right" valign="top">typedef color_traits&lt; <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a324438de41055ceb05f73fe1dea85cbc">ColorValue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a505884634ac2d5dfe4f3aef1099da3ed">EdgeColor</a></td></tr>
+<tr class="separator:a505884634ac2d5dfe4f3aef1099da3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30b4f433c47a2be3aa331d151320d4fa"><td class="memItemLeft" align="right" valign="top">typedef property_traits<br class="typebreak"/>
+&lt; EdgeColorMap &gt;::value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a30b4f433c47a2be3aa331d151320d4fa">EdgeColorValue</a></td></tr>
+<tr class="separator:a30b4f433c47a2be3aa331d151320d4fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a518507dcbf9e0b79ac8b6300aa738990"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a518507dcbf9e0b79ac8b6300aa738990">shooting_star_bfs_visitor</a> (AStarHeuristic h, UniformCostVisitor vis, UpdatableQueue &amp;Q, PredecessorMap &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>, CostMap <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, DistanceMap <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, WeightMap w, EdgeMap em, ColorMap col, EdgeColorMap ecol, BinaryFunction combine, BinaryPredicate compare, <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ad6f14dcf08f3835879caf2d16fdc8c8f">C</a> zero)</td></tr>
+<tr class="separator:a518507dcbf9e0b79ac8b6300aa738990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26079f89a2788659a91609b24819e3b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a26079f89a2788659a91609b24819e3b0">shooting_star_bfs_visitor</a> (const <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">shooting_star_bfs_visitor</a> &amp;v)</td></tr>
+<tr class="separator:a26079f89a2788659a91609b24819e3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a643ee76a98ad739485b87a6b968923cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a643ee76a98ad739485b87a6b968923cc">~shooting_star_bfs_visitor</a> ()</td></tr>
+<tr class="separator:a643ee76a98ad739485b87a6b968923cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aa83390b843ed416e794a1c585d0583"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph &gt; </td></tr>
+<tr class="memitem:a7aa83390b843ed416e794a1c585d0583"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a7aa83390b843ed416e794a1c585d0583">black_target</a> (<a class="el" href="structEdge.html">Edge</a> e, <a class="el" href="structEdge.html">Edge</a> pe, <a class="el" href="structEdge.html">Edge</a> s, Graph &amp;g, int e_max_id)</td></tr>
+<tr class="separator:a7aa83390b843ed416e794a1c585d0583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2483c21096ffb934e12cb778dd5d76b2"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph &gt; </td></tr>
+<tr class="memitem:a2483c21096ffb934e12cb778dd5d76b2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a2483c21096ffb934e12cb778dd5d76b2">discover_edge</a> (<a class="el" href="structEdge.html">Edge</a> e, Graph &amp;g)</td></tr>
+<tr class="separator:a2483c21096ffb934e12cb778dd5d76b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b94280fc2e8379355e1fd7de04a8e2"><td class="memTemplParams" colspan="2">template&lt;class Vertex , class Graph &gt; </td></tr>
+<tr class="memitem:ab8b94280fc2e8379355e1fd7de04a8e2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ab8b94280fc2e8379355e1fd7de04a8e2">discover_vertex</a> (<a class="el" href="structVertex.html">Vertex</a> u, Graph &amp;g)</td></tr>
+<tr class="separator:ab8b94280fc2e8379355e1fd7de04a8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab047a2ed158c2325802eacd567cb59af"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph &gt; </td></tr>
+<tr class="memitem:ab047a2ed158c2325802eacd567cb59af"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ab047a2ed158c2325802eacd567cb59af">examine_edge</a> (<a class="el" href="structEdge.html">Edge</a> e, Graph &amp;g, int e_max_id)</td></tr>
+<tr class="separator:ab047a2ed158c2325802eacd567cb59af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ec59b01166486ac628d5360ebf86f0"><td class="memTemplParams" colspan="2">template&lt;class Vertex , class Graph &gt; </td></tr>
+<tr class="memitem:ab9ec59b01166486ac628d5360ebf86f0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ab9ec59b01166486ac628d5360ebf86f0">examine_vertex</a> (<a class="el" href="structVertex.html">Vertex</a> u, Graph &amp;g)</td></tr>
+<tr class="separator:ab9ec59b01166486ac628d5360ebf86f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d23f92080af454f6da9b1892ecfeca8"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph &gt; </td></tr>
+<tr class="memitem:a0d23f92080af454f6da9b1892ecfeca8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a0d23f92080af454f6da9b1892ecfeca8">finish_edge</a> (<a class="el" href="structEdge.html">Edge</a> e, Graph &amp;g)</td></tr>
+<tr class="separator:a0d23f92080af454f6da9b1892ecfeca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a120aae20d19affb8ad4e1ddd6a79b83e"><td class="memTemplParams" colspan="2">template&lt;class Vertex , class Graph &gt; </td></tr>
+<tr class="memitem:a120aae20d19affb8ad4e1ddd6a79b83e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a120aae20d19affb8ad4e1ddd6a79b83e">finish_vertex</a> (<a class="el" href="structVertex.html">Vertex</a> u, Graph &amp;g)</td></tr>
+<tr class="separator:a120aae20d19affb8ad4e1ddd6a79b83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94ec560b0f6fb44df620e6cad5cd0fb9"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph &gt; </td></tr>
+<tr class="memitem:a94ec560b0f6fb44df620e6cad5cd0fb9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a94ec560b0f6fb44df620e6cad5cd0fb9">gray_target</a> (<a class="el" href="structEdge.html">Edge</a> e, <a class="el" href="structEdge.html">Edge</a> pe, <a class="el" href="structEdge.html">Edge</a> s, Graph &amp;g, int e_max_id)</td></tr>
+<tr class="separator:a94ec560b0f6fb44df620e6cad5cd0fb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07d543fec7210d3ac8e5e18bec73f1bb"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph &gt; </td></tr>
+<tr class="memitem:a07d543fec7210d3ac8e5e18bec73f1bb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a07d543fec7210d3ac8e5e18bec73f1bb">initialize_edge</a> (<a class="el" href="structEdge.html">Edge</a> e, Graph &amp;g)</td></tr>
+<tr class="separator:a07d543fec7210d3ac8e5e18bec73f1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f0e691c1d35031ba353c857d0d6c29"><td class="memTemplParams" colspan="2">template&lt;class Vertex , class Graph &gt; </td></tr>
+<tr class="memitem:aa9f0e691c1d35031ba353c857d0d6c29"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#aa9f0e691c1d35031ba353c857d0d6c29">initialize_vertex</a> (<a class="el" href="structVertex.html">Vertex</a> u, Graph &amp;g)</td></tr>
+<tr class="separator:aa9f0e691c1d35031ba353c857d0d6c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ed3e4d13f8c9b4e74387f4f397c30fb"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph &gt; </td></tr>
+<tr class="memitem:a7ed3e4d13f8c9b4e74387f4f397c30fb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a7ed3e4d13f8c9b4e74387f4f397c30fb">non_tree_edge</a> (<a class="el" href="structEdge.html">Edge</a>, Graph &amp;)</td></tr>
+<tr class="separator:a7ed3e4d13f8c9b4e74387f4f397c30fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d7d73425fca16001d7ac98692b17d20"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph &gt; </td></tr>
+<tr class="memitem:a9d7d73425fca16001d7ac98692b17d20"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a9d7d73425fca16001d7ac98692b17d20">tree_edge</a> (<a class="el" href="structEdge.html">Edge</a> e, <a class="el" href="structEdge.html">Edge</a> pe, <a class="el" href="structEdge.html">Edge</a> s, Graph &amp;g, int e_max_id)</td></tr>
+<tr class="separator:a9d7d73425fca16001d7ac98692b17d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa6d56b851c92f4a5d266749b634b03b2"><td class="memItemLeft" align="right" valign="top">ColorMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#aa6d56b851c92f4a5d266749b634b03b2">m_color</a></td></tr>
+<tr class="separator:aa6d56b851c92f4a5d266749b634b03b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04723b058e8e420671c08b1b70978c2a"><td class="memItemLeft" align="right" valign="top">BinaryFunction&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a04723b058e8e420671c08b1b70978c2a">m_combine</a></td></tr>
+<tr class="separator:a04723b058e8e420671c08b1b70978c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba60b6f82d97c8a01447038d3a27aa1"><td class="memItemLeft" align="right" valign="top">BinaryPredicate&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#aaba60b6f82d97c8a01447038d3a27aa1">m_compare</a></td></tr>
+<tr class="separator:aaba60b6f82d97c8a01447038d3a27aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8bd2b0a089538bdb233dfc2e3b81f73"><td class="memItemLeft" align="right" valign="top">CostMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ab8bd2b0a089538bdb233dfc2e3b81f73">m_cost</a></td></tr>
+<tr class="separator:ab8bd2b0a089538bdb233dfc2e3b81f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19386f5b1bd55ccb613d7764874e680a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a19386f5b1bd55ccb613d7764874e680a">m_decreased</a></td></tr>
+<tr class="separator:a19386f5b1bd55ccb613d7764874e680a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32418ad13688e1475239e8583faeda65"><td class="memItemLeft" align="right" valign="top">DistanceMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a32418ad13688e1475239e8583faeda65">m_distance</a></td></tr>
+<tr class="separator:a32418ad13688e1475239e8583faeda65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19f26fe854d12c9b86459194bcc2c5b1"><td class="memItemLeft" align="right" valign="top">EdgeColorMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a19f26fe854d12c9b86459194bcc2c5b1">m_ecolor</a></td></tr>
+<tr class="separator:a19f26fe854d12c9b86459194bcc2c5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaef6131e8e1ace02e0b795ad28a601eb"><td class="memItemLeft" align="right" valign="top">EdgeMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#aaef6131e8e1ace02e0b795ad28a601eb">m_edge</a></td></tr>
+<tr class="separator:aaef6131e8e1ace02e0b795ad28a601eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b462163809fe8578e9a5499b8f9ca0"><td class="memItemLeft" align="right" valign="top">AStarHeuristic&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a69b462163809fe8578e9a5499b8f9ca0">m_h</a></td></tr>
+<tr class="separator:a69b462163809fe8578e9a5499b8f9ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6feec1b907cf154194b204458641e21b"><td class="memItemLeft" align="right" valign="top">PredecessorMap &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a6feec1b907cf154194b204458641e21b">m_predecessor</a></td></tr>
+<tr class="separator:a6feec1b907cf154194b204458641e21b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58bcdfd18a09d25a003224caa3754280"><td class="memItemLeft" align="right" valign="top">UpdatableQueue &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a58bcdfd18a09d25a003224caa3754280">m_Q</a></td></tr>
+<tr class="separator:a58bcdfd18a09d25a003224caa3754280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dff4521fa8f1c8a10bbe22fc79f546d"><td class="memItemLeft" align="right" valign="top">UniformCostVisitor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a7dff4521fa8f1c8a10bbe22fc79f546d">m_vis</a></td></tr>
+<tr class="separator:a7dff4521fa8f1c8a10bbe22fc79f546d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40ff706d8928371e09cd7466976fc850"><td class="memItemLeft" align="right" valign="top">WeightMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a40ff706d8928371e09cd7466976fc850">m_weight</a></td></tr>
+<tr class="separator:a40ff706d8928371e09cd7466976fc850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae278172e0b82db428d019e136b53b082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ad6f14dcf08f3835879caf2d16fdc8c8f">C</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ae278172e0b82db428d019e136b53b082">m_zero</a></td></tr>
+<tr class="separator:ae278172e0b82db428d019e136b53b082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class AStarHeuristic, class UniformCostVisitor, class UpdatableQueue, class PredecessorMap, class CostMap, class DistanceMap, class WeightMap, class EdgeMap, class ColorMap, class EdgeColorMap, class BinaryFunction, class BinaryPredicate&gt;<br/>
 struct boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;</h3>
 
 
 <p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00266">266</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="ad6f14dcf08f3835879caf2d16fdc8c8f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef property_traits&lt;CostMap&gt;::value_type <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ad6f14dcf08f3835879caf2d16fdc8c8f">C</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00269">269</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0d2817f715a5cb8a6e6ddaa76e7f0be1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef color_traits&lt;<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a324438de41055ceb05f73fe1dea85cbc">ColorValue</a>&gt; <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a0d2817f715a5cb8a6e6ddaa76e7f0be1">Color</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00271">271</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a324438de41055ceb05f73fe1dea85cbc"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef property_traits&lt;ColorMap&gt;::value_type <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a324438de41055ceb05f73fe1dea85cbc">ColorValue</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00270">270</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0530f0429c1ad6e783d653f05abf3cc2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef property_traits&lt;DistanceMap&gt;::value_type <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a0530f0429c1ad6e783d653f05abf3cc2">distance_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00276">276</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a505884634ac2d5dfe4f3aef1099da3ed"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef color_traits&lt;<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a324438de41055ceb05f73fe1dea85cbc">ColorValue</a>&gt; <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a505884634ac2d5dfe4f3aef1099da3ed">EdgeColor</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00274">274</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a30b4f433c47a2be3aa331d151320d4fa"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef property_traits&lt;EdgeColorMap&gt;::value_type <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a30b4f433c47a2be3aa331d151320d4fa">EdgeColorValue</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00273">273</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a518507dcbf9e0b79ac8b6300aa738990"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">shooting_star_bfs_visitor</a> </td>
+          <td>(</td>
+          <td class="paramtype">AStarHeuristic&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UniformCostVisitor&#160;</td>
+          <td class="paramname"><em>vis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UpdatableQueue &amp;&#160;</td>
+          <td class="paramname"><em>Q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PredecessorMap &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CostMap&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DistanceMap&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">WeightMap&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EdgeMap&#160;</td>
+          <td class="paramname"><em>em</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ColorMap&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EdgeColorMap&#160;</td>
+          <td class="paramname"><em>ecol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BinaryFunction&#160;</td>
+          <td class="paramname"><em>combine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BinaryPredicate&#160;</td>
+          <td class="paramname"><em>compare</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ad6f14dcf08f3835879caf2d16fdc8c8f">C</a>&#160;</td>
+          <td class="paramname"><em>zero</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00278">278</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a26079f89a2788659a91609b24819e3b0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">shooting_star_bfs_visitor</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt; &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00289">289</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a643ee76a98ad739485b87a6b968923cc"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::~<a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">shooting_star_bfs_visitor</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00295">295</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7aa83390b843ed416e794a1c585d0583"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Edge , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>pe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>e_max_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00386">386</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00415">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_combine</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00416">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_compare</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00409">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_cost</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00417">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_decreased</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00411">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_distance</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00414">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_ecolor</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00410">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_edge</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00405">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_h</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00408">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_predecessor</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00407">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_Q</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00412">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_weight</a>, and <a class="el" href="shooting__star__relax_8hpp_source.html#l00086">boost::relax()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2483c21096ffb934e12cb778dd5d76b2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Edge , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::discover_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00313">313</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab8b94280fc2e8379355e1fd7de04a8e2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Vertex , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::discover_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structVertex.html">Vertex</a>&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00308">308</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab047a2ed158c2325802eacd567cb59af"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Edge , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::examine_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>e_max_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00328">328</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00416">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_compare</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00412">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_weight</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00418">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_zero</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab9ec59b01166486ac628d5360ebf86f0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Vertex , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::examine_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structVertex.html">Vertex</a>&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00318">318</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0d23f92080af454f6da9b1892ecfeca8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Edge , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::finish_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00338">338</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a120aae20d19affb8ad4e1ddd6a79b83e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Vertex , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::finish_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structVertex.html">Vertex</a>&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00323">323</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a94ec560b0f6fb44df620e6cad5cd0fb9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Edge , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>pe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>e_max_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00365">365</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00415">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_combine</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00416">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_compare</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00409">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_cost</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00417">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_decreased</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00411">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_distance</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00410">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_edge</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00405">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_h</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00408">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_predecessor</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00407">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_Q</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00412">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_weight</a>, and <a class="el" href="shooting__star__relax_8hpp_source.html#l00086">boost::relax()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a07d543fec7210d3ac8e5e18bec73f1bb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Edge , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::initialize_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00303">303</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa9f0e691c1d35031ba353c857d0d6c29"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Vertex , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::initialize_vertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structVertex.html">Vertex</a>&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00298">298</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ed3e4d13f8c9b4e74387f4f397c30fb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Edge , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::non_tree_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00335">335</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d7d73425fca16001d7ac98692b17d20"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+<div class="memtemplate">
+template&lt;class Edge , class Graph &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>pe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structEdge.html">Edge</a>&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Graph &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>e_max_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00345">345</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>References <a class="el" href="shooting__star__search_8hpp_source.html#l00415">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_combine</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00416">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_compare</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00409">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_cost</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00417">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_decreased</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00411">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_distance</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00410">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_edge</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00405">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_h</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00408">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_predecessor</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00406">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00412">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_weight</a>, and <a class="el" href="shooting__star__relax_8hpp_source.html#l00086">boost::relax()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aa6d56b851c92f4a5d266749b634b03b2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">ColorMap <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00413">413</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a04723b058e8e420671c08b1b70978c2a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">BinaryFunction <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_combine</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00415">415</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaba60b6f82d97c8a01447038d3a27aa1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">BinaryPredicate <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_compare</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00416">416</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00328">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::examine_edge()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab8bd2b0a089538bdb233dfc2e3b81f73"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">CostMap <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_cost</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00409">409</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a19386f5b1bd55ccb613d7764874e680a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_decreased</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00417">417</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a32418ad13688e1475239e8583faeda65"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">DistanceMap <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_distance</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00411">411</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a19f26fe854d12c9b86459194bcc2c5b1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">EdgeColorMap <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_ecolor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00414">414</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaef6131e8e1ace02e0b795ad28a601eb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">EdgeMap <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_edge</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00410">410</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a69b462163809fe8578e9a5499b8f9ca0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">AStarHeuristic <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_h</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00405">405</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6feec1b907cf154194b204458641e21b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">PredecessorMap&amp; <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_predecessor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00408">408</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58bcdfd18a09d25a003224caa3754280"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">UpdatableQueue&amp; <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_Q</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00407">407</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7dff4521fa8f1c8a10bbe22fc79f546d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">UniformCostVisitor <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_vis</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00406">406</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00313">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::discover_edge()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00308">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::discover_vertex()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00328">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::examine_edge()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00318">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::examine_vertex()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00338">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::finish_edge()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00323">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::finish_vertex()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00303">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::initialize_edge()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00298">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::initialize_vertex()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a40ff706d8928371e09cd7466976fc850"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">WeightMap <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_weight</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00412">412</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00386">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::black_target()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00328">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::examine_edge()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00365">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::gray_target()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00345">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::tree_edge()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae278172e0b82db428d019e136b53b082"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class AStarHeuristic , class UniformCostVisitor , class UpdatableQueue , class PredecessorMap , class CostMap , class DistanceMap , class WeightMap , class EdgeMap , class ColorMap , class EdgeColorMap , class BinaryFunction , class BinaryPredicate &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ad6f14dcf08f3835879caf2d16fdc8c8f">C</a> <a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">boost::detail::shooting_star_bfs_visitor</a>&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::m_zero</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__search_8hpp_source.html#l00418">418</a> of file <a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__search_8hpp_source.html#l00328">boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostVisitor, UpdatableQueue, PredecessorMap, CostMap, DistanceMap, WeightMap, EdgeMap, ColorMap, EdgeColorMap, BinaryFunction, BinaryPredicate &gt;::examine_edge()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="shooting__star__search_8hpp_source.html">shooting_star_search.hpp</a></li>
 </ul>
 </div><!-- contents -->
@@ -125,8 +1298,8 @@ struct boost::detail::shooting_star_bfs_visitor&lt; AStarHeuristic, UniformCostV
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>boost</b></li><li class="navelem"><b>detail</b></li><li class="navelem"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">shooting_star_bfs_visitor</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="namespaceboost.html">boost</a></li><li class="navelem"><a class="el" href="namespaceboost_1_1detail.html">detail</a></li><li class="navelem"><a class="el" href="structboost_1_1detail_1_1shooting__star__bfs__visitor.html">shooting_star_bfs_visitor</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

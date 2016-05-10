@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="title">trsp_core.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="trsp__core_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
@@ -135,18 +137,18 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;GraphDefinition.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="GraphDefinition_8h.html">GraphDefinition.h</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">int</span> trsp_node_wrapper(</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="structedge__t.html">edge_t</a> *edges,         <span class="keywordtype">size_t</span> edge_count,</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="trsp__core_8cpp.html#a8610053389d1899ceed063c1c0af50e2">   33</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="trsp__core_8cpp.html#a8610053389d1899ceed063c1c0af50e2">trsp_node_wrapper</a>(</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="structedge__t.html">edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,         <span class="keywordtype">size_t</span> <a class="code" href="BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730">edge_count</a>,</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="structRestrict__t.html">restrict_t</a> *restricts, <span class="keywordtype">size_t</span> restrict_count,</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> start_vertex,</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> end_vertex,</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">bool</span> directed,</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">bool</span> has_reverse_cost,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="structpath__element__t.html">path_element_t</a> **path, <span class="keywordtype">size_t</span> *path_count,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">char</span> **err_msg) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="structpath__element__t.html">path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>) {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::ostringstream log;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">try</span> {</div>
@@ -159,7 +161,7 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            std::vector&lt;int64_t&gt; seq;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            seq.clear();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            seq.push_back(restricts[i].target_id);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">for</span>(j = 0; j&lt;MAX_RULE_LENGTH &amp;&amp; restricts[i].via[j]&gt;-1; j++)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">for</span>(j = 0; j&lt;<a class="code" href="pgr__types_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a> &amp;&amp; restricts[i].<a class="code" href="structRestrict__t.html#a7832e99f4b67c9cf3dcb823355e83ad6">via</a>[j]&gt;-1; j++)</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                seq.push_back(restricts[i].via[j]);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
@@ -167,8 +169,8 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="classGraphDefinition.html">GraphDefinition</a> gdef(edges, static_cast&lt;unsigned int&gt;(edge_count), directed, has_reverse_cost);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">int</span> res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, log);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        gdef.<a class="code" href="classGraphDefinition.html#aa4590fe24f08ae3242371b8608e79bf7">set_restrictions</a>(start_vertex, end_vertex, ruleTable);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">int</span> res = gdef.<a class="code" href="classGraphDefinition.html#ac31da511b568a82f8655e55c4d4ef34f">my_dijkstra</a>(start_vertex, end_vertex, path, path_count, log);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (res &lt; 0)</div>
@@ -188,8 +190,8 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">int</span> trsp_edge_wrapper(</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="structedge__t.html">edge_t</a> *edges,          <span class="keywordtype">size_t</span> edge_count,</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="trsp__core_8cpp.html#a590a7b28893d3d958c13a911b2574508">   83</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="trsp__core_8cpp.html#a590a7b28893d3d958c13a911b2574508">trsp_edge_wrapper</a>(</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="structedge__t.html">edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,          <span class="keywordtype">size_t</span> <a class="code" href="BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730">edge_count</a>,</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="structRestrict__t.html">restrict_t</a> *restricts,  <span class="keywordtype">size_t</span> restrict_count,</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">int</span> start_edge,</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">double</span> start_pos,</div>
@@ -197,8 +199,8 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">double</span> end_pos,</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> directed,</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">bool</span> has_reverse_cost,</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="structpath__element__t.html">path_element_t</a> **path, <span class="keywordtype">size_t</span> *path_count,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">char</span> **err_msg) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="structpath__element__t.html">path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>) {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::ostringstream log;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
@@ -210,7 +212,7 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            std::vector&lt;int64_t&gt; seq;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            seq.clear();</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            seq.push_back(restricts[i].target_id);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">for</span>(j = 0; j&lt;MAX_RULE_LENGTH &amp;&amp; restricts[i].via[j]&gt;-1; j++)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">for</span>(j = 0; j&lt;<a class="code" href="pgr__types_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a> &amp;&amp; restricts[i].<a class="code" href="structRestrict__t.html#a7832e99f4b67c9cf3dcb823355e83ad6">via</a>[j]&gt;-1; j++)</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                seq.push_back(restricts[i].via[j]);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
@@ -221,13 +223,13 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        int64_t start_vertex = 0;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        int64_t end_vertex = 0;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        gdef.add_virtual_vertices(</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        gdef.<a class="code" href="classGraphDefinition.html#a87103e6c3d9790dff8d411f5093b04dc">add_virtual_vertices</a>(</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                start_edge, start_pos,</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                end_edge, end_pos,</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                start_vertex, end_vertex);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        gdef.set_restrictions(start_vertex, end_vertex, ruleTable);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">int</span> res = gdef.my_dijkstra(start_vertex, end_vertex, path, path_count, log);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        gdef.<a class="code" href="classGraphDefinition.html#aa4590fe24f08ae3242371b8608e79bf7">set_restrictions</a>(start_vertex, end_vertex, ruleTable);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">int</span> res = gdef.<a class="code" href="classGraphDefinition.html#ac31da511b568a82f8655e55c4d4ef34f">my_dijkstra</a>(start_vertex, end_vertex, path, path_count, log);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> (res &lt; 0)</div>
@@ -248,15 +250,28 @@ $(document).ready(function(){initNavTree('trsp__core_8cpp_source.html','');});
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
 <div class="ttc" id="classGraphDefinition_html"><div class="ttname"><a href="classGraphDefinition.html">GraphDefinition</a></div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8h_source.html#l00037">GraphDefinition.h:37</a></div></div>
 <div class="ttc" id="structedge__t_html"><div class="ttname"><a href="structedge__t.html">edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00034">k_targets_boost_wrapper.h:34</a></div></div>
-<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00045">pgr_types.h:45</a></div></div>
-<div class="ttc" id="structRestrict__t_html"><div class="ttname"><a href="structRestrict__t.html">Restrict_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00114">pgr_types.h:114</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
+<div class="ttc" id="GraphDefinition_8h_html"><div class="ttname"><a href="GraphDefinition_8h.html">GraphDefinition.h</a></div></div>
+<div class="ttc" id="classGraphDefinition_html_aa4590fe24f08ae3242371b8608e79bf7"><div class="ttname"><a href="classGraphDefinition.html#aa4590fe24f08ae3242371b8608e79bf7">GraphDefinition::set_restrictions</a></div><div class="ttdeci">void set_restrictions(int64_t start_vertex, int64_t end_vertex, std::vector&lt; PDVI &gt; &amp;ruleList)</div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8cpp_source.html#l00301">GraphDefinition.cpp:301</a></div></div>
+<div class="ttc" id="trsp__core_8cpp_html_a590a7b28893d3d958c13a911b2574508"><div class="ttname"><a href="trsp__core_8cpp.html#a590a7b28893d3d958c13a911b2574508">trsp_edge_wrapper</a></div><div class="ttdeci">int trsp_edge_wrapper(edge_t *edges, size_t edge_count, restrict_t *restricts, size_t restrict_count, int start_edge, double start_pos, int end_edge, double end_pos, bool directed, bool has_reverse_cost, path_element_t **path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="trsp__core_8cpp_source.html#l00083">trsp_core.cpp:83</a></div></div>
+<div class="ttc" id="classGraphDefinition_html_ac31da511b568a82f8655e55c4d4ef34f"><div class="ttname"><a href="classGraphDefinition.html#ac31da511b568a82f8655e55c4d4ef34f">GraphDefinition::my_dijkstra</a></div><div class="ttdeci">int my_dijkstra(int64_t start_vertex, int64_t end_vertex, path_element_t **path, size_t *path_count, std::ostringstream &amp;log)</div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8cpp_source.html#l00352">GraphDefinition.cpp:352</a></div></div>
+<div class="ttc" id="classGraphDefinition_html_a87103e6c3d9790dff8d411f5093b04dc"><div class="ttname"><a href="classGraphDefinition.html#a87103e6c3d9790dff8d411f5093b04dc">GraphDefinition::add_virtual_vertices</a></div><div class="ttdeci">void add_virtual_vertices(int start_edge, double start_part, int end_edge, double end_part, int64_t &amp;start_vertex, int64_t &amp;end_vertex)</div><div class="ttdef"><b>Definition:</b> <a href="GraphDefinition_8cpp_source.html#l00211">GraphDefinition.cpp:211</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_a1a21f2fdaf8aa261214ed6c7c2b56730"><div class="ttname"><a href="BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730">edge_count</a></div><div class="ttdeci">int edge_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00047">BDATester.cpp:47</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
+<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00057">pgr_types.h:57</a></div></div>
+<div class="ttc" id="structRestrict__t_html_a7832e99f4b67c9cf3dcb823355e83ad6"><div class="ttname"><a href="structRestrict__t.html#a7832e99f4b67c9cf3dcb823355e83ad6">Restrict_t::via</a></div><div class="ttdeci">int64_t via[5]</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00130">pgr_types.h:130</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a2b2d1b8288abf80b6781151bdde6101f"><div class="ttname"><a href="pgr__types_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a></div><div class="ttdeci">#define MAX_RULE_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00125">pgr_types.h:125</a></div></div>
+<div class="ttc" id="trsp__core_8cpp_html_a8610053389d1899ceed063c1c0af50e2"><div class="ttname"><a href="trsp__core_8cpp.html#a8610053389d1899ceed063c1c0af50e2">trsp_node_wrapper</a></div><div class="ttdeci">int trsp_node_wrapper(edge_t *edges, size_t edge_count, restrict_t *restricts, size_t restrict_count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost, path_element_t **path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="trsp__core_8cpp_source.html#l00033">trsp_core.cpp:33</a></div></div>
+<div class="ttc" id="structRestrict__t_html"><div class="ttname"><a href="structRestrict__t.html">Restrict_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00126">pgr_types.h:126</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ff9a90ff40b28e0f207f5cd80dcba32.html">trsp</a></li><li class="navelem"><a class="el" href="dir_b47eebdcbf6a29b61fc577aaf4f15079.html">src</a></li><li class="navelem"><b>trsp_core.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ff9a90ff40b28e0f207f5cd80dcba32.html">trsp</a></li><li class="navelem"><a class="el" href="dir_b47eebdcbf6a29b61fc577aaf4f15079.html">src</a></li><li class="navelem"><a class="el" href="trsp__core_8cpp.html">trsp_core.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

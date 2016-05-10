@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('structColumn__info__t.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,15 +107,113 @@ $(document).ready(function(){initNavTree('structColumn__info__t.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structColumn__info__t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Column_info_t Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>&quot;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a64816c9aa1e9203df8ed391fb9c6e849"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structColumn__info__t.html#a64816c9aa1e9203df8ed391fb9c6e849">colNumber</a></td></tr>
+<tr class="separator:a64816c9aa1e9203df8ed391fb9c6e849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80df9b5f6ef4c51effc2da146bb0d477"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bb">expectType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structColumn__info__t.html#a80df9b5f6ef4c51effc2da146bb0d477">eType</a></td></tr>
+<tr class="separator:a80df9b5f6ef4c51effc2da146bb0d477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac166599b0a83f7da1a40e75cc1a955b9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9">name</a></td></tr>
+<tr class="separator:ac166599b0a83f7da1a40e75cc1a955b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72833df7d9b7fd577a9e5c866c390518"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structColumn__info__t.html#a72833df7d9b7fd577a9e5c866c390518">strict</a></td></tr>
+<tr class="separator:a72833df7d9b7fd577a9e5c866c390518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabe9ce1c2584f121ef9886ae81bfb748"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structColumn__info__t.html#aabe9ce1c2584f121ef9886ae81bfb748">type</a></td></tr>
+<tr class="separator:aabe9ce1c2584f121ef9886ae81bfb748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00139">139</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00151">151</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a64816c9aa1e9203df8ed391fb9c6e849"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Column_info_t::colNumber</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00153">153</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="get__check__data_8c_source.html#l00051">fetch_column_info()</a>, <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>, <a class="el" href="customers__input_8c_source.html#l00055">pgr_get_customers()</a>, <a class="el" href="distances__input_8c_source.html#l00051">pgr_get_distances()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, <a class="el" href="restrictions__input_8c_source.html#l00068">pgr_get_restriction_data()</a>, <a class="el" href="get__check__data_8c_source.html#l00163">pgr_SPI_getBigInt()</a>, <a class="el" href="get__check__data_8c_source.html#l00140">pgr_SPI_getChar()</a>, <a class="el" href="get__check__data_8c_source.html#l00190">pgr_SPI_getFloat8()</a>, and <a class="el" href="get__check__data_8c_source.html#l00224">pgr_SPI_getText()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a80df9b5f6ef4c51effc2da146bb0d477"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bb">expectType</a> Column_info_t::eType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00157">157</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>, <a class="el" href="customers__input_8c_source.html#l00055">pgr_get_customers()</a>, <a class="el" href="distances__input_8c_source.html#l00051">pgr_get_distances()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, and <a class="el" href="restrictions__input_8c_source.html#l00068">pgr_get_restriction_data()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac166599b0a83f7da1a40e75cc1a955b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* Column_info_t::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00156">156</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="get__check__data_8c_source.html#l00051">fetch_column_info()</a>, <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>, <a class="el" href="get__check__data_8c_source.html#l00113">pgr_check_any_integer_type()</a>, <a class="el" href="get__check__data_8c_source.html#l00123">pgr_check_any_numerical_type()</a>, <a class="el" href="get__check__data_8c_source.html#l00099">pgr_check_char_type()</a>, <a class="el" href="get__check__data_8c_source.html#l00106">pgr_check_text_type()</a>, <a class="el" href="customers__input_8c_source.html#l00055">pgr_get_customers()</a>, <a class="el" href="distances__input_8c_source.html#l00051">pgr_get_distances()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, <a class="el" href="restrictions__input_8c_source.html#l00068">pgr_get_restriction_data()</a>, <a class="el" href="get__check__data_8c_source.html#l00163">pgr_SPI_getBigInt()</a>, <a class="el" href="get__check__data_8c_source.html#l00140">pgr_SPI_getChar()</a>, and <a class="el" href="get__check__data_8c_source.html#l00190">pgr_SPI_getFloat8()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a72833df7d9b7fd577a9e5c866c390518"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> Column_info_t::strict</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00155">155</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="get__check__data_8c_source.html#l00051">fetch_column_info()</a>, <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>, <a class="el" href="customers__input_8c_source.html#l00055">pgr_get_customers()</a>, <a class="el" href="distances__input_8c_source.html#l00051">pgr_get_distances()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, and <a class="el" href="restrictions__input_8c_source.html#l00068">pgr_get_restriction_data()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aabe9ce1c2584f121ef9886ae81bfb748"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t Column_info_t::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00154">154</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+<p>Referenced by <a class="el" href="get__check__data_8c_source.html#l00051">fetch_column_info()</a>, <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>, <a class="el" href="get__check__data_8c_source.html#l00113">pgr_check_any_integer_type()</a>, <a class="el" href="get__check__data_8c_source.html#l00123">pgr_check_any_numerical_type()</a>, <a class="el" href="get__check__data_8c_source.html#l00099">pgr_check_char_type()</a>, <a class="el" href="get__check__data_8c_source.html#l00106">pgr_check_text_type()</a>, <a class="el" href="customers__input_8c_source.html#l00055">pgr_get_customers()</a>, <a class="el" href="distances__input_8c_source.html#l00051">pgr_get_distances()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, <a class="el" href="restrictions__input_8c_source.html#l00068">pgr_get_restriction_data()</a>, <a class="el" href="get__check__data_8c_source.html#l00163">pgr_SPI_getBigInt()</a>, <a class="el" href="get__check__data_8c_source.html#l00140">pgr_SPI_getChar()</a>, and <a class="el" href="get__check__data_8c_source.html#l00190">pgr_SPI_getFloat8()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="pgr__types_8h_source.html">pgr_types.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -123,7 +222,7 @@ $(document).ready(function(){initNavTree('structColumn__info__t.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structColumn__info__t.html">Column_info_t</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

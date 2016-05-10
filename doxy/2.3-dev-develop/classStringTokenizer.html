@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classStringTokenizer.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,11 +107,15 @@ $(document).ready(function(){initNavTree('classStringTokenizer.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classStringTokenizer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">StringTokenizer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code></p>
 <div class="dynheader">
 Collaboration diagram for StringTokenizer:</div>
 <div class="dyncontent">
@@ -118,10 +123,474 @@ Collaboration diagram for StringTokenizer:</div>
 <map name="StringTokenizer_coll__map" id="StringTokenizer_coll__map">
 <area shape="rect" id="node2" title="STL class. " alt="" coords="28,99,107,125"/><area shape="rect" id="node3" title="STL class. " alt="" coords="5,6,131,47"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:abee9392f74f78f6232e090a78a669b8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#abee9392f74f78f6232e090a78a669b8d">StringTokenizer</a> ()</td></tr>
+<tr class="separator:abee9392f74f78f6232e090a78a669b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee9392f74f78f6232e090a78a669b8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#abee9392f74f78f6232e090a78a669b8d">StringTokenizer</a> ()</td></tr>
+<tr class="separator:abee9392f74f78f6232e090a78a669b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7058708a583bb12e06e9d9efb9f23ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#ae7058708a583bb12e06e9d9efb9f23ec">getToken</a> (std::string &amp;strToken, size_t iTokenIndex)</td></tr>
+<tr class="separator:ae7058708a583bb12e06e9d9efb9f23ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49a83cbdea62db7963f10ec458a6fc2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#a49a83cbdea62db7963f10ec458a6fc2f">getToken</a> (std::string &amp;strToken, long iTokenIndex)</td></tr>
+<tr class="separator:a49a83cbdea62db7963f10ec458a6fc2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54bc919376624b02b0454fe174bb4be5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#a54bc919376624b02b0454fe174bb4be5">getTokenCount</a> ()</td></tr>
+<tr class="separator:a54bc919376624b02b0454fe174bb4be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54bc919376624b02b0454fe174bb4be5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#a54bc919376624b02b0454fe174bb4be5">getTokenCount</a> ()</td></tr>
+<tr class="separator:a54bc919376624b02b0454fe174bb4be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6590795686da6dc7953b602c4624baa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#a6590795686da6dc7953b602c4624baa2">getTokens</a> (<a class="el" href="utils_8h.html#ab8e1ede88e2ff1c3b448334e6cbd3533">StringVector</a> &amp;vecTokensRef)</td></tr>
+<tr class="separator:a6590795686da6dc7953b602c4624baa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6590795686da6dc7953b602c4624baa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#a6590795686da6dc7953b602c4624baa2">getTokens</a> (<a class="el" href="utils_8h.html#ab8e1ede88e2ff1c3b448334e6cbd3533">StringVector</a> &amp;vecTokensRef)</td></tr>
+<tr class="separator:a6590795686da6dc7953b602c4624baa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95470d4a7fbb7a5af9640d427c9f0d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#ac95470d4a7fbb7a5af9640d427c9f0d4">parse</a> (std::string <a class="el" href="classStringTokenizer.html#a3f729cb35f8c0307ffb5c8a84bbec006">strInput</a>, std::string chDelim)</td></tr>
+<tr class="separator:ac95470d4a7fbb7a5af9640d427c9f0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95470d4a7fbb7a5af9640d427c9f0d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#ac95470d4a7fbb7a5af9640d427c9f0d4">parse</a> (std::string <a class="el" href="classStringTokenizer.html#a3f729cb35f8c0307ffb5c8a84bbec006">strInput</a>, std::string chDelim)</td></tr>
+<tr class="separator:ac95470d4a7fbb7a5af9640d427c9f0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a970150b7f574ffe0d09b47c4ad3d06da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#a970150b7f574ffe0d09b47c4ad3d06da">reset</a> ()</td></tr>
+<tr class="separator:a970150b7f574ffe0d09b47c4ad3d06da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a970150b7f574ffe0d09b47c4ad3d06da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#a970150b7f574ffe0d09b47c4ad3d06da">reset</a> ()</td></tr>
+<tr class="separator:a970150b7f574ffe0d09b47c4ad3d06da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3f729cb35f8c0307ffb5c8a84bbec006"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#a3f729cb35f8c0307ffb5c8a84bbec006">strInput</a></td></tr>
+<tr class="separator:a3f729cb35f8c0307ffb5c8a84bbec006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb98f55516c13541fd8047c6f48dfd76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#ab8e1ede88e2ff1c3b448334e6cbd3533">StringVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStringTokenizer.html#aeb98f55516c13541fd8047c6f48dfd76">vecTokens</a></td></tr>
+<tr class="separator:aeb98f55516c13541fd8047c6f48dfd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="utils_8h_source.html#l00058">58</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="abee9392f74f78f6232e090a78a669b8d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StringTokenizer::StringTokenizer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8h_source.html#l00061">61</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00066">reset()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abee9392f74f78f6232e090a78a669b8d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StringTokenizer::StringTokenizer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Utils_8h_source.html#l00082">82</a> of file <a class="el" href="Utils_8h_source.html">Utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00066">reset()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae7058708a583bb12e06e9d9efb9f23ec"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> StringTokenizer::getToken </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>strToken</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>iTokenIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8h_source.html#l00105">105</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a49a83cbdea62db7963f10ec458a6fc2f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> StringTokenizer::getToken </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>strToken</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>iTokenIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Utils_8h_source.html#l00108">108</a> of file <a class="el" href="Utils_8h_source.html">Utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a54bc919376624b02b0454fe174bb4be5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t StringTokenizer::getTokenCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8h_source.html#l00100">100</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a54bc919376624b02b0454fe174bb4be5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t StringTokenizer::getTokenCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Utils_8h_source.html#l00103">103</a> of file <a class="el" href="Utils_8h_source.html">Utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6590795686da6dc7953b602c4624baa2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> StringTokenizer::getTokens </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#ab8e1ede88e2ff1c3b448334e6cbd3533">StringVector</a> &amp;&#160;</td>
+          <td class="paramname"><em>vecTokensRef</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8h_source.html#l00116">116</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00157">loadDistanceMatrix()</a>, <a class="el" href="BDATester_8cpp_source.html#l00058">loadGraph()</a>, <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>, <a class="el" href="Tester_8cpp_source.html#l00115">loadVehicles()</a>, and <a class="el" href="BDATester_8cpp_source.html#l00218">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6590795686da6dc7953b602c4624baa2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> StringTokenizer::getTokens </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#ab8e1ede88e2ff1c3b448334e6cbd3533">StringVector</a> &amp;&#160;</td>
+          <td class="paramname"><em>vecTokensRef</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Utils_8h_source.html#l00119">119</a> of file <a class="el" href="Utils_8h_source.html">Utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac95470d4a7fbb7a5af9640d427c9f0d4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> StringTokenizer::parse </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>strInput</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>chDelim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8h_source.html#l00072">72</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00157">loadDistanceMatrix()</a>, <a class="el" href="BDATester_8cpp_source.html#l00058">loadGraph()</a>, <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>, <a class="el" href="Tester_8cpp_source.html#l00115">loadVehicles()</a>, and <a class="el" href="BDATester_8cpp_source.html#l00218">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac95470d4a7fbb7a5af9640d427c9f0d4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> StringTokenizer::parse </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>strInput</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>chDelim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Utils_8h_source.html#l00093">93</a> of file <a class="el" href="Utils_8h_source.html">Utils.h</a>.</p>
+
+<p>References <a class="el" href="Utils_8h_source.html#l00049">tokenizer::has_more_tokens()</a>, <a class="el" href="Utils_8h_source.html#l00054">tokenizer::next_token()</a>, and <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a970150b7f574ffe0d09b47c4ad3d06da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StringTokenizer::reset </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8h_source.html#l00066">66</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00123">strInput</a>, and <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+<p>Referenced by <a class="el" href="Utils_8h_source.html#l00082">StringTokenizer()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a970150b7f574ffe0d09b47c4ad3d06da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StringTokenizer::reset </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Utils_8h_source.html#l00087">87</a> of file <a class="el" href="Utils_8h_source.html">Utils.h</a>.</p>
+
+<p>References <a class="el" href="utils_8h_source.html#l00123">strInput</a>, and <a class="el" href="utils_8h_source.html#l00124">vecTokens</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3f729cb35f8c0307ffb5c8a84bbec006"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string StringTokenizer::strInput</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8h_source.html#l00123">123</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+<p>Referenced by <a class="el" href="Utils_8h_source.html#l00087">reset()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeb98f55516c13541fd8047c6f48dfd76"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#ab8e1ede88e2ff1c3b448334e6cbd3533">StringVector</a> StringTokenizer::vecTokens</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="utils_8h_source.html#l00124">124</a> of file <a class="el" href="utils_8h_source.html">utils.h</a>.</p>
+
+<p>Referenced by <a class="el" href="Utils_8h_source.html#l00108">getToken()</a>, <a class="el" href="Utils_8h_source.html#l00103">getTokenCount()</a>, <a class="el" href="Utils_8h_source.html#l00119">getTokens()</a>, <a class="el" href="Utils_8h_source.html#l00093">parse()</a>, and <a class="el" href="Utils_8h_source.html#l00087">reset()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="utils_8h_source.html">utils.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -130,7 +599,7 @@ Collaboration diagram for StringTokenizer:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classStringTokenizer.html">StringTokenizer</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

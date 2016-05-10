@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classGraphDefinition_1_1GraphEdgeInfo.
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,12 +113,25 @@ $(document).ready(function(){initNavTree('classGraphDefinition_1_1GraphEdgeInfo.
 
 <p>This is the complete list of members for <a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a>, including all inherited members.</p>
 <table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#a8d89916445dc9a7a255acb959fdd3bd5">GraphEdgeInfo</a>()=default</td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#ac950c65e9c9132512c2d4ad186e1b5bb">GraphEdgeInfo</a>(int64_t eid, int64_t index, int64_t node1, int64_t node2, double cost, double reverse_cost)</td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#ad25e334c9443bf05a1ee4c680755e229">m_bIsLeadingRestrictedEdge</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#af15591007595a2cfff27c52a5c274c16">m_dCost</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#acace8ad8eeab1ae7acf7b681a233605b">m_dReverseCost</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#ac2ceabf7513a49fad0664cf04b0d2171">m_lEdgeID</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#a04307dee501678e9b6850f3d779ccba1">m_lEdgeIndex</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#a245f4c501e78209a5b18e72b35e512bf">m_lEndNode</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#a69aa3dad40f09349aea0fe38ce97e114">m_lStartNode</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#a429959696fee238fdfb822ea7076dcfb">m_sDirection</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#ac608353dc7d784aa19b0712e1faf05c2">m_vecEndConnedtedEdge</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#aa7c0b98df0b571f52f43804eaa8746b8">m_vecRestrictedEdge</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html#ac894fb8c73c522e2229f898cd0ff8526">m_vecStartConnectedEdge</a></td><td class="entry"><a class="el" href="classGraphDefinition_1_1GraphEdgeInfo.html">GraphDefinition::GraphEdgeInfo</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('driving_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('driving_8cpp_source.html','');});
 <div class="title">driving.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="driving_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
@@ -128,7 +130,7 @@ $(document).ready(function(){initNavTree('driving_8cpp_source.html','');});
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> process_drivingDistance(G &amp;graph, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;tokens) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="driving_8cpp.html#a54752be3f5a512499a6ec47446cc44a2">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="driving_8cpp.html#a54752be3f5a512499a6ec47446cc44a2">process_drivingDistance</a>(G &amp;graph, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;tokens) {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      std::string::size_type sz;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <span class="keywordflow">if</span> (tokens[1].compare(<span class="stringliteral">&quot;from&quot;</span>) != 0) {</div>
@@ -183,25 +185,25 @@ $(document).ready(function(){initNavTree('driving_8cpp_source.html','');});
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">if</span> (sources.size() == 1) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Performing pgr_DrivingDistance for single source\n&quot;</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classPath.html">Path</a> path;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        pgr_drivingDistance(graph, path, sources[0], distance);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classPath.html">Path</a> <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="pgr__dijkstra_8hpp.html#a948f905346ca326621fefe2cb0aececb">pgr_drivingDistance</a>(graph, path, sources[0], distance);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\t\t\tTHE OPUTPUT\n&quot;</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;seq\tfrom\tnode\tedge\tcost\n&quot;</span>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        path.print_path();</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        std::deque&lt; Path &gt;  paths;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        pgr_drivingDistance(graph, paths, sources, distance);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="pgr__dijkstra_8hpp.html#a948f905346ca326621fefe2cb0aececb">pgr_drivingDistance</a>(graph, paths, sources, distance);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> (equiCost == <span class="keyword">false</span>) {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;Performing pgr_DrivingDistance for multiple sources\n&quot;</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;\t\t\tTHE OPUTPUT\n&quot;</span>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;seq\tfrom\tnode\tedge\tcost\n&quot;</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;path :  paths) {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(path) == 0) <span class="keywordflow">return</span>; <span class="comment">//no solution found</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            path.print_path();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a> :  paths) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>) == 0) <span class="keywordflow">return</span>; <span class="comment">//no solution found</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>.print_path();</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;          }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;Performing pgr_DrivingDistance for multiple sources with equi-cost\n&quot;</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;          <a class="code" href="classPath.html">Path</a> path = equi_cost(paths); </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;          <a class="code" href="classPath.html">Path</a> <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a> = equi_cost(paths); </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;\t\t\tTHE EquiCost OPUTPUT\n&quot;</span>;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;seq\tfrom\tnode\tedge\tcost\n&quot;</span>;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          path.print_path();</div>
@@ -209,15 +211,18 @@ $(document).ready(function(){initNavTree('driving_8cpp_source.html','');});
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="ttc" id="driving_8cpp_html_a54752be3f5a512499a6ec47446cc44a2"><div class="ttname"><a href="driving_8cpp.html#a54752be3f5a512499a6ec47446cc44a2">process_drivingDistance</a></div><div class="ttdeci">void process_drivingDistance(G &amp;graph, const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="driving_8cpp_source.html#l00023">driving.cpp:23</a></div></div>
 <div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00054">pgr_dijkstra.hpp:54</a></div></div>
-<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00033">basePath_SSEC.hpp:33</a></div></div>
+<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00041">basePath_SSEC.hpp:41</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
+<div class="ttc" id="pgr__dijkstra_8hpp_html_a948f905346ca326621fefe2cb0aececb"><div class="ttname"><a href="pgr__dijkstra_8hpp.html#a948f905346ca326621fefe2cb0aececb">pgr_drivingDistance</a></div><div class="ttdeci">void pgr_drivingDistance(G &amp;graph, std::deque&lt; Path &gt; &amp;paths, std::vector&lt; int64_t &gt; start_vids, double distance, bool equicost)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00059">pgr_dijkstra.hpp:59</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d00ce88a1fe87f5e8ffa8e1a7be5e0a5.html">linecommand</a></li><li class="navelem"><a class="el" href="dir_6f513041d2f60412f8dae41f44763875.html">src</a></li><li class="navelem"><b>driving.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:33 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d00ce88a1fe87f5e8ffa8e1a7be5e0a5.html">linecommand</a></li><li class="navelem"><a class="el" href="dir_6f513041d2f60412f8dae41f44763875.html">src</a></li><li class="navelem"><a class="el" href="driving_8cpp.html">driving.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

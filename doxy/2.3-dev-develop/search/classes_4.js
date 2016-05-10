@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['edge',['Edge',['../structEdge.html',1,'Edge'],['../structedge.html',1,'edge']]],
+  ['edge',['edge',['../structedge.html',1,'edge'],['../structEdge.html',1,'Edge']]],
   ['edge_5fastar',['edge_astar',['../structedge__astar.html',1,'']]],
   ['edge_5fastar_5fcolumns',['edge_astar_columns',['../structedge__astar__columns.html',1,'']]],
   ['edge_5fcolumns',['edge_columns',['../structedge__columns.html',1,'']]],

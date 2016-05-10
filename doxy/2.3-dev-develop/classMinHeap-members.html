@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classMinHeap.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,12 +113,36 @@ $(document).ready(function(){initNavTree('classMinHeap.html','');});
 
 <p>This is the complete list of members for <a class="el" href="classMinHeap.html">MinHeap</a>, including all inherited members.</p>
 <table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#aa00b76c0402533e64272f6088ef4b684">empty</a>()</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#aa00b76c0402533e64272f6088ef4b684">empty</a>()</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#a07ea110bfae4d1706ca02ae1a2da7072">init</a>(int maxNode)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#a07ea110bfae4d1706ca02ae1a2da7072">init</a>(int maxNode)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#acb03ff5b53562b1eb962c1ad08e9af95">m_CurrentSize</a></td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#aa271e2cec33df990365305542c12c1e8">m_HeapTree</a></td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#a72c19547d96fc98d9e021e2120ecfdb2">m_Index</a></td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#a11623d997fd450d101cd2ff31df29d4f">m_MaxNodeID</a></td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#abcf64d44c5c9d9aef9345a6012c1d0dd">MinHeap</a>(int maxNode)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#abcf64d44c5c9d9aef9345a6012c1d0dd">MinHeap</a>(int maxNode)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#a6b1736e223a72fe713ec0ca0a58eb54b">pop</a>()</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#a6b1736e223a72fe713ec0ca0a58eb54b">pop</a>()</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#a60d7eae51bedc158b1052c46c5bddb15">push</a>(PDI node)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#a60d7eae51bedc158b1052c46c5bddb15">push</a>(PDI node)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#a6b4d9297ff9de289b9ea61f519561cf6">reset</a>(void)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#a6b4d9297ff9de289b9ea61f519561cf6">reset</a>(void)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#a1f630ffd1be4e13e3e48b4efd9c076a5">shift_down</a>(int node)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#a1f630ffd1be4e13e3e48b4efd9c076a5">shift_down</a>(int node)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#a12f4c23abb19735b087abf253ede2834">shift_up</a>(int node)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#a12f4c23abb19735b087abf253ede2834">shift_up</a>(int node)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#ad68e09ac306f92e57f54790bfc9fa449">top</a>()</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#ad68e09ac306f92e57f54790bfc9fa449">top</a>()</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classMinHeap.html#abcac28500be7a8dc3d9e26695655eb97">~MinHeap</a>(void)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classMinHeap.html#abcac28500be7a8dc3d9e26695655eb97">~MinHeap</a>(void)</td><td class="entry"><a class="el" href="classMinHeap.html">MinHeap</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classRoute.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,12 +113,39 @@ $(document).ready(function(){initNavTree('classRoute.html','');});
 
 <p>This is the complete list of members for <a class="el" href="classRoute.html">Route</a>, including all inherited members.</p>
 <table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a2fb53dea8b38b61e63500668e7cfdfeb">append</a>(const Customers &amp;c, const Pickup &amp;order)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a22a2f52cbdf2037e0dae0d71d3449d85">append</a>(customer *c, Pickup p, depot d, int CustomerLength, int PickupLength, State S)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a3a9f0caffea75897bc7fcb90e64d9406">capacity</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#aa0bd4dc868fa392921e2898888eb82b0">cost</a>() const </td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#abb8be6055a64fd7cf120f681b1b92a27">cost</a>()</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#aea86b0934aac639a4d368800ba446d73">cv</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a43dbaba56099e9697ca43ec0f8eeb10a">depot</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a15771abe107cbf4d1db84dc859cfa487">dis</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a2029bf719fa490750e41dd3497d6ba12">dis</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a82ede2e285f501308c0c3139afaccf88">has_twv</a>(const Customers &amp;customers)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#ac81214a7a9fc2d7f98ae596867db9fc8">has_violation</a>(const Customers &amp;customers)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a3f36cc799fa70acde702cb029e9ba798">HillClimbing</a>(customer *c, depot d, Pickup p)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a6551cfe12c98a85d767805c6add54a8d">insertOrder</a>(const Customers &amp;c, const Pickup &amp;order)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a873bac82eba09b350ef38a285c563466">insertOrder</a>(customer *c, depot d, Pickup p)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#ab58db8359a05e6edc75cbad24bb342d1">order</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a6308ae889f6b0363b10b5d5d2b44e821">path</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#ab85d2d71581ebb5c0ae52a8644753434">path</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#ab88252e252aa3aba03526a220631213b">path_length</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a2eff904c4b8187c5c7c8643f70c48c5f">remove</a>(const State &amp;S)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a9a6a6685be9ed38f3cda445246629b7a">remove</a>(State S)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a9233b91e68925e3c322c6bc279674d0b">RemoveOrder</a>(const Customers &amp;customers, const Pickup &amp;p)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a84dbebc20dddec4a4456620d76510f1e">RemoveOrder</a>(Pickup p)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#aeb929509bdbe8ade098a3b52060b1a2d">Route</a>(int _capacity, const Depot &amp;_depot)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a2b1c971aaf032109cee8081c97e9b9e9">Route</a>()</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a508ef50e49bb681b0b6d5386d0a0da20">twv</a></td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classRoute.html#a9153b07942f035ecf0217ccc42891fdc">update</a>(const Customers &amp;c)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classRoute.html#a06157f46459dba860257e2662ddce95c">update</a>(customer *c, depot d)</td><td class="entry"><a class="el" href="classRoute.html">Route</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

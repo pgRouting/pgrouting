@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -80,6 +81,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li class="current"><a href="functions_func.html#index_a"><span>a</span></a></li>
+      <li><a href="functions_func_b.html#index_b"><span>b</span></a></li>
+      <li><a href="functions_func_c.html#index_c"><span>c</span></a></li>
+      <li><a href="functions_func_d.html#index_d"><span>d</span></a></li>
+      <li><a href="functions_func_e.html#index_e"><span>e</span></a></li>
+      <li><a href="functions_func_f.html#index_f"><span>f</span></a></li>
+      <li><a href="functions_func_g.html#index_g"><span>g</span></a></li>
+      <li><a href="functions_func_h.html#index_h"><span>h</span></a></li>
+      <li><a href="functions_func_i.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_func_j.html#index_j"><span>j</span></a></li>
+      <li><a href="functions_func_l.html#index_l"><span>l</span></a></li>
+      <li><a href="functions_func_m.html#index_m"><span>m</span></a></li>
+      <li><a href="functions_func_n.html#index_n"><span>n</span></a></li>
+      <li><a href="functions_func_o.html#index_o"><span>o</span></a></li>
+      <li><a href="functions_func_p.html#index_p"><span>p</span></a></li>
+      <li><a href="functions_func_r.html#index_r"><span>r</span></a></li>
+      <li><a href="functions_func_s.html#index_s"><span>s</span></a></li>
+      <li><a href="functions_func_t.html#index_t"><span>t</span></a></li>
+      <li><a href="functions_func_u.html#index_u"><span>u</span></a></li>
+      <li><a href="functions_func_w.html#index_w"><span>w</span></a></li>
+      <li><a href="functions_func_x.html#index_x"><span>x</span></a></li>
+      <li><a href="functions_func_y.html#index_y"><span>y</span></a></li>
+      <li><a href="functions_func_~.html#index_~"><span>~</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -102,7 +133,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,54 +143,82 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </div>
 
 <div class="contents">
-&#160;<ul>
-<li>dijkstra()
-: <a class="el" href="classPgr__dijkstra.html#ad1428b778a0103402f9db8790ba3011a">Pgr_dijkstra&lt; G &gt;</a>
+&#160;
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>abortiveQuit()
+: <a class="el" href="classSIGQUIT__Handler.html#a7a9d751ba7a950ce25b0d3319ff7991b">SIGQUIT_Handler</a>
 </li>
-<li>dijkstra_1_to_1()
-: <a class="el" href="classPgr__dijkstra.html#a860b044fb02c4985b9f463acf3071a9c">Pgr_dijkstra&lt; G &gt;</a>
+<li>add_vertices()
+: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#acab2523fb83fee9946decef23745b7d6">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
-<li>dijkstra_1_to_distance()
-: <a class="el" href="classPgr__dijkstra.html#a9000bca304955c3feb4f9d249c511295">Pgr_dijkstra&lt; G &gt;</a>
+<li>add_virtual_vertices()
+: <a class="el" href="classGraphDefinition.html#a87103e6c3d9790dff8d411f5093b04dc">GraphDefinition</a>
 </li>
-<li>dijkstra_1_to_many()
-: <a class="el" href="classPgr__dijkstra.html#a86b8c09f9cbbf58f2e92475de14766d8">Pgr_dijkstra&lt; G &gt;</a>
+<li>addDepot()
+: <a class="el" href="classCVRPSolver.html#aab34664104fe3d48c0755be99415daa4">CVRPSolver</a>
 </li>
-<li>disconnect_edge()
-: <a class="el" href="classPgr__base__graph.html#a0cadf4835008ed80e93e656f4d61d0a0">Pgr_base_graph&lt; G &gt;</a>
+<li>addDepotToOrderCost()
+: <a class="el" href="classCVRPSolver.html#aaf3424d07d07840dfa578630069f2a1a">CVRPSolver</a>
 </li>
-<li>disconnect_out_going_edge()
-: <a class="el" href="classPgr__base__graph.html#a661363e455668e3e2e0a467a5f88e346">Pgr_base_graph&lt; G &gt;</a>
+<li>addEdge()
+: <a class="el" href="classBiDirAStar.html#a49984c6820c42f07f3ffa69f4895e0bc">BiDirAStar</a>
+, <a class="el" href="classBiDirDijkstra.html#ae161ef9be1b13e8071807070a37c0703">BiDirDijkstra</a>
+, <a class="el" href="classGraphDefinition.html#a85ec22461f3082309a4b5225eac552bb">GraphDefinition</a>
 </li>
-<li>disconnect_vertex()
-: <a class="el" href="classPgr__base__graph.html#a46ca62a006d53c3152fc626b82c21cd6">Pgr_base_graph&lt; G &gt;</a>
+<li>addOrder()
+: <a class="el" href="classCVRPSolver.html#a7d8e9dae87d5ce38c4b4e1aaba87db9d">CVRPSolver</a>
 </li>
-<li>doNextCycle()
-: <a class="el" href="classPgr__ksp.html#a1e5476d1b0d125fef8f3e5aa634b5782">Pgr_ksp&lt; G &gt;</a>
+<li>addOrderAtTour()
+: <a class="el" href="classCVRPSolver.html#a4ff503950e6977c8f6d5260619cbb503">CVRPSolver</a>
 </li>
-<li>drivingDistance()
-: <a class="el" href="classPgr__dijkstra.html#a446d81e7aa6ba7d97e4caae7a16ef674">Pgr_dijkstra&lt; G &gt;</a>
+<li>addOrderToDepotCost()
+: <a class="el" href="classCVRPSolver.html#a10f95df2201e5e2c349ccb1fa6032792">CVRPSolver</a>
 </li>
-<li>executeYen()
-: <a class="el" href="classPgr__ksp.html#a816e02e45221bab34ed59b801d9d8192">Pgr_ksp&lt; G &gt;</a>
+<li>addOrderToOrderCost()
+: <a class="el" href="classCVRPSolver.html#a535946efd8c32afc53e6dd0c0588d3c7">CVRPSolver</a>
 </li>
-<li>getFirstSolution()
-: <a class="el" href="classPgr__ksp.html#a11eac853ca869c5b829f13a7c199255c">Pgr_ksp&lt; G &gt;</a>
+<li>addTour()
+: <a class="el" href="classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045">CSolutionInfo</a>
 </li>
-<li>graph_insert_data()
-: <a class="el" href="classPgr__base__graph.html#a01016e4422d7de7ebeb85a04b4f86c29">Pgr_base_graph&lt; G &gt;</a>
+<li>addVehicle()
+: <a class="el" href="classCVRPSolver.html#a572e5a68c5455f32909149d1bbc4ef0c">CVRPSolver</a>
 </li>
-<li>out_degree()
-: <a class="el" href="classPgr__base__graph.html#a591dc9d08be474b3f1fb12f03492a657">Pgr_base_graph&lt; G &gt;</a>
+<li>annealing()
+: <a class="el" href="classTSP.html#abb30d385da400f30793dc481dbcd692f">TSP</a>
 </li>
-<li>Pgr_base_graph()
-: <a class="el" href="classPgr__base__graph.html#a41fe11a50a99b89530545c9b52978132">Pgr_base_graph&lt; G &gt;</a>
+<li>append()
+: <a class="el" href="classRoute.html#a2fb53dea8b38b61e63500668e7cfdfeb">Route</a>
 </li>
-<li>removeVertices()
-: <a class="el" href="classPgr__ksp.html#abc9f355a52aee675dfe5df77fd6bae71">Pgr_ksp&lt; G &gt;</a>
+<li>appendPath()
+: <a class="el" href="classPath.html#a9cb45e3a413a03f1c4224b840af1fe83">Path</a>
 </li>
-<li>restore_graph()
-: <a class="el" href="classPgr__base__graph.html#a5a4bbf85e7790047335542cd2f2571db">Pgr_base_graph&lt; G &gt;</a>
+<li>applyBestMoveInCurrentSolution()
+: <a class="el" href="classCVRPSolver.html#ad67d3350e6f6731388906a4309d2fdb3">CVRPSolver</a>
+</li>
+<li>AssertFailedException()
+: <a class="el" href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">AssertFailedException</a>
+</li>
+<li>astar()
+: <a class="el" href="classPgr__astar.html#a158eca68b244247a787f7e43c3a37a2a">Pgr_astar&lt; G &gt;</a>
+</li>
+<li>astar_1_to_1()
+: <a class="el" href="classPgr__astar.html#a8963cd07fd6c4efef2c1c14194a476de">Pgr_astar&lt; G &gt;</a>
+</li>
+<li>astar_1_to_many()
+: <a class="el" href="classPgr__astar.html#a0adc1bc949f732a19af9ec9fb4c80744">Pgr_astar&lt; G &gt;</a>
+</li>
+<li>astar_heuristic()
+: <a class="el" href="classboost_1_1astar__heuristic.html#a87ed5bb7e64ebe5c9d36b3cb4d86ea89">boost::astar_heuristic&lt; Graph, CostType &gt;</a>
+</li>
+<li>astar_many_goals_visitor()
+: <a class="el" href="classPgr__astar_1_1astar__many__goals__visitor.html#a5486978f3aae119b882388f0180b8b42">Pgr_astar&lt; G &gt;::astar_many_goals_visitor</a>
+</li>
+<li>astar_one_goal_visitor()
+: <a class="el" href="classPgr__astar_1_1astar__one__goal__visitor.html#ae3d299801c3e6e251236580b9b0fc312">Pgr_astar&lt; G &gt;::astar_one_goal_visitor</a>
+</li>
+<li>attempVehicleExchange()
+: <a class="el" href="classCVRPSolver.html#a62099f3b0b7bddc8ad63762ca9c8955a">CVRPSolver</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -167,7 +226,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

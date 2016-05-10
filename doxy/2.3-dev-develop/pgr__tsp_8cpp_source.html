@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="title">pgr_tsp.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="pgr__tsp_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * File: tsp_driver.cpp</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Generated with Template by:</span></div>
@@ -146,44 +148,44 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;./pgr_tsp.hpp&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__tsp_8hpp.html">./pgr_tsp.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">static</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">size_t</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;rand(<span class="keywordtype">size_t</span> n) {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span> <span class="keywordtype">size_t</span> <span class="keyword">&gt;</span>(std::rand() * n);</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">   47</a></span>&#160;<a class="code" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">rand</a>(<span class="keywordtype">size_t</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span> <span class="keywordtype">size_t</span> <span class="keyword">&gt;</span>(<a class="code" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">std::rand</a>() * <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">static</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">size_t</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;succ(<span class="keywordtype">size_t</span> i, <span class="keywordtype">size_t</span> n) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="pgr__tsp_8cpp.html#a22c9c33db631799428477fa1ccfd6258">   54</a></span>&#160;<a class="code" href="pgr__tsp_8cpp.html#a22c9c33db631799428477fa1ccfd6258">succ</a>(<span class="keywordtype">size_t</span> i, <span class="keywordtype">size_t</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>((i + 1) % n);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">static</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">size_t</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;MOD(<span class="keywordtype">size_t</span> i, <span class="keywordtype">size_t</span> n) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">   60</a></span>&#160;<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(<span class="keywordtype">size_t</span> i, <span class="keywordtype">size_t</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>) {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#if 1</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span><span class="keywordflow">return</span> succ(i, n);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span><span class="keywordflow">return</span> <a class="code" href="pgr__tsp_8cpp.html#a22c9c33db631799428477fa1ccfd6258">succ</a>(i, n);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span><span class="keywordflow">return</span>  ((i) % (n) &gt; 0 ? (i) % (n) : (i) % (n) + (n));</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor"></span>}</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">double</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;TSP::D(<span class="keywordtype">size_t</span> i, <span class="keywordtype">size_t</span> j) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> dist[i][j];</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">   69</a></span>&#160;<a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">TSP::D</a>(<span class="keywordtype">size_t</span> i, <span class="keywordtype">size_t</span> j) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">dist</a>[i][j];</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;TSP::update(Ids new_order) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">auto</span> blength = dist.pathCost(new_order);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span> (bestCost &lt; blength) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        border = new_order;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        bestCost = blength;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classTSP.html#a2bbd2099db71066c52bb532c80d61878">   74</a></span>&#160;<a class="code" href="classTSP.html#a2bbd2099db71066c52bb532c80d61878">TSP::update</a>(<a class="code" href="classTSP.html#a6067275b254df6a019ba125f0206e034">Ids</a> new_order) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">auto</span> blength = <a class="code" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">dist</a>.<a class="code" href="classDmatrix.html#aafe3cd9eca2def5f991df6f8f6618665">pathCost</a>(new_order);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classTSP.html#a44453bb2d493f89e7c8a8540d355de2a">bestCost</a> &lt; blength) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="classTSP.html#a21ebee1a38f094cc00f7467fbf6b1594">border</a> = new_order;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classTSP.html#a44453bb2d493f89e7c8a8540d355de2a">bestCost</a> = blength;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
@@ -192,28 +194,28 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> * See also [Cristophides&#39;92]</span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;TSP::findEulerianPath() {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    Ids iorder(n);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    Ids mst(n);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    Ids arc(n);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    std::vector &lt; double &gt; dis(n);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">double</span> d;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classTSP.html#af22de3a4ddb10be9d04a89d344d1c368">   87</a></span>&#160;<a class="code" href="classTSP.html#af22de3a4ddb10be9d04a89d344d1c368">TSP::findEulerianPath</a>() {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classTSP.html#a6067275b254df6a019ba125f0206e034">Ids</a> <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classTSP.html#a6067275b254df6a019ba125f0206e034">Ids</a> mst(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classTSP.html#a6067275b254df6a019ba125f0206e034">Ids</a> arc(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    std::vector &lt; double &gt; dis(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">int</span> n, *iorder, *jorder;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    DTYPE d;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    DTYPE maxd;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    DTYPE *dist;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    DTYPE *dis;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span>    <span class="keywordtype">int</span> <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>, *<a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>, *<a class="code" href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">jorder</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="k__targets__sp_8c.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="k__targets__sp_8c.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0">maxd</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="k__targets__sp_8c.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> *<a class="code" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">dist</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="k__targets__sp_8c.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> *dis;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    jorder = tsp-&gt;jorder;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    iorder = tsp-&gt;iorder;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    dist   = tsp-&gt;dist;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    maxd   = tsp-&gt;maxd;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    n      = tsp-&gt;n;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    jorder = <a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;jorder;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    iorder = <a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;iorder;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    dist   = <a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;dist;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    maxd   = <a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;maxd;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    n      = <a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;n;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">if</span> (!(mst = (<span class="keywordtype">int</span>*) palloc(n * <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>))) ||</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            !(arc = (<span class="keywordtype">int</span>*) palloc(n * <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>))) ||</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            !(dis = (DTYPE*) palloc(n * <span class="keyword">sizeof</span>(DTYPE))) )</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            !(dis = (<a class="code" href="k__targets__sp_8c.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a>*) palloc(n * <span class="keyword">sizeof</span>(<a class="code" href="k__targets__sp_8c.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a>))) )</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        elog(ERROR, <span class="stringliteral">&quot;Failed to allocate memory!&quot;</span>);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">return</span> -1;</div>
@@ -222,10 +224,10 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor"></span>    <span class="comment">// PGR_DBG(&quot;findEulerianPath: 1&quot;);</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">size_t</span> j(0);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">double</span> curr_maxd = maxd;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">double</span> curr_maxd = <a class="code" href="classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0">maxd</a>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    dis[0] = -1;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; n; ++i) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>; ++i) {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        dis[i] = dist[i][0];</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        arc[i] = 0;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">if</span> (curr_maxd &gt; dis[i]) {</div>
@@ -244,12 +246,12 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">     * O(n^2) Minimum Spanning Trees by Prim and Jarnick </span></div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">     * for graphs with adjacency matrix. </span></div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> a = 0; a &lt; n - 1; a++) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a> = 0; <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a> &lt; n - 1; <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>++) {</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordtype">size_t</span> k(0);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        mst[a] = j * n + arc[j]; <span class="comment">/* join fragment j with MST */</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        mst[<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>] = j * n + arc[j]; <span class="comment">/* join fragment j with MST */</span></div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        dis[j] = -1; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        d = maxd;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        d = <a class="code" href="classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0">maxd</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>; i++)</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        {</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">if</span> (dis[i] &gt;= 0) <span class="comment">/* not connected yet */</span></div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            {</div>
@@ -283,7 +285,7 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">for</span> (i = 0; i &lt; n; i++) VISITED(i) = 0;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor"></span>    <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>; i++) <a class="code" href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a>(i) = 0;</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordtype">size_t</span> l = 0;</div>
@@ -299,30 +301,30 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="comment">/* push all kids of i */</span></div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; n - 1; j++) {</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <span class="keywordflow">if</span> (i == mst[j] % n)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    arc[l++] = mst[j] % n; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    arc[l++] = mst[j] % <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>; </div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            }</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    }</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor"></span>    k = 0; l = 0; d = 0; NQ(0);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">while</span> (!EMPTY)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor"></span>    k = 0; l = 0; d = 0; <a class="code" href="tsplib_8c.html#a89d85f0ec46dcd84d7e12c36d57e6033">NQ</a>(0);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">while</span> (!<a class="code" href="tsplib_8c.html#a2b7cf2a3641be7b89138615764d60ba3">EMPTY</a>)</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        i = DQ();</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span> (!VISITED(i))</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        i = <a class="code" href="tsplib_8c.html#a5173b2aa5c7848d04f815e5d35e590f6">DQ</a>();</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a>(i))</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        {</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            iorder[k++] = i;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            VISITED(i)  = 1;            </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <a class="code" href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a>(i)  = 1;            </div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">for</span> (j = 0; j &lt; n - 1; j++) <span class="comment">/* push all kids of i */</span></div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keywordflow">if</span> (i == mst[j]%n) NQ(mst[j]/n); </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keywordflow">if</span> (i == mst[j]%n) <a class="code" href="tsplib_8c.html#a89d85f0ec46dcd84d7e12c36d57e6033">NQ</a>(mst[j]/n); </div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            }    </div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor"></span>    <span class="comment">//PGR_DBG(&quot;findEulerianPath: 4&quot;);</span></div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    update(iorder);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="classTSP.html#a2bbd2099db71066c52bb532c80d61878">update</a>(iorder);</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
@@ -336,50 +338,50 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="keywordtype">double</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;TSP::getThreeWayCost(<a class="code" href="classPath.html">Path</a> p) {</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordtype">size_t</span> a, b, c, d, e, f;</div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="classTSP.html#ad4f15eeec109dd091cef42e934106190">  231</a></span>&#160;<a class="code" href="classTSP.html#ad4f15eeec109dd091cef42e934106190">TSP::getThreeWayCost</a>(<a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="code" href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">b</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, e, f;</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    a = iorder[MOD(p[0] - 1, n)];</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    b = iorder[p[0]];</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    c = iorder[p[1]];</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    d = iorder[MOD(p[1] + 1, n)];</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    e = iorder[p[2]];</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    f = iorder[MOD(p[2] + 1, n)];</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    a = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[0] - 1, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)];</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    b = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[p[0]];</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    c = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[p[1]];</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    d = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[1] + 1, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)];</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    e = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[p[2]];</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    f = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[2] + 1, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)];</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">return</span> (D(a,d) + D(e,b) + D(c,f) - D(a,b) - D(c,d) - D(e,f)); </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(a,d) + <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(e,b) + <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(c,f) - <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(a,b) - <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(c,d) - <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(e,f)); </div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">/* add cost between d and e if non symetric TSP */</span> </div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;TSP::doThreeWay(<a class="code" href="classPath.html">Path</a> p) {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordtype">size_t</span> count, m1, m2, m3, a, b, c, d, e, f;</div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="classTSP.html#ac2cf47e50ec57809015118dae383000b">  246</a></span>&#160;<a class="code" href="classTSP.html#ac2cf47e50ec57809015118dae383000b">TSP::doThreeWay</a>(<a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>) {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordtype">size_t</span> count, m1, m2, m3, <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="code" href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">b</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, e, f;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    a = MOD(p[0]-1,n);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    a = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[0]-1,<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    b = p[0];</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    c = p[1];</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    d = MOD(p[1]+1,n);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    d = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[1]+1,<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    e = p[2];</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    f = MOD(p[2]+1,n);    </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    f = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[2]+1,<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);    </div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    m1 = MOD(n + c - b, n) + 1;  <span class="comment">/* num cities from b to c */</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    m2 = MOD(n + a - f, n) + 1;  <span class="comment">/* num cities from f to a */</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    m3 = MOD(n + e - d, n) + 1;  <span class="comment">/* num cities from d to e */</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    m1 = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a> + c - b, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>) + 1;  <span class="comment">/* num cities from b to c */</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    m2 = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a> + a - f, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>) + 1;  <span class="comment">/* num cities from f to a */</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    m3 = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a> + e - d, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>) + 1;  <span class="comment">/* num cities from d to e */</span></div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    count = 0;</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="comment">/* [b..c] */</span></div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; m1; i++)</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        jorder[count++] = iorder[MOD(i + b, n)];</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <a class="code" href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">jorder</a>[count++] = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(i + b, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)];</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">/* [f..a] */</span></div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; m2; i++)</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        jorder[count++] = iorder[MOD(i+f,n)];</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <a class="code" href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">jorder</a>[count++] = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(i+f,<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)];</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="comment">/* [d..e] */</span></div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; m3; i++)</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        jorder[count++] = iorder[MOD(i+d,n)];</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <a class="code" href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">jorder</a>[count++] = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(i+d,<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)];</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">/* copy segment back into iorder */</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++) iorder[i] = jorder[i];</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>; i++) <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[i] = <a class="code" href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">jorder</a>[i];</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
@@ -393,91 +395,91 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> *   a c n n-1  ..  2  1 c d</span></div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="keywordtype">double</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;TSP::getReverseCost(<a class="code" href="classPath.html">Path</a> p) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="classTSP.html#a80c4874a7495118782c3c398ea973991">  288</a></span>&#160;<a class="code" href="classTSP.html#a80c4874a7495118782c3c398ea973991">TSP::getReverseCost</a>(<a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>) {</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">auto</span> a = iorder[MOD(p[0] - 1, n)];</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keyword">auto</span> b = iorder[p[0]];</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keyword">auto</span> c = iorder[p[1]];</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keyword">auto</span> d = iorder[MOD(p[1] + 1, n)];</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">auto</span> <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a> = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[0] - 1, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)];</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">b</a> = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[p[0]];</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keyword">auto</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a> = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[p[1]];</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keyword">auto</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a> = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[1] + 1, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)];</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> (D(d,b) + D(c,a) - D(a,b) - D(c,d));</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>,<a class="code" href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">b</a>) + <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>,<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) - <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>,<a class="code" href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">b</a>) - <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>,<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>));</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="comment">/* add cost between c and b if non symetric TSP */</span> </div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;TSP::doReverse(<a class="code" href="classPath.html">Path</a> p) {</div>
+<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="classTSP.html#a309ccd2e623fd50ae7ba6e7a1ae5b601">  300</a></span>&#160;<a class="code" href="classTSP.html#a309ccd2e623fd50ae7ba6e7a1ae5b601">TSP::doReverse</a>(<a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>) {</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="comment">/* reverse path b...c */</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">size_t</span> nswaps = (MOD(p[1] - p[0], n) + 1) / 2;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">size_t</span> nswaps = (<a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[1] - p[0], <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>) + 1) / 2;</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; nswaps; i++) {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordtype">size_t</span> first = MOD(p[0]+i, n);</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordtype">size_t</span> last  = MOD(p[1]-i, n);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        std::swap(iorder[first], iorder[last]);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordtype">size_t</span> first = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[0]+i, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordtype">size_t</span> last  = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[1]-i, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        std::swap(<a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[first], <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[last]);</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor"></span>        tmp   = iorder[first];</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        iorder[first] = iorder[last];</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        iorder[last]  = tmp;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor"></span>        tmp   = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[first];</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[first] = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[last];</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>[last]  = tmp;</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="preprocessor"></span>    }</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;}</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;TSP::annealing() {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="classPath.html">Path</a>   p;</div>
+<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="classTSP.html#abb30d385da400f30793dc481dbcd692f">  318</a></span>&#160;<a class="code" href="classTSP.html#abb30d385da400f30793dc481dbcd692f">TSP::annealing</a>() {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="classPath.html">Path</a>   <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>;</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordtype">size_t</span>    numOnPath, numNotOnPath;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordtype">double</span> pathCost(dist.pathCost(iorder));</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> T_INIT = 100.0;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> FINAL_T = 0.1;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> COOLING = 0.9; <span class="comment">/* to lower down T (&lt; 1) */</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">size_t</span> TRIES_PER_T(500 * n);</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">size_t</span> IMPROVED_PATH_PER_T = 60 * n;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordtype">double</span> pathCost(<a class="code" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">dist</a>.<a class="code" href="classDmatrix.html#aafe3cd9eca2def5f991df6f8f6618665">pathCost</a>(<a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>));</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="tsplib_8c.html#a770b56e97b0b7c07ddded2fbb6cf590a">T_INIT</a> = 100.0;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="tsplib_8c.html#a6b632f34716e536c9105586721d1e313">FINAL_T</a> = 0.1;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="tsplib_8c.html#ab0a5a46de18c70b767bea8e556b77560">COOLING</a> = 0.9; <span class="comment">/* to lower down T (&lt; 1) */</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code" href="tsplib_8c.html#add2d0ac84d9279cf24fa83486e04840b">TRIES_PER_T</a>(500 * <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code" href="tsplib_8c.html#acb07c106fa663061e0193be95343c6f8">IMPROVED_PATH_PER_T</a> = 60 * <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>;</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="comment">/* annealing schedule */</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">double</span> T = T_INIT; FINAL_T &lt; T; T *= COOLING) {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">double</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a> = T_INIT; FINAL_T &lt; <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a>; T *= <a class="code" href="tsplib_8c.html#ab0a5a46de18c70b767bea8e556b77560">COOLING</a>) {</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keywordtype">size_t</span> pathchg = 0;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; TRIES_PER_T; j++) {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; <a class="code" href="tsplib_8c.html#add2d0ac84d9279cf24fa83486e04840b">TRIES_PER_T</a>; j++) {</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                p[0] = rand(n);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                p[1] = rand(n);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                p[0] = <a class="code" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">rand</a>(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                p[1] = <a class="code" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">rand</a>(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                <span class="comment">/* non-empty path */</span></div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                <span class="keywordflow">if</span> (p[0] == p[1]) </div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    p[1] = MOD(p[0] + 1, n);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    p[1] = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[0] + 1, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                numOnPath = MOD(p[1] - p[0], n) + 1;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                numNotOnPath = n - numOnPath;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                numOnPath = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[1] - p[0], <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>) + 1;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                numNotOnPath = <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a> - numOnPath;</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            } <span class="keywordflow">while</span> (numOnPath &lt; 2 || numNotOnPath &lt; 2); <span class="comment">/* non-empty path */</span></div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keywordflow">if</span> (rand(2)) {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">rand</a>(2)) {</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                <span class="comment">/*  threeWay */</span></div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                    p[2] = MOD(rand(numNotOnPath) + p[1] + 1, n);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                } <span class="keywordflow">while</span> (p[0] == MOD(p[2] + 1, n)); <span class="comment">/* avoids a non-change */</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                    p[2] = <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(<a class="code" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">rand</a>(numNotOnPath) + p[1] + 1, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                } <span class="keywordflow">while</span> (p[0] == <a class="code" href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a>(p[2] + 1, <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>)); <span class="comment">/* avoids a non-change */</span></div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keyword">auto</span> energyChange = getThreeWayCost(p);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keyword">auto</span> energyChange = <a class="code" href="classTSP.html#ad4f15eeec109dd091cef42e934106190">getThreeWayCost</a>(p);</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                <span class="comment">// if (energyChange &lt; 0 || RREAL &lt; exp(-energyChange / T) )</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">if</span> (energyChange &lt; 0 || std::rand() &lt; exp(-energyChange / static_cast&lt;double&gt;(T)) ) {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">if</span> (energyChange &lt; 0 || <a class="code" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">std::rand</a>() &lt; exp(-energyChange / static_cast&lt;double&gt;(T)) ) {</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                    pathchg++;</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                    pathCost += energyChange;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                    doThreeWay(p);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                    <a class="code" href="classTSP.html#ac2cf47e50ec57809015118dae383000b">doThreeWay</a>(p);</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                }</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                <span class="comment">/* path Reverse */</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                <span class="keyword">auto</span> energyChange = getReverseCost(p);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                <span class="keywordflow">if</span> (energyChange &lt; 0 || std::rand() &lt; exp(-energyChange / static_cast&lt;double&gt;(T)) ) {</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                <span class="keyword">auto</span> energyChange = <a class="code" href="classTSP.html#a80c4874a7495118782c3c398ea973991">getReverseCost</a>(p);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                <span class="keywordflow">if</span> (energyChange &lt; 0 || <a class="code" href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">std::rand</a>() &lt; exp(-energyChange / static_cast&lt;double&gt;(T)) ) {</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    pathchg++;</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    pathCost += energyChange;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    doReverse(p); </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    <a class="code" href="classTSP.html#a309ccd2e623fd50ae7ba6e7a1ae5b601">doReverse</a>(p); </div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                }</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            }</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="comment">// if the new length is better than best then save it as best</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            update(iorder);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <a class="code" href="classTSP.html#a2bbd2099db71066c52bb532c80d61878">update</a>(<a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>);</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor"></span>            <span class="keywordflow">if</span> (pathlen &lt; tsp-&gt;bestlen) {</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                tsp-&gt;bestlen = pathlen;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                <span class="keywordflow">for</span> (i=0; i&lt;tsp-&gt;n; i++) tsp-&gt;border[i] = tsp-&gt;iorder[i];</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor"></span>            <span class="keywordflow">if</span> (pathlen &lt; tsp-&gt;<a class="code" href="classTSP.html#a89ecbe218c5b93aca9fc3a06348379e4">bestlen</a>) {</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                <a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;bestlen = pathlen;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                <span class="keywordflow">for</span> (i=0; i&lt;<a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;n; i++) <a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;border[i] = <a class="code" href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a>-&gt;iorder[i];</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            }</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor"></span>            <span class="keywordflow">if</span> (pathchg &gt; IMPROVED_PATH_PER_T) <span class="keywordflow">break</span>; <span class="comment">/* finish early */</span></div>
@@ -487,14 +489,54 @@ $(document).ready(function(){initNavTree('pgr__tsp_8cpp_source.html','');});
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    }</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;}</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;</div>
-<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00033">basePath_SSEC.hpp:33</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a42c4fbf7be7fec3bf7583c5f0e80bf4c"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a></div><div class="ttdeci">pickup * p</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00075">vrppdtw/src/pdp_solver.cpp:75</a></div></div>
+<div class="ttc" id="classTSP_html_a80c4874a7495118782c3c398ea973991"><div class="ttname"><a href="classTSP.html#a80c4874a7495118782c3c398ea973991">TSP::getReverseCost</a></div><div class="ttdeci">double getReverseCost(Path p)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00288">pgr_tsp.cpp:288</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a76f11d9a0a47b94f72c2d0e77fb32240"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a></div><div class="ttdeci">int n</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00367">vrppdtw/src/pdp_solver.cpp:367</a></div></div>
+<div class="ttc" id="tsplib_8c_html_ab0a5a46de18c70b767bea8e556b77560"><div class="ttname"><a href="tsplib_8c.html#ab0a5a46de18c70b767bea8e556b77560">COOLING</a></div><div class="ttdeci">#define COOLING</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00101">tsplib.c:101</a></div></div>
+<div class="ttc" id="classTSP_html_a2bbd2099db71066c52bb532c80d61878"><div class="ttname"><a href="classTSP.html#a2bbd2099db71066c52bb532c80d61878">TSP::update</a></div><div class="ttdeci">void update(Ids new_order)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00074">pgr_tsp.cpp:74</a></div></div>
+<div class="ttc" id="tsplib_8c_html_a89d85f0ec46dcd84d7e12c36d57e6033"><div class="ttname"><a href="tsplib_8c.html#a89d85f0ec46dcd84d7e12c36d57e6033">NQ</a></div><div class="ttdeci">#define NQ(x)</div></div>
+<div class="ttc" id="tsplib_8c_html_a5173b2aa5c7848d04f815e5d35e590f6"><div class="ttname"><a href="tsplib_8c.html#a5173b2aa5c7848d04f815e5d35e590f6">DQ</a></div><div class="ttdeci">#define DQ()</div></div>
+<div class="ttc" id="pgr__tsp_8cpp_html_a4413c3e34a71087c64f5b517aeab0c48"><div class="ttname"><a href="pgr__tsp_8cpp.html#a4413c3e34a71087c64f5b517aeab0c48">MOD</a></div><div class="ttdeci">static size_t MOD(size_t i, size_t n)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00060">pgr_tsp.cpp:60</a></div></div>
+<div class="ttc" id="classTSP_html_a9104642fafa6fbea10d2a75165e7a8c0"><div class="ttname"><a href="classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0">TSP::maxd</a></div><div class="ttdeci">double maxd</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00047">pgr_tsp.hpp:47</a></div></div>
+<div class="ttc" id="pgr__tsp_8cpp_html_a22c9c33db631799428477fa1ccfd6258"><div class="ttname"><a href="pgr__tsp_8cpp.html#a22c9c33db631799428477fa1ccfd6258">succ</a></div><div class="ttdeci">static size_t succ(size_t i, size_t n)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00054">pgr_tsp.cpp:54</a></div></div>
+<div class="ttc" id="classTSP_html_a25c846de4565f8b630e274ab12f8bdca"><div class="ttname"><a href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">TSP::D</a></div><div class="ttdeci">double D(size_t, size_t)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00069">pgr_tsp.cpp:69</a></div></div>
+<div class="ttc" id="classTSP_html_a18f5559a534774970cfa0a04d055665f"><div class="ttname"><a href="classTSP.html#a18f5559a534774970cfa0a04d055665f">TSP::n</a></div><div class="ttdeci">size_t n</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00046">pgr_tsp.hpp:46</a></div></div>
+<div class="ttc" id="tsplib_8c_html_aa4c2a5552e9bc49b1816ff532f558c74"><div class="ttname"><a href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a></div><div class="ttdeci">static int a</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00111">tsplib.c:111</a></div></div>
+<div class="ttc" id="tsplib_8c_html_a770b56e97b0b7c07ddded2fbb6cf590a"><div class="ttname"><a href="tsplib_8c.html#a770b56e97b0b7c07ddded2fbb6cf590a">T_INIT</a></div><div class="ttdeci">#define T_INIT</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00099">tsplib.c:99</a></div></div>
+<div class="ttc" id="classTSP_html_af22de3a4ddb10be9d04a89d344d1c368"><div class="ttname"><a href="classTSP.html#af22de3a4ddb10be9d04a89d344d1c368">TSP::findEulerianPath</a></div><div class="ttdeci">bool findEulerianPath()</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00087">pgr_tsp.cpp:87</a></div></div>
+<div class="ttc" id="tsp_8c_html_a83b2ccbe71d02242d57777b82d49cb38"><div class="ttname"><a href="tsp_8c.html#a83b2ccbe71d02242d57777b82d49cb38">tsp</a></div><div class="ttdeci">Datum tsp(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8c_source.html#l00442">tsp.c:442</a></div></div>
+<div class="ttc" id="classDmatrix_html_aafe3cd9eca2def5f991df6f8f6618665"><div class="ttname"><a href="classDmatrix.html#aafe3cd9eca2def5f991df6f8f6618665">Dmatrix::pathCost</a></div><div class="ttdeci">double pathCost(const Ids &amp;path) const </div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8cpp_source.html#l00014">Dmatrix.cpp:14</a></div></div>
+<div class="ttc" id="classTSP_html_a23a89de71c5a2631369aa3c5783b1cb6"><div class="ttname"><a href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">TSP::iorder</a></div><div class="ttdeci">Ids iorder</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00050">pgr_tsp.hpp:50</a></div></div>
+<div class="ttc" id="classTSP_html_ac2cf47e50ec57809015118dae383000b"><div class="ttname"><a href="classTSP.html#ac2cf47e50ec57809015118dae383000b">TSP::doThreeWay</a></div><div class="ttdeci">void doThreeWay(Path p)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00246">pgr_tsp.cpp:246</a></div></div>
+<div class="ttc" id="tsplib_8c_html_ad743cf8bb46346b115dcecf0235e840c"><div class="ttname"><a href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a></div><div class="ttdeci">#define VISITED(x)</div></div>
+<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00041">basePath_SSEC.hpp:41</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a84e0d58129b1cbf8f33b35fe2ffa640e"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a></div><div class="ttdeci">customer * c</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00074">vrppdtw/src/pdp_solver.cpp:74</a></div></div>
+<div class="ttc" id="k__targets__sp_8c_html_a3834ad0136a8b95a6589500e4009fe9a"><div class="ttname"><a href="k__targets__sp_8c.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a></div><div class="ttdeci">#define DTYPE</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__sp_8c_source.html#l00071">k_targets_sp.c:71</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a047a3df231eb7accc059a2d2d9d20fcf"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a></div><div class="ttdeci">std::vector&lt; Solution &gt; T</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00081">vrppdtw/src/pdp_solver.cpp:81</a></div></div>
+<div class="ttc" id="classTSP_html_abb30d385da400f30793dc481dbcd692f"><div class="ttname"><a href="classTSP.html#abb30d385da400f30793dc481dbcd692f">TSP::annealing</a></div><div class="ttdeci">void annealing()</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00318">pgr_tsp.cpp:318</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a3ee54ed5a04e9ed93e379a925ea82be8"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a></div><div class="ttdeci">depot d</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00071">vrppdtw/src/pdp_solver.cpp:71</a></div></div>
+<div class="ttc" id="tsplib_8c_html_add2d0ac84d9279cf24fa83486e04840b"><div class="ttname"><a href="tsplib_8c.html#add2d0ac84d9279cf24fa83486e04840b">TRIES_PER_T</a></div><div class="ttdeci">#define TRIES_PER_T</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00102">tsplib.c:102</a></div></div>
+<div class="ttc" id="classTSP_html_a98b5e8c78eb0d99bf54e0f3790835ebf"><div class="ttname"><a href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">TSP::dist</a></div><div class="ttdeci">Dmatrix dist</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00045">pgr_tsp.hpp:45</a></div></div>
+<div class="ttc" id="classTSP_html_a309ccd2e623fd50ae7ba6e7a1ae5b601"><div class="ttname"><a href="classTSP.html#a309ccd2e623fd50ae7ba6e7a1ae5b601">TSP::doReverse</a></div><div class="ttdeci">void doReverse(Path p)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00300">pgr_tsp.cpp:300</a></div></div>
+<div class="ttc" id="classTSP_html_a19d984f00d7a8f88b0abecff61f35774"><div class="ttname"><a href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">TSP::jorder</a></div><div class="ttdeci">Ids jorder</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00054">pgr_tsp.hpp:54</a></div></div>
+<div class="ttc" id="tsplib_8c_html_acb07c106fa663061e0193be95343c6f8"><div class="ttname"><a href="tsplib_8c.html#acb07c106fa663061e0193be95343c6f8">IMPROVED_PATH_PER_T</a></div><div class="ttdeci">#define IMPROVED_PATH_PER_T</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00103">tsplib.c:103</a></div></div>
+<div class="ttc" id="tsplib_8c_html_a2b7cf2a3641be7b89138615764d60ba3"><div class="ttname"><a href="tsplib_8c.html#a2b7cf2a3641be7b89138615764d60ba3">EMPTY</a></div><div class="ttdeci">#define EMPTY</div></div>
+<div class="ttc" id="pgr__tsp_8cpp_html_a851f0faa2543b196d155da9180531805"><div class="ttname"><a href="pgr__tsp_8cpp.html#a851f0faa2543b196d155da9180531805">rand</a></div><div class="ttdeci">static size_t rand(size_t n)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00047">pgr_tsp.cpp:47</a></div></div>
+<div class="ttc" id="classTSP_html_a89ecbe218c5b93aca9fc3a06348379e4"><div class="ttname"><a href="classTSP.html#a89ecbe218c5b93aca9fc3a06348379e4">TSP::bestlen</a></div><div class="ttdeci">size_t bestlen</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00048">pgr_tsp.hpp:48</a></div></div>
+<div class="ttc" id="tsplib_8c_html_a6b632f34716e536c9105586721d1e313"><div class="ttname"><a href="tsplib_8c.html#a6b632f34716e536c9105586721d1e313">FINAL_T</a></div><div class="ttdeci">#define FINAL_T</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00100">tsplib.c:100</a></div></div>
+<div class="ttc" id="classTSP_html_a44453bb2d493f89e7c8a8540d355de2a"><div class="ttname"><a href="classTSP.html#a44453bb2d493f89e7c8a8540d355de2a">TSP::bestCost</a></div><div class="ttdeci">double bestCost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00049">pgr_tsp.hpp:49</a></div></div>
+<div class="ttc" id="classTSP_html_a53ddfe934836c4d48256e3d3e6386db5"><div class="ttname"><a href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">TSP::b</a></div><div class="ttdeci">double b[4]</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00056">pgr_tsp.hpp:56</a></div></div>
+<div class="ttc" id="classTSP_html_ad4f15eeec109dd091cef42e934106190"><div class="ttname"><a href="classTSP.html#ad4f15eeec109dd091cef42e934106190">TSP::getThreeWayCost</a></div><div class="ttdeci">double getThreeWayCost(Path p)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00231">pgr_tsp.cpp:231</a></div></div>
+<div class="ttc" id="classTSP_html_a6067275b254df6a019ba125f0206e034"><div class="ttname"><a href="classTSP.html#a6067275b254df6a019ba125f0206e034">TSP::Ids</a></div><div class="ttdeci">std::vector&lt; int64_t &gt; Ids</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00043">pgr_tsp.hpp:43</a></div></div>
+<div class="ttc" id="pgr__tsp_8hpp_html"><div class="ttname"><a href="pgr__tsp_8hpp.html">pgr_tsp.hpp</a></div></div>
+<div class="ttc" id="classTSP_html_a21ebee1a38f094cc00f7467fbf6b1594"><div class="ttname"><a href="classTSP.html#a21ebee1a38f094cc00f7467fbf6b1594">TSP::border</a></div><div class="ttdeci">Ids border</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00055">pgr_tsp.hpp:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><b>pgr_tsp.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="pgr__tsp_8cpp.html">pgr_tsp.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

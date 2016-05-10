@@ -7,5 +7,6 @@ var searchData=
   ['dist_5ffromto_5ft',['dist_fromto_t',['../structdist__fromto__t.html',1,'']]],
   ['distance_5fcolumns',['distance_columns',['../structdistance__columns.html',1,'']]],
   ['distance_5fheuristic',['distance_heuristic',['../classdistance__heuristic.html',1,'']]],
+  ['distance_5fheuristic',['distance_heuristic',['../classPgr__astar_1_1distance__heuristic.html',1,'Pgr_astar']]],
   ['dmatrix',['Dmatrix',['../classDmatrix.html',1,'']]]
 ];

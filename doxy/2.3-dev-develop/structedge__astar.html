@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('structedge__astar.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,15 +107,167 @@ $(document).ready(function(){initNavTree('structedge__astar.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structedge__astar-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">edge_astar Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>&quot;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:afa0470c19b8610feb529adbf645ebf3e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#afa0470c19b8610feb529adbf645ebf3e">cost</a></td></tr>
+<tr class="separator:afa0470c19b8610feb529adbf645ebf3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1edb41182258731ee2f86b9de40e70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#a2c1edb41182258731ee2f86b9de40e70">id</a></td></tr>
+<tr class="separator:a2c1edb41182258731ee2f86b9de40e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25864e744c50a04e60dd1f24fa68a2b2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#a25864e744c50a04e60dd1f24fa68a2b2">reverse_cost</a></td></tr>
+<tr class="separator:a25864e744c50a04e60dd1f24fa68a2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a669a7817df1351ae0d767874152698b5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#a669a7817df1351ae0d767874152698b5">s_x</a></td></tr>
+<tr class="separator:a669a7817df1351ae0d767874152698b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a710b49885c90b37eb85c7f3ccacd3002"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#a710b49885c90b37eb85c7f3ccacd3002">s_y</a></td></tr>
+<tr class="separator:a710b49885c90b37eb85c7f3ccacd3002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceafd8114a576f496eb9903d64d23794"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#aceafd8114a576f496eb9903d64d23794">source</a></td></tr>
+<tr class="separator:aceafd8114a576f496eb9903d64d23794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a022e4a0f5ebcf103fa3d0824bc657b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#a2a022e4a0f5ebcf103fa3d0824bc657b">t_x</a></td></tr>
+<tr class="separator:a2a022e4a0f5ebcf103fa3d0824bc657b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c22a1607d4bfb6a381b970ce1d67cb6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#a7c22a1607d4bfb6a381b970ce1d67cb6">t_y</a></td></tr>
+<tr class="separator:a7c22a1607d4bfb6a381b970ce1d67cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65acd4caa4fd8086e73c1bfbb5ef4512"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedge__astar.html#a65acd4caa4fd8086e73c1bfbb5ef4512">target</a></td></tr>
+<tr class="separator:a65acd4caa4fd8086e73c1bfbb5ef4512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00030">30</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="afa0470c19b8610feb529adbf645ebf3e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double edge_astar::cost</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00035">35</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2c1edb41182258731ee2f86b9de40e70"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int edge_astar::id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00032">32</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a25864e744c50a04e60dd1f24fa68a2b2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double edge_astar::reverse_cost</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00036">36</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a669a7817df1351ae0d767874152698b5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double edge_astar::s_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00037">37</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a710b49885c90b37eb85c7f3ccacd3002"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double edge_astar::s_y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00038">38</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aceafd8114a576f496eb9903d64d23794"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int edge_astar::source</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00033">33</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2a022e4a0f5ebcf103fa3d0824bc657b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double edge_astar::t_x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00039">39</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7c22a1607d4bfb6a381b970ce1d67cb6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double edge_astar::t_y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00040">40</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a65acd4caa4fd8086e73c1bfbb5ef4512"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int edge_astar::target</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pgr__types_8h_source.html#l00034">34</a> of file <a class="el" href="pgr__types_8h_source.html">pgr_types.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="pgr__types_8h_source.html">pgr_types.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -123,7 +276,7 @@ $(document).ready(function(){initNavTree('structedge__astar.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structedge__astar.html">edge_astar</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

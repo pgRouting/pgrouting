@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
 <div class="title">k_targets_boost_wrapper.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="k__targets__boost__wrapper_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Shortest path algorithm for PostgreSQL</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
@@ -145,26 +147,26 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;boost/graph/adjacency_list.hpp&gt;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;k_targets_boost_wrapper.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="k__targets__boost__wrapper_8h.html">k_targets_boost_wrapper.h</a>&quot;</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">using namespace </span>boost;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// Maximal number of nodes in the path (to avoid infinite loops)</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define MAX_NODES 100000000</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="k__targets__boost__wrapper_8cpp.html#abd2aacdca9cb2a1a30f3392256b96ea3">   47</a></span>&#160;<span class="preprocessor">#define MAX_NODES 100000000</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">struct </span><a class="code" href="structVertex.html">Vertex</a></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> id;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    float8 cost;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> cost;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">// Adds an edge to the graph.</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// Edge id, cost, source and target ids and coordinates are copied also</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> G, <span class="keyword">class</span> E&gt;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;graph_add_edge(G &amp;graph, E &amp;e, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">int</span> source, <span class="keywordtype">int</span> target, float8 cost)</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="k__targets__boost__wrapper_8cpp.html#a28a80f1881a7ce258ee92da3d1ccff4e">   59</a></span>&#160;<a class="code" href="k__targets__boost__wrapper_8cpp.html#a28a80f1881a7ce258ee92da3d1ccff4e">graph_add_edge</a>(G &amp;graph, E &amp;e, <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">int</span> source, <span class="keywordtype">int</span> target, <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> cost)</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">bool</span> inserted;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
@@ -182,11 +184,11 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> onetomany_dijkstra_boostdist(<a class="code" href="structedge__t.html">edge_t</a> *edges, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count,</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="k__targets__boost__wrapper_8h.html#ac960f78e220195b7e38047cd1451213c">   77</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="k__targets__boost__wrapper_8cpp.html#ac960f78e220195b7e38047cd1451213c">onetomany_dijkstra_boostdist</a>(<a class="code" href="structedge__t.html">edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count,</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">int</span> start_vertex, <span class="keywordtype">int</span> *end_vertices, <span class="keywordtype">int</span> nb_targets,</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">bool</span> directed, <span class="keywordtype">bool</span> has_reverse_cost,</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="structpgr__cost__t.html">pgr_cost_t</a> **dists,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">char</span> **err_msg)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">try</span> {    </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// FIXME: use a template for the directedS parameters</span></div>
@@ -206,26 +208,26 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        edge_descriptor e;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        graph_add_edge&lt;graph_t, edge_descriptor&gt;(graph, e,</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                   edges[j].id, edges[j].source,</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                   edges[j].target, edges[j].cost);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                   edges[j].<a class="code" href="structedge__t.html#a7f65dfbbbef10738589b78b8307f259f">id</a>, edges[j].<a class="code" href="structedge__t.html#a98ecbc1968465612d257981749d42d90">source</a>,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                   edges[j].<a class="code" href="structedge__t.html#a1c610de9deb8b76f12876115c748e17d">target</a>, edges[j].<a class="code" href="structedge__t.html#a4507749136691c89cfc3585cdf9d9840">cost</a>);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (!directed || (directed &amp;&amp; has_reverse_cost))</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;          float8 cost;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;          <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> cost;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;          <span class="keywordflow">if</span> (has_reverse_cost)</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;          {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;              cost = edges[j].reverse_cost;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;              cost = edges[j].<a class="code" href="structedge__t.html#a459219b7f2784c65d892d12360721d56">reverse_cost</a>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;          }</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;          <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;          {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;              cost = edges[j].cost;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;              cost = edges[j].<a class="code" href="structedge__t.html#a4507749136691c89cfc3585cdf9d9840">cost</a>;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;          }</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;          graph_add_edge&lt;graph_t, edge_descriptor&gt;(graph, e,</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                 edges[j].id,</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                 edges[j].target,</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                 edges[j].source,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                 edges[j].<a class="code" href="structedge__t.html#a7f65dfbbbef10738589b78b8307f259f">id</a>,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                 edges[j].<a class="code" href="structedge__t.html#a1c610de9deb8b76f12876115c748e17d">target</a>,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                 edges[j].<a class="code" href="structedge__t.html#a98ecbc1968465612d257981749d42d90">source</a>,</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                 cost);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;          }</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
@@ -257,12 +259,12 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    dijkstra_shortest_paths(graph, _source,</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                predecessor_map(&amp;predecessors[0]).</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                weight_map(<span class="keyword">get</span>(&amp;Vertex::cost, graph))</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                weight_map(<span class="keyword">get</span>(&amp;<a class="code" href="structVertex.html#adc0a29d4547027cd1c4ef88a06e1d1f1">Vertex::cost</a>, graph))</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                .distance_map(&amp;distances[0]));</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    std::vector&lt; std::vector&lt;uint64_t&gt; &gt; path_vect(nb_targets);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordtype">int</span> max;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="VRP__Solver_8h.html#affe776513b24d84b39af8ab0930fef7f">max</a>;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">int</span> index_of_last_path_vertex = 0;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">size_t</span> sum_path_sizes = 0;</div>
@@ -271,7 +273,7 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; nb_targets; i++)</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    {</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        no_path[i] = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        max = MAX_NODES;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        max = <a class="code" href="k__targets__boost__wrapper_8cpp.html#abd2aacdca9cb2a1a30f3392256b96ea3">MAX_NODES</a>;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        path_vect[i].push_back(_target[i]);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">while</span> (_target[i] != _source &amp;&amp; !no_path[i]) </div>
@@ -307,7 +309,7 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> numTarget = 0; numTarget &lt; nb_targets; numTarget++)</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        (*dists)[numTarget].seq = numTarget;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        (*dists)[numTarget].<a class="code" href="structpgr__cost__t.html#a578433bf3bc8e67e9bad77ed55c92c6c">seq</a> = numTarget;</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        (*dists)[numTarget].id1 = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(path_vect[numTarget].at(path_vect[numTarget].size() -1));</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        (*dists)[numTarget].id2 = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(path_vect[numTarget].at(0));</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        (*dists)[numTarget].cost = 0.0;</div>
@@ -356,17 +358,32 @@ $(document).ready(function(){initNavTree('k__targets__boost__wrapper_8cpp_source
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  }</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div>
+<div class="ttc" id="k__targets__boost__wrapper_8h_html"><div class="ttname"><a href="k__targets__boost__wrapper_8h.html">k_targets_boost_wrapper.h</a></div></div>
+<div class="ttc" id="k__targets__boost__wrapper_8cpp_html_abd2aacdca9cb2a1a30f3392256b96ea3"><div class="ttname"><a href="k__targets__boost__wrapper_8cpp.html#abd2aacdca9cb2a1a30f3392256b96ea3">MAX_NODES</a></div><div class="ttdeci">#define MAX_NODES</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8cpp_source.html#l00047">k_targets_boost_wrapper.cpp:47</a></div></div>
 <div class="ttc" id="structedge__t_html"><div class="ttname"><a href="structedge__t.html">edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00034">k_targets_boost_wrapper.h:34</a></div></div>
 <div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00033">alpha.h:33</a></div></div>
-<div class="ttc" id="structVertex_html"><div class="ttname"><a href="structVertex.html">Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="astar__boost__wrapper_8cpp_source.html#l00065">astar_boost_wrapper.cpp:65</a></div></div>
+<div class="ttc" id="structedge__t_html_a7f65dfbbbef10738589b78b8307f259f"><div class="ttname"><a href="structedge__t.html#a7f65dfbbbef10738589b78b8307f259f">edge_t::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00035">k_targets_boost_wrapper.h:35</a></div></div>
+<div class="ttc" id="structVertex_html_adc0a29d4547027cd1c4ef88a06e1d1f1"><div class="ttname"><a href="structVertex.html#adc0a29d4547027cd1c4ef88a06e1d1f1">Vertex::cost</a></div><div class="ttdeci">float8 cost</div><div class="ttdef"><b>Definition:</b> <a href="boost__wrapper_8cpp_source.html#l00063">boost_wrapper.cpp:63</a></div></div>
+<div class="ttc" id="VRP__Solver_8h_html_affe776513b24d84b39af8ab0930fef7f"><div class="ttname"><a href="VRP__Solver_8h.html#affe776513b24d84b39af8ab0930fef7f">max</a></div><div class="ttdeci">#define max(a, b)</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00047">VRP_Solver.h:47</a></div></div>
+<div class="ttc" id="structpgr__cost__t_html_a578433bf3bc8e67e9bad77ed55c92c6c"><div class="ttname"><a href="structpgr__cost__t.html#a578433bf3bc8e67e9bad77ed55c92c6c">pgr_cost_t::seq</a></div><div class="ttdeci">int seq</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00045">k_targets_boost_wrapper.h:45</a></div></div>
+<div class="ttc" id="structedge__t_html_a4507749136691c89cfc3585cdf9d9840"><div class="ttname"><a href="structedge__t.html#a4507749136691c89cfc3585cdf9d9840">edge_t::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00038">k_targets_boost_wrapper.h:38</a></div></div>
+<div class="ttc" id="structedge__t_html_a98ecbc1968465612d257981749d42d90"><div class="ttname"><a href="structedge__t.html#a98ecbc1968465612d257981749d42d90">edge_t::source</a></div><div class="ttdeci">int source</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00036">k_targets_boost_wrapper.h:36</a></div></div>
+<div class="ttc" id="dijkstra_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00047">dijkstra.h:47</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
+<div class="ttc" id="structVertex_html"><div class="ttname"><a href="structVertex.html">Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="boost__wrapper_8cpp_source.html#l00060">boost_wrapper.cpp:60</a></div></div>
+<div class="ttc" id="structedge__t_html_a459219b7f2784c65d892d12360721d56"><div class="ttname"><a href="structedge__t.html#a459219b7f2784c65d892d12360721d56">edge_t::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00039">k_targets_boost_wrapper.h:39</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
+<div class="ttc" id="k__targets__boost__wrapper_8cpp_html_ac960f78e220195b7e38047cd1451213c"><div class="ttname"><a href="k__targets__boost__wrapper_8cpp.html#ac960f78e220195b7e38047cd1451213c">onetomany_dijkstra_boostdist</a></div><div class="ttdeci">int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count, int start_vertex, int *end_vertices, int nb_targets, bool directed, bool has_reverse_cost, pgr_cost_t **dists, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8cpp_source.html#l00077">k_targets_boost_wrapper.cpp:77</a></div></div>
+<div class="ttc" id="k__targets__boost__wrapper_8cpp_html_a28a80f1881a7ce258ee92da3d1ccff4e"><div class="ttname"><a href="k__targets__boost__wrapper_8cpp.html#a28a80f1881a7ce258ee92da3d1ccff4e">graph_add_edge</a></div><div class="ttdeci">static void graph_add_edge(G &amp;graph, E &amp;e, int id, int source, int target, float8 cost)</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8cpp_source.html#l00059">k_targets_boost_wrapper.cpp:59</a></div></div>
+<div class="ttc" id="structedge__t_html_a1c610de9deb8b76f12876115c748e17d"><div class="ttname"><a href="structedge__t.html#a1c610de9deb8b76f12876115c748e17d">edge_t::target</a></div><div class="ttdeci">int target</div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00037">k_targets_boost_wrapper.h:37</a></div></div>
 <div class="ttc" id="structpgr__cost__t_html"><div class="ttname"><a href="structpgr__cost__t.html">pgr_cost_t</a></div><div class="ttdef"><b>Definition:</b> <a href="k__targets__boost__wrapper_8h_source.html#l00043">k_targets_boost_wrapper.h:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_804761a0bd29351047a3d51b7ccfb447.html">kdijkstra</a></li><li class="navelem"><a class="el" href="dir_06d3ef3e88dec1a2c644b9fd970eede3.html">src</a></li><li class="navelem"><b>k_targets_boost_wrapper.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_804761a0bd29351047a3d51b7ccfb447.html">kdijkstra</a></li><li class="navelem"><a class="el" href="dir_06d3ef3e88dec1a2c644b9fd970eede3.html">src</a></li><li class="navelem"><a class="el" href="k__targets__boost__wrapper_8cpp.html">k_targets_boost_wrapper.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

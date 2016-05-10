@@ -1,0 +1,8 @@
+<map id="get_check_data.h" name="get_check_data.h">
+<area shape="rect" id="node2" href="$edges__input_8c.html" title="edges_input.c" alt="" coords="5,80,107,107"/>
+<area shape="rect" id="node3" href="$get__check__data_8c.html" title="get_check_data.c" alt="" coords="132,80,257,107"/>
+<area shape="rect" id="node4" href="$points__input_8c.html" title="points_input.c" alt="" coords="282,80,384,107"/>
+<area shape="rect" id="node5" href="$restrictions__input_8c.html" title="restrictions_input.c" alt="" coords="409,80,540,107"/>
+<area shape="rect" id="node6" href="$customers__input_8c.html" title="customers_input.c" alt="" coords="565,80,693,107"/>
+<area shape="rect" id="node7" href="$distances__input_8c.html" title="distances_input.c" alt="" coords="718,80,841,107"/>
+</map>

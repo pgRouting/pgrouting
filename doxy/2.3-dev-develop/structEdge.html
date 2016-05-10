@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('structEdge.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,6 +107,7 @@ $(document).ready(function(){initNavTree('structEdge.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structEdge-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Edge Struct Reference</div>  </div>
@@ -115,12 +117,179 @@ $(document).ready(function(){initNavTree('structEdge.html','');});
 Collaboration diagram for Edge:</div>
 <div class="dyncontent">
 <div class="center"><img src="structEdge__coll__graph.png" border="0" usemap="#Edge_coll__map" alt="Collaboration graph"/></div>
+<map name="Edge_coll__map" id="Edge_coll__map">
+</map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a2df02925cc88bb2f7ac42e0a5acbfc2a"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, vector<br class="typebreak"/>
+&lt; std::pair&lt; float, <br class="typebreak"/>
+std::vector&lt; int &gt;<br class="typebreak"/>
+ &gt; &gt;, std::less&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a2df02925cc88bb2f7ac42e0a5acbfc2a">adjacent_edges</a></td></tr>
+<tr class="separator:a2df02925cc88bb2f7ac42e0a5acbfc2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed3ab99c082d3be03078299e5e555a8e"><td class="memItemLeft" align="right" valign="top">default_color_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#aed3ab99c082d3be03078299e5e555a8e">color</a></td></tr>
+<tr class="separator:aed3ab99c082d3be03078299e5e555a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a5ac1b06a3e9a202fa610518c70ffe1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a9a5ac1b06a3e9a202fa610518c70ffe1">cost</a></td></tr>
+<tr class="separator:a9a5ac1b06a3e9a202fa610518c70ffe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52346282c5410fdc12dae1068176b188"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a52346282c5410fdc12dae1068176b188">distance</a></td></tr>
+<tr class="separator:a52346282c5410fdc12dae1068176b188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02050815cb4f85b7134187319306e2cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a02050815cb4f85b7134187319306e2cd">id</a></td></tr>
+<tr class="separator:a02050815cb4f85b7134187319306e2cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabdaaf161435fefcd81b2b844fbe7e4f"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#aabdaaf161435fefcd81b2b844fbe7e4f">index</a></td></tr>
+<tr class="separator:aabdaaf161435fefcd81b2b844fbe7e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a590732962dd76c6855899b3747a30753"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a590732962dd76c6855899b3747a30753">rank</a></td></tr>
+<tr class="separator:a590732962dd76c6855899b3747a30753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcf410ae923d69e22ede2cd59ee80108"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#adcf410ae923d69e22ede2cd59ee80108">source</a></td></tr>
+<tr class="separator:adcf410ae923d69e22ede2cd59ee80108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa39574b7bb4de6b41acd5c5c3d6331cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#aa39574b7bb4de6b41acd5c5c3d6331cc">target</a></td></tr>
+<tr class="separator:aa39574b7bb4de6b41acd5c5c3d6331cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="astar__boost__wrapper_8cpp_source.html#l00058">58</a> of file <a class="el" href="astar__boost__wrapper_8cpp_source.html">astar_boost_wrapper.cpp</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following files:<ul>
-<li><a class="el" href="astar__boost__wrapper_8cpp_source.html">astar_boost_wrapper.cpp</a></li>
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00064">64</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a2df02925cc88bb2f7ac42e0a5acbfc2a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; int, vector&lt; std::pair&lt;float, std::vector&lt;int&gt; &gt; &gt;, std::less&lt;int&gt; &gt; Edge::adjacent_edges</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00072">72</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00203">boost_shooting_star()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aed3ab99c082d3be03078299e5e555a8e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">default_color_type Edge::color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00073">73</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00203">boost_shooting_star()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9a5ac1b06a3e9a202fa610518c70ffe1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> Edge::cost</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00069">69</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00203">boost_shooting_star()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a52346282c5410fdc12dae1068176b188"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Edge::distance</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00070">70</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00203">boost_shooting_star()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a02050815cb4f85b7134187319306e2cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Edge::id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00066">66</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__relax_8hpp_source.html#l00086">boost::relax()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aabdaaf161435fefcd81b2b844fbe7e4f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t Edge::index</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00075">75</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00203">boost_shooting_star()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a590732962dd76c6855899b3747a30753"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Edge::rank</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00071">71</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00203">boost_shooting_star()</a>, and <a class="el" href="shooting__star__search_8hpp_source.html#l00055">EdgeRankCompare&lt; Edge &gt;::operator()()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adcf410ae923d69e22ede2cd59ee80108"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Edge::source</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00067">67</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa39574b7bb4de6b41acd5c5c3d6331cc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Edge::target</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html#l00068">68</a> of file <a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="shooting__star__boost__wrapper_8cpp_source.html">shooting_star_boost_wrapper.cpp</a></li>
 </ul>
 </div><!-- contents -->
@@ -129,7 +298,7 @@ Collaboration diagram for Edge:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structEdge.html">Edge</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

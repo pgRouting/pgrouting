@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classRoute.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,11 +107,15 @@ $(document).ready(function(){initNavTree('classRoute.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classRoute-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Route Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="pickDeliver_2src_2Route_8h_source.html">Route.h</a>&quot;</code></p>
 <div class="dynheader">
 Collaboration diagram for Route:</div>
 <div class="dyncontent">
@@ -118,10 +123,713 @@ Collaboration diagram for Route:</div>
 <map name="Route_coll__map" id="Route_coll__map">
 <area shape="rect" id="node3" href="structDepot.html" title="Depot" alt="" coords="177,5,233,32"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aeb929509bdbe8ade098a3b52060b1a2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#aeb929509bdbe8ade098a3b52060b1a2d">Route</a> (int _capacity, const <a class="el" href="structDepot.html">Depot</a> &amp;_depot)</td></tr>
+<tr class="separator:aeb929509bdbe8ade098a3b52060b1a2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b1c971aaf032109cee8081c97e9b9e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a2b1c971aaf032109cee8081c97e9b9e9">Route</a> ()</td></tr>
+<tr class="separator:a2b1c971aaf032109cee8081c97e9b9e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fb53dea8b38b61e63500668e7cfdfeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a2fb53dea8b38b61e63500668e7cfdfeb">append</a> (const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, const <a class="el" href="structPickup.html">Pickup</a> &amp;<a class="el" href="classRoute.html#ab58db8359a05e6edc75cbad24bb342d1">order</a>)</td></tr>
+<tr class="separator:a2fb53dea8b38b61e63500668e7cfdfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22a2f52cbdf2037e0dae0d71d3449d85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structState.html">State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a22a2f52cbdf2037e0dae0d71d3449d85">append</a> (<a class="el" href="vrppdtw_2src_2pdp_8h.html#a846d965b2049aaede9f0aa1d85ef0b81">customer</a> *<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="el" href="structPickup.html">Pickup</a> <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>, <a class="el" href="vrppdtw_2src_2pdp_8h.html#a4f56ed2521ed22f281cbe8f9f5dfd3c5">depot</a> <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, int <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#ab927abc9362d6d52760bd7996f981410">CustomerLength</a>, int <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a0cd23ca0f067a2a8e1ae6dc2508894ed">PickupLength</a>, <a class="el" href="structState.html">State</a> S)</td></tr>
+<tr class="separator:a22a2f52cbdf2037e0dae0d71d3449d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0bd4dc868fa392921e2898888eb82b0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#aa0bd4dc868fa392921e2898888eb82b0">cost</a> () const </td></tr>
+<tr class="separator:aa0bd4dc868fa392921e2898888eb82b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb8be6055a64fd7cf120f681b1b92a27"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#abb8be6055a64fd7cf120f681b1b92a27">cost</a> ()</td></tr>
+<tr class="separator:abb8be6055a64fd7cf120f681b1b92a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82ede2e285f501308c0c3139afaccf88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a82ede2e285f501308c0c3139afaccf88">has_twv</a> (const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;customers)</td></tr>
+<tr class="separator:a82ede2e285f501308c0c3139afaccf88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac81214a7a9fc2d7f98ae596867db9fc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#ac81214a7a9fc2d7f98ae596867db9fc8">has_violation</a> (const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;customers)</td></tr>
+<tr class="separator:ac81214a7a9fc2d7f98ae596867db9fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f36cc799fa70acde702cb029e9ba798"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a3f36cc799fa70acde702cb029e9ba798">HillClimbing</a> (<a class="el" href="vrppdtw_2src_2pdp_8h.html#a846d965b2049aaede9f0aa1d85ef0b81">customer</a> *<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="el" href="vrppdtw_2src_2pdp_8h.html#a4f56ed2521ed22f281cbe8f9f5dfd3c5">depot</a> <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, <a class="el" href="structPickup.html">Pickup</a> <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</td></tr>
+<tr class="separator:a3f36cc799fa70acde702cb029e9ba798"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6551cfe12c98a85d767805c6add54a8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a6551cfe12c98a85d767805c6add54a8d">insertOrder</a> (const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, const <a class="el" href="structPickup.html">Pickup</a> &amp;<a class="el" href="classRoute.html#ab58db8359a05e6edc75cbad24bb342d1">order</a>)</td></tr>
+<tr class="separator:a6551cfe12c98a85d767805c6add54a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a873bac82eba09b350ef38a285c563466"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a873bac82eba09b350ef38a285c563466">insertOrder</a> (<a class="el" href="vrppdtw_2src_2pdp_8h.html#a846d965b2049aaede9f0aa1d85ef0b81">customer</a> *<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="el" href="vrppdtw_2src_2pdp_8h.html#a4f56ed2521ed22f281cbe8f9f5dfd3c5">depot</a> <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, <a class="el" href="structPickup.html">Pickup</a> <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</td></tr>
+<tr class="separator:a873bac82eba09b350ef38a285c563466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eff904c4b8187c5c7c8643f70c48c5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a2eff904c4b8187c5c7c8643f70c48c5f">remove</a> (const <a class="el" href="structState.html">State</a> &amp;S)</td></tr>
+<tr class="separator:a2eff904c4b8187c5c7c8643f70c48c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a6a6685be9ed38f3cda445246629b7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a9a6a6685be9ed38f3cda445246629b7a">remove</a> (<a class="el" href="structState.html">State</a> S)</td></tr>
+<tr class="separator:a9a6a6685be9ed38f3cda445246629b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9233b91e68925e3c322c6bc279674d0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a9233b91e68925e3c322c6bc279674d0b">RemoveOrder</a> (const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;customers, const <a class="el" href="structPickup.html">Pickup</a> &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</td></tr>
+<tr class="separator:a9233b91e68925e3c322c6bc279674d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84dbebc20dddec4a4456620d76510f1e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a84dbebc20dddec4a4456620d76510f1e">RemoveOrder</a> (<a class="el" href="structPickup.html">Pickup</a> <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</td></tr>
+<tr class="separator:a84dbebc20dddec4a4456620d76510f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9153b07942f035ecf0217ccc42891fdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a9153b07942f035ecf0217ccc42891fdc">update</a> (const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>)</td></tr>
+<tr class="separator:a9153b07942f035ecf0217ccc42891fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06157f46459dba860257e2662ddce95c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a06157f46459dba860257e2662ddce95c">update</a> (<a class="el" href="vrppdtw_2src_2pdp_8h.html#a846d965b2049aaede9f0aa1d85ef0b81">customer</a> *<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="el" href="vrppdtw_2src_2pdp_8h.html#a4f56ed2521ed22f281cbe8f9f5dfd3c5">depot</a> <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>)</td></tr>
+<tr class="separator:a06157f46459dba860257e2662ddce95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a3a9f0caffea75897bc7fcb90e64d9406"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a3a9f0caffea75897bc7fcb90e64d9406">capacity</a></td></tr>
+<tr class="separator:a3a9f0caffea75897bc7fcb90e64d9406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea86b0934aac639a4d368800ba446d73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#aea86b0934aac639a4d368800ba446d73">cv</a></td></tr>
+<tr class="separator:aea86b0934aac639a4d368800ba446d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43dbaba56099e9697ca43ec0f8eeb10a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDepot.html">Depot</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a43dbaba56099e9697ca43ec0f8eeb10a">depot</a></td></tr>
+<tr class="separator:a43dbaba56099e9697ca43ec0f8eeb10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15771abe107cbf4d1db84dc859cfa487"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a15771abe107cbf4d1db84dc859cfa487">dis</a></td></tr>
+<tr class="separator:a15771abe107cbf4d1db84dc859cfa487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2029bf719fa490750e41dd3497d6ba12"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a2029bf719fa490750e41dd3497d6ba12">dis</a></td></tr>
+<tr class="separator:a2029bf719fa490750e41dd3497d6ba12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab58db8359a05e6edc75cbad24bb342d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#ab58db8359a05e6edc75cbad24bb342d1">order</a> [1200]</td></tr>
+<tr class="separator:ab58db8359a05e6edc75cbad24bb342d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6308ae889f6b0363b10b5d5d2b44e821"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a6308ae889f6b0363b10b5d5d2b44e821">path</a></td></tr>
+<tr class="separator:a6308ae889f6b0363b10b5d5d2b44e821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab85d2d71581ebb5c0ae52a8644753434"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#ab85d2d71581ebb5c0ae52a8644753434">path</a> [1200]</td></tr>
+<tr class="separator:ab85d2d71581ebb5c0ae52a8644753434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab88252e252aa3aba03526a220631213b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#ab88252e252aa3aba03526a220631213b">path_length</a></td></tr>
+<tr class="separator:ab88252e252aa3aba03526a220631213b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a508ef50e49bb681b0b6d5386d0a0da20"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoute.html#a508ef50e49bb681b0b6d5386d0a0da20">twv</a></td></tr>
+<tr class="separator:a508ef50e49bb681b0b6d5386d0a0da20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00031">31</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aeb929509bdbe8ade098a3b52060b1a2d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Route::Route </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>_capacity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structDepot.html">Depot</a> &amp;&#160;</td>
+          <td class="paramname"><em>_depot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00040">40</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2b1c971aaf032109cee8081c97e9b9e9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Route::Route </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00047">47</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00045">order</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00046">path_length</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a2fb53dea8b38b61e63500668e7cfdfeb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Route::append </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structPickup.html">Pickup</a> &amp;&#160;</td>
+          <td class="paramname"><em>order</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00090">90</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pdp_8hpp_source.html#l00047">Pickup::Did</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="pdp_8hpp_source.html#l00045">Pickup::Pid</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00092">Solver()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a22a2f52cbdf2037e0dae0d71d3449d85"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structState.html">State</a> Route::append </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8h.html#a846d965b2049aaede9f0aa1d85ef0b81">customer</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPickup.html">Pickup</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8h.html#a4f56ed2521ed22f281cbe8f9f5dfd3c5">depot</a>&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>CustomerLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>PickupLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structState.html">State</a>&#160;</td>
+          <td class="paramname"><em>S</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00111">111</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pdp_8hpp_source.html#l00059">State::cv</a>, <a class="el" href="pdp_8hpp_source.html#l00047">Pickup::Did</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pdp_8hpp_source.html#l00060">State::dis</a>, <a class="el" href="vrppdtw_2src_2pdp_8h_source.html#l00064">Pickup::id</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00045">order</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="pdp_8hpp_source.html#l00061">State::path</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00046">path_length</a>, <a class="el" href="pdp_8hpp_source.html#l00045">Pickup::Pid</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, and <a class="el" href="pdp_8hpp_source.html#l00058">State::twv</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa0bd4dc868fa392921e2898888eb82b0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Route::cost </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00148">148</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">HillClimbing()</a>, and <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00092">Solver()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abb8be6055a64fd7cf120f681b1b92a27"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Route::cost </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00186">186</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a82ede2e285f501308c0c3139afaccf88"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> Route::has_twv </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;&#160;</td>
+          <td class="paramname"><em>customers</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00159">159</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+<p>Referenced by <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00166">insertOrder()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac81214a7a9fc2d7f98ae596867db9fc8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> Route::has_violation </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;&#160;</td>
+          <td class="paramname"><em>customers</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00153">153</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+<p>Referenced by <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00166">insertOrder()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3f36cc799fa70acde702cb029e9ba798"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::HillClimbing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8h.html#a846d965b2049aaede9f0aa1d85ef0b81">customer</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8h.html#a4f56ed2521ed22f281cbe8f9f5dfd3c5">depot</a>&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPickup.html">Pickup</a>&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">242</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00148">cost()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pdp_8hpp_source.html#l00037">Depot::Ltime</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00045">order</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00046">path_length</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00092">Solver()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6551cfe12c98a85d767805c6add54a8d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> Route::insertOrder </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structPickup.html">Pickup</a> &amp;&#160;</td>
+          <td class="paramname"><em>order</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00166">166</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pdp_8hpp_source.html#l00047">Pickup::Did</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00159">has_twv()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00153">has_violation()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="pdp_8hpp_source.html#l00045">Pickup::Pid</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00067">RemoveOrder()</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a873bac82eba09b350ef38a285c563466"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::insertOrder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8h.html#a846d965b2049aaede9f0aa1d85ef0b81">customer</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8h.html#a4f56ed2521ed22f281cbe8f9f5dfd3c5">depot</a>&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPickup.html">Pickup</a>&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00190">190</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pdp_8hpp_source.html#l00037">Depot::Ltime</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00045">order</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00046">path_length</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2eff904c4b8187c5c7c8643f70c48c5f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Route::remove </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structState.html">State</a> &amp;&#160;</td>
+          <td class="paramname"><em>S</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00252">252</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pdp_8hpp_source.html#l00059">State::cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pdp_8hpp_source.html#l00060">State::dis</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="pdp_8hpp_source.html#l00061">State::path</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, and <a class="el" href="pdp_8hpp_source.html#l00058">State::twv</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00092">Solver()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9a6a6685be9ed38f3cda445246629b7a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Route::remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structState.html">State</a>&#160;</td>
+          <td class="paramname"><em>S</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00334">334</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pdp_8hpp_source.html#l00059">State::cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pdp_8hpp_source.html#l00060">State::dis</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00045">order</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="pdp_8hpp_source.html#l00061">State::path</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00046">path_length</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, and <a class="el" href="pdp_8hpp_source.html#l00058">State::twv</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9233b91e68925e3c322c6bc279674d0b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::RemoveOrder </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;&#160;</td>
+          <td class="paramname"><em>customers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structPickup.html">Pickup</a> &amp;&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00067">67</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pdp_8hpp_source.html#l00047">Pickup::Did</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pdp_8hpp_source.html#l00037">Depot::Ltime</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="pdp_8hpp_source.html#l00045">Pickup::Pid</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+<p>Referenced by <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00166">insertOrder()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a84dbebc20dddec4a4456620d76510f1e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::RemoveOrder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPickup.html">Pickup</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00071">71</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pdp_8hpp_source.html#l00047">Pickup::Did</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00045">order</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00046">path_length</a>, and <a class="el" href="pdp_8hpp_source.html#l00045">Pickup::Pid</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9153b07942f035ecf0217ccc42891fdc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Route::update </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a> &amp;&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">99</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pdp_8hpp_source.html#l00066">CalculateDistance()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00037">capacity</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pdp_8hpp_source.html#l00037">Depot::Ltime</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>.</p>
+
+<p>Referenced by <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00090">append()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00159">has_twv()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00153">has_violation()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">HillClimbing()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00166">insertOrder()</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00067">RemoveOrder()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06157f46459dba860257e2662ddce95c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Route::update </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8h.html#a846d965b2049aaede9f0aa1d85ef0b81">customer</a> *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8h.html#a4f56ed2521ed22f281cbe8f9f5dfd3c5">depot</a>&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00133">133</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>References <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">cv</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00037">Customer::demand</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">dis</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00038">Customer::Etime</a>, <a class="el" href="pdp_8hpp_source.html#l00037">Depot::Ltime</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">path</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00046">path_length</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00040">Customer::Stime</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">twv</a>, <a class="el" href="pdp_8hpp_source.html#l00033">Depot::x</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00035">Customer::x</a>, <a class="el" href="tsp_8c_source.html#l00117">x</a>, <a class="el" href="pdp_8hpp_source.html#l00034">Depot::y</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00036">Customer::y</a>, and <a class="el" href="tsp_8c_source.html#l00118">y</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3a9f0caffea75897bc7fcb90e64d9406"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Route::capacity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00037">37</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>Referenced by <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aea86b0934aac639a4d368800ba446d73"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::cv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00034">34</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00111">append()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00148">cost()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00153">has_violation()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">HillClimbing()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00190">insertOrder()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00252">remove()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00067">RemoveOrder()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00047">Route()</a>, <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00092">Solver()</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a43dbaba56099e9697ca43ec0f8eeb10a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structDepot.html">Depot</a> Route::depot</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00038">38</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a15771abe107cbf4d1db84dc859cfa487"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Route::dis</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00035">35</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00111">append()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00148">cost()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">HillClimbing()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00166">insertOrder()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00252">remove()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00067">RemoveOrder()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00047">Route()</a>, <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00092">Solver()</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2029bf719fa490750e41dd3497d6ba12"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::dis</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00043">43</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab58db8359a05e6edc75cbad24bb342d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::order[1200]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00045">45</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00111">append()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">HillClimbing()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00190">insertOrder()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00334">remove()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00071">RemoveOrder()</a>, and <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00047">Route()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6308ae889f6b0363b10b5d5d2b44e821"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; int64_t &gt; Route::path</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00036">36</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>Referenced by <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00090">append()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">HillClimbing()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00166">insertOrder()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00252">remove()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00067">RemoveOrder()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00040">Route()</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab85d2d71581ebb5c0ae52a8644753434"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::path[1200]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00044">44</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab88252e252aa3aba03526a220631213b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::path_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00046">46</a> of file <a class="el" href="vrppdtw_2src_2Route_8h_source.html">vrppdtw/src/Route.h</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00111">append()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">HillClimbing()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00190">insertOrder()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00334">remove()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00071">RemoveOrder()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00047">Route()</a>, and <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00133">update()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a508ef50e49bb681b0b6d5386d0a0da20"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Route::twv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00033">33</a> of file <a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a>.</p>
+
+<p>Referenced by <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00111">append()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00148">cost()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00159">has_twv()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00153">has_violation()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00242">HillClimbing()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00190">insertOrder()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00252">remove()</a>, <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00067">RemoveOrder()</a>, <a class="el" href="vrppdtw_2src_2Route_8h_source.html#l00047">Route()</a>, <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00092">Solver()</a>, and <a class="el" href="pickDeliver_2src_2Route_8h_source.html#l00099">update()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="pickDeliver_2src_2Route_8h_source.html">pickDeliver/src/Route.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -130,7 +838,7 @@ Collaboration diagram for Route:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classRoute.html">Route</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

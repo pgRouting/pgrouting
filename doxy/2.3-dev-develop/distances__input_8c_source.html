@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('distances__input_8c_source.html','');}
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('distances__input_8c_source.html','');}
 <div class="title">distances_input.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="distances__input_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">File: distances_input.c</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Copyright (c) 2015 Celia Virginia Vergara Castillo</span></div>
@@ -131,27 +133,27 @@ $(document).ready(function(){initNavTree('distances__input_8c_source.html','');}
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// #define DEBUG</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;./debug_macro.h&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="debug__macro_8h.html">./debug_macro.h</a>&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/postgres_connection.h&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/get_check_data.h&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;./distances_input.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="distances__input_8h.html">./distances_input.h</a>&quot;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> pgr_fetch_distance(</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="distances__input_8c.html#a32350228abc4b2c9bac5726fd592dae5">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="distances__input_8c.html#a32350228abc4b2c9bac5726fd592dae5">pgr_fetch_distance</a>(</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        HeapTuple *tuple,</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        TupleDesc *tupdesc,</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info[3],</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> *distance) {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    distance-&gt;from_vid = pgr_SPI_getBigInt(tuple, tupdesc,  info[0]);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    distance-&gt;to_vid = pgr_SPI_getBigInt(tuple, tupdesc,  info[1]);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    distance-&gt;cost = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    distance-&gt;<a class="code" href="structmatrix__cell.html#ab28cdf0c3643ac5bf0f42b70b4f6398d">from_vid</a> = <a class="code" href="get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448">pgr_SPI_getBigInt</a>(tuple, tupdesc,  info[0]);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    distance-&gt;<a class="code" href="structmatrix__cell.html#af970a7b211030451819a6397501e685d">to_vid</a> = <a class="code" href="get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448">pgr_SPI_getBigInt</a>(tuple, tupdesc,  info[1]);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    distance-&gt;<a class="code" href="structmatrix__cell.html#a938fb9d685bbcd6ca9f1e85e525fdefe">cost</a> = <a class="code" href="get__check__data_8c.html#a6d8da632b86bd8f4e0f84f2a4219c887">pgr_SPI_getFloat8</a>(tuple, tupdesc, info[2]);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> pgr_get_distances(</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="distances__input_8h.html#a6c2d17ba9d75c85014be8d354dd39737">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="distances__input_8c.html#ab58eb053979d1be71e2388ba47ff400f">pgr_get_distances</a>(</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">char</span> *sql,</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> **distances,</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">size_t</span> *total_distances) {</div>
@@ -159,38 +161,38 @@ $(document).ready(function(){initNavTree('distances__input_8c_source.html','');}
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> tuple_limit = 1000000;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">size_t</span> ntuples;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">size_t</span> total_tuples = 0;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="tsp_8c.html#ac85d31fb5b6cb21e57d6bd65cf7fa10e">total_tuples</a> = 0;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="structColumn__info__t.html">Column_info_t</a> info[3];</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> i;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; 3; ++i) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        info[i].colNumber = -1;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        info[i].type = 0;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        info[i].strict = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        info[i].eType = ANY_INTEGER;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        info[i].<a class="code" href="structColumn__info__t.html#a64816c9aa1e9203df8ed391fb9c6e849">colNumber</a> = -1;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        info[i].<a class="code" href="structColumn__info__t.html#aabe9ce1c2584f121ef9886ae81bfb748">type</a> = 0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        info[i].<a class="code" href="structColumn__info__t.html#a72833df7d9b7fd577a9e5c866c390518">strict</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        info[i].<a class="code" href="structColumn__info__t.html#a80df9b5f6ef4c51effc2da146bb0d477">eType</a> = <a class="code" href="pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bba40c811f5bb6ca18790fe16aad0115fdb">ANY_INTEGER</a>;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    info[0].name = strdup(<span class="stringliteral">&quot;start_vid&quot;</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    info[1].name = strdup(<span class="stringliteral">&quot;end_vid&quot;</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    info[2].name = strdup(<span class="stringliteral">&quot;agg_cost&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    info[0].<a class="code" href="structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9">name</a> = strdup(<span class="stringliteral">&quot;start_vid&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    info[1].<a class="code" href="structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9">name</a> = strdup(<span class="stringliteral">&quot;end_vid&quot;</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    info[2].<a class="code" href="structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9">name</a> = strdup(<span class="stringliteral">&quot;agg_cost&quot;</span>);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    info[2].eType = ANY_NUMERICAL;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    info[2].<a class="code" href="structColumn__info__t.html#a80df9b5f6ef4c51effc2da146bb0d477">eType</a> = <a class="code" href="pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bba49c81011e2dec235c268e79ce70aa044">ANY_NUMERICAL</a>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> *SPIplan;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    SPIplan = pgr_SPI_prepare(sql);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    SPIplan = <a class="code" href="postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12">pgr_SPI_prepare</a>(sql);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    Portal SPIportal;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    SPIportal = pgr_SPI_cursor_open(SPIplan);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    SPIportal = <a class="code" href="postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d">pgr_SPI_cursor_open</a>(SPIplan);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">bool</span> moredata = TRUE;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    (*total_distances) = total_tuples;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    (*total_distances) = <a class="code" href="tsp_8c.html#ac85d31fb5b6cb21e57d6bd65cf7fa10e">total_tuples</a>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">while</span> (moredata == TRUE) {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span> (total_tuples == 0)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            pgr_fetch_column_info(info, 5);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <a class="code" href="get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46">pgr_fetch_column_info</a>(info, 5);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        ntuples = SPI_processed;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        total_tuples += ntuples;</div>
@@ -199,7 +201,7 @@ $(document).ready(function(){initNavTree('distances__input_8c_source.html','');}
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> ((*distances) == NULL)</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                (*distances) = (<a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> *)palloc0(total_tuples * <span class="keyword">sizeof</span>(<a class="code" href="structmatrix__cell.html">Matrix_cell_t</a>));</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                (*distances) = (<a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> *)repalloc((*distances), total_tuples * <span class="keyword">sizeof</span>(<a class="code" href="structmatrix__cell.html">Matrix_cell_t</a>));</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                (*distances) = (<a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> *)repalloc((*distances), total_tuples * <span class="keyword">sizeof</span>(<a class="code" href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a>));</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">if</span> ((*distances) == NULL) {</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                elog(ERROR, <span class="stringliteral">&quot;Out of memory&quot;</span>);</div>
@@ -207,12 +209,12 @@ $(document).ready(function(){initNavTree('distances__input_8c_source.html','');}
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            SPITupleTable *tuptable = SPI_tuptable;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            TupleDesc tupdesc = SPI_tuptable-&gt;tupdesc;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            PGR_DBG(<span class="stringliteral">&quot;processing %d edge tupĺes&quot;</span>, ntuples);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;processing %d edge tupĺes&quot;</span>, ntuples);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordtype">size_t</span> t;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">for</span> (t = 0; t &lt; ntuples; t++) {</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                HeapTuple tuple = tuptable-&gt;vals[t];</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                pgr_fetch_distance(&amp;tuple, &amp;tupdesc, info,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <a class="code" href="distances__input_8c.html#a32350228abc4b2c9bac5726fd592dae5">pgr_fetch_distance</a>(&amp;tuple, &amp;tupdesc, info,</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        &amp;(*distances)[total_tuples - ntuples + t]);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            SPI_freetuptable(tuptable);</div>
@@ -224,22 +226,44 @@ $(document).ready(function(){initNavTree('distances__input_8c_source.html','');}
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">if</span> (total_tuples == 0) {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        (*total_distances) = 0;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        PGR_DBG(<span class="stringliteral">&quot;NO distances&quot;</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;NO distances&quot;</span>);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    (*total_distances) = total_tuples;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    PGR_DBG(<span class="stringliteral">&quot;Finish reading %ld edges, %ld&quot;</span>, total_tuples, (*total_distances));</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    (*total_distances) = <a class="code" href="tsp_8c.html#ac85d31fb5b6cb21e57d6bd65cf7fa10e">total_tuples</a>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Finish reading %ld edges, %ld&quot;</span>, total_tuples, (*total_distances));</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
-<div class="ttc" id="structColumn__info__t_html"><div class="ttname"><a href="structColumn__info__t.html">Column_info_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00139">pgr_types.h:139</a></div></div>
-<div class="ttc" id="structmatrix__cell_html"><div class="ttname"><a href="structmatrix__cell.html">matrix_cell</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00105">pgr_types.h:105</a></div></div>
+<div class="ttc" id="get__check__data_8c_html_ab4e654806d1a43314c3e7fa692705448"><div class="ttname"><a href="get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448">pgr_SPI_getBigInt</a></div><div class="ttdeci">int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00163">get_check_data.c:163</a></div></div>
+<div class="ttc" id="structColumn__info__t_html_a72833df7d9b7fd577a9e5c866c390518"><div class="ttname"><a href="structColumn__info__t.html#a72833df7d9b7fd577a9e5c866c390518">Column_info_t::strict</a></div><div class="ttdeci">bool strict</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00155">pgr_types.h:155</a></div></div>
+<div class="ttc" id="distances__input_8c_html_a32350228abc4b2c9bac5726fd592dae5"><div class="ttname"><a href="distances__input_8c.html#a32350228abc4b2c9bac5726fd592dae5">pgr_fetch_distance</a></div><div class="ttdeci">static void pgr_fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info[3], Matrix_cell_t *distance)</div><div class="ttdef"><b>Definition:</b> <a href="distances__input_8c_source.html#l00035">distances_input.c:35</a></div></div>
+<div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
+<div class="ttc" id="structColumn__info__t_html_aabe9ce1c2584f121ef9886ae81bfb748"><div class="ttname"><a href="structColumn__info__t.html#aabe9ce1c2584f121ef9886ae81bfb748">Column_info_t::type</a></div><div class="ttdeci">uint64_t type</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00154">pgr_types.h:154</a></div></div>
+<div class="ttc" id="structColumn__info__t_html_ac166599b0a83f7da1a40e75cc1a955b9"><div class="ttname"><a href="structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9">Column_info_t::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00156">pgr_types.h:156</a></div></div>
+<div class="ttc" id="get__check__data_8c_html_ae6967f852e7bc95d5d5131b06131de46"><div class="ttname"><a href="get__check__data_8c.html#ae6967f852e7bc95d5d5131b06131de46">pgr_fetch_column_info</a></div><div class="ttdeci">void pgr_fetch_column_info(Column_info_t info[], int info_size)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00071">get_check_data.c:71</a></div></div>
+<div class="ttc" id="structColumn__info__t_html"><div class="ttname"><a href="structColumn__info__t.html">Column_info_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00151">pgr_types.h:151</a></div></div>
+<div class="ttc" id="structmatrix__cell_html"><div class="ttname"><a href="structmatrix__cell.html">matrix_cell</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00117">pgr_types.h:117</a></div></div>
+<div class="ttc" id="tsp_8c_html_ac85d31fb5b6cb21e57d6bd65cf7fa10e"><div class="ttname"><a href="tsp_8c.html#ac85d31fb5b6cb21e57d6bd65cf7fa10e">total_tuples</a></div><div class="ttdeci">int total_tuples</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8c_source.html#l00120">tsp.c:120</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_ad285e52818e776e6a90106c24c278332"><div class="ttname"><a href="pgr__types_8h.html#ad285e52818e776e6a90106c24c278332">Matrix_cell_t</a></div><div class="ttdeci">struct matrix_cell Matrix_cell_t</div></div>
+<div class="ttc" id="structmatrix__cell_html_ab28cdf0c3643ac5bf0f42b70b4f6398d"><div class="ttname"><a href="structmatrix__cell.html#ab28cdf0c3643ac5bf0f42b70b4f6398d">matrix_cell::from_vid</a></div><div class="ttdeci">int64_t from_vid</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00118">pgr_types.h:118</a></div></div>
+<div class="ttc" id="debug__macro_8h_html"><div class="ttname"><a href="debug__macro_8h.html">debug_macro.h</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a5bc91ed782fe6c30eaf15fe73b4474bba40c811f5bb6ca18790fe16aad0115fdb"><div class="ttname"><a href="pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bba40c811f5bb6ca18790fe16aad0115fdb">ANY_INTEGER</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00145">pgr_types.h:145</a></div></div>
+<div class="ttc" id="distances__input_8h_html"><div class="ttname"><a href="distances__input_8h.html">distances_input.h</a></div></div>
+<div class="ttc" id="structmatrix__cell_html_a938fb9d685bbcd6ca9f1e85e525fdefe"><div class="ttname"><a href="structmatrix__cell.html#a938fb9d685bbcd6ca9f1e85e525fdefe">matrix_cell::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00120">pgr_types.h:120</a></div></div>
+<div class="ttc" id="distances__input_8c_html_ab58eb053979d1be71e2388ba47ff400f"><div class="ttname"><a href="distances__input_8c.html#ab58eb053979d1be71e2388ba47ff400f">pgr_get_distances</a></div><div class="ttdeci">void pgr_get_distances(char *sql, Matrix_cell_t **distances, size_t *total_distances)</div><div class="ttdoc">bigint start_vid, bigint end_vid, float agg_cost, </div><div class="ttdef"><b>Definition:</b> <a href="distances__input_8c_source.html#l00051">distances_input.c:51</a></div></div>
+<div class="ttc" id="structColumn__info__t_html_a64816c9aa1e9203df8ed391fb9c6e849"><div class="ttname"><a href="structColumn__info__t.html#a64816c9aa1e9203df8ed391fb9c6e849">Column_info_t::colNumber</a></div><div class="ttdeci">int colNumber</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00153">pgr_types.h:153</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_a85cec439f5e567ec736a2a77a0533d9d"><div class="ttname"><a href="postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d">pgr_SPI_cursor_open</a></div><div class="ttdeci">Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00092">postgres_connection.c:92</a></div></div>
+<div class="ttc" id="structmatrix__cell_html_af970a7b211030451819a6397501e685d"><div class="ttname"><a href="structmatrix__cell.html#af970a7b211030451819a6397501e685d">matrix_cell::to_vid</a></div><div class="ttdeci">int64_t to_vid</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00119">pgr_types.h:119</a></div></div>
+<div class="ttc" id="get__check__data_8c_html_a6d8da632b86bd8f4e0f84f2a4219c887"><div class="ttname"><a href="get__check__data_8c.html#a6d8da632b86bd8f4e0f84f2a4219c887">pgr_SPI_getFloat8</a></div><div class="ttdeci">double pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00190">get_check_data.c:190</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a5bc91ed782fe6c30eaf15fe73b4474bba49c81011e2dec235c268e79ce70aa044"><div class="ttname"><a href="pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bba49c81011e2dec235c268e79ce70aa044">ANY_NUMERICAL</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00146">pgr_types.h:146</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_aeb63bcfc2ca89c02b30317112bae5f12"><div class="ttname"><a href="postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12">pgr_SPI_prepare</a></div><div class="ttdeci">SPIPlanPtr pgr_SPI_prepare(char *sql)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00081">postgres_connection.c:81</a></div></div>
+<div class="ttc" id="structColumn__info__t_html_a80df9b5f6ef4c51effc2da146bb0d477"><div class="ttname"><a href="structColumn__info__t.html#a80df9b5f6ef4c51effc2da146bb0d477">Column_info_t::eType</a></div><div class="ttdeci">expectType eType</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00157">pgr_types.h:157</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><b>distances_input.c</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:33 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="distances__input_8c.html">distances_input.c</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

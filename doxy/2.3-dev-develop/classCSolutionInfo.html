@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classCSolutionInfo.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,11 +107,15 @@ $(document).ready(function(){initNavTree('classCSolutionInfo.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCSolutionInfo-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">CSolutionInfo Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>&quot;</code></p>
 <div class="dynheader">
 Collaboration diagram for CSolutionInfo:</div>
 <div class="dyncontent">
@@ -118,10 +123,851 @@ Collaboration diagram for CSolutionInfo:</div>
 <map name="CSolutionInfo_coll__map" id="CSolutionInfo_coll__map">
 <area shape="rect" id="node4" href="classCTourInfo.html" title="CTourInfo" alt="" coords="168,109,247,136"/><area shape="rect" id="node5" href="classCVehicleInfo.html" title="CVehicleInfo" alt="" coords="167,5,264,32"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a581d72f48cbe5593cd302a9072ade1f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a581d72f48cbe5593cd302a9072ade1f3">CSolutionInfo</a> ()</td></tr>
+<tr class="separator:a581d72f48cbe5593cd302a9072ade1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a890d382e875c7ceccdb8234d6ce1efa7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a890d382e875c7ceccdb8234d6ce1efa7">~CSolutionInfo</a> ()</td></tr>
+<tr class="separator:a890d382e875c7ceccdb8234d6ce1efa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a623769077e5f7bbacfb3042463ea9045"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a623769077e5f7bbacfb3042463ea9045">addTour</a> (<a class="el" href="classCTourInfo.html">CTourInfo</a> &amp;tour)</td></tr>
+<tr class="separator:a623769077e5f7bbacfb3042463ea9045"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48fb57c5c2469bc4391a640dd1a45c21"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a48fb57c5c2469bc4391a640dd1a45c21">getOrderServed</a> ()</td></tr>
+<tr class="separator:a48fb57c5c2469bc4391a640dd1a45c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fc545e017af409d68155463fb9436f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a01fc545e017af409d68155463fb9436f">getTotalCost</a> ()</td></tr>
+<tr class="separator:a01fc545e017af409d68155463fb9436f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a029c095be724497a65b3f6fa02b5c857"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a029c095be724497a65b3f6fa02b5c857">getTotalDistance</a> ()</td></tr>
+<tr class="separator:a029c095be724497a65b3f6fa02b5c857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09b139f1376c9afb1dca88f2c9766329"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a09b139f1376c9afb1dca88f2c9766329">getTotalTravelTime</a> ()</td></tr>
+<tr class="separator:a09b139f1376c9afb1dca88f2c9766329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a273ab85f464b6063e4e186aaca2842b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCTourInfo.html">CTourInfo</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a273ab85f464b6063e4e186aaca2842b1">getTour</a> (int pos)</td></tr>
+<tr class="separator:a273ab85f464b6063e4e186aaca2842b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c5e7962d62ecf419fcbc56cf9995f2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a01c5e7962d62ecf419fcbc56cf9995f2">getTourCount</a> ()</td></tr>
+<tr class="separator:a01c5e7962d62ecf419fcbc56cf9995f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86867aa45fbed5fd85c42df0a6b3daf0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCTourInfo.html">CTourInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a86867aa45fbed5fd85c42df0a6b3daf0">getTourInfoVector</a> ()</td></tr>
+<tr class="separator:a86867aa45fbed5fd85c42df0a6b3daf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf5e04083c8e041676c0e02680b22178"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#acf5e04083c8e041676c0e02680b22178">getUnservedOrderAt</a> (int pos)</td></tr>
+<tr class="separator:acf5e04083c8e041676c0e02680b22178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa14aace2f876dd86538d80e1b2acd7db"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#aa14aace2f876dd86538d80e1b2acd7db">getUnservedOrderCount</a> ()</td></tr>
+<tr class="separator:aa14aace2f876dd86538d80e1b2acd7db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af01a87ad32c77731a53756b9b5cf5020"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#af01a87ad32c77731a53756b9b5cf5020">getUnusedVehicleAt</a> (int pos)</td></tr>
+<tr class="separator:af01a87ad32c77731a53756b9b5cf5020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadb311398e84ca7272ebd76c41714cfe"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#aadb311398e84ca7272ebd76c41714cfe">getUnusedVehicleCount</a> ()</td></tr>
+<tr class="separator:aadb311398e84ca7272ebd76c41714cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc2d268c140973cacb116ba15f1984eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#adc2d268c140973cacb116ba15f1984eb">getVehicleUsed</a> ()</td></tr>
+<tr class="separator:adc2d268c140973cacb116ba15f1984eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2337c9616ffc6b2d82ca79b7702e8c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#af2337c9616ffc6b2d82ca79b7702e8c5">init</a> (std::vector&lt; int &gt; vecOrder, int iTotalOrder, std::vector&lt; int &gt; vecVehicle)</td></tr>
+<tr class="separator:af2337c9616ffc6b2d82ca79b7702e8c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac48f757381aa6d4124a31bcd59fe3f1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#ac48f757381aa6d4124a31bcd59fe3f1d">removeOrder</a> (int pos)</td></tr>
+<tr class="separator:ac48f757381aa6d4124a31bcd59fe3f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304c8679bba83a118edfb78810a540a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a304c8679bba83a118edfb78810a540a6">removeVehicle</a> (int pos)</td></tr>
+<tr class="separator:a304c8679bba83a118edfb78810a540a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18c0d607d4c5c3119858bc8ea6590580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a18c0d607d4c5c3119858bc8ea6590580">replaceTour</a> (<a class="el" href="classCTourInfo.html">CTourInfo</a> curTour)</td></tr>
+<tr class="separator:a18c0d607d4c5c3119858bc8ea6590580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad46af485c9ac9e5c9afe1eae94e896e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#ad46af485c9ac9e5c9afe1eae94e896e3">replaceTourAt</a> (int index, <a class="el" href="classCTourInfo.html">CTourInfo</a> curTour)</td></tr>
+<tr class="separator:ad46af485c9ac9e5c9afe1eae94e896e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ad59750f992158ab047d52399c9afb914"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#ad59750f992158ab047d52399c9afb914">m_dTotalCost</a></td></tr>
+<tr class="separator:ad59750f992158ab047d52399c9afb914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cb09719734b9aac2d839512f5fa4bb0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a9cb09719734b9aac2d839512f5fa4bb0">m_dTotalDistance</a></td></tr>
+<tr class="separator:a9cb09719734b9aac2d839512f5fa4bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3ff3b862804ad288fa1d96ff5f2fde7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#ad3ff3b862804ad288fa1d96ff5f2fde7">m_dTotalTravelTime</a></td></tr>
+<tr class="separator:ad3ff3b862804ad288fa1d96ff5f2fde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ebb99c282948f3837db5c715a3ded79"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a2ebb99c282948f3837db5c715a3ded79">m_iOrdersServed</a></td></tr>
+<tr class="separator:a2ebb99c282948f3837db5c715a3ded79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bf66f7a944c6cf6bfc3c00b9e9e4cb1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a0bf66f7a944c6cf6bfc3c00b9e9e4cb1">m_iTotalOrders</a></td></tr>
+<tr class="separator:a0bf66f7a944c6cf6bfc3c00b9e9e4cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bb9ed6ef35649bb9288c42499c38951"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a4bb9ed6ef35649bb9288c42499c38951">m_iVehicleUsed</a></td></tr>
+<tr class="separator:a4bb9ed6ef35649bb9288c42499c38951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a154d5b2d797296081d4683beeaa53838"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCTourInfo.html">CTourInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a154d5b2d797296081d4683beeaa53838">m_vtourAll</a></td></tr>
+<tr class="separator:a154d5b2d797296081d4683beeaa53838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c4559c667e0ee157c86f59cd35fd3e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#a58c4559c667e0ee157c86f59cd35fd3e">m_vUnservedOrderId</a></td></tr>
+<tr class="separator:a58c4559c667e0ee157c86f59cd35fd3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0b0feeb39b420fff3e38a84834c1895"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCSolutionInfo.html#aa0b0feeb39b420fff3e38a84834c1895">m_vUnusedVehicles</a></td></tr>
+<tr class="separator:aa0b0feeb39b420fff3e38a84834c1895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00248">248</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a581d72f48cbe5593cd302a9072ade1f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CSolutionInfo::CSolutionInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00133">133</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a890d382e875c7ceccdb8234d6ce1efa7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CSolutionInfo::~CSolutionInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00136">136</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a623769077e5f7bbacfb3042463ea9045"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> CSolutionInfo::addTour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCTourInfo.html">CTourInfo</a> &amp;&#160;</td>
+          <td class="paramname"><em>tour</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00177">177</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00211">CTourInfo::getCost()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00209">CTourInfo::getDistance()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00215">CTourInfo::getOrderVector()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00213">CTourInfo::getTravelTime()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00187">CTourInfo::getVehicleId()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00294">m_dTotalCost</a>, <a class="el" href="VRP__Solver_8h_source.html#l00295">m_dTotalDistance</a>, <a class="el" href="VRP__Solver_8h_source.html#l00296">m_dTotalTravelTime</a>, <a class="el" href="VRP__Solver_8h_source.html#l00292">m_iOrdersServed</a>, <a class="el" href="VRP__Solver_8h_source.html#l00291">m_iVehicleUsed</a>, <a class="el" href="VRP__Solver_8h_source.html#l00288">m_vtourAll</a>, <a class="el" href="VRP__Solver_8h_source.html#l00289">m_vUnservedOrderId</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00290">m_vUnusedVehicles</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00319">CVRPSolver::generateInitialSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a48fb57c5c2469bc4391a640dd1a45c21"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CSolutionInfo::getOrderServed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00255">255</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00292">m_iOrdersServed</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00525">CVRPSolver::insertUnservedOrders()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00390">CVRPSolver::updateFinalSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a01fc545e017af409d68155463fb9436f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CSolutionInfo::getTotalCost </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00271">271</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00294">m_dTotalCost</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00201">print_solution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00390">CVRPSolver::updateFinalSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a029c095be724497a65b3f6fa02b5c857"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CSolutionInfo::getTotalDistance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00272">272</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00295">m_dTotalDistance</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00201">print_solution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00390">CVRPSolver::updateFinalSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a09b139f1376c9afb1dca88f2c9766329"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CSolutionInfo::getTotalTravelTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00273">273</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00296">m_dTotalTravelTime</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00201">print_solution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00390">CVRPSolver::updateFinalSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a273ab85f464b6063e4e186aaca2842b1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCTourInfo.html">CTourInfo</a>&amp; CSolutionInfo::getTour </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00259">259</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00288">m_vtourAll</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00798">CVRPSolver::addOrderAtTour()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00863">CVRPSolver::attempVehicleExchange()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00147">find_vrp_solution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00525">CVRPSolver::insertUnservedOrders()</a>, and <a class="el" href="Tester_8cpp_source.html#l00201">print_solution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a01c5e7962d62ecf419fcbc56cf9995f2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CSolutionInfo::getTourCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00261">261</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00288">m_vtourAll</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00863">CVRPSolver::attempVehicleExchange()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a86867aa45fbed5fd85c42df0a6b3daf0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classCTourInfo.html">CTourInfo</a>&gt; CSolutionInfo::getTourInfoVector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00282">282</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00288">m_vtourAll</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__core_8cpp_source.html#l00147">find_vrp_solution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00525">CVRPSolver::insertUnservedOrders()</a>, and <a class="el" href="Tester_8cpp_source.html#l00201">print_solution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acf5e04083c8e041676c0e02680b22178"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CSolutionInfo::getUnservedOrderAt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00274">274</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00289">m_vUnservedOrderId</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00319">CVRPSolver::generateInitialSolution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00525">CVRPSolver::insertUnservedOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa14aace2f876dd86538d80e1b2acd7db"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CSolutionInfo::getUnservedOrderCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00263">263</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00289">m_vUnservedOrderId</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00319">CVRPSolver::generateInitialSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af01a87ad32c77731a53756b9b5cf5020"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CSolutionInfo::getUnusedVehicleAt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00266">266</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00290">m_vUnusedVehicles</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00319">CVRPSolver::generateInitialSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aadb311398e84ca7272ebd76c41714cfe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t CSolutionInfo::getUnusedVehicleCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00264">264</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00290">m_vUnusedVehicles</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00319">CVRPSolver::generateInitialSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adc2d268c140973cacb116ba15f1984eb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CSolutionInfo::getVehicleUsed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00254">254</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00291">m_iVehicleUsed</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af2337c9616ffc6b2d82ca79b7702e8c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> CSolutionInfo::init </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>vecOrder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iTotalOrder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>vecVehicle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00161">161</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00294">m_dTotalCost</a>, <a class="el" href="VRP__Solver_8h_source.html#l00295">m_dTotalDistance</a>, <a class="el" href="VRP__Solver_8h_source.html#l00296">m_dTotalTravelTime</a>, <a class="el" href="VRP__Solver_8h_source.html#l00292">m_iOrdersServed</a>, <a class="el" href="VRP__Solver_8h_source.html#l00293">m_iTotalOrders</a>, <a class="el" href="VRP__Solver_8h_source.html#l00291">m_iVehicleUsed</a>, <a class="el" href="VRP__Solver_8h_source.html#l00288">m_vtourAll</a>, <a class="el" href="VRP__Solver_8h_source.html#l00289">m_vUnservedOrderId</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00290">m_vUnusedVehicles</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00319">CVRPSolver::generateInitialSolution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00276">CVRPSolver::solveVRP()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac48f757381aa6d4124a31bcd59fe3f1d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CSolutionInfo::removeOrder </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00269">269</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00289">m_vUnservedOrderId</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00319">CVRPSolver::generateInitialSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a304c8679bba83a118edfb78810a540a6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CSolutionInfo::removeVehicle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00268">268</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00290">m_vUnusedVehicles</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00319">CVRPSolver::generateInitialSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a18c0d607d4c5c3119858bc8ea6590580"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CSolutionInfo::replaceTour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCTourInfo.html">CTourInfo</a>&#160;</td>
+          <td class="paramname"><em>curTour</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00140">140</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00187">CTourInfo::getVehicleId()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00288">m_vtourAll</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00505">CVRPSolver::applyBestMoveInCurrentSolution()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad46af485c9ac9e5c9afe1eae94e896e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CSolutionInfo::replaceTourAt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classCTourInfo.html">CTourInfo</a>&#160;</td>
+          <td class="paramname"><em>curTour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00154">154</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00288">m_vtourAll</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00863">CVRPSolver::attempVehicleExchange()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ad59750f992158ab047d52399c9afb914"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CSolutionInfo::m_dTotalCost</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00294">294</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00177">addTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00271">getTotalCost()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9cb09719734b9aac2d839512f5fa4bb0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CSolutionInfo::m_dTotalDistance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00295">295</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00177">addTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00272">getTotalDistance()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad3ff3b862804ad288fa1d96ff5f2fde7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CSolutionInfo::m_dTotalTravelTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00296">296</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00177">addTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00273">getTotalTravelTime()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2ebb99c282948f3837db5c715a3ded79"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CSolutionInfo::m_iOrdersServed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00292">292</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00177">addTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00255">getOrderServed()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0bf66f7a944c6cf6bfc3c00b9e9e4cb1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CSolutionInfo::m_iTotalOrders</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00293">293</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4bb9ed6ef35649bb9288c42499c38951"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CSolutionInfo::m_iVehicleUsed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00291">291</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00177">addTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00254">getVehicleUsed()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a154d5b2d797296081d4683beeaa53838"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classCTourInfo.html">CTourInfo</a>&gt; CSolutionInfo::m_vtourAll</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00288">288</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00177">addTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00259">getTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00261">getTourCount()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00282">getTourInfoVector()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00140">replaceTour()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00154">replaceTourAt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58c4559c667e0ee157c86f59cd35fd3e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; CSolutionInfo::m_vUnservedOrderId</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00289">289</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00177">addTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00274">getUnservedOrderAt()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00263">getUnservedOrderCount()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00269">removeOrder()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa0b0feeb39b420fff3e38a84834c1895"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;int&gt; CSolutionInfo::m_vUnusedVehicles</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00290">290</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00177">addTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00266">getUnusedVehicleAt()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00264">getUnusedVehicleCount()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00161">init()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00268">removeVehicle()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a></li>
 <li><a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a></li>
 </ul>
@@ -131,7 +977,7 @@ Collaboration diagram for CSolutionInfo:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classCSolutionInfo.html">CSolutionInfo</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

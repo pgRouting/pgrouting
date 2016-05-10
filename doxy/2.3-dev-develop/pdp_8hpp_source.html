@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('pdp_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('pdp_8hpp_source.html','');});
 <div class="title">pdp.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="pdp_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2014 Manikata Kondeti</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">mani.iiit123@gmail.com</span></div>
@@ -137,54 +139,73 @@ $(document).ready(function(){initNavTree('pdp_8hpp_source.html','');});
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// Exclusive for c++ inclusion</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structDepot.html">   31</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        int64_t id;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">double</span> x;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">double</span> y;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">double</span> demand;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">double</span> Etime;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">double</span> Ltime;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">double</span> Stime;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        int64_t Pindex;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        int64_t Dindex;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structDepot.html#a92e6c7c5f69118988110d2c08650f2d9">   32</a></span>&#160;        int64_t <a class="code" href="structDepot.html#a92e6c7c5f69118988110d2c08650f2d9">id</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structDepot.html#a93594eb528351924ffe9de5e69cdc226">   33</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structDepot.html#a93594eb528351924ffe9de5e69cdc226">x</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structDepot.html#af222cd2615b12d776655ba142a35116f">   34</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structDepot.html#af222cd2615b12d776655ba142a35116f">y</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structDepot.html#aad4dfac926bc04b63af06a5c751f8d06">   35</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structDepot.html#aad4dfac926bc04b63af06a5c751f8d06">demand</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structDepot.html#a6c243b256dc71bd9f66ffa1e1ce3dcd7">   36</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structDepot.html#a6c243b256dc71bd9f66ffa1e1ce3dcd7">Etime</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structDepot.html#aaef12fe68b5a96ae2f921748879d2cb4">   37</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structDepot.html#aaef12fe68b5a96ae2f921748879d2cb4">Ltime</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structDepot.html#a8bcf205ba93f5214bfffc7df9fb79f96">   38</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structDepot.html#a8bcf205ba93f5214bfffc7df9fb79f96">Stime</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structDepot.html#a0c48c2f1b5202e0c8cd0d490fa5d9012">   39</a></span>&#160;        int64_t <a class="code" href="structDepot.html#a0c48c2f1b5202e0c8cd0d490fa5d9012">Pindex</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structDepot.html#a16c0a0e37ed7dbda27993cb864e2a3ad">   40</a></span>&#160;        int64_t <a class="code" href="structDepot.html#a16c0a0e37ed7dbda27993cb864e2a3ad">Dindex</a>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="structDepot.html">Depot</a>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structPickup.html">   44</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        int64_t Pid;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">double</span> Ddist;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        int64_t Did;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structPickup.html#a29c158bcc2968cf3188ac95706082112">   45</a></span>&#160;        int64_t <a class="code" href="structPickup.html#a29c158bcc2968cf3188ac95706082112">Pid</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structPickup.html#adb1789671e957e70cf1c3d9f97504e2d">   46</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="structPickup.html#adb1789671e957e70cf1c3d9f97504e2d">Ddist</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structPickup.html#a6cc6bf9f67319e8b72e4768b5a5b0b84">   47</a></span>&#160;        int64_t <a class="code" href="structPickup.html#a6cc6bf9f67319e8b72e4768b5a5b0b84">Did</a>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} <a class="code" href="structPickup.html">Pickup</a>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">typedef</span> std::vector&lt; Customer &gt; Customers;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">typedef</span> std::vector&lt; Pickup &gt; Pickups;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">   50</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt; Customer &gt; <a class="code" href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="pdp_8hpp.html#af195070f99a015f730dc877339611a79">   51</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt; Pickup &gt; <a class="code" href="pdp_8hpp.html#af195070f99a015f730dc877339611a79">Pickups</a>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// It is used to save some variables and helps if we need to revisit</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">// previous state.</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structState.html">   57</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        int64_t twv;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        int64_t cv;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        int64_t dis;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::vector&lt; int64_t &gt; path;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <a class="code" href="structState.html">State</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structState.html#afe30b035f7c8e9bd4b29667241f4f3a6">   58</a></span>&#160;        int64_t <a class="code" href="structState.html#afe30b035f7c8e9bd4b29667241f4f3a6">twv</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structState.html#aa6b6654c1ad3b52c3dadbd661745bc2c">   59</a></span>&#160;        int64_t <a class="code" href="structState.html#aa6b6654c1ad3b52c3dadbd661745bc2c">cv</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structState.html#a039c39c4f24785002b81bea0b6b10591">   60</a></span>&#160;        int64_t <a class="code" href="structState.html#a039c39c4f24785002b81bea0b6b10591">dis</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structState.html#ae74b08ba6185fcab500137cbfb5fdf80">   61</a></span>&#160;        std::vector&lt; int64_t &gt; <a class="code" href="structState.html#ae74b08ba6185fcab500137cbfb5fdf80">path</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <a class="code" href="vrppdtw_2src_2pdp_8h.html#a7921ae612b66a6db715a917ba8732388">State</a>;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T1, <span class="keyword">class</span> T2&gt;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">double</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;CalculateDistance(<span class="keyword">const</span> T1 &amp;from, <span class="keyword">const</span> T2 &amp;to) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="pdp_8hpp.html#af084a0d21e0d82600b6c9481fa0eed78">   66</a></span>&#160;<a class="code" href="pdp_8hpp.html#af084a0d21e0d82600b6c9481fa0eed78">CalculateDistance</a>(<span class="keyword">const</span> T1 &amp;from, <span class="keyword">const</span> T2 &amp;to) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> sqrt((from.x - to.x) * (from.x - to.x)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                + (from.y - to.y) * (from.y - to.y));</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="ttc" id="structPickup_html_a29c158bcc2968cf3188ac95706082112"><div class="ttname"><a href="structPickup.html#a29c158bcc2968cf3188ac95706082112">Pickup::Pid</a></div><div class="ttdeci">int64_t Pid</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00045">pdp.hpp:45</a></div></div>
+<div class="ttc" id="pdp_8hpp_html_a46e199b4e3e0fc924621709628341ccb"><div class="ttname"><a href="pdp_8hpp.html#a46e199b4e3e0fc924621709628341ccb">Customers</a></div><div class="ttdeci">std::vector&lt; Customer &gt; Customers</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00050">pdp.hpp:50</a></div></div>
+<div class="ttc" id="structDepot_html_aad4dfac926bc04b63af06a5c751f8d06"><div class="ttname"><a href="structDepot.html#aad4dfac926bc04b63af06a5c751f8d06">Depot::demand</a></div><div class="ttdeci">double demand</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00035">pdp.hpp:35</a></div></div>
+<div class="ttc" id="structState_html_a039c39c4f24785002b81bea0b6b10591"><div class="ttname"><a href="structState.html#a039c39c4f24785002b81bea0b6b10591">State::dis</a></div><div class="ttdeci">int64_t dis</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00060">pdp.hpp:60</a></div></div>
+<div class="ttc" id="structDepot_html_a0c48c2f1b5202e0c8cd0d490fa5d9012"><div class="ttname"><a href="structDepot.html#a0c48c2f1b5202e0c8cd0d490fa5d9012">Depot::Pindex</a></div><div class="ttdeci">int64_t Pindex</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00039">pdp.hpp:39</a></div></div>
+<div class="ttc" id="structState_html_aa6b6654c1ad3b52c3dadbd661745bc2c"><div class="ttname"><a href="structState.html#aa6b6654c1ad3b52c3dadbd661745bc2c">State::cv</a></div><div class="ttdeci">int64_t cv</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00059">pdp.hpp:59</a></div></div>
+<div class="ttc" id="pdp_8hpp_html_af195070f99a015f730dc877339611a79"><div class="ttname"><a href="pdp_8hpp.html#af195070f99a015f730dc877339611a79">Pickups</a></div><div class="ttdeci">std::vector&lt; Pickup &gt; Pickups</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00051">pdp.hpp:51</a></div></div>
+<div class="ttc" id="structDepot_html_aaef12fe68b5a96ae2f921748879d2cb4"><div class="ttname"><a href="structDepot.html#aaef12fe68b5a96ae2f921748879d2cb4">Depot::Ltime</a></div><div class="ttdeci">double Ltime</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00037">pdp.hpp:37</a></div></div>
+<div class="ttc" id="structDepot_html_a8bcf205ba93f5214bfffc7df9fb79f96"><div class="ttname"><a href="structDepot.html#a8bcf205ba93f5214bfffc7df9fb79f96">Depot::Stime</a></div><div class="ttdeci">double Stime</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00038">pdp.hpp:38</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp_8h_html_a7921ae612b66a6db715a917ba8732388"><div class="ttname"><a href="vrppdtw_2src_2pdp_8h.html#a7921ae612b66a6db715a917ba8732388">State</a></div><div class="ttdeci">struct statesave State</div></div>
+<div class="ttc" id="structDepot_html_a92e6c7c5f69118988110d2c08650f2d9"><div class="ttname"><a href="structDepot.html#a92e6c7c5f69118988110d2c08650f2d9">Depot::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00032">pdp.hpp:32</a></div></div>
+<div class="ttc" id="structDepot_html_a6c243b256dc71bd9f66ffa1e1ce3dcd7"><div class="ttname"><a href="structDepot.html#a6c243b256dc71bd9f66ffa1e1ce3dcd7">Depot::Etime</a></div><div class="ttdeci">double Etime</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00036">pdp.hpp:36</a></div></div>
+<div class="ttc" id="structPickup_html_adb1789671e957e70cf1c3d9f97504e2d"><div class="ttname"><a href="structPickup.html#adb1789671e957e70cf1c3d9f97504e2d">Pickup::Ddist</a></div><div class="ttdeci">double Ddist</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00046">pdp.hpp:46</a></div></div>
 <div class="ttc" id="structPickup_html"><div class="ttname"><a href="structPickup.html">Pickup</a></div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00044">pdp.hpp:44</a></div></div>
-<div class="ttc" id="structState_html"><div class="ttname"><a href="structState.html">State</a></div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00057">pdp.hpp:57</a></div></div>
+<div class="ttc" id="structDepot_html_a16c0a0e37ed7dbda27993cb864e2a3ad"><div class="ttname"><a href="structDepot.html#a16c0a0e37ed7dbda27993cb864e2a3ad">Depot::Dindex</a></div><div class="ttdeci">int64_t Dindex</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00040">pdp.hpp:40</a></div></div>
+<div class="ttc" id="structPickup_html_a6cc6bf9f67319e8b72e4768b5a5b0b84"><div class="ttname"><a href="structPickup.html#a6cc6bf9f67319e8b72e4768b5a5b0b84">Pickup::Did</a></div><div class="ttdeci">int64_t Did</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00047">pdp.hpp:47</a></div></div>
+<div class="ttc" id="structDepot_html_a93594eb528351924ffe9de5e69cdc226"><div class="ttname"><a href="structDepot.html#a93594eb528351924ffe9de5e69cdc226">Depot::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00033">pdp.hpp:33</a></div></div>
+<div class="ttc" id="structState_html_ae74b08ba6185fcab500137cbfb5fdf80"><div class="ttname"><a href="structState.html#ae74b08ba6185fcab500137cbfb5fdf80">State::path</a></div><div class="ttdeci">std::vector&lt; int64_t &gt; path</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00061">pdp.hpp:61</a></div></div>
+<div class="ttc" id="structDepot_html_af222cd2615b12d776655ba142a35116f"><div class="ttname"><a href="structDepot.html#af222cd2615b12d776655ba142a35116f">Depot::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00034">pdp.hpp:34</a></div></div>
+<div class="ttc" id="structState_html_afe30b035f7c8e9bd4b29667241f4f3a6"><div class="ttname"><a href="structState.html#afe30b035f7c8e9bd4b29667241f4f3a6">State::twv</a></div><div class="ttdeci">int64_t twv</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00058">pdp.hpp:58</a></div></div>
+<div class="ttc" id="pdp_8hpp_html_af084a0d21e0d82600b6c9481fa0eed78"><div class="ttname"><a href="pdp_8hpp.html#af084a0d21e0d82600b6c9481fa0eed78">CalculateDistance</a></div><div class="ttdeci">double CalculateDistance(const T1 &amp;from, const T2 &amp;to)</div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00066">pdp.hpp:66</a></div></div>
 <div class="ttc" id="structDepot_html"><div class="ttname"><a href="structDepot.html">Depot</a></div><div class="ttdef"><b>Definition:</b> <a href="pdp_8hpp_source.html#l00031">pdp.hpp:31</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><b>pdp.hpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><a class="el" href="pdp_8hpp.html">pdp.hpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

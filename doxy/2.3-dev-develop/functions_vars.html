@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -80,6 +81,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li class="current"><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
+      <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li class="current"><a href="functions_vars.html#index_a"><span>a</span></a></li>
+      <li><a href="functions_vars_b.html#index_b"><span>b</span></a></li>
+      <li><a href="functions_vars_c.html#index_c"><span>c</span></a></li>
+      <li><a href="functions_vars_d.html#index_d"><span>d</span></a></li>
+      <li><a href="functions_vars_e.html#index_e"><span>e</span></a></li>
+      <li><a href="functions_vars_f.html#index_f"><span>f</span></a></li>
+      <li><a href="functions_vars_g.html#index_g"><span>g</span></a></li>
+      <li><a href="functions_vars_h.html#index_h"><span>h</span></a></li>
+      <li><a href="functions_vars_i.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_vars_j.html#index_j"><span>j</span></a></li>
+      <li><a href="functions_vars_l.html#index_l"><span>l</span></a></li>
+      <li><a href="functions_vars_m.html#index_m"><span>m</span></a></li>
+      <li><a href="functions_vars_n.html#index_n"><span>n</span></a></li>
+      <li><a href="functions_vars_o.html#index_o"><span>o</span></a></li>
+      <li><a href="functions_vars_p.html#index_p"><span>p</span></a></li>
+      <li><a href="functions_vars_r.html#index_r"><span>r</span></a></li>
+      <li><a href="functions_vars_s.html#index_s"><span>s</span></a></li>
+      <li><a href="functions_vars_t.html#index_t"><span>t</span></a></li>
+      <li><a href="functions_vars_u.html#index_u"><span>u</span></a></li>
+      <li><a href="functions_vars_v.html#index_v"><span>v</span></a></li>
+      <li><a href="functions_vars_x.html#index_x"><span>x</span></a></li>
+      <li><a href="functions_vars_y.html#index_y"><span>y</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -102,7 +132,7 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,49 +142,22 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 </div>
 
 <div class="contents">
-&#160;<ul>
-<li>curr_result_path
-: <a class="el" href="classPgr__ksp.html#afd9e2136d3e354ec074773d8f3d533aa">Pgr_ksp&lt; G &gt;</a>
+&#160;
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>abortive_quit_
+: <a class="el" href="classSIGQUIT__Handler.html#acc4794a2e828d331c2ccd51e5cb45c19">SIGQUIT_Handler</a>
 </li>
-<li>graph
-: <a class="el" href="classPgr__base__graph.html#adc3f00b58a76c38643159939c7cc04c6">Pgr_base_graph&lt; G &gt;</a>
+<li>adjacent_edges
+: <a class="el" href="structEdge.html#a2df02925cc88bb2f7ac42e0a5acbfc2a">Edge</a>
 </li>
-<li>gVertices_map
-: <a class="el" href="classPgr__base__graph.html#aac991732287b3fc12174efc31683c3f7">Pgr_base_graph&lt; G &gt;</a>
+<li>agg_cost
+: <a class="el" href="structGeneral__path__element__t.html#ae56bc0763b498b1b5337b04605dbc8c1">General_path_element_t</a>
+, <a class="el" href="structPath__t.html#a4b0555b6ae7d83d981fe59ed971029ae">Path_t</a>
+, <a class="el" href="structRoutes__t.html#a75b0f3f7ade66580346bb41124d15644">Routes_t</a>
 </li>
-<li>m_end
-: <a class="el" href="classPgr__ksp.html#a3fc94e730d74d65c3fc2c64c2d4bd1ff">Pgr_ksp&lt; G &gt;</a>
-</li>
-<li>m_gType
-: <a class="el" href="classPgr__base__graph.html#aa79ffcc8e5351b694a316a0ca0123841">Pgr_base_graph&lt; G &gt;</a>
-</li>
-<li>m_Heap
-: <a class="el" href="classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6">Pgr_ksp&lt; G &gt;</a>
-</li>
-<li>m_num_vertices
-: <a class="el" href="classPgr__base__graph.html#a1cafcc4815b079ae6cb30afe603a151b">Pgr_base_graph&lt; G &gt;</a>
-</li>
-<li>m_ResultSet
-: <a class="el" href="classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34">Pgr_ksp&lt; G &gt;</a>
-</li>
-<li>m_start
-: <a class="el" href="classPgr__ksp.html#abae118da08007fc1c69ff04b442ca5cf">Pgr_ksp&lt; G &gt;</a>
-</li>
-<li>removed_edges
-: <a class="el" href="classPgr__base__graph.html#ae8691956fe835fc3c92c6345800499a5">Pgr_base_graph&lt; G &gt;</a>
-</li>
-<li>str
-: <a class="el" href="classAssertFailedException.html#abdf19668da3d8b06089c003c424af37a">AssertFailedException</a>
-, <a class="el" href="classUserQuitException.html#a66969af1e0af3c8ae5e7c567ffbb4f36">UserQuitException</a>
-</li>
-<li>v_source
-: <a class="el" href="classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480">Pgr_ksp&lt; G &gt;</a>
-</li>
-<li>v_target
-: <a class="el" href="classPgr__ksp.html#a272c77dfb567322b855a83887339a979">Pgr_ksp&lt; G &gt;</a>
-</li>
-<li>vertices_map
-: <a class="el" href="classPgr__base__graph.html#aa7cfbed0e98c83f12e43fede65cd6bfb">Pgr_base_graph&lt; G &gt;</a>
+<li>arrival_time
+: <a class="el" href="structvrp__result__element.html#ab5ac5e6c44ef6c9c035322a1e29fbf95">vrp_result_element</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -162,7 +165,7 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,0 +1,26 @@
+var VRP_8c =
+[
+    [ "distance_columns", "structdistance__columns.html", "structdistance__columns" ],
+    [ "order_columns", "structorder__columns.html", "structorder__columns" ],
+    [ "vehicle_columns", "structvehicle__columns.html", "structvehicle__columns" ],
+    [ "profstart", "VRP_8c.html#a0dfa45928ea53d05b475d9e3387865a5", null ],
+    [ "profstop", "VRP_8c.html#a3cf3d36d1041f89f44ef9ec00cebb552", null ],
+    [ "TUPLIMIT", "VRP_8c.html#a0938455e5ec9df9cd6255f4fcc04162b", null ],
+    [ "distance_columns_t", "VRP_8c.html#a3204befca7e502dbb80f71125fadec96", null ],
+    [ "order_columns_t", "VRP_8c.html#a6d7db291f320e9a3abeb6d09b81cf5bd", null ],
+    [ "vehicle_columns_t", "VRP_8c.html#a718455f6c4fe794c0c4bb9b72394e38c", null ],
+    [ "conn", "VRP_8c.html#a34cf4a89d85450fb66ae0556917b764b", null ],
+    [ "fetch_distance", "VRP_8c.html#a061bc3cf09b8243bc29dbc162b826930", null ],
+    [ "fetch_distance_columns", "VRP_8c.html#a10e669980dbb80b9c047a8894c43612b", null ],
+    [ "fetch_order", "VRP_8c.html#a8ee15ecf95934223e5b424a18f1fd13d", null ],
+    [ "fetch_order_columns", "VRP_8c.html#aadc1f40eb5fa0812b014efad10c62379", null ],
+    [ "fetch_vehicle", "VRP_8c.html#a66f2dee6ce07fbb2159f8d86c0b62b08", null ],
+    [ "fetch_vehicle_columns", "VRP_8c.html#a0f32b6d4644d64dd25799db562364643", null ],
+    [ "finish", "VRP_8c.html#a89545889dc88e835f385f06d011380c5", null ],
+    [ "PG_FUNCTION_INFO_V1", "VRP_8c.html#afa53f98a5857d42494887fcc296c4bfe", null ],
+    [ "prepare_query", "VRP_8c.html#aef732231f4ceb255e09db67b08eca8df", null ],
+    [ "solve_vrp", "VRP_8c.html#ad7efc1f81afdbae98c86ba071b422489", null ],
+    [ "text2char", "VRP_8c.html#a8745898afb7409587ee98f384ee40a39", null ],
+    [ "vrp", "VRP_8c.html#ac749ce0f1c22db30e099942b6cd81732", null ],
+    [ "PG_MODULE_MAGIC", "VRP_8c.html#a509119277abe280e6db17c34f79e01cf", null ]
+];

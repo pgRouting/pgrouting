@@ -1,0 +1,18 @@
+var searchData=
+[
+  ['import_5ffrom_5ffile',['import_from_file',['../performance_2dijkstra_2pgRouting_8cpp.html#a4e7ce6219854047eaf3c76bea4efe704',1,'import_from_file(const std::string &amp;input_file_name, pgr_edge_t *edges, unsigned int *count, int64_t start_vertex, int64_t end_vertex, bool &amp;found):&#160;pgRouting.cpp'],['../pgRouting_8cpp.html#a4e7ce6219854047eaf3c76bea4efe704',1,'import_from_file(const std::string &amp;input_file_name, pgr_edge_t *edges, unsigned int *count, int64_t start_vertex, int64_t end_vertex, bool &amp;found):&#160;pgRouting.cpp']]],
+  ['in_5fdegree',['in_degree',['../classpgRouting_1_1graph_1_1Pgr__base__graph.html#acda80d074e1807c6600395e5cee5b9e0',1,'pgRouting::graph::Pgr_base_graph']]],
+  ['init',['init',['../classBiDirAStar.html#a1a5145fd08347b4628a877d43d61d0ff',1,'BiDirAStar::init()'],['../classMinHeap.html#a07ea110bfae4d1706ca02ae1a2da7072',1,'MinHeap::init()'],['../classBiDirAStar.html#a1a5145fd08347b4628a877d43d61d0ff',1,'BiDirAStar::init()'],['../classMinHeap.html#a07ea110bfae4d1706ca02ae1a2da7072',1,'MinHeap::init()'],['../classBiDirDijkstra.html#a87234ee931e3f15c16a5230bd03ed1a2',1,'BiDirDijkstra::init()'],['../classGraphDefinition.html#a7318fb4906c06f0cb4417ea1c09f665a',1,'GraphDefinition::init()'],['../classCVehicleInfo.html#a500cec23028909bbea37db935fb6d778',1,'CVehicleInfo::init()'],['../classCTourInfo.html#a69c0275b03b0464fcba506c1612dac38',1,'CTourInfo::init()'],['../classCSolutionInfo.html#af2337c9616ffc6b2d82ca79b7702e8c5',1,'CSolutionInfo::init()'],['../classCVRPSolver.html#a9ea8122d128557860036bd5e4aa85491',1,'CVRPSolver::init()']]],
+  ['initall',['initall',['../classBiDirAStar.html#a8c0c4812904a7224bd442a755b9a2318',1,'BiDirAStar::initall(int maxNode)'],['../classBiDirAStar.html#a8c0c4812904a7224bd442a755b9a2318',1,'BiDirAStar::initall(int maxNode)'],['../classBiDirDijkstra.html#ac687b806167aa4d1f79bf8e4792f4195',1,'BiDirDijkstra::initall()']]],
+  ['initialize_5fedge',['initialize_edge',['../classboost_1_1shooting__star__visitor.html#aa3582e2393529ff90ebaf24de72ebed5',1,'boost::shooting_star_visitor::initialize_edge()'],['../structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a07d543fec7210d3ac8e5e18bec73f1bb',1,'boost::detail::shooting_star_bfs_visitor::initialize_edge()']]],
+  ['initialize_5fvertex',['initialize_vertex',['../structboost_1_1detail_1_1shooting__star__bfs__visitor.html#aa9f0e691c1d35031ba353c857d0d6c29',1,'boost::detail::shooting_star_bfs_visitor']]],
+  ['initrand',['initRand',['../tsplib_8c.html#a11abaa44d7a5fd75f912b5fc5b2528c4',1,'tsplib.c']]],
+  ['insertorder',['insertOrder',['../classRoute.html#a6551cfe12c98a85d767805c6add54a8d',1,'Route::insertOrder()'],['../classCTourInfo.html#ac7a8b3ea9abf1f12b7872159dc62f0b1',1,'CTourInfo::insertOrder()'],['../classCVRPSolver.html#afe08f85c746f5cec359e2ee8fb2ee1d0',1,'CVRPSolver::insertOrder()'],['../classRoute.html#a873bac82eba09b350ef38a285c563466',1,'Route::insertOrder()']]],
+  ['insertunservedorders',['insertUnservedOrders',['../classCVRPSolver.html#a46471aa397eebe84b6ae9b950f296ce3',1,'CVRPSolver']]],
+  ['instance',['instance',['../classSignalHandler.html#ac9a307bf2b20263020913657b094db9e',1,'SignalHandler']]],
+  ['is_5fequal',['is_equal',['../shooting__star__relax_8hpp.html#ad982d872081c3ea9ccdaf544b5226a42',1,'shooting_star_relax.hpp']]],
+  ['is_5fsymetric',['is_symetric',['../classDmatrix.html#a854d9e7a8f3958329de438932015a997',1,'Dmatrix']]],
+  ['isbetter',['isBetter',['../classCMoveInfo.html#a5dfa4238d9569757cd90fb351f9754a9',1,'CMoveInfo']]],
+  ['isequal',['isEqual',['../classPath.html#adf67930d9eaea5c23c9a5262fc846a73',1,'Path']]],
+  ['istabumove',['isTabuMove',['../classCVRPSolver.html#a33c8852cdb507ade8adfc5d292911e20',1,'CVRPSolver']]]
+];

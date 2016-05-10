@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('ksp_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,10 +108,10 @@ $(document).ready(function(){initNavTree('ksp_8cpp_source.html','');});
 <div class="title">ksp.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<a href="ksp_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;      </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> G&gt; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">void</span> process_ksp(G &amp;graph, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;tokens) {</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="ksp_8cpp.html#a10e4a6799cd7644b570d86d3908fa3a7">    4</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ksp_8cpp.html#a10e4a6799cd7644b570d86d3908fa3a7">process_ksp</a>(G &amp;graph, <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;tokens) {</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;      std::string::size_type sz;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;      <span class="keywordflow">if</span> (tokens[1].compare(<span class="stringliteral">&quot;from&quot;</span>) != 0) {</div>
@@ -157,7 +159,7 @@ $(document).ready(function(){initNavTree('ksp_8cpp_source.html','');});
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="keywordflow">if</span> (sources.size() == 1 &amp;&amp; targets.size() == 1) {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// one to one</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::deque&lt; Path &gt; paths;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        paths = ksp.Yen(graph, sources[0], targets[0], 3); <span class="comment">//TODO make variable</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        paths = ksp.<a class="code" href="classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac">Yen</a>(graph, sources[0], targets[0], 3); <span class="comment">//TODO make variable</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;THE OPUTPUT ----&quot;</span> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; paths.size(); ++i) {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;           <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(paths[i]) == 0) <span class="keywordflow">continue</span>; <span class="comment">//no solution found</span></div>
@@ -205,14 +207,16 @@ $(document).ready(function(){initNavTree('ksp_8cpp_source.html','');});
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="ttc" id="ksp_8cpp_html_a10e4a6799cd7644b570d86d3908fa3a7"><div class="ttname"><a href="ksp_8cpp.html#a10e4a6799cd7644b570d86d3908fa3a7">process_ksp</a></div><div class="ttdeci">void process_ksp(G &amp;graph, const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="ksp_8cpp_source.html#l00004">ksp.cpp:4</a></div></div>
 <div class="ttc" id="classPgr__ksp_html"><div class="ttname"><a href="classPgr__ksp.html">Pgr_ksp</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8hpp_source.html#l00042">pgr_ksp.hpp:42</a></div></div>
+<div class="ttc" id="classPgr__ksp_html_a20f84d74e3ead8e43ec907dcabaadeac"><div class="ttname"><a href="classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac">Pgr_ksp::Yen</a></div><div class="ttdeci">std::deque&lt; Path &gt; Yen(G &amp;graph, int64_t source, int64_t target, int K, bool heap_paths)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8cpp_source.html#l00056">pgr_ksp.cpp:56</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d00ce88a1fe87f5e8ffa8e1a7be5e0a5.html">linecommand</a></li><li class="navelem"><a class="el" href="dir_6f513041d2f60412f8dae41f44763875.html">src</a></li><li class="navelem"><b>ksp.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d00ce88a1fe87f5e8ffa8e1a7be5e0a5.html">linecommand</a></li><li class="navelem"><a class="el" href="dir_6f513041d2f60412f8dae41f44763875.html">src</a></li><li class="navelem"><a class="el" href="ksp_8cpp.html">ksp.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

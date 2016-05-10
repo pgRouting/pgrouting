@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classCOrderInfo.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,15 +107,597 @@ $(document).ready(function(){initNavTree('classCOrderInfo.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCOrderInfo-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">COrderInfo Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>&quot;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8a009ebafc5fc4c70a23088403c65a4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a8a009ebafc5fc4c70a23088403c65a4a">COrderInfo</a> ()</td></tr>
+<tr class="separator:a8a009ebafc5fc4c70a23088403c65a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a183e32d490dec624a56233e4d9238d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a8a183e32d490dec624a56233e4d9238d">~COrderInfo</a> ()</td></tr>
+<tr class="separator:a8a183e32d490dec624a56233e4d9238d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a209c8e3ed2e7160a3d28e4ea6bb6e6e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a209c8e3ed2e7160a3d28e4ea6bb6e6e6">getCloseTime</a> ()</td></tr>
+<tr class="separator:a209c8e3ed2e7160a3d28e4ea6bb6e6e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab51a00b09ab8489b5dd4ac2c6eac78f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#ab51a00b09ab8489b5dd4ac2c6eac78f5">getOpenTime</a> ()</td></tr>
+<tr class="separator:ab51a00b09ab8489b5dd4ac2c6eac78f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8b16b39afa7ed2c5a2095391913368a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#ae8b16b39afa7ed2c5a2095391913368a">getOrderId</a> ()</td></tr>
+<tr class="separator:ae8b16b39afa7ed2c5a2095391913368a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65cadf758e5d3d3539d8c4e65f11d52b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPoint.html">Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a65cadf758e5d3d3539d8c4e65f11d52b">getOrderLocation</a> ()</td></tr>
+<tr class="separator:a65cadf758e5d3d3539d8c4e65f11d52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add0938c562ce58a7a946fbe3d0751326"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#add0938c562ce58a7a946fbe3d0751326">getOrderUnit</a> ()</td></tr>
+<tr class="separator:add0938c562ce58a7a946fbe3d0751326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a846a0bcb3e55239521ef8295ca5de434"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a846a0bcb3e55239521ef8295ca5de434">getServiceTime</a> ()</td></tr>
+<tr class="separator:a846a0bcb3e55239521ef8295ca5de434"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9b2a0b7003fd27972bf59cdef755cb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#ab9b2a0b7003fd27972bf59cdef755cb8">setCloseTime</a> (int closeTime)</td></tr>
+<tr class="separator:ab9b2a0b7003fd27972bf59cdef755cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc1b6ee5cdb5bfa5376abee4c1a69c6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#afc1b6ee5cdb5bfa5376abee4c1a69c6d">setOpenTime</a> (int openTime)</td></tr>
+<tr class="separator:afc1b6ee5cdb5bfa5376abee4c1a69c6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa19009a8c0d11f25957cdfd768b072d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#aa19009a8c0d11f25957cdfd768b072d1">setOrderId</a> (int orderId)</td></tr>
+<tr class="separator:aa19009a8c0d11f25957cdfd768b072d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88a844d3a38b3968443ecdbfb60b80b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#ac88a844d3a38b3968443ecdbfb60b80b">setOrderLocation</a> (<a class="el" href="structPoint.html">Point</a> location)</td></tr>
+<tr class="separator:ac88a844d3a38b3968443ecdbfb60b80b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a032ece8fd0f42eeb151684c052e624d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a032ece8fd0f42eeb151684c052e624d9">setOrderUnit</a> (int orderUnit)</td></tr>
+<tr class="separator:a032ece8fd0f42eeb151684c052e624d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8079fb997221b9efe57ec9a55914252a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a8079fb997221b9efe57ec9a55914252a">setServiceTime</a> (int serviceTime)</td></tr>
+<tr class="separator:a8079fb997221b9efe57ec9a55914252a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac91b1f9b46036eb246c5fd103cefb62c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#ac91b1f9b46036eb246c5fd103cefb62c">m_iOrderCloseTime</a></td></tr>
+<tr class="separator:ac91b1f9b46036eb246c5fd103cefb62c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb5705ef4aba49e3c760755b4bb11ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a5cb5705ef4aba49e3c760755b4bb11ed">m_iOrderId</a></td></tr>
+<tr class="separator:a5cb5705ef4aba49e3c760755b4bb11ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3842d748db65f236f0b6ede6f6a096bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a3842d748db65f236f0b6ede6f6a096bf">m_iOrderOpenTime</a></td></tr>
+<tr class="separator:a3842d748db65f236f0b6ede6f6a096bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2d73db981597a5f206715624b488afb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#ab2d73db981597a5f206715624b488afb">m_iOrderServiceTime</a></td></tr>
+<tr class="separator:ab2d73db981597a5f206715624b488afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24a7c1c67058859564d32ff73f7dc6cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a24a7c1c67058859564d32ff73f7dc6cc">m_iOrderUnitCount</a></td></tr>
+<tr class="separator:a24a7c1c67058859564d32ff73f7dc6cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac6bc00796972a2972405cbf3fcafb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPoint.html">Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCOrderInfo.html#a6ac6bc00796972a2972405cbf3fcafb4">m_ptOrderLocation</a></td></tr>
+<tr class="separator:a6ac6bc00796972a2972405cbf3fcafb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00104">104</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a8a009ebafc5fc4c70a23088403c65a4a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COrderInfo::COrderInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00085">85</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8a183e32d490dec624a56233e4d9238d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COrderInfo::~COrderInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00088">88</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a209c8e3ed2e7160a3d28e4ea6bb6e6e6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::getCloseTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00113">113</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00134">m_iOrderCloseTime</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00435">CVRPSolver::getPotentialInsert()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab51a00b09ab8489b5dd4ac2c6eac78f5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::getOpenTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00110">110</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00133">m_iOrderOpenTime</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae8b16b39afa7ed2c5a2095391913368a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::getOrderId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00125">125</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00137">m_iOrderId</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00599">CVRPSolver::addOrder()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00803">CVRPSolver::getCostForInsert()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00435">CVRPSolver::getPotentialInsert()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a65cadf758e5d3d3539d8c4e65f11d52b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPoint.html">Point</a> COrderInfo::getOrderLocation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00122">122</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00139">m_ptOrderLocation</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="add0938c562ce58a7a946fbe3d0751326"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::getOrderUnit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00119">119</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00136">m_iOrderUnitCount</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00435">CVRPSolver::getPotentialInsert()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a846a0bcb3e55239521ef8295ca5de434"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::getServiceTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00116">116</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00135">m_iOrderServiceTime</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00435">CVRPSolver::getPotentialInsert()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab9b2a0b7003fd27972bf59cdef755cb8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void COrderInfo::setCloseTime </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>closeTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00114">114</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00134">m_iOrderCloseTime</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afc1b6ee5cdb5bfa5376abee4c1a69c6d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void COrderInfo::setOpenTime </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>openTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00111">111</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00133">m_iOrderOpenTime</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa19009a8c0d11f25957cdfd768b072d1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void COrderInfo::setOrderId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>orderId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00126">126</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00137">m_iOrderId</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac88a844d3a38b3968443ecdbfb60b80b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void COrderInfo::setOrderLocation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPoint.html">Point</a>&#160;</td>
+          <td class="paramname"><em>location</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00123">123</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00139">m_ptOrderLocation</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a032ece8fd0f42eeb151684c052e624d9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void COrderInfo::setOrderUnit </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>orderUnit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00120">120</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00136">m_iOrderUnitCount</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8079fb997221b9efe57ec9a55914252a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void COrderInfo::setServiceTime </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>serviceTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00117">117</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00135">m_iOrderServiceTime</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ac91b1f9b46036eb246c5fd103cefb62c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::m_iOrderCloseTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00134">134</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00113">getCloseTime()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00114">setCloseTime()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5cb5705ef4aba49e3c760755b4bb11ed"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::m_iOrderId</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00137">137</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00125">getOrderId()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00126">setOrderId()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3842d748db65f236f0b6ede6f6a096bf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::m_iOrderOpenTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00133">133</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00110">getOpenTime()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00111">setOpenTime()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab2d73db981597a5f206715624b488afb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::m_iOrderServiceTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00135">135</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00116">getServiceTime()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00117">setServiceTime()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a24a7c1c67058859564d32ff73f7dc6cc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int COrderInfo::m_iOrderUnitCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00136">136</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00119">getOrderUnit()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00120">setOrderUnit()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6ac6bc00796972a2972405cbf3fcafb4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPoint.html">Point</a> COrderInfo::m_ptOrderLocation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00139">139</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00122">getOrderLocation()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00123">setOrderLocation()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a></li>
 <li><a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a></li>
 </ul>
@@ -124,7 +707,7 @@ $(document).ready(function(){initNavTree('classCOrderInfo.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classCOrderInfo.html">COrderInfo</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

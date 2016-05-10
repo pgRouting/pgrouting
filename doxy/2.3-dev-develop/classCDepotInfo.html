@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classCDepotInfo.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,15 +107,417 @@ $(document).ready(function(){initNavTree('classCDepotInfo.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCDepotInfo-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">CDepotInfo Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &quot;<a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>&quot;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a609c63c1c08b9da7fa06a205078c342a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a609c63c1c08b9da7fa06a205078c342a">CDepotInfo</a> ()</td></tr>
+<tr class="separator:a609c63c1c08b9da7fa06a205078c342a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8dcf9e6f81a65fd786e9372b7c9529"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a2e8dcf9e6f81a65fd786e9372b7c9529">~CDepotInfo</a> ()</td></tr>
+<tr class="separator:a2e8dcf9e6f81a65fd786e9372b7c9529"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36aa2923fd994ce23a358bbf6435ab57"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a36aa2923fd994ce23a358bbf6435ab57">getCloseTime</a> ()</td></tr>
+<tr class="separator:a36aa2923fd994ce23a358bbf6435ab57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ca9c39d721f1484ee98d95d07e11ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a89ca9c39d721f1484ee98d95d07e11ae">getDepotId</a> ()</td></tr>
+<tr class="separator:a89ca9c39d721f1484ee98d95d07e11ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98135bafb76b78924bfce1f589101b98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPoint.html">Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a98135bafb76b78924bfce1f589101b98">getDepotLocation</a> ()</td></tr>
+<tr class="separator:a98135bafb76b78924bfce1f589101b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56dbcca5e2ed0c14d4ec4e2194d22b3c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a56dbcca5e2ed0c14d4ec4e2194d22b3c">getOpenTime</a> ()</td></tr>
+<tr class="separator:a56dbcca5e2ed0c14d4ec4e2194d22b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac55b4384a35167456088b360712cc5b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#ac55b4384a35167456088b360712cc5b3">setCloseTime</a> (int closeTime)</td></tr>
+<tr class="separator:ac55b4384a35167456088b360712cc5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a474994eccc097cdbc12e3ad900ba8a0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a474994eccc097cdbc12e3ad900ba8a0d">setDepotId</a> (int id)</td></tr>
+<tr class="separator:a474994eccc097cdbc12e3ad900ba8a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cc717747d360086504806771214eb17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a9cc717747d360086504806771214eb17">setDepotLocation</a> (<a class="el" href="structPoint.html">Point</a> location)</td></tr>
+<tr class="separator:a9cc717747d360086504806771214eb17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85ba66bcc1f9b63ab945abbba414f2a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a85ba66bcc1f9b63ab945abbba414f2a1">setOpenTime</a> (int openTime)</td></tr>
+<tr class="separator:a85ba66bcc1f9b63ab945abbba414f2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a53cf9af90e6e8207307f8be8d94114cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a53cf9af90e6e8207307f8be8d94114cf">m_iDepotCloseTime</a></td></tr>
+<tr class="separator:a53cf9af90e6e8207307f8be8d94114cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c26af812d77e27de5ea7a33d05e9ff8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a6c26af812d77e27de5ea7a33d05e9ff8">m_iDepotId</a></td></tr>
+<tr class="separator:a6c26af812d77e27de5ea7a33d05e9ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd258743562d1abae6021400011d46f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#a7bd258743562d1abae6021400011d46f">m_iDepotOpenTime</a></td></tr>
+<tr class="separator:a7bd258743562d1abae6021400011d46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf80c7a3d5f981825826f448e06d53e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPoint.html">Point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCDepotInfo.html#aaf80c7a3d5f981825826f448e06d53e3">m_ptDepotLocation</a></td></tr>
+<tr class="separator:aaf80c7a3d5f981825826f448e06d53e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00145">145</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a609c63c1c08b9da7fa06a205078c342a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CDepotInfo::CDepotInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00092">92</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2e8dcf9e6f81a65fd786e9372b7c9529"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CDepotInfo::~CDepotInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00095">95</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a36aa2923fd994ce23a358bbf6435ab57"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CDepotInfo::getCloseTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00154">154</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00168">m_iDepotCloseTime</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a89ca9c39d721f1484ee98d95d07e11ae"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CDepotInfo::getDepotId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00157">157</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00170">m_iDepotId</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00588">CVRPSolver::addDepot()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a98135bafb76b78924bfce1f589101b98"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPoint.html">Point</a> CDepotInfo::getDepotLocation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00160">160</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00172">m_ptDepotLocation</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a56dbcca5e2ed0c14d4ec4e2194d22b3c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CDepotInfo::getOpenTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00151">151</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00167">m_iDepotOpenTime</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac55b4384a35167456088b360712cc5b3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CDepotInfo::setCloseTime </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>closeTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00155">155</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00168">m_iDepotCloseTime</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a474994eccc097cdbc12e3ad900ba8a0d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CDepotInfo::setDepotId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00158">158</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00170">m_iDepotId</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9cc717747d360086504806771214eb17"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CDepotInfo::setDepotLocation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPoint.html">Point</a>&#160;</td>
+          <td class="paramname"><em>location</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00161">161</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00172">m_ptDepotLocation</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a85ba66bcc1f9b63ab945abbba414f2a1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CDepotInfo::setOpenTime </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>openTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00152">152</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00167">m_iDepotOpenTime</a>.</p>
+
+<p>Referenced by <a class="el" href="Tester_8cpp_source.html#l00033">loadOrders()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a53cf9af90e6e8207307f8be8d94114cf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CDepotInfo::m_iDepotCloseTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00168">168</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00154">getCloseTime()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00155">setCloseTime()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6c26af812d77e27de5ea7a33d05e9ff8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CDepotInfo::m_iDepotId</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00170">170</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00157">getDepotId()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00158">setDepotId()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7bd258743562d1abae6021400011d46f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CDepotInfo::m_iDepotOpenTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00167">167</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00151">getOpenTime()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00152">setOpenTime()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf80c7a3d5f981825826f448e06d53e3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPoint.html">Point</a> CDepotInfo::m_ptDepotLocation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00172">172</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
+
+<p>Referenced by <a class="el" href="VRP__Solver_8h_source.html#l00160">getDepotLocation()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00161">setDepotLocation()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a></li>
 <li><a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a></li>
 </ul>
@@ -124,7 +527,7 @@ $(document).ready(function(){initNavTree('classCDepotInfo.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

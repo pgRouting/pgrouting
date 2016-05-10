@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('test2_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('test2_8cpp_source.html','');});
 <div class="title">test2.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="test2_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
@@ -129,28 +131,31 @@ $(document).ready(function(){initNavTree('test2_8cpp_source.html','');});
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define PGR_LOGGER_ON</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PGR_LOGGER_LOC</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PGR_LOGGER_FILE &quot;test-log.log&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="test2_8cpp.html#a1b62ee38c213521125b6484d1161e0d8">   24</a></span>&#160;<span class="preprocessor">#define PGR_LOGGER_ON</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="test2_8cpp.html#abad7188b8d3b9cdfb346788b5c02a1e4">   25</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PGR_LOGGER_LOC</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="test2_8cpp.html#a8be87f618c24158bc65708a1998dc4c7">   26</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define PGR_LOGGER_FILE &quot;test-log.log&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;../src/pgr_logger.h&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">int</span> main () {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    PGR_LOG(<span class="stringliteral">&quot;message 1&quot;</span>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    PGR_LOGF(<span class="stringliteral">&quot;%s at epoch %d\n&quot;</span>, <span class="stringliteral">&quot;message 2&quot;</span>, (<span class="keywordtype">int</span>)time(NULL));</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    PGR_LOG(<span class="stringliteral">&quot;message 3&quot;</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="test2_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   32</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="test2_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> () {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="pgr__logger_8h.html#ab865ca96048268763b500aa32d1543bb">PGR_LOG</a>(<span class="stringliteral">&quot;message 1&quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="pgr__logger_8h.html#aed7bc690afbcdeab346f119535e372e6">PGR_LOGF</a>(<span class="stringliteral">&quot;%s at epoch %d\n&quot;</span>, <span class="stringliteral">&quot;message 2&quot;</span>, (<span class="keywordtype">int</span>)time(NULL));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="pgr__logger_8h.html#ab865ca96048268763b500aa32d1543bb">PGR_LOG</a>(<span class="stringliteral">&quot;message 3&quot;</span>);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="ttc" id="pgr__logger_8h_html_ab865ca96048268763b500aa32d1543bb"><div class="ttname"><a href="pgr__logger_8h.html#ab865ca96048268763b500aa32d1543bb">PGR_LOG</a></div><div class="ttdeci">#define PGR_LOG(str)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__logger_8h_source.html#l00072">pgr_logger.h:72</a></div></div>
+<div class="ttc" id="pgr__logger_8h_html_aed7bc690afbcdeab346f119535e372e6"><div class="ttname"><a href="pgr__logger_8h.html#aed7bc690afbcdeab346f119535e372e6">PGR_LOGF</a></div><div class="ttdeci">#define PGR_LOGF(format,...)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__logger_8h_source.html#l00069">pgr_logger.h:69</a></div></div>
+<div class="ttc" id="test2_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="test2_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="test2_8cpp_source.html#l00032">test2.cpp:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_9420e6c822bab09c350e41c856c6c974.html">tester</a></li><li class="navelem"><b>test2.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_9420e6c822bab09c350e41c856c6c974.html">tester</a></li><li class="navelem"><a class="el" href="test2_8cpp.html">test2.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

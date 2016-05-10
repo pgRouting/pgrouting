@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('signalhandler_8cpp_source.html','');})
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('signalhandler_8cpp_source.html','');})
 <div class="title">signalhandler.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="signalhandler_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
@@ -140,31 +142,31 @@ $(document).ready(function(){initNavTree('signalhandler_8cpp_source.html','');})
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> *****************************************************************PGR-MIT*/</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;./signalhandler.h&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="signalhandler_8h.html">./signalhandler.h</a>&quot;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="classSignalHandler.html">SignalHandler</a> *</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;SignalHandler::instance() {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (!instance_) instance_ = <span class="keyword">new</span> <a class="code" href="classSignalHandler.html">SignalHandler</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">   38</a></span>&#160;<a class="code" href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">SignalHandler::instance</a>() {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classSignalHandler.html#a3892f07508212faacb36468072311020">instance_</a>) <a class="code" href="classSignalHandler.html#a3892f07508212faacb36468072311020">instance_</a> = <span class="keyword">new</span> <a class="code" href="classSignalHandler.html#a228b8bc652635979dfcfc094d805540f">SignalHandler</a>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">// assert(instance_ != NULL);</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">return</span> instance_;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classSignalHandler.html#a3892f07508212faacb36468072311020">instance_</a>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="classEventHandler.html">EventHandler</a> *</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;SignalHandler::registerHandler(<span class="keywordtype">int</span> signum, <a class="code" href="classEventHandler.html">EventHandler</a> *eh) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classSignalHandler.html#af11376ff56c905f739de1700e6891476">   47</a></span>&#160;<a class="code" href="classSignalHandler.html#af11376ff56c905f739de1700e6891476">SignalHandler::registerHandler</a>(<span class="keywordtype">int</span> signum, <a class="code" href="classEventHandler.html">EventHandler</a> *eh) {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="comment">// Copy the &lt;old_eh&gt; from the &lt;signum&gt; slot in</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// the &lt;signalHandlers_&gt; table.</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classEventHandler.html">EventHandler</a> *old_eh = signalHandlers_[signum];</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classEventHandler.html">EventHandler</a> *old_eh = <a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">signalHandlers_</a>[signum];</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Store &lt;eh&gt; into the &lt;signum&gt; slot in the</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// &lt;signalHandlers_&gt; table.</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  SignalHandler::signalHandlers_[signum] = eh;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a>[signum] = eh;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// Register the &lt;dispatcher&gt; to handle this</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="comment">// &lt;signum&gt;.</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">struct </span>sigaction sa;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  sa.sa_handler = SignalHandler::dispatcher;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  sa.sa_handler = <a class="code" href="classSignalHandler.html#a6fda8c0c9ed5c64411ffa35d26b238d1">SignalHandler::dispatcher</a>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  sigemptyset(&amp;sa.sa_mask);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  sa.sa_flags = 0;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  sigaction(signum, &amp;sa, 0);</div>
@@ -172,32 +174,41 @@ $(document).ready(function(){initNavTree('signalhandler_8cpp_source.html','');})
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordflow">return</span> old_eh;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> SignalHandler::removeHandler(<span class="keywordtype">int</span> signum) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classSignalHandler.html#ade885c58ad79e979187db6eb77e456b4">   67</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSignalHandler.html#ade885c58ad79e979187db6eb77e456b4">SignalHandler::removeHandler</a>(<span class="keywordtype">int</span> signum) {</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="comment">// EventHandler *old_eh = signalHandlers_[signum];</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  signalHandlers_[signum] = <span class="keyword">static_cast&lt;</span><a class="code" href="classEventHandler.html">EventHandler</a> *<span class="keyword">&gt;</span>(0);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">signalHandlers_</a>[signum] = <span class="keyword">static_cast&lt;</span><a class="code" href="classEventHandler.html">EventHandler</a> *<span class="keyword">&gt;</span>(0);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> SignalHandler::dispatcher(<span class="keywordtype">int</span> signum) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classSignalHandler.html#a6fda8c0c9ed5c64411ffa35d26b238d1">   73</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classSignalHandler.html#a6fda8c0c9ed5c64411ffa35d26b238d1">SignalHandler::dispatcher</a>(<span class="keywordtype">int</span> signum) {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="comment">// Perform a sanity check...</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">if</span> (SignalHandler::signalHandlers_[signum] != 0)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a>[signum] != 0)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// Dispatch the handler&#39;s hook method.</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    SignalHandler::signalHandlers_[signum]-&gt;handleSignal(signum);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a>[signum]-&gt;<a class="code" href="classEventHandler.html#a17b6884e258561bbdf6da050800a6483">handleSignal</a>(signum);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">// these allocate actual storage</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<a class="code" href="classSignalHandler.html">SignalHandler</a> *SignalHandler::instance_ = NULL;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<a class="code" href="classEventHandler.html">EventHandler</a> *SignalHandler::signalHandlers_[NSIG];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<a class="code" href="classSignalHandler.html">SignalHandler</a> *<a class="code" href="classSignalHandler.html#a3892f07508212faacb36468072311020">SignalHandler::instance_</a> = NULL;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<a class="code" href="classEventHandler.html">EventHandler</a> *<a class="code" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a>[NSIG];</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="ttc" id="classEventHandler_html_a17b6884e258561bbdf6da050800a6483"><div class="ttname"><a href="classEventHandler.html#a17b6884e258561bbdf6da050800a6483">EventHandler::handleSignal</a></div><div class="ttdeci">virtual void handleSignal(int signum)=0</div></div>
 <div class="ttc" id="classEventHandler_html"><div class="ttname"><a href="classEventHandler.html">EventHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00057">signalhandler.h:57</a></div></div>
+<div class="ttc" id="classSignalHandler_html_a3892f07508212faacb36468072311020"><div class="ttname"><a href="classSignalHandler.html#a3892f07508212faacb36468072311020">SignalHandler::instance_</a></div><div class="ttdeci">static SignalHandler * instance_</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00088">signalhandler.h:88</a></div></div>
+<div class="ttc" id="classSignalHandler_html_a228b8bc652635979dfcfc094d805540f"><div class="ttname"><a href="classSignalHandler.html#a228b8bc652635979dfcfc094d805540f">SignalHandler::SignalHandler</a></div><div class="ttdeci">SignalHandler(void)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00085">signalhandler.h:85</a></div></div>
 <div class="ttc" id="classSignalHandler_html"><div class="ttname"><a href="classSignalHandler.html">SignalHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00068">signalhandler.h:68</a></div></div>
+<div class="ttc" id="signalhandler_8h_html"><div class="ttname"><a href="signalhandler_8h.html">signalhandler.h</a></div></div>
+<div class="ttc" id="classSignalHandler_html_af11376ff56c905f739de1700e6891476"><div class="ttname"><a href="classSignalHandler.html#af11376ff56c905f739de1700e6891476">SignalHandler::registerHandler</a></div><div class="ttdeci">EventHandler * registerHandler(int signum, EventHandler *eh)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00047">signalhandler.cpp:47</a></div></div>
+<div class="ttc" id="classSignalHandler_html_ab0b19876ed234cbe79099ea84fb434af"><div class="ttname"><a href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler::signalHandlers_</a></div><div class="ttdeci">static EventHandler * signalHandlers_[NSIG]</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00098">signalhandler.h:98</a></div></div>
+<div class="ttc" id="classSignalHandler_html_ade885c58ad79e979187db6eb77e456b4"><div class="ttname"><a href="classSignalHandler.html#ade885c58ad79e979187db6eb77e456b4">SignalHandler::removeHandler</a></div><div class="ttdeci">void removeHandler(int signum)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00067">signalhandler.cpp:67</a></div></div>
+<div class="ttc" id="classSignalHandler_html_a6fda8c0c9ed5c64411ffa35d26b238d1"><div class="ttname"><a href="classSignalHandler.html#a6fda8c0c9ed5c64411ffa35d26b238d1">SignalHandler::dispatcher</a></div><div class="ttdeci">static void dispatcher(int signum)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00073">signalhandler.cpp:73</a></div></div>
+<div class="ttc" id="classSignalHandler_html_ac9a307bf2b20263020913657b094db9e"><div class="ttname"><a href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">SignalHandler::instance</a></div><div class="ttdeci">static SignalHandler * instance(void)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00038">signalhandler.cpp:38</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><b>signalhandler.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="signalhandler_8cpp.html">signalhandler.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

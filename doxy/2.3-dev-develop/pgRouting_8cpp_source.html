@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="title">pgRouting.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="pgRouting_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
@@ -147,23 +149,23 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;libpq-fe.h&gt;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;postgres.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="postgres_8h.html">postgres.h</a>&quot;</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/basePath_SSEC.hpp&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;./../../dijkstra/src/pgr_dijkstra.hpp&quot;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;./../../warshall/src/pgr_warshall.hpp&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;./../../ksp/src/pgr_ksp.hpp&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;./driving.cpp&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;./dijkstra.hpp&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;./ksp.cpp&quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &quot;./warshall.hpp&quot;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="driving_8cpp.html">./driving.cpp</a>&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dijkstra_8hpp.html">./dijkstra.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ksp_8cpp.html">./ksp.cpp</a>&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="warshall_8hpp.html">./warshall.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/****************************************</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">SIMULATES  THE C CODE THAT LOADS THE DATA</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">****************************************/</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> import_from_file(<span class="keyword">const</span> std::string &amp;input_file_name, <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *edges, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *count, int64_t start_vertex, int64_t end_vertex, <span class="keywordtype">bool</span> &amp;found) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="pgRouting_8cpp.html#a4e7ce6219854047eaf3c76bea4efe704">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pgRouting_8cpp.html#a4e7ce6219854047eaf3c76bea4efe704">import_from_file</a>(<span class="keyword">const</span> std::string &amp;input_file_name, <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> *count, int64_t start_vertex, int64_t end_vertex, <span class="keywordtype">bool</span> &amp;found) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* file_name = input_file_name.c_str();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::ifstream ifs(file_name);</div>
@@ -182,23 +184,23 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">while</span> (i &lt; (*count) &amp;&amp; ifs &gt;&gt; edge_id) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">if</span> (edge_id == -1)  <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                edges[i].id = edge_id;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                ifs &gt;&gt; edges[i].source;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                ifs &gt;&gt; edges[i].target;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                ifs &gt;&gt; edges[i].cost;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                ifs &gt;&gt; edges[i].reverse_cost;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                edges[i].<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> = edge_id;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                ifs &gt;&gt; edges[i].<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                ifs &gt;&gt; edges[i].<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                ifs &gt;&gt; edges[i].<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                ifs &gt;&gt; edges[i].<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="comment">// when loading checking if start and end are found</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (!s_found)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                   s_found = ((edges[i].source == start_vertex) || (edges[i].target == end_vertex));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                   s_found = ((edges[i].<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> == start_vertex) || (edges[i].target == end_vertex));</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordflow">if</span> (!t_found)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                   t_found = ((edges[i].source == end_vertex) || (edges[i].target == end_vertex));</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                   t_found = ((edges[i].<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> == end_vertex) || (edges[i].target == end_vertex));</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                i++;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  ifs.close();</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  found = s_found &amp;&amp; t_found;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> get_options_description(po::options_description &amp;od_desc) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="pgRouting_8cpp.html#adeaea4960c686af22089e71c07ca0e72">   93</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pgRouting_8cpp.html#adeaea4960c686af22089e71c07ca0e72">get_options_description</a>(po::options_description &amp;od_desc) {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    od_desc.add_options()</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        (<span class="stringliteral">&quot;help&quot;</span>, <span class="stringliteral">&quot;Produce this help message.&quot;</span>)</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        (<span class="stringliteral">&quot;test,t&quot;</span>,  po::value&lt;bool&gt;()-&gt;default_value(<span class="keyword">true</span>),</div>
@@ -223,7 +225,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">int</span> process_command_line(</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="pgRouting_8cpp.html#a372eb464c9ce278906217d91aaf1cfaf">  118</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="pgRouting_8cpp.html#a372eb464c9ce278906217d91aaf1cfaf">process_command_line</a>(</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  po::variables_map &amp;vm, </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  po::options_description &amp;od_desc) {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
@@ -267,7 +269,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;exit_nicely(PGconn *conn)</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">  162</a></span>&#160;<a class="code" href="pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">exit_nicely</a>(PGconn *<a class="code" href="VRP_8c.html#a34cf4a89d85450fb66ae0556917b764b">conn</a>)</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    PQfinish(conn);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    exit(1);</div>
@@ -276,7 +278,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> G&gt; </div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keywordtype">void</span> process(G graph, <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *data_edges, <span class="keywordtype">int</span> row_count) {</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">  171</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">process</a>(G graph, <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *data_edges, <span class="keywordtype">int</span> row_count) {</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  graph.graph_insert_data(data_edges, row_count);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  std::vector&lt;int64_t&gt; targets;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  std::string::size_type sz;</div>
@@ -333,22 +335,22 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    </div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    </div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">if</span> (tokens[0].compare(<span class="stringliteral">&quot;dijkstra&quot;</span>) == 0) {</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;       process_dijkstra(graph, tokens);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;       <a class="code" href="dijkstra_8hpp.html#aa8fd68ac88d3fe6d7f7a3792e154f5d8">process_dijkstra</a>(graph, tokens);</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tokens[0].compare(<span class="stringliteral">&quot;ksp&quot;</span>) == 0) {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;       process_ksp(graph, tokens);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;       <a class="code" href="ksp_8cpp.html#a10e4a6799cd7644b570d86d3908fa3a7">process_ksp</a>(graph, tokens);</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tokens[0].compare(<span class="stringliteral">&quot;warshall&quot;</span>) == 0) {</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;       process_warshall(graph, tokens);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;       <a class="code" href="warshall_8hpp.html#adc08a44103fa23ea08143364f9213403">process_warshall</a>(graph, tokens);</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      process_drivingDistance(graph, tokens);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <a class="code" href="driving_8cpp.html#a54752be3f5a512499a6ec47446cc44a2">process_drivingDistance</a>(graph, tokens);</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    }</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  }</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keywordtype">int</span> main(<span class="keywordtype">int</span> ac, <span class="keywordtype">char</span>* av[]) {</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="pgRouting_8cpp.html#adacbe0175a79dff748855d8c9839f82b">  241</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="pgRouting_8cpp.html#adacbe0175a79dff748855d8c9839f82b">main</a>(<span class="keywordtype">int</span> ac, <span class="keywordtype">char</span>* av[]) {</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    po::options_description od_desc(<span class="stringliteral">&quot;Allowed options&quot;</span>);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    get_options_description(od_desc);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <a class="code" href="pgRouting_8cpp.html#adeaea4960c686af22089e71c07ca0e72">get_options_description</a>(od_desc);</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    </div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    po::variables_map vm;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    po::store(po::parse_command_line(ac, av, od_desc), vm);</div>
@@ -365,7 +367,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">return</span> 0;   </div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    } </div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keyword">auto</span> ret_val = process_command_line(vm, od_desc);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keyword">auto</span> ret_val = <a class="code" href="pgRouting_8cpp.html#a372eb464c9ce278906217d91aaf1cfaf">process_command_line</a>(vm, od_desc);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">if</span> (ret_val != 2) <span class="keywordflow">return</span> ret_val;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
@@ -379,7 +381,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="comment">//auto db_no_pwd(vm[&quot;no-password&quot;].as&lt;std::string&gt;());</span></div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *conninfo = db_dbase.c_str();</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    PGconn     *conn;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    PGconn     *<a class="code" href="VRP_8c.html#a34cf4a89d85450fb66ae0556917b764b">conn</a>;</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    PGresult   *res;</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordtype">int</span> rec_count, col_count;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
@@ -390,7 +392,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    {</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Connection to database failed: %s&quot;</span>,</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                PQerrorMessage(conn));</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        exit_nicely(conn);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <a class="code" href="pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">exit_nicely</a>(conn);</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        exit(0);</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    }</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
@@ -408,7 +410,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      <span class="keywordflow">if</span> (PQresultStatus(res) != PGRES_TUPLES_OK) {</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;We did not get any data!\n&quot;</span>;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        exit_nicely(conn);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <a class="code" href="pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">exit_nicely</a>(conn);</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        exit(1);</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      }</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
@@ -417,7 +419,7 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      <span class="keywordflow">if</span> (col_count &gt; 5 || col_count &lt; 4) {</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Max number of columns 5\n&quot;</span>;</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Min number of columns 4\n&quot;</span>;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        exit_nicely(conn);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <a class="code" href="pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">exit_nicely</a>(conn);</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        exit(1);</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      }</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
@@ -443,28 +445,28 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> row = 0; row &lt; rec_count; ++row) {</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        str = std::string(PQgetvalue(res, row, id_fnum));</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        data_edges[row].id = stol(str, &amp;sz);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        data_edges[row].<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> = stol(str, &amp;sz);</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        str = std::string(PQgetvalue(res, row, source_fnum));</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        data_edges[row].source = stol(str, &amp;sz);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        data_edges[row].<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> = stol(str, &amp;sz);</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        str = std::string(PQgetvalue(res, row, target_fnum));</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        data_edges[row].target = stol(str, &amp;sz);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        data_edges[row].<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> = stol(str, &amp;sz);</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        str = std::string(PQgetvalue(res, row, cost_fnum));</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        data_edges[row].cost = stod(str, &amp;sz);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        data_edges[row].<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> = stod(str, &amp;sz);</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="keywordflow">if</span> (reverse_fnum != -1) {</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;          str = std::string(PQgetvalue(res, row, reverse_fnum));</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;          data_edges[row].reverse_cost = stod(str, &amp;sz);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;          data_edges[row].<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> = stod(str, &amp;sz);</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        } </div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor"></span>        std::cout &lt;&lt; <span class="stringliteral">&quot;\tid: &quot;</span> &lt;&lt; data_edges[row].id &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\tsource: &quot;</span> &lt;&lt; data_edges[row].source &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\ttarget: &quot;</span> &lt;&lt; data_edges[row].target &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\tcost: &quot;</span> &lt;&lt; data_edges[row].cost &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor"></span>        std::cout &lt;&lt; <span class="stringliteral">&quot;\tid: &quot;</span> &lt;&lt; data_edges[row].<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\tsource: &quot;</span> &lt;&lt; data_edges[row].<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\ttarget: &quot;</span> &lt;&lt; data_edges[row].<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\tcost: &quot;</span> &lt;&lt; data_edges[row].<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="keywordflow">if</span> (reverse_fnum != -1) {</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;\treverse: &quot;</span> &lt;&lt; data_edges[row].reverse_cost &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;\treverse: &quot;</span> &lt;&lt; data_edges[row].<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span>;</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        }</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -482,34 +484,58 @@ $(document).ready(function(){initNavTree('pgRouting_8cpp_source.html','');});
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    std::string directed;</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Is the graph directed [N,n]? default[Y]&quot;</span>;</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    std::getline(std::cin,directed);</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    graphType gType =  (directed.compare(<span class="stringliteral">&quot;N&quot;</span>)==0 || directed.compare(<span class="stringliteral">&quot;n&quot;</span>)==0)? UNDIRECTED: DIRECTED;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a> gType =  (directed.compare(<span class="stringliteral">&quot;N&quot;</span>)==0 || directed.compare(<span class="stringliteral">&quot;n&quot;</span>)==0)? <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a>: <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a>;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordtype">bool</span> directedFlag =  (directed.compare(<span class="stringliteral">&quot;N&quot;</span>)==0 || directed.compare(<span class="stringliteral">&quot;n&quot;</span>)==0)? <span class="keyword">false</span>: <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> initial_size = rec_count;</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    </div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <a class="code" href="classPgr__base__graph.html">Pgr_base_graph&lt; DirectedGraph &gt;</a> digraph(gType, initial_size);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <a class="code" href="classPgr__base__graph.html">Pgr_base_graph&lt; UndirectedGraph &gt;</a> undigraph(gType, initial_size);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    Pgr_base_graph&lt; DirectedGraph &gt; digraph(gType, initial_size);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    Pgr_base_graph&lt; UndirectedGraph &gt; undigraph(gType, initial_size);</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    </div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordflow">if</span> (directedFlag) {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;      process(digraph, data_edges, rec_count);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;      <a class="code" href="pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">process</a>(digraph, data_edges, rec_count);</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      process(undigraph, data_edges, rec_count);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      <a class="code" href="pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">process</a>(undigraph, data_edges, rec_count);</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    }</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00090">pgr_types.h:90</a></div></div>
-<div class="ttc" id="classPgr__base__graph_html"><div class="ttname"><a href="classPgr__base__graph.html">Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="baseGraph_8hpp_source.html#l00093">baseGraph.hpp:93</a></div></div>
+<div class="ttc" id="driving_8cpp_html"><div class="ttname"><a href="driving_8cpp.html">driving.cpp</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00102">pgr_types.h:102</a></div></div>
+<div class="ttc" id="pgRouting_8cpp_html_adacbe0175a79dff748855d8c9839f82b"><div class="ttname"><a href="pgRouting_8cpp.html#adacbe0175a79dff748855d8c9839f82b">main</a></div><div class="ttdeci">int main(int ac, char *av[])</div><div class="ttdef"><b>Definition:</b> <a href="pgRouting_8cpp_source.html#l00241">pgRouting.cpp:241</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_aa6da5703357e969cde0799a23bfa67e5"><div class="ttname"><a href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">pgr_edge_t::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00107">pgr_types.h:107</a></div></div>
+<div class="ttc" id="pgRouting_8cpp_html_adeaea4960c686af22089e71c07ca0e72"><div class="ttname"><a href="pgRouting_8cpp.html#adeaea4960c686af22089e71c07ca0e72">get_options_description</a></div><div class="ttdeci">void get_options_description(po::options_description &amp;od_desc)</div><div class="ttdef"><b>Definition:</b> <a href="pgRouting_8cpp_source.html#l00093">pgRouting.cpp:93</a></div></div>
+<div class="ttc" id="pgRouting_8cpp_html_a4e7ce6219854047eaf3c76bea4efe704"><div class="ttname"><a href="pgRouting_8cpp.html#a4e7ce6219854047eaf3c76bea4efe704">import_from_file</a></div><div class="ttdeci">void import_from_file(const std::string &amp;input_file_name, pgr_edge_t *edges, unsigned int *count, int64_t start_vertex, int64_t end_vertex, bool &amp;found)</div><div class="ttdef"><b>Definition:</b> <a href="pgRouting_8cpp_source.html#l00058">pgRouting.cpp:58</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00175">pgr_types.h:175</a></div></div>
+<div class="ttc" id="driving_8cpp_html_a54752be3f5a512499a6ec47446cc44a2"><div class="ttname"><a href="driving_8cpp.html#a54752be3f5a512499a6ec47446cc44a2">process_drivingDistance</a></div><div class="ttdeci">void process_drivingDistance(G &amp;graph, const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="driving_8cpp_source.html#l00023">driving.cpp:23</a></div></div>
+<div class="ttc" id="ksp_8cpp_html_a10e4a6799cd7644b570d86d3908fa3a7"><div class="ttname"><a href="ksp_8cpp.html#a10e4a6799cd7644b570d86d3908fa3a7">process_ksp</a></div><div class="ttdeci">void process_ksp(G &amp;graph, const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="ksp_8cpp_source.html#l00004">ksp.cpp:4</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_a04a67da786054e84776d9e8d4b434f27"><div class="ttname"><a href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">pgr_edge_t::source</a></div><div class="ttdeci">int64_t source</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00104">pgr_types.h:104</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_a46e9fc03e52f0b84da533d63b7bbce1d"><div class="ttname"><a href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">pgr_edge_t::target</a></div><div class="ttdeci">int64_t target</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00105">pgr_types.h:105</a></div></div>
+<div class="ttc" id="dijkstra_8hpp_html"><div class="ttname"><a href="dijkstra_8hpp.html">dijkstra.hpp</a></div></div>
+<div class="ttc" id="VRP_8c_html_a34cf4a89d85450fb66ae0556917b764b"><div class="ttname"><a href="VRP_8c.html#a34cf4a89d85450fb66ae0556917b764b">conn</a></div><div class="ttdeci">static int conn(int *SPIcode)</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8c_source.html#l00413">VRP.c:413</a></div></div>
+<div class="ttc" id="dijkstra_8hpp_html_aa8fd68ac88d3fe6d7f7a3792e154f5d8"><div class="ttname"><a href="dijkstra_8hpp.html#aa8fd68ac88d3fe6d7f7a3792e154f5d8">process_dijkstra</a></div><div class="ttdeci">void process_dijkstra(G &amp;graph, const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8hpp_source.html#l00026">dijkstra.hpp:26</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00175">pgr_types.h:175</a></div></div>
+<div class="ttc" id="ksp_8cpp_html"><div class="ttname"><a href="ksp_8cpp.html">ksp.cpp</a></div></div>
+<div class="ttc" id="pgRouting_8cpp_html_a39f10fc492e3f116315a91e75c9be7c3"><div class="ttname"><a href="pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">exit_nicely</a></div><div class="ttdeci">static void exit_nicely(PGconn *conn)</div><div class="ttdef"><b>Definition:</b> <a href="pgRouting_8cpp_source.html#l00162">pgRouting.cpp:162</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_a3258c31bdcbd1c071129cf92e5e46191"><div class="ttname"><a href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">pgr_edge_t::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00103">pgr_types.h:103</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_ad41c20950820f890ccf557e431636b76"><div class="ttname"><a href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">pgr_edge_t::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00106">pgr_types.h:106</a></div></div>
+<div class="ttc" id="pgRouting_8cpp_html_a372eb464c9ce278906217d91aaf1cfaf"><div class="ttname"><a href="pgRouting_8cpp.html#a372eb464c9ce278906217d91aaf1cfaf">process_command_line</a></div><div class="ttdeci">int process_command_line(po::variables_map &amp;vm, po::options_description &amp;od_desc)</div><div class="ttdef"><b>Definition:</b> <a href="pgRouting_8cpp_source.html#l00118">pgRouting.cpp:118</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490e"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a></div><div class="ttdeci">graphType</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00175">pgr_types.h:175</a></div></div>
+<div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
+<div class="ttc" id="warshall_8hpp_html"><div class="ttname"><a href="warshall_8hpp.html">warshall.hpp</a></div></div>
+<div class="ttc" id="warshall_8hpp_html_adc08a44103fa23ea08143364f9213403"><div class="ttname"><a href="warshall_8hpp.html#adc08a44103fa23ea08143364f9213403">process_warshall</a></div><div class="ttdeci">void process_warshall(G &amp;graph, const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="warshall_8hpp_source.html#l00024">warshall.hpp:24</a></div></div>
+<div class="ttc" id="pgRouting_8cpp_html_a3ec9be4cb3f2602b26273161cc5158d1"><div class="ttname"><a href="pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">process</a></div><div class="ttdeci">void process(G graph, pgr_edge_t *data_edges, int row_count)</div><div class="ttdef"><b>Definition:</b> <a href="pgRouting_8cpp_source.html#l00171">pgRouting.cpp:171</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d00ce88a1fe87f5e8ffa8e1a7be5e0a5.html">linecommand</a></li><li class="navelem"><a class="el" href="dir_6f513041d2f60412f8dae41f44763875.html">src</a></li><li class="navelem"><b>pgRouting.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d00ce88a1fe87f5e8ffa8e1a7be5e0a5.html">linecommand</a></li><li class="navelem"><a class="el" href="dir_6f513041d2f60412f8dae41f44763875.html">src</a></li><li class="navelem"><a class="el" href="pgRouting_8cpp.html">pgRouting.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

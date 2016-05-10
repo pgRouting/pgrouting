@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -87,7 +88,7 @@ $(document).ready(function(){initNavTree('index.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,12 +99,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">pgRouting Developer's Documentation </div>  </div>
+<div class="title"><a class="el" href="namespacepgRouting.html" title="boost::graph simplified to pgRouting needs ">pgRouting</a> Developer's Documentation </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>This documentation is focused on the developer of pgRouting.</p>
+<p>This documentation is focused on the developer of <a class="el" href="namespacepgRouting.html" title="boost::graph simplified to pgRouting needs ">pgRouting</a>.</p>
 <p>A developer might want to:</p>
 <ul>
 <li>Fix a bug</li>
@@ -124,7 +125,7 @@ Introduction</h1>
 Installation for developing</h1>
 <p>Step by Step processing</p>
 <ol type="1">
-<li>Create a fork of the original pgRouting repository.<ul>
+<li>Create a fork of the original <a class="el" href="namespacepgRouting.html" title="boost::graph simplified to pgRouting needs ">pgRouting</a> repository.<ul>
 <li>If you don't have an account in Github, please <a href="https://github.com/">create one</a><ul>
 <li>for purposes of this document the account name is: <code>acountName</code></li>
 </ul>
@@ -150,7 +151,7 @@ Installation for developing</h1>
 </div><!-- fragment --></li>
 <li>check the remote connection <div class="fragment"><div class="line">git remote -v</div>
 </div><!-- fragment --></li>
-<li>Now you shoud have something like this: <div class="fragment"><div class="line">origin  https:<span class="comment">//github.com/acountName/pgrouting (fetch)</span></div>
+<li>Now you should have something like this: <div class="fragment"><div class="line">origin  https:<span class="comment">//github.com/acountName/pgrouting (fetch)</span></div>
 <div class="line">origin  https:<span class="comment">//github.com/acountName/pgrouting (push)</span></div>
 <div class="line">upstream        https:<span class="comment">//github.com/acountName/pgrouting (fetch)</span></div>
 <div class="line">upstream        https:<span class="comment">//github.com/acountName/pgrouting (push)</span></div>
@@ -201,7 +202,7 @@ Git Branching Model</h1>
 <p>dev-myFeature</p>
 <ol type="1">
 <li>To get a list of all the branches<ul>
-<li><div class="fragment"><div class="line">git branch -a</div>
+<li><div class="fragment"><div class="line">git branch -<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a></div>
 </div><!-- fragment --></li>
 </ul>
 </li>
@@ -213,7 +214,7 @@ Git Branching Model</h1>
 <li>When your forked before <code>dev-myFeature</code> was created<ul>
 <li>fetch the main repository <div class="fragment"><div class="line">git fetch upstream</div>
 </div><!-- fragment --></li>
-<li>get a list of your branches you should see the branch you are going to use: <div class="fragment"><div class="line">git branch -a</div>
+<li>get a list of your branches you should see the branch you are going to use: <div class="fragment"><div class="line">git branch -<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a></div>
 <div class="line">...</div>
 <div class="line">remotes/upstream/dev-myFeature</div>
 <div class="line">...</div>
@@ -224,7 +225,7 @@ Git Branching Model</h1>
 </ul>
 </li>
 <li>Try new ideas in local branches, commit and merge back when you feel its worth to keep:<ul>
-<li>branch to a local branch <div class="fragment"><div class="line">git checkout -b dev-myFeature-idea1</div>
+<li>branch to a local branch <div class="fragment"><div class="line">git checkout -<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a> dev-myFeature-idea1</div>
 </div><!-- fragment --></li>
 <li>Work, work, work</li>
 <li>Always make sure you are in the branch you want to commit your work <div class="fragment"><div class="line">git status</div>
@@ -232,7 +233,7 @@ Git Branching Model</h1>
 <li>add, delete, commit changes <div class="fragment"><div class="line">git add &lt;file&gt;</div>
 <div class="line">git remove &lt;file&gt;</div>
 <div class="line">git mv &lt;oldNmae&gt; &lt;newName&gt;</div>
-<div class="line">git commit -a -m <span class="stringliteral">&#39;&lt;commit message&gt;&#39;</span></div>
+<div class="line">git commit -<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a> -m <span class="stringliteral">&#39;&lt;commit message&gt;&#39;</span></div>
 </div><!-- fragment --></li>
 </ul>
 </li>
@@ -260,7 +261,7 @@ Keep Fork Up to Date</h1>
 </ol>
 <h1><a class="anchor" id="perform_tests"></a>
 Beware of Side Effects</h1>
-<p>Modifications that you make should not affect other parts of the library. pgRouting has a testing tool, so that developers make sure of</p>
+<p>Modifications that you make should not affect other parts of the library. <a class="el" href="namespacepgRouting.html" title="boost::graph simplified to pgRouting needs ">pgRouting</a> has a testing tool, so that developers make sure of</p>
 <ul>
 <li>Code changes don't generate unexpected results</li>
 <li>Bug fixes actually fix the bug</li>
@@ -333,7 +334,7 @@ File conventions</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

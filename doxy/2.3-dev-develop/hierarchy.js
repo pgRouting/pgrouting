@@ -10,7 +10,8 @@ var hierarchy =
     [ "boost::AStarHeuristicConcept< Heuristic, Graph >", "structboost_1_1AStarHeuristicConcept.html", null ],
     [ "boost::closed_plus< T >", "structboost_1_1closed__plus.html", null ],
     [ "default_astar_visitor", null, [
-      [ "astar_goal_visitor< Vertex >", "classastar__goal__visitor.html", null ]
+      [ "Pgr_astar< G >::astar_many_goals_visitor", "classPgr__astar_1_1astar__many__goals__visitor.html", null ],
+      [ "Pgr_astar< G >::astar_one_goal_visitor", "classPgr__astar_1_1astar__one__goal__visitor.html", null ]
     ] ],
     [ "default_dijkstra_visitor", null, [
       [ "Pgr_dijkstra< G >::dijkstra_distance_visitor", "classPgr__dijkstra_1_1dijkstra__distance__visitor.html", null ],
@@ -23,8 +24,6 @@ var hierarchy =
     [ "boost::on_initialize_edge", "structboost_1_1on__initialize__edge.html", null ],
     [ "boost::on_start_edge", "structboost_1_1on__start__edge.html", null ],
     [ "boost::ShootingStarVisitorConcept< Visitor, Graph >", "structboost_1_1ShootingStarVisitorConcept.html", null ],
-    [ "boost_edge_t", "structboost__edge__t.html", null ],
-    [ "boost_vertex_t", "structboost__vertex__t.html", null ],
     [ "CDepotInfo", "classCDepotInfo.html", null ],
     [ "CMoveInfo", "classCMoveInfo.html", null ],
     [ "Column_info_t", "structColumn__info__t.html", null ],
@@ -39,9 +38,10 @@ var hierarchy =
     [ "Depot", "structDepot.html", null ],
     [ "dist_fromto_t", "structdist__fromto__t.html", null ],
     [ "distance_columns", "structdistance__columns.html", null ],
+    [ "distance_heuristic< Graph, CostType >", "classdistance__heuristic.html", null ],
     [ "Dmatrix", "classDmatrix.html", null ],
-    [ "Edge", "structEdge.html", null ],
     [ "edge", "structedge.html", null ],
+    [ "Edge", "structEdge.html", null ],
     [ "edge_astar", "structedge__astar.html", null ],
     [ "edge_astar_columns", "structedge__astar__columns.html", null ],
     [ "edge_columns", "structedge__columns.html", null ],
@@ -53,7 +53,7 @@ var hierarchy =
       [ "SIGINT_Handler", "classSIGINT__Handler.html", null ],
       [ "SIGQUIT_Handler", "classSIGQUIT__Handler.html", null ]
     ] ],
-    [ "found_goal< Edge >", "structfound__goal.html", null ],
+    [ "found_goal< Edge >", "classfound__goal.html", null ],
     [ "General_path_element_t", "structGeneral__path__element__t.html", null ],
     [ "GraphDefinition", "classGraphDefinition.html", null ],
     [ "GraphDefinition::CostHolder", "structGraphDefinition_1_1CostHolder.html", null ],
@@ -75,15 +75,21 @@ var hierarchy =
     [ "PathElement", "structPathElement.html", null ],
     [ "Pgr_allpairs< G >", "classPgr__allpairs.html", null ],
     [ "Pgr_allpairs< G >::inf_plus< T >", "structPgr__allpairs_1_1inf__plus.html", null ],
-    [ "Pgr_base_graph< G >", "classPgr__base__graph.html", null ],
+    [ "Pgr_astar< G >", "classPgr__astar.html", null ],
+    [ "Pgr_astar< G >::found_goals", "structPgr__astar_1_1found__goals.html", null ],
     [ "pgr_cost3_t", "structpgr__cost3__t.html", null ],
     [ "pgr_cost_t", "structpgr__cost__t.html", null ],
     [ "Pgr_dijkstra< G >", "classPgr__dijkstra.html", null ],
     [ "Pgr_dijkstra< G >::found_goals", "structPgr__dijkstra_1_1found__goals.html", null ],
     [ "pgr_edge_t", "structpgr__edge__t.html", null ],
+    [ "Pgr_edge_xy_t", "structPgr__edge__xy__t.html", null ],
     [ "Pgr_ksp< G >", "classPgr__ksp.html", null ],
     [ "Pgr_ksp< G >::compPaths", "classPgr__ksp_1_1compPaths.html", null ],
     [ "pgr_path_t", "structpgr__path__t.html", null ],
+    [ "pgRouting::Basic_edge", "classpgRouting_1_1Basic__edge.html", null ],
+    [ "pgRouting::Basic_vertex", "classpgRouting_1_1Basic__vertex.html", null ],
+    [ "pgRouting::graph::Pgr_base_graph< G, Vertex, Edge >", "classpgRouting_1_1graph_1_1Pgr__base__graph.html", null ],
+    [ "pgRouting::XY_vertex", "classpgRouting_1_1XY__vertex.html", null ],
     [ "Pickup", "structPickup.html", null ],
     [ "point", "structpoint.html", null ],
     [ "Point", "structPoint.html", null ],
@@ -105,9 +111,10 @@ var hierarchy =
       [ "edge_queue< Edge, Container, Cmp >", "classedge__queue.html", null ]
     ] ],
     [ "unary_function", null, [
-      [ "boost::astar_heuristic< Graph, CostType >", "classboost_1_1astar__heuristic.html", [
-        [ "distance_heuristic< Graph, CostType >", "classdistance__heuristic.html", null ]
-      ] ]
+      [ "boost::astar_heuristic< B_G, double >", "classboost_1_1astar__heuristic.html", [
+        [ "Pgr_astar< G >::distance_heuristic", "classPgr__astar_1_1distance__heuristic.html", null ]
+      ] ],
+      [ "boost::astar_heuristic< Graph, CostType >", "classboost_1_1astar__heuristic.html", null ]
     ] ],
     [ "StringOperation", "classStringOperation.html", null ],
     [ "StringTokenizer", "classStringTokenizer.html", null ],

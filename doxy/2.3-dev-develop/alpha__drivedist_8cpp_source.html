@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="title">alpha_drivedist.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="alpha__drivedist_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">File: alpha_drivedist.cpp </span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.</span></div>
@@ -159,7 +161,7 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &quot;alpha.h&quot;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="alpha_8h.html">alpha.h</a>&quot;</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include &lt;CGAL/Polygon_2.h&gt;</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#include &lt;CGAL/Delaunay_triangulation_2.h&gt;</span></div>
@@ -173,39 +175,39 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#include &lt;CGAL/Alpha_shape_vertex_base_2.h&gt;</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">double</span> coord_type;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#acf1a2afd1df69ffc5b3757e8ee8ad416">   68</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">double</span> <a class="code" href="alpha__drivedist_8cpp.html#acf1a2afd1df69ffc5b3757e8ee8ad416">coord_type</a>;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">typedef</span> CGAL::Simple_cartesian&lt;coord_type&gt;  SC;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">typedef</span> CGAL::Filtered_kernel&lt;SC&gt; K;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">typedef</span> K::Point_2  <a class="code" href="structPoint.html">Point</a>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">typedef</span> K::Segment_2  Segment;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">typedef</span> K::Vector_2 Vector;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">typedef</span> CGAL::Polygon_2&lt;K&gt; Polygon_2;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a276bf07b36a2a08ebd336b397b71944d">   70</a></span>&#160;<span class="keyword">typedef</span> CGAL::Simple_cartesian&lt;coord_type&gt;  <a class="code" href="alpha__drivedist_8cpp.html#a276bf07b36a2a08ebd336b397b71944d">SC</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a63061f915d352707f06760d3f7787df5">   71</a></span>&#160;<span class="keyword">typedef</span> CGAL::Filtered_kernel&lt;SC&gt; <a class="code" href="alpha__drivedist_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">   72</a></span>&#160;<span class="keyword">typedef</span> K::Point_2  <a class="code" href="alpha__drivedist_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a054d7b9fbb0af44fd39709a19a178fce">   73</a></span>&#160;<span class="keyword">typedef</span> K::Segment_2  <a class="code" href="alpha__drivedist_8cpp.html#a054d7b9fbb0af44fd39709a19a178fce">Segment</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a5a03458ba9ac60d8f4d97b4c121df7e0">   74</a></span>&#160;<span class="keyword">typedef</span> K::Vector_2 <a class="code" href="alpha__drivedist_8cpp.html#a5a03458ba9ac60d8f4d97b4c121df7e0">Vector</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">   75</a></span>&#160;<span class="keyword">typedef</span> CGAL::Polygon_2&lt;K&gt; <a class="code" href="alpha__drivedist_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">typedef</span> CGAL::Alpha_shape_vertex_base_2&lt;K&gt; Avb;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">typedef</span> CGAL::Triangulation_hierarchy_vertex_base_2&lt;Avb&gt; Av;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#aadb90b396275ef364a8c2c690f94574d">   77</a></span>&#160;<span class="keyword">typedef</span> CGAL::Alpha_shape_vertex_base_2&lt;K&gt; <a class="code" href="alpha__drivedist_8cpp.html#aadb90b396275ef364a8c2c690f94574d">Avb</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a3b5df359d00c095cf5609f9d9111ed12">   78</a></span>&#160;<span class="keyword">typedef</span> CGAL::Triangulation_hierarchy_vertex_base_2&lt;Avb&gt; <a class="code" href="alpha__drivedist_8cpp.html#a3b5df359d00c095cf5609f9d9111ed12">Av</a>;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">typedef</span> CGAL::Triangulation_face_base_2&lt;K&gt; Tf;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">typedef</span> CGAL::Alpha_shape_face_base_2&lt;K,Tf&gt; Af;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#aa251133ce0379ca4ec93098f7066d497">   80</a></span>&#160;<span class="keyword">typedef</span> CGAL::Triangulation_face_base_2&lt;K&gt; <a class="code" href="alpha__drivedist_8cpp.html#aa251133ce0379ca4ec93098f7066d497">Tf</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a7155c8eafdbc90eeb28655f0642dad25">   81</a></span>&#160;<span class="keyword">typedef</span> CGAL::Alpha_shape_face_base_2&lt;K,Tf&gt; <a class="code" href="alpha__drivedist_8cpp.html#a7155c8eafdbc90eeb28655f0642dad25">Af</a>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">typedef</span> CGAL::Triangulation_default_data_structure_2&lt;K,Av,Af&gt; Tds;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">typedef</span> CGAL::Delaunay_triangulation_2&lt;K,Tds&gt; Dt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">typedef</span> CGAL::Triangulation_hierarchy_2&lt;Dt&gt; Ht;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">typedef</span> CGAL::Alpha_shape_2&lt;Ht&gt; Alpha_shape_2;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a3cef56c0deef8e75541273f4bdaf092c">   83</a></span>&#160;<span class="keyword">typedef</span> CGAL::Triangulation_default_data_structure_2&lt;K,Av,Af&gt; <a class="code" href="alpha__drivedist_8cpp.html#a3cef56c0deef8e75541273f4bdaf092c">Tds</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a2d6b60c2c2d8acdce06a85e1cc279f2c">   84</a></span>&#160;<span class="keyword">typedef</span> CGAL::Delaunay_triangulation_2&lt;K,Tds&gt; <a class="code" href="alpha__drivedist_8cpp.html#a2d6b60c2c2d8acdce06a85e1cc279f2c">Dt</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a8a99e79ad9837ff40968379d7b43ad02">   85</a></span>&#160;<span class="keyword">typedef</span> CGAL::Triangulation_hierarchy_2&lt;Dt&gt; <a class="code" href="alpha__drivedist_8cpp.html#a8a99e79ad9837ff40968379d7b43ad02">Ht</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a249648072c5d3aa789bb22e9662adf84">   86</a></span>&#160;<span class="keyword">typedef</span> CGAL::Alpha_shape_2&lt;Ht&gt; <a class="code" href="alpha__drivedist_8cpp.html#a249648072c5d3aa789bb22e9662adf84">Alpha_shape_2</a>;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">typedef</span> Alpha_shape_2::Face_circulator  Face_circulator;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">typedef</span> Alpha_shape_2::Vertex_circulator  Vertex_circulator;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#aab02ea263f4af6825a98e18c38ea679e">   88</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="alpha__drivedist_8cpp.html#aab02ea263f4af6825a98e18c38ea679e">Alpha_shape_2::Face_circulator</a>  <a class="code" href="alpha__drivedist_8cpp.html#aab02ea263f4af6825a98e18c38ea679e">Face_circulator</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#adad078e09171776a159f465e96252de1">   89</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="alpha__drivedist_8cpp.html#adad078e09171776a159f465e96252de1">Alpha_shape_2::Vertex_circulator</a>  <a class="code" href="alpha__drivedist_8cpp.html#adad078e09171776a159f465e96252de1">Vertex_circulator</a>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">typedef</span> Alpha_shape_2::Alpha_iterator Alpha_iterator;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">typedef</span> Alpha_shape_2::Alpha_shape_edges_iterator Alpha_shape_edges_iterator;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a96d79c2e2fa33b9b9575548752f1a75e">   91</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="alpha__drivedist_8cpp.html#a96d79c2e2fa33b9b9575548752f1a75e">Alpha_shape_2::Alpha_iterator</a> <a class="code" href="alpha__drivedist_8cpp.html#a96d79c2e2fa33b9b9575548752f1a75e">Alpha_iterator</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a4b80b4c9d991d7280d3602a0274bf5c6">   92</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="alpha__drivedist_8cpp.html#a4b80b4c9d991d7280d3602a0274bf5c6">Alpha_shape_2::Alpha_shape_edges_iterator</a> <a class="code" href="alpha__drivedist_8cpp.html#a4b80b4c9d991d7280d3602a0274bf5c6">Alpha_shape_edges_iterator</a>;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">//---------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">double</span> get_angle(<a class="code" href="structPoint.html">Point</a> p, <a class="code" href="structPoint.html">Point</a> q, <a class="code" href="structPoint.html">Point</a> r)</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990">   96</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="alpha__drivedist_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990">get_angle</a>(<a class="code" href="structPoint.html">Point</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>, <a class="code" href="structPoint.html">Point</a> q, <a class="code" href="structPoint.html">Point</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#aa4a59e5359e3efbe53fbfa763617d2a0">r</a>)</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">double</span> m_pi(3.14159265358979323846);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  Vector v1(q, p);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  Vector v2(q, r);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="alpha__drivedist_8cpp.html#a5a03458ba9ac60d8f4d97b4c121df7e0">Vector</a> v1(q, p);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="alpha__drivedist_8cpp.html#a5a03458ba9ac60d8f4d97b4c121df7e0">Vector</a> v2(q, r);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">double</span> cross = v1.x() * v2.y() - v1.y() * v2.x();</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">double</span> dot = v1.x() * v2.x() + v1.y() * v2.y();</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">double</span> angle = atan2(cross, dot);</div>
@@ -215,17 +217,17 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">return</span> angle;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">size_t</span> prev_size = 0;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> find_next_edge(Segment s, std::vector&lt;Segment&gt;&amp; segments, </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a7118ea995babe95c18fc3899f93d697a">  110</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="alpha__drivedist_8cpp.html#a7118ea995babe95c18fc3899f93d697a">prev_size</a> = 0;</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">  111</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="alpha__drivedist_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a>(<a class="code" href="alpha__drivedist_8cpp.html#a054d7b9fbb0af44fd39709a19a178fce">Segment</a> s, std::vector&lt;Segment&gt;&amp; segments, </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    std::set&lt;int&gt;&amp; unusedIndexes, std::vector&lt;Polygon_2&gt;&amp; rings)</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">if</span>(unusedIndexes.empty()</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    || prev_size == unusedIndexes.size())</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    || <a class="code" href="alpha__drivedist_8cpp.html#a7118ea995babe95c18fc3899f93d697a">prev_size</a> == unusedIndexes.size())</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  prev_size = unusedIndexes.size();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="alpha__drivedist_8cpp.html#a7118ea995babe95c18fc3899f93d697a">prev_size</a> = unusedIndexes.size();</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  </div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <a class="code" href="structPoint.html">Point</a> start = s.source();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <a class="code" href="structPoint.html">Point</a> end = s.target();</div>
@@ -247,7 +249,7 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  {</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">int</span> i = nextIndexes.at(0);</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    unusedIndexes.erase(i);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    find_next_edge(segments.at(i), segments, unusedIndexes, rings);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="alpha__drivedist_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a>(segments.at(i), segments, unusedIndexes, rings);</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  }</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (nextIndexes.size() &gt; 1)</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  {</div>
@@ -256,13 +258,13 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      <span class="keywordtype">int</span> j = nextIndexes.at(i);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <a class="code" href="structPoint.html">Point</a> target = segments.at(j).target();</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="keywordtype">double</span> angle = get_angle(start, end, target);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="keywordtype">double</span> angle = <a class="code" href="alpha__drivedist_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990">get_angle</a>(start, end, target);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      nextAngles.push_back(std::pair&lt;double, int&gt;(angle, j));</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    std::sort(nextAngles.begin(), nextAngles.end());</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordtype">int</span> i = nextAngles.begin()-&gt;second;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    unusedIndexes.erase(i);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    find_next_edge(segments.at(i), segments, unusedIndexes, rings);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="alpha__drivedist_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a>(segments.at(i), segments, unusedIndexes, rings);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  }</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  </div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">if</span> (!unusedIndexes.empty())</div>
@@ -271,11 +273,11 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    {</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="keywordflow">if</span> (unusedIndexes.find(i) != unusedIndexes.end())</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        Polygon_2 ring;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <a class="code" href="alpha__drivedist_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a> ring;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        ring.push_back(segments.at(i).source());</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        rings.push_back(ring);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        unusedIndexes.erase(i);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        find_next_edge(segments.at(i), segments, unusedIndexes, rings);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="alpha__drivedist_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a>(segments.at(i), segments, unusedIndexes, rings);</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  }</div>
@@ -283,11 +285,11 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> OutputIterator&gt;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;alpha_edges( <span class="keyword">const</span> Alpha_shape_2&amp;  A,</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a269b1986c0b1002e29ca46fbd69d10c6">  178</a></span>&#160;<a class="code" href="alpha__drivedist_8cpp.html#a269b1986c0b1002e29ca46fbd69d10c6">alpha_edges</a>( <span class="keyword">const</span> <a class="code" href="alpha__drivedist_8cpp.html#a249648072c5d3aa789bb22e9662adf84">Alpha_shape_2</a>&amp;  A,</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;             OutputIterator out)</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{ </div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keywordflow">for</span>(Alpha_shape_edges_iterator it =  A.alpha_shape_edges_begin();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keywordflow">for</span>(<a class="code" href="alpha__drivedist_8cpp.html#a4b80b4c9d991d7280d3602a0274bf5c6">Alpha_shape_edges_iterator</a> it =  A.alpha_shape_edges_begin();</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      it != A.alpha_shape_edges_end();</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      ++it){</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    *out++ = A.segment(*it);</div>
@@ -295,107 +297,160 @@ $(document).ready(function(){initNavTree('alpha__drivedist_8cpp_source.html','')
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keywordtype">int</span> alpha_shape(<a class="code" href="structvertex.html">vertex_t</a> *vertices, <span class="keywordtype">size_t</span> count, <span class="keywordtype">double</span> alpha,</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <a class="code" href="structvertex.html">vertex_t</a> **res, <span class="keywordtype">size_t</span> *res_count, <span class="keywordtype">char</span> **err_msg)</div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="alpha__drivedist_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1">  190</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="alpha__drivedist_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a>(<a class="code" href="structvertex.html">vertex_t</a> *vertices, <span class="keywordtype">size_t</span> count, <span class="keywordtype">double</span> alpha,</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <a class="code" href="structvertex.html">vertex_t</a> **res, <span class="keywordtype">size_t</span> *res_count, <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  std::list&lt;Point&gt; points;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="comment">//std::copy(begin(vertices), end(vertices), std::back_inserter(points)); </span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordflow">for</span> (std::size_t j = 0; j &lt; count; ++j)</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="structPoint.html">Point</a> p(vertices[j].x, vertices[j].y);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    points.push_back(p);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  std::list&lt;Point&gt; points;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    std::vector&lt;Point&gt; pv;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">for</span> (std::size_t j = 0; j &lt; count; ++j) {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="structPoint.html">Point</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>(vertices[j].<a class="code" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>, vertices[j].<a class="code" href="tsp_8c.html#a68c65955a7303fbed706a45a00f9487b">y</a>);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        pv.push_back(p);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  Alpha_shape_2 A(points.begin(), points.end(),</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                  coord_type(10000),</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                  Alpha_shape_2::REGULARIZED);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  std::vector&lt;Segment&gt; segments;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">//  std::vector&lt;Segment&gt; result;</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">//  Alpha_shape_2::Alpha_shape_vertices_iterator vit;</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">//  Alpha_shape_2::Vertex_handle vertex;</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">//  Alpha_shape_2::Alpha_shape_edges_iterator eit;</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">//  Alpha_shape_2::Edge edge;</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">//  Alpha_shape_2::Face_iterator fit;</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">//  Alpha_shape_2::Face_handle face;</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <span class="keywordflow">if</span> (alpha &lt;= 0.0)</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    alpha = *A.find_optimal_alpha(1);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  }</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  A.set_alpha(alpha);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  alpha_edges( A, std::back_inserter(segments));</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">//  Segment s = segments.at(0);</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">//  find_next_edge(s, segments, result);</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keywordflow">if</span> (segments.empty())</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    *res = NULL;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    *res_count = 0;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  }</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    std::set&lt;int&gt; unusedIndexes;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; segments.size(); i++)</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    {</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      unusedIndexes.insert(i);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    std::vector&lt;Polygon_2&gt; rings;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    Polygon_2 ring;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    ring.push_back(segments.at(0).source());</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    rings.push_back(ring);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    unusedIndexes.erase(0);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    find_next_edge(segments.at(0), segments, unusedIndexes, rings);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordtype">size_t</span> result_count = 0;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; rings.size(); i++)</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      Polygon_2 ring = rings.at(i);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      result_count += ring.size();</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    result_count += rings.size() - 1;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    *res = (<a class="code" href="structvertex.html">vertex_t</a> *) malloc(<span class="keyword">sizeof</span>(<a class="code" href="structvertex.html">vertex_t</a>) * result_count);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    *res_count = result_count;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordtype">int</span> idx = 0;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; rings.size(); i++)</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      <span class="keywordflow">if</span> (i &gt; 0)</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      {</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        (*res)[idx].x = DBL_MAX;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        (*res)[idx].y = DBL_MAX;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        idx++;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      Polygon_2 ring = rings.at(i);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; ring.size(); j++)</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <a class="code" href="structPoint.html">Point</a> <a class="code" href="structpoint.html">point</a> = ring.vertex(j);</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        (*res)[idx].x = point.x();</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        (*res)[idx].y = point.y();</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        idx++;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      }</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  }</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  *err_msg = NULL;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    std::sort(pv.begin(), pv.end(),</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        [](<span class="keyword">const</span> <a class="code" href="structPoint.html">Point</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="structPoint.html">Point</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">return</span> e2.y() &lt; e1.y();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        });</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    std::stable_sort(pv.begin(), pv.end(),</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        [](<span class="keyword">const</span> <a class="code" href="structPoint.html">Point</a> &amp;e1, <span class="keyword">const</span> <a class="code" href="structPoint.html">Point</a> &amp;e2)-&gt;<span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">return</span> e2.x() &lt; e1.x();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        });</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    pv.erase(std::unique(pv.begin(), pv.end()), pv.end());</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">if</span> (pv.size() != count &amp;&amp;  pv.size() &lt; 3) {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        *err_msg = strdup(<span class="stringliteral">&quot;After eliminating duplicated points, less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.&quot;</span>);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    points.insert(points.begin(), pv.begin(), pv.end());</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <a class="code" href="alpha__drivedist_8cpp.html#a249648072c5d3aa789bb22e9662adf84">Alpha_shape_2</a> A(points.begin(), points.end(),</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                  <a class="code" href="alpha__drivedist_8cpp.html#acf1a2afd1df69ffc5b3757e8ee8ad416">coord_type</a>(10000),</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                  Alpha_shape_2::REGULARIZED);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  std::vector&lt;Segment&gt; segments;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">//  std::vector&lt;Segment&gt; result;</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">//  Alpha_shape_2::Alpha_shape_vertices_iterator vit;</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">//  Alpha_shape_2::Vertex_handle vertex;</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">//  Alpha_shape_2::Alpha_shape_edges_iterator eit;</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">//  Alpha_shape_2::Edge edge;</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">//  Alpha_shape_2::Face_iterator fit;</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">//  Alpha_shape_2::Face_handle face;</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keywordflow">if</span> (alpha &lt;= 0.0)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    alpha = *A.find_optimal_alpha(1);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  A.set_alpha(alpha);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <a class="code" href="alpha__drivedist_8cpp.html#a269b1986c0b1002e29ca46fbd69d10c6">alpha_edges</a>( A, std::back_inserter(segments));</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">//  Segment s = segments.at(0);</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">//  find_next_edge(s, segments, result);</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordflow">if</span> (segments.empty())</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    *res = NULL;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    *res_count = 0;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    std::set&lt;int&gt; unusedIndexes;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; segments.size(); i++)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      unusedIndexes.insert(i);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    std::vector&lt;Polygon_2&gt; rings;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <a class="code" href="alpha__drivedist_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a> ring;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    ring.push_back(segments.at(0).source());</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    rings.push_back(ring);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    unusedIndexes.erase(0);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="alpha__drivedist_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a>(segments.at(0), segments, unusedIndexes, rings);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordtype">size_t</span> result_count = 0;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; rings.size(); i++)</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      <a class="code" href="alpha__drivedist_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a> ring = rings.at(i);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      result_count += ring.size();</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    result_count += rings.size() - 1;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    *res = (<a class="code" href="structvertex.html">vertex_t</a> *) malloc(<span class="keyword">sizeof</span>(<a class="code" href="structvertex.html">vertex_t</a>) * result_count);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    *res_count = result_count;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordtype">int</span> idx = 0;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; rings.size(); i++)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      <span class="keywordflow">if</span> (i &gt; 0)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        (*res)[idx].<a class="code" href="structvertex.html#a85e129c2ca0134b32ac6d3761de0bbd6">x</a> = DBL_MAX;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        (*res)[idx].y = DBL_MAX;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        idx++;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      <a class="code" href="alpha__drivedist_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a> ring = rings.at(i);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0; j &lt; ring.size(); j++)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <a class="code" href="structPoint.html">Point</a> <a class="code" href="structpoint.html">point</a> = ring.vertex(j);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        (*res)[idx].<a class="code" href="structpoint.html#ae7ca6c16cd2464487563362009e04ca9">x</a> = point.x();</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        (*res)[idx].y = point.y();</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        idx++;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;      }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  *err_msg = NULL;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    } <span class="keywordflow">catch</span> ( ... ) {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        *err_msg = strdup(<span class="stringliteral">&quot;Caught unknown expection!&quot;</span>);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a42c4fbf7be7fec3bf7583c5f0e80bf4c"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a></div><div class="ttdeci">pickup * p</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00075">vrppdtw/src/pdp_solver.cpp:75</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a3cef56c0deef8e75541273f4bdaf092c"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a3cef56c0deef8e75541273f4bdaf092c">Tds</a></div><div class="ttdeci">CGAL::Triangulation_default_data_structure_2&lt; K, Av, Af &gt; Tds</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00083">alpha_drivedist.cpp:83</a></div></div>
+<div class="ttc" id="structpoint_html_ae7ca6c16cd2464487563362009e04ca9"><div class="ttname"><a href="structpoint.html#ae7ca6c16cd2464487563362009e04ca9">point::x</a></div><div class="ttdeci">float8 x</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8h_source.html#l00037">tsp.h:37</a></div></div>
 <div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00033">alpha.h:33</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a798521f1cfd1cdd3fe093e4197da7990"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a798521f1cfd1cdd3fe093e4197da7990">get_angle</a></div><div class="ttdeci">double get_angle(Point p, Point q, Point r)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00096">alpha_drivedist.cpp:96</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a09d6d4bec3c410ef9b9ae6cbd0559bdf"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a09d6d4bec3c410ef9b9ae6cbd0559bdf">find_next_edge</a></div><div class="ttdeci">void find_next_edge(Segment s, std::vector&lt; Segment &gt; &amp;segments, std::set&lt; int &gt; &amp;unusedIndexes, std::vector&lt; Polygon_2 &gt; &amp;rings)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00111">alpha_drivedist.cpp:111</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a7155c8eafdbc90eeb28655f0642dad25"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a7155c8eafdbc90eeb28655f0642dad25">Af</a></div><div class="ttdeci">CGAL::Alpha_shape_face_base_2&lt; K, Tf &gt; Af</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00081">alpha_drivedist.cpp:81</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a64fca5dabc4ad9db224e524a154bbff1"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a></div><div class="ttdeci">int alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00190">alpha_drivedist.cpp:190</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_aab02ea263f4af6825a98e18c38ea679e"><div class="ttname"><a href="alpha__drivedist_8cpp.html#aab02ea263f4af6825a98e18c38ea679e">Face_circulator</a></div><div class="ttdeci">Alpha_shape_2::Face_circulator Face_circulator</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00088">alpha_drivedist.cpp:88</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_aa097b1c3f5429739d7234ac0c50976d9"><div class="ttname"><a href="alpha__drivedist_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9">Point</a></div><div class="ttdeci">K::Point_2 Point</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00072">alpha_drivedist.cpp:72</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_acf1a2afd1df69ffc5b3757e8ee8ad416"><div class="ttname"><a href="alpha__drivedist_8cpp.html#acf1a2afd1df69ffc5b3757e8ee8ad416">coord_type</a></div><div class="ttdeci">double coord_type</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00068">alpha_drivedist.cpp:68</a></div></div>
+<div class="ttc" id="tsp_8c_html_a68c65955a7303fbed706a45a00f9487b"><div class="ttname"><a href="tsp_8c.html#a68c65955a7303fbed706a45a00f9487b">y</a></div><div class="ttdeci">float * y</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8c_source.html#l00118">tsp.c:118</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_aa4a59e5359e3efbe53fbfa763617d2a0"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#aa4a59e5359e3efbe53fbfa763617d2a0">r</a></div><div class="ttdeci">Route * r</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00083">vrppdtw/src/pdp_solver.cpp:83</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a2d6b60c2c2d8acdce06a85e1cc279f2c"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a2d6b60c2c2d8acdce06a85e1cc279f2c">Dt</a></div><div class="ttdeci">CGAL::Delaunay_triangulation_2&lt; K, Tds &gt; Dt</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00084">alpha_drivedist.cpp:84</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a7118ea995babe95c18fc3899f93d697a"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a7118ea995babe95c18fc3899f93d697a">prev_size</a></div><div class="ttdeci">size_t prev_size</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00110">alpha_drivedist.cpp:110</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a249648072c5d3aa789bb22e9662adf84"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a249648072c5d3aa789bb22e9662adf84">Alpha_shape_2</a></div><div class="ttdeci">CGAL::Alpha_shape_2&lt; Ht &gt; Alpha_shape_2</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00086">alpha_drivedist.cpp:86</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a054d7b9fbb0af44fd39709a19a178fce"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a054d7b9fbb0af44fd39709a19a178fce">Segment</a></div><div class="ttdeci">K::Segment_2 Segment</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00073">alpha_drivedist.cpp:73</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a269b1986c0b1002e29ca46fbd69d10c6"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a269b1986c0b1002e29ca46fbd69d10c6">alpha_edges</a></div><div class="ttdeci">void alpha_edges(const Alpha_shape_2 &amp;A, OutputIterator out)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00178">alpha_drivedist.cpp:178</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a96d79c2e2fa33b9b9575548752f1a75e"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a96d79c2e2fa33b9b9575548752f1a75e">Alpha_iterator</a></div><div class="ttdeci">Alpha_shape_2::Alpha_iterator Alpha_iterator</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00091">alpha_drivedist.cpp:91</a></div></div>
+<div class="ttc" id="alpha_8h_html"><div class="ttname"><a href="alpha_8h.html">alpha.h</a></div></div>
+<div class="ttc" id="tsp_8c_html_a51262fa06c263b0dfd25c45b80656f24"><div class="ttname"><a href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a></div><div class="ttdeci">float * x</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8c_source.html#l00117">tsp.c:117</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a276bf07b36a2a08ebd336b397b71944d"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a276bf07b36a2a08ebd336b397b71944d">SC</a></div><div class="ttdeci">CGAL::Simple_cartesian&lt; coord_type &gt; SC</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00070">alpha_drivedist.cpp:70</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a8c493b4407f1eab1fc792fe406d0db86"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86">Polygon_2</a></div><div class="ttdeci">CGAL::Polygon_2&lt; K &gt; Polygon_2</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00075">alpha_drivedist.cpp:75</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a3b5df359d00c095cf5609f9d9111ed12"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a3b5df359d00c095cf5609f9d9111ed12">Av</a></div><div class="ttdeci">CGAL::Triangulation_hierarchy_vertex_base_2&lt; Avb &gt; Av</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00078">alpha_drivedist.cpp:78</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_aadb90b396275ef364a8c2c690f94574d"><div class="ttname"><a href="alpha__drivedist_8cpp.html#aadb90b396275ef364a8c2c690f94574d">Avb</a></div><div class="ttdeci">CGAL::Alpha_shape_vertex_base_2&lt; K &gt; Avb</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00077">alpha_drivedist.cpp:77</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_aa251133ce0379ca4ec93098f7066d497"><div class="ttname"><a href="alpha__drivedist_8cpp.html#aa251133ce0379ca4ec93098f7066d497">Tf</a></div><div class="ttdeci">CGAL::Triangulation_face_base_2&lt; K &gt; Tf</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00080">alpha_drivedist.cpp:80</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a5a03458ba9ac60d8f4d97b4c121df7e0"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a5a03458ba9ac60d8f4d97b4c121df7e0">Vector</a></div><div class="ttdeci">K::Vector_2 Vector</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00074">alpha_drivedist.cpp:74</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a4b80b4c9d991d7280d3602a0274bf5c6"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a4b80b4c9d991d7280d3602a0274bf5c6">Alpha_shape_edges_iterator</a></div><div class="ttdeci">Alpha_shape_2::Alpha_shape_edges_iterator Alpha_shape_edges_iterator</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00092">alpha_drivedist.cpp:92</a></div></div>
 <div class="ttc" id="structpoint_html"><div class="ttname"><a href="structpoint.html">point</a></div><div class="ttdef"><b>Definition:</b> <a href="tsp_8h_source.html#l00034">tsp.h:34</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_adad078e09171776a159f465e96252de1"><div class="ttname"><a href="alpha__drivedist_8cpp.html#adad078e09171776a159f465e96252de1">Vertex_circulator</a></div><div class="ttdeci">Alpha_shape_2::Vertex_circulator Vertex_circulator</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00089">alpha_drivedist.cpp:89</a></div></div>
 <div class="ttc" id="structPoint_html"><div class="ttname"><a href="structPoint.html">Point</a></div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00050">VRP_Solver.h:50</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a63061f915d352707f06760d3f7787df5"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a></div><div class="ttdeci">CGAL::Filtered_kernel&lt; SC &gt; K</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00071">alpha_drivedist.cpp:71</a></div></div>
+<div class="ttc" id="alpha__drivedist_8cpp_html_a8a99e79ad9837ff40968379d7b43ad02"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a8a99e79ad9837ff40968379d7b43ad02">Ht</a></div><div class="ttdeci">CGAL::Triangulation_hierarchy_2&lt; Dt &gt; Ht</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00085">alpha_drivedist.cpp:85</a></div></div>
+<div class="ttc" id="structvertex_html_a85e129c2ca0134b32ac6d3761de0bbd6"><div class="ttname"><a href="structvertex.html#a85e129c2ca0134b32ac6d3761de0bbd6">vertex::x</a></div><div class="ttdeci">float8 x</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00035">alpha.h:35</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><b>alpha_drivedist.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:33 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha__drivedist_8cpp.html">alpha_drivedist.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

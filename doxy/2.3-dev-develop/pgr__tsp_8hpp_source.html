@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('pgr__tsp_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('pgr__tsp_8hpp_source.html','');});
 <div class="title">pgr_tsp.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="pgr__tsp_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * File: tsp_driver.cpp</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Generated with Template by:</span></div>
@@ -138,77 +140,102 @@ $(document).ready(function(){initNavTree('pgr__tsp_8hpp_source.html','');});
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;./Dmatrix.hpp&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Dmatrix_8hpp.html">./Dmatrix.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classTSP.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTSP.html">TSP</a> {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * Defs</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">size_t</span> <a class="code" href="classPath.html">Path</a>[3];      <span class="comment">/* specify how to change path */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classTSP.html#a0f6c204a4a361bb61c7d7aa98537ce5e">   40</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">size_t</span> <a class="code" href="classPath.html">Path</a>[3];      <span class="comment">/* specify how to change path */</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">typedef</span> std::vector&lt; std::vector &lt; double &gt; &gt; Costs;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">typedef</span> std::vector&lt; int64_t &gt; Ids;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classTSP.html#a25e3002b38e2acdc587c8d5ac9bfe93c">   42</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt; std::vector &lt; double &gt; &gt; <a class="code" href="classTSP.html#a25e3002b38e2acdc587c8d5ac9bfe93c">Costs</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classTSP.html#a6067275b254df6a019ba125f0206e034">   43</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt; int64_t &gt; <a class="code" href="classTSP.html#a6067275b254df6a019ba125f0206e034">Ids</a>;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;     <a class="code" href="classDmatrix.html">Dmatrix</a> dist;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;     <span class="keywordtype">size_t</span> n;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;     <span class="keywordtype">double</span> maxd;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;     <span class="keywordtype">size_t</span> bestlen;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;     <span class="keywordtype">double</span> bestCost;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;     Ids iorder;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">   45</a></span>&#160;     <a class="code" href="classDmatrix.html">Dmatrix</a> <a class="code" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">dist</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">   46</a></span>&#160;     <span class="keywordtype">size_t</span> <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0">   47</a></span>&#160;     <span class="keywordtype">double</span> <a class="code" href="classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0">maxd</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classTSP.html#a89ecbe218c5b93aca9fc3a06348379e4">   48</a></span>&#160;     <span class="keywordtype">size_t</span> <a class="code" href="classTSP.html#a89ecbe218c5b93aca9fc3a06348379e4">bestlen</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classTSP.html#a44453bb2d493f89e7c8a8540d355de2a">   49</a></span>&#160;     <span class="keywordtype">double</span> <a class="code" href="classTSP.html#a44453bb2d493f89e7c8a8540d355de2a">bestCost</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">   50</a></span>&#160;     <a class="code" href="classTSP.html#a6067275b254df6a019ba125f0206e034">Ids</a> <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;     <span class="comment">/*</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">      * std::vector&lt; bool &gt; visited;</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">      */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;     Ids jorder;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;     Ids border;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;     <span class="keywordtype">double</span> b[4];</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">   54</a></span>&#160;     <a class="code" href="classTSP.html#a6067275b254df6a019ba125f0206e034">Ids</a> <a class="code" href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">jorder</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classTSP.html#a21ebee1a38f094cc00f7467fbf6b1594">   55</a></span>&#160;     <a class="code" href="classTSP.html#a6067275b254df6a019ba125f0206e034">Ids</a> <a class="code" href="classTSP.html#a21ebee1a38f094cc00f7467fbf6b1594">border</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">   56</a></span>&#160;     <span class="keywordtype">double</span> <a class="code" href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">b</a>[4];</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;     <span class="comment">/*</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">      * function members</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">      */</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;     <a class="code" href="classTSP.html">TSP</a>(<a class="code" href="classDmatrix.html">Dmatrix</a>  _costs)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;         : dist(_costs),</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;         n(_costs.size()) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;             iorder.resize(n);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;             jorder.resize(n);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;             maxd = dist.max();</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classTSP.html#ada71f1122c3891b0c2347bff40e514c1">   62</a></span>&#160;     <a class="code" href="classTSP.html#ada71f1122c3891b0c2347bff40e514c1">TSP</a>(<a class="code" href="classDmatrix.html">Dmatrix</a>  _costs)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;         : <a class="code" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">dist</a>(_costs),</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;         <a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>(_costs.size()) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;             <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>.resize(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;             <a class="code" href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">jorder</a>.resize(<a class="code" href="classTSP.html#a18f5559a534774970cfa0a04d055665f">n</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;             <a class="code" href="classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0">maxd</a> = <a class="code" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">dist</a>.<a class="code" href="classDmatrix.html#a42988e66e79b693a79f8fc6db72cb87b">max</a>();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;             <span class="comment">/*</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">              * identity_permutations</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">              */</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;             std::iota(std::begin(iorder), std::end(iorder), 0);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;             std::iota(std::begin(<a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>), std::end(<a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>), 0);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span>             <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : iorder) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span>             <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;e : <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>) {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                  e = i;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;             }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor"></span>             <span class="comment">/*</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">              * best order</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">              */</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;             border = iorder;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;             bestCost = dist.pathCost(border);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;             <a class="code" href="classTSP.html#a21ebee1a38f094cc00f7467fbf6b1594">border</a> = <a class="code" href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">iorder</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;             <a class="code" href="classTSP.html#a44453bb2d493f89e7c8a8540d355de2a">bestCost</a> = <a class="code" href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">dist</a>.<a class="code" href="classDmatrix.html#aafe3cd9eca2def5f991df6f8f6618665">pathCost</a>(<a class="code" href="classTSP.html#a21ebee1a38f094cc00f7467fbf6b1594">border</a>);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;         }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;     <span class="keywordtype">void</span> update(Ids new_order);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;     <span class="keywordtype">bool</span> findEulerianPath();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;     <span class="keywordtype">void</span> annealing();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;     <span class="keywordtype">void</span> doThreeWay(<a class="code" href="classPath.html">Path</a> p);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;     <span class="keywordtype">double</span> getThreeWayCost (<a class="code" href="classPath.html">Path</a> p);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;     <span class="keywordtype">double</span> getReverseCost(<a class="code" href="classPath.html">Path</a> p);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;     <span class="keywordtype">void</span> doReverse(<a class="code" href="classPath.html">Path</a> p);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;     <span class="keywordtype">double</span> D(<span class="keywordtype">size_t</span>, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;     <span class="keywordtype">void</span> <a class="code" href="classTSP.html#a2bbd2099db71066c52bb532c80d61878">update</a>(<a class="code" href="tsp__driver_8cpp.html#aa99429229612dae1c905a260ab8e2a72">Ids</a> new_order);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;     <span class="keywordtype">bool</span> <a class="code" href="classTSP.html#af22de3a4ddb10be9d04a89d344d1c368">findEulerianPath</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;     <span class="keywordtype">void</span> <a class="code" href="classTSP.html#abb30d385da400f30793dc481dbcd692f">annealing</a>();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;     <span class="keywordtype">void</span> <a class="code" href="classTSP.html#ac2cf47e50ec57809015118dae383000b">doThreeWay</a>(<a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;     <span class="keywordtype">double</span> <a class="code" href="classTSP.html#ad4f15eeec109dd091cef42e934106190">getThreeWayCost</a> (<a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;     <span class="keywordtype">double</span> <a class="code" href="classTSP.html#a80c4874a7495118782c3c398ea973991">getReverseCost</a>(<a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;     <span class="keywordtype">void</span> <a class="code" href="classTSP.html#a309ccd2e623fd50ae7ba6e7a1ae5b601">doReverse</a>(<a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;     <span class="keywordtype">double</span> <a class="code" href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">D</a>(<span class="keywordtype">size_t</span>, <span class="keywordtype">size_t</span>);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00033">basePath_SSEC.hpp:33</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a42c4fbf7be7fec3bf7583c5f0e80bf4c"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a></div><div class="ttdeci">pickup * p</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00075">vrppdtw/src/pdp_solver.cpp:75</a></div></div>
+<div class="ttc" id="classTSP_html_a80c4874a7495118782c3c398ea973991"><div class="ttname"><a href="classTSP.html#a80c4874a7495118782c3c398ea973991">TSP::getReverseCost</a></div><div class="ttdeci">double getReverseCost(Path p)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00288">pgr_tsp.cpp:288</a></div></div>
+<div class="ttc" id="classTSP_html_a2bbd2099db71066c52bb532c80d61878"><div class="ttname"><a href="classTSP.html#a2bbd2099db71066c52bb532c80d61878">TSP::update</a></div><div class="ttdeci">void update(Ids new_order)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00074">pgr_tsp.cpp:74</a></div></div>
+<div class="ttc" id="classDmatrix_html_a42988e66e79b693a79f8fc6db72cb87b"><div class="ttname"><a href="classDmatrix.html#a42988e66e79b693a79f8fc6db72cb87b">Dmatrix::max</a></div><div class="ttdeci">double max() const </div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8cpp_source.html#l00032">Dmatrix.cpp:32</a></div></div>
+<div class="ttc" id="classTSP_html_a9104642fafa6fbea10d2a75165e7a8c0"><div class="ttname"><a href="classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0">TSP::maxd</a></div><div class="ttdeci">double maxd</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00047">pgr_tsp.hpp:47</a></div></div>
+<div class="ttc" id="tsp__driver_8cpp_html_aa99429229612dae1c905a260ab8e2a72"><div class="ttname"><a href="tsp__driver_8cpp.html#aa99429229612dae1c905a260ab8e2a72">Ids</a></div><div class="ttdeci">std::vector&lt; int64_t &gt; Ids</div><div class="ttdef"><b>Definition:</b> <a href="tsp__driver_8cpp_source.html#l00047">tsp_driver.cpp:47</a></div></div>
+<div class="ttc" id="classTSP_html_a25c846de4565f8b630e274ab12f8bdca"><div class="ttname"><a href="classTSP.html#a25c846de4565f8b630e274ab12f8bdca">TSP::D</a></div><div class="ttdeci">double D(size_t, size_t)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00069">pgr_tsp.cpp:69</a></div></div>
+<div class="ttc" id="classTSP_html_a18f5559a534774970cfa0a04d055665f"><div class="ttname"><a href="classTSP.html#a18f5559a534774970cfa0a04d055665f">TSP::n</a></div><div class="ttdeci">size_t n</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00046">pgr_tsp.hpp:46</a></div></div>
+<div class="ttc" id="classTSP_html_af22de3a4ddb10be9d04a89d344d1c368"><div class="ttname"><a href="classTSP.html#af22de3a4ddb10be9d04a89d344d1c368">TSP::findEulerianPath</a></div><div class="ttdeci">bool findEulerianPath()</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00087">pgr_tsp.cpp:87</a></div></div>
+<div class="ttc" id="classDmatrix_html_aafe3cd9eca2def5f991df6f8f6618665"><div class="ttname"><a href="classDmatrix.html#aafe3cd9eca2def5f991df6f8f6618665">Dmatrix::pathCost</a></div><div class="ttdeci">double pathCost(const Ids &amp;path) const </div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8cpp_source.html#l00014">Dmatrix.cpp:14</a></div></div>
+<div class="ttc" id="classTSP_html_a23a89de71c5a2631369aa3c5783b1cb6"><div class="ttname"><a href="classTSP.html#a23a89de71c5a2631369aa3c5783b1cb6">TSP::iorder</a></div><div class="ttdeci">Ids iorder</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00050">pgr_tsp.hpp:50</a></div></div>
+<div class="ttc" id="classTSP_html_ac2cf47e50ec57809015118dae383000b"><div class="ttname"><a href="classTSP.html#ac2cf47e50ec57809015118dae383000b">TSP::doThreeWay</a></div><div class="ttdeci">void doThreeWay(Path p)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00246">pgr_tsp.cpp:246</a></div></div>
+<div class="ttc" id="Dmatrix_8hpp_html"><div class="ttname"><a href="Dmatrix_8hpp.html">Dmatrix.hpp</a></div></div>
+<div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00041">basePath_SSEC.hpp:41</a></div></div>
 <div class="ttc" id="classDmatrix_html"><div class="ttname"><a href="classDmatrix.html">Dmatrix</a></div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8hpp_source.html#l00012">Dmatrix.hpp:12</a></div></div>
+<div class="ttc" id="classTSP_html_abb30d385da400f30793dc481dbcd692f"><div class="ttname"><a href="classTSP.html#abb30d385da400f30793dc481dbcd692f">TSP::annealing</a></div><div class="ttdeci">void annealing()</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00318">pgr_tsp.cpp:318</a></div></div>
+<div class="ttc" id="classTSP_html_ada71f1122c3891b0c2347bff40e514c1"><div class="ttname"><a href="classTSP.html#ada71f1122c3891b0c2347bff40e514c1">TSP::TSP</a></div><div class="ttdeci">TSP(Dmatrix _costs)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00062">pgr_tsp.hpp:62</a></div></div>
+<div class="ttc" id="classTSP_html_a98b5e8c78eb0d99bf54e0f3790835ebf"><div class="ttname"><a href="classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf">TSP::dist</a></div><div class="ttdeci">Dmatrix dist</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00045">pgr_tsp.hpp:45</a></div></div>
 <div class="ttc" id="classTSP_html"><div class="ttname"><a href="classTSP.html">TSP</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00035">pgr_tsp.hpp:35</a></div></div>
+<div class="ttc" id="classTSP_html_a309ccd2e623fd50ae7ba6e7a1ae5b601"><div class="ttname"><a href="classTSP.html#a309ccd2e623fd50ae7ba6e7a1ae5b601">TSP::doReverse</a></div><div class="ttdeci">void doReverse(Path p)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00300">pgr_tsp.cpp:300</a></div></div>
+<div class="ttc" id="classTSP_html_a19d984f00d7a8f88b0abecff61f35774"><div class="ttname"><a href="classTSP.html#a19d984f00d7a8f88b0abecff61f35774">TSP::jorder</a></div><div class="ttdeci">Ids jorder</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00054">pgr_tsp.hpp:54</a></div></div>
+<div class="ttc" id="classTSP_html_a89ecbe218c5b93aca9fc3a06348379e4"><div class="ttname"><a href="classTSP.html#a89ecbe218c5b93aca9fc3a06348379e4">TSP::bestlen</a></div><div class="ttdeci">size_t bestlen</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00048">pgr_tsp.hpp:48</a></div></div>
+<div class="ttc" id="classTSP_html_a44453bb2d493f89e7c8a8540d355de2a"><div class="ttname"><a href="classTSP.html#a44453bb2d493f89e7c8a8540d355de2a">TSP::bestCost</a></div><div class="ttdeci">double bestCost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00049">pgr_tsp.hpp:49</a></div></div>
+<div class="ttc" id="classTSP_html_a25e3002b38e2acdc587c8d5ac9bfe93c"><div class="ttname"><a href="classTSP.html#a25e3002b38e2acdc587c8d5ac9bfe93c">TSP::Costs</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; Costs</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00042">pgr_tsp.hpp:42</a></div></div>
+<div class="ttc" id="classTSP_html_a53ddfe934836c4d48256e3d3e6386db5"><div class="ttname"><a href="classTSP.html#a53ddfe934836c4d48256e3d3e6386db5">TSP::b</a></div><div class="ttdeci">double b[4]</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00056">pgr_tsp.hpp:56</a></div></div>
+<div class="ttc" id="classTSP_html_ad4f15eeec109dd091cef42e934106190"><div class="ttname"><a href="classTSP.html#ad4f15eeec109dd091cef42e934106190">TSP::getThreeWayCost</a></div><div class="ttdeci">double getThreeWayCost(Path p)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8cpp_source.html#l00231">pgr_tsp.cpp:231</a></div></div>
+<div class="ttc" id="classTSP_html_a6067275b254df6a019ba125f0206e034"><div class="ttname"><a href="classTSP.html#a6067275b254df6a019ba125f0206e034">TSP::Ids</a></div><div class="ttdeci">std::vector&lt; int64_t &gt; Ids</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00043">pgr_tsp.hpp:43</a></div></div>
+<div class="ttc" id="classTSP_html_a21ebee1a38f094cc00f7467fbf6b1594"><div class="ttname"><a href="classTSP.html#a21ebee1a38f094cc00f7467fbf6b1594">TSP::border</a></div><div class="ttdeci">Ids border</div><div class="ttdef"><b>Definition:</b> <a href="pgr__tsp_8hpp_source.html#l00055">pgr_tsp.hpp:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><b>pgr_tsp.hpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="pgr__tsp_8hpp.html">pgr_tsp.hpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('shooting__star__relax_8hpp_source.html
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('shooting__star__relax_8hpp_source.html
 <div class="title">shooting_star_relax.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="shooting__star__relax_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
@@ -152,11 +154,11 @@ $(document).ready(function(){initNavTree('shooting__star__relax_8hpp_source.html
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;boost/property_map.hpp&gt;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;postgres.h&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="postgres_8h.html">postgres.h</a>&gt;</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define U_TURN_COST 100000</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="shooting__star__relax_8hpp.html#a70414f6f881dbaab4cbb7963e3b5f10f">   49</a></span>&#160;<span class="preprocessor">#define U_TURN_COST 100000</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">bool</span> is_equal ( <span class="keywordtype">int</span> a[], <span class="keywordtype">int</span> b[], <span class="keywordtype">int</span> size )</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="shooting__star__relax_8hpp.html#ad982d872081c3ea9ccdaf544b5226a42">   51</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="shooting__star__relax_8hpp.html#ad982d872081c3ea9ccdaf544b5226a42">is_equal</a> ( <span class="keywordtype">int</span> <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>[], <span class="keywordtype">int</span> <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>[], <span class="keywordtype">int</span> size )</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; size; i++ ) </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  {</div>
@@ -177,25 +179,25 @@ $(document).ready(function(){initNavTree('shooting__star__relax_8hpp_source.html
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="comment">// std::abs just isn&#39;t portable :(</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> X&gt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keyword">inline</span> X my_abs(<span class="keyword">const</span> X&amp; x)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> x &lt; 0 ? -x : x; }</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structboost_1_1closed__plus.html#a6256f1b93e4f6361a7c1f7d4311b7af3">   72</a></span>&#160;      <span class="keyword">inline</span> X <a class="code" href="structboost_1_1closed__plus.html#a6256f1b93e4f6361a7c1f7d4311b7af3">my_abs</a>(<span class="keyword">const</span> X&amp; <a class="code" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> x &lt; 0 ? -x : <a class="code" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>; }</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      T operator()(<span class="keyword">const</span> T&amp; a, <span class="keyword">const</span> T&amp; b)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structboost_1_1closed__plus.html#a8469c76dc51ec8815df278ca63ba50e3">   74</a></span>&#160;      <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a> <a class="code" href="structboost_1_1closed__plus.html#a8469c76dc51ec8815df278ca63ba50e3">operator()</a>(<span class="keyword">const</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a>&amp; <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a>&amp; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        T inf = (numeric_limits&lt;T&gt;::max)();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (b &gt; 0 &amp;&amp; my_abs(inf - a) &lt; b)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a> inf = (<a class="code" href="VRP__Solver_8h.html#affe776513b24d84b39af8ab0930fef7f">numeric_limits&lt;T&gt;::max</a>)();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (b &gt; 0 &amp;&amp; <a class="code" href="structboost_1_1closed__plus.html#a6256f1b93e4f6361a7c1f7d4311b7af3">my_abs</a>(inf - a) &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;          <span class="keywordflow">return</span> inf;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> a + b;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> a + <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    };</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class </span><a class="code" href="structEdge.html">Edge</a>, <span class="keyword">class </span>Graph, <span class="keyword">class </span>WeightMap, <span class="keyword">class </span>EdgeMap,</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keyword">class </span>PredecessorMap, <span class="keyword">class </span>DistanceMap, <span class="keyword">class </span>CostMap,</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keyword">class </span>BinaryFunction, <span class="keyword">class </span>BinaryPredicate&gt;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">bool</span> relax(<a class="code" href="structEdge.html">Edge</a> e, </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="namespaceboost.html#a31e4a1cc2728a2d761637990a07b7e35">   86</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceboost.html#a31e4a1cc2728a2d761637990a07b7e35">relax</a>(<a class="code" href="structEdge.html">Edge</a> e, </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;               <a class="code" href="structEdge.html">Edge</a> pe,</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;               <a class="code" href="structEdge.html">Edge</a> s, </div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;               <span class="keyword">const</span> Graph&amp; g, <span class="keyword">const</span> WeightMap&amp; w, <span class="keyword">const</span> EdgeMap&amp; em,</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;               PredecessorMap&amp; p, DistanceMap&amp; d, CostMap&amp; c,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;               PredecessorMap&amp; <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>, DistanceMap&amp; <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, CostMap&amp; <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>,</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;               <span class="keyword">const</span> BinaryFunction&amp; combine, <span class="keyword">const</span> BinaryPredicate&amp; compare,</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;           <span class="keywordtype">int</span> e_max_id)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
@@ -206,13 +208,13 @@ $(document).ready(function(){initNavTree('shooting__star__relax_8hpp_source.html
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      Vertex u = source(e, g), v = target(e, g), pu = source(pe, g);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="keyword">typedef</span> <span class="keyword">typename</span> property_traits&lt;DistanceMap&gt;::value_type D;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="keyword">typedef</span> <span class="keyword">typename</span> property_traits&lt;DistanceMap&gt;::value_type <a class="code" href="tsp_8c.html#ab92cbf7e90532afc19255fb27726b7a8">D</a>;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="keyword">typedef</span> <span class="keyword">typename</span> property_traits&lt;WeightMap&gt;::value_type W;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keyword">typedef</span> <span class="keyword">typename</span> property_traits&lt;EdgeMap&gt;::value_type E;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      D d_e = <span class="keyword">get</span>(d, e);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      D d_pe = <span class="keyword">get</span>(d, pe);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      D d_e = <span class="keyword">get</span>(<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, e);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      D d_pe = <span class="keyword">get</span>(<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, pe);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      W w_e = <span class="keyword">get</span>(w, e);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
@@ -238,7 +240,7 @@ $(document).ready(function(){initNavTree('shooting__star__relax_8hpp_source.html
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      </div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0; j&lt;w_pe[g[e].id].at(i).second.size(); ++j)</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    e_id = g[ce].id;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    e_id = g[ce].<a class="code" href="structEdge.html#a02050815cb4f85b7134187319306e2cd">id</a>;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">if</span>(w_pe[g[e].<span class="keywordtype">id</span>].at(i).second.at(j) == -1)</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      <span class="keywordflow">continue</span>;</div>
@@ -267,7 +269,7 @@ $(document).ready(function(){initNavTree('shooting__star__relax_8hpp_source.html
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="comment">//Check if it is a u-turn not in the beginning of route </span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span>( abs(g[e].<span class="keywordtype">id</span>-g[pe].<span class="keywordtype">id</span>) == e_max_id &amp;&amp; g[e].<span class="keywordtype">id</span> != g[s].<span class="keywordtype">id</span> &amp;&amp; g[pe].<span class="keywordtype">id</span> != g[s].<span class="keywordtype">id</span> )</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        w_pe_e = U_TURN_COST;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        w_pe_e = <a class="code" href="shooting__star__relax_8hpp.html#a70414f6f881dbaab4cbb7963e3b5f10f">U_TURN_COST</a>;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      }</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;      <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      {</div>
@@ -291,28 +293,44 @@ $(document).ready(function(){initNavTree('shooting__star__relax_8hpp_source.html
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class </span>Graph, <span class="keyword">class </span>WeightMap, <span class="keyword">class </span>EdgeMap,</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keyword">class </span>PredecessorMap, <span class="keyword">class </span>DistanceMap&gt;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordtype">bool</span> relax(<span class="keyword">typename</span> graph_traits&lt;Graph&gt;::edge_descriptor e,</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;               <span class="keyword">const</span> Graph&amp; g, WeightMap w, EdgeMap em, PredecessorMap p, DistanceMap d)</div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="namespaceboost.html#a654e8100a0b5cc4ea098b63460efd9b4">  186</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceboost.html#a31e4a1cc2728a2d761637990a07b7e35">relax</a>(<span class="keyword">typename</span> graph_traits&lt;Graph&gt;::edge_descriptor e,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;               <span class="keyword">const</span> Graph&amp; g, WeightMap w, EdgeMap em, PredecessorMap <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>, DistanceMap <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>)</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keyword">typedef</span> <span class="keyword">typename</span> property_traits&lt;DistanceMap&gt;::value_type D;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="keyword">typedef</span> closed_plus&lt;D&gt; Combine;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keyword">typedef</span> <span class="keyword">typename</span> property_traits&lt;DistanceMap&gt;::value_type <a class="code" href="tsp_8c.html#ab92cbf7e90532afc19255fb27726b7a8">D</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="keyword">typedef</span> <a class="code" href="structboost_1_1closed__plus.html">closed_plus&lt;D&gt;</a> Combine;</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <span class="keyword">typedef</span> std::less&lt;D&gt; Compare;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      <span class="keywordflow">return</span> relax(e, g, w, em, p, d, Combine(), Compare());</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespaceboost.html#a31e4a1cc2728a2d761637990a07b7e35">relax</a>(e, g, w, em, p, d, Combine(), Compare());</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;} <span class="comment">// namespace boost</span></div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="structEdge_html"><div class="ttname"><a href="structEdge.html">Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="astar__boost__wrapper_8cpp_source.html#l00058">astar_boost_wrapper.cpp:58</a></div></div>
-<div class="ttc" id="structVertex_html"><div class="ttname"><a href="structVertex.html">Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="astar__boost__wrapper_8cpp_source.html#l00065">astar_boost_wrapper.cpp:65</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a42c4fbf7be7fec3bf7583c5f0e80bf4c"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a></div><div class="ttdeci">pickup * p</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00075">vrppdtw/src/pdp_solver.cpp:75</a></div></div>
+<div class="ttc" id="shooting__star__relax_8hpp_html_ad982d872081c3ea9ccdaf544b5226a42"><div class="ttname"><a href="shooting__star__relax_8hpp.html#ad982d872081c3ea9ccdaf544b5226a42">is_equal</a></div><div class="ttdeci">bool is_equal(int a[], int b[], int size)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__relax_8hpp_source.html#l00051">shooting_star_relax.hpp:51</a></div></div>
+<div class="ttc" id="structboost_1_1closed__plus_html_a6256f1b93e4f6361a7c1f7d4311b7af3"><div class="ttname"><a href="structboost_1_1closed__plus.html#a6256f1b93e4f6361a7c1f7d4311b7af3">boost::closed_plus::my_abs</a></div><div class="ttdeci">X my_abs(const X &amp;x) const </div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__relax_8hpp_source.html#l00072">shooting_star_relax.hpp:72</a></div></div>
+<div class="ttc" id="VRP__Solver_8h_html_affe776513b24d84b39af8ab0930fef7f"><div class="ttname"><a href="VRP__Solver_8h.html#affe776513b24d84b39af8ab0930fef7f">max</a></div><div class="ttdeci">#define max(a, b)</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00047">VRP_Solver.h:47</a></div></div>
+<div class="ttc" id="structEdge_html"><div class="ttname"><a href="structEdge.html">Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00064">shooting_star_boost_wrapper.cpp:64</a></div></div>
+<div class="ttc" id="tsplib_8c_html_aa4c2a5552e9bc49b1816ff532f558c74"><div class="ttname"><a href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a></div><div class="ttdeci">static int a</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00111">tsplib.c:111</a></div></div>
+<div class="ttc" id="tsp_8c_html_a51262fa06c263b0dfd25c45b80656f24"><div class="ttname"><a href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a></div><div class="ttdeci">float * x</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8c_source.html#l00117">tsp.c:117</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a84e0d58129b1cbf8f33b35fe2ffa640e"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a></div><div class="ttdeci">customer * c</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00074">vrppdtw/src/pdp_solver.cpp:74</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a047a3df231eb7accc059a2d2d9d20fcf"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a></div><div class="ttdeci">std::vector&lt; Solution &gt; T</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00081">vrppdtw/src/pdp_solver.cpp:81</a></div></div>
+<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a3ee54ed5a04e9ed93e379a925ea82be8"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a></div><div class="ttdeci">depot d</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00071">vrppdtw/src/pdp_solver.cpp:71</a></div></div>
+<div class="ttc" id="tsplib_8c_html_a148e3876077787926724625411d6e7a9"><div class="ttname"><a href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a></div><div class="ttdeci">static int b</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00112">tsplib.c:112</a></div></div>
+<div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
+<div class="ttc" id="structVertex_html"><div class="ttname"><a href="structVertex.html">Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="boost__wrapper_8cpp_source.html#l00060">boost_wrapper.cpp:60</a></div></div>
+<div class="ttc" id="shooting__star__relax_8hpp_html_a70414f6f881dbaab4cbb7963e3b5f10f"><div class="ttname"><a href="shooting__star__relax_8hpp.html#a70414f6f881dbaab4cbb7963e3b5f10f">U_TURN_COST</a></div><div class="ttdeci">#define U_TURN_COST</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__relax_8hpp_source.html#l00049">shooting_star_relax.hpp:49</a></div></div>
+<div class="ttc" id="structEdge_html_a02050815cb4f85b7134187319306e2cd"><div class="ttname"><a href="structEdge.html#a02050815cb4f85b7134187319306e2cd">Edge::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00066">shooting_star_boost_wrapper.cpp:66</a></div></div>
 <div class="ttc" id="structboost_1_1closed__plus_html"><div class="ttname"><a href="structboost_1_1closed__plus.html">boost::closed_plus</a></div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__relax_8hpp_source.html#l00068">shooting_star_relax.hpp:68</a></div></div>
+<div class="ttc" id="tsp_8c_html_ab92cbf7e90532afc19255fb27726b7a8"><div class="ttname"><a href="tsp_8c.html#ab92cbf7e90532afc19255fb27726b7a8">D</a></div><div class="ttdeci">#define D(i, j)</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8c_source.html#l00114">tsp.c:114</a></div></div>
+<div class="ttc" id="namespaceboost_html_a31e4a1cc2728a2d761637990a07b7e35"><div class="ttname"><a href="namespaceboost.html#a31e4a1cc2728a2d761637990a07b7e35">boost::relax</a></div><div class="ttdeci">bool relax(Edge e, Edge pe, Edge s, const Graph &amp;g, const WeightMap &amp;w, const EdgeMap &amp;em, PredecessorMap &amp;p, DistanceMap &amp;d, CostMap &amp;c, const BinaryFunction &amp;combine, const BinaryPredicate &amp;compare, int e_max_id)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__relax_8hpp_source.html#l00086">shooting_star_relax.hpp:86</a></div></div>
+<div class="ttc" id="structboost_1_1closed__plus_html_a8469c76dc51ec8815df278ca63ba50e3"><div class="ttname"><a href="structboost_1_1closed__plus.html#a8469c76dc51ec8815df278ca63ba50e3">boost::closed_plus::operator()</a></div><div class="ttdeci">T operator()(const T &amp;a, const T &amp;b) const </div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__relax_8hpp_source.html#l00074">shooting_star_relax.hpp:74</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ccb7fbd65434eff12e61bbc88060a492.html">shooting_star</a></li><li class="navelem"><a class="el" href="dir_470b4081baf7c9c7e4f161775776754d.html">src</a></li><li class="navelem"><b>shooting_star_relax.hpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ccb7fbd65434eff12e61bbc88060a492.html">shooting_star</a></li><li class="navelem"><a class="el" href="dir_470b4081baf7c9c7e4f161775776754d.html">src</a></li><li class="navelem"><a class="el" href="shooting__star__relax_8hpp.html">shooting_star_relax.hpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

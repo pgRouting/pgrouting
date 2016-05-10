@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classPgr__ksp.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,23 +113,27 @@ $(document).ready(function(){initNavTree('classPgr__ksp.html','');});
 
 <p>This is the complete list of members for <a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#afd9e2136d3e354ec074773d8f3d533aa">curr_result_path</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#a1e5476d1b0d125fef8f3e5aa634b5782">doNextCycle</a>(G &amp;graph)</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a816e02e45221bab34ed59b801d9d8192">executeYen</a>(G &amp;graph, int top_k)</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#a11eac853ca869c5b829f13a7c199255c">getFirstSolution</a>(G &amp;graph)</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a3fc94e730d74d65c3fc2c64c2d4bd1ff">m_end</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6">m_Heap</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34">m_ResultSet</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#abae118da08007fc1c69ff04b442ca5cf">m_start</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a8c4a810ebc0c9d3b5b24c0353075fc96">clear</a>()</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#afd9e2136d3e354ec074773d8f3d533aa">curr_result_path</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a1e5476d1b0d125fef8f3e5aa634b5782">doNextCycle</a>(G &amp;graph)</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#a816e02e45221bab34ed59b801d9d8192">executeYen</a>(G &amp;graph, int top_k)</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a11eac853ca869c5b829f13a7c199255c">getFirstSolution</a>(G &amp;graph)</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#a3fc94e730d74d65c3fc2c64c2d4bd1ff">m_end</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6">m_Heap</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#a68c881a727ecb17f5e4db3b5d7f5fa34">m_ResultSet</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#abae118da08007fc1c69ff04b442ca5cf">m_start</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6">pSet</a> typedef</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#abc9f355a52aee675dfe5df77fd6bae71">removeVertices</a>(G &amp;graph, const Path &amp;path)</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480">v_source</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a272c77dfb567322b855a83887339a979">v_target</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#af88d272ba3e52e4f6f82368344361fb0">V</a> typedef</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a2d6b6d396332500f0cbcba86bce9b480">v_source</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classPgr__ksp.html#a272c77dfb567322b855a83887339a979">v_target</a></td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac">Yen</a>(G &amp;graph, int64_t source, int64_t target, int K, bool heap_paths)</td><td class="entry"><a class="el" href="classPgr__ksp.html">Pgr_ksp&lt; G &gt;</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

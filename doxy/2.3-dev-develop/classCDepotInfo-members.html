@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -95,7 +96,7 @@ $(document).ready(function(){initNavTree('classCDepotInfo.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,12 +113,26 @@ $(document).ready(function(){initNavTree('classCDepotInfo.html','');});
 
 <p>This is the complete list of members for <a class="el" href="classCDepotInfo.html">CDepotInfo</a>, including all inherited members.</p>
 <table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classCDepotInfo.html#a609c63c1c08b9da7fa06a205078c342a">CDepotInfo</a>()</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classCDepotInfo.html#a36aa2923fd994ce23a358bbf6435ab57">getCloseTime</a>()</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCDepotInfo.html#a89ca9c39d721f1484ee98d95d07e11ae">getDepotId</a>()</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCDepotInfo.html#a98135bafb76b78924bfce1f589101b98">getDepotLocation</a>()</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCDepotInfo.html#a56dbcca5e2ed0c14d4ec4e2194d22b3c">getOpenTime</a>()</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCDepotInfo.html#a53cf9af90e6e8207307f8be8d94114cf">m_iDepotCloseTime</a></td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCDepotInfo.html#a6c26af812d77e27de5ea7a33d05e9ff8">m_iDepotId</a></td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCDepotInfo.html#a7bd258743562d1abae6021400011d46f">m_iDepotOpenTime</a></td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCDepotInfo.html#aaf80c7a3d5f981825826f448e06d53e3">m_ptDepotLocation</a></td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCDepotInfo.html#ac55b4384a35167456088b360712cc5b3">setCloseTime</a>(int closeTime)</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCDepotInfo.html#a474994eccc097cdbc12e3ad900ba8a0d">setDepotId</a>(int id)</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCDepotInfo.html#a9cc717747d360086504806771214eb17">setDepotLocation</a>(Point location)</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classCDepotInfo.html#a85ba66bcc1f9b63ab945abbba414f2a1">setOpenTime</a>(int openTime)</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classCDepotInfo.html#a2e8dcf9e6f81a65fd786e9372b7c9529">~CDepotInfo</a>()</td><td class="entry"><a class="el" href="classCDepotInfo.html">CDepotInfo</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

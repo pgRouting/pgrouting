@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -92,7 +94,7 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(11)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,7 +108,7 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="title">shooting_star_boost_wrapper.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
+<a href="shooting__star__boost__wrapper_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
@@ -150,7 +152,7 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// Include C header first for windows build issue</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;shooting_star.h&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="shooting__star_8h.html">shooting_star.h</a>&quot;</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;boost/config.hpp&gt;</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;boost/version.hpp&gt;</span></div>
@@ -162,49 +164,49 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;boost/vector_property_map.hpp&gt;</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;shooting_star_search.hpp&gt;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;<a class="code" href="shooting__star__search_8hpp.html">shooting_star_search.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span>    <span class="comment">// for sqrt</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">using namespace </span>boost;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">struct </span><a class="code" href="structEdge.html">Edge</a></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structEdge.html">   64</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structEdge.html">Edge</a></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">int</span> id;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">int</span> source;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">int</span> target;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  float8 cost;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">float</span> distance;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">float</span> rank;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  std::map&lt; int, vector&lt; std::pair&lt;float, std::vector&lt;int&gt; &gt; &gt;, std::less&lt;int&gt; &gt; adjacent_edges;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  default_color_type color;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structEdge.html#a02050815cb4f85b7134187319306e2cd">   66</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structEdge.html#a02050815cb4f85b7134187319306e2cd">id</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structEdge.html#adcf410ae923d69e22ede2cd59ee80108">   67</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structEdge.html#adcf410ae923d69e22ede2cd59ee80108">source</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structEdge.html#aa39574b7bb4de6b41acd5c5c3d6331cc">   68</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structEdge.html#aa39574b7bb4de6b41acd5c5c3d6331cc">target</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structEdge.html#a9a5ac1b06a3e9a202fa610518c70ffe1">   69</a></span>&#160;  <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> <a class="code" href="structEdge.html#a9a5ac1b06a3e9a202fa610518c70ffe1">cost</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structEdge.html#a52346282c5410fdc12dae1068176b188">   70</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structEdge.html#a52346282c5410fdc12dae1068176b188">distance</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structEdge.html#a590732962dd76c6855899b3747a30753">   71</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structEdge.html#a590732962dd76c6855899b3747a30753">rank</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structEdge.html#a2df02925cc88bb2f7ac42e0a5acbfc2a">   72</a></span>&#160;  std::map&lt; int, vector&lt; std::pair&lt;float, std::vector&lt;int&gt; &gt; &gt;, std::less&lt;int&gt; &gt; <a class="code" href="structEdge.html#a2df02925cc88bb2f7ac42e0a5acbfc2a">adjacent_edges</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structEdge.html#aed3ab99c082d3be03078299e5e555a8e">   73</a></span>&#160;  default_color_type <a class="code" href="structEdge.html#aed3ab99c082d3be03078299e5e555a8e">color</a>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  std::size_t index;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structEdge.html#aabdaaf161435fefcd81b2b844fbe7e4f">   75</a></span>&#160;  std::size_t <a class="code" href="structEdge.html#aabdaaf161435fefcd81b2b844fbe7e4f">index</a>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">struct </span><a class="code" href="structVertex.html">Vertex</a></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">int</span> id;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  float8 x;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  float8 y;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structVertex.html#aa432f7a62e7f8f2fd1741ade3614d2d5">   81</a></span>&#160;  <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> <a class="code" href="structVertex.html#aa432f7a62e7f8f2fd1741ade3614d2d5">x</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structVertex.html#a5b1b5c5ee6a185ed3a5a50b77f477e7b">   82</a></span>&#160;  <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> <a class="code" href="structVertex.html#a5b1b5c5ee6a185ed3a5a50b77f477e7b">y</a>;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">// exception for termination</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Edge&gt;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">class </span><a class="code" href="structfound__goal.html">found_goal</a> </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classfound__goal.html">   87</a></span>&#160;<span class="keyword">class </span><a class="code" href="classfound__goal.html">found_goal</a> </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="structfound__goal.html">found_goal</a>() {}</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="structfound__goal.html">found_goal</a>(<a class="code" href="structEdge.html">Edge</a> target) : target_edge(target) {}</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="structfound__goal.html">found_goal</a>(<span class="keyword">const</span> <a class="code" href="structfound__goal.html">found_goal</a> &amp;fg) {}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    ~<a class="code" href="structfound__goal.html">found_goal</a>() {}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="structEdge.html">Edge</a> get_target()</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classfound__goal.html#ae680271856df85da2c805a70e4c1ffb5">   90</a></span>&#160;    <a class="code" href="classfound__goal.html#ae680271856df85da2c805a70e4c1ffb5">found_goal</a>() {}</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classfound__goal.html#a3abb12d2cd0f729dcb3d2e2188b3b355">   91</a></span>&#160;    <a class="code" href="classfound__goal.html#a3abb12d2cd0f729dcb3d2e2188b3b355">found_goal</a>(<a class="code" href="structEdge.html">Edge</a> target) : target_edge(target) {}</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classfound__goal.html#a013779f45f97430f7567a77ea33784ad">   92</a></span>&#160;    <a class="code" href="classfound__goal.html#a013779f45f97430f7567a77ea33784ad">found_goal</a>(<span class="keyword">const</span> <a class="code" href="classfound__goal.html">found_goal</a> &amp;fg) {}</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classfound__goal.html#a526e877418bbc3d6cc0d9487faa18f2b">   93</a></span>&#160;    <a class="code" href="classfound__goal.html#a526e877418bbc3d6cc0d9487faa18f2b">~found_goal</a>() {}</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classfound__goal.html#aef55436cb567dce4145185e40211b02f">   94</a></span>&#160;    <a class="code" href="structEdge.html">Edge</a> <a class="code" href="classfound__goal.html#aef55436cb567dce4145185e40211b02f">get_target</a>()</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    {</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="keywordflow">return</span> target_edge;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="structEdge.html">Edge</a> target_edge;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classfound__goal.html#a3317b033f42801dcdc6e6cb9e464f068">   99</a></span>&#160;    <a class="code" href="structEdge.html">Edge</a> <a class="code" href="classfound__goal.html#a3317b033f42801dcdc6e6cb9e464f068">target_edge</a>;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
@@ -213,33 +215,33 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classshooting__star__goal__visitor.html">  105</a></span>&#160;<span class="keyword">class </span><a class="code" href="classshooting__star__goal__visitor.html">shooting_star_goal_visitor</a> : <span class="keyword">public</span> <a class="code" href="classboost_1_1shooting__star__visitor.html">boost::default_shooting_star_visitor</a></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <a class="code" href="classshooting__star__goal__visitor.html">shooting_star_goal_visitor</a>(<a class="code" href="structEdge.html">Edge</a> goal, <span class="keywordtype">int</span> max_id) : m_goal(goal){}</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <a class="code" href="classshooting__star__goal__visitor.html">shooting_star_goal_visitor</a>(<span class="keyword">const</span> <a class="code" href="classshooting__star__goal__visitor.html">shooting_star_goal_visitor</a> &amp;gv) : m_goal(gv.m_goal){}</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  ~<a class="code" href="classshooting__star__goal__visitor.html">shooting_star_goal_visitor</a>(){}</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classshooting__star__goal__visitor.html#a01b861ca671748725a6749514b8675a9">  108</a></span>&#160;  <a class="code" href="classshooting__star__goal__visitor.html#a01b861ca671748725a6749514b8675a9">shooting_star_goal_visitor</a>(<a class="code" href="structEdge.html">Edge</a> goal, <span class="keywordtype">int</span> max_id) : m_goal(goal){}</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classshooting__star__goal__visitor.html#a4967b34ba6bf888bf72b1c1a3158788a">  109</a></span>&#160;  <a class="code" href="classshooting__star__goal__visitor.html#a4967b34ba6bf888bf72b1c1a3158788a">shooting_star_goal_visitor</a>(<span class="keyword">const</span> <a class="code" href="classshooting__star__goal__visitor.html">shooting_star_goal_visitor</a> &amp;gv) : m_goal(gv.m_goal){}</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classshooting__star__goal__visitor.html#a2bace78b6766f5afeee9ced5c43c0298">  110</a></span>&#160;  <a class="code" href="classshooting__star__goal__visitor.html#a2bace78b6766f5afeee9ced5c43c0298">~shooting_star_goal_visitor</a>(){}</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> Graph&gt;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordtype">void</span> examine_edge(<a class="code" href="structEdge.html">Edge</a> e, Graph&amp; g, <span class="keywordtype">int</span> e_max_id) </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classshooting__star__goal__visitor.html#a5f8ce50121ea134d90a1477e6adfb940">  113</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classshooting__star__goal__visitor.html#a5f8ce50121ea134d90a1477e6adfb940">examine_edge</a>(<a class="code" href="structEdge.html">Edge</a> e, Graph&amp; g, <span class="keywordtype">int</span> e_max_id) </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  {</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span>( g[e].<span class="keywordtype">id</span> == g[m_goal].<span class="keywordtype">id</span> || g[e].<span class="keywordtype">id</span> == g[m_goal].<span class="keywordtype">id</span> + e_max_id )</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="structfound__goal.html">found_goal&lt;Edge&gt;</a>(e);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="classfound__goal.html">found_goal&lt;Edge&gt;</a>(e);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  }</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> Graph&gt;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordtype">void</span> finish_edge(<a class="code" href="structEdge.html">Edge</a> e, Graph&amp; g) {}</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classshooting__star__goal__visitor.html#a055b4099a77ee880c7dff3025bc13646">  121</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classshooting__star__goal__visitor.html#a055b4099a77ee880c7dff3025bc13646">finish_edge</a>(<a class="code" href="structEdge.html">Edge</a> e, Graph&amp; g) {}</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <a class="code" href="structEdge.html">Edge</a> m_goal;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordtype">int</span> e_max_id;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classshooting__star__goal__visitor.html#ac5fe45b5b6a55b14c3a051dd114e546c">  123</a></span>&#160;  <a class="code" href="structEdge.html">Edge</a> <a class="code" href="classshooting__star__goal__visitor.html#ac5fe45b5b6a55b14c3a051dd114e546c">m_goal</a>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="classshooting__star__goal__visitor.html#a4609aecfeb403c4055a5e08856150c2c">  124</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classshooting__star__goal__visitor.html#a4609aecfeb403c4055a5e08856150c2c">e_max_id</a>;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;};</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">// Heuristic function</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Graph, <span class="keyword">class</span> CostType&gt;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">class </span><a class="code" href="classdistance__heuristic.html">distance_heuristic</a></div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classdistance__heuristic.html">  129</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdistance__heuristic.html">distance_heuristic</a></div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;{</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keyword">typedef</span> <span class="keyword">typename</span> graph_traits&lt;Graph&gt;::edge_descriptor <a class="code" href="structEdge.html">Edge</a>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <a class="code" href="classdistance__heuristic.html">distance_heuristic</a>(Graph&amp; g, <a class="code" href="structEdge.html">Edge</a> goal):m_g(g), m_goal(goal){}</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  CostType operator()(<a class="code" href="structEdge.html">Edge</a> e)</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classdistance__heuristic.html#af89d7e6d7d4c404e01a37c7d3f149e3c">  132</a></span>&#160;  <span class="keyword">typedef</span> <span class="keyword">typename</span> graph_traits&lt;Graph&gt;::edge_descriptor <a class="code" href="classdistance__heuristic.html#af89d7e6d7d4c404e01a37c7d3f149e3c">Edge</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="classdistance__heuristic.html#a2c8822d7f7c4eaf431a8c580cd6eeac9">  133</a></span>&#160;  <a class="code" href="classdistance__heuristic.html#a2c8822d7f7c4eaf431a8c580cd6eeac9">distance_heuristic</a>(Graph&amp; g, <a class="code" href="structEdge.html">Edge</a> goal):m_g(g), m_goal(goal){}</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classdistance__heuristic.html#a726d5495ca3fe205881dfded3a1e4cdb">  134</a></span>&#160;  CostType <a class="code" href="classdistance__heuristic.html#a726d5495ca3fe205881dfded3a1e4cdb">operator()</a>(<a class="code" href="structEdge.html">Edge</a> e)</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  {</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    CostType dx = m_g[source(m_goal, m_g)].x - m_g[source(e, m_g)].x;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    CostType dxt = m_g[target(m_goal, m_g)].x - m_g[target(e, m_g)].x;</div>
@@ -253,8 +255,8 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">return</span> sqrt(pow(min(::fabs(dx),::fabs(dxt)),2)+pow(min(::fabs(dy),::fabs(dyt)),2))/2;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  } </div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  Graph&amp; m_g;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="structEdge.html">Edge</a> m_goal;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classdistance__heuristic.html#a728da56bc7205a88f5fb3e35efee1e64">  148</a></span>&#160;  Graph&amp; <a class="code" href="classdistance__heuristic.html#a728da56bc7205a88f5fb3e35efee1e64">m_g</a>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="classdistance__heuristic.html#a119c6516d2d0669ced8eae5f3141c91f">  149</a></span>&#160;  <a class="code" href="structEdge.html">Edge</a> <a class="code" href="classdistance__heuristic.html#a119c6516d2d0669ced8eae5f3141c91f">m_goal</a>;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;};</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
@@ -262,9 +264,9 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">// Also copies all attributes and adjacent edges</span></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> G, <span class="keyword">class</span> E&gt;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;graph_add_edge(G &amp;graph, <span class="keywordtype">int</span> index,</div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="shooting__star__boost__wrapper_8cpp.html#a9b85dd1cc9bd70283b28d1d09dda1c71">  157</a></span>&#160;<a class="code" href="shooting__star__boost__wrapper_8cpp.html#a9b85dd1cc9bd70283b28d1d09dda1c71">graph_add_edge</a>(G &amp;graph, <span class="keywordtype">int</span> index,</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;               <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">int</span> source, <span class="keywordtype">int</span> target, </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;           float8 cost, float8 s_x, float8 s_y, float8 t_x, float8 t_y, </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;           <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> cost, <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> s_x, <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> s_y, <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> t_x, <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> t_y, </div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;           std::map&lt; <span class="keywordtype">int</span>, vector&lt; std::pair&lt;<span class="keywordtype">float</span>, vector&lt;int&gt; &gt; &gt;, std::less&lt;int&gt; &gt; adjacent_edges)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
@@ -272,7 +274,7 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">bool</span> inserted;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">if</span> (cost &lt; 0) <span class="comment">// edges are inserted as unpassable if cost is negative</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    cost = MAX_COST;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    cost = <a class="code" href="shooting__star_8h.html#a4693ca27d43aba0ff1111f968ad1ed1e">MAX_COST</a>;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  tie(e, inserted) = add_edge(source, target, graph);</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
@@ -308,10 +310,10 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">// It renumbers vertices, fills the graph with edges,</span></div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">// calculates a route and return a result.</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keywordtype">int</span> </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;boost_shooting_star(<a class="code" href="structedge__shooting__star.html">edge_shooting_star_t</a> *edges_array, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count, </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="shooting__star__boost__wrapper_8cpp.html#a992127690b544e50d1e3a6768f3432ec">  203</a></span>&#160;<a class="code" href="shooting__star__boost__wrapper_8cpp.html#a992127690b544e50d1e3a6768f3432ec">boost_shooting_star</a>(<a class="code" href="structedge__shooting__star.html">edge_shooting_star_t</a> *edges_array, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count, </div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordtype">int</span> source_edge_id, <span class="keywordtype">int</span> target_edge_id,</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordtype">bool</span> directed, <span class="keywordtype">bool</span> has_reverse_cost,</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <a class="code" href="structpath__element__t.html">path_element_t</a> **path, <span class="keywordtype">int</span> *path_count, <span class="keywordtype">char</span> **err_msg, <span class="keywordtype">int</span> e_max_id)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <a class="code" href="structpath__element__t.html">path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <span class="keywordtype">int</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>, <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>, <span class="keywordtype">int</span> e_max_id)</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keyword">typedef</span> adjacency_list&lt;vecS, vecS, directedS, Vertex, Edge&gt; graph_t;</div>
@@ -338,23 +340,23 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keywordflow">for</span> (std::size_t j = 0; j &lt; count; ++j)</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  {</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="comment">//Vertex ids renumbering moved here</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    src = edges_array[j].source;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    trg = edges_array[j].target;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    src = edges_array[j].<a class="code" href="structedge__shooting__star.html#aa9071d2bda56a093c56442467e7a543d">source</a>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    trg = edges_array[j].<a class="code" href="structedge__shooting__star.html#a64cc84037f3a8dbbefec56c595115b1a">target</a>;</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    </div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">if</span>(vertices[src]==0)</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    {</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      vertices[src]=j+offset;</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    edges_array[j].source=vertices[src];</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    edges_array[j].<a class="code" href="structedge__shooting__star.html#aa9071d2bda56a093c56442467e7a543d">source</a>=vertices[src];</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    </div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">if</span>(vertices[trg]==0)</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    {</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      offset++;      </div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      vertices[trg]=j+offset;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    edges_array[j].target=vertices[trg];</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    edges_array[j].<a class="code" href="structedge__shooting__star.html#a64cc84037f3a8dbbefec56c595115b1a">target</a>=vertices[trg];</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">for</span>(z=0; z&lt;MAX_RULE_LENGTH;++z)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">for</span>(z=0; z&lt;<a class="code" href="pgr__types_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a>;++z)</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    {</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="keywordflow">if</span>(edges_array[j].rule[z] &gt; 0)</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      {</div>
@@ -364,27 +366,27 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">if</span>(edges_array[j].to_cost &gt; 0)</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      adjacent_edges[edges_array[j].id].push_back(std::pair&lt;float8, vector&lt;int&gt; &gt; (edges_array[j].to_cost, rule) );</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      adjacent_edges[edges_array[j].<a class="code" href="structedge__shooting__star.html#ab46f42f75465e5bb50803a73c707eb34">id</a>].push_back(std::pair&lt;<a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>, vector&lt;int&gt; &gt; (edges_array[j].to_cost, rule) );</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      rule.clear();</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">if</span>((j &lt; count-1 &amp;&amp; edges_array[j].<span class="keywordtype">id</span> != edges_array[j+1].<span class="keywordtype">id</span>)||(j==count-1))</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    {</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      graph_add_edge&lt;graph_t, edge_descriptor&gt;(graph, j,</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                           edges_array[j].id, edges_array[j].source, </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                           edges_array[j].target, edges_array[j].cost, </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                           edges_array[j].s_x, edges_array[j].s_y, </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                           edges_array[j].t_x, edges_array[j].t_y, adjacent_edges);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                           edges_array[j].<a class="code" href="structedge__shooting__star.html#ab46f42f75465e5bb50803a73c707eb34">id</a>, edges_array[j].<a class="code" href="structedge__shooting__star.html#aa9071d2bda56a093c56442467e7a543d">source</a>, </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                           edges_array[j].<a class="code" href="structedge__shooting__star.html#a64cc84037f3a8dbbefec56c595115b1a">target</a>, edges_array[j].<a class="code" href="structedge__shooting__star.html#af56f60ab1af9630ade35510b735836dc">cost</a>, </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                           edges_array[j].<a class="code" href="structedge__shooting__star.html#a77c7e4b9069a0db698e5c15c3f21de9d">s_x</a>, edges_array[j].<a class="code" href="structedge__shooting__star.html#a1a86a3572eaf513a8a2708ec998ea238">s_y</a>, </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                           edges_array[j].<a class="code" href="structedge__shooting__star.html#a4275e3a3000a2dc2610977e5abb0ea7a">t_x</a>, edges_array[j].<a class="code" href="structedge__shooting__star.html#aa3b286ead443ecaa5c35ebe9fc000fcd">t_y</a>, adjacent_edges);</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    </div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      <span class="comment">// if the edge is not directed or if it is directed and has reverse cost</span></div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      <span class="keywordflow">if</span> (!directed || (directed &amp;&amp; has_reverse_cost))</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        float8 cost, reverse_cost;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> cost, reverse_cost;</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        </div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordflow">if</span> (has_reverse_cost)</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;          cost = edges_array[j].cost;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;          reverse_cost = edges_array[j].reverse_cost;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;          cost = edges_array[j].<a class="code" href="structedge__shooting__star.html#af56f60ab1af9630ade35510b735836dc">cost</a>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;          reverse_cost = edges_array[j].<a class="code" href="structedge__shooting__star.html#a64821bb4cf3f34db78be6c38f40dd775">reverse_cost</a>;</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;          </div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          <span class="comment">//If chosen source/target edge&#39;s cost is high, take the edge for opposite direction</span></div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;          <span class="keywordflow">if</span>(cost &gt; reverse_cost)</div>
@@ -397,22 +399,22 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        }</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;          cost = edges_array[j].cost;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;          cost = edges_array[j].<a class="code" href="structedge__shooting__star.html#af56f60ab1af9630ade35510b735836dc">cost</a>;</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      <span class="keywordflow">if</span>(adjacent_edges[edges_array[j].<span class="keywordtype">id</span>].size() &gt; 0)</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;      {</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        adjacent_edges[edges_array[j].id+e_max_id].assign( adjacent_edges[edges_array[j].<span class="keywordtype">id</span>].begin(), adjacent_edges[edges_array[j].<span class="keywordtype">id</span>].end() );</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        adjacent_edges[edges_array[j].<a class="code" href="structedge__shooting__star.html#ab46f42f75465e5bb50803a73c707eb34">id</a>+e_max_id].assign( adjacent_edges[edges_array[j].<span class="keywordtype">id</span>].begin(), adjacent_edges[edges_array[j].<span class="keywordtype">id</span>].end() );</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        adjacent_edges.erase(edges_array[j].<span class="keywordtype">id</span>);</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      }</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        graph_add_edge&lt;graph_t, edge_descriptor&gt;(graph, j,</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                           edges_array[j].id+e_max_id, edges_array[j].target, </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                           edges_array[j].source, cost, </div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                           edges_array[j].s_x, edges_array[j].s_y, </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                           edges_array[j].t_x, edges_array[j].t_y, adjacent_edges);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                           edges_array[j].<a class="code" href="structedge__shooting__star.html#ab46f42f75465e5bb50803a73c707eb34">id</a>+e_max_id, edges_array[j].<a class="code" href="structedge__shooting__star.html#a64cc84037f3a8dbbefec56c595115b1a">target</a>, </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                           edges_array[j].<a class="code" href="structedge__shooting__star.html#aa9071d2bda56a093c56442467e7a543d">source</a>, cost, </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                           edges_array[j].<a class="code" href="structedge__shooting__star.html#a77c7e4b9069a0db698e5c15c3f21de9d">s_x</a>, edges_array[j].<a class="code" href="structedge__shooting__star.html#a1a86a3572eaf513a8a2708ec998ea238">s_y</a>, </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                           edges_array[j].<a class="code" href="structedge__shooting__star.html#a4275e3a3000a2dc2610977e5abb0ea7a">t_x</a>, edges_array[j].<a class="code" href="structedge__shooting__star.html#aa3b286ead443ecaa5c35ebe9fc000fcd">t_y</a>, adjacent_edges);</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      }</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    adjacent_edges.clear();</div>
@@ -432,7 +434,7 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  </div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  graph_traits&lt;graph_t&gt;::edge_iterator ei, ei_end;</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordflow">for</span>(tie(ei, ei_end) = edges(graph); ei != ei_end; ++ei) </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordflow">for</span>(tie(ei, ei_end) = <a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>(graph); ei != ei_end; ++ei) </div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  {</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">if</span>(graph[*ei].<span class="keywordtype">id</span> == source_edge_id || graph[*ei].<span class="keywordtype">id</span> == source_edge_id - e_max_id)</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    {</div>
@@ -450,7 +452,7 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  }</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keywordflow">for</span>(tie(ei, ei_end) = edges(graph); ei != ei_end; ++ei) </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keywordflow">for</span>(tie(ei, ei_end) = <a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>(graph); ei != ei_end; ++ei) </div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  {</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">if</span>(graph[*ei].<span class="keywordtype">id</span> == target_edge_id || graph[*ei].<span class="keywordtype">id</span> == target_edge_id - e_max_id)</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    {</div>
@@ -467,22 +469,22 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">return</span> -3;</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  }</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  property_map&lt;graph_t, std::size_t Edge::*&gt;::type edge_index = <span class="keyword">get</span>(&amp;Edge::index, graph);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  property_map&lt;graph_t, std::size_t Edge::*&gt;::type edge_index = <span class="keyword">get</span>(&amp;<a class="code" href="structEdge.html#aabdaaf161435fefcd81b2b844fbe7e4f">Edge::index</a>, graph);</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  std::map&lt; int, edge_descriptor, std::less&lt;int&gt; &gt; predecessors;</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  </div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  property_map&lt;graph_t, float Edge::*&gt;::type rank = <span class="keyword">get</span>(&amp;Edge::rank, graph);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  property_map&lt;graph_t, float Edge::*&gt;::type distance = <span class="keyword">get</span>(&amp;Edge::distance, graph);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  property_map&lt;graph_t, float Edge::*&gt;::type rank = <span class="keyword">get</span>(&amp;<a class="code" href="structEdge.html#a590732962dd76c6855899b3747a30753">Edge::rank</a>, graph);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  property_map&lt;graph_t, float Edge::*&gt;::type distance = <span class="keyword">get</span>(&amp;<a class="code" href="structEdge.html#a52346282c5410fdc12dae1068176b188">Edge::distance</a>, graph);</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <span class="keywordflow">try</span> </div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  {</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="comment">//calling Shooting* search</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    shooting_star_search</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <a class="code" href="namespaceboost.html#a50345f97a0a19a21306d78d3db3533a6">shooting_star_search</a></div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      (graph, source_edge,</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;       <a class="code" href="classdistance__heuristic.html">distance_heuristic&lt;graph_t, float&gt;</a>(graph, target_edge),</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;       weight_map(<span class="keyword">get</span>(&amp;Edge::cost, graph)).</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;       weight_map2(<span class="keyword">get</span>(&amp;Edge::adjacent_edges, graph)).</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;       edge_color_map(<span class="keyword">get</span>(&amp;Edge::color, graph)).</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;       weight_map(<span class="keyword">get</span>(&amp;<a class="code" href="structEdge.html#a9a5ac1b06a3e9a202fa610518c70ffe1">Edge::cost</a>, graph)).</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;       weight_map2(<span class="keyword">get</span>(&amp;<a class="code" href="structEdge.html#a2df02925cc88bb2f7ac42e0a5acbfc2a">Edge::adjacent_edges</a>, graph)).</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;       edge_color_map(<span class="keyword">get</span>(&amp;<a class="code" href="structEdge.html#aed3ab99c082d3be03078299e5e555a8e">Edge::color</a>, graph)).</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;       visitor(<a class="code" href="classshooting__star__goal__visitor.html">shooting_star_goal_visitor&lt;edge_descriptor&gt;</a>(target_edge, e_max_id)),</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;       edge_index,</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;       distance, rank,</div>
@@ -490,13 +492,13 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;       );</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  } </div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keywordflow">catch</span>(<a class="code" href="structfound__goal.html">found_goal&lt;edge_descriptor&gt;</a> &amp;fg) </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keywordflow">catch</span>(<a class="code" href="classfound__goal.html">found_goal&lt;edge_descriptor&gt;</a> &amp;fg) </div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  {</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  </div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    vector&lt;edge_descriptor&gt; path_vect;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordtype">int</span> max = MAX_NODES;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="VRP__Solver_8h.html#affe776513b24d84b39af8ab0930fef7f">max</a> = <a class="code" href="boost__wrapper_8cpp.html#abd2aacdca9cb2a1a30f3392256b96ea3">MAX_NODES</a>;</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    target_edge = fg.get_target();</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    target_edge = fg.<a class="code" href="classfound__goal.html#aef55436cb567dce4145185e40211b02f">get_target</a>();</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    path_vect.push_back(target_edge);</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    </div>
@@ -562,22 +564,74 @@ $(document).ready(function(){initNavTree('shooting__star__boost__wrapper_8cpp_so
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;}</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;</div>
+<div class="ttc" id="structVertex_html_aa432f7a62e7f8f2fd1741ade3614d2d5"><div class="ttname"><a href="structVertex.html#aa432f7a62e7f8f2fd1741ade3614d2d5">Vertex::x</a></div><div class="ttdeci">float8 x</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00081">shooting_star_boost_wrapper.cpp:81</a></div></div>
+<div class="ttc" id="classshooting__star__goal__visitor_html_a4609aecfeb403c4055a5e08856150c2c"><div class="ttname"><a href="classshooting__star__goal__visitor.html#a4609aecfeb403c4055a5e08856150c2c">shooting_star_goal_visitor::e_max_id</a></div><div class="ttdeci">int e_max_id</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00124">shooting_star_boost_wrapper.cpp:124</a></div></div>
+<div class="ttc" id="structEdge_html_a590732962dd76c6855899b3747a30753"><div class="ttname"><a href="structEdge.html#a590732962dd76c6855899b3747a30753">Edge::rank</a></div><div class="ttdeci">float rank</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00071">shooting_star_boost_wrapper.cpp:71</a></div></div>
+<div class="ttc" id="classdistance__heuristic_html_a726d5495ca3fe205881dfded3a1e4cdb"><div class="ttname"><a href="classdistance__heuristic.html#a726d5495ca3fe205881dfded3a1e4cdb">distance_heuristic::operator()</a></div><div class="ttdeci">CostType operator()(Edge e)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00134">shooting_star_boost_wrapper.cpp:134</a></div></div>
+<div class="ttc" id="boost__wrapper_8cpp_html_abd2aacdca9cb2a1a30f3392256b96ea3"><div class="ttname"><a href="boost__wrapper_8cpp.html#abd2aacdca9cb2a1a30f3392256b96ea3">MAX_NODES</a></div><div class="ttdeci">#define MAX_NODES</div><div class="ttdef"><b>Definition:</b> <a href="boost__wrapper_8cpp_source.html#l00058">boost_wrapper.cpp:58</a></div></div>
+<div class="ttc" id="structEdge_html_a52346282c5410fdc12dae1068176b188"><div class="ttname"><a href="structEdge.html#a52346282c5410fdc12dae1068176b188">Edge::distance</a></div><div class="ttdeci">float distance</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00070">shooting_star_boost_wrapper.cpp:70</a></div></div>
+<div class="ttc" id="classshooting__star__goal__visitor_html_ac5fe45b5b6a55b14c3a051dd114e546c"><div class="ttname"><a href="classshooting__star__goal__visitor.html#ac5fe45b5b6a55b14c3a051dd114e546c">shooting_star_goal_visitor::m_goal</a></div><div class="ttdeci">Edge m_goal</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00123">shooting_star_boost_wrapper.cpp:123</a></div></div>
+<div class="ttc" id="structEdge_html_a9a5ac1b06a3e9a202fa610518c70ffe1"><div class="ttname"><a href="structEdge.html#a9a5ac1b06a3e9a202fa610518c70ffe1">Edge::cost</a></div><div class="ttdeci">float8 cost</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00069">shooting_star_boost_wrapper.cpp:69</a></div></div>
+<div class="ttc" id="classdistance__heuristic_html_a119c6516d2d0669ced8eae5f3141c91f"><div class="ttname"><a href="classdistance__heuristic.html#a119c6516d2d0669ced8eae5f3141c91f">distance_heuristic::m_goal</a></div><div class="ttdeci">Edge m_goal</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00149">shooting_star_boost_wrapper.cpp:149</a></div></div>
 <div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00033">alpha.h:33</a></div></div>
+<div class="ttc" id="classfound__goal_html_a526e877418bbc3d6cc0d9487faa18f2b"><div class="ttname"><a href="classfound__goal.html#a526e877418bbc3d6cc0d9487faa18f2b">found_goal::~found_goal</a></div><div class="ttdeci">~found_goal()</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00093">shooting_star_boost_wrapper.cpp:93</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_a77c7e4b9069a0db698e5c15c3f21de9d"><div class="ttname"><a href="structedge__shooting__star.html#a77c7e4b9069a0db698e5c15c3f21de9d">edge_shooting_star::s_x</a></div><div class="ttdeci">float8 s_x</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00059">shooting_star.h:59</a></div></div>
+<div class="ttc" id="classshooting__star__goal__visitor_html_a5f8ce50121ea134d90a1477e6adfb940"><div class="ttname"><a href="classshooting__star__goal__visitor.html#a5f8ce50121ea134d90a1477e6adfb940">shooting_star_goal_visitor::examine_edge</a></div><div class="ttdeci">void examine_edge(Edge e, Graph &amp;g, int e_max_id)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00113">shooting_star_boost_wrapper.cpp:113</a></div></div>
 <div class="ttc" id="classshooting__star__goal__visitor_html"><div class="ttname"><a href="classshooting__star__goal__visitor.html">shooting_star_goal_visitor</a></div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00105">shooting_star_boost_wrapper.cpp:105</a></div></div>
-<div class="ttc" id="structEdge_html"><div class="ttname"><a href="structEdge.html">Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="astar__boost__wrapper_8cpp_source.html#l00058">astar_boost_wrapper.cpp:58</a></div></div>
-<div class="ttc" id="structfound__goal_html"><div class="ttname"><a href="structfound__goal.html">found_goal</a></div><div class="ttdef"><b>Definition:</b> <a href="astar__boost__wrapper_8cpp_source.html#l00073">astar_boost_wrapper.cpp:73</a></div></div>
+<div class="ttc" id="classfound__goal_html_ae680271856df85da2c805a70e4c1ffb5"><div class="ttname"><a href="classfound__goal.html#ae680271856df85da2c805a70e4c1ffb5">found_goal::found_goal</a></div><div class="ttdeci">found_goal()</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00090">shooting_star_boost_wrapper.cpp:90</a></div></div>
+<div class="ttc" id="classshooting__star__goal__visitor_html_a2bace78b6766f5afeee9ced5c43c0298"><div class="ttname"><a href="classshooting__star__goal__visitor.html#a2bace78b6766f5afeee9ced5c43c0298">shooting_star_goal_visitor::~shooting_star_goal_visitor</a></div><div class="ttdeci">~shooting_star_goal_visitor()</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00110">shooting_star_boost_wrapper.cpp:110</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_a1a86a3572eaf513a8a2708ec998ea238"><div class="ttname"><a href="structedge__shooting__star.html#a1a86a3572eaf513a8a2708ec998ea238">edge_shooting_star::s_y</a></div><div class="ttdeci">float8 s_y</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00060">shooting_star.h:60</a></div></div>
+<div class="ttc" id="VRP__Solver_8h_html_affe776513b24d84b39af8ab0930fef7f"><div class="ttname"><a href="VRP__Solver_8h.html#affe776513b24d84b39af8ab0930fef7f">max</a></div><div class="ttdeci">#define max(a, b)</div><div class="ttdef"><b>Definition:</b> <a href="VRP__Solver_8h_source.html#l00047">VRP_Solver.h:47</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_a64821bb4cf3f34db78be6c38f40dd775"><div class="ttname"><a href="structedge__shooting__star.html#a64821bb4cf3f34db78be6c38f40dd775">edge_shooting_star::reverse_cost</a></div><div class="ttdeci">float8 reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00058">shooting_star.h:58</a></div></div>
+<div class="ttc" id="structEdge_html_aa39574b7bb4de6b41acd5c5c3d6331cc"><div class="ttname"><a href="structEdge.html#aa39574b7bb4de6b41acd5c5c3d6331cc">Edge::target</a></div><div class="ttdeci">int target</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00068">shooting_star_boost_wrapper.cpp:68</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_af56f60ab1af9630ade35510b735836dc"><div class="ttname"><a href="structedge__shooting__star.html#af56f60ab1af9630ade35510b735836dc">edge_shooting_star::cost</a></div><div class="ttdeci">float8 cost</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00057">shooting_star.h:57</a></div></div>
+<div class="ttc" id="structEdge_html"><div class="ttname"><a href="structEdge.html">Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00064">shooting_star_boost_wrapper.cpp:64</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_ab46f42f75465e5bb50803a73c707eb34"><div class="ttname"><a href="structedge__shooting__star.html#ab46f42f75465e5bb50803a73c707eb34">edge_shooting_star::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00054">shooting_star.h:54</a></div></div>
+<div class="ttc" id="structEdge_html_aabdaaf161435fefcd81b2b844fbe7e4f"><div class="ttname"><a href="structEdge.html#aabdaaf161435fefcd81b2b844fbe7e4f">Edge::index</a></div><div class="ttdeci">std::size_t index</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00075">shooting_star_boost_wrapper.cpp:75</a></div></div>
+<div class="ttc" id="classshooting__star__goal__visitor_html_a055b4099a77ee880c7dff3025bc13646"><div class="ttname"><a href="classshooting__star__goal__visitor.html#a055b4099a77ee880c7dff3025bc13646">shooting_star_goal_visitor::finish_edge</a></div><div class="ttdeci">void finish_edge(Edge e, Graph &amp;g)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00121">shooting_star_boost_wrapper.cpp:121</a></div></div>
+<div class="ttc" id="classdistance__heuristic_html_af89d7e6d7d4c404e01a37c7d3f149e3c"><div class="ttname"><a href="classdistance__heuristic.html#af89d7e6d7d4c404e01a37c7d3f149e3c">distance_heuristic::Edge</a></div><div class="ttdeci">graph_traits&lt; Graph &gt;::edge_descriptor Edge</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00132">shooting_star_boost_wrapper.cpp:132</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_aa9071d2bda56a093c56442467e7a543d"><div class="ttname"><a href="structedge__shooting__star.html#aa9071d2bda56a093c56442467e7a543d">edge_shooting_star::source</a></div><div class="ttdeci">int source</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00055">shooting_star.h:55</a></div></div>
+<div class="ttc" id="structEdge_html_aed3ab99c082d3be03078299e5e555a8e"><div class="ttname"><a href="structEdge.html#aed3ab99c082d3be03078299e5e555a8e">Edge::color</a></div><div class="ttdeci">default_color_type color</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00073">shooting_star_boost_wrapper.cpp:73</a></div></div>
+<div class="ttc" id="shooting__star_8h_html"><div class="ttname"><a href="shooting__star_8h.html">shooting_star.h</a></div></div>
+<div class="ttc" id="shooting__star__boost__wrapper_8cpp_html_a992127690b544e50d1e3a6768f3432ec"><div class="ttname"><a href="shooting__star__boost__wrapper_8cpp.html#a992127690b544e50d1e3a6768f3432ec">boost_shooting_star</a></div><div class="ttdeci">int boost_shooting_star(edge_shooting_star_t *edges_array, unsigned int count, int source_edge_id, int target_edge_id, bool directed, bool has_reverse_cost, path_element_t **path, int *path_count, char **err_msg, int e_max_id)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00203">shooting_star_boost_wrapper.cpp:203</a></div></div>
+<div class="ttc" id="classdistance__heuristic_html_a728da56bc7205a88f5fb3e35efee1e64"><div class="ttname"><a href="classdistance__heuristic.html#a728da56bc7205a88f5fb3e35efee1e64">distance_heuristic::m_g</a></div><div class="ttdeci">Graph &amp; m_g</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00148">shooting_star_boost_wrapper.cpp:148</a></div></div>
+<div class="ttc" id="dijkstra_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00047">dijkstra.h:47</a></div></div>
+<div class="ttc" id="classfound__goal_html_a3317b033f42801dcdc6e6cb9e464f068"><div class="ttname"><a href="classfound__goal.html#a3317b033f42801dcdc6e6cb9e464f068">found_goal::target_edge</a></div><div class="ttdeci">Edge target_edge</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00099">shooting_star_boost_wrapper.cpp:99</a></div></div>
+<div class="ttc" id="classfound__goal_html_aef55436cb567dce4145185e40211b02f"><div class="ttname"><a href="classfound__goal.html#aef55436cb567dce4145185e40211b02f">found_goal::get_target</a></div><div class="ttdeci">Edge get_target()</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00094">shooting_star_boost_wrapper.cpp:94</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_a64cc84037f3a8dbbefec56c595115b1a"><div class="ttname"><a href="structedge__shooting__star.html#a64cc84037f3a8dbbefec56c595115b1a">edge_shooting_star::target</a></div><div class="ttdeci">int target</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00056">shooting_star.h:56</a></div></div>
+<div class="ttc" id="shooting__star_8h_html_a4693ca27d43aba0ff1111f968ad1ed1e"><div class="ttname"><a href="shooting__star_8h.html#a4693ca27d43aba0ff1111f968ad1ed1e">MAX_COST</a></div><div class="ttdeci">#define MAX_COST</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00048">shooting_star.h:48</a></div></div>
 <div class="ttc" id="classboost_1_1shooting__star__visitor_html"><div class="ttname"><a href="classboost_1_1shooting__star__visitor.html">boost::shooting_star_visitor</a></div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__search_8hpp_source.html#l00214">shooting_star_search.hpp:214</a></div></div>
-<div class="ttc" id="structVertex_html"><div class="ttname"><a href="structVertex.html">Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="astar__boost__wrapper_8cpp_source.html#l00065">astar_boost_wrapper.cpp:65</a></div></div>
-<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00045">pgr_types.h:45</a></div></div>
-<div class="ttc" id="classdistance__heuristic_html"><div class="ttname"><a href="classdistance__heuristic.html">distance_heuristic</a></div><div class="ttdef"><b>Definition:</b> <a href="astar__boost__wrapper_8cpp_source.html#l00096">astar_boost_wrapper.cpp:96</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
+<div class="ttc" id="structVertex_html"><div class="ttname"><a href="structVertex.html">Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="boost__wrapper_8cpp_source.html#l00060">boost_wrapper.cpp:60</a></div></div>
+<div class="ttc" id="structVertex_html_a5b1b5c5ee6a185ed3a5a50b77f477e7b"><div class="ttname"><a href="structVertex.html#a5b1b5c5ee6a185ed3a5a50b77f477e7b">Vertex::y</a></div><div class="ttdeci">float8 y</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00082">shooting_star_boost_wrapper.cpp:82</a></div></div>
+<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00057">pgr_types.h:57</a></div></div>
+<div class="ttc" id="classshooting__star__goal__visitor_html_a4967b34ba6bf888bf72b1c1a3158788a"><div class="ttname"><a href="classshooting__star__goal__visitor.html#a4967b34ba6bf888bf72b1c1a3158788a">shooting_star_goal_visitor::shooting_star_goal_visitor</a></div><div class="ttdeci">shooting_star_goal_visitor(const shooting_star_goal_visitor &amp;gv)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00109">shooting_star_boost_wrapper.cpp:109</a></div></div>
+<div class="ttc" id="classdistance__heuristic_html"><div class="ttname"><a href="classdistance__heuristic.html">distance_heuristic</a></div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00129">shooting_star_boost_wrapper.cpp:129</a></div></div>
+<div class="ttc" id="classshooting__star__goal__visitor_html_a01b861ca671748725a6749514b8675a9"><div class="ttname"><a href="classshooting__star__goal__visitor.html#a01b861ca671748725a6749514b8675a9">shooting_star_goal_visitor::shooting_star_goal_visitor</a></div><div class="ttdeci">shooting_star_goal_visitor(Edge goal, int max_id)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00108">shooting_star_boost_wrapper.cpp:108</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
+<div class="ttc" id="structEdge_html_a02050815cb4f85b7134187319306e2cd"><div class="ttname"><a href="structEdge.html#a02050815cb4f85b7134187319306e2cd">Edge::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00066">shooting_star_boost_wrapper.cpp:66</a></div></div>
+<div class="ttc" id="structEdge_html_a2df02925cc88bb2f7ac42e0a5acbfc2a"><div class="ttname"><a href="structEdge.html#a2df02925cc88bb2f7ac42e0a5acbfc2a">Edge::adjacent_edges</a></div><div class="ttdeci">std::map&lt; int, vector&lt; std::pair&lt; float, std::vector&lt; int &gt; &gt; &gt;, std::less&lt; int &gt; &gt; adjacent_edges</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00072">shooting_star_boost_wrapper.cpp:72</a></div></div>
+<div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
+<div class="ttc" id="classfound__goal_html_a3abb12d2cd0f729dcb3d2e2188b3b355"><div class="ttname"><a href="classfound__goal.html#a3abb12d2cd0f729dcb3d2e2188b3b355">found_goal::found_goal</a></div><div class="ttdeci">found_goal(Edge target)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00091">shooting_star_boost_wrapper.cpp:91</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a2b2d1b8288abf80b6781151bdde6101f"><div class="ttname"><a href="pgr__types_8h.html#a2b2d1b8288abf80b6781151bdde6101f">MAX_RULE_LENGTH</a></div><div class="ttdeci">#define MAX_RULE_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00125">pgr_types.h:125</a></div></div>
+<div class="ttc" id="shooting__star__search_8hpp_html"><div class="ttname"><a href="shooting__star__search_8hpp.html">shooting_star_search.hpp</a></div></div>
+<div class="ttc" id="classdistance__heuristic_html_a2c8822d7f7c4eaf431a8c580cd6eeac9"><div class="ttname"><a href="classdistance__heuristic.html#a2c8822d7f7c4eaf431a8c580cd6eeac9">distance_heuristic::distance_heuristic</a></div><div class="ttdeci">distance_heuristic(Graph &amp;g, Edge goal)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00133">shooting_star_boost_wrapper.cpp:133</a></div></div>
+<div class="ttc" id="namespaceboost_html_a50345f97a0a19a21306d78d3db3533a6"><div class="ttname"><a href="namespaceboost.html#a50345f97a0a19a21306d78d3db3533a6">boost::shooting_star_search</a></div><div class="ttdeci">void shooting_star_search(VertexAndEdgeListGraph &amp;g, typename graph_traits&lt; VertexAndEdgeListGraph &gt;::edge_descriptor s, AStarHeuristic h, ShootingStarVisitor vis, PredecessorMap &amp;predecessor, CostMap cost, DistanceMap distance, WeightMap weight, EdgeMap edge_map, IndexMap index_map, ColorMap color, EdgeColorMap edge_color, CompareFunction compare, CombineFunction combine, CostInf inf, CostZero zero, int e_max_id)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__search_8hpp_source.html#l00482">shooting_star_search.hpp:482</a></div></div>
+<div class="ttc" id="classfound__goal_html_a013779f45f97430f7567a77ea33784ad"><div class="ttname"><a href="classfound__goal.html#a013779f45f97430f7567a77ea33784ad">found_goal::found_goal</a></div><div class="ttdeci">found_goal(const found_goal &amp;fg)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00092">shooting_star_boost_wrapper.cpp:92</a></div></div>
+<div class="ttc" id="shooting__star__boost__wrapper_8cpp_html_a9b85dd1cc9bd70283b28d1d09dda1c71"><div class="ttname"><a href="shooting__star__boost__wrapper_8cpp.html#a9b85dd1cc9bd70283b28d1d09dda1c71">graph_add_edge</a></div><div class="ttdeci">static void graph_add_edge(G &amp;graph, int index, int id, int source, int target, float8 cost, float8 s_x, float8 s_y, float8 t_x, float8 t_y, std::map&lt; int, vector&lt; std::pair&lt; float, vector&lt; int &gt; &gt; &gt;, std::less&lt; int &gt; &gt; adjacent_edges)</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00157">shooting_star_boost_wrapper.cpp:157</a></div></div>
 <div class="ttc" id="structedge__shooting__star_html"><div class="ttname"><a href="structedge__shooting__star.html">edge_shooting_star</a></div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00052">shooting_star.h:52</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_aa3b286ead443ecaa5c35ebe9fc000fcd"><div class="ttname"><a href="structedge__shooting__star.html#aa3b286ead443ecaa5c35ebe9fc000fcd">edge_shooting_star::t_y</a></div><div class="ttdeci">float8 t_y</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00062">shooting_star.h:62</a></div></div>
+<div class="ttc" id="classfound__goal_html"><div class="ttname"><a href="classfound__goal.html">found_goal</a></div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00087">shooting_star_boost_wrapper.cpp:87</a></div></div>
+<div class="ttc" id="structedge__shooting__star_html_a4275e3a3000a2dc2610977e5abb0ea7a"><div class="ttname"><a href="structedge__shooting__star.html#a4275e3a3000a2dc2610977e5abb0ea7a">edge_shooting_star::t_x</a></div><div class="ttdeci">float8 t_x</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star_8h_source.html#l00061">shooting_star.h:61</a></div></div>
+<div class="ttc" id="structEdge_html_adcf410ae923d69e22ede2cd59ee80108"><div class="ttname"><a href="structEdge.html#adcf410ae923d69e22ede2cd59ee80108">Edge::source</a></div><div class="ttdeci">int source</div><div class="ttdef"><b>Definition:</b> <a href="shooting__star__boost__wrapper_8cpp_source.html#l00067">shooting_star_boost_wrapper.cpp:67</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ccb7fbd65434eff12e61bbc88060a492.html">shooting_star</a></li><li class="navelem"><a class="el" href="dir_470b4081baf7c9c7e4f161775776754d.html">src</a></li><li class="navelem"><b>shooting_star_boost_wrapper.cpp</b></li>
-    <li class="footer">Generated on Tue Apr 5 2016 15:54:34 for pgRouting by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ccb7fbd65434eff12e61bbc88060a492.html">shooting_star</a></li><li class="navelem"><a class="el" href="dir_470b4081baf7c9c7e4f161775776754d.html">src</a></li><li class="navelem"><a class="el" href="shooting__star__boost__wrapper_8cpp.html">shooting_star_boost_wrapper.cpp</a></li>
+    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
