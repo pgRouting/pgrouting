@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./pgr_dijkstra.hpp"
 #include "./dijkstraVia_driver.h"
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 // #define DEBUG
 
@@ -64,7 +64,6 @@ pgr_dijkstraViaVertex(
     int64_t prev_vertex = via_vertices[0];
     Path path;
     
-    //for (size_t i = 0; i < via_vertices.size() - 1; ++i) {
     int64_t i = 0;
     for (const auto &vertex : via_vertices) {
         if (i == 0) {
@@ -81,7 +80,6 @@ pgr_dijkstraViaVertex(
                 // edge to be removed = second to last edge path[i].edge;
                 int64_t edge_to_be_removed = path[path.size() - 2].edge;
                 int64_t last_vertex_of_path = prev_vertex;
-               // path.path[path.path.size() - 1].vertex;
 
                 // and the current vertex is not a dead end
                 if (graph.out_degree(last_vertex_of_path) > 1) {
@@ -191,7 +189,6 @@ do_pgr_dijkstraViaVertex(
         }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
@@ -199,12 +196,12 @@ do_pgr_dijkstraViaVertex(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, U_turn_on_edge, log);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);
         }
@@ -221,7 +218,7 @@ do_pgr_dijkstraViaVertex(
         }
 
         // get the space required to store all the paths
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;

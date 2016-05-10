@@ -53,7 +53,6 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     i_eltype = ARR_ELEMTYPE(input);
     get_typlenbyvalalign(i_eltype, &i_typlen, &i_typbyval, &i_typalign);
 
-
     /* validate input data type */
     switch (i_eltype) {
         case INT2OID:
@@ -90,7 +89,8 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
 
     for (i = 0; i < (*arrlen); i++) {
         if (nulls[i]) {
-            data[i] = -1;
+            free(data);
+            elog(ERROR, "NULL value found in Array!");
         } else {
             switch (i_eltype) {
                 case INT2OID:

@@ -30,8 +30,8 @@ SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
 set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "2")
-set(PGROUTING_VERSION_PATCH "2")
+set(PGROUTING_VERSION_MINOR "3")
+set(PGROUTING_VERSION_PATCH "0")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
@@ -41,7 +41,8 @@ set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-set(PGROUTING_GIT_TAG "pgrouting-2.2.2")
+set(PGROUTING_GIT_TAG "pgrouting-2.3.0-dev")
+
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
@@ -116,7 +117,9 @@ endif(NOT POSTGRESQL_FOUND)
 #set(Boost_DEBUG ON)
 find_package(Boost)
 if(Boost_INCLUDE_DIRS)
-  message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIR}")
+  message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIRS}")
+  find_file(MYVAR geometry.hpp)
+  message(STATUS "geometry.hpp  found here: ${MYVAR}")
 else(Boost_INCLUDE_DIRS)
   message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
@@ -173,31 +176,20 @@ add_subdirectory(doc)
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
-    ${PGROUTING_SOURCE_DIR}/src/apsp_johnson/src
-    ${PGROUTING_SOURCE_DIR}/src/apsp_warshall/src
-    ${PGROUTING_SOURCE_DIR}/src/allpairs/src
-    ${PGROUTING_SOURCE_DIR}/src/astar/src
-    ${PGROUTING_SOURCE_DIR}/src/bd_astar/src
-    ${PGROUTING_SOURCE_DIR}/src/bd_dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/common/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
-    ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
-    ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
-    ${PGROUTING_SOURCE_DIR}/src/ksp/src
-    ${PGROUTING_SOURCE_DIR}/src/trsp/src
-    ${PGROUTING_SOURCE_DIR}/src/tsp/src
-    ${PGROUTING_SOURCE_DIR}/src/vrp_basic/src
-    ${PGROUTING_SOURCE_DIR}/src/vrppdtw/src
-
-# not using C/C++
-    ${PGROUTING_SOURCE_DIR}/src/label_graph/src
-
-
-#not suported but directory exists
-#    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
     )
 
 include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+message(STATUS "PGROUTING_INCLUDE_DIRECTORIES = ${PGROUTING_INCLUDE_DIRECTORIES}")
+message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")
+message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
+
+get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+foreach(dir ${dirs})
+   message(STATUS "dir='${dir}'")
+endforeach()
+
 
 
 if(WIN32)
@@ -228,11 +220,11 @@ if(APPLE)
   endif()
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
-    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10 -Wextra  -frounding-math -Wno-deprecated")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -g -Wall  -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -g -Wall -O2 -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra  -frounding-math -Wno-deprecated")
 
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g  -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
+    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g  -frounding-math")
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
     # currently, support MinGW only
@@ -260,11 +252,13 @@ set(PgRouting_SOURCE_NAMES
     "allpairs"
     "withPoints"
 
+    "internalQueryTests"
     #"funnyDijkstra"
 
     "alpha_shape"
 
-    "astar" "bd_astar"
+    "astar"
+    "bd_astar"
     "bd_dijkstra"
     "trsp" #2.0
     "tsp"
@@ -290,7 +284,8 @@ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     "apsp_warshall" #V2.0
     "convinience"
     "topology"
-    "label_graph")
+    "label_graph"
+    )
 
 
 set(PACKAGE_SQL_FILES "")

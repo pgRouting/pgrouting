@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // #define DEBUG
 
-#include "../../common/src/memory_func.hpp"
+#include "../../common/src/pgr_alloc.hpp"
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
@@ -68,7 +68,6 @@ do_pgr_many_to_one_dijkstra(
     std::ostringstream log;
     try {
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
@@ -77,12 +76,12 @@ do_pgr_many_to_one_dijkstra(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstra(digraph, paths, start_vertices, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);
         }
@@ -101,7 +100,7 @@ do_pgr_many_to_one_dijkstra(
             return;
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 

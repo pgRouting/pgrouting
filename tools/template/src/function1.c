@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-//#define DEBUG
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -73,35 +73,59 @@ process( char* edges_sql,
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
+    /* Available types:
+     * pgr_edge_t
+     * Pgr_edge_xy_t
+     */
     pgr_edge_t *edges = NULL;
-    int64_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    size_t total_edges = 0;
 
-    if (total_tuples == 0) {
+    /* Available functions:
+     * pgr_get_edges
+     * pgr_get_edges_xy
+     * pgr_get_edges_xy_reversed
+     * pgr_get_edges_no_id
+     */
+    pgr_get_edges(edges_sql, &edges, &total_edges);
+    PGR_DBG("Total %ld edges in query:", total_edges);
+
+    if (total_edges == 0) {
         PGR_DBG("No edges found");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
-    char *err_msg = (char *)"";
+    char *err_msg = NULL;
+    char *log_msg = NULL;
+
+    clock_t start_t = clock();
     do_pgr_MY_FUNCTION_NAME(
             edges,
-            total_tuples,
+            total_edges,
             start_vid,
             end_vidsArr,
             size_end_vidsArr,
             directed,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    time_msg(" processing pgr_funnyDijkstra", start_t, clock());
 
-    free(err_msg);
+    PGR_DBG("Returning %ld tuples\n", *result_count);
+    PGR_DBG("LOG: %s\n", log_msg);
+    if (log_msg) free(log_msg);
+
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
+        if (end_vidsArr) free(end_vidsArr);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
+    }
+
     pfree(edges);
     pgr_SPI_finish();
 }
@@ -115,9 +139,9 @@ PGDLLEXPORT Datum
 #endif
 MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t              call_cntr;
-    size_t               max_calls;
-    TupleDesc            tuple_desc;
+    uint32_t            call_cntr;
+    uint32_t            max_calls;
+    TupleDesc           tuple_desc;
 
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
@@ -159,7 +183,7 @@ MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
         /*                                                                             */
         /*******************************************************************************/
 
-        funcctx->max_calls = result_count;
+        funcctx->max_calls = (uint32_t) result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -188,7 +212,7 @@ MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
         /*  This has to match you ouput otherwise the server crashes                   */
         /*
            MY_QUERY_LINE2
-        ********************************************************************************/
+         ********************************************************************************/
 
 
         values = palloc(8 * sizeof(Datum));

@@ -1,7 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: testXYedges.sql
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
+
+Function's developer: 
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: 
 
 ------
 
@@ -20,13 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-select * from pgr_astar('
-    SELECT unnest(array[1,2]) as id,
-    unnest(array[10,10]) as source,
-    unnest(array[20,20]) as target,
-    unnest(array[0,1])::float8 as x1,
-    unnest(array[0,1])::float8 as x2,
-    unnest(array[0,1])::float8 as y1,
-    unnest(array[0,1])::float8 as y2,
-    unnest(array[2,1])::float8 as cost
-    '::text, 10, 20, false, false);
+
+CREATE OR REPLACE FUNCTION pgr_testXYedges(
+    edges_sql TEXT) 
+
+  RETURNS BOOLEAN AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'testXYedges'
+    LANGUAGE c IMMUTABLE STRICT;
+

@@ -59,7 +59,7 @@ void driving_many_to_dist_driver(
     char *err_msg = (char *)"";
 
 
-    pgr_get_data_5_columns(sql, &edges, &total_tuples);
+    pgr_get_edges(sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");

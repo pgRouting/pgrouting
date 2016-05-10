@@ -59,7 +59,7 @@ static int compute_trsp(
     PGR_DBG("Load edges");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
     PGR_DBG("Total %ld edges", total_tuples);
 
     PGR_DBG("Load restrictions");

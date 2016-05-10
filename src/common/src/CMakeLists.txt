@@ -7,4 +7,8 @@ ADD_LIBRARY(common OBJECT
     edges_input.c
     arrays_input.c
     time_msg.c
+    pgr_assert.cpp
+    basic_vertex.cpp
+    xy_vertex.cpp
+    basic_edge.cpp
     )

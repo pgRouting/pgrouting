@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 // #define DEBUG
 
@@ -98,20 +98,19 @@ do_pgr_many_to_one_withPoints(
         std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, paths, start_vertices, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);
@@ -148,7 +147,7 @@ do_pgr_many_to_one_withPoints(
             return 0;
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 

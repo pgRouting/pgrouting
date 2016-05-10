@@ -65,7 +65,7 @@ void compute_driving_distance(
 
   PGR_DBG("Load data");
 
-  pgr_get_data_5_columns(sql, &edges, &total_edges);
+  pgr_get_edges(sql, &edges, &total_edges);
 
   if (total_edges == 0) {
     PGR_DBG("No edges found");
