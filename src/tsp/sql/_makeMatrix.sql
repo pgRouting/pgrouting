@@ -16,6 +16,7 @@ DECLARE
     has_y BOOLEAN DEFAULT false;
     
 BEGIN
+
     sql = replace(vertices_sql,',',' , ');
     FOR rec IN 
         WITH
@@ -23,23 +24,18 @@ BEGIN
         (SELECT word FROM regexp_split_to_table(lower(sql), E'\\s+') AS word)
         SELECT * FROM words WHERE word IN ('the_geom', 'id', 'x', 'y')
     LOOP
-        IF rec.word = 'the_geom' THEN has_the_geom = TRUE; END IF;
-        IF rec.word = 'id' THEN has_id = TRUE; END IF;
-        IF rec.word = 'x' THEN has_x = TRUE; END IF;
-        IF rec.word = 'y' THEN has_y = TRUE; END IF;
+        IF rec.word = 'start_vid' THEN has_start_vid = TRUE; END IF;
+        IF rec.word = 'end_vid' THEN has_end_vid = TRUE; END IF;
+        IF rec.word = 'agg_cost' THEN has_agg_cost = TRUE; END IF;
     END LOOP;
 
-    IF has_id = false THEN
+    IF NOT (has_start_vid && has_end_vid && has_agg_cost) THEN
         RAISE EXCEPTION 'An expected column was not found in the query'
-        USING HINT = 'Please verify columns: (id, the_geom) or (id, x, y) columns';
+        USING HINT = 'Please verify columns: (start_vid, end_vid, agg_cost)';
     END IF;
 
-    IF NOT has_the_geom THEN
-        IF (NOT has_x OR NOT has_y) THEN
-            RAISE EXCEPTION 'An expected column was not found in the query'
-            USING HINT = 'Please verify columns: (id, the_geom) or (id, x, y) columns';
-        END IF;
-    END IF;
+    CREATE TEMP TABLE ___temp AS 
+
 
 
     IF has_the_geom THEN
