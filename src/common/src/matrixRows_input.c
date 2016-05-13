@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: distances_input.c
+File: matrixRows_input.c
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -27,12 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/get_check_data.h"
-#include "./distances_input.h"
+#include "./time_msg.h"
+#include "./matrixRows_input.h"
 
 
 
 static
-void pgr_fetch_distance(
+void pgr_fetch_row(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[3],
@@ -48,10 +49,11 @@ void pgr_fetch_distance(
  * bigint end_vid,
  * float agg_cost,
  */
-void pgr_get_distances(
+void pgr_get_matrixRows(
         char *sql,
-        Matrix_cell_t **distances,
-        size_t *total_distances) {
+        Matrix_cell_t **rows,
+        size_t *total_rows) {
+    clock_t start_t = clock();
 
     const int tuple_limit = 1000000;
 
@@ -82,23 +84,23 @@ void pgr_get_distances(
 
 
     bool moredata = TRUE;
-    (*total_distances) = total_tuples;
+    (*total_rows) = total_tuples;
 
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0)
-            pgr_fetch_column_info(info, 5);
+            pgr_fetch_column_info(info, 3);
 
         ntuples = SPI_processed;
         total_tuples += ntuples;
 
         if (ntuples > 0) {
-            if ((*distances) == NULL)
-                (*distances) = (Matrix_cell_t *)palloc0(total_tuples * sizeof(Matrix_cell_t));
+            if ((*rows) == NULL)
+                (*rows) = (Matrix_cell_t *)palloc0(total_tuples * sizeof(Matrix_cell_t));
             else
-                (*distances) = (Matrix_cell_t *)repalloc((*distances), total_tuples * sizeof(Matrix_cell_t));
+                (*rows) = (Matrix_cell_t *)repalloc((*rows), total_tuples * sizeof(Matrix_cell_t));
 
-            if ((*distances) == NULL) {
+            if ((*rows) == NULL) {
                 elog(ERROR, "Out of memory");
             }
 
@@ -109,8 +111,8 @@ void pgr_get_distances(
             size_t t;
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
-                pgr_fetch_distance(&tuple, &tupdesc, info,
-                        &(*distances)[total_tuples - ntuples + t]);
+                pgr_fetch_row(&tuple, &tupdesc, info,
+                        &(*rows)[total_tuples - ntuples + t]);
             }
             SPI_freetuptable(tuptable);
         } else {
@@ -120,11 +122,12 @@ void pgr_get_distances(
 
 
     if (total_tuples == 0) {
-        (*total_distances) = 0;
-        PGR_DBG("NO distances");
+        (*total_rows) = 0;
+        PGR_DBG("NO rows");
         return;
     }
 
-    (*total_distances) = total_tuples;
-    PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*total_distances));
+    (*total_rows) = total_tuples;
+    time_msg(" reading Edges", start_t, clock());
+
 }

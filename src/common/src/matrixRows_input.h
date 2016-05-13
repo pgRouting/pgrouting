@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   bigint end_vid,
   float agg_cost,
   */
-void pgr_get_distances(
+void pgr_get_matrixRows(
         char *sql,
         Matrix_cell_t **distaces,
         size_t *total_distances);
