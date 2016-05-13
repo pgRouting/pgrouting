@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - rewrite/astar 
+    -  newSignature/TSP
 
 env:
   - POSTGRESQL_VERSION=9.1
