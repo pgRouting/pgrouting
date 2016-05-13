@@ -43,6 +43,7 @@ do_pgr_tsp(
         int64_t end_vid,
         General_path_element_t **results,
         size_t *total_results,
+        char **log_msg,
         char **err_msg);
 
 #ifdef __cplusplus

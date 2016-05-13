@@ -30,7 +30,7 @@
 #include <vector>
 
 #include "../../common/src/pgr_types.h"
-#include "./Dmatrix.hpp"
+#include "./Dmatrix.h"
 
 class TSP {
  public:

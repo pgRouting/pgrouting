@@ -91,6 +91,7 @@ process(
             end_vid,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", log_msg);
