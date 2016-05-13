@@ -190,7 +190,7 @@ floydWarshall(PG_FUNCTION_ARGS) {
         nulls[2] = ' ';
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

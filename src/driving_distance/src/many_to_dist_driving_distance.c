@@ -176,7 +176,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
         values[4] = Float8GetDatum(ret_path[call_cntr].cost);
         values[5] = Float8GetDatum(ret_path[call_cntr].agg_cost);
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);

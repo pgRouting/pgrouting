@@ -452,7 +452,7 @@ vrppdtw(PG_FUNCTION_ARGS)
                 nulls[2] = ' ';
                 values[3] = Int32GetDatum(results[call_cntr].cost);
                 nulls[3] = ' ';
-                tuple = heap_formtuple(tuple_desc, values, nulls);
+                tuple = heap_form_tuple(tuple_desc, values, nulls);
 
                 /* make the tuple into a datum */
                 result = HeapTupleGetDatum(tuple);
