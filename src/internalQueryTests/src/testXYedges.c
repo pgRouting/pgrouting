@@ -59,8 +59,6 @@ PGDLLEXPORT Datum
 testXYedges(PG_FUNCTION_ARGS);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
 static
 void
 process( char* edges_sql,
@@ -113,8 +111,6 @@ process( char* edges_sql,
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 #ifndef _MSC_VER
 Datum
@@ -122,99 +118,11 @@ Datum
 PGDLLEXPORT Datum
 #endif
 testXYedges(PG_FUNCTION_ARGS) {
-#if 0
-    FuncCallContext     *funcctx;
-    uint32_t            call_cntr;
-    uint32_t            max_calls;
-    TupleDesc           tuple_desc;
-#endif
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     bool  result_bool = NULL;
-    /*                                                                        */
-    /**************************************************************************/
+    process(
+            pgr_text2char(PG_GETARG_TEXT_P(0)),
+            &result_bool);
 
-#if 0
-    if (SRF_IS_FIRSTCALL()) {
-        MemoryContext   oldcontext;
-        funcctx = SRF_FIRSTCALL_INIT();
-        oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-#endif
-
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
-           edges_sql TEXT
-         **********************************************************************/
-
-
-        process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
-                &result_bool);
-
-        PG_RETURN_BOOL(result_bool);
-        /*                                                                             */
-        /*******************************************************************************/
-
-#if 0
-        funcctx->max_calls = 1;
-        funcctx->user_fctx = result_bool;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
-            ereport(ERROR,
-                    (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                     errmsg("function returning record called in context "
-                         "that cannot accept type record")));
-
-        funcctx->tuple_desc = tuple_desc;
-        MemoryContextSwitchTo(oldcontext);
-    }
-#endif
-
-#if 0
-    funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
-    tuple_desc = funcctx->tuple_desc;
-    result_bool = (bool*) funcctx->user_fctx;
-#endif
-#if 0
-    if (call_cntr < max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        char*        nulls;
-
-        /*******************************************************************************/
-        /*                          MODIFY!!!!!                                        */
-        /*  This has to match you ouput otherwise the server crashes                   */
-        /*
-           OUT status BOOLEAN
-         ********************************************************************************/
-
-
-        values = palloc(1 * sizeof(Datum));
-        nulls = palloc(1 * sizeof(char));
-
-        size_t i;
-        for(i = 0; i < 1; ++i) {
-            nulls[i] = ' ';
-        }
-
-
-        // postgres starts counting from 1
-        values[0] = Int32GetDatum(*result_bool);
-        /*******************************************************************************/
-
-        tuple = heap_form_tuple(tuple_desc, values, nulls);
-        result = HeapTupleGetDatum(tuple);
-        SRF_RETURN_NEXT(funcctx, result);
-    } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
-
-        SRF_RETURN_DONE(funcctx);
-    }
-#endif
+    PG_RETURN_BOOL(result_bool);
 }
 
