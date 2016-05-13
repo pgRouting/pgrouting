@@ -1,8 +1,5 @@
-ADD_LIBRARY(tsp OBJECT
-    tsp2.c 
-    tsplib.c
+ADD_LIBRARY(newTSP OBJECT
 
-    distances_input.c
     xyd_tsp.c
 
     tsp_driver.cpp

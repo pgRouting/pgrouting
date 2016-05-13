@@ -36,16 +36,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-// #define DEBUG
+#define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
-#include "./distances_input.h"
+#include "./../../common/src/matrixRows_input.h"
 #include "./tsp_driver.h"
 
-// #include "./one_to_one_dijkstra_driver.h"
 
 
 PG_FUNCTION_INFO_V1(xyd_tsp);
@@ -71,7 +70,7 @@ process(
     PGR_DBG("Load data");
     Matrix_cell_t *distances = NULL;
     size_t total_distances = 0;
-    pgr_get_distances(distances_sql, &distances, &total_distances);
+    pgr_get_matrixRows(distances_sql, &distances, &total_distances);
 
     if (total_distances == 0) {
         PGR_DBG("No distances found");
@@ -80,10 +79,11 @@ process(
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_distances);
+    PGR_DBG("Total %ld rows in query:", total_distances);
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
+    char *log_msg = NULL;
     do_pgr_tsp(
             distances,
             total_distances,
@@ -93,6 +93,7 @@ process(
             result_count,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
+    PGR_DBG("Returned message = %s\n", log_msg);
     PGR_DBG("Returned message = %s\n", err_msg);
 
     free(err_msg);
@@ -129,11 +130,10 @@ xyd_tsp(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        // CREATE OR REPLACE FUNCTION pgr_dijkstra(
+        // CREATE OR REPLACE FUNCTION pgr_xydtsp(
         // sql text,
         // start_vid BIGINT,
         // end_vid BIGINT,
-        // directed BOOLEAN default true,
 
         PGR_DBG("Calling process");
         process(
@@ -142,7 +142,6 @@ xyd_tsp(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(2),
                 &result_tuples,
                 &result_count);
-
         /*                                                                    */
         /**********************************************************************/
 

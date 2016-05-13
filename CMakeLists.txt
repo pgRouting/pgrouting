@@ -261,7 +261,8 @@ set(PgRouting_SOURCE_NAMES
     "bd_astar"
     "bd_dijkstra"
     "trsp" #2.0
-    "tsp"
+    "tsp" #2.0
+    "newTSP"
 
     "vrp_basic"
     "vrppdtw"

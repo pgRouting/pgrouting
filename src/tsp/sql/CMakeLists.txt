@@ -3,8 +3,6 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/routing_tsp.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/routing_tsp_wrappers.sql
     
-    #good with BIGINT
-    ${CMAKE_CURRENT_SOURCE_DIR}/eucledianDMatrix.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/_makeMatrix.sql
 )
 
