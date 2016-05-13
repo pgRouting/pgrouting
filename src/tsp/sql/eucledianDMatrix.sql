@@ -45,28 +45,31 @@ BEGIN
     IF has_the_geom THEN
         sql := 'WITH
              vertices AS (' || quote_vertices_sql || '),
-             distances AS (SELECT DISTINCT a.id AS start_id, b.id as end_id, ST_Distance(a.the_geom, b.the_geom) as distance
+             distances AS (SELECT DISTINCT a.id::BIGINT AS start_id, b.id::BIGINT as end_id, ST_Distance(a.the_geom, b.the_geom) as distance
                 FROM  vertices AS a, vertices AS b
                 WHERE a.id != b.id
-                ORDER BY a.id, b.id)
+                ORDER BY start_id, end_id)
             SELECT * from distances';
     ELSE 
         sql := 'WITH
              vertices AS (' || vertices_sql || '),
-             distances AS (SELECT DISTINCT a.id AS start_id, b.id as end_id, ST_Distance(ST_MakePoint(a.x,a.y), ST_MakePoint(b.x,b.y)) as distance
+             distances AS (SELECT DISTINCT a.id::BIGINT AS start_id, b.id::BIGINT as end_id, ST_Distance(ST_MakePoint(a.x,a.y), ST_MakePoint(b.x,b.y)) as distance
                 FROM  vertices AS a, vertices AS b
                 WHERE a.id != b.id
-                ORDER BY a.id, b.id)
+                ORDER BY start_id, end_id)
             SELECT * from distances';
     END IF;
 
     BEGIN
         RETURN query EXECUTE sql;
 
+        -- TODO
+        /*
         EXCEPTION WHEN OTHERS THEN
-            RAISE EXCEPTION 'Column missing: Expected (id, the_geom) or (id, x, y) columns'
+            RAISE EXCEPTION 'Column missing: Expected (id, the_geom) or (id, x, y) columns 1'
             USING HINT = 'Please verify the query returns the expected columns & types:
-' || vertices_sql;
+' || sql;
+*/
     END;
 
 END
@@ -108,7 +111,6 @@ BEGIN
                 USING HINT = 'Please verify columns: (id, the_geom) or (id, x, y) columns';
         END;
     END IF;
-    raise notice '%', sql;
 
 
     IF which = 1 THEN
@@ -129,12 +131,11 @@ BEGIN
         SELECT * from distances';
     END IF;
 
-    raise notice '%', sql;
     BEGIN
         RETURN query EXECUTE sql;
 
         EXCEPTION WHEN OTHERS THEN
-            RAISE EXCEPTION 'Column missing: Expected (id, the_geom) or (id, x, y) columns'
+            RAISE EXCEPTION 'Column missing: Expected (id, the_geom) or (id, x, y) columns 2'
             USING HINT = 'Please verify the query returns the expected columns & types:
             ' || vertices_sql;
     END;

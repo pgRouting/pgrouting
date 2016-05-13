@@ -1,11 +1,11 @@
 BEGIN;
 BEGIN
-SELECT  pgr_createTopology('edge_table',0.001);
+SELECT  pgr_createTopology('edge_table',0.001, clean := true);
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  0 edges
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
@@ -52,6 +52,17 @@ NOTICE:                      Ring geometries: 0
  pgr_analyzegraph 
 ------------------
  OK
+(1 row)
+
+SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target','true')
+NOTICE:  Performing checks, please wait ...
+NOTICE:  Got function st_srid(bigint) does not exist
+NOTICE:  ERROR: something went wrong when checking for SRID of id in table public.edge_table
+ pgr_analyzegraph 
+------------------
+ FAIL
 (1 row)
 
 SELECT  pgr_analyzeGraph('edge_table',0.001,the_geom:='the_geom',id:='id',source:='source',target:='target');
@@ -154,9 +165,6 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
-DROP TABLE IF EXISTS otherTable;
-NOTICE:  table "othertable" does not exist, skipping
-DROP TABLE
 CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
 SELECT 1
 SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='the_geom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE gid=100)');
@@ -179,17 +187,14 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
-DROP TABLE IF EXISTS mytable;
-NOTICE:  table "mytable" does not exist, skipping
-DROP TABLE
 CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , the_geom AS mygeom FROM edge_table);
 SELECT 18
-SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt');
+SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt', clean := true);
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', rows_where := 'true', clean := f)
+NOTICE:  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', rows_where := 'true', clean := t)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  0 edges
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.mytable is: public.mytable_vertices_pgr
 NOTICE:  ----------------------------------------------
@@ -208,14 +213,25 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
-NOTICE:  Potential gaps found near dead ends: 0
+NOTICE:                    Isolated segments: 2
+NOTICE:                            Dead ends: 7
+NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
  pgr_analyzegraph 
 ------------------
  OK
+(1 row)
+
+SELECT  pgr_analyzeGraph('mytable',0.0001,'gid','mygeom','src','tgt');
+NOTICE:  PROCESSING:
+NOTICE:  pgr_analyzeGraph('mytable',0.0001,'gid','mygeom','src','tgt','true')
+NOTICE:  Performing checks, please wait ...
+NOTICE:  Got function st_srid(bigint) does not exist
+NOTICE:  ERROR: something went wrong when checking for SRID of gid in table public.mytable
+ pgr_analyzegraph 
+------------------
+ FAIL
 (1 row)
 
 SELECT  pgr_analyzeGraph('mytable',0.001,the_geom:='mygeom',id:='gid',source:='src',target:='tgt');
@@ -228,9 +244,9 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
-NOTICE:  Potential gaps found near dead ends: 0
+NOTICE:                    Isolated segments: 2
+NOTICE:                            Dead ends: 7
+NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
  pgr_analyzegraph 
@@ -248,9 +264,9 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
-NOTICE:  Potential gaps found near dead ends: 0
+NOTICE:                    Isolated segments: 2
+NOTICE:                            Dead ends: 7
+NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
  pgr_analyzegraph 
@@ -269,7 +285,7 @@ NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
 NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
+NOTICE:                            Dead ends: 4
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
@@ -289,7 +305,7 @@ NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
 NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
+NOTICE:                            Dead ends: 4
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
@@ -299,7 +315,7 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',
-                                rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
+        rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)')
 NOTICE:  Performing checks, please wait ...
@@ -309,8 +325,8 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
+NOTICE:                    Isolated segments: 1
+NOTICE:                            Dead ends: 5
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
@@ -320,7 +336,7 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-                                rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
+        rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)')
 NOTICE:  Performing checks, please wait ...
@@ -330,8 +346,8 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
+NOTICE:                    Isolated segments: 1
+NOTICE:                            Dead ends: 5
 NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
@@ -345,7 +361,7 @@ DROP TABLE
 CREATE TABLE otherTable AS  (SELECT 'myhouse'::text AS place, st_point(2.5,2.5) AS other_geom) ;
 SELECT 1
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',
-                 rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
+        rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='myhouse')')
 NOTICE:  Performing checks, please wait ...
@@ -355,9 +371,9 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
-NOTICE:  Potential gaps found near dead ends: 0
+NOTICE:                    Isolated segments: 2
+NOTICE:                            Dead ends: 10
+NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
  pgr_analyzegraph 
@@ -366,7 +382,7 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-                 rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
+        rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='myhouse')')
 NOTICE:  Performing checks, please wait ...
@@ -376,9 +392,9 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 0
-NOTICE:                            Dead ends: 0
-NOTICE:  Potential gaps found near dead ends: 0
+NOTICE:                    Isolated segments: 2
+NOTICE:                            Dead ends: 10
+NOTICE:  Potential gaps found near dead ends: 1
 NOTICE:               Intersections detected: 1
 NOTICE:                      Ring geometries: 0
  pgr_analyzegraph 
@@ -386,12 +402,12 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
-SELECT  pgr_createTopology('edge_table',0.001);
+SELECT  pgr_createTopology('edge_table',0.001, clean := true);
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  0 edges
+NOTICE:  -------------> TOPOLOGY CREATED FOR  18 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
@@ -460,23 +476,9 @@ NOTICE:                      Ring geometries: 0
  OK
 (1 row)
 
-SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17');
+SELECT  pgr_analyzeGraph('edge_table',0.001,rows_where:='id < 17');
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'id <17', clean := f)
-NOTICE:  Performing checks, please wait .....
-NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  16 edges
-NOTICE:  Rows with NULL geometry or NULL id: 0
-NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
-NOTICE:  ----------------------------------------------
- pgr_createtopology 
---------------------
- OK
-(1 row)
-
-SELECT pgr_analyzeGraph('edge_table', 0.001);
-NOTICE:  PROCESSING:
-NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
+NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','id < 17')
 NOTICE:  Performing checks, please wait ...
 NOTICE:  Analyzing for dead ends. Please wait...
 NOTICE:  Analyzing for gaps. Please wait...
@@ -484,19 +486,19 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 2
-NOTICE:                            Dead ends: 7
-NOTICE:  Potential gaps found near dead ends: 1
-NOTICE:               Intersections detected: 1
+NOTICE:                    Isolated segments: 0
+NOTICE:                            Dead ends: 3
+NOTICE:  Potential gaps found near dead ends: 0
+NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
  pgr_analyzegraph 
 ------------------
  OK
 (1 row)
 
-SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17');
+SELECT pgr_createTopology('edge_table', 0.001,rows_where:='id <17', clean := true);
 NOTICE:  PROCESSING:
-NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'id <17', clean := f)
+NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'id <17', clean := t)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
 NOTICE:  -------------> TOPOLOGY CREATED FOR  16 edges
@@ -518,10 +520,10 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 2
-NOTICE:                            Dead ends: 7
-NOTICE:  Potential gaps found near dead ends: 1
-NOTICE:               Intersections detected: 1
+NOTICE:                    Isolated segments: 0
+NOTICE:                            Dead ends: 3
+NOTICE:  Potential gaps found near dead ends: 0
+NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
  pgr_analyzegraph 
 ------------------
