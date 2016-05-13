@@ -170,7 +170,7 @@ xyd_tsp(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
@@ -180,12 +180,12 @@ xyd_tsp(PG_FUNCTION_ARGS) {
         // OUT agg_cost FLOAT
 
         values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(char));
+        nulls = palloc(4 * sizeof(bool));
 
 
         size_t i;
         for (i = 0; i < 4; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         // postgres starts counting from 1

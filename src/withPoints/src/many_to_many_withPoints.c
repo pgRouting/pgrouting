@@ -237,7 +237,7 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*******************************************************************************/
         /*                          MODIFY AS NEEDED                                   */
@@ -250,11 +250,11 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
 
 
         values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(char));
+        nulls = palloc(8 * sizeof(bool));
 
         size_t i;
         for(i = 0; i < 8; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
 

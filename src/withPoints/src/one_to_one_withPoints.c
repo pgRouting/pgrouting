@@ -266,7 +266,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool    *        nulls;
 
         /*******************************************************************************/
         /*                          MODIFY AS NEEDED                                   */
@@ -279,11 +279,11 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
 
 
         values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        nulls = palloc(6 * sizeof(bool));
 
         size_t i;
         for(i = 0; i < 6; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
 

@@ -229,7 +229,7 @@ astarOneToMany(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*******************************************************************************/
         /*                          MODIFY!!!!!                                        */
@@ -246,11 +246,11 @@ astarOneToMany(PG_FUNCTION_ARGS) {
 
 
         values = palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(char));
+        nulls = palloc(7 * sizeof(bool));
 
         size_t i;
         for(i = 0; i < 7; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
 

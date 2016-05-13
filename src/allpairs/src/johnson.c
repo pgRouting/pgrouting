@@ -161,7 +161,7 @@ johnson(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool         *nulls;
 
         /*********************************************************************/
         /*                          MODIFY AS NEEDED                         */
@@ -171,15 +171,15 @@ johnson(PG_FUNCTION_ARGS) {
         // OUT cost float)
 
         values = palloc(3 * sizeof(Datum));
-        nulls = palloc(3 * sizeof(char));
+        nulls = palloc(3 * sizeof(bool));
 
         // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
-        nulls[1] = ' ';
+        nulls[1] = false;
         values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
-        nulls[2] = ' ';
+        nulls[2] = false;
 
         /*********************************************************************/
 
