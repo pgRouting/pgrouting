@@ -516,7 +516,7 @@ tsp(PG_FUNCTION_ARGS)
 
       DBG("Heap making");
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       DBG("Datum making");
 

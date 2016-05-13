@@ -405,7 +405,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
       values[3] = Float8GetDatum(path[call_cntr].cost);
       nulls[3] = ' ';
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       // make the tuple into a datum 
       result = HeapTupleGetDatum(tuple);

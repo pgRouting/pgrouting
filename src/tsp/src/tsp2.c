@@ -314,7 +314,7 @@ tsp_matrix(PG_FUNCTION_ARGS)
 
         PGR_DBG("Heap making");
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         PGR_DBG("Datum making");
 

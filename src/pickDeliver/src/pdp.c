@@ -152,7 +152,7 @@ vrppdtw(PG_FUNCTION_ARGS) {
         values[1] = Int64GetDatum(results[call_cntr].rid);
         values[2] = Int64GetDatum(results[call_cntr].nid);
         values[3] = Float8GetDatum(results[call_cntr].cost);
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);
