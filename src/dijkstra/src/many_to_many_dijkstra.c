@@ -202,7 +202,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*********************************************************************/
         /*                          MODIFY AS NEEDED                         */
@@ -216,11 +216,11 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         // OUT agg_cost float)
 
         values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(char));
+        nulls = palloc(8 * sizeof(bool));
 
         size_t i;
         for (i = 0; i < 8; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         values[0] = Int32GetDatum(call_cntr + 1);
@@ -233,7 +233,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

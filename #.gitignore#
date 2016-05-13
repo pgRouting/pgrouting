@@ -1,0 +1,10 @@
+# default build directory
+build
+src/turnRestricted
+.DS_Store
+.vagrant
+issues
+tools/vagrant/packaging.sh
+*.mo
+.directory
+notUsed
