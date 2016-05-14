@@ -27,7 +27,7 @@ SELECT * FROM pgr_johnson(
 );
 
 
-SELECT lives_ok('q1', 'edges query accepts ANY-INTEGER & ANY NUMERICAL');
+SELECT throws_ok('q1', 'edges query accepts ANY-INTEGER & ANY NUMERICAL');
 SELECT lives_ok('q2', 'without id it works');
 SELECT lives_ok('q3', 'directed flag works ok with false');
 SELECT lives_ok('q4', 'directed flag works ok with true');
