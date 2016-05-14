@@ -26,15 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <vector>
 #include <map>
-#include <queue>
+#include <utility>
 #include <string>
-#include <stdlib.h>
-#include <iostream>
-#include <algorithm>
-#include <math.h>
-#include <stdio.h>
-#include <string.h>
-#include <set>
 
 #define MAXIMUM_TRY 15
 #define TOTAL_NUMBER_OF_SEARCH 15
