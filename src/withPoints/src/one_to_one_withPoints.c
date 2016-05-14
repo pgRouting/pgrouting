@@ -264,7 +264,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*******************************************************************************/
         /*                          MODIFY AS NEEDED                                   */
@@ -277,11 +277,11 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
 
 
         values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        nulls = palloc(6 * sizeof(bool));
 
         size_t i;
         for(i = 0; i < 6; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
 
@@ -294,7 +294,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*******************************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

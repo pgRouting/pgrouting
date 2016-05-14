@@ -233,17 +233,17 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
-        char* nulls;
+        bool* nulls;
 
         values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        nulls = palloc(6 * sizeof(bool));
         // id, start_v, node, edge, cost, tot_cost
-        nulls[0] = ' ';
-        nulls[1] = ' ';
-        nulls[2] = ' ';
-        nulls[3] = ' ';
-        nulls[4] = ' ';
-        nulls[5] = ' ';
+        nulls[0] = false;
+        nulls[1] = false;
+        nulls[2] = false;
+        nulls[3] = false;
+        nulls[4] = false;
+        nulls[5] = false;
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[2] = Int64GetDatum(result_tuples[call_cntr].node);
@@ -251,7 +251,7 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);

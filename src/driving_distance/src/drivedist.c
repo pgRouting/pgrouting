@@ -156,25 +156,25 @@ driving_distance(PG_FUNCTION_ARGS) {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       values = palloc(5 * sizeof(Datum));
-      nulls = palloc(5 * sizeof(char));
+      nulls = palloc(5 * sizeof(bool));
 
       // TODO version 3.0 change to 
       // values[0] = Int64GetDatum(ret_path[call_cntr].seq + 1);
-      nulls[0] = ' ';
-      nulls[1] = ' ';
-      nulls[2] = ' ';
-      nulls[3] = ' ';
-      nulls[4] = ' ';
+      nulls[0] = false;
+      nulls[1] = false;
+      nulls[2] = false;
+      nulls[3] = false;
+      nulls[4] = false;
       values[0] = Int32GetDatum(ret_path[call_cntr].seq + 1);
       values[1] = Int64GetDatum(ret_path[call_cntr].node);
       values[2] = Int64GetDatum(ret_path[call_cntr].edge);
       values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       values[4] = Float8GetDatum(ret_path[call_cntr].agg_cost);
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);
