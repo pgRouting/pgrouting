@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - hotFix/issue549
+    - hotfix/issue549
 
 env:
   - POSTGRESQL_VERSION=9.1
