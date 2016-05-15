@@ -6,7 +6,7 @@
 
 ### Branches
 
-The *master* branch reflects the current 2.2.2 release.
+The *master* branch reflects the current 2.2.3 release.
 The *develop* branch reflects the 2.3.0-dev
 
 

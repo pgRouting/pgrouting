@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - hotFix/issue552
+    - hotfix/issue549
 
 env:
   - POSTGRESQL_VERSION=9.1
@@ -79,11 +79,11 @@ before_script:
 
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-
-after_script: 
-  # note: right takes the travis default
   - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION postgres
   - ./tools/testers/pg_prove_tests.sh postgres
+
+after_script: 
+  # nothing
 
 #after_success:
   #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
