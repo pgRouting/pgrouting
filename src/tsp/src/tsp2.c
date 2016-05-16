@@ -300,21 +300,21 @@ tsp_matrix(PG_FUNCTION_ARGS)
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
-        char* nulls;
+        bool* nulls;
 
         values = palloc(2 * sizeof(Datum));
-        nulls = palloc(2 * sizeof(char));
+        nulls = palloc(2 * sizeof(bool));
 
         values[0] = Int32GetDatum(call_cntr);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int32GetDatum(tsp_res[call_cntr]);
-        nulls[1] = ' ';
+        nulls[1] = false;
 
         PGR_DBG("RESULT: %d, %d", call_cntr, tsp_res[call_cntr]);
 
         PGR_DBG("Heap making");
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         PGR_DBG("Datum making");
 

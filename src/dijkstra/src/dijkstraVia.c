@@ -193,7 +193,7 @@ dijkstraVia(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*******************************************************************************/
         /*                          MODIFY AS NEEDED                                   */
@@ -201,10 +201,10 @@ dijkstraVia(PG_FUNCTION_ARGS) {
 
         size_t numb_out = 10;
         values = palloc(numb_out * sizeof(Datum));
-        nulls = palloc(numb_out * sizeof(char));
+        nulls = palloc(numb_out * sizeof(bool));
         size_t i;
         for(i = 0; i< numb_out; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         // postgres starts counting from 1
@@ -221,7 +221,7 @@ dijkstraVia(PG_FUNCTION_ARGS) {
 
         /*******************************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

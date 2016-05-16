@@ -24,8 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+
+#ifndef __cplusplus
+#include "postgres.h"
+#endif
 #include <stdint.h>
-#include <stdbool.h>
 
 typedef struct edge_astar
 {

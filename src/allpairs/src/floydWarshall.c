@@ -27,14 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <unistd.h>
-
 #include "postgres.h"
+#include "fmgr.h"
 #include "funcapi.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-#include "fmgr.h"
 
 // #define DEBUG
 
@@ -175,22 +173,22 @@ floydWarshall(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*********************************************************************/
         values = palloc(3 * sizeof(Datum));
-        nulls = palloc(3 * sizeof(char));
+        nulls = palloc(3 * sizeof(bool));
 
         // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
-        nulls[1] = ' ';
+        nulls[1] = false;
         values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
-        nulls[2] = ' ';
+        nulls[2] = false;
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
