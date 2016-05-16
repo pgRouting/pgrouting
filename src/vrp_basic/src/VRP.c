@@ -883,7 +883,7 @@ vrp(PG_FUNCTION_ARGS)
 
 		// PGR_DBG("Heap making\n");
 		//elog(NOTICE,"Result %d %d %d", call_cntr, path[call_cntr].order_id, max_calls);
-		tuple = heap_formtuple(tuple_desc, values, nulls);
+		tuple = heap_form_tuple(tuple_desc, values, nulls);
 
 		//PGR_DBG("Datum making\n");
 

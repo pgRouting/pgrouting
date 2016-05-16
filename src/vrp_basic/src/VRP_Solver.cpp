@@ -21,12 +21,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "VRP_Solver.h"
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
+#include <algorithm>
+#include "VRP_Solver.h"
 
 #undef PGR_LOGGER_ON
 #define PGR_LOGGER_LOC
