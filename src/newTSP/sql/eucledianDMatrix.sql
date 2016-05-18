@@ -21,13 +21,14 @@ BEGIN
         WITH
         words AS
         (SELECT word FROM regexp_split_to_table(lower(sql), E'\\s+') AS word)
-        SELECT * FROM words WHERE word IN ('the_geom', 'id', 'x', 'y')
+        SELECT * FROM words WHERE word IN ('the_geom', 'id', 'x', 'y', '*')
     LOOP
         IF rec.word = 'the_geom' THEN has_the_geom = TRUE; END IF;
         IF rec.word = 'id' THEN has_id = TRUE; END IF;
         IF rec.word = 'x' THEN has_x = TRUE; END IF;
         IF rec.word = 'y' THEN has_y = TRUE; END IF;
     END LOOP;
+
 
     IF has_id = false THEN
         RAISE EXCEPTION 'An expected column was not found in the query'
@@ -116,28 +117,30 @@ BEGIN
     IF which = 1 THEN
         sql := 'WITH
         vertices AS (' || sql || '),
-        distances AS (SELECT DISTINCT a.id AS start_id, b.id as end_id, ST_Distance(a.the_geom, b.the_geom) as distance
+        distances AS (SELECT DISTINCT a.id::BIGINT AS start_id, b.id::BIGINT as end_id, ST_Distance(a.the_geom, b.the_geom) as distance
             FROM  vertices AS a, vertices AS b
             WHERE a.id != b.id
-            ORDER BY a.id, b.id)
+            ORDER BY start_id, end_id)
         SELECT * from distances';
     ELSE 
         sql := 'WITH
         vertices AS (' || sql || '),
-        distances AS (SELECT DISTINCT a.id AS start_id, b.id as end_id, ST_Distance(ST_MakePoint(a.x,a.y), ST_MakePoint(b.x,b.y)) as distance
+        distances AS (SELECT DISTINCT a.id::BIGINT AS start_id, b.id::BIGINT as end_id, ST_Distance(ST_MakePoint(a.x,a.y), ST_MakePoint(b.x,b.y)) as distance
             FROM  vertices AS a, vertices AS b
             WHERE a.id != b.id
-            ORDER BY a.id, b.id)
+            ORDER BY start_id, end_id)
         SELECT * from distances';
     END IF;
 
     BEGIN
         RETURN query EXECUTE sql;
 
+        /*
         EXCEPTION WHEN OTHERS THEN
-            RAISE EXCEPTION 'Column missing: Expected (id, the_geom) or (id, x, y) columns 2'
+            RAISE EXCEPTION 'Column missing: Expected (id, the_geom) or (id, x, y) columns 2 %', SQLERRM
             USING HINT = 'Please verify the query returns the expected columns & types:
-            ' || vertices_sql;
+            ' || sql;
+*/
     END;
 END
 $BODY$

@@ -67,120 +67,71 @@ do_pgr_tsp(
     try {
 
         std::vector < Matrix_cell_t > data_costs(distances, distances + total_distances);
-        Dmatrix costs(data_costs);
+        pgRouting::tsp::Dmatrix costs(data_costs);
+        log << costs;
 
         if (!costs.has_no_infinity()) {
+            
+            err << "An Infinity value was found on the Matrix";
+            *err_msg = strdup(err.str().c_str());
+            *log_msg = strdup(log.str().c_str());
             return 5;
         }
         if (!costs.obeys_triangle_inequality()) {
+            err << "The Matrix dos not comply with triangle inequality";
+            *err_msg = strdup(err.str().c_str());
+            *log_msg = strdup(log.str().c_str());
             return 6;
         }
-        costs = costs.get_symetric();
 
 
-#if 0
-        int   i, j;
-        int   istart = 0;
-        int   jstart = 0;
-        int   iend = -1;
-        int   jend = -1;
-        int   rev = 0;
-        long  seed = -314159L;
-        size_t blength;
-#endif
 
-        // PGR_DBG("sizeof(long)=%d", (int)sizeof(long));
 
-#if 0
-        // moving forward
-        initRand(seed);
-#endif 
 
         /* initialize tsp struct */
-        TSP tsp(costs);
-#if 0
-        tsp.n = num;
-        tsp.dist   = NULL;
-        tsp.iorder = NULL;
-        tsp.jorder = NULL;
-        tsp.border = NULL;
+        log << "Initializing tsp class --->";
+        pgRouting::tsp::TSP tsp(costs);
+        log << "OK\n";
 
 
-        if (!(tsp.iorder = (int*) palloc (tsp.n * sizeof(int)))   ||
-                !(tsp.jorder = (int*) palloc (tsp.n * sizeof(int)))   ||
-                !(tsp.border = (int*) palloc (tsp.n * sizeof(int)))   ) {
-            elog(FATAL, "Memory allocation failed!");
-            return -1;
-        }
 
-        tsp.maxd = 0;
-        for (i=0; i<tsp.n*tsp.n; i++) {
-            tsp.maxd = MAX(tsp.maxd, cost[i]);
-        }
-
-        /* identity permutation */
-        for (i = 0; i < tsp.n; i++) tsp.iorder[i] = i;
-
-        tsp.bestlen = pathLength(&tsp);
-        for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
-#endif
-
-        // PGR_DBG("Initial Path Length: %.4f", tsp.bestlen);
-
+#if 1
         /*
          * Set up first eulerian path iorder to be improved by
          * simulated annealing.
          */
-        if (!tsp.findEulerianPath())
+        log << "tsp.findEulerianPath --->";
+        if (!tsp.findEulerianPath()) {
             return 8;
-
-#if 0
-        // this is done automatically in tsp.findEulerianPath call
-        blength = pathLength(&tsp);
-        if (blength < tsp.bestlen) {
-            tsp.bestlen = blength;
-            for (i = 0; i < tsp.n; i++) tsp.border[i] = tsp.iorder[i];
         }
+        log << "OK\n";
 #endif
 
-        // PGR_DBG("Approximated Path Length: %.4f", tsp.bestlen);
 
-        tsp.annealing();
 
-        *return_count = tsp.bestlen;
-        // PGR_DBG("Final Path Length: %.4f", tsp.bestlen);
+        log << "tsp.annealing --->";
+        tsp.annealing(log);
+        log << "OK\n";
+        auto bestTour(tsp.best_tour.cities);
+        *return_count = bestTour.size();
 
-        tsp.iorder = tsp.border;
-#if 0
-        for (i=0; i<tsp.n; i++) tsp.iorder[i] = tsp.border[i];
-        // PGR_DBG("Best Path Length: %.4f", *total_len);
-#endif
-
-        // reorder ids[] with start as first
-
-#ifdef DEBUG
-        for (i=0; i<tsp.n; i++) {
-            PGR_DBG("i: %d, ids[i]: %d, io[i]: %d, jo[i]: %d, jo[io[i]]: %d",
-            i, ids[i], tsp.iorder[i], tsp.jorder[i], tsp.jorder[tsp.iorder[i]]);
-        }
-#endif
 
         size_t istart = costs.get_index(start_vid);
-        auto start_ptr = std::find(tsp.iorder.begin(), tsp.iorder.end(), istart);
+        auto start_ptr = std::find(bestTour.begin(), bestTour.end(), istart);
 
         /*
          *  1 2 3 4 5 6 e s 7 8 9 
          *  =>
          *  s 7 8 9 1 2 3 4 5 6 e
          */
-        Ids results(start_ptr, tsp.iorder.end());
-        std::copy(tsp.iorder.begin(), start_ptr, results.end());
+        std::vector<size_t>  results(start_ptr, bestTour.end());
+        std::copy(bestTour.begin(), start_ptr, results.end());
 
         std::vector< General_path_element_t > result;
-        result.reserve(tsp.iorder.size());
-        auto prev_id = tsp.iorder.front();
+        result.reserve(bestTour.size());
+        auto prev_id = bestTour.front();
         double agg_cost = 0;
-        for (const auto &id : tsp.iorder) {
+        for (const auto &id : bestTour) {
             General_path_element_t data;
             data.node = costs.get_id(id);
             data.cost   = id == prev_id? 0: costs[prev_id][id];
@@ -200,6 +151,7 @@ do_pgr_tsp(
 
         *return_count = result.size();
 
+        *log_msg = strdup(log.str().c_str());
         (*err_msg) = NULL;
         return 0;
 
@@ -207,19 +159,19 @@ do_pgr_tsp(
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << exept.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch (std::exception& exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << exept.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     }
     return 1000;

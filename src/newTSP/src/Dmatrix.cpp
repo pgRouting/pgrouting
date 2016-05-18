@@ -6,23 +6,55 @@
 
 #include <algorithm>
 #include <vector>
-#include "./Dmatrix.h"
+#include "../../common/src/pgr_assert.h"
 
+#include "./Dmatrix.h"
+#include "./tour.h"
+
+namespace pgRouting {
+namespace tsp {
+
+double
+Dmatrix::tourCost(const Tour &tour) const {
+    // return pathCost(tour.cities);
+
+    double total_cost(0);
+    if (tour.cities.empty()) return total_cost;
+
+    auto prev_id = tour.cities.front();
+    for (const auto &id : tour.cities) {
+        if (id == tour.cities.front()) continue;
+
+        pgassert(costs[prev_id][id] != std::numeric_limits<double>::max());
+#if 0
+        if (costs[prev_id][id] == std::numeric_limits<double>::max())
+            return std::numeric_limits<double>::max();
+#endif
+
+        total_cost += costs[prev_id][id];
+        prev_id = id;
+    }
+    total_cost += costs[prev_id][tour.cities.front()];
+    return total_cost;
+}
 
 
 double
-Dmatrix::pathCost(const Ids &path) const {
+Dmatrix::pathCost(const std::vector<size_t>  &path) const {
     double len = 0;
     if (path.empty()) return len;
     auto prev_id = path.front();
     for (const auto &id : path) {
         if (id == path.front()) continue;
+        pgassert(costs[prev_id][id] != std::numeric_limits<double>::max());
+#if 0
         if (costs[prev_id][id] == std::numeric_limits<double>::max())
             return std::numeric_limits<double>::max();
+#endif
         len += costs[prev_id][id];
         prev_id = id;
     }
-    len += costs[prev_id][ids.front()];
+    len += costs[prev_id][path.front()];
     return len;
 }
 
@@ -46,8 +78,7 @@ Dmatrix::set_ids(const std::vector < Matrix_cell_t > &data_costs) {
         ids.push_back(cost.to_vid);
     }
     std::sort(ids.begin(), ids.end());
-    auto last = std::unique(ids.begin(), ids.end());
-    ids.erase(last, ids.end());
+    ids.erase(std::unique(ids.begin(), ids.end()), ids.end());
     /*
      * freeing up unused space
      */
@@ -109,7 +140,7 @@ Dmatrix::obeys_triangle_inequality() const {
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
             for (size_t k = 0; k < costs.size(); ++k) {
-                if (costs[i][k] <= (costs[i][j] + costs[j][k])) return false;
+                if (!(costs[i][k] <= (costs[i][j] + costs[j][k]))) return false;
             }
         }
     }
@@ -179,3 +210,39 @@ Dmatrix::get_symetric() const {
 
     return new_costs;
 }
+
+
+std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix){
+    for (const auto id : matrix.ids) {
+        log << "\t" << id;
+    }
+    log << "\n";
+    size_t i = 0;
+    for (const auto row : matrix.costs) {
+        size_t j = 0;
+        for (const auto cost : row) {
+            log << "(" << i << "," << j << ")"
+                << "\t(" << matrix.ids[i] << "," << matrix.ids[j] << ")"
+                << "\t(" << matrix.get_index(matrix.ids[i]) << "," << matrix.get_index(matrix.ids[j]) << ")"
+                << "\t = " << cost
+                << "\t = " << matrix.costs[i][j]
+                << "\t = " << matrix.costs[j][i] << "\n";
+            ++j;
+        }
+        ++i;
+    }
+    for (size_t i = 0; i < matrix.costs.size(); ++i) {
+        for (size_t j = 0; j < matrix.costs.size(); ++j) {
+            for (size_t k = 0; k < matrix.costs.size(); ++k) {
+                log << matrix.costs[i][k] << " <= (" << matrix.costs[i][j] << " + "  << matrix.costs[j][k] << ")"
+                    << (matrix.costs[i][k] <= (matrix.costs[i][j] + matrix.costs[j][k])) << "\n";
+            }
+        }
+    }
+
+    return log;
+}
+
+
+}  // namespace tsp
+}  // namespace pgRouting

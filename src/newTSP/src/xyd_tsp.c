@@ -94,10 +94,15 @@ process(
             &log_msg,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", log_msg);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    PGR_DBG("LOG = %s\n", log_msg);
+    free(log_msg);
 
-    free(err_msg);
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
+    }
+
     pfree(distances);
     pgr_SPI_finish();
 }

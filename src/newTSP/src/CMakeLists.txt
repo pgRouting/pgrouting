@@ -5,5 +5,6 @@ ADD_LIBRARY(newTSP OBJECT
     tsp_driver.cpp
     pgr_tsp.cpp
     Dmatrix.cpp
+    tour.cpp
     )
 

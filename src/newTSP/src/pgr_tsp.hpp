@@ -27,67 +27,93 @@
  *
  *  ********************************************************************PGR-GNU*/
 
+#include <sstream>
 #include <vector>
 
 #include "../../common/src/pgr_types.h"
+#include "../../common/src/pgr_assert.h"
 #include "./Dmatrix.h"
+#include "./tour.h"
+
+
+namespace pgRouting {
+namespace tsp {
 
 class TSP {
  public:
-/*
- * Defs
- */
-typedef size_t Path[3];      /* specify how to change path */
-
-typedef std::vector< std::vector < double > > Costs;
-typedef std::vector< int64_t > Ids;
-
      Dmatrix dist;
+     Tour current_tour;
+     Tour best_tour;
+     double bestCost;
+
      size_t n;
      double maxd;
+#if 0
      size_t bestlen;
-     double bestCost;
-     Ids iorder;
+     std::vector<size_t> iorder;
      /*
       * std::vector< bool > visited;
       */
-     Ids jorder;
-     Ids border;
+     std::vector<size_t> jorder;
+     std::vector<size_t> border;
      double b[4];
-
+#endif
 
      /*
       * function members
       */
-     TSP(Dmatrix  _costs)
+     explicit TSP(Dmatrix  _costs)
          : dist(_costs),
-         n(_costs.size()) {
+         current_tour(_costs.size()),
+         best_tour(_costs.size()),
+         n(_costs.size()),
+         maxd(dist.max()) {
+             pgassert(n == dist.size());
+#if 0
              iorder.resize(n);
              jorder.resize(n);
-             maxd = dist.max();
-
              /*
               * identity_permutations
               */
              std::iota(std::begin(iorder), std::end(iorder), 0);
-#if 0
-             for (auto &e : iorder) {
-                  e = i;
-             }
-#endif
+
              /*
               * best order
               */
              border = iorder;
-             bestCost = dist.pathCost(border);
+#endif
+             bestCost = dist.tourCost(current_tour);
          }
-     void update(Ids new_order);
+#if 1
+     void update(std::vector<size_t> new_order);
+#endif
      bool findEulerianPath();
-     void annealing();
-     void doThreeWay(Path p);
-     double getThreeWayCost (Path p);
-     double getReverseCost(Path p);
-     void doReverse(Path p);
-     double D(size_t, size_t);
+     void annealing(
+             std::ostringstream &log,
+             double temperature = 100,
+             double final_temperature = 0.1,
+             double cooling_factor = 0.9,
+             size_t tries_per_temperature = 500,
+             size_t improve_path_per_temperature = 60);
+
+     double getDeltaSlide(const Tour &tour, size_t posP, size_t posF,
+             size_t posL);
+
+     double getDeltaSwap(
+             const Tour &tour,
+             size_t posA,
+             size_t posC) const;
+
+     double getDeltaReverse(
+             const Tour &tour,
+             size_t posA,
+             size_t posC) const;
+
+     void update_if_best(
+             const Tour &current_tour,
+             double current_cost);
+
 };
 
+}  // namespace tsp
+}  // namespace pgRouting
