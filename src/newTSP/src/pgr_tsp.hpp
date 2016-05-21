@@ -29,6 +29,7 @@
 
 #include <sstream>
 #include <vector>
+#include <set>
 
 #include "../../common/src/pgr_types.h"
 #include "../../common/src/pgr_assert.h"
@@ -41,77 +42,72 @@ namespace tsp {
 
 class TSP {
  public:
-     Dmatrix dist;
-     Tour current_tour;
-     Tour best_tour;
-     double bestCost;
-
-     size_t n;
-     double maxd;
-#if 0
-     size_t bestlen;
-     std::vector<size_t> iorder;
-     /*
-      * std::vector< bool > visited;
-      */
-     std::vector<size_t> jorder;
-     std::vector<size_t> border;
-     double b[4];
-#endif
 
      /*
       * function members
       */
-     explicit TSP(Dmatrix  _costs)
+     explicit TSP(const Dmatrix  &_costs)
          : dist(_costs),
          current_tour(_costs.size()),
          best_tour(_costs.size()),
-         n(_costs.size()),
-         maxd(dist.max()) {
+         epsilon(0.00000000001),
+         n(_costs.size())
+          {
              pgassert(n == dist.size());
-#if 0
-             iorder.resize(n);
-             jorder.resize(n);
-             /*
-              * identity_permutations
-              */
-             std::iota(std::begin(iorder), std::end(iorder), 0);
-
-             /*
-              * best order
-              */
-             border = iorder;
-#endif
-             bestCost = dist.tourCost(current_tour);
+             bestCost = dist.tourCost(best_tour);
+             current_cost = dist.tourCost(current_tour);
+             pgassert(bestCost == current_cost);
          }
-#if 1
-     void update(std::vector<size_t> new_order);
-#endif
-     bool findEulerianPath();
-     void annealing(
-             std::ostringstream &log,
-             double temperature = 100,
-             double final_temperature = 0.1,
-             double cooling_factor = 0.9,
-             size_t tries_per_temperature = 500,
-             size_t improve_path_per_temperature = 60);
 
-     double getDeltaSlide(const Tour &tour, size_t posP, size_t posF,
-             size_t posL);
+
+     std::vector<size_t> get_cities() const {return best_tour.cities;};
+     std::string get_log() const {return log.str();};
+     void greedyInitial();
+     void annealing(
+             double initial_temperature,
+             double final_temperature,
+             double cooling_factor,
+             int64_t tries_per_temperature,
+             int64_t change_per_temperature,
+             bool fix_random
+             );
+
+
+ private:
+     const Dmatrix &dist;
+     Tour current_tour;
+     Tour best_tour;
+     double bestCost;
+     double current_cost;
+     double epsilon;
+     size_t n;
+
+     int updatecalls;
+     std::ostringstream log;
+
+ private:
+     void invariant() const;
+
+     size_t find_closest_city(
+             size_t current_city,
+             const std::set<size_t> inserted) const;
+
+     double getDeltaSlide(
+             size_t posP,
+             size_t posF,
+             size_t posL) const;
+
+     void swapClimb();
 
      double getDeltaSwap(
-             const Tour &tour,
              size_t posA,
              size_t posC) const;
 
      double getDeltaReverse(
-             const Tour &tour,
              size_t posA,
              size_t posC) const;
 
-     void update_if_best(
-             const Tour &current_tour,
-             double current_cost);
+     void update_if_best();
 
 };
 

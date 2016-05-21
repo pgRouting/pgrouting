@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-#define DEBUG
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -63,9 +63,35 @@ process(
         char* distances_sql,
         int64_t start_vid,
         int64_t end_vid,
+        double initial_temperature,
+        double final_temperature,
+        double cooling_factor,
+        int64_t tries_per_temperature,
+        int64_t change_per_temperature,
+        bool fix_random,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+
+    /*
+     * errors in parameters
+     */
+    if (initial_temperature < final_temperature) {
+        elog(ERROR, "Illegal: initial_temperature < final_temperature");
+    }
+    if (final_temperature < 0) {
+        elog(ERROR, "Illegal: final_temperature < 0");
+    }
+    if (cooling_factor <=0 || cooling_factor >=1) {
+        elog(ERROR, "Illegal: cooling_factor <=0 || cooling_factor >=1");
+    }
+    if (tries_per_temperature  < 1) {
+        elog(ERROR, "Illegal: tries_per_temperature  < 1");
+    }
+    if (change_per_temperature  < 1) {
+        elog(ERROR, "Illegal: change_per_temperature  < 1");
+    }
+
 
     PGR_DBG("Load data");
     Matrix_cell_t *distances = NULL;
@@ -89,6 +115,12 @@ process(
             total_distances,
             start_vid,
             end_vid,
+            initial_temperature,
+            final_temperature,
+            cooling_factor,
+            tries_per_temperature,
+            change_per_temperature,
+            fix_random,
             result_tuples,
             result_count,
             &log_msg,
@@ -136,16 +168,30 @@ xyd_tsp(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        // CREATE OR REPLACE FUNCTION pgr_xydtsp(
-        // sql text,
-        // start_vid BIGINT,
-        // end_vid BIGINT,
+        /* 
+           CREATE OR REPLACE FUNCTION pgr_xydtsp(
+           matrix_row_sql TEXT,
+           start_id BIGINT DEFAULT -1,
+           end_id BIGINT DEFAULT -1,
+           initial_temperature FLOAT DEFAULT 100,
+           final_temperature FLOAT DEFAULT 100,
+           cooling_factor FLOAT DEFAULT 0.9,
+           tries_per_temperature FLOAT DEFAULT 500,
+           change_per_temperature FLOAT DEFAULT 60,
+           fix_random BOOLEAN DEFAULT 0
+           */
 
         PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
+                PG_GETARG_FLOAT8(3),
+                PG_GETARG_FLOAT8(4),
+                PG_GETARG_FLOAT8(5),
+                PG_GETARG_INT32(6),
+                PG_GETARG_INT32(7),
+                PG_GETARG_BOOL(8),
                 &result_tuples,
                 &result_count);
         /*                                                                    */

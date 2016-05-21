@@ -41,6 +41,14 @@ do_pgr_tsp(
         Matrix_cell_t *distances, size_t total_distances,
         int64_t start_vid,
         int64_t end_vid,
+
+        double initial_temperature,
+        double final_temperature,
+        double cooling_factor,
+        int64_t tries_per_temperature,
+        int64_t change_per_temperature,
+        bool fix_random,
+
         General_path_element_t **results,
         size_t *total_results,
         char **log_msg,

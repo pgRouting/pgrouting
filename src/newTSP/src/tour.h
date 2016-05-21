@@ -15,7 +15,7 @@ class Tour {
 
      Tour(const Tour &) = default;
 
-     explicit Tour(const std::vector<size_t> cities_order) : 
+     explicit Tour(const std::vector<size_t> &cities_order) : 
          cities(cities_order){
      }
 
@@ -24,6 +24,7 @@ class Tour {
          std::iota(std::begin(cities), std::end(cities), 0);
      }
 
+     inline size_t size() const {return cities.size();};
 
      friend double Dmatrix::tourCost(const Tour &tour) const;
 

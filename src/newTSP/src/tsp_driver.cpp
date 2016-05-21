@@ -57,6 +57,14 @@ do_pgr_tsp(
         size_t total_distances,
         int64_t start_vid,
         int64_t end_vid,
+
+        double initial_temperature,
+        double final_temperature,
+        double cooling_factor,
+        int64_t tries_per_temperature,
+        int64_t change_per_temperature,
+        bool fix_random,
+
         General_path_element_t **return_tuples,
         size_t *return_count,
         char **log_msg, 
@@ -68,23 +76,32 @@ do_pgr_tsp(
 
         std::vector < Matrix_cell_t > data_costs(distances, distances + total_distances);
         pgRouting::tsp::Dmatrix costs(data_costs);
-        log << costs;
+        double real_cost = -1;
+        if (end_vid > 0) {
+            /* An ending vertex needs to be by the starting vertex */
+            size_t idx_start = costs.get_index(start_vid);
+            size_t idx_end = costs.get_index(end_vid);
+            real_cost = costs[idx_start][idx_end];
+            costs[idx_start][idx_end] = costs[idx_end][idx_start] = 0.0001;
+        }
+
+        // log << costs;
 
         if (!costs.has_no_infinity()) {
-            
+
             err << "An Infinity value was found on the Matrix";
             *err_msg = strdup(err.str().c_str());
             *log_msg = strdup(log.str().c_str());
             return 5;
         }
+#if 0
         if (!costs.obeys_triangle_inequality()) {
             err << "The Matrix dos not comply with triangle inequality";
             *err_msg = strdup(err.str().c_str());
             *log_msg = strdup(log.str().c_str());
             return 6;
         }
-
-
+#endif
 
 
 
@@ -94,51 +111,72 @@ do_pgr_tsp(
         log << "OK\n";
 
 
-
-#if 1
         /*
-         * Set up first eulerian path iorder to be improved by
-         * simulated annealing.
+         * Initial solution
          */
-        log << "tsp.findEulerianPath --->";
-        if (!tsp.findEulerianPath()) {
-            return 8;
-        }
+        log << "tsp.greedyInitial --->";
+        tsp.greedyInitial();
         log << "OK\n";
-#endif
 
 
 
         log << "tsp.annealing --->";
-        tsp.annealing(log);
+        tsp.annealing(
+                initial_temperature,
+                final_temperature,
+                cooling_factor,
+                tries_per_temperature,
+                change_per_temperature,
+                fix_random);
+        log << tsp.get_log();
         log << "OK\n";
-        auto bestTour(tsp.best_tour.cities);
-        *return_count = bestTour.size();
 
+        auto bestTour(tsp.get_cities());
+        log << "\nbest tour\n";
+        for (const auto &id : bestTour) {
+            log << id << ", ";
+        }
 
+        if (end_vid > 0) {
+            size_t idx_start = costs.get_index(start_vid);
+            size_t idx_end = costs.get_index(end_vid);
+            costs[idx_start][idx_end] = costs[idx_end][idx_start] = real_cost;
+        }
+
+        log << "\nbest cost" << costs.pathCost(bestTour) << ", ";
         size_t istart = costs.get_index(start_vid);
         auto start_ptr = std::find(bestTour.begin(), bestTour.end(), istart);
-
-        /*
-         *  1 2 3 4 5 6 e s 7 8 9 
-         *  =>
-         *  s 7 8 9 1 2 3 4 5 6 e
-         */
-        std::vector<size_t>  results(start_ptr, bestTour.end());
-        std::copy(bestTour.begin(), start_ptr, results.end());
+        std::rotate(bestTour.begin(), start_ptr, bestTour.end());
 
         std::vector< General_path_element_t > result;
-        result.reserve(bestTour.size());
+        result.reserve(bestTour.size() + 1);
+        pgassert(bestTour.size() == costs.size());
+
         auto prev_id = bestTour.front();
         double agg_cost = 0;
         for (const auto &id : bestTour) {
             General_path_element_t data;
             data.node = costs.get_id(id);
-            data.cost   = id == prev_id? 0: costs[prev_id][id];
+            data.edge = id;
+            data.cost = id == prev_id? 0: costs[prev_id][id];
+            agg_cost += data.cost;
+            data.agg_cost = agg_cost;
+            result.push_back(data);
+            prev_id = id;
+        }
+        {
+            /* inserting the returning to starting point */
+            General_path_element_t data;
+            data.node = costs.get_id(bestTour.front());
+            data.edge = bestTour.front();
+            data.cost = costs[prev_id][bestTour.front()];
             agg_cost += data.cost;
             data.agg_cost = agg_cost;
             result.push_back(data);
         }
+
+        pgassert(result.size() == bestTour.size() + 1);
+        *return_count = bestTour.size() + 1;
         (*return_tuples) = pgr_alloc(result.size(), (*return_tuples));
 
         //store the results
@@ -148,8 +186,6 @@ do_pgr_tsp(
             (*return_tuples)[seq] = row;
             ++seq;
         }
-
-        *return_count = result.size();
 
         *log_msg = strdup(log.str().c_str());
         (*err_msg) = NULL;
