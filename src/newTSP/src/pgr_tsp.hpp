@@ -34,33 +34,38 @@
 #include "../../common/src/pgr_types.h"
 #include "../../common/src/pgr_assert.h"
 #include "./Dmatrix.h"
+#include "./eucledianDmatrix.h"
 #include "./tour.h"
 
 
 namespace pgRouting {
 namespace tsp {
 
-class TSP {
+template < typename MATRIX >
+class TSP: public MATRIX {
  public:
+     using MATRIX::distance;
+     using MATRIX::tourCost;
+     using MATRIX::get_row;
 
      /*
       * function members
       */
-     explicit TSP(const Dmatrix  &_costs)
-         : dist(_costs),
+     explicit TSP(const MATRIX &_costs)
+         : MATRIX(_costs),
          current_tour(_costs.size()),
          best_tour(_costs.size()),
-         epsilon(0.00000000001),
+         epsilon(0.000001),
          n(_costs.size())
           {
-             pgassert(n == dist.size());
-             bestCost = dist.tourCost(best_tour);
-             current_cost = dist.tourCost(current_tour);
+             pgassert(n == MATRIX::size());
+             bestCost = MATRIX::tourCost(best_tour);
+             current_cost = MATRIX::tourCost(current_tour);
              pgassert(bestCost == current_cost);
          }
 
 
-     std::vector<size_t> get_cities() const {return best_tour.cities;};
+     Tour get_tour() const {return best_tour;};
      std::string get_log() const {return log.str();};
      void greedyInitial();
      void annealing(
@@ -74,7 +79,6 @@ class TSP {
 
 
  private:
-     const Dmatrix &dist;
      Tour current_tour;
      Tour best_tour;
      double bestCost;
@@ -113,3 +117,5 @@ class TSP {
 
 }  // namespace tsp
 }  // namespace pgRouting
+
+#include "pgr_tsp.cpp"

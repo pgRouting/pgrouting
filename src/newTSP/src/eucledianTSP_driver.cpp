@@ -38,9 +38,9 @@
 #include <vector>
 #include <algorithm>
 
-#include "./tsp_driver.h"
+#include "./eucledianTSP_driver.h"
 
-#include "./Dmatrix.h"
+#include "./eucledianDmatrix.h"
 #include "./pgr_tsp.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
@@ -52,9 +52,9 @@
 typedef std::vector< int64_t > Ids;
 
 int
-do_pgr_tsp(
-        Matrix_cell_t *distances,
-        size_t total_distances,
+do_pgr_eucledianTSP(
+        Coordinate_t *coordinates_data,
+        size_t total_coordinates,
         int64_t start_vid,
         int64_t end_vid,
 
@@ -63,7 +63,7 @@ do_pgr_tsp(
         double cooling_factor,
         int64_t tries_per_temperature,
         int64_t change_per_temperature,
-        bool fix_random,
+        bool randomize,
 
         General_path_element_t **return_tuples,
         size_t *return_count,
@@ -73,8 +73,12 @@ do_pgr_tsp(
     std::ostringstream log;
 
     try {
-        std::vector < Matrix_cell_t > data_costs(distances, distances + total_distances);
-        pgRouting::tsp::Dmatrix costs(data_costs);
+
+        std::vector< Coordinate_t > coordinates(coordinates_data, coordinates_data + total_coordinates);
+
+        pgRouting::tsp::eucledianDmatrix costs(coordinates);
+        log << costs;
+
         double real_cost = -1;
         if (end_vid > 0) {
             /* An ending vertex needs to be by the starting vertex */
@@ -85,26 +89,10 @@ do_pgr_tsp(
         }
 
 
-        if (!costs.has_no_infinity()) {
-            err << "An Infinity value was found on the Matrix";
-            *err_msg = strdup(err.str().c_str());
-            *log_msg = strdup(log.str().c_str());
-            return 5;
-        }
-#if 0
-        if (!costs.obeys_triangle_inequality()) {
-            err << "The Matrix dos not comply with triangle inequality";
-            *err_msg = strdup(err.str().c_str());
-            *log_msg = strdup(log.str().c_str());
-            return 6;
-        }
-#endif
-
-
 
         /* initialize tsp struct */
         log << "Initializing tsp class --->";
-        pgRouting::tsp::TSP<pgRouting::tsp::Dmatrix> tsp(costs);
+        pgRouting::tsp::TSP<pgRouting::tsp::eucledianDmatrix> tsp(costs);
         log << "OK\n";
 
 
@@ -124,7 +112,7 @@ do_pgr_tsp(
                 cooling_factor,
                 tries_per_temperature,
                 change_per_temperature,
-                fix_random);
+                randomize);
         log << tsp.get_log();
         log << "OK\n";
 
@@ -173,7 +161,7 @@ do_pgr_tsp(
         }
 
         pgassert(result.size() == bestTour.cities.size() + 1);
-        *return_count = bestTour.cities.size() + 1;
+        *return_count = bestTour.size() + 1;
         (*return_tuples) = pgr_alloc(result.size(), (*return_tuples));
 
         //store the results
@@ -187,7 +175,6 @@ do_pgr_tsp(
         *log_msg = strdup(log.str().c_str());
         (*err_msg) = NULL;
         return 0;
-
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
@@ -208,4 +195,7 @@ do_pgr_tsp(
         *log_msg = strdup(log.str().c_str());
     }
     return 1000;
+
 }
+
+

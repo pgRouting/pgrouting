@@ -36,31 +36,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-// #define DEBUG
+#define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
-#include "./../../common/src/matrixRows_input.h"
-#include "./tsp_driver.h"
+#include "./../../common/src/coordinates_input.h"
+#include "./eucledianTSP_driver.h"
 
 
 
-PG_FUNCTION_INFO_V1(xyd_tsp);
+PG_FUNCTION_INFO_V1(eucledianTSP);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-xyd_tsp(PG_FUNCTION_ARGS);
+eucledianTSP(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
-        char* distances_sql,
+        char* coordinates_sql,
         bool randomize,
         int64_t start_vid,
         int64_t end_vid,
@@ -94,25 +94,25 @@ process(
 
 
     PGR_DBG("Load data");
-    Matrix_cell_t *distances = NULL;
-    size_t total_distances = 0;
-    pgr_get_matrixRows(distances_sql, &distances, &total_distances);
+    Coordinate_t *coordinates = NULL;
+    size_t total_coordinates = 0;
+    pgr_get_coordinates(coordinates_sql, &coordinates, &total_coordinates);
 
-    if (total_distances == 0) {
-        PGR_DBG("No distances found");
+    if (total_coordinates == 0) {
+        PGR_DBG("No coordinates found");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld rows in query:", total_distances);
+    PGR_DBG("Total %ld coordinates:", total_coordinates);
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
     char *log_msg = NULL;
-    do_pgr_tsp(
-            distances,
-            total_distances,
+    do_pgr_eucledianTSP(
+            coordinates,
+            total_coordinates,
             start_vid,
             end_vid,
             initial_temperature,
@@ -128,14 +128,13 @@ process(
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("LOG = %s\n", log_msg);
     free(log_msg);
-
     if (err_msg) {
         if (*result_tuples) free(*result_tuples);
         elog(ERROR, "%s", err_msg);
         free(err_msg);
     }
 
-    pfree(distances);
+    pfree(coordinates);
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -146,7 +145,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-xyd_tsp(PG_FUNCTION_ARGS) {
+eucledianTSP(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
     uint32_t               max_calls;
@@ -170,7 +169,7 @@ xyd_tsp(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /* 
            CREATE OR REPLACE FUNCTION pgr_xydtsp(
-           matrix_row_sql TEXT,
+           coordinate_sql TEXT, -- has id, x, y
            start_id BIGINT DEFAULT -1,
            end_id BIGINT DEFAULT -1,
            initial_temperature FLOAT DEFAULT 100,

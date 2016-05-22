@@ -25,24 +25,29 @@ class Dmatrix {
     bool obeys_triangle_inequality() const;
     bool is_symetric() const;
 
-    Dmatrix get_symetric() const; 
-
-    void set_ids(const std::vector<matrix_cell> &data_costs);
+    void set(size_t i, size_t j, double dist) {costs[i][j] = costs[j][i] = dist;};
 
     size_t get_index(int64_t id) const;
     int64_t get_id (size_t id) const;
     size_t size() const {return ids.size();};
-    double max() const;
 
     double tourCost(const Tour &tour) const;
-    double pathCost(const std::vector<size_t> &path) const;
-    const std::vector< double >& operator[] (size_t i) const {return costs[i];}
-    std::vector< double >& operator[] (size_t i) {return costs[i];}
-    
+
+    const std::vector<double>& get_row(size_t i) const {return costs[i];};
+
+    double comparable_distance(size_t i, size_t j) const {return distance(i, j);};
+    double distance(size_t i, size_t j) const {return costs[i][j];};
+
     friend std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix);
-    
-    Costs costs;
+
+ protected:
+    void set_ids(const std::vector<matrix_cell> &data_costs);
     std::vector<size_t> ids;
+
+ private:
+    Costs costs;
+    std::vector< double >& operator[] (size_t i) {return costs[i];}
+    const std::vector< double >& operator[] (size_t i) const {return costs[i];}
 };
 
 }  // namespace tsp

@@ -16,8 +16,6 @@ namespace tsp {
 
 double
 Dmatrix::tourCost(const Tour &tour) const {
-    // return pathCost(tour.cities);
-
     double total_cost(0);
     if (tour.cities.empty()) return total_cost;
 
@@ -25,11 +23,7 @@ Dmatrix::tourCost(const Tour &tour) const {
     for (const auto &id : tour.cities) {
         if (id == tour.cities.front()) continue;
 
-        pgassert(costs[prev_id][id] != std::numeric_limits<double>::max());
-#if 0
-        if (costs[prev_id][id] == std::numeric_limits<double>::max())
-            return std::numeric_limits<double>::max();
-#endif
+        pgassert(distance(prev_id, id) != std::numeric_limits<double>::max());
 
         total_cost += costs[prev_id][id];
         prev_id = id;
@@ -39,36 +33,6 @@ Dmatrix::tourCost(const Tour &tour) const {
 }
 
 
-double
-Dmatrix::pathCost(const std::vector<size_t>  &path) const {
-    double len = 0;
-    if (path.empty()) return len;
-    auto prev_id = path.front();
-    for (const auto &id : path) {
-        if (id == path.front()) continue;
-        pgassert(costs[prev_id][id] != std::numeric_limits<double>::max());
-#if 0
-        if (costs[prev_id][id] == std::numeric_limits<double>::max())
-            return std::numeric_limits<double>::max();
-#endif
-        len += costs[prev_id][id];
-        prev_id = id;
-    }
-    len += costs[prev_id][path.front()];
-    return len;
-}
-
-
-
-double
-Dmatrix::max() const {
-    double maxd(0);
-    for (const auto &row : costs) {
-        auto row_max = std::max_element(row.begin(),row.end());
-        maxd = maxd < *row_max? *row_max : maxd;
-    }
-    return maxd;
-}
 
 void
 Dmatrix::set_ids(const std::vector < Matrix_cell_t > &data_costs) {
@@ -155,60 +119,6 @@ Dmatrix::is_symetric() const{
         }
     }
     return true;
-}
-
-
-Dmatrix
-Dmatrix::get_symetric() const {
-    double sum(0);
-    for (const auto &row : costs) {
-        for (const auto &cell : row) {
-            sum += cell;
-        }
-    }
-    if (is_symetric()) return *this; 
-    Dmatrix new_costs;
-    new_costs.costs.resize(costs.size() * 2);
-    for (auto &row : new_costs.costs) {
-        row.resize(costs.size() * 2);
-        for (auto &cell : row) {
-            cell = std::numeric_limits<double>::max();
-        }
-    }
-
-    /*
-     * Matrix cuadrants
-     *   A= inf           B= transposed original
-     *   C=original       D= inf
-     *
-     *   B & C "semi" diagonals are 0
-     */
-    for (size_t i = 0; i < costs.size(); ++i) {
-        for (size_t j = 0; j < costs.size(); ++j) {
-            /*
-             *  A & D
-             */
-            new_costs[i][j] = 
-                new_costs[i + costs.size()][j + costs.size()] = 
-                std::numeric_limits<double>::max();
-
-            /*
-             * B
-             */
-            new_costs[i + costs.size()][j] =
-                i == j? costs[i][j] : 0;
-
-            /*
-             * C
-             */
-            new_costs[i][j + costs.size()] =
-                i == j? costs[j][i] : 0;
-        }
-    }
-    new_costs.ids = ids;
-    new_costs.ids.insert(new_costs.ids.end(), ids.begin(), ids.end());
-
-    return new_costs;
 }
 
 

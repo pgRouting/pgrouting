@@ -9,6 +9,7 @@
 -- NODE_COORD_SECTION
 
 
+
 CREATE TABLE qa194 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY qa194 (id, x, y) FROM stdin WITH DELIMITER ' ';
 1 24748.3333 50840.0000
@@ -210,7 +211,7 @@ COPY qa194 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 UPDATE qa194 SET the_geom = ST_makePoint(x,y);
 SELECT * from pgr_xydtsp($$SELECT * from pgr_eucledianDmatrix('qa194'::regclass)$$);
-SELECT * from pgr_xydtsp($$SELECT * from pgr_eucledianDmatrix('qa194'::regclass)$$, 1);
+SELECT * from pgr_xydtsp($$SELECT * from pgr_eucledianDmatrix('qa194'::regclass)$$, true, 1);
 SELECT * from pgr_tsp('SELECT id::integer, x, y from qa194', 1);
 
 /*

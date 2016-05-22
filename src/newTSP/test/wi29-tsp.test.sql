@@ -9,6 +9,7 @@
 -- EDGE_WEIGHT_TYPE : EUC_2D
 -- NODE_COORD_SECTION
 
+DROP TABLE IF EXISTS wi29;
 CREATE TABLE wi29 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 1 20833.3333 17100.0000
@@ -44,8 +45,17 @@ COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE wi29 SET the_geom = ST_makePoint(x,y);
-SELECT * from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, 1, 2);
-SELECT * from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, 1, 3);
+-- SELECT * from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, true, 1, 2);
+-- SELECT * from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, true, 1, 3);
+SELECT * from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, true);
+SELECT * from pgr_eucledianTSP($$select * from wi29$$, true);
+SELECT * from pgr_eucledianTSP($$select * from wi29$$, true,
+    initial_temperature :=  100,
+    final_temperature := 0.01,
+    cooling_factor := 0.95,
+    tries_per_temperature := 1500,
+    change_per_temperature := 100
+);
 
 /*
 CREATE VIEW wi29_path AS

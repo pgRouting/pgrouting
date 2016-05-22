@@ -43,7 +43,7 @@
 
 #include "../../common/src/pgr_types.h"
 #include "../../common/src/pgr_assert.h"
-#include "./pgr_tsp.hpp"
+// #include "./pgr_tsp.hpp"
 
 
 
@@ -70,26 +70,28 @@ pred(size_t i, size_t n) {
 namespace pgRouting {
 namespace tsp {
 
-void TSP::invariant() const {
+template < typename MATRIX >
+void TSP<MATRIX>::invariant() const {
     /* the calculated value & the actual value are the same */
-    pgassert(std::fabs(dist.tourCost(current_tour) - current_cost) < 10 * epsilon);
-    pgassert(std::fabs(dist.tourCost(best_tour) - bestCost) < 10 * epsilon);
-    pgassert(n == dist.ids.size());
+    pgassert(std::fabs(tourCost(current_tour) - current_cost) < epsilon);
+    pgassert(std::fabs(tourCost(best_tour) - bestCost) < epsilon);
+    pgassert(n == MATRIX::ids.size());
     pgassert(n == current_tour.size());
     pgassert(n == best_tour.size());
 }
 
+template < typename MATRIX >
 void
-TSP::update_if_best() {
+TSP<MATRIX>::update_if_best() {
     ++updatecalls;
     if (updatecalls > 10) {
-        current_cost = dist.tourCost(current_tour);
+        current_cost = tourCost(current_tour);
         updatecalls = 0;
     }
 
     if (current_cost < bestCost) {
         best_tour = current_tour;
-        bestCost = dist.tourCost(current_tour);
+        bestCost = tourCost(current_tour);
         current_cost = bestCost;
         updatecalls = 0;
     }
@@ -99,13 +101,14 @@ TSP::update_if_best() {
 
 
 
+template < typename MATRIX >
 size_t
-TSP::find_closest_city(
+TSP<MATRIX>::find_closest_city(
         size_t current_city,
         const std::set<size_t> inserted) const {
     invariant();
 
-    auto distance_row( dist[current_city]);
+    auto distance_row(get_row(current_city));
     size_t best_city = 0;
     auto best_distance = std::numeric_limits<double>::max();
     for (size_t i = 0; i < distance_row.size(); ++i) {
@@ -123,8 +126,9 @@ TSP::find_closest_city(
 
 
 
+template < typename MATRIX >
 void
-TSP::greedyInitial() {
+TSP<MATRIX>::greedyInitial() {
     invariant();
 
     std::set<size_t> pending(best_tour.cities.begin(), best_tour.cities.end());
@@ -161,7 +165,7 @@ TSP::greedyInitial() {
 
     pgassert(tour_to_be.size() == n);
     current_tour = Tour(tour_to_be);
-    current_cost = dist.tourCost(current_tour);
+    current_cost = tourCost(current_tour);
     update_if_best();
     swapClimb();
 
@@ -189,11 +193,12 @@ TSP::greedyInitial() {
  * 
  */
 
+template < typename MATRIX >
 double
-TSP::getDeltaSlide(size_t posP, size_t posF, size_t posL) const{
+TSP<MATRIX>::getDeltaSlide(size_t posP, size_t posF, size_t posL) const{
     Tour new_tour(current_tour);
     new_tour.slide(posP, posF, posL);
-    return dist.tourCost(new_tour) - dist.tourCost(current_tour);
+    return tourCost(new_tour) - tourCost(current_tour);
 }
 
 
@@ -206,8 +211,9 @@ TSP::getDeltaSlide(size_t posP, size_t posF, size_t posL) const{
  *   a b 1  2   .. n-1 n c d
  *   a c n n-1  ..  2  1 c d
  */
+template < typename MATRIX >
 double
-TSP::getDeltaSwap(size_t posA, size_t posE) const {
+TSP<MATRIX>::getDeltaSwap(size_t posA, size_t posE) const {
     invariant();
 
     if (succ(posE, n ) == posA) std::swap(posA, posE);
@@ -217,8 +223,8 @@ TSP::getDeltaSwap(size_t posA, size_t posE) const {
 
         auto e = current_tour.cities[posE];
         auto f = current_tour.cities[succ(posE, n)];
-        return dist[b][e] + dist[e][a] + dist[a][f]
-            - dist[b][a] - dist[a][e]  - dist[e][f] ;
+        return distance(b,e) + distance(e,a) + distance(a, f)
+            - distance(b, a) - distance(a, e)  - distance(e, f);
     }
 
     auto b = current_tour.cities[pred(posA, n)];
@@ -230,17 +236,25 @@ TSP::getDeltaSwap(size_t posA, size_t posE) const {
     auto f = current_tour.cities[succ(posE, n)];
 
 #ifndef NDEBUG
-    auto delta = dist[b][e] + dist[e][c] + dist[d][a] + dist[a][f]
-        - dist[b][a] - dist[a][c]  - dist[d][e] - dist[e][f] ;
+    auto delta = distance(b, e) + distance(e, c) + distance(d, a) + distance(a, f)
+        - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f) ;
     auto new_tour(current_tour);
     new_tour.swap(posA, posE);
-    pgassert(std::fabs((dist.tourCost(new_tour) - dist.tourCost(current_tour))
-                - delta) < (10 * epsilon) );
+    auto exactDelta = tourCost(new_tour) - tourCost(current_tour);
+    std::ostringstream log;
+    log << exactDelta
+        << " - " <<  delta 
+        << " = "
+        << exactDelta - delta
+        << " = "
+        << std::fabs(exactDelta - delta);
+
+    pgassertwm(std::fabs((exactDelta - delta)) < epsilon, log.str());
 #endif
 
     invariant();
-    return dist[b][e] + dist[e][c] + dist[d][a] + dist[a][f]
-        - dist[b][a] - dist[a][c]  - dist[d][e] - dist[e][f] ;
+    return  distance(b, e) + distance(e, c) + distance(d, a) + distance(a, f)
+        - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f) ;
 }
 
 /*
@@ -249,8 +263,9 @@ TSP::getDeltaSwap(size_t posA, size_t posE) const {
  *   ..a  b 1  2   .. n-1 n c d ..
  *   ..a  c n n-1  ..  2  1 b d ..
  */
+template < typename MATRIX >
 double
-TSP::getDeltaReverse(size_t posA, size_t posC) const {
+TSP<MATRIX>::getDeltaReverse(size_t posA, size_t posC) const {
     invariant();
 
     if (posA == (posC - 1)) return 0;
@@ -262,24 +277,33 @@ TSP::getDeltaReverse(size_t posA, size_t posC) const {
 
 
 #ifndef NDEBUG
-    auto delta = dist[a][c] + dist[b][d] - dist[a][b] - dist[c][d];
+    auto delta = distance(a, c) + distance(b, d) - distance(a, b) - distance(c, d);
     auto new_tour(current_tour);
     new_tour.reverse(posA, posC);
+    auto exactDelta = tourCost(new_tour) - tourCost(current_tour);
 
-    pgassert(std::fabs(dist.tourCost(new_tour) - dist.tourCost(current_tour)
-                - delta) < (10 * epsilon));
+    std::ostringstream log;
+    log << "exactDelta(" << exactDelta
+        << ") - delta(" <<  delta 
+        << ") = "
+        << exactDelta - delta
+        << " = "
+        << (exactDelta - delta)
+        << " epsilon = " << epsilon;
+    pgassertwm(std::fabs((exactDelta - delta)) < epsilon, log.str());
 #endif
 
     invariant();
-    return dist[a][c] + dist[b][d] - dist[a][b] - dist[c][d];
+    return  distance(a, c) + distance(b, d) - distance(a, b) - distance(c, d);
 }
 
+template < typename MATRIX >
 void
-TSP::swapClimb() {
+TSP<MATRIX>::swapClimb() {
     pgassert(n > 2);
 
-//    auto first = std::rand() % n;
-//    for (size_t first = std::rand() % n; first < n; first++) {
+    //    auto first = std::rand() % n;
+    //    for (size_t first = std::rand() % n; first < n; first++) {
     for (size_t first = 0; first < n; first++) {
         for (size_t last = first + 1; last < n; last++) {
             pgassert(first < last);
@@ -295,22 +319,23 @@ TSP::swapClimb() {
     }
 }
 
+template < typename MATRIX >
 void
-TSP::annealing(
+TSP<MATRIX>::annealing(
         double temperature,
         double final_temperature,
         double cooling_factor,
         int64_t tries_per_temperature,
         int64_t change_per_temperature,
-        bool fix_random) {
+        bool randomize) {
     invariant();
 
     tries_per_temperature = tries_per_temperature * n;
     change_per_temperature = change_per_temperature * n;
-    if (fix_random) {
-        std::srand(1);
-    } else {
+    if (randomize) {
         std::srand(static_cast<unsigned int>(time(NULL)));
+    } else {
+        std::srand(1);
     }
 
 
@@ -325,9 +350,9 @@ TSP::annealing(
         /*
            how many times the tour changed in current temperature
            */
-        size_t pathchg = 0;
+        int64_t pathchg = 0;
         size_t enchg = 0;
-        for (size_t j = 0; j < tries_per_temperature; j++) {
+        for (int64_t j = 0; j < tries_per_temperature; j++) {
 
             auto which = rand(2);
             // which = 1;
