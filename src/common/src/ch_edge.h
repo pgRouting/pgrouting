@@ -3,9 +3,9 @@
 #include <sstream>
 #include <string>
 #include <functional>
-#include "./contraction_structs.hpp"
-#include "vertex.h"
-#include "../../common/src/basic_edge.h"
+#include "../../contraction/src/contraction_structs.hpp"
+#include "ch_vertex.h"
+#include "basic_edge.h"
 
 namespace pgRouting
 {

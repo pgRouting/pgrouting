@@ -2,11 +2,11 @@
 #include <iostream>
 #include <string>
 #include <functional>
-#include "./contraction_structs.hpp"
-#include "./contraction_type.hpp"
-#include "../../common/src/basic_vertex.h"
+#include "../../contraction/src/contraction_structs.hpp"
+#include "../../contraction/src/contraction_type.hpp"
+#include "basic_vertex.h"
 
-#include "../../common/src/pgr_types.h" 
+#include "pgr_types.h" 
 namespace pgRouting
 {
 class Vertex_c {

@@ -1,4 +1,4 @@
-#include "./vertex.h"
+#include "./ch_vertex.h"
 namespace pgRouting
 {
 

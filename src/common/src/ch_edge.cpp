@@ -1,4 +1,4 @@
-#include "./edge.h"
+#include "./ch_edge.h"
 namespace pgRouting
 {
 void Edge_c::cp_members(const Edge_c &other) {
