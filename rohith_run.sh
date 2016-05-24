@@ -10,6 +10,7 @@ cd ..
 #Enter the username for postgres
 PGUSER=$1
 #Enter the database name 
+
 PGDATABASE="testXY"
 
 : '
