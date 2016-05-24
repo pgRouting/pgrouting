@@ -55,4 +55,8 @@ run_psql  -c 'CREATE EXTENSION pgrouting'
 run_psql -f  tools/testers/sampledata.sql
 
 #Path to the sql file you want to execute
+# Testing for XYedge
 run_psql -e -f src/internalQueryTests/test/XYedge.test.sql
+
+# Testing for Edge_c
+run_psql -e -f src/internalQueryTests/test/Edge_c.test.sql

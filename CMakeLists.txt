@@ -245,28 +245,28 @@ set(PgRouting_SOURCE_NAMES
     "common"
 
     #to be deprecated
-    "kdijkstra"
+    #"kdijkstra"
 
-    "dijkstra"
-    "driving_distance"
-    "ksp"
-    "allpairs"
-    "withPoints"
+    #"dijkstra"
+    #"driving_distance"
+    #"ksp"
+    #"allpairs"
+    #"withPoints"
 
     "internalQueryTests"
     #"funnyDijkstra"
 
-    "alpha_shape"
+    #"alpha_shape"
 
-    "astar"
-    "bd_astar"
-    "bd_dijkstra"
-    "trsp" #2.0
-    "tsp"
+    #"astar"
+    #"bd_astar"
+    #"bd_dijkstra"
+    #"trsp" #2.0
+    #"tsp"
 
-    "vrp_basic"
-    "vrppdtw"
-    "contraction"
+    #"vrp_basic"
+    #"vrppdtw"
+    #"contraction"
 
     )
 

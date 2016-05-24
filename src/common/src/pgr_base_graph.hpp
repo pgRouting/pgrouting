@@ -49,6 +49,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./basic_edge.h"
 #include "./pgr_types.h" // for pgr_edge_t 
 #include "./pgr_assert.h"
+// for contracted vertex and edge classes
+#include "../../contraction/src/vertex.h"
+//#include "../../contraction/src/edge.h"
 
 /*! @brief boost::graph simplified to pgRouting needs
 
@@ -251,6 +254,18 @@ boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
+
+typedef typename graph::Pgr_base_graph <
+boost::adjacency_list < boost::listS, boost::vecS,
+    boost::undirectedS,
+    Vertex_c, Basic_edge >,
+    Vertex_c, Basic_edge > CUndirectedGraph;
+
+typedef typename graph::Pgr_base_graph <
+boost::adjacency_list < boost::listS, boost::vecS,
+    boost::bidirectionalS,
+    Vertex_c, Basic_edge >,
+    Vertex_c, Basic_edge > CDirectedGraph;
 //@}
 
 namespace graph{
