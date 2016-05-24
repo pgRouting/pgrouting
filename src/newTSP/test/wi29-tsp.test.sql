@@ -3,11 +3,13 @@
 
 -- NAME : wi29
 -- COMMENT : 29 locations in Western Sahara
--- COMMENT : Derived from National Imagery and Mapping Agency data
+-- COMMENT : Derived FROM National Imagery and Mapping Agency data
 -- TYPE : TSP
 -- DIMENSION : 29
 -- EDGE_WEIGHT_TYPE : EUC_2D
 -- NODE_COORD_SECTION
+
+-- best 27603
 
 DROP TABLE IF EXISTS wi29;
 CREATE TABLE wi29 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
@@ -45,23 +47,37 @@ COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE wi29 SET the_geom = ST_makePoint(x,y);
--- SELECT * from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, true, 1, 2);
--- SELECT * from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, true, 1, 3);
-SELECT * from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, true);
-SELECT * from pgr_eucledianTSP($$select * from wi29$$, true);
-SELECT * from pgr_eucledianTSP($$select * from wi29$$, true,
+
+SELECT * FROM pgr_xydtsp($$select * FROM pgr_eucledianDmatrix('wi29'::regclass)$$, true);
+
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$ );
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 4, 6);
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 4);
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$,
+    randomize := true,
     initial_temperature :=  100,
     final_temperature := 0.01,
-    cooling_factor := 0.95,
-    tries_per_temperature := 1500,
-    change_per_temperature := 100
+    cooling_factor := 0.5,
+    tries_per_temperature := 0,
+    max_changes_per_temperature := 1
 );
 
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 
+    randomize := true,
+    initial_temperature :=  100,
+    final_temperature := 0.01,
+    cooling_factor := 0.9,
+    tries_per_temperature := 900,
+    max_changes_per_temperature := 100,
+    max_consecutive_non_changes := 300
+);
+SET client_min_messages TO DEBUG1;
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$);
 /*
 CREATE VIEW wi29_path AS
 WITH
 results AS (
-    SELECT seq, node, cost, agg_cost from pgr_xydtsp($$select * from pgr_eucledianDmatrix('wi29'::regclass)$$, 1)
+    SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$);
 ),
 geoms AS (
     SELECT seq, node, cost, agg_cost, the_geom AS second  FROM results JOIN wi29 ON (node = id)

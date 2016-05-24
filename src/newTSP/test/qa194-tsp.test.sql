@@ -210,9 +210,11 @@ COPY qa194 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE qa194 SET the_geom = ST_makePoint(x,y);
-SELECT * from pgr_xydtsp($$SELECT * from pgr_eucledianDmatrix('qa194'::regclass)$$);
-SELECT * from pgr_xydtsp($$SELECT * from pgr_eucledianDmatrix('qa194'::regclass)$$, true, 1);
-SELECT * from pgr_tsp('SELECT id::integer, x, y from qa194', 1);
+-- SELECT * from pgr_tsp('SELECT id::integer, x, y from qa194', 1);
+
+SET client_min_messages TO DEBUG1;
+SELECT * from pgr_eucledianTSP($$SELECT id::integer, x, y from qa194$$);
+SELECT * from pgr_eucledianTSP($$SELECT id::integer, x, y from qa194$$, max_processing_time := 3);
 
 /*
 CREATE VIEW qa194_path AS

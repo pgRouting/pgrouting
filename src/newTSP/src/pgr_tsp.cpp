@@ -90,6 +90,7 @@ TSP<MATRIX>::update_if_best() {
     }
 
     if (current_cost < bestCost) {
+        ++improve_count;
         best_tour = current_tour;
         bestCost = tourCost(current_tour);
         current_cost = bestCost;
@@ -128,20 +129,20 @@ TSP<MATRIX>::find_closest_city(
 
 template < typename MATRIX >
 void
-TSP<MATRIX>::greedyInitial() {
+TSP<MATRIX>::greedyInitial(size_t idx_start) {
     invariant();
 
     std::set<size_t> pending(best_tour.cities.begin(), best_tour.cities.end());
     std::set<size_t> inserted;
     std::vector<size_t> tour_to_be;
 
-    auto current_city = *pending.begin();
+    auto current_city = idx_start;
 
 #ifndef NDEBUG
     auto ps(pending.size());
 #endif
 
-    pending.erase(pending.begin());
+    pending.erase(idx_start);
 #ifndef NDEBUG
     pgassert(pending.size() == (ps - 1));
 #endif
@@ -311,6 +312,7 @@ TSP<MATRIX>::swapClimb() {
             auto energyChange = getDeltaSwap(first, last);
 
             if (energyChange < 0 && epsilon < std::fabs(energyChange)) {
+                ++swap_count;
                 current_cost += energyChange;
                 current_tour.swap(first, last);
                 update_if_best();
@@ -326,12 +328,13 @@ TSP<MATRIX>::annealing(
         double final_temperature,
         double cooling_factor,
         int64_t tries_per_temperature,
-        int64_t change_per_temperature,
-        bool randomize) {
+        int64_t max_changes_per_temperature,
+        int64_t max_consecutive_non_changes,
+        bool randomize,
+        double time_limit) {
     invariant();
+    clock_t start_time(clock());
 
-    tries_per_temperature = tries_per_temperature * n;
-    change_per_temperature = change_per_temperature * n;
     if (randomize) {
         std::srand(static_cast<unsigned int>(time(NULL)));
     } else {
@@ -345,14 +348,16 @@ TSP<MATRIX>::annealing(
     for (; final_temperature < temperature; temperature *= cooling_factor) {
         invariant();
 
-        log << "Cycle's Temperature: " << temperature <<"\n";
+        log << "\nCycle(" << temperature <<") ";
 
         /*
            how many times the tour changed in current temperature
            */
         int64_t pathchg = 0;
         size_t enchg = 0;
+        size_t non_change = 0;
         for (int64_t j = 0; j < tries_per_temperature; j++) {
+            ++non_change;
 
             auto which = rand(2);
             // which = 1;
@@ -379,7 +384,9 @@ TSP<MATRIX>::annealing(
                                         &&  ((double)std::rand() / (double)RAND_MAX)  < exp(-energyChange / temperature))
                                ) {
                                 if (energyChange < 0) ++enchg;
-                                pathchg++;
+                                ++reverse_count;
+                                ++pathchg;
+                                non_change = 0;
                                 current_cost += energyChange;
                                 current_tour.reverse(c1,c2);
                                 update_if_best();
@@ -409,7 +416,9 @@ TSP<MATRIX>::annealing(
                                     || (0 < energyChange
                                         &&  ((double)std::rand() / (double)RAND_MAX)  < exp(-energyChange / temperature))) {
                                 if (energyChange < 0) ++enchg;
-                                pathchg++;
+                                ++slide_count;
+                                ++pathchg;
+                                non_change = 0;
                                 current_cost += energyChange;
                                 current_tour.slide(place, first, last);
                                 update_if_best();
@@ -419,15 +428,22 @@ TSP<MATRIX>::annealing(
             }  // switch
 
 
-            if (change_per_temperature < pathchg) {
+            if (max_changes_per_temperature < pathchg
+                    && max_consecutive_non_changes < non_change ) {
                 break;
             } 
-        }
+        } // for tries per temperature
+
         swapClimb();
-        log << "total changes in temperature " << temperature << " = " << pathchg 
-            << "\t  total changes because of (energyChange < 0) " << " = " << enchg << "\n";
+        clock_t current_time(clock());
+        double elapsed_time = (double)(current_time - start_time) / CLOCKS_PER_SEC;
+        if (time_limit < elapsed_time) {
+            break;
+        }
+        log << "total changes =" << temperature << " = " << pathchg 
+            << "\t" << enchg << " were because  delta energy < 0";
         if (pathchg == 0) break;   /* if no change then quit */
-    }
+    } // for temperatures
 }
 
 }  // namespace tsp

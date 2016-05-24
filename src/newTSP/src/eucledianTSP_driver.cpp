@@ -62,8 +62,10 @@ do_pgr_eucledianTSP(
         double final_temperature,
         double cooling_factor,
         int64_t tries_per_temperature,
-        int64_t change_per_temperature,
+        int64_t max_changes_per_temperature,
+        int64_t max_consecutive_non_changes,
         bool randomize,
+        double time_limit,
 
         General_path_element_t **return_tuples,
         size_t *return_count,
@@ -77,13 +79,12 @@ do_pgr_eucledianTSP(
         std::vector< Coordinate_t > coordinates(coordinates_data, coordinates_data + total_coordinates);
 
         pgRouting::tsp::eucledianDmatrix costs(coordinates);
-        log << costs;
 
         double real_cost = -1;
-        if (end_vid > 0) {
+        size_t idx_start = start_vid < 0? 0 : costs.get_index(start_vid);
+        size_t idx_end = end_vid < 0? 0 : costs.get_index(end_vid);
+        if (start_vid > 0 && end_vid > 0 && start_vid != end_vid) {
             /* An ending vertex needs to be by the starting vertex */
-            size_t idx_start = costs.get_index(start_vid);
-            size_t idx_end = costs.get_index(end_vid);
             real_cost = costs.distance(idx_start, idx_end);
             costs.set(idx_start, idx_end, 0);
         }
@@ -93,15 +94,13 @@ do_pgr_eucledianTSP(
         /* initialize tsp struct */
         log << "Initializing tsp class --->";
         pgRouting::tsp::TSP<pgRouting::tsp::eucledianDmatrix> tsp(costs);
-        log << "OK\n";
 
 
         /*
          * Initial solution
          */
         log << "tsp.greedyInitial --->";
-        tsp.greedyInitial();
-        log << "OK\n";
+        tsp.greedyInitial(idx_start);
 
 
 
@@ -111,24 +110,21 @@ do_pgr_eucledianTSP(
                 final_temperature,
                 cooling_factor,
                 tries_per_temperature,
-                change_per_temperature,
-                randomize);
-        log << tsp.get_log();
+                max_changes_per_temperature,
+                max_consecutive_non_changes,
+                randomize,
+                time_limit);
         log << "OK\n";
+        log << tsp.get_log();
+        log << tsp.get_stats();
 
         auto bestTour(tsp.get_tour());
-        log << "\nbest tour\n";
-        for (const auto &id : bestTour.cities) {
-            log << id << ", ";
-        }
 
-        if (end_vid > 0) {
-            size_t idx_start = costs.get_index(start_vid);
-            size_t idx_end = costs.get_index(end_vid);
+        if (start_vid > 0 && end_vid > 0 && start_vid != end_vid) {
             costs.set(idx_start, idx_end, real_cost);
         }
 
-        log << "\nbest cost" << costs.tourCost(bestTour) << ", ";
+        log << "\nBest cost reached = " << costs.tourCost(bestTour);
         size_t istart = costs.get_index(start_vid);
         auto start_ptr = std::find(bestTour.cities.begin(), bestTour.cities.end(), istart);
         std::rotate(bestTour.cities.begin(), start_ptr, bestTour.cities.end());

@@ -56,7 +56,12 @@ class TSP: public MATRIX {
          current_tour(_costs.size()),
          best_tour(_costs.size()),
          epsilon(0.000001),
-         n(_costs.size())
+         n(_costs.size()),
+         updatecalls(0),
+         swap_count(0),
+         slide_count(0),
+         reverse_count(0),
+         improve_count(0)
           {
              pgassert(n == MATRIX::size());
              bestCost = MATRIX::tourCost(best_tour);
@@ -66,15 +71,27 @@ class TSP: public MATRIX {
 
 
      Tour get_tour() const {return best_tour;};
-     std::string get_log() const {return log.str();};
-     void greedyInitial();
+     std::string get_stats() const {
+         std::ostringstream log1;
+         log1
+             << "\nTotal swaps: " << swap_count
+             << "\nTotal slides: " << slide_count
+             << "\nTotal reverses: " << reverse_count
+             << "\nTimes best tour changed: " << improve_count;
+         return log1.str();};
+     std::string get_log() const {
+         return log.str();};
+
+     void greedyInitial(size_t idx_start = 0);
      void annealing(
              double initial_temperature,
              double final_temperature,
              double cooling_factor,
              int64_t tries_per_temperature,
-             int64_t change_per_temperature,
-             bool fix_random
+             int64_t max_changes_per_temperature,
+             int64_t max_consecutive_non_changes,
+             bool randomize,
+             double time_limit
              );
 
 
@@ -87,7 +104,12 @@ class TSP: public MATRIX {
      size_t n;
 
      int updatecalls;
+
      std::ostringstream log;
+     size_t swap_count;
+     size_t slide_count;
+     size_t reverse_count;
+     size_t improve_count;
 
  private:
      void invariant() const;

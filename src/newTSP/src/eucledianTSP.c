@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/coordinates_input.h"
@@ -61,14 +62,16 @@ static
 void
 process(
         char* coordinates_sql,
-        bool randomize,
         int64_t start_vid,
         int64_t end_vid,
+        bool randomize,
+        double time_limit,
         double initial_temperature,
         double final_temperature,
         double cooling_factor,
         int64_t tries_per_temperature,
-        int64_t change_per_temperature,
+        int64_t max_changes_per_temperature,
+        int64_t max_consecutive_non_changes,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -85,15 +88,17 @@ process(
     if (cooling_factor <=0 || cooling_factor >=1) {
         elog(ERROR, "Illegal: cooling_factor <=0 || cooling_factor >=1");
     }
-    if (tries_per_temperature  < 1) {
-        elog(ERROR, "Illegal: tries_per_temperature  < 1");
+    if (max_changes_per_temperature  < 1) {
+        elog(ERROR, "Illegal value for max_changes_per_temperature");
     }
-    if (change_per_temperature  < 1) {
-        elog(ERROR, "Illegal: change_per_temperature  < 1");
+    if (max_consecutive_non_changes < 1) {
+        elog(ERROR, "Illegal value for max_consecutive_non_changes");
+    }
+    if (time_limit < 0) {
+        elog(ERROR, "Illegal value for time_limit");
     }
 
 
-    PGR_DBG("Load data");
     Coordinate_t *coordinates = NULL;
     size_t total_coordinates = 0;
     pgr_get_coordinates(coordinates_sql, &coordinates, &total_coordinates);
@@ -105,11 +110,10 @@ process(
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld coordinates:", total_coordinates);
 
-    PGR_DBG("Starting processing");
     char *err_msg = NULL;
     char *log_msg = NULL;
+    clock_t start_t = clock();
     do_pgr_eucledianTSP(
             coordinates,
             total_coordinates,
@@ -119,15 +123,19 @@ process(
             final_temperature,
             cooling_factor,
             tries_per_temperature,
-            change_per_temperature,
+            max_changes_per_temperature,
+            max_consecutive_non_changes,
             randomize,
+            time_limit,
             result_tuples,
             result_count,
             &log_msg,
             &err_msg);
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("LOG = %s\n", log_msg);
-    free(log_msg);
+    time_msg(" processing eucledianTSP", start_t, clock());
+    if (log_msg) {
+        elog(DEBUG1, "%s", log_msg);
+        free(log_msg);
+    }
     if (err_msg) {
         if (*result_tuples) free(*result_tuples);
         elog(ERROR, "%s", err_msg);
@@ -154,7 +162,7 @@ eucledianTSP(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -169,28 +177,31 @@ eucledianTSP(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /* 
            CREATE OR REPLACE FUNCTION pgr_xydtsp(
-           coordinate_sql TEXT, -- has id, x, y
+           coordinates_sql TEXT,  (has id,x,y)
            start_id BIGINT DEFAULT -1,
            end_id BIGINT DEFAULT -1,
+           randomize BOOLEAN DEFAULT true,
+           time_limit FLOAT DEFAULT '+infinity'::FLOAT,
            initial_temperature FLOAT DEFAULT 100,
-           final_temperature FLOAT DEFAULT 100,
+           final_temperature FLOAT DEFAULT 0.1,
            cooling_factor FLOAT DEFAULT 0.9,
-           tries_per_temperature FLOAT DEFAULT 500,
-           change_per_temperature FLOAT DEFAULT 60,
-           fix_random BOOLEAN DEFAULT 0
+           tries_per_temperature INTEGER DEFAULT 500,
+           max_changes_per_temperature INTEGER DEFAULT 60,
+           max_non_changes INTEGER DEFAULT 60
            */
 
-        PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_BOOL(1),
+                PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
-                PG_GETARG_INT64(3),
+                PG_GETARG_BOOL(3),
                 PG_GETARG_FLOAT8(4),
                 PG_GETARG_FLOAT8(5),
                 PG_GETARG_FLOAT8(6),
-                PG_GETARG_INT32(7),
+                PG_GETARG_FLOAT8(7),
                 PG_GETARG_INT32(8),
+                PG_GETARG_INT32(9),
+                PG_GETARG_INT32(10),
                 &result_tuples,
                 &result_count);
         /*                                                                    */

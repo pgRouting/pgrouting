@@ -37,9 +37,14 @@ void pgr_fetch_row(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[3],
+        int64_t *default_id,
         Coordinate_t *distance) {
-
-    distance->id = pgr_SPI_getBigInt(tuple, tupdesc,  info[0]);
+    if (column_found(info[0].colNumber)) {
+        distance->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+    } else {
+        distance->id = *default_id;
+        ++(*default_id);
+    }
     distance->x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
     distance->y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
 }
@@ -74,6 +79,7 @@ void pgr_get_coordinates(
     info[2].name = strdup("y");
 
     info[0].eType = ANY_INTEGER;
+    info[0].strict = false;
 
 
     void *SPIplan;
@@ -85,6 +91,8 @@ void pgr_get_coordinates(
 
     bool moredata = TRUE;
     (*total_coordinates) = total_tuples;
+
+    int64_t default_id = 1;
 
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
@@ -112,6 +120,7 @@ void pgr_get_coordinates(
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 pgr_fetch_row(&tuple, &tupdesc, info,
+                        &default_id,
                         &(*coordinates)[total_tuples - ntuples + t]);
             }
             SPI_freetuptable(tuptable);

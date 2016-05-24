@@ -64,11 +64,13 @@ process(
         bool randomize,
         int64_t start_vid,
         int64_t end_vid,
+        double time_limit,
         double initial_temperature,
         double final_temperature,
         double cooling_factor,
         int64_t tries_per_temperature,
-        int64_t change_per_temperature,
+        int64_t max_changes_per_temperature,
+        int64_t max_consecutive_non_changes,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -85,11 +87,14 @@ process(
     if (cooling_factor <=0 || cooling_factor >=1) {
         elog(ERROR, "Illegal: cooling_factor <=0 || cooling_factor >=1");
     }
-    if (tries_per_temperature  < 1) {
-        elog(ERROR, "Illegal: tries_per_temperature  < 1");
+    if (tries_per_temperature  < 0) {
+        elog(ERROR, "Illegal: tries_per_temperature  < 0");
     }
-    if (change_per_temperature  < 1) {
+    if (max_changes_per_temperature  < 1) {
         elog(ERROR, "Illegal: change_per_temperature  < 1");
+    }
+    if (time_limit  < 1) {
+        elog(ERROR, "Illegal: time_limit < 0");
     }
 
 
@@ -119,8 +124,10 @@ process(
             final_temperature,
             cooling_factor,
             tries_per_temperature,
-            change_per_temperature,
+            max_changes_per_temperature,
+            max_consecutive_non_changes,
             randomize,
+            time_limit,
             result_tuples,
             result_count,
             &log_msg,
@@ -171,14 +178,15 @@ xyd_tsp(PG_FUNCTION_ARGS) {
         /* 
            CREATE OR REPLACE FUNCTION pgr_xydtsp(
            matrix_row_sql TEXT,
+           randomize BOOLEAN DEFAULT true,
            start_id BIGINT DEFAULT -1,
            end_id BIGINT DEFAULT -1,
            initial_temperature FLOAT DEFAULT 100,
-           final_temperature FLOAT DEFAULT 100,
+           final_temperature FLOAT DEFAULT 0.1,
            cooling_factor FLOAT DEFAULT 0.9,
-           tries_per_temperature FLOAT DEFAULT 500,
-           change_per_temperature FLOAT DEFAULT 60,
-           fix_random BOOLEAN DEFAULT 0
+           tries_per_temperature INTEGER DEFAULT 500,
+           max_changes_per_temperature INTEGER DEFAULT 60,
+           max_consecutive_non_changes INTEGER DEFAULT 60
            */
 
         PGR_DBG("Calling process");
@@ -190,8 +198,10 @@ xyd_tsp(PG_FUNCTION_ARGS) {
                 PG_GETARG_FLOAT8(4),
                 PG_GETARG_FLOAT8(5),
                 PG_GETARG_FLOAT8(6),
-                PG_GETARG_INT32(7),
+                PG_GETARG_FLOAT8(7),
                 PG_GETARG_INT32(8),
+                PG_GETARG_INT32(9),
+                PG_GETARG_INT32(10),
                 &result_tuples,
                 &result_count);
         /*                                                                    */

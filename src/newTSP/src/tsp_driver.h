@@ -46,8 +46,10 @@ do_pgr_tsp(
         double final_temperature,
         double cooling_factor,
         int64_t tries_per_temperature,
-        int64_t change_per_temperature,
-        bool fix_random,
+        int64_t max_changes_per_temperature,
+        int64_t max_consecutive_non_changes,
+        bool randomize,
+        double time_limit,
 
         General_path_element_t **results,
         size_t *total_results,
