@@ -63,7 +63,7 @@ do_pgr_test_c_edges(
         pgassert(!(*err_msg));
 
         std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
-        std::vector < pgRouting::Vertex_c > vertices(pgRouting::extract_vertices(edges));
+        std::vector < pgRouting::contraction::Vertex_c > vertices(pgRouting::contraction::extract_vertices(edges));
 
 
         log << "Original: \n" <<
@@ -72,10 +72,9 @@ do_pgr_test_c_edges(
             log << "id = " << edge.id
                 << "\tsource = " << edge.source
                 << "\ttarget = " << edge.target
-                << "\tcost = " << edge.cost;
-                //<< "\treverse_cost = " << edge.reverse_cost;
-                // << "\n\t(x1,y1) = (" << edge.x1 << "," << edge.y1 << ")"
-                // << "\t(x2,y2) = (" << edge.x2 << "," << edge.y2 << ")\n";
+                << "\tcost = " << edge.cost
+                << "\treverse_cost = " << edge.reverse_cost
+                << ")\n";
         }
 
         {

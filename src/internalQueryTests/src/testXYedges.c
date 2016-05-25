@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
   Uncomment when needed
 */
-#define DEBUG 1
+// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"

@@ -35,13 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-
-/*
-  Uncomment when needed
-*/
-#define DEBUG 1
-
 #include "fmgr.h"
+
+#define DEBUG
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
@@ -56,7 +52,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-testXYedges(PG_FUNCTION_ARGS);
+test_c_edges(PG_FUNCTION_ARGS);
 
 
 static
