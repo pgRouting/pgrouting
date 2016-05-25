@@ -6,7 +6,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer: 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2015 Rohith Reddy
 Mail: 
 
 ------
@@ -48,9 +48,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
 
-#include "./testXYedges_driver.h"
+#include "./test_c_edges_driver.h"
 
-PG_FUNCTION_INFO_V1(testXYedges);
+PG_FUNCTION_INFO_V1(test_c_edges);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
@@ -66,9 +66,9 @@ process( char* edges_sql,
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    Pgr_edge_xy_t *edges = NULL;
+    pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges_xy(edges_sql, &edges, &total_edges);
+    pgr_get_edges(edges_sql, &edges, &total_edges);
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
@@ -82,15 +82,15 @@ process( char* edges_sql,
     for (i = 0; i < total_edges; ++i) {
         PGR_DBG("id = %li \t source = %li \t target = %ld  cost = %lf reverse_cost = %lf",
                edges[i].id, edges[i].source, edges[i].target, edges[i].cost, edges[i].reverse_cost);
-        PGR_DBG("    (x1,y1) = (%.32lf ,%.32lf) (x2,y2) = (%.32lf,.%.32lf)",
-               edges[i].x1, edges[i].y1, edges[i].x2, edges[i].y2);
+        /*PGR_DBG("    (x1,y1) = (%.32lf ,%.32lf) (x2,y2) = (%.32lf,.%.32lf)",
+               edges[i].x1, edges[i].y1, edges[i].x2, edges[i].y2);*/
     }
 
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
     char *log_msg = NULL;
-    (*result_bool) = do_pgr_testXYedges(
+    (*result_bool) = do_pgr_test_c_edges(
             edges,
             total_edges,
             &log_msg,
@@ -117,7 +117,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-testXYedges(PG_FUNCTION_ARGS) {
+test_c_edges(PG_FUNCTION_ARGS) {
     bool  result_bool = NULL;
     process(
             pgr_text2char(PG_GETARG_TEXT_P(0)),

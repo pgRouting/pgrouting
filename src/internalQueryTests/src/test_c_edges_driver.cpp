@@ -6,7 +6,7 @@ Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer: 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2015 Rohith Reddy
 Mail: 
 
 ------
@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <iomanip>
 #include <vector>
-#include "./testXYedges_driver.h"
+#include "./test_c_edges_driver.h"
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -51,8 +51,8 @@ extern "C" {
   edges_sql TEXT
  ***********************************************************/
 bool
-do_pgr_testXYedges(
-        Pgr_edge_xy_t *data_edges,
+do_pgr_test_c_edges(
+        pgr_edge_t *data_edges,
         size_t total_edges,
         char ** log_msg,
         char ** err_msg){
@@ -62,8 +62,8 @@ do_pgr_testXYedges(
         pgassert(!(*log_msg));
         pgassert(!(*err_msg));
 
-        std::vector< Pgr_edge_xy_t > edges(data_edges, data_edges + total_edges);
-        auto vertices(pgRouting::extract_vertices(edges));
+        std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
+        std::vector < pgRouting::Vertex_c > vertices(pgRouting::extract_vertices(edges));
 
 
         log << "Original: \n" <<
@@ -72,15 +72,15 @@ do_pgr_testXYedges(
             log << "id = " << edge.id
                 << "\tsource = " << edge.source
                 << "\ttarget = " << edge.target
-                << "\tcost = " << edge.cost
-                << "\treverse_cost = " << edge.reverse_cost
-                << "\n\t(x1,y1) = (" << edge.x1 << "," << edge.y1 << ")"
-                << "\t(x2,y2) = (" << edge.x2 << "," << edge.y2 << ")\n";
+                << "\tcost = " << edge.cost;
+                //<< "\treverse_cost = " << edge.reverse_cost;
+                // << "\n\t(x1,y1) = (" << edge.x1 << "," << edge.y1 << ")"
+                // << "\t(x2,y2) = (" << edge.x2 << "," << edge.y2 << ")\n";
         }
 
         {
             log << "Testing Directed ,  insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(DIRECTED);
+            pgRouting::CDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -95,7 +95,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(DIRECTED);
+            pgRouting::CDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -110,7 +110,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(vertices, DIRECTED);
+            pgRouting::CDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -125,7 +125,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(vertices, DIRECTED);
+            pgRouting::CDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -141,7 +141,7 @@ do_pgr_testXYedges(
 
         {
             log << "Testing Undirected ,  insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(UNDIRECTED);
+            pgRouting::CDirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -156,7 +156,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(UNDIRECTED);
+            pgRouting::CDirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -171,7 +171,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Undirected ,  insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(UNDIRECTED);
+            pgRouting::CDirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -186,7 +186,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Undirected ,  creating with vertices, insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(vertices, UNDIRECTED);
+            pgRouting::CDirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
