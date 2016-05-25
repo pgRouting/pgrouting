@@ -1,12 +1,14 @@
-#include "./ch_vertex.h"
-namespace pgRouting
-{
+#include <algorithm>
 
+#include "./ch_vertex.h"
+
+namespace pgRouting {
+namespace contraction {
+
+#if 0
 const Removed_vertices& Vertex_c::removed_vertices() const { 
     return m_removed_vertices; 
 }
-
-
 
 std::string Vertex_c::type_str() const {
     return m_type.type_str();
@@ -14,6 +16,7 @@ std::string Vertex_c::type_str() const {
 
 void Vertex_c::add_contracted_vertex(Vertex_c v) {
 }
+#endif
 
 std::ostream& operator <<(std::ostream& os, const Vertex_c& v) {
     os << "{ id: " << v.id;// <<  ", type: " << v.type_str();
@@ -80,10 +83,12 @@ extract_vertices(
 
 std::vector < Vertex_c >
 extract_vertices(
-    const pgr_edge_t *data_edges, int64_t count) {
+    const pgr_edge_t *data_edges,
+    int64_t count) {
     return extract_vertices(
         std::vector < pgr_edge_t >( data_edges, data_edges + count)
         );
 }
 
-}
+}  // namespace contraction
+}  // namespace pgRouting

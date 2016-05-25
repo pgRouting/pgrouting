@@ -56,7 +56,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-testXYedges(PG_FUNCTION_ARGS);
+test_c_edges(PG_FUNCTION_ARGS);
 
 
 static
