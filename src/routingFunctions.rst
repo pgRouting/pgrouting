@@ -43,7 +43,11 @@ Routing Functions
 
   - :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
   - :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-  - :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+  - :ref:`tsp`
+
+    - :ref:`pgr_tsp<pgr_tsp>` - old signature
+    - :ref:`pgr_newTSP<pgr_newTSP>` - When input is a cost matrix.
+    - :ref:`pgr_eucledianTSP<pgr_eucledianTSP>` - When input are coordinates.
 
 
   - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
@@ -66,6 +70,7 @@ Routing Functions
     dijkstra/doc/dijkstra
     driving_distance/doc/drivingDistance
     ksp/doc/pgr_ksp
+    newTSP/doc/tsp
     tsp/doc/pgr_tsp
     trsp/doc/pgr_trsp
     withPoints/doc/withPoints
