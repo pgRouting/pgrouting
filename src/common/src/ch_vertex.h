@@ -8,7 +8,8 @@
 #include "../../contraction/src/contraction_type.hpp"
 #endif
 
-#include "pgr_types.h" 
+#include "pgr_types.h"
+#include "identifiers.hpp"
 namespace pgRouting {
 namespace contraction {
 
@@ -25,6 +26,7 @@ class Vertex {
         this->id = other.id;
     }
     void add_contracted_vertex(Vertex v);
+    const Identifiers<int64_t>& contracted_vertices() const;
     friend std::ostream& operator <<(std::ostream& os, const Vertex& v);
 #if 0    
     Vertex() : m_deleted(false) { }
@@ -34,12 +36,11 @@ class Vertex {
     inline void delete_vertex() { m_deleted = true; }
     inline void recover() { m_deleted = false; }
     inline void set_contraction_type(Contraction_type ctype) { m_type.set_type(ctype); }
-    const Removed_vertices& removed_vertices() const;
 #endif
  private:
+    Identifiers<int64_t> m_contracted_vertices;
 #if 0
     Contraction_type m_type;
-    Removed_vertices m_removed_vertices;
     bool m_deleted;
 #endif
 };

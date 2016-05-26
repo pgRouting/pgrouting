@@ -5,11 +5,12 @@
 namespace pgRouting {
 namespace contraction {
 
-#if 0
-const Removed_vertices& Vertex_c::removed_vertices() const { 
-    return m_removed_vertices; 
+
+const Identifiers<int64_t>& Vertex::contracted_vertices() const { 
+    return m_contracted_vertices; 
 }
 
+#if 0
 std::string Vertex_c::type_str() const {
     return m_type.type_str();
 }
