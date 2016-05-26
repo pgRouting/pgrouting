@@ -63,7 +63,7 @@ do_pgr_test_c_edges(
         pgassert(!(*err_msg));
 
         std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
-        std::vector < pgRouting::contraction::Vertex_c > vertices(pgRouting::contraction::extract_vertices(edges));
+        std::vector < pgRouting::contraction::Vertex > vertices(pgRouting::contraction::extract_vertices(edges));
 
 
         log << "Original: \n" <<

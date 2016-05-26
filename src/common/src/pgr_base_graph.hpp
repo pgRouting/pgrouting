@@ -261,14 +261,14 @@ boost::adjacency_list < boost::listS, boost::vecS,
 typedef typename graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
-    contraction::Vertex_c, Basic_edge >,
-    contraction::Vertex_c, Basic_edge > CUndirectedGraph;
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CUndirectedGraph;
 
 typedef typename graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
-    contraction::Vertex_c, Basic_edge >,
-    contraction::Vertex_c, Basic_edge > CDirectedGraph;
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CDirectedGraph;
 //@}
 
 namespace graph{

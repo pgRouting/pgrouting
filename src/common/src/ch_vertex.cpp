@@ -18,7 +18,7 @@ void Vertex_c::add_contracted_vertex(Vertex_c v) {
 }
 #endif
 
-std::ostream& operator <<(std::ostream& os, const Vertex_c& v) {
+std::ostream& operator <<(std::ostream& os, const Vertex& v) {
     os << "{ id: " << v.id;// <<  ", type: " << v.type_str();
     //os << ", isDeleted: " << v.isDeleted();
     /*os << " removed_vertices: {";
@@ -32,36 +32,36 @@ std::ostream& operator <<(std::ostream& os, const Vertex_c& v) {
 
 size_t
 check_vertices(
-    std::vector < Vertex_c > vertices) {
+    std::vector < Vertex > vertices) {
     auto count(vertices.size());
     std::stable_sort(
         vertices.begin(), vertices.end(),
-        [](const Vertex_c &lhs, const Vertex_c &rhs)
+        [](const Vertex &lhs, const Vertex &rhs)
         {return lhs.id < rhs.id;});
     vertices.erase(
         std::unique(
             vertices.begin(), vertices.end(),
-            [](const Vertex_c &lhs, const Vertex_c &rhs)
+            [](const Vertex &lhs, const Vertex &rhs)
             {return lhs.id == rhs.id;}), vertices.end()
         );
 
     return count - vertices.size();
 }
 
-std::vector < Vertex_c >
+std::vector < Vertex >
 extract_vertices(
     const std::vector <pgr_edge_t > &data_edges) {
 
-    std::vector< Vertex_c > vertices;
+    std::vector< Vertex > vertices;
     if (data_edges.empty()) return vertices;
 
     vertices.reserve(data_edges.size() * 2);
 
     for (const auto edge : data_edges) {
-        Vertex_c v_source(edge, true);
+        Vertex v_source(edge, true);
         vertices.push_back(v_source);
 
-        Vertex_c v_target(edge, false);
+        Vertex v_target(edge, false);
         vertices.push_back(v_target);
     }
 
@@ -70,18 +70,18 @@ extract_vertices(
      */
     std::stable_sort(
         vertices.begin(), vertices.end(),
-        [](const Vertex_c &lhs, const Vertex_c &rhs)
+        [](const Vertex &lhs, const Vertex &rhs)
         {return lhs.id < rhs.id;});
     vertices.erase(
         std::unique(
             vertices.begin(), vertices.end(),
-            [](const Vertex_c &lhs, const Vertex_c &rhs)
+            [](const Vertex &lhs, const Vertex &rhs)
             {return lhs.id == rhs.id;}), vertices.end()
         );
     return vertices;
 }
 
-std::vector < Vertex_c >
+std::vector < Vertex >
 extract_vertices(
     const pgr_edge_t *data_edges,
     int64_t count) {
