@@ -50,6 +50,7 @@
 static
 size_t
 rand(size_t n) {
+    pgassert(n > 0);
     return static_cast< size_t >(std::rand() % n);
 }
 
@@ -57,6 +58,7 @@ rand(size_t n) {
 static
 size_t
 succ(size_t i, size_t n) {
+    pgassert(n > 0);
     return static_cast<size_t>((i + 1) % n);
 }
 
@@ -400,15 +402,28 @@ TSP<MATRIX>::annealing(
                             auto first = std::rand() % n;
                             auto last = std::rand() % n;
 
+                            std::ostringstream err;
+                            err  << "\tfirst" << first
+                                << "\tlast" << last
+                                << "\tn" << n;
+
+                            if (first == last) last = succ(last, n);
                             if (first > last) std::swap(first, last);
-                            pgassert(first <= last);
-                            auto place = std::rand() % n;
+                            if (first == 0 && last == (n - 1)) first = succ(first, n);
 
-                            if (first <= place && place <= last) place = succ(last, n);
-                            if (place == first) first = succ(first, n);
+                            pgassertwm(first < last, err.str());
+                            pgassertwm((n - (last - first)) > 0, err.str());
+                            pgassertwm((n - (last - first) - 1) > 0, err.str());
+                            auto place = std::rand() % (n - (last - first) - 1);
+                            place = place < first? place: last + (place - first) + 1;
 
-                            pgassert(place < first || place > last);
+                            err << "place" << place;
 
+                            pgassertwm(place < first || place > last, err.str());
+                            pgassertwm(first < last, err.str());
+                            pgassertwm(last < n, err.str());
+                            pgassertwm(place < n, err.str());
+                            pgassertwm(first < n, err.str());
 
                             auto energyChange = getDeltaSlide(place, first, last);
 
