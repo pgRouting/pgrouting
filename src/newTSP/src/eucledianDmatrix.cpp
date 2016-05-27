@@ -18,20 +18,19 @@ namespace tsp {
 const std::vector<double>
 eucledianDmatrix::get_row(size_t i) const {
     std::vector<double> result;
-    size_t j(0);
-    for (auto coordinate : coordinates) {
+    for (size_t j = 0; j < result.size(); ++j) {
         if (i == j) result.push_back(0);
         else result.push_back(distance(i, j));
+        if (special_distance >= 0) {
+            if (row == i && column == j) {
+                result[column] = special_distance;
+            } else if (row == j && column == i) {
+                result[row] = special_distance;
+            }
+        }
     }
-    if (special_distance >= 0) {
-       if(row == i && column == j) {
-           result[j] = special_distance;
-       } else {
-           result[i] = special_distance;
-       }
-    }   
     return result;
-};
+}
 
 
 double

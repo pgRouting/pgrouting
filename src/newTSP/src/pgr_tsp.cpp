@@ -152,8 +152,12 @@ TSP<MATRIX>::greedyInitial(size_t idx_start) {
         tour_to_be.push_back(next_city);
         inserted.insert(next_city);
 
+#ifndef NDEBUG
         auto ps(pending.size());
+#endif
+
         pending.erase(next_city);
+
 #ifndef NDEBUG
         pgassert(pending.size() == (ps - 1));
 #endif

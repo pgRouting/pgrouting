@@ -203,7 +203,7 @@ if(WIN32)
   link_libraries(postgres)
 endif(WIN32)
 
-# TODO default compilation with -dNDEBUG 
+# TODO default compilation with -DNDEBUG 
 
 #compiler directives
 if(APPLE)
@@ -214,22 +214,22 @@ if(APPLE)
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
   endif()
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -frounding-math -Wno-deprecated")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -g -frounding-math -Wno-deprecated")
   else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -std=c++0x -g -Wno-deprecated")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -std=c++0x -g -Wno-deprecated")
   endif()
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -std=gnu99 -fPIC -g -Wall  -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 -fPIC -g -Wall  -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -g -Wall -O2 -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra  -frounding-math -Wno-deprecated")
 
     #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g  -frounding-math")
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
     # currently, support MinGW only
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2  -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2  -std=c++0x -frounding-math -Wno-deprecated")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2  -DBDEBUG -std=c++0x -frounding-math -Wno-deprecated")
 endif()
 
 # List variable to collect module SQL file names
