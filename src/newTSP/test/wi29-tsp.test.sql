@@ -71,8 +71,8 @@ SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$,
     max_consecutive_non_changes := 300
 );
 */
-SET client_min_messages TO DEBUG1;
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, randomize := false);
+SET client_min_messages TO NOTICE;
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, randomize := false);
 /*
 CREATE VIEW wi29_path AS
 WITH

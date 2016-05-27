@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #include "postgres.h"
 #include "executor/spi.h"
@@ -177,6 +177,18 @@ xyd_tsp(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /* 
            CREATE OR REPLACE FUNCTION pgr_xydtsp(
+    coordinates_sql TEXT,
+    start_id BIGINT DEFAULT -1,
+    end_id BIGINT DEFAULT -1,
+    max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
+    tries_per_temperature INTEGER DEFAULT 500,
+    max_changes_per_temperature INTEGER DEFAULT 60,
+    max_consecutive_non_changes INTEGER DEFAULT 200,
+    initial_temperature FLOAT DEFAULT 100,
+    final_temperature FLOAT DEFAULT 0.1,
+    cooling_factor FLOAT DEFAULT 0.9,
+    randomize BOOLEAN DEFAULT true,
+
            matrix_row_sql TEXT,
            randomize BOOLEAN DEFAULT true,
            start_id BIGINT DEFAULT -1,

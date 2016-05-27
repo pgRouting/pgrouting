@@ -1,3 +1,27 @@
+/*PGR-GNU*****************************************************************
+
+FILE: tour.h
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 #include <stdlib.h>
 #include <algorithm>
 #include <vector>
@@ -10,13 +34,11 @@ namespace tsp {
 
 
 class Tour {
-
  public:
-
      Tour(const Tour &) = default;
 
-     explicit Tour(const std::vector<size_t> &cities_order) : 
-         cities(cities_order){
+     explicit Tour(const std::vector<size_t> &cities_order) :
+         cities(cities_order) {
      }
 
      explicit Tour(size_t n) {
@@ -24,7 +46,7 @@ class Tour {
          std::iota(std::begin(cities), std::end(cities), 0);
      }
 
-     inline size_t size() const {return cities.size();};
+     inline size_t size() const {return cities.size();}
 
      friend double Dmatrix::tourCost(const Tour &tour) const;
 
@@ -44,7 +66,7 @@ class Tour {
       *
       * 0 1 6 7 2 3 4 5 8 9
       *
-      * uses std::reverse 
+      * uses std::reverse
       *
       * http://en.cppreference.com/w/cpp/algorithm/rotate
       *
@@ -119,7 +141,6 @@ class Tour {
 
  public:
      std::vector<size_t> cities;
-
 };
 
 }  // namespace tsp

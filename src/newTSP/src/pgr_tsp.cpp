@@ -107,16 +107,29 @@ TSP<MATRIX>::find_closest_city(
     invariant();
 
     auto distance_row(get_row(current_city));
+    pgassert(distance_row.size() == n);
+
+#ifndef NDEBUG
+    std::ostringstream err;
+    for (const auto &d : distance_row) {
+        err  << d << ", ";
+    }
+#endif
+
     size_t best_city = 0;
     auto best_distance = std::numeric_limits<double>::max();
+    bool found(false);
+
     for (size_t i = 0; i < distance_row.size(); ++i) {
         if (i == current_city) continue;
         if (inserted.find(i) != inserted.end()) continue;
         if (distance_row[i] <  best_distance) {
             best_city = i;
             best_distance = distance_row[i];
+            found = true;
         }
     }
+    pgassertwm(found, err.str());
 
     invariant();
     return best_city;
@@ -136,10 +149,12 @@ TSP<MATRIX>::greedyInitial(size_t idx_start) {
     auto current_city = idx_start;
 
 #ifndef NDEBUG
+    std::ostringstream err;
     auto ps(pending.size());
 #endif
 
     pending.erase(idx_start);
+
 #ifndef NDEBUG
     pgassert(pending.size() == (ps - 1));
 #endif
@@ -154,12 +169,20 @@ TSP<MATRIX>::greedyInitial(size_t idx_start) {
 
 #ifndef NDEBUG
         auto ps(pending.size());
+        err << "before";
+        for (const auto p: pending) {
+            err << p << ",";
+        }
 #endif
 
         pending.erase(next_city);
 
 #ifndef NDEBUG
-        pgassert(pending.size() == (ps - 1));
+        err << "\nafter deleting" << next_city << ":\t";
+        for (const auto p: pending) {
+            err << p << ",";
+        }
+        pgassertwm(pending.size() == (ps - 1), err.str());
 #endif
 
         current_city = next_city;
@@ -513,7 +536,7 @@ TSP<MATRIX>::annealing(
         if (time_limit < elapsed_time) {
             break;
         }
-        log << "total changes =" << temperature << " = " << pathchg 
+        log << "\ttotal changes =" << pathchg 
             << "\t" << enchg << " were because  delta energy < 0";
         if (pathchg == 0) break;   /* if no change then quit */
     } // for temperatures

@@ -125,8 +125,8 @@ do_pgr_eucledianTSP(
         }
 
         log << "\nBest cost reached = " << costs.tourCost(bestTour);
-        size_t istart = costs.get_index(start_vid);
-        auto start_ptr = std::find(bestTour.cities.begin(), bestTour.cities.end(), istart);
+
+        auto start_ptr = std::find(bestTour.cities.begin(), bestTour.cities.end(), idx_start);
         std::rotate(bestTour.cities.begin(), start_ptr, bestTour.cities.end());
 
         std::vector< General_path_element_t > result;

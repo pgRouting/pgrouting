@@ -35,10 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
+#include "fmgr.h"
 
 #define DEBUG
 
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
@@ -64,14 +64,16 @@ process(
         char* coordinates_sql,
         int64_t start_vid,
         int64_t end_vid,
-        bool randomize,
         double time_limit,
-        double initial_temperature,
-        double final_temperature,
-        double cooling_factor,
         int64_t tries_per_temperature,
         int64_t max_changes_per_temperature,
         int64_t max_consecutive_non_changes,
+
+        double initial_temperature,
+        double final_temperature,
+        double cooling_factor,
+
+        bool randomize,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -133,7 +135,7 @@ process(
             &err_msg);
     time_msg(" processing eucledianTSP", start_t, clock());
     if (log_msg) {
-        elog(DEBUG1, "%s", log_msg);
+        elog(NOTICE, "%s", log_msg);
         free(log_msg);
     }
     if (err_msg) {
@@ -176,32 +178,41 @@ eucledianTSP(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /* 
+
            CREATE OR REPLACE FUNCTION pgr_xydtsp(
-           coordinates_sql TEXT,  (has id,x,y)
+           coordinates_sql TEXT,
            start_id BIGINT DEFAULT -1,
            end_id BIGINT DEFAULT -1,
-           randomize BOOLEAN DEFAULT true,
-           time_limit FLOAT DEFAULT '+infinity'::FLOAT,
+
+           max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
+
+           tries_per_temperature INTEGER DEFAULT 500,
+           max_changes_per_temperature INTEGER DEFAULT 60,
+           max_consecutive_non_changes INTEGER DEFAULT 200,
+
            initial_temperature FLOAT DEFAULT 100,
            final_temperature FLOAT DEFAULT 0.1,
            cooling_factor FLOAT DEFAULT 0.9,
-           tries_per_temperature INTEGER DEFAULT 500,
-           max_changes_per_temperature INTEGER DEFAULT 60,
-           max_non_changes INTEGER DEFAULT 60
+
+           randomize BOOLEAN DEFAULT true,
            */
 
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
-                PG_GETARG_BOOL(3),
-                PG_GETARG_FLOAT8(4),
-                PG_GETARG_FLOAT8(5),
-                PG_GETARG_FLOAT8(6),
+
+                PG_GETARG_FLOAT8(3),
+
+                PG_GETARG_INT32(4),
+                PG_GETARG_INT32(5),
+                PG_GETARG_INT32(6),
+
                 PG_GETARG_FLOAT8(7),
-                PG_GETARG_INT32(8),
-                PG_GETARG_INT32(9),
-                PG_GETARG_INT32(10),
+                PG_GETARG_FLOAT8(8),
+                PG_GETARG_FLOAT8(9),
+
+                PG_GETARG_BOOL(10),
                 &result_tuples,
                 &result_count);
         /*                                                                    */
