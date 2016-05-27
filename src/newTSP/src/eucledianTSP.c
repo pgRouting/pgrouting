@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: xyz_tsp.c
+File: eucledianTSP.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #include "postgres.h"
 #include "executor/spi.h"
@@ -82,22 +82,22 @@ process(
      * errors in parameters
      */
     if (initial_temperature < final_temperature) {
-        elog(ERROR, "Illegal: initial_temperature < final_temperature");
+        elog(ERROR, "Condition not met: initial_temperature > final_temperature");
     }
-    if (final_temperature < 0) {
-        elog(ERROR, "Illegal: final_temperature < 0");
+    if (final_temperature <= 0) {
+        elog(ERROR, "Condition not met: final_temperature > 0");
     }
     if (cooling_factor <=0 || cooling_factor >=1) {
-        elog(ERROR, "Illegal: cooling_factor <=0 || cooling_factor >=1");
+        elog(ERROR, "Condition not met: 0 < cooling_factor < 1");
     }
     if (max_changes_per_temperature  < 1) {
-        elog(ERROR, "Illegal value for max_changes_per_temperature");
+        elog(ERROR, "Condition not met: max_changes_per_temperature > 0");
     }
     if (max_consecutive_non_changes < 1) {
-        elog(ERROR, "Illegal value for max_consecutive_non_changes");
+        elog(ERROR, "Condition not met: max_consecutive_non_changes > 0");
     }
     if (time_limit < 0) {
-        elog(ERROR, "Illegal value for time_limit");
+        elog(ERROR, "Condition not met: max_processing_time >= 0");
     }
 
 

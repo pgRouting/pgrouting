@@ -1,14 +1,40 @@
+/*PGR-GNU*****************************************************************
+
+FILE: Dmatrix.cpp
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
+#include "./Dmatrix.h"
 
 #include <algorithm>
+#include <limits>
 #include <vector>
+
 #include "../../common/src/pgr_assert.h"
 
-#include "./Dmatrix.h"
 #include "./tour.h"
 
 namespace pgRouting {
@@ -56,7 +82,7 @@ Dmatrix::get_index(int64_t id) const {
 }
 
 int64_t
-Dmatrix::get_id(size_t id) const{
+Dmatrix::get_id(size_t id) const {
     return ids[id];
 }
 
@@ -112,7 +138,7 @@ Dmatrix::obeys_triangle_inequality() const {
 }
 
 bool
-Dmatrix::is_symetric() const{
+Dmatrix::is_symetric() const {
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
             if (costs[i][j] != costs[j][i]) return false;
@@ -122,7 +148,7 @@ Dmatrix::is_symetric() const{
 }
 
 
-std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix){
+std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
     for (const auto id : matrix.ids) {
         log << "\t" << id;
     }
@@ -133,7 +159,8 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix){
         for (const auto cost : row) {
             log << "(" << i << "," << j << ")"
                 << "\t(" << matrix.ids[i] << "," << matrix.ids[j] << ")"
-                << "\t(" << matrix.get_index(matrix.ids[i]) << "," << matrix.get_index(matrix.ids[j]) << ")"
+                << "\t(" << matrix.get_index(matrix.ids[i])
+                << "," << matrix.get_index(matrix.ids[j]) << ")"
                 << "\t = " << cost
                 << "\t = " << matrix.costs[i][j]
                 << "\t = " << matrix.costs[j][i] << "\n";
@@ -144,8 +171,10 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix){
     for (size_t i = 0; i < matrix.costs.size(); ++i) {
         for (size_t j = 0; j < matrix.costs.size(); ++j) {
             for (size_t k = 0; k < matrix.costs.size(); ++k) {
-                log << matrix.costs[i][k] << " <= (" << matrix.costs[i][j] << " + "  << matrix.costs[j][k] << ")"
-                    << (matrix.costs[i][k] <= (matrix.costs[i][j] + matrix.costs[j][k])) << "\n";
+                log << matrix.costs[i][k] << " <= ("
+                    << matrix.costs[i][j] << " + "  << matrix.costs[j][k] << ")"
+                    << (matrix.costs[i][k] <= (matrix.costs[i][j] + matrix.costs[j][k]))
+                    << "\n";
             }
         }
     }

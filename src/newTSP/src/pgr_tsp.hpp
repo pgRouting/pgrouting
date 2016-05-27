@@ -31,6 +31,7 @@
 #include <sstream>
 #include <vector>
 #include <set>
+#include <string>
 
 #include "../../common/src/pgr_types.h"
 #include "../../common/src/pgr_assert.h"
@@ -62,8 +63,7 @@ class TSP: public MATRIX {
          swap_count(0),
          slide_count(0),
          reverse_count(0),
-         improve_count(0)
-          {
+         improve_count(0) {
              pgassert(n == MATRIX::size());
              bestCost = MATRIX::tourCost(best_tour);
              current_cost = MATRIX::tourCost(current_tour);
@@ -71,7 +71,8 @@ class TSP: public MATRIX {
          }
 
 
-     Tour get_tour() const {return best_tour;};
+     Tour get_tour() const {return best_tour;}
+
      std::string get_stats() const {
          std::ostringstream log1;
          log1
@@ -79,9 +80,10 @@ class TSP: public MATRIX {
              << "\nTotal slides: " << slide_count
              << "\nTotal reverses: " << reverse_count
              << "\nTimes best tour changed: " << improve_count;
-         return log1.str();};
+         return log1.str();}
+
      std::string get_log() const {
-         return log.str();};
+         return log.str();}
 
      void greedyInitial(size_t idx_start = 0);
      void annealing(
@@ -92,8 +94,7 @@ class TSP: public MATRIX {
              int64_t max_changes_per_temperature,
              int64_t max_consecutive_non_changes,
              bool randomize,
-             double time_limit
-             );
+             double time_limit);
 
 
  private:
@@ -135,7 +136,6 @@ class TSP: public MATRIX {
              size_t posC) const;
 
      void update_if_best();
-
 };
 
 }  // namespace tsp

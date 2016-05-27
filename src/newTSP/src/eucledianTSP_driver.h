@@ -36,7 +36,7 @@ extern "C" {
 
 #include "../../common/src/pgr_types.h"
 
-int 
+void
 do_pgr_eucledianTSP(
         Coordinate_t *coordinates, size_t total_coordinates,
         int64_t start_vid,
@@ -59,4 +59,3 @@ do_pgr_eucledianTSP(
 #ifdef __cplusplus
 }
 #endif
-

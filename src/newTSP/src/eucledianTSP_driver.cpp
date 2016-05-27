@@ -33,8 +33,8 @@
 #endif
 
 
-#include <sstream>
 #include <string.h>
+#include <sstream>
 #include <vector>
 #include <algorithm>
 
@@ -51,7 +51,7 @@
 
 typedef std::vector< int64_t > Ids;
 
-int
+void
 do_pgr_eucledianTSP(
         Coordinate_t *coordinates_data,
         size_t total_coordinates,
@@ -69,14 +69,15 @@ do_pgr_eucledianTSP(
 
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char **log_msg, 
+        char **log_msg,
         char **err_msg) {
     std::ostringstream err;
     std::ostringstream log;
 
     try {
-
-        std::vector< Coordinate_t > coordinates(coordinates_data, coordinates_data + total_coordinates);
+        std::vector< Coordinate_t > coordinates(
+                coordinates_data,
+                coordinates_data + total_coordinates);
 
         pgRouting::tsp::eucledianDmatrix costs(coordinates);
 
@@ -91,14 +92,10 @@ do_pgr_eucledianTSP(
 
 
 
-        /* initialize tsp struct */
         log << "Initializing tsp class --->";
         pgRouting::tsp::TSP<pgRouting::tsp::eucledianDmatrix> tsp(costs);
 
 
-        /*
-         * Initial solution
-         */
         log << "tsp.greedyInitial --->";
         tsp.greedyInitial(idx_start);
 
@@ -126,8 +123,15 @@ do_pgr_eucledianTSP(
 
         log << "\nBest cost reached = " << costs.tourCost(bestTour);
 
-        auto start_ptr = std::find(bestTour.cities.begin(), bestTour.cities.end(), idx_start);
-        std::rotate(bestTour.cities.begin(), start_ptr, bestTour.cities.end());
+        auto start_ptr = std::find(
+                bestTour.cities.begin(),
+                bestTour.cities.end(),
+                idx_start);
+
+        std::rotate(
+                bestTour.cities.begin(),
+                start_ptr,
+                bestTour.cities.end());
 
         std::vector< General_path_element_t > result;
         result.reserve(bestTour.cities.size() + 1);
@@ -145,8 +149,9 @@ do_pgr_eucledianTSP(
             result.push_back(data);
             prev_id = id;
         }
+
+        /* inserting the returning to starting point */
         {
-            /* inserting the returning to starting point */
             General_path_element_t data;
             data.node = costs.get_id(bestTour.cities.front());
             data.edge = bestTour.cities.front();
@@ -160,9 +165,8 @@ do_pgr_eucledianTSP(
         *return_count = bestTour.size() + 1;
         (*return_tuples) = pgr_alloc(result.size(), (*return_tuples));
 
-        //store the results
+        /* store the results */
         int seq = 0;
-        if (end_vid == -1) {};
         for (const auto &row : result) {
             (*return_tuples)[seq] = row;
             ++seq;
@@ -170,7 +174,7 @@ do_pgr_eucledianTSP(
 
         *log_msg = strdup(log.str().c_str());
         (*err_msg) = NULL;
-        return 0;
+        return;
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
@@ -190,8 +194,6 @@ do_pgr_eucledianTSP(
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     }
-    return 1000;
-
 }
 
 

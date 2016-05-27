@@ -73,6 +73,7 @@ SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$,
 */
 SET client_min_messages TO NOTICE;
 SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, randomize := false);
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, 25, randomize := false);
 /*
 CREATE VIEW wi29_path AS
 WITH

@@ -30,20 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "../../common/src/pgr_assert.h"
 
 
-#if 0
-static
-size_t
-succ(size_t i, size_t n) {
-        return static_cast<size_t>((i + 1) % n);
-}
-#endif
-
 namespace pgRouting {
 namespace tsp {
-
-
-
-
 
 void Tour::reverse(
         size_t c1,

@@ -32,18 +32,18 @@
 #include <windows.h>
 #endif
 
+#include "./pgr_tsp.hpp"
 
+#include <time.h>
 
 #include <iomanip>
 #include <limits>
 #include <vector>
 #include <set>
 #include <algorithm>
-#include <time.h>
 
 #include "../../common/src/pgr_types.h"
 #include "../../common/src/pgr_assert.h"
-#include "./pgr_tsp.hpp"
 
 
 
@@ -170,7 +170,7 @@ TSP<MATRIX>::greedyInitial(size_t idx_start) {
 #ifndef NDEBUG
         auto ps(pending.size());
         err << "before";
-        for (const auto p: pending) {
+        for (const auto p : pending) {
             err << p << ",";
         }
 #endif
@@ -179,7 +179,7 @@ TSP<MATRIX>::greedyInitial(size_t idx_start) {
 
 #ifndef NDEBUG
         err << "\nafter deleting" << next_city << ":\t";
-        for (const auto p: pending) {
+        for (const auto p : pending) {
             err << p << ",";
         }
         pgassertwm(pending.size() == (ps - 1), err.str());
@@ -215,12 +215,12 @@ TSP<MATRIX>::greedyInitial(size_t idx_start) {
  *
  * 0 1 6 7 2 3 4 5 8 9
  *
- * 
+ *
  */
 
 template < typename MATRIX >
 double
-TSP<MATRIX>::getDeltaSlide(size_t place, size_t first, size_t last) const{
+TSP<MATRIX>::getDeltaSlide(size_t place, size_t first, size_t last) const {
     invariant();
 #ifndef NDEBUG
     std::ostringstream err;
@@ -236,7 +236,7 @@ TSP<MATRIX>::getDeltaSlide(size_t place, size_t first, size_t last) const{
     pgassertwm(place < n, err.str());
     pgassertwm(first < n, err.str());
 
-    /* 
+    /*
      * Initial state
      * [...f] [f+1 ... l] [l+1 ...p] [p+1 ...]
      *
@@ -253,7 +253,7 @@ TSP<MATRIX>::getDeltaSlide(size_t place, size_t first, size_t last) const{
      *               [f+1 ... l]
      *                :       :
      * [...f] [l+1 ...p]   [p+1 ...]
-     * 
+     *
      */
 
     auto cityP = current_tour.cities[place];
@@ -263,8 +263,13 @@ TSP<MATRIX>::getDeltaSlide(size_t place, size_t first, size_t last) const{
     auto cityF1 = current_tour.cities[succ(first, n)];
     auto cityL1 = current_tour.cities[succ(last, n)];
 
-    auto delta(distance(cityF, cityL1) + distance(cityP, cityF1) + distance(cityL, cityP1)
-            - distance(cityF, cityF1) - distance(cityL, cityL1)  - distance(cityP, cityP1));
+    auto delta(
+            distance(cityF, cityL1)
+            + distance(cityP, cityF1)
+            + distance(cityL, cityP1)
+            - distance(cityF, cityF1)
+            - distance(cityL, cityL1)
+            - distance(cityP, cityP1));
 
 #ifndef NDEBUG
     Tour new_tour(current_tour);
@@ -283,7 +288,7 @@ TSP<MATRIX>::getDeltaSlide(size_t place, size_t first, size_t last) const{
     auto exactDelta = tourCost(new_tour) - tourCost(current_tour);
     err << "\n"
         << exactDelta
-        << " - " <<  delta 
+        << " - " <<  delta
         << " = "
         << exactDelta - delta
         << " = "
@@ -317,7 +322,7 @@ TSP<MATRIX>::getDeltaSwap(size_t posA, size_t posE) const {
 
         auto e = current_tour.cities[posE];
         auto f = current_tour.cities[succ(posE, n)];
-        return distance(b,e) + distance(e,a) + distance(a, f)
+        return distance(b, e) + distance(e, a) + distance(a, f)
             - distance(b, a) - distance(a, e)  - distance(e, f);
     }
 
@@ -331,13 +336,13 @@ TSP<MATRIX>::getDeltaSwap(size_t posA, size_t posE) const {
 
 #ifndef NDEBUG
     auto delta = distance(b, e) + distance(e, c) + distance(d, a) + distance(a, f)
-        - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f) ;
+        - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f);
     auto new_tour(current_tour);
     new_tour.swap(posA, posE);
     auto exactDelta = tourCost(new_tour) - tourCost(current_tour);
     std::ostringstream log;
     log << exactDelta
-        << " - " <<  delta 
+        << " - " <<  delta
         << " = "
         << exactDelta - delta
         << " = "
@@ -348,7 +353,7 @@ TSP<MATRIX>::getDeltaSwap(size_t posA, size_t posE) const {
 
     invariant();
     return  distance(b, e) + distance(e, c) + distance(d, a) + distance(a, f)
-        - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f) ;
+        - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f);
 }
 
 /*
@@ -378,7 +383,7 @@ TSP<MATRIX>::getDeltaReverse(size_t posA, size_t posC) const {
 
     std::ostringstream log;
     log << "exactDelta(" << exactDelta
-        << ") - delta(" <<  delta 
+        << ") - delta(" <<  delta
         << ") = "
         << exactDelta - delta
         << " = "
@@ -476,14 +481,13 @@ TSP<MATRIX>::annealing(
 
                             if ( (energyChange < 0 && epsilon < std::fabs(energyChange))
                                     || (0 < energyChange
-                                        &&  ((double)std::rand() / (double)RAND_MAX)  < exp(-energyChange / temperature))
-                               ) {
+                                        &&  (static_cast<double>(std::rand()) / static_cast<double>(RAND_MAX))  < exp(-energyChange / temperature))) {
                                 if (energyChange < 0) ++enchg;
                                 ++reverse_count;
                                 ++pathchg;
                                 non_change = 0;
                                 current_cost += energyChange;
-                                current_tour.reverse(c1,c2);
+                                current_tour.reverse(c1, c2);
                                 update_if_best();
                             }
                         }
@@ -497,11 +501,14 @@ TSP<MATRIX>::annealing(
 
                             if (first == last) last = succ(last, n);
                             if (first > last) std::swap(first, last);
-                            if (first == 0 && last == (n - 1)) first = succ(first, n);
+                            if (first == 0 && last == (n - 1)) {
+                                first = succ(first, n);
+                            }
 
                             pgassert((n - (last - first) - 1) > 0);
                             auto place = std::rand() % (n - (last - first) - 1);
-                            place = place < first? place: last + (place - first) + 1;
+                            place = place < first?  place :
+                                last + (place - first) + 1;
 
 
                             pgassert((place < first || place > last) && (first < last));
@@ -510,7 +517,7 @@ TSP<MATRIX>::annealing(
 
                             if ((energyChange < 0 && epsilon < std::fabs(energyChange))
                                     || (0 < energyChange
-                                        &&  ((double)std::rand() / (double)RAND_MAX)  < exp(-energyChange / temperature))) {
+                                        &&  (static_cast<double>(std::rand()) / static_cast<double>(RAND_MAX))  < exp(-energyChange / temperature))) {
                                 if (energyChange < 0) ++enchg;
                                 ++slide_count;
                                 ++pathchg;
@@ -527,19 +534,19 @@ TSP<MATRIX>::annealing(
             if (max_changes_per_temperature < pathchg
                     && max_consecutive_non_changes < non_change ) {
                 break;
-            } 
-        } // for tries per temperature
+            }
+        }  // for tries per temperature
 
         swapClimb();
         clock_t current_time(clock());
-        double elapsed_time = (double)(current_time - start_time) / CLOCKS_PER_SEC;
+        double elapsed_time = static_cast<double>(current_time - start_time) / CLOCKS_PER_SEC;
         if (time_limit < elapsed_time) {
             break;
         }
-        log << "\ttotal changes =" << pathchg 
+        log << "\ttotal changes =" << pathchg
             << "\t" << enchg << " were because  delta energy < 0";
         if (pathchg == 0) break;   /* if no change then quit */
-    } // for temperatures
+    }  // for temperatures
 }
 
 }  // namespace tsp
