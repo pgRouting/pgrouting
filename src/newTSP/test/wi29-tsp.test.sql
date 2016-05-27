@@ -47,7 +47,7 @@ COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE wi29 SET the_geom = ST_makePoint(x,y);
-
+/*
 SELECT * FROM pgr_xydtsp($$select * FROM pgr_eucledianDmatrix('wi29'::regclass)$$, true);
 
 SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$ );
@@ -61,7 +61,6 @@ SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$,
     tries_per_temperature := 0,
     max_changes_per_temperature := 1
 );
-
 SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 
     randomize := true,
     initial_temperature :=  100,
@@ -71,8 +70,9 @@ SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$,
     max_changes_per_temperature := 100,
     max_consecutive_non_changes := 300
 );
+*/
 SET client_min_messages TO DEBUG1;
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$);
+SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, randomize := false);
 /*
 CREATE VIEW wi29_path AS
 WITH

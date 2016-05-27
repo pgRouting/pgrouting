@@ -1,0 +1,55 @@
+NOTICE:  table "wi29" does not exist, skipping
+DEBUG:  Elapsed time for  reading coordinates:: 0.000085sec = (13192.000000 - 13107.000000) / CLOCKS_PER_SEC 
+DEBUG:  Elapsed time for  processing eucledianTSP: 0.050219sec = (63432.000000 - 13213.000000) / CLOCKS_PER_SEC 
+DEBUG:  Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
+
+Cycle(100) total changes =100 = 14    11 were because  delta energy < 0
+Cycle(90) total changes =90 = 7       6 were because  delta energy < 0
+Cycle(81) total changes =81 = 5       2 were because  delta energy < 0
+Cycle(72.9) total changes =72.9 = 5   2 were because  delta energy < 0
+Cycle(65.61) total changes =65.61 = 2 1 were because  delta energy < 0
+Cycle(59.049) total changes =59.049 = 6       3 were because  delta energy < 0
+Cycle(53.1441) total changes =53.1441 = 4     2 were because  delta energy < 0
+Cycle(47.8297) total changes =47.8297 = 1     0 were because  delta energy < 0
+Cycle(43.0467) total changes =43.0467 = 1     0 were because  delta energy < 0
+Cycle(38.742) total changes =38.742 = 2       1 were because  delta energy < 0
+Cycle(34.8678) total changes =34.8678 = 3     1 were because  delta energy < 0
+Cycle(31.3811) total changes =31.3811 = 1     0 were because  delta energy < 0
+Cycle(28.243) total changes =28.243 = 1       0 were because  delta energy < 0
+Cycle(25.4187) total changes =25.4187 = 2     1 were because  delta energy < 0
+Cycle(22.8768) total changes =22.8768 = 0     0 were because  delta energy < 0
+Total swaps: 33
+Total slides: 23
+Total reverses: 31
+Times best tour changed: 49
+Best cost reached = 28189.8
+1|1|0|0
+2|2|74.535614157127|74.535614157127
+3|6|900.617093380362|975.152707537489
+4|10|2113.77757765045|3088.93028518793
+5|11|106.718669615254|3195.64895480319
+6|15|2824.10256502447|6019.75151982766
+7|19|772.082339448903|6791.83385927656
+8|18|432.691873944705|7224.52573322126
+9|22|663.008794943808|7887.53452816507
+10|23|220.141999627513|8107.67652779259
+11|21|197.926372783442|8305.60290057603
+12|29|440.456596290771|8746.0594968668
+13|28|592.939989005405|9338.9994858722
+14|26|648.288376333318|9987.28786220552
+15|25|1333.3333|11320.6211622055
+16|27|74.535658878487|11395.156821084
+17|24|559.016994374947|11954.173815459
+18|16|1243.87392358622|13198.0477390452
+19|20|1274.64587544062|14472.6936144858
+20|17|1173.07768521763|15645.7712997034
+21|14|1202.91366735569|16848.6849670591
+22|13|1321.76283931305|18170.4478063722
+23|12|1314.23824873744|19484.6860551096
+24|8|1320.77417785513|20805.4602329647
+25|9|1586.48805192125|22391.948284886
+26|7|650.85409697993|23042.8023818659
+27|3|891.004385199336|23933.8067670652
+28|4|1172.36699411442|25106.1737611797
+29|5|816.6667|25922.8404611797
+30|1|2266.91173136004|28189.7521925397
