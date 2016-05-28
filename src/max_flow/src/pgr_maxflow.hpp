@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
+#include <boost/graph/push_relabel_max_flow.hpp>
 
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
@@ -518,7 +518,7 @@ Pgr_dijkstra< G >::drivingDistance(
     }
 
     auto v_source(graph.get_V(start_vertex));;
-    dijkstra_1_to_distance(graph, v_source, distance); 
+    dijkstra_1_to_distance(graph, v_source, distance);
     get_nodesInDistance(graph, path, v_source, distance);
     std::sort(path.begin(), path.end(),
             [](const Path_t &l, const  Path_t &r)
@@ -587,7 +587,7 @@ Pgr_dijkstra< G >::dijkstra(
     auto v_source(graph.get_V(start_vertex));
 
     std::set< V > s_v_targets;
-    for (const auto &vertex : end_vertex) {    
+    for (const auto &vertex : end_vertex) {
         if (graph.has_vertex(vertex)) {
             s_v_targets.insert(graph.get_V(vertex));
         }

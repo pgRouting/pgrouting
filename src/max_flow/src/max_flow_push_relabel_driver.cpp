@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-#include "./pgr_dijkstra.hpp"
+#include "pgr_maxflow.hpp"
 #include "max_flow_push_relabel.h"
 
 //#define DEBUG
@@ -55,9 +55,10 @@ do_pgr_max_flow_push_relabel(
         pgr_flow_t **return_tuples,
         size_t *return_count,
         char ** err_msg) {
+
   std::ostringstream log;
+
   try {
-      graphType gType = directed? DIRECTED: UNDIRECTED;
 
       Path path;
 

@@ -124,7 +124,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-one_to_one_dijkstra(PG_FUNCTION_ARGS) {
+max_flow_push_relabel(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
     uint32_t               max_calls;

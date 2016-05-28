@@ -53,5 +53,5 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
     OUT reverse_flow integer
     )
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_push_relabel'
     LANGUAGE c IMMUTABLE STRICT;
