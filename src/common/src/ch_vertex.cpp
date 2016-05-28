@@ -20,13 +20,16 @@ void Vertex_c::add_contracted_vertex(Vertex_c v) {
 #endif
 
 std::ostream& operator <<(std::ostream& os, const Vertex& v) {
-    os << "{ id: " << v.id;// <<  ", type: " << v.type_str();
+    os << "{\n    id: " << v.id << ",\n";
+    os << "    contracted vertices: ";
+    os << v.contracted_vertices();
+    // <<  ", type: " << v.type_str();
     //os << ", isDeleted: " << v.isDeleted();
     /*os << " removed_vertices: {";
     for (auto removed_vertex : v.removed_vertices().ids()) {
         os << removed_vertex << ", ";
-    }
-    os << "} }";*/
+    }*/
+    os << "\n}";
     os << "\n";
     return os;
 }

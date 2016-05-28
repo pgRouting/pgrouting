@@ -47,6 +47,7 @@ extern "C" {
 #include "./../../common/src/pgr_base_graph.hpp"
 #include "./../../common/src/pgr_assert.h"
 
+
 /************************************************************
   edges_sql TEXT
  ***********************************************************/
@@ -197,6 +198,46 @@ do_pgr_test_c_edges(
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
 
+        }
+
+        {
+            log << "Testing Identifiers, creating with vertices, insertion using vector\n";
+            log << "  - Created graph:\n";
+            pgRouting::CDirectedGraph graph(vertices, UNDIRECTED);
+            log << "  - Inserting Edges:\n";
+            graph.graph_insert_data(edges);
+            log << "  - All vertices:\n";
+            Identifiers<int64_t> all_vertices, contracted_vertices, remaining_vertices;
+            for (const auto vertex: vertices) {
+                all_vertices.insert(graph.get_V(vertex.id));
+                //log << vertex;
+            }
+            log << "    " << all_vertices;
+            log << "\n";
+            log << "  - Contracted vertices:\n";
+            /*
+             1, 7, 8, 13, 14, 16
+            */
+            contracted_vertices.insert(graph.get_V(1));
+            contracted_vertices.insert(graph.get_V(7));
+            contracted_vertices.insert(graph.get_V(8));
+            contracted_vertices.insert(graph.get_V(13));
+            contracted_vertices.insert(graph.get_V(14));
+            contracted_vertices.insert(graph.get_V(16));
+            log << "    " << contracted_vertices;
+            log << "\n";
+            log << "  - Remaining vertices:\n";
+            remaining_vertices = all_vertices - contracted_vertices;
+            log << "    " << remaining_vertices;
+            log << "\n";
+            #if 0
+            
+            Pgr_contract<pgRouting::CDirectedGraph>  contractor;
+            contractor.getDeadEndSet(graph);
+            log << "  - Dead end vertices:\n";
+            contractor.print_dead_end_vertices(log);
+
+            #endif
         }
 
 
