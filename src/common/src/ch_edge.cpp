@@ -1,5 +1,16 @@
-#include "./edge.h"
-
+#include "./ch_edge.h"
+namespace pgRouting
+{
+void Edge_c::cp_members(const Edge_c &other) {
+        this->id = other.id;
+        this->cost = other.cost;
+        //this.set_edge_type(other.type());
+    }
+void Edge_c::cp_members(const Basic_edge &other) {
+        this->id = other.id;
+        this->cost = other.cost;
+        //this.set_edge_type(other.type());
+    }
 
 const Removed_vertices& Edge_c::removed_vertices() const { 
     return m_removed_vertices; 
@@ -21,14 +32,15 @@ const std::string Edge_c::type_str() const {
 }
 
 
-std::ostringstream& operator <<(std::ostringstream& os, const Edge_c& e) {
+std::ostream& operator <<(std::ostream& os, const Edge_c& e) {
     os << "{ id: " << e.id; //<< ", type: " << e.type_str();
     //os << ", isDeleted: " << e.isDeleted();
-    os << ", removed_vertices: {";
+    /*os << ", removed_vertices: {";
     for (auto removed_vertex : e.removed_vertices().ids()) {
         os << removed_vertex << ", ";
     }
-    os << "} }";
+    os << "} }";*/
     os << '\n';
     return os;
+}
 }

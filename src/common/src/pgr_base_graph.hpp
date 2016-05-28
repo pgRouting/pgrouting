@@ -44,10 +44,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <limits>
 
+#include "./pgr_types.h" // for pgr_edge_t 
+
+#include "./ch_vertex.h"
 #include "./basic_vertex.h"
 #include "./xy_vertex.h"
+
 #include "./basic_edge.h"
-#include "./pgr_types.h" // for pgr_edge_t 
+//#include "../../contraction/src/edge.h"
+
 #include "./pgr_assert.h"
 
 /*! @brief boost::graph simplified to pgRouting needs
@@ -251,6 +256,19 @@ boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
+
+// TODO (Rohith) add this to the comment above
+typedef typename graph::Pgr_base_graph <
+boost::adjacency_list < boost::listS, boost::vecS,
+    boost::undirectedS,
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CUndirectedGraph;
+
+typedef typename graph::Pgr_base_graph <
+boost::adjacency_list < boost::listS, boost::vecS,
+    boost::bidirectionalS,
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CDirectedGraph;
 //@}
 
 namespace graph{
@@ -335,8 +353,9 @@ class Pgr_base_graph {
          m_gType(gtype) {
              pgassert(boost::num_vertices(graph) == num_vertices());
              pgassert(boost::num_vertices(graph) == vertices.size());
+#if 0
              pgassert(pgRouting::check_vertices(vertices) == 0);
-
+#endif
              size_t i = 0;
              for (auto vi = boost::vertices(graph).first; vi != boost::vertices(graph).second; ++vi) {
                  vertices_map[vertices[i].id] = (*vi);
@@ -368,7 +387,6 @@ class Pgr_base_graph {
          void graph_insert_data(const T *edges, int64_t count) {
              graph_insert_data(std::vector < T >(edges, edges + count));
          }
-
      /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
 
         The set of edges should not have an illegal vertex defined
@@ -389,17 +407,10 @@ class Pgr_base_graph {
       */
      template < typename T >
          void graph_insert_data(const std::vector < T > &edges) {
-             if (num_vertices()==0) {
-                 auto vertices = pgRouting::extract_vertices(edges);
-                 pgassert(pgRouting::check_vertices(vertices) == 0);
-                 add_vertices(vertices);
-             }
-
              for (const auto edge : edges) {
                  graph_add_edge(edge);
              }
          }
-
      //@}
 
     private:

@@ -30,7 +30,7 @@ class Identifiers {
     Identifiers<T>& operator *=(const Identifiers<T> &other);
     Identifiers<T>& operator -=(const Identifiers<T> &other);
     template<T>
-    friend std::ostringstream& operator << (std::ostringstream& os, const Identifiers<T>& identifiers);
+    friend std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers);
  private:
     std::set<T> m_ids;
 };
@@ -304,8 +304,8 @@ Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
 
 //! \brief Prints the set of identifiers
 template <typename T>
-std::ostringstream& operator << (std::ostringstream& os, const Identifiers<T>& identifiers) {
-    os << "Set : {";
+std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) {
+    os << "{";
     for (auto identifier : identifiers.ids()) {
         os << identifier << ", ";
     }

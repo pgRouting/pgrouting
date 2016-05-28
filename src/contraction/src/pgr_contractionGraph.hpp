@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./structs.h"
 
 
-#include "./vertex.h"
-#include "./edge.h"
+#include "../../common/src/ch_vertex.h"
+#include "../../common/src/edge.h"
 #include "./contraction_type.hpp"
 /*! \brief boost::graph simplified to pgRouting needs
 
