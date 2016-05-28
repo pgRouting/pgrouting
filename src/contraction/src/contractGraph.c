@@ -44,8 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
+// #define DEBUG 1
 #include "fmgr.h"
-#define DEBUG 1
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
@@ -81,9 +81,10 @@ process(char* edges_sql,
     pgr_SPI_connect();
 
     //PGR_DBG("Load data");
+#ifdef DEBUG
     pgr_edge_t *edges = NULL;
     int64_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    //pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
     //PGR_DBG("finished Loading");
 
     if (total_tuples == 0) {
@@ -114,6 +115,7 @@ process(char* edges_sql,
 
     free(err_msg);
     pfree(edges);
+#endif
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -170,6 +172,7 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
 
+#ifdef DEBUG
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 forbidden_vertices,
@@ -180,6 +183,7 @@ contractGraph(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
+#endif
 
         /*                                                                             */
         /*******************************************************************************/

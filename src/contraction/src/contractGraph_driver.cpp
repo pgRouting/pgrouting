@@ -34,20 +34,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
+//#define DEBUG 0
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <string.h>
 #include "./contractGraph_driver.h"
-#include "./pgr_contract.hpp"
 
+#ifdef DEBUG
+#include "./pgr_contract.hpp"
+#endif
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 #include "./structs.h"
 }
 
-#include "./../../common/src/memory_func.hpp"
-#define DEBUG 1
+#include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/debug_macro.h"
 
 
@@ -87,6 +90,7 @@ do_pgr_contractGraph(
         for (size_t i = 0; i < size_contraction_order; ++i) {
             log << contraction_order[i] << ", ";
             // pgassert((contraction_order[i] >=0) && (contraction_order[i] < static_cast<int>(contraction_type_count)));
+            #ifdef DEBUG
             if (!is_valid_contraction_number(contraction_order[i])) {
                 log << "Error: Enter a valid Contraction Type\n";
                 (*return_tuples) = NULL;
@@ -95,6 +99,7 @@ do_pgr_contractGraph(
                 return;
             }
             log << "\n";
+            #endif
         }
         log << " }\n";
 
@@ -127,10 +132,9 @@ do_pgr_contractGraph(
         }
         if (directed) {
             log << "Working with directed Graph\n";
-            #if 1
+#ifdef DEBUG
             Pgr_contractionGraph< CDirectedGraph > digraph(gType, initial_size);
             digraph.graph_insert_data_c(data_edges, total_tuples);
-#ifdef DEBUG
             //log << digraph;
            // digraph.print_graph(log);
 #endif
@@ -141,24 +145,23 @@ do_pgr_contractGraph(
             /*
             Function call to get the contracted graph
             */
+#ifdef DEBUG
             pgr_contractGraph(digraph,
                 forbidden_vertices, size_forbidden_vertices, 
                 contraction_order, size_contraction_order,
                 max_cycles, contracted_graph_name, contracted_graph_blob,
                 removedEdges, removedVertices, psuedoEdges, debug);
             log << debug.str().c_str() << "\n";
-            #endif
+#endif
         } else {
             log << "Working with Undirected Graph\n";
-            #if 1
+            
+#ifdef DEBUG
             Pgr_contractionGraph< CUndirectedGraph > undigraph(gType, initial_size);
             undigraph.graph_insert_data_c(data_edges, total_tuples);
 
-#ifdef DEBUG
             //log << undigraph;
             // undigraph.print_graph_c(log);
-#endif
-#if 1
             /* Function call to get the contracted graph. */
             pgr_contractGraph(undigraph,
                 forbidden_vertices, size_forbidden_vertices, 
@@ -167,16 +170,15 @@ do_pgr_contractGraph(
                 removedEdges, removedVertices, psuedoEdges, debug);
             log << debug.str().c_str() << "\n";
 #endif
-            #endif
         }
-        (*return_tuples) = get_memory(1, (*return_tuples));
+#ifdef DEBUG
+        (*return_tuples) = pgr_alloc(1, (*return_tuples));
         (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());
         (*return_tuples)->contracted_graph_blob = strdup(contracted_graph_blob.str().c_str());
         (*return_tuples)->removedVertices = strdup(removedVertices.str().c_str());
         (*return_tuples)->removedEdges = strdup(removedEdges.str().c_str());
         (*return_tuples)->psuedoEdges = strdup(psuedoEdges.str().c_str());
         (*return_count) = 1;
-#if 0
         // get the space required to store all the paths
         (*return_tuples) = get_memory(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
