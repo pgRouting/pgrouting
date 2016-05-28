@@ -62,7 +62,7 @@ Then:
 
   :math:`\text{pgr\_maxFlow}(edges\_sql, source, sink, directed) = \boldsymbol{\Phi}`
 
-  :math:`\boldsymbol{\Phi} = \{(id_i, tail_i, head_i, residual\_capacity_i, reverse\_residual\_capacity_i, flow_i, reverse\_flow_i)\}`
+  :math:`\boldsymbol{\Phi} = \{(tail_i, head_i, residual\_capacity_i, flow_i)\}`
 
 where:
   - :math:`id_i = i`

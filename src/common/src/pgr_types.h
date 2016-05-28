@@ -111,13 +111,10 @@ typedef struct {
 } pgr_edge_t;
 
 typedef struct {
-  int64_t id;
-  int64_t source;
-  int64_t target;
-  int flow;
-  int reverse_flow;
-  int residual_capacity;
-  int reverse_residual_capacity;
+  int64_t tail;
+  int64_t head;
+  int64_t flow;
+  int64_t residual_capacity;
 } pgr_flow_t;
 
 typedef struct {

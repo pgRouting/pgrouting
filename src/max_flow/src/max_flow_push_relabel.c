@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: one_to_one_dijkstra.c
+File: max_flow_push_relabel.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -49,8 +49,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "max_flow_push_relabel.h"
-
-PG_MODULE_MAGIC;
 
 PG_FUNCTION_INFO_V1(max_flow_push_relabel);
 #ifndef _MSC_VER
@@ -186,30 +184,25 @@ max_flow_push_relabel(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        // OUT seq INTEGER,
-        // OUT path_seq INTEGER,
-        // OUT node BIGINT,
-        // OUT edge BIGINT,
-        // OUT cost FLOAT,
-        // OUT agg_cost FLOAT
+        //        OUT tail BIGINT,
+        //        OUT head BIGINT,
+        //        OUT flow integer,
+        //        OUT residual_capacity integer
 
-        values = palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(bool));
+        values = palloc(4 * sizeof(Datum));
+        nulls = palloc(4 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < 4; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(result_tuples[call_cntr].id);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].source);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[0] = Int64GetDatum(result_tuples[call_cntr].tail);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].head);
+        values[2] = Int32GetDatum(result_tuples[call_cntr].flow);
         values[3] = Int32GetDatum(result_tuples[call_cntr].residual_capacity);
-        values[4] = Int32GetDatum(result_tuples[call_cntr].reverse_residual_capacity);
-        values[5] = Int32GetDatum(result_tuples[call_cntr].flow);
-        values[6] = Int32GetDatum(result_tuples[call_cntr].reverse_flow);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
