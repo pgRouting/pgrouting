@@ -27,6 +27,7 @@ class Vertex {
     }
     void add_contracted_vertex(Vertex& v, int64_t vid);
     const Identifiers<int64_t>& contracted_vertices() const;
+    void clear_contracted_vertices() { m_contracted_vertices.clear(); }
     friend std::ostream& operator <<(std::ostream& os, const Vertex& v);
 #if 0    
     Vertex() : m_deleted(false) { }

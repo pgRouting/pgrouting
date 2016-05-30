@@ -240,6 +240,90 @@ do_pgr_test_c_edges(
             #endif
         }
 
+        {
+            log << "Testing Vertex class, creating graph with vertices, insertion using vector\n";
+            log << "  - Created graph:\n";
+            pgRouting::CDirectedGraph graph(vertices, UNDIRECTED);
+            log << "  - Inserting Edges:\n";
+            graph.graph_insert_data(edges);
+            int64_t vid1 = graph.get_V(1);
+            int64_t vid2 = graph.get_V(2);
+            int64_t vid5 = graph.get_V(5);
+            int64_t vid7 = graph.get_V(7);
+            int64_t vid8 = graph.get_V(8);
+            int64_t vid10 = graph.get_V(10);
+            int64_t vid13 = graph.get_V(13);
+            int64_t vid14 = graph.get_V(14);
+            int64_t vid15 = graph.get_V(15);
+            int64_t vid16 = graph.get_V(16);
+            int64_t vid17 = graph.get_V(17);
+
+            log << "  - id ----- V:\n";
+            log << "  " << 1 << " ----- " << vid1 << "\n";
+            log << "  " << 2 << " ----- " << vid2 << "\n";
+            log << "  " << 5 << " ----- " << vid5 << "\n";
+            log << "  " << 7 << " ----- " << vid7 << "\n";
+            log << "  " << 8 << " ----- " << vid8 << "\n";
+            log << "  " << 10 << " ----- " << vid10 << "\n";
+            log << "  " << 13 << " ----- " << vid13 << "\n";
+            log << "  " << 14 << " ----- " << vid14 << "\n";
+            log << "  " << 15 << " ----- " << vid15 << "\n";
+            log << "  " << 16 << " ----- " << vid16 << "\n";
+            log << "  " << 17 << " ----- " << vid17 << "\n";
+            pgRouting::contraction::Vertex v1 = graph[vid1];
+            pgRouting::contraction::Vertex v2 = graph[vid2];
+            pgRouting::contraction::Vertex v5 = graph[vid5];
+            pgRouting::contraction::Vertex v7 = graph[vid7];
+            pgRouting::contraction::Vertex v8 = graph[vid8];
+            pgRouting::contraction::Vertex v10 = graph[vid10];
+            pgRouting::contraction::Vertex v13 = graph[vid13];
+            pgRouting::contraction::Vertex v14 = graph[vid14];
+            pgRouting::contraction::Vertex v15 = graph[vid15];
+            pgRouting::contraction::Vertex v16 = graph[vid16];
+            pgRouting::contraction::Vertex v17 = graph[vid17];
+
+            log << "  - Dead end contraction:\n";
+            // vertex 1 is contracted to vertex 2
+            v2.add_contracted_vertex(v1, vid1);
+            log << "Vertex 1 is contracted to Vertex 2:\n";
+            log << v1;
+            log << v2;
+            // vertex 7 is contracted to vertex 8
+            v8.add_contracted_vertex(v7, vid7);
+            log << "Vertex 7 is contracted to Vertex 8:\n";
+            log << v7;
+            log << v8;
+            // vertex 8 is contracted to vertex 5
+            v5.add_contracted_vertex(v8, vid8);
+            log << "Vertex 8 is contracted to Vertex 5:\n";
+            log << v8;
+            log << v5;
+            // vertex 13 is contracted to vertex 10
+            v10.add_contracted_vertex(v13, vid13);
+            log << "Vertex 13 is contracted to Vertex 10:\n";
+            log << v13;
+            log << v10;
+            // vertex 14 is contracted to vertex 15
+            v15.add_contracted_vertex(v14, vid14);
+            log << "Vertex 14 is contracted to Vertex 15:\n";
+            log << v14;
+            log << v15;
+            // vertex 16 is contracted to vertex 17
+            v17.add_contracted_vertex(v16, vid16);
+            log << "Vertex 16 is contracted to Vertex 17:\n";
+            log << v16;
+            log << v17;
+            #if 0
+            
+            Pgr_contract<pgRouting::CDirectedGraph>  contractor;
+            contractor.getDeadEndSet(graph);
+            log << "  - Dead end vertices:\n";
+            contractor.print_dead_end_vertices(log);
+
+            #endif
+        }
+
+
 
 
         *err_msg = NULL;

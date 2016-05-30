@@ -16,7 +16,7 @@ std::string Vertex_c::type_str() const {
 }
 #endif
 
-void Vertex_c::add_contracted_vertex(Vertex& v, int64_t vid) {
+void Vertex::add_contracted_vertex(Vertex& v, int64_t vid) {
 
     // adding the id(boost graph) of the contracted vertex v
     m_contracted_vertices += vid;
@@ -25,7 +25,7 @@ void Vertex_c::add_contracted_vertex(Vertex& v, int64_t vid) {
     m_contracted_vertices += v.contracted_vertices();
 
     // empty the contracted vertices of the given vertex v
-    v.contracted_vertices().clear();
+    v.clear_contracted_vertices();
 
 }
 
