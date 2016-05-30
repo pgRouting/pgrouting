@@ -17,11 +17,11 @@ void Edge::cp_members(const Basic_edge &other) {
     }
 
 const Identifiers<int64_t>& Edge::contracted_vertices() const { 
-    return m_removed_vertices; 
+    return m_contracted_vertices; 
 }
 
 
-void Edge::add_contracted_vertex(Vertex_c v) {
+void Edge::add_contracted_vertex(Vertex& v, int64_t vid) {
     // adding the id(boost graph) of the contracted vertex v
     m_contracted_vertices += vid;
 
@@ -62,5 +62,6 @@ std::ostream& operator <<(std::ostream& os, const Edge& e) {
     os << "\n}";
     os << "\n";
     return os;
+}
 }  // namespace contraction
 }  // namespace pgRouting

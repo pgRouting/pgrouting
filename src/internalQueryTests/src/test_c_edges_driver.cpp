@@ -249,9 +249,11 @@ do_pgr_test_c_edges(
             int64_t vid1 = graph.get_V(1);
             int64_t vid2 = graph.get_V(2);
             int64_t vid5 = graph.get_V(5);
+            int64_t vid4 = graph.get_V(4);
             int64_t vid7 = graph.get_V(7);
             int64_t vid8 = graph.get_V(8);
             int64_t vid10 = graph.get_V(10);
+            int64_t vid12 = graph.get_V(12);
             int64_t vid13 = graph.get_V(13);
             int64_t vid14 = graph.get_V(14);
             int64_t vid15 = graph.get_V(15);
@@ -261,10 +263,12 @@ do_pgr_test_c_edges(
             log << "  - id ----- V:\n";
             log << "  " << 1 << " ----- " << vid1 << "\n";
             log << "  " << 2 << " ----- " << vid2 << "\n";
+            log << "  " << 4 << " ----- " << vid4 << "\n";
             log << "  " << 5 << " ----- " << vid5 << "\n";
             log << "  " << 7 << " ----- " << vid7 << "\n";
             log << "  " << 8 << " ----- " << vid8 << "\n";
             log << "  " << 10 << " ----- " << vid10 << "\n";
+            log << "  " << 12 << " ----- " << vid12 << "\n";
             log << "  " << 13 << " ----- " << vid13 << "\n";
             log << "  " << 14 << " ----- " << vid14 << "\n";
             log << "  " << 15 << " ----- " << vid15 << "\n";
@@ -272,10 +276,12 @@ do_pgr_test_c_edges(
             log << "  " << 17 << " ----- " << vid17 << "\n";
             pgRouting::contraction::Vertex v1 = graph[vid1];
             pgRouting::contraction::Vertex v2 = graph[vid2];
+            pgRouting::contraction::Vertex v4 = graph[vid4];
             pgRouting::contraction::Vertex v5 = graph[vid5];
             pgRouting::contraction::Vertex v7 = graph[vid7];
             pgRouting::contraction::Vertex v8 = graph[vid8];
             pgRouting::contraction::Vertex v10 = graph[vid10];
+            pgRouting::contraction::Vertex v12 = graph[vid12];
             pgRouting::contraction::Vertex v13 = graph[vid13];
             pgRouting::contraction::Vertex v14 = graph[vid14];
             pgRouting::contraction::Vertex v15 = graph[vid15];
@@ -313,6 +319,41 @@ do_pgr_test_c_edges(
             log << "Vertex 16 is contracted to Vertex 17:\n";
             log << v16;
             log << v17;
+
+
+            log << "  - Linear contraction:\n";
+            pgRouting::contraction::Edge e1;
+            pgRouting::contraction::Edge e2;
+            pgRouting::contraction::Edge e3;
+            pgRouting::contraction::Edge e4;
+            // vertex 2 is contracted to edge -1
+            e1.id = -1;
+            e1.source = 3;
+            e1.target = 5;
+            log << "Vertex 1 is contracted to edge -1:\n";
+            e1.add_contracted_vertex(v2, vid2);
+            log << e1;
+            // vertex 4 is contracted to edge -2
+            e2.id = -2;
+            e2.source = 3;
+            e2.target = 9;
+            log << "Vertex 4 is contracted to edge -2:\n";
+            e2.add_contracted_vertex(v4, vid4);
+            log << e2;
+            // vertex 10 is contracted to edge -3
+            e3.id = -3;
+            e3.source = 5;
+            e3.target = 11;
+            log << "Vertex 10 is contracted to edge -3:\n";
+            e3.add_contracted_vertex(v10, vid10);
+            log << e3;
+            // vertex 12 is contracted to edge -4
+            e4.id = -4;
+            e4.source = 9;
+            e4.target = 11;
+            log << "Vertex 12 is contracted to edge -4:\n";
+            e4.add_contracted_vertex(v12, vid12);
+            log << e4;
             #if 0
             
             Pgr_contract<pgRouting::CDirectedGraph>  contractor;

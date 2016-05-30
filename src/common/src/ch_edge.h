@@ -45,7 +45,7 @@ class Edge {
     const Identifiers<int64_t>& contracted_vertices() const;
     friend std::ostream& operator <<(std::ostream& os, const Edge& e);
  private:
-    Identifiers<int64_t> m_removed_vertices;
+    Identifiers<int64_t> m_contracted_vertices;
     #if 0
     Edge_type m_type;
     bool m_deleted;
