@@ -11,6 +11,7 @@ class Identifiers {
     const std::set<T>& ids() const;
     //! \brief Returns a boolean value true or false, to indicate whether the set is empty
     inline bool empty() const { return m_ids.empty(); }
+    inline void clear() { m_ids.clear(); }
     bool has(const T other) const;
     bool isDisjoint(const T other) const;
     bool isDisjoint(const Identifiers<T> &other) const;
