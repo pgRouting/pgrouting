@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h" // for pgr_edge_t 
 
 #include "./ch_vertex.h"
+#include "./ch_edge.h"
 #include "./basic_vertex.h"
 #include "./xy_vertex.h"
 
