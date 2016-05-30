@@ -25,7 +25,7 @@ class Vertex {
     void cp_members(const Vertex &other) {
         this->id = other.id;
     }
-    void add_contracted_vertex(Vertex v);
+    void add_contracted_vertex(Vertex& v, int64_t vid);
     const Identifiers<int64_t>& contracted_vertices() const;
     friend std::ostream& operator <<(std::ostream& os, const Vertex& v);
 #if 0    

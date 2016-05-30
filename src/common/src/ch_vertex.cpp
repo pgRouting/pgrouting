@@ -14,10 +14,21 @@ const Identifiers<int64_t>& Vertex::contracted_vertices() const {
 std::string Vertex_c::type_str() const {
     return m_type.type_str();
 }
-
-void Vertex_c::add_contracted_vertex(Vertex_c v) {
-}
 #endif
+
+void Vertex_c::add_contracted_vertex(Vertex& v, int64_t vid) {
+
+    // adding the id(boost graph) of the contracted vertex v
+    m_contracted_vertices += vid;
+
+    //adding the ids of the contracted vertices of the given vertex v
+    m_contracted_vertices += v.contracted_vertices();
+
+    // empty the contracted vertices of the given vertex v
+    v.contracted_vertices().clear();
+
+}
+
 
 std::ostream& operator <<(std::ostream& os, const Vertex& v) {
     os << "{\n    id: " << v.id << ",\n";
