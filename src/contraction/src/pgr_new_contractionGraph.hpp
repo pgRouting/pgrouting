@@ -220,7 +220,7 @@ namespace pgRouting {
 
 namespace graph{
 template <class G, typename Vertex, typename Edge>
-class Pgr_base_graph;
+class  Pgr_contractionGraph;
 
 } // namespace graph
 
@@ -234,38 +234,38 @@ class Pgr_base_graph;
   xyDirectedGraph | X & Y values stored on the vertex 
   */
 //@{
-typedef typename graph::Pgr_base_graph <
+typedef typename graph::Pgr_contractionGraph <
 boost::adjacency_list < boost::vecS, boost::vecS,
     boost::undirectedS,
     Basic_vertex, Basic_edge >,
     Basic_vertex, Basic_edge > UndirectedGraph;
 
-typedef typename graph::Pgr_base_graph <
+typedef typename graph::Pgr_contractionGraph <
 boost::adjacency_list < boost::vecS, boost::vecS,
     boost::bidirectionalS,
     Basic_vertex, Basic_edge >,
     Basic_vertex, Basic_edge > DirectedGraph;
 
-typedef typename graph::Pgr_base_graph <
+typedef typename graph::Pgr_contractionGraph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyUndirectedGraph;
 
-typedef typename graph::Pgr_base_graph <
+typedef typename graph::Pgr_contractionGraph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
 // TODO (Rohith) add this to the comment above
-typedef typename graph::Pgr_base_graph <
+typedef typename graph::Pgr_contractionGraph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
     contraction::Vertex, Basic_edge >,
     contraction::Vertex, Basic_edge > CUndirectedGraph;
 
-typedef typename graph::Pgr_base_graph <
+typedef typename graph::Pgr_contractionGraph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     contraction::Vertex, Basic_edge >,
@@ -275,7 +275,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
 namespace graph{
 
 template <class G, typename T_V, typename T_E>
-class Pgr_base_graph {
+class Pgr_contractionGraph {
  public:
      /** @name Graph related types
        Type      |     boost meaning     |   pgRouting meaning
@@ -348,7 +348,7 @@ class Pgr_base_graph {
        - inserts the vertices
        - The vertices must be checked (if necessary)  before calling the constructor
        */
-     Pgr_base_graph< G , T_V, T_E >(const std::vector< T_V > &vertices, graphType gtype)
+     Pgr_contractionGraph< G , T_V, T_E >(const std::vector< T_V > &vertices, graphType gtype)
          : graph(vertices.size()),
          m_num_vertices(vertices.size()),
          m_gType(gtype) {
@@ -367,7 +367,7 @@ class Pgr_base_graph {
      /*!
        Prepares the _graph_ to be of type gtype with 0 vertices
        */
-     explicit Pgr_base_graph< G , T_V, T_E >(graphType gtype)
+     explicit Pgr_contractionGraph< G , T_V, T_E >(graphType gtype)
          : graph(0),
          m_num_vertices(0),
          m_gType(gtype) {
@@ -560,9 +560,9 @@ class Pgr_base_graph {
      //! @name only for stand by program
      //@{
 
-     friend std::ostream& operator<<(std::ostream &log, const Pgr_base_graph< G, T_V, T_E > &g) {
+     friend std::ostream& operator<<(std::ostream &log, const Pgr_contractionGraph< G, T_V, T_E > &g) {
 
-         typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
+         typename Pgr_contractionGraph< G, T_V, T_E >::EO_i out, out_end;
 
          for (auto vi = vertices(g.graph).first; vi != vertices(g.graph).second; ++vi) {
              if ((*vi) >= g.m_num_vertices) break;
@@ -594,6 +594,15 @@ class Pgr_base_graph {
 
      template < typename T >
          void graph_add_edge(const T &edge);
+
+/****************** CONTRACTION NEEDS *****************/
+bool is_connected(int64_t v) const {
+    if (in_degree(get_V(v)) == 0 && out_degree(get_V(v)) == 0) {
+        return false;
+    }
+    return true;
+}
+
 };
 
 
@@ -601,7 +610,7 @@ class Pgr_base_graph {
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
+Pgr_contractionGraph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
     T_E d_edge;
 
     // nothing to do, the vertex doesnt exist
@@ -630,7 +639,7 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id) {
+Pgr_contractionGraph< G, T_V, T_E >::disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id) {
     T_E d_edge;
 
     // nothing to do, the vertex doesnt exist
@@ -661,14 +670,14 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(int64_t vertex_id, int6
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(int64_t vertex) {
+Pgr_contractionGraph< G, T_V, T_E >::disconnect_vertex(int64_t vertex) {
     if (!has_vertex(vertex)) return;
     disconnect_vertex(get_V(vertex));
 }
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
+Pgr_contractionGraph< G, T_V, T_E >::disconnect_vertex(V vertex) {
     T_E d_edge;
 
     EO_i out, out_end;
@@ -701,7 +710,7 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::restore_graph() {
+Pgr_contractionGraph< G, T_V, T_E >::restore_graph() {
     while (removed_edges.size() != 0) {
         graph_add_edge(removed_edges[0]);
         removed_edges.pop_front();
@@ -711,7 +720,7 @@ Pgr_base_graph< G, T_V, T_E >::restore_graph() {
 
 template < class G, typename T_V, typename T_E >
 int64_t
-Pgr_base_graph< G, T_V, T_E >::get_edge_id(V from, V to, double &distance) const {
+Pgr_contractionGraph< G, T_V, T_E >::get_edge_id(V from, V to, double &distance) const {
     E e;
     EO_i out_i, out_end;
     V v_source, v_target;
@@ -738,10 +747,10 @@ Pgr_base_graph< G, T_V, T_E >::get_edge_id(V from, V to, double &distance) const
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T_E &edge ) {
+Pgr_contractionGraph< G, T_V, T_E >::graph_add_edge(const T_E &edge ) {
     bool inserted;
-    typename Pgr_base_graph< G, T_V, T_E >::LI vm_s, vm_t;
-    typename Pgr_base_graph< G, T_V, T_E >::E e;
+    typename Pgr_contractionGraph< G, T_V, T_E >::LI vm_s, vm_t;
+    typename Pgr_contractionGraph< G, T_V, T_E >::E e;
 
     vm_s = vertices_map.find(edge.source);
     if (vm_s == vertices_map.end()) {
@@ -766,9 +775,9 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T_E &edge ) {
 template < class G, typename T_V, typename T_E >
 template < typename T>
 void
-Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
+Pgr_contractionGraph< G, T_V, T_E >::graph_add_edge(const T &edge) {
     bool inserted;
-    typename Pgr_base_graph< G, T_V, T_E >::E e;
+    typename Pgr_contractionGraph< G, T_V, T_E >::E e;
     if ((edge.cost < 0) && (edge.reverse_cost < 0))
         return;
 
@@ -803,7 +812,7 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::add_vertices(
+Pgr_contractionGraph< G, T_V, T_E >::add_vertices(
         std::vector< T_V > vertices) {
     pgassert(m_num_vertices == 0);
     for (const auto vertex : vertices) {
@@ -820,14 +829,7 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
 
 
 
-/****************** CONTRACTION NEEDS *****************/
 
-bool is_connected(int64_t v) const {
-    if (in_degree(get_V(v)) == 0 && out_degree(get_V(v)) == 0) {
-        return false;
-    }
-    return true;
-}
 
 
 
