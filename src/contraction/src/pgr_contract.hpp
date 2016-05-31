@@ -39,7 +39,7 @@ extern "C" {
 #include "postgres.h"
 }
 
-#include "./pgr_contractionGraph.hpp"
+#include "./pgr_new_contractionGraph.hpp"
 #include "../../common/src/pgr_assert.h"
 
 template < class G > class Pgr_contract;
@@ -58,7 +58,7 @@ void pgr_contractGraph(
     std::ostringstream& psuedoEdges,
     std::ostringstream& debug) {
 
-    typedef typename G::V V;
+    //typedef typename G::V V;
     Pgr_contract< G > fn_contract;
 
    /* debug << "Forbidden vertices\n" <<   " { \n";
@@ -145,7 +145,9 @@ public:
     typedef typename G::V_i V_i;
     typedef typename G::E_i E_i;
     typedef typename G::EO_i EO_i;
+    #if 0
     typedef typename G::degree_to_V_i degree_to_V_i;
+    #endif
     typedef typename G::EI_i EI_i;
 
 
@@ -233,7 +235,7 @@ void Pgr_contract< G >::disconnectVertex(G &graph, int64_t vertex_id) {
 
     pgassert(graph.is_connected(vertex_id));
     pgassert(is_dead_end(vertex_id));
-    graph.disconnect_vertex_c(vertex_id);
+    graph.disconnect_vertex(vertex_id);
     pgassert(!graph.is_connected(vertex_id));
 
 }
@@ -244,9 +246,15 @@ Identifiers<int64_t> Pgr_contract< G >::getAdjacentVertices(G &graph, int64_t ve
     EI_i in, in_end;
     V v;
     Identifiers<int64_t> adjacent_vertices_set;
+    if (!graph.has_vertex(vertex_id)) {
+            return adjacent_vertices_set;
+    }
+    v = graph.get_V(vertex_id);
+    #if 0
     if (!graph.get_gVertex(vertex_id, v)) {
             return adjacent_vertices_set;
     }
+    #endif
     for (boost::tie(out, out_end) = out_edges(v, graph.graph);
             out != out_end; ++out) {
             adjacent_vertices_set += graph.graph[target(*out, graph.graph)].id;
@@ -274,16 +282,17 @@ bool Pgr_contract< G >::is_dead_end(G &graph, int64_t vertex_id) const {
 
     //debug << "in_degree: " << graph.in_degree(vertex_id) << '\n';
     //debug << "out_degree: " << graph.out_degree(vertex_id) << '\n';
-    if(graph.out_degree(vertex_id) == 1 && graph.in_degree(vertex_id) == 0) return true;
-    if(graph.out_degree(vertex_id) == 0 && graph.in_degree(vertex_id) == 1) return true;
-    if(graph.out_degree(vertex_id) == 1 && graph.in_degree(vertex_id) == 1) {
+    V v;
+    if (!graph.has_vertex(vertex_id)) {
+            return false;
+    }
+    v = graph.get_V(vertex_id);
+    if(graph.out_degree(v) == 1 && graph.in_degree(v) == 0) return true;
+    if(graph.out_degree(v) == 0 && graph.in_degree(v) == 1) return true;
+    if(graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
         int64_t incoming_edge_id, outgoing_edge_id;
         EO_i out, out_end;
         EI_i in, in_end;
-        V v;
-        if (!graph.get_gVertex(vertex_id, v)) {
-            return false;
-        }
         for (boost::tie(out, out_end) = out_edges(v, graph.graph);
                         out != out_end; ++out) {
             outgoing_edge_id = graph.graph[*out].id;
