@@ -68,9 +68,21 @@ void pgr_contractGraph(
         }
         debug << " }\n";  */
 
+    /*
+        The forbidden vertices and all vertices are
+        computed before contraction
+    */
+    debug << "Forbidden vertices" << "\n";
+    fn_contract.setForbiddenVertices(forbidden_vertices,size_forbidden_vertices);
+    fn_contract.print_forbidden_vertices(debug);
+    debug << "All vertices" << "\n";
+    fn_contract.getAllVertices(graph);
+    fn_contract.print_all_vertices(debug);
+    
 
     std::deque<int64_t> contract_order;
-    contract_order.push_back(0);
+    // push -1 to indicate the start of the queue
+    contract_order.push_back(-1);
     for (size_t i = 0; i < size_contraction_order; ++i) {
         contract_order.push_back(contraction_order[i]);
     }
@@ -80,9 +92,9 @@ void pgr_contractGraph(
         contract_order.pop_front();
         contract_order.push_back(front);
         front = contract_order.front();
-        while (front != 0) {
+        while (front != -1) {
             switch (front) {
-                case 0:
+                case -1:
                 debug << "Finished cycle " << i+1 << "\n";
                 break;
                 default:
@@ -93,18 +105,13 @@ void pgr_contractGraph(
             }
         }
     }
-    debug << "Forbidden vertices" << "\n";
-    fn_contract.setForbiddenVertices(forbidden_vertices,size_forbidden_vertices);
-    fn_contract.print_forbidden_vertices(debug);
-    debug << "All vertices" << "\n";
-    fn_contract.getAllVertices(graph);
-    fn_contract.print_all_vertices(debug);
+    
     debug << "Dead end set" << "\n";
     fn_contract.getDeadEndSet(graph);
     fn_contract.print_dead_end_vertices(debug);
     debug << "Non contractible set" << "\n";
-    fn_contract.getNonContractibleVertices();
-    fn_contract.print_non_contractible_vertices(debug);
+    fn_contract.getNonContractedVertices();
+    fn_contract.print_non_contracted_vertices(debug);
     debug << "Adjacent vertices of vertex 6" << "\n";
     fn_contract.print_identifiers(debug, fn_contract.getAdjacentVertices(graph, 6));
     #if 0
@@ -159,14 +166,13 @@ public:
     typedef typename G::V_i V_i;
     typedef typename G::E_i E_i;
     typedef typename G::EO_i EO_i;
-    typedef typename G::EI_i EI_i;
     #if 0
     typedef typename G::degree_to_V_i degree_to_V_i;
     #endif
     typedef typename G::EI_i EI_i;
     //@}
 
-    /** @name Framework related functions
+    //! @name Framework related functions
     //@{
     /*! \brief Disconnects all incoming and outgoing edges from the vertex
      *  Calls the disconnect_vertex function of the graph with assertions
@@ -202,15 +208,15 @@ public:
      */
     Identifiers<int64_t> getAdjacentVertices(G &graph, int64_t vertex_id);
     
-    /*! \brief Writes the string form of forbidden vertices to the *stream*
-     *  @param stream
-     */
-    void print_forbidden_vertices(std::ostringstream& stream);
-    
     /*! \brief Writes the string form of identifier class to the *stream*
      *  @param stream
      */
     void print_identifiers(std::ostringstream& stream, Identifiers<int64_t> identifiers);
+
+    /*! \brief Writes the string form of forbidden vertices to the *stream*
+     *  @param stream
+     */
+    void print_forbidden_vertices(std::ostringstream& stream);
     
     /*! \brief Writes the string form of all vertices to the *stream*
      *  @param stream
@@ -226,7 +232,7 @@ public:
 
 
 
-    /** @name Dead end contraction related functions
+    //! @name Dead end contraction related functions
     //@{
 
     /*! \brief Checks whether a vertex is a dead end vertex
@@ -311,6 +317,17 @@ private:
  /******************** IMPLEMENTATION ******************/
 
 template < class G >
+void Pgr_contract< G >::disconnectVertex(G &graph, int64_t vertex_id) {
+
+
+    pgassert(graph.is_connected(vertex_id));
+    pgassert(is_dead_end(vertex_id));
+    graph.disconnect_vertex(vertex_id);
+    pgassert(!graph.is_connected(vertex_id));
+
+}
+
+template < class G >
 void Pgr_contract< G >::setForbiddenVertices(int64_t *forbidden_vertices,
     size_t size_forbidden_vertices ) {
 
@@ -321,15 +338,19 @@ void Pgr_contract< G >::setForbiddenVertices(int64_t *forbidden_vertices,
 
 }
 
-template < class G >
-void Pgr_contract< G >::disconnectVertex(G &graph, int64_t vertex_id) {
+template <class G>
+void Pgr_contract< G >::getAllVertices(G &graph) {
+    //Identifiers<int64_t> dead_end_vertices;
+    V_i vi;
+    for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
+        // debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
+            all += graph.graph[(*vi)].id;
+    }
+}
 
-
-    pgassert(graph.is_connected(vertex_id));
-    pgassert(is_dead_end(vertex_id));
-    graph.disconnect_vertex(vertex_id);
-    pgassert(!graph.is_connected(vertex_id));
-
+template <class G>
+void Pgr_contract< G >::getNonContractedVertices() {
+    non_contracted = all - dead_end;
 }
 
 template < class G >
@@ -358,7 +379,34 @@ Identifiers<int64_t> Pgr_contract< G >::getAdjacentVertices(G &graph, int64_t ve
     return adjacent_vertices_set;
 }
 
+template <class G>
+void Pgr_contract< G >::print_identifiers(std::ostringstream& stream, Identifiers<int64_t> identifiers) {
+    //std::ostringstream out;
+    stream << identifiers << '\n';
+    //return out;
+}
 
+template <class G>
+void Pgr_contract< G >::print_forbidden_vertices(std::ostringstream& stream) {
+    //std::ostringstream out;
+    stream << forbidden << '\n';
+    //return out;
+}
+
+template <class G>
+void Pgr_contract< G >::print_all_vertices(std::ostringstream& stream) {
+    //std::ostringstream out;
+    stream << all << '\n';
+    //return out;
+}
+
+
+template <class G>
+void Pgr_contract< G >::print_non_contracted_vertices(std::ostringstream& stream) {
+    //std::ostringstream out;
+    stream << non_contracted << '\n';
+    //return out;
+}
 #if 0
 template < class G >
 bool  Pgr_contract< G >::is_connected(G &graph, V v) const {
@@ -414,28 +462,7 @@ void Pgr_contract< G >::getDeadEndSet(G &graph) {
     //return dead_end_vertices;
 }
 
-template <class G>
-void Pgr_contract< G >::getAllVertices(G &graph) {
-    //Identifiers<int64_t> dead_end_vertices;
-    V_i vi;
-    for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
-        // debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
-            all += graph.graph[(*vi)].id;
-    }
-}
 
-template <class G>
-void Pgr_contract< G >::getNonContracedVertices() {
-    non_contracted = all - dead_end;
-}
-
-
-template <class G>
-void Pgr_contract< G >::print_identifiers(std::ostringstream& stream, Identifiers<int64_t> identifiers) {
-    //std::ostringstream out;
-    stream << identifiers << '\n';
-    //return out;
-}
 
 template <class G>
 void Pgr_contract< G >::print_dead_end_vertices(std::ostringstream& stream) {
@@ -444,27 +471,7 @@ void Pgr_contract< G >::print_dead_end_vertices(std::ostringstream& stream) {
     //return out;
 }
 
-template <class G>
-void Pgr_contract< G >::print_forbidden_vertices(std::ostringstream& stream) {
-    //std::ostringstream out;
-    stream << forbidden << '\n';
-    //return out;
-}
 
-template <class G>
-void Pgr_contract< G >::print_all_vertices(std::ostringstream& stream) {
-    //std::ostringstream out;
-    stream << all << '\n';
-    //return out;
-}
-
-
-template <class G>
-void Pgr_contract< G >::print_non_contracted_vertices(std::ostringstream& stream) {
-    //std::ostringstream out;
-    stream << non_contracted << '\n';
-    //return out;
-}
 #if 0
  //! \brief Calculates the degree of every vertex in the graph
      /*!
