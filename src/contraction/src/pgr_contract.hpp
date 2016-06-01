@@ -139,32 +139,118 @@ bool is_valid_contraction_number(int number) {
 
 template < class G >
 class Pgr_contract {
+
+
 public:
+    /** @name Graph related types
+       Type      |     boost meaning     |   pgRouting meaning
+       :---------: | :-------------------- | :----------------------
+       G        | boost::adjacency_list |   Graph
+       V        | vertex_descriptor     |   Think of it as local ID of a vertex
+       E        | edge_descriptor       |   Think of it as local ID of an edge
+       V_i      | vertex_iterator       |   To cycle the vertices of the Graph
+       E_i      | edge_iterator         |   To cycle the edges of the Graph
+       EO_i     | out_edge_iterator     |   To cycle the out going edges of a vertex
+       EI_i     | in_edge_iterator      |   To cycle the in coming edges of a vertex (only in bidirectional graphs)
+    */
+     //@{
     typedef typename G::V V;
     typedef typename G::E E;
     typedef typename G::V_i V_i;
     typedef typename G::E_i E_i;
     typedef typename G::EO_i EO_i;
+    typedef typename G::EI_i EI_i;
     #if 0
     typedef typename G::degree_to_V_i degree_to_V_i;
     #endif
     typedef typename G::EI_i EI_i;
+    //@}
 
-
-    bool is_dead_end(G &graph, int64_t vertex_id) const;
+    /** @name Framework related functions
+    //@{
+    /*! \brief Disconnects all incoming and outgoing edges from the vertex
+     *  Calls the disconnect_vertex function of the graph with assertions
+     *  @param graph
+     *  @param vertex_id
+     */
     void disconnectVertex(G &graph, int64_t vertex_id);
-    //template <typename T>
+    
+    /*! \brief Stores the ids of those vertices forbidden from contraction in a set
+     *  Stores them in the set *forbidden_vertices*
+     *  @param forbidden_vertices
+     *  @param size_forbidden_vertices
+     */
     void setForbiddenVertices(int64_t *forbidden_vertices,
     size_t size_forbidden_vertices );
-    void print_forbidden_vertices(std::ostringstream& forbidden_stream);
-    void getDeadEndSet(G &graph);
+    
+    /*! \brief Stores ids of all the vertices of the graph in a set
+     *  Stores them in the set *all_vertices*
+     *  @param graph
+     */
     void getAllVertices(G &graph);
-    void getNonContractibleVertices();
+
+    /*! \brief Stores the set of ids of those vertices which are not contracted
+     *  Stores them in the set *non_contracted*
+     */
+    void getNonContractedVertices();
+
+    /*! \brief Returns a set of ids of all those vertices adjacent to vertex 
+     *  with id *vertex_id* 
+     *  Calls the disconnect_vertex function of the graph with assertions
+     *  @param graph
+     *  @param vertex_id
+     */
     Identifiers<int64_t> getAdjacentVertices(G &graph, int64_t vertex_id);
+    
+    /*! \brief Writes the string form of forbidden vertices to the *stream*
+     *  @param stream
+     */
+    void print_forbidden_vertices(std::ostringstream& stream);
+    
+    /*! \brief Writes the string form of identifier class to the *stream*
+     *  @param stream
+     */
     void print_identifiers(std::ostringstream& stream, Identifiers<int64_t> identifiers);
-    void print_dead_end_vertices(std::ostringstream& dead_end_stream);
-    void print_all_vertices(std::ostringstream& all_stream);
-    void print_non_contractible_vertices(std::ostringstream& non_stream);
+    
+    /*! \brief Writes the string form of all vertices to the *stream*
+     *  @param stream
+     */
+    void print_all_vertices(std::ostringstream& stream);
+    
+    /*! \brief Writes the string form of non contracted vertices to the *stream*
+     *  @param stream
+     */
+    void print_non_contracted_vertices(std::ostringstream& stream);
+
+    //@}
+
+
+
+    /** @name Dead end contraction related functions
+    //@{
+
+    /*! \brief Checks whether a vertex is a dead end vertex
+     *  @param graph
+     *  @param vertex_id
+     */
+    bool is_dead_end(G &graph, int64_t vertex_id) const;
+    
+    /*! \brief Stores ids of dead end vertices of the graph in a set
+     *  Stores them in the set *dead_end_vertices*
+     *  @param graph
+     */
+    void getDeadEndSet(G &graph);
+
+    /*! \brief Writes the string form of dead end vertices to the *stream*
+     *  @param stream
+     */
+    void print_dead_end_vertices(std::ostringstream& stream);
+
+    //@}
+
+
+
+
     //bool is_connected(G &graph, V v) const;
     #if 0
     void contract_to_level(
@@ -200,10 +286,16 @@ public:
     typedef typename std::vector<V>::iterator Q_i;
     #endif
 private:
+
+
     int64_t last_edge_id;
+    //! Used for storing the ids of all vertices of the graph
     Identifiers<int64_t> all;
+    //! Used for storing the ids of dead end vertices of the graph
     Identifiers<int64_t> dead_end;
-    Identifiers<int64_t> non_contractible;
+    //! Used for storing the ids of vertices of the graph which are not contracted
+    Identifiers<int64_t> non_contracted;
+    //! Used for storing the ids of vertices forbidden from contraction
     Identifiers<int64_t> forbidden;
     #if 0
     removed_V removedVertices;
@@ -333,8 +425,8 @@ void Pgr_contract< G >::getAllVertices(G &graph) {
 }
 
 template <class G>
-void Pgr_contract< G >::getNonContractibleVertices() {
-    non_contractible = all - dead_end;
+void Pgr_contract< G >::getNonContracedVertices() {
+    non_contracted = all - dead_end;
 }
 
 
@@ -346,31 +438,31 @@ void Pgr_contract< G >::print_identifiers(std::ostringstream& stream, Identifier
 }
 
 template <class G>
-void Pgr_contract< G >::print_dead_end_vertices(std::ostringstream& dead_end_stream) {
+void Pgr_contract< G >::print_dead_end_vertices(std::ostringstream& stream) {
     //std::ostringstream out;
-    dead_end_stream << dead_end << '\n';
+    stream << dead_end << '\n';
     //return out;
 }
 
 template <class G>
-void Pgr_contract< G >::print_forbidden_vertices(std::ostringstream& forbidden_stream) {
+void Pgr_contract< G >::print_forbidden_vertices(std::ostringstream& stream) {
     //std::ostringstream out;
-    forbidden_stream << forbidden << '\n';
+    stream << forbidden << '\n';
     //return out;
 }
 
 template <class G>
-void Pgr_contract< G >::print_all_vertices(std::ostringstream& all_stream) {
+void Pgr_contract< G >::print_all_vertices(std::ostringstream& stream) {
     //std::ostringstream out;
-    all_stream << all << '\n';
+    stream << all << '\n';
     //return out;
 }
 
 
 template <class G>
-void Pgr_contract< G >::print_non_contractible_vertices(std::ostringstream& non_stream) {
+void Pgr_contract< G >::print_non_contracted_vertices(std::ostringstream& stream) {
     //std::ostringstream out;
-    non_stream << non_contractible << '\n';
+    stream << non_contracted << '\n';
     //return out;
 }
 #if 0
