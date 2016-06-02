@@ -74,7 +74,33 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
             return false;
         }
         return true;
-    }
+     }
+
+     V find_adjacent_vertex(V v) const {
+        EO_i out, out_end;
+        EI_i in, in_end;
+        V out_vertex, in_vertex;
+        out_vertex = in_vertex = -1;
+        #if 0
+        if (!graph.get_gVertex(vertex_id, v)) {
+                return adjacent_vertices_set;
+        }
+        #endif
+        for (boost::tie(out, out_end) = out_edges(v, graph);
+                out != out_end; ++out) {
+                out_vertex = target(*out, graph);
+        }
+        for (boost::tie(in, in_end) = in_edges(v, graph);
+                in != in_end; ++in) {
+                in_vertex = source(*in, graph);
+        }
+        if (in_vertex == -1)
+            return out_vertex;
+        else if (out_vertex == -1)
+            return in_vertex;
+        else if (out_vertex == in_vertex)
+            return in_vertex;
+     }
 
     };
 }
