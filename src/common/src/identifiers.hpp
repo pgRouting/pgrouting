@@ -9,6 +9,8 @@ template <typename T>
 class Identifiers {
  public:
     const std::set<T>& ids() const;
+    typedef typename std::set<T>::iterator iterator;
+    typedef typename std::set<T>::const_iterator const_iterator;
     //! \brief Returns a boolean value true or false, to indicate whether the set is empty
     inline bool empty() const { return m_ids.empty(); }
     inline void clear() { m_ids.clear(); }
@@ -18,9 +20,9 @@ class Identifiers {
     void insert(const Identifiers<T> &other);
     void insert(const T &other);
     iterator begin() { return m_ids.begin(); }
-    const_iterator begin() const { return &m_ids.begin(); }
-    iterator end() { return &m_ids.end(); }
-    const_iterator end() const { return &m_ids.end(); }
+    const_iterator begin() const { return m_ids.begin(); }
+    iterator end() { return m_ids.end(); }
+    const_iterator end() const { return m_ids.end(); }
     bool operator ==(const Identifiers<T> &other) const;
     Identifiers<T> operator +(const T &other) const;
     Identifiers<T> operator *(const T &other) const;
