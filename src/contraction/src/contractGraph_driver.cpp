@@ -128,6 +128,7 @@ do_pgr_contractGraph(
         log << "directed " << directed << "\n";
         log << "gType " << gType << "\n";
         log << "total_tuples " << initial_size << "\n";
+        #if 0
         if (total_edges == 1) {
             log << "Requiered: more than one tuple\n";
             (*return_tuples) = NULL;
@@ -142,6 +143,7 @@ do_pgr_contractGraph(
             *err_msg = strdup(log.str().c_str());
             return;
         }
+        #endif
         if (directed) {
             log << "Working with directed Graph\n";
  #ifdef DEBUG

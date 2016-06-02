@@ -84,6 +84,13 @@ process(char* edges_sql,
 #ifdef DEBUG
     pgr_edge_t *edges = NULL;
     int64_t total_tuples = 0;
+    if (num_cycles < 1) {
+        PGR_DBG("Required: atleast one cycle\n");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        pgr_SPI_finish();
+        return;
+    }
     pgr_get_edges(edges_sql, &edges, &total_tuples);
     //PGR_DBG("finished Loading");
 

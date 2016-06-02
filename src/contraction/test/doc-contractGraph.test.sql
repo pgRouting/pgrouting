@@ -1,10 +1,9 @@
-\echo --q1
+\echo --q1 Checking data read
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[0]::integer[], ARRAY[0]::integer[], 2, true);
-\echo --q2
 
-/*SELECT * FROM pgr_contractGraph(
+\echo --q2 Checking minimum number of cycles
+SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT id from vertex_table',array[0],2,true);
-\echo --q3*/
+    ARRAY[0]::integer[], ARRAY[0]::integer[], 0, true);
