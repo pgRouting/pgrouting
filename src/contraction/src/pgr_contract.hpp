@@ -39,7 +39,7 @@ extern "C" {
 #include "postgres.h"
 }
 
-#include "./pgr_new_contractionGraph.hpp"
+#include "./pgr_contractionGraph.hpp"
 #include "../../common/src/pgr_assert.h"
 
 template < class G > class Pgr_contract;

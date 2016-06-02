@@ -146,7 +146,7 @@ do_pgr_contractGraph(
             log << "Working with directed Graph\n";
  #ifdef DEBUG
 //#if 0
-            pgRouting::CDirectedGraph digraph(vertices, gType);
+            pgRouting::CHDirectedGraph digraph(vertices, gType);
             digraph.graph_insert_data(data_edges, total_edges);
             //log << digraph;
            // digraph.print_graph(log);
@@ -172,7 +172,7 @@ do_pgr_contractGraph(
             
 #ifdef DEBUG
 //#if 0
-            pgRouting::CUndirectedGraph undigraph(vertices, gType);
+            pgRouting::CHUndirectedGraph undigraph(vertices, gType);
             undigraph.graph_insert_data(data_edges, total_edges);
 
             //log << undigraph;

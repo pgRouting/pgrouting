@@ -272,6 +272,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
     contraction::Vertex, Basic_edge > CDirectedGraph;
 //@}
 
+
 namespace graph{
 
 template <class G, typename T_V, typename T_E>
