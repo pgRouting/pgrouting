@@ -17,6 +17,10 @@ class Identifiers {
     bool isDisjoint(const Identifiers<T> &other) const;
     void insert(const Identifiers<T> &other);
     void insert(const T &other);
+    iterator begin() { return m_ids.begin(); }
+    const_iterator begin() const { return &m_ids.begin(); }
+    iterator end() { return &m_ids.end(); }
+    const_iterator end() const { return &m_ids.end(); }
     bool operator ==(const Identifiers<T> &other) const;
     Identifiers<T> operator +(const T &other) const;
     Identifiers<T> operator *(const T &other) const;
