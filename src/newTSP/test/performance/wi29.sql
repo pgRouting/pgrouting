@@ -1,3 +1,8 @@
+\i setup.sql
+
+SELECT plan(29);
+SET client_min_messages TO WARNING;
+
 -- http://www.math.uwaterloo.ca/tsp/world/wi29.tsp
 -- http://www.math.uwaterloo.ca/tsp/world/countries.html
 
@@ -11,8 +16,7 @@
 
 -- best 27603
 
-DROP TABLE IF EXISTS wi29;
-CREATE TABLE wi29 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
+CREATE TEMP TABLE wi29 (id BIGINT, x FLOAT, y FLOAT, the_geom geometry);
 COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 1 20833.3333 17100.0000
 2 20900.0000 17066.6667
@@ -47,27 +51,21 @@ COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 
 
 UPDATE wi29 SET the_geom = ST_makePoint(x,y);
-SET client_min_messages TO NOTICE;
 
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, randomize := false);
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, 25, randomize := false);
+CREATE OR REPLACE FUNCTION test_performance(upper_bound FLOAT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+    FOR i IN 1..29 LOOP
+        RETURN query SELECT is((SELECT agg_cost < 27603 * upper_bound  FROM pgr_eucledianTSP('select * FROM wi29', i, randomize := false) WHERE seq = 30),
+            't',
+            'i= ' || i || ' upper_bound = ' || upper_bound);
+    END LOOP;
+END;
+$BODY$ LANGUAGE plpgsql;
 
-UPDATE wi29 SET id = id + 100;
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 117, 125, randomize := false);
-SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, randomize := false);
+select test_performance(1.065);
 
+SELECT finish();
+ROLLBACK;
 
-/*
-CREATE VIEW wi29_path AS
-WITH
-results AS (
-    SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$);
-),
-geoms AS (
-    SELECT seq, node, cost, agg_cost, the_geom AS second  FROM results JOIN wi29 ON (node = id)
-),
-edges AS (
-    SELECT seq, node, ST_MakeLine(lag(second) over(), second) AS line, cost, agg_cost FROM geoms
-)
-SELECT * FROM edges;
-*/

@@ -33,6 +33,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgRouting {
 namespace tsp {
 
+std::ostream& operator<<(
+        std::ostream &log,
+        const Tour &tour) {
+    for (const auto &city : tour.cities) {
+        log << city << ", ";
+    }
+    return log;
+}
+
+
+
 void Tour::reverse(
         size_t c1,
         size_t c2) {

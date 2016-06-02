@@ -48,6 +48,11 @@ class Tour {
 
      inline size_t size() const {return cities.size();}
 
+     friend std::ostream& operator<<(
+             std::ostream &log,
+             const Tour &tour);
+
+
      friend double Dmatrix::tourCost(const Tour &tour) const;
 
 

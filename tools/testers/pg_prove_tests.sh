@@ -29,6 +29,11 @@ echo "psql -f setup_db.sql"
 run_psql -f setup_db.sql
 #pg_prove ../../src/funnyDijkstra/test/pgtap/* -d $PGDATABASE
 
+#TODO comment out peformance test before merging to MASTER
+
+pg_prove ../../src/newTSP/test/performance/* -d $PGDATABASE  -U $PGUSER
+
+pg_prove ../../src/newTSP/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 

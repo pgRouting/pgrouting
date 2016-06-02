@@ -1,14 +1,14 @@
 
 CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     coordinates_sql TEXT,
-    start_id BIGINT DEFAULT -1,
-    end_id BIGINT DEFAULT -1,
+    start_id BIGINT DEFAULT 0,
+    end_id BIGINT DEFAULT 0,
 
     max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
 
     tries_per_temperature INTEGER DEFAULT 500,
-    max_changes_per_temperature INTEGER DEFAULT 60,
-    max_consecutive_non_changes INTEGER DEFAULT 200,
+    max_changes_per_temperature INTEGER DEFAULT 150,
+    max_consecutive_non_changes INTEGER DEFAULT 500,
 
     initial_temperature FLOAT DEFAULT 100,
     final_temperature FLOAT DEFAULT 0.1,

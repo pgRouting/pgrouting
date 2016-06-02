@@ -82,9 +82,16 @@ do_pgr_eucledianTSP(
         pgRouting::tsp::eucledianDmatrix costs(coordinates);
 
         double real_cost = -1;
-        size_t idx_start = start_vid < 0? 0 : costs.get_index(start_vid);
-        size_t idx_end = end_vid < 0? 0 : costs.get_index(end_vid);
-        if (start_vid > 0 && end_vid > 0 && start_vid != end_vid) {
+        
+        
+        size_t idx_start = costs.has_id(start_vid) ?
+            costs.get_index(start_vid) : 0;
+
+        size_t idx_end = costs.has_id(end_vid) ?
+            costs.get_index(end_vid) : 0;
+
+        // size_t idx_end = end_vid < 0? 0 : costs.get_index(end_vid);
+        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
             /* An ending vertex needs to be by the starting vertex */
             real_cost = costs.distance(idx_start, idx_end);
             costs.set(idx_start, idx_end, 0);
@@ -116,8 +123,9 @@ do_pgr_eucledianTSP(
         log << tsp.get_stats();
 
         auto bestTour(tsp.get_tour());
+        log << "\nbestTour" << bestTour;
 
-        if (start_vid > 0 && end_vid > 0 && start_vid != end_vid) {
+        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
             costs.set(idx_start, idx_end, real_cost);
         }
 

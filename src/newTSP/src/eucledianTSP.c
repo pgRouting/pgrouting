@@ -90,6 +90,9 @@ process(
     if (cooling_factor <=0 || cooling_factor >=1) {
         elog(ERROR, "Condition not met: 0 < cooling_factor < 1");
     }
+    if (tries_per_temperature < 0) {
+        elog(ERROR, "Condition not met: tries_per_temperature >= 0");
+    }
     if (max_changes_per_temperature  < 1) {
         elog(ERROR, "Condition not met: max_changes_per_temperature > 0");
     }

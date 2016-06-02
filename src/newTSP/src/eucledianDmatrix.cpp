@@ -93,6 +93,12 @@ eucledianDmatrix::tourCost(const Tour &tour) const {
 
 
 
+bool
+eucledianDmatrix::has_id(int64_t id) const {
+    auto pos = std::lower_bound(ids.begin(), ids.end(), id);
+    return *pos == id;
+}
+
 size_t
 eucledianDmatrix::get_index(int64_t id) const {
     auto pos = std::lower_bound(ids.begin(), ids.end(), id);

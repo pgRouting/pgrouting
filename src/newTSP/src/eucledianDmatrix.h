@@ -57,6 +57,13 @@ class eucledianDmatrix {
     void set(size_t i, size_t j, double dist) {
         row = i; column = j; special_distance = dist;}
 
+    /*! @brief original id -> true
+     *
+     * @params [IN] id - original id
+     * @returns true if id is in the distance table
+     */
+    bool has_id(int64_t id) const;
+
     /*! @brief original id -> idx
      *
      * @params [IN] id - original id
