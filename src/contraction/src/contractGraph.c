@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
-// #define DEBUG 1
+#define DEBUG
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
@@ -84,7 +84,14 @@ process(char* edges_sql,
 #ifdef DEBUG
     pgr_edge_t *edges = NULL;
     int64_t total_tuples = 0;
-    //pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    if (num_cycles < 1) {
+        PGR_DBG("Required: atleast one cycle\n");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        pgr_SPI_finish();
+        return;
+    }
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
     //PGR_DBG("finished Loading");
 
     if (total_tuples == 0) {
@@ -94,7 +101,7 @@ process(char* edges_sql,
         pgr_SPI_finish();
         return;
     }
-    //PGR_DBG("Total %ld tuples in query:", total_tuples);
+    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     //PGR_DBG("Starting processing");
     char *err_msg = NULL;
@@ -164,11 +171,11 @@ contractGraph(PG_FUNCTION_ARGS) {
         forbidden_vertices = (int64_t*)
             pgr_get_bigIntArray(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
 
-        /*PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
+        PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
         PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
         PGR_DBG("size_contraction_order %ld ", size_contraction_order);
         PGR_DBG("num_cycles %ld ", PG_GETARG_INT64(3));
-        PGR_DBG("directed %d ", PG_GETARG_BOOL(4));*/
+        PGR_DBG("directed %d ", PG_GETARG_BOOL(4));
 
 
 

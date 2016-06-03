@@ -9,13 +9,20 @@ template <typename T>
 class Identifiers {
  public:
     const std::set<T>& ids() const;
+    typedef typename std::set<T>::iterator iterator;
+    typedef typename std::set<T>::const_iterator const_iterator;
     //! \brief Returns a boolean value true or false, to indicate whether the set is empty
     inline bool empty() const { return m_ids.empty(); }
+    inline void clear() { m_ids.clear(); }
     bool has(const T other) const;
     bool isDisjoint(const T other) const;
     bool isDisjoint(const Identifiers<T> &other) const;
     void insert(const Identifiers<T> &other);
     void insert(const T &other);
+    iterator begin() { return m_ids.begin(); }
+    const_iterator begin() const { return m_ids.begin(); }
+    iterator end() { return m_ids.end(); }
+    const_iterator end() const { return m_ids.end(); }
     bool operator ==(const Identifiers<T> &other) const;
     Identifiers<T> operator +(const T &other) const;
     Identifiers<T> operator *(const T &other) const;
@@ -30,7 +37,7 @@ class Identifiers {
     Identifiers<T>& operator *=(const Identifiers<T> &other);
     Identifiers<T>& operator -=(const Identifiers<T> &other);
     template<T>
-    friend std::ostringstream& operator << (std::ostringstream& os, const Identifiers<T>& identifiers);
+    friend std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers);
  private:
     std::set<T> m_ids;
 };
@@ -304,8 +311,8 @@ Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
 
 //! \brief Prints the set of identifiers
 template <typename T>
-std::ostringstream& operator << (std::ostringstream& os, const Identifiers<T>& identifiers) {
-    os << "Set : {";
+std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) {
+    os << "{";
     for (auto identifier : identifiers.ids()) {
         os << identifier << ", ";
     }

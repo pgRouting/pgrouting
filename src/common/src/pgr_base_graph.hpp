@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h" // for pgr_edge_t 
 
 #include "./ch_vertex.h"
+#include "./ch_edge.h"
 #include "./basic_vertex.h"
 #include "./xy_vertex.h"
 
@@ -261,15 +262,16 @@ boost::adjacency_list < boost::listS, boost::vecS,
 typedef typename graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
-    contraction::Vertex_c, Basic_edge >,
-    contraction::Vertex_c, Basic_edge > CUndirectedGraph;
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CUndirectedGraph;
 
 typedef typename graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
-    contraction::Vertex_c, Basic_edge >,
-    contraction::Vertex_c, Basic_edge > CDirectedGraph;
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CDirectedGraph;
 //@}
+
 
 namespace graph{
 
