@@ -99,16 +99,16 @@ do_pgr_eucledianTSP(
 
 
 
-        log << "Initializing tsp class --->";
+        log << "pgr_eucledianTSP Processing Information \nInitializing tsp class --->";
         pgRouting::tsp::TSP<pgRouting::tsp::eucledianDmatrix> tsp(costs);
 
 
-        log << "tsp.greedyInitial --->";
+        log << " tsp.greedyInitial --->";
         tsp.greedyInitial(idx_start);
 
 
 
-        log << "tsp.annealing --->";
+        log << " tsp.annealing --->";
         tsp.annealing(
                 initial_temperature,
                 final_temperature,
@@ -118,12 +118,11 @@ do_pgr_eucledianTSP(
                 max_consecutive_non_changes,
                 randomize,
                 time_limit);
-        log << "OK\n";
+        log << " OK\n";
         log << tsp.get_log();
         log << tsp.get_stats();
 
         auto bestTour(tsp.get_tour());
-        log << "\nbestTour" << bestTour;
 
         if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
             costs.set(idx_start, idx_end, real_cost);

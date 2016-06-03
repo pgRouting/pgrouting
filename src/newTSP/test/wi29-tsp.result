@@ -1,5 +1,6 @@
 NOTICE:  table "wi29" does not exist, skipping
-NOTICE:  Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
+NOTICE: pgr_eucledianTSP Processing Information
+Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
 
 Cycle(100)    total changes =13       8 were because  delta energy < 0
 Cycle(90)     total changes =7        3 were because  delta energy < 0
@@ -20,7 +21,6 @@ Total swaps: 28
 Total slides: 21
 Total reverses: 58
 Times best tour changed: 22
-bestTour22, 21, 20, 16, 17, 18, 14, 11, 10, 9, 5, 1, 0, 4, 7, 3, 2, 6, 8, 12, 13, 15, 23, 26, 24, 19, 25, 27, 28, 
 Best cost reached = 27601.2
 1|17|0|0
 2|18|683.333268292684|683.333268292684
@@ -52,7 +52,8 @@ Best cost reached = 27601.2
 28|22|220.141999627513|26434.9359981863
 29|21|370.56056393417|26805.4965621205
 30|17|795.67721237329|27601.1737744938
-NOTICE:  Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
+NOTICE: pgr_eucledianTSP Processing Information
+Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
 
 Cycle(100)    total changes =9        5 were because  delta energy < 0
 Cycle(90)     total changes =8        3 were because  delta energy < 0
@@ -69,7 +70,6 @@ Total swaps: 19
 Total slides: 5
 Total reverses: 29
 Times best tour changed: 19
-bestTour16, 24, 26, 23, 15, 19, 25, 27, 28, 20, 22, 21, 17, 18, 14, 12, 11, 10, 9, 5, 1, 0, 4, 7, 3, 2, 6, 8, 13, 
 Best cost reached = 29243
 1|17|0|0
 2|25|2503.88589973443|2503.88589973443
@@ -101,7 +101,8 @@ Best cost reached = 29243
 28|9|650.85409697993|25549.3966517104
 29|14|2490.66626249105|28040.0629142014
 30|17|1202.91366735569|29242.9765815571
-NOTICE:  Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
+NOTICE: pgr_eucledianTSP Processing Information
+Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
 
 Cycle(100)    total changes =9        5 were because  delta energy < 0
 Cycle(90)     total changes =8        3 were because  delta energy < 0
@@ -118,7 +119,6 @@ Total swaps: 19
 Total slides: 5
 Total reverses: 29
 Times best tour changed: 19
-bestTour16, 24, 26, 23, 15, 19, 25, 27, 28, 20, 22, 21, 17, 18, 14, 12, 11, 10, 9, 5, 1, 0, 4, 7, 3, 2, 6, 8, 13, 
 Best cost reached = 29243
 1|117|0|0
 2|125|2503.88589973443|2503.88589973443
@@ -150,7 +150,8 @@ Best cost reached = 29243
 28|109|650.85409697993|25549.3966517104
 29|114|2490.66626249105|28040.0629142014
 30|117|1202.91366735569|29242.9765815571
-NOTICE:  Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
+NOTICE: pgr_eucledianTSP Processing Information
+Initializing tsp class --->tsp.greedyInitial --->tsp.annealing --->OK
 
 Cycle(100)    total changes =11       6 were because  delta energy < 0
 Cycle(90)     total changes =7        2 were because  delta energy < 0
@@ -162,7 +163,6 @@ Total swaps: 19
 Total slides: 4
 Total reverses: 27
 Times best tour changed: 25
-bestTour5, 1, 0, 4, 3, 2, 6, 8, 7, 11, 12, 13, 16, 19, 15, 23, 26, 24, 25, 27, 28, 20, 22, 21, 17, 18, 14, 10, 9, 
 Best cost reached = 28189.8
 1|101|0|0
 2|105|2266.91173136004|2266.91173136004

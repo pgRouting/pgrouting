@@ -14,7 +14,7 @@ Traveling Sales Person
 
                                                                                                                                                                                                                                                                                
   - :ref:`pgr_newTSP` - When input is a cost matrix.
-  - :ref:`pgr_eucledianTSP` - When input are coordinates.
+  - :ref:`pgr_eucledianTSP` - When input are coordinates. (proposed)
                                                                                                                                                                                                                                                                                
 .. toctree::
     :hidden:
@@ -37,7 +37,7 @@ can be found in the book **Graph Theory (Biggs et  al. 1976)**.
 
 It is believed that the general form of the TSP have been first studied by Kalr Menger in Vienna and Harvard.
 The problem  was  later promoted by Hassler, Whitney  &  Merrill at Princeton.
-A detailed  dscription about the connection between Menger & Whitney, and the development of the  
+A detailed  description about the connection between Menger & Whitney, and the development of the  
 TSP can be found in  `On the history of combinatorial optimization (till 1960) <http://www.cwi.nl/~lex/files/histco.ps>`_
 
 Problem Definition 
@@ -55,18 +55,18 @@ Characteristics
 
 - This problem is an NP-had optimization problem.
 
-- To calculate the number of different tours through n cities:
+- To calculate the number of different tours through :math:`n` cities:
 
   - Given a starting city,
-  - There are n-1 choices for the second city,
-  - And  n-2 choices for the third city, etc.
-  - Multiplying these together we get (n-1)!  = n-1 x n-2 x n-3 x. . . x 3 x 2 x 1.
+  - There are :math:`n-1` choices for the second city,
+  - And  :math:`n-2` choices for the third city, etc.
+  - Multiplying these together we get :math:`(n-1)!  = (n-1) (n-2) . .  1`.
   - Now since our travel costs do not depend on the direction we take around the tour:
 
     - this number by 2
-    -  (n-1)!/2.
+    -  :math:`(n-1)!/2`.
 
-TSP & Simulated Annaleing
+TSP & Simulated Annealing
 .........................
 
 The simulated annealing algorithm was originally inspired from the process of
@@ -80,7 +80,7 @@ annealing in metal work.
 
 .. rubric:: Pseudocode
 
-Given an initial solution, the simulated annaeling process, will start with a high temperature
+Given an initial solution, the simulated annealing process, will start with a high temperature
 and gradually cool down until the desired temperature is reached.
 
 For each temperature, a neighbouring new solution **snew** is calculated. The higher the temperature
@@ -112,7 +112,7 @@ pgRouting Implementation
 .........................
 
 pgRouting's implementation adds some extra parameters to allow some exit controls within the
-simuated annealing procces.
+simulated annealing process.
 
 To cool down faster to the next temperature:
 
@@ -122,9 +122,9 @@ To cool down faster to the next temperature:
 This is done by doing some book keeping on the times **solution ← snew;** is executed.
 
     - max_changes_per_temperature: Increases by one when **solution** changes
-    - max_consecutive_non_changes: Reset to 0 when **solution** changes, and increaded each **try**
+    - max_consecutive_non_changes: Reset to 0 when **solution** changes, and increased each **try**
 
-Aditionally to stop the algorithm at a higher temperature than the desiered one:
+Additionally to stop the algorithm at a higher temperature than the desired one:
 
     - max_processing_time: limits the time the simulated annealing is performed.
     - book keeping is done to see if there was a change in **solution** on the last temperature
@@ -171,18 +171,18 @@ special characteristics of the problem.
 
     - this will help to set a reasonable **max_processing_time**
 
-  - `n * (n-1)`
-  - `500 * n`
+  - :math:`n * (n-1)`
+  - :math:`500 * n`
 
 - For a faster decreasing the temperature set **cooling_factor** to a smaller number,
   and set to a higher number for a slower decrease.
 
-- When for the same given data the same resulsi are needed, set **randomize** to `false`.
+- When for the same given data the same results are needed, set **randomize** to `false`.
 
-  - When esimating how long it takes to do one cycle: use `false`
+  - When estimating how long it takes to do one cycle: use `false`
 
 
-A recomendation is to play with the values and see what fits to the particular data.
+A recommendation is to play with the values and see what fits to the particular data.
 
 
 ..

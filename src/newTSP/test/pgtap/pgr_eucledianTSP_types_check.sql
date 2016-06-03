@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(27);
+SELECT plan(28);
 SET client_min_messages TO WARNING;
 
 SELECT has_function('pgr_euclediantsp');
