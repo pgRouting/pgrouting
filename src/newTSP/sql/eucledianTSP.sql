@@ -7,8 +7,8 @@ CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
 
     tries_per_temperature INTEGER DEFAULT 500,
-    max_changes_per_temperature INTEGER DEFAULT 150,
-    max_consecutive_non_changes INTEGER DEFAULT 500,
+    max_changes_per_temperature INTEGER DEFAULT 60,
+    max_consecutive_non_changes INTEGER DEFAULT 100,
 
     initial_temperature FLOAT DEFAULT 100,
     final_temperature FLOAT DEFAULT 0.1,

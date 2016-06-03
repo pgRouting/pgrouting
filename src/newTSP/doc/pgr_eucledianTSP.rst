@@ -10,32 +10,33 @@
 .. _pgr_eucledianTSP:
 
 pgr_eucledianTSP
-===============================================================================
-
-.. index:: 
-	single: pgr_tsp(sql text, start_id integer)
-    single: pgr_tsp(sql text, start_id integer, end_id integer)
-    single: pgr_tsp(matrix float[][], start integer)
-    single: pgr_tsp(matrix float[][], start integer, end integer)
-    single: pgr_makeDistanceMatrix(sqlin text)
+=============================================================================
 
 Name
 -------------------------------------------------------------------------------
 
-* ``pgr_tsp`` - Returns the best route from a start node via a list of nodes.
-* ``pgr_tsp`` - Returns the best route order when passed a disance matrix.
-* ``pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
-
+* ``pgr_eucledianTSP`` - Returns a route that visits all the points exacly once.
 
 Synopsis
 -------------------------------------------------------------------------------
 
-The travelling salesman problem (TSP) or travelling salesperson problem asks the following question: Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city? This algoritm uses simulated annealing to return a high quality approximate solution. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:
+
+  - Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
+   
+This implementation uses simulated annealing to return the approximate solution when the input is given in the form of coordinates.
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_tsp(sql text, start_id integer);
-	pgr_costResult[] pgr_tsp(sql text, start_id integer, end_id integer);
+    pgr_eucledianTSP(coordinates_sql)
+    pgr_eucledianTSP(coordinates_sql,
+        start_id, end_id,
+        max_processing_time,
+        tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
+        initial_temperature, final_temperature, cooling_factor,
+        randomize,
+    RETURS SETOF (seq, node, cost, agg_cost)
+
 
 
 Returns a set of (seq integer, id1 integer, id2 integer, cost float8) that is the best order to visit the nodes in the matrix. ``id1`` is the index into the distance matrix. ``id2`` is the point id from the sql.

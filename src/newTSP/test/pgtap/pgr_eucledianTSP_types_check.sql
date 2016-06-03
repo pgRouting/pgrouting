@@ -24,6 +24,28 @@ SELECT function_returns('pgr_euclediantsp', ARRAY[
     'boolean'
     ], 'setof record');
 
+PREPARE parameters AS
+SELECT array[
+'coordinates_sql',
+'start_id','end_id','max_processing_time',
+'tries_per_temperature',
+'max_changes_per_temperature',
+'max_consecutive_non_changes',
+'initial_temperature',
+'final_temperature',
+'cooling_factor',
+'randomize',
+'seq',
+'node',
+'cost',
+'agg_cost'];
+
+SELECT set_eq(
+    $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_euclediantsp'$$,
+    'parameters');
+
+
+
 CREATE TEMP TABLE coords AS
 SELECT id, ST_X(the_geom) AS x, ST_Y(the_geom) AS y
 FROM edge_table_vertices_pgr;
@@ -38,19 +60,19 @@ query TEXT;
 p TEXT;
 BEGIN
     start_sql = 'select * from ' || fn || '($$ SELECT ';
-    FOREACH  p IN ARRAY params LOOP
+        FOREACH  p IN ARRAY params LOOP
         IF p = parameter THEN CONTINUE;
-        END IF;
-        start_sql = start_sql || p || ', ';
-    END LOOP;
-    end_sql = ' FROM coords $$, randomize := false)';
-    
+    END IF;
+    start_sql = start_sql || p || ', ';
+END LOOP;
+end_sql = ' FROM coords $$, randomize := false)';
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -72,19 +94,19 @@ query TEXT;
 p TEXT;
 BEGIN
     start_sql = 'select * from ' || fn || '($$ SELECT ';
-    FOREACH  p IN ARRAY params LOOP
+        FOREACH  p IN ARRAY params LOOP
         IF p = parameter THEN CONTINUE;
-        END IF;
-        start_sql = start_sql || p || ', ';
-    END LOOP;
-    end_sql = ' FROM coords $$, randomize := false)';
-    
+    END IF;
+    start_sql = start_sql || p || ', ';
+END LOOP;
+end_sql = ' FROM coords $$, randomize := false)';
+
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::INTEGER ' || end_sql;
     RETURN query SELECT lives_ok(query);
-    
+
     query := start_sql || parameter || '::BIGINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
 
@@ -178,10 +200,10 @@ SELECT throws_ok($$
     'Condition not met: final_temperature > 0',
     'SHOULD throw because final_temperature has illegal value');
 
-    /*
-    initial_temperature FLOAT DEFAULT 100,
-    final_temperature FLOAT DEFAULT 0.1,
-     */
+/*
+initial_temperature FLOAT DEFAULT 100,
+final_temperature FLOAT DEFAULT 0.1,
+ */
 
 
 SELECT finish();
