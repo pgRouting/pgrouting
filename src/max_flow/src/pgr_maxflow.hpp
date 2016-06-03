@@ -44,17 +44,105 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if 0
 #include "./../../common/src/signalhandler.h"
 #endif
+#include "./../../common/src/pgr_types.h"
 
 
 // user's functions
 // for development
 
-
-
-
 typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS> Traits;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS, boost::no_property,
-        boost::property<boost::edge_capacity_t, long,
-                boost::property<boost::edge_residual_capacity_t, long,
-                        boost::property<boost::edge_reverse_t, Traits::edge_descriptor> > > > FlowGraph;
+                              boost::property<boost::edge_capacity_t, long,
+                                              boost::property<boost::edge_residual_capacity_t, long,
+                                                              boost::property<boost::edge_reverse_t,
+                                                                              Traits::edge_descriptor> > > > FlowGraph;
 
+
+template<class G>
+class PgrFlowGraph {
+ public:
+  G boost_graph;
+
+  typedef typename boost::graph_traits<G>::vertex_descriptor V;
+  typedef typename boost::graph_traits<G>::edge_descriptor E;
+
+  typename boost::property_map<G, boost::edge_capacity_t>::type capacity;
+  typename boost::property_map<G, boost::edge_reverse_t>::type rev;
+  typename boost::property_map<G, boost::edge_residual_capacity_t>::type residual_capacity;
+
+  std::map<int64_t, V> id_to_V;
+  std::map<V, int64_t> V_to_id;
+
+  V source_vertex;
+  V sink_vertex;
+
+  V getV(int64_t id) {
+      return this->id_to_V.find(id)->second;
+  }
+
+  int64_t getid(V v) {
+      return this->V_to_id.find(v)->second;
+  }
+
+  void create_flow_graph(pgr_edge_t *data_edges, size_t total_tuples, int64_t source, int64_t sink) {
+      std::set<int64_t> vertices;
+      vertices.insert(source);
+      vertices.insert(sink);
+      for (size_t i = 0; i < total_tuples; ++i) {
+          vertices.insert(data_edges[i].source);
+          vertices.insert(data_edges[i].target);
+      }
+      for (int64_t id : vertices) {
+          V v = add_vertex(this->boost_graph);
+          this->id_to_V.insert(std::pair<int64_t, V>(id, v));
+          this->V_to_id.insert(std::pair<V, int64_t>(v, id));
+      }
+      this->source_vertex = this->getV(source);
+      this->sink_vertex = this->getV(sink);
+
+      this->capacity = get(boost::edge_capacity, this->boost_graph);
+      this->rev = get(boost::edge_reverse, this->boost_graph);
+      this->residual_capacity = get(boost::edge_residual_capacity, this->boost_graph);
+
+      for (size_t i = 0; i < total_tuples; ++i) {
+          bool added;
+          V v1 = this->id_to_V.find(data_edges[i].source)->second;
+          V v2 = this->id_to_V.find(data_edges[i].target)->second;
+          if (data_edges[i].cost > 0) {
+              E e1, e1_rev;
+              boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
+              boost::tie(e1_rev, added) = boost::add_edge(v2, v1, this->boost_graph);
+              this->capacity[e1] = (long) data_edges[i].cost;
+              this->capacity[e1_rev] = 0;
+              this->rev[e1] = e1_rev;
+              this->rev[e1_rev] = e1;
+          }
+          if (data_edges[i].reverse_cost > 0) {
+              E e2, e2_rev;
+              boost::tie(e2, added) = boost::add_edge(v2, v1, this->boost_graph);
+              boost::tie(e2_rev, added) = boost::add_edge(v1, v2, this->boost_graph);
+              this->capacity[e2] = (long) data_edges[i].reverse_cost;
+              this->capacity[e2_rev] = 0;
+              this->rev[e2] = e2_rev;
+              this->rev[e2_rev] = e2;
+          }
+      }
+  }
+
+  std::vector<pgr_flow_t> get_flow_edges(){
+      std::vector<pgr_flow_t> flow_edges;
+      typename boost::graph_traits<G>::edge_iterator e, e_end;
+      for(boost::tie(e, e_end) = boost::edges(this->boost_graph); e != e_end; ++e){
+          if (this->capacity[*e] - this->residual_capacity[*e] > 0){
+              pgr_flow_t edge;
+              edge.tail = this->getid((*e).m_source);
+              edge.head = this->getid((*e).m_target);
+              edge.flow = this->capacity[*e] - this->residual_capacity[*e];
+              edge.residual_capacity = this->residual_capacity[*e];
+              flow_edges.push_back(edge);
+          }
+      }
+      return flow_edges;
+  }
+
+};

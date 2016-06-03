@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
---CREATE OR REPLACE FUNCTION pgr_maxFlow(
+--CREATE OR REPLACE FUNCTION pgr_maxflow(
 --    edges_sql TEXT,
 --    source BIGINT,
 --    sink BIGINT,
@@ -35,6 +35,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --    )
 --  RETURNS SETOF RECORD AS
 -- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow'
+--    LANGUAGE c IMMUTABLE STRICT;
+
+--CREATE OR REPLACE FUNCTION pgr_edmondskarp(
+--    edges_sql TEXT,
+--    source BIGINT,
+--    sink BIGINT,
+--    OUT tail BIGINT,
+--    OUT head BIGINT,
+--    OUT flow integer,
+--    OUT residual_capacity integer
+--    )
+--  RETURNS SETOF RECORD AS
+-- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_edmonds_karp'
 --    LANGUAGE c IMMUTABLE STRICT;
 
 CREATE OR REPLACE FUNCTION pgr_pushrelabel(
