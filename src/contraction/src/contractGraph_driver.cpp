@@ -52,6 +52,7 @@ extern "C" {
 
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/identifiers.hpp"
 
 
 /************************************************************
@@ -128,6 +129,8 @@ do_pgr_contractGraph(
         log << "directed " << directed << "\n";
         log << "gType " << gType << "\n";
         log << "total_tuples " << initial_size << "\n";
+
+           
         #if 0
         if (total_edges == 1) {
             log << "Requiered: more than one tuple\n";
@@ -150,10 +153,7 @@ do_pgr_contractGraph(
 //#if 0
             pgRouting::CHDirectedGraph digraph(vertices, gType);
             digraph.graph_insert_data(data_edges, total_edges);
-            //digraph.print_graph(log);
-            //log << digraph;
-
-            log << "Checking for valid forbidden vertices\n";
+             log << "Checking for valid forbidden vertices\n";
             for (size_t i = 0; i < size_forbidden_vertices; ++i) {
                 if (!digraph.has_vertex(forbidden_vertices[i]))
                 {
@@ -162,6 +162,11 @@ do_pgr_contractGraph(
                     return;
                 }
             }
+            Identifiers<int64_t> forbid_vertices(forbidden_vertices,
+                size_forbidden_vertices);
+            //digraph.print_graph(log);
+            //log << digraph;
+
            // digraph.print_graph(log);
 #endif
 #if 0
@@ -175,7 +180,7 @@ do_pgr_contractGraph(
 //#if 0
             log << "Calling contraction\n";
             pgr_contractGraph(digraph,
-                forbidden_vertices, size_forbidden_vertices, 
+                forbid_vertices, 
                 contraction_order, size_contraction_order,
                 max_cycles, contracted_graph_name, contracted_graph_blob,
                 removedEdges, removedVertices, psuedoEdges, debug);
@@ -188,12 +193,22 @@ do_pgr_contractGraph(
 //#if 0
             pgRouting::CHUndirectedGraph undigraph(vertices, gType);
             undigraph.graph_insert_data(data_edges, total_edges);
-
+             log << "Checking for valid forbidden vertices\n";
+            for (size_t i = 0; i < size_forbidden_vertices; ++i) {
+                if (!undigraph.has_vertex(forbidden_vertices[i]))
+                {
+                    log << "Invalid forbidden vertex: " << forbidden_vertices[i] << "\n";
+                    *err_msg = strdup(log.str().c_str());
+                    return;
+                }
+            }
+            Identifiers<int64_t> forbid_vertices(forbidden_vertices,
+                size_forbidden_vertices);
             //log << undigraph;
             // undigraph.print_graph_c(log);
             /* Function call to get the contracted graph. */
             pgr_contractGraph(undigraph,
-                forbidden_vertices, size_forbidden_vertices, 
+                forbid_vertices, 
                 contraction_order, size_contraction_order,
                 max_cycles, contracted_graph_name, contracted_graph_blob,
                 removedEdges, removedVertices, psuedoEdges, debug);

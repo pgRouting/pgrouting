@@ -8,6 +8,13 @@
 template <typename T>
 class Identifiers {
  public:
+    Identifiers<T>() = default;
+    Identifiers<T>(T* container, size_t size) {
+        for (size_t i = 0; i < size; ++i)
+        {
+            m_ids.insert(container[i]);
+        }
+    }
     const std::set<T>& ids() const;
     typedef typename std::set<T>::iterator iterator;
     typedef typename std::set<T>::const_iterator const_iterator;
@@ -41,6 +48,9 @@ class Identifiers {
  private:
     std::set<T> m_ids;
 };
+
+
+
 
 //! \brief Returns a set of identifiers of type *set<T>*
 template <typename T>
