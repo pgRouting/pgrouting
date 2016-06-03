@@ -47,13 +47,12 @@ extern "C" {
 template < class G > class Pgr_contract;
 
 template < class G >
-void perform_deadEnd(G &graph, int64_t *forbidden_vertices,
-    size_t size_forbidden_vertices,
+void perform_deadEnd(G &graph, Identifiers<int64_t> forbidden_vertices,
     std::ostringstream& debug)
 {
     pgRouting::Pgr_deadEndContraction<G> deadendContractor;
-    deadendContractor.setForbiddenVertices(graph, forbidden_vertices, 
-        size_forbidden_vertices, debug);
+    deadendContractor.setForbiddenVertices(graph, forbidden_vertices
+        , debug);
     deadendContractor.calculateVertices(graph, debug);
     try
     {
@@ -70,8 +69,7 @@ void perform_deadEnd(G &graph, int64_t *forbidden_vertices,
 
 template < class G >
 void pgr_contractGraph(
-    G &graph, int64_t *forbidden_vertices,
-    size_t size_forbidden_vertices,
+    G &graph, Identifiers<int64_t> forbidden_vertices,
     int64_t *contraction_order,
     size_t size_contraction_order,
     int64_t max_cycles,
@@ -130,8 +128,7 @@ void pgr_contractGraph(
                     debug << "Graph before dead end contraction" << std::endl;
                     debug << graph.print_graph(debug) << std::endl;
                     debug << "Performing dead end contraction" << std::endl;
-                    perform_deadEnd(graph, forbidden_vertices,
-                        size_forbidden_vertices, debug);
+                    perform_deadEnd(graph, forbidden_vertices, debug);
                     debug << "Graph after dead end contraction" << std::endl;
                     debug << graph.print_graph(debug) << std::endl;
                 }
