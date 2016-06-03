@@ -16,18 +16,19 @@ The control parameters are optional, and have a default value.
 =============================== ===========  ============  =================================================
 Parameter                       Type         Default       Description
 =============================== ===========  ============  =================================================
+**start_vid**                   ``BIGINT``    `0`          The greedy part of the implementation will use this identifier.
+**end_vid**                     ``BIGINT``    `0`          Last visiting vertex before returning to start_vid.
+**max_processing_time**         ``FLOAT``    `+infinity`   Stop the annealing processing when the value is reached.
+**tries_per_temperature**       ``INTEGER``  `500`         Maximum number of times a neighbor(s) is searched in each temperature.
+**max_changes_per_temperature** ``INTEGER``  `60`          Maximum number of times the solution is changed in each temperature.
+**max_consecutive_non_changes** ``INTEGER``  `100`         Maximum number of consecutive times the solution is not changed in each temperature.
+**initial_temperature**         ``FLOAT``    `100`         Starting temperature.
+**final_temperature**           ``FLOAT``    `0.1`         Ending temperature.
+**cooling_factor**              ``FLOAT``    `0.9`         Value between between 0 and 1 (not including) used to calculate the next temperature.
 **randomize**                   ``BOOLEAN``  `true`        Choose the random seed
 
                                                              - true: Use current time as seed
                                                              - false: Use `1` as seed. Using this value will get the same results with the same data in each execution.
 
-**max_processing_time**         ``FLOAT``    `+infinity`   Stop the annealing processing when the value is reached.
-**initial_temperature**         ``FLOAT``    `100`         Starting temperature.
-**final_temperature**           ``FLOAT``    `0.1`         Ending temperature.
-**cooling_factor**              ``FLOAT``    `0.9`         Value between between 0 and 1 (not including) used to calculate the next temperature.
-**tries_per_temperature**       ``INTEGER``  `500`         Maximum number of times a neighbor(s) is searched in each temperature.
-**max_changes_per_temperature** ``INTEGER``  `60`          Maximum number of times the solution is changed in each temperature.
-**max_consecutive_non_changes** ``INTEGER``  `200`         Maximum number of consecutive times the solution is not changed in each temperature.
-**randomize**                   ``BOOLEAN``  `true`        Choose the random seed
 =============================== ===========  ============  =================================================
 
