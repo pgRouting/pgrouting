@@ -116,11 +116,18 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      std::ostream& print_graph(std::ostream &log) {
 
          EO_i out, out_end;
+         log << "Vertices\n";
+         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+             if ((*vi) >= this->m_num_vertices) break;
+             log << this->graph[(*vi)];
+         }
 
+
+         log << "Edges\n";
          for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
              if ((*vi) >= this->m_num_vertices) break;
              //log << this->graph[(*vi)].print_vertex(log, this->graph);
-             log << this->graph[(*vi)];
+             //log << this->graph[(*vi)];
              log << " out_edges_of(" << this->graph[(*vi)].id << "):";
              for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
                      out != out_end; ++out) {
@@ -168,7 +175,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
         
             //#endif
-        #if 0
+        #if 1
         // delete incomming and outgoing edges from the vertex
         try
         {
