@@ -150,7 +150,18 @@ do_pgr_contractGraph(
 //#if 0
             pgRouting::CHDirectedGraph digraph(vertices, gType);
             digraph.graph_insert_data(data_edges, total_edges);
+            //digraph.print_graph(log);
             //log << digraph;
+
+            log << "Checking for valid forbidden vertices\n";
+            for (size_t i = 0; i < size_forbidden_vertices; ++i) {
+                if (!digraph.has_vertex(forbidden_vertices[i]))
+                {
+                    log << "Invalid forbidden vertex: " << forbidden_vertices[i] << "\n";
+                    *err_msg = strdup(log.str().c_str());
+                    return;
+                }
+            }
            // digraph.print_graph(log);
 #endif
 #if 0
@@ -162,6 +173,7 @@ do_pgr_contractGraph(
             */
 #ifdef DEBUG
 //#if 0
+            log << "Calling contraction\n";
             pgr_contractGraph(digraph,
                 forbidden_vertices, size_forbidden_vertices, 
                 contraction_order, size_contraction_order,

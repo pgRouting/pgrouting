@@ -157,15 +157,29 @@ void Pgr_deadEndContraction<G>::doContraction(G &graph,
     std::ostringstream& debug){
     debug << "Performing contraction\n";
 	for (auto deadendVertex : deadendVertices) {
+        
             V current_vertex = deadendVertex;
             V adjacent_vertex = graph.find_adjacent_vertex(current_vertex);
-            debug << "Current Vertex: "<< graph[current_vertex].id << "\n";
-            debug << "Adjacent Vertex: "<< graph[adjacent_vertex].id << "\n";
-            #if 0
+            
+            debug << "Current Vertex: "<< graph[current_vertex].id << std::endl;
+            debug << "Adjacent Vertex: "<< graph[adjacent_vertex].id << std::endl;
+            
+            debug << "Contracting current vertex "<< graph[current_vertex].id << std::endl;
+            #if 1
             graph[adjacent_vertex].add_contracted_vertex(graph[current_vertex], current_vertex); 
-        	graph.disconnect_vertex(current_vertex);
-        	add_if_dead_end(graph, adjacent_vertex, debug);
+            
+            debug << "Current Vertex:\n";
+            debug << graph[current_vertex];
+            //debug << graph.graph[current_vertex].print_vertex(debug, graph.graph);
+            debug << "Adjacent Vertex:\n";
+            //debug << graph.graph[adjacent_vertex].print_vertex(debug, graph.graph);
+            debug << graph[adjacent_vertex];
+            
             #endif
+             
+            
+            debug << graph.disconnect_vertex(debug, current_vertex) << std::endl;
+        	//add_if_dead_end(graph, adjacent_vertex, debug);
         }
 }
 

@@ -45,6 +45,25 @@ std::ostream& operator <<(std::ostream& os, const Vertex& v) {
     return os;
 }
 
+template < typename G >
+std::ostream& Vertex::print_vertex(std::ostream& os, G &graph) {
+    os << "{\n    id: " << id << ",\n";
+    os << "    contracted vertices: {";
+    for (auto vertex : contracted_vertices()) {
+            os << graph[vertex].id << ", ";
+        }
+    //os << v.contracted_vertices();
+    // <<  ", type: " << v.type_str();
+    //os << ", isDeleted: " << v.isDeleted();
+    /*os << " removed_vertices: {";
+    for (auto removed_vertex : v.removed_vertices().ids()) {
+        os << removed_vertex << ", ";
+    }*/
+    os << "\n}";
+    os << "\n";
+    return os;
+}
+
 size_t
 check_vertices(
     std::vector < Vertex > vertices) {

@@ -40,9 +40,33 @@ extern "C" {
 }
 
 #include "./pgr_contractionGraph.hpp"
+#include "./pgr_deadEndContraction.hpp"
 #include "../../common/src/pgr_assert.h"
 
+
 template < class G > class Pgr_contract;
+
+template < class G >
+void perform_deadEnd(G &graph, int64_t *forbidden_vertices,
+    size_t size_forbidden_vertices,
+    std::ostringstream& debug)
+{
+    pgRouting::Pgr_deadEndContraction<G> deadendContractor;
+    deadendContractor.setForbiddenVertices(graph, forbidden_vertices, 
+        size_forbidden_vertices, debug);
+    deadendContractor.calculateVertices(graph, debug);
+    try
+    {
+        #if 1
+        deadendContractor.doContraction(graph, debug);
+        #endif
+    }
+    catch ( ... ) {
+        debug << "Caught unknown expection!\n";
+    }
+}
+
+
 
 template < class G >
 void pgr_contractGraph(
@@ -59,7 +83,7 @@ void pgr_contractGraph(
     std::ostringstream& debug) {
 
     //typedef typename G::V V;
-    Pgr_contract< G > fn_contract;
+    //Pgr_contract< G > fn_contract;
 
    /* debug << "Forbidden vertices\n" <<   " { \n";
         for (int64_t i = 0; i < size_forbidden_vertices; ++i) {
@@ -72,13 +96,14 @@ void pgr_contractGraph(
         The forbidden vertices and all vertices are
         computed before contraction
     */
+    #if 0
     debug << "Forbidden vertices" << "\n";
     fn_contract.setForbiddenVertices(forbidden_vertices,size_forbidden_vertices);
     fn_contract.print_forbidden_vertices(debug);
     debug << "All vertices" << "\n";
     fn_contract.getAllVertices(graph);
     fn_contract.print_all_vertices(debug);
-    
+    #endif
 
     std::deque<int64_t> contract_order;
     // push -1 to indicate the start of the queue
@@ -95,17 +120,28 @@ void pgr_contractGraph(
         while (front != -1) {
             switch (front) {
                 case -1:
-                debug << "Finished cycle " << i+1 << "\n";
+                debug << "Finished cycle " << i+1 << std::endl;
                 break;
                 default:
-                debug << "contraction "<< front << " asked" << "\n";
+                debug << "contraction "<< front << " asked" << std::endl;
+                if (front == 0)
+                {
+
+                    debug << "Graph before dead end contraction" << std::endl;
+                    debug << graph.print_graph(debug) << std::endl;
+                    debug << "Performing dead end contraction" << std::endl;
+                    perform_deadEnd(graph, forbidden_vertices,
+                        size_forbidden_vertices, debug);
+                    debug << "Graph after dead end contraction" << std::endl;
+                    debug << graph.print_graph(debug) << std::endl;
+                }
                 contract_order.pop_front();
                 contract_order.push_back(front);
                 front = contract_order.front();
             }
         }
     }
-    
+    #if 0
     debug << "Dead end set" << "\n";
     fn_contract.getDeadEndSet(graph);
     fn_contract.print_dead_end_vertices(debug);
@@ -114,6 +150,7 @@ void pgr_contractGraph(
     fn_contract.print_non_contracted_vertices(debug);
     debug << "Adjacent vertices of vertex 6" << "\n";
     fn_contract.print_identifiers(debug, fn_contract.getAdjacentVertices(graph, 6));
+    #endif
     #if 0
     fn_contract.calculateDegrees(graph);
     //fn_contract.degreeMap(graph, debug);
