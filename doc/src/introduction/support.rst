@@ -63,16 +63,13 @@ For users who require professional support, development and consulting services,
      - **Website**
    * - Georepublic
      - Germany, Japan
-     - http://georepublic.info
+     - https://georepublic.info
    * - iMaptools
      - United States
      - http://imaptools.com
-   * - Paaragon Corporation
+   * - Paragon Corporation
      - United States
-     - http://www.paragoncorporation.com/
-   * - Orkney Inc.
-     - Japan
-     - http://www.orkney.co.jp
+     - http://www.paragoncorporation.com
    * - Camptocamp
      - Switzerland, France
      - http://www.camptocamp.com
