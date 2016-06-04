@@ -67,6 +67,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      typedef typename boost::graph_traits < G >::edge_iterator E_i;
      typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
      typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
+     Identifiers<V> removed_vertices;
      Pgr_contractionGraph< G , T_V, T_E >(const std::vector< T_V > &vertices, graphType gtype)
      : Pgr_base_graph< G , T_V, T_E >(vertices, gtype) {
      }
@@ -113,13 +114,14 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return this->graph[v];
      }
 
-     void print_graph(std::ostream &log) {
+     void print_graph(std::ostringstream &log) {
 
          EO_i out, out_end;
          log << "Vertices\n";
          for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
              if ((*vi) >= this->m_num_vertices) break;
              log << this->graph[(*vi)];
+             log << this->graph[(*vi)].id << ": " << this->has_vertex(this->graph[(*vi)].id) << std::endl; 
          }
 
 
@@ -139,13 +141,22 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
      }
 
-     void disconnect_vertex(std::ostream &log, V vertex) {
+     void print_contracted_vertices(std::ostringstream &log, int64_t vertex_id) {
+         if (!this->has_vertex(vertex_id)) return;
+         V v = this->get_V(vertex_id);
+        log << " {";
+        for (auto vertex : this->graph[v].contracted_vertices()) {
+            log << this->graph[vertex].id << ", ";
+        }
+        log << "}";
+         
+     }
+     void disconnect_vertex(std::ostringstream &log, V vertex) {
         
         T_E d_edge;
         EO_i out, out_end;
         log << "Disconnecting current vertex " << this->graph[vertex].id << "\n";
-        
-        
+        removed_vertices += vertex;
         // store the edges that are going to be removed
         //#if 0
         for (boost::tie(out, out_end) = out_edges(vertex, this->graph);
@@ -178,15 +189,50 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         // delete incomming and outgoing edges from the vertex
         try
         {
-
             boost::clear_vertex(vertex, this->graph);
+            //print_graph(log );
         }
         catch ( ... ) {
             log << "Caught unknown expection!\n";
         }
         //log << "Disconnected current vertex " << this->graph[vertex].id << "\n";
         #endif
-        log << "return disconnect_vertex\n";
+        //log << "return disconnect_vertex\n";
+    }
+
+    void get_remaining_vertices(std::ostringstream& log, 
+        std::vector<T_V>& remaining_vertices) {
+        //log << "remaining_vertices\n";
+        for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+            if (!removed_vertices.has(*vi))
+            {
+                //log << this->graph[*vi].id << "\n";
+                remaining_vertices.push_back(this->graph[*vi]);
+            }
+        }
+        //return remaining_vertices;
+    }
+
+    void get_remaining_vertices(std::ostringstream& log, 
+        Identifiers<int64_t>& remaining_vertices) {
+        log << "remaining_vertices\n";
+        for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+            if (!removed_vertices.has(*vi))
+            {
+                //log << this->graph[*vi].id << "\n";
+                remaining_vertices += this->graph[*vi].id;
+            }
+        }
+        //return remaining_vertices;
+    }
+    void get_boost_ids(Identifiers<int64_t> user_ids, std::ostringstream& log)
+    {
+        Identifiers<V> boost_ids;
+        for (auto id: user_ids)
+        {
+            boost_ids += this->get_V(id);
+        }
+        log << boost_ids;
     }
 };
 
