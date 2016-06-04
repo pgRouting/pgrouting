@@ -16,6 +16,7 @@ class Identifiers {
         }
     }
     const std::set<T>& ids() const;
+    size_t size() const { return m_ids.size(); }
     typedef typename std::set<T>::iterator iterator;
     typedef typename std::set<T>::const_iterator const_iterator;
     //! \brief Returns a boolean value true or false, to indicate whether the set is empty
