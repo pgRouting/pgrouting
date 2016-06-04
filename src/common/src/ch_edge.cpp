@@ -1,25 +1,38 @@
 #include "./ch_edge.h"
 namespace pgRouting
 {
-void Edge_c::cp_members(const Edge_c &other) {
+namespace contraction {
+
+void Edge::cp_members(const Edge &other) {
         this->id = other.id;
+        this->source = other.source;
+        this->target = other.target;
         this->cost = other.cost;
-        //this.set_edge_type(other.type());
     }
-void Edge_c::cp_members(const Basic_edge &other) {
-        this->id = other.id;
+void Edge::cp_members(const Basic_edge &other) {
+         this->id = other.id;
+        this->source = other.source;
+        this->target = other.target;
         this->cost = other.cost;
-        //this.set_edge_type(other.type());
     }
 
-const Removed_vertices& Edge_c::removed_vertices() const { 
-    return m_removed_vertices; 
+const Identifiers<int64_t>& Edge::contracted_vertices() const { 
+    return m_contracted_vertices; 
 }
 
 
-void Edge_c::add_contracted_vertex(Vertex_c v) {
+void Edge::add_contracted_vertex(Vertex& v, int64_t vid) {
+    // adding the id(boost graph) of the contracted vertex v
+    m_contracted_vertices += vid;
+
+    //adding the ids of the contracted vertices of the given vertex v
+    m_contracted_vertices += v.contracted_vertices();
+
+    // empty the contracted vertices of the given vertex v
+    v.clear_contracted_vertices();
 }
 
+#if 0
 const std::string Edge_c::type_str() const {
     switch (Edge_c::type()) {
         case Edge_c::Edge_type::ordinary:
@@ -30,17 +43,25 @@ const std::string Edge_c::type_str() const {
             return "Undefined Edge";
     }
 }
+#endif
 
 
-std::ostream& operator <<(std::ostream& os, const Edge_c& e) {
-    os << "{ id: " << e.id; //<< ", type: " << e.type_str();
-    //os << ", isDeleted: " << e.isDeleted();
-    /*os << ", removed_vertices: {";
-    for (auto removed_vertex : e.removed_vertices().ids()) {
+std::ostream& operator <<(std::ostream& os, const Edge& e) {
+    os << "{\n    id: " << e.id << ",\n";
+    os << "{\n    source: " << e.source << ",\n";
+    os << "{\n    target: " << e.target << ",\n";
+    os << "{\n    cost: " << e.cost << ",\n";
+    os << "    contracted vertices: ";
+    os << e.contracted_vertices();
+    // <<  ", type: " << v.type_str();
+    //os << ", isDeleted: " << v.isDeleted();
+    /*os << " removed_vertices: {";
+    for (auto removed_vertex : v.removed_vertices().ids()) {
         os << removed_vertex << ", ";
-    }
-    os << "} }";*/
-    os << '\n';
+    }*/
+    os << "\n}";
+    os << "\n";
     return os;
 }
-}
+}  // namespace contraction
+}  // namespace pgRouting
