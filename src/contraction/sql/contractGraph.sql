@@ -33,11 +33,10 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     contraction_order ANYARRAY,
     max_cycles BIGINT,
     directed BOOLEAN DEFAULT true,
-    OUT contracted_graph_name TEXT,
-    OUT contracted_graph_blob TEXT,
-    OUT removedVertices TEXT,
-    OUT removedEdges TEXT,
-    OUT psuedoEdges TEXT)
+    OUT seq integer,
+    OUT id BIGINT,
+    OUT type TEXT,
+    OUT contracted_vertices TEXT)
 
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'contractGraph'
