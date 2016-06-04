@@ -51,8 +51,10 @@ void perform_deadEnd(G &graph, Identifiers<int64_t> forbidden_vertices,
     std::ostringstream& debug)
 {
     pgRouting::Pgr_deadEndContraction<G> deadendContractor;
+    debug << "Setting forbidden_vertices";
     deadendContractor.setForbiddenVertices(graph, forbidden_vertices
         , debug);
+
     deadendContractor.calculateVertices(graph, debug);
     try
     {
@@ -126,11 +128,11 @@ void pgr_contractGraph(
                 {
 
                     debug << "Graph before dead end contraction" << std::endl;
-                    debug << graph.print_graph(debug) << std::endl;
+                    graph.print_graph(debug);
                     debug << "Performing dead end contraction" << std::endl;
                     perform_deadEnd(graph, forbidden_vertices, debug);
                     debug << "Graph after dead end contraction" << std::endl;
-                    debug << graph.print_graph(debug) << std::endl;
+                    graph.print_graph(debug);
                 }
                 contract_order.pop_front();
                 contract_order.push_back(front);

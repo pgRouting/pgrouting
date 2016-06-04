@@ -113,7 +113,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return this->graph[v];
      }
 
-     std::ostream& print_graph(std::ostream &log) {
+     void print_graph(std::ostream &log) {
 
          EO_i out, out_end;
          log << "Vertices\n";
@@ -137,10 +137,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              }
              log << std::endl;
          }
-         return log;
      }
 
-     std::ostream& disconnect_vertex(std::ostream &log, V vertex) {
+     void disconnect_vertex(std::ostream &log, V vertex) {
         
         T_E d_edge;
         EO_i out, out_end;
@@ -187,7 +186,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
         //log << "Disconnected current vertex " << this->graph[vertex].id << "\n";
         #endif
-        return log;
+        log << "return disconnect_vertex\n";
     }
 };
 

@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "../../common/src/identifiers.hpp"
+#include <queue>  
 namespace pgRouting {
 
 
@@ -157,16 +158,29 @@ namespace pgRouting {
 		void Pgr_deadEndContraction<G>::doContraction(G &graph,
 				std::ostringstream& debug){
 			debug << "Performing contraction\n";
-			for (auto deadendVertex : deadendVertices) {
+			std::priority_queue<V, std::vector<V>, std::greater<V> > deadendPriority;
+			for (V deadendVertex : deadendVertices) {
+				deadendPriority.push(deadendVertex);
+			}
+			//debug << "Dead end vertices" << std::endl;
+			//debug << deadendVertices;
+			while(!deadendPriority.empty()) {
+			//for (auto deadendVertex : deadendVertices) {
 
-				V current_vertex = deadendVertex;
+				V current_vertex = deadendPriority.top();
+				deadendPriority.pop();
+				if (!is_dead_end(graph, current_vertex, debug))
+				{
+					continue;
+				}
 				V adjacent_vertex = graph.find_adjacent_vertex(current_vertex);
-
-				debug << "Current Vertex: "<< graph[current_vertex].id << std::endl;
-				debug << "Adjacent Vertex: "<< graph[adjacent_vertex].id << std::endl;
+				//debug << "Current Vertex: "<< graph[current_vertex].id << std::endl;
+				//debug << "Adjacent Vertex: "<< graph[adjacent_vertex].id << std::endl;
+				
+				
 
 				debug << "Contracting current vertex "<< graph[current_vertex].id << std::endl;
-#if 1
+
 				graph[adjacent_vertex].add_contracted_vertex(graph[current_vertex], current_vertex); 
 
 				debug << "Current Vertex:\n";
@@ -176,11 +190,31 @@ namespace pgRouting {
 				//debug << graph.graph[adjacent_vertex].print_vertex(debug, graph.graph);
 				debug << graph[adjacent_vertex];
 
-#endif
 
-
-				debug << graph.disconnect_vertex(debug, current_vertex) << std::endl;
+				
+				graph.disconnect_vertex(debug, current_vertex) ;
+				deadendVertices-=current_vertex;
+				debug << "Adjacent vertex dead_end?: " << is_dead_end(graph, adjacent_vertex, debug) << std::endl;
+				if(is_dead_end(graph, adjacent_vertex, debug)
+				 && !forbiddenVertices.has(adjacent_vertex)) {
+					deadendVertices += adjacent_vertex;
+					deadendPriority.push(adjacent_vertex);
+				}
+				//debug << "Dead end vertices" << std::endl;
+				//debug << deadendVertices;
+				#if 0
 				//add_if_dead_end(graph, adjacent_vertex, debug);
+				
+				
+				debug << "Adding if dead end\n"; 
+				if(is_dead_end(graph, adjacent_vertex, debug)) {
+					deadendVertices += adjacent_vertex;
+					deadendPriority.push(adjacent_vertex);
+				}
+				else {
+					debug << "Not dead end\n";
+				}
+				#endif
 			}
 		}
 
