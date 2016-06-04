@@ -34,16 +34,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-#define DEBUG
+//#define DEBUG
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <string.h>
 #include "./contractGraph_driver.h"
 
-#ifdef DEBUG
+//#ifdef DEBUG
 #include "./pgr_contract.hpp"
-#endif
+//#endif
 
 extern "C" {
 #include "./../../common/src/pgr_types.h"
@@ -75,16 +75,23 @@ do_pgr_contractGraph(
         char ** err_msg) {
     std::ostringstream log;
     try {
+        #if 0
         std::ostringstream contracted_graph_name;
         std::ostringstream contracted_graph_blob;
         std::ostringstream removedEdges;
         std::ostringstream removedVertices;
         std::ostringstream psuedoEdges;
         std::ostringstream dmap;
+        #endif
         std::ostringstream debug;
         graphType gType = directed? DIRECTED: UNDIRECTED;
         std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
         std::vector < pgRouting::contraction::Vertex > vertices(pgRouting::contraction::extract_vertices(edges));
+        //std::vector< pgRouting::contraction::Vertex > remaining_vertices;
+        Identifiers<int64_t> remaining_vertices;
+        #if 0
+        std::vector< pgRouting::contraction::Edge > shortcut_edges;
+        #endif
         log << "Original: \n" <<
             std::setprecision(32);
         for (const auto edge: edges) {
@@ -95,7 +102,7 @@ do_pgr_contractGraph(
                 << "\treverse_cost = " << edge.reverse_cost
                 << ")\n";
         }
-        const int initial_size = total_edges;
+        const int64_t initial_size = (int64_t)total_edges;
         // Contraction_type contraction_type_count = Contraction_type::last;
         log << "size_contraction_order " << size_contraction_order << "\n";
         // log << "greatest contraction type " << static_cast<int>(contraction_type_count) << "\n";
@@ -149,7 +156,7 @@ do_pgr_contractGraph(
         #endif
         if (directed) {
             log << "Working with directed Graph\n";
- #ifdef DEBUG
+//#ifdef DEBUG
 //#if 0
             pgRouting::CHDirectedGraph digraph(vertices, gType);
             digraph.graph_insert_data(data_edges, total_edges);
@@ -168,7 +175,7 @@ do_pgr_contractGraph(
             //log << digraph;
 
            // digraph.print_graph(log);
-#endif
+//#endif
 #if 0
             *err_msg = strdup(log.str().c_str());
             return;
@@ -176,20 +183,46 @@ do_pgr_contractGraph(
             /*
             Function call to get the contracted graph
             */
-#ifdef DEBUG
+//#ifdef DEBUG
 //#if 0
             log << "Calling contraction\n";
+            #if 0
             pgr_contractGraph(digraph,
                 forbid_vertices, 
                 contraction_order, size_contraction_order,
                 max_cycles, contracted_graph_name, contracted_graph_blob,
                 removedEdges, removedVertices, psuedoEdges, debug);
+            #endif
+            
+            pgr_contractGraph(digraph,
+                forbid_vertices, 
+                contraction_order, size_contraction_order,
+                max_cycles, remaining_vertices, debug);
             log << debug.str().c_str() << "\n";
-#endif
+            (*return_tuples) = pgr_alloc(remaining_vertices.size(), (*return_tuples));
+            size_t sequence = 0;
+            int i = 1;
+            log << "Remaining Vertices:" << "\n";
+            for (const auto vertex : remaining_vertices) {
+                log << vertex << "\n";
+            }
+            char *type, *contracted_vertices;
+            for (auto id : remaining_vertices) {
+                type = strdup("v");
+                std::ostringstream os;
+                digraph.print_contracted_vertices(os, id);
+                contracted_vertices = strdup(os.str().c_str());
+                //char *contracted_vertices = strdup("--"); 
+                (*return_tuples)[sequence] = {i, id, type, contracted_vertices};
+                ++sequence;
+            }
+
+      (*return_count) = sequence;
+//#endif
         } else {
             log << "Working with Undirected Graph\n";
             
-#ifdef DEBUG
+//#ifdef DEBUG
 //#if 0
             pgRouting::CHUndirectedGraph undigraph(vertices, gType);
             undigraph.graph_insert_data(data_edges, total_edges);
@@ -207,16 +240,45 @@ do_pgr_contractGraph(
             //log << undigraph;
             // undigraph.print_graph_c(log);
             /* Function call to get the contracted graph. */
+            #if 0
             pgr_contractGraph(undigraph,
                 forbid_vertices, 
                 contraction_order, size_contraction_order,
                 max_cycles, contracted_graph_name, contracted_graph_blob,
                 removedEdges, removedVertices, psuedoEdges, debug);
+            #endif
+            pgr_contractGraph(undigraph,
+                forbid_vertices, 
+                contraction_order, size_contraction_order,
+                max_cycles, remaining_vertices, debug);
+            log << "Size of remaining_vertices: " << remaining_vertices.size(); 
             log << debug.str().c_str() << "\n";
-#endif
+//#endif
+            (*return_tuples) = pgr_alloc(remaining_vertices.size(), (*return_tuples));
+            size_t sequence = 0;
+            int i = 1;
+            log << "Remaining Vertices:" << "\n";
+            for (const auto vertex : remaining_vertices) {
+                log << vertex << "\n";
+            }
+            char *type, *contracted_vertices;
+            for (auto id : remaining_vertices) {
+                type = strdup("v");
+                std::ostringstream os;
+                undigraph.print_contracted_vertices(os, id);
+                contracted_vertices = strdup(os.str().c_str());
+                //char *contracted_vertices = strdup("--"); 
+                (*return_tuples)[sequence] = {i, id, type, contracted_vertices};
+                ++sequence;
+            }
+
+      (*return_count) = sequence;
         }
-#ifdef DEBUG
-        (*return_tuples) = pgr_alloc(1, (*return_tuples));
+
+
+
+        
+#if 0
         (*return_tuples)->contracted_graph_name = strdup(contracted_graph_name.str().c_str());
         (*return_tuples)->contracted_graph_blob = strdup(contracted_graph_blob.str().c_str());
         (*return_tuples)->removedVertices = strdup(removedVertices.str().c_str());
