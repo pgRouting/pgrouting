@@ -47,7 +47,8 @@ extern "C" {
 template < class G > class Pgr_contract;
 
 template < class G >
-void perform_deadEnd(G &graph, Identifiers<int64_t> forbidden_vertices,
+void perform_deadEnd(G &graph,
+    Identifiers<int64_t> forbidden_vertices,
     std::ostringstream& debug)
 {
     pgRouting::Pgr_deadEndContraction<G> deadendContractor;
@@ -75,11 +76,7 @@ void pgr_contractGraph(
     int64_t *contraction_order,
     size_t size_contraction_order,
     int64_t max_cycles,
-    std::ostringstream& contracted_graph_name,
-    std::ostringstream& contracted_graph_blob,
-    std::ostringstream& removedEdges,
-    std::ostringstream& removedVertices,
-    std::ostringstream& psuedoEdges,
+    Identifiers<int64_t> &remaining_vertices,
     std::ostringstream& debug) {
 
     //typedef typename G::V V;
@@ -139,7 +136,11 @@ void pgr_contractGraph(
                 front = contract_order.front();
             }
         }
+
     }
+    graph.get_remaining_vertices(debug, remaining_vertices);
+
+    
     #if 0
     debug << "Dead end set" << "\n";
     fn_contract.getDeadEndSet(graph);

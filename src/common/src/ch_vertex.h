@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #if 0
@@ -12,6 +13,7 @@
 #include "identifiers.hpp"
 namespace pgRouting {
 namespace contraction {
+
 
 class Vertex {
  public:
@@ -28,8 +30,6 @@ class Vertex {
     void add_contracted_vertex(Vertex& v, int64_t vid);
     const Identifiers<int64_t>& contracted_vertices() const;
     void clear_contracted_vertices() { m_contracted_vertices.clear(); }
-    template < typename G >
-    std::ostream& print_vertex(std::ostream& os, G &graph);
     friend std::ostream& operator <<(std::ostream& os, const Vertex& v);
 #if 0    
     Vertex() : m_deleted(false) { }
