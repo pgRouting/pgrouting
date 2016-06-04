@@ -1,7 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: pgr_contractionGraph.c
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer: 
+Copyright (c) 2016 Rohith Reddy
+Mail: 
 
 ------
 
@@ -20,942 +26,217 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+#pragma once
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#ifdef open
+#undef open
+#endif
+#endif
 
-#ifndef SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_
-#define SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_
+#include "../../common/src/pgr_base_graph.hpp"
+namespace pgRouting {
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/graph_utility.hpp>
+namespace graph {
 
-#include <deque>
-#include <vector>
-#include <set>
-#include <map>
-#include <limits>
+template <class G, typename T_V, typename T_E>
+        class Pgr_contractionGraph;
+    }
 
-#include "./pgr_types.h"
-#include "./structs.h"
-
-
-#include "../../common/src/ch_vertex.h"
-#include "../../common/src/edge.h"
-#include "./contraction_type.hpp"
-/*! \brief boost::graph simplified to pgRouting needs
-
-  This class gives the handling basics of a boost::graph of kind G
-  where G:
-  can be an undirected graph or a directed graph.
-
-Usage:
-======
-
-Given the following types:
-~~~~{.c}
-typedef boost::adjacency_list < boost::vecS, boost::vecS,
+typedef typename graph::Pgr_contractionGraph <
+boost::adjacency_list < boost::listS, boost::vecS,
 boost::undirectedS,
-boost_vertex_t, boost_edge_t > UndirectedGraph;
+contraction::Vertex, Basic_edge >,
+contraction::Vertex, Basic_edge > CHUndirectedGraph;
 
-typedef boost::adjacency_list < boost::vecS, boost::vecS,
+typedef typename graph::Pgr_contractionGraph <
+boost::adjacency_list < boost::listS, boost::vecS,
 boost::bidirectionalS,
-boost_vertex_t, boost_edge_t > DirectedGraph;
-~~~~
+contraction::Vertex, Basic_edge >,
+contraction::Vertex, Basic_edge > CHDirectedGraph;
 
-direct usage:
----------------
+namespace graph{
 
-~~~~{.c}
-Pgr_base_graph < DirectedGraph > digraph(gType, initial_size);
-Pgr_base_graph < UndirectedGraph > undigraph(gType, initial_size);
-~~~~
-
-usage by inheritance:
----------------------
-
-~~~~{.c}
-class my_graph: public Pgr_base_graph {
-explicit my_graph(graphType gtype, const int initial_size)
-:Pgr_base_graph< G >(gtype, initial_size) {}
-// the class: my_graph will have the functionality of this class
-}
-
-my_graph < DirectedGraph > digraph(gType, initial_size);
-my_graph < UndirectedGraph > undigraph(gType, initial_size);
-~~~~
-
-*/
-
-typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
-        boost::undirectedS,
-        Vertex_c, Edge_c > CUndirectedGraph;
-
-typedef typename boost::adjacency_list < boost::vecS, boost::vecS,
-        boost::bidirectionalS,
-        Vertex_c, Edge_c > CDirectedGraph;
-
-template <class G>
-class Pgr_contractionGraph {
+template <class G, typename T_V, typename T_E>
+class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
  public:
-     /** @name Graph related types
-       Type      |     boost meaning     |   pgRouting Meaning
-       :---------: | :-------------------- | :----------------------
-       G        | boost::adjacency_list |   Graph
-       V        | vertex_descriptor     |   Think of it as local ID of a vertex
-       E        | edge_descriptor       |   Think of it as local ID of an edge
-       V_i      | vertex_iterator       |   To cycle the vertices of the Graph
-       E_i      | edge_iterator         |   To cycle the edges of the Graph
-       EO_i     | out_edge_iterator     |   To cycle the out going edges of a vertex
-       EI_i     | in_edge_iterator      |   To cycle the in coming edges of a vertex (only in bidirectional graphs)
-       */
-     //@{
-     typedef typename boost::graph_traits < G >::vertex_descriptor V;
+    typedef typename boost::graph_traits < G >::vertex_descriptor V;
      typedef typename boost::graph_traits < G >::edge_descriptor E;
      typedef typename boost::graph_traits < G >::vertex_iterator V_i;
      typedef typename boost::graph_traits < G >::edge_iterator E_i;
      typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
      typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
-
-     typedef typename boost::graph_traits < G >::vertices_size_type     vertices_size_type;
-     typedef typename boost::graph_traits < G >::edges_size_type        edges_size_type;
-     typedef typename boost::graph_traits < G >::degree_size_type       degree_size_type;
-
-     //@}
-
-     /** @name Id handling related types
-       Type      |  Meaning       |   pgRouting Meaning
-       :---------: | :------------- | :----------------------
-       id_to_V  | maps id -> V   | given an id store the V
-       V_to_id  | maps V -> id   | given a V store the id
-       LI       | Left Iterator  | iterates over id_to_V
-       RI       | right Iterator | iterates over V_to_id
-       */
-     //@{
-     typedef typename std::map< int64_t, V > id_to_V;
-     typedef typename std::map< V, int64_t > V_to_id;
-     typedef typename id_to_V::const_iterator LI;
-     typedef typename V_to_id::const_iterator RI;
-     //@}
-
-     //! @name The Graph
-     //@{
-     G graph;                //!< The graph
-     size_t m_num_vertices;  //!< number of vertices
-     graphType m_gType;      //!< type (DIRECTED or UNDIRECTED)
-     //@}
-
-     //! @name Id handling
-     //@{
-     id_to_V  vertices_map;   //!< id -> graph id
-     V_to_id  gVertices_map;  //!< graph id -> id
-     //@}
-
-     //! @name Graph Modification
-     //@{
-     //! Used for storing the removed_edges
-     std::deque<boost_edge_t> removed_edges;
-
-     //! Used for storing modified edges because of adding points
-     // TODO
-#if 0
-     std::deque<boost_edge_t> modified_edges;
-     std::deque< Point_on_edge > points;
-     // map to get wich boost edge was modified
-     std::map < int64_t, int64_t >;
-#endif
-     //@}
-
-#if 0
-     void add_point(Point_on_edge &point, int driving) {
-         // we have:
-         // point.point_id
-         // point.edge_id
-         // point.fraction
-         // Look for the edge in modified edges
-         //
-         // Driving: 0: doesnt matter (both), 1) right, 2) left
-         bool found = false;
-         int64_t edge_to_modify = 0;
-         for (const auto &edge : modified_edges) {
-             if (point.edge_id == edge.id) {
-                 found = true;
-                 break;
-             }
-             ++edge_to_modify;
-         }
-
-         //was not there so look for it in the graph
-         if (!found) {
-             E_i edge_ptr, edges_end;
-             for (boost::tie(edge_ptr, edges_end) = edges(graph);
-                     edge_ptr != edges_end; ++edge_ptr) {
-                 if (point.edge_id == edge_ptr->id) {
-                     modified_edges.push_back(*edge_ptr);
-                     boost::remove_edge(edge_ptr, graph);
-                     //delete the edge from the graph
-                     found = true;
-                     break;
-                 }
-             }
-         }
-
-         // add the point
-         int64_t vertex_id = -(points.size() + 1);
-         point.vertex_id = vertex_id;
-         points.push_back(point);
-
-         // add the vertex
-         LI vm_s;
-         vm_s = vertices_map.find(vertex_id);
-         if (vm_s == vertices_map.end()) {
-             vertices_map[vertex_id]=  m_num_vertices;
-             gVertices_map[m_num_vertices++] = vertex_id;
-             vm_s = vertices_map.find(vertex_id);
-         }
-
-         if (!found) {
-             // the vertex remains disconnected
-             // because the edge was not found
-             return;
-         }
-         
-     }
-#endif
-
-
-
-
-
-     //! @name The Graph
-     //@{
-     //! \brief Constructor
-     /*!
-       Prepares the _graph_ to be of type _gtype_ with the
-       aproximate number of vertices its coing to have as *initial_size*
-       */
-     explicit Pgr_contractionGraph< G >(graphType gtype, const int initial_size)
-         : graph(initial_size),
-         m_num_vertices(0),
-         m_gType(gtype)
-    {}
-
-     //! \brief Inserts *count* edges of type *pgr_edge_t* into the graph
-     void graph_insert_data(const pgr_edge_t *data_edges, int64_t count) {
-         for (unsigned int i = 0; i < count; ++i) {
-             graph_add_edge(data_edges[i]);
-         }
-         adjust_vertices();
-         for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
-             graph[i].id = gVertices_map.find(i)->second;
+     Identifiers<V> removed_vertices;
+     Pgr_contractionGraph< G , T_V, T_E >(const std::vector< T_V > &vertices, graphType gtype)
+     : Pgr_base_graph< G , T_V, T_E >(vertices, gtype) {
      }
 
-     void graph_insert_data( const std::vector <pgr_edge_t > &data_edges) {
-         for (const auto edge : data_edges) {
-             graph_add_edge(edge);
-         }
-         adjust_vertices();
-         for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i )
-             graph[i].id = gVertices_map.find(i)->second;
+     explicit Pgr_contractionGraph< G , T_V, T_E >(graphType gtype)
+         : Pgr_base_graph< G , T_V, T_E >(gtype) {
      }
 
-     //! \brief Disconnects all edges from p_from to p_to
-     /*!
-       - No edge is disconnected if the vertices id's do not exist in the graph
-       - All removed edges are stored for future reinsertion
-       - All parallel edges are disconnected (automatically by boost)
-
-       ![disconnect_edge(2,3) on an UNDIRECTED graph](disconnectEdgeUndirected.png)
-       ![disconnect_edge(2,3) on a DIRECTED graph](disconnectEdgeDirected.png)
-
-       @param [IN] *p_from* original vertex id of the starting point of the edge
-       @param [IN] *p_to*   original vertex id of the ending point of the edge
-       */
-     void disconnect_edge(int64_t p_from, int64_t p_to) {
-         V g_from;
-         V g_to;
-         boost_edge_t d_edge;
-         // nothing to do, the vertex doesnt exist
-         if (!get_gVertex(p_from, g_from)) return;
-         if (!get_gVertex(p_to, g_to)) return;
-         EO_i out, out_end;
-         // store the edges that are going to be removed
-         for (boost::tie(out, out_end) = out_edges(g_from, graph);
-                 out != out_end; ++out) {
-             if (target(*out, graph) == g_to) {
-                 d_edge.id = graph[*out].id;
-                 d_edge.source = graph[source(*out, graph)].id;
-                 d_edge.target = graph[target(*out, graph)].id;
-                 d_edge.cost = graph[*out].cost;
-                 //        d_edge.reverse_cost = -1;
-                 removed_edges.push_back(d_edge);
-             }
-         }
-         // the actual removal
-         boost::remove_edge(g_from, g_to, graph);
+     bool is_connected(int64_t v) const {
+        if (this->in_degree(this->get_V(v)) == 0 && this->out_degree(this->get_V(v)) == 0) {
+            return false;
+        }
+        return true;
      }
 
-
-     //! @name boost wrappers
-     //@{
-     //! \brief get the out-degree  of a vertex
-     /*!
-       \returns 0: The out degree of a vertex that its not in the graph
-
-       @param [IN] *vertex_id* original vertex id
-       */
-
-
-     degree_size_type out_degree(int64_t vertex_id) const{
-         V v_from;
-         if (!get_gVertex(vertex_id, v_from)) {
-             return 0;
-         }
-         return out_degree(v_from);
+     V find_adjacent_vertex(V v) const {
+        EO_i out, out_end;
+        EI_i in, in_end;
+        V out_vertex, in_vertex;
+        out_vertex = in_vertex = -1;
+        #if 0
+        if (!graph.get_gVertex(vertex_id, v)) {
+                return adjacent_vertices_set;
+        }
+        #endif
+        for (boost::tie(out, out_end) = out_edges(v, this->graph);
+                out != out_end; ++out) {
+                out_vertex = target(*out, this->graph);
+        }
+        for (boost::tie(in, in_end) = in_edges(v, this->graph);
+                in != in_end; ++in) {
+                in_vertex = source(*in, this->graph);
+        }
+        if (in_vertex == -1)
+            return out_vertex;
+        else if (out_vertex == -1)
+            return in_vertex;
+        else if (out_vertex == in_vertex)
+            return in_vertex;
+        return out_vertex;
      }
 
-     degree_size_type out_degree(V &v) const {
-         return boost::out_degree(v, graph);
+     T_V& operator[](V v) {
+         return this->graph[v];
      }
-     //@}
 
-
-     //! \brief Disconnects the outgoing edges with a particular original id from a vertex
-     /*!
-       - No edge is disconnected if it doesn't exist in the graph
-       - Removed edges are stored for future reinsertion
-       - all outgoing edges with the edge_id are removed if they exist
-
-       @param [IN] *vertex_id* original vertex
-       @param [IN] *edge_id* original edge_id
-       */
-     void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id) {
-         V v_from;
-         boost_edge_t d_edge;
-
-         // nothing to do, the vertex doesnt exist
-         if (!get_gVertex(vertex_id, v_from)) {
-             return;
-         }
+     void print_graph(std::ostringstream &log) {
 
          EO_i out, out_end;
-         bool change = true;
-         // store the edge that are going to be removed
-         while (change) {
-             change = false;
-             for (boost::tie(out, out_end) = out_edges(v_from, graph);
+         log << "Vertices\n";
+         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+             if ((*vi) >= this->m_num_vertices) break;
+             log << this->graph[(*vi)];
+             log << this->graph[(*vi)].id << ": " << this->has_vertex(this->graph[(*vi)].id) << std::endl; 
+         }
+
+
+         log << "Edges\n";
+         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+             if ((*vi) >= this->m_num_vertices) break;
+             //log << this->graph[(*vi)].print_vertex(log, this->graph);
+             //log << this->graph[(*vi)];
+             log << " out_edges_of(" << this->graph[(*vi)].id << "):";
+             for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
                      out != out_end; ++out) {
-                 if (graph[*out].id  == edge_id) {
-                     d_edge.id = graph[*out].id;
-                     d_edge.source = graph[source(*out, graph)].id;
-                     d_edge.target = graph[target(*out, graph)].id;
-                     d_edge.cost = graph[*out].cost;
-                     //        d_edge.reverse_cost = -1;
-                     removed_edges.push_back(d_edge);
-                     boost::remove_edge((*out), graph);
-                     change = true;
-                     break;
-                 }
-             }
-         }
-
-     }
-
-
-     //! \brief Disconnects all incomming and outgoing edges from the vertex
-     /*!
-       boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
-       simulated by disconnecting the vertex from the graph
-
-       - No edge is disconnected if the vertices id's do not exist in the graph
-       - All removed edges are stored for future reinsertion
-       - All parallel edges are disconnected (automatically by boost)
-
-       ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
-       ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
-
-       @param [IN] *p_vertex* original vertex id of the starting point of the edge
-       */
-     void disconnect_vertex(int64_t p_vertex) {
-         V g_vertex;
-         boost_edge_t d_edge;
-         // nothing to do, the vertex doesnt exist
-         if (!get_gVertex(p_vertex, g_vertex)) return;
-         EO_i out, out_end;
-         // store the edges that are going to be removed
-         for (boost::tie(out, out_end) = out_edges(g_vertex, graph);
-                 out != out_end; ++out) {
-             d_edge.id = graph[*out].id;
-             d_edge.source = graph[source(*out, graph)].id;
-             d_edge.target = graph[target(*out, graph)].id;
-             d_edge.cost = graph[*out].cost;
-             //        d_edge.reverse_cost = -1;
-             removed_edges.push_back(d_edge);
-         }
-
-         // special case
-         if (m_gType == DIRECTED) {
-             EI_i in, in_end;
-             for (boost::tie(in, in_end) = in_edges(g_vertex, graph);
-                     in != in_end; ++in) {
-                 d_edge.id = graph[*in].id;
-                 d_edge.source = graph[source(*in, graph)].id;
-                 d_edge.target = graph[target(*in, graph)].id;
-                 d_edge.cost = graph[*in].cost;
-                 //           d_edge.reverse_cost = -1;
-                 removed_edges.push_back(d_edge);
-             }
-         }
-
-         V d_vertex = boost::vertex(vertices_map.find(p_vertex)->second, graph);
-         // delete incomming and outgoing edges from the vertex
-         boost::clear_vertex(d_vertex, graph);
-     }
-
-     //! \brief Reconnects all edges that were removed
-     void restore_graph() {
-         while (removed_edges.size() != 0) {
-             graph_add_edge(removed_edges[0]);
-             removed_edges.pop_front();
-         }
-     }
-     //@}
-
-     //! @name only for stand by program
-     //@{
-     void print_graph(std::ostream &log = std::cout) const {
-         EO_i out, out_end;
-         V_i vi;
-
-         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
-             if ((*vi) >= m_num_vertices) continue;
-             log << (*vi) << " out_edges(" << graph[(*vi)].id << "):";
-             for (boost::tie(out, out_end) = out_edges(*vi, graph);
-                     out != out_end; ++out) {
-                 log << ' ' << graph[*out].id << "=(" << graph[source(*out, graph)].id
-                     << ", " << graph[target(*out, graph)].id << ") = "
-                     <<  graph[*out].cost <<'\t';
+                 log << ' ' << this->graph[*out].id << "=(" << this->graph[source(*out, this->graph)].id
+                     << ", " << this->graph[target(*out, this->graph)].id << ") = "
+                     <<  this->graph[*out].cost <<"\t";
              }
              log << std::endl;
          }
      }
-     //@}
 
-
-     bool get_gVertex(int64_t vertex_id, V &gVertex) const {
-         LI vertex_ptr = vertices_map.find(vertex_id);
-
-         if (vertex_ptr == vertices_map.end())
-             return false;
-
-         gVertex = vertex(vertex_ptr->second, graph);
-         return true;
+     void print_contracted_vertices(std::ostringstream &log, int64_t vertex_id) {
+         if (!this->has_vertex(vertex_id)) return;
+         V v = this->get_V(vertex_id);
+        log << " {";
+        for (auto vertex : this->graph[v].contracted_vertices()) {
+            log << this->graph[vertex].id << ", ";
+        }
+        log << "}";
+         
      }
+     void disconnect_vertex(std::ostringstream &log, V vertex) {
+        
+        T_E d_edge;
+        EO_i out, out_end;
+        log << "Disconnecting current vertex " << this->graph[vertex].id << "\n";
+        removed_vertices += vertex;
+        // store the edges that are going to be removed
+        //#if 0
+        for (boost::tie(out, out_end) = out_edges(vertex, this->graph);
+            out != out_end; ++out) {
 
- public:
-     int64_t
-         get_edge_id(V from, V to, float8 &distance) const {
-             E e;
-             EO_i out_i, out_end;
-             V v_source, v_target;
-             float8 minCost =  std::numeric_limits<float8>::max();
-             int64_t minEdge = -1;
-             for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
-                     out_i != out_end; ++out_i) {
-                 e = *out_i;
-                 v_target = target(e, graph);
-                 v_source = source(e, graph);
-                 if ((from == v_source) && (to == v_target)
-                         && (distance == graph[e].cost))
-                     return graph[e].id;
-                 if ((from == v_source) && (to == v_target)
-                         && (minCost > graph[e].cost)) {
-                     minCost = graph[e].cost;
-                     minEdge = graph[e].id;
-                 }
-             }
-             distance = minEdge == -1? 0: minCost;
-             return minEdge;
-         }
-
- public:
-     size_t num_vertices() const { return m_num_vertices; }
-     void
-         adjust_vertices() {
-             while (boost::num_vertices(graph) != num_vertices()) {
-                 if (boost::num_vertices(graph) > num_vertices()) {
-                     boost::remove_vertex(boost::num_vertices(graph), graph);
-                 }
-             }
-         }
-
-
-     boost_vertex_t operator[](V v) const {
-         return graph[v];
-     }
-
- private:
-
-
-     void
-         graph_add_edge(const boost_edge_t &edge ) {
-             bool inserted;
-             LI vm_s, vm_t;
-             E e;
-
-             vm_s = vertices_map.find(edge.source);
-             if (vm_s == vertices_map.end()) {
-                 vertices_map[edge.source]=  m_num_vertices;
-                 gVertices_map[m_num_vertices++] = edge.source;
-                 vm_s = vertices_map.find(edge.source);
-             }
-
-             vm_t = vertices_map.find(edge.target);
-             if (vm_t == vertices_map.end()) {
-                 vertices_map[edge.target]=  m_num_vertices;
-                 gVertices_map[m_num_vertices++] = edge.target;
-                 vm_t = vertices_map.find(edge.target);
-             }
-
-             if (edge.cost >= 0) {
-                 boost::tie(e, inserted) =
-                     boost::add_edge(vm_s->second, vm_t->second, graph);
-                 graph[e].cost = edge.cost;
-                 graph[e].id = edge.id;
-                 //graph[e].first = edge.first;
-             }
-
-         }
-
-     void
-         graph_add_edge(const pgr_edge_t &edge ) {
-             bool inserted;
-             LI vm_s, vm_t;
-             E e;
-
-             vm_s = vertices_map.find(edge.source);
-             if (vm_s == vertices_map.end()) {
-                 vertices_map[edge.source]=  m_num_vertices;
-                 gVertices_map[m_num_vertices++] = edge.source;
-                 vm_s = vertices_map.find(edge.source);
-             }
-
-             vm_t = vertices_map.find(edge.target);
-             if (vm_t == vertices_map.end()) {
-                 vertices_map[edge.target]=  m_num_vertices;
-                 gVertices_map[m_num_vertices++] = edge.target;
-                 vm_t = vertices_map.find(edge.target);
-             }
-
-             if (edge.cost >= 0) {
-                 boost::tie(e, inserted) =
-                     boost::add_edge(vm_s->second, vm_t->second, graph);
-                 graph[e].cost = edge.cost;
-                 graph[e].id = edge.id;
-                 //graph[e].first = true;
-             }
-
-             if (edge.reverse_cost >= 0) {
-                 boost::tie(e, inserted) =
-                     boost::add_edge(vm_t->second, vm_s->second, graph);
-                 graph[e].cost = edge.reverse_cost;
-                 graph[e].id = edge.id;
-                 //graph[e].first = false;
-             }
-         }
-
-
-
-
-          /****************** CONTRACTION NEEDS *****************/
- public:
-        //typedef typename std::map< int64_t, std::vector<V> > degree_to_V;
-        //degree_to_V degree_to_V_map;
-        int64_t last_edge_id;
-        typedef typename std::map< int64_t, std::vector<V> >::iterator degree_to_V_i;
-        template <class H>
-        friend std::ostringstream& operator <<(std::ostringstream& os,const Pgr_contractionGraph<H>& Graph_c);
-        //std::map<int64_t, Edge> removed_edges_c;
-        std::deque<Edge> removed_edges_c;
-
-
-        //! \brief Inserts *count* edges of type *pgr_edge_t* into the graph,their degrees
-        void graph_insert_data_c(const pgr_edge_t *data_edges, int64_t count) {
-            for (unsigned int i = 0; i < count; ++i) {
-                graph_add_edge_c(data_edges[i]);
-            }
-            adjust_vertices();
-            for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i ) {
-                graph[i].id = gVertices_map.find(i)->second;
-                // initilializing the properties of a vertex
-                //graph[i].contractions = 0;
-                //graph[i].degree = out_degree(graph[i].id);
-                //degree_to_V_map[graph[i].degree].push_back(i);
-            }
-            last_edge_id=count;
+            d_edge.id = this->graph[*out].id;
+            d_edge.source = this->graph[source(*out, this->graph)].id;
+            d_edge.target = this->graph[target(*out, this->graph)].id;
+            d_edge.cost = this->graph[*out].cost;
+            log << "Out edge: { source : "<< d_edge.source << ", target: " << d_edge.target  << "}\n";
+            this->removed_edges.push_back(d_edge);
         }
 
-        //! \brief Inserts edges of type *pgr_edge_t* into the graph from a vector of edges
-        void graph_insert_data_c( const std::vector <pgr_edge_t > &data_edges) {
-            for (const auto edge : data_edges) {
-                graph_add_edge_c(edge);
-            }
-            last_edge_id=data_edges.size();
-            adjust_vertices();
-            for ( int64_t i = 0; (unsigned int) i < gVertices_map.size(); ++i ) {
-                graph[i].id = gVertices_map.find(i)->second;
-                // initilializing the properties of a vertex
-                //graph[i].contractions = 0;
-                //graph[i].degree = out_degree(graph[i].id);
-                //degree_to_V_map[graph[i].degree].push_back(i);
-            }
-        }
-
-        bool is_connected(int64_t v) const {
-            if (graph.in_degree(v) == 0 && graph.out_degree(v) == 0) {
-                return false;
-            }
-            return true;
-        }
-
-        //! \brief Insert a single edge of type *boost_edge_t* into the graph
-        void graph_add_edge_c(const boost_edge_t &edge ) {
-                bool inserted;
-                LI vm_s, vm_t;
-                E e;
-
-                vm_s = vertices_map.find(edge.source);
-                if (vm_s == vertices_map.end()) {
-                    vertices_map[edge.source]=  m_num_vertices;
-                    gVertices_map[m_num_vertices++] = edge.source;
-                    vm_s = vertices_map.find(edge.source);
-                }
-
-                vm_t = vertices_map.find(edge.target);
-                if (vm_t == vertices_map.end()) {
-                    vertices_map[edge.target]=  m_num_vertices;
-                    gVertices_map[m_num_vertices++] = edge.target;
-                    vm_t = vertices_map.find(edge.target);
-                }
-
-                if (edge.cost >= 0) {
-                    boost::tie(e, inserted) =
-                        boost::add_edge(vm_s->second, vm_t->second, graph);
-                    graph[e].cost = edge.cost;
-                    graph[e].id = edge.id;
-                    //graph[e].first = edge.first;
-                    //graph[e].type = 0;
-                    //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
-                }
-            }
-
-            //! \brief Insert a single edge of type *pgr_edge_t* into the graph
-            void graph_add_edge_c(const pgr_edge_t &edge ) {
-                bool inserted;
-                LI vm_s, vm_t;
-                E e;
-
-                vm_s = vertices_map.find(edge.source);
-                if (vm_s == vertices_map.end()) {
-                    vertices_map[edge.source]=  m_num_vertices;
-                    gVertices_map[m_num_vertices++] = edge.source;
-                    vm_s = vertices_map.find(edge.source);
-                }
-
-                vm_t = vertices_map.find(edge.target);
-                if (vm_t == vertices_map.end()) {
-                    vertices_map[edge.target]=  m_num_vertices;
-                    gVertices_map[m_num_vertices++] = edge.target;
-                    vm_t = vertices_map.find(edge.target);
-                }
-
-                if (edge.cost >= 0) {
-                    boost::tie(e, inserted) =
-                        boost::add_edge(vm_s->second, vm_t->second, graph);
-                    graph[e].cost = edge.cost;
-                    graph[e].id = edge.id;
-                    //graph[e].first = true;
-                    //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
-                }
-
-                if (edge.reverse_cost > 0) {
-                    boost::tie(e, inserted) =
-                        boost::add_edge(vm_t->second, vm_s->second, graph);
-                    graph[e].cost = edge.reverse_cost;
-                    graph[e].id = edge.id;
-                    //graph[e].first = false;
-                    //graph[e].set_edge_type(Edge_c::Edge_type::ordinary);
-                }
-            }
-
-
-
-
-        degree_size_type in_degree(int64_t vertex_id) const {
-            V v_from;
-            if (!get_gVertex(vertex_id, v_from)) {
-                return 0;
-            }
-            return in_degree(v_from);
-        }
-
-        degree_size_type in_degree(V &v) const {
-            return boost::in_degree(v, graph);
-        }
-        #if 0
-         void graph_add_shortcut(const Edge &edge ) {
-            bool inserted;
-            LI vm_s, vm_t;
-            E e;
-
-            vm_s = vertices_map.find(edge.source);
-            if (vm_s == vertices_map.end()) {
-                vertices_map[edge.source]=  m_num_vertices;
-                gVertices_map[m_num_vertices++] = edge.source;
-                vm_s = vertices_map.find(edge.source);
-            }
-
-            vm_t = vertices_map.find(edge.target);
-            if (vm_t == vertices_map.end()) {
-                vertices_map[edge.target]=  m_num_vertices;
-                gVertices_map[m_num_vertices++] = edge.target;
-                vm_t = vertices_map.find(edge.target);
-            }
-
-            if (edge.cost >= 0) {
-                boost::tie(e, inserted) =
-                    boost::add_edge(vm_s->second, vm_t->second, graph);
-                graph[e].cost = edge.cost;
-                graph[e].id = edge.id;
-                graph[e].first = true;
-                graph[e].type = edge.type;
-            }
-
-            if (edge.reverse_cost >= 0) {
-                boost::tie(e, inserted) =
-                    boost::add_edge(vm_t->second, vm_s->second, graph);
-                graph[e].cost = edge.reverse_cost;
-                graph[e].id = edge.id;
-                graph[e].first = false;
-                graph[e].type = edge.type;
+        // special case
+        if (this->m_gType == DIRECTED) {
+            EI_i in, in_end;
+            for (boost::tie(in, in_end) = in_edges(vertex, this->graph);
+                in != in_end; ++in) {
+                d_edge.id = this->graph[*in].id;
+                d_edge.source = this->graph[source(*in, this->graph)].id;
+                d_edge.target = this->graph[target(*in, this->graph)].id;
+                d_edge.cost = this->graph[*in].cost;
+                log << "In edge: { source : "<< d_edge.source << ", target: " << d_edge.target  << "}\n";
+                this->removed_edges.push_back(d_edge);
             }
         }
         
+            //#endif
+        #if 1
+        // delete incomming and outgoing edges from the vertex
+        try
+        {
+            boost::clear_vertex(vertex, this->graph);
+            //print_graph(log );
+        }
+        catch ( ... ) {
+            log << "Caught unknown expection!\n";
+        }
+        //log << "Disconnected current vertex " << this->graph[vertex].id << "\n";
         #endif
+        //log << "return disconnect_vertex\n";
+    }
 
-
-        //! \brief Disconnects all edges from p_from to p_to
-       /*!
-       - No edge is disconnected if the vertices id's do not exist in the graph
-       - All removed edges are stored for future reinsertion
-       - All parallel edges are disconnected (automatically by boost)
-
-       ![disconnect_edge(2,3) on an UNDIRECTED graph](disconnectEdgeUndirected.png)
-       ![disconnect_edge(2,3) on a DIRECTED graph](disconnectEdgeDirected.png)
-
-       @param [IN] *p_from* original vertex id of the starting point of the edge
-       @param [IN] *p_to*   original vertex id of the ending point of the edge
-       */
-        void disconnect_edge_c(int64_t p_from, int64_t p_to) {
-            V g_from;
-            V g_to;
-            Edge d_edge;
-            // nothing to do, the vertex doesnt exist
-            if (!get_gVertex(p_from, g_from)) return;
-            if (!get_gVertex(p_to, g_to)) return;
-            EO_i out, out_end;
-            // store the edges that are going to be removed
-            for (boost::tie(out, out_end) = out_edges(g_from, graph);
-                    out != out_end; ++out) {
-                if (target(*out, graph) == g_to) {
-                    d_edge.id = graph[*out].id;
-                    d_edge.source = graph[source(*out, graph)].id;
-                    d_edge.target = graph[target(*out, graph)].id;
-                    d_edge.cost = graph[*out].cost;
-                    //d_edge.set_edge_type(graph[*out].type());
-                    d_edge.reverse_cost = -1;
-                    //removed_edges_c[d_edge.id] = (d_edge);
-                    removed_edges_c.push_back(d_edge);
-                }
-            }
-            // the actual removal
-            boost::remove_edge(g_from, g_to, graph);
-        }
-
-        //! \brief Disconnects the outgoing edges with a particular original id from a vertex
-     /*!
-       - No edge is disconnected if it doesn't exist in the graph
-       - Removed edges are stored for future reinsertion
-       - all outgoing edges with the edge_id are removed if they exist
-
-       @param [IN] *vertex_id* original vertex
-       @param [IN] *edge_id* original edge_id
-       */
-        void disconnect_out_going_edge_c(int64_t vertex_id, int64_t edge_id) {
-            V v_from;
-            Edge d_edge;
-
-            // nothing to do, the vertex doesnt exist
-            if (!get_gVertex(vertex_id, v_from)) {
-                return;
-            }
-
-            EO_i out, out_end;
-            bool change = true;
-            // store the edge that are going to be removed
-            while (change) {
-                change = false;
-                for (boost::tie(out, out_end) = out_edges(v_from, graph);
-                        out != out_end; ++out) {
-                    if (graph[*out].id  == edge_id) {
-                        d_edge.id = graph[*out].id;
-                        d_edge.source = graph[source(*out, graph)].id;
-                        d_edge.target = graph[target(*out, graph)].id;
-                        d_edge.cost = graph[*out].cost;
-                        //d_edge.set_edge_type(graph[*out].type());
-                        d_edge.reverse_cost = -1;
-                        //removed_edges_c[d_edge.id] = (d_edge);
-                        removed_edges_c.push_back(d_edge);
-                        boost::remove_edge((*out), graph);
-                        change = true;
-                        break;
-                    }
-                }
+    void get_remaining_vertices(std::ostringstream& log, 
+        std::vector<T_V>& remaining_vertices) {
+        //log << "remaining_vertices\n";
+        for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+            if (!removed_vertices.has(*vi))
+            {
+                //log << this->graph[*vi].id << "\n";
+                remaining_vertices.push_back(this->graph[*vi]);
             }
         }
+        //return remaining_vertices;
+    }
 
-        //! \brief Disconnects all incoming and outgoing edges from the vertex
-     /*!
-       boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
-       simulated by disconnecting the vertex from the graph
-
-       - No edge is disconnected if the vertices id's do not exist in the graph
-       - All removed edges are stored for future reinsertion
-       - All parallel edges are disconnected (automatically by boost)
-
-       ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
-       ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
-
-       @param [IN] *p_vertex* original vertex id of the starting point of the edge
-       */
-        void disconnect_vertex_c(int64_t p_vertex) {
-            V g_vertex;
-            Edge d_edge;
-            // nothing to do, the vertex doesnt exist
-            if (!get_gVertex(p_vertex, g_vertex)) return;
-            EO_i out, out_end;
-            // store the edges that are going to be removed
-            for (boost::tie(out, out_end) = out_edges(g_vertex, graph);
-                    out != out_end; ++out) {
-                d_edge.id = graph[*out].id;
-                d_edge.source = graph[source(*out, graph)].id;
-                d_edge.target = graph[target(*out, graph)].id;
-                d_edge.cost = graph[*out].cost;
-                //d_edge.set_edge_type(graph[*out].type());
-                d_edge.reverse_cost = -1;
-                //removed_edges_c[d_edge.id] = (d_edge);
-                removed_edges_c.push_back(d_edge);
+    void get_remaining_vertices(std::ostringstream& log, 
+        Identifiers<int64_t>& remaining_vertices) {
+        log << "remaining_vertices\n";
+        for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+            if (!removed_vertices.has(*vi))
+            {
+                //log << this->graph[*vi].id << "\n";
+                remaining_vertices += this->graph[*vi].id;
             }
-
-            // special case
-            if (m_gType == DIRECTED) {
-                EI_i in, in_end;
-                for (boost::tie(in, in_end) = in_edges(g_vertex, graph);
-                        in != in_end; ++in) {
-                    d_edge.id = graph[*in].id;
-                    d_edge.source = graph[source(*in, graph)].id;
-                    d_edge.target = graph[target(*in, graph)].id;
-                    d_edge.cost = graph[*in].cost;
-                    //d_edge.set_edge_type(graph[*out].type());
-                    d_edge.reverse_cost = -1;
-                    //removed_edges_c[d_edge.id]=(d_edge);
-                    removed_edges_c.push_back(d_edge);
-                }
-            }
-            V d_vertex = boost::vertex(vertices_map.find(p_vertex)->second, graph);
-            // delete incomming and outgoing edges from the vertex
-            boost::clear_vertex(d_vertex, graph);
         }
-
-         void disconnect_vertex_c(V g_vertex) {
-            Edge d_edge;
-            EO_i out, out_end;
-            // store the edges that are going to be removed
-            for (boost::tie(out, out_end) = out_edges(g_vertex, graph);
-                    out != out_end; ++out) {
-                d_edge.id = graph[*out].id;
-                d_edge.source = graph[source(*out, graph)].id;
-                d_edge.target = graph[target(*out, graph)].id;
-                d_edge.cost = graph[*out].cost;
-                //d_edge.set_edge_type(graph[*out].type());
-                d_edge.reverse_cost = -1;
-                //removed_edges_c[d_edge.id] = (d_edge);
-                removed_edges_c.push_back(d_edge);
-            }
-
-            // special case
-            if (m_gType == DIRECTED) {
-                EI_i in, in_end;
-                for (boost::tie(in, in_end) = in_edges(g_vertex, graph);
-                        in != in_end; ++in) {
-                    d_edge.id = graph[*in].id;
-                    d_edge.source = graph[source(*in, graph)].id;
-                    d_edge.target = graph[target(*in, graph)].id;
-                    d_edge.cost = graph[*in].cost;
-                    //d_edge.set_edge_type(graph[*out].type());
-                    d_edge.reverse_cost = -1;
-                    //removed_edges_c[d_edge.id]=(d_edge);
-                    removed_edges_c.push_back(d_edge);
-                }
-            }
-            // delete incomming and outgoing edges from the vertex
-            boost::clear_vertex(g_vertex, graph);
+        //return remaining_vertices;
+    }
+    void get_boost_ids(Identifiers<int64_t> user_ids, std::ostringstream& log)
+    {
+        Identifiers<V> boost_ids;
+        for (auto id: user_ids)
+        {
+            boost_ids += this->get_V(id);
         }
-
-        #if 0
-     void print_graph_c(std::ostream &log = std::cout) const {
-         EO_i out, out_end;
-         V_i vi;
-
-         for (vi = vertices(graph).first; vi != vertices(graph).second; ++vi) {
-             if ((*vi) >= m_num_vertices) continue;
-             log << (*vi) << "id: " << graph[(*vi)].id << " cont: " <<
-             graph[(*vi)].contractions << "degree: " << graph[(*vi)].degree;
-             log << std::endl;
-         }
-     }
-     #endif
-
+        log << boost_ids;
+    }
 };
-//! \brief Prints the information about the graph
-     /*!
-       
-       - Each vertex gets printed. 
-       - Information about the outgoig edges of a particular vertex gets printed
-       - The information includes id,source,target,cost 
 
-       */
-template <class G> 
-std::ostringstream& operator<<(std::ostringstream& debug, const Pgr_contractionGraph<G>& Graph_c)
-{
-    typedef typename boost::graph_traits < G >::vertex_iterator V_i;
-    typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
-    EO_i out, out_end;
-    V_i vi;
+} // namespace graph
 
-    for (vi = vertices(Graph_c.graph).first; vi != vertices(Graph_c.graph).second; ++vi) {
-    if ((*vi) >= Graph_c.m_num_vertices) continue;
-        debug << "vertex: " ;
-        debug << Graph_c.graph[(*vi) ];
-        debug << " out_edges(" << Graph_c.graph[(*vi)].id << "):" << '\n';
-        for (boost::tie(out, out_end) = out_edges(*vi, Graph_c.graph);
-            out != out_end; ++out) {
-                //debug << ' ' << Graph_c.graph[*out].id ;
-                debug << "(" << Graph_c.graph[source(*out, Graph_c.graph)].id
-                << ", " << Graph_c.graph[target(*out, Graph_c.graph)].id << ") = ";
-                debug <<  Graph_c.graph[*out];
-             }
-             debug << std::endl;
-         }
-         return debug;
-}
-
-#endif // SRC_CONTRACTION_SRC_CONTRACTION_GRAPH_HPP_
+} // namespace pgrouting
+ 

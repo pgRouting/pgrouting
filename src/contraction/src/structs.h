@@ -31,6 +31,7 @@ typedef struct
 
 } PathElement;
 
+#if 0
 typedef struct 
 {
 	char *contracted_graph_name;
@@ -39,6 +40,16 @@ typedef struct
 	char *removedEdges;
 	char *psuedoEdges;
 } pgr_contracted_blob;
+#endif
+
+typedef struct 
+{
+	int64_t seq;
+	int64_t id;
+	char *type;
+	char *contracted_vertices;
+} pgr_contracted_blob;
+
 //represents the type of graph
 // already defined in postgres_connection.h
 //enum graphType { UNDIRECTED= 0, DIRECTED};

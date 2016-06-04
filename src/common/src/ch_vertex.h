@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #if 0
@@ -13,6 +14,7 @@
 namespace pgRouting {
 namespace contraction {
 
+
 class Vertex {
  public:
     int64_t id;
@@ -25,8 +27,9 @@ class Vertex {
     void cp_members(const Vertex &other) {
         this->id = other.id;
     }
-    void add_contracted_vertex(Vertex v);
+    void add_contracted_vertex(Vertex& v, int64_t vid);
     const Identifiers<int64_t>& contracted_vertices() const;
+    void clear_contracted_vertices() { m_contracted_vertices.clear(); }
     friend std::ostream& operator <<(std::ostream& os, const Vertex& v);
 #if 0    
     Vertex() : m_deleted(false) { }

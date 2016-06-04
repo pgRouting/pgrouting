@@ -8,14 +8,29 @@
 template <typename T>
 class Identifiers {
  public:
+    Identifiers<T>() = default;
+    Identifiers<T>(T* container, size_t size) {
+        for (size_t i = 0; i < size; ++i)
+        {
+            m_ids.insert(container[i]);
+        }
+    }
     const std::set<T>& ids() const;
+    size_t size() const { return m_ids.size(); }
+    typedef typename std::set<T>::iterator iterator;
+    typedef typename std::set<T>::const_iterator const_iterator;
     //! \brief Returns a boolean value true or false, to indicate whether the set is empty
     inline bool empty() const { return m_ids.empty(); }
+    inline void clear() { m_ids.clear(); }
     bool has(const T other) const;
     bool isDisjoint(const T other) const;
     bool isDisjoint(const Identifiers<T> &other) const;
     void insert(const Identifiers<T> &other);
     void insert(const T &other);
+    iterator begin() { return m_ids.begin(); }
+    const_iterator begin() const { return m_ids.begin(); }
+    iterator end() { return m_ids.end(); }
+    const_iterator end() const { return m_ids.end(); }
     bool operator ==(const Identifiers<T> &other) const;
     Identifiers<T> operator +(const T &other) const;
     Identifiers<T> operator *(const T &other) const;
@@ -34,6 +49,9 @@ class Identifiers {
  private:
     std::set<T> m_ids;
 };
+
+
+
 
 //! \brief Returns a set of identifiers of type *set<T>*
 template <typename T>

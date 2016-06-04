@@ -12,5 +12,6 @@ ADD_LIBRARY(common OBJECT
     basic_vertex.cpp
     xy_vertex.cpp
     ch_vertex.cpp
+    ch_edge.cpp
     basic_edge.cpp
     )
