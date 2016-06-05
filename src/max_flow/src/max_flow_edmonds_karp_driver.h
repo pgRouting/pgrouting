@@ -1,10 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: one_to_one_dijkstra_driver.h
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -24,37 +27,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#pragma once
+#ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_EDMONDS_KARP_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_MAX_FLOW_EDMONDS_KARP_DRIVER_H_
 
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#ifdef unlink
-#undef unlink
-#endif
-#endif
+#include "./../../common/src/pgr_types.h"
+#include <stddef.h>
 
-
-#include <boost/config.hpp>
-
-
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/push_relabel_max_flow.hpp>
-
-#if 0
-#include "./../../common/src/signalhandler.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
+    void
+        do_pgr_max_flow_edmonds_karp(
+            pgr_edge_t *data_edges,
+            size_t total_tuples,
+            int64_t source,
+            int64_t sink,
+            pgr_flow_t **return_tuples,
+            size_t *return_count,
+            char **err_msg);
 
-// user's functions
-// for development
 
+#ifdef __cplusplus
+}
+#endif
 
-
-
-typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS> Traits;
-typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS, boost::no_property,
-        boost::property<boost::edge_capacity_t, long,
-                boost::property<boost::edge_residual_capacity_t, long,
-                        boost::property<boost::edge_reverse_t, Traits::edge_descriptor> > > > FlowGraph;
-
+#endif  // SRC_MAX_FLOW_SRC_MAX_FLOW_EDMONDS_KARP_DRIVER_H_
