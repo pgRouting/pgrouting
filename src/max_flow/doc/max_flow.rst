@@ -31,7 +31,7 @@ Maximum flow algorithms calculate the maximum flow through the graph and the flo
 
 Given the following query:
 
-pgr_maxFlow(:math:`edges\_sql, source, sink`)
+pgr_maxFlow :math:`(edges\_sql, source, sink)`
 
 where :math:`edges\_sql = \{(id_i, tail_i, head_i, capacity_i, reverse\_capacity_i)\}`
 
@@ -54,20 +54,21 @@ The weighted directed graph, :math:`G(V,E)`, is defined as:
 
 Given:
 
+
   - :math:`source \in V` the source vertex
   - :math:`sink \in V` the sink vertex
   - :math:`G(V,E)`
 
 Then:
 
-  :math:`\text{pgr\_maxFlow}(edges\_sql, source, sink, directed) = \boldsymbol{\Phi}`
+     :math:`pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}`
 
-  :math:`\boldsymbol{\Phi} = \{(tail_i, head_i, residual\_capacity_i, flow_i)\}`
+     :math:`\boldsymbol{\Phi} = {(tail_i, head_i, residual\_capacity_i, flow_i)}`
 
 where:
-  - :math:`id_i = i`
-  - :math:`residual\_capacity_i = capacity_i - flow_i`
-  - :math:`reverse\_residual\_capacity_i = reverse\_capacity_i - reverse\_flow_i`
+  .. math::
+        id_i = i
 
+        residual\_capacity_i = capacity_i - flow_i
 
-:math:`\boldsymbol{\Phi}` maps the i-th edge(and reverse) to their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it.
+:math:`\boldsymbol{\Phi}` is a new subset of edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it.

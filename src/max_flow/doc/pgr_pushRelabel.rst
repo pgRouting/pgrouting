@@ -60,29 +60,26 @@ Signature Summary
 
 ..
    If the function has more than one signature
-   Remove the unneseary parts of the signature, just leving the name of the parameters
+   Remove the unnecessary parts of the signature, just leaving the name of the parameters
    Like in these examples
 
 .. code-block:: none
 
     pgr_pushRelabel(edges_sql, source,  sink)
-    RETURNS SET OF (id, head, tail, residual_capacity, reverse_residual_capacity, flow, reverse_flow)
+    RETURNS SET OF (tail, head, flow, residual_capcaity)
       OR EMPTY SET
 
 
 ..
   This is a reminder of how your query looks like
-    pgr_pushRelabel(
+    pgr_maxflow(
         edges_sql TEXT,
         source BIGINT,
         sink BIGINT,
-        OUT id integer,
-        OUT source BIGINT,
-        OUT target BIGINT,
-        OUT residual_capacity integer,
-        OUT reverse_residual_capacity integer,
+        OUT tail BIGINT,
+        OUT head BIGINT,
         OUT flow integer,
-        OUT reverse_flow integer
+        OUT residual_capacity integer
     )
 
 
