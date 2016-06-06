@@ -43,17 +43,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/matrixRows_input.h"
-#include "./tsp_driver.h"
+#include "./newTSP_driver.h"
 
 
 
-PG_FUNCTION_INFO_V1(xyd_tsp);
+PG_FUNCTION_INFO_V1(newTSP);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-xyd_tsp(PG_FUNCTION_ARGS);
+newTSP(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -61,16 +61,21 @@ static
 void
 process(
         char* distances_sql,
-        bool randomize,
         int64_t start_vid,
         int64_t end_vid,
+        
         double time_limit,
-        double initial_temperature,
-        double final_temperature,
-        double cooling_factor,
+        
         int64_t tries_per_temperature,
         int64_t max_changes_per_temperature,
         int64_t max_consecutive_non_changes,
+
+        double initial_temperature,
+        double final_temperature,
+        double cooling_factor,
+        
+        bool randomize,
+        
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -153,7 +158,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-xyd_tsp(PG_FUNCTION_ARGS) {
+newTSP(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
     uint32_t               max_calls;
@@ -176,44 +181,43 @@ xyd_tsp(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /* 
-           CREATE OR REPLACE FUNCTION pgr_xydtsp(
-    coordinates_sql TEXT,
-    start_id BIGINT DEFAULT -1,
-    end_id BIGINT DEFAULT -1,
-    max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
-    tries_per_temperature INTEGER DEFAULT 500,
-    max_changes_per_temperature INTEGER DEFAULT 60,
-    max_consecutive_non_changes INTEGER DEFAULT 200,
-    initial_temperature FLOAT DEFAULT 100,
-    final_temperature FLOAT DEFAULT 0.1,
-    cooling_factor FLOAT DEFAULT 0.9,
-    randomize BOOLEAN DEFAULT true,
 
+           CREATE OR REPLACE FUNCTION pgr_newTSP(
            matrix_row_sql TEXT,
-           randomize BOOLEAN DEFAULT true,
-           start_id BIGINT DEFAULT -1,
-           end_id BIGINT DEFAULT -1,
+           start_id BIGINT DEFAULT 0,
+           end_id BIGINT DEFAULT 0,
+
+           max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
+
+           tries_per_temperature INTEGER DEFAULT 500,
+           max_changes_per_temperature INTEGER DEFAULT 60,
+           max_consecutive_non_changes INTEGER DEFAULT 100,
+
            initial_temperature FLOAT DEFAULT 100,
            final_temperature FLOAT DEFAULT 0.1,
            cooling_factor FLOAT DEFAULT 0.9,
-           tries_per_temperature INTEGER DEFAULT 500,
-           max_changes_per_temperature INTEGER DEFAULT 60,
-           max_consecutive_non_changes INTEGER DEFAULT 60
-           */
+
+           randomize BOOLEAN DEFAULT true,
+
+*/
 
         PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_BOOL(1),
+                PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
-                PG_GETARG_INT64(3),
-                PG_GETARG_FLOAT8(4),
-                PG_GETARG_FLOAT8(5),
-                PG_GETARG_FLOAT8(6),
+
+                PG_GETARG_FLOAT8(3),
+
+                PG_GETARG_INT32(4),
+                PG_GETARG_INT32(5),
+                PG_GETARG_INT32(6),
+
                 PG_GETARG_FLOAT8(7),
-                PG_GETARG_INT32(8),
-                PG_GETARG_INT32(9),
-                PG_GETARG_INT32(10),
+                PG_GETARG_FLOAT8(8),
+                PG_GETARG_FLOAT8(9),
+
+                PG_GETARG_BOOL(10),
                 &result_tuples,
                 &result_count);
         /*                                                                    */

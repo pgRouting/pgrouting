@@ -140,6 +140,14 @@ do_pgr_eucledianTSP(
                 start_ptr,
                 bestTour.cities.end());
 
+        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
+            if (*(bestTour.cities.begin() + 1) == idx_end) {
+            std::reverse(
+                    bestTour.cities.begin() + 1,
+                    bestTour.cities.end());
+            }
+        }
+
         std::vector< General_path_element_t > result;
         result.reserve(bestTour.cities.size() + 1);
         pgassert(bestTour.cities.size() == costs.size());

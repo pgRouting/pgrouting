@@ -49,6 +49,8 @@ COPY wi29 (id, x, y) FROM stdin WITH DELIMITER ' ';
 UPDATE wi29 SET the_geom = ST_makePoint(x,y);
 SET client_min_messages TO NOTICE;
 
+SELECT * from pgr_tsp($$SELECT id::INTEGER, x, y FROM wi29$$, 17);
+
 SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, randomize := false);
 SELECT * FROM pgr_eucledianTSP($$select * FROM wi29$$, 17, 25, randomize := false);
 
