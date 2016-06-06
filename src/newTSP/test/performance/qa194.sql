@@ -230,7 +230,7 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-select test_performance(1.3);
+select test_performance(1.4);
 
 SELECT finish();
 ROLLBACK;

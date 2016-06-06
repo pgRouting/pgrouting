@@ -148,20 +148,24 @@ do_pgr_eucledianTSP(
             }
         }
 
+
         std::vector< General_path_element_t > result;
         result.reserve(bestTour.cities.size() + 1);
         pgassert(bestTour.cities.size() == costs.size());
 
+        bestTour.cities.push_back(bestTour.cities.front());
+
         auto prev_id = bestTour.cities.front();
         double agg_cost = 0;
         for (const auto &id : bestTour.cities) {
+            if (id == prev_id) continue;
             General_path_element_t data;
-            data.node = costs.get_id(id);
-            data.edge = id;
-            data.cost = id == prev_id? 0: costs.distance(prev_id, id);
-            agg_cost += data.cost;
+            data.node = costs.get_id(prev_id);
+            data.edge = prev_id;
+            data.cost = costs.distance(prev_id, id);
             data.agg_cost = agg_cost;
             result.push_back(data);
+            agg_cost += data.cost;
             prev_id = id;
         }
 
@@ -176,8 +180,8 @@ do_pgr_eucledianTSP(
             result.push_back(data);
         }
 
-        pgassert(result.size() == bestTour.cities.size() + 1);
-        *return_count = bestTour.size() + 1;
+        pgassert(result.size() == bestTour.cities.size());
+        *return_count = bestTour.size();
         (*return_tuples) = pgr_alloc(result.size(), (*return_tuples));
 
         /* store the results */
