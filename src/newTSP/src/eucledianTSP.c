@@ -64,7 +64,9 @@ process(
         char* coordinates_sql,
         int64_t start_vid,
         int64_t end_vid,
+
         double time_limit,
+
         int64_t tries_per_temperature,
         int64_t max_changes_per_temperature,
         int64_t max_consecutive_non_changes,
@@ -74,6 +76,7 @@ process(
         double cooling_factor,
 
         bool randomize,
+
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -180,12 +183,12 @@ eucledianTSP(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        /* 
+        /*
 
-           CREATE OR REPLACE FUNCTION pgr_xydtsp(
+           CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
            coordinates_sql TEXT,
-           start_id BIGINT DEFAULT -1,
-           end_id BIGINT DEFAULT -1,
+           start_id BIGINT DEFAULT 0,
+           end_id BIGINT DEFAULT 0,
 
            max_processing_time FLOAT DEFAULT '+infinity'::FLOAT,
 

@@ -30,8 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "../../common/src/pgr_types.h"
 
-
-
 namespace pgRouting {
 namespace tsp {
 
@@ -45,7 +43,7 @@ class eucledianDmatrix {
 
     bool has_no_infinity() const;
     bool obeys_triangle_inequality() const;
-    bool is_symetric() const;
+    bool is_symmetric() const;
 
     /*! @brief sets a special value for the distance(i,j)
      *
@@ -107,7 +105,7 @@ class eucledianDmatrix {
 
  protected:
     void set_ids();
-    std::vector<size_t> ids;
+    std::vector<int64_t> ids;
 
  private:
     std::vector < Coordinate_t >  coordinates;

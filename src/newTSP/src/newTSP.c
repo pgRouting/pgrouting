@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: xyz_tsp.c
+File: newTSP.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -35,11 +35,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-
-// #define DEBUG
-
 #include "fmgr.h"
+
+#define DEBUG
+
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/matrixRows_input.h"
@@ -63,9 +64,9 @@ process(
         char* distances_sql,
         int64_t start_vid,
         int64_t end_vid,
-        
+
         double time_limit,
-        
+
         int64_t tries_per_temperature,
         int64_t max_changes_per_temperature,
         int64_t max_consecutive_non_changes,
@@ -73,9 +74,9 @@ process(
         double initial_temperature,
         double final_temperature,
         double cooling_factor,
-        
+
         bool randomize,
-        
+
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -83,27 +84,30 @@ process(
     /*
      * errors in parameters
      */
+
     if (initial_temperature < final_temperature) {
-        elog(ERROR, "Illegal: initial_temperature < final_temperature");
+        elog(ERROR, "Condition not met: initial_temperature > final_temperature");
     }
-    if (final_temperature < 0) {
-        elog(ERROR, "Illegal: final_temperature < 0");
+    if (final_temperature <= 0) {
+        elog(ERROR, "Condition not met: final_temperature > 0");
     }
     if (cooling_factor <=0 || cooling_factor >=1) {
-        elog(ERROR, "Illegal: cooling_factor <=0 || cooling_factor >=1");
+        elog(ERROR, "Condition not met: 0 < cooling_factor < 1");
     }
-    if (tries_per_temperature  < 0) {
-        elog(ERROR, "Illegal: tries_per_temperature  < 0");
+    if (tries_per_temperature < 0) {
+        elog(ERROR, "Condition not met: tries_per_temperature >= 0");
     }
     if (max_changes_per_temperature  < 1) {
-        elog(ERROR, "Illegal: change_per_temperature  < 1");
+        elog(ERROR, "Condition not met: max_changes_per_temperature > 0");
     }
-    if (time_limit  < 1) {
-        elog(ERROR, "Illegal: time_limit < 0");
+    if (max_consecutive_non_changes < 1) {
+        elog(ERROR, "Condition not met: max_consecutive_non_changes > 0");
+    }
+    if (time_limit < 0) {
+        elog(ERROR, "Condition not met: max_processing_time >= 0");
     }
 
 
-    PGR_DBG("Load data");
     Matrix_cell_t *distances = NULL;
     size_t total_distances = 0;
     pgr_get_matrixRows(distances_sql, &distances, &total_distances);
@@ -115,11 +119,10 @@ process(
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld rows in query:", total_distances);
 
-    PGR_DBG("Starting processing");
     char *err_msg = NULL;
     char *log_msg = NULL;
+    clock_t start_t = clock();
     do_pgr_tsp(
             distances,
             total_distances,
@@ -137,10 +140,11 @@ process(
             result_count,
             &log_msg,
             &err_msg);
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("LOG = %s\n", log_msg);
-    free(log_msg);
-
+    time_msg(" processing eucledianTSP", start_t, clock());
+    if (log_msg) {
+        elog(NOTICE, "%s", log_msg);
+        free(log_msg);
+    }
     if (err_msg) {
         if (*result_tuples) free(*result_tuples);
         elog(ERROR, "%s", err_msg);
@@ -167,7 +171,7 @@ newTSP(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -180,7 +184,7 @@ newTSP(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        /* 
+        /*
 
            CREATE OR REPLACE FUNCTION pgr_newTSP(
            matrix_row_sql TEXT,
@@ -191,17 +195,15 @@ newTSP(PG_FUNCTION_ARGS) {
 
            tries_per_temperature INTEGER DEFAULT 500,
            max_changes_per_temperature INTEGER DEFAULT 60,
-           max_consecutive_non_changes INTEGER DEFAULT 100,
+           max_consecutive_non_changes INTEGER DEFAULT 200,
 
            initial_temperature FLOAT DEFAULT 100,
            final_temperature FLOAT DEFAULT 0.1,
            cooling_factor FLOAT DEFAULT 0.9,
 
            randomize BOOLEAN DEFAULT true,
+           */
 
-*/
-
-        PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),

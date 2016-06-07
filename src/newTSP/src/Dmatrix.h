@@ -37,24 +37,63 @@ class Tour;  // for tourCost
 
 class Dmatrix {
  public:
-    typedef std::vector < std::vector < double > > Costs;
 
     Dmatrix() = default;
     explicit Dmatrix(const std::vector < Matrix_cell_t > &data_costs);
 
     bool has_no_infinity() const;
     bool obeys_triangle_inequality() const;
-    bool is_symetric() const;
+    bool is_symmetric() const;
 
+    /*! @brief sets a special value for the distance(i,j)
+     *
+     * @params [IN] i - index in matrix
+     * @params [IN] j - index in matrix
+     * @params [IN] dist - distance from i to j & from j to i
+     *
+     */
     void set(size_t i, size_t j, double dist) {
         costs[i][j] = costs[j][i] = dist;}
 
+    /*! @brief original id -> true
+     *
+     * @params [IN] id - original id
+     * @returns true if id is in the distance table
+     */
+    bool has_id(int64_t id) const;
+
+    /*! @brief original id -> idx
+     *
+     * @params [IN] id - original id
+     * @returns idx index of the id in the distance table
+     */
     size_t get_index(int64_t id) const;
-    int64_t get_id(size_t id) const;
+
+    /*! @brief idx -> original id
+     *
+     * @params [IN] idx - index (i-th coordinate)
+     * @returns the original id corresponding to idx
+     */
+    int64_t get_id(size_t idx) const;
+
+    /*! @brief |idx|
+     *
+     * @returns the total number of coordinates
+     */
     size_t size() const {return ids.size();}
 
+    /*! @brief tour evaluation
+     *
+     * @params [IN] tour
+     * @returns total cost of traversing the tour
+     */
     double tourCost(const Tour &tour) const;
 
+    /*! @brief returns a row of distances
+     *
+     * @params [IN] idx - row index
+     * @returns distances from idx to all other coordinates
+     */
     const std::vector<double>& get_row(size_t i) const {
         return costs[i];}
 
@@ -70,9 +109,10 @@ class Dmatrix {
 
  protected:
     void set_ids(const std::vector<matrix_cell> &data_costs);
-    std::vector<size_t> ids;
+    std::vector<int64_t> ids;
 
  private:
+    typedef std::vector < std::vector < double > > Costs;
     Costs costs;
     std::vector< double >& operator[] (size_t i) {return costs[i];}
     const std::vector< double >& operator[] (size_t i) const {return costs[i];}

@@ -29,6 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./Dmatrix.h"
 
+#include <string.h>
+#include <sstream>
 #include <algorithm>
 #include <limits>
 #include <vector>
@@ -74,6 +76,13 @@ Dmatrix::set_ids(const std::vector < Matrix_cell_t > &data_costs) {
      */
     ids.shrink_to_fit();
 }
+
+bool
+Dmatrix::has_id(int64_t id) const {
+    auto pos = std::lower_bound(ids.begin(), ids.end(), id);
+    return *pos == id;
+}
+
 
 size_t
 Dmatrix::get_index(int64_t id) const {
@@ -138,10 +147,20 @@ Dmatrix::obeys_triangle_inequality() const {
 }
 
 bool
-Dmatrix::is_symetric() const {
+Dmatrix::is_symmetric() const {
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
-            if (costs[i][j] != costs[j][i]) return false;
+            if (0.000001 < std::abs(costs[i][j] - costs[j][i])) {
+                std::ostringstream log;
+                log << "i \t" << i
+                    << "j \t" << j
+                    << "costs[i][j] \t" << costs[i][j]
+                    << "costs[j][i] \t" << costs[j][i]
+                    << "\n";
+                log << (*this);
+                pgassertwm(false, log.str());
+                return false;
+            }
         }
     }
     return true;

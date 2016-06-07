@@ -1,3 +1,4 @@
+NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
 0|6|6|2.24
 1|11|11|4.12
 2|3|3|2.24

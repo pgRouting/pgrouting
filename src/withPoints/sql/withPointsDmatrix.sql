@@ -38,8 +38,8 @@ CREATE OR REPLACE FUNCTION pgr_withPointsDMatrix(
     directed BOOLEAN DEFAULT true,
     driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
-    OUT start_pid BIGINT,
-    OUT end_pid BIGINT,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
     OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$

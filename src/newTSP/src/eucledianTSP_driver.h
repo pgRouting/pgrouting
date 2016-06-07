@@ -48,7 +48,7 @@ do_pgr_eucledianTSP(
         int64_t tries_per_temperature,
         int64_t max_changes_per_temperature,
         int64_t max_consecutive_non_changes,
-        bool fix_random,
+        bool randomize,
         double time_limit,
 
         General_path_element_t **results,

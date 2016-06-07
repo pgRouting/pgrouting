@@ -13,8 +13,8 @@ Traveling Sales Person
 ===============================================================================
 
                                                                                                                                                                                                                                                                                
-  - :ref:`pgr_newTSP` - When input is a cost matrix.
-  - :ref:`pgr_eucledianTSP` - When input are coordinates. (proposed)
+  - :ref:`pgr_TSP` - When input is given as matrix cell information.
+  - :ref:`pgr_eucledianTSP` - When input are coordinates.
                                                                                                                                                                                                                                                                                
 .. toctree::
     :hidden:

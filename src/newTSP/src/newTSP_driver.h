@@ -36,7 +36,7 @@ extern "C" {
 
 #include "../../common/src/pgr_types.h"
 
-int 
+void
 do_pgr_tsp(
         Matrix_cell_t *distances, size_t total_distances,
         int64_t start_vid,

@@ -19,7 +19,6 @@ n BIGINT;
 BEGIN
     -- checking the fixed columns and data types of the integers
     EXECUTE 'SHOW client_min_messages' INTO debuglevel;
-    EXECUTE 'SET client_min_messages TO ERROR';
 
     table_sql := 'CREATE TABLE ___tmp  AS ' || sql ;
     EXECUTE table_sql;
@@ -27,6 +26,9 @@ BEGIN
 
     BEGIN
         EXECUTE 'SELECT id, x, y FROM ___tmp' INTO rec;
+        EXECUTE 'SET client_min_messages TO NOTICE';
+        RAISE NOTICE 'Deprecated Signature pgr_tsp(sql, integer, integer)';
+        EXECUTE 'set client_min_messages  to '|| debuglevel;
         EXCEPTION
             WHEN OTHERS THEN
                 EXECUTE 'set client_min_messages  to '|| debuglevel;
@@ -53,6 +55,7 @@ BEGIN
     EXECUTE 'SELECT count(*) AS n FROM (' || sql || ') AS __a__' INTO rec;
     n = rec.n;
 
+    EXECUTE 'SET client_min_messages TO ERROR';
     RETURN query
         SELECT seq - 1 AS seq, node AS id1, node AS id2, cost
         FROM pgr_eucledianTSP(sql, start_id, end_id,

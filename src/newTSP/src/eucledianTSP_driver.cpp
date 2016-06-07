@@ -1,5 +1,5 @@
-/*// PGR-GNU*****************************************************************
- * File: tspi_driver.cpp
+/* PGR-GNU*****************************************************************
+ * File: eucledianTSP_driver.cpp
  *
  * Generated with Template by:
  * Copyright (c) 2015 pgRouting developers
@@ -39,17 +39,11 @@
 #include <algorithm>
 
 #include "./eucledianTSP_driver.h"
-
 #include "./eucledianDmatrix.h"
+
 #include "./pgr_tsp.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
-
-/*
- * Defs
- */
-
-typedef std::vector< int64_t > Ids;
 
 void
 do_pgr_eucledianTSP(
@@ -82,21 +76,18 @@ do_pgr_eucledianTSP(
         pgRouting::tsp::eucledianDmatrix costs(coordinates);
 
         double real_cost = -1;
-        
-        
+
         size_t idx_start = costs.has_id(start_vid) ?
             costs.get_index(start_vid) : 0;
 
         size_t idx_end = costs.has_id(end_vid) ?
             costs.get_index(end_vid) : 0;
 
-        // size_t idx_end = end_vid < 0? 0 : costs.get_index(end_vid);
         if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
             /* An ending vertex needs to be by the starting vertex */
             real_cost = costs.distance(idx_start, idx_end);
             costs.set(idx_start, idx_end, 0);
         }
-
 
 
         log << "pgr_eucledianTSP Processing Information \nInitializing tsp class --->";
@@ -142,9 +133,9 @@ do_pgr_eucledianTSP(
 
         if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
             if (*(bestTour.cities.begin() + 1) == idx_end) {
-            std::reverse(
-                    bestTour.cities.begin() + 1,
-                    bestTour.cities.end());
+                std::reverse(
+                        bestTour.cities.begin() + 1,
+                        bestTour.cities.end());
             }
         }
 
@@ -214,5 +205,3 @@ do_pgr_eucledianTSP(
         *log_msg = strdup(log.str().c_str());
     }
 }
-
-

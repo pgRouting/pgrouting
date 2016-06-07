@@ -145,7 +145,7 @@ eucledianDmatrix::obeys_triangle_inequality() const {
 }
 
 bool
-eucledianDmatrix::is_symetric() const {
+eucledianDmatrix::is_symmetric() const {
     return true;
 }
 

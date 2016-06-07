@@ -1,4 +1,5 @@
 NOTICE:  table "wi29" does not exist, skipping
+NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
 0|17|17|683.333268292684
 1|18|18|432.691873944705
 2|19|19|772.082339448903

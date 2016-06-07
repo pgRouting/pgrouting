@@ -17,11 +17,6 @@ Name
 
 * ``pgr_eucledianTSP`` - Returns a route that visits all the coordinates pairs exactly once.
 
-.. note::  This is a proposed function for version 2.4.
-
-   - Is not officially in the version 2.3 release.
-
-
 
 Synopsis
 -------------------------------------------------------------------------------
