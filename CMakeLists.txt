@@ -262,7 +262,6 @@ set(PgRouting_SOURCE_NAMES
     "bd_dijkstra"
     "trsp" #2.0
     "tsp" #2.0
-    "newTSP"
 
     "vrp_basic"
     "vrppdtw"
@@ -286,6 +285,7 @@ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     "convinience"
     "topology"
     "label_graph"
+    "newTSP"
     )
 
 

@@ -31,6 +31,10 @@ THE SOFTWARE.
 
 ********************************************************************PGR-MIT*/
 
+/*
+ * This code is deprecated
+ */
+
 #include "tsp.h"
 #include <math.h>
 

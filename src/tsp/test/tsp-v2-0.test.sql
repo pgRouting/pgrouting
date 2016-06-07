@@ -25,8 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --------------------------------------------------------------------------------
 --              PGR_pgr_tsp
 --------------------------------------------------------------------------------
+BEGIN;
 
-CREATE TABLE vertex_table (
+CREATE TEMP TABLE vertex_table (
     id serial,
     x double precision,
     y double precision
@@ -133,3 +134,4 @@ SELECT seq, id FROM pgr_tsp('{{0,1,2,3},{1,0,4,5},{2,4,0,6},{3,5,6,0}}'::float8[
 \echo '----------------------------------3-1'
 SELECT seq, id FROM pgr_tsp('{{0,1,2,3},{1,0,4,5},{2,4,0,6},{3,5,6,0}}'::float8[],3,1);
 
+ROLLBACK;
