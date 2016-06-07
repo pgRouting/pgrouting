@@ -285,7 +285,7 @@ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     "convinience"
     "topology"
     "label_graph"
-    "newTSP"
+    "fooDmatrix"
     )
 
 

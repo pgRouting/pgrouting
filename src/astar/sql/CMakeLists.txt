@@ -7,7 +7,6 @@ LIST(APPEND PACKAGE_SQL_FILES
     #${CMAKE_CURRENT_SOURCE_DIR}/_astar.sql
     #${CMAKE_CURRENT_SOURCE_DIR}/astar.sql
     #${CMAKE_CURRENT_SOURCE_DIR}/astarCost.sql
-    #${CMAKE_CURRENT_SOURCE_DIR}/astarDmatrix.sql
     )
 
 # set in parent scope

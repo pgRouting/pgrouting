@@ -1,3 +1,6 @@
+/*
+UNUSED CODE
+*/
 -- vertices_sql has the form
 -- SELECT id, the_geom FROM .....
 

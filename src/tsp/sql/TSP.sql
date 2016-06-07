@@ -1,8 +1,4 @@
 
-/*
-    Old signature has:
-    sql: id INTEGER, x FLOAT, y FLOAT
-*/
 CREATE OR REPLACE FUNCTION pgr_TSP(
     matrix_row_sql TEXT,
     start_id BIGINT DEFAULT 0,
