@@ -169,7 +169,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         contraction_order = (int64_t*)
             pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
         forbidden_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
+            pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
 
         PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
         PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
