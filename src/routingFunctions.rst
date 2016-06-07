@@ -69,7 +69,7 @@ Routing Functions
     dijkstra/doc/dijkstra
     driving_distance/doc/drivingDistance
     ksp/doc/pgr_ksp
-    newTSP/doc/tsp
+    tsp/doc/tsp
     trsp/doc/pgr_trsp
     withPoints/doc/withPoints
 

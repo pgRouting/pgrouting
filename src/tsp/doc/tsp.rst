@@ -22,6 +22,33 @@ Traveling Sales Person
     ./pgr_tsp
     ./pgr_eucledianTSP
 
+.. NOTE:: These signatures are being deprecated
+
+    .. code-block:: sql
+
+        pgr_costResult[] pgr_tsp(sql text, start_id integer) 
+        pgr_costResult[] pgr_tsp(sql text, start_id integer, end_id integer)
+
+    - See http://docs.pgrouting.org/2.2/en/src/common/doc/types/cost_result.html 
+    - See http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html
+    - For more details, see tsp_deprecated_.
+
+    Use :ref:`pgr_eucledianTSP` instead.
+
+
+.. NOTE:: These signatures are being deprecated
+
+    .. code-block:: sql
+
+       record[] pgr_tsp(matrix float[][], start integer)
+       record[] pgr_tsp(matrix float[][], start integer, end integer)
+
+    - See http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html
+    - For more details, see tsp_deprecated_.
+
+    Use :ref:`pgr_TSP` instead.
+
+
 
 Origin 
 ..........
@@ -191,6 +218,63 @@ A recommendation is to play with the values and see what fits to the particular 
 
 .. include:: tsp_parameters.txt 
 
+
+.. _tsp_deprecated:
+
+Deprecated functionality
+.........................
+
+The old functionality is deprecated:
+
+* User can not control the execution.
+* Not all valuable information is returned.
+* Some returned column names are meaningless.
+
+
+:Example:
+
+Using the old functionality, for example
+
+* `id` can not be of type `BIGINT`.
+* `id1` and `id2` are meningless column names.
+* Needs an index as parameter for the starting node.
+
+.. literalinclude:: doc-tsp.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+With the new functionality:
+
+* `id` can be of type `BIGINT` .
+* There is an aggregate cost column.
+* Instead of an index it uses the node identifier for the starting node.
+
+.. literalinclude:: doc-tsp.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+:Example:
+
+Using the old functionality, for example
+
+* `id`, `source`, `target` can not be of type `BIGINT`.
+* It does not return the `cost` column.
+* Needs an index as parameter for the starting node.
+* The identifiers in the result does not correspond to the indentifiers given as input.
+
+.. literalinclude:: doc-tsp.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+With the new functionality:
+
+* `id`, `source`, `target` can be of type `BIGINT`, 
+* There is an aggregate cost column and a cost column in the results.
+* Instead of an index it uses the node identifier for the starting node.
+
+.. literalinclude:: doc-tsp.queries
+   :start-after: -- q4
+   :end-before: -- q5
 
 
 See Also

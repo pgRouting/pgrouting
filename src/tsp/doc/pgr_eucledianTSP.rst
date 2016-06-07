@@ -110,34 +110,14 @@ When the value of **id** is not given then the coordinates will receive an **id*
 ..
     description of the configuration parameters
 
-
 .. include:: tsp_parameters.txt
 
 
-Description of the return values
--------------------------------------------------------------------------------
+..
+    description of the return values
 
-Returns set of ``(seq, node, cost, agg_cost)``
+.. include:: tsp_return_values.txt
 
-============= =========== =================================================
-Column           Type              Description
-============= =========== =================================================
-**seq**       ``INTEGER`` Row sequence.
-**node**      ``BIGINT``  Identifier of the coordinate.
-**cost**      ``FLOAT``   Cost to traverse from the previous ``node`` the current ``node`` in the path sequence.
-                            - ``0`` for the first row in the path sequence.
-
-**agg_cost**  ``FLOAT``   Aggregate cost from the ``node`` at ``seq = 1`` to the current node.
-                            - ``0`` for the first row in the path sequence.
-
-============= =========== =================================================
-
-
-
-
-.. rubric:: History
-
-* New in version 2.3.0
 
 
 Examples
@@ -153,9 +133,11 @@ Examples
 
 The queries use the :ref:`sampledata` network.
 
+
 .. rubric:: History
 
-* Proposed in version 2.3.0
+* New in version 2.3.0
+
 
 
 See Also

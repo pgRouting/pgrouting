@@ -132,7 +132,7 @@ Complete Signature
 Description of the Signatures
 =============================
 
-Description of the coordinates SQL query
+Description of the iMatrix Cell SQL query
 -------------------------------------------------------------------------------
 
 ============= =========== =================================================
@@ -160,28 +160,13 @@ symmetric by fixing the non symmetric values according to your application needs
 ..
     description of the configuration parameters
 
-
 .. include:: tsp_parameters.txt
 
 
-Description of the return values
--------------------------------------------------------------------------------
+..
+    description of the return values
 
-Returns set of ``(seq, node, cost, agg_cost)``
-
-============= =========== =================================================
-Column           Type              Description
-============= =========== =================================================
-**seq**       ``INTEGER`` Row sequence.
-**node**      ``BIGINT``  Identifier of the coordinate.
-**cost**      ``FLOAT``   Cost to traverse from the previous ``node`` the current ``node`` in the path sequence.
-                            - ``0`` for the first row in the path sequence.
-
-**agg_cost**  ``FLOAT``   Aggregate cost from the ``node`` at ``seq = 1`` to the current node.
-                            - ``0`` for the first row in the path sequence.
-
-============= =========== =================================================
-
+.. include:: tsp_return_values.txt
 
 
 
@@ -199,9 +184,9 @@ To generate a symetric matrix:
    :start-after: -- q3
    :end-before: -- q4
 
-
-
 The queries use the :ref:`sampledata` network.
+
+
 
 .. rubric:: History
 

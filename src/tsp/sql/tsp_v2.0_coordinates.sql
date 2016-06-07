@@ -20,18 +20,18 @@ BEGIN
     -- checking the fixed columns and data types of the integers
     EXECUTE 'SHOW client_min_messages' INTO debuglevel;
 
+    EXECUTE 'SET client_min_messages TO NOTICE';
+    RAISE NOTICE 'Deprecated Signature pgr_tsp(sql, integer, integer)';
+    EXECUTE 'set client_min_messages  to '|| debuglevel;
+
     table_sql := 'CREATE TABLE ___tmp  AS ' || sql ;
     EXECUTE table_sql;
 
 
     BEGIN
         EXECUTE 'SELECT id, x, y FROM ___tmp' INTO rec;
-        EXECUTE 'SET client_min_messages TO NOTICE';
-        RAISE NOTICE 'Deprecated Signature pgr_tsp(sql, integer, integer)';
-        EXECUTE 'set client_min_messages  to '|| debuglevel;
         EXCEPTION
             WHEN OTHERS THEN
-                EXECUTE 'set client_min_messages  to '|| debuglevel;
                 RAISE EXCEPTION 'An expected column was not found in the query'
                 USING ERRCODE = 'XX000',
                 HINT = 'Please verify the column names: id, x, y';
@@ -47,8 +47,7 @@ BEGIN
     IF NOT((rec.id_type in ('integer'::text))
         AND (rec.x_type = 'double precision'::text)
         AND (rec.y_type = 'double precision'::text)) THEN
-            EXECUTE 'set client_min_messages  to '|| debuglevel;
-            RAISE EXCEPTION 'Error, ''id'' must be of type INTEGER, ''x'' ad ''y'' must be of type FLOAT'
+            RAISE EXCEPTION '''id'' must be of type INTEGER, ''x'' ad ''y'' must be of type FLOAT'
             USING ERRCODE = 'XX000';
     END IF;
 
@@ -65,8 +64,8 @@ BEGIN
             max_consecutive_non_changes := 500 * n :: INTEGER,
 
             randomize := false) WHERE seq <= n;
-        DROP TABLE ___tmp;
-        EXECUTE 'set client_min_messages  to '|| debuglevel;
+    DROP TABLE ___tmp;
+    EXECUTE 'set client_min_messages  to '|| debuglevel;
 
 END;
 $body$
