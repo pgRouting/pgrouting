@@ -1,9 +1,0 @@
-NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
-15.4787
-OK
-0|1
-1|0
-2|3
-3|2
-NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
-11.3137
