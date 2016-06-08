@@ -1,0 +1,493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Contraction &mdash; pgRouting Manual (2.3.0-dev) (newSignature/TSP)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (newSignature/TSP)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (newSignature/TSP)" href="../../../index.html" />
+    <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
+    <link rel="next" title="pgr_vrpOneDepot" href="../../vrp_basic/doc/pgr_vrpOneDepot.html" />
+    <link rel="prev" title="Contraction" href="" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (newSignature/TSP)</span></a></h1>
+        <h2 class="heading"><span>Contraction</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="">Contraction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../vrp_basic/doc/pgr_vrpOneDepot.html">pgr_vrpOneDepot</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="contraction">
+<span id="id1"></span><h1>Contraction<a class="headerlink" href="#contraction" title="Permalink to this headline">¶</a></h1>
+<p>Contracting a graph becomes a crucial operation when talking about big graphs like
+the graphs involved in routing across cities, countries, continents or the whole world.</p>
+<p>The contraction level and contraction operations can become very complex, as the complexity
+of the graphs grows.</p>
+<p>For this proposal, we are making our contraction algorithm simple as possible so that
+more contraction operations can be added in the future.</p>
+<p>We are not aiming with this work to implement all the possible contraction operations
+but to give a framework such that adding a contraction operation can be easily achieved.</p>
+<p>For this contraction proposal I am only making 2 operations:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>dead end contraction: vertices have one incoming edge</li>
+<li>linear contraction: vertices have one incomming and one outgoing edge</li>
+</ol>
+</div></blockquote>
+<p>And with the additional characteristics:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The user can forbid to contract a particular set of nodes or edges.</li>
+<li>The user can decide how many times the cycle can be done.</li>
+<li>If possible, the user can decide the order of the operations on a cycle.</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Work on progress in contraction branch</p>
+</div>
+<div class="section" id="the-contraction-skeleton">
+<h2>The contraction skeleton<a class="headerlink" href="#the-contraction-skeleton" title="Permalink to this headline">¶</a></h2>
+<p>In general we have an initial set up that may involve analizing the graph given as input and setting the
+non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
+until while possible, and then move to the next contraction operation.
+Adding a new operation then becomes an &#8220;easy&#8221; task; more things might be involved, because the
+charachteristics of the graph change each time its contracted, so some interaction between contractions
+has to be implemented also.</p>
+</div>
+<div class="section" id="procedure">
+<h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>For contracting, we are going to cycle as follows</li>
+</ul>
+<div class="highlight-none"><div class="highlight"><pre>input: G(V,E);
+removed_vertices = {};
+
+
+&lt;initial set up&gt;
+do N times {
+
+    while ( &lt;conditions for 1&gt; ) {
+        &lt; contraction operation 1 &gt;
+    }
+
+    while ( &lt;conditions for 2&gt; ) {
+        &lt; contraction operation 2&gt;
+    }
+    .....
+}
+
+output: G&#39;(V&#39;,E&#39;), removed_vertices
+</pre></div>
+</div>
+</div>
+<div class="section" id="contraction-operations-for-this-implementation">
+<h2>Contraction operations for this implementation<a class="headerlink" href="#contraction-operations-for-this-implementation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dead-end-contraction">
+<h3>Dead end contraction<a class="headerlink" href="#dead-end-contraction" title="Permalink to this headline">¶</a></h3>
+<p>Characteristics:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(V1\)</span>: set of vertices with 1 incoming edge in increasing order of id:<ul>
+<li>Edges with the same identifier are considered the same edge
+and if it has the <cite>reverse_cost</cite> valid the outgoing edge is ignored</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-none"><div class="highlight"><pre>while ( V1 is not empty ) {
+
+    delete vertex of V1
+    the deleted vertex add it to removed_vertices
+    vertex that leads to removed vertex, inherits the removed vertex
+
+    &lt;adjust any conditions that might affect other contraction operation&gt;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="linear-contraction">
+<h3>Linear contraction<a class="headerlink" href="#linear-contraction" title="Permalink to this headline">¶</a></h3>
+<p>Characteristics:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(V2\)</span>: vertex with 1 incoming edge and 1 outgoing edge:<ul>
+<li>The outgoing edge must have different identifier of the incomming edge</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-none"><div class="highlight"><pre>while ( V2 is not empty ) {
+
+    delete vertex of V2
+    create edge (shortcut)
+    the deleted vertex add it to removed_vertices
+    inewly created edge, inherits the removed vertex
+
+    &lt;adjust any conditions that might affect other contraction operations&gt;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="notation">
+<h3>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>V: is the set of vertices</li>
+<li>E: is the set of edges</li>
+<li>G: is the graph</li>
+<li><span class="math">\(V1\)</span>: is the set of <em>dead end</em> vertices</li>
+<li><span class="math">\(V2\)</span>: is the set of <em>linear</em> vertices</li>
+<li>removed_vertices: is the set of removed vertices</li>
+</ul>
+<p>The contracted graph will be represented with two parameters, the modified Graph, and the removed_vertices set.</p>
+<p>removed_vertices = {(v,1):{2}, (e,-1):{3}}.</p>
+<dl class="docutils">
+<dt>The above notation indicates:</dt>
+<dd><ul class="first last simple">
+<li>Vertex 2 is removed, and belongs to vertex 1 subgraph</li>
+<li>Vertex 3 is removed, and belongs to edge -1 subgraph</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>For simplicity all the edges in the examples have unit weight.</p>
+<div class="section" id="dead-end">
+<h3>Dead End<a class="headerlink" href="#dead-end" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Perform dead end contraction operation first and then linear contraction</li>
+<li>1 cycle of contraction.</li>
+</ul>
+<img alt="../../../_images/twoNodesoneEdge_a.png" src="../../../_images/twoNodesoneEdge_a.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Input:</th><td class="field-body">G = {V:{1, 2}, E:{(1, 2)}}</td>
+</tr>
+<tr class="field-even field"><th class="field-name">initial set up:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>removed_vertices={}
+V1 = {2}
+V2 = {}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">procedure:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>V1 = {2} is not empty
+
+    V1 = {}
+    V2 = {}
+    G = {V:{1}, E:{}}
+    removed_vertices = {(v, 1):{2}}.
+
+V1 is empty
+</pre></div>
+</div>
+<p>Since V1 is empty we go on to the next contraction operation</p>
+<div class="highlight-none"><div class="highlight"><pre>V2 is empty
+</pre></div>
+</div>
+<p>So we do not perform any linear contraction operation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Results:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>G = {V:{1}, E:{}}
+removed_vertices = {(v, 1):{2}}
+</pre></div>
+</div>
+<p>Visualy the results are</p>
+<img alt="../../../_images/twoNodesoneEdge_b.png" src="../../../_images/twoNodesoneEdge_b.png" />
+</div>
+<div class="section" id="id2">
+<h3>Linear contraction<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Perform linear contraction operation first and then dead end contraction</li>
+<li>1 cycle of contraction.</li>
+</ul>
+<img alt="../../../_images/threeNodestwoEdges_a.png" src="../../../_images/threeNodestwoEdges_a.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Input:</th><td class="field-body">G = {V:{1, 2, 3}, E:{(1, 2), (2, 3)}}</td>
+</tr>
+<tr class="field-even field"><th class="field-name">initial set up:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>removed_vertices={}
+V1 = {3}
+V2 = {2}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">procedure:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>V2 = {2} is not empty
+
+    V1 = {3}
+    removed_vertices = {(e, -1):{2}}
+    V2 = {}
+    G = {V:{1, 3}, E:{-1(1,3,c=2)}}
+
+V2 is empty
+</pre></div>
+</div>
+<img alt="../../../_images/threeNodestwoEdges_b.png" src="../../../_images/threeNodestwoEdges_b.png" />
+<p>Since V2 is empty we go on to the next contraction operation</p>
+<div class="highlight-none"><div class="highlight"><pre>V1 = {3} is not empty
+
+    V1 = {}
+    V2 = {}
+    removed_vertices = {(v, 1):{3, 2}}.
+    G = {V:{1}, E:{}}
+
+V1 is empty
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Results:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>removed_vertices = {(v, 1):{3, 2}}.
+G = {V:{1}, E:{}}
+</pre></div>
+</div>
+<p>Visualy the results are</p>
+<img alt="../../../_images/threeNodestwoEdges_c.png" src="../../../_images/threeNodestwoEdges_c.png" />
+</div>
+<div class="section" id="sample-data">
+<h3>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Perform dead end contraction operation first and then linear contraction</li>
+<li>1 cycle of contraction.</li>
+</ul>
+<img alt="../../../_images/undirected_sampledata_a.png" src="../../../_images/undirected_sampledata_a.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Input:</th><td class="field-body">G = {V:{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17},
+E:{1(1, 2), 2(2,3), 3(3,4), 4(2,5), 5(3,6), 6(7,8), 7(8,5), 8(5,6),
+9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12),
+16(4,9), 17(14,15), 18(16,17)}}</td>
+</tr>
+<tr class="field-even field"><th class="field-name">initial set up:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>removed_vertices={}
+V1 = {1,7,13,14,15,16,17}
+V2 = {4,8,12}
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">procedure:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>V1 = {1,7,13,14,15,16,17} is not empty
+
+    V1 = {7,13,14,15,16,17}
+    V2 = {2,4,8,12}
+    G = {V:{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17},
+    E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 6(7,8), 7(8,5), 8(5,6), 9(6,9),
+        10(5,10), 11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+    removed_vertices = {(v, 2):{1}}.
+
+
+V1 = {7,13,14,15,16,17} is not empty
+
+    V1 = {8,13,14,15,16,17}
+    V2 = {2,4,12}
+    G = {V:{2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17},
+    E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 7(8,5), 8(5,6), 9(6,9), 10(5,10),
+        11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+    removed_vertices = {(v, 2):{1}, (v,8):{7}}.
+
+V1 = {8,13,14,15,16,17} is not empty
+
+    V1 = {13,14,15,16,17}
+    V2 = {2,4,12}
+    G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17},
+    E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
+         11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+    removed_vertices = {(v, 2):{1}, (v,5):{8,7}}.
+
+V1 = {13,14,15,16,17} is not empty
+
+    V1 = {14,15,16,17}
+    V2 = {2,4,10,12}
+    G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 14, 15, 16, 17},
+    E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
+         11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
+    removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}}.
+
+V1 = {14,15,16,17} is not empty
+
+    V1 = {16,17}
+    V2 = {2,4,10,12}
+    G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 15, 16, 17},
+    E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
+         11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}, 18(16,17)}
+    removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}}.
+
+V1 = {16,17} is not empty
+
+    V1 = {}
+    V2 = {2,4,10,12}
+    G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 15, 17},
+    E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
+         11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}}
+    removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
+
+Since V1 is empty we go on to the next contraction operation
+</pre></div>
+</div>
+<img alt="../../../_images/undirected_sampledata_b.png" src="../../../_images/undirected_sampledata_b.png" />
+<div class="highlight-none"><div class="highlight"><pre>V2 = {2,4,10,12} is not empty
+
+    V1 = {}
+    V2 = {4,10,12}
+    G = {V:{3, 4, 5, 6, 9, 10, 11, 12, 15, 17},
+    E:{-1(3,5), 3(3,4), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
+         11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}}
+    removed_vertices = {(e, -1):{1,2}, (v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
+
+V2 = {4,10,12} is not empty
+
+    V1 = {}
+    V2 = {10,12}
+    G = {V:{3, 5, 6, 9, 10, 11, 12, 15, 17},
+    E:{-1(3,5),-2(3,9), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
+         11(6,11), 12(10,11), 13(11,12), 15(9,12)}}
+    removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
+
+V2 = {10,12} is not empty
+
+    V1 = {}
+    V2 = {12}
+    G = {V:{3, 5, 6, 9, 11, 12, 15, 17},
+    E:{-1(3,5),-2(3,9), -3(5,11), 5(3,6), 8(5,6), 9(6,9),
+         11(6,11), 13(11,12), 15(9,12)}}
+    removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
+
+V2 = {12} is not empty
+
+    V1 = {}
+    V2 = {}
+    G = {V:{3, 5, 6, 9, 11, 15, 17},
+    E:{-1(3,5),-2(3,9), -3(5,11), -4(9,11), 5(3,6), 8(5,6), 9(6,9), 11(6,11)}}
+    removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (e, -4):{12},
+         (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
+</pre></div>
+</div>
+<p>Since V1 and V2 are empty we stop our contraction here.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Results:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-none"><div class="highlight"><pre>G = {V:{3, 5, 6, 9, 11, 15, 17},
+E:{-1(3,5),-2(3,9), -3(5,11), -4(9,11), 5(3,6), 8(5,6), 9(6,9), 11(6,11)}}
+removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (e, -4):{12},
+     (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
+</pre></div>
+</div>
+<p>Visualy the results are</p>
+<img alt="../../../_images/undirected_sampledata_c.png" src="../../../_images/undirected_sampledata_c.png" />
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></li>
+<li><a class="reference external" href="http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="">Contraction</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../vrp_basic/doc/pgr_vrpOneDepot.html">pgr_vrpOneDepot</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Jun 08, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_TSP &mdash; pgRouting Manual (2.3.0-dev) (newSignature/TSP)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (newSignature/TSP)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (newSignature/TSP)" href="../../../index.html" />
+    <link rel="up" title="Traveling Sales Person" href="tsp.html" />
+    <link rel="next" title="pgr_eucledianTSP" href="pgr_eucledianTSP.html" />
+    <link rel="prev" title="Traveling Sales Person" href="tsp.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (newSignature/TSP)</span></a></h1>
+        <h2 class="heading"><span>pgr_TSP</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="tsp.html">Traveling Sales Person</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_eucledianTSP.html">pgr_eucledianTSP</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-tsp">
+<span id="id1"></span><h1>pgr_TSP<a class="headerlink" href="#pgr-tsp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">pgr_TSP</span></tt> - Returns a route that visits all the nodes exactly once.</li>
+</ul>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?</li>
+</ul>
+</div></blockquote>
+<p>This implementation uses simulated annealing to return the approximate solution when the input is given in the form of matrix cell contents.
+The matrix informetion must be symmetrical.</p>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_TSP(matrix_cell_sql)
+pgr_TSP(matrix_cell_sql,
+    start_id, end_id,
+    max_processing_time,
+    tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
+    initial_temperature, final_temperature, cooling_factor,
+    randomize,
+RETURS SETOF (seq, node, cost, agg_cost)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This signatures are being deprecated</p>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_id</span> <span class="nb">integer</span><span class="p">)</span>
+<span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_id</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">end_id</span> <span class="nb">integer</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>See <a class="reference external" href="http://docs.pgrouting.org/2.2/en/src/common/doc/types/cost_result.html">http://docs.pgrouting.org/2.2/en/src/common/doc/types/cost_result.html</a></li>
+<li>See <a class="reference external" href="http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html">http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html</a></li>
+</ul>
+<p class="last">Use <a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> instead.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This signature is being deprecated</p>
+<div class="highlight-sql" id="index-1"><div class="highlight"><pre><span class="n">record</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="n">matrix</span> <span class="nb">float</span><span class="p">[][],</span> <span class="k">start</span> <span class="nb">integer</span><span class="p">)</span>
+<span class="n">record</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="n">matrix</span> <span class="nb">float</span><span class="p">[][],</span> <span class="k">start</span> <span class="nb">integer</span><span class="p">,</span> <span class="k">end</span> <span class="nb">integer</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>See <a class="reference external" href="http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html">http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html</a></li>
+</ul>
+<p class="last">Use <a class="reference internal" href="#pgr-tsp"><em>pgr_TSP</em></a> instead.</p>
+</div>
+</div>
+</div>
+<div class="section" id="signatures">
+<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following only aplies to the new signature(s)</p>
+</div>
+<div class="section" id="minimal-signature">
+<span id="index-2"></span><h2>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_TSP(matrix_cell_sql)
+RETURS SETOF (seq, node, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>Because the documentation examples are auto generated and tested for non changing results,
+and the default is to have random execution, the example is wrapping the actual call.</p>
+<div class="highlight-python"><div class="highlight"><pre>WITH
+query AS (
+    SELECT * FROM pgr_TSP(
+        $$
+        SELECT * FROM pgr_dijkstraDmatrix(
+            &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+            (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 14),
+            directed := false
+        )
+        $$
+    )
+)
+SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 14;
+ under_20 
+----------
+ t
+(1 row)
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-signature">
+<span id="index-3"></span><h2>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_TSP(matrix_cell_sql,
+    start_id, end_id,
+    max_processing_time,
+    tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
+    initial_temperature, final_temperature, cooling_factor,
+    randomize,
+RETURS SETOF (seq, node, cost, agg_cost)
+</pre></div>
+</div>
+<p class="rubric">Example:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
+    $$
+    SELECT * FROM pgr_dijkstraDmatrix(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 14),
+        directed := false
+    )
+    $$,
+    start_id := 7,
+    randomize := false
+);
+ seq | node | cost | agg_cost 
+-----+------+------+----------
+   1 |    7 |    1 |        0
+   2 |    8 |    1 |        1
+   3 |    5 |    1 |        2
+   4 |    2 |    1 |        3
+   5 |    1 |    2 |        4
+   6 |    3 |    1 |        6
+   7 |    4 |    1 |        7
+   8 |    9 |    1 |        8
+   9 |   12 |    1 |        9
+  10 |   11 |    1 |       10
+  11 |   10 |    1 |       11
+  12 |   13 |    3 |       12
+  13 |    6 |    3 |       15
+  14 |    7 |    0 |       18
+(14 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description-of-the-imatrix-cell-sql-query">
+<h2>Description of the iMatrix Cell SQL query<a class="headerlink" href="#description-of-the-imatrix-cell-sql-query" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="15%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the starting vertex.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the ending vertex.</td>
+</tr>
+<tr class="row-even"><td><strong>agg_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>Cost for going from start_vid to end_vid</td>
+</tr>
+</tbody>
+</table>
+<p>Can be Used with:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../fooDmatrix/doc/pgr_dijkstraDmatrix.html#pgr-dijkstradmatrix"><em>pgr_dijkstraDmatrix</em></a></li>
+<li><a class="reference internal" href="../../fooDmatrix/doc/pgr_withPointsDmatrix.html#pgr-withpointsdmatrix"><em>pgr_withPointsDmatrix</em></a></li>
+<li><a class="reference internal" href="../../allpairs/doc/pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a></li>
+<li><a class="reference internal" href="../../allpairs/doc/pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a></li>
+</ul>
+<p>To generate a symetric matrix</p>
+<ul class="simple">
+<li>directed := false.</li>
+</ul>
+<p>If using directed := true, the resulting non symmetric matrix must be converted to
+symmetric by fixing the non symmetric values according to your application needs.</p>
+<div class="section" id="control-parameters">
+<h3>Control parameters<a class="headerlink" href="#control-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The control parameters are optional, and have a default value.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="7%" />
+<col width="7%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><cite>0</cite></td>
+<td>The greedy part of the implementation will use this identifier.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><cite>0</cite></td>
+<td>Last visiting vertex before returning to start_vid.</td>
+</tr>
+<tr class="row-even"><td><strong>max_processing_time</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><cite>+infinity</cite></td>
+<td>Stop the annealing processing when the value is reached.</td>
+</tr>
+<tr class="row-odd"><td><strong>tries_per_temperature</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><cite>500</cite></td>
+<td>Maximum number of times a neighbor(s) is searched in each temperature.</td>
+</tr>
+<tr class="row-even"><td><strong>max_changes_per_temperature</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><cite>60</cite></td>
+<td>Maximum number of times the solution is changed in each temperature.</td>
+</tr>
+<tr class="row-odd"><td><strong>max_consecutive_non_changes</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><cite>100</cite></td>
+<td>Maximum number of consecutive times the solution is not changed in each temperature.</td>
+</tr>
+<tr class="row-even"><td><strong>initial_temperature</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><cite>100</cite></td>
+<td>Starting temperature.</td>
+</tr>
+<tr class="row-odd"><td><strong>final_temperature</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><cite>0.1</cite></td>
+<td>Ending temperature.</td>
+</tr>
+<tr class="row-even"><td><strong>cooling_factor</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><cite>0.9</cite></td>
+<td>Value between between 0 and 1 (not including) used to calculate the next temperature.</td>
+</tr>
+<tr class="row-odd"><td><strong>randomize</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td><cite>true</cite></td>
+<td><p class="first">Choose the random seed</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>true: Use current time as seed</li>
+<li>false: Use <cite>1</cite> as seed. Using this value will get the same results with the same data in each execution.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values">
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="10%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Row sequence.</td>
+</tr>
+<tr class="row-odd"><td><strong>node</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the node/coordinate/point.</td>
+</tr>
+<tr class="row-even"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Cost to traverse from the current <tt class="docutils literal"><span class="pre">node</span></tt> ito the next <tt class="docutils literal"><span class="pre">node</span></tt> in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">0</span></tt> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>agg_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Aggregate cost from the <tt class="docutils literal"><span class="pre">node</span></tt> at <tt class="docutils literal"><span class="pre">seq</span> <span class="pre">=</span> <span class="pre">1</span></tt> to the current node.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">0</span></tt> for the first row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Using with points of interest.</td>
+</tr>
+</tbody>
+</table>
+<p>To generate a symetric matrix:</p>
+<ul class="simple">
+<li>the <strong>side</strong> information of pointsOfInterset is ignored by not including it in the query</li>
+<li>and <strong>directed := false</strong></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
+    $$
+    SELECT * FROM pgr_withPointsDMatrix(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
+        &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
+        array[-1, 3, 5, 6, -6], directed := false);
+    $$,
+    start_id := 5,
+    randomize := false
+);
+ seq | node | cost | agg_cost 
+-----+------+------+----------
+   1 |    5 |    1 |        0
+   2 |    6 |    1 |        1
+   3 |    3 |  1.6 |        2
+   4 |   -1 |  1.3 |      3.6
+   5 |   -6 |  0.3 |      4.9
+   6 |    5 |    0 |      5.2
+(6 rows)
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Rewritten in version 2.3.0</li>
+<li>Renamed in version 2.0.0</li>
+<li>GAUL dependency removed in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="tsp.html#tsp"><em>Traveling Sales Person</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">http://en.wikipedia.org/wiki/Traveling_salesman_problem</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="tsp.html">Traveling Sales Person</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_eucledianTSP.html">pgr_eucledianTSP</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Jun 08, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
