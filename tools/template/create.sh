@@ -16,6 +16,7 @@ MY_QUERY_LINE2="OUT seq INTEGER,\n    OUT path_seq INTEGER,\n    OUT start_vid B
 
 MY_RETURN_VALUE_TYPE="General_path_element_t" 
 MY_FUNCTION_NAME_UPPER=$(echo $MY_FUNCTION_NAME | tr 'a-z' 'A-Z')
+MY_FUNCTION_NAME_LOWER=$(echo $MY_FUNCTION_NAME | tr 'A-Z' 'a-z')
 
 #the above variables must be defined
 
@@ -30,7 +31,8 @@ if [ -d "$MY_FUNCTION_NAME" ]; then
 fi
 if [ -d ../../src/"$MY_FUNCTION_NAME" ]; then
         echo "directory exists please delete first"
-	exit
+	#exit
+    rm -rf ../../src/"$MY_FUNCTION_NAME" 
 fi
 
 mkdir "$MY_FUNCTION_NAME"
@@ -103,7 +105,7 @@ sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/doc/pgr_function1
 sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/doc/pgr_function1.rst
 mv "$MY_FUNCTION_NAME"/doc/pgr_function1.rst "$MY_FUNCTION_NAME"/doc/pgr_"$MY_FUNCTION_NAME".rst
 
-#####   DOC   #########
+#####   TEST   #########
 
 echo "updating test/test.conf"
 sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/test/test.conf
@@ -114,8 +116,9 @@ sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/test/doc-function
 sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/test/doc-function1.test.sql
 
 echo "updating the test/pgtap/types-check.sql"
-sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/test/pgtap/types-check.sql
+sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME_LOWER/" "$MY_FUNCTION_NAME"/test/pgtap/types-check.sql
 
+mv "$MY_FUNCTION_NAME"/test/pgtap/types-check.sql "$MY_FUNCTION_NAME"/test/pgtap/"$MY_FUNCTION_NAME"_types_check.sql
 mv "$MY_FUNCTION_NAME"/test/doc-function1.test.sql "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".test.sql
 mv "$MY_FUNCTION_NAME"/test/doc-function1.result "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".result
 

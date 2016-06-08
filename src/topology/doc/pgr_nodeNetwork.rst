@@ -33,7 +33,8 @@ The function reads edges from a not "noded" network table and writes the "noded"
 .. code-block:: sql
 
     text pgr_nodenetwork(text edge_table, float8, tolerance,
-			 text  id='id', text the_geom='the_geom',text table_ending='noded')
+			 text  id='id', text the_geom='the_geom',text table_ending='noded'
+             text rows_where ='', boolean outall=false)
   
 
 Description

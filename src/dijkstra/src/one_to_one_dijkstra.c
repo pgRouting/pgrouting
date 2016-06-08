@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -74,8 +75,16 @@ process(
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
+
+    if (start_vid == end_vid) {
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        pgr_SPI_finish();
+        return;
+    }
+
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -87,6 +96,7 @@ process(
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
+    clock_t start_t = clock();
     char *err_msg = NULL;
     do_pgr_one_to_one_dijkstra(
             edges,
@@ -98,6 +108,8 @@ process(
             result_tuples,
             result_count,
             &err_msg);
+
+    time_msg(" processing Dijkstra one to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 
@@ -177,7 +189,7 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
@@ -189,12 +201,12 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
         // OUT agg_cost FLOAT
 
         values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        nulls = palloc(6 * sizeof(bool));
 
 
         size_t i;
         for (i = 0; i < 6; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         // postgres starts counting from 1
@@ -206,7 +218,7 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
         values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /**********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

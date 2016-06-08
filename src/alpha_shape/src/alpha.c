@@ -36,10 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "fmgr.h"
 
 
-#ifndef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
-
 /*
  * Define this to have profiling enabled
  */
@@ -250,8 +246,9 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
   // TODO: report this as a bug to the pgrouting project
   // the CGAL alpha-shape function crashes if called with less than three points!!!
 
-  if (total_tuples == 0) {
-  	  elog(ERROR, "Distance is too short. no vertex for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
+  if (total_tuples < 3) {
+  	  elog(ERROR, "Less than 3 vertices. Alpha shape calculation needs at least 3 vertices.");
+      return finish(SPIcode, ret);
   }
   if (total_tuples == 1) {
 	  elog(ERROR, "Distance is too short. only 1 vertex for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
@@ -278,7 +275,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
   if (ret < 0)
     {
       //elog(ERROR, "Error computing shape: %s", err_msg);
-      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), errmsg("Error computing shape: %s", err_msg)));
+      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), errmsg("%s", err_msg)));
     } 
   
   return finish(SPIcode, ret);    
@@ -347,7 +344,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
       double x;
       double y;
 
@@ -365,7 +362,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       */
     
       values = palloc(2 * sizeof(Datum));
-      nulls = palloc(2 * sizeof(char));
+      nulls = palloc(2 * sizeof(bool));
 
       x = res[call_cntr].x;
       y = res[call_cntr].y;
@@ -373,20 +370,20 @@ Datum alphashape(PG_FUNCTION_ARGS)
       {
         values[0] = 0;
         values[1] = 0;
-        nulls[0] = 'n';
-        nulls[1] = 'n';
+        nulls[0] = true;
+        nulls[1] = true;
       }
       else
       {
         values[0] = Float8GetDatum(x);
         values[1] = Float8GetDatum(y);
-        nulls[0] = ' ';
-        nulls[1] = ' ';
+        nulls[0] = false;
+        nulls[1] = false;
       }
 	
       PGR_DBG("Heap making\n");
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       PGR_DBG("Datum making\n");
 

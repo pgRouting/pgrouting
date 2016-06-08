@@ -24,8 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+
+#ifndef __cplusplus
+#include "postgres.h"
+#endif
 #include <stdint.h>
-#include <stdbool.h>
 
 typedef struct edge_astar
 {
@@ -40,6 +43,18 @@ typedef struct edge_astar
   double t_y;
 } edge_astar_t;
 
+typedef struct 
+{
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  double cost;
+  double reverse_cost;
+  double x1;
+  double y1;
+  double x2;
+  double y2;
+} Pgr_edge_xy_t;
 
 
 typedef struct {
@@ -145,7 +160,7 @@ struct {
     expectType eType;
 
 } Column_info_t;
-
+#if 0
 // used in boost
 struct boost_vertex_t {
     int64_t id;
@@ -158,7 +173,7 @@ struct boost_edge_t{
     int64_t target;
     bool first;  // originally was true (source, target) false (target, source)
 };
-
+#endif
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 

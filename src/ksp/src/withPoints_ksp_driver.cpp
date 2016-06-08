@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./withPoints_ksp_driver.h"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 #include "./pgr_ksp.hpp"
 
 
@@ -101,23 +101,22 @@ do_pgr_withPointsKsp(
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-            Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
+            Pgr_ksp< pgRouting::DirectedGraph  > fn_yen;
             paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
         } else {
             log << "Working with undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-            Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
+            Pgr_ksp< pgRouting::UndirectedGraph > fn_yen;
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
@@ -131,9 +130,7 @@ do_pgr_withPointsKsp(
 
         if (!details) {
             for (auto &path : paths) {
-                path.print_path(log);
                 eliminate_details(path, edges_to_modify);
-                path.print_path(log);
             }
         }
 
@@ -145,7 +142,7 @@ do_pgr_withPointsKsp(
 
 
         *return_tuples = NULL;
-        *return_tuples = get_memory(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
 
         size_t sequence = 0;
         int route_id = 0;

@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 // #define DEBUG
+#include "./time_msg.h"
 #include "./debug_macro.h"
 #include "./arrays_input.h"
 
@@ -45,12 +46,12 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     int         i;
     int         n;
     int64_t      *data;
+    clock_t start_t = clock();
 
     PGR_DBG("Geting integer array");
     /* get input array element type */
     i_eltype = ARR_ELEMTYPE(input);
     get_typlenbyvalalign(i_eltype, &i_typlen, &i_typbyval, &i_typalign);
-
 
     /* validate input data type */
     switch (i_eltype) {
@@ -88,7 +89,8 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
 
     for (i = 0; i < (*arrlen); i++) {
         if (nulls[i]) {
-            data[i] = -1;
+            free(data);
+            elog(ERROR, "NULL value found in Array!");
         } else {
             switch (i_eltype) {
                 case INT2OID:
@@ -108,5 +110,6 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     pfree(i_data);
 
     PGR_DBG("Finished processing array");
+    time_msg(" reading Array", start_t, clock());
     return (int64_t*)data;
 }

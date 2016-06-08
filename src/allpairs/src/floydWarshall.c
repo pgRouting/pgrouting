@@ -27,18 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <unistd.h>
-
 #include "postgres.h"
+#include "fmgr.h"
 #include "funcapi.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-#include "fmgr.h"
 
 // #define DEBUG
 
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -64,7 +63,7 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_4_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -75,18 +74,31 @@ process(
     }
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
+    clock_t start_t = clock();
     PGR_DBG("Starting processing");
-    char *err_msg = (char *)"";
+    char *err_msg = NULL;
+    char *log_msg = NULL;
     do_pgr_floydWarshall(
             edges,
             total_tuples,
             directed,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
+    time_msg(" processing FloydWarshall", start_t, clock());
 
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+
+    if (log_msg) {
+        PGR_DBG("LOG = %s\n", log_msg);
+        free(log_msg);
+    }
+
+    if (err_msg) {
+       if (*result_tuples) free(*result_tuples);
+       elog(ERROR, " %s\n", err_msg);
+    }
 
     pfree(edges);
     pgr_SPI_finish();
@@ -161,22 +173,22 @@ floydWarshall(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*********************************************************************/
         values = palloc(3 * sizeof(Datum));
-        nulls = palloc(3 * sizeof(char));
+        nulls = palloc(3 * sizeof(bool));
 
         // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
-        nulls[1] = ' ';
+        nulls[1] = false;
         values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
-        nulls[2] = ' ';
+        nulls[2] = false;
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

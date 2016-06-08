@@ -24,6 +24,9 @@ along with this program; if not, write to the Free Software
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
+#endif
 #endif
 
 
@@ -45,6 +48,23 @@ void Path::push_back(Path_t data) {
     m_tot_cost += data.cost;
 }
 
+void Path::reverse() {
+    // std::swap(m_start_id, m_end_id);
+    std::deque< Path_t > newpath;
+    for (size_t i = 0; i < path.size(); ++i) {
+        newpath.push_front({
+                path[i].node,
+                (i == 0? -1 : path[i - 1].edge),
+                (i == 0? 0 : path[i - 1].cost),
+                0
+                });
+    }  
+    for (size_t i = 0; i < newpath.size(); ++i) {
+        newpath[i].agg_cost = (i == 0)? 0 : newpath[i - 1].agg_cost +  newpath[i - 1].cost;
+    }
+    path = newpath;
+}
+
 
 
 void Path::clear() {
@@ -54,8 +74,8 @@ void Path::clear() {
     m_end_id = 0;
 }
 
-void Path::print_path(std::ostream& log) const {
-    log << "Path: " << start_id() << " -> " << end_id() << "\n"
+std::ostream& operator<<(std::ostream &log, const Path &path) {
+    log << "Path: " << path.start_id() << " -> " << path.end_id() << "\n"
         << "seq\tnode\tedge\tcost\tagg_cost\n";
     int64_t i = 0;
     for (const auto &e : path) {
@@ -66,6 +86,7 @@ void Path::print_path(std::ostream& log) const {
             << e.agg_cost << "\n";
         ++i;
     }
+    return log;
 }
 
 
@@ -103,7 +124,7 @@ void Path::generate_postgres_data(
     int i = 1;
     for (const auto e : path) {
         (*postgres_data)[sequence] = 
-            {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
+        {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
         ++i;
         ++sequence;
     }

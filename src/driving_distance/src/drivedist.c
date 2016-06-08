@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -64,7 +65,7 @@ void compute_driving_distance(
 
   PGR_DBG("Load data");
 
-  pgr_get_data_5_columns(sql, &edges, &total_edges);
+  pgr_get_edges(sql, &edges, &total_edges);
 
   if (total_edges == 0) {
     PGR_DBG("No edges found");
@@ -75,10 +76,12 @@ void compute_driving_distance(
   }
   PGR_DBG("total edges read %ld\n", total_edges);
 
+  clock_t start_t = clock();
   do_pgr_driving_distance(edges, total_edges,
                         start_vertex, distance,
                         directed, 
                         path, path_count, &err_msg);
+  time_msg(" processing Driving Distance one start", start_t, clock());
 
 
   PGR_DBG("total tuples found %ld\n", *path_count);
@@ -153,25 +156,25 @@ driving_distance(PG_FUNCTION_ARGS) {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       values = palloc(5 * sizeof(Datum));
-      nulls = palloc(5 * sizeof(char));
+      nulls = palloc(5 * sizeof(bool));
 
       // TODO version 3.0 change to 
       // values[0] = Int64GetDatum(ret_path[call_cntr].seq + 1);
-      nulls[0] = ' ';
-      nulls[1] = ' ';
-      nulls[2] = ' ';
-      nulls[3] = ' ';
-      nulls[4] = ' ';
+      nulls[0] = false;
+      nulls[1] = false;
+      nulls[2] = false;
+      nulls[3] = false;
+      nulls[4] = false;
       values[0] = Int32GetDatum(ret_path[call_cntr].seq + 1);
       values[1] = Int64GetDatum(ret_path[call_cntr].node);
       values[2] = Int64GetDatum(ret_path[call_cntr].edge);
       values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       values[4] = Float8GetDatum(ret_path[call_cntr].agg_cost);
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);

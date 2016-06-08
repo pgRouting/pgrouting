@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -77,7 +78,7 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -89,6 +90,8 @@ process(
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
+    clock_t start_t = clock();
+
     char *err_msg = NULL;
     do_pgr_many_to_many_dijkstra(
             edges,
@@ -102,6 +105,7 @@ process(
             result_tuples,
             result_count,
             &err_msg);
+    time_msg(" processing Dijkstra many to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 
@@ -198,7 +202,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*********************************************************************/
         /*                          MODIFY AS NEEDED                         */
@@ -212,11 +216,11 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         // OUT agg_cost float)
 
         values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(char));
+        nulls = palloc(8 * sizeof(bool));
 
         size_t i;
         for (i = 0; i < 8; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         values[0] = Int32GetDatum(call_cntr + 1);
@@ -229,7 +233,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

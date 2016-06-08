@@ -40,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -78,7 +79,7 @@ process(
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
-    driving_side[0] = tolower(driving_side[0]);
+    driving_side[0] = (char) tolower(driving_side[0]);
 
     pgr_SPI_connect();
 
@@ -97,12 +98,12 @@ process(
 
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     free(edges_of_points_query);
     free(edges_no_points_query);
@@ -115,7 +116,9 @@ process(
     }
 
     char *err_msg = NULL;
-    int  errcode = do_pgr_many_to_many_withPoints(
+    char *log_msg = NULL;
+    clock_t start_t = clock();
+    do_pgr_many_to_many_withPoints(
             edges,  total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,
@@ -128,20 +131,20 @@ process(
             result_tuples,
             result_count,
             &err_msg);
+    time_msg("Processing withPoints many to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    PGR_DBG("LOG: %s\n", err_msg);
+    free(log_msg);
 
-    free(err_msg);
-    pfree(edges);
-
-    pgr_SPI_finish();
-
-    
-    if (errcode)  {
+    if (err_msg) {
         free(start_pidsArr);
         free(end_pidsArr);
-        pgr_send_error(errcode);
+        free(*result_tuples);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
     }
+    pfree(edges);
+    pgr_SPI_finish();
 }
 
 /*                                                                             */
@@ -234,7 +237,7 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*******************************************************************************/
         /*                          MODIFY AS NEEDED                                   */
@@ -247,11 +250,11 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
 
 
         values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(char));
+        nulls = palloc(8 * sizeof(bool));
 
         size_t i;
         for(i = 0; i < 8; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
 
@@ -266,7 +269,7 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*******************************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

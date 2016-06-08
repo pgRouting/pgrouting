@@ -30,6 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
+#endif
 #endif
 
 
@@ -57,7 +60,7 @@ do_pgr_johnson(
   std::ostringstream log;
   try {
     if (total_tuples == 1) {
-      log << "Requiered: more than one tuple\n";
+      log << "Required: more than one tuple\n";
       (*return_tuples) = NULL;
       (*return_count) = 0;
       *err_msg = strdup(log.str().c_str());
@@ -65,18 +68,17 @@ do_pgr_johnson(
     }
 
     graphType gType = directed? DIRECTED: UNDIRECTED;
-    const auto initial_size = total_tuples;
 
     std::deque< Path >paths;
 
     if (directed) {
       log << "Working with directed Graph\n";
-      Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+      pgRouting::DirectedGraph digraph(gType);
       digraph.graph_insert_data(data_edges, total_tuples);
       pgr_johnson(digraph, *return_count, return_tuples);
     } else {
       log << "Working with Undirected Graph\n";
-      Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+      pgRouting::UndirectedGraph undigraph(gType);
       undigraph.graph_insert_data(data_edges, total_tuples);
       pgr_johnson(undigraph, *return_count, return_tuples);
     }

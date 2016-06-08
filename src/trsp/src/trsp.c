@@ -59,7 +59,7 @@ static int compute_trsp(
     PGR_DBG("Load edges");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
     PGR_DBG("Total %ld edges", total_tuples);
 
     PGR_DBG("Load restrictions");
@@ -312,21 +312,21 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
-        char* nulls;
+        bool* nulls;
 
         values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(char));
+        nulls = palloc(4 * sizeof(bool));
 
         values[0] = Int32GetDatum(call_cntr);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int32GetDatum(path[call_cntr].vertex_id);
-        nulls[1] = ' ';
+        nulls[1] = false;
         values[2] = Int32GetDatum(path[call_cntr].edge_id);
-        nulls[2] = ' ';
+        nulls[2] = false;
         values[3] = Float8GetDatum(path[call_cntr].cost);
-        nulls[3] = ' ';
+        nulls[3] = false;
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         // make the tuple into a datum 
         result = HeapTupleGetDatum(tuple);
@@ -461,21 +461,21 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
-        char* nulls;
+        bool* nulls;
 
         values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(char));
+        nulls = palloc(4 * sizeof(bool));
 
         values[0] = Int32GetDatum(call_cntr);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int32GetDatum(path[call_cntr].vertex_id);
-        nulls[1] = ' ';
+        nulls[1] = false;
         values[2] = Int32GetDatum(path[call_cntr].edge_id);
-        nulls[2] = ' ';
+        nulls[2] = false;
         values[3] = Float8GetDatum(path[call_cntr].cost);
-        nulls[3] = ' ';
+        nulls[3] = false;
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         // make the tuple into a datum 
         result = HeapTupleGetDatum(tuple);

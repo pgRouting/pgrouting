@@ -1,7 +1,8 @@
 /*PGR-GNU*****************************************************************
+ *
 
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+vicky_vergara@hotmail.com
 
 ------
 
@@ -20,8 +21,30 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-select * from pgr_astar('select id::INTEGER, source::INTEGER, target::INTEGER,
-    case when cost<=0 then 999 else cost end as cost,
-    case when reverse_cost<=0 then 999 else reverse_cost end as reverse_cost,
-     x1, y1, x2, y2 from edge_table', 11, 5, false, true);
 
+#pragma once
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
+
+#include "./pgr_types.h"  
+
+
+namespace pgRouting {
+
+    class Basic_edge{
+        public:
+            void cp_members(const Basic_edge &other);
+
+        public:
+            int64_t source;
+            int64_t target;
+
+            int64_t id;
+            double cost;
+            bool first;  // originally was true (source, target) false (target, source)
+    };
+
+} // namespace pgRouting

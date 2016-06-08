@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: memory_func.hpp
+ *
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+vicky_vergara@hotmail.com
 
 ------
 
@@ -21,27 +21,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#include <stdlib.h>
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#ifdef open
+#undef open
+#endif
+#endif
+
+#include "./basic_edge.h"  
 
 
-template <typename T>
-T*
-get_memory(std::size_t size, T *ptr){
-    if( !ptr ){
-        ptr = (T*) malloc(size * sizeof(T));
-    } else {
-        ptr = (T*) realloc(ptr, size * sizeof(T));
+namespace pgRouting {
+
+    void Basic_edge::cp_members(const Basic_edge &other) {
+        this->id = other.id;
+        this->cost = other.cost;
+        this->first = other.first;
     }
-    return (T*) ptr;
-}
 
-
-template <typename T>
-T*
-noResult(std::size_t *count, T *ptr) {
-    (*count) = 0;
-    if (ptr)
-        free(ptr);
-    return NULL;
-}
-
+} // namespace pgRouting

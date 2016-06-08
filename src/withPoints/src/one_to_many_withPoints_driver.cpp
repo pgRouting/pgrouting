@@ -45,12 +45,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_withPoints.hpp"
 #include "./one_to_many_withPoints_driver.h"
 
-extern "C" {
-#include "./../../common/src/pgr_types.h"
-}
-
-#include "./../../common/src/memory_func.hpp"
-
+#include "./../../common/src/basic_vertex.h"
+#include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
@@ -60,7 +57,7 @@ extern "C" {
 // directed BOOLEAN DEFAULT true
 
 
-int
+void
 do_pgr_one_to_many_withPoints(
         pgr_edge_t  *edges, size_t total_edges,
         Point_on_edge_t  *points_p, size_t total_points,
@@ -72,9 +69,16 @@ do_pgr_one_to_many_withPoints(
         bool directed,
         bool only_cost,
         General_path_element_t **return_tuples, size_t *return_count,
+        char ** log_msg,
         char ** err_msg){
     std::ostringstream log;
+    std::ostringstream err;
     try {
+        pgassert(!(*return_tuples));
+        pgassert((*return_count) == 0);
+        pgassert(!(*log_msg));
+        pgassert(!(*err_msg));
+
         /*
          * DOCUMENT:
          *   - Points are treated as the same point when the pid is the same
@@ -86,19 +90,17 @@ do_pgr_one_to_many_withPoints(
 
         int errcode = check_points(points, log);
         if (errcode) {
-            log << "Point(s) with same pid but different edge/fraction/side combination found";
-            *err_msg = strdup(log.str().c_str());
-            return errcode;
+            *log_msg = strdup(log.str().c_str());
+            err << "Unexpected point(s) with same pid but different edge/fraction/side combination found.";
+            *err_msg = strdup(err.str().c_str());
+            return;
         }
-
-
 
 
         std::vector< pgr_edge_t >
             edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
-//        log << "start_pid" << start_pid << "\n";
 
         log << "driving_side" << driving_side << "\n";
         create_new_edges(
@@ -107,33 +109,15 @@ do_pgr_one_to_many_withPoints(
                 driving_side,
                 new_edges);
 
- //       int64_t start_vid = 0;
         log << "Inserting points into a c++ vector structure\n";
         /*
          * Eliminating duplicates
          * & ordering the points
          */
-        std::set< int64_t > end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
-//        std::set< int64_t > end_points(end_pidsArr, end_pidsArr + size_end_pidsArr);
-#if 0
-        std::set< int64_t > end_vertices;
+        std::set< int64_t > s_end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
 
-        for (const auto point : points) {
-            if (point.pid == start_pid) {
-                start_vid = point.vertex_id;
-                break;
-            }
-        }
+        std::vector< int64_t > end_vertices(s_end_vertices.begin(), s_end_vertices.end());
 
-        for (const auto &end_pid : end_points) {
-            for (const auto point : points) {
-                if (point.pid == end_pid) {
-                    end_vertices.insert(point.vertex_id);
-                    break;
-                }
-            }
-        }
-#endif
         log << "start_vid" << start_vid << "\n";
         log << "end_vertices";
 
@@ -142,30 +126,31 @@ do_pgr_one_to_many_withPoints(
         }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(
+                    pgRouting::extract_vertices(
+                        pgRouting::extract_vertices(edges, total_edges),
+                        new_edges),
+                    gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, paths, start_vid, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            auto vertices(pgRouting::extract_vertices(edges, total_edges));
+            vertices = pgRouting::extract_vertices(vertices, new_edges);
+            pgRouting::UndirectedGraph undigraph(vertices, gType);
+            vertices.clear();
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, paths, start_vid, end_vertices, only_cost);
         }
 
-#if 0
-        for (auto &path :paths) {
-            adjust_pids(points, path);
-        }
-#endif
         if (!details) {
             for (auto &path :paths) {
                 eliminate_details(path, edges_to_modify);
@@ -187,31 +172,37 @@ do_pgr_one_to_many_withPoints(
             (*return_count) = 0;
             log <<
                 "No paths found between Starting and any of the Ending vertices\n";
-            *err_msg = strdup(log.str().c_str());
-            return 0;
+            *log_msg = strdup(log.str().c_str());
+            return;
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
 
-#ifndef DEBUG
-        {
-            std::ostringstream log;
-            log << "OK";
-            *err_msg = strdup(log.str().c_str());
-        }
 
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
-        return 0;
-    } catch ( ... ) {
-        log << "Caught unknown expection!\n";
-        *err_msg = strdup(log.str().c_str());
-        return 1000;
+        *log_msg = strdup(log.str().c_str());
+        pgassert(!(*err_msg));
+        return;
+    } catch (AssertFailedException &exept) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        *log_msg = strdup(log.str().c_str());
+        err << exept.what() << "\n";
+        *err_msg = strdup(err.str().c_str());
+    } catch (std::exception& exept) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        *log_msg = strdup(log.str().c_str());
+        err << exept.what() << "\n";
+        *err_msg = strdup(err.str().c_str());
+    } catch(...) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        *log_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!\n";
+        *err_msg = strdup(err.str().c_str());
     }
-    return 0;
 }
 

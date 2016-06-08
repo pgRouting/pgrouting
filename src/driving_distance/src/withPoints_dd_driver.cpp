@@ -31,6 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
+#endif
 #endif
 
 
@@ -48,7 +51,7 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 
 /*******************************************************************************/
@@ -111,7 +114,8 @@ do_pgr_many_withPointsDD(
                 new_edges,
                 log);
 
-        std::set< int64_t > start_vids(start_pids_arr, start_pids_arr + s_len);
+        std::set< int64_t > s_start_vids(start_pids_arr, start_pids_arr + s_len);
+        std::vector< int64_t > start_vids(s_start_vids.begin(), s_start_vids.end());
 #if 0
         std::set< int64_t > start_vids;
 
@@ -127,36 +131,35 @@ do_pgr_many_withPointsDD(
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const size_t initial_size = total_edges;
 
         std::deque< Path >paths;
 
         if (directed) {
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_drivingDistance(digraph, paths, start_vids, distance, equiCost);
         } else {
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_drivingDistance(undigraph, paths, start_vids, distance, equiCost);
         }
 
         for (auto &path : paths) {
-            path.print_path(log);
+            log << path;
 
             if (!details) {
                 eliminate_details_dd(path);
             }
-            path.print_path(log);
+            log << path;
             std::sort(path.begin(), path.end(),
                     [](const Path_t &l, const  Path_t &r)
                     {return l.node < r.node;});
             std::stable_sort(path.begin(), path.end(),
                     [](const Path_t &l, const  Path_t &r)
                     {return l.agg_cost < r.agg_cost;});
-            path.print_path(log);
+            log << path;
         }
 
         size_t count(count_tuples(paths));
@@ -166,7 +169,7 @@ do_pgr_many_withPointsDD(
             *err_msg = strdup("NOTICE: No return values was found");
             return 0;
         }
-        *return_tuples = get_memory(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
         *return_count = collapse_paths(return_tuples, paths);
 
 #ifndef DEBUG
@@ -253,19 +256,18 @@ do_pgr_withPointsDD(
 #endif
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const size_t initial_size = total_edges;
 
         Path path;
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_drivingDistance(digraph, path, start_vid, distance);
         } else {
             log << "Working with undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_drivingDistance(undigraph, path, start_vid, distance);
@@ -297,7 +299,7 @@ do_pgr_withPointsDD(
 
 
         *return_tuples = NULL;
-        *return_tuples = get_memory(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
 
         size_t sequence = 0;
         path.get_pg_dd_path(return_tuples, sequence);

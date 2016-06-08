@@ -56,7 +56,7 @@ Step by Step processing
 ~~~~{.c}
     git remote -v
 ~~~~
-   - Now you shoud have something like this:
+   - Now you should have something like this:
 ~~~~{.c}
 origin  https://github.com/acountName/pgrouting (fetch)
 origin  https://github.com/acountName/pgrouting (push)

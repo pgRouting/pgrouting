@@ -38,7 +38,7 @@ pgr_send_error(int errcode) {
             elog(ERROR, "Unexpected point(s) with same pid but different edge/fraction/side combination found.");
             break;
         case 2:
-            elog(ERROR, "Internal: Unexpected missmatch count and sequence number on results");
+            elog(ERROR, "Internal: Unexpected mismatch count and sequence number on results");
             break;
         default:
             elog(ERROR, "Unknown exception");

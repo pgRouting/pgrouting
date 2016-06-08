@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -58,7 +59,7 @@ void driving_many_to_dist_driver(
     char *err_msg = (char *)"";
 
 
-    pgr_get_data_5_columns(sql, &edges, &total_tuples);
+    pgr_get_edges(sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -67,6 +68,7 @@ void driving_many_to_dist_driver(
         return;
     }
 
+    clock_t start_t = clock();
     do_pgr_driving_many_to_dist(
             edges, total_tuples,
             start_vertex, num,
@@ -74,6 +76,7 @@ void driving_many_to_dist_driver(
             directed,
             equicost,
             path, path_count, &err_msg);
+    time_msg(" processing DrivingDistance many starts", start_t, clock());
 
     pfree(edges);
     pgr_SPI_finish(); 
@@ -155,17 +158,17 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
-        char* nulls;
+        bool* nulls;
 
         values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        nulls = palloc(6 * sizeof(bool));
         // id, start_v, node, edge, cost, tot_cost
-        nulls[0] = ' ';
-        nulls[1] = ' ';
-        nulls[2] = ' ';
-        nulls[3] = ' ';
-        nulls[4] = ' ';
-        nulls[5] = ' ';
+        nulls[0] = false;
+        nulls[1] = false;
+        nulls[2] = false;
+        nulls[3] = false;
+        nulls[4] = false;
+        nulls[5] = false;
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(ret_path[call_cntr].start_id);
         values[2] = Int64GetDatum(ret_path[call_cntr].node);
@@ -173,7 +176,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
         values[4] = Float8GetDatum(ret_path[call_cntr].cost);
         values[5] = Float8GetDatum(ret_path[call_cntr].agg_cost);
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);

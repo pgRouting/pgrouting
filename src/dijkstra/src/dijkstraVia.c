@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -67,47 +68,50 @@ process( char* edges_sql,
         bool U_turn_on_edge,
         Routes_t **result_tuples,
         size_t *result_count) {
-  pgr_SPI_connect();
+    pgr_SPI_connect();
 
-  PGR_DBG("Load data");
-  pgr_edge_t *edges;
-  edges = NULL;
-  size_t total_tuples;
-  total_tuples = 0;
-  pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    PGR_DBG("Load data");
+    pgr_edge_t *edges;
+    edges = NULL;
+    size_t total_tuples;
+    total_tuples = 0;
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
 
-  if (total_tuples == 0) {
-    PGR_DBG("No edges found");
-    (*result_count) = 0;
-    (*result_tuples) = NULL;
+    if (total_tuples == 0) {
+        PGR_DBG("No edges found");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        pgr_SPI_finish();
+        return;
+    }
+    PGR_DBG("Total %ld tuples in query:", total_tuples);
+    PGR_DBG("directed: %d", directed);
+    PGR_DBG("strict: %d", strict);
+    PGR_DBG("U_turn_on_edge: %d", U_turn_on_edge);
+
+
+    PGR_DBG("Starting processing");
+    clock_t start_t = clock();
+
+    char *err_msg = (char *)"";
+    do_pgr_dijkstraViaVertex(
+            edges,
+            total_tuples,
+            via_vidsArr,
+            size_via_vidsArr,
+            directed,
+            strict,
+            U_turn_on_edge,
+            result_tuples,
+            result_count,
+            &err_msg);
+    time_msg(" processing Dijkstra Via", start_t, clock());
+    PGR_DBG("Returning %ld tuples\n", *result_count);
+    PGR_DBG("Returned message = %s\n", err_msg);
+
+    free(err_msg);
+    pfree(edges);
     pgr_SPI_finish();
-    return;
-  }
-  PGR_DBG("Total %ld tuples in query:", total_tuples);
-  PGR_DBG("directed: %d", directed);
-  PGR_DBG("strict: %d", strict);
-  PGR_DBG("U_turn_on_edge: %d", U_turn_on_edge);
-
-  
-  PGR_DBG("Starting processing");
-  char *err_msg = (char *)"";
-  do_pgr_dijkstraViaVertex(
-        edges,
-        total_tuples,
-        via_vidsArr,
-        size_via_vidsArr,
-        directed,
-        strict,
-        U_turn_on_edge,
-        result_tuples,
-        result_count,
-        &err_msg);
-  PGR_DBG("Returning %ld tuples\n", *result_count);
-  PGR_DBG("Returned message = %s\n", err_msg);
-
-  free(err_msg);
-  pfree(edges);
-  pgr_SPI_finish();
 }
 /*                                                                             */
 /*******************************************************************************/
@@ -118,112 +122,112 @@ Datum
 PGDLLEXPORT Datum
 #endif
 dijkstraVia(PG_FUNCTION_ARGS) {
-  FuncCallContext     *funcctx;
-  uint32_t               call_cntr;
-  uint32_t               max_calls;
-  TupleDesc            tuple_desc;
+    FuncCallContext     *funcctx;
+    uint32_t               call_cntr;
+    uint32_t               max_calls;
+    TupleDesc            tuple_desc;
 
-  /*******************************************************************************/
-  /*                          MODIFY AS NEEDED                                   */
-  /*                                                                             */
-  Routes_t  *result_tuples = 0;
-  size_t result_count = 0;
-  /*                                                                             */
-  /*******************************************************************************/
+    /*******************************************************************************/
+    /*                          MODIFY AS NEEDED                                   */
+    /*                                                                             */
+    Routes_t  *result_tuples = 0;
+    size_t result_count = 0;
+    /*                                                                             */
+    /*******************************************************************************/
 
-  if (SRF_IS_FIRSTCALL()) {
-      MemoryContext   oldcontext;
-      funcctx = SRF_FIRSTCALL_INIT();
-      oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+    if (SRF_IS_FIRSTCALL()) {
+        MemoryContext   oldcontext;
+        funcctx = SRF_FIRSTCALL_INIT();
+        oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-  /*******************************************************************************/
-  /*                          MODIFY AS NEEDED                                   
-   * pgr_dijkstraVia(edges_sql text,
-   *   vertices anyarray,
-   *   directed boolean default true,
-   *   strict boolean default false,
-   *   U_turn_on_edge boolean default false,
-   *******************************************************************************/
+        /*******************************************************************************/
+        /*                          MODIFY AS NEEDED                                   
+         * pgr_dijkstraVia(edges_sql text,
+         *   vertices anyarray,
+         *   directed boolean default true,
+         *   strict boolean default false,
+         *   U_turn_on_edge boolean default false,
+         *******************************************************************************/
 
-      PGR_DBG("Initializing arrays");
-      int64_t* via_vidsArr;
-      size_t size_via_vidsArr;
-      via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
-      PGR_DBG("Via VertexArr size %ld ", size_via_vidsArr);
+        PGR_DBG("Initializing arrays");
+        int64_t* via_vidsArr;
+        size_t size_via_vidsArr;
+        via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
+        PGR_DBG("Via VertexArr size %ld ", size_via_vidsArr);
 
-      PGR_DBG("Calling process");
-      process(
-         pgr_text2char(PG_GETARG_TEXT_P(0)),
-         via_vidsArr, size_via_vidsArr,
-         PG_GETARG_BOOL(2),
-         PG_GETARG_BOOL(3),
-         PG_GETARG_BOOL(4),
-         &result_tuples,
-         &result_count);
+        PGR_DBG("Calling process");
+        process(
+                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                via_vidsArr, size_via_vidsArr,
+                PG_GETARG_BOOL(2),
+                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(4),
+                &result_tuples,
+                &result_count);
 
-      PGR_DBG("Cleaning arrays");
-      free(via_vidsArr);
-  /*                                                                             */
-  /*******************************************************************************/
+        PGR_DBG("Cleaning arrays");
+        free(via_vidsArr);
+        /*                                                                             */
+        /*******************************************************************************/
 
-      funcctx->max_calls = (uint32_t)result_count;
-      funcctx->user_fctx = result_tuples;
-      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        funcctx->max_calls = (uint32_t)result_count;
+        funcctx->user_fctx = result_tuples;
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                            "that cannot accept type record")));
+                         "that cannot accept type record")));
 
-      funcctx->tuple_desc = tuple_desc;
-      MemoryContextSwitchTo(oldcontext);
-  }
+        funcctx->tuple_desc = tuple_desc;
+        MemoryContextSwitchTo(oldcontext);
+    }
 
-  funcctx = SRF_PERCALL_SETUP();
-  call_cntr = funcctx->call_cntr;
-  max_calls = funcctx->max_calls;
-  tuple_desc = funcctx->tuple_desc;
-  result_tuples = (Routes_t*) funcctx->user_fctx;
+    funcctx = SRF_PERCALL_SETUP();
+    call_cntr = funcctx->call_cntr;
+    max_calls = funcctx->max_calls;
+    tuple_desc = funcctx->tuple_desc;
+    result_tuples = (Routes_t*) funcctx->user_fctx;
 
-  if (call_cntr < max_calls) {
-      HeapTuple    tuple;
-      Datum        result;
-      Datum        *values;
-      char*        nulls;
+    if (call_cntr < max_calls) {
+        HeapTuple    tuple;
+        Datum        result;
+        Datum        *values;
+        bool*        nulls;
 
-  /*******************************************************************************/
-  /*                          MODIFY AS NEEDED                                   */
-      //    OUT seq BIGINT, OUT path_id BIGINT, OUT path_seq BIGINT, OUT start_vid BIGINT, OUT end_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT, OUT route_agg_cost FLOAT)
+        /*******************************************************************************/
+        /*                          MODIFY AS NEEDED                                   */
+        //    OUT seq BIGINT, OUT path_id BIGINT, OUT path_seq BIGINT, OUT start_vid BIGINT, OUT end_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT, OUT route_agg_cost FLOAT)
 
-      size_t numb_out = 10;
-      values = palloc(numb_out * sizeof(Datum));
-      nulls = palloc(numb_out * sizeof(char));
-      size_t i;
-      for(i = 0; i< numb_out; ++i) {
-          nulls[i] = ' ';
-      }
+        size_t numb_out = 10;
+        values = palloc(numb_out * sizeof(Datum));
+        nulls = palloc(numb_out * sizeof(bool));
+        size_t i;
+        for(i = 0; i< numb_out; ++i) {
+            nulls[i] = false;
+        }
 
-      // postgres starts counting from 1
-      values[0] = Int32GetDatum(call_cntr + 1);
-      values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
-      values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
-      values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
-      values[4] = Int64GetDatum(result_tuples[call_cntr].end_vid);
-      values[5] = Int64GetDatum(result_tuples[call_cntr].node);
-      values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
-      values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
-      values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-      values[9] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
+        // postgres starts counting from 1
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
+        values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].end_vid);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[9] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
 
-  /*******************************************************************************/
+        /*******************************************************************************/
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
-      result = HeapTupleGetDatum(tuple);
-      SRF_RETURN_NEXT(funcctx, result);
-  } else {
-      // cleanup
-      if (result_tuples) free(result_tuples);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
+        result = HeapTupleGetDatum(tuple);
+        SRF_RETURN_NEXT(funcctx, result);
+    } else {
+        // cleanup
+        if (result_tuples) free(result_tuples);
 
-      SRF_RETURN_DONE(funcctx);
-  }
+        SRF_RETURN_DONE(funcctx);
+    }
 }
