@@ -166,3 +166,17 @@ template < class G >
 			return false;
 		}
 
+template < class G >
+		void Pgr_linearContraction<G>::calculateVertices(G &graph,
+				std::ostringstream& debug) {
+			debug << "Calculating vertices\n";
+			V_i vi;
+			for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
+				debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
+				if (is_linear(graph, *vi, debug)) {
+					debug << "Adding " << graph.graph[(*vi)].id << " to dead end" << '\n';
+					linearVertices += (*vi);
+				}
+			}
+			linearVertices -= forbiddenVertices;
+		}
