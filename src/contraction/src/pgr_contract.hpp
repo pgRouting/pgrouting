@@ -41,6 +41,7 @@ extern "C" {
 
 #include "./pgr_contractionGraph.hpp"
 #include "./pgr_deadEndContraction.hpp"
+#include "./pgr_linearContraction.hpp"
 #include "../../common/src/pgr_assert.h"
 
 
@@ -68,6 +69,7 @@ void perform_deadEnd(G &graph,
     }
 }
 
+#if 1
 
 template < class G >
 void perform_linear(G &graph,
@@ -82,7 +84,7 @@ void perform_linear(G &graph,
     linearContractor.calculateVertices(graph, debug);
     try
     {
-        #if 1
+        #if 0
         linearContractor.doContraction(graph, debug);
         #endif
     }
@@ -90,7 +92,7 @@ void perform_linear(G &graph,
         debug << "Caught unknown expection!\n";
     }
 }
-
+#endif
 
 
 template < class G >
@@ -154,6 +156,16 @@ void pgr_contractGraph(
                     debug << "Graph after dead end contraction" << std::endl;
                     graph.print_graph(debug);
                 }
+                else if (front == 1)
+                {
+
+                    debug << "Graph before linear contraction" << std::endl;
+                    graph.print_graph(debug);
+                    debug << "Performing linear contraction" << std::endl;
+                    perform_linear(graph, forbidden_vertices, debug);
+                    debug << "Graph after linear contraction" << std::endl;
+                    graph.print_graph(debug);
+                }
                 contract_order.pop_front();
                 contract_order.push_back(front);
                 front = contract_order.front();
@@ -174,17 +186,6 @@ void pgr_contractGraph(
     debug << "Adjacent vertices of vertex 6" << "\n";
     fn_contract.print_identifiers(debug, fn_contract.getAdjacentVertices(graph, 6));
     #endif
-    #if 0
-    fn_contract.calculateDegrees(graph);
-    //fn_contract.degreeMap(graph, debug);
-    
-    fn_contract.contract_to_level(graph, level);
-    fn_contract.getGraphName(contracted_graph_name, level);
-    fn_contract.getGraph_string(graph, contracted_graph_blob);
-    fn_contract.getRemovedE_string(graph, removedEdges);
-    fn_contract.getRemovedV_string(removedVertices);
-    fn_contract.getPsuedoE_string(psuedoEdges);
-    #endif
 }
 
 bool is_valid_contraction_number(int number) {
@@ -196,6 +197,9 @@ bool is_valid_contraction_number(int number) {
         return false;
         break;
         case 0:
+        return true;
+        break;
+        case 1:
         return true;
         break;
         default:

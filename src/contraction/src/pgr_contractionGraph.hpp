@@ -166,7 +166,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
             d_edge.source = this->graph[source(*out, this->graph)].id;
             d_edge.target = this->graph[target(*out, this->graph)].id;
             d_edge.cost = this->graph[*out].cost;
-            log << "Out edge: { source : "<< d_edge.source << ", target: " << d_edge.target  << "}\n";
+            //log << "Out edge: { source : "<< d_edge.source << ", target: " << d_edge.target  << "}\n";
             this->removed_edges.push_back(d_edge);
         }
 
@@ -179,7 +179,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
                 d_edge.source = this->graph[source(*in, this->graph)].id;
                 d_edge.target = this->graph[target(*in, this->graph)].id;
                 d_edge.cost = this->graph[*in].cost;
-                log << "In edge: { source : "<< d_edge.source << ", target: " << d_edge.target  << "}\n";
+                //log << "In edge: { source : "<< d_edge.source << ", target: " << d_edge.target  << "}\n";
                 this->removed_edges.push_back(d_edge);
             }
         }
