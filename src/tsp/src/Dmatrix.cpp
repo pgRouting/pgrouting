@@ -1,42 +1,66 @@
+/*PGR-GNU*****************************************************************
+
+FILE: Dmatrix.cpp
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
+#include "./Dmatrix.h"
 
+#include <string.h>
+#include <sstream>
 #include <algorithm>
+#include <limits>
 #include <vector>
-#include "./Dmatrix.hpp"
 
+#include "../../common/src/pgr_assert.h"
 
+#include "./tour.h"
+
+namespace pgRouting {
+namespace tsp {
 
 double
-Dmatrix::pathCost(const Ids &path) const {
-    double len = 0;
-    if (path.empty()) return len;
-    auto prev_id = path.front();
-    for (const auto &id : path) {
-        if (id == path.front()) continue;
-        if (costs[prev_id][id] == std::numeric_limits<double>::max())
-            return std::numeric_limits<double>::max();
-        len += costs[prev_id][id];
+Dmatrix::tourCost(const Tour &tour) const {
+    double total_cost(0);
+    if (tour.cities.empty()) return total_cost;
+
+    auto prev_id = tour.cities.front();
+    for (const auto &id : tour.cities) {
+        if (id == tour.cities.front()) continue;
+
+        pgassert(distance(prev_id, id) != std::numeric_limits<double>::max());
+
+        total_cost += costs[prev_id][id];
         prev_id = id;
     }
-    len += costs[prev_id][ids.front()];
-    return len;
+    total_cost += costs[prev_id][tour.cities.front()];
+    return total_cost;
 }
 
 
-
-double
-Dmatrix::max() const {
-    double maxd(0);
-    for (const auto &row : costs) {
-        auto row_max = std::max_element(row.begin(),row.end());
-        maxd = maxd < *row_max? *row_max : maxd;
-    }
-    return maxd;
-}
 
 void
 Dmatrix::set_ids(const std::vector < Matrix_cell_t > &data_costs) {
@@ -46,13 +70,19 @@ Dmatrix::set_ids(const std::vector < Matrix_cell_t > &data_costs) {
         ids.push_back(cost.to_vid);
     }
     std::sort(ids.begin(), ids.end());
-    auto last = std::unique(ids.begin(), ids.end());
-    ids.erase(last, ids.end());
+    ids.erase(std::unique(ids.begin(), ids.end()), ids.end());
     /*
      * freeing up unused space
      */
     ids.shrink_to_fit();
 }
+
+bool
+Dmatrix::has_id(int64_t id) const {
+    auto pos = std::lower_bound(ids.begin(), ids.end(), id);
+    return *pos == id;
+}
+
 
 size_t
 Dmatrix::get_index(int64_t id) const {
@@ -61,7 +91,7 @@ Dmatrix::get_index(int64_t id) const {
 }
 
 int64_t
-Dmatrix::get_id(size_t id) const{
+Dmatrix::get_id(size_t id) const {
     return ids[id];
 }
 
@@ -109,7 +139,7 @@ Dmatrix::obeys_triangle_inequality() const {
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
             for (size_t k = 0; k < costs.size(); ++k) {
-                if (costs[i][k] <= (costs[i][j] + costs[j][k])) return false;
+                if (!(costs[i][k] <= (costs[i][j] + costs[j][k]))) return false;
             }
         }
     }
@@ -117,65 +147,60 @@ Dmatrix::obeys_triangle_inequality() const {
 }
 
 bool
-Dmatrix::is_symetric() const{
+Dmatrix::is_symmetric() const {
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
-            if (costs[i][j] != costs[j][i]) return false;
+            if (0.000001 < std::abs(costs[i][j] - costs[j][i])) {
+                std::ostringstream log;
+                log << "i \t" << i
+                    << "j \t" << j
+                    << "costs[i][j] \t" << costs[i][j]
+                    << "costs[j][i] \t" << costs[j][i]
+                    << "\n";
+                log << (*this);
+                pgassertwm(false, log.str());
+                return false;
+            }
         }
     }
     return true;
 }
 
 
-Dmatrix
-Dmatrix::get_symetric() const {
-    double sum(0);
-    for (const auto &row : costs) {
-        for (const auto &cell : row) {
-            sum += cell;
+std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
+    for (const auto id : matrix.ids) {
+        log << "\t" << id;
+    }
+    log << "\n";
+    size_t i = 0;
+    for (const auto row : matrix.costs) {
+        size_t j = 0;
+        for (const auto cost : row) {
+            log << "(" << i << "," << j << ")"
+                << "\t(" << matrix.ids[i] << "," << matrix.ids[j] << ")"
+                << "\t(" << matrix.get_index(matrix.ids[i])
+                << "," << matrix.get_index(matrix.ids[j]) << ")"
+                << "\t = " << cost
+                << "\t = " << matrix.costs[i][j]
+                << "\t = " << matrix.costs[j][i] << "\n";
+            ++j;
+        }
+        ++i;
+    }
+    for (size_t i = 0; i < matrix.costs.size(); ++i) {
+        for (size_t j = 0; j < matrix.costs.size(); ++j) {
+            for (size_t k = 0; k < matrix.costs.size(); ++k) {
+                log << matrix.costs[i][k] << " <= ("
+                    << matrix.costs[i][j] << " + "  << matrix.costs[j][k] << ")"
+                    << (matrix.costs[i][k] <= (matrix.costs[i][j] + matrix.costs[j][k]))
+                    << "\n";
+            }
         }
     }
-    if (is_symetric()) return *this; 
-    Dmatrix new_costs;
-    new_costs.costs.resize(costs.size() * 2);
-    for (auto &row : new_costs.costs) {
-        row.resize(costs.size() * 2);
-        for (auto &cell : row) {
-            cell = std::numeric_limits<double>::max();
-        }
-    }
 
-    /*
-     * Matrix cuadrants
-     *   A= inf           B= transposed original
-     *   C=original       D= inf
-     *
-     *   B & C "semi" diagonals are 0
-     */
-    for (size_t i = 0; i < costs.size(); ++i) {
-        for (size_t j = 0; j < costs.size(); ++j) {
-            /*
-             *  A & D
-             */
-            new_costs[i][j] = 
-                new_costs[i + costs.size()][j + costs.size()] = 
-                std::numeric_limits<double>::max();
-
-            /*
-             * B
-             */
-            new_costs[i + costs.size()][j] =
-                i == j? costs[i][j] : 0;
-
-            /*
-             * C
-             */
-            new_costs[i][j + costs.size()] =
-                i == j? costs[j][i] : 0;
-        }
-    }
-    new_costs.ids = ids;
-    new_costs.ids.insert(new_costs.ids.end(), ids.begin(), ids.end());
-
-    return new_costs;
+    return log;
 }
+
+
+}  // namespace tsp
+}  // namespace pgRouting

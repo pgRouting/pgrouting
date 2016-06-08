@@ -84,6 +84,15 @@
      : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )  
 #endif
 
+#ifdef NDEBUG
+#define pgassertwm(expr, msg) ((void)0)
+#else
+#define pgassertwm(expr, msg) \
+    ((expr) \
+     ? static_cast<void>(0) \
+     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace(msg) ) )  
+#endif
+
 /*! @brief returns the execution path of the trace
  
   Does not work for windows, please read:
@@ -92,6 +101,7 @@
   In case of a failed exception the backtrace cann be shoun in the error message
  */
 std::string get_backtrace();
+std::string get_backtrace(const std::string &);
 
 /*! \class AssertFailedException
  * \brief Extends std::exception and is the exception that we throw if an assert fails.
