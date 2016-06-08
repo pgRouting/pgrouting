@@ -70,4 +70,26 @@ namespace pgRouting {
 
 		};
 
-	
+	template < class G >
+		void Pgr_linearContraction< G >::setForbiddenVertices(G &graph, 
+				Identifiers<int64_t> forbidden_vertices,
+				std::ostringstream& debug) {
+			debug << "Setting forbidden vertices\n";
+			for (auto forbiddenVertex : forbidden_vertices) {
+				forbiddenVertices += graph.get_V(forbiddenVertex);
+			}
+
+		}
+
+	template < class G >
+		void Pgr_linearContraction< G >::setForbiddenVertices(G &graph, 
+				int64_t *forbidden_vertices,
+				size_t size_forbidden_vertices,
+				std::ostringstream& debug) {
+
+			debug << "Setting forbidden vertices\n";
+			for (int64_t i = 0; i < size_forbidden_vertices; ++i) {
+				forbiddenVertices += graph.get_V(forbidden_vertices[i]);
+			}
+
+		}
