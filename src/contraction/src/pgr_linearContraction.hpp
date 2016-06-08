@@ -65,6 +65,7 @@ namespace pgRouting {
 						std::ostringstream& debug);
 				void doContraction(G &graph,
 						std::ostringstream& debug);
+				void get_edge_pair(G &graph, V v, int64_t &incoming_eid, int64_t &outgoing_eid);
 			private:
 				Identifiers<V> linearVertices;
 				Identifiers<V> forbiddenVertices;
@@ -104,14 +105,9 @@ template < class G >
 			degree_size_type in_degree, out_degree;
 			in_degree = graph.in_degree(v);
 			out_degree = graph.out_degree(v);
-			//case 1
-			if(in_degree == 1 && out_degree == 1) {
-
-				debug << "Case 1\n"; 
-				return true;
-			}
 			
-			if(out_degree == 2 || in_degree == 2) {
+			
+			if(out_degree <= 2 && in_degree <= 2) {
 				int64_t incoming_eids[2] = {-1, -1};
 				int64_t outgoing_eids[2] = {-1, -1};
 				int incoming_count, outgoing_count;
@@ -129,41 +125,66 @@ template < class G >
 				}
 				pgassert(in_degree == incoming_count);
 				pgassert(out_degree == outgoing_count);
+				debug << "Incoming ids\n";
+				debug << "{" << incoming_eids[0] << ", " << incoming_eids[1] << "}\n";
+				debug << "Outgoing ids\n";
+				debug << "{" << outgoing_eids[0] << ", " << outgoing_eids[1] << "}\n";
+				//case 1
+				if(in_degree == 1 && out_degree == 1) {
+					debug << "Case 1\n"; 
+					if(incoming_eids[0] != outgoing_eids[0])
+					{
+						debug << "Yes\n";
+						return true;
+					}
+				}
 				// case 2
 				if (out_degree == 2 && in_degree == 2) {
 					debug << "Case 2\n";
 					if(incoming_eids[0] == outgoing_eids[0] &&
-						incoming_eids[0] == outgoing_eids[1])
+						incoming_eids[1] == outgoing_eids[1]) {
+						debug << "Yes\n";
 						return true;
+				}
 					if(incoming_eids[0] == outgoing_eids[1] &&
-						incoming_eids[1] == outgoing_eids[0])
-						return true;
+						incoming_eids[1] == outgoing_eids[0]) {
+							debug << "Yes\n";
+							return true;
+						}
 
 				}
 
 				// case 3
-				if (out_degree == 1 && in_degree == 2) {
+				else if (out_degree == 1 && in_degree == 2) {
 					debug << "Case 3\n";
 					if(outgoing_eids[0] == incoming_eids[0] ||
 						outgoing_eids[0] == incoming_eids[1])
+					{
+						debug << "Yes\n";
 						return true;
+					}
 				}
 
 				// case 4
-				if (out_degree == 2 && in_degree == 1) {
+				else if (out_degree == 2 && in_degree == 1) {
 					debug << "Case 4\n";
 					if(incoming_eids[0] == outgoing_eids[0] ||
 						incoming_eids[0] == outgoing_eids[1])
-						return true;	
+					{
+
+						debug << "Yes\n";
+						return true;
+					}	
 				}
 				
 				debug << "No\n"; 
 				return false;
 			}
 
-
+			else{
 			debug << "No\n"; 
 			return false;
+			}
 		}
 
 template < class G >
@@ -174,9 +195,10 @@ template < class G >
 			for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
 				debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
 				if (is_linear(graph, *vi, debug)) {
-					debug << "Adding " << graph.graph[(*vi)].id << " to dead end" << '\n';
+					debug << "Adding " << graph.graph[(*vi)].id << " to linear" << '\n';
 					linearVertices += (*vi);
 				}
 			}
 			linearVertices -= forbiddenVertices;
 		}
+}
