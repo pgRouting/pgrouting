@@ -35,3 +35,8 @@ SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table 
     WHERE id = 2 OR id = 4',
     ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
+\echo --q9 Checking for linear vertices case 4
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table 
+    WHERE id = 5 OR id = 9',
+    ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
