@@ -39,47 +39,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "../../common/src/postgres_connection.h"
 #include "bdastar.h"
 
-//-------------------------------------------------------------------------
-
-/*
- * Define this to have profiling enabled
- */
-//#define PROFILE
-
-#ifdef PROFILE
-#include <sys/time.h>
-
-struct timeval prof_astar, prof_store, prof_extract, prof_total;
-long proftime[5];
-long profipts1, profipts2, profopts;
-
-#define profstart(x) do { gettimeofday(&x, NULL); } while (0);
-#define profstop(n, x) do { struct timeval _profstop;   \
-        long _proftime;                         \
-        gettimeofday(&_profstop, NULL);                         \
-        _proftime = ( _profstop.tv_sec*1000000+_profstop.tv_usec) -     \
-                ( x.tv_sec*1000000+x.tv_usec); \
-        elog(NOTICE, \
-                "PRF(%s) %lu (%f ms)", \
-                (n), \
-             _proftime, _proftime / 1000.0);    \
-        } while (0);
-
-#else
-
-#define profstart(x) do { } while (0);
-#define profstop(n, x) do { } while (0);
-
-#endif // PROFILE
-
 
 //-------------------------------------------------------------------------
 
+#ifdef _MSC_VER
+PGDLLEXPORT
+#endif
 Datum bidir_astar_shortest_path(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 #include "../../common/src/debug_macro.h"
-
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -239,9 +208,13 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
   int v_max_id=0;
   int v_min_id=INT_MAX;
 
+#ifndef _MSC_VER
   edge_astar_columns_t edge_columns = {.id= -1, .source= -1, .target= -1,
                        .cost= -1, .reverse_cost= -1,
                        .s_x= -1, .s_y= -1, .t_x= -1, .t_y= -1};
+#else // _MSC_VER
+  edge_astar_columns_t edge_columns = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
+#endif // _MSC_VER
   char *err_msg;
   int ret = -1;
   register int z;
@@ -345,9 +318,6 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
   PGR_DBG("Total %i tuples", total_tuples);
 
-  profstop("extract", prof_extract);
-  profstart(prof_astar);
-
   PGR_DBG("Calling bidir_astar <%i>\n", total_tuples);
 
   // calling C++ A* function
@@ -367,10 +337,6 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
     //PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
     (*path)[z].vertex_id+=v_min_id;
   }
-
-  profstop("astar", prof_astar);
-  profstart(prof_store);
-
   if (ret < 0) {
       elog(ERROR, "Error computing path: %s", err_msg);
   }
@@ -380,7 +346,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
 
 PG_FUNCTION_INFO_V1(bidir_astar_shortest_path);
-Datum
+PGDLLEXPORT Datum
 bidir_astar_shortest_path(PG_FUNCTION_ARGS)
 {
   FuncCallContext     *funcctx;
@@ -396,10 +362,6 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS)
 #ifdef DEBUG
       int ret;
 #endif
-
-      // XXX profiling messages are not thread safe
-      profstart(prof_total);
-      profstart(prof_extract);
 
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -494,12 +456,6 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS)
   else {   /* do when there is no more left */
       PGR_DBG("Freeing path");
       if (path) free(path);
-
-      profstop("store", prof_store);
-      profstop("total", prof_total);
-#ifdef PROFILE
-      elog(NOTICE, "_________");
-#endif
       SRF_RETURN_DONE(funcctx);
   }
 }

@@ -26,7 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef _BDSP_H
 #define _BDSP_H
 
-
+#if defined(_MSC_VER) && _MSC_VER < 1600
+#define ELOG_H
+#endif
 #include "postgres.h"
 #include "../../common/src/pgr_types.h"
 
@@ -47,5 +49,8 @@ int bidirsp_wrapper( edge_t *edges,
             int *path_count, 
             char **err_msg
             );
+#ifdef _MSC_VER
+void pgr_dbg(const char* format, ...);
+#endif // _MSC_VER
 
 #endif

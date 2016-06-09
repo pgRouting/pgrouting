@@ -45,24 +45,26 @@ THE SOFTWARE.
 
 #include "fmgr.h"
 
-#ifndef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
+PG_FUNCTION_INFO_V1(tsp_matrix);
+#ifdef _MSC_VER
+PGDLLEXPORT
 #endif
+Datum tsp_matrix(PG_FUNCTION_ARGS);
 
 #undef DEBUG
-//#define DEBUG 1
 #include "../../common/src/debug_macro.h"
 
 #ifndef INFINITY
+#ifndef _MSC_VER
 #define INFINITY (1.0/0.0)
+#else // _MSC_VER
+#define INFINITY (DBL_MAX + DBL_MAX);
+#endif // _MSC_VER
 #endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-PG_FUNCTION_INFO_V1(tsp_matrix);
-Datum
-tsp_matrix(PG_FUNCTION_ARGS);
 
 static DTYPE *get_pgarray(int *num, ArrayType *input)
 {
@@ -226,8 +228,10 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
  *                             OUT seq int, OUT id int);
 */
 
-Datum
-tsp_matrix(PG_FUNCTION_ARGS)
+#ifdef _MSC_VER
+PGDLLEXPORT
+#endif
+Datum tsp_matrix(PG_FUNCTION_ARGS)
 {
     FuncCallContext     *funcctx;
     uint32_t                  call_cntr;

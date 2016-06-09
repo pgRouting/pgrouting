@@ -38,10 +38,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "k_targets_boost_wrapper.h"
 
+PG_FUNCTION_INFO_V1(manytomany_dijkstra_dmatrix);
+#ifdef _MSC_VER
+PGDLLEXPORT
+#endif
 Datum manytomany_dijkstra_dmatrix(PG_FUNCTION_ARGS);
 
-#undef DEBUG
-//#define DEBUG 1
 #include "../../common/src/debug_macro.h"
 #include "../../common/src/postgres_connection.h"
 
@@ -252,6 +254,7 @@ static void fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, edge_columns_t *edg
 
 
 
+
 static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
         bool has_reverse_cost, bool symmetric, float8 *dm)
 {
@@ -262,12 +265,14 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
     int ntuples;
     edge_t *edges = NULL;
     int total_tuples = 0;
-    edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1,
+#ifndef _MSC_VER
+    edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                    .cost= -1, .reverse_cost= -1};
-    int v_max_id = 0;
-    int v_min_id = INT_MAX;
-
-    // int sumFoundVids = 0;
+#else // _MSC_VER
+    edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
+#endif // _MSC_VER
+    int v_max_id=0;
+    int v_min_id=INT_MAX;
 
     int i, j;
     int zcnt = 0;
@@ -413,16 +418,10 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
     return 0;
 }
 
-/*
-    create or replace function pgr_vidsToDMatrix(sql text,
-        vids integer[], dir bool, has_rcost bool, symmetric bool)
-    return real8[]
-    as '', 'manytomany_dijkstra_dmatrix' language C stable strict;
 
-*/
-
-PG_FUNCTION_INFO_V1(manytomany_dijkstra_dmatrix);
-
+#ifdef _MSC_VER
+PGDLLEXPORT
+#endif
 Datum manytomany_dijkstra_dmatrix(PG_FUNCTION_ARGS)
 {
     ArrayType   *result;

@@ -95,7 +95,6 @@ THE SOFTWARE.
 #include "../../common/src/debug_macro.h"
 
 
-
 #define T_INIT                        100
 #define FINAL_T                       0.1
 #define COOLING                       0.9 /* to lower down T (< 1) */
