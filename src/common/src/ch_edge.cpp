@@ -8,12 +8,15 @@ void Edge::cp_members(const Edge &other) {
         this->source = other.source;
         this->target = other.target;
         this->cost = other.cost;
+        this->first = other.first;
+        this->m_contracted_vertices += other.contracted_vertices();
     }
 void Edge::cp_members(const Basic_edge &other) {
-         this->id = other.id;
+        this->id = other.id;
         this->source = other.source;
         this->target = other.target;
         this->cost = other.cost;
+        this->first = other.first;
     }
 
 const Identifiers<int64_t>& Edge::contracted_vertices() const { 
@@ -51,6 +54,7 @@ std::ostream& operator <<(std::ostream& os, const Edge& e) {
     os << "{\n    source: " << e.source << ",\n";
     os << "{\n    target: " << e.target << ",\n";
     os << "{\n    cost: " << e.cost << ",\n";
+    os << "{\n    first: " << e.first << ",\n";
     os << "    contracted vertices: ";
     os << e.contracted_vertices();
     // <<  ", type: " << v.type_str();
