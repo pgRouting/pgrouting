@@ -84,7 +84,7 @@ void perform_linear(G &graph,
     linearContractor.calculateVertices(graph, debug);
     try
     {
-        #if 0
+        #if 1
         linearContractor.doContraction(graph, debug);
         #endif
     }
@@ -102,6 +102,7 @@ void pgr_contractGraph(
     size_t size_contraction_order,
     int64_t max_cycles,
     Identifiers<int64_t> &remaining_vertices,
+    std::vector<pgRouting::contraction::Edge> &shortcut_edges, 
     std::ostringstream& debug) {
 
     //typedef typename G::V V;
@@ -174,7 +175,7 @@ void pgr_contractGraph(
 
     }
     graph.get_remaining_vertices(debug, remaining_vertices);
-
+    graph.get_shortcuts(shortcut_edges, debug);
     
     #if 0
     debug << "Dead end set" << "\n";
