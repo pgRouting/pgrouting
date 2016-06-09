@@ -79,7 +79,6 @@ do_pgr_contractGraph(
 		std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
 		std::vector < pgRouting::contraction::Vertex > vertices(pgRouting::contraction::extract_vertices(edges));
 		Identifiers<int64_t> remaining_vertices;
-
 		std::vector< pgRouting::contraction::Edge > shortcut_edges;
 
 		log << "Original: \n" <<
@@ -161,9 +160,10 @@ do_pgr_contractGraph(
 			pgr_contractGraph(digraph,
 					forbid_vertices, 
 					contraction_order, size_contraction_order,
-					max_cycles, remaining_vertices, debug);
+					max_cycles, remaining_vertices,
+					shortcut_edges, debug);
 			log << debug.str().c_str() << "\n";
-			(*return_tuples) = pgr_alloc(remaining_vertices.size(), (*return_tuples));
+			(*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
 			size_t sequence = 0;
 			int i = 1;
 			log << "Remaining Vertices:" << "\n";
@@ -178,6 +178,19 @@ do_pgr_contractGraph(
 				contracted_vertices = strdup(os.str().c_str());
 				//char *contracted_vertices = strdup("--"); 
 				(*return_tuples)[sequence] = {i, id, type, contracted_vertices};
+				++sequence;
+			}
+			log << "Added Edges:" << "\n";
+			for (const auto edge : shortcut_edges) {
+				log << edge << "\n";
+			}
+			for (auto edge : shortcut_edges) {
+				type = strdup("e");
+				std::ostringstream os;
+				digraph.get_ids(os, edge.contracted_vertices());
+				contracted_vertices = strdup(os.str().c_str());
+				//char *contracted_vertices = strdup("--"); 
+				(*return_tuples)[sequence] = {i, edge.id, type, contracted_vertices};
 				++sequence;
 			}
 
@@ -206,7 +219,8 @@ do_pgr_contractGraph(
 			pgr_contractGraph(undigraph,
 					forbid_vertices, 
 					contraction_order, size_contraction_order,
-					max_cycles, remaining_vertices, debug);
+					max_cycles, remaining_vertices,
+					shortcut_edges, debug);
 			log << "Size of remaining_vertices: " << remaining_vertices.size(); 
 			log << debug.str().c_str() << "\n";
 			//#endif
