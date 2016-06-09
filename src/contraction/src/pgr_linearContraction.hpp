@@ -59,16 +59,30 @@ namespace pgRouting {
 						std::ostringstream& debug);
 				void calculateVertices(G &graph,
 						std::ostringstream& debug);
+				void doContraction(G &graph,
+						std::ostringstream& debug);
+				 
+			private:
+
+				Identifiers<V> linearVertices;
+				Identifiers<V> forbiddenVertices;
+				std::map<V, std::pair<int64_t, int64_t> > edgePairsMap;
+				int64_t last_edge_id = 0;
 				bool is_linear(G &graph, V v,
 						std::ostringstream& debug);
 				void add_if_linear(G &graph, V v,
 						std::ostringstream& debug);
-				void doContraction(G &graph,
-						std::ostringstream& debug);
-				void get_edge_pair(G &graph, V v, int64_t &incoming_eid, int64_t &outgoing_eid);
-			private:
-				Identifiers<V> linearVertices;
-				Identifiers<V> forbiddenVertices;
+				void add_edge_pair(V vertex, int64_t &incoming_eid,
+					int64_t &outgoing_eid,
+					std::ostringstream& debug);
+				void add_shortcuts(G &graph, V vertex, int64_t incoming_eid,
+					int64_t outgoing_eid,
+					std::ostringstream& debug);
+				void add_shortcut(G &graph, V vertex,
+					contraction::Edge incoming_edge,
+					contraction::Edge outgoing_edge,
+					int64_t id, bool first, 
+					std::ostringstream& debug);
 
 		};
 
@@ -95,6 +109,20 @@ namespace pgRouting {
 			}
 
 		}
+
+template < class G >
+		void Pgr_linearContraction< G >::add_edge_pair(V vertex, int64_t &incoming_eid,
+					int64_t &outgoing_eid,
+					std::ostringstream& debug) {
+
+			debug << "Adding edge pair\n";
+			debug << "incoming id: "<< incoming_eid 
+			<< ", outgoing id: " << outgoing_eid << std::endl;
+			std::pair<int64_t, int64_t> epair(incoming_eid, outgoing_eid);
+			//edgePairs.push_back(epair);
+			edgePairsMap[vertex] = epair;
+
+		}
 template < class G >
 		bool Pgr_linearContraction<G>::is_linear(G &graph, V v,
 				std::ostringstream& debug) {
@@ -110,19 +138,20 @@ template < class G >
 			if(out_degree <= 2 && in_degree <= 2) {
 				int64_t incoming_eids[2] = {-1, -1};
 				int64_t outgoing_eids[2] = {-1, -1};
+
 				int incoming_count, outgoing_count;
 				incoming_count = outgoing_count = 0;
 				EO_i out, out_end;
 				EI_i in, in_end;
-				// Storing the incoming and outgoing edge ids in arrays
+				// Storing the incoming and outgoing edge descs in arrays
 				for (boost::tie(out, out_end) = out_edges(v, graph.graph);
 						out != out_end; ++out) {
 					outgoing_eids[outgoing_count++] = graph.graph[*out].id;
-				}
+									}
 				for (boost::tie(in, in_end) = in_edges(v, graph.graph);
 						in != in_end; ++in) {
 					incoming_eids[incoming_count++] = graph.graph[*in].id;
-				}
+									}
 				pgassert(in_degree == incoming_count);
 				pgassert(out_degree == outgoing_count);
 				debug << "Incoming ids\n";
@@ -135,6 +164,8 @@ template < class G >
 					if(incoming_eids[0] != outgoing_eids[0])
 					{
 						debug << "Yes\n";
+						add_edge_pair(v, incoming_eids[0], outgoing_eids[0],
+						debug);
 						return true;
 					}
 				}
@@ -144,11 +175,24 @@ template < class G >
 					if(incoming_eids[0] == outgoing_eids[0] &&
 						incoming_eids[1] == outgoing_eids[1]) {
 						debug << "Yes\n";
+						add_edge_pair(v, incoming_eids[0], outgoing_eids[1],
+						debug);
+						#if 0
+						add_edge_pair(incoming_eids[1], outgoing_eids[0],
+						debug);
+						#endif
 						return true;
 				}
 					if(incoming_eids[0] == outgoing_eids[1] &&
 						incoming_eids[1] == outgoing_eids[0]) {
-							debug << "Yes\n";
+		
+						debug << "Yes\n";
+						add_edge_pair(v, incoming_eids[0], outgoing_eids[0],
+						debug);
+						#if 0
+						add_edge_pair(incoming_eids[1], outgoing_eids[1],
+						debug);
+						#endif
 							return true;
 						}
 
@@ -161,6 +205,17 @@ template < class G >
 						outgoing_eids[0] == incoming_eids[1])
 					{
 						debug << "Yes\n";
+						if (outgoing_eids[0] == incoming_eids[0])
+						{
+							add_edge_pair(v, incoming_eids[1], outgoing_eids[0],
+							debug);
+						}
+						else if (outgoing_eids[0] == incoming_eids[1])
+						{
+							add_edge_pair(v, incoming_eids[0], outgoing_eids[0],
+							debug);
+						}
+						
 						return true;
 					}
 				}
@@ -171,8 +226,17 @@ template < class G >
 					if(incoming_eids[0] == outgoing_eids[0] ||
 						incoming_eids[0] == outgoing_eids[1])
 					{
-
 						debug << "Yes\n";
+						if (outgoing_eids[0] == incoming_eids[0])
+						{
+							add_edge_pair(v, incoming_eids[0], outgoing_eids[1],
+							debug);
+						}
+						else if (outgoing_eids[1] == incoming_eids[0])
+						{
+							add_edge_pair(v, incoming_eids[0], outgoing_eids[0],
+							debug);
+						}
 						return true;
 					}	
 				}
@@ -201,4 +265,102 @@ template < class G >
 			}
 			linearVertices -= forbiddenVertices;
 		}
+
+
+
+template < class G >
+		void Pgr_linearContraction<G>::doContraction(G &graph,
+				std::ostringstream& debug) {
+			debug << "Performing contraction\n";
+			std::priority_queue<V, std::vector<V>, std::greater<V> > linearPriority;
+			for (V linearVertex : linearVertices) {
+				linearPriority.push(linearVertex);
+			}
+			debug << "Linear vertices" << std::endl;
+			debug << linearVertices;
+			debug << std::endl;
+			debug << "V | " << "outgoing | " << "incoming" << std::endl;
+			while(!linearPriority.empty()) {
+
+				V current_vertex = linearPriority.top();
+				linearPriority.pop();
+				if (!is_linear(graph, current_vertex, debug))
+				{
+					continue;
+				}
+				int64_t incoming_eid = edgePairsMap[current_vertex].first;
+				int64_t outgoing_eid = edgePairsMap[current_vertex].second; 
+				debug << graph[current_vertex].id <<" | " << incoming_eid << " | " << outgoing_eid << std::endl;
+				add_shortcuts(graph, current_vertex, incoming_eid, outgoing_eid, debug);
+
+			}
+		}
+
+template < class G >
+		void Pgr_linearContraction<G>::add_shortcuts(G &graph, V vertex, int64_t incoming_eid,
+					int64_t outgoing_eid, std::ostringstream& debug) {
+			//pgr_edge_t shortcut;
+			debug << "vertex: " << graph[vertex].id 
+			<< ", in: " << graph.in_degree(vertex)
+			 << ", out: " << graph.out_degree(vertex) << std::endl;
+			debug << "Adding shortcut between " << incoming_eid 
+			<< ", " << outgoing_eid << std::endl;
+
+			#if 1
+			if (graph.in_degree(vertex) == 2 && graph.out_degree(vertex) == 2)
+			{
+				#if 0
+				graph.print_incoming_edge(incoming_eid,
+					vertex, debug);
+				graph.print_outgoing_edge(outgoing_eid,
+					vertex, debug);
+				#endif
+				contraction::Edge incoming1 = graph.get_incoming_edge(incoming_eid,
+					vertex, debug);
+				contraction::Edge outgoing1 = graph.get_outgoing_edge(outgoing_eid,
+					vertex, debug);
+				contraction::Edge incoming2 = graph.get_incoming_edge(outgoing_eid,
+					vertex, debug);
+				contraction::Edge outgoing2 = graph.get_outgoing_edge(incoming_eid,
+					vertex, debug);
+				add_shortcut(graph, vertex, incoming1, outgoing1, --last_edge_id, true, debug);
+				add_shortcut(graph, vertex, incoming2, outgoing2, last_edge_id, false, debug);
+				
+			}
+
+			else
+			{
+				#if 0
+				graph.print_incoming_edge(incoming_eid,
+					vertex, debug);
+				graph.print_outgoing_edge(outgoing_eid,
+					vertex, debug);
+				#endif
+				contraction::Edge incoming = graph.get_incoming_edge(incoming_eid,
+					vertex, debug);
+				contraction::Edge outgoing = graph.get_outgoing_edge(outgoing_eid,
+					vertex, debug);
+				add_shortcut(graph, vertex, incoming, outgoing, --last_edge_id, true, debug);
+			}
+			#endif
+
+}
+template < class G >
+		void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
+			contraction::Edge incoming_edge,
+			contraction::Edge outgoing_edge,
+			int64_t id, bool first,
+			std::ostringstream& debug) {
+
+			contraction::Edge shortcut(id, incoming_edge.source,
+				outgoing_edge.target, incoming_edge.cost + outgoing_edge.cost, first);
+			shortcut.add_contracted_vertex(graph[vertex], vertex);
+			graph.graph_add_edge(shortcut);
+			//graph.get_outgoing_edge(last_edge_id, incoming_edge.source, debug).add_contracted_vertex(graph[vertex], vertex);
+			debug << "Added shortcut\n";
+			debug << shortcut;
+			graph.disconnect_vertex(debug, vertex);
+		}
+
+
 }
