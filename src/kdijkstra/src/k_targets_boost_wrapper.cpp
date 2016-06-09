@@ -63,7 +63,7 @@ graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
   if (cost < 0) // edges are not inserted in the graph if cost is negative
     return;
 
-  tie(e, inserted) = add_edge(source, target, graph);
+  boost::tie(e, inserted) = add_edge(source, target, graph);
 
   graph[e].cost = cost;
   graph[e].id = id;
@@ -132,7 +132,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
         return -1;
     }
 
-    std::vector < vertex_descriptor > _target(nb_targets);
+    std::vector< vertex_descriptor > _target(nb_targets);
     for (int i = 0; i < nb_targets; i++)
     {
         _target[i] = vertex(end_vertices[i], graph);
@@ -159,7 +159,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
     int index_of_last_path_vertex = 0;
     size_t sum_path_sizes = 0;
     int i = 0, j = 0;
-    std::vector < bool > no_path(nb_targets);
+    std::vector< bool > no_path(nb_targets);
     for (i = 0; i < nb_targets; i++)
     {
         no_path[i] = false;
@@ -219,7 +219,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
                 v_src = path_vect[numTarget].at(i);
                 v_targ = path_vect[numTarget].at(i - 1);
 
-                for (tie(out_i, out_end) = out_edges(v_src, graph); out_i != out_end; ++out_i)
+                for (boost::tie(out_i, out_end) = out_edges(v_src, graph); out_i != out_end; ++out_i)
                 {
                     graph_traits < graph_t >::vertex_descriptor targ; // v set but not used
                     e = *out_i;

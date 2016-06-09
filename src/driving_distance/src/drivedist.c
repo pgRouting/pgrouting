@@ -47,7 +47,6 @@ Datum
 PGDLLEXPORT Datum
 #endif
 driving_distance(PG_FUNCTION_ARGS); 
-
 static
 void compute_driving_distance(
      char* sql,

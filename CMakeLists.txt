@@ -194,6 +194,9 @@ endforeach()
 
 if(WIN32)
   include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
+  if(MSVC)
+    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32_msvc/)
+  endif(MSVC)
 endif(WIN32)
 
 # we need link libpostgres.a on win32 env
@@ -227,9 +230,12 @@ elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGW
     #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
-    # currently, support MinGW only
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2  -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2  -std=c++0x -frounding-math -Wno-deprecated")
+  if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
+  endif()
+  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -frounding-math -Wno-deprecated")
+  endif()
 endif()
 
 # List variable to collect module SQL file names
@@ -360,6 +366,10 @@ if(APPLE)
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
+if(WIN32 AND MSVC)
+    set_target_properties(routing PROPERTIES PREFIX "lib")
+    set_target_properties(routing_bd PROPERTIES PREFIX "lib")
+endif(WIN32 AND MSVC)
 
 
 file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"

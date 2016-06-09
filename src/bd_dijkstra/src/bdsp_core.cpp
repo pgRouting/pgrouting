@@ -78,4 +78,3 @@ int bidirsp_wrapper(
         return res;
     return 0;
 }
-

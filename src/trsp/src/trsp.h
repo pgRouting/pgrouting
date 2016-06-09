@@ -29,16 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 typedef pgr_edge_t edge_t;
 typedef Restrict_t restrict_t;
 
-#if 0
-typedef struct restrict_struct
-{
-		int target_id;
-		float8 to_cost;
-        int via[MAX_RULE_LENGTH];
-} 
-restrict_t;
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
