@@ -1,3 +1,8 @@
+\echo --q0 Checking for valid contraction
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
+    ARRAY[]::BIGINT[], ARRAY[-1]::integer[], 1, true);
+-- \echo --q0 -------------------------------------------
 
 \echo --q1 Checking dead end contraction for single edge
 SELECT * FROM pgr_contractGraph(
