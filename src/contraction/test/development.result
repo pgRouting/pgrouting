@@ -1,3 +1,4 @@
+--q0 Checking for valid contraction
 --q1 Checking dead end contraction for single edge
 1|2|v| {1, }
 --q2 Checking dead end contraction for two edges
