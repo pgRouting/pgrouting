@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-#define DEBUG
+// #define DEBUG
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -142,7 +142,8 @@ do_pgr_contractGraph(
 			}
 			Identifiers<int64_t> forbid_vertices(forbidden_vertices,
 					size_forbidden_vertices);
-			//digraph.print_graph(log);
+
+			digraph.print_graph(log);
 			//log << digraph;
 
 			// digraph.print_graph(log);
@@ -162,7 +163,8 @@ do_pgr_contractGraph(
 					contraction_order, size_contraction_order,
 					max_cycles, remaining_vertices,
 					shortcut_edges, debug);
-			log << debug.str().c_str() << "\n";
+			digraph.print_graph(log);
+			//log << debug.str().c_str() << "\n";
 			(*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
 			size_t sequence = 0;
 			int i = 1;
