@@ -51,10 +51,10 @@ const std::string Edge_c::type_str() const {
 
 std::ostream& operator <<(std::ostream& os, const Edge& e) {
     os << "{\n    id: " << e.id << ",\n";
-    os << "{\n    source: " << e.source << ",\n";
-    os << "{\n    target: " << e.target << ",\n";
-    os << "{\n    cost: " << e.cost << ",\n";
-    os << "{\n    first: " << e.first << ",\n";
+    os << "    source: " << e.source << ",\n";
+    os << "    target: " << e.target << ",\n";
+    os << "    cost: " << e.cost << ",\n";
+    os << "    first: " << e.first << ",\n";
     os << "    contracted vertices: ";
     os << e.contracted_vertices();
     // <<  ", type: " << v.type_str();
