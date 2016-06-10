@@ -99,7 +99,7 @@ do_pgr_contractGraph(
 		for (size_t i = 0; i < size_contraction_order; ++i) {
 			log << contraction_order[i] << ", ";
 			// pgassert((contraction_order[i] >=0) && (contraction_order[i] < static_cast<int>(contraction_type_count)));
-#if 1
+#if 0
 			if (!is_valid_contraction_number(contraction_order[i])) {
 				log << "Error: Enter a valid Contraction Type\n";
 				(*return_tuples) = NULL;
@@ -257,6 +257,26 @@ do_pgr_contractGraph(
 		log << "Caught unknown expection!\n";
 		*err_msg = strdup(log.str().c_str());
 	}
+}
+
+int is_valid_contraction(int number) {
+    switch (number) {
+        case -2:
+        return -1;
+        break;
+        case -1:
+        return -1;
+        break;
+        case 0:
+        return 1;
+        break;
+        case 1:
+        return 1;
+        break;
+        default:
+        return -1;
+        break;
+    }
 }
 
 

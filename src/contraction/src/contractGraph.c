@@ -91,6 +91,15 @@ process(char* edges_sql,
         pgr_SPI_finish();
         return;
     }
+    for (size_t i = 0; i < size_contraction_order; ++i) {
+            if (is_valid_contraction(contraction_order[i]) != 1) {
+                PGR_DBG("Error: Enter a valid Contraction Type\n");
+                (*result_count) = 0;
+                (*result_tuples) = NULL;
+                pgr_SPI_finish();
+                return;
+            }
+    }
     pgr_get_edges(edges_sql, &edges, &total_tuples);
     //PGR_DBG("finished Loading");
 
