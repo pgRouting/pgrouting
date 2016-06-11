@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CH_EDGE_H
+#define CH_EDGE_H
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -20,11 +22,16 @@ class Edge {
     Edge_c() : m_deleted(false),m_type(Edge_type::ordinary) { }
     #endif
     Edge() = default;
-    Edge(const Edge &) = default;
+    Edge(const Edge &other){cp_members(other);}
     Edge(const pgr_edge_t &other) :
     id(other.id), source(other.source),
     target(other.target), cost(other.cost){}
-
+    Edge(int64_t id, VID source, VID target, double cost) :
+    id(id), source(source),
+    target(target), cost(cost), first(true){}
+    Edge(int64_t id, VID source, VID target, double cost, bool first) :
+    id(id), source(source),
+    target(target), cost(cost), first(first){}
     void cp_members(const Basic_edge &other);
     void cp_members(const Edge &other);
     EID id;
@@ -33,6 +40,7 @@ class Edge {
     double cost;
     bool first;
     void add_contracted_vertex(Vertex& v, int64_t vid);
+    void clear_contracted_vertices() { m_contracted_vertices.clear(); }
     #if 0
     inline bool isDeleted() const { return m_deleted; }
     inline Edge_type type() const { return m_type; }
@@ -54,3 +62,4 @@ class Edge {
 
 }  // namespace contraction
 }  // namespace pgRouting
+#endif

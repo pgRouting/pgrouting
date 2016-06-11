@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CH_VERTEX_H
+#define CH_VERTEX_H
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -23,7 +24,11 @@ class Vertex {
     Vertex(const pgr_edge_t &other, bool is_source) :
       id(is_source? other.source : other.target)
       {}
-
+    #if 0
+    Vertex(const Edge &other, bool is_source) :
+      id(is_source? other.source : other.target)
+      {}
+    #endif
     void cp_members(const Vertex &other) {
         this->id = other.id;
     }
@@ -61,3 +66,4 @@ extract_vertices(
 
 }  // namespace contraction
 }  // namespace pgRouting
+#endif
