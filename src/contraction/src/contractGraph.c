@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
-#define DEBUG
+// #define DEBUG
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
@@ -90,6 +90,15 @@ process(char* edges_sql,
         (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
+    }
+    for (size_t i = 0; i < size_contraction_order; ++i) {
+            if (is_valid_contraction(contraction_order[i]) != 1) {
+                PGR_DBG("Error: Enter a valid Contraction Type\n");
+                (*result_count) = 0;
+                (*result_tuples) = NULL;
+                pgr_SPI_finish();
+                return;
+            }
     }
     pgr_get_edges(edges_sql, &edges, &total_tuples);
     //PGR_DBG("finished Loading");
@@ -169,7 +178,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         contraction_order = (int64_t*)
             pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
         forbidden_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
+            pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
 
         PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
         PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
