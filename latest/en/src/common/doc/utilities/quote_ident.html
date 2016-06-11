@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_quote_ident &mdash; pgRouting Manual (2.2)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.2.3 (pgrouting-2.2.3)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.2)" href="../../../../index.html" />
+    <link rel="up" title="Developers’s Functions" href="index.html" />
+    <link rel="next" title="pgr_versionless" href="versionless.html" />
+    <link rel="prev" title="pgr_pointToId" href="point_to_id.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.2)</span></a></h1>
+        <h2 class="heading"><span>pgr_quote_ident</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="point_to_id.html">pgr_pointToId</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="versionless.html">pgr_versionless</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-quote-ident">
+<span id="id1"></span><h1>pgr_quote_ident<a class="headerlink" href="#pgr-quote-ident" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_quote_ident</span></tt> — Quotes the input text to be used as an identifier in an SQL statement string.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function is intended for the developer&#8217;s aid.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This function is deprecated in 2.1
+Use <cite>_pgr_quote_ident</cite> instead</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns the given identifier <tt class="docutils literal"><span class="pre">idname</span></tt> suitably quoted to be used as an identifier in an SQL statement string.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="nb">text</span> <span class="n">idname</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">idname:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> Name of an SQL identifier. Can include <tt class="docutils literal"><span class="pre">.</span></tt> dot notation for schemas.table identifiers</td>
+</tr>
+</tbody>
+</table>
+<p>Returns the given string suitably quoted to be used as an identifier in an SQL statement string.</p>
+<blockquote>
+<div><ul class="simple">
+<li>When the identifier <tt class="docutils literal"><span class="pre">idname</span></tt> contains on or more <tt class="docutils literal"><span class="pre">.</span></tt> separators, each component is suitably quoted to be used in an SQL string.</li>
+</ul>
+</div></blockquote>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Everything is lower case so nothing needs to be quoted.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
+
+<span class="n">pgr_quote_ident</span>
+<span class="c1">---------------</span>
+   <span class="n">the_geom</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+
+<span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;public.edge_table&#39;</span><span class="p">);</span>
+
+  <span class="n">pgr_quote_ident</span>
+<span class="c1">-------------------</span>
+ <span class="k">public</span><span class="p">.</span><span class="n">edge_table</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The column is upper case so its double quoted.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;edge_table.MYGEOM&#39;</span><span class="p">);</span>
+
+   <span class="n">pgr_quote_ident</span>
+<span class="c1">-------------------</span>
+ <span class="n">edge_table</span><span class="p">.</span><span class="ss">&quot;MYGEOM&quot;</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;public.edge_table.MYGEOM&#39;</span><span class="p">);</span>
+
+       <span class="n">pgr_quote_ident</span>
+<span class="c1">---------------------------</span>
+ <span class="k">public</span><span class="p">.</span><span class="n">edge_table</span><span class="p">.</span><span class="ss">&quot;MYGEOM&quot;</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The schema name has a capital letter so its double quoted.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;Myschema.edge_table&#39;</span><span class="p">);</span>
+
+    <span class="n">pgr_quote_ident</span>
+<span class="c1">----------------------</span>
+ <span class="ss">&quot;Myschema&quot;</span><span class="p">.</span><span class="n">edge_table</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ignores extra <tt class="docutils literal"><span class="pre">.</span></tt> separators.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_quote_ident</span><span class="p">(</span><span class="s1">&#39;Myschema...edge_table&#39;</span><span class="p">);</span>
+
+   <span class="n">pgr_quote_ident</span>
+<span class="c1">---------------------</span>
+ <span class="ss">&quot;Myschema&quot;</span><span class="p">.</span><span class="n">edge_table</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../../../doc/src/developer/developer_guide.html#developer"><em>Developer&#8217;s Guide</em></a> for the tree layout of the project.</li>
+<li><a class="reference internal" href="get_table_name.html#pgr-get-table-name"><em>pgr_getTableName</em></a> to get the name of the table as is stored in the postgres administration tables.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="point_to_id.html">pgr_pointToId</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="versionless.html">pgr_versionless</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.2.3 (pgrouting-2.2.3).
+      Last updated on May 15, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
