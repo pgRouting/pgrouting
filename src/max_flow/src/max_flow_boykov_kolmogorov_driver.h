@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_push_relabel_driver.h
+File: max_flow_boykov_kolmogorov_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_PUSH_RELABEL_DRIVER_H_
-#define SRC_MAX_FLOW_SRC_MAX_FLOW_PUSH_RELABEL_DRIVER_H_
+#ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_BOYKOV_KOLMOGOROV_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_MAX_FLOW_BOYKOV_KOLMOGOROV_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
 #include <stddef.h>
@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
     void
-        do_pgr_max_flow_push_relabel(
+        do_pgr_max_flow_boykov_kolmogorov(
             pgr_edge_t *data_edges,
             size_t total_tuples,
             int64_t source,
@@ -52,4 +52,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_MAX_FLOW_SRC_MAX_FLOW_PUSH_RELABEL_DRIVER_H_
+#endif  // SRC_MAX_FLOW_SRC_MAX_FLOW_BOYKOV_KOLMOGOROV_DRIVER_H_
