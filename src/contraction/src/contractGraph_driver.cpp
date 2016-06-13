@@ -259,7 +259,7 @@ do_pgr_contractGraph(
 	}
 }
 
-int is_valid_contraction(int number) {
+int is_valid_contraction(int64_t number) {
     switch (number) {
         case -2:
         return -1;

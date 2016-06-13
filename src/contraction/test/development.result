@@ -68,3 +68,15 @@ ERROR:  Expected less than two dimension
 9|-3|e| {10, 13, }
 10|-2|e| {4, }
 11|-4|e| {12, }
+--q12 Checking linear contraction, dead end for sample data
+1|2|v| {1, }
+2|3|v| {}
+3|5|v| {7, }
+4|6|v| {}
+5|9|v| {}
+6|10|v| {13, }
+7|11|v| {}
+8|15|v| {14, }
+9|17|v| {16, }
+10|-1|e| {4, }
+11|-3|e| {12, }

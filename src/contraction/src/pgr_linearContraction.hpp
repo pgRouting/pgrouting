@@ -51,6 +51,7 @@ namespace pgRouting {
 				typedef typename G::EO_i EO_i;
 				typedef typename G::EI_i EI_i;
 				typedef typename G::degree_size_type degree_size_type;
+				Pgr_linearContraction():last_edge_id(0){}
 				void setForbiddenVertices(G &graph,
 						Identifiers<int64_t> forbidden_vertices,
 						std::ostringstream& debug);
@@ -67,7 +68,7 @@ namespace pgRouting {
 				Identifiers<V> linearVertices;
 				Identifiers<V> forbiddenVertices;
 				std::map<V, std::pair<int64_t, int64_t> > edgePairsMap;
-				int64_t last_edge_id = 0;
+				int64_t last_edge_id;
 				bool is_linear(G &graph, V v,
 						std::ostringstream& debug);
 				void add_if_linear(G &graph, V v,
@@ -139,7 +140,7 @@ template < class G >
 				int64_t incoming_eids[2] = {-1, -1};
 				int64_t outgoing_eids[2] = {-1, -1};
 
-				int incoming_count, outgoing_count;
+				int64_t incoming_count, outgoing_count;
 				incoming_count = outgoing_count = 0;
 				EO_i out, out_end;
 				EI_i in, in_end;
