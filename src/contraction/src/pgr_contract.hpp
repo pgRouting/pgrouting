@@ -73,14 +73,13 @@ void perform_deadEnd(G &graph,
 
 template < class G >
 void perform_linear(G &graph,
-    Identifiers<int64_t> forbidden_vertices,
+    Identifiers<int64_t>& forbidden_vertices,
     std::ostringstream& debug)
 {
     pgRouting::Pgr_linearContraction<G> linearContractor;
     debug << "Setting forbidden_vertices";
     linearContractor.setForbiddenVertices(graph, forbidden_vertices
         , debug);
-
     linearContractor.calculateVertices(graph, debug);
     try
     {
