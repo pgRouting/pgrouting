@@ -4,14 +4,7 @@
  *
  * Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
 
-<<<<<<< HEAD
 Mail: project@pgrouting.org
-=======
-#if defined(_MSC_VER) && _MSC_VER < 1600
-#define ELOG_H
-#endif
-#include "postgres.h"
->>>>>>> 845c9d4aba8bd09a15e4f565e7092d01d45a62d7
 
 ------
 

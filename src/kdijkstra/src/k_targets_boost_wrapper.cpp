@@ -49,14 +49,14 @@ using namespace boost;
 struct Vertex
 {
     int id;
-    float8 cost;
+    double cost;
 };
 
 // Adds an edge to the graph.
 // Edge id, cost, source and target ids and coordinates are copied also
 template <class G, class E>
 static void
-graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
+graph_add_edge(G &graph, E &e, int id, int source, int target, double cost)
 {
   bool inserted;
 
@@ -103,7 +103,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
         if (!directed || (directed && has_reverse_cost))
         {
-          float8 cost;
+          double cost;
 
           if (has_reverse_cost)
           {
@@ -145,7 +145,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
         }
     }        
 
-    std::vector<float8> distances(num_vertices(graph));
+    std::vector<double> distances(num_vertices(graph));
 
     dijkstra_shortest_paths(graph, _source,
                 predecessor_map(&predecessors[0]).
