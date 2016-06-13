@@ -367,8 +367,7 @@ if(APPLE)
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
 if(WIN32 AND MSVC)
-    set_target_properties(routing PROPERTIES PREFIX "lib")
-    set_target_properties(routing_bd PROPERTIES PREFIX "lib")
+    set_target_properties(${PGROUTING_LIB_NAME} PROPERTIES PREFIX "lib")
 endif(WIN32 AND MSVC)
 
 
