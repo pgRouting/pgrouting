@@ -48,13 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define DEBUG
 #include "./../../common/src/debug_macro.h"
 
-PG_FUNCTION_INFO_V1(withPoints_dd);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-withPoints_dd(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum withPoints_dd(PG_FUNCTION_ARGS);
 
 
 /*******************************************************************************/
@@ -155,11 +149,8 @@ process(
 
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(withPoints_dd);
 PGDLLEXPORT Datum
-#endif
 withPoints_dd(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;

@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -68,7 +68,7 @@ graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
   graph[e].cost = cost;
   graph[e].id = id;
 
-  // typedef typename graph_traits<G>::vertex_descriptor Vertex;
+  // typedef graph_traits<G>::vertex_descriptor Vertex;
   // Vertex s = vertex(source, graph);
   // Vertex t = vertex(target, graph);
 }

@@ -49,13 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./get_new_queries.h"
 #include "./one_to_many_withPoints_driver.h"
 
-PG_FUNCTION_INFO_V1(one_to_many_withPoints);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-one_to_many_withPoints(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum one_to_many_withPoints(PG_FUNCTION_ARGS);
 
 
 /*******************************************************************************/
@@ -195,11 +189,8 @@ process(
 /*                                                                             */
 /*******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(one_to_many_withPoints);
 PGDLLEXPORT Datum
-#endif
 one_to_many_withPoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;

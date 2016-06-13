@@ -21,7 +21,7 @@ along with this program; if not, write to the Free Software
 
 ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #ifdef open

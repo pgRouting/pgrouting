@@ -16,7 +16,7 @@ set GMP_ROOT_DIR=%BUILD_ROOT_DIR%\gmp
 set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VER%
 
 set PGROUTING_SRC_DIR=%~dp0..\..\
-set USAGE="Usage: %~nx0 [pg_ver(9.0|9.1|9.2|9.3|9.4)] [platform(x86|x64)] (rebuild)"
+set USAGE="Usage: %~nx0 [pg_ver(9.0|9.1|9.2|9.3|9.4|9.5|9.6)] [platform(x86|x64)] (rebuild)"
 
 if "%1"=="9.0" (
 	set PG_VER=9.0
@@ -40,6 +40,16 @@ if "%1"=="9.0" (
 	set PROJ_EXT=vcxproj
 ) else if "%1"=="9.4" (
 	set PG_VER=9.4
+	set MSVC_VER=12.0
+	set MSVC_YEAR=2013
+	set PROJ_EXT=vcxproj
+) else if "%1"=="9.5" (
+	set PG_VER=9.5
+	set MSVC_VER=12.0
+	set MSVC_YEAR=2013
+	set PROJ_EXT=vcxproj
+) else if "%1"=="9.6" (
+	set PG_VER=9.6
 	set MSVC_VER=12.0
 	set MSVC_YEAR=2013
 	set PROJ_EXT=vcxproj

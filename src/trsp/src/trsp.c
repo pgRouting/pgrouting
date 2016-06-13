@@ -31,17 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "fmgr.h"
 #include "trsp.h"
 
-PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-#ifdef _MSC_VER
-PGDLLEXPORT
-#endif
-Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-
-PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
-#ifdef _MSC_VER
-PGDLLEXPORT
-#endif
-Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 // #define DEBUG 
 #include "../../common/src/debug_macro.h"
@@ -221,10 +212,9 @@ static int compute_trsp(
 
 
 
-#ifdef _MSC_VER
-PGDLLEXPORT
-#endif
-Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
+PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
+PGDLLEXPORT Datum
+turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 
     FuncCallContext     *funcctx;
@@ -353,10 +343,9 @@ Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
     }
 }
 
-#ifdef _MSC_VER
-PGDLLEXPORT
-#endif
-Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
+PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
+PGDLLEXPORT Datum
+turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 
     FuncCallContext     *funcctx;

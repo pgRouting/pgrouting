@@ -37,13 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 
-PG_FUNCTION_INFO_V1(bidir_dijkstra_shortest_path);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
 
 
@@ -309,11 +303,8 @@ static int compute_bidirsp(char* sql, int start_vertex,
 }
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(bidir_dijkstra_shortest_path);
 PGDLLEXPORT Datum
-#endif
 bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 {
 

@@ -45,11 +45,7 @@ THE SOFTWARE.
 
 #include "fmgr.h"
 
-PG_FUNCTION_INFO_V1(tsp_matrix);
-#ifdef _MSC_VER
-PGDLLEXPORT
-#endif
-Datum tsp_matrix(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum tsp_matrix(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 #include "../../common/src/debug_macro.h"
@@ -112,7 +108,8 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
 
 #ifdef DEBUG
     for (i=0; i<ndims; i++) {
-        PGR_DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
+        //PGR_DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
+        PGR_DBG("   dims[%d]=%d", i, dims[i]);
     }
 #endif
 
@@ -228,10 +225,9 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
  *                             OUT seq int, OUT id int);
 */
 
-#ifdef _MSC_VER
-PGDLLEXPORT
-#endif
-Datum tsp_matrix(PG_FUNCTION_ARGS)
+PG_FUNCTION_INFO_V1(tsp_matrix);
+PGDLLEXPORT Datum
+tsp_matrix(PG_FUNCTION_ARGS)
 {
     FuncCallContext     *funcctx;
     uint32_t                  call_cntr;

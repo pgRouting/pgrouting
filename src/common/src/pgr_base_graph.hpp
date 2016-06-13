@@ -23,9 +23,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #pragma once
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#undef min
+#undef max
 #ifdef open
 #undef open
 #endif
@@ -228,25 +230,25 @@ class Pgr_base_graph;
   xyDirectedGraph | X & Y values stored on the vertex 
   */
 //@{
-typedef typename graph::Pgr_base_graph <
+typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::vecS, boost::vecS,
     boost::undirectedS,
     Basic_vertex, Basic_edge >,
     Basic_vertex, Basic_edge > UndirectedGraph;
 
-typedef typename graph::Pgr_base_graph <
+typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::vecS, boost::vecS,
     boost::bidirectionalS,
     Basic_vertex, Basic_edge >,
     Basic_vertex, Basic_edge > DirectedGraph;
 
-typedef typename graph::Pgr_base_graph <
+typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyUndirectedGraph;
 
-typedef typename graph::Pgr_base_graph <
+typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
