@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef VRPSOLVER_H
 #define VRPSOLVER_H
 
+#include <cstdlib>
 #include <math.h>
 #include <vector>
 #include <map>
