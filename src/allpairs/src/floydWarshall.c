@@ -43,13 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "./floydWarshall_driver.h"
 
-PG_FUNCTION_INFO_V1(floydWarshall);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-floydWarshall(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum floydWarshall(PG_FUNCTION_ARGS);
 
 static
 void
@@ -105,11 +99,8 @@ process(
 }
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(floydWarshall);
 PGDLLEXPORT Datum
-#endif
 floydWarshall(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;

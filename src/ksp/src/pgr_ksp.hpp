@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #ifdef unlink
@@ -32,11 +32,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #endif
 
-
+#include <sstream>
 #include <deque>
+#include <vector>
 #include <set>
-#include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#include "./../../common/src/basePath_SSEC.hpp"
 
 template < class G >
 class Pgr_ksp {
@@ -92,7 +93,7 @@ class Pgr_ksp {
 
      Path curr_result_path;  //!< storage for the current result
 
-     typedef typename  std::set<Path, compPaths> pSet;
+     typedef std::set<Path, compPaths> pSet;
      pSet m_ResultSet;  //!< ordered set of shortest paths
      pSet m_Heap;  //!< the heap
 };

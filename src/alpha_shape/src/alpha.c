@@ -41,42 +41,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 //#define PROFILE
 
-#ifdef PROFILE
-#include <sys/time.h>
 
-/*! \def MAX_NODES
-  \brief Maximal number of nodes in the path (to avoid infinite loops)
-*/
-#define MAX_NODES 1000000
-
-struct timeval prof_alpha, prof_store, prof_extract, prof_total;
-long proftime[5];
-long profipts1, profipts2, profopts;
-#define profstart(x) do { gettimeofday(&x, NULL); } while (0);
-#define profstop(n, x) do { struct timeval _profstop;   \
-        long _proftime;                         \
-        gettimeofday(&_profstop, NULL);                         \
-        _proftime = ( _profstop.tv_sec*1000000+_profstop.tv_usec) -     \
-                ( x.tv_sec*1000000+x.tv_usec); \
-        elog(NOTICE, \
-                "PRF(%s) %lu (%f ms)", \
-                (n), \
-             _proftime, _proftime / 1000.0);    \
-        } while (0);
-
-#else
-
-#define profstart(x) do { } while (0);
-#define profstop(n, x) do { } while (0);
-
-
-#endif // PROFILE
-
-
+#ifdef _MSC_VER
+PGDLLEXPORT
+#endif
 Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
-//#define DEBUG 1
 #include "../../common/src/debug_macro.h"
     
 // The number of tuples to fetch from the SPI cursor at each iteration
@@ -172,7 +143,11 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
   uint32_t ntuples;
   vertex_t *vertices = NULL;
   uint32_t total_tuples = 0;
+#ifndef _MSC_VER
   vertex_columns_t vertex_columns = {.id= -1, .x= -1, .y= -1};
+#else // _MSC_VER
+  vertex_columns_t vertex_columns = {-1, -1, -1};
+#endif // _MSC_VER
   char *err_msg;
   int ret = -1;
 
@@ -264,13 +239,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
 
   PGR_DBG("Calling CGAL alpha-shape\n");
         
-  profstop("extract", prof_extract);
-  profstart(prof_alpha);
-
   ret = alpha_shape(vertices, total_tuples, alpha, res, res_count, &err_msg);
-
-  profstop("alpha", prof_alpha);
-  profstart(prof_store);
 
   if (ret < 0)
     {
@@ -283,6 +252,9 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
 
 PG_FUNCTION_INFO_V1(alphashape);
 
+#ifdef _MSC_VER
+PGDLLEXPORT
+#endif
 Datum alphashape(PG_FUNCTION_ARGS)
 {
   FuncCallContext      *funcctx;
@@ -297,9 +269,6 @@ Datum alphashape(PG_FUNCTION_ARGS)
       MemoryContext   oldcontext;
       size_t res_count;
                             
-      // XXX profiling messages are not thread safe
-      profstart(prof_total);
-      profstart(prof_extract);
                                             
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
@@ -401,11 +370,6 @@ Datum alphashape(PG_FUNCTION_ARGS)
   else    /* do when there is no more left */
     {
       if (res) free(res);
-      profstop("store", prof_store);
-      profstop("total", prof_total);
-#ifdef PROFILE
-      elog(NOTICE, "_________");
-#endif
       SRF_RETURN_DONE(funcctx);
     }
 }

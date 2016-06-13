@@ -37,13 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 
-PG_FUNCTION_INFO_V1(bidir_dijkstra_shortest_path);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
 
 
@@ -52,7 +46,6 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 #include "../../common/src/debug_macro.h"
 #include "../../common/src/pgr_types.h"
 #include "../../common/src/postgres_connection.h"
-
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
@@ -173,8 +166,12 @@ static int compute_bidirsp(char* sql, int start_vertex,
   int ntuples;
   edge_t *edges = NULL;
   int total_tuples = 0;
+#ifndef _MSC_VER
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
+#else // _MSC_VER
+  edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
+#endif // _MSC_VER
   int v_max_id=0;
   int v_min_id=INT_MAX;
 
@@ -306,11 +303,8 @@ static int compute_bidirsp(char* sql, int start_vertex,
 }
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(bidir_dijkstra_shortest_path);
 PGDLLEXPORT Datum
-#endif
 bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 {
 
