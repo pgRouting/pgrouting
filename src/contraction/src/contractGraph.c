@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
-#define DEBUG
+// #define DEBUG
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
@@ -81,7 +81,7 @@ process(char* edges_sql,
     pgr_SPI_connect();
 
     //PGR_DBG("Load data");
-#ifdef DEBUG
+//#ifdef DEBUG
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
     if (num_cycles < 1) {
@@ -90,6 +90,15 @@ process(char* edges_sql,
         (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
+    }
+    for (size_t i = 0; i < size_contraction_order; ++i) {
+            if (is_valid_contraction(contraction_order[i]) != 1) {
+                PGR_DBG("Error: Enter a valid Contraction Type\n");
+                (*result_count) = 0;
+                (*result_tuples) = NULL;
+                pgr_SPI_finish();
+                return;
+            }
     }
     pgr_get_edges(edges_sql, &edges, &total_tuples);
     //PGR_DBG("finished Loading");
@@ -122,7 +131,7 @@ process(char* edges_sql,
 
     free(err_msg);
     pfree(edges);
-#endif
+//#endif
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -169,7 +178,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         contraction_order = (int64_t*)
             pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
         forbidden_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
+            pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
 
         PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
         PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
@@ -179,7 +188,7 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
 
-#ifdef DEBUG
+//#ifdef DEBUG
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 forbidden_vertices,
@@ -190,7 +199,7 @@ contractGraph(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
-#endif
+//#endif
 
         /*                                                                             */
         /*******************************************************************************/
@@ -231,13 +240,13 @@ contractGraph(PG_FUNCTION_ARGS) {
          *******************************************************************/
 
 
-        values =(Datum *)palloc(5 * sizeof(Datum));
+        values =(Datum *)palloc(4 * sizeof(Datum));
         // values = (char **) palloc(5 * sizeof(char *));
-        nulls = palloc(5 * sizeof(char));
+        nulls = palloc(5 * sizeof(bool));
 
         size_t i;
         for (i = 0; i < 5; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         #if 0
@@ -248,23 +257,22 @@ contractGraph(PG_FUNCTION_ARGS) {
         PGR_DBG("Storing pe %s",result_tuples->psuedoEdges);
         #endif
         // postgres starts counting from 1
-        values[0] = CStringGetTextDatum(result_tuples->contracted_graph_name);
-        values[1] = CStringGetTextDatum(result_tuples->contracted_graph_blob);
-        values[2] = CStringGetTextDatum(result_tuples->removedVertices);
-        values[3] = CStringGetTextDatum(result_tuples->removedEdges);
-        values[4] = CStringGetTextDatum(result_tuples->psuedoEdges);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].id);
+        values[2] = CStringGetTextDatum(result_tuples[call_cntr].type);
+        values[3] = CStringGetTextDatum(result_tuples[call_cntr].contracted_vertices);
+
+        
 
         /*********************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
-        PGR_DBG("heap_formtuple OK");
         result = HeapTupleGetDatum(tuple);
-        PGR_DBG("HeapTupleGetDatum OK");
         SRF_RETURN_NEXT(funcctx, result);
-        PGR_DBG("Returning values");
     } else {
         // cleanup
         PGR_DBG("Freeing values");
+        #if 0
         if (result_tuples) {
             if (result_tuples->contracted_graph_name)
                 free(result_tuples->contracted_graph_name);
@@ -279,6 +287,9 @@ contractGraph(PG_FUNCTION_ARGS) {
             free(result_tuples);
         }
 
+        #endif
+        // cleanup
+        if (result_tuples) free(result_tuples);
         SRF_RETURN_DONE(funcctx);
     }
     PGR_DBG("End of Function");

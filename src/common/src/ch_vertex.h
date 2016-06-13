@@ -1,5 +1,7 @@
-#pragma once
+#ifndef CH_VERTEX_H
+#define CH_VERTEX_H
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #if 0
@@ -13,6 +15,7 @@
 namespace pgRouting {
 namespace contraction {
 
+
 class Vertex {
  public:
     int64_t id;
@@ -21,15 +24,17 @@ class Vertex {
     Vertex(const pgr_edge_t &other, bool is_source) :
       id(is_source? other.source : other.target)
       {}
-
+    #if 0
+    Vertex(const Edge &other, bool is_source) :
+      id(is_source? other.source : other.target)
+      {}
+    #endif
     void cp_members(const Vertex &other) {
         this->id = other.id;
     }
     void add_contracted_vertex(Vertex& v, int64_t vid);
     const Identifiers<int64_t>& contracted_vertices() const;
     void clear_contracted_vertices() { m_contracted_vertices.clear(); }
-    template < typename G >
-    std::ostream& print_vertex(std::ostream& os, G &graph);
     friend std::ostream& operator <<(std::ostream& os, const Vertex& v);
 #if 0    
     Vertex() : m_deleted(false) { }
@@ -61,3 +66,4 @@ extract_vertices(
 
 }  // namespace contraction
 }  // namespace pgRouting
+#endif
