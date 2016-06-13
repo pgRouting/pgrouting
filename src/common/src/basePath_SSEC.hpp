@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <iostream>
 #include <algorithm>
-#include "postgres.h"
 #include "./pgr_types.h"
 
 class Path {
@@ -85,14 +84,14 @@ class Path {
             int64_t d_to,
             int64_t d_vertex,
             int64_t d_edge, 
-            float8 d_cost,
-            float8 d_tot_cost);
+            double d_cost,
+            double d_tot_cost);
 
     void push_front(
             int64_t d_vertex,
             int64_t d_edge, 
-            float8 d_cost,
-            float8 d_tot_cost);
+            double d_cost,
+            double d_tot_cost);
     void clear();
 
     friend std::ostream& operator<<(std::ostream &log, const Path &p);
