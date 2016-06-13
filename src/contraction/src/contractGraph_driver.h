@@ -54,7 +54,7 @@ extern "C" {
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
         char ** err_msg);
-    int is_valid_contraction(int number);
+    int is_valid_contraction(int64_t number);
 
 #ifdef __cplusplus
 }
