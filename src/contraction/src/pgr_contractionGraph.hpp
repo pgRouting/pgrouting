@@ -325,10 +325,11 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
             e = *in_i;
         log << this->graph[e].id << std::endl; 
             if (this->graph[e].id == id) {
-                return this->graph[e];
+                break;
+                //return this->graph[e];
             }
         }
-        //return minEdge;
+        return this->graph[e];
     }
 
     T_E& get_outgoing_edge(int64_t id, V vertex, std::ostringstream& log)
@@ -341,10 +342,11 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
             e = *out_i;
         log << this->graph[e].id << std::endl;
             if (this->graph[e].id == id) {
-                return this->graph[e];
+                break;
+                //return this->graph[e];
             }
         }
-        //return minEdge;
+        return this->graph[e];
     }
 
     void get_shortcuts(std::vector<T_E>& shortcuts, std::ostringstream& log)
