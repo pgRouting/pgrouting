@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - fix/issue569
+    - test/appveyor
 
 env:
   - POSTGRESQL_VERSION=9.1
