@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if defined(_MSC_VER) && _MSC_VER < 1600
 #define ELOG_H
 #endif
-#include "postgres.h"
 #include "../../common/src/pgr_types.h"
 
 typedef pgr_edge_t edge_t;

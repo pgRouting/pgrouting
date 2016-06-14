@@ -34,7 +34,6 @@ along with this program; if not, write to the Free Software
 #include <deque>
 #include <iostream>
 #include <algorithm>
-#include "postgres.h"
 #include "./pgr_types.h"
 
 
