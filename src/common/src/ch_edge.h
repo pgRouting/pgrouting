@@ -40,6 +40,7 @@ class Edge {
     double cost;
     bool first;
     void add_contracted_vertex(Vertex& v, int64_t vid);
+    bool has_contracted_vertices() const;
     void clear_contracted_vertices() { m_contracted_vertices.clear(); }
     #if 0
     inline bool isDeleted() const { return m_deleted; }

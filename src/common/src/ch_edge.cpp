@@ -19,6 +19,12 @@ void Edge::cp_members(const Basic_edge &other) {
         this->first = other.first;
     }
 
+bool Edge::has_contracted_vertices() const {
+    if (m_contracted_vertices.size() == 0)
+        return false;
+    return true; 
+}
+
 const Identifiers<int64_t>& Edge::contracted_vertices() const { 
     return m_contracted_vertices; 
 }
