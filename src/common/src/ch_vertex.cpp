@@ -9,6 +9,15 @@ const Identifiers<int64_t>& Vertex::contracted_vertices() const {
     return m_contracted_vertices; 
 }
 
+
+bool Vertex::has_contracted_vertices() const {
+    if (m_contracted_vertices.size() == 0)
+        return false;
+    return true; 
+}
+
+
+
 #if 0
 std::string Vertex_c::type_str() const {
     return m_type.type_str();
