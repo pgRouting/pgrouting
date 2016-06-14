@@ -243,7 +243,19 @@ do_pgr_contractGraph(
 				(*return_tuples)[sequence] = {i, id, type, contracted_vertices};
 				++sequence;
 			}
-
+			log << "Added Edges:" << "\n";
+			for (const auto edge : shortcut_edges) {
+				log << edge << "\n";
+			}
+			for (auto edge : shortcut_edges) {
+				type = strdup("e");
+				std::ostringstream os;
+				undigraph.get_ids(os, edge.contracted_vertices());
+				contracted_vertices = strdup(os.str().c_str());
+				//char *contracted_vertices = strdup("--"); 
+				(*return_tuples)[sequence] = {i, edge.id, type, contracted_vertices};
+				++sequence;
+			}
 			(*return_count) = sequence;
 		}
 
