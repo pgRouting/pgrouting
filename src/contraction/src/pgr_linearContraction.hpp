@@ -326,7 +326,7 @@ template < class G >
 					vertex, debug);
 				add_shortcut(graph, vertex, incoming1, outgoing1, --last_edge_id, true, debug);
 				// different id to every shortcut
-				add_shortcut(graph, vertex, incoming2, outgoing2, --last_edge_id, false, debug);
+				add_shortcut(graph, vertex, incoming2, outgoing2, last_edge_id, false, debug);
 				
 			}
 
@@ -357,6 +357,8 @@ template < class G >
 			contraction::Edge shortcut(id, incoming_edge.source,
 				outgoing_edge.target, incoming_edge.cost + outgoing_edge.cost, first);
 			shortcut.add_contracted_vertex(graph[vertex], vertex);
+			shortcut.add_contracted_edge_vertices(incoming_edge);
+			shortcut.add_contracted_edge_vertices(outgoing_edge);
 			graph.graph_add_edge(shortcut);
 			//graph.get_outgoing_edge(last_edge_id, incoming_edge.source, debug).add_contracted_vertex(graph[vertex], vertex);
 			debug << "Added shortcut\n";
