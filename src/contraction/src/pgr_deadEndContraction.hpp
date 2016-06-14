@@ -176,12 +176,27 @@ namespace pgRouting {
 				V adjacent_vertex = graph.find_adjacent_vertex(current_vertex);
 				//debug << "Current Vertex: "<< graph[current_vertex].id << std::endl;
 				//debug << "Adjacent Vertex: "<< graph[adjacent_vertex].id << std::endl;
-				
+
 				
 
 				debug << "Contracting current vertex "<< graph[current_vertex].id << std::endl;
 
 				graph[adjacent_vertex].add_contracted_vertex(graph[current_vertex], current_vertex); 
+
+				// Adding contracted vertices of the edge
+				EO_i out, out_end;
+				EI_i in, in_end;
+				debug << "Adding contracted vertices of the edge\n";
+				for (boost::tie(out, out_end) = out_edges(current_vertex, graph.graph);
+						out != out_end; ++out) {
+						debug << graph.graph[*out];
+						graph.add_contracted_edge_vertices(adjacent_vertex, graph.graph[*out]);
+					}
+				for (boost::tie(in, in_end) = in_edges(current_vertex, graph.graph);
+						in != in_end; ++in) {
+						debug << graph.graph[*in];
+						graph.add_contracted_edge_vertices(adjacent_vertex, graph.graph[*in]);
+					}
 
 				debug << "Current Vertex:\n";
 				debug << graph[current_vertex];
