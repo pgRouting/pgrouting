@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: one_to_one_dijkstra_driver.h
+File: max_flow_edmonds_karp_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers

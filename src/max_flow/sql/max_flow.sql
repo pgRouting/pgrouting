@@ -69,3 +69,17 @@ CREATE OR REPLACE FUNCTION pgr_pushrelabel(
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_push_relabel'
     LANGUAGE c IMMUTABLE STRICT;
+
+CREATE OR REPLACE FUNCTION pgr_boykovkolmogorov(
+    edges_sql TEXT,
+    source BIGINT,
+    sink BIGINT,
+    OUT id BIGINT,
+    OUT tail BIGINT,
+    OUT head BIGINT,
+    OUT flow integer,
+    OUT residual_capacity integer
+    )
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_boykov_kolmogorov'
+    LANGUAGE c IMMUTABLE STRICT;
