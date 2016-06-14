@@ -164,7 +164,7 @@ do_pgr_contractGraph(
 					max_cycles, remaining_vertices,
 					shortcut_edges, debug);
 			digraph.print_graph(log);
-			//log << debug.str().c_str() << "\n";
+			log << debug.str().c_str() << "\n";
 			(*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
 			size_t sequence = 0;
 			int i = 1;
