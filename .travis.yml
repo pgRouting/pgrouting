@@ -27,6 +27,7 @@ branches:
   only:
     - master
     - develop
+    - ch/newclasses1
     - ch/newclasses
 
 env:

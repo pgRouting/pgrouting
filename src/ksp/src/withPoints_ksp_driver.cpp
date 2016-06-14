@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 //#ifdef unlink
@@ -40,11 +40,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include "./pgr_ksp.hpp"
 #include "./withPoints_ksp_driver.h"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
 #include "./../../common/src/pgr_alloc.hpp"
-#include "./pgr_ksp.hpp"
-
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPointsKSP(

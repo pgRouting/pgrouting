@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #ifdef open
@@ -74,7 +74,7 @@ do_pgr_many_withPointsDD(
         pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
 
         int64_t  *start_pids_arr,    size_t s_len,
-        float8 distance,
+        double distance,
 
         bool directed,
         char driving_side,
@@ -205,7 +205,7 @@ do_pgr_withPointsDD(
         pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
 
         int64_t start_vid,
-        float8      distance,
+        double      distance,
 
         char driving_side,
         bool details,

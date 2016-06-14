@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 
-
+#include "./../../common/src/pgr_types.h"
 
 #undef qsort
 
@@ -80,7 +80,7 @@ long profipts1, profipts2, profopts;
 
 // ------------------------------------------------------------------------
 
-Datum vrp(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum vrp(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
@@ -775,7 +775,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 }
 
 PG_FUNCTION_INFO_V1(vrp);
-Datum
+PGDLLEXPORT Datum
 vrp(PG_FUNCTION_ARGS)
 {
 	FuncCallContext     *funcctx;

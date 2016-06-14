@@ -117,5 +117,4 @@ private:
     double *m_pFCost;
     double *m_pRCost;
 };
-
 #endif

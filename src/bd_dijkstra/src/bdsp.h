@@ -26,8 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef _BDSP_H
 #define _BDSP_H
 
-
-#include "postgres.h"
+#if defined(_MSC_VER) && _MSC_VER < 1600
+#define ELOG_H
+#endif
 #include "../../common/src/pgr_types.h"
 
 typedef pgr_edge_t edge_t;
