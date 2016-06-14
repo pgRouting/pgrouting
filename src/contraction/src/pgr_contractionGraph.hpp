@@ -359,7 +359,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              for (boost::tie(out_i, out_end) = boost::out_edges(*vi, this->graph);
                 out_i != out_end; ++out_i) {
                 e = *out_i;
-                if (this->graph[e].id < 0 && this->graph[e].first == true) {
+                //if (this->graph[e].id < 0 && this->graph[e].first == true) {
+                // output all edges with id < 0 
+                if (this->graph[e].id < 0) {
                     log << this->graph[e];
                     shortcuts.push_back(this->graph[e]);
                 }
