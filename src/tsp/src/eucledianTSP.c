@@ -48,12 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-PG_FUNCTION_INFO_V1(eucledianTSP);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 eucledianTSP(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
@@ -156,11 +151,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 eucledianTSP(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
