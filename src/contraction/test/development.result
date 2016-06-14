@@ -30,6 +30,7 @@ ERROR:  Expected less than two dimension
 1|6|v| {}
 2|10|v| {}
 3|-1|e| {5, }
+4|-2|e| {5, }
 --q8 Checking for linear vertices case 3
 1|3|v| {}
 2|5|v| {}
@@ -53,9 +54,10 @@ ERROR:  Expected less than two dimension
 12|15|v| {}
 13|16|v| {}
 14|17|v| {}
-15|-2|e| {8, }
-16|-1|e| {4, }
-17|-3|e| {12, }
+15|-3|e| {8, }
+16|-2|e| {8, }
+17|-1|e| {4, }
+18|-4|e| {12, }
 --q11 Checking dead end, linear contraction for sample data
 1|3|v| {}
 2|5|v| {7, 8, }
@@ -71,12 +73,15 @@ ERROR:  Expected less than two dimension
 --q12 Checking linear contraction, dead end for sample data
 1|2|v| {1, }
 2|3|v| {}
-3|5|v| {7, }
+3|5|v| {}
 4|6|v| {}
-5|9|v| {}
-6|10|v| {13, }
-7|11|v| {}
-8|15|v| {14, }
-9|17|v| {16, }
-10|-1|e| {4, }
-11|-3|e| {12, }
+5|7|v| {}
+6|9|v| {}
+7|10|v| {13, }
+8|11|v| {}
+9|15|v| {14, }
+10|17|v| {16, }
+11|-3|e| {8, }
+12|-2|e| {8, }
+13|-1|e| {4, }
+14|-4|e| {12, }
