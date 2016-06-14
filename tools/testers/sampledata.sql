@@ -54,6 +54,18 @@ dir = CASE WHEN (cost>0 and reverse_cost>0) THEN 'B'   -- both ways
    ELSE '' END;                                -- unknown
 --EDGE TABLE TOPOLOGY
 SELECT pgr_createTopology('edge_table',0.001);
+
+--VERTEX TABLE CREATE
+CREATE TABLE vertex_table (
+    id SERIAL,
+    x FLOAT,
+    y FLOAT
+);
+--VERTEX TABLE ADD DATA
+INSERT INTO vertex_table VALUES
+        (1,2,0), (2,2,1), (3,3,1), (4,4,1), (5,0,2), (6,1,2), (7,2,2),
+        (8,3,2), (9,4,2), (10,2,3), (11,3,3), (12,4,3), (13,2,4);
+
 --POINTS CREATE
 CREATE TABLE pointsOfInterest(
     pid BIGSERIAL,

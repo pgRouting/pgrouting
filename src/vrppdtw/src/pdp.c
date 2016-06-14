@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pdp.h"
 
 
-Datum vrppdtw(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum vrppdtw(PG_FUNCTION_ARGS);
 
 
 #undef DEBUG
@@ -351,7 +351,7 @@ static int compute_shortest_path(char* sql, int  vehicle_count, int capacity , p
 
 
 PG_FUNCTION_INFO_V1(vrppdtw);
-        Datum
+PGDLLEXPORT Datum
 vrppdtw(PG_FUNCTION_ARGS)
 {
         FuncCallContext     *funcctx;
