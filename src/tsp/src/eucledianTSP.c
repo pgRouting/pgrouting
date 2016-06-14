@@ -48,6 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
+PG_FUNCTION_INFO_V1(eucledianTSP);
 PGDLLEXPORT Datum
 eucledianTSP(PG_FUNCTION_ARGS);
 
