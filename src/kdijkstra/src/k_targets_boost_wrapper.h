@@ -26,10 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef _TOMANYSP_H
 #define _TOMANYSP_H
 
-//#include "MyWrapper.h"
-
-#include "postgres.h"
-// #include "../../common/src/pgr_types.h"
 
 typedef struct {
     int id;
@@ -45,7 +41,7 @@ typedef struct
     int seq;
     int id1;
     int id2;
-    float8 cost;
+    double cost;
 } pgr_cost_t;
 
 typedef struct
@@ -54,7 +50,7 @@ typedef struct
     int id1;
     int id2;
     int id3;
-    float8 cost;
+    double cost;
 } pgr_cost3_t;
 
 
@@ -64,7 +60,7 @@ typedef struct
     int edge_id_source;
     int vertex_id_target;
     int edge_id_target;
-    float8 cost;
+    double cost;
 } dist_fromto_t;
 
 
@@ -74,7 +70,7 @@ typedef struct
     int edge_id_source;
     int vertex_id_target;
     int edge_id_target;
-    float8 cost;
+    double cost;
     char* the_way;
 } path_fromto_t;
 

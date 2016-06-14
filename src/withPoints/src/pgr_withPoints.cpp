@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -311,11 +311,11 @@ create_new_edges(
 
             double deltaFraction = point.fraction - prev_fraction;
             double deltarFraction = point.fraction - prev_rfraction;
-            if ((edge.cost < 0 or edge.reverse_cost < 0)
+            if ((edge.cost < 0 || edge.reverse_cost < 0)
                     || driving_side == 'b'
                     || point.side == 'b') {
                 log << "Edge is one way or driving side is both or point side is both\n";
-                log << "Edge is one way: " << (edge.cost < 0 or edge.reverse_cost < 0) << "\n";
+                log << "Edge is one way: " << (edge.cost < 0 || edge.reverse_cost < 0) << "\n";
                 log << "driving side: " << driving_side << "\n";
                 log << "point side: " << point.side << "\n";
                 if (point.fraction > 0 && point.fraction < 1) {

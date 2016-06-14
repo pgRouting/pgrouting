@@ -79,7 +79,7 @@ include(TargetDistclean)
 
 message(STATUS "UNIX=${UNIX}")
 message(STATUS "WIN32=${WIN32}")
-if(WIN32)
+if(WIN32 AND NOT MSVC)
   set(OS_BUILD  $ENV{OS_BUILD})
   if(NOT OS_BUILD)
     set(OS_BUILD "64")
@@ -101,7 +101,7 @@ if(WIN32)
   message(STATUS "GMP_ROOT=${GMP_ROOT}")
   message(STATUS "BOOST_ROOT=${BOOST_ROOT}")
   message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
-endif(WIN32)
+endif(WIN32 AND NOT MSVC)
 
 
 include(FindPerl)
@@ -180,7 +180,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     )
 
-include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+include_directories(${PGROUTING_INCLUDE_DIRECTORIES} ${POSTGRESQL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS} ${CGAL_INCLUDE_DIR})
 message(STATUS "PGROUTING_INCLUDE_DIRECTORIES = ${PGROUTING_INCLUDE_DIRECTORIES}")
 message(STATUS "POSTGRESQL_INCLUDE_DIR = ${POSTGRESQL_INCLUDE_DIR}")
 message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
@@ -194,6 +194,9 @@ endforeach()
 
 if(WIN32)
   include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
+  if(MSVC)
+    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32_msvc/)
+  endif(MSVC)
 endif(WIN32)
 
 # we need link libpostgres.a on win32 env
@@ -227,9 +230,12 @@ elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGW
     #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
 
 elseif(WIN32)
-    # currently, support MinGW only
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2  -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2  -std=c++0x -frounding-math -Wno-deprecated")
+  if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
+  endif()
+  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
+  endif()
 endif()
 
 # List variable to collect module SQL file names
@@ -361,6 +367,9 @@ if(APPLE)
         PROPERTIES
         LINK_FLAGS "-bundle_loader ${POSTGRESQL_EXECUTABLE} -bundle")
 endif(APPLE)
+if(WIN32 AND MSVC)
+    set_target_properties(${PGROUTING_LIB_NAME} PROPERTIES PREFIX "lib")
+endif(WIN32 AND MSVC)
 
 
 file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"

@@ -24,8 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef _VRP_H
 #define _VRP_H
 
-#include "postgres.h"
-
+#include <stddef.h>
 
 typedef struct vrp_vehicles 
 {
@@ -43,8 +42,8 @@ typedef struct vrp_orders
 	int close_time;
 	int service_time;
 	
-	float8 x;
-	float8 y;
+	double x;
+	double y;
 	
 } vrp_orders_t;
 

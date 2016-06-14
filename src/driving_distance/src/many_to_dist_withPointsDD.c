@@ -44,13 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./withPoints_dd_driver.h"
 
 
-PG_FUNCTION_INFO_V1(many_withPointsDD);
-#ifndef _MSC_VER
-Datum 
-#else  
-PGDLLEXPORT Datum 
-#endif
-many_withPointsDD(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum many_withPointsDD(PG_FUNCTION_ARGS);
 
 static 
 void process(
@@ -146,11 +140,8 @@ void process(
 
 
 
-#ifndef _MSC_VER
-Datum
-#else  
+PG_FUNCTION_INFO_V1(many_withPointsDD);
 PGDLLEXPORT Datum
-#endif
 many_withPointsDD(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t                  call_cntr;
