@@ -325,7 +325,8 @@ template < class G >
 				contraction::Edge outgoing2 = graph.get_outgoing_edge(incoming_eid,
 					vertex, debug);
 				add_shortcut(graph, vertex, incoming1, outgoing1, --last_edge_id, true, debug);
-				add_shortcut(graph, vertex, incoming2, outgoing2, last_edge_id, false, debug);
+				// different id to every shortcut
+				add_shortcut(graph, vertex, incoming2, outgoing2, --last_edge_id, false, debug);
 				
 			}
 
