@@ -269,7 +269,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         Identifiers<int64_t>& remaining_vertices) {
         log << "remaining_vertices\n";
         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
-            if (!removed_vertices.has(*vi))
+            if (!removed_vertices.has(*vi) && this->graph[*vi].has_contracted_vertices())
             {
                 //log << this->graph[*vi].id << "\n";
                 remaining_vertices += this->graph[*vi].id;
