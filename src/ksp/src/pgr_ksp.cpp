@@ -104,8 +104,10 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
 
         for (const auto &path : m_ResultSet) {
             if (path.isEqual(rootPath)) {
-                graph.disconnect_edge(path[i].node,     // from
-                        path[i + 1].node);  // to
+                if (path.size() > i + 1) {
+                    graph.disconnect_edge(path[i].node,     // from
+                            path[i + 1].node);  // to
+                }
             }
         }
         removeVertices(graph, rootPath);
