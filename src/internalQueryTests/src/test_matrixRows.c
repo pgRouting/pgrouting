@@ -122,7 +122,7 @@ Datum
 PGDLLEXPORT Datum
 #endif
 test_matrixRows(PG_FUNCTION_ARGS) {
-    bool  result_bool = NULL;
+    bool  result_bool = false;
 
     process(
             pgr_text2char(PG_GETARG_TEXT_P(0)),
