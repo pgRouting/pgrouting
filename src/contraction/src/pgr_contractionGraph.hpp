@@ -369,6 +369,15 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
     }
 
+    void add_contracted_edge_vertices(V v, T_E &e)
+    {
+        for (auto vid : e.contracted_vertices())
+        {
+            this->graph[v].add_vertex_id(vid);
+        }
+        e.clear_contracted_vertices();
+    }
+
 template < typename T>
 void graph_add_edge(const T &edge) {
     bool inserted;
