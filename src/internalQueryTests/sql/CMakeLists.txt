@@ -1,5 +1,6 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_ch_edges.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/testXYedges.sql
 )
 

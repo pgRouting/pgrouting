@@ -39,8 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./testXYedges_driver.h"
 
-#define DEBUG
-
 extern "C" {
 #include "./../../common/src/pgr_types.h"
 }

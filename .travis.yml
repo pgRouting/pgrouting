@@ -27,7 +27,8 @@ branches:
   only:
     - master
     - develop
-    - test/appveyor
+    - ch/newclasses1
+    - ch/newclasses
 
 env:
   - POSTGRESQL_VERSION=9.1

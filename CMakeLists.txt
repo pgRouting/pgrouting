@@ -177,6 +177,7 @@ add_subdirectory(doc)
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/common/src
+    ${PGROUTING_SOURCE_DIR}/src/contraction/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     )
 
@@ -271,6 +272,7 @@ set(PgRouting_SOURCE_NAMES
 
     "vrp_basic"
     "vrppdtw"
+    "contraction"
 
     )
 
