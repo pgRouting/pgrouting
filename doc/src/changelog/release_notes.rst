@@ -32,7 +32,7 @@ Table of contents
 pgRouting 2.2.3 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3ARelease-2.2.3+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github.
 
 Bug Fixes
 -------------------------------
@@ -44,7 +44,7 @@ Bug Fixes
 pgRouting 2.2.2 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3ARelease-2.2.2+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github.
 
 Bug Fixes
 -------------------------------
@@ -117,7 +117,7 @@ Deprecated functions:
 pgRouting 2.1.0 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github.
 
 Refactored
 -------------------------------
@@ -197,6 +197,8 @@ Bug Fixes
 pgRouting 2.0.0 Release Notes
 ===============================================================================
 
+To see the issues closed by this release see the `Git closed issues for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github.
+
 With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to :ref:`pgRouting 1.x <changelog_1_x>` releases.
 The main Goals for this release are:
 
@@ -245,6 +247,7 @@ Important Changes
 pgRouting 1.x Release Notes
 ===============================================================================
 
+To see the issues closed by this release see the `Git closed issues for 1.x <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_ on Github.
 The following release notes have been copied from the previous ``RELEASE_NOTES`` file and are kept as a reference.
 
 
