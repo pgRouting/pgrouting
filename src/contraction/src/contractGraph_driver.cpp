@@ -179,7 +179,7 @@ do_pgr_contractGraph(
 				digraph.print_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
 				//char *contracted_vertices = strdup("--"); 
-				(*return_tuples)[sequence] = {i, id, type, contracted_vertices};
+				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
 				++sequence;
 			}
 			log << "Added Edges:" << "\n";
@@ -192,7 +192,7 @@ do_pgr_contractGraph(
 				digraph.get_ids(os, edge.contracted_vertices());
 				contracted_vertices = strdup(os.str().c_str());
 				//char *contracted_vertices = strdup("--"); 
-				(*return_tuples)[sequence] = {i, edge.id, type, contracted_vertices};
+				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, contracted_vertices};
 				++sequence;
 			}
 
@@ -240,7 +240,7 @@ do_pgr_contractGraph(
 				undigraph.print_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
 				//char *contracted_vertices = strdup("--"); 
-				(*return_tuples)[sequence] = {i, id, type, contracted_vertices};
+				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
 				++sequence;
 			}
 			log << "Added Edges:" << "\n";
@@ -253,7 +253,7 @@ do_pgr_contractGraph(
 				undigraph.get_ids(os, edge.contracted_vertices());
 				contracted_vertices = strdup(os.str().c_str());
 				//char *contracted_vertices = strdup("--"); 
-				(*return_tuples)[sequence] = {i, edge.id, type, contracted_vertices};
+				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, contracted_vertices};
 				++sequence;
 			}
 			(*return_count) = sequence;
