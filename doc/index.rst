@@ -182,13 +182,14 @@ Change Log
    - :ref:`changelog_2_2_1`
    - :ref:`changelog_2_2_0`
    - :ref:`changelog_2_1_0`
-   - :ref:`changelog_2_0`
+   - :ref:`changelog_2_0_1`
+   - :ref:`changelog_2_0_0`
    - :ref:`changelog_1_x`
 
 .. toctree::
     :hidden:
 
-    src/changelog/changelog
+    src/changelog/release_notes
 
 
 .. rubric:: Indices and tables

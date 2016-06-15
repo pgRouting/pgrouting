@@ -32,12 +32,38 @@ Table of contents
 pgRouting 2.2.3 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues <https://github.com/pgRouting/pgrouting/issues?q=milestone%3ARelease-2.2.3+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3ARelease-2.2.3+is%3Aclosed>`_ on Github.
 
 Bug Fixes
 -------------------------------
 
 * Fixed  compatibility issues with PostgreSQL 9.6.
+
+.. _changelog_2_2_2:
+
+pgRouting 2.2.2 Release Notes
+===============================================================================
+
+To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3ARelease-2.2.2+is%3Aclosed>`_ on Github.
+
+Bug Fixes
+-------------------------------
+
+* Fixed regression error on pgr_drivingDistance
+
+
+.. _changelog_2_2_1:
+
+pgRouting 2.2.1 Release Notes
+===============================================================================
+
+To see the issues closed by this release see the `Git closed issues for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github.
+
+Bug Fixes
+-------------------------------
+
+* Server crash fix on pgr_alphaShape
+* Bug fix on With Points family of functions
 
 
 .. _changelog_2_2_0:
@@ -45,8 +71,7 @@ Bug Fixes
 pgRouting 2.2.0 Release Notes
 ===============================================================================
 
-
-To see the issues closed by this release see the `Git closed issues <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github.
 
 
 Improvements
@@ -85,32 +110,6 @@ Deprecated functions:
 - pgr_apspJohnson   use pgr_Johnson instead
 - pgr_kDijkstraCost use pgr_dijkstraCost instead
 - pgr_kDijkstraPath use pgr_dijkstra instead
-
-.. _changelog_2_2_1:
-
-pgRouting 2.2.1 Release Notes
-===============================================================================
-
-To see the issues closed by this release see the `Git closed issues <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github.
-
-Bug Fixes
--------------------------------
-
-* Server crash fix on pgr_alphaShape
-* Bug fix on With Points family of functions
-
-
-.. _changelog_2_2_2:
-
-pgRouting 2.2.2 Release Notes
-===============================================================================
-
-To see the issues closed by this release see the `Git closed issues <https://github.com/pgRouting/pgrouting/issues?q=milestone%3ARelease-2.2.2+is%3Aclosed>`_ on Github.
-
-Bug Fixes
--------------------------------
-
-* Fixed regression error on pgr_drivingDistance
 
 
 .. _changelog_2_1_0:
