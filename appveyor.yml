@@ -5,19 +5,22 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-
-
-
-
-notifications:
-  email:
-    on_failure: vicky_vergara@hotmail.com
+version: 1.0.{build}
 
 branches:
   only:
     - test/appveyor
 
-    
+build:
+  verbosity: normal
+  
+notifications:
+  - provider: Email
+    to:
+      - vicky_vergara@hotmail.com
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: false
 
 services:
   - postgresql
@@ -42,7 +45,6 @@ environment:
 #- postgresql-server-dev-all
 #- postgresql-common
 
-
 #- export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
 #- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
 #- sudo apt-get install -y postgresql-9.5
@@ -56,7 +58,6 @@ environment:
 #- createdb  ___pgr___test___
 #- createdb  pgr_test__db__test
 #- ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
-
 
 #before_install:
 
