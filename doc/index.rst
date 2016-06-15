@@ -188,7 +188,7 @@ Change Log
 .. toctree::
     :hidden:
 
-    src/changelog/index
+    src/changelog/changelog
 
 
 .. rubric:: Indices and tables
