@@ -49,7 +49,7 @@ void
 do_pgr_driving_many_to_dist(
         pgr_edge_t  *data_edges, size_t total_tuples,
         int64_t  *start_vertex, size_t s_len,
-        float8 distance,
+        double distance,
         bool directedFlag,
         bool equiCostFlag,
         General_path_element_t **ret_path, size_t *path_count,
@@ -108,7 +108,7 @@ void
 do_pgr_driving_distance(
         pgr_edge_t  *data_edges, size_t total_edges,
         int64_t     start_vertex,
-        float8      distance,
+        double      distance,
         bool        directedFlag,
         General_path_element_t **ret_path, size_t *path_count,
         char                   **err_msg) {

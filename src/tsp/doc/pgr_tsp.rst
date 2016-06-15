@@ -43,40 +43,6 @@ Signature Summary
         randomize,
     RETURS SETOF (seq, node, cost, agg_cost)
 
-
-.. NOTE:: This signatures are being deprecated
-
-    .. index:: 
-        single: pgr_tsp(sql text, start_id integer) 
-        single: pgr_tsp(sql text, start_id integer, end_id integer)
-
-    .. code-block:: sql
-
-        pgr_costResult[] pgr_tsp(sql text, start_id integer) 
-        pgr_costResult[] pgr_tsp(sql text, start_id integer, end_id integer)
-
-    - See http://docs.pgrouting.org/2.2/en/src/common/doc/types/cost_result.html 
-    - See http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html
-
-    Use :ref:`pgr_eucledianTSP` instead.
-
-
-.. NOTE:: This signature is being deprecated
-
-    .. index:: 
-        single: pgr_tsp(matrix float[][], start integer)
-        single: pgr_tsp(matrix float[][], start integer, end integer)
-
-    .. code-block:: sql
-
-       record[] pgr_tsp(matrix float[][], start integer)
-       record[] pgr_tsp(matrix float[][], start integer, end integer)
-
-    - See http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html
-
-    Use :ref:`pgr_TSP` instead.
-
-
 Signatures
 ===============
 

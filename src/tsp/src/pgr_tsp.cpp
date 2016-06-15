@@ -455,7 +455,7 @@ TSP<MATRIX>::annealing(
            */
         int64_t pathchg = 0;
         size_t enchg = 0;
-        size_t non_change = 0;
+        int64_t non_change = 0;
         for (int64_t j = 0; j < tries_per_temperature; j++) {
             ++non_change;
 

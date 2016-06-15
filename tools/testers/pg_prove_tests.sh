@@ -51,7 +51,7 @@ pg_prove ../../src/tsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/bd_astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/bd_dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/convinience/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/convenience/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/tsp/test/performance/* -d $PGDATABASE  -U $PGUSER
 

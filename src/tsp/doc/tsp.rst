@@ -26,27 +26,20 @@ Traveling Sales Person
 
     .. code-block:: sql
 
-        pgr_costResult[] pgr_tsp(sql text, start_id integer) 
-        pgr_costResult[] pgr_tsp(sql text, start_id integer, end_id integer)
+       -- (1)
+       pgr_costResult[] pgr_tsp(sql text, start_id integer) 
+       pgr_costResult[] pgr_tsp(sql text, start_id integer, end_id integer)
+
+       -- (2)
+       record[] pgr_tsp(matrix float[][], start integer)
+       record[] pgr_tsp(matrix float[][], start integer, end integer)
 
     - See http://docs.pgrouting.org/2.2/en/src/common/doc/types/cost_result.html 
     - See http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html
     - For more details, see tsp_deprecated_.
 
-    Use :ref:`pgr_eucledianTSP` instead.
-
-
-.. NOTE:: These signatures are being deprecated
-
-    .. code-block:: sql
-
-       record[] pgr_tsp(matrix float[][], start integer)
-       record[] pgr_tsp(matrix float[][], start integer, end integer)
-
-    - See http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html
-    - For more details, see tsp_deprecated_.
-
-    Use :ref:`pgr_TSP` instead.
+    Use :ref:`pgr_eucledianTSP` insteadi of (1).
+    Use :ref:`pgr_TSP` instead of (2).
 
 
 
@@ -80,7 +73,7 @@ Characteristics
 
   - traveling costs from city A to city B are just as much as traveling from B to A.
 
-- This problem is an NP-had optimization problem.
+- This problem is an NP-hard optimization problem.
 
 - To calculate the number of different tours through :math:`n` cities:
 
@@ -228,7 +221,7 @@ The old functionality is deprecated:
 
 * User can not control the execution.
 * Not all valuable information is returned.
-* Some returned column names are meaningless.
+* Some returned column don not have meaningful names.
 
 
 :Example:

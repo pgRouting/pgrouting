@@ -81,6 +81,6 @@ Routing Functions
     tsp/doc/tsp
     trsp/doc/pgr_trsp
     withPoints/doc/withPoints
-    fooDmatrix/doc/dmatrix
+    dmatrix/doc/dmatrix
 
 

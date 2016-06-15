@@ -249,8 +249,6 @@ set(L_PACKAGE_SQL_FILES "")
 set(PgRouting_SOURCE_NAMES
     "common"
 
-    #to be deprecated
-    "kdijkstra"
 
     "dijkstra"
     "driving_distance"
@@ -288,10 +286,12 @@ endforeach()
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     "apsp_johnson"  #V2.0
     "apsp_warshall" #V2.0
-    "convinience"
+    "kdijkstra"     #V2.0
+    "convenience"
     "topology"
     "label_graph"
-    "fooDmatrix"
+    "dmatrix"
+
     )
 
 
