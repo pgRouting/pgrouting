@@ -244,6 +244,19 @@ sub run_test {
         for my $x (@{$t->{tests}}) {
             process_single_test($x, $dir,, $DBNAME, \%res)
         }
+        if ($OS=~/MSW/) {
+            for my $x (@{$t->{windows}}) {
+                process_single_test($x, $dir,, $DBNAME, \%res)
+            }
+        } elsif ($OS=~/Mac/) {
+            for my $x (@{$t->{macos}}) {
+                process_single_test($x, $dir,, $DBNAME, \%res)
+            }
+        } else {
+            for my $x (@{$t->{linux}}) {
+                process_single_test($x, $dir,, $DBNAME, \%res)
+            }
+        }
     }
 
     return \%res;
@@ -254,93 +267,93 @@ sub process_single_test{
     my $dir = shift;
     my $database = shift;
     my $res = shift;
-        #each tests will use clean data
+    #each tests will use clean data
 
-        print "Processing test: $dir/$x\n";
-        my $t0 = [gettimeofday];
-        #TIN = test_input_file
-        open(TIN, "$dir/$x.test.sql") || do {
-            $res->{"$dir/$x.test.sql"} = "FAILED: could not open '$dir/$x.test.sql' : $!";
+    print "Processing test: $dir/$x\n";
+    my $t0 = [gettimeofday];
+    #TIN = test_input_file
+    open(TIN, "$dir/$x.test.sql") || do {
+        $res->{"$dir/$x.test.sql"} = "FAILED: could not open '$dir/$x.test.sql' : $!";
+        $stats{z_fail}++;
+        next;
+    };
+
+    #reason of opening conection is because the set client_min_messages to warning;
+    if ($DOCUMENTATION) {
+        mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
+        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
+            $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             $stats{z_fail}++;
             next;
         };
-
-        #reason of opening conection is because the set client_min_messages to warning;
-        if ($DOCUMENTATION) {
-            mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
-            open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
-                $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
-                $stats{z_fail}++;
-                next;
-            };
-            print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-            print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
-        }
-        else {
-            open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
-                $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
-                $stats{z_fail}++;
-                next;
-            };
-        }
         print PSQL "set client_min_messages to WARNING;\n" if $ignore;
         print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
-        my @d = ();
-        @d = <TIN>; #reads the whole file into the array @d 
-        print PSQL @d; #prints the whole fle stored in @d
-        close(PSQL); #executes everything
-        close(TIN); #closes the input file  /TIN = test input
-
-        return if $DOCUMENTATION;
-
-        my $dfile;
-        my $dfile2;
-        if ($ignore) { #decide how to compare results, if ignoring or not ignoring
-            $dfile2 = $TMP2;
-            mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
-            $dfile = $TMP3;
-            mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
-        }
-        elsif ($DEBUG1) { #to delete CONTEXT lines
-            $dfile2 = $TMP2;
-            mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' > $dfile2");
-            $dfile = $TMP3;
-            mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' > $dfile");
-        }
-        else {
-            $dfile = "$dir/$x.result";
-            $dfile2 = $TMP;
-        }
-        if (! -f "$dir/$x.result") {
-            $res->{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";
-            $stats{z_fail}++;            
+    }
+    else {
+        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
+            $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
+            $stats{z_fail}++;
             next;
-        }
+        };
+    }
+    print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+    print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+    my @d = ();
+    @d = <TIN>; #reads the whole file into the array @d 
+    print PSQL @d; #prints the whole fle stored in @d
+    close(PSQL); #executes everything
+    close(TIN); #closes the input file  /TIN = test input
 
-        # use diff -w to ignore white space differences like \r vs \r\n
-        #ignore white spaces when comparing
-        #dfile is expected results
-        #dfile2 is the actual results
-        my $r = `diff -w '$dfile' '$dfile2' `;
-        #looks for removing leading blanks and trailing blanks
-        $r =~ s/^\s*|\s*$//g;
-        if ($r =~ /connection to server was lost/) {
-            $res->{"$dir/$x.test.sql"} = "CRASHED SERVER: $r";
-            $stats{z_crash}++;
-            # allow the server some time to recover from the crash
-            warn "CRASHED SERVER: '$dir/$x.test.sql', sleeping 5 ...\n";
-            sleep 20;
-        }
-        #if the diff has 0 length then everything was the same, so here we detect changes
-        elsif (length($r)) {
-            $res->{"$dir/$x.test.sql"} = "FAILED: $r";
-            $stats{z_fail}++ unless $DEBUG1;
-        }
-        else {
-            $res->{"$dir/$x.test.sql"} = "Passed";
-            $stats{z_pass}++;
-        }
-        print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
+    return if $DOCUMENTATION;
+
+    my $dfile;
+    my $dfile2;
+    if ($ignore) { #decide how to compare results, if ignoring or not ignoring
+        $dfile2 = $TMP2;
+        mysystem("grep -v NOTICE '$TMP' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile2");
+        $dfile = $TMP3;
+        mysystem("grep -v NOTICE '$dir/$x.result' | grep -v '^CONTEXT:' | grep -v '^PL/pgSQL function' > $dfile");
+    }
+    elsif ($DEBUG1) { #to delete CONTEXT lines
+        $dfile2 = $TMP2;
+        mysystem("grep -v '^CONTEXT:' '$TMP' | grep -v '^PL/pgSQL function' > $dfile2");
+        $dfile = $TMP3;
+        mysystem("grep -v '^CONTEXT:' '$dir/$x.result' | grep -v '^PL/pgSQL function' > $dfile");
+    }
+    else {
+        $dfile = "$dir/$x.result";
+        $dfile2 = $TMP;
+    }
+    if (! -f "$dir/$x.result") {
+        $res->{"$dir/$x.test.sql"} = "\nFAILED: result file missing : $!";
+        $stats{z_fail}++;            
+        next;
+    }
+
+    # use diff -w to ignore white space differences like \r vs \r\n
+    #ignore white spaces when comparing
+    #dfile is expected results
+    #dfile2 is the actual results
+    my $r = `diff -w '$dfile' '$dfile2' `;
+    #looks for removing leading blanks and trailing blanks
+    $r =~ s/^\s*|\s*$//g;
+    if ($r =~ /connection to server was lost/) {
+        $res->{"$dir/$x.test.sql"} = "CRASHED SERVER: $r";
+        $stats{z_crash}++;
+        # allow the server some time to recover from the crash
+        warn "CRASHED SERVER: '$dir/$x.test.sql', sleeping 5 ...\n";
+        sleep 20;
+    }
+    #if the diff has 0 length then everything was the same, so here we detect changes
+    elsif (length($r)) {
+        $res->{"$dir/$x.test.sql"} = "FAILED: $r";
+        $stats{z_fail}++ unless $DEBUG1;
+    }
+    else {
+        $res->{"$dir/$x.test.sql"} = "Passed";
+        $stats{z_pass}++;
+    }
+    print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
 }
 
 sub createTestDB {
@@ -359,10 +372,10 @@ sub createTestDB {
 
     # first create a database with postgis installed in it
     if (version_greater_eq($dbver, '9.1') &&
-            -f "$dbshare/extension/postgis.control") {
+        -f "$dbshare/extension/postgis.control") {
         mysystem("createdb $connopts $databaseName");
         die "ERROR: Failed to create database '$databaseName'!\n"
-            unless dbExists($databaseName);
+        unless dbExists($databaseName);
         my $encoding = '';
         if ($OS =~ /msys/
             || $OS =~ /MSWin/) {
