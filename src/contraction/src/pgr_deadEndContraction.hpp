@@ -119,6 +119,23 @@ namespace pgRouting {
 			//debug << "out_degree: " << graph.out_degree(vertex_id) << '\n';
 			//if(graph.out_degree(v) == 1 && graph.in_degree(v) == 0) return true;
 			//if(graph.out_degree(v) == 0 && graph.in_degree(v) == 1) return true;
+			if (graph.m_gType == UNDIRECTED)
+			{
+				/* the condition in case of undirected graph
+				   is all incoming edges come from a single vertex
+				*/
+				debug << "undirected\nAdjacent Vertices\n";
+
+				Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(v);
+				debug << adjacent_vertices;
+				// only one adjacent vertex
+				if (adjacent_vertices.size() == 1)
+					return true;
+				else 
+					return false;
+			}
+			else
+			{
 			if(graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
 				int64_t incoming_edge_id, outgoing_edge_id;
 				EO_i out, out_end;
@@ -152,6 +169,8 @@ namespace pgRouting {
 			 #endif
 			debug << "No\n"; 
 			return false;
+		}
+		return false;
 		}
 
 	template < class G >
