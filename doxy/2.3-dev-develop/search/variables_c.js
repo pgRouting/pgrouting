@@ -22,7 +22,7 @@ var searchData=
   ['m_5fdstartpart',['m_dStartpart',['../classGraphDefinition.html#affbe23205587706c4d1145d543a99903',1,'GraphDefinition']]],
   ['m_5fdtotalcost',['m_dTotalCost',['../classCTourInfo.html#a05106e978f61000fb66df503f58f4049',1,'CTourInfo::m_dTotalCost()'],['../classCSolutionInfo.html#ad59750f992158ab047d52399c9afb914',1,'CSolutionInfo::m_dTotalCost()']]],
   ['m_5fdtotaldistance',['m_dTotalDistance',['../classCTourInfo.html#aa4bef0ee6af6197837e4a2c1dd06855a',1,'CTourInfo::m_dTotalDistance()'],['../classCSolutionInfo.html#a9cb09719734b9aac2d839512f5fa4bb0',1,'CSolutionInfo::m_dTotalDistance()']]],
-  ['m_5fdtotaltraveltime',['m_dTotalTravelTime',['../classCSolutionInfo.html#ad3ff3b862804ad288fa1d96ff5f2fde7',1,'CSolutionInfo::m_dTotalTravelTime()'],['../classCTourInfo.html#a7afb1eb931d433602de77211ed59163d',1,'CTourInfo::m_dTotalTraveltime()']]],
+  ['m_5fdtotaltraveltime',['m_dTotalTraveltime',['../classCTourInfo.html#a7afb1eb931d433602de77211ed59163d',1,'CTourInfo::m_dTotalTraveltime()'],['../classCSolutionInfo.html#ad3ff3b862804ad288fa1d96ff5f2fde7',1,'CSolutionInfo::m_dTotalTravelTime()']]],
   ['m_5fecolor',['m_ecolor',['../structboost_1_1detail_1_1shooting__star__bfs__visitor.html#a19f26fe854d12c9b86459194bcc2c5b1',1,'boost::detail::shooting_star_bfs_visitor']]],
   ['m_5fedge',['m_edge',['../structboost_1_1detail_1_1shooting__star__bfs__visitor.html#aaef6131e8e1ace02e0b795ad28a601eb',1,'boost::detail::shooting_star_bfs_visitor']]],
   ['m_5fedge_5fcount',['m_edge_count',['../classGraphDefinition.html#ad01c20d79d67327a6f29e6325ec4f9b9',1,'GraphDefinition']]],
@@ -117,8 +117,7 @@ var searchData=
   ['m_5fzero',['m_zero',['../structboost_1_1detail_1_1shooting__star__bfs__visitor.html#ae278172e0b82db428d019e136b53b082',1,'boost::detail::shooting_star_bfs_visitor']]],
   ['max_5fedge_5fid',['max_edge_id',['../classBiDirAStar.html#ac17b42d4b7cae2a0322a236c1bd7c4f2',1,'BiDirAStar::max_edge_id()'],['../classBiDirDijkstra.html#a7a4098e25a6319bbfa1cbc4180c7d7c2',1,'BiDirDijkstra::max_edge_id()'],['../classGraphDefinition.html#a0ff5ea389e35e8197020d83857cf86f4',1,'GraphDefinition::max_edge_id()']]],
   ['max_5fnode_5fid',['max_node_id',['../classBiDirAStar.html#ae6e65116d72aed68a3cddd80419642de',1,'BiDirAStar::max_node_id()'],['../classBiDirDijkstra.html#aa07eb1b2aa5581433d3e1e5a0e1baa61',1,'BiDirDijkstra::max_node_id()'],['../classGraphDefinition.html#afd9db63cfdd414ef83a19f6921adf107',1,'GraphDefinition::max_node_id()']]],
-  ['max_5ftowns',['MAX_TOWNS',['../tsp_8c.html#ab4dd0d54b32b2ba7b51cf965c08ea3a1',1,'tsp.c']]],
-  ['maxd',['maxd',['../classTSP.html#a9104642fafa6fbea10d2a75165e7a8c0',1,'TSP::maxd()'],['../structtspstruct.html#a6beda06753bdab82bfeb3ce039b02057',1,'tspstruct::maxd()']]],
+  ['maxd',['maxd',['../structtspstruct.html#a6beda06753bdab82bfeb3ce039b02057',1,'tspstruct']]],
   ['maxitr',['maxItr',['../vrppdtw_2src_2pdp__solver_8cpp.html#aef8442b42f1b30949250d1faf235d37c',1,'pdp_solver.cpp']]],
   ['maxnode',['maxNode',['../BDATester_8cpp.html#ae627e7f1fc2e1d7f5b9361def8110527',1,'BDATester.cpp']]]
 ];

@@ -106,8 +106,7 @@ $(document).ready(function(){initNavTree('tsp2_8c.html','');});
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">tsp2.c File Reference</div>  </div>
 </div><!--header-->
@@ -126,7 +125,7 @@ Include dependency graph for tsp2.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="tsp2_8c__incl.png" border="0" usemap="#tsp2_8c" alt=""/></div>
 <map name="tsp2_8c" id="tsp2_8c">
-<area shape="rect" id="node2" href="tsp_8h.html" title="tsp.h" alt="" coords="84,88,135,115"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="5,179,87,205"/><area shape="rect" id="node13" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="836,81,993,122"/><area shape="rect" id="node4" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="113,171,252,213"/></map>
+<area shape="rect" id="node2" href="tsp_8h.html" title="tsp.h" alt="" coords="145,88,196,115"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="141,261,223,288"/><area shape="rect" id="node12" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="948,81,1105,122"/><area shape="rect" id="node4" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="5,171,144,213"/></map>
 </div>
 </div>
 <p><a href="tsp2_8c_source.html">Go to the source code of this file.</a></p>
@@ -144,17 +143,12 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:aec6b3de727d4897b9bb464334a83ae7d"><td class="memItemLeft" align="right" valign="top">static double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsp2_8c.html#aec6b3de727d4897b9bb464334a83ae7d">get_pgarray</a> (int *num, ArrayType *input)</td></tr>
 <tr class="separator:aec6b3de727d4897b9bb464334a83ae7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e51ea2f85fdd3edb9727e42fef824d9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsp2_8c.html#a0e51ea2f85fdd3edb9727e42fef824d9">PG_FUNCTION_INFO_V1</a> (<a class="el" href="tsp2_8c.html#a5efc5a0a35e9216a17c01371e451bbbd">tsp_matrix</a>)</td></tr>
+<tr class="memitem:a0e51ea2f85fdd3edb9727e42fef824d9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsp2_8c.html#a0e51ea2f85fdd3edb9727e42fef824d9">PG_FUNCTION_INFO_V1</a> (<a class="el" href="tsp2_8c.html#ac82cc6ee90d9c967068edd7d235ea64e">tsp_matrix</a>)</td></tr>
 <tr class="separator:a0e51ea2f85fdd3edb9727e42fef824d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a2d75ef134590f0bfe5c4ae55c15e08"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsp2_8c.html#a3a2d75ef134590f0bfe5c4ae55c15e08">solve_tsp</a> (double *matrix, int num, int start, int end, int **results)</td></tr>
 <tr class="separator:a3a2d75ef134590f0bfe5c4ae55c15e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5efc5a0a35e9216a17c01371e451bbbd"><td class="memItemLeft" align="right" valign="top">Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsp2_8c.html#a5efc5a0a35e9216a17c01371e451bbbd">tsp_matrix</a> (PG_FUNCTION_ARGS)</td></tr>
-<tr class="separator:a5efc5a0a35e9216a17c01371e451bbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a509119277abe280e6db17c34f79e01cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsp2_8c.html#a509119277abe280e6db17c34f79e01cf">PG_MODULE_MAGIC</a></td></tr>
-<tr class="separator:a509119277abe280e6db17c34f79e01cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac82cc6ee90d9c967068edd7d235ea64e"><td class="memItemLeft" align="right" valign="top">PGDLLEXPORT Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsp2_8c.html#ac82cc6ee90d9c967068edd7d235ea64e">tsp_matrix</a> (PG_FUNCTION_ARGS)</td></tr>
+<tr class="separator:ac82cc6ee90d9c967068edd7d235ea64e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ab92cbf7e90532afc19255fb27726b7a8"></a>
@@ -181,9 +175,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00164">164</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
+<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00167">167</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00166">solve_tsp()</a>.</p>
+<p>Referenced by <a class="el" href="shooting__star__relax_8hpp_source.html#l00086">boost::relax()</a>, <a class="el" href="shooting__star__search_8hpp_source.html#l00570">boost::detail::shooting_star_dispatch1()</a>, and <a class="el" href="tsp2_8c_source.html#l00169">solve_tsp()</a>.</p>
 
 </div>
 </div>
@@ -197,9 +191,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00057">57</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
+<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00059">59</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00067">get_pgarray()</a>.</p>
+<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00069">get_pgarray()</a>.</p>
 
 </div>
 </div>
@@ -213,7 +207,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00061">61</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
+<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00066">66</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
 
 </div>
 </div>
@@ -250,11 +244,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00067">67</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
+<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00069">69</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
 
-<p>References <a class="el" href="k__targets__sp_8c_source.html#l00071">DTYPE</a>, <a class="el" href="tsp2_8c_source.html#l00057">INFINITY</a>, <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00367">n</a>, and <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>.</p>
+<p>References <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="tsp2_8c_source.html#l00059">INFINITY</a>, <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00367">n</a>, and <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00230">tsp_matrix()</a>.</p>
+<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00234">tsp_matrix()</a>.</p>
 
 </div>
 </div>
@@ -265,7 +259,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">PG_FUNCTION_INFO_V1 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="tsp2_8c.html#a5efc5a0a35e9216a17c01371e451bbbd">tsp_matrix</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="tsp2_8c.html#ac82cc6ee90d9c967068edd7d235ea64e">tsp_matrix</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -324,20 +318,20 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00166">166</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
+<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00169">169</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
 
-<p>References <a class="el" href="tsp2_8c_source.html#l00164">D</a>, <a class="el" href="k__targets__sp_8c_source.html#l00071">DTYPE</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="tsplib_8c_source.html#l00493">find_tsp_solution()</a>, and <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>.</p>
+<p>References <a class="el" href="tsp2_8c_source.html#l00167">D</a>, <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="tsplib_8c_source.html#l00496">find_tsp_solution()</a>, and <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00230">tsp_matrix()</a>.</p>
+<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00234">tsp_matrix()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5efc5a0a35e9216a17c01371e451bbbd"></a>
+<a class="anchor" id="ac82cc6ee90d9c967068edd7d235ea64e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Datum tsp_matrix </td>
+          <td class="memname">PGDLLEXPORT Datum tsp_matrix </td>
           <td>(</td>
           <td class="paramtype">PG_FUNCTION_ARGS&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -346,24 +340,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00230">230</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
+<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00234">234</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
 
-<p>References <a class="el" href="k__targets__sp_8c_source.html#l00071">DTYPE</a>, <a class="el" href="tsp2_8c_source.html#l00067">get_pgarray()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="tsp2_8c_source.html#l00166">solve_tsp()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a509119277abe280e6db17c34f79e01cf"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PG_MODULE_MAGIC</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="tsp2_8c_source.html#l00049">49</a> of file <a class="el" href="tsp2_8c_source.html">tsp2.c</a>.</p>
+<p>References <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="tsp2_8c_source.html#l00069">get_pgarray()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="tsp2_8c_source.html#l00169">solve_tsp()</a>.</p>
 
 </div>
 </div>
@@ -373,7 +352,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="tsp2_8c.html">tsp2.c</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

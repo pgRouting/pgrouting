@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('bdastar__core_8cpp_source.html','');})
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">********************************************************************PGR-MIT*/</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifdef __MINGW32__</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#if defined(__MINGW32__) || defined(_MSC_VER)</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;winsock2.h&gt;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -189,7 +189,7 @@ $(document).ready(function(){initNavTree('bdastar__core_8cpp_source.html','');})
 <div class="ttc" id="bdastar__core_8cpp_html_a26d6623433d9a89a7ca549a7d241dcaf"><div class="ttname"><a href="bdastar__core_8cpp.html#a26d6623433d9a89a7ca549a7d241dcaf">bdastar_wrapper</a></div><div class="ttdeci">int bdastar_wrapper(edge_astar_t *edges, size_t edge_count, int maxnode, int source_vertex_id, int target_vertex_id, bool directed, bool has_reverse_cost, path_element_t **path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="bdastar__core_8cpp_source.html#l00045">bdastar_core.cpp:45</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_a1a21f2fdaf8aa261214ed6c7c2b56730"><div class="ttname"><a href="BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730">edge_count</a></div><div class="ttdeci">int edge_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00047">BDATester.cpp:47</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
-<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00057">pgr_types.h:57</a></div></div>
+<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00066">pgr_types.h:66</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
 <div class="ttc" id="src_2BiDirAStar_8h_html"><div class="ttname"><a href="src_2BiDirAStar_8h.html">BiDirAStar.h</a></div></div>
@@ -199,7 +199,7 @@ $(document).ready(function(){initNavTree('bdastar__core_8cpp_source.html','');})
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1188af90c8f2ef20f286b8e78c6e14f.html">bd_astar</a></li><li class="navelem"><a class="el" href="dir_113f93645de6d06d40f731407c36f54e.html">src</a></li><li class="navelem"><a class="el" href="bdastar__core_8cpp.html">bdastar_core.cpp</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:29 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

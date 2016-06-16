@@ -6,10 +6,8 @@ var searchData=
   ['dijkstravia_2ec',['dijkstraVia.c',['../dijkstraVia_8c.html',1,'']]],
   ['dijkstravia_5fdriver_2ecpp',['dijkstraVia_driver.cpp',['../dijkstraVia__driver_8cpp.html',1,'']]],
   ['dijkstravia_5fdriver_2eh',['dijkstraVia_driver.h',['../dijkstraVia__driver_8h.html',1,'']]],
-  ['distances_5finput_2ec',['distances_input.c',['../distances__input_8c.html',1,'']]],
-  ['distances_5finput_2eh',['distances_input.h',['../distances__input_8h.html',1,'']]],
   ['dmatrix_2ecpp',['Dmatrix.cpp',['../Dmatrix_8cpp.html',1,'']]],
-  ['dmatrix_2ehpp',['Dmatrix.hpp',['../Dmatrix_8hpp.html',1,'']]],
+  ['dmatrix_2eh',['Dmatrix.h',['../Dmatrix_8h.html',1,'']]],
   ['drivedist_2ec',['drivedist.c',['../drivedist_8c.html',1,'']]],
   ['driving_2ecpp',['driving.cpp',['../driving_8cpp.html',1,'']]]
 ];

@@ -1,4 +1,9 @@
 <map id="pgr_tsp.hpp" name="pgr_tsp.hpp">
-<area shape="rect" id="node3" href="$pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="114,155,253,197"/>
-<area shape="rect" id="node6" href="$Dmatrix_8hpp.html" title="./Dmatrix.hpp" alt="" coords="59,80,160,107"/>
+<area shape="rect" id="node6" href="$pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="150,246,289,287"/>
+<area shape="rect" id="node9" href="$pgr__assert_8h.html" title="../../common/src/pgr\l_assert.h" alt="" coords="1039,155,1179,197"/>
+<area shape="rect" id="node11" href="$Dmatrix_8h.html" title="./Dmatrix.h" alt="" coords="223,163,309,189"/>
+<area shape="rect" id="node13" href="$eucledianDmatrix_8h.html" title="./eucledianDmatrix.h" alt="" coords="5,163,147,189"/>
+<area shape="rect" id="node14" href="$tour_8h.html" title="./tour.h" alt="" coords="386,80,448,107"/>
+<area shape="rect" id="node17" href="$pgr__tsp_8cpp.html" title="pgr_tsp.cpp" alt="" coords="680,80,771,107"/>
+<area shape="rect" id="node7" href="$postgres_8h.html" title="postgres.h" alt="" coords="129,336,211,363"/>
 </map>

@@ -1,5 +1,6 @@
 <map id="VRP.c" name="VRP.c">
-<area shape="rect" id="node2" href="$VRP_8h.html" title="VRP.h" alt="" coords="5,88,67,115"/>
-<area shape="rect" id="node3" href="$postgres_8h.html" title="postgres.h" alt="" coords="28,171,109,197"/>
-<area shape="rect" id="node13" href="$debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="1047,81,1204,122"/>
+<area shape="rect" id="node2" href="$VRP_8h.html" title="VRP.h" alt="" coords="9,88,71,115"/>
+<area shape="rect" id="node4" href="$postgres_8h.html" title="postgres.h" alt="" coords="536,171,617,197"/>
+<area shape="rect" id="node14" href="$pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="1051,81,1177,122"/>
+<area shape="rect" id="node16" href="$debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="1203,81,1360,122"/>
 </map>

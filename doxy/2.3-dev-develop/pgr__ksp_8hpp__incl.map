@@ -1,12 +1,12 @@
 <map id="pgr_ksp.hpp" name="pgr_ksp.hpp">
-<area shape="rect" id="node4" href="$basePath__SSEC_8hpp.html" title="./../../common/src\l/basePath_SSEC.hpp" alt="" coords="170,171,320,213"/>
-<area shape="rect" id="node11" href="$pgr__dijkstra_8hpp.html" title="./../../dijkstra/src\l/pgr_dijkstra.hpp" alt="" coords="1037,81,1155,122"/>
-<area shape="rect" id="node28" href="$pgr__ksp_8cpp.html" title="./pgr_ksp.cpp" alt="" coords="396,88,497,115"/>
-<area shape="rect" id="node7" href="$postgres_8h.html" title="postgres.h" alt="" coords="5,269,87,296"/>
-<area shape="rect" id="node8" href="$pgr__types_8h.html" title="./pgr_types.h" alt="" coords="764,352,863,379"/>
-<area shape="rect" id="node16" href="$pgr__base__graph_8hpp.html" title="./../../common/src\l/pgr_base_graph.hpp" alt="" coords="942,171,1084,213"/>
-<area shape="rect" id="node21" href="$basic__vertex_8h.html" title="./basic_vertex.h" alt="" coords="891,269,1005,296"/>
-<area shape="rect" id="node22" href="$xy__vertex_8h.html" title="./xy_vertex.h" alt="" coords="1029,269,1128,296"/>
-<area shape="rect" id="node24" href="$basic__edge_8h.html" title="./basic_edge.h" alt="" coords="760,269,867,296"/>
-<area shape="rect" id="node25" href="$pgr__assert_8h.html" title="./pgr_assert.h" alt="" coords="505,269,607,296"/>
+<area shape="rect" id="node6" href="$pgr__dijkstra_8hpp.html" title="./../../dijkstra/src\l/pgr_dijkstra.hpp" alt="" coords="1245,81,1363,122"/>
+<area shape="rect" id="node10" href="$basePath__SSEC_8hpp.html" title="./../../common/src\l/basePath_SSEC.hpp" alt="" coords="1706,171,1856,213"/>
+<area shape="rect" id="node28" href="$pgr__ksp_8cpp.html" title="./pgr_ksp.cpp" alt="" coords="1611,88,1712,115"/>
+<area shape="rect" id="node16" href="$pgr__base__graph_8hpp.html" title="./../../common/src\l/pgr_base_graph.hpp" alt="" coords="994,171,1136,213"/>
+<area shape="rect" id="node13" href="$pgr__types_8h.html" title="./pgr_types.h" alt="" coords="1239,352,1337,379"/>
+<area shape="rect" id="node14" href="$postgres_8h.html" title="postgres.h" alt="" coords="1197,427,1279,453"/>
+<area shape="rect" id="node21" href="$basic__vertex_8h.html" title="./basic_vertex.h" alt="" coords="900,269,1015,296"/>
+<area shape="rect" id="node22" href="$xy__vertex_8h.html" title="./xy_vertex.h" alt="" coords="1116,269,1215,296"/>
+<area shape="rect" id="node24" href="$basic__edge_8h.html" title="./basic_edge.h" alt="" coords="1289,269,1396,296"/>
+<area shape="rect" id="node25" href="$pgr__assert_8h.html" title="./pgr_assert.h" alt="" coords="26,269,128,296"/>
 </map>

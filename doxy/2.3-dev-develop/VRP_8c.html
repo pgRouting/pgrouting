@@ -125,13 +125,14 @@ $(document).ready(function(){initNavTree('VRP_8c.html','');});
 <code>#include &quot;string.h&quot;</code><br/>
 <code>#include &quot;math.h&quot;</code><br/>
 <code>#include &quot;fmgr.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./../../common/src/pgr_types.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">../../common/src/debug_macro.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for VRP.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="VRP_8c__incl.png" border="0" usemap="#VRP_8c" alt=""/></div>
 <map name="VRP_8c" id="VRP_8c">
-<area shape="rect" id="node2" href="VRP_8h.html" title="VRP.h" alt="" coords="5,88,67,115"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="28,171,109,197"/><area shape="rect" id="node13" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="1047,81,1204,122"/></map>
+<area shape="rect" id="node2" href="VRP_8h.html" title="VRP.h" alt="" coords="9,88,71,115"/><area shape="rect" id="node4" href="postgres_8h.html" title="postgres.h" alt="" coords="536,171,617,197"/><area shape="rect" id="node14" href="pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="1051,81,1177,122"/><area shape="rect" id="node16" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="1203,81,1360,122"/></map>
 </div>
 </div>
 <p><a href="VRP_8c_source.html">Go to the source code of this file.</a></p>
@@ -147,9 +148,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0dfa45928ea53d05b475d9e3387865a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a0dfa45928ea53d05b475d9e3387865a5">profstart</a>(<a class="el" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>)&#160;&#160;&#160;do { } while (0);</td></tr>
+<tr class="memitem:a0dfa45928ea53d05b475d9e3387865a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a0dfa45928ea53d05b475d9e3387865a5">profstart</a>(x)&#160;&#160;&#160;do { } while (0);</td></tr>
 <tr class="separator:a0dfa45928ea53d05b475d9e3387865a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cf3d36d1041f89f44ef9ec00cebb552"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a3cf3d36d1041f89f44ef9ec00cebb552">profstop</a>(<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>, <a class="el" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>)&#160;&#160;&#160;do { } while (0);</td></tr>
+<tr class="memitem:a3cf3d36d1041f89f44ef9ec00cebb552"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a3cf3d36d1041f89f44ef9ec00cebb552">profstop</a>(<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>, x)&#160;&#160;&#160;do { } while (0);</td></tr>
 <tr class="separator:a3cf3d36d1041f89f44ef9ec00cebb552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0938455e5ec9df9cd6255f4fcc04162b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a0938455e5ec9df9cd6255f4fcc04162b">TUPLIMIT</a>&#160;&#160;&#160;1000</td></tr>
 <tr class="separator:a0938455e5ec9df9cd6255f4fcc04162b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,7 +182,7 @@ Functions</h2></td></tr>
 <tr class="separator:a0f32b6d4644d64dd25799db562364643"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89545889dc88e835f385f06d011380c5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a89545889dc88e835f385f06d011380c5">finish</a> (int *code)</td></tr>
 <tr class="separator:a89545889dc88e835f385f06d011380c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa53f98a5857d42494887fcc296c4bfe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#afa53f98a5857d42494887fcc296c4bfe">PG_FUNCTION_INFO_V1</a> (<a class="el" href="VRP_8c.html#ac749ce0f1c22db30e099942b6cd81732">vrp</a>)</td></tr>
+<tr class="memitem:afa53f98a5857d42494887fcc296c4bfe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#afa53f98a5857d42494887fcc296c4bfe">PG_FUNCTION_INFO_V1</a> (<a class="el" href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a>)</td></tr>
 <tr class="separator:afa53f98a5857d42494887fcc296c4bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef732231f4ceb255e09db67b08eca8df"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#aef732231f4ceb255e09db67b08eca8df">prepare_query</a> (Portal *SPIportal, char *sql)</td></tr>
 <tr class="separator:aef732231f4ceb255e09db67b08eca8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,8 +190,8 @@ Functions</h2></td></tr>
 <tr class="separator:ad7efc1f81afdbae98c86ba071b422489"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8745898afb7409587ee98f384ee40a39"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a8745898afb7409587ee98f384ee40a39">text2char</a> (text *in)</td></tr>
 <tr class="separator:a8745898afb7409587ee98f384ee40a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac749ce0f1c22db30e099942b6cd81732"><td class="memItemLeft" align="right" valign="top">Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#ac749ce0f1c22db30e099942b6cd81732">vrp</a> (PG_FUNCTION_ARGS)</td></tr>
-<tr class="separator:ac749ce0f1c22db30e099942b6cd81732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8a0ad5c2c0e6189829af74aa05be393"><td class="memItemLeft" align="right" valign="top">PGDLLEXPORT Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a> (PG_FUNCTION_ARGS)</td></tr>
+<tr class="separator:af8a0ad5c2c0e6189829af74aa05be393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -206,7 +207,7 @@ Variables</h2></td></tr>
           <td class="memname">#define profstart</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a></td><td>)</td>
+          <td class="paramname">x</td><td>)</td>
           <td>&#160;&#160;&#160;do { } while (0);</td>
         </tr>
       </table>
@@ -232,7 +233,7 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>&#160;</td>
+          <td class="paramname">x&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -382,7 +383,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP_8c_source.html#l00179">179</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8h_source.html#l00055">vrp_cost_element::cost</a>, <a class="el" href="VRP_8c_source.html#l00120">distance_columns::cost</a>, <a class="el" href="VRP_8h_source.html#l00054">vrp_cost_element::dest_id</a>, <a class="el" href="VRP_8c_source.html#l00119">distance_columns::dest_id</a>, <a class="el" href="VRP_8h_source.html#l00056">vrp_cost_element::distance</a>, <a class="el" href="VRP_8c_source.html#l00121">distance_columns::distance</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8h_source.html#l00053">vrp_cost_element::src_id</a>, <a class="el" href="VRP_8c_source.html#l00118">distance_columns::src_id</a>, <a class="el" href="VRP_8h_source.html#l00057">vrp_cost_element::traveltime</a>, and <a class="el" href="VRP_8c_source.html#l00122">distance_columns::traveltime</a>.</p>
+<p>References <a class="el" href="VRP_8h_source.html#l00054">vrp_cost_element::cost</a>, <a class="el" href="VRP_8c_source.html#l00120">distance_columns::cost</a>, <a class="el" href="VRP_8h_source.html#l00053">vrp_cost_element::dest_id</a>, <a class="el" href="VRP_8c_source.html#l00119">distance_columns::dest_id</a>, <a class="el" href="VRP_8h_source.html#l00055">vrp_cost_element::distance</a>, <a class="el" href="VRP_8c_source.html#l00121">distance_columns::distance</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8h_source.html#l00052">vrp_cost_element::src_id</a>, <a class="el" href="VRP_8c_source.html#l00118">distance_columns::src_id</a>, <a class="el" href="VRP_8h_source.html#l00056">vrp_cost_element::traveltime</a>, and <a class="el" href="VRP_8c_source.html#l00122">distance_columns::traveltime</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
 
@@ -480,7 +481,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP_8c_source.html#l00276">276</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8h_source.html#l00043">vrp_orders::close_time</a>, <a class="el" href="VRP_8c_source.html#l00109">order_columns::close_time</a>, <a class="el" href="VRP_8h_source.html#l00040">vrp_orders::id</a>, <a class="el" href="VRP_8c_source.html#l00106">order_columns::id</a>, <a class="el" href="VRP_8h_source.html#l00042">vrp_orders::open_time</a>, <a class="el" href="VRP_8c_source.html#l00108">order_columns::open_time</a>, <a class="el" href="VRP_8h_source.html#l00041">vrp_orders::order_unit</a>, <a class="el" href="VRP_8c_source.html#l00107">order_columns::order_unit</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8h_source.html#l00044">vrp_orders::service_time</a>, <a class="el" href="VRP_8c_source.html#l00110">order_columns::service_time</a>, <a class="el" href="VRP_8h_source.html#l00046">vrp_orders::x</a>, <a class="el" href="VRP_8c_source.html#l00112">order_columns::x</a>, <a class="el" href="VRP_8h_source.html#l00047">vrp_orders::y</a>, and <a class="el" href="VRP_8c_source.html#l00113">order_columns::y</a>.</p>
+<p>References <a class="el" href="VRP_8h_source.html#l00042">vrp_orders::close_time</a>, <a class="el" href="VRP_8c_source.html#l00109">order_columns::close_time</a>, <a class="el" href="VRP_8h_source.html#l00039">vrp_orders::id</a>, <a class="el" href="VRP_8c_source.html#l00106">order_columns::id</a>, <a class="el" href="VRP_8h_source.html#l00041">vrp_orders::open_time</a>, <a class="el" href="VRP_8c_source.html#l00108">order_columns::open_time</a>, <a class="el" href="VRP_8h_source.html#l00040">vrp_orders::order_unit</a>, <a class="el" href="VRP_8c_source.html#l00107">order_columns::order_unit</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8h_source.html#l00043">vrp_orders::service_time</a>, <a class="el" href="VRP_8c_source.html#l00110">order_columns::service_time</a>, <a class="el" href="VRP_8h_source.html#l00045">vrp_orders::x</a>, <a class="el" href="VRP_8c_source.html#l00112">order_columns::x</a>, <a class="el" href="VRP_8h_source.html#l00046">vrp_orders::y</a>, and <a class="el" href="VRP_8c_source.html#l00113">order_columns::y</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
 
@@ -578,7 +579,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP_8c_source.html#l00376">376</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8h_source.html#l00033">vrp_vehicles::capacity</a>, <a class="el" href="VRP_8c_source.html#l00100">vehicle_columns::capacity</a>, <a class="el" href="VRP_8h_source.html#l00032">vrp_vehicles::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="VRP_8c_source.html#l00099">vehicle_columns::vehicle_id</a>.</p>
+<p>References <a class="el" href="VRP_8h_source.html#l00032">vrp_vehicles::capacity</a>, <a class="el" href="VRP_8c_source.html#l00100">vehicle_columns::capacity</a>, <a class="el" href="VRP_8h_source.html#l00031">vrp_vehicles::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="VRP_8c_source.html#l00099">vehicle_columns::vehicle_id</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
 
@@ -659,7 +660,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">PG_FUNCTION_INFO_V1 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="VRP_8c.html#ac749ce0f1c22db30e099942b6cd81732">vrp</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393">vrp</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -798,12 +799,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac749ce0f1c22db30e099942b6cd81732"></a>
+<a class="anchor" id="af8a0ad5c2c0e6189829af74aa05be393"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Datum vrp </td>
+          <td class="memname">PGDLLEXPORT Datum vrp </td>
           <td>(</td>
           <td class="paramtype">PG_FUNCTION_ARGS&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -839,7 +840,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e28fcb41c27d94935e6e1bded8372f10.html">vrp_basic</a></li><li class="navelem"><a class="el" href="dir_2c959b9bc6ee9cc8204048449dea20e7.html">src</a></li><li class="navelem"><a class="el" href="VRP_8c.html">VRP.c</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

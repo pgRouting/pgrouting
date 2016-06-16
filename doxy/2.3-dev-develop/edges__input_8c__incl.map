@@ -1,9 +1,9 @@
 <map id="edges_input.c" name="edges_input.c">
 <area shape="rect" id="node2" href="$debug__macro_8h.html" title="./debug_macro.h" alt="" coords="5,80,123,107"/>
-<area shape="rect" id="node3" href="$pgr__types_8h.html" title="./pgr_types.h" alt="" coords="473,155,572,181"/>
+<area shape="rect" id="node3" href="$pgr__types_8h.html" title="./pgr_types.h" alt="" coords="348,155,447,181"/>
 <area shape="rect" id="node6" href="$postgres__connection_8h.html" title="./postgres_connection.h" alt="" coords="147,80,308,107"/>
-<area shape="rect" id="node9" href="$get__check__data_8h.html" title="./get_check_data.h" alt="" coords="384,80,517,107"/>
-<area shape="rect" id="node10" href="$edges__input_8h.html" title="./edges_input.h" alt="" coords="542,80,652,107"/>
-<area shape="rect" id="node11" href="$time__msg_8h.html" title="./time_msg.h" alt="" coords="677,80,776,107"/>
-<area shape="rect" id="node7" href="$postgres_8h.html" title="postgres.h" alt="" coords="125,155,207,181"/>
+<area shape="rect" id="node8" href="$get__check__data_8h.html" title="./get_check_data.h" alt="" coords="384,80,517,107"/>
+<area shape="rect" id="node9" href="$edges__input_8h.html" title="./edges_input.h" alt="" coords="542,80,652,107"/>
+<area shape="rect" id="node10" href="$time__msg_8h.html" title="./time_msg.h" alt="" coords="677,80,776,107"/>
+<area shape="rect" id="node4" href="$postgres_8h.html" title="postgres.h" alt="" coords="200,229,281,256"/>
 </map>

@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['set_5fdata',['set_data',['../classPath.html#a5e66574567b0b50454221d6f24606a00',1,'Path']]],
-  ['set_5fids',['set_ids',['../classDmatrix.html#a1da2edc73053aa7708f007592ca4849c',1,'Dmatrix']]],
+  ['set',['set',['../classpgRouting_1_1tsp_1_1Dmatrix.html#af900b109eb4ef16e5551c6e3e20ef8ab',1,'pgRouting::tsp::Dmatrix::set()'],['../classpgRouting_1_1tsp_1_1eucledianDmatrix.html#a16f9be20509f39f7c7997d16a714e2a8',1,'pgRouting::tsp::eucledianDmatrix::set()']]],
+  ['set_5fdata',['set_data',['../classPath.html#a961437d87838dd6dc86027a80fd9b59b',1,'Path']]],
+  ['set_5fids',['set_ids',['../classpgRouting_1_1tsp_1_1Dmatrix.html#ae8a2d79b7d110ee65895fd24ba19ab74',1,'pgRouting::tsp::Dmatrix::set_ids()'],['../classpgRouting_1_1tsp_1_1eucledianDmatrix.html#a70653f3357a3cdfcea879652ff47db07',1,'pgRouting::tsp::eucledianDmatrix::set_ids()']]],
   ['set_5frestrictions',['set_restrictions',['../classGraphDefinition.html#aa4590fe24f08ae3242371b8608e79bf7',1,'GraphDefinition']]],
   ['setcapacity',['setCapacity',['../classCVehicleInfo.html#a5ecefb8b9bc7ccb502933b2c0b8f8b7b',1,'CVehicleInfo']]],
   ['setclosetime',['setCloseTime',['../classCOrderInfo.html#ab9b2a0b7003fd27972bf59cdef755cb8',1,'COrderInfo::setCloseTime()'],['../classCDepotInfo.html#ac55b4384a35167456088b360712cc5b3',1,'CDepotInfo::setCloseTime()']]],
@@ -36,14 +37,17 @@ var searchData=
   ['sigint_5fhandler',['SIGINT_Handler',['../classSIGINT__Handler.html#a951200a2f528eac0c0da17485970f8ee',1,'SIGINT_Handler']]],
   ['signalhandler',['SignalHandler',['../classSignalHandler.html#a228b8bc652635979dfcfc094d805540f',1,'SignalHandler']]],
   ['sigquit_5fhandler',['SIGQUIT_Handler',['../classSIGQUIT__Handler.html#a3e105ec65d617cd70c0d1a570ebf4a2e',1,'SIGQUIT_Handler']]],
-  ['size',['size',['../classPath.html#a173f5f76fcc498b81b97261251d6a9a3',1,'Path::size()'],['../classDmatrix.html#aeda92ce60bf50856df975cd0ab2e0f4b',1,'Dmatrix::size()']]],
+  ['size',['size',['../classPath.html#a173f5f76fcc498b81b97261251d6a9a3',1,'Path::size()'],['../classpgRouting_1_1tsp_1_1Dmatrix.html#afe949f66913e5b2e4b1fa7013fbd2141',1,'pgRouting::tsp::Dmatrix::size()'],['../classpgRouting_1_1tsp_1_1eucledianDmatrix.html#a713d9b3ccb10d14cd9caaa26729b447e',1,'pgRouting::tsp::eucledianDmatrix::size()'],['../classpgRouting_1_1tsp_1_1Tour.html#ac28d7b1a8e15eafdbd0913d6a56caf5a',1,'pgRouting::tsp::Tour::size()']]],
+  ['slide',['slide',['../classpgRouting_1_1tsp_1_1Tour.html#af366156de0df210c850463ebee205783',1,'pgRouting::tsp::Tour']]],
   ['solution',['Solution',['../classSolution.html#ab55bd4b023d596ce11aaf737b9a6123b',1,'Solution::Solution()'],['../classSolution.html#ab55bd4b023d596ce11aaf737b9a6123b',1,'Solution::Solution()']]],
-  ['solve_5ftsp',['solve_tsp',['../tsp_8c.html#a8d5eaac0031f7e97760e6e149c9480bd',1,'solve_tsp(char *sql, char *p_ids, int source, path_element_t **path):&#160;tsp.c'],['../tsp2_8c.html#a3a2d75ef134590f0bfe5c4ae55c15e08',1,'solve_tsp(double *matrix, int num, int start, int end, int **results):&#160;tsp2.c']]],
+  ['solve_5ftsp',['solve_tsp',['../tsp2_8c.html#a3a2d75ef134590f0bfe5c4ae55c15e08',1,'tsp2.c']]],
   ['solve_5fvrp',['solve_vrp',['../VRP_8c.html#ad7efc1f81afdbae98c86ba071b422489',1,'VRP.c']]],
   ['solver',['Solver',['../pickDeliver_2src_2pdp_8h.html#a571c0a5f1d22aabc552738ac62615d95',1,'Solver(Customer *c, size_t total_tuples, int64_t vehicle_count, int64_t capacity, char **msg, path_element **results, size_t *length_results):&#160;pdp_solver.cpp'],['../pickDeliver_2src_2pdp__solver_8cpp.html#ab5042dce7824e93c8bd59c7f175787db',1,'Solver(Customer *c1, size_t total_tuples, int64_t VehicleLength, int64_t capacity, char **msg, path_element **results, size_t *length_results_struct):&#160;pdp_solver.cpp'],['../vrppdtw_2src_2pdp_8h.html#a43c02e71a89ee2550ed8bd71783da82c',1,'Solver(customer *c, int total_tuples, int vehicle_count, int capacity, char **msg, path_element **results, int *length_results):&#160;pdp_solver.cpp'],['../vrppdtw_2src_2pdp__solver_8cpp.html#a301d8b5439d2b103e15aa83b4586206c',1,'Solver(customer *c1, int total_tuples, int VehicleLength, int capacity, char **msg, path_element **results, int *length_results_struct):&#160;pdp_solver.cpp']]],
   ['solvevrp',['solveVRP',['../classCVRPSolver.html#a214e4e301145037a8dcbc66dd6633193',1,'CVRPSolver']]],
   ['sort',['sort',['../classedge__queue.html#a4412bd719a97155045b3e4641896f174',1,'edge_queue']]],
   ['start_5fid',['start_id',['../classPath.html#ac7035439d26c9e76a20ca1a06541923e',1,'Path::start_id() const '],['../classPath.html#a4316efe698e74adf1e0a119da1db2469',1,'Path::start_id(int64_t value)']]],
   ['stringtokenizer',['StringTokenizer',['../classStringTokenizer.html#abee9392f74f78f6232e090a78a669b8d',1,'StringTokenizer::StringTokenizer()'],['../classStringTokenizer.html#abee9392f74f78f6232e090a78a669b8d',1,'StringTokenizer::StringTokenizer()']]],
-  ['succ',['succ',['../pgr__tsp_8cpp.html#a22c9c33db631799428477fa1ccfd6258',1,'pgr_tsp.cpp']]]
+  ['succ',['succ',['../pgr__tsp_8cpp.html#a22c9c33db631799428477fa1ccfd6258',1,'pgr_tsp.cpp']]],
+  ['swap',['swap',['../classpgRouting_1_1tsp_1_1Tour.html#aa8cf4cdff4d482b74e1c5716897722b4',1,'pgRouting::tsp::Tour']]],
+  ['swapclimb',['swapClimb',['../classpgRouting_1_1tsp_1_1TSP.html#a6d8c47e092d2a4f3f0012f17cebad6ca',1,'pgRouting::tsp::TSP']]]
 ];

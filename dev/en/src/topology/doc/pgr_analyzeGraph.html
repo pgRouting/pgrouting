@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_analyzeGraph &mdash; pgRouting Manual (2.3.0-dev)</title>
+    <title>pgr_analyzeGraph &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (pgrouting-2.3.0-dev)',
+        VERSION:     '2.3.0 (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Topology Functions" href="topology.html" />
     <link rel="next" title="pgr_analyzeOneway" href="pgr_analyzeOneWay.html" />
     <link rel="prev" title="pgr_createVerticesTable" href="pgr_createVerticesTable.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
         <h2 class="heading"><span>pgr_analyzeGraph</span></h2>
       </div>
       <div class="topnav">
@@ -53,7 +53,7 @@
 <span id="pgr-analyze-graph"></span><h1>pgr_analyzeGraph<a class="headerlink" href="#pgr-analyzegraph" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_anlizeGraph</span></tt> — Analyzes the network topology.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_analyzeGraph</span></tt> — Analyzes the network topology.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -150,7 +150,7 @@
 <div class="section" id="usage-when-the-edge-table-s-columns-match-the-default-values">
 <h2>Usage when the edge table&#8217;s columns MATCH the default values:<a class="headerlink" href="#usage-when-the-edge-table-s-columns-match-the-default-values" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">The simplest way to use pgr_analyzeGraph is:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_create_topology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 <span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -256,7 +256,7 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre>    <span class="k">SELECT</span>  <span class="n">pgr_create_topology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
+<div class="highlight-sql"><div class="highlight"><pre>    <span class="k">SELECT</span>  <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
     <span class="k">SELECT</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
     <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">PROCESSING</span><span class="p">:</span>
     <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
@@ -273,7 +273,7 @@
     <span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">1</span>
     <span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
 
-     <span class="n">pgr_analizeGraph</span>
+     <span class="n">pgr_analyzeGraph</span>
     <span class="c1">--------------------</span>
      <span class="n">OK</span>
     <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
@@ -294,7 +294,7 @@
     <span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">0</span>
     <span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
 
-     <span class="n">pgr_analizeGraph</span>
+     <span class="n">pgr_analyzeGraph</span>
     <span class="c1">--------------------</span>
      <span class="n">OK</span>
     <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
@@ -315,7 +315,7 @@
     <span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">1</span>
     <span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
 
-     <span class="n">pgr_analizeGraph</span>
+     <span class="n">pgr_analyzeGraph</span>
     <span class="c1">--------------------</span>
      <span class="n">OK</span>
     <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
@@ -338,7 +338,7 @@
     <span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">0</span>
     <span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
 
-     <span class="n">pgr_analizeGraph</span>
+     <span class="n">pgr_analyzeGraph</span>
     <span class="c1">--------------------</span>
      <span class="n">OK</span>
     <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
@@ -352,7 +352,7 @@
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="n">Vertices</span> <span class="k">table</span> <span class="k">for</span> <span class="k">table</span> <span class="k">public</span><span class="p">.</span><span class="n">edge_table</span> <span class="k">is</span><span class="p">:</span> <span class="k">public</span><span class="p">.</span><span class="n">edge_table_vertices_pgr</span>
 <span class="n">NOTICE</span><span class="p">:</span>  <span class="c1">----------------------------------------------</span>
 
-     <span class="n">pgr_analizeGraph</span>
+     <span class="n">pgr_analyzeGraph</span>
     <span class="c1">--------------------</span>
      <span class="n">OK</span>
     <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
@@ -373,7 +373,7 @@
 <span class="n">NOTICE</span><span class="p">:</span>               <span class="n">Intersections</span> <span class="n">detected</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">NOTICE</span><span class="p">:</span>                      <span class="n">Ring</span> <span class="n">geometries</span><span class="p">:</span> <span class="mi">0</span>
 
-     <span class="n">pgr_analizeGraph</span>
+     <span class="n">pgr_analyzeGraph</span>
     <span class="c1">--------------------</span>
      <span class="n">OK</span>
     <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
@@ -408,7 +408,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on May 09, 2016.
+      Last updated on Jun 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

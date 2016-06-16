@@ -24,15 +24,13 @@ var searchData=
   ['vertex_5fcolumns',['vertex_columns',['../structvertex__columns.html',1,'']]],
   ['vertex_5fcolumns_5ft',['vertex_columns_t',['../alpha_8c.html#a800c891e5d5eb186fddf615d946e4d60',1,'alpha.c']]],
   ['vertex_5fid',['vertex_id',['../structpath__element.html#a5ebbbb2b329f0b071a4c28ef8969b030',1,'path_element::vertex_id()'],['../structpath__element__t.html#aa18a86fa1b1334bcb065fe93c9ba8eaa',1,'path_element_t::vertex_id()'],['../structPoint__on__edge__t.html#a38e2fd8b1770612706fe6a0b337ed54d',1,'Point_on_edge_t::vertex_id()']]],
-  ['vertex_5fid_5fsource',['vertex_id_source',['../structdist__fromto__t.html#a0a6acde2653d2b7590582eb52c2c02b3',1,'dist_fromto_t::vertex_id_source()'],['../structpath__fromto__t.html#a33a6c458189f6221620f474424c12d65',1,'path_fromto_t::vertex_id_source()']]],
-  ['vertex_5fid_5ftarget',['vertex_id_target',['../structdist__fromto__t.html#ab346417aca054ee9f17ddc02d4a79825',1,'dist_fromto_t::vertex_id_target()'],['../structpath__fromto__t.html#a09d8a1f847c46129c65cdb8f950bd9be',1,'path_fromto_t::vertex_id_target()']]],
   ['vertex_5ft',['vertex_t',['../alpha_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1',1,'alpha.h']]],
   ['vertices_5fmap',['vertices_map',['../classpgRouting_1_1graph_1_1Pgr__base__graph.html#a59dc1767cefac36818dc094788215752',1,'pgRouting::graph::Pgr_base_graph']]],
   ['vertices_5fsize_5ftype',['vertices_size_type',['../classpgRouting_1_1graph_1_1Pgr__base__graph.html#a09ee1e9608694db60d7808c5cd203622',1,'pgRouting::graph::Pgr_base_graph']]],
   ['via',['via',['../structRestrict__t.html#a7832e99f4b67c9cf3dcb823355e83ad6',1,'Restrict_t']]],
   ['vis',['vis',['../structboost_1_1ShootingStarVisitorConcept.html#ad7a298a98e6532e866fb9bb163c9d882',1,'boost::ShootingStarVisitorConcept']]],
   ['visited',['VISITED',['../tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c',1,'tsplib.c']]],
-  ['vrp',['vrp',['../VRP_8c.html#ac749ce0f1c22db30e099942b6cd81732',1,'VRP.c']]],
+  ['vrp',['vrp',['../VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393',1,'VRP.c']]],
   ['vrp_2ec',['VRP.c',['../VRP_8c.html',1,'']]],
   ['vrp_2eh',['VRP.h',['../VRP_8h.html',1,'']]],
   ['vrp_5fcore_2ecpp',['VRP_core.cpp',['../VRP__core_8cpp.html',1,'']]],
@@ -46,5 +44,5 @@ var searchData=
   ['vrp_5fsolver_2eh',['VRP_Solver.h',['../VRP__Solver_8h.html',1,'']]],
   ['vrp_5fvehicles',['vrp_vehicles',['../structvrp__vehicles.html',1,'']]],
   ['vrp_5fvehicles_5ft',['vrp_vehicles_t',['../VRP_8h.html#a2dc0dc8ce32d357f839ad8f692b880ca',1,'VRP.h']]],
-  ['vrppdtw',['vrppdtw',['../pickDeliver_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77',1,'vrppdtw(PG_FUNCTION_ARGS):&#160;pdp.c'],['../vrppdtw_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77',1,'vrppdtw(PG_FUNCTION_ARGS):&#160;pdp.c']]]
+  ['vrppdtw',['vrppdtw',['../pickDeliver_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53',1,'vrppdtw(PG_FUNCTION_ARGS):&#160;pdp.c'],['../vrppdtw_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53',1,'vrppdtw(PG_FUNCTION_ARGS):&#160;pdp.c']]]
 ];

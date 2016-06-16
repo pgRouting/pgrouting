@@ -21,6 +21,6 @@ var VRP_8c =
     [ "prepare_query", "VRP_8c.html#aef732231f4ceb255e09db67b08eca8df", null ],
     [ "solve_vrp", "VRP_8c.html#ad7efc1f81afdbae98c86ba071b422489", null ],
     [ "text2char", "VRP_8c.html#a8745898afb7409587ee98f384ee40a39", null ],
-    [ "vrp", "VRP_8c.html#ac749ce0f1c22db30e099942b6cd81732", null ],
+    [ "vrp", "VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393", null ],
     [ "PG_MODULE_MAGIC", "VRP_8c.html#a509119277abe280e6db17c34f79e01cf", null ]
 ];

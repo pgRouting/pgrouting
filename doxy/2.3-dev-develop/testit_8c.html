@@ -121,8 +121,6 @@ $(document).ready(function(){initNavTree('testit_8c.html','');});
 Include dependency graph for testit.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="testit_8c__incl.png" border="0" usemap="#testit_8c" alt=""/></div>
-<map name="testit_8c" id="testit_8c">
-</map>
 </div>
 </div>
 <p><a href="testit_8c_source.html">Go to the source code of this file.</a></p>
@@ -147,14 +145,14 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7e1f8129b307b0a237b51749d76d7197"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testit_8c.html#a7e1f8129b307b0a237b51749d76d7197">boost_dijkstra</a> (<a class="el" href="structedge__t.html">edge_t</a> *<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, unsigned int count, int start_vertex, int end_vertex, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> directed, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> has_reverse_cost, <a class="el" href="structpath__element__t.html">path_element_t</a> **<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, int *<a class="el" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
+<tr class="memitem:a7e1f8129b307b0a237b51749d76d7197"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testit_8c.html#a7e1f8129b307b0a237b51749d76d7197">boost_dijkstra</a> (<a class="el" href="bdsp_8h.html#a6f991778d67cbba9985791a787ff0e42">edge_t</a> *<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, unsigned int count, int start_vertex, int end_vertex, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> directed, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> has_reverse_cost, <a class="el" href="structpath__element__t.html">path_element_t</a> **<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, int *<a class="el" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
 <tr class="separator:a7e1f8129b307b0a237b51749d76d7197"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testit_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aa44a74ef30e3ec88c97d809b9d681ffe"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structedge__t.html">edge_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testit_8c.html#aa44a74ef30e3ec88c97d809b9d681ffe">edges</a> [23]</td></tr>
+<tr class="memitem:aa44a74ef30e3ec88c97d809b9d681ffe"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="bdsp_8h.html#a6f991778d67cbba9985791a787ff0e42">edge_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="testit_8c.html#aa44a74ef30e3ec88c97d809b9d681ffe">edges</a> [23]</td></tr>
 <tr class="separator:aa44a74ef30e3ec88c97d809b9d681ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -177,7 +175,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structedge.html">edge</a>  <a class="el" href="structedge__t.html">edge_t</a></td>
+          <td class="memname">typedef struct <a class="el" href="structedge.html">edge</a>  <a class="el" href="bdsp_8h.html#a6f991778d67cbba9985791a787ff0e42">edge_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -218,7 +216,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int boost_dijkstra </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structedge__t.html">edge_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="bdsp_8h.html#a6f991778d67cbba9985791a787ff0e42">edge_t</a> *&#160;</td>
           <td class="paramname"><em>edges</em>, </td>
         </tr>
         <tr>
@@ -279,7 +277,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="boost__wrapper_8cpp_source.html#l00068">68</a> of file <a class="el" href="boost__wrapper_8cpp_source.html">boost_wrapper.cpp</a>.</p>
 
-<p>References <a class="el" href="k__targets__boost__wrapper_8h_source.html#l00038">edge_t::cost</a>, <a class="el" href="boost__wrapper_8cpp_source.html#l00063">Vertex::cost</a>, <a class="el" href="k__targets__boost__wrapper_8h_source.html#l00035">edge_t::id</a>, <a class="el" href="VRP__Solver_8h_source.html#l00047">max</a>, <a class="el" href="boost__wrapper_8cpp_source.html#l00058">MAX_NODES</a>, and <a class="el" href="k__targets__boost__wrapper_8h_source.html#l00039">edge_t::reverse_cost</a>.</p>
+<p>References <a class="el" href="boost__wrapper_8cpp_source.html#l00063">Vertex::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00115">pgr_edge_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00112">pgr_edge_t::id</a>, <a class="el" href="VRP__Solver_8h_source.html#l00043">max</a>, <a class="el" href="boost__wrapper_8cpp_source.html#l00058">MAX_NODES</a>, and <a class="el" href="pgr__types_8h_source.html#l00116">pgr_edge_t::reverse_cost</a>.</p>
 
 <p>Referenced by <a class="el" href="testit_8c_source.html#l00080">main()</a>.</p>
 
@@ -301,7 +299,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="testit_8c_source.html#l00080">80</a> of file <a class="el" href="testit_8c_source.html">testit.c</a>.</p>
 
-<p>References <a class="el" href="boost__wrapper_8cpp_source.html#l00068">boost_dijkstra()</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="k__targets__boost__wrapper_8h_source.html#l00036">edge_t::source</a>, <a class="el" href="k__targets__boost__wrapper_8h_source.html#l00037">edge_t::target</a>, <a class="el" href="tsp_8c_source.html#l00120">total_tuples</a>, and <a class="el" href="pgr__types_8h_source.html#l00058">path_element_t::vertex_id</a>.</p>
+<p>References <a class="el" href="boost__wrapper_8cpp_source.html#l00068">boost_dijkstra()</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="pgr__types_8h_source.html#l00113">pgr_edge_t::source</a>, <a class="el" href="pgr__types_8h_source.html#l00114">pgr_edge_t::target</a>, and <a class="el" href="pgr__types_8h_source.html#l00067">path_element_t::vertex_id</a>.</p>
 
 </div>
 </div>
@@ -314,7 +312,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structedge__t.html">edge_t</a> edges[23]</td>
+          <td class="memname"><a class="el" href="bdsp_8h.html#a6f991778d67cbba9985791a787ff0e42">edge_t</a> edges[23]</td>
         </tr>
       </table>
   </td>
@@ -359,7 +357,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_ce23c288b464aca7c49a3c0531c520b0.html">tester</a></li><li class="navelem"><a class="el" href="testit_8c.html">testit.c</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

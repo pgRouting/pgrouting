@@ -120,12 +120,13 @@ $(document).ready(function(){initNavTree('vrppdtw_2src_2pdp_8c.html','');});
 <code>#include &quot;catalog/pg_type.h&quot;</code><br/>
 <code>#include &quot;fmgr.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="vrppdtw_2src_2pdp_8h_source.html">./pdp.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="debug__macro_8h_source.html">../../common/src/debug_macro.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for vrppdtw/src/pdp.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="vrppdtw_2src_2pdp_8c__incl.png" border="0" usemap="#pdp_8c" alt=""/></div>
 <map name="pdp_8c" id="pdp_8c">
-<area shape="rect" id="node2" href="postgres_8h.html" title="./postgres.h" alt="" coords="113,155,204,181"/><area shape="rect" id="node7" href="vrppdtw_2src_2pdp_8h.html" title="./pdp.h" alt="" coords="484,80,546,107"/></map>
+<area shape="rect" id="node2" href="postgres_8h.html" title="./postgres.h" alt="" coords="5,88,96,115"/><area shape="rect" id="node7" href="vrppdtw_2src_2pdp_8h.html" title="./pdp.h" alt="" coords="579,88,641,115"/><area shape="rect" id="node11" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="667,81,824,122"/></map>
 </div>
 </div>
 <p><a href="vrppdtw_2src_2pdp_8c_source.html">Go to the source code of this file.</a></p>
@@ -137,8 +138,6 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:af1c56a36973fb5f6d9340271ca41ec38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vrppdtw_2src_2pdp_8c.html#af1c56a36973fb5f6d9340271ca41ec38">DBG</a>(format, arg...)&#160;&#160;&#160;do { ; } while (0)</td></tr>
-<tr class="separator:af1c56a36973fb5f6d9340271ca41ec38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0938455e5ec9df9cd6255f4fcc04162b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vrppdtw_2src_2pdp_8c.html#a0938455e5ec9df9cd6255f4fcc04162b">TUPLIMIT</a>&#160;&#160;&#160;1000</td></tr>
 <tr class="separator:a0938455e5ec9df9cd6255f4fcc04162b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -157,12 +156,12 @@ Functions</h2></td></tr>
 <tr class="separator:a2305628dd47a451aae1755d38e995032"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbf69d62298e4d47f81c749cebaad544"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vrppdtw_2src_2pdp_8c.html#adbf69d62298e4d47f81c749cebaad544">finish</a> (int code, int ret)</td></tr>
 <tr class="separator:adbf69d62298e4d47f81c749cebaad544"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7aea328f813a1829fd01e1a83a6193d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vrppdtw_2src_2pdp_8c.html#a7aea328f813a1829fd01e1a83a6193d2">PG_FUNCTION_INFO_V1</a> (<a class="el" href="vrppdtw_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77">vrppdtw</a>)</td></tr>
+<tr class="memitem:a7aea328f813a1829fd01e1a83a6193d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vrppdtw_2src_2pdp_8c.html#a7aea328f813a1829fd01e1a83a6193d2">PG_FUNCTION_INFO_V1</a> (<a class="el" href="vrppdtw_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53">vrppdtw</a>)</td></tr>
 <tr class="separator:a7aea328f813a1829fd01e1a83a6193d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8745898afb7409587ee98f384ee40a39"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vrppdtw_2src_2pdp_8c.html#a8745898afb7409587ee98f384ee40a39">text2char</a> (text *in)</td></tr>
 <tr class="separator:a8745898afb7409587ee98f384ee40a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a11cb3ca2e5ee284acf7c625d217f77"><td class="memItemLeft" align="right" valign="top">Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vrppdtw_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77">vrppdtw</a> (PG_FUNCTION_ARGS)</td></tr>
-<tr class="separator:a5a11cb3ca2e5ee284acf7c625d217f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f221eb5ed9b8ec8ba70e3f96ca9f53"><td class="memItemLeft" align="right" valign="top">PGDLLEXPORT Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vrppdtw_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53">vrppdtw</a> (PG_FUNCTION_ARGS)</td></tr>
+<tr class="separator:a50f221eb5ed9b8ec8ba70e3f96ca9f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -170,36 +169,6 @@ Variables</h2></td></tr>
 <tr class="separator:a509119277abe280e6db17c34f79e01cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="af1c56a36973fb5f6d9340271ca41ec38"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DBG</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">arg...&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;do { ; } while (0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00044">44</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
-
-<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00231">compute_shortest_path()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00171">fetch_customer()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00129">fetch_customer_columns()</a>, and <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00360">vrppdtw()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a0938455e5ec9df9cd6255f4fcc04162b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -210,9 +179,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00048">48</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
+<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00043">43</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
 
-<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00231">compute_shortest_path()</a>.</p>
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00226">compute_shortest_path()</a>.</p>
 
 </div>
 </div>
@@ -280,11 +249,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00231">231</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
+<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00226">226</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
 
-<p>References <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00044">DBG</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00171">fetch_customer()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00129">fetch_customer_columns()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00066">finish()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00078">Customer_type::id</a>, <a class="el" href="pickDeliver_2src_2pdp__solver_8cpp_source.html#l00080">Solver()</a>, <a class="el" href="tsp_8c_source.html#l00120">total_tuples</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00048">TUPLIMIT</a>, <a class="el" href="tsp_8c_source.html#l00117">x</a>, and <a class="el" href="tsp_8c_source.html#l00118">y</a>.</p>
+<p>References <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00166">fetch_customer()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00124">fetch_customer_columns()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00061">finish()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00073">Customer_type::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="pickDeliver_2src_2pdp__solver_8cpp_source.html#l00080">Solver()</a>, and <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00043">TUPLIMIT</a>.</p>
 
-<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00360">vrppdtw()</a>.</p>
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00355">vrppdtw()</a>.</p>
 
 </div>
 </div>
@@ -332,11 +301,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00171">171</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
+<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00166">166</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
 
-<p>References <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00044">DBG</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00037">Customer::demand</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00081">Customer_type::demand</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00042">Customer::Dindex</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00086">Customer_type::Dindex</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00038">Customer::Etime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00082">Customer_type::Etime</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00034">Customer::id</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00078">Customer_type::id</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00039">Customer::Ltime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00083">Customer_type::Ltime</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00041">Customer::Pindex</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00085">Customer_type::Pindex</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00040">Customer::Stime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00084">Customer_type::Stime</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00035">Customer::x</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00079">Customer_type::x</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00036">Customer::y</a>, and <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00080">Customer_type::y</a>.</p>
+<p>References <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00037">Customer::demand</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00076">Customer_type::demand</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00042">Customer::Dindex</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00081">Customer_type::Dindex</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00038">Customer::Etime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00077">Customer_type::Etime</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00034">Customer::id</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00073">Customer_type::id</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00039">Customer::Ltime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00078">Customer_type::Ltime</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00041">Customer::Pindex</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00080">Customer_type::Pindex</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00040">Customer::Stime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00079">Customer_type::Stime</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00035">Customer::x</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00074">Customer_type::x</a>, <a class="el" href="pickDeliver_2src_2pdp_8h_source.html#l00036">Customer::y</a>, and <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00075">Customer_type::y</a>.</p>
 
-<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00231">compute_shortest_path()</a>.</p>
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00226">compute_shortest_path()</a>.</p>
 
 </div>
 </div>
@@ -384,11 +353,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00129">129</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
+<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00124">124</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
 
-<p>References <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00044">DBG</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00081">Customer_type::demand</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00086">Customer_type::Dindex</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00082">Customer_type::Etime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00078">Customer_type::id</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00083">Customer_type::Ltime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00085">Customer_type::Pindex</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00084">Customer_type::Stime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00079">Customer_type::x</a>, and <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00080">Customer_type::y</a>.</p>
+<p>References <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00076">Customer_type::demand</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00081">Customer_type::Dindex</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00077">Customer_type::Etime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00073">Customer_type::id</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00078">Customer_type::Ltime</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00080">Customer_type::Pindex</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00079">Customer_type::Stime</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00074">Customer_type::x</a>, and <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00075">Customer_type::y</a>.</p>
 
-<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00231">compute_shortest_path()</a>.</p>
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00226">compute_shortest_path()</a>.</p>
 
 </div>
 </div>
@@ -424,9 +393,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00066">66</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
+<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00061">61</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
 
-<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00231">compute_shortest_path()</a>.</p>
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00226">compute_shortest_path()</a>.</p>
 
 </div>
 </div>
@@ -437,7 +406,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">PG_FUNCTION_INFO_V1 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77">vrppdtw</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="vrppdtw_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53">vrppdtw</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -468,18 +437,18 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00056">56</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
+<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00051">51</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
 
-<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00360">vrppdtw()</a>.</p>
+<p>Referenced by <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00355">vrppdtw()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5a11cb3ca2e5ee284acf7c625d217f77"></a>
+<a class="anchor" id="a50f221eb5ed9b8ec8ba70e3f96ca9f53"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Datum vrppdtw </td>
+          <td class="memname">PGDLLEXPORT Datum vrppdtw </td>
           <td>(</td>
           <td class="paramtype">PG_FUNCTION_ARGS&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -488,9 +457,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00360">360</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
+<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00355">355</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
 
-<p>References <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00231">compute_shortest_path()</a>, <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00044">DBG</a>, and <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00056">text2char()</a>.</p>
+<p>References <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00226">compute_shortest_path()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00051">text2char()</a>.</p>
 
 </div>
 </div>
@@ -505,7 +474,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00051">51</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
+<p>Definition at line <a class="el" href="vrppdtw_2src_2pdp_8c_source.html#l00046">46</a> of file <a class="el" href="vrppdtw_2src_2pdp_8c_source.html">vrppdtw/src/pdp.c</a>.</p>
 
 </div>
 </div>
@@ -515,7 +484,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a5c8a92068c74ed493d903155fb7b6fb.html">vrppdtw</a></li><li class="navelem"><a class="el" href="dir_b57a4779a34e75dff4d4043c00e7e1ee.html">src</a></li><li class="navelem"><a class="el" href="vrppdtw_2src_2pdp_8c.html">pdp.c</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

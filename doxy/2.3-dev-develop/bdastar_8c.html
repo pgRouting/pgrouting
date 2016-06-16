@@ -129,7 +129,7 @@ Include dependency graph for bdastar.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="bdastar_8c__incl.png" border="0" usemap="#bdastar_8c" alt=""/></div>
 <map name="bdastar_8c" id="bdastar_8c">
-<area shape="rect" id="node2" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="14,171,153,213"/><area shape="rect" id="node5" href="postgres_8h.html" title="postgres.h" alt="" coords="436,179,517,205"/><area shape="rect" id="node12" href="postgres__connection_8h.html" title="../../common/src/postgres\l_connection.h" alt="" coords="729,81,900,122"/><area shape="rect" id="node13" href="bdastar_8h.html" title="bdastar.h" alt="" coords="9,88,84,115"/><area shape="rect" id="node14" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="976,81,1133,122"/></map>
+<area shape="rect" id="node2" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="767,171,906,213"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="78,261,159,288"/><area shape="rect" id="node11" href="postgres__connection_8h.html" title="../../common/src/postgres\l_connection.h" alt="" coords="33,81,205,122"/><area shape="rect" id="node12" href="bdastar_8h.html" title="bdastar.h" alt="" coords="799,88,874,115"/><area shape="rect" id="node13" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="950,81,1107,122"/></map>
 </div>
 </div>
 <p><a href="bdastar_8c_source.html">Go to the source code of this file.</a></p>
@@ -141,10 +141,6 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0dfa45928ea53d05b475d9e3387865a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#a0dfa45928ea53d05b475d9e3387865a5">profstart</a>(<a class="el" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>)&#160;&#160;&#160;do { } while (0);</td></tr>
-<tr class="separator:a0dfa45928ea53d05b475d9e3387865a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cf3d36d1041f89f44ef9ec00cebb552"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#a3cf3d36d1041f89f44ef9ec00cebb552">profstop</a>(<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>, <a class="el" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>)&#160;&#160;&#160;do { } while (0);</td></tr>
-<tr class="separator:a3cf3d36d1041f89f44ef9ec00cebb552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0938455e5ec9df9cd6255f4fcc04162b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#a0938455e5ec9df9cd6255f4fcc04162b">TUPLIMIT</a>&#160;&#160;&#160;1000</td></tr>
 <tr class="separator:a0938455e5ec9df9cd6255f4fcc04162b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -155,68 +151,18 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8f5e2df7562766a2a5f383830c4d41d4"><td class="memItemLeft" align="right" valign="top">Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#a8f5e2df7562766a2a5f383830c4d41d4">bidir_astar_shortest_path</a> (PG_FUNCTION_ARGS)</td></tr>
-<tr class="separator:a8f5e2df7562766a2a5f383830c4d41d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c883ea100b801834f8d7e7b99c8466"><td class="memItemLeft" align="right" valign="top">Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#af1c883ea100b801834f8d7e7b99c8466">bidir_astar_shortest_path</a> (PG_FUNCTION_ARGS)</td></tr>
+<tr class="separator:af1c883ea100b801834f8d7e7b99c8466"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecf038ac24cec5a60156be39a61e9857"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#aecf038ac24cec5a60156be39a61e9857">compute_shortest_path_astar</a> (char *sql, int source_vertex_id, int target_vertex_id, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> directed, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> has_reverse_cost, <a class="el" href="structpath__element__t.html">path_element_t</a> **<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, size_t *<a class="el" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>)</td></tr>
 <tr class="separator:aecf038ac24cec5a60156be39a61e9857"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae915ad59cb87304d436f3b2677217c96"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#ae915ad59cb87304d436f3b2677217c96">fetch_edge_astar</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="bdastar_8c.html#a0dcf01245d021e5c02078c8020af8c6e">edge_astar_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, <a class="el" href="tester_2BiDirAStar_8h.html#af873dc3ac3f0b68bc6985779bcd69e96">edge_astar_t</a> *target_edge)</td></tr>
 <tr class="separator:ae915ad59cb87304d436f3b2677217c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae76df99390f65a2ce971790230d9c253"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#ae76df99390f65a2ce971790230d9c253">fetch_edge_astar_columns</a> (SPITupleTable *tuptable, <a class="el" href="bdastar_8c.html#a0dcf01245d021e5c02078c8020af8c6e">edge_astar_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> has_reverse_cost)</td></tr>
 <tr class="separator:ae76df99390f65a2ce971790230d9c253"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10c15fed6e47c41c10bb7606c5b1e28e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#a10c15fed6e47c41c10bb7606c5b1e28e">PG_FUNCTION_INFO_V1</a> (<a class="el" href="bdastar_8c.html#a8f5e2df7562766a2a5f383830c4d41d4">bidir_astar_shortest_path</a>)</td></tr>
+<tr class="memitem:a10c15fed6e47c41c10bb7606c5b1e28e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#a10c15fed6e47c41c10bb7606c5b1e28e">PG_FUNCTION_INFO_V1</a> (<a class="el" href="bdastar_8c.html#af1c883ea100b801834f8d7e7b99c8466">bidir_astar_shortest_path</a>)</td></tr>
 <tr class="separator:a10c15fed6e47c41c10bb7606c5b1e28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a0dfa45928ea53d05b475d9e3387865a5"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define profstart</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a></td><td>)</td>
-          <td>&#160;&#160;&#160;do { } while (0);</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00070">70</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
-
-<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00384">bidir_astar_shortest_path()</a>, and <a class="el" href="bdastar_8c_source.html#l00227">compute_shortest_path_astar()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a3cf3d36d1041f89f44ef9ec00cebb552"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define profstop</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><a class="el" href="tsp_8c.html#a51262fa06c263b0dfd25c45b80656f24">x</a>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;do { } while (0);</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00071">71</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
-
-<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00384">bidir_astar_shortest_path()</a>, and <a class="el" href="bdastar_8c_source.html#l00227">compute_shortest_path_astar()</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a0938455e5ec9df9cd6255f4fcc04162b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -227,9 +173,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00085">85</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
+<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00054">54</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
 
-<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00227">compute_shortest_path_astar()</a>.</p>
+<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00196">compute_shortest_path_astar()</a>.</p>
 
 </div>
 </div>
@@ -247,12 +193,12 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a8f5e2df7562766a2a5f383830c4d41d4"></a>
+<a class="anchor" id="af1c883ea100b801834f8d7e7b99c8466"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Datum bidir_astar_shortest_path </td>
+          <td class="memname">PGDLLEXPORT Datum bidir_astar_shortest_path </td>
           <td>(</td>
           <td class="paramtype">PG_FUNCTION_ARGS&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -261,9 +207,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00384">384</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
+<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00350">350</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
 
-<p>References <a class="el" href="bdastar_8c_source.html#l00227">compute_shortest_path_astar()</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="postgres__connection_8c_source.html#l00050">pgr_text2char()</a>, <a class="el" href="bdastar_8c_source.html#l00070">profstart</a>, and <a class="el" href="bdastar_8c_source.html#l00071">profstop</a>.</p>
+<p>References <a class="el" href="bdastar_8c_source.html#l00196">compute_shortest_path_astar()</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="postgres__connection_8c_source.html#l00050">pgr_text2char()</a>.</p>
 
 </div>
 </div>
@@ -329,11 +275,11 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00227">227</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
+<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00196">196</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
 
-<p>References <a class="el" href="bdastar__core_8cpp_source.html#l00045">bdastar_wrapper()</a>, <a class="el" href="BDATester_8cpp_source.html#l00046">edges</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="bdastar_8c_source.html#l00178">fetch_edge_astar()</a>, <a class="el" href="bdastar_8c_source.html#l00102">fetch_edge_astar_columns()</a>, <a class="el" href="bdsp_8c_source.html#l00063">edge_columns::id</a>, <a class="el" href="bdastar_8c_source.html#l00089">edge_astar_columns::id</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00092">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00061">pgr_SPI_finish()</a>, <a class="el" href="postgres__connection_8c_source.html#l00081">pgr_SPI_prepare()</a>, <a class="el" href="bdastar_8c_source.html#l00070">profstart</a>, <a class="el" href="bdastar_8c_source.html#l00071">profstop</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00064">edge::source</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00065">edge::target</a>, <a class="el" href="tsp_8c_source.html#l00120">total_tuples</a>, and <a class="el" href="bdastar_8c_source.html#l00085">TUPLIMIT</a>.</p>
+<p>References <a class="el" href="bdastar__core_8cpp_source.html#l00045">bdastar_wrapper()</a>, <a class="el" href="BDATester_8cpp_source.html#l00046">edges</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="bdastar_8c_source.html#l00147">fetch_edge_astar()</a>, <a class="el" href="bdastar_8c_source.html#l00071">fetch_edge_astar_columns()</a>, <a class="el" href="bdsp_8c_source.html#l00056">edge_columns::id</a>, <a class="el" href="bdastar_8c_source.html#l00058">edge_astar_columns::id</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00092">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00061">pgr_SPI_finish()</a>, <a class="el" href="postgres__connection_8c_source.html#l00081">pgr_SPI_prepare()</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00064">edge::source</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00065">edge::target</a>, and <a class="el" href="bdastar_8c_source.html#l00054">TUPLIMIT</a>.</p>
 
-<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00384">bidir_astar_shortest_path()</a>.</p>
+<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00350">bidir_astar_shortest_path()</a>.</p>
 
 </div>
 </div>
@@ -381,11 +327,11 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00178">178</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
+<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00147">147</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
 
-<p>References <a class="el" href="tester_2BiDirAStar_8h_source.html#l00070">edge::cost</a>, <a class="el" href="bdastar_8c_source.html#l00092">edge_astar_columns::cost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00063">edge::id</a>, <a class="el" href="bdastar_8c_source.html#l00089">edge_astar_columns::id</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00071">edge::reverse_cost</a>, <a class="el" href="bdastar_8c_source.html#l00093">edge_astar_columns::reverse_cost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00066">edge::s_x</a>, <a class="el" href="bdastar_8c_source.html#l00094">edge_astar_columns::s_x</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00067">edge::s_y</a>, <a class="el" href="bdastar_8c_source.html#l00095">edge_astar_columns::s_y</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00064">edge::source</a>, <a class="el" href="bdastar_8c_source.html#l00090">edge_astar_columns::source</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00068">edge::t_x</a>, <a class="el" href="bdastar_8c_source.html#l00096">edge_astar_columns::t_x</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00069">edge::t_y</a>, <a class="el" href="bdastar_8c_source.html#l00097">edge_astar_columns::t_y</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00065">edge::target</a>, and <a class="el" href="bdastar_8c_source.html#l00091">edge_astar_columns::target</a>.</p>
+<p>References <a class="el" href="bdastar_8c_source.html#l00061">edge_astar_columns::cost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00070">edge::cost</a>, <a class="el" href="bdastar_8c_source.html#l00058">edge_astar_columns::id</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00063">edge::id</a>, <a class="el" href="bdastar_8c_source.html#l00062">edge_astar_columns::reverse_cost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00071">edge::reverse_cost</a>, <a class="el" href="bdastar_8c_source.html#l00063">edge_astar_columns::s_x</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00066">edge::s_x</a>, <a class="el" href="bdastar_8c_source.html#l00064">edge_astar_columns::s_y</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00067">edge::s_y</a>, <a class="el" href="bdastar_8c_source.html#l00059">edge_astar_columns::source</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00064">edge::source</a>, <a class="el" href="bdastar_8c_source.html#l00065">edge_astar_columns::t_x</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00068">edge::t_x</a>, <a class="el" href="bdastar_8c_source.html#l00066">edge_astar_columns::t_y</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00069">edge::t_y</a>, <a class="el" href="bdastar_8c_source.html#l00060">edge_astar_columns::target</a>, and <a class="el" href="tester_2BiDirAStar_8h_source.html#l00065">edge::target</a>.</p>
 
-<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00227">compute_shortest_path_astar()</a>.</p>
+<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00196">compute_shortest_path_astar()</a>.</p>
 
 </div>
 </div>
@@ -427,11 +373,11 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00102">102</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
+<p>Definition at line <a class="el" href="bdastar_8c_source.html#l00071">71</a> of file <a class="el" href="bdastar_8c_source.html">bdastar.c</a>.</p>
 
-<p>References <a class="el" href="bdastar_8c_source.html#l00092">edge_astar_columns::cost</a>, <a class="el" href="bdastar_8c_source.html#l00089">edge_astar_columns::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="bdastar_8c_source.html#l00093">edge_astar_columns::reverse_cost</a>, <a class="el" href="bdastar_8c_source.html#l00094">edge_astar_columns::s_x</a>, <a class="el" href="bdastar_8c_source.html#l00095">edge_astar_columns::s_y</a>, <a class="el" href="bdastar_8c_source.html#l00090">edge_astar_columns::source</a>, <a class="el" href="bdastar_8c_source.html#l00096">edge_astar_columns::t_x</a>, <a class="el" href="bdastar_8c_source.html#l00097">edge_astar_columns::t_y</a>, and <a class="el" href="bdastar_8c_source.html#l00091">edge_astar_columns::target</a>.</p>
+<p>References <a class="el" href="bdastar_8c_source.html#l00061">edge_astar_columns::cost</a>, <a class="el" href="bdastar_8c_source.html#l00058">edge_astar_columns::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="bdastar_8c_source.html#l00062">edge_astar_columns::reverse_cost</a>, <a class="el" href="bdastar_8c_source.html#l00063">edge_astar_columns::s_x</a>, <a class="el" href="bdastar_8c_source.html#l00064">edge_astar_columns::s_y</a>, <a class="el" href="bdastar_8c_source.html#l00059">edge_astar_columns::source</a>, <a class="el" href="bdastar_8c_source.html#l00065">edge_astar_columns::t_x</a>, <a class="el" href="bdastar_8c_source.html#l00066">edge_astar_columns::t_y</a>, and <a class="el" href="bdastar_8c_source.html#l00060">edge_astar_columns::target</a>.</p>
 
-<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00227">compute_shortest_path_astar()</a>.</p>
+<p>Referenced by <a class="el" href="bdastar_8c_source.html#l00196">compute_shortest_path_astar()</a>.</p>
 
 </div>
 </div>
@@ -442,7 +388,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">PG_FUNCTION_INFO_V1 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="bdastar_8c.html#a8f5e2df7562766a2a5f383830c4d41d4">bidir_astar_shortest_path</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="bdastar_8c.html#af1c883ea100b801834f8d7e7b99c8466">bidir_astar_shortest_path</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -457,7 +403,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1188af90c8f2ef20f286b8e78c6e14f.html">bd_astar</a></li><li class="navelem"><a class="el" href="dir_113f93645de6d06d40f731407c36f54e.html">src</a></li><li class="navelem"><a class="el" href="bdastar_8c.html">bdastar.c</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

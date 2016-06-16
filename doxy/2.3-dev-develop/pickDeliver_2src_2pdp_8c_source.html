@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('pickDeliver_2src_2pdp_8c_source.html',
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pickDeliver_2src_2pdp_8h.html">./pdp.h</a>&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;Datum <a class="code" href="pickDeliver_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77">vrppdtw</a>(PG_FUNCTION_ARGS);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;Datum <a class="code" href="pickDeliver_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53">vrppdtw</a>(PG_FUNCTION_ARGS);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// #define DEBUG 1</span></div>
@@ -191,9 +191,9 @@ $(document).ready(function(){initNavTree('pickDeliver_2src_2pdp_8c_source.html',
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<a class="code" href="pickDeliver_2src_2pdp_8c.html#a7aea328f813a1829fd01e1a83a6193d2">PG_FUNCTION_INFO_V1</a>(<a class="code" href="pickDeliver_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77">vrppdtw</a>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<a class="code" href="pickDeliver_2src_2pdp_8c.html#a7aea328f813a1829fd01e1a83a6193d2">PG_FUNCTION_INFO_V1</a>(<a class="code" href="pickDeliver_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53">vrppdtw</a>);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;Datum</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="pickDeliver_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77">   86</a></span>&#160;<a class="code" href="pickDeliver_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77">vrppdtw</a>(PG_FUNCTION_ARGS) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="pickDeliver_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53">   86</a></span>&#160;<a class="code" href="pickDeliver_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53">vrppdtw</a>(PG_FUNCTION_ARGS) {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    FuncCallContext     *funcctx;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">int</span>                  call_cntr;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span>                  max_calls;</div>
@@ -262,7 +262,7 @@ $(document).ready(function(){initNavTree('pickDeliver_2src_2pdp_8c_source.html',
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        values[1] = Int64GetDatum(results[call_cntr].rid);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        values[2] = Int64GetDatum(results[call_cntr].nid);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        values[3] = Float8GetDatum(results[call_cntr].cost);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        tuple = heap_formtuple(tuple_desc, values, nulls);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        tuple = heap_form_tuple(tuple_desc, values, nulls);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="comment">/* make the tuple into a datum */</span></div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        result = HeapTupleGetDatum(tuple);</div>
@@ -278,7 +278,6 @@ $(document).ready(function(){initNavTree('pickDeliver_2src_2pdp_8c_source.html',
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        SRF_RETURN_DONE(funcctx);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
-<div class="ttc" id="pickDeliver_2src_2pdp_8c_html_a5a11cb3ca2e5ee284acf7c625d217f77"><div class="ttname"><a href="pickDeliver_2src_2pdp_8c.html#a5a11cb3ca2e5ee284acf7c625d217f77">vrppdtw</a></div><div class="ttdeci">Datum vrppdtw(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliver_2src_2pdp_8c_source.html#l00086">pickDeliver/src/pdp.c:86</a></div></div>
 <div class="ttc" id="pickDeliver_2src_2pdp_8c_html_a7aea328f813a1829fd01e1a83a6193d2"><div class="ttname"><a href="pickDeliver_2src_2pdp_8c.html#a7aea328f813a1829fd01e1a83a6193d2">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(vrppdtw)</div></div>
 <div class="ttc" id="structpath__element_html"><div class="ttname"><a href="structpath__element.html">path_element</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00074">tester/BiDirAStar.h:74</a></div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
@@ -290,6 +289,7 @@ $(document).ready(function(){initNavTree('pickDeliver_2src_2pdp_8c_source.html',
 <div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00061">postgres_connection.c:61</a></div></div>
 <div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
 <div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00071">postgres_connection.c:71</a></div></div>
+<div class="ttc" id="pickDeliver_2src_2pdp_8c_html_a50f221eb5ed9b8ec8ba70e3f96ca9f53"><div class="ttname"><a href="pickDeliver_2src_2pdp_8c.html#a50f221eb5ed9b8ec8ba70e3f96ca9f53">vrppdtw</a></div><div class="ttdeci">Datum vrppdtw(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliver_2src_2pdp_8c_source.html#l00086">pickDeliver/src/pdp.c:86</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
 <div class="ttc" id="structCustomer_html"><div class="ttname"><a href="structCustomer.html">Customer</a></div><div class="ttdef"><b>Definition:</b> <a href="pickDeliver_2src_2pdp_8h_source.html#l00033">pickDeliver/src/pdp.h:33</a></div></div>
 <div class="ttc" id="postgres__connection_8c_html_ae5ca58a293115d0ec1ca944f56f4faa1"><div class="ttname"><a href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a></div><div class="ttdeci">char * pgr_text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00050">postgres_connection.c:50</a></div></div>
@@ -299,7 +299,7 @@ $(document).ready(function(){initNavTree('pickDeliver_2src_2pdp_8c_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><a class="el" href="pickDeliver_2src_2pdp_8c.html">pdp.c</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

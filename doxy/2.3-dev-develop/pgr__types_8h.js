@@ -1,6 +1,7 @@
 var pgr__types_8h =
 [
     [ "Column_info_t", "structColumn__info__t.html", "structColumn__info__t" ],
+    [ "Coordinate_t", "structCoordinate__t.html", "structCoordinate__t" ],
     [ "edge_astar", "structedge__astar.html", "structedge__astar" ],
     [ "General_path_element_t", "structGeneral__path__element__t.html", "structGeneral__path__element__t" ],
     [ "matrix_cell", "structmatrix__cell.html", "structmatrix__cell" ],

@@ -10,8 +10,9 @@ var searchData=
   ['insertorder',['insertOrder',['../classRoute.html#a6551cfe12c98a85d767805c6add54a8d',1,'Route::insertOrder()'],['../classCTourInfo.html#ac7a8b3ea9abf1f12b7872159dc62f0b1',1,'CTourInfo::insertOrder()'],['../classCVRPSolver.html#afe08f85c746f5cec359e2ee8fb2ee1d0',1,'CVRPSolver::insertOrder()'],['../classRoute.html#a873bac82eba09b350ef38a285c563466',1,'Route::insertOrder()']]],
   ['insertunservedorders',['insertUnservedOrders',['../classCVRPSolver.html#a46471aa397eebe84b6ae9b950f296ce3',1,'CVRPSolver']]],
   ['instance',['instance',['../classSignalHandler.html#ac9a307bf2b20263020913657b094db9e',1,'SignalHandler']]],
+  ['invariant',['invariant',['../classpgRouting_1_1tsp_1_1TSP.html#ab708a7c990e207a7f8e0697202d31747',1,'pgRouting::tsp::TSP']]],
   ['is_5fequal',['is_equal',['../shooting__star__relax_8hpp.html#ad982d872081c3ea9ccdaf544b5226a42',1,'shooting_star_relax.hpp']]],
-  ['is_5fsymetric',['is_symetric',['../classDmatrix.html#a854d9e7a8f3958329de438932015a997',1,'Dmatrix']]],
+  ['is_5fsymmetric',['is_symmetric',['../classpgRouting_1_1tsp_1_1Dmatrix.html#a805081f19cda708fc1225f52c0d27a5a',1,'pgRouting::tsp::Dmatrix::is_symmetric()'],['../classpgRouting_1_1tsp_1_1eucledianDmatrix.html#a4de5e334410d7aab85448b6a751504c9',1,'pgRouting::tsp::eucledianDmatrix::is_symmetric()']]],
   ['isbetter',['isBetter',['../classCMoveInfo.html#a5dfa4238d9569757cd90fb351f9754a9',1,'CMoveInfo']]],
   ['isequal',['isEqual',['../classPath.html#adf67930d9eaea5c23c9a5262fc846a73',1,'Path']]],
   ['istabumove',['isTabuMove',['../classCVRPSolver.html#a33c8852cdb507ade8adfc5d292911e20',1,'CVRPSolver']]]

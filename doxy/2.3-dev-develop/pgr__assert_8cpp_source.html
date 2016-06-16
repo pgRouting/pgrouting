@@ -163,28 +163,31 @@ $(document).ready(function(){initNavTree('pgr__assert_8cpp_source.html','');});
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span>}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">   59</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a>() <span class="keyword">const</span> throw() {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">str</a>.c_str();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">   63</a></span>&#160;<a class="code" href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">AssertFailedException::AssertFailedException</a>(std::string msg) :</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    str(msg) {}</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="pgr__assert_8h.html#a4a34ad0dea9553cb88518f9aa5584435">   56</a></span>&#160;std::string <a class="code" href="pgr__assert_8cpp.html#a42375175231f734b4a0db0d8754be7b4">get_backtrace</a>(<span class="keyword">const</span> std::string &amp;msg) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> std::string(<span class="stringliteral">&quot;\n&quot;</span>) + msg + <span class="stringliteral">&quot;\n&quot;</span> + <a class="code" href="pgr__assert_8cpp.html#a42375175231f734b4a0db0d8754be7b4">get_backtrace</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">   62</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a>() <span class="keyword">const</span> throw() {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">str</a>.c_str();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">   66</a></span>&#160;<a class="code" href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">AssertFailedException::AssertFailedException</a>(std::string msg) :</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    str(msg) {}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="ttc" id="pgr__assert_8cpp_html_a42375175231f734b4a0db0d8754be7b4"><div class="ttname"><a href="pgr__assert_8cpp.html#a42375175231f734b4a0db0d8754be7b4">get_backtrace</a></div><div class="ttdeci">std::string get_backtrace()</div><div class="ttdoc">returns the execution path of the trace </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00035">pgr_assert.cpp:35</a></div></div>
-<div class="ttc" id="classAssertFailedException_html_a54ed2b5c12e7f66818b1167dc772dc2f"><div class="ttname"><a href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">AssertFailedException::AssertFailedException</a></div><div class="ttdeci">AssertFailedException(std::string msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00063">pgr_assert.cpp:63</a></div></div>
-<div class="ttc" id="classAssertFailedException_html_ab979c89db58aa0e6f6bef73eabf39887"><div class="ttname"><a href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">AssertFailedException::str</a></div><div class="ttdeci">const std::string str</div><div class="ttdoc">str Holds what() we got as message from the #define </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00101">pgr_assert.h:101</a></div></div>
+<div class="ttc" id="classAssertFailedException_html_a54ed2b5c12e7f66818b1167dc772dc2f"><div class="ttname"><a href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">AssertFailedException::AssertFailedException</a></div><div class="ttdeci">AssertFailedException(std::string msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00066">pgr_assert.cpp:66</a></div></div>
+<div class="ttc" id="classAssertFailedException_html_ab979c89db58aa0e6f6bef73eabf39887"><div class="ttname"><a href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">AssertFailedException::str</a></div><div class="ttdeci">const std::string str</div><div class="ttdoc">str Holds what() we got as message from the #define </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00111">pgr_assert.h:111</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html"><div class="ttname"><a href="pgr__assert_8h.html">pgr_assert.h</a></div></div>
-<div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00059">pgr_assert.cpp:59</a></div></div>
+<div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00062">pgr_assert.cpp:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="pgr__assert_8cpp.html">pgr_assert.cpp</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

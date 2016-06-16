@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Routing Functions &mdash; pgRouting Manual (2.3.0-dev)</title>
+    <title>Routing Functions &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.3.0 (pgrouting-2.3.0-dev)',
+        VERSION:     '2.3.0 (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,13 +25,13 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev)" href="../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../index.html" />
     <link rel="next" title="All pairs" href="allpairs/doc/allpairs.html" />
     <link rel="prev" title="pgr_nodeNetwork" href="topology/doc/pgr_nodeNetwork.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>pgRouting Manual (2.3.0-dev)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
         <h2 class="heading"><span>Routing Functions</span></h2>
       </div>
       <div class="topnav">
@@ -64,6 +64,7 @@
 <li><a class="reference internal" href="dijkstra/doc/dijkstra.html#dijkstra"><em>dijkstra</em></a> - Dijkstra family functions<ul>
 <li><a class="reference internal" href="dijkstra/doc/pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> - Dijkstra&#8217;s shortest path algorithm.</li>
 <li><a class="reference internal" href="dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> - Use pgr_dijkstra to calculate the costs of the shortest paths.</li>
+<li><a class="reference internal" href="dmatrix/doc/pgr_dijkstraDmatrix.html#pgr-dijkstradmatrix"><em>pgr_dijkstraDmatrix</em></a> Use pgr_dijkstra to calculate a cost matrix.</li>
 <li><a class="reference internal" href="dijkstra/doc/pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia</em></a> - Use pgr_dijkstra to make a route via vertices.</li>
 </ul>
 </li>
@@ -78,12 +79,22 @@
 </li>
 <li><a class="reference internal" href="ksp/doc/pgr_ksp.html#pgr-ksp"><em>pgr_ksp</em></a> - K-Shortest Path</li>
 <li><a class="reference internal" href="trsp/doc/pgr_trsp.html#trsp"><em>pgr_trsp</em></a> - Turn Restriction Shortest Path (TRSP)</li>
-<li><a class="reference internal" href="tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
+<li><a class="reference internal" href="tsp/doc/tsp.html#tsp"><em>Traveling Sales Person</em></a><ul>
+<li><a class="reference internal" href="tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> - When input is a cost matrix.</li>
+<li><a class="reference internal" href="tsp/doc/pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> - When input are coordinates.</li>
+</ul>
+</li>
 <li><a class="reference internal" href="withPoints/doc/withPoints.html#withpoints"><em>pgr_withPoints</em></a> - withPoints family functions<ul>
 <li><a class="reference internal" href="withPoints/doc/pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints</em></a> - Route from/to points anywhere on the graph.</li>
 <li><a class="reference internal" href="withPoints/doc/pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="dmatrix/doc/pgr_withPointsDmatrix.html#pgr-withpointsdmatrix"><em>pgr_withPointsDmatrix</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
 <li><a class="reference internal" href="withPoints/doc/pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP</em></a> - K shortest paths with points.</li>
 <li><a class="reference internal" href="withPoints/doc/pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD</em></a> - Driving distance.</li>
+</ul>
+</li>
+<li><a class="reference internal" href="dmatrix/doc/dmatrix.html#dmatrix"><em>Distance Matrix</em></a> Distance matrix<ul>
+<li><a class="reference internal" href="dmatrix/doc/pgr_dijkstraDmatrix.html#pgr-dijkstradmatrix"><em>pgr_dijkstraDmatrix</em></a> - Use pgr_dijktra to calculate a cost matrix.</li>
+<li><a class="reference internal" href="dmatrix/doc/pgr_withPointsDmatrix.html#pgr-withpointsdmatrix"><em>pgr_withPointsDmatrix</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
 </ul>
 </li>
 </ul>
@@ -108,7 +119,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on May 09, 2016.
+      Last updated on Jun 15, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

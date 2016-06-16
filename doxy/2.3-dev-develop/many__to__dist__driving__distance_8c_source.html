@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>) {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a> = NULL;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="tsp_8c.html#ac85d31fb5b6cb21e57d6bd65cf7fa10e">total_tuples</a> = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">size_t</span> total_tuples = 0;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a> = (<span class="keywordtype">char</span> *)<span class="stringliteral">&quot;&quot;</span>;</div>
@@ -179,7 +179,7 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    clock_t start_t = clock();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="boost__interface__drivedist_8cpp.html#af01c3b01637a3582c5054a0f63eade83">do_pgr_driving_many_to_dist</a>(</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="boost__interface__drivedist_8cpp.html#acc45812b332a93ac9bca6a25e4a55df0">do_pgr_driving_many_to_dist</a>(</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            edges, total_tuples,</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            start_vertex, num,</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            distance,</div>
@@ -268,17 +268,17 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        HeapTuple    tuple;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        Datum        result;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        Datum *values;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordtype">char</span>* nulls;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordtype">bool</span>* nulls;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        values = palloc(6 * <span class="keyword">sizeof</span>(Datum));</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        nulls = palloc(6 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        nulls = palloc(6 * <span class="keyword">sizeof</span>(<span class="keywordtype">bool</span>));</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="comment">// id, start_v, node, edge, cost, tot_cost</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        nulls[0] = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        nulls[1] = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        nulls[2] = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        nulls[3] = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        nulls[4] = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        nulls[5] = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        nulls[0] = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        nulls[1] = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        nulls[2] = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        nulls[3] = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        nulls[4] = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        nulls[5] = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        values[0] = Int32GetDatum(call_cntr + 1);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        values[1] = Int64GetDatum(ret_path[call_cntr].start_id);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        values[2] = Int64GetDatum(ret_path[call_cntr].node);</div>
@@ -286,7 +286,7 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        values[4] = Float8GetDatum(ret_path[call_cntr].cost);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        values[5] = Float8GetDatum(ret_path[call_cntr].agg_cost);</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        tuple = heap_formtuple(tuple_desc, values, nulls);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        tuple = heap_form_tuple(tuple_desc, values, nulls);</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="comment">/* make the tuple into a datum */</span></div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        result = HeapTupleGetDatum(tuple);</div>
@@ -303,20 +303,19 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00102">pgr_types.h:102</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00111">pgr_types.h:111</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00061">tester/BiDirAStar.h:61</a></div></div>
 <div class="ttc" id="many__to__dist__driving__distance_8c_html_a23ab63dc00e382777f8516f89b2ef40f"><div class="ttname"><a href="many__to__dist__driving__distance_8c.html#a23ab63dc00e382777f8516f89b2ef40f">driving_many_to_dist</a></div><div class="ttdeci">Datum driving_many_to_dist(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="many__to__dist__driving__distance_8c_source.html#l00099">many_to_dist_driving_distance.c:99</a></div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
-<div class="ttc" id="boost__interface__drivedist_8cpp_html_af01c3b01637a3582c5054a0f63eade83"><div class="ttname"><a href="boost__interface__drivedist_8cpp.html#af01c3b01637a3582c5054a0f63eade83">do_pgr_driving_many_to_dist</a></div><div class="ttdeci">void do_pgr_driving_many_to_dist(pgr_edge_t *data_edges, size_t total_tuples, int64_t *start_vertex, size_t s_len, float8 distance, bool directedFlag, bool equiCostFlag, General_path_element_t **ret_path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="boost__interface__drivedist_8cpp_source.html#l00049">boost_interface_drivedist.cpp:49</a></div></div>
 <div class="ttc" id="arrays__input_8c_html_a8b3b624e84ed449440408d11251384c1"><div class="ttname"><a href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a></div><div class="ttdeci">int64_t * pgr_get_bigIntArray(size_t *arrlen, ArrayType *input)</div><div class="ttdef"><b>Definition:</b> <a href="arrays__input_8c_source.html#l00038">arrays_input.c:38</a></div></div>
 <div class="ttc" id="time__msg_8c_html_a989d9723eb6d9be4cbf1214136286dbe"><div class="ttname"><a href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe">time_msg</a></div><div class="ttdeci">void time_msg(char *msg, clock_t start_t, clock_t end_t)</div><div class="ttdef"><b>Definition:</b> <a href="time__msg_8c_source.html#l00009">time_msg.c:9</a></div></div>
-<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00077">pgr_types.h:77</a></div></div>
+<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00086">pgr_types.h:86</a></div></div>
 <div class="ttc" id="edges__input_8c_html_a5598918a215c72c9bda7a7f016401b73"><div class="ttname"><a href="edges__input_8c.html#a5598918a215c72c9bda7a7f016401b73">pgr_get_edges</a></div><div class="ttdeci">void pgr_get_edges(char *sql, pgr_edge_t **edges, size_t *total_edges)</div><div class="ttdoc">read edges </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00314">edges_input.c:314</a></div></div>
 <div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00061">postgres_connection.c:61</a></div></div>
 <div class="ttc" id="dijkstra_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00047">dijkstra.h:47</a></div></div>
 <div class="ttc" id="many__to__dist__driving__distance_8c_html_a58c5ee7d9291207074640cb7044a53cb"><div class="ttname"><a href="many__to__dist__driving__distance_8c.html#a58c5ee7d9291207074640cb7044a53cb">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(driving_many_to_dist)</div></div>
-<div class="ttc" id="tsp_8c_html_ac85d31fb5b6cb21e57d6bd65cf7fa10e"><div class="ttname"><a href="tsp_8c.html#ac85d31fb5b6cb21e57d6bd65cf7fa10e">total_tuples</a></div><div class="ttdeci">int total_tuples</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8c_source.html#l00120">tsp.c:120</a></div></div>
+<div class="ttc" id="boost__interface__drivedist_8cpp_html_acc45812b332a93ac9bca6a25e4a55df0"><div class="ttname"><a href="boost__interface__drivedist_8cpp.html#acc45812b332a93ac9bca6a25e4a55df0">do_pgr_driving_many_to_dist</a></div><div class="ttdeci">void do_pgr_driving_many_to_dist(pgr_edge_t *data_edges, size_t total_tuples, int64_t *start_vertex, size_t s_len, double distance, bool directedFlag, bool equiCostFlag, General_path_element_t **ret_path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="boost__interface__drivedist_8cpp_source.html#l00049">boost_interface_drivedist.cpp:49</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
 <div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
 <div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00071">postgres_connection.c:71</a></div></div>
@@ -331,7 +330,7 @@ $(document).ready(function(){initNavTree('many__to__dist__driving__distance_8c_s
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><a class="el" href="many__to__dist__driving__distance_8c.html">many_to_dist_driving_distance.c</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

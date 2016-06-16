@@ -52,15 +52,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BDATester_8cpp.html",
-"bdsp_8h.html#a6f991778d67cbba9985791a787ff0e42",
-"classCVRPSolver.html#a9ea8122d128557860036bd5e4aa85491",
-"classPgr__dijkstra.html#aefe1748b086f416801d9af859f77ad8e",
-"classtokenizer.html#a222e64f5649224bf295364c6954b76e3",
-"index.html",
-"pgr__logger_8h.html#ab865ca96048268763b500aa32d1543bb",
-"structGraphEdgeInfo.html#a7d5db41d72471c923b1016c0063b6b80",
-"structpath__element__t.html#a9fffdd8747e83dc763bba6e8c7191e63",
-"utils_8h.html"
+"bdsp__core_8cpp.html#a772e098df4b9ddb2f01be2c1334c8879",
+"classCVRPSolver.html#ab4d2c4440b0d5db0cedc425c6af73a35",
+"classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6",
+"classpgRouting_1_1tsp_1_1Tour.html#ae2c36a9e07f0abb9db64fd2feb940d95",
+"get__new__queries_8h_source.html",
+"performance_2dijkstra_2pgRouting_8cpp.html#adacbe0175a79dff748855d8c9839f82b",
+"structCustomer__type.html#a2f5f328a2dcd0e0aaa832f46f03dd0fd",
+"structedge__columns.html#ae543a17157037d95212232b9688d29aa",
+"tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

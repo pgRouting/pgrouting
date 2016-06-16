@@ -340,7 +340,7 @@ $(document).ready(function(){initNavTree('astarManyToOne_8c_source.html','');});
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        HeapTuple    tuple;</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        Datum        result;</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        Datum        *values;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordtype">char</span>*        nulls;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordtype">bool</span>*        nulls;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="comment">/*******************************************************************************/</span></div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="comment">/*                          MODIFY!!!!!                                        */</span></div>
@@ -357,11 +357,11 @@ $(document).ready(function(){initNavTree('astarManyToOne_8c_source.html','');});
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        values = palloc(7 * <span class="keyword">sizeof</span>(Datum));</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        nulls = palloc(7 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        nulls = palloc(7 * <span class="keyword">sizeof</span>(<span class="keywordtype">bool</span>));</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordtype">size_t</span> i;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">for</span>(i = 0; i &lt; 7; ++i) {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            nulls[i] = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            nulls[i] = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        }</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
@@ -376,7 +376,7 @@ $(document).ready(function(){initNavTree('astarManyToOne_8c_source.html','');});
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="comment">/*******************************************************************************/</span></div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        tuple = heap_formtuple(tuple_desc, values, nulls);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        tuple = heap_form_tuple(tuple_desc, values, nulls);</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        result = HeapTupleGetDatum(tuple);</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        SRF_RETURN_NEXT(funcctx, result);</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    } <span class="keywordflow">else</span> {</div>
@@ -392,7 +392,7 @@ $(document).ready(function(){initNavTree('astarManyToOne_8c_source.html','');});
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
 <div class="ttc" id="arrays__input_8c_html_a8b3b624e84ed449440408d11251384c1"><div class="ttname"><a href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a></div><div class="ttdeci">int64_t * pgr_get_bigIntArray(size_t *arrlen, ArrayType *input)</div><div class="ttdef"><b>Definition:</b> <a href="arrays__input_8c_source.html#l00038">arrays_input.c:38</a></div></div>
 <div class="ttc" id="time__msg_8c_html_a989d9723eb6d9be4cbf1214136286dbe"><div class="ttname"><a href="time__msg_8c.html#a989d9723eb6d9be4cbf1214136286dbe">time_msg</a></div><div class="ttdeci">void time_msg(char *msg, clock_t start_t, clock_t end_t)</div><div class="ttdef"><b>Definition:</b> <a href="time__msg_8c_source.html#l00009">time_msg.c:9</a></div></div>
-<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00077">pgr_types.h:77</a></div></div>
+<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00086">pgr_types.h:86</a></div></div>
 <div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00061">postgres_connection.c:61</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
 <div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
@@ -402,7 +402,7 @@ $(document).ready(function(){initNavTree('astarManyToOne_8c_source.html','');});
 <div class="ttc" id="astarManyToOne_8c_html_a782dbac911194c8ee0b48dca5e249ff0"><div class="ttname"><a href="astarManyToOne_8c.html#a782dbac911194c8ee0b48dca5e249ff0">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(astarManyToOne)</div></div>
 <div class="ttc" id="postgres__connection_8c_html_ae5ca58a293115d0ec1ca944f56f4faa1"><div class="ttname"><a href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a></div><div class="ttdeci">char * pgr_text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00050">postgres_connection.c:50</a></div></div>
 <div class="ttc" id="astarManyToOne_8c_html_a998d69071da90caf52bef671b687947f"><div class="ttname"><a href="astarManyToOne_8c.html#a998d69071da90caf52bef671b687947f">process</a></div><div class="ttdeci">static void process(char *edges_sql, int64_t *start_vidsArr, size_t size_start_vidsArr, int64_t end_vid, bool directed, int heuristic, double factor, double epsilon, bool only_cost, General_path_element_t **result_tuples, size_t *result_count)</div><div class="ttdef"><b>Definition:</b> <a href="astarManyToOne_8c_source.html#l00067">astarManyToOne.c:67</a></div></div>
-<div class="ttc" id="structPgr__edge__xy__t_html"><div class="ttname"><a href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00043">pgr_types.h:43</a></div></div>
+<div class="ttc" id="structPgr__edge__xy__t_html"><div class="ttname"><a href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00052">pgr_types.h:52</a></div></div>
 <div class="ttc" id="edges__input_8c_html_adce525c316ba6244510553a5cee8451f"><div class="ttname"><a href="edges__input_8c.html#adce525c316ba6244510553a5cee8451f">pgr_get_edges_xy_reversed</a></div><div class="ttdeci">void pgr_get_edges_xy_reversed(char *sql, Pgr_edge_xy_t **edges, size_t *total_edges)</div><div class="ttdoc">reversed graph (for many to 1) </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00339">edges_input.c:339</a></div></div>
 <div class="ttc" id="astarOneToMany__driver_8cpp_html_a73c7bc8b16c7e38fda33978e1593de39"><div class="ttname"><a href="astarOneToMany__driver_8cpp.html#a73c7bc8b16c7e38fda33978e1593de39">do_pgr_astarOneToMany</a></div><div class="ttdeci">void do_pgr_astarOneToMany(Pgr_edge_xy_t *edges, size_t total_edges, int64_t start_vid, int64_t *end_vidsArr, size_t size_end_vidsArr, bool directed, int heuristic, double factor, double epsilon, bool only_cost, General_path_element_t **return_tuples, size_t *return_count, char **log_msg, char **err_msg, bool normal)</div><div class="ttdef"><b>Definition:</b> <a href="astarOneToMany__driver_8cpp_source.html#l00075">astarOneToMany_driver.cpp:75</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -411,7 +411,7 @@ $(document).ready(function(){initNavTree('astarManyToOne_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c6e37fc9835c6783ca7f74105e7ae7b1.html">astar</a></li><li class="navelem"><a class="el" href="dir_7666b4aec57c6b7c1e3a3568b4a00b8f.html">src</a></li><li class="navelem"><a class="el" href="astarManyToOne_8c.html">astarManyToOne.c</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:29 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

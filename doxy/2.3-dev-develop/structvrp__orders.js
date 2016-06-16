@@ -5,6 +5,6 @@ var structvrp__orders =
     [ "open_time", "structvrp__orders.html#a2012e5238ed836e5bf595d8b75db10c4", null ],
     [ "order_unit", "structvrp__orders.html#a8899e6eed3b503d72734a51c5a29977a", null ],
     [ "service_time", "structvrp__orders.html#a56af6adba645c06026391967bd53876c", null ],
-    [ "x", "structvrp__orders.html#a152685df7b347a3c5387608d333aeba3", null ],
-    [ "y", "structvrp__orders.html#ab3512eecc67f2b92c22e2e860212c9c2", null ]
+    [ "x", "structvrp__orders.html#a7d133f64690588baaaac37034f5948af", null ],
+    [ "y", "structvrp__orders.html#ae0cc289c6283033e1a2121d3db8fd30b", null ]
 ];

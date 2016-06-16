@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['path',['Path',['../classTSP.html#a0f6c204a4a361bb61c7d7aa98537ce5e',1,'TSP::Path()'],['../tsplib_8c.html#a6b6b14335b665dbdec47cd595a344fc9',1,'Path():&#160;tsplib.c']]],
+  ['path',['Path',['../tsplib_8c.html#a6b6b14335b665dbdec47cd595a344fc9',1,'tsplib.c']]],
   ['path_5felement',['path_element',['../vrppdtw_2src_2pdp_8h.html#a40a20b37a67483aa8484a7ba69dd5555',1,'pdp.h']]],
   ['path_5felement_5ft',['path_element_t',['../tester_2BiDirAStar_8h.html#a4232dd2b6d43eeb802b01c326cb5edec',1,'path_element_t():&#160;BiDirAStar.h'],['../dijkstra_8h.html#a0d9814712039cb4b46fb2ab88751878e',1,'path_element_t():&#160;dijkstra.h'],['../testit_8c.html#a0d9814712039cb4b46fb2ab88751878e',1,'path_element_t():&#160;testit.c'],['../shooting__star_8h.html#a0d9814712039cb4b46fb2ab88751878e',1,'path_element_t():&#160;shooting_star.h']]],
   ['pdi',['PDI',['../src_2BiDirAStar_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;BiDirAStar.h'],['../src_2MinHeap_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;MinHeap.h'],['../tester_2BiDirAStar_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;BiDirAStar.h'],['../tester_2MinHeap_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;MinHeap.h'],['../BiDirDijkstra_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;BiDirDijkstra.h']]],
@@ -11,7 +11,6 @@ var searchData=
   ['pickups',['Pickups',['../pdp_8hpp.html#af195070f99a015f730dc877339611a79',1,'pdp.hpp']]],
   ['pii',['PII',['../VRP__Solver_8h.html#a66f07903c2de34f8864e17dd89eea319',1,'VRP_Solver.h']]],
   ['point',['Point',['../alpha__drivedist_8cpp.html#aa097b1c3f5429739d7234ac0c50976d9',1,'Point():&#160;alpha_drivedist.cpp'],['../namespacepgRouting.html#aaff0257083abb37d7bb0ff8b6b5c0a36',1,'pgRouting::Point()']]],
-  ['point_5fcolumns_5ft',['point_columns_t',['../tsp_8c.html#ac3e8a535e52d590ec821cd2677634f5c',1,'tsp.c']]],
   ['point_5ft',['point_t',['../tsp_8h.html#a7a31ff9ffbde2c44d8a5b7f56faeed48',1,'tsp.h']]],
   ['polygon_5f2',['Polygon_2',['../alpha__drivedist_8cpp.html#a8c493b4407f1eab1fc792fe406d0db86',1,'alpha_drivedist.cpp']]],
   ['pset',['pSet',['../classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6',1,'Pgr_ksp']]],

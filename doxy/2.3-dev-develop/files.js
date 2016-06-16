@@ -41,6 +41,8 @@ var files =
     [ "boost_interface_drivedist.cpp", "boost__interface__drivedist_8cpp.html", "boost__interface__drivedist_8cpp" ],
     [ "boost_interface_drivedist.h", "boost__interface__drivedist_8h.html", "boost__interface__drivedist_8h" ],
     [ "boost_wrapper.cpp", "boost__wrapper_8cpp.html", "boost__wrapper_8cpp" ],
+    [ "coordinates_input.c", "coordinates__input_8c.html", "coordinates__input_8c" ],
+    [ "coordinates_input.h", "coordinates__input_8h.html", "coordinates__input_8h" ],
     [ "customers_input.c", "customers__input_8c.html", "customers__input_8c" ],
     [ "customers_input.h", "customers__input_8h.html", "customers__input_8h" ],
     [ "debug_macro.h", "debug__macro_8h.html", "debug__macro_8h" ],
@@ -50,17 +52,22 @@ var files =
     [ "dijkstraVia.c", "dijkstraVia_8c.html", "dijkstraVia_8c" ],
     [ "dijkstraVia_driver.cpp", "dijkstraVia__driver_8cpp.html", "dijkstraVia__driver_8cpp" ],
     [ "dijkstraVia_driver.h", "dijkstraVia__driver_8h.html", "dijkstraVia__driver_8h" ],
-    [ "distances_input.c", "distances__input_8c.html", "distances__input_8c" ],
-    [ "distances_input.h", "distances__input_8h.html", "distances__input_8h" ],
-    [ "Dmatrix.cpp", "Dmatrix_8cpp.html", null ],
-    [ "Dmatrix.hpp", "Dmatrix_8hpp.html", [
-      [ "Dmatrix", "classDmatrix.html", "classDmatrix" ]
+    [ "Dmatrix.cpp", "Dmatrix_8cpp.html", "Dmatrix_8cpp" ],
+    [ "Dmatrix.h", "Dmatrix_8h.html", [
+      [ "Dmatrix", "classpgRouting_1_1tsp_1_1Dmatrix.html", "classpgRouting_1_1tsp_1_1Dmatrix" ]
     ] ],
     [ "drivedist.c", "drivedist_8c.html", "drivedist_8c" ],
     [ "driving.cpp", "driving_8cpp.html", "driving_8cpp" ],
     [ "edge_visitors.hpp", "edge__visitors_8hpp.html", "edge__visitors_8hpp" ],
     [ "edges_input.c", "edges__input_8c.html", "edges__input_8c" ],
     [ "edges_input.h", "edges__input_8h.html", "edges__input_8h" ],
+    [ "eucledianDmatrix.cpp", "eucledianDmatrix_8cpp.html", "eucledianDmatrix_8cpp" ],
+    [ "eucledianDmatrix.h", "eucledianDmatrix_8h.html", [
+      [ "eucledianDmatrix", "classpgRouting_1_1tsp_1_1eucledianDmatrix.html", "classpgRouting_1_1tsp_1_1eucledianDmatrix" ]
+    ] ],
+    [ "eucledianTSP.c", "eucledianTSP_8c.html", "eucledianTSP_8c" ],
+    [ "eucledianTSP_driver.cpp", "eucledianTSP__driver_8cpp.html", "eucledianTSP__driver_8cpp" ],
+    [ "eucledianTSP_driver.h", "eucledianTSP__driver_8h.html", "eucledianTSP__driver_8h" ],
     [ "floydWarshall.c", "floydWarshall_8c.html", "floydWarshall_8c" ],
     [ "floydWarshall_driver.cpp", "floydWarshall__driver_8cpp.html", "floydWarshall__driver_8cpp" ],
     [ "floydWarshall_driver.h", "floydWarshall__driver_8h.html", "floydWarshall__driver_8h" ],
@@ -76,12 +83,8 @@ var files =
     [ "johnson.c", "johnson_8c.html", "johnson_8c" ],
     [ "johnson_driver.cpp", "johnson__driver_8cpp.html", "johnson__driver_8cpp" ],
     [ "johnson_driver.h", "johnson__driver_8h.html", "johnson__driver_8h" ],
-    [ "k_targets_boost_wrapper.cpp", "k__targets__boost__wrapper_8cpp.html", "k__targets__boost__wrapper_8cpp" ],
-    [ "k_targets_boost_wrapper.h", "k__targets__boost__wrapper_8h.html", "k__targets__boost__wrapper_8h" ],
-    [ "k_targets_sp.c", "k__targets__sp_8c.html", "k__targets__sp_8c" ],
     [ "ksp.c", "ksp_8c.html", "ksp_8c" ],
     [ "ksp.cpp", "ksp_8cpp.html", "ksp_8cpp" ],
-    [ "ksp.h", "ksp_8h.html", "ksp_8h" ],
     [ "ksp_driver.cpp", "ksp__driver_8cpp.html", "ksp__driver_8cpp" ],
     [ "ksp_driver.h", "ksp__driver_8h.html", "ksp__driver_8h" ],
     [ "many_to_dist_driving_distance.c", "many__to__dist__driving__distance_8c.html", "many__to__dist__driving__distance_8c" ],
@@ -98,11 +101,16 @@ var files =
     [ "many_to_one_withPoints.c", "many__to__one__withPoints_8c.html", "many__to__one__withPoints_8c" ],
     [ "many_to_one_withPoints_driver.cpp", "many__to__one__withPoints__driver_8cpp.html", "many__to__one__withPoints__driver_8cpp" ],
     [ "many_to_one_withPoints_driver.h", "many__to__one__withPoints__driver_8h.html", "many__to__one__withPoints__driver_8h" ],
+    [ "matrixRows_input.c", "matrixRows__input_8c.html", "matrixRows__input_8c" ],
+    [ "matrixRows_input.h", "matrixRows__input_8h.html", "matrixRows__input_8h" ],
     [ "src/MinHeap.cpp", "src_2MinHeap_8cpp.html", null ],
     [ "tester/MinHeap.cpp", "tester_2MinHeap_8cpp.html", null ],
     [ "src/MinHeap.h", "src_2MinHeap_8h.html", "src_2MinHeap_8h" ],
     [ "tester/MinHeap.h", "tester_2MinHeap_8h.html", "tester_2MinHeap_8h" ],
     [ "msg_logger.hpp", "msg__logger_8hpp.html", "msg__logger_8hpp" ],
+    [ "newTSP.c", "newTSP_8c.html", "newTSP_8c" ],
+    [ "newTSP_driver.cpp", "newTSP__driver_8cpp.html", "newTSP__driver_8cpp" ],
+    [ "newTSP_driver.h", "newTSP__driver_8h.html", "newTSP__driver_8h" ],
     [ "one_to_many_dijkstra.c", "one__to__many__dijkstra_8c.html", "one__to__many__dijkstra_8c" ],
     [ "one_to_many_dijkstra_driver.cpp", "one__to__many__dijkstra__driver_8cpp.html", "one__to__many__dijkstra__driver_8cpp" ],
     [ "one_to_many_dijkstra_driver.h", "one__to__many__dijkstra__driver_8h.html", "one__to__many__dijkstra__driver_8h" ],
@@ -143,7 +151,7 @@ var files =
     [ "pgr_logger.h", "pgr__logger_8h.html", "pgr__logger_8h" ],
     [ "pgr_tsp.cpp", "pgr__tsp_8cpp.html", "pgr__tsp_8cpp" ],
     [ "pgr_tsp.hpp", "pgr__tsp_8hpp.html", [
-      [ "TSP", "classTSP.html", "classTSP" ]
+      [ "TSP", "classpgRouting_1_1tsp_1_1TSP.html", "classpgRouting_1_1tsp_1_1TSP" ]
     ] ],
     [ "pgr_types.h", "pgr__types_8h.html", "pgr__types_8h" ],
     [ "pgr_withPoints.cpp", "pgr__withPoints_8cpp.html", "pgr__withPoints_8cpp" ],
@@ -180,6 +188,9 @@ var files =
     ] ],
     [ "test1.c", "test1_8c.html", "test1_8c" ],
     [ "test2.cpp", "test2_8cpp.html", "test2_8cpp" ],
+    [ "test_matrixRows.c", "test__matrixRows_8c.html", "test__matrixRows_8c" ],
+    [ "test_matrixRows_driver.cpp", "test__matrixRows__driver_8cpp.html", "test__matrixRows__driver_8cpp" ],
+    [ "test_matrixRows_driver.h", "test__matrixRows__driver_8h.html", "test__matrixRows__driver_8h" ],
     [ "Tester.cpp", "Tester_8cpp.html", "Tester_8cpp" ],
     [ "testit.c", "testit_8c.html", "testit_8c" ],
     [ "testit.cpp", "testit_8cpp.html", "testit_8cpp" ],
@@ -188,14 +199,15 @@ var files =
     [ "testXYedges_driver.h", "testXYedges__driver_8h.html", "testXYedges__driver_8h" ],
     [ "time_msg.c", "time__msg_8c.html", "time__msg_8c" ],
     [ "time_msg.h", "time__msg_8h.html", "time__msg_8h" ],
+    [ "tour.cpp", "tour_8cpp.html", "tour_8cpp" ],
+    [ "tour.h", "tour_8h.html", [
+      [ "Tour", "classpgRouting_1_1tsp_1_1Tour.html", "classpgRouting_1_1tsp_1_1Tour" ]
+    ] ],
     [ "trsp.c", "trsp_8c.html", "trsp_8c" ],
     [ "trsp.h", "trsp_8h.html", "trsp_8h" ],
     [ "trsp_core.cpp", "trsp__core_8cpp.html", "trsp__core_8cpp" ],
-    [ "tsp.c", "tsp_8c.html", "tsp_8c" ],
     [ "tsp.h", "tsp_8h.html", "tsp_8h" ],
     [ "tsp2.c", "tsp2_8c.html", "tsp2_8c" ],
-    [ "tsp_driver.cpp", "tsp__driver_8cpp.html", "tsp__driver_8cpp" ],
-    [ "tsp_driver.h", "tsp__driver_8h.html", "tsp__driver_8h" ],
     [ "tsplib.c", "tsplib_8c.html", "tsplib_8c" ],
     [ "Utils.h", "Utils_8h.html", "Utils_8h" ],
     [ "utils.h", "utils_8h.html", "utils_8h" ],
@@ -212,6 +224,5 @@ var files =
     [ "withPoints_ksp_driver.cpp", "withPoints__ksp__driver_8cpp.html", "withPoints__ksp__driver_8cpp" ],
     [ "withPoints_ksp_driver.h", "withPoints__ksp__driver_8h.html", "withPoints__ksp__driver_8h" ],
     [ "xy_vertex.cpp", "xy__vertex_8cpp.html", "xy__vertex_8cpp" ],
-    [ "xy_vertex.h", "xy__vertex_8h.html", "xy__vertex_8h" ],
-    [ "xyd_tsp.c", "xyd__tsp_8c.html", "xyd__tsp_8c" ]
+    [ "xy_vertex.h", "xy__vertex_8h.html", "xy__vertex_8h" ]
 ];

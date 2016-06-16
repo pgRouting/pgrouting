@@ -137,44 +137,41 @@ $(document).ready(function(){initNavTree('alpha_8h_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifdef __MINGW64__</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define ELOG_H</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="postgres_8h.html">postgres.h</a>&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structvertex.html">   33</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvertex.html">vertex</a></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structvertex.html#a85e129c2ca0134b32ac6d3761de0bbd6">   35</a></span>&#160;  <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> <a class="code" href="structvertex.html#a85e129c2ca0134b32ac6d3761de0bbd6">x</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structvertex.html#acbef1dc7fe55ade8c88f6516b7f7e3b0">   36</a></span>&#160;  <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> <a class="code" href="structvertex.html#acbef1dc7fe55ade8c88f6516b7f7e3b0">y</a>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;} <a class="code" href="alpha_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structvertex.html">   32</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structvertex.html">vertex</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structvertex.html#a11f52ec2e920d56500baefe5a2e2bba7">   34</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="structvertex.html#a11f52ec2e920d56500baefe5a2e2bba7">x</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structvertex.html#a8b9f211498390a67c369fd43f3722a19">   35</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="structvertex.html#a8b9f211498390a67c369fd43f3722a19">y</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} <a class="code" href="alpha_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span>                                                                     </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="alpha_8h.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a>(<a class="code" href="structvertex.html">vertex_t</a> *vertices, <span class="keywordtype">size_t</span> count, <span class="keywordtype">double</span> alpha,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                  <a class="code" href="structvertex.html">vertex_t</a> **res, <span class="keywordtype">size_t</span> *res_count, <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                        </div>
-<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00033">alpha.h:33</a></div></div>
-<div class="ttc" id="alpha_8h_html_a64fca5dabc4ad9db224e524a154bbff1"><div class="ttname"><a href="alpha_8h.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a></div><div class="ttdeci">int alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00190">alpha_drivedist.cpp:190</a></div></div>
-<div class="ttc" id="dijkstra_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00047">dijkstra.h:47</a></div></div>
-<div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
-<div class="ttc" id="structvertex_html_acbef1dc7fe55ade8c88f6516b7f7e3b0"><div class="ttname"><a href="structvertex.html#acbef1dc7fe55ade8c88f6516b7f7e3b0">vertex::y</a></div><div class="ttdeci">float8 y</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00036">alpha.h:36</a></div></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span>                                                                     </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="alpha_8h.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a>(<a class="code" href="structvertex.html">vertex_t</a> *vertices, <span class="keywordtype">size_t</span> count, <span class="keywordtype">double</span> alpha,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                  <a class="code" href="structvertex.html">vertex_t</a> **res, <span class="keywordtype">size_t</span> *res_count, <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                        </div>
+<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00032">alpha.h:32</a></div></div>
+<div class="ttc" id="structvertex_html_a8b9f211498390a67c369fd43f3722a19"><div class="ttname"><a href="structvertex.html#a8b9f211498390a67c369fd43f3722a19">vertex::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00035">alpha.h:35</a></div></div>
+<div class="ttc" id="alpha_8h_html_a64fca5dabc4ad9db224e524a154bbff1"><div class="ttname"><a href="alpha_8h.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a></div><div class="ttdeci">int alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00195">alpha_drivedist.cpp:195</a></div></div>
 <div class="ttc" id="alpha_8h_html_ab653adde14e40dd8c6c8a1cfa37a87c1"><div class="ttname"><a href="alpha_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a></div><div class="ttdeci">struct vertex vertex_t</div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
-<div class="ttc" id="structvertex_html_a85e129c2ca0134b32ac6d3761de0bbd6"><div class="ttname"><a href="structvertex.html#a85e129c2ca0134b32ac6d3761de0bbd6">vertex::x</a></div><div class="ttdeci">float8 x</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00035">alpha.h:35</a></div></div>
+<div class="ttc" id="structvertex_html_a11f52ec2e920d56500baefe5a2e2bba7"><div class="ttname"><a href="structvertex.html#a11f52ec2e920d56500baefe5a2e2bba7">vertex::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00034">alpha.h:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha_8h.html">alpha.h</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:29 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

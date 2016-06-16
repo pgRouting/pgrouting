@@ -12,7 +12,7 @@ var searchData=
   ['direction',['Direction',['../structGraphEdgeInfo.html#a8f8c396e0572783b1247170c8c8c3d2d',1,'GraphEdgeInfo']]],
   ['dis',['dis',['../structState.html#a039c39c4f24785002b81bea0b6b10591',1,'State::dis()'],['../classRoute.html#a15771abe107cbf4d1db84dc859cfa487',1,'Route::dis()'],['../structstatesave.html#ab3b07538c21520bb96910d674d83e753',1,'statesave::dis()'],['../classRoute.html#a2029bf719fa490750e41dd3497d6ba12',1,'Route::dis()']]],
   ['dis_5ftotal',['dis_total',['../classSolution.html#acac022f7a628fad5d78a975d6f08e380',1,'Solution']]],
-  ['dist',['dist',['../classTSP.html#a98b5e8c78eb0d99bf54e0f3790835ebf',1,'TSP::dist()'],['../structtspstruct.html#addd0ea89b527168145a1144f9ae835d9',1,'tspstruct::dist()']]],
-  ['distance',['distance',['../structEdge.html#a52346282c5410fdc12dae1068176b188',1,'Edge::distance()'],['../structdistance__columns.html#ad8755e4073c1a32c3dc776fe0d4651cb',1,'distance_columns::distance()'],['../structvrp__cost__element.html#a7bcf7c728b5f253d9d215c1d32f65cc7',1,'vrp_cost_element::distance()'],['../structCostPack.html#a93baff206f21008d6a9546dbeb1920ef',1,'CostPack::distance()'],['../tsp_8c.html#a45781da707333006240f173c21b3c3d2',1,'DISTANCE():&#160;tsp.c']]],
+  ['dist',['dist',['../structtspstruct.html#addd0ea89b527168145a1144f9ae835d9',1,'tspstruct']]],
+  ['distance',['distance',['../structEdge.html#a52346282c5410fdc12dae1068176b188',1,'Edge::distance()'],['../structdistance__columns.html#ad8755e4073c1a32c3dc776fe0d4651cb',1,'distance_columns::distance()'],['../structvrp__cost__element.html#a7bcf7c728b5f253d9d215c1d32f65cc7',1,'vrp_cost_element::distance()'],['../structCostPack.html#a93baff206f21008d6a9546dbeb1920ef',1,'CostPack::distance()']]],
   ['distances',['distances',['../classPgr__astar.html#a2a78c4a3c2859b91956166837632bd40',1,'Pgr_astar::distances()'],['../classPgr__dijkstra.html#abb45493b234950e9f4466412169b3905',1,'Pgr_dijkstra::distances()']]]
 ];

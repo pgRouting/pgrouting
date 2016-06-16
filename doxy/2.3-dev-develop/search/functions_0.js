@@ -16,7 +16,7 @@ var searchData=
   ['alpha_5fedges',['alpha_edges',['../alpha__drivedist_8cpp.html#a269b1986c0b1002e29ca46fbd69d10c6',1,'alpha_drivedist.cpp']]],
   ['alpha_5fshape',['alpha_shape',['../alpha_8h.html#a64fca5dabc4ad9db224e524a154bbff1',1,'alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg):&#160;alpha_drivedist.cpp'],['../alpha__drivedist_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1',1,'alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg):&#160;alpha_drivedist.cpp']]],
   ['alphashape',['alphashape',['../alpha_8c.html#aa200d39cd021c4a008ece740a8bd88d1',1,'alpha.c']]],
-  ['annealing',['annealing',['../classTSP.html#abb30d385da400f30793dc481dbcd692f',1,'TSP::annealing()'],['../tsplib_8c.html#a9aed19b4a7f86f89c7182bba8847f383',1,'annealing():&#160;tsplib.c']]],
+  ['annealing',['annealing',['../classpgRouting_1_1tsp_1_1TSP.html#a48e863a4039777e203139b40b8ac5660',1,'pgRouting::tsp::TSP::annealing()'],['../tsplib_8c.html#a9aed19b4a7f86f89c7182bba8847f383',1,'annealing():&#160;tsplib.c']]],
   ['append',['append',['../classRoute.html#a2fb53dea8b38b61e63500668e7cfdfeb',1,'Route::append(const Customers &amp;c, const Pickup &amp;order)'],['../classRoute.html#a22a2f52cbdf2037e0dae0d71d3449d85',1,'Route::append(customer *c, Pickup p, depot d, int CustomerLength, int PickupLength, State S)']]],
   ['appendpath',['appendPath',['../classPath.html#a9cb45e3a413a03f1c4224b840af1fe83',1,'Path']]],
   ['applybestmoveincurrentsolution',['applyBestMoveInCurrentSolution',['../classCVRPSolver.html#ad67d3350e6f6731388906a4309d2fdb3',1,'CVRPSolver']]],
@@ -30,6 +30,6 @@ var searchData=
   ['astarmanytomany',['astarManyToMany',['../astarManyToMany_8c.html#af186b264aabbbb1d85a782db892fef52',1,'astarManyToMany.c']]],
   ['astarmanytoone',['astarManyToOne',['../astarManyToOne_8c.html#ace9c19627c68f616ed6b577809726f02',1,'astarManyToOne.c']]],
   ['astaronetomany',['astarOneToMany',['../astarOneToMany_8c.html#ad59f8d0ab73e2bc023cc801a1bdf95ff',1,'astarOneToMany.c']]],
-  ['astaronetoone',['astarOneToOne',['../astarOneToOne_8c.html#aeaeef5e60c9e0bc9926cae1d9deeda46',1,'astarOneToOne.c']]],
+  ['astaronetoone',['astarOneToOne',['../astarOneToOne_8c.html#acf07fd4a51a9d2589f5c420a5d82c9da',1,'astarOneToOne.c']]],
   ['attempvehicleexchange',['attempVehicleExchange',['../classCVRPSolver.html#a62099f3b0b7bddc8ad63762ca9c8955a',1,'CVRPSolver']]]
 ];

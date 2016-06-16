@@ -122,7 +122,7 @@ $(document).ready(function(){initNavTree('pgr__assert_8h_source.html','');});
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef  SRC_COMMON_SRC_PGR_ASSERT_H_</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define  SRC_COMMON_SRC_PGR_ASSERT_H_</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef __MINGW32__</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#if defined(__MINGW32__) || defined(_MSC_VER)</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;winsock2.h&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -151,30 +151,40 @@ $(document).ready(function(){initNavTree('pgr__assert_8h_source.html','');});
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">     : throw AssertFailedException(&quot;AssertFailedException: &quot; __STRING(expr) &quot; at &quot; __FILE__ &quot;:&quot; __TOSTRING(__LINE__) + get_backtrace() ) )  </span></div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;std::string <a class="code" href="pgr__assert_8h.html#a42375175231f734b4a0db0d8754be7b4">get_backtrace</a>();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classAssertFailedException.html">   99</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAssertFailedException.html">AssertFailedException</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">  101</a></span>&#160;        <span class="keyword">const</span> std::string <a class="code" href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">str</a>;   </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() <span class="keyword">const</span> throw();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        explicit <a class="code" href="classAssertFailedException.html">AssertFailedException</a>(std::<span class="keywordtype">string</span> msg);</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#add60057af23323b1c5bd4220e0c0517e">  106</a></span>&#160;        virtual ~<a class="code" href="classAssertFailedException.html">AssertFailedException</a>() throw() {};</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_</span></div>
-<div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00099">pgr_assert.h:99</a></div></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#ifdef NDEBUG</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define pgassertwm(expr, msg) ((void)0)</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="pgr__assert_8h.html#ad0b8692b21986a9d86dcf801b7433791">   90</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define pgassertwm(expr, msg) \</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">    ((expr) \</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">     ? static_cast&lt;void&gt;(0) \</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">     : throw AssertFailedException(&quot;AssertFailedException: &quot; __STRING(expr) &quot; at &quot; __FILE__ &quot;:&quot; __TOSTRING(__LINE__) + get_backtrace(msg) ) )  </span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;std::string <a class="code" href="pgr__assert_8h.html#a42375175231f734b4a0db0d8754be7b4">get_backtrace</a>();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;std::string <a class="code" href="pgr__assert_8h.html#a42375175231f734b4a0db0d8754be7b4">get_backtrace</a>(<span class="keyword">const</span> std::string &amp;);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classAssertFailedException.html">  109</a></span>&#160;<span class="keyword">class </span><a class="code" href="classAssertFailedException.html">AssertFailedException</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">  111</a></span>&#160;        <span class="keyword">const</span> std::string <a class="code" href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">str</a>;   </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() <span class="keyword">const</span> throw();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        explicit <a class="code" href="classAssertFailedException.html">AssertFailedException</a>(std::<span class="keywordtype">string</span> msg);</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classAssertFailedException.html#add60057af23323b1c5bd4220e0c0517e">  116</a></span>&#160;        virtual ~<a class="code" href="classAssertFailedException.html">AssertFailedException</a>() throw() {};</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_</span></div>
+<div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00109">pgr_assert.h:109</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html_a42375175231f734b4a0db0d8754be7b4"><div class="ttname"><a href="pgr__assert_8h.html#a42375175231f734b4a0db0d8754be7b4">get_backtrace</a></div><div class="ttdeci">std::string get_backtrace()</div><div class="ttdoc">returns the execution path of the trace </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00035">pgr_assert.cpp:35</a></div></div>
-<div class="ttc" id="classAssertFailedException_html_ab979c89db58aa0e6f6bef73eabf39887"><div class="ttname"><a href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">AssertFailedException::str</a></div><div class="ttdeci">const std::string str</div><div class="ttdoc">str Holds what() we got as message from the #define </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00101">pgr_assert.h:101</a></div></div>
-<div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00059">pgr_assert.cpp:59</a></div></div>
+<div class="ttc" id="classAssertFailedException_html_ab979c89db58aa0e6f6bef73eabf39887"><div class="ttname"><a href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">AssertFailedException::str</a></div><div class="ttdeci">const std::string str</div><div class="ttdoc">str Holds what() we got as message from the #define </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00111">pgr_assert.h:111</a></div></div>
+<div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00062">pgr_assert.cpp:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="pgr__assert_8h.html">pgr_assert.h</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:54 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -5,6 +5,7 @@ var searchData=
   ['cmoveinfo',['CMoveInfo',['../classCMoveInfo.html',1,'']]],
   ['column_5finfo_5ft',['Column_info_t',['../structColumn__info__t.html',1,'']]],
   ['comppaths',['compPaths',['../classPgr__ksp_1_1compPaths.html',1,'Pgr_ksp']]],
+  ['coordinate_5ft',['Coordinate_t',['../structCoordinate__t.html',1,'']]],
   ['corderinfo',['COrderInfo',['../classCOrderInfo.html',1,'']]],
   ['costholder',['CostHolder',['../structGraphDefinition_1_1CostHolder.html',1,'GraphDefinition']]],
   ['costpack',['CostPack',['../structCostPack.html',1,'']]],

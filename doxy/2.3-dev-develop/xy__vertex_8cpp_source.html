@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('xy__vertex_8cpp_source.html','');});
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> ********************************************************************PGR-GNU*/</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifdef __MINGW32__</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if defined(__MINGW32__) || defined(_MSC_VER)</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;winsock2.h&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifdef open</span></div>
@@ -269,20 +269,20 @@ $(document).ready(function(){initNavTree('xy__vertex_8cpp_source.html','');});
 <div class="ttc" id="classpgRouting_1_1XY__vertex_html_a62d57c106689ed6ab12b86f1187c69a1"><div class="ttname"><a href="classpgRouting_1_1XY__vertex.html#a62d57c106689ed6ab12b86f1187c69a1">pgRouting::XY_vertex::point</a></div><div class="ttdeci">Point point</div><div class="ttdef"><b>Definition:</b> <a href="xy__vertex_8h_source.html#l00078">xy_vertex.h:78</a></div></div>
 <div class="ttc" id="namespacepgRouting_html_a9b0f64178792e5c6b0d51121827a1b7e"><div class="ttname"><a href="namespacepgRouting.html#a9b0f64178792e5c6b0d51121827a1b7e">pgRouting::check_vertices</a></div><div class="ttdeci">size_t check_vertices(std::vector&lt; Basic_vertex &gt; vertices)</div><div class="ttdef"><b>Definition:</b> <a href="basic__vertex_8cpp_source.html#l00049">basic_vertex.cpp:49</a></div></div>
 <div class="ttc" id="namespacepgRouting_html_a3461655e5f62107d921454d8e7923829"><div class="ttname"><a href="namespacepgRouting.html#a3461655e5f62107d921454d8e7923829">pgRouting::extract_vertices</a></div><div class="ttdeci">std::vector&lt; Basic_vertex &gt; extract_vertices(std::vector&lt; Basic_vertex &gt; vertices, const std::vector&lt; pgr_edge_t &gt; data_edges)</div><div class="ttdef"><b>Definition:</b> <a href="basic__vertex_8cpp_source.html#l00067">basic_vertex.cpp:67</a></div></div>
-<div class="ttc" id="structpoint_html"><div class="ttname"><a href="structpoint.html">point</a></div><div class="ttdef"><b>Definition:</b> <a href="tsp_8h_source.html#l00034">tsp.h:34</a></div></div>
+<div class="ttc" id="structpoint_html"><div class="ttname"><a href="structpoint.html">point</a></div><div class="ttdef"><b>Definition:</b> <a href="tsp_8h_source.html#l00037">tsp.h:37</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html"><div class="ttname"><a href="pgr__assert_8h.html">pgr_assert.h</a></div></div>
 <div class="ttc" id="xy__vertex_8h_html"><div class="ttname"><a href="xy__vertex_8h.html">xy_vertex.h</a></div></div>
 <div class="ttc" id="structedge_html_a35006226be4289b23c1303ec5df12c07"><div class="ttname"><a href="structedge.html#a35006226be4289b23c1303ec5df12c07">edge::target</a></div><div class="ttdeci">int target</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00065">tester/BiDirAStar.h:65</a></div></div>
 <div class="ttc" id="pgr__types_8h_html"><div class="ttname"><a href="pgr__types_8h.html">pgr_types.h</a></div></div>
 <div class="ttc" id="namespacepgRouting_html_aece35eda85b6edba0683906282fc6279"><div class="ttname"><a href="namespacepgRouting.html#aece35eda85b6edba0683906282fc6279">pgRouting::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;log, const Basic_vertex &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="basic__vertex_8cpp_source.html#l00044">basic_vertex.cpp:44</a></div></div>
-<div class="ttc" id="structPgr__edge__xy__t_html"><div class="ttname"><a href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00043">pgr_types.h:43</a></div></div>
+<div class="ttc" id="structPgr__edge__xy__t_html"><div class="ttname"><a href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00052">pgr_types.h:52</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="xy__vertex_8cpp.html">xy_vertex.cpp</a></li>
-    <li class="footer">Generated on Mon May 9 2016 20:14:55 for pgRouting by
+    <li class="footer">Generated on Wed Jun 15 2016 22:41:30 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
