@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <algorithm>
 #include <vector>
+#include <cmath>
 #include "../../common/src/pgr_assert.h"
 
 #include "./eucledianDmatrix.h"
