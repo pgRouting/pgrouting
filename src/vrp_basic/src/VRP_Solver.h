@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <utility>
 #include <string>
+#include <math.h>
 
 #define MAXIMUM_TRY 15
 #define TOTAL_NUMBER_OF_SEARCH 15
