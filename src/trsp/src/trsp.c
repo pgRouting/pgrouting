@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "fmgr.h"
 #include "trsp.h"
 
-Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 // #define DEBUG 
 #include "../../common/src/debug_macro.h"
@@ -80,7 +80,6 @@ static int compute_trsp(
     PGR_DBG("Total %ld restriction", total_restrict_tuples);
 
 
-
     int v_max_id=0;
     int v_min_id=INT_MAX;
 
@@ -117,11 +116,11 @@ static int compute_trsp(
 
         if(edges[z].target>v_max_id)
             v_max_id=(int)edges[z].target;      
-
         //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
 
     }
 
+//<<<<<<< HEAD
     //::::::::::::::::::::::::::::::::::::  
     //:: reducing vertex id (renumbering)
     //::::::::::::::::::::::::::::::::::::
@@ -164,7 +163,6 @@ static int compute_trsp(
         start_id -= v_min_id;
         end_id   -= v_min_id;
     }
-
 
     if (dovertex) {
         PGR_DBG("Calling trsp_node_wrapper\n");
@@ -215,7 +213,7 @@ static int compute_trsp(
 
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-    Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 
@@ -346,7 +344,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 }
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
-    Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 

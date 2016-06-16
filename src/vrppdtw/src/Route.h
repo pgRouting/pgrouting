@@ -70,6 +70,7 @@ class Route
 
 int  Route::RemoveOrder(Pickup p){
         int flag=0;
+        int ret = 0;
         // printf("Remove Order with Pid=%d  Did=%d\n",p.Pid,p.Did);
         for(int i=0;i<path_length;i++)
         {
@@ -80,7 +81,9 @@ int  Route::RemoveOrder(Pickup p){
                         order[i]=0;
                 }
         }
-        int new_path[path_length+1],new_length=0,new_order[path_length+1];
+        int *new_path = new int[path_length+1];
+        int new_length = 0;
+        int *new_order= new int[path_length+1];
         if(flag==1)
         {
                 //copy 
@@ -101,12 +104,15 @@ int  Route::RemoveOrder(Pickup p){
                         order[i]=new_order[i];
                 }
                 path_length=new_length;
-                return 1;
+                ret=1;
         }
         else
         {
-                return 0;
+                ret=0;
         }
+        delete [] new_path;
+        delete [] new_order;
+        return ret;
 }
 State  Route::append(customer *c, Pickup p, depot d, int CustomerLength, int PickupLength, State S){
 

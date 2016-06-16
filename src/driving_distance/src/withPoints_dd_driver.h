@@ -41,7 +41,7 @@ extern "C" {
             pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
 
             int64_t  *start_pids_arr,    size_t s_len,
-            float8 distance,
+            double distance,
 
             bool directed,
             char driving_side,

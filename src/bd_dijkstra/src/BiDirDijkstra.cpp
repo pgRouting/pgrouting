@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-MIT*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -191,7 +191,7 @@ void BiDirDijkstra::explore(int cur_node, double cur_cost, int dir, std::priorit
 {
 	int i;
 	// Number of connected edges
-	int con_edge = m_vecNodeVector[cur_node]->Connected_Edges_Index.size();
+	int con_edge = static_cast<int>(m_vecNodeVector[cur_node]->Connected_Edges_Index.size());
 	double edge_cost;
 
 	for(i = 0; i < con_edge; i++)
@@ -368,7 +368,7 @@ int BiDirDijkstra::bidir_dijkstra(edge_t *edges, unsigned int edge_count, int ma
 		//*path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
         *path=NULL;
 		*path = pgr_alloc(m_vecPath.size(), (*path));
-		*path_count = m_vecPath.size();
+		*path_count = static_cast<int>(m_vecPath.size());
         // DBG("BiDirDijkstra::bidir_dijkstra: allocated path\n");
 
 		for(i = 0; i < *path_count; i++)
@@ -447,10 +447,10 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 
 	// Create a GraphEdgeInfo using the information of the current edge
 	GraphEdgeInfo newEdge;
-	newEdge.EdgeID = edgeIn.id;
-	newEdge.EdgeIndex = m_vecEdgeVector.size();	
-	newEdge.StartNode = edgeIn.source;
-	newEdge.EndNode = edgeIn.target;
+	newEdge.EdgeID = static_cast<int>(edgeIn.id);
+	newEdge.EdgeIndex = static_cast<int>(m_vecEdgeVector.size());
+	newEdge.StartNode = static_cast<int>(edgeIn.source);
+	newEdge.EndNode = static_cast<int>(edgeIn.target);
 	newEdge.Cost = edgeIn.cost;
 	newEdge.ReverseCost = edgeIn.reverse_cost;
 
@@ -474,7 +474,7 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 	// Update max_edge_id
 	if(edgeIn.id > max_edge_id)
 	{
-		max_edge_id = edgeIn.id;
+		max_edge_id = static_cast<int>(edgeIn.id);
 	}
 
 	//Update max_node_id

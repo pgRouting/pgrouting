@@ -47,13 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./withPoints_ksp_driver.h"
 #include "./../../common/src/debug_macro.h"
 
-PG_FUNCTION_INFO_V1(withPoints_ksp);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-withPoints_ksp(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS);
 
 
 /*******************************************************************************/
@@ -161,11 +155,8 @@ process(
 
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(withPoints_ksp);
 PGDLLEXPORT Datum
-#endif
 withPoints_ksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t             call_cntr;

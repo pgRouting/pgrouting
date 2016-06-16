@@ -26,7 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <map>
 #include <queue>
-
+#if defined(_MSC_VER) && _MSC_VER >= 1700
+#include <functional>
+#endif
 #include <sstream>
 #include "trsp.h"
 
