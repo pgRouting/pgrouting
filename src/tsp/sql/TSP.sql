@@ -16,8 +16,8 @@ CREATE OR REPLACE FUNCTION pgr_TSP(
 
     randomize BOOLEAN DEFAULT true,
 
-    OUT seq integer,
-    OUT node integer,
+    OUT seq INTEGER,
+    OUT node BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF record

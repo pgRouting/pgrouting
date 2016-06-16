@@ -30,6 +30,8 @@
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#undef min
+#undef max
 #endif
 
 #include "./pgr_tsp.hpp"
@@ -41,6 +43,7 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#include <cmath>
 
 #include "../../common/src/pgr_types.h"
 #include "../../common/src/pgr_assert.h"

@@ -90,11 +90,16 @@ void BiDirDijkstra::initall(int maxNode)
 */
 void BiDirDijkstra::deleteall()
 {
-	std::vector<GraphNodeInfo*>::iterator it;
-	for(it  = m_vecNodeVector.begin(); it != m_vecNodeVector.end(); it++){
-		delete *it;
+	std::vector<GraphNodeInfo*>::iterator itNode;
+	for(itNode = m_vecNodeVector.begin(); itNode != m_vecNodeVector.end(); itNode++){
+		delete *itNode;
 	}
 	m_vecNodeVector.clear();
+	std::vector<GraphEdgeInfo*>::iterator itEdge;
+	for (itEdge = m_vecEdgeVector.begin(); itEdge != m_vecEdgeVector.end(); itEdge++){
+		delete *itEdge;
+	}
+	m_vecEdgeVector.clear();
 	delete [] m_pFParent;
 	delete [] m_pRParent;
 	delete [] m_pFCost;
@@ -198,7 +203,7 @@ void BiDirDijkstra::explore(int cur_node, double cur_cost, int dir, std::priorit
 	{
 		int edge_index = m_vecNodeVector[cur_node]->Connected_Edges_Index[i];
 		// Get the edge from the edge list.
-		GraphEdgeInfo edge = m_vecEdgeVector[edge_index];
+		GraphEdgeInfo edge = *m_vecEdgeVector[edge_index];
 		// Get the connected node
 		int new_node = m_vecNodeVector[cur_node]->Connected_Nodes[i];
 		
@@ -446,29 +451,29 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 
 
 	// Create a GraphEdgeInfo using the information of the current edge
-	GraphEdgeInfo newEdge;
-	newEdge.EdgeID = static_cast<int>(edgeIn.id);
-	newEdge.EdgeIndex = static_cast<int>(m_vecEdgeVector.size());
-	newEdge.StartNode = static_cast<int>(edgeIn.source);
-	newEdge.EndNode = static_cast<int>(edgeIn.target);
-	newEdge.Cost = edgeIn.cost;
-	newEdge.ReverseCost = edgeIn.reverse_cost;
+	GraphEdgeInfo *newEdge = new GraphEdgeInfo();
+	newEdge->EdgeID = static_cast<int>(edgeIn.id);
+	newEdge->EdgeIndex = static_cast<int>(m_vecEdgeVector.size());
+	newEdge->StartNode = static_cast<int>(edgeIn.source);
+	newEdge->EndNode = static_cast<int>(edgeIn.target);
+	newEdge->Cost = edgeIn.cost;
+	newEdge->ReverseCost = edgeIn.reverse_cost;
 
 	// Set the direction. If both cost and reverse cost has positive value the edge is bidirectional and direction field is 0. If cost is positive and reverse cost
 	// negative then the edge is unidirectional with direction = 1 (goes from source to target) otherwise it is unidirectional with direction = -1 (goes from target
 	// to source). Another way of creating unidirectional edge is assigning big values in cost or reverse_cost. In that case the direction is still zero and this case
 	// is handled in the algorithm automatically.
-	if(newEdge.Cost >= 0.0 && newEdge.ReverseCost >= 0)
+	if(newEdge->Cost >= 0.0 && newEdge->ReverseCost >= 0)
 	{
-		newEdge.Direction = 0;
+		newEdge->Direction = 0;
 	}
-	else if(newEdge.Cost >= 0.0)
+	else if(newEdge->Cost >= 0.0)
 	{
-		newEdge.Direction = 1;
+		newEdge->Direction = 1;
 	}
 	else
 	{
-		newEdge.Direction = -1;
+		newEdge->Direction = -1;
 	}
 
 	// Update max_edge_id
@@ -478,27 +483,27 @@ bool BiDirDijkstra::addEdge(edge_t edgeIn)
 	}
 
 	//Update max_node_id
-	if(newEdge.StartNode > max_node_id)
+	if(newEdge->StartNode > max_node_id)
 	{
 		return false;//max_node_id = newEdge.StartNode;
 	}
-	if(newEdge.EndNode > max_node_id)
+	if(newEdge->EndNode > max_node_id)
 	{
 		return false;//max_node_id = newEdge.EdgeIndex;
 	}
 
 	// update connectivity information for the start node.
-	m_vecNodeVector[newEdge.StartNode]->Connected_Nodes.push_back(newEdge.EndNode);
-	m_vecNodeVector[newEdge.StartNode]->Connected_Edges_Index.push_back(newEdge.EdgeIndex);
+	m_vecNodeVector[newEdge->StartNode]->Connected_Nodes.push_back(newEdge->EndNode);
+	m_vecNodeVector[newEdge->StartNode]->Connected_Edges_Index.push_back(newEdge->EdgeIndex);
 
 	// update connectivity information for the start node.
-	m_vecNodeVector[newEdge.EndNode]->Connected_Nodes.push_back(newEdge.StartNode);
-	m_vecNodeVector[newEdge.EndNode]->Connected_Edges_Index.push_back(newEdge.EdgeIndex);
+	m_vecNodeVector[newEdge->EndNode]->Connected_Nodes.push_back(newEdge->StartNode);
+	m_vecNodeVector[newEdge->EndNode]->Connected_Edges_Index.push_back(newEdge->EdgeIndex);
 
 
 	
 	//Adding edge to the list
-	m_mapEdgeId2Index.insert(std::make_pair(newEdge.EdgeID, m_vecEdgeVector.size()));
+	m_mapEdgeId2Index.insert(std::make_pair(newEdge->EdgeID, m_vecEdgeVector.size()));
 	m_vecEdgeVector.push_back(newEdge);
 
 	//

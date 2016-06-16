@@ -17,7 +17,7 @@ CREATE OR REPLACE FUNCTION pgr_eucledianTSP(
     randomize BOOLEAN DEFAULT true,
 
     OUT seq integer,
-    OUT node integer,
+    OUT node BIGINT,
     OUT cost FLOAT,
     OUT agg_cost FLOAT)
 RETURNS SETOF record

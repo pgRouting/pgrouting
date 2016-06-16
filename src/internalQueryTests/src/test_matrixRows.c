@@ -49,9 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./test_matrixRows_driver.h"
 
-PG_FUNCTION_INFO_V1(test_matrixRows);
-PGDLLEXPORT Datum
-test_matrixRows(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum test_matrixRows(PG_FUNCTION_ARGS);
 
 
 /*******************************************************************************/
@@ -109,6 +107,7 @@ process(char* matrix_rows_sql,
 }
 
 
+PG_FUNCTION_INFO_V1(test_matrixRows);
 PGDLLEXPORT Datum
 test_matrixRows(PG_FUNCTION_ARGS) {
     bool  result_bool = false;

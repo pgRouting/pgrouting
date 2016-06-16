@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#undef min
+#undef max
 #endif
 
 #include "./Dmatrix.h"
@@ -34,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <limits>
 #include <vector>
+#include <cmath>
 
 #include "../../common/src/pgr_assert.h"
 
@@ -150,7 +153,7 @@ bool
 Dmatrix::is_symmetric() const {
     for (size_t i = 0; i < costs.size(); ++i) {
         for (size_t j = 0; j < costs.size(); ++j) {
-            if (0.000001 < std::abs(costs[i][j] - costs[j][i])) {
+            if (0.000001 < std::fabs(costs[i][j] - costs[j][i])) {
                 std::ostringstream log;
                 log << "i \t" << i
                     << "j \t" << j
