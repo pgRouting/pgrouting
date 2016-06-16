@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Traveling Sales Person &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
+    <link rel="up" title="Routing Functions" href="../../routingFunctions.html" />
+    <link rel="next" title="pgr_TSP" href="pgr_tsp.html" />
+    <link rel="prev" title="pgr_ksp" href="../../ksp/doc/pgr_ksp.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
+        <h2 class="heading"><span>Traveling Sales Person</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../ksp/doc/pgr_ksp.html">pgr_ksp</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_tsp.html">pgr_TSP</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="traveling-sales-person">
+<span id="tsp"></span><h1>Traveling Sales Person<a class="headerlink" href="#traveling-sales-person" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> - When input is given as matrix cell information.</li>
+<li><a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> - When input are coordinates.</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>These signatures are being deprecated</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="c1">-- (1)</span>
+<span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_id</span> <span class="nb">integer</span><span class="p">)</span>
+<span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_id</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">end_id</span> <span class="nb">integer</span><span class="p">)</span>
+
+<span class="c1">-- (2)</span>
+<span class="n">record</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="n">matrix</span> <span class="nb">float</span><span class="p">[][],</span> <span class="k">start</span> <span class="nb">integer</span><span class="p">)</span>
+<span class="n">record</span><span class="p">[]</span> <span class="n">pgr_tsp</span><span class="p">(</span><span class="n">matrix</span> <span class="nb">float</span><span class="p">[][],</span> <span class="k">start</span> <span class="nb">integer</span><span class="p">,</span> <span class="k">end</span> <span class="nb">integer</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>See <a class="reference external" href="http://docs.pgrouting.org/2.2/en/src/common/doc/types/cost_result.html">http://docs.pgrouting.org/2.2/en/src/common/doc/types/cost_result.html</a></li>
+<li>See <a class="reference external" href="http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html">http://docs.pgrouting.org/2.2/en/src/tsp/doc/pgr_tsp.html</a></li>
+<li>For more details, see <a class="reference internal" href="#tsp-deprecated">tsp_deprecated</a>.</li>
+</ul>
+<p class="last">Use <a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> insteadi of (1).
+Use <a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> instead of (2).</p>
+</div>
+<div class="section" id="origin">
+<h2>Origin<a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The traveling sales person problem was studied in the 18th century by mathematicians</dt>
+<dd><strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Penyngton  Kirkman</strong>.</dd>
+</dl>
+<p>A discussion about the work of Hamilton &amp; Kirkman
+can be found in the book <strong>Graph Theory (Biggs et  al. 1976)</strong>.</p>
+<ul class="simple">
+<li>ISBN-13: 978-0198539162</li>
+<li>ISBN-10: 0198539169</li>
+</ul>
+<p>It is believed that the general form of the TSP have been first studied by Kalr Menger in Vienna and Harvard.
+The problem  was  later promoted by Hassler, Whitney  &amp;  Merrill at Princeton.
+A detailed  description about the connection between Menger &amp; Whitney, and the development of the
+TSP can be found in  <a class="reference external" href="http://www.cwi.nl/~lex/files/histco.ps">On the history of combinatorial optimization (till 1960)</a></p>
+</div>
+<div class="section" id="problem-definition">
+<h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
+<p>Given a collection of cities and travel cost between each pair,
+find the cheapest way for visiting all of the cities and returning to the starting point.</p>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The travel costs are symmetric:<ul>
+<li>traveling costs from city A to city B are just as much as traveling from B to A.</li>
+</ul>
+</li>
+<li>This problem is an NP-hard optimization problem.</li>
+<li>To calculate the number of different tours through <span class="math">\(n\)</span> cities:<ul>
+<li>Given a starting city,</li>
+<li>There are <span class="math">\(n-1\)</span> choices for the second city,</li>
+<li>And  <span class="math">\(n-2\)</span> choices for the third city, etc.</li>
+<li>Multiplying these together we get <span class="math">\((n-1)!  = (n-1) (n-2) . .  1\)</span>.</li>
+<li>Now since our travel costs do not depend on the direction we take around the tour:<ul>
+<li>this number by 2</li>
+<li><span class="math">\((n-1)!/2\)</span>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="tsp-simulated-annealing">
+<h2>TSP &amp; Simulated Annealing<a class="headerlink" href="#tsp-simulated-annealing" title="Permalink to this headline">¶</a></h2>
+<p>The simulated annealing algorithm was originally inspired from the process of
+annealing in metal work.</p>
+<blockquote>
+<div>Annealing involves heating and cooling a material to
+alter its physical properties due to the changes in its internal structure.
+As the metal cools its new structure becomes fixed,
+consequently causing the metal to retain its newly obtained properties.</div></blockquote>
+<p class="rubric">Pseudocode</p>
+<p>Given an initial solution, the simulated annealing process, will start with a high temperature
+and gradually cool down until the desired temperature is reached.</p>
+<p>For each temperature, a neighbouring new solution <strong>snew</strong> is calculated. The higher the temperature
+the higher the probability of accepting the new solution as a possible bester solution.</p>
+<p>Once the desired temperature is reached, the best solution found is returned</p>
+<div class="highlight-none"><div class="highlight"><pre>Solution ← initial_solution;
+
+temperature ← initial_temperature;
+while (temperature &gt; final_temperature) {
+
+    do tries_per_temperature times {
+        snew ← neighbour(solution);
+        If P(E(solution), E(snew), T) ≥ random(0, 1)
+            solution ← snew;
+    }
+
+    temperature ← temperature * cooling factor;
+}
+
+Output: the best solution
+</pre></div>
+</div>
+</div>
+<div class="section" id="pgrouting-implementation">
+<h2>pgRouting Implementation<a class="headerlink" href="#pgrouting-implementation" title="Permalink to this headline">¶</a></h2>
+<p>pgRouting&#8217;s implementation adds some extra parameters to allow some exit controls within the
+simulated annealing process.</p>
+<p>To cool down faster to the next temperature:</p>
+<blockquote>
+<div><ul class="simple">
+<li>max_changes_per_temperature: limits the number of changes in the solution per temperature</li>
+<li>max_consecutive_non_changes: limits the number of consecutive non changes per temperature</li>
+</ul>
+</div></blockquote>
+<p>This is done by doing some book keeping on the times <strong>solution ← snew;</strong> is executed.</p>
+<blockquote>
+<div><ul class="simple">
+<li>max_changes_per_temperature: Increases by one when <strong>solution</strong> changes</li>
+<li>max_consecutive_non_changes: Reset to 0 when <strong>solution</strong> changes, and increased each <strong>try</strong></li>
+</ul>
+</div></blockquote>
+<p>Additionally to stop the algorithm at a higher temperature than the desired one:</p>
+<blockquote>
+<div><ul class="simple">
+<li>max_processing_time: limits the time the simulated annealing is performed.</li>
+<li>book keeping is done to see if there was a change in <strong>solution</strong> on the last temperature</li>
+</ul>
+</div></blockquote>
+<p>Note that, if no change was found in the first <strong>max_consecutive_non_changes</strong> tries, then the
+simulated annealing will stop.</p>
+<div class="highlight-none"><div class="highlight"><pre>Solution ← initial_solution;
+
+temperature ← initial_temperature;
+while (temperature &gt; final_temperature) {
+
+    do tries_per_temperature times {
+        snew ← neighbour(solution);
+        If P(E(solution), E(snew), T) ≥ random(0, 1)
+            solution ← snew;
+
+        when max_changes_per_temperature is reached
+            or max_consecutive_non_changes is reached
+            BREAK;
+    }
+
+    temperature ← temperature * cooling factor;
+    when no changes were done in the current temperature
+        or max_processing_time has being reached
+        BREAK;
+}
+
+Output: the best solution
+</pre></div>
+</div>
+</div>
+<div class="section" id="choosing-parameters">
+<h2>Choosing parameters<a class="headerlink" href="#choosing-parameters" title="Permalink to this headline">¶</a></h2>
+<p>There is no exact rule on how the parameters have to be chose, it will depend on the
+special characteristics of the problem.</p>
+<ul class="simple">
+<li>Your computational time is crucial, then put your time limit to <strong>max_processing_time</strong>.</li>
+<li>Make the <strong>tries_per_temperture</strong> depending on the number of cities, for example:<ul>
+<li>Useful to estimate the time it takes to do one cycle: use <cite>1</cite><ul>
+<li>this will help to set a reasonable <strong>max_processing_time</strong></li>
+</ul>
+</li>
+<li><span class="math">\(n * (n-1)\)</span></li>
+<li><span class="math">\(500 * n\)</span></li>
+</ul>
+</li>
+<li>For a faster decreasing the temperature set <strong>cooling_factor</strong> to a smaller number,
+and set to a higher number for a slower decrease.</li>
+<li>When for the same given data the same results are needed, set <strong>randomize</strong> to <cite>false</cite>.<ul>
+<li>When estimating how long it takes to do one cycle: use <cite>false</cite></li>
+</ul>
+</li>
+</ul>
+<p>A recommendation is to play with the values and see what fits to the particular data.</p>
+</div>
+<div class="section" id="control-parameters">
+<h2>Control parameters<a class="headerlink" href="#control-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The control parameters are optional, and have a default value.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="7%" />
+<col width="7%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><cite>0</cite></td>
+<td>The greedy part of the implementation will use this identifier.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><cite>0</cite></td>
+<td>Last visiting vertex before returning to start_vid.</td>
+</tr>
+<tr class="row-even"><td><strong>max_processing_time</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><cite>+infinity</cite></td>
+<td>Stop the annealing processing when the value is reached.</td>
+</tr>
+<tr class="row-odd"><td><strong>tries_per_temperature</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><cite>500</cite></td>
+<td>Maximum number of times a neighbor(s) is searched in each temperature.</td>
+</tr>
+<tr class="row-even"><td><strong>max_changes_per_temperature</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><cite>60</cite></td>
+<td>Maximum number of times the solution is changed in each temperature.</td>
+</tr>
+<tr class="row-odd"><td><strong>max_consecutive_non_changes</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><cite>100</cite></td>
+<td>Maximum number of consecutive times the solution is not changed in each temperature.</td>
+</tr>
+<tr class="row-even"><td><strong>initial_temperature</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><cite>100</cite></td>
+<td>Starting temperature.</td>
+</tr>
+<tr class="row-odd"><td><strong>final_temperature</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><cite>0.1</cite></td>
+<td>Ending temperature.</td>
+</tr>
+<tr class="row-even"><td><strong>cooling_factor</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><cite>0.9</cite></td>
+<td>Value between between 0 and 1 (not including) used to calculate the next temperature.</td>
+</tr>
+<tr class="row-odd"><td><strong>randomize</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td><cite>true</cite></td>
+<td><p class="first">Choose the random seed</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>true: Use current time as seed</li>
+<li>false: Use <cite>1</cite> as seed. Using this value will get the same results with the same data in each execution.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="deprecated-functionality">
+<span id="tsp-deprecated"></span><h2>Deprecated functionality<a class="headerlink" href="#deprecated-functionality" title="Permalink to this headline">¶</a></h2>
+<p>The old functionality is deprecated:</p>
+<ul class="simple">
+<li>User can not control the execution.</li>
+<li>Not all valuable information is returned.</li>
+<li>Some returned column don not have meaningful names.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>Using the old functionality, for example</p>
+<ul class="simple">
+<li><cite>id</cite> can not be of type <cite>BIGINT</cite>.</li>
+<li><cite>id1</cite> and <cite>id2</cite> are meningless column names.</li>
+<li>Needs an index as parameter for the starting node.</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
+    $$
+    SELECT id::INTEGER, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr
+    $$
+    , 1);
+NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
+ seq | id1 | id2 |       cost        
+-----+-----+-----+-------------------
+   0 |   1 |   1 |                 1
+   1 |   2 |   2 |                 1
+   2 |   5 |   5 |                 1
+   3 |   8 |   8 |                 1
+   4 |   7 |   7 |  1.58113883008419
+   5 |  14 |  14 |  1.58113883008419
+   6 |  13 |  13 |               0.5
+   7 |  15 |  15 |               0.5
+   8 |  10 |  10 |                 1
+   9 |  11 |  11 |  1.11803398874989
+  10 |  17 |  17 |  1.11803398874989
+  11 |  12 |  12 | 0.860232526704263
+  12 |  16 |  16 |  0.58309518948453
+  13 |   6 |   6 |                 1
+  14 |   9 |   9 |                 1
+  15 |   4 |   4 |                 1
+  16 |   3 |   3 |   1.4142135623731
+(17 rows)
+</pre></div>
+</div>
+<p>With the new functionality:</p>
+<ul class="simple">
+<li><cite>id</cite> can be of type <cite>BIGINT</cite> .</li>
+<li>There is an aggregate cost column.</li>
+<li>Instead of an index it uses the node identifier for the starting node.</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_eucledianTSP(
+    $$
+    SELECT id, st_X(the_geom) AS x, st_Y(the_geom)AS y  FROM edge_table_vertices_pgr
+    $$,
+    1,
+    randomize := false
+);
+ seq | node |       cost        |     agg_cost     
+-----+------+-------------------+------------------
+   1 |    1 |   1.4142135623731 |                0
+   2 |    3 |                 1 |  1.4142135623731
+   3 |    4 |                 1 | 2.41421356237309
+   4 |    9 |                 1 | 3.41421356237309
+   5 |    6 |  0.58309518948453 | 4.41421356237309
+   6 |   16 | 0.860232526704263 | 4.99730875185763
+   7 |   12 |  1.11803398874989 | 5.85754127856189
+   8 |   17 |  1.11803398874989 | 6.97557526731178
+   9 |   11 |                 1 | 8.09360925606168
+  10 |   10 |               0.5 | 9.09360925606168
+  11 |   15 |               0.5 | 9.59360925606168
+  12 |   13 |  1.58113883008419 | 10.0936092560617
+  13 |   14 |  1.58113883008419 | 11.6747480861459
+  14 |    7 |                 1 | 13.2558869162301
+  15 |    8 |                 1 | 14.2558869162301
+  16 |    5 |                 1 | 15.2558869162301
+  17 |    2 |                 1 | 16.2558869162301
+  18 |    1 |                 0 | 17.2558869162301
+(18 rows)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>Using the old functionality, for example</p>
+<ul class="simple">
+<li><cite>id</cite>, <cite>source</cite>, <cite>target</cite> can not be of type <cite>BIGINT</cite>.</li>
+<li>It does not return the <cite>cost</cite> column.</li>
+<li>Needs an index as parameter for the starting node.</li>
+<li>The identifiers in the result does not correspond to the indentifiers given as input.</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
+    (SELECT * FROM pgr_vidsToDMatrix(
+            &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table&#39;,
+            (SELECT array_agg(id) from edge_table_vertices_pgr WHERE id &lt; 14)::INTEGER[], false , true, true)
+    ),
+    1
+);
+ seq | id 
+-----+----
+   0 |  1
+   1 |  2
+   2 |  3
+   3 |  8
+   4 | 11
+   5 |  5
+   6 | 10
+   7 | 12
+   8 |  9
+   9 |  6
+  10 |  7
+  11 |  4
+  12 |  0
+(13 rows)
+</pre></div>
+</div>
+<p>With the new functionality:</p>
+<ul class="simple">
+<li><cite>id</cite>, <cite>source</cite>, <cite>target</cite> can be of type <cite>BIGINT</cite>,</li>
+<li>There is an aggregate cost column and a cost column in the results.</li>
+<li>Instead of an index it uses the node identifier for the starting node.</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
+    $$
+    SELECT * FROM pgr_dijkstraDMatrix(
+        &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
+        (SELECT array_agg(id) from edge_table_vertices_pgr WHERE id &lt; 14), false)
+    $$,
+    1,
+    randomize := false
+);
+ seq | node | cost | agg_cost 
+-----+------+------+----------
+   1 |    1 |    3 |        0
+   2 |    4 |    1 |        3
+   3 |    9 |    1 |        4
+   4 |   12 |    1 |        5
+   5 |   11 |    2 |        6
+   6 |   13 |    1 |        8
+   7 |   10 |    1 |        9
+   8 |    5 |    2 |       10
+   9 |    7 |    1 |       12
+  10 |    8 |    2 |       13
+  11 |    6 |    1 |       15
+  12 |    3 |    1 |       16
+  13 |    2 |    1 |       17
+  14 |    1 |    0 |       18
+(14 rows)
+</pre></div>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">http://en.wikipedia.org/wiki/Traveling_salesman_problem</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../ksp/doc/pgr_ksp.html">pgr_ksp</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_tsp.html">pgr_TSP</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Jun 15, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
