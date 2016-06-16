@@ -48,9 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
-PG_FUNCTION_INFO_V1(newTSP);
-PGDLLEXPORT Datum
-newTSP(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum newTSP(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -153,6 +151,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
+PG_FUNCTION_INFO_V1(newTSP);
 PGDLLEXPORT Datum
 newTSP(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;

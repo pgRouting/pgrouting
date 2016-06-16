@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 #include <stdlib.h>
 #include <algorithm>
+#include <numeric>
 #include <vector>
 
 #include "./Dmatrix.h"
