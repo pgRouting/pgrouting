@@ -117,8 +117,8 @@ namespace pgRouting {
 			debug << "Is dead end: " << graph.graph[v].id << "?\n";
 			//debug << "in_degree: " << graph.in_degree(vertex_id) << '\n';
 			//debug << "out_degree: " << graph.out_degree(vertex_id) << '\n';
-			if(graph.out_degree(v) == 1 && graph.in_degree(v) == 0) return true;
-			if(graph.out_degree(v) == 0 && graph.in_degree(v) == 1) return true;
+			//if(graph.out_degree(v) == 1 && graph.in_degree(v) == 0) return true;
+			//if(graph.out_degree(v) == 0 && graph.in_degree(v) == 1) return true;
 			if(graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
 				int64_t incoming_edge_id, outgoing_edge_id;
 				EO_i out, out_end;
@@ -137,7 +137,19 @@ namespace pgRouting {
 				}
 				debug << "No\n"; 
 				return false;
-			} 
+			}
+			// additional cases
+			if (graph.out_degree(v) == 0 && graph.in_degree(v) > 0)
+			 {
+			 	return true;
+			 }
+			 #if 0
+			 // dead start
+			 if (graph.in_degree(v) == 0 && graph.out_degree(v) > 0)
+			 {
+			 	return true;
+			 }
+			 #endif
 			debug << "No\n"; 
 			return false;
 		}
@@ -173,8 +185,9 @@ namespace pgRouting {
 				{
 					continue;
 				}
-				V adjacent_vertex = graph.find_adjacent_vertex(current_vertex);
-				//debug << "Current Vertex: "<< graph[current_vertex].id << std::endl;
+				Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(current_vertex);
+				for(auto adjacent_vertex : adjacent_vertices) {
+					//debug << "Current Vertex: "<< graph[current_vertex].id << std::endl;
 				//debug << "Adjacent Vertex: "<< graph[adjacent_vertex].id << std::endl;
 
 				
@@ -215,21 +228,8 @@ namespace pgRouting {
 					deadendVertices += adjacent_vertex;
 					deadendPriority.push(adjacent_vertex);
 				}
-				//debug << "Dead end vertices" << std::endl;
-				//debug << deadendVertices;
-				#if 0
-				//add_if_dead_end(graph, adjacent_vertex, debug);
-				
-				
-				debug << "Adding if dead end\n"; 
-				if(is_dead_end(graph, adjacent_vertex, debug)) {
-					deadendVertices += adjacent_vertex;
-					deadendPriority.push(adjacent_vertex);
 				}
-				else {
-					debug << "Not dead end\n";
-				}
-				#endif
+
 			}
 		}
 
