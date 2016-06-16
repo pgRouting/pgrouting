@@ -123,10 +123,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         return out_vertex;
      }
 
-     Identifiers<int64_t> find_adjacent_vertices(V v) const {
+     Identifiers<V> find_adjacent_vertices(V v) const {
         EO_i out, out_end;
         EI_i in, in_end;
-        Identifiers<int64_t> adjacent_vertices;
+        Identifiers<V> adjacent_vertices;
         V out_vertex, in_vertex;
         out_vertex = in_vertex = -1;
         #if 0
