@@ -53,6 +53,9 @@ std::string get_backtrace() {
 #endif
 }
 
+std::string get_backtrace(const std::string &msg) {
+    return std::string("\n") + msg + "\n" + get_backtrace();
+}
 
 
 
