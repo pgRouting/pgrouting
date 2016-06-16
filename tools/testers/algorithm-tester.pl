@@ -1,6 +1,6 @@
 #! /usr/bin/perl -w
-    eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
-        if 0; #$running_under_some_shell
+eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
+if 0; #$running_under_some_shell
 
 use strict;
 use File::Find ();
@@ -28,21 +28,21 @@ my $DBPORT;
 
 sub Usage {
     die "Usage: algorithm-tester.pl -pgver vpg -pgisver vpgis -psql /path/to/psql\n" .
-        "       -pgver vpg          - postgresql version\n" .
-        "       -pghost host        - postgresql host or socket directory to use\n" .
-        "       -pgport port        - postgresql port to use\n" .
-        "       -pguser username    - postgresql user role to use\n" .
-        "       -pgisver vpgis      - postgis version\n" .
-        "       -pgrver vpgr        - pgrouting version\n" .
-        "       -psql /path/to/psql - optional path to psql\n" .
-        "       -v                  - verbose messages for small debuging\n" .
-        "       -debug              - verbose messages for debuging(enter twice for more)\n" .
-        "       -debug1             - DEBUG1 messages (for timing reports)\n" .
-        "       -clean              - dropdb pgr_test__db__test\n" .
-        "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
-        "       -alg 'dir'          - directory to select which algorithm subdirs to test\n" .
-        "       -documentation      - ONLY generate documentation examples\n" .
-        "       -h                  - help\n";
+    "       -pgver vpg          - postgresql version\n" .
+    "       -pghost host        - postgresql host or socket directory to use\n" .
+    "       -pgport port        - postgresql port to use\n" .
+    "       -pguser username    - postgresql user role to use\n" .
+    "       -pgisver vpgis      - postgis version\n" .
+    "       -pgrver vpgr        - pgrouting version\n" .
+    "       -psql /path/to/psql - optional path to psql\n" .
+    "       -v                  - verbose messages for small debuging\n" .
+    "       -debug              - verbose messages for debuging(enter twice for more)\n" .
+    "       -debug1             - DEBUG1 messages (for timing reports)\n" .
+    "       -clean              - dropdb pgr_test__db__test\n" .
+    "       -ignorenotice       - ignore NOTICE statements when reporting failures\n" .
+    "       -alg 'dir'          - directory to select which algorithm subdirs to test\n" .
+    "       -documentation      - ONLY generate documentation examples\n" .
+    "       -h                  - help\n";
 }
 
 print "RUNNING: algorithm-tester.pl " . join(" ", @ARGV) . "\n";
@@ -88,7 +88,7 @@ while (my $a = shift @ARGV) {
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
         die "'$psql' is not executable!\n"
-            unless -x $psql;
+        unless -x $psql;
     }
     elsif ($a =~ /^-h/) {
         Usage();
@@ -144,18 +144,8 @@ if (length($psql)) {
         $psql = "\"$psql\"";
     }
 }
+print "Operative system found: $OS";
 
-# some unit tests
-#my $server_ver = getServerVersion();
-#my $server_ver = '9.2';
-#print "PSQL=$psql\n";
-#print "SERVER_VERSION=$server_ver\n";
-#print "version_greater_eq('9.1')=" . version_greater_eq($server_ver, '9.1') . "\n";
-#print "version_greater_eq('9.2')=" . version_greater_eq($server_ver, '9.2') . "\n";
-#print "version_greater_eq('9.3')=" . version_greater_eq($server_ver, '9.3') . "\n";
-#print "version_greater_eq('8.3')=" . version_greater_eq($server_ver, '8.3') . "\n";
-#print "template_pgrouting=" . dbExists('template_pgrouting') . "\n";
-#exit;
 
 # Traverse desired filesystems
 File::Find::find({wanted => \&want_tests}, @testpath);
@@ -224,7 +214,7 @@ sub run_test {
         createTestDB($singleDB);
         mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.sql' $singleDB >> $TMP2 2>\&1 ");
         for my $x (@{$t->{data}}) {
-           mysystem("$psql $connopts -A -t -q -f '$dir/$x' $singleDB >> $TMP2 2>\&1 ");
+            mysystem("$psql $connopts -A -t -q -f '$dir/$x' $singleDB >> $TMP2 2>\&1 ");
         }
         process_single_test($testName, $dir, $singleDB,\%res);
         mysystem("dropdb $connopts $singleDB");
@@ -232,7 +222,7 @@ sub run_test {
 
     mysystem("$psql $connopts -A -t -q -f tools/testers/sampledata.sql $DBNAME >> $TMP2 2>\&1 ");
     for my $x (@{$t->{data}}) {
-       mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
+        mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
 
     if ($DOCUMENTATION) {
