@@ -234,7 +234,7 @@ sub run_test {
         for my $x (@{$t->{tests}}) {
             process_single_test($x, $dir,, $DBNAME, \%res)
         }
-        if ($OS=~/MSW/) {
+        if ($OS =~ /msys/ || $OS=~/MSW/) {
             for my $x (@{$t->{windows}}) {
                 process_single_test($x, $dir,, $DBNAME, \%res)
             }
