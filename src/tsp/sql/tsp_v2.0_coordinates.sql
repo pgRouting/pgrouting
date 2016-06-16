@@ -56,7 +56,7 @@ BEGIN
 
     EXECUTE 'SET client_min_messages TO ERROR';
     RETURN query
-        SELECT seq - 1 AS seq, node AS id1, node AS id2, cost
+        SELECT (seq - 1)::INTEGER AS seq, node::INTEGER AS id1, node::INTEGER AS id2, cost
         FROM pgr_eucledianTSP(sql, start_id, end_id,
 
             tries_per_temperature :=  500 * n :: INTEGER,
