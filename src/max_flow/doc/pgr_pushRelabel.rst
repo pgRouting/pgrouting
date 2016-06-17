@@ -42,6 +42,7 @@ Synopsis
 Calculates the maximum flow in a directed graph from a source node to a sink node.
 Edges must be weighted with non-negative capacities.
 Developed by Goldberg and Tarjan.
+`Boost implementation details <www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`.
 
 Characteristics:
 ----------------
@@ -50,7 +51,7 @@ Characteristics:
    Here is a sample of the kind of information in this section:
 
 The main characterics are:
-  - Calculates the flow/residual capacity for each edge.
+  - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
   - The maximum flow through the graph can be calculated by aggregation on source/sink.
   - Returns nothing if source and sink are the same.
   - Running time: :math:`O( V ^ 3)`
@@ -65,8 +66,8 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_pushRelabel(edges_sql, source,  sink)
-    RETURNS SET OF (tail, head, flow, residual_capcaity)
+    pgr_pushrelabel(edges_sql, source,  sink)
+    RETURNS SET OF (id, tail, head, flow, residual_capcaity)
       OR EMPTY SET
 
 
@@ -76,6 +77,7 @@ Signature Summary
         edges_sql TEXT,
         source BIGINT,
         sink BIGINT,
+        OUT id BIGINT,
         OUT tail BIGINT,
         OUT head BIGINT,
         OUT flow integer,
