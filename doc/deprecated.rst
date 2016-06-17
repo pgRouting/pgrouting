@@ -14,7 +14,19 @@ Deprecated Functions
 
 .. warning:: This functions have being deprecated
 
+Deprecated Routing Functions
+----------------------------
 
+Deprecated on version 2.3
+
+  - :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
+  - :ref:`pgr_tsp-V2.0` - Old signatures of TSP
+
+.. toctree::
+   :hidden: 
+
+   ../src/convenience/doc/pgr_flipEdges
+   ../src/tsp/doc/pgr_tsp-V2.0
 
 Deprecated Routing Functions
 ----------------------------

@@ -2,6 +2,7 @@
 1
 6
 --q2
+NOTICE:  Deperecated function: pgr_flipEdges
 LINESTRING(2 1,2 2)
 LINESTRING(2 2,2 3)
 LINESTRING(2 3,2 2)
