@@ -109,7 +109,7 @@ process( char* edges_sql,
 PG_FUNCTION_INFO_V1(testXYedges);
 PGDLLEXPORT Datum
 testXYedges(PG_FUNCTION_ARGS) {
-    bool  result_bool = NULL;
+    bool  result_bool = false;
     process(
             pgr_text2char(PG_GETARG_TEXT_P(0)),
             &result_bool);

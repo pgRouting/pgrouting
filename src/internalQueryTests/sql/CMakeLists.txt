@@ -2,6 +2,7 @@
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/test_ch_edges.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/testXYedges.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_matrixRows.sql
 )
 
 # set in parent scope
