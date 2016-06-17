@@ -50,6 +50,13 @@ void Edge::add_contracted_edge_vertices(Edge &e) {
     e.clear_contracted_vertices();
 }
 
+void Edge::add_contracted_vertices(const Edge &e) {
+
+    //adding the ids of the contracted vertices of the given edge e
+    m_contracted_vertices += e.contracted_vertices();
+
+}
+
 #if 0
 const std::string Edge_c::type_str() const {
     switch (Edge_c::type()) {
