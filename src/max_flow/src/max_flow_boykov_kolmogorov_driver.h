@@ -1,8 +1,14 @@
 /*PGR-GNU*****************************************************************
-File: ksp.h
+File: max_flow_boykov_kolmogorov_driver.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer:
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
+
 ------
 
 This program is free software; you can redistribute it and/or modify
@@ -21,21 +27,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#pragma once
+#ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_BOYKOV_KOLMOGOROV_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_MAX_FLOW_BOYKOV_KOLMOGOROV_DRIVER_H_
+
+#include "./../../common/src/pgr_types.h"
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+    void
+        do_pgr_max_flow_boykov_kolmogorov(
+            pgr_edge_t *data_edges,
+            size_t total_tuples,
+            int64_t source,
+            int64_t sink,
+            pgr_flow_t **return_tuples,
+            size_t *return_count,
+            char **err_msg);
 
-#include "./../../common/src/pgr_types.h"
-
-    int compute(char* sql, int64_t start_vertex,
-            int64_t end_vertex, int no_paths,
-            bool has_reverse_cost, bool directedFlag,
-            General_path_element_t **path, size_t *ksp_path_count);
 
 #ifdef __cplusplus
 }
 #endif
 
+#endif  // SRC_MAX_FLOW_SRC_MAX_FLOW_BOYKOV_KOLMOGOROV_DRIVER_H_

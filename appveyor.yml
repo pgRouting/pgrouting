@@ -15,9 +15,7 @@ notifications:
 
 branches:
   only:
-    - master
-    - develop
-    - dev-2.2
+    - test/appveyor
 
     
 

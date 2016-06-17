@@ -9,4 +9,3 @@ ADD_LIBRARY(tsp OBJECT
     #pgr_tsp.cpp
     #Dmatrix.cpp
     )
-

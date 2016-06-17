@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/push_relabel_max_flow.hpp>
 #include <boost/graph/edmonds_karp_max_flow.hpp>
+#include <boost/graph/boykov_kolmogorov_max_flow.hpp>
 
 
 // user's functions
@@ -54,16 +55,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS>
     Traits;
-typedef boost::adjacency_list<boost::listS,
-                              boost::vecS,
-                              boost::directedS,
-                              boost::no_property,
-                              boost::property<boost::edge_capacity_t, int64_t,
-                                              boost::property<boost::edge_residual_capacity_t,
-                                                              int64_t,
-                                                              boost::property<
-                                                                  boost::edge_reverse_t,
-                                                                  Traits::edge_descriptor> > > >
+typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
+        boost::property < boost::vertex_name_t, std::string,
+                boost::property < boost::vertex_index_t, long,
+                        boost::property < boost::vertex_color_t, boost::default_color_type,
+                                boost::property < boost::vertex_distance_t, long,
+                                        boost::property < boost::vertex_predecessor_t, Traits::edge_descriptor > > > > >,
+
+        boost::property<boost::edge_capacity_t, int64_t, boost::property<boost::edge_residual_capacity_t, int64_t, boost::property< boost::edge_reverse_t, Traits::edge_descriptor> > > >
     FlowGraph;
 
 
@@ -81,7 +80,8 @@ class PgrFlowGraph {
   typename boost::property_map<G, boost::edge_residual_capacity_t>::type
       residual_capacity;
 
-  std::map<int64_t, V> id_to_V;
+
+    std::map<int64_t, V> id_to_V;
   std::map<V, int64_t> V_to_id;
 
   V source_vertex;
@@ -178,5 +178,15 @@ class PgrFlowGraph {
                                           this->source_vertex,
                                           this->sink_vertex);
   }
+
+    int64_t boykov_kolmogorov() {
+        size_t num_v = boost::num_vertices(this->boost_graph);
+        std::vector<boost::default_color_type> color(num_v);
+        std::vector<long> distance(num_v);
+        return boost::boykov_kolmogorov_max_flow(this->boost_graph,
+                                            this->source_vertex,
+                                            this->sink_vertex);
+    }
+
 
 };

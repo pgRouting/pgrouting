@@ -63,7 +63,7 @@ Then:
 
      :math:`pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}`
 
-     :math:`\boldsymbol{\Phi} = {(tail_i, head_i, residual\_capacity_i, flow_i)}`
+     :math:`\boldsymbol{\Phi} = {(id_i, tail_i, head_i, flow_i, residual\_capacity_i)}`
 
 where:
   .. math::
@@ -72,3 +72,20 @@ where:
         residual\_capacity_i = capacity_i - flow_i
 
 :math:`\boldsymbol{\Phi}` is a new subset of edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it.
+
+
+Signature Summary
+-----------------
+.. code-block:: none
+
+    pgr_maxflow(edges_sql, source,  sink)
+    RETURNS SET OF (id, tail, head, flow, residual_capcaity)
+      OR EMPTY SET
+
+
+The function pgr_maxflow is just a wrapper that uses the push relabel implementation.
+
+See Also
+--------
+
+* https://en.wikipedia.org/wiki/Maximum_flow_problem

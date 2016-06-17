@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -49,26 +49,26 @@ using namespace boost;
 struct Vertex
 {
     int id;
-    float8 cost;
+    double cost;
 };
 
 // Adds an edge to the graph.
 // Edge id, cost, source and target ids and coordinates are copied also
 template <class G, class E>
 static void
-graph_add_edge(G &graph, E &e, int id, int source, int target, float8 cost)
+graph_add_edge(G &graph, E &e, int id, int source, int target, double cost)
 {
   bool inserted;
 
   if (cost < 0) // edges are not inserted in the graph if cost is negative
     return;
 
-  tie(e, inserted) = add_edge(source, target, graph);
+  boost::tie(e, inserted) = add_edge(source, target, graph);
 
   graph[e].cost = cost;
   graph[e].id = id;
 
-  // typedef typename graph_traits<G>::vertex_descriptor Vertex;
+  // typedef graph_traits<G>::vertex_descriptor Vertex;
   // Vertex s = vertex(source, graph);
   // Vertex t = vertex(target, graph);
 }
@@ -103,7 +103,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
 
         if (!directed || (directed && has_reverse_cost))
         {
-          float8 cost;
+          double cost;
 
           if (has_reverse_cost)
           {
@@ -132,7 +132,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
         return -1;
     }
 
-    std::vector < vertex_descriptor > _target(nb_targets);
+    std::vector< vertex_descriptor > _target(nb_targets);
     for (int i = 0; i < nb_targets; i++)
     {
         _target[i] = vertex(end_vertices[i], graph);
@@ -145,7 +145,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
         }
     }        
 
-    std::vector<float8> distances(num_vertices(graph));
+    std::vector<double> distances(num_vertices(graph));
 
     dijkstra_shortest_paths(graph, _source,
                 predecessor_map(&predecessors[0]).
@@ -159,7 +159,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
     int index_of_last_path_vertex = 0;
     size_t sum_path_sizes = 0;
     int i = 0, j = 0;
-    std::vector < bool > no_path(nb_targets);
+    std::vector< bool > no_path(nb_targets);
     for (i = 0; i < nb_targets; i++)
     {
         no_path[i] = false;
@@ -219,7 +219,7 @@ int onetomany_dijkstra_boostdist(edge_t *edges, unsigned int count,
                 v_src = path_vect[numTarget].at(i);
                 v_targ = path_vect[numTarget].at(i - 1);
 
-                for (tie(out_i, out_end) = out_edges(v_src, graph); out_i != out_end; ++out_i)
+                for (boost::tie(out_i, out_end) = out_edges(v_src, graph); out_i != out_end; ++out_i)
                 {
                     graph_traits < graph_t >::vertex_descriptor targ; // v set but not used
                     e = *out_i;

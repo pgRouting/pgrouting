@@ -24,7 +24,7 @@
 
 #pragma once
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -43,9 +43,9 @@
 
 namespace pgRouting {
 
-// typedef typename boost::geometry::model::d2::point_xy<double> Point;
-typedef typename CGAL::Simple_cartesian<double> Simple_cartasian;
-typedef typename Simple_cartasian::Point_2  Point;
+// typedef boost::geometry::model::d2::point_xy<double> Point;
+typedef CGAL::Simple_cartesian<double> Simple_cartasian;
+typedef Simple_cartasian::Point_2  Point;
 
 
 class XY_vertex {

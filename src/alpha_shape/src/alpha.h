@@ -27,13 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __MINGW64__
 #define ELOG_H
 #endif
-#include "postgres.h"
 #include "../../common/src/pgr_types.h"
 
 typedef struct vertex
 {
-  float8 x;
-  float8 y;
+  double x;
+  double y;
 } vertex_t;
 
 

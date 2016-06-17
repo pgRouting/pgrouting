@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_edmonds_karp.c
+File: max_flow_boykov_kolmogorov.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -48,15 +48,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "./max_flow_edmonds_karp_driver.h"
+#include "./max_flow_boykov_kolmogorov_driver.h"
 
-PG_FUNCTION_INFO_V1(max_flow_edmonds_karp);
+PG_FUNCTION_INFO_V1(max_flow_boykov_kolmogorov);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-    max_flow_edmonds_karp(PG_FUNCTION_ARGS);
+    max_flow_boykov_kolmogorov(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -99,7 +99,7 @@ process(
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *err_msg = NULL;
-    do_pgr_max_flow_edmonds_karp(
+    do_pgr_max_flow_boykov_kolmogorov(
         edges,
         total_tuples,
         source,
@@ -108,7 +108,7 @@ process(
         result_count,
         &err_msg);
 
-    time_msg("processing max flow edmonds karp", start_t, clock());
+    time_msg("processing max flow boykov kolmogorov", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 
@@ -124,7 +124,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-max_flow_edmonds_karp(PG_FUNCTION_ARGS) {
+max_flow_boykov_kolmogorov(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     uint32_t call_cntr;
     uint32_t max_calls;
