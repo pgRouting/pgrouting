@@ -7,17 +7,17 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_tsp:
+.. _pgr_tsp-V2.0:
 
-pgr_tsp - Traveling Sales Person
+pgr_tsp V2.0
 ===============================================================================
 
-.. index:: 
-	single: pgr_tsp(sql text, start_id integer)
-    single: pgr_tsp(sql text, start_id integer, end_id integer)
-    single: pgr_tsp(matrix float[][], start integer)
-    single: pgr_tsp(matrix float[][], start integer, end integer)
-    single: pgr_makeDistanceMatrix(sqlin text)
+.. warning:: Deprecated Signatures
+
+    This documentation is of deprecated signatures.
+    
+    Please use the new signatures found in :ref:`tsp`
+
 
 Name
 -------------------------------------------------------------------------------
