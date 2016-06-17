@@ -412,7 +412,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         log << this->graph[min_cost_edge];  
         return min_cost_edge;
     }
-
+    T_E& get_edge(E e)
+    {
+        return this->graph[e];
+    }
     void get_shortcuts(std::vector<T_E>& shortcuts, std::ostringstream& log)
     {
         log << "Getting shortcuts\n";
@@ -481,7 +484,7 @@ void graph_add_edge(const T &edge) {
     }
 }
     
-void graph_add_edge(const T_E &edge ) {
+void graph_add_edge(const T_E &edge, std::ostringstream& log) {
     bool inserted;
     LI vm_s, vm_t;
     E e;
@@ -497,10 +500,20 @@ void graph_add_edge(const T_E &edge ) {
         this->vertices_map[edge.target]=  this->m_num_vertices;
         vm_t = this->vertices_map.find(edge.target);
     }
+    log << "Adding edge between " << this->graph[vm_s->second].id << ", "
+    << this->graph[vm_t->second].id << std::endl;
+
+    log << "Edge is, id: " << edge.id
+    << "\nsource: " << edge.source 
+    << "\ntarget: " << edge.target
+    << "\ncost: " << edge.cost
+    << "\nfirst: " << edge.first
+    << "\nc_vs: " << edge.contracted_vertices();
 
     if (edge.cost >= 0) {
         boost::tie(e, inserted) =
             boost::add_edge(vm_s->second, vm_t->second, this->graph);
+        log << "inserted: " << inserted << std::endl;
         this->graph[e].cp_members(edge);
     }
 }
