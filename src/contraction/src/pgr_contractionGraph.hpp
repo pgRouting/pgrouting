@@ -324,68 +324,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         }
         log << boost_ids;
     }
-
-    void print_incoming_edge(int64_t id, V vertex, std::ostringstream& log)
-    {
-        log << "Incoming edges\n";
-        E e;
-        EI_i in_i, in_end;
-        for (boost::tie(in_i, in_end) = boost::in_edges(vertex, this->graph);
-                in_i != in_end; ++in_i) {
-            e = *in_i;
-        log << this->graph[e] << std::endl;
-        }
-
-        //return minEdge;
-    }
-
-    void print_outgoing_edge(int64_t id, V vertex, std::ostringstream& log)
-    {
-        log << "Outgoing edges\n";
-        E e;
-        EO_i out_i, out_end;
-        for (boost::tie(out_i, out_end) = boost::out_edges(vertex, this->graph);
-                out_i != out_end; ++out_i) {
-            e = *out_i;
-        log << this->graph[e] << std::endl;
-        }
-        //return minEdge;
-    }
-
-
-    T_E& get_incoming_edge(int64_t id, V vertex, std::ostringstream& log)
-    {
-        log << "Incoming edges\n";
-        E e;
-        EI_i in_i, in_end;
-        for (boost::tie(in_i, in_end) = boost::in_edges(vertex, this->graph);
-                in_i != in_end; ++in_i) {
-            e = *in_i;
-        log << this->graph[e].id << std::endl; 
-            if (this->graph[e].id == id) {
-                break;
-                //return this->graph[e];
-            }
-        }
-        return this->graph[e];
-    }
-
-    T_E& get_outgoing_edge(int64_t id, V vertex, std::ostringstream& log)
-    {
-        log << "Outgoing edges\n";
-        E e;
-        EO_i out_i, out_end;
-        for (boost::tie(out_i, out_end) = boost::out_edges(vertex, this->graph);
-                out_i != out_end; ++out_i) {
-            e = *out_i;
-        log << this->graph[e].id << std::endl;
-            if (this->graph[e].id == id) {
-                break;
-                //return this->graph[e];
-            }
-        }
-        return this->graph[e];
-    }
+    
 
     E get_min_cost_edge(V source, V destination, std::ostringstream& log)
     {
@@ -411,10 +350,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         log << "Min cost edge from " << this->graph[source].id << " to " << this->graph[destination].id << std::endl;
         log << this->graph[min_cost_edge];  
         return min_cost_edge;
-    }
-    T_E& get_edge(E e)
-    {
-        return this->graph[e];
     }
     void get_shortcuts(std::vector<T_E>& shortcuts, std::ostringstream& log)
     {
