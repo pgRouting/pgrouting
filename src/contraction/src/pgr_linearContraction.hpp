@@ -134,122 +134,16 @@ template < class G >
 			degree_size_type in_degree, out_degree;
 			in_degree = graph.in_degree(v);
 			out_degree = graph.out_degree(v);
-			
-			
-			if(out_degree <= 2 && in_degree <= 2) {
-				int64_t incoming_eids[2] = {-1, -1};
-				int64_t outgoing_eids[2] = {-1, -1};
-
-				int64_t incoming_count, outgoing_count;
-				incoming_count = outgoing_count = 0;
-				EO_i out, out_end;
-				EI_i in, in_end;
-				// Storing the incoming and outgoing edge descs in arrays
-				for (boost::tie(out, out_end) = out_edges(v, graph.graph);
-						out != out_end; ++out) {
-					outgoing_eids[outgoing_count++] = graph.graph[*out].id;
-									}
-				for (boost::tie(in, in_end) = in_edges(v, graph.graph);
-						in != in_end; ++in) {
-					incoming_eids[incoming_count++] = graph.graph[*in].id;
-									}
-				pgassert(in_degree == incoming_count);
-				pgassert(out_degree == outgoing_count);
-				debug << "Incoming ids\n";
-				debug << "{" << incoming_eids[0] << ", " << incoming_eids[1] << "}\n";
-				debug << "Outgoing ids\n";
-				debug << "{" << outgoing_eids[0] << ", " << outgoing_eids[1] << "}\n";
-				//case 1
-				if(in_degree == 1 && out_degree == 1) {
-					debug << "Case 1\n"; 
-					if(incoming_eids[0] != outgoing_eids[0])
-					{
-						debug << "Yes\n";
-						add_edge_pair(v, incoming_eids[0], outgoing_eids[0],
-						debug);
-						return true;
-					}
+			Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(v);
+			if (adjacent_vertices.size() == 2)
+			{
+				if (in_degree > 0 && out_degree > 0)
+				{
+					return true;
 				}
-				// case 2
-				if (out_degree == 2 && in_degree == 2) {
-					debug << "Case 2\n";
-					if(incoming_eids[0] == outgoing_eids[0] &&
-						incoming_eids[1] == outgoing_eids[1]) {
-						debug << "Yes\n";
-						add_edge_pair(v, incoming_eids[0], outgoing_eids[1],
-						debug);
-						#if 0
-						add_edge_pair(incoming_eids[1], outgoing_eids[0],
-						debug);
-						#endif
-						return true;
-				}
-					if(incoming_eids[0] == outgoing_eids[1] &&
-						incoming_eids[1] == outgoing_eids[0]) {
-		
-						debug << "Yes\n";
-						add_edge_pair(v, incoming_eids[0], outgoing_eids[0],
-						debug);
-						#if 0
-						add_edge_pair(incoming_eids[1], outgoing_eids[1],
-						debug);
-						#endif
-							return true;
-						}
-
-				}
-
-				// case 3
-				else if (out_degree == 1 && in_degree == 2) {
-					debug << "Case 3\n";
-					if(outgoing_eids[0] == incoming_eids[0] ||
-						outgoing_eids[0] == incoming_eids[1])
-					{
-						debug << "Yes\n";
-						if (outgoing_eids[0] == incoming_eids[0])
-						{
-							add_edge_pair(v, incoming_eids[1], outgoing_eids[0],
-							debug);
-						}
-						else if (outgoing_eids[0] == incoming_eids[1])
-						{
-							add_edge_pair(v, incoming_eids[0], outgoing_eids[0],
-							debug);
-						}
-						
-						return true;
-					}
-				}
-
-				// case 4
-				else if (out_degree == 2 && in_degree == 1) {
-					debug << "Case 4\n";
-					if(incoming_eids[0] == outgoing_eids[0] ||
-						incoming_eids[0] == outgoing_eids[1])
-					{
-						debug << "Yes\n";
-						if (outgoing_eids[0] == incoming_eids[0])
-						{
-							add_edge_pair(v, incoming_eids[0], outgoing_eids[1],
-							debug);
-						}
-						else if (outgoing_eids[1] == incoming_eids[0])
-						{
-							add_edge_pair(v, incoming_eids[0], outgoing_eids[0],
-							debug);
-						}
-						return true;
-					}	
-				}
-				
-				debug << "No\n"; 
-				return false;
 			}
-
-			else{
-			debug << "No\n"; 
 			return false;
-			}
+
 		}
 
 template < class G >
@@ -289,6 +183,7 @@ template < class G >
 				{
 					continue;
 				}
+				Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices();
 				int64_t incoming_eid = edgePairsMap[current_vertex].first;
 				int64_t outgoing_eid = edgePairsMap[current_vertex].second; 
 				debug << graph[current_vertex].id <<" | " << incoming_eid << " | " << outgoing_eid << std::endl;
