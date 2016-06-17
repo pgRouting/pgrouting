@@ -92,6 +92,7 @@ declare
     g geometry;
     
 begin
+    RAISE NOTICE 'Deperecated function: pgr_flipEdges';
     -- get the count of edges, and return if only one edge
     nn := array_length(ga, 1);
     if nn=1 then
