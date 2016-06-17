@@ -84,6 +84,10 @@ namespace pgRouting {
 					contraction::Edge outgoing_edge,
 					int64_t id, bool first, 
 					std::ostringstream& debug);
+				void add_shortcut(G &graph, V vertex,
+					E incoming_edge,
+					E outgoing_edge,
+					std::ostringstream& debug);
 
 		};
 
@@ -172,22 +176,87 @@ template < class G >
 				linearPriority.push(linearVertex);
 			}
 			debug << "Linear vertices" << std::endl;
-			debug << linearVertices;
+			for(auto v : linearVertices)
+			{
+				debug << graph[v].id << ", ";
+			}
 			debug << std::endl;
-			debug << "V | " << "outgoing | " << "incoming" << std::endl;
+			
+			//debug << "V | " << "outgoing | " << "incoming" << std::endl;
 			while(!linearPriority.empty()) {
 
 				V current_vertex = linearPriority.top();
 				linearPriority.pop();
 				if (!is_linear(graph, current_vertex, debug))
 				{
+					linearVertices -= current_vertex;
 					continue;
 				}
-				Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices();
+				Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(current_vertex);
+				pgassert(adjacent_vertices.size() == 2);
+				V vertex_1 = adjacent_vertices[0];
+				V vertex_2 = adjacent_vertices[1];
+				debug << "Adjacent vertices\n";
+				debug << graph[vertex_1].id << ", " << graph[vertex_2].id << std::endl;
+				
+				debug << "Out degree of " << graph[vertex_1].id 
+				<< " to " << graph[current_vertex].id 
+				<< " : " << graph.out_degree_to_vertex(vertex_1, current_vertex) << std::endl;
+				debug << "Out degree of " << graph[vertex_2].id
+				<< " to " << graph[current_vertex].id 
+				<< " : " << graph.out_degree_to_vertex(vertex_2, current_vertex) << std::endl;
+				debug << "In degree of " << graph[vertex_1].id 
+				<< " from " << graph[current_vertex].id 
+				<< " : " << graph.in_degree_from_vertex(vertex_1, current_vertex) << std::endl;
+				debug << "In degree of " << graph[vertex_2].id 
+				<< " from " << graph[current_vertex].id 
+				<< " : " << graph.in_degree_from_vertex(vertex_2, current_vertex) << std::endl;
+
+
+
+				
+				if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0 
+					&& graph.in_degree_from_vertex(vertex_2, current_vertex) > 0)
+				{
+					E e1 = graph.get_min_cost_edge(vertex_1, 
+						current_vertex, debug);
+					E e2 = graph.get_min_cost_edge(current_vertex, 
+						vertex_2, debug);
+					add_shortcut(graph, current_vertex, e1, e2, debug);
+
+				}
+
+				if (graph.out_degree_to_vertex(vertex_2, current_vertex) > 0 
+					&& graph.in_degree_from_vertex(vertex_1, current_vertex) > 0)
+				{
+					E e1 = graph.get_min_cost_edge(vertex_2, 
+						current_vertex, debug);
+					E e2 = graph.get_min_cost_edge(current_vertex, 
+						vertex_1, debug);
+					add_shortcut(graph, current_vertex, e1, e2, debug);
+				}
+				graph.disconnect_vertex(debug, current_vertex);
+				linearVertices -= current_vertex;
+				
+				if (is_linear(graph, vertex_1, debug))
+				{
+					linearPriority.push(vertex_1);
+					linearVertices += vertex_1;
+				}
+				if (is_linear(graph, vertex_2, debug))
+				{
+					linearPriority.push(vertex_2);
+					linearVertices += vertex_2;
+				}
+
+				#if 0
 				int64_t incoming_eid = edgePairsMap[current_vertex].first;
 				int64_t outgoing_eid = edgePairsMap[current_vertex].second; 
 				debug << graph[current_vertex].id <<" | " << incoming_eid << " | " << outgoing_eid << std::endl;
 				add_shortcuts(graph, current_vertex, incoming_eid, outgoing_eid, debug);
+				
+				#endif
+
 
 			}
 		}
@@ -242,6 +311,7 @@ template < class G >
 			#endif
 
 }
+
 template < class G >
 		void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
 			contraction::Edge incoming_edge,
@@ -259,6 +329,26 @@ template < class G >
 			debug << "Added shortcut\n";
 			debug << shortcut;
 			graph.disconnect_vertex(debug, vertex);
+
+
+}
+
+template < class G >
+		void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
+			E incoming_edge,
+			E outgoing_edge,
+			std::ostringstream& debug) {
+
+			contraction::Edge shortcut(--last_edge_id, graph[incoming_edge].source,
+				graph[outgoing_edge].target,
+				graph[incoming_edge].cost + graph[outgoing_edge].cost);
+			shortcut.add_contracted_vertex(graph[vertex], vertex);
+			shortcut.add_contracted_edge_vertices(graph[incoming_edge]);
+			shortcut.add_contracted_edge_vertices(graph[outgoing_edge]);
+			graph.graph_add_edge(shortcut);
+			//graph.get_outgoing_edge(last_edge_id, incoming_edge.source, debug).add_contracted_vertex(graph[vertex], vertex);
+			debug << "Added shortcut\n";
+			debug << shortcut;
 		}
 
 
