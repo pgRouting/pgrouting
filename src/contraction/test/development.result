@@ -47,3 +47,9 @@ ERROR:  Expected less than two dimension
 1|-2|e|3|6| {2, 5, }
 --q14 Checking linear contraction, dead end for a square like graph
 1|3|v|-1|-1| {2, 5, 6, }
+--q15 Checking dead end contraction for undirected sample data
+1|2|v|-1|-1| {1, }
+2|5|v|-1|-1| {7, 8, }
+3|10|v|-1|-1| {13, }
+4|15|v|-1|-1| {14, }
+5|17|v|-1|-1| {16, }
