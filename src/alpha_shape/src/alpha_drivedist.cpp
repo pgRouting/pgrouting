@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 Takes a list of points and returns a list of segments 
 corresponding to the Alpha shape.
 ************************************************************************/
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -51,7 +51,9 @@ namespace boost {
 #include <list>
 #include <cmath>
 
+#ifndef _MSC_VER
 #include "alpha.h"
+#endif // _MSC_VER
 
 #include <CGAL/Polygon_2.h>
 #include <CGAL/Delaunay_triangulation_2.h>
@@ -64,6 +66,9 @@ namespace boost {
 #include <CGAL/Alpha_shape_face_base_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
 
+#ifdef _MSC_VER
+#include "alpha.h"
+#endif // _MSC_VER
 
 typedef double coord_type;
 

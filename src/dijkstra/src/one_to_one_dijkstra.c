@@ -51,13 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 PG_MODULE_MAGIC;
 
-PG_FUNCTION_INFO_V1(one_to_one_dijkstra);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-one_to_one_dijkstra(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum one_to_one_dijkstra(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -120,11 +114,8 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(one_to_one_dijkstra);
 PGDLLEXPORT Datum
-#endif
 one_to_one_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;

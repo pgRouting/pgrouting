@@ -21,7 +21,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #ifdef unlink
@@ -104,8 +104,10 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
 
         for (const auto &path : m_ResultSet) {
             if (path.isEqual(rootPath)) {
-                graph.disconnect_edge(path[i].node,     // from
-                        path[i + 1].node);  // to
+                if (path.size() > i + 1) {
+                    graph.disconnect_edge(path[i].node,     // from
+                            path[i + 1].node);  // to
+                }
             }
         }
         removeVertices(graph, rootPath);

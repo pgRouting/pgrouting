@@ -50,13 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./astarOneToOne_driver.h"
 
-PG_FUNCTION_INFO_V1(astarOneToOne);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-astarOneToOne(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum astarOneToOne(PG_FUNCTION_ARGS);
 
 
 /*******************************************************************************/
@@ -145,11 +139,8 @@ process(char* edges_sql,
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(astarOneToOne);
 PGDLLEXPORT Datum
-#endif
 astarOneToOne(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t            call_cntr;

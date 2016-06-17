@@ -50,13 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./testXYedges_driver.h"
 
-PG_FUNCTION_INFO_V1(testXYedges);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-testXYedges(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum testXYedges(PG_FUNCTION_ARGS);
 
 
 static
@@ -112,13 +106,10 @@ process( char* edges_sql,
     pgr_SPI_finish();
 }
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(testXYedges);
 PGDLLEXPORT Datum
-#endif
 testXYedges(PG_FUNCTION_ARGS) {
-    bool  result_bool = NULL;
+    bool  result_bool = false;
     process(
             pgr_text2char(PG_GETARG_TEXT_P(0)),
             &result_bool);

@@ -204,7 +204,7 @@ get_edges_9_columns(
     }
 
     (*total_edges) = total_tuples;
-    PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*totalTuples));
+    PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*total_edges));
     time_msg(" reading Edges with xy", start_t, clock());
 }
 
