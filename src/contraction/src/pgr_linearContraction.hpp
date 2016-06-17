@@ -67,7 +67,6 @@ namespace pgRouting {
 
 				Identifiers<V> linearVertices;
 				Identifiers<V> forbiddenVertices;
-				std::map<V, std::pair<int64_t, int64_t> > edgePairsMap;
 				int64_t last_edge_id;
 				bool is_linear(G &graph, V v,
 						std::ostringstream& debug);
@@ -75,14 +74,6 @@ namespace pgRouting {
 						std::ostringstream& debug);
 				void add_edge_pair(V vertex, int64_t &incoming_eid,
 					int64_t &outgoing_eid,
-					std::ostringstream& debug);
-				void add_shortcuts(G &graph, V vertex, int64_t incoming_eid,
-					int64_t outgoing_eid,
-					std::ostringstream& debug);
-				void add_shortcut(G &graph, V vertex,
-					contraction::Edge incoming_edge,
-					contraction::Edge outgoing_edge,
-					int64_t id, bool first, 
 					std::ostringstream& debug);
 				void add_shortcut(G &graph, V vertex,
 					E incoming_edge,
@@ -115,19 +106,6 @@ namespace pgRouting {
 
 		}
 
-template < class G >
-		void Pgr_linearContraction< G >::add_edge_pair(V vertex, int64_t &incoming_eid,
-					int64_t &outgoing_eid,
-					std::ostringstream& debug) {
-
-			debug << "Adding edge pair\n";
-			debug << "incoming id: "<< incoming_eid 
-			<< ", outgoing id: " << outgoing_eid << std::endl;
-			std::pair<int64_t, int64_t> epair(incoming_eid, outgoing_eid);
-			//edgePairs.push_back(epair);
-			edgePairsMap[vertex] = epair;
-
-		}
 template < class G >
 		bool Pgr_linearContraction<G>::is_linear(G &graph, V v,
 				std::ostringstream& debug) {
@@ -272,77 +250,7 @@ template < class G >
 			}
 		}
 
-template < class G >
-		void Pgr_linearContraction<G>::add_shortcuts(G &graph, V vertex, int64_t incoming_eid,
-					int64_t outgoing_eid, std::ostringstream& debug) {
-			//pgr_edge_t shortcut;
-			debug << "vertex: " << graph[vertex].id 
-			<< ", in: " << graph.in_degree(vertex)
-			 << ", out: " << graph.out_degree(vertex) << std::endl;
-			debug << "Adding shortcut between " << incoming_eid 
-			<< ", " << outgoing_eid << std::endl;
 
-			#if 1
-			if (graph.in_degree(vertex) == 2 && graph.out_degree(vertex) == 2)
-			{
-				#if 0
-				graph.print_incoming_edge(incoming_eid,
-					vertex, debug);
-				graph.print_outgoing_edge(outgoing_eid,
-					vertex, debug);
-				#endif
-				contraction::Edge incoming1 = graph.get_incoming_edge(incoming_eid,
-					vertex, debug);
-				contraction::Edge outgoing1 = graph.get_outgoing_edge(outgoing_eid,
-					vertex, debug);
-				contraction::Edge incoming2 = graph.get_incoming_edge(outgoing_eid,
-					vertex, debug);
-				contraction::Edge outgoing2 = graph.get_outgoing_edge(incoming_eid,
-					vertex, debug);
-				add_shortcut(graph, vertex, incoming1, outgoing1, --last_edge_id, true, debug);
-				// different id to every shortcut
-				add_shortcut(graph, vertex, incoming2, outgoing2, last_edge_id, false, debug);
-				
-			}
-
-			else
-			{
-				#if 0
-				graph.print_incoming_edge(incoming_eid,
-					vertex, debug);
-				graph.print_outgoing_edge(outgoing_eid,
-					vertex, debug);
-				#endif
-				contraction::Edge incoming = graph.get_incoming_edge(incoming_eid,
-					vertex, debug);
-				contraction::Edge outgoing = graph.get_outgoing_edge(outgoing_eid,
-					vertex, debug);
-				add_shortcut(graph, vertex, incoming, outgoing, --last_edge_id, true, debug);
-			}
-			#endif
-
-}
-
-template < class G >
-		void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
-			contraction::Edge incoming_edge,
-			contraction::Edge outgoing_edge,
-			int64_t id, bool first,
-			std::ostringstream& debug) {
-
-			contraction::Edge shortcut(id, incoming_edge.source,
-				outgoing_edge.target, incoming_edge.cost + outgoing_edge.cost, first);
-			shortcut.add_contracted_vertex(graph[vertex], vertex);
-			shortcut.add_contracted_edge_vertices(incoming_edge);
-			shortcut.add_contracted_edge_vertices(outgoing_edge);
-			graph.graph_add_edge(shortcut);
-			//graph.get_outgoing_edge(last_edge_id, incoming_edge.source, debug).add_contracted_vertex(graph[vertex], vertex);
-			debug << "Added shortcut\n";
-			debug << shortcut;
-			graph.disconnect_vertex(debug, vertex);
-
-
-}
 
 template < class G >
 		void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
@@ -354,7 +262,7 @@ template < class G >
 			Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(vertex);
 			V vertex_1 = adjacent_vertices[0];
 			V vertex_2 = adjacent_vertices[1];
-			
+
 			contraction::Edge shortcut(--last_edge_id, graph[vertex_1].id,
 				graph[vertex_2].id,
 				graph[incoming_edge].cost + graph[outgoing_edge].cost);
