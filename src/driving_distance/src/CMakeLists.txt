@@ -7,4 +7,3 @@ ADD_LIBRARY(driving_distance OBJECT
     many_to_dist_withPointsDD.c
     withPoints_dd_driver.cpp
  )
-

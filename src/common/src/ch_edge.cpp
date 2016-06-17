@@ -19,6 +19,12 @@ void Edge::cp_members(const Basic_edge &other) {
         this->first = other.first;
     }
 
+bool Edge::has_contracted_vertices() const {
+    if (m_contracted_vertices.size() == 0)
+        return false;
+    return true; 
+}
+
 const Identifiers<int64_t>& Edge::contracted_vertices() const { 
     return m_contracted_vertices; 
 }
@@ -33,6 +39,22 @@ void Edge::add_contracted_vertex(Vertex& v, int64_t vid) {
 
     // empty the contracted vertices of the given vertex v
     v.clear_contracted_vertices();
+}
+
+void Edge::add_contracted_edge_vertices(Edge &e) {
+
+    //adding the ids of the contracted vertices of the given edge e
+    m_contracted_vertices += e.contracted_vertices();
+
+    // empty the contracted vertices of the given edge e
+    e.clear_contracted_vertices();
+}
+
+void Edge::add_contracted_vertices(const Edge &e) {
+
+    //adding the ids of the contracted vertices of the given edge e
+    m_contracted_vertices += e.contracted_vertices();
+
 }
 
 #if 0

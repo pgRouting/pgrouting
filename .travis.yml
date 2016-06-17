@@ -27,7 +27,12 @@ branches:
   only:
     - master
     - develop
+<<<<<<< HEAD
+    - ch/newclasses1
     - ch/newclasses
+=======
+    - newSignature/tsp
+>>>>>>> develop
 
 env:
   - POSTGRESQL_VERSION=9.1

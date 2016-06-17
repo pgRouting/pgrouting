@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
 #define SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #ifdef open

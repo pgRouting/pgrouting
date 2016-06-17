@@ -9,6 +9,24 @@ const Identifiers<int64_t>& Vertex::contracted_vertices() const {
     return m_contracted_vertices; 
 }
 
+
+bool Vertex::has_contracted_vertices() const {
+    if (m_contracted_vertices.size() == 0)
+        return false;
+    return true; 
+}
+
+#if 0
+template<class T>
+void Vertex::add_contracted_edge_vertices(T &e) {
+
+    //adding the ids of the contracted vertices of the given edge e
+    m_contracted_vertices += e.contracted_vertices();
+
+    // empty the contracted vertices of the given edge e
+    e.clear_contracted_vertices();
+}
+#endif
 #if 0
 std::string Vertex_c::type_str() const {
     return m_type.type_str();

@@ -61,7 +61,7 @@ end;
 $body$
 language plpgsql stable cost 10;
 
-
+/*
 
 create or replace function pgr_tsp(sql text, start_id integer, end_id integer default (-1))
     returns setof pgr_costResult as
@@ -104,4 +104,4 @@ end;
 $body$
 language plpgsql volatile cost 50 rows 50;
 
-
+*/

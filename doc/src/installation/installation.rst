@@ -156,10 +156,16 @@ pgRouting is an extension.
 Upgrading the database
 ----------------------
 
-To upgrade pgRouting to version 2.1.0 use the following command:
+To upgrade pgRouting to version 2.x.y use the following command:
 
 .. code-block:: sql
 
-   ALTER EXTENSION pgrouting UPDATE TO "2.1.0";
+   ALTER EXTENSION pgrouting UPDATE TO "2.x.y";
+
+   For example to upgrade to 2.2.3
+
+   .. code-block:: sql
+
+   ALTER EXTENSION pgrouting UPDATE TO "2.2.3";
 
 

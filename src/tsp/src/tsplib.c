@@ -1,3 +1,7 @@
+/*
+ * THIS CODE IS DEPRECATED
+ */
+
 /*PGR-MIT*****************************************************************
 
 *  $Id: tsplib.c,v 1.1 2006/05/13 23:39:56 woodbri Exp $
@@ -93,7 +97,6 @@ THE SOFTWARE.
 #undef DEBUG
 //#define DEBUG 1
 #include "../../common/src/debug_macro.h"
-
 
 
 #define T_INIT                        100

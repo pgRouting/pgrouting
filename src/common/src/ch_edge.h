@@ -26,20 +26,23 @@ class Edge {
     Edge(const pgr_edge_t &other) :
     id(other.id), source(other.source),
     target(other.target), cost(other.cost){}
-    Edge(int64_t id, VID source, VID target, double cost) :
+    Edge(int64_t id, int64_t source, int64_t target, double cost) :
     id(id), source(source),
     target(target), cost(cost), first(true){}
-    Edge(int64_t id, VID source, VID target, double cost, bool first) :
+    Edge(int64_t id, int64_t source, int64_t target, double cost, bool first) :
     id(id), source(source),
     target(target), cost(cost), first(first){}
     void cp_members(const Basic_edge &other);
     void cp_members(const Edge &other);
-    EID id;
-    VID source;
-    VID target;
+    int64_t id;
+    int64_t source;
+    int64_t target;
     double cost;
     bool first;
     void add_contracted_vertex(Vertex& v, int64_t vid);
+    void add_contracted_edge_vertices(Edge& e);
+    void add_contracted_vertices(const Edge& e);
+    bool has_contracted_vertices() const;
     void clear_contracted_vertices() { m_contracted_vertices.clear(); }
     #if 0
     inline bool isDeleted() const { return m_deleted; }
