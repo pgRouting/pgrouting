@@ -238,7 +238,7 @@ sub run_test {
             for my $x (@{$t->{windows}}) {
                 process_single_test($x, $dir,, $DBNAME, \%res)
             }
-        } elsif ($OS=~/Mac/) {
+        } elsif ($OS=~/Mac/ ||  $OS=~/dar/) {
             for my $x (@{$t->{macos}}) {
                 process_single_test($x, $dir,, $DBNAME, \%res)
             }
