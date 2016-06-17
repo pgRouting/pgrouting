@@ -16,16 +16,16 @@ ERROR:  Expected less than two dimension
 1|-1|e|4|6| {3, }
 --q7 Checking for linear vertices case 2
 1|-1|e|6|10| {5, }
-2|-1|e|10|6| {5, }
+2|-2|e|10|6| {5, }
 --q8 Checking for linear vertices case 3
 1|-1|e|3|5| {2, }
 --q9 Checking for linear vertices case 4
 1|-1|e|3|9| {6, }
 --q10 Checking linear contraction for sample data
 1|-2|e|5|7| {8, }
-2|-2|e|7|5| {8, }
+2|-3|e|7|5| {8, }
 3|-1|e|9|3| {4, }
-4|-3|e|11|9| {12, }
+4|-4|e|11|9| {12, }
 --q11 Checking dead end, linear contraction for sample data
 1|5|v|-1|-1| {7, 8, }
 2|15|v|-1|-1| {14, }
@@ -36,12 +36,13 @@ ERROR:  Expected less than two dimension
 7|-4|e|11|9| {12, }
 --q12 Checking linear contraction, dead end for sample data
 1|2|v|-1|-1| {1, }
-2|5|v|-1|-1| {7, 8, }
-3|10|v|-1|-1| {13, }
-4|15|v|-1|-1| {14, }
-5|17|v|-1|-1| {16, }
-6|-1|e|9|3| {4, }
-7|-3|e|11|9| {12, }
+2|10|v|-1|-1| {13, }
+3|15|v|-1|-1| {14, }
+4|17|v|-1|-1| {16, }
+5|-2|e|5|7| {8, }
+6|-3|e|7|5| {8, }
+7|-1|e|9|3| {4, }
+8|-4|e|11|9| {12, }
 --q13 Checking linear contraction for a square like graph
 1|-2|e|3|6| {2, 5, }
 --q14 Checking linear contraction, dead end for a square like graph

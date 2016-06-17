@@ -43,6 +43,7 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
 -- \echo --q6 -------------------------------------------
 
+
 \echo --q7 Checking for linear vertices case 2
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table 
@@ -58,14 +59,12 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
 -- \echo --q8 -------------------------------------------
 
-
 \echo --q9 Checking for linear vertices case 4
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table 
     WHERE id = 5 OR id = 9',
     ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
 -- \echo --q9 -------------------------------------------
-
 
 \echo --q10 Checking linear contraction for sample data
 SELECT * FROM pgr_contractGraph(
