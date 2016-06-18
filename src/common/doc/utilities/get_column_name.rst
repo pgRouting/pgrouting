@@ -12,8 +12,6 @@
 pgr_getColumnName - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_getColumnName(text,text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

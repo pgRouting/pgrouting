@@ -12,10 +12,6 @@
 pgr_isColumnIndexed - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_isColumnIndexed(text,text) -- deprecated
-	module: common
-
 Name
 -------------------------------------------------------------------------------
 

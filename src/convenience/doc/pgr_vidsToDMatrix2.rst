@@ -12,16 +12,13 @@
 pgr_vidsToDMatrix - Deprecated Function
 ==============================================================================
 
-.. index::
-        single: vidsToDMatrix(IN sql text, IN vids integer[], IN directed boolean, IN has_reverse_cost boolean, IN want_symmetric boolean, OUT dmatrix double precision[]) --proposed
-
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
 
-.. warning::  This is a proposed function
+.. warning::  This is a deprecated function
 
      - Is not officially in the release.
      - Name could change.

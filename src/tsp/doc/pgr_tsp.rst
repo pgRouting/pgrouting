@@ -50,9 +50,9 @@ Signatures
 
 
 .. index::
-    single: pgr_TSP(matrix_cell_sql)
+    single: TSP(Basic Use)
 
-Minimal Signature
+Basic Use
 -------------------------------------------------------------------------------
 
 .. code-block:: none
@@ -69,9 +69,11 @@ and the default is to have random execution, the example is wrapping the actual 
    :start-after: -- q1
    :end-before: -- q2
 
+..
+    TODO Intermediate Use
 
 .. index::
-    single: pgr_eucledianTSP(matrix_cell_sql, <configuration parameters>) -- proposed
+    single: TSP(Complete Signature) -- proposed
 
 Complete Signature
 -------------------------------------------------------------------------------

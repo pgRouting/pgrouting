@@ -40,13 +40,13 @@ Signature Summary
 
 
 Signatures
-==========
+-------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstraDmatrix(edges_sql, start_vids)
+    single: dijkstraDmatrix(edges_sql, start_vids) -- New
 
 Minimal Signature
------------------
+...............................................................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -66,10 +66,10 @@ The minimal signature:
 
 
 .. index::
-    single: withPointsDmatrix(edges_sql, start_vids, directed)
+    single: dijkstraDmatrix(Complete Signature) -- New
 
 Complete Signature
---------------------
+...............................................................................
 
 .. code-block:: none
 
@@ -87,10 +87,10 @@ This example returns a symmetric cost matrix.
 
 
 Description of the Signatures
-=============================
+-------------------------------------------------------------------------------
 
 Description of the edge's SQL query
------------------------------------
+...............................................................................
 
 :edges_sql: is a ``TEXT`` that containes an SQL query, which should return a set of rows with the following columns:
 
@@ -112,7 +112,7 @@ Where:
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+...............................................................................
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -129,8 +129,8 @@ Parameter        Type                   Description
 .. include:: dmatrix_return_values.txt
 
 
-Examples usage
-================
+Examples
+-------------------------------------------------------------------------------
 
 :Example: Use with tsp
 
@@ -138,7 +138,6 @@ Examples usage
    :start-after: -- dijkstra q3
    :end-before: -- dijkstra q4
 
-The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
@@ -151,6 +150,7 @@ See Also
 * :ref:`dijkstra`
 * :ref:`dmatrix`
 * :ref:`tsp`
+* The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

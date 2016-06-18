@@ -12,8 +12,6 @@
 pgr_pointToId - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_pointToId(geometry,double precision,text,integer) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

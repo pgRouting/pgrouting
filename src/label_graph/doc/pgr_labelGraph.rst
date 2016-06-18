@@ -15,9 +15,7 @@ pgr_labelGraph
 ===============================================================================
 
 .. index:: 
-	single: pgr_labelGraph(text, text, text, text, text, text)
-	module: common
-
+	single: labelGraph(Complete Signature) -- proposed in V2.1
 
 
 Name

@@ -26,7 +26,7 @@ Name
 
 
 Signature Summary
------------------
+-------------------------------------------------------------------------------
 
 .. code-block:: none
 
@@ -38,13 +38,13 @@ Signature Summary
 
 
 Signatures
-==========
+-------------------------------------------------------------------------------
 
 .. index::
-    single: withPointsDmatrix(edges_sql, points_sql, start_vids)
+    single: withPointsDmatrix(Minimal Signature) -- New
 
 Minimal Signature
------------------
+...............................................................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -64,10 +64,10 @@ The minimal signature:
 
 
 .. index::
-    single: withPointsDmatrix(edges_sql, points_sql, start_vids, directed, driving_side)
+    single: withPointsDmatrix(Complete Signature) -- New
 
 Complete Signature
---------------------
+...............................................................................
 
 .. code-block:: none
 
@@ -89,17 +89,17 @@ Complete Signature
 
 
 Description of the Signatures
-=============================
+-------------------------------------------------------------------------------
 
 ..
     description of the sql queries
 
 
-.. include:: ../../withPoints/doc/withPoints_queries.txt 
+.. include:: ../../withPoints/doc/withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+...............................................................................
 
 
 ================ ====================== =================================================
@@ -124,7 +124,7 @@ Parameter        Type                   Description
 
 
 Examples
-========
+-------------------------------------------------------------------------------
 
 :Example: Use with tsp
 

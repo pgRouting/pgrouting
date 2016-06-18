@@ -12,9 +12,6 @@
 pgr_isColumnInTable - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_isColumnInTable(text,text) -- deprecated
-	module: common
 
 Name
 -------------------------------------------------------------------------------

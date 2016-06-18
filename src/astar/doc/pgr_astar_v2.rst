@@ -12,8 +12,6 @@
 pgr_astar - Deprecated Signature
 ===============================================================================
 
-.. index:: 
-	single: pgr_astar(text, integer, integer, boolean, boolean)
 
 Name
 -------------------------------------------------------------------------------
