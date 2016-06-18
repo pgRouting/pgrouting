@@ -7,9 +7,9 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_astar:
+.. _pgr_astar-V2.0:
 
-pgr_astar - Shortest Path A*
+pgr_astar - Deprecated Signature
 ===============================================================================
 
 .. index:: 
@@ -75,13 +75,13 @@ Examples
 
 * Without ``reverse_cost``
 
-.. literalinclude:: doc-astar.queries
+.. literalinclude:: doc-astar-v2.queries
    :start-after: --q1
    :end-before: --q2
 
 * With ``reverse_cost``
 
-.. literalinclude:: doc-astar.queries
+.. literalinclude:: doc-astar-v2.queries
    :start-after: --q2
    :end-before: --q3
 
