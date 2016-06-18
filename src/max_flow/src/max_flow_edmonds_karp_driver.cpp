@@ -49,8 +49,8 @@ void
 do_pgr_max_flow_edmonds_karp(
     pgr_edge_t *data_edges,
     size_t total_tuples,
-    int64_t source,
-    int64_t sink,
+    int64_t source_vertex,
+    int64_t sink_vertex,
     pgr_flow_t **return_tuples,
     size_t *return_count,
     char **err_msg) {
@@ -58,7 +58,7 @@ do_pgr_max_flow_edmonds_karp(
 
     try {
         PgrFlowGraph<FlowGraph> G;
-        G.create_flow_graph(data_edges, total_tuples, source, sink);
+        G.create_flow_graph(data_edges, total_tuples, source_vertex, sink_vertex);
 
         int64_t flow = G.edmonds_karp();
 

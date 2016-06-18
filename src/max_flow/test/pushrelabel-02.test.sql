@@ -7,5 +7,5 @@
  * incoming flow on the sink.
  */
 SELECT sum(flow) AS max_flow
-FROM pgr_pushrelabel('SELECT * FROM edge_table', 3, 5)
+FROM pgr_maxflowpushrelabel('SELECT * FROM edge_table', 3, 5)
 WHERE tail = 3; -- Condition can be replaced with head = 5

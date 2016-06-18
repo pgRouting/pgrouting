@@ -7,5 +7,5 @@
  * incoming flow on the sink.
  */
 SELECT sum(flow) AS max_flow
-FROM pgr_edmondskarp('SELECT * FROM edge_table', 9, 2)
+FROM pgr_maxflowedmondskarp('SELECT * FROM edge_table', 9, 2)
 WHERE tail = 9; -- Condition can be replaced with head = 5

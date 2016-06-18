@@ -1,6 +1,8 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/max_flow.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/max_flow_boykov_kolmogorov.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/max_flow_edmonds_karp.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/max_flow_push_relabel.sql
 )
 
 # set in parent scope

@@ -1,0 +1,14 @@
+-- q1
+SELECT * FROM pgr_maxflowpushrelabel(
+    'SELECT * FROM edge_table',
+     3, 5
+);
+ id | source | target | flow | residual_capacity
+----+--------+--------+------+-------------------
+  1 |      2 |      5 |    1 |                 0
+  2 |      3 |      2 |    1 |                 0
+  3 |      3 |      6 |    1 |                 0
+  4 |      6 |      5 |    1 |                 0
+(4 rows)
+
+-- q2

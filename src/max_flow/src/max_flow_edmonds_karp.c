@@ -64,8 +64,8 @@ static
 void
 process(
     char *edges_sql,
-    int64_t source,
-    int64_t sink,
+    int64_t source_vertex,
+    int64_t sink_vertex,
     pgr_flow_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
@@ -73,7 +73,7 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
 
-    if (source == sink) {
+    if (source_vertex == sink_vertex) {
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
@@ -102,8 +102,8 @@ process(
     do_pgr_max_flow_edmonds_karp(
         edges,
         total_tuples,
-        source,
-        sink,
+        source_vertex,
+        sink_vertex,
         result_tuples,
         result_count,
         &err_msg);
@@ -202,8 +202,8 @@ max_flow_edmonds_karp(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[call_cntr].id);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].tail);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].head);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].target);
         values[3] = Int64GetDatum(result_tuples[call_cntr].flow);
         values[4] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
         /**********************************************************************/

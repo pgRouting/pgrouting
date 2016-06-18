@@ -112,8 +112,8 @@ typedef struct {
 
 typedef struct {
   int64_t id;
-  int64_t tail;
-  int64_t head;
+  int64_t source;
+  int64_t target;
   int64_t flow;
   int64_t residual_capacity;
 } pgr_flow_t;

@@ -41,8 +41,8 @@ extern "C" {
         do_pgr_max_flow_push_relabel(
             pgr_edge_t *data_edges,
             size_t total_tuples,
-            int64_t source,
-            int64_t sink,
+            int64_t source_vertex,
+            int64_t sink_vertex,
             pgr_flow_t **return_tuples,
             size_t *return_count,
             char **err_msg);
