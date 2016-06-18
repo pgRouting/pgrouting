@@ -29,31 +29,44 @@ Synopsis
 
 The K shortest path routing algorithm based on Yen's algorithm. "K" is the number of shortest paths desired.
 
-.. index:: 
-  single: ksp(edges_sql, start_vid, end_vid, k)
-
-.. rubric:: The minimal signature:
+Signature Summary
+-----------------
 
 .. code-block:: sql
 
-  pgr_ksp(TEXT sql_q, BIGINT start_vid, BIGINT end_vid, INTEGER k);
+    pgr_ksp(edges_sql, start_vid, end_vid, K);
+    pgr_ksp(edges_sql, start_vid, end_vid, k, directed, heap_paths)
+    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+
+.. index:: 
+  single: ksp(Minimal Signature)
+
+Minimal Signature
+..................
+
+.. code-block:: sql
+
+    pgr_ksp(edges_sql, start_vid, end_vid, K);
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 
 .. index:: 
-  single: ksp(edges_sql, start_vid, end_vid, k, directed, heap_paths)
+  single: ksp(Complete Signature)
 
-.. rubric:: The full signature:
+Complete Signature
+...................
 
 .. code-block:: sql
 
-  pgr_ksp(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid, INTEGER k,
-        BOOLEAN directed:=true, BOOLEAN heap_paths:=false);
+    pgr_ksp(edges_sql, start_vid, end_vid, k, directed, heap_paths)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
+
+Description of the Signatures
+-------------------------------------------------------------------------------
 
 Description of the SQL query
--------------------------------------------------------------------------------
+...............................
 
 General description of the ``edges_sql``
 
@@ -75,8 +88,8 @@ Where:
 :ANY-NUMERICAL: smallint, int, bigint, real, float
 
 
-Description of the parameters of the signatures
--------------------------------------------------------------------------------
+Description of the parameters
+................................
 
 :sql_q: ``TEXT`` SQL query as decribed above.
 :start_vid: ``BIGINT`` id of the starting vertex.
@@ -90,7 +103,7 @@ Roughly, if the shortest path has ``N`` edges, the heap will contain about than 
 
 
 Description of the return values
--------------------------------------------------------------------------------
+...................................
 
 Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``
 
@@ -163,8 +176,8 @@ The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
-* New in version 2.0.0
 * Added functionality version 2.1
+* New in version 2.0.0
 
 See Also
 -------------------------------------------------------------------------------

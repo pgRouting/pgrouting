@@ -85,7 +85,7 @@ Signatures
 ===============================================================================
 
 .. index::
-	single: dijkstraCost(edges_sql, start_vid, end_vid)
+	single: dijkstraCost(Minimal Use)
 
 Minimal signature
 -----------------
@@ -107,7 +107,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 
 .. index::
-	single: dijkstraCost(edges_sql, start_vid, end_vid, directed)
+	single: dijkstraCost(One to One)
 
 pgr_dijkstraCost One to One
 --------------------------------
@@ -132,7 +132,7 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 
 
 .. index::
-	single: dijkstraCost(edges_sql, start_vids, end_vid, directed)
+	single: dijkstraCost(Many to One)
 
 pgr_dijkstraCost Many to One
 --------------------------------
@@ -158,7 +158,7 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 
 
 .. index::
-    single: dijkstraCost(edges_sql, start_vid, end_vids, directed)
+    single: dijkstraCost(One to Many)
 
 pgr_dijkstraCost One to Many
 --------------------------------
@@ -185,9 +185,10 @@ This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in
 
 
 .. index::
-	single: dijkstraCost(edges_sql, start_vids, end_vids, directed)
+	single: dijkstraCost(Many to Many)
 
-.. rubric:: pgr_dijkstraCost Many to Many
+pgr_dijkstraCost Many to Many
+--------------------------------
 
 .. code-block:: none
 

@@ -25,8 +25,9 @@ pgr_dijkstra - Shortest Path Dijkstra
         ./pgr_dijkstraCost
         ./pgr_dijkstraVia
 
+
 The problem definition
-======================
+-----------------------
 
 
 Given the following query:

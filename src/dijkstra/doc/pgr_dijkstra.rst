@@ -74,7 +74,7 @@ Signatures
 ===============================================================================
 
 .. index::
-    single: dijkstra(edges_sql, start_vid, end_vid)
+    single: dijkstra(Minimal Use)
 
 Minimal signature
 -----------------
@@ -94,7 +94,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 
 .. index::
-    single: dijkstra(edges_sql, start_vid, end_vid, directed:=TRUE)
+    single: dijkstra(One to One)
 
 Dijkstra One to One
 -------------------
@@ -117,7 +117,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 
 
 .. index::
-    single: dijkstra(edges_sql, start_vid, end_vids, directed:=TRUE)
+    single: dijkstra(One to Many)
 
 Dijkstra One to many
 --------------------
@@ -148,7 +148,7 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 
 .. index::
-    single: dijkstra(edges_sql, start_vids, end_vid, directed)
+    single: dijkstra(Many to One)
 
 Dijkstra Many to One
 --------------------
@@ -178,7 +178,7 @@ where the ending vertex is fixed.
 
 
 .. index::
-    single: dijkstra(edges_sql, start_vids, end_vids, directed)
+    single: dijkstra(Many to Many)
 
 Dijkstra Many to Many
 ---------------------

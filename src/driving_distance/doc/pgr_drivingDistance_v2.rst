@@ -12,8 +12,6 @@
 pgr_drivingDistance - Deprecated Signature
 ===============================================================================
 
-.. index:: 
-	single: drivingDistance(text,integer,double precision,boolean,boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

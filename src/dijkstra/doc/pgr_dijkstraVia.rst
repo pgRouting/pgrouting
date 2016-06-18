@@ -50,7 +50,7 @@ Signatures
 ===============================================================================
 
 .. index:: 
-    single: dijkstraVia(edges_sql, via_vertices) -proposed
+    single: dijkstraVia(Minimal Use) - proposed
 
 Minimal Signature
 ---------------------------------
@@ -68,7 +68,7 @@ Minimal Signature
     :end-before: -- q0
 
 .. index:: 
-    single: dijkstraVia(edges_sql, via_vertices, strict:=false, U_turn_on_edge:=true, directed:=true) -proposed
+    single: dijkstraVia(Full signature) - proposed
 
 Complete Signature
 ------------------

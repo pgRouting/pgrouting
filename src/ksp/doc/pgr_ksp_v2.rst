@@ -12,8 +12,6 @@
 pgr_ksp - Deprecated Signature
 ===============================================================================
 
-.. index:: 
-  single: ksp(text,integer,integer,integer,boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

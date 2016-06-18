@@ -18,9 +18,6 @@ Name
 ``pgr_dijkstra`` — Returns the shortest path using Dijkstra algorithm.
 
 
-.. index::
-	single: dijkstra(sql, source, target, directed, has_rcost) -- deprecated
-
 Synopsis
 -------------------------------------------------------------------------------
 

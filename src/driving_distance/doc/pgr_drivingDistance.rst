@@ -30,39 +30,56 @@ Synopsis
 Using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``.
 The edges extracted will conform the corresponding spanning tree.
 
-.. index::
-	single: drivingDistance(edges_sql, start_vid, distance)
-
-.. rubric:: The minimal signature:
+Signature Summary
+-----------------
 
 .. code-block:: sql
 
-   pgr_drivingDistance(sql text, start_v bigint, distance float8)
-     RETURNS SET OF (seq, node, edge, cost, agg_cost)
+    pgr_drivingDistance(sql, start_vid, distance)
+    pgr_drivingDistance(sql, start_vid, distance, directed)
+    pgr_drivingDistance(sql, start_vids, distance, directed, equicost)
 
+    RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
+
+
+Signatures
+-----------
 
 .. index::
-	single: drivingDistance(edges_sql, start_vid, distance, directed)
+	single: drivingDistance(Minimal Use)
 
-.. rubric:: Driving Distance from a single starting point:
+Minimal Use
+...................
 
 .. code-block:: sql
 
-   pgr_drivingDistance(sql text, start_vid bigint, distance float8, directed boolean)
-     RETURNS SET OF (seq, node, edge, cost, agg_cost)
+    pgr_drivingDistance(sql, start_vid, distance)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
 
 
 .. index::
-	single: drivingDistance(edges_sql, start_vids, distance, directed, equiCost)
+	single: drivingDistance(Single Start Vertex)
 
-.. rubric:: Driving Distance from a multiple starting points:
+Driving Distance From A Single Starting Vertex
+..............................................
 
 .. code-block:: sql
 
-   pgr_drivingDistance(sql text, start_vids anyarray, distance float8,
-         directed boolean default true,
-         equicost boolean default false)
-     RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
+    pgr_drivingDistance(sql, start_vid, distance, directed)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+.. index::
+	single: drivingDistance(Multiple Starting Vertices)
+
+Driving Distance From Multiple Starting Vertices
+.................................................
+
+.. code-block:: sql
+
+    pgr_drivingDistance(sql, start_vids, distance, directed, equicost)
+    RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
 
 Description of the SQL query
 -------------------------------------------------------------------------------
