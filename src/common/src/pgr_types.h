@@ -30,30 +30,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include <stdint.h>
 
+typedef struct  {
+    int64_t id;
+    double x;
+    double y;
+} Coordinate_t;
+
 typedef struct edge_astar
 {
-  int id;
-  int source;
-  int target;
-  double cost;
-  double reverse_cost;
-  double s_x;
-  double s_y;
-  double t_x;
-  double t_y;
+    int id;
+    int source;
+    int target;
+    double cost;
+    double reverse_cost;
+    double s_x;
+    double s_y;
+    double t_x;
+    double t_y;
 } edge_astar_t;
 
 typedef struct 
 {
-  int64_t id;
-  int64_t source;
-  int64_t target;
-  double cost;
-  double reverse_cost;
-  double x1;
-  double y1;
-  double x2;
-  double y2;
+    int64_t id;
+    int64_t source;
+    int64_t target;
+    double cost;
+    double reverse_cost;
+    double x1;
+    double y1;
+    double x2;
+    double y2;
 } Pgr_edge_xy_t;
 
 
@@ -75,7 +81,7 @@ typedef struct {
 
 /*
  * This ones are for returning the info to postgres
-     */
+ */
 
 typedef struct {
     int seq;
@@ -168,46 +174,6 @@ struct {
     expectType eType;
 
 } Column_info_t;
-#if 0
-// used in boost
-struct boost_vertex_t {
-    int64_t id;
-};
-
-struct boost_edge_t{
-    int64_t id;
-    double cost;
-    int64_t source;
-    int64_t target;
-    bool first;  // originally was true (source, target) false (target, source)
-};
-#endif
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 
-#if 0
-/**************************************************************************
- * VRPPDTW types
- * ***********************************************************************/
-typedef struct {
-    int64_t id;
-    double x;
-    double y;
-    double demand;
-    double Etime;
-    double Ltime;
-    double Stime;
-    int64_t Pindex;
-    int64_t Dindex;
-    double Ddist;
-} Customer;
-
-typedef struct  {
-    int seq;
-    int64_t rid;
-    int64_t nid;
-    double cost;
-} path_element;
-
-/*************************************************************************/
-#endif
