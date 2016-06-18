@@ -9,7 +9,7 @@
 
 .. _pgr_vids_to_dmatrix:
 
-pgr_vidsToDMatrix
+pgr_vidsToDMatrix - Deprecated Function
 ==============================================================================
 
 .. index::

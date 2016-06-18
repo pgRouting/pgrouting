@@ -9,7 +9,7 @@
 
 .. _pgr_flip_edges:
 
-pgr_flipEdges
+pgr_flipEdges - Deprecated Function
 ==============================================================================
 
 

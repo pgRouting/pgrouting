@@ -9,7 +9,7 @@
 
 .. _pgr_driving_distance_v2:
 
-pgr_drivingDistance (V2.0)
+pgr_drivingDistance - Deprecated Signature
 ===============================================================================
 
 .. index:: 

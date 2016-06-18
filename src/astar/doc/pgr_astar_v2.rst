@@ -1,4 +1,4 @@
-..
+.. 
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -7,36 +7,30 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstra_v2:
+.. _pgr_astar:
 
-pgr_dijkstra - Deprecated Signature
+pgr_astar - Shortest Path A*
 ===============================================================================
+
+.. index:: 
+	single: pgr_astar(text, integer, integer, boolean, boolean)
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_dijkstra`` — Returns the shortest path using Dijkstra algorithm.
+``pgr_astar`` — Returns the shortest path using A* algorithm.
 
-
-.. index::
-	single: dijkstra(sql, source, target, directed, has_rcost) -- deprecated
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956. It is a graph search algorithm that solves the single-source shortest path problem for a graph with non-negative edge path costs, producing a shortest path tree. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target,
-	                           boolean directed, boolean has_rcost);
+	pgr_costResult[] pgr_astar(sql text, source integer, target integer,
+                               directed boolean, has_rcost boolean);
 
-.. warning:: This signature is being deprecated in version 2.1, Please use it
-             without the ``has_rcost`` flag instead:
-
-             ``pgr_dijkstra(sql, source, target, directed)``
-
-             See :ref:`pgr_dijkstra`
 
 Description
 -------------------------------------------------------------------------------
@@ -45,14 +39,18 @@ Description
 
 	.. code-block:: sql
 
-		SELECT id, source, target, cost [,reverse_cost] FROM edge_table
+		SELECT id, source, target, cost, x1, y1, x2, y2 [,reverse_cost] FROM edge_table
 
 
 	:id: ``int4`` identifier of the edge
 	:source: ``int4`` identifier of the source vertex
 	:target: ``int4`` identifier of the target vertex
 	:cost: ``float8`` value, of the edge traversal cost. A negative cost will prevent the edge from being inserted in the graph.
-	:reverse_cost: ``float8`` (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
+	:x1: ``x`` coordinate of the start point of the edge
+	:y1: ``y`` coordinate of the start point of the edge
+	:x2: ``x`` coordinate of the end point of the edge
+	:y2: ``y`` coordinate of the end point of the edge
+	:reverse_cost: (optional) the cost for the reverse traversal of the edge. This is only used when the ``directed`` and ``has_rcost`` parameters are ``true`` (see the above remark about negative costs).
 
 :source: ``int4`` id of the start point
 :target: ``int4`` id of the end point
@@ -72,45 +70,27 @@ Returns set of :ref:`type_cost_result`:
 * Renamed in version 2.0.0
 
 
-Examples: Directed
+Examples
 -------------------------------------------------------------------------------
 
 * Without ``reverse_cost``
 
-.. literalinclude:: dijkstra-v2.queries
+.. literalinclude:: doc-astar.queries
    :start-after: --q1
    :end-before: --q2
 
-
 * With ``reverse_cost``
 
-.. literalinclude:: dijkstra-v2.queries
+.. literalinclude:: doc-astar.queries
    :start-after: --q2
    :end-before: --q3
 
 
-
-Examples: Undirected
--------------------------------------------------------------------------------
-
-* Without ``reverse_cost``
-
-.. literalinclude:: dijkstra-v2.queries
-   :start-after: --q3
-   :end-before: --q4
-
-
-* With ``reverse_cost``
-
-.. literalinclude:: dijkstra-v2.queries
-   :start-after: --q4
-   :end-before: --q5
-
-
 The queries use the :ref:`sampledata` network.
+
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* http://en.wikipedia.org/wiki/A*_search_algorithm

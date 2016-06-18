@@ -9,7 +9,7 @@
 
 .. _pgr_get_column_name:
 
-pgr_getColumnName
+pgr_getColumnName - Deprecated Function
 ===============================================================================
 
 .. index:: 

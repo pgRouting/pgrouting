@@ -9,7 +9,7 @@
 
 .. _pgr_quote_ident:
 
-pgr_quote_ident 
+pgr_quote_ident  - Deprecated Function
 ===============================================================================
 
 .. index:: 

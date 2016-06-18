@@ -9,7 +9,7 @@
 
 .. _pgr_is_column_indexed:
 
-pgr_isColumnIndexed
+pgr_isColumnIndexed - Deprecated Function
 ===============================================================================
 
 .. index:: 

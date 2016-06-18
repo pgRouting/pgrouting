@@ -9,7 +9,7 @@
 
 .. _pgr_start_point:
 
-pgr_startPoint 
+pgr_startPoint  - Deprecated Function
 ===============================================================================
 
 .. index:: 

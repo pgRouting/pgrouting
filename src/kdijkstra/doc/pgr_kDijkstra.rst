@@ -10,7 +10,7 @@
 
 .. _pgr_kdijkstra:
 
-pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra
+pgr_kDijkstra - Deprecated Functions
 ===============================================================================
 
 .. index::

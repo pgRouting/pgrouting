@@ -9,7 +9,7 @@
 
 .. _pgr_is_column_in_table:
 
-pgr_isColumnInTable
+pgr_isColumnInTable - Deprecated Function
 ===============================================================================
 
 .. index:: 

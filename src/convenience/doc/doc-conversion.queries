@@ -47,6 +47,7 @@ SELECT st_astext(e) FROM (SELECT unnest(pgr_flipedges(ARRAY[
 'LINESTRING(2 1,3 1)'::geometry,
 'LINESTRING(2 0,2 1)'::geometry,
 'LINESTRING(2 0,2 1)'::geometry]::geometry[])) AS e) AS foo;
+NOTICE:  Deperecated function: pgr_flipEdges
       st_astext      
 ---------------------
  LINESTRING(2 1,2 2)

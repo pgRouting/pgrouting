@@ -9,11 +9,9 @@
 
 .. _pgr_apsp_johnson:
 
-pgr_apspJohnson
+pgr_apspJohnson - Deprecated function
 ===============================================================================
 
-.. index::
-    single: pgr_apspJohnson(text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

@@ -91,6 +91,7 @@ declare
     t float8[];
 
 begin
+    RAISE NOTICE 'Deprecated function pgr_vidsToDMatrix';
     -- check if the input arrays has any -1 values, maybe this whould be a raise exception
     if vids @> ARRAY[-1] then
     raise notice 'Some vids are undefined (-1)!';

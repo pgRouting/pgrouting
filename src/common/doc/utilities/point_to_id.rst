@@ -9,7 +9,7 @@
 
 .. _pgr_point_to_id:
 
-pgr_pointToId
+pgr_pointToId - Deprecated Function
 ===============================================================================
 
 .. index:: 

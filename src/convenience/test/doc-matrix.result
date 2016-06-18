@@ -6,10 +6,13 @@
 2|2
 3|0
 --q2
+NOTICE:  Deprecated function pgr_vidsToDMatrix
 {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}}|{1,2,3,5}
 --q2.1
+NOTICE:  Deprecated function pgr_vidsToDMatrix
 {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}}|{1,2,3,5}
 --q2.2
+NOTICE:  Deprecated function pgr_vidsToDMatrix
 0|1
 1|2
 2|3

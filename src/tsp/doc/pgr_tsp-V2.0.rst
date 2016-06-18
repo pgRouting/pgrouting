@@ -9,7 +9,7 @@
 
 .. _pgr_tsp-V2.0:
 
-pgr_tsp V2.0
+pgr_tsp -Deprecated Signatures
 ===============================================================================
 
 .. warning:: Deprecated Signatures

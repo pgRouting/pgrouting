@@ -9,7 +9,7 @@
 
 .. _pgr_get_table_name:
 
-pgr_getTableName
+pgr_getTableName - Deprecated Function
 ===============================================================================
 
 .. index:: 
