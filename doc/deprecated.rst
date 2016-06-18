@@ -33,19 +33,21 @@ Routing functions
 Auxiliary functions
 ...................
 
+- :ref:`pgr_flip_edges`
 - :ref:`pgr_vids_to_dmatrix`
 - :ref:`pgr_vids_to_dmatrix2`
-- :ref:`pgr_flip_edges`
+- :ref:`pgr_points_to_dmatrix`
 
 
 .. toctree::
-   :hidden: 
+   :hidden:
 
    ../src/astar/doc/pgr_astar_v2
    ../src/tsp/doc/pgr_tsp-V2.0
+   ../src/convenience/doc/pgr_flipEdges
    ../src/convenience/doc/pgr_vidsToDMatrix
    ../src/convenience/doc/pgr_vidsToDMatrix2
-   ../src/convenience/doc/pgr_flipEdges
+   ../src/convenience/doc/pgr_pointsToDMatrix
 
 
 Deprecated on version 2.2
