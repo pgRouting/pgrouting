@@ -12,16 +12,16 @@
    - change [...] (including the square braquets) to appropiate values
    - one file / function,  may signatures of the same function go in the same file
 
-.. _pgr_maxFlowEdmondsKarp:
+.. _pgr_maxFlowBoykovKolmogorov:
 
-pgr_maxFlowEdmondsKarp
-======================
+pgr_maxFlowBoykovKolmogorov
+===========================
 
 
 Name
 ----
 
-``pgr_maxFlowEdmondsKarp`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
+``pgr_maxFlowBoykovKolmogorov`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
 .. warning::  This is a proposed function.
 
@@ -41,10 +41,10 @@ Synopsis
 
 Calculates the maximum flow in a directed graph from a source node to a sink node.
 Edges must be weighted with non-negative capacities.
-Developed by Edmonds and Karp.
+Developed by Boykov and Kolmogorov.
 Implementation details_.
 
-.. _details: http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
+.. _details: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
 Characteristics:
 ----------------
@@ -53,7 +53,7 @@ The main characterics are:
   - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
   - The maximum flow through the graph can be calculated by aggregation on source/sink.
   - Returns nothing if source and sink are the same.
-  - Running time: :math:`O( V * E ^ 2 )`
+  - Running time: in general polynomial complexity, performs well on graphs that represent 2D grids (eg.: roads).
 
 Signature Summary
 -----------------
@@ -65,14 +65,14 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source,  sink)
+    pgr_maxflowboykovkolmogorov(edges_sql, source,  sink)
     RETURNS SET OF (id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 
 ..
   This is a reminder of how your query looks like
-        pgr_maxFlowEdmondsKarp(
+        pgr_maxFlowBoykovKolmogorov(
             edges_sql TEXT,
             source_vertex BIGINT,
             sink_vertex BIGINT,
@@ -88,20 +88,20 @@ Signatures
 ==========
 
 .. index:: 
-    single: pgr_maxFlowEdmondsKarp(edges_sql, source,  sink)
+    single: pgr_maxFlowBoykovKolmogorov(edges_sql, source,  sink)
 
 The available signature calculates the maximum flow form one source vertex to one sink vertex.
 It is assumed that the graph is directed.
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source,  sink)
+    pgr_maxflowboykovkolmogorov(edges_sql, source,  sink)
     RETURNS SET OF (id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-maxFlowBoykovKolmogorov.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -152,11 +152,11 @@ The cost and reverse_cost columns in the sample data are intended as capacity an
 
 :Example:
 
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-maxFlowBoykovKolmogorov.queries
    :start-after: -- q1
    :end-before: -- q2
 
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-maxFlowBoykovKolmogorov.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -164,7 +164,7 @@ The cost and reverse_cost columns in the sample data are intended as capacity an
 See Also
 --------
 
-* https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
+* http://www.csd.uwo.ca/~yuri/Papers/pami04.pdf
 
 .. rubric:: Indices and tables
 
