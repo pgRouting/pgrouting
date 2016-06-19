@@ -155,25 +155,25 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
   }
 }
 
-static int compute_bidirsp(char* sql, int start_vertex, 
-                                 int end_vertex, bool directed, 
+static int compute_bidirsp(char* sql, int64_t start_vertex, 
+                                 int64_t end_vertex, bool directed, 
                                  bool has_reverse_cost, 
                                  path_element_t **path, int *path_count) 
 {
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  int ntuples;
+  uint32_t ntuples;
   edge_t *edges = NULL;
-  int total_tuples = 0;
+  uint32_t total_tuples = 0;
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
 #else // _MSC_VER
   edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif // _MSC_VER
-  int v_max_id=0;
-  int v_min_id=INT_MAX;
+  int64_t v_max_id=0;
+  int64_t v_min_id=INT_MAX;
 
   int s_count = 0;
   int t_count = 0;
@@ -213,7 +213,7 @@ static int compute_bidirsp(char* sql, int start_vertex,
       }
 
       if (ntuples > 0) {
-          int t;
+          uint64_t t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
@@ -277,7 +277,7 @@ static int compute_bidirsp(char* sql, int start_vertex,
         total_tuples, v_max_id + 2, start_vertex, end_vertex,
         directed, has_reverse_cost);
 
-  ret = bidirsp_wrapper(edges, total_tuples, v_max_id + 2, start_vertex, end_vertex,
+  ret = bidirsp_wrapper(edges, total_tuples, (int)v_max_id + 2, (int)start_vertex, (int)end_vertex,
                        directed, has_reverse_cost,
                        path, path_count, &err_msg);
 
@@ -309,8 +309,8 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 {
 
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  uint32_t                  call_cntr;
+  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
   // char *               sql;
@@ -343,8 +343,8 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
       ret =
 #endif
         compute_bidirsp(pgr_text2char(PG_GETARG_TEXT_P(0)),
-                                   PG_GETARG_INT32(1),
-                                   PG_GETARG_INT32(2),
+                                   (int64_t)PG_GETARG_INT32(1),
+                                   (int64_t)PG_GETARG_INT32(2),
                                    PG_GETARG_BOOL(3),
                                    PG_GETARG_BOOL(4), 
                                    &path, &path_count);
@@ -364,7 +364,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
 #endif
 
       // total number of tuples to be returned 
-      funcctx->max_calls = path_count;
+      funcctx->max_calls = (uint32_t)path_count;
       funcctx->user_fctx = path;
 
       funcctx->tuple_desc = 

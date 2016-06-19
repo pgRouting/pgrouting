@@ -12,13 +12,17 @@
 pgr_maxFlow - Maximum Flow Problems
 ===================================
 
-  - :ref:`pgr_pushRelabel` - Push&relabel algorithm implementation for maximum flow (default).
+  - :ref:`pgr_maxFlowPushRelabel` - Push&relabel algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds&Karp algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov&Kolmogorov algorithm implementation for maximum flow.
 
 
 .. toctree::
         :hidden:
 
-        ./pgr_pushRelabel
+        ./pgr_maxFlowPushRelabel
+        ./pgr_maxFlowEdmondsKarp
+        ./pgr_maxFlowBoykovKolmogorv
 
 Problem definition
 ==================
@@ -31,11 +35,9 @@ Maximum flow algorithms calculate the maximum flow through the graph and the flo
 
 Given the following query:
 
-pgr_maxFlow :math:`(edges\_sql, source, sink)`
+pgr_maxFlow :math:`(edges\_sql, source\_vertex, sink\_vertex)`
 
-where :math:`edges\_sql = \{(id_i, tail_i, head_i, capacity_i, reverse\_capacity_i)\}`
-
-:math:`tail_i` and :math:`head_i` identify the source and destination of the i-th edge.
+where :math:`edges\_sql = \{(id_i, source_i, target_i, capacity_i, reverse\_capacity_i)\}`
 
 .. rubric:: Graph definition
 
@@ -43,11 +45,11 @@ The weighted directed graph, :math:`G(V,E)`, is defined as:
 
 * the set of vertices  :math:`V`
 
-  - :math:`source  \cup  sink  \bigcup  tail_i  \bigcup  head_i`
+  - :math:`source\_vertex  \cup  sink\_vertex  \bigcup  source_i  \bigcup  target_i`
 
 * the set of edges :math:`E`
 
-  - :math:`E = \begin{cases} &\{(tail_i, head_i, capacity_i) \text{ when } capacity > 0 \} &\quad  \text{ if } reverse\_capacity = \varnothing \\ \\ &\{(tail_i, head_i, capacity_i) \text{ when } capacity > 0 \} \\ \cup &\{(head_i, tail_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i > 0)\} &\quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}`
+  - :math:`E = \begin{cases} &\{(source_i, target_i, capacity_i) \text{ when } capacity > 0 \} &\quad  \text{ if } reverse\_capacity = \varnothing \\ \\ &\{(source_i, target_i, capacity_i) \text{ when } capacity > 0 \} \\ \cup &\{(target_i, source_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i > 0)\} &\quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}`
 
 
 .. rubric:: Maximum flow problem
@@ -55,35 +57,25 @@ The weighted directed graph, :math:`G(V,E)`, is defined as:
 Given:
 
 
-  - :math:`source \in V` the source vertex
-  - :math:`sink \in V` the sink vertex
+  - :math:`source\_vertex \in V` the source vertex
+  - :math:`sink\_vertex \in V` the sink vertex
   - :math:`G(V,E)`
 
 Then:
 
      :math:`pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}`
 
-     :math:`\boldsymbol{\Phi} = {(id_i, tail_i, head_i, flow_i, residual\_capacity_i)}`
+     :math:`\boldsymbol{\Phi} = {(id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
 
 where:
+
+  :math:`\boldsymbol{\Phi}` is a new subset of edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
+
   .. math::
         id_i = i
 
         residual\_capacity_i = capacity_i - flow_i
 
-:math:`\boldsymbol{\Phi}` is a new subset of edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it.
-
-
-Signature Summary
------------------
-.. code-block:: none
-
-    pgr_maxflow(edges_sql, source,  sink)
-    RETURNS SET OF (id, tail, head, flow, residual_capcaity)
-      OR EMPTY SET
-
-
-The function pgr_maxflow is just a wrapper that uses the push relabel implementation.
 
 See Also
 --------

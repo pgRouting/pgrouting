@@ -3,8 +3,8 @@
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -57,9 +57,9 @@ typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS>
     Traits;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
         boost::property < boost::vertex_name_t, std::string,
-                boost::property < boost::vertex_index_t, long,
+                boost::property < boost::vertex_index_t, int64_t,
                         boost::property < boost::vertex_color_t, boost::default_color_type,
-                                boost::property < boost::vertex_distance_t, long,
+                                boost::property < boost::vertex_distance_t, int64_t,
                                         boost::property < boost::vertex_predecessor_t, Traits::edge_descriptor > > > > >,
 
         boost::property<boost::edge_capacity_t, int64_t, boost::property<boost::edge_residual_capacity_t, int64_t, boost::property< boost::edge_reverse_t, Traits::edge_descriptor> > > >
@@ -97,11 +97,11 @@ class PgrFlowGraph {
 
   void create_flow_graph(pgr_edge_t *data_edges,
                          size_t total_tuples,
-                         int64_t source,
-                         int64_t sink) {
+                         int64_t source_vertex,
+                         int64_t sink_vertex) {
       std::set<int64_t> vertices;
-      vertices.insert(source);
-      vertices.insert(sink);
+      vertices.insert(source_vertex);
+      vertices.insert(sink_vertex);
       for (size_t i = 0; i < total_tuples; ++i) {
           vertices.insert(data_edges[i].source);
           vertices.insert(data_edges[i].target);
@@ -111,8 +111,8 @@ class PgrFlowGraph {
           this->id_to_V.insert(std::pair<int64_t, V>(id, v));
           this->V_to_id.insert(std::pair<V, int64_t>(v, id));
       }
-      this->source_vertex = this->getV(source);
-      this->sink_vertex = this->getV(sink);
+      this->source_vertex = this->getV(source_vertex);
+      this->sink_vertex = this->getV(sink_vertex);
 
       this->capacity = get(boost::edge_capacity, this->boost_graph);
       this->rev = get(boost::edge_reverse, this->boost_graph);
@@ -149,6 +149,7 @@ class PgrFlowGraph {
   }
 
   std::vector<pgr_flow_t> get_flow_edges() {
+
       std::vector<pgr_flow_t> flow_edges;
       int64_t id = 1;
       E_it e, e_end;
@@ -157,8 +158,8 @@ class PgrFlowGraph {
           if (this->capacity[*e] - this->residual_capacity[*e] > 0) {
               pgr_flow_t edge;
               edge.id = id++;
-              edge.tail = this->getid((*e).m_source);
-              edge.head = this->getid((*e).m_target);
+              edge.source = this->getid((*e).m_source);
+              edge.target = this->getid((*e).m_target);
               edge.flow = this->capacity[*e] - this->residual_capacity[*e];
               edge.residual_capacity = this->residual_capacity[*e];
               flow_edges.push_back(edge);

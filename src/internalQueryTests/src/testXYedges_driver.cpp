@@ -41,10 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #define DEBUG
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
 #include "./../../common/src/pgr_assert.h"

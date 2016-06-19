@@ -5,70 +5,64 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-
-
-
-
-notifications:
-  email:
-    on_failure: vicky_vergara@hotmail.com
+version: 1.0.{build}
 
 branches:
   only:
     - test/appveyor
 
-    
+image: Visual Studio 2013
+configuration: Release
+platform: x64
+
+clone_depth: 1
+clone_folder: c:\build\pgrouting
 
 services:
-  - postgresql
+  - postgresql94
 
-environment:
-  POSTGRESQL_VERSION: 9.4
+#environment:
+#  CONFIGURATION: Release
 
-# excecuted. So things have to be tested oe by one.
-#addons:
-#  apt:
-#    sources:
-# For gcc >= 4.8
-# - ubuntu-toolchain-r-test
-# For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
-#- kubuntu-backports
-#      - boost-latest
-#    packages:
-#- cmake
-#      - libboost-thread-dev
-#- libboost-graph-dev
-#- libcgal-dev
-#- postgresql-server-dev-all
-#- postgresql-common
+init:
+  - git config --global core.autocrlf false
 
+install:
+  - cd c:\build
+  # CMake 3.5.2 (upgrade) workaround
+  - curl -L -O -S -s https://cmake.org/files/v3.5/cmake-3.5.2-win32-x86.msi
+  - start /wait msiexec /i cmake-3.5.2-win32-x86.msi /qn
+  - cmake --version
+  # PostGIS 2.2.2
+  - curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
+  - 7z x postgis-pg94-binaries-2.2.2w64gcc48.zip
+  - xcopy /e /y /q postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
+  # Boost 1.58.0
+  - curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.zip
+  - 7z x boost_1_58_0.zip
+  # CGAL 4.8.1
+  - curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-4.8.1/CGAL-4.8.1.zip
+  - 7z x CGAL-4.8.1.zip
+  - mkdir gmp\x64
+  - cd gmp\x64
+  - curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
+  - 7z x gmp-all-CGAL-3.9.zip
+  - curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
+  - 7z x mpfr-all-CGAL-3.9.zip
 
-#- export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
-#- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-#- sudo apt-get install -y postgresql-9.5
-#- sudo apt-get install -y postgresql-9.5-postgis
-#- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-#- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
-#before_script:
-    
-# - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
-#- sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
-#- createdb  ___pgr___test___
-#- createdb  pgr_test__db__test
-#- ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
+build_script:
+  - cd c:\build\pgrouting\tools\windows
+  - msbuild_pgrouting.bat 9.4 x64
+  - cd c:\build\pgrouting\build\pg94\x64
+  - msbuild PGROUTING.sln /target:Build /property:Configuration=%CONFIGURATION%
+  - msbuild INSTALL.vcxproj /target:Build /property:Configuration=%CONFIGURATION%
+  - copy c:\build\gmp\x64\lib\*.dll C:\Progra~1\PostgreSQL\9.4\bin\
 
-
-#before_install:
-
-#before_script:
-
-#script: 
-
-#- ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-#- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
-
-#after_script: 
-
-#- ./tools/travis/pg_prove_tests.sh postgres
-
-#after_success:
+test_script:
+  - set PGUSER=postgres
+  - set PGPASSWORD=Password12!
+  - set PGHOME=C:\Progra~1\PostgreSQL\9.4
+  - set PGPORT=5432
+  - set PATH=%PATH%;%PGHOME%\bin
+  # Execute algorithm test by Cygwin
+  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/9.4/bin/psql\" -ignorenotice"

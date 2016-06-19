@@ -2,4 +2,4 @@
 
 
 --Calculates the max flow from source #9 to sink #2.
-SELECT * FROM pgr_edmondskarp('SELECT * FROM edge_table', 9, 2);
+SELECT * FROM pgr_maxflowedmondskarp('SELECT * FROM edge_table', 9, 2);

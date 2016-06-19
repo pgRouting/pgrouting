@@ -1,14 +1,18 @@
 @echo off
 
 rem doskey cmake="%PROGRAMFILES% (x86)\CMake\bin\cmake.exe"
+echo APPVEYOR=%APPVEYOR%
 
 set BUILD_ROOT_DIR=c:\build
-set LIBINTL_HEADER_DIR=C:\cygwin\usr\include
 set BOOST_VER=1_58_0
-set CGAL_VER=4.6.1
+set CGAL_VER=4.8.1
 set GMP_LIB_NAME=libgmp-10.lib
 set MPFR_LIB_NAME=libmpfr-4.lib
-set MSBUILD_CONFIGURATION=RelWithDebInfo
+if "%APPVEYOR%"=="True" (
+	set MSBUILD_CONFIGURATION=%CONFIGURATION%
+) else (
+	set MSBUILD_CONFIGURATION=RelWithDebInfo
+)
 
 set COMMON_INSTALL_ROOT_DIR=%BUILD_ROOT_DIR%\local
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER%
@@ -141,6 +145,7 @@ echo POSTGRESQL_DIR="%POSTGRESQL_DIR%"
 rem ### Boost ###
 set BOOST_SHORT_VER=%BOOST_VER:_0=%
 set BOOST_INCLUDE_DIR=%COMMON_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
+set BOOST_LIBRARY_DIR=%COMMON_INSTALL_DIR%\lib
 set BOOST_THREAD_LIB=%COMMON_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_SYSTEM_LIB=%COMMON_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_WILDCARD_LIB=%COMMON_INSTALL_DIR%\lib\libboost_*-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.libs
@@ -159,7 +164,7 @@ if not exist %BOOST_INCLUDE_DIR%\ (
 	pushd %BOOST_SRC_DIR%
 	@echo on
 	b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
-		--with-thread --with-system --prefix=%COMMON_INSTALL_DIR% install
+		--with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
 	@echo off
 	popd
 )
@@ -175,8 +180,8 @@ if not exist %CGAL_BUILD_DIR%\ (
 	@echo on
 	cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COMMON_INSTALL_DIR% ^
 		-DBoost_USE_MULTITHREADED=ON -DCGAL_Boost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=OFF ^
-		-DBoost_INCLUDE_DIR:PATH=%COMMON_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER% ^
-		-DBOOST_LIBRARYDIR=%COMMON_INSTALL_DIR%\lib -DGMP_INCLUDE_DIR=%GMP_DIR%\include ^
+		-DBoost_INCLUDE_DIR:PATH=%BOOST_INCLUDE_DIR% ^
+		-DBOOST_LIBRARYDIR=%BOOST_LIBRARY_DIR% -DGMP_INCLUDE_DIR=%GMP_DIR%\include ^
 		-DGMP_LIBRARIES=%GMP_DIR%\lib\%GMP_LIB_NAME% -DMPFR_INCLUDE_DIR=%GMP_DIR%\include ^
 		-DMPFR_LIBRARIES=%GMP_DIR%\lib\%MPFR_LIB_NAME% -DWITH_CGAL_QT3=OFF -DWITH_CGAL_QT4=OFF ..\..\..\
 	msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
@@ -194,7 +199,7 @@ if not exist %PGROUTING_BUILD_DIR%\ (
 	mkdir %PGROUTING_BUILD_DIR%
 	pushd %PGROUTING_BUILD_DIR%
 	@echo on
-	cmake -G "%CMAKE_GENERATOR%" -DPOSTGRESQL_INCLUDE_DIR:PATH="%POSTGRESQL_DIR%\include\server;%POSTGRESQL_DIR%\include\server\port;%POSTGRESQL_DIR%\include\server\port\win32;%POSTGRESQL_DIR%\include\server\port\win32_msvc;%LIBINTL_HEADER_DIR%" ^
+	cmake -G "%CMAKE_GENERATOR%" -DPOSTGRESQL_INCLUDE_DIR:PATH="%POSTGRESQL_DIR%\include;%POSTGRESQL_DIR%\include\server;%POSTGRESQL_DIR%\include\server\port;%POSTGRESQL_DIR%\include\server\port\win32;%POSTGRESQL_DIR%\include\server\port\win32_msvc" ^
 		-DPOSTGRESQL_LIBRARIES:FILEPATH="%POSTGRESQL_DIR%\lib\postgres.lib" -DPOSTGRESQL_EXECUTABLE:FILEPATH="%POSTGRESQL_DIR%\bin\postgres.exe" ^
 		-DPOSTGRESQL_PG_CONFIG:FILEPATH="%POSTGRESQL_DIR%\bin\pg_config.exe" -DBoost_INCLUDE_DIR:PATH=%BOOST_INCLUDE_DIR% ^
 		-DBOOST_THREAD_LIBRARIES:FILEPATH="%BOOST_THREAD_LIB%;%BOOST_SYSTEM_LIB%" ^
