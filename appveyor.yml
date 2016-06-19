@@ -40,8 +40,8 @@ install:
   # Boost 1.58.0
   - curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.zip
   - 7z x boost_1_58_0.zip
-  - curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-4.8.1/CGAL-4.8.1.zip
   # CGAL 4.8.1
+  - curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-4.8.1/CGAL-4.8.1.zip
   - 7z x CGAL-4.8.1.zip
   - mkdir gmp\x64
   - cd gmp\x64
