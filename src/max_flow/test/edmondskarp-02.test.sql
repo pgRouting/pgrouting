@@ -8,4 +8,4 @@
  */
 SELECT sum(flow) AS max_flow
 FROM pgr_maxflowedmondskarp('SELECT * FROM edge_table', 9, 2)
-WHERE tail = 9; -- Condition can be replaced with head = 5
+WHERE source = 9; -- Condition can be replaced with target = 5

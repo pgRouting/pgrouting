@@ -12,16 +12,16 @@
    - change [...] (including the square braquets) to appropiate values
    - one file / function,  may signatures of the same function go in the same file
 
-.. _pgr_maxFlowPushRelabel:
+.. _pgr_maxFlowEdmondsKarp:
 
-pgr_maxFlowPushRelabel
+pgr_maxFlowEdmondsKarp
 ======================
 
 
 Name
 ----
 
-``pgr_maxFlowPushRelabel`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
+``pgr_maxFlowEdmondsKarp`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
 .. warning::  This is a proposed function.
 
@@ -44,7 +44,7 @@ Edges must be weighted with non-negative capacities.
 Developed by Goldberg and Tarjan.
 Implementation details_.
 
-.. _details: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
+.. _details: http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 
 Characteristics:
 ----------------
@@ -53,7 +53,7 @@ The main characterics are:
   - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
   - The maximum flow through the graph can be calculated by aggregation on source/sink.
   - Returns nothing if source and sink are the same.
-  - Running time: :math:`O( V ^ 3)`
+  - Running time: :math:`O( V * E ^ 2 )`
 
 Signature Summary
 -----------------
@@ -65,14 +65,14 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source,  sink)
+    pgr_maxflowedmondskarp(edges_sql, source,  sink)
     RETURNS SET OF (id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 
 ..
   This is a reminder of how your query looks like
-        pgr_maxFlowPushRelabel(
+        pgr_maxFlowEdmondsKarp(
             edges_sql TEXT,
             source_vertex BIGINT,
             sink_vertex BIGINT,
@@ -88,20 +88,20 @@ Signatures
 ==========
 
 .. index:: 
-    single: pgr_maxFlowPushRelabel(edges_sql, source,  sink)
+    single: pgr_maxFlowEdmondsKarp(edges_sql, source,  sink)
 
 The available signature calculates the maximum flow form one source vertex to one sink vertex.
 It is assumed that the graph is directed.
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source,  sink)
+    pgr_maxflowedmondskarp(edges_sql, source,  sink)
     RETURNS SET OF (id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-maxFlowPushRelabel.queries
+.. literalinclude:: doc-maxFlowEdmondsKarp.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -152,11 +152,11 @@ The cost and reverse_cost columns in the sample data are intended as capacity an
 
 :Example:
 
-.. literalinclude:: doc-maxFlowPushRelabel.queries
+.. literalinclude:: doc-maxFlowEdmondsKarp.queries
    :start-after: -- q1
    :end-before: -- q2
 
-.. literalinclude:: doc-maxFlowPushRelabel.queries
+.. literalinclude:: doc-maxFlowEdmondsKarp.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -164,7 +164,7 @@ The cost and reverse_cost columns in the sample data are intended as capacity an
 See Also
 --------
 
-* https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
+* https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 
 .. rubric:: Indices and tables
 
