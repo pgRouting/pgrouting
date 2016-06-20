@@ -12,9 +12,6 @@
 pgr_analyzeOneway
 ===============================================================================
 
-.. index:: 
-	single: pgr_analyzeOneway(text,text[],text[],text[],text[],text,text,text,boolean)
-	module: common
 
 Name
 -------------------------------------------------------------------------------
@@ -26,6 +23,9 @@ Synopsis
 -------------------------------------------------------------------------------
 
 This function analyzes oneway streets in a graph and identifies any flipped segments. 
+
+.. index:: 
+	single: analyzeOneway(Complete Signature)
 
 .. code-block:: sql
 

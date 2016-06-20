@@ -16,11 +16,12 @@ pgr_withPointsVia
 Name
 -------------------------------------------------------------------------------
 
-``pgr_withPointsVia`` - Returns the driving distance from a starting point.
+``pgr_withPointsVia`` - Get a path using the vertices/points indicated
 
-.. note::  This is a proposed function for version 2.3.
+.. note::  This is a proposed function.
 
-     - Is not officially in the version 2.2 release.
+     - Is not officially in the current release.
+     - Documentation needs to be improved
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -47,13 +48,13 @@ Signature Summary
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 Signatures
-==========
+-----------------
 
 .. index::
 	single: withPointsVia(edges_sql, points_sql, start_pid, distance) -- proposed
 
 Minimal signature
------------------
+...................................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -76,7 +77,7 @@ The minimal signature:
 	single: withPointsVia(edges_sql, points_sql, start_pid, distance, directed, driving_side, details) -- proposed
 
 Driving distance from a single point
-------------------------------------
+...................................................
 
 Finds the driving distance depending on the optional parameters setup.
 
@@ -94,18 +95,18 @@ Finds the driving distance depending on the optional parameters setup.
    :end-before: --q3
 
 Description of the Signatures
-=============================
+---------------------------------------------------
 
 
 ..
     description of the sql queries
 
 
-.. include:: withPoints_queries.txt 
+.. include:: withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+...................................................
 
 
 ================ ================= =================================================
@@ -127,7 +128,7 @@ Parameter        Type              Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+...................................................
 
 Returns set of ``(seq, node, edge, cost, agg_cost)``
 
@@ -167,7 +168,6 @@ The examples in this section use the following :ref:`fig1`
 
 
 
-The queries use the :ref:`sampledata` network.
 
 
 
@@ -182,6 +182,7 @@ See Also
 * :ref:`pgr_drivingDistance` - Driving distance using dijkstra.
 * :ref:`pgr_alphashape` - Alpha shape computation.
 * :ref:`pgr_points_as_polygon` - Polygon around set of points.
+* The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

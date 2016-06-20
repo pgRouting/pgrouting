@@ -9,12 +9,9 @@
 
 .. _pgr_get_table_name:
 
-pgr_getTableName
+pgr_getTableName - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_getTableName(text,text) -- deprecated
-	module: common
 
 Name
 -------------------------------------------------------------------------------

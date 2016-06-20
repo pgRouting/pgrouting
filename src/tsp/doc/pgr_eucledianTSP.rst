@@ -43,13 +43,13 @@ Signature Summary
 
 
 Signatures
-===============
+-------------------------------------------------------------------------------
 
 .. index::
-    single: pgr_eucledianTSP(coordinates_sql) -- proposed
+    single: eucledianTSP(Basic Use) -- proposed
 
 Minimal Signature
--------------------------------------------------------------------------------
+...............................................................................
 
 .. code-block:: none
 
@@ -67,10 +67,10 @@ and the default is to have random execution, the example is wrapping the actual 
 
 
 .. index::
-    single: pgr_eucledianTSP(coordinates_sql, <configuration parameters>) -- proposed
+    single: eucledianTSP(Complete Signature) -- proposed
 
 Complete Signature
--------------------------------------------------------------------------------
+...............................................................................
 
 .. code-block:: none
 
@@ -91,10 +91,10 @@ Complete Signature
    :end-before: -- q3
 
 Description of the Signatures
-=============================
+-------------------------------------------------------------------------------
 
 Description of the coordinates SQL query
--------------------------------------------------------------------------------
+...............................................................................
 
 ======= =========== =================================================
 Column  Type              Description

@@ -9,11 +9,8 @@
 
 .. _pgr_apsp_warshall:
 
-pgr_apspWarshall
+pgr_apspWarshall - Deprecated Function
 ===============================================================================
-
-.. index::
-    single: pgr_apspWarshall(text, boolean, boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

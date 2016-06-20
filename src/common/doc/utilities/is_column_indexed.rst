@@ -9,12 +9,8 @@
 
 .. _pgr_is_column_indexed:
 
-pgr_isColumnIndexed
+pgr_isColumnIndexed - Deprecated Function
 ===============================================================================
-
-.. index:: 
-	single: pgr_isColumnIndexed(text,text) -- deprecated
-	module: common
 
 Name
 -------------------------------------------------------------------------------

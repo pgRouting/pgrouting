@@ -9,11 +9,9 @@
 
 .. _pgr_ksp_v2:
 
-pgr_ksp (V 2.0) 
+pgr_ksp - Deprecated Signature
 ===============================================================================
 
-.. index:: 
-  single: ksp(text,integer,integer,integer,boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

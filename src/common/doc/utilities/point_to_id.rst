@@ -9,11 +9,9 @@
 
 .. _pgr_point_to_id:
 
-pgr_pointToId
+pgr_pointToId - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_pointToId(geometry,double precision,text,integer) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

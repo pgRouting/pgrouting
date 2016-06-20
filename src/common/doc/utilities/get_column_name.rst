@@ -9,11 +9,9 @@
 
 .. _pgr_get_column_name:
 
-pgr_getColumnName
+pgr_getColumnName - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_getColumnName(text,text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

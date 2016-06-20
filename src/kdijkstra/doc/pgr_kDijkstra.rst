@@ -10,12 +10,9 @@
 
 .. _pgr_kdijkstra:
 
-pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra
+pgr_kDijkstra - Deprecated Functions
 ===============================================================================
 
-.. index::
-    single: pgr_kDijkstraCost(text,integer,integer[],boolean,boolean) -- deprecated 
-    single: pgr_kDijkstraPath(text,integer,integer[],boolean,boolean) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

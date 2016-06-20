@@ -9,11 +9,9 @@
 
 .. _pgr_end_point:
 
-pgr_endPoint 
+pgr_endPoint - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_endPoint(geometry) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

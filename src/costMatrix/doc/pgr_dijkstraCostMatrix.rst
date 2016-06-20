@@ -7,16 +7,16 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstraDmatrix:
+.. _pgr_dijkstraCostMatrix:
 
-pgr_dijkstraDmatrix
+pgr_dijkstraCostMatrix
 ===============================================================================
 
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_dijkstraDmatrix`` - Calculates the a cost matrix using pgr_dijktras.
+``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -33,27 +33,27 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_dijkstraDmatrix(edges_sql, start_vids)
-    pgr_dijkstraDmatrix(edges_sql, start_vids, directed)
+    pgr_dijkstraCostMatrix(edges_sql, start_vids)
+    pgr_dijkstraCostMatrix(edges_sql, start_vids, directed)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
 
 Signatures
-==========
+-------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstraDmatrix(edges_sql, start_vids)
+    single: pgr_dijkstraCostMatrix(edges_sql, start_vids) -- New
 
 Minimal Signature
------------------
+...............................................................................
 
 The minimal signature:
     - Is for a **directed** graph.
 
 .. code-block:: none
 
-    pgr_dijkstraDmatrix(edges_sql, start_vid)
+    pgr_dijkstraCostMatrix(edges_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -66,14 +66,14 @@ The minimal signature:
 
 
 .. index::
-    single: withPointsDmatrix(edges_sql, start_vids, directed)
+    single: pgr_dijkstraCostMatrix(Complete Signature) -- New
 
 Complete Signature
---------------------
+...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraDmatrix(edges_sql, start_vids, directed:=true)
+    pgr_dijkstraCostMatrix(edges_sql, start_vids, directed:=true)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -87,10 +87,10 @@ This example returns a symmetric cost matrix.
 
 
 Description of the Signatures
-=============================
+-------------------------------------------------------------------------------
 
 Description of the edge's SQL query
------------------------------------
+...............................................................................
 
 :edges_sql: is a ``TEXT`` that containes an SQL query, which should return a set of rows with the following columns:
 
@@ -112,7 +112,7 @@ Where:
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+...............................................................................
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -129,8 +129,8 @@ Parameter        Type                   Description
 .. include:: dmatrix_return_values.txt
 
 
-Examples usage
-================
+Examples
+-------------------------------------------------------------------------------
 
 :Example: Use with tsp
 
@@ -138,19 +138,14 @@ Examples usage
    :start-after: -- dijkstra q3
    :end-before: -- dijkstra q4
 
-The queries use the :ref:`sampledata` network.
-
-.. rubric:: History
-
-* New in version  2.3.0
-
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`dijkstra`
-* :ref:`dmatrix`
+* :ref:`costMatrix`
 * :ref:`tsp`
+* The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

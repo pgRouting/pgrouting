@@ -9,11 +9,9 @@
 
 .. _pgr_versionless:
 
-pgr_versionless
+pgr_versionless - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_versionless(text,text) -- deprecated
 
 Name
 -------------------------------------------------------------------------------

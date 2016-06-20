@@ -9,11 +9,8 @@
 
 .. _pgr_vids_to_dmatrix:
 
-pgr_vidsToDMatrix
+pgr_vidsToDMatrix - Deprecated Function
 ==============================================================================
-
-.. index::
-        single: vidsToDMatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[]) --proposed
 
 
 Name
@@ -21,7 +18,7 @@ Name
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
 
-.. warning::  This is a proposed function
+.. warning::  This is a deprecated function
 
      - Is not officially in the release.
      - Name could change.
