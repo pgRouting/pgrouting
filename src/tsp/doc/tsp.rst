@@ -17,17 +17,17 @@ Traveling Sales Person
 
 - Pre processing
 
-- :ref:`Dmatrix` Distance matrix
+- :ref:`costMatrix` Distance matrix
 
-  - :ref:`pgr_dijkstraDmatrix` - Use pgr_dijktra to calculate a cost matrix.
-  - :ref:`pgr_withPointsDmatrix` - Use pgr_withPoints to calculate a cost matrix.
+  - :ref:`pgr_dijkstraCostMatrix` - Use pgr_dijktra to calculate a cost matrix.
+  - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
 
 
 .. toctree::
 
     ./pgr_tsp
     ./pgr_eucledianTSP
-    ../../dmatrix/doc/dmatrix
+    ../../costMatrix/doc/costMatrix
 
 .. NOTE:: These signatures are being deprecated
 

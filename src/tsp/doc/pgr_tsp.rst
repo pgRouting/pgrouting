@@ -113,8 +113,8 @@ Column        Type              Description
 
 Can be Used with:
 
-* :ref:`pgr_dijkstraDmatrix`
-* :ref:`pgr_withPointsDmatrix`
+* :ref:`pgr_dijkstraCostmatrix`
+* :ref:`pgr_withPointsCostmatrix`
 * :ref:`pgr_floydWarshall`
 * :ref:`pgr_johnson`
 

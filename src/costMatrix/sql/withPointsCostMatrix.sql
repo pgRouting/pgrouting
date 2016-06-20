@@ -1,10 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: withPointsCost.sql
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-mail: vicky_vergara@hotmail.com
+Mail: 
 
 ------
 
@@ -24,25 +27,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+/*
+MANY TO MANY
+*/
 
---  DIJKSTRA DMatrix
+CREATE OR REPLACE FUNCTION pgr_withPointsCostMatrix(
+    edges_sql TEXT,
+    points_sql TEXT,
+    pids ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+    driving_side CHAR DEFAULT 'b', -- 'r'/'l'/'b'/NULL
 
-/***********************************
-        MANY TO MANY
-***********************************/
-
-CREATE OR REPLACE FUNCTION pgr_dijkstraDMatrix(edges_sql TEXT, vids ANYARRAY, directed BOOLEAN DEFAULT true,
-    OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
-    RETURN query SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2, $2, $3, true) a;
+    RETURN query SELECT a.start_pid, a.end_pid, a.agg_cost
+        FROM _pgr_withPoints($1, $2, $3, $3, $4,  $5, TRUE, TRUE) AS a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
-
-
-

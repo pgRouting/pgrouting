@@ -7,119 +7,113 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_dijkstraDmatrix:
+.. _pgr_withPointsCostMatrix:
 
-pgr_dijkstraDmatrix
+pgr_withPointsCostMatrix
 ===============================================================================
 
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_dijkstraDmatrix`` - Calculates the a cost matrix using pgr_dijktras.
+``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
+
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
 
-Synopsis
--------------------------------------------------------------------------------
-
-Using Dijkstra algorithm, calculate and return a cost matrix.
 
 Signature Summary
------------------
+-------------------------------------------------------------------------------
 
 .. code-block:: none
 
-    pgr_dijkstraDmatrix(edges_sql, start_vids)
-    pgr_dijkstraDmatrix(edges_sql, start_vids, directed)
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids)
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids, directed, driving_side)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
+.. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.  
 
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstraDmatrix(edges_sql, start_vids) -- New
+    single: withPointsCostMatrix(Minimal Signature) -- New
 
 Minimal Signature
 ...............................................................................
 
 The minimal signature:
     - Is for a **directed** graph.
+    - The driving side is set as **b** both. So arriving/departing to/from the point(s) can be in any direction.
 
 .. code-block:: none
 
-    pgr_dijkstraDmatrix(edges_sql, start_vid)
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
-:Example: Cost matrix for vertices 1, 2, 3, and 4.
-
+:Example:
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
-   :start-after: -- dijkstra q1
-   :end-before: -- dijkstra q2
+   :start-after: -- withPoints q1
+   :end-before: -- withPoints q2
 
 
 .. index::
-    single: dijkstraDmatrix(Complete Signature) -- New
+    single: withPointsCostMatrix(Complete Signature) -- New
 
 Complete Signature
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraDmatrix(edges_sql, start_vids, directed:=true)
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids,
+        directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
-:Example: Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.
+:Example: returning a symmetrical cost matrix
 
-This example returns a symmetric cost matrix.
+* Using the default **side** value on the **points_sql** query
+* Using an undirected graph
+* Using the defualt **driving_side** value
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
-   :start-after: -- dijkstra q2
-   :end-before: -- dijkstra q3
+   :start-after: -- withPoints q2
+   :end-before: -- withPoints q3
+
 
 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-Description of the edge's SQL query
-...............................................................................
-
-:edges_sql: is a ``TEXT`` that containes an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                      Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
+..
+    description of the sql queries
 
 
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, real, float
+.. include:: ../../withPoints/doc/withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures
 ...............................................................................
 
+
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
 **edges_sql**    ``TEXT``               Edges SQL query as decribed above.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of the vertices.
+**points_sql**   ``TEXT``               Points SQL query as decribed above.
+**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+**driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
+                                          - In the right or left or
+                                          - If it doesn't matter with 'b' or NULL.
+                                          - If column not present 'b' is considered.
+
 ================ ====================== =================================================
 
 
@@ -135,22 +129,18 @@ Examples
 :Example: Use with tsp
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
-   :start-after: -- dijkstra q3
-   :end-before: -- dijkstra q4
+   :start-after: -- withPoints q3
+   :end-before: -- withPoints q4
 
-
-.. rubric:: History
-
-* New in version  2.3.0
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`dijkstra`
-* :ref:`dmatrix`
+* :ref:`withPoints`
+* :ref:`costMatrix`
 * :ref:`tsp`
-* The queries use the :ref:`sampledata` network.
+* `sampledata` network.
 
 .. rubric:: Indices and tables
 

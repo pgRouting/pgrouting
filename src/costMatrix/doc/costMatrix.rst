@@ -7,20 +7,20 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _dmatrix:
+.. _CostMatrix:
 
 Distance Matrix
 ===============================================================================
 
-  - :ref:`pgr_dijkstraDmatrix`
-  - :ref:`pgr_withPointsDmatrix`
+  - :ref:`pgr_dijkstraCostMatrix`
+  - :ref:`pgr_withPointsCostMatrix`
 
 
 .. toctree::
     :hidden:
 
-    ./pgr_dijkstraDmatrix
-    ./pgr_withPointsDmatrix
+    ./pgr_dijkstraCostMatrix
+    ./pgr_withPointsCostMatrix
 
 
 Sinopsis

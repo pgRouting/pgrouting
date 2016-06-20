@@ -7,7 +7,7 @@ SELECT has_function('pgr_test_matrixrows', ARRAY['text']);
 SELECT function_returns('pgr_test_matrixrows', ARRAY['text'],'boolean');
 
 CREATE TEMP TABLE matrix AS
-SELECT * FROM pgr_dijkstraDMatrix('
+SELECT * FROM pgr_dijkstracostMatrix('
     SELECT id, source, target, cost, reverse_cost
     FROM edge_table',
     (SELECT array_agg(id) FROM edge_table_vertices_pgr));
