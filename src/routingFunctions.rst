@@ -67,7 +67,7 @@ Routing Functions
     to-here
 
 .. toctree::
-    :hidden: 
+    :hidden:
 
     ../src/allpairs/doc/allpairs
     ../src/astar/doc/pgr_astar
@@ -76,9 +76,6 @@ Routing Functions
     ../src/dijkstra/doc/dijkstra
     ../src/driving_distance/doc/drivingDistance
     ../src/ksp/doc/pgr_ksp
-
-.. toctree::
-
     ../src/tsp/doc/tsp
     ../src/trsp/doc/pgr_trsp
     ../src/withPoints/doc/withPoints
