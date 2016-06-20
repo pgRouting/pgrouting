@@ -12,11 +12,16 @@
 pgr_astar - Deprecated Signature
 ===============================================================================
 
+.. warning:: This function signature is deprecated!!!
+
+    * That means it has been replaced by new signatures and this signature is no longer supported, and may be removed from future versions.
+    * All code that uses the function signature should be converted to use its replacement :ref:`pgr_astar`.
 
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_astar`` — Returns the shortest path using A* algorithm.
+
 
 
 Synopsis

@@ -46,7 +46,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: eucledianTSP(Basic Use) -- proposed
+    single: eucledianTSP(Basic Use) -- New
 
 Minimal Signature
 ...............................................................................
@@ -67,7 +67,7 @@ and the default is to have random execution, the example is wrapping the actual 
 
 
 .. index::
-    single: eucledianTSP(Complete Signature) -- proposed
+    single: eucledianTSP(Complete Signature) -- New
 
 Complete Signature
 ...............................................................................

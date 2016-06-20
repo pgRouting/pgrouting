@@ -50,7 +50,7 @@ Signatures
 
 
 .. index::
-    single: TSP(Basic Use)
+    single: TSP(Basic Use) -- New Signature
 
 Basic Use
 ...............................................................................
@@ -73,7 +73,7 @@ and the default is to have random execution, the example is wrapping the actual 
     TODO Intermediate Use
 
 .. index::
-    single: TSP(Complete Signature) -- proposed
+    single: TSP(Complete Signature) -- New Signature
 
 Complete Signature
 ...............................................................................

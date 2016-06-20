@@ -42,7 +42,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: pgr_dijkstraCostMatrix(edges_sql, start_vids) -- New
+    single: dijkstraCostMatrix(edges_sql, start_vids) -- New
 
 Minimal Signature
 ...............................................................................
@@ -65,7 +65,7 @@ The minimal signature:
 
 
 .. index::
-    single: pgr_dijkstraCostMatrix(Complete Signature) -- New
+    single: dijkstraCostMatrix(Complete Signature) -- New
 
 Complete Signature
 ...............................................................................

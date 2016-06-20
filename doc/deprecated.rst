@@ -12,12 +12,10 @@
 Deprecated Functions
 ====================
 
-.. warning:: This functions have being deprecated
+.. warning:: These functions are deprecated!!!
 
-    That means they have been replaced by new functions or are no longer supported,
-    and may be removed from future versions.
-
-    All code that uses the functions should be converted to use its replacement if one exists. 
+    * That means they have been replaced by new functions or are no longer supported, and may be removed from future versions.
+    * All code that uses the functions should be converted to use its replacement if one exists. 
 
 
 Deprecated on version 2.3
