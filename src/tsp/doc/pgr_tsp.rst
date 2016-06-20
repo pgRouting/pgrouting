@@ -44,7 +44,7 @@ Signature Summary
     RETURS SETOF (seq, node, cost, agg_cost)
 
 Signatures
-===============
+-------------------------------------------------------------------------------
 
 .. NOTE:: The following only aplies to the new signature(s)
 
@@ -98,10 +98,10 @@ Complete Signature
 
 
 Description of the Signatures
-=============================
-
-Description of the iMatrix Cell SQL query
 -------------------------------------------------------------------------------
+
+Description of the Matrix Cell SQL query
+...............................................................................
 
 ============= =========== =================================================
 Column        Type              Description

@@ -12,15 +12,22 @@
 Traveling Sales Person
 ===============================================================================
 
-                                                                                                                                                                                                                                                                               
-  - :ref:`pgr_TSP` - When input is given as matrix cell information.
-  - :ref:`pgr_eucledianTSP` - When input are coordinates.
-                                                                                                                                                                                                                                                                               
+- :ref:`pgr_TSP` - When input is given as matrix cell information.
+- :ref:`pgr_eucledianTSP` - When input are coordinates.
+
+- Pre processing
+
+- :ref:`Dmatrix` Distance matrix
+
+  - :ref:`pgr_dijkstraDmatrix` - Use pgr_dijktra to calculate a cost matrix.
+  - :ref:`pgr_withPointsDmatrix` - Use pgr_withPoints to calculate a cost matrix.
+
+
 .. toctree::
-    :hidden:
 
     ./pgr_tsp
     ./pgr_eucledianTSP
+    ../../dmatrix/doc/dmatrix
 
 .. NOTE:: These signatures are being deprecated
 
