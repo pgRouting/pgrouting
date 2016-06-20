@@ -29,7 +29,7 @@ of the shortest path for each pair of nodes in the graph, for *sparse graphs*.
 It usees the Boost's implementation which runs in :math:`O(V E \log V)` time,
 
 
-Characteristics:
+Characteristics
 ----------------
 
 The main Characteristics are:

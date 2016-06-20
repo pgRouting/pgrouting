@@ -30,7 +30,7 @@ Synopsis
 The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph.
 
 
-Characteristics:
+Characteristics
 -------------------------------------------------------------------------------
 
 The main Characteristics are:

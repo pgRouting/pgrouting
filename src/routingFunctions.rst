@@ -7,16 +7,15 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+
 .. _routing_functions:
-
-
-Routing Functions
-=================
 
 ..
     from-here
 
-:ref:`routing_functions`
+*******************************************************************************
+Routing Functions
+*******************************************************************************
 
   - :ref:`All pairs<all_pairs>` - All pair of vertices.
 
@@ -49,6 +48,12 @@ Routing Functions
     - :ref:`pgr_TSP<pgr_TSP>` - When input is a cost matrix.
     - :ref:`pgr_eucledianTSP<pgr_eucledianTSP>` - When input are coordinates.
 
+    - Pre processing
+
+      - :ref:`Dmatrix` Distance matrix
+
+        - :ref:`pgr_dijkstraDmatrix` - Use pgr_dijktra to calculate a cost matrix.
+        - :ref:`pgr_withPointsDmatrix` - Use pgr_withPoints to calculate a cost matrix. 
 
   - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
 
@@ -58,29 +63,24 @@ Routing Functions
     - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths with points.
     - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance.
 
-  - :ref:`Dmatrix` Distance matrix
-
-    - :ref:`pgr_dijkstraDmatrix` - Use pgr_dijktra to calculate a cost matrix.
-    - :ref:`pgr_withPointsDmatrix` - Use pgr_withPoints to calculate a cost matrix. 
-
-
-
 ..
     to-here
 
 .. toctree::
     :hidden: 
 
-    allpairs/doc/allpairs
-    astar/doc/pgr_astar
-    bd_astar/doc/pgr_bdAstar
-    bd_dijkstra/doc/pgr_bdDijkstra
-    dijkstra/doc/dijkstra
-    driving_distance/doc/drivingDistance
-    ksp/doc/pgr_ksp
-    tsp/doc/tsp
-    trsp/doc/pgr_trsp
-    withPoints/doc/withPoints
-    dmatrix/doc/dmatrix
+    ../src/allpairs/doc/allpairs
+    ../src/astar/doc/pgr_astar
+    ../src/bd_astar/doc/pgr_bdAstar
+    ../src/bd_dijkstra/doc/pgr_bdDijkstra
+    ../src/dijkstra/doc/dijkstra
 
+.. toctree::
+
+    ../src/driving_distance/doc/drivingDistance
+    ../src/ksp/doc/pgr_ksp
+    ../src/tsp/doc/tsp
+    ../src/dmatrix/doc/dmatrix
+    ../src/trsp/doc/pgr_trsp
+    ../src/withPoints/doc/withPoints
 

@@ -31,8 +31,8 @@ of the shortest path for a subset of pairs of nodes of the graph.
 We make use of the Boost's implementation of dijkstra which runs in
 :math:`O(V \log V + E)` time.
 
-Characteristics:
-----------------
+Characteristics
+-------------------------------------------------------------------------------
 
 The main Characteristics are:
   - It does not return a path.
@@ -67,7 +67,7 @@ The main Characteristics are:
   - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
 
 Signature Summary
------------------
+-------------------------------------------------------------------------------
 
 .. code-block:: none
 
@@ -82,13 +82,13 @@ Signature Summary
 
 
 Signatures
-===============================================================================
+-------------------------------------------------------------------------------
 
 .. index::
 	single: dijkstraCost(Minimal Use)
 
 Minimal signature
------------------
+...............................................................................
 
 The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
 
@@ -110,7 +110,7 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 	single: dijkstraCost(One to One)
 
 pgr_dijkstraCost One to One
---------------------------------
+...............................................................................
 
 
 This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
@@ -123,45 +123,18 @@ This signature performs a Dijkstra from one ``start_vid`` to one ``end_vid``:
 			 BOOLEAN directed:=true);
 	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 
-.. rubric:: Example
+:Example:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q2
     :end-before: --q3
 
 
-
-.. index::
-	single: dijkstraCost(Many to One)
-
-pgr_dijkstraCost Many to One
---------------------------------
-
-.. code-block:: none
-
-    pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
-			 BOOLEAN directed:=true);
-	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
-
-This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-
-.. rubric:: Example
-
-.. literalinclude:: doc-pgr_dijkstraCost.queries
-    :start-after: --q3
-    :end-before: --q4
-
-
-
-
 .. index::
     single: dijkstraCost(One to Many)
 
 pgr_dijkstraCost One to Many
---------------------------------
+...............................................................................
 
 .. code-block:: none
 
@@ -174,7 +147,7 @@ This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
 
-.. rubric:: Example
+:Example:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q4
@@ -183,12 +156,36 @@ This signature performs a Dijkstra from one ``start_vid`` to each ``end_vid`` in
 
 
 
+.. index::
+	single: dijkstraCost(Many to One)
+
+pgr_dijkstraCost Many to One
+...............................................................................
+
+.. code-block:: none
+
+    pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
+			 BOOLEAN directed:=true);
+	RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+
+This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+
+:Example:
+
+.. literalinclude:: doc-pgr_dijkstraCost.queries
+    :start-after: --q3
+    :end-before: --q4
+
+
 
 .. index::
 	single: dijkstraCost(Many to Many)
 
 pgr_dijkstraCost Many to Many
---------------------------------
+...............................................................................
 
 .. code-block:: none
 
@@ -200,8 +197,7 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-Example
--------
+:Example:
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
    :start-after: --q5
@@ -210,47 +206,13 @@ Example
 
 
 Description of the Signatures
-=============================
-
-Description of the edge's SQL query
------------------------------------
-
-:edges_sql: is a ``TEXT`` that containes an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                      Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, real, float
-
-
-Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-================  ====================== =================================================
-Column            Type                   Description
-================  ====================== =================================================
-**edges_sql**           ``TEXT``               SQL query as decribed above.
-**start_vid**     ``BIGINT``             Identifier of the starting vertex of the path.
-**end_vid**       ``BIGINT``             Identifier of the ending vertex of the path.
-**start_vids**    ``array[ANY-INTEGER]`` Array of identifiers of starting vertices.
-**end_vids**      ``array[ANY-INTEGER]`` Array of identifiers of ending vertices.
-**directed**      ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-================  ====================== =================================================
+.. include:: pgr_dijkstra_parameters.txt
 
 
 Description of the return values
--------------------------------------------------------------------------------
+...............................................................................
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 
@@ -263,27 +225,21 @@ Column        Type          Description
 ============= ============= =================================================
 
 
-Examples
-========
+Aditional Examples
+-------------------------------------------------------------------------------
 
-:Example 1:
-
-Repeated values are ignored, and arrays are sorted
+:Example 1: Demonstration of repeated values are ignored, and result is sorted.
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q6
     :end-before: --q7
 
-:Example 2:
-
-`start_vids` are the same as `end_vids`
+:Example 2: Making `start_vids` the same as `end_vids`
 
 .. literalinclude:: doc-pgr_dijkstraCost.queries
     :start-after: --q7
     :end-before: --q8
 
-
-The queries use the :ref:`sampledata` network.
 
 .. rubric:: History
 
@@ -294,6 +250,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

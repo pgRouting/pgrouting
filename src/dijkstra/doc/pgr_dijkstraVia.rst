@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -24,36 +24,37 @@ a list of vertices.
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
-   
+
 
 Synopsis
 -------------------------------------------------------------------------------
 
 Given a list of vertices and a graph, this function is equivalent to finding the
 shortest path between :math:`vertex_i` and :math:`vertex_{i+1}` for all :math:`i < size\_of(vertex_via)`.
+
 The paths represents the sections of the route.
 
-.. note:: This is a proposed function for version 2.3
+.. note:: This is a proposed function
 
 Signatrue Summary
------------------
+-------------------------------------------------------------------------------
 
 .. code-block:: none
 
     pgr_dijkstraVia(edges_sql, via_vertices)
-    pgr_dijkstraVia(edges_sql, via_vertices, directed:=true, strict:=false, U_turn_on_edge:=true)
+    pgr_dijkstraVia(edges_sql, via_vertices, directed, strict, U_turn_on_edge)
 
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
         node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 
 Signatures
-===============================================================================
+-------------------------------------------------------------------------------
 
-.. index:: 
-    single: dijkstraVia(Minimal Use) - proposed
+.. index::
+    single: dijkstraVia(Minimal Use) - proposed in V2.2
 
 Minimal Signature
----------------------------------
+...............................................................................
 
 .. code-block:: none
 
@@ -67,15 +68,15 @@ Minimal Signature
     :start-after: --q00
     :end-before: -- q0
 
-.. index:: 
-    single: dijkstraVia(Full signature) - proposed
+.. index::
+    single: dijkstraVia(Full signature) - proposed in V2.2
 
 Complete Signature
-------------------
+...............................................................................
 
 .. code-block:: none
 
-    pgr_dijkstraVia(edges_sql, via_vertices, directed:=true, strict:=false, U_turn_on_edge:=true)
+    pgr_dijkstraVia(edges_sql, via_vertices, directed, strict, U_turn_on_edge)
     RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
         node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 
@@ -88,32 +89,15 @@ Complete Signature
 
 
 Description of the Signature
-============================
-
-Description of the SQL query
 -------------------------------------------------------------------------------
 
-:edges_sql: is an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                      Description
-================  ===================   =================================================
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. include:: pgr_dijkstra_parameters.txt
+    :start-after: only edges start
+    :end-before: only edges end
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
-
-Recives  ``(edges_sql, via_vertices, directed:=true, strict:=false, U_turn_on_edge:=true)``
+...............................................................................
 
 =================== ====================== =================================================
 Parameter           Type                   Description
@@ -127,7 +111,7 @@ Parameter           Type                   Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+...............................................................................
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 
@@ -148,7 +132,7 @@ Column             Type          Description
 
 
 Examples
-========
+-------------------------------------------------------------------------------
 
 :Example 1: Find the route that visits the vertices 1 5 3 9 4 in that order
 
@@ -186,18 +170,11 @@ Examples
     :start-after: -- q6
 
 
-
-The queries use the :ref:`sampledata` network.
-
-.. rubric:: History
-
-* Proposed in version 2.2
-
-
 See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

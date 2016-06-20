@@ -105,8 +105,9 @@ Data Types
    ../src/common/doc/types/index
 
 
+*******************************************************************************
 Topology functions
-===============================================================================
+*******************************************************************************
 
 :ref:`topology_functions`
 
@@ -121,21 +122,19 @@ Topology functions
 
    ../src/topology/doc/topology
 
+
 ..
     ROUTING FUNCTIONS SECTION
-
-.. toctree::
-   :hidden:
-   :maxdepth: 0
-
-   ../src/routingFunctions
-
-Routing Functions
-=================
+    :hidden:
+    :maxdepth: 0
 
 .. include:: ../src/routingFunctions.rst
    :start-after: from-here
    :end-before: to-here
+    
+.. toctree::
+
+    ../src/routingFunctions
 
 
 

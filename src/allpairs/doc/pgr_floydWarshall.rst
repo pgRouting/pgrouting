@@ -30,7 +30,7 @@ pair of nodes in the graph, for *dense graphs*. We make use of the  Boost's
 implementation which runs in :math:`\Theta(V^3)` time,
 
 
-Characteristics:
+Characteristics
 ----------------
 
 The main Characteristics are:

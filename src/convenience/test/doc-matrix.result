@@ -1,6 +1,10 @@
 --q1
+NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deprecated function pgr_pointsToDMatrix
 {{0,1,1.4142135623731,2},{1,0,1,1},{1.4142135623731,1,0,1.4142135623731},{2,1,1.4142135623731,0}}|{1,2,3,4}
 --q1.1
+NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deprecated function pgr_pointsToDMatrix
 0|1
 1|3
 2|2
@@ -9,9 +13,13 @@
 NOTICE:  Deprecated function pgr_vidsToDMatrix
 {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}}|{1,2,3,5}
 --q2.1
+NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_textToPoints
 NOTICE:  Deprecated function pgr_vidsToDMatrix
 {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}}|{1,2,3,5}
 --q2.2
+NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_textToPoints
 NOTICE:  Deprecated function pgr_vidsToDMatrix
 0|1
 1|2

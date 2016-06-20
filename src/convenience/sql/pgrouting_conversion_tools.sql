@@ -141,6 +141,7 @@ declare
     g geometry[];
     
 begin
+    RAISE NOTICE 'Deperecated function: pgr_textToPoints';
     -- convert commas to space and split on ';'
     a := string_to_array(replace(pnts, ',', ' '), ';');
     -- convert each 'x y' into a point geometry and concattenate into a new array

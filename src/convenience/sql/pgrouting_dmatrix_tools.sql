@@ -35,6 +35,7 @@ declare
     r record;
     
 begin
+    RAISE NOTICE 'Deprecated function pgr_pointsToDMatrix';
     dmatrix := array[]::double precision[];
     ids := array[]::integer[];
 

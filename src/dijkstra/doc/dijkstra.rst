@@ -19,7 +19,6 @@ pgr_dijkstra - Shortest Path Dijkstra
 
 
 .. toctree::
-        :hidden:
 
         ./pgr_dijkstra
         ./pgr_dijkstraCost
