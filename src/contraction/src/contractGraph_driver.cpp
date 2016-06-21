@@ -269,15 +269,15 @@ do_pgr_contractGraph(
 	catch (AssertFailedException &exept) {
         log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-        return false;
+        //return false;
     } catch (std::exception& exept) {
         log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-        return false;
+        //return false;
     } catch(...) {
         log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
-        return false;
+        //return false;
     }
 }
 
