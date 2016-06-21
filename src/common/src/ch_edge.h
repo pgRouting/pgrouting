@@ -7,7 +7,9 @@
 #include <functional>
 #include "../../contraction/src/contraction_structs.hpp"
 #include "ch_vertex.h"
+#if 0
 #include "basic_edge.h"
+#endif
 
 namespace pgRouting
 {
@@ -22,7 +24,7 @@ class Edge {
     Edge_c() : m_deleted(false),m_type(Edge_type::ordinary) { }
     #endif
     Edge() = default;
-    Edge(const Edge &other){cp_members(other);}
+    //Edge(const Edge &other){cp_members(other);}
     Edge(const pgr_edge_t &other) :
     id(other.id), source(other.source),
     target(other.target), cost(other.cost){}
@@ -32,8 +34,10 @@ class Edge {
     Edge(int64_t id, int64_t source, int64_t target, double cost, bool first) :
     id(id), source(source),
     target(target), cost(cost), first(first){}
+    #if 0
     void cp_members(const Basic_edge &other);
-    void cp_members(const Edge &other);
+    #endif
+    void cp_members(const Edge &other, std::ostringstream& log);
     int64_t id;
     int64_t source;
     int64_t target;
