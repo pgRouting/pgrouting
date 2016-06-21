@@ -89,19 +89,25 @@ SELECT * FROM pgr_contractGraph(
     WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
     ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
 -- \echo --q13 -------------------------------------------
-*/
+
 \echo --q14 Checking linear contraction, dead end for a square like graph
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table 
     WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
     ARRAY[]::BIGINT[], ARRAY[1, 0]::integer[], 1, true);
 -- \echo --q14 -------------------------------------------
-/*
-\echo --q15 Checking dead end contraction for undirected sample data 
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, false);
--- \echo --q15 -------------------------------------------
 */
+\echo --q15 Checking linear contraction for directed base case
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table where id = 2 or id = 3',
+    ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
+-- \echo --q15 -------------------------------------------
+
+\echo --q15 Checking linear contraction for undirected base case
+SELECT * FROM pgr_contractGraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table where id = 2 or id = 3',
+    ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, false);
+-- \echo --q15 -------------------------------------------
+
 
 
