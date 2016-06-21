@@ -51,12 +51,16 @@
         
   <div class="section" id="traveling-sales-person">
 <span id="tsp"></span><h1>Traveling Sales Person<a class="headerlink" href="#traveling-sales-person" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> - When input is given as matrix cell information.</li>
 <li><a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> - When input are coordinates.</li>
+<li>Pre processing</li>
+<li><a class="reference internal" href="../../costMatrix/doc/costMatrix.html#costmatrix"><em>Cost Matrix</em></a> Distance matrix<ul>
+<li><a class="reference internal" href="../../costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix</em></a> - Use pgr_dijktra to calculate a cost matrix.</li>
+<li><a class="reference internal" href="../../costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
 </ul>
-</div></blockquote>
+</li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 <div class="admonition note">
@@ -79,8 +83,10 @@
 <p class="last">Use <a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> insteadi of (1).
 Use <a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> instead of (2).</p>
 </div>
+<div class="section" id="general-information">
+<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="origin">
-<h2>Origin<a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h2>
+<h3>Origin<a class="headerlink" href="#origin" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>The traveling sales person problem was studied in the 18th century by mathematicians</dt>
 <dd><strong>Sir William Rowam Hamilton</strong> and <strong>Thomas Penyngton  Kirkman</strong>.</dd>
@@ -97,12 +103,12 @@ A detailed  description about the connection between Menger &amp; Whitney, and t
 TSP can be found in  <a class="reference external" href="http://www.cwi.nl/~lex/files/histco.ps">On the history of combinatorial optimization (till 1960)</a></p>
 </div>
 <div class="section" id="problem-definition">
-<h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
+<h3>Problem Definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h3>
 <p>Given a collection of cities and travel cost between each pair,
 find the cheapest way for visiting all of the cities and returning to the starting point.</p>
 </div>
 <div class="section" id="characteristics">
-<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The travel costs are symmetric:<ul>
 <li>traveling costs from city A to city B are just as much as traveling from B to A.</li>
@@ -124,7 +130,7 @@ find the cheapest way for visiting all of the cities and returning to the starti
 </ul>
 </div>
 <div class="section" id="tsp-simulated-annealing">
-<h2>TSP &amp; Simulated Annealing<a class="headerlink" href="#tsp-simulated-annealing" title="Permalink to this headline">¶</a></h2>
+<h3>TSP &amp; Simulated Annealing<a class="headerlink" href="#tsp-simulated-annealing" title="Permalink to this headline">¶</a></h3>
 <p>The simulated annealing algorithm was originally inspired from the process of
 annealing in metal work.</p>
 <blockquote>
@@ -157,7 +163,7 @@ Output: the best solution
 </div>
 </div>
 <div class="section" id="pgrouting-implementation">
-<h2>pgRouting Implementation<a class="headerlink" href="#pgrouting-implementation" title="Permalink to this headline">¶</a></h2>
+<h3>pgRouting Implementation<a class="headerlink" href="#pgrouting-implementation" title="Permalink to this headline">¶</a></h3>
 <p>pgRouting&#8217;s implementation adds some extra parameters to allow some exit controls within the
 simulated annealing process.</p>
 <p>To cool down faster to the next temperature:</p>
@@ -209,7 +215,7 @@ Output: the best solution
 </div>
 </div>
 <div class="section" id="choosing-parameters">
-<h2>Choosing parameters<a class="headerlink" href="#choosing-parameters" title="Permalink to this headline">¶</a></h2>
+<h3>Choosing parameters<a class="headerlink" href="#choosing-parameters" title="Permalink to this headline">¶</a></h3>
 <p>There is no exact rule on how the parameters have to be chose, it will depend on the
 special characteristics of the problem.</p>
 <ul class="simple">
@@ -232,8 +238,8 @@ and set to a higher number for a slower decrease.</li>
 </ul>
 <p>A recommendation is to play with the values and see what fits to the particular data.</p>
 </div>
-<div class="section" id="control-parameters">
-<h2>Control parameters<a class="headerlink" href="#control-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-control-parameters">
+<h3>Description Of the Control parameters<a class="headerlink" href="#description-of-the-control-parameters" title="Permalink to this headline">¶</a></h3>
 <p>The control parameters are optional, and have a default value.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -311,7 +317,7 @@ and set to a higher number for a slower decrease.</li>
 </table>
 </div>
 <div class="section" id="deprecated-functionality">
-<span id="tsp-deprecated"></span><h2>Deprecated functionality<a class="headerlink" href="#deprecated-functionality" title="Permalink to this headline">¶</a></h2>
+<span id="tsp-deprecated"></span><h3>Deprecated functionality<a class="headerlink" href="#deprecated-functionality" title="Permalink to this headline">¶</a></h3>
 <p>The old functionality is deprecated:</p>
 <ul class="simple">
 <li>User can not control the execution.</li>
@@ -444,7 +450,7 @@ NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
 </ul>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
     $$
-    SELECT * FROM pgr_dijkstraDMatrix(
+    SELECT * FROM pgr_dijkstraCostMatrix(
         &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
         (SELECT array_agg(id) from edge_table_vertices_pgr WHERE id &lt; 14), false)
     $$,
@@ -469,6 +475,7 @@ NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
   14 |    1 |    0 |       18
 (14 rows)
 </pre></div>
+</div>
 </div>
 <div class="section" id="see-also">
 <h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
@@ -498,7 +505,7 @@ NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

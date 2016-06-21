@@ -54,7 +54,7 @@
 <p><tt class="docutils literal"><span class="pre">pgr_dijkstra</span></tt> — Returns the shortest path(s) using Dijkstra algorithm.
 In particular, the Dijkstra algorithm implemented by Boost.Graph.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="../../../_images/boost-inside3.jpeg" src="../../../_images/boost-inside3.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="../../../_images/boost-inside4.jpeg" src="../../../_images/boost-inside4.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 <div class="section" id="synopsis">
@@ -66,7 +66,7 @@ a starting vertex (<tt class="docutils literal"><span class="pre">start_vid</spa
 This implementation can be used with a directed graph and an undirected graph.</p>
 </div>
 <div class="section" id="characteristics">
-<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
@@ -106,11 +106,10 @@ RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_c
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
-<span id="index-0"></span><h2>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
@@ -140,8 +139,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
 </div>
 </div>
-<div class="section" id="dijkstra-one-to-one">
-<span id="index-1"></span><h2>Dijkstra One to One<a class="headerlink" href="#dijkstra-one-to-one" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pgr-dijkstra-one-to-one">
+<span id="index-1"></span><h3>pgr_dijkstra One to One<a class="headerlink" href="#pgr-dijkstra-one-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid,
     BOOLEAN directed:=true);
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
@@ -176,8 +175,8 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 </pre></div>
 </div>
 </div>
-<div class="section" id="dijkstra-one-to-many">
-<span id="index-2"></span><h2>Dijkstra One to many<a class="headerlink" href="#dijkstra-one-to-many" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pgr-dijkstra-one-to-many">
+<span id="index-2"></span><h3>pgr_dijkstra One to many<a class="headerlink" href="#pgr-dijkstra-one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, ARRAY[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
@@ -224,8 +223,8 @@ where the starting vertex is fixed, and stop when all <tt class="docutils litera
 </pre></div>
 </div>
 </div>
-<div class="section" id="dijkstra-many-to-one">
-<span id="index-3"></span><h2>Dijkstra Many to One<a class="headerlink" href="#dijkstra-many-to-one" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pgr-dijkstra-many-to-one">
+<span id="index-3"></span><h3>pgr_dijkstra Many to One<a class="headerlink" href="#pgr-dijkstra-many-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, BIGINT end_vid,
     BOOLEAN directed:=true);
 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
@@ -272,8 +271,8 @@ where the ending vertex is fixed.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="dijkstra-many-to-many">
-<span id="index-4"></span><h2>Dijkstra Many to Many<a class="headerlink" href="#dijkstra-many-to-many" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pgr-dijkstra-many-to-many">
+<span id="index-4"></span><h3>pgr_dijkstra Many to Many<a class="headerlink" href="#pgr-dijkstra-many-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstra(TEXT edges_sql, ARRAY[ANY_INTEGER] start_vids, ARRAY[ANY_INTEGER] end_vids,
     BOOLEAN directed:=true);
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
@@ -327,9 +326,9 @@ for all <tt class="docutils literal"><span class="pre">start_vids</span></tt>.</
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-sql-query">
-<h2>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -386,7 +385,7 @@ for all <tt class="docutils literal"><span class="pre">start_vids</span></tt>.</
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -428,7 +427,7 @@ for all <tt class="docutils literal"><span class="pre">start_vids</span></tt>.</
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -479,13 +478,13 @@ for all <tt class="docutils literal"><span class="pre">start_vids</span></tt>.</
 </table>
 </div>
 </div>
-<div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <p>The examples of this section are based on the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 <p>The examples include combinations from starting vertices 2 and 11 to ending vertices 3 and 5 in a directed and
 undirected graph with and with out reverse_cost.</p>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h2>
+<h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig1"><em>Graph 1: Directed, with cost and reverse cost</em></a></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
@@ -597,7 +596,7 @@ SELECT * FROM pgr_dijkstra(
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h2>
+<h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig2"><em>Graph 2: Undirected, with cost and reverse cost</em></a></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
@@ -694,7 +693,7 @@ SELECT * FROM pgr_dijkstra(
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-column">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h2>
+<h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig3"><em>Graph 3: Directed, with cost</em></a></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     &#39;SELECT id, source, target, cost FROM edge_table&#39;,
@@ -763,7 +762,7 @@ SELECT * FROM pgr_dijkstra(
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h2>
+<h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig4"><em>Graph 4: Undirected, with cost</em></a></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     &#39;SELECT id, source, target, cost FROM edge_table&#39;,
@@ -866,9 +865,19 @@ SELECT * FROM pgr_dijkstra(
 </div>
 </div>
 <div class="section" id="equvalences-between-signatures">
-<h2>Equvalences between signatures<a class="headerlink" href="#equvalences-between-signatures" title="Permalink to this headline">¶</a></h2>
-<p>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns
-The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig1"><em>Graph 1: Directed, with cost and reverse cost</em></a></p>
+<h3>Equvalences between signatures<a class="headerlink" href="#equvalences-between-signatures" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body">For queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns</td>
+</tr>
+</tbody>
+</table>
+<p>The examples in this section use the following:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig1"><em>Graph 1: Directed, with cost and reverse cost</em></a></li>
+</ul>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
     2, 3,
@@ -974,11 +983,18 @@ NOTICE:  Deprecated function
 (6 rows)
 </pre></div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>Equvalences between signatures<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns
-The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig2"><em>Graph 2: Undirected, with cost and reverse cost</em></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Examples:</th><td class="field-body">For queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns</td>
+</tr>
+</tbody>
+</table>
+<p>The examples in this section use the following:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig2"><em>Graph 2: Undirected, with cost and reverse cost</em></a></li>
+</ul>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
     2, 3,
@@ -1037,17 +1053,18 @@ NOTICE:  Deprecated function
 (2 rows)
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 <p class="rubric">History</p>
 <ul class="simple">
-<li>Renamed in version 2.0.0</li>
 <li>Added functionality in version 2.1.0</li>
+<li>Renamed in version 2.0.0</li>
 </ul>
+</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></li>
+<li>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -1073,7 +1090,7 @@ NOTICE:  Deprecated function
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

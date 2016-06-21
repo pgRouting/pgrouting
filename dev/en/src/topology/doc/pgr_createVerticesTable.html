@@ -52,7 +52,7 @@
   <div class="section" id="pgr-createverticestable">
 <span id="pgr-create-vert-table"></span><h1>pgr_createVerticesTable<a class="headerlink" href="#pgr-createverticestable" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_createVerticesTable</span></tt> — Reconstructs the vertices table based on the source and target information.</p>
 </div>
 <div class="section" id="synopsis">
@@ -64,8 +64,8 @@
 <li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the vertices table was not reconstructed due to an error.</li>
 </ul>
 </div></blockquote>
-<div class="highlight-sql"><div class="highlight"><pre><span class="nb">varchar</span> <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="nb">text</span> <span class="n">edge_table</span><span class="p">,</span>  <span class="nb">text</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span>
-                   <span class="nb">text</span> <span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre>    <span class="n">pgr_createVerticesTable</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="nb">VARCHAR</span>
 </pre></div>
 </div>
 </div>
@@ -301,7 +301,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -27,7 +27,7 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="withPoints - Family of functions" href="withPoints.html" />
-    <link rel="next" title="Distance Matrix" href="../../dmatrix/doc/dmatrix.html" />
+    <link rel="next" title="Proposed Functions for version 2.4" href="../../proposedNext.html" />
     <link rel="prev" title="pgr_withPointsKSP" href="pgr_withPointsKSP.html" /> 
   </head>
   <body>
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../dmatrix/doc/dmatrix.html">Distance Matrix</a>&#160;&#160;»
+        <a href="../../proposedNext.html">Proposed Functions for version 2.4</a>&#160;&#160;»
         </p>
 
       </div>
@@ -82,11 +82,10 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="minimal-signature">
-<span id="index-0"></span><h2>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-use">
+<span id="index-0"></span><h3>Minimal Use<a class="headerlink" href="#minimal-use" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>The minimal signature:</dt>
 <dd><ul class="first last simple">
@@ -131,7 +130,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="driving-distance-from-a-single-point">
-<span id="index-1"></span><h2>Driving distance from a single point<a class="headerlink" href="#driving-distance-from-a-single-point" title="Permalink to this headline">¶</a></h2>
+<span id="index-1"></span><h3>Driving distance from a single point<a class="headerlink" href="#driving-distance-from-a-single-point" title="Permalink to this headline">¶</a></h3>
 <p>Finds the driving distance depending on the optional parameters setup.</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
@@ -167,7 +166,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="driving-distance-from-many-starting-points">
-<span id="index-2"></span><h2>Driving distance from many starting points<a class="headerlink" href="#driving-distance-from-many-starting-points" title="Permalink to this headline">¶</a></h2>
+<span id="index-2"></span><h3>Driving distance from many starting points<a class="headerlink" href="#driving-distance-from-many-starting-points" title="Permalink to this headline">¶</a></h3>
 <p>Finds the driving distance depending on the optional parameters setup.</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPointsDD(edges_sql, points_sql, start_vids, distance,
     directed:=true, driving_side:=&#39;b&#39;, details:=false, equicost:=false)
@@ -177,9 +176,9 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-edges-sql-query">
-<h2>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -225,7 +224,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </table>
 </div>
 <div class="section" id="description-of-the-points-sql-query">
-<h2>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -295,7 +294,7 @@ RETURNS SET OF (seq, node, edge, cost, agg_cost)
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="7%" />
@@ -355,7 +354,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -413,6 +412,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
 <h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h2>
@@ -513,14 +513,14 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../dmatrix/doc/dmatrix.html">Distance Matrix</a>&#160;&#160;»
+        <a href="../../proposedNext.html">Proposed Functions for version 2.4</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

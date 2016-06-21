@@ -64,23 +64,8 @@ is a good choice to calculate the sum of the costs of the shortest path for each
 pair of nodes in the graph, for <em>dense graphs</em>. We make use of the  Boost&#8217;s
 implementation which runs in <span class="math">\(\Theta(V^3)\)</span> time,</p>
 </div>
-</div>
-<div class="section" id="signature">
-<h1>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-none" id="index-0"><div class="highlight"><pre>pgr_floydWarshall(edges_sql, directed:=true)
-     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
-</pre></div>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_floydWarshall(
-   &#39;SELECT source, target, cost, reverse_cost FROM edge_table WHERE city_code = 304&#39;
-);
-</pre></div>
-</div>
-</div>
 <div class="section" id="characteristics">
-<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
@@ -104,11 +89,77 @@ Represent the distance between vertices for which there is no path.<ul>
 </dd>
 </dl>
 </div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_floydWarshall(edges_sql)
+pgr floydWarshall(edges_sql, directed)
+RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+</pre></div>
 </div>
-<div class="section" id="description-of-the-signature">
-<h1>Description of the Signature<a class="headerlink" href="#description-of-the-signature" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_floydWarshall(edges_sql)
+RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body">On a directed graph.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_floydWarshall(
+    &#39;SELECT id, source, target, cost FROM edge_table where id &lt; 5&#39;
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         1 |       2 |        1
+         1 |       5 |        2
+         2 |       5 |        1
+(3 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-signature">
+<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_floydWarshall(edges_sql, directed)
+RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example 2:</th><td class="field-body">On an undirected graph.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_floydWarshall(
+    &#39;SELECT id, source, target, cost FROM edge_table where id &lt; 5&#39;,
+    false
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         1 |       2 |        1
+         1 |       5 |        2
+         2 |       1 |        1
+         2 |       5 |        1
+         5 |       1 |        2
+         5 |       2 |        1
+(6 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-sql-query">
-<h2>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -161,7 +212,7 @@ Represent the distance between vertices for which there is no path.<ul>
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <p>Receives  <tt class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">directed)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -188,7 +239,7 @@ Represent the distance between vertices for which there is no path.<ul>
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -217,62 +268,18 @@ Represent the distance between vertices for which there is no path.<ul>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body">On a directed graph.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_floydWarshall(
-    &#39;SELECT id, source, target, cost FROM edge_table where id &lt; 5&#39;
-);
- start_vid | end_vid | agg_cost 
------------+---------+----------
-         1 |       2 |        1
-         1 |       5 |        2
-         2 |       5 |        1
-(3 rows)
-</pre></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example 2:</th><td class="field-body">On an undirected graph.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_floydWarshall(
-    &#39;SELECT id, source, target, cost FROM edge_table where id &lt; 5&#39;,
-    false
-);
- start_vid | end_vid | agg_cost 
------------+---------+----------
-         1 |       2 |        1
-         1 |       5 |        2
-         2 |       1 |        1
-         2 |       5 |        1
-         5 |       1 |        2
-         5 |       2 |        1
-(6 rows)
-</pre></div>
-</div>
-<p>These queries uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>Re-design of pgr_apspWarshall in Version 2.2.0</li>
 </ul>
+</div>
+</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a></li>
 <li><a class="reference external" href="http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">Boost floyd-Warshall</a> algorithm</li>
+<li>Queries uses the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -298,7 +305,7 @@ Represent the distance between vertices for which there is no path.<ul>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

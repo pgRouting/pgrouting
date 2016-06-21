@@ -57,7 +57,7 @@
 <p>Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
 aggregate cost of the shortest path(s) found, for the combination of vertices given.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="../../../_images/boost-inside3.jpeg" src="../../../_images/boost-inside3.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="../../../_images/boost-inside4.jpeg" src="../../../_images/boost-inside4.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">pgr_dijkstraCost</span></tt> algorithm, is a good choice to calculate the sum of the costs
@@ -66,7 +66,7 @@ We make use of the Boost&#8217;s implementation of dijkstra which runs in
 <span class="math">\(O(V \log V + E)\)</span> time.</p>
 </div>
 <div class="section" id="characteristics">
-<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
@@ -114,11 +114,10 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
-<span id="index-0"></span><h2>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
 <p>The minimal signature is for a <strong>directed</strong> graph from one <tt class="docutils literal"><span class="pre">start_vid</span></tt> to one <tt class="docutils literal"><span class="pre">end_vid</span></tt>:</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
@@ -136,7 +135,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </div>
 </div>
 <div class="section" id="pgr-dijkstracost-one-to-one">
-<span id="index-1"></span><h2>pgr_dijkstraCost One to One<a class="headerlink" href="#pgr-dijkstracost-one-to-one" title="Permalink to this headline">¶</a></h2>
+<span id="index-1"></span><h3>pgr_dijkstraCost One to One<a class="headerlink" href="#pgr-dijkstracost-one-to-one" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>This signature performs a Dijkstra from one <tt class="docutils literal"><span class="pre">start_vid</span></tt> to one <tt class="docutils literal"><span class="pre">end_vid</span></tt>:</dt>
 <dd><ul class="first last simple">
@@ -150,7 +149,14 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
 </pre></div>
 </div>
-<p class="rubric">Example</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
     &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
     2, 3, false);
@@ -161,35 +167,8 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </pre></div>
 </div>
 </div>
-<div class="section" id="pgr-dijkstracost-many-to-one">
-<span id="index-2"></span><h2>pgr_dijkstraCost Many to One<a class="headerlink" href="#pgr-dijkstracost-many-to-one" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
-                     BOOLEAN directed:=true);
-    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>This signature performs a Dijkstra from each <tt class="docutils literal"><span class="pre">start_vid</span></tt> in  <tt class="docutils literal"><span class="pre">start_vids</span></tt> to one <tt class="docutils literal"><span class="pre">end_vid</span></tt>:</dt>
-<dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is missing or is set to <tt class="docutils literal"><span class="pre">true</span></tt>.</li>
-<li>on an <strong>undirected</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is set to <tt class="docutils literal"><span class="pre">false</span></tt>.</li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
-    &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
-    ARRAY[2, 7], 3);
- start_vid | end_vid | agg_cost 
------------+---------+----------
-         2 |       3 |        5
-         7 |       3 |        6
-(2 rows)
-</pre></div>
-</div>
-</div>
 <div class="section" id="pgr-dijkstracost-one-to-many">
-<span id="index-3"></span><h2>pgr_dijkstraCost One to Many<a class="headerlink" href="#pgr-dijkstracost-one-to-many" title="Permalink to this headline">¶</a></h2>
+<span id="index-2"></span><h3>pgr_dijkstraCost One to Many<a class="headerlink" href="#pgr-dijkstracost-one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, BIGINT start_vid, array[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
@@ -203,7 +182,14 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </ul>
 </dd>
 </dl>
-<p class="rubric">Example</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
     &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
     2, ARRAY[3, 11]);
@@ -214,7 +200,43 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 (2 rows)
 </pre></div>
 </div>
-<p class="rubric" id="index-4">pgr_dijkstraCost Many to Many</p>
+</div>
+<div class="section" id="pgr-dijkstracost-many-to-one">
+<span id="index-3"></span><h3>pgr_dijkstraCost Many to One<a class="headerlink" href="#pgr-dijkstracost-many-to-one" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, BIGINT end_vid,
+                     BOOLEAN directed:=true);
+    RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>This signature performs a Dijkstra from each <tt class="docutils literal"><span class="pre">start_vid</span></tt> in  <tt class="docutils literal"><span class="pre">start_vids</span></tt> to one <tt class="docutils literal"><span class="pre">end_vid</span></tt>:</dt>
+<dd><ul class="first last simple">
+<li>on a <strong>directed</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is missing or is set to <tt class="docutils literal"><span class="pre">true</span></tt>.</li>
+<li>on an <strong>undirected</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is set to <tt class="docutils literal"><span class="pre">false</span></tt>.</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
+    &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
+    ARRAY[2, 7], 3);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        5
+         7 |       3 |        6
+(2 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="pgr-dijkstracost-many-to-many">
+<span id="index-4"></span><h3>pgr_dijkstraCost Many to Many<a class="headerlink" href="#pgr-dijkstracost-many-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraCost(TEXT edges_sql, array[ANY_INTEGER] start_vids, array[ANY_INTEGER] end_vids,
         BOOLEAN directed:=true);
     RETURNS SET OF (start_vid, end_vid, agg_cost) or EMPTY SET
@@ -228,9 +250,14 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
     &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
     ARRAY[2, 7], ARRAY[3, 11]);
@@ -246,14 +273,14 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="description-of-the-edge-s-sql-query">
-<h2>Description of the edge&#8217;s SQL query<a class="headerlink" href="#description-of-the-edge-s-sql-query" title="Permalink to this headline">¶</a></h2>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-sql-query">
+<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">is a <tt class="docutils literal"><span class="pre">TEXT</span></tt> that containes an SQL query, which should return a set of rows with the following columns:</td>
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
@@ -284,11 +311,11 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>Weight of the edge <cite>(source, target)</cite>, if negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>Weight of the edge <cite>(source, target)</cite>, If negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>(optional) Weight of the edge <cite>(target, source)</cite>, if negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>(optional) Weight of the edge <cite>(target, source)</cite>, If negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
 </tr>
 </tbody>
 </table>
@@ -299,18 +326,18 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
 </tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, real, float</td>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="10%" />
+<col width="9%" />
 <col width="14%" />
-<col width="77%" />
+<col width="78%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -319,7 +346,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>edges_sql</strong></td>
+<tr class="row-even"><td><strong>sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
 <td>SQL query as decribed above.</td>
 </tr>
@@ -327,16 +354,16 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
 <td>Identifier of the starting vertex of the path.</td>
 </tr>
-<tr class="row-even"><td><strong>end_vid</strong></td>
+<tr class="row-even"><td><strong>start_vids</strong></td>
+<td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
+<td>Array of identifiers of starting vertices.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_vid</strong></td>
 <td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
 <td>Identifier of the ending vertex of the path.</td>
 </tr>
-<tr class="row-odd"><td><strong>start_vids</strong></td>
-<td><tt class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></tt></td>
-<td>Array of identifiers of starting vertices.</td>
-</tr>
 <tr class="row-even"><td><strong>end_vids</strong></td>
-<td><tt class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
 <td>Array of identifiers of ending vertices.</td>
 </tr>
 <tr class="row-odd"><td><strong>directed</strong></td>
@@ -347,7 +374,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -378,17 +405,16 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 </table>
 </div>
 </div>
-<div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="aditional-examples">
+<h2>Aditional Examples<a class="headerlink" href="#aditional-examples" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example 1:</th><td class="field-body">Demonstration of repeated values are ignored, and result is sorted.</td>
 </tr>
 </tbody>
 </table>
-<p>Repeated values are ignored, and arrays are sorted</p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
         &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
             ARRAY[5, 3, 4, 3, 3, 4], ARRAY[3, 5, 3, 4]);
@@ -407,11 +433,10 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example 2:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example 2:</th><td class="field-body">Making <cite>start_vids</cite> the same as <cite>end_vids</cite></td>
 </tr>
 </tbody>
 </table>
-<p><cite>start_vids</cite> are the same as <cite>end_vids</cite></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstraCost(
         &#39;select id, source, target, cost, reverse_cost from edge_table&#39;,
             ARRAY[5, 3, 4], ARRAY[5, 3, 4]);
@@ -426,15 +451,16 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 (6 rows)
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 <p class="rubric">History</p>
 <ul class="simple">
 <li>New in version  2.2.0</li>
 </ul>
+</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></li>
+<li><a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -460,7 +486,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

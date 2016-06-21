@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>pgr_kDijkstra - Deprecated Functions &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -27,47 +27,53 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
-    <link rel="next" title="pgr_drivingDistance (V2.0)" href="../../driving_distance/doc/pgr_drivingDistance_v2.html" />
-    <link rel="prev" title="pgr_apspWarshall" href="../../apsp_warshall/doc/pgr_apspWarshall.html" /> 
+    <link rel="next" title="pgr_dijkstra - Deprecated Signature" href="../../dijkstra/doc/pgr_dijkstra_v2.html" />
+    <link rel="prev" title="pgr_apspWarshall - Deprecated Function" href="../../apsp_warshall/doc/pgr_apspWarshall.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
-        <h2 class="heading"><span>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra</span></h2>
+        <h2 class="heading"><span>pgr_kDijkstra - Deprecated Functions</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../apsp_warshall/doc/pgr_apspWarshall.html">pgr_apspWarshall</a>
+        «&#160;&#160;<a href="../../apsp_warshall/doc/pgr_apspWarshall.html">pgr_apspWarshall - Deprecated Function</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../driving_distance/doc/pgr_drivingDistance_v2.html">pgr_drivingDistance (V2.0)</a>&#160;&#160;»
+        <a href="../../dijkstra/doc/pgr_dijkstra_v2.html">pgr_dijkstra - Deprecated Signature</a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content">
         
         
-  <div class="section" id="pgr-kdijkstra-mutliple-destination-shortest-path-dijkstra">
-<span id="pgr-kdijkstra"></span><h1>pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra<a class="headerlink" href="#pgr-kdijkstra-mutliple-destination-shortest-path-dijkstra" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-kdijkstra-deprecated-functions">
+<span id="pgr-kdijkstra"></span><h1>pgr_kDijkstra - Deprecated Functions<a class="headerlink" href="#pgr-kdijkstra-deprecated-functions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These functions are deprecated!!!</p>
+<ul class="last simple">
+<li>It has been replaced by a new functions, are no longer supported, and may be removed from future versions.</li>
+<li>All code that uses the functions should be converted to use its replacement.</li>
+</ul>
+</div>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_kdijkstraCost</span></tt> - Returns the costs for K shortest paths using Dijkstra algorithm.</li>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This functions is deprecated in 2.2.
-Use <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> instead.</p>
+<p class="last">Use <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> (One To Many) instead.</p>
 </div>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_kdijkstraPath</span></tt> - Returns the paths for K shortest paths using Dijkstra algorithm.</li>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This function is deprecated in 2.2.
-Use <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> instead.</p>
+<p class="last">Use <a class="reference internal" href="../../dijkstra/doc/pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> (One To Many) instead.</p>
 </div>
 </div>
 <div class="section" id="synopsis">
@@ -235,18 +241,18 @@ This behavior is a function of PostGIS functions <tt class="docutils literal"><s
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../apsp_warshall/doc/pgr_apspWarshall.html">pgr_apspWarshall</a>
+        «&#160;&#160;<a href="../../apsp_warshall/doc/pgr_apspWarshall.html">pgr_apspWarshall - Deprecated Function</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../driving_distance/doc/pgr_drivingDistance_v2.html">pgr_drivingDistance (V2.0)</a>&#160;&#160;»
+        <a href="../../dijkstra/doc/pgr_dijkstra_v2.html">pgr_dijkstra - Deprecated Signature</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

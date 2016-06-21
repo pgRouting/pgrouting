@@ -56,35 +56,34 @@
 <p><tt class="docutils literal"><span class="pre">pgr_dijkstraVia</span></tt> — Using dijkstra algorithm, it finds the route that goes through
 a list of vertices.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside3.jpeg" src="../../../_images/boost-inside3.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside4.jpeg" src="../../../_images/boost-inside4.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Given a list of vertices and a graph, this function is equivalent to finding the
-shortest path between <span class="math">\(vertex_i\)</span> and <span class="math">\(vertex_{i+1}\)</span> for all <span class="math">\(i &lt; size\_of(vertex_via)\)</span>.
-The paths represents the sections of the route.</p>
+shortest path between <span class="math">\(vertex_i\)</span> and <span class="math">\(vertex_{i+1}\)</span> for all <span class="math">\(i &lt; size\_of(vertex_via)\)</span>.</p>
+<p>The paths represents the sections of the route.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This is a proposed function for version 2.3</p>
+<p class="last">This is a proposed function</p>
 </div>
 </div>
 <div class="section" id="signatrue-summary">
 <h2>Signatrue Summary<a class="headerlink" href="#signatrue-summary" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraVia(edges_sql, via_vertices)
-pgr_dijkstraVia(edges_sql, via_vertices, directed:=true, strict:=false, U_turn_on_edge:=true)
+pgr_dijkstraVia(edges_sql, via_vertices, directed, strict, U_turn_on_edge)
 
 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
     node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
-<span id="index-0"></span><h2>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraVia(edges_sql, via_vertices)
 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
     node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
@@ -119,8 +118,8 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 </div>
 </div>
 <div class="section" id="complete-signature">
-<span id="index-1"></span><h2>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraVia(edges_sql, via_vertices, directed:=true, strict:=false, U_turn_on_edge:=true)
+<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_dijkstraVia(edges_sql, via_vertices, directed, strict, U_turn_on_edge)
 RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
     node, edge, cost, agg_cost, route_agg_cost) or EMPTY SET
 </pre></div>
@@ -151,14 +150,14 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 </div>
 </div>
 <div class="section" id="description-of-the-signature">
-<h1>Description of the Signature<a class="headerlink" href="#description-of-the-signature" title="Permalink to this headline">¶</a></h1>
+<h2>Description of the Signature<a class="headerlink" href="#description-of-the-signature" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-sql-query">
-<h2>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">is an SQL query, which should return a set of rows with the following columns:</td>
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
@@ -175,21 +174,25 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><strong>source</strong></td>
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
-<tr class="row-odd"><td><strong>target</strong></td>
+<tr class="row-even"><td><strong>target</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
-<tr class="row-even"><td><strong>cost</strong></td>
+<tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>Weight of the edge <cite>(source, target)</cite>, if negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>Weight of the edge <cite>(source, target)</cite>, If negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
 </tr>
-<tr class="row-odd"><td><strong>reverse_cost</strong></td>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>(optional) Weight of the edge <cite>(target, source)</cite>, if negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>(optional) Weight of the edge <cite>(target, source)</cite>, If negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
 </tr>
 </tbody>
 </table>
@@ -206,8 +209,7 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<p>Recives  <tt class="docutils literal"><span class="pre">(edges_sql,</span> <span class="pre">via_vertices,</span> <span class="pre">directed:=true,</span> <span class="pre">strict:=false,</span> <span class="pre">U_turn_on_edge:=true)</span></tt></p>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -245,7 +247,7 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -305,7 +307,7 @@ RETURNS SET OF (seq, path_pid, path_seq, start_vid, end_vid,
 </div>
 </div>
 <div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -448,15 +450,12 @@ WHERE node = 9 and (agg_cost  &lt;&gt; 0 or seq = 1);
 (2 rows)
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
-<p class="rubric">History</p>
-<ul class="simple">
-<li>Proposed in version 2.2</li>
-</ul>
+</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a></li>
+<li><a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -482,7 +481,7 @@ WHERE node = 9 and (agg_cost  &lt;&gt; 0 or seq = 1);
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_astar - Shortest Path A* &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>pgr_astar &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -33,7 +33,7 @@
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
-        <h2 class="heading"><span>pgr_astar - Shortest Path A*</span></h2>
+        <h2 class="heading"><span>pgr_astar</span></h2>
       </div>
       <div class="topnav">
       
@@ -49,8 +49,8 @@
       <div class="content">
         
         
-  <div class="section" id="pgr-astar-shortest-path-a">
-<span id="pgr-astar"></span><h1>pgr_astar - Shortest Path A*<a class="headerlink" href="#pgr-astar-shortest-path-a" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-astar">
+<span id="id1"></span><h1>pgr_astar<a class="headerlink" href="#pgr-astar" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_astar</span></tt> — Returns the shortest path using A* algorithm.</p>
@@ -64,7 +64,7 @@
 <p>The A* (pronounced &#8220;A Star&#8221;) algorithm is based on Dijkstra&#8217;s algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph.</p>
 </div>
 <div class="section" id="characteristics">
-<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
 <p>The main Characteristics are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -95,36 +95,103 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none" id="index-0"><div class="highlight"><pre>pgr_astar(edges_sql, start_vid, end_vid)
+<div class="highlight-none"><div class="highlight"><pre>pgr_astar(edges_sql, start_vid, end_vid)
 pgr_astar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
-  RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-
-pgr_astar(sql, source, target, directed, has_rcost) -- deprecated
-  RETURNS SET OF pgr_costResult
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>This signature is being deprecated</p>
-<div class="highlight-sql" id="index-1"><div class="highlight"><pre><span class="n">pgr_astar</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span><span class="p">)</span>
+<p>This signature is deprecated</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_astar</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="n">pgr_costResult</span>
 </pre></div>
 </div>
 <ul class="last simple">
 <li>See <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a></li>
-<li>See <a class="reference external" href="http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html">http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html</a></li>
+<li>See <a class="reference internal" href="pgr_astar_v2.html#pgr-astar-v2-0"><em>pgr_astar - Deprecated Signature</em></a></li>
 </ul>
+</div>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_astar(edges_sql, start_vid, end_vid)
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Using the defaults</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_astar(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    2, 12);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-signature">
+<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_astar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Setting a Heuristic</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_astar(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    2, 12, heuristic := 1);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+
+SELECT * FROM pgr_astar(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    2, 12, heuristic := 2);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+</pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The following only aplies to the new signature(s)</p>
 </div>
 <div class="section" id="description-of-the-edges-sql-query">
-<h2>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -197,7 +264,7 @@ pgr_astar(sql, source, target, directed, has_rcost) -- deprecated
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -261,7 +328,7 @@ pgr_astar(sql, source, target, directed, has_rcost) -- deprecated
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -332,12 +399,13 @@ pgr_astar(sql, source, target, directed, has_rcost) -- deprecated
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="about-factor">
 <h2>About factor<a class="headerlink" href="#about-factor" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Example 1</p>
+<p class="rubric">Analysis 1</p>
 <p>Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
 Factor = 1   (no need to change units)</p>
-<p class="rubric">Example 2</p>
+<p class="rubric">Analysis 2</p>
 <p>Working with cost/reverse_cost as length in meters, x/y in lat/lon:
 Factor =  would depend on the location of the points:</p>
 <table border="1" class="docutils">
@@ -363,7 +431,7 @@ Factor =  would depend on the location of the points:</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Example 3</p>
+<p class="rubric">Analysis 3</p>
 <p>Working with cost/reverse_cost as time in seconds, x/y in lat/lon:
 Factor: would depend on the location of the points and on the average speed
 say 25m/s is the speed.</p>
@@ -396,55 +464,16 @@ say 25m/s is the speed.</p>
 <li>Renamed in version 2.0.0</li>
 </ul>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Using the defaults</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_astar(
-    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
-    2, 12);
- seq | path_seq | node | edge | cost | agg_cost 
------+----------+------+------+------+----------
-   1 |        1 |    2 |    4 |    1 |        0
-   2 |        2 |    5 |    8 |    1 |        1
-   3 |        3 |    6 |    9 |    1 |        2
-   4 |        4 |    9 |   15 |    1 |        3
-   5 |        5 |   12 |   -1 |    0 |        4
-(5 rows)
-</pre></div>
-</div>
-<ul class="simple">
-<li>Setting a Heuristic</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_astar(
-    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
-    2, 12, heuristic := 1);
- seq | path_seq | node | edge | cost | agg_cost 
------+----------+------+------+------+----------
-   1 |        1 |    2 |    4 |    1 |        0
-   2 |        2 |    5 |    8 |    1 |        1
-   3 |        3 |    6 |    9 |    1 |        2
-   4 |        4 |    9 |   15 |    1 |        3
-   5 |        5 |   12 |   -1 |    0 |        4
-(5 rows)
-
-SELECT * FROM pgr_astar(
-    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
-    2, 12, heuristic := 2);
- seq | path_seq | node | edge | cost | agg_cost 
------+----------+------+------+------+----------
-   1 |        1 |    2 |    4 |    1 |        0
-   2 |        2 |    5 |    8 |    1 |        1
-   3 |        3 |    6 |    9 |    1 |        2
-   4 |        4 |    9 |   15 |    1 |        3
-   5 |        5 |   12 |   -1 |    0 |        4
-(5 rows)
-</pre></div>
-</div>
-<ul class="simple">
-<li>Using the deprecated signature</li>
-</ul>
+<div class="section" id="deprecated-signature">
+<h2>Deprecated Signature<a class="headerlink" href="#deprecated-signature" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Using the deprecated signature</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_astar(
     &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
     2, 12, true, true);
@@ -486,7 +515,7 @@ NOTICE:  Deprecated signature of function pgr_astar
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

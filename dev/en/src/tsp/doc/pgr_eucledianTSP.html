@@ -27,7 +27,7 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Traveling Sales Person" href="tsp.html" />
-    <link rel="next" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="../../trsp/doc/pgr_trsp.html" />
+    <link rel="next" title="Cost Matrix" href="../../costMatrix/doc/costMatrix.html" />
     <link rel="prev" title="pgr_TSP" href="pgr_tsp.html" /> 
   </head>
   <body>
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../trsp/doc/pgr_trsp.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>&#160;&#160;»
+        <a href="../../costMatrix/doc/costMatrix.html">Cost Matrix</a>&#160;&#160;»
         </p>
 
       </div>
@@ -80,11 +80,10 @@ RETURS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
-<span id="index-0"></span><h2>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
 RETURS SETOF (seq, node, cost, agg_cost)
 </pre></div>
@@ -116,7 +115,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 18;
 </div>
 </div>
 <div class="section" id="complete-signature">
-<span id="index-1"></span><h2>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h2>
+<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql,
     start_id, end_id,
     max_processing_time,
@@ -161,9 +160,9 @@ RETURS SETOF (seq, node, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-coordinates-sql-query">
-<h2>Description of the coordinates SQL query<a class="headerlink" href="#description-of-the-coordinates-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the coordinates SQL query<a class="headerlink" href="#description-of-the-coordinates-sql-query" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -192,8 +191,9 @@ RETURS SETOF (seq, node, cost, agg_cost)
 </tbody>
 </table>
 <p>When the value of <strong>id</strong> is not given then the coordinates will receive an <strong>id</strong> starting from 1, in the order given.</p>
-<div class="section" id="control-parameters">
-<h3>Control parameters<a class="headerlink" href="#control-parameters" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="description-of-the-control-parameters">
+<h3>Description Of the Control parameters<a class="headerlink" href="#description-of-the-control-parameters" title="Permalink to this headline">¶</a></h3>
 <p>The control parameters are optional, and have a default value.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -396,14 +396,14 @@ Best cost reached = 18.7796
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../trsp/doc/pgr_trsp.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>&#160;&#160;»
+        <a href="../../costMatrix/doc/costMatrix.html">Cost Matrix</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

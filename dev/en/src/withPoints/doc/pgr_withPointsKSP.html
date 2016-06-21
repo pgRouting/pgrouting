@@ -79,11 +79,10 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-usage">
-<span id="index-0"></span><h2>Minimal Usage<a class="headerlink" href="#minimal-usage" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h3>Minimal Usage<a class="headerlink" href="#minimal-usage" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>The minimal usage:</dt>
 <dd><ul class="first last simple">
@@ -130,7 +129,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="complete-signature">
-<span id="index-1"></span><h2>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h2>
+<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <p>Finds the K shortest paths depending on the optional parameters setup.</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K,
     directed:=true, heap_paths:=false, driving_side:=&#39;b&#39;, details:=false)
@@ -173,9 +172,9 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-edges-sql-query">
-<h2>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -221,7 +220,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </table>
 </div>
 <div class="section" id="description-of-the-points-sql-query">
-<h2>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -291,7 +290,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%" />
@@ -355,7 +354,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -421,6 +420,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -540,7 +540,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

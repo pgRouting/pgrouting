@@ -52,7 +52,7 @@
   <div class="section" id="pgr-nodenetwork">
 <span id="pgr-node-network"></span><h1>pgr_nodeNetwork<a class="headerlink" href="#pgr-nodenetwork" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_nodeNetwork</span></tt> - Nodes an network edge table.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -68,9 +68,8 @@
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>The function reads edges from a not &#8220;noded&#8221; network table and writes the &#8220;noded&#8221; edges into a new table.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="nb">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">float8</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span>
-                     <span class="nb">text</span>  <span class="n">id</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">the_geom</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">table_ending</span><span class="o">=</span><span class="s1">&#39;noded&#39;</span>
-         <span class="nb">text</span> <span class="n">rows_where</span> <span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">boolean</span> <span class="n">outall</span><span class="o">=</span><span class="k">false</span><span class="p">)</span>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span class="n">pgr_nodenetwork</span><span class="p">(</span><span class="n">edge_table</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="nb">text</span> <span class="n">the_geom</span><span class="p">,</span> <span class="n">table_ending</span><span class="p">,</span> <span class="n">rows_where</span><span class="p">,</span> <span class="n">outall</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="nb">TEXT</span>
 </pre></div>
 </div>
 </div>
@@ -459,7 +458,7 @@ point there is a node and the following edges share it:
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

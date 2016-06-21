@@ -13,7 +13,7 @@ pgr_pointsToVids
 ==============================================================================
 
 .. index::
-        single: pointsToVids(pnts geometry[], edges text, tol float8 DEFAULT(0.01)) --proposed
+        single: pointsToVids(Complete Signature) --proposed
 
 
 Name

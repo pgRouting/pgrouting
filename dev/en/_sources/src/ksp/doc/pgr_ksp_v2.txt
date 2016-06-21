@@ -9,11 +9,14 @@
 
 .. _pgr_ksp_v2:
 
-pgr_ksp (V 2.0) 
+pgr_ksp - Deprecated Signature
 ===============================================================================
 
-.. index:: 
-  single: ksp(text,integer,integer,integer,boolean) -- deprecated
+.. warning:: This function signature is deprecated!!!
+
+    * That means they have been replaced by a new signature, this signature is no longer supported, and may be removed from future versions.
+    * All code that uses the function signature should be converted to use its replacement :ref:`pgr_ksp`.
+
 
 Name
 -------------------------------------------------------------------------------
@@ -30,17 +33,6 @@ The K shortest path routing algorithm based on Yen's algorithm. "K" is the numbe
 
   pgr_costResult3[] pgr_ksp(sql text, source integer, target integer,
                            paths integer, has_rcost boolean);
-
-.. warning:: This signature is being deprecated in version 2.1, Please use it
-             without the ``has_rcost`` flag instead.
-             
-               - for undirected graph.
-                 ``pgr_ksp(sql, source, target, distance, directed:=false)``
-               - for directed graph.
-                 ``pgr_ksp(sql, source, target, distance, directed:=true)``
-
-             See :ref:`pgr_ksp`
-
 
 
 Description

@@ -9,25 +9,18 @@
 
 .. _pgr_flip_edges:
 
-pgr_flipEdges
+pgr_flipEdges - Deprecated Function
 ==============================================================================
 
-.. index::
-        single: flipEdges(ga geometry[]) --proposed
+.. warning:: This function is deprecated!!!
 
+    * Is no longer supported, and may be removed from future versions.
+    * There is no replacement
 
 Name
 ------------------------------------------------------------------------------
 
-``pgr_flipEdges`` - 
-
-.. warning::  This is a proposed function
-
-     - Is not officially in the release.
-     - Name could change.
-     - Signature could change.
-     - Needs testing.
-     - Functionality could change.
+``pgr_flipEdges`` 
 
 Synopsis
 ------------------------------------------------------------------------------
@@ -58,6 +51,7 @@ Given an array of linestrings that are supposedly connected end to end like the 
 
 .. rubric:: History
 
+* Deprecated in version 2.3.0
 * Proposed in version 2.1.0
 
 

@@ -124,11 +124,10 @@ RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cos
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="minimal-signature">
-<span id="index-0"></span><h2>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-use">
+<span id="index-0"></span><h3>Minimal Use<a class="headerlink" href="#minimal-use" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>The minimal signature:</dt>
 <dd><ul class="first last simple">
@@ -166,7 +165,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="one-to-one">
-<span id="index-1"></span><h2>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h2>
+<span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vid, end_vid,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
@@ -200,7 +199,7 @@ RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="one-to-many">
-<span id="index-2"></span><h2>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h2>
+<span id="index-2"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vid, end_vids,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
@@ -233,7 +232,7 @@ RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="many-to-one">
-<span id="index-3"></span><h2>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h2>
+<span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vids, end_vid,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
@@ -267,7 +266,7 @@ RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="many-to-many">
-<span id="index-4"></span><h2>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h2>
+<span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPoints(edges_sql, points_sql, start_vids, end_vids,
     directed:=true, driving_side:=&#39;b&#39;, details:=false)
 RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
@@ -311,9 +310,9 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-edges-sql-query">
-<h2>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -359,7 +358,7 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </table>
 </div>
 <div class="section" id="description-of-the-points-sql-query">
-<h2>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -429,7 +428,7 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -493,7 +492,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">[path_seq,]</span> <span class="pre">[start_vid,]</span> <span class="pre">[end_vid,]</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -571,6 +570,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -740,7 +740,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 15, 2016.
+      Last updated on Jun 21, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
