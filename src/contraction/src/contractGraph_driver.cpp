@@ -265,10 +265,20 @@ do_pgr_contractGraph(
 		*err_msg = strdup(log.str().c_str());
 #endif
 
-	} catch ( ... ) {
-		log << "Caught unknown expection!\n";
-		*err_msg = strdup(log.str().c_str());
 	}
+	catch (AssertFailedException &exept) {
+        log << exept.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+        return false;
+    } catch (std::exception& exept) {
+        log << exept.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+        return false;
+    } catch(...) {
+        log << "Caught unknown exception!\n";
+        *err_msg = strdup(log.str().c_str());
+        return false;
+    }
 }
 
 int is_valid_contraction(int64_t number) {
