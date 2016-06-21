@@ -13,7 +13,7 @@ pgr_gsoc_vrppdtw
 ===============================================================================
 
 .. index:: 
-	single: pgr_gsoc_vrppdtw(text,integer,integer)
+	single: pgr_gsoc_vrppdtw -- proposed
 
 Name
 -------------------------------------------------------------------------------

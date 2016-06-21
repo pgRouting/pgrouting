@@ -9,11 +9,13 @@
 
 .. _pgr_get_column_name:
 
-pgr_getColumnName
+pgr_getColumnName - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_getColumnName(text,text) -- deprecated
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported, and may be removed from future versions.
+    * There is no replacement
 
 Name
 -------------------------------------------------------------------------------
@@ -22,9 +24,6 @@ Name
 
 .. note:: This function is intended for the developer’s aid.
 
-
-.. warning:: This function is deprecated in 2.1.
-             Use `_pgr_getColumnName` instead
 
 Synopsis
 -------------------------------------------------------------------------------

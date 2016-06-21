@@ -78,13 +78,13 @@ Signature Summary
 
 
 Signatures
-==========
+-------------------
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vid, end_vid) -- proposed
+    single: withPoints(Minimal Use) -- proposed in V2.2
 
-Minimal signature
------------------
+Minimal Use
+.....................................................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -104,10 +104,10 @@ The minimal signature:
    :end-before: --e2
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details) -- proposed
+    single: withPoints(One to One) -- proposed in V2.2
 
 One to One
-----------
+.....................................................................
 
 
 .. code-block:: none
@@ -123,12 +123,13 @@ One to One
    :start-after: --e2
    :end-before: --e3
 
+
+
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details) -- proposed
+    single: withPoints(One to Many) -- proposed in V2.2
 
 One to Many
------------
-
+.....................................................................
 
 .. code-block:: none
 
@@ -143,12 +144,13 @@ One to Many
    :start-after: --e3
    :end-before: --e4
 
+
+
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details) -- proposed
+    single: withPoints(Many to One) -- proposed in V2.2
 
 Many to One
------------
-
+.....................................................................
 
 .. code-block:: none
 
@@ -164,10 +166,10 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details) -- proposed
+    single: withPoints(Many to Many) -- proposed in V2.2
 
 Many to Many
-------------
+.....................................................................
 
 
 .. code-block:: none
@@ -187,17 +189,17 @@ Many to Many
 
 
 Description of the Signatures
-=============================
+---------------------------------
 
 ..
     description of the sql queries
 
 
-.. include:: withPoints_queries.txt 
+.. include:: withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+.....................................................................
 
 
 ================ ====================== =================================================
@@ -221,7 +223,7 @@ Parameter        Type                   Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+.....................................................................
 
 Returns set of ``(seq, [path_seq,] [start_vid,] [end_vid,] node, edge, cost, agg_cost)``
 

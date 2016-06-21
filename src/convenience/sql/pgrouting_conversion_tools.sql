@@ -92,6 +92,7 @@ declare
     g geometry;
     
 begin
+    RAISE NOTICE 'Deperecated function: pgr_flipEdges';
     -- get the count of edges, and return if only one edge
     nn := array_length(ga, 1);
     if nn=1 then
@@ -140,6 +141,7 @@ declare
     g geometry[];
     
 begin
+    RAISE NOTICE 'Deperecated function: pgr_textToPoints';
     -- convert commas to space and split on ';'
     a := string_to_array(replace(pnts, ',', ' '), ';');
     -- convert each 'x y' into a point geometry and concattenate into a new array

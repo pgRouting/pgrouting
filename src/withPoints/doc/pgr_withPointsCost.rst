@@ -86,17 +86,17 @@ Signature Summary
     pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. note:: There is no **details** flag, unlike the other members of the family of functions.  
+.. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.  
 
 
 Signatures
-==========
+------------
 
 .. index::
-    single: withPointsCost(edges_sql, points_sql, start_pid, end_pid) -- proposed
+    single: withPointsCost(Minimal Use) -- proposed in V2.2
 
-Minimal Usage
------------------
+Minimal Use
+.........................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -115,10 +115,10 @@ The minimal signature:
    :end-before: --e2
 
 .. index::
-    single: withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side) -- proposed
+    single: withPointsCost(One To One) -- proposed in V2.2
 
 One to One
-----------
+.........................................
 
 
 .. code-block:: none
@@ -134,11 +134,12 @@ One to One
    :start-after: --e2
    :end-before: --e3
 
+
 .. index::
-    single: withPointsCost(edges_sql, points_sql, start_pid, end_pids, directed, driving_side) -- proposed
+    single: withPointsCost(One To Many) -- proposed in V2.2
 
 One to Many
------------
+.........................................
 
 
 .. code-block:: none
@@ -154,12 +155,12 @@ One to Many
    :start-after: --e3
    :end-before: --e4
 
-.. index::
-    single: withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side) -- proposed
 
+.. index::
+    single: withPointsCost(Many To One) -- proposed in V2.2
 
 Many to One
------------
+.........................................
 
 .. code-block:: none
 
@@ -175,11 +176,10 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
-
+    single: withPointsCost(Many To Many) -- proposed in V2.2
 
 Many to Many
-------------
+.........................................
 
 .. code-block:: none
 
@@ -198,17 +198,17 @@ Many to Many
 
 
 Description of the Signatures
-=============================
+---------------------------------
 
 ..
     description of the sql queries
 
 
-.. include:: withPoints_queries.txt 
+.. include:: withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+.................................................
 
 
 ================ ====================== =================================================
@@ -230,7 +230,7 @@ Parameter        Type                   Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+.................................................
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 

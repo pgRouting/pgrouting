@@ -20,14 +20,14 @@ The following functions work an all vertices pair combinations
 
      
 .. toctree::
-    :hidden: 
+    :hidden:
 
     ./pgr_floydWarshall
     ./pgr_johnson
 
 
 Performance
-===============================================================================
+------------------------------------------------------------------------------
 
 The following tests:
  - non server computer
@@ -37,7 +37,7 @@ The following tests:
  - posgreSQL version 9.3
 
 Data
-----
+.........................................
 
 The following data was used
 
@@ -60,10 +60,9 @@ Data processing was done with osm2pgrouting-alpha
 
 
 Results
------------
+.........................................
 
-Test One
-.........
+:Test: One
 
 This test is not with a bounding box
 The density of the passed graph is extremely low.
@@ -113,8 +112,8 @@ The results of this tests are presented as:
  10000  10000     3.52E-7    38491  23.26         6.51
 ====== ======  ========== ======== ============== =============
 
-Test Two
-.........
+
+:Test: Two
 
 This test is with a bounding box
 The density of the passed graph higher than of the Test One.
@@ -169,7 +168,7 @@ The results of this tests are presented as:
 
 
 See Also
--------------------------------------------------------------------------------
+.........................................
 
 * :ref:`pgr_johnson`
 * :ref:`pgr_floydWarshall`

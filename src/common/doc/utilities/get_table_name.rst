@@ -9,12 +9,13 @@
 
 .. _pgr_get_table_name:
 
-pgr_getTableName
+pgr_getTableName - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_getTableName(text,text) -- deprecated
-	module: common
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported, and may be removed from future versions.
+    * There is no replacement
 
 Name
 -------------------------------------------------------------------------------
@@ -22,9 +23,6 @@ Name
 ``pgr_getTableName`` — Retrieves the name of the column as is stored in the postgres administration tables.
 
 .. note:: This function is intended for the developer’s aid.
-
-.. warning:: This function is  deprecated in 2.1
-             Use `_pgr_getTableName` instead
 
 Synopsis
 -------------------------------------------------------------------------------

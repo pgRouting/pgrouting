@@ -12,10 +12,6 @@
 pgr_nodeNetwork
 ===============================================================================
 
-.. index:: 
-	single: pgr_NodeNetwork(text,float8,text,text,text)
-	module: common
-
 Name
 -------------------------------------------------------------------------------
 
@@ -30,11 +26,13 @@ Synopsis
 
 The function reads edges from a not "noded" network table and writes the "noded" edges into a new table.
 
+.. index:: 
+	single: pgr_NodeNetwork(Complete Signature)
+
 .. code-block:: sql
 
-    text pgr_nodenetwork(text edge_table, float8, tolerance,
-			 text  id='id', text the_geom='the_geom',text table_ending='noded'
-             text rows_where ='', boolean outall=false)
+    pgr_nodenetwork(edge_table, tolerance, id, text the_geom, table_ending, rows_where, outall)
+    RETURNS TEXT
   
 
 Description

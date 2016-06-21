@@ -9,7 +9,7 @@
 
 .. _pgr_astar:
 
-pgr_astar - Shortest Path A*
+pgr_astar
 ===============================================================================
 
 
@@ -30,7 +30,7 @@ Synopsis
 The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph.
 
 
-Characteristics:
+Characteristics
 -------------------------------------------------------------------------------
 
 The main Characteristics are:
@@ -62,23 +62,14 @@ The main Characteristics are:
 Signature Summary
 -----------------
 
-.. index:: 
-    single: pgr_astar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
-
 .. code-block:: none
 
     pgr_astar(edges_sql, start_vid, end_vid)
     pgr_astar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
-      RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-
-    pgr_astar(sql, source, target, directed, has_rcost) -- deprecated
-      RETURNS SET OF pgr_costResult
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 
-.. NOTE:: This signature is being deprecated
-
-    .. index:: 
-        single: pgr_astar(sql, source, target, directed, has_rcpst) -- deprecated
+.. NOTE:: This signature is deprecated
 
     .. code-block:: sql
 
@@ -86,12 +77,50 @@ Signature Summary
         RETURNS SET OF pgr_costResult
 
     - See :ref:`pgr_costResult <type_cost_result>`
-    - See http://docs.pgrouting.org/2.2/en/src/astar/doc/pgr_astar.html
+    - See :ref:`pgr_astar-V2.0`
+
+Signatures
+-----------------
+
+.. index:: 
+    single: pgr_astar(Minimal Signature)
+
+Minimal Signature
+...............................................................................
+
+.. code-block:: none
+
+    pgr_astar(edges_sql, start_vid, end_vid)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+
+:Example: Using the defaults
+
+.. literalinclude:: doc-astar.queries
+   :start-after: --q1
+   :end-before: --q2
+
+
+.. index:: 
+    single: pgr_astar(Complete Singature)
+
+Complete Signature
+...............................................................................
+.. code-block:: none
+
+    pgr_astar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+
+:Example: Setting a Heuristic  
+
+.. literalinclude:: doc-astar.queries
+   :start-after: --q2
+   :end-before: --q3
+
 
 
 
 Description of the Signatures
-=============================
+--------------------------------
 
 .. NOTE:: The following only aplies to the new signature(s)
 
@@ -104,8 +133,7 @@ Description of the Signatures
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
-
+.................................................
 
 ================ ====================== =================================================
 Parameter        Type                   Description
@@ -135,7 +163,7 @@ Parameter        Type                   Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+.................................................
 
 Returns set of ``(seq, path_seq, node, edge, cost, agg_cost)``
 
@@ -163,12 +191,12 @@ Column           Type              Description
 About factor
 -------------------------------------------------------------------------------
 
-.. rubric:: Example 1
+.. rubric:: Analysis 1
 
 Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
 Factor = 1   (no need to change units)
 
-.. rubric:: Example 2
+.. rubric:: Analysis 2
 
 Working with cost/reverse_cost as length in meters, x/y in lat/lon:
 Factor =  would depend on the location of the points:
@@ -180,7 +208,7 @@ latitude  conversion                        Factor
  0       1 longitude degree is 111319.46 m  111319
 ======== ================================= ==========
 
-.. rubric:: Example 3
+.. rubric:: Analysis 3
 
 Working with cost/reverse_cost as time in seconds, x/y in lat/lon:
 Factor: would depend on the location of the points and on the average speed
@@ -202,22 +230,10 @@ latitude  conversion                                  Factor
 * Renamed in version 2.0.0
 
 
-Examples
+Deprecated Signature
 -------------------------------------------------------------------------------
 
-* Using the defaults
-
-.. literalinclude:: doc-astar.queries
-   :start-after: --q1
-   :end-before: --q2
-
-* Setting a Heuristic  
-
-.. literalinclude:: doc-astar.queries
-   :start-after: --q2
-   :end-before: --q3
-
-* Using the deprecated signature 
+:Example: Using the deprecated signature 
 
 .. literalinclude:: doc-astar.queries
    :start-after: --q3
