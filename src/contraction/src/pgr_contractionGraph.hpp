@@ -419,39 +419,36 @@ void graph_add_edge(const T &edge) {
     }
 }
     
-void graph_add_edge(const T_E &edge, std::ostringstream& log) {
+void graph_add_shortcut(const T_E &edge, std::ostringstream& log) {
     bool inserted;
-    LI vm_s, vm_t;
     E e;
+    if (edge.cost < 0)
+        return;
 
-    vm_s = this->vertices_map.find(edge.source);
-    if (vm_s == this->vertices_map.end()) {
-        this->vertices_map[edge.source]=  this->m_num_vertices;
-        vm_s = this->vertices_map.find(edge.source);
-    }
+    /*
+     * true: for source
+     * false: for target
+     */
 
-    vm_t = this->vertices_map.find(edge.target);
-    if (vm_t == this->vertices_map.end()) {
-        this->vertices_map[edge.target]=  this->m_num_vertices;
-        vm_t = this->vertices_map.find(edge.target);
-    }
-    log << "Adding edge between " << this->graph[vm_s->second].id << ", "
-    << this->graph[vm_t->second].id << std::endl;
+    pgassert(this->vertices_map.find(edge.source) != this->vertices_map.end());
+    pgassert(this->vertices_map.find(edge.target) != this->vertices_map.end());
+    auto vm_s = this->get_V(edge.source);
+    auto vm_t = this->get_V(edge.target);
 
-    log << "Edge is, id: " << edge.id
-    << "\nsource: " << edge.source 
-    << "\ntarget: " << edge.target
-    << "\ncost: " << edge.cost
-    << "\nfirst: " << edge.first
-    << "\nc_vs: " << edge.contracted_vertices();
+    log << "Adding edge between " << this->graph[vm_s] << ", "
+    << this->graph[vm_t] << std::endl;
+
+    log << "Shortcut is " << edge;
 
     if (edge.cost >= 0) {
         boost::tie(e, inserted) =
-            boost::add_edge(vm_s->second, vm_t->second, this->graph);
+            boost::add_edge(vm_s, vm_t, this->graph);
         log << "inserted: " << inserted << std::endl;
         this->graph[e].cp_members(edge);
     }
 }
+
+
 
 };
 
