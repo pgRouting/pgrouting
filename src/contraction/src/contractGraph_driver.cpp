@@ -91,6 +91,8 @@ do_pgr_contractGraph(
 				<< "\treverse_cost = " << edge.reverse_cost
 				<< ")\n";
 		}
+
+        pgassertwm(false, log.str());
 		const int64_t initial_size = (int64_t)total_edges;
 		// Contraction_type contraction_type_count = Contraction_type::last;
 		log << "size_contraction_order " << size_contraction_order << "\n";
