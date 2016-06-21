@@ -13,10 +13,11 @@ void Edge::cp_members(const Edge &other, std::ostringstream& log) {
         this->first = other.first;
         log << "after copying first of edge\n";
         log << *this;
-        #if 0
+        
         this->id = other.id;
         log << "after copying id of edge\n";
         log << *this;
+        #if 0
         this->source = other.source;
         log << "after copying source of edge\n";
         log << *this;
