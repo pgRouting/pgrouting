@@ -33,7 +33,13 @@ class Vertex {
         this->id = other.id;
     }
     void add_contracted_vertex(Vertex& v, int64_t vid);
+    void add_vertex_id(int64_t vid) { m_contracted_vertices += vid; }
+    #if 0
+    template<class T>
+    void add_contracted_edge_vertices(T& obj);
+    #endif
     const Identifiers<int64_t>& contracted_vertices() const;
+    bool has_contracted_vertices() const;
     void clear_contracted_vertices() { m_contracted_vertices.clear(); }
     friend std::ostream& operator <<(std::ostream& os, const Vertex& v);
 #if 0    

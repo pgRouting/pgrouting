@@ -47,6 +47,8 @@ typedef struct
 	int64_t seq;
 	int64_t id;
 	char *type;
+	int64_t source;
+	int64_t target;
 	char *contracted_vertices;
 } pgr_contracted_blob;
 

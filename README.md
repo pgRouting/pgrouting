@@ -9,8 +9,6 @@
 The *master* branch reflects the current 2.2.2 release.
 The *develop* branch reflects the 2.3.0-dev
 
-
-
 ## LINKS
 
 * http://pgrouting.org/ 
@@ -73,7 +71,6 @@ Family of functions include:
 * many to one
 * many to many
 
-
 ## REQUIREMENTS
 
 * C and C++ compilers
@@ -124,7 +121,6 @@ Postgresql 9.1+
 ## USAGE
 
 See online documentation: http://docs.pgrouting.org/2.2/en/doc/index.html
-
 
 ## LICENSE
 

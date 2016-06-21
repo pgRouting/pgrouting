@@ -36,6 +36,8 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT seq integer,
     OUT id BIGINT,
     OUT type TEXT,
+    OUT source BIGINT,
+    OUT target BIGINT,
     OUT contracted_vertices TEXT)
 
   RETURNS SETOF RECORD AS

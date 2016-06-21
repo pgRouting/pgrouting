@@ -7,7 +7,9 @@
 #include <functional>
 #include "../../contraction/src/contraction_structs.hpp"
 #include "ch_vertex.h"
+#if 0
 #include "basic_edge.h"
+#endif
 
 namespace pgRouting
 {
@@ -22,24 +24,29 @@ class Edge {
     Edge_c() : m_deleted(false),m_type(Edge_type::ordinary) { }
     #endif
     Edge() = default;
-    Edge(const Edge &other){cp_members(other);}
+    //Edge(const Edge &other){cp_members(other);}
     Edge(const pgr_edge_t &other) :
     id(other.id), source(other.source),
     target(other.target), cost(other.cost){}
-    Edge(int64_t id, VID source, VID target, double cost) :
+    Edge(int64_t id, int64_t source, int64_t target, double cost) :
     id(id), source(source),
     target(target), cost(cost), first(true){}
-    Edge(int64_t id, VID source, VID target, double cost, bool first) :
+    Edge(int64_t id, int64_t source, int64_t target, double cost, bool first) :
     id(id), source(source),
     target(target), cost(cost), first(first){}
+    #if 0
     void cp_members(const Basic_edge &other);
-    void cp_members(const Edge &other);
-    EID id;
-    VID source;
-    VID target;
+    #endif
+    void cp_members(const Edge &other, std::ostringstream& log);
+    int64_t id;
+    int64_t source;
+    int64_t target;
     double cost;
     bool first;
     void add_contracted_vertex(Vertex& v, int64_t vid);
+    void add_contracted_edge_vertices(Edge& e);
+    void add_contracted_vertices(const Edge& e);
+    bool has_contracted_vertices() const;
     void clear_contracted_vertices() { m_contracted_vertices.clear(); }
     #if 0
     inline bool isDeleted() const { return m_deleted; }

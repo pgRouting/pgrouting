@@ -32,6 +32,7 @@ class Identifiers {
     iterator end() { return m_ids.end(); }
     const_iterator end() const { return m_ids.end(); }
     bool operator ==(const Identifiers<T> &other) const;
+    const T& operator [](size_t index) const;
     Identifiers<T> operator +(const T &other) const;
     Identifiers<T> operator *(const T &other) const;
     Identifiers<T> operator -(const T &other) const;
@@ -329,4 +330,12 @@ std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) 
     }
     os << "}";
     return os;
+}
+
+template <typename T>
+const T& Identifiers<T>::operator [](size_t index) const {
+        if (index >= size()) {
+            throw std::out_of_range("Index out of bounds");
+        }
+        return *std::next(m_ids.begin(), index);
 }

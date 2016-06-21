@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-// #define DEBUG
+#define DEBUG
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -164,7 +164,7 @@ do_pgr_contractGraph(
 					max_cycles, remaining_vertices,
 					shortcut_edges, debug);
 			digraph.print_graph(log);
-			//log << debug.str().c_str() << "\n";
+			log << debug.str().c_str() << "\n";
 			(*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
 			size_t sequence = 0;
 			int i = 1;
@@ -179,7 +179,7 @@ do_pgr_contractGraph(
 				digraph.print_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
 				//char *contracted_vertices = strdup("--"); 
-				(*return_tuples)[sequence] = {i, id, type, contracted_vertices};
+				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
 				++sequence;
 			}
 			log << "Added Edges:" << "\n";
@@ -192,7 +192,7 @@ do_pgr_contractGraph(
 				digraph.get_ids(os, edge.contracted_vertices());
 				contracted_vertices = strdup(os.str().c_str());
 				//char *contracted_vertices = strdup("--"); 
-				(*return_tuples)[sequence] = {i, edge.id, type, contracted_vertices};
+				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, contracted_vertices};
 				++sequence;
 			}
 
@@ -240,10 +240,22 @@ do_pgr_contractGraph(
 				undigraph.print_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
 				//char *contracted_vertices = strdup("--"); 
-				(*return_tuples)[sequence] = {i, id, type, contracted_vertices};
+				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
 				++sequence;
 			}
-
+			log << "Added Edges:" << "\n";
+			for (const auto edge : shortcut_edges) {
+				log << edge << "\n";
+			}
+			for (auto edge : shortcut_edges) {
+				type = strdup("e");
+				std::ostringstream os;
+				undigraph.get_ids(os, edge.contracted_vertices());
+				contracted_vertices = strdup(os.str().c_str());
+				//char *contracted_vertices = strdup("--"); 
+				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, contracted_vertices};
+				++sequence;
+			}
 			(*return_count) = sequence;
 		}
 
@@ -253,10 +265,20 @@ do_pgr_contractGraph(
 		*err_msg = strdup(log.str().c_str());
 #endif
 
-	} catch ( ... ) {
-		log << "Caught unknown expection!\n";
-		*err_msg = strdup(log.str().c_str());
 	}
+	catch (AssertFailedException &exept) {
+        log << exept.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+        //return false;
+    } catch (std::exception& exept) {
+        log << exept.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+        //return false;
+    } catch(...) {
+        log << "Caught unknown exception!\n";
+        *err_msg = strdup(log.str().c_str());
+        //return false;
+    }
 }
 
 int is_valid_contraction(int64_t number) {

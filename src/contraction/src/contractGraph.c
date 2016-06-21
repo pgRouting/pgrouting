@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
 
-// #define DEBUG
+#define DEBUG
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
@@ -260,7 +260,9 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].id);
         values[2] = CStringGetTextDatum(result_tuples[call_cntr].type);
-        values[3] = CStringGetTextDatum(result_tuples[call_cntr].contracted_vertices);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[5] = CStringGetTextDatum(result_tuples[call_cntr].contracted_vertices);
 
         
 

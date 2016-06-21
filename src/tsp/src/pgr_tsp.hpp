@@ -26,68 +26,119 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *  ********************************************************************PGR-GNU*/
+#pragma once
 
+#include <sstream>
 #include <vector>
+#include <set>
+#include <string>
 
 #include "../../common/src/pgr_types.h"
-#include "./Dmatrix.hpp"
+#include "../../common/src/pgr_assert.h"
+#include "./Dmatrix.h"
+#include "./eucledianDmatrix.h"
+#include "./tour.h"
 
-class TSP {
+
+namespace pgRouting {
+namespace tsp {
+
+template < typename MATRIX >
+class TSP: public MATRIX {
  public:
-/*
- * Defs
- */
-typedef size_t Path[3];      /* specify how to change path */
-
-typedef std::vector< std::vector < double > > Costs;
-typedef std::vector< int64_t > Ids;
-
-     Dmatrix dist;
-     size_t n;
-     double maxd;
-     size_t bestlen;
-     double bestCost;
-     Ids iorder;
-     /*
-      * std::vector< bool > visited;
-      */
-     Ids jorder;
-     Ids border;
-     double b[4];
-
+     using MATRIX::distance;
+     using MATRIX::tourCost;
+     using MATRIX::get_row;
 
      /*
       * function members
       */
-     TSP(Dmatrix  _costs)
-         : dist(_costs),
-         n(_costs.size()) {
-             iorder.resize(n);
-             jorder.resize(n);
-             maxd = dist.max();
-
-             /*
-              * identity_permutations
-              */
-             std::iota(std::begin(iorder), std::end(iorder), 0);
-#if 0
-             for (auto &e : iorder) {
-                  e = i;
-             }
-#endif
-             /*
-              * best order
-              */
-             border = iorder;
-             bestCost = dist.pathCost(border);
+     explicit TSP(const MATRIX &_costs)
+         : MATRIX(_costs),
+         current_tour(_costs.size()),
+         best_tour(_costs.size()),
+         epsilon(0.000001),
+         n(_costs.size()),
+         updatecalls(0),
+         swap_count(0),
+         slide_count(0),
+         reverse_count(0),
+         improve_count(0) {
+             pgassert(n == MATRIX::size());
+             bestCost = MATRIX::tourCost(best_tour);
+             current_cost = MATRIX::tourCost(current_tour);
+             pgassert(bestCost == current_cost);
          }
-     void update(Ids new_order);
-     bool findEulerianPath();
-     void annealing();
-     void doThreeWay(Path p);
-     double getThreeWayCost (Path p);
-     double getReverseCost(Path p);
-     void doReverse(Path p);
-     double D(size_t, size_t);
+
+
+     Tour get_tour() const {return best_tour;}
+
+     std::string get_stats() const {
+         std::ostringstream log1;
+         log1
+             << "\nTotal swaps: " << swap_count
+             << "\nTotal slides: " << slide_count
+             << "\nTotal reverses: " << reverse_count
+             << "\nTimes best tour changed: " << improve_count;
+         return log1.str();}
+
+     std::string get_log() const {
+         return log.str();}
+
+     void greedyInitial(size_t idx_start = 0);
+     void annealing(
+             double initial_temperature,
+             double final_temperature,
+             double cooling_factor,
+             int64_t tries_per_temperature,
+             int64_t max_changes_per_temperature,
+             int64_t max_consecutive_non_changes,
+             bool randomize,
+             double time_limit);
+
+
+ private:
+     Tour current_tour;
+     Tour best_tour;
+     double bestCost;
+     double current_cost;
+     double epsilon;
+     size_t n;
+
+     int updatecalls;
+
+     std::ostringstream log;
+     size_t swap_count;
+     size_t slide_count;
+     size_t reverse_count;
+     size_t improve_count;
+
+ private:
+     void invariant() const;
+
+     size_t find_closest_city(
+             size_t current_city,
+             const std::set<size_t> inserted) const;
+
+     double getDeltaSlide(
+             size_t posP,
+             size_t posF,
+             size_t posL) const;
+
+     void swapClimb();
+
+     double getDeltaSwap(
+             size_t posA,
+             size_t posC) const;
+
+     double getDeltaReverse(
+             size_t posA,
+             size_t posC) const;
+
+     void update_if_best();
 };
 
+}  // namespace tsp
+}  // namespace pgRouting
+
+#include "pgr_tsp.cpp"
