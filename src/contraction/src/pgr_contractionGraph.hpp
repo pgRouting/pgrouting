@@ -46,7 +46,7 @@ template <class G, typename T_V, typename T_E>
     }
 
 typedef typename graph::Pgr_contractionGraph <
-boost::adjacency_list < boost::listS, boost::vecS,
+boost::adjacency_list < boost::vecS, boost::vecS,
 boost::undirectedS,
 contraction::Vertex, contraction::Edge >,
 contraction::Vertex, contraction::Edge > CHUndirectedGraph;
@@ -430,6 +430,9 @@ void graph_add_shortcut(const T_E &edge, std::ostringstream& log) {
      * false: for target
      */
 
+    log << "Graph before adding shortcut";
+    print_graph(log);
+
     pgassert(this->vertices_map.find(edge.source) != this->vertices_map.end());
     pgassert(this->vertices_map.find(edge.target) != this->vertices_map.end());
     auto vm_s = this->get_V(edge.source);
@@ -444,10 +447,12 @@ void graph_add_shortcut(const T_E &edge, std::ostringstream& log) {
         boost::tie(e, inserted) =
             boost::add_edge(vm_s, vm_t, this->graph);
         log << "inserted: " << inserted << std::endl;
-        this->graph[e].cp_members(edge);
+        log << "Graph after adding shortcut";
+        this->graph[e].cp_members(edge, log);
+        print_graph(log);
+        
     }
 }
-
 
 
 };
