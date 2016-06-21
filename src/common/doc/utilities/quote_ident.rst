@@ -12,6 +12,10 @@
 pgr_quote_ident  - Deprecated Function
 ===============================================================================
 
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported, and may be removed from future versions.
+    * There is no replacement
 
 Name
 -------------------------------------------------------------------------------
@@ -19,9 +23,6 @@ Name
 ``pgr_quote_ident`` — Quotes the input text to be used as an identifier in an SQL statement string.
 
 .. note:: This function is intended for the developer's aid. 
-
-.. warning:: This function is deprecated in 2.1
-             Use `_pgr_quote_ident` instead
 
 
 Synopsis
