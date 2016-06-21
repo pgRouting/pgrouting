@@ -271,7 +271,7 @@ template < class G >
 			shortcut.add_contracted_edge_vertices(graph[outgoing_edge]);
 			debug << "Adding shortcut\n";
 			debug << shortcut;
-			graph.graph_add_edge(shortcut, debug);
+			graph.graph_add_shortcut(shortcut, debug);
 			//graph.get_outgoing_edge(last_edge_id, incoming_edge.source, debug).add_contracted_vertex(graph[vertex], vertex);
 			debug << "Added shortcut\n";
 			}
@@ -285,7 +285,7 @@ template < class G >
 			shortcut.add_contracted_edge_vertices(graph[outgoing_edge]);
 			debug << "Adding shortcut\n";
 			debug << shortcut;
-			graph.graph_add_edge(shortcut, debug);
+			graph.graph_add_shortcut(shortcut, debug);
 			//graph.get_outgoing_edge(last_edge_id, incoming_edge.source, debug).add_contracted_vertex(graph[vertex], vertex);
 			debug << "Added shortcut\n";
 		}
