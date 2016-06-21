@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-// #define DEBUG
+#define DEBUG
 #include <sstream>
 #include <deque>
 #include <vector>
