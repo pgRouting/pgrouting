@@ -12,6 +12,12 @@
 pgr_apspWarshall - Deprecated Function
 ===============================================================================
 
+.. warning:: This function is deprecated!!!
+
+    * It has been replaced by a new function, is no longer supported, and may be removed from future versions.
+    * All code that uses the functions should be converted to use its replacement: :ref:`pgr_FloydWarshall`. 
+
+
 Name
 -------------------------------------------------------------------------------
 

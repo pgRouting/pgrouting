@@ -123,20 +123,23 @@ Topology functions
    ../src/topology/doc/topology
 
 
+*******************************************************************************
+Routing Functions
+*******************************************************************************
+
 ..
     ROUTING FUNCTIONS SECTION
     :hidden:
     :maxdepth: 0
-
-.. include:: ../src/routingFunctions.rst
-   :start-after: from-here
-   :end-before: to-here
     
 .. toctree::
 
     ../src/routingFunctions
 
-
+.. include:: ../src/routingFunctions.rst
+   :start-after: from-here
+   :end-before: to-here
+    
 
 *******************************************************************************
 Available Functions but not official pgRouting functions

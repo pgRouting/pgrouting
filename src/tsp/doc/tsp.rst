@@ -24,6 +24,7 @@ Traveling Sales Person
 
 
 .. toctree::
+    :hidden:
 
     ./pgr_tsp
     ./pgr_eucledianTSP
@@ -48,7 +49,8 @@ Traveling Sales Person
     Use :ref:`pgr_eucledianTSP` insteadi of (1).
     Use :ref:`pgr_TSP` instead of (2).
 
-
+General Information 
+------------------------------------
 
 Origin 
 ..........
@@ -278,7 +280,7 @@ With the new functionality:
 
 
 See Also
--------------------------------------------------------------------------------
+.........................
 
   * http://en.wikipedia.org/wiki/Traveling_salesman_problem
   * http://en.wikipedia.org/wiki/Simulated_annealing

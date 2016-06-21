@@ -12,6 +12,12 @@
 pgr_dijkstra - Deprecated Signature
 ===============================================================================
 
+.. warning:: This function signature is deprecated!!!
+
+    * That means they have been replaced by new signatures and this signature is no longer supported, and may be removed from future versions.
+    * All code that uses the function signature should be converted to use its replacement :ref:`pgr_dijkstra`.
+
+
 Name
 -------------------------------------------------------------------------------
 
@@ -27,13 +33,6 @@ Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1
 
 	pgr_costResult[] pgr_dijkstra(text sql, integer source, integer target,
 	                           boolean directed, boolean has_rcost);
-
-.. warning:: This signature is being deprecated in version 2.1, Please use it
-             without the ``has_rcost`` flag instead:
-
-             ``pgr_dijkstra(sql, source, target, directed)``
-
-             See :ref:`pgr_dijkstra`
 
 Description
 -------------------------------------------------------------------------------

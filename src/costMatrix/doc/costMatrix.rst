@@ -9,19 +9,20 @@
 
 .. _CostMatrix:
 
-Distance Matrix
+Cost Matrix
 ===============================================================================
 
   - :ref:`pgr_dijkstraCostMatrix`
   - :ref:`pgr_withPointsCostMatrix`
-
 
 .. toctree::
     :hidden:
 
     ./pgr_dijkstraCostMatrix
     ./pgr_withPointsCostMatrix
-
+ 
+General Information
+-------------------------------------------------------------------------------
 
 Sinopsis
 ...................
@@ -82,7 +83,7 @@ The main Characteristics are:
 
 
 See Also
--------------------------------------------------------------------------------
+................
 
 * :ref:`pgr_tsp`
 
@@ -90,4 +91,3 @@ See Also
 
 * :ref:`genindex`
 * :ref:`search`
-

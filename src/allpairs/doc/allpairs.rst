@@ -20,6 +20,7 @@ The following functions work an all vertices pair combinations
 
      
 .. toctree::
+    :hidden:
 
     ./pgr_floydWarshall
     ./pgr_johnson
@@ -167,7 +168,7 @@ The results of this tests are presented as:
 
 
 See Also
--------------------------------------------------------------------------------
+.........................................
 
 * :ref:`pgr_johnson`
 * :ref:`pgr_floydWarshall`

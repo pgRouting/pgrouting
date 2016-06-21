@@ -12,14 +12,17 @@
 pgr_apspJohnson - Deprecated function
 ===============================================================================
 
+.. warning:: This function is deprecated!!!
+
+    * It has been replaced by a new functions, is no longer supported, and may be removed from future versions.
+    * All code that uses the functions should be converted to use its replacement: :ref:`pgr_johnson`. 
+
 
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_apspJohnson`` - Returns all costs for each pair of nodes in the graph.
 
-.. warning:: This function is deprecated in version 2.2
-             Use :ref:`pgr_johnson` instead
 
 Synopsis
 -------------------------------------------------------------------------------

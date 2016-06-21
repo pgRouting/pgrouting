@@ -12,15 +12,17 @@
 pgr_isColumnIndexed - Deprecated Function
 ===============================================================================
 
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported, and may be removed from future versions.
+    * There is no replacement
+
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_isColumnIndexed`` — Check if a column in a table is indexed.
 
 .. note:: This function is intended for the developer’s aid.
-
-.. warning:: This function is deprecated in 2.1
-             Use `_pgr_isColumnIndexed` instead
 
 
 Synopsis

@@ -17,8 +17,9 @@ Driving Distance
   - :ref:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra
 
 .. toctree::
+    :hidden:
 
-   ./pgr_drivingDistance.rst
+    ./pgr_drivingDistance.rst
 
 .. _pgr_driving_distance_post:
 
@@ -29,7 +30,8 @@ Driving Distance post-processing
   - :ref:`pgr_points_as_polygon` - Polygon around set of points
 
 .. toctree::
+    :hidden:
 
-   ./../../alpha_shape/doc/pgr_alphaShape.rst
-   ./../../alpha_shape/doc/pgr_pointsAsPolygon.rst
+    ./../../alpha_shape/doc/pgr_alphaShape.rst
+    ./../../alpha_shape/doc/pgr_pointsAsPolygon.rst
 

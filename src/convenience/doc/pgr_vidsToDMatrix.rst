@@ -12,19 +12,17 @@
 pgr_vidsToDMatrix - Deprecated Function
 ==============================================================================
 
+.. warning:: This function is deprecated!!!
+
+    * This function is no longer supported, and may be removed from future versions.
+    * No replacement exists.
+    * See :ref:`tsp`.
+
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
-
-.. warning::  This is a deprecated function
-
-     - Is not officially in the release.
-     - Name could change.
-     - Signature could change.
-     - Needs testing.
-     - Functionality could change.
 
 
 Synopsis
