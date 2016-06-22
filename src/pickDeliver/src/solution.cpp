@@ -195,6 +195,6 @@ Solution::operator<(const Solution &s_rhs) const {
 }
 
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting
 

@@ -187,6 +187,6 @@ Order::isOrderCompatibleStart(const Vehicle_node &node) const {
     return false;
 }
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting
 

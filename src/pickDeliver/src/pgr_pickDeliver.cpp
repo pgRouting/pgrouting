@@ -299,7 +299,5 @@ Pgr_pickDeliver::node(ID id) const {
 }
 
 
-}  //  namespace pgRouting
 }  //  namespace vrp
-
-
+}  //  namespace pgRouting

@@ -29,10 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./../../common/src/pgr_assert.h"
-#include "order.h"
-#include "vehicle.h"
-#include "vehicle_pickDeliver.h"
-#include "pgr_pickDeliver.h"
+#include "./order.h"
+#include "./vehicle.h"
+#include "./vehicle_pickDeliver.h"
+#include "./pgr_pickDeliver.h"
 
 
 
@@ -110,7 +110,6 @@ Vehicle_pickDeliver::insert(const Order &order) {
 #endif
 
     if (pick_pos.first > pick_pos.second) {
-
 #if 0
         problem->log << "\ninsert by push_back";
 #endif
@@ -125,7 +124,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
         }
 #endif
         return;
-    };
+    }
 
 
 #if 0
@@ -134,7 +133,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
         << pick_pos.second << ") ";
 #endif
 
-    //Vehicle::insert(pick_pos.first, order.pickup());
+    // Vehicle::insert(pick_pos.first, order.pickup());
     Vehicle::insert(pick_pos, order.pickup());
 
     auto deliver_pos(position_limits(order.delivery()));
@@ -247,8 +246,7 @@ Vehicle_pickDeliver::pop_back() {
     evaluate(1);
 
     ID deleted_order_id(
-            problem->order_of(problem->node(deleted_pick_id)).id()
-            );
+            problem->order_of(problem->node(deleted_pick_id)).id());
 
     orders_in_vehicle.erase(orders_in_vehicle.find(deleted_order_id));
 
@@ -290,8 +288,7 @@ Vehicle_pickDeliver::pop_front() {
     evaluate(1);
 
     ID deleted_order_id(
-            problem->order_of(problem->node(deleted_pick_id)).id()
-            );
+            problem->order_of(problem->node(deleted_pick_id)).id());
 
     orders_in_vehicle.erase(orders_in_vehicle.find(deleted_order_id));
 
@@ -300,7 +297,7 @@ Vehicle_pickDeliver::pop_front() {
 }
 
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting
 
 

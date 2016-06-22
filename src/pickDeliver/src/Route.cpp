@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: Rout.cpp
+FILE: Route.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

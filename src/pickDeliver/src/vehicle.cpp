@@ -508,6 +508,6 @@ operator<(const Vehicle &lhs, const Vehicle &rhs) {
     return false;
 }
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting
 

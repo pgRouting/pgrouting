@@ -22,7 +22,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-// TODO (vicky) license
 
 #include "./node.h"
 
@@ -57,7 +56,7 @@ Node::operator ==(const Node &rhs) const {
          && (static_cast<Point>(*this) == static_cast<Point>(rhs));
 }
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting
 
 

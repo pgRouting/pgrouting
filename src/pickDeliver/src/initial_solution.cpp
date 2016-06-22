@@ -618,5 +618,5 @@ Initial_solution::one_truck_all_orders() {
 
 
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting

@@ -76,6 +76,6 @@ Optimize::decrease_truck() {
 }
 
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting
 

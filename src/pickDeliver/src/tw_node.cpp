@@ -262,6 +262,6 @@ std::ostream& operator << (std::ostream &log, const Tw_node &n) {
     return log;
 }
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting
 

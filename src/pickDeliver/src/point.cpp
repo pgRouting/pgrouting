@@ -49,6 +49,5 @@ Point::operator ==(const Point &rhs) const {
     return boost::geometry::equals(point, rhs.point);
 }
 
-}  //  namespace pgRouting
 }  //  namespace vrp
-
+}  //  namespace pgRouting

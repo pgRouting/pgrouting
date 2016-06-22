@@ -44,138 +44,136 @@ namespace vrp {
 
 
 class Vehicle_node: public Tw_node {
-    public:
+ public:
+     /** @name log */
+     ///@ {
 
-        /** @name log */
-        ///@ {
+     friend std::ostream& operator << (std::ostream &log, const Vehicle_node &node);
 
-        friend std::ostream& operator << (std::ostream &log, const Vehicle_node &node);
+     ///@}
 
-        ///@}
+     /** @name Node evaluation accessors */
+     ///@ {
 
-        /** @name Node evaluation accessors */
-        ///@ {
+     /*! \brief Truck's travel_time from previous node to this node. */
+     inline double travel_time() const {return m_travel_time;}
 
-        /*! \brief Truck's travel_time from previous node to this node. */
-        inline double travel_time() const {return m_travel_time;}
+     /*! \brief Truck's arrival_time to this node. */
+     inline double arrival_time() const {return m_arrival_time;}
 
-        /*! \brief Truck's arrival_time to this node. */
-        inline double arrival_time() const {return m_arrival_time;}
+     /*! \brief Truck's wait_time at this node. */
+     inline double wait_time() const {return m_wait_time;}
 
-        /*! \brief Truck's wait_time at this node. */
-        inline double wait_time() const {return m_wait_time;}
+     /*! \brief Truck's departure_time from this node. */
+     inline double departure_time() const {return m_departure_time;}
 
-        /*! \brief Truck's departure_time from this node. */
-        inline double departure_time() const {return m_departure_time;}
+     /*! \brief delta_time = departure_time(this node) - departure_time(previous). */
+     inline double delta_time() const {return m_delta_time;}
 
-        /*! \brief delta_time = departure_time(this node) - departure_time(previous). */
-        inline double delta_time() const {return m_delta_time;}
-
-        ///@}
-
+     ///@}
 
 
 
 
 
-        /** @name Accumulated evaluation accessors */
-        ///@ {
 
-        /*! \brief Truck's total times it has violated time windows. */
-        inline int twvTot() const {return m_twvTot;}
+     /** @name Accumulated evaluation accessors */
+     ///@ {
 
-        /*! \brief Truck's total times it has violated cargo limits. */
-        inline int cvTot() const {return m_cvTot;}
+     /*! \brief Truck's total times it has violated time windows. */
+     inline int twvTot() const {return m_twvTot;}
 
-        /*! \brief Truck's total cargo after the node was served. */
-        inline double cargo() const {return m_cargo;}
+     /*! \brief Truck's total times it has violated cargo limits. */
+     inline int cvTot() const {return m_cvTot;}
 
-        /*! \brief Truck's travel duration up to this node. */
-        inline double total_time() const {return m_departure_time;}
+     /*! \brief Truck's total cargo after the node was served. */
+     inline double cargo() const {return m_cargo;}
 
-        /*! \brief _time spent moving between nodes by the truck */
-        inline double total_travel_time() const {return m_tot_travel_time;}
+     /*! \brief Truck's travel duration up to this node. */
+     inline double total_time() const {return m_departure_time;}
 
-        /*! \brief _time spent by the truck waiting for nodes to open */
-        inline double total_wait_time() const {return m_tot_wait_time;}
+     /*! \brief _time spent moving between nodes by the truck */
+     inline double total_travel_time() const {return m_tot_travel_time;}
 
-        /*! \brief _time spent by the truck servicing the nodes */
-        inline double total_service_time() const {return m_tot_service_time;}
+     /*! \brief _time spent by the truck waiting for nodes to open */
+     inline double total_wait_time() const {return m_tot_wait_time;}
 
-        ///@}
+     /*! \brief _time spent by the truck servicing the nodes */
+     inline double total_service_time() const {return m_tot_service_time;}
 
-        /*! \brief True when \barrival_time + \b delta_time generates TWV.*/
-        bool deltaGeneratesTWV(double delta_time) const;
+     ///@}
 
-        /** @name State */
-        ///@ {
+     /*! \brief True when \barrival_time + \b delta_time generates TWV.*/
+     bool deltaGeneratesTWV(double delta_time) const;
 
-        /*! \brief True when the total count for violations are 0 */
-        bool feasable() const {return m_twvTot == 0 &&  m_cvTot == 0;}
+     /** @name State */
+     ///@ {
 
-        /*! \brief True doesnt have twc nor cv (including total counts) */
-        bool feasable(double cargoLimit) const {
-            return feasable() &&  !has_twv() &&  !has_cv(cargoLimit);
-        }
-        /*! \brief True when the Truck at this node doesn not violate time windows */
-        bool has_twv() const {
-            return is_late_arrival(m_arrival_time);
-        }
-        /*! \brief True when not violation
-         *
-         * Ending's or start's cargo should be 0
-         **/
-        bool has_cv(double cargoLimit) const {
-            return is_end() ||  is_start() ? m_cargo != 0
-                : m_cargo > cargoLimit ||  m_cargo < 0;
-        }
-        ///@}
+     /*! \brief True when the total count for violations are 0 */
+     bool feasable() const {return m_twvTot == 0 &&  m_cvTot == 0;}
 
-        /** @name mutators */
-        ///@ {
-        void evaluate(double cargoLimit);
-        void evaluate(const Vehicle_node &pred, double cargoLimit);
-        ///@}
+     /*! \brief True doesnt have twc nor cv (including total counts) */
+     bool feasable(double cargoLimit) const {
+         return feasable() &&  !has_twv() &&  !has_cv(cargoLimit);
+     }
+     /*! \brief True when the Truck at this node doesn not violate time windows */
+     bool has_twv() const {
+         return is_late_arrival(m_arrival_time);
+     }
+     /*! \brief True when not violation
+      *
+      * Ending's or start's cargo should be 0
+      **/
+     bool has_cv(double cargoLimit) const {
+         return is_end() ||  is_start() ? m_cargo != 0
+             : m_cargo > cargoLimit ||  m_cargo < 0;
+     }
+     ///@}
 
-        /** @name Document*/
-        ///@ {
+     /** @name mutators */
+     ///@ {
+     void evaluate(double cargoLimit);
+     void evaluate(const Vehicle_node &pred, double cargoLimit);
+     ///@}
 
-        /*! \brief returns the arrval time to \bthis based on current arrival time of \bother */
-        double arrival_i_arrives_j(const Vehicle_node &other) const;
+     /** @name Document*/
+     ///@ {
 
-        ///@}
+     /*! \brief returns the arrval time to \bthis based on current arrival time of \bother */
+     double arrival_i_arrives_j(const Vehicle_node &other) const;
+
+     ///@}
 
 
 
-        /*! \brief Construct from parameters */
-        Vehicle_node(const Vehicle_node &node) = default;
-        Vehicle_node(const Tw_node &node);
+     /*! \brief Construct from parameters */
+     Vehicle_node(const Vehicle_node &node) = default;
+     Vehicle_node(const Tw_node &node);
 
-    protected:
-        /** @name Node evaluation members */
-        ///@ {
+ protected:
+     /** @name Node evaluation members */
+     ///@ {
 
-        double m_travel_time;     ///< Travel time from last node
-        double m_arrival_time;    ///< Arrival time at this node
-        double m_wait_time;       ///< Wait time at this node when early arrival
-        double m_departure_time;  // /< Departure time from this node
-        double m_delta_time;      ///< Departure time - last nodes departure time
+     double m_travel_time;     ///< Travel time from last node
+     double m_arrival_time;    ///< Arrival time at this node
+     double m_wait_time;       ///< Wait time at this node when early arrival
+     double m_departure_time;  // /< Departure time from this node
+     double m_delta_time;      ///< Departure time - last nodes departure time
 
-        ///@}
+     ///@}
 
-        /** @name Accumulated evaluation members */
-        ///@ {
+     /** @name Accumulated evaluation members */
+     ///@ {
 
-        double m_cargo;           ///< Accumulated cargo
-        int    m_twvTot;          ///< Total count of TWV
-        int    m_cvTot;           ///< Total count of CV
-        double m_tot_wait_time;     ///< Accumulated wait time
-        double m_tot_travel_time;   ///< Accumulated travel time
-        double m_tot_service_time;  // /< Accumulated service time
+     double m_cargo;           ///< Accumulated cargo
+     int    m_twvTot;          ///< Total count of TWV
+     int    m_cvTot;           ///< Total count of CV
+     double m_tot_wait_time;     ///< Accumulated wait time
+     double m_tot_travel_time;   ///< Accumulated travel time
+     double m_tot_service_time;  // /< Accumulated service time
 
-        ///@}
+     ///@}
 };
 
-}  //  namespace pgRouting
 }  //  namespace vrp
-
+}  //  namespace pgRouting
