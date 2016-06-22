@@ -13,8 +13,7 @@ pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path
 ===============================================================================
 
 .. index:: 
-	single: pgr_bdDijkstra(text, integer, integer, boolean, boolean)
-	module: bidirectional, dijkstra
+	single: bdDijkstra(Complete Signature)
 
 
 Name

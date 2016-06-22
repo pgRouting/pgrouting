@@ -7,17 +7,15 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_tsp:
+.. _pgr_tsp-V2.0:
 
-pgr_tsp - Traveling Sales Person
+pgr_tsp -Deprecated Signatures
 ===============================================================================
 
-.. index:: 
-	single: pgr_tsp(sql text, start_id integer)
-    single: pgr_tsp(sql text, start_id integer, end_id integer)
-    single: pgr_tsp(matrix float[][], start integer)
-    single: pgr_tsp(matrix float[][], start integer, end integer)
-    single: pgr_makeDistanceMatrix(sqlin text)
+.. warning:: This functions and/or function signatures are deprecated!!!
+
+    * That means they have been replaced by new signatures and this signature is no longer supported, and may be removed from future versions.
+    * All code that uses the function signature should be converted to use its replacement :ref:`tsp`.
 
 Name
 -------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 -- vertices_sql has the form
 -- SELECT id, the_geom FROM .....
 
-CREATE OR REPLACE FUNCTION pgr_eucledianDMatrix(vertices_sql TEXT,
+CREATE OR REPLACE FUNCTION pgr_eucledianCostMatrix(vertices_sql TEXT,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost DOUBLE PRECISION)
@@ -29,7 +29,7 @@ END
 $BODY$
 language plpgsql volatile cost 10;
 
-CREATE OR REPLACE FUNCTION pgr_eucledianDMatrix(
+CREATE OR REPLACE FUNCTION pgr_eucledianCostMatrix(
     vertices_sql regclass,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,

@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO WARNING;
 SET
 -- dijkstra q1
-SELECT * FROM pgr_dijkstraDmatrix(
+SELECT * FROM pgr_dijkstraCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5)
 );
@@ -24,7 +24,7 @@ SELECT * FROM pgr_dijkstraDmatrix(
 (12 rows)
 
 -- dijkstra q2
-SELECT * FROM pgr_dijkstraDmatrix(
+SELECT * FROM pgr_dijkstraCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5),
     false
@@ -48,7 +48,7 @@ SELECT * FROM pgr_dijkstraDmatrix(
 -- dijkstra q3
 SELECT * FROM pgr_TSP(
     $$
-    SELECT * FROM pgr_dijkstraDmatrix(
+    SELECT * FROM pgr_dijkstraCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id < 5),
         false
@@ -67,7 +67,7 @@ SELECT * FROM pgr_TSP(
 
 -- dijkstra q4
 -- withPoints q1
-SELECT * FROM pgr_withPointsDMatrix(
+SELECT * FROM pgr_withPointsCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction from pointsOfInterest',
     array[-1, 3, 6, -6]);
@@ -88,7 +88,7 @@ SELECT * FROM pgr_withPointsDMatrix(
 (12 rows)
 
 -- withPoints q2
-SELECT * FROM pgr_withPointsDMatrix(
+SELECT * FROM pgr_withPointsCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction from pointsOfInterest',
     array[-1, 3, 6, -6], directed := false);
@@ -111,7 +111,7 @@ SELECT * FROM pgr_withPointsDMatrix(
 -- withPoints q3
 SELECT * FROM pgr_TSP(
     $$
-    SELECT * FROM pgr_withPointsDMatrix(
+    SELECT * FROM pgr_withPointsCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
         'SELECT pid, edge_id, fraction from pointsOfInterest',
         array[-1, 3, 6, -6], directed := false);
