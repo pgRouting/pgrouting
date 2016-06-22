@@ -1,8 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: restrictions_input.h
+File: pickDeliver.sql
 
+Generated with Template by:
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Mail: 
 
 ------
 
@@ -22,11 +27,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#pragma once
+CREATE OR REPLACE FUNCTION pgr_pickDeliver(
+    orders_sql TEXT,
+    max_vehicles INTEGER,
+    capacity FLOAT,
+    max_cycles INTEGER, 
 
-#include "./pgr_types.h"
+    OUT seq INTEGER,
+    OUT vehicle_id INTEGER,
+    OUT vehicle_seq INTEGER,
+    OUT stop_id BIGINT,
+    OUT travel_time FLOAT,
+    OUT arrival_time FLOAT,
+    OUT wait_time FLOAT,
+    OUT service_time FLOAT,
+    OUT departure_time FLOAT
+)
 
-void pgr_get_customers_data(
-        char *customers_sql,
-        Customer_t **customers,
-        size_t *total_customers);
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliver'
+    LANGUAGE c IMMUTABLE STRICT;
+

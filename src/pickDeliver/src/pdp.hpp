@@ -23,6 +23,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+extern "C" {
+#include "./../../common/src/pgr_types.h"
+}
+
+
 #include <math.h>
 #include <vector>
 
@@ -47,7 +52,7 @@ typedef struct {
         int64_t Did;
 } Pickup;
 
-typedef std::vector< Customer > Customers;
+typedef std::vector< Customer_t > Customers;
 typedef std::vector< Pickup > Pickups;
 
 
@@ -55,9 +60,9 @@ typedef std::vector< Pickup > Pickups;
 // previous state.
 
 typedef struct {
-        int64_t twv;
-        int64_t cv;
-        int64_t dis;
+        int twv;
+        int cv;
+        double dis;
         std::vector< int64_t > path;
 } State;
 

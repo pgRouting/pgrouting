@@ -268,7 +268,8 @@ set(PgRouting_SOURCE_NAMES
     "tsp" #2.0
 
     "vrp_basic"
-    "vrppdtw"
+    #"vrppdtw"
+    "pickDeliver"
 
     )
 
