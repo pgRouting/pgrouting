@@ -28,6 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <tuple>
 #include <limits>
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "../../common/src/pgr_assert.h"
 
 
@@ -82,7 +86,6 @@ Vehicle::insert(std::pair<POS, POS> position_limits, const Vehicle_node &node) {
 
 bool
 Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
-
     /*
      * capacity violations
      */
@@ -124,7 +127,6 @@ Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
         return false;
 
     return false;
-
 }
 
 
@@ -207,9 +209,7 @@ Vehicle::insert_less_travel_time(const Vehicle_node &node, POS after_pos) {
     POS min_pos = after_pos;
 
     for (POS pos = after_pos; pos < m_path.size(); ++pos) {
-
         if (!m_path[pos].is_start()) {
-
             auto tt = deltaTime(node, pos);
 
             if (tt < min_delta) {
@@ -232,7 +232,7 @@ Vehicle::erase(const Vehicle_node &node) {
     for ( ; pos < m_path.size() ; ++pos) {
         if (node.id() == m_path[pos].id())
             break;
-    };
+    }
 
     erase(pos);
     evaluate(pos);
@@ -355,8 +355,11 @@ Vehicle::evaluate(POS from) {
     auto node = m_path.begin() + from;
 
     while (node != m_path.end()) {
-        if (node == m_path.begin()) node->evaluate(max_capacity);
-        else node->evaluate(*(node - 1), max_capacity);
+        if (node == m_path.begin()) {
+            node->evaluate(max_capacity);
+        } else {
+            node->evaluate(*(node - 1), max_capacity);
+        }
 
         ++node;
     }
@@ -404,7 +407,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const {
     while (low_limit > low
              && m_path[low_limit - 1].is_compatible_IJ(nodeI)) {
         --low_limit;
-    };
+    }
 
     invariant();
     return low_limit;

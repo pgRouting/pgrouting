@@ -138,7 +138,7 @@ Vehicle_node::Vehicle_node(const Tw_node &node)
 
 bool
 Vehicle_node::deltaGeneratesTWV(double delta_time) const {
-    return is_late_arrival(m_arrival_time + delta_time) ;
+    return is_late_arrival(m_arrival_time + delta_time);
 }
 
 

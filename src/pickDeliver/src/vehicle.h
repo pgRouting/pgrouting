@@ -28,6 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <iostream>
 #include <algorithm>
+#include <string>
+#include <tuple>
+#include <utility>
+#include <vector>
 
 
 #include "./vehicle_node.h"
@@ -281,13 +285,11 @@ class Vehicle {
 
 
      std::pair<POS, POS> position_limits(const Vehicle_node node) const;
-    private:
+
+ private:
      POS getPosLowLimit(const Vehicle_node &node) const;
      POS getPosHighLimit(const Vehicle_node &node) const;
-
-
 };
 
-}  //  namespace pgRouting
 }  //  namespace vrp
-
+}  //  namespace pgRouting
