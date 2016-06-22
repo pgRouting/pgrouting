@@ -1,15 +1,15 @@
 \i setup.sql
-SELECT plan(34);
+SELECT plan(40);
 SET client_min_messages TO WARNING;
 SELECT has_function('pgr_tsp');
 
 SELECT has_function('pgr_contractgraph', ARRAY[
-    'text', 'anyarray', 'anyarray',
+    'text', 'bigint[]', 'bigint[]',
     'integer', 'boolean'
     ]);
 
 SELECT function_returns('pgr_contractgraph', ARRAY[
-    'text', 'anyarray', 'anyarray',
+    'text', 'bigint[]', 'bigint[]',
     'integer', 'boolean'
     ], 'setof record');
 
@@ -18,8 +18,8 @@ SELECT function_returns('pgr_contractgraph', ARRAY[
 PREPARE parameters AS
 SELECT array[
 'edges_sql',
-'forbidden_vertices',
 'contraction_order',
+'forbidden_vertices',
 'max_cycles',
 'directed',
 'seq',
@@ -136,23 +136,72 @@ SELECT test_anyNumerical('pgr_contractGraph',
     'reverse_cost');
 
 
+-- Forbidden vertices array dimension should be 0 or 1
 PREPARE q1 AS
 SELECT *
 FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[ [2,3,4,5], [4,5,6,7] ]::integer[][], ARRAY[0]::integer[], 1, true);
 
+-- Contraction order array cannot be empty
 PREPARE q2 AS
 SELECT *
 FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[]::integer[], ARRAY[]::integer[], 1, true);
 
+-- Forbidden vertices should be an integer array
+PREPARE q3 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+ARRAY[ ]::integer[], ARRAY[0]::integer[], 1, true);
+
+PREPARE q4 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+ARRAY[ ]::bigint[], ARRAY[0]::integer[], 1, true);
+
+PREPARE q5 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+ARRAY[ ]::smallint[], ARRAY[0]::integer[], 1, true);
+
+PREPARE q5 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+ARRAY[ ]::bigint[], ARRAY[0]::FLOAT8[], 1, true);
+
+
+-- Contraction order array should be an integer array
+PREPARE q7 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+ARRAY[ ]::bigint[], ARRAY[0]::bigint[], 1, true);
+
+PREPARE q8 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+ARRAY[ ]::bigint[], ARRAY[0]::integer[], 1);
+
+PREPARE q9 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+ARRAY[ ]::bigint[], ARRAY[0]::smallint[], 1);
+
 SELECT throws_ok('q1', 'XX000', 'Expected less than two dimension',
 'Throws because forbidden_vertices is BIGINT[][]');
 
-SELECT throws_ok('q2', 'XX000', 'One dimension expected',
+SELECT throws_ok('q2', 'XX000', 'One dimensin expected',
 'Throws because contraction_order is ARRAY[]');
+
+
+SELECT lives_ok('q3');
+SELECT lives_ok('q4');
+SELECT lives_ok('q5');
+SELECT lives_ok('q7');
+SELECT lives_ok('q8');
+SELECT lives_ok('q9');
+
 
 SELECT finish();
 ROLLBACK;
