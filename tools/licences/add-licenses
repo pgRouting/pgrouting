@@ -30,7 +30,7 @@ my %exclude = (
 my $gnu_license = "GNU_license.txt";
 my @GNU_LICENSE = loadLicense($gnu_license);
 my @GNU_BODY = @GNU_LICENSE;
-splice @GNU_BODY, 0, 6;
+splice @GNU_BODY, 0, 8;
 
 my $mit_license = "MIT_license.txt";
 my @MIT_LICENSE = loadLicense($mit_license);
@@ -117,7 +117,7 @@ sub get_task{
 
     # look for the dividing line
     if ($license_type != 3) {
-        while ($line and ($line ne "------\n")) {
+        while ($line and ($line !~ "------")) {
             $line = <IN>;
         }
 
@@ -195,7 +195,7 @@ sub update_license {
         my $first = 0;
         my $last = 0;
         if ($license_type !=3) {
-            while ($file[$first] ne "------\n") {
+            while ($file[$first] !~ "------") {
                 $first++;
             }
         } else {
