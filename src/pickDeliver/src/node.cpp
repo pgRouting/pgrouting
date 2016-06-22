@@ -37,27 +37,27 @@ double Node::travel_time_to(const Node &other) const {
     return distance(other.point);
 }
 
-std::ostream& operator<<(std::ostream &log, const Node &node) {
-    log << node.m_original_id << "(" << node.m_id << ")" << static_cast<const Point&>(node); 
+std::ostream& operator << (std::ostream &log, const Node &node) {
+    log << node.m_original_id << "(" << node.m_id << ")" << static_cast<const Point&>(node);
     return log;
 }
 
 Node::Node(size_t id, int64_t original_id, double x, double y)
-    : Point(x,y),
+    : Point(x, y),
     m_id(id),
     m_original_id(original_id) {
     }
 
 bool
-Node::operator==(const Node &rhs) const {
+Node::operator ==(const Node &rhs) const {
     if (&rhs == this) return true;
-    return 
+    return
         (id() == rhs.id())
-        && (original_id() == rhs.original_id()) 
-        && (static_cast<Point>(*this) == static_cast<Point>(rhs));
+         && (original_id() == rhs.original_id())
+         && (static_cast<Point>(*this) == static_cast<Point>(rhs));
 }
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 
 

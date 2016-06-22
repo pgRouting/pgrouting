@@ -27,22 +27,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 namespace pgRouting {
-namespace vrp {    
+namespace vrp {
 
 
 /*
- * I -> J=(*this)
+ * I -> J = (*this)
  */
 double
-Tw_node::arrival_j_opens_i(const Tw_node &I) const{
-    if (m_type == kStart) return  std::numeric_limits<double>::max();
-    return  I.opens() + I.service_time() + I.travel_time_to(*this);
+Tw_node::arrival_j_opens_i(const Tw_node &I) const {
+    if (m_type == kStart) return std::numeric_limits<double>::max();
+    return I.opens() + I.service_time() + I.travel_time_to(*this);
 }
 
 double
 Tw_node::arrival_j_closes_i(const Tw_node &I) const {
     if (m_type == kStart) return   std::numeric_limits<double>::max();
-    return  I.closes() + I.service_time() + I.travel_time_to(*this);
+    return I.closes() + I.service_time() + I.travel_time_to(*this);
 }
 
 
@@ -50,52 +50,52 @@ Tw_node::arrival_j_closes_i(const Tw_node &I) const {
 
 bool
 Tw_node::is_compatible_IJ(const Tw_node &I) const {
-    /* 
-     * I  /->  kStart
+    /*
+     * I /->  kStart
      */
     if (m_type == kStart) return false;
-    /* 
+    /*
      * kEnd /-> (*this)
      */
     if (I.m_type == kEnd) return false;
 
-    return  !is_late_arrival(arrival_j_opens_i(I));
+    return !is_late_arrival(arrival_j_opens_i(I));
 }
 
 bool
 Tw_node::is_partially_compatible_IJ(const Tw_node &I) const {
-    return  
+    return
         is_compatible_IJ(I)
-        && !is_early_arrival(arrival_j_opens_i(I))
-        && is_late_arrival(arrival_j_closes_i(I));
+         && !is_early_arrival(arrival_j_opens_i(I))
+         && is_late_arrival(arrival_j_closes_i(I));
 }
 
 bool
 Tw_node::is_tight_compatible_IJ(const Tw_node &I) const {
-    return  
+    return
         is_compatible_IJ(I)
-        && !is_early_arrival(arrival_j_opens_i(I))
-        && !is_late_arrival(arrival_j_closes_i(I));
+         && !is_early_arrival(arrival_j_opens_i(I))
+         && !is_late_arrival(arrival_j_closes_i(I));
 }
 
 bool
 Tw_node::is_partially_waitTime_compatible_IJ(const Tw_node &I) const {
-    return  
+    return
         is_compatible_IJ(I)
-        && is_early_arrival(arrival_j_opens_i(I));
+         && is_early_arrival(arrival_j_opens_i(I));
 }
 
 bool
 Tw_node::is_waitTime_compatible_IJ(const Tw_node &I) const {
-    return  
+    return
         is_compatible_IJ(I)
-        && is_early_arrival(arrival_j_opens_i(I));
+         && is_early_arrival(arrival_j_opens_i(I));
 }
 
 
 std::string Tw_node::type_str() const {
 
-    switch  (type()) {
+    switch (type()) {
         case kStart: return "START"; break;
         case kEnd: return "END"; break;
         case kDump: return "DUMP"; break;
@@ -108,66 +108,66 @@ std::string Tw_node::type_str() const {
 
 bool
 Tw_node::is_start() const {
-    return 
-        m_type == kStart 
-        && (0 <= opens()) 
-        && (opens() < closes())
-        && (service_time() >= 0)
-        && (demand() == 0);
+    return
+        m_type == kStart
+         && (0 <= opens())
+         && (opens() < closes())
+         && (service_time() >= 0)
+         && (demand() == 0);
 }
 
-bool 
+bool
 Tw_node::is_pickup() const {
     return m_type == kPickup
-        && (0 <= opens()) 
-        && (opens() < closes())
-        && (service_time() >= 0)
-        && (demand() > 0);
-}
-
-
-bool 
-Tw_node::is_delivery() const {
-    return m_type == kDelivery
-        && (0 <= opens()) 
-        && (opens() < closes())
-        && (service_time() >= 0)
-        && (demand() < 0);
-}
-
-
-bool 
-Tw_node::is_dump() const {
-    return m_type == kDump
-        && (0 <= opens()) 
-        && (opens() < closes())
-        && (service_time() >= 0)
-        && (demand() <= 0);
-}
-
-
-bool 
-Tw_node::is_load() const {
-    return m_type == kLoad
-        && (0 <= opens()) 
-        && (opens() < closes())
-        && (service_time() >= 0)
-        && (demand() >= 0);
-}
-
-
-bool 
-Tw_node::is_end() const {
-    return m_type == kEnd
-        && (0 <= opens()) 
-        && (opens() < closes())
-        && (service_time() >= 0)
-        && (demand() == 0);
+         && (0 <= opens())
+         && (opens() < closes())
+         && (service_time() >= 0)
+         && (demand() > 0);
 }
 
 
 bool
-Tw_node::operator==(const Tw_node &rhs) const {
+Tw_node::is_delivery() const {
+    return m_type == kDelivery
+         && (0 <= opens())
+         && (opens() < closes())
+         && (service_time() >= 0)
+         && (demand() < 0);
+}
+
+
+bool
+Tw_node::is_dump() const {
+    return m_type == kDump
+         && (0 <= opens())
+         && (opens() < closes())
+         && (service_time() >= 0)
+         && (demand() <= 0);
+}
+
+
+bool
+Tw_node::is_load() const {
+    return m_type == kLoad
+         && (0 <= opens())
+         && (opens() < closes())
+         && (service_time() >= 0)
+         && (demand() >= 0);
+}
+
+
+bool
+Tw_node::is_end() const {
+    return m_type == kEnd
+         && (0 <= opens())
+         && (opens() < closes())
+         && (service_time() >= 0)
+         && (demand() == 0);
+}
+
+
+bool
+Tw_node::operator ==(const Tw_node &rhs) const {
     if (&rhs == this) return true;
     return (static_cast<Node>(*this) == static_cast<Node>(rhs));
 }
@@ -176,7 +176,7 @@ Tw_node::operator==(const Tw_node &rhs) const {
 
 bool Tw_node::is_valid() const {
 
-    switch  (type()) {
+    switch (type()) {
         case kStart:
             return is_start();
             break;
@@ -245,16 +245,16 @@ Tw_node::Tw_node(
 
 
 
-/*!  * \brief Print the contents of a Twnode object.  */
-std::ostream& operator<<(std::ostream &log, const Tw_node &n) {
-    log <<  static_cast<const Node&>(n)
-        << "[opens=" << n.m_opens
-        << "\tcloses=" << n.m_closes
-        << "\tservice=" << n.m_service_time
-        << "\tdemand=" << n.m_demand
-        << "\ttype=" << n.type_str()
+/*! * \brief Print the contents of a Twnode object. */
+std::ostream& operator << (std::ostream &log, const Tw_node &n) {
+    log << static_cast<const Node&>(n)
+        << "[opens = " << n.m_opens
+        << "\tcloses = " << n.m_closes
+        << "\tservice = " << n.m_service_time
+        << "\tdemand = " << n.m_demand
+        << "\ttype = " << n.type_str()
         << "]";
-    if (n.is_pickup() || n.is_delivery()) {
+    if (n.is_pickup() ||  n.is_delivery()) {
         log << "->" << n.m_otherid << "\n";
     } else {
         log << "\n";
@@ -262,6 +262,6 @@ std::ostream& operator<<(std::ostream &log, const Tw_node &n) {
     return log;
 }
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 

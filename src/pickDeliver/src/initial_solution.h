@@ -73,7 +73,7 @@ class Initial_solution : public Solution {
 
 };
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 
 

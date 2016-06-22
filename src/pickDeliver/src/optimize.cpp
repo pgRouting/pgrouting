@@ -37,7 +37,7 @@ Optimize::Optimize(
         const Solution &old_solution) :
     Solution(old_solution) {
 
-        switch  (kind) {
+        switch (kind) {
             case 1:
                 decrease_truck();
                 break;
@@ -48,7 +48,7 @@ Optimize::Optimize(
  * Optimize decreasing truck
  *
  * - Objective: remove shortest truck
- * 
+ *
  */
 void
 Optimize::decrease_truck() {
@@ -76,6 +76,6 @@ Optimize::decrease_truck() {
 }
 
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 

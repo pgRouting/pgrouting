@@ -1,4 +1,4 @@
-ADD_LIBRARY(pickDeliver OBJECT 
+ADD_LIBRARY(pickDeliver OBJECT
     point.cpp
     node.cpp
     tw_node.cpp
@@ -12,10 +12,10 @@ ADD_LIBRARY(pickDeliver OBJECT
     initial_solution.cpp
     optimize.cpp
 
-    pgr_pickDeliver.cpp 
+    pgr_pickDeliver.cpp
 
     pickDeliver_driver.cpp
-    customers_input.c  
-    pickDeliver.c 
-    
+    customers_input.c
+    pickDeliver.c
+
     )

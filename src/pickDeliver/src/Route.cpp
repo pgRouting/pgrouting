@@ -42,14 +42,14 @@ Route::RemoveOrder(
 
     auto pickup_pos = find(path.begin(), path.end(), pickup.Pid);
 
-    if (pickup_pos != path.end())  {
+    if (pickup_pos != path.end()) {
         path.erase(pickup_pos);
         auto delivery_pos = find(path.begin(), path.end(), pickup.Did);
         path.erase(delivery_pos);
 
         update(customers);
         return ((dis < depot.Ltime)
-                && (twv < oldRoute.twv || cv < oldRoute.cv || dis < oldRoute.dis))? 1: 2;
+                 && (twv < oldRoute.twv ||  cv < oldRoute.cv ||  dis < oldRoute.dis))? 1: 2;
     } else {
         return 0;
     }
@@ -65,7 +65,7 @@ Route::append(const Customers &customers,
 
 
 void
-Route::update(const Customers &customers)  {
+Route::update(const Customers &customers) {
     dis = 0;
     twv = 0;
     cv = 0;
@@ -92,7 +92,7 @@ Route::update(const Customers &customers)  {
         }
         agg_cost += customers[node].Stime;
         load += customers[node].demand;
-        if (load > capacity || load < 0) {
+        if (load > capacity ||  load < 0) {
             ++cv;
         }
         prev_node = node;
@@ -105,7 +105,7 @@ Route::update(const Customers &customers)  {
         ++twv;
     }
 
-    if (load != 0)  {
+    if (load != 0) {
         ++cv;
     }
     dis = agg_cost;
@@ -114,14 +114,14 @@ Route::update(const Customers &customers)  {
 
 
 double
-Route::cost() const  {
+Route::cost() const {
     return (0.3*dis)+(0.5*twv)+(0.2*cv);
 }
 
 bool
 Route::has_violation(const Customers &customers) {
     update(customers);
-    return (twv > 0 || cv > 0);
+    return (twv > 0 ||  cv > 0);
 }
 
 bool
@@ -134,7 +134,7 @@ Route::has_twv(const Customers &customers) {
 bool
 Route::insertOrder(const Customers &customers, const Pickup &order) {
     /*
-     *  inserting only on a route that does not have twv or cv
+     * inserting only on a route that does not have twv or cv
      */
     if (has_violation(customers)) return false;
 
@@ -144,7 +144,7 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
      * The pickup is in:
      */
     size_t Ppos = 0;
-    for (size_t i = 1; i < path.size(); i++)  {
+    for (size_t i = 1; i < path.size(); i++) {
         /*
          * Inserting without creating violation
          */
@@ -159,7 +159,7 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
      */
     size_t Dpos = path.size() - 1;
 
-    for (size_t j = Dpos; Ppos < j; --j)  {
+    for (size_t j = Dpos; Ppos < j; --j) {
         if (!has_violation(customers)) break;
         std::swap(path[j], path[Dpos]);
         Dpos = j;
@@ -177,8 +177,8 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
         return false;
     }
 
-    /* 
-     * ....  Ppos a b c d Dpos ....
+    /*
+     * .... Ppos a b c d Dpos ....
      *
      * The current route
      */
@@ -188,8 +188,8 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
 
     for (size_t i = Ppos; i < Dpos; i++) {
         *this = currRoute;
-        /* 
-         * ....  Ppos a b c d Dpos ....
+        /*
+         * .... Ppos a b c d Dpos ....
          */
         std::swap(path[Ppos], path[i]);
         Ppos = i;
@@ -204,7 +204,7 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
             std::swap(path[j], path[Dpos]);
             Dpos = j;
             if (!has_violation(customers)
-                    && dis < bestRoute.dis) {
+                     && dis < bestRoute.dis) {
                 bestRoute = *this;
                 bestRoute.update(customers);
             }
@@ -216,9 +216,9 @@ Route::insertOrder(const Customers &customers, const Pickup &order) {
     return true;
 }
 
-void Route::remove(const State &S)  {
+void Route::remove(const State &S) {
     twv = S.twv;
     cv = S.cv;
     dis = S.dis;
-    path  = S.path;
+    path = S.path;
 }

@@ -4,9 +4,9 @@ File: pickDeliver_driver.h
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -39,10 +39,10 @@ extern "C" {
       orders_sql TEXT,
       max_vehicles INTEGER,
       capacity FLOAT,
-      max_cycles INTEGER, 
+      max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliver(
-            Customer_t  *customers_arr, size_t total_customers,
+            Customer_t *customers_arr, size_t total_customers,
             int max_vehicles,
             double capacity,
             int max_cycles,
@@ -56,4 +56,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
+#endif  //  SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_

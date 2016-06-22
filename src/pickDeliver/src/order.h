@@ -54,8 +54,8 @@ class Order {
      /*************accesosrs*/
 
      inline size_t id() const {return m_id;};
-     const Vehicle_node&  delivery() const;
-     const Vehicle_node&  pickup() const;
+     const Vehicle_node& delivery() const;
+     const Vehicle_node& pickup() const;
      void setCompatibles();
 
      /*!
@@ -73,9 +73,9 @@ class Order {
      std::set<size_t> subsetJ(const std::set<size_t> &J) const;
      std::set<size_t> subsetI(const std::set<size_t> &I) const;
 
-     friend std::ostream& operator<<(std::ostream&, const Order &);
+     friend std::ostream& operator << (std::ostream&, const Order &);
 
- //    void  moveOrder(const int toRoute);
+ //    void moveOrder(const int toRoute);
  private:
 
      size_t m_id;
@@ -101,6 +101,6 @@ class Order {
 
 };
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 

@@ -38,7 +38,7 @@ namespace vrp {
 
 /*! \class Twpath
  * \brief Twpath class members are auto evaluating.
- * 
+ *
  * The intention for this class is to have GENERAL functions that can
  *   be used in different types of problems. Therefore is strongly
  *   recommended that especific problem functions be coded in the
@@ -49,11 +49,11 @@ namespace vrp {
  *   path is feasable
  * \warning prefix: e__ performs the operation on especific problems and
  *   eventually shall be removed
- * 
+ *
  * \note All members return \b true when the operation is succesfull
- * 
+ *
  * Twpath also inherits all the non evaluating methods of \ref TwBucket.
- *  
+ *
  * A path is an ordered sequence of nodes from starting site to ending site.
  * The problem will define which type of nodes belongs to the twpath and
  * which shall be outside twpath.
@@ -75,17 +75,17 @@ class Vehicle {
              int vid,
              std::vector< General_vehicle_orders_t > &result) const;
 
-     Vehicle(ID id, const Vehicle_node &starting_site, const Vehicle_node &ending_site, double max_capacity); 
+     Vehicle(ID id, const Vehicle_node &starting_site, const Vehicle_node &ending_site, double max_capacity);
 
 
 
-     /*! @name deque like functions 
+     /*! @name deque like functions
 
        \returns True if the operation was performed
        \warning Assertions are performed for out of range operations
-       \warning no feasability nor time window or capacity violations 
+       \warning no feasability nor time window or capacity violations
        checks are performed
-       \todo TODO more deque like functions here 
+       \todo TODO more deque like functions here
        */
 
      /*! \brief Invariant
@@ -99,7 +99,7 @@ class Vehicle {
      void invariant() const;
 
 
-     /// @{
+     /// @ {
 
      /*! \brief Insert \bnode at \pos position.
       *
@@ -126,7 +126,7 @@ class Vehicle {
      /*! \brief Evaluated: push_back a node to the path.
       *
       * before: S <nodes> E
-      * after:  S <nodes> n E
+      * after: S <nodes> n E
       *
       * @param[in] node to be push_back.
       */
@@ -135,7 +135,7 @@ class Vehicle {
      /*! \brief Evaluated: push_back a node to the path.
       *
       * before: S <nodes> E
-      * after:  S n <nodes> E
+      * after: S n <nodes> E
       *
       * \param[in] node to be push_back.
       */
@@ -144,7 +144,7 @@ class Vehicle {
 
      /*! \brief Evaluated: pop_back a node to the path.
       *
-      * before:  S <nodes> n E
+      * before: S <nodes> n E
       * after: S <nodes> E
       *
       * \param[in] node to be pop_back.
@@ -154,7 +154,7 @@ class Vehicle {
      /*! \brief Evaluated: pop_front a node to the path.
       *
       * before: S n <nodes> E
-      * after:  S <nodes> E
+      * after: S <nodes> E
       *
       * \param[in] node to be pop_front.
       */
@@ -166,7 +166,7 @@ class Vehicle {
       *
       * Numbers are positions
       * before: S .... node.id() .... E
-      * after: S ....  .... E
+      * after: S .... .... E
       *
       */
      void erase(const Vehicle_node &node);
@@ -189,7 +189,7 @@ class Vehicle {
       *
       * @note start and ending nodes cannot be erased
       *
-      *  True: S E
+      * True: S E
       * False: S <nodes> E
       */
      bool empty() const;
@@ -197,17 +197,17 @@ class Vehicle {
      ID id() const {return m_id;}
 
 
-     /// @{
+     /// @ {
      Cost cost() const;
      bool cost_compare(const Cost&, const Cost&) const;
 
      double duration() const { return m_path.back().departure_time(); };
      double total_wait_time() const { return m_path.back().total_wait_time(); };
-     int  twvTot() const {return m_path.back().twvTot();}
-     int  cvTot() const {return m_path.back().cvTot();}
+     int twvTot() const {return m_path.back().twvTot();}
+     int cvTot() const {return m_path.back().cvTot();}
      bool has_twv() const {return twvTot() != 0;}
      bool has_cv() const {return cvTot() != 0;}
-     bool is_feasable() const {return !(has_twv() || has_cv());}
+     bool is_feasable() const {return !(has_twv() ||  has_cv());}
      /// @}
 
 
@@ -225,7 +225,7 @@ class Vehicle {
      void swap(POS i, POS j);
 
 
-     /*! @name Evaluation 
+     /*! @name Evaluation
       *
       *
       *
@@ -233,7 +233,7 @@ class Vehicle {
       * end of the path, and intermediate values are cached on each node.
       * So, for example, changing the path at position 100:
       * the evaluation function should be called as
-      *  \c evaluate(100,maxcapacity)
+      * \c evaluate(100, maxcapacity)
       * and from that position to the end of the path will be evaluated.
       * None of the "unaffected" positions get reevaluated
       *
@@ -241,9 +241,9 @@ class Vehicle {
       *
       */
 
-     ///@{
+     ///@ {
 
-     /*! \brief Evaluate: Evaluate the whole path from the start.  */
+     /*! \brief Evaluate: Evaluate the whole path from the start. */
      void evaluate();
 
      /*! \brief Evaluate: Evaluate a path from the given position.
@@ -261,17 +261,17 @@ class Vehicle {
 
 
      /*! @name accessors */
-     ///@{
+     ///@ {
 
      std::deque< Vehicle_node > path() const;
 
      ///@}
 
      /*! @name operators */
-     ///@{
+     ///@ {
 
 
-     friend std::ostream& operator<<(std::ostream &log, const Vehicle &v);
+     friend std::ostream& operator << (std::ostream &log, const Vehicle &v);
 
      std::string tau() const;
 
@@ -289,6 +289,6 @@ class Vehicle {
 
 };
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 

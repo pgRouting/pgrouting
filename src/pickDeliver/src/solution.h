@@ -58,13 +58,13 @@ class Solution {
       * @params [in] p_problem \t pointer to problem
       *
       */
-     explicit Solution(const Pgr_pickDeliver *p_problem) : 
+     explicit Solution(const Pgr_pickDeliver *p_problem) :
          problem(p_problem)
-    {}; 
+    {};
 
 
      /* @brief move constructor */
-     Solution(const Solution &&sol)  noexcept :
+     Solution(const Solution && sol) noexcept :
          fleet(std::move(sol.fleet)),
          problem(std::move(sol.problem))
          {};
@@ -76,20 +76,20 @@ class Solution {
     {};
 
      /* @brief move assigment */
-     Solution& operator=(const Solution&& sol) {
+     Solution& operator = (const Solution && sol) {
          fleet = sol.fleet;
          return *this;
      };
 
      /* @brief copy assigment */
-     Solution& operator=(const Solution& sol) {
+     Solution& operator = (const Solution& sol) {
          fleet = sol.fleet;
          return *this;
      };
 
      std::string cost_str() const;
      std::string tau() const;
-     friend std::ostream& operator<<(std::ostream &log, const Solution &solution);
+     friend std::ostream& operator << (std::ostream &log, const Solution &solution);
      bool operator <(const Solution &s_rhs) const;
 
      double duration() const;
@@ -100,11 +100,11 @@ class Solution {
 
      /*
       * Cost in terms of a tuple
-      *  <0> duration
-      *  <1> wait_time
-      *  <2> fleet size TODO
-      *  <3> time window violations
-      *  <4> capacity violations
+      * <0> duration
+      * <1> wait_time
+      * <2> fleet size TODO
+      * <3> time window violations
+      * <4> capacity violations
       */
      Cost cost() const;
 
@@ -114,5 +114,5 @@ class Solution {
 };
 
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp

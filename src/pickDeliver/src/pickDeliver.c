@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -120,7 +120,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_vehicle_orders_t  *result_tuples = 0;
+    General_vehicle_orders_t *result_tuples = 0;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -137,7 +137,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
            orders_sql TEXT,
            max_vehicles INTEGER,
            capacity FLOAT,
-           max_cycles INTEGER, 
+           max_cycles INTEGER,
          **********************************************************************/
 
         PGR_DBG("Calling process");
@@ -178,7 +178,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
         /*******************************************************************************/
         /*                          MODIFY!!!!!                                        */
-        /*  This has to match you ouput otherwise the server crashes                   */
+        /* This has to match you ouput otherwise the server crashes                   */
         /*
            OUT seq INTEGER,
            OUT vehicle_seq INTEGER,
@@ -193,7 +193,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
         nulls = palloc(9 * sizeof(char));
 
         size_t i;
-        for(i = 0; i < 9; ++i) {
+        for (i = 0; i < 9; ++i) {
             nulls[i] = ' ';
         }
 

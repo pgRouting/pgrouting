@@ -64,8 +64,8 @@ class Pgr_pickDeliver {
 
     void solve();
 
-    void get_postgres_result(std::vector< General_vehicle_orders_t > &result) const; 
-   /*****************/ 
+    void get_postgres_result(std::vector< General_vehicle_orders_t > &result) const;
+   /*****************/
 
     const Order order_of(const Vehicle_node &node) const;
     const Vehicle_node& node(ID id) const;
@@ -97,6 +97,6 @@ class Pgr_pickDeliver {
 
 };
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 

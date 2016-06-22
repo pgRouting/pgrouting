@@ -41,7 +41,7 @@ void fetch_customer(
 
 
     customer->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    customer->x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
+    customer->x = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
     customer->y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
     customer->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
     customer->Etime = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
@@ -113,7 +113,7 @@ pgr_get_customers_data(
     bool moredata = TRUE;
     (*total_customers) = total_tuples = 0;
 
-    /*  on the first tuple get the column numbers */
+    /* on the first tuple get the column numbers */
 
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);

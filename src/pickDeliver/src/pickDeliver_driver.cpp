@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -51,11 +51,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   customers_sql TEXT,
   max_vehicles INTEGER,
   capacity FLOAT,
-  max_cycles INTEGER, 
+  max_cycles INTEGER,
  ***********************************************************/
 void
 do_pgr_pickDeliver(
-        Customer_t  *customers_arr,
+        Customer_t *customers_arr,
         size_t total_customers,
         int max_vehicles,
         double capacity,
@@ -96,7 +96,7 @@ do_pgr_pickDeliver(
         pd_problem.get_postgres_result(solution);
         pd_problem.get_log(log);
         log << "solution size: " << solution.size() << "\n";
-        
+
 
         (*result_tuples) = pgr_alloc(solution.size(), (*result_tuples));
         int seq = 0;

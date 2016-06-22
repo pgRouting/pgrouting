@@ -30,20 +30,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/geometry/geometries/point_xy.hpp>
 
 namespace pgRouting {
-namespace vrp {    
+namespace vrp {
 
 class Point {
-  public:   
+  public:
       Point(double x, double y);
       Point(const Point &) = default;
 
       double x() const;
       double y() const;
 
-      bool operator==(const Point &rhs) const;
+      bool operator ==(const Point &rhs) const;
 
       friend
-          std::ostream& operator<<(std::ostream& log, const Point &p);
+          std::ostream& operator << (std::ostream& log, const Point &p);
 
       template <typename T>
           double distance(const T&p2) const {
@@ -61,5 +61,5 @@ class Point {
       boost::geometry::model::d2::point_xy<double> point;
 };
 
-}  // namespace vrp
-}  // namespace pgRouting
+}  //  namespace vrp
+}  //  namespace pgRouting

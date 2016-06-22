@@ -45,7 +45,7 @@ namespace vrp {
 class Node : public Point {
     public:
         /** @name accessors */
-        ///@{
+        ///@ {
 
         inline size_t id() const {return m_id;}
         inline int64_t original_id() const {return m_original_id;}
@@ -56,16 +56,16 @@ class Node : public Point {
 
 
         /** @name state */
-        ///@{
+        ///@ {
 
         bool isSamePos(const Node &other) const;
         double travel_time_to(const Node &node2) const;
-        friend std::ostream& operator<<(std::ostream &log, const Node &node);
-        bool operator==(const Node &rhs) const;
-    private: 
+        friend std::ostream& operator << (std::ostream &log, const Node &node);
+        bool operator ==(const Node &rhs) const;
+    private:
         size_t m_id;                ///< internal node number
-        int64_t m_original_id;  ///< user supplied node number
+        int64_t m_original_id;  // /< user supplied node number
 };
 
-}  // namespace vrp;
-}  // namespace pgrouting;
+}  //  namespace vrp;
+}  //  namespace pgrouting;

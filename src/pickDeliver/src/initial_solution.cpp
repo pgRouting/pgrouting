@@ -57,7 +57,7 @@ Initial_solution::Initial_solution(
         all_orders = unassigned;
         assigned.clear();
 
-        switch  (kind) {
+        switch (kind) {
             case 0:
                 one_truck_all_orders();
                 break;
@@ -92,8 +92,8 @@ Initial_solution::fill_truck_while_compatibleJ(
     invariant();
     /*
      * Precondition:
-     *  truck.orders_in_vehicle intersection assigned == truck.orders_in_vehicle
-     *  (all orders in the truck are in the assigned set)
+     * truck.orders_in_vehicle intersection assigned == truck.orders_in_vehicle
+     * (all orders in the truck are in the assigned set)
      */
     std::set<size_t> invariant_set;
     std::set_intersection(truck.orders_in_vehicle.begin(), truck.orders_in_vehicle.end(),
@@ -104,8 +104,8 @@ Initial_solution::fill_truck_while_compatibleJ(
     invariant_set.clear();
     /*
      * Precondition:
-     *  possible_orders intersection unassigned == possible_orders
-     *  (all possible orders are not in the assigned set)
+     * possible_orders intersection unassigned == possible_orders
+     * (all possible orders are not in the assigned set)
      */
     std::set_intersection(possible_orders.begin(), possible_orders.end(),
             assigned.begin(), assigned.end(),
@@ -129,30 +129,30 @@ Initial_solution::fill_truck_while_compatibleJ(
      * has more compatible orders with the current possible orders
      */
     for (auto &o : possible_orders) {
-        auto  other_orders = problem->orders()[o].m_compatibleJ;
+        auto other_orders = problem->orders()[o].m_compatibleJ;
 #if 0
         problem->log << "\n [" << o << "]";
         for (auto &oo : other_orders) {
-            problem->log <<  oo <<",  ";
+            problem->log << oo << ", ";
         }
 #endif
-        auto  intersect_orders = problem->orders()[o].subsetJ(possible_orders);
+        auto intersect_orders = problem->orders()[o].subsetJ(possible_orders);
         if (max_size < intersect_orders.size()) {
 #if 0
             problem->log << "\n [" << o << "]";
             for (auto &oo : intersect_orders) {
-                problem->log <<  oo <<",  ";
+                problem->log << oo << ", ";
             }
 #endif
             max_size = intersect_orders.size();
             best_order = o;
         }
     }
-    auto  intersect_orders = problem->orders()[best_order].subsetJ(possible_orders);
+    auto intersect_orders = problem->orders()[best_order].subsetJ(possible_orders);
 #if 0
     problem->log << "\n [" << best_order << "]";
     for (auto &oo : intersect_orders) {
-        problem->log <<  oo <<",  ";
+        problem->log << oo << ", ";
     }
 #endif
 
@@ -192,7 +192,7 @@ std::deque<size_t>
 Initial_solution::first_ordersIJ() const {
     /*
      * Sorted as:
-     * (|{I}|, |{J}|)
+     * (| {I}|, | {J}|)
      * orders: keep sorted based on the number of orders it is compatible with
      */
     std::deque<size_t> orders(unassigned.begin(), unassigned.end());
@@ -201,18 +201,18 @@ Initial_solution::first_ordersIJ() const {
             (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleJ.size()
             < prob->orders()[rhs].m_compatibleJ.size();
-            } ); 
+            } );
     std::stable_sort(orders.begin(), orders.end(), [&prob]
             (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleI.size()
             < prob->orders()[rhs].m_compatibleI.size();
-            } ); 
+            } );
 
 #if 0
     problem->log << "\n Sorted orders by compatibleI.size\n";
     for (const auto &o: orders) {
-        problem->log << "\n|"<< o <<"| = " << problem->orders()[o].m_compatibleI.size();
-        problem->log << "\t|"<< o <<"| = " << problem->orders()[o].m_compatibleJ.size();
+        problem->log << "\n|" << o << "| = " << problem->orders()[o].m_compatibleI.size();
+        problem->log << "\t|" << o << "| = " << problem->orders()[o].m_compatibleJ.size();
     };
 #endif
     return orders;
@@ -284,8 +284,8 @@ Initial_solution::fill_truck_while_compatibleI(
     invariant();
     /*
      * Precondition:
-     *  truck.orders_in_vehicle intersection assigned == truck.orders_in_vehicle
-     *  (all orders in the truck are in the assigned set)
+     * truck.orders_in_vehicle intersection assigned == truck.orders_in_vehicle
+     * (all orders in the truck are in the assigned set)
      */
     std::set<size_t> invariant_set;
     std::set_intersection(truck.orders_in_vehicle.begin(), truck.orders_in_vehicle.end(),
@@ -296,8 +296,8 @@ Initial_solution::fill_truck_while_compatibleI(
     invariant_set.clear();
     /*
      * Precondition:
-     *  possible_orders intersection unassigned == possible_orders
-     *  (all possible orders are not in the assigned set)
+     * possible_orders intersection unassigned == possible_orders
+     * (all possible orders are not in the assigned set)
      */
     std::set_intersection(possible_orders.begin(), possible_orders.end(),
             assigned.begin(), assigned.end(),
@@ -321,30 +321,30 @@ Initial_solution::fill_truck_while_compatibleI(
      * has more compatible orders with the current possible orders
      */
     for (auto &o : possible_orders) {
-        auto  other_orders = problem->orders()[o].m_compatibleI;
+        auto other_orders = problem->orders()[o].m_compatibleI;
 #if 0
         problem->log << "\n [" << o << "]";
         for (auto &oo : other_orders) {
-            problem->log <<  oo <<",  ";
+            problem->log << oo << ", ";
         }
 #endif
-        auto  intersect_orders = problem->orders()[o].subsetI(possible_orders);
+        auto intersect_orders = problem->orders()[o].subsetI(possible_orders);
         if (max_size < intersect_orders.size()) {
 #if 0
             problem->log << "\n [" << o << "]";
             for (auto &oo : intersect_orders) {
-                problem->log <<  oo <<",  ";
+                problem->log << oo << ", ";
             }
 #endif
             max_size = intersect_orders.size();
             best_order = o;
         }
     }
-    auto  intersect_orders = problem->orders()[best_order].subsetI(possible_orders);
+    auto intersect_orders = problem->orders()[best_order].subsetI(possible_orders);
 #if 0
     problem->log << "\n [" << best_order << "]";
     for (auto &oo : intersect_orders) {
-        problem->log <<  oo <<",  ";
+        problem->log << oo << ", ";
     }
 #endif
 
@@ -381,7 +381,7 @@ std::deque<size_t>
 Initial_solution::first_ordersJI() const {
     /*
      * Sorted as:
-     * (|{J}|, |{I}|)
+     * (| {J}|, | {I}|)
      * orders: keep sorted based on the number of orders it is compatible with
      */
     std::deque<size_t> orders(unassigned.begin(), unassigned.end());
@@ -390,18 +390,18 @@ Initial_solution::first_ordersJI() const {
             (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleI.size()
             < prob->orders()[rhs].m_compatibleI.size();
-            } ); 
+            } );
     std::stable_sort(orders.begin(), orders.end(), [&prob]
             (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleJ.size()
             < prob->orders()[rhs].m_compatibleJ.size();
-            } ); 
+            } );
 
 #if 0
     problem->log << "\n Sorted orders by compatibleI.size\n";
     for (const auto &o: orders) {
-        problem->log << "\n|"<< o <<"| = " << problem->orders()[o].m_compatibleI.size();
-        problem->log << "\t|"<< o <<"| = " << problem->orders()[o].m_compatibleJ.size();
+        problem->log << "\n|" << o << "| = " << problem->orders()[o].m_compatibleI.size();
+        problem->log << "\t|" << o << "| = " << problem->orders()[o].m_compatibleJ.size();
     };
 #endif
     return orders;
@@ -483,7 +483,7 @@ Initial_solution::insert_while_feasable() {
         truck.insert(order);
 
         if (!truck.is_feasable()) {
-            truck.erase(order); 
+            truck.erase(order);
             fleet.push_back(truck);
             Vehicle_pickDeliver newtruck(
                     v_id++,
@@ -618,5 +618,5 @@ Initial_solution::one_truck_all_orders() {
 
 
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp

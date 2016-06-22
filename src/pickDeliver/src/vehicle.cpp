@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: vehicle.cpp 
+FILE: vehicle.cpp
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -40,14 +40,14 @@ namespace vrp {
 
 
 void
-Vehicle::invariant() const{
+Vehicle::invariant() const {
     pgassert(m_path.size() >= 2);
     pgassert(m_path.front().is_start());
     pgassert(m_path.back().is_end());
 }
 
 size_t
-Vehicle::insert(std::pair<POS,POS> position_limits, const Vehicle_node &node) {
+Vehicle::insert(std::pair<POS, POS> position_limits, const Vehicle_node &node) {
     invariant();
     pgassert(position_limits.first <= m_path.size());
     pgassert(position_limits.second <= m_path.size());
@@ -55,9 +55,9 @@ Vehicle::insert(std::pair<POS,POS> position_limits, const Vehicle_node &node) {
     auto low = position_limits.first;
     auto high = position_limits.second;
     auto best = low;
-    
 
-    insert(low, node); 
+
+    insert(low, node);
 
     Vehicle::Cost best_cost(cost());
 
@@ -138,11 +138,11 @@ Vehicle::get_postgres_result(
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data(
                 {vid, i,
-                p_stop.original_id(), 
-                p_stop.travel_time(), 
-                p_stop.arrival_time(), 
-                p_stop.wait_time(), 
-                p_stop.service_time(), 
+                p_stop.original_id(),
+                p_stop.travel_time(),
+                p_stop.arrival_time(),
+                p_stop.wait_time(),
+                p_stop.service_time(),
                 p_stop.departure_time()});
         result.push_back(data);
         ++i;
@@ -164,7 +164,7 @@ Vehicle::insert(POS at, Vehicle_node node) {
     invariant();
     pgassert(at <= m_path.size());
 
-    m_path.insert(m_path.begin() + at, node); 
+    m_path.insert(m_path.begin() + at, node);
     evaluate(at);
 
     pgassert(at < m_path.size());
@@ -178,17 +178,17 @@ Vehicle::deltaTime(const Vehicle_node &node, POS pos) const {
     /*
      * .... POS POS+1 ....
      * .... POS node POS+1 ....
-     * 
+     *
      */
-    auto prev =  m_path[pos-1];
-    auto next =  m_path[pos];
+    auto prev = m_path[pos-1];
+    auto next = m_path[pos];
     auto original_time = next.travel_time();
-    auto tt_p_n =  prev.travel_time_to(node);
+    auto tt_p_n = prev.travel_time_to(node);
     tt_p_n = node.is_early_arrival(prev.departure_time() + tt_p_n) ?
         node.closes() - prev.departure_time()
         : tt_p_n;
 
-    auto tt_n_x =  node.travel_time_to(next);
+    auto tt_n_x = node.travel_time_to(next);
     tt_p_n = next.is_early_arrival(prev.departure_time() + tt_p_n + node.service_time() + tt_n_x) ?
         next.closes() - (prev.departure_time() + tt_p_n + node.service_time())
         : tt_n_x;
@@ -206,7 +206,7 @@ Vehicle::insert_less_travel_time(const Vehicle_node &node, POS after_pos) {
     double min_delta = std::numeric_limits<double>::max();
     POS min_pos = after_pos;
 
-    for (POS pos = after_pos; pos < m_path.size(); ++pos){
+    for (POS pos = after_pos; pos < m_path.size(); ++pos) {
 
         if (!m_path[pos].is_start()) {
 
@@ -229,8 +229,8 @@ Vehicle::erase(const Vehicle_node &node) {
     invariant();
 
     POS pos = 0;
-    for ( ; pos < m_path.size() ; ++pos) { 
-        if (node.id() == m_path[pos].id()) 
+    for ( ; pos < m_path.size() ; ++pos) {
+        if (node.id() == m_path[pos].id())
             break;
     };
 
@@ -243,10 +243,10 @@ Vehicle::erase(const Vehicle_node &node) {
 
 /*
  * before: S E
- * after:  S N E
+ * after: S N E
  *
  * before: S n1 n2 ... n E
- * after:  S N n1 n2 ... n E
+ * after: S N n1 n2 ... n E
  */
 void
 Vehicle::push_front(const Vehicle_node &node) {
@@ -260,10 +260,10 @@ Vehicle::push_front(const Vehicle_node &node) {
 
 /*
  * before: S E
- * after:  S N E
+ * after: S N E
  *
  * before: S n1 n2 ... n E
- * after:  S n1 n2 ... n N E
+ * after: S n1 n2 ... n N E
  */
 void
 Vehicle::push_back(const Vehicle_node &node) {
@@ -363,7 +363,7 @@ Vehicle::evaluate(POS from) {
     invariant();
 }
 
-std::deque< Vehicle_node > 
+std::deque< Vehicle_node >
 Vehicle::path() const {
     invariant();
     return m_path;
@@ -380,7 +380,7 @@ Vehicle::position_limits(const Vehicle_node node) const {
 
 /*
  * start searching from postition low = pos(E)
- * 
+ *
  * S 1 2 3 4 5 6 7 ..... E
  * node -> E
  * node -> ...
@@ -393,7 +393,7 @@ Vehicle::position_limits(const Vehicle_node node) const {
  *
  */
 size_t
-Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const{
+Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const {
     invariant();
 
     POS low = 0;
@@ -402,7 +402,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const{
 
     /* J == m_path[low_limit - 1] */
     while (low_limit > low
-            && m_path[low_limit - 1].is_compatible_IJ(nodeI)) {
+             && m_path[low_limit - 1].is_compatible_IJ(nodeI)) {
         --low_limit;
     };
 
@@ -420,7 +420,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const{
  * 2 -> node
  * ...
  * 6 -> node
- * 7 /-> node 
+ * 7 /-> node
  *
  * returns high_limit = 7
  */
@@ -434,7 +434,7 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
     /* I == m_path[high_limit] */
     while (high_limit < high
-            && nodeJ.is_compatible_IJ(m_path[high_limit])) {
+             && nodeJ.is_compatible_IJ(m_path[high_limit])) {
         ++high_limit;
     }
 
@@ -446,11 +446,11 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
 Vehicle::Vehicle(
         ID p_id,
-        const Vehicle_node &starting_site, 
-        const Vehicle_node &ending_site, 
+        const Vehicle_node &starting_site,
+        const Vehicle_node &ending_site,
         double p_max_capacity) :
     m_id(p_id),
-    max_capacity(p_max_capacity) { 
+    max_capacity(p_max_capacity) {
         m_path.clear();
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);
@@ -466,7 +466,7 @@ Vehicle::tau() const {
     std::ostringstream log;
     log << "\nTruck " << id() << " (";
     for (const auto p_stop : m_path) {
-        if (!(p_stop == m_path.front())) 
+        if (!(p_stop == m_path.front()))
             log << ", ";
         log << p_stop.original_id();
     }
@@ -482,7 +482,7 @@ Vehicle::tau() const {
 /****** FRIENDS *******/
 
 std::ostream&
-operator<<(std::ostream &log, const Vehicle &v){
+operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
     log << "\n\n****************** TRUCK " << v.id() << "***************";
@@ -494,7 +494,7 @@ operator<<(std::ostream &log, const Vehicle &v){
 }
 
 bool
-operator<(const Vehicle &lhs, const Vehicle &rhs){
+operator<(const Vehicle &lhs, const Vehicle &rhs) {
     lhs.invariant();
     rhs.invariant();
 
@@ -508,6 +508,6 @@ operator<(const Vehicle &lhs, const Vehicle &rhs){
     return false;
 }
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 

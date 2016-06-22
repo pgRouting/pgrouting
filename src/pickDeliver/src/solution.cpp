@@ -108,7 +108,7 @@ Solution::cost_str() const {
     Cost s_cost(cost());
     std::ostringstream log;
 
-    log <<"\n(twv, cv, fleet, wait, duration) = ("
+    log << "\n(twv, cv, fleet, wait, duration) = ("
         << std::get<0>(s_cost) << ", "
         << std::get<1>(s_cost) << ", "
         << std::get<2>(s_cost) << ", "
@@ -133,7 +133,7 @@ Solution::tau() const {
 }
 
 std::ostream&
-operator<<(std::ostream &log, const Solution &solution) {
+operator << (std::ostream &log, const Solution &solution) {
 
     for (const auto vehicle : solution.fleet) {
         log << vehicle;
@@ -195,6 +195,6 @@ Solution::operator<(const Solution &s_rhs) const {
 }
 
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
 

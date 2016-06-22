@@ -38,8 +38,8 @@ class Initial_solution;
 class Vehicle_pickDeliver : public Vehicle {
  private:
      double cost;
-     std::set<ID> orders_in_vehicle;  ///< orders inserted in this vehicle
-     const Pgr_pickDeliver *problem;  ///< The vehicle belongs to this problem
+     std::set<ID> orders_in_vehicle;  // /< orders inserted in this vehicle
+     const Pgr_pickDeliver *problem;  // /< The vehicle belongs to this problem
 
 
  public:
@@ -61,17 +61,17 @@ class Vehicle_pickDeliver : public Vehicle {
      /*! @brief puts an order at the end of the truck
       *
       * Precondition:
-      *  !has_order(order)
+      * !has_order(order)
       *
       * Postcondition:
-      *  has_order(order)
-      *  !has_cv();
+      * has_order(order)
+      * !has_cv();
       *
-      *  Before: S <nodes> E
+      * Before: S <nodes> E
       *   After: S <nodes> P D E
       *
-      *  Can generate time window violation
-      *  No capacity violation
+      * Can generate time window violation
+      * No capacity violation
       */
      void push_back(const Order &order);
 
@@ -80,17 +80,17 @@ class Vehicle_pickDeliver : public Vehicle {
      /*! @brief Puts an order at the end front of the truck
       *
       * Precondition:
-      *  !has_order(order)
+      * !has_order(order)
       *
       * Postcondition:
-      *  has_order(order)
-      *  !has_cv();
+      * has_order(order)
+      * !has_cv();
       *
-      *  Before: S <nodes> E
+      * Before: S <nodes> E
       *   After: S P D <nodes> E
       *
-      *  Can generate time window violation
-      *  No capacity violation
+      * Can generate time window violation
+      * No capacity violation
       */
      void push_front(const Order &order);
 
@@ -98,31 +98,31 @@ class Vehicle_pickDeliver : public Vehicle {
 
      /*! @brief Inserts an order
       *
-      *  Precondition:
-      *  !has_order(order)
+      * Precondition:
+      * !has_order(order)
       *
       * Postcondition:
-      *  has_order(order)
-      *  !has_cv();
+      * has_order(order)
+      * !has_cv();
       *
-      *  Before: S <nodes> E
-      *   After: S ....P ....  D .... E
+      * Before: S <nodes> E
+      *   After: S ....P .... D .... E
       *
       * push_back is performed when
       *   - pickup
       *
-      *  Can generate time window violation
-      *  No capacity violation
+      * Can generate time window violation
+      * No capacity violation
       */
      void insert(const Order &order);
 
      /* @brief erases the order from the vehicle
       *
       * Precondition:
-      *  has_order(order)
+      * has_order(order)
       *
       * Precondition:
-      *  !has_order(order)
+      * !has_order(order)
       */
      void erase(const Order &order);
 
@@ -138,6 +138,6 @@ class Vehicle_pickDeliver : public Vehicle {
      ID pop_front();
 };
 
-}  // namespace vrp
-}  // namespace pgRouting
+}  //  namespace vrp
+}  //  namespace pgRouting
 

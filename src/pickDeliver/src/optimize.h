@@ -41,7 +41,7 @@ class Optimize : public Solution {
              const Solution &solution);
 
      /* @brief decrease_truck
-      * 
+      *
       * Optimization by decreasing one truck
       */
      void decrease_truck();
@@ -50,5 +50,5 @@ class Optimize : public Solution {
 
 };
 
-}  // namespace pgRouting
-}  // namespace vrp
+}  //  namespace pgRouting
+}  //  namespace vrp
