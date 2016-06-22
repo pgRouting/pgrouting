@@ -1,10 +1,36 @@
+/*PGR-GNU*****************************************************************
+
+FILE: node.h
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 // TODO (vicky) license
 
 #pragma once
 
-#include "./basictypes.h"
 #include <string>
 #include "point.h"
+
+namespace pgRouting {
+namespace vrp {
 
 /*! \class Node
  * \brief The Node class defines a point in 2D space with an id.
@@ -21,12 +47,12 @@ class Node : public Point {
         /** @name accessors */
         ///@{
 
-        inline ID id() const {return m_id;}
+        inline size_t id() const {return m_id;}
         inline int64_t original_id() const {return m_original_id;}
 
         ///@}
 
-        Node(ID id, int64_t original_id, double x, double y);
+        Node(size_t id, int64_t original_id, double x, double y);
 
 
         /** @name state */
@@ -37,59 +63,9 @@ class Node : public Point {
         friend std::ostream& operator<<(std::ostream &log, const Node &node);
         bool operator==(const Node &rhs) const;
     private: 
-        ID m_id;                ///< internal node number
+        size_t m_id;                ///< internal node number
         int64_t m_original_id;  ///< user supplied node number
 };
 
-
-#if 0
-/** @name operators */
-///@{
-
-bool operator<(const Node &n) const { return comparable_distance(Point(0,0)nid_ < n.nid_; }
-        bool operator==(const Node &n) const {
-        return nid_ == n.nid_
-        && x_ == n.x_ && y_ == n.y_;
-        }
-        bool operator!=(const Node &n) const { return !( *this == n ); }
-        bool operator>(const Node &n) const { return nid_ > n.nid_; }
-        ///@}
-        /** @name vector operators */
-        ///@{
-        Node operator+(const Node &v) const;
-        Node operator-(const Node &v) const;
-        Node operator*(double f) const;
-        double dotProduct(const Node &p) const;
-        double length() const;
-        double gradient(const Node &pi) const;
-        Node unit() const;
-        ///@}
-
-        /** @name distances */
-        ///@{
-double distance(const Node &n) const;
-double haversineDistance(const Node &n) const;
-double distanceTo(const Node &p) const;
-double distanceToSquared(const Node &p) const;
-///@}
-
-/** @name distanceToSegment */
-/* Shortest distnace from pooit to a segment (v,w) */
-///@{
-double distanceToSegment(const Node &v, const Node &w) const;
-double distanceToSegment(const Node &v, const Node &w, Node &q) const;
-double distanceToSegment(double, double, double, double, double &,
-        double &) const;
-///@}
-
-double positionAlongSegment(const Node &v, const Node &w, double tol) const;
-
-// dump
-/** @name log */
-///@{
-///@}
-
-// constructor
-
-
-#endif
+}  // namespace vrp;
+}  // namespace pgrouting;

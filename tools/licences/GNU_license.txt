@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE:
+FILE: __FILENAME__
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org

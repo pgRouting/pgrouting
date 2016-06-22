@@ -1,3 +1,27 @@
+/*PGR-GNU*****************************************************************
+
+FILE: initial_solution.h
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 
 
 #include "../../common/src/pgr_assert.h"
@@ -5,9 +29,12 @@
 #include "initial_solution.h"
 #include "pgr_pickDeliver.h"
 
+namespace pgRouting {
+namespace vrp {
+
 void
 Initial_solution::invariant() const {
-    std::set<ID> orders(assigned);
+    std::set<size_t> orders(assigned);
 
     orders.insert(unassigned.begin(), unassigned.end());
 
@@ -61,14 +88,14 @@ Initial_solution::Initial_solution(
 void
 Initial_solution::fill_truck_while_compatibleJ(
         Vehicle_pickDeliver &truck,
-        std::set<ID> &possible_orders) {
+        std::set<size_t> &possible_orders) {
     invariant();
     /*
      * Precondition:
      *  truck.orders_in_vehicle intersection assigned == truck.orders_in_vehicle
      *  (all orders in the truck are in the assigned set)
      */
-    std::set<ID> invariant_set;
+    std::set<size_t> invariant_set;
     std::set_intersection(truck.orders_in_vehicle.begin(), truck.orders_in_vehicle.end(),
             assigned.begin(), assigned.end(),
             std::inserter(invariant_set, invariant_set.begin()));
@@ -161,22 +188,22 @@ Initial_solution::fill_truck_while_compatibleJ(
 
 
 
-std::deque<ID>
+std::deque<size_t>
 Initial_solution::first_ordersIJ() const {
     /*
      * Sorted as:
      * (|{I}|, |{J}|)
      * orders: keep sorted based on the number of orders it is compatible with
      */
-    std::deque<ID> orders(unassigned.begin(), unassigned.end());
+    std::deque<size_t> orders(unassigned.begin(), unassigned.end());
     const Pgr_pickDeliver *prob = problem;
     std::sort(orders.begin(), orders.end(), [&prob]
-            (const ID &lhs, const ID &rhs) -> bool
+            (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleJ.size()
             < prob->orders()[rhs].m_compatibleJ.size();
             } ); 
     std::stable_sort(orders.begin(), orders.end(), [&prob]
-            (const ID &lhs, const ID &rhs) -> bool
+            (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleI.size()
             < prob->orders()[rhs].m_compatibleI.size();
             } ); 
@@ -201,7 +228,7 @@ Initial_solution::insert_while_compatibleJ() {
     invariant();
 
 
-    ID v_id(0);
+    size_t v_id(0);
     Vehicle_pickDeliver truck(
             v_id++,
             problem->m_starting_site,
@@ -210,7 +237,7 @@ Initial_solution::insert_while_compatibleJ() {
             problem);
 
     while (!unassigned.empty()) {
-        std::deque<ID> orders(first_ordersIJ());
+        std::deque<size_t> orders(first_ordersIJ());
 
         if (truck.empty()) {
             auto order(problem->orders()[orders.front()]);
@@ -220,8 +247,8 @@ Initial_solution::insert_while_compatibleJ() {
             unassigned.erase(unassigned.find(order.id()));
             invariant();
 
-            std::set<ID> compatible_orders(problem->orders()[order.id()].m_compatibleJ);
-            std::set<ID> possible_orders;
+            std::set<size_t> compatible_orders(problem->orders()[order.id()].m_compatibleJ);
+            std::set<size_t> possible_orders;
             std::set_intersection(
                     compatible_orders.begin(), compatible_orders.end(),
                     unassigned.begin(), unassigned.end(),
@@ -253,14 +280,14 @@ Initial_solution::insert_while_compatibleJ() {
 void
 Initial_solution::fill_truck_while_compatibleI(
         Vehicle_pickDeliver &truck,
-        std::set<ID> &possible_orders) {
+        std::set<size_t> &possible_orders) {
     invariant();
     /*
      * Precondition:
      *  truck.orders_in_vehicle intersection assigned == truck.orders_in_vehicle
      *  (all orders in the truck are in the assigned set)
      */
-    std::set<ID> invariant_set;
+    std::set<size_t> invariant_set;
     std::set_intersection(truck.orders_in_vehicle.begin(), truck.orders_in_vehicle.end(),
             assigned.begin(), assigned.end(),
             std::inserter(invariant_set, invariant_set.begin()));
@@ -350,22 +377,22 @@ Initial_solution::fill_truck_while_compatibleI(
 
 
 
-std::deque<ID>
+std::deque<size_t>
 Initial_solution::first_ordersJI() const {
     /*
      * Sorted as:
      * (|{J}|, |{I}|)
      * orders: keep sorted based on the number of orders it is compatible with
      */
-    std::deque<ID> orders(unassigned.begin(), unassigned.end());
+    std::deque<size_t> orders(unassigned.begin(), unassigned.end());
     const Pgr_pickDeliver *prob = problem;
     std::sort(orders.begin(), orders.end(), [&prob]
-            (const ID &lhs, const ID &rhs) -> bool
+            (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleI.size()
             < prob->orders()[rhs].m_compatibleI.size();
             } ); 
     std::stable_sort(orders.begin(), orders.end(), [&prob]
-            (const ID &lhs, const ID &rhs) -> bool
+            (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleJ.size()
             < prob->orders()[rhs].m_compatibleJ.size();
             } ); 
@@ -388,7 +415,7 @@ Initial_solution::insert_while_compatibleI() {
     invariant();
 
 
-    ID v_id(0);
+    size_t v_id(0);
     Vehicle_pickDeliver truck(
             v_id++,
             problem->m_starting_site,
@@ -397,7 +424,7 @@ Initial_solution::insert_while_compatibleI() {
             problem);
 
     while (!unassigned.empty()) {
-        std::deque<ID> orders(first_ordersJI());
+        std::deque<size_t> orders(first_ordersJI());
 
         if (truck.empty()) {
             auto order(problem->orders()[orders.front()]);
@@ -407,8 +434,8 @@ Initial_solution::insert_while_compatibleI() {
             unassigned.erase(unassigned.find(order.id()));
             invariant();
 
-            std::set<ID> compatible_orders(problem->orders()[order.id()].m_compatibleI);
-            std::set<ID> possible_orders;
+            std::set<size_t> compatible_orders(problem->orders()[order.id()].m_compatibleI);
+            std::set<size_t> possible_orders;
             std::set_intersection(
                     compatible_orders.begin(), compatible_orders.end(),
                     unassigned.begin(), unassigned.end(),
@@ -442,7 +469,7 @@ void
 Initial_solution::insert_while_feasable() {
     invariant();
 
-    ID v_id(0);
+    size_t v_id(0);
     Vehicle_pickDeliver truck(
             v_id++,
             problem->m_starting_site,
@@ -476,7 +503,7 @@ Initial_solution::insert_while_feasable() {
 
 void
 Initial_solution::push_front_while_feasable() {
-    ID v_id(0);
+    size_t v_id(0);
     Vehicle_pickDeliver truck(
             v_id++,
             problem->m_starting_site,
@@ -509,7 +536,7 @@ Initial_solution::push_front_while_feasable() {
 
 void
 Initial_solution::push_back_while_feasable() {
-    ID v_id(0);
+    size_t v_id(0);
     Vehicle_pickDeliver truck(
             v_id++,
             problem->m_starting_site,
@@ -543,7 +570,7 @@ Initial_solution::push_back_while_feasable() {
 
 void
 Initial_solution::one_truck_per_order() {
-    ID v_id(0);
+    size_t v_id(0);
     while (!unassigned.empty()) {
         auto order(problem->orders()[*unassigned.begin()]);
 
@@ -568,7 +595,7 @@ Initial_solution::one_truck_per_order() {
 
 void
 Initial_solution::one_truck_all_orders() {
-    ID v_id(0);
+    size_t v_id(0);
     Vehicle_pickDeliver truck(
             v_id++,
             problem->m_starting_site,
@@ -591,3 +618,5 @@ Initial_solution::one_truck_all_orders() {
 
 
 
+}  // namespace pgRouting
+}  // namespace vrp

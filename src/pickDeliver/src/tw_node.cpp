@@ -1,18 +1,47 @@
+/*PGR-GNU*****************************************************************
+
+FILE: tw_node.cpp
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 
 #include "./tw_node.h"
+#include <limits>
+
+namespace pgRouting {
+namespace vrp {    
+
 
 /*
  * I -> J=(*this)
  */
 double
 Tw_node::arrival_j_opens_i(const Tw_node &I) const{
-    if (m_type == kStart) return d_max();
+    if (m_type == kStart) return  std::numeric_limits<double>::max();
     return  I.opens() + I.service_time() + I.travel_time_to(*this);
 }
 
 double
 Tw_node::arrival_j_closes_i(const Tw_node &I) const {
-    if (m_type == kStart) return d_max();
+    if (m_type == kStart) return   std::numeric_limits<double>::max();
     return  I.closes() + I.service_time() + I.travel_time_to(*this);
 }
 
@@ -182,7 +211,7 @@ bool Tw_node::is_valid() const {
 
 
 Tw_node::Tw_node(
-        ID id,
+        size_t id,
         Customer_t data,
         NodeType type
         ) :
@@ -196,7 +225,7 @@ Tw_node::Tw_node(
 
 
 Tw_node::Tw_node(
-        ID id,
+        size_t id,
         int64_t original_id,
         double x,
         double y,
@@ -232,4 +261,7 @@ std::ostream& operator<<(std::ostream &log, const Tw_node &n) {
     }
     return log;
 }
+
+}  // namespace pgRouting
+}  // namespace vrp
 

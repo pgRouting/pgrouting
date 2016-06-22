@@ -1,14 +1,42 @@
+/*PGR-GNU*****************************************************************
+
+FILE: vehicle.cpp 
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 
 #include <deque>
 #include <iostream>
 #include <algorithm>
 #include <tuple>
+#include <limits>
 #include "../../common/src/pgr_assert.h"
 
 
 #include "./pgr_pickDeliver.h"
 #include "./vehicle.h"
 
+
+namespace pgRouting {
+namespace vrp {
 
 
 void
@@ -18,7 +46,7 @@ Vehicle::invariant() const{
     pgassert(m_path.back().is_end());
 }
 
-POS
+size_t
 Vehicle::insert(std::pair<POS,POS> position_limits, const Vehicle_node &node) {
     invariant();
     pgassert(position_limits.first <= m_path.size());
@@ -171,11 +199,11 @@ Vehicle::deltaTime(const Vehicle_node &node, POS pos) const {
 
 
 
-POS
+size_t
 Vehicle::insert_less_travel_time(const Vehicle_node &node, POS after_pos) {
     invariant();
 
-    double min_delta = d_max();
+    double min_delta = std::numeric_limits<double>::max();
     POS min_pos = after_pos;
 
     for (POS pos = after_pos; pos < m_path.size(); ++pos){
@@ -342,7 +370,7 @@ Vehicle::path() const {
 }
 
 
-std::pair<POS, POS>
+std::pair<size_t, size_t>
 Vehicle::position_limits(const Vehicle_node node) const {
     POS high = getPosHighLimit(node);
     POS low = getPosLowLimit(node);
@@ -364,7 +392,7 @@ Vehicle::position_limits(const Vehicle_node node) const {
  * return low_limit = 5
  *
  */
-POS
+size_t
 Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const{
     invariant();
 
@@ -396,7 +424,7 @@ Vehicle::getPosLowLimit(const Vehicle_node &nodeI) const{
  *
  * returns high_limit = 7
  */
-POS
+size_t
 Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
     invariant();
 
@@ -479,3 +507,7 @@ operator<(const Vehicle &lhs, const Vehicle &rhs){
 
     return false;
 }
+
+}  // namespace pgRouting
+}  // namespace vrp
+

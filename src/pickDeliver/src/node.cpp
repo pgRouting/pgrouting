@@ -1,6 +1,33 @@
+/*PGR-GNU*****************************************************************
+
+FILE: node.cpp
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 // TODO (vicky) license
 
 #include "./node.h"
+
+namespace pgRouting {
+namespace vrp {
 
 bool Node::isSamePos(const Node &other) const {
     return comparable_distance(other.point) == 0;
@@ -15,7 +42,7 @@ std::ostream& operator<<(std::ostream &log, const Node &node) {
     return log;
 }
 
-Node::Node(ID id, int64_t original_id, double x, double y)
+Node::Node(size_t id, int64_t original_id, double x, double y)
     : Point(x,y),
     m_id(id),
     m_original_id(original_id) {
@@ -30,47 +57,7 @@ Node::operator==(const Node &rhs) const {
         && (static_cast<Point>(*this) == static_cast<Point>(rhs));
 }
 
+}  // namespace pgRouting
+}  // namespace vrp
 
-#if 0
-/** @name operators */
-///@{
-
-bool operator<(const Node &n) const { return comparable_distance(Point(0,0)nid_ < n.nid_; }
-        bool operator==(const Node &n) const {
-        return nid_ == n.nid_
-        && x_ == n.x_ && y_ == n.y_;
-        }
-        bool operator!=(const Node &n) const { return !( *this == n ); }
-        bool operator>(const Node &n) const { return nid_ > n.nid_; }
-        ///@}
-        /** @name vector operators */
-        ///@{
-        Node operator+(const Node &v) const;
-        Node operator-(const Node &v) const;
-        Node operator*(double f) const;
-        double dotProduct(const Node &p) const;
-        double length() const;
-        double gradient(const Node &pi) const;
-        Node unit() const;
-        ///@}
-
-        /** @name distances */
-        ///@{
-double distance(const Node &n) const;
-double haversineDistance(const Node &n) const;
-double distanceTo(const Node &p) const;
-double distanceToSquared(const Node &p) const;
-///@}
-
-/** @name distanceToSegment */
-/* Shortest distnace from pooit to a segment (v,w) */
-///@{
-double distanceToSegment(const Node &v, const Node &w) const;
-double distanceToSegment(const Node &v, const Node &w, Node &q) const;
-double distanceToSegment(double, double, double, double, double &,
-        double &) const;
-///@}
-
-double positionAlongSegment(const Node &v, const Node &w, double tol) const;
-#endif
 

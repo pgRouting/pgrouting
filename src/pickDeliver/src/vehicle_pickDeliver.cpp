@@ -1,18 +1,31 @@
-/*VRP*********************************************************************
- *
- * vehicle routing problems
- *      A collection of C++ classes for developing VRP solutions
- *      and specific solutions developed using these classes.
- *
- * Copyright 2014 Stephen Woodbridge <woodbri@imaptools.com>
- * Copyright 2014 Vicky Vergara <vicky_vergara@hotmail.com>
- *
- * This is free software; you can redistribute and/or modify it under
- * the terms of the MIT License. Please file LICENSE for details.
- *
- ********************************************************************VRP*/
+/*PGR-GNU*****************************************************************
+
+FILE: vehicle_pickDeliver.cpp 
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 #include <iostream>
 #include <deque>
+#include <sstream>
+#include <limits>
 
 
 #include "./../../common/src/pgr_assert.h"
@@ -21,18 +34,20 @@
 #include "vehicle_pickDeliver.h"
 #include "pgr_pickDeliver.h"
 
-#include <sstream>
 
+
+namespace pgRouting {
+namespace vrp {
 
 
 Vehicle_pickDeliver::Vehicle_pickDeliver(
-        ID id,
+        size_t id,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double max_capacity,
         const Pgr_pickDeliver *p_problem) :
     Vehicle(id, starting_site, ending_site, max_capacity),
-    cost(d_max()),
+    cost(std::numeric_limits<double>::max()),
     problem(p_problem) {
         orders_in_vehicle.clear();
 
@@ -198,7 +213,7 @@ Vehicle_pickDeliver::erase(const Order &order) {
 
 
 
-ID
+size_t
 Vehicle_pickDeliver::pop_back() {
     invariant();
     pgassert(!empty());
@@ -243,7 +258,7 @@ Vehicle_pickDeliver::pop_back() {
 
 
 
-ID
+size_t
 Vehicle_pickDeliver::pop_front() {
     invariant();
     pgassert(!empty());
@@ -284,6 +299,9 @@ Vehicle_pickDeliver::pop_front() {
     return deleted_order_id;
 }
 
+
+}  // namespace pgRouting
+}  // namespace vrp
 
 
 

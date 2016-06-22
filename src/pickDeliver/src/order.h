@@ -1,9 +1,36 @@
+/*PGR-GNU*****************************************************************
+
+FILE: order.h
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 
 
 #pragma once
 
 #include <iostream>
 #include "vehicle_node.h"
+
+namespace pgRouting {
+namespace vrp {
 
 
 class Pgr_pickDeliver;
@@ -15,7 +42,7 @@ class Order {
      friend Initial_solution;
      friend Pgr_pickDeliver;
 
-     Order(ID p_id,
+     Order(size_t p_id,
              const Vehicle_node &p_pickup,
              const Vehicle_node &p_deliver,
              const Pgr_pickDeliver *p_problem);
@@ -26,7 +53,7 @@ class Order {
 
      /*************accesosrs*/
 
-     inline ID id() const {return m_id;};
+     inline size_t id() const {return m_id;};
      const Vehicle_node&  delivery() const;
      const Vehicle_node&  pickup() const;
      void setCompatibles();
@@ -43,33 +70,37 @@ class Order {
      bool isCompatibleIJ(const Order &other) const;
      bool isOrderCompatibleStart(const Vehicle_node &node) const;
      bool isOrderCompatibleEnd(const Vehicle_node &node) const;
-     std::set<ID> subsetJ(const std::set<ID> &J) const;
-     std::set<ID> subsetI(const std::set<ID> &I) const;
+     std::set<size_t> subsetJ(const std::set<size_t> &J) const;
+     std::set<size_t> subsetI(const std::set<size_t> &I) const;
 
      friend std::ostream& operator<<(std::ostream&, const Order &);
 
  //    void  moveOrder(const int toRoute);
  private:
 
-     ID m_id;
+     size_t m_id;
 
-     ID pickup_id;
-     ID delivery_id;
+     size_t pickup_id;
+     size_t delivery_id;
 
      /*
       * I = this
       * I -> {J}
       */
-     std::set<ID> m_compatibleJ;
+     std::set<size_t> m_compatibleJ;
 
      /*
       * J = this
       * {I} -> J
       */
-     std::set<ID> m_compatibleI;
+     std::set<size_t> m_compatibleI;
 
 
      /* order belongs to this problem */
      const Pgr_pickDeliver *problem;
 
 };
+
+}  // namespace pgRouting
+}  // namespace vrp
+

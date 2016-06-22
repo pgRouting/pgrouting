@@ -1,9 +1,9 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2014 Manikata Kondeti
-mani.iiit123@gmail.com
+FILE: pgr_pickDeliver.h
 
-Modified 2016 by Vicky Vergara
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
 
 ------
 
@@ -21,33 +21,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
-
-/*
-
- *****list of files in this dir*******
-
- The main problem is in two steps. 1.)Getting the initial solutiion and 2.)Optimizing it.
-
- 1.) "Initial solution":
- A few heuristics are applied to find a feasible initial solution.
- Sequential Construction and Hill climbing.
- More implementation details are found here::
- https://github.com/pgRouting/pgrouting/wiki/VRP-Pickup-Delivery-Problem
-
-
- 2.) "Optimizing the Solution":
- A reactive tabu search is applied on the initial solution to get a feasible
- optimized solution.
- TabuSearch comes under local search methods. We have three neighborhoods
-    i) Single Paired Insertion
-    ii) Swapping pairs between routes
-    iii)Within Route Insertion.
-Tabu attributes plays an important role in giving the best solution
-(it includes TabuLength, A vector containing feasible solutions and a counter for number of solutions).
-Reactive part discussed in the paper is to modify TabuLength based on the solution cycle.
-
- */
+ ********************************************************************PGR-GNU*/
 #pragma once
 
 #ifdef __MINGW32__
@@ -55,9 +29,7 @@ Reactive part discussed in the paper is to modify TabuLength based on the soluti
 #include <windows.h>
 #endif
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 #include <sstream>
 #include <string.h>
@@ -68,29 +40,19 @@ extern "C" {
 #include "./order.h"
 #include "./solution.h"
 
+namespace pgRouting {
+namespace vrp {
+
 
 class Optimize;
 class Initial_solution;
 
 class Pgr_pickDeliver {
-#if 0
-    void
-        TabuSearch(
-                const std::vector<Customer_t> &customers,
-                const std::vector<Pickup> &pickups,
-                int maxIter);
-    void
-        get_result(
-                const Solution &solution,
-                const std::vector < Customer_t > &customers,
-                const Depot &depot,
-                int64_t VehicleLength,
-                std::vector< General_vehicle_orders_t > &result);
-#endif
     friend Vehicle_pickDeliver;
     friend Optimize;
     friend Initial_solution;
     friend Solution;
+    typedef size_t ID;
  public:
 
     Pgr_pickDeliver(
@@ -134,3 +96,7 @@ class Pgr_pickDeliver {
     mutable std::ostringstream log;
 
 };
+
+}  // namespace pgRouting
+}  // namespace vrp
+

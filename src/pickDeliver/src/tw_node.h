@@ -1,11 +1,37 @@
+/*PGR-GNU*****************************************************************
+
+FILE: tw_node.h
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ ********************************************************************PGR-GNU*/
 
 #pragma once
 #include <string>
 
-#include "./node.h"
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
+
+#include "./node.h"
+
+namespace pgRouting {
+namespace vrp {    
 
 /*! \class Twnode
  * \brief Extends the \ref Node class to create a Node with time window attributes.
@@ -30,22 +56,22 @@ class Tw_node: public Node {
      } NodeType;
 
 
-     inline void set_Pid(ID id) {
+     inline void set_Pid(size_t id) {
          assert (is_delivery());
          m_otherid = id;
      }
 
-     inline void set_Did(ID id) {
+     inline void set_Did(size_t id) {
          assert (is_pickup());
          m_otherid = id;
      }
 
-     inline ID Did() const {
+     inline size_t Did() const {
          assert (is_pickup());
          return m_otherid;
      }
 
-     inline ID Pid() const {
+     inline size_t Pid() const {
          assert (is_delivery());
          return m_otherid;
      }
@@ -233,13 +259,13 @@ class Tw_node: public Node {
 
      Tw_node(const Tw_node &other) = default;
      Tw_node(
-             ID id,
+             size_t id,
              Customer_t data,
              NodeType type
             );
 
      Tw_node(
-             ID id,
+             size_t id,
              int64_t p_original_id,
              double x,
              double y,
@@ -257,6 +283,9 @@ class Tw_node: public Node {
      double m_closes;       ///< closing time of the node
      double m_service_time; ///< time it takes to be served
      double m_demand;       ///< The demand for the Node
-     ID m_otherid;          ///< the other's id
+     size_t m_otherid;      ///< the other's internal id
      NodeType m_type;       ///< The demand for the Node
 };
+
+}  // namespace pgRouting 
+}  // namespace vrp

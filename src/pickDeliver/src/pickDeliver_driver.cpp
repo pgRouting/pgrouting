@@ -25,7 +25,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 
 #ifdef __MINGW32__
@@ -72,7 +72,7 @@ do_pgr_pickDeliver(
 
         log << "Read data\n";
         std::string error("");
-        Pgr_pickDeliver pd_problem(customers_arr, total_customers, max_vehicles, capacity, max_cycles, error);
+        pgRouting::vrp::Pgr_pickDeliver pd_problem(customers_arr, total_customers, max_vehicles, capacity, max_cycles, error);
         if (error.compare("")) {
             pd_problem.get_log(log);
             *log_msg = strdup(log.str().c_str());
