@@ -42,13 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_pickDeliver.h"
 #include "./pickDeliver_driver.h"
 
-// #define DEBUG
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 /************************************************************
   customers_sql TEXT,
@@ -101,7 +98,7 @@ do_pgr_pickDeliver(
         log << "solution size: " << solution.size() << "\n";
         
 
-        (*result_tuples) = get_memory(solution.size(), (*result_tuples));
+        (*result_tuples) = pgr_alloc(solution.size(), (*result_tuples));
         int seq = 0;
         for (const auto &row : solution) {
             (*result_tuples)[seq] = row;

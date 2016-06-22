@@ -50,11 +50,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pickDeliver_driver.h"
 
 PG_FUNCTION_INFO_V1(pickDeliver);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
 pickDeliver(PG_FUNCTION_ARGS);
 
 
@@ -114,11 +109,7 @@ process(char* customers_sql,
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 pickDeliver(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     size_t              call_cntr;
