@@ -190,7 +190,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      void print_contracted_vertices(std::ostringstream &log, int64_t vertex_id) {
          if (!this->has_vertex(vertex_id)) return;
          V v = this->get_V(vertex_id);
-        log << " {";
+        log << "{";
         for (auto vertex : this->graph[v].contracted_vertices()) {
             log << this->graph[vertex].id << ", ";
         }
