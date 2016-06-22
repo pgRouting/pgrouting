@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-#define DEBUG
+// #define DEBUG
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -92,7 +92,7 @@ do_pgr_contractGraph(
 				<< ")\n";
 		}
 
-        pgassertwm(false, log.str());
+        //pgassertwm(false, log.str());
 		const int64_t initial_size = (int64_t)total_edges;
 		// Contraction_type contraction_type_count = Contraction_type::last;
 		log << "size_contraction_order " << size_contraction_order << "\n";
@@ -125,8 +125,8 @@ do_pgr_contractGraph(
 		log << " }\n";        
 		log << "max_cycles " << max_cycles << "\n";
 		log << "directed " << directed << "\n";
-		log << "gType " << gType << "\n";
-		log << "total_tuples " << initial_size << "\n";
+		//log << "gType " << gType << "\n";
+		//log << "total_tuples " << initial_size << "\n";
 
 		if (directed) {
 			log << "Working with directed Graph\n";
