@@ -226,12 +226,14 @@ template < class G >
 				graph.disconnect_vertex(debug, current_vertex);
 				linearVertices -= current_vertex;
 				
-				if (is_linear(graph, vertex_1, debug))
+				if (is_linear(graph, vertex_1, debug)
+					&& !forbiddenVertices.has(vertex_1))
 				{
 					linearPriority.push(vertex_1);
 					linearVertices += vertex_1;
 				}
-				if (is_linear(graph, vertex_2, debug))
+				if (is_linear(graph, vertex_2, debug)
+					&& !forbiddenVertices.has(vertex_2))
 				{
 					linearPriority.push(vertex_2);
 					linearVertices += vertex_2;
