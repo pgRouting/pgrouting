@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 
 #include "./../../common/src/pgr_types.h"
+#include "./../../common/src/pgr_assert.h"
 
 #include "./node.h"
 
@@ -57,22 +58,22 @@ class Tw_node: public Node {
 
 
      inline void set_Pid(size_t id) {
-         assert (is_delivery());
+         pgassert(is_delivery());
          m_otherid = id;
      }
 
      inline void set_Did(size_t id) {
-         assert (is_pickup());
+         pgassert(is_pickup());
          m_otherid = id;
      }
 
      inline size_t Did() const {
-         assert (is_pickup());
+         pgassert(is_pickup());
          return m_otherid;
      }
 
      inline size_t Pid() const {
-         assert (is_delivery());
+         pgassert(is_delivery());
          return m_otherid;
      }
 
@@ -197,7 +198,8 @@ class Tw_node: public Node {
      }
      /*! \brief True when \b arrivalTime in the time window */
      inline bool is_on_time(double arrival_time) const {
-         return !is_early_arrival(arrival_time) &&  !is_late_arrival(arrival_time);
+         return !is_early_arrival(arrival_time)
+             && !is_late_arrival(arrival_time);
      }
 
 
@@ -261,8 +263,7 @@ class Tw_node: public Node {
      Tw_node(
              size_t id,
              Customer_t data,
-             NodeType type
-            );
+             NodeType type);
 
      Tw_node(
              size_t id,
@@ -273,10 +274,9 @@ class Tw_node: public Node {
              double closes,
              double service_time,
              double demand,
-             NodeType type
-            );
+             NodeType type);
 
-    protected:
+ protected:
      bool is_valid() const;
 
      double m_opens;        ///< opening time of the node
@@ -287,5 +287,5 @@ class Tw_node: public Node {
      NodeType m_type;       ///< The demand for the Node
 };
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting

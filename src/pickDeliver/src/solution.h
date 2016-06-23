@@ -25,9 +25,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <deque>
+#include <tuple>
+#include <string>
+#include <vector>
 
-#include "vehicle_pickDeliver.h"
-#include "order.h"
+#include "./vehicle_pickDeliver.h"
+#include "./order.h"
 
 namespace pgRouting {
 namespace vrp {
@@ -37,7 +40,6 @@ class Pgr_pckDeliver;
 
 class Solution {
  protected:
-
      const double EPSILON = 0.001;
      std::deque<Vehicle_pickDeliver> fleet;
 
@@ -46,7 +48,6 @@ class Solution {
 
 
  public:
-
      typedef std::tuple< int, int, int, double, double > Cost;
 
      void get_postgres_result(
@@ -89,14 +90,16 @@ class Solution {
 
      std::string cost_str() const;
      std::string tau() const;
-     friend std::ostream& operator << (std::ostream &log, const Solution &solution);
+     friend std::ostream& operator<<(
+             std::ostream &log,
+             const Solution &solution);
      bool operator <(const Solution &s_rhs) const;
 
      double duration() const;
      double wait_time() const;
      int twcTot() const;
      int cvTot() const;
-     size_t fleet_size() const {return fleet.size();};
+     size_t fleet_size() const {return fleet.size();}
 
      /*
       * Cost in terms of a tuple
@@ -107,12 +110,8 @@ class Solution {
       * <4> capacity violations
       */
      Cost cost() const;
-
-
-
-
 };
 
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting

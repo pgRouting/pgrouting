@@ -25,6 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
+#include <string>
+#include <vector>
+
 #include "./solution.h"
 #include "./pgr_pickDeliver.h"
 
@@ -126,7 +129,7 @@ Solution::tau() const {
     log << "\nTau:" << std::endl;
     for (const auto v : fleet) {
         log << v.tau();
-    };
+    }
     log << cost_str();
 
     return log.str();
@@ -134,7 +137,6 @@ Solution::tau() const {
 
 std::ostream&
 operator << (std::ostream &log, const Solution &solution) {
-
     for (const auto vehicle : solution.fleet) {
         log << vehicle;
     }
@@ -191,10 +193,7 @@ Solution::operator<(const Solution &s_rhs) const {
         return false;
 
     return false;
-
 }
-
 
 }  //  namespace vrp
 }  //  namespace pgRouting
-

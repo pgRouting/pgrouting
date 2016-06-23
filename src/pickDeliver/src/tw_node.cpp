@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./tw_node.h"
 #include <limits>
+#include <string>
 
 namespace pgRouting {
 namespace vrp {
@@ -94,7 +95,6 @@ Tw_node::is_waitTime_compatible_IJ(const Tw_node &I) const {
 
 
 std::string Tw_node::type_str() const {
-
     switch (type()) {
         case kStart: return "START"; break;
         case kEnd: return "END"; break;
@@ -175,7 +175,6 @@ Tw_node::operator ==(const Tw_node &rhs) const {
 
 
 bool Tw_node::is_valid() const {
-
     switch (type()) {
         case kStart:
             return is_start();
@@ -213,8 +212,7 @@ bool Tw_node::is_valid() const {
 Tw_node::Tw_node(
         size_t id,
         Customer_t data,
-        NodeType type
-        ) :
+        NodeType type) :
     Node(id, data.id, data.x, data.y),
     m_opens(data.Etime),
     m_closes(data.Ltime),
@@ -233,8 +231,7 @@ Tw_node::Tw_node(
         double closes,
         double service_time,
         double demand,
-        NodeType type
-        ) :
+        NodeType type) :
     Node(id, original_id, x, y),
     m_opens(opens),
     m_closes(closes),
