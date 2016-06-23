@@ -166,11 +166,12 @@ SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[ ]::smallint[], ARRAY[0]::integer[], 1, true);
 
+/*
 PREPARE q5 AS
 SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[ ]::bigint[], ARRAY[0]::FLOAT8[], 1, true);
-
+*/
 
 -- Contraction order array should be an integer array
 PREPARE q7 AS
@@ -191,7 +192,7 @@ ARRAY[ ]::bigint[], ARRAY[0]::smallint[], 1);
 SELECT throws_ok('q1', 'XX000', 'Expected less than two dimension',
 'Throws because forbidden_vertices is BIGINT[][]');
 
-SELECT throws_ok('q2', 'XX000', 'One dimensin expected',
+SELECT throws_ok('q2', 'XX000', 'One dimension expected',
 'Throws because contraction_order is ARRAY[]');
 
 
