@@ -36,9 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-/*
-  Uncomment when needed
-*/
 // #define DEBUG
 
 #include "fmgr.h"
@@ -181,8 +178,8 @@ pickDeliver(PG_FUNCTION_ARGS) {
         /* This has to match you ouput otherwise the server crashes                   */
         /*
            OUT seq INTEGER,
-           OUT vehicle_seq INTEGER,
            OUT vehicle_id INTEGER,
+           OUT vehicle_seq INTEGER,
            OUT order_id BIGINT,
            OUT cost FLOAT,
            OUT agg_cost FLOAT
