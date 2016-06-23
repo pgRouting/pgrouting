@@ -48,7 +48,8 @@ class Vehicle_node: public Tw_node {
      /** @name log */
      ///@ {
 
-     friend std::ostream& operator << (std::ostream &log, const Vehicle_node &node);
+     friend std::ostream& operator<<(
+             std::ostream &log, const Vehicle_node &node);
 
      ///@}
 
@@ -67,7 +68,7 @@ class Vehicle_node: public Tw_node {
      /*! \brief Truck's departure_time from this node. */
      inline double departure_time() const {return m_departure_time;}
 
-     /*! \brief delta_time = departure_time(this node) - departure_time(previous). */
+     /*! \brief delta_time = departure_time(this) - departure_time(previous) */
      inline double delta_time() const {return m_delta_time;}
 
      ///@}
@@ -116,10 +117,12 @@ class Vehicle_node: public Tw_node {
      bool feasable(double cargoLimit) const {
          return feasable() &&  !has_twv() &&  !has_cv(cargoLimit);
      }
-     /*! \brief True when the Truck at this node doesn not violate time windows */
+
+     /*! \brief True when at this node does not violate time windows */
      bool has_twv() const {
          return is_late_arrival(m_arrival_time);
      }
+
      /*! \brief True when not violation
       *
       * Ending's or start's cargo should be 0
@@ -139,8 +142,9 @@ class Vehicle_node: public Tw_node {
      /** @name Document*/
      ///@ {
 
-     /*! \brief returns the arrval time to \bthis based on current arrival time of \bother */
-     double arrival_i_arrives_j(const Vehicle_node &other) const;
+     /*! \brief returns the arrval time at \bthis: visited after \bother */
+     double arrival_i_arrives_j(
+             const Vehicle_node &other) const;
 
      ///@}
 

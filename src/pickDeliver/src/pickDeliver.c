@@ -35,10 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
+#include "fmgr.h"
 
 // #define DEBUG
 
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
@@ -51,8 +51,8 @@ PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
+/*********************************************************************/
+/*                MODIFY AS NEEDED                                   */
 static
 void
 process(char* customers_sql,
@@ -146,12 +146,13 @@ pickDeliver(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                             */
-        /*******************************************************************************/
+        /*                                                                   */
+        /*********************************************************************/
 
         funcctx->max_calls = (uint32)result_count;
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -173,9 +174,9 @@ pickDeliver(PG_FUNCTION_ARGS) {
         Datum        *values;
         char*        nulls;
 
-        /*******************************************************************************/
-        /*                          MODIFY!!!!!                                        */
-        /* This has to match you ouput otherwise the server crashes                   */
+        /*********************************************************************/
+        /*                          MODIFY!!!!!                              */
+        /* This has to match you ouput otherwise the server crashes          */
         /*
            OUT seq INTEGER,
            OUT vehicle_id INTEGER,
@@ -183,7 +184,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
            OUT order_id BIGINT,
            OUT cost FLOAT,
            OUT agg_cost FLOAT
-         ********************************************************************************/
+         *********************************************************************/
 
 
         values = palloc(9 * sizeof(Datum));
@@ -206,7 +207,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
         values[7] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
         values[8] = Float8GetDatum(result_tuples[call_cntr].departureTime);
 
-        /*******************************************************************************/
+        /*********************************************************************/
 
         tuple = heap_formtuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
@@ -218,4 +219,3 @@ pickDeliver(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

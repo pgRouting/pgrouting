@@ -38,8 +38,6 @@ void fetch_customer(
         TupleDesc *tupdesc,
         Column_info_t info[9],
         Customer_t *customer) {
-
-
     customer->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     customer->x = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
     customer->y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
@@ -125,9 +123,11 @@ pgr_get_customers_data(
         PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {
             if ((*customers) == NULL)
-                (*customers) = (Customer_t *)palloc0(total_tuples * sizeof(Customer_t));
+                (*customers) = (Customer_t *)palloc0(
+                        total_tuples * sizeof(Customer_t));
             else
-                (*customers) = (Customer_t *)repalloc((*customers), total_tuples * sizeof(Customer_t));
+                (*customers) = (Customer_t *)repalloc(
+                        (*customers), total_tuples * sizeof(Customer_t));
 
             if ((*customers) == NULL) {
                 elog(ERROR, "Out of memory");

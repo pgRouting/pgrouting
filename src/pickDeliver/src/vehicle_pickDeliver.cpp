@@ -72,12 +72,12 @@ Vehicle_pickDeliver::insert_less_travel_time(const Order &order) {
     auto pick_pos = Vehicle::insert_less_travel_time(order.pickup());
 
 
-    problem->log << "\n ----------------------------------after inserting pickup";
+    problem->log << "\n ---------------------------after inserting pickup";
     problem->log << (*this);
 
     Vehicle::insert_less_travel_time(order.delivery(), pick_pos + 1);
 
-    problem->log << "\n ----------------------------------after inserting delivery";
+    problem->log << "\n -------------------------after inserting delivery";
     problem->log << (*this);
 
 
@@ -232,7 +232,8 @@ Vehicle_pickDeliver::pop_back() {
     m_path.erase((pick_itr + 1).base());
 
     auto delivery_itr = m_path.rbegin();
-    while (delivery_itr != m_path.rend() &&  !(delivery_itr->id() ==delivery_id)) {
+    while (delivery_itr != m_path.rend()
+            && !(delivery_itr->id() ==delivery_id)) {
         ++delivery_itr;
     }
 
@@ -276,7 +277,8 @@ Vehicle_pickDeliver::pop_front() {
     m_path.erase(pick_itr);
 
     auto delivery_itr = m_path.begin();
-    while (delivery_itr != m_path.end() &&  !(delivery_itr->id() ==delivery_id)) {
+    while (delivery_itr != m_path.end()
+            && !(delivery_itr->id() == delivery_id)) {
         ++delivery_itr;
     }
 

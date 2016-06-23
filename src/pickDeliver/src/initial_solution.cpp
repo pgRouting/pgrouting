@@ -24,10 +24,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
+#include "./initial_solution.h"
+#include <deque>
+#include <algorithm>
+#include <set>
 #include "../../common/src/pgr_assert.h"
-#include "solution.h"
-#include "initial_solution.h"
-#include "pgr_pickDeliver.h"
+#include "./solution.h"
+#include "./pgr_pickDeliver.h"
 
 namespace pgRouting {
 namespace vrp {
@@ -50,7 +53,6 @@ Initial_solution::Initial_solution(
         int kind,
         const Pgr_pickDeliver *p_problem) :
     Solution(p_problem) {
-
         for (const auto &order : problem->orders()) {
             unassigned.insert(order.id());
         }
@@ -80,7 +82,6 @@ Initial_solution::Initial_solution(
                 insert_while_compatibleI();
                 break;
         }
-
     }
 
 
@@ -96,7 +97,9 @@ Initial_solution::fill_truck_while_compatibleJ(
      * (all orders in the truck are in the assigned set)
      */
     std::set<size_t> invariant_set;
-    std::set_intersection(truck.orders_in_vehicle.begin(), truck.orders_in_vehicle.end(),
+    std::set_intersection(
+            truck.orders_in_vehicle.begin(),
+            truck.orders_in_vehicle.end(),
             assigned.begin(), assigned.end(),
             std::inserter(invariant_set, invariant_set.begin()));
     pgassert(invariant_set == truck.orders_in_vehicle);
@@ -201,19 +204,25 @@ Initial_solution::first_ordersIJ() const {
             (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleJ.size()
             < prob->orders()[rhs].m_compatibleJ.size();
-            } );
+            });
     std::stable_sort(orders.begin(), orders.end(), [&prob]
             (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleI.size()
             < prob->orders()[rhs].m_compatibleI.size();
-            } );
+            });
 
 #if 0
     problem->log << "\n Sorted orders by compatibleI.size\n";
-    for (const auto &o: orders) {
-        problem->log << "\n|" << o << "| = " << problem->orders()[o].m_compatibleI.size();
-        problem->log << "\t|" << o << "| = " << problem->orders()[o].m_compatibleJ.size();
-    };
+    for (const auto &o : orders) {
+        problem->log << "\n|"
+            << o
+            << "| = "
+            << problem->orders()[o].m_compatibleI.size();
+        problem->log << "\t|"
+            << o
+            << "| = "
+            << problem->orders()[o].m_compatibleJ.size();
+    }
 #endif
     return orders;
 }
@@ -247,7 +256,8 @@ Initial_solution::insert_while_compatibleJ() {
             unassigned.erase(unassigned.find(order.id()));
             invariant();
 
-            std::set<size_t> compatible_orders(problem->orders()[order.id()].m_compatibleJ);
+            std::set<size_t> compatible_orders(
+                    problem->orders()[order.id()].m_compatibleJ);
             std::set<size_t> possible_orders;
             std::set_intersection(
                     compatible_orders.begin(), compatible_orders.end(),
@@ -272,7 +282,7 @@ Initial_solution::insert_while_compatibleJ() {
             truck = newtruck;
         }
         invariant();
-    };
+    }
 }
 
 
@@ -390,19 +400,25 @@ Initial_solution::first_ordersJI() const {
             (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleI.size()
             < prob->orders()[rhs].m_compatibleI.size();
-            } );
+            });
     std::stable_sort(orders.begin(), orders.end(), [&prob]
             (const size_t &lhs, const size_t &rhs) -> bool
             {return prob->orders()[lhs].m_compatibleJ.size()
             < prob->orders()[rhs].m_compatibleJ.size();
-            } );
+            });
 
 #if 0
     problem->log << "\n Sorted orders by compatibleI.size\n";
-    for (const auto &o: orders) {
-        problem->log << "\n|" << o << "| = " << problem->orders()[o].m_compatibleI.size();
-        problem->log << "\t|" << o << "| = " << problem->orders()[o].m_compatibleJ.size();
-    };
+    for (const auto &o : orders) {
+        problem->log << "\n|"
+            << o
+            << "| = "
+            << problem->orders()[o].m_compatibleI.size();
+        problem->log << "\t|"
+            << o
+            << "| = "
+            << problem->orders()[o].m_compatibleJ.size();
+    }
 #endif
     return orders;
 }
@@ -434,7 +450,8 @@ Initial_solution::insert_while_compatibleI() {
             unassigned.erase(unassigned.find(order.id()));
             invariant();
 
-            std::set<size_t> compatible_orders(problem->orders()[order.id()].m_compatibleI);
+            std::set<size_t> compatible_orders(
+                    problem->orders()[order.id()].m_compatibleI);
             std::set<size_t> possible_orders;
             std::set_intersection(
                     compatible_orders.begin(), compatible_orders.end(),
@@ -458,7 +475,7 @@ Initial_solution::insert_while_compatibleI() {
             truck = newtruck;
         }
         invariant();
-    };
+    }
 }
 
 
@@ -498,7 +515,7 @@ Initial_solution::insert_while_feasable() {
         }
 
         invariant();
-    };
+    }
 }
 
 void
@@ -531,7 +548,7 @@ Initial_solution::push_front_while_feasable() {
         }
 
         invariant();
-    };
+    }
 }
 
 void
@@ -563,7 +580,7 @@ Initial_solution::push_back_while_feasable() {
         }
 
         invariant();
-    };
+    }
 }
 
 
@@ -587,7 +604,7 @@ Initial_solution::one_truck_per_order() {
         unassigned.erase(unassigned.begin());
 
         invariant();
-    };
+    }
 }
 
 
@@ -611,7 +628,7 @@ Initial_solution::one_truck_all_orders() {
         unassigned.erase(unassigned.begin());
 
         invariant();
-    };
+    }
     fleet.push_back(truck);
 }
 

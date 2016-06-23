@@ -149,7 +149,9 @@ Vehicle_node::deltaGeneratesTWV(double delta_time) const {
   */
 double
 Vehicle_node::arrival_i_arrives_j(const Vehicle_node &other) const {
-    return other.arrival_time() + other.service_time() + other.travel_time_to(*this);
+    return other.arrival_time()
+        + other.service_time()
+        + other.travel_time_to(*this);
 }
 
 }  //  namespace vrp

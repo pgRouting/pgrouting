@@ -79,7 +79,11 @@ class Vehicle {
              int vid,
              std::vector< General_vehicle_orders_t > &result) const;
 
-     Vehicle(ID id, const Vehicle_node &starting_site, const Vehicle_node &ending_site, double max_capacity);
+     Vehicle(
+             ID id,
+             const Vehicle_node &starting_site,
+             const Vehicle_node &ending_site,
+             double max_capacity);
 
 
 

@@ -37,7 +37,9 @@ double Node::travel_time_to(const Node &other) const {
 }
 
 std::ostream& operator << (std::ostream &log, const Node &node) {
-    log << node.m_original_id << "(" << node.m_id << ")" << static_cast<const Point&>(node);
+    log << node.m_original_id
+        << "(" << node.m_id << ")"
+        << static_cast<const Point&>(node);
     return log;
 }
 

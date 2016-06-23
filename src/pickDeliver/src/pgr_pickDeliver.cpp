@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <sstream>
+#include <string>
 #include <vector>
 #include <algorithm>
 
@@ -66,19 +67,19 @@ Pgr_pickDeliver::solve() {
     std::sort(solutions.begin(), solutions.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
-            } );
+            });
 }
 
 
 
 void
-Pgr_pickDeliver::get_postgres_result(std::vector< General_vehicle_orders_t > &result) const {
-
+Pgr_pickDeliver::get_postgres_result(
+        std::vector< General_vehicle_orders_t > &result) const {
     solutions.back().get_postgres_result(result);
 
     Solution::Cost cost(solutions.back().cost());
 
-    General_vehicle_orders_t aggregates( {
+    General_vehicle_orders_t aggregates({
             /*
              * Vehicle id = -1 indicates its an aggregate row
              *
@@ -87,10 +88,10 @@ Pgr_pickDeliver::get_postgres_result(std::vector< General_vehicle_orders_t > &re
             -1,
             std::get<0>(cost),  //  on vehicle seq tw violations
             std::get<1>(cost),  //  on stop id: capacity violations
-            0,  //  TODO not accounting total_travel_time
-            0,  //  not accounting arrival_travel_time
+            0,  // TODO(vicky) not accounting total_travel_time
+            0,  // not accounting arrival_travel_time
             std::get<3>(cost),  //  on wait time
-            0,  //  TODO not accounting service_time
+            0,  // TODO(vicky) not accounting service_time
             std::get<4>(cost)  //  on departure_time
             });
     result.push_back(aggregates);
@@ -115,8 +116,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     max_capacity(p_capacity),
     max_cycles(p_max_cycles),
     max_vehicles(p_max_vehicles),
-    m_starting_site( {0, customers_data[0], Tw_node::NodeType::kStart}),
-    m_ending_site( {0, customers_data[0], Tw_node::NodeType::kEnd}),
+    m_starting_site({0, customers_data[0], Tw_node::NodeType::kStart}),
+    m_ending_site({0, customers_data[0], Tw_node::NodeType::kEnd}),
     m_original_data(customers_data, customers_data + total_customers) {
         std::ostringstream tmplog;
         error = "";
@@ -137,8 +138,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
 
-        m_starting_site = Vehicle_node( {0, customers_data[0], Tw_node::NodeType::kStart});
-        m_ending_site = Vehicle_node( {1, customers_data[0], Tw_node::NodeType::kEnd});
+        m_starting_site = Vehicle_node(
+                {0, customers_data[0], Tw_node::NodeType::kStart});
+        m_ending_site = Vehicle_node(
+                {1, customers_data[0], Tw_node::NodeType::kEnd});
         if (!m_starting_site.is_start()) {
             log << "DEPOT" << m_starting_site;
             error = "Illegal values found on the starting site";
@@ -179,7 +182,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             /*
              * pickup is found
              */
-            Tw_node pickup( {node_id++, p, Tw_node::NodeType::kPickup});
+            Tw_node pickup({node_id++, p, Tw_node::NodeType::kPickup});
             if (!pickup.is_pickup()) {
                 log << "PICKUP" << pickup;
                 tmplog << "Illegal values found on Pickup " << p.id;
@@ -192,14 +195,19 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             /*
              * look for corresponding the delivery of the pickup
              */
-            auto deliver_ptr = std::lower_bound(m_original_data.begin(), m_original_data.end(), p,
-                    [] (const Customer_t &delivery, const Customer_t &pick) -> bool
-                    {return delivery.id < pick.Dindex;}
-                    );
+            auto deliver_ptr = std::lower_bound(
+                    m_original_data.begin(),
+                    m_original_data.end(),
+                    p,
+                    [] (const Customer_t &delivery, const Customer_t &pick)
+                    -> bool
+                    {return delivery.id < pick.Dindex;});
 
             if (deliver_ptr == m_original_data.end()
                      || deliver_ptr->id != p.Dindex) {
-                tmplog << "For Pickup " << p.id << " the corresponding Delivery was not found";
+                tmplog << "For Pickup "
+                    << p.id
+                    << " the corresponding Delivery was not found";
                 error = tmplog.str();
                 return;
             }
@@ -208,10 +216,14 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             /*
              * delivery is found
              */
-            Tw_node delivery(node_id++, (*deliver_ptr), Tw_node::NodeType::kDelivery);
+            Tw_node delivery(
+                    node_id++,
+                    (*deliver_ptr),
+                    Tw_node::NodeType::kDelivery);
             if (!delivery.is_delivery()) {
                 log << "DELIVERY" << delivery;
-                tmplog << "Illegal values found on Delivery " << deliver_ptr->id;
+                tmplog << "Illegal values found on Delivery "
+                    << deliver_ptr->id;
                 error = tmplog.str();
                 return;
             }
@@ -226,7 +238,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             m_nodes.push_back(pickup);
             m_nodes.push_back(delivery);
 
-            m_orders.push_back( Order(order_id, node(node_id - 2), node(node_id - 1), this) );
+            m_orders.push_back(
+                    Order(order_id, node(node_id - 2),
+                        node(node_id - 1),
+                        this));
             pgassert(m_orders.back().pickup().is_pickup());
             pgassert(m_orders.back().delivery().is_delivery());
             pgassert(static_cast<Tw_node> (m_orders.back().pickup()) == pickup);
@@ -235,17 +250,23 @@ Pgr_pickDeliver::Pgr_pickDeliver(
              * check the (S, P, D, E) order
              */
             {
-                Vehicle_pickDeliver truck(order_id, m_starting_site, m_ending_site, max_capacity, this);
+                Vehicle_pickDeliver truck(
+                        order_id,
+                        m_starting_site,
+                        m_ending_site,
+                        max_capacity,
+                        this);
                 truck.push_back(m_orders.back());
 
                 if (!truck.is_feasable()) {
                     log << truck << "\n";
                     tmplog << "The (pickup, delivery) = ("
                         << m_orders.back().pickup().original_id() << ", "
-                        << m_orders.back().delivery().original_id() << ") is not feasable";
+                        << m_orders.back().delivery().original_id()
+                        << ") is not feasable";
                     error = tmplog.str();
                     return;
-                };
+                }
                 pgassert(truck.is_feasable());
             }  //  check
 
@@ -255,7 +276,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         /*
          * double check we found all orders
          */
-        if (((m_orders.size() * 2 + 1) - m_original_data.size()) != 0 ) {
+        if (((m_orders.size() * 2 + 1) - m_original_data.size()) != 0) {
             error = "A pickup was not found";
             return;
         }
@@ -277,7 +298,7 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
         for (const auto o : m_orders) {
             if (o.pickup().id() == node.id()) {
                 return o;
-            };
+            }
         }
     }
     assert(node.is_delivery());
@@ -293,8 +314,8 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
 
 const Vehicle_node&
 Pgr_pickDeliver::node(ID id) const {
-    assert (id < m_nodes.size());
-    assert (id == m_nodes[id].id());
+    pgassert(id < m_nodes.size());
+    pgassert(id == m_nodes[id].id());
     return m_nodes[id];
 }
 

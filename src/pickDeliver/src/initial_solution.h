@@ -26,12 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <set>
+#include <deque>
+#include "./solution.h"
 
 namespace pgRouting {
 namespace vrp {
 
 
-class Solution;
 class Pgr_pickDeliver;
 
 
@@ -70,10 +71,7 @@ class Initial_solution : public Solution {
      std::set<size_t> all_orders;
      std::set<size_t> unassigned;
      std::set<size_t> assigned;
-
 };
 
-}  //  namespace pgRouting
 }  //  namespace vrp
-
-
+}  //  namespace pgRouting

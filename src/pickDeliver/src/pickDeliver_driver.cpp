@@ -27,24 +27,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#include "./pgr_pickDeliver.h"
 
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
-
 #include <sstream>
-#include <string.h>
+#include <string>
 #include <deque>
 #include <vector>
 #include "./../../common/src/pgr_assert.h"
-#include "./pgr_pickDeliver.h"
-#include "./pickDeliver_driver.h"
-
-
 #include "./../../common/src/pgr_types.h"
-
 #include "./../../common/src/pgr_alloc.hpp"
 
 /************************************************************
@@ -72,7 +67,13 @@ do_pgr_pickDeliver(
 
         log << "Read data\n";
         std::string error("");
-        pgRouting::vrp::Pgr_pickDeliver pd_problem(customers_arr, total_customers, max_vehicles, capacity, max_cycles, error);
+        pgRouting::vrp::Pgr_pickDeliver pd_problem(
+                customers_arr,
+                total_customers,
+                max_vehicles,
+                capacity,
+                max_cycles,
+                error);
         if (error.compare("")) {
             pd_problem.get_log(log);
             *log_msg = strdup(log.str().c_str());
@@ -107,7 +108,6 @@ do_pgr_pickDeliver(
         (*total_count) = solution.size();
 
         *log_msg = strdup(log.str().c_str());
-
     } catch (AssertFailedException &exept) {
         log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());

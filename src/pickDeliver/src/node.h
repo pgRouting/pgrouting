@@ -22,12 +22,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-// TODO (vicky) license
 
 #pragma once
 
 #include <string>
-#include "point.h"
+#include "./point.h"
 
 namespace pgRouting {
 namespace vrp {
@@ -43,29 +42,30 @@ namespace vrp {
  */
 
 class Node : public Point {
-    public:
-        /** @name accessors */
-        ///@ {
+ public:
+     /** @name accessors */
+     ///@ {
 
-        inline size_t id() const {return m_id;}
-        inline int64_t original_id() const {return m_original_id;}
+     inline size_t id() const {return m_id;}
+     inline int64_t original_id() const {return m_original_id;}
 
-        ///@}
+     ///@}
 
-        Node(size_t id, int64_t original_id, double x, double y);
+     Node(size_t id, int64_t original_id, double x, double y);
 
 
-        /** @name state */
-        ///@ {
+     /** @name state */
+     ///@ {
 
-        bool isSamePos(const Node &other) const;
-        double travel_time_to(const Node &node2) const;
-        friend std::ostream& operator << (std::ostream &log, const Node &node);
-        bool operator ==(const Node &rhs) const;
-    private:
-        size_t m_id;                ///< internal node number
-        int64_t m_original_id;  // /< user supplied node number
+     bool isSamePos(const Node &other) const;
+     double travel_time_to(const Node &node2) const;
+     friend std::ostream& operator << (std::ostream &log, const Node &node);
+     bool operator ==(const Node &rhs) const;
+
+ private:
+     size_t m_id;                ///< internal node number
+     int64_t m_original_id;  // /< user supplied node number
 };
 
-}  //  namespace vrp;
-}  //  namespace pgrouting;
+}  //  namespace vrp
+}  //  namespace pgRouting

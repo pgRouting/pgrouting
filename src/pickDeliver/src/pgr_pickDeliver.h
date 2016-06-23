@@ -31,11 +31,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_types.h"
 
+#include <string>
+#include <vector>
 #include <sstream>
-#include <string.h>
 
-
-//#include "./pdp.hpp"
 #include "./vehicle_node.h"
 #include "./order.h"
 #include "./solution.h"
@@ -53,8 +52,8 @@ class Pgr_pickDeliver {
     friend Initial_solution;
     friend Solution;
     typedef size_t ID;
- public:
 
+ public:
     Pgr_pickDeliver(
             const Customer_t *c1, size_t total_customers,
             int VehicleLength,
@@ -64,8 +63,9 @@ class Pgr_pickDeliver {
 
     void solve();
 
-    void get_postgres_result(std::vector< General_vehicle_orders_t > &result) const;
-   /*****************/
+    void get_postgres_result(
+            std::vector< General_vehicle_orders_t > &result) const;
+    /*****************/
 
     const Order order_of(const Vehicle_node &node) const;
     const Vehicle_node& node(ID id) const;
@@ -81,7 +81,7 @@ class Pgr_pickDeliver {
         log.str("");
         log.clear();
         return p_log;
-    };
+    }
 
 
  private:
@@ -94,9 +94,7 @@ class Pgr_pickDeliver {
     std::vector<Order> m_orders;
     std::vector<Solution> solutions;
     mutable std::ostringstream log;
-
 };
 
-}  //  namespace pgRouting
 }  //  namespace vrp
-
+}  //  namespace pgRouting

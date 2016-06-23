@@ -26,8 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+#include <set>
 #include <iostream>
-#include "vehicle_node.h"
+#include "./vehicle_node.h"
 
 namespace pgRouting {
 namespace vrp {
@@ -53,7 +54,7 @@ class Order {
 
      /*************accesosrs*/
 
-     inline size_t id() const {return m_id;};
+     inline size_t id() const {return m_id;}
      const Vehicle_node& delivery() const;
      const Vehicle_node& pickup() const;
      void setCompatibles();
@@ -75,9 +76,8 @@ class Order {
 
      friend std::ostream& operator << (std::ostream&, const Order &);
 
- //    void moveOrder(const int toRoute);
+     //    void moveOrder(const int toRoute);
  private:
-
      size_t m_id;
 
      size_t pickup_id;
@@ -98,9 +98,7 @@ class Order {
 
      /* order belongs to this problem */
      const Pgr_pickDeliver *problem;
-
 };
 
-}  //  namespace pgRouting
 }  //  namespace vrp
-
+}  //  namespace pgRouting

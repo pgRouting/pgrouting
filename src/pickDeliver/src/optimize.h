@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#include "optimize.h"
+#include "./optimize.h"
 
 namespace pgRouting {
 namespace vrp {
@@ -36,7 +36,6 @@ class Pgr_pickDeliver;
 
 class Optimize : public Solution {
  public:
-
      Optimize(int kind,
              const Solution &solution);
 
@@ -45,10 +44,7 @@ class Optimize : public Solution {
       * Optimization by decreasing one truck
       */
      void decrease_truck();
-
-
-
 };
 
-}  //  namespace pgRouting
 }  //  namespace vrp
+}  //  namespace pgRouting

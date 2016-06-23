@@ -149,7 +149,6 @@ Vehicle::get_postgres_result(
         result.push_back(data);
         ++i;
     }
-
 }
 
 
@@ -191,7 +190,8 @@ Vehicle::deltaTime(const Vehicle_node &node, POS pos) const {
         : tt_p_n;
 
     auto tt_n_x = node.travel_time_to(next);
-    tt_p_n = next.is_early_arrival(prev.departure_time() + tt_p_n + node.service_time() + tt_n_x) ?
+    tt_p_n = next.is_early_arrival(
+            prev.departure_time() + tt_p_n + node.service_time() + tt_n_x) ?
         next.closes() - (prev.departure_time() + tt_p_n + node.service_time())
         : tt_n_x;
 
