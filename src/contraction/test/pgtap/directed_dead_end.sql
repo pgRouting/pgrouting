@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(39);
+SELECT plan(40);
 
 SET client_min_messages TO WARNING;
 -- TESTING ONE CYCLE OF DEAD END CONTRACTION FOR A DIRECTED GRAPH 
@@ -37,6 +37,7 @@ SELECT * FROM pgr_contractgraph(
 
 PREPARE v3e2q11 AS
 SELECT * FROM ( VALUES (1, 1, 'v', -1, -1, '{2, 3, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+SELECT set_eq('v3e2q10', 'v3e2q11', '1: Directed graph with single edge and no forbidden vertices');
 
 -- 3 is forbidden
 PREPARE v3e2q20 AS
@@ -428,3 +429,6 @@ PREPARE v6e4q81 AS
 SELECT * FROM ( VALUES (1, 2, 'v', -1, -1, '{3, 4, }')) AS t(seq, id, type, source, target, contracted_vertices);
 
 SELECT set_eq('v6e4q80', 'v6e4q81', '8: Directed graph with four edges and 2 is forbidden vertex');
+
+SELECT finish();
+ROLLBACK;
