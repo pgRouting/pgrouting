@@ -36,7 +36,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include <limits> 
+#include <algorithm>
 #include "../../common/src/pgr_base_graph.hpp"
+
+
 namespace pgRouting {
 
 namespace graph {
@@ -200,7 +203,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
      void get_ids(std::ostringstream &log,
         Identifiers<int64_t> boost_ids) {
-        log << " {";
+        log << "{";
          for (auto id : boost_ids) {
             log << this->graph[id].id << ", ";
         }
@@ -351,6 +354,12 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         log << this->graph[min_cost_edge];  
         return min_cost_edge;
     }
+
+    static bool compareById(const T_E &edge1, const T_E &edge2)
+    {
+        return edge1.id > edge2.id;
+    }
+
     void get_shortcuts(std::vector<T_E>& shortcuts, std::ostringstream& log)
     {
         log << "Getting shortcuts\n";
@@ -369,6 +378,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
                 }
             }
         }
+        std::sort(shortcuts.begin(), shortcuts.end(), compareById);
     }
 
     void add_contracted_edge_vertices(V v, T_E &e)
