@@ -38,3 +38,24 @@ VALUES ( 7, 8, 7, 1 , -1);
 
 INSERT INTO edge_table (id, source, target, cost,reverse_cost) 
 VALUES ( 8, 7, 6, 1 , -1);
+
+INSERT INTO edge_table (id, source, target, cost,reverse_cost) 
+VALUES ( 9, 2, 10, 1 , -1);
+
+INSERT INTO edge_table (id, source, target, cost,reverse_cost) 
+VALUES ( 10, 10, 9, 1 , -1);
+
+INSERT INTO edge_table (id, source, target, cost,reverse_cost) 
+VALUES ( 11, 9, 1, 1 , -1);
+
+INSERT INTO edge_table (id, source, target, cost,reverse_cost) 
+VALUES ( 12, 3, 11, 1 , -1);
+
+INSERT INTO edge_table (id, source, target, cost,reverse_cost) 
+VALUES ( 13, 11, 10, 1 , -1);
+
+INSERT INTO edge_table (id, source, target, cost,reverse_cost) 
+VALUES ( 14, 4, 12, 1 , -1);
+
+INSERT INTO edge_table (id, source, target, cost,reverse_cost) 
+VALUES ( 15, 11, 12, 1 , -1);
