@@ -76,20 +76,22 @@ void perform_linear(G &graph,
     Identifiers<int64_t>& forbidden_vertices,
     std::ostringstream& debug)
 {
+    std::ostringstream linear_debug;
     pgRouting::Pgr_linearContraction<G> linearContractor;
-    debug << "Setting forbidden_vertices";
     linearContractor.setForbiddenVertices(graph, forbidden_vertices
-        , debug);
-    linearContractor.calculateVertices(graph, debug);
+        , linear_debug);
+    linearContractor.calculateVertices(graph, linear_debug);
     try
     {
         #if 1
-        linearContractor.doContraction(graph, debug);
+        linearContractor.doContraction(graph, linear_debug);
         #endif
     }
     catch ( ... ) {
-        debug << "Caught unknown expection!\n";
+        linear_debug << "Caught unknown expection!\n";
     }
+    debug << linear_debug.str().c_str() << "\n";
+
 }
 #endif
 
@@ -103,29 +105,6 @@ void pgr_contractGraph(
     Identifiers<int64_t> &remaining_vertices,
     std::vector<pgRouting::contraction::Edge> &shortcut_edges, 
     std::ostringstream& debug) {
-
-    //typedef typename G::V V;
-    //Pgr_contract< G > fn_contract;
-
-   /* debug << "Forbidden vertices\n" <<   " { \n";
-        for (int64_t i = 0; i < size_forbidden_vertices; ++i) {
-            debug << forbidden_vertices[i] << ", ";
-            debug << "\n";
-        }
-        debug << " }\n";  */
-
-    /*
-        The forbidden vertices and all vertices are
-        computed before contraction
-    */
-    #if 0
-    debug << "Forbidden vertices" << "\n";
-    fn_contract.setForbiddenVertices(forbidden_vertices,size_forbidden_vertices);
-    fn_contract.print_forbidden_vertices(debug);
-    debug << "All vertices" << "\n";
-    fn_contract.getAllVertices(graph);
-    fn_contract.print_all_vertices(debug);
-    #endif
 
     std::deque<int64_t> contract_order;
     // push -1 to indicate the start of the queue
@@ -174,18 +153,13 @@ void pgr_contractGraph(
 
     }
     graph.get_remaining_vertices(debug, remaining_vertices);
-    graph.get_shortcuts(shortcut_edges, debug);
-    
-    #if 0
-    debug << "Dead end set" << "\n";
-    fn_contract.getDeadEndSet(graph);
-    fn_contract.print_dead_end_vertices(debug);
-    debug << "Non contractible set" << "\n";
-    fn_contract.getNonContractedVertices();
-    fn_contract.print_non_contracted_vertices(debug);
-    debug << "Adjacent vertices of vertex 6" << "\n";
-    fn_contract.print_identifiers(debug, fn_contract.getAdjacentVertices(graph, 6));
-    #endif
+    //graph.get_shortcuts(shortcut_edges, debug);
+    debug << "Printing shortcuts\n";
+    for (auto shortcut : graph.shortcuts) {
+        debug << shortcut;
+        shortcut_edges.push_back(shortcut);
+    }
+    //graph.print_shortcuts(debug);
 }
 
 bool is_valid_contraction_number(int number) {
