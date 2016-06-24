@@ -12,15 +12,23 @@
 Traveling Sales Person
 ===============================================================================
 
-                                                                                                                                                                                                                                                                               
-  - :ref:`pgr_TSP` - When input is given as matrix cell information.
-  - :ref:`pgr_eucledianTSP` - When input are coordinates.
-                                                                                                                                                                                                                                                                               
+- :ref:`pgr_TSP` - When input is given as matrix cell information.
+- :ref:`pgr_eucledianTSP` - When input are coordinates.
+
+- Pre processing
+
+- :ref:`costMatrix` Distance matrix
+
+  - :ref:`pgr_dijkstraCostMatrix` - Use pgr_dijktra to calculate a cost matrix.
+  - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+
+
 .. toctree::
     :hidden:
 
     ./pgr_tsp
     ./pgr_eucledianTSP
+    ../../costMatrix/doc/costMatrix
 
 .. NOTE:: These signatures are being deprecated
 
@@ -41,7 +49,8 @@ Traveling Sales Person
     Use :ref:`pgr_eucledianTSP` insteadi of (1).
     Use :ref:`pgr_TSP` instead of (2).
 
-
+General Information 
+------------------------------------
 
 Origin 
 ..........
@@ -271,7 +280,7 @@ With the new functionality:
 
 
 See Also
--------------------------------------------------------------------------------
+.........................
 
   * http://en.wikipedia.org/wiki/Traveling_salesman_problem
   * http://en.wikipedia.org/wiki/Simulated_annealing

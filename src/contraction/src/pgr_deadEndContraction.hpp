@@ -137,7 +137,8 @@ namespace pgRouting {
 			else
 			{
 			if(graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
-				int64_t incoming_edge_id, outgoing_edge_id;
+				int64_t incoming_edge_id = -1;
+				int64_t outgoing_edge_id = -2;
 				EO_i out, out_end;
 				EI_i in, in_end;
 				for (boost::tie(out, out_end) = out_edges(v, graph.graph);

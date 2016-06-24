@@ -39,12 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./testXYedges_driver.h"
 
-<<<<<<< HEAD
-extern "C" {
-=======
-#define DEBUG
 
->>>>>>> develop
+#define DEBUG
 #include "./../../common/src/pgr_types.h"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
@@ -144,7 +140,7 @@ do_pgr_testXYedges(
 
         {
             log << "Testing Undirected ,  insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(UNDIRECTED);
+            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -159,7 +155,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(UNDIRECTED);
+            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -174,7 +170,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Undirected ,  insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(UNDIRECTED);
+            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -189,7 +185,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Undirected ,  creating with vertices, insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(vertices, UNDIRECTED);
+            pgRouting::xyUndirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 

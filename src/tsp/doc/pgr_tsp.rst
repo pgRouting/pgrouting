@@ -44,16 +44,16 @@ Signature Summary
     RETURS SETOF (seq, node, cost, agg_cost)
 
 Signatures
-===============
+-------------------------------------------------------------------------------
 
 .. NOTE:: The following only aplies to the new signature(s)
 
 
 .. index::
-    single: pgr_TSP(matrix_cell_sql)
+    single: TSP(Basic Use) -- New Signature
 
-Minimal Signature
--------------------------------------------------------------------------------
+Basic Use
+...............................................................................
 
 .. code-block:: none
 
@@ -69,12 +69,14 @@ and the default is to have random execution, the example is wrapping the actual 
    :start-after: -- q1
    :end-before: -- q2
 
+..
+    TODO Intermediate Use
 
 .. index::
-    single: pgr_eucledianTSP(matrix_cell_sql, <configuration parameters>) -- proposed
+    single: TSP(Complete Signature) -- New Signature
 
 Complete Signature
--------------------------------------------------------------------------------
+...............................................................................
 
 .. code-block:: none
 
@@ -96,10 +98,10 @@ Complete Signature
 
 
 Description of the Signatures
-=============================
-
-Description of the iMatrix Cell SQL query
 -------------------------------------------------------------------------------
+
+Description of the Matrix Cell SQL query
+...............................................................................
 
 ============= =========== =================================================
 Column        Type              Description
@@ -111,8 +113,8 @@ Column        Type              Description
 
 Can be Used with:
 
-* :ref:`pgr_dijkstraDmatrix`
-* :ref:`pgr_withPointsDmatrix`
+* :ref:`pgr_dijkstraCostmatrix`
+* :ref:`pgr_withPointsCostmatrix`
 * :ref:`pgr_floydWarshall`
 * :ref:`pgr_johnson`
 

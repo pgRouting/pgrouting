@@ -25,18 +25,9 @@ be useful when building a larger application or handling input from say an
 Ajax handler.
 
   -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-  -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
   -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
   -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
 
-Distance Matrix Functions
-===============================================================================
-
-These function my be helpful when you need to create or manipulate distance matricies, like for TSP or VRP related problems.
-
- - :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
- - :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
- - :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
 
 See also
 --------
@@ -51,11 +42,7 @@ See also
   :hidden:
 
   pgr_pointToEdgeNode
-  pgr_flipEdges
   pgr_textToPoints
   pgr_pointsToVids
 
-  pgr_pointsToDMatrix
-  pgr_vidsToDMatrix
-  pgr_vidsToDMatrix2
 

@@ -12,10 +12,6 @@
 pgr_createTopology
 ===============================================================================
 
-.. index:: 
-	single: pgr_createTopology(text,double precision,text,text,text,text,text)
-	module: common
-
 Name
 -------------------------------------------------------------------------------
 
@@ -29,6 +25,9 @@ The function returns:
 
   - ``OK`` after the network topology has been built and the vertices table created.
   - ``FAIL`` when the network topology was not built due to an error. 
+
+.. index:: 
+	single: createTopology(Complete Signature)
 
 .. code-block:: none
 

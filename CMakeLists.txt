@@ -292,7 +292,7 @@ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     "convenience"
     "topology"
     "label_graph"
-    "dmatrix"
+    "costMatrix"
 
     )
 
