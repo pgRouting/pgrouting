@@ -16,23 +16,6 @@ bool Vertex::has_contracted_vertices() const {
     return true; 
 }
 
-#if 0
-template<class T>
-void Vertex::add_contracted_edge_vertices(T &e) {
-
-    //adding the ids of the contracted vertices of the given edge e
-    m_contracted_vertices += e.contracted_vertices();
-
-    // empty the contracted vertices of the given edge e
-    e.clear_contracted_vertices();
-}
-#endif
-#if 0
-std::string Vertex_c::type_str() const {
-    return m_type.type_str();
-}
-#endif
-
 void Vertex::add_contracted_vertex(Vertex& v, int64_t vid) {
 
     // adding the id(boost graph) of the contracted vertex v
@@ -50,12 +33,6 @@ std::ostream& operator <<(std::ostream& os, const Vertex& v) {
     os << "{\n    id: " << v.id << ",\n";
     os << "    contracted vertices: ";
     os << v.contracted_vertices();
-    // <<  ", type: " << v.type_str();
-    //os << ", isDeleted: " << v.isDeleted();
-    /*os << " removed_vertices: {";
-    for (auto removed_vertex : v.removed_vertices().ids()) {
-        os << removed_vertex << ", ";
-    }*/
     os << "\n}";
     os << "\n";
     return os;
