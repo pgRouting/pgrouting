@@ -81,7 +81,7 @@ do_pgr_contractGraph(
 		Identifiers<int64_t> remaining_vertices;
 		std::vector< pgRouting::contraction::Edge > shortcut_edges;
 
-		log << "Original: \n" <<
+		log << "Original Graph: \n" <<
 			std::setprecision(32);
 		for (const auto edge: edges) {
 			log << "id = " << edge.id
@@ -91,46 +91,24 @@ do_pgr_contractGraph(
 				<< "\treverse_cost = " << edge.reverse_cost
 				<< ")\n";
 		}
-
-        //pgassertwm(false, log.str());
-		const int64_t initial_size = (int64_t)total_edges;
-		// Contraction_type contraction_type_count = Contraction_type::last;
 		log << "size_contraction_order " << size_contraction_order << "\n";
-		// log << "greatest contraction type " << static_cast<int>(contraction_type_count) << "\n";
-		log << "contraction_order\n" <<   " { \n";
+		log << "contraction_order: " <<"{ ";
 		for (size_t i = 0; i < size_contraction_order; ++i) {
 			log << contraction_order[i] << ", ";
-			// pgassert((contraction_order[i] >=0) && (contraction_order[i] < static_cast<int>(contraction_type_count)));
-#if 0
-			if (!is_valid_contraction_number(contraction_order[i])) {
-				log << "Error: Enter a valid Contraction Type\n";
-				(*return_tuples) = NULL;
-				(*return_count) = 0;
-				*err_msg = strdup(log.str().c_str());
-				return;
-			}
-			log << "\n";
-#endif
 		}
 		log << " }\n";
 
-
 		log << "size_forbidden_vertices " << size_forbidden_vertices << "\n";
-		// log << "greatest contraction type " << static_cast<int>(contraction_type_count) << "\n";
-		log << "forbidden_vertices\n" <<   " { \n";
+		log << "forbidden_vertices" << "{ ";
 		for (size_t i = 0; i < size_forbidden_vertices; ++i) {
 			log << forbidden_vertices[i] << ", ";
-			log << "\n";
 		}
 		log << " }\n";        
 		log << "max_cycles " << max_cycles << "\n";
-		log << "directed " << directed << "\n";
-		//log << "gType " << gType << "\n";
-		//log << "total_tuples " << initial_size << "\n";
+		log << "directed " << gType << "\n";
 
 		if (directed) {
 			log << "Working with directed Graph\n";
-			//#if 0
 			pgRouting::CHDirectedGraph digraph(vertices, gType);
 			digraph.graph_insert_data(data_edges, total_edges);
 			log << "Checking for valid forbidden vertices\n";
@@ -144,27 +122,16 @@ do_pgr_contractGraph(
 			}
 			Identifiers<int64_t> forbid_vertices(forbidden_vertices,
 					size_forbidden_vertices);
-
+			log << "Before contraction\n";
 			digraph.print_graph(log);
-			//log << digraph;
-
-			// digraph.print_graph(log);
-			//#endif
-#if 0
-			*err_msg = strdup(log.str().c_str());
-			return;
-#endif
-			/*
-			   Function call to get the contracted graph
-			 */
-			//#if 0
-			log << "Calling contraction\n";
 
 			pgr_contractGraph(digraph,
 					forbid_vertices, 
 					contraction_order, size_contraction_order,
 					max_cycles, remaining_vertices,
 					shortcut_edges, debug);
+
+			log << "After contraction\n";
 			digraph.print_graph(log);
 			log << debug.str().c_str() << "\n";
 			(*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
@@ -180,8 +147,8 @@ do_pgr_contractGraph(
 				std::ostringstream os;
 				digraph.print_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
-				//char *contracted_vertices = strdup("--"); 
 				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
+				i++;
 				++sequence;
 			}
 			log << "Added Edges:" << "\n";
@@ -193,17 +160,15 @@ do_pgr_contractGraph(
 				std::ostringstream os;
 				digraph.get_ids(os, edge.contracted_vertices());
 				contracted_vertices = strdup(os.str().c_str());
-				//char *contracted_vertices = strdup("--"); 
 				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, contracted_vertices};
+				i++;
 				++sequence;
 			}
 
 			(*return_count) = sequence;
-			//#endif
 		} else {
 			log << "Working with Undirected Graph\n";
 
-			//#if 0
 			pgRouting::CHUndirectedGraph undigraph(vertices, gType);
 			undigraph.graph_insert_data(data_edges, total_edges);
 			log << "Checking for valid forbidden vertices\n";
@@ -217,18 +182,21 @@ do_pgr_contractGraph(
 			}
 			Identifiers<int64_t> forbid_vertices(forbidden_vertices,
 					size_forbidden_vertices);
-			//log << undigraph;
-			// undigraph.print_graph_c(log);
+			log << "Before contraction\n"; 
+			undigraph.print_graph(log);
+
 			/* Function call to get the contracted graph. */
 			pgr_contractGraph(undigraph,
 					forbid_vertices, 
 					contraction_order, size_contraction_order,
 					max_cycles, remaining_vertices,
 					shortcut_edges, debug);
-			log << "Size of remaining_vertices: " << remaining_vertices.size(); 
 			log << debug.str().c_str() << "\n";
-			//#endif
-			(*return_tuples) = pgr_alloc(remaining_vertices.size(), (*return_tuples));
+			log << "After contraction\n"; 
+			undigraph.print_graph(log);
+			log << "Size of remaining_vertices: " << remaining_vertices.size() << std::endl; 
+
+			(*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
 			size_t sequence = 0;
 			int i = 1;
 			log << "Remaining Vertices:" << "\n";
@@ -241,22 +209,26 @@ do_pgr_contractGraph(
 				std::ostringstream os;
 				undigraph.print_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
-				//char *contracted_vertices = strdup("--"); 
 				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
+				i++;
 				++sequence;
 			}
+			log << "Number of shortcuts: " << shortcut_edges.size() << std::endl;
+			
 			log << "Added Edges:" << "\n";
 			for (const auto edge : shortcut_edges) {
 				log << edge << "\n";
 			}
-			for (auto edge : shortcut_edges) {
+			//log << "i: " << i;
+			for (const auto edge : shortcut_edges) {
 				type = strdup("e");
+				
 				std::ostringstream os;
 				undigraph.get_ids(os, edge.contracted_vertices());
 				contracted_vertices = strdup(os.str().c_str());
-				//char *contracted_vertices = strdup("--"); 
 				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, contracted_vertices};
 				++sequence;
+				i++;
 			}
 			(*return_count) = sequence;
 		}
@@ -271,15 +243,12 @@ do_pgr_contractGraph(
 	catch (AssertFailedException &exept) {
         log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-        //return false;
     } catch (std::exception& exept) {
         log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-        //return false;
     } catch(...) {
         log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
-        //return false;
     }
 }
 
