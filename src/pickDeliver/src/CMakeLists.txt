@@ -7,7 +7,6 @@ ADD_LIBRARY(pickDeliver OBJECT
     vehicle.cpp
     vehicle_pickDeliver.cpp
 
-#    Route.cpp
     solution.cpp
     initial_solution.cpp
     optimize.cpp

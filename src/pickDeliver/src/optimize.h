@@ -41,9 +41,11 @@ class Optimize : public Solution {
 
      /* @brief decrease_truck
       *
-      * Optimization by decreasing one truck
+      * Optimization by decreasing trucks
       */
      void decrease_truck();
+     void decrease_truck(size_t cycle);
+     void sort();
 };
 
 }  //  namespace vrp

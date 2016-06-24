@@ -467,17 +467,17 @@ Vehicle::Vehicle(
 std::string
 Vehicle::tau() const {
     std::ostringstream log;
-    log << "\nTruck " << id() << " (";
+    log << "Truck " << id() << " (";
     for (const auto p_stop : m_path) {
         if (!(p_stop == m_path.front()))
             log << ", ";
         log << p_stop.original_id();
     }
-    log << ")" << " \t(cv, twv, duration, wait_time) = ("
+    log << ")" << " \t(cv, twv, wait_time, duration) = ("
         << cvTot() << ", "
         << twvTot() << ", "
-        << duration() << ", "
-        << total_wait_time() << ")";
+        << total_wait_time() << ", "
+        << duration() << ")";
 
     return log.str();
 }

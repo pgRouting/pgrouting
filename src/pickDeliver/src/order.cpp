@@ -77,7 +77,7 @@ operator << (std::ostream &log, const Order &order) {
     } else if (order.delivery().is_waitTime_compatible_IJ(order.pickup())) {
         log << "\tis_waitTime_compatible_IJ: ";
     } else {
-        assert(false);
+        pgassert(false);
     }
     log << "\nThere are | {I}| = "
         << order.m_compatibleI.size()

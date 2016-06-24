@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 #include <iostream>
 #include <deque>
+#include <string>
 #include <sstream>
 #include <limits>
 
@@ -39,6 +40,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgRouting {
 namespace vrp {
 
+Order
+Vehicle_pickDeliver::get_first_order() const {
+    invariant();
+    pgassert(!empty());
+    return problem->order_of(m_path[1]);
+}
+
 
 Vehicle_pickDeliver::Vehicle_pickDeliver(
         size_t id,
@@ -51,7 +59,7 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
     problem(p_problem) {
         orders_in_vehicle.clear();
 
-    invariant();
+        invariant();
     }
 
 
@@ -61,34 +69,6 @@ Vehicle_pickDeliver::has_order(const Order &order) const {
     return !(orders_in_vehicle.find(order.id()) == orders_in_vehicle.end());
 }
 
-/************ INSERTING ORDERS **************/
-
-#if 0
-void
-Vehicle_pickDeliver::insert_less_travel_time(const Order &order) {
-    invariant();
-    pgassert(!has_order(order));
-
-    auto pick_pos = Vehicle::insert_less_travel_time(order.pickup());
-
-
-    problem->log << "\n ---------------------------after inserting pickup";
-    problem->log << (*this);
-
-    Vehicle::insert_less_travel_time(order.delivery(), pick_pos + 1);
-
-    problem->log << "\n -------------------------after inserting delivery";
-    problem->log << (*this);
-
-
-    orders_in_vehicle.insert(order.id());
-    pgassert(has_order(order));
-    pgassert(!has_cv());
-    invariant();
-}
-#endif
-
-
 
 void
 Vehicle_pickDeliver::insert(const Order &order) {
@@ -96,72 +76,113 @@ Vehicle_pickDeliver::insert(const Order &order) {
     pgassert(!has_order(order));
 
     auto pick_pos(position_limits(order.pickup()));
-
-#if 0
-    problem->log << "\n\n\n\n/////////////////////BEFORE";
-    if (id() == 2) {
-        problem->log << (*this);
-    } else {
-        problem->log << tau();
-    }
-    problem->log << "\n(pickup, delivery) ="
-        << order.pickup().original_id() << ", "
-        << order.delivery().original_id() << ")";
-#endif
-
-    if (pick_pos.first > pick_pos.second) {
-#if 0
-        problem->log << "\ninsert by push_back";
-#endif
+    if (pick_pos.second < pick_pos.first) {
+        /* pickup generates twv evrywhere,
+         *  so put the order as last */
         push_back(order);
-
-#if 0
-        problem->log << "\n/////////////////////AFTER";
-        if (id() == 2) {
-            problem->log << (*this);
-        } else {
-            problem->log << tau();
-        }
-#endif
         return;
     }
 
-
-#if 0
-    problem->log << "\n\tpickup limits (low, high) = ("
-        << pick_pos.first << ", "
-        << pick_pos.second << ") ";
-#endif
-
-    // Vehicle::insert(pick_pos.first, order.pickup());
-    Vehicle::insert(pick_pos, order.pickup());
-
     auto deliver_pos(position_limits(order.delivery()));
-
-#if 0
-    problem->log << "\n\tdeliver limits (low, high) = ("
-        << deliver_pos.first << ", "
-        << deliver_pos.second << ") ";
-#endif
-    pgassert(pick_pos.first < deliver_pos.second);
-
-
-    Vehicle::insert(deliver_pos, order.delivery());
-
-
-#if 0
-    problem->log << "\n/////////////////////AFTER";
-    if (id() == 2) {
-        problem->log << (*this);
-    } else {
-        problem->log << tau();
+    if (deliver_pos.second < deliver_pos.first) {
+        /* delivery generates twv evrywhere,
+         *  so put the order as last */
+        push_back(order);
+        return;
     }
+    /*
+     * Because delivery positions were estimated without
+     * the pickup:
+     *   - increase the positions estimations
+     */
+
+    ++deliver_pos.first;
+    ++deliver_pos.second;
+
+#ifndef NDEBUG
+    std::ostringstream log;
+    log << "\n\tpickup limits (low, high) = ("
+        << pick_pos.first << ", "
+        << pick_pos.second << ") "
+        << "\n\tdeliver limits (low, high) = ("
+        << deliver_pos.first << ", "
+        << deliver_pos.second << ") "
+        << "\noriginal" << tau();
 #endif
 
+    auto d_pos_backup(deliver_pos);
+    auto best_pick_pos = m_path.size();
+    auto best_deliver_pos = m_path.size() + 1;
+    auto current_duration(duration());
+    auto min_delta_duration = std::numeric_limits<double>::max();
+    auto found(false);
+    pgassertwm(!has_order(order), log.str());
+    while (pick_pos.first <= pick_pos.second) {
+#ifndef NDEBUG
+        log << "\n\tpickup cycle limits (low, high) = ("
+            << pick_pos.first << ", "
+            << pick_pos.second << ") ";
+#endif
+        Vehicle::insert(pick_pos.first, order.pickup());
+#ifndef NDEBUG
+        log << "\npickup inserted: " << tau();
+#endif
+
+        do {
+            Vehicle::insert(deliver_pos.first, order.delivery());
+            orders_in_vehicle.insert(order.id());
+            pgassertwm(has_order(order), log.str());
+#ifndef NDEBUG
+            log << "\ndelivery inserted: " << tau();
+#endif
+            if (is_feasable()) {
+                pgassert(is_feasable());
+                auto delta_duration = duration()-current_duration;
+                if (delta_duration < min_delta_duration) {
+#ifndef NDEBUG
+                    log << "\nsuccess" << tau();
+#endif
+                    min_delta_duration = delta_duration;
+                    best_pick_pos = pick_pos.first;
+                    best_deliver_pos = deliver_pos.first;
+                    found = true;
+                }
+            }
+            Vehicle::erase(order.delivery());
+#ifndef NDEBUG
+            log << "\ndelivery erased: " << tau();
+#endif
+            ++deliver_pos.first;
+        } while (deliver_pos.first < deliver_pos.second);
+        Vehicle::erase(order.pickup());
+#ifndef NDEBUG
+        log << "\npickup erased: " << tau();
+#endif
+        orders_in_vehicle.erase(orders_in_vehicle.find(order.id()));
+        pgassertwm(!has_order(order), log.str());
+
+        deliver_pos = d_pos_backup;
+#ifndef NDEBUG
+        log << "\n\tresoring deliver limits (low, high) = ("
+            << deliver_pos.first << ", "
+            << deliver_pos.second << ") ";
+#endif
+        ++pick_pos.first;
+    }
+    pgassertwm(!has_order(order), log.str());
+    if (!found) {
+        /* order causes twv
+         *  so put the order as last */
+        push_back(order);
+        return;
+    }
+    Vehicle::insert(best_pick_pos, order.pickup());
+    Vehicle::insert(best_deliver_pos, order.delivery());
 
     orders_in_vehicle.insert(order.id());
-    pgassert(has_order(order));
-    pgassert(!has_cv());
+    pgassertwm(is_feasable(), log.str());
+    pgassertwm(has_order(order), log.str());
+    pgassertwm(!has_cv(), log.str());
     invariant();
 }
 

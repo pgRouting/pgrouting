@@ -34,9 +34,10 @@ namespace vrp {
 
 
 class Initial_solution;
+class Optimize;
 
 class Vehicle_pickDeliver : public Vehicle {
- private:
+ protected:
      double cost;
      std::set<ID> orders_in_vehicle;  // /< orders inserted in this vehicle
      const Pgr_pickDeliver *problem;  // /< The vehicle belongs to this problem
@@ -44,6 +45,7 @@ class Vehicle_pickDeliver : public Vehicle {
 
  public:
      friend Initial_solution;
+     friend Optimize;
 
      Vehicle_pickDeliver(
              ID id,
@@ -126,6 +128,16 @@ class Vehicle_pickDeliver : public Vehicle {
       */
      void erase(const Order &order);
 
+     /* @brief erases the order from the vehicle
+      *
+      * Precondition:
+      * 0 < orders_size() 
+      *
+      * Postcondition:
+      * has_order(returned order)
+      *
+      */
+     Order get_first_order() const;
 
 
      /*!

@@ -193,9 +193,7 @@ class Vehicle {
       */
      void erase(POS pos);
 
-     /*! @brief Evaluated: erase node at `pos` from the path.
-      *
-      * @note start and ending nodes cannot be erased
+     /*! @brief return true when no nodes are in the truck 
       *
       * True: S E
       * False: S <nodes> E

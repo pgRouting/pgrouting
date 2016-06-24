@@ -128,7 +128,7 @@ Solution::tau() const {
 
     log << "\nTau:" << std::endl;
     for (const auto v : fleet) {
-        log << v.tau();
+        log << "\n" << v.tau();
     }
     log << cost_str();
 

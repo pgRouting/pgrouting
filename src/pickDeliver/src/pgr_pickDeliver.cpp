@@ -52,15 +52,20 @@ namespace vrp {
 
 void
 Pgr_pickDeliver::solve() {
+#if 0
     solutions.push_back(Initial_solution(0, this));
-    solutions.push_back(Initial_solution(1, this));
+#endif
+    solutions.push_back(Optimize(0, Initial_solution(1, this)));
+    solutions.push_back(Optimize(1, solutions.back()));
+#if 0
     solutions.push_back(Initial_solution(2, this));
     solutions.push_back(Initial_solution(3, this));
     solutions.push_back(Initial_solution(4, this));
     solutions.push_back(Initial_solution(5, this));
     solutions.push_back(Initial_solution(6, this));
+#endif
 
-
+#if 0
     /*
      * Sorting solutions: the best is at the back
      */
@@ -68,6 +73,7 @@ Pgr_pickDeliver::solve() {
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
             });
+#endif
 }
 
 
@@ -88,10 +94,10 @@ Pgr_pickDeliver::get_postgres_result(
             -1,
             std::get<0>(cost),  //  on vehicle seq tw violations
             std::get<1>(cost),  //  on stop id: capacity violations
-            0,  // TODO(vicky) not accounting total_travel_time
+            0,  // TODO(vicky) not accounting total_travel_time not needed
             0,  // not accounting arrival_travel_time
             std::get<3>(cost),  //  on wait time
-            0,  // TODO(vicky) not accounting service_time
+            0,  // TODO(vicky) not accounting service_time not needed
             std::get<4>(cost)  //  on departure_time
             });
     result.push_back(aggregates);
@@ -293,7 +299,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
 const Order
 Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
-    assert(node.is_pickup() ||  node.is_delivery());
+    pgassert(node.is_pickup() ||  node.is_delivery());
     if (node.is_pickup()) {
         for (const auto o : m_orders) {
             if (o.pickup().id() == node.id()) {
@@ -301,14 +307,17 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
             }
         }
     }
-    assert(node.is_delivery());
+    pgassert(node.is_delivery());
 
     for (const auto o : m_orders) {
         if (o.delivery().id() == node.id()) {
             return o;
         }
     }
-    assert(false);
+    std::ostringstream err_log;
+    err_log << "Order of" << node << " not found";
+    pgassertwm(false, err_log);
+    return m_orders[0];
 }
 
 
