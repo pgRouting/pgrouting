@@ -49,7 +49,7 @@ template <class G, typename T_V, typename T_E>
     }
 
 typedef typename graph::Pgr_contractionGraph <
-boost::adjacency_list < boost::vecS, boost::vecS,
+boost::adjacency_list < boost::listS, boost::vecS,
 boost::undirectedS,
 contraction::Vertex, contraction::Edge >,
 contraction::Vertex, contraction::Edge > CHUndirectedGraph;
@@ -74,6 +74,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      typedef typename std::map< int64_t, V > id_to_V;
      typedef typename id_to_V::const_iterator LI;
      Identifiers<V> removed_vertices;
+     std::vector< T_E > shortcuts;
      typedef typename boost::graph_traits < G >::degree_size_type       degree_size_type;
      Pgr_contractionGraph< G , T_V, T_E >(const std::vector< T_V > &vertices, graphType gtype)
      : Pgr_base_graph< G , T_V, T_E >(vertices, gtype) {
@@ -106,11 +107,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         EI_i in, in_end;
         V out_vertex, in_vertex;
         out_vertex = in_vertex = -1;
-        #if 0
-        if (!graph.get_gVertex(vertex_id, v)) {
-                return adjacent_vertices_set;
-        }
-        #endif
         for (boost::tie(out, out_end) = out_edges(v, this->graph);
                 out != out_end; ++out) {
                 out_vertex = target(*out, this->graph);
@@ -134,11 +130,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         Identifiers<V> adjacent_vertices;
         V out_vertex, in_vertex;
         out_vertex = in_vertex = -1;
-        #if 0
-        if (!graph.get_gVertex(vertex_id, v)) {
-                return adjacent_vertices_set;
-        }
-        #endif
         for (boost::tie(out, out_end) = out_edges(v, this->graph);
                 out != out_end; ++out) {
                 out_vertex = target(*out, this->graph);
@@ -163,28 +154,16 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      void print_graph(std::ostringstream &log) {
 
          EO_i out, out_end;
-         log << "Vertices\n";
          for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
              if ((*vi) >= this->m_num_vertices) break;
-             log << this->graph[(*vi)];
-             log << this->graph[(*vi)].id << ": " << this->has_vertex(this->graph[(*vi)].id) << std::endl; 
-         }
-
-
-         log << "Edges\n";
-         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
-             if ((*vi) >= this->m_num_vertices) break;
-             //log << this->graph[(*vi)].print_vertex(log, this->graph);
-             //log << this->graph[(*vi)];
+             log << this->graph[(*vi)].id << "(" << (*vi) << ")" 
+             << this->graph[(*vi)].contracted_vertices() << std::endl;
              log << " out_edges_of(" << this->graph[(*vi)].id << "):";
              for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
                      out != out_end; ++out) {
-                #if 0
                  log << ' ' << this->graph[*out].id << "=(" << this->graph[source(*out, this->graph)].id
                      << ", " << this->graph[target(*out, this->graph)].id << ") = "
                      <<  this->graph[*out].cost <<"\t";
-                #endif
-                log << this->graph[*out];
              }
              log << std::endl;
          }
@@ -360,27 +339,25 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         return edge1.id > edge2.id;
     }
 
-    void get_shortcuts(std::vector<T_E>& shortcuts, std::ostringstream& log)
+    void get_shortcuts(std::vector<T_E>& shortcut_edges, std::ostringstream& log)
     {
         log << "Getting shortcuts\n";
-        E e;
-        EO_i out_i, out_end;
-       
-        for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
-             for (boost::tie(out_i, out_end) = boost::out_edges(*vi, this->graph);
-                out_i != out_end; ++out_i) {
-                e = *out_i;
-                //if (this->graph[e].id < 0 && this->graph[e].first == true) {
-                // output all edges with id < 0 
-                if (this->graph[e].id < 0) {
-                    log << this->graph[e];
-                    shortcuts.push_back(this->graph[e]);
-                }
-            }
+        for (auto shortcut : shortcuts)
+        {
+            log << shortcut;
+            shortcut_edges.push_back(shortcut);
         }
-        std::sort(shortcuts.begin(), shortcuts.end(), compareById);
+        std::sort(shortcut_edges.begin(), shortcut_edges.end(), compareById);
     }
 
+    void print_shortcuts(std::ostringstream& log)
+    {
+        log << "Printing shortcuts\n";
+        for (auto shortcut : shortcuts)
+        {
+            log << shortcut;
+        }
+    }
     void add_contracted_edge_vertices(V v, T_E &e)
     {
         for (auto vid : e.contracted_vertices())
@@ -423,7 +400,6 @@ void graph_add_edge(const T &edge) {
         this->graph[e].cost = edge.reverse_cost;
         this->graph[e].id = edge.id;
         this->graph[e].first = false;
-
         this->graph[e].target = edge.source;
         this->graph[e].source = edge.target;
     }
@@ -440,7 +416,7 @@ void graph_add_shortcut(const T_E &edge, std::ostringstream& log) {
      * false: for target
      */
 
-    log << "Graph before adding shortcut";
+    log << "Graph before adding shortcut\n";
     print_graph(log);
 
     pgassert(this->vertices_map.find(edge.source) != this->vertices_map.end());
@@ -451,18 +427,53 @@ void graph_add_shortcut(const T_E &edge, std::ostringstream& log) {
     log << "Adding edge between " << this->graph[vm_s] << ", "
     << this->graph[vm_t] << std::endl;
 
-    log << "Shortcut is " << edge;
-
     if (edge.cost >= 0) {
         boost::tie(e, inserted) =
             boost::add_edge(vm_s, vm_t, this->graph);
         log << "inserted: " << inserted << std::endl;
-        log << "Graph after adding shortcut";
         this->graph[e].cp_members(edge, log);
+        log << this->graph[e];
+        //this->graph[e].id = this->graph[e].eid;
+        log << "Graph after adding shortcut\n";
         print_graph(log);
+        T_E shortcut;
+        shortcut.cp_members(edge, log);
+        shortcuts.push_back(shortcut);
         
     }
 }
+
+
+
+bool graph_add_shortcut(int64_t source, int64_t target, double cost, E &e, std::ostringstream& log) {
+    bool inserted = false;
+    if (cost < 0)
+        return inserted;
+
+    log << "Graph before adding shortcut\n";
+    print_graph(log);
+
+    pgassert(this->vertices_map.find(source) != this->vertices_map.end());
+    pgassert(this->vertices_map.find(target) != this->vertices_map.end());
+    auto vm_s = this->get_V(source);
+    auto vm_t = this->get_V(target);
+
+    log << "Adding edge between " << this->graph[vm_s] << ", "
+    << this->graph[vm_t] << std::endl;
+
+    if (cost >= 0) {
+        boost::tie(e, inserted) =
+            boost::add_edge(vm_s, vm_t, this->graph);
+        log << "inserted: " << inserted << std::endl;
+        //this->graph[e].cp_members(edge, log);
+        //this->graph[e].id = this->graph[e].eid;
+        log << "Graph after adding shortcut\n";
+        print_graph(log);
+    }
+    return inserted;
+}
+
+
 
 
 };
