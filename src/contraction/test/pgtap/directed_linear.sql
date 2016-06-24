@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(14);
+SELECT plan(19);
 
 SET client_min_messages TO WARNING;
 -- TESTING ONE CYCLE OF DEAD END CONTRACTION FOR AN UNDIRECTED GRAPH 
@@ -44,7 +44,7 @@ SELECT * FROM pgr_contractgraph(
     ARRAY[]::integer[], ARRAY[1]::integer[], 1, true);
 
 PREPARE v4e3q11 AS
-SELECT * FROM ( VALUES (1, -2, 'e', 1, 4, '{2, 3, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+SELECT * FROM ( VALUES (1, -1, 'e', 1, 3, '{2, }'), (2, -2, 'e', 1, 4, '{2, 3, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
 SELECT set_eq('v4e3q10', 'v4e3q11', '5: Directed graph with three edges and no forbidden vertices');
 
@@ -68,7 +68,18 @@ SELECT * FROM pgr_contractgraph(
 PREPARE v4e3q31 AS
 SELECT * FROM ( VALUES (1, -1, 'e', 1, 3, '{2, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
-SELECT set_eq('v4e3q30', 'v4e3q31', '5: Directed graph with three edges and 1 is forbidden vertices');
+SELECT set_eq('v4e3q30', 'v4e3q31', '5: Directed graph with three edges and 3 is forbidden vertices');
+
+-- 2, 3 are forbidden
+PREPARE v4e3q40 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 2 or id = 3',
+    ARRAY[2, 3]::integer[], ARRAY[1]::integer[], 1, true);
+
+SELECT set_eq('v4e3q40', 'qempty', '5: Directed graph with three edges and 2, 3 are forbidden vertices');
+
+
+
 
 -- FOUR EDGES
 -- no forbidden vertices
@@ -78,7 +89,7 @@ SELECT * FROM pgr_contractgraph(
     ARRAY[]::integer[], ARRAY[1]::integer[], 1, true);
 
 PREPARE v4e4q11 AS
-SELECT * FROM ( VALUES (1, -2, 'e', 9, 10, '{1, 2, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+SELECT * FROM ( VALUES (1, -1, 'e', 9, 2, '{1, }'), (2, -2, 'e', 9, 10, '{1, 2, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
 SELECT set_eq('v4e4q10', 'v4e4q11', '5: Directed graph with four edges and no forbidden vertices');
 
@@ -91,7 +102,7 @@ SELECT * FROM pgr_contractgraph(
 PREPARE v4e4q21 AS
 SELECT * FROM ( VALUES (1, -1, 'e', 1, 10, '{2, }'), (2, -2, 'e', 10, 1, '{9, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
-SELECT set_eq('v4e4q20', 'v4e4q21', '5: Directed graph with four edges and no forbidden vertices');
+SELECT set_eq('v4e4q20', 'v4e4q21', '5: Directed graph with four edges and 1 is forbidden vertices');
 
 -- 2 is forbidden
 PREPARE v4e4q30 AS
@@ -100,9 +111,9 @@ SELECT * FROM pgr_contractgraph(
     ARRAY[2]::integer[], ARRAY[1]::integer[], 1, true);
 
 PREPARE v4e4q31 AS
-SELECT * FROM ( VALUES (1, -2, 'e', 10, 2, '{1, 9, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+SELECT * FROM ( VALUES (1, -1, 'e', 9, 2, '{1, }'), (2, -2, 'e', 10, 2, '{1, 9, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
-SELECT set_eq('v4e4q30', 'v4e4q31', '5: Directed graph with four edges and no forbidden vertices');
+SELECT set_eq('v4e4q30', 'v4e4q31', '5: Directed graph with four edges and 2 is forbidden vertices');
 
 -- 9 is forbidden
 PREPARE v4e4q40 AS
@@ -111,9 +122,9 @@ SELECT * FROM pgr_contractgraph(
     ARRAY[9]::integer[], ARRAY[1]::integer[], 1, true);
 
 PREPARE v4e4q41 AS
-SELECT * FROM ( VALUES (1, -2, 'e', 9, 10, '{1, 2, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+SELECT * FROM ( VALUES (1, -1, 'e', 9, 2, '{1, }'), (2, -2, 'e', 9, 10, '{1, 2, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
-SELECT set_eq('v4e4q40', 'v4e4q41', '5: Directed graph with four edges and no forbidden vertices');
+SELECT set_eq('v4e4q40', 'v4e4q41', '5: Directed graph with four edges and 9 is forbidden vertices');
 
 -- 1, 2 are forbidden
 PREPARE v4e4q50 AS
@@ -122,7 +133,7 @@ SELECT * FROM pgr_contractgraph(
     ARRAY[1, 2]::integer[], ARRAY[1]::integer[], 1, true);
 
 PREPARE v4e4q51 AS
-SELECT * FROM ( VALUES (1, -2, 'e', 2, 1, '{9, 10, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+SELECT * FROM ( VALUES (1, -1, 'e', 10, 1, '{9, }'), (2, -2, 'e', 2, 1, '{9, 10, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
 SELECT set_eq('v4e4q50', 'v4e4q51', '5: Directed graph with four edges and 1, 2 are vertices');
 
@@ -134,7 +145,7 @@ SELECT * FROM pgr_contractgraph(
     ARRAY[1, 9]::integer[], ARRAY[1]::integer[], 1, true);
 
 PREPARE v4e4q61 AS
-SELECT * FROM ( VALUES (1, -2, 'e', 1, 9, '{2, 10, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+SELECT * FROM ( VALUES (1, -1, 'e', 1, 10, '{2, }'), (2, -2, 'e', 1, 9, '{2, 10, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
 SELECT set_eq('v4e4q60', 'v4e4q61', '5: Directed graph with four edges and 1, 9 are vertices');
 
@@ -159,6 +170,53 @@ PREPARE v4e4q81 AS
 SELECT * FROM ( VALUES (1, -1, 'e', 2, 9, '{10, }') ) AS t(seq, id, type, source, target, contracted_vertices);
 
 SELECT set_eq('v4e4q80', 'v4e4q81', '5: Directed graph with four edges and 1, 2, 9 are vertices');
+
+
+-- no forbidden vertices
+PREPARE v4e4q100 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 9 or id = 12 or id = 13',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 1, true);
+
+PREPARE v4e4q101 AS
+SELECT * FROM ( VALUES (1, -1, 'e', 2, 11, '{3, }'), (2, -2, 'e', 2, 10, '{3, 11, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+
+SELECT set_eq('v4e4q100', 'v4e4q101', '5: Directed graph with four edges and no forbidden vertices');
+
+
+
+-- 3 is forbidden
+PREPARE v4e4q110 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 9 or id = 12 or id = 13',
+    ARRAY[3]::integer[], ARRAY[1]::integer[], 1, true);
+
+PREPARE v4e4q111 AS
+SELECT * FROM ( VALUES (1, -1, 'e', 3, 10, '{11, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+
+SELECT set_eq('v4e4q110', 'v4e4q111', '5: Directed graph with four edges and 3 is forbidden vertices');
+
+
+-- 11 is forbidden
+PREPARE v4e4q120 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 9 or id = 12 or id = 13',
+    ARRAY[11]::integer[], ARRAY[1]::integer[], 1, true);
+
+PREPARE v4e4q121 AS
+SELECT * FROM ( VALUES (1, -1, 'e', 2, 11, '{3, }') ) AS t(seq, id, type, source, target, contracted_vertices);
+
+SELECT set_eq('v4e4q110', 'v4e4q111', '5: Directed graph with four edges and 11 is forbidden vertices');
+
+-- 3, 11 are forbidden
+PREPARE v4e4q130 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 9 or id = 12 or id = 13',
+    ARRAY[3, 11]::integer[], ARRAY[1]::integer[], 1, true);
+
+SELECT set_eq('v4e4q130', 'qempty', '5: Directed graph with four edges and 3, 11 are forbidden vertices');
+
+
 
 
 SELECT finish();
