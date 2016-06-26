@@ -66,7 +66,7 @@ process(
     char *edges_sql,
     int64_t source_vertex,
     int64_t sink_vertex,
-    pgr_flow_t **result_tuples,
+    pgr_edge_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
@@ -85,7 +85,7 @@ process(
     /* NOTE:
      * For flow, cost and reverse_cost are really capacity and reverse_capacity
      */
-    pgr_get_edges(edges_sql, &edges, &total_tuples);
+    pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
