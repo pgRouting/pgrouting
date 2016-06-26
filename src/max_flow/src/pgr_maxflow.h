@@ -185,7 +185,7 @@ class PgrFlowGraph {
               boost::add_edge(supersource, source, this->boost_graph);
           boost::tie(e1_rev, added) =
               boost::add_edge(source, supersource, this->boost_graph);
-          this->capacity[e1] = INT64_MAX;
+          this->capacity[e1] = 999999999;
           this->capacity[e1_rev] = 0;
           this->rev[e1] = e1_rev;
           this->rev[e1_rev] = e1;
@@ -199,7 +199,7 @@ class PgrFlowGraph {
               boost::add_edge(sink, supersink, this->boost_graph);
           boost::tie(e1_rev, added) =
               boost::add_edge(supersink, sink, this->boost_graph);
-          this->capacity[e1] = INT64_MAX;
+          this->capacity[e1] = 999999999;
           this->capacity[e1_rev] = 0;
           this->rev[e1] = e1_rev;
           this->rev[e1_rev] = e1;
