@@ -60,7 +60,9 @@ do_pgr_max_flow_push_relabel_multi(
 
     try {
         PgrFlowGraph<FlowGraph> G;
-        G.create_flow_graph(data_edges, total_tuples, source_vertices, size_source_verticesArr, sink_vertices, size_sink_verticesArr);
+        G.create_flow_graph_multi(data_edges, total_tuples, source_vertices,
+                                  size_source_verticesArr, sink_vertices,
+                                  size_sink_verticesArr);
 
 
         int64_t flow = G.push_relabel();

@@ -66,12 +66,12 @@ process(
     char *edges_sql,
     int64_t source_vertex,
     int64_t sink_vertex,
-    pgr_edge_t **result_tuples,
+    pgr_flow_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    pgr_flow_t *edges = NULL;
+    pgr_edge_t *edges = NULL;
 
     if (source_vertex == sink_vertex) {
         (*result_count) = 0;

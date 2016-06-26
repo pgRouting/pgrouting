@@ -66,7 +66,7 @@ process(
     char *edges_sql,
     int64_t source_vertex,
     int64_t sink_vertex,
-    pgr_edge_t **result_tuples,
+    pgr_flow_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
