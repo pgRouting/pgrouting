@@ -55,8 +55,12 @@ Pgr_pickDeliver::solve() {
 #if 0
     solutions.push_back(Initial_solution(0, this));
 #endif
-    solutions.push_back(Optimize(0, Initial_solution(1, this)));
-    solutions.push_back(Optimize(1, solutions.back()));
+    solutions.push_back(Initial_solution(1, this));
+    solutions.push_back(Optimize(2, solutions.back()));
+    solutions.push_back(Optimize(3, solutions.back()));
+    solutions.push_back(Optimize(3, solutions.back()));
+    solutions.push_back(Optimize(3, solutions.back()));
+    solutions.push_back(Optimize(2, solutions.back()));
 #if 0
     solutions.push_back(Initial_solution(2, this));
     solutions.push_back(Initial_solution(3, this));
@@ -314,9 +318,11 @@ Pgr_pickDeliver::order_of(const Vehicle_node &node) const {
             return o;
         }
     }
+#ifndef NDEBUG
     std::ostringstream err_log;
     err_log << "Order of" << node << " not found";
-    pgassertwm(false, err_log);
+#endif
+    pgassertwm(false, err_log.str());
     return m_orders[0];
 }
 

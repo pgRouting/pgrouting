@@ -91,12 +91,12 @@ do_pgr_pickDeliver(
             throw exept;
         }
 
-        pd_problem.get_log(tmp_log);
+        pd_problem.get_log(log);
         log << "Finish solve\n";
 
         std::vector<General_vehicle_orders_t> solution;
         pd_problem.get_postgres_result(solution);
-        pd_problem.get_log(log);
+        pd_problem.get_log(tmp_log);
         log << "solution size: " << solution.size() << "\n";
 
 
@@ -108,6 +108,7 @@ do_pgr_pickDeliver(
         }
         (*total_count) = solution.size();
 
+        pd_problem.get_log(log);
         *log_msg = strdup(log.str().c_str());
     } catch (AssertFailedException &exept) {
         log << exept.what() << "\n";

@@ -51,6 +51,15 @@ Solution::get_postgres_result(
 
 
 
+bool
+Solution::is_feasable() const {
+    for (const auto v : fleet) {
+        if (v.is_feasable()) continue;
+        return false;
+    }
+    return true;
+}
+
 double
 Solution::duration() const {
     double total(0);
@@ -122,16 +131,15 @@ Solution::cost_str() const {
 }
 
 std::string
-Solution::tau() const {
+Solution::tau(const std::string &title) const {
     Cost s_cost(cost());
     std::ostringstream log;
 
-    log << "\nTau:" << std::endl;
+    log << "\n" << title << ": " << std::endl;
     for (const auto v : fleet) {
         log << "\n" << v.tau();
     }
     log << cost_str();
-
     return log.str();
 }
 

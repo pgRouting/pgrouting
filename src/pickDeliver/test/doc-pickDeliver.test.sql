@@ -1,4 +1,5 @@
 
+set client_min_messages TO DEBUG1;
 
 \echo --q1
 SELECT * FROM pgr_pickDeliver(

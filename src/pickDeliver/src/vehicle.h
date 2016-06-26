@@ -207,13 +207,30 @@ class Vehicle {
      Cost cost() const;
      bool cost_compare(const Cost&, const Cost&) const;
 
-     double duration() const { return m_path.back().departure_time(); }
-     double total_wait_time() const { return m_path.back().total_wait_time(); }
-     int twvTot() const {return m_path.back().twvTot();}
-     int cvTot() const {return m_path.back().cvTot();}
-     bool has_twv() const {return twvTot() != 0;}
-     bool has_cv() const {return cvTot() != 0;}
-     bool is_feasable() const {return !(has_twv() ||  has_cv());}
+     double duration() const {
+         return m_path.back().departure_time();
+     }
+     double total_wait_time() const {
+         return m_path.back().total_wait_time();
+     } 
+     double free_time() const {
+         return total_wait_time() + (m_path[0].closes() - duration());
+     }
+     int twvTot() const {
+         return m_path.back().twvTot();
+     }
+     int cvTot() const {
+         return m_path.back().cvTot();
+     }
+     bool has_twv() const {
+         return twvTot() != 0;
+     }
+     bool has_cv() const {
+         return cvTot() != 0;
+     }
+     bool is_feasable() const {
+         return !(has_twv() ||  has_cv());
+     }
      /// @}
 
 

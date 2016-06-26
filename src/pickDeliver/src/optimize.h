@@ -44,8 +44,23 @@ class Optimize : public Solution {
       * Optimization by decreasing trucks
       */
      void decrease_truck();
-     void decrease_truck(size_t cycle);
+     bool move_reduce_cost();
+     void move_wait_time_based();
+     void inter_swap();
      void sort();
+ private:
+     void decrease_truck(size_t, bool&);
+     bool move_reduce_cost(size_t, size_t);
+     void sort_for_move();
+     void sort_for_inter_swap();
+
+     bool swap_worse(size_t from_pos, size_t to_pos);
+     bool inter_swap(bool reversed);
+
+     void move_order(
+             Order order,
+             Vehicle_pickDeliver &from_truck,
+             Vehicle_pickDeliver &to_truck); 
 };
 
 }  //  namespace vrp

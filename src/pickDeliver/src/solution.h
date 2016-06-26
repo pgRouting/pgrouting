@@ -89,12 +89,13 @@ class Solution {
      };
 
      std::string cost_str() const;
-     std::string tau() const;
+     std::string tau(const std::string &title = "Tau") const;
      friend std::ostream& operator<<(
              std::ostream &log,
              const Solution &solution);
      bool operator <(const Solution &s_rhs) const;
 
+     bool is_feasable() const;
      double duration() const;
      double wait_time() const;
      int twcTot() const;

@@ -128,16 +128,10 @@ class Vehicle_pickDeliver : public Vehicle {
       */
      void erase(const Order &order);
 
-     /* @brief erases the order from the vehicle
-      *
-      * Precondition:
-      * 0 < orders_size() 
-      *
-      * Postcondition:
-      * has_order(returned order)
-      *
+     /* @brief 
       */
      Order get_first_order() const;
+     Order get_worse_order(std::set<size_t> of_this_subset) const;
 
 
      /*!
