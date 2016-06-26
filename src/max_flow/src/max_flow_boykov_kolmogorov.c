@@ -85,7 +85,7 @@ process(
     /* NOTE:
      * For flow, cost and reverse_cost are really capacity and reverse_capacity
      */
-    pgr_get_edges(edges_sql, &edges, &total_tuples);
+    pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");

@@ -109,3 +109,23 @@ void pgr_get_edges_xy_reversed(
         char *sql,
         Pgr_edge_xy_t **edges,
         size_t *total_edges);
+
+
+/*! @brief read edges for flow
+
+Edges:
+
+bigint id,
+bigint source,
+bigint target,
+bigint capacity,
+bigint reverse_capacity
+
+@param[IN] sql
+@param[OUT] edges
+@oaram[OUT] total_edges
+*/
+void pgr_get_flow_edges(
+    char *sql,
+    pgr_edge_t **edges,
+    size_t *total_edges);

@@ -307,8 +307,111 @@ get_edges_5_columns(
     time_msg(" reading Edges", start_t, clock());
 }
 
+static
+void
+get_edges_flow(
+    char *sql,
+    pgr_edge_t **edges,
+    size_t *totalTuples,
+    bool ignore_id) {
+    clock_t start_t = clock();
+
+    const int tuple_limit = 1000000;
+
+    size_t ntuples;
+    size_t total_tuples;
+    size_t valid_edges;
+
+    Column_info_t info[5];
+
+    int i;
+    for (i = 0; i < 5; ++i) {
+        info[i].colNumber = -1;
+        info[i].type = 0;
+        info[i].strict = true;
+        info[i].eType = ANY_INTEGER;
+    }
+    info[0].name = strdup("id");
+    info[1].name = strdup("source");
+    info[2].name = strdup("target");
+    info[3].name = strdup("capacity");
+    info[4].name = strdup("reverse_capacity");
+
+    info[0].strict = !ignore_id;
+    info[4].strict = false;
+
+    info[3].eType = ANY_NUMERICAL;
+    info[4].eType = ANY_NUMERICAL;
 
 
+    void *SPIplan;
+    SPIplan = pgr_SPI_prepare(sql);
+
+    Portal SPIportal;
+    SPIportal = pgr_SPI_cursor_open(SPIplan);
+
+
+    bool moredata = TRUE;
+    (*totalTuples) = total_tuples = valid_edges = 0;
+
+
+    int64_t default_id = 0;
+    while (moredata == TRUE) {
+        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+        if (total_tuples == 0)
+            pgr_fetch_column_info(info, 5);
+
+        ntuples = SPI_processed;
+        total_tuples += ntuples;
+
+        if (ntuples > 0) {
+            if ((*edges) == NULL)
+                (*edges) = (pgr_edge_t *)palloc0(total_tuples * sizeof(pgr_flow_t));
+            else
+                (*edges) = (pgr_edge_t *)repalloc((*edges), total_tuples * sizeof(pgr_flow_t));
+
+            if ((*edges) == NULL) {
+                elog(ERROR, "Out of memory");
+            }
+
+            size_t t;
+            SPITupleTable *tuptable = SPI_tuptable;
+            TupleDesc tupdesc = SPI_tuptable->tupdesc;
+            PGR_DBG("processing %d edge tupĺes", ntuples);
+
+            for (t = 0; t < ntuples; t++) {
+                HeapTuple tuple = tuptable->vals[t];
+                fetch_edge(&tuple, &tupdesc, info,
+                           &default_id, -1,
+                           &(*edges)[total_tuples - ntuples + t],
+                           &valid_edges);
+            }
+            SPI_freetuptable(tuptable);
+        } else {
+            moredata = FALSE;
+        }
+    }
+
+
+    if (total_tuples == 0 || valid_edges == 0) {
+        (*totalTuples) = 0;
+        PGR_DBG("NO edges");
+        return;
+    }
+
+    (*totalTuples) = total_tuples;
+    PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*totalTuples));
+    time_msg(" reading Edges", start_t, clock());
+}
+
+void
+pgr_get_flow_edges(
+    char *sql,
+    pgr_edge_t **edges,
+    size_t *total_edges) {
+    bool ignore_id = false;
+    get_edges_flow(sql, edges, total_edges, ignore_id);
+}
 
 void
 pgr_get_edges(

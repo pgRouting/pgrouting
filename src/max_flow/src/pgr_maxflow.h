@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include "./../../common/src/pgr_types.h"
 
+#include <cstdint>
 #include <map>
 
 #include <boost/config.hpp>
@@ -148,6 +149,99 @@ class PgrFlowGraph {
       }
   }
 
+  void create_flow_graph_multi(pgr_edge_t *data_edges,
+                         size_t total_tuples,
+                         int64_t* source_vertices,
+                         size_t size_source_verticesArr,
+                         int64_t* sink_vertices,
+                         size_t size_sink_verticesArr) {
+
+      // In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity
+      // The same applies for sinks
+
+      std::set<int64_t> vertices;
+      for(int i=0; i<size_source_verticesArr; ++i){
+          vertices.insert(source_vertices[i]);
+      }
+      for(int i=0; i<size_sink_verticesArr; ++i){
+          vertices.insert(sink_vertices[i]);
+      }
+      for (size_t i = 0; i < total_tuples; ++i) {
+          vertices.insert(data_edges[i].source);
+          vertices.insert(data_edges[i].target);
+      }
+      for (int64_t id : vertices) {
+          V v = add_vertex(this->boost_graph);
+          this->id_to_V.insert(std::pair<int64_t, V>(id, v));
+          this->V_to_id.insert(std::pair<V, int64_t>(v, id));
+      }
+      bool added;
+
+      V supersource = add_vertex(this->boost_graph);
+      for(int i=0; i<size_source_verticesArr; ++i){
+          V source = this->id_to_V.find(source_vertices[i])->second;
+          E e1, e1_rev;
+          boost::tie(e1, added) =
+              boost::add_edge(supersource, source, this->boost_graph);
+          boost::tie(e1_rev, added) =
+              boost::add_edge(source, supersource, this->boost_graph);
+          this->capacity[e1] = 999999999;
+          this->capacity[e1_rev] = 0;
+          this->rev[e1] = e1_rev;
+          this->rev[e1_rev] = e1;
+      }
+
+      V supersink = add_vertex(this->boost_graph);
+      for(int i=0; i<size_sink_verticesArr; ++i){
+          V sink = this->id_to_V.find(sink_vertices[i])->second;
+          E e1, e1_rev;
+          boost::tie(e1, added) =
+              boost::add_edge(sink, supersink, this->boost_graph);
+          boost::tie(e1_rev, added) =
+              boost::add_edge(supersink, sink, this->boost_graph);
+          this->capacity[e1] = 999999999;
+          this->capacity[e1_rev] = 0;
+          this->rev[e1] = e1_rev;
+          this->rev[e1_rev] = e1;
+      }
+
+      this->source_vertex = supersource;
+      this->sink_vertex = supersink;
+
+      this->capacity = get(boost::edge_capacity, this->boost_graph);
+      this->rev = get(boost::edge_reverse, this->boost_graph);
+      this->residual_capacity =
+          get(boost::edge_residual_capacity, this->boost_graph);
+
+      for (size_t i = 0; i < total_tuples; ++i) {
+          V v1 = this->id_to_V.find(data_edges[i].source)->second;
+          V v2 = this->id_to_V.find(data_edges[i].target)->second;
+          if (data_edges[i].cost > 0) {
+              E e1, e1_rev;
+              boost::tie(e1, added) =
+                  boost::add_edge(v1, v2, this->boost_graph);
+              boost::tie(e1_rev, added) =
+                  boost::add_edge(v2, v1, this->boost_graph);
+              this->capacity[e1] = (int64_t) data_edges[i].cost;
+              this->capacity[e1_rev] = 0;
+              this->rev[e1] = e1_rev;
+              this->rev[e1_rev] = e1;
+          }
+          if (data_edges[i].reverse_cost > 0) {
+              E e2, e2_rev;
+              boost::tie(e2, added) =
+                  boost::add_edge(v2, v1, this->boost_graph);
+              boost::tie(e2_rev, added) =
+                  boost::add_edge(v1, v2, this->boost_graph);
+              this->capacity[e2] = (int64_t) data_edges[i].reverse_cost;
+              this->capacity[e2_rev] = 0;
+              this->rev[e2] = e2_rev;
+              this->rev[e2_rev] = e2;
+          }
+      }
+  }
+
+
   std::vector<pgr_flow_t> get_flow_edges() {
 
       std::vector<pgr_flow_t> flow_edges;
@@ -167,6 +261,27 @@ class PgrFlowGraph {
       }
       return flow_edges;
   }
+
+  std::vector<pgr_flow_t> get_flow_edges_multi() {
+
+      std::vector<pgr_flow_t> flow_edges;
+      int64_t id = 1;
+      E_it e, e_end;
+      for (boost::tie(e, e_end) = boost::edges(this->boost_graph); e != e_end;
+           ++e) {
+          if (((this->capacity[*e] - this->residual_capacity[*e]) > 0) && ((*e).m_source != this->source_vertex) && ((*e).m_target != this->sink_vertex)) {
+              pgr_flow_t edge;
+              edge.id = id++;
+              edge.source = this->getid((*e).m_source);
+              edge.target = this->getid((*e).m_target);
+              edge.flow = this->capacity[*e] - this->residual_capacity[*e];
+              edge.residual_capacity = this->residual_capacity[*e];
+              flow_edges.push_back(edge);
+          }
+      }
+      return flow_edges;
+  }
+
 
   int64_t push_relabel() {
       return boost::push_relabel_max_flow(this->boost_graph,
