@@ -50,6 +50,17 @@ namespace pgRouting {
 namespace vrp {
 
 
+
+Solution
+Pgr_pickDeliver::solve(const Solution init_solution) {
+    Optimize solution(0, init_solution);
+    solution.decrease_truck();
+    solution.move_duration_based();
+    solution.move_wait_time_based();
+    solution.inter_swap();
+    return solution.best_solution;
+}
+
 void
 Pgr_pickDeliver::solve() {
 #if 0
@@ -57,23 +68,22 @@ Pgr_pickDeliver::solve() {
 #endif
     solutions.push_back(Initial_solution(1, this));
 
-    /* 2 move_duration_based*/
-//    solutions.push_back(Optimize(2, solutions.back()));
+    solutions.push_back(solve(solutions.back()));
 
-    /* 3 move_iwait_time_based*/
-    solutions.push_back(Optimize(3, solutions.back()));
-#if 0
-    solutions.push_back(Optimize(3, solutions.back()));
-    solutions.push_back(Optimize(3, solutions.back()));
-    solutions.push_back(Optimize(2, solutions.back()));
+#if 1
     solutions.push_back(Initial_solution(2, this));
+    solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(3, this));
+    solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(4, this));
+    solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(5, this));
+    solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(6, this));
+    solutions.push_back(solve(solutions.back()));
 #endif
 
-#if 0
+#if 1
     /*
      * Sorting solutions: the best is at the back
      */

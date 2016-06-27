@@ -133,41 +133,17 @@ Initial_solution::fill_truck_while_compatibleJ(
      */
     for (auto &o : possible_orders) {
         auto other_orders = problem->orders()[o].m_compatibleJ;
-#if 0
-        problem->log << "\n [" << o << "]";
-        for (auto &oo : other_orders) {
-            problem->log << oo << ", ";
-        }
-#endif
         auto intersect_orders = problem->orders()[o].subsetJ(possible_orders);
         if (max_size < intersect_orders.size()) {
-#if 0
-            problem->log << "\n [" << o << "]";
-            for (auto &oo : intersect_orders) {
-                problem->log << oo << ", ";
-            }
-#endif
             max_size = intersect_orders.size();
             best_order = o;
         }
     }
     auto intersect_orders = problem->orders()[best_order].subsetJ(possible_orders);
-#if 0
-    problem->log << "\n [" << best_order << "]";
-    for (auto &oo : intersect_orders) {
-        problem->log << oo << ", ";
-    }
-#endif
 
     truck.insert(problem->orders()[best_order]);
-#if 0
-    problem->log << truck;
-#endif
     if (!truck.is_feasable()) {
         truck.erase(problem->orders()[best_order]);
-#if 0
-        problem->log << truck;
-#endif
     } else {
         assigned.insert(best_order);
         unassigned.erase(unassigned.find(best_order));
@@ -210,20 +186,6 @@ Initial_solution::first_ordersIJ() const {
             {return prob->orders()[lhs].m_compatibleI.size()
             < prob->orders()[rhs].m_compatibleI.size();
             });
-
-#if 0
-    problem->log << "\n Sorted orders by compatibleI.size\n";
-    for (const auto &o : orders) {
-        problem->log << "\n|"
-            << o
-            << "| = "
-            << problem->orders()[o].m_compatibleI.size();
-        problem->log << "\t|"
-            << o
-            << "| = "
-            << problem->orders()[o].m_compatibleJ.size();
-    }
-#endif
     return orders;
 }
 
@@ -266,8 +228,6 @@ Initial_solution::insert_while_compatibleJ() {
 
 
             fill_truck_while_compatibleJ(truck, possible_orders);
-            problem->log << truck;
-
             fleet.push_back(truck);
 
             if (unassigned.empty())
@@ -332,41 +292,17 @@ Initial_solution::fill_truck_while_compatibleI(
      */
     for (auto &o : possible_orders) {
         auto other_orders = problem->orders()[o].m_compatibleI;
-#if 0
-        problem->log << "\n [" << o << "]";
-        for (auto &oo : other_orders) {
-            problem->log << oo << ", ";
-        }
-#endif
         auto intersect_orders = problem->orders()[o].subsetI(possible_orders);
         if (max_size < intersect_orders.size()) {
-#if 0
-            problem->log << "\n [" << o << "]";
-            for (auto &oo : intersect_orders) {
-                problem->log << oo << ", ";
-            }
-#endif
             max_size = intersect_orders.size();
             best_order = o;
         }
     }
     auto intersect_orders = problem->orders()[best_order].subsetI(possible_orders);
-#if 0
-    problem->log << "\n [" << best_order << "]";
-    for (auto &oo : intersect_orders) {
-        problem->log << oo << ", ";
-    }
-#endif
 
     truck.insert(problem->orders()[best_order]);
-#if 0
-    problem->log << truck;
-#endif
     if (!truck.is_feasable()) {
         truck.erase(problem->orders()[best_order]);
-#if 0
-        problem->log << truck;
-#endif
     } else {
         assigned.insert(best_order);
         unassigned.erase(unassigned.find(best_order));
@@ -406,20 +342,6 @@ Initial_solution::first_ordersJI() const {
             {return prob->orders()[lhs].m_compatibleJ.size()
             < prob->orders()[rhs].m_compatibleJ.size();
             });
-
-#if 0
-    problem->log << "\n Sorted orders by compatibleI.size\n";
-    for (const auto &o : orders) {
-        problem->log << "\n|"
-            << o
-            << "| = "
-            << problem->orders()[o].m_compatibleI.size();
-        problem->log << "\t|"
-            << o
-            << "| = "
-            << problem->orders()[o].m_compatibleJ.size();
-    }
-#endif
     return orders;
 }
 
@@ -460,7 +382,6 @@ Initial_solution::insert_while_compatibleI() {
 
 
             fill_truck_while_compatibleI(truck, possible_orders);
-            problem->log << truck;
             fleet.push_back(truck);
 
             if (unassigned.empty())
@@ -531,7 +452,6 @@ Initial_solution::push_front_while_feasable() {
         auto order(problem->orders()[*unassigned.begin()]);
 
         truck.push_front(order);
-        problem->log << truck;
         if (!truck.is_feasable()) {
             truck.pop_front();
             fleet.push_back(truck);

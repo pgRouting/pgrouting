@@ -83,6 +83,7 @@ class Pgr_pickDeliver {
         return p_log;
     }
 
+    Solution solve(const Solution init_solution);
 
  private:
     double max_capacity;
