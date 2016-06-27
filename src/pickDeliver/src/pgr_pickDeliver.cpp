@@ -56,12 +56,16 @@ Pgr_pickDeliver::solve() {
     solutions.push_back(Initial_solution(0, this));
 #endif
     solutions.push_back(Initial_solution(1, this));
-    solutions.push_back(Optimize(2, solutions.back()));
+
+    /* 2 move_duration_based*/
+//    solutions.push_back(Optimize(2, solutions.back()));
+
+    /* 3 move_iwait_time_based*/
     solutions.push_back(Optimize(3, solutions.back()));
-    solutions.push_back(Optimize(3, solutions.back()));
-    solutions.push_back(Optimize(3, solutions.back()));
-    solutions.push_back(Optimize(2, solutions.back()));
 #if 0
+    solutions.push_back(Optimize(3, solutions.back()));
+    solutions.push_back(Optimize(3, solutions.back()));
+    solutions.push_back(Optimize(2, solutions.back()));
     solutions.push_back(Initial_solution(2, this));
     solutions.push_back(Initial_solution(3, this));
     solutions.push_back(Initial_solution(4, this));

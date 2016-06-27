@@ -46,6 +46,7 @@ class Optimize : public Solution {
      void decrease_truck();
      bool move_reduce_cost();
      void move_wait_time_based();
+     void move_duration_based();
      void inter_swap();
      void sort();
  private:
@@ -53,6 +54,7 @@ class Optimize : public Solution {
      bool move_reduce_cost(size_t, size_t);
      void sort_for_move();
      void sort_for_inter_swap();
+     void delete_empty_truck();
 
      bool swap_worse(size_t from_pos, size_t to_pos);
      bool inter_swap(bool reversed);
@@ -61,6 +63,14 @@ class Optimize : public Solution {
              Order order,
              Vehicle_pickDeliver &from_truck,
              Vehicle_pickDeliver &to_truck); 
+     void swap_order(
+             Order from_order,
+             Vehicle_pickDeliver &from_truck,
+             Order to_order,
+             Vehicle_pickDeliver &to_truck); 
+     void save_if_best();
+
+     Solution best_solution;
 };
 
 }  //  namespace vrp

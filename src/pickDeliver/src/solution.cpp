@@ -120,12 +120,12 @@ Solution::cost_str() const {
     Cost s_cost(cost());
     std::ostringstream log;
 
-    log << "\n(twv, cv, fleet, wait, duration) = ("
+    log << "(twv, cv, fleet, wait, duration) = ("
         << std::get<0>(s_cost) << ", "
         << std::get<1>(s_cost) << ", "
         << std::get<2>(s_cost) << ", "
         << std::get<3>(s_cost) << ", "
-        << std::get<4>(s_cost) << ")\n";
+        << std::get<4>(s_cost) << ")";
 
     return log.str();
 }
@@ -139,7 +139,7 @@ Solution::tau(const std::string &title) const {
     for (const auto v : fleet) {
         log << "\n" << v.tau();
     }
-    log << cost_str();
+    log << "\n" << cost_str() << "\n";
     return log.str();
 }
 
