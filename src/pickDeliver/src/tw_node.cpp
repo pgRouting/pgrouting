@@ -36,13 +36,13 @@ namespace vrp {
  */
 double
 Tw_node::arrival_j_opens_i(const Tw_node &I) const {
-    if (m_type == kStart) return std::numeric_limits<double>::max();
+    if (m_type == kStart) return (std::numeric_limits<double>::max)();
     return I.opens() + I.service_time() + I.travel_time_to(*this);
 }
 
 double
 Tw_node::arrival_j_closes_i(const Tw_node &I) const {
-    if (m_type == kStart) return   std::numeric_limits<double>::max();
+    if (m_type == kStart) return  (std::numeric_limits<double>::max)();
     return I.closes() + I.service_time() + I.travel_time_to(*this);
 }
 

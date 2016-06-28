@@ -205,7 +205,7 @@ size_t
 Vehicle::insert_less_travel_time(const Vehicle_node &node, POS after_pos) {
     invariant();
 
-    double min_delta = std::numeric_limits<double>::max();
+    double min_delta = (std::numeric_limits<double>::max)();
     POS min_pos = after_pos;
 
     for (POS pos = after_pos; pos < m_path.size(); ++pos) {

@@ -49,7 +49,7 @@ Vehicle_pickDeliver::get_worse_order(
 
     // auto orders(of_this_subset);
     auto worse_order(problem->orders()[*orders.begin()]);
-    auto delta_duration(std::numeric_limits<double>::max());
+    auto delta_duration((std::numeric_limits<double>::max)());
     auto curr_duration(duration());
     while (!orders.empty()) {
         auto truck(*this);
@@ -82,7 +82,7 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         double max_capacity,
         const Pgr_pickDeliver *p_problem) :
     Vehicle(id, starting_site, ending_site, max_capacity),
-    cost(std::numeric_limits<double>::max()),
+    cost((std::numeric_limits<double>::max)()),
     problem(p_problem) {
         orders_in_vehicle.clear();
 
@@ -140,7 +140,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
     auto best_pick_pos = m_path.size();
     auto best_deliver_pos = m_path.size() + 1;
     auto current_duration(duration());
-    auto min_delta_duration = std::numeric_limits<double>::max();
+    auto min_delta_duration = (std::numeric_limits<double>::max)();
     auto found(false);
     pgassertwm(!has_order(order), err_log.str());
     while (pick_pos.first <= pick_pos.second) {
