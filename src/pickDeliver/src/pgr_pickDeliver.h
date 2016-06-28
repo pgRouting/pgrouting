@@ -58,7 +58,7 @@ class Pgr_pickDeliver {
             const Customer_t *c1, size_t total_customers,
             int VehicleLength,
             double capacity,
-            int max_cycles,
+            size_t max_cycles,
             std::string &error);
 
     void solve();
@@ -84,10 +84,11 @@ class Pgr_pickDeliver {
     }
 
     Solution solve(const Solution init_solution);
+    size_t max_cycles() const {return m_max_cycles;};
 
  private:
     double max_capacity;
-    int max_cycles;
+    size_t m_max_cycles;
     int max_vehicles;
     Vehicle_node m_starting_site, m_ending_site;
     std::vector<Customer_t> m_original_data;

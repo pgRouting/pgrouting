@@ -31,7 +31,7 @@ CREATE OR REPLACE FUNCTION pgr_pickDeliver(
     orders_sql TEXT,
     max_vehicles INTEGER,
     capacity FLOAT,
-    max_cycles INTEGER, 
+    max_cycles INTEGER DEFAULT 10, 
 
     OUT seq INTEGER,
     OUT vehicle_id INTEGER,

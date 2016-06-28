@@ -224,7 +224,7 @@ if(APPLE)
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 -fPIC -g -Wall  -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -g -Wall -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra  -frounding-math -Wno-deprecated")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2 -g -Wall -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra  -frounding-math -Wno-deprecated")
 
     #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g  -frounding-math")
     #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
@@ -268,7 +268,6 @@ set(PgRouting_SOURCE_NAMES
     "tsp" #2.0
 
     "vrp_basic"
-    #"vrppdtw"
     "pickDeliver"
 
     )
@@ -288,6 +287,8 @@ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     "apsp_johnson"  #V2.0
     "apsp_warshall" #V2.0
     "kdijkstra"     #V2.0
+    "vrppdtw" #2.1
+
     "convenience"
     "topology"
     "label_graph"

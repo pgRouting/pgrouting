@@ -67,11 +67,9 @@ Optimize::inter_swap() {
     auto local_limit(fleet.size());
     size_t i(0);
     while (inter_swap(false) && (++i < local_limit)) {
-        problem->log << "\ti" << i;
     };
     i = 0;
     while (inter_swap(true) && (++i < local_limit)) {
-        problem->log << "\ti" << i;
     };
     sort_by_duration();
     delete_empty_truck();

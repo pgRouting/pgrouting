@@ -128,6 +128,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
+        elog(NOTICE, "Proposed Function");
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
