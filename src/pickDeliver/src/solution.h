@@ -40,7 +40,7 @@ class Pgr_pckDeliver;
 class Optimize;
 
 class Solution {
-    friend Optimize;
+    friend class Optimize;
  protected:
      const double EPSILON = 0.001;
      std::deque<Vehicle_pickDeliver> fleet;

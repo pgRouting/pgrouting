@@ -44,8 +44,8 @@ class Vehicle_pickDeliver : public Vehicle {
 
 
  public:
-     friend Initial_solution;
-     friend Optimize;
+     friend class Initial_solution;
+     friend class Optimize;
 
      Vehicle_pickDeliver(
              ID id,

@@ -40,8 +40,8 @@ class Initial_solution;
 
 class Order {
  public:
-     friend Initial_solution;
-     friend Pgr_pickDeliver;
+     friend class Initial_solution;
+     friend class Pgr_pickDeliver;
 
      Order(size_t p_id,
              const Vehicle_node &p_pickup,

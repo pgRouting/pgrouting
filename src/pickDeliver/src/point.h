@@ -45,8 +45,8 @@ class Point {
 
      bool operator ==(const Point &rhs) const;
 
-     friend
-         std::ostream& operator << (std::ostream& log, const Point &p);
+     friend std::ostream& operator<<(
+             std::ostream& log, const Point &p);
 
      template <typename T>
          double distance(const T&p2) const {

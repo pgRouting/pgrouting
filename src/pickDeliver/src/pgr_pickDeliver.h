@@ -47,10 +47,10 @@ class Optimize;
 class Initial_solution;
 
 class Pgr_pickDeliver {
-    friend Vehicle_pickDeliver;
-    friend Optimize;
-    friend Initial_solution;
-    friend Solution;
+    friend class Vehicle_pickDeliver;
+    friend class Optimize;
+    friend class Initial_solution;
+    friend class Solution;
     typedef size_t ID;
 
  public:
