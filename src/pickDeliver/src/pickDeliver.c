@@ -46,7 +46,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pickDeliver_driver.h"
 
-PG_FUNCTION_INFO_V1(pickDeliver);
 PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS);
 
@@ -107,11 +106,12 @@ process(char* customers_sql,
 /*                                                                            */
 /******************************************************************************/
 
+PG_FUNCTION_INFO_V1(pickDeliver);
 PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t              call_cntr;
-    size_t               max_calls;
+    uint32_t              call_cntr;
+    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
@@ -150,14 +150,15 @@ pickDeliver(PG_FUNCTION_ARGS) {
         /*                                                                   */
         /*********************************************************************/
 
-        funcctx->max_calls = (uint32)result_count;
+        funcctx->max_calls = (uint32_t)result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-                != TYPEFUNC_COMPOSITE)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
@@ -173,7 +174,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*********************************************************************/
         /*                          MODIFY!!!!!                              */
@@ -189,11 +190,11 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
 
         values = palloc(9 * sizeof(Datum));
-        nulls = palloc(9 * sizeof(char));
+        nulls = palloc(9 * sizeof(bool));
 
         size_t i;
         for (i = 0; i < 9; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
 
