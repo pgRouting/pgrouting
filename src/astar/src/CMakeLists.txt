@@ -8,5 +8,5 @@ ADD_LIBRARY(astar OBJECT
 
     #astarManyToOne.c
     #astarManyToMany.c
-    astarManyToMany_driver.cpp
+    #astarManyToMany_driver.cpp
     )
