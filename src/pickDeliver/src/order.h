@@ -48,7 +48,7 @@ class Order {
              const Vehicle_node &p_deliver,
              const Pgr_pickDeliver *p_problem);
 
-     Order(const Order &order) = default;
+     Order(const Order &) = default;
 
 
 
