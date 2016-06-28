@@ -54,7 +54,7 @@ class Vehicle_pickDeliver : public Vehicle {
              double max_capacity,
              const Pgr_pickDeliver *p_problem);
 
-     Vehicle_pickDeliver(const Vehicle_pickDeliver &v) = default;
+     Vehicle_pickDeliver(const Vehicle_pickDeliver &) = default;
 
      size_t orders_size() const {return orders_in_vehicle.size();}
 
