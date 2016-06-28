@@ -173,6 +173,7 @@ Order::isCompatibleIJ(const Order &I) const {
 }
 
 
+#if 0
 bool
 Order::isOrderCompatibleEnd(const Vehicle_node &node) const {
     return false;
@@ -182,6 +183,7 @@ bool
 Order::isOrderCompatibleStart(const Vehicle_node &node) const {
     return false;
 }
+#endif
 
 }  //  namespace vrp
 }  //  namespace pgRouting

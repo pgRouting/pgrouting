@@ -96,7 +96,9 @@ class Pgr_pickDeliver {
     std::vector<Order> m_orders;
     std::vector<Solution> solutions;
     mutable std::ostringstream log;
+#ifndef NDEBUG
     mutable std::ostringstream dbg_log;
+#endif
 };
 
 }  //  namespace vrp

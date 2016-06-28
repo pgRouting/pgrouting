@@ -146,7 +146,7 @@ Optimize::swap_worse(size_t from_pos, size_t to_pos) {
                         << "\n    Swap order " << from_order.id()
                         << " from truck " << from_truck.id()
                         << " with order " << to_order.id() << " of truck " << to_truck.id();
-#if 1
+#ifndef NDEBUG
                     problem->dbg_log << "\nswappping before:";
                     problem->dbg_log << "\n" << fleet[to_pos].tau();
                     problem->dbg_log << "\n" << fleet[from_pos].tau();
@@ -156,7 +156,7 @@ Optimize::swap_worse(size_t from_pos, size_t to_pos) {
                     swapped = true;
                     save_if_best();
                     from_orders.insert(to_order.id());
-#if 1
+#ifndef NDEBUG
                     problem->dbg_log << "\nswappping after:";
                     problem->dbg_log << "\n" << fleet[to_pos].tau();
                     problem->dbg_log << "\n" << fleet[from_pos].tau();
@@ -334,7 +334,7 @@ Optimize::move_reduce_cost(size_t from_pos, size_t to_pos) {
                 << "\n    Move order " << order.id()
                 << " from truck " << from_truck.id()
                 << " to truck " << to_truck.id();
-#if 1
+#ifndef NDEBUG
             problem->dbg_log << "\nMove before:";
             problem->dbg_log << "\n" << fleet[to_pos].tau();
             problem->dbg_log << "\n" << fleet[from_pos].tau();
@@ -345,7 +345,7 @@ Optimize::move_reduce_cost(size_t from_pos, size_t to_pos) {
             moved = true;
             save_if_best();
 
-#if 1
+#ifndef NDEBUG
             problem->dbg_log << "\nMove after:";
             problem->dbg_log << "\n" << fleet[to_pos].tau();
             problem->dbg_log << "\n" << fleet[from_pos].tau();
@@ -478,12 +478,16 @@ Optimize::save_if_best() {
     if (duration() < best_solution.duration()) {
         best_solution = (*this);
         problem->log << "\n*********** best by duration" << best_solution.cost_str();
+#ifndef NDEBUG
         problem->dbg_log << best_solution.tau("best by duration");
+#endif
     }
     if (fleet.size() < best_solution.fleet.size()) {
         best_solution = (*this);
         problem->log << "\n*********** best by fleet size" << best_solution.cost_str();
+#ifndef NDEBUG
         problem->dbg_log << best_solution.tau("best by fleet size");
+#endif
     }
 }
 

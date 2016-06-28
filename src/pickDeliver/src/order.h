@@ -69,8 +69,10 @@ class Order {
 
 
      bool isCompatibleIJ(const Order &other) const;
+#if 0
      bool isOrderCompatibleStart(const Vehicle_node &node) const;
      bool isOrderCompatibleEnd(const Vehicle_node &node) const;
+#endif
      std::set<size_t> subsetJ(const std::set<size_t> &J) const;
      std::set<size_t> subsetI(const std::set<size_t> &I) const;
 
