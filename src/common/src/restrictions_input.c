@@ -22,6 +22,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifdef _MSC_VER
+#define strdup _strdup
+#define strtok _strtok
+#endif
+
+
 #include "postgres.h"
 #include "executor/spi.h"
 
