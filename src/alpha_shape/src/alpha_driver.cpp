@@ -39,6 +39,12 @@ corresponding to the Alpha shape.
 #include <windows.h>
 #endif
 #ifdef __MINGW64__
+
+#ifdef _MSC_VER
+#define strdup _strdup
+#endif
+
+
 namespace boost {
   void tss_cleanup_implemented() { }
 }
@@ -52,7 +58,7 @@ namespace boost {
 #include <cmath>
 
 #ifndef _MSC_VER
-#include "alpha.h"
+#include "alpha_driver.h"
 #endif // _MSC_VER
 
 #include <CGAL/Polygon_2.h>
