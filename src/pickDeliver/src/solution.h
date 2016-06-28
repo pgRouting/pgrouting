@@ -67,7 +67,7 @@ class Solution {
 
 
      /* @brief move constructor */
-     Solution(const Solution && sol) noexcept :
+     Solution(const Solution && sol) :
          fleet(std::move(sol.fleet)),
          problem(std::move(sol.problem))
          {};
