@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_edmonds_karp_driver.cpp
+File: max_flow_many_to_many_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "./max_flow_edmonds_karp_driver.h"
+#include "max_flow_many_to_many_driver.h"
 
 #include <sstream>
 #include <vector>
@@ -46,11 +46,14 @@ extern "C" {
 }
 
 void
-do_pgr_max_flow_edmonds_karp(
+do_pgr_max_flow_many_to_many(
     pgr_edge_t *data_edges,
     size_t total_tuples,
-    int64_t source_vertex,
-    int64_t sink_vertex,
+    int64_t* source_vertices,
+    size_t size_source_verticesArr,
+    int64_t* sink_vertices,
+    size_t size_sink_verticesArr,
+    char* algorithm,
     pgr_flow_t **return_tuples,
     size_t *return_count,
     char **err_msg) {
@@ -58,11 +61,28 @@ do_pgr_max_flow_edmonds_karp(
 
     try {
         PgrFlowGraph<FlowGraph> G;
-        G.create_flow_graph(data_edges, total_tuples, source_vertex, sink_vertex);
+        G.create_flow_graph(data_edges, total_tuples, source_vertices,
+                                  size_source_verticesArr, sink_vertices,
+                                  size_sink_verticesArr);
 
-        int64_t flow = G.edmonds_karp();
 
-        std::vector<pgr_flow_t> flow_edges = G.get_flow_edges();
+        int64_t flow;
+        if(strcmp(algorithm, "push_relabel") == 0){
+            flow = G.push_relabel();
+        }
+        else if(strcmp(algorithm, "edmonds_karp") == 0) {
+            flow = G.edmonds_karp();
+        }
+        else if(strcmp(algorithm, "boykov_kolmogorov") == 0) {
+            flow = G.boykov_kolmogorov();
+        }
+        else {
+            log << "Unspecified algorithm!\n";
+            *err_msg = strdup(log.str().c_str());
+            return;
+        }
+
+        std::vector<pgr_flow_t> flow_edges = G.get_flow_edges_many_to_many();
 
         (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
         for (int i = 0; i < flow_edges.size(); ++i) {

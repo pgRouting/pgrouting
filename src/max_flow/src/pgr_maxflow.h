@@ -149,7 +149,7 @@ class PgrFlowGraph {
       }
   }
 
-  void create_flow_graph_multi(pgr_edge_t *data_edges,
+  void create_flow_graph(pgr_edge_t *data_edges,
                          size_t total_tuples,
                          int64_t* source_vertices,
                          size_t size_source_verticesArr,
@@ -262,7 +262,7 @@ class PgrFlowGraph {
       return flow_edges;
   }
 
-  std::vector<pgr_flow_t> get_flow_edges_multi() {
+  std::vector<pgr_flow_t> get_flow_edges_many_to_many() {
 
       std::vector<pgr_flow_t> flow_edges;
       int64_t id = 1;

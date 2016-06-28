@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_boykov_kolmogorov_driver.cpp
+File: max_flow_one_to_one_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "./max_flow_boykov_kolmogorov_driver.h"
+#include "max_flow_one_to_one_driver.h"
 
 #include <sstream>
 #include <vector>
@@ -46,11 +46,12 @@ extern "C" {
 }
 
 void
-do_pgr_max_flow_boykov_kolmogorov(
+do_pgr_max_flow_one_to_one(
     pgr_edge_t *data_edges,
     size_t total_tuples,
     int64_t source_vertex,
     int64_t sink_vertex,
+    char* algorithm,
     pgr_flow_t **return_tuples,
     size_t *return_count,
     char **err_msg) {
@@ -60,7 +61,21 @@ do_pgr_max_flow_boykov_kolmogorov(
         PgrFlowGraph<FlowGraph> G;
         G.create_flow_graph(data_edges, total_tuples, source_vertex, sink_vertex);
 
-        int64_t flow = G.boykov_kolmogorov();
+        int64_t flow;
+        if(strcmp(algorithm, "push_relabel") == 0){
+            flow = G.push_relabel();
+        }
+        else if(strcmp(algorithm, "edmonds_karp") == 0) {
+            flow = G.edmonds_karp();
+        }
+        else if(strcmp(algorithm, "boykov_kolmogorov") == 0) {
+            flow = G.boykov_kolmogorov();
+        }
+        else {
+            log << "Unspecified algorithm!\n";
+            *err_msg = strdup(log.str().c_str());
+            return;
+        }
 
         std::vector<pgr_flow_t> flow_edges = G.get_flow_edges();
 

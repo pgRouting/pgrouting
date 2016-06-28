@@ -1,10 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: max_flow_many_to_many_driver.h
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Function's developer:
 Copyright (c) 2016 Andrea Nardelli
-mail: nrd.nardelli@gmail.com
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -24,17 +27,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_MANY_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_MANY_DRIVER_H_
 
-CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
-    edges_sql TEXT,
-    source_vertices ANYARRAY,
-    sink_vertices ANYARRAY,
-    OUT id BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_push_relabel_multi'
-    LANGUAGE c IMMUTABLE STRICT;
+#include "./../../common/src/pgr_types.h"
+#include <stddef.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    void
+        do_pgr_max_flow_many_to_many(
+            pgr_edge_t *data_edges,
+            size_t total_tuples,
+            int64_t* source_vertices,
+            size_t size_source_verticesArr,
+            int64_t* sink_vertices,
+            size_t size_sink_verticesArr,
+            char* algorithm,
+            pgr_flow_t **return_tuples,
+            size_t *return_count,
+            char **err_msg);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_MANY_DRIVER_H_
