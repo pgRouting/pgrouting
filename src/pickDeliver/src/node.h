@@ -26,7 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <string>
-#include "./point.h"
+// #include "./point.h"
+#include "../../common/src/xy_vertex.h"
 
 namespace pgRouting {
 namespace vrp {
@@ -41,7 +42,8 @@ namespace vrp {
  *
  */
 
-class Node : public Point {
+// class Node : public Point {
+class Node {
  public:
      /** @name accessors */
      ///@ {
@@ -51,7 +53,7 @@ class Node : public Point {
 
      ///@}
 
-     Node(size_t id, int64_t original_id, double x, double y);
+     Node(size_t id, int64_t original_id, double _x, double _y);
 
 
      /** @name state */
@@ -62,7 +64,12 @@ class Node : public Point {
      friend std::ostream& operator << (std::ostream &log, const Node &node);
      bool operator ==(const Node &rhs) const;
 
+     double distance(const Node &other) const;
+     double comparable_distance(const Node &other) const;
+
+
  private:
+     pgRouting::Point m_point;
      size_t m_id;                ///< internal node number
      int64_t m_original_id;  // /< user supplied node number
 };

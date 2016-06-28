@@ -33,6 +33,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#ifdef _MSC_VER
+#define strdup _strdup
+#endif
 
 #include <sstream>
 #include <deque>
@@ -42,9 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // #define DEBUG
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 #include "./pgr_astar.hpp"
 #include "./../../common/src/pgr_assert.h"

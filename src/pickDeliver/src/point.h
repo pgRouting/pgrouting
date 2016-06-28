@@ -25,8 +25,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#include <boost/geometry.hpp>
-#include <boost/geometry/geometries/point_xy.hpp>
+#include <CGAL/Simple_cartesian.h>
+
+// #include <boost/geometry.hpp>
+// #include <boost/geometry/geometries/point_xy.hpp>
 
 #include <iostream>
 

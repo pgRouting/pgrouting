@@ -28,16 +28,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
+#ifdef _MSC_VER
+#define strdup _strdup
+#endif
 #include "./pickDeliver_driver.h"
 #include <sstream>
 #include <string>
 #include <deque>
 #include <vector>
+#include <string.h>
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_alloc.hpp"

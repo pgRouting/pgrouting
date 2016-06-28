@@ -29,22 +29,37 @@ namespace pgRouting {
 namespace vrp {
 
 bool Node::isSamePos(const Node &other) const {
-    return comparable_distance(other.point) == 0;
+    return comparable_distance(other) == 0;
 }
 
 double Node::travel_time_to(const Node &other) const {
-    return distance(other.point);
+    return distance(other);
 }
 
 std::ostream& operator << (std::ostream &log, const Node &node) {
     log << node.m_original_id
         << "(" << node.m_id << ")"
-        << static_cast<const Point&>(node);
+       << "(" << node.m_point.x() << ", " << node.m_point.y() << ")";
     return log;
 }
 
-Node::Node(size_t id, int64_t original_id, double x, double y)
-    : Point(x, y),
+double
+Node::distance(const Node &other) const {
+    auto dx = m_point.x() - other.m_point.x();
+    auto dy = m_point.y() - other.m_point.y();
+    return sqrt(dx * dx + dy * dy);
+}
+
+double
+Node::comparable_distance(const Node &other) const {
+    auto dx = m_point.x() - other.m_point.x();
+    auto dy = m_point.y() - other.m_point.y();
+    return dx * dx + dy * dy;
+}
+
+
+Node::Node(size_t id, int64_t original_id, double _x, double _y)
+    : m_point(_x, _y),
     m_id(id),
     m_original_id(original_id) {
     }
@@ -55,7 +70,7 @@ Node::operator ==(const Node &rhs) const {
     return
         (id() == rhs.id())
          && (original_id() == rhs.original_id())
-         && (static_cast<Point>(*this) == static_cast<Point>(rhs));
+         && (m_point == rhs.m_point);
 }
 
 }  //  namespace vrp
