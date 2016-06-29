@@ -37,7 +37,7 @@ typedef std::pair<double, std::vector<int64_t> > PDVI;
 
 
 class GraphDefinition {
-    typedef std::vector<long> LongVector;
+    typedef std::vector<int64_t> LongVector;
     typedef std::vector<LongVector> VectorOfLongVector;
     typedef std::pair<int, bool> PIB;
     typedef std::pair<double, PIB> PDP;
@@ -72,10 +72,10 @@ class GraphDefinition {
 
 
      public:
-         long m_lEdgeID;
-         long m_lEdgeIndex;
-         long m_lStartNode;
-         long m_lEndNode;
+         int64_t m_lEdgeID;
+         int64_t m_lEdgeIndex;
+         int64_t m_lStartNode;
+         int64_t m_lEndNode;
          double m_dCost;
          double m_dReverseCost;
          short m_sDirection;
@@ -89,8 +89,8 @@ class GraphDefinition {
 
 
     typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
-    typedef std::map<long,LongVector> Long2LongVectorMap;
-    typedef std::map<long,long> Long2LongMap;
+    typedef std::map<int64_t,LongVector> Long2LongVectorMap;
+    typedef std::map<int64_t,int64_t> Long2LongMap;
 
 
 
