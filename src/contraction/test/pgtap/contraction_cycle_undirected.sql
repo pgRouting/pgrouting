@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(21);
+SELECT plan(36);
 
 SET client_min_messages TO WARNING; 
 
@@ -153,3 +153,113 @@ SELECT * FROM pgr_contractgraph(
 
 SELECT set_eq('v6e4q10', 'v6e4q12', '11: Directed graph with four edges and no forbidden vertices');
 SELECT set_eq('v6e4q11', 'v6e4q12', '11: Directed graph with four edges and no forbidden vertices');
+
+
+-- TESTING CONTRACTION CYCLE WITH ONLY LINEAR CONTRACTION
+
+-- TWO EDGES
+PREPARE v3e2q20 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 2',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 1, false);
+
+PREPARE v3e2q21 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 2',
+    ARRAY[]::integer[], ARRAY[1, 1]::integer[], 1, false);
+
+SELECT set_eq('v3e2q20', 'v3e2q21', '1: Undirected graph with two edges and no forbidden vertices');
+
+PREPARE v3e2q22 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 2',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 2, false);
+
+SELECT set_eq('v3e2q20', 'v3e2q22', '1: Undirected graph with two edges and no forbidden vertices');
+SELECT set_eq('v3e2q21', 'v3e2q22', '1: Undirected graph with two edges and no forbidden vertices');
+
+PREPARE v3e2q23 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 or id = 5',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 1, false);
+
+PREPARE v3e2q24 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 or id = 5',
+    ARRAY[]::integer[], ARRAY[1, 1]::integer[], 1, false);
+
+SELECT set_eq('v3e2q23', 'v3e2q24', '1: Undirected graph with two edges and no forbidden vertex');
+
+PREPARE v3e2q25 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 4 or id = 5',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 2, false);
+
+SELECT set_eq('v3e2q23', 'v3e2q25', '1: Undirected graph with two edges and no forbidden vertex');
+SELECT set_eq('v3e2q24', 'v3e2q25', '1: Undirected graph with two edges and no forbidden vertex');
+
+-- THREE EDGES
+
+PREPARE v4e3q20 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 2 or id = 3',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 1, false);
+
+PREPARE v4e3q21 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 2 or id = 3',
+    ARRAY[]::integer[], ARRAY[1, 1]::integer[], 1, false);
+
+SELECT set_eq('v4e3q20', 'v4e3q21', '5: Undirected graph with three edges and no forbidden vertices');
+
+PREPARE v4e3q22 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 2 or id = 3',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 2, false);
+
+SELECT set_eq('v4e3q20', 'v4e3q22', '5: Undirected graph with three edges and no forbidden vertices');
+SELECT set_eq('v4e3q21', 'v4e3q22', '5: Undirected graph with three edges and no forbidden vertices');
+
+
+-- FOUR EDGES
+PREPARE v4e4q20 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 9 or id = 10 or id = 11',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 1, false);
+
+PREPARE v4e4q21 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 9 or id = 10 or id = 11',
+    ARRAY[]::integer[], ARRAY[1, 1]::integer[], 1, false);
+
+SELECT set_eq('v4e4q20', 'v4e4q21', '5: Undirected graph with four edges and no forbidden vertices');
+
+PREPARE v4e4q22 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1 or id = 9 or id = 10 or id = 11',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 2, false);
+
+SELECT set_eq('v4e4q20', 'v4e4q22', '5: Undirected graph with four edges and no forbidden vertices');
+SELECT set_eq('v4e4q21', 'v4e4q22', '5: Undirected graph with four edges and no forbidden vertices');
+
+PREPARE v4e4q23 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 9 or id = 12 or id = 13',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 1, false);
+
+PREPARE v4e4q24 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 9 or id = 12 or id = 13',
+    ARRAY[]::integer[], ARRAY[1, 1]::integer[], 1, false);
+
+SELECT set_eq('v4e4q23', 'v4e4q24', '5: Directed graph with four edges and no forbidden vertices');
+
+PREPARE v4e4q25 AS
+SELECT * FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 2 or id = 9 or id = 12 or id = 13',
+    ARRAY[]::integer[], ARRAY[1]::integer[], 2, false);
+
+SELECT set_eq('v4e4q23', 'v4e4q25', '5: Directed graph with four edges and no forbidden vertices');
+SELECT set_eq('v4e4q24', 'v4e4q25', '5: Directed graph with four edges and no forbidden vertices');
+
+
