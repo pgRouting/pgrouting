@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_one_to_one_driver.cpp
+File: max_flow_many_to_one_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "max_flow_one_to_one_driver.h"
+#include "max_flow_many_to_one_driver.h"
 
 #include <sstream>
 #include <vector>
@@ -46,10 +46,11 @@ extern "C" {
 }
 
 void
-do_pgr_max_flow_one_to_one(
+do_pgr_max_flow_many_to_one(
     pgr_edge_t *data_edges,
     size_t total_tuples,
-    int64_t source_vertex,
+    int64_t* source_vertices,
+    size_t size_source_verticesArr,
     int64_t sink_vertex,
     char* algorithm,
     pgr_flow_t **return_tuples,
@@ -60,9 +61,12 @@ do_pgr_max_flow_one_to_one(
     try {
         PgrFlowGraph<FlowGraph> G;
         std::set<int64_t> set_source_vertices;
-        set_source_vertices.insert(source_vertex);
         std::set<int64_t> set_sink_vertices;
+        for(int i=0; i<size_source_verticesArr; ++i){
+            set_source_vertices.insert(source_vertices[i]);
+        }
         set_sink_vertices.insert(sink_vertex);
+
 
         G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices);
 

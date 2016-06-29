@@ -60,14 +60,14 @@ do_pgr_max_flow_one_to_many(
 
     try {
         PgrFlowGraph<FlowGraph> G;
-        std::set<int64_t> vec_source_vertices;
-        std::set<int64_t> vec_sink_vertices;
-        vec_source_vertices.insert(source_vertex);
+        std::set<int64_t> set_source_vertices;
+        std::set<int64_t> set_sink_vertices;
+        set_source_vertices.insert(source_vertex);
         for(int i=0; i<size_sink_verticesArr; ++i){
-            vec_sink_vertices.insert(sink_vertices[i]);
+            set_sink_vertices.insert(sink_vertices[i]);
         }
 
-        G.create_flow_graph(data_edges, total_tuples, vec_source_vertices, vec_sink_vertices);
+        G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices);
 
         int64_t flow;
         if(strcmp(algorithm, "push_relabel") == 0){
