@@ -443,7 +443,7 @@ Optimize::decrease_truck(size_t cycle, bool &decreased) {
         err_log << " trying ";
         auto best_truck(fleet.size() - 1);
         auto current_duration(duration());
-        auto min_delta_duration = std::numeric_limits<double>::max();
+        auto min_delta_duration = (std::numeric_limits<double>::max)();
         size_t t_i(0);
         for (auto &truck : fleet) {
             truck.insert(order);
