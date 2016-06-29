@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 
 #include "../../common/src/pgr_types.h"
-#include "bdsp.h"
+#include "bdsp_driver.h"
 
 #define INF 1e15
 

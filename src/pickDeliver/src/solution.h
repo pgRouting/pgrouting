@@ -42,7 +42,7 @@ class Optimize;
 class Solution {
     friend class Optimize;
  protected:
-     static constexpr double EPSILON = 0.001;
+     double EPSILON;
      std::deque<Vehicle_pickDeliver> fleet;
 
      /* this solution belongs to this problem*/
@@ -62,30 +62,35 @@ class Solution {
       *
       */
      explicit Solution(const Pgr_pickDeliver *p_problem) :
+         EPSILON(0.0001),
          problem(p_problem)
     {};
 
 
      /* @brief move constructor */
      Solution(const Solution && sol) :
+         EPSILON(0.0001),
          fleet(std::move(sol.fleet)),
          problem(std::move(sol.problem))
          {};
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
+         EPSILON(0.0001),
          fleet(sol.fleet),
          problem(sol.problem)
     {};
 
      /* @brief move assigment */
      Solution& operator = (const Solution && sol) {
+         EPSILON = 0.0001,
          fleet = sol.fleet;
          return *this;
      };
 
      /* @brief copy assigment */
      Solution& operator = (const Solution& sol) {
+         EPSILON = 0.0001,
          fleet = sol.fleet;
          return *this;
      };

@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 #endif
 #include <sstream>
-#include "trsp.h"
+#include "trsp_driver.h"
 
 
 typedef std::pair<double, std::vector<int64_t> > PDVI;

@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <exception>
 #include "BiDirDijkstra.h"
-#include "bdsp.h"
+#include "bdsp_driver.h"
 
 
 
