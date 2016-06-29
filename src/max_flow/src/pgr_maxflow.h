@@ -35,13 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-
 #if 0
 #include "./../../common/src/signalhandler.h"
 #endif
 #include "./../../common/src/pgr_types.h"
 
 #include <cstdint>
+#include <cassert>
 #include <map>
 
 #include <boost/config.hpp>
@@ -49,6 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/push_relabel_max_flow.hpp>
 #include <boost/graph/edmonds_karp_max_flow.hpp>
 #include <boost/graph/boykov_kolmogorov_max_flow.hpp>
+#include <boost/graph/max_cardinality_matching.hpp>
 
 
 // user's functions
@@ -57,13 +58,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS>
     Traits;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
-        boost::property < boost::vertex_name_t, std::string,
-                boost::property < boost::vertex_index_t, int64_t,
-                        boost::property < boost::vertex_color_t, boost::default_color_type,
-                                boost::property < boost::vertex_distance_t, int64_t,
-                                        boost::property < boost::vertex_predecessor_t, Traits::edge_descriptor > > > > >,
+                              boost::property<boost::vertex_name_t, std::string,
+                                              boost::property<boost::vertex_index_t,
+                                                              int64_t,
+                                                              boost::property<
+                                                                  boost::vertex_color_t,
+                                                                  boost::default_color_type,
+                                                                  boost::property<
+                                                                      boost::vertex_distance_t,
+                                                                      int64_t,
+                                                                      boost::property<
+                                                                          boost::vertex_predecessor_t,
+                                                                          Traits::edge_descriptor> > > > >,
 
-        boost::property<boost::edge_capacity_t, int64_t, boost::property<boost::edge_residual_capacity_t, int64_t, boost::property< boost::edge_reverse_t, Traits::edge_descriptor> > > >
+                              boost::property<boost::edge_capacity_t,
+                                              int64_t,
+                                              boost::property<boost::edge_residual_capacity_t,
+                                                              int64_t,
+                                                              boost::property<
+                                                                  boost::edge_reverse_t,
+                                                                  Traits::edge_descriptor> > > >
     FlowGraph;
 
 
@@ -82,7 +96,7 @@ class PgrFlowGraph {
       residual_capacity;
 
 
-    std::map<int64_t, V> id_to_V;
+  std::map<int64_t, V> id_to_V;
   std::map<V, int64_t> V_to_id;
 
   V source_vertex;
@@ -98,17 +112,17 @@ class PgrFlowGraph {
 
   void create_flow_graph(pgr_edge_t *data_edges,
                          size_t total_tuples,
-                         const std::set<int64_t>& source_vertices,
-                         const std::set<int64_t>& sink_vertices) {
+                         const std::set<int64_t> &source_vertices,
+                         const std::set<int64_t> &sink_vertices) {
 
       // In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity
       // The same applies for sinks
 
       std::set<int64_t> vertices;
-      for(int64_t source: source_vertices){
+      for (int64_t source: source_vertices) {
           vertices.insert(source);
       }
-      for(int64_t sink: sink_vertices){
+      for (int64_t sink: sink_vertices) {
           vertices.insert(sink);
       }
       for (size_t i = 0; i < total_tuples; ++i) {
@@ -123,7 +137,7 @@ class PgrFlowGraph {
       bool added;
 
       V supersource = add_vertex(this->boost_graph);
-      for(int64_t source_id: source_vertices){
+      for (int64_t source_id: source_vertices) {
           V source = this->id_to_V.find(source_id)->second;
           E e1, e1_rev;
           boost::tie(e1, added) =
@@ -137,7 +151,7 @@ class PgrFlowGraph {
       }
 
       V supersink = add_vertex(this->boost_graph);
-      for(int64_t sink_id: sink_vertices){
+      for (int64_t sink_id: sink_vertices) {
           V sink = this->id_to_V.find(sink_id)->second;
           E e1, e1_rev;
           boost::tie(e1, added) =
@@ -186,6 +200,30 @@ class PgrFlowGraph {
       }
   }
 
+  void create_max_cardinality_graph(pgr_edge_t *data_edges,
+                                    size_t total_tuples) {
+      std::set<int64_t> vertices;
+      for (size_t i = 0; i < total_tuples; ++i) {
+          vertices.insert(data_edges[i].source);
+          vertices.insert(data_edges[i].target);
+      }
+      for (int64_t id : vertices) {
+          V v = add_vertex(this->boost_graph);
+          this->id_to_V.insert(std::pair<int64_t, V>(id, v));
+          this->V_to_id.insert(std::pair<V, int64_t>(v, id));
+      }
+      bool added;
+
+      for (size_t i = 0; i < total_tuples; ++i) {
+          V v1 = this->id_to_V.find(data_edges[i].source)->second;
+          V v2 = this->id_to_V.find(data_edges[i].target)->second;
+          E e1;
+          boost::tie(e1, added) =
+              boost::add_edge(v1, v2, this->boost_graph);
+      }
+  }
+
+
   std::vector<pgr_flow_t> get_flow_edges() {
 
       std::vector<pgr_flow_t> flow_edges;
@@ -222,14 +260,22 @@ class PgrFlowGraph {
                                           this->sink_vertex);
   }
 
-    int64_t boykov_kolmogorov() {
-        size_t num_v = boost::num_vertices(this->boost_graph);
-        std::vector<boost::default_color_type> color(num_v);
-        std::vector<long> distance(num_v);
-        return boost::boykov_kolmogorov_max_flow(this->boost_graph,
-                                            this->source_vertex,
-                                            this->sink_vertex);
-    }
+  int64_t boykov_kolmogorov() {
+      size_t num_v = boost::num_vertices(this->boost_graph);
+      std::vector<boost::default_color_type> color(num_v);
+      std::vector<long> distance(num_v);
+      return boost::boykov_kolmogorov_max_flow(this->boost_graph,
+                                               this->source_vertex,
+                                               this->sink_vertex);
+  }
 
+  void maximum_cardinality_matching(std::vector<int64_t> &mate_map) {
+      bool is_maximum;
+      is_maximum =
+          checked_edmonds_maximum_cardinality_matching(this->boost_graph,
+                                                       &mate_map[0]);
+
+      assert(is_maximum);
+  }
 
 };
