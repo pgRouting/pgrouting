@@ -140,6 +140,8 @@ string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQ
 message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
+#TODO maybe needs a wrapper for visual studio
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_WARNINGSPGSQL_VERSION=1")
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
   message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
@@ -232,10 +234,10 @@ elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGW
 
 elseif(WIN32)
   if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-      set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -D_CRT_SECURE_NO_WARNINGS -frounding-math")
+      set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
   endif()
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -D_CRT_SECURE_NO_WARNINGS -DNDEBUG -std=c++0x -frounding-math -Wno-deprecated")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -DNDEBUG -std=c++0x -frounding-math -Wno-deprecated")
   endif()
 endif()
 
