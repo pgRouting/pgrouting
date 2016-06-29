@@ -42,7 +42,7 @@ class Optimize;
 class Solution {
     friend class Optimize;
  protected:
-     constexpr double EPSILON = 0.001;
+     static constexpr double EPSILON = 0.001;
      std::deque<Vehicle_pickDeliver> fleet;
 
      /* this solution belongs to this problem*/
