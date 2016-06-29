@@ -235,7 +235,7 @@ elseif(WIN32)
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
   endif()
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -DNDEBUG -std=c++0x -frounding-math -Wno-deprecated")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -DNDEBUG -std=c++0x -Wall -Wconversion -pedantic -Wunused -Wuninitialized -Wextra -frounding-math -Wno-deprecated")
   endif()
 endif()
 
@@ -291,7 +291,7 @@ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     #"vrppdtw" #2.1
 
     #"convenience"
-    #"topology"
+    "topology"
     #"label_graph"
     #"costMatrix"
 
