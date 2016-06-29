@@ -2,6 +2,7 @@
 LIST(APPEND PACKAGE_SQL_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/max_flow_one_to_one.sql
         ${CMAKE_CURRENT_SOURCE_DIR}/max_flow_many_to_many.sql
+        ${CMAKE_CURRENT_SOURCE_DIR}/max_flow_one_to_many.sql
 
 )
 

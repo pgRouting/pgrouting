@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_one_to_one.c
+File: max_flow_one_to_many.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -48,15 +48,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "max_flow_one_to_one_driver.h"
+#include "max_flow_one_to_many_driver.h"
+#include "./../../common/src/arrays_input.h"
 
-PG_FUNCTION_INFO_V1(max_flow_one_to_one);
+PG_FUNCTION_INFO_V1(max_flow_one_to_many);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-    max_flow_one_to_one(PG_FUNCTION_ARGS);
+    max_flow_one_to_many(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -65,7 +66,7 @@ void
 process(
     char *edges_sql,
     int64_t source_vertex,
-    int64_t sink_vertex,
+    int64_t *sink_vertices, size_t size_sink_verticesArr,
     char *algorithm,
     pgr_flow_t **result_tuples,
     size_t *result_count) {
@@ -73,13 +74,6 @@ process(
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
-
-    if (source_vertex == sink_vertex) {
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
 
     size_t total_tuples = 0;
 
@@ -100,11 +94,11 @@ process(
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *err_msg = NULL;
-    do_pgr_max_flow_one_to_one(
+    do_pgr_max_flow_one_to_many(
         edges,
         total_tuples,
         source_vertex,
-        sink_vertex,
+        sink_vertices, size_sink_verticesArr,
         algorithm,
         result_tuples,
         result_count,
@@ -126,7 +120,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-max_flow_one_to_one(PG_FUNCTION_ARGS) {
+max_flow_one_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     uint32_t call_cntr;
     uint32_t max_calls;
@@ -149,11 +143,18 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
 
+
+        int64_t* sink_vertices;
+        size_t size_sink_verticesArr;
+        sink_vertices = (int64_t*)
+            pgr_get_bigIntArray(&size_sink_verticesArr, PG_GETARG_ARRAYTYPE_P(2));
+        PGR_DBG("sink_verticesArr size %d ", size_sink_verticesArr);
+
         PGR_DBG("Calling process");
         process(
             pgr_text2char(PG_GETARG_TEXT_P(0)),
             PG_GETARG_INT64(1),
-            PG_GETARG_INT64(2),
+            sink_vertices, size_sink_verticesArr,
             pgr_text2char(PG_GETARG_TEXT_P(3)),
             &result_tuples,
             &result_count);

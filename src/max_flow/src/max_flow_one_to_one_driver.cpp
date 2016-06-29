@@ -59,7 +59,12 @@ do_pgr_max_flow_one_to_one(
 
     try {
         PgrFlowGraph<FlowGraph> G;
-        G.create_flow_graph(data_edges, total_tuples, source_vertex, sink_vertex);
+        std::set<int64_t> vec_source_vertices;
+        vec_source_vertices.insert(source_vertex);
+        std::set<int64_t> vec_sink_vertices;
+        vec_sink_vertices.insert(sink_vertex);
+
+        G.create_flow_graph(data_edges, total_tuples, vec_source_vertices, vec_sink_vertices);
 
         int64_t flow;
         if(strcmp(algorithm, "push_relabel") == 0){

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_many_to_many_driver.cpp
+File: max_flow_one_to_many_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "max_flow_many_to_many_driver.h"
+#include "max_flow_one_to_many_driver.h"
 
 #include <sstream>
 #include <vector>
@@ -46,11 +46,10 @@ extern "C" {
 }
 
 void
-do_pgr_max_flow_many_to_many(
+do_pgr_max_flow_one_to_many(
     pgr_edge_t *data_edges,
     size_t total_tuples,
-    int64_t* source_vertices,
-    size_t size_source_verticesArr,
+    int64_t source_vertex,
     int64_t* sink_vertices,
     size_t size_sink_verticesArr,
     char* algorithm,
@@ -63,16 +62,12 @@ do_pgr_max_flow_many_to_many(
         PgrFlowGraph<FlowGraph> G;
         std::set<int64_t> vec_source_vertices;
         std::set<int64_t> vec_sink_vertices;
-        for(int i=0; i<size_source_verticesArr; ++i){
-            vec_source_vertices.insert(source_vertices[i]);
-        }
+        vec_source_vertices.insert(source_vertex);
         for(int i=0; i<size_sink_verticesArr; ++i){
             vec_sink_vertices.insert(sink_vertices[i]);
         }
 
-        G.create_flow_graph(data_edges, total_tuples, vec_source_vertices,
-                            vec_sink_vertices);
-
+        G.create_flow_graph(data_edges, total_tuples, vec_source_vertices, vec_sink_vertices);
 
         int64_t flow;
         if(strcmp(algorithm, "push_relabel") == 0){
