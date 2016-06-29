@@ -232,7 +232,7 @@ elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGW
 
 elseif(WIN32)
   if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
+      set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -D_CRT_SECURE_NO_WARNINGS -frounding-math")
   endif()
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -D_CRT_SECURE_NO_WARNINGS -DNDEBUG -std=c++0x -frounding-math -Wno-deprecated")
