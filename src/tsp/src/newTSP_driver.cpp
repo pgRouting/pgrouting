@@ -32,9 +32,6 @@
 #include <windows.h>
 #endif
 
-#ifdef _MSC_VER
-#define strdup _strdup
-#endif
 
 #include <string.h>
 #include <sstream>

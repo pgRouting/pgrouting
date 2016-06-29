@@ -40,10 +40,6 @@ corresponding to the Alpha shape.
 #endif
 #ifdef __MINGW64__
 
-#ifdef _MSC_VER
-#define strdup _strdup
-#endif
-
 
 namespace boost {
   void tss_cleanup_implemented() { }
@@ -57,9 +53,9 @@ namespace boost {
 #include <list>
 #include <cmath>
 
-#ifndef _MSC_VER
+//#ifndef _MSC_VER
 #include "alpha_driver.h"
-#endif // _MSC_VER
+//#endif // _MSC_VER
 
 #include <CGAL/Polygon_2.h>
 #include <CGAL/Delaunay_triangulation_2.h>

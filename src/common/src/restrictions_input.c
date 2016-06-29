@@ -33,10 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./get_check_data.h"
 #include "./restrictions_input.h"
 
-#if !defined(strdup) && defined(_MSC_VER)
-#define strdup _strdup
-#endif
-
 
 static
 void fetch_restriction(
@@ -154,7 +150,3 @@ pgr_get_restriction_data(
     clock_t end_t = clock();
     time_msg(" reading Restrictions", start_t, end_t);
 }
-
-#if defined(strdup) && defined(_MSC_VER)
-#undef strdup
-#endif

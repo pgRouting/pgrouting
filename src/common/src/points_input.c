@@ -22,10 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if !defined(strdup) && defined(_MSC_VER)
-#define strdup _strdup
-#endif
-
 #include "./debug_macro.h"
 #include "pgr_types.h"
 #include "postgres_connection.h"

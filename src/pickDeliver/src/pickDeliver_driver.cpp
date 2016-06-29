@@ -33,9 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#ifdef _MSC_VER
-#define strdup _strdup
-#endif
 #include "./pickDeliver_driver.h"
 #include <sstream>
 #include <string>

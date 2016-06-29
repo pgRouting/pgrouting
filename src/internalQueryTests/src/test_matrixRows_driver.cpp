@@ -33,10 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#if !defined(strdup) && defined(_MSC_VER)
-#define strdup _strdup
-#endif
-
 #include <sstream>
 #include <iomanip>
 #include <vector>
