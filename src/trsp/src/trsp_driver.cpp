@@ -25,10 +25,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "trsp_driver.h"
 #include <string.h>
 #include <sstream>
 #include "GraphDefinition.h"
+#include "trsp_driver.h"
 
 
 int trsp_node_wrapper(
