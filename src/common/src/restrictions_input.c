@@ -22,11 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if !defined(strdup) && defined(_MSC_VER)
-#define strdup _strdup
-#define strtok _strtok
-#endif
-
 
 #include "postgres.h"
 #include "executor/spi.h"
@@ -37,6 +32,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./postgres_connection.h"
 #include "./get_check_data.h"
 #include "./restrictions_input.h"
+
+#if !defined(strdup) && defined(_MSC_VER)
+#define strdup _strdup
+#endif
 
 
 static
@@ -155,3 +154,7 @@ pgr_get_restriction_data(
     clock_t end_t = clock();
     time_msg(" reading Restrictions", start_t, end_t);
 }
+
+#if defined(strdup) && defined(_MSC_VER)
+#undef strdup
+#endif

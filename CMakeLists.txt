@@ -252,24 +252,24 @@ set(PgRouting_SOURCE_NAMES
 
 
     "dijkstra"
-    "driving_distance"
-    "ksp"
-    "allpairs"
-    "withPoints"
+    #"driving_distance"
+    #"ksp"
+    #"allpairs"
+    #"withPoints"
 
-    "internalQueryTests"
+    #"internalQueryTests"
     #"funnyDijkstra"
 
-    "alpha_shape"
+    #"alpha_shape"
 
-    "astar"
-    "bd_astar"
-    "bd_dijkstra"
-    "trsp" #2.0
-    "tsp" #2.0
+    #"astar"
+    #"bd_astar"
+    #"bd_dijkstra"
+    #"trsp" #2.0
+    #"tsp" #2.0
 
-    "vrp_basic"
-    "pickDeliver"
+    #"vrp_basic"
+    #"pickDeliver"
 
     )
 
@@ -285,15 +285,15 @@ endforeach()
 # List variable to collect module SQL file names
 #-----------------------------------------------------------------------------
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
-    "apsp_johnson"  #V2.0
-    "apsp_warshall" #V2.0
-    "kdijkstra"     #V2.0
-    "vrppdtw" #2.1
+    #"apsp_johnson"  #V2.0
+    #"apsp_warshall" #V2.0
+    #"kdijkstra"     #V2.0
+    #"vrppdtw" #2.1
 
-    "convenience"
-    "topology"
-    "label_graph"
-    "costMatrix"
+    #"convenience"
+    #"topology"
+    #"label_graph"
+    #"costMatrix"
 
     )
 
