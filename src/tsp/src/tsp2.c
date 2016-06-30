@@ -54,12 +54,14 @@ PGDLLEXPORT Datum tsp_matrix(PG_FUNCTION_ARGS);
 #undef DEBUG
 #include "../../common/src/debug_macro.h"
 
+#if 0
 #ifndef INFINITY
 #ifndef _MSC_VER
 #define INFINITY (1.0/0.0)
 #else // _MSC_VER
 #define INFINITY (DBL_MAX + DBL_MAX);
 #endif // _MSC_VER
+#endif
 #endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
@@ -125,7 +127,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
 
     for (i=0; i<n; i++) {
         if (nulls[i]) {
-            data[i] = INFINITY;
+            data[i] = (DTYPE) 0;
         }
         else {
             switch(i_eltype){

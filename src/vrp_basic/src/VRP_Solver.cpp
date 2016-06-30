@@ -755,7 +755,7 @@ bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
 	if(dTravelTime + cPack.traveltime > m_vOrderInfos[ind].getCloseTime())
 		return false;
 
-	dTravelTime = std::max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
+	dTravelTime = (std::max)(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
 						static_cast<double>(m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime()));
 	vecStartTimes.push_back(static_cast<int>(ceil(dTravelTime)));
 
@@ -771,7 +771,7 @@ bool CVRPSolver::updateTourCosts(CTourInfo& tourInfo)
 		if(dTravelTime + cPack.traveltime > m_vOrderInfos[ind].getCloseTime())
 			return false;
 
-		dTravelTime = std::max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
+		dTravelTime = (std::max)(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
 			static_cast<double>(m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime()));
 
 	    vecStartTimes.push_back(static_cast<int>(ceil(dTravelTime)));
@@ -824,7 +824,7 @@ CostPack CVRPSolver::getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, 
 	if(dTravelTime + cPack.traveltime > m_vOrderInfos[ind].getCloseTime())
 		return costRet;
 
-	dTravelTime = std::max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
+	dTravelTime = (std::max)(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
 		static_cast<double>(m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime()));
 
 	unsigned int i;
@@ -839,7 +839,7 @@ CostPack CVRPSolver::getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, 
 		if(dTravelTime + cPack.traveltime > m_vOrderInfos[ind].getCloseTime())
 			return costRet;
 
-		dTravelTime = std::max(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
+		dTravelTime = (std::max)(dTravelTime + cPack.traveltime + m_vOrderInfos[ind].getServiceTime(), 
 			static_cast<double>(m_vOrderInfos[ind].getOpenTime() + m_vOrderInfos[ind].getServiceTime()));
 
 	}
@@ -889,7 +889,7 @@ void CVRPSolver::attempVehicleExchange(CSolutionInfo& solutionInfo)
 
 			// int prevFreeCapacity = max( secondTour.getRemainingCapacity(), firstTour.getRemainingCapacity() );
 
-			int curFreeCapacity = std::max(FirstTourRemainingCapacity,SecondTourRemainingCapacity);
+			int curFreeCapacity = (std::max)(FirstTourRemainingCapacity,SecondTourRemainingCapacity);
 
 			if ( (FirstTourRemainingCapacity > 0) && (SecondTourRemainingCapacity > 0) && 
 				// curFreeCapacity > curFreeCapacity  autological compare evaluates to false (error on MAC)
