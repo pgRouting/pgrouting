@@ -74,9 +74,6 @@ process(
 
     size_t total_tuples = 0;
 
-    /* NOTE:
-     * For flow, cost and reverse_cost are really capacity and reverse_capacity
-     */
     pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
@@ -114,7 +111,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-max_flow_many_to_many(PG_FUNCTION_ARGS) {
+maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     uint32_t call_cntr;
     uint32_t max_calls;

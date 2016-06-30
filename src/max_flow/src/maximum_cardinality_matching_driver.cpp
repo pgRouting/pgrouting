@@ -62,12 +62,17 @@ do_pgr_maximum_cardinality_matching(
         std::vector<int64_t> mate_map;
         G.maximum_cardinality_matching(mate_map);
 
+        std::vector<pgr_flow_t> matched_vertices = G.get_matched_vertices(mate_map);
 
-        (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
-        for (int i = 0; i < flow_edges.size(); ++i) {
-            (*return_tuples)[i] = flow_edges[i];
+
+
+
+
+        (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
+        for (int i = 0; i < matched_vertices.size(); ++i) {
+            (*return_tuples)[i] = matched_vertices[i];
         }
-        *return_count = flow_edges.size();
+        *return_count = matched_vertices.size();
 
 #ifndef DEBUG
         *err_msg = strdup("OK");

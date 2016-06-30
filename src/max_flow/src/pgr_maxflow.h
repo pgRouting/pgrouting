@@ -88,6 +88,7 @@ class PgrFlowGraph {
 
   typedef typename boost::graph_traits<G>::vertex_descriptor V;
   typedef typename boost::graph_traits<G>::edge_descriptor E;
+  typedef typename boost::graph_traits<G>::vertex_iterator V_it;
   typedef typename boost::graph_traits<G>::edge_iterator E_it;
 
   typename boost::property_map<G, boost::edge_capacity_t>::type capacity;
@@ -245,6 +246,25 @@ class PgrFlowGraph {
           }
       }
       return flow_edges;
+  }
+
+  std::vector<pgr_flow_t> get_matched_vertices(const std::vector<int64_t> &mate_map) {
+      // I use a flow edge with null capacity/reverse_capacity
+      // This is not shown on output
+      std::vector<pgr_flow_t> matched_vertices;
+      V_it vi, vi_end;
+      int64_t id = 1;
+      for (boost::tie(vi, vi_end) = boost::vertices(this->boost_graph); vi != vi_end;
+           ++vi) {
+          if (mate_map[*vi] != boost::graph_traits<G>::null_vertex()
+              && *vi < mate_map[*vi]) {
+              pgr_flow_t matched_couple;
+              matched_couple.id = id++;
+              matched_couple.source = this->getid(*vi);
+              matched_couple.target = this->getid(mate_map[*vi]);
+              matched_vertices.push_back(matched_couple);
+          }
+      }
   }
 
 
