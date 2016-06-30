@@ -103,7 +103,7 @@ class Solution {
      bool is_feasable() const;
      double duration() const;
      double wait_time() const;
-     int twcTot() const;
+     int twvTot() const;
      int cvTot() const;
      size_t fleet_size() const {return fleet.size();}
 

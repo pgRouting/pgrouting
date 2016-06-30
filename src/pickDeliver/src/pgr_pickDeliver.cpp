@@ -101,8 +101,6 @@ Pgr_pickDeliver::get_postgres_result(
         std::vector< General_vehicle_orders_t > &result) const {
     solutions.back().get_postgres_result(result);
 
-    Vehicle::Cost cost(solutions.back().cost());
-
     General_vehicle_orders_t aggregates({
             /*
              * Vehicle id = -1 indicates its an aggregate row
@@ -110,13 +108,13 @@ Pgr_pickDeliver::get_postgres_result(
              * (twv, cv, fleet, wait, duration)
              */
             -1,
-            std::get<0>(cost),  //  on vehicle seq tw violations
-            std::get<1>(cost),  //  on stop id: capacity violations
+            solutions.back().twvTot(),  //  on vehicle seq tw violations
+            solutions.back().cvTot(),  //  on vehicle seq tw violations
             0,  // TODO(vicky) not accounting total_travel_time not needed
             0,  // not accounting arrival_travel_time
-            std::get<3>(cost),  //  on wait time
+            solutions.back().wait_time(),  //  on vehicle seq tw violations
             0,  // TODO(vicky) not accounting service_time not needed
-            std::get<4>(cost)  //  on departure_time
+            solutions.back().duration(),  //  on vehicle seq tw violations
             });
     result.push_back(aggregates);
 

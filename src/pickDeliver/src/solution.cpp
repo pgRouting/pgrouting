@@ -70,7 +70,7 @@ Solution::duration() const {
 }
 
 int
-Solution::twcTot() const {
+Solution::twvTot() const {
     int total(0);
     for (const auto v : fleet) {
         total += v.twvTot();
