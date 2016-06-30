@@ -101,7 +101,7 @@ Pgr_pickDeliver::get_postgres_result(
         std::vector< General_vehicle_orders_t > &result) const {
     solutions.back().get_postgres_result(result);
 
-    General_vehicle_orders_t aggregates({
+    General_vehicle_orders_t aggregates = {
             /*
              * Vehicle id = -1 indicates its an aggregate row
              *
@@ -115,7 +115,7 @@ Pgr_pickDeliver::get_postgres_result(
             solutions.back().wait_time(),  //  on vehicle seq tw violations
             0,  // TODO(vicky) not accounting service_time not needed
             solutions.back().duration(),  //  on vehicle seq tw violations
-            });
+            };
     result.push_back(aggregates);
 
 
