@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 typedef std::pair<int, int> PII;
 
-#define max(a,b) ((a)>(b))?(a):(b)
+//#define max(a,b) ((a)>(b))?(a):(b)
 
 // Structure for Point, Geo coordinates can be represented with it
 typedef struct
