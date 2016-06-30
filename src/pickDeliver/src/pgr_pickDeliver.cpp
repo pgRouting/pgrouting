@@ -101,7 +101,7 @@ Pgr_pickDeliver::get_postgres_result(
         std::vector< General_vehicle_orders_t > &result) const {
     solutions.back().get_postgres_result(result);
 
-    Solution::Cost cost(solutions.back().cost());
+    Vehicle::Cost cost(solutions.back().cost());
 
     General_vehicle_orders_t aggregates({
             /*

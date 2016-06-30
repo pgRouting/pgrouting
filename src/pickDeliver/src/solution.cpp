@@ -96,7 +96,7 @@ Solution::cvTot() const {
     return total;
 }
 
-Solution::Cost
+Vehicle::Cost
 Solution::cost() const {
     double total_duration(0);
     double total_wait_time(0);
@@ -117,7 +117,7 @@ Solution::cost() const {
 
 std::string
 Solution::cost_str() const {
-    Cost s_cost(cost());
+    Vehicle::Cost s_cost(cost());
     std::ostringstream log;
 
     log << "(twv, cv, fleet, wait, duration) = ("
@@ -132,7 +132,7 @@ Solution::cost_str() const {
 
 std::string
 Solution::tau(const std::string &title) const {
-    Cost s_cost(cost());
+    Vehicle::Cost s_cost(cost());
     std::ostringstream log;
 
     log << "\n" << title << ": " << std::endl;
@@ -157,8 +157,8 @@ operator << (std::ostream &log, const Solution &solution) {
 
 bool
 Solution::operator<(const Solution &s_rhs) const {
-    Cost lhs(cost());
-    Cost rhs(s_rhs.cost());
+    Vehicle::Cost lhs(cost());
+    Vehicle::Cost rhs(s_rhs.cost());
 
     /*
      * capacity violations

@@ -74,7 +74,10 @@ class Vehicle {
      double max_capacity;
 
  public:
-     typedef std::tuple< int, int, int, double, double > Cost;
+     /*
+      * (twv, cv, fleet_size, wait_time, dureation)
+      */
+     typedef std::tuple< int, int, size_t, double, double > Cost;
      void get_postgres_result(
              int vid,
              std::vector< General_vehicle_orders_t > &result) const;

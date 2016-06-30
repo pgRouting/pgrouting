@@ -50,8 +50,6 @@ class Solution {
 
 
  public:
-     typedef std::tuple< int, int, int, double, double > Cost;
-
      void get_postgres_result(
              std::vector< General_vehicle_orders_t > &result) const;
 
@@ -111,13 +109,13 @@ class Solution {
 
      /*
       * Cost in terms of a tuple
-      * <0> duration
-      * <1> wait_time
+      * <0> time window violations
+      * <1> capacity violations
       * <2> fleet size TODO
-      * <3> time window violations
-      * <4> capacity violations
+      * <3> wait_time
+      * <4> duration
       */
-     Cost cost() const;
+     Vehicle::Cost cost() const;
 };
 
 
