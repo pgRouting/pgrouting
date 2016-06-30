@@ -151,7 +151,8 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
                findEulerianPath
             **********************************************************/
             if (data[i] < 0)
-                data[i] = INFINITY;
+                data[i] = (DTYPE) 0;
+                nulls[i]=true;
         }
         PGR_DBG("    data[%d]=%.4f", i, data[i]);
     }
