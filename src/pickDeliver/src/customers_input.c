@@ -89,9 +89,9 @@ pgr_get_customers_data(
     info[1].name = strdup("x");
     info[2].name = strdup("y");
     info[3].name = strdup("demand");
-    info[4].name = strdup("etime");
-    info[5].name = strdup("ltime");
-    info[6].name = strdup("stime");
+    info[4].name = strdup("opentime");
+    info[5].name = strdup("closetime");
+    info[6].name = strdup("servicetime");
     info[7].name = strdup("pindex");
     info[8].name = strdup("dindex");
 
