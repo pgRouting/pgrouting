@@ -57,9 +57,36 @@ void
 process(char* customers_sql,
         int max_vehicles,
         double capacity,
+        double speed,
         int max_cycles,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
+
+    if (max_vehicles <= 0) {
+        elog(ERROR, "Illegal value in parameter: max_vehicles");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+    if (capacity <= 0) {
+        elog(ERROR, "Illegal value in parameter: capacity");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+    if (speed <= 0) {
+        elog(ERROR, "Illegal value in parameter: speed");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+    if (max_cycles <= 0) {
+        elog(ERROR, "Illegal value in parameter: max_cycles");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
@@ -83,6 +110,7 @@ process(char* customers_sql,
             customers_arr, total_customers,
             max_vehicles,
             capacity,
+            speed,
             max_cycles,
             result_tuples,
             result_count,
@@ -135,6 +163,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
            orders_sql TEXT,
            max_vehicles INTEGER,
            capacity FLOAT,
+           speed FLOAT,
            max_cycles INTEGER,
          **********************************************************************/
 
@@ -143,7 +172,8 @@ pickDeliver(PG_FUNCTION_ARGS) {
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT32(1),
                 PG_GETARG_FLOAT8(2),
-                PG_GETARG_INT32(3),
+                PG_GETARG_FLOAT8(3),
+                PG_GETARG_INT32(4),
                 &result_tuples,
                 &result_count);
 

@@ -15,7 +15,7 @@ customers_sql TEXT;
 BEGIN
     RETURN query
          SELECT a.seq, vehicle_id::INTEGER, stop_id::INTEGER AS id2, departure_time::INTEGER
-        FROM pgr_pickDeliver($1, $2, $3, 30) AS a;
+        FROM _pgr_pickDeliver($1, $2, $3, 1, 30) AS a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

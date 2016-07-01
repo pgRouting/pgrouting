@@ -46,6 +46,7 @@ extern "C" {
             Customer_t *customers_arr, size_t total_customers,
             int max_vehicles,
             double capacity,
+            double speed,
             int max_cycles,
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,

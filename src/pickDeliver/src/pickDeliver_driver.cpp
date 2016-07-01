@@ -56,6 +56,7 @@ do_pgr_pickDeliver(
         size_t total_customers,
         int max_vehicles,
         double capacity,
+        double speed,
         int max_cycles,
         General_vehicle_orders_t **result_tuples,
         size_t *total_count,
@@ -74,6 +75,7 @@ do_pgr_pickDeliver(
                 total_customers,
                 max_vehicles,
                 capacity,
+                speed,
                 max_cycles,
                 error);
         if (error.compare("")) {
