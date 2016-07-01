@@ -132,10 +132,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const Customer_t *customers_data, size_t total_customers,
         int p_max_vehicles,
         double p_capacity,
+        double p_speed,
         size_t p_max_cycles,
         std::string &error) :
     /* Set the depot to be the first ddata found */
     max_capacity(p_capacity),
+    m_speed(p_speed),
     m_max_cycles(p_max_cycles),
     max_vehicles(p_max_vehicles),
     m_starting_site({0, customers_data[0], Tw_node::NodeType::kStart}),

@@ -58,6 +58,7 @@ class Pgr_pickDeliver {
             const Customer_t *c1, size_t total_customers,
             int VehicleLength,
             double capacity,
+            double speed,
             size_t max_cycles,
             std::string &error);
 
@@ -88,6 +89,7 @@ class Pgr_pickDeliver {
 
  private:
     double max_capacity;
+    double m_speed;
     size_t m_max_cycles;
     int max_vehicles;
     Vehicle_node m_starting_site, m_ending_site;
