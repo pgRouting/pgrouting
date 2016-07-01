@@ -60,7 +60,9 @@ class Node {
      ///@ {
 
      bool isSamePos(const Node &other) const;
+#if 0
      double travel_time_to(const Node &node2) const;
+#endif
      friend std::ostream& operator << (std::ostream &log, const Node &node);
      bool operator ==(const Node &rhs) const;
 
