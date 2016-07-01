@@ -87,6 +87,24 @@ Solution::wait_time() const {
     return total;
 }
 
+double
+Solution::total_travel_time() const {
+    double total(0);
+    for (const auto v : fleet) {
+        total += v.total_travel_time();
+    }
+    return total;
+}
+
+double
+Solution::total_service_time() const {
+    double total(0);
+    for (const auto v : fleet) {
+        total += v.total_service_time();
+    }
+    return total;
+}
+
 int
 Solution::cvTot() const {
     int total(0);

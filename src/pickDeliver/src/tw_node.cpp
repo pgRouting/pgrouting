@@ -24,11 +24,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "./tw_node.h"
+
 #include <limits>
 #include <string>
 
+
+#include "./../../common/src/pgr_assert.h"
+#include "./pgr_pickDeliver.h"
+
 namespace pgRouting {
 namespace vrp {
+
+
+double
+Tw_node::travel_time_to(const Node &other) const {
+    pgassert(problem->speed() > 0);
+    return distance(other) / problem->speed();
+}
 
 
 /*
@@ -212,13 +224,15 @@ bool Tw_node::is_valid() const {
 Tw_node::Tw_node(
         size_t id,
         Customer_t data,
-        NodeType type) :
+        NodeType type,
+        const Pgr_pickDeliver *p_problem) :
     Node(id, data.id, data.x, data.y),
     m_opens(data.Etime),
     m_closes(data.Ltime),
     m_service_time(data.Stime),
     m_demand(data.demand),
-    m_type(type) {
+    m_type(type),
+    problem(p_problem){
     }
 
 
@@ -231,13 +245,15 @@ Tw_node::Tw_node(
         double closes,
         double service_time,
         double demand,
-        NodeType type) :
+        NodeType type,
+        const Pgr_pickDeliver *p_problem) :
     Node(id, original_id, x, y),
     m_opens(opens),
     m_closes(closes),
     m_service_time(service_time),
     m_demand(demand),
-    m_type(type) {
+    m_type(type),
+    problem(p_problem){
     }
 
 

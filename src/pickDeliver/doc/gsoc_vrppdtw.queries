@@ -1,6 +1,6 @@
 --q1
 SELECT * FROM pgr_gsoc_vrppdtw(
-    'select * from customer order by id'::text, 25, 200);
+    'select * from customer order by id', 25, 200);
 NOTICE:  Proposed Function
 CONTEXT:  PL/pgSQL function pgr_gsoc_vrppdtw(text,integer,integer) line 6 at RETURN QUERY
  seq | rid | nid | cost 

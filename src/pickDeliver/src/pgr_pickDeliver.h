@@ -71,6 +71,7 @@ class Pgr_pickDeliver {
     const Order order_of(const Vehicle_node &node) const;
     const Vehicle_node& node(ID id) const;
     const std::vector<Order>& orders() const {return m_orders;}
+    double speed() const {return m_speed;}
 
     /*! \brief get_log
      *

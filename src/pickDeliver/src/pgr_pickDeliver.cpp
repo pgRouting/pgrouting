@@ -108,13 +108,13 @@ Pgr_pickDeliver::get_postgres_result(
              * (twv, cv, fleet, wait, duration)
              */
             -1,
-            solutions.back().twvTot(),  //  on vehicle seq tw violations
-            solutions.back().cvTot(),  //  on vehicle seq tw violations
-            0,  // TODO(vicky) not accounting total_travel_time not needed
+            solutions.back().twvTot(), 
+            solutions.back().cvTot(),  
+            solutions.back().total_travel_time(),
             0,  // not accounting arrival_travel_time
-            solutions.back().wait_time(),  //  on vehicle seq tw violations
-            0,  // TODO(vicky) not accounting service_time not needed
-            solutions.back().duration(),  //  on vehicle seq tw violations
+            solutions.back().wait_time(),  
+            solutions.back().total_service_time(),  
+            solutions.back().duration(),  
             };
     result.push_back(aggregates);
 
@@ -140,9 +140,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_speed(p_speed),
     m_max_cycles(p_max_cycles),
     max_vehicles(p_max_vehicles),
-    m_starting_site({0, customers_data[0], Tw_node::NodeType::kStart}),
-    m_ending_site({0, customers_data[0], Tw_node::NodeType::kEnd}),
+    m_starting_site({0, customers_data[0], Tw_node::NodeType::kStart, this}),
+    m_ending_site({0, customers_data[0], Tw_node::NodeType::kEnd, this}),
     m_original_data(customers_data, customers_data + total_customers) {
+        pgassert(m_speed > 0);
+        pgassert(m_max_cycles > 0);
+        pgassert(max_vehicles > 0);
         std::ostringstream tmplog;
         error = "";
 
@@ -163,9 +166,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         }
 
         m_starting_site = Vehicle_node(
-                {0, customers_data[0], Tw_node::NodeType::kStart});
+                {0, customers_data[0], Tw_node::NodeType::kStart, this});
         m_ending_site = Vehicle_node(
-                {1, customers_data[0], Tw_node::NodeType::kEnd});
+                {1, customers_data[0], Tw_node::NodeType::kEnd, this});
         if (!m_starting_site.is_start()) {
             log << "DEPOT" << m_starting_site;
             error = "Illegal values found on the starting site";
@@ -206,7 +209,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             /*
              * pickup is found
              */
-            Tw_node pickup({node_id++, p, Tw_node::NodeType::kPickup});
+            Tw_node pickup({node_id++, p, Tw_node::NodeType::kPickup, this});
             if (!pickup.is_pickup()) {
                 log << "PICKUP" << pickup;
                 tmplog << "Illegal values found on Pickup " << p.id;
@@ -243,7 +246,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             Tw_node delivery(
                     node_id++,
                     (*deliver_ptr),
-                    Tw_node::NodeType::kDelivery);
+                    Tw_node::NodeType::kDelivery,
+                    this);
             if (!delivery.is_delivery()) {
                 log << "DELIVERY" << delivery;
                 tmplog << "Illegal values found on Delivery "

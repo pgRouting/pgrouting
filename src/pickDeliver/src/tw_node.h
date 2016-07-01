@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgRouting {
 namespace vrp {
 
+ class Pgr_pickDeliver;
+
 /*! \class Twnode
  * \brief Extends the \ref Node class to create a Node with time window attributes.
  *
@@ -99,6 +101,9 @@ class Tw_node: public Node {
 
      /*! \brief Returns the length of time between the opening and closeing. */
      inline double window_length() const {return m_closes - m_opens;}
+
+     /*! \brief time = distance / speed. */
+     double travel_time_to(const Node &other) const;
 
      ///@}
 
@@ -263,7 +268,8 @@ class Tw_node: public Node {
      Tw_node(
              size_t id,
              Customer_t data,
-             NodeType type);
+             NodeType type,
+             const Pgr_pickDeliver *problem);
 
      Tw_node(
              size_t id,
@@ -274,7 +280,8 @@ class Tw_node: public Node {
              double closes,
              double service_time,
              double demand,
-             NodeType type);
+             NodeType type,
+             const Pgr_pickDeliver *problem);
 
  protected:
      bool is_valid() const;
@@ -285,6 +292,7 @@ class Tw_node: public Node {
      double m_demand;       ///< The demand for the Node
      size_t m_otherid;      ///< the other's internal id
      NodeType m_type;       ///< The demand for the Node
+     const Pgr_pickDeliver *problem;
 };
 
 }  //  namespace vrp

@@ -216,6 +216,12 @@ class Vehicle {
      double total_wait_time() const {
          return m_path.back().total_wait_time();
      } 
+     double total_travel_time() const {
+         return m_path.back().total_travel_time();
+     } 
+     double total_service_time() const {
+         return m_path.back().total_service_time();
+     } 
      double free_time() const {
          return total_wait_time() + (m_path[0].closes() - duration());
      }
