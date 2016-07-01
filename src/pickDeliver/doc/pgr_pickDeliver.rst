@@ -14,67 +14,71 @@
 
 .. _pgr_pickDeliver:
 
-pgr_pickDeliver
+__pgr_pickDeliver
 ===============================================================================
 
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_pickDeliver`` — [medium description of
-function1 it can span many
-lines]
+``_pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
-.. warning::  This is a proposed function.
+.. warning::  This is developers function.
 
-     - Is not officially in the current release
+   - Is not officially in the current release
+   - Functionality currently is incomplete
+   - Final name currently is undecided
+   - Signature can and will change without notice.
+   - Please use :ref:`pgr_gsocvrppdtw` for a non changing Signature between releases
+   - It has the underscore until final functionality and name are decided
 
 
-..
-   keep if uses boost (this is a comment)
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
-
-   Boost Graph Inside
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Very long description of function
+Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehicles.
 
-..
-   SPHINX manual
-   http://www.sphinx-doc.org/en/stable/rest.html
+- Optimization problem is NP-hard.
+- pickup and Delivery with time windows.
+- All vehicles are equal.
 
+  - Same Starting location.
+  - Same Ending location which is the same as Starting location.
+  - All vehicles travel at the same speed.
 
+- A customer is for doing a pickup or doing a deliver.
+
+  - has an open time.
+  - has a closing time.
+  - has a service time.
+  - has an (x, y) location.
+
+- There is a customer where to deliver a pickup.
+
+  - travel time between customers is distance / speed
+  - pickup and delivery pair is done with the same vehicle.
+  - A pickup is done before the delivery.
+
+  
 Characteristics:
 ----------------
 
-..
-   Here is a sample of the kind of information in this section:
+- All trucks depart at time 0.
+- No multiple time windows for a location.
+- Less vehicle used is considered better.
+- Less total duration is better.
+- Less wait time is better.
+- the algorithm will raise an exeption when
 
-The main Characteristics are:
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
+  - If there is a pickup-deliver pair than violates time window
+  - The speed, max_cycles, ma_capacity have illegal values
 
-    - When the starting vertex and ending vertex are the same, there is no path.
-
-      - The `agg_cost` the non included values `(v, v)` is `0`
-
-    - When the starting vertex and ending vertex are the different and there is no path:
-
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
-
-  - The returned values are ordered:
-
-    - `start_vid` ascending
-    - `end_vid` ascending
-
-  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
+- Six different initial will be optimized
+  - the best solution found will be result
+      
 
 Signature Summary
 -----------------
@@ -86,73 +90,67 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_pickDeliver(edges_sql, start_vid,  end_vids)
-    pgr_pickDeliver(edges_sql, start_vids, end_vids, directed:=true)
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-      OR EMPTY SET
+    _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
+    _pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
+    RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
+         travel_time, arrival_time, wait_time, service_time,  departure_time) 
 
-
-..
-  This is a reminder of how your query looks like
-  pgr_pickDeliver(
-    orders_sql TEXT,
-    max_vehicles INTEGER,
-    capacity FLOAT,
-    max_cycles INTEGER, 
-    OUT seq INTEGER,
-    OUT vehicle_id INTEGER,
-    OUT order_id BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT)
 
 
 Signatures
 ===============================================================================
 
+..
+    Minimal signature
+
 .. index:: 
-    single: pgr_pickDeliver(edges_sql, start_vid,  end_vids) - proposed
+    single: _pgr_pickDeliver(Minimal Signature) - proposed
 
 Minimal signature
 -----------------
 
-
 ..
    Small description, example:
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to many ``end_vids``:
+The minimal signature is for `speed = 1`, for a `max_cycles = 30`
 
 .. code-block:: none
 
-    pgr_pickDeliver(edges_sql, start_vid,  end_vids)
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-      OR EMPTY SET
+    _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
+    RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
+         travel_time, arrival_time, wait_time, service_time,  departure_time) 
 
 :Example:
+
+This example use the following data: TODO put link
 
 .. literalinclude:: doc-pickDeliver.queries
    :start-after: --q1
    :end-before: --q2
 
+..
+    Complete signature
+
+.. index:: 
+    single: pgr_pickDeliver(Cmplete Signature) - proposed
+
 
 Complete signature
 ------------------
 
-This signature performs a .....
+This signature performs the optimization based on the optional parameters
 
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-.. index:: 
-    single: pgr_pickDeliver(edges_sql, start_vids, end_vids, directed:=true) - proposed
 
 .. code-block:: none
 
-    pgr_pickDeliver(  [parameters],
-        boolean directed:=true);
-    RETURNS SET OF ( [output] ) or EMPTY SET
+    _pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
+    RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
+         travel_time, arrival_time, wait_time, service_time,  departure_time) 
 
 
 :Example:
+
+This example use the following data: TODO put link
 
 .. literalinclude:: doc-pickDeliver.queries
    :start-after: --q2
@@ -161,43 +159,32 @@ This signature performs a .....
 Description of the Signatures
 =============================
 
-..
-   DELETE / ADD DEPENDING ON YOUR REQUIREMENTS
 
 Description of the SQL query
 -------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+:customers_sql: an SQL query, which should return a set of rows with the following columns:
 
 ================  ===================   =================================================
 Column            Type                  Description
 ================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+**id**            ``ANY-INTEGER``       Identifier of the customer.
+
+                                        - A value of ``0`` identifies the starting location
+
+**x**             ``ANY-NUMERICAL``     ``X`` coordinate of the location.
+**y**             ``ANY-NUMERICAL``     ``Y`` coordinate of the location.
+**demand**        ``ANY-NUMERICAL``     How much is added / removed from the vehicle.
+
+                                        - Negative value is a delivery, 
+                                        - Positive value is a pickup, 
+
+**openTime**      ``ANY-NUMERICAL``     The time relative to 0, when the customer opens.
+**closeTime**     ``ANY-NUMERICAL``     The time relative to 0, when the customer closes.
+**serviceTime**   ``ANY-NUMERICAL``     The duration of the loading / unloading.
+**pickup_id**     ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
+**deliver_id**    ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
 ================  ===================   =================================================
-
-Description of the Points SQL query
--------------------------------------------------------------------------------
-
-:points_sql: an SQL query, which should return a set of rows with the following columns:
-
-============ ================= =================================================
-Column            Type              Description
-============ ================= =================================================
-**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
-**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
-**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
-**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
-                                 - In the right, left of the edge or
-                                 - If it doesn't matter with 'b' or NULL.
-                                 - If column not present 'b' is considered.
-
-                               Can be in upper or lower case.
-============ ================= =================================================
-
 
 Where:
 
@@ -208,61 +195,55 @@ Where:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-============== ====================== =================================================
-Column         Type                   Description
-============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as decribed above.
-**points_sql** ``TEXT``               Points SQL query as decribed above.
-**start_vid**  ``BIGINT``             Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``             Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-============== ====================== =================================================
+================== =========== ======== =================================================
+Column             Type        Default     Description
+================== =========== ======== =================================================
+**customers_sql**  ``TEXT``             SQL query as decribed above.
+**max_vehicles**   ``INTEGER``          Points SQL query as decribed above.
+**capacity**       ``FLOAT``            Identifier of the starting vertex of the path.
+**speed**          ``FLOAT``   1        Array of identifiers of starting vertices.
+**max_cycles**     ``INTEGER`` 30       A multiplier for internal cycles (currently is ignored)
+================== =========== ======== =================================================
 
+Description of the result
+-------------------------------------------------------------------------------
 
-Examples
-========
+RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time) 
+         
 
-The examples of this section are based on the :ref:`sampledata` network.
+================== =========== =================================================
+Column             Type            Description
+================== =========== =================================================
+**seq**            ``INTEGER`` Sequential value starting from **1**.
+**vehicle_id**     ``INTEGER`` Current vehicle identifier.
+**vehicle_seq**    ``INTEGER`` Sequential value starting from **1** for the current vehicle.
+**stop_id**        ``BIGINT``  Start location identifier or End location identifier or Customer identifier.
+**travel_time**    ``FLOAT``   Travel time from previous stop_id to current ``stop_id``.
+**arrival_time**   ``FLOAT``   Previous departure_time plus current travel_time
+**wait_time**      ``FLOAT``   Time spent waiting for stop_id to open.
+**service_time**   ``FLOAT``   service time at current stop_id.
+**departure_time** ``FLOAT``   arrival_time plus wait_time plus service_time
+================== =========== =================================================
 
-
-
-[put as many examples as needed and use the documentation data for the examples]
-
-:Example:
-
-.. literalinclude:: doc-pickDeliver.queries
-   :start-after: --q1
-   :end-before: --q2
 
 ..
-   If needed here are some subtitles  
+    Examples
+    ========
+    :Example:
 
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
---------------------------------------------------------------------------------------
+..
+    Examples
+    ========
+    :Example:
+    This example use the following data: TODO put link
+    .. literalinclude:: doc-pickDeliver.queries
+    :start-after: --q1
+    :end-before: --q2
 
-The examples in this section use the following :ref:`fig1`
-
-:Example: This example is in a subtitle
-
-.. literalinclude:: doc-pickDeliver.queries
-   :start-after: --q1
-   :end-before: --q2
-
-
-The queries use the :ref:`sampledata` network.
-
-.. rubric:: History
-
-* Official in version X.X
-* Proposed in version Y.Y 
 
 
 See Also
 -------------------------------------------------------------------------------
-
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 .. rubric:: Indices and tables
 

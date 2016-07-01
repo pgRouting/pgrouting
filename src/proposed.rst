@@ -63,11 +63,12 @@ Proposed functions: Proposed by Zia Mohammed
 Proposed functions: Proposed by GSoc Student
 ---------------------------------------------
 
-  -  :ref:`pgr_pickDeliver` - VRP Pickup & Delivery (Euclidean)
+  -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
 
 .. toctree::
     :hidden:
 
+    ../src/vrppdtw/doc/pgr_gsoc_vrppdtw.rst
     ../src/pickDeliver/doc/pgr_pickDeliver.rst
 
 
