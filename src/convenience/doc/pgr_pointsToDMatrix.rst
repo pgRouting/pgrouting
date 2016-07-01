@@ -9,7 +9,7 @@
 
 .. _pgr_points_to_dmatrix:
 
-pgr_pointsToDMatrix
+pgr_pointsToDMatrix -- deprecated
 ==============================================================================
 
 .. warning:: This function is deprecated!!!

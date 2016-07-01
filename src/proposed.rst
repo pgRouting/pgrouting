@@ -33,46 +33,28 @@ These are proposed functions
     - Might need a deprecated function of pgRouting
 
 
-Proposed functions: Proposed by Steve Woodbridge
+Proposed functions
 ------------------------------------------------
 
 :ref:`convenience_functions`
   -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-  -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
   -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
   -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
-  -  :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
-  -  :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
-  -  :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
-
-Proposed functions: Proposed by Zia Mohammed
----------------------------------------------
-
   -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
+  -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
+  -  :ref:`pgr_vrp_basic` - VRP One Depot
 
 .. toctree::
   :hidden:
 
+  ../src/convenience/doc/convenience
   ../src/label_graph/doc/pgr_labelGraph.rst
-
-.. toctree::
-   :hidden:
-
-   ../src/convenience/doc/convenience
-
-Proposed functions: Proposed by GSoc Student
----------------------------------------------
-
-  -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
-
-.. toctree::
-    :hidden:
-
-    ../src/vrppdtw/doc/pgr_gsoc_vrppdtw.rst
-    ../src/pickDeliver/doc/pgr_pickDeliver.rst
+  ../src/vrppdtw/doc/pgr_gsoc_vrppdtw.rst
+  ../src/pickDeliver/doc/pgr_pickDeliver.rst
+  ../src/vrp_basic/doc/pgr_vrpOneDepot
 
 
-Proposed functions: Proposed by Rohith Reddy
+Documentation only proposed functions:
 ---------------------------------------------
 
   -  :ref:`contraction` - Reduce network size using contraction techniques
@@ -80,17 +62,8 @@ Proposed functions: Proposed by Rohith Reddy
 .. toctree::
   :hidden:
 
-  ../src/contraction/doc/contraction.rst
-
-.. toctree::
-  :hidden:
-
   ../src/contraction/doc/contraction
 
-Experimental functions: by GSoC Students
-----------------------------------------
-
-  -  :ref:`pgr_vrp_basic` - VRP One Depot
 
 ..
     The template
@@ -101,7 +74,6 @@ Experimental functions: by GSoC Students
 .. toctree::
     :hidden:
 
-    ../src/vrp_basic/doc/pgr_vrpOneDepot
 
 ..
     ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst

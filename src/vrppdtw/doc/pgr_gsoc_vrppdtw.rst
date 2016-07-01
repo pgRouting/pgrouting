@@ -69,5 +69,5 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_pick_deliver`
+* :ref:`pgr_pickDeliver`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem
