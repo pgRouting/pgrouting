@@ -77,7 +77,9 @@ namespace pgRouting {
 					std::vector< T_E > shortcuts;
 					typedef typename boost::graph_traits < G >::degree_size_type       degree_size_type;
 					   
-
+                    /*! @brief Binary function that accepts two elements , and returns a value convertible to bool.
+                        Used as a compare function to sort the edges in increasing order of edge id 
+                    */
                     static bool compareById(const T_E &edge1, const T_E &edge2)
                     {
                         return edge1.id > edge2.id;
@@ -111,20 +113,9 @@ namespace pgRouting {
 						void graph_insert_data(const T *edges, int64_t count) {
 							graph_insert_data(std::vector < T >(edges, edges + count));
 						}
-                    /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
-
-                    The set of edges should not have an illegal vertex defined
-        
-                    When the graph is empty calls:
-                    - \bextract_vertices
-                    and throws an exeption if there are illegal vertices. 
-        
-                    When developing:
-                    - if an illegal vertex is found an exeption is thrown
-                    - That means that the set of vertices should be checked in the
-                        code that is being developed
-                    No edge is inserted when there is an error on the vertices
-                    @param edges
+                    /*! \brief Inserts vector of edges of type *T* into the graph
+                    *  
+                    *  @param edges
                     */
 					template < typename T >
 						void graph_insert_data(const std::vector < T > &edges) {
@@ -136,8 +127,9 @@ namespace pgRouting {
 
                     //! @brief True when *v* is in the graph
                     /*!
-                    - Indegree of *v* is 0
-                    - Outdegree of *v* is 0
+                    True when 
+                        - Indegree of *v* is 0 &
+                        - Outdegree of *v* is 0
                     @param [IN] *v* vertex_id
                     */
 					bool is_connected(int64_t v) const {
@@ -151,7 +143,7 @@ namespace pgRouting {
                     /*!
                     - Degree of *v* is 1                    
                     @param [IN] *v* vertex_descriptor
-                    @return V: The vertex descriptor of the vertex
+                    @return V: The vertex descriptor of the vertex adjacent to *v*
                     */
 					V find_adjacent_vertex(V v) const {
 						EO_i out, out_end;
@@ -174,9 +166,10 @@ namespace pgRouting {
 							return in_vertex;
 						return out_vertex;
 					}
+
                     /*! @brief get the vertex descriptors of adjacent vertices of *v*
                     @param [IN] *v* vertex_descriptor
-                    @return Identifiers<V>: The set of vertex descriptors adjacent to the given vertex
+                    @return Identifiers<V>: The set of vertex descriptors adjacent to the given vertex *v*
                     */
 					Identifiers<V> find_adjacent_vertices(V v) const {
 						EO_i out, out_end;
@@ -218,8 +211,8 @@ namespace pgRouting {
 						log << "}";
 					}
 
-                    /*! @brief get the vertices of the graph that are changed due to contraction
-                    @param [IN] *remaining_vertices* The vector of vertices changed during contraction
+                    /*! @brief get the remaining vertices of the graph after contraction
+                    @param [IN] *remaining_vertices* The vector of vertices remaining after contraction
                     */
                     void get_remaining_vertices(std::vector<T_V>& remaining_vertices) {
                         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
@@ -230,10 +223,10 @@ namespace pgRouting {
                         }
                     }
 
-                    /*! @brief get the vertices of the graph that are changed due to contraction
-                    @param [IN] *remaining_vertices* The set of vertices changed during contraction
+                    /*! @brief get the vertices of the graph with atleast one contracted vertex 
+                    @param [IN] *remaining_vertices* The set of vertices with atleast one contracted vertex
                     */
-                    void get_remaining_vertices(Identifiers<int64_t>& remaining_vertices) {
+                    void get_changed_vertices(Identifiers<int64_t>& remaining_vertices) {
                         //log << "remaining_vertices\n";
                         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
                             if (!removed_vertices.has(*vi) && this->graph[*vi].has_contracted_vertices())
@@ -287,7 +280,7 @@ namespace pgRouting {
 
                     /*! @brief get the in-degree of a vertex from its neighbor
                     @param [IN] *vertex* vertex_descriptor of the given vertex
-                    @param [IN] *neighbor* vertex_descriptor of neighbor of *vertex*
+                    @param [IN] *neighbor* vertex_descriptor of neighbor 
                     @return degree_size_type: The in-degree of *vertex* from *neighbor*
                     */
 					degree_size_type in_degree_from_vertex(V vertex, V neighbor)
@@ -309,7 +302,7 @@ namespace pgRouting {
 
                     /*! @brief get the out-degree of a vertex to its neighbor
                     @param [IN] *vertex* vertex_descriptor of the given vertex
-                    @param [IN] *neighbor* vertex_descriptor of neighbor of *vertex*
+                    @param [IN] *neighbor* vertex_descriptor of neighbor 
                     @return degree_size_type: The out-degree of *vertex* to *neighbor*
                     */
 					degree_size_type out_degree_to_vertex(V vertex, V neighbor)
@@ -361,9 +354,13 @@ namespace pgRouting {
                         }
                     }
 
-                    void print_contracted_vertices(std::ostringstream &log, int64_t vertex_id) {
-                        if (!this->has_vertex(vertex_id)) return;
-                        V v = this->get_V(vertex_id);
+                    /*! @brief get the contracted vertex ids of a given vertex in string format
+                    @param [IN] *vid* vertex_id
+                    @param [IN] *log* stringstream which stores the vertex ids of contracted vertices of *vid*
+                    */
+                    void get_contracted_vertices(std::ostringstream &log, int64_t vid) {
+                        if (!this->has_vertex(vid)) return;
+                        V v = this->get_V(vid);
                         log << "{";
                         for (auto vertex : this->graph[v].contracted_vertices()) {
                             log << this->graph[vertex].id << ", ";
@@ -372,6 +369,10 @@ namespace pgRouting {
 
                     }
 
+                    /*! @brief add the contracted vertices of an edge *e* to the vertex *v*
+                    @param [IN] *v* vertex_descriptor
+                    @param [IN] *e* Edge of type *T_E*
+                    */
 					void add_contracted_edge_vertices(V v, T_E &e)
 					{
 						for (auto vid : e.contracted_vertices())
@@ -381,6 +382,10 @@ namespace pgRouting {
 						e.clear_contracted_vertices();
 					}
 
+                    
+                    /*! \brief Inserts an edge of type *T* into the graph
+                     *  @param edge
+                     */
 					template < typename T>
 						void graph_add_edge(const T &edge) {
 							bool inserted;
@@ -419,6 +424,10 @@ namespace pgRouting {
 							}
 						}
 
+                    /*! \brief add edges(shortuct) to the graph during contraction
+                    @param [IN] *edge* of type *T_E* is to be added
+                    @param [IN] *log* string stream used for debugging purposes
+                    */  
 					void graph_add_shortcut(const T_E &edge, std::ostringstream& log) {
 						bool inserted;
 						E e;
@@ -457,6 +466,15 @@ namespace pgRouting {
 						}
 					}
 
+                    /*! \brief Disconnects all incomming and outgoing edges from the vertex
+                    boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
+                    simulated by disconnecting the vertex from the graph
+                    - No edge is disconnected if the vertices id's do not exist in the graph
+                    - All removed edges are stored for future reinsertion
+                    - All parallel edges are disconnected (automatically by boost)
+                    @param [IN] *vertex* original vertex id of the starting point of the edge
+                    @param [IN] *log* string stream used for debugging purposes
+                    */   
                     void disconnect_vertex(std::ostringstream &log, V vertex) {
 
                         T_E d_edge;
