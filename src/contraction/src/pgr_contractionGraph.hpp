@@ -218,20 +218,6 @@ namespace pgRouting {
 						log << "}";
 					}
 
-                    /*! @brief get the boost graph ids given the user ids in string format
-                    @param [IN] *log* string
-                    @param [IN] *user_ids* The set of user ids of vertices
-                    */
-                    void get_boost_ids(Identifiers<int64_t> user_ids, std::ostringstream& log)
-                    {
-                        Identifiers<V> boost_ids;
-                        for (auto id: user_ids)
-                        {
-                            boost_ids += this->get_V(id);
-                        }
-                        log << boost_ids;
-                    }
-
                     /*! @brief get the vertices of the graph that are changed due to contraction
                     @param [IN] *remaining_vertices* The vector of vertices changed during contraction
                     */
@@ -343,6 +329,8 @@ namespace pgRouting {
 						return degree;
 					}
 
+                    /*! @brief print the edges added during contraction
+                    */
 					void print_shortcuts(std::ostringstream& log)
 					{
 						log << "Printing shortcuts\n";
@@ -352,6 +340,9 @@ namespace pgRouting {
 						}
 					}
 
+                    /*! @brief print the graph with contracted vertices of
+                        all vertices and edges
+                    */
                     void print_graph(std::ostringstream &log) {
 
                         EO_i out, out_end;
