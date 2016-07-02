@@ -232,9 +232,10 @@ namespace pgRouting {
                         log << boost_ids;
                     }
 
-                    
-                    void get_remaining_vertices(std::ostringstream& log, 
-                            std::vector<T_V>& remaining_vertices) {
+                    /*! @brief get the vertices of the graph that are changed due to contraction
+                    @param [IN] *remaining_vertices* The vector of vertices changed during contraction
+                    */
+                    void get_remaining_vertices(std::vector<T_V>& remaining_vertices) {
                         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
                             if (!removed_vertices.has(*vi))
                             {
@@ -243,9 +244,11 @@ namespace pgRouting {
                         }
                     }
 
-                    void get_remaining_vertices(std::ostringstream& log, 
-                            Identifiers<int64_t>& remaining_vertices) {
-                        log << "remaining_vertices\n";
+                    /*! @brief get the vertices of the graph that are changed due to contraction
+                    @param [IN] *remaining_vertices* The set of vertices changed during contraction
+                    */
+                    void get_remaining_vertices(Identifiers<int64_t>& remaining_vertices) {
+                        //log << "remaining_vertices\n";
                         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
                             if (!removed_vertices.has(*vi) && this->graph[*vi].has_contracted_vertices())
                             {
@@ -253,13 +256,16 @@ namespace pgRouting {
                             }
                         }
                     }
-
-                    void get_shortcuts(std::vector<T_E>& shortcut_edges, std::ostringstream& log)
+                    
+                    /*! @brief get the edges of the graph that are added during contraction
+                    @param [IN] *shortcut_edges* The vector of edges added during contraction
+                    */
+                    void get_shortcuts(std::vector<T_E>& shortcut_edges)
                     {
-                        log << "Getting shortcuts\n";
+                        //log << "Getting shortcuts\n";
                         for (auto shortcut : shortcuts)
                         {
-                            log << shortcut;
+                            //log << shortcut;
                             shortcut_edges.push_back(shortcut);
                         }
                         std::sort(shortcut_edges.begin(), shortcut_edges.end(), compareById);
