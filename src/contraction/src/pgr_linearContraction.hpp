@@ -200,9 +200,9 @@ namespace pgRouting {
 					if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0 
 							&& graph.in_degree_from_vertex(vertex_2, current_vertex) > 0) {
 						E e1 = graph.get_min_cost_edge(vertex_1, 
-								current_vertex, contraction_debug);
+								current_vertex);
 						E e2 = graph.get_min_cost_edge(current_vertex, 
-								vertex_2, contraction_debug);
+								vertex_2);
 						add_shortcut(graph, current_vertex, e1, e2, contraction_debug);
 
 					}
@@ -210,9 +210,9 @@ namespace pgRouting {
 					if (graph.out_degree_to_vertex(vertex_2, current_vertex) > 0 
 							&& graph.in_degree_from_vertex(vertex_1, current_vertex) > 0) {
 						E e1 = graph.get_min_cost_edge(vertex_2, 
-								current_vertex, contraction_debug);
+								current_vertex);
 						E e2 = graph.get_min_cost_edge(current_vertex, 
-								vertex_1, contraction_debug);
+								vertex_1);
 						add_shortcut(graph, current_vertex, e1, e2, contraction_debug);
 					}
 				}
@@ -224,9 +224,9 @@ namespace pgRouting {
 						contraction_debug << "UNDIRECTED graph before contraction\n";
 						graph.print_graph(contraction_debug);
 						E e1 = graph.get_min_cost_edge(vertex_1, 
-								current_vertex, contraction_debug);
+								current_vertex);
 						E e2 = graph.get_min_cost_edge(current_vertex, 
-								vertex_2, contraction_debug);
+								vertex_2);
 						add_shortcut(graph, current_vertex, e1, e2, contraction_debug);
 					}
 				}
