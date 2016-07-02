@@ -256,7 +256,7 @@ namespace pgRouting {
                             }
                         }
                     }
-                    
+
                     /*! @brief get the edges of the graph that are added during contraction
                     @param [IN] *shortcut_edges* The vector of edges added during contraction
                     */
@@ -271,8 +271,12 @@ namespace pgRouting {
                         std::sort(shortcut_edges.begin(), shortcut_edges.end(), compareById);
                     }
 
-
-                    E get_min_cost_edge(V source, V destination, std::ostringstream& log)
+                    /*! @brief get the edge with minimum cost between two vertices
+                    @param [IN] *source* vertex_descriptor of source vertex
+                    @param [IN] *target* vertex_descriptor of target vertex
+                    @return E: The edge descriptor of the edge with minimum cost
+                    */
+                    E get_min_cost_edge(V source, V destination)
                     {
                         E e;
                         EO_i out_i, out_end;
@@ -290,11 +294,16 @@ namespace pgRouting {
                                 }
                             }
                         }
-                        log << "Min cost edge from " << this->graph[source].id << " to " << this->graph[destination].id << std::endl;
-                        log << this->graph[min_cost_edge];  
+                        //log << "Min cost edge from " << this->graph[source].id << " to " << this->graph[destination].id << std::endl;
+                        //log << this->graph[min_cost_edge];  
                         return min_cost_edge;
                     }
 
+                    /*! @brief get the in-degree of a vertex from its neighbor
+                    @param [IN] *vertex* vertex_descriptor of the given vertex
+                    @param [IN] *neighbor* vertex_descriptor of neighbor of *vertex*
+                    @return degree_size_type: The in-degree of *vertex* from *neighbor*
+                    */
 					degree_size_type in_degree_from_vertex(V vertex, V neighbor)
 					{
 						degree_size_type degree = 0;
@@ -312,6 +321,11 @@ namespace pgRouting {
 						return degree;
 					}
 
+                    /*! @brief get the out-degree of a vertex to its neighbor
+                    @param [IN] *vertex* vertex_descriptor of the given vertex
+                    @param [IN] *neighbor* vertex_descriptor of neighbor of *vertex*
+                    @return degree_size_type: The out-degree of *vertex* to *neighbor*
+                    */
 					degree_size_type out_degree_to_vertex(V vertex, V neighbor)
 					{
 						degree_size_type degree = 0;
