@@ -145,7 +145,7 @@ do_pgr_contractGraph(
 			for (auto id : remaining_vertices) {
 				type = strdup("v");
 				std::ostringstream os;
-				digraph.print_contracted_vertices(os, id);
+				digraph.get_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
 				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
 				i++;
@@ -207,7 +207,7 @@ do_pgr_contractGraph(
 			for (auto id : remaining_vertices) {
 				type = strdup("v");
 				std::ostringstream os;
-				undigraph.print_contracted_vertices(os, id);
+				undigraph.get_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
 				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
 				i++;

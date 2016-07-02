@@ -107,21 +107,7 @@ bool Identifiers<T>::isDisjoint(const Identifiers<T> &other) const {
   */
 template <typename T>
 void Identifiers<T>::insert(const Identifiers<T> &other) {
-    #if 0
-    std::cout << "Before Insertion" << std::endl;
-    for (auto identifier : m_ids) {
-        std::cout << identifier << ", ";
-    }
-    std::cout << std::endl;
-    #endif
     m_ids.insert(other.ids().begin(), other.ids().end());
-     #if 0
-    std::cout << "After Insertion" << std::endl;
-    for (auto identifier : m_ids) {
-        std::cout << identifier << ", ";
-    }
-    std::cout << std::endl;
-    #endif
 }
 
 //! \brief Inserts an identifier of type *T* to this set
@@ -130,21 +116,7 @@ void Identifiers<T>::insert(const Identifiers<T> &other) {
   */
 template <typename T>
 void Identifiers<T>::insert(const T &other) {
-    #if 0
-    std::cout << "Before Insertion" << std::endl;
-    for (auto identifier : m_ids) {
-        std::cout << identifier << ", ";
-    }
-    std::cout << std::endl;
-    #endif
     m_ids.insert(other);
-    #if 0
-    std::cout << "After Insertion" << std::endl;
-    for (auto identifier : m_ids) {
-        std::cout << identifier << ", ";
-    }
-    std::cout << std::endl;
-    #endif
 }
 
 //! \brief Returns a boolean value 
@@ -332,6 +304,10 @@ std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) 
     return os;
 }
 
+//! \brief Returns an identifier of type *T* at position *index* in the set 
+/*!
+  @param [IN] *index* is of type *size_t* 
+  */
 template <typename T>
 const T& Identifiers<T>::operator [](size_t index) const {
         if (index >= size()) {
