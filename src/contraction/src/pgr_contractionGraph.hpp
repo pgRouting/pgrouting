@@ -230,7 +230,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         log << "Disconnecting current vertex " << this->graph[vertex].id << "\n";
         removed_vertices += vertex;
         // store the edges that are going to be removed
-        //#if 0
         for (boost::tie(out, out_end) = out_edges(vertex, this->graph);
             out != out_end; ++out) {
 
@@ -238,7 +237,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
             d_edge.source = this->graph[source(*out, this->graph)].id;
             d_edge.target = this->graph[target(*out, this->graph)].id;
             d_edge.cost = this->graph[*out].cost;
-            //log << "Out edge: { source : "<< d_edge.source << ", target: " << d_edge.target  << "}\n";
             this->removed_edges.push_back(d_edge);
         }
 
@@ -251,38 +249,26 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
                 d_edge.source = this->graph[source(*in, this->graph)].id;
                 d_edge.target = this->graph[target(*in, this->graph)].id;
                 d_edge.cost = this->graph[*in].cost;
-                //log << "In edge: { source : "<< d_edge.source << ", target: " << d_edge.target  << "}\n";
                 this->removed_edges.push_back(d_edge);
             }
         }
-        
-            //#endif
-        #if 1
-        // delete incomming and outgoing edges from the vertex
         try
         {
             boost::clear_vertex(vertex, this->graph);
-            //print_graph(log );
         }
         catch ( ... ) {
             log << "Caught unknown expection!\n";
         }
-        //log << "Disconnected current vertex " << this->graph[vertex].id << "\n";
-        #endif
-        //log << "return disconnect_vertex\n";
     }
 
     void get_remaining_vertices(std::ostringstream& log, 
         std::vector<T_V>& remaining_vertices) {
-        //log << "remaining_vertices\n";
         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
             if (!removed_vertices.has(*vi))
             {
-                //log << this->graph[*vi].id << "\n";
                 remaining_vertices.push_back(this->graph[*vi]);
             }
         }
-        //return remaining_vertices;
     }
 
     void get_remaining_vertices(std::ostringstream& log, 
@@ -291,11 +277,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
             if (!removed_vertices.has(*vi) && this->graph[*vi].has_contracted_vertices())
             {
-                //log << this->graph[*vi].id << "\n";
                 remaining_vertices += this->graph[*vi].id;
             }
         }
-        //return remaining_vertices;
     }
     void get_boost_ids(Identifiers<int64_t> user_ids, std::ostringstream& log)
     {
@@ -314,11 +298,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
         EO_i out_i, out_end;
         E min_cost_edge;
         double min_cost = std::numeric_limits<double>::max();
-        //log << "Max min cost " << min_cost << std::endl;
         for (boost::tie(out_i, out_end) = boost::out_edges(source, this->graph);
                 out_i != out_end; ++out_i) {
             e = *out_i;
-            //log << this->graph[e];
             if (target(e, this->graph) == destination)
             {
                 if (this->graph[e].cost < min_cost)
@@ -328,7 +310,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
                 }
             }
         }
-        //return this->graph[e];
         log << "Min cost edge from " << this->graph[source].id << " to " << this->graph[destination].id << std::endl;
         log << this->graph[min_cost_edge];  
         return min_cost_edge;
@@ -442,37 +423,6 @@ void graph_add_shortcut(const T_E &edge, std::ostringstream& log) {
         
     }
 }
-
-
-
-bool graph_add_shortcut(int64_t source, int64_t target, double cost, E &e, std::ostringstream& log) {
-    bool inserted = false;
-    if (cost < 0)
-        return inserted;
-
-    log << "Graph before adding shortcut\n";
-    print_graph(log);
-
-    pgassert(this->vertices_map.find(source) != this->vertices_map.end());
-    pgassert(this->vertices_map.find(target) != this->vertices_map.end());
-    auto vm_s = this->get_V(source);
-    auto vm_t = this->get_V(target);
-
-    log << "Adding edge between " << this->graph[vm_s] << ", "
-    << this->graph[vm_t] << std::endl;
-
-    if (cost >= 0) {
-        boost::tie(e, inserted) =
-            boost::add_edge(vm_s, vm_t, this->graph);
-        log << "inserted: " << inserted << std::endl;
-        //this->graph[e].cp_members(edge, log);
-        //this->graph[e].id = this->graph[e].eid;
-        log << "Graph after adding shortcut\n";
-        print_graph(log);
-    }
-    return inserted;
-}
-
 
 
 
