@@ -152,7 +152,7 @@ void pgr_contractGraph(
         }
 
     }
-    graph.get_remaining_vertices(debug, remaining_vertices);
+    graph.get_changed_vertices(remaining_vertices);
     //graph.get_shortcuts(shortcut_edges, debug);
     debug << "Printing shortcuts\n";
     for (auto shortcut : graph.shortcuts) {
