@@ -29,28 +29,8 @@ is a good choice to calculate the sum of the costs of the shortest path for each
 pair of nodes in the graph, for *dense graphs*. We make use of the  Boost's
 implementation which runs in :math:`\Theta(V^3)` time,
 
-    
-Signature
-===============================================================================
 
-
-.. index::
-    single: floydWarshall(edges_sql, directed)
-
-.. code-block:: none
-   
-    pgr_floydWarshall(edges_sql, directed:=true)
-         RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
-
-Example
--------
-.. code-block:: none
-   
-    pgr_floydWarshall(
-       'SELECT source, target, cost, reverse_cost FROM edge_table WHERE city_code = 304'
-    );
-
-Characteristics:
+Characteristics
 ----------------
 
 The main Characteristics are:
@@ -73,13 +53,59 @@ The main Characteristics are:
 
   - **Recomended, use a bounding box of no more than 3500 edges.**
 
+Signature Summary
+--------------------------------------------
+    
+.. code-block:: none
+   
+    pgr_floydWarshall(edges_sql)
+    pgr floydWarshall(edges_sql, directed)
+    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+
+Signatures
+--------------------------------------------
 
 
-Description of the Signature
-============================
+.. index::
+    single: floydWarshall(Minimal Signature)
+
+Minimal Signature
+...................
+
+.. code-block:: none
+   
+    pgr_floydWarshall(edges_sql)
+    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+
+:Example 1: On a directed graph.
+
+.. literalinclude:: doc-floydWarshall.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+
+.. index::
+    single: floydWarshall(Complete Signature)
+
+Complete Signature
+...................
+
+.. code-block:: none
+   
+    pgr_floydWarshall(edges_sql, directed)
+    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+
+
+:Example 2: On an undirected graph.
+
+.. literalinclude:: doc-floydWarshall.queries
+   :start-after: -- q2
+
+Description of the Signatures
+------------------------------
 
 Description of the SQL query
--------------------------------------------------------------------------------
+................................
 
 :edges_sql: is an SQL query, which should return a set of rows with the following columns:
 
@@ -99,7 +125,7 @@ Where:
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+................................................
 
 Receives  ``(edges_sql, directed)``
 
@@ -112,7 +138,7 @@ Parameter     Type          Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+..................................
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 
@@ -126,22 +152,6 @@ Column        Type          Description
 
 
 
-Examples
-============================
-
-:Example 1: On a directed graph.
-
-.. literalinclude:: doc-floydWarshall.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-:Example 2: On an undirected graph.
-
-.. literalinclude:: doc-floydWarshall.queries
-   :start-after: -- q2
-
-
-These queries uses the :ref:`sampledata` network.
 
 
 .. rubric:: History
@@ -153,6 +163,7 @@ See Also
 
 * :ref:`pgr_johnson`
 * `Boost floyd-Warshall <http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
+* Queries uses the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

@@ -9,25 +9,20 @@
 
 .. _pgr_vids_to_dmatrix:
 
-pgr_vidsToDMatrix
+pgr_vidsToDMatrix - Deprecated Function
 ==============================================================================
 
-.. index::
-        single: vidsToDMatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[]) --proposed
+.. warning:: This function is deprecated!!!
+
+    * This function is no longer supported, and may be removed from future versions.
+    * No replacement exists.
+    * See :ref:`tsp`.
 
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
-
-.. warning::  This is a proposed function
-
-     - Is not officially in the release.
-     - Name could change.
-     - Signature could change.
-     - Needs testing.
-     - Functionality could change.
 
 
 Synopsis

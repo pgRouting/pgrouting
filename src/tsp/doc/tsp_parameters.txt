@@ -8,8 +8,8 @@
    ****************************************************************************
 
 
-Control parameters
-...................
+Description Of the Control parameters
+.....................................
 
 The control parameters are optional, and have a default value.
 

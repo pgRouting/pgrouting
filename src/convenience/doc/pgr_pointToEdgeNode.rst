@@ -13,7 +13,7 @@ pgr_pointToEdgeNode
 ==============================================================================
 
 .. index::
-        single: pointToEdgeNode(edges text, pnt geometry, tol float8) --proposed
+        single: pointToEdgeNode(Complete Signature) --proposed
 
 
 Name

@@ -107,6 +107,11 @@ typedef struct{
     double route_agg_cost;
 } Routes_t;
 
+typedef struct {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+} pgr_basic_edge_t;
 
 typedef struct {
     int64_t id;

@@ -12,10 +12,6 @@
 pgr_createVerticesTable 
 ===============================================================================
 
-.. index:: 
-	single: pgr_createVerticesTable(text,text,text,text,text)
-	module: common
-
 Name
 -------------------------------------------------------------------------------
 
@@ -30,10 +26,13 @@ The function returns:
   - ``OK`` after the vertices table has been reconstructed.
   - ``FAIL`` when the vertices table was not reconstructed due to an error. 
 
+.. index:: 
+	single: createVerticesTable(Complete Signature)
+
 .. code-block:: sql
 
-	varchar pgr_createVerticesTable(text edge_table,  text the_geom:='the_geom'
-                           text source:='source',text target:='target',text rows_where:='true')
+	pgr_createVerticesTable(edge_table, the_geom, source, target, rows_where)
+    RETURNS VARCHAR
 
 
 

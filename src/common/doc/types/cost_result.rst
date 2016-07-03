@@ -14,7 +14,6 @@ pgr_costResult[]
 
 .. index:: 
     single: pgr_costResult[]
-    module: types
 
 Name
 -------------------------------------------------------------------------------
@@ -48,7 +47,6 @@ pgr_costResult3[] - Multiple Path Results with Cost
 
 .. index:: 
     single: pgr_costResult3[]
-    module: types
 
 Name
 -------------------------------------------------------------------------------

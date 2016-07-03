@@ -9,21 +9,18 @@
 
 .. _pgr_flip_edges:
 
-pgr_flipEdges
+pgr_flipEdges - Deprecated Function
 ==============================================================================
 
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported, and may be removed from future versions.
+    * There is no replacement
 
 Name
 ------------------------------------------------------------------------------
 
-``pgr_flipEdges`` - 
-
-.. warning::  This is a deprecated function
-
-     - Is not officially in the release.
-     - No longer mantained
-     - No testing done.
-     - Functionality could change.
+``pgr_flipEdges`` 
 
 Synopsis
 ------------------------------------------------------------------------------

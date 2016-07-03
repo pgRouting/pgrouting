@@ -9,7 +9,7 @@
 
 
 Description of the Edges SQL query
--------------------------------------------------------------------------------
+...............................................................................
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 

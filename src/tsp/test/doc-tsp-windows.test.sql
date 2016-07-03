@@ -29,7 +29,7 @@ SELECT * FROM pgr_TSP(
 \echo -- q4
 SELECT * FROM pgr_TSP(
     $$
-    SELECT * FROM pgr_dijkstraDMatrix(
+    SELECT * FROM pgr_dijkstraCostMatrix(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table',
         (SELECT array_agg(id) from edge_table_vertices_pgr WHERE id < 14), false)
     $$,

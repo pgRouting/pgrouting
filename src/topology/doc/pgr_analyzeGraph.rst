@@ -12,9 +12,6 @@
 pgr_analyzeGraph
 ===============================================================================
 
-.. index:: 
-	single: pgr_analyzeGraph(text,double precision,text,text,text,text,text)
-	module: common
 
 Name
 -------------------------------------------------------------------------------
@@ -29,6 +26,9 @@ The function returns:
 
   - ``OK`` after the analysis has finished.
   - ``FAIL`` when the analysis was not completed due to an error. 
+
+.. index:: 
+	single: analyzeGraph(Complete Signature)
 
 .. code-block:: sql
 

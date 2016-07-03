@@ -105,8 +105,9 @@ Data Types
    ../src/common/doc/types/index
 
 
+*******************************************************************************
 Topology functions
-===============================================================================
+*******************************************************************************
 
 :ref:`topology_functions`
 
@@ -121,23 +122,24 @@ Topology functions
 
    ../src/topology/doc/topology
 
+
+*******************************************************************************
+Routing Functions
+*******************************************************************************
+
 ..
     ROUTING FUNCTIONS SECTION
-
+    :hidden:
+    :maxdepth: 0
+    
 .. toctree::
-   :hidden:
-   :maxdepth: 0
 
-   ../src/routingFunctions
-
-Routing Functions
-=================
+    ../src/routingFunctions
 
 .. include:: ../src/routingFunctions.rst
    :start-after: from-here
    :end-before: to-here
-
-
+    
 
 *******************************************************************************
 Available Functions but not official pgRouting functions

@@ -1,0 +1,23 @@
+.. 
+   ****************************************************************************
+    pgRouting Manual
+    Copyright(c) pgRouting Contributors
+
+    This documentation is licensed under a Creative Commons Attribution-Share
+    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+   ****************************************************************************
+
+
+Description of the return values
+...............................................................................
+
+Returns set of ``(start_vid, end_vid, agg_cost)``
+
+============= ============= =================================================
+Column        Type          Description
+============= ============= =================================================
+**start_vid** ``BIGINT``    Identifier of the starting vertex.
+**end_vid**   ``BIGINT``    Identifier of the ending vertex.
+**agg_cost**  ``FLOAT``     Aggregate cost of the shortest path from ``start_vid`` to ``end_vid``.
+============= ============= =================================================
+

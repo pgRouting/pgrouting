@@ -129,3 +129,21 @@ void pgr_get_flow_edges(
     char *sql,
     pgr_edge_t **edges,
     size_t *total_edges);
+
+/*! @brief read basic edges
+
+Edges:
+
+bigint id,
+bigint source,
+bigint target
+
+@param[IN] sql
+@param[OUT] edges
+@oaram[OUT] total_edges
+*/
+void pgr_get_basic_edges(
+    char *sql,
+    pgr_basic_edge_t **edges,
+    size_t *total_edges);
+

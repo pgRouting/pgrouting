@@ -71,7 +71,7 @@ BEGIN
             (SELECT unnest(unique_vids) AS vid)
         SELECT row_number() OVER() AS idx, vid FROM result;
 
-    FOR cell IN SELECT * FROM pgr_dijkstraDmatrix(sql, unique_vids, directed) LOOP
+    FOR cell IN SELECT * FROM pgr_dijkstraCostMatrix(sql, unique_vids, directed) LOOP
         SELECT idx INTO from_v FROM __x___y____temp WHERE vid =  cell.start_vid;
         SELECT idx INTO to_v FROM __x___y____temp WHERE vid =  cell.end_vid;
 

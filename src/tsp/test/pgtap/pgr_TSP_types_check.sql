@@ -47,7 +47,7 @@ SELECT set_has(
 
 
 CREATE TEMP TABLE matrixrows AS
-SELECT * FROM pgr_dijkstraDmatrix(
+SELECT * FROM pgr_dijkstraCostMatrix(
     $$SELECT id, source, target, cost, reverse_cost FROM edge_table$$,
     (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE ID < 14),
     directed:= false
