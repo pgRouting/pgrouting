@@ -39,9 +39,9 @@ extern "C" {
 
     void
         do_pgr_maximum_cardinality_matching(
-            pgr_edge_t *data_edges,
+            pgr_basic_edge_t *data_edges,
             size_t total_tuples,
-            pgr_flow_t **return_tuples,
+            pgr_basic_edge_t **return_tuples,
             size_t *return_count,
             char **err_msg);
 

@@ -47,9 +47,9 @@ extern "C" {
 
 void
 do_pgr_maximum_cardinality_matching(
-    pgr_edge_t *data_edges,
+    pgr_basic_edge_t *data_edges,
     size_t total_tuples,
-    pgr_flow_t **return_tuples,
+    pgr_basic_edge_t **return_tuples,
     size_t *return_count,
     char **err_msg) {
     std::ostringstream log;
@@ -59,12 +59,11 @@ do_pgr_maximum_cardinality_matching(
 
         G.create_max_cardinality_graph(data_edges, total_tuples);
 
-        std::vector<int64_t> mate_map;
+        std::vector<int64_t> mate_map (boost::num_vertices(G.boost_graph));
         G.maximum_cardinality_matching(mate_map);
 
-        std::vector<pgr_flow_t> matched_vertices = G.get_matched_vertices(mate_map);
-
-
+        std::vector<pgr_basic_edge_t> matched_vertices;
+        G.get_matched_vertices(matched_vertices, mate_map);
 
 
 

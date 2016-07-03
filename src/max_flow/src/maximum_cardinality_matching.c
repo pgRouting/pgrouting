@@ -65,16 +65,16 @@ static
 void
 process(
     char *edges_sql,
-    pgr_flow_t **result_tuples,
+    pgr_basic_edge_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    pgr_basic_edge_t *edges = NULL;
 
     size_t total_tuples = 0;
 
-    pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
+    pgr_get_basic_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -120,7 +120,7 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_flow_t *result_tuples = 0;
+    pgr_basic_edge_t *result_tuples = 0;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/

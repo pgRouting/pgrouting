@@ -45,7 +45,7 @@ void fetch_basic_edge(
         ++(*default_id);
     }
 
-    edge->source = pgr_SPI_getBigInt(tuple, tupdesc,  info[1]);
+    edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
 
     (*valid_edges)++;
@@ -491,8 +491,8 @@ get_edges_3_columns(
 
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
-                fetch_edge(&tuple, &tupdesc, info,
-                           &default_id, -1,
+                fetch_basic_edge(&tuple, &tupdesc, info,
+                           &default_id,
                            &(*edges)[total_tuples - ntuples + t],
                            &valid_edges);
             }

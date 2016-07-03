@@ -201,7 +201,7 @@ class PgrFlowGraph {
       }
   }
 
-  void create_max_cardinality_graph(pgr_edge_t *data_edges,
+  void create_max_cardinality_graph(pgr_basic_edge_t *data_edges,
                                     size_t total_tuples) {
       std::set<int64_t> vertices;
       for (size_t i = 0; i < total_tuples; ++i) {
@@ -218,8 +218,8 @@ class PgrFlowGraph {
       for (size_t i = 0; i < total_tuples; ++i) {
           V v1 = this->id_to_V.find(data_edges[i].source)->second;
           V v2 = this->id_to_V.find(data_edges[i].target)->second;
-          E e1;
-          boost::tie(e1, added) =
+          E e;
+          boost::tie(e, added) =
               boost::add_edge(v1, v2, this->boost_graph);
       }
   }
@@ -248,17 +248,16 @@ class PgrFlowGraph {
       return flow_edges;
   }
 
-  std::vector<pgr_flow_t> get_matched_vertices(const std::vector<int64_t> &mate_map) {
+   void get_matched_vertices(std::vector<pgr_basic_edge_t>& matched_vertices, const std::vector<int64_t> &mate_map) {
       // I use a flow edge with null capacity/reverse_capacity
       // This is not shown on output
-      std::vector<pgr_flow_t> matched_vertices;
       V_it vi, vi_end;
       int64_t id = 1;
       for (boost::tie(vi, vi_end) = boost::vertices(this->boost_graph); vi != vi_end;
            ++vi) {
-          if (mate_map[*vi] != boost::graph_traits<G>::null_vertex()
-              && *vi < mate_map[*vi]) {
-              pgr_flow_t matched_couple;
+          if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
+              && ((*vi) < mate_map[*vi])) {
+              pgr_basic_edge_t matched_couple;
               matched_couple.id = id++;
               matched_couple.source = this->getid(*vi);
               matched_couple.target = this->getid(mate_map[*vi]);
@@ -294,7 +293,6 @@ class PgrFlowGraph {
       is_maximum =
           checked_edmonds_maximum_cardinality_matching(this->boost_graph,
                                                        &mate_map[0]);
-
       assert(is_maximum);
   }
 
