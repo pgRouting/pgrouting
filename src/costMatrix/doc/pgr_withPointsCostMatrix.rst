@@ -7,16 +7,16 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_withPointsDmatrix:
+.. _pgr_withPointsCostMatrix:
 
-pgr_withPointsDmatrix
+pgr_withPointsCostMatrix
 ===============================================================================
 
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_withPointsDmatrix`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
+``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -26,25 +26,25 @@ Name
 
 
 Signature Summary
------------------
+-------------------------------------------------------------------------------
 
 .. code-block:: none
 
-    pgr_withPointsDmatrix(edges_sql, points_sql, start_vids)
-    pgr_withPointsDmatrix(edges_sql, points_sql, start_vids, directed, driving_side)
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids)
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids, directed, driving_side)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 .. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.  
 
 
 Signatures
-==========
+-------------------------------------------------------------------------------
 
 .. index::
-    single: withPointsDmatrix(edges_sql, points_sql, start_vids)
+    single: withPointsCostMatrix(Minimal Signature) -- New
 
 Minimal Signature
------------------
+...............................................................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -52,7 +52,7 @@ The minimal signature:
 
 .. code-block:: none
 
-    pgr_withPointsDmatrix(edges_sql, points_sql, start_vid)
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -64,14 +64,14 @@ The minimal signature:
 
 
 .. index::
-    single: withPointsDmatrix(edges_sql, points_sql, start_vids, directed, driving_side)
+    single: withPointsCostMatrix(Complete Signature) -- New
 
 Complete Signature
---------------------
+...............................................................................
 
 .. code-block:: none
 
-    pgr_withPointsDmatrix(edges_sql, points_sql, start_vids,
+    pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids,
         directed:=true, driving_side:='b')
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
@@ -89,17 +89,17 @@ Complete Signature
 
 
 Description of the Signatures
-=============================
+-------------------------------------------------------------------------------
 
 ..
     description of the sql queries
 
 
-.. include:: ../../withPoints/doc/withPoints_queries.txt 
+.. include:: ../../withPoints/doc/withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+...............................................................................
 
 
 ================ ====================== =================================================
@@ -124,7 +124,7 @@ Parameter        Type                   Description
 
 
 Examples
-========
+-------------------------------------------------------------------------------
 
 :Example: Use with tsp
 
@@ -132,19 +132,15 @@ Examples
    :start-after: -- withPoints q3
    :end-before: -- withPoints q4
 
-The queries use the :ref:`sampledata` network.
-
-.. rubric:: History
-
-* New in version  2.3.0
 
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`withPoints`
-* :ref:`dmatrix`
+* :ref:`costMatrix`
 * :ref:`tsp`
+* `sampledata` network.
 
 .. rubric:: Indices and tables
 

@@ -9,15 +9,13 @@
 
 .. _pgr_tsp-V2.0:
 
-pgr_tsp V2.0
+pgr_tsp -Deprecated Signatures
 ===============================================================================
 
-.. warning:: Deprecated Signatures
+.. warning:: This functions and/or function signatures are deprecated!!!
 
-    This documentation is of deprecated signatures.
-    
-    Please use the new signatures found in :ref:`tsp`
-
+    * That means they have been replaced by new signatures and this signature is no longer supported, and may be removed from future versions.
+    * All code that uses the function signature should be converted to use its replacement :ref:`tsp`.
 
 Name
 -------------------------------------------------------------------------------

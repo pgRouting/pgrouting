@@ -1,0 +1,31 @@
+-- q1
+SELECT * FROM pgr_AStar(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2
+     FROM edge_table',
+    4, 1, false, false);
+NOTICE:  Deprecated signature of function pgr_astar
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   4 |  16 |    1
+   1 |   9 |   9 |    1
+   2 |   6 |   8 |    1
+   3 |   5 |   4 |    1
+   4 |   2 |   1 |    1
+   5 |   1 |  -1 |    0
+(6 rows)
+
+-- q3
+SELECT * FROM pgr_AStar(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2, reverse_cost
+      FROM edge_table ',
+    4, 1, true, true);
+NOTICE:  Deprecated signature of function pgr_astar
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   4 |   3 |    1
+   1 |   3 |   2 |    1
+   2 |   2 |   1 |    1
+   3 |   1 |  -1 |    0
+(4 rows)
+
+-- q3

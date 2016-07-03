@@ -48,13 +48,13 @@ Signature Summary
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 Signatures
-==========
+------------
 
 .. index::
-    single: withPointsDD(edges_sql, points_sql, start_vid, distance) -- proposed
+    single: withPointsDD(Minimal Use) -- proposed in V2.2
 
-Minimal signature
------------------
+Minimal Use
+..................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -75,10 +75,10 @@ The minimal signature:
    :end-before: --q2
 
 .. index::
-    single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details) -- proposed
+    single: withPointsDD(Single Start Vertex) -- proposed in V2.2
 
 Driving distance from a single point
-------------------------------------
+..............................................
 
 Finds the driving distance depending on the optional parameters setup.
 
@@ -95,10 +95,10 @@ Finds the driving distance depending on the optional parameters setup.
    :end-before: --q3
 
 .. index::
-    single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details, equicost) -- proposed
+    single: withPointsDD(Multiple Starting Vertices) -- proposed in V2.2
 
 Driving distance from many starting points
-------------------------------------------
+..................................................
 
 Finds the driving distance depending on the optional parameters setup.
 
@@ -112,18 +112,17 @@ Finds the driving distance depending on the optional parameters setup.
 
 
 Description of the Signatures
-=============================
-
+----------------------------------
 
 ..
     description of the sql queries
 
 
-.. include:: withPoints_queries.txt 
+.. include:: withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+........................................................
 
 
 ================ ================= =================================================
@@ -146,7 +145,7 @@ Parameter        Type              Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+........................................................
 
 Returns set of ``(seq, node, edge, cost, agg_cost)``
 

@@ -9,11 +9,14 @@
 
 .. _pgr_point_to_id:
 
-pgr_pointToId
+pgr_pointToId - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_pointToId(geometry,double precision,text,integer) -- deprecated
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported, and may be removed from future versions.
+    * There is no replacement
+
 
 Name
 -------------------------------------------------------------------------------
@@ -21,11 +24,6 @@ Name
 ``pgr_pointToId`` — Inserts a point into a vertices table and returns the corresponig id.
 
 .. note:: This function is intended for the developer's aid.
-
- Use :ref:`pgr_createTopology <pgr_create_topology>` or :ref:`pgr_createVerticesTable <pgr_create_vert_table>` instead. 
-
-.. warning:: This function is  deprecated in 2.1
-
 
 
 Synopsis

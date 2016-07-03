@@ -19,14 +19,15 @@ pgr_dijkstra - Shortest Path Dijkstra
 
 
 .. toctree::
-        :hidden:
+    :hidden:
 
-        ./pgr_dijkstra
-        ./pgr_dijkstraCost
-        ./pgr_dijkstraVia
+    ./pgr_dijkstra
+    ./pgr_dijkstraCost
+    ./pgr_dijkstraVia
+
 
 The problem definition
-======================
+-----------------------
 
 
 Given the following query:

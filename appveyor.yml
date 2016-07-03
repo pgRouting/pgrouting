@@ -5,7 +5,7 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-version: 1.0.{build}
+version: 2.3.{build}
 
 branches:
   only:

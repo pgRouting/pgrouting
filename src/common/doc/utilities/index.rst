@@ -12,7 +12,12 @@
 Developers's Functions
 ===============================================================================
 
-.. warning:: This functions have being deprecated in version 2.1
+.. warning:: These functions are deprecated!!!
+
+    * That means they have been replaced by new functions or are no longer supported, and may be removed from future versions.
+    * All code that uses the functions should be converted to use its replacement if one exists. 
+    * They are all marked as with no replacement, but
+      * Functions for pgRouting development shall be consulted in the developers documentation.
 
 
 The functions have being renamed but documentation will not be generated for

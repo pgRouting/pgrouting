@@ -3,8 +3,6 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_conversion_tools.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_dmatrix_tools.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgr_vidsToDMatrix.sql
-
-    #${CMAKE_CURRENT_SOURCE_DIR}/pgr_vidsToDMatrix_dir.sql
 )
 
 # set in parent scope

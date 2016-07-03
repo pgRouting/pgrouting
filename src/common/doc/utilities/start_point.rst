@@ -9,11 +9,13 @@
 
 .. _pgr_start_point:
 
-pgr_startPoint 
+pgr_startPoint  - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_startPoint(geometry) -- deprecated
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported, and may be removed from future versions.
+    * There is no replacement
 
 Name
 -------------------------------------------------------------------------------
@@ -22,8 +24,6 @@ Name
 
 .. note:: This function is intended for the developer's aid. 
 
-.. warning:: This function is deprecated in 2.1
-             Use `_pgr_startPoint` instead
 
 Synopsis
 -------------------------------------------------------------------------------
