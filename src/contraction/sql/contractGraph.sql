@@ -38,6 +38,7 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT type TEXT,
     OUT source BIGINT,
     OUT target BIGINT,
+    OUT cost float,
     OUT contracted_vertices TEXT)
 
   RETURNS SETOF RECORD AS
