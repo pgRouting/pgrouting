@@ -187,7 +187,6 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
 
-//#ifdef DEBUG
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 forbidden_vertices,
@@ -198,10 +197,9 @@ contractGraph(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
-//#endif
-
-        /*                                                                             */
-        /*******************************************************************************/
+        PGR_DBG("Entered c code\n");
+        PGR_DBG("Returned %d tuples\n", (int)result_count);
+        
 
         funcctx->max_calls = (uint32_t)result_count;
         funcctx->user_fctx = result_tuples;
@@ -227,33 +225,22 @@ contractGraph(PG_FUNCTION_ARGS) {
         Datum       *values;
         char        *nulls;
 
-        /******************************************************************/
-        /*                          MODIFY!!!!!                           */
-        /*  This has to match you ouput otherwise the server crashes      */
-        /*
-           OUT contracted_graph_name TEXT,
-           OUT contracted_graph_blob TEXT,
-           OUT removedVertices TEXT,
-           OUT removedEdges TEXT,
-           OUT psuedoEdges TEXT
-         *******************************************************************/
 
-
-        values =(Datum *)palloc(4 * sizeof(Datum));
-        // values = (char **) palloc(5 * sizeof(char *));
-        nulls = palloc(5 * sizeof(bool));
+        values =(Datum *)palloc(7 * sizeof(Datum));
+        nulls = palloc(7 * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
 
         #if 0
-        PGR_DBG("Storing graphname %s",result_tuples->contracted_graph_name);
-        PGR_DBG("Storing blob %s",result_tuples->contracted_graph_blob);
-        PGR_DBG("Storing rv %s",result_tuples->removedVertices);
-        PGR_DBG("Storing re %s",result_tuples->removedEdges);
-        PGR_DBG("Storing pe %s",result_tuples->psuedoEdges);
+        PGR_DBG("Storing id %d",result_tuples[call_cntr].id);
+        PGR_DBG("Storing type %s",result_tuples[call_cntr].type);
+        PGR_DBG("Storing source %d",result_tuples[call_cntr].source);
+        PGR_DBG("Storing target %d",result_tuples[call_cntr].target);
+        PGR_DBG("Storing cost %f",result_tuples[call_cntr].cost);
+        PGR_DBG("Storing contracted_vertices %s",result_tuples[call_cntr].contracted_vertices);
         #endif
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
@@ -261,8 +248,9 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[2] = CStringGetTextDatum(result_tuples[call_cntr].type);
         values[3] = Int64GetDatum(result_tuples[call_cntr].source);
         values[4] = Int64GetDatum(result_tuples[call_cntr].target);
-        values[5] = CStringGetTextDatum(result_tuples[call_cntr].contracted_vertices);
-
+        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[6] = CStringGetTextDatum(result_tuples[call_cntr].contracted_vertices);
+        PGR_DBG("Storing complete\n");
         
 
         /*********************************************************************/
