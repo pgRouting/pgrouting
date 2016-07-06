@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-// #define DEBUG
+#define DEBUG
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -147,7 +147,7 @@ do_pgr_contractGraph(
 				std::ostringstream os;
 				digraph.get_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
-				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
+				(*return_tuples)[sequence] = {i, id, type, -1, -1, -1.00, contracted_vertices};
 				i++;
 				++sequence;
 			}
@@ -160,12 +160,13 @@ do_pgr_contractGraph(
 				std::ostringstream os;
 				digraph.get_ids(os, edge.contracted_vertices());
 				contracted_vertices = strdup(os.str().c_str());
-				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, contracted_vertices};
+				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, edge.cost, contracted_vertices};
 				i++;
 				++sequence;
 			}
 
 			(*return_count) = sequence;
+			log << "Returing from driver\n";
 		} else {
 			log << "Working with Undirected Graph\n";
 
@@ -209,7 +210,7 @@ do_pgr_contractGraph(
 				std::ostringstream os;
 				undigraph.get_contracted_vertices(os, id);
 				contracted_vertices = strdup(os.str().c_str());
-				(*return_tuples)[sequence] = {i, id, type, -1, -1, contracted_vertices};
+				(*return_tuples)[sequence] = {i, id, type, -1, -1, -1, contracted_vertices};
 				i++;
 				++sequence;
 			}
@@ -226,7 +227,7 @@ do_pgr_contractGraph(
 				std::ostringstream os;
 				undigraph.get_ids(os, edge.contracted_vertices());
 				contracted_vertices = strdup(os.str().c_str());
-				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, contracted_vertices};
+				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, edge.cost, contracted_vertices};
 				++sequence;
 				i++;
 			}
