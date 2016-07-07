@@ -1,7 +1,6 @@
 --q1
 SELECT * FROM _pgr_pickDeliver(
     'select * from customer order by id', 25, 200, 1, 30);
-NOTICE:  Proposed Function
  seq | vehicle_id | vehicle_seq | stop_id |   travel_time    |   arrival_time   | wait_time | service_time |  departure_time  
 -----+------------+-------------+---------+------------------+------------------+-----------+--------------+------------------
    1 |          1 |           1 |       0 |                0 |                0 |         0 |            0 |                0
@@ -124,7 +123,6 @@ NOTICE:  Proposed Function
 --q2
 SELECT * FROM _pgr_pickDeliver(
     'select * from customer order by id', 25, 200, 10, 30);
-NOTICE:  Proposed Function
  seq | vehicle_id | vehicle_seq | stop_id |    travel_time    |   arrival_time   |     wait_time     | service_time |  departure_time  
 -----+------------+-------------+---------+-------------------+------------------+-------------------+--------------+------------------
    1 |          1 |           1 |       0 |                 0 |                0 |                 0 |            0 |                0

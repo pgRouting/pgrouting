@@ -155,8 +155,6 @@ pickDeliver(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
-        elog(NOTICE, "Proposed Function");
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*

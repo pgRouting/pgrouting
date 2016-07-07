@@ -5,15 +5,15 @@ CREATE table customer (
                 x DOUBLE PRECISION,
                 y DOUBLE PRECISION,
                 demand INTEGER,
-                etime INTEGER,
-                ltime INTEGER, 
-                stime INTEGER, 
+                opentime INTEGER,
+                closetime INTEGER, 
+                servicetime INTEGER, 
                 pindex BIGINT,
                 dindex BIGINT 
                 );
 
 
-COPY customer (id,x,y,demand,etime,ltime, stime,pindex, dindex) FROM stdin;
+COPY customer (id, x, y, demand, opentime, closetime, servicetime, pindex, dindex) FROM stdin;
 0	40	50	0	0	1236	0	0	0
 1	45	68	-10	912	967	90	11	0
 2	45	70	-20	825	870	90	6	0

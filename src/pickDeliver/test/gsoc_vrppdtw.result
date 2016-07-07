@@ -1,6 +1,4 @@
 -- q1
-NOTICE:  Proposed Function
-CONTEXT:  PL/pgSQL function pgr_gsoc_vrppdtw(text,integer,integer) line 6 at RETURN QUERY
 1|1|0|0
 2|1|5|105
 3|1|3|196
