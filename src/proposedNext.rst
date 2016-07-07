@@ -12,7 +12,9 @@
 Stable proposed Functions
 ==================================
 
-:ref:`proposedNext`
+..
+    from-here
+    :ref:`proposedNext`
 
 .. note::
 
@@ -47,6 +49,9 @@ Stable proposed Functions
   - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
   - :ref:`pgr_withPointsKSP` - K shortest paths with points.
   - :ref:`pgr_withPointsDD` - Driving distance.
+
+..
+    to-here
 
 .. toctree::
     :hidden:
