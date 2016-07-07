@@ -36,12 +36,10 @@ RETURNS integer AS $total$
 declare
 total integer;
 contracted_vertex integer;
-contracted_vertices_string text;
 query text;
 update_query text;
 split_query text;
 insert_query text;
-contracted_vertices_array integer[];
 row record;
 split_row record;
 BEGIN
@@ -49,32 +47,14 @@ total := 0;
 query := 'SELECT * FROM pgr_contractGraph('|| quote_literal(edge_table)||', ' || quote_literal(forbidden_vertices)||', ' || quote_literal(contraction_order)||', ' || quote_literal(max_cycles)||', ' || quote_literal(directed) || ')';
     FOR row IN EXECUTE(query)
     LOOP
-        --converting the string of contracted vertices into any integer array
-
-        EXECUTE 'SELECT TRIM(LEADING ' || quote_literal('{') 
-        || ' FROM ' || quote_literal(row.contracted_vertices) 
-        || ')' INTO contracted_vertices_string;
-        -- raise notice 'cvs: %', contracted_vertices_string;
-        EXECUTE 'SELECT TRIM(TRAILING ' || quote_literal('}') 
-        || ' FROM ' || quote_literal(contracted_vertices_string) 
-        || ')' INTO contracted_vertices_string;
-        -- raise notice 'cvs: %', contracted_vertices_string;
-        EXECUTE 'SELECT TRIM(TRAILING ' || quote_literal(', ') 
-        || ' FROM ' || quote_literal(contracted_vertices_string) 
-        || ')' INTO contracted_vertices_string;
-        -- raise notice 'cvs: %', contracted_vertices_string;
-        split_query := 'select regexp_split_to_array('
-        || quote_literal(contracted_vertices_string) 
-        || ', ' || quote_literal(',')|| ')::integer[] AS array';
         
-        EXECUTE split_query INTO split_row;
-        contracted_vertices_array := split_row.array;
+        -- contracted_vertices_array := row.contracted_vertices;
         -- If it is a vertex we update the two columns of the vertex table 
         IF row.type = 'v' THEN
             total := total + 1;
             -- raise notice 'vertex';
             update_query := 'UPDATE edge_table_vertices_pgr SET contracted_vertices = array_append(contracted_vertices, ';  
-            FOREACH contracted_vertex IN ARRAY contracted_vertices_array
+            FOREACH contracted_vertex IN ARRAY row.contracted_vertices
             LOOP
                 EXECUTE update_query || quote_literal(contracted_vertex) 
                 || ') WHERE id = ' || quote_literal(row.id);
@@ -93,10 +73,10 @@ query := 'SELECT * FROM pgr_contractGraph('|| quote_literal(edge_table)||', ' ||
             || quote_literal(row.cost)|| ', '
             || quote_literal(-1)|| ', '
             || quote_literal(true)|| ', '
-            || quote_literal(contracted_vertices_array)
+            || quote_literal(row.contracted_vertices)
             || ')';
             EXECUTE insert_query;
-            FOREACH contracted_vertex IN ARRAY contracted_vertices_array
+            FOREACH contracted_vertex IN ARRAY row.contracted_vertices
             LOOP
             EXECUTE 'UPDATE edge_table_vertices_pgr SET is_contracted = true WHERE id = '
                 || quote_literal(contracted_vertex);
@@ -120,7 +100,6 @@ declare
 total integer;
 contracted_vertex integer;
 query text;
-contracted_vertices_array integer[];
 row record;
 BEGIN
     total := 0;
