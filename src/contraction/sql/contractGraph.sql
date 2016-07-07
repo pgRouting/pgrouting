@@ -39,7 +39,8 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     OUT source BIGINT,
     OUT target BIGINT,
     OUT cost float,
-    OUT contracted_vertices TEXT)
+    OUT contracted_vertices BIGINT[],
+    OUT contracted_vertices_size integer)
 
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'contractGraph'
