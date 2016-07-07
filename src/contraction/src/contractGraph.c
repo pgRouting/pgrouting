@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 // TODO(rohith) Check style.
-// #include "utils/lsyscache.h"
+#include "utils/lsyscache.h"
  #include "utils/builtins.h"
 
 /*
@@ -223,16 +223,45 @@ contractGraph(PG_FUNCTION_ARGS) {
         HeapTuple   tuple;
         Datum       result;
         Datum       *values;
+        Datum       *contracted_vertices_array;
         char        *nulls;
 
 
-        values =(Datum *)palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(bool));
+        ArrayType * arrayType; 
+        int16 typlen; 
+        bool typbyval; 
+        char typalign;
+
+        values =(Datum *)palloc(8 * sizeof(Datum));
+        nulls = palloc(8 * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 7; ++i) {
+        for (i = 0; i < 8; ++i) {
             nulls[i] = false;
         }
+
+        int contracted_vertices_size = 
+        (int)result_tuples[call_cntr].contracted_vertices_size;
+
+        contracted_vertices_array = (Datum *)palloc(sizeof(Datum) * 
+        (size_t)contracted_vertices_size);
+        for (i = 0; i < contracted_vertices_size; ++i) {
+            //PGR_DBG("Storing cv %d",result_tuples[call_cntr].contracted_vertices[i]);
+            contracted_vertices_array[i] = 
+            Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
+        }
+
+        get_typlenbyvalalign(INT4OID, &typlen, &typbyval, &typalign);
+        PGR_DBG("typlen %d",typlen);
+        PGR_DBG("typbyval %d",typbyval);
+        PGR_DBG("typalign %c",typalign);
+
+        arrayType =  construct_array(contracted_vertices_array,
+            contracted_vertices_size,
+            INT4OID,  typlen, typbyval, typalign);
+
+        TupleDescInitEntry(tuple_desc, (AttrNumber) 7, "contracted_vertices", 
+        INT4ARRAYOID, -1, 0); 
 
         #if 0
         PGR_DBG("Storing id %d",result_tuples[call_cntr].id);
@@ -240,8 +269,13 @@ contractGraph(PG_FUNCTION_ARGS) {
         PGR_DBG("Storing source %d",result_tuples[call_cntr].source);
         PGR_DBG("Storing target %d",result_tuples[call_cntr].target);
         PGR_DBG("Storing cost %f",result_tuples[call_cntr].cost);
-        PGR_DBG("Storing contracted_vertices %s",result_tuples[call_cntr].contracted_vertices);
+        PGR_DBG("Storing contracted_vertices_size %d",result_tuples[call_cntr].contracted_vertices_size);
         #endif
+
+            
+
+
+        PGR_DBG("Storing complete\n");
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].id);
@@ -249,8 +283,9 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[3] = Int64GetDatum(result_tuples[call_cntr].source);
         values[4] = Int64GetDatum(result_tuples[call_cntr].target);
         values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[6] = CStringGetTextDatum(result_tuples[call_cntr].contracted_vertices);
-        PGR_DBG("Storing complete\n");
+        values[6] = PointerGetDatum(arrayType);
+        values[7] = Int64GetDatum(result_tuples[call_cntr].contracted_vertices_size);
+        
         
 
         /*********************************************************************/
