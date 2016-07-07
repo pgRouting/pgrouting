@@ -211,6 +211,20 @@ namespace pgRouting {
 						log << "}";
 					}
 
+					/*! @brief get the user ids given the boost graph ids in array format
+                    @param [IN] *boost_ids* The set of boost graph ids of vertices
+                    */
+					void get_ids(int64_t **contracted_vertices,
+                    	int &contracted_vertices_size,
+							Identifiers<int64_t> boost_ids) {
+						contracted_vertices_size = (int)boost_ids.size();
+						(*contracted_vertices) = (int64_t*)malloc(sizeof(int64_t)*contracted_vertices_size);
+                        int64_t count = 0;
+						for (auto id : boost_ids) {
+							(*contracted_vertices)[count++] = this->graph[id].id;
+							}
+						}					
+
                     /*! @brief get the remaining vertices of the graph after contraction
                     @param [IN] *remaining_vertices* The vector of vertices remaining after contraction
                     */
@@ -366,6 +380,23 @@ namespace pgRouting {
                             log << this->graph[vertex].id << ", ";
                         }
                         log << "}";
+
+                    }
+
+
+                    /*! @brief get the contracted vertex ids of a given vertex in string format
+                    @param [IN] *vid* vertex_id
+                    */
+                    void get_contracted_vertices(int64_t **contracted_vertices,
+                    	int &contracted_vertices_size, int64_t vid) {
+                        if (!this->has_vertex(vid)) return;
+                        V v = this->get_V(vid);
+                        contracted_vertices_size = (int)this->graph[v].contracted_vertices().size();
+                        (*contracted_vertices) = (int64_t*)malloc(sizeof(int64_t)*contracted_vertices_size);
+                        int64_t count = 0;
+                        for (auto vertex : this->graph[v].contracted_vertices()) {
+                            (*contracted_vertices)[count++] = this->graph[vertex].id;
+                        }
 
                     }
 
