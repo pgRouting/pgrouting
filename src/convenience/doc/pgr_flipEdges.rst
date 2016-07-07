@@ -14,13 +14,14 @@ pgr_flipEdges - Deprecated Function
 
 .. warning:: This function is deprecated!!!
 
-    * Is no longer supported, and may be removed from future versions.
-    * There is no replacement
+    * Is no longer supported.
+    * May be removed from future versions.
+    * There is no replacement.
 
 Name
 ------------------------------------------------------------------------------
 
-``pgr_flipEdges`` 
+``pgr_flipEdges`` - flip the edges in an array of geometries so the connect end to end. 
 
 Synopsis
 ------------------------------------------------------------------------------

@@ -123,5 +123,6 @@ This behavior is a function of PostGIS functions ``st_linemerge()`` and
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`pgr_dijkstraCost`, :ref:`pgr_dijkstra`
 * :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm

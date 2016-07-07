@@ -9,21 +9,19 @@
 
 .. _pgr_points_to_dmatrix:
 
-pgr_pointsToDMatrix -- deprecated
+pgr_pointsToDMatrix - Deprecated Function
 ==============================================================================
 
 .. warning:: This function is deprecated!!!
 
-    * This function is no longer supported, and may be removed from future versions.
-    * No replacement exists.
-    * See :ref:`tsp`.
-
+    * Is no longer supported.
+    * May be removed from future versions.
+    * There is no replacement.
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_pointsToDMatrix`` - Creates a distance matrix from an array of points.
-
 
 Synopsis
 ------------------------------------------------------------------------------
@@ -74,8 +72,9 @@ This example shows how this can be used in the context of feeding the results in
 See Also
 -----------------------------------------------------------------------------
 
-* :ref:`pgr_vids_to_dmatrix` - convert a point geometry to the closest vertex_id of an edge..
-* :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+* :ref:`pgr_vids_to_dmatrix2`
+* :ref:`pgr_vids_to_dmatrix`
+* :ref:`pgr_tsp-V2.0`
 
 
 .. rubric:: Indices and tables

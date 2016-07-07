@@ -12,17 +12,26 @@
 pgr_tsp -Deprecated Signatures
 ===============================================================================
 
-.. warning:: This functions and/or function signatures are deprecated!!!
+.. warning:: These functions signatures are deprecated!!!
 
-    * That means they have been replaced by new signatures and this signature is no longer supported, and may be removed from future versions.
-    * All code that uses the function signature should be converted to use its replacement :ref:`tsp`.
+    * That means they has been replaced by new signatures.
+    * These signatures are no longer supported, and may be removed from future versions.
+    * All code that use these functions signatures should be converted to use its replacement.
 
 Name
 -------------------------------------------------------------------------------
 
 * ``pgr_tsp`` - Returns the best route from a start node via a list of nodes.
+
+.. warning:: Use :ref:`pgr_eucledianTSP` instead.  
+
 * ``pgr_tsp`` - Returns the best route order when passed a disance matrix.
+
+.. warning:: Use :ref:`pgr_TSP` instead.  
+
 * ``pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
+
+.. warning:: There is no replacement.
 
 
 Synopsis
@@ -238,6 +247,8 @@ The queries use the :ref:`sampledata` network.
 
 See Also
 -------------------------------------------------------------------------------
+
+* :ref:`tsp`, :ref:`pgr_TSP`, :ref:`pgr_eucledianTSP`
 
 * :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/Traveling_salesman_problem

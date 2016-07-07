@@ -102,9 +102,8 @@ Signatures
 
 ..
     Minimal signature
-
-.. index:: 
-    single: _pgr_pickDeliver(Minimal Signature) - proposed
+    .. index:: 
+    single: _pgr_pickDeliver(Minimal Signature) - developing
 
 Minimal signature
 -----------------
@@ -130,9 +129,8 @@ This example use the following data: TODO put link
 
 ..
     Complete signature
-
-.. index:: 
-    single: pgr_pickDeliver(Cmplete Signature) - proposed
+    .. index:: 
+    single: _pgr_pickDeliver(Cmplete Signature) - developing
 
 
 Complete signature

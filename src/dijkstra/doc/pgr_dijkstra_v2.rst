@@ -14,9 +14,9 @@ pgr_dijkstra - Deprecated Signature
 
 .. warning:: This function signature is deprecated!!!
 
-    * That means they have been replaced by new signatures and this signature is no longer supported, and may be removed from future versions.
-    * All code that uses the function signature should be converted to use its replacement :ref:`pgr_dijkstra`.
-
+    * That means it has been replaced by new signature(s)
+    * This signature is no longer supported, and may be removed from future versions.
+    * All code that use this function signature should be converted to use its replacement :ref:`pgr_dijkstra` (One to One).
 
 Name
 -------------------------------------------------------------------------------
@@ -108,5 +108,6 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`dijkstra`, :ref:`pgr_dijkstra`
 * :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
