@@ -48,13 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 
-PG_FUNCTION_INFO_V1(one_to_one_withPoints);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-one_to_one_withPoints(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum one_to_one_withPoints(PG_FUNCTION_ARGS);
 
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
@@ -72,7 +66,7 @@ process(
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
-    driving_side[0] = tolower(driving_side[0]);
+    driving_side[0] = (char) tolower(driving_side[0]);
     PGR_DBG("driving side:%c",driving_side[0]);
     if (! ((driving_side[0] == 'r')
                 || (driving_side[0] == 'l'))) {
@@ -97,10 +91,10 @@ process(
     PGR_DBG("  -- change the query");
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
-        get_new_queries(
-                edges_sql, points_sql,
-                &edges_of_points_query,
-                &edges_no_points_query);
+    get_new_queries(
+            edges_sql, points_sql,
+            &edges_of_points_query,
+            &edges_no_points_query);
 
     PGR_DBG("edges_of_points_query:\n%s", edges_of_points_query);
     PGR_DBG("edges_no_points_query:\n%s", edges_no_points_query);
@@ -108,7 +102,7 @@ process(
     PGR_DBG("load the edges that match the points");
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     PGR_DBG("Total %ld edges in query:", total_edges_of_points);
 #ifdef DEBUG
@@ -127,7 +121,7 @@ process(
     PGR_DBG("load the edges that dont match the points");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("Total %ld edges in query:", total_edges);
 #ifdef DEBUG
@@ -155,8 +149,9 @@ process(
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
+    char *log_msg = NULL;
     clock_t start_t = clock();
-    int errcode = do_pgr_withPoints(
+    do_pgr_withPoints(
             edges,
             total_edges,
             points,
@@ -171,29 +166,27 @@ process(
             only_cost,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
     time_msg(" processing withPoints one to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    PGR_DBG("LOG: %s\n", log_msg);
+    if (log_msg) free(log_msg);
 
-    if (!err_msg) free(err_msg);
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
+    }
     pfree(edges);
     pgr_SPI_finish();
-
-    if (errcode) {
-        pgr_send_error(errcode);
-    }
-
 }
 
 /*                                                                             */
 /*******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(one_to_one_withPoints);
 PGDLLEXPORT Datum
-#endif
 one_to_one_withPoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
@@ -264,7 +257,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool    *        nulls;
 
         /*******************************************************************************/
         /*                          MODIFY AS NEEDED                                   */
@@ -277,11 +270,11 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
 
 
         values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        nulls = palloc(6 * sizeof(bool));
 
         size_t i;
         for(i = 0; i < 6; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
 
@@ -294,7 +287,7 @@ one_to_one_withPoints(PG_FUNCTION_ARGS) {
         values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*******************************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

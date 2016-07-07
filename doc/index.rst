@@ -105,8 +105,9 @@ Data Types
    ../src/common/doc/types/index
 
 
+*******************************************************************************
 Topology functions
-===============================================================================
+*******************************************************************************
 
 :ref:`topology_functions`
 
@@ -121,23 +122,24 @@ Topology functions
 
    ../src/topology/doc/topology
 
+
+*******************************************************************************
+Routing Functions
+*******************************************************************************
+
 ..
     ROUTING FUNCTIONS SECTION
-
+    :hidden:
+    :maxdepth: 0
+    
 .. toctree::
-   :hidden:
-   :maxdepth: 0
 
-   ../src/routingFunctions
-
-Routing Functions
-=================
+    ../src/routingFunctions
 
 .. include:: ../src/routingFunctions.rst
    :start-after: from-here
    :end-before: to-here
-
-
+    
 
 *******************************************************************************
 Available Functions but not official pgRouting functions
@@ -177,17 +179,19 @@ Change Log
 
 :ref:`change_log`
 
+   - :ref:`changelog_2_2_3`
    - :ref:`changelog_2_2_2`
    - :ref:`changelog_2_2_1`
    - :ref:`changelog_2_2_0`
    - :ref:`changelog_2_1_0`
-   - :ref:`changelog_2_0`
+   - :ref:`changelog_2_0_1`
+   - :ref:`changelog_2_0_0`
    - :ref:`changelog_1_x`
 
 .. toctree::
     :hidden:
 
-    src/changelog/index
+    src/changelog/release_notes
 
 
 .. rubric:: Indices and tables

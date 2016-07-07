@@ -31,8 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "fmgr.h"
 #include "trsp.h"
 
-Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 // #define DEBUG 
 #include "../../common/src/debug_macro.h"
@@ -59,7 +59,7 @@ static int compute_trsp(
     PGR_DBG("Load edges");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
     PGR_DBG("Total %ld edges", total_tuples);
 
     PGR_DBG("Load restrictions");
@@ -78,7 +78,6 @@ static int compute_trsp(
     }
 #endif
     PGR_DBG("Total %ld restriction", total_restrict_tuples);
-
 
 
     int v_max_id=0;
@@ -117,11 +116,11 @@ static int compute_trsp(
 
         if(edges[z].target>v_max_id)
             v_max_id=(int)edges[z].target;      
-
         //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
 
     }
 
+//<<<<<<< HEAD
     //::::::::::::::::::::::::::::::::::::  
     //:: reducing vertex id (renumbering)
     //::::::::::::::::::::::::::::::::::::
@@ -164,7 +163,6 @@ static int compute_trsp(
         start_id -= v_min_id;
         end_id   -= v_min_id;
     }
-
 
     if (dovertex) {
         PGR_DBG("Calling trsp_node_wrapper\n");
@@ -215,7 +213,7 @@ static int compute_trsp(
 
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-    Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 
@@ -312,21 +310,21 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
-        char* nulls;
+        bool* nulls;
 
         values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(char));
+        nulls = palloc(4 * sizeof(bool));
 
         values[0] = Int32GetDatum(call_cntr);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int32GetDatum(path[call_cntr].vertex_id);
-        nulls[1] = ' ';
+        nulls[1] = false;
         values[2] = Int32GetDatum(path[call_cntr].edge_id);
-        nulls[2] = ' ';
+        nulls[2] = false;
         values[3] = Float8GetDatum(path[call_cntr].cost);
-        nulls[3] = ' ';
+        nulls[3] = false;
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         // make the tuple into a datum 
         result = HeapTupleGetDatum(tuple);
@@ -346,7 +344,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 }
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
-    Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 
@@ -461,21 +459,21 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
-        char* nulls;
+        bool* nulls;
 
         values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(char));
+        nulls = palloc(4 * sizeof(bool));
 
         values[0] = Int32GetDatum(call_cntr);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int32GetDatum(path[call_cntr].vertex_id);
-        nulls[1] = ' ';
+        nulls[1] = false;
         values[2] = Int32GetDatum(path[call_cntr].edge_id);
-        nulls[2] = ' ';
+        nulls[2] = false;
         values[3] = Float8GetDatum(path[call_cntr].cost);
-        nulls[3] = ' ';
+        nulls[3] = false;
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         // make the tuple into a datum 
         result = HeapTupleGetDatum(tuple);

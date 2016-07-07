@@ -52,13 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "./many_to_many_dijkstra_driver.h"
 
-PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-many_to_many_dijkstra(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum many_to_many_dijkstra(PG_FUNCTION_ARGS);
 
 
 /******************************************************************************/
@@ -78,7 +72,7 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -116,11 +110,8 @@ process(
 /*                                                                           */
 /*****************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
 PGDLLEXPORT Datum
-#endif
 many_to_many_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
@@ -202,7 +193,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*********************************************************************/
         /*                          MODIFY AS NEEDED                         */
@@ -216,11 +207,11 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         // OUT agg_cost float)
 
         values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(char));
+        nulls = palloc(8 * sizeof(bool));
 
         size_t i;
         for (i = 0; i < 8; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         values[0] = Int32GetDatum(call_cntr + 1);
@@ -233,7 +224,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

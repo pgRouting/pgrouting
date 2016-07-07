@@ -44,13 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./withPoints_dd_driver.h"
 
 
-PG_FUNCTION_INFO_V1(many_withPointsDD);
-#ifndef _MSC_VER
-Datum 
-#else  
-PGDLLEXPORT Datum 
-#endif
-many_withPointsDD(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum many_withPointsDD(PG_FUNCTION_ARGS);
 
 static 
 void process(
@@ -67,7 +61,7 @@ void process(
         General_path_element_t **result_tuples,
         size_t *result_count  ){
 
-    driving_side[0] = tolower(driving_side[0]);
+    driving_side[0] = (char) tolower(driving_side[0]);
     PGR_DBG("driving side:%c",driving_side[0]);
     if (! ((driving_side[0] == 'r')
                 || (driving_side[0] == 'l'))) {
@@ -90,11 +84,11 @@ void process(
 
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("freeing allocated memory not used anymore");
     free(edges_of_points_query);
@@ -146,11 +140,8 @@ void process(
 
 
 
-#ifndef _MSC_VER
-Datum
-#else  
+PG_FUNCTION_INFO_V1(many_withPointsDD);
 PGDLLEXPORT Datum
-#endif
 many_withPointsDD(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t                  call_cntr;
@@ -233,17 +224,17 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
-        char* nulls;
+        bool* nulls;
 
         values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(char));
+        nulls = palloc(6 * sizeof(bool));
         // id, start_v, node, edge, cost, tot_cost
-        nulls[0] = ' ';
-        nulls[1] = ' ';
-        nulls[2] = ' ';
-        nulls[3] = ' ';
-        nulls[4] = ' ';
-        nulls[5] = ' ';
+        nulls[0] = false;
+        nulls[1] = false;
+        nulls[2] = false;
+        nulls[3] = false;
+        nulls[4] = false;
+        nulls[5] = false;
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[2] = Int64GetDatum(result_tuples[call_cntr].node);
@@ -251,7 +242,7 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);

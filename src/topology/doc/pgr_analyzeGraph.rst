@@ -12,14 +12,11 @@
 pgr_analyzeGraph
 ===============================================================================
 
-.. index:: 
-	single: pgr_analyzeGraph(text,double precision,text,text,text,text,text)
-	module: common
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_anlizeGraph`` — Analyzes the network topology.
+``pgr_analyzeGraph`` — Analyzes the network topology.
 
 
 Synopsis
@@ -29,6 +26,9 @@ The function returns:
 
   - ``OK`` after the analysis has finished.
   - ``FAIL`` when the analysis was not completed due to an error. 
+
+.. index:: 
+	single: analyzeGraph(Complete Signature)
 
 .. code-block:: sql
 
@@ -99,7 +99,7 @@ Usage when the edge table's columns MATCH the default values:
 
 .. code-block:: sql
 
-	 SELECT  pgr_create_topology('edge_table',0.001);
+	 SELECT  pgr_createTopology('edge_table',0.001);
 	 SELECT  pgr_analyzeGraph('edge_table',0.001);
 
 .. rubric:: When the arguments are given in the order described in the parameters:
@@ -240,7 +240,7 @@ Examples
 
 .. code-block:: sql
 
-	SELECT  pgr_create_topology('edge_table',0.001);
+	SELECT  pgr_createTopology('edge_table',0.001);
 	SELECT pgr_analyzeGraph('edge_table', 0.001);
 	NOTICE:  PROCESSING:
 	NOTICE:  pgr_analyzeGraph('edge_table',0.001,'the_geom','id','source','target','true')
@@ -257,7 +257,7 @@ Examples
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
 	
-	 pgr_analizeGraph 
+	 pgr_analyzeGraph
 	--------------------
 	 OK
 	(1 row)
@@ -278,7 +278,7 @@ Examples
 	NOTICE:               Intersections detected: 0
 	NOTICE:                      Ring geometries: 0
 
-	 pgr_analizeGraph 
+	 pgr_analyzeGraph
 	--------------------
 	 OK
 	(1 row)
@@ -299,7 +299,7 @@ Examples
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
 	
-	 pgr_analizeGraph 
+	 pgr_analyzeGraph
 	--------------------
 	 OK
 	(1 row)
@@ -322,7 +322,7 @@ Examples
 	NOTICE:               Intersections detected: 0
 	NOTICE:                      Ring geometries: 0
 	
-	 pgr_analizeGraph 
+	 pgr_analyzeGraph
 	--------------------
 	 OK
 	(1 row)
@@ -336,7 +336,7 @@ Examples
     NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
     NOTICE:  ----------------------------------------------
 	
-	 pgr_analizeGraph 
+	 pgr_analyzeGraph
 	--------------------
 	 OK
 	(1 row)
@@ -357,7 +357,7 @@ Examples
     NOTICE:               Intersections detected: 0
     NOTICE:                      Ring geometries: 0
 	
-	 pgr_analizeGraph 
+	 pgr_analyzeGraph
 	--------------------
 	 OK
 	(1 row)

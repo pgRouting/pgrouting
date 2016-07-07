@@ -58,7 +58,7 @@ Proposed functions: Proposed by Zia Mohammed
 .. toctree::
    :hidden:
 
-   ../src/convinience/doc/convenience
+   ../src/convenience/doc/convenience
 
 
 Proposed functions: Proposed by Rohith Reddy

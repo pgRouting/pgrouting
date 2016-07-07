@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -49,7 +49,8 @@ extern "C" {
 #include "./../../common/src/pgr_types.h"
 }
 
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_alloc.hpp"
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
@@ -131,20 +132,19 @@ do_pgr_many_to_many_withPoints(
         }
 #endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, paths, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);
@@ -186,25 +186,31 @@ do_pgr_many_to_many_withPoints(
             return 0;
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-#ifndef DEBUG
-        {
-            std::ostringstream log;
-            log << "OK";
-            *err_msg = strdup(log.str().c_str());
-        }
-#else
+#ifdef DEBUG
         *err_msg = strdup(log.str().c_str());
 #endif
         return 0;
-    } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+    } catch (AssertFailedException &exept) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-        return 1000;
+    } catch (std::exception& exept) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << exept.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+    } catch(...) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << "Caught unknown exception!\n";
+        *err_msg = strdup(log.str().c_str());
     }
-    return 0;
+
+    return 1000;
 }
 

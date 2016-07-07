@@ -23,16 +23,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #pragma once
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#include <winsock2.h>
+#include <windows.h>
+#ifdef open
+#undef open
+#endif
+#endif
+
 
 #include <deque>
 #include <iostream>
 #include <algorithm>
-#include "postgres.h"
 #include "./pgr_types.h"
 
 class Path {
     typedef std::deque< Path_t >::iterator pthIt;
     typedef std::deque< Path_t >::const_iterator ConstpthIt;
+
  private:
     std::deque< Path_t > path;
     int64_t m_start_id;
@@ -57,11 +65,14 @@ class Path {
     void push_back(Path_t data);
     const Path_t& operator[](size_t i) const {return path[i];}
     Path_t& operator[](size_t i) {return path[i];}
+
     pthIt begin() {return path.begin();}
     pthIt end() {return path.end();}
-    void erase(pthIt pos) {path.erase(pos);}
     ConstpthIt begin() const {return path.begin();}
     ConstpthIt end() const {return path.end();}
+
+
+    void erase(pthIt pos) {path.erase(pos);}
     const Path_t& back() const {return path.back();};
     Path_t& back() {return path.back();};
     const Path_t& front() const {return path.front();};
@@ -73,21 +84,20 @@ class Path {
             int64_t d_to,
             int64_t d_vertex,
             int64_t d_edge, 
-            float8 d_cost,
-            float8 d_tot_cost);
+            double d_cost,
+            double d_tot_cost);
 
     void push_front(
             int64_t d_vertex,
             int64_t d_edge, 
-            float8 d_cost,
-            float8 d_tot_cost);
+            double d_cost,
+            double d_tot_cost);
     void clear();
 
     friend std::ostream& operator<<(std::ostream &log, const Path &p);
 
 
-    void fix_path(int64_t from, int64_t to);
-
+    void reverse();
 
     Path  getSubpath(unsigned int j) const;
 

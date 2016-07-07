@@ -7,10 +7,10 @@
 
 #choose precise or trusty
 
-group: edge
-3dist: trusty    
+#group: edge
+#dist: trusty    
 
-#dist: precise
+dist: precise
 
 sudo: required
 
@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - hotFix/issue552
+    - newSignature/tsp
 
 env:
   - POSTGRESQL_VERSION=9.1
@@ -35,6 +35,7 @@ env:
   - POSTGRESQL_VERSION=9.3
   - POSTGRESQL_VERSION=9.4
   - POSTGRESQL_VERSION=9.5
+  #- POSTGRESQL_VERSION=9.6
 
 
 # excecuted. So things have to be tested oe by one.
@@ -60,10 +61,12 @@ install:
   - sudo /etc/init.d/postgresql stop
   - sudo /etc/init.d/postgresql stop
   - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
+  - sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
 
 before_script:
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
+
   # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql stop
   # Start the version of PG that we want to test
@@ -79,11 +82,12 @@ before_script:
 
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-
-after_script: 
-  # note: right takes the travis default
+  # tests as part of script so if a test fails the build fails
   - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION postgres
   - ./tools/testers/pg_prove_tests.sh postgres
+
+after_script: 
+  # blank
 
 #after_success:
   #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION

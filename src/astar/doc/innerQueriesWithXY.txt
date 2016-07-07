@@ -1,0 +1,35 @@
+.. 
+   ****************************************************************************
+    pgRouting Manual
+    Copyright(c) pgRouting Contributors
+
+    This documentation is licensed under a Creative Commons Attribution-Share
+    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+   ****************************************************************************
+
+
+Description of the Edges SQL query
+...............................................................................
+
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
+
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the edge.
+**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+**x1**            ``ANY-NUMERICAL``     X coordinate of `source` vertex.
+**y1**            ``ANY-NUMERICAL``     Y coordinate of `source` vertex.
+**x2**            ``ANY-NUMERICAL``     X coordinate of `target` vertex.
+**y2**            ``ANY-NUMERICAL``     Y coordinate of `target` vertex.
+================  ===================   =================================================
+
+
+Where:
+
+:ANY-INTEGER: smallint, int, bigint
+:ANY-NUMERICAL: smallint, int, bigint, real, float
+

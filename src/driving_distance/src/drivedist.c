@@ -40,13 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "./boost_interface_drivedist.h"
 
-PG_FUNCTION_INFO_V1(driving_distance);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-driving_distance(PG_FUNCTION_ARGS); 
+PGDLLEXPORT Datum driving_distance(PG_FUNCTION_ARGS);
 
 static
 void compute_driving_distance(
@@ -65,7 +59,7 @@ void compute_driving_distance(
 
   PGR_DBG("Load data");
 
-  pgr_get_data_5_columns(sql, &edges, &total_edges);
+  pgr_get_edges(sql, &edges, &total_edges);
 
   if (total_edges == 0) {
     PGR_DBG("No edges found");
@@ -92,11 +86,8 @@ void compute_driving_distance(
 }
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(driving_distance);
 PGDLLEXPORT Datum
-#endif
 driving_distance(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   uint32_t             call_cntr;
@@ -156,25 +147,25 @@ driving_distance(PG_FUNCTION_ARGS) {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       values = palloc(5 * sizeof(Datum));
-      nulls = palloc(5 * sizeof(char));
+      nulls = palloc(5 * sizeof(bool));
 
       // TODO version 3.0 change to 
       // values[0] = Int64GetDatum(ret_path[call_cntr].seq + 1);
-      nulls[0] = ' ';
-      nulls[1] = ' ';
-      nulls[2] = ' ';
-      nulls[3] = ' ';
-      nulls[4] = ' ';
+      nulls[0] = false;
+      nulls[1] = false;
+      nulls[2] = false;
+      nulls[3] = false;
+      nulls[4] = false;
       values[0] = Int32GetDatum(ret_path[call_cntr].seq + 1);
       values[1] = Int64GetDatum(ret_path[call_cntr].node);
       values[2] = Int64GetDatum(ret_path[call_cntr].edge);
       values[3] = Float8GetDatum(ret_path[call_cntr].cost);
       values[4] = Float8GetDatum(ret_path[call_cntr].agg_cost);
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);

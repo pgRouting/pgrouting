@@ -52,13 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "./many_to_one_dijkstra_driver.h"
 
-PG_FUNCTION_INFO_V1(many_to_one_dijkstra);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-many_to_one_dijkstra(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum many_to_one_dijkstra(PG_FUNCTION_ARGS);
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
 static
@@ -77,7 +71,7 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -115,11 +109,8 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(many_to_one_dijkstra);
 PGDLLEXPORT Datum
-#endif
 many_to_one_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
@@ -194,7 +185,7 @@ many_to_one_dijkstra(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*********************************************************************/
         /*                          MODIFY AS NEEDED                         */
@@ -208,11 +199,11 @@ many_to_one_dijkstra(PG_FUNCTION_ARGS) {
         // OUT agg_cost FLOAT)
 
         values = palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(char));
+        nulls = palloc(7 * sizeof(bool));
 
         size_t i;
         for (i = 0; i < 7; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         // postgres starts counting from 1
@@ -225,7 +216,7 @@ many_to_one_dijkstra(PG_FUNCTION_ARGS) {
         values[6] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

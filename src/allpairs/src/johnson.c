@@ -45,13 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "./johnson_driver.h"
 
-PG_FUNCTION_INFO_V1(johnson);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-johnson(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum johnson(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -66,7 +60,7 @@ void process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_4_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -98,11 +92,8 @@ void process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(johnson);
 PGDLLEXPORT Datum
-#endif
 johnson(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
@@ -161,7 +152,7 @@ johnson(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool         *nulls;
 
         /*********************************************************************/
         /*                          MODIFY AS NEEDED                         */
@@ -171,19 +162,19 @@ johnson(PG_FUNCTION_ARGS) {
         // OUT cost float)
 
         values = palloc(3 * sizeof(Datum));
-        nulls = palloc(3 * sizeof(char));
+        nulls = palloc(3 * sizeof(bool));
 
         // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
-        nulls[0] = ' ';
+        nulls[0] = false;
         values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
-        nulls[1] = ' ';
+        nulls[1] = false;
         values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
-        nulls[2] = ' ';
+        nulls[2] = false;
 
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

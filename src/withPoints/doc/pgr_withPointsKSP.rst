@@ -45,13 +45,13 @@ Signature Summary
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 Signatures
-==========
+-----------
 
 .. index::
-    single: withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K) -- proposed
+    single: withPointsKSP(Minimal Signature) -- proposed in V2.2
 
 Minimal Usage
------------------
+....................................
 
 The minimal usage:
     - Is for a **directed** graph.
@@ -72,10 +72,10 @@ The minimal usage:
    :end-before: --q2
 
 .. index::
-    single: withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details) -- proposed
+    single: withPointsKSP(Complete Signature) -- proposed in V2.2
 
 Complete Signature
-------------------------------------
+....................................
 
 Finds the K shortest paths depending on the optional parameters setup.
 
@@ -93,18 +93,18 @@ Finds the K shortest paths depending on the optional parameters setup.
    :end-before: --q3
 
 Description of the Signatures
-=============================
+-------------------------------
 
 
 ..
     description of the sql queries
 
 
-.. include:: withPoints_queries.txt 
+.. include:: withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+..............................................................
 
 
 ================ ================= =================================================
@@ -128,7 +128,7 @@ Parameter        Type              Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+..............................................................
 
 Returns set of ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
 

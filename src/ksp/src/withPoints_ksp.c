@@ -47,13 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./withPoints_ksp_driver.h"
 #include "./../../common/src/debug_macro.h"
 
-PG_FUNCTION_INFO_V1(withPoints_ksp);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-withPoints_ksp(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS);
 
 
 /*******************************************************************************/
@@ -75,7 +69,7 @@ process(
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
-    driving_side[0] = tolower(driving_side[0]);
+    driving_side[0] = (char) tolower(driving_side[0]);
     PGR_DBG("driving side:%c",driving_side[0]);
     if (! ((driving_side[0] == 'r')
                 || (driving_side[0] == 'l'))) {
@@ -98,11 +92,11 @@ process(
 
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("freeing allocated memory not used anymore");
     free(edges_of_points_query);
@@ -161,11 +155,8 @@ process(
 
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(withPoints_ksp);
 PGDLLEXPORT Datum
-#endif
 withPoints_ksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t             call_cntr;
@@ -240,16 +231,16 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        char*        nulls;
+        bool*        nulls;
 
         /*******************************************************************************/
         /*                          MODIFY AS NEEDED                                   */
         values = palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(char));
+        nulls = palloc(7 * sizeof(bool));
 
         size_t i;
         for(i = 0; i < 7; ++i) {
-            nulls[i] = ' ';
+            nulls[i] = false;
         }
 
         /*
@@ -269,7 +260,7 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         values[6] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /*******************************************************************************/
 
-        tuple =heap_formtuple(tuple_desc, values, nulls);
+        tuple =heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {

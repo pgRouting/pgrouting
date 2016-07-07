@@ -22,9 +22,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
+#endif
 #endif
 
 #include "unistd.h"
@@ -32,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 
-#include "../../common/src/memory_func.hpp"
+#include "../../common/src/pgr_alloc.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./boost_interface_drivedist.h"
 
@@ -46,25 +49,27 @@ void
 do_pgr_driving_many_to_dist(
         pgr_edge_t  *data_edges, size_t total_tuples,
         int64_t  *start_vertex, size_t s_len,
-        float8 distance,
+        double distance,
         bool directedFlag,
         bool equiCostFlag,
         General_path_element_t **ret_path, size_t *path_count,
         char ** err_msg) {
     try {
+        *ret_path = NULL;
+        *path_count = 0;
+
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         std::set< int64_t > s_start_vertices(start_vertex, start_vertex + s_len);
         std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
 
         if (directedFlag) {
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_drivingDistance(digraph, paths, start_vertices, distance, equiCostFlag);
         } else {
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_drivingDistance(undigraph, paths, start_vertices, distance, equiCostFlag);
         }
@@ -74,10 +79,9 @@ do_pgr_driving_many_to_dist(
 
         if (count == 0) {
             *err_msg = strdup("NOTICE: No return values was found");
-            *ret_path = noResult(path_count, (*ret_path));
             return;
         }
-        *ret_path = get_memory(count, (*ret_path));
+        *ret_path = pgr_alloc(count, (*ret_path));
         auto trueCount(collapse_paths(ret_path, paths));
         *path_count = trueCount;
 
@@ -91,13 +95,11 @@ do_pgr_driving_many_to_dist(
 
     } catch ( ... ) {
         *err_msg = strdup("Caught unknown expection!");
-        *ret_path = noResult(path_count, (*ret_path));
+        if (ret_path) free(ret_path);
+        *path_count = 0;
         return;
     }
 }
-
-
-
 
 
 
@@ -106,7 +108,7 @@ void
 do_pgr_driving_distance(
         pgr_edge_t  *data_edges, size_t total_edges,
         int64_t     start_vertex,
-        float8      distance,
+        double      distance,
         bool        directedFlag,
         General_path_element_t **ret_path, size_t *path_count,
         char                   **err_msg) {
@@ -115,25 +117,25 @@ do_pgr_driving_distance(
         // if it already has values there will be a leak
         // call with pointing to NULL
         *ret_path = NULL;
+        *path_count = 0;
 
         log << "NOTICE: Started processing pgr_drivingDistance for 1 start_vid\n";
         // in c code this should have been checked:
         //  1) start_vertex is in the data_edges  DONE
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         Path path;
 
 
         if (directedFlag) {
             log << "NOTICE: Processing Directed graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgRouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_edges);
             pgr_drivingDistance(digraph, path, start_vertex, distance);
         } else {
             log << "NOTICE: Processing Undirected graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_edges);
             pgr_drivingDistance(undigraph, path, start_vertex, distance);
         }
@@ -142,7 +144,6 @@ do_pgr_driving_distance(
         if (path.empty()) {
             log << "NOTICE: it should have at least the one for it self";
             *err_msg = strdup(log.str().c_str());
-            *ret_path = noResult(path_count, (*ret_path));
             return;
         }
 
@@ -151,7 +152,7 @@ do_pgr_driving_distance(
 
         log << "NOTICE Count: " << count << " tuples\n";
 
-        *ret_path = get_memory(count, (*ret_path));
+        *ret_path = pgr_alloc(count, (*ret_path));
 
         size_t sequence = 0;
         path.get_pg_dd_path(ret_path, sequence);
@@ -167,7 +168,8 @@ do_pgr_driving_distance(
     } catch ( ... ) {
         log << "NOTICE: unknown exception cought";
         *err_msg = strdup(log.str().c_str());
-        *ret_path = noResult(path_count, (*ret_path));
+        if (ret_path) free(ret_path);
+        *path_count = 0;
         return;
     }
 }
