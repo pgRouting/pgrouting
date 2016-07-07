@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
-#define DEBUG
+// #define DEBUG
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -141,13 +141,15 @@ do_pgr_contractGraph(
 			for (const auto vertex : remaining_vertices) {
 				log << vertex << "\n";
 			}
-			char *type, *contracted_vertices;
+			char *type;
 			for (auto id : remaining_vertices) {
 				type = strdup("v");
-				std::ostringstream os;
-				digraph.get_contracted_vertices(os, id);
-				contracted_vertices = strdup(os.str().c_str());
-				(*return_tuples)[sequence] = {i, id, type, -1, -1, -1.00, contracted_vertices};
+				int64_t *contracted_vertices = NULL;
+				int contracted_vertices_size = 0;
+				digraph.get_contracted_vertices(&contracted_vertices,
+					contracted_vertices_size, id);
+				(*return_tuples)[sequence] = {i, id, type, -1, -1, -1.00,
+					contracted_vertices, contracted_vertices_size};
 				i++;
 				++sequence;
 			}
@@ -157,10 +159,13 @@ do_pgr_contractGraph(
 			}
 			for (auto edge : shortcut_edges) {
 				type = strdup("e");
-				std::ostringstream os;
-				digraph.get_ids(os, edge.contracted_vertices());
-				contracted_vertices = strdup(os.str().c_str());
-				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, edge.cost, contracted_vertices};
+				int64_t *contracted_vertices = NULL;
+				int contracted_vertices_size = 0;
+				digraph.get_ids(&contracted_vertices,
+					contracted_vertices_size, edge.contracted_vertices());
+				(*return_tuples)[sequence] = {i, edge.id, type,
+					edge.source, edge.target, edge.cost,
+					contracted_vertices, contracted_vertices_size};
 				i++;
 				++sequence;
 			}
@@ -204,32 +209,33 @@ do_pgr_contractGraph(
 			for (const auto vertex : remaining_vertices) {
 				log << vertex << "\n";
 			}
-			char *type, *contracted_vertices;
+			char *type;
 			for (auto id : remaining_vertices) {
 				type = strdup("v");
-				std::ostringstream os;
-				undigraph.get_contracted_vertices(os, id);
-				contracted_vertices = strdup(os.str().c_str());
-				(*return_tuples)[sequence] = {i, id, type, -1, -1, -1, contracted_vertices};
+				int64_t *contracted_vertices = NULL;
+				int contracted_vertices_size = 0;
+				undigraph.get_contracted_vertices(&contracted_vertices,
+					contracted_vertices_size, id);
+				(*return_tuples)[sequence] = {i, id, type, -1, -1, -1.00,
+					contracted_vertices, contracted_vertices_size};
 				i++;
 				++sequence;
 			}
-			log << "Number of shortcuts: " << shortcut_edges.size() << std::endl;
-			
 			log << "Added Edges:" << "\n";
 			for (const auto edge : shortcut_edges) {
 				log << edge << "\n";
 			}
-			//log << "i: " << i;
-			for (const auto edge : shortcut_edges) {
+			for (auto edge : shortcut_edges) {
 				type = strdup("e");
-				
-				std::ostringstream os;
-				undigraph.get_ids(os, edge.contracted_vertices());
-				contracted_vertices = strdup(os.str().c_str());
-				(*return_tuples)[sequence] = {i, edge.id, type, edge.source, edge.target, edge.cost, contracted_vertices};
-				++sequence;
+				int64_t *contracted_vertices = NULL;
+				int contracted_vertices_size = 0;
+				undigraph.get_ids(&contracted_vertices,
+					contracted_vertices_size, edge.contracted_vertices());
+				(*return_tuples)[sequence] = {i, edge.id, type,
+					edge.source, edge.target, edge.cost,
+					contracted_vertices, contracted_vertices_size};
 				i++;
+				++sequence;
 			}
 			(*return_count) = sequence;
 		}
