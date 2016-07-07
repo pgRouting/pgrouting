@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <vector>
 
-#include "./pgr_maxflow.h"
+#include "pgr_maxflow.hpp"
 #include "../../common/src/pgr_alloc.hpp"
 
 // #define DEBUG

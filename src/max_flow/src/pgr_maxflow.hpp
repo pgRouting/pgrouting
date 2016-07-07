@@ -41,7 +41,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 
 #include <cstdint>
-#include <cassert>
 #include <map>
 
 #include <boost/config.hpp>
@@ -50,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/edmonds_karp_max_flow.hpp>
 #include <boost/graph/boykov_kolmogorov_max_flow.hpp>
 #include <boost/graph/max_cardinality_matching.hpp>
-
+#include <boost/assert.hpp>
 
 // user's functions
 // for development
@@ -218,9 +217,13 @@ class PgrFlowGraph {
       for (size_t i = 0; i < total_tuples; ++i) {
           V v1 = this->id_to_V.find(data_edges[i].source)->second;
           V v2 = this->id_to_V.find(data_edges[i].target)->second;
-          E e;
-          boost::tie(e, added) =
-              boost::add_edge(v1, v2, this->boost_graph);
+          E e1;
+          boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
+          if (data_edges[i].reverse) {
+              E e2;
+              boost::tie(e2, added) =
+                  boost::add_edge(v2, v1, this->boost_graph);
+          }
       }
   }
 
@@ -248,12 +251,14 @@ class PgrFlowGraph {
       return flow_edges;
   }
 
-   void get_matched_vertices(std::vector<pgr_basic_edge_t>& matched_vertices, const std::vector<int64_t> &mate_map) {
+  void get_matched_vertices(std::vector<pgr_basic_edge_t> &matched_vertices,
+                            const std::vector<int64_t> &mate_map) {
       // I use a flow edge with null capacity/reverse_capacity
       // This is not shown on output
       V_it vi, vi_end;
       int64_t id = 1;
-      for (boost::tie(vi, vi_end) = boost::vertices(this->boost_graph); vi != vi_end;
+      for (boost::tie(vi, vi_end) = boost::vertices(this->boost_graph);
+           vi != vi_end;
            ++vi) {
           if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
               && ((*vi) < mate_map[*vi])) {
@@ -289,11 +294,8 @@ class PgrFlowGraph {
   }
 
   void maximum_cardinality_matching(std::vector<int64_t> &mate_map) {
-      bool is_maximum;
-      is_maximum =
-          checked_edmonds_maximum_cardinality_matching(this->boost_graph,
+      edmonds_maximum_cardinality_matching(this->boost_graph,
                                                        &mate_map[0]);
-      assert(is_maximum);
   }
 
 };

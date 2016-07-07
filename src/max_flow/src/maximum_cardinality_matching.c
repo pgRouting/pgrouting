@@ -160,7 +160,7 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     call_cntr = funcctx->call_cntr;
     max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_flow_t *) funcctx->user_fctx;
+    result_tuples = (pgr_basic_edge_t *) funcctx->user_fctx;
 
     if (call_cntr < max_calls) {
         HeapTuple tuple;

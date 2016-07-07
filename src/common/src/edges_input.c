@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./get_check_data.h"
 #include "./edges_input.h"
 #include "./time_msg.h"
+#include "pgr_types.h"
 
 static
 void fetch_basic_edge(
@@ -47,6 +48,8 @@ void fetch_basic_edge(
 
     edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
+    edge->reverse = pgr_SPI_getBool(tuple, tupdesc, info[3]);
+
 
     (*valid_edges)++;
 }
@@ -425,7 +428,7 @@ get_edges_flow(
 
 static
 void
-get_edges_3_columns(
+get_edges_4_columns(
     char *sql,
     pgr_basic_edge_t **edges,
     size_t *totalTuples,
@@ -438,10 +441,10 @@ get_edges_3_columns(
     size_t total_tuples;
     size_t valid_edges;
 
-    Column_info_t info[3];
+    Column_info_t info[4];
 
     int i;
-    for (i = 0; i < 3; ++i) {
+    for (i = 0; i < 4; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
@@ -450,9 +453,10 @@ get_edges_3_columns(
     info[0].name = strdup("id");
     info[1].name = strdup("source");
     info[2].name = strdup("target");
+    info[3].name = strdup("reverse");
 
     info[0].strict = !ignore_id;
-
+    info[3].eType = BOOLEAN;
 
     void *SPIplan;
     SPIplan = pgr_SPI_prepare(sql);
@@ -469,7 +473,7 @@ get_edges_3_columns(
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0)
-            pgr_fetch_column_info(info, 3);
+            pgr_fetch_column_info(info, 4);
 
         ntuples = SPI_processed;
         total_tuples += ntuples;
@@ -563,5 +567,5 @@ pgr_get_basic_edges(
     pgr_basic_edge_t **edges,
     size_t *total_edges) {
     bool ignore_id = false;
-    get_edges_3_columns(sql, edges, total_edges, ignore_id);
+    get_edges_4_columns(sql, edges, total_edges, ignore_id);
 }

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: maximum_cardinality_matching_Driver.h
+File: maximum_cardinality_matching_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
