@@ -39,7 +39,8 @@ typedef struct
 	int64_t source;
 	int64_t target;
 	double cost;
-	char *contracted_vertices;
+	int64_t *contracted_vertices;
+	int64_t size_contracted_vertices;
 } pgr_contracted_blob;
 
 //represents the type of graph
