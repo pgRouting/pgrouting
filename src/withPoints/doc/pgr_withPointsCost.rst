@@ -9,7 +9,7 @@
 
 .. _pgr_withPointsCost:
 
-pgr_withPointsCost
+pgr_withPointsCost - Proposed
 ===============================================================================
 
 
@@ -18,9 +18,9 @@ Name
 
 ``pgr_withPointsCost`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
 
-.. note::  This is a proposed function for version 2.3.
+.. note::  This is a proposed function
 
-     - Is not officially in the version 2.2 release.
+     - Is not officially in the release.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -93,7 +93,7 @@ Signatures
 ------------
 
 .. index::
-    single: withPointsCost(Minimal Use) -- proposed in V2.2
+    single: withPointsCost(Minimal Use) - proposed
 
 Minimal Use
 .........................................
@@ -115,7 +115,7 @@ The minimal signature:
    :end-before: --e2
 
 .. index::
-    single: withPointsCost(One To One) -- proposed in V2.2
+    single: withPointsCost(One To One) - proposed
 
 One to One
 .........................................
@@ -136,7 +136,7 @@ One to One
 
 
 .. index::
-    single: withPointsCost(One To Many) -- proposed in V2.2
+    single: withPointsCost(One To Many) - proposed
 
 One to Many
 .........................................
@@ -157,7 +157,7 @@ One to Many
 
 
 .. index::
-    single: withPointsCost(Many To One) -- proposed in V2.2
+    single: withPointsCost(Many To One) - proposed
 
 Many to One
 .........................................
@@ -176,7 +176,7 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPointsCost(Many To Many) -- proposed in V2.2
+    single: withPointsCost(Many To Many) - proposed
 
 Many to Many
 .........................................

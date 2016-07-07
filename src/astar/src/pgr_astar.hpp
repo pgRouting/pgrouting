@@ -391,7 +391,7 @@ Pgr_astar< G >::astar_1_to_1(
                 .distance_map(&distances[0])
                 .visitor(astar_one_goal_visitor(target)));
     }
-    catch(found_goals &fg) {
+    catch(found_goals &) {
         found = true;  // Target vertex found
     }
     return found;

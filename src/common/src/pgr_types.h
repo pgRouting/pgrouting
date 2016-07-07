@@ -169,3 +169,43 @@ struct {
 
 enum graphType { UNDIRECTED= 0, DIRECTED};
 
+/**************************************************************************
+ * pickDelivery types
+ * ***********************************************************************/
+typedef struct {
+    int64_t id;
+    double x;
+    double y;
+    double demand;
+    double Etime;
+    double Ltime;
+    double Stime;
+    int64_t Pindex;
+    int64_t Dindex;
+    double Ddist;
+} Customer_t;
+
+/*
+    OUT seq INTEGER,        done in the .c code
+    OUT vehicle_seq INTEGER,
+    OUT vehicle_id INTEGER,
+    OUT order_id BIGINT,
+    OUT travelTime FLOAT,
+    OUT arrivalTime FLOAT,
+    OUT waitTime FLOAT,
+    OUT serviceTime FLOAT,
+    OUT departureTime FLOAT,
+*/
+
+typedef struct  {
+    int vehicle_id;
+    int vehicle_seq;
+    int64_t order_id;
+    double travelTime;
+    double arrivalTime;
+    double waitTime;
+    double serviceTime;
+    double departureTime;
+} General_vehicle_orders_t;
+
+/*************************************************************************/

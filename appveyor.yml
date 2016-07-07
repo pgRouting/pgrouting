@@ -10,6 +10,9 @@ version: 2.3.{build}
 branches:
   only:
     - test/appveyor
+    - pickDeliver/pgr_pickDeliverClass
+    - master
+    - develop
 
 image: Visual Studio 2013
 configuration: Release
