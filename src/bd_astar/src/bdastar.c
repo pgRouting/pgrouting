@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <search.h>
 
 #include "../../common/src/postgres_connection.h"
-#include "bdastar.h"
+#include "bdastar_driver.h"
 
 
 //-------------------------------------------------------------------------

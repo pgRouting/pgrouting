@@ -306,7 +306,7 @@ DTYPE pathLength (TSP *tsp)
 
     int *iorder = tsp->iorder;
     DTYPE *dist   = tsp->dist;
-    int  n      = tsp->n;
+    unsigned int  n = tsp->n;
     
     for (i = 0; i < n-1; i++)
     {

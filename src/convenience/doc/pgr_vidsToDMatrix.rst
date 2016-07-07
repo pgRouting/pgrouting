@@ -14,16 +14,14 @@ pgr_vidsToDMatrix - Deprecated Function
 
 .. warning:: This function is deprecated!!!
 
-    * This function is no longer supported, and may be removed from future versions.
-    * No replacement exists.
-    * See :ref:`tsp`.
-
+    * Is no longer supported.
+    * May be removed from future versions.
+    * There is no replacement.
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_vidsToDMatrix`` - Creates a distances matrix from an array of ``vertex_id``.
-
 
 Synopsis
 ------------------------------------------------------------------------------
@@ -93,8 +91,9 @@ This example uses the :ref:`sampledata` network.
 See Also
 -----------------------------------------------------------------------------
 
-* :ref:`pgr_text_to_points` - Create an array of points from a text string.
-* :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
+* :ref:`pgr_vids_to_dmatrix2`
+* :ref:`pgr_text_to_points`
+* :ref:`pgr_tsp-V2.0`
 
 .. rubric:: Indices and tables
 

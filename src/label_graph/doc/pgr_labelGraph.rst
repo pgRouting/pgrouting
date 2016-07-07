@@ -11,11 +11,11 @@
 .. _pgr_labelGraph:
 
 
-pgr_labelGraph
+pgr_labelGraph - Proposed
 ===============================================================================
 
 .. index:: 
-	single: labelGraph(Complete Signature) -- proposed in V2.1
+	single: labelGraph(Complete Signature) - Proposed
 
 
 Name
