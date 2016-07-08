@@ -18,17 +18,18 @@ The *develop* branch reflects the 2.3.0-dev
 <table>
 	<tr>
 		<td>Branch</td>
-		<td>Status</td>
-		<td>Comment</td>
+		<td>Travis</td>
+		<td>Appveyor</td>
 	</tr>
 	<tr>
 		<td>master</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=master" alt="Build Status"/></td>
+		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=mastser&svg=true" alt="Appveyor Status"/></td>
 	</tr>
 	<tr>
 		<td>develop</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
-		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting?branch=develop&svg=true" alt="appveyor Status"/></td>
+		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=develop&svg=true" alt="Appveyor Status"/></td>
 		<td></td>
 	</tr>
 
