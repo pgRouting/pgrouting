@@ -14,9 +14,9 @@ pgr_pointToId - Deprecated Function
 
 .. warning:: This function is deprecated!!!
 
-    * Is no longer supported, and may be removed from future versions.
-    * There is no replacement
-
+    * Is no longer supported.
+    * May be removed from future versions.
+    * There is no replacement.
 
 Name
 -------------------------------------------------------------------------------

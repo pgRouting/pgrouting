@@ -9,7 +9,7 @@
 
 .. _pgr_dijkstraVia:
 
-pgr_dijkstraVia
+pgr_dijkstraVia - Proposed
 ===============================================================================
 
 
