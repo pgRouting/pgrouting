@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Table of Contents &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>Table of Contents &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.3.0 (develop)',
+        VERSION:     '2.3.0 (rewrite/vrppdtw)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,12 +25,12 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../index.html" />
     <link rel="next" title="Introduction" href="src/introduction/introduction.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
         <h2 class="heading"><span>Table of Contents</span></h2>
       </div>
       <div class="topnav">
@@ -48,7 +48,7 @@
   <div class="section" id="table-of-contents">
 <span id="index"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
 <p>pgRouting extends the <a class="reference external" href="http://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database to provide geospatial routing and other network analysis functionality.</p>
-<p>This is the manual for pgRouting 2.3.0 (develop).</p>
+<p>This is the manual for pgRouting 2.3.0 (rewrite/vrppdtw).</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="../_images/ccbysa.png" />
 <p>The pgRouting Manual is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. For other licenses used in pgRouting see the <a class="reference internal" href="src/introduction/introduction.html#license"><em>License</em></a> page.</p>
 </div>
@@ -158,8 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../src/routingFunctions.html">Routing Functions</a></li>
 </ul>
 </div>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><a class="reference internal" href="../src/allpairs/doc/allpairs.html#all-pairs"><em>All pairs</em></a> - All pair of vertices.<ul>
 <li><a class="reference internal" href="../src/allpairs/doc/pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a> - Floyd-Warshall&#8217;s Algorithm</li>
 <li><a class="reference internal" href="../src/allpairs/doc/pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a>- Johnson’s Algorithm</li>
@@ -171,8 +170,6 @@
 <li><a class="reference internal" href="../src/dijkstra/doc/dijkstra.html#dijkstra"><em>dijkstra</em></a> - Dijkstra family functions<ul>
 <li><a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> - Dijkstra&#8217;s shortest path algorithm.</li>
 <li><a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> - Use pgr_dijkstra to calculate the costs of the shortest paths.</li>
-<li><a class="reference internal" href="../src/costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix</em></a> Use pgr_dijkstra to calculate a cost matrix.</li>
-<li><a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia</em></a> - Use pgr_dijkstra to make a route via vertices.</li>
 </ul>
 </li>
 <li><a class="reference internal" href="../src/driving_distance/doc/drivingDistance.html#drivingdistance"><em>Driving Distance</em></a> - Driving Distance<ul>
@@ -189,35 +186,63 @@
 <li><a class="reference internal" href="../src/tsp/doc/tsp.html#tsp"><em>Traveling Sales Person</em></a><ul>
 <li><a class="reference internal" href="../src/tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> - When input is a cost matrix.</li>
 <li><a class="reference internal" href="../src/tsp/doc/pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> - When input are coordinates.</li>
-<li>Pre processing<ul>
-<li><a class="reference internal" href="../src/costMatrix/doc/costMatrix.html#costmatrix"><em>Cost Matrix</em></a> Cost matrix<ul>
-<li><a class="reference internal" href="../src/costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix</em></a> - Use pgr_dijktra to calculate a cost matrix.</li>
-<li><a class="reference internal" href="../src/costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="../src/withPoints/doc/withPoints.html#withpoints"><em>pgr_withPoints</em></a> - withPoints family functions<ul>
-<li><a class="reference internal" href="../src/withPoints/doc/pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints</em></a> - Route from/to points anywhere on the graph.</li>
-<li><a class="reference internal" href="../src/withPoints/doc/pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost</em></a> - Costs of the shortest paths.</li>
-<li><a class="reference internal" href="../src/costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
-<li><a class="reference internal" href="../src/withPoints/doc/pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP</em></a> - K shortest paths with points.</li>
-<li><a class="reference internal" href="../src/withPoints/doc/pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD</em></a> - Driving distance.</li>
+</div>
+<div class="section" id="stable-proposed-functions">
+<h1>Stable Proposed Functions<a class="headerlink" href="#stable-proposed-functions" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<blockquote>
+<div><a class="reference internal" href="../src/proposedNext.html#proposednext"><em>Stable proposed Functions</em></a></div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officialy be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change.</li>
+<li>Signature might not change.</li>
+<li>Functionality might not change.</li>
+<li>pgTap tests have being done.</li>
+<li>Documentation is finished.</li>
 </ul>
 </li>
 </ul>
 </div></blockquote>
 </div>
+<ul class="simple">
+<li>For TSP preprocessing<ul>
+<li><a class="reference internal" href="../src/costMatrix/doc/costMatrix.html#costmatrix"><em>Cost Matrix</em></a><ul>
+<li><a class="reference internal" href="../src/costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a> - Use pgr_dijkstra to calculate a cost matrix.</li>
+<li><a class="reference internal" href="../src/costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>As part of the <a class="reference internal" href="../src/dijkstra/doc/dijkstra.html#dijkstra"><em>Dijkstra - Family of functions</em></a><ul>
+<li><a class="reference internal" href="../src/costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a> Use pgr_dijkstra to calculate a cost matrix.</li>
+<li><a class="reference internal" href="../src/dijkstra/doc/pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia - Proposed</em></a> - Use pgr_dijkstra to make a route via vertices.</li>
+</ul>
+</li>
+<li>A new <a class="reference internal" href="../src/withPoints/doc/withPoints.html#withpoints"><em>withPoints - Family of functions</em></a><ul>
+<li><a class="reference internal" href="../src/withPoints/doc/pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints - Proposed</em></a> - Route from/to points anywhere on the graph.</li>
+<li><a class="reference internal" href="../src/withPoints/doc/pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost - Proposed</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="../src/costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
+<li><a class="reference internal" href="../src/withPoints/doc/pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP - Proposed</em></a> - K shortest paths with points.</li>
+<li><a class="reference internal" href="../src/withPoints/doc/pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD - Proposed</em></a> - Driving distance.</li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="available-functions-but-not-official-pgrouting-functions">
 <h1>Available Functions but not official pgRouting functions<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="../src/proposedNext.html#proposednext"><em>Proposed Functions for version 2.4</em></a></li>
+<ul class="simple">
 <li><a class="reference internal" href="../src/proposed.html#proposed"><em>Experimental and Proposed functions</em></a></li>
 </ul>
-</div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -270,7 +295,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 21, 2016.
+      Last updated on Jul 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

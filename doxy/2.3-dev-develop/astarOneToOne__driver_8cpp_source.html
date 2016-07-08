@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -143,145 +144,144 @@ $(document).ready(function(){initNavTree('astarOneToOne__driver_8cpp_source.html
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="astarOneToOne__driver_8h.html">./astarOneToOne_driver.h</a>&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="astarOneToOne__driver_8cpp.html#ad72dbcf6d0153db1b8d8a58001feed83">   43</a></span>&#160;<span class="preprocessor">#define DEBUG</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">// #include &quot;./../../dijkstra/src/pgr_dijkstra.hpp&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__astar_8hpp.html">./pgr_astar.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_assert.h&quot;</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_alloc.hpp&quot;</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span> &lt; <span class="keyword">class</span> G &gt;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">   56</a></span>&#160;<a class="code" href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">pgr_astar</a>(</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        G &amp;graph,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        int64_t source,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        int64_t target,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">int</span> heuristic,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">double</span> factor,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">double</span> epsilon,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">bool</span> only_cost = <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classPgr__astar.html">Pgr_astar&lt; G &gt;</a> fn_astar;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    fn_astar.<a class="code" href="classPgr__astar.html#a158eca68b244247a787f7e43c3a37a2a">astar</a>(graph, path, source, target, heuristic, factor, epsilon, only_cost);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="astarOneToOne__driver_8h.html">./astarOneToOne_driver.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="astarOneToOne__driver_8cpp.html#ad72dbcf6d0153db1b8d8a58001feed83">   42</a></span>&#160;<span class="preprocessor">#define DEBUG</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// #include &quot;./../../dijkstra/src/pgr_dijkstra.hpp&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__astar_8hpp.html">./pgr_astar.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_assert.h&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_alloc.hpp&quot;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span> &lt; <span class="keyword">class</span> G &gt;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">   55</a></span>&#160;<a class="code" href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">pgr_astar</a>(</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        G &amp;graph,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        int64_t source,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        int64_t target,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">int</span> heuristic,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">double</span> factor,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">double</span> epsilon,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">bool</span> only_cost = <span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classPgr__astar.html">Pgr_astar&lt; G &gt;</a> fn_astar;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    fn_astar.<a class="code" href="classPgr__astar.html#a158eca68b244247a787f7e43c3a37a2a">astar</a>(graph, path, source, target, heuristic, factor, epsilon, only_cost);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/************************************************************</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  edges_sql TEXT,</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  vertex_table TEXT,</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  start_vid BIGINT,</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">  end_vid BIGINT  directed BOOLEAN DEFAULT true,</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"> ***********************************************************/</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="astarOneToOne__driver_8h.html#a82202233b91f0550378d615190605298">   76</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="astarOneToOne__driver_8cpp.html#a82202233b91f0550378d615190605298">do_pgr_astarOneToOne</a>(</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a>  *data_edges,</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">size_t</span> total_edges,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        int64_t start_vid,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        int64_t end_vid,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">int</span> heuristic,</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">double</span> factor,</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">double</span> epsilon,</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">bool</span> only_cost,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **return_tuples,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">size_t</span> *return_count,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">char</span> ** log_msg,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>){</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::ostringstream err;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    std::ostringstream log;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*log_msg));</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*err_msg));</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*return_tuples));</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*return_count == 0);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(total_edges != 0);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (total_edges &lt;= 1) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Required: more than one edge\n&quot;</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            (*return_tuples) = NULL;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            (*return_count) = 0;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/************************************************************</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">  edges_sql TEXT,</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">  vertex_table TEXT,</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">  start_vid BIGINT,</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">  end_vid BIGINT  directed BOOLEAN DEFAULT true,</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"> ***********************************************************/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="astarOneToOne__driver_8h.html#a82202233b91f0550378d615190605298">   75</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="astarOneToOne__driver_8cpp.html#a82202233b91f0550378d615190605298">do_pgr_astarOneToOne</a>(</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a>  *data_edges,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">size_t</span> total_edges,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        int64_t start_vid,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        int64_t end_vid,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">int</span> heuristic,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">double</span> factor,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">double</span> epsilon,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">bool</span> only_cost,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **return_tuples,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">size_t</span> *return_count,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">char</span> ** log_msg,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>){</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    std::ostringstream err;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::ostringstream log;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*log_msg));</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*err_msg));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*return_tuples));</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(*return_count == 0);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(total_edges != 0);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">if</span> (total_edges &lt;= 1) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Required: more than one edge\n&quot;</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            (*return_tuples) = NULL;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            (*return_count) = 0;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a> gType = directed? <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a>: <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="classPath.html">Path</a> <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (directed) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph\n&quot;</span>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html">pgRouting::xyDirectedGraph</a> digraph(gType);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph 1 \n&quot;</span>;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            digraph.<a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3319e904c931e866ccdcd0750aec0b18">graph_insert_data</a>(data_edges, total_edges);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor"></span>            log &lt;&lt; digraph;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span>            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph 2\n&quot;</span>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <a class="code" href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">pgr_astar</a>(digraph, path, start_vid, end_vid, heuristic, factor, epsilon, only_cost);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph 3\n&quot;</span>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with Undirected Graph\n&quot;</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html">pgRouting::xyUndirectedGraph</a> undigraph(gType);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            undigraph.<a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3319e904c931e866ccdcd0750aec0b18">graph_insert_data</a>(data_edges, total_edges);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor"></span>            log &lt;&lt; undigraph;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor"></span>            <a class="code" href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">pgr_astar</a>(undigraph, path, start_vid, end_vid, heuristic, factor, epsilon, only_cost);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keyword">auto</span> count = path.<a class="code" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>();</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            (*return_tuples) = NULL;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            (*return_count) = 0;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            log &lt;&lt; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="stringliteral">&quot;No paths found between Starting and any of the Ending vertices\n&quot;</span>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordtype">size_t</span> sequence = 0;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(count, (*return_tuples));</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        path.<a class="code" href="classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba">generate_postgres_data</a>(return_tuples, sequence);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        (*return_count) = sequence;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        *err_msg = NULL;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        err &lt;&lt; exept.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; exept) {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        err &lt;&lt; exept.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        err &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!\n&quot;</span>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    }</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a> gType = directed? <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a>: <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="classPath.html">Path</a> <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">if</span> (directed) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph\n&quot;</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html">pgRouting::xyDirectedGraph</a> digraph(gType);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph 1 \n&quot;</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            digraph.<a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3319e904c931e866ccdcd0750aec0b18">graph_insert_data</a>(data_edges, total_edges);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor"></span>            log &lt;&lt; digraph;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor"></span>            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph 2\n&quot;</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <a class="code" href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">pgr_astar</a>(digraph, path, start_vid, end_vid, heuristic, factor, epsilon, only_cost);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph 3\n&quot;</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with Undirected Graph\n&quot;</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html">pgRouting::xyUndirectedGraph</a> undigraph(gType);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            undigraph.<a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3319e904c931e866ccdcd0750aec0b18">graph_insert_data</a>(data_edges, total_edges);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#ifdef DEBUG</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor"></span>            log &lt;&lt; undigraph;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor"></span>            <a class="code" href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">pgr_astar</a>(undigraph, path, start_vid, end_vid, heuristic, factor, epsilon, only_cost);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">auto</span> count = path.<a class="code" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            (*return_tuples) = NULL;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            (*return_count) = 0;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            log &lt;&lt; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="stringliteral">&quot;No paths found between Starting and any of the Ending vertices\n&quot;</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            *log_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordtype">size_t</span> sequence = 0;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(count, (*return_tuples));</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        path.<a class="code" href="classPath.html#ae1f419fc9e3cb3d6d4a51621b7f0beba">generate_postgres_data</a>(return_tuples, sequence);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        (*return_count) = sequence;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        *err_msg = NULL;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        err &lt;&lt; exept.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; exept) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        err &lt;&lt; exept.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        (*return_count) = 0;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        err &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!\n&quot;</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
 <div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00170">pgr_types.h:170</a></div></div>
 <div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00109">pgr_assert.h:109</a></div></div>
-<div class="ttc" id="astarOneToOne__driver_8cpp_html_a82202233b91f0550378d615190605298"><div class="ttname"><a href="astarOneToOne__driver_8cpp.html#a82202233b91f0550378d615190605298">do_pgr_astarOneToOne</a></div><div class="ttdeci">void do_pgr_astarOneToOne(Pgr_edge_xy_t *data_edges, size_t total_edges, int64_t start_vid, int64_t end_vid, bool directed, int heuristic, double factor, double epsilon, bool only_cost, General_path_element_t **return_tuples, size_t *return_count, char **log_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="astarOneToOne__driver_8cpp_source.html#l00076">astarOneToOne_driver.cpp:76</a></div></div>
+<div class="ttc" id="astarOneToOne__driver_8cpp_html_a82202233b91f0550378d615190605298"><div class="ttname"><a href="astarOneToOne__driver_8cpp.html#a82202233b91f0550378d615190605298">do_pgr_astarOneToOne</a></div><div class="ttdeci">void do_pgr_astarOneToOne(Pgr_edge_xy_t *data_edges, size_t total_edges, int64_t start_vid, int64_t end_vid, bool directed, int heuristic, double factor, double epsilon, bool only_cost, General_path_element_t **return_tuples, size_t *return_count, char **log_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="astarOneToOne__driver_8cpp_source.html#l00075">astarOneToOne_driver.cpp:75</a></div></div>
 <div class="ttc" id="pgr__astar_8hpp_html"><div class="ttname"><a href="pgr__astar_8hpp.html">pgr_astar.hpp</a></div></div>
 <div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00086">pgr_types.h:86</a></div></div>
 <div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00170">pgr_types.h:170</a></div></div>
@@ -289,7 +289,7 @@ $(document).ready(function(){initNavTree('astarOneToOne__driver_8cpp_source.html
 <div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00040">basePath_SSEC.hpp:40</a></div></div>
 <div class="ttc" id="classPgr__astar_html_a158eca68b244247a787f7e43c3a37a2a"><div class="ttname"><a href="classPgr__astar.html#a158eca68b244247a787f7e43c3a37a2a">Pgr_astar::astar</a></div><div class="ttdeci">void astar(G &amp;graph, Path &amp;path, int64_t start_vertex, int64_t end_vertex, int heuristic, double factor, double epsilon, bool only_cost=false)</div><div class="ttdoc">one to one </div><div class="ttdef"><b>Definition:</b> <a href="pgr__astar_8hpp_source.html#l00253">pgr_astar.hpp:253</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00081">pgr_assert.h:81</a></div></div>
-<div class="ttc" id="astarOneToOne__driver_8cpp_html_a2b0a29b656cef732da7b4ba147c81dbf"><div class="ttname"><a href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">pgr_astar</a></div><div class="ttdeci">void pgr_astar(G &amp;graph, Path &amp;path, int64_t source, int64_t target, int heuristic, double factor, double epsilon, bool only_cost=false)</div><div class="ttdef"><b>Definition:</b> <a href="astarOneToOne__driver_8cpp_source.html#l00056">astarOneToOne_driver.cpp:56</a></div></div>
+<div class="ttc" id="astarOneToOne__driver_8cpp_html_a2b0a29b656cef732da7b4ba147c81dbf"><div class="ttname"><a href="astarOneToOne__driver_8cpp.html#a2b0a29b656cef732da7b4ba147c81dbf">pgr_astar</a></div><div class="ttdeci">void pgr_astar(G &amp;graph, Path &amp;path, int64_t source, int64_t target, int heuristic, double factor, double epsilon, bool only_cost=false)</div><div class="ttdef"><b>Definition:</b> <a href="astarOneToOne__driver_8cpp_source.html#l00055">astarOneToOne_driver.cpp:55</a></div></div>
 <div class="ttc" id="astarOneToOne__driver_8h_html"><div class="ttname"><a href="astarOneToOne__driver_8h.html">astarOneToOne_driver.h</a></div></div>
 <div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490e"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a></div><div class="ttdeci">graphType</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00170">pgr_types.h:170</a></div></div>
 <div class="ttc" id="classpgRouting_1_1graph_1_1Pgr__base__graph_html"><div class="ttname"><a href="classpgRouting_1_1graph_1_1Pgr__base__graph.html">pgRouting::graph::Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00219">pgr_base_graph.hpp:219</a></div></div>
@@ -307,7 +307,7 @@ $(document).ready(function(){initNavTree('astarOneToOne__driver_8cpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c6e37fc9835c6783ca7f74105e7ae7b1.html">astar</a></li><li class="navelem"><a class="el" href="dir_7666b4aec57c6b7c1e3a3568b4a00b8f.html">src</a></li><li class="navelem"><a class="el" href="astarOneToOne__driver_8cpp.html">astarOneToOne_driver.cpp</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:26 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

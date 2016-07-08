@@ -1,0 +1,4 @@
+<map id="pgRouting::vrp::Tw_node" name="pgRouting::vrp::Tw_node">
+<area shape="rect" id="node3" href="$classpgRouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level. " alt="" coords="5,155,197,181"/>
+<area shape="rect" id="node2" href="$classpgRouting_1_1vrp_1_1Node.html" title="The Node class defines a point in 2D space with an id. " alt="" coords="28,5,175,32"/>
+</map>

@@ -1,0 +1,26 @@
+var classpgRouting_1_1vrp_1_1Solution =
+[
+    [ "Solution", "classpgRouting_1_1vrp_1_1Solution.html#abb442cf81050782dc87f0be032ea7e7e", null ],
+    [ "Solution", "classpgRouting_1_1vrp_1_1Solution.html#a45c9e329a38e3c46dbe860c3a599252a", null ],
+    [ "Solution", "classpgRouting_1_1vrp_1_1Solution.html#af59dd563f8e2dee31e21b951a43c7ec4", null ],
+    [ "cost", "classpgRouting_1_1vrp_1_1Solution.html#a588f813fb01a435ffd6e735bfd622f65", null ],
+    [ "cost_str", "classpgRouting_1_1vrp_1_1Solution.html#a14ff5e02ecef5b516a8beba1ace26b1f", null ],
+    [ "cvTot", "classpgRouting_1_1vrp_1_1Solution.html#a6e70c2b586e1361f0342c9d7d6c78d2a", null ],
+    [ "duration", "classpgRouting_1_1vrp_1_1Solution.html#afc0be1e43d67c91955312b6fcc64c90c", null ],
+    [ "fleet_size", "classpgRouting_1_1vrp_1_1Solution.html#a25d7e20c7da816e468236c884964cb5e", null ],
+    [ "get_postgres_result", "classpgRouting_1_1vrp_1_1Solution.html#a6f87f973fe8e667308ecbe1ab628b1b8", null ],
+    [ "is_feasable", "classpgRouting_1_1vrp_1_1Solution.html#a3175fee5e132cbd6c9a38aea76cd28c9", null ],
+    [ "operator<", "classpgRouting_1_1vrp_1_1Solution.html#abb0213b8f9c80a8a96cc4e4ffa2cf163", null ],
+    [ "operator=", "classpgRouting_1_1vrp_1_1Solution.html#a6ef37b225a4bc0333dabd269bdadbd7a", null ],
+    [ "operator=", "classpgRouting_1_1vrp_1_1Solution.html#ae60333fb39bf8bba9637bb309e2bb3c2", null ],
+    [ "tau", "classpgRouting_1_1vrp_1_1Solution.html#ac9e2538a30f8391aca7956277886548e", null ],
+    [ "total_service_time", "classpgRouting_1_1vrp_1_1Solution.html#a5e85b81e6a4b9ecf96e276ac47f73024", null ],
+    [ "total_travel_time", "classpgRouting_1_1vrp_1_1Solution.html#a21b7cc611a4aecff32a0af7fd178d89f", null ],
+    [ "twvTot", "classpgRouting_1_1vrp_1_1Solution.html#a626340c47678f6123c8ed3625e0e4603", null ],
+    [ "wait_time", "classpgRouting_1_1vrp_1_1Solution.html#a55a51f868139f1dc20147d7dcfd53c88", null ],
+    [ "operator<<", "classpgRouting_1_1vrp_1_1Solution.html#a9bd311dd2a3505fca51408c4f73a7c8f", null ],
+    [ "Optimize", "classpgRouting_1_1vrp_1_1Solution.html#a7095b2afb20c698734f4c9b0446659f5", null ],
+    [ "EPSILON", "classpgRouting_1_1vrp_1_1Solution.html#a37d60ff98a95015bf71a8ba90206d04b", null ],
+    [ "fleet", "classpgRouting_1_1vrp_1_1Solution.html#ac77d44b67c1188b7e5b535e1008db591", null ],
+    [ "problem", "classpgRouting_1_1vrp_1_1Solution.html#ab25eb5b0e4613455080f7f098162edc5", null ]
+];

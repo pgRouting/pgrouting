@@ -10,7 +10,6 @@ var VRP__Solver_8h =
     [ "CVRPSolver", "classCVRPSolver.html", "classCVRPSolver" ],
     [ "Point", "structPoint.html", "structPoint" ],
     [ "INF", "VRP__Solver_8h.html#a12c2040f25d8e3a7b9e1c2024c618cb6", null ],
-    [ "max", "VRP__Solver_8h.html#affe776513b24d84b39af8ab0930fef7f", null ],
     [ "MAXIMUM_MOVE_FREQUENCY", "VRP__Solver_8h.html#a3d26350f9e232526c3458a5a07a1acfc", null ],
     [ "MAXIMUM_TRY", "VRP__Solver_8h.html#a666deaa7b397689eaef86f0355296b66", null ],
     [ "TOTAL_NUMBER_OF_SEARCH", "VRP__Solver_8h.html#ab0cc8485316b8930d64d7801329c9ff7", null ],

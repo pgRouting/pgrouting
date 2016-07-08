@@ -10,5 +10,7 @@ var searchData=
   ['shooting_5fstar_5frelax_2ehpp',['shooting_star_relax.hpp',['../shooting__star__relax_8hpp.html',1,'']]],
   ['shooting_5fstar_5fsearch_2ehpp',['shooting_star_search.hpp',['../shooting__star__search_8hpp.html',1,'']]],
   ['signalhandler_2ecpp',['signalhandler.cpp',['../signalhandler_8cpp.html',1,'']]],
-  ['signalhandler_2eh',['signalhandler.h',['../signalhandler_8h.html',1,'']]]
+  ['signalhandler_2eh',['signalhandler.h',['../signalhandler_8h.html',1,'']]],
+  ['solution_2ecpp',['solution.cpp',['../solution_8cpp.html',1,'']]],
+  ['solution_2eh',['solution.h',['../solution_8h.html',1,'']]]
 ];

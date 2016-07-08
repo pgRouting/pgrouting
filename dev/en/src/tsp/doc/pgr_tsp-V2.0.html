@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_tsp -Deprecated Signatures &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>pgr_tsp -Deprecated Signatures &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (develop)',
+        VERSION:     '2.3.0 (rewrite/vrppdtw)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../../../index.html" />
     <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
     <link rel="next" title="pgr_flipEdges - Deprecated Function" href="../../convenience/doc/pgr_flipEdges.html" />
     <link rel="prev" title="pgr_astar - Deprecated Signature" href="../../astar/doc/pgr_astar_v2.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
         <h2 class="heading"><span>pgr_tsp -Deprecated Signatures</span></h2>
       </div>
       <div class="topnav">
@@ -53,19 +53,36 @@
 <span id="pgr-tsp-v2-0"></span><h1>pgr_tsp -Deprecated Signatures<a class="headerlink" href="#pgr-tsp-deprecated-signatures" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>This functions and/or function signatures are deprecated!!!</p>
+<p>These functions signatures are deprecated!!!</p>
 <ul class="last simple">
-<li>That means they have been replaced by new signatures and this signature is no longer supported, and may be removed from future versions.</li>
-<li>All code that uses the function signature should be converted to use its replacement <a class="reference internal" href="tsp.html#tsp"><em>Traveling Sales Person</em></a>.</li>
+<li>That means they has been replaced by new signatures.</li>
+<li>These signatures are no longer supported, and may be removed from future versions.</li>
+<li>All code that use these functions signatures should be converted to use its replacement.</li>
 </ul>
 </div>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route from a start node via a list of nodes.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Use <a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> instead.</p>
+</div>
+<ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route order when passed a disance matrix.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Use <a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> instead.</p>
+</div>
+<ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_makeDistanceMatrix</span></tt> - Returns a Eucleadian distance Matrix from the points provided in the sql result.</li>
 </ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There is no replacement.</p>
+</div>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -302,6 +319,7 @@
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><a class="reference internal" href="tsp.html#tsp"><em>Traveling Sales Person</em></a>, <a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a>, <a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a></li>
 <li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Traveling_salesman_problem">http://en.wikipedia.org/wiki/Traveling_salesman_problem</a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a></li>
@@ -325,7 +343,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 21, 2016.
+      Last updated on Jul 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

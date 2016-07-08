@@ -1,8 +1,8 @@
 var files =
 [
     [ "alpha.c", "alpha_8c.html", "alpha_8c" ],
-    [ "alpha.h", "alpha_8h.html", "alpha_8h" ],
-    [ "alpha_drivedist.cpp", "alpha__drivedist_8cpp.html", "alpha__drivedist_8cpp" ],
+    [ "alpha_driver.cpp", "alpha__driver_8cpp.html", "alpha__driver_8cpp" ],
+    [ "alpha_driver.h", "alpha__driver_8h.html", "alpha__driver_8h" ],
     [ "arrays_input.c", "arrays__input_8c.html", "arrays__input_8c" ],
     [ "arrays_input.h", "arrays__input_8h.html", "arrays__input_8h" ],
     [ "astarManyToMany.c", "astarManyToMany_8c.html", "astarManyToMany_8c" ],
@@ -26,12 +26,12 @@ var files =
     [ "basic_vertex.cpp", "basic__vertex_8cpp.html", "basic__vertex_8cpp" ],
     [ "basic_vertex.h", "basic__vertex_8h.html", "basic__vertex_8h" ],
     [ "bdastar.c", "bdastar_8c.html", "bdastar_8c" ],
-    [ "bdastar.h", "bdastar_8h.html", "bdastar_8h" ],
-    [ "bdastar_core.cpp", "bdastar__core_8cpp.html", "bdastar__core_8cpp" ],
+    [ "bdastar_driver.cpp", "bdastar__driver_8cpp.html", "bdastar__driver_8cpp" ],
+    [ "bdastar_driver.h", "bdastar__driver_8h.html", "bdastar__driver_8h" ],
     [ "BDATester.cpp", "BDATester_8cpp.html", "BDATester_8cpp" ],
     [ "bdsp.c", "bdsp_8c.html", "bdsp_8c" ],
-    [ "bdsp.h", "bdsp_8h.html", "bdsp_8h" ],
-    [ "bdsp_core.cpp", "bdsp__core_8cpp.html", "bdsp__core_8cpp" ],
+    [ "bdsp_driver.cpp", "bdsp__driver_8cpp.html", "bdsp__driver_8cpp" ],
+    [ "bdsp_driver.h", "bdsp__driver_8h.html", "bdsp__driver_8h" ],
     [ "src/BiDirAStar.cpp", "src_2BiDirAStar_8cpp.html", null ],
     [ "tester/BiDirAStar.cpp", "tester_2BiDirAStar_8cpp.html", null ],
     [ "src/BiDirAStar.h", "src_2BiDirAStar_8h.html", "src_2BiDirAStar_8h" ],
@@ -77,6 +77,10 @@ var files =
     [ "get_new_queries.h", "get__new__queries_8h.html", "get__new__queries_8h" ],
     [ "GraphDefinition.cpp", "GraphDefinition_8cpp.html", null ],
     [ "GraphDefinition.h", "GraphDefinition_8h.html", "GraphDefinition_8h" ],
+    [ "initial_solution.cpp", "initial__solution_8cpp.html", null ],
+    [ "initial_solution.h", "initial__solution_8h.html", [
+      [ "Initial_solution", "classpgRouting_1_1vrp_1_1Initial__solution.html", "classpgRouting_1_1vrp_1_1Initial__solution" ]
+    ] ],
     [ "issue191-bad-m1.h", "issue191-bad-m1_8h.html", "issue191-bad-m1_8h" ],
     [ "issue191-bad.h", "issue191-bad_8h.html", "issue191-bad_8h" ],
     [ "issue191-good.h", "issue191-good_8h.html", "issue191-good_8h" ],
@@ -111,6 +115,10 @@ var files =
     [ "newTSP.c", "newTSP_8c.html", "newTSP_8c" ],
     [ "newTSP_driver.cpp", "newTSP__driver_8cpp.html", "newTSP__driver_8cpp" ],
     [ "newTSP_driver.h", "newTSP__driver_8h.html", "newTSP__driver_8h" ],
+    [ "node.cpp", "node_8cpp.html", "node_8cpp" ],
+    [ "node.h", "node_8h.html", [
+      [ "Node", "classpgRouting_1_1vrp_1_1Node.html", "classpgRouting_1_1vrp_1_1Node" ]
+    ] ],
     [ "one_to_many_dijkstra.c", "one__to__many__dijkstra_8c.html", "one__to__many__dijkstra_8c" ],
     [ "one_to_many_dijkstra_driver.cpp", "one__to__many__dijkstra__driver_8cpp.html", "one__to__many__dijkstra__driver_8cpp" ],
     [ "one_to_many_dijkstra_driver.h", "one__to__many__dijkstra__driver_8h.html", "one__to__many__dijkstra__driver_8h" ],
@@ -123,13 +131,14 @@ var files =
     [ "one_to_one_withPoints.c", "one__to__one__withPoints_8c.html", "one__to__one__withPoints_8c" ],
     [ "one_to_one_withPoints_driver.cpp", "one__to__one__withPoints__driver_8cpp.html", "one__to__one__withPoints__driver_8cpp" ],
     [ "one_to_one_withPoints_driver.h", "one__to__one__withPoints__driver_8h.html", "one__to__one__withPoints__driver_8h" ],
-    [ "pickDeliver/src/pdp.c", "pickDeliver_2src_2pdp_8c.html", "pickDeliver_2src_2pdp_8c" ],
-    [ "vrppdtw/src/pdp.c", "vrppdtw_2src_2pdp_8c.html", "vrppdtw_2src_2pdp_8c" ],
-    [ "pickDeliver/src/pdp.h", "pickDeliver_2src_2pdp_8h.html", "pickDeliver_2src_2pdp_8h" ],
-    [ "vrppdtw/src/pdp.h", "vrppdtw_2src_2pdp_8h.html", "vrppdtw_2src_2pdp_8h" ],
-    [ "pdp.hpp", "pdp_8hpp.html", "pdp_8hpp" ],
-    [ "pickDeliver/src/pdp_solver.cpp", "pickDeliver_2src_2pdp__solver_8cpp.html", "pickDeliver_2src_2pdp__solver_8cpp" ],
-    [ "vrppdtw/src/pdp_solver.cpp", "vrppdtw_2src_2pdp__solver_8cpp.html", "vrppdtw_2src_2pdp__solver_8cpp" ],
+    [ "optimize.cpp", "optimize_8cpp.html", null ],
+    [ "optimize.h", "optimize_8h.html", [
+      [ "Optimize", "classpgRouting_1_1vrp_1_1Optimize.html", "classpgRouting_1_1vrp_1_1Optimize" ]
+    ] ],
+    [ "order.cpp", "order_8cpp.html", "order_8cpp" ],
+    [ "order.h", "order_8h.html", [
+      [ "Order", "classpgRouting_1_1vrp_1_1Order.html", "classpgRouting_1_1vrp_1_1Order" ]
+    ] ],
     [ "pgr_alloc.hpp", "pgr__alloc_8hpp.html", "pgr__alloc_8hpp" ],
     [ "pgr_allpairs.hpp", "pgr__allpairs_8hpp.html", "pgr__allpairs_8hpp" ],
     [ "pgr_assert.cpp", "pgr__assert_8cpp.html", "pgr__assert_8cpp" ],
@@ -149,6 +158,10 @@ var files =
       [ "compPaths", "classPgr__ksp_1_1compPaths.html", "classPgr__ksp_1_1compPaths" ]
     ] ],
     [ "pgr_logger.h", "pgr__logger_8h.html", "pgr__logger_8h" ],
+    [ "pgr_pickDeliver.cpp", "pgr__pickDeliver_8cpp.html", "pgr__pickDeliver_8cpp" ],
+    [ "pgr_pickDeliver.h", "pgr__pickDeliver_8h.html", [
+      [ "Pgr_pickDeliver", "classpgRouting_1_1vrp_1_1Pgr__pickDeliver.html", "classpgRouting_1_1vrp_1_1Pgr__pickDeliver" ]
+    ] ],
     [ "pgr_tsp.cpp", "pgr__tsp_8cpp.html", "pgr__tsp_8cpp" ],
     [ "pgr_tsp.hpp", "pgr__tsp_8hpp.html", [
       [ "TSP", "classpgRouting_1_1tsp_1_1TSP.html", "classpgRouting_1_1tsp_1_1TSP" ]
@@ -158,6 +171,9 @@ var files =
     [ "pgr_withPoints.hpp", "pgr__withPoints_8hpp.html", "pgr__withPoints_8hpp" ],
     [ "performance/dijkstra/pgRouting.cpp", "performance_2dijkstra_2pgRouting_8cpp.html", "performance_2dijkstra_2pgRouting_8cpp" ],
     [ "pgRouting.cpp", "pgRouting_8cpp.html", "pgRouting_8cpp" ],
+    [ "pickDeliver.c", "pickDeliver_8c.html", "pickDeliver_8c" ],
+    [ "pickDeliver_driver.cpp", "pickDeliver__driver_8cpp.html", "pickDeliver__driver_8cpp" ],
+    [ "pickDeliver_driver.h", "pickDeliver__driver_8h.html", "pickDeliver__driver_8h" ],
     [ "points_input.c", "points__input_8c.html", "points__input_8c" ],
     [ "points_input.h", "points__input_8h.html", "points__input_8h" ],
     [ "postgres.h", "postgres_8h.html", "postgres_8h" ],
@@ -165,12 +181,6 @@ var files =
     [ "postgres_connection.h", "postgres__connection_8h.html", "postgres__connection_8h" ],
     [ "restrictions_input.c", "restrictions__input_8c.html", "restrictions__input_8c" ],
     [ "restrictions_input.h", "restrictions__input_8h.html", "restrictions__input_8h" ],
-    [ "pickDeliver/src/Route.h", "pickDeliver_2src_2Route_8h.html", [
-      [ "Route", "classRoute.html", "classRoute" ]
-    ] ],
-    [ "vrppdtw/src/Route.h", "vrppdtw_2src_2Route_8h.html", [
-      [ "Route", "classRoute.html", "classRoute" ]
-    ] ],
     [ "shooting_star.c", "shooting__star_8c.html", "shooting__star_8c" ],
     [ "shooting_star.h", "shooting__star_8h.html", "shooting__star_8h" ],
     [ "shooting_star_boost_wrapper.cpp", "shooting__star__boost__wrapper_8cpp.html", "shooting__star__boost__wrapper_8cpp" ],
@@ -178,13 +188,9 @@ var files =
     [ "shooting_star_search.hpp", "shooting__star__search_8hpp.html", "shooting__star__search_8hpp" ],
     [ "signalhandler.cpp", "signalhandler_8cpp.html", null ],
     [ "signalhandler.h", "signalhandler_8h.html", "signalhandler_8h" ],
-    [ "pickDeliver/src/Solution.h", "pickDeliver_2src_2Solution_8h.html", [
-      [ "Neighborhoods", "classNeighborhoods.html", "classNeighborhoods" ],
-      [ "Solution", "classSolution.html", "classSolution" ]
-    ] ],
-    [ "vrppdtw/src/Solution.h", "vrppdtw_2src_2Solution_8h.html", [
-      [ "Neighborhoods", "classNeighborhoods.html", "classNeighborhoods" ],
-      [ "Solution", "classSolution.html", "classSolution" ]
+    [ "solution.cpp", "solution_8cpp.html", "solution_8cpp" ],
+    [ "solution.h", "solution_8h.html", [
+      [ "Solution", "classpgRouting_1_1vrp_1_1Solution.html", "classpgRouting_1_1vrp_1_1Solution" ]
     ] ],
     [ "test1.c", "test1_8c.html", "test1_8c" ],
     [ "test2.cpp", "test2_8cpp.html", "test2_8cpp" ],
@@ -204,13 +210,29 @@ var files =
       [ "Tour", "classpgRouting_1_1tsp_1_1Tour.html", "classpgRouting_1_1tsp_1_1Tour" ]
     ] ],
     [ "trsp.c", "trsp_8c.html", "trsp_8c" ],
-    [ "trsp.h", "trsp_8h.html", "trsp_8h" ],
-    [ "trsp_core.cpp", "trsp__core_8cpp.html", "trsp__core_8cpp" ],
+    [ "trsp_driver.cpp", "trsp__driver_8cpp.html", "trsp__driver_8cpp" ],
+    [ "trsp_driver.h", "trsp__driver_8h.html", "trsp__driver_8h" ],
     [ "tsp.h", "tsp_8h.html", "tsp_8h" ],
     [ "tsp2.c", "tsp2_8c.html", "tsp2_8c" ],
     [ "tsplib.c", "tsplib_8c.html", "tsplib_8c" ],
+    [ "tw_node.cpp", "tw__node_8cpp.html", "tw__node_8cpp" ],
+    [ "tw_node.h", "tw__node_8h.html", [
+      [ "Tw_node", "classpgRouting_1_1vrp_1_1Tw__node.html", "classpgRouting_1_1vrp_1_1Tw__node" ]
+    ] ],
     [ "Utils.h", "Utils_8h.html", "Utils_8h" ],
     [ "utils.h", "utils_8h.html", "utils_8h" ],
+    [ "vehicle.cpp", "vehicle_8cpp.html", "vehicle_8cpp" ],
+    [ "vehicle.h", "vehicle_8h.html", [
+      [ "Vehicle", "classpgRouting_1_1vrp_1_1Vehicle.html", "classpgRouting_1_1vrp_1_1Vehicle" ]
+    ] ],
+    [ "vehicle_node.cpp", "vehicle__node_8cpp.html", "vehicle__node_8cpp" ],
+    [ "vehicle_node.h", "vehicle__node_8h.html", [
+      [ "Vehicle_node", "classpgRouting_1_1vrp_1_1Vehicle__node.html", "classpgRouting_1_1vrp_1_1Vehicle__node" ]
+    ] ],
+    [ "vehicle_pickDeliver.cpp", "vehicle__pickDeliver_8cpp.html", null ],
+    [ "vehicle_pickDeliver.h", "vehicle__pickDeliver_8h.html", [
+      [ "Vehicle_pickDeliver", "classpgRouting_1_1vrp_1_1Vehicle__pickDeliver.html", "classpgRouting_1_1vrp_1_1Vehicle__pickDeliver" ]
+    ] ],
     [ "VRP.c", "VRP_8c.html", "VRP_8c" ],
     [ "VRP.h", "VRP_8h.html", "VRP_8h" ],
     [ "VRP_core.cpp", "VRP__core_8cpp.html", "VRP__core_8cpp" ],

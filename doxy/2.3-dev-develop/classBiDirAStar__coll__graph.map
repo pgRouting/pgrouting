@@ -1,7 +1,7 @@
 <map id="BiDirAStar" name="BiDirAStar">
 <area shape="rect" id="node3" href="$structpath__element__t.html" title="path_element_t" alt="" coords="353,7,463,33"/>
-<area shape="rect" id="node6" href="$structGraphNodeInfo.html" title="GraphNodeInfo" alt="" coords="353,108,463,135"/>
-<area shape="rect" id="node9" href="$structPARENT__PATH.html" title="PARENT_PATH" alt="" coords="612,160,732,187"/>
-<area shape="rect" id="node11" href="$structGraphEdgeInfo.html" title="GraphEdgeInfo" alt="" coords="353,211,463,237"/>
-<area shape="rect" id="node13" title="STL class. " alt="" coords="350,261,466,288"/>
+<area shape="rect" id="node5" href="$structGraphNodeInfo.html" title="GraphNodeInfo" alt="" coords="353,57,463,84"/>
+<area shape="rect" id="node9" href="$structPARENT__PATH.html" title="PARENT_PATH" alt="" coords="617,165,737,192"/>
+<area shape="rect" id="node11" href="$structGraphEdgeInfo.html" title="GraphEdgeInfo" alt="" coords="353,216,463,243"/>
+<area shape="rect" id="node13" title="STL class. " alt="" coords="350,267,466,293"/>
 </map>

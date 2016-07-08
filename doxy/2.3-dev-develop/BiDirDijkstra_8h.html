@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -118,20 +119,20 @@ $(document).ready(function(){initNavTree('BiDirDijkstra_8h.html','');});
 <code>#include &lt;utility&gt;</code><br/>
 <code>#include &lt;functional&gt;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__types_8h_source.html">../../common/src/pgr_types.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="bdsp_8h_source.html">bdsp.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="bdsp__driver_8h_source.html">bdsp_driver.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for BiDirDijkstra.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="BiDirDijkstra_8h__incl.png" border="0" usemap="#BiDirDijkstra_8h" alt=""/></div>
 <map name="BiDirDijkstra_8h" id="BiDirDijkstra_8h">
-<area shape="rect" id="node7" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="399,155,539,197"/><area shape="rect" id="node10" href="bdsp_8h.html" title="bdsp.h" alt="" coords="473,80,535,107"/><area shape="rect" id="node8" href="postgres_8h.html" title="postgres.h" alt="" coords="379,245,460,272"/></map>
+<area shape="rect" id="node7" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="410,155,549,197"/><area shape="rect" id="node10" href="bdsp__driver_8h.html" title="bdsp_driver.h" alt="" coords="474,80,573,107"/><area shape="rect" id="node8" href="postgres_8h.html" title="postgres.h" alt="" coords="389,245,471,272"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="BiDirDijkstra_8h__dep__incl.png" border="0" usemap="#BiDirDijkstra_8hdep" alt=""/></div>
 <map name="BiDirDijkstra_8hdep" id="BiDirDijkstra_8hdep">
-<area shape="rect" id="node2" href="bdsp__core_8cpp.html" title="bdsp_core.cpp" alt="" coords="5,80,112,107"/><area shape="rect" id="node3" href="BiDirDijkstra_8cpp.html" title="BiDirDijkstra.cpp" alt="" coords="137,80,257,107"/></map>
+<area shape="rect" id="node2" href="bdsp__driver_8cpp.html" title="bdsp_driver.cpp" alt="" coords="5,80,120,107"/><area shape="rect" id="node3" href="BiDirDijkstra_8cpp.html" title="BiDirDijkstra.cpp" alt="" coords="145,80,265,107"/></map>
 </div>
 </div>
 <p><a href="BiDirDijkstra_8h_source.html">Go to the source code of this file.</a></p>
@@ -160,16 +161,17 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ad205fd5dbb8249c5bf0986d3f323b482"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
 &lt; <a class="el" href="structGraphNodeInfo.html">GraphNodeInfo</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#ad205fd5dbb8249c5bf0986d3f323b482">GraphNodeVector</a></td></tr>
 <tr class="separator:ad205fd5dbb8249c5bf0986d3f323b482"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b3461bd01ca3081dab8246818d5dc04"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; long, long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#a8b3461bd01ca3081dab8246818d5dc04">Long2LongMap</a></td></tr>
-<tr class="separator:a8b3461bd01ca3081dab8246818d5dc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9033d9b3008f9595da6c865fa7fa86a"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; long, <br class="typebreak"/>
-<a class="el" href="src_2BiDirAStar_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5">LongVector</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#ae9033d9b3008f9595da6c865fa7fa86a">Long2LongVectorMap</a></td></tr>
-<tr class="separator:ae9033d9b3008f9595da6c865fa7fa86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fbe624f0e2d5ce71ddcd2c1a25ed7d5"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5">LongVector</a></td></tr>
-<tr class="separator:a2fbe624f0e2d5ce71ddcd2c1a25ed7d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af38d29b0440a0a37efbc7dfaf92fb925"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; int64_t, <br class="typebreak"/>
+int64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#af38d29b0440a0a37efbc7dfaf92fb925">Long2LongMap</a></td></tr>
+<tr class="separator:af38d29b0440a0a37efbc7dfaf92fb925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cdedd75e1f257b44a9d4b533cc07fc7"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; int64_t, <br class="typebreak"/>
+<a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#a7cdedd75e1f257b44a9d4b533cc07fc7">Long2LongVectorMap</a></td></tr>
+<tr class="separator:a7cdedd75e1f257b44a9d4b533cc07fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97a6beb5487c8eae53f2e8c3a236c027"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; int64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#a97a6beb5487c8eae53f2e8c3a236c027">LongVector</a></td></tr>
+<tr class="separator:a97a6beb5487c8eae53f2e8c3a236c027"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3eaa8309455295e3b51522ed5317655"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; double, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#ae3eaa8309455295e3b51522ed5317655">PDI</a></td></tr>
 <tr class="separator:ae3eaa8309455295e3b51522ed5317655"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d8175843356b1f39f675496e6bb9510"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="src_2BiDirAStar_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5">LongVector</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#a7d8175843356b1f39f675496e6bb9510">VectorOfLongVector</a></td></tr>
+<tr class="memitem:a7d8175843356b1f39f675496e6bb9510"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BiDirDijkstra_8h.html#a7d8175843356b1f39f675496e6bb9510">VectorOfLongVector</a></td></tr>
 <tr class="separator:a7d8175843356b1f39f675496e6bb9510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -216,12 +218,12 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a8b3461bd01ca3081dab8246818d5dc04"></a>
+<a class="anchor" id="af38d29b0440a0a37efbc7dfaf92fb925"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::map&lt;long,long&gt; <a class="el" href="src_2BiDirAStar_8h.html#a8b3461bd01ca3081dab8246818d5dc04">Long2LongMap</a></td>
+          <td class="memname">typedef std::map&lt;int64_t,int64_t&gt; <a class="el" href="src_2BiDirAStar_8h.html#aaed92092d40a1e010be2421479fbafca">Long2LongMap</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -230,12 +232,12 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae9033d9b3008f9595da6c865fa7fa86a"></a>
+<a class="anchor" id="a7cdedd75e1f257b44a9d4b533cc07fc7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::map&lt;long,<a class="el" href="src_2BiDirAStar_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5">LongVector</a>&gt; <a class="el" href="src_2BiDirAStar_8h.html#ae9033d9b3008f9595da6c865fa7fa86a">Long2LongVectorMap</a></td>
+          <td class="memname">typedef std::map&lt;int64_t,<a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a>&gt; <a class="el" href="src_2BiDirAStar_8h.html#a556e9f82da7e728ae8d740a0af550f19">Long2LongVectorMap</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -244,12 +246,12 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2fbe624f0e2d5ce71ddcd2c1a25ed7d5"></a>
+<a class="anchor" id="a97a6beb5487c8eae53f2e8c3a236c027"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::vector&lt;long&gt; <a class="el" href="src_2BiDirAStar_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5">LongVector</a></td>
+          <td class="memname">typedef std::vector&lt;int64_t&gt; <a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -277,7 +279,7 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::vector&lt;<a class="el" href="src_2BiDirAStar_8h.html#a2fbe624f0e2d5ce71ddcd2c1a25ed7d5">LongVector</a>&gt; <a class="el" href="src_2BiDirAStar_8h.html#a7d8175843356b1f39f675496e6bb9510">VectorOfLongVector</a></td>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a>&gt; <a class="el" href="src_2BiDirAStar_8h.html#a7d8175843356b1f39f675496e6bb9510">VectorOfLongVector</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -292,7 +294,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d45295a976849345696ae19e8e628fab.html">bd_dijkstra</a></li><li class="navelem"><a class="el" href="dir_0e0fe66032089d7666222c320889d144.html">src</a></li><li class="navelem"><a class="el" href="BiDirDijkstra_8h.html">BiDirDijkstra.h</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

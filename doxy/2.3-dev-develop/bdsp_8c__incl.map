@@ -1,7 +1,7 @@
 <map id="bdsp.c" name="bdsp.c">
-<area shape="rect" id="node2" href="$bdsp_8h.html" title="bdsp.h" alt="" coords="33,88,95,115"/>
-<area shape="rect" id="node3" href="$pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="5,171,144,213"/>
-<area shape="rect" id="node4" href="$postgres_8h.html" title="postgres.h" alt="" coords="141,261,223,288"/>
-<area shape="rect" id="node10" href="$debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="601,81,759,122"/>
-<area shape="rect" id="node11" href="$postgres__connection_8h.html" title="../../common/src/postgres\l_connection.h" alt="" coords="783,81,955,122"/>
+<area shape="rect" id="node2" href="$postgres_8h.html" title="postgres.h" alt="" coords="555,261,636,288"/>
+<area shape="rect" id="node7" href="$bdsp__driver_8h.html" title="bdsp_driver.h" alt="" coords="866,88,965,115"/>
+<area shape="rect" id="node8" href="$pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="634,171,773,213"/>
+<area shape="rect" id="node10" href="$debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="684,81,841,122"/>
+<area shape="rect" id="node11" href="$postgres__connection_8h.html" title="../../common/src/postgres\l_connection.h" alt="" coords="5,81,176,122"/>
 </map>

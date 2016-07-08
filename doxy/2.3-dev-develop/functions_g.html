@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -82,6 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
@@ -98,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_h.html#index_h"><span>h</span></a></li>
       <li><a href="functions_i.html#index_i"><span>i</span></a></li>
       <li><a href="functions_j.html#index_j"><span>j</span></a></li>
+      <li><a href="functions_k.html#index_k"><span>k</span></a></li>
       <li><a href="functions_l.html#index_l"><span>l</span></a></li>
       <li><a href="functions_m.html#index_m"><span>m</span></a></li>
       <li><a href="functions_n.html#index_n"><span>n</span></a></li>
@@ -163,6 +166,9 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 <li>get_edge_id()
 : <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a08065fdaf327fcea4c7a5f8537e856de">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
+<li>get_first_order()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__pickDeliver.html#aa3a7ce437f62c8ab1c17f1d135431b6b">pgRouting::vrp::Vehicle_pickDeliver</a>
+</li>
 <li>get_id()
 : <a class="el" href="classpgRouting_1_1tsp_1_1Dmatrix.html#a21b140c24f90c45e85e9cb4a021ae28f">pgRouting::tsp::Dmatrix</a>
 , <a class="el" href="classpgRouting_1_1tsp_1_1eucledianDmatrix.html#a905b71dd5ca29aec91aaf20ebd406457">pgRouting::tsp::eucledianDmatrix</a>
@@ -173,12 +179,13 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 </li>
 <li>get_log()
 : <a class="el" href="classpgRouting_1_1tsp_1_1TSP.html#afd58bb4303907bce5d87fb4bce85b6b0">pgRouting::tsp::TSP&lt; MATRIX &gt;</a>
+, <a class="el" href="classpgRouting_1_1vrp_1_1Pgr__pickDeliver.html#ad72a036d8ae474c0aee7b438b4e35ed9">pgRouting::vrp::Pgr_pickDeliver</a>
 </li>
 <li>get_nodesInDistance()
 : <a class="el" href="classPgr__dijkstra.html#aaa56567a97ef9d86f2b693f350519ddb">Pgr_dijkstra&lt; G &gt;</a>
 </li>
 <li>get_path()
-: <a class="el" href="classPgr__astar.html#a24555b1a7745e6a6f4b35fe5fcbdb071">Pgr_astar&lt; G &gt;</a>
+: <a class="el" href="classPgr__astar.html#aa2594675d72b1133221c1bdb5223eba2">Pgr_astar&lt; G &gt;</a>
 , <a class="el" href="classPgr__dijkstra.html#a8bf86b02be4930850e9930eda13e672f">Pgr_dijkstra&lt; G &gt;</a>
 </li>
 <li>get_pg_dd_path()
@@ -186,6 +193,11 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 </li>
 <li>get_pg_ksp_path()
 : <a class="el" href="classPath.html#a41e7ec521ecff8c58aa091a7e1bfe0aa">Path</a>
+</li>
+<li>get_postgres_result()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Pgr__pickDeliver.html#ac46541d19867f96c2b88f45dfad6bec7">pgRouting::vrp::Pgr_pickDeliver</a>
+, <a class="el" href="classpgRouting_1_1vrp_1_1Solution.html#a6f87f973fe8e667308ecbe1ab628b1b8">pgRouting::vrp::Solution</a>
+, <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#a47da0f2aa3d183a8bc3841e8840b7f13">pgRouting::vrp::Vehicle</a>
 </li>
 <li>get_row()
 : <a class="el" href="classpgRouting_1_1tsp_1_1Dmatrix.html#a3de16b6e01c08311cdccb5f23e7496b1">pgRouting::tsp::Dmatrix</a>
@@ -206,8 +218,8 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 <li>get_V()
 : <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#aecc548ffc7016b4fc986035aaf1ef52b">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
-<li>getBestofNeighborhood()
-: <a class="el" href="classSolution.html#ab8f671c8b32ee4a6ea785a7971c29839">Solution</a>
+<li>get_worse_order()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__pickDeliver.html#a988319e500afa15b5991c14886db827c">pgRouting::vrp::Vehicle_pickDeliver</a>
 </li>
 <li>getCapacity()
 : <a class="el" href="classCVehicleInfo.html#a3c3150763111607a262107b73eb8518c">CVehicleInfo</a>
@@ -222,7 +234,6 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 </li>
 <li>getCost()
 : <a class="el" href="classCTourInfo.html#ad4a04aa9fee7710c4e0d612a2bfa5912">CTourInfo</a>
-, <a class="el" href="classSolution.html#a7ccd13db94d48f155ee94328155ff773">Solution</a>
 </li>
 <li>getCostForInsert()
 : <a class="el" href="classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd">CVRPSolver</a>
@@ -303,6 +314,12 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 <li>getOrderVector()
 : <a class="el" href="classCTourInfo.html#a88edb80bf3bda693a25d11c1344ae97e">CTourInfo</a>
 </li>
+<li>getPosHighLimit()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#a5999cb1f6e0de33b5ee5b76a40b5caf6">pgRouting::vrp::Vehicle</a>
+</li>
+<li>getPosLowLimit()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#af359bf0d92d525363660e1eba840aac2">pgRouting::vrp::Vehicle</a>
+</li>
 <li>getPotentialInsert()
 : <a class="el" href="classCVRPSolver.html#a5b10d0f2c9419070b8463c2b1dd82b03">CVRPSolver</a>
 </li>
@@ -333,7 +350,7 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 : <a class="el" href="classPath.html#ac9db12aac6bf4f045a25c3fd1e70fd20">Path</a>
 </li>
 <li>getToken()
-: <a class="el" href="classStringTokenizer.html#ae7058708a583bb12e06e9d9efb9f23ec">StringTokenizer</a>
+: <a class="el" href="classStringTokenizer.html#a49a83cbdea62db7963f10ec458a6fc2f">StringTokenizer</a>
 </li>
 <li>getTokenCount()
 : <a class="el" href="classStringTokenizer.html#a54bc919376624b02b0454fe174bb4be5">StringTokenizer</a>
@@ -383,9 +400,6 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 <li>getVehicleUsed()
 : <a class="el" href="classCSolutionInfo.html#adc2d268c140973cacb116ba15f1984eb">CSolutionInfo</a>
 </li>
-<li>given_vehicles
-: <a class="el" href="structVehicle.html#a1b639bf7e1d941da54c6ff06024e9ca4">Vehicle</a>
-</li>
 <li>graceful_quit_
 : <a class="el" href="classSIGINT__Handler.html#a1e13a33ac6a64d3f8bb52075d17790c1">SIGINT_Handler</a>
 </li>
@@ -396,10 +410,10 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 : <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#afdc031a9678782ab0634f989e3c4bf55">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
 <li>graph_add_edge()
-: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3362692d8c73b5825110e196ad73ef75">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a0af0f692688f5f78c4286d82f7f2b6a5">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
 <li>graph_insert_data()
-: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3319e904c931e866ccdcd0750aec0b18">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a153f4d87bfdc45400d16bd0747eba113">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
 <li>GraphDefinition()
 : <a class="el" href="classGraphDefinition.html#a1a52674bfcc9c2d32c6f3f7c56268897">GraphDefinition</a>
@@ -422,7 +436,7 @@ $(document).ready(function(){initNavTree('functions_g.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:28 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

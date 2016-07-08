@@ -2,8 +2,10 @@ var pgr__types_8h =
 [
     [ "Column_info_t", "structColumn__info__t.html", "structColumn__info__t" ],
     [ "Coordinate_t", "structCoordinate__t.html", "structCoordinate__t" ],
+    [ "Customer_t", "structCustomer__t.html", "structCustomer__t" ],
     [ "edge_astar", "structedge__astar.html", "structedge__astar" ],
     [ "General_path_element_t", "structGeneral__path__element__t.html", "structGeneral__path__element__t" ],
+    [ "General_vehicle_orders_t", "structGeneral__vehicle__orders__t.html", "structGeneral__vehicle__orders__t" ],
     [ "matrix_cell", "structmatrix__cell.html", "structmatrix__cell" ],
     [ "path_element_t", "structpath__element__t.html", "structpath__element__t" ],
     [ "Path_t", "structPath__t.html", "structPath__t" ],

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -143,70 +144,69 @@ $(document).ready(function(){initNavTree('test__matrixRows__driver_8cpp_source.h
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="test__matrixRows__driver_8h.html">./test_matrixRows_driver.h</a>&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="test__matrixRows__driver_8cpp.html#ad72dbcf6d0153db1b8d8a58001feed83">   43</a></span>&#160;<span class="preprocessor">#define DEBUG</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_assert.h&quot;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="test__matrixRows__driver_8h.html#a34520c6b86d3d8cf75b8f42fdea9aefb">   47</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="test__matrixRows__driver_8cpp.html#a34520c6b86d3d8cf75b8f42fdea9aefb">do_pgr_test_matrixRows</a>(</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> *matrix_rows,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">size_t</span> total_rows,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">char</span> ** log_msg,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>){</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::ostringstream log;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::ostringstream err;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*log_msg));</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*err_msg));</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        std::vector&lt; Matrix_cell_t &gt; matrix(matrix_rows, matrix_rows + total_rows);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Original: \n&quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            std::setprecision(32);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> row: matrix) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;start_vid = &quot;</span> &lt;&lt; row.from_vid</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\tend_vid = &quot;</span> &lt;&lt; row.to_vid</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\tagg_cost = &quot;</span> &lt;&lt; row.cost;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        *err_msg = NULL;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        log &lt;&lt; exept.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; exept) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        log &lt;&lt; exept.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!\n&quot;</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="test__matrixRows__driver_8h.html">./test_matrixRows_driver.h</a>&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="test__matrixRows__driver_8cpp.html#ad72dbcf6d0153db1b8d8a58001feed83">   42</a></span>&#160;<span class="preprocessor">#define DEBUG</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_assert.h&quot;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="test__matrixRows__driver_8h.html#a34520c6b86d3d8cf75b8f42fdea9aefb">   46</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="test__matrixRows__driver_8cpp.html#a34520c6b86d3d8cf75b8f42fdea9aefb">do_pgr_test_matrixRows</a>(</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> *matrix_rows,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">size_t</span> total_rows,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">char</span> ** log_msg,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>){</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::ostringstream log;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::ostringstream err;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*log_msg));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a>(!(*err_msg));</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        std::vector&lt; Matrix_cell_t &gt; matrix(matrix_rows, matrix_rows + total_rows);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Original: \n&quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            std::setprecision(32);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> row: matrix) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;start_vid = &quot;</span> &lt;&lt; row.from_vid</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\tend_vid = &quot;</span> &lt;&lt; row.to_vid</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\tagg_cost = &quot;</span> &lt;&lt; row.cost;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        *err_msg = NULL;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        log &lt;&lt; exept.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; exept) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        log &lt;&lt; exept.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!\n&quot;</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 <div class="ttc" id="classAssertFailedException_html"><div class="ttname"><a href="classAssertFailedException.html">AssertFailedException</a></div><div class="ttdoc">Extends std::exception and is the exception that we throw if an assert fails. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00109">pgr_assert.h:109</a></div></div>
 <div class="ttc" id="test__matrixRows__driver_8h_html"><div class="ttname"><a href="test__matrixRows__driver_8h.html">test_matrixRows_driver.h</a></div></div>
 <div class="ttc" id="pgr__assert_8h_html_a09250239ca707f56bc1bbfdd04a635b1"><div class="ttname"><a href="pgr__assert_8h.html#a09250239ca707f56bc1bbfdd04a635b1">pgassert</a></div><div class="ttdeci">#define pgassert(expr)</div><div class="ttdoc">Uses the standard assert syntax. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00081">pgr_assert.h:81</a></div></div>
 <div class="ttc" id="structmatrix__cell_html"><div class="ttname"><a href="structmatrix__cell.html">matrix_cell</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00126">pgr_types.h:126</a></div></div>
 <div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00062">pgr_assert.cpp:62</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
-<div class="ttc" id="test__matrixRows__driver_8cpp_html_a34520c6b86d3d8cf75b8f42fdea9aefb"><div class="ttname"><a href="test__matrixRows__driver_8cpp.html#a34520c6b86d3d8cf75b8f42fdea9aefb">do_pgr_test_matrixRows</a></div><div class="ttdeci">bool do_pgr_test_matrixRows(Matrix_cell_t *matrix_rows, size_t total_rows, char **log_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="test__matrixRows__driver_8cpp_source.html#l00047">test_matrixRows_driver.cpp:47</a></div></div>
+<div class="ttc" id="test__matrixRows__driver_8cpp_html_a34520c6b86d3d8cf75b8f42fdea9aefb"><div class="ttname"><a href="test__matrixRows__driver_8cpp.html#a34520c6b86d3d8cf75b8f42fdea9aefb">do_pgr_test_matrixRows</a></div><div class="ttdeci">bool do_pgr_test_matrixRows(Matrix_cell_t *matrix_rows, size_t total_rows, char **log_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="test__matrixRows__driver_8cpp_source.html#l00046">test_matrixRows_driver.cpp:46</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_07f79e339d2fb7fe8819c7acbc73ea87.html">internalQueryTests</a></li><li class="navelem"><a class="el" href="dir_024f5e92469607c1339aa02feb5755cf.html">src</a></li><li class="navelem"><a class="el" href="test__matrixRows__driver_8cpp.html">test_matrixRows_driver.cpp</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

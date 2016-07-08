@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -145,7 +146,7 @@ $(document).ready(function(){initNavTree('get__check__data_8c_source.html','');}
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">char</span>*</div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="get__check__data_8h.html#ad4fe39997ec8c8c721fa01864d1df6d5">   37</a></span>&#160;<a class="code" href="get__check__data_8c.html#ad4fe39997ec8c8c721fa01864d1df6d5">pgr_stradd</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a> = strlen(a) + strlen(b);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">size_t</span> len = strlen(a) + strlen(b);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">char</span> *ret = (<span class="keywordtype">char</span>*)malloc(len * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) + 1);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    *ret = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> strcat(strcat(ret, a), b);</div>
@@ -348,7 +349,6 @@ $(document).ready(function(){initNavTree('get__check__data_8c_source.html','');}
 <div class="ttc" id="get__check__data_8c_html_ad4fe39997ec8c8c721fa01864d1df6d5"><div class="ttname"><a href="get__check__data_8c.html#ad4fe39997ec8c8c721fa01864d1df6d5">pgr_stradd</a></div><div class="ttdeci">char * pgr_stradd(const char *a, const char *b)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00037">get_check_data.c:37</a></div></div>
 <div class="ttc" id="pgr__types_8h_html_a5bc91ed782fe6c30eaf15fe73b4474bba9a4a47c1606e295076055a9cc4373197"><div class="ttname"><a href="pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bba9a4a47c1606e295076055a9cc4373197">TEXT</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00156">pgr_types.h:156</a></div></div>
 <div class="ttc" id="structColumn__info__t_html_aabe9ce1c2584f121ef9886ae81bfb748"><div class="ttname"><a href="structColumn__info__t.html#aabe9ce1c2584f121ef9886ae81bfb748">Column_info_t::type</a></div><div class="ttdeci">uint64_t type</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00163">pgr_types.h:163</a></div></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_afed088663f8704004425cdae2120b9b3"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a></div><div class="ttdeci">int len</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00076">vrppdtw/src/pdp_solver.cpp:76</a></div></div>
 <div class="ttc" id="tsplib_8c_html_aa4c2a5552e9bc49b1816ff532f558c74"><div class="ttname"><a href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a></div><div class="ttdeci">static int a</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00114">tsplib.c:114</a></div></div>
 <div class="ttc" id="get__check__data_8h_html"><div class="ttname"><a href="get__check__data_8h.html">get_check_data.h</a></div></div>
 <div class="ttc" id="structColumn__info__t_html_ac166599b0a83f7da1a40e75cc1a955b9"><div class="ttname"><a href="structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9">Column_info_t::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00165">pgr_types.h:165</a></div></div>
@@ -374,7 +374,7 @@ $(document).ready(function(){initNavTree('get__check__data_8c_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="get__check__data_8c.html">get_check_data.c</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:26 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

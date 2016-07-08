@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_textToPoints &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>pgr_textToPoints - Deprecated Function &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (develop)',
+        VERSION:     '2.3.0 (rewrite/vrppdtw)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,46 +25,44 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
-    <link rel="up" title="Convenience Functions" href="convenience.html" />
-    <link rel="next" title="pgr_pointsToVids" href="pgr_pointsToVids.html" />
-    <link rel="prev" title="pgr_pointToEdgeNode" href="pgr_pointToEdgeNode.html" /> 
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../../../index.html" />
+    <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
+    <link rel="next" title="pgr_apspJohnson - Deprecated function" href="../../apsp_johnson/doc/pgr_apspJohnson.html" />
+    <link rel="prev" title="pgr_pointsToDMatrix - Deprecated Function" href="pgr_pointsToDMatrix.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
-        <h2 class="heading"><span>pgr_textToPoints</span></h2>
+          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
+        <h2 class="heading"><span>pgr_textToPoints - Deprecated Function</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_pointToEdgeNode.html">pgr_pointToEdgeNode</a>
+        «&#160;&#160;<a href="pgr_pointsToDMatrix.html">pgr_pointsToDMatrix - Deprecated Function</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_pointsToVids.html">pgr_pointsToVids</a>&#160;&#160;»
+        <a href="../../apsp_johnson/doc/pgr_apspJohnson.html">pgr_apspJohnson - Deprecated function</a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content">
         
         
-  <div class="section" id="pgr-texttopoints">
-<span id="pgr-text-to-points"></span><h1>pgr_textToPoints<a class="headerlink" href="#pgr-texttopoints" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-texttopoints-deprecated-function">
+<span id="pgr-text-to-points"></span><h1>pgr_textToPoints - Deprecated Function<a class="headerlink" href="#pgr-texttopoints-deprecated-function" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This function is deprecated!!!</p>
+<ul class="last simple">
+<li>Is no longer supported.</li>
+<li>May be removed from future versions.</li>
+<li>There is no replacement.</li>
+</ul>
+</div>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_textToPoints</span></tt> - Converts a text string of the format &#8220;x,y;x,y;x,y;...&#8221; into and array of point geometries.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>This is a deprecated function</p>
-<ul class="last simple">
-<li>Is not officially in the release.</li>
-<li>Name could change.</li>
-<li>Signature could change.</li>
-<li>Needs testing.</li>
-<li>Functionality could change.</li>
-</ul>
-</div>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -115,8 +113,8 @@ NOTICE:  Deperecated function: pgr_textToPoints
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode</em></a> - convert a point geometry to a <tt class="docutils literal"><span class="pre">node_id</span></tt> based on closest edge.</li>
-<li><a class="reference internal" href="pgr_pointsToVids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a> - convert an array of point geometries into vertex ids.</li>
+<li><a class="reference internal" href="pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode</em></a></li>
+<li><a class="reference internal" href="pgr_pointsToVids.html#pgr-points-to-vids"><em>pgr_pointsToVids</em></a></li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -131,18 +129,18 @@ NOTICE:  Deperecated function: pgr_textToPoints
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_pointToEdgeNode.html">pgr_pointToEdgeNode</a>
+        «&#160;&#160;<a href="pgr_pointsToDMatrix.html">pgr_pointsToDMatrix - Deprecated Function</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_pointsToVids.html">pgr_pointsToVids</a>&#160;&#160;»
+        <a href="../../apsp_johnson/doc/pgr_apspJohnson.html">pgr_apspJohnson - Deprecated function</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 21, 2016.
+      Last updated on Jul 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

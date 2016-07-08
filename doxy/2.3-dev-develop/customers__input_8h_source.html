@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -109,7 +110,7 @@ $(document).ready(function(){initNavTree('customers__input_8h_source.html','');}
 </div><!--header-->
 <div class="contents">
 <a href="customers__input_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*PGR-GNU*****************************************************************</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">File: edges_input.h</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">File: customers_input.h</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Copyright (c) 2015 Celia Virginia Vergara Castillo</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">vicky_vergara@hotmail.com</span></div>
@@ -130,29 +131,26 @@ $(document).ready(function(){initNavTree('customers__input_8h_source.html','');}
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">along with this program; if not, write to the Free Software</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> ********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__types_8h.html">./pgr_types.h</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pickDeliver_2src_2pdp_8h.html">./pdp.h</a>&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="customers__input_8h.html#a9ceeea7100363103d7a1d2fd9a02a7f9">pgr_get_customers</a>(</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">char</span> *sql,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="structCustomer.html">Customer</a> **customers,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">size_t</span> *total_customers);</div>
-<div class="ttc" id="customers__input_8h_html_a9ceeea7100363103d7a1d2fd9a02a7f9"><div class="ttname"><a href="customers__input_8h.html#a9ceeea7100363103d7a1d2fd9a02a7f9">pgr_get_customers</a></div><div class="ttdeci">void pgr_get_customers(char *sql, Customer **customers, size_t *total_customers)</div><div class="ttdoc">int64_t id; double x; double y; double demand; double Etime; double Ltime; double Stime; int64_t Pind...</div><div class="ttdef"><b>Definition:</b> <a href="customers__input_8c_source.html#l00055">customers_input.c:55</a></div></div>
-<div class="ttc" id="pickDeliver_2src_2pdp_8h_html"><div class="ttname"><a href="pickDeliver_2src_2pdp_8h.html">pdp.h</a></div></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="customers__input_8h.html#aba94bfaedd66a6c519b263b6497b3a9a">pgr_get_customers_data</a>(</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">char</span> *customers_sql,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="structCustomer__t.html">Customer_t</a> **customers,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">size_t</span> *total_customers);</div>
+<div class="ttc" id="structCustomer__t_html"><div class="ttname"><a href="structCustomer__t.html">Customer_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00175">pgr_types.h:175</a></div></div>
+<div class="ttc" id="customers__input_8h_html_aba94bfaedd66a6c519b263b6497b3a9a"><div class="ttname"><a href="customers__input_8h.html#aba94bfaedd66a6c519b263b6497b3a9a">pgr_get_customers_data</a></div><div class="ttdeci">void pgr_get_customers_data(char *customers_sql, Customer_t **customers, size_t *total_customers)</div><div class="ttdef"><b>Definition:</b> <a href="customers__input_8c_source.html#l00056">customers_input.c:56</a></div></div>
 <div class="ttc" id="pgr__types_8h_html"><div class="ttname"><a href="pgr__types_8h.html">pgr_types.h</a></div></div>
-<div class="ttc" id="structCustomer_html"><div class="ttname"><a href="structCustomer.html">Customer</a></div><div class="ttdef"><b>Definition:</b> <a href="pickDeliver_2src_2pdp_8h_source.html#l00033">pickDeliver/src/pdp.h:33</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><a class="el" href="customers__input_8h.html">customers_input.h</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:26 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

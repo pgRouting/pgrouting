@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -82,6 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
@@ -98,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_h.html#index_h"><span>h</span></a></li>
       <li><a href="functions_i.html#index_i"><span>i</span></a></li>
       <li><a href="functions_j.html#index_j"><span>j</span></a></li>
+      <li><a href="functions_k.html#index_k"><span>k</span></a></li>
       <li><a href="functions_l.html#index_l"><span>l</span></a></li>
       <li><a href="functions_m.html#index_m"><span>m</span></a></li>
       <li><a href="functions_n.html#index_n"><span>n</span></a></li>
@@ -196,11 +199,11 @@ $(document).ready(function(){initNavTree('functions.html','');});
 , <a class="el" href="structPath__t.html#a4b0555b6ae7d83d981fe59ed971029ae">Path_t</a>
 , <a class="el" href="structRoutes__t.html#a75b0f3f7ade66580346bb41124d15644">Routes_t</a>
 </li>
+<li>all_orders
+: <a class="el" href="classpgRouting_1_1vrp_1_1Initial__solution.html#a7cf26f4c6dce981b09862a4558c4b52c">pgRouting::vrp::Initial_solution</a>
+</li>
 <li>annealing()
 : <a class="el" href="classpgRouting_1_1tsp_1_1TSP.html#a48e863a4039777e203139b40b8ac5660">pgRouting::tsp::TSP&lt; MATRIX &gt;</a>
-</li>
-<li>append()
-: <a class="el" href="classRoute.html#a2fb53dea8b38b61e63500668e7cfdfeb">Route</a>
 </li>
 <li>appendPath()
 : <a class="el" href="classPath.html#a9cb45e3a413a03f1c4224b840af1fe83">Path</a>
@@ -208,11 +211,27 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>applyBestMoveInCurrentSolution()
 : <a class="el" href="classCVRPSolver.html#ad67d3350e6f6731388906a4309d2fdb3">CVRPSolver</a>
 </li>
-<li>arrival_time
-: <a class="el" href="structvrp__result__element.html#ab5ac5e6c44ef6c9c035322a1e29fbf95">vrp_result_element</a>
+<li>arrival_i_arrives_j()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__node.html#aecf255ccdd77d662f695ad7db9fb6156">pgRouting::vrp::Vehicle_node</a>
+</li>
+<li>arrival_j_closes_i()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Tw__node.html#ad3cac6001b109f653a4ae7bf6e0289af">pgRouting::vrp::Tw_node</a>
+</li>
+<li>arrival_j_opens_i()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Tw__node.html#abc9f581a8e86260f7ef0210d6a7f0cb1">pgRouting::vrp::Tw_node</a>
+</li>
+<li>arrival_time()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__node.html#a963ea97f5c3c7d6ff5fac5d8579095b4">pgRouting::vrp::Vehicle_node</a>
+, <a class="el" href="structvrp__result__element.html#ab5ac5e6c44ef6c9c035322a1e29fbf95">vrp_result_element</a>
+</li>
+<li>arrivalTime
+: <a class="el" href="structGeneral__vehicle__orders__t.html#a52c7ea7b69381ea76a8306c7dbbb2758">General_vehicle_orders_t</a>
 </li>
 <li>AssertFailedException()
 : <a class="el" href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">AssertFailedException</a>
+</li>
+<li>assigned
+: <a class="el" href="classpgRouting_1_1vrp_1_1Initial__solution.html#a88577bdd6e4dc74f2260436915b2e586">pgRouting::vrp::Initial_solution</a>
 </li>
 <li>astar()
 : <a class="el" href="classPgr__astar.html#a240ff6167d33c2d63e595c75dadeead1">Pgr_astar&lt; G &gt;</a>
@@ -241,7 +260,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

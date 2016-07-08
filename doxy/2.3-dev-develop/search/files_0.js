@@ -1,8 +1,8 @@
 var searchData=
 [
   ['alpha_2ec',['alpha.c',['../alpha_8c.html',1,'']]],
-  ['alpha_2eh',['alpha.h',['../alpha_8h.html',1,'']]],
-  ['alpha_5fdrivedist_2ecpp',['alpha_drivedist.cpp',['../alpha__drivedist_8cpp.html',1,'']]],
+  ['alpha_5fdriver_2ecpp',['alpha_driver.cpp',['../alpha__driver_8cpp.html',1,'']]],
+  ['alpha_5fdriver_2eh',['alpha_driver.h',['../alpha__driver_8h.html',1,'']]],
   ['arrays_5finput_2ec',['arrays_input.c',['../arrays__input_8c.html',1,'']]],
   ['arrays_5finput_2eh',['arrays_input.h',['../arrays__input_8h.html',1,'']]],
   ['astarmanytomany_2ec',['astarManyToMany.c',['../astarManyToMany_8c.html',1,'']]],

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -132,16 +133,16 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="postgres_8h.html">postgres.h</a>&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;executor/spi.h&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;funcapi.h&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;catalog/pg_type.h&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#if PGSQL_VERSION &gt; 92</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;access/htup_details.h&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="alpha_8h.html">alpha.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="postgres_8h.html">postgres.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;executor/spi.h&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;funcapi.h&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;catalog/pg_type.h&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if PGSQL_VERSION &gt; 92</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;access/htup_details.h&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="alpha__driver_8h.html">alpha_driver.h</a>&quot;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;fmgr.h&quot;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
@@ -349,7 +350,7 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Calling CGAL alpha-shape\n&quot;</span>);</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  ret = <a class="code" href="alpha_8h.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a>(vertices, total_tuples, alpha, res, res_count, &amp;err_msg);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  ret = <a class="code" href="alpha__driver_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a>(vertices, total_tuples, alpha, res, res_count, &amp;err_msg);</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordflow">if</span> (ret &lt; 0)</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    {</div>
@@ -484,17 +485,16 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;}</div>
 <div class="ttc" id="structvertex__columns_html_af6b920645f2544a029fbe6c1d31498c1"><div class="ttname"><a href="structvertex__columns.html#af6b920645f2544a029fbe6c1d31498c1">vertex_columns::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00083">alpha.c:83</a></div></div>
-<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00032">alpha.h:32</a></div></div>
-<div class="ttc" id="structvertex_html_a8b9f211498390a67c369fd43f3722a19"><div class="ttname"><a href="structvertex.html#a8b9f211498390a67c369fd43f3722a19">vertex::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00035">alpha.h:35</a></div></div>
+<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00032">alpha_driver.h:32</a></div></div>
+<div class="ttc" id="structvertex_html_a8b9f211498390a67c369fd43f3722a19"><div class="ttname"><a href="structvertex.html#a8b9f211498390a67c369fd43f3722a19">vertex::y</a></div><div class="ttdeci">double y</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00035">alpha_driver.h:35</a></div></div>
 <div class="ttc" id="alpha_8c_html_adbf69d62298e4d47f81c749cebaad544"><div class="ttname"><a href="alpha_8c.html#adbf69d62298e4d47f81c749cebaad544">finish</a></div><div class="ttdeci">static int finish(int code, int ret)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00067">alpha.c:67</a></div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
 <div class="ttc" id="alpha_8c_html_aa06bd1facff6ef040f510e2eb7c69257"><div class="ttname"><a href="alpha_8c.html#aa06bd1facff6ef040f510e2eb7c69257">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(alphashape)</div></div>
 <div class="ttc" id="structvertex__columns_html"><div class="ttname"><a href="structvertex__columns.html">vertex_columns</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00079">alpha.c:79</a></div></div>
-<div class="ttc" id="alpha_8h_html_a64fca5dabc4ad9db224e524a154bbff1"><div class="ttname"><a href="alpha_8h.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a></div><div class="ttdeci">int alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00195">alpha_drivedist.cpp:195</a></div></div>
 <div class="ttc" id="alpha_8c_html_aae005778b70e07968ac950c42a4ff58e"><div class="ttname"><a href="alpha_8c.html#aae005778b70e07968ac950c42a4ff58e">fetch_vertices_columns</a></div><div class="ttdeci">static int fetch_vertices_columns(SPITupleTable *tuptable, vertex_columns_t *vertex_columns)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00090">alpha.c:90</a></div></div>
 <div class="ttc" id="alpha_8c_html_ad02862c5f625c4a429bbfe0596c93c76"><div class="ttname"><a href="alpha_8c.html#ad02862c5f625c4a429bbfe0596c93c76">fetch_vertex</a></div><div class="ttdeci">static void fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc, vertex_columns_t *vertex_columns, vertex_t *target_vertex)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00119">alpha.c:119</a></div></div>
+<div class="ttc" id="alpha__driver_8h_html"><div class="ttname"><a href="alpha__driver_8h.html">alpha_driver.h</a></div></div>
 <div class="ttc" id="dijkstra_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00047">dijkstra.h:47</a></div></div>
-<div class="ttc" id="alpha_8h_html"><div class="ttname"><a href="alpha_8h.html">alpha.h</a></div></div>
 <div class="ttc" id="structvertex__columns_html_a0c582ef5b2f2c44c8cbf6b89ebc8d183"><div class="ttname"><a href="structvertex__columns.html#a0c582ef5b2f2c44c8cbf6b89ebc8d183">vertex_columns::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00082">alpha.c:82</a></div></div>
 <div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
 <div class="ttc" id="alpha_8c_html_a0938455e5ec9df9cd6255f4fcc04162b"><div class="ttname"><a href="alpha_8c.html#a0938455e5ec9df9cd6255f4fcc04162b">TUPLIMIT</a></div><div class="ttdeci">#define TUPLIMIT</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00054">alpha.c:54</a></div></div>
@@ -504,14 +504,15 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="ttc" id="alpha_8c_html_a8745898afb7409587ee98f384ee40a39"><div class="ttname"><a href="alpha_8c.html#a8745898afb7409587ee98f384ee40a39">text2char</a></div><div class="ttdeci">static char * text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00057">alpha.c:57</a></div></div>
 <div class="ttc" id="alpha_8c_html_a4f47c3e26aa156219529477b79343691"><div class="ttname"><a href="alpha_8c.html#a4f47c3e26aa156219529477b79343691">compute_alpha_shape</a></div><div class="ttdeci">static int compute_alpha_shape(char *sql, float8 alpha, vertex_t **res, size_t *res_count)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00136">alpha.c:136</a></div></div>
 <div class="ttc" id="alpha_8c_html_aa200d39cd021c4a008ece740a8bd88d1"><div class="ttname"><a href="alpha_8c.html#aa200d39cd021c4a008ece740a8bd88d1">alphashape</a></div><div class="ttdeci">Datum alphashape(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00258">alpha.c:258</a></div></div>
-<div class="ttc" id="structvertex_html_a11f52ec2e920d56500baefe5a2e2bba7"><div class="ttname"><a href="structvertex.html#a11f52ec2e920d56500baefe5a2e2bba7">vertex::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8h_source.html#l00034">alpha.h:34</a></div></div>
+<div class="ttc" id="alpha__driver_8cpp_html_a64fca5dabc4ad9db224e524a154bbff1"><div class="ttname"><a href="alpha__driver_8cpp.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a></div><div class="ttdeci">int alpha_shape(vertex_t *vertices, size_t count, double alpha, vertex_t **res, size_t *res_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00193">alpha_driver.cpp:193</a></div></div>
+<div class="ttc" id="structvertex_html_a11f52ec2e920d56500baefe5a2e2bba7"><div class="ttname"><a href="structvertex.html#a11f52ec2e920d56500baefe5a2e2bba7">vertex::x</a></div><div class="ttdeci">double x</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00034">alpha_driver.h:34</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha_8c.html">alpha.c</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:26 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

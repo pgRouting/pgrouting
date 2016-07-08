@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Proposed Functions for version 2.4 &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>Stable proposed Functions &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.3.0 (develop)',
+        VERSION:     '2.3.0 (rewrite/vrppdtw)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,50 +25,73 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../index.html" />
-    <link rel="next" title="Experimental and Proposed functions" href="proposed.html" />
-    <link rel="prev" title="pgr_withPointsDD" href="withPoints/doc/pgr_withPointsDD.html" /> 
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../index.html" />
+    <link rel="next" title="Cost Matrix" href="costMatrix/doc/costMatrix.html" />
+    <link rel="prev" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="trsp/doc/pgr_trsp.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
-        <h2 class="heading"><span>Proposed Functions for version 2.4</span></h2>
+          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
+        <h2 class="heading"><span>Stable proposed Functions</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="withPoints/doc/pgr_withPointsDD.html">pgr_withPointsDD</a>
+        «&#160;&#160;<a href="trsp/doc/pgr_trsp.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="proposed.html">Experimental and Proposed functions</a>&#160;&#160;»
+        <a href="costMatrix/doc/costMatrix.html">Cost Matrix</a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content">
         
         
-  <div class="section" id="proposed-functions-for-version-2-4">
-<span id="proposednext"></span><h1>Proposed Functions for version 2.4<a class="headerlink" href="#proposed-functions-for-version-2-4" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#proposednext"><em>Proposed Functions for version 2.4</em></a></p>
-<p>This are proposed functions for version 2.4.</p>
-<blockquote>
+  <div class="section" id="stable-proposed-functions">
+<span id="proposednext"></span><h1>Stable proposed Functions<a class="headerlink" href="#stable-proposed-functions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This are proposed functions for next mayor release.</p>
+<blockquote class="last">
 <div><ul class="simple">
-<li>They are not officially in the version 2.2 release.</li>
-<li>They will likely officialy be part of the version 2.4 release:<ul>
+<li>They are not officially in the current release.</li>
+<li>They will likely officialy be part of the next mayor release:<ul>
 <li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
 <li>Name might not change.</li>
-<li>Signature might not  change.</li>
+<li>Signature might not change.</li>
 <li>Functionality might not change.</li>
 <li>pgTap tests have being done.</li>
-<li>Needs feedback from the comunity.</li>
+<li>Documentation is finished.</li>
 </ul>
 </li>
 </ul>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">No current proposed functions</p>
+</div>
+<ul class="simple">
+<li>For TSP preprocessing<ul>
+<li><a class="reference internal" href="costMatrix/doc/costMatrix.html#costmatrix"><em>Cost Matrix</em></a><ul>
+<li><a class="reference internal" href="costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a> - Use pgr_dijkstra to calculate a cost matrix.</li>
+<li><a class="reference internal" href="costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>As part of the <a class="reference internal" href="dijkstra/doc/dijkstra.html#dijkstra"><em>Dijkstra - Family of functions</em></a><ul>
+<li><a class="reference internal" href="costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a> Use pgr_dijkstra to calculate a cost matrix.</li>
+<li><a class="reference internal" href="dijkstra/doc/pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia - Proposed</em></a> - Use pgr_dijkstra to make a route via vertices.</li>
+</ul>
+</li>
+<li>A new <a class="reference internal" href="withPoints/doc/withPoints.html#withpoints"><em>withPoints - Family of functions</em></a><ul>
+<li><a class="reference internal" href="withPoints/doc/pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints - Proposed</em></a> - Route from/to points anywhere on the graph.</li>
+<li><a class="reference internal" href="withPoints/doc/pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost - Proposed</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
+<li><a class="reference internal" href="withPoints/doc/pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP - Proposed</em></a> - K shortest paths with points.</li>
+<li><a class="reference internal" href="withPoints/doc/pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD - Proposed</em></a> - Driving distance.</li>
+</ul>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -77,18 +100,18 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="withPoints/doc/pgr_withPointsDD.html">pgr_withPointsDD</a>
+        «&#160;&#160;<a href="trsp/doc/pgr_trsp.html">pgr_trsp - Turn Restriction Shortest Path (TRSP)</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="proposed.html">Experimental and Proposed functions</a>&#160;&#160;»
+        <a href="costMatrix/doc/costMatrix.html">Cost Matrix</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jun 21, 2016.
+      Last updated on Jul 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

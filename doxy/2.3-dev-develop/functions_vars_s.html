@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -82,6 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li class="current"><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
@@ -108,6 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_vars_t.html#index_t"><span>t</span></a></li>
       <li><a href="functions_vars_u.html#index_u"><span>u</span></a></li>
       <li><a href="functions_vars_v.html#index_v"><span>v</span></a></li>
+      <li><a href="functions_vars_w.html#index_w"><span>w</span></a></li>
       <li><a href="functions_vars_x.html#index_x"><span>x</span></a></li>
       <li><a href="functions_vars_y.html#index_y"><span>y</span></a></li>
     </ul>
@@ -165,13 +168,14 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 </li>
 <li>seq
 : <a class="el" href="structGeneral__path__element__t.html#a418496a4d4cb1aa0724bd998f6c5ea40">General_path_element_t</a>
-, <a class="el" href="structpath__element.html#a827086bd768e8c898481ffd52dc45eb0">path_element</a>
-, <a class="el" href="structPathElement.html#a566b5c4760c368d5c3de49c274c77262">PathElement</a>
 , <a class="el" href="structpgr__path__t.html#ae91cb0c033647bd38c1b26fe8c06da9f">pgr_path_t</a>
 </li>
 <li>service_time
 : <a class="el" href="structorder__columns.html#a0aa9c51bd668964d93d8d2941cfeffd8">order_columns</a>
 , <a class="el" href="structvrp__orders.html#a56af6adba645c06026391967bd53876c">vrp_orders</a>
+</li>
+<li>serviceTime
+: <a class="el" href="structGeneral__vehicle__orders__t.html#ae3d128e43d4ad64ec58e887e71a05067">General_vehicle_orders_t</a>
 </li>
 <li>side
 : <a class="el" href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">Point_on_edge_t</a>
@@ -181,6 +185,9 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 </li>
 <li>slide_count
 : <a class="el" href="classpgRouting_1_1tsp_1_1TSP.html#aeae8dbf78d5a6a87a50fdafdcc6af5d8">pgRouting::tsp::TSP&lt; MATRIX &gt;</a>
+</li>
+<li>solutions
+: <a class="el" href="classpgRouting_1_1vrp_1_1Pgr__pickDeliver.html#a693becba78b3cf73830ae8d98a1fd22d">pgRouting::vrp::Pgr_pickDeliver</a>
 </li>
 <li>source
 : <a class="el" href="structEdge.html#adcf410ae923d69e22ede2cd59ee80108">Edge</a>
@@ -197,9 +204,6 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 </li>
 <li>special_distance
 : <a class="el" href="classpgRouting_1_1tsp_1_1eucledianDmatrix.html#aa89f2cc11b2a6075736c2b63727be8e3">pgRouting::tsp::eucledianDmatrix</a>
-</li>
-<li>speed
-: <a class="el" href="structVehicle.html#ace01102c5df95f408e0f14f4e3c29ee3">Vehicle</a>
 </li>
 <li>src_id
 : <a class="el" href="structdistance__columns.html#a5a06b8fd70093c7814ef75606fed3faa">distance_columns</a>
@@ -218,9 +222,7 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 : <a class="el" href="structGraphEdgeInfo.html#a44aab721b1ae5961791fffd36ffee7f1">GraphEdgeInfo</a>
 </li>
 <li>Stime
-: <a class="el" href="structCustomer.html#a4f65cb523a7fc453871c719c3af3d285">Customer</a>
-, <a class="el" href="structCustomer__type.html#a1674b20b040ca42616d8b4a9c31b484a">Customer_type</a>
-, <a class="el" href="structDepot.html#a8bcf205ba93f5214bfffc7df9fb79f96">Depot</a>
+: <a class="el" href="structCustomer__t.html#ace0996893809816651ae5cba309cc3d8">Customer_t</a>
 </li>
 <li>str
 : <a class="el" href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">AssertFailedException</a>
@@ -241,7 +243,7 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:28 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

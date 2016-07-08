@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -309,12 +310,12 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8cpp_source.html','');
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    int64_t start_pid = 0;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    int64_t end_pid = 0;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a> : points) {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>.vertex_id == start_vid) {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            start_pid = -<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>.pid;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : points) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> (p.vertex_id == start_vid) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            start_pid = -p.pid;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>.vertex_id == end_vid) {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            end_pid = -<a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>.pid;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">if</span> (p.vertex_id == end_vid) {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            end_pid = -p.pid;</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        }</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a>(points, start_pid, end_pid, path);</div>
@@ -536,7 +537,6 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8cpp_source.html','');
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    }</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;}</div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a42c4fbf7be7fec3bf7583c5f0e80bf4c"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a></div><div class="ttdeci">pickup * p</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00075">vrppdtw/src/pdp_solver.cpp:75</a></div></div>
 <div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00111">pgr_types.h:111</a></div></div>
 <div class="ttc" id="structedge_html_a004cd70e32ea3f6ce31d5318b46158bd"><div class="ttname"><a href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">edge::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00070">tester/BiDirAStar.h:70</a></div></div>
 <div class="ttc" id="structpgr__edge__t_html_aa6da5703357e969cde0799a23bfa67e5"><div class="ttname"><a href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">pgr_edge_t::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00116">pgr_types.h:116</a></div></div>
@@ -580,7 +580,7 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_db4188eb592e899b4ab759c326d3f65f.html">withPoints</a></li><li class="navelem"><a class="el" href="dir_8dc78dc14affe115084060e017054e86.html">src</a></li><li class="navelem"><a class="el" href="pgr__withPoints_8cpp.html">pgr_withPoints.cpp</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

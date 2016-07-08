@@ -9,7 +9,7 @@
 
 .. _pgr_withPoints:
 
-pgr_withPoints
+pgr_withPoints - Proposed
 ===============================================================================
 
 
@@ -18,9 +18,9 @@ Name
 
 ``pgr_withPoints`` - Returns the shortest path in a graph with additional temporary vertices.
 
-.. note::  This is a proposed function for version 2.3.
+.. note::  This is a proposed function
 
-     - Is not officially in the version 2.2 release.
+     - Is not officially in the release.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -81,7 +81,7 @@ Signatures
 -------------------
 
 .. index::
-    single: withPoints(Minimal Use) -- proposed in V2.2
+    single: withPoints(Minimal Use) - Proposed
 
 Minimal Use
 .....................................................................
@@ -104,7 +104,7 @@ The minimal signature:
    :end-before: --e2
 
 .. index::
-    single: withPoints(One to One) -- proposed in V2.2
+    single: withPoints(One to One) - Proposed
 
 One to One
 .....................................................................
@@ -126,7 +126,7 @@ One to One
 
 
 .. index::
-    single: withPoints(One to Many) -- proposed in V2.2
+    single: withPoints(One to Many) - Proposed
 
 One to Many
 .....................................................................
@@ -147,7 +147,7 @@ One to Many
 
 
 .. index::
-    single: withPoints(Many to One) -- proposed in V2.2
+    single: withPoints(Many to One) - Proposed
 
 Many to One
 .....................................................................
@@ -166,7 +166,7 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPoints(Many to Many) -- proposed in V2.2
+    single: withPoints(Many to Many) - Proposed
 
 Many to Many
 .....................................................................

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -156,10 +157,10 @@ Functions</h2></td></tr>
 <tr class="memitem:ad982d872081c3ea9ccdaf544b5226a42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shooting__star__relax_8hpp.html#ad982d872081c3ea9ccdaf544b5226a42">is_equal</a> (int <a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>[], int <a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>[], int size)</td></tr>
 <tr class="separator:ad982d872081c3ea9ccdaf544b5226a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31e4a1cc2728a2d761637990a07b7e35"><td class="memTemplParams" colspan="2">template&lt;class Edge , class Graph , class WeightMap , class EdgeMap , class PredecessorMap , class DistanceMap , class CostMap , class BinaryFunction , class BinaryPredicate &gt; </td></tr>
-<tr class="memitem:a31e4a1cc2728a2d761637990a07b7e35"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceboost.html#a31e4a1cc2728a2d761637990a07b7e35">boost::relax</a> (<a class="el" href="structEdge.html">Edge</a> e, <a class="el" href="structEdge.html">Edge</a> pe, <a class="el" href="structEdge.html">Edge</a> s, const Graph &amp;g, const WeightMap &amp;w, const EdgeMap &amp;em, PredecessorMap &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>, DistanceMap &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, CostMap &amp;<a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, const BinaryFunction &amp;combine, const BinaryPredicate &amp;compare, int e_max_id)</td></tr>
+<tr class="memitem:a31e4a1cc2728a2d761637990a07b7e35"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceboost.html#a31e4a1cc2728a2d761637990a07b7e35">boost::relax</a> (<a class="el" href="structEdge.html">Edge</a> e, <a class="el" href="structEdge.html">Edge</a> pe, <a class="el" href="structEdge.html">Edge</a> s, const Graph &amp;g, const WeightMap &amp;w, const EdgeMap &amp;em, PredecessorMap &amp;p, DistanceMap &amp;d, CostMap &amp;c, const BinaryFunction &amp;combine, const BinaryPredicate &amp;compare, int e_max_id)</td></tr>
 <tr class="separator:a31e4a1cc2728a2d761637990a07b7e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a654e8100a0b5cc4ea098b63460efd9b4"><td class="memTemplParams" colspan="2">template&lt;class Graph , class WeightMap , class EdgeMap , class PredecessorMap , class DistanceMap &gt; </td></tr>
-<tr class="memitem:a654e8100a0b5cc4ea098b63460efd9b4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceboost.html#a654e8100a0b5cc4ea098b63460efd9b4">boost::relax</a> (typename graph_traits&lt; Graph &gt;::edge_descriptor e, const Graph &amp;g, WeightMap w, EdgeMap em, PredecessorMap <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>, DistanceMap <a class="el" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>)</td></tr>
+<tr class="memitem:a654e8100a0b5cc4ea098b63460efd9b4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceboost.html#a654e8100a0b5cc4ea098b63460efd9b4">boost::relax</a> (typename graph_traits&lt; Graph &gt;::edge_descriptor e, const Graph &amp;g, WeightMap w, EdgeMap em, PredecessorMap p, DistanceMap d)</td></tr>
 <tr class="separator:a654e8100a0b5cc4ea098b63460efd9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -220,7 +221,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ccb7fbd65434eff12e61bbc88060a492.html">shooting_star</a></li><li class="navelem"><a class="el" href="dir_470b4081baf7c9c7e4f161775776754d.html">src</a></li><li class="navelem"><a class="el" href="shooting__star__relax_8hpp.html">shooting_star_relax.hpp</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

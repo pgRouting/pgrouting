@@ -35,6 +35,7 @@ Auxiliary functions
 - :ref:`pgr_vids_to_dmatrix`
 - :ref:`pgr_vids_to_dmatrix2`
 - :ref:`pgr_points_to_dmatrix`
+- :ref:`pgr_text_to_points`
 
 
 .. toctree::
@@ -46,6 +47,7 @@ Auxiliary functions
    ../src/convenience/doc/pgr_vidsToDMatrix
    ../src/convenience/doc/pgr_vidsToDMatrix2
    ../src/convenience/doc/pgr_pointsToDMatrix
+   ../src/convenience/doc/pgr_textToPoints
 
 
 Deprecated on version 2.2
@@ -97,5 +99,14 @@ Auxiliary functions
    ../src/dijkstra/doc/pgr_dijkstra_v2
    ../src/ksp/doc/pgr_ksp_v2
    ../src/driving_distance/doc/pgr_drivingDistance_v2
-   ../src/common/doc/utilities/index
+   ../src/common/doc/utilities/get_column_name
+   ../src/common/doc/utilities/get_table_name
+   ../src/common/doc/utilities/is_column_indexed
+   ../src/common/doc/utilities/is_column_in_table
+   ../src/common/doc/utilities/point_to_id
+   ../src/common/doc/utilities/quote_ident
+   ../src/common/doc/utilities/versionless
+   ../src/common/doc/utilities/start_point
+   ../src/common/doc/utilities/end_point
+
 

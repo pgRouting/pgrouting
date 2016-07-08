@@ -1,7 +1,7 @@
 <map id="bdastar.c" name="bdastar.c">
-<area shape="rect" id="node2" href="$pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="767,171,906,213"/>
+<area shape="rect" id="node2" href="$pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="785,171,925,213"/>
 <area shape="rect" id="node3" href="$postgres_8h.html" title="postgres.h" alt="" coords="78,261,159,288"/>
 <area shape="rect" id="node11" href="$postgres__connection_8h.html" title="../../common/src/postgres\l_connection.h" alt="" coords="33,81,205,122"/>
-<area shape="rect" id="node12" href="$bdastar_8h.html" title="bdastar.h" alt="" coords="799,88,874,115"/>
-<area shape="rect" id="node13" href="$debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="950,81,1107,122"/>
+<area shape="rect" id="node12" href="$bdastar__driver_8h.html" title="bdastar_driver.h" alt="" coords="798,88,913,115"/>
+<area shape="rect" id="node13" href="$debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="987,81,1145,122"/>
 </map>

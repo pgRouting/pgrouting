@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -164,7 +165,7 @@ $(document).ready(function(){initNavTree('pgr__ksp_8cpp_source.html','');});
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span> &lt; <span class="keyword">class</span> G&gt;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;std::deque&lt;Path&gt;</div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac">   56</a></span>&#160;<a class="code" href="classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac">Pgr_ksp&lt; G &gt;::Yen</a>(G &amp;graph, </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  int64_t  start_vertex, int64_t end_vertex, <span class="keywordtype">int</span> <a class="code" href="alpha__drivedist_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <span class="keywordtype">bool</span> heap_paths) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  int64_t  start_vertex, int64_t end_vertex, <span class="keywordtype">int</span> <a class="code" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <span class="keywordtype">bool</span> heap_paths) {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    m_ResultSet.clear();</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    m_Heap.clear();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
@@ -241,7 +242,7 @@ $(document).ready(function(){initNavTree('pgr__ksp_8cpp_source.html','');});
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">template</span> &lt; <span class="keyword">class</span> G &gt;</div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classPgr__ksp.html#a816e02e45221bab34ed59b801d9d8192">  134</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPgr__ksp.html#a816e02e45221bab34ed59b801d9d8192">Pgr_ksp&lt; G &gt;::executeYen</a>(G &amp;graph, <span class="keywordtype">int</span> <a class="code" href="alpha__drivedist_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>) {</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classPgr__ksp.html#a816e02e45221bab34ed59b801d9d8192">  134</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPgr__ksp.html#a816e02e45221bab34ed59b801d9d8192">Pgr_ksp&lt; G &gt;::executeYen</a>(G &amp;graph, <span class="keywordtype">int</span> <a class="code" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>) {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    clear();</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    getFirstSolution(graph);</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
@@ -257,6 +258,7 @@ $(document).ready(function(){initNavTree('pgr__ksp_8cpp_source.html','');});
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
 <div class="ttc" id="classPgr__ksp_html_a8c4a810ebc0c9d3b5b24c0353075fc96"><div class="ttname"><a href="classPgr__ksp.html#a8c4a810ebc0c9d3b5b24c0353075fc96">Pgr_ksp::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8cpp_source.html#l00038">pgr_ksp.cpp:38</a></div></div>
 <div class="ttc" id="classPgr__dijkstra_html"><div class="ttname"><a href="classPgr__dijkstra.html">Pgr_dijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00054">pgr_dijkstra.hpp:54</a></div></div>
+<div class="ttc" id="alpha__driver_8cpp_html_a63061f915d352707f06760d3f7787df5"><div class="ttname"><a href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a></div><div class="ttdeci">CGAL::Filtered_kernel&lt; SC &gt; K</div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8cpp_source.html#l00074">alpha_driver.cpp:74</a></div></div>
 <div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00040">basePath_SSEC.hpp:40</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_a11eac853ca869c5b829f13a7c199255c"><div class="ttname"><a href="classPgr__ksp.html#a11eac853ca869c5b829f13a7c199255c">Pgr_ksp::getFirstSolution</a></div><div class="ttdeci">void getFirstSolution(G &amp;graph)</div><div class="ttdoc">Performs the first Dijkstra of the algorithm. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8cpp_source.html#l00043">pgr_ksp.cpp:43</a></div></div>
 <div class="ttc" id="classPath_html_ad413fcb7c6c703e711d4be9b8cf91bf4"><div class="ttname"><a href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">Path::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00062">basePath_SSEC.hpp:62</a></div></div>
@@ -266,7 +268,6 @@ $(document).ready(function(){initNavTree('pgr__ksp_8cpp_source.html','');});
 <div class="ttc" id="classPgr__ksp_html_a20f84d74e3ead8e43ec907dcabaadeac"><div class="ttname"><a href="classPgr__ksp.html#a20f84d74e3ead8e43ec907dcabaadeac">Pgr_ksp::Yen</a></div><div class="ttdeci">std::deque&lt; Path &gt; Yen(G &amp;graph, int64_t source, int64_t target, int K, bool heap_paths)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8cpp_source.html#l00056">pgr_ksp.cpp:56</a></div></div>
 <div class="ttc" id="classPgr__dijkstra_html_ad1428b778a0103402f9db8790ba3011a"><div class="ttname"><a href="classPgr__dijkstra.html#ad1428b778a0103402f9db8790ba3011a">Pgr_dijkstra::dijkstra</a></div><div class="ttdeci">void dijkstra(G &amp;graph, Path &amp;path, int64_t start_vertex, int64_t end_vertex, bool only_cost=false)</div><div class="ttdoc">one to one </div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00535">pgr_dijkstra.hpp:535</a></div></div>
 <div class="ttc" id="classPath_html_a173f5f76fcc498b81b97261251d6a9a3"><div class="ttname"><a href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">Path::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00061">basePath_SSEC.hpp:61</a></div></div>
-<div class="ttc" id="alpha__drivedist_8cpp_html_a63061f915d352707f06760d3f7787df5"><div class="ttname"><a href="alpha__drivedist_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a></div><div class="ttdeci">CGAL::Filtered_kernel&lt; SC &gt; K</div><div class="ttdef"><b>Definition:</b> <a href="alpha__drivedist_8cpp_source.html#l00076">alpha_drivedist.cpp:76</a></div></div>
 <div class="ttc" id="classPath_html_a3e94fc24f7c713442f3d52478d0772fb"><div class="ttname"><a href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">Path::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00069">basePath_SSEC.cpp:69</a></div></div>
 <div class="ttc" id="classPath_html_a9cb45e3a413a03f1c4224b840af1fe83"><div class="ttname"><a href="classPath.html#a9cb45e3a413a03f1c4224b840af1fe83">Path::appendPath</a></div><div class="ttdeci">void appendPath(const Path &amp;o_path)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00114">basePath_SSEC.cpp:114</a></div></div>
 <div class="ttc" id="classPgr__ksp_html_abc9f355a52aee675dfe5df77fd6bae71"><div class="ttname"><a href="classPgr__ksp.html#abc9f355a52aee675dfe5df77fd6bae71">Pgr_ksp::removeVertices</a></div><div class="ttdeci">void removeVertices(G &amp;graph, const Path &amp;path)</div><div class="ttdoc">stores in subPath the first i elements of path </div><div class="ttdef"><b>Definition:</b> <a href="pgr__ksp_8cpp_source.html#l00086">pgr_ksp.cpp:86</a></div></div>
@@ -277,7 +278,7 @@ $(document).ready(function(){initNavTree('pgr__ksp_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2f5fb978aad6d15897bf76bd3f14c291.html">ksp</a></li><li class="navelem"><a class="el" href="dir_feb8149d5af3cd37103556366b14467a.html">src</a></li><li class="navelem"><a class="el" href="pgr__ksp_8cpp.html">pgr_ksp.cpp</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

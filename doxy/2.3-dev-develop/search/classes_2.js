@@ -11,8 +11,7 @@ var searchData=
   ['costpack',['CostPack',['../structCostPack.html',1,'']]],
   ['csolutioninfo',['CSolutionInfo',['../classCSolutionInfo.html',1,'']]],
   ['ctourinfo',['CTourInfo',['../classCTourInfo.html',1,'']]],
-  ['customer',['Customer',['../structCustomer.html',1,'']]],
-  ['customer_5ftype',['Customer_type',['../structCustomer__type.html',1,'']]],
+  ['customer_5ft',['Customer_t',['../structCustomer__t.html',1,'']]],
   ['cvehicleinfo',['CVehicleInfo',['../classCVehicleInfo.html',1,'']]],
   ['cvrpsolver',['CVRPSolver',['../classCVRPSolver.html',1,'']]]
 ];

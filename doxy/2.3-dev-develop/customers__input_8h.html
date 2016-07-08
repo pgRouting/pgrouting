@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -111,45 +112,43 @@ $(document).ready(function(){initNavTree('customers__input_8h.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./pgr_types.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="pickDeliver_2src_2pdp_8h_source.html">./pdp.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for customers_input.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="customers__input_8h__incl.png" border="0" usemap="#customers__input_8h" alt=""/></div>
 <map name="customers__input_8h" id="customers__input_8h">
-<area shape="rect" id="node2" href="pgr__types_8h.html" title="./pgr_types.h" alt="" coords="81,80,180,107"/><area shape="rect" id="node5" href="pickDeliver_2src_2pdp_8h.html" title="./pdp.h" alt="" coords="205,80,267,107"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="95,155,176,181"/></map>
+<area shape="rect" id="node2" href="pgr__types_8h.html" title="./pgr_types.h" alt="" coords="47,80,145,107"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="5,155,87,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="customers__input_8h__dep__incl.png" border="0" usemap="#customers__input_8hdep" alt=""/></div>
 <map name="customers__input_8hdep" id="customers__input_8hdep">
-<area shape="rect" id="node2" href="customers__input_8c.html" title="customers_input.c" alt="" coords="5,80,133,107"/><area shape="rect" id="node3" href="pickDeliver_2src_2pdp_8c.html" title="pdp.c" alt="" coords="158,80,212,107"/></map>
+<area shape="rect" id="node2" href="customers__input_8c.html" title="customers_input.c" alt="" coords="5,80,133,107"/><area shape="rect" id="node3" href="pickDeliver_8c.html" title="pickDeliver.c" alt="" coords="159,80,257,107"/></map>
 </div>
 </div>
 <p><a href="customers__input_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9ceeea7100363103d7a1d2fd9a02a7f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="customers__input_8h.html#a9ceeea7100363103d7a1d2fd9a02a7f9">pgr_get_customers</a> (char *sql, <a class="el" href="structCustomer.html">Customer</a> **customers, size_t *total_customers)</td></tr>
-<tr class="memdesc:a9ceeea7100363103d7a1d2fd9a02a7f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">int64_t id; double x; double y; double demand; double Etime; double Ltime; double Stime; int64_t Pindex; int64_t Dindex; double Ddist;  <a href="#a9ceeea7100363103d7a1d2fd9a02a7f9">More...</a><br/></td></tr>
-<tr class="separator:a9ceeea7100363103d7a1d2fd9a02a7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba94bfaedd66a6c519b263b6497b3a9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="customers__input_8h.html#aba94bfaedd66a6c519b263b6497b3a9a">pgr_get_customers_data</a> (char *customers_sql, <a class="el" href="structCustomer__t.html">Customer_t</a> **customers, size_t *total_customers)</td></tr>
+<tr class="separator:aba94bfaedd66a6c519b263b6497b3a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a9ceeea7100363103d7a1d2fd9a02a7f9"></a>
+<a class="anchor" id="aba94bfaedd66a6c519b263b6497b3a9a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pgr_get_customers </td>
+          <td class="memname">void pgr_get_customers_data </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>sql</em>, </td>
+          <td class="paramname"><em>customers_sql</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structCustomer.html">Customer</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="structCustomer__t.html">Customer_t</a> **&#160;</td>
           <td class="paramname"><em>customers</em>, </td>
         </tr>
         <tr>
@@ -165,15 +164,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>int64_t id; double x; double y; double demand; double Etime; double Ltime; double Stime; int64_t Pindex; int64_t Dindex; double Ddist; </p>
 <p>int64_t id; double x; double y; double demand; double Etime; double Ltime; double Stime; int64_t Pindex; int64_t Dindex; double Ddist;</p>
 
-<p>Definition at line <a class="el" href="customers__input_8c_source.html#l00055">55</a> of file <a class="el" href="customers__input_8c_source.html">customers_input.c</a>.</p>
+<p>Definition at line <a class="el" href="customers__input_8c_source.html#l00056">56</a> of file <a class="el" href="customers__input_8c_source.html">customers_input.c</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00154">ANY_INTEGER</a>, <a class="el" href="pgr__types_8h_source.html#l00155">ANY_NUMERICAL</a>, <a class="el" href="pgr__types_8h_source.html#l00162">Column_info_t::colNumber</a>, <a class="el" href="pgr__types_8h_source.html#l00166">Column_info_t::eType</a>, <a class="el" href="pgr__types_8h_source.html#l00165">Column_info_t::name</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="get__check__data_8c_source.html#l00071">pgr_fetch_column_info()</a>, <a class="el" href="customers__input_8c_source.html#l00036">pgr_fetch_customer()</a>, <a class="el" href="postgres__connection_8c_source.html#l00092">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00081">pgr_SPI_prepare()</a>, <a class="el" href="pgr__types_8h_source.html#l00164">Column_info_t::strict</a>, and <a class="el" href="pgr__types_8h_source.html#l00163">Column_info_t::type</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00154">ANY_INTEGER</a>, <a class="el" href="pgr__types_8h_source.html#l00155">ANY_NUMERICAL</a>, <a class="el" href="pgr__types_8h_source.html#l00162">Column_info_t::colNumber</a>, <a class="el" href="pgr__types_8h_source.html#l00166">Column_info_t::eType</a>, <a class="el" href="customers__input_8c_source.html#l00036">fetch_customer()</a>, <a class="el" href="pgr__types_8h_source.html#l00165">Column_info_t::name</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="get__check__data_8c_source.html#l00071">pgr_fetch_column_info()</a>, <a class="el" href="postgres__connection_8c_source.html#l00092">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00081">pgr_SPI_prepare()</a>, <a class="el" href="pgr__types_8h_source.html#l00164">Column_info_t::strict</a>, and <a class="el" href="pgr__types_8h_source.html#l00163">Column_info_t::type</a>.</p>
 
-<p>Referenced by <a class="el" href="pickDeliver_2src_2pdp_8c_source.html#l00047">compute_shortest_path()</a>.</p>
+<p>Referenced by <a class="el" href="pickDeliver_8c_source.html#l00057">process()</a>.</p>
 
 </div>
 </div>
@@ -183,7 +180,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><a class="el" href="customers__input_8h.html">customers_input.h</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

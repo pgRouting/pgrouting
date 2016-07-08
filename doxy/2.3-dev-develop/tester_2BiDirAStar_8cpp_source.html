@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -240,15 +241,15 @@ $(document).ready(function(){initNavTree('tester_2BiDirAStar_8cpp_source.html','
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classBiDirAStar.html#a377d14025c8a44334cdcd6c471622f9a">BiDirAStar::setcost</a>(<span class="keywordtype">int</span> node_id, <span class="keywordtype">int</span> dir, <span class="keywordtype">double</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classBiDirAStar.html#a377d14025c8a44334cdcd6c471622f9a">BiDirAStar::setcost</a>(<span class="keywordtype">int</span> node_id, <span class="keywordtype">int</span> dir, <span class="keywordtype">double</span> c)</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;{</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">if</span>(dir == 1)</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="classBiDirAStar.html#a25c397bbed340cdf045686ddc3fd0a5d">m_pFCost</a>[node_id] = <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="classBiDirAStar.html#a25c397bbed340cdf045686ddc3fd0a5d">m_pFCost</a>[node_id] = c;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    {</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <a class="code" href="classBiDirAStar.html#a1cc02132e9d4d6efd17f334e720a4b37">m_pRCost</a>[node_id] = <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <a class="code" href="classBiDirAStar.html#a1cc02132e9d4d6efd17f334e720a4b37">m_pRCost</a>[node_id] = c;</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
@@ -650,7 +651,6 @@ $(document).ready(function(){initNavTree('tester_2BiDirAStar_8cpp_source.html','
 <div class="ttc" id="structPARENT__PATH_html"><div class="ttname"><a href="structPARENT__PATH.html">PARENT_PATH</a></div><div class="ttdef"><b>Definition:</b> <a href="src_2BiDirAStar_8h_source.html#l00052">src/BiDirAStar.h:52</a></div></div>
 <div class="ttc" id="classBiDirAStar_html_a377d14025c8a44334cdcd6c471622f9a"><div class="ttname"><a href="classBiDirAStar.html#a377d14025c8a44334cdcd6c471622f9a">BiDirAStar::setcost</a></div><div class="ttdeci">void setcost(int node_id, int dir, double c)</div><div class="ttdef"><b>Definition:</b> <a href="src_2BiDirAStar_8cpp_source.html#l00149">src/BiDirAStar.cpp:149</a></div></div>
 <div class="ttc" id="classBiDirAStar_html_adacee87be7103e68723f05604762d4ac"><div class="ttname"><a href="classBiDirAStar.html#adacee87be7103e68723f05604762d4ac">BiDirAStar::~BiDirAStar</a></div><div class="ttdeci">~BiDirAStar(void)</div><div class="ttdef"><b>Definition:</b> <a href="src_2BiDirAStar_8cpp_source.html#l00047">src/BiDirAStar.cpp:47</a></div></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a84e0d58129b1cbf8f33b35fe2ffa640e"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a></div><div class="ttdeci">customer * c</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00074">vrppdtw/src/pdp_solver.cpp:74</a></div></div>
 <div class="ttc" id="structGraphEdgeInfo_html_a7d5db41d72471c923b1016c0063b6b80"><div class="ttname"><a href="structGraphEdgeInfo.html#a7d5db41d72471c923b1016c0063b6b80">GraphEdgeInfo::Cost</a></div><div class="ttdeci">double Cost</div><div class="ttdef"><b>Definition:</b> <a href="src_2BiDirAStar_8h_source.html#l00071">src/BiDirAStar.h:71</a></div></div>
 <div class="ttc" id="classBiDirAStar_html_aa419be5848db2df201c212a9774a9923"><div class="ttname"><a href="classBiDirAStar.html#aa419be5848db2df201c212a9774a9923">BiDirAStar::m_vecNodeVector</a></div><div class="ttdeci">GraphNodeVector m_vecNodeVector</div><div class="ttdef"><b>Definition:</b> <a href="src_2BiDirAStar_8h_source.html#l00114">src/BiDirAStar.h:114</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_ae627e7f1fc2e1d7f5b9361def8110527"><div class="ttname"><a href="BDATester_8cpp.html#ae627e7f1fc2e1d7f5b9361def8110527">maxNode</a></div><div class="ttdeci">int maxNode</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00047">BDATester.cpp:47</a></div></div>
@@ -699,7 +699,7 @@ $(document).ready(function(){initNavTree('tester_2BiDirAStar_8cpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1188af90c8f2ef20f286b8e78c6e14f.html">bd_astar</a></li><li class="navelem"><a class="el" href="dir_47ecdb6ca2dab78e256838ae4f51c221.html">tester</a></li><li class="navelem"><a class="el" href="tester_2BiDirAStar_8cpp.html">BiDirAStar.cpp</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:26 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

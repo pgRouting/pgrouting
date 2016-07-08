@@ -7,9 +7,7 @@ var searchData=
   ['sigint_5fhandler',['SIGINT_Handler',['../classSIGINT__Handler.html',1,'']]],
   ['signalhandler',['SignalHandler',['../classSignalHandler.html',1,'']]],
   ['sigquit_5fhandler',['SIGQUIT_Handler',['../classSIGQUIT__Handler.html',1,'']]],
-  ['solution',['Solution',['../classSolution.html',1,'']]],
-  ['state',['State',['../structState.html',1,'']]],
-  ['statesave',['statesave',['../structstatesave.html',1,'']]],
+  ['solution',['Solution',['../classpgRouting_1_1vrp_1_1Solution.html',1,'pgRouting::vrp']]],
   ['stringoperation',['StringOperation',['../classStringOperation.html',1,'']]],
   ['stringtokenizer',['StringTokenizer',['../classStringTokenizer.html',1,'']]]
 ];

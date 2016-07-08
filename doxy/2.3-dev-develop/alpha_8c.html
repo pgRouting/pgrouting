@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -113,12 +114,12 @@ $(document).ready(function(){initNavTree('alpha_8c.html','');});
 <div class="title">alpha.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">../../common/src/pgr_types.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="postgres_8h_source.html">postgres.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="postgres_8h_source.html">postgres.h</a>&quot;</code><br/>
 <code>#include &quot;executor/spi.h&quot;</code><br/>
 <code>#include &quot;funcapi.h&quot;</code><br/>
 <code>#include &quot;catalog/pg_type.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="alpha_8h_source.html">alpha.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__types_8h_source.html">../../common/src/pgr_types.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="alpha__driver_8h_source.html">alpha_driver.h</a>&quot;</code><br/>
 <code>#include &quot;fmgr.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">../../common/src/debug_macro.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
@@ -126,7 +127,7 @@ Include dependency graph for alpha.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="alpha_8c__incl.png" border="0" usemap="#alpha_8c" alt=""/></div>
 <map name="alpha_8c" id="alpha_8c">
-<area shape="rect" id="node2" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="79,171,219,213"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="5,261,87,288"/><area shape="rect" id="node8" href="alpha_8h.html" title="alpha.h" alt="" coords="505,88,569,115"/><area shape="rect" id="node10" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="676,81,833,122"/></map>
+<area shape="rect" id="node2" href="postgres_8h.html" title="postgres.h" alt="" coords="117,261,198,288"/><area shape="rect" id="node6" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="351,171,490,213"/><area shape="rect" id="node8" href="alpha__driver_8h.html" title="alpha_driver.h" alt="" coords="459,88,561,115"/><area shape="rect" id="node10" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="669,81,826,122"/></map>
 </div>
 </div>
 <p><a href="alpha_8c_source.html">Go to the source code of this file.</a></p>
@@ -150,9 +151,9 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:aa200d39cd021c4a008ece740a8bd88d1"><td class="memItemLeft" align="right" valign="top">Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha_8c.html#aa200d39cd021c4a008ece740a8bd88d1">alphashape</a> (PG_FUNCTION_ARGS)</td></tr>
 <tr class="separator:aa200d39cd021c4a008ece740a8bd88d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f47c3e26aa156219529477b79343691"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha_8c.html#a4f47c3e26aa156219529477b79343691">compute_alpha_shape</a> (char *sql, <a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> alpha, <a class="el" href="alpha_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> **res, size_t *res_count)</td></tr>
+<tr class="memitem:a4f47c3e26aa156219529477b79343691"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha_8c.html#a4f47c3e26aa156219529477b79343691">compute_alpha_shape</a> (char *sql, <a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> alpha, <a class="el" href="alpha__driver_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> **res, size_t *res_count)</td></tr>
 <tr class="separator:a4f47c3e26aa156219529477b79343691"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad02862c5f625c4a429bbfe0596c93c76"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha_8c.html#ad02862c5f625c4a429bbfe0596c93c76">fetch_vertex</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="alpha_8c.html#a800c891e5d5eb186fddf615d946e4d60">vertex_columns_t</a> *<a class="el" href="structvertex__columns.html">vertex_columns</a>, <a class="el" href="alpha_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> *target_vertex)</td></tr>
+<tr class="memitem:ad02862c5f625c4a429bbfe0596c93c76"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha_8c.html#ad02862c5f625c4a429bbfe0596c93c76">fetch_vertex</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="alpha_8c.html#a800c891e5d5eb186fddf615d946e4d60">vertex_columns_t</a> *<a class="el" href="structvertex__columns.html">vertex_columns</a>, <a class="el" href="alpha__driver_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> *target_vertex)</td></tr>
 <tr class="separator:ad02862c5f625c4a429bbfe0596c93c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae005778b70e07968ac950c42a4ff58e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha_8c.html#aae005778b70e07968ac950c42a4ff58e">fetch_vertices_columns</a> (SPITupleTable *tuptable, <a class="el" href="alpha_8c.html#a800c891e5d5eb186fddf615d946e4d60">vertex_columns_t</a> *<a class="el" href="structvertex__columns.html">vertex_columns</a>)</td></tr>
 <tr class="separator:aae005778b70e07968ac950c42a4ff58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,7 +211,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="alpha_8c_source.html#l00258">258</a> of file <a class="el" href="alpha_8c_source.html">alpha.c</a>.</p>
 
-<p>References <a class="el" href="alpha_8c_source.html#l00136">compute_alpha_shape()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="alpha_8c_source.html#l00057">text2char()</a>, <a class="el" href="alpha_8h_source.html#l00034">vertex::x</a>, and <a class="el" href="alpha_8h_source.html#l00035">vertex::y</a>.</p>
+<p>References <a class="el" href="alpha_8c_source.html#l00136">compute_alpha_shape()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="alpha_8c_source.html#l00057">text2char()</a>, <a class="el" href="alpha__driver_8h_source.html#l00034">vertex::x</a>, and <a class="el" href="alpha__driver_8h_source.html#l00035">vertex::y</a>.</p>
 
 </div>
 </div>
@@ -236,7 +237,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="alpha_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="alpha__driver_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> **&#160;</td>
           <td class="paramname"><em>res</em>, </td>
         </tr>
         <tr>
@@ -260,7 +261,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="alpha_8c_source.html#l00136">136</a> of file <a class="el" href="alpha_8c_source.html">alpha.c</a>.</p>
 
-<p>References <a class="el" href="alpha__drivedist_8cpp_source.html#l00195">alpha_shape()</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="alpha_8c_source.html#l00119">fetch_vertex()</a>, <a class="el" href="alpha_8c_source.html#l00090">fetch_vertices_columns()</a>, <a class="el" href="alpha_8c_source.html#l00067">finish()</a>, <a class="el" href="alpha_8c_source.html#l00081">vertex_columns::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="alpha_8c_source.html#l00054">TUPLIMIT</a>.</p>
+<p>References <a class="el" href="alpha__driver_8cpp_source.html#l00193">alpha_shape()</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="alpha_8c_source.html#l00119">fetch_vertex()</a>, <a class="el" href="alpha_8c_source.html#l00090">fetch_vertices_columns()</a>, <a class="el" href="alpha_8c_source.html#l00067">finish()</a>, <a class="el" href="alpha_8c_source.html#l00081">vertex_columns::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="alpha_8c_source.html#l00054">TUPLIMIT</a>.</p>
 
 <p>Referenced by <a class="el" href="alpha_8c_source.html#l00258">alphashape()</a>.</p>
 
@@ -294,7 +295,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="alpha_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="alpha__driver_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> *&#160;</td>
           <td class="paramname"><em>target_vertex</em>&#160;</td>
         </tr>
         <tr>
@@ -312,7 +313,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="alpha_8c_source.html#l00119">119</a> of file <a class="el" href="alpha_8c_source.html">alpha.c</a>.</p>
 
-<p>References <a class="el" href="alpha_8h_source.html#l00034">vertex::x</a>, <a class="el" href="alpha_8c_source.html#l00082">vertex_columns::x</a>, <a class="el" href="alpha_8h_source.html#l00035">vertex::y</a>, and <a class="el" href="alpha_8c_source.html#l00083">vertex_columns::y</a>.</p>
+<p>References <a class="el" href="alpha__driver_8h_source.html#l00034">vertex::x</a>, <a class="el" href="alpha_8c_source.html#l00082">vertex_columns::x</a>, <a class="el" href="alpha__driver_8h_source.html#l00035">vertex::y</a>, and <a class="el" href="alpha_8c_source.html#l00083">vertex_columns::y</a>.</p>
 
 <p>Referenced by <a class="el" href="alpha_8c_source.html#l00136">compute_alpha_shape()</a>.</p>
 
@@ -446,7 +447,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha_8c.html">alpha.c</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

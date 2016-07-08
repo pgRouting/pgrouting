@@ -11,6 +11,7 @@ var NAVTREE =
       [ "Setup Travis", "index.html#setup_travis", null ],
       [ "File conventions", "index.html#file_convetions", null ]
     ] ],
+    [ "Todo List", "todo.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -30,6 +31,7 @@ var NAVTREE =
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
         [ "Enumerator", "functions_eval.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
@@ -52,15 +54,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BDATester_8cpp.html",
-"bdsp__core_8cpp.html#a772e098df4b9ddb2f01be2c1334c8879",
-"classCVRPSolver.html#ab4d2c4440b0d5db0cedc425c6af73a35",
-"classPgr__ksp.html#a5b58c602264018d06b7408e50220a7b6",
-"classpgRouting_1_1tsp_1_1Tour.html#ae2c36a9e07f0abb9db64fd2feb940d95",
-"get__new__queries_8h_source.html",
-"performance_2dijkstra_2pgRouting_8cpp.html#adacbe0175a79dff748855d8c9839f82b",
-"structCustomer__type.html#a2f5f328a2dcd0e0aaa832f46f03dd0fd",
-"structedge__columns.html#ae543a17157037d95212232b9688d29aa",
-"tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74"
+"bdsp__driver_8h_source.html",
+"classCVRPSolver.html#ab55533a065e473677aa9e6406f7293c8",
+"classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6",
+"classpgRouting_1_1vrp_1_1Initial__solution.html#ac77d44b67c1188b7e5b535e1008db591",
+"classpgRouting_1_1vrp_1_1Vehicle__node.html#a39818b7cddf5ee62098cafaa840fedfc",
+"functions_func_i.html",
+"matrixRows__input_8c.html",
+"restrictions__input_8c_source.html",
+"structboost_1_1detail_1_1shooting__star__bfs__visitor.html#aaef6131e8e1ace02e0b795ad28a601eb",
+"trsp__driver_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

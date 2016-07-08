@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -152,7 +153,7 @@ $(document).ready(function(){initNavTree('tour_8h_source.html','');});
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;         <a class="code" href="classpgRouting_1_1tsp_1_1Tour.html#ae2c36a9e07f0abb9db64fd2feb940d95">cities</a>(cities_order) {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;     }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classpgRouting_1_1tsp_1_1Tour.html#a30b61ebc95b325c38d09923f28d3a7b8">   45</a></span>&#160;     <span class="keyword">explicit</span> <a class="code" href="classpgRouting_1_1tsp_1_1Tour.html#a30b61ebc95b325c38d09923f28d3a7b8">Tour</a>(<span class="keywordtype">size_t</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classpgRouting_1_1tsp_1_1Tour.html#a30b61ebc95b325c38d09923f28d3a7b8">   45</a></span>&#160;     <span class="keyword">explicit</span> <a class="code" href="classpgRouting_1_1tsp_1_1Tour.html#a30b61ebc95b325c38d09923f28d3a7b8">Tour</a>(<span class="keywordtype">size_t</span> n) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;         <a class="code" href="classpgRouting_1_1tsp_1_1Tour.html#ae2c36a9e07f0abb9db64fd2feb940d95">cities</a>.resize(n);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;         std::iota(std::begin(<a class="code" href="classpgRouting_1_1tsp_1_1Tour.html#ae2c36a9e07f0abb9db64fd2feb940d95">cities</a>), std::end(<a class="code" href="classpgRouting_1_1tsp_1_1Tour.html#ae2c36a9e07f0abb9db64fd2feb940d95">cities</a>), 0);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;     }</div>
@@ -262,7 +263,6 @@ $(document).ready(function(){initNavTree('tour_8h_source.html','');});
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}  <span class="comment">// namespace tsp</span></div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}  <span class="comment">// namespace pgRouting</span></div>
 <div class="ttc" id="classpgRouting_1_1tsp_1_1Tour_html_ac28d7b1a8e15eafdbd0913d6a56caf5a"><div class="ttname"><a href="classpgRouting_1_1tsp_1_1Tour.html#ac28d7b1a8e15eafdbd0913d6a56caf5a">pgRouting::tsp::Tour::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="tour_8h_source.html#l00050">tour.h:50</a></div></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a76f11d9a0a47b94f72c2d0e77fb32240"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a></div><div class="ttdeci">int n</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00367">vrppdtw/src/pdp_solver.cpp:367</a></div></div>
 <div class="ttc" id="classpgRouting_1_1tsp_1_1Tour_html"><div class="ttname"><a href="classpgRouting_1_1tsp_1_1Tour.html">pgRouting::tsp::Tour</a></div><div class="ttdef"><b>Definition:</b> <a href="tour_8h_source.html#l00037">tour.h:37</a></div></div>
 <div class="ttc" id="classpgRouting_1_1tsp_1_1Tour_html_a30b61ebc95b325c38d09923f28d3a7b8"><div class="ttname"><a href="classpgRouting_1_1tsp_1_1Tour.html#a30b61ebc95b325c38d09923f28d3a7b8">pgRouting::tsp::Tour::Tour</a></div><div class="ttdeci">Tour(size_t n)</div><div class="ttdef"><b>Definition:</b> <a href="tour_8h_source.html#l00045">tour.h:45</a></div></div>
 <div class="ttc" id="classpgRouting_1_1tsp_1_1Dmatrix_html_a6e3c5eb3fec05b24713a6bbdae500834"><div class="ttname"><a href="classpgRouting_1_1tsp_1_1Dmatrix.html#a6e3c5eb3fec05b24713a6bbdae500834">pgRouting::tsp::Dmatrix::tourCost</a></div><div class="ttdeci">double tourCost(const Tour &amp;tour) const </div><div class="ttdoc">tour evaluation </div><div class="ttdef"><b>Definition:</b> <a href="Dmatrix_8cpp_source.html#l00049">Dmatrix.cpp:49</a></div></div>
@@ -281,7 +281,7 @@ $(document).ready(function(){initNavTree('tour_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="tour_8h.html">tour.h</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

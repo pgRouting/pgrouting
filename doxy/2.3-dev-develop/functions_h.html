@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -82,6 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
@@ -98,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_h.html#index_h"><span>h</span></a></li>
       <li><a href="functions_i.html#index_i"><span>i</span></a></li>
       <li><a href="functions_j.html#index_j"><span>j</span></a></li>
+      <li><a href="functions_k.html#index_k"><span>k</span></a></li>
       <li><a href="functions_l.html#index_l"><span>l</span></a></li>
       <li><a href="functions_m.html#index_m"><span>m</span></a></li>
       <li><a href="functions_n.html#index_n"><span>n</span></a></li>
@@ -155,6 +158,10 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
 , <a class="el" href="classSIGINT__Handler.html#ac0d09a414868d3d6c5b1455b65dc5516">SIGINT_Handler</a>
 , <a class="el" href="classSIGQUIT__Handler.html#af65ad11173d2c238a126c57f5255a5c7">SIGQUIT_Handler</a>
 </li>
+<li>has_cv()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#a382d9e5be2e1449dd6fce7657edbbf3f">pgRouting::vrp::Vehicle</a>
+, <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__node.html#a427f969e01dd259c64366d2856fc9059">pgRouting::vrp::Vehicle_node</a>
+</li>
 <li>has_id()
 : <a class="el" href="classpgRouting_1_1tsp_1_1Dmatrix.html#ab363c9b778b664c274950bebd6e4af4d">pgRouting::tsp::Dmatrix</a>
 , <a class="el" href="classpgRouting_1_1tsp_1_1eucledianDmatrix.html#a20a288f9ff0ef2e09408b54c44d3a466">pgRouting::tsp::eucledianDmatrix</a>
@@ -166,17 +173,15 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
 : <a class="el" href="classpgRouting_1_1tsp_1_1Dmatrix.html#a9bc868fe6c47095e22943ddf70c5189f">pgRouting::tsp::Dmatrix</a>
 , <a class="el" href="classpgRouting_1_1tsp_1_1eucledianDmatrix.html#aceb262f3f34bdd34afb86113eae7f611">pgRouting::tsp::eucledianDmatrix</a>
 </li>
+<li>has_order()
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__pickDeliver.html#a0dfe930e6b8942e87c440393ccd867d8">pgRouting::vrp::Vehicle_pickDeliver</a>
+</li>
 <li>has_twv()
-: <a class="el" href="classRoute.html#a82ede2e285f501308c0c3139afaccf88">Route</a>
+: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#aee0e038208deb98b5cd9d9bbafc91b3b">pgRouting::vrp::Vehicle</a>
+, <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__node.html#a0b4f38e20f38148be719ad547da413d0">pgRouting::vrp::Vehicle_node</a>
 </li>
 <li>has_vertex()
 : <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a39659768d6e9cf2905017d014fe720ce">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
-</li>
-<li>has_violation()
-: <a class="el" href="classRoute.html#ac81214a7a9fc2d7f98ae596867db9fc8">Route</a>
-</li>
-<li>HillClimbing()
-: <a class="el" href="classRoute.html#a3f36cc799fa70acde702cb029e9ba798">Route</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -184,7 +189,7 @@ $(document).ready(function(){initNavTree('functions_h.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:28 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -47,6 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -311,8 +312,8 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordtype">int</span> *mst, *arc;    </div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">int</span> i, j, k, l, <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>, *iorder, *jorder;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">int</span> n, *iorder, *jorder;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> d;</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> maxd;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> *dist;</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> *dis;</div>
@@ -336,7 +337,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    j = -1;</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    d = maxd;</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    dis[0] = -1;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">for</span> (i = 1; i &lt; <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>; i++)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">for</span> (i = 1; i &lt; n; i++)</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    {</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        dis[i] = <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(i,0);</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        arc[i] = 0;</div>
@@ -360,7 +361,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        mst[<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>] = j * n + arc[j]; <span class="comment">/* join fragment j with MST */</span></div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        dis[j] = -1; </div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        d = maxd;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>; i++)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt; n; i++)</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        {</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordflow">if</span> (dis[i] &gt;= 0) <span class="comment">/* not connected yet */</span></div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            {</div>
@@ -388,7 +389,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DQ()  arc[--l]</span></div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EMPTY (l==0)</span></div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="preprocessor"></span>        </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>; i++) <a class="code" href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a>(i) = 0;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; n; i++) <a class="code" href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a>(i) = 0;</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    k = 0; l = 0; d = 0; <a class="code" href="tsplib_8c.html#a89d85f0ec46dcd84d7e12c36d57e6033">NQ</a>(0);</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">while</span> (!<a class="code" href="tsplib_8c.html#a2b7cf2a3641be7b89138615764d60ba3">EMPTY</a>)</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    {</div>
@@ -412,11 +413,11 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00302"></a><span class="lineno"><a class="line" href="tsplib_8c.html#a5209f80fbb08309b494dfa1df9f2a58e">  302</a></span>&#160;<a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="tsplib_8c.html#a5209f80fbb08309b494dfa1df9f2a58e">pathLength</a> (<a class="code" href="structtspstruct.html">TSP</a> *tsp)</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;{</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a> = 0;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> len = 0;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordtype">int</span> *iorder = tsp-&gt;<a class="code" href="structtspstruct.html#abcf628c7b11546daaf88e486b6a625dc">iorder</a>;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> *dist   = tsp-&gt;<a class="code" href="structtspstruct.html#addd0ea89b527168145a1144f9ae835d9">dist</a>;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>      = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>  n = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    </div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; n-1; i++)</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    {</div>
@@ -435,12 +436,12 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment"> *  c       f        c-------f</span></div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="tsplib_8c.html#ae8143c730f7ffaf2cd399479f000040c">  328</a></span>&#160;<a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="tsplib_8c.html#ae8143c730f7ffaf2cd399479f000040c">getThreeWayCost</a> (<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</div>
+<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="tsplib_8c.html#ae8143c730f7ffaf2cd399479f000040c">  328</a></span>&#160;<a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="tsplib_8c.html#ae8143c730f7ffaf2cd399479f000040c">getThreeWayCost</a> (<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> p)</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;{</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, e, f;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>, c, d, e, f;</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordtype">int</span> *iorder = tsp-&gt;<a class="code" href="structtspstruct.html#abcf628c7b11546daaf88e486b6a625dc">iorder</a>;</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> *dist   = tsp-&gt;<a class="code" href="structtspstruct.html#addd0ea89b527168145a1144f9ae835d9">dist</a>;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>       = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="keywordtype">int</span> n       = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    a = iorder[<a class="code" href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a>(p[0]-1,n)];</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    b = iorder[p[0]];</div>
@@ -454,12 +455,12 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;}</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="tsplib_8c.html#ac11aa109bab2b1455c630b9bffe95e68">  347</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="tsplib_8c.html#ac11aa109bab2b1455c630b9bffe95e68">doThreeWay</a> (<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</div>
+<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="tsplib_8c.html#ac11aa109bab2b1455c630b9bffe95e68">  347</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="tsplib_8c.html#ac11aa109bab2b1455c630b9bffe95e68">doThreeWay</a> (<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> p)</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;{</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordtype">int</span> i, count, m1, m2, m3, <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>, e, f;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordtype">int</span> i, count, m1, m2, m3, <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>, c, d, e, f;</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordtype">int</span> *iorder = tsp-&gt;<a class="code" href="structtspstruct.html#abcf628c7b11546daaf88e486b6a625dc">iorder</a>;</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordtype">int</span> *jorder = tsp-&gt;<a class="code" href="structtspstruct.html#a6845e78dd7ec62190eaa6a4b88010d21">jorder</a>;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>       = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordtype">int</span> n       = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    </div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    a = <a class="code" href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a>(p[0]-1,n);</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    b = p[0];</div>
@@ -483,7 +484,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; m3; i++) jorder[count++] = iorder[<a class="code" href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a>(i+d,n)];</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="comment">/* copy segment back into iorder */</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>; i++) iorder[i] = jorder[i];</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; n; i++) iorder[i] = jorder[i];</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;}</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="comment">/*</span></div>
@@ -493,12 +494,12 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="comment"> *   a  d       a  d</span></div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno"><a class="line" href="tsplib_8c.html#abb1e3017560102d14e004aaa30d90336">  386</a></span>&#160;<a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="tsplib_8c.html#abb1e3017560102d14e004aaa30d90336">getReverseCost</a> (<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</div>
+<div class="line"><a name="l00386"></a><span class="lineno"><a class="line" href="tsplib_8c.html#abb1e3017560102d14e004aaa30d90336">  386</a></span>&#160;<a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> <a class="code" href="tsplib_8c.html#abb1e3017560102d14e004aaa30d90336">getReverseCost</a> (<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> p)</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;{</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a>, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a>;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>, c, d;</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    <span class="keywordtype">int</span> *iorder = tsp-&gt;<a class="code" href="structtspstruct.html#abcf628c7b11546daaf88e486b6a625dc">iorder</a>;</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a> *dist   = tsp-&gt;<a class="code" href="structtspstruct.html#addd0ea89b527168145a1144f9ae835d9">dist</a>;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>       = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordtype">int</span> n       = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    </div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    a = iorder[<a class="code" href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a>(p[0]-1,n)];</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    b = iorder[p[0]];</div>
@@ -509,11 +510,11 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="comment">/* add cost between c and b if non symetric TSP */</span> </div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;}</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno"><a class="line" href="tsplib_8c.html#ae3e7f733bb18908171d4c80826281aa5">  402</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="tsplib_8c.html#ae3e7f733bb18908171d4c80826281aa5">doReverse</a>(<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>)</div>
+<div class="line"><a name="l00402"></a><span class="lineno"><a class="line" href="tsplib_8c.html#ae3e7f733bb18908171d4c80826281aa5">  402</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="tsplib_8c.html#ae3e7f733bb18908171d4c80826281aa5">doReverse</a>(<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> p)</div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;{</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="keywordtype">int</span> i, nswaps, first, last, tmp;</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keywordtype">int</span> *iorder = tsp-&gt;<a class="code" href="structtspstruct.html#abcf628c7b11546daaf88e486b6a625dc">iorder</a>;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a>       = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordtype">int</span> n       = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    </div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="comment">/* reverse path b...c */</span></div>
@@ -531,12 +532,12 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="keyword">static</span></div>
 <div class="line"><a name="l00422"></a><span class="lineno"><a class="line" href="tsplib_8c.html#a9aed19b4a7f86f89c7182bba8847f383">  422</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="tsplib_8c.html#a9aed19b4a7f86f89c7182bba8847f383">annealing</a>(<a class="code" href="structtspstruct.html">TSP</a> *tsp)</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;{</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <a class="code" href="classPath.html">Path</a>   <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <a class="code" href="classPath.html">Path</a>   p;</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keywordtype">int</span>    i, j, pathchg;</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordtype">int</span>    numOnPath, numNotOnPath;</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <a class="code" href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a>    pathlen;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordtype">int</span>    <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a> = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="keywordtype">double</span> energyChange, <a class="code" href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a>;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordtype">int</span>    n = tsp-&gt;<a class="code" href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">n</a>;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="keywordtype">double</span> energyChange, T;</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    pathlen = <a class="code" href="tsplib_8c.html#a5209f80fbb08309b494dfa1df9f2a58e">pathLength</a> (tsp); </div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;</div>
@@ -754,10 +755,8 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;}</div>
 <div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;</div>
 <div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;<span class="comment">/* EOF */</span></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a42c4fbf7be7fec3bf7583c5f0e80bf4c"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a42c4fbf7be7fec3bf7583c5f0e80bf4c">p</a></div><div class="ttdeci">pickup * p</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00075">vrppdtw/src/pdp_solver.cpp:75</a></div></div>
 <div class="ttc" id="tsplib_8c_html_a1bc50cbc2266b856dd21688fc683d1a6"><div class="ttname"><a href="tsplib_8c.html#a1bc50cbc2266b856dd21688fc683d1a6">TSP</a></div><div class="ttdeci">struct tspstruct TSP</div></div>
 <div class="ttc" id="structtspstruct_html_ad1fc38d6bb4ceee6b8802b11f7a5cb95"><div class="ttname"><a href="structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95">tspstruct::n</a></div><div class="ttdeci">int n</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00178">tsplib.c:178</a></div></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a76f11d9a0a47b94f72c2d0e77fb32240"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a76f11d9a0a47b94f72c2d0e77fb32240">n</a></div><div class="ttdeci">int n</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00367">vrppdtw/src/pdp_solver.cpp:367</a></div></div>
 <div class="ttc" id="structtspstruct_html_abcf628c7b11546daaf88e486b6a625dc"><div class="ttname"><a href="structtspstruct.html#abcf628c7b11546daaf88e486b6a625dc">tspstruct::iorder</a></div><div class="ttdeci">int * iorder</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00182">tsplib.c:182</a></div></div>
 <div class="ttc" id="tsplib_8c_html_ab0a5a46de18c70b767bea8e556b77560"><div class="ttname"><a href="tsplib_8c.html#ab0a5a46de18c70b767bea8e556b77560">COOLING</a></div><div class="ttdeci">#define COOLING</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00104">tsplib.c:104</a></div></div>
 <div class="ttc" id="tsplib_8c_html_a22e35eb1b689cb7f0d464874d6100254"><div class="ttname"><a href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a></div><div class="ttdeci">#define MOD(i, n)</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00188">tsplib.c:188</a></div></div>
@@ -770,7 +769,6 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="ttc" id="structtspstruct_html_a2990ebe17a52ed76f92bf86dfa304b5e"><div class="ttname"><a href="structtspstruct.html#a2990ebe17a52ed76f92bf86dfa304b5e">tspstruct::b</a></div><div class="ttdeci">float b[4]</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00185">tsplib.c:185</a></div></div>
 <div class="ttc" id="tsplib_8c_html_a4ae508a8d305b460df210d2a0c2a5574"><div class="ttname"><a href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a></div><div class="ttdeci">#define D(x, y)</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00189">tsplib.c:189</a></div></div>
 <div class="ttc" id="tsplib_8c_html_a724484a23cab81c63f4c7f9136a70371"><div class="ttname"><a href="tsplib_8c.html#a724484a23cab81c63f4c7f9136a70371">RANDOM</a></div><div class="ttdeci">#define RANDOM</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00167">tsplib.c:167</a></div></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_afed088663f8704004425cdae2120b9b3"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#afed088663f8704004425cdae2120b9b3">len</a></div><div class="ttdeci">int len</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00076">vrppdtw/src/pdp_solver.cpp:76</a></div></div>
 <div class="ttc" id="tsplib_8c_html_aa4c2a5552e9bc49b1816ff532f558c74"><div class="ttname"><a href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a></div><div class="ttdeci">static int a</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00114">tsplib.c:114</a></div></div>
 <div class="ttc" id="tsplib_8c_html_a770b56e97b0b7c07ddded2fbb6cf590a"><div class="ttname"><a href="tsplib_8c.html#a770b56e97b0b7c07ddded2fbb6cf590a">T_INIT</a></div><div class="ttdeci">#define T_INIT</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00102">tsplib.c:102</a></div></div>
 <div class="ttc" id="tsp_8h_html"><div class="ttname"><a href="tsp_8h.html">tsp.h</a></div></div>
@@ -778,13 +776,10 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="ttc" id="tsplib_8c_html_a2f63f9065e15b9994c188eda572b8415"><div class="ttname"><a href="tsplib_8c.html#a2f63f9065e15b9994c188eda572b8415">PRANDMAX</a></div><div class="ttdeci">#define PRANDMAX</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00113">tsplib.c:113</a></div></div>
 <div class="ttc" id="tsplib_8c_html_ad743cf8bb46346b115dcecf0235e840c"><div class="ttname"><a href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a></div><div class="ttdeci">#define VISITED(x)</div></div>
 <div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00040">basePath_SSEC.hpp:40</a></div></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a84e0d58129b1cbf8f33b35fe2ffa640e"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a84e0d58129b1cbf8f33b35fe2ffa640e">c</a></div><div class="ttdeci">customer * c</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00074">vrppdtw/src/pdp_solver.cpp:74</a></div></div>
 <div class="ttc" id="structtspstruct_html_addd0ea89b527168145a1144f9ae835d9"><div class="ttname"><a href="structtspstruct.html#addd0ea89b527168145a1144f9ae835d9">tspstruct::dist</a></div><div class="ttdeci">double * dist</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00180">tsplib.c:180</a></div></div>
 <div class="ttc" id="tsplib_8c_html_af3f6f7c1af4a71dc8ab56260947c4ecd"><div class="ttname"><a href="tsplib_8c.html#af3f6f7c1af4a71dc8ab56260947c4ecd">findEulerianPath</a></div><div class="ttdeci">static int findEulerianPath(TSP *tsp)</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00200">tsplib.c:200</a></div></div>
 <div class="ttc" id="tsplib_8c_html_afa99ec4acc4ecb2dc3c2d05da15d0e3f"><div class="ttname"><a href="tsplib_8c.html#afa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a></div><div class="ttdeci">#define MAX(a, b)</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00192">tsplib.c:192</a></div></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a047a3df231eb7accc059a2d2d9d20fcf"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a047a3df231eb7accc059a2d2d9d20fcf">T</a></div><div class="ttdeci">std::vector&lt; Solution &gt; T</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00081">vrppdtw/src/pdp_solver.cpp:81</a></div></div>
 <div class="ttc" id="tsplib_8c_html_ae3e7f733bb18908171d4c80826281aa5"><div class="ttname"><a href="tsplib_8c.html#ae3e7f733bb18908171d4c80826281aa5">doReverse</a></div><div class="ttdeci">static void doReverse(TSP *tsp, Path p)</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00402">tsplib.c:402</a></div></div>
-<div class="ttc" id="vrppdtw_2src_2pdp__solver_8cpp_html_a3ee54ed5a04e9ed93e379a925ea82be8"><div class="ttname"><a href="vrppdtw_2src_2pdp__solver_8cpp.html#a3ee54ed5a04e9ed93e379a925ea82be8">d</a></div><div class="ttdeci">depot d</div><div class="ttdef"><b>Definition:</b> <a href="vrppdtw_2src_2pdp__solver_8cpp_source.html#l00071">vrppdtw/src/pdp_solver.cpp:71</a></div></div>
 <div class="ttc" id="tsp_8h_html_a3834ad0136a8b95a6589500e4009fe9a"><div class="ttname"><a href="tsp_8h.html#a3834ad0136a8b95a6589500e4009fe9a">DTYPE</a></div><div class="ttdeci">#define DTYPE</div><div class="ttdef"><b>Definition:</b> <a href="tsp_8h_source.html#l00032">tsp.h:32</a></div></div>
 <div class="ttc" id="tsplib_8c_html_a148e3876077787926724625411d6e7a9"><div class="ttname"><a href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a></div><div class="ttdeci">static int b</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00115">tsplib.c:115</a></div></div>
 <div class="ttc" id="tsplib_8c_html_add2d0ac84d9279cf24fa83486e04840b"><div class="ttname"><a href="tsplib_8c.html#add2d0ac84d9279cf24fa83486e04840b">TRIES_PER_T</a></div><div class="ttdeci">#define TRIES_PER_T</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00105">tsplib.c:105</a></div></div>
@@ -812,7 +807,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="tsplib_8c.html">tsplib.c</a></li>
-    <li class="footer">Generated on Tue Jun 21 2016 15:21:27 for pgRouting by
+    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

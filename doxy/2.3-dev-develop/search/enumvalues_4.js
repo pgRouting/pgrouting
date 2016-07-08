@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['on_5fdiscover_5fedge_5fnum',['on_discover_edge_num',['../namespaceboost_1_1detail.html#a146216ddf0100c830e7568743c126d9aa234ceeb18b6dac9a2ca2cb5f5da1fc4b',1,'boost::detail']]],
-  ['on_5ffinish_5fedge_5fnum',['on_finish_edge_num',['../namespaceboost_1_1detail.html#a146216ddf0100c830e7568743c126d9aa4f16c73887b7e7c5186cf84010b2bb74',1,'boost::detail']]],
-  ['on_5finitialize_5fedge_5fnum',['on_initialize_edge_num',['../namespaceboost_1_1detail.html#a146216ddf0100c830e7568743c126d9aa7ea0bf62e83064d99125dc2be006d88a',1,'boost::detail']]],
-  ['on_5fstart_5fedge_5fnum',['on_start_edge_num',['../namespaceboost_1_1detail.html#a146216ddf0100c830e7568743c126d9aa17092b5bb7654370f552cd5ec1e41c6d',1,'boost::detail']]]
+  ['num',['num',['../structboost_1_1on__initialize__edge.html#a99f73a858bb9c9fc21ccac3dd32779bdadb02198d5f09f1f423cfc151f069a7fa',1,'boost::on_initialize_edge::num()'],['../structboost_1_1on__start__edge.html#a1bc96d4a39d521bfb1930ceddd4dbbb0a1ba8a0225cdb7f29024af90a0d382864',1,'boost::on_start_edge::num()'],['../structboost_1_1on__discover__edge.html#a75c683221093cfad8fb4d054d1530d69a1979595a8d5b621bc22a7a1356967098',1,'boost::on_discover_edge::num()'],['../structboost_1_1on__finish__edge.html#a73aad29847aef0eccd3b498e2d475eb0ab580bda0dd451847d63af233ffa4f925',1,'boost::on_finish_edge::num()']]]
 ];

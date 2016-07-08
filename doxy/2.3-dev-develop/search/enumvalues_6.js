@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['undirected',['UNDIRECTED',['../pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677',1,'pgr_types.h']]]
+  ['text',['TEXT',['../pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bba9a4a47c1606e295076055a9cc4373197',1,'pgr_types.h']]]
 ];

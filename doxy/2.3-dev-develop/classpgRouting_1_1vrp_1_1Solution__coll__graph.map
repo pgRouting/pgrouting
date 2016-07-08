@@ -1,0 +1,15 @@
+<map id="pgRouting::vrp::Solution" name="pgRouting::vrp::Solution">
+<area shape="rect" id="node3" href="$classpgRouting_1_1vrp_1_1Vehicle__pickDeliver.html" title="pgRouting::vrp::Vehicle\l_pickDeliver" alt="" coords="377,998,535,1039"/>
+<area shape="rect" id="node4" href="$classpgRouting_1_1vrp_1_1Vehicle.html" title="pgRouting::vrp::Vehicle" alt="" coords="578,907,736,933"/>
+<area shape="rect" id="node6" href="$classpgRouting_1_1vrp_1_1Vehicle__node.html" title="Extend Tw_node to evaluate the vehicle at node level. " alt="" coords="546,701,739,728"/>
+<area shape="rect" id="node9" href="$classpgRouting_1_1vrp_1_1Pgr__pickDeliver.html" title="pgRouting::vrp::Pgr\l_pickDeliver" alt="" coords="349,481,483,522"/>
+<area shape="rect" id="node7" href="$classpgRouting_1_1vrp_1_1Tw__node.html" title="pgRouting::vrp::Tw_node" alt="" coords="587,601,755,628"/>
+<area shape="rect" id="node8" href="$classpgRouting_1_1vrp_1_1Node.html" title="The Node class defines a point in 2D space with an id. " alt="" coords="597,488,744,515"/>
+<area shape="rect" id="node12" href="$classpgRouting_1_1vrp_1_1Order.html" title="pgRouting::vrp::Order" alt="" coords="121,601,268,628"/>
+<area shape="rect" id="node16" href="$structCustomer__t.html" title="Customer_t" alt="" coords="383,261,473,288"/>
+<area shape="rect" id="node17" title="STL class. " alt="" coords="541,368,667,395"/>
+<area shape="rect" id="node18" title="STL class. " alt="" coords="521,254,685,295"/>
+<area shape="rect" id="node19" title="STL class. " alt="" coords="537,161,671,202"/>
+<area shape="rect" id="node20" title="STL class. " alt="" coords="527,83,680,109"/>
+<area shape="rect" id="node21" title="STL class. " alt="" coords="554,5,653,32"/>
+</map>

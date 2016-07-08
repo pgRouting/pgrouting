@@ -13,8 +13,8 @@ var searchData=
   ['end_5fvid',['end_vid',['../structRoutes__t.html#aa6c10a0d33fe8700ea0ad3d66a373fc7',1,'Routes_t']]],
   ['endcost',['endCost',['../structGraphDefinition_1_1CostHolder.html#afe14356d8c21e54fc262b4bf6f008377',1,'GraphDefinition::CostHolder']]],
   ['endnode',['EndNode',['../structGraphEdgeInfo.html#a9c395e4d6b2743a3298ae128c2772748',1,'GraphEdgeInfo']]],
-  ['epsilon',['epsilon',['../classpgRouting_1_1tsp_1_1TSP.html#a29b7b5077c49af318893b57622450fff',1,'pgRouting::tsp::TSP']]],
+  ['epsilon',['epsilon',['../classpgRouting_1_1tsp_1_1TSP.html#a29b7b5077c49af318893b57622450fff',1,'pgRouting::tsp::TSP::epsilon()'],['../classpgRouting_1_1vrp_1_1Solution.html#a37d60ff98a95015bf71a8ba90206d04b',1,'pgRouting::vrp::Solution::EPSILON()']]],
   ['err_5fmsg',['err_msg',['../BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d',1,'BDATester.cpp']]],
-  ['etime',['Etime',['../structCustomer.html#a3ac61261a4929f338200131d67b6bbb6',1,'Customer::Etime()'],['../structDepot.html#a6c243b256dc71bd9f66ffa1e1ce3dcd7',1,'Depot::Etime()'],['../structCustomer__type.html#ace7cd0b1f70fbec72998939b1c035d2d',1,'Customer_type::Etime()'],['../structDepot.html#a2e38a4180a2bb59fa1dce7f0bbea5b21',1,'Depot::Etime()'],['../structCustomer.html#abe9373978bfaff16e01fb1cc45d44846',1,'Customer::Etime()']]],
+  ['etime',['Etime',['../structCustomer__t.html#a77a5e3a2ecadd21f35b3f9c884092087',1,'Customer_t']]],
   ['etype',['eType',['../structColumn__info__t.html#a80df9b5f6ef4c51effc2da146bb0d477',1,'Column_info_t']]]
 ];
