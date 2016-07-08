@@ -10,7 +10,7 @@ version: 2.3.{build}
 branches:
   only:
     - test/appveyor
-    - pickDeliver/pgr_pickDeliverClass
+    - rewrite/vrppdtw
     - master
     - develop
 
