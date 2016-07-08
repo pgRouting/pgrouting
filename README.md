@@ -24,7 +24,7 @@ The *develop* branch reflects the 2.3.0-dev
 	<tr>
 		<td>master</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=master" alt="Build Status"/></td>
-		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=mastser&svg=true" alt="Appveyor Status"/></td>
+		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=master&svg=true" alt="Appveyor Status"/></td>
 	</tr>
 	<tr>
 		<td>develop</td>
