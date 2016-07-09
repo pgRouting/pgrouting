@@ -9,7 +9,7 @@
 
 .. _pgr_withPointsCostMatrix:
 
-pgr_withPointsCostMatrix
+pgr_withPointsCostMatrix - proposed
 ===============================================================================
 
 
@@ -41,7 +41,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: withPointsCostMatrix(Minimal Signature) -- New
+    single: withPointsCostMatrix(Minimal use) - Proposed
 
 Minimal Signature
 ...............................................................................
@@ -64,7 +64,7 @@ The minimal signature:
 
 
 .. index::
-    single: withPointsCostMatrix(Complete Signature) -- New
+    single: withPointsCostMatrix(Complete Signature) - Proposed
 
 Complete Signature
 ...............................................................................

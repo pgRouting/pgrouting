@@ -1,7 +1,7 @@
 \i setup.sql
 SELECT plan(40);
 SET client_min_messages TO WARNING;
-SELECT has_function('pgr_tsp');
+SELECT has_function('pgr_contractgraph');
 
 SELECT has_function('pgr_contractgraph', ARRAY[
     'text', 'bigint[]', 'bigint[]',
@@ -27,7 +27,9 @@ SELECT array[
 'type',
 'source',
 'target',
-'contracted_vertices'];
+'cost',
+'contracted_vertices',
+'contracted_vertices_size'];
 
 SELECT set_has(
     $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contractgraph'$$,

@@ -9,22 +9,19 @@
 
 .. _pgr_text_to_points:
 
-pgr_textToPoints
+pgr_textToPoints - Deprecated Function
 ==============================================================================
 
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported.
+    * May be removed from future versions.
+    * There is no replacement.
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_textToPoints`` - Converts a text string of the format "x,y;x,y;x,y;..." into and array of point geometries.
-
-.. warning::  This is a deprecated function
-
-     - Is not officially in the release.
-     - Name could change.
-     - Signature could change.
-     - Needs testing.
-     - Functionality could change.
 
 Synopsis
 ------------------------------------------------------------------------------
@@ -64,8 +61,8 @@ Examples
 See Also
 -----------------------------------------------------------------------------
 
-* :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``node_id`` based on closest edge.
-* :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
+* :ref:`pgr_point_to_edgenode`
+* :ref:`pgr_points_to_vids`
 
 .. rubric:: Indices and tables
 

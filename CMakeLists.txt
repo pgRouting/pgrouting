@@ -140,6 +140,15 @@ string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQ
 message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
+#TODO maybe needs a wrapper for visual studio
+if(WIN32 AND MSVC)
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_DEPRECATE")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_DEPRECATE")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_WARNINGS")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_WARNINGS")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_NONSTDC_NO_DEPRECATE")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -EHsc")
+endif()
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
   message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
@@ -210,6 +219,7 @@ endif(WIN32)
 # TODO default compilation with -DNDEBUG 
 
 #compiler directives
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}")
 if(APPLE)
   # support GNU(Xcode<4) and Clang(Xcode>=4)
   if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
@@ -218,24 +228,24 @@ if(APPLE)
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
   endif()
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -g -frounding-math -Wno-deprecated")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -std=c++0x -frounding-math")
   else()
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -std=c++0x -g -Wno-deprecated")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -std=c++0x")
   endif()
 
 elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 -fPIC -g -Wall  -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -g -Wall -O2 -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra  -frounding-math -Wno-deprecated")
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 -fPIC -g -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2  -g -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra  -frounding-math")
 
-    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g  -frounding-math")
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -g -std=c++0x -frounding-math -Wno-deprecated")
+    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -frounding-math")
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -std=c++0x -frounding-math")
 
 elseif(WIN32)
   if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
+      set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
   endif()
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -g -DNDEBUG -std=c++0x -frounding-math -Wno-deprecated")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -DNDEBUG -std=c++0x -frounding-math")
   endif()
 endif()
 
@@ -269,8 +279,8 @@ set(PgRouting_SOURCE_NAMES
     "tsp" #2.0
 
     "vrp_basic"
-    "vrppdtw"
     "contraction"
+    "pickDeliver"
 
     )
 
@@ -289,6 +299,8 @@ set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
     "apsp_johnson"  #V2.0
     "apsp_warshall" #V2.0
     "kdijkstra"     #V2.0
+    "vrppdtw" #2.1
+
     "convenience"
     "topology"
     "label_graph"

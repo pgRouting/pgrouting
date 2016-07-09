@@ -9,7 +9,7 @@
 
 .. _pgr_withPointsKSP:
 
-pgr_withPointsKSP
+pgr_withPointsKSP - Proposed
 ===============================================================================
 
 
@@ -18,9 +18,9 @@ Name
 
 ``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm.
 
-.. note::  This is a proposed function for version 2.3.
+.. note::  This is a proposed function
 
-     - Is not officially in the version 2.2 release.
+     - Is not officially in the release.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -48,7 +48,7 @@ Signatures
 -----------
 
 .. index::
-    single: withPointsKSP(Minimal Signature) -- proposed in V2.2
+    single: withPointsKSP(Minimal Signature) - Proposed
 
 Minimal Usage
 ....................................
@@ -72,7 +72,7 @@ The minimal usage:
    :end-before: --q2
 
 .. index::
-    single: withPointsKSP(Complete Signature) -- proposed in V2.2
+    single: withPointsKSP(Complete Signature) - Proposed
 
 Complete Signature
 ....................................
