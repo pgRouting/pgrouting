@@ -9,7 +9,7 @@
 
 .. _pgr_dijkstraCostMatrix:
 
-pgr_dijkstraCostMatrix
+pgr_dijkstraCostMatrix - proposed
 ===============================================================================
 
 Name
@@ -42,7 +42,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstraCostMatrix(edges_sql, start_vids) -- New
+    single: dijkstraCostMatrix(Minimal Use) - Proposed
 
 Minimal Signature
 ...............................................................................
@@ -65,7 +65,7 @@ The minimal signature:
 
 
 .. index::
-    single: dijkstraCostMatrix(Complete Signature) -- New
+    single: dijkstraCostMatrix(Complete Signature) - Proposed
 
 Complete Signature
 ...............................................................................

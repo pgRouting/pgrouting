@@ -20,9 +20,11 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
-// #define DEBUG
+#include "postgres.h"
+#include "executor/spi.h"
+
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
@@ -30,17 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./customers_input.h"
 
 
-
-
 static
-void pgr_fetch_customer(
+void fetch_customer(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info[9],
-        Customer *customer) {
-
+        Customer_t *customer) {
     customer->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    customer->x = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
+    customer->x = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
     customer->y = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
     customer->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
     customer->Etime = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
@@ -51,25 +50,28 @@ void pgr_fetch_customer(
     customer->Ddist = 0;
 }
 
-void
-pgr_get_customers(
-        char *sql,
-        Customer **customers,
-        size_t *total_customers) {
-    const int tuple_limit = 1000;
 
-    size_t ntuples;
-    size_t total_tuples = 0;
+
+void
+pgr_get_customers_data(
+        char *customers_sql,
+        Customer_t **customers,
+        size_t *total_customers) {
+    const int tuple_limit = 1000000;
+
+    PGR_DBG("pgr_get_customers_data");
+    PGR_DBG("%s", customers_sql);
 
     Column_info_t info[9];
 
     int i;
     for (i = 0; i < 9; ++i) {
         info[i].colNumber = -1;
-        info[i].type = -1;
+        info[i].type = 0;
         info[i].strict = true;
         info[i].eType = ANY_NUMERICAL;
     }
+
     /*!
       int64_t id;
       double x;
@@ -82,13 +84,14 @@ pgr_get_customers(
       int64_t Dindex;
       double Ddist;
       */
+
     info[0].name = strdup("id");
     info[1].name = strdup("x");
     info[2].name = strdup("y");
     info[3].name = strdup("demand");
-    info[4].name = strdup("etime");
-    info[5].name = strdup("ltime");
-    info[6].name = strdup("stime");
+    info[4].name = strdup("opentime");
+    info[5].name = strdup("closetime");
+    info[6].name = strdup("servicetime");
     info[7].name = strdup("pindex");
     info[8].name = strdup("dindex");
 
@@ -97,43 +100,46 @@ pgr_get_customers(
     info[8].eType = ANY_INTEGER;
 
 
-    void *SPIplan;
-    SPIplan = pgr_SPI_prepare(sql);
+    size_t ntuples;
+    size_t total_tuples;
 
+    void *SPIplan;
+    SPIplan = pgr_SPI_prepare(customers_sql);
     Portal SPIportal;
     SPIportal = pgr_SPI_cursor_open(SPIplan);
 
-
     bool moredata = TRUE;
-    (*total_customers) = total_tuples;
+    (*total_customers) = total_tuples = 0;
 
+    /* on the first tuple get the column numbers */
 
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
-        if (total_tuples == 0)
+        if (total_tuples == 0) {
             pgr_fetch_column_info(info, 9);
-
+        }
         ntuples = SPI_processed;
         total_tuples += ntuples;
-
+        PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {
             if ((*customers) == NULL)
-                (*customers) = (Customer *)palloc0(total_tuples * sizeof(Customer));
+                (*customers) = (Customer_t *)palloc0(
+                        total_tuples * sizeof(Customer_t));
             else
-                (*customers) = (Customer *)repalloc((*customers), total_tuples * sizeof(Customer));
+                (*customers) = (Customer_t *)repalloc(
+                        (*customers), total_tuples * sizeof(Customer_t));
 
             if ((*customers) == NULL) {
                 elog(ERROR, "Out of memory");
             }
 
-            int t;
+            size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %d customer tupĺes", ntuples);
-
+            PGR_DBG("processing %ld", ntuples);
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
-                pgr_fetch_customer(&tuple, &tupdesc, info,
+                fetch_customer(&tuple, &tupdesc, info,
                         &(*customers)[total_tuples - ntuples + t]);
             }
             SPI_freetuptable(tuptable);
@@ -144,12 +150,10 @@ pgr_get_customers(
 
     if (total_tuples == 0) {
         (*total_customers) = 0;
-        PGR_DBG("NO _customers");
+        PGR_DBG("NO customers");
         return;
     }
 
-
     (*total_customers) = total_tuples;
-    PGR_DBG("Finish reading %ld customers, %ld", total_tuples, (*total_customers));
+    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_customers));
 }
-

@@ -676,7 +676,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_1(
                 .distance_map(&distances[0])
                 .visitor(dijkstra_one_goal_visitor(target)));
     }
-    catch(found_goals &fg) {
+    catch(found_goals &) {
         found = true;  // Target vertex found
     }
     return found;
@@ -698,7 +698,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_distance(G &graph, V source, double distance) {
                         nodesInDistance,
                         distances)));
     }
-    catch(found_goals &fg) {
+    catch(found_goals &) {
         found = true;
     }
     return found;
@@ -719,7 +719,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
                 .distance_map(&distances[0])
                 .visitor(dijkstra_many_goal_visitor(targets)));
     }
-    catch(found_goals &fg) {
+    catch(found_goals &) {
         found = true;  // Target vertex found
     }
     return found;

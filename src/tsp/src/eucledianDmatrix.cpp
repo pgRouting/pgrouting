@@ -130,7 +130,9 @@ eucledianDmatrix::set_ids() {
         ids.push_back(data.id);
     }
     std::sort(ids.begin(), ids.end());
+#ifndef NDEBUG
     auto total = ids.size();
+#endif
     ids.erase(std::unique(ids.begin(), ids.end()), ids.end());
     pgassertwm(total == ids.size(), "Duplicated id found");
 }
