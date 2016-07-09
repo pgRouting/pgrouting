@@ -31,17 +31,6 @@ typedef struct
 
 } PathElement;
 
-#if 0
-typedef struct 
-{
-	char *contracted_graph_name;
-	char *contracted_graph_blob;
-	char *removedVertices;
-	char *removedEdges;
-	char *psuedoEdges;
-} pgr_contracted_blob;
-#endif
-
 typedef struct 
 {
 	int64_t seq;
@@ -49,7 +38,9 @@ typedef struct
 	char *type;
 	int64_t source;
 	int64_t target;
-	char *contracted_vertices;
+	double cost;
+	int64_t *contracted_vertices;
+	int contracted_vertices_size;
 } pgr_contracted_blob;
 
 //represents the type of graph

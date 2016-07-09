@@ -142,19 +142,34 @@ Routing Functions
     
 
 *******************************************************************************
-Available Functions but not official pgRouting functions
+Stable Proposed Functions
 *******************************************************************************
 
-  - :ref:`proposedNext`
-  - :ref:`proposed`
-
+..
+    ROUTING FUNCTIONS SECTION
+    :hidden:
+    :maxdepth: 0
+    
 .. toctree::
     :hidden:
 
     ../src/proposedNext
+
+.. include:: ../src/proposedNext.rst
+   :start-after: from-here
+   :end-before: to-here
+
+
+*******************************************************************************
+Available Functions but not official pgRouting functions
+*******************************************************************************
+
+- :ref:`proposed`
+
+.. toctree::
+    :hidden:
+
     ../src/proposed
-
-
 
 
 *******************************************************************************

@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 // TODO(rohith) Check style.
-// #include "utils/lsyscache.h"
+#include "utils/lsyscache.h"
  #include "utils/builtins.h"
 
 /*
@@ -187,7 +187,6 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
 
-//#ifdef DEBUG
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 forbidden_vertices,
@@ -198,10 +197,9 @@ contractGraph(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
-//#endif
-
-        /*                                                                             */
-        /*******************************************************************************/
+        PGR_DBG("Entered c code\n");
+        PGR_DBG("Returned %d tuples\n", (int)result_count);
+        
 
         funcctx->max_calls = (uint32_t)result_count;
         funcctx->user_fctx = result_tuples;
@@ -225,44 +223,69 @@ contractGraph(PG_FUNCTION_ARGS) {
         HeapTuple   tuple;
         Datum       result;
         Datum       *values;
+        Datum       *contracted_vertices_array;
         char        *nulls;
 
-        /******************************************************************/
-        /*                          MODIFY!!!!!                           */
-        /*  This has to match you ouput otherwise the server crashes      */
-        /*
-           OUT contracted_graph_name TEXT,
-           OUT contracted_graph_blob TEXT,
-           OUT removedVertices TEXT,
-           OUT removedEdges TEXT,
-           OUT psuedoEdges TEXT
-         *******************************************************************/
 
+        ArrayType * arrayType; 
+        int16 typlen; 
+        bool typbyval; 
+        char typalign;
 
-        values =(Datum *)palloc(4 * sizeof(Datum));
-        // values = (char **) palloc(5 * sizeof(char *));
-        nulls = palloc(5 * sizeof(bool));
+        values =(Datum *)palloc(8 * sizeof(Datum));
+        nulls = palloc(8 * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < 8; ++i) {
             nulls[i] = false;
         }
 
+        int contracted_vertices_size = 
+        (int)result_tuples[call_cntr].contracted_vertices_size;
+
+        contracted_vertices_array = (Datum *)palloc(sizeof(Datum) * 
+        (size_t)contracted_vertices_size);
+        for (i = 0; i < contracted_vertices_size; ++i) {
+            //PGR_DBG("Storing cv %d",result_tuples[call_cntr].contracted_vertices[i]);
+            contracted_vertices_array[i] = 
+            Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
+        }
+
+        get_typlenbyvalalign(INT4OID, &typlen, &typbyval, &typalign);
+        PGR_DBG("typlen %d",typlen);
+        PGR_DBG("typbyval %d",typbyval);
+        PGR_DBG("typalign %c",typalign);
+
+        arrayType =  construct_array(contracted_vertices_array,
+            contracted_vertices_size,
+            INT4OID,  typlen, typbyval, typalign);
+
+        TupleDescInitEntry(tuple_desc, (AttrNumber) 7, "contracted_vertices", 
+        INT4ARRAYOID, -1, 0); 
+
         #if 0
-        PGR_DBG("Storing graphname %s",result_tuples->contracted_graph_name);
-        PGR_DBG("Storing blob %s",result_tuples->contracted_graph_blob);
-        PGR_DBG("Storing rv %s",result_tuples->removedVertices);
-        PGR_DBG("Storing re %s",result_tuples->removedEdges);
-        PGR_DBG("Storing pe %s",result_tuples->psuedoEdges);
+        PGR_DBG("Storing id %d",result_tuples[call_cntr].id);
+        PGR_DBG("Storing type %s",result_tuples[call_cntr].type);
+        PGR_DBG("Storing source %d",result_tuples[call_cntr].source);
+        PGR_DBG("Storing target %d",result_tuples[call_cntr].target);
+        PGR_DBG("Storing cost %f",result_tuples[call_cntr].cost);
+        PGR_DBG("Storing contracted_vertices_size %d",result_tuples[call_cntr].contracted_vertices_size);
         #endif
+
+            
+
+
+        PGR_DBG("Storing complete\n");
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].id);
         values[2] = CStringGetTextDatum(result_tuples[call_cntr].type);
         values[3] = Int64GetDatum(result_tuples[call_cntr].source);
         values[4] = Int64GetDatum(result_tuples[call_cntr].target);
-        values[5] = CStringGetTextDatum(result_tuples[call_cntr].contracted_vertices);
-
+        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[6] = PointerGetDatum(arrayType);
+        values[7] = Int64GetDatum(result_tuples[call_cntr].contracted_vertices_size);
+        
         
 
         /*********************************************************************/

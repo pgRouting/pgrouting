@@ -14,8 +14,9 @@ pgr_astar - Deprecated Signature
 
 .. warning:: This function signature is deprecated!!!
 
-    * That means it has been replaced by new signatures and this signature is no longer supported, and may be removed from future versions.
-    * All code that uses the function signature should be converted to use its replacement :ref:`pgr_astar`.
+    * That means it has been replaced by new signature(s)
+    * This signature is no longer supported, and may be removed from future versions.
+    * All code that use this function signature should be converted to use its replacement :ref:`pgr_astar`.
 
 Name
 -------------------------------------------------------------------------------
@@ -79,14 +80,14 @@ Examples
 * Without ``reverse_cost``
 
 .. literalinclude:: doc-astar-v2.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
 
 * With ``reverse_cost``
 
 .. literalinclude:: doc-astar-v2.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q2
+   :end-before: -- q3
 
 
 The queries use the :ref:`sampledata` network.
@@ -95,5 +96,6 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`pgr_astar`
 * :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/A*_search_algorithm

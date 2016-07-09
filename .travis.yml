@@ -27,12 +27,9 @@ branches:
   only:
     - master
     - develop
-<<<<<<< HEAD
-    - ch/newclasses1
     - ch/newclasses
-=======
     - newSignature/tsp
->>>>>>> develop
+    - pickDeliver/pgr_pickDeliverClass
 
 env:
   - POSTGRESQL_VERSION=9.1

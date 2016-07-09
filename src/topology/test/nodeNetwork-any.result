@@ -26,12 +26,12 @@ NOTICE:  PROCESSING:
 NOTICE:  pgr_nodeNetwork('edge_table', 0.001, 'id', 'the_geom', 'noded', '<NULL>',  f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Processing, please wait .....
-NOTICE:    Splitted Edges: 2
-NOTICE:   Untouched Edges: 16
+NOTICE:    Splitted Edges: 3
+NOTICE:   Untouched Edges: 15
 NOTICE:       Total original Edges: 18
-NOTICE:   Edges generated: 4
-NOTICE:   Untouched Edges: 16
-NOTICE:         Total New segments: 20
+NOTICE:   Edges generated: 6
+NOTICE:   Untouched Edges: 15
+NOTICE:         Total New segments: 21
 NOTICE:   New Table: public.edge_table_noded
 NOTICE:  ----------------------------------
 OK
@@ -50,6 +50,7 @@ OK
 13|1
 13|2
 14|1
+14|2
 15|1
 16|1
 17|1
@@ -59,7 +60,7 @@ NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table_noded', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  20 edges
+NOTICE:  -------------> TOPOLOGY CREATED FOR  21 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table_noded is: public.edge_table_noded_vertices_pgr
 NOTICE:  ----------------------------------------------
@@ -73,9 +74,9 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 1
-NOTICE:                            Dead ends: 7
-NOTICE:  Potential gaps found near dead ends: 1
+NOTICE:                    Isolated segments: 0
+NOTICE:                            Dead ends: 6
+NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
 OK
@@ -84,7 +85,7 @@ NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Creating Topology, Please wait...
-NOTICE:  -------------> TOPOLOGY CREATED FOR  4 edges
+NOTICE:  -------------> TOPOLOGY CREATED FOR  6 edges
 NOTICE:  Rows with NULL geometry or NULL id: 0
 NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
 NOTICE:  ----------------------------------------------
@@ -98,9 +99,9 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 1
-NOTICE:                            Dead ends: 7
-NOTICE:  Potential gaps found near dead ends: 1
+NOTICE:                    Isolated segments: 0
+NOTICE:                            Dead ends: 6
+NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 0
 NOTICE:                      Ring geometries: 0
 OK
@@ -128,9 +129,9 @@ NOTICE:  Analyzing for isolated edges. Please wait...
 NOTICE:  Analyzing for ring geometries. Please wait...
 NOTICE:  Analyzing for intersections. Please wait...
 NOTICE:              ANALYSIS RESULTS FOR SELECTED EDGES:
-NOTICE:                    Isolated segments: 1
-NOTICE:                            Dead ends: 5
-NOTICE:  Potential gaps found near dead ends: 1
+NOTICE:                    Isolated segments: 0
+NOTICE:                            Dead ends: 3
+NOTICE:  Potential gaps found near dead ends: 0
 NOTICE:               Intersections detected: 5
 NOTICE:                      Ring geometries: 0
 OK

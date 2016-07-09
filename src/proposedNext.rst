@@ -9,24 +9,56 @@
 
 .. _proposedNext:
 
-Proposed Functions for version 2.4
+Stable proposed Functions
 ==================================
 
-:ref:`proposedNext`
+..
+    from-here
+    :ref:`proposedNext`
 
-This are proposed functions for version 2.4.
+.. note::
 
-  - They are not officially in the version 2.2 release.
-  - They will likely officialy be part of the version 2.4 release:
+    This are proposed functions for next mayor release.
 
-    - The functions make use of ANY-INTEGER and ANY-NUMERICAL
-    - Name might not change.
-    - Signature might not  change.
-    - Functionality might not change.
-    - pgTap tests have being done.
-    - Needs feedback from the comunity.
+      - They are not officially in the current release.
+      - They will likely officialy be part of the next mayor release:
 
+        - The functions make use of ANY-INTEGER and ANY-NUMERICAL
+        - Name might not change.
+        - Signature might not change.
+        - Functionality might not change.
+        - pgTap tests have being done.
+        - Documentation is finished.
 
+- For TSP preprocessing 
 
-.. Note:: No current proposed functions
+  - :ref:`CostMatrix`
+
+    - :ref:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to calculate a cost matrix.
+    - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+
+- As part of the :ref:`dijkstra`
+
+  - :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
+  - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
+
+- A new :ref:`withPoints`
+
+  - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+  - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+  - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+  - :ref:`pgr_withPointsKSP` - K shortest paths with points.
+  - :ref:`pgr_withPointsDD` - Driving distance.
+
+..
+    to-here
+
+.. toctree::
+    :hidden:
+
+    ../src/costMatrix/doc/costMatrix
+    ../src/costMatrix/doc/pgr_dijkstraCostMatrix
+    ../src/dijkstra/doc/pgr_dijkstraVia
+    ../src/withPoints/doc/withPoints
+
 

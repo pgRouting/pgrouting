@@ -9,7 +9,7 @@
 
 .. _pgr_withPointsDD:
 
-pgr_withPointsDD
+pgr_withPointsDD - Proposed
 ===============================================================================
 
 
@@ -18,9 +18,9 @@ Name
 
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
 
-.. note::  This is a proposed function for version 2.3.
+.. note::  This is a proposed function
 
-     - Is not officially in the version 2.2 release.
+     - Is not officially in the release.
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -51,7 +51,7 @@ Signatures
 ------------
 
 .. index::
-    single: withPointsDD(Minimal Use) -- proposed in V2.2
+    single: withPointsDD(Minimal Use) - proposed
 
 Minimal Use
 ..................................
@@ -75,7 +75,7 @@ The minimal signature:
    :end-before: --q2
 
 .. index::
-    single: withPointsDD(Single Start Vertex) -- proposed in V2.2
+    single: withPointsDD(Single Start Vertex) - proposed
 
 Driving distance from a single point
 ..............................................
@@ -95,7 +95,7 @@ Finds the driving distance depending on the optional parameters setup.
    :end-before: --q3
 
 .. index::
-    single: withPointsDD(Multiple Starting Vertices) -- proposed in V2.2
+    single: withPointsDD(Multiple Starting Vertices) - proposed
 
 Driving distance from many starting points
 ..................................................

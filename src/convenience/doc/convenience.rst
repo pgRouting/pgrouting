@@ -25,7 +25,6 @@ be useful when building a larger application or handling input from say an
 Ajax handler.
 
   -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-  -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
   -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
 
 
@@ -42,7 +41,6 @@ See also
   :hidden:
 
   pgr_pointToEdgeNode
-  pgr_textToPoints
   pgr_pointsToVids
 
 
