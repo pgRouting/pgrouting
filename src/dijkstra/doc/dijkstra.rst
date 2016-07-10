@@ -9,13 +9,16 @@
 
 .. _dijkstra:
 
-pgr_dijkstra - Shortest Path Dijkstra
+Dijkstra - Family of functions
 ===============================================================================
 
   - :ref:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
-  - :ref:`pgr_dijkstraCost` -Get the aggregate cost of the shortest paths.
-  - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
 
+The following algorithms are based on pgr_dijkstra
+
+  - :ref:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths.
+  - :ref:`pgr_drivingDistance` - Get catchament information.
+  - :ref:`pgr_ksp` - Get the aggregate cost of the shortest paths.
 
 
 .. toctree::
@@ -23,11 +26,10 @@ pgr_dijkstra - Shortest Path Dijkstra
 
     ./pgr_dijkstra
     ./pgr_dijkstraCost
-    ./pgr_dijkstraVia
 
 
-The problem definition
------------------------
+The problem definition (Advanced documentation)
+-----------------------------------------------
 
 
 Given the following query:

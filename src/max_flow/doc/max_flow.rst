@@ -73,7 +73,6 @@ where:
 
   .. math::
         id_i = i
-
         residual\_capacity_i = capacity_i - flow_i
 
 

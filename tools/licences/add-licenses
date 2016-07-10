@@ -30,7 +30,7 @@ my %exclude = (
 my $gnu_license = "GNU_license.txt";
 my @GNU_LICENSE = loadLicense($gnu_license);
 my @GNU_BODY = @GNU_LICENSE;
-splice @GNU_BODY, 0, 6;
+splice @GNU_BODY, 0, 8;
 
 my $mit_license = "MIT_license.txt";
 my @MIT_LICENSE = loadLicense($mit_license);
@@ -65,8 +65,8 @@ for my $file (sort @files) {
     my $f = basename($file);
     next if $exclude{$f};
     my $task = get_task($file);
+    print "\n\n PROCESSING '$file' --- task '$task' \n";
     next if $task == 0;
-    print "\n\n PROCESSING '$file'\n";
     update_license($task, $file) if $DOUPDATES;
 }
 
@@ -111,18 +111,20 @@ sub get_task{
     #The license is not found
     if ($license_type == 0) {
         close(IN);
+        # task is "add a licence"
         return 1;
     }
 
     # look for the dividing line
     if ($license_type != 3) {
-        while ($line and ($line ne "------\n")) {
+        while ($line and ($line !~ "------")) {
             $line = <IN>;
         }
 
         #The dividing line is not found
         if (!$line) {
             close(IN);
+            # task is "add a licence"
             return 1;
         }
     }
@@ -138,12 +140,13 @@ sub get_task{
         $line = <IN>;
         if ($LICENSE_BODY[$i] ne $line) {
             close(IN);
+            # task is "update the licence"
             return 2;
         }
     }
 
     close(IN);
-    #print "License up to date\n";
+    # task is do nothing
     return 0;
 }
 
@@ -180,18 +183,19 @@ sub update_license {
     if ($task == 1) {
         print "  Adding full license\n";
         print "     --> Please remove old license and update names if needed\n";
+        $LICENSE[1] =~ s/__FILENAME__/$file_name/;
         @file = (@LICENSE, @file);
 
     } else {
-        print "  Changing Body of license\n";
         #task = 2
+        print "  Changing Body of license\n";
 
 
         # Find the dividing line
         my $first = 0;
         my $last = 0;
         if ($license_type !=3) {
-            while ($file[$first] ne "------\n") {
+            while ($file[$first] !~ "------") {
                 $first++;
             }
         } else {
@@ -202,7 +206,8 @@ sub update_license {
         $last = $first;
 
         # Find the last line
-        while ($file[$last] ne $LICENSE[$#LICENSE]) {
+        #while ($file[$last] =~ne $LICENSE[$#LICENSE]) {
+        while ( $file[$last] !~ /\*+PGR-/) {
             $last++;
         }
 

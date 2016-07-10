@@ -51,6 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "maximum_cardinality_matching_driver.h"
 
+
 PG_FUNCTION_INFO_V1(maximum_cardinality_matching);
 #ifndef _MSC_VER
 Datum
@@ -65,6 +66,7 @@ static
 void
 process(
     char *edges_sql,
+    bool directed,
     pgr_basic_edge_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
@@ -90,6 +92,7 @@ process(
     char *err_msg = NULL;
     do_pgr_maximum_cardinality_matching(
         edges,
+        directed,
         total_tuples,
         result_tuples,
         result_count,
@@ -136,6 +139,7 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
             pgr_text2char(PG_GETARG_TEXT_P(0)),
+            PG_GETARG_BOOL(1),
             &result_tuples,
             &result_count);
 
@@ -160,7 +164,7 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     call_cntr = funcctx->call_cntr;
     max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_flow_t *) funcctx->user_fctx;
+    result_tuples = (pgr_basic_edge_t *) funcctx->user_fctx;
 
     if (call_cntr < max_calls) {
         HeapTuple tuple;

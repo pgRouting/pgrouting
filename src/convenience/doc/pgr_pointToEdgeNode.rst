@@ -15,7 +15,6 @@ pgr_pointToEdgeNode
 .. index::
         single: pointToEdgeNode(Complete Signature) --proposed
 
-
 Name
 ------------------------------------------------------------------------------
 

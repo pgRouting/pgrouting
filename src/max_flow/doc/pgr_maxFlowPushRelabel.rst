@@ -53,6 +53,7 @@ The main characterics are:
   - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
   - The maximum flow through the graph can be calculated by aggregation on source/sink.
   - Returns nothing if source and sink are the same.
+  - Allows multiple sources and sinks (See signatures below).
   - Running time: :math:`O( V ^ 3)`
 
 Signature Summary
@@ -65,7 +66,10 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source,  sink)
+    pgr_maxflowpushrelabel(edges_sql, source\_vertex,  sink\_vertex)
+    pgr_maxflowpushrelabel(edges_sql, source\_vertices,  sink\_vertex)
+    pgr_maxflowpushrelabel(edges_sql, source\_vertex,  sink\_vertices)
+    pgr_maxflowpushrelabel(edges_sql, source\_vertices,  sink\_vertices)
     RETURNS SET OF (id, source, target, flow, residual_capacity)
       OR EMPTY SET
 

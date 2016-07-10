@@ -39,13 +39,13 @@ THE SOFTWARE.
 #include <utility>
 
 #include "MinHeap.h"
-#include "bdastar.h"
+#include "bdastar_driver.h"
 
 #define INF 1e15
 
 
 
-typedef std::vector<long> LongVector;
+typedef std::vector<size_t> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<double, int> PDI;
 
@@ -75,8 +75,8 @@ public:
 };
 
 typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
-typedef std::map<long,LongVector> Long2LongVectorMap;
-typedef std::map<long,long> Long2LongMap;
+typedef std::map<size_t,LongVector> Long2LongVectorMap;
+typedef std::map<size_t,size_t> Long2LongMap;
 typedef std::vector<GraphNodeInfo> GraphNodeVector;
 
 

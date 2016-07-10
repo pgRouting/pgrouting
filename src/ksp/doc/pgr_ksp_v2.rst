@@ -14,8 +14,10 @@ pgr_ksp - Deprecated Signature
 
 .. warning:: This function signature is deprecated!!!
 
-    * That means they have been replaced by a new signature, this signature is no longer supported, and may be removed from future versions.
-    * All code that uses the function signature should be converted to use its replacement :ref:`pgr_ksp`.
+    * That means it has been replaced by new signature(s)
+    * This signature is no longer supported, and may be removed from future versions.
+    * All code that use this function signature should be converted to use its replacement :ref:`pgr_ksp`.
+
 
 
 Name
@@ -95,5 +97,6 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`pgr_ksp`
 * :ref:`type_cost_result3`
 * http://en.wikipedia.org/wiki/K_shortest_path_routing

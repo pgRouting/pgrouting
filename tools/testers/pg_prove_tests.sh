@@ -32,6 +32,7 @@ run_psql -f setup_db.sql
 #TODO comment out peformance test before merging to MASTER
 
 
+pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 

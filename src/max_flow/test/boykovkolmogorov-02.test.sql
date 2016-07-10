@@ -1,11 +1,14 @@
 --These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
 
 
-/*
- * Calculates only the max flow value.
- * This works by aggregating on the outgoing flow on the source, or on the
- * incoming flow on the sink.
- */
-SELECT sum(flow) AS max_flow
-FROM pgr_maxflowboykovkolmogorov('SELECT * FROM edge_table', 6, 11)
-WHERE source = 6; -- Condition can be replaced with target = 11
+--Calculates the max flow from source #6 to sinks #12, #1, #13.
+SELECT * FROM pgr_maxflowboykovkolmogorov(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , 6, ARRAY[12,1,13]::INTEGER[]
+);

@@ -34,6 +34,8 @@ void pgr_check_any_integer_type(Column_info_t info);
 void pgr_check_any_numerical_type(Column_info_t info);
 void pgr_check_text_type(Column_info_t info);
 void pgr_check_char_type(Column_info_t info);
+void pgr_check_boolean_type(Column_info_t info);
+
 
 char pgr_SPI_getChar(
         HeapTuple *tuple,
@@ -56,5 +58,11 @@ char* pgr_SPI_getText(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
         Column_info_t info);
+
+bool pgr_SPI_getBool(
+    HeapTuple *tuple,
+    TupleDesc *tupdesc,
+    Column_info_t info);
+
 
 char* pgr_stradd(const char *a, const char *b);

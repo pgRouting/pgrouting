@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: maximum_cardinality_matching_Driver.h
+File: maximum_cardinality_matching_driver.h
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -40,6 +40,7 @@ extern "C" {
     void
         do_pgr_maximum_cardinality_matching(
             pgr_basic_edge_t *data_edges,
+            bool directed,
             size_t total_tuples,
             pgr_basic_edge_t **return_tuples,
             size_t *return_count,

@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./get_check_data.h"
 #include "./edges_input.h"
 #include "./time_msg.h"
+#include "pgr_types.h"
 
 static
 void fetch_basic_edge(
@@ -47,6 +48,7 @@ void fetch_basic_edge(
 
     edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
+
 
     (*valid_edges)++;
 }
@@ -452,7 +454,6 @@ get_edges_3_columns(
     info[2].name = strdup("target");
 
     info[0].strict = !ignore_id;
-
 
     void *SPIplan;
     SPIplan = pgr_SPI_prepare(sql);

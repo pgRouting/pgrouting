@@ -36,13 +36,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 
 #include "../../common/src/pgr_types.h"
-#include "bdsp.h"
+#include "bdsp_driver.h"
 
 #define INF 1e15
 
 
 
-typedef std::vector<long> LongVector;
+typedef std::vector<int64_t> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<double, int> PDI;
 
@@ -70,8 +70,8 @@ public:
 };
 
 typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
-typedef std::map<long,LongVector> Long2LongVectorMap;
-typedef std::map<long,long> Long2LongMap;
+typedef std::map<int64_t,LongVector> Long2LongVectorMap;
+typedef std::map<int64_t,int64_t> Long2LongMap;
 typedef std::vector<GraphNodeInfo*> GraphNodeVector;
 
 
