@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <vector>
 
-#include "pgr_maxflow.hpp"
+#include "pgr_maxflowapplications.hpp"
 #include "../../common/src/pgr_alloc.hpp"
 
 // #define DEBUG
@@ -48,6 +48,7 @@ extern "C" {
 void
 do_pgr_maximum_cardinality_matching(
     pgr_basic_edge_t *data_edges,
+    bool directed,
     size_t total_tuples,
     pgr_basic_edge_t **return_tuples,
     size_t *return_count,
@@ -55,17 +56,22 @@ do_pgr_maximum_cardinality_matching(
     std::ostringstream log;
 
     try {
-        PgrFlowGraph<FlowGraph> G;
-
-        G.create_max_cardinality_graph(data_edges, total_tuples);
-
-        std::vector<int64_t> mate_map (boost::num_vertices(G.boost_graph));
-        G.maximum_cardinality_matching(mate_map);
-
         std::vector<pgr_basic_edge_t> matched_vertices;
-        G.get_matched_vertices(matched_vertices, mate_map);
 
-
+        if(directed) {
+            PgrCardinalityGraph<BasicDirectedGraph> G;
+            G.create_max_cardinality_graph(data_edges, total_tuples);
+            std::vector<int64_t> mate_map (boost::num_vertices(G.boost_graph));
+            G.maximum_cardinality_matching(mate_map);
+            G.get_matched_vertices(matched_vertices, mate_map);
+        }
+        else {
+            PgrCardinalityGraph<BasicUndirectedGraph> G;
+            G.create_max_cardinality_graph(data_edges, total_tuples);
+            std::vector<int64_t> mate_map (boost::num_vertices(G.boost_graph));
+            G.maximum_cardinality_matching(mate_map);
+            G.get_matched_vertices(matched_vertices, mate_map);
+        }
 
         (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
         for (int i = 0; i < matched_vertices.size(); ++i) {

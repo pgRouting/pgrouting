@@ -41,11 +41,11 @@ CREATE OR REPLACE FUNCTION _pgr_executehelper(
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
-DROP FUNCTION pgr_edgedisjointpaths(text,bigint,bigint);
 CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
     IN edges_sql TEXT,
     IN source_vertex bigint,
     IN sink_vertex bigint,
+    IN directed BOOLEAN DEFAULT TRUE,
     OUT paths_number bigint
     )
   AS
@@ -53,10 +53,10 @@ CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
   BEGIN
 	paths_number := COALESCE((SELECT sum(flow)
 	FROM pgr_maxflowpushrelabel('
-	    SELECT id, source, target, 1 as capacity, CASE WHEN reverse THEN 1 ELSE 0 END AS reverse_capacity
+	    SELECT id, source, target, 1 as capacity, ' || CASE WHEN directed THEN '0' ELSE '1' END || ' AS reverse_capacity
 	    FROM (
-	        SELECT * FROM prova_helper(_pgr_get_statement(''' || $1 || '''))
-	        AS (id bigint, source bigint, target bigint, reverse boolean)
+	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
+	        AS (id bigint, source bigint, target bigint)
 	    ) AS f', source_vertex, sink_vertex)
 	WHERE source = source_vertex GROUP BY source_vertex), 0) as paths_number;
   END

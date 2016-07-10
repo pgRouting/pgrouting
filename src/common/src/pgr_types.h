@@ -111,7 +111,6 @@ typedef struct {
   int64_t id;
   int64_t source;
   int64_t target;
-  bool reverse;
 } pgr_basic_edge_t;
 
 typedef struct {

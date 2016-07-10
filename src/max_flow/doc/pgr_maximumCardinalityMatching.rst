@@ -12,16 +12,16 @@
    - change [...] (including the square braquets) to appropiate values
    - one file / function,  may signatures of the same function go in the same file
 
-.. _pgr_maxFlowPushRelabel:
+.. _pgr_maximumCardinalityMatching:
 
-pgr_maxFlowPushRelabel
-======================
+pgr_maximumCardinalityMatching
+==============================
 
 
 Name
 ----
 
-``pgr_maxFlowPushRelabel`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
+``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph. Implemented by Boost Graph Library.
 
 .. warning::  This is a proposed function.
 
@@ -31,7 +31,7 @@ Name
    keep if uses boost (this is a comment)
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/graph_theory_review.html#sec:network-flow-algorithms
+   :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
 
    Boost Graph Inside
 
@@ -39,22 +39,21 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Calculates the maximum flow in a directed graph from a source node to a sink node.
-Edges must be weighted with non-negative capacities.
-Developed by Goldberg and Tarjan.
+Calculates a maximum cardinality matching in a directed/undirected graph.
 Implementation details_.
 
-.. _details: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
+.. _details: http://www.boost.org/libs/graph/doc/maximum_matching.html
 
 Characteristics:
 ----------------
 
 The main characterics are:
-  - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
-  - The maximum flow through the graph can be calculated by aggregation on source/sink.
-  - Returns nothing if source and sink are the same.
-  - Allows multiple sources and sinks (See signatures below).
-  - Running time: :math:`O( V ^ 3)`
+  - Calculates one possible maximum cardinality matching in a graph.
+  - The graph can be directed or undirected.
+  - Running time: :math:`O( E*V * \alpha(E,V))`
+  - :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
+
+  .. _Ackermann function: https://en.wikipedia.org/wiki/Ackermann_function
 
 Signature Summary
 -----------------
@@ -66,42 +65,36 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source\_vertex,  sink\_vertex)
-    pgr_maxflowpushrelabel(edges_sql, source\_vertices,  sink\_vertex)
-    pgr_maxflowpushrelabel(edges_sql, source\_vertex,  sink\_vertices)
-    pgr_maxflowpushrelabel(edges_sql, source\_vertices,  sink\_vertices)
-    RETURNS SET OF (id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    pgr_maximumcardinalitymatching(edges_sql)
+    pgr_maximumcardinalitymatching(edges_sql, directed:=true)
+
+    RETURNS SET OF (id, source, target)
+        OR EMPTY SET
 
 
 ..
   This is a reminder of how your query looks like
-        pgr_maxFlowPushRelabel(
+        pgr_maximumcardinalitymatching(
             edges_sql TEXT,
-            source_vertex BIGINT,
-            sink_vertex BIGINT,
             OUT id BIGINT,
             OUT source BIGINT,
-            OUT target BIGINT,
-            OUT flow BIGINT,
-            OUT residual_capacity BIGINT
+            OUT target BIGINT
         )
 
-
 Signatures
-==========
+----------
 
-.. index:: 
-    single: pgr_maxFlowPushRelabel(edges_sql, source,  sink)
 
-The available signature calculates the maximum flow form one source vertex to one sink vertex.
-It is assumed that the graph is directed.
+Minimal signature
+.................
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source,  sink)
-    RETURNS SET OF (id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    pgr_maximumcardinalitymatching(edges_sql)
+    RETURNS SET OF (id, source, target) OR EMPTY SET
+
+The minimal signature calculates one possible maximum cardinality matching.
+If the directed parameter is not specified, it is assumed that the graph is directed.
 
 :Example:
 
@@ -126,8 +119,6 @@ Column                Type                  Description
 **id**                ``ANY-INTEGER``       Identifier of the edge.
 **source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
 **target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**capacity**          ``ANY-INTEGER``       Capacity of the edge `(source, target)`. Must be positive.
-**reverse_capacity**  ``ANY-INTEGER``       (optional) Weight of the edge `(target, source)`. Must be positive or null.
 ====================  ===================   =================================================
 
 Where:
@@ -142,8 +133,7 @@ Description of the parameters of the signatures
 Column            Type                   Description
 ================= ====================== =================================================
 **edges_sql**     ``TEXT``               SQL query as described above.
-**source_vertex** ``BIGINT``             Identifier of the source vertex.
-**sink_vertex**   ``BIGINT``             Identifier of the sink vertex.
+**directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Is true if unspecified.
 ================= ====================== =================================================
 
 
@@ -168,7 +158,7 @@ The cost and reverse_cost columns in the sample data are intended as capacity an
 See Also
 --------
 
-* https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
+* https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 
 .. rubric:: Indices and tables
 

@@ -200,34 +200,6 @@ class PgrFlowGraph {
       }
   }
 
-  void create_max_cardinality_graph(pgr_basic_edge_t *data_edges,
-                                    size_t total_tuples) {
-      std::set<int64_t> vertices;
-      for (size_t i = 0; i < total_tuples; ++i) {
-          vertices.insert(data_edges[i].source);
-          vertices.insert(data_edges[i].target);
-      }
-      for (int64_t id : vertices) {
-          V v = add_vertex(this->boost_graph);
-          this->id_to_V.insert(std::pair<int64_t, V>(id, v));
-          this->V_to_id.insert(std::pair<V, int64_t>(v, id));
-      }
-      bool added;
-
-      for (size_t i = 0; i < total_tuples; ++i) {
-          V v1 = this->id_to_V.find(data_edges[i].source)->second;
-          V v2 = this->id_to_V.find(data_edges[i].target)->second;
-          E e1;
-          boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
-          if (data_edges[i].reverse) {
-              E e2;
-              boost::tie(e2, added) =
-                  boost::add_edge(v2, v1, this->boost_graph);
-          }
-      }
-  }
-
-
   std::vector<pgr_flow_t> get_flow_edges() {
 
       std::vector<pgr_flow_t> flow_edges;
@@ -251,27 +223,6 @@ class PgrFlowGraph {
       return flow_edges;
   }
 
-  void get_matched_vertices(std::vector<pgr_basic_edge_t> &matched_vertices,
-                            const std::vector<int64_t> &mate_map) {
-      // I use a flow edge with null capacity/reverse_capacity
-      // This is not shown on output
-      V_it vi, vi_end;
-      int64_t id = 1;
-      for (boost::tie(vi, vi_end) = boost::vertices(this->boost_graph);
-           vi != vi_end;
-           ++vi) {
-          if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
-              && ((*vi) < mate_map[*vi])) {
-              pgr_basic_edge_t matched_couple;
-              matched_couple.id = id++;
-              matched_couple.source = this->getid(*vi);
-              matched_couple.target = this->getid(mate_map[*vi]);
-              matched_vertices.push_back(matched_couple);
-          }
-      }
-  }
-
-
   int64_t push_relabel() {
       return boost::push_relabel_max_flow(this->boost_graph,
                                           this->source_vertex,
@@ -291,11 +242,6 @@ class PgrFlowGraph {
       return boost::boykov_kolmogorov_max_flow(this->boost_graph,
                                                this->source_vertex,
                                                this->sink_vertex);
-  }
-
-  void maximum_cardinality_matching(std::vector<int64_t> &mate_map) {
-      edmonds_maximum_cardinality_matching(this->boost_graph,
-                                                       &mate_map[0]);
   }
 
 };
