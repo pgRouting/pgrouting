@@ -206,15 +206,15 @@ BEGIN
 --    drop table if exists inter_loc;
 
 --HAD TO CHANGE THIS QUERY
- p_ret= 'create temp table inter_loc on commit drop as ( 
-        select l1id, l2id, ' || vst_line_locate_point || '(line,point) as locus from (
-        select DISTINCT l1id, l2id, line, (ST_DumpPoints(geom)).geom as point from intergeom) as foo
-        where ' || vst_line_locate_point || '(line,point)<>0 and ' || vst_line_locate_point || '(line,point)<>1)';
---    p_ret= 'create temp table inter_loc on commit drop as ( select * from (
---        (select l1id, l2id, ' || vst_line_locate_point || '(line,source) as locus from intergeom)
---         union
---        (select l1id, l2id, ' || vst_line_locate_point || '(line,target) as locus from intergeom)) as foo
---        where locus<>0 and locus<>1)';
+-- p_ret= 'create temp table inter_loc on commit drop as ( 
+--        select l1id, l2id, ' || vst_line_locate_point || '(line,point) as locus from (
+--        select DISTINCT l1id, l2id, line, (ST_DumpPoints(geom)).geom as point from intergeom) as foo
+--        where ' || vst_line_locate_point || '(line,point)<>0 and ' || vst_line_locate_point || '(line,point)<>1)';
+    p_ret= 'create temp table inter_loc on commit drop as ( select * from (
+        (select l1id, l2id, ' || vst_line_locate_point || '(line,source) as locus from intergeom)
+         union
+        (select l1id, l2id, ' || vst_line_locate_point || '(line,target) as locus from intergeom)) as foo
+        where locus<>0 and locus<>1)';
     raise debug  '%',p_ret;	
     EXECUTE p_ret;	
 
