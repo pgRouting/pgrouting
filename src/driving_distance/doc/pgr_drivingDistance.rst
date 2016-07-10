@@ -19,7 +19,7 @@ Name
 ``pgr_drivingDistance`` - Returns the driving distance from a start node.
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
@@ -84,7 +84,7 @@ Driving Distance From Multiple Starting Vertices
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../dijkstra/doc/pgr_dijkstra_parameters.txt
+.. include:: pgr_dijkstra_parameters.txt
     :start-after: only edges start
     :end-before: only edges end
 

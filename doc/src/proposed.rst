@@ -45,13 +45,13 @@ Proposed functions
 .. toctree::
   :hidden:
 
-  ../src/convenience/doc/pgr_pointToEdgeNode
-  ../src/convenience/doc/pgr_textToPoints
-  ../src/convenience/doc/pgr_pointsToVids
-  ../src/label_graph/doc/pgr_labelGraph
-  ../src/vrppdtw/doc/pgr_gsoc_vrppdtw
-  ../src/pickDeliver/doc/pgr_pickDeliver
-  ../src/vrp_basic/doc/pgr_vrpOneDepot
+  pgr_pointToEdgeNode
+  pgr_textToPoints
+  pgr_pointsToVids
+  pgr_labelGraph
+  pgr_gsoc_vrppdtw
+  pgr_pickDeliver
+  pgr_vrpOneDepot
 
 
 Documentation only proposed functions:
@@ -62,7 +62,7 @@ Documentation only proposed functions:
 .. toctree::
   :hidden:
 
-  ../src/contraction/doc/contraction
+  contraction
 
 
 ..

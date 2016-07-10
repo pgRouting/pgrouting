@@ -56,9 +56,9 @@ Stable proposed Functions
 .. toctree::
     :hidden:
 
-    ../src/costMatrix/doc/costMatrix
-    ../src/costMatrix/doc/pgr_dijkstraCostMatrix
-    ../src/dijkstra/doc/pgr_dijkstraVia
-    ../src/withPoints/doc/withPoints
+    costMatrix
+    pgr_dijkstraCostMatrix
+    pgr_dijkstraVia
+    withPoints
 
 

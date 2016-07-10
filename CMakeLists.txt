@@ -12,17 +12,17 @@ project(PGROUTING)
 
 # Configure options
 
-option(WITH_DOC
-    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+#option(WITH_DOC
+#    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
 
-option(BUILD_LATEX
-    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
+#option(BUILD_LATEX
+#"Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
-option(BUILD_HTML
-    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
+#option(BUILD_HTML
+#"Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
 
-option(BUILD_MAN
-    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
+#option(BUILD_MAN
+#"Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
 SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
 
@@ -60,9 +60,59 @@ message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NA
 
 message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
 message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
+message(STATUS "PGROUTING_BINARY_DIR = ${PGROUTING_BINARY_DIR}")
 
 message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
 message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
+
+
+#==========================
+#  PgRouting_SOURCE_NAMES
+#==========================
+
+set(PgRouting_SOURCE_NAMES
+    "common"
+
+
+    "dijkstra"
+    "driving_distance"
+    "ksp"
+    "allpairs"
+    "withPoints"
+
+    "internalQueryTests"
+    #"funnyDijkstra"
+
+    "alpha_shape"
+
+    "astar"
+    "bd_astar"
+    "bd_dijkstra"
+    "trsp" #2.0
+    "tsp" #2.0
+
+    "vrp_basic"
+    "pickDeliver"
+
+    )
+
+
+#-----------------------------------------------------------------------------
+# List variable to collect module SQL file names
+#-----------------------------------------------------------------------------
+set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
+    "apsp_johnson"  #V2.0
+    "apsp_warshall" #V2.0
+    "kdijkstra"     #V2.0
+    "vrppdtw" #2.1
+
+    "convenience"
+    "topology"
+    "label_graph"
+    "costMatrix"
+
+    )
+
 
 #-----------------------------------------------------------------------------
 # CMAKE configuration
@@ -180,8 +230,12 @@ else(SHARE_DIR)
   message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
 
+#-----------------------------------------------------------------------
 # Handles documentation
+#----------------------------------------------------------------------
 add_subdirectory(doc)
+
+#******************************************************************
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
@@ -248,40 +302,6 @@ elseif(WIN32)
   endif()
 endif()
 
-# List variable to collect module SQL file names
-set(PACKAGE_SQL_FILES "")
-set(L_PACKAGE_SQL_FILES "")
-
-#==========================
-#  PgRouting_SOURCE_NAMES
-#==========================
-
-set(PgRouting_SOURCE_NAMES
-    "common"
-
-
-    "dijkstra"
-    "driving_distance"
-    "ksp"
-    "allpairs"
-    "withPoints"
-
-    "internalQueryTests"
-    #"funnyDijkstra"
-
-    "alpha_shape"
-
-    "astar"
-    "bd_astar"
-    "bd_dijkstra"
-    "trsp" #2.0
-    "tsp" #2.0
-
-    "vrp_basic"
-    "pickDeliver"
-
-    )
-
 #-------------------
 # add the subdirectories that have the C/C++ code 
 #-------------------
@@ -290,22 +310,10 @@ foreach (subdir ${PgRouting_SOURCE_NAMES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
 endforeach()
 
-#-----------------------------------------------------------------------------
+
 # List variable to collect module SQL file names
-#-----------------------------------------------------------------------------
-set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
-    "apsp_johnson"  #V2.0
-    "apsp_warshall" #V2.0
-    "kdijkstra"     #V2.0
-    "vrppdtw" #2.1
-
-    "convenience"
-    "topology"
-    "label_graph"
-    "costMatrix"
-
-    )
-
+set(PACKAGE_SQL_FILES "")
+set(L_PACKAGE_SQL_FILES "")
 
 set(PACKAGE_SQL_FILES "")
 set(LIST_PACKAGE_SQL_FILES "")
@@ -316,11 +324,11 @@ endforeach()
 
 list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
-#if (CDEBUG)
+if (CDEBUG)
     foreach (files ${LIST_PACKAGE_SQL_FILES})
         message("${files}")
     endforeach()
-#endif()
+endif()
 
 
 #add_subdirectory(src)

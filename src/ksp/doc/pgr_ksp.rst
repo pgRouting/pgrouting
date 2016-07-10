@@ -18,7 +18,7 @@ Name
 ``pgr_ksp`` — Returns the "K" shortest paths.
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
@@ -68,7 +68,7 @@ Complete Signature
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../dijkstra/doc/pgr_dijkstra_parameters.txt
+.. include:: pgr_dijkstra_parameters.txt
     :start-after: only edges start
     :end-before: only edges end
 

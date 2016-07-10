@@ -19,7 +19,7 @@ Name
 ``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
@@ -95,7 +95,7 @@ Description of the Signatures
     description of the sql queries
 
 
-.. include:: ../../withPoints/doc/withPoints_parameters.txt 
+.. include:: withPoints_parameters.txt 
 
 
 Description of the parameters of the signatures

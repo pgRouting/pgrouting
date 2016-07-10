@@ -41,13 +41,13 @@ Auxiliary functions
 .. toctree::
    :hidden:
 
-   ../src/astar/doc/pgr_astar_v2
-   ../src/tsp/doc/pgr_tsp-V2.0
-   ../src/convenience/doc/pgr_flipEdges
-   ../src/convenience/doc/pgr_vidsToDMatrix
-   ../src/convenience/doc/pgr_vidsToDMatrix2
-   ../src/convenience/doc/pgr_pointsToDMatrix
-   ../src/convenience/doc/pgr_textToPoints
+   pgr_astar_v2
+   pgr_tsp-V2.0
+   pgr_flipEdges
+   pgr_vidsToDMatrix
+   pgr_vidsToDMatrix2
+   pgr_pointsToDMatrix
+   pgr_textToPoints
 
 
 Deprecated on version 2.2
@@ -63,9 +63,9 @@ Routing functions
 .. toctree::
    :hidden: 
 
-   ../src/apsp_johnson/doc/pgr_apspJohnson
-   ../src/apsp_warshall/doc/pgr_apspWarshall
-   ../src/kdijkstra/doc/pgr_kDijkstra
+   pgr_apspJohnson
+   pgr_apspWarshall
+   pgr_kDijkstra
 
 
 Deprecated on version 2.1
@@ -96,17 +96,17 @@ Auxiliary functions
 .. toctree::
    :hidden: 
 
-   ../src/dijkstra/doc/pgr_dijkstra_v2
-   ../src/ksp/doc/pgr_ksp_v2
-   ../src/driving_distance/doc/pgr_drivingDistance_v2
-   ../src/common/doc/utilities/get_column_name
-   ../src/common/doc/utilities/get_table_name
-   ../src/common/doc/utilities/is_column_indexed
-   ../src/common/doc/utilities/is_column_in_table
-   ../src/common/doc/utilities/point_to_id
-   ../src/common/doc/utilities/quote_ident
-   ../src/common/doc/utilities/versionless
-   ../src/common/doc/utilities/start_point
-   ../src/common/doc/utilities/end_point
+   pgr_dijkstra_v2
+   pgr_ksp_v2
+   pgr_drivingDistance_v2
+   utilities/get_column_name
+   utilities/get_table_name
+   utilities/is_column_indexed
+   utilities/is_column_in_table
+   utilities/point_to_id
+   utilities/quote_ident
+   utilities/versionless
+   utilities/start_point
+   utilities/end_point
 
 

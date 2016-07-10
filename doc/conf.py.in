@@ -38,7 +38,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'doc/index'
+master_doc = 'index'
 
 # General information about the project.
 project = u'pgRouting'
@@ -70,8 +70,10 @@ gettext_compact = False
 # directories to ignore when looking for source files.
 exclude_patterns = [
     'doc/build',
+    'doc',
+    'src',
     'src/shooting_star/doc/index.rst',
-    'src/withPoints/doc/pgr_withPointsVia.rst',
+    'pgr_withPointsVia.rst',
     'src/travelingSalesPerson',
     '*/notUsed',
     'tools/template'

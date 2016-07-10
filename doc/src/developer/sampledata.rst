@@ -18,21 +18,21 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Create table
 
-.. literalinclude:: ../../../tools/testers/sampledata.sql
+.. literalinclude:: ../sampledata/sampledata.sql
    :start-after: --EDGE TABLE CREATE
    :end-before: --EDGE TABLE ADD DATA
 
 
 .. rubric:: Insert data
 
-.. literalinclude:: ../../../tools/testers/sampledata.sql
+.. literalinclude:: ../sampledata/sampledata.sql
    :start-after: --EDGE TABLE ADD DATA
    :end-before: --EDGE TABLE TOPOLOGY
 
 
 Before you test a routing function use this query to fill the source and target columns.
 
-.. literalinclude:: ../../../tools/testers/sampledata.sql
+.. literalinclude:: ../sampledata/sampledata.sql
    :start-after: --EDGE TABLE TOPOLOGY
    :end-before: --POINTS CREATE
 
@@ -40,13 +40,13 @@ Before you test a routing function use this query to fill the source and target 
 
 When points outside of the graph
 
-.. literalinclude:: ../../../tools/testers/sampledata.sql
+.. literalinclude:: ../sampledata/sampledata.sql
    :start-after: --POINTS CREATE
    :end-before: --RESTRICTIONS CREATE
 
 .. rubric:: Restrictions
 
-.. literalinclude:: ../../../tools/testers/sampledata.sql
+.. literalinclude:: ../sampledata/sampledata.sql
    :start-after: --RESTRICTIONS CREATE
    :end-before: --RESTRICTIONS END
 

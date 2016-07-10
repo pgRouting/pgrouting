@@ -17,7 +17,7 @@ pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgr
 
 This is the manual for pgRouting |release|.
 
-.. image:: static/images/ccbysa.png
+.. image:: _build/static/images/ccbysa.png
     :align: left
     :alt: Creative Commons Attribution-Share Alike 3.0 License
 
@@ -30,10 +30,10 @@ General
 .. toctree::
     :maxdepth: 2
 
-    src/introduction/introduction
-    src/installation/installation
-    src/installation/build
-    src/introduction/support
+    introduction/introduction
+    installation/installation
+    installation/build
+    introduction/support
 
 
 *******************************************************************************
@@ -56,9 +56,9 @@ For a more complete introduction how to build a routing application read the `pg
 .. toctree::
    :hidden:
 
-   src/tutorial/index
-   src/recipes/index
-   src/developer/developer_guide
+   tutorial/index
+   recipes/index
+   developer/developer_guide
    
 *******************************************************************************
 Sample Data
@@ -69,7 +69,7 @@ Sample Data
 .. toctree::
    :hidden:
 
-   src/developer/sampledata
+   developer/sampledata
 
 
 
@@ -85,7 +85,7 @@ Version
 .. toctree::
    :hidden:
 
-   ../src/common/doc/pgr_version
+   pgr_version
 
 
 
@@ -102,7 +102,7 @@ Data Types
 .. toctree::
    :hidden:
 
-   ../src/common/doc/types/index
+   types/index
 
 
 *******************************************************************************
@@ -120,7 +120,7 @@ Topology functions
 .. toctree::
    :hidden:
 
-   ../src/topology/doc/topology
+   topology
 
 
 *******************************************************************************
@@ -134,9 +134,9 @@ Routing Functions
     
 .. toctree::
 
-    ../src/routingFunctions
+    routingFunctions
 
-.. include:: ../src/routingFunctions.rst
+.. include:: routingFunctions.rst
    :start-after: from-here
    :end-before: to-here
     
@@ -153,9 +153,9 @@ Stable Proposed Functions
 .. toctree::
     :hidden:
 
-    ../src/proposedNext
+    proposedNext
 
-.. include:: ../src/proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: from-here
    :end-before: to-here
 
@@ -169,7 +169,7 @@ Available Functions but not official pgRouting functions
 .. toctree::
     :hidden:
 
-    ../src/proposed
+    proposed
 
 
 *******************************************************************************
@@ -182,7 +182,7 @@ Discontinued & Deprecated Functions
 .. toctree::
    :hidden:
 
-   src/developer/discontinued
+   developer/discontinued
    deprecated
 
 
@@ -206,7 +206,7 @@ Change Log
 .. toctree::
     :hidden:
 
-    src/changelog/release_notes
+    changelog/release_notes
 
 
 .. rubric:: Indices and tables

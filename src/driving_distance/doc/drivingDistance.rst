@@ -19,7 +19,7 @@ Driving Distance
 .. toctree::
     :hidden:
 
-    ./pgr_drivingDistance.rst
+    pgr_drivingDistance.rst
 
 .. _pgr_driving_distance_post:
 
@@ -32,6 +32,6 @@ Driving Distance post-processing
 .. toctree::
     :hidden:
 
-    ./../../alpha_shape/doc/pgr_alphaShape.rst
-    ./../../alpha_shape/doc/pgr_pointsAsPolygon.rst
+    pgr_alphaShape.rst
+    pgr_pointsAsPolygon.rst
 

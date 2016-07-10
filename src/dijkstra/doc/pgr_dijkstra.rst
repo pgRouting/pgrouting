@@ -15,7 +15,7 @@ pgr_dijkstra
 ``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
 In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside

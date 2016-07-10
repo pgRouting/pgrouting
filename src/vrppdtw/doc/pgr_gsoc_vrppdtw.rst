@@ -60,7 +60,7 @@ Name
 Examples
 -------------------------------------------------------------------------------
 
-.. literalinclude:: ../../pickDeliver/doc/gsoc_vrppdtw.queries
+.. literalinclude:: gsoc_vrppdtw.queries
    :start-after: --q1
    :end-before: --q2
 
