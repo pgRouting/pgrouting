@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - pickDeliver/pgr_pickDeliverClass
+    - improve/cmake
 
 env:
   - POSTGRESQL_VERSION=9.1
