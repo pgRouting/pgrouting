@@ -8,7 +8,7 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(PGROUTING)
 
-#set(CMAKE_VERBOSE_MAKEFILE 1)
+set(CMAKE_VERBOSE_MAKEFILE 1)
 
 
 #----------------------
@@ -19,8 +19,9 @@ message(STATUS "UNIX=${UNIX}")
 message(STATUS "WIN32=${WIN32}")
 message(STATUS "MSVC=${MSVC}")
 
+include(CheckCXXCompilerFlag)
+
 if (NOT MSVC) 
-    include(CheckCXXCompilerFlag)
     CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
     message(STATUS "COMPILER_SUPPORTS_CXX0X= ${COMPILER_SUPPORTS_CXX0X}")
     message(STATUS "CMAKE_CXX_COMPILER= ${CMAKE_CXX_COMPILER}")
@@ -240,6 +241,10 @@ message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
 message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
 message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
 
+if(UNIX)
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 ")
+endif()
+
 #message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
 #message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
 #message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
@@ -257,6 +262,7 @@ message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
 message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
 message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
 
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
 
@@ -264,6 +270,7 @@ message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
 message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
 message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
 
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
 
 message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
