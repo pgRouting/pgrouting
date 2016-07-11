@@ -15,9 +15,6 @@ set(CMAKE_VERBOSE_MAKEFILE 1)
 # Detecting C compiler
 #----------------------
 
-message(STATUS "UNIX=${UNIX}")
-message(STATUS "WIN32=${WIN32}")
-message(STATUS "MSVC=${MSVC}")
 
 include(CheckCXXCompilerFlag)
 
@@ -281,6 +278,10 @@ message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
 message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
 message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
 
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+message(STATUS "UNIX=${UNIX}")
+message(STATUS "WIN32=${WIN32}")
+message(STATUS "MSVC=${MSVC}")
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 if(APPLE)
     set(CMAKE_BUILD_TYPE Release)
