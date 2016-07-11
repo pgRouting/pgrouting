@@ -3,8 +3,8 @@
 
 SELECT plan(17);
 
-SELECT has_function('pgr_test_matrixrows', ARRAY['text']);
-SELECT function_returns('pgr_test_matrixrows', ARRAY['text'],'boolean');
+SELECT has_function('_pgr_test_matrixrows', ARRAY['text']);
+SELECT function_returns('_pgr_test_matrixrows', ARRAY['text'],'boolean');
 
 CREATE TEMP TABLE matrix AS
 SELECT * FROM pgr_dijkstracostMatrix('
@@ -80,13 +80,13 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-SELECT test_anyInteger('pgr_test_matrixrows',
+SELECT test_anyInteger('_pgr_test_matrixrows',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'start_vid');
-SELECT test_anyInteger('pgr_test_matrixrows',
+SELECT test_anyInteger('_pgr_test_matrixrows',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'end_vid');
-SELECT test_anyNumerical('pgr_test_matrixrows',
+SELECT test_anyNumerical('_pgr_test_matrixrows',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'agg_cost');
 
