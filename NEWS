@@ -1,3 +1,35 @@
+
+Changes for 2.2.2
+-------------------------------------------------------------------------------
+
+- New Signatures:
+
+  * pgr_TSP
+  * pgr_aStar
+
+* New Functions:
+
+  * pgr_eucledianTSP
+
+* New Proposed functions
+
+  * pgr_dijkstraCostMatrix
+  * pgr_withPointsCostMatrix
+
+
+* Deprecated Signatures
+
+  * pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead
+  * pgr_astar - use pgr_aStar instead
+
+
+* Deprecated functions
+
+  * pgr_flip_edges
+  * pgr_vidsToDmatrix
+  * pgr_pointsToDMatrix
+  * pgr_textToPoints
+
 Changes for 2.2.2
 -------------------------------------------------------------------------------
 
@@ -12,31 +44,31 @@ Changes for 2.2.1
 Changes for 2.2.0
 -------------------------------------------------------------------------------
 
-  - Improved:
-    - pgr_nodeNetwork
-      - Adding a row_where and outall optional parameters
+- Improved:
+  - pgr_nodeNetwork
+    - Adding a row_where and outall optional parameters
 
-  - Signature fix
-    - pgr_dijkstra  -- to match what was documented (the pgr_dijkstra from V2.0)
+- Signature fix
+  - pgr_dijkstra  -- to match what was documented (the pgr_dijkstra from V2.0)
 
-  - New functions
-    - pgr_floydWarshall
-    - pgr_Johnson
-    - pgr_DijkstraCost
+- New functions
+  - pgr_floydWarshall
+  - pgr_Johnson
+  - pgr_DijkstraCost
 
-  - New Proposed functions
-    - pgr_withPoints
-    - pgr_withPointsCost
-    - pgr_withPointsDD
-    - pgr_withPointsKSP
-    - pgr_dijkstraVia
+- New Proposed functions
+  - pgr_withPoints
+  - pgr_withPointsCost
+  - pgr_withPointsDD
+  - pgr_withPointsKSP
+  - pgr_dijkstraVia
 
 
-  - Deprecated functions:
-    - pgr_apspWarshall  use pgr_floydWarshall instead
-    - pgr_apspJohnson   use pgr_Johnson instead
-    - pgr_kDijkstraCost use pgr_dijkstraCost instead
-    - pgr_kDijkstraPath use pgr_dijkstra instead
+- Deprecated functions:
+  - pgr_apspWarshall  use pgr_floydWarshall instead
+  - pgr_apspJohnson   use pgr_Johnson instead
+  - pgr_kDijkstraCost use pgr_dijkstraCost instead
+  - pgr_kDijkstraPath use pgr_dijkstra instead
 
 
 
