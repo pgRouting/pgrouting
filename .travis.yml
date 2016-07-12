@@ -57,6 +57,7 @@ addons:
       - postgresql-server-dev-all
       - postgresql-common
       - doxygen
+      - sphinx
 
 
 install:
@@ -92,8 +93,7 @@ after_script:
   # blank
 
 #after_success:
-  - cd build
   - make doc
+  - doxygen -v
   - make doxy
-  #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
