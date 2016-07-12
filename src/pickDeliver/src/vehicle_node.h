@@ -104,7 +104,7 @@ class Vehicle_node: public Tw_node {
 
      ///@}
 
-     /*! \brief True when \barrival_time + \b delta_time generates TWV.*/
+     /*! \brief True when \b arrival_time + \b delta_time generates TWV.*/
      bool deltaGeneratesTWV(double delta_time) const;
 
      /** @name State */
@@ -142,7 +142,7 @@ class Vehicle_node: public Tw_node {
      /** @name Document*/
      ///@ {
 
-     /*! \brief returns the arrval time at \bthis: visited after \bother */
+     /*! \brief returns the arrval time at \b this visited after \b other */
      double arrival_i_arrives_j(
              const Vehicle_node &other) const;
 

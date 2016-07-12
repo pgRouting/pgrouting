@@ -69,8 +69,10 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S <nodes> P D E
+      * ~~~~
       *
       * Can generate time window violation
       * No capacity violation
@@ -88,8 +90,10 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S P D <nodes> E
+      * ~~~~
       *
       * Can generate time window violation
       * No capacity violation
@@ -107,8 +111,10 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S ....P .... D .... E
+      * ~~~~
       *
       * push_back is performed when
       *   - pickup
