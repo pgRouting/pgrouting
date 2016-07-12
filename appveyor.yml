@@ -10,7 +10,6 @@ version: 2.3.{build}
 branches:
   only:
     - test/appveyor
-    - improve/cmake
     - master
     - develop
 
