@@ -59,8 +59,6 @@ After each commit a the file **VERSION** will remain. (The hash number will be o
 doxygen
 *******
 
-.. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation and included in the doxygen documentation.
-
 To use doxygen:
 
 

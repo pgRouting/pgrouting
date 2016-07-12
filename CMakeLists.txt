@@ -14,8 +14,10 @@ project(PGROUTING)
 # minimum versions
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.8.6")
+set(SPHINX_MINIMUM_VERSION "1.1")
 
 message(STATUS "DOXYGEN_MINIMUM_VERSION=${DOXYGEN_MINIMUM_VERSION}")
+message(STATUS "SPHINX_MINIMUM_VERSION=${SPHINX_MINIMUM_VERSION}")
 
 
 #---------------------------------------------
