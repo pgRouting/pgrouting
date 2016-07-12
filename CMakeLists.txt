@@ -21,7 +21,7 @@ message(STATUS "SPHINX_MINIMUM_VERSION=${SPHINX_MINIMUM_VERSION}")
 
 
 #---------------------------------------------
-# Detecting C compiler
+# C++ Compiler requirements
 #---------------------------------------------
 
 
