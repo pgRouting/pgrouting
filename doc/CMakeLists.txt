@@ -23,7 +23,7 @@ set(SPHINX_THEME "haiku")
 
 if(WITH_DOC)
 
-    find_package(Sphinx)
+    find_package(Sphinx "${SPHINX_MINIMUM_VERSION}")
 
     if (NOT SPHINX_FOUND)
         message(WARNING "Sphinx not found. Cannot generate documentation!")
