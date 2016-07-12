@@ -28,6 +28,7 @@ branches:
     - master
     - develop
     - test/appveyor
+    - cmake/doxy
 
 env:
   - POSTGRESQL_VERSION=9.1
@@ -90,5 +91,8 @@ after_script:
   # blank
 
 #after_success:
+  - cd build
+  - make doc
+  - make doxy
   #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 

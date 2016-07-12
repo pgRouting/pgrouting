@@ -205,6 +205,10 @@ else(SHARE_DIR)
 endif(SHARE_DIR)
 
 # Handles documentation
+set(PROJECT_NAME  "pgRouting")
+set(PROJECT_BRIEF "pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.")
+set(PROJECT_NUMBER  "${PGROUTING_GIT_TAG}")
+add_subdirectory(doxygen)
 add_subdirectory(doc)
 
 #include directories: files in alphabetical order
