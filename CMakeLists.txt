@@ -10,6 +10,13 @@ project(PGROUTING)
 
 #set(CMAKE_VERBOSE_MAKEFILE 1)
 
+#---------------------------------------------
+# minimum versions
+#---------------------------------------------
+set(DOXYGEN_MINIMUM_VERSION "1.8.6")
+
+message(STATUS "DOXYGEN_MINIMUM_VERSION=${DOXYGEN_MINIMUM_VERSION}")
+
 
 #---------------------------------------------
 # Detecting C compiler
@@ -204,12 +211,15 @@ else(SHARE_DIR)
     message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
 
+#-------------------------------------
 # Handles documentation
+#-------------------------------------
 set(PROJECT_NAME  "pgRouting")
 set(PROJECT_BRIEF "pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.")
 set(PROJECT_NUMBER  "${PGROUTING_GIT_TAG}")
 add_subdirectory(doxygen)
 add_subdirectory(doc)
+#-------------------------------------
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
