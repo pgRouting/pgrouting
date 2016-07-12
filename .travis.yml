@@ -57,7 +57,7 @@ addons:
       - postgresql-server-dev-all
       - postgresql-common
       - doxygen
-      - sphinx
+      - python-sphinx
 
 
 install:
