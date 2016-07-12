@@ -26,7 +26,7 @@
 #endif
 
 
-/*! \file vrp_assert.h
+/*! \file pgr_assert.h
  * **Do not crash the backend server.**
  *
  * \brief An assert functionality that uses C++ throw().

@@ -36,7 +36,7 @@ namespace vrp {
 
  class Pgr_pickDeliver;
 
-/*! \class Twnode
+/*! \class Tw_node
  * \brief Extends the \ref Node class to create a Node with time window attributes.
  *
  * A Time Window node is a Node with addition attributes and methods to
@@ -221,39 +221,39 @@ class Tw_node: public Node {
      double arrival_j_opens_i(const Tw_node &I) const;
 
      /*!
-      * The actual arrival time at \b This node, given that:
-      * \bthis node is visited directly after \b other node
+      * The actual arrival time at \b this node, given that:
+      * \b this node is visited directly after \b other node
       * and that the actual arrival time at \b other node was closes(other)
       **/
      double arrival_j_closes_i(const Tw_node &I) const;
 
 
      /*
-      * is possible to arrive to \bthis after visiting \bother
-      *   - departing as early as possible from \bother it can arrives to \b this
+      * is possible to arrive to \b this after visiting \bother
+      *   - departing as early as possible from \b other it can arrives to \b this
       */
      bool is_compatible_IJ(const Tw_node &I) const;
 
      /*
-      * is possible to arrive to \bthis after visiting \bother
-      *   - departing as late as possible from \bother it can arrives to \b this
+      * is possible to arrive to \b this after visiting \bother
+      *   - departing as late as possible from \b other it can arrives to \b this
       */
      bool is_partially_compatible_IJ(const Tw_node &I) const;
 
      /*
-      * is possible to arrive to \bthis after visiting \bother
-      *   - departing as late as possible from \bother it can arrives to \b this
+      * is possible to arrive to \b this after visiting \bother
+      *   - departing as late as possible from \b other it can arrives to \b this
       */
      bool is_tight_compatible_IJ(const Tw_node &I) const;
 
      /*
-      * is possible to arrive to \bthis after visiting \bother
-      *   - departing as late as possible from \bother it can arrives to \b this
+      * is possible to arrive to \b this after visiting \b other
+      *   - departing as late as possible from \b other it can arrives to \b this
       */
      bool is_partially_waitTime_compatible_IJ(const Tw_node &I) const;
 
      /*
-      * is compatible to arrive to \bthis after visiting \bother
+      * is compatible to arrive to \b this after visiting \b other
       * - is fully compatible
       * - does not have a waiting time when arriving as earliest as possible after
       */

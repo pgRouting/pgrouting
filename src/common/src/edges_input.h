@@ -45,9 +45,9 @@ float8 reverse_cost
 Currently used in:
 allpairs
 
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
 */
 void pgr_get_edges_no_id(
         char *sql,
@@ -64,9 +64,9 @@ bigint target,
 float8 cost
 float8 reverse_cost
 
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
 */
 void pgr_get_edges(
         char *sql,
@@ -90,9 +90,9 @@ void pgr_get_edges(
 
 /*! @brief normal graph
 
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
 */
 void pgr_get_edges_xy(
         char *sql,
@@ -101,9 +101,9 @@ void pgr_get_edges_xy(
 
 /*! @brief reversed graph (for many to 1)
 
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
 */
 void pgr_get_edges_xy_reversed(
         char *sql,

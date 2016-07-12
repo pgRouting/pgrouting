@@ -54,7 +54,7 @@ Routing Functions
     :hidden:
 
     ../src/allpairs/doc/allpairs
-    ../src/astar/doc/pgr_astar
+    ../src/astar/doc/pgr_aStar
     ../src/bd_astar/doc/pgr_bdAstar
     ../src/bd_dijkstra/doc/pgr_bdDijkstra
     ../src/dijkstra/doc/dijkstra

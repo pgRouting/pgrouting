@@ -47,9 +47,9 @@ class eucledianDmatrix {
 
     /*! @brief sets a special value for the distance(i,j)
      *
-     * @params [IN] i - index in matrix
-     * @params [IN] j - index in matrix
-     * @params [IN] dist - distance from i to j & from j to i
+     * @param [IN] i - index in matrix
+     * @param [IN] j - index in matrix
+     * @param [IN] dist - distance from i to j & from j to i
      *
      */
     void set(size_t i, size_t j, double dist) {
@@ -57,21 +57,21 @@ class eucledianDmatrix {
 
     /*! @brief original id -> true
      *
-     * @params [IN] id - original id
+     * @param [IN] id - original id
      * @returns true if id is in the distance table
      */
     bool has_id(int64_t id) const;
 
     /*! @brief original id -> idx
      *
-     * @params [IN] id - original id
+     * @param [IN] id - original id
      * @returns idx index of the id in the distance table
      */
     size_t get_index(int64_t id) const;
 
     /*! @brief idx -> original id
      *
-     * @params [IN] idx - index (i-th coordinate)
+     * @param [IN] idx - index (i-th coordinate)
      * @returns the original id corresponding to idx
      */
     int64_t get_id(size_t idx) const;
@@ -84,14 +84,14 @@ class eucledianDmatrix {
 
     /*! @brief tour evaluation
      *
-     * @params [IN] tour
+     * @param [IN] tour
      * @returns total cost of traversing the tour
      */
     double tourCost(const Tour &tour) const;
 
     /*! @brief returns a row of distances
      *
-     * @params [IN] idx - row index
+     * @param [IN] idx - row index
      * @returns distances from idx to all other coordinates
      */
     const std::vector<double> get_row(size_t idx) const;
