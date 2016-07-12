@@ -56,6 +56,7 @@ addons:
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
+      - doxygen
 
 
 install:
