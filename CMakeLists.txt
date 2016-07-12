@@ -8,12 +8,12 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(PGROUTING)
 
-set(CMAKE_VERBOSE_MAKEFILE 1)
+#set(CMAKE_VERBOSE_MAKEFILE 1)
 
 
-#----------------------
+#---------------------------------------------
 # Detecting C compiler
-#----------------------
+#---------------------------------------------
 
 
 include(CheckCXXCompilerFlag)
@@ -36,8 +36,18 @@ if (NOT MSVC)
     endif()
 endif()
 
-SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
+#---------------------------------------------
+# Setting kind of build
+#---------------------------------------------
+#
+# On Master cmake -DMAKE_BUILD_TYPE=Release
+#----------------------
 
+if(UNIX AND NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+else()
+    set(CMAKE_BUILD_TYPE Release)
+endif()
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
@@ -130,8 +140,8 @@ endif(NOT POSTGRESQL_FOUND)
 find_package(Boost)
 if(Boost_INCLUDE_DIRS)
     message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIRS}")
-    find_file(MYVAR geometry.hpp)
-    message(STATUS "geometry.hpp  found here: ${MYVAR}")
+    #find_file(MYVAR geometry.hpp)
+    #message(STATUS "geometry.hpp  found here: ${MYVAR}")
 else(Boost_INCLUDE_DIRS)
     message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
@@ -234,17 +244,11 @@ endif(WIN32)
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #compiler directives
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
-message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
-message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
 
 if(UNIX)
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 ")
 endif()
 
-#message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
-#message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
-#message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
 
 CHECK_C_COMPILER_FLAG("-frounding-math" C_COMPILER_SUPPORTS_ROUNDING_MATH)
 CHECK_CXX_COMPILER_FLAG("-frounding-math" CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
@@ -255,67 +259,38 @@ if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math")
 endif()
 
-message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
-message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
-message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
-
 
 if(NOT WIN32 OR MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC ")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
 endif()
 
-message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
-message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
-message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
 
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
 
-message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
-message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
-message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
-message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
-message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
+if(CDEBUG)
+    message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
+    message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
+    message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
+
+    message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
+    message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
+    message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
+
+    message(STATUS "UNIX=${UNIX}")
+    message(STATUS "WIN32=${WIN32}")
+    message(STATUS "MSVC=${MSVC}")
+endif()
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-message(STATUS "UNIX=${UNIX}")
-message(STATUS "WIN32=${WIN32}")
-message(STATUS "MSVC=${MSVC}")
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-if(APPLE)
-    set(CMAKE_BUILD_TYPE Release)
-    # support GNU(Xcode<4) and Clang(Xcode>=4)
-    #if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    #    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
-    #else()
-    #    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
-    #endif()
-    #if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    #    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -frounding-math")
-    #else()
-    #    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 ")
-    #endif()
 
-elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
+if(UNIX AND NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
-    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 -fPIC -g -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
-    #message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -O2  -g -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra  -frounding-math")
-
-    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -frounding-math")
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -frounding-math")
-
-elseif(WIN32)
+else()
     set(CMAKE_BUILD_TYPE Release)
-    #if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    #    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
-    #endif()
-    #if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    #    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -DNDEBUG -frounding-math")
-    #endif()
 endif()
 
 # List variable to collect module SQL file names
