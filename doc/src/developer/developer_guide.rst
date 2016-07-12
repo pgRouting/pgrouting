@@ -48,7 +48,7 @@ pre-commit
 
 To keep version/branch/commit up to date install pelase do the following:
 
-.. code::
+.. code-block:: bash
 
   cp tools/pre-commit .git/hooks/pre-commit
 
@@ -64,7 +64,7 @@ doxygen
 To use doxygen:
 
 
-.. code::
+.. code-block:: bash
 
   cd tools/doxygen/
   make
@@ -72,7 +72,7 @@ To use doxygen:
 The code's documentation can be found in:
 
 
-.. code::
+.. code-block:: bash
 
   build/doxy/html/index.html
 
@@ -86,7 +86,7 @@ https://google-styleguide.googlecode.com/svn/trunk/cppguide.html
 
 Sample use:
 
-.. code::
+.. code-block:: bash
 
   python cpplint.py ../src/dijkstra/src/dijkstra_driver.h
   ../src/dijkstra/src/dijkstra_driver.h:34:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
@@ -150,7 +150,7 @@ Tests are part of the tree layout:
 
     - ``test.conf``  Configuraton file.
     - ``<name>.test.sql``  Test file
-    - ``<name>.result``  Results file
+    - ``<name>.result``  Results file bash
 
   - ``src/dijkstra/test/pgtap``  Dijkstra's pgTaptests.
 

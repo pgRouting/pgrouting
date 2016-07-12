@@ -1,31 +1,53 @@
--- q1
-SELECT * FROM pgr_AStar(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2
-     FROM edge_table',
-    4, 1, false, false);
+--q1
+SELECT * FROM pgr_astar(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    2, 12);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+
+--q2
+SELECT * FROM pgr_astar(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    2, 12, heuristic := 1);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+
+SELECT * FROM pgr_astar(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    2, 12, heuristic := 2);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+
+--q3
+SELECT * FROM pgr_astar(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    2, 12, true, true);
 NOTICE:  Deprecated signature of function pgr_astar
  seq | id1 | id2 | cost 
 -----+-----+-----+------
-   0 |   4 |  16 |    1
-   1 |   9 |   9 |    1
-   2 |   6 |   8 |    1
-   3 |   5 |   4 |    1
-   4 |   2 |   1 |    1
-   5 |   1 |  -1 |    0
-(6 rows)
+   0 |   2 |   4 |    1
+   1 |   5 |   8 |    1
+   2 |   6 |   9 |    1
+   3 |   9 |  15 |    1
+   4 |  12 |  -1 |    0
+(5 rows)
 
--- q2
-SELECT * FROM pgr_AStar(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2, reverse_cost
-      FROM edge_table ',
-    4, 1, true, true);
-NOTICE:  Deprecated signature of function pgr_astar
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   4 |   3 |    1
-   1 |   3 |   2 |    1
-   2 |   2 |   1 |    1
-   3 |   1 |  -1 |    0
-(4 rows)
-
--- q3
+--q4
