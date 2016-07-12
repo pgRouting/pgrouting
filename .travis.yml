@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - newSignature/tsp
+    - improve/cmake
 
 env:
   - POSTGRESQL_VERSION=9.1

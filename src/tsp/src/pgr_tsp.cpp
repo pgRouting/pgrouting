@@ -121,7 +121,9 @@ TSP<MATRIX>::find_closest_city(
 
     size_t best_city = 0;
     auto best_distance = std::numeric_limits<double>::max();
+#ifndef NDEBUG
     bool found(false);
+#endif
 
     for (size_t i = 0; i < distance_row.size(); ++i) {
         if (i == current_city) continue;
@@ -129,7 +131,9 @@ TSP<MATRIX>::find_closest_city(
         if (distance_row[i] <  best_distance) {
             best_city = i;
             best_distance = distance_row[i];
+#ifndef NDEBUG
             found = true;
+#endif
         }
     }
     pgassertwm(found, err.str());
