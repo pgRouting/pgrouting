@@ -27,7 +27,7 @@ branches:
   only:
     - master
     - develop
-    - improve/cmake
+    - test/appveyor
 
 env:
   - POSTGRESQL_VERSION=9.1
