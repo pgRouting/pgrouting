@@ -277,7 +277,7 @@ if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
 endif()
 
 
-if(NOT WIN32 OR MSVC)
+if(NOT WIN32)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC ")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
 endif()
@@ -288,7 +288,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-t
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-if(CDEBUG)
+#if(CDEBUG)
     message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
     message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
     message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
@@ -300,7 +300,7 @@ if(CDEBUG)
     message(STATUS "UNIX=${UNIX}")
     message(STATUS "WIN32=${WIN32}")
     message(STATUS "MSVC=${MSVC}")
-endif()
+#endif()
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
