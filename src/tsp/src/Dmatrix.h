@@ -95,7 +95,7 @@ class Dmatrix {
      * @returns distances from idx to all other coordinates
      */
     const std::vector<double>& get_row(size_t idx) const {
-        return costs[i];}
+        return costs[idx];}
 
     double comparable_distance(size_t i, size_t j) const {
         return distance(i, j);}

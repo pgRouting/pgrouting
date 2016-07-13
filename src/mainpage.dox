@@ -1,8 +1,8 @@
-/*! \mainpage pgRouting Developer's Documentation
+/*! \mainpage Developer's Documentation
  
 \section intro_sec Introduction
  
-This documentation is focused on the developer of pgRouting.
+This documentation is focused on the developer of [pgRouting](http://pgrouting.org).
 
 A developer might want to:
 
@@ -23,10 +23,10 @@ wirtten by Mohamed Zia
 
 Step by Step processing
 
-1. Create a fork of the original pgRouting repository.
+1. Create a fork of the original [pgRouting](https://github.com/pgRouting/pgrouting) repository.
    - If you don't have an account in Github, please [create one](https://github.com/)
      - for purposes of this document the account name is: `acountName`
-   - Navigate to [pgRouting repository](https://github.com/pgRouting/pgrouting)
+   - Navigate to [pgRouting](https://github.com/pgRouting/pgrouting) repository.
    - In the top-right corner of the page, click Fork.
    - Additional information can be found in [fork-a-repo](https://help.github.com/articles/fork-a-repo)
 
@@ -42,13 +42,13 @@ Step by Step processing
      cd pgrouting
 ~~~~
 
-4. Seting the remote fetching connections
-   - More on remotes](https://help.github.com/categories/managing-remotes/) . 
+4. Setting the remote fetching connections
+   - [More on remotes](https://help.github.com/categories/managing-remotes/) . 
    - check the remote connection
 ~~~~{.c}
     git remote -v
 ~~~~
-   -  Add upstream remote (ussually the main repository) 
+   -  Add upstream remote (usually the main repository) 
 ~~~~{.c}
     git remote add upstream https://github.com/pgRouting/pgrouting
 ~~~~
@@ -72,8 +72,8 @@ So here are some basic rules about Master and develop:
      - For micro changes
      - let us branch Master to a quick-fix branch
      - Merge into the quick-fix
-     - We need to do some changes for the release numers etc...
-     - Finnaly we merge into Master
+     - We need to do some changes for the release numbers etc...
+     - Finally we merge into Master
    - To accept a pull request into develop:
      - Its the same quick fix as for Master
      - It has to pass the tests on travis and Jenkins (linux & Windows)
@@ -150,7 +150,7 @@ For the rest of the document the following branch has being created in the main 
 ~~~~{.c}
     git checkout dev-myFeature
     git merge dev-myFeature-idea1
-    <fix conflics if any>
+    <fix conflicts if any>
 ~~~~
 
   
@@ -172,7 +172,7 @@ For the rest of the document the following branch has being created in the main 
 ~~~~{.c}
     git checkout dev-myFeature
     git merge develop
-    <fix conflics if any>
+    <fix conflicts if any>
 ~~~~
 
 
@@ -190,16 +190,16 @@ To do this:
 1. Move to the root directory.
 2. get the help of testing tool:
 ~~~~{.c}
-     tools/test-runner.pl -help
+     tools/testers/algorithm-tester.pl -help
 ~~~~
 3. run all the tests
 ~~~~{.c}
-     tools/test-runner.pl 
+     tools/testers/algorithm-tester.pl
 ~~~~
 
 \section automate_process Make a run.sh
 
-A shell to automate the compilation and execution is usefull when developing.
+A shell to automate the compilation and execution is useful when developing.
 
 1. Move to the root directory.
 
@@ -214,34 +214,39 @@ cd build/
 #make clean
 #rm -rf *
 #cmake -DBOOST_ROOT:PATH=/usr/local/boost_1_58_0 ..
-#cmake -DWITH_DOC=ON ..
+#cmake -DWITH_DOC=ON -DBUILD_DOXY ..
 cmake ..
 
 make
 
 sudo make install
 #make doc
+#make doxy
 
 cd ..
-tools/test-runner.pl -alg common -v -clean -ignorenotice
-#tools/test-runner.pl -alg dijkstra -v -clean 
-#tools/test-runner.pl -alg dijkstra_via_vertices -v -clean 
-#tools/test-runner.pl -alg doc -v -clean -ignorenotice
+
+# before testing everything
+tools/test-runner.pl -alg common 
+tools/test-runner.pl -alg dijkstra 
+tools/test-runner.pl -alg myfeature
+
+# test everything
+tools/test-runner.pl -alg
 ~~~~
 
-4. Comment and uncommet the file depending on your particular needs and execute it.
+4. Comment and uncomment the file depending on your particular needs and execute it.
 ~~~~{.c}
    sh run.sh
 ~~~~
 
-5. Don't add that file to the repository, its for your development only.
+@warning Don't add run.sh to the repository, its for your development only.
 
 
 \section setup_travis Setup Travis
 
 The main difference between your run.sh test and Travis test is:
   - With run.sh you are testing locally.
-  - Travis test a matrix combination of  postgreSQL and postGIS versions
+  - Travis tests a matrix combination of postgreSQL and postGIS versions
 
 To make use of travis test make sure that:
 
@@ -269,6 +274,5 @@ Some conventions for directories and files
 /src/myfunction/test/test.conf ---> perl file to test the function
 /src/myfunction/CMakeLists.txt ---> CMake file
 ~~~~
-
 
 */
