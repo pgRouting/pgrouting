@@ -4,7 +4,7 @@
 #include <sstream>
 #include <iterator>
 #include <iostream>
-
+#include <stdexcept>
 template <typename T>
 class Identifiers {
  public:
