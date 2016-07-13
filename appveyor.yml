@@ -12,6 +12,7 @@ branches:
     - test/appveyor
     - master
     - develop
+    - test/merge-gsoc-ch
 
 image: Visual Studio 2013
 configuration: Release
