@@ -179,13 +179,15 @@ For the rest of the document the following branch has being created in the main 
 \section perform_tests Beware of Side Effects
 
 Modifications that you make should not affect other parts of the library.
-pgRouting has a testing tool, so that developers make sure of
+pgRouting has a testing tool, for developers.
+
+Make sure that
   - Code changes don't generate unexpected results
   - Bug fixes actually fix the bug
   - Expected output is generated
 
+To do this:
 1. Move to the root directory.
-
 2. get the help of testing tool:
 ~~~~{.c}
      tools/test-runner.pl -help

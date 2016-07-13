@@ -515,7 +515,7 @@ SHOW_INCLUDE_FILES     = YES
 
 # If the SHOW_GROUPED_MEMB_INC tag is set to YES then Doxygen will add for each
 # grouped member an include statement to the documentation, telling the reader
-# which file to include in order to use the member.
+
 # The default value is: NO.
 
 SHOW_GROUPED_MEMB_INC  = YES
@@ -754,7 +754,7 @@ WARN_LOGFILE           = ./LOG
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ../../src ../../doc
+INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@/../src @CMAKE_CURRENT_SOURCE_DIR@/../doc
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -789,7 +789,8 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = ../../tools ../../doc ../../build ../../cmake ../../.tx 
+EXCLUDE                =
+# ../../tools ../../doc ../../build ../../cmake ../../.tx 
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -2237,7 +2238,7 @@ DOT_PATH               =
 # command).
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-DOTFILE_DIRS           = ../doc/images/
+DOTFILE_DIRS           = 
 
 # The MSCFILE_DIRS tag can be used to specify one or more directories that
 # contain msc files that are included in the documentation (see the \mscfile

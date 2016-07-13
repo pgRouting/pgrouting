@@ -52,8 +52,8 @@ pgr_dijkstraViaVertex(
         const std::vector< int64_t > via_vertices,
         std::deque< Path > &paths,
         bool strict,
-        bool U_turn_on_edge,  //! true = u turns are allowed between paths
-        std::ostringstream &log) {    
+        bool U_turn_on_edge,
+        std::ostringstream &log) {
 
     if (via_vertices.size() == 0) {
         return;
