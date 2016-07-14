@@ -48,13 +48,13 @@ namespace pgRouting {
 			class Pgr_contractionGraph;
 	}
 
-	typedef typename graph::Pgr_contractionGraph <
+	typedef  graph::Pgr_contractionGraph <
 		boost::adjacency_list < boost::listS, boost::vecS,
 		boost::undirectedS,
 		contraction::Vertex, contraction::Edge >,
 		contraction::Vertex, contraction::Edge > CHUndirectedGraph;
 
-	typedef typename graph::Pgr_contractionGraph <
+	typedef  graph::Pgr_contractionGraph <
 		boost::adjacency_list < boost::listS, boost::vecS,
 		boost::bidirectionalS,
 		contraction::Vertex, contraction::Edge >,
