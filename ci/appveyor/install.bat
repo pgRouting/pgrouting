@@ -28,7 +28,7 @@ mkdir build\downloads 2>NUL
 ::
 
 cd %APPVEYOR_BUILD_FOLDER%
-if not defined BOOST_VERSION set BOOST_VERSION=1.59.0
+if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 :: replace dots with underscores
 set BOOST_VER_USC=%BOOST_VERSION:.=_%
 
