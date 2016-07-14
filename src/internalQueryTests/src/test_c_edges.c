@@ -42,17 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-//#include "./../../common/src/arrays_input.h"
 
 #include "./test_c_edges_driver.h"
 
-PG_FUNCTION_INFO_V1(test_c_edges);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-test_c_edges(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum test_c_edges(PG_FUNCTION_ARGS);
 
 
 static
@@ -108,11 +101,8 @@ process(char *edges_sql,
     pgr_SPI_finish();
 }
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(test_c_edges);
 PGDLLEXPORT Datum
-#endif
 test_c_edges(PG_FUNCTION_ARGS) {
     bool  result_bool = false;
     process(
