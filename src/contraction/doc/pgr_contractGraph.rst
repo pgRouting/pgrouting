@@ -20,7 +20,7 @@ pgr_contractGraph
 Name
 -------------------------------------------------------------------------------
 
-``pgr_contractGraph`` — [medium description of
+``pgr_contractGraph`` — Performs graph contraction and returns the contracted vertices and edges. 
 
 .. warning::  This is a proposed function.
 
@@ -38,8 +38,7 @@ Name
 Introduction
 -------------
 
-Contraction Hierarchies reduce the size of the graph by removing some of the vertices and edges(according to a priority)and adds some psuedo edges,such that the number of edges are reduced on a whole.This reduces the time and space complexity of many algorithms that make
- various operations on the graph.
+Contraction reduces the size of the graph by removing some of the vertices and edges(according to a priority) and adds some psuedo edges,such that the number of edges are reduced on a whole.This reduces the time and space complexity of many algorithms that make various operations on the graph.
 
 
 
@@ -50,8 +49,10 @@ The pgr_contractgraph function has the following declaration:
 
 .. code-block:: sql
 
-        pgr_contractgraph(edges_sql, level, TBD)
-        RETURNS SETOF  TBD
+        pgr_contractgraph(edges_sql, contraction_order, forbidden_vertices,
+        max_cycles, directed)
+        RETURNS SETOF  ( seq, id, type, source, target, cost,
+             contracted_vertices, contracted_vertices_size)
 
 
 Description of the SQL query
@@ -78,25 +79,37 @@ Where:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-============== ====================== =================================================
-Column         Type                   Description
-============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as decribed above.
-**level**      ``INTEGER``            Level of contraction.
-============== ====================== =================================================
+======================= ====================== =================================================
+Column                  Type                   Description
+======================= ====================== =================================================
+**edges_sql**           ``TEXT``               SQL query as decribed above.
+**contraction_order**   ``BIGINT[]``           Order of contraction operations.
+**forbidden_vertices**  ``BIGINT[]``           (optional). Identifiers of vertices forbidden from contraction. Default is an empty array.
+**max_cycles**          ``INTEGER``            (optional). Number of cycles of contraction. Default is **1**.
+**directed**            ``BOOLEAN``            (optional). When false the graph is considered as Undirected. Default is true which considers the graph as Directed.
+======================= ====================== =================================================
 
 
-Output:
-------- 
+Description of the result
+-------------------------------------------------------------------------------
+
+RETURNS SETOF  ( seq, id, type, source, target, cost,
+             contracted_vertices, contracted_vertices_size)
 
 The function returns a single row. The columns of the row are:
 
-* contracted_graph_name: name of the contracted graph.
-* contracted_graph_blob: edges of the contracted graph in text format.
-* removedVertices      : vertices removed during contraction. 
-* removedEdges             : edges removed during contraction.
-* psuedoEdges              : shortcuts introduced during contraction.
-
+============================ =============   ==================================================
+Column                       Type            Description
+============================ =============   ==================================================
+**seq**                      ``INTEGER``     Sequential value starting from **1**.
+**id**                       ``BIGINT``      Identifier of the edge/vertex
+**type**                     ``TEXT``        Type(edge/vertex). **v** for vertex. **e** for edge 
+**source**                   ``BIGINT``      Identifier of the source vertex. Negative for **type** : **v** 
+**target**                   ``BIGINT``      Identifier of the target vertex. Negative for **type** : **v**
+**cost**                     ``FLOAT``       Weight of the shortcut (source, target). Negative for **type** : **v**
+**contracted_vertices**      ``BIGINT[]``    Array of contracted vertex identifiers.
+**contracted_vertices_size** ``INTEGER``     Size of **contracted_vertices** array.
+============================ =============   ==================================================
 
 Examples:
 ---------
@@ -105,7 +118,7 @@ Each row in the edge table should be of this format
 
 .. code-block:: sql
 
-         gid | source | target | cost | reverse_cost 
+          id | source | target | cost | reverse_cost 
         -----+--------+--------+------+--------------
           12 |      3 |     10 |    2 |         -1 
 
@@ -116,22 +129,23 @@ Let us consider the edge table of a sample graph,and generate a contracted versi
  
 .. code-block:: sql
 
-         id  | source   | target | cost | reverse_cost 
+     id  | source   | target | cost | reverse_cost 
     -----+----------+--------+------+-------------
-       1 |        1 |    2       |    1 |       -1  
-       2 |        2 |    3   |    2 |            3
-       3 |        2 |    4   |    1 |            1   
-       4 |        3 |    4   |    3 |           -1 
-       5 |        4 |    5   |    1 |            2   
-       6 |        5 |    6   |    4 |           -1   
+       1 |        1 |    2   |    1 |       -1  
+       2 |        2 |    3   |    2 |        3
+       3 |        2 |    4   |    1 |        1   
+       4 |        3 |    4   |    3 |       -1 
+       5 |        4 |    5   |    1 |        2   
+       6 |        5 |    6   |    4 |       -1   
 
 
 To contract a graph:
 
-Level 0:
+Dead end contraction:
 
         SELECT * FROM pgr_contractgraph('SELECT id, source, target, cost, 
-                     reverse_cost as revcost FROM edges',0,false);
+                     reverse_cost FROM edges', ARRAY[]::integer[],
+                     ARRAY[0]::integer[], 1, true);
 
 .. code-block:: sql
 
@@ -142,10 +156,11 @@ Level 0:
         (1 row)
 
 
-Level 1:
+Linear Contraction:
 
         SELECT * FROM pgr_contractgraph('SELECT id, source, target, cost, 
-                     reverse_cost as revcost FROM edges',1,false);
+                     reverse_cost FROM edges', ARRAY[]::integer[],
+                     ARRAY[1]::integer[], 1, true);
 
 .. code-block:: sql
 
@@ -155,65 +170,6 @@ Level 1:
 
 
         (1 row)
-
-
-
-
-Description of the SQL query
--------------------------------------------------------------------------------
-
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-Description of the Points SQL query
--------------------------------------------------------------------------------
-
-:points_sql: an SQL query, which should return a set of rows with the following columns:
-
-============ ================= =================================================
-Column            Type              Description
-============ ================= =================================================
-**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
-**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
-**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
-**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
-                                 - In the right, left of the edge or
-                                 - If it doesn't matter with 'b' or NULL.
-                                 - If column not present 'b' is considered.
-
-                               Can be in upper or lower case.
-============ ================= =================================================
-
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
-
-Description of the parameters of the signatures
--------------------------------------------------------------------------------
-
-============== ====================== =================================================
-Column         Type                   Description
-============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as decribed above.
-**points_sql** ``TEXT``               Points SQL query as decribed above.
-**start_vid**  ``BIGINT``             Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``             Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-============== ====================== =================================================
 
 
 Examples
