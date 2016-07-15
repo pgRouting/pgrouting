@@ -112,18 +112,20 @@ if not exist "c:\build\boost_%BOOST_VER_USC%" (
 
     if not exist downloads\boost_%BOOST_VER_USC%.zip (
         cd downloads
+        dir
         echo Downloading Boost %BOOST_VERSION% ...
         curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
         cd ..
+        dir downloads
         if not exist downloads\boost_%BOOST_VER_USC%.zip (
-            echo something went wrong on boost download !!!!!!!!!
+            echo something went wrong on boost %BOOST_VERSION% download !!!!!!!!!
         )
     ) else (
         echo Boost_%BOOST_VER_USC%  already downloaded
     )
 
     echo Extracting Boost_%BOOST_VERSION%.zip ...
-    7z x -oc:\build\ Boost_%BOOST_VER_USC%.zip
+    7z x -oc:\build\ downloads/Boost_%BOOST_VER_USC%.zip
     echo Done extractig.
     if not exist "c:\build\boost_%BOOST_VER_USC%" (
         echo something went wrong on boos extraction!!!!!!!!!
@@ -132,26 +134,26 @@ if not exist "c:\build\boost_%BOOST_VER_USC%" (
     echo Boost_%BOOST_VER_USC% Already Extracted
 )
 
-if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
+::if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
     :: download installer??
-    if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
-        cd downloads
-        echo Downloading Boost %BOOST_VERSION% %arch% bits...
-        curl --silent --fail --location --max-time 1600 --connect-timeout 30 http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
-        cd ..
-        if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
-            echo something went wrong on boost %BOOST_VERSION% %arch% bits extraction!!!!!!!!!
-        )
-    ) else (
-        echo Boost %BOOST_VERSION% %arch% bits already downloaded
-    )
+::    if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+::        cd downloads
+::        echo Downloading Boost %BOOST_VERSION% %arch% bits...
+::        curl --silent --fail --location --max-time 1600 --connect-timeout 30 http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
+::        cd ..
+::        if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+::            echo something went wrong on boost %BOOST_VERSION% %arch% bits extraction!!!!!!!!!
+::        )
+::    ) else (
+::        echo Boost %BOOST_VERSION% %arch% bits already downloaded
+::    )
 
-    echo Installing Boost %BOOST_VERSION% %arch% bits...
-    downloads\boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
-    echo Done installing.
-) else (
-    echo Boost %BOOST_VERSION% %arch% bits already installed
-)
+::    echo Installing Boost %BOOST_VERSION% %arch% bits...
+::    downloads\boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
+::    echo Done installing.
+::) else (
+::    echo Boost %BOOST_VERSION% %arch% bits already installed
+::)
 ::
 :: =========================================================
 
