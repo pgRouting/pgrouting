@@ -35,16 +35,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-// TODO(rohith) Check style.
 #include "utils/lsyscache.h"
- #include "utils/builtins.h"
+#include "utils/builtins.h"
+#include "fmgr.h"
 
 /*
   Uncomment when needed
 */
 
 // #define DEBUG
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
@@ -52,15 +51,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "./../../contraction/src/structs.h"
 #include "./contractGraph_driver.h"
-// #include "contract_function.h"
-// #include "./connection.h"
 
-PG_FUNCTION_INFO_V1(contractGraph);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 contractGraph(PG_FUNCTION_ARGS);
 
 
@@ -136,11 +128,8 @@ process(char* edges_sql,
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(contractGraph);
 PGDLLEXPORT Datum
-#endif
 contractGraph(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     size_t              call_cntr;
