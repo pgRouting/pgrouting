@@ -33,7 +33,7 @@ mkdir build\downloads 2>NUL
 
 :: CMake 3.5.2 (upgrade) workaround
 
-application arg0 arg1 > temp.txt
+cmake --version > temp.txt
 set /p CURR_CMAKE=<temp.txt
 echo CURR_CMAKE %CURR_CMAKE%
 
