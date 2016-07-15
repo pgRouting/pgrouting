@@ -36,7 +36,7 @@ cmake --version
 cmake --version > temp.txt
 set /p CURR_CMAKE=<temp.txt
 echo CURR_CMAKE %CURR_CMAKE%
-set WANT_CMAKE="cmake version %CMAKE_VERSION%"
+set WANT_CMAKE=cmake version %CMAKE_VERSION%
 echo WANT_CMAKE %WANT_CMAKE%
 
 
