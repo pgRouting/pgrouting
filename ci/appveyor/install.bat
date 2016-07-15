@@ -28,7 +28,9 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: =========================================================
 
 :: create a download directory:
-mkdir build\downloads 2>NUL
+cd %APPVEYOR_BUILD_FOLDER%
+mkdir build\downloads 
+:: 2>NUL
 
 :: CMake 3.5.2 (upgrade) workaround
 
