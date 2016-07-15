@@ -52,7 +52,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     start /wait msiexec /i downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
 
     for /f "tokens=*  delims=" %%a in ('cmake --version') do (
-        set CURR_CMAKE=%%a& goto _ExitForLoop1
+        set CURR_CMAKE=%%a& goto _ExitForLoop2
     )
     :_ExitForLoop2
     set CURR_CMAKE=%CURR_CMAKE:~14%
