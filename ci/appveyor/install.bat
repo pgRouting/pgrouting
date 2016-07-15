@@ -32,20 +32,20 @@ mkdir build\downloads 2>NUL
 
 :: CMake 3.5.2 (upgrade) workaround
 
-cmake --version
-echo 1-------------
+:: cmake --version
+:: echo 1-------------
 
 for /f "tokens=*  delims=" %%a in ('cmake --version') do (
-    set CURR_CMAKE=%%a& goto _ExitForLoop
+    set CURR_CMAKE=%%a& goto _ExitForLoop1
 )
-:_ExitForLoop
-echo CURR_CMAKE %CURR_CMAKE%
-echo 2-------------
+:_ExitForLoop1
+:: echo CURR_CMAKE %CURR_CMAKE%
+:: echo 2-------------
 set CURR_CMAKE=%CURR_CMAKE:~14%
-echo CURR_CMAKE %CURR_CMAKE%
-echo 3-------------
-echo CMAKE_VERSION %CMAKE_VERSION%
-echo 4-------------
+:: echo CURR_CMAKE %CURR_CMAKE%
+:: echo 3-------------
+:: echo CMAKE_VERSION %CMAKE_VERSION%
+:: echo 4-------------
 
 if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
@@ -56,11 +56,12 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo Installing cmake %CMAKE_VERSION%
     start /wait msiexec /i build\downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
 
-
-    cmake --version > temp.txt
-    set /p CURR_CMAKE=<temp.txt
-    echo new CURR_CMAKE %CURR_CMAKE%
-    if %CURR_CMAKE% == "cmake version %CMAKE_VERSION%" (
+    for /f "tokens=*  delims=" %%a in ('cmake --version') do (
+        set CURR_CMAKE=%%a& goto _ExitForLoop1
+    )
+    :_ExitForLoop2
+    set CURR_CMAKE=%CURR_CMAKE:~14%
+    if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
         echo something went wrong on cmake installation download !!!!!!!!!
         echo "cmake %CMAKE_VERSION% already installed
     )
