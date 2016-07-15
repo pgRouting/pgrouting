@@ -29,6 +29,9 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: create a download directory:
 cd c:\build
 mkdir downloads 2>NUL
+dir
+dir pgrouting
+dir downloads
 
 
 :: =========================================================
@@ -63,8 +66,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 ::
 :: =========================================================
 
-echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
-cd %APPVEYOR_BUILD_FOLDER%
+cd c:\build
 dir downloads
 
 
