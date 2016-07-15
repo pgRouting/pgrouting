@@ -35,16 +35,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-// TODO(rohith) Check style.
 #include "utils/lsyscache.h"
 #include "utils/builtins.h"
+#include "fmgr.h"
 
 /*
   Uncomment when needed
 */
 
 // #define DEBUG
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
