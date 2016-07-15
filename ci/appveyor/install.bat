@@ -35,7 +35,10 @@ mkdir build\downloads 2>NUL
 cmake --version
 echo 1-------------
 
-for /f "tokens=*" %%a in ('cmake --version') do @set CURR_CMAKE=%%a
+for /f "tokens=*  delims=" %%a in ('cmake --version') do (
+    set CURR_CMAKE=%%a& goto _ExitForLoop
+)
+:_ExitForLoop
 echo CURR_CMAKE %CURR_CMAKE%
 echo 2-------------
 set CURR_CMAKE=%CURR_CMAKE:~13%
