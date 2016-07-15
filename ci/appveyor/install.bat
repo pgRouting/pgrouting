@@ -76,7 +76,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
     echo Extracting postGIS
     7z x -oc:\build\ downloads\postgis-pg94-binaries-2.2.2w64gcc48-zip
     echo Installing postGIS
-    copy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
+    xcopy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
 ) else (
     echo postGIS %PG_VERSION% already installed
 )
