@@ -6,6 +6,7 @@ cd c:\build
 Setlocal EnableDelayedExpansion EnableExtensions
 
 echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
+cd %APPVEYOR_BUILD_FOLDER%
 
 :: =========================================================
 :: Set some defaults. Infer some variables.
@@ -18,7 +19,7 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: =========================================================
 
 :: create a download directory:
-mkdir c:\build\downloads 2>NUL
+mkdir build\downloads 2>NUL
 
 
 
@@ -35,11 +36,10 @@ set BOOST_VER_USC=%BOOST_VERSION:.=_%
 
 
 if not exist "c:\build\boost_%BOOST_VER_USC%" (
-    cd c:\build\downloads
 
     if not exist "c:\build\downloads\boost_%BOOST_VER_USC%-zip" (
         echo Downloading Boost %BOOST_VERSION% ...
-        curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
+        curl -L -O -S -s --output build\downloads\boost_%BOOST_VER_USC%-zip http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
         echo Done downloading Boost.
         if not exist "c:\build\downloads\boost_%BOOST_VER_USC%-zip" (
             echo something went wrong on boost download !!!!!!!!!
