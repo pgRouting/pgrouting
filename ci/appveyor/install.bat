@@ -87,6 +87,11 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
     echo Extracting postGIS
     7z x -oc:\build\ downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
     dir c:\build
+    echo 1---------
+    dir c:\build\postgis-pg94-binaries-2.2.2w64gcc48
+    echo 2---------
+    dir C:\Progra~1\PostgreSQL\9.4\
+    echo 3---------
     echo Installing postGIS
     xcopy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
 
