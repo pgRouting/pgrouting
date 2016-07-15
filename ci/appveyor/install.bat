@@ -27,7 +27,7 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: =========================================================
 
 :: create a download directory:
-cd %APPVEYOR_BUILD_FOLDER%
+cd c:\build
 mkdir downloads 2>NUL
 
 
@@ -44,7 +44,6 @@ set CURR_CMAKE=%CURR_CMAKE:~14%
 if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
-    
     echo Downoading cmake %CMAKE_VERSION%
     curl -L -O -S -s --output downloads\cmake-%CMAKE_VERSION%-win32-x86.msi https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
     echo Installing cmake %CMAKE_VERSION%
@@ -75,18 +74,20 @@ dir downloads
 
 if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
     if not exist downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip (
+        cd downloads
         echo Downoading postGIS
-        curl -L -O -S -s --output downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
+        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
         echo after downloading
-        dir downloads
+        dir 
         dir c:\build\downloads
         dir c:\downloads
+        cd ..
         if not exist downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip (
             echo something went wrong on postgis download !!!!!!!!!
         )
     )
     echo Extracting postGIS
-    7z x -oc:\build\ .\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
+    7z x -oc:\build\ downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
     dir downloads
     dir c:\build
     echo Installing postGIS
