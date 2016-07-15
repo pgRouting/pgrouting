@@ -37,7 +37,7 @@ cmake --version > temp.txt
 set /p CURR_CMAKE=<temp.txt
 echo CURR_CMAKE %CURR_CMAKE%
 
-if (%CURR_CMAKE% == "cmake version %CMAKE_VERSION%" (
+if %CURR_CMAKE% == "cmake version %CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
     
