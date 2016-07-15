@@ -68,7 +68,6 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 :: =========================================================
 
 cd c:\build
-dir downloads
 
 
 :: =========================================================
@@ -92,6 +91,8 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
     xcopy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
+        dir downloads
+        dir C:\Progra~1\PostgreSQL\9.4\
         echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
     ) else (
         echo postGIS %PG_VERSION% installed
