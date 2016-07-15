@@ -53,7 +53,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     cmake --version > temp.txt
     set /p CURR_CMAKE=<temp.txt
     echo new CURR_CMAKE %CURR_CMAKE%
-    if (%CURR_CMAKE% == "cmake version %CMAKE_VERSION%" (
+    if %CURR_CMAKE% == "cmake version %CMAKE_VERSION%" (
         echo something went wrong on cmake installation download !!!!!!!!!
         echo "cmake %CMAKE_VERSION% already installed
     )
