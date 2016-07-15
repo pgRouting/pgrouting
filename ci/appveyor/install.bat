@@ -12,7 +12,7 @@ cd %APPVEYOR_BUILD_FOLDER%
 :: Set some defaults. Infer some variables.
 ::
 
-if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
+if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.1
 :: replace dots with underscores
 set CMAKE_VER_USC=%CMAKE_VERSION:.=_%
 
@@ -29,34 +29,27 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 
 :: create a download directory:
 cd %APPVEYOR_BUILD_FOLDER%
-mkdir build\downloads 
-:: 2>NUL
+mkdir downloads 2>NUL
 
-:: CMake 3.5.2 (upgrade) workaround
 
-:: cmake --version
-:: echo 1-------------
+:: =========================================================
+:: Download and install cmake
+::
 
 for /f "tokens=*  delims=" %%a in ('cmake --version') do (
     set CURR_CMAKE=%%a& goto _ExitForLoop1
 )
 :_ExitForLoop1
-:: echo CURR_CMAKE %CURR_CMAKE%
-:: echo 2-------------
 set CURR_CMAKE=%CURR_CMAKE:~14%
-:: echo CURR_CMAKE %CURR_CMAKE%
-:: echo 3-------------
-:: echo CMAKE_VERSION %CMAKE_VERSION%
-:: echo 4-------------
 
 if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
     
     echo Downoading cmake %CMAKE_VERSION%
-    curl -L -O -S -s --output build\downloads\cmake-%CMAKE_VERSION%-win32-x86.msi https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
+    curl -L -O -S -s --output downloads\cmake-%CMAKE_VERSION%-win32-x86.msi https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
     echo Installing cmake %CMAKE_VERSION%
-    start /wait msiexec /i build\downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
+    start /wait msiexec /i downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
 
     for /f "tokens=*  delims=" %%a in ('cmake --version') do (
         set CURR_CMAKE=%%a& goto _ExitForLoop1
@@ -68,6 +61,9 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
         echo "cmake %CMAKE_VERSION% already installed
     )
 )
+
+::
+:: =========================================================
 
 :: PostGIS 2.2.2
 echo Downoading postGIS
