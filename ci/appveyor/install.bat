@@ -12,9 +12,8 @@ cd %APPVEYOR_BUILD_FOLDER%
 :: Set some defaults. Infer some variables.
 ::
 
-if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.1
-:: replace dots with underscores
-set CMAKE_VER_USC=%CMAKE_VERSION:.=_%
+if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
+if not defined PG_VERSION set PG_VERSION=2.2.2
 
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 :: replace dots with underscores
@@ -65,22 +64,24 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 ::
 :: =========================================================
 
-:: PostGIS 2.2.2
-echo Downoading postGIS
-curl -L -O -S -s --output build\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
-echo Extracting postGIS
-7z x -oc:\build\ build\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
-echo Installing postGIS
-xcopy /e /y /q postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
+:: =========================================================
+:: Download and install Postgis
+::
 
+if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
+    echo Downoading postGIS
+    url -L -O -S -s --output downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
+    cho Extracting postGIS
+    z x -oc:\build\ downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
+    cho Installing postGIS
+    copy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
+) else (
+    echo postGIS %PG_VERSION% already installed
+)
 
 :: =========================================================
 :: Download and install Boost
 ::
-
-
-
-    
 
 
 if not exist "build\boost_%BOOST_VER_USC%" (
