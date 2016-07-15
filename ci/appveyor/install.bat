@@ -37,9 +37,24 @@ cmake --version > temp.txt
 set /p CURR_CMAKE=<temp.txt
 echo CURR_CMAKE %CURR_CMAKE%
 
-curl -L -O -S -s --output build\downloads\cmake-%CMAKE_VERSION%-win32-x86.msi https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
-start /wait msiexec /i build\downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
-cmake --version
+if (%CURR_CMAKE% == "cmake version %CMAKE_VERSION%" (
+    echo "cmake %CMAKE_VERSION% already installed
+) else (
+    
+    echo Downoading cmake
+    curl -L -O -S -s --output build\downloads\cmake-%CMAKE_VERSION%-win32-x86.msi https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
+    echo Installing cmake
+    start /wait msiexec /i build\downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
+
+
+    cmake --version > temp.txt
+    set /p CURR_CMAKE=<temp.txt
+    echo new CURR_CMAKE %CURR_CMAKE%
+    if (%CURR_CMAKE% == "cmake version %CMAKE_VERSION%" (
+        echo something went wrong on cmake installation download !!!!!!!!!
+        echo "cmake %CMAKE_VERSION% already installed
+    )
+)
 
 :: PostGIS 2.2.2
 echo Downoading postGIS
