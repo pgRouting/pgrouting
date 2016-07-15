@@ -21,6 +21,15 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: create a download directory:
 mkdir build\downloads 2>NUL
 
+:: CMake 3.5.2 (upgrade) workaround
+curl -L -O -S -s --output build\downloads\cmake-3.5.2-win32-x86.msi https://cmake.org/files/v3.5/cmake-3.5.2-win32-x86.msi
+start /wait msiexec /i build\downloads\cmake-3.5.2-win32-x86.msi /qn
+cmake --version
+
+:: PostGIS 2.2.2
+curl -L -O -S -s --output build\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
+7z x build\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
+xcopy /e /y /q build\downloads\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
 
 
 :: =========================================================
