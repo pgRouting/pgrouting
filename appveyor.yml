@@ -22,6 +22,7 @@ clone_depth: 1
 clone_folder: c:\build\pgrouting
 
 cache:
+  - build\downloads -> appveyor.yml
   - C:\local\boost_1_58_0 -> appveyor.yml
 
 services:
