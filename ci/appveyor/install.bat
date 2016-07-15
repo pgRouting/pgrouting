@@ -40,7 +40,7 @@ set WANT_CMAKE=cmake version %CMAKE_VERSION%
 echo WANT_CMAKE %WANT_CMAKE%
 
 
-if "%CURR_CMAKE%" == "%WANT_CMAKE%" (
+if cmake --version == "%WANT_CMAKE%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
     
