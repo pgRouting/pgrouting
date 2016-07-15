@@ -37,11 +37,11 @@ set BOOST_VER_USC=%BOOST_VERSION:.=_%
 
 if not exist "c:\build\boost_%BOOST_VER_USC%" (
 
-    if not exist "c:\build\downloads\boost_%BOOST_VER_USC%-zip" (
+    if not exist build\downloads\boost_%BOOST_VER_USC%-zip (
         echo Downloading Boost %BOOST_VERSION% ...
         curl -L -O -S -s --output build\downloads\boost_%BOOST_VER_USC%-zip http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
         echo Done downloading Boost.
-        if not exist "c:\build\downloads\boost_%BOOST_VER_USC%-zip" (
+        if not exist build\downloads\boost_%BOOST_VER_USC%-zip (
             echo something went wrong on boost download !!!!!!!!!
         )
     ) else (
@@ -54,7 +54,6 @@ if not exist "c:\build\boost_%BOOST_VER_USC%" (
     if not exist "c:\build\boost_%BOOST_VER_USC%" (
         echo something went wrong!!!!!!!!!
     )
-    cd ..
 ) else (
     echo Boost_%BOOST_VER_USC% Already Extracted
 )
