@@ -45,6 +45,9 @@ if not exist "C:\build\boost_%BOOST_VER_USC%" (
     echo Extracting Boost_%BOOST_VERSION%.zip ...
     7z x boost_1_58_0.zip -oc:\build\boost_%BOOST_VER_USC%
     echo Done extractig.
+    if not exist "C:\build\boost_%BOOST_VER_USC%" (
+        echo something went wrong!!!!!!!!!
+    )
 ) else (
     echo Boost_%BOOST_VER_USC% Already Extracted
 )
