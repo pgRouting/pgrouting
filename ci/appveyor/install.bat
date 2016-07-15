@@ -18,12 +18,7 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: =========================================================
 
 :: create a download directory:
-mkdir build\downloads 2>NUL
-
-::# Boost 1.58.0
-::#- curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.zip
-::#- 7z x boost_1_58_0.zip
-
+mkdir c:\build\downloads 2>NUL
 
 
 
