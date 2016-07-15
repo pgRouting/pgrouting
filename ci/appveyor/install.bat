@@ -33,14 +33,11 @@ mkdir build\downloads 2>NUL
 :: CMake 3.5.2 (upgrade) workaround
 
 cmake --version
-cmake --version > temp.txt
-set /p CURR_CMAKE=<temp.txt
-echo CURR_CMAKE %CURR_CMAKE%
-set WANT_CMAKE=cmake version %CMAKE_VERSION%
-echo WANT_CMAKE %WANT_CMAKE%
 
+for /f "delims=" %a in ('cmake --version') do @set myvar=%a
+echo %myvar%
 
-if cmake --version == "%WANT_CMAKE%" (
+if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
     
