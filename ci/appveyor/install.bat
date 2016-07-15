@@ -64,6 +64,8 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 ::
 :: =========================================================
 
+cd %APPVEYOR_BUILD_FOLDER%
+
 :: =========================================================
 :: Download and install Postgis
 ::
@@ -84,13 +86,13 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
 ::
 
 
-if not exist "build\boost_%BOOST_VER_USC%" (
+if not exist "c:\build\boost_%BOOST_VER_USC%" (
 
-    if not exist build\downloads\boost_%BOOST_VER_USC%-zip (
+    if not exist downloads\boost_%BOOST_VER_USC%-zip (
         echo Downloading Boost %BOOST_VERSION% ...
-        curl -L -O -S -s --output build\downloads\boost_%BOOST_VER_USC%-zip http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
+        curl -L -O -S -s --output downloads\boost_%BOOST_VER_USC%-zip http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
         echo Done downloading Boost.
-        if not exist build\downloads\boost_%BOOST_VER_USC%-zip (
+        if not exist downloads\boost_%BOOST_VER_USC%-zip (
             echo something went wrong on boost download !!!!!!!!!
         )
     ) else (
@@ -100,7 +102,7 @@ if not exist "build\boost_%BOOST_VER_USC%" (
     echo Extracting Boost_%BOOST_VERSION%.zip ...
     7z x -oc:\build\ Boost_%BOOST_VER_USC%.zip
     echo Done extractig.
-    if not exist "build\boost_%BOOST_VER_USC%" (
+    if not exist "c\build\boost_%BOOST_VER_USC%" (
         echo something went wrong on boos extraction!!!!!!!!!
     )
 ) else (
@@ -109,16 +111,16 @@ if not exist "build\boost_%BOOST_VER_USC%" (
 
 if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
     :: download installer??
-    if not exist build\downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+    if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
         echo Downloading Boost %BOOST_VERSION% %arch% bits...
-        curl --silent --fail --location --max-time 1600 --connect-timeout 30 --output build\downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
+        curl --silent --fail --location --max-time 1600 --connect-timeout 30 --output downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
         echo Done downloading.
     ) else (
         echo Boost %BOOST_VERSION% %arch% bits already downloaded
     )
 
     echo Installing Boost %BOOST_VERSION% %arch% bits...
-    build\downloads\boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
+    downloads\boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
     echo Done installing.
 ) else (
     echo Boost %BOOST_VERSION% %arch% bits already installed
