@@ -66,7 +66,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 
 echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
 cd %APPVEYOR_BUILD_FOLDER%
-dir ./downloads
+dir downloads
 
 
 :: =========================================================
@@ -76,8 +76,11 @@ dir ./downloads
 if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
     echo Downoading postGIS
     curl -L -O -S -s --output .\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
+    dir downloads
     echo Extracting postGIS
     7z x -oc:\build\ .\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
+    dir downloads
+    dir c:\build
     echo Installing postGIS
     xcopy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
 ) else (
