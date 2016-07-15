@@ -41,7 +41,7 @@ for /f "tokens=*  delims=" %%a in ('cmake --version') do (
 :_ExitForLoop
 echo CURR_CMAKE %CURR_CMAKE%
 echo 2-------------
-set CURR_CMAKE=%CURR_CMAKE:~13%
+set CURR_CMAKE=%CURR_CMAKE:~14%
 echo CURR_CMAKE %CURR_CMAKE%
 echo 3-------------
 echo CMAKE_VERSION %CMAKE_VERSION%
