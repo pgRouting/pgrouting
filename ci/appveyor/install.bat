@@ -37,6 +37,8 @@ cmake --version
 for /f "delims=" %a in ('cmake --version') do @set CURR_CMAKE=%a
 echo CURR_CMAKE %CURR_CMAKE%
 set CURR_CMAKE=%CURR_CMAKE:~13%
+echo CURR_CMAKE %CURR_CMAKE%
+echo CMAKE_VERSION %CMAKE_VERSION%
 
 if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
