@@ -34,7 +34,6 @@ init:
   - git config --global core.autocrlf false
 
 install:
-  - cd %APPVEYOR_BUILD_FOLDER%
   - call ci\appveyor\install.bat
 
   - cd c:\build
