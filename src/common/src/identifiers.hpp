@@ -62,9 +62,9 @@ const std::set<T>& Identifiers<T>::ids() const {
 
 //! \brief Returns a boolean value true or false
 /*!
-  @param [IN] *other* is an identifier of type *T*
+  @param [in] other Identifier of type *T*
   Returns:
-  true: If *other* is in this set
+  true: If other is in this set
   false: Otherwise
   */
 template <typename T>
@@ -74,9 +74,9 @@ bool Identifiers<T>::has(const T other) const {
 
 //! \brief Returns a boolean value true or false
 /*!
-  @param [IN] *other* is an identifier of type *T*
+  @param [in] other is an identifier of type *T*
   Returns:
-  true: If *other* is not in this set
+  true: If other is not in this set
   false: Otherwise
   */
 template <typename T>
@@ -86,9 +86,9 @@ bool Identifiers<T>::isDisjoint(const T other) const {
 
 //! \brief Returns a boolean value true or false
 /*!
-  @param [IN] *other* is set of identifiers of type *Identifiers<T>*
+  @param [in] other is set of identifiers of type *Identifiers<T>*
   Returns:
-  true: If *other* and this set are disjoint
+  true: If other and this set are disjoint
   false: otherwise
   */
 template <typename T>
@@ -103,7 +103,7 @@ bool Identifiers<T>::isDisjoint(const Identifiers<T> &other) const {
 
 //! \brief Inserts a set of identifiers of type *Identifiers<T>* to this set
 /*!
-  @param [IN] *other* is a set of identifiers
+  @param [in] other is a set of identifiers
   */
 template <typename T>
 void Identifiers<T>::insert(const Identifiers<T> &other) {
@@ -112,7 +112,7 @@ void Identifiers<T>::insert(const Identifiers<T> &other) {
 
 //! \brief Inserts an identifier of type *T* to this set
 /*!
-  @param [IN] *other* is an identifier of type *T*
+  @param [in] other is an identifier of type *T*
   */
 template <typename T>
 void Identifiers<T>::insert(const T &other) {
@@ -121,9 +121,9 @@ void Identifiers<T>::insert(const T &other) {
 
 //! \brief Returns a boolean value 
 /*!
-  @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
+  @param [in] other is a set of identifiers of type *Identifiers<T>*
   Returns:
-  true: If *other* and this set are equivalent
+  true: If other and this set are equivalent
   false: Otherwise
   */
 template <typename T>
@@ -134,8 +134,8 @@ bool Identifiers<T>::operator ==(const Identifiers<T> &other) const {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>* 
 /*!
-  @param [IN] *other* is an identifier of type *T*
-  Returns the set union of *other* with this set
+  @param [in] other is an identifier of type *T*
+  Returns the set union of other with this set
   */
 template <typename T>
 Identifiers<T> Identifiers<T>::operator +(const T &other) const {
@@ -147,8 +147,8 @@ Identifiers<T> Identifiers<T>::operator +(const T &other) const {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>* 
 /*!
-  @param [IN] *other* is an identifier of type *T*
-  Returns the set intersection of *other* with this set
+  @param [in] other is an identifier of type *T*
+  Returns the set intersection of other with this set
   */
 template <typename T>
 Identifiers<T> Identifiers<T>::operator *(const T &other) const {
@@ -160,8 +160,8 @@ Identifiers<T> Identifiers<T>::operator *(const T &other) const {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>* 
 /*!
-  @param [IN] *other* is an identifier of type *T*
-  Returns the set difference between this set and *other*
+  @param [in] other is an identifier of type *T*
+  Returns the set difference between this set and other
   */
 template <typename T>
 Identifiers<T> Identifiers<T>::operator -(const T &other) const {
@@ -173,8 +173,8 @@ Identifiers<T> Identifiers<T>::operator -(const T &other) const {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>* 
 /*!
-  @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
-  Returns the set union of *other* with this set
+  @param [in] other is a set of identifiers of type *Identifiers<T>*
+  Returns the set union of other with this set
   */
 template <typename T>
 Identifiers<T> Identifiers<T>::operator +(const Identifiers<T> &other) const {
@@ -186,8 +186,8 @@ Identifiers<T> Identifiers<T>::operator +(const Identifiers<T> &other) const {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>* 
 /*!
-  @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
-  Returns the set intersection of *other* with this set
+  @param [in] other is a set of identifiers of type *Identifiers<T>*
+  Returns the set intersection of other with this set
   */
 template <typename T>
 Identifiers<T> Identifiers<T>::operator *(const Identifiers<T> &other) const {
@@ -199,8 +199,8 @@ Identifiers<T> Identifiers<T>::operator *(const Identifiers<T> &other) const {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>* 
 /*!
-  @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
-  Returns the set difference between this set and *other*
+  @param [in] other is a set of identifiers of type *Identifiers<T>*
+  Returns the set difference between this set and other
   */
 template <typename T>
 Identifiers<T> Identifiers<T>::operator -(const Identifiers<T> &other) const {
@@ -213,8 +213,8 @@ Identifiers<T> Identifiers<T>::operator -(const Identifiers<T> &other) const {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>&* 
 /*!
-  @param [IN] *other* is an identifiers of type *T*
-  Replaces this set with the set union of *other* with this set
+  @param [in] other is an identifiers of type *T*
+  Replaces this set with the set union of other with this set
   */
 template <typename T>
 Identifiers<T>& Identifiers<T>::operator +=(const T &other) {
@@ -224,8 +224,8 @@ Identifiers<T>& Identifiers<T>::operator +=(const T &other) {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>&* 
 /*!
-  @param [IN] *other* is an identifiers of type *T*
-  Replaces this set with the set intersection of *other* with this set
+  @param [in] other is an identifiers of type *T*
+  Replaces this set with the set intersection of other with this set
   */
 template <typename T>
 Identifiers<T>& Identifiers<T>::operator *=(const T &other) {
@@ -240,8 +240,8 @@ Identifiers<T>& Identifiers<T>::operator *=(const T &other) {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>&* 
 /*!
-  @param [IN] *other* is a set of identifiers of type *T*
-  Replaces this set with the set difference between this set and *other*
+  @param [in] other is a set of identifiers of type *T*
+  Replaces this set with the set difference between this set and other
   */
 template <typename T>
 Identifiers<T>& Identifiers<T>::operator -=(const T &other) {
@@ -254,8 +254,8 @@ Identifiers<T>& Identifiers<T>::operator -=(const T &other) {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>&* 
 /*!
-  @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
-  Replaces this set with the set union of *other* with this set
+  @param [in] other is a set of identifiers of type *Identifiers<T>*
+  Replaces this set with the set union of other with this set
   */
 template <typename T>
 Identifiers<T>& Identifiers<T>::operator +=(const Identifiers<T> &other) {
@@ -265,8 +265,8 @@ Identifiers<T>& Identifiers<T>::operator +=(const Identifiers<T> &other) {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>&* 
 /*!
-  @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
-  Replaces this set with the set intersection of *other* with this set
+  @param [in] other is a set of identifiers of type *Identifiers<T>*
+  Replaces this set with the set intersection of other with this set
   */
 template <typename T>
 Identifiers<T>& Identifiers<T>::operator *=(const Identifiers<T> &other) {
@@ -280,8 +280,8 @@ Identifiers<T>& Identifiers<T>::operator *=(const Identifiers<T> &other) {
 
 //! \brief Returns a set of identifiers of type *Identifiers<T>&* 
 /*!
-  @param [IN] *other* is a set of identifiers of type *Identifiers<T>*
-  Replaces this set with the set difference between this set and *other*
+  @param [in] other is a set of identifiers of type *Identifiers<T>*
+  Replaces this set with the set difference between this set and other
   */
 template <typename T>
 Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
@@ -306,7 +306,7 @@ std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) 
 
 //! \brief Returns an identifier of type *T* at position *index* in the set 
 /*!
-  @param [IN] *index* is of type *size_t* 
+  @param [in] index is of type size_t 
   */
 template <typename T>
 const T& Identifiers<T>::operator [](size_t index) const {
