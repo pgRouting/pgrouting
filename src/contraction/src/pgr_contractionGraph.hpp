@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_contractionGraph.c
+File: pgr_contractionGraph.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,14 +26,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
 #pragma once
-#ifdef __MINGW32__
+
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+
 #ifdef open
 #undef open
 #endif
+
+#ifdef unlink
+#undef unlink
 #endif
+
+#endif
+
 
 #include <limits> 
 #include <algorithm>
