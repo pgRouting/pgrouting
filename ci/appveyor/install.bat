@@ -6,7 +6,7 @@ cd c:\build
 Setlocal EnableDelayedExpansion EnableExtensions
 
 echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
-:: cd %APPVEYOR_BUILD_FOLDER%
+cd %APPVEYOR_BUILD_FOLDER%
 
 :: =========================================================
 :: Set some defaults. Infer some variables.
@@ -28,14 +28,17 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: =========================================================
 
 :: create a download directory:
-cd c:\
 mkdir build\downloads 2>NUL
 
 :: CMake 3.5.2 (upgrade) workaround
 
+cmake --version
 cmake --version > temp.txt
 set /p CURR_CMAKE=<temp.txt
 echo CURR_CMAKE %CURR_CMAKE%
+set WANT_CMAKE="cmake version %CMAKE_VERSION%"
+echo WANT_CMAKE %WANT_CMAKE%
+
 
 if "%CURR_CMAKE%" == "cmake version %CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
