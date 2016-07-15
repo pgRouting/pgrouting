@@ -29,9 +29,6 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: create a download directory:
 cd c:\build
 mkdir downloads 2>NUL
-dir
-dir pgrouting
-dir downloads
 
 
 :: =========================================================
@@ -47,8 +44,11 @@ set CURR_CMAKE=%CURR_CMAKE:~14%
 if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
+    cd downloads
     echo Downoading cmake %CMAKE_VERSION%
-    curl -L -O -S -s --output downloads\cmake-%CMAKE_VERSION%-win32-x86.msi https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
+    curl -L -O -S -s https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
+    cd ..
+
     echo Installing cmake %CMAKE_VERSION%
     start /wait msiexec /i downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
 
@@ -58,8 +58,9 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     :_ExitForLoop2
     set CURR_CMAKE=%CURR_CMAKE:~14%
     if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
+        echo cmake %CMAKE_VERSION% installed
+    ) else (
         echo something went wrong on cmake installation download !!!!!!!!!
-        echo "cmake %CMAKE_VERSION% already installed
     )
 )
 
@@ -79,21 +80,22 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
         cd downloads
         echo Downoading postGIS
         curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
-        echo after downloading
-        dir 
-        dir c:\build\downloads
-        dir c:\downloads
         cd ..
         if not exist downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip (
-            echo something went wrong on postgis download !!!!!!!!!
+            echo something went wrong on postgis %PG_VERSION% download !!!!!!!!!
         )
     )
     echo Extracting postGIS
     7z x -oc:\build\ downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
-    dir downloads
     dir c:\build
     echo Installing postGIS
     xcopy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
+
+    if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
+        echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
+    ) else (
+        echo postGIS %PG_VERSION% installed
+    )
 ) else (
     echo postGIS %PG_VERSION% already installed
 )
