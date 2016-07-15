@@ -64,7 +64,10 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 ::
 :: =========================================================
 
+echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
 cd %APPVEYOR_BUILD_FOLDER%
+dir ./downloads
+
 
 :: =========================================================
 :: Download and install Postgis
@@ -72,9 +75,9 @@ cd %APPVEYOR_BUILD_FOLDER%
 
 if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
     echo Downoading postGIS
-    curl -L -O -S -s --output downloads\postgis-pg94-binaries-2.2.2w64gcc48-zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
+    curl -L -O -S -s --output .\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
     echo Extracting postGIS
-    7z x -oc:\build\ downloads\postgis-pg94-binaries-2.2.2w64gcc48-zip
+    7z x -oc:\build\ .\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
     echo Installing postGIS
     xcopy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
 ) else (
@@ -88,11 +91,11 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
 
 if not exist "c:\build\boost_%BOOST_VER_USC%" (
 
-    if not exist downloads\boost_%BOOST_VER_USC%-zip (
+    if not exist downloads\boost_%BOOST_VER_USC%.zip (
         echo Downloading Boost %BOOST_VERSION% ...
-        curl -L -O -S -s --output downloads\boost_%BOOST_VER_USC%-zip http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
+        curl -L -O -S -s --output downloads\boost_%BOOST_VER_USC%.zip http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
         echo Done downloading Boost.
-        if not exist downloads\boost_%BOOST_VER_USC%-zip (
+        if not exist downloads\boost_%BOOST_VER_USC%.zip (
             echo something went wrong on boost download !!!!!!!!!
         )
     ) else (
