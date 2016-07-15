@@ -1,12 +1,10 @@
 @echo off
 
 :: each sub-script starts and end on this directory:
-cd c:\build
 
 Setlocal EnableDelayedExpansion EnableExtensions
 
 echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
-cd %APPVEYOR_BUILD_FOLDER%
 
 :: =========================================================
 :: Set some defaults. Infer some variables.
@@ -27,7 +25,7 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: =========================================================
 
 :: create a download directory:
-cd c:\build
+cd %APPVEYOR_BUILD_FOLDER%
 mkdir downloads 2>NUL
 
 
@@ -67,14 +65,14 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 ::
 :: =========================================================
 
-cd c:\build
+cd %APPVEYOR_BUILD_FOLDER%
 
 
 :: =========================================================
 :: Download and install Postgis
 ::
 
-if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
+if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     if not exist downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip (
         cd downloads
         echo Downoading postGIS
@@ -95,10 +93,10 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
     echo Installing postGIS
     xcopy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
 
-    if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
+    if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
+        echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
         dir downloads
         dir C:\Progra~1\PostgreSQL\9.4\
-        echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
     ) else (
         echo postGIS %PG_VERSION% installed
     )
