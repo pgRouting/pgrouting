@@ -38,12 +38,12 @@ set /p CURR_CMAKE=<temp.txt
 echo CURR_CMAKE %CURR_CMAKE%
 
 if (%CURR_CMAKE% == "cmake version %CMAKE_VERSION%" (
-    echo "cmake %CMAKE_VERSION% already installed
+    echo cmake %CMAKE_VERSION% already installed
 ) else (
     
-    echo Downoading cmake
+    echo Downoading cmake %CMAKE_VERSION%
     curl -L -O -S -s --output build\downloads\cmake-%CMAKE_VERSION%-win32-x86.msi https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
-    echo Installing cmake
+    echo Installing cmake %CMAKE_VERSION%
     start /wait msiexec /i build\downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
 
 
