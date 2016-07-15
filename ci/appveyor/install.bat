@@ -6,7 +6,7 @@ cd c:\build
 Setlocal EnableDelayedExpansion EnableExtensions
 
 echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
-cd %APPVEYOR_BUILD_FOLDER%
+:: cd %APPVEYOR_BUILD_FOLDER%
 
 :: =========================================================
 :: Set some defaults. Infer some variables.
