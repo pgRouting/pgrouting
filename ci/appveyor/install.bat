@@ -12,6 +12,15 @@ echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
 :: Set some defaults. Infer some variables.
 ::
 
+if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
+:: replace dots with underscores
+set CMAKE_VER_USC=%CMAKE_VERSION:.=_%
+
+if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
+:: replace dots with underscores
+set BOOST_VER_USC=%BOOST_VERSION:.=_%
+
+
 :: Determine if arch is 32/64 bits
 if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 
@@ -19,12 +28,17 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: =========================================================
 
 :: create a download directory:
+cd c:\
 mkdir build\downloads 2>NUL
 
 :: CMake 3.5.2 (upgrade) workaround
-cmake --version
-curl -L -O -S -s --output build\downloads\cmake-3.5.2-win32-x86.msi https://cmake.org/files/v3.5/cmake-3.5.2-win32-x86.msi
-start /wait msiexec /i build\downloads\cmake-3.5.2-win32-x86.msi /qn
+
+application arg0 arg1 > temp.txt
+set /p CURR_CMAKE=<temp.txt
+echo CURR_CMAKE %CURR_CMAKE%
+
+curl -L -O -S -s --output build\downloads\cmake-%CMAKE_VERSION%-win32-x86.msi https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
+start /wait msiexec /i build\downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
 cmake --version
 
 :: PostGIS 2.2.2
@@ -41,9 +55,6 @@ xcopy /e /y /q postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
 ::
 
 
-if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
-:: replace dots with underscores
-set BOOST_VER_USC=%BOOST_VERSION:.=_%
 
     
 
