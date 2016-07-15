@@ -34,7 +34,7 @@ mkdir build\downloads 2>NUL
 
 cmake --version
 
-for /f "delims=" %a in ('cmake --version') do @set CURR_CMAKE=%a
+for /f "delims=" %%a in ('cmake --version') do @set CURR_CMAKE=%%a
 echo CURR_CMAKE %CURR_CMAKE%
 set CURR_CMAKE=%CURR_CMAKE:~13%
 echo CURR_CMAKE %CURR_CMAKE%
