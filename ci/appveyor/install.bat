@@ -73,48 +73,48 @@ cd %APPVEYOR_BUILD_FOLDER%
 ::
 
 if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
-    if not exist downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip (
+    if not exist downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
         cd downloads
-        echo Downoading postGIS
-        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
+        echo Downoading postGIS %PG_VERSION%
+        curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
         cd ..
-        if not exist downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip (
+        if not exist downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
             echo something went wrong on postgis %PG_VERSION% download !!!!!!!!!
         )
     )
-    echo Extracting postGIS
-    7z x -oc:\build\ downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
-    dir c:\build
-    echo 1---------
-    dir c:\build\postgis-pg94-binaries-2.2.2w64gcc48
-    echo 2---------
-    dir C:\Progra~1\PostgreSQL\9.4\
-    echo 3---------
-    echo Installing postGIS
-    xcopy /e /y /q c:\build\postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
+    echo Extracting postGIS %PG_VERSION%
+    7z x -oc:\build\ downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+    echo Installing postGIS %PG_VERSION%
+    xcopy /e /y /q c:\build\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
         dir downloads
         dir C:\Progra~1\PostgreSQL\9.4\
     ) else (
-        echo postGIS %PG_VERSION% installed
+        echo postGIS %PG_VERSION% %arch% installed
     )
 ) else (
-    echo postGIS %PG_VERSION% already installed
+    echo postGIS %PG_VERSION% %arch% already installed
 )
+
+::
+:: =========================================================
+
+
+cd %APPVEYOR_BUILD_FOLDER%
 
 :: =========================================================
 :: Download and install Boost
 ::
 
-
 if not exist "c:\build\boost_%BOOST_VER_USC%" (
 
     if not exist downloads\boost_%BOOST_VER_USC%.zip (
+        cd downloads
         echo Downloading Boost %BOOST_VERSION% ...
-        curl -L -O -S -s --output downloads\boost_%BOOST_VER_USC%.zip http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
-        echo Done downloading Boost.
+        curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
+        cd ..
         if not exist downloads\boost_%BOOST_VER_USC%.zip (
             echo something went wrong on boost download !!!!!!!!!
         )
@@ -125,7 +125,7 @@ if not exist "c:\build\boost_%BOOST_VER_USC%" (
     echo Extracting Boost_%BOOST_VERSION%.zip ...
     7z x -oc:\build\ Boost_%BOOST_VER_USC%.zip
     echo Done extractig.
-    if not exist "c\build\boost_%BOOST_VER_USC%" (
+    if not exist "c:\build\boost_%BOOST_VER_USC%" (
         echo something went wrong on boos extraction!!!!!!!!!
     )
 ) else (
@@ -135,9 +135,13 @@ if not exist "c:\build\boost_%BOOST_VER_USC%" (
 if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
     :: download installer??
     if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+        cd downloads
         echo Downloading Boost %BOOST_VERSION% %arch% bits...
-        curl --silent --fail --location --max-time 1600 --connect-timeout 30 --output downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
-        echo Done downloading.
+        curl --silent --fail --location --max-time 1600 --connect-timeout 30 http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
+        cd ..
+        if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+            echo something went wrong on boost %BOOST_VERSION% %arch% bits extraction!!!!!!!!!
+        )
     ) else (
         echo Boost %BOOST_VERSION% %arch% bits already downloaded
     )
