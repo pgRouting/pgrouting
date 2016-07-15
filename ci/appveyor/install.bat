@@ -74,9 +74,15 @@ dir downloads
 ::
 
 if not exist "C:\Progra~1\PostgreSQL\9.4\postgis-pg94-binaries-2.2.2w64gcc48" (
-    echo Downoading postGIS
-    curl -L -O -S -s --output .\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
-    dir downloads
+    if not exist downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip (
+        echo Downoading postGIS
+        curl -L -O -S -s --output downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
+        echo after downloading
+        dir downloads
+        if not exist downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip (
+            echo something went wrong on postgis download !!!!!!!!!
+        )
+    )
     echo Extracting postGIS
     7z x -oc:\build\ .\downloads\postgis-pg94-binaries-2.2.2w64gcc48.zip
     dir downloads
