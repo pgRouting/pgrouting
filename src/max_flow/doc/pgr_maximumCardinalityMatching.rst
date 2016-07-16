@@ -98,7 +98,7 @@ If the directed parameter is not specified, it is assumed that the graph is dire
 
 :Example:
 
-.. literalinclude:: doc-maxFlowPushRelabel.queries
+.. literalinclude:: doc-maximumCardinalityMatching.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -125,6 +125,9 @@ Where:
 
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 
+NOTE: In directed graphs, it is expected to have one row per edge(including its reverse, if it exists).
+See below in the examples section.
+
 
 Description of the parameters of the signatures
 -----------------------------------------------
@@ -133,7 +136,7 @@ Description of the parameters of the signatures
 Column            Type                   Description
 ================= ====================== =================================================
 **edges_sql**     ``TEXT``               SQL query as described above.
-**directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Is true if unspecified.
+**directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Default TRUE.
 ================= ====================== =================================================
 
 
@@ -141,18 +144,17 @@ Examples
 ========
 
 The examples of this section are based on the :ref:`sampledata` network.
-The cost and reverse_cost columns in the sample data are intended as capacity and reverse_capacity.
-
+A helper function :ref:`pgr_splitEdges` is used to transform the input data into a compatible format.
 
 :Example:
 
-.. literalinclude:: doc-maxFlowPushRelabel.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-.. literalinclude:: doc-maxFlowPushRelabel.queries
+.. literalinclude:: doc-maximumCardinalityMatching.queries
    :start-after: -- q2
    :end-before: -- q3
+
+.. literalinclude:: doc-maximumCardinalityMatching.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 
 See Also

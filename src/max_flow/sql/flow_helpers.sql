@@ -25,25 +25,53 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 --INTERNAL FUNCTIONS
-CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
-    IN edges_sql TEXT,
-    IN source_vertex bigint,
-    IN sink_vertex bigint,
-    IN directed BOOLEAN DEFAULT TRUE,
-    OUT paths_number bigint
+CREATE OR REPLACE FUNCTION _pgr_executehelper(
+    IN edges_sql TEXT
     )
-  AS
+  RETURNS SETOF RECORD AS
   $BODY$
+  DECLARE
+	r RECORD;
   BEGIN
-	paths_number := COALESCE((SELECT sum(flow)
-	FROM pgr_maxflowpushrelabel('
-	    SELECT id, source, target, 1 as capacity, ' || CASE WHEN directed THEN '0' ELSE '1' END || ' AS reverse_capacity
-	    FROM (
-	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
-	        AS (id bigint, source bigint, target bigint)
-	    ) AS f', source_vertex, sink_vertex)
-	WHERE source = source_vertex GROUP BY source_vertex), 0) as paths_number;
+	FOR r in EXECUTE $1 LOOP
+		RETURN NEXT r;
+	END LOOP;
+	RETURN;
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
+
+--FUNCTIONS
+CREATE OR REPLACE FUNCTION pgr_splitedges(
+    IN edges_sql TEXT
+    )
+  RETURNS TABLE (id bigint, source bigint, target bigint, cost double precision) AS
+  $BODY$
+  DECLARE
+	counter BIGINT;
+	r RECORD;
+  BEGIN
+	counter := 1;
+	FOR r in SELECT * FROM _pgr_executehelper(_pgr_get_statement($1)) AS (id bigint, source bigint, target bigint, cost double precision, reverse_cost double precision) LOOP
+		IF r.cost > 0 THEN
+			id:=counter;
+			source=r.source;
+			target=r.target;
+			cost:=r.cost;
+			counter:=counter+1;
+			RETURN NEXT;
+		END IF;
+		IF r.reverse_cost > 0 THEN
+			id:=counter;
+			source=r.target;
+			target=r.source;
+			cost = r.reverse_cost;
+			counter:=counter+1;
+			RETURN NEXT;
+		END IF;
+	END LOOP;
+	RETURN;
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
