@@ -30,20 +30,89 @@ CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
     IN source_vertex bigint,
     IN sink_vertex bigint,
     IN directed BOOLEAN DEFAULT TRUE,
-    OUT paths_number bigint
+    OUT number_of_paths bigint
     )
   AS
   $BODY$
   BEGIN
-	paths_number := COALESCE((SELECT sum(flow)
+	number_of_paths := COALESCE((SELECT sum(flow)
 	FROM pgr_maxflowpushrelabel('
-	    SELECT id, source, target, 1 as capacity, ' || CASE WHEN directed THEN '0' ELSE '1' END || ' AS reverse_capacity
+	    SELECT id, source, target, CASE WHEN ' || CASE WHEN directed THEN 'going > 0' ELSE '(going > 0 OR coming > 0)' END || ' THEN 1 ELSE 0 END as capacity' || '
+	                             , CASE WHEN ' || CASE WHEN directed THEN 'coming > 0' ELSE '(going > 0 OR coming > 0)' END  || ' THEN 1 ELSE 0 END as reverse_capacity
 	    FROM (
 	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
-	        AS (id bigint, source bigint, target bigint)
+	        AS (id bigint, source bigint, target bigint, going double precision, coming double precision)
 	    ) AS f', source_vertex, sink_vertex)
-	WHERE source = source_vertex GROUP BY source_vertex), 0) as paths_number;
+	WHERE source = source_vertex), 0) as paths_number;
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
 
+CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
+    IN edges_sql TEXT,
+    IN source_vertex ANYARRAY,
+    IN sink_vertex bigint,
+    IN directed BOOLEAN DEFAULT TRUE,
+    OUT number_of_paths bigint
+    )
+  AS
+  $BODY$
+  BEGIN
+	number_of_paths := COALESCE((SELECT sum(flow)
+	FROM pgr_maxflowpushrelabel('
+	    SELECT id, source, target, CASE WHEN ' || CASE WHEN directed THEN 'going > 0' ELSE '(going > 0 OR coming > 0)' END || ' THEN 1 ELSE 0 END as capacity' || '
+	                             , CASE WHEN ' || CASE WHEN directed THEN 'coming > 0' ELSE '(going > 0 OR coming > 0)' END  || ' THEN 1 ELSE 0 END as reverse_capacity
+	    FROM (
+	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
+	        AS (id bigint, source bigint, target bigint, going double precision, coming double precision)
+	    ) AS f', source_vertex, sink_vertex)
+	WHERE source = ANY(source_vertex)), 0) as paths_number;
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
+    IN edges_sql TEXT,
+    IN source_vertex bigint,
+    IN sink_vertex ANYARRAY,
+    IN directed BOOLEAN DEFAULT TRUE,
+    OUT number_of_paths bigint
+    )
+  AS
+  $BODY$
+  BEGIN
+	number_of_paths := COALESCE((SELECT sum(flow)
+	FROM pgr_maxflowpushrelabel('
+	    SELECT id, source, target, CASE WHEN ' || CASE WHEN directed THEN 'going > 0' ELSE '(going > 0 OR coming > 0)' END || ' THEN 1 ELSE 0 END as capacity' || '
+	                             , CASE WHEN ' || CASE WHEN directed THEN 'coming > 0' ELSE '(going > 0 OR coming > 0)' END  || ' THEN 1 ELSE 0 END as reverse_capacity
+	    FROM (
+	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
+	        AS (id bigint, source bigint, target bigint, going double precision, coming double precision)
+	    ) AS f', source_vertex, sink_vertex)
+	WHERE source = source_vertex), 0) as paths_number;
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;
+
+CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
+    IN edges_sql TEXT,
+    IN source_vertex ANYARRAY,
+    IN sink_vertex ANYARRAY,
+    IN directed BOOLEAN DEFAULT TRUE,
+    OUT number_of_paths bigint
+    )
+  AS
+  $BODY$
+  BEGIN
+	number_of_paths := COALESCE((SELECT sum(flow)
+	FROM pgr_maxflowpushrelabel('
+	    SELECT id, source, target, CASE WHEN ' || CASE WHEN directed THEN 'going > 0' ELSE '(going > 0 OR coming > 0)' END || ' THEN 1 ELSE 0 END as capacity' || '
+	                             , CASE WHEN ' || CASE WHEN directed THEN 'coming > 0' ELSE '(going > 0 OR coming > 0)' END  || ' THEN 1 ELSE 0 END as reverse_capacity
+	    FROM (
+	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
+	        AS (id bigint, source bigint, target bigint, going double precision, coming double precision)
+	    ) AS f', source_vertex, sink_vertex)
+	WHERE source = ANY(source_vertex)), 0) as paths_number;
+  END
+  $BODY$
+  LANGUAGE plpgsql VOLATILE;

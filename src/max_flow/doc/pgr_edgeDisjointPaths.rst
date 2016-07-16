@@ -12,48 +12,36 @@
    - change [...] (including the square braquets) to appropiate values
    - one file / function,  may signatures of the same function go in the same file
 
-.. _pgr_maximumCardinalityMatching:
+.. _pgr_edgeDisjointPaths:
 
-pgr_maximumCardinalityMatching
-==============================
-
+pgr_edgeDisjointPaths
+=====================
 
 Name
 ----
 
-``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph. Implemented by Boost Graph Library.
+``pgr_edgeDisjointPaths`` — Calculates the number of edge disjoint paths between two groups of vertices.
 
 .. warning::  This is a proposed function.
 
      - Is not officially in the current release
 
-..
-   keep if uses boost (this is a comment)
-
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
-
-   Boost Graph Inside
-
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Calculates a maximum cardinality matching in a directed/undirected graph.
-Implementation details_.
-
-.. _details: http://www.boost.org/libs/graph/doc/maximum_matching.html
+Calculates the number of edge disjoint paths between two groups of vertices.
+Utilizes underlying maximum flow algorithms to calculate the number.
 
 Characteristics:
 ----------------
 
 The main characterics are:
-  - Calculates one possible maximum cardinality matching in a graph.
+  - Calculates the number of edge disjoint paths between two vertices.
+  - Returns 0 if source and destination are the same, or cannot be reached.
   - The graph can be directed or undirected.
-  - Running time: :math:`O( E*V * \alpha(E,V))`
-  - :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
-
-  .. _Ackermann function: https://en.wikipedia.org/wiki/Ackermann_function
+  - One to many, many to one, many to many versions are also supported.
+  - Running time: :math:`O( V^3)`. Uses :ref:`_pgr_maxFlowPushRelabel`.
 
 Signature Summary
 -----------------
@@ -65,21 +53,16 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maximumcardinalitymatching(edges_sql)
-    pgr_maximumcardinalitymatching(edges_sql, directed:=true)
+    pgr_edgedisjointpaths(edges_sql, source_vertex, destination_vertex)
+    pgr_edgedisjointpaths(edges_sql, source_vertices, destination_vertex)
+    pgr_edgedisjointpaths(edges_sql, source_vertex, destination_vertices)
+    pgr_edgedisjointpaths(edges_sql, source_vertices, destination_vertices)
+    pgr_edgedisjointpaths(edges_sql, source_vertex, destination_vertex, directed:=true)
+    pgr_edgedisjointpaths(edges_sql, source_vertices, destination_vertex, directed:=true)
+    pgr_edgedisjointpaths(edges_sql, source_vertex, destination_vertices, directed:=true)
+    pgr_edgedisjointpaths(edges_sql, source_vertices, destination_vertices, directed:=true)
 
-    RETURNS SET OF (id, source, target)
-        OR EMPTY SET
-
-
-..
-  This is a reminder of how your query looks like
-        pgr_maximumcardinalitymatching(
-            edges_sql TEXT,
-            OUT id BIGINT,
-            OUT source BIGINT,
-            OUT target BIGINT
-        )
+    RETURNS BIGINT
 
 Signatures
 ----------
@@ -90,15 +73,15 @@ Minimal signature
 
 .. code-block:: none
 
-    pgr_maximumcardinalitymatching(edges_sql)
-    RETURNS SET OF (id, source, target) OR EMPTY SET
+    pgr_maximumcardinalitymatching(edges_sql, source_vertex, destination_vertex)
+    RETURNS BIGINT
 
-The minimal signature calculates one possible maximum cardinality matching.
+The minimal signature the number of edge disjoint paths between `source_vertex` and `destination_vertex`.
 If the directed parameter is not specified, it is assumed that the graph is directed.
 
 :Example:
 
-.. literalinclude:: doc-maximumCardinalityMatching.queries
+.. literalinclude:: doc-edgeDisjointPaths.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -134,6 +117,8 @@ Description of the parameters of the signatures
 Column            Type                   Description
 ================= ====================== =================================================
 **edges_sql**     ``TEXT``               SQL query as described above.
+**source_vertex** ``BIGINT``             Identifier(s) of the source vertex(vertices).
+**sink_vertex**   ``BIGINT``             Identifier(s) of the destination vertex(vertices).
 **directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Default TRUE.
 ================= ====================== =================================================
 
@@ -145,19 +130,23 @@ The examples of this section are based on the :ref:`sampledata` network.
 
 :Example:
 
-.. literalinclude:: doc-maximumCardinalityMatching.queries
+.. literalinclude:: doc-edgeDisjointPaths.queries
    :start-after: -- q2
    :end-before: -- q3
 
-.. literalinclude:: doc-maximumCardinalityMatching.queries
+.. literalinclude:: doc-edgeDisjointPaths.queries
    :start-after: -- q3
    :end-before: -- q4
 
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q4
+   :end-before: -- q5
 
-See Also
---------
+Future Work
+===========
 
-* https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
+The function will be extended to return all the paths with the sequence of nodes.
+
 
 .. rubric:: Indices and tables
 

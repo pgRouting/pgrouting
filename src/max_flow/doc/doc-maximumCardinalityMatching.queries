@@ -1,8 +1,6 @@
 -- q1
 SELECT * FROM pgr_maximumcardinalitymatching(
-    'SELECT * FROM pgr_splitedges(''
-        SELECT id, source, target, cost, reverse_cost FROM edge_table
-    '')'
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table'
 );
 
  id | source | target
@@ -19,9 +17,7 @@ SELECT * FROM pgr_maximumcardinalitymatching(
 
 -- q2
 SELECT * FROM pgr_maximumcardinalitymatching(
-    'SELECT * FROM pgr_splitedges(''
-        SELECT id, source, target, cost, reverse_cost FROM edge_table
-    '')',
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
     TRUE
 );
 
@@ -39,7 +35,7 @@ SELECT * FROM pgr_maximumcardinalitymatching(
 
 -- q3
 SELECT * FROM pgr_maximumcardinalitymatching(
-    'SELECT id, source, target FROM edge_table',
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
     FALSE
 );
 

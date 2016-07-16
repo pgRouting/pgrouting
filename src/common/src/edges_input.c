@@ -35,7 +35,7 @@ static
 void fetch_basic_edge(
     HeapTuple *tuple,
     TupleDesc *tupdesc,
-    Column_info_t info[3],
+    Column_info_t info[5],
     int64_t *default_id,
     pgr_basic_edge_t *edge,
     size_t *valid_edges) {
@@ -48,7 +48,8 @@ void fetch_basic_edge(
 
     edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[1]);
     edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
-
+    edge->going = pgr_SPI_getFloat8(tuple, tupdesc, info[3]) > 0 ? true : false;
+    edge->coming = (column_found(info[4].colNumber) && pgr_SPI_getFloat8(tuple, tupdesc, info[4]) > 0) ? true : false;
 
     (*valid_edges)++;
 }
@@ -427,7 +428,7 @@ get_edges_flow(
 
 static
 void
-get_edges_3_columns(
+get_edges_basic(
     char *sql,
     pgr_basic_edge_t **edges,
     size_t *totalTuples,
@@ -440,10 +441,10 @@ get_edges_3_columns(
     size_t total_tuples;
     size_t valid_edges;
 
-    Column_info_t info[3];
+    Column_info_t info[5];
 
     int i;
-    for (i = 0; i < 3; ++i) {
+    for (i = 0; i < 5; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
@@ -452,8 +453,15 @@ get_edges_3_columns(
     info[0].name = strdup("id");
     info[1].name = strdup("source");
     info[2].name = strdup("target");
+    info[3].name = strdup("going");
+    info[4].name = strdup("coming");
 
     info[0].strict = !ignore_id;
+    info[4].strict = false;
+
+    info[3].eType = ANY_NUMERICAL;
+    info[4].eType = ANY_NUMERICAL;
+
 
     void *SPIplan;
     SPIplan = pgr_SPI_prepare(sql);
@@ -470,7 +478,7 @@ get_edges_3_columns(
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0)
-            pgr_fetch_column_info(info, 3);
+            pgr_fetch_column_info(info, 5);
 
         ntuples = SPI_processed;
         total_tuples += ntuples;
@@ -514,7 +522,6 @@ get_edges_3_columns(
     PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*totalTuples));
     time_msg(" reading Edges", start_t, clock());
 }
-
 
 void
 pgr_get_flow_edges(
@@ -564,5 +571,5 @@ pgr_get_basic_edges(
     pgr_basic_edge_t **edges,
     size_t *total_edges) {
     bool ignore_id = false;
-    get_edges_3_columns(sql, edges, total_edges, ignore_id);
+    get_edges_basic(sql, edges, total_edges, ignore_id);
 }

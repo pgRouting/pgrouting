@@ -103,7 +103,9 @@ class PgrCardinalityGraph {
           V v1 = this->id_to_V.find(data_edges[i].source)->second;
           V v2 = this->id_to_V.find(data_edges[i].target)->second;
           E e1;
-          boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
+          E e2;
+          if(data_edges[i].going) boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
+          if(data_edges[i].coming) boost::tie(e2, added) = boost::add_edge(v2, v1, this->boost_graph);
       }
   }
 
