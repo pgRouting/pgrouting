@@ -24,7 +24,7 @@ Deprecated on version 2.3
 Routing functions
 ...................
 
-- :ref:`pgr_astar-V2.0` - See new signatures of :ref:`pgr_astar`
+- :ref:`pgr_astar-V2.0` - See new signatures of :ref:`pgr_aStar`
 - :ref:`pgr_tsp-V2.0` - See new signatures of :ref:`tsp`
 
 
@@ -41,7 +41,7 @@ Auxiliary functions
 .. toctree::
    :hidden:
 
-   ../src/astar/doc/pgr_astar_v2
+   ../src/astar/doc/pgr_astar-v2
    ../src/tsp/doc/pgr_tsp-V2.0
    ../src/convenience/doc/pgr_flipEdges
    ../src/convenience/doc/pgr_vidsToDMatrix

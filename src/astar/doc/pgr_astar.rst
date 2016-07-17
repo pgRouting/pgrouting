@@ -7,16 +7,16 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_astar:
+.. _pgr_aStar:
 
-pgr_astar
+pgr_aStar
 ===============================================================================
 
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_astar`` — Returns the shortest path using A* algorithm.
+``pgr_aStar`` — Returns the shortest path using A* algorithm.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -64,8 +64,8 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_astar(edges_sql, start_vid, end_vid)
-    pgr_astar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+    pgr_aStar(edges_sql, start_vid, end_vid)
+    pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 
@@ -73,24 +73,24 @@ Signature Summary
 
     .. code-block:: sql
 
-        pgr_astar(sql, source integer, target integer, directed boolean, has_rcost boolean)
+        pgr_aStar(sql, source integer, target integer, directed boolean, has_rcost boolean)
         RETURNS SET OF pgr_costResult
 
     - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`pgr_astar-V2.0`
+    - See :ref:`pgr_aStar-V2.0`
 
 Signatures
 -----------------
 
 .. index:: 
-    single: pgr_astar(Minimal Signature)
+    single: pgr_aStar(Minimal Signature)
 
 Minimal Signature
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_astar(edges_sql, start_vid, end_vid)
+    pgr_aStar(edges_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: Using the defaults
@@ -101,13 +101,13 @@ Minimal Signature
 
 
 .. index:: 
-    single: pgr_astar(Complete Singature)
+    single: pgr_aStar(Complete Singature)
 
 Complete Signature
 ...............................................................................
 .. code-block:: none
 
-    pgr_astar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+    pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: Setting a Heuristic  

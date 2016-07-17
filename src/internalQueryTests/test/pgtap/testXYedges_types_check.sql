@@ -3,8 +3,8 @@
 
 SELECT plan(87);
 
-SELECT has_function('pgr_testxyedges', ARRAY['text']);
-SELECT function_returns('pgr_testxyedges', ARRAY['text'],'boolean');
+SELECT has_function('_pgr_testxyedges', ARRAY['text']);
+SELECT function_returns('_pgr_testxyedges', ARRAY['text'],'boolean');
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 
 RETURNS SETOF TEXT AS
@@ -74,57 +74,57 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-SELECT test_anyInteger('pgr_testxyedges',
+SELECT test_anyInteger('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'id');
-SELECT test_anyInteger('pgr_testxyedges',
+SELECT test_anyInteger('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'source');
-SELECT test_anyInteger('pgr_testxyedges',
+SELECT test_anyInteger('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'target');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'cost');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'reverse_cost');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'x1');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'y1');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'x2');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
     'y2');
 
 
-SELECT test_anyInteger('pgr_testxyedges',
+SELECT test_anyInteger('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'id');
-SELECT test_anyInteger('pgr_testxyedges',
+SELECT test_anyInteger('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'source');
-SELECT test_anyInteger('pgr_testxyedges',
+SELECT test_anyInteger('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'target');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'cost');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'x1');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y1');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'x2');
-SELECT test_anyNumerical('pgr_testxyedges',
+SELECT test_anyNumerical('_pgr_testxyedges',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y2');
 

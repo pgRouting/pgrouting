@@ -29,7 +29,7 @@ Name
 
 .. warning:: Use :ref:`pgr_TSP` instead.  
 
-* ``pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
+* ``_pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
 
 .. warning:: There is no replacement.
 
@@ -89,7 +89,7 @@ For users that need a distance matrix we have a simple function that takes SQL i
 
     .. code-block:: sql
     
-        SELECT dmatrix, ids from pgr_makeDistanceMatrix('SELECT id, x, y FROM vertex_table');
+        SELECT dmatrix, ids from _pgr_makeDistanceMatrix('SELECT id, x, y FROM vertex_table');
 
 The function returns a record of ``dmatrix``, ``ids``:
 

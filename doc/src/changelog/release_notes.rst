@@ -17,6 +17,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 Table of contents
 --------------------------
 
+   - :ref:`changelog_2_3_0`
    - :ref:`changelog_2_2_3`
    - :ref:`changelog_2_2_2`
    - :ref:`changelog_2_2_1`
@@ -26,6 +27,41 @@ Table of contents
    - :ref:`changelog_2_0_0`
    - :ref:`changelog_1_x`
 
+.. _changelog_2_3_0:
+
+pgRouting 2.3.0 Release Notes
+===============================================================================
+
+.. rubric:: New Signatures
+
+Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
+
+* pgr_TSP
+* pgr_eucledianTSP
+* pgr_aStar
+
+
+.. rubric:: Proposed functions
+
+* pgr_dijkstraCostMatrix
+* pgr_withPointsCostMatrix
+
+
+.. rubric:: Deprecated Signatures
+
+* pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead
+* pgr_astar - use pgr_aStar instead
+
+
+.. rubric:: Deprecated functions
+
+* pgr_flip_edges
+* pgr_vidsToDmatrix
+* pgr_pointsToDMatrix
+* pgr_textToPoints
+
+
+
 
 .. _changelog_2_2_3:
 
@@ -34,8 +70,7 @@ pgRouting 2.2.3 Release Notes
 
 To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github.
 
-Bug Fixes
--------------------------------
+.. rubric:: Bug Fixes
 
 * Fixed  compatibility issues with PostgreSQL 9.6.
 
@@ -46,8 +81,7 @@ pgRouting 2.2.2 Release Notes
 
 To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github.
 
-Bug Fixes
--------------------------------
+.. rubric:: Bug Fixes
 
 * Fixed regression error on pgr_drivingDistance
 
@@ -59,8 +93,7 @@ pgRouting 2.2.1 Release Notes
 
 To see the issues closed by this release see the `Git closed issues for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github.
 
-Bug Fixes
--------------------------------
+.. rubric:: Bug Fixes
 
 * Server crash fix on pgr_alphaShape
 * Bug fix on With Points family of functions
@@ -74,8 +107,7 @@ pgRouting 2.2.0 Release Notes
 To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github.
 
 
-Improvements
--------------------------------
+.. rubric:: Improvements
 
 - pgr_nodeNetwork
 
@@ -83,18 +115,16 @@ Improvements
 
 - Signature fix
 
-  - pgr_dijkstra  -- to match what was documented
+  - pgr_dijkstra  -- to match what is documented
 
 
-Proposed functionality
--------------------------------
+.. rubric:: New Functions
 
 - pgr_floydWarshall
 - pgr_Johnson
 - pgr_DijkstraCost
 
-Proposed functionality
--------------------------------
+.. rubric:: Proposed functionality
 
 - pgr_withPoints
 - pgr_withPointsCost
@@ -103,8 +133,7 @@ Proposed functionality
 - pgr_dijkstraVia
 
 
-Deprecated functions:
--------------------------------
+.. rubric:: Deprecated functions:
 
 - pgr_apspWarshall  use pgr_floydWarshall instead
 - pgr_apspJohnson   use pgr_Johnson instead
@@ -119,20 +148,17 @@ pgRouting 2.1.0 Release Notes
 
 To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github.
 
-Refactored
--------------------------------
+.. rubric:: Refactored
 
 - pgr_dijkstra
 - pgr_ksp
 - pgr_drivingDistance
 
-Improvements
--------------------------------
+.. rubric:: Improvements
 
 - Alphashape function now can generate better (multi)polygon with holes and alpha parameter.
 
-Proposed functionality
--------------------------------
+.. rubric:: Proposed functionality
 
 - Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)
 
@@ -148,34 +174,31 @@ Proposed functionality
 
   - pgr_vrppdtw
 
-No longer supported
--------------------------------
+.. rubric:: No longer supported
 
- - Removed the 1.x legacy functions
+- Removed the 1.x legacy functions
 
-Bug Fixes
--------------------------------
+.. rubric:: Bug Fixes
 
- - Some bug fixes in other functions
+- Some bug fixes in other functions
 
 
-Refactoring Internal Code
--------------------------------
+.. rubric:: Refactoring Internal Code
 
- - A C and C++ library for developer was created
+- A C and C++ library for developer was created
 
-   - encapsulates postgreSQL related functions
-   - encapsulates Boost.Graph graphs
+  - encapsulates postgreSQL related functions
+  - encapsulates Boost.Graph graphs
 
-     - Directed Boost.Graph
-     - Undirected Boost.graph.
+    - Directed Boost.Graph
+    - Undirected Boost.graph.
 
-   - allow any-integer in the id's
-   - allow any-numerical on the cost/reverse_cost columns
+  - allow any-integer in the id's
+  - allow any-numerical on the cost/reverse_cost columns
 
- - Instead of generating many libraries:
-   - All functions are encapsulated in one library
-   - The library has a the prefix 2-1-0
+- Instead of generating many libraries:
+  - All functions are encapsulated in one library
+  - The library has a the prefix 2-1-0
 
 
 
@@ -186,8 +209,7 @@ pgRouting 2.0.1 Release Notes
 
 Minor bug fixes.
 
-Bug Fixes
--------------------------------
+.. rubric:: Bug Fixes
 
 * No track of the bug fixes were kept.
 
@@ -215,8 +237,7 @@ As a result of this effort:
 * And made it easier for multiple developers to make contributions.
 
 
-Important Changes
--------------------------------
+.. rubric:: Important Changes
 
 * Graph Analytics - tools for detecting and fixing connection some problems in a graph
 * A collection of useful utility functions

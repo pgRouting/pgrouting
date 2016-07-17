@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_testXYedges(
+CREATE OR REPLACE FUNCTION _pgr_testXYedges(
     edges_sql TEXT) 
 
   RETURNS BOOLEAN AS

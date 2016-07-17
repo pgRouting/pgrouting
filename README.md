@@ -20,24 +20,28 @@ The *develop* branch reflects the 2.3.0-dev
 		<td>Branch</td>
 		<td>Travis</td>
 		<td>Appveyor</td>
+		<td>Jenkins</td>
 		<td>Comments</td>
 	</tr>
 	<tr>
 		<td>master</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=master" alt="Build Status"/></td>
 		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=master&svg=true" alt="Appveyor Status"/></td>
+        <td><img src="http://winnie.postgis.net:1500/buildStatus/icon?job=pgRouting_matrix_master" alt="Jenkins Status"/></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>develop</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=develop" alt="Build Status"/></td>
 		<td><img src="https://ci.appveyor.com/api/projects/status/github/pgRouting/pgrouting?branch=develop&svg=true" alt="Appveyor Status"/></td>
+        <td><img src="http://winnie.postgis.net:1500/buildStatus/icon?job=pgRouting_matrix_branch_develop" alt="Jenkins Status"/></td>
 		<td></td>
 	</tr>
 
 	<tr>
 		<td>gh-pages</td>
 		<td><img src="https://travis-ci.org/pgRouting/pgrouting.png?branch=gh-pages" alt="Build Status"/></td>
+		<td></td>
 		<td></td>
 		<td>not enabled</td>
 	</tr>

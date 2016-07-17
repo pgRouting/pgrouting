@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_contractionGraph.c
+File: pgr_contractionGraph.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,14 +26,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
 #pragma once
-#ifdef __MINGW32__
+
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+
 #ifdef open
 #undef open
 #endif
+
+#ifdef unlink
+#undef unlink
 #endif
+
+#endif
+
 
 #include <limits> 
 #include <algorithm>
@@ -48,13 +57,13 @@ namespace pgRouting {
 			class Pgr_contractionGraph;
 	}
 
-	typedef typename graph::Pgr_contractionGraph <
+	typedef  graph::Pgr_contractionGraph <
 		boost::adjacency_list < boost::listS, boost::vecS,
 		boost::undirectedS,
 		contraction::Vertex, contraction::Edge >,
 		contraction::Vertex, contraction::Edge > CHUndirectedGraph;
 
-	typedef typename graph::Pgr_contractionGraph <
+	typedef  graph::Pgr_contractionGraph <
 		boost::adjacency_list < boost::listS, boost::vecS,
 		boost::bidirectionalS,
 		contraction::Vertex, contraction::Edge >,
@@ -130,7 +139,7 @@ namespace pgRouting {
                     True when 
                         - Indegree of *v* is 0 &
                         - Outdegree of *v* is 0
-                    @param [IN] *v* vertex_id
+                    @param [in] v vertex_id
                     */
 					bool is_connected(int64_t v) const {
 						if (this->in_degree(this->get_V(v)) == 0 && this->out_degree(this->get_V(v)) == 0) {
@@ -142,7 +151,7 @@ namespace pgRouting {
                     //! @brief get the vertex descriptor of the vertex adjacent to *v*
                     /*!
                     - Degree of *v* is 1                    
-                    @param [IN] *v* vertex_descriptor
+                    @param [in] v vertex_descriptor
                     @return V: The vertex descriptor of the vertex adjacent to *v*
                     */
 					V find_adjacent_vertex(V v) const {
@@ -168,7 +177,7 @@ namespace pgRouting {
 					}
 
                     /*! @brief get the vertex descriptors of adjacent vertices of *v*
-                    @param [IN] *v* vertex_descriptor
+                    @param [in] v vertex_descriptor
                     @return Identifiers<V>: The set of vertex descriptors adjacent to the given vertex *v*
                     */
 					Identifiers<V> find_adjacent_vertices(V v) const {
@@ -199,8 +208,8 @@ namespace pgRouting {
 					}
 
                     /*! @brief get the user ids given the boost graph ids in string format
-                    @param [IN] *log* string
-                    @param [IN] *boost_ids* The set of boost graph ids of vertices
+                    @param [in] log string
+                    @param [in] boost_ids The set of boost graph ids of vertices
                     */
 					void get_ids(std::ostringstream &log,
 							Identifiers<int64_t> boost_ids) {
@@ -212,7 +221,9 @@ namespace pgRouting {
 					}
 
 					/*! @brief get the user ids given the boost graph ids in array format
-                    @param [IN] *boost_ids* The set of boost graph ids of vertices
+                    @param [in] boost_ids The set of boost graph ids of vertices
+                    @param [in] contracted_vertices The array of contracted vertices
+                    @param [in] contracted_vertices_size The size of the array of contracted vertices
                     */
 					void get_ids(int64_t **contracted_vertices,
                     	int &contracted_vertices_size,
@@ -226,7 +237,7 @@ namespace pgRouting {
 						}					
 
                     /*! @brief get the remaining vertices of the graph after contraction
-                    @param [IN] *remaining_vertices* The vector of vertices remaining after contraction
+                    @param [in] remaining_vertices The vector of vertices remaining after contraction
                     */
                     void get_remaining_vertices(std::vector<T_V>& remaining_vertices) {
                         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
@@ -238,7 +249,7 @@ namespace pgRouting {
                     }
 
                     /*! @brief get the vertices of the graph with atleast one contracted vertex 
-                    @param [IN] *remaining_vertices* The set of vertices with atleast one contracted vertex
+                    @param [in] remaining_vertices The set of vertices with atleast one contracted vertex
                     */
                     void get_changed_vertices(Identifiers<int64_t>& remaining_vertices) {
                         //log << "remaining_vertices\n";
@@ -251,7 +262,7 @@ namespace pgRouting {
                     }
 
                     /*! @brief get the edges of the graph that are added during contraction
-                    @param [IN] *shortcut_edges* The vector of edges added during contraction
+                    @param [in] shortcut_edges The vector of edges added during contraction
                     */
                     void get_shortcuts(std::vector<T_E>& shortcut_edges)
                     {
@@ -265,8 +276,8 @@ namespace pgRouting {
                     }
 
                     /*! @brief get the edge with minimum cost between two vertices
-                    @param [IN] *source* vertex_descriptor of source vertex
-                    @param [IN] *target* vertex_descriptor of target vertex
+                    @param [in] source vertex_descriptor of source vertex
+                    @param [in] destination vertex_descriptor of target vertex
                     @return E: The edge descriptor of the edge with minimum cost
                     */
                     E get_min_cost_edge(V source, V destination)
@@ -293,8 +304,8 @@ namespace pgRouting {
                     }
 
                     /*! @brief get the in-degree of a vertex from its neighbor
-                    @param [IN] *vertex* vertex_descriptor of the given vertex
-                    @param [IN] *neighbor* vertex_descriptor of neighbor 
+                    @param [in] vertex vertex_descriptor of the given vertex
+                    @param [in] neighbor vertex_descriptor of neighbor 
                     @return degree_size_type: The in-degree of *vertex* from *neighbor*
                     */
 					degree_size_type in_degree_from_vertex(V vertex, V neighbor)
@@ -315,8 +326,8 @@ namespace pgRouting {
 					}
 
                     /*! @brief get the out-degree of a vertex to its neighbor
-                    @param [IN] *vertex* vertex_descriptor of the given vertex
-                    @param [IN] *neighbor* vertex_descriptor of neighbor 
+                    @param [in] vertex vertex_descriptor of the given vertex
+                    @param [in] neighbor vertex_descriptor of neighbor 
                     @return degree_size_type: The out-degree of *vertex* to *neighbor*
                     */
 					degree_size_type out_degree_to_vertex(V vertex, V neighbor)
@@ -369,8 +380,8 @@ namespace pgRouting {
                     }
 
                     /*! @brief get the contracted vertex ids of a given vertex in string format
-                    @param [IN] *vid* vertex_id
-                    @param [IN] *log* stringstream which stores the vertex ids of contracted vertices of *vid*
+                    @param [in] vid vertex_id
+                    @param [in] log stringstream which stores the vertex ids of contracted vertices of *vid*
                     */
                     void get_contracted_vertices(std::ostringstream &log, int64_t vid) {
                         if (!this->has_vertex(vid)) return;
@@ -385,7 +396,9 @@ namespace pgRouting {
 
 
                     /*! @brief get the contracted vertex ids of a given vertex in string format
-                    @param [IN] *vid* vertex_id
+                    @param [in] vid vertex_id
+                    @param [in] contracted_vertices The array of contracted vertices of *vid*
+                    @param [in] contracted_vertices_size The size of the array of contracted vertices of *vid*
                     */
                     void get_contracted_vertices(int64_t **contracted_vertices,
                     	int &contracted_vertices_size, int64_t vid) {
@@ -401,8 +414,8 @@ namespace pgRouting {
                     }
 
                     /*! @brief add the contracted vertices of an edge *e* to the vertex *v*
-                    @param [IN] *v* vertex_descriptor
-                    @param [IN] *e* Edge of type *T_E*
+                    @param [in] v vertex_descriptor
+                    @param [in] e Edge of type *T_E*
                     */
 					void add_contracted_edge_vertices(V v, T_E &e)
 					{
@@ -456,8 +469,8 @@ namespace pgRouting {
 						}
 
                     /*! \brief add edges(shortuct) to the graph during contraction
-                    @param [IN] *edge* of type *T_E* is to be added
-                    @param [IN] *log* string stream used for debugging purposes
+                    @param [in] edge of type *T_E* is to be added
+                    @param [in] log string stream used for debugging purposes
                     */  
 					void graph_add_shortcut(const T_E &edge, std::ostringstream& log) {
 						bool inserted;
@@ -503,8 +516,8 @@ namespace pgRouting {
                     - No edge is disconnected if the vertices id's do not exist in the graph
                     - All removed edges are stored for future reinsertion
                     - All parallel edges are disconnected (automatically by boost)
-                    @param [IN] *vertex* original vertex id of the starting point of the edge
-                    @param [IN] *log* string stream used for debugging purposes
+                    @param [in] vertex original vertex id of the starting point of the edge
+                    @param [in] log string stream used for debugging purposes
                     */   
                     void disconnect_vertex(std::ostringstream &log, V vertex) {
 

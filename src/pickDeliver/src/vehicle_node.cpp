@@ -109,15 +109,11 @@ operator << (std::ostream &log, const Vehicle_node &v) {
 }
 
 
-/*!
- * \param[in] id The User node id
- * \param[in] x The X or longitude coordinate for its location
- * \param[in] y The Y or latitude coordinate for its location
- * \param[in] opens The earliest arrival time (TW open)
- * \param[in] closes The latest arrival time (TW close)
- * \param[in] service_time The service time
- * \param[in] demand The demand in units of vehicle capacity
- * \param[in] streetId The street id this node is located
+/*! @brief Creates a disconected vehicle node
+ *
+ * A node that is not served by any vehicle
+ *
+ * @param[in] node Time window node
  */
 Vehicle_node::Vehicle_node(const Tw_node &node)
     : Tw_node(node),
