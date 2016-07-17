@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION _pgr_maxflow(
     edges_sql TEXT,
-    source_vertex ANYARRAY,
-    sink_vertex BIGINT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
     algorithm TEXT DEFAULT 'push_relabel',
     OUT id BIGINT,
     OUT source BIGINT,
@@ -38,7 +38,7 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     OUT residual_capacity BIGINT
     )
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_many_to_one'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_one_to_many'
     LANGUAGE c IMMUTABLE STRICT;
 
 
@@ -47,8 +47,8 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
-    source_vertex ANYARRAY,
-    sink_vertex BIGINT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
     OUT id BIGINT,
     OUT source BIGINT,
     OUT target BIGINT,
@@ -66,8 +66,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
-    source_vertex ANYARRAY,
-    sink_vertex BIGINT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
     OUT id BIGINT,
     OUT source BIGINT,
     OUT target BIGINT,
@@ -85,8 +85,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
-    source_vertex ANYARRAY,
-    sink_vertex BIGINT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
     OUT id BIGINT,
     OUT source BIGINT,
     OUT target BIGINT,
