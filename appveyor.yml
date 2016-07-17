@@ -40,26 +40,17 @@ install:
   - call ci\appveyor\install.bat
 
   - cd c:\build
-  # CMake 3.5.2 (upgrade) workaround
-  #- curl -L -O -S -s https://cmake.org/files/v3.5/cmake-3.5.2-win32-x86.msi
-  #- start /wait msiexec /i cmake-3.5.2-win32-x86.msi /qn
-  #- cmake --version
-  # PostGIS 2.2.2
-  #- curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
-  #- 7z x postgis-pg94-binaries-2.2.2w64gcc48.zip
-  #- xcopy /e /y /q postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
-  # Boost 1.58.0
-  #- curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.zip
-  #- 7z x boost_1_58_0.zip
   # CGAL 4.8.1
-  #- curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-4.8.1/CGAL-4.8.1.zip
-  #- 7z x CGAL-4.8.1.zip
-  #- mkdir gmp\x64
-  #- cd gmp\x64
-  #- curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
-  #- 7z x gmp-all-CGAL-3.9.zip
-  #- curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
-  #- 7z x mpfr-all-CGAL-3.9.zip
+  - curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-4.8.1/CGAL-4.8.1.zip
+  - 7z x CGAL-4.8.1.zip
+  - dir
+  - mkdir gmp\x64
+  - cd gmp\x64
+  - curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
+  - 7z x gmp-all-CGAL-3.9.zip
+  - curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
+  - 7z x mpfr-all-CGAL-3.9.zip
+  - dir
 
 build_script:
   - cd c:\build\pgrouting\tools\windows

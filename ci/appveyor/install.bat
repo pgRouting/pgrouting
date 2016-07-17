@@ -95,7 +95,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
 
     echo Extracting postGIS %PG_VERSION%
     pushd %DOWNLOADS_DIR%
-    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip -bb0
     popd
 
     echo **** Installing postGIS %PG_VERSION%
@@ -124,7 +124,7 @@ echo ====================================
 
 :: deducing variables
 set BOOST_VER_USC=%BOOST_VERSION:.=_%
-set BOOST_SHORT_VER=%BOOST_VERSION:.0=%
+set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
 
 set RUNTIME=msvc%MSVC_VER:.=%
 set COMMON_INSTALL_DIR=%COMMON_INSTALL_ROOT_DIR%\%RUNTIME%\%PLATFORM%
@@ -255,6 +255,8 @@ echo ====================================
 :: =========================================================
 
 
+echo ==================================== CGAL
+
 pushd %DOWNLOADS_DIR%
 curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
 curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
@@ -270,14 +272,18 @@ dir %DOWNLOADS%
 dir %BUILD_ROOT_DIR%
 dir %GMP_ROOT_DIR%
 popd
+echo ====================================
 
 
 
 echo.
 echo ======================================================
-echo Installation of Boost done.
+echo Installation of Prerequisites done.
 echo Platform - %platform%
-echo Boost - c:\build\boost_%BOOST_VER_USC%
+echo    cmake - %CMAKE_VERSION% 
+echo    Boost - %BOOST_VERSION%
+echo  postGIS - %PG_VERSION% %arch% 
+echo     CGAL - %CGAL_VERSION% %arch% 
 echo ======================================================
 echo.
 
