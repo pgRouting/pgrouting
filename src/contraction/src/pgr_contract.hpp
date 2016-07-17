@@ -248,6 +248,7 @@ public:
     
     /*! \brief Writes the string form of identifier class to the *stream*
      *  @param stream
+     *  @param identifiers
      */
     void print_identifiers(std::ostringstream& stream, Identifiers<int64_t> identifiers);
 

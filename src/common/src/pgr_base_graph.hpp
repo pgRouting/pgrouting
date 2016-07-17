@@ -261,13 +261,13 @@ boost::adjacency_list < boost::listS, boost::vecS,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
 // TODO (Rohith) add this to the comment above
-typedef typename graph::Pgr_base_graph <
+typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
     contraction::Vertex, Basic_edge >,
     contraction::Vertex, Basic_edge > CUndirectedGraph;
 
-typedef typename graph::Pgr_base_graph <
+typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     contraction::Vertex, Basic_edge >,

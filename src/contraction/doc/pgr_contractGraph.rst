@@ -17,17 +17,11 @@
 pgr_contractGraph
 ===============================================================================
 
-Name
--------------------------------------------------------------------------------
-
-``pgr_contractGraph`` — [medium description of
+``pgr_contractGraph`` — Performs graph contraction and returns the contracted vertices and edges. 
 
 .. warning::  This is a proposed function.
 
      - Is not officially in the current release
-
-..
-   keep if uses boost (this is a comment)
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -35,249 +29,256 @@ Name
    Boost Graph Inside
 
 
-Introduction
+Synopsis
 -------------
 
-Contraction Hierarchies reduce the size of the graph by removing some of the vertices and edges(according to a priority)and adds some psuedo edges,such that the number of edges are reduced on a whole.This reduces the time and space complexity of many algorithms that make
- various operations on the graph.
+Contraction reduces the size of the graph by removing some of the vertices and edges(according to a priority) and adds some psuedo edges,such that the number of edges are reduced on a whole.This reduces the time and space complexity of many algorithms that make various operations on the graph.
 
-
-
-Function:
----------
-
-The pgr_contractgraph function has the following declaration:
-
-.. code-block:: sql
-
-        pgr_contractgraph(edges_sql, level, TBD)
-        RETURNS SETOF  TBD
-
-
-Description of the SQL query
+Characteristics
 -------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+The main Characteristics are:
+  - Process is done only on edges with positive costs.
+  
+  - There are two types of contraction methods used namely,
+    - Dead End Contraction
+    - Linear Contraction
+  
+  - The values returned include the added edges and contracted vertices.
 
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
+  - The returned values are ordered:
 
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+    - `id` ascending
 
 
-Description of the parameters of the signatures
+
+Signature Summary:
+------------------
+
+The pgr_contractGraph function has the following declaration:
+
+.. code-block:: none
+
+    pgr_contractGraph(edges_sql, contraction_order)
+    pgr_contractGraph(edges_sql, contraction_order, forbidden_vertices)
+    pgr_contractGraph(edges_sql, contraction_order, forbidden_vertices,
+        max_cycles)
+    pgr_contractGraph(edges_sql, contraction_order, forbidden_vertices,
+        max_cycles, directed:=true)
+        
+
+    RETURNS SETOF ( seq, id, type, source, target, cost,
+             contracted_vertices, contracted_vertices_size)
+
+
+Signatures
 -------------------------------------------------------------------------------
 
-============== ====================== =================================================
-Column         Type                   Description
-============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as decribed above.
-**level**      ``INTEGER``            Level of contraction.
-============== ====================== =================================================
 
+pgr_contractGraph Dead end Contraction
+---------------------------------------
 
-Output:
-------- 
+.. code-block:: none
 
-The function returns a single row. The columns of the row are:
+    pgr_contractGraph(TEXT edges_sql, ARRAY[]::integer[], ARRAY[0]::bigint[], 1, directed:= true);
+    RETURNS SETOF ( seq, id, type, source, target, cost,
+             contracted_vertices, contracted_vertices_size)
 
-* contracted_graph_name: name of the contracted graph.
-* contracted_graph_blob: edges of the contracted graph in text format.
-* removedVertices      : vertices removed during contraction. 
-* removedEdges             : edges removed during contraction.
-* psuedoEdges              : shortcuts introduced during contraction.
-
-
-Examples:
----------
-
-Each row in the edge table should be of this format
-
-.. code-block:: sql
-
-         gid | source | target | cost | reverse_cost 
-        -----+--------+--------+------+--------------
-          12 |      3 |     10 |    2 |         -1 
-
-
-means that the cost of going from edge 3 to edge 10 is 2.
-
-Let us consider the edge table of a sample graph,and generate a contracted version of it.
- 
-.. code-block:: sql
-
-         id  | source   | target | cost | reverse_cost 
-    -----+----------+--------+------+-------------
-       1 |        1 |    2       |    1 |       -1  
-       2 |        2 |    3   |    2 |            3
-       3 |        2 |    4   |    1 |            1   
-       4 |        3 |    4   |    3 |           -1 
-       5 |        4 |    5   |    1 |            2   
-       6 |        5 |    6   |    4 |           -1   
-
-
-To contract a graph:
-
-Level 0:
-
-        SELECT * FROM pgr_contractgraph('SELECT id, source, target, cost, 
-                     reverse_cost as revcost FROM edges',0,false);
-
-.. code-block:: sql
-
-        contracted_graph_name | contracted_graph_blob           | removedvertices                      |           removededges             | psuedoedges 
-        ----------------------+---------------------------------+--------------------------------------+------------------------------------+-------------
-         contracted_graph_0   | 2,2,3,2,0$3,2,4,1,0$4,3,4,3,0$  | 1,1,1,2,1,0$5,5,4,5,1,0$6,6,5,6,4,0$ |  1,1,2,1,-1$5,5,4,1,-1$6,6,5,4,-1$ | 
-
-        (1 row)
-
-
-Level 1:
-
-        SELECT * FROM pgr_contractgraph('SELECT id, source, target, cost, 
-                     reverse_cost as revcost FROM edges',1,false);
-
-.. code-block:: sql
-
-        contracted_graph_name | contracted_graph_blob           | removedvertices                                              |         removededges                                     | psuedoedges 
-        ----------------------+---------------------------------+--------------------------------------------------------------+----------------------------------------------------------+---------------------
-         contracted_graph_1   |           3,2,4,1,0$            | 1,1,1,2,1,0$2,4,3,4,3,0$2,2,2,3,2,0$5,5,4,5,1,0$6,6,5,6,4,0$ |  1,1,2,1,-1$2,3,2,2,-1$4,3,4,3,-1$5,5,4,1,-1$6,6,5,4,-1$ | $3,2,4
-
-
-        (1 row)
-
-
-
-
-Description of the SQL query
--------------------------------------------------------------------------------
-
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-Description of the Points SQL query
--------------------------------------------------------------------------------
-
-:points_sql: an SQL query, which should return a set of rows with the following columns:
-
-============ ================= =================================================
-Column            Type              Description
-============ ================= =================================================
-**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
-**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
-**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
-**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
-                                 - In the right, left of the edge or
-                                 - If it doesn't matter with 'b' or NULL.
-                                 - If column not present 'b' is considered.
-
-                               Can be in upper or lower case.
-============ ================= =================================================
-
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
-
-Description of the parameters of the signatures
--------------------------------------------------------------------------------
-
-============== ====================== =================================================
-Column         Type                   Description
-============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as decribed above.
-**points_sql** ``TEXT``               Points SQL query as decribed above.
-**start_vid**  ``BIGINT``             Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``             Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-============== ====================== =================================================
-
-
-Examples
-========
-
-The examples of this section are based on the :ref:`sampledata` network.
-
-
-
-[put as many examples as needed and use the documentation data for the examples]
+This signature performs one cycle of dead end contraction on the graph:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
 :Example:
 
 .. literalinclude:: doc-contractGraph.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q1
+   :end-before: -- q2
 
-..
-   If needed here are some subtitles  
 
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
---------------------------------------------------------------------------------------
+pgr_contractGraph Linear Contraction
+-------------------------------------
+
+.. code-block:: none
+
+    pgr_contractGraph(TEXT edges_sql, ARRAY[]::integer[], ARRAY[1]::bigint[], 1, directed:= true);
+    RETURNS SETOF ( seq, id, type, source, target, cost,
+             contracted_vertices, contracted_vertices_size)
+
+This signature performs one cycle of linear contraction on the graph:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+:Example:
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+
+
+Description of the SQL query
+-------------------------------------------------------------------------------
+
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
+
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the edge.
+**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+
+Description of the parameters of the signatures
+-------------------------------------------------------------------------------
+
+======================= ====================== =================================================
+Column                  Type                   Description
+======================= ====================== =================================================
+**edges_sql**           ``TEXT``               SQL query as decribed above.
+**contraction_order**   ``BIGINT[]``           Order of contraction operations.
+**forbidden_vertices**  ``BIGINT[]``           (optional). Identifiers of vertices forbidden from contraction. Default is an empty array.
+**max_cycles**          ``INTEGER``            (optional). Number of cycles of contraction. Default is **1**.
+**directed**            ``BOOLEAN``            (optional). When false the graph is considered as Undirected. Default is true which considers the graph as Directed.
+======================= ====================== =================================================
+
+
+Description of the return values
+-------------------------------------------------------------------------------
+
+RETURNS SETOF  ( seq, id, type, source, target, cost,
+             contracted_vertices, contracted_vertices_size)
+
+The function returns a single row. The columns of the row are:
+
+============================ =============   ==================================================
+Column                       Type            Description
+============================ =============   ==================================================
+**seq**                      ``INTEGER``     Sequential value starting from **1**.
+**id**                       ``BIGINT``      Identifier of the edge/vertex
+**type**                     ``TEXT``        Type(edge/vertex). **v** for vertex. **e** for edge 
+**source**                   ``BIGINT``      Identifier of the source vertex. Negative for **type** : **v** 
+**target**                   ``BIGINT``      Identifier of the target vertex. Negative for **type** : **v**
+**cost**                     ``FLOAT``       Weight of the shortcut (source, target). Negative for **type** : **v**
+**contracted_vertices**      ``BIGINT[]``    Array of contracted vertex identifiers.
+**contracted_vertices_size** ``INTEGER``     Size of **contracted_vertices** array.
+============================ =============   ==================================================
+
+Examples
+========
+
+Dead End Contraction
+-------------------------------------
+
+The examples of this section are based on the :ref:`sampledata` network.
+
+:Example:
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q1
+   :end-before: -- q2
+ 
+
+Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns for one cycle of dead end contraction
+----------------------------------------------------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig1`
 
-:Example: This example is in a subtitle
-
 .. literalinclude:: doc-contractGraph.queries
-   :start-after: --q2
-   :end-before: --q3
+   :start-after: -- q1
+   :end-before: -- q2
 
 
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-----------------------------------------------------------------------------------------
+Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns for one cycle of dead end contraction
+----------------------------------------------------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig2`
 
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 
-Examples for queries marked as ``directed`` with ``cost`` column
-----------------------------------------------------------------------------------------
+
+
+Examples for queries marked as ``directed`` with ``cost`` column for one cycle of dead end contraction
+----------------------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig3`
 
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q5
+   :end-before: -- q6
 
-Examples for queries marked as ``undirected`` with ``cost`` column
-----------------------------------------------------------------------------------------
+
+Examples for queries marked as ``undirected`` with ``cost`` column for one cycle of dead end contraction
+---------------------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig4`
 
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q7
+   :end-before: -- q8
+
+Linear Contraction
+-------------------------------------
+
+The examples of this section are based on the :ref:`sampledata` network.
+
+:Example:
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q2
+   :end-before: -- q3
+ 
+
+Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns for one cycle of linear contraction
+--------------------------------------------------------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig1`
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q2
+   :end-before: -- q3
 
 
-The queries use the :ref:`sampledata` network.
+Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns for one cycle of linear contraction
+--------------------------------------------------------------------------------------------------------------------------------------
 
-.. rubric:: History
+The examples in this section use the following :ref:`fig2`
 
-* Official in version X.X
-* Proposed in version Y.Y 
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q4
+   :end-before: -- q5
 
 
-See Also
--------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+Examples for queries marked as ``directed`` with ``cost`` column for one cycle of linear contraction
+-------------------------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig3`
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
+
+Examples for queries marked as ``undirected`` with ``cost`` column for one cycle of linear contraction
+-------------------------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig4`
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q8
+   :end-before: -- q9
 
 .. rubric:: Indices and tables
 
