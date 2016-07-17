@@ -97,7 +97,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
 
     echo Extracting postGIS %PG_VERSION%
     pushd %DOWNLOADS_DIR%
-    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip -bb0
+    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
     popd
 
     echo **** Installing postGIS %PG_VERSION%
@@ -228,19 +228,22 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         if %BOOST_INSTALL_FLAG% EQU 1 (
             echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
 
-            echo COMMON_INSTALL_ROOT_DIR %COMMON_INSTALL_ROOT_DIR%
-            dir %COMMON_INSTALL_ROOT_DIR%
-
-            echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
-            dir %BOOST_INSTALL_DIR%
+            if defined LOCAL_DEBUG (
+                echo COMMON_INSTALL_ROOT_DIR %COMMON_INSTALL_ROOT_DIR%
+                dir %COMMON_INSTALL_ROOT_DIR%
     
-            echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-            dir %BOOST_INCLUDE_DIR%
+                echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
+                dir %BOOST_INSTALL_DIR%
+    
+                echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+                dir %BOOST_INCLUDE_DIR%
 
-            echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
-            dir %BOOST_LIBRARY_DIR%
+                echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
+                dir %BOOST_LIBRARY_DIR%
+                echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
+                echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
+            )
         )
-
     ) else (
         echo Boost_%BOOST_VERSION% already installed
     )
@@ -263,13 +266,26 @@ curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary
 
 if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%plataform%
 mkdir %GMP_SRC_DIR%  2>NUL
+if defined LOCAL_DEBUG (
+    echo GMP_SRC_DIR %GMP_SRC_DIR%
+    dir %GMP_SRC_DIR%
+)
 
 7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
 7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
 7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
-dir %DOWNLOADS%
-dir %BUILD_ROOT_DIR%
-dir %GMP_ROOT_DIR%
+
+
+if defined LOCAL_DEBUG (
+    echo DOWNLOADS %DOWNLOADS%
+    dir %DOWNLOADS%
+
+    echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
+    dir %BUILD_ROOT_DIR%
+
+    echo GMP_ROOT_DIR %GMP_ROOT_DIR%
+    dir %GMP_ROOT_DIR%
+)
 popd
 echo ====================================
 
