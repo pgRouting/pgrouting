@@ -164,17 +164,18 @@ if defined LOCAL_DEBUG (
 )
 
 :: check that everything needed from boost is there
-if not exist "%BOOST_INCLUDE_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
-if not exist "%BOOST_LIBRARY_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
-if not exist "%BOOST_THREAD_LIB%" ( set BOOST_INSTALL_FLAG=1 )
-if not exist "%BOOST_SYSTEM_LIB%" ( set BOOST_INSTALL_FLAG=1 )
-if not exist "%BOOST_WILDCARD_LIB%" ( set BOOST_INSTALL_FLAG=1 )
+set BOOST_INSTALL_FLAG=10
+if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
+if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
+if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
+if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
+if not exist %BOOST_WILDCARD_LIB% ( set BOOST_INSTALL_FLAG=5 )
 
 :: DEBUGING
 echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 echo ==================================== BOOST
-if %BOOST_INSTALL_FLAG% EQU 1 (
+if %BOOST_INSTALL_FLAG% NEQ 10 (
 
     :: check if it needs to be downloaded
     if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
@@ -221,9 +222,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         popd
 
         set BOOST_INSTALL_FLAG=10
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
         if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
         if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
         if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
         if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
