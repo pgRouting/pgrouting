@@ -57,12 +57,14 @@ Proposed functions
 Documentation only proposed functions:
 ---------------------------------------------
 
-  -  :ref:`contraction` - Reduce network size using contraction techniques
+  -  :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
 .. toctree::
   :hidden:
 
   ../src/contraction/doc/contraction
+  ../src/contraction/doc/pgr_contractGraph
+
 
 
 ..
