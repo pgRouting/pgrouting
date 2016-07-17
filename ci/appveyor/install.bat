@@ -79,6 +79,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 :: Download and install Postgis
 ::
 
+echo ==================================== POSTGIS
 if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     cd %APPVEYOR_BUILD_FOLDER%
     if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
@@ -97,7 +98,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
     popd
 
-    echo Installing postGIS %PG_VERSION%
+    echo **** Installing postGIS %PG_VERSION%
     xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
@@ -105,11 +106,12 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         dir %DOWNLOADS_DIR%
         dir C:\Progra~1\PostgreSQL\9.4\
     ) else (
-        echo postGIS %PG_VERSION% %arch% installed
+        echo **** postGIS %PG_VERSION% %arch% installed
     )
 ) else (
     echo postGIS %PG_VERSION% %arch% already installed
 )
+echo ====================================
 
 ::
 :: =========================================================
@@ -162,6 +164,7 @@ if not exist "%BOOST_WILDCARD_LIB%" ( set BOOST_INSTALL_FLAG=1 )
 :: DEBUGING
 echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
+echo ==================================== BOOST
 if %BOOST_INSTALL_FLAG% EQU 1 (
 
     dir %DOWNLOADS_DIR%
@@ -177,10 +180,10 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
             dir %DOWNLOADS_DIR%
         )
     ) else (
-        echo Boost_%BOOST_VER_USC%  already downloaded
+        echo **** Boost_%BOOST_VER_USC%  already downloaded
     )
 
-    echo Extracting Boost_%BOOST_VERSION%.zip ...
+    echo **** Extracting Boost_%BOOST_VERSION%.zip ...
     pushd %DOWNLOADS_DIR%
     7z x -o%BUILD_ROOT_DIR%\ boost_%BOOST_VER_USC%.zip
     popd
@@ -190,7 +193,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
 
     )
 
-    echo Excuting bootstrap.bat...
+    echo **** Excuting bootstrap.bat...
     if not exist "%BOOST_SRC_DIR%\b2.exe" (
         dir %BOOST_SRC_DIR%
         echo %BOOST_SRC_DIR%\b2.exe missing
@@ -203,7 +206,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         )
     )
 
-    echo Excuting  %BOOST_SRC_DIR%\b2.exe ...
+    echo **** Excuting  %BOOST_SRC_DIR%\b2.exe ...
     if not exist %BOOST_INCLUDE_DIR%\ (
         pushd %BOOST_SRC_DIR%
         @echo on
@@ -218,42 +221,43 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
     echo Boost_%BOOST_VERSION% already installed
     echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 )
+echo ====================================
 
 
 
-if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
+::if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
     :: download installer??
-    if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
-        pushd %DOWNLOADS_DIR%
-        echo Downloading Boost %BOOST_VERSION% %arch% bits...
-        curl --silent --fail --location --max-time 1600 --connect-timeout 30 http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
-        popd
-        if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
-            echo something went wrong on boost %BOOST_VERSION% %arch% bits extraction!!!!!!!!!
-        )
-    ) else (
-        echo Boost %BOOST_VERSION% %arch% bits already downloaded
-    )
-
-    echo Installing Boost %BOOST_VERSION% %arch% bits...
-    pushd %DOWNLOADS_DIR%
-    boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
-    popd
-    echo Done installing  %BOOST_VERSION% %arch% bits.
-) else (
-    echo Boost %BOOST_VERSION% %arch% bits already installed
-)
+::    if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+::        pushd %DOWNLOADS_DIR%
+::        echo Downloading Boost %BOOST_VERSION% %arch% bits...
+::        curl --silent --fail --location --max-time 1600 --connect-timeout 30 http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
+::        popd
+::        if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+::            echo something went wrong on boost %BOOST_VERSION% %arch% bits extraction!!!!!!!!!
+::        )
+::    ) else (
+::        echo Boost %BOOST_VERSION% %arch% bits already downloaded
+::    )
+::
+::    echo Installing Boost %BOOST_VERSION% %arch% bits...
+::    pushd %DOWNLOADS_DIR%
+::    boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
+::    popd
+::    echo Done installing  %BOOST_VERSION% %arch% bits.
+::) else (
+::    echo Boost %BOOST_VERSION% %arch% bits already installed
+::)
 
 ::
 :: =========================================================
 
-cd c:\build
+cd %BUILD_ROOT_DIR%
 
 echo.
 echo ======================================================
 echo Installation of Boost done.
 echo Platform - %platform%
-echo Boost - C:\build\boost_%BOOST_VER_USC%
+echo Boost - c:\build\boost_%BOOST_VER_USC%
 echo ======================================================
 echo.
 
