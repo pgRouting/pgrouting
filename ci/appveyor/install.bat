@@ -26,8 +26,10 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 :: =========================================================
 
 :: create a download directory:
-cd %APPVEYOR_BUILD_FOLDER%
-mkdir %DOWNLOADS_DIR% 2>NUL
+pushd %APPVEYOR_BUILD_FOLDER%
+mkdir downloads 2>NUL
+popd
+dir %DOWNLOADS_DIR%
 
 
 :: =========================================================
@@ -83,6 +85,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         popd
         if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
             echo something went wrong on postgis %PG_VERSION% download !!!!!!!!!
+            dir %DOWNLOADS_DIR%
         )
     )
 
