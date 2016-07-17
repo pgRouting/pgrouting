@@ -183,44 +183,102 @@ The examples of this section are based on the :ref:`sampledata` network.
 :Example:
 
 .. literalinclude:: doc-contractGraph.queries
-   :start-after: --q1
-   :end-before: --q2
+   :start-after: -- q1
+   :end-before: -- q2
  
 
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
---------------------------------------------------------------------------------------
+Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns for one cycle of dead end contraction
+----------------------------------------------------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig1`
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+
+Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns for one cycle of dead end contraction
+----------------------------------------------------------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig2`
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+
+
+
+Examples for queries marked as ``directed`` with ``cost`` column for one cycle of dead end contraction
+----------------------------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig3`
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q5
+   :end-before: -- q6
+
+
+Examples for queries marked as ``undirected`` with ``cost`` column for one cycle of dead end contraction
+---------------------------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig4`
 
 .. literalinclude:: doc-contractGraph.queries
    :start-after: -- q7
    :end-before: -- q8
 
+Linear Contraction
+-------------------------------------
 
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-----------------------------------------------------------------------------------------
+The examples of this section are based on the :ref:`sampledata` network.
+
+:Example:
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q2
+   :end-before: -- q3
+ 
+
+Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns for one cycle of linear contraction
+--------------------------------------------------------------------------------------------------------------------------------------
+
+The examples in this section use the following :ref:`fig1`
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+
+Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns for one cycle of linear contraction
+--------------------------------------------------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig2`
 
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q4
+   :end-before: -- q5
 
 
-Examples for queries marked as ``directed`` with ``cost`` column
-----------------------------------------------------------------------------------------
+
+Examples for queries marked as ``directed`` with ``cost`` column for one cycle of linear contraction
+-------------------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig3`
 
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q6
+   :end-before: -- q7
 
-Examples for queries marked as ``undirected`` with ``cost`` column
-----------------------------------------------------------------------------------------
+
+Examples for queries marked as ``undirected`` with ``cost`` column for one cycle of linear contraction
+-------------------------------------------------------------------------------------------------------
 
 The examples in this section use the following :ref:`fig4`
 
-
-
-See Also
--------------------------------------------------------------------------------
-
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q8
+   :end-before: -- q9
 
 .. rubric:: Indices and tables
 
