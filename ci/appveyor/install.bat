@@ -12,7 +12,7 @@ echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
 
 if not defined MSVC_VER set MSVC_VER=12.0
 if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
-if not defined DOWNLOADS_DIR set BUILD_ROOT_DIR=%BUILD_ROOT_DIR%\downloads
+if not defined DOWNLOADS_DIR set BUILD_ROOT_DIR=%APPVEYOR_BUILD_FOLDER%\downloads
 
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
 if not defined PG_VERSION set PG_VERSION=2.2.2
@@ -150,7 +150,8 @@ echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 if %BOOST_INSTALL_FLAG% EQU 1 (
 
-    cd %APPVEYOR_BUILD_FOLDER%
+    dir %DOWNLOADS_DIR%
+    
     :: check if it needs to be downloaded
     if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
         pushd %DOWNLOADS_DIR%
