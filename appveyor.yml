@@ -23,7 +23,7 @@ clone_folder: c:\build\pgrouting
 
 cache:
   - downloads -> appveyor.yml
-  - c:\build\local\msvc120\x68 -> appveyor
+  - c:\build\local\msvc120\x64 -> appveyor
   #- C:\local\boost_1_58_0 -> appveyor.yml
   #- c:\local -> appveyor.yml
 

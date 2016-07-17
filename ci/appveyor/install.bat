@@ -217,7 +217,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         if defined LOCAL_DEBUG @echo off
         popd
 
-        set BOOST_INSTALL_FLAG=0
+        set BOOST_INSTALL_FLAG=10
         echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
         if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
         echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
@@ -226,7 +226,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
         if not exist %BOOST_WILDCARD_LIB% ( set BOOST_INSTALL_FLAG=5 )
 
-        if %BOOST_INSTALL_FLAG% NEQ 0 (
+        if %BOOST_INSTALL_FLAG% NEQ 10 (
             echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
 
             if defined LOCAL_DEBUG (
@@ -254,18 +254,21 @@ echo ====================================
 
 echo ==================================== CGAL
 
+echo plataform %plataform%
+if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%plataform%
+pushd %BUILD_ROOT_DIR%
+mkdir gmp\%plataform% 2>NUL
+popd
+if defined LOCAL_DEBUG (
+    echo plataform %plataform%
+    echo GMP_SRC_DIR %GMP_SRC_DIR%
+    dir %GMP_SRC_DIR%
+)
 pushd %DOWNLOADS_DIR%
 curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
 curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
 curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
 
-if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%plataform%
-mkdir %GMP_SRC_DIR%  2>NUL
-if defined LOCAL_DEBUG (
-    echo platafrom %platafrom%
-    echo GMP_SRC_DIR %GMP_SRC_DIR%
-    dir %GMP_SRC_DIR%
-)
 
 7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
 7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
