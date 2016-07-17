@@ -160,14 +160,14 @@ rem if exist %BOOST_INCLUDE_DIR%\ if %REBUILD%==1 (
 	rem rmdir /S /Q %BOOST_INCLUDE_DIR%
 	rem del /S /Q %BOOST_WILDCARD_LIB%
 rem )
-if not exist %BOOST_INCLUDE_DIR%\ (
-	pushd %BOOST_SRC_DIR%
-	@echo on
-	b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
-		--with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
-	@echo off
-	popd
-)
+rem if not exist %BOOST_INCLUDE_DIR%\ (
+	rem pushd %BOOST_SRC_DIR%
+	rem @echo on
+	rem b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
+		rem --with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
+	rem @echo off
+	rem popd
+rem )
 
 rem ### CGAL ###
 rem TODO:better rebuild
