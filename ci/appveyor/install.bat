@@ -218,26 +218,18 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         popd
 
         set BOOST_INSTALL_FLAG=0
-        if not exist "%BOOST_INCLUDE_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
         echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
-        if not exist "%BOOST_LIBRARY_DIR%\" ( set BOOST_INSTALL_FLAG=2 )
+        if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
         echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
-        if not exist "%BOOST_THREAD_LIB%" ( set BOOST_INSTALL_FLAG=3 )
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
-        if not exist "%BOOST_SYSTEM_LIB%" ( set BOOST_INSTALL_FLAG=4 )
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
-        if not exist "%BOOST_WILDCARD_LIB%" ( set BOOST_INSTALL_FLAG=5 )
+        if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
+        if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
+        if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
+        if not exist %BOOST_WILDCARD_LIB% ( set BOOST_INSTALL_FLAG=5 )
 
         if %BOOST_INSTALL_FLAG% NEQ 0 (
             echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
 
             if defined LOCAL_DEBUG (
-                echo COMMON_INSTALL_ROOT_DIR %COMMON_INSTALL_ROOT_DIR%
-                dir %COMMON_INSTALL_ROOT_DIR%
-    
-                echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
-                dir %BOOST_INSTALL_DIR%
-    
                 echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
                 dir %BOOST_INCLUDE_DIR%
 
@@ -270,6 +262,7 @@ curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary
 if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%plataform%
 mkdir %GMP_SRC_DIR%  2>NUL
 if defined LOCAL_DEBUG (
+    echo platafrom %platafrom%
     echo GMP_SRC_DIR %GMP_SRC_DIR%
     dir %GMP_SRC_DIR%
 )
