@@ -130,7 +130,6 @@ set COMMON_INSTALL_DIR=%COMMON_INSTALL_ROOT_DIR%\%RUNTIME%\%PLATFORM%
 
 set BOOST_INSTALL_DIR=%COMMON_INSTALL_DIR%
 set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include
-::\boost-%BOOST_SHORT_VER%
 set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
 set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
@@ -227,9 +226,22 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
 
         echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
         dir %BOOST_INCLUDE_DIR%
+        dir "%BOOST_INCLUDE_DIR%\boost-1_58"
 
         echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
         dir %BOOST_LIBRARY_DIR%
+
+        set BOOST_INSTALL_FLAG=0
+        if not exist "%BOOST_INCLUDE_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
+        if not exist "%BOOST_LIBRARY_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
+        if not exist "%BOOST_THREAD_LIB%" ( set BOOST_INSTALL_FLAG=1 )
+        if not exist "%BOOST_SYSTEM_LIB%" ( set BOOST_INSTALL_FLAG=1 )
+        if not exist "%BOOST_WILDCARD_LIB%" ( set BOOST_INSTALL_FLAG=1 )
+
+        if %BOOST_INSTALL_FLAG% EQU 1 (
+            echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
+        )
+
     ) else (
         echo Boost_%BOOST_VERSION% already installed
     )
