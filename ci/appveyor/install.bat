@@ -142,6 +142,8 @@ echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 if defined BOOST_INSTALL_FLAG (
 
+    echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+
     cd %APPVEYOR_BUILD_FOLDER%
     :: check if it needs to be downloaded
     if not exist downloads\boost_%BOOST_VER_USC%.zip (
