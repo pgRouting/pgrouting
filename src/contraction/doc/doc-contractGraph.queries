@@ -1,115 +1,26 @@
---q1
+-- q1
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT id from vertex_table',array[1,2],2,false);
-NOTICE:  Calling process
-NOTICE:  edges_sql SELECT id, source, target, cost, reverse_cost FROM edge_table
-NOTICE:  vertices_sql SELECT id from vertex_table
-NOTICE:  size_contraction_order 2 
-NOTICE:  num_cycles 2 
-NOTICE:  directed 0 
-NOTICE:  Load data
-NOTICE:  finished Loading
-NOTICE:  Total 18 tuples in query:
-NOTICE:  Starting processing
-NOTICE:  Returning 1 tuples
+    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
+ seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
+-----+----+------+--------+--------+------+---------------------+--------------------------
+   1 |  2 | v    |     -1 |     -1 |   -1 | {1}                 |                        1
+   2 |  5 | v    |     -1 |     -1 |   -1 | {7,8}               |                        2
+   3 | 10 | v    |     -1 |     -1 |   -1 | {13}                |                        1
+   4 | 15 | v    |     -1 |     -1 |   -1 | {14}                |                        1
+   5 | 17 | v    |     -1 |     -1 |   -1 | {16}                |                        1
+(5 rows)
 
-NOTICE:  Returned message = size_contraction_order 2
-contraction_order  { 1, 2,  }
-max_cycles 2
-directed 0
-gType 0
-total_tuples 18
-Working with Undirected Graph
-0 out_edges(1): 1=(1, 2) = 1	 1=(1, 2) = 1	
-1 out_edges(2): 1=(2, 1) = 1	 1=(2, 1) = 1	 2=(2, 3) = 1	 4=(2, 5) = 1	 4=(2, 5) = 1	
-2 out_edges(3): 2=(3, 2) = 1	 3=(3, 4) = 1	 5=(3, 6) = 1	
-3 out_edges(4): 3=(4, 3) = 1	 16=(4, 9) = 1	 16=(4, 9) = 1	
-4 out_edges(5): 4=(5, 2) = 1	 4=(5, 2) = 1	 7=(5, 8) = 1	 7=(5, 8) = 1	 8=(5, 6) = 1	 8=(5, 6) = 1	 10=(5, 10) = 1	 10=(5, 10) = 1	
-5 out_edges(6): 5=(6, 3) = 1	 8=(6, 5) = 1	 8=(6, 5) = 1	 9=(6, 9) = 1	 9=(6, 9) = 1	 11=(6, 11) = 1	
-6 out_edges(7): 6=(7, 8) = 1	 6=(7, 8) = 1	
-7 out_edges(8): 6=(8, 7) = 1	 6=(8, 7) = 1	 7=(8, 5) = 1	 7=(8, 5) = 1	
-8 out_edges(9): 9=(9, 6) = 1	 9=(9, 6) = 1	 15=(9, 12) = 1	 15=(9, 12) = 1	 16=(9, 4) = 1	 16=(9, 4) = 1	
-9 out_edges(10): 10=(10, 5) = 1	 10=(10, 5) = 1	 12=(10, 11) = 1	 14=(10, 13) = 1	 14=(10, 13) = 1	
-10 out_edges(11): 11=(11, 6) = 1	 12=(11, 10) = 1	 13=(11, 12) = 1	
-11 out_edges(12): 13=(12, 11) = 1	 15=(12, 9) = 1	 15=(12, 9) = 1	
-12 out_edges(13): 14=(13, 10) = 1	 14=(13, 10) = 1	
-13 out_edges(14): 17=(14, 15) = 1	 17=(14, 15) = 1	
-14 out_edges(15): 17=(15, 14) = 1	 17=(15, 14) = 1	
-15 out_edges(16): 18=(16, 17) = 1	 18=(16, 17) = 1	
-16 out_edges(17): 18=(17, 16) = 1	 18=(17, 16) = 1	
-Starting cycle 1
-contraction 1 asked
-contraction 2 asked
-Starting cycle 2
-contraction 1 asked
-contraction 2 asked
-
-
-
-NOTICE:  heap_formtuple OK
-NOTICE:  HeapTupleGetDatum OK
-NOTICE:  Freeing values
- contracted_graph_name | contracted_graph_blob | removedvertices | removededges | psuedoedges 
------------------------+-----------------------+-----------------+--------------+-------------
-                       |                       |                 |              | 
-(1 row)
-
---q2
+-- q2
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    'SELECT id from vertex_table',array[2,1],2,true);
-NOTICE:  Calling process
-NOTICE:  edges_sql SELECT id, source, target, cost, reverse_cost FROM edge_table
-NOTICE:  vertices_sql SELECT id from vertex_table
-NOTICE:  size_contraction_order 2 
-NOTICE:  num_cycles 2 
-NOTICE:  directed 1 
-NOTICE:  Load data
-NOTICE:  finished Loading
-NOTICE:  Total 18 tuples in query:
-NOTICE:  Starting processing
-NOTICE:  Returning 1 tuples
+    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, true);
+ seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
+-----+----+------+--------+--------+------+---------------------+--------------------------
+   1 | -1 | e    |      9 |      3 |    2 | {4}                 |                        1
+   2 | -2 | e    |      5 |      7 |    2 | {8}                 |                        1
+   3 | -3 | e    |      7 |      5 |    2 | {8}                 |                        1
+   4 | -4 | e    |     11 |      9 |    2 | {12}                |                        1
+(4 rows)
 
-NOTICE:  Returned message = size_contraction_order 2
-contraction_order  { 2, 1,  }
-max_cycles 2
-directed 1
-gType 1
-total_tuples 18
-Working with directed Graph
-0 out_edges(1): 1=(1, 2) = 1	
-1 out_edges(2): 1=(2, 1) = 1	 4=(2, 5) = 1	
-2 out_edges(3): 2=(3, 2) = 1	 5=(3, 6) = 1	
-3 out_edges(4): 3=(4, 3) = 1	 16=(4, 9) = 1	
-4 out_edges(5): 4=(5, 2) = 1	 7=(5, 8) = 1	 8=(5, 6) = 1	 10=(5, 10) = 1	
-5 out_edges(6): 8=(6, 5) = 1	 9=(6, 9) = 1	 11=(6, 11) = 1	
-6 out_edges(7): 6=(7, 8) = 1	
-7 out_edges(8): 6=(8, 7) = 1	 7=(8, 5) = 1	
-8 out_edges(9): 9=(9, 6) = 1	 15=(9, 12) = 1	 16=(9, 4) = 1	
-9 out_edges(10): 10=(10, 5) = 1	 12=(10, 11) = 1	 14=(10, 13) = 1	
-10 out_edges(11): 13=(11, 12) = 1	
-11 out_edges(12): 15=(12, 9) = 1	
-12 out_edges(13): 14=(13, 10) = 1	
-13 out_edges(14): 17=(14, 15) = 1	
-14 out_edges(15): 17=(15, 14) = 1	
-15 out_edges(16): 18=(16, 17) = 1	
-16 out_edges(17): 18=(17, 16) = 1	
-Starting cycle 1
-contraction 2 asked
-contraction 1 asked
-Starting cycle 2
-contraction 2 asked
-contraction 1 asked
-
-
-
-NOTICE:  heap_formtuple OK
-NOTICE:  HeapTupleGetDatum OK
-NOTICE:  Freeing values
- contracted_graph_name | contracted_graph_blob | removedvertices | removededges | psuedoedges 
------------------------+-----------------------+-----------------+--------------+-------------
-                       |                       |                 |              | 
-(1 row)
-
---q3
+-- q3
