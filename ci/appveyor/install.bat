@@ -169,10 +169,12 @@ if "%BOOST_INSTALL_FLAG%"=="1" (
     )
 
     if not exist "%BOOST_SRC_DIR%\b2.exe" (
+        dir %BOOST_SRC_DIR%
         echo %BOOST_SRC_DIR%\b2.exe missing
         pushd %BOOST_SRC_DIR%
         call "bootstrap.bat"
         popd
+        dir %BOOST_SRC_DIR%
     )
 
     if not exist %BOOST_INCLUDE_DIR%\ (
