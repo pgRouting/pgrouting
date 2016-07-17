@@ -213,6 +213,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
             --with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
         @echo off
         popd
+        dir %BOOST_LIBRARY_DIR%
     ) else (
         echo Boost_%BOOST_VERSION% already installed
     )
