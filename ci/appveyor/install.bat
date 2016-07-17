@@ -108,8 +108,33 @@ cd %APPVEYOR_BUILD_FOLDER%
 :: Download and install Boost
 ::
 
-if not exist "c:\build\boost_%BOOST_VER_USC%" (
+set BOOST_SHORT_VER=%BOOST_VER:_0=%
+set BOOST_INSTALL_DIR=%BUILD_ROOT_DIR%\local
 
+set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
+set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
+set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
+set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
+set BOOST_WILDCARD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_*-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.libs
+
+
+set BUILD_ROOT_DIR=c:\build
+set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VERSION%
+set MSBUILD_CONFIGURATION=%CONFIGURATION%
+
+
+
+:: check that everything needed from boost is there
+if not exist %BOOST_INCLUDE_DIR% (set BOOST_INSTALL_FLAG=1)
+if not exist %BOOST_LIBRARY_DIR% (set BOOST_INSTALL_FLAG=1)
+if not exist %BOOST_THREAD_LIB% (set BOOST_INSTALL_FLAG=1)
+if not exist %BOOST_SYSTEM_LIB% (set BOOST_INSTALL_FLAG=1)
+if not exist %BOOST_WILDCARD_LIB% (set BOOST_INSTALL_FLAG=1)
+
+
+if BOOST_INSTALL_FLAG==1 (
+
+    :: check if it needs to be downloaded
     if not exist downloads\boost_%BOOST_VER_USC%.zip (
         cd downloads
         dir
@@ -127,12 +152,53 @@ if not exist "c:\build\boost_%BOOST_VER_USC%" (
     echo Extracting Boost_%BOOST_VERSION%.zip ...
     7z x -oc:\build\ downloads/Boost_%BOOST_VER_USC%.zip
     echo Done extractig.
-    if not exist "c:\build\boost_%BOOST_VER_USC%" (
-        echo something went wrong on boos extraction!!!!!!!!!
+    if not exist %BOOST_SRC_DIR%(
+        echo something went wrong on boost extraction!!!!!!!!!
     )
-) else (
-    echo Boost_%BOOST_VER_USC% Already Extracted
+
+    if not exist "%BOOST_SRC_DIR%\b2.exe" (
+        echo %BOOST_SRC_DIR%\b2.exe missing
+        pushd %BOOST_SRC_DIR%
+        call "bootstrap.bat"
+        popd
+    )
+
+    if not exist %BOOST_INCLUDE_DIR%\ (
+        pushd %BOOST_SRC_DIR%
+        @echo on
+        b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
+            --with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
+        @echo off
+        popd
+    ) else (
+        echo Boost_%BOOST_VERSION% already installed
+    )
 )
+
+
+
+::set MSVC_VER=12.0
+::set RUNTIME=msvc%MSVC_VER:.=%
+::set BOOST_TOOLSET=msvc-%MSVC_VER%
+::set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
+::
+::if "%2"=="x86" (
+    ::set PLATFORM=x86
+    ::set BOOST_ADDRESS_MODEL=32
+::) else if "%2"=="x64" (
+    ::set PLATFORM=x64
+    ::set BOOST_ADDRESS_MODEL=64
+    ::set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
+::) else (
+    ::echo %USAGE%
+    ::exit /B 1
+::)
+
+
+
+
+
+
 
 ::if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
     :: download installer??
