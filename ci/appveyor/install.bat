@@ -213,6 +213,9 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
     ) else (
         echo Boost_%BOOST_VERSION% already installed
     )
+) else (
+    echo Boost_%BOOST_VERSION% already installed
+    echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 )
 
 
