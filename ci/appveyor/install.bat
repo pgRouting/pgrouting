@@ -199,7 +199,6 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
 
     echo **** Excuting bootstrap.bat...
     if not exist "%BOOST_SRC_DIR%\b2.exe" (
-        echo %BOOST_SRC_DIR%\b2.exe missing
         pushd %BOOST_SRC_DIR%
         call "bootstrap.bat"
         popd
@@ -212,20 +211,24 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
     echo **** Excuting  %BOOST_SRC_DIR%\b2.exe ...
     if not exist %BOOST_INCLUDE_DIR%\ (
         pushd %BOOST_SRC_DIR%
-        @echo on
+        if defined LOCAL_DEBUG @echo on
         b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
             --with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
-        @echo off
+        if defined LOCAL_DEBUG @echo off
         popd
 
         set BOOST_INSTALL_FLAG=0
         if not exist "%BOOST_INCLUDE_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
-        if not exist "%BOOST_LIBRARY_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
-        if not exist "%BOOST_THREAD_LIB%" ( set BOOST_INSTALL_FLAG=1 )
-        if not exist "%BOOST_SYSTEM_LIB%" ( set BOOST_INSTALL_FLAG=1 )
-        if not exist "%BOOST_WILDCARD_LIB%" ( set BOOST_INSTALL_FLAG=1 )
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+        if not exist "%BOOST_LIBRARY_DIR%\" ( set BOOST_INSTALL_FLAG=2 )
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+        if not exist "%BOOST_THREAD_LIB%" ( set BOOST_INSTALL_FLAG=3 )
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+        if not exist "%BOOST_SYSTEM_LIB%" ( set BOOST_INSTALL_FLAG=4 )
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+        if not exist "%BOOST_WILDCARD_LIB%" ( set BOOST_INSTALL_FLAG=5 )
 
-        if %BOOST_INSTALL_FLAG% EQU 1 (
+        if %BOOST_INSTALL_FLAG% NEQ 0 (
             echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
 
             if defined LOCAL_DEBUG (
@@ -277,7 +280,7 @@ if defined LOCAL_DEBUG (
 
 
 if defined LOCAL_DEBUG (
-    echo DOWNLOADS %DOWNLOADS%
+    echo DOWNLOADS_DIR %DOWNLOADS_DIR%
     dir %DOWNLOADS%
 
     echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
