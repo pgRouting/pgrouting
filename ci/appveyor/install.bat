@@ -13,6 +13,7 @@ echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
 if not defined MSVC_VER set MSVC_VER=12.0
 if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 if not defined DOWNLOADS_DIR set DOWNLOADS_DIR=%APPVEYOR_BUILD_FOLDER%\downloads
+if not defined COMMON_INSTALL_ROOT_DIR set COMMON_INSTALL_ROOT_DIR=%BUILD_ROOT_DIR%\local
 
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
 if not defined PG_VERSION set PG_VERSION=2.2.2
@@ -128,9 +129,14 @@ set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
 set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_WILDCARD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_*-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.libs
-
+set BOOST_ADDRESS_MODEL=%arch%
+set BOOST_TOOLSET=msvc-%MSVC_VER%
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
 set MSBUILD_CONFIGURATION=%CONFIGURATION%
+set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
+if "%plataform%"=="x64" (
+    set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
+)
 
 :: DEBUGING
 echo BOOST_VERSION %BOOST_VERSION%
@@ -142,6 +148,9 @@ echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
 echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
 echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
 echo BOOST_WILDCARD_LIB %BOOST_WILDCARD_LIB%
+echo BOOST_ADDRESS_MODEL %BOOST_ADDRESS_MODEL%
+echo BOOST_TOOLSET %BOOST_TOOLSET%
+echo CMAKE_GENERATOR %CMAKE_GENERATOR%
 
 :: check that everything needed from boost is there
 if not exist "%BOOST_INCLUDE_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
@@ -186,7 +195,10 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         pushd %BOOST_SRC_DIR%
         call "bootstrap.bat"
         popd
-        dir %BOOST_SRC_DIR%
+        if not exist "%BOOST_SRC_DIR%\b2.exe" (
+            echo something went wrong on booststrap.bat execution!!!!!!!!!
+            dir %BOOST_SRC_DIR%
+        }
     )
 
     if not exist %BOOST_INCLUDE_DIR%\ (
