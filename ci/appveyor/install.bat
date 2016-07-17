@@ -32,13 +32,14 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 pushd %APPVEYOR_BUILD_FOLDER%
 mkdir downloads 2>NUL
 popd
-dir %DOWNLOADS_DIR%
+if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
 
 
 :: =========================================================
 :: Download and install cmake
 ::
 
+echo ==================================== CMAKE
 for /f "tokens=*  delims=" %%a in ('cmake --version') do (
     set CURR_CMAKE=%%a& goto _ExitForLoop1
 )
@@ -69,6 +70,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
         echo something went wrong on cmake installation!!!!!!!!!
     )
 )
+echo ====================================
 
 ::
 :: =========================================================
@@ -145,18 +147,18 @@ if "%plataform%"=="x64" (
 )
 
 :: DEBUGING
-echo BOOST_VERSION %BOOST_VERSION%
-echo BOOST_VER_USC %BOOST_VER_USC%
-echo BOOST_SHORT_VER %BOOST_SHORT_VER%
-echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
-echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
-echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
-echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
-echo BOOST_WILDCARD_LIB %BOOST_WILDCARD_LIB%
-echo BOOST_ADDRESS_MODEL %BOOST_ADDRESS_MODEL%
-echo BOOST_TOOLSET %BOOST_TOOLSET%
-echo CMAKE_GENERATOR %CMAKE_GENERATOR%
+if defined LOCAL_DEBUG echo BOOST_VERSION %BOOST_VERSION%
+if defined LOCAL_DEBUG echo BOOST_VER_USC %BOOST_VER_USC%
+if defined LOCAL_DEBUG echo BOOST_SHORT_VER %BOOST_SHORT_VER%
+if defined LOCAL_DEBUG echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
+if defined LOCAL_DEBUG echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+if defined LOCAL_DEBUG echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
+if defined LOCAL_DEBUG echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
+if defined LOCAL_DEBUG echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
+if defined LOCAL_DEBUG echo BOOST_WILDCARD_LIB %BOOST_WILDCARD_LIB%
+if defined LOCAL_DEBUG echo BOOST_ADDRESS_MODEL %BOOST_ADDRESS_MODEL%
+if defined LOCAL_DEBUG echo BOOST_TOOLSET %BOOST_TOOLSET%
+if defined LOCAL_DEBUG echo CMAKE_GENERATOR %CMAKE_GENERATOR%
 
 :: check that everything needed from boost is there
 if not exist "%BOOST_INCLUDE_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
@@ -171,8 +173,6 @@ echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 echo ==================================== BOOST
 if %BOOST_INSTALL_FLAG% EQU 1 (
 
-    dir %DOWNLOADS_DIR%
-    
     :: check if it needs to be downloaded
     if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
         echo Downloading Boost %BOOST_VERSION% ...
@@ -181,7 +181,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         popd
         if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
             echo something went wrong on boost %BOOST_VERSION% download !!!!!!!!!
-            dir %DOWNLOADS_DIR%
+            if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
         )
     ) else (
         echo **** Boost_%BOOST_VER_USC%  already downloaded
@@ -193,20 +193,19 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
     popd
     if not exist %BOOST_SRC_DIR% (
         echo something went wrong on boost extraction!!!!!!!!!
-        dir %BOOST_SRC_DIR%
+        if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
 
     )
 
     echo **** Excuting bootstrap.bat...
     if not exist "%BOOST_SRC_DIR%\b2.exe" (
-        dir %BOOST_SRC_DIR%
         echo %BOOST_SRC_DIR%\b2.exe missing
         pushd %BOOST_SRC_DIR%
         call "bootstrap.bat"
         popd
         if not exist "%BOOST_SRC_DIR%\b2.exe" (
             echo something went wrong on booststrap.bat execution!!!!!!!!!
-            dir %BOOST_SRC_DIR%
+            if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
         )
     )
 
