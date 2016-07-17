@@ -18,6 +18,7 @@ if not defined COMMON_INSTALL_ROOT_DIR set COMMON_INSTALL_ROOT_DIR=%BUILD_ROOT_D
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
 if not defined PG_VERSION set PG_VERSION=2.2.2
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
+if not defined CGAL_VERSION set CGAL_VERSION=4.8.1
 
 
 
@@ -231,9 +232,6 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
             echo COMMON_INSTALL_ROOT_DIR %COMMON_INSTALL_ROOT_DIR%
             dir %COMMON_INSTALL_ROOT_DIR%
 
-            echo COMMON_INSTALL_DIR %COMMON_INSTALL_DIR%
-            dir %COMMON_INSTALL_DIR%
-
             echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
             dir %BOOST_INSTALL_DIR%
     
@@ -253,35 +251,27 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
 )
 echo ====================================
 
-
-
-::if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
-    :: download installer??
-::    if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
-::        pushd %DOWNLOADS_DIR%
-::        echo Downloading Boost %BOOST_VERSION% %arch% bits...
-::        curl --silent --fail --location --max-time 1600 --connect-timeout 30 http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
-::        popd
-::        if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
-::            echo something went wrong on boost %BOOST_VERSION% %arch% bits extraction!!!!!!!!!
-::        )
-::    ) else (
-::        echo Boost %BOOST_VERSION% %arch% bits already downloaded
-::    )
-::
-::    echo Installing Boost %BOOST_VERSION% %arch% bits...
-::    pushd %DOWNLOADS_DIR%
-::    boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
-::    popd
-::    echo Done installing  %BOOST_VERSION% %arch% bits.
-::) else (
-::    echo Boost %BOOST_VERSION% %arch% bits already installed
-::)
-
 ::
 :: =========================================================
 
-cd %BUILD_ROOT_DIR%
+
+pushd %DOWNLOADS_DIR%
+curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
+curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
+curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
+
+if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%plataform%
+mkdir %GMP_SRC_DIR%  2>NUL
+
+7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
+7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
+7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
+dir %DOWNLOADS%
+dir %BUILD_ROOT_DIR%
+dir %GMP_ROOT_DIR%
+popd
+
+
 
 echo.
 echo ======================================================
