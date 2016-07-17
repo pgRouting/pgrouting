@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 :: each sub-script starts and end on this directory:
 
@@ -162,8 +162,9 @@ if "%BOOST_INSTALL_FLAG%"=="1" (
     )
 
     echo Extracting Boost_%BOOST_VERSION%.zip ...
-    7z x -oc:\build\ downloads/Boost_%BOOST_VER_USC%.zip
-    echo Done extractig.
+    7z x -o%BUILD_ROOT_DIR%\ downloads/Boost_%BOOST_VER_USC%.zip
+    echo Done extractig  Boost_%BOOST_VERSION%.zip
+    dir %BUILD_ROOT_DIR%
     if not exist %BOOST_SRC_DIR% (
         echo something went wrong on boost extraction!!!!!!!!!
     )
