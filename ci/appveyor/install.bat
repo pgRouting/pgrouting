@@ -1,4 +1,4 @@
-@echo off
+@echo on
 
 :: each sub-script starts and end on this directory:
 
@@ -168,8 +168,8 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
     
     :: check if it needs to be downloaded
     if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
-        pushd %DOWNLOADS_DIR%
         echo Downloading Boost %BOOST_VERSION% ...
+        pushd %DOWNLOADS_DIR%
         curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
         popd
         if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
