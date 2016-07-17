@@ -147,8 +147,8 @@ if "%plataform%"=="x64" (
 echo BOOST_VERSION %BOOST_VERSION%
 echo BOOST_VER_USC %BOOST_VER_USC%
 echo BOOST_SHORT_VER %BOOST_SHORT_VER%
-echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
 echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
+echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
 echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
 echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
 echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
@@ -214,13 +214,18 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         pushd %BOOST_SRC_DIR%
         @echo on
         b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
-            --with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
+            --with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
         @echo off
         popd
+        echo COMMON_INSTALL_ROOT_DIR %COMMON_INSTALL_ROOT_DIR%
         dir %COMMON_INSTALL_ROOT_DIR%
+        echo COMMON_INSTALL_DIR %COMMON_INSTALL_DIR%
         dir %COMMON_INSTALL_DIR%
-        dir %BOOST_INCLUDE_DIR%
+        echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
         dir %BOOST_INSTALL_DIR%
+        echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+        dir %BOOST_INCLUDE_DIR%
+        echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
         dir %BOOST_LIBRARY_DIR%
     ) else (
         echo Boost_%BOOST_VERSION% already installed
