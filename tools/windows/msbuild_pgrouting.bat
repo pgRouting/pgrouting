@@ -150,24 +150,24 @@ set BOOST_THREAD_LIB=%COMMON_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt
 set BOOST_SYSTEM_LIB=%COMMON_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_WILDCARD_LIB=%COMMON_INSTALL_DIR%\lib\libboost_*-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.libs
 
-if not exist "%BOOST_SRC_DIR%\b2.exe" (
-	pushd %BOOST_SRC_DIR%
-	call "bootstrap.bat"
-	popd
-)
+rem if not exist "%BOOST_SRC_DIR%\b2.exe" (
+rem 	pushd %BOOST_SRC_DIR%
+rem 	call "bootstrap.bat"
+rem 	popd
+rem )
 rem TODO:better rebuild
-if exist %BOOST_INCLUDE_DIR%\ if %REBUILD%==1 (
-	rmdir /S /Q %BOOST_INCLUDE_DIR%
-	del /S /Q %BOOST_WILDCARD_LIB%
-)
-if not exist %BOOST_INCLUDE_DIR%\ (
-	pushd %BOOST_SRC_DIR%
-	@echo on
-	b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
-		--with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
-	@echo off
-	popd
-)
+rem if exist %BOOST_INCLUDE_DIR%\ if %REBUILD%==1 (
+	rem rmdir /S /Q %BOOST_INCLUDE_DIR%
+	rem del /S /Q %BOOST_WILDCARD_LIB%
+rem )
+rem if not exist %BOOST_INCLUDE_DIR%\ (
+	rem pushd %BOOST_SRC_DIR%
+	rem @echo on
+	rem b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
+		rem --with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
+	rem @echo off
+	rem popd
+rem )
 
 rem ### CGAL ###
 rem TODO:better rebuild

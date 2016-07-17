@@ -189,6 +189,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         echo something went wrong on boost extraction!!!!!!!!!
     )
 
+    echo Excuting bootstrap.bat...
     if not exist "%BOOST_SRC_DIR%\b2.exe" (
         dir %BOOST_SRC_DIR%
         echo %BOOST_SRC_DIR%\b2.exe missing
@@ -201,6 +202,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         }
     )
 
+    echo Excuting  %BOOST_SRC_DIR%\b2.exe ...
     if not exist %BOOST_INCLUDE_DIR%\ (
         pushd %BOOST_SRC_DIR%
         @echo on
@@ -215,49 +217,29 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
 
 
 
-::set MSVC_VER=12.0
-::set RUNTIME=msvc%MSVC_VER:.=%
-::set BOOST_TOOLSET=msvc-%MSVC_VER%
-::set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
-::
-::if "%2"=="x86" (
-    ::set PLATFORM=x86
-    ::set BOOST_ADDRESS_MODEL=32
-::) else if "%2"=="x64" (
-    ::set PLATFORM=x64
-    ::set BOOST_ADDRESS_MODEL=64
-    ::set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
-::) else (
-    ::echo %USAGE%
-    ::exit /B 1
-::)
-
-
-
-
-
-
-
-::if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
+if not exist "C:\local\boost_%BOOST_VER_USC%\lib%arch%-msvc-14.0" (
     :: download installer??
-::    if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
-::        cd downloads
-::        echo Downloading Boost %BOOST_VERSION% %arch% bits...
-::        curl --silent --fail --location --max-time 1600 --connect-timeout 30 http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
-::        cd ..
-::        if not exist downloads\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
-::            echo something went wrong on boost %BOOST_VERSION% %arch% bits extraction!!!!!!!!!
-::        )
-::    ) else (
-::        echo Boost %BOOST_VERSION% %arch% bits already downloaded
-::    )
+    if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+        pushd %DOWNLOADS_DIR%
+        echo Downloading Boost %BOOST_VERSION% %arch% bits...
+        curl --silent --fail --location --max-time 1600 --connect-timeout 30 http://sourceforge.net/projects/boost/files/boost-binaries/%BOOST_VERSION%/boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe/download
+        popd
+        if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%-msvc-14.0-%arch%.exe (
+            echo something went wrong on boost %BOOST_VERSION% %arch% bits extraction!!!!!!!!!
+        )
+    ) else (
+        echo Boost %BOOST_VERSION% %arch% bits already downloaded
+    )
 
-::    echo Installing Boost %BOOST_VERSION% %arch% bits...
-::    downloads\boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
-::    echo Done installing.
-::) else (
-::    echo Boost %BOOST_VERSION% %arch% bits already installed
-::)
+    echo Installing Boost %BOOST_VERSION% %arch% bits...
+    pushd %DOWNLOADS_DIR%
+    boost_%BOOST_VER_USC%-msvc-13.0-%arch%.exe /silent /verysilent /sp- /suppressmsgboxes
+    popd
+    echo Done installing  %BOOST_VERSION% %arch% bits.
+) else (
+    echo Boost %BOOST_VERSION% %arch% bits already installed
+)
+
 ::
 :: =========================================================
 
