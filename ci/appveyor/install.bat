@@ -10,12 +10,11 @@ echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
 :: Set some defaults. Infer some variables.
 ::
 
+if not defined MSVC_VER set MSVC_VER=12.0
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
 if not defined PG_VERSION set PG_VERSION=2.2.2
-
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
-:: replace dots with underscores
-set BOOST_VER_USC=%BOOST_VERSION:.=_%
+if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 
 
 :: Determine if arch is 32/64 bits
@@ -83,9 +82,9 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         )
     )
     echo Extracting postGIS %PG_VERSION%
-    7z x -oc:\build\ downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+    7z x -o%BUILD_ROOT_DIR%\ downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
     echo Installing postGIS %PG_VERSION%
-    xcopy /e /y /q c:\build\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
+    xcopy /e /y /q %BUILD_ROOT_DIR%\build\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
@@ -108,29 +107,40 @@ cd %APPVEYOR_BUILD_FOLDER%
 :: Download and install Boost
 ::
 
+:: deducing variables
+set BOOST_VER_USC=%BOOST_VERSION:.=_%
 set BOOST_SHORT_VER=%BOOST_VER:_0=%
 set BOOST_INSTALL_DIR=%BUILD_ROOT_DIR%\local
-
 set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
 set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
 set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_WILDCARD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_*-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.libs
 
-
-set BUILD_ROOT_DIR=c:\build
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VERSION%
 set MSBUILD_CONFIGURATION=%CONFIGURATION%
 
-
+:: DEBUGING
+echo BOOST_VERSION %BOOST_VERSION%
+echo BOOST_VER_USC %BOOST_VER_USC%
+echo BOOST_SHORT_VER %BOOST_SHORT_VER%
+echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
+echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
+echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
+echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
+echo BOOST_WILDCARD_LIB %BOOST_WILDCARD_LIB%
 
 :: check that everything needed from boost is there
-if not exist "%BOOST_INCLUDE_DIR%" (set BOOST_INSTALL_FLAG=1)
-if not exist "%BOOST_LIBRARY_DIR%" (set BOOST_INSTALL_FLAG=1)
+set BOOST_INSTALL_FLAG=0
+if not exist "%BOOST_INCLUDE_DIR%\" (set BOOST_INSTALL_FLAG=1)
+if not exist "%BOOST_LIBRARY_DIR%\" (set BOOST_INSTALL_FLAG=1)
 if not exist "%BOOST_THREAD_LIB%" (set BOOST_INSTALL_FLAG=1)
 if not exist "%BOOST_SYSTEM_LIB%" (set BOOST_INSTALL_FLAG=1)
 if not exist "%BOOST_WILDCARD_LIB%" (set BOOST_INSTALL_FLAG=1)
 
+:: DEBUGING
+echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 if BOOST_INSTALL_FLAG==1 (
 
