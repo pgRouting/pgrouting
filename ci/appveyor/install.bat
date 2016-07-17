@@ -251,26 +251,52 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
 )
 echo ====================================
 
-::
+:: =========================================================
+:: =========================================================
 :: =========================================================
 
 
 echo ==================================== CGAL
 
-echo PLATAFORM %PLATAFORM%
-if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%PLATAFORM%
+echo PLATFORM %PLATFORM%
+if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%PLATFORM%
 pushd %BUILD_ROOT_DIR%
-mkdir gmp\%PLATAFORM% 2>NUL
+mkdir gmp\%PLATFORM% 2>NUL
 popd
 if defined LOCAL_DEBUG (
-    echo PLATAFORM %PLATAFORM%
+    echo PLATFORM %PLATFORM%
     echo GMP_SRC_DIR %GMP_SRC_DIR%
     dir %GMP_SRC_DIR%
 )
-pushd %DOWNLOADS_DIR%
-curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
-curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
-curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
+
+if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
+    echo Downoading CGAL-%CGAL_VERSION%.zip
+    pushd %DOWNLOADS_DIR%
+    curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
+    popd
+    if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
+        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
+    )
+)
+
+if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
+    echo Downoading CGAL-%CGAL_VERSION%.zip
+    pushd %DOWNLOADS_DIR%
+    curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/GMP/5.0.1/gmp-all-CGAL-3.9.zip
+    popd
+    if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
+        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
+    )
+)
+if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
+    echo Downoading mpfr-all-CGAL-3.9.zip
+    pushd %DOWNLOADS_DIR%
+    curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
+    popd
+    if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
+        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
+    )
+)
 
 
 7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
