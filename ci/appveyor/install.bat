@@ -125,11 +125,11 @@ set MSBUILD_CONFIGURATION=%CONFIGURATION%
 
 
 :: check that everything needed from boost is there
-if not exist %BOOST_INCLUDE_DIR% (set BOOST_INSTALL_FLAG=1)
-if not exist %BOOST_LIBRARY_DIR% (set BOOST_INSTALL_FLAG=1)
-if not exist %BOOST_THREAD_LIB% (set BOOST_INSTALL_FLAG=1)
-if not exist %BOOST_SYSTEM_LIB% (set BOOST_INSTALL_FLAG=1)
-if not exist %BOOST_WILDCARD_LIB% (set BOOST_INSTALL_FLAG=1)
+if not exist "%BOOST_INCLUDE_DIR%" (set BOOST_INSTALL_FLAG=1)
+if not exist "%BOOST_LIBRARY_DIR%" (set BOOST_INSTALL_FLAG=1)
+if not exist "%BOOST_THREAD_LIB%" (set BOOST_INSTALL_FLAG=1)
+if not exist "%BOOST_SYSTEM_LIB%" (set BOOST_INSTALL_FLAG=1)
+if not exist "%BOOST_WILDCARD_LIB%" (set BOOST_INSTALL_FLAG=1)
 
 
 if BOOST_INSTALL_FLAG==1 (
