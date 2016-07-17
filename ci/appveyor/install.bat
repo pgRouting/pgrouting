@@ -283,8 +283,8 @@ if defined LOCAL_DEBUG (
     echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
     dir %BUILD_ROOT_DIR%
 
-    echo GMP_ROOT_DIR %GMP_ROOT_DIR%
-    dir %GMP_ROOT_DIR%
+    echo GMP_SRC_DIR %GMP_SRC_DIR%
+    dir %GMP_SRC_DIR%
 )
 popd
 echo ====================================
