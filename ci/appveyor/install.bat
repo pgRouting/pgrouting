@@ -11,10 +11,12 @@ echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
 ::
 
 if not defined MSVC_VER set MSVC_VER=12.0
+if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
+if not defined DOWNLOADS_DIR set BUILD_ROOT_DIR=%BUILD_ROOT_DIR%\downloads
+
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
 if not defined PG_VERSION set PG_VERSION=2.2.2
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
-if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 
 
 :: Determine if arch is 32/64 bits
@@ -25,7 +27,7 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 
 :: create a download directory:
 cd %APPVEYOR_BUILD_FOLDER%
-mkdir downloads 2>NUL
+mkdir %DOWNLOADS_DIR% 2>NUL
 
 
 :: =========================================================
@@ -41,13 +43,15 @@ set CURR_CMAKE=%CURR_CMAKE:~14%
 if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
-    cd downloads
     echo Downoading cmake %CMAKE_VERSION%
+    pushd %DOWNLOADS_DIR%
     curl -L -O -S -s https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
-    cd ..
+    popd
 
     echo Installing cmake %CMAKE_VERSION%
-    start /wait msiexec /i downloads\cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
+    pushd %DOWNLOADS_DIR%
+    start /wait msiexec /i cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
+    popd
 
     for /f "tokens=*  delims=" %%a in ('cmake --version') do (
         set CURR_CMAKE=%%a& goto _ExitForLoop2
@@ -57,7 +61,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
         echo cmake %CMAKE_VERSION% installed
     ) else (
-        echo something went wrong on cmake installation download !!!!!!!!!
+        echo something went wrong on cmake installation!!!!!!!!!
     )
 )
 
@@ -72,23 +76,27 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 
 if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     cd %APPVEYOR_BUILD_FOLDER%
-    if not exist downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
-        cd downloads
+    if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
         echo Downoading postGIS %PG_VERSION%
+        pushd %DOWNLOADS_DIR%
         curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
-        cd ..
-        if not exist downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
+        popd
+        if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
             echo something went wrong on postgis %PG_VERSION% download !!!!!!!!!
         )
     )
+
     echo Extracting postGIS %PG_VERSION%
-    7z x -o%BUILD_ROOT_DIR%\ downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+    pushd %DOWNLOADS_DIR%
+    7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
+    popd
+
     echo Installing postGIS %PG_VERSION%
     xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
-        dir downloads
+        dir %DOWNLOADS_DIR%
         dir C:\Progra~1\PostgreSQL\9.4\
     ) else (
         echo postGIS %PG_VERSION% %arch% installed
@@ -116,7 +124,7 @@ set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-
 set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_WILDCARD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_*-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.libs
 
-set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VERSION%
+set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
 set MSBUILD_CONFIGURATION=%CONFIGURATION%
 
 :: DEBUGING
@@ -142,28 +150,26 @@ echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 if %BOOST_INSTALL_FLAG% EQU 1 (
 
-    echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
-
     cd %APPVEYOR_BUILD_FOLDER%
     :: check if it needs to be downloaded
-    if not exist downloads\boost_%BOOST_VER_USC%.zip (
-        cd downloads
-        dir
+    if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
+        pushd %DOWNLOADS_DIR%
         echo Downloading Boost %BOOST_VERSION% ...
         curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
-        cd ..
-        dir downloads
-        if not exist downloads\boost_%BOOST_VER_USC%.zip (
+        popd
+        if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
             echo something went wrong on boost %BOOST_VERSION% download !!!!!!!!!
+            dir %DOWNLOADS_DIR%
         )
     ) else (
         echo Boost_%BOOST_VER_USC%  already downloaded
     )
 
     echo Extracting Boost_%BOOST_VERSION%.zip ...
+    pushd %DOWNLOADS_DIR%
     7z x -o%BUILD_ROOT_DIR%\ downloads/Boost_%BOOST_VER_USC%.zip
-    echo Done extractig  Boost_%BOOST_VERSION%.zip
-    dir %BUILD_ROOT_DIR%
+    popd
+    dir %BOOST_SRC_DIR%
     if not exist %BOOST_SRC_DIR% (
         echo something went wrong on boost extraction!!!!!!!!!
     )
