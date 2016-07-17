@@ -1,10 +1,10 @@
 @echo off
 
-:: each sub-script starts and end on this directory:
+set LOCAL_DEBUG=1
 
 Setlocal EnableDelayedExpansion EnableExtensions
 
-echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
+if defined LOCAL_DEBUG echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
 
 :: =========================================================
 :: Set some defaults. Infer some variables.
@@ -20,11 +20,10 @@ if not defined PG_VERSION set PG_VERSION=2.2.2
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 
 
+
 :: Determine if arch is 32/64 bits
 if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 
-
-echo DOWNLOADS_DIR %DOWNLOADS_DIR%
 ::
 :: =========================================================
 
