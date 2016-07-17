@@ -164,7 +164,7 @@ if "%BOOST_INSTALL_FLAG%"=="1" (
     echo Extracting Boost_%BOOST_VERSION%.zip ...
     7z x -oc:\build\ downloads/Boost_%BOOST_VER_USC%.zip
     echo Done extractig.
-    if not exist %BOOST_SRC_DIR%(
+    if not exist %BOOST_SRC_DIR% (
         echo something went wrong on boost extraction!!!!!!!!!
     )
 
