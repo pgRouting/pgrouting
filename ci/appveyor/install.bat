@@ -84,7 +84,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     echo Extracting postGIS %PG_VERSION%
     7z x -o%BUILD_ROOT_DIR%\ downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
     echo Installing postGIS %PG_VERSION%
-    xcopy /e /y /q %BUILD_ROOT_DIR%\build\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
+    xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
@@ -109,7 +109,7 @@ cd %APPVEYOR_BUILD_FOLDER%
 
 :: deducing variables
 set BOOST_VER_USC=%BOOST_VERSION:.=_%
-set BOOST_SHORT_VER=%BOOST_VER:_0=%
+set BOOST_SHORT_VER=%BOOST_VERSION:_0=%
 set BOOST_INSTALL_DIR=%BUILD_ROOT_DIR%\local
 set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
 set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
