@@ -5,6 +5,7 @@ set LOCAL_DEBUG=1
 Setlocal EnableDelayedExpansion EnableExtensions
 
 if defined LOCAL_DEBUG echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
+echo platform %platform%
 
 :: =========================================================
 :: Set some defaults. Infer some variables.
@@ -51,12 +52,12 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 ) else (
     echo Downoading cmake %CMAKE_VERSION%
     pushd %DOWNLOADS_DIR%
-    curl -L -O -S -s https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%plataform%.msi
+    curl -L -O -S -s https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%platform%.msi
     popd
 
     echo Installing cmake %CMAKE_VERSION%
     pushd %DOWNLOADS_DIR%
-    start /wait msiexec /i cmake-%CMAKE_VERSION%-win32-%plataform%.msi /qn
+    start /wait msiexec /i cmake-%CMAKE_VERSION%-win32-%platform%.msi /qn
     popd
 
     for /f "tokens=*  delims=" %%a in ('cmake --version') do (
@@ -91,7 +92,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         popd
         if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
             echo something went wrong on postgis %PG_VERSION% download !!!!!!!!!
-            dir %DOWNLOADS_DIR%
+            if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
         )
     )
 
@@ -105,8 +106,8 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
-        dir %DOWNLOADS_DIR%
-        dir C:\Progra~1\PostgreSQL\9.4\
+        if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
+        if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\9.4\
     ) else (
         echo **** postGIS %PG_VERSION% %arch% installed
     )
@@ -142,23 +143,25 @@ set BOOST_TOOLSET=msvc-%MSVC_VER%
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
 set MSBUILD_CONFIGURATION=%CONFIGURATION%
 set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
-if "%plataform%"=="x64" (
+if "%platform%"=="x64" (
     set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
 )
 
 :: DEBUGING
-if defined LOCAL_DEBUG echo BOOST_VERSION %BOOST_VERSION%
-if defined LOCAL_DEBUG echo BOOST_VER_USC %BOOST_VER_USC%
-if defined LOCAL_DEBUG echo BOOST_SHORT_VER %BOOST_SHORT_VER%
-if defined LOCAL_DEBUG echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
-if defined LOCAL_DEBUG echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-if defined LOCAL_DEBUG echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
-if defined LOCAL_DEBUG echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
-if defined LOCAL_DEBUG echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
-if defined LOCAL_DEBUG echo BOOST_WILDCARD_LIB %BOOST_WILDCARD_LIB%
-if defined LOCAL_DEBUG echo BOOST_ADDRESS_MODEL %BOOST_ADDRESS_MODEL%
-if defined LOCAL_DEBUG echo BOOST_TOOLSET %BOOST_TOOLSET%
-if defined LOCAL_DEBUG echo CMAKE_GENERATOR %CMAKE_GENERATOR%
+if defined LOCAL_DEBUG (
+    echo BOOST_VERSION %BOOST_VERSION%
+    echo BOOST_VER_USC %BOOST_VER_USC%
+    echo BOOST_SHORT_VER %BOOST_SHORT_VER%
+    echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
+    echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+    echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
+    echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
+    echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
+    echo BOOST_WILDCARD_LIB %BOOST_WILDCARD_LIB%
+    echo BOOST_ADDRESS_MODEL %BOOST_ADDRESS_MODEL%
+    echo BOOST_TOOLSET %BOOST_TOOLSET%
+    echo CMAKE_GENERATOR %CMAKE_GENERATOR%
+)
 
 :: check that everything needed from boost is there
 if not exist "%BOOST_INCLUDE_DIR%\" ( set BOOST_INSTALL_FLAG=1 )
@@ -254,13 +257,13 @@ echo ====================================
 
 echo ==================================== CGAL
 
-echo plataform %plataform%
-if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%plataform%
+echo PLATAFORM %PLATAFORM%
+if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%PLATAFORM%
 pushd %BUILD_ROOT_DIR%
-mkdir gmp\%plataform% 2>NUL
+mkdir gmp\%PLATAFORM% 2>NUL
 popd
 if defined LOCAL_DEBUG (
-    echo plataform %plataform%
+    echo PLATAFORM %PLATAFORM%
     echo GMP_SRC_DIR %GMP_SRC_DIR%
     dir %GMP_SRC_DIR%
 )
