@@ -1,4 +1,4 @@
-@echo off
+@echo on
 
 :: each sub-script starts and end on this directory:
 
@@ -64,7 +64,6 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
 ::
 :: =========================================================
 
-cd %APPVEYOR_BUILD_FOLDER%
 
 
 :: =========================================================
@@ -72,6 +71,7 @@ cd %APPVEYOR_BUILD_FOLDER%
 ::
 
 if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
+    cd %APPVEYOR_BUILD_FOLDER%
     if not exist downloads\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
         cd downloads
         echo Downoading postGIS %PG_VERSION%
@@ -139,8 +139,9 @@ if not exist "%BOOST_WILDCARD_LIB%" ( set BOOST_INSTALL_FLAG=1 )
 
 :: DEBUGING
 echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
-if defined BOOST_INSTALL_FLAG (
+if "%BOOST_INSTALL_FLAG%"=="1" (
 
     echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
