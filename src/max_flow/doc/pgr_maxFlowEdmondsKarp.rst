@@ -50,10 +50,12 @@ Characteristics:
 ----------------
 
 The main characterics are:
+  - The graph must be directed.
   - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
   - The maximum flow through the graph can be calculated by aggregation on source/sink.
   - Returns nothing if source and sink are the same.
-  - Running time: :math:`O( V * E ^ 2 )`
+  - Allows multiple sources and sinks (See signatures below).
+  - Running time: :math:`O(V * E^2)`.
 
 Signature Summary
 -----------------
@@ -65,7 +67,10 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source,  sink)
+    pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertex)
+    pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertex)
+    pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertices)
+    pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertices)
     RETURNS SET OF (id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -87,15 +92,14 @@ Signature Summary
 Signatures
 ==========
 
-.. index:: 
-    single: pgr_maxFlowEdmondsKarp(edges_sql, source,  sink)
+Edmonds-Karp One to One
+-----------------------
 
-The available signature calculates the maximum flow form one source vertex to one sink vertex.
-It is assumed that the graph is directed.
+The available signature calculates the maximum flow from one source vertex to one sink vertex.
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source,  sink)
+    pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertex)
     RETURNS SET OF (id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -104,6 +108,57 @@ It is assumed that the graph is directed.
 .. literalinclude:: doc-maxFlowEdmondsKarp.queries
    :start-after: -- q1
    :end-before: -- q2
+
+Edmonds-Karp One to Many
+------------------------
+
+The available signature calculates the maximum flow from one source vertex to many sink vertices.
+
+.. code-block:: none
+
+    pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertices)
+    RETURNS SET OF (id, source, target, flow, residual_capacity)
+      OR EMPTY SET
+
+:Example:
+
+.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+Edmonds-Karp Many to One
+------------------------
+
+The available signature calculates the maximum flow from many source vertices to one sink vertex.
+
+.. code-block:: none
+
+    pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertex)
+    RETURNS SET OF (id, source, target, flow, residual_capacity)
+      OR EMPTY SET
+
+:Example:
+
+.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+Edmonds-Karp Many to Many
+-------------------------
+
+The available signature calculates the maximum flow from many sources to many sinks.
+
+.. code-block:: none
+
+    pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertices)
+    RETURNS SET OF (id, source, target, flow, residual_capacity)
+      OR EMPTY SET
+
+:Example:
+
+.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+   :start-after: -- q4
+   :end-before: -- q5
 
 Description of the Signatures
 =============================
@@ -116,9 +171,9 @@ Description of the SQL query
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
-====================  ===================   =================================================
-Column                Type                  Description
-====================  ===================   =================================================
+    ====================  ===================   =================================================
+    Column                Type                  Description
+    ====================  ===================   =================================================
 **id**                ``ANY-INTEGER``       Identifier of the edge.
 **source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
 **target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
@@ -138,17 +193,15 @@ Description of the parameters of the signatures
 Column            Type                   Description
 ================= ====================== =================================================
 **edges_sql**     ``TEXT``               SQL query as described above.
-**source_vertex** ``BIGINT``             Identifier of the source vertex.
-**sink_vertex**   ``BIGINT``             Identifier of the sink vertex.
+**source_vertex** ``BIGINT``             Identifier of the source vertex(or vertices).
+**sink_vertex**   ``BIGINT``             Identifier of the sink vertex(or vertices).
 ================= ====================== =================================================
 
 
 Examples
 ========
 
-The examples of this section are based on the :ref:`sampledata` network.
-The cost and reverse_cost columns in the sample data are intended as capacity and reverse_capacity.
-
+The examples of this section are based on the :ref:`sampledata` network extended with the roads categorization.
 
 :Example:
 

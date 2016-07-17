@@ -87,6 +87,8 @@ do_pgr_max_flow_many_to_many(
         else {
             log << "Unspecified algorithm!\n";
             *err_msg = strdup(log.str().c_str());
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
             return;
         }
 

@@ -98,7 +98,7 @@ If the directed parameter is not specified, it is assumed that the graph is dire
 
 :Example:
 
-.. literalinclude:: doc-maxFlowPushRelabel.queries
+.. literalinclude:: doc-maximumCardinalityMatching.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -119,12 +119,13 @@ Column                Type                  Description
 **id**                ``ANY-INTEGER``       Identifier of the edge.
 **source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
 **target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
+**going**             ``ANY-NUMERIC``       A positive value represents the existence of the edge (source, target).
+**coming**            ``ANY-NUMERIC``       A positive value represents the existence of the edge (target, source).
 ====================  ===================   =================================================
 
 Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-
+    - :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+    - :ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION
 
 Description of the parameters of the signatures
 -----------------------------------------------
@@ -133,7 +134,7 @@ Description of the parameters of the signatures
 Column            Type                   Description
 ================= ====================== =================================================
 **edges_sql**     ``TEXT``               SQL query as described above.
-**directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Is true if unspecified.
+**directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Default TRUE.
 ================= ====================== =================================================
 
 
@@ -141,18 +142,16 @@ Examples
 ========
 
 The examples of this section are based on the :ref:`sampledata` network.
-The cost and reverse_cost columns in the sample data are intended as capacity and reverse_capacity.
-
 
 :Example:
 
-.. literalinclude:: doc-maxFlowPushRelabel.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-.. literalinclude:: doc-maxFlowPushRelabel.queries
+.. literalinclude:: doc-maximumCardinalityMatching.queries
    :start-after: -- q2
    :end-before: -- q3
+
+.. literalinclude:: doc-maximumCardinalityMatching.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 
 See Also

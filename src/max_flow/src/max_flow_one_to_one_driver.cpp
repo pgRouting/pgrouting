@@ -36,10 +36,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <sstream>
 #include <vector>
+#include "postgres.h"
 
 #include "pgr_maxflow.hpp"
 #include "../../common/src/pgr_alloc.hpp"
-
 // #define DEBUG
 
 extern "C" {
@@ -78,6 +78,8 @@ do_pgr_max_flow_one_to_one(
         }
         else {
             log << "Unspecified algorithm!\n";
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
             *err_msg = strdup(log.str().c_str());
             return;
         }

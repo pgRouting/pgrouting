@@ -103,23 +103,35 @@ class PgrCardinalityGraph {
           V v1 = this->id_to_V.find(data_edges[i].source)->second;
           V v2 = this->id_to_V.find(data_edges[i].target)->second;
           E e1;
-          boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
+          E e2;
+          if(data_edges[i].going) boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
+          if(data_edges[i].coming) boost::tie(e2, added) = boost::add_edge(v2, v1, this->boost_graph);
       }
   }
 
 
   void get_matched_vertices(std::vector<pgr_basic_edge_t> &matched_vertices,
                             const std::vector<int64_t> &mate_map) {
-      // I use a flow edge with null capacity/reverse_capacity
-      // This is not shown on output
       V_it vi, vi_end;
       int64_t id = 1;
       if (boost::is_directed(this->boost_graph)){
+          std::vector<bool> already_matched (num_vertices(this->boost_graph), false);
           for (boost::tie(vi, vi_end) = boost::vertices(this->boost_graph);
                vi != vi_end;
                ++vi) {
+              /*
+               * For each vertex I check:
+               * 1) It is matched with a non-null vertex
+               * 2) An edge exists from this vertex to his mate
+               * 3) The vertices have not been matched already
+               * (this last point prevents having double output with reversed
+               * source and target)
+               */
               if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
-                  && (boost::edge(*vi,mate_map[*vi],this->boost_graph).second)) {
+                  && (boost::edge(*vi, mate_map[*vi],this->boost_graph).second)
+                  && !already_matched[*vi] && !already_matched[mate_map[*vi]]) {
+                  already_matched[*vi] = true;
+                  already_matched[mate_map[*vi]] = true;
                   pgr_basic_edge_t matched_couple;
                   matched_couple.id = id++;
                   matched_couple.source = this->getid(*vi);
@@ -144,7 +156,7 @@ class PgrCardinalityGraph {
   }
 
   void maximum_cardinality_matching(std::vector<int64_t> &mate_map) {
-      edmonds_maximum_cardinality_matching(this->boost_graph,
+      checked_edmonds_maximum_cardinality_matching(this->boost_graph,
                                            &mate_map[0]);
   }
 

@@ -1,0 +1,47 @@
+-- q1
+SELECT * FROM pgr_edgedisjointpaths(
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+    3, 5
+);
+
+ paths_number
+--------------
+            2
+(1 row)
+
+-- q2
+SELECT * FROM pgr_edgedisjointpaths(
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+    3, 5,
+    FALSE
+);
+
+ paths_number
+--------------
+            3
+(1 row)
+
+-- q3
+SELECT * FROM pgr_edgedisjointpaths(
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+    ARRAY[10,12,4,2], 6
+);
+
+ paths_number
+--------------
+            3
+(1 row)
+
+-- q4
+SELECT * FROM pgr_edgedisjointpaths(
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+    ARRAY[10,12,4,2], 6,
+    FALSE
+);
+
+ paths_number
+--------------
+            4
+(1 row)
+
+-- q5

@@ -71,6 +71,10 @@ process(
     size_t *result_count) {
     pgr_SPI_connect();
 
+    if(strcmp(algorithm, "push_relabel") != 0 || strcmp(algorithm, "edmonds_karp") != 0 || strcmp(algorithm, "boykov_kolmogorv") != 0){
+        elog(ERROR, "Unknown algorithm");
+    }
+
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
 
