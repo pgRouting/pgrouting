@@ -22,6 +22,8 @@ if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 :: Determine if arch is 32/64 bits
 if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 
+
+echo DOWNLOADS_DIR %DOWNLOADS_DIR%
 ::
 :: =========================================================
 
