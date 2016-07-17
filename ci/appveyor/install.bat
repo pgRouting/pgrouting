@@ -199,7 +199,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         if not exist "%BOOST_SRC_DIR%\b2.exe" (
             echo something went wrong on booststrap.bat execution!!!!!!!!!
             dir %BOOST_SRC_DIR%
-        }
+        )
     )
 
     echo Excuting  %BOOST_SRC_DIR%\b2.exe ...
