@@ -1,28 +1,107 @@
 -- q1
 SELECT * FROM pgr_maxflowpushrelabel(
-    'SELECT * FROM edge_table',
-     3, 5
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , 6, 11
 );
 
  id | source | target | flow | residual_capacity
 ----+--------+--------+------+-------------------
-  1 |      2 |      5 |    1 |                 0
-  2 |      3 |      2 |    1 |                 0
-  3 |      3 |      6 |    1 |                 0
-  4 |      6 |      5 |    1 |                 0
-(4 rows)
+  1 |      2 |      5 |  100 |                 0
+  2 |      3 |      2 |  100 |                 0
+  3 |      4 |      3 |   50 |                80
+  4 |      5 |     10 |  100 |                30
+  5 |      6 |     11 |  130 |                 0
+  6 |      6 |      9 |  100 |                30
+  7 |      6 |      3 |   50 |                 0
+  8 |      9 |      4 |   50 |                30
+  9 |      9 |     12 |   50 |                30
+ 10 |     10 |     11 |  100 |                 0
+ 11 |     12 |     11 |   50 |                 0
+(11 rows)
 
 -- q2
-SELECT sum(flow) AS max_flow
-FROM pgr_maxflowpushrelabel(
-    'SELECT * FROM edge_table',
-     3, 5
-    )
-WHERE source = 3;
+SELECT * FROM pgr_maxflowpushrelabel(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , 6, ARRAY[12,1,13]::INTEGER[]
+);
 
- max_flow
-----------
-        2
-(1 row)
+ id | source | target | flow | residual_capacity
+----+--------+--------+------+-------------------
+  1 |      2 |      1 |  130 |                 0
+  2 |      3 |      2 |   80 |                20
+  3 |      4 |      3 |   30 |               100
+  4 |      5 |      2 |   50 |                 0
+  5 |      5 |     10 |   80 |                50
+  6 |      6 |      5 |  130 |                 0
+  7 |      6 |     11 |  100 |                30
+  8 |      6 |      9 |  110 |                20
+  9 |      6 |      3 |   50 |                 0
+ 10 |      7 |      8 |   50 |                 0
+ 11 |      8 |      7 |   50 |                50
+ 12 |      9 |      4 |   30 |                50
+ 13 |      9 |     12 |   80 |                 0
+ 14 |     10 |     13 |   80 |                 0
+ 15 |     11 |     12 |  100 |                 0
+(15 rows)
 
 -- q3
+SELECT * FROM pgr_maxflowpushrelabel(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , ARRAY[4,8,11]::INTEGER[], 10
+);
+
+ id | source | target | flow | residual_capacity
+----+--------+--------+------+-------------------
+  1 |      3 |      6 |   30 |               100
+  2 |      4 |      3 |   30 |               100
+  3 |      4 |      9 |   30 |                50
+  4 |      5 |     10 |  130 |                 0
+  5 |      6 |      5 |  130 |                 0
+  6 |      9 |      6 |   80 |                 0
+  7 |     11 |      6 |   20 |                80
+  8 |     11 |     10 |   80 |                 0
+  9 |     11 |     12 |   50 |                50
+ 10 |     12 |      9 |   50 |                 0
+(10 rows)
+
+-- q4
+SELECT * FROM pgr_maxflowedmondskarp(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , ARRAY[2,5,10]::INTEGER[], ARRAY[4,9,12]::INTEGER[]
+);
+
+ id | source | target | flow | residual_capacity
+----+--------+--------+------+-------------------
+  1 |      2 |      3 |   80 |                 0
+  2 |      3 |      4 |   80 |                20
+  3 |      5 |      6 |  100 |                 0
+  4 |      6 |      9 |  100 |                30
+  5 |     10 |     11 |  100 |                 0
+  6 |     11 |     12 |  100 |                 0
+(6 rows)
+
+-- q5

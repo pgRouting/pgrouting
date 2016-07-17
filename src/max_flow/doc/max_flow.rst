@@ -16,6 +16,8 @@ pgr_maxFlow - Maximum Flow Problems
   - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds&Karp algorithm implementation for maximum flow.
   - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov&Kolmogorov algorithm implementation for maximum flow.
 
+The maximum flow through the graph is guaranteed to be the same with all implementations,
+but the actual flow through each edge may vary.
 
 .. toctree::
         :hidden:

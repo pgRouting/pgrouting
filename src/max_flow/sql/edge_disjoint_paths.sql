@@ -50,7 +50,7 @@ CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
 
 CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
     IN edges_sql TEXT,
-    IN source_vertex ANYARRAY,
+    IN source_vertices ANYARRAY,
     IN sink_vertex bigint,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT number_of_paths bigint
@@ -74,7 +74,7 @@ CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
 CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
     IN edges_sql TEXT,
     IN source_vertex bigint,
-    IN sink_vertex ANYARRAY,
+    IN sink_vertices ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT number_of_paths bigint
     )
@@ -96,8 +96,8 @@ CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
 
 CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
     IN edges_sql TEXT,
-    IN source_vertex ANYARRAY,
-    IN sink_vertex ANYARRAY,
+    IN source_vertices ANYARRAY,
+    IN sink_vertices ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT number_of_paths bigint
     )
