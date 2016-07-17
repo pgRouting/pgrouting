@@ -135,9 +135,11 @@ set BOOST_TOOLSET=msvc-%MSVC_VER%
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
 set MSBUILD_CONFIGURATION=%CONFIGURATION%
 set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
+set RUNTIME=msvc%MSVC_VER:.=%
 if "%plataform%"=="x64" (
     set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
 )
+set COMMON_INSTALL_DIR=%COMMON_INSTALL_ROOT_DIR%\%RUNTIME%\%PLATFORM%
 
 :: DEBUGING
 echo BOOST_VERSION %BOOST_VERSION%
@@ -214,6 +216,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
         @echo off
         popd
         dir %BOOST_LIBRARY_DIR%
+        dir %COMMON_INSTALL_DIR%
     ) else (
         echo Boost_%BOOST_VERSION% already installed
     )
