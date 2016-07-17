@@ -173,7 +173,7 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
 
     echo Extracting Boost_%BOOST_VERSION%.zip ...
     pushd %DOWNLOADS_DIR%
-    7z x -o%BUILD_ROOT_DIR%\ downloads/Boost_%BOOST_VER_USC%.zip
+    7z x -o%BUILD_ROOT_DIR%\ Boost_%BOOST_VER_USC%.zip
     popd
     dir %BOOST_SRC_DIR%
     if not exist %BOOST_SRC_DIR% (
