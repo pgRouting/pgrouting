@@ -124,7 +124,10 @@ echo ====================================
 :: deducing variables
 set BOOST_VER_USC=%BOOST_VERSION:.=_%
 set BOOST_SHORT_VER=%BOOST_VERSION:.0=%
-set BOOST_INSTALL_DIR=%BUILD_ROOT_DIR%\local
+
+set COMMON_INSTALL_DIR=%COMMON_INSTALL_ROOT_DIR%\%RUNTIME%\%PLATFORM%
+
+set BOOST_INSTALL_DIR=%COMMON_INSTALL_DIR%
 set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
 set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
 set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
@@ -139,7 +142,6 @@ set RUNTIME=msvc%MSVC_VER:.=%
 if "%plataform%"=="x64" (
     set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
 )
-set COMMON_INSTALL_DIR=%COMMON_INSTALL_ROOT_DIR%\%RUNTIME%\%PLATFORM%
 
 :: DEBUGING
 echo BOOST_VERSION %BOOST_VERSION%
@@ -215,8 +217,11 @@ if %BOOST_INSTALL_FLAG% EQU 1 (
             --with-thread --with-system --prefix=%COMMON_INSTALL_DIR% -d0 install
         @echo off
         popd
-        dir %BOOST_LIBRARY_DIR%
+        dir %COMMON_INSTALL_ROOT_DIR%
         dir %COMMON_INSTALL_DIR%
+        dir %BOOST_INCLUDE_DIR%
+        dir %BOOST_INSTALL_DIR%
+        dir %BOOST_LIBRARY_DIR%
     ) else (
         echo Boost_%BOOST_VERSION% already installed
     )
