@@ -319,13 +319,11 @@ if defined LOCAL_DEBUG (
     dir %CGAL_SRC_DIR%
 
     echo CGAL_BUILD_DIR %CGAL_BUILD_DIR%
-    dir %CGAL_BUILD_DIR%
-    
 )
 
 
 if not exist %CGAL_BUILD_DIR%\ (
-    mkdir %CGAL_BUILD_DIR%
+    mkdir %CGAL_BUILD_DIR% %2>null
     pushd %CGAL_BUILD_DIR%
     @echo on
     cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COMMON_INSTALL_DIR% ^
