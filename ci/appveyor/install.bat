@@ -137,7 +137,6 @@ set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
 set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
 set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
-set BOOST_WILDCARD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_*-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.libs
 set BOOST_ADDRESS_MODEL=%arch%
 set BOOST_TOOLSET=msvc-%MSVC_VER%
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
@@ -157,7 +156,6 @@ if defined LOCAL_DEBUG (
     echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
     echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
     echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
-    echo BOOST_WILDCARD_LIB %BOOST_WILDCARD_LIB%
     echo BOOST_ADDRESS_MODEL %BOOST_ADDRESS_MODEL%
     echo BOOST_TOOLSET %BOOST_TOOLSET%
     echo CMAKE_GENERATOR %CMAKE_GENERATOR%
@@ -169,7 +167,6 @@ if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
 if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
 if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
 if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
-if not exist %BOOST_WILDCARD_LIB% ( set BOOST_INSTALL_FLAG=5 )
 
 :: DEBUGING
 echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
@@ -226,7 +223,6 @@ if %BOOST_INSTALL_FLAG% NEQ 10 (
         if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
         if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
         if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
-        if not exist %BOOST_WILDCARD_LIB% ( set BOOST_INSTALL_FLAG=5 )
 
         if %BOOST_INSTALL_FLAG% NEQ 10 (
             echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
@@ -257,13 +253,11 @@ echo ====================================
 
 echo ==================================== CGAL
 
-echo PLATFORM %PLATFORM%
 if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%PLATFORM%
 pushd %BUILD_ROOT_DIR%
 mkdir gmp\%PLATFORM% 2>NUL
 popd
 if defined LOCAL_DEBUG (
-    echo PLATFORM %PLATFORM%
     echo GMP_SRC_DIR %GMP_SRC_DIR%
     dir %GMP_SRC_DIR%
 )
@@ -279,7 +273,7 @@ if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
 )
 
 if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
-    echo Downoading CGAL-%CGAL_VERSION%.zip
+    echo Downoading gmp-all-CGAL-3.9.zip
     pushd %DOWNLOADS_DIR%
     curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/GMP/5.0.1/gmp-all-CGAL-3.9.zip
     popd
@@ -298,9 +292,11 @@ if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
 )
 
 
+pushd %DOWNLOADS_DIR%
 7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
 7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
 7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
+popd
 
 
 if defined LOCAL_DEBUG (
