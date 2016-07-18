@@ -14,7 +14,7 @@ echo platform %platform%
 if not defined MSVC_VER set MSVC_VER=12.0
 if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 if not defined DOWNLOADS_DIR set DOWNLOADS_DIR=%APPVEYOR_BUILD_FOLDER%\downloads
-if not defined COMMON_INSTALL_ROOT_DIR set COMMON_INSTALL_ROOT_DIR=%BUILD_ROOT_DIR%\local
+if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\%RUNTIME%\%PLATFORM%
 
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
 if not defined PG_VERSION set PG_VERSION=2.2.2
@@ -33,7 +33,9 @@ if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
 pushd %APPVEYOR_BUILD_FOLDER%
 mkdir downloads 2>NUL
 popd
+mkdir %COMMON_INSTALL_DIR% 2>NUL
 if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
+if defined LOCAL_DEBUG dir %COMMON_INSTALL_DIR%
 
 
 :: =========================================================
@@ -130,7 +132,6 @@ set BOOST_VER_USC=%BOOST_VERSION:.=_%
 set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
 
 set RUNTIME=msvc%MSVC_VER:.=%
-set COMMON_INSTALL_DIR=%COMMON_INSTALL_ROOT_DIR%\%RUNTIME%\%PLATFORM%
 
 set BOOST_INSTALL_DIR=%COMMON_INSTALL_DIR%
 set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
@@ -306,7 +307,7 @@ popd
 
 
 set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%
-set CGAL_BUILD_DIR=%COMMON_INSTALL_ROOT_DIR%\%RUNTIME%\%PLATFORM%
+set CGAL_BUILD_DIR=%COMMON_INSTALL_DIR%
 ::set GMP_ROOT_DIR=%BUILD_ROOT_DIR%\gmp
 ::set GMP_DIR=%GMP_ROOT_DIR%\%PLATFORM%
 set GMP_LIB_NAME=libgmp-10.lib
