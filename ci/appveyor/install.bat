@@ -268,13 +268,13 @@ if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
     curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
     if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
         echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
-    ) else (
-        echo Extracting CGAL-%CGAL_VERSION%.zip
-        7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
     )
-        
     popd
 )
+echo Extracting CGAL-%CGAL_VERSION%.zip
+pushd %DOWNLOADS_DIR%
+7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
+popd
 
 if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
     echo Downoading gmp-all-CGAL-3.9.zip
@@ -282,24 +282,59 @@ if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
     curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/GMP/5.0.1/gmp-all-CGAL-3.9.zip
     if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
         echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
-    ) else (
-        echo Extracting gmp-all-CGAL-3.9.zip
-        7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
     )
     popd
 )
+
+echo Extracting gmp-all-CGAL-3.9.zip
+pushd %DOWNLOADS_DIR%
+7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
+popd
+
 if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
     echo Downoading mpfr-all-CGAL-3.9.zip
     pushd %DOWNLOADS_DIR%
     curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
     if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
         echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
-    ) else (
-        echo Extracting mpfr-all-CGAL-3.9.zip
-        7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
     )
     popd
 )
+echo Extracting mpfr-all-CGAL-3.9.zip
+pushd %DOWNLOADS_DIR%
+7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
+popd
+
+set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VER%
+set CGAL_BUILD_DIR=%CGAL_SRC_DIR%\build\%RUNTIME%\%PLATFORM%
+set GMP_ROOT_DIR=%BUILD_ROOT_DIR%\gmp
+set GMP_DIR=%GMP_ROOT_DIR%\%PLATFORM%
+set GMP_LIB_NAME=libgmp-10.lib
+set MPFR_LIB_NAME=libmpfr-4.lib
+
+if defined LOCAL_DEBUG (
+    echo CGAL_BUILD_DIR %CGAL_BUILD_DIR%
+    dir %CGAL_BUILD_DIR%
+)
+
+
+if not exist %CGAL_BUILD_DIR%\ (
+    mkdir %CGAL_BUILD_DIR%
+    pushd %CGAL_BUILD_DIR%
+    @echo on
+    cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COMMON_INSTALL_DIR% ^
+        -DBoost_USE_MULTITHREADED=ON -DCGAL_Boost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=OFF ^
+        -DBoost_INCLUDE_DIR:PATH=%BOOST_INCLUDE_DIR% ^
+        -DBOOST_LIBRARYDIR=%BOOST_LIBRARY_DIR% -DGMP_INCLUDE_DIR=%GMP_DIR%\include ^
+        -DGMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME% -DMPFR_INCLUDE_DIR=%GMP_DIR%\include ^
+        -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
+    msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
+    msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
+    @echo off
+    popd
+)
+
+
 
 
 if defined LOCAL_DEBUG (
