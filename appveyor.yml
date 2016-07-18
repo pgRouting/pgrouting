@@ -39,18 +39,6 @@ init:
 install:
   - call ci\appveyor\install.bat
 
-  - cd c:\build
-  # CGAL 4.8.1
-  #- curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-4.8.1/CGAL-4.8.1.zip
-  #- 7z x CGAL-4.8.1.zip
-  #- dir
-  #- mkdir gmp\x64
-  #- cd gmp\x64
-  #- curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
-  #- 7z x gmp-all-CGAL-3.9.zip
-  #- curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
-  #- 7z x mpfr-all-CGAL-3.9.zip
-  #- dir
 
 build_script:
   - cd c:\build\pgrouting\tools\windows
