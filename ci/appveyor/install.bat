@@ -12,6 +12,7 @@ echo platform %platform%
 ::
 
 if not defined MSVC_VER set MSVC_VER=12.0
+if not defined set RUNTIME=msvc%MSVC_VER:.=%
 if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 if not defined DOWNLOADS_DIR set DOWNLOADS_DIR=%APPVEYOR_BUILD_FOLDER%\downloads
 if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\%RUNTIME%\%PLATFORM%
@@ -131,7 +132,6 @@ echo ====================================
 set BOOST_VER_USC=%BOOST_VERSION:.=_%
 set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
 
-set RUNTIME=msvc%MSVC_VER:.=%
 
 set BOOST_INSTALL_DIR=%COMMON_INSTALL_DIR%
 set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
