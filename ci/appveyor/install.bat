@@ -12,7 +12,7 @@ echo platform %platform%
 ::
 
 if not defined MSVC_VER set MSVC_VER=12.0
-if not defined set RUNTIME=msvc%MSVC_VER:.=%
+if not defined RUNTIME set RUNTIME=msvc%MSVC_VER:.=%
 if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 if not defined DOWNLOADS_DIR set DOWNLOADS_DIR=%APPVEYOR_BUILD_FOLDER%\downloads
 if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\%RUNTIME%\%PLATFORM%

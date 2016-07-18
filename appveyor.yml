@@ -24,8 +24,6 @@ clone_folder: c:\build\pgrouting
 cache:
   - downloads -> appveyor.yml
   - c:\build\local\msvc120\x64 -> appveyor
-  #- C:\local\boost_1_58_0 -> appveyor.yml
-  #- c:\local -> appveyor.yml
 
 services:
   - postgresql94
@@ -37,6 +35,10 @@ init:
   - git config --global core.autocrlf false
 
 install:
+  # Install pgROuting prerequisites:
+  # cmake
+  # postGIS
+  # CGAL
   - call ci\appveyor\install.bat
 
 
