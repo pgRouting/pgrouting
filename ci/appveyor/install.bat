@@ -242,7 +242,6 @@ if %BOOST_INSTALL_FLAG% NEQ 10 (
     )
 ) else (
     echo Boost_%BOOST_VERSION% already installed
-    echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 )
 echo ====================================
 
@@ -305,16 +304,21 @@ pushd %DOWNLOADS_DIR%
 7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
 popd
 
+
 set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%
-set CGAL_BUILD_DIR=%CGAL_SRC_DIR%\build\%RUNTIME%\%PLATFORM%
-set GMP_ROOT_DIR=%BUILD_ROOT_DIR%\gmp
-set GMP_DIR=%GMP_ROOT_DIR%\%PLATFORM%
+set CGAL_BUILD_DIR=%COMMON_INSTALL_ROOT_DIR%\%RUNTIME%\%PLATFORM%
+::set GMP_ROOT_DIR=%BUILD_ROOT_DIR%\gmp
+::set GMP_DIR=%GMP_ROOT_DIR%\%PLATFORM%
 set GMP_LIB_NAME=libgmp-10.lib
 set MPFR_LIB_NAME=libmpfr-4.lib
 
 if defined LOCAL_DEBUG (
+    echo CGAL_SRC_DIR %CGAL_SRC_DIR%
+    dir %CGAL_SRC_DIR%
+
     echo CGAL_BUILD_DIR %CGAL_BUILD_DIR%
     dir %CGAL_BUILD_DIR%
+    
 )
 
 
@@ -326,7 +330,7 @@ if not exist %CGAL_BUILD_DIR%\ (
         -DBoost_USE_MULTITHREADED=ON -DCGAL_Boost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=OFF ^
         -DBoost_INCLUDE_DIR:PATH=%BOOST_INCLUDE_DIR% ^
         -DBOOST_LIBRARYDIR=%BOOST_LIBRARY_DIR% -DGMP_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
-        -DGMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME% -DMPFR_INCLUDE_DIR=%GMP_DIR%\include ^
+        -DGMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME% -DMPFR_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
         -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
     msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
     msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
