@@ -136,7 +136,7 @@ echo ====================================
 :: Download and install Boost
 ::
 
-set "BOOST_LOCAL_DEBUG="
+set "BOOST_LOCAL_DEBUG=1"
 call ci/appveyor/install-boost.bat
 :: deducing variables
 :: set BOOST_VER_USC=%BOOST_VERSION:.=_%

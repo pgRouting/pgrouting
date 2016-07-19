@@ -3,29 +3,45 @@
 
 Setlocal EnableDelayedExpansion EnableExtensions
 
-echo "install-boost.bat"
 
+if not defined BOOST_VERSION goto _error
+if not defined COMMON_INSTALL_DIR goto _error
+if not defined MSVC_VER goto _error
+if not defined ARCH goto _error
+if not defined BUILD_ROOT_DIR goto _error
+if not defined CONFIGURATION goto _error
+if not defined CMAKE_GENERATOR goto _error
+    
+if defined BOOST_LOCAL_DEBUG (
+    echo "install-boost.bat"
+    echo recieved environment
+    echo BOOST_VERSION %BOOST_VERSION%
+    echo COMMON_INSTALL_DIR %COMMON_INSTALL_DIR%
+    echo MSVC_VER %MSVC_VER%
+    echo ARCH %ARCH%
+    echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
+    echo CONFIGURATION %CONFIGURATION%
+    echo CMAKE_GENERATOR %CMAKE_GENERATOR%
+)
 :: create a download & install directories:
 mkdir %APPVEYOR_BUILD_FOLDER%\downloads 2>NUL
 mkdir %COMMON_INSTALL_DIR% 2>NUL
 if defined BOOST_LOCAL_DEBUG dir %DOWNLOADS_DIR%
 if defined BOOST_LOCAL_DEBUG dir %COMMON_INSTALL_DIR%
 
-
-
 echo ==================================== BOOST
+
 
 :: deducing variables
 set BOOST_VER_USC=%BOOST_VERSION:.=_%
 set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
-
 
 set BOOST_INSTALL_DIR=%COMMON_INSTALL_DIR%
 set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
 set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
 set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
 set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
-set BOOST_ADDRESS_MODEL=%arch%
+set BOOST_ADDRESS_MODEL=%ARCH%
 set BOOST_TOOLSET=msvc-%MSVC_VER%
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
 set MSBUILD_CONFIGURATION=%CONFIGURATION%
@@ -41,7 +57,6 @@ if defined BOOST_LOCAL_DEBUG (
     echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
     echo BOOST_ADDRESS_MODEL %BOOST_ADDRESS_MODEL%
     echo BOOST_TOOLSET %BOOST_TOOLSET%
-    echo CMAKE_GENERATOR %CMAKE_GENERATOR%
 )
 
 :: check that everything needed from boost is there
@@ -105,10 +120,21 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
 )
 echo ====================================
 
-:: =========================================================
-:: =========================================================
-:: =========================================================
-
 endlocal & set PATH=%PATH%&
 
 goto :eof
+:: =========================================================
+:: =========================================================
+:: =========================================================
+
+:_error
+echo an environment variable is missing:
+echo --  BOOST_VERSION
+echo --  COMMON_INSTALL_DIR
+echo --  MSVC_VER
+echo --  ARCH
+echo --  BUILD_ROOT_DIR
+echo --  CONFIGURATION
+echo --  CMAKE_GENERATOR
+echo --  BOOST_LOCAL_DEBUG  (if defined will print debug information)
+
