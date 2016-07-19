@@ -118,8 +118,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
     echo Boost_%BOOST_VERSION% already installed
 )
 
-echo ====================================
-echo Installation of Prerequisites done.
+echo ------------------------------
 echo Environment variables set:
 
 echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
