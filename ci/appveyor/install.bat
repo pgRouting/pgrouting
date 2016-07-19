@@ -127,23 +127,19 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
 )
 echo ====================================
 
-::
-:: =========================================================
-
-
 
 :: =========================================================
 :: Download and install Boost
 ::
 
-set "BOOST_LOCAL_DEBUG=0"
+set BOOST_LOCAL_DEBUG=1
 call ci/appveyor/install-boost.bat
 
 ::
 :: CGAL & GMP & MPFR
 ::
 ::
-set "CGAL_LOCAL_DEBUG=1"
+set CGAL_LOCAL_DEBUG=1
 call ci/appveyor/install-CGAL.bat
 
 
