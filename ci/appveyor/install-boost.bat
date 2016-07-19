@@ -10,7 +10,6 @@ if not defined MSVC_VER goto _error
 if not defined ARCH goto _error
 if not defined BUILD_ROOT_DIR goto _error
 if not defined CONFIGURATION goto _error
-if not defined CMAKE_GENERATOR goto _error
     
 if defined BOOST_LOCAL_DEBUG (
     echo "install-boost.bat"
@@ -21,7 +20,6 @@ if defined BOOST_LOCAL_DEBUG (
     echo ARCH %ARCH%
     echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
     echo CONFIGURATION %CONFIGURATION%
-    echo CMAKE_GENERATOR %CMAKE_GENERATOR%
 )
 :: create a download & install directories:
 mkdir %APPVEYOR_BUILD_FOLDER%\downloads 2>NUL
@@ -61,12 +59,15 @@ if defined BOOST_LOCAL_DEBUG (
 
 :: check that everything needed from boost is there
 set BOOST_INSTALL_FLAG=10
+echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
 if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
 if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
 if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
 
+
 if defined BOOST_LOCAL_DEBUG echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 
 if not "%BOOST_INSTALL_FLAG%"=="10" (
@@ -135,6 +136,5 @@ echo --  MSVC_VER
 echo --  ARCH
 echo --  BUILD_ROOT_DIR
 echo --  CONFIGURATION
-echo --  CMAKE_GENERATOR
 echo --  BOOST_LOCAL_DEBUG  (if defined will print debug information)
 
