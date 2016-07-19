@@ -222,28 +222,6 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
         --with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
     if defined LOCAL_DEBUG @echo off
     popd
-
-    echo **** Checking Boost_%BOOST_VERSION% installation
-    set BOOST_CHECK_FLAG=10
-    if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_CHECK_FLAG=1 )
-    if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_CHECK_FLAG=2 )
-    if not exist %BOOST_THREAD_LIB% ( set BOOST_CHECK_FLAG=3 )
-    if not exist %BOOST_SYSTEM_LIB% ( set BOOST_CHECK_FLAG=4 )
-
-    if defined BOOST_CHECK_FLAG (
-        echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution
-        echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
-        if defined LOCAL_DEBUG (
-            echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-            dir %BOOST_INCLUDE_DIR%
-
-            echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
-            dir %BOOST_LIBRARY_DIR%
-            echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
-            echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
-        )
-        Exit \B 1
-    )
 ) else (
     echo Boost_%BOOST_VERSION% already installed
 )
@@ -310,8 +288,8 @@ popd
 
 
 set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%
-::set CGAL_BUILD_DIR=%CGAL_SRC_DIR%\build\%RUNTIME%\%PLATFORM%
-set CGAL_BUILD_DIR=%COMMON_INSTALL_DIR%
+set CGAL_BUILD_DIR=%CGAL_SRC_DIR%\build\%RUNTIME%\%PLATFORM%
+::set CGAL_BUILD_DIR=%COMMON_INSTALL_DIR%
 ::set GMP_ROOT_DIR=%BUILD_ROOT_DIR%\gmp
 ::set GMP_DIR=%GMP_ROOT_DIR%\%PLATFORM%
 set GMP_LIB_NAME=libgmp-10.lib
@@ -325,24 +303,23 @@ if defined LOCAL_DEBUG (
 )
 
 
-if not exist %CGAL_BUILD_DIR%\ (
-    mkdir %CGAL_BUILD_DIR% %2>null
-    pushd %CGAL_BUILD_DIR%
-    @echo on
-    cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COMMON_INSTALL_DIR% ^
-        -DBoost_USE_MULTITHREADED=ON ^
-        -DCGAL_Boost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=OFF ^
-        -DBoost_INCLUDE_DIR:PATH=%BOOST_INCLUDE_DIR% ^
-        -DBOOST_LIBRARYDIR=%BOOST_LIBRARY_DIR% ^
-        -DGMP_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
-        -DMPFR_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
-        -DGMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME% ^
-        -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
-    msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
-    msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
-    @echo off
-    popd
-)
+mkdir %CGAL_BUILD_DIR% %2>null
+pushd %CGAL_BUILD_DIR%
+
+@echo on
+cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COMMON_INSTALL_DIR% ^
+    -DBoost_USE_MULTITHREADED=ON ^
+    -DCGAL_Boost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=OFF ^
+    -DBoost_INCLUDE_DIR:PATH=%BOOST_INCLUDE_DIR% ^
+    -DBOOST_LIBRARYDIR=%BOOST_LIBRARY_DIR% ^
+    -DGMP_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
+    -DMPFR_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
+    -DGMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME% ^
+    -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
+msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
+msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
+@echo off
+popd
 
 dir %COMMON_INSTALL_DIR%
 dir %CGAL_BUILD_DIR%
