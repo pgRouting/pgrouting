@@ -1,4 +1,4 @@
-@echo off
+@echo on
 
 set LOCAL_DEBUG=1
 
