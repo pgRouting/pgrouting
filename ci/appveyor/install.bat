@@ -220,13 +220,19 @@ if %BOOST_INSTALL_FLAG% NEQ 10 (
         popd
 
         set BOOST_INSTALL_FLAG=10
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
         if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
         if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
         if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
         if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
         if %BOOST_INSTALL_FLAG% NEQ 10 (
             echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
+            echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
             if defined LOCAL_DEBUG (
                 echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
