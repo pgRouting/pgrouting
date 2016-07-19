@@ -24,6 +24,10 @@ if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 if not defined CGAL_VERSION set CGAL_VERSION=4.8.1
 
 
+set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
+if "%platform%"=="x64" (
+    set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
+)
 
 :: Determine if arch is 32/64 bits
 if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
@@ -132,6 +136,7 @@ echo ====================================
 :: Download and install Boost
 ::
 
+call install-boost.bat
 :: deducing variables
 set BOOST_VER_USC=%BOOST_VERSION:.=_%
 set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
@@ -146,10 +151,6 @@ set BOOST_ADDRESS_MODEL=%arch%
 set BOOST_TOOLSET=msvc-%MSVC_VER%
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
 set MSBUILD_CONFIGURATION=%CONFIGURATION%
-set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
-if "%platform%"=="x64" (
-    set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
-)
 
 :: DEBUGING
 if defined LOCAL_DEBUG (
@@ -245,7 +246,7 @@ if defined LOCAL_DEBUG (
 )
 
 
-echo ----------------------------------- GMP
+echo ----------------------------------- GMP -- CGAL prerequisite
 if not exist %GMP_SRC_DIR%\gmp.COPYING (
     if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
         echo Downoading gmp-all-CGAL-3.9.zip
@@ -269,7 +270,7 @@ if defined LOCAL_DEBUG (
 )
 echo -----------------------------------
 
-echo ----------------------------------- MPFR
+echo ----------------------------------- MPFR -- CGAL prerequisite
 if not exist %GMP_SRC_DIR%\mpfr.COPYING (
     if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
         echo Downoading mpfr-all-CGAL-3.9.zip
@@ -310,9 +311,6 @@ if not exist %BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%\ (
 
 set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%
 set CGAL_BUILD_DIR=%CGAL_SRC_DIR%\build\%RUNTIME%\%PLATFORM%
-::set CGAL_BUILD_DIR=%COMMON_INSTALL_DIR%
-::set GMP_ROOT_DIR=%BUILD_ROOT_DIR%\gmp
-::set GMP_DIR=%GMP_ROOT_DIR%\%PLATFORM%
 set GMP_LIB_NAME=libgmp-10.lib
 set MPFR_LIB_NAME=libmpfr-4.lib
 
