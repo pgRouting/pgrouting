@@ -5,7 +5,6 @@ set LOCAL_DEBUG=1
 Setlocal EnableDelayedExpansion EnableExtensions
 
 if defined CGAL_LOCAL_DEBUG echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
-echo platform %platform%
 
 :: =========================================================
 :: Set some defaults. Infer some variables.
@@ -22,6 +21,18 @@ if not defined BOOST_INCLUDE_DIR goto _error
 if not defined BOOST_LIBRARY_DIR goto _error
 if not defined MSBUILD_CONFIGURATION goto _error
 
+if defined CGAL_LOCAL_DEBUG (
+    echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
+    echo COMMON_INSTALL_DIR %COMMON_INSTALL_DIR%
+    echo PLATFORM %PLATFORM%
+    echo DOWNLOADS_DIR %DOWNLOADS_DIR%
+    echo CGAL_VERSION %CGAL_VERSION%
+    echo RUNTIME %RUNTIME%
+    echo CMAKE_GENERATOR %CMAKE_GENERATOR%
+    echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+    echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
+    echo MSBUILD_CONFIGURATION %MSBUILD_CONFIGURATION%
+)
 
 
 ::
@@ -171,16 +182,14 @@ goto :eof
 
 :_error
 echo an environment variable is missing:
-echo --  BUILD_ROOT_DIR
-echo --  COMMON_INSTALL_DIR
-echo --  PLATFORM
-echo --  DOWNLOADS_DIR
-echo --  CGAL_VERSION
-echo --  RUNTIME
-echo --  CMAKE_GENERATOR
-echo --  ARCH
-echo --  BOOST_INCLUDE_DIR
-echo --  BOOST_LIBRARY_DIR
-echo --  MSBUILD_CONFIGURATION
-echo --  CGAL_LOCAL_DEBUG  (if defined will print debug information)
+echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
+echo COMMON_INSTALL_DIR %COMMON_INSTALL_DIR%
+echo PLATFORM %PLATFORM%
+echo DOWNLOADS_DIR %DOWNLOADS_DIR%
+echo CGAL_VERSION %CGAL_VERSION%
+echo RUNTIME %RUNTIME%
+echo CMAKE_GENERATOR %CMAKE_GENERATOR%
+echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
+echo MSBUILD_CONFIGURATION %MSBUILD_CONFIGURATION%
 
