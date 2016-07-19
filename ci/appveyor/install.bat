@@ -157,6 +157,7 @@ if defined LOCAL_DEBUG (
 :: CGAL & GMP & MPFR
 ::
 ::
+set "CGAL_LOCAL_DEBUG=1"
 call ci/appveyor/install-CGAL.bat
 
 
@@ -170,6 +171,6 @@ echo     CGAL - %CGAL_VERSION% %arch%
 echo ======================================================
 echo.
 
-endlocal & set PATH=%PATH%& set BOOST_VER=%BOOST_VERSION%&
+endlocal & set PATH=%PATH%& set BOOST_THREAD_LIB=%BOOST_THREAD_LIB%& set BOOST_SYSTEM_LIB=%BOOST_SYSTEM_LIB%& set BOOST_INCLUDE_DIR=%BOOST_INCLUDE_DIR%&
 
 goto :eof

@@ -121,7 +121,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
 )
 echo ====================================
 
-endlocal & set PATH=%PATH%& set BOOST_INCLUDE_DIR=%BOOST_INCLUDE_DIR%& set BOOST_LIBRARY_DIR=%BOOST_LIBRARY_DIR%&
+endlocal & set PATH=%PATH%& set BOOST_INCLUDE_DIR=%BOOST_INCLUDE_DIR%& set BOOST_LIBRARY_DIR=%BOOST_LIBRARY_DIR%& set BOOST_THREAD_LIB=%BOOST_THREAD_LIB%& BOOST_SYSTEM_LIB=%BOOST_SYSTEM_LIB%&
 
 goto :eof
 :: =========================================================
