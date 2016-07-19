@@ -13,6 +13,7 @@ echo platform %platform%
 
 if not defined MSVC_VER set MSVC_VER=12.0
 if not defined RUNTIME set RUNTIME=msvc%MSVC_VER:.=%
+if not defined MSVC_YEAR set MSVC_YEAR=2013
 if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 if not defined DOWNLOADS_DIR set DOWNLOADS_DIR=%APPVEYOR_BUILD_FOLDER%\downloads
 if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\%RUNTIME%\%PLATFORM%
@@ -281,19 +282,27 @@ if defined LOCAL_DEBUG (
 )
 echo ----------------------------------- GMP
 
-if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
-    echo Downoading mpfr-all-CGAL-3.9.zip
-    pushd %DOWNLOADS_DIR%
-    curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
+echo ----------------------------------- MPFR
+if not exist %GMP_SRC_DIR%\mpfr.COPYING (
     if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
-        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
+        echo Downoading mpfr-all-CGAL-3.9.zip
+        pushd %DOWNLOADS_DIR%
+        curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
+        if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
+            echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
+        )
+        popd
     )
+    echo Extracting mpfr-all-CGAL-3.9.zip
+    pushd %DOWNLOADS_DIR%
+    7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
     popd
+) else (
+    echo GMP already installed at %GMP_SRC_DIR%
 )
-echo Extracting mpfr-all-CGAL-3.9.zip
-pushd %DOWNLOADS_DIR%
-7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
-popd
+if defined LOCAL_DEBUG (
+    dir %GMP_SRC_DIR%
+)
 
 
 set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%
