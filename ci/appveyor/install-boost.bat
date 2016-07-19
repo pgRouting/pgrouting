@@ -119,9 +119,24 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
 ) else (
     echo Boost_%BOOST_VERSION% already installed
 )
-echo ====================================
 
-endlocal & set PATH=%PATH%& set BOOST_INCLUDE_DIR=%BOOST_INCLUDE_DIR%& set BOOST_LIBRARY_DIR=%BOOST_LIBRARY_DIR%& set BOOST_THREAD_LIB=%BOOST_THREAD_LIB%& set BOOST_SYSTEM_LIB=%BOOST_SYSTEM_LIB%&
+echo ====================================
+echo Installation of Prerequisites done.
+echo Environment variables set:
+
+echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
+echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
+echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
+echo ======================================================
+
+
+endlocal & (
+set BOOST_INCLUDE_DIR=%BOOST_INCLUDE_DIR%
+set BOOST_LIBRARY_DIR=%BOOST_LIBRARY_DIR%
+set BOOST_THREAD_LIB=%BOOST_THREAD_LIB%
+set BOOST_SYSTEM_LIB=%BOOST_SYSTEM_LIB%
+)
 
 goto :eof
 :: =========================================================
