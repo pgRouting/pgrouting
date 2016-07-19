@@ -108,7 +108,7 @@ echo -----------------------------------
 
 echo ==================================== CGAL
 
-if exist dir C:/build/local/msvc120/x64/include/CGAL (
+if exist %COMMON_INSTALL_DIR%/include/CGAL (
     echo CGAL already installed
     goto _ExitCGAL
 )
@@ -176,7 +176,7 @@ if defined CGAL_LOCAL_DEBUG (
 :_ExitCGAL
 echo ====================================
 
-endlocal & set PATH=%PATH%& set GMP_LIBRARIES=%GMP_LIBRARIES%& set MPFR_LIBRARIES=%MPFR_LIBRARIES%& set CGAL_LIBRARIES=%COMMON_INSTALL_DIR%\lib\libCGAL-vc%MSVC_VER:.=%-mt-%CGAL_VERSION%.lib& set GMP_LIBRARIES=%GMP_LIBRARIES%
+endlocal & set PATH=%PATH%& set GMP_LIBRARIES=%GMP_LIBRARIES%& set MPFR_LIBRARIES=%MPFR_LIBRARIES%& set CGAL_LIBRARIES=%COMMON_INSTALL_DIR%\lib\libCGAL-vc%MSVC_VER:.=%-mt-%CGAL_VERSION%.lib& set CGAL_INCLUDE_DIR=%COMMON_INSTALL_DIR%\include&
 
 goto :eof
 
