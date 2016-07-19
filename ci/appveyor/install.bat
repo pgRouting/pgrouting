@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 set LOCAL_DEBUG=1
 
@@ -230,7 +230,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
     if not exist %BOOST_THREAD_LIB% ( set BOOST_CHECK_FLAG=3 )
     if not exist %BOOST_SYSTEM_LIB% ( set BOOST_CHECK_FLAG=4 )
 
-    if defined %BOOST_CHECK_FLAG% (
+    if defined BOOST_CHECK_FLAG (
         echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution
         echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
         if defined LOCAL_DEBUG (
