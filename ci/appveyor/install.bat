@@ -178,7 +178,7 @@ echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 echo ==================================== BOOST
-if %BOOST_INSTALL_FLAG% NEQ 10 (
+if not "%BOOST_INSTALL_FLAG%"=="10" (
 
     :: check if it needs to be downloaded
     if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
