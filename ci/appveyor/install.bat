@@ -257,6 +257,7 @@ pushd %DOWNLOADS_DIR%
 7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
 popd
 
+echo ----------------------------------- GMP
 if not exist %GMP_SRC_DIR%\gmp.COPYING (
     if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
         echo Downoading gmp-all-CGAL-3.9.zip
@@ -272,7 +273,13 @@ if not exist %GMP_SRC_DIR%\gmp.COPYING (
     pushd %DOWNLOADS_DIR%
     7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
     popd
+) else (
+    echo GMP already installed at %GMP_SRC_DIR%
 )
+if defined LOCAL_DEBUG (
+    dir %GMP_SRC_DIR%
+)
+echo ----------------------------------- GMP
 
 if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
     echo Downoading mpfr-all-CGAL-3.9.zip
