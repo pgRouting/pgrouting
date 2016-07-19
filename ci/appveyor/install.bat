@@ -154,17 +154,16 @@ if defined LOCAL_DEBUG (
 )
 
 
-:: =========================================================
-:: =========================================================
-:: =========================================================
+echo  =========================================================
+echo  =========================================================
+echo  =========================================================
 
 
-echo ==================================== CGAL
+call ci/appveyor/install-CGAL.bat
 
-if exist dir C:/build/local/msvc120/x64/include/CGAL (
-    echo CGAL already installed
-    goto _ExitCGAL
-)
+echo  =========================================================
+echo  =========================================================
+echo  =========================================================
 
 if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%PLATFORM%
 pushd %BUILD_ROOT_DIR%
@@ -176,7 +175,7 @@ if defined LOCAL_DEBUG (
 )
 
 
-echo ----------------------------------- GMP -- CGAL prerequisite
+echo ----------------------------------- GMP
 if not exist %GMP_SRC_DIR%\gmp.COPYING (
     if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
         echo Downoading gmp-all-CGAL-3.9.zip
@@ -200,7 +199,7 @@ if defined LOCAL_DEBUG (
 )
 echo -----------------------------------
 
-echo ----------------------------------- MPFR -- CGAL prerequisite
+echo ----------------------------------- MPFR
 if not exist %GMP_SRC_DIR%\mpfr.COPYING (
     if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
         echo Downoading mpfr-all-CGAL-3.9.zip
@@ -222,6 +221,13 @@ if defined LOCAL_DEBUG (
     dir %GMP_SRC_DIR%
 )
 echo -----------------------------------
+
+echo ==================================== CGAL
+
+if exist dir C:/build/local/msvc120/x64/include/CGAL (
+    echo CGAL already installed
+    goto _ExitCGAL
+)
 
 if not exist %BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%\ (
     if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
@@ -252,10 +258,13 @@ if defined LOCAL_DEBUG (
 )
 
 
+
+set PROJ_EXT=vcxproj
+echo PROJ_EXT %PROJ_EXT%
+
 mkdir %CGAL_BUILD_DIR% %2>null
 pushd %CGAL_BUILD_DIR%
-
-@echo on
+if LOCAL_DEBUG @echo on
 cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COMMON_INSTALL_DIR% ^
     -DBoost_USE_MULTITHREADED=ON ^
     -DCGAL_Boost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=OFF ^
@@ -265,21 +274,10 @@ cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COM
     -DMPFR_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
     -DGMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME% ^
     -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
-echo *******************                              calling msbuild CGAL.sln
 msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
-set PROJ_EXT=vcxproj
-echo PROJ_EXT %PROJ_EXT%
-echo *******************                              calling msbuild INSTALL.%PROJ_EXT%
 msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
-@echo off
+if LOCAL_DEBUG @echo off
 popd
-
-dir %COMMON_INSTALL_DIR%
-dir %CGAL_BUILD_DIR%
-
-dir C:/build/local/msvc120/x64/share/doc/CGAL-4.8.1
-dir C:/build/local/msvc120/x64/include/CGAL
-
 
 if defined LOCAL_DEBUG (
     echo DOWNLOADS_DIR %DOWNLOADS_DIR%
@@ -290,8 +288,9 @@ if defined LOCAL_DEBUG (
 
     echo GMP_SRC_DIR %GMP_SRC_DIR%
     dir %GMP_SRC_DIR%
+    
+    dir C:/build/local/msvc120/x64/include/CGAL
 )
-popd
 :_ExitCGAL
 echo ====================================
 

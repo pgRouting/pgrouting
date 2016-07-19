@@ -43,7 +43,6 @@ install:
   # postGIS
   # CGAL
   - call ci\appveyor\install.bat
-  - call ci\appveyor\install.bat
 
 
 build_script:
