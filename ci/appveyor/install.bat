@@ -178,11 +178,11 @@ echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 echo ==================================== BOOST
-if %BOOST_INSTALL_FLAG% NEQ 10 (
+if "%BOOST_INSTALL_FLAG%"=="10" (
 
     :: check if it needs to be downloaded
     if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
-        echo Downloading Boost %BOOST_VERSION% ...
+        echo ***** Downloading Boost %BOOST_VERSION% ...
         pushd %DOWNLOADS_DIR%
         curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
         popd
@@ -225,19 +225,19 @@ if %BOOST_INSTALL_FLAG% NEQ 10 (
         popd
 
         set BOOST_INSTALL_FLAG1=10
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG1%
+        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
         if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG1=1 )
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG1%
+        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
         if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG1=2 )
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG1%
+        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
         if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG1=3 )
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG1%
+        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
         if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG1=4 )
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG1%
+        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
 
-        if %BOOST_INSTALL_FLAG1% NEQ 10 (
+        if "%BOOST_INSTALL_FLAG1%"=="10" (
             echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
-            echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+            echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
 
             if defined LOCAL_DEBUG (
                 echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
