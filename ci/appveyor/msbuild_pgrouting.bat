@@ -1,6 +1,6 @@
 @echo off
 
-set PG_VER="%1"
+set PG_VER=%1
 
 echo MSVC_VER %MSVC_VER%
 echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
