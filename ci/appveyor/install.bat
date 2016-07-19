@@ -72,6 +72,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
         echo cmake %CMAKE_VERSION% installed
     ) else (
         echo something went wrong on cmake installation!!!!!!!!!
+        Exit \B 1
     )
 )
 echo ====================================
@@ -96,6 +97,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
             echo something went wrong on postgis %PG_VERSION% download !!!!!!!!!
             if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
+            Exit \B 1
         )
     )
 
@@ -113,6 +115,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\9.4\
     ) else (
         echo **** postGIS %PG_VERSION% %arch% installed
+        Exit \B 1
     )
 ) else (
     echo postGIS %PG_VERSION% %arch% already installed
@@ -220,23 +223,23 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
     if defined LOCAL_DEBUG @echo off
     popd
 
-    set BOOST_INSTALL_FLAG=10
-    echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
-    if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
-    if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
-    if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
-    if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
+    set BOOST_CHECK_FLAG=10
+    echo BOOST_CHECK_FLAG %BOOST_INSTALL_FLAG%
+    if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_CHECK_FLAG=1 )
+    if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_CHECK_FLAG=2 )
+    if not exist %BOOST_THREAD_LIB% ( set BOOST_CHECK_FLAG=3 )
+    if not exist %BOOST_SYSTEM_LIB% ( set BOOST_CHECK_FLAG=4 )
 
-    if not "%BOOST_INSTALL_FLAG%"=="10" (
+    if not "%BOOST_CHECK_FLAG%"=="10" (
         echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
-        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+        echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
         if defined LOCAL_DEBUG (
             echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
             dir %BOOST_INCLUDE_DIR%
 
             echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
             dir %BOOST_LIBRARY_DIR%
-                echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
+            echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
             echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
         )
         Exit \B 1
