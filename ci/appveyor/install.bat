@@ -257,20 +257,22 @@ pushd %DOWNLOADS_DIR%
 7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
 popd
 
-if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
-    echo Downoading gmp-all-CGAL-3.9.zip
-    pushd %DOWNLOADS_DIR%
-    curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/GMP/5.0.1/gmp-all-CGAL-3.9.zip
+if not exist %GMP_SRC_DIR%\gmp.COPYING (
     if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
-        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
+        echo Downoading gmp-all-CGAL-3.9.zip
+        pushd %DOWNLOADS_DIR%
+        curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/GMP/5.0.1/gmp-all-CGAL-3.9.zip
+        if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
+            echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
+        )
+        popd
     )
+
+    echo Extracting gmp-all-CGAL-3.9.zip
+    pushd %DOWNLOADS_DIR%
+    7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
     popd
 )
-
-echo Extracting gmp-all-CGAL-3.9.zip
-pushd %DOWNLOADS_DIR%
-7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
-popd
 
 if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
     echo Downoading mpfr-all-CGAL-3.9.zip
