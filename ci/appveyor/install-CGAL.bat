@@ -75,7 +75,7 @@ if not exist %GMP_SRC_DIR%\gmp.COPYING (
     echo GMP already installed at %GMP_SRC_DIR%
 )
 set GMP_LIBRARIES=%GMP_SRC_DIR%\lib\libgmp-10.lib
-set GMP_INCLUDE=%GMP_SRC_DIR%\include
+set GMP_INCLUDE_DIR=%GMP_SRC_DIR%\include
 if defined CGAL_LOCAL_DEBUG (
     echo GMP_LIBRARIES %GMP_LIBRARIES%
     dir %GMP_SRC_DIR%
@@ -177,6 +177,7 @@ if defined CGAL_LOCAL_DEBUG (
 :_ExitCGAL
 echo --------------------------------
 set CGAL_LIBRARIES=%COMMON_INSTALL_DIR%\lib\libCGAL-vc%MSVC_VER:.=%-mt-%CGAL_VERSION%.lib&
+set CGAL_INCLUDE_DIR=%COMMON_INSTALL_DIR%\include
 echo Installation of CGAL done.
 echo Environment variables set:
 
@@ -193,7 +194,7 @@ endlocal & (
     set GMP_LIBRARIES=%GMP_LIBRARIES%
     set MPFR_LIBRARIES=%MPFR_LIBRARIES%
     set CGAL_LIBRARIES=%CGAL_LIBRARIES%
-    set CGAL_INCLUDE_DIR=%COMMON_INSTALL_DIR%\include
+    set CGAL_INCLUDE_DIR=%CGAL_INCLUDE_DIR%
     set GMP_INCLUDE_DIR=%GMP_INCLUDE_DIR%
 )
 
@@ -211,4 +212,5 @@ echo CMAKE_GENERATOR %CMAKE_GENERATOR%
 echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
 echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
 echo MSBUILD_CONFIGURATION %MSBUILD_CONFIGURATION%
+
 
