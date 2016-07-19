@@ -1,6 +1,6 @@
 @echo off
 
-set LOCAL_DEBUG=1
+::set LOCAL_DEBUG=1
 
 Setlocal EnableDelayedExpansion EnableExtensions
 
@@ -13,6 +13,7 @@ echo platform %platform%
 
 if not defined MSVC_VER set MSVC_VER=12.0
 if not defined RUNTIME set RUNTIME=msvc%MSVC_VER:.=%
+if not defined MSVC_YEAR set MSVC_YEAR=2013
 if not defined BUILD_ROOT_DIR set BUILD_ROOT_DIR=c:\build
 if not defined DOWNLOADS_DIR set DOWNLOADS_DIR=%APPVEYOR_BUILD_FOLDER%\downloads
 if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\%RUNTIME%\%PLATFORM%
@@ -23,6 +24,10 @@ if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 if not defined CGAL_VERSION set CGAL_VERSION=4.8.1
 
 
+set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
+if "%platform%"=="x64" (
+    set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
+)
 
 :: Determine if arch is 32/64 bits
 if /I "%platform%"=="x86" ( set arch=32) else ( set arch=64)
@@ -72,6 +77,7 @@ if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
         echo cmake %CMAKE_VERSION% installed
     ) else (
         echo something went wrong on cmake installation!!!!!!!!!
+        Exit \B 1
     )
 )
 echo ====================================
@@ -96,6 +102,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
             echo something went wrong on postgis %PG_VERSION% download !!!!!!!!!
             if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
+            Exit \B 1
         )
     )
 
@@ -111,6 +118,7 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
         if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
         if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\9.4\
+        Exit \B 1
     ) else (
         echo **** postGIS %PG_VERSION% %arch% installed
     )
@@ -119,259 +127,49 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
 )
 echo ====================================
 
-::
-:: =========================================================
-
-
 
 :: =========================================================
 :: Download and install Boost
 ::
 
-:: deducing variables
-set BOOST_VER_USC=%BOOST_VERSION:.=_%
-set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
+:: set BOOST_LOCAL_DEBUG=1
+call ci/appveyor/install-boost.bat
+
+::
+:: CGAL & GMP & MPFR
+::
+::
+:: set CGAL_LOCAL_DEBUG=1
+call ci/appveyor/install-CGAL.bat
 
 
-set BOOST_INSTALL_DIR=%COMMON_INSTALL_DIR%
-set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
-set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
-set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
-set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
-set BOOST_ADDRESS_MODEL=%arch%
-set BOOST_TOOLSET=msvc-%MSVC_VER%
-set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
-set MSBUILD_CONFIGURATION=%CONFIGURATION%
-set CMAKE_GENERATOR=Visual Studio %MSVC_VER:.0=% %MSVC_YEAR%
-if "%platform%"=="x64" (
-    set CMAKE_GENERATOR=%CMAKE_GENERATOR% Win64
-)
-
-:: DEBUGING
-if defined LOCAL_DEBUG (
-    echo BOOST_VERSION %BOOST_VERSION%
-    echo BOOST_VER_USC %BOOST_VER_USC%
-    echo BOOST_SHORT_VER %BOOST_SHORT_VER%
-    echo BOOST_INSTALL_DIR %BOOST_INSTALL_DIR%
-    echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-    echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
-    echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
-    echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
-    echo BOOST_ADDRESS_MODEL %BOOST_ADDRESS_MODEL%
-    echo BOOST_TOOLSET %BOOST_TOOLSET%
-    echo CMAKE_GENERATOR %CMAKE_GENERATOR%
-)
-
-:: check that everything needed from boost is there
-set BOOST_INSTALL_FLAG=10
-if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
-if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
-if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
-if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
-
-:: DEBUGING
-echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
-
-echo ==================================== BOOST
-if %BOOST_INSTALL_FLAG% NEQ 10 (
-
-    :: check if it needs to be downloaded
-    if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
-        echo Downloading Boost %BOOST_VERSION% ...
-        pushd %DOWNLOADS_DIR%
-        curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
-        popd
-        if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
-            echo something went wrong on boost %BOOST_VERSION% download !!!!!!!!!
-            if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
-        )
-    ) else (
-        echo **** Boost_%BOOST_VER_USC%  already downloaded
-    )
-
-    echo **** Extracting Boost_%BOOST_VERSION%.zip ...
-    pushd %DOWNLOADS_DIR%
-    7z x -o%BUILD_ROOT_DIR%\ boost_%BOOST_VER_USC%.zip
-    popd
-    if not exist %BOOST_SRC_DIR% (
-        echo something went wrong on boost extraction!!!!!!!!!
-        if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
-
-    )
-
-    echo **** Excuting bootstrap.bat...
-    if not exist "%BOOST_SRC_DIR%\b2.exe" (
-        pushd %BOOST_SRC_DIR%
-        call "bootstrap.bat"
-        popd
-        if not exist "%BOOST_SRC_DIR%\b2.exe" (
-            echo something went wrong on booststrap.bat execution!!!!!!!!!
-            if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
-        )
-    )
-
-    echo **** Excuting  %BOOST_SRC_DIR%\b2.exe ...
-    if not exist %BOOST_INCLUDE_DIR%\ (
-        pushd %BOOST_SRC_DIR%
-        if defined LOCAL_DEBUG @echo on
-        b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
-            --with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
-        if defined LOCAL_DEBUG @echo off
-        popd
-
-        set BOOST_INSTALL_FLAG=10
-        if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
-        if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
-        if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
-        if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
-
-        if %BOOST_INSTALL_FLAG% NEQ 10 (
-            echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
-
-            if defined LOCAL_DEBUG (
-                echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-                dir %BOOST_INCLUDE_DIR%
-
-                echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
-                dir %BOOST_LIBRARY_DIR%
-                echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
-                echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
-            )
-        )
-    ) else (
-        echo Boost_%BOOST_VERSION% already installed
-    )
-) else (
-    echo Boost_%BOOST_VERSION% already installed
-)
-echo ====================================
-
-:: =========================================================
-:: =========================================================
-:: =========================================================
-
-
-echo ==================================== CGAL
-
-if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%PLATFORM%
-pushd %BUILD_ROOT_DIR%
-mkdir gmp\%PLATFORM% 2>NUL
-popd
-if defined LOCAL_DEBUG (
-    echo GMP_SRC_DIR %GMP_SRC_DIR%
-    dir %GMP_SRC_DIR%
-)
-
-if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
-    echo Downoading CGAL-%CGAL_VERSION%.zip
-    pushd %DOWNLOADS_DIR%
-    curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
-    if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
-        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
-    )
-    popd
-)
-echo Extracting CGAL-%CGAL_VERSION%.zip
-pushd %DOWNLOADS_DIR%
-7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
-popd
-
-if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
-    echo Downoading gmp-all-CGAL-3.9.zip
-    pushd %DOWNLOADS_DIR%
-    curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/GMP/5.0.1/gmp-all-CGAL-3.9.zip
-    if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
-        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
-    )
-    popd
-)
-
-echo Extracting gmp-all-CGAL-3.9.zip
-pushd %DOWNLOADS_DIR%
-7z x -o%GMP_SRC_DIR% gmp-all-CGAL-3.9.zip
-popd
-
-if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
-    echo Downoading mpfr-all-CGAL-3.9.zip
-    pushd %DOWNLOADS_DIR%
-    curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
-    if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
-        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
-    )
-    popd
-)
-echo Extracting mpfr-all-CGAL-3.9.zip
-pushd %DOWNLOADS_DIR%
-7z x -o%GMP_SRC_DIR% mpfr-all-CGAL-3.9.zip
-popd
-
-
-set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%
-::set CGAL_BUILD_DIR=%CGAL_SRC_DIR%\build\%RUNTIME%\%PLATFORM%
-set CGAL_BUILD_DIR=%COMMON_INSTALL_DIR%
-::set GMP_ROOT_DIR=%BUILD_ROOT_DIR%\gmp
-::set GMP_DIR=%GMP_ROOT_DIR%\%PLATFORM%
-set GMP_LIB_NAME=libgmp-10.lib
-set MPFR_LIB_NAME=libmpfr-4.lib
-
-if defined LOCAL_DEBUG (
-    echo CGAL_SRC_DIR %CGAL_SRC_DIR%
-    dir %CGAL_SRC_DIR%
-
-    echo CGAL_BUILD_DIR %CGAL_BUILD_DIR%
-)
-
-
-if not exist %CGAL_BUILD_DIR%\ (
-    mkdir %CGAL_BUILD_DIR% %2>null
-    pushd %CGAL_BUILD_DIR%
-    @echo on
-    cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COMMON_INSTALL_DIR% ^
-        -DBoost_USE_MULTITHREADED=ON ^
-        -DCGAL_Boost_USE_STATIC_LIBS=ON -DBoost_USE_STATIC_RUNTIME=OFF ^
-        -DBoost_INCLUDE_DIR:PATH=%BOOST_INCLUDE_DIR% ^
-        -DBOOST_LIBRARYDIR=%BOOST_LIBRARY_DIR% ^
-        -DGMP_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
-        -DMPFR_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
-        -DGMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME% ^
-        -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
-    msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
-    msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
-    @echo off
-    popd
-)
-
-dir %COMMON_INSTALL_DIR%
-dir %CGAL_BUILD_DIR%
-
-
-
-if defined LOCAL_DEBUG (
-    echo DOWNLOADS_DIR %DOWNLOADS_DIR%
-    dir %DOWNLOADS%
-
-    echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
-    dir %BUILD_ROOT_DIR%
-
-    echo GMP_SRC_DIR %GMP_SRC_DIR%
-    dir %GMP_SRC_DIR%
-)
-popd
-echo ====================================
-
-
-
-echo.
 echo ======================================================
 echo Installation of Prerequisites done.
-echo Platform - %platform%
-echo    cmake - %CMAKE_VERSION% 
-echo    Boost - %BOOST_VERSION%
-echo  postGIS - %PG_VERSION% %arch% 
-echo     CGAL - %CGAL_VERSION% %arch% 
+echo Environment variables set:
+
+echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
+echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
+echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+echo GMP_LIBRARIES %GMP_LIBRARIES%
+echo MPFR_LIBRARIES %MPFR_LIBRARIES%
+echo CGAL_LIBRARIES %CGAL_LIBRARIES%
+echo CGAL_INCLUDE_DIR %CGAL_INCLUDE_DIR%
+echo GMP_INCLUDE_DIR %GMP_INCLUDE_DIR%
+echo CMAKE_GENERATOR %CMAKE_GENERATOR%
+
 echo ======================================================
 echo.
 
-endlocal & set PATH=%PATH%&
+endlocal & (
+    set BOOST_THREAD_LIB=%BOOST_THREAD_LIB%
+    set BOOST_SYSTEM_LIB=%BOOST_SYSTEM_LIB%
+    set BOOST_INCLUDE_DIR=%BOOST_INCLUDE_DIR%
+    set GMP_LIBRARIES=%GMP_LIBRARIES%
+    set MPFR_LIBRARIES=%MPFR_LIBRARIES%
+    set CGAL_LIBRARIES=%CGAL_LIBRARIES%
+    set CGAL_INCLUDE_DIR=%CGAL_INCLUDE_DIR%
+    set GMP_INCLUDE_DIR=%GMP_INCLUDE_DIR%
+    set CMAKE_GENERATOR=%CMAKE_GENERATOR%
+)
 
 goto :eof
