@@ -113,9 +113,9 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
         echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
         if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
         if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\9.4\
+        Exit \B 1
     ) else (
         echo **** postGIS %PG_VERSION% %arch% installed
-        Exit \B 1
     )
 ) else (
     echo postGIS %PG_VERSION% %arch% already installed
@@ -223,6 +223,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
     if defined LOCAL_DEBUG @echo off
     popd
 
+    echo **** Checking  %BOOST_VERSION% installation
     set BOOST_CHECK_FLAG=10
     echo BOOST_CHECK_FLAG %BOOST_INSTALL_FLAG%
     if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_CHECK_FLAG=1 )
