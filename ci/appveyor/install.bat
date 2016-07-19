@@ -170,6 +170,7 @@ echo     CGAL - %CGAL_VERSION% %arch%
 echo ======================================================
 echo.
 
-endlocal & set PATH=%PATH%&
+endlocal & set PATH=%PATH%& ^
+    set DOWNLOADS_DIR=%DOWNLOADS_DIR%&
 
 goto :eof
