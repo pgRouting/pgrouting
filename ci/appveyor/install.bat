@@ -338,6 +338,8 @@ cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COM
 echo *******************                              calling msbuild CGAL.sln
 msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
 echo *******************                              calling msbuild INSTALL.%PROJ_EXT%
+set PROJ_EXT=vcxproj
+echo PROJ_EXT %PROJ_EXT%
 msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
 @echo off
 popd
