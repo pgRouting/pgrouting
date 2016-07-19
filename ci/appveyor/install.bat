@@ -178,57 +178,57 @@ if defined LOCAL_DEBUG (
 :: DEBUGING
 :: echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
-echo ==================================== BOOST
-if not "%BOOST_INSTALL_FLAG%"=="10" (
+::echo ==================================== BOOST
+::if not "%BOOST_INSTALL_FLAG%"=="10" (
 
     :: download if needed
-    if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
-        echo ***** Downloading Boost %BOOST_VERSION% ...
-        pushd %DOWNLOADS_DIR%
-        curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
-        popd
-        if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
-            echo something went wrong on boost %BOOST_VERSION% download !!!!!!!!!
-            if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
-            Exit \B 1
-        )
-    ) else (
-        echo **** Boost_%BOOST_VER_USC%  already downloaded
-    )
-
-    echo **** Extracting Boost_%BOOST_VERSION%.zip ...
-    pushd %DOWNLOADS_DIR%
-    7z x -o%BUILD_ROOT_DIR%\ boost_%BOOST_VER_USC%.zip
-    popd
-    if not exist %BOOST_SRC_DIR% (
-        echo something went wrong on boost extraction!!!!!!!!!
-        if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
-        Exit \B 1
-    )
-
-    echo **** Excuting bootstrap.bat...
-    if not exist "%BOOST_SRC_DIR%\b2.exe" (
-        pushd %BOOST_SRC_DIR%
-        call "bootstrap.bat"
-        popd
-        if not exist "%BOOST_SRC_DIR%\b2.exe" (
-            echo something went wrong on booststrap.bat execution!!!!!!!!!
-            if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
-            Exit \B 1
-        )
-    )
-
-    echo **** Excuting  %BOOST_SRC_DIR%\b2.exe ...
-    pushd %BOOST_SRC_DIR%
-    if defined LOCAL_DEBUG @echo on
-    b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
-        --with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
-    if defined LOCAL_DEBUG @echo off
-    popd
-) else (
-    echo Boost_%BOOST_VERSION% already installed
-)
-echo ====================================
+    ::if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
+        ::echo ***** Downloading Boost %BOOST_VERSION% ...
+        ::pushd %DOWNLOADS_DIR%
+        ::curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/%BOOST_VERSION%/boost_%BOOST_VER_USC%.zip
+        ::popd
+        ::if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
+            ::echo something went wrong on boost %BOOST_VERSION% download !!!!!!!!!
+            ::if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
+            ::Exit \B 1
+        ::)
+    ::) else (
+        ::echo **** Boost_%BOOST_VER_USC%  already downloaded
+    ::)
+::
+    ::echo **** Extracting Boost_%BOOST_VERSION%.zip ...
+    ::pushd %DOWNLOADS_DIR%
+    ::7z x -o%BUILD_ROOT_DIR%\ boost_%BOOST_VER_USC%.zip
+    ::popd
+    ::if not exist %BOOST_SRC_DIR% (
+        ::echo something went wrong on boost extraction!!!!!!!!!
+        ::if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
+        ::Exit \B 1
+    ::)
+::
+    ::echo **** Excuting bootstrap.bat...
+    ::if not exist "%BOOST_SRC_DIR%\b2.exe" (
+        ::pushd %BOOST_SRC_DIR%
+        ::call "bootstrap.bat"
+        ::popd
+        ::if not exist "%BOOST_SRC_DIR%\b2.exe" (
+            ::echo something went wrong on booststrap.bat execution!!!!!!!!!
+            ::if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
+            ::Exit \B 1
+        ::)
+    ::)
+::
+    ::echo **** Excuting  %BOOST_SRC_DIR%\b2.exe ...
+    ::pushd %BOOST_SRC_DIR%
+    ::if defined LOCAL_DEBUG @echo on
+    ::b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
+        ::--with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
+    ::if defined LOCAL_DEBUG @echo off
+    ::popd
+::) else (
+    ::echo Boost_%BOOST_VERSION% already installed
+::)
+::echo ====================================
 
 :: =========================================================
 :: =========================================================
