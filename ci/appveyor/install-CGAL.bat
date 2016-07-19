@@ -176,6 +176,7 @@ if defined CGAL_LOCAL_DEBUG (
 )
 :_ExitCGAL
 echo --------------------------------
+set CGAL_LIBRARIES=%COMMON_INSTALL_DIR%\lib\libCGAL-vc%MSVC_VER:.=%-mt-%CGAL_VERSION%.lib&
 echo Installation of CGAL done.
 echo Environment variables set:
 
@@ -187,7 +188,14 @@ echo GMP_INCLUDE_DIR %GMP_INCLUDE_DIR%
 
 echo ======================================================
 
-endlocal & set PATH=%PATH%& set GMP_LIBRARIES=%GMP_LIBRARIES%& set MPFR_LIBRARIES=%MPFR_LIBRARIES%& set CGAL_LIBRARIES=%COMMON_INSTALL_DIR%\lib\libCGAL-vc%MSVC_VER:.=%-mt-%CGAL_VERSION%.lib& set CGAL_INCLUDE_DIR=%COMMON_INSTALL_DIR%\include& set GMP_INCLUDE_DIR=%GMP_INCLUDE_DIR%&
+endlocal & (
+    set PATH=%PATH%
+    set GMP_LIBRARIES=%GMP_LIBRARIES%
+    set MPFR_LIBRARIES=%MPFR_LIBRARIES%
+    set CGAL_LIBRARIES=%CGAL_LIBRARIES%
+    set CGAL_INCLUDE_DIR=%COMMON_INSTALL_DIR%\include
+    set GMP_INCLUDE_DIR=%GMP_INCLUDE_DIR%
+)
 
 goto :eof
 
