@@ -19,7 +19,6 @@ if not defined RUNTIME goto _error
 if not defined CMAKE_GENERATOR goto _error
 if not defined BOOST_INCLUDE_DIR goto _error
 if not defined BOOST_LIBRARY_DIR goto _error
-if not defined MSBUILD_CONFIGURATION goto _error
 
 if defined CGAL_LOCAL_DEBUG (
     echo BUILD_ROOT_DIR %BUILD_ROOT_DIR%
@@ -31,9 +30,9 @@ if defined CGAL_LOCAL_DEBUG (
     echo CMAKE_GENERATOR %CMAKE_GENERATOR%
     echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
     echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
-    echo MSBUILD_CONFIGURATION %MSBUILD_CONFIGURATION%
 )
 
+set MSBUILD_CONFIGURATION=RelWithDebInfo
 
 ::
 :: =========================================================
