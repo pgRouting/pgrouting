@@ -335,7 +335,9 @@ cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COM
     -DMPFR_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
     -DGMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME% ^
     -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
+echo *******************                              calling msbuild CGAL.sln
 msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
+echo *******************                              calling msbuild INSTALL.%PROJ_EXT%
 msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
 @echo off
 popd
@@ -343,6 +345,8 @@ popd
 dir %COMMON_INSTALL_DIR%
 dir %CGAL_BUILD_DIR%
 
+dir C:/build/local/msvc120/x64/share/doc/CGAL-4.8.1
+dir C:/build/local/msvc120/x64/include/CGAL
 
 
 if defined LOCAL_DEBUG (
