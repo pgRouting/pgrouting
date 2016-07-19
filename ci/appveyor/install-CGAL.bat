@@ -74,8 +74,7 @@ if not exist %GMP_SRC_DIR%\gmp.COPYING (
 ) else (
     echo GMP already installed at %GMP_SRC_DIR%
 )
-set GMP_LIB_NAME=libgmp-10.lib
-set GMP_LIBRARIES=%GMP_SRC_DIR%\lib\%GMP_LIB_NAME%
+set GMP_LIBRARIES=%GMP_SRC_DIR%\lib\libgmp-10.lib
 if defined CGAL_LOCAL_DEBUG (
     echo GMP_LIBRARIES %GMP_LIBRARIES%
     dir %GMP_SRC_DIR%
@@ -100,7 +99,8 @@ if not exist %GMP_SRC_DIR%\mpfr.COPYING (
 ) else (
     echo MPFR already installed at %GMP_SRC_DIR%
 )
-set MPFR_LIB_NAME=libmpfr-4.lib
+set MPFR_LIBRARIES=%GMP_SRC_DIR%\lib\libmpfr-4.lib
+
 if defined CGAL_LOCAL_DEBUG (
     dir %GMP_SRC_DIR%
 )
@@ -155,7 +155,7 @@ cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COM
     -DGMP_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
     -DMPFR_INCLUDE_DIR=%GMP_SRC_DIR%\include ^
     -DGMP_LIBRARIES=%GMP_LIBRARIES% ^
-    -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
+    -DMPFR_LIBRARIES=%MPFR_LIBRARIES%  ..\..\..\
 msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
 msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
 if CGAL_LOCAL_DEBUG @echo off
@@ -176,7 +176,7 @@ if defined CGAL_LOCAL_DEBUG (
 :_ExitCGAL
 echo ====================================
 
-endlocal & set PATH=%PATH%& set CGAL_LIBRARIES=%COMMON_INSTALL_DIR%\lib\libCGAL-vc%MSVC_VER:.=%-mt-%CGAL_VERSION%.lib& set GMP_LIBRARIES=%GMP_LIBRARIES%
+endlocal & set PATH=%PATH%& set GMP_LIBRARIES=%GMP_LIBRARIES%& set MPFR_LIBRARIES=%MPFR_LIBRARIES%& set CGAL_LIBRARIES=%COMMON_INSTALL_DIR%\lib\libCGAL-vc%MSVC_VER:.=%-mt-%CGAL_VERSION%.lib& set GMP_LIBRARIES=%GMP_LIBRARIES%
 
 goto :eof
 
