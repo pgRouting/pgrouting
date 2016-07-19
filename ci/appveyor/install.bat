@@ -1,6 +1,6 @@
 @echo off
 
-set LOCAL_DEBUG=1
+::set LOCAL_DEBUG=1
 
 Setlocal EnableDelayedExpansion EnableExtensions
 
@@ -132,14 +132,14 @@ echo ====================================
 :: Download and install Boost
 ::
 
-set BOOST_LOCAL_DEBUG=1
+:: set BOOST_LOCAL_DEBUG=1
 call ci/appveyor/install-boost.bat
 
 ::
 :: CGAL & GMP & MPFR
 ::
 ::
-set CGAL_LOCAL_DEBUG=1
+:: set CGAL_LOCAL_DEBUG=1
 call ci/appveyor/install-CGAL.bat
 
 
