@@ -31,8 +31,11 @@ cache:
 services:
   - postgresql94
 
-#environment:
-#  CONFIGURATION: Release
+environment:
+  CONFIGURATION: Release
+  MSVC_VER: 12.0
+  BUILD_ROOT_DIR: c:\build
+  DOWNLOADS_DIR: %APPVEYOR_BUILD_FOLDER%\downloads
 
 init:
   - git config --global core.autocrlf false
