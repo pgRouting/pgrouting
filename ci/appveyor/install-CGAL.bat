@@ -190,7 +190,6 @@ echo GMP_INCLUDE_DIR %GMP_INCLUDE_DIR%
 echo ======================================================
 
 endlocal & (
-    set PATH=%PATH%
     set GMP_LIBRARIES=%GMP_LIBRARIES%
     set MPFR_LIBRARIES=%MPFR_LIBRARIES%
     set CGAL_LIBRARIES=%CGAL_LIBRARIES%
