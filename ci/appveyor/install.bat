@@ -244,19 +244,6 @@ if defined LOCAL_DEBUG (
     dir %GMP_SRC_DIR%
 )
 
-if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
-    echo Downoading CGAL-%CGAL_VERSION%.zip
-    pushd %DOWNLOADS_DIR%
-    curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
-    if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
-        echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
-    )
-    popd
-)
-echo Extracting CGAL-%CGAL_VERSION%.zip
-pushd %DOWNLOADS_DIR%
-7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
-popd
 
 echo ----------------------------------- GMP
 if not exist %GMP_SRC_DIR%\gmp.COPYING (
@@ -280,7 +267,7 @@ if not exist %GMP_SRC_DIR%\gmp.COPYING (
 if defined LOCAL_DEBUG (
     dir %GMP_SRC_DIR%
 )
-echo ----------------------------------- GMP
+echo -----------------------------------
 
 echo ----------------------------------- MPFR
 if not exist %GMP_SRC_DIR%\mpfr.COPYING (
@@ -303,7 +290,23 @@ if not exist %GMP_SRC_DIR%\mpfr.COPYING (
 if defined LOCAL_DEBUG (
     dir %GMP_SRC_DIR%
 )
+echo -----------------------------------
 
+if not exist %BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%\ (
+    if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
+        echo Downoading CGAL-%CGAL_VERSION%.zip
+        pushd %DOWNLOADS_DIR%
+        curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
+        if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
+            echo Something went wrong Downoading CGAL-%CGAL_VERSION%.zip
+        )
+        popd
+    )
+    echo Extracting CGAL-%CGAL_VERSION%.zip
+    pushd %DOWNLOADS_DIR%
+    7z x -o%BUILD_ROOT_DIR% CGAL-4.8.1.zip
+    popd
+)
 
 set CGAL_SRC_DIR=%BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%
 set CGAL_BUILD_DIR=%CGAL_SRC_DIR%\build\%RUNTIME%\%PLATFORM%
