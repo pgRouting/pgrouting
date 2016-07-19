@@ -8,8 +8,8 @@ echo "install-boost.bat"
 :: create a download & install directories:
 mkdir %APPVEYOR_BUILD_FOLDER%\downloads 2>NUL
 mkdir %COMMON_INSTALL_DIR% 2>NUL
-if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
-if defined LOCAL_DEBUG dir %COMMON_INSTALL_DIR%
+if defined BOOST_LOCAL_DEBUG dir %DOWNLOADS_DIR%
+if defined BOOST_LOCAL_DEBUG dir %COMMON_INSTALL_DIR%
 
 
 
@@ -30,7 +30,7 @@ set BOOST_TOOLSET=msvc-%MSVC_VER%
 set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
 set MSBUILD_CONFIGURATION=%CONFIGURATION%
 
-if defined LOCAL_DEBUG (
+if defined BOOST_LOCAL_DEBUG (
     echo BOOST_VERSION %BOOST_VERSION%
     echo BOOST_VER_USC %BOOST_VER_USC%
     echo BOOST_SHORT_VER %BOOST_SHORT_VER%
@@ -51,7 +51,7 @@ if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
 if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
 if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
 
-if defined LOCAL_DEBUG echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+if defined BOOST_LOCAL_DEBUG echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 
 if not "%BOOST_INSTALL_FLAG%"=="10" (
@@ -64,7 +64,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
         popd
         if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
             echo something went wrong on boost %BOOST_VERSION% download !!!!!!!!!
-            if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
+            if defined BOOST_LOCAL_DEBUG dir %DOWNLOADS_DIR%
             Exit \B 1
         )
     ) else (
@@ -77,7 +77,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
     popd
     if not exist %BOOST_SRC_DIR% (
         echo something went wrong on boost extraction!!!!!!!!!
-        if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
+        if defined BOOST_LOCAL_DEBUG dir %BOOST_SRC_DIR%
         Exit \B 1
     )
 
@@ -88,17 +88,17 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
         popd
         if not exist "%BOOST_SRC_DIR%\b2.exe" (
             echo something went wrong on booststrap.bat execution!!!!!!!!!
-            if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
+            if defined BOOST_LOCAL_DEBUG dir %BOOST_SRC_DIR%
             Exit \B 1
         )
     )
 
     echo **** Excuting  %BOOST_SRC_DIR%\b2.exe ...
     pushd %BOOST_SRC_DIR%
-    if defined LOCAL_DEBUG @echo on
+    if defined BOOST_LOCAL_DEBUG @echo on
     b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
         --with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
-    if defined LOCAL_DEBUG @echo off
+    if defined BOOST_LOCAL_DEBUG @echo off
     popd
 ) else (
     echo Boost_%BOOST_VERSION% already installed

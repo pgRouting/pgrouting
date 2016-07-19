@@ -136,21 +136,22 @@ echo ====================================
 :: Download and install Boost
 ::
 
+set "BOOST_LOCAL_DEBUG="
 call ci/appveyor/install-boost.bat
 :: deducing variables
-set BOOST_VER_USC=%BOOST_VERSION:.=_%
-set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
+:: set BOOST_VER_USC=%BOOST_VERSION:.=_%
+:: set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
 
 
-set BOOST_INSTALL_DIR=%COMMON_INSTALL_DIR%
-set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
-set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
-set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
-set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
-set BOOST_ADDRESS_MODEL=%arch%
-set BOOST_TOOLSET=msvc-%MSVC_VER%
-set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
-set MSBUILD_CONFIGURATION=%CONFIGURATION%
+:: set BOOST_INSTALL_DIR=%COMMON_INSTALL_DIR%
+:: set BOOST_INCLUDE_DIR=%BOOST_INSTALL_DIR%\include\boost-%BOOST_SHORT_VER%
+:: set BOOST_LIBRARY_DIR=%BOOST_INSTALL_DIR%\lib
+:: set BOOST_THREAD_LIB=%BOOST_INSTALL_DIR%\lib\libboost_thread-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
+:: set BOOST_SYSTEM_LIB=%BOOST_INSTALL_DIR%\lib\libboost_system-vc%MSVC_VER:.=%-mt-%BOOST_SHORT_VER%.lib
+:: set BOOST_ADDRESS_MODEL=%arch%
+:: set BOOST_TOOLSET=msvc-%MSVC_VER%
+:: set BOOST_SRC_DIR=%BUILD_ROOT_DIR%\boost_%BOOST_VER_USC%
+:: set MSBUILD_CONFIGURATION=%CONFIGURATION%
 
 :: DEBUGING
 if defined LOCAL_DEBUG (
@@ -168,14 +169,14 @@ if defined LOCAL_DEBUG (
 )
 
 :: check that everything needed from boost is there
-set BOOST_INSTALL_FLAG=10
-if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
-if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
-if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
-if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
-
+:: set BOOST_INSTALL_FLAG=10
+:: if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
+:: if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
+:: if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
+:: if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
+:: 
 :: DEBUGING
-echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+:: echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 echo ==================================== BOOST
 if not "%BOOST_INSTALL_FLAG%"=="10" (
