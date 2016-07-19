@@ -225,17 +225,12 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
 
     echo **** Checking Boost_%BOOST_VERSION% installation
     set BOOST_CHECK_FLAG=10
-    echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
     if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_CHECK_FLAG=1 )
-    echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
     if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_CHECK_FLAG=2 )
-    echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
     if not exist %BOOST_THREAD_LIB% ( set BOOST_CHECK_FLAG=3 )
-    echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
     if not exist %BOOST_SYSTEM_LIB% ( set BOOST_CHECK_FLAG=4 )
-    echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
 
-    if not "%BOOST_CHECK_FLAG%"=="10" (
+    if defined %BOOST_CHECK_FLAG% (
         echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution
         echo BOOST_CHECK_FLAG %BOOST_CHECK_FLAG%
         if defined LOCAL_DEBUG (
