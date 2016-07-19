@@ -164,15 +164,10 @@ if defined LOCAL_DEBUG (
 
 :: check that everything needed from boost is there
 set BOOST_INSTALL_FLAG=10
-echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
-echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
-echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
-echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
-echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 
 :: DEBUGING
 echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
@@ -180,7 +175,7 @@ echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
 echo ==================================== BOOST
 if not "%BOOST_INSTALL_FLAG%"=="10" (
 
-    :: check if it needs to be downloaded
+    :: download if needed
     if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
         echo ***** Downloading Boost %BOOST_VERSION% ...
         pushd %DOWNLOADS_DIR%
@@ -189,6 +184,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
         if not exist %DOWNLOADS_DIR%\boost_%BOOST_VER_USC%.zip (
             echo something went wrong on boost %BOOST_VERSION% download !!!!!!!!!
             if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
+            Exit \B 1
         )
     ) else (
         echo **** Boost_%BOOST_VER_USC%  already downloaded
@@ -201,7 +197,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
     if not exist %BOOST_SRC_DIR% (
         echo something went wrong on boost extraction!!!!!!!!!
         if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
-
+        Exit \B 1
     )
 
     echo **** Excuting bootstrap.bat...
@@ -212,45 +208,38 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
         if not exist "%BOOST_SRC_DIR%\b2.exe" (
             echo something went wrong on booststrap.bat execution!!!!!!!!!
             if defined LOCAL_DEBUG dir %BOOST_SRC_DIR%
+            Exit \B 1
         )
     )
 
     echo **** Excuting  %BOOST_SRC_DIR%\b2.exe ...
-    if not exist %BOOST_INCLUDE_DIR%\ (
-        pushd %BOOST_SRC_DIR%
-        if defined LOCAL_DEBUG @echo on
-        b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
-            --with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
-        if defined LOCAL_DEBUG @echo off
-        popd
+    pushd %BOOST_SRC_DIR%
+    if defined LOCAL_DEBUG @echo on
+    b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^
+        --with-thread --with-system --prefix=%BOOST_INSTALL_DIR% -d0 install
+    if defined LOCAL_DEBUG @echo off
+    popd
 
-        set BOOST_INSTALL_FLAG1=10
-        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
-        if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG1=1 )
-        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
-        if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG1=2 )
-        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
-        if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG1=3 )
-        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
-        if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG1=4 )
-        echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
+    set BOOST_INSTALL_FLAG=10
+    echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+    if not exist %BOOST_INCLUDE_DIR%\ ( set BOOST_INSTALL_FLAG=1 )
+    if not exist %BOOST_LIBRARY_DIR%\ ( set BOOST_INSTALL_FLAG=2 )
+    if not exist %BOOST_THREAD_LIB% ( set BOOST_INSTALL_FLAG=3 )
+    if not exist %BOOST_SYSTEM_LIB% ( set BOOST_INSTALL_FLAG=4 )
 
-        if "%BOOST_INSTALL_FLAG1%"=="10" (
-            echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
-            echo BOOST_INSTALL_FLAG1 %BOOST_INSTALL_FLAG1%
+    if not "%BOOST_INSTALL_FLAG%"=="10" (
+        echo something went wrong on %BOOST_SRC_DIR%\b2.exe execution!!!!!!!!!
+        echo BOOST_INSTALL_FLAG %BOOST_INSTALL_FLAG%
+        if defined LOCAL_DEBUG (
+            echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
+            dir %BOOST_INCLUDE_DIR%
 
-            if defined LOCAL_DEBUG (
-                echo BOOST_INCLUDE_DIR %BOOST_INCLUDE_DIR%
-                dir %BOOST_INCLUDE_DIR%
-
-                echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
-                dir %BOOST_LIBRARY_DIR%
+            echo BOOST_LIBRARY_DIR %BOOST_LIBRARY_DIR%
+            dir %BOOST_LIBRARY_DIR%
                 echo BOOST_THREAD_LIB %BOOST_THREAD_LIB%
-                echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
-            )
+            echo BOOST_SYSTEM_LIB %BOOST_SYSTEM_LIB%
         )
-    ) else (
-        echo Boost_%BOOST_VERSION% already installed
+        Exit \B 1
     )
 ) else (
     echo Boost_%BOOST_VERSION% already installed
