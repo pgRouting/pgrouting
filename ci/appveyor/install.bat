@@ -136,7 +136,7 @@ echo ====================================
 :: Download and install Boost
 ::
 
-call install-boost.bat
+call ci/appveyor/install-boost.bat
 :: deducing variables
 set BOOST_VER_USC=%BOOST_VERSION:.=_%
 set BOOST_SHORT_VER=%BOOST_VER_USC:_0=%
@@ -235,6 +235,11 @@ echo ====================================
 
 
 echo ==================================== CGAL
+
+if exist dir C:/build/local/msvc120/x64/include/CGAL (
+    echo CGAL already installed
+    goto _ExitCGAL
+)
 
 if not defined GMP_SRC_DIR set GMP_SRC_DIR=%BUILD_ROOT_DIR%\gmp\%PLATFORM%
 pushd %BUILD_ROOT_DIR%
@@ -337,9 +342,9 @@ cmake -G "%CMAKE_GENERATOR%" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%COM
     -DMPFR_LIBRARIES=%GMP_SRC_DIR%\lib\%MPFR_LIB_NAME%  ..\..\..\
 echo *******************                              calling msbuild CGAL.sln
 msbuild CGAL.sln /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
-echo *******************                              calling msbuild INSTALL.%PROJ_EXT%
 set PROJ_EXT=vcxproj
 echo PROJ_EXT %PROJ_EXT%
+echo *******************                              calling msbuild INSTALL.%PROJ_EXT%
 msbuild INSTALL.%PROJ_EXT% /target:Build /property:Configuration=%MSBUILD_CONFIGURATION%
 @echo off
 popd
@@ -362,6 +367,7 @@ if defined LOCAL_DEBUG (
     dir %GMP_SRC_DIR%
 )
 popd
+:_ExitCGAL
 echo ====================================
 
 
