@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/builtins.h"
 #include "fmgr.h"
 
-#ifndef
+#ifndef INT8ARRAYOID
 #define INT8ARRAYOID    1016
 #endif
 /*
