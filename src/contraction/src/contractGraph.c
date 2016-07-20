@@ -73,12 +73,14 @@ process(char* edges_sql,
 
     // PGR_DBG("num_cycles %ld ", num_cycles);
     // PGR_DBG("directed %d ", directed);
-    PGR_DBG("edges_sql %s",edges_sql);
+    // PGR_DBG("edges_sql %s",edges_sql);
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
+    // TODO decide if is a requirement (ERROR) or not
     if (num_cycles < 1) {
-        PGR_DBG("Required: atleast one cycle\n");
+        //TODO if ERROR free edges_sql, and the arrays
+        PGR_DBG("Required: at least one cycle\n");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
