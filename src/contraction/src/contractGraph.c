@@ -243,7 +243,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         contracted_vertices_array = (Datum *)palloc(sizeof(Datum) * 
                 (size_t)contracted_vertices_size);
         for (i = 0; i < contracted_vertices_size; ++i) {
-            PGR_DBG("Storing contracted vertex %d",result_tuples[call_cntr].contracted_vertices[i]);
+            PGR_DBG("Storing contracted vertex %ld",result_tuples[call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] = 
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
@@ -262,12 +262,13 @@ contractGraph(PG_FUNCTION_ARGS) {
                 INT4ARRAYOID, -1, 0); 
 
 #if 1
-        PGR_DBG("Storing id %d",result_tuples[call_cntr].id);
-        PGR_DBG("Storing type %s",result_tuples[call_cntr].type);
-        PGR_DBG("Storing source %d",result_tuples[call_cntr].source);
-        PGR_DBG("Storing target %d",result_tuples[call_cntr].target);
-        PGR_DBG("Storing cost %f",result_tuples[call_cntr].cost);
-        PGR_DBG("Storing contracted_vertices_size %d",result_tuples[call_cntr].contracted_vertices_size);
+        PGR_DBG("%ld | %s | %ld | %ld | %f | %d",
+        result_tuples[call_cntr].id, 
+        result_tuples[call_cntr].type,
+        result_tuples[call_cntr].source,
+        result_tuples[call_cntr].target,
+        result_tuples[call_cntr].cost,
+        result_tuples[call_cntr].contracted_vertices_size);
 #endif
 
 
