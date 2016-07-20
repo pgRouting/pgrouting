@@ -39,6 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/builtins.h"
 #include "fmgr.h"
 
+//#include "libpq/libpq.h"
+#define INT8ARRAYOID    1016
 /*
   Uncomment when needed
 */
@@ -248,7 +250,7 @@ contractGraph(PG_FUNCTION_ARGS) {
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
 
-        get_typlenbyvalalign(INT4OID, &typlen, &typbyval, &typalign);
+        get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
         #if 0
         PGR_DBG("typlen %d",typlen);
         PGR_DBG("typbyval %d",typbyval);
@@ -256,10 +258,10 @@ contractGraph(PG_FUNCTION_ARGS) {
         #endif
         arrayType =  construct_array(contracted_vertices_array,
                 contracted_vertices_size,
-                INT4OID,  typlen, typbyval, typalign);
+                INT8OID,  typlen, typbyval, typalign);
 
         TupleDescInitEntry(tuple_desc, (AttrNumber) 7, "contracted_vertices", 
-                INT4ARRAYOID, -1, 0); 
+                INT8ARRAYOID, -1, 0); 
 
 #if 1
         PGR_DBG("%ld | %s | %ld | %ld | %f | %d",
