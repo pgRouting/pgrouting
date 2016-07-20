@@ -57,10 +57,6 @@ if(WITH_DOC)
         file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/CNAME" DESTINATION "${PGROUTING_BINARY_DIR}")
 
         configure_file(
-            "${CMAKE_CURRENT_SOURCE_DIR}/index.html.in"
-            "${PGROUTING_BINARY_DIR}/doc/html/index.html")
-
-        configure_file(
             "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"
             "${PGROUTING_BINARY_DIR}/doc/html/en/index.html")
 
