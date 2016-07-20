@@ -72,7 +72,7 @@ process(char* edges_sql,
     pgr_SPI_connect();
 
     PGR_DBG("num_cycles %ld ", num_cycles);
-    PGR_DBG("directed %d ", directed;
+    PGR_DBG("directed %d ", directed);
     PGR_DBG("edges_sql %s",edges_sql);
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
