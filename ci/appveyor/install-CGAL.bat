@@ -1,7 +1,5 @@
 @echo off
 
-set LOCAL_DEBUG=1
-
 Setlocal EnableDelayedExpansion EnableExtensions
 
 if defined CGAL_LOCAL_DEBUG echo APPVEYOR_BUILD_FOLDER %APPVEYOR_BUILD_FOLDER%
