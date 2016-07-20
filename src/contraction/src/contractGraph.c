@@ -104,6 +104,7 @@ process(char* edges_sql,
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
+#if 0
     do_pgr_contractGraph(
             edges,
             total_tuples,
@@ -116,12 +117,12 @@ process(char* edges_sql,
             result_tuples,
             result_count,
             &err_msg);
+#endif
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 
     free(err_msg);
     pfree(edges);
-//#endif
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -161,7 +162,6 @@ contractGraph(PG_FUNCTION_ARGS) {
            directed BOOLEAN DEFAULT true
          **********************************************************************/ 
 
-        //PGR_DBG("Calling process");
         contraction_order = (int64_t*)
             pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
         forbidden_vertices = (int64_t*)
@@ -175,6 +175,7 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
 
+        PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 forbidden_vertices,
