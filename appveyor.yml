@@ -40,7 +40,7 @@ init:
   - git config --global core.autocrlf false
 
 install:
-  # Install pgROuting prerequisites:
+  # Install pgRouting prerequisites:
   # cmake
   # postGIS
   # CGAL
