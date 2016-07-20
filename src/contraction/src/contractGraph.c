@@ -190,7 +190,7 @@ contractGraph(PG_FUNCTION_ARGS) {
 #endif
         PGR_DBG("Cleaning arrays");
         free(contraction_order);
-        free(dden_vertices);
+        free(forbidden_vertices);
 
         PGR_DBG("Entered c code\n");
         PGR_DBG("Returned %d tuples\n", (int)result_count);
