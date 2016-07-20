@@ -162,9 +162,11 @@ contractGraph(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
-           edges_sql TEXT,
-           level BIGINT,
-           directed BOOLEAN DEFAULT true
+            edges_sql TEXT,
+            contraction_order BIGINT[],
+            forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
+            max_cycles integer DEFAULT 1,
+            directed BOOLEAN DEFAULT true
          **********************************************************************/ 
 
         forbidden_vertices = (int64_t*)
