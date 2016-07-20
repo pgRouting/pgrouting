@@ -175,7 +175,7 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
 
-#if 0
+#if 1
         PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
@@ -191,8 +191,6 @@ contractGraph(PG_FUNCTION_ARGS) {
         PGR_DBG("Cleaning arrays");
         free(contraction_order);
         free(forbidden_vertices);
-
-        PGR_DBG("Entered c code\n");
         PGR_DBG("Returned %d tuples\n", (int)result_count);
 
 
