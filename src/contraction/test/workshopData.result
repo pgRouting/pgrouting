@@ -4,15 +4,6 @@ NOTICE:  size_forbidden_vertices 0
 NOTICE:  size_contraction_order 1 
 NOTICE:  num_cycles 1 
 NOTICE:  directed 1 
-NOTICE:  Calling process
-NOTICE:  Load data
-NOTICE:  finished Loading
-NOTICE:  Total 18 tuples in query:
-NOTICE:  Starting processing
-NOTICE:  Returning 0 tuples
-
-NOTICE:  Returned message = (null)
-
 NOTICE:  Entered c code
 
 NOTICE:  Returned 0 tuples

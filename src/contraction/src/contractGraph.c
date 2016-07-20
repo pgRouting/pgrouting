@@ -175,6 +175,7 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 
 
+#if 0
         PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
@@ -186,6 +187,7 @@ contractGraph(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
+#endif
         PGR_DBG("Entered c code\n");
         PGR_DBG("Returned %d tuples\n", (int)result_count);
         
