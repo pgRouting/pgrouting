@@ -65,7 +65,7 @@ process(char* edges_sql,
         int64_t *contraction_order,
         size_t size_forbidden_vertices,
         size_t size_contraction_order,
-        int64_t num_cycles,
+        int num_cycles,
         bool directed,
         pgr_contracted_blob **result_tuples,
         size_t *result_count) {
@@ -187,7 +187,7 @@ contractGraph(PG_FUNCTION_ARGS) {
                 contraction_order,
                 size_forbidden_vertices,
                 size_contraction_order,
-                PG_GETARG_INT64(3),
+                PG_GETARG_INT32(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
