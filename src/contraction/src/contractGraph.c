@@ -71,6 +71,8 @@ process(char* edges_sql,
         size_t *result_count) {
     pgr_SPI_connect();
 
+    PGR_DBG("num_cycles %ld ", num_cycles);
+    PGR_DBG("directed %d ", directed;
     PGR_DBG("edges_sql %s",edges_sql);
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
@@ -163,8 +165,6 @@ contractGraph(PG_FUNCTION_ARGS) {
            directed BOOLEAN DEFAULT true
          **********************************************************************/ 
 
-        PGR_DBG("num_cycles %ld ", PG_GETARG_INT64(3));
-        PGR_DBG("directed %d ", PG_GETARG_BOOL(4));
         forbidden_vertices = (int64_t*)
             pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
         PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
