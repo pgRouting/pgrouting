@@ -1,6 +1,12 @@
 #ifndef STRUCTS_H_
 #define STRUCTS_H_
 
+#ifndef __cplusplus
+#include "postgres.h"
+#endif
+#include <stdint.h>
+
+#if 0
 //represents an edge
 typedef struct
 {
@@ -30,6 +36,7 @@ typedef struct
     float tot_cost;
 
 } PathElement;
+#endif
 
 typedef struct 
 {

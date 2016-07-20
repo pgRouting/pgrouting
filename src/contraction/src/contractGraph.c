@@ -43,13 +43,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   Uncomment when needed
 */
 
-// #define DEBUG
+#define DEBUG
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
+#include "./structs.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./../../contraction/src/structs.h"
 #include "./contractGraph_driver.h"
 
 PGDLLEXPORT Datum
@@ -65,18 +65,22 @@ process(char* edges_sql,
         int64_t *contraction_order,
         size_t size_forbidden_vertices,
         size_t size_contraction_order,
-        int64_t num_cycles,
+        int num_cycles,
         bool directed,
         pgr_contracted_blob **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    //PGR_DBG("Load data");
-//#ifdef DEBUG
+    PGR_DBG("num_cycles %d ", num_cycles);
+    PGR_DBG("directed %d ", directed);
+    PGR_DBG("edges_sql %s",edges_sql);
+    PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
+    // TODO decide if is a requirement (ERROR) or not
     if (num_cycles < 1) {
-        PGR_DBG("Required: atleast one cycle\n");
+        //TODO if ERROR free edges_sql, and the arrays
+        PGR_DBG("Required: at least one cycle\n");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
@@ -92,7 +96,7 @@ process(char* edges_sql,
             }
     }
     pgr_get_edges(edges_sql, &edges, &total_tuples);
-    //PGR_DBG("finished Loading");
+    PGR_DBG("finished Loading");
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -103,8 +107,9 @@ process(char* edges_sql,
     }
     PGR_DBG("Total %ld tuples in query:", total_tuples);
 
-    //PGR_DBG("Starting processing");
+    PGR_DBG("Starting processing");
     char *err_msg = NULL;
+#if 1
     do_pgr_contractGraph(
             edges,
             total_tuples,
@@ -117,12 +122,12 @@ process(char* edges_sql,
             result_tuples,
             result_count,
             &err_msg);
+#endif
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 
     free(err_msg);
     pfree(edges);
-//#endif
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -153,7 +158,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
+        // TODO fix the comment to current signature
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
@@ -162,33 +167,34 @@ contractGraph(PG_FUNCTION_ARGS) {
            directed BOOLEAN DEFAULT true
          **********************************************************************/ 
 
-        //PGR_DBG("Calling process");
-        contraction_order = (int64_t*)
-            pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
         forbidden_vertices = (int64_t*)
             pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
-
-        PGR_DBG("edges_sql %s",pgr_text2char(PG_GETARG_TEXT_P(0)));
         PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
+
+        contraction_order = (int64_t*)
+            pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
         PGR_DBG("size_contraction_order %ld ", size_contraction_order);
-        PGR_DBG("num_cycles %ld ", PG_GETARG_INT64(3));
-        PGR_DBG("directed %d ", PG_GETARG_BOOL(4));
 
 
 
+#if 1
+        PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 forbidden_vertices,
                 contraction_order,
                 size_forbidden_vertices,
                 size_contraction_order,
-                PG_GETARG_INT64(3),
+                PG_GETARG_INT32(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
-        PGR_DBG("Entered c code\n");
+#endif
+        PGR_DBG("Cleaning arrays");
+        free(contraction_order);
+        free(forbidden_vertices);
         PGR_DBG("Returned %d tuples\n", (int)result_count);
-        
+
 
         funcctx->max_calls = (uint32_t)result_count;
         funcctx->user_fctx = result_tuples;
@@ -230,14 +236,14 @@ contractGraph(PG_FUNCTION_ARGS) {
         }
 
         int contracted_vertices_size = 
-        (int)result_tuples[call_cntr].contracted_vertices_size;
+            (int)result_tuples[call_cntr].contracted_vertices_size;
 
         contracted_vertices_array = (Datum *)palloc(sizeof(Datum) * 
-        (size_t)contracted_vertices_size);
+                (size_t)contracted_vertices_size);
         for (i = 0; i < contracted_vertices_size; ++i) {
             //PGR_DBG("Storing cv %d",result_tuples[call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] = 
-            Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
+                Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
 
         get_typlenbyvalalign(INT4OID, &typlen, &typbyval, &typalign);
@@ -246,22 +252,22 @@ contractGraph(PG_FUNCTION_ARGS) {
         PGR_DBG("typalign %c",typalign);
 
         arrayType =  construct_array(contracted_vertices_array,
-            contracted_vertices_size,
-            INT4OID,  typlen, typbyval, typalign);
+                contracted_vertices_size,
+                INT4OID,  typlen, typbyval, typalign);
 
         TupleDescInitEntry(tuple_desc, (AttrNumber) 7, "contracted_vertices", 
-        INT4ARRAYOID, -1, 0); 
+                INT4ARRAYOID, -1, 0); 
 
-        #if 0
+#if 0
         PGR_DBG("Storing id %d",result_tuples[call_cntr].id);
         PGR_DBG("Storing type %s",result_tuples[call_cntr].type);
         PGR_DBG("Storing source %d",result_tuples[call_cntr].source);
         PGR_DBG("Storing target %d",result_tuples[call_cntr].target);
         PGR_DBG("Storing cost %f",result_tuples[call_cntr].cost);
         PGR_DBG("Storing contracted_vertices_size %d",result_tuples[call_cntr].contracted_vertices_size);
-        #endif
+#endif
 
-            
+
 
 
         PGR_DBG("Storing complete\n");
@@ -274,8 +280,8 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[6] = PointerGetDatum(arrayType);
         values[7] = Int64GetDatum(result_tuples[call_cntr].contracted_vertices_size);
-        
-        
+
+
 
         /*********************************************************************/
 
@@ -285,7 +291,7 @@ contractGraph(PG_FUNCTION_ARGS) {
     } else {
         // cleanup
         PGR_DBG("Freeing values");
-        #if 0
+#if 0
         if (result_tuples) {
             if (result_tuples->contracted_graph_name)
                 free(result_tuples->contracted_graph_name);
@@ -300,7 +306,7 @@ contractGraph(PG_FUNCTION_ARGS) {
             free(result_tuples);
         }
 
-        #endif
+#endif
         // cleanup
         if (result_tuples) free(result_tuples);
         SRF_RETURN_DONE(funcctx);
