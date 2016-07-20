@@ -283,7 +283,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[call_cntr].target);
         values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[6] = PointerGetDatum(arrayType);
-        values[7] = Int64GetDatum(result_tuples[call_cntr].contracted_vertices_size);
+        values[7] = Int32GetDatum(result_tuples[call_cntr].contracted_vertices_size);
 
 
 
