@@ -71,9 +71,9 @@ process(char* edges_sql,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    // PGR_DBG("num_cycles %ld ", num_cycles);
-    // PGR_DBG("directed %d ", directed);
-    // PGR_DBG("edges_sql %s",edges_sql);
+    PGR_DBG("num_cycles %d ", num_cycles);
+    PGR_DBG("directed %d ", directed);
+    PGR_DBG("edges_sql %s",edges_sql);
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
@@ -86,8 +86,6 @@ process(char* edges_sql,
         pgr_SPI_finish();
         return;
     }
-    pgr_SPI_finish();
-    return;
     for (size_t i = 0; i < size_contraction_order; ++i) {
             if (is_valid_contraction(contraction_order[i]) != 1) {
                 PGR_DBG("Error: Enter a valid Contraction Type\n");
@@ -111,7 +109,7 @@ process(char* edges_sql,
 
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
-#if 0
+#if 1
     do_pgr_contractGraph(
             edges,
             total_tuples,
@@ -160,7 +158,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-
+        // TODO fix the comment to current signature
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*

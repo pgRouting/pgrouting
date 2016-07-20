@@ -328,7 +328,7 @@ set(PgRouting_SOURCE_NAMES
     #"allpairs"
     #"withPoints"
 
-    "internalQueryTests"
+    #"internalQueryTests"
     #"funnyDijkstra"
 
     #"alpha_shape"
