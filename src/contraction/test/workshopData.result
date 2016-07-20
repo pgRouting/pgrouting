@@ -1,4 +1,47 @@
 --q0 Checking dead end contraction for workshop data
+NOTICE:  edges_sql SELECT id, source, target, cost, reverse_cost FROM edge_table
+NOTICE:  size_forbidden_vertices 0
+NOTICE:  size_contraction_order 1 
+NOTICE:  num_cycles 1 
+NOTICE:  directed 1 
+NOTICE:  Load data
+NOTICE:  finished Loading
+NOTICE:  Total 18 tuples in query:
+NOTICE:  Starting processing
+NOTICE:  Returning 5 tuples
+
+NOTICE:  Returned message = OK
+
+NOTICE:  Entered c code
+
+NOTICE:  Returned 5 tuples
+
+NOTICE:  typlen 4
+NOTICE:  typbyval 1
+NOTICE:  typalign i
+NOTICE:  Storing complete
+
+NOTICE:  typlen 4
+NOTICE:  typbyval 1
+NOTICE:  typalign i
+NOTICE:  Storing complete
+
+NOTICE:  typlen 4
+NOTICE:  typbyval 1
+NOTICE:  typalign i
+NOTICE:  Storing complete
+
+NOTICE:  typlen 4
+NOTICE:  typbyval 1
+NOTICE:  typalign i
+NOTICE:  Storing complete
+
+NOTICE:  typlen 4
+NOTICE:  typbyval 1
+NOTICE:  typalign i
+NOTICE:  Storing complete
+
+NOTICE:  Freeing values
 1|2|v|-1|-1|-1|{1}|1
 2|5|v|-1|-1|-1|{7,8}|2
 3|10|v|-1|-1|-1|{13}|1
