@@ -58,11 +58,11 @@ if defined CGAL_LOCAL_DEBUG (
 echo ----------------------------------- GMP
 if not exist %GMP_SRC_DIR%\gmp.COPYING (
     if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
-        echo Downoading gmp-all-CGAL-3.9.zip
+        echo Downloading gmp-all-CGAL-3.9.zip
         pushd %DOWNLOADS_DIR%
         curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/GMP/5.0.1/gmp-all-CGAL-3.9.zip
         if not exist %DOWNLOADS_DIR%\gmp-all-CGAL-3.9.zip (
-            echo Something went wrong Downoading gmp-all-CGAL-3.9.zip
+            echo Something went wrong Downloading gmp-all-CGAL-3.9.zip
         )
         popd
     )
@@ -85,11 +85,11 @@ echo -----------------------------------
 echo ----------------------------------- MPFR
 if not exist %GMP_SRC_DIR%\mpfr.COPYING (
     if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
-        echo Downoading mpfr-all-CGAL-3.9.zip
+        echo Downloading mpfr-all-CGAL-3.9.zip
         pushd %DOWNLOADS_DIR%
         curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/%PLATFORM%/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
         if not exist %DOWNLOADS_DIR%\mpfr-all-CGAL-3.9.zip (
-            echo Something went wrong Downoading mpfr-all-CGAL-3.9.zip
+            echo Something went wrong Downloading mpfr-all-CGAL-3.9.zip
         )
         popd
     )
@@ -116,7 +116,7 @@ if exist %COMMON_INSTALL_DIR%/include/CGAL (
 
 if not exist %BUILD_ROOT_DIR%\CGAL-%CGAL_VERSION%\ (
     if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
-        echo Downoading CGAL-%CGAL_VERSION%.zip
+        echo Downloading CGAL-%CGAL_VERSION%.zip
         pushd %DOWNLOADS_DIR%
         curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-%CGAL_VERSION%/CGAL-%CGAL_VERSION%.zip
         if not exist %DOWNLOADS_DIR%\CGAL-%CGAL_VERSION%.zip (
