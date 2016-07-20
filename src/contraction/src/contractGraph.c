@@ -243,16 +243,17 @@ contractGraph(PG_FUNCTION_ARGS) {
         contracted_vertices_array = (Datum *)palloc(sizeof(Datum) * 
                 (size_t)contracted_vertices_size);
         for (i = 0; i < contracted_vertices_size; ++i) {
-            //PGR_DBG("Storing cv %d",result_tuples[call_cntr].contracted_vertices[i]);
+            PGR_DBG("Storing contracted vertex %d",result_tuples[call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] = 
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
 
         get_typlenbyvalalign(INT4OID, &typlen, &typbyval, &typalign);
+        #if 0
         PGR_DBG("typlen %d",typlen);
         PGR_DBG("typbyval %d",typbyval);
         PGR_DBG("typalign %c",typalign);
-
+        #endif
         arrayType =  construct_array(contracted_vertices_array,
                 contracted_vertices_size,
                 INT4OID,  typlen, typbyval, typalign);
@@ -260,7 +261,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         TupleDescInitEntry(tuple_desc, (AttrNumber) 7, "contracted_vertices", 
                 INT4ARRAYOID, -1, 0); 
 
-#if 0
+#if 1
         PGR_DBG("Storing id %d",result_tuples[call_cntr].id);
         PGR_DBG("Storing type %s",result_tuples[call_cntr].type);
         PGR_DBG("Storing source %d",result_tuples[call_cntr].source);
