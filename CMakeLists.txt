@@ -2,30 +2,61 @@
 # Format convention
 # - command (lower case)
 # - VARIABLE (upper case)
-# (http://www.cmake.org/cmake/help/v2.8.10/cmake.html)
+# (http://www.cmake.org/cmake/help/v2.8.12/cmake.html)
 #
 
-cmake_minimum_required(VERSION 2.8./ FATAL_ERROR)
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(PGROUTING)
 
 #set(CMAKE_VERBOSE_MAKEFILE 1)
 
-# Configure options
+#---------------------------------------------
+# minimum versions
+#---------------------------------------------
+set(DOXYGEN_MINIMUM_VERSION "1.8.6")
+set(SPHINX_MINIMUM_VERSION "1.1")
 
-option(WITH_DOC
-    "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+message(STATUS "DOXYGEN_MINIMUM_VERSION=${DOXYGEN_MINIMUM_VERSION}")
+message(STATUS "SPHINX_MINIMUM_VERSION=${SPHINX_MINIMUM_VERSION}")
 
-option(BUILD_LATEX
-    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
 
-option(BUILD_HTML
-    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
+#---------------------------------------------
+# C++ Compiler requirements
+#---------------------------------------------
 
-option(BUILD_MAN
-    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
-SET(POSTGRESQL_BIN "" CACHE STRING "Define optional path to PostgreSQL binaries an a non-standard location.")
+include(CheckCXXCompilerFlag)
 
+if (NOT MSVC) 
+    CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+    message(STATUS "COMPILER_SUPPORTS_CXX0X= ${COMPILER_SUPPORTS_CXX0X}")
+    message(STATUS "CMAKE_CXX_COMPILER= ${CMAKE_CXX_COMPILER}")
+    if(COMPILER_SUPPORTS_CXX0X)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+    else()
+        CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+        message(STATUS "COMPILER_SUPPORTS_CXX11= ${COMPILER_SUPPORTS_CXX11}")
+        if(COMPILER_SUPPORTS_CXX11)
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+        else()
+            message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++0x nor C++11 support.
+            Please use a different C++ compiler.")
+        endif()
+    endif()
+endif()
+
+#---------------------------------------------
+# Setting kind of build
+#---------------------------------------------
+#
+# On Master cmake -DMAKE_BUILD_TYPE=Release
+#----------------------
+
+if(UNIX AND NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+else()
+    set(CMAKE_BUILD_TYPE Release)
+endif()
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
@@ -64,6 +95,8 @@ message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
 message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 
+
+
 #-----------------------------------------------------------------------------
 # CMAKE configuration
 # This is for my mingw64 environment, it should go away
@@ -77,60 +110,58 @@ set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
 include(MacroLibrary)
 include(TargetDistclean)
 
-message(STATUS "UNIX=${UNIX}")
-message(STATUS "WIN32=${WIN32}")
 if(WIN32 AND NOT MSVC)
-  set(OS_BUILD  $ENV{OS_BUILD})
-  if(NOT OS_BUILD)
-    set(OS_BUILD "64")
-  endif(NOT OS_BUILD)
-  set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}:/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg92)
-  if (NOT BOOST_ROOT)
-    set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
-  endif(NOT BOOST_ROOT)
-   
-  if (NOT CGAL_ROOT)
-    set(CGAL_ROOT c:/ming${OS_BUILD}/msys/local)
-  endif(NOT CGAL_ROOT)
-  
-  if (NOT GMP_ROOT)
-    set(GMP_ROOT c:/ming${OS_BUILD}/mingw${OS_BUILD})
-  endif(NOT GMP_ROOT)
-  message(STATUS "OS_BUILD=${OS_BUILD}")
-  message(STATUS "CGAL_ROOT=${CGAL_ROOT}")
-  message(STATUS "GMP_ROOT=${GMP_ROOT}")
-  message(STATUS "BOOST_ROOT=${BOOST_ROOT}")
-  message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
+    set(OS_BUILD  $ENV{OS_BUILD})
+    if(NOT OS_BUILD)
+        set(OS_BUILD "64")
+    endif(NOT OS_BUILD)
+    set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}:/c/ming${OS_BUILD}/projects/pgx${OS_BUILD}/pg92)
+    if (NOT BOOST_ROOT)
+        set(BOOST_ROOT c:/ming${OS_BUILD}/msys/local)
+    endif(NOT BOOST_ROOT)
+
+    if (NOT CGAL_ROOT)
+        set(CGAL_ROOT c:/ming${OS_BUILD}/msys/local)
+    endif(NOT CGAL_ROOT)
+
+    if (NOT GMP_ROOT)
+        set(GMP_ROOT c:/ming${OS_BUILD}/mingw${OS_BUILD})
+    endif(NOT GMP_ROOT)
+    message(STATUS "OS_BUILD=${OS_BUILD}")
+    message(STATUS "CGAL_ROOT=${CGAL_ROOT}")
+    message(STATUS "GMP_ROOT=${GMP_ROOT}")
+    message(STATUS "BOOST_ROOT=${BOOST_ROOT}")
+    message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
 endif(WIN32 AND NOT MSVC)
 
 
 include(FindPerl)
 if(NOT PERL_EXECUTABLE)
-  message(FATAL_ERROR " Please check your Perl installation.")
+    message(FATAL_ERROR " Please check your Perl installation.")
 endif(NOT PERL_EXECUTABLE)
 
 find_package(PostgreSQL)
 if(NOT POSTGRESQL_FOUND)
-  message(FATAL_ERROR " Please check your PostgreSQL installation.") 
+    message(FATAL_ERROR " Please check your PostgreSQL installation.") 
 endif(NOT POSTGRESQL_FOUND)
 
 #set(Boost_DEBUG ON)
 find_package(Boost)
 if(Boost_INCLUDE_DIRS)
-  message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIRS}")
-  find_file(MYVAR geometry.hpp)
-  message(STATUS "geometry.hpp  found here: ${MYVAR}")
+    message(STATUS "Boost headers were found here: ${Boost_INCLUDE_DIRS}")
+    #find_file(MYVAR geometry.hpp)
+    #message(STATUS "geometry.hpp  found here: ${MYVAR}")
 else(Boost_INCLUDE_DIRS)
-  message(FATAL_ERROR " Please check your Boost installation ") 
+    message(FATAL_ERROR " Please check your Boost installation ") 
 endif(Boost_INCLUDE_DIRS)
 
 find_package(CGAL)
 if(NOT CGAL_FOUND)
-   message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
+    message(FATAL_ERROR " Please check your CGAL installation, or set correct path to CGAL_INCLUDE_DIR and CGAL_LIBRARIES.")
 endif(NOT CGAL_FOUND)
 
 if(NOT POSTGRESQL_VERSION_STRING)
-  message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
+    message(FATAL_ERROR "pg_config was not found. Please check your PostgreSQL installation!")
 endif(NOT POSTGRESQL_VERSION_STRING)
 
 message(STATUS "POSTGRESQL_VERSION_STRING is ${POSTGRESQL_VERSION_STRING}")
@@ -140,48 +171,57 @@ string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQ
 message(STATUS "PGSQL_VERSION is ${PGSQL_VERSION}")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
+
 #TODO maybe needs a wrapper for visual studio
 if(WIN32 AND MSVC)
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_DEPRECATE")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_DEPRECATE")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_WARNINGS")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_WARNINGS")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_NONSTDC_NO_DEPRECATE")
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -EHsc")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_DEPRECATE")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_DEPRECATE")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_SECURE_NO_WARNINGS")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_WARNINGS")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_NONSTDC_NO_DEPRECATE")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -EHsc")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
 endif()
 
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
-  message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
+    message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
 endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
 
 
 execute_process(
-  COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
-  OUTPUT_STRIP_TRAILING_WHITESPACE
-  OUTPUT_VARIABLE LIB_DIR)
+    COMMAND ${POSTGRESQL_PG_CONFIG} --pkglibdir
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    OUTPUT_VARIABLE LIB_DIR)
 
 if(LIB_DIR)
-  message(STATUS "Install directory for libraries is set to ${LIB_DIR}")
+    message(STATUS "Install directory for libraries is set to ${LIB_DIR}")
 else(LIB_DIR)
-  message(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
+    message(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
 endif(LIB_DIR)
 
 set(LIBRARY_INSTALL_PATH ${LIB_DIR})
 
 execute_process(
-  COMMAND ${POSTGRESQL_PG_CONFIG} --sharedir
-  OUTPUT_STRIP_TRAILING_WHITESPACE
-  OUTPUT_VARIABLE SHARE_DIR)
+    COMMAND ${POSTGRESQL_PG_CONFIG} --sharedir
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+    OUTPUT_VARIABLE SHARE_DIR)
 
 if(SHARE_DIR)
-  set(SHARE_DIR "${SHARE_DIR}/extension")
-  message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
+    set(SHARE_DIR "${SHARE_DIR}/extension")
+    message(STATUS "Extension directory for SQL files is set to ${SHARE_DIR}")
 else(SHARE_DIR)
-  message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
+    message(FATAL_ERROR "pg_config --sharedir failed to return a value. Please check your PostgreSQL installation!")
 endif(SHARE_DIR)
 
+#-------------------------------------
 # Handles documentation
+#-------------------------------------
+set(PROJECT_NAME  "pgRouting")
+set(PROJECT_BRIEF "pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.")
+set(PROJECT_NUMBER  "${PGROUTING_GIT_TAG}")
+add_subdirectory(doxygen)
 add_subdirectory(doc)
+#-------------------------------------
 
 #include directories: files in alphabetical order
 set(PGROUTING_INCLUDE_DIRECTORIES
@@ -196,56 +236,77 @@ message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
 
 get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
 foreach(dir ${dirs})
-   message(STATUS "dir='${dir}'")
+    message(STATUS "dir='${dir}'")
 endforeach()
 
 
 
 if(WIN32)
-  include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
-  if(MSVC)
-    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32_msvc/)
-  endif(MSVC)
+    include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32)
+    if(MSVC)
+        include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32_msvc/)
+    endif(MSVC)
 endif(WIN32)
 
 # we need link libpostgres.a on win32 env
 if(WIN32)
-  message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
-  link_directories(${POSTGRESQL_LIBRARIES} ${LIB_DIR})
-  link_libraries(postgres)
+    message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
+    link_directories(${POSTGRESQL_LIBRARIES} ${LIB_DIR})
+    link_libraries(postgres)
 endif(WIN32)
 
 # TODO default compilation with -DNDEBUG 
 
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #compiler directives
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}")
-if(APPLE)
-  # support GNU(Xcode<4) and Clang(Xcode>=4)
-  if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g -frounding-math")
-  else()
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -g")
-  endif()
-  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -std=c++0x -frounding-math")
-  else()
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -std=c++0x")
-  endif()
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-elseif(UNIX) # UNIX system variable include UNIX like system(i.e. APPLE and CYGWIN)
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 -fPIC -g -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes -frounding-math")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC -O2  -g -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra  -frounding-math")
+if(UNIX)
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 ")
+endif()
 
-    #set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fPIC -O2 -frounding-math")
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG -fPIC -O2 -std=c++0x -frounding-math")
 
-elseif(WIN32)
-  if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-      set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -O2 -g -frounding-math")
-  endif()
-  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -DNDEBUG -std=c++0x -frounding-math")
-  endif()
+CHECK_C_COMPILER_FLAG("-frounding-math" C_COMPILER_SUPPORTS_ROUNDING_MATH)
+CHECK_CXX_COMPILER_FLAG("-frounding-math" CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
+if(C_COMPILER_SUPPORTS_ROUNDING_MATH)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frounding-math")
+endif()
+if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math")
+endif()
+
+
+if(NOT WIN32)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC ")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
+endif()
+
+
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#if(CDEBUG)
+    message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
+    message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
+    message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
+
+    message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
+    message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
+    message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
+
+    message(STATUS "UNIX=${UNIX}")
+    message(STATUS "WIN32=${WIN32}")
+    message(STATUS "MSVC=${MSVC}")
+#endif()
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+if(UNIX AND NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+else()
+    set(CMAKE_BUILD_TYPE Release)
 endif()
 
 # List variable to collect module SQL file names
@@ -316,11 +377,11 @@ endforeach()
 
 list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
-#if (CDEBUG)
+if (CDEBUG)
     foreach (files ${LIST_PACKAGE_SQL_FILES})
         message("${files}")
     endforeach()
-#endif()
+endif()
 
 
 #add_subdirectory(src)

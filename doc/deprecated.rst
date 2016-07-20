@@ -41,7 +41,7 @@ Auxiliary functions
 .. toctree::
    :hidden:
 
-   ../src/astar/doc/pgr_astar
+   ../src/astar/doc/pgr_astar-v2
    ../src/tsp/doc/pgr_tsp-V2.0
    ../src/convenience/doc/pgr_flipEdges
    ../src/convenience/doc/pgr_vidsToDMatrix

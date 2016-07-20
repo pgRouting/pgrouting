@@ -27,7 +27,8 @@ branches:
   only:
     - master
     - develop
-    - pickDeliver/pgr_pickDeliverClass
+    - test/appveyor
+    - cmake/doxy
 
 env:
   - POSTGRESQL_VERSION=9.1
@@ -55,6 +56,7 @@ addons:
       - libcgal-dev
       - postgresql-server-dev-all
       - postgresql-common
+      - python-sphinx
 
 
 install:
@@ -64,6 +66,11 @@ install:
   - sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
 
 before_script:
+  ## Install doxygen
+  - sudo add-apt-repository ppa:libreoffice/libreoffice-4-4 -y && sudo apt-get -qq update &&
+    sudo apt-get --no-install-suggests --no-install-recommends -qq install doxygen  &&
+    doxygen --version ;
+
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
@@ -90,5 +97,7 @@ after_script:
   # blank
 
 #after_success:
-  #- ./tools/travis/pgrouting_deploy.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
+  - make doc
+  - doxygen -v
+  - make doxy
 

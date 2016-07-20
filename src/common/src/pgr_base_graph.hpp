@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #pragma once
-#if defined(__MINGW32__) || defined(_MSC_VER)
+#if defined(__MinGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #undef min
@@ -108,7 +108,7 @@ The code is prepared to be used for:
 boost::adjacency_list
 < boost::vecS,  // not tested with other values
 boost::vecS,  // not tested with other values
-boost::undirectedS,  // USING UNDIRECTED 
+boost::undirectedS,  // USinG UNDIRECTED 
 Basic_vertex,  // the vertex class
 Basic_edge >   // the edge class
 ~~~~
@@ -325,7 +325,7 @@ class Pgr_base_graph {
 
      //! @name The Graph
      //@{
-     //! \brief Constructor
+     //! @brief Constructor
      /*!
        - Prepares the graph to be of type gtype
        - inserts the vertices
@@ -358,7 +358,7 @@ class Pgr_base_graph {
 
      //! @name Insert data
      //@{
-     /*! \brief Inserts *count* edges of type *T* into the graph
+     /*! @brief Inserts *count* edges of type *T* into the graph
       *  
       *  Converts the edges to a std::vector<T> & calls the overloaded
       *  twin function.
@@ -376,7 +376,7 @@ class Pgr_base_graph {
         The set of edges should not have an illegal vertex defined
         
         When the graph is empty calls:
-        - \bextract_vertices
+        - @b extract_vertices
         and throws an exeption if there are illegal vertices.
         
         
@@ -429,12 +429,12 @@ class Pgr_base_graph {
 
      //! @name boost wrappers
      //@{
-     //! \brief get the out-degree  of a vertex
+     //! @brief get the out-degree  of a vertex
 
      /*!
-       \returns 0: The out degree of a vertex that its not in the graph
+       @returns 0: The out degree of a vertex that its not in the graph
 
-       @param [IN] *vertex_id* original vertex id
+       @param [in] vertex_id original vertex id
        */
      degree_size_type out_degree(int64_t vertex_id) const{
          if (!has_vertex(vertex_id)) {
@@ -493,7 +493,7 @@ class Pgr_base_graph {
 
      //! @name edge disconection/reconnection 
      //@{
-     //! \brief Disconnects all edges from p_from to p_to
+     //! @brief Disconnects all edges from p_from to p_to
      /*!
 
        - No edge is disconnected if the vertices id's do not exist in the graph
@@ -503,28 +503,28 @@ class Pgr_base_graph {
        ![disconnect_edge(2,3) on an UNDIRECTED graph](disconnectEdgeUndirected.png)
        ![disconnect_edge(2,3) on a DIRECTED graph](disconnectEdgeDirected.png)
 
-       @param [IN] *p_from* original vertex id of the starting point of the edge
-       @param [IN] *p_to*   original vertex id of the ending point of the edge
+       @param [in] p_from original vertex id of the starting point of the edge
+       @param [in] p_to   original vertex id of the ending point of the edge
        */
      void disconnect_edge(int64_t p_from, int64_t p_to);
 
 
-     //! \brief Disconnects the outgoing edges with a particular original id from a vertex
+     //! @brief Disconnects the outgoing edges with a particular original id from a vertex
      /*!
 
        - No edge is disconnected if it doesn't exist in the graph
        - Removed edges are stored for future reinsertion
        - all outgoing edges with the edge_id are removed if they exist
 
-       @param [IN] *vertex_id* original vertex
-       @param [IN] *edge_id* original edge_id
+       @param [in] vertex_id original vertex
+       @param [in] edge_id original edge_id
        */
      void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id);
 
 
 
 
-     //! \brief Disconnects all incomming and outgoing edges from the vertex
+     //! @brief Disconnects all incomming and outgoing edges from the vertex
      /*!
        boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
        simulated by disconnecting the vertex from the graph
@@ -536,13 +536,13 @@ class Pgr_base_graph {
        ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
        ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
 
-       @param [IN] *p_vertex* original vertex id of the starting point of the edge
+       @param [in] p_vertex original vertex id of the starting point of the edge
        */
      void disconnect_vertex(int64_t p_vertex);
      void disconnect_vertex(V vertex);
 
 
-     //! \brief Reconnects all edges that were removed
+     //! @brief Reconnects all edges that were removed
      void restore_graph();
 
      //@}
@@ -561,7 +561,7 @@ class Pgr_base_graph {
                      out != out_end; ++out) {
                  log << ' ' << g.graph[*out].id << "=(" << g.graph[source(*out, g.graph)].id
                      << ", " << g.graph[target(*out, g.graph)].id << ") = "
-                     <<  g.graph[*out].cost <<"\t";
+                     <<  g.graph[*out].cost <<"@t";
              }
              log << std::endl;
          }

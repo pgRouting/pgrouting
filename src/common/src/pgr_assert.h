@@ -26,7 +26,7 @@
 #endif
 
 
-/*! \file vrp_assert.h
+/*! \file pgr_assert.h
  * **Do not crash the backend server.**
  *
  * \brief An assert functionality that uses C++ throw().
@@ -108,7 +108,7 @@ std::string get_backtrace(const std::string &);
  */
 class AssertFailedException : public std::exception {
     private:
-        const std::string str;   ///< str Holds what() we got as message from the #define
+        const std::string str;   ///< str Holds what() we got as message
 
     public:
         virtual const char *what() const throw();
