@@ -95,7 +95,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
         Exit \B 1
     )
 
-    echo **** Excuting bootstrap.bat...
+    echo **** Executing bootstrap.bat...
     if not exist "%BOOST_SRC_DIR%\b2.exe" (
         pushd %BOOST_SRC_DIR%
         call "bootstrap.bat"
@@ -107,7 +107,7 @@ if not "%BOOST_INSTALL_FLAG%"=="10" (
         )
     )
 
-    echo **** Excuting  %BOOST_SRC_DIR%\b2.exe ...
+    echo **** Executing  %BOOST_SRC_DIR%\b2.exe ...
     pushd %BOOST_SRC_DIR%
     if defined BOOST_LOCAL_DEBUG @echo on
     b2 toolset=%BOOST_TOOLSET% variant=release link=static threading=multi address-model=%BOOST_ADDRESS_MODEL% ^

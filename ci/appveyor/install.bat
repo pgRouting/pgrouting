@@ -58,7 +58,7 @@ set CURR_CMAKE=%CURR_CMAKE:~14%
 if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
-    echo Downoading cmake %CMAKE_VERSION%
+    echo Downloading cmake %CMAKE_VERSION%
     pushd %DOWNLOADS_DIR%
     curl -L -O -S -s https://cmake.org/files/v3.5/cmake-%CMAKE_VERSION%-win32-%platform%.msi
     popd
@@ -95,18 +95,18 @@ echo ==================================== POSTGIS
 if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     cd %APPVEYOR_BUILD_FOLDER%
     if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
-        echo Downoading postGIS %PG_VERSION%
+        echo Downloading PostGIS %PG_VERSION%
         pushd %DOWNLOADS_DIR%
         curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
         popd
         if not exist %DOWNLOADS_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip (
-            echo something went wrong on postgis %PG_VERSION% download !!!!!!!!!
+            echo something went wrong on PostGIS %PG_VERSION% download !!!!!!!!!
             if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
             Exit \B 1
         )
     )
 
-    echo Extracting postGIS %PG_VERSION%
+    echo Extracting PostGIS %PG_VERSION%
     pushd %DOWNLOADS_DIR%
     7z x -o%BUILD_ROOT_DIR%\ postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48.zip
     popd
@@ -115,15 +115,15 @@ if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
     xcopy /e /y /q %BUILD_ROOT_DIR%\postgis-pg94-binaries-%PG_VERSION%w%arch%gcc48 C:\Progra~1\PostgreSQL\9.4
 
     if not exist "C:\Progra~1\PostgreSQL\9.4\makepostgisdb_using_extensions.bat" (
-        echo something went wrong on postGIS %PG_VERSION% installation !!!!!!!!!
+        echo something went wrong on PostGIS %PG_VERSION% installation !!!!!!!!!
         if defined LOCAL_DEBUG dir %DOWNLOADS_DIR%
         if defined LOCAL_DEBUG dir C:\Progra~1\PostgreSQL\9.4\
         Exit \B 1
     ) else (
-        echo **** postGIS %PG_VERSION% %arch% installed
+        echo **** PostGIS %PG_VERSION% %arch% installed
     )
 ) else (
-    echo postGIS %PG_VERSION% %arch% already installed
+    echo PostGIS %PG_VERSION% %arch% already installed
 )
 echo ====================================
 
