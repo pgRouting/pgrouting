@@ -1,6 +1,0 @@
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/common/src/CMakeFiles/common.dir
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/contraction/src/CMakeFiles/contraction.dir
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles/distclean.dir
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/myastar/src/CMakeFiles/myastar.dir
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/src/mydijkstra/src/CMakeFiles/mydijkstra.dir
-/home/rohith/mystuff/labwork/3-1/codes/OSMContraction/src/contraction/src/build/CMakeFiles/myrouting_library.dir
