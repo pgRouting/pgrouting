@@ -339,24 +339,24 @@ set(PgRouting_SOURCE_NAMES
 
 
     "dijkstra"
-    #"driving_distance"
-    #"ksp"
-    #"allpairs"
-    #"withPoints"
+    "driving_distance"
+    "ksp"
+    "allpairs"
+    "withPoints"
 
-    #"internalQueryTests"
+    "internalQueryTests"
     #"funnyDijkstra"
 
-    #"alpha_shape"
+    "alpha_shape"
 
-    #"astar"
-    #"bd_astar"
-    #"bd_dijkstra"
-    #"trsp" #2.0
-    #"tsp" #2.0
+    "astar"
+    "bd_astar"
+    "bd_dijkstra"
+    "trsp" #2.0
+    "tsp" #2.0
 
-    #"vrp_basic"
-    #"pickDeliver"
+    "vrp_basic"
+    "pickDeliver"
     "contraction"
 
     )
