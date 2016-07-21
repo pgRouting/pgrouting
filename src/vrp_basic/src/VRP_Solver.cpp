@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <algorithm>
 #include "VRP_Solver.h"
+#include <math.h>
 
 #undef PGR_LOGGER_ON
 #define PGR_LOGGER_LOC
