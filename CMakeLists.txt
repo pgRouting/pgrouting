@@ -373,15 +373,15 @@ endforeach()
 # List variable to collect module SQL file names
 #-----------------------------------------------------------------------------
 set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
-    #"apsp_johnson"  #V2.0
-    #"apsp_warshall" #V2.0
-    #"kdijkstra"     #V2.0
-    #"vrppdtw" #2.1
+    "apsp_johnson"  #V2.0
+    "apsp_warshall" #V2.0
+    "kdijkstra"     #V2.0
+    "vrppdtw" #2.1
 
-    #"convenience"
+    "convenience"
     "topology"
-    #"label_graph"
-    #"costMatrix"
+    "label_graph"
+    "costMatrix"
 
     )
 
