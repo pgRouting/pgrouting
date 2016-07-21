@@ -28,7 +28,8 @@ branches:
     - master
     - develop
     - test/appveyor
-    - cmake/doxy
+    - test/merge-gsoc-flow
+    - gsoc-flow
 
 env:
   - POSTGRESQL_VERSION=9.1

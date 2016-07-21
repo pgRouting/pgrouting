@@ -107,6 +107,13 @@ typedef struct{
     double route_agg_cost;
 } Routes_t;
 
+typedef struct {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  bool going;
+  bool coming;
+} pgr_basic_edge_t;
 
 typedef struct {
     int64_t id;
@@ -115,6 +122,14 @@ typedef struct {
     double cost;
     double reverse_cost;
 } pgr_edge_t;
+
+typedef struct {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  int64_t flow;
+  int64_t residual_capacity;
+} pgr_flow_t;
 
 typedef struct {
     int seq;
@@ -154,7 +169,8 @@ enum {
     ANY_INTEGER,
     ANY_NUMERICAL,
     TEXT,
-    CHAR1
+    CHAR1,
+    BOOLEAN
 } expectType;
 
 typedef

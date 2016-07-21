@@ -1,0 +1,54 @@
+-- q1
+SELECT * FROM pgr_maximumcardinalitymatching(
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table'
+);
+
+ id | source | target
+----+--------+--------
+  1 |      1 |      2
+  2 |      4 |      3
+  3 |      6 |      9
+  4 |      7 |      8
+  5 |     10 |     13
+  6 |     11 |     12
+  7 |     14 |     15
+  8 |     16 |     17
+(8 rows)
+
+-- q2
+SELECT * FROM pgr_maximumcardinalitymatching(
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+    TRUE
+);
+
+ id | source | target
+----+--------+--------
+  1 |      1 |      2
+  2 |      4 |      3
+  3 |      6 |      9
+  4 |      7 |      8
+  5 |     10 |     13
+  6 |     11 |     12
+  7 |     14 |     15
+  8 |     16 |     17
+(8 rows)
+
+-- q3
+SELECT * FROM pgr_maximumcardinalitymatching(
+    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
+    FALSE
+);
+
+ id | source | target
+----+--------+--------
+  1 |      1 |      2
+  2 |      3 |      4
+  3 |      6 |      9
+  4 |      7 |      8
+  5 |     10 |     13
+  6 |     11 |     12
+  7 |     14 |     15
+  8 |     16 |     17
+(8 rows)
+
+-- q4

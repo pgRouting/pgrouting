@@ -359,6 +359,7 @@ set(PgRouting_SOURCE_NAMES
     "vrp_basic"
     "pickDeliver"
 
+    "max_flow"
     )
 
 #-------------------

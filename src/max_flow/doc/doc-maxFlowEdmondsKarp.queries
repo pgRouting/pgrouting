@@ -1,0 +1,99 @@
+-- q1
+SELECT * FROM pgr_maxflowedmondskarp(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , 6, 11
+);
+
+
+ id | source | target | flow | residual_capacity
+----+--------+--------+------+-------------------
+  1 |      5 |     10 |  100 |                30
+  2 |      6 |      5 |  100 |                30
+  3 |      6 |     11 |  130 |                 0
+  4 |      6 |      9 |   50 |                80
+  5 |      9 |     12 |   50 |                30
+  6 |     10 |     11 |  100 |                 0
+  7 |     12 |     11 |   50 |                 0
+(7 rows)
+
+-- q2
+SELECT * FROM pgr_maxflowedmondskarp(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , 6, ARRAY[12,1,13]::INTEGER[]
+);
+
+ id | source | target | flow | residual_capacity
+----+--------+--------+------+-------------------
+  1 |      2 |      1 |  130 |                 0
+  2 |      3 |      2 |   80 |                20
+  3 |      4 |      3 |   30 |               100
+  4 |      5 |      2 |   50 |                 0
+  5 |      5 |     10 |   80 |                50
+  6 |      6 |      5 |  130 |                 0
+  7 |      6 |     11 |  100 |                30
+  8 |      6 |      9 |  110 |                20
+  9 |      6 |      3 |   50 |                 0
+ 10 |      9 |      4 |   30 |                50
+ 11 |      9 |     12 |   80 |                 0
+ 12 |     10 |     13 |   80 |                 0
+ 13 |     11 |     12 |  100 |                 0
+(13 rows)
+
+-- q3
+SELECT * FROM pgr_maxflowedmondskarp(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , ARRAY[4,8,11]::INTEGER[], 10
+);
+
+ id | source | target | flow | residual_capacity
+----+--------+--------+------+-------------------
+  1 |      5 |     10 |  130 |                 0
+  2 |      6 |      5 |   80 |                50
+  3 |      8 |      5 |   50 |                 0
+  4 |     11 |      6 |   80 |                20
+  5 |     11 |     10 |   80 |                 0
+(5 rows)
+
+-- q4
+SELECT * FROM pgr_maxflowedmondskarp(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table AS edges, category as c1, category as c2
+    WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
+    , ARRAY[2,5,10]::INTEGER[], ARRAY[4,9,12]::INTEGER[]
+);
+
+ id | source | target | flow | residual_capacity
+----+--------+--------+------+-------------------
+  1 |      2 |      3 |   80 |                 0
+  2 |      3 |      4 |  100 |                 0
+  3 |      5 |      6 |  100 |                 0
+  4 |      6 |      9 |  130 |                 0
+  5 |      6 |      3 |   20 |                30
+  6 |     10 |     11 |  100 |                 0
+  7 |     11 |      6 |   50 |                50
+  8 |     11 |     12 |   50 |                50
+(8 rows)
+
+-- q5
