@@ -28,6 +28,7 @@ branches:
     - master
     - develop
     - test/appveyor
+    - test/merge-gsoc-flow
     - gsoc-flow
 
 env:
