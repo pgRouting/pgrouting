@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
@@ -73,20 +74,10 @@ process( char* edges_sql,
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
-    /* Available types:
-     * pgr_edge_t
-     * Pgr_edge_xy_t
-     */
-    pgr_edge_t *edges = NULL;
+    MY_EDGE_TYPE *edges = NULL;
     size_t total_edges = 0;
 
-    /* Available functions:
-     * pgr_get_edges
-     * pgr_get_edges_xy
-     * pgr_get_edges_xy_reversed
-     * pgr_get_edges_no_id
-     */
-    pgr_get_edges(edges_sql, &edges, &total_edges);
+    MY_EDGE_FUNCTION(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
@@ -101,13 +92,13 @@ process( char* edges_sql,
     char *err_msg = NULL;
     char *log_msg = NULL;
 
+    // Code standard:
+    // Pass the arrays and the sizes on the same line
     clock_t start_t = clock();
     do_pgr_MY_FUNCTION_NAME(
-            edges,
-            total_edges,
+            edges, total_edges,
             start_vid,
-            end_vidsArr,
-            size_end_vidsArr,
+            end_vidsArr, size_end_vidsArr,
             directed,
             result_tuples,
             result_count,
@@ -170,6 +161,9 @@ MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
         PGR_DBG("targetsArr size %ld ", size_end_vidsArr);
 
         PGR_DBG("Calling process");
+        // Code standard:
+        // Use same order as in the query
+        // Pass the array and it's size on the same line
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
@@ -178,7 +172,8 @@ MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        PGR_DBG("Cleaning arrays");
+        // while developing leave the message as a reminder
+        PGR_DBG("Cleaning arrays using free(<array-name>)");
         free(end_vidsArr);
         /*                                                                             */
         /*******************************************************************************/

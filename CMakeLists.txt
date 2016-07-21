@@ -6,9 +6,44 @@
 #
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+
+#---------------------------------------------
+# Setting kind of build
+#---------------------------------------------
+#
+# On Master cmake -DMAKE_BUILD_TYPE=Release
+#----------------------
+
+
+message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
+if(NOT CMAKE_BUILD_TYPE)
+    if (UNIX)
+        set(CMAKE_BUILD_TYPE DEBUG CACHE STRING
+            "Choose the type of build, options are: None Debug Release RelWithDebInfo
+            MinSizeRel."
+            FORCE)
+        message("Running as: Debug")
+    else()
+        set(CMAKE_BUILD_TYPE RELEASE CACHE STRING
+            "Choose the type of build, options are: None Debug Release RelWithDebInfo
+            MinSizeRel."
+            FORCE)
+        message("Running as: Release")
+    endif()
+endif()
+message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
+
+
+#---------------------------------------------
+#---------------------------------------------
+#---------------------------------------------
+
 project(PGROUTING)
 
-#set(CMAKE_VERBOSE_MAKEFILE 1)
+#---------------------------------------------
+#---------------------------------------------
+#---------------------------------------------
+
 
 #---------------------------------------------
 # minimum versions
@@ -43,19 +78,6 @@ if (NOT MSVC)
             Please use a different C++ compiler.")
         endif()
     endif()
-endif()
-
-#---------------------------------------------
-# Setting kind of build
-#---------------------------------------------
-#
-# On Master cmake -DMAKE_BUILD_TYPE=Release
-#----------------------
-
-if(UNIX AND NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
-else()
-    set(CMAKE_BUILD_TYPE Release)
 endif()
 
 #-----------------------------------------------------------------------------
@@ -283,31 +305,27 @@ endif()
 
 
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
+#TODO remove the optimizer falg when pgr_bdijkstra gets fixed
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -O1 -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #if(CDEBUG)
-    message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
-    message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
-    message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
+message(STATUS "CMAKE_CXX_FLAGS_DEBUG= ${CMAKE_CXX_FLAGS_DEBUG}")
+message(STATUS "CMAKE_CXX_FLAGS_RELEASE= ${CMAKE_CXX_FLAGS_RELEASE}")
+message(STATUS "CMAKE_CXX_FLAGS= ${CMAKE_CXX_FLAGS}")
 
-    message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
-    message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
-    message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
+message(STATUS "CMAKE_C_FLAGS_DEBUG= ${CMAKE_C_FLAGS_DEBUG}")
+message(STATUS "CMAKE_C_FLAGS_RELEASE= ${CMAKE_C_FLAGS_RELEASE}")
+message(STATUS "CMAKE_C_FLAGS= ${CMAKE_C_FLAGS}")
 
-    message(STATUS "UNIX=${UNIX}")
-    message(STATUS "WIN32=${WIN32}")
-    message(STATUS "MSVC=${MSVC}")
+message(STATUS "UNIX=${UNIX}")
+message(STATUS "WIN32=${WIN32}")
+message(STATUS "MSVC=${MSVC}")
 #endif()
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-if(UNIX AND NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
-else()
-    set(CMAKE_BUILD_TYPE Release)
-endif()
 
 # List variable to collect module SQL file names
 set(PACKAGE_SQL_FILES "")

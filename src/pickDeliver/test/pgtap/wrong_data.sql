@@ -1,6 +1,5 @@
 
 \i setup.sql
-\i pickDeliver_pgtap_data.sql
 
 SELECT plan(11);
 
