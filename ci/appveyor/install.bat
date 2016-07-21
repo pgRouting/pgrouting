@@ -139,7 +139,7 @@ call ci/appveyor/install-boost.bat
 :: CGAL & GMP & MPFR
 ::
 ::
-:: set CGAL_LOCAL_DEBUG=1
+set CGAL_LOCAL_DEBUG=1
 call ci/appveyor/install-CGAL.bat
 
 
