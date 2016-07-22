@@ -26,43 +26,83 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_types.h"
 
-/*! @name pgr_get_edges
- *
- *
- * 
- */
 //@{
 
-/*! @brief read edges where id is of no interest
-
-Edges: where the id is not of interest
-
-bigint source,
-bigint target,
-float8 cost,
-float8 reverse_cost
+/*! @brief pgr_get_edges_no_id 
 
 Currently used in:
 allpairs
 
-@param[in] sql
+no_id_edges_sql_start
+
+Description of the edges_sql query
+...............................................................................
+
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
+
+================  ===================   ======== =================================================
+Column            Type                  Default  Description
+================  ===================   ======== =================================================
+**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
+                                                   - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
+                                                   - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+no_id_edges_sql_end
+
+@param[in] edges_sql
 @param[out] edges
 @param[out] total_edges
 */
 void pgr_get_edges_no_id(
-        char *sql,
+        char *edges_sql,
         pgr_edge_t **edges,
         size_t *total_edges);
 
-/*! @brief read edges 
 
-Edges:
 
-bigint id,
-bigint source,
-bigint target,
-float8 cost
-float8 reverse_cost
+
+/*! @brief pgr_get_edges 
+
+For queries of the type:
+~~~~{.c}
+SELECT id, source, target, cost, [reverse_cost]
+FROM edge_table;
+~~~~
+
+basic_edges_sql_start
+
+Description of the edges_sql query
+...............................................................................
+
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
+
+================  ===================   ======== =================================================
+Column            Type                  Default  Description
+================  ===================   ======== =================================================
+**id**            ``ANY-INTEGER``                Identifier of the edge.
+**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
+                                                   - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
+                                                   - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+basic_edges_sql_end
 
 @param[in] sql
 @param[out] edges
@@ -72,6 +112,9 @@ void pgr_get_edges(
         char *sql,
         pgr_edge_t **edges,
         size_t *total_edges);
+
+
+
 
 /*! @name pgr_get_edges_xy
  

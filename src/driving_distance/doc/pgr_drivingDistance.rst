@@ -35,9 +35,9 @@ Signature Summary
 
 .. code-block:: sql
 
-    pgr_drivingDistance(sql, start_vid, distance)
-    pgr_drivingDistance(sql, start_vid, distance, directed)
-    pgr_drivingDistance(sql, start_vids, distance, directed, equicost)
+    pgr_drivingDistance(edges_sql, start_vid, distance)
+    pgr_drivingDistance(edges_sql, start_vid, distance, directed)
+    pgr_drivingDistance(edges_sql, start_vids, distance, directed, equicost)
 
     RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
 
@@ -53,7 +53,7 @@ Minimal Use
 
 .. code-block:: sql
 
-    pgr_drivingDistance(sql, start_vid, distance)
+    pgr_drivingDistance(edges_sql, start_vid, distance)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -66,7 +66,7 @@ Driving Distance From A Single Starting Vertex
 
 .. code-block:: sql
 
-    pgr_drivingDistance(sql, start_vid, distance, directed)
+    pgr_drivingDistance(edges_sql, start_vid, distance, directed)
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 
@@ -78,15 +78,16 @@ Driving Distance From Multiple Starting Vertices
 
 .. code-block:: sql
 
-    pgr_drivingDistance(sql, start_vids, distance, directed, equicost)
+    pgr_drivingDistance(edges_sql, start_vids, distance, directed, equicost)
     RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../dijkstra/doc/pgr_dijkstra_parameters.txt
-    :start-after: only edges start
-    :end-before: only edges end
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
 
 Description of the parameters of the signatures
 .................................................
