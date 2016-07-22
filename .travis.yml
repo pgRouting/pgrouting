@@ -92,7 +92,7 @@ script:
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   # tests as part of script so if a test fails the build fails
   - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION postgres
-  - ./tools/testers/pg_prove_tests.sh postgres
+  - ./tools/testers/pg_prove_tests.sh postgres DEBUG
 
 after_script: 
   # blank
