@@ -47,7 +47,6 @@ extern "C" {
 }
 #include "./../../common/src/pgr_alloc.hpp"
 
-// #define DEBUG
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
@@ -151,7 +150,7 @@ do_pgr_many_to_one_withPoints(
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-#ifndef DEBUG
+#ifndef NDEBUG
         {
             std::ostringstream log;
             log << "OK";

@@ -362,8 +362,12 @@ set(PgRouting_SOURCE_NAMES
 
     )
 
-if(${CMAKE_BUILD_TYPE} MATCHES "DEBUG")
+if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
+    message("including InternalQueryTests")
     set(PgRouting_SOURCE_NAMES ${PgRouting_SOURCE_NAMES} "internalQueryTests")
+else()
+    message("-------->      NO InternalQueryTests")
+    message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
 endif()
 
 

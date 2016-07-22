@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-//#define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -128,7 +127,7 @@ process(
     time_msg("Processing withPoints many to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("LOG: %s\n", err_msg);
-    free(log_msg);
+    if (log_msg) free(log_msg);
 
     if (err_msg) {
         free(start_pidsArr);

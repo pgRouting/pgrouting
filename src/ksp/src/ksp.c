@@ -153,7 +153,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
     path = (General_path_element_t*) funcctx->user_fctx;
 
     if (call_cntr < max_calls) {   /* do when there is more left to send */
-        PGR_DBG("returning %ld \n", call_cntr);
+        PGR_DBG("returning %u \n", call_cntr);
         HeapTuple    tuple;
         Datum        result;
         /* //Datum values[4];
