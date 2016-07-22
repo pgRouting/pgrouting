@@ -646,8 +646,8 @@ Vertex 1 is contracted to edge -1:
     id: -1,
     source: 3,
     target: 5,
-    cost: 6.908983554661103459307219084082e-310,
-    first: 16,
+    cost: 6.90898356e-310,
+    first: 64,
     contracted vertices: {0, 1, }
 }
 Vertex 4 is contracted to edge -2:
@@ -655,8 +655,8 @@ Vertex 4 is contracted to edge -2:
     id: -2,
     source: 3,
     target: 9,
-    cost: 6.9089835547014192160078648020868e-310,
-    first: 48,
+    cost: 6.90898356e-310,
+    first: 96,
     contracted vertices: {3, }
 }
 Vertex 10 is contracted to edge -3:
@@ -664,8 +664,8 @@ Vertex 10 is contracted to edge -3:
     id: -3,
     source: 5,
     target: 11,
-    cost: 6.9089835547180198217081306859712e-310,
-    first: 96,
+    cost: 6.90898356e-310,
+    first: 144,
     contracted vertices: {9, 12, }
 }
 Vertex 12 is contracted to edge -4:
@@ -673,7 +673,7 @@ Vertex 12 is contracted to edge -4:
     id: -4,
     source: 9,
     target: 11,
-    cost: 6.9527643533322807790991800523224e-310,
+    cost: 6.95276435e-310,
     first: 200,
     contracted vertices: {11, }
 }

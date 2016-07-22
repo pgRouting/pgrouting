@@ -67,9 +67,8 @@ do_pgr_test_c_edges(
         std::vector < pgrouting::contraction::Vertex > vertices(pgrouting::contraction::extract_vertices(edges));
 
 
-        log << std::setprecision(17);
         log << "Original: \n" <<
-            std::setprecision(32);
+            std::setprecision(9);
         for (const auto edge: edges) {
             log << "id = " << edge.id
                 << "\tsource = " << edge.source
