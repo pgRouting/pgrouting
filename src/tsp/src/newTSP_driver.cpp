@@ -73,7 +73,7 @@ do_pgr_tsp(
                 distances,
                 distances + total_distances);
 
-        pgRouting::tsp::Dmatrix costs(data_costs);
+        pgrouting::tsp::Dmatrix costs(data_costs);
 
         if (!costs.has_no_infinity()) {
             err << "An Infinity value was found on the Matrix";
@@ -105,7 +105,7 @@ do_pgr_tsp(
 
 
         log << "pgr_eucledianTSP Processing Information \nInitializing tsp class --->";
-        pgRouting::tsp::TSP<pgRouting::tsp::Dmatrix> tsp(costs);
+        pgrouting::tsp::TSP<pgrouting::tsp::Dmatrix> tsp(costs);
 
 
         log << " tsp.greedyInitial --->";

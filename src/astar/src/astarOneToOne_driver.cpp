@@ -110,7 +110,7 @@ void do_pgr_astarOneToOne(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::xyDirectedGraph digraph(gType);
+            pgrouting::xyDirectedGraph digraph(gType);
             log << "Working with directed Graph 1 \n";
             digraph.graph_insert_data(data_edges, total_edges);
 #ifdef DEBUG
@@ -121,7 +121,7 @@ void do_pgr_astarOneToOne(
             log << "Working with directed Graph 3\n";
         } else {
             log << "Working with Undirected Graph\n";
-            pgRouting::xyUndirectedGraph undigraph(gType);
+            pgrouting::xyUndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_edges);
 #ifdef DEBUG
             log << undigraph;

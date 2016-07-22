@@ -91,9 +91,9 @@ Complete Signature
 Description of the Signature
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstra_parameters.txt
-    :start-after: only edges start
-    :end-before: only edges end
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 
 Description of the parameters of the signatures

@@ -312,33 +312,33 @@ get_edges_5_columns(
 
 void
 pgr_get_edges(
-        char *sql,
+        char *edges_sql,
         pgr_edge_t **edges,
         size_t *total_edges) {
     bool ignore_id = false;
-    get_edges_5_columns(sql, edges, total_edges, ignore_id);
+    get_edges_5_columns(edges_sql, edges, total_edges, ignore_id);
 }
 
 void
 pgr_get_edges_no_id(
-        char *sql,
+        char *edges_sql,
         pgr_edge_t **edges,
         size_t *total_edges) {
     bool ignore_id = true;
-    get_edges_5_columns(sql, edges, total_edges, ignore_id);
+    get_edges_5_columns(edges_sql, edges, total_edges, ignore_id);
 }
 
 void
 pgr_get_edges_xy(
-        char *sql,
+        char *edges_sql,
         Pgr_edge_xy_t **edges,
         size_t *total_edges) {
-    get_edges_9_columns(sql, edges, total_edges, true);
+    get_edges_9_columns(edges_sql, edges, total_edges, true);
 }
 void
 pgr_get_edges_xy_reversed(
-        char *sql,
+        char *edges_sql,
         Pgr_edge_xy_t **edges,
         size_t *total_edges) {
-    get_edges_9_columns(sql, edges, total_edges, false);
+    get_edges_9_columns(edges_sql, edges, total_edges, false);
 }

@@ -127,9 +127,9 @@ Description of the Signatures
 ..
     description of the edges_sql queries
 
-
-.. include:: innerQueriesWithXY.txt
-
+.. include:: ../../common/src/edges_input.h
+    :start-after: xy_edges_sql_start
+    :end-before: xy_edges_sql_end
 
 
 Description of the parameters of the signatures

@@ -59,13 +59,13 @@ int  do_pgr_ksp(
         std::deque< Path > paths;
 
         if (directedFlag) {
-            pgRouting::DirectedGraph digraph(gType);
-            Pgr_ksp< pgRouting::DirectedGraph > fn_yen;
+            pgrouting::DirectedGraph digraph(gType);
+            Pgr_ksp< pgrouting::DirectedGraph > fn_yen;
             digraph.graph_insert_data(data_edges, total_tuples);
             paths = fn_yen.Yen(digraph, start_vertex, end_vertex, k, heap_paths);
         } else {
-            pgRouting::UndirectedGraph undigraph(gType);
-            Pgr_ksp< pgRouting::UndirectedGraph > fn_yen;
+            pgrouting::UndirectedGraph undigraph(gType);
+            Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
             undigraph.graph_insert_data(data_edges, total_tuples);
             paths = fn_yen.Yen(undigraph, start_vertex, end_vertex, k, heap_paths);
         }

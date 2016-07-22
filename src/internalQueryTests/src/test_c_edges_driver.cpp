@@ -64,7 +64,7 @@ do_pgr_test_c_edges(
         pgassert(!(*err_msg));
 
         std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
-        std::vector < pgRouting::contraction::Vertex > vertices(pgRouting::contraction::extract_vertices(edges));
+        std::vector < pgrouting::contraction::Vertex > vertices(pgrouting::contraction::extract_vertices(edges));
 
 
         log << "Original: \n" <<
@@ -80,7 +80,7 @@ do_pgr_test_c_edges(
 
         {
             log << "Testing Directed ,  insertion using vector\n";
-            pgRouting::CDirectedGraph graph(DIRECTED);
+            pgrouting::CDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -95,7 +95,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::CDirectedGraph graph(DIRECTED);
+            pgrouting::CDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -110,7 +110,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using vector\n";
-            pgRouting::CDirectedGraph graph(vertices, DIRECTED);
+            pgrouting::CDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -125,7 +125,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using C array\n";
-            pgRouting::CDirectedGraph graph(vertices, DIRECTED);
+            pgrouting::CDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -141,7 +141,7 @@ do_pgr_test_c_edges(
 
         {
             log << "Testing Undirected ,  insertion using vector\n";
-            pgRouting::CDirectedGraph graph(UNDIRECTED);
+            pgrouting::CDirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -156,7 +156,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::CDirectedGraph graph(UNDIRECTED);
+            pgrouting::CDirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -171,7 +171,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Undirected ,  insertion using C array\n";
-            pgRouting::CDirectedGraph graph(UNDIRECTED);
+            pgrouting::CDirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -186,7 +186,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Undirected ,  creating with vertices, insertion using vector\n";
-            pgRouting::CDirectedGraph graph(vertices, UNDIRECTED);
+            pgrouting::CDirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -203,7 +203,7 @@ do_pgr_test_c_edges(
         {
             log << "Testing Identifiers, creating with vertices, insertion using vector\n";
             log << "  - Created graph:\n";
-            pgRouting::CDirectedGraph graph(vertices, UNDIRECTED);
+            pgrouting::CDirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Inserting Edges:\n";
             graph.graph_insert_data(edges);
             log << "  - All vertices:\n";
@@ -232,7 +232,7 @@ do_pgr_test_c_edges(
             log << "\n";
             #if 0
             
-            Pgr_contract<pgRouting::CDirectedGraph>  contractor;
+            Pgr_contract<pgrouting::CDirectedGraph>  contractor;
             contractor.getDeadEndSet(graph);
             log << "  - Dead end vertices:\n";
             contractor.print_dead_end_vertices(log);
@@ -243,7 +243,7 @@ do_pgr_test_c_edges(
         {
             log << "Testing Vertex class, creating graph with vertices, insertion using vector\n";
             log << "  - Created graph:\n";
-            pgRouting::CDirectedGraph graph(vertices, UNDIRECTED);
+            pgrouting::CDirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Inserting Edges:\n";
             graph.graph_insert_data(edges);
             int64_t vid1 = graph.get_V(1);
@@ -274,19 +274,19 @@ do_pgr_test_c_edges(
             log << "  " << 15 << " ----- " << vid15 << "\n";
             log << "  " << 16 << " ----- " << vid16 << "\n";
             log << "  " << 17 << " ----- " << vid17 << "\n";
-            pgRouting::contraction::Vertex v1 = graph[vid1];
-            pgRouting::contraction::Vertex v2 = graph[vid2];
-            pgRouting::contraction::Vertex v4 = graph[vid4];
-            pgRouting::contraction::Vertex v5 = graph[vid5];
-            pgRouting::contraction::Vertex v7 = graph[vid7];
-            pgRouting::contraction::Vertex v8 = graph[vid8];
-            pgRouting::contraction::Vertex v10 = graph[vid10];
-            pgRouting::contraction::Vertex v12 = graph[vid12];
-            pgRouting::contraction::Vertex v13 = graph[vid13];
-            pgRouting::contraction::Vertex v14 = graph[vid14];
-            pgRouting::contraction::Vertex v15 = graph[vid15];
-            pgRouting::contraction::Vertex v16 = graph[vid16];
-            pgRouting::contraction::Vertex v17 = graph[vid17];
+            pgrouting::contraction::Vertex v1 = graph[vid1];
+            pgrouting::contraction::Vertex v2 = graph[vid2];
+            pgrouting::contraction::Vertex v4 = graph[vid4];
+            pgrouting::contraction::Vertex v5 = graph[vid5];
+            pgrouting::contraction::Vertex v7 = graph[vid7];
+            pgrouting::contraction::Vertex v8 = graph[vid8];
+            pgrouting::contraction::Vertex v10 = graph[vid10];
+            pgrouting::contraction::Vertex v12 = graph[vid12];
+            pgrouting::contraction::Vertex v13 = graph[vid13];
+            pgrouting::contraction::Vertex v14 = graph[vid14];
+            pgrouting::contraction::Vertex v15 = graph[vid15];
+            pgrouting::contraction::Vertex v16 = graph[vid16];
+            pgrouting::contraction::Vertex v17 = graph[vid17];
 
             log << "  - Dead end contraction:\n";
             // vertex 1 is contracted to vertex 2
@@ -322,10 +322,10 @@ do_pgr_test_c_edges(
 
 
             log << "  - Linear contraction:\n";
-            pgRouting::contraction::Edge e1;
-            pgRouting::contraction::Edge e2;
-            pgRouting::contraction::Edge e3;
-            pgRouting::contraction::Edge e4;
+            pgrouting::contraction::Edge e1;
+            pgrouting::contraction::Edge e2;
+            pgrouting::contraction::Edge e3;
+            pgrouting::contraction::Edge e4;
             // vertex 2 is contracted to edge -1
             e1.id = -1;
             e1.source = 3;
@@ -356,7 +356,7 @@ do_pgr_test_c_edges(
             log << e4;
             #if 0
             
-            Pgr_contract<pgRouting::CDirectedGraph>  contractor;
+            Pgr_contract<pgrouting::CDirectedGraph>  contractor;
             contractor.getDeadEndSet(graph);
             log << "  - Dead end vertices:\n";
             contractor.print_dead_end_vertices(log);

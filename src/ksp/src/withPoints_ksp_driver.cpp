@@ -104,17 +104,17 @@ do_pgr_withPointsKsp(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-            Pgr_ksp< pgRouting::DirectedGraph  > fn_yen;
+            Pgr_ksp< pgrouting::DirectedGraph  > fn_yen;
             paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
         } else {
             log << "Working with undirected Graph\n";
-            pgRouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-            Pgr_ksp< pgRouting::UndirectedGraph > fn_yen;
+            Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 

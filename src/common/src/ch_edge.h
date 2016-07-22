@@ -4,7 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include "ch_vertex.h"
-namespace pgRouting
+namespace pgrouting
 {
 namespace contraction {
 class Edge {
