@@ -152,9 +152,9 @@ Column            Type                  Default  Description
 **source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
 **target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
 **cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+                                                  * When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
 **reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
 ================  ===================   ======== =================================================
 
 Where:
