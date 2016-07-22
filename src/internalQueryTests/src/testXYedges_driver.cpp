@@ -61,7 +61,7 @@ do_pgr_testXYedges(
         pgassert(!(*err_msg));
 
         std::vector< Pgr_edge_xy_t > edges(data_edges, data_edges + total_edges);
-        auto vertices(pgRouting::extract_vertices(edges));
+        auto vertices(pgrouting::extract_vertices(edges));
 
 
         log << "Original: \n" <<
@@ -78,7 +78,7 @@ do_pgr_testXYedges(
 
         {
             log << "Testing Directed ,  insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(DIRECTED);
+            pgrouting::xyDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -93,7 +93,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(DIRECTED);
+            pgrouting::xyDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -108,7 +108,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(vertices, DIRECTED);
+            pgrouting::xyDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -123,7 +123,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(vertices, DIRECTED);
+            pgrouting::xyDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -139,7 +139,7 @@ do_pgr_testXYedges(
 
         {
             log << "Testing Undirected ,  insertion using vector\n";
-            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
+            pgrouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -154,7 +154,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
+            pgrouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -169,7 +169,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Undirected ,  insertion using C array\n";
-            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
+            pgrouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -184,7 +184,7 @@ do_pgr_testXYedges(
         }
         {
             log << "Testing Undirected ,  creating with vertices, insertion using vector\n";
-            pgRouting::xyUndirectedGraph graph(vertices, UNDIRECTED);
+            pgrouting::xyUndirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 

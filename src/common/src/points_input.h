@@ -34,6 +34,18 @@ SELECT pid, edge_id, fraction, [side]
 FROM edge_table;
 ~~~~
 
+@param[in] points_sql
+@param[out] points
+@param[out] total_points
+*/
+void pgr_get_points(
+        char *points_sql,
+        Point_on_edge_t **points,
+        size_t *total_points);
+
+
+/* ******************** FOR USERS DOCUMENTATION
+
 points_sql_start
 
 Description of the Points SQL query
@@ -63,12 +75,4 @@ Where:
 
 points_sql_end
 
-
-@param[in] points_sql
-@param[out] points
-@param[out] total_points
 */
-void pgr_get_points(
-        char *points_sql,
-        Point_on_edge_t **points,
-        size_t *total_points);

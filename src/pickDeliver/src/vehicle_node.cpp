@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <cassert>
 #include "./vehicle_node.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 
@@ -151,4 +151,4 @@ Vehicle_node::arrival_i_arrives_j(const Vehicle_node &other) const {
 }
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting

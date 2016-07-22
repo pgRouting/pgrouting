@@ -174,7 +174,7 @@ void Pgr_allpairs< G >::floydWarshall(
     boost::floyd_warshall_all_pairs_shortest_paths(
             graph.graph,
             matrix,
-            weight_map(get(&pgRouting::Basic_edge::cost, graph.graph)).
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
             distance_inf(std::numeric_limits<double>::max()).
             distance_zero(0));
@@ -193,7 +193,7 @@ void Pgr_allpairs< G >::floydWarshall(
     boost::floyd_warshall_all_pairs_shortest_paths(
             graph.graph,
             matrix,
-            weight_map(get(&pgRouting::Basic_edge::cost, graph.graph)).
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
             distance_inf(std::numeric_limits<double>::max()).
             distance_zero(0));
@@ -212,7 +212,7 @@ void Pgr_allpairs< G >::johnson(
     boost::johnson_all_pairs_shortest_paths(
             graph.graph,
             matrix,
-            weight_map(get(&pgRouting::Basic_edge::cost, graph.graph)).
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
             distance_inf(std::numeric_limits<double>::max()).
             distance_zero(0));
@@ -231,7 +231,7 @@ void Pgr_allpairs< G >::johnson(
     boost::johnson_all_pairs_shortest_paths(
             graph.graph,
             matrix,
-            weight_map(get(&pgRouting::Basic_edge::cost, graph.graph)).
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
             distance_inf(std::numeric_limits<double>::max()).
             distance_zero(0));

@@ -387,7 +387,7 @@ Pgr_astar< G >::astar_1_to_1(
                 graph.graph, source,
                 distance_heuristic(graph.graph, target, heuristic, factor * epsilon),
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&pgRouting::Basic_edge::cost, graph.graph))
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
                 .visitor(astar_one_goal_visitor(target)));
     }
@@ -414,7 +414,7 @@ Pgr_astar< G >::astar_1_to_many(
                 graph.graph, source,
                 distance_heuristic(graph.graph, targets, heuristic, factor * epsilon),
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&pgRouting::Basic_edge::cost, graph.graph))
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
                 .visitor(astar_many_goals_visitor(targets)));
     }

@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./eucledianDmatrix.h"
 #include "./tour.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace tsp {
 
 
@@ -165,4 +165,4 @@ std::ostream& operator<<(std::ostream &log, const eucledianDmatrix &matrix) {
 
 
 }  // namespace tsp
-}  // namespace pgRouting
+}  // namespace pgrouting

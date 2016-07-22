@@ -155,29 +155,29 @@ Vector of unique vertices of the graph
 size_t total_edges;
 pgr_edge_t *my_edges = NULL;
 pgr_get_edges(edges_sql, &my_edges, &total_tuples); 
-std::vector< Basic_Vertex > vertices(pgRouting::extract_vertices(my_edges));
+std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 ~~~~
 
 There are several ways to initialize the graph
 
 ~~~~{.c}
 // 1. Initializes an empty graph
-pgRouting::DirectedGraph digraph(gType);
+pgrouting::DirectedGraph digraph(gType);
 
 // 2. Initializes a graph based on the vertices
-pgRouting::DirectedGraph digraph(
+pgrouting::DirectedGraph digraph(
     verices,
     gType);
 vertices.clear();
 
 3. Initializes a graph based on the extracted vertices
-pgRouting::DirectedGraph digraph(
-    pgRouting::extract_vertices(my_edges, total_edges);
+pgrouting::DirectedGraph digraph(
+    pgrouting::extract_vertices(my_edges, total_edges);
     gType);
 
 4. Initializes a graph based on the extracted vertices
-pgRouting::DirectedGraph digraph(
-    pgRouting::extract_vertices(my_edges);
+pgrouting::DirectedGraph digraph(
+    pgrouting::extract_vertices(my_edges);
     gType);
 ~~~~
 
@@ -212,7 +212,7 @@ digraph.graph_insert_data(new_edges);
 ~~~~
 
 */
-namespace pgRouting {
+namespace pgrouting {
 
 namespace graph{
 template <class G, typename Vertex, typename Edge>
@@ -337,7 +337,7 @@ class Pgr_base_graph {
          m_gType(gtype) {
              pgassert(boost::num_vertices(graph) == num_vertices());
              pgassert(boost::num_vertices(graph) == vertices.size());
-             pgassert(pgRouting::check_vertices(vertices) == 0);
+             pgassert(pgrouting::check_vertices(vertices) == 0);
 
              size_t i = 0;
              for (auto vi = boost::vertices(graph).first; vi != boost::vertices(graph).second; ++vi) {
@@ -392,8 +392,8 @@ class Pgr_base_graph {
      template < typename T >
          void graph_insert_data(const std::vector < T > &edges) {
              if (num_vertices()==0) {
-                 auto vertices = pgRouting::extract_vertices(edges);
-                 pgassert(pgRouting::check_vertices(vertices) == 0);
+                 auto vertices = pgrouting::extract_vertices(edges);
+                 pgassert(pgrouting::check_vertices(vertices) == 0);
                  add_vertices(vertices);
              }
 
@@ -809,4 +809,4 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
 }
 
 } // namespace graph
-}  // namespace pgRouting
+}  // namespace pgrouting
