@@ -39,11 +39,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/builtins.h"
 #include "fmgr.h"
 
+#ifndef INT8ARRAYOID
+#define INT8ARRAYOID    1016
+#endif
 /*
   Uncomment when needed
 */
 
-#define DEBUG
+// #define DEBUG
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./structs.h"
@@ -243,12 +246,12 @@ contractGraph(PG_FUNCTION_ARGS) {
         contracted_vertices_array = (Datum *)palloc(sizeof(Datum) * 
                 (size_t)contracted_vertices_size);
         for (i = 0; i < contracted_vertices_size; ++i) {
-            PGR_DBG("Storing contracted vertex %d",result_tuples[call_cntr].contracted_vertices[i]);
+            PGR_DBG("Storing contracted vertex %ld",result_tuples[call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] = 
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
 
-        get_typlenbyvalalign(INT4OID, &typlen, &typbyval, &typalign);
+        get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
         #if 0
         PGR_DBG("typlen %d",typlen);
         PGR_DBG("typbyval %d",typbyval);
@@ -256,18 +259,19 @@ contractGraph(PG_FUNCTION_ARGS) {
         #endif
         arrayType =  construct_array(contracted_vertices_array,
                 contracted_vertices_size,
-                INT4OID,  typlen, typbyval, typalign);
+                INT8OID,  typlen, typbyval, typalign);
 
         TupleDescInitEntry(tuple_desc, (AttrNumber) 7, "contracted_vertices", 
-                INT4ARRAYOID, -1, 0); 
+                INT8ARRAYOID, -1, 0); 
 
 #if 1
-        PGR_DBG("Storing id %d",result_tuples[call_cntr].id);
-        PGR_DBG("Storing type %s",result_tuples[call_cntr].type);
-        PGR_DBG("Storing source %d",result_tuples[call_cntr].source);
-        PGR_DBG("Storing target %d",result_tuples[call_cntr].target);
-        PGR_DBG("Storing cost %f",result_tuples[call_cntr].cost);
-        PGR_DBG("Storing contracted_vertices_size %d",result_tuples[call_cntr].contracted_vertices_size);
+        PGR_DBG("%ld | %s | %ld | %ld | %f | %d",
+        result_tuples[call_cntr].id, 
+        result_tuples[call_cntr].type,
+        result_tuples[call_cntr].source,
+        result_tuples[call_cntr].target,
+        result_tuples[call_cntr].cost,
+        result_tuples[call_cntr].contracted_vertices_size);
 #endif
 
 
@@ -282,7 +286,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[call_cntr].target);
         values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[6] = PointerGetDatum(arrayType);
-        values[7] = Int64GetDatum(result_tuples[call_cntr].contracted_vertices_size);
+        values[7] = Int32GetDatum(result_tuples[call_cntr].contracted_vertices_size);
 
 
 
