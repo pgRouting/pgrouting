@@ -44,6 +44,90 @@ project(PGROUTING)
 #---------------------------------------------
 #---------------------------------------------
 
+#=============================================
+# Set the working directories
+#=============================================
+
+#---------------------------------------------
+#  PgRouting_SOURCE_NAMES
+#---------------------------------------------
+#
+# Name of the directories that have C/C++ code
+#  - <directory>/src/CMakelists.txt must exist
+#  - <directory>/sql/CMakeLists.txt  must exist
+#----------------------
+
+set(PgRouting_SOURCE_NAMES
+
+    #----------------------
+    # "common" must be first can not be removed
+    #----------------------
+    "common"
+
+    #----------------------
+    # "dijkstra" can not be removed 
+    #   Has the command needed to link with prostgresl
+    #----------------------
+    "dijkstra" 
+
+    #----------------------
+    # Directories that have being rewritten
+    #----------------------
+    "allpairs"
+    "astar"
+    "driving_distance"
+    "ksp"
+    "tsp"
+
+    #----------------------
+    # Code needs to be rewritten
+    #----------------------
+    "alpha_shape"
+    "bd_astar"
+    "bd_dijkstra"
+    "trsp"
+
+    #----------------------
+    # Proposed
+    #  - Not officialy on the release
+    #  - number indicates version when was propsosed with code
+    #----------------------
+    "contraction" # 2.3
+    "pickDeliver" # 2.3
+    "vrp_basic"   # 2.0 
+    "withPoints"  # 2.2
+
+    # template generated name
+    #"funnyDijkstra"
+
+    )
+
+#-----------------------------------------------------------------------------
+# Name of the directories containing only SQL files
+#
+#  - <directory>/sql/CMakeLists.txt  must exist
+#-----------------------------------------------------------------------------
+set(PgRouting_SQL_DIRECTORIES 
+
+    "topology"     # needs to be revised
+
+    #----------------------
+    # Proposed
+    #  Not officialy on the release
+    #----------------------
+    "convenience"  # most are deprecated
+    "label_graph"  # needs to be rewritten using Boost
+    "costMatrix"   # proposed on 2.3
+
+    #----------------------
+    # Wrappers for backwards compatablity 
+    #----------------------
+    "apsp_johnson"  # 2.0 wrap of pgr_johnson
+    "apsp_warshall" # 2.0 wrap of pgr_warshall
+    "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
+    "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver 
+
+    )
 
 #---------------------------------------------
 # minimum versions
@@ -327,49 +411,18 @@ message(STATUS "MSVC=${MSVC}")
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-# List variable to collect module SQL file names
-set(PACKAGE_SQL_FILES "")
-set(L_PACKAGE_SQL_FILES "")
-
-#==========================
-#  PgRouting_SOURCE_NAMES
-#==========================
-
-set(PgRouting_SOURCE_NAMES
-    "common"
-
-
-    "dijkstra"
-    "driving_distance"
-    "ksp"
-    "allpairs"
-    "withPoints"
-
-    #"internalQueryTests"
-    #"funnyDijkstra"
-
-    "alpha_shape"
-
-    "astar"
-    "bd_astar"
-    "bd_dijkstra"
-    "trsp" #2.0
-    "tsp" #2.0
-
-    "vrp_basic"
-    "pickDeliver"
-    "contraction"
-
-    )
+#====================================================================
+# Include the working directories
+#====================================================================
 
 if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
-    message("including InternalQueryTests")
+    message("Including InternalQueryTests")
     set(PgRouting_SOURCE_NAMES ${PgRouting_SOURCE_NAMES} "internalQueryTests")
-else()
-    message("-------->      NO InternalQueryTests")
-    message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
 endif()
 
+set(PgRouting_SQL_DIRECTORIES
+    ${PgRouting_SOURCE_NAMES}
+    ${PgRouting_SQL_DIRECTORIES})
 
 #-------------------
 # add the subdirectories that have the C/C++ code 
@@ -379,41 +432,25 @@ foreach (subdir ${PgRouting_SOURCE_NAMES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/src")
 endforeach()
 
-#-----------------------------------------------------------------------------
-# List variable to collect module SQL file names
-#-----------------------------------------------------------------------------
-set(PgRouting_SQL_DIRECTORIES ${PgRouting_SOURCE_NAMES}
-    "apsp_johnson"  #V2.0
-    "apsp_warshall" #V2.0
-    "kdijkstra"     #V2.0
-    "vrppdtw" #2.1
 
-    "convenience"
-    "topology"
-    "label_graph"
-    "costMatrix"
-
-    )
-
+#-------------------
+# add the subdirectories that have the SQL files
+#-------------------
 
 set(PACKAGE_SQL_FILES "")
-set(LIST_PACKAGE_SQL_FILES "")
 
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
 endforeach()
 
-list(APPEND LIST_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
 if (CDEBUG)
-    foreach (files ${LIST_PACKAGE_SQL_FILES})
+    foreach (files ${PACKAGE_SQL_FILES})
         message("${files}")
     endforeach()
 endif()
+#====================================================================
 
-
-#add_subdirectory(src)
-#list(APPEND L_PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}")
 
 
 # assemble the object files from the src functions into
@@ -483,7 +520,7 @@ file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.
 
 
 
-foreach(PACKAGE_SQL_FILE ${LIST_PACKAGE_SQL_FILES})
+foreach(PACKAGE_SQL_FILE ${PACKAGE_SQL_FILES})
     cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
 endforeach()
 
