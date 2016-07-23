@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: maximum_cardinality_matching_driver.cpp
+File: edge_disjoint_paths_one_to_one_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -32,52 +32,65 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "maximum_cardinality_matching_driver.h"
+#include "edge_disjoint_paths_one_to_one_driver.h"
 
 #include <sstream>
 #include <vector>
+#include "postgres.h"
 
-#include "pgr_maximumcardinalitymatching.hpp"
+#include "pgr_maxflow.hpp"
 #include "../../common/src/pgr_alloc.hpp"
-
 // #define DEBUG
 
 extern "C" {
 }
 
 void
-do_pgr_maximum_cardinality_matching(
-    pgr_basic_edge_t *data_edges,
-    bool directed,
+do_pgr_edge_disjoint_paths_one_to_one(
+    pgr_edge_t *data_edges,
     size_t total_tuples,
-    pgr_basic_edge_t **return_tuples,
+    int64_t source_vertex,
+    int64_t sink_vertex,
+    char* algorithm,
+    pgr_flow_t **return_tuples,
     size_t *return_count,
     char **err_msg) {
     std::ostringstream log;
 
     try {
-        std::vector<pgr_basic_edge_t> matched_vertices;
+        PgrFlowGraph<FlowGraph> G;
+        std::set<int64_t> set_source_vertices;
+        set_source_vertices.insert(source_vertex);
+        std::set<int64_t> set_sink_vertices;
+        set_sink_vertices.insert(sink_vertex);
 
-        if(directed) {
-            PgrCardinalityGraph<BasicDirectedGraph> G;
-            G.create_max_cardinality_graph(data_edges, total_tuples);
-            std::vector<int64_t> mate_map (boost::num_vertices(G.boost_graph));
-            G.maximum_cardinality_matching(mate_map);
-            G.get_matched_vertices(matched_vertices, mate_map);
+        G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices);
+
+        int64_t flow;
+        if(strcmp(algorithm, "push_relabel") == 0){
+            flow = G.push_relabel();
+        }
+        else if(strcmp(algorithm, "edmonds_karp") == 0) {
+            flow = G.edmonds_karp();
+        }
+        else if(strcmp(algorithm, "boykov_kolmogorov") == 0) {
+            flow = G.boykov_kolmogorov();
         }
         else {
-            PgrCardinalityGraph<BasicUndirectedGraph> G;
-            G.create_max_cardinality_graph(data_edges, total_tuples);
-            std::vector<int64_t> mate_map (boost::num_vertices(G.boost_graph));
-            G.maximum_cardinality_matching(mate_map);
-            G.get_matched_vertices(matched_vertices, mate_map);
+            log << "Unspecified algorithm!\n";
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            *err_msg = strdup(log.str().c_str());
+            return;
         }
 
-        (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
-        for (int i = 0; i < matched_vertices.size(); ++i) {
-            (*return_tuples)[i] = matched_vertices[i];
+        std::vector<pgr_flow_t> flow_edges = G.get_flow_edges();
+
+        (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
+        for (int i = 0; i < flow_edges.size(); ++i) {
+            (*return_tuples)[i] = flow_edges[i];
         }
-        *return_count = matched_vertices.size();
+        *return_count = flow_edges.size();
 
 #ifndef DEBUG
         *err_msg = strdup("OK");

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: maximum_cardinality_matching.c
+File: edge_disjoint_paths_one_to_one.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -48,17 +48,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "./../../common/src/arrays_input.h"
-#include "maximum_cardinality_matching_driver.h"
+#include "edge_disjoint_paths_one_to_one_driver.h"
 
-
-PG_FUNCTION_INFO_V1(maximum_cardinality_matching);
+PG_FUNCTION_INFO_V1(edge_disjoint_paths_one_to_one);
 #ifndef _MSC_VER
 Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-    maximum_cardinality_matching(PG_FUNCTION_ARGS);
+    edge_disjoint_paths_one_to_one(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -66,13 +64,26 @@ static
 void
 process(
     char *edges_sql,
-    bool directed,
-    pgr_basic_edge_t **result_tuples,
+    int64_t source_vertex,
+    int64_t sink_vertex,
+    char *algorithm,
+    pgr_flow_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
+    if(strcmp(algorithm, "push_relabel") != 0 || strcmp(algorithm, "edmonds_karp") != 0 || strcmp(algorithm, "boykov_kolmogorv") != 0){
+        elog(ERROR, "Unknown algorithm");
+    }
+
     PGR_DBG("Load data");
-    pgr_basic_edge_t *edges = NULL;
+    pgr_edge_t *edges = NULL;
+
+    if (source_vertex == sink_vertex) {
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        pgr_SPI_finish();
+        return;
+    }
 
     size_t total_tuples = 0;
 
@@ -90,10 +101,12 @@ process(
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *err_msg = NULL;
-    do_pgr_maximum_cardinality_matching(
+    do_pgr_edge_disjoint_paths_one_to_one(
         edges,
-        directed,
         total_tuples,
+        source_vertex,
+        sink_vertex,
+        algorithm,
         result_tuples,
         result_count,
         &err_msg);
@@ -114,7 +127,7 @@ Datum
 #else  // _MSC_VER
 PGDLLEXPORT Datum
 #endif
-maximum_cardinality_matching(PG_FUNCTION_ARGS) {
+edge_disjoint_paths_one_to_one(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     uint32_t call_cntr;
     uint32_t max_calls;
@@ -123,7 +136,7 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    pgr_basic_edge_t *result_tuples = 0;
+    pgr_flow_t *result_tuples = 0;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -136,10 +149,13 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
+
         PGR_DBG("Calling process");
         process(
             pgr_text2char(PG_GETARG_TEXT_P(0)),
-            PG_GETARG_BOOL(1),
+            PG_GETARG_INT64(1),
+            PG_GETARG_INT64(2),
+            pgr_text2char(PG_GETARG_TEXT_P(3)),
             &result_tuples,
             &result_count);
 
@@ -164,7 +180,7 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     call_cntr = funcctx->call_cntr;
     max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
-    result_tuples = (pgr_basic_edge_t *) funcctx->user_fctx;
+    result_tuples = (pgr_flow_t *) funcctx->user_fctx;
 
     if (call_cntr < max_calls) {
         HeapTuple tuple;
@@ -174,21 +190,26 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
+        //        OUT tail BIGINT,
+        //        OUT head BIGINT,
+        //        OUT flow integer,
+        //        OUT residual_capacity integer
 
-        values = palloc(4 * sizeof(Datum));
-        nulls = palloc(4 * sizeof(bool));
+        values = palloc(5 * sizeof(Datum));
+        nulls = palloc(5 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 4; ++i) {
+        for (i = 0; i < 5; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[call_cntr].id);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].edge_id);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].flow);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

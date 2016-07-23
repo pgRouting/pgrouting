@@ -73,6 +73,7 @@ class PgrCardinalityGraph {
 
   std::map<int64_t, V> id_to_V;
   std::map<V, int64_t> V_to_id;
+  std::map<E, int64_t> E_to_id;
 
   V source_vertex;
   V sink_vertex;
@@ -81,8 +82,12 @@ class PgrCardinalityGraph {
       return this->id_to_V.find(id)->second;
   }
 
-  int64_t getid(V v) {
+  int64_t getVid(V v) {
       return this->V_to_id.find(v)->second;
+  }
+
+  int64_t getEid(E e) {
+      return this->E_to_id.find(e)->second;
   }
 
   void create_max_cardinality_graph(pgr_basic_edge_t *data_edges,
@@ -100,12 +105,18 @@ class PgrCardinalityGraph {
       bool added;
 
       for (size_t i = 0; i < total_tuples; ++i) {
-          V v1 = this->id_to_V.find(data_edges[i].source)->second;
-          V v2 = this->id_to_V.find(data_edges[i].target)->second;
+          V v1 = getV(data_edges[i].source);
+          V v2 = getV(data_edges[i].target);
           E e1;
           E e2;
-          if(data_edges[i].going) boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
-          if(data_edges[i].coming) boost::tie(e2, added) = boost::add_edge(v2, v1, this->boost_graph);
+          if(data_edges[i].going){
+              boost::tie(e1, added) = boost::add_edge(v1, v2, this->boost_graph);
+              this->E_to_id.insert(std::pair<E, int64_t>(e1, data_edges[i].id));
+          }
+          if(data_edges[i].coming){
+              boost::tie(e2, added) = boost::add_edge(v2, v1, this->boost_graph);
+              this->E_to_id.insert(std::pair<E, int64_t>(e2, data_edges[i].id));
+          }
       }
   }
 
@@ -114,6 +125,8 @@ class PgrCardinalityGraph {
                             const std::vector<int64_t> &mate_map) {
       V_it vi, vi_end;
       int64_t id = 1;
+      E e;
+      bool exists;
       if (boost::is_directed(this->boost_graph)){
           std::vector<bool> already_matched (num_vertices(this->boost_graph), false);
           for (boost::tie(vi, vi_end) = boost::vertices(this->boost_graph);
@@ -127,15 +140,16 @@ class PgrCardinalityGraph {
                * (this last point prevents having double output with reversed
                * source and target)
                */
+              boost::tie(e, exists) = boost::edge(*vi, mate_map[*vi],this->boost_graph);
               if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
-                  && (boost::edge(*vi, mate_map[*vi],this->boost_graph).second)
-                  && !already_matched[*vi] && !already_matched[mate_map[*vi]]) {
+                  && exists && !already_matched[*vi] && !already_matched[mate_map[*vi]]) {
                   already_matched[*vi] = true;
                   already_matched[mate_map[*vi]] = true;
                   pgr_basic_edge_t matched_couple;
                   matched_couple.id = id++;
-                  matched_couple.source = this->getid(*vi);
-                  matched_couple.target = this->getid(mate_map[*vi]);
+                  matched_couple.source = this->getVid(*vi);
+                  matched_couple.target = this->getVid(mate_map[*vi]);
+                  matched_couple.edge_id = this->getEid(e);
                   matched_vertices.push_back(matched_couple);
               }
           }
@@ -143,12 +157,14 @@ class PgrCardinalityGraph {
           for (boost::tie(vi, vi_end) = boost::vertices(this->boost_graph);
                vi != vi_end;
                ++vi) {
+              boost::tie(e, exists) = boost::edge(*vi, mate_map[*vi],this->boost_graph);
               if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
                       && (*vi < mate_map[*vi])) {
                   pgr_basic_edge_t matched_couple;
                   matched_couple.id = id++;
-                  matched_couple.source = this->getid(*vi);
-                  matched_couple.target = this->getid(mate_map[*vi]);
+                  matched_couple.source = this->getVid(*vi);
+                  matched_couple.target = this->getVid(mate_map[*vi]);
+                  matched_couple.edge_id = this->getEid(e);
                   matched_vertices.push_back(matched_couple);
               }
           }
