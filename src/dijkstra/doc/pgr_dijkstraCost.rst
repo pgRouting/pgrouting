@@ -212,6 +212,11 @@ Description of the Signatures
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
+.. include:: ../sql/dijkstra.sql
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_start
+
+
 
 Description of the return values
 ...............................................................................
