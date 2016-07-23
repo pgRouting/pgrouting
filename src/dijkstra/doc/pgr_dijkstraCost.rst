@@ -214,7 +214,7 @@ Description of the Signatures
 
 .. include:: ../sql/dijkstra.sql
     :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
 
 
 

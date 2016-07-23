@@ -25,6 +25,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+/* ******** FOR USERS DOCUMENTATION
+
+pgr_dijkstra_via_parameters_start
+
+Description of the parameters of the signatures
+...............................................................................
+
+=================== ====================== ======== =========================================
+Parameter           Type                   Default  Description
+=================== ====================== ======== =========================================
+**edges_sql**       ``TEXT``                        SQL query as decribed above.
+**via_vertices**    ``ARRAY[ANY-INTEGER]``          Array of ordered vertices identifiers that are going to be visited.
+**directed**        ``BOOLEAN``            `true`   When ``true`` Graph is considered `Directed`
+                                                    When ``false`` the graph is considered as Undirected.
+**strict**          ``BOOLEAN``            `true`   Ignores if a subsection of the route is missing and returns everything it found Default is true (is directed). When set to false the graph is considered as Undirected
+**U_turn_on_edge**  ``BOOLEAN``            `true`   Default is true (is directed). When set to false the graph is considered as Undirected
+=================== ====================== ======== =========================================
+
+pgr_dijkstra_via_parameters_end
+
+*/
+
+
 CREATE OR REPLACE FUNCTION pgr_dijkstraVia(
     edges_sql TEXT,
     via_vertices ANYARRAY,
