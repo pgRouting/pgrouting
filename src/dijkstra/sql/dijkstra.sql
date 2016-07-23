@@ -26,22 +26,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 /* ********** FOR USERS DOCUMENTATION
 
+The following applies to:
+    pgr_dijkstra
+    pgr_dijkstraCost
+    pgr_dijkstraCostMatrix
+
 pgr_dijkstra_parameters_start
 
 Description of the parameters of the signatures
 ...............................................................................
 
-============== ================== ======= =================================================
+============== ================== ======== =================================================
 Column         Type               Default     Description
-============== ================== ======= =================================================
-**sql**        ``TEXT``                   SQL query as decribed above.
-**start_vid**  ``BIGINT``                 Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[BIGINT]``          Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``                 Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[BIGINT]``          Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``        `true`  When ``true`` Graph is considered `Directed`
-                                          When ``false`` the graph is considered as Undirected.
-============== ================== ======= =================================================
+============== ================== ======== =================================================
+**sql**        ``TEXT``                    SQL query as decribed above.
+**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                           - When ``false`` the graph is considered as `Undirected`.
+============== ================== ======== =================================================
 
 pgr_dijkstra_parameters_end
 

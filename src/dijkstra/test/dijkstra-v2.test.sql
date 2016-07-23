@@ -3,7 +3,7 @@
 --              PGR_dijkstra  V.2.0
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
-
+SELECT client_min_messages TO NOTICE;
 \echo --q1
 SELECT * FROM pgr_dijkstra(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
