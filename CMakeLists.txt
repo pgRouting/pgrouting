@@ -283,7 +283,7 @@ endif(WIN32)
 #compiler directives
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-if(UNIX)
+if(UNIX OR (WIN32 AND NOT MSVC))
     set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}  -std=gnu99 ")
 endif()
 
