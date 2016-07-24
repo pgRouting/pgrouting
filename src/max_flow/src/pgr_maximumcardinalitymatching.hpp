@@ -75,9 +75,6 @@ class PgrCardinalityGraph {
   std::map<V, int64_t> V_to_id;
   std::map<E, int64_t> E_to_id;
 
-  V source_vertex;
-  V sink_vertex;
-
   V getV(int64_t id) {
       return this->id_to_V.find(id)->second;
   }

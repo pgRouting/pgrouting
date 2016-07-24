@@ -127,6 +127,7 @@ typedef struct {
 
 typedef struct {
   int64_t id;
+  int64_t edge;
   int64_t source;
   int64_t target;
   int64_t flow;

@@ -72,9 +72,10 @@ process(
     size_t *result_count) {
     pgr_SPI_connect();
 
-    if(strcmp(algorithm, "push_relabel") != 0 || strcmp(algorithm, "edmonds_karp") != 0 || strcmp(algorithm, "boykov_kolmogorv") != 0){
+    if(!(strcmp(algorithm, "push_relabel") == 0 || strcmp(algorithm, "edmonds_karp") == 0 || strcmp(algorithm, "boykov_kolmogorov") == 0)){
         elog(ERROR, "Unknown algorithm");
     }
+
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
@@ -194,26 +195,22 @@ max_flow_many_to_one(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        //        OUT tail BIGINT,
-        //        OUT head BIGINT,
-        //        OUT flow integer,
-        //        OUT residual_capacity integer
-
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        values = palloc(6 * sizeof(Datum));
+        nulls = palloc(6 * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 5; ++i) {
+        for (i = 0; i < 6; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
         values[0] = Int64GetDatum(result_tuples[call_cntr].id);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].source);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].target);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].flow);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].flow);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

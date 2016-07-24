@@ -78,6 +78,31 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
                                                                   boost::edge_reverse_t,
                                                                   Traits::edge_descriptor> > > >
     FlowGraph;
+typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::undirectedS>
+    UndirectedTraits;
+typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS,
+                              boost::property<boost::vertex_name_t, std::string,
+                                              boost::property<boost::vertex_index_t,
+                                                              int64_t,
+                                                              boost::property<
+                                                                  boost::vertex_color_t,
+                                                                  boost::default_color_type,
+                                                                  boost::property<
+                                                                      boost::vertex_distance_t,
+                                                                      int64_t,
+                                                                      boost::property<
+                                                                          boost::vertex_predecessor_t,
+                                                                          UndirectedTraits::edge_descriptor> > > > >,
+
+                              boost::property<boost::edge_capacity_t,
+                                              int64_t,
+                                              boost::property<boost::edge_residual_capacity_t,
+                                                              int64_t,
+                                                              boost::property<
+                                                                  boost::edge_reverse_t,
+                                                                  UndirectedTraits::edge_descriptor> > > >
+    UndirectedFlowGraph;
+// Used internally for edge disjoint paths functionality
 
 
 template<class G>
@@ -98,16 +123,42 @@ class PgrFlowGraph {
 
   std::map<int64_t, V> id_to_V;
   std::map<V, int64_t> V_to_id;
+  std::map<E, int64_t> E_to_id;
 
   V source_vertex;
   V sink_vertex;
 
-  V getV(int64_t id) {
+  V get_boost_vertex(int64_t id) {
       return this->id_to_V.find(id)->second;
   }
 
-  int64_t getid(V v) {
+  int64_t get_vertex_id(V v) {
       return this->V_to_id.find(v)->second;
+  }
+
+  int64_t get_edge_id(E e) {
+      return this->E_to_id.find(e)->second;
+  }
+
+  int64_t push_relabel() {
+      return boost::push_relabel_max_flow(this->boost_graph,
+                                          this->source_vertex,
+                                          this->sink_vertex);
+  }
+
+  int64_t edmonds_karp() {
+      return boost::edmonds_karp_max_flow(this->boost_graph,
+                                          this->source_vertex,
+                                          this->sink_vertex);
+  }
+
+  int64_t boykov_kolmogorov() {
+      size_t num_v = boost::num_vertices(this->boost_graph);
+      std::vector<boost::default_color_type> color(num_v);
+      std::vector<long> distance(num_v);
+      return boost::boykov_kolmogorov_max_flow(this->boost_graph,
+                                               this->source_vertex,
+                                               this->sink_vertex);
   }
 
   void create_flow_graph(pgr_edge_t *data_edges,
@@ -115,8 +166,11 @@ class PgrFlowGraph {
                          const std::set<int64_t> &source_vertices,
                          const std::set<int64_t> &sink_vertices) {
 
-      // In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity
-      // The same applies for sinks
+      /* In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity
+       * The same applies for sinks.
+       * To avoid code repetition, a supersource/sink is used even in the one to one signature.
+       */
+
 
       std::set<int64_t> vertices;
       for (int64_t source: source_vertices) {
@@ -173,12 +227,14 @@ class PgrFlowGraph {
           get(boost::edge_residual_capacity, this->boost_graph);
 
       for (size_t i = 0; i < total_tuples; ++i) {
-          V v1 = this->id_to_V.find(data_edges[i].source)->second;
-          V v2 = this->id_to_V.find(data_edges[i].target)->second;
+          V v1 = this->get_boost_vertex(data_edges[i].source);
+          V v2 = this->get_boost_vertex(data_edges[i].target);
           if (data_edges[i].cost > 0) {
               E e1, e1_rev;
               boost::tie(e1, added) =
                   boost::add_edge(v1, v2, this->boost_graph);
+              this->E_to_id.insert(std::pair<E, int64_t>(e1, data_edges[i].id));
+              this->E_to_id.insert(std::pair<E, int64_t>(e1_rev, data_edges[i].id));
               boost::tie(e1_rev, added) =
                   boost::add_edge(v2, v1, this->boost_graph);
               this->capacity[e1] = (int64_t) data_edges[i].cost;
@@ -192,6 +248,8 @@ class PgrFlowGraph {
                   boost::add_edge(v2, v1, this->boost_graph);
               boost::tie(e2_rev, added) =
                   boost::add_edge(v1, v2, this->boost_graph);
+              this->E_to_id.insert(std::pair<E, int64_t>(e2, data_edges[i].id));
+              this->E_to_id.insert(std::pair<E, int64_t>(e2_rev, data_edges[i].id));
               this->capacity[e2] = (int64_t) data_edges[i].reverse_cost;
               this->capacity[e2_rev] = 0;
               this->rev[e2] = e2_rev;
@@ -200,9 +258,7 @@ class PgrFlowGraph {
       }
   }
 
-  std::vector<pgr_flow_t> get_flow_edges() {
-
-      std::vector<pgr_flow_t> flow_edges;
+  void get_flow_edges(std::vector<pgr_flow_t> &flow_edges) {
       int64_t id = 1;
       E_it e, e_end;
       for (boost::tie(e, e_end) = boost::edges(this->boost_graph); e != e_end;
@@ -213,35 +269,13 @@ class PgrFlowGraph {
               ((*e).m_target != this->sink_vertex)) {
               pgr_flow_t edge;
               edge.id = id++;
-              edge.source = this->getid((*e).m_source);
-              edge.target = this->getid((*e).m_target);
+              edge.edge = this->get_edge_id(*e);
+              edge.source = this->get_vertex_id((*e).m_source);
+              edge.target = this->get_vertex_id((*e).m_target);
               edge.flow = this->capacity[*e] - this->residual_capacity[*e];
               edge.residual_capacity = this->residual_capacity[*e];
               flow_edges.push_back(edge);
           }
       }
-      return flow_edges;
   }
-
-  int64_t push_relabel() {
-      return boost::push_relabel_max_flow(this->boost_graph,
-                                          this->source_vertex,
-                                          this->sink_vertex);
-  }
-
-  int64_t edmonds_karp() {
-      return boost::edmonds_karp_max_flow(this->boost_graph,
-                                          this->source_vertex,
-                                          this->sink_vertex);
-  }
-
-  int64_t boykov_kolmogorov() {
-      size_t num_v = boost::num_vertices(this->boost_graph);
-      std::vector<boost::default_color_type> color(num_v);
-      std::vector<long> distance(num_v);
-      return boost::boykov_kolmogorov_max_flow(this->boost_graph,
-                                               this->source_vertex,
-                                               this->sink_vertex);
-  }
-
 };

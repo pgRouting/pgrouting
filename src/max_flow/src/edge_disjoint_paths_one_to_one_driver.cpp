@@ -36,10 +36,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <sstream>
 #include <vector>
-#include "postgres.h"
 
+#include "pgr_edgedisjointpaths.hpp"
 #include "pgr_maxflow.hpp"
+
 #include "../../common/src/pgr_alloc.hpp"
+#include "../../common/src/pgr_types.h"
+
 // #define DEBUG
 
 extern "C" {
@@ -47,50 +50,35 @@ extern "C" {
 
 void
 do_pgr_edge_disjoint_paths_one_to_one(
-    pgr_edge_t *data_edges,
+    pgr_basic_edge_t *data_edges,
     size_t total_tuples,
     int64_t source_vertex,
     int64_t sink_vertex,
-    char* algorithm,
-    pgr_flow_t **return_tuples,
+    bool directed,
+    General_path_element_t **return_tuples,
     size_t *return_count,
     char **err_msg) {
     std::ostringstream log;
 
     try {
-        PgrFlowGraph<FlowGraph> G;
+        std::vector<General_path_element_t> path_elements;
         std::set<int64_t> set_source_vertices;
         set_source_vertices.insert(source_vertex);
         std::set<int64_t> set_sink_vertices;
         set_sink_vertices.insert(sink_vertex);
+        PgrEdgeDisjointPathsGraph<FlowGraph> G;
 
-        G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices);
+        // I use a directed graph since I'm dependant on directed graphs
 
-        int64_t flow;
-        if(strcmp(algorithm, "push_relabel") == 0){
-            flow = G.push_relabel();
-        }
-        else if(strcmp(algorithm, "edmonds_karp") == 0) {
-            flow = G.edmonds_karp();
-        }
-        else if(strcmp(algorithm, "boykov_kolmogorov") == 0) {
-            flow = G.boykov_kolmogorov();
-        }
-        else {
-            log << "Unspecified algorithm!\n";
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            *err_msg = strdup(log.str().c_str());
-            return;
-        }
+        G.create_edge_disjoint_paths_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices, directed);
+        int64_t flow = G.boykov_kolmogorov();
+        G.get_edge_disjoint_paths(path_elements, flow);
 
-        std::vector<pgr_flow_t> flow_edges = G.get_flow_edges();
-
-        (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
-        for (int i = 0; i < flow_edges.size(); ++i) {
-            (*return_tuples)[i] = flow_edges[i];
+        (*return_tuples) = pgr_alloc(path_elements.size(), (*return_tuples));
+        for (int i = 0; i < path_elements.size(); ++i) {
+            (*return_tuples)[i] = path_elements[i];
         }
-        *return_count = flow_edges.size();
+        *return_count = path_elements.size();
 
 #ifndef DEBUG
         *err_msg = strdup("OK");
