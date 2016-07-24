@@ -528,7 +528,7 @@ foreach(file_in ${PACKAGE_SQL_FILES})
     set(file_out "${CMAKE_BINARY_DIR}/sql_queries/${file_name}")
     configure_file(${file_in} ${file_out})
 
-    add_dependencies(ProcessSQLFiles ${file_out})
+    add_dependencies(ProcessSQLFiles ${file_in})
     file(READ "${file_out}" CONTENTS)
     string(REGEX REPLACE "/\\*PGR-(GNU|MIT).*PGR-(GNU|MIT)\\*/" "" STRIP_CONTENTS "${CONTENTS}")
     string(REGEX REPLACE "/\\*/*FOR.*FOR-USER\\*/" "" CONTENTS "${STRIP_CONTENTS}")
