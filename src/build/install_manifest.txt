@@ -1,3 +1,0 @@
-/usr/lib/postgresql/9.3/lib/libmyrouting_library.so
-/usr/share/postgresql/9.3/extension/myrouting--0.0.0.sql
-/usr/share/postgresql/9.3/extension/myrouting.control

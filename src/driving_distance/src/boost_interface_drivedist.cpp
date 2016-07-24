@@ -65,11 +65,11 @@ do_pgr_driving_many_to_dist(
         std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
 
         if (directedFlag) {
-            pgRouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_drivingDistance(digraph, paths, start_vertices, distance, equiCostFlag);
         } else {
-            pgRouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_drivingDistance(undigraph, paths, start_vertices, distance, equiCostFlag);
         }
@@ -130,12 +130,12 @@ do_pgr_driving_distance(
 
         if (directedFlag) {
             log << "NOTICE: Processing Directed graph\n";
-            pgRouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_edges);
             pgr_drivingDistance(digraph, path, start_vertex, distance);
         } else {
             log << "NOTICE: Processing Undirected graph\n";
-            pgRouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_edges);
             pgr_drivingDistance(undigraph, path, start_vertex, distance);
         }

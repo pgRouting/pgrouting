@@ -411,38 +411,117 @@ Detailed Procedure
 +++++++++++++++++++
 :Original Data:
 
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q0
-   :end-before: -- q1
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 :Addition of new columns:
 
-.. code-block:: none
+.. code-block:: sql
 
-    ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
-
-    ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
+        ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
+        ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
 
 :Data After Adding Columns:
 
-.. literalinclude:: doc-contractGraph.queries
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+
+:Addition of new edges by the algorithm:
+
+.. code-block:: sql
+
+        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-1, 3, 5, 2, 2, true, ARRAY[1, 2]);
+        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-2, 3, 9, 2, 2, true, ARRAY[4]);
+        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-3, 5, 11, 2, 2, true, ARRAY[10, 13]);
+        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-4, 9, 11, 2, 2, true, ARRAY[12]);
+
+:Data after addition of new edges:
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q9
+   :end-before: -- q10
+
+:Contracted Graph Data:
+
+
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q10
+   :end-before: -- q11
+
+
+Dijkstra on contracted graph
++++++++++++++++++++++++++++++++
+
+There are five cases which arise when calculating the shortest path between a given source and target, 
+
+**Case 1**: Both source and target belong to the contracted graph.
+
+**Case 2**: Source belongs to a contracted graph, while target belongs to a vertex subgraph.
+
+**Case 3**: Source belongs to a contracted graph, while target belongs to an edge subgraph.
+
+**Case 4**: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
+
+**Case 5**: The path contains a new edge added by the contraction algorithm.
+
+:Examples:
+
+**Case 1**: Routing from 3 to 11. Since 3 and 11 both are in the contracted graph it is not necessary expand the graph.
+
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q11
+   :end-before: -- q12
+
+**Case 2**: Routing from 3 to 7. Since 7 is in the contracted subgraph of vertex 5, it is necessary to expand that vertex by adding {7, 8} to the vertex set, so the vertex set becomes {3, 5, 6, 9, 11, 15, 17 , 7, 8}
+
+
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q12
+   :end-before: -- q13  
+
+**Case 3**: Routing from 3 to 13. Since 13 is in the contracted subgraph of edge (5, 11),  it is necessary to expand that edge by adding {10, 13} to the vertex set, so the vertex set becomes {3, 5, 6, 9, 10, 11, 13, 15, 17}.
+
+
+
+.. literalinclude:: doc-contraction.queries
    :start-after: -- q13
    :end-before: -- q14
 
 
-:Vertices having contracted vertices:
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q10
-   :end-before: -- q11
-
-:Addition of new edges by the algorithm:
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q9
-   :end-before: -- q10
+**Case 4**: Routing from 7 to 13. Since 13 is in the contracted subgraph of edge (5, 11), it is necessary to expand that edge by adding {10, 13} to the vertex set, and since 7 is in the contracted subgraph of vertex 5, it is necessary to expand that vertex by adding {7, 8} vertex set, so the vertex set becomes {3, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17}
 
 
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q14
+   :end-before: -- q15
+
+
+**Case 5**: Routing from 3 to 9. Since 3 and 9 both are in the contracted graph it is not necessary expand the graph.
+
+
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q15
+   :end-before: -- q16
+
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q16
+   :end-before: -- q17
+
+This implies that it is a shortcut and should be expanded. The contracted subgraph of edge 20(3, 9, c=2) is {4}. It is necessary to expand the edge by adding {4} to the vertex set, so the vertex set becomes {3, 4, 5, 6, 9, 11, 15, 17}.
+
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q17
+   :end-before: -- q18
 
 
 References

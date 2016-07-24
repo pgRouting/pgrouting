@@ -52,7 +52,7 @@ void perform_deadEnd(G &graph,
     Identifiers<int64_t> forbidden_vertices,
     std::ostringstream& debug)
 {
-    pgRouting::Pgr_deadEndContraction<G> deadendContractor;
+    pgrouting::Pgr_deadEndContraction<G> deadendContractor;
     debug << "Setting forbidden_vertices";
     deadendContractor.setForbiddenVertices(graph, forbidden_vertices
         , debug);
@@ -77,7 +77,7 @@ void perform_linear(G &graph,
     std::ostringstream& debug)
 {
     std::ostringstream linear_debug;
-    pgRouting::Pgr_linearContraction<G> linearContractor;
+    pgrouting::Pgr_linearContraction<G> linearContractor;
     linearContractor.setForbiddenVertices(graph, forbidden_vertices
         , linear_debug);
     linearContractor.calculateVertices(graph, linear_debug);
@@ -103,7 +103,7 @@ void pgr_contractGraph(
     size_t size_contraction_order,
     int64_t max_cycles,
     Identifiers<int64_t> &remaining_vertices,
-    std::vector<pgRouting::contraction::Edge> &shortcut_edges, 
+    std::vector<pgrouting::contraction::Edge> &shortcut_edges, 
     std::ostringstream& debug) {
 
     std::deque<int64_t> contract_order;

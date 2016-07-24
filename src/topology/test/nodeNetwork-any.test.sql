@@ -2,6 +2,8 @@ BEGIN;
 --                pgr_nodeNetwork
 --------------------------------------------------------------------------------
 
+SET client_min_messages TO NOTICE;
+
 SELECT pgr_createTopology('edge_table', 0.001, clean := TRUE);
 SELECT pgr_analyzegraph('edge_table', 0.001);
 SELECT pgr_nodeNetwork('edge_table', 0.001);

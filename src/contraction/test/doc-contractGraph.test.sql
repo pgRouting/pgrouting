@@ -1,6 +1,3 @@
-\echo -- q0
-SELECT id, source, target, cost, reverse_cost FROM edge_table;
-
 \echo -- q1
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -51,15 +48,5 @@ SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[]::bigint[], ARRAY[0, 1]::integer[], 1, false) WHERE type = 'v';
 
+
 \echo -- q11
-ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
-
-\echo -- q12
-ALTER TABLE edge_table ADD contracted_vertices integer[];
-
-\echo -- q13
-SELECT id, source, target, cost, reverse_cost, is_contracted,
-contracted_vertices FROM edge_table;
-
-\echo -- q14
-

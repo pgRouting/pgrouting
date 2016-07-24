@@ -40,7 +40,7 @@
 #include "./tour.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 namespace tsp {
 
 template < typename MATRIX >
@@ -139,6 +139,6 @@ class TSP: public MATRIX {
 };
 
 }  // namespace tsp
-}  // namespace pgRouting
+}  // namespace pgrouting
 
 #include "pgr_tsp.cpp"

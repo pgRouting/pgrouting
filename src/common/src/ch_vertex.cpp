@@ -1,7 +1,7 @@
 #include <algorithm>
 #include "./ch_vertex.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace contraction {
 
 

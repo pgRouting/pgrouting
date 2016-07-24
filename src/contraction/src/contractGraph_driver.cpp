@@ -59,9 +59,11 @@ extern "C" {
 
 
 /************************************************************
-  edges_sql TEXT,
-  level BIGINT,
-  directed BOOLEAN DEFAULT true
+  	edges_sql TEXT,
+    contraction_order BIGINT[],
+    forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
+    max_cycles integer DEFAULT 1,
+    directed BOOLEAN DEFAULT true
  ***********************************************************/
 void
 do_pgr_contractGraph(
@@ -82,9 +84,9 @@ do_pgr_contractGraph(
 		std::ostringstream debug;
 		graphType gType = directed? DIRECTED: UNDIRECTED;
 		std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
-		std::vector < pgRouting::contraction::Vertex > vertices(pgRouting::contraction::extract_vertices(edges));
+		std::vector < pgrouting::contraction::Vertex > vertices(pgrouting::contraction::extract_vertices(edges));
 		Identifiers<int64_t> remaining_vertices;
-		std::vector< pgRouting::contraction::Edge > shortcut_edges;
+		std::vector< pgrouting::contraction::Edge > shortcut_edges;
 
 		log << "Original Graph: \n" <<
 			std::setprecision(32);
@@ -114,7 +116,7 @@ do_pgr_contractGraph(
 
 		if (directed) {
 			log << "Working with directed Graph\n";
-			pgRouting::CHDirectedGraph digraph(vertices, gType);
+			pgrouting::CHDirectedGraph digraph(vertices, gType);
 			digraph.graph_insert_data(data_edges, total_edges);
 			log << "Checking for valid forbidden vertices\n";
 			for (size_t i = 0; i < size_forbidden_vertices; ++i) {
@@ -180,7 +182,7 @@ do_pgr_contractGraph(
 		} else {
 			log << "Working with Undirected Graph\n";
 
-			pgRouting::CHUndirectedGraph undigraph(vertices, gType);
+			pgrouting::CHUndirectedGraph undigraph(vertices, gType);
 			undigraph.graph_insert_data(data_edges, total_edges);
 			log << "Checking for valid forbidden vertices\n";
 			for (size_t i = 0; i < size_forbidden_vertices; ++i) {

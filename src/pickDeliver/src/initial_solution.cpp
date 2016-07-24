@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./solution.h"
 #include "./pgr_pickDeliver.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 void
@@ -556,4 +556,4 @@ Initial_solution::one_truck_all_orders() {
 
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting

@@ -72,7 +72,7 @@ pred(size_t i, size_t n) {
 }
 
 
-namespace pgRouting {
+namespace pgrouting {
 namespace tsp {
 
 template < typename MATRIX >
@@ -557,5 +557,5 @@ TSP<MATRIX>::annealing(
 }
 
 }  // namespace tsp
-}  // namespace pgRouting
+}  // namespace pgrouting
 

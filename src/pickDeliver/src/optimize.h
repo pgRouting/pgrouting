@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./optimize.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 class Solution;
@@ -73,4 +73,4 @@ class Optimize : public Solution {
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting

@@ -1,5 +1,7 @@
 BEGIN;
 BEGIN
+SET client_min_messages TO NOTICE;
+SET
 SELECT  pgr_createTopology('edge_table',0.001, clean := true);
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := t)
