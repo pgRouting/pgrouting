@@ -208,12 +208,14 @@ Column             Type            Description
 **seq**            ``INTEGER`` Sequential value starting from **1**.
 **vehicle_id**     ``INTEGER`` Current vehicle identifier.
 **vehicle_seq**    ``INTEGER`` Sequential value starting from **1** for the current vehicle.
-**stop_id**        ``BIGINT``  Customer identifier.
+**stop_id**        ``BIGINT``  Visited customer identifier.
 **travel_time**    ``FLOAT``   Travel time from previous ``stop_id`` to current ``stop_id``.
 **arrival_time**   ``FLOAT``   Previous ``departure_time`` plus current ``travel_time``
 **wait_time**      ``FLOAT``   Time spent waiting for ``stop_id`` to open.
 **service_time**   ``FLOAT``   Service time at current ``stop_id``.
 **departure_time** ``FLOAT``   Previous ``departure_time`` plus ``travel_time`` plus ``wait_time`` plus ``service_time``
+                               - when ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehcile_id``
+                               - when ``vehicle_id = -1`` has the aggregate of the ``total time`` of the vehicles.
 ================== =========== =================================================
 
 
