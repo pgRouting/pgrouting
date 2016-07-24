@@ -534,7 +534,6 @@ foreach(file_in ${PACKAGE_SQL_FILES})
     string(REGEX REPLACE "/\\*/*FOR.*FOR-USER\\*/" "" CONTENTS "${STRIP_CONTENTS}")
     file(APPEND ${TEMP_LIB_FILENAME} "${CONTENTS}")
 endforeach()
-add_dependencies(ProcessSQLFiles ${TEMP_LIB_FILENAME})
 
 configure_file("${TEMP_LIB_FILENAME}"
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
