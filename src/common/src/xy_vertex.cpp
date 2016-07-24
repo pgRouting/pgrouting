@@ -38,7 +38,7 @@
 #include "./pgr_assert.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 
 
 std::ostream& operator<<(std::ostream& log, const XY_vertex &v) {
@@ -150,4 +150,4 @@ std::vector < XY_vertex > extract_vertices(
 }
 #endif
 
-} // namespace pgRouting
+} // namespace pgrouting

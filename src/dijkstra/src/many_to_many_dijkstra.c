@@ -145,13 +145,13 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         size_t size_start_vidsArr;
         start_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_start_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("start_vidsArr size %d ", size_start_vidsArr);
+        PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
 
         int64_t* end_vidsArr;
         size_t size_end_vidsArr;
         end_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("end_vidsArr size %d ", size_end_vidsArr);
+        PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
 
         PGR_DBG("Calling process");
         process(

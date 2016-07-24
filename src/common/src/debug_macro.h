@@ -24,10 +24,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #pragma once
-#ifdef DEBUG
+#ifndef NDEBUG
 #include "postgres.h"
 #define PGR_DBG(...) \
-    elog(NOTICE, __VA_ARGS__)
+    elog(DEBUG2, __VA_ARGS__)
 #else
 #define PGR_DBG(...) do { ; } while (0)
 #endif

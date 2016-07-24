@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./Dmatrix.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 namespace tsp {
 
 
@@ -150,4 +150,4 @@ class Tour {
 };
 
 }  // namespace tsp
-}  // namespace pgRouting
+}  // namespace pgrouting

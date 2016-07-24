@@ -73,7 +73,7 @@ do_pgr_eucledianTSP(
                 coordinates_data,
                 coordinates_data + total_coordinates);
 
-        pgRouting::tsp::eucledianDmatrix costs(coordinates);
+        pgrouting::tsp::eucledianDmatrix costs(coordinates);
 
         double real_cost = -1;
 
@@ -91,7 +91,7 @@ do_pgr_eucledianTSP(
 
 
         log << "pgr_eucledianTSP Processing Information \nInitializing tsp class --->";
-        pgRouting::tsp::TSP<pgRouting::tsp::eucledianDmatrix> tsp(costs);
+        pgrouting::tsp::TSP<pgrouting::tsp::eucledianDmatrix> tsp(costs);
 
 
         log << " tsp.greedyInitial --->";

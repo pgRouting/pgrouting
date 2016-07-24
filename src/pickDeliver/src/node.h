@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #include "./point.h"
 #include "../../common/src/xy_vertex.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 /*! \class Node
@@ -71,10 +71,10 @@ class Node {
 
 
  private:
-     pgRouting::Point m_point;
+     pgrouting::Point m_point;
      size_t m_id;                ///< internal node number
      int64_t m_original_id;  // /< user supplied node number
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting

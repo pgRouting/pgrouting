@@ -112,15 +112,15 @@ void do_pgr_astarOneToMany(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::xyDirectedGraph digraph(
-                    pgRouting::extract_vertices(edges, total_edges),
+            pgrouting::xyDirectedGraph digraph(
+                    pgrouting::extract_vertices(edges, total_edges),
                     gType);
             digraph.graph_insert_data(edges, total_edges);
             pgr_astar(digraph, paths, start_vid, end_vids, heuristic, factor, epsilon, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            pgRouting::xyUndirectedGraph undigraph(
-                    pgRouting::extract_vertices(edges, total_edges),
+            pgrouting::xyUndirectedGraph undigraph(
+                    pgrouting::extract_vertices(edges, total_edges),
                     gType);
             undigraph.graph_insert_data(edges, total_edges);
             pgr_astar(undigraph, paths, start_vid, end_vids, heuristic, factor, epsilon, only_cost);

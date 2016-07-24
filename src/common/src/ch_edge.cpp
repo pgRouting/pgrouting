@@ -1,5 +1,5 @@
 #include "./ch_edge.h"
-namespace pgRouting
+namespace pgrouting
 {
 namespace contraction {
 
