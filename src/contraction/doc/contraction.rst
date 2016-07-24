@@ -411,10 +411,6 @@ Detailed Procedure
 +++++++++++++++++++
 :Original Data:
 
-.. code-block:: none
-
-..        SELECT id, source, target, cost, reverse_cost FROM edge_table;
-
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q1
    :end-before: -- q2
@@ -427,10 +423,6 @@ Detailed Procedure
         ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
 
 :Data After Adding Columns:
-
-.. code-block:: none
-
-..        SELECT id, source, target, cost, reverse_cost, is_contracted, contracted_vertices FROM edge_table;
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q4
@@ -454,9 +446,7 @@ Detailed Procedure
 
 :Contracted Graph Data:
 
-.. code-block:: none
 
-..    SELECT id, source, target, cost, reverse_cost, is_contracted FROM edge_table where source IN (3, 5, 6, 9, 11, 15, 17) AND target IN (3, 5, 6, 9, 11, 15, 17);
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q10
@@ -482,14 +472,6 @@ There are five cases which arise when calculating the shortest path between a gi
 
 **Case 1**: Routing from 3 to 11. Since 3 and 11 both are in the contracted graph it is not necessary expand the graph.
 
-.. code-block:: none
-
-..    SELECT * FROM pgr_dijkstra(
-..      'SELECT id, source, target, cost, reverse_cost 
-..       FROM edge_table 
-..       WHERE source IN (3, 5, 6, 9, 11, 15, 17) 
-..       AND target IN (3, 5, 6, 9, 11, 15, 17)',
-..       3, 11, false);
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q11
@@ -497,14 +479,7 @@ There are five cases which arise when calculating the shortest path between a gi
 
 **Case 2**: Routing from 3 to 7. Since 7 is in the contracted subgraph of vertex 5, it is necessary to expand that vertex by adding {7, 8} to the vertex set, so the vertex set becomes {3, 5, 6, 9, 11, 15, 17 , 7, 8}
 
-.. code-block:: none
 
-..    SELECT  *  FROM  pgr_dijkstra(
-..       'SELECT id, source, target, cost, reverse_cost 
-..        FROM edge_table
-..        WHERE source IN (3, 5, 6, 9, 11, 15, 17,   7, 8)  
-..        AND target IN (3, 5, 6, 9, 11, 15, 17,   7, 8)',
-..        3, 7, false);
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q12
@@ -512,14 +487,7 @@ There are five cases which arise when calculating the shortest path between a gi
 
 **Case 3**: Routing from 3 to 13. Since 13 is in the contracted subgraph of edge (5, 11),  it is necessary to expand that edge by adding {10, 13} to the vertex set, so the vertex set becomes {3, 5, 6, 9, 10, 11, 13, 15, 17}.
 
-.. code-block:: none
 
-..    SELECT * FROM pgr_dijkstra(
-..      'SELECT id, source, target, cost, reverse_cost
-..       FROM edge_table 
-..       WHERE source IN (3, 5, 6, 9, 11, 15, 17,    10, 13)
-..       AND target IN (3, 5, 6, 9, 11, 15, 17,    10, 13)',
-..       3, 13, false);
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q13
@@ -528,14 +496,7 @@ There are five cases which arise when calculating the shortest path between a gi
 
 **Case 4**: Routing from 7 to 13. Since 13 is in the contracted subgraph of edge (5, 11), it is necessary to expand that edge by adding {10, 13} to the vertex set, and since 7 is in the contracted subgraph of vertex 5, it is necessary to expand that vertex by adding {7, 8} vertex set, so the vertex set becomes {3, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17}
 
-.. code-block:: none
-  
-..    SELECT * FROM pgr_dijkstra(
-..      'SELECT id, source, target, cost, reverse_cost 
-..       FROM edge_table 
-..       WHERE source IN (3, 5, 6, 9, 11, 15, 17,    7, 8,   10, 13) 
-..       AND target IN (3, 5, 6, 9, 11, 15, 17,    7, 8,   10, 13)',
-..       7, 13, false);
+
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q14
@@ -544,22 +505,12 @@ There are five cases which arise when calculating the shortest path between a gi
 
 **Case 5**: Routing from 3 to 9. Since 3 and 9 both are in the contracted graph it is not necessary expand the graph.
 
-.. code-block:: none
 
-..   SELECT * FROM pgr_dijkstra(
-..       'SELECT id, source, target, cost, reverse_cost 
-..        FROM edge_table 
-..        WHERE source IN (3, 5, 6, 9, 11, 15, 17)
-..        AND target IN (3, 5, 6, 9, 11, 15, 17)',
-..        3, 9, false);
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q15
    :end-before: -- q16
 
-.. code-block:: none
-
-..    SELECT is_contracted FROM edge_table WHERE id = -2;
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q16
@@ -567,16 +518,6 @@ There are five cases which arise when calculating the shortest path between a gi
 
 This implies that it is a shortcut and should be expanded. The contracted subgraph of edge 20(3, 9, c=2) is {4}. It is necessary to expand the edge by adding {4} to the vertex set, so the vertex set becomes {3, 4, 5, 6, 9, 11, 15, 17}.
 
-
-.. code-block:: none
-
-..    SELECT * FROM pgr_dijkstra(
-..       'SELECT id, source, target, cost, reverse_cost
-..        FROM edge_table 
-..        WHERE source IN (3, 5, 6, 9, 11, 15, 17,  4) 
-..        AND target IN (3, 5, 6, 9, 11, 15, 17,  4) 
-..        AND is_contracted = false',
-..        3, 9, false);
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q17
