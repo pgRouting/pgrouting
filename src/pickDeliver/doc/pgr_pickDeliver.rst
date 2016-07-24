@@ -62,7 +62,7 @@ Problem: Distribute and optimize the pickup-delivery pairs into a fleet of vehic
   - pickup and delivery pair is done with the same vehicle.
   - A pickup is done before the delivery.
 
-  
+
 Characteristics:
 ----------------
 
@@ -78,7 +78,7 @@ Characteristics:
 
 - Six different initial will be optimized
   - the best solution found will be result
-      
+
 
 Signature Summary
 -----------------
@@ -88,7 +88,7 @@ Signature Summary
     _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
     _pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
     RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
-         travel_time, arrival_time, wait_time, service_time,  departure_time) 
+         travel_time, arrival_time, wait_time, service_time,  departure_time)
 
 
 
@@ -97,7 +97,7 @@ Signatures
 
 ..
     Minimal signature
-    .. index:: 
+    .. index::
     single: _pgr_pickDeliver(Minimal Signature) - developing
 
 Minimal signature
@@ -112,7 +112,7 @@ The minimal signature is for `speed = 1`, for a `max_cycles = 30`
 
     _pgr_pickDeliver(customers_sql, max_vehicles, capacity)
     RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
-         travel_time, arrival_time, wait_time, service_time,  departure_time) 
+         travel_time, arrival_time, wait_time, service_time,  departure_time)
 
 :Example:
 
@@ -124,7 +124,7 @@ This example use the following data: TODO put link
 
 ..
     Complete signature
-    .. index:: 
+    .. index::
     single: _pgr_pickDeliver(Cmplete Signature) - developing
 
 
@@ -138,7 +138,7 @@ This signature performs the optimization based on the optional parameters
 
     _pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
     RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
-         travel_time, arrival_time, wait_time, service_time,  departure_time) 
+         travel_time, arrival_time, wait_time, service_time,  departure_time)
 
 
 :Example:
@@ -167,8 +167,8 @@ Column            Type                  Description
 **y**             ``ANY-NUMERICAL``     ``Y`` coordinate of the location.
 **demand**        ``ANY-NUMERICAL``     How much is added / removed from the vehicle.
 
-                                        - Negative value is a delivery, 
-                                        - Positive value is a pickup, 
+                                        - Negative value is a delivery,
+                                        - Positive value is a pickup,
 
 **openTime**      ``ANY-NUMERICAL``     The time relative to 0, when the customer opens.
 **closeTime**     ``ANY-NUMERICAL``     The time relative to 0, when the customer closes.
@@ -199,39 +199,23 @@ Column             Type        Default     Description
 Description of the result
 .........................................................................................
 
-RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time) 
-         
+:RETURNS SET OF: (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)
 
-================== =========== =================================================
-Column             Type            Description
-================== =========== =================================================
-**seq**            ``INTEGER`` Sequential value starting from **1**.
-**vehicle_id**     ``INTEGER`` Current vehicle identifier.
-**vehicle_seq**    ``INTEGER`` Sequential value starting from **1** for the current vehicle.
-**stop_id**        ``BIGINT``  Visited customer identifier.
-**travel_time**    ``FLOAT``   Travel time from previous ``stop_id`` to current ``stop_id``.
-**arrival_time**   ``FLOAT``   Previous ``departure_time`` plus current ``travel_time``
-**wait_time**      ``FLOAT``   Time spent waiting for ``stop_id`` to open.
-**service_time**   ``FLOAT``   Service time at current ``stop_id``.
-**departure_time** ``FLOAT``   Previous ``departure_time`` plus ``travel_time`` plus ``wait_time`` plus ``service_time``
-                               - when ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehcile_id``
-                               - when ``vehicle_id = -1`` has the aggregate of the ``total time`` of the vehicles.
-================== =========== =================================================
-
-
-..
-    Examples
-    ========
-    :Example:
-
-..
-    Examples
-    ========
-    :Example:
-    This example use the following data: TODO put link
-    .. literalinclude:: doc-pickDeliver.queries
-    :start-after: --q1
-    :end-before: --q2
+=================== ============= =================================================
+Column              Type           Description
+=================== ============= =================================================
+**seq**              INTEGER      Sequential value starting from **1**.
+**vehicle_id**       INTEGER      Current vehicle identifier.
+**vehicle_seq**      INTEGER      Sequential value starting from **1** for the current vehicle.
+**stop_id**          BIGINT       Visited customer identifier.
+**travel_time**      FLOAT        Travel time from previous ``stop_id`` to current ``stop_id``.
+**arrival_time**     FLOAT        Previous ``departure_time`` plus current ``travel_time``.
+**wait_time**        FLOAT        Time spent waiting for ``stop_id`` to open.
+**service_time**     FLOAT        Service time at current stop_id.
+**departure_time**   FLOAT        Previous :math:`departure\_time + travel\_time + wait\_time + service\_time`.
+                                    - When ``stop_id = 0`` and ``vehicle_seq != 1`` has the total time for the current ``vehicle_id``.
+                                    - When ``vehicle_id = -1`` has the aggregate total time
+=================== ============= =================================================
 
 
 
