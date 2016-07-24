@@ -73,29 +73,29 @@ set(PgRouting_SOURCE_NAMES
     #----------------------
     # Directories that have being rewritten
     #----------------------
-    #"allpairs"
-    #"astar"
-    #"driving_distance"
-    #"ksp"
-    #"tsp"
+    "allpairs"
+    "astar"
+    "driving_distance"
+    "ksp"
+    "tsp"
 
     #----------------------
     # Code needs to be rewritten
     #----------------------
-    #"alpha_shape"
-    #"bd_astar"
-    #"bd_dijkstra"
-    #"trsp"
+    "alpha_shape"
+    "bd_astar"
+    "bd_dijkstra"
+    "trsp"
 
     #----------------------
     # Proposed
     #  - Not officialy on the release
     #  - number indicates version when was propsosed with code
     #----------------------
-    #"contraction" # 2.3
-    #"pickDeliver" # 2.3
-    #"vrp_basic"   # 2.0 
-    #"withPoints"  # 2.2
+    "contraction" # 2.3
+    "pickDeliver" # 2.3
+    "vrp_basic"   # 2.0 
+    "withPoints"  # 2.2
 
     # template generated name
     #"funnyDijkstra"
@@ -115,17 +115,17 @@ set(PgRouting_SQL_DIRECTORIES
     # Proposed
     #  Not officialy on the release
     #----------------------
-    #"convenience"  # most are deprecated
-    #"label_graph"  # needs to be rewritten using Boost
-    #"costMatrix"   # proposed on 2.3
+    "convenience"  # most are deprecated
+    "label_graph"  # needs to be rewritten using Boost
+    "costMatrix"   # proposed on 2.3
 
     #----------------------
     # Wrappers for backwards compatablity 
     #----------------------
-    #"apsp_johnson"  # 2.0 wrap of pgr_johnson
-    #"apsp_warshall" # 2.0 wrap of pgr_warshall
-    #"kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
-    #"vrppdtw"       # 2.1 wraps of _pgr_pickDeliver 
+    "apsp_johnson"  # 2.0 wrap of pgr_johnson
+    "apsp_warshall" # 2.0 wrap of pgr_warshall
+    "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
+    "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver 
 
     )
 
@@ -420,10 +420,6 @@ if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
     set(PgRouting_SOURCE_NAMES ${PgRouting_SOURCE_NAMES} "internalQueryTests")
 endif()
 
-set(PgRouting_SQL_DIRECTORIES
-    ${PgRouting_SOURCE_NAMES}
-    ${PgRouting_SQL_DIRECTORIES})
-
 #-------------------
 # add the subdirectories that have the C/C++ code 
 #-------------------
@@ -494,9 +490,11 @@ if(WIN32 AND MSVC)
 endif(WIN32 AND MSVC)
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#
 # Handling SQL files
+#
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+#
 add_custom_target(build-time-sql-directory ALL
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/sql_queries")
 
@@ -507,6 +505,10 @@ file(WRITE ${TEMP_LIB_FILENAME} "")
 # add the subdirectories that have the SQL files
 #-------------------
 
+set(PgRouting_SQL_DIRECTORIES
+    ${PgRouting_SOURCE_NAMES}
+    ${PgRouting_SQL_DIRECTORIES})
+
 set(PACKAGE_SQL_FILES "")
 
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
@@ -514,13 +516,10 @@ foreach (subdir ${PgRouting_SQL_DIRECTORIES})
 endforeach()
 
 
-#if (CDEBUG)
-if (1)
-    message("DEBUG STARTS")
+if (CDEBUG)
     foreach (files ${PACKAGE_SQL_FILES})
         message("${files}")
     endforeach()
-    message("DEBUG ENDS")
 endif()
 
 ADD_CUSTOM_TARGET(ProcessSQLFiles ALL)
@@ -535,10 +534,13 @@ foreach(file_in ${PACKAGE_SQL_FILES})
     string(REGEX REPLACE "/\\*/*FOR.*FOR-USER\\*/" "" CONTENTS "${STRIP_CONTENTS}")
     file(APPEND ${TEMP_LIB_FILENAME} "${CONTENTS}")
 endforeach()
+add_dependencies(ProcessSQLFiles ${TEMP_LIB_FILENAME})
 
 configure_file("${TEMP_LIB_FILENAME}"
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
     )
+message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql")
+#
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -546,11 +548,15 @@ configure_file("${TEMP_LIB_FILENAME}"
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Handling pgrouting.control.in files
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+#
 configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
+message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
+#
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 # create the signature file for this release
 message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
