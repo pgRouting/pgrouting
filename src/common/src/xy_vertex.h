@@ -41,7 +41,7 @@
 #include "./pgr_types.h"  
 
 
-namespace pgRouting {
+namespace pgrouting {
 
 // typedef boost::geometry::model::d2::point_xy<double> Point;
 typedef CGAL::Simple_cartesian<double> Simple_cartasian;
@@ -99,4 +99,4 @@ std::vector < XY_vertex > extract_vertices(
     const std::vector < Pgr_edge_xy_t > data_edges);
 #endif
 
-} // namespace pgRouting
+} // namespace pgrouting

@@ -402,9 +402,47 @@ Since V1 and V2 are empty we stop our contraction here.
     removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (e, -4):{12},
          (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
 
-Visualy the results are
+Visually the results are
     
 .. image:: images/undirected_sampledata_c.png
+
+
+Detailed Procedure
++++++++++++++++++++
+:Original Data:
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q0
+   :end-before: -- q1
+
+:Addition of new columns:
+
+.. code-block:: none
+
+    ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
+
+    ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
+
+:Data After Adding Columns:
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q13
+   :end-before: -- q14
+
+
+:Vertices having contracted vertices:
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q10
+   :end-before: -- q11
+
+:Addition of new edges by the algorithm:
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q9
+   :end-before: -- q10
+
+
 
 
 References
@@ -412,3 +450,4 @@ References
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
+

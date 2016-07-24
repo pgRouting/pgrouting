@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_assert.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 
     std::ostream& operator<<(std::ostream& log, const Basic_vertex &v) {
         log << v.id ;
@@ -145,4 +145,4 @@ namespace pgRouting {
         return extract_vertices(vertices, std::vector < pgr_edge_t >(data_edges, data_edges + count));
     }
 
-} // namespace pgRouting
+} // namespace pgrouting

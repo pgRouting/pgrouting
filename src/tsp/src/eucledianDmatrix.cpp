@@ -22,7 +22,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#ifdef __MINGW32__
+
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -36,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./eucledianDmatrix.h"
 #include "./tour.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace tsp {
 
 
@@ -165,4 +166,4 @@ std::ostream& operator<<(std::ostream &log, const eucledianDmatrix &matrix) {
 
 
 }  // namespace tsp
-}  // namespace pgRouting
+}  // namespace pgrouting

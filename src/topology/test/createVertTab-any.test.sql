@@ -4,6 +4,7 @@ BEGIN;
 --                  PGR_createVerticesTable
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
+SET client_min_messages TO NOTICE;
 
 --    SELECT pgr_createTopology('edge_table',0.001);
 	 SELECT  pgr_createVerticesTable('edge_table');

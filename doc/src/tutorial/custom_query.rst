@@ -14,6 +14,47 @@ Dictionary of columns & Custom Query
 
 :path: a sequence of vertices/edges from A to B.
 :route: a sequence of paths. 
+:ANY-INTEGER: Any of the following types: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: Any of the following types: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+
+
+Custom Queries
+===============================================================================
+
+
+
+Edges queries
+-------------------------------------------------------------------------------
+
+
+Columns of the edges_sql queries
+...............................................................................
+
+
+Depending on the function used the following columns are expected
+
+================  ===================   ======== =================================================
+Column            Type                  Default  Description
+================  ===================   ======== =================================================
+**id**            ``ANY-INTEGER``                Identifier of the edge.
+**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
+                                                   - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
+                                                   - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   ======== =================================================
+
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+
+
+
 
 Description of the edges_sql query
 -------------------------------------------------------------------------------

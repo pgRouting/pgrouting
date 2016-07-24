@@ -99,8 +99,14 @@ Description of the Signatures
 ..
     description of the sql queries
 
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-.. include:: withPoints_parameters.txt 
+.. include:: ../../common/src/points_input.h
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+
 
 
 Description of the parameters of the signatures

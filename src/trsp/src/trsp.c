@@ -102,7 +102,7 @@ static int compute_trsp(
 
     //defining min and max vertex id
 
-    PGR_DBG("Total %i edge tuples", total_tuples);
+    PGR_DBG("Total %ld edge tuples", total_tuples);
 
     for(z=0; z<total_tuples; z++) {
         if(edges[z].source<v_min_id)
@@ -197,7 +197,7 @@ static int compute_trsp(
 
     PGR_DBG("ret = %i\n", ret);
 
-    PGR_DBG("*path_count = %i\n", *path_count);
+    PGR_DBG("*path_count = %ld\n", *path_count);
 
     if (ret < 0)
     {

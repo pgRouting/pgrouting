@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./node.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
  class Pgr_pickDeliver;
@@ -296,4 +296,4 @@ class Tw_node: public Node {
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
