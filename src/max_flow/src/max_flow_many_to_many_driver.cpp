@@ -92,7 +92,8 @@ do_pgr_max_flow_many_to_many(
             return;
         }
 
-        std::vector<pgr_flow_t> flow_edges = G.get_flow_edges();
+        std::vector<pgr_flow_t> flow_edges;
+        G.get_flow_edges(flow_edges);
 
         (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
         for (int i = 0; i < flow_edges.size(); ++i) {

@@ -24,16 +24,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
---FUNCTIONS
-
-CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
-    edges_sql TEXT,
-    directed BOOLEAN DEFAULT TRUE,
-    OUT id BIGINT,
-    OUT edge_id BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT
+--INTERNAL FUNCTIONS
+CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
+    IN edges_sql TEXT,
+    IN source_vertex bigint,
+    IN sink_vertex bigint,
+    IN directed BOOLEAN DEFAULT TRUE,
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT
     )
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'maximum_cardinality_matching'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_one_to_one'
     LANGUAGE c IMMUTABLE STRICT;
