@@ -73,29 +73,29 @@ set(PgRouting_SOURCE_NAMES
     #----------------------
     # Directories that have being rewritten
     #----------------------
-    "allpairs"
-    "astar"
-    "driving_distance"
-    "ksp"
-    "tsp"
+    #"allpairs"
+    #"astar"
+    #"driving_distance"
+    #"ksp"
+    #"tsp"
 
     #----------------------
     # Code needs to be rewritten
     #----------------------
-    "alpha_shape"
-    "bd_astar"
-    "bd_dijkstra"
-    "trsp"
+    #"alpha_shape"
+    #"bd_astar"
+    #"bd_dijkstra"
+    #"trsp"
 
     #----------------------
     # Proposed
     #  - Not officialy on the release
     #  - number indicates version when was propsosed with code
     #----------------------
-    "contraction" # 2.3
-    "pickDeliver" # 2.3
-    "vrp_basic"   # 2.0 
-    "withPoints"  # 2.2
+    #"contraction" # 2.3
+    #"pickDeliver" # 2.3
+    #"vrp_basic"   # 2.0 
+    #"withPoints"  # 2.2
 
     # template generated name
     #"funnyDijkstra"
@@ -115,17 +115,17 @@ set(PgRouting_SQL_DIRECTORIES
     # Proposed
     #  Not officialy on the release
     #----------------------
-    "convenience"  # most are deprecated
-    "label_graph"  # needs to be rewritten using Boost
-    "costMatrix"   # proposed on 2.3
+    #"convenience"  # most are deprecated
+    #"label_graph"  # needs to be rewritten using Boost
+    #"costMatrix"   # proposed on 2.3
 
     #----------------------
     # Wrappers for backwards compatablity 
     #----------------------
-    "apsp_johnson"  # 2.0 wrap of pgr_johnson
-    "apsp_warshall" # 2.0 wrap of pgr_warshall
-    "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
-    "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver 
+    #"apsp_johnson"  # 2.0 wrap of pgr_johnson
+    #"apsp_warshall" # 2.0 wrap of pgr_warshall
+    #"kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
+    #"vrppdtw"       # 2.1 wraps of _pgr_pickDeliver 
 
     )
 
@@ -433,22 +433,6 @@ foreach (subdir ${PgRouting_SOURCE_NAMES})
 endforeach()
 
 
-#-------------------
-# add the subdirectories that have the SQL files
-#-------------------
-
-set(PACKAGE_SQL_FILES "")
-
-foreach (subdir ${PgRouting_SQL_DIRECTORIES})
-    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
-endforeach()
-
-
-if (CDEBUG)
-    foreach (files ${PACKAGE_SQL_FILES})
-        message("${files}")
-    endforeach()
-endif()
 #====================================================================
 
 
@@ -509,29 +493,64 @@ if(WIN32 AND MSVC)
     set_target_properties(${PGROUTING_LIB_NAME} PROPERTIES PREFIX "lib")
 endif(WIN32 AND MSVC)
 
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Handling SQL files
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-file(WRITE "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-    "-- pgRouting version '${PGROUTING_VERSION_STRING}' extension for postgresql\n")
+add_custom_target(build-time-sql-directory ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/sql_queries")
 
-file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-    "-- Complain if script is sourced in pgsql, rather than CREATE EXTENSION\n")
-#file(APPEND "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-#    "\\echo Use \"CREATE EXTENSION pgrouting\" to load this file. \\quit")
+set(TEMP_LIB_FILENAME "${CMAKE_BINARY_DIR}/sql_queries/lib-pgrouting--version.sql.in")
+file(WRITE ${TEMP_LIB_FILENAME} "")
 
+#-------------------
+# add the subdirectories that have the SQL files
+#-------------------
 
+set(PACKAGE_SQL_FILES "")
 
-foreach(PACKAGE_SQL_FILE ${PACKAGE_SQL_FILES})
-    cat(${PACKAGE_SQL_FILE} "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in")
+foreach (subdir ${PgRouting_SQL_DIRECTORIES})
+    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
 endforeach()
 
-# copy our temporary file into a final file
-# this extra set will allow us to place variables in the sql file
-# that will get substituted in this step before they are installed
-configure_file("${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql.in"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql")
+
+#if (CDEBUG)
+if (1)
+    message("DEBUG STARTS")
+    foreach (files ${PACKAGE_SQL_FILES})
+        message("${files}")
+    endforeach()
+    message("DEBUG ENDS")
+endif()
+
+ADD_CUSTOM_TARGET(ProcessSQLFiles ALL)
+foreach(file_in ${PACKAGE_SQL_FILES})
+    get_filename_component(file_name ${file_in} NAME)
+    set(file_out "${CMAKE_BINARY_DIR}/sql_queries/${file_name}")
+    configure_file(${file_in} ${file_out})
+
+    add_dependencies(ProcessSQLFiles ${file_in})
+    file(READ "${file_out}" CONTENTS)
+    string(REGEX REPLACE "/\\*PGR-(GNU|MIT).*PGR-(GNU|MIT)\\*/" "" STRIP_CONTENTS "${CONTENTS}")
+    string(REGEX REPLACE "/\\*/*FOR.*FOR-USER\\*/" "" CONTENTS "${STRIP_CONTENTS}")
+    file(APPEND ${TEMP_LIB_FILENAME} "${CONTENTS}")
+endforeach()
+
+configure_file("${TEMP_LIB_FILENAME}"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    )
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Handling pgrouting.control.in files
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # create the signature file for this release
 message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
