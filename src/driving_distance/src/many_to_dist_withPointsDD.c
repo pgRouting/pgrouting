@@ -180,7 +180,7 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         size_t num;
 
         sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("sourcesArr size %d ", num);
+        PGR_DBG("sourcesArr size %ld ", num);
 
         PGR_DBG("Calling driving_many_to_dist_driver");
         process(

@@ -118,8 +118,8 @@ do_pgr_withPoints(
 
         Path path;
 
-        auto vertices(pgRouting::extract_vertices(edges, total_edges));
-        vertices = pgRouting::extract_vertices(vertices, new_edges);
+        auto vertices(pgrouting::extract_vertices(edges, total_edges));
+        vertices = pgrouting::extract_vertices(vertices, new_edges);
 
         log << "extracted vertices: ";
         for (const auto v : vertices) {
@@ -130,7 +130,7 @@ do_pgr_withPoints(
         if (directed) {
             log << "Working with directed Graph\n";
 
-            pgRouting::DirectedGraph digraph(vertices, gType);
+            pgrouting::DirectedGraph digraph(vertices, gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
 
@@ -139,7 +139,7 @@ do_pgr_withPoints(
         } else {
             log << "Working with Undirected Graph\n";
 
-            pgRouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
 

@@ -210,8 +210,13 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstra_parameters.txt
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
+.. include:: ../sql/dijkstra.sql
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
 
 
 Description of the return values

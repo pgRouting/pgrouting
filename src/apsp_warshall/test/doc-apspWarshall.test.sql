@@ -3,6 +3,7 @@
 --              PGR_apspWarshall
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
+SET client_min_messages TO NOTICE;
 \echo --q1
 SELECT * FROM pgr_apspWarshall(
         'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table WHERE id < 5',

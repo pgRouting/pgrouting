@@ -6,7 +6,7 @@
 
 #include "pgr_types.h"
 #include "identifiers.hpp"
-namespace pgRouting {
+namespace pgrouting {
 namespace contraction {
 
 

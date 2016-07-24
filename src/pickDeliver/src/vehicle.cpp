@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./vehicle.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 
@@ -512,5 +512,5 @@ operator<(const Vehicle &lhs, const Vehicle &rhs) {
 }
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
 

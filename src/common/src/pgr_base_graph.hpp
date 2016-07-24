@@ -161,29 +161,29 @@ Vector of unique vertices of the graph
 size_t total_edges;
 pgr_edge_t *my_edges = NULL;
 pgr_get_edges(edges_sql, &my_edges, &total_tuples); 
-std::vector< Basic_Vertex > vertices(pgRouting::extract_vertices(my_edges));
+std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 ~~~~
 
 There are several ways to initialize the graph
 
 ~~~~{.c}
 // 1. Initializes an empty graph
-pgRouting::DirectedGraph digraph(gType);
+pgrouting::DirectedGraph digraph(gType);
 
 // 2. Initializes a graph based on the vertices
-pgRouting::DirectedGraph digraph(
+pgrouting::DirectedGraph digraph(
     verices,
     gType);
 vertices.clear();
 
 3. Initializes a graph based on the extracted vertices
-pgRouting::DirectedGraph digraph(
-    pgRouting::extract_vertices(my_edges, total_edges);
+pgrouting::DirectedGraph digraph(
+    pgrouting::extract_vertices(my_edges, total_edges);
     gType);
 
 4. Initializes a graph based on the extracted vertices
-pgRouting::DirectedGraph digraph(
-    pgRouting::extract_vertices(my_edges);
+pgrouting::DirectedGraph digraph(
+    pgrouting::extract_vertices(my_edges);
     gType);
 ~~~~
 
@@ -218,7 +218,7 @@ digraph.graph_insert_data(new_edges);
 ~~~~
 
 */
-namespace pgRouting {
+namespace pgrouting {
 
 namespace graph{
 template <class G, typename Vertex, typename Edge>
@@ -260,7 +260,8 @@ boost::adjacency_list < boost::listS, boost::vecS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
-// TODO (Rohith) add this to the comment above
+#ifndef NDEBUG
+// TODO (Rohith) this is only used on internal query tests
 typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
@@ -272,6 +273,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     contraction::Vertex, Basic_edge >,
     contraction::Vertex, Basic_edge > CDirectedGraph;
+#endif
 //@}
 
 
@@ -358,7 +360,8 @@ class Pgr_base_graph {
              pgassert(boost::num_vertices(graph) == num_vertices());
              pgassert(boost::num_vertices(graph) == vertices.size());
 #if 0
-             pgassert(pgRouting::check_vertices(vertices) == 0);
+             // This code does not work with contraction
+             pgassert(pgrouting::check_vertices(vertices) == 0);
 #endif
              size_t i = 0;
              for (auto vi = boost::vertices(graph).first; vi != boost::vertices(graph).second; ++vi) {
@@ -411,6 +414,14 @@ class Pgr_base_graph {
       */
      template < typename T >
          void graph_insert_data(const std::vector < T > &edges) {
+#if 0
+             // This code does not work with contraction
+             if (num_vertices()==0) {
+                 auto vertices = pgrouting::extract_vertices(edges);
+                 pgassert(pgrouting::check_vertices(vertices) == 0);
+                 add_vertices(vertices);
+             }
+#endif
              for (const auto edge : edges) {
                  graph_add_edge(edge);
              }
@@ -822,4 +833,4 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
 }
 
 } // namespace graph
-}  // namespace pgRouting
+}  // namespace pgrouting

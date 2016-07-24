@@ -20,5 +20,6 @@ CREATE EXTENSION pgrouting;
 BEGIN;
 
     \i sampledata.sql
+    \i pickDeliver_pgtap_data.sql
 
 END;

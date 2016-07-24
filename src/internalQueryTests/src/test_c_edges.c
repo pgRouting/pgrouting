@@ -37,7 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include "fmgr.h"
 
-#define DEBUG
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
@@ -86,7 +85,7 @@ process(char *edges_sql,
             &err_msg);
 
     pfree(edges);
-    PGR_DBG("Returned log message = %s\n", log_msg);
+    elog(NOTICE, "Returned log message = %s\n", log_msg);
     if (log_msg) {
         elog(DEBUG1, "%s", log_msg);
         free(log_msg);

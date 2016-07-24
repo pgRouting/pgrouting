@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "../../common/src/identifiers.hpp"
 #include <queue>  
-namespace pgRouting {
+namespace pgrouting {
 
 
 
@@ -80,7 +80,7 @@ namespace pgRouting {
 						E outgoing_edge,
 						std::ostringstream& debug);
 				void add_shortcut(G &graph,
-						pgRouting::contraction::Edge &shortcut,
+						pgrouting::contraction::Edge &shortcut,
 						std::ostringstream& debug);
 				int64_t& get_next_id() {
 					return --last_edge_id;
@@ -288,7 +288,7 @@ namespace pgRouting {
 		}
 		template < class G >
 		void Pgr_linearContraction<G>::add_shortcut(G &graph,
-				pgRouting::contraction::Edge &shortcut,
+				pgrouting::contraction::Edge &shortcut,
 				std::ostringstream& debug) {
 				graph.graph_add_shortcut(shortcut, debug);
 		}

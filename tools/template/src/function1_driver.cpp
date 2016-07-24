@@ -44,12 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./MY_FUNCTION_NAME_driver.h"
 
-#define DEBUG
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
 
@@ -58,11 +53,9 @@ extern "C" {
  ***********************************************************/
 void
 do_pgr_MY_FUNCTION_NAME(
-        pgr_edge_t  *data_edges,
-        size_t total_edges,
+        MY_EDGE_TYPE  *data_edges, size_t total_edges,
         int64_t start_vid,
-        int64_t  *end_vidsArr,
-        size_t size_end_vidsArr,
+        int64_t  *end_vidsArr, size_t size_end_vidsArr,
         bool directed,
         MY_RETURN_VALUE_TYPE **return_tuples,
         size_t *return_count,
@@ -71,6 +64,7 @@ do_pgr_MY_FUNCTION_NAME(
     std::ostringstream err;
     std::ostringstream log;
     try {
+        
         pgassert(!(*log_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
@@ -90,36 +84,41 @@ do_pgr_MY_FUNCTION_NAME(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque< Path >paths;
+        // samll logs
         log << "Inserting vertices into a c++ vector structure\n";
         std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
         std::sort(end_vertices.begin(),end_vertices.end());
-#ifdef DEBUG
+#ifndef NDEBUG
+        // big logs with cycles wrap them so on release they wont consume time
         log << "end vids: ";
         for (const auto &vid : end_vertices) log << vid << ",";
         log << "\nstart vid:" << start_vid << "\n";
 #endif
 
         if (directed) {
+            // very detailed logging
             log << "Working with directed Graph\n";
             pgRouting::DirectedGraph digraph(gType);
             log << "Working with directed Graph 1 \n";
             digraph.graph_insert_data(data_edges, total_edges);
-#ifdef DEBUG
+
+#ifndef NDEBUG
+            // a graph log is a big log
             log << digraph;
 #endif
+            
             log << "Working with directed Graph 2\n";
             pgr_dijkstra(digraph, paths, start_vid, end_vertices, false);
             log << "Working with directed Graph 3\n";
         } else {
+            // maybe the code is working so cleaner logging
             log << "Working with Undirected Graph\n";
             pgRouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_edges);
-#ifdef DEBUG
-            log << undigraph;
-#endif
             pgr_dijkstra(undigraph, paths, start_vid, end_vertices, false);
         }
 
+        // use auto when possible
         auto count(count_tuples(paths));
 
         if (count == 0) {
