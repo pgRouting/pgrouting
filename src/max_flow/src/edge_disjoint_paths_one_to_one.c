@@ -50,7 +50,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "edge_disjoint_paths_one_to_one_driver.h"
 
-PG_FUNCTION_INFO_V1(edge_disjoint_paths_one_to_one);
 PGDLLEXPORT Datum
 edge_disjoint_paths_one_to_one(PG_FUNCTION_ARGS);
 
@@ -114,6 +113,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
+PG_FUNCTION_INFO_V1(edge_disjoint_paths_one_to_one);
 PGDLLEXPORT Datum
 edge_disjoint_paths_one_to_one(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;

@@ -51,7 +51,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "max_flow_one_to_many_driver.h"
 #include "./../../common/src/arrays_input.h"
 
-PG_FUNCTION_INFO_V1(max_flow_one_to_many);
 PGDLLEXPORT Datum
 max_flow_one_to_many(PG_FUNCTION_ARGS);
 
@@ -115,6 +114,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
+PG_FUNCTION_INFO_V1(max_flow_one_to_many);
 PGDLLEXPORT Datum
 max_flow_one_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;

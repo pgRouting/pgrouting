@@ -48,11 +48,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "./../../common/src/arrays_input.h"
 #include "maximum_cardinality_matching_driver.h"
 
 
-PG_FUNCTION_INFO_V1(maximum_cardinality_matching);
 PGDLLEXPORT Datum
 maximum_cardinality_matching(PG_FUNCTION_ARGS);
 
@@ -105,6 +103,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
+PG_FUNCTION_INFO_V1(maximum_cardinality_matching);
 PGDLLEXPORT Datum
 maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;

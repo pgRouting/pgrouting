@@ -52,7 +52,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 
 
-PG_FUNCTION_INFO_V1(edge_disjoint_paths_one_to_many);
 PGDLLEXPORT Datum
 edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS);
 
@@ -110,6 +109,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
+PG_FUNCTION_INFO_V1(edge_disjoint_paths_one_to_many);
 PGDLLEXPORT Datum
 edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
