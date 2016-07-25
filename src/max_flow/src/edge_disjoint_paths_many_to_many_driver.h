@@ -1,10 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: edge_disjoint_paths_many_to_one_driver.h
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
+Function's developer:
 Copyright (c) 2016 Andrea Nardelli
-mail: nrd.nardelli@gmail.com
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -24,19 +27,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
---INTERNAL FUNCTIONS
-CREATE OR REPLACE FUNCTION _pgr_executehelper(
-    IN edges_sql TEXT
-    )
-  RETURNS SETOF RECORD AS
-  $BODY$
-  DECLARE
-	r RECORD;
-  BEGIN
-	FOR r in EXECUTE $1 LOOP
-		RETURN NEXT r;
-	END LOOP;
-	RETURN;
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE;
+#ifndef SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_ONE_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_ONE_DRIVER_H_
+
+#include "./../../common/src/pgr_types.h"
+#include <stddef.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void
+do_pgr_edge_disjoint_paths_many_to_many(
+    pgr_basic_edge_t *data_edges,
+    size_t total_tuples,
+    int64_t *source_vertices,
+    size_t size_source_verticesArr,
+    int64_t *sink_vertices,
+    size_t size_sink_verticesArr,
+    bool directed,
+    General_path_element_t **return_tuples,
+    size_t *return_count,
+    char **err_msg);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_ONE_DRIVER_H_

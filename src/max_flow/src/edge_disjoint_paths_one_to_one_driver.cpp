@@ -75,7 +75,7 @@ do_pgr_edge_disjoint_paths_one_to_one(
         G.get_edge_disjoint_paths(path_elements, flow);
 
         (*return_tuples) = pgr_alloc(path_elements.size(), (*return_tuples));
-        for (int i = 0; i < path_elements.size(); ++i) {
+        for (size_t i = 0; i < path_elements.size(); ++i) {
             (*return_tuples)[i] = path_elements[i];
         }
         *return_count = path_elements.size();

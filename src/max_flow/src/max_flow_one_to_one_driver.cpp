@@ -88,7 +88,7 @@ do_pgr_max_flow_one_to_one(
         G.get_flow_edges(flow_edges);
 
         (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
-        for (int i = 0; i < flow_edges.size(); ++i) {
+        for (size_t i = 0; i < flow_edges.size(); ++i) {
             (*return_tuples)[i] = flow_edges[i];
         }
         *return_count = flow_edges.size();

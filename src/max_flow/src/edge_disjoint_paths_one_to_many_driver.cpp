@@ -66,7 +66,7 @@ do_pgr_edge_disjoint_paths_one_to_many(
         std::set<int64_t> set_source_vertices;
         set_source_vertices.insert(source_vertex);
         std::set<int64_t> set_sink_vertices;
-        for(int i=0; i<size_sink_verticesArr; ++i){
+        for(size_t i=0; i<size_sink_verticesArr; ++i){
             set_sink_vertices.insert(sink_vertices[i]);
         }
         PgrEdgeDisjointPathsGraph<FlowGraph> G;
@@ -78,7 +78,7 @@ do_pgr_edge_disjoint_paths_one_to_many(
         G.get_edge_disjoint_paths(path_elements, flow);
 
         (*return_tuples) = pgr_alloc(path_elements.size(), (*return_tuples));
-        for (int i = 0; i < path_elements.size(); ++i) {
+        for (size_t i = 0; i < path_elements.size(); ++i) {
             (*return_tuples)[i] = path_elements[i];
         }
         *return_count = path_elements.size();
