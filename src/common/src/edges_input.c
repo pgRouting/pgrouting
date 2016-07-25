@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./get_check_data.h"
 #include "./edges_input.h"
 #include "./time_msg.h"
-#include "pgr_types.h"
 
 static
 void fetch_basic_edge(

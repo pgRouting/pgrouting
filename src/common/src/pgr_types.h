@@ -171,8 +171,7 @@ enum {
     ANY_INTEGER,
     ANY_NUMERICAL,
     TEXT,
-    CHAR1,
-    BOOLEAN
+    CHAR1
 } expectType;
 
 typedef

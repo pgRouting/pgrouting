@@ -52,12 +52,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 
 PG_FUNCTION_INFO_V1(max_flow_one_to_many);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
-    max_flow_one_to_many(PG_FUNCTION_ARGS);
+max_flow_one_to_many(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -119,11 +115,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 max_flow_one_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     uint32_t call_cntr;

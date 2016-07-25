@@ -75,9 +75,6 @@ void pgr_fetch_column_info(
     for (i = 0; i < info_size; ++i) {
         if (fetch_column_info(&info[i])) {
             switch (info[i].eType) {
-                case BOOLEAN:
-                    pgr_check_boolean_type(info[i]);
-                    break;
                 case ANY_INTEGER:
                     pgr_check_any_integer_type(info[i]);
                     break;
@@ -111,14 +108,6 @@ pgr_check_text_type(Column_info_t info) {
         elog(ERROR, "Unexpected Column '%s' type. Expected TEXT", info.name);
     }
 }
-
-void
-pgr_check_boolean_type(Column_info_t info) {
-    if (!(info.type == BOOLOID)) {
-        elog(ERROR, "Unexpected Column '%s' type. Expected BOOLEAN", info.name);
-    }
-}
-
 
 void
 pgr_check_any_integer_type(Column_info_t info) {
@@ -238,18 +227,5 @@ pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {
     val = SPI_getvalue(*tuple, *tupdesc, info.colNumber);
     value = DatumGetCString(&val);
     pfree(val);
-    return value;
-}
-
-bool
-pgr_SPI_getBool(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
-    Datum binval;
-    bool isnull;
-    bool value = NULL;
-    binval = SPI_getbinval(*tuple, *tupdesc, info.colNumber, &isnull);
-    if (isnull)
-        elog(ERROR, "Unexpected Null value in column %s", info.name);
-    value = DatumGetBool(binval);
-    PGR_DBG("Variable: %s Value: %lf", info.name, value);
     return value;
 }

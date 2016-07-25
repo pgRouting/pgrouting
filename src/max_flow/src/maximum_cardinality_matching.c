@@ -53,12 +53,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 PG_FUNCTION_INFO_V1(maximum_cardinality_matching);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
-    maximum_cardinality_matching(PG_FUNCTION_ARGS);
+maximum_cardinality_matching(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -109,11 +105,7 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     uint32_t call_cntr;
