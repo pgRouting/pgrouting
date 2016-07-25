@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"  
 
 
-namespace pgRouting {
+namespace pgrouting {
 
     class Basic_vertex {
      public:
@@ -77,4 +77,4 @@ namespace pgRouting {
             const std::vector < pgr_edge_t > data_edges);
 
 
-} // namespace pgRouting
+} // namespace pgrouting

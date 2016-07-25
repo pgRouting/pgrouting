@@ -187,7 +187,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 	binval = SPI_getbinval(*tuple, *tupdesc, distance_columns->src_id, &isnull);
 
     PGR_DBG("back from SPI_getbinval for src_id");
-    PGR_DBG("binval=%i", binval);
+    // PGR_DBG("binval=%i", binval);
 
 	if (isnull)
 		elog(ERROR, "src_id contains a null value");
@@ -406,7 +406,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
 
 	vehicle->capacity = DatumGetInt32(binval);
 
-	PGR_DBG("capacity = %f\n", vehicle->capacity);
+	PGR_DBG("capacity = %d\n", vehicle->capacity);
 
 }
 
@@ -513,7 +513,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	PGR_DBG("Query: %s\n",orders_sql);
 	PGR_DBG("Query executed\n");
 
-	PGR_DBG("Orders before: %i\n", order_num);
+	PGR_DBG("Orders before: %lu\n", order_num);
 
 	while (moredata == TRUE)  
 	{
@@ -531,7 +531,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		order_num += ntuples;
 
-		PGR_DBG("Tuples: %i\n", order_num);
+		PGR_DBG("Tuples: %lu\n", order_num);
 
 		if (!orders)
 		  	orders = palloc(order_num * sizeof(vrp_orders_t));
@@ -577,7 +577,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		elog(NOTICE, "ORDERS[%i] = {id=%i, open=%i, close=%i, service=%i}", o, orders[o].id, orders[o].open_time, orders[o].close_time, orders[o].service_time);
 	}
 */
-	PGR_DBG ("order_num = %i", order_num); 
+	PGR_DBG ("order_num = %lu", order_num); 
 
 	//qsort (orders, order_num+1, sizeof (vrp_orders_t), order_cmp);
 
@@ -609,7 +609,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 
 		vehicle_num += ntuples;
 
-		PGR_DBG("Tuples: %i\n", vehicle_num);
+		PGR_DBG("Tuples: %lu\n", vehicle_num);
 
 		if (!vehicles)
 			vehicles = palloc(vehicle_num * sizeof(vrp_vehicles_t));
@@ -675,7 +675,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		ntuples = SPI_processed;
 		dist_num += ntuples;
 
-		PGR_DBG("Tuples: %i\n", vehicle_num);
+		PGR_DBG("Tuples: %lu\n", vehicle_num);
 
 		if (!costs)
 			costs = palloc(dist_num * sizeof(vrp_cost_element_t));
@@ -718,8 +718,8 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 	profstop("extract", prof_extract);
 	profstart(prof_vrp);
 
-	PGR_DBG("Total orders: %i\n", order_num);
-	PGR_DBG("Total vehicles: %i\n", vehicle_num);
+	PGR_DBG("Total orders: %lu\n", order_num);
+	PGR_DBG("Total vehicles: %lu\n", vehicle_num);
 
 
 	//qsort (orders, order_num+1, sizeof (vrp_orders_t), order_cmp_asc);
@@ -755,7 +755,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 		elog(NOTICE, "Row: %d: %d %d %d %d %d", pp, (*path)[pp].order_id, (*path)[pp].order_pos, (*path)[pp].vehicle_id, (*path)[pp].arrival_time, (*path)[pp].depart_time);
 	}
 */
-	PGR_DBG("vrp solved! ret: %d, path_count: %d", ret, path_count);
+	PGR_DBG("vrp solved! ret: %d, path_count: %lu", ret, *path_count);
 	//PGR_DBG("Score: %f\n", fit);
 
 	profstop("vrp", prof_vrp);
@@ -816,7 +816,7 @@ vrp(PG_FUNCTION_ARGS)
 			PG_GETARG_INT32(3),  // depot id
 			&path, &path_count);
 
-		PGR_DBG("Back from solve_vrp, path_count:%d", path_count);
+		PGR_DBG("Back from solve_vrp, path_count:%lu", path_count);
 		//elog(NOTICE, "Back from solve_vrp, path_count:%d", path_count);
         
         /* total number of tuples to be returned */

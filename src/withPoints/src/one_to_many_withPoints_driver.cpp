@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cassert>
 
-// #define DEBUG
 
 #include "./pgr_dijkstra.hpp"
 #include "./pgr_withPoints.hpp"
@@ -132,9 +131,9 @@ do_pgr_one_to_many_withPoints(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::DirectedGraph digraph(
-                    pgRouting::extract_vertices(
-                        pgRouting::extract_vertices(edges, total_edges),
+            pgrouting::DirectedGraph digraph(
+                    pgrouting::extract_vertices(
+                        pgrouting::extract_vertices(edges, total_edges),
                         new_edges),
                     gType);
             digraph.graph_insert_data(edges, total_edges);
@@ -142,9 +141,9 @@ do_pgr_one_to_many_withPoints(
             pgr_dijkstra(digraph, paths, start_vid, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            auto vertices(pgRouting::extract_vertices(edges, total_edges));
-            vertices = pgRouting::extract_vertices(vertices, new_edges);
-            pgRouting::UndirectedGraph undigraph(vertices, gType);
+            auto vertices(pgrouting::extract_vertices(edges, total_edges));
+            vertices = pgrouting::extract_vertices(vertices, new_edges);
+            pgrouting::UndirectedGraph undigraph(vertices, gType);
             vertices.clear();
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);

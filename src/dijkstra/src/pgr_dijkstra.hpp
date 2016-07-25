@@ -672,7 +672,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_1(
     try {
         boost::dijkstra_shortest_paths(graph.graph, source,
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&pgRouting::Basic_edge::cost, graph.graph))
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
                 .visitor(dijkstra_one_goal_visitor(target)));
     }
@@ -691,7 +691,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_distance(G &graph, V source, double distance) {
     try {
         boost::dijkstra_shortest_paths(graph.graph, source,
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&pgRouting::Basic_edge::cost, graph.graph))
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
                 .visitor(dijkstra_distance_visitor(
                         distance,
@@ -715,7 +715,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
     try {
         boost::dijkstra_shortest_paths(graph.graph, source,
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&pgRouting::Basic_edge::cost, graph.graph))
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
                 .visitor(dijkstra_many_goal_visitor(targets)));
     }

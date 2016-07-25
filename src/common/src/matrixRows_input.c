@@ -106,7 +106,7 @@ void pgr_get_matrixRows(
 
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %d edge tupĺes", ntuples);
+            PGR_DBG("processing %ld edge tupĺes", ntuples);
 
             size_t t;
             for (t = 0; t < ntuples; t++) {

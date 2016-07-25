@@ -6,12 +6,24 @@
 # Daniel Kastl 03/2013
 #
 
+option(WITH_DOC
+     "Set ON|OFF (default=OFF) to build Documentation library tree" OFF)
+
+option(BUILD_LATEX
+    "Set ON|OFF (default=OFF) to build Documentation library tree as PDF" OFF)
+
+option(BUILD_HTML
+    "Set ON|OFF (default=ON) to build Documentation library tree as HTML" ON)
+
+option(BUILD_MAN
+    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
+
 set(SPHINX_THEME "haiku")
 #set(SPHINX_THEME_DIR "_themes")
 
 if(WITH_DOC)
 
-    find_package(Sphinx)
+    find_package(Sphinx "${SPHINX_MINIMUM_VERSION}")
 
     if (NOT SPHINX_FOUND)
         message(WARNING "Sphinx not found. Cannot generate documentation!")
@@ -43,10 +55,6 @@ if(WITH_DOC)
         file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/static" DESTINATION "${BINARY_BUILD_DIR}")
         file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/themes" DESTINATION "${BINARY_BUILD_DIR}")
         file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/CNAME" DESTINATION "${PGROUTING_BINARY_DIR}")
-
-        configure_file(
-            "${CMAKE_CURRENT_SOURCE_DIR}/index.html.in"
-            "${PGROUTING_BINARY_DIR}/doc/html/index.html")
 
         configure_file(
             "${CMAKE_CURRENT_SOURCE_DIR}/forward.html"

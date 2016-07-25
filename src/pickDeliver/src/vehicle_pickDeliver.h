@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./tw_node.h"
 #include "./vehicle.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 
@@ -69,8 +69,10 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S <nodes> P D E
+      * ~~~~
       *
       * Can generate time window violation
       * No capacity violation
@@ -88,8 +90,10 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S P D <nodes> E
+      * ~~~~
       *
       * Can generate time window violation
       * No capacity violation
@@ -107,8 +111,10 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S ....P .... D .... E
+      * ~~~~
       *
       * push_back is performed when
       *   - pickup
@@ -145,5 +151,5 @@ class Vehicle_pickDeliver : public Vehicle {
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
 

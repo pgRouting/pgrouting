@@ -51,7 +51,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstraVia(Minimal Use) - proposed in V2.2
+    single: dijkstraVia(Minimal Use) - proposed
 
 Minimal Signature
 ...............................................................................
@@ -69,7 +69,7 @@ Minimal Signature
     :end-before: -- q0
 
 .. index::
-    single: dijkstraVia(Full signature) - proposed in V2.2
+    single: dijkstraVia(Full signature) - proposed
 
 Complete Signature
 ...............................................................................
@@ -91,10 +91,13 @@ Complete Signature
 Description of the Signature
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstra_parameters.txt
-    :start-after: only edges start
-    :end-before: only edges end
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
+.. include:: ../sql/dijkstraVia.sql
+    :start-after: pgr_dijkstra_via_parameters_start
+    :end-before: pgr_dijkstra_via_parameters_end
 
 Description of the parameters of the signatures
 ...............................................................................

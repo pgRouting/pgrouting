@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 BEGIN;
+SET client_min_messages TO NOTICE;
     select * from pgr_vidsToDMatrix(
         'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
         array[1,5,13,11,12,4],
@@ -31,4 +32,4 @@ BEGIN;
         'select id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost from edge_table',
         array[1,5,13,11,12,4],
         true, true, true);
-    ROLLBACK
+    ROLLBACK;

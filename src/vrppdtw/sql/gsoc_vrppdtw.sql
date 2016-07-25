@@ -1,21 +1,17 @@
 CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(
     sql text,
     vehicle_num INTEGER,
-    capacity INTEGER,
-    OUT seq INTEGER,
-    OUT rid INTEGER,
-    OUT nid INTEGER,
-    OUT cost INTEGER
+    capacity INTEGER
 )
-RETURNS SETOF record AS
+RETURNS SETOF pgr_costresult AS
 $BODY$
 DECLARE
 has_reverse BOOLEAN;
 customers_sql TEXT;
 BEGIN
     RETURN query
-         SELECT a.seq, vehicle_id::INTEGER, stop_id::INTEGER AS id2, departure_time::INTEGER
-        FROM _pgr_pickDeliver($1, $2, $3, 1, 30) AS a;
+         SELECT a.seq, vehicle_id::INTEGER AS id1, stop_id::INTEGER AS id2, departure_time AS cost
+        FROM _pgr_pickDeliver($1, $2, $3, 1, 30) AS a WHERE vehicle_id != -1;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

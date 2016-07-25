@@ -36,33 +36,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./vehicle_node.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 
-/*! \class Twpath
- * \brief Twpath class members are auto evaluating.
+/*! @class Vehicle
+ *  @brief Vehicle with time windows
  *
- * The intention for this class is to have GENERAL functions that can
- *   be used in different types of problems. Therefore is strongly
- *   recommended that especific problem functions be coded in the
- *   problems vehicle
+ * General functionality for a vehicle in a VRP problem
  *
- * \warning prefix: e_ performs the operation and evaluates
- * \warning prefix: ef_ performs the operation only if the resulting
- *   path is feasable
- * \warning prefix: e__ performs the operation on especific problems and
- *   eventually shall be removed
+ * Recomended use:
  *
- * \note All members return \b true when the operation is succesfull
+ * ~~~~{.c}
+ *   Class my_vehicle : public vechicle
+ * ~~~~
  *
- * Twpath also inherits all the non evaluating methods of \ref TwBucket.
+ * @note All members return @b true when the operation is succesfull
  *
- * A path is an ordered sequence of nodes from starting site to ending site.
- * The problem will define which type of nodes belongs to the twpath and
- * which shall be outside twpath.
+ * A vehicle is a sequence of @ref Vehicle_node 
+ * from @b starting site to @b ending site.
  *
- * \sa \ref TwBucket a non evaluating container for nodes
+ * @sa @ref Vehicle_node
  */
 
 class Vehicle {
@@ -92,14 +86,14 @@ class Vehicle {
 
      /*! @name deque like functions
 
-       \returns True if the operation was performed
-       \warning Assertions are performed for out of range operations
-       \warning no feasability nor time window or capacity violations
+       @returns True if the operation was performed
+       @warning Assertions are performed for out of range operations
+       @warning no feasability nor time window or capacity violations
        checks are performed
-       \todo TODO more deque like functions here
+       @todo TODO more deque like functions here
        */
 
-     /*! \brief Invariant
+     /*! @brief Invariant
       * The path must:
       *   - have at least 2 nodes
       *   - first node of the path must be Start node
@@ -112,19 +106,19 @@ class Vehicle {
 
      /// @ {
 
-     /*! \brief Insert \bnode at \pos position.
+     /*! @brief Insert @b node at @b pos position.
       *
-      * \param[in] at The position that the node should be inserted.
-      * \param[in] node The node to insert.
+      * @param[in] pos The position that the node should be inserted.
+      * @param[in] node The node to insert.
       *
       */
      void insert(POS pos, Vehicle_node node);
 
 
-     /*! \brief Insert \bnode in bes position of the \position_limits.
+     /*! @brief Insert @b node in best position of the @b position_limits.
       *
-      * \param[in] position_limits.
-      * \param[in] node The node to insert.
+      * @param[in] position_limits
+      * @param[in] node The node to insert
       *
       * @returns position where it was inserted
       */
@@ -134,40 +128,44 @@ class Vehicle {
 
 
 
-     /*! \brief Evaluated: push_back a node to the path.
+     /*! @brief Evaluated: push_back a node to the path.
       *
+      * ~~~~{.c}
       * before: S <nodes> E
       * after: S <nodes> n E
+      * ~~~~
       *
       * @param[in] node to be push_back.
       */
      void push_back(const Vehicle_node &node);
 
-     /*! \brief Evaluated: push_back a node to the path.
+     /*! @brief Evaluated: push_back a node to the path.
       *
+      * ~~~~{.c}
       * before: S <nodes> E
       * after: S n <nodes> E
+      * ~~~~
       *
-      * \param[in] node to be push_back.
+      * @param[in] node to be push_back.
       */
      void push_front(const Vehicle_node &node);
 
 
-     /*! \brief Evaluated: pop_back a node to the path.
+     /*! @brief Evaluated: pop_back a node to the path.
       *
+      * ~~~~{.c}
       * before: S <nodes> n E
       * after: S <nodes> E
-      *
-      * \param[in] node to be pop_back.
+      * ~~~~
       */
      void pop_back();
 
-     /*! \brief Evaluated: pop_front a node to the path.
+     /*! @brief Evaluated: pop_front a node to the path.
       *
+      * ~~~~{.c}
       * before: S n <nodes> E
       * after: S <nodes> E
-      *
-      * \param[in] node to be pop_front.
+      * ~~~~
       */
      void pop_front();
 
@@ -198,8 +196,10 @@ class Vehicle {
 
      /*! @brief return true when no nodes are in the truck 
       *
+      * ~~~~{.c}
       * True: S E
       * False: S <nodes> E
+      * ~~~~
       */
      bool empty() const;
 
@@ -245,13 +245,15 @@ class Vehicle {
 
 
      /*!
-      * \brief Swap two nodes in the path.
+      * @brief Swap two nodes in the path.
       *
+      * ~~~~{.c}
       * Before: S <nodesA> I <nodesB> J <nodesC> E
       * After: S <nodesA> J <nodesB> I <nodesC> E
+      * ~~~~
       *
-      * \param[in] i The position of the first node to swap.
-      * \param[in] j The position of the second node to swap.
+      * @param[in] i The position of the first node to swap.
+      * @param[in] j The position of the second node to swap.
       */
      void swap(POS i, POS j);
 
@@ -264,7 +266,7 @@ class Vehicle {
       * end of the path, and intermediate values are cached on each node.
       * So, for example, changing the path at position 100:
       * the evaluation function should be called as
-      * \c evaluate(100, maxcapacity)
+      * @c evaluate(100, maxcapacity)
       * and from that position to the end of the path will be evaluated.
       * None of the "unaffected" positions get reevaluated
       *
@@ -274,12 +276,12 @@ class Vehicle {
 
      ///@ {
 
-     /*! \brief Evaluate: Evaluate the whole path from the start. */
+     /*! @brief Evaluate: Evaluate the whole path from the start. */
      void evaluate();
 
-     /*! \brief Evaluate: Evaluate a path from the given position.
+     /*! @brief Evaluate: Evaluate a path from the given position.
       *
-      * \param[in] from The starting position in the path for evaluation to
+      * @param[in] from The starting position in the path for evaluation to
       * the end of the path.
       */
      void evaluate(POS from);
@@ -314,10 +316,10 @@ class Vehicle {
 
      std::pair<POS, POS> position_limits(const Vehicle_node node) const;
 
- private:
+    private:
      POS getPosLowLimit(const Vehicle_node &node) const;
      POS getPosHighLimit(const Vehicle_node &node) const;
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting

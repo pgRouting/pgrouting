@@ -273,7 +273,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
 
   //v_max_id -= v_min_id;
 
-  PGR_DBG("Calling bidirsp_wrapper(edges, %d, %d, %d, %d, %d, %d, ...)\n",
+  PGR_DBG("Calling bidirsp_wrapper(edges, %u, %ld, %ld, %ld, %d, %d, ...)\n",
         total_tuples, v_max_id + 2, start_vertex, end_vertex,
         directed, has_reverse_cost);
 

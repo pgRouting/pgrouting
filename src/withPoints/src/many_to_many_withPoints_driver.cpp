@@ -39,16 +39,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cassert>
 
-// #define DEBUG
 
 #include "./pgr_dijkstra.hpp"
 #include "./pgr_withPoints.hpp"
 #include "./many_to_many_withPoints_driver.h"
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
 
@@ -138,13 +133,13 @@ do_pgr_many_to_many_withPoints(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, paths, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            pgRouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);
@@ -190,9 +185,6 @@ do_pgr_many_to_many_withPoints(
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-#ifdef DEBUG
-        *err_msg = strdup(log.str().c_str());
-#endif
         return 0;
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);

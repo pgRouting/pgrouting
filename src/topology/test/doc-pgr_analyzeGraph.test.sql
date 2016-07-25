@@ -7,6 +7,7 @@ BEGIN;
     --              PGR_analyzegraph
     ------------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------------
+    SET client_min_messages TO NOTICE;
 
     SELECT  pgr_createTopology('edge_table',0.001, clean := true);
     SELECT  pgr_analyzeGraph('edge_table',0.001);

@@ -52,8 +52,8 @@ pgr_dijkstraViaVertex(
         const std::vector< int64_t > via_vertices,
         std::deque< Path > &paths,
         bool strict,
-        bool U_turn_on_edge,  //! true = u turns are allowed between paths
-        std::ostringstream &log) {    
+        bool U_turn_on_edge,
+        std::ostringstream &log) {
 
     if (via_vertices.size() == 0) {
         return;
@@ -195,12 +195,12 @@ do_pgr_dijkstraViaVertex(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, U_turn_on_edge, log);
         } else {
             log << "Working with Undirected Graph\n";
-            pgRouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);
         }

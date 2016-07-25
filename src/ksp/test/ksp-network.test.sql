@@ -1,4 +1,5 @@
 BEGIN;
+SET client_min_messages TO NOTICE;
 --
 -- Generate 15 shortest paths between nodes 4 and 5
 -- with auto detection
