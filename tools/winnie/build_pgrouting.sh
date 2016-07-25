@@ -21,6 +21,7 @@ JENKINS_DEBUG=1
 
 
 if [ -z $JENKINS_DEBUG ]
+then
     echo "OS_BUILD ${OS_BUILD}"
     echo "PG_VER ${PG_VER}"
     echo "PGHOST ${PGHOST}"
@@ -52,6 +53,7 @@ echo "PATH ${PATH}"
 
 
 if [ -z $JENKINS_DEBUG ]
+then
     echo "PGUSER ${PGUSER}"
     echo "PROJECTS ${PROJECTS}"
     echo "PGPATHEDB ${PGPATHEDB}"
@@ -70,6 +72,7 @@ BOOST_VER_WUM=1_59
 ZLIB_VER=1.2.8
 
 if [ -z $JENKINS_DEBUG ]
+then
     echo "GMP_VER ${GMP_VER}"
     echo "MPFR_VER ${MPFR_VER}"
     echo "GAL_VER ${CGAL_VER}"
@@ -79,20 +82,23 @@ if [ -z $JENKINS_DEBUG ]
 fi
 
 #zlib
-PATH="${PATH}:${PROJECTS}/zlib/rel-${ZLIB_VER}w${OS_BUILD}${GCC_TYPE}/include:${PROJECTS}/zlib/rel-${ZLIB_VER}w${OS_BUILD}${GCC_TYPE}/lib:${PROJECTS}/zlib/rel-${ZLIB_VER}w${OS_BUILD}${GCC_TYPE}/bin"
+ZLIB_PATH="${PROJECTS}/zlib/rel-${ZLIB_VER}w${OS_BUILD}${GCC_TYPE}"
+PATH="${PATH}:${ZLIB_PATH}/include:${ZLIB_PATH}/lib:${ZLIB_PATH}/bin"
 echo "PATH ${PATH}"
 
 #gmp
-PATH="${PATH}:${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include:${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/lib"
+GMP_PATH="${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}"
+PATH="${PATH}:${GMP_PATH}/include:${GMP_PATH}/lib"
 echo "PATH ${PATH}"
 
 #mpfr
-PATH="${PATH}:${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include:${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/lib:${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/bin"
+MPFR_PATH="${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}"
+PATH="${PATH}:${MPFR_PATH}/include:${MPFR_PATH}/lib:${MPFR_PATH}/bin"
 echo "PATH ${PATH}"
 
 #boost
-PATH="${PATH}:${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE}/lib"
 BOOSTROOT_PATH="${PROJECTS}/boost/rel-${BOOST_VER_WU}w${OS_BUILD}${GCC_TYPE}"
+PATH="${PATH}:${BOOSTROOT_PATH}/lib"
 echo "PATH ${PATH}"
 
 #cgal
