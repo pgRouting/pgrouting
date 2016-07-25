@@ -284,7 +284,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       funcctx->max_calls = (uint32_t)res_count;
       funcctx->user_fctx = res;
 
-      PGR_DBG("Total count %i", res_count);
+      PGR_DBG("Total count %lu", res_count);
 
       if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
         ereport(ERROR,

@@ -47,7 +47,6 @@ extern "C" {
 }
 #include "./../../common/src/pgr_alloc.hpp"
 
-// #define DEBUG
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
@@ -104,13 +103,13 @@ do_pgr_many_to_one_withPoints(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            pgRouting::DirectedGraph digraph(gType);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, paths, start_vertices, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            pgRouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);
@@ -151,7 +150,7 @@ do_pgr_many_to_one_withPoints(
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-#ifndef DEBUG
+#ifndef NDEBUG
         {
             std::ostringstream log;
             log << "OK";

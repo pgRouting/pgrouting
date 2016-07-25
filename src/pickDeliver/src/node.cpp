@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./node.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 bool Node::isSamePos(const Node &other) const {
@@ -76,6 +76,6 @@ Node::operator ==(const Node &rhs) const {
 }
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
 
 

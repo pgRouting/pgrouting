@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./tour.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace tsp {
 
 double
@@ -206,4 +206,4 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
 
 
 }  // namespace tsp
-}  // namespace pgRouting
+}  // namespace pgrouting

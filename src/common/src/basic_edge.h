@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"  
 
 
-namespace pgRouting {
+namespace pgrouting {
 
     class Basic_edge{
         public:
@@ -47,4 +47,4 @@ namespace pgRouting {
             bool first;  // originally was true (source, target) false (target, source)
     };
 
-} // namespace pgRouting
+} // namespace pgrouting

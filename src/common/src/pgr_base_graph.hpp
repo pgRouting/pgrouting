@@ -46,10 +46,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <limits>
 
+#include "./pgr_types.h" // for pgr_edge_t 
+
+#include "./ch_vertex.h"
+#include "./ch_edge.h"
 #include "./basic_vertex.h"
 #include "./xy_vertex.h"
+
 #include "./basic_edge.h"
-#include "./pgr_types.h" // for pgr_edge_t 
+//#include "../../contraction/src/edge.h"
+
 #include "./pgr_assert.h"
 
 /*! @brief boost::graph simplified to pgRouting needs
@@ -155,29 +161,29 @@ Vector of unique vertices of the graph
 size_t total_edges;
 pgr_edge_t *my_edges = NULL;
 pgr_get_edges(edges_sql, &my_edges, &total_tuples); 
-std::vector< Basic_Vertex > vertices(pgRouting::extract_vertices(my_edges));
+std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 ~~~~
 
 There are several ways to initialize the graph
 
 ~~~~{.c}
 // 1. Initializes an empty graph
-pgRouting::DirectedGraph digraph(gType);
+pgrouting::DirectedGraph digraph(gType);
 
 // 2. Initializes a graph based on the vertices
-pgRouting::DirectedGraph digraph(
+pgrouting::DirectedGraph digraph(
     verices,
     gType);
 vertices.clear();
 
 3. Initializes a graph based on the extracted vertices
-pgRouting::DirectedGraph digraph(
-    pgRouting::extract_vertices(my_edges, total_edges);
+pgrouting::DirectedGraph digraph(
+    pgrouting::extract_vertices(my_edges, total_edges);
     gType);
 
 4. Initializes a graph based on the extracted vertices
-pgRouting::DirectedGraph digraph(
-    pgRouting::extract_vertices(my_edges);
+pgrouting::DirectedGraph digraph(
+    pgrouting::extract_vertices(my_edges);
     gType);
 ~~~~
 
@@ -212,7 +218,7 @@ digraph.graph_insert_data(new_edges);
 ~~~~
 
 */
-namespace pgRouting {
+namespace pgrouting {
 
 namespace graph{
 template <class G, typename Vertex, typename Edge>
@@ -253,7 +259,23 @@ boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
+
+#ifndef NDEBUG
+// TODO (Rohith) this is only used on internal query tests
+typedef graph::Pgr_base_graph <
+boost::adjacency_list < boost::listS, boost::vecS,
+    boost::undirectedS,
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CUndirectedGraph;
+
+typedef graph::Pgr_base_graph <
+boost::adjacency_list < boost::listS, boost::vecS,
+    boost::bidirectionalS,
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CDirectedGraph;
+#endif
 //@}
+
 
 namespace graph{
 
@@ -337,8 +359,10 @@ class Pgr_base_graph {
          m_gType(gtype) {
              pgassert(boost::num_vertices(graph) == num_vertices());
              pgassert(boost::num_vertices(graph) == vertices.size());
-             pgassert(pgRouting::check_vertices(vertices) == 0);
-
+#if 0
+             // This code does not work with contraction
+             pgassert(pgrouting::check_vertices(vertices) == 0);
+#endif
              size_t i = 0;
              for (auto vi = boost::vertices(graph).first; vi != boost::vertices(graph).second; ++vi) {
                  vertices_map[vertices[i].id] = (*vi);
@@ -370,7 +394,6 @@ class Pgr_base_graph {
          void graph_insert_data(const T *edges, int64_t count) {
              graph_insert_data(std::vector < T >(edges, edges + count));
          }
-
      /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
 
         The set of edges should not have an illegal vertex defined
@@ -391,17 +414,18 @@ class Pgr_base_graph {
       */
      template < typename T >
          void graph_insert_data(const std::vector < T > &edges) {
+#if 0
+             // This code does not work with contraction
              if (num_vertices()==0) {
-                 auto vertices = pgRouting::extract_vertices(edges);
-                 pgassert(pgRouting::check_vertices(vertices) == 0);
+                 auto vertices = pgrouting::extract_vertices(edges);
+                 pgassert(pgrouting::check_vertices(vertices) == 0);
                  add_vertices(vertices);
              }
-
+#endif
              for (const auto edge : edges) {
                  graph_add_edge(edge);
              }
          }
-
      //@}
 
     private:
@@ -809,4 +833,4 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
 }
 
 } // namespace graph
-}  // namespace pgRouting
+}  // namespace pgrouting

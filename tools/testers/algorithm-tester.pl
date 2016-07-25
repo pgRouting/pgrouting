@@ -16,6 +16,7 @@ use vars qw/*name *dir *prune/;
 *prune  = *File::Find::prune;
 
 my $DOCUMENTATION = 0;
+my $INTERNAL_TESTS = 0;
 my $VERBOSE = 0;
 my $DRYRUN = 0;
 my $DEBUG = 0;
@@ -36,6 +37,7 @@ sub Usage {
     "       -pgrver vpgr        - pgrouting version\n" .
     "       -psql /path/to/psql - optional path to psql\n" .
     "       -v                  - verbose messages for small debuging\n" .
+    "       -dbg                - use when CMAKE_BUILD_TYPE = DEBUG\n" .
     "       -debug              - verbose messages for debuging(enter twice for more)\n" .
     "       -debug1             - DEBUG1 messages (for timing reports)\n" .
     "       -clean              - dropdb pgr_test__db__test\n" .
@@ -112,6 +114,9 @@ while (my $a = shift @ARGV) {
     elsif ($a =~ /^-doc(umentation)?/i) {
         $DOCUMENTATION = 1;
         $DEBUG1 = 0; # disbale timing reports during documentation generation
+    }
+    elsif ($a =~ /^-dbg/i) {
+        $INTERNAL_TESTS = 1; #directory internalQueryTests is also tested
     }
     else {
         warn "Error: unknown option '$a'\n";
@@ -225,6 +230,11 @@ sub run_test {
         mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
 
+    if ($INTERNAL_TESTS) {
+        for my $x (@{$t->{debugtests}}) {
+            process_single_test($x, $dir,, $DBNAME, \%res)
+        }
+    }
     if ($DOCUMENTATION) {
         for my $x (@{$t->{documentation}}) {
             process_single_test($x, $dir,, $DBNAME, \%res)
@@ -282,7 +292,9 @@ sub process_single_test{
     else {
         open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
-            $stats{z_fail}++;
+            if (!$INTERNAL_TESTS) {
+               $stats{z_fail}++;
+            }
             next;
         };
     }

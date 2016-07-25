@@ -276,7 +276,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
   //defining min and max vertex id
 
-  PGR_DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %lu tuples", total_tuples);
 
   for(z=0; z<total_tuples; z++)
   {
@@ -304,7 +304,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
     PGR_DBG("%i - %i", edges[z].source, edges[z].target);
   }
 
-  PGR_DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %lu tuples", total_tuples);
 
   if(s_count == 0) {
     elog(ERROR, "Start vertex was not found.");
@@ -316,9 +316,9 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
     return -1;
   }
 
-  PGR_DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %lu tuples", total_tuples);
 
-  PGR_DBG("Calling bidir_astar <%i>\n", total_tuples);
+  PGR_DBG("Calling bidir_astar <%lu>\n", total_tuples);
 
   // calling C++ A* function
   ret = bdastar_wrapper(edges, total_tuples, v_max_id + 1, source_vertex_id-v_min_id,
@@ -326,7 +326,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
             directed, has_reverse_cost,
             path, path_count, &err_msg);
 
-  PGR_DBG("SIZE %i\n",*path_count);
+  PGR_DBG("SIZE %lu\n",*path_count);
 
   PGR_DBG("ret =  %i\n",ret);
 
@@ -397,7 +397,7 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS)
       funcctx->max_calls = (uint32_t)path_count;
       funcctx->user_fctx = path;
 
-      PGR_DBG("Path count %i", path_count);
+      PGR_DBG("Path count %lu", path_count);
 
       funcctx->tuple_desc =
             BlessTupleDesc(RelationNameGetTupleDesc("pgr_costResult"));
