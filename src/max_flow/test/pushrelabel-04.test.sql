@@ -2,7 +2,7 @@
 
 
 --Calculates the max flow from sources #2, #5, #10 to sinks #4, #9, #12.
-SELECT * FROM pgr_maxflowedmondskarp(
+SELECT * FROM pgr_maxflowpushrelabel(
     'SELECT id,
             source,
             target,
