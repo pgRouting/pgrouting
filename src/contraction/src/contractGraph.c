@@ -292,12 +292,16 @@ contractGraph(PG_FUNCTION_ARGS) {
 
         /*********************************************************************/
 
-        tuple = heap_formtuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         // cleanup
         PGR_DBG("Freeing values");
+
+        // TODO (Rohith) URGENT BY TOMORROW there is a leak as the original data has an array and its not being freed
+        // TODO (rohith) please start removing #if 0 #endif
+        
 #if 0
         if (result_tuples) {
             if (result_tuples->contracted_graph_name)
