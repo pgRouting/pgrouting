@@ -37,7 +37,7 @@ fi
 #---------------
 
 export PGUSER=postgres
-export PROJECTS=/jenkins
+export PROJECTS=/projects
 export PGPATHEDB=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}edb  #this is so winnie know's where to copy the dlls for vc++ edb compiled postgresql testing
 export PGPATH=${PROJECTS}/postgresql/rel/pg${PG_VER}w${OS_BUILD}${GCC_TYPE}
 export PATHOLD=$PATH
