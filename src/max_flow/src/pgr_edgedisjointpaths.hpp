@@ -76,27 +76,15 @@ class PgrEdgeDisjointPathsGraph {
   V sink_vertex;
 
   V get_boost_vertex(int64_t id) {
-      return id_to_V.find(id)->second;
+      return id_to_V[id];
   }
 
   int64_t get_vertex_id(V v) {
-      return V_to_id.find(v)->second;
+      return V_to_id[v];
   }
 
   int64_t get_edge_id(E e) {
-      return E_to_id.find(e)->second;
-  }
-
-  int64_t push_relabel() {
-      return boost::push_relabel_max_flow(boost_graph,
-                                          source_vertex,
-                                          sink_vertex);
-  }
-
-  int64_t edmonds_karp() {
-      return boost::edmonds_karp_max_flow(boost_graph,
-                                          source_vertex,
-                                          sink_vertex);
+      return E_to_id[e];
   }
 
   int64_t boykov_kolmogorov() {
