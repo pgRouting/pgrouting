@@ -24,95 +24,79 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
---INTERNAL FUNCTIONS
-CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
+
+/***********************************
+        ONE TO ONE
+***********************************/
+
+CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN edges_sql TEXT,
     IN source_vertex bigint,
     IN sink_vertex bigint,
     IN directed BOOLEAN DEFAULT TRUE,
-    OUT number_of_paths bigint
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT
     )
-  AS
-  $BODY$
-  BEGIN
-	number_of_paths := COALESCE((SELECT sum(flow)
-	FROM pgr_maxflowpushrelabel('
-	    SELECT id, source, target, CASE WHEN ' || CASE WHEN directed THEN 'going > 0' ELSE '(going > 0 OR coming > 0)' END || ' THEN 1 ELSE 0 END as capacity' || '
-	                             , CASE WHEN ' || CASE WHEN directed THEN 'coming > 0' ELSE '(going > 0 OR coming > 0)' END  || ' THEN 1 ELSE 0 END as reverse_capacity
-	    FROM (
-	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
-	        AS (id bigint, source bigint, target bigint, going double precision, coming double precision)
-	    ) AS f', source_vertex, sink_vertex)
-	WHERE source = source_vertex), 0) as paths_number;
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_one_to_one'
+    LANGUAGE c IMMUTABLE STRICT;
 
-CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
-    IN edges_sql TEXT,
-    IN source_vertices ANYARRAY,
-    IN sink_vertex bigint,
-    IN directed BOOLEAN DEFAULT TRUE,
-    OUT number_of_paths bigint
-    )
-  AS
-  $BODY$
-  BEGIN
-	number_of_paths := COALESCE((SELECT sum(flow)
-	FROM pgr_maxflowpushrelabel('
-	    SELECT id, source, target, CASE WHEN ' || CASE WHEN directed THEN 'going > 0' ELSE '(going > 0 OR coming > 0)' END || ' THEN 1 ELSE 0 END as capacity' || '
-	                             , CASE WHEN ' || CASE WHEN directed THEN 'coming > 0' ELSE '(going > 0 OR coming > 0)' END  || ' THEN 1 ELSE 0 END as reverse_capacity
-	    FROM (
-	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
-	        AS (id bigint, source bigint, target bigint, going double precision, coming double precision)
-	    ) AS f', source_vertex, sink_vertex)
-	WHERE source = ANY(source_vertex)), 0) as paths_number;
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE;
+/***********************************
+        ONE TO MANY
+***********************************/
 
-CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
+CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN edges_sql TEXT,
     IN source_vertex bigint,
     IN sink_vertices ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
-    OUT number_of_paths bigint
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT
     )
-  AS
-  $BODY$
-  BEGIN
-	number_of_paths := COALESCE((SELECT sum(flow)
-	FROM pgr_maxflowpushrelabel('
-	    SELECT id, source, target, CASE WHEN ' || CASE WHEN directed THEN 'going > 0' ELSE '(going > 0 OR coming > 0)' END || ' THEN 1 ELSE 0 END as capacity' || '
-	                             , CASE WHEN ' || CASE WHEN directed THEN 'coming > 0' ELSE '(going > 0 OR coming > 0)' END  || ' THEN 1 ELSE 0 END as reverse_capacity
-	    FROM (
-	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
-	        AS (id bigint, source bigint, target bigint, going double precision, coming double precision)
-	    ) AS f', source_vertex, sink_vertex)
-	WHERE source = source_vertex), 0) as paths_number;
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_one_to_many'
+    LANGUAGE c IMMUTABLE STRICT;
 
-CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
+/***********************************
+        MANY TO ONE
+***********************************/
+
+CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
+    IN edges_sql TEXT,
+    IN source_vertices ANYARRAY,
+    IN sink_vertex BIGINT,
+    IN directed BOOLEAN DEFAULT TRUE,
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT start_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT
+    )
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_many_to_one'
+    LANGUAGE c IMMUTABLE STRICT;
+
+/***********************************
+        MANY TO MANY
+***********************************/
+
+CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN edges_sql TEXT,
     IN source_vertices ANYARRAY,
     IN sink_vertices ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
-    OUT number_of_paths bigint
+    OUT seq BIGINT,
+    OUT path_seq BIGINT,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT
     )
-  AS
-  $BODY$
-  BEGIN
-	number_of_paths := COALESCE((SELECT sum(flow)
-	FROM pgr_maxflowpushrelabel('
-	    SELECT id, source, target, CASE WHEN ' || CASE WHEN directed THEN 'going > 0' ELSE '(going > 0 OR coming > 0)' END || ' THEN 1 ELSE 0 END as capacity' || '
-	                             , CASE WHEN ' || CASE WHEN directed THEN 'coming > 0' ELSE '(going > 0 OR coming > 0)' END  || ' THEN 1 ELSE 0 END as reverse_capacity
-	    FROM (
-	        SELECT * FROM _pgr_executehelper(_pgr_get_statement(''' || $1 || '''))
-	        AS (id bigint, source bigint, target bigint, going double precision, coming double precision)
-	    ) AS f', source_vertex, sink_vertex)
-	WHERE source = ANY(source_vertex)), 0) as paths_number;
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_many_to_many'
+    LANGUAGE c IMMUTABLE STRICT;

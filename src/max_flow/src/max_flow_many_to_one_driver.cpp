@@ -62,13 +62,13 @@ do_pgr_max_flow_many_to_one(
         PgrFlowGraph<FlowGraph> G;
         std::set<int64_t> set_source_vertices;
         std::set<int64_t> set_sink_vertices;
-        for(int i=0; i<size_source_verticesArr; ++i){
+        for(size_t i=0; i<size_source_verticesArr; ++i){
             set_source_vertices.insert(source_vertices[i]);
         }
         set_sink_vertices.insert(sink_vertex);
 
 
-        G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices);
+        G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices, algorithm);
 
         int64_t flow;
         if(strcmp(algorithm, "push_relabel") == 0){
@@ -92,7 +92,7 @@ do_pgr_max_flow_many_to_one(
         G.get_flow_edges(flow_edges);
 
         (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
-        for (int i = 0; i < flow_edges.size(); ++i) {
+        for (size_t i = 0; i < flow_edges.size(); ++i) {
             (*return_tuples)[i] = flow_edges[i];
         }
         *return_count = flow_edges.size();

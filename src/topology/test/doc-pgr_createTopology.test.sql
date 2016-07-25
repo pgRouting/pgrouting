@@ -114,4 +114,6 @@ BEGIN;
     SELECT pgr_createTopology('edge_table',  0.001, rows_where:='id < 6', clean := true);
     SELECT pgr_createTopology('edge_table',  0.001);
     \echo --q17.1
+
+    SET client_min_messages TO NOTICE;
     ROLLBACK;	

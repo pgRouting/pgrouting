@@ -59,10 +59,4 @@ char* pgr_SPI_getText(
         TupleDesc *tupdesc,
         Column_info_t info);
 
-bool pgr_SPI_getBool(
-    HeapTuple *tuple,
-    TupleDesc *tupdesc,
-    Column_info_t info);
-
-
 char* pgr_stradd(const char *a, const char *b);

@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 -- q1
 SELECT * FROM pgr_dijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -535,6 +539,8 @@ SELECT * FROM pgr_dijkstra(
    6 |        6 |         2 |       3 |    3 |   -1 |    0 |        5
 (6 rows)
 
+SET client_min_messages TO NOTICE;
+SET
 SELECT * FROM pgr_dijkstra(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     2, 3,
@@ -598,6 +604,8 @@ SELECT * FROM pgr_dijkstra(
    2 |        2 |         2 |       3 |    3 |   -1 |    0 |        1
 (2 rows)
 
+SET client_min_messages TO NOTICE;
+SET
 SELECT * FROM pgr_dijkstra(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     2, 3,
@@ -612,3 +620,5 @@ NOTICE:  Deprecated function
 (2 rows)
 
 -- q18
+ROLLBACK;
+ROLLBACK

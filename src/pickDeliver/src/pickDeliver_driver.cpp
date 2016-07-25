@@ -70,7 +70,7 @@ do_pgr_pickDeliver(
 
         log << "Read data\n";
         std::string error("");
-        pgRouting::vrp::Pgr_pickDeliver pd_problem(
+        pgrouting::vrp::Pgr_pickDeliver pd_problem(
                 customers_arr,
                 total_customers,
                 max_vehicles,

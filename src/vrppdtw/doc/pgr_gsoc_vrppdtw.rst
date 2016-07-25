@@ -13,10 +13,6 @@ pgr_gsoc_vrppdtw
 ===============================================================================
 
 
-
-.. index:: 
-    single: pgr_gsoc_vrppdtw(compĺete signature) - proposed
-
 Name
 -------------------------------------------------------------------------------
 
@@ -24,50 +20,116 @@ Name
 
 .. warning::  This is a proposed function.
 
-   - Is not officially in the current release
+   - Is not officially in the current release.
    - The implementation currently is a wrapper of :ref:`pgr_pickDeliver`
 
-   .. code-block:: sql
 
-        CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(
-            sql text,
-            vehicle_num INTEGER,
-            capacity INTEGER,
-            OUT seq INTEGER,
-            OUT rid INTEGER,
-            OUT nid INTEGER,
-            OUT cost INTEGER
-        )
-        RETURNS SETOF record AS
-        $BODY$
-        DECLARE
-        has_reverse BOOLEAN;
-        customers_sql TEXT;
-        BEGIN
-            RETURN query
-                 SELECT a.seq, vehicle_id::INTEGER, stop_id::INTEGER AS id2, departure_time::INTEGER
-                FROM _pgr_pickDeliver($1, $2, $3, 1, 30) AS a;
-        END
-        $BODY$
-        LANGUAGE plpgsql VOLATILE
-        COST 100
-        ROWS 1000;
+Signature Summary
+-----------------
 
      
+.. code-block:: none
+
+    pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+    RETURNS SET OF pgr_costResult[]:
+
+Signatures
+-----------
+
+.. index:: 
+    single: gsoc_vrppdtw(Complete Signature) - proposed
+
+
+Complete signature
+...................
+
+.. code-block:: none
+
+    pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+    Returns set of pgr_costResult[]:
+
+
+.. rubric:: Example: Show the id1
+
+.. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
+   :start-after: --q1
+   :end-before: --q2
+
+
+Description of the Signatures
+-------------------------------
+
+Description of the sql query
+.........................................................................................
+
+================  ===================   =================================================
+Column            Type                  Description
+================  ===================   =================================================
+**id**            ``ANY-INTEGER``       Identifier of the customer.
+
+                                        - A value of ``0`` identifies the starting location
+
+**x**             ``ANY-NUMERICAL``     ``X`` coordinate of the location.
+**y**             ``ANY-NUMERICAL``     ``Y`` coordinate of the location.
+**demand**        ``ANY-NUMERICAL``     How much is added / removed from the vehicle.
+
+                                        - Negative value is a delivery,
+                                        - Positive value is a pickup,
+
+**openTime**      ``ANY-NUMERICAL``     The time relative to 0, when the customer opens.
+**closeTime**     ``ANY-NUMERICAL``     The time relative to 0, when the customer closes.
+**serviceTime**   ``ANY-NUMERICAL``     The duration of the loading / unloading.
+**pickup_id**     ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
+**deliver_id**    ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
+================  ===================   =================================================
+
+Description of the parameters of the signatures
+.........................................................................................
+
+================== ===========  =================================================
+Column             Type            Description
+================== ===========  =================================================
+**sql**            ``TEXT``     SQL query as decribed above.
+**vehicle_num**    ``INTEGER``  Maximum number of vehicles in the result. (currently is ignored)
+**capacity**       ``INTEGER``  Capacity of the vehicle.
+================== ===========  =================================================
+
+Description of the result
+.........................................................................................
+
+RETURNS SET OF pgr_costResult[]:
+
+================== =========== =================================================
+Column             Type            Description
+================== =========== =================================================
+**seq**            ``INTEGER`` Sequential value starting from **1**.
+**id1**            ``INTEGER`` Current vehicle identifier.
+**id2**            ``INTEGER`` Customer identifier.
+**cost**           ``FLOAT``   Previous ``cost`` plus `travel time` plus `wait time` plus `service time`.
+                                - when ``id2 = 0`` for the second time for the same ``id1``, then has the total time for the current ``id1``
+================== =========== =================================================
 
 
 
 Examples
 -------------------------------------------------------------------------------
 
-.. literalinclude:: ../../pickDeliver/doc/gsoc_vrppdtw.queries
-   :start-after: --q1
-   :end-before: --q2
 
+.. rubric:: Example: Total number of rows returned
+
+.. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
+   :start-after: --q2
+   :end-before: --q3
+
+.. rubric:: Example: Results for only id1 values: 1, 5, and 9
+
+.. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
+   :start-after: --q3
+   :end-before: --q4
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`pgr_pickDeliver`
+* current implementation is a wrapper of :ref:`pgr_pickDeliver`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem

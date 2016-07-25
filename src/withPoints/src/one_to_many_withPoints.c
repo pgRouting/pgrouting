@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -76,7 +75,6 @@ process(
         driving_side[0] = 'b'; 
     }
     PGR_DBG("estimated driving side:%c",driving_side[0]);
-
     pgr_SPI_connect();
 
     PGR_DBG("load the points");
@@ -84,13 +82,14 @@ process(
     size_t total_points = 0;
     pgr_get_points(points_sql, &points, &total_points);
 
-#ifdef DEBUG
+#if 0
+#ifndef NDEBUG
     size_t i = 0;
     for (i = 0; i < total_points; i ++) {
         PGR_DBG("%ld\t%ld\t%f\t%c",points[i].pid, points[i].edge_id, points[i].fraction, points[i].side);
     }
 #endif
-
+#endif
     /*
      * TODO move this code to c++
      */
@@ -111,7 +110,8 @@ process(
     pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     PGR_DBG("Total %ld edges in query:", total_edges_of_points);
-#ifdef DEBUG
+#if 0
+#ifndef NDEBUG
     for (i = 0; i < total_edges_of_points; i ++) {
         PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
                 edges_of_points[i].id,
@@ -121,7 +121,7 @@ process(
                 edges_of_points[i].reverse_cost);
     }
 #endif
-
+#endif
 
 
     PGR_DBG("load the edges that dont match the points");
@@ -130,7 +130,8 @@ process(
     pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("Total %ld edges in query:", total_edges);
-#ifdef DEBUG
+#if 0
+#ifndef NDEBUG
     for (i = 0; i < total_edges; i ++) {
         PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
                 edges[i].id,
@@ -140,8 +141,8 @@ process(
                 edges[i].reverse_cost);
     }
 #endif
-
     PGR_DBG("freeing allocated memory not used anymore");
+#endif
     free(edges_of_points_query);
     free(edges_no_points_query);
 
@@ -174,6 +175,7 @@ process(
     time_msg(" processing withPoints one to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("LOG: %s\n", log_msg);
+
     if (log_msg) free(log_msg);
 
     if (err_msg) {
@@ -229,10 +231,7 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
         size_t size_end_pidsArr;
         end_pidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_pidsArr, PG_GETARG_ARRAYTYPE_P(3));
-        PGR_DBG("targetsArr size %ld ", size_end_pidsArr);
 
-        PGR_DBG("Calling process");
-        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(4)));
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 pgr_text2char(PG_GETARG_TEXT_P(1)),

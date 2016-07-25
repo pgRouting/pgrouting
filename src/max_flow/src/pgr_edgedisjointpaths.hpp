@@ -40,7 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include "./../../common/src/pgr_types.h"
 
-#include <cstdint>
 #include <map>
 
 #include <boost/config.hpp>
@@ -77,36 +76,24 @@ class PgrEdgeDisjointPathsGraph {
   V sink_vertex;
 
   V get_boost_vertex(int64_t id) {
-      return this->id_to_V.find(id)->second;
+      return id_to_V[id];
   }
 
   int64_t get_vertex_id(V v) {
-      return this->V_to_id.find(v)->second;
+      return V_to_id[v];
   }
 
   int64_t get_edge_id(E e) {
-      return this->E_to_id.find(e)->second;
-  }
-
-  int64_t push_relabel() {
-      return boost::push_relabel_max_flow(this->boost_graph,
-                                          this->source_vertex,
-                                          this->sink_vertex);
-  }
-
-  int64_t edmonds_karp() {
-      return boost::edmonds_karp_max_flow(this->boost_graph,
-                                          this->source_vertex,
-                                          this->sink_vertex);
+      return E_to_id[e];
   }
 
   int64_t boykov_kolmogorov() {
-      size_t num_v = boost::num_vertices(this->boost_graph);
+      size_t num_v = boost::num_vertices(boost_graph);
       std::vector<boost::default_color_type> color(num_v);
       std::vector<long> distance(num_v);
-      return boost::boykov_kolmogorov_max_flow(this->boost_graph,
-                                               this->source_vertex,
-                                               this->sink_vertex);
+      return boost::boykov_kolmogorov_max_flow(boost_graph,
+                                               source_vertex,
+                                               sink_vertex);
   }
 
   void create_edge_disjoint_paths_graph(pgr_basic_edge_t *data_edges,
@@ -127,78 +114,76 @@ class PgrEdgeDisjointPathsGraph {
           vertices.insert(data_edges[i].target);
       }
       for (int64_t id : vertices) {
-          V v = add_vertex(this->boost_graph);
-          this->id_to_V.insert(std::pair<int64_t, V>(id, v));
-          this->V_to_id.insert(std::pair<V, int64_t>(v, id));
+          V v = add_vertex(boost_graph);
+          id_to_V.insert(std::pair<int64_t, V>(id, v));
+          V_to_id.insert(std::pair<V, int64_t>(v, id));
       }
       bool added;
 
-      V supersource = add_vertex(this->boost_graph);
+      V supersource = add_vertex(boost_graph);
       for (int64_t source_id: source_vertices) {
-          V source = this->get_boost_vertex(source_id);
-          E e1, e1_rev;
-          boost::tie(e1, added) =
-              boost::add_edge(supersource, source, this->boost_graph);
-          boost::tie(e1_rev, added) =
-              boost::add_edge(source, supersource, this->boost_graph);
-          this->capacity[e1] = 999999999;
-          this->capacity[e1_rev] = 0;
-          this->rev[e1] = e1_rev;
-          this->rev[e1_rev] = e1;
+          V source = get_boost_vertex(source_id);
+          E e, e_rev;
+          boost::tie(e, added) = boost::add_edge(supersource, source, boost_graph);
+          boost::tie(e_rev, added) = boost::add_edge(source, supersource, boost_graph);
+          capacity[e] = 999999999;
+          capacity[e_rev] = 0;
+          rev[e] = e_rev;
+          rev[e_rev] = e;
       }
 
-      V supersink = add_vertex(this->boost_graph);
+      V supersink = add_vertex(boost_graph);
       for (int64_t sink_id: sink_vertices) {
-          V sink = this->get_boost_vertex(sink_id);
+          V sink = get_boost_vertex(sink_id);
           E e1, e1_rev;
           boost::tie(e1, added) =
-              boost::add_edge(sink, supersink, this->boost_graph);
+              boost::add_edge(sink, supersink, boost_graph);
           boost::tie(e1_rev, added) =
-              boost::add_edge(supersink, sink, this->boost_graph);
-          this->capacity[e1] = 999999999;
-          this->capacity[e1_rev] = 0;
-          this->rev[e1] = e1_rev;
-          this->rev[e1_rev] = e1;
+              boost::add_edge(supersink, sink, boost_graph);
+          capacity[e1] = 999999999;
+          capacity[e1_rev] = 0;
+          rev[e1] = e1_rev;
+          rev[e1_rev] = e1;
       }
 
-      this->source_vertex = supersource;
-      this->sink_vertex = supersink;
+      source_vertex = supersource;
+      sink_vertex = supersink;
 
-      this->capacity = get(boost::edge_capacity, this->boost_graph);
-      this->rev = get(boost::edge_reverse, this->boost_graph);
-      this->residual_capacity =
-          get(boost::edge_residual_capacity, this->boost_graph);
+      capacity = get(boost::edge_capacity, boost_graph);
+      rev = get(boost::edge_reverse, boost_graph);
+      residual_capacity =
+          get(boost::edge_residual_capacity, boost_graph);
 
       for (size_t i = 0; i < total_tuples; ++i) {
-          V v1 = this->get_boost_vertex(data_edges[i].source);
-          V v2 = this->get_boost_vertex(data_edges[i].target);
+          V v1 = get_boost_vertex(data_edges[i].source);
+          V v2 = get_boost_vertex(data_edges[i].target);
           if (directed) {
               E e, e_rev;
               boost::tie(e, added) =
-                  boost::add_edge(v1, v2, this->boost_graph);
+                  boost::add_edge(v1, v2, boost_graph);
               boost::tie(e_rev, added) =
-                  boost::add_edge(v2, v1, this->boost_graph);
-              this->E_to_id.insert(std::pair<E, int64_t>(e, data_edges[i].id));
-              this->E_to_id.insert(std::pair<E, int64_t>(e_rev,
+                  boost::add_edge(v2, v1, boost_graph);
+              E_to_id.insert(std::pair<E, int64_t>(e, data_edges[i].id));
+              E_to_id.insert(std::pair<E, int64_t>(e_rev,
                                                          data_edges[i].id));
-              this->capacity[e] = data_edges[i].going > 0 ? 1 : 0;
-              this->capacity[e_rev] = data_edges[i].coming > 0 ? 1 : 0;
-              this->rev[e] = e_rev;
-              this->rev[e_rev] = e;
+              capacity[e] = data_edges[i].going ? 1 : 0;
+              capacity[e_rev] = data_edges[i].coming ? 1 : 0;
+              rev[e] = e_rev;
+              rev[e_rev] = e;
           } else {
-              if (data_edges[i].going > 0 || data_edges[i].coming > 0) {
+              if (data_edges[i].going || data_edges[i].coming) {
                   E e, e_rev;
                   boost::tie(e, added) =
-                      boost::add_edge(v1, v2, this->boost_graph);
+                      boost::add_edge(v1, v2, boost_graph);
                   boost::tie(e_rev, added) =
-                      boost::add_edge(v2, v1, this->boost_graph);
-                  this->E_to_id.insert(std::pair<E, int64_t>(e, data_edges[i].id));
-                  this->E_to_id.insert(std::pair<E, int64_t>(e_rev,
+                      boost::add_edge(v2, v1, boost_graph);
+                  E_to_id.insert(std::pair<E, int64_t>(e, data_edges[i].id));
+                  E_to_id.insert(std::pair<E, int64_t>(e_rev,
                                                              data_edges[i].id));
-                  this->capacity[e] = 1;
-                  this->capacity[e_rev] = 1;
-                  this->rev[e] = e_rev;
-                  this->rev[e_rev] = e;
+                  capacity[e] = 1;
+                  capacity[e_rev] = 1;
+                  rev[e] = e_rev;
+                  rev[e_rev] = e;
               }
           }
       }
@@ -209,17 +194,17 @@ class PgrEdgeDisjointPathsGraph {
            int64_t path_id,
            std::vector<std::vector<int64_t> > &paths) {
       Eout_it ei, e_end;
-      if (boost::edge(vertex, this->sink_vertex, this->boost_graph).second) {
+      if (boost::edge(vertex, sink_vertex, boost_graph).second) {
           int64_t v_id = get_vertex_id(vertex);
           paths[path_id].push_back(v_id);
       }
       else {
           for (boost::tie(ei, e_end) =
-                   boost::out_edges(vertex, this->boost_graph);
+                   boost::out_edges(vertex, boost_graph);
                ei != e_end; ++ei) {
-              if (this->residual_capacity[*ei] < this->capacity[*ei]) {
+              if (residual_capacity[*ei] < capacity[*ei]) {
                   //exclude this edge from subsequent visits
-                  this->capacity[*ei] = -1;
+                  capacity[*ei] = -1;
                   int64_t v_id = get_vertex_id(vertex);
                   paths[path_id].push_back(v_id);
                   flow_dfs((*ei).m_target,
@@ -239,13 +224,13 @@ class PgrEdgeDisjointPathsGraph {
       int64_t path_id = 0;
       Eout_it ei, e_end, ei2, e2_end;
       for (boost::tie(ei, e_end) =
-               boost::out_edges(this->source_vertex, this->boost_graph);
+               boost::out_edges(source_vertex, boost_graph);
            ei != e_end; ++ei) {
-          if (this->capacity[*ei] - this->residual_capacity[*ei] > 0) {
+          if (capacity[*ei] - residual_capacity[*ei] > 0) {
               for (boost::tie(ei2, e2_end) =
-                       boost::out_edges((*ei).m_target, this->boost_graph);
+                       boost::out_edges((*ei).m_target, boost_graph);
                    ei2 != e2_end; ++ei2) {
-                  if (this->capacity[*ei2] - this->residual_capacity[*ei2]
+                  if (capacity[*ei2] - residual_capacity[*ei2]
                       > 0) {
                       paths[path_id].push_back(get_vertex_id((*ei2).m_source));
                       flow_dfs((*ei2).m_target, path_id, paths);
@@ -258,7 +243,7 @@ class PgrEdgeDisjointPathsGraph {
           size_t size = paths[i].size();
           E e;
           bool exists;
-          int j;
+          size_t j;
           for (j = 0; j < size - 1; j++) {
               General_path_element_t edge;
               edge.seq = j + 1;
@@ -268,8 +253,8 @@ class PgrEdgeDisjointPathsGraph {
               boost::tie(e, exists) = boost::edge(get_boost_vertex(paths[i][j]),
                                                   get_boost_vertex(paths[i][j
                                                       + 1]),
-                                                  this->boost_graph);
-              edge.edge = this->get_edge_id(e);
+                                                  boost_graph);
+              edge.edge = get_edge_id(e);
               path_elements.push_back(edge);
           }
           General_path_element_t edge;

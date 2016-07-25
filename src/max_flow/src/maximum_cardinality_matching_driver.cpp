@@ -74,7 +74,7 @@ do_pgr_maximum_cardinality_matching(
         }
 
         (*return_tuples) = pgr_alloc(matched_vertices.size(), (*return_tuples));
-        for (int i = 0; i < matched_vertices.size(); ++i) {
+        for (size_t i = 0; i < matched_vertices.size(); ++i) {
             (*return_tuples)[i] = matched_vertices[i];
         }
         *return_count = matched_vertices.size();

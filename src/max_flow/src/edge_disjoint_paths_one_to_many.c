@@ -52,12 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 
 
-PG_FUNCTION_INFO_V1(edge_disjoint_paths_one_to_many);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
@@ -114,11 +109,8 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(edge_disjoint_paths_one_to_many);
 PGDLLEXPORT Datum
-#endif
 edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
     uint32_t call_cntr;
@@ -202,9 +194,9 @@ edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int64GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

@@ -10,9 +10,13 @@ version: 2.3.{build}
 branches:
   only:
     - test/appveyor
-    - rewrite/vrppdtw
+    - test/merge-gsoc-ch
     - master
     - develop
+    - test/merge-gsoc-ch
+    - test/merge-gsoc-flow
+    - gsoc-ch
+    - gsoc-flow
 
 image: Visual Studio 2013
 configuration: Release
@@ -21,42 +25,33 @@ platform: x64
 clone_depth: 1
 clone_folder: c:\build\pgrouting
 
+cache:
+  - downloads -> appveyor.yml
+  - c:\build\local\msvc120\x64 -> appveyor
+
 services:
   - postgresql94
 
-#environment:
-#  CONFIGURATION: Release
+environment:
+  CONFIGURATION: Release
+  MSVC_VER: 12.0
+  BUILD_ROOT_DIR: c:\build
 
 init:
   - git config --global core.autocrlf false
 
 install:
-  - cd c:\build
-  # CMake 3.5.2 (upgrade) workaround
-  - curl -L -O -S -s https://cmake.org/files/v3.5/cmake-3.5.2-win32-x86.msi
-  - start /wait msiexec /i cmake-3.5.2-win32-x86.msi /qn
-  - cmake --version
-  # PostGIS 2.2.2
-  - curl -L -O -S -s http://winnie.postgis.net/download/windows/pg94/buildbot/postgis-pg94-binaries-2.2.2w64gcc48.zip
-  - 7z x postgis-pg94-binaries-2.2.2w64gcc48.zip
-  - xcopy /e /y /q postgis-pg94-binaries-2.2.2w64gcc48 C:\Progra~1\PostgreSQL\9.4
-  # Boost 1.58.0
-  - curl -L -O -S -s http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.zip
-  - 7z x boost_1_58_0.zip
-  # CGAL 4.8.1
-  - curl -L -O -S -s http://github.com/CGAL/cgal/releases/download/releases/CGAL-4.8.1/CGAL-4.8.1.zip
-  - 7z x CGAL-4.8.1.zip
-  - mkdir gmp\x64
-  - cd gmp\x64
-  - curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/GMP/5.0.1/gmp-all-CGAL-3.9.zip
-  - 7z x gmp-all-CGAL-3.9.zip
-  - curl -L -O -S -s http://cgal.geometryfactory.com/CGAL/precompiled_libs/auxiliary/x64/MPFR/3.0.0/mpfr-all-CGAL-3.9.zip
-  - 7z x mpfr-all-CGAL-3.9.zip
+  # Install pgRouting prerequisites:
+  # cmake
+  # postGIS
+  # CGAL
+  - call ci\appveyor\install.bat
+
 
 build_script:
-  - cd c:\build\pgrouting\tools\windows
-  - msbuild_pgrouting.bat 9.4 x64
-  - cd c:\build\pgrouting\build\pg94\x64
+  - cd c:\build\pgrouting\ci\appveyor
+  - msbuild_pgrouting.bat 9.4 
+  - cd %PGROUTING_BUILD_DIR%
   - msbuild PGROUTING.sln /target:Build /property:Configuration=%CONFIGURATION%
   - msbuild INSTALL.vcxproj /target:Build /property:Configuration=%CONFIGURATION%
   - copy c:\build\gmp\x64\lib\*.dll C:\Progra~1\PostgreSQL\9.4\bin\
@@ -68,4 +63,4 @@ test_script:
   - set PGPORT=5432
   - set PATH=%PATH%;%PGHOME%\bin
   # Execute algorithm test by Cygwin
-  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/9.4/bin/psql\" -ignorenotice"
+  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/9.4/bin/psql\""

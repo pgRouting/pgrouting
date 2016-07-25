@@ -44,7 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/points_input.h"
 #include "./get_new_queries.h"
 #include "./one_to_one_withPoints_driver.h"
-// #define DEBUG
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 
@@ -81,7 +80,7 @@ process(
     size_t total_points = 0;
     pgr_get_points(points_sql, &points, &total_points);
 
-#ifdef DEBUG
+#ifndef NDEBUG
     size_t i = 0;
     for (i = 0; i < total_points; i ++) {
        PGR_DBG("%ld\t%ld\t%f\t%c",points[i].pid, points[i].edge_id, points[i].fraction, points[i].side);
@@ -105,7 +104,7 @@ process(
     pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     PGR_DBG("Total %ld edges in query:", total_edges_of_points);
-#ifdef DEBUG
+#ifndef NDEBUG
     for (i = 0; i < total_edges_of_points; i ++) {
         PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
                 edges_of_points[i].id,
@@ -124,7 +123,7 @@ process(
     pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("Total %ld edges in query:", total_edges);
-#ifdef DEBUG
+#ifndef NDEBUG
     for (i = 0; i < total_edges; i ++) {
         PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
                 edges[i].id,

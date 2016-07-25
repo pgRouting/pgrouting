@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #pragma once
-#if defined(__MINGW32__) || defined(_MSC_VER)
+#if defined(__MinGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #undef min
@@ -46,10 +46,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <limits>
 
+#include "./pgr_types.h" // for pgr_edge_t 
+
+#include "./ch_vertex.h"
+#include "./ch_edge.h"
 #include "./basic_vertex.h"
 #include "./xy_vertex.h"
+
 #include "./basic_edge.h"
-#include "./pgr_types.h" // for pgr_edge_t 
+//#include "../../contraction/src/edge.h"
+
 #include "./pgr_assert.h"
 
 /*! @brief boost::graph simplified to pgRouting needs
@@ -108,7 +114,7 @@ The code is prepared to be used for:
 boost::adjacency_list
 < boost::vecS,  // not tested with other values
 boost::vecS,  // not tested with other values
-boost::undirectedS,  // USING UNDIRECTED 
+boost::undirectedS,  // USinG UNDIRECTED 
 Basic_vertex,  // the vertex class
 Basic_edge >   // the edge class
 ~~~~
@@ -155,29 +161,29 @@ Vector of unique vertices of the graph
 size_t total_edges;
 pgr_edge_t *my_edges = NULL;
 pgr_get_edges(edges_sql, &my_edges, &total_tuples); 
-std::vector< Basic_Vertex > vertices(pgRouting::extract_vertices(my_edges));
+std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 ~~~~
 
 There are several ways to initialize the graph
 
 ~~~~{.c}
 // 1. Initializes an empty graph
-pgRouting::DirectedGraph digraph(gType);
+pgrouting::DirectedGraph digraph(gType);
 
 // 2. Initializes a graph based on the vertices
-pgRouting::DirectedGraph digraph(
+pgrouting::DirectedGraph digraph(
     verices,
     gType);
 vertices.clear();
 
 3. Initializes a graph based on the extracted vertices
-pgRouting::DirectedGraph digraph(
-    pgRouting::extract_vertices(my_edges, total_edges);
+pgrouting::DirectedGraph digraph(
+    pgrouting::extract_vertices(my_edges, total_edges);
     gType);
 
 4. Initializes a graph based on the extracted vertices
-pgRouting::DirectedGraph digraph(
-    pgRouting::extract_vertices(my_edges);
+pgrouting::DirectedGraph digraph(
+    pgrouting::extract_vertices(my_edges);
     gType);
 ~~~~
 
@@ -212,7 +218,7 @@ digraph.graph_insert_data(new_edges);
 ~~~~
 
 */
-namespace pgRouting {
+namespace pgrouting {
 
 namespace graph{
 template <class G, typename Vertex, typename Edge>
@@ -253,7 +259,23 @@ boost::adjacency_list < boost::listS, boost::vecS,
     boost::bidirectionalS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
+
+#ifndef NDEBUG
+// TODO (Rohith) this is only used on internal query tests
+typedef graph::Pgr_base_graph <
+boost::adjacency_list < boost::listS, boost::vecS,
+    boost::undirectedS,
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CUndirectedGraph;
+
+typedef graph::Pgr_base_graph <
+boost::adjacency_list < boost::listS, boost::vecS,
+    boost::bidirectionalS,
+    contraction::Vertex, Basic_edge >,
+    contraction::Vertex, Basic_edge > CDirectedGraph;
+#endif
 //@}
+
 
 namespace graph{
 
@@ -325,7 +347,7 @@ class Pgr_base_graph {
 
      //! @name The Graph
      //@{
-     //! \brief Constructor
+     //! @brief Constructor
      /*!
        - Prepares the graph to be of type gtype
        - inserts the vertices
@@ -337,8 +359,10 @@ class Pgr_base_graph {
          m_gType(gtype) {
              pgassert(boost::num_vertices(graph) == num_vertices());
              pgassert(boost::num_vertices(graph) == vertices.size());
-             pgassert(pgRouting::check_vertices(vertices) == 0);
-
+#if 0
+             // This code does not work with contraction
+             pgassert(pgrouting::check_vertices(vertices) == 0);
+#endif
              size_t i = 0;
              for (auto vi = boost::vertices(graph).first; vi != boost::vertices(graph).second; ++vi) {
                  vertices_map[vertices[i].id] = (*vi);
@@ -358,7 +382,7 @@ class Pgr_base_graph {
 
      //! @name Insert data
      //@{
-     /*! \brief Inserts *count* edges of type *T* into the graph
+     /*! @brief Inserts *count* edges of type *T* into the graph
       *  
       *  Converts the edges to a std::vector<T> & calls the overloaded
       *  twin function.
@@ -370,13 +394,12 @@ class Pgr_base_graph {
          void graph_insert_data(const T *edges, int64_t count) {
              graph_insert_data(std::vector < T >(edges, edges + count));
          }
-
      /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
 
         The set of edges should not have an illegal vertex defined
         
         When the graph is empty calls:
-        - \bextract_vertices
+        - @b extract_vertices
         and throws an exeption if there are illegal vertices.
         
         
@@ -391,17 +414,18 @@ class Pgr_base_graph {
       */
      template < typename T >
          void graph_insert_data(const std::vector < T > &edges) {
+#if 0
+             // This code does not work with contraction
              if (num_vertices()==0) {
-                 auto vertices = pgRouting::extract_vertices(edges);
-                 pgassert(pgRouting::check_vertices(vertices) == 0);
+                 auto vertices = pgrouting::extract_vertices(edges);
+                 pgassert(pgrouting::check_vertices(vertices) == 0);
                  add_vertices(vertices);
              }
-
+#endif
              for (const auto edge : edges) {
                  graph_add_edge(edge);
              }
          }
-
      //@}
 
     private:
@@ -429,12 +453,12 @@ class Pgr_base_graph {
 
      //! @name boost wrappers
      //@{
-     //! \brief get the out-degree  of a vertex
+     //! @brief get the out-degree  of a vertex
 
      /*!
-       \returns 0: The out degree of a vertex that its not in the graph
+       @returns 0: The out degree of a vertex that its not in the graph
 
-       @param [IN] *vertex_id* original vertex id
+       @param [in] vertex_id original vertex id
        */
      degree_size_type out_degree(int64_t vertex_id) const{
          if (!has_vertex(vertex_id)) {
@@ -493,7 +517,7 @@ class Pgr_base_graph {
 
      //! @name edge disconection/reconnection 
      //@{
-     //! \brief Disconnects all edges from p_from to p_to
+     //! @brief Disconnects all edges from p_from to p_to
      /*!
 
        - No edge is disconnected if the vertices id's do not exist in the graph
@@ -503,28 +527,28 @@ class Pgr_base_graph {
        ![disconnect_edge(2,3) on an UNDIRECTED graph](disconnectEdgeUndirected.png)
        ![disconnect_edge(2,3) on a DIRECTED graph](disconnectEdgeDirected.png)
 
-       @param [IN] *p_from* original vertex id of the starting point of the edge
-       @param [IN] *p_to*   original vertex id of the ending point of the edge
+       @param [in] p_from original vertex id of the starting point of the edge
+       @param [in] p_to   original vertex id of the ending point of the edge
        */
      void disconnect_edge(int64_t p_from, int64_t p_to);
 
 
-     //! \brief Disconnects the outgoing edges with a particular original id from a vertex
+     //! @brief Disconnects the outgoing edges with a particular original id from a vertex
      /*!
 
        - No edge is disconnected if it doesn't exist in the graph
        - Removed edges are stored for future reinsertion
        - all outgoing edges with the edge_id are removed if they exist
 
-       @param [IN] *vertex_id* original vertex
-       @param [IN] *edge_id* original edge_id
+       @param [in] vertex_id original vertex
+       @param [in] edge_id original edge_id
        */
      void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id);
 
 
 
 
-     //! \brief Disconnects all incomming and outgoing edges from the vertex
+     //! @brief Disconnects all incomming and outgoing edges from the vertex
      /*!
        boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
        simulated by disconnecting the vertex from the graph
@@ -536,13 +560,13 @@ class Pgr_base_graph {
        ![disconnect_vertex(2) on an UNDIRECTED graph](disconnectVertexUndirected.png)
        ![disconnect_vertex(2) on a DIRECTED graph](disconnectVertexDirected.png)
 
-       @param [IN] *p_vertex* original vertex id of the starting point of the edge
+       @param [in] p_vertex original vertex id of the starting point of the edge
        */
      void disconnect_vertex(int64_t p_vertex);
      void disconnect_vertex(V vertex);
 
 
-     //! \brief Reconnects all edges that were removed
+     //! @brief Reconnects all edges that were removed
      void restore_graph();
 
      //@}
@@ -561,7 +585,7 @@ class Pgr_base_graph {
                      out != out_end; ++out) {
                  log << ' ' << g.graph[*out].id << "=(" << g.graph[source(*out, g.graph)].id
                      << ", " << g.graph[target(*out, g.graph)].id << ") = "
-                     <<  g.graph[*out].cost <<"\t";
+                     <<  g.graph[*out].cost <<"@t";
              }
              log << std::endl;
          }
@@ -809,4 +833,4 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
 }
 
 } // namespace graph
-}  // namespace pgRouting
+}  // namespace pgrouting
