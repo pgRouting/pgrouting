@@ -20,7 +20,7 @@ JENKINS_DEBUG=1
 #export GIT_COMMIT=
 
 
-if [ -z $JENKINS_DEBUG ]
+if [ $JENKINS_DEBUG -eq 1 ]
 then
     echo "OS_BUILD ${OS_BUILD}"
     echo "PG_VER ${PG_VER}"
@@ -52,7 +52,7 @@ export PATH="${PROJECTS}/rel-libiconv-1.13.1w${OS_BUILD}${GCC_TYPE}/include:${PA
 echo "PATH ${PATH}"
 
 
-if [ -z $JENKINS_DEBUG ]
+if [ $JENKINS_DEBUG -eq 1 ]
 then
     echo "PGUSER ${PGUSER}"
     echo "PROJECTS ${PROJECTS}"
@@ -71,7 +71,7 @@ BOOST_VER_WU=1_59_0
 BOOST_VER_WUM=1_59
 ZLIB_VER=1.2.8
 
-if [ -z $JENKINS_DEBUG ]
+if [ $JENKINS_DEBUG -eq 1]
 then
     echo "GMP_VER ${GMP_VER}"
     echo "MPFR_VER ${MPFR_VER}"
@@ -119,22 +119,39 @@ cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 
 cmake -G "MSYS Makefiles" \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
-    -DBOOST_ROOT:PATH=${BOOSTROOT_PATH} -DCGAL_ROOT:PATH=${PROJECTS}/CGAL/rel-cgal-${CGAL_VER}w${OS_BUILD}${GCC_TYPE} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
+    -DBOOST_ROOT:PATH=${BOOSTROOT_PATH} \
+    -DCGAL_ROOT:PATH=${CGAL_PATH} \
+    -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} \
+    -DBoost_USE_STATIC_LIBS=ON \
+    -DBoost_USE_MULTITHREADED=ON \
+    -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
 
 #first delete old pgrouting files from installed folder before we reinstall
 
-ls ${PGPATH}/lib/
-rm ${PGPATH}/lib/librouting*
-ls ${PGPATH}/share/extension/
+ls ${PGPATH}/lib/libpgrouting*
+ls ${PGPATH}/share/extension/pgrouting*
+ls ${PGPATHEDB}/lib/libpgrouting*
+ls ${PGPATHEDB}/share/extension/pgrouting*
+
+rm ${PGPATH}/lib/libpgrouting*
 rm ${PGPATH}/share/extension/pgrouting*
+rm ${PGPATHEDB}/lib/libpgrouting*
+rm ${PGPATHEDB}/share/extension/pgrouting*
+
+ls ${PGPATH}/lib/libpgrouting*
+ls ${PGPATH}/share/extension/pgrouting*
+ls ${PGPATHEDB}/lib/libpgrouting*
+ls ${PGPATHEDB}/share/extension/pgrouting*
+
 make && make install
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
-rm ${PGPATHEDB}/lib/librouting*
 cp lib/*.dll ${PGPATHEDB}/lib/
-rm ${PGPATHEDB}/share/extension/pgrouting*
 cp lib/*.sql ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
+
+ls ${PGPATHEDB}/lib/libpgrouting*
+ls ${PGPATHEDB}/share/extension/pgrouting*
 
 cd ${PROJECTS}/pgrouting/branches/${PGROUTING_VER}
 
