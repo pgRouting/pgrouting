@@ -95,7 +95,7 @@ Minimal Signature
 
 :Example: Using the defaults
 
-.. literalinclude:: doc-aStar.queries
+.. literalinclude:: doc-astar.queries
    :start-after: --q1
    :end-before: --q2
 
@@ -112,7 +112,7 @@ Complete Signature
 
 :Example: Setting a Heuristic  
 
-.. literalinclude:: doc-aStar.queries
+.. literalinclude:: doc-astar.queries
    :start-after: --q2
    :end-before: --q3
 
@@ -127,9 +127,9 @@ Description of the Signatures
 ..
     description of the edges_sql queries
 
-
-.. include:: innerQueriesWithXY.txt
-
+.. include:: ../../common/src/edges_input.h
+    :start-after: xy_edges_sql_start
+    :end-before: xy_edges_sql_end
 
 
 Description of the parameters of the signatures
@@ -235,7 +235,7 @@ Deprecated Signature
 
 :Example: Using the deprecated signature 
 
-.. literalinclude:: doc-aStar.queries
+.. literalinclude:: doc-astar.queries
    :start-after: --q3
    :end-before: --q4
 

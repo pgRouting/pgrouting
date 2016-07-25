@@ -256,5 +256,7 @@ NOTICE:  ----------------------------------------------
 (1 row)
 
 --q17.1
+SET client_min_messages TO NOTICE;
+SET
 ROLLBACK;
 ROLLBACK

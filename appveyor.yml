@@ -12,7 +12,6 @@ branches:
     - test/appveyor
     - master
     - develop
-    - test/merge-gsoc-ch
     - test/merge-gsoc-flow
     - gsoc-ch
     - gsoc-flow
@@ -62,4 +61,4 @@ test_script:
   - set PGPORT=5432
   - set PATH=%PATH%;%PGHOME%\bin
   # Execute algorithm test by Cygwin
-  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/9.4/bin/psql\" -ignorenotice"
+  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/9.4/bin/psql\""

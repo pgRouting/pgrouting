@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./basic_edge.h"  
 
 
-namespace pgRouting {
+namespace pgrouting {
 
     void Basic_edge::cp_members(const Basic_edge &other) {
         this->id = other.id;
@@ -40,4 +40,4 @@ namespace pgRouting {
         this->first = other.first;
     }
 
-} // namespace pgRouting
+} // namespace pgrouting

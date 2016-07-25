@@ -114,7 +114,7 @@ void pgr_get_coordinates(
 
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("Processing %d coordinates tupĺes", ntuples);
+            PGR_DBG("Processing %ld coordinates tupĺes", ntuples);
 
             size_t t;
             for (t = 0; t < ntuples; t++) {
