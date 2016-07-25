@@ -89,7 +89,8 @@ while (my $a = shift @ARGV) {
     }
     elsif ($a eq '-psql') {
         $psql = shift @ARGV || Usage();
-        die "'$psql' is not executable!\n" unless -x $psql;
+        die "'$psql' is not executable!\n"
+        unless -x $psql;
     }
     elsif ($a =~ /^-h/) {
         Usage();
@@ -148,7 +149,7 @@ if (length($psql)) {
         $psql = "\"$psql\"";
     }
 }
-print "Operative system found: $OS\n";
+print "Operative system found: $OS";
 
 
 # Traverse desired filesystems
@@ -156,7 +157,7 @@ File::Find::find({wanted => \&want_tests}, @testpath);
 
 die "Error: no test files found. Run this command from the top level pgRouting directory!\n" unless @cfgs;
 
-createTestDB();
+createTestDB($DBNAME);
 
 $vpg = '' if ! $vpg;
 $postgis_ver = '' if ! $postgis_ver;
@@ -358,8 +359,8 @@ sub process_single_test{
 }
 
 sub createTestDB {
-
-    dropTestDB() if dbExists($DBNAME);
+    my $databaseName = shift;
+    dropTestDB() if dbExists($databaseName);
 
     my $template;
 
@@ -374,18 +375,42 @@ sub createTestDB {
     # first create a database with postgis installed in it
     if (version_greater_eq($dbver, '9.1') &&
         -f "$dbshare/extension/postgis.control") {
-        mysystem("createdb $connopts $DBNAME");
-        die "ERROR: Failed to create database '$DBNAME'!\n" unless dbExists($DBNAME);
+        mysystem("createdb $connopts $databaseName");
+        die "ERROR: Failed to create database '$databaseName'!\n"
+        unless dbExists($databaseName);
         my $encoding = '';
         if ($OS =~ /msys/
             || $OS =~ /MSWin/) {
             $encoding = "SET client_encoding TO 'UTF8';";
         }
         print "-- Trying to install postgis extension $postgis_ver\n" if $DEBUG;
-        mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $DBNAME");
+        mysystem("$psql $connopts -c \"$encoding create extension postgis $postgis_ver \" $databaseName");
+#        print "-- Trying to install pgTap extension \n" if $DEBUG;
+#        system("$psql $connopts -c \"$encoding create extension pgtap \" $databaseName");
+#        if ($? != 0) {
+#            print "Failed: create extension pgtap\n" if $VERBOSE || $DRYRUN;
+#            die;
+#        }
     }
+    #
+#    else {
+#        if ($vpgis && dbExists("template_postgis_$vpgis")) {
+#            $template = "template_postgis_$vpgis";
+#        }
+#        elsif (dbExists('template_postgis')) {
+#            $template = "template_postgis";
+#        }
+#        else {
+#            die "ERROR: Could not find an appropriate template_postgis database!\n";
+#        }
+#        print "-- Trying to install postgis from $template\n" if $DEBUG;
+#        mysystem("createdb $connopts -T $template $databaseName");
+#        sleep(2);
+#        die "ERROR: Failed to create database '$databaseName'!\n"
+#            if ! dbExists($databaseName);
+#    }
 
-    # Install pgrouting into the new database
+    # next we install pgrouting into the new database
     if (version_greater_eq($dbver, '9.1') &&
         -f "$dbshare/extension/postgis.control") {
         my $myver = '';
@@ -393,19 +418,34 @@ sub createTestDB {
             $myver = " PGROUTING VERSION '$vpgr'";
         }
         print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
-        mysystem("$psql $connopts -c \"create extension pgrouting $myver\" $DBNAME");
+        mysystem("$psql $connopts -c \"create extension pgrouting $myver\" $databaseName");
+    }
+    elsif ($vpgr && -f "$dbshare/extension/pgrouting--$vpgr.sql") {
+        print "-- Trying to install pgrouting from '$dbshare/extension/pgrouting--$vpgr.sql'\n" if $DEBUG;
+        mysystem("$psql $connopts -f '$dbshare/extension/pgrouting--$vpgr.sql' $databaseName");
     }
     else {
-       die "ERROR: PostgreSQL version not supported: $dbver\n";
+        my $find = `find "$dbshare/contrib" -name pgrouting.sql | sort -r -n `;
+        my @found = split(/\n/, $find);
+        my $file = shift @found;
+        if ($file && length($file)) {
+            print "-- Trying to install pgrouting from '$file'\n" if $DEBUG;
+            mysystem("$psql $connopts -f '$file' $databaseName");
+        }
+        else {
+            mysystem("ls -alR $dbshare") if $DEBUG;
+            die "ERROR: failed to install pgrouting into the database!\n";
+        }
     }
 
     # now verify that we have pgrouting installed
 
-    my $pgrv = `$psql $connopts -c "select pgr_version()" $DBNAME`;
-    die "ERROR: failed to install pgrouting into the database!\n" unless $pgrv;
+    my $pgrv = `$psql $connopts -c "select pgr_version()" $databaseName`;
+    die "ERROR: failed to install pgrouting into the database!\n"
+    unless $pgrv;
     print `$psql $connopts -c "select version();" postgres `, "\n";
-    print `$psql $connopts -c "select postgis_full_version();" $DBNAME `, "\n";
-    print `$psql $connopts -c "select pgr_version();" $DBNAME `, "\n";
+    print `$psql $connopts -c "select postgis_full_version();" $databaseName `, "\n";
+    print `$psql $connopts -c "select pgr_version();" $databaseName `, "\n";
 }
 
 sub dropTestDB {
@@ -451,12 +491,12 @@ sub dbExists {
     my $isdb = `$psql $connopts -l | grep $dbname`;
     $isdb =~ s/^\s*|\s*$//g;
     return length($isdb);
-    my $isdb = `$psql $connopts -l | grep $dbname`;
+}
 
 sub findPsql {
     my $psql = `which psql`;
     $psql =~ s/^\s*|\s*$//g;
-    print "psql = $psql\n" if $VERBOSE;
+    print "which psql = $psql\n" if $VERBOSE;
     return length($psql)?$psql:undef;
 }
 
