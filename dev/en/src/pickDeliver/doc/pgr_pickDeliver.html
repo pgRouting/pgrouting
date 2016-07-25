@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>__pgr_pickDeliver &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
+    <title>__pgr_pickDeliver &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (rewrite/vrppdtw)',
+        VERSION:     '2.3.0 (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
     <link rel="next" title="pgr_vrpOneDepot" href="../../vrp_basic/doc/pgr_vrpOneDepot.html" />
     <link rel="prev" title="pgr_gsoc_vrppdtw" href="../../vrppdtw/doc/pgr_gsoc_vrppdtw.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
         <h2 class="heading"><span>__pgr_pickDeliver</span></h2>
       </div>
       <div class="topnav">
@@ -120,11 +120,10 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-signature">
-<h2>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h2>
+<h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
 <p>The minimal signature is for <cite>speed = 1</cite>, for a <cite>max_cycles = 30</cite></p>
 <div class="highlight-none"><div class="highlight"><pre>_pgr_pickDeliver(customers_sql, max_vehicles, capacity)
 RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
@@ -264,7 +263,7 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 </div>
 </div>
 <div class="section" id="complete-signature">
-<h2>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h2>
+<h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <p>This signature performs the optimization based on the optional parameters</p>
 <div class="highlight-none"><div class="highlight"><pre>_pgr_pickDeliver(customers_sql, max_vehicles, capacity, speed, max_cycles)
 RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
@@ -405,17 +404,9 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="description-of-the-sql-query">
-<h2>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">customers_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
-</tr>
-</tbody>
-</table>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-customers-sql-query">
+<h3>Description of the customers_sql query<a class="headerlink" href="#description-of-the-customers-sql-query" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -489,13 +480,13 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
-<col width="20%" />
-<col width="12%" />
-<col width="9%" />
-<col width="60%" />
+<col width="18%" />
+<col width="11%" />
+<col width="8%" />
+<col width="63%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -513,17 +504,17 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 <tr class="row-odd"><td><strong>max_vehicles</strong></td>
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
 <td>&nbsp;</td>
-<td>Points SQL query as decribed above.</td>
+<td>Maximum number of vehicles in the result. (currently is ignored)</td>
 </tr>
 <tr class="row-even"><td><strong>capacity</strong></td>
 <td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
 <td>&nbsp;</td>
-<td>Identifier of the starting vertex of the path.</td>
+<td>Capacity of the vehicle.</td>
 </tr>
 <tr class="row-odd"><td><strong>speed</strong></td>
 <td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
 <td>1</td>
-<td>Array of identifiers of starting vertices.</td>
+<td>Speed of the vehicle.</td>
 </tr>
 <tr class="row-even"><td><strong>max_cycles</strong></td>
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
@@ -534,13 +525,20 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 </table>
 </div>
 <div class="section" id="description-of-the-result">
-<h2>Description of the result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h2>
-<p>RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)</p>
+<h3>Description of the result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">RETURNS SET OF:</th><td class="field-body">(seq, vehicle_id, vehicle_seq, stop_id, travel_time, arrival_time, wait_time, service_time,  departure_time)</td>
+</tr>
+</tbody>
+</table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="17%" />
+<col width="14%" />
 <col width="10%" />
-<col width="72%" />
+<col width="76%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -550,43 +548,52 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>seq</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>INTEGER</td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
 <tr class="row-odd"><td><strong>vehicle_id</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>INTEGER</td>
 <td>Current vehicle identifier.</td>
 </tr>
 <tr class="row-even"><td><strong>vehicle_seq</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>INTEGER</td>
 <td>Sequential value starting from <strong>1</strong> for the current vehicle.</td>
 </tr>
 <tr class="row-odd"><td><strong>stop_id</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
-<td>Start location identifier or End location identifier or Customer identifier.</td>
+<td>BIGINT</td>
+<td>Visited customer identifier.</td>
 </tr>
 <tr class="row-even"><td><strong>travel_time</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>Travel time from previous stop_id to current <tt class="docutils literal"><span class="pre">stop_id</span></tt>.</td>
+<td>FLOAT</td>
+<td>Travel time from previous <tt class="docutils literal"><span class="pre">stop_id</span></tt> to current <tt class="docutils literal"><span class="pre">stop_id</span></tt>.</td>
 </tr>
 <tr class="row-odd"><td><strong>arrival_time</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>Previous departure_time plus current travel_time</td>
+<td>FLOAT</td>
+<td>Previous <tt class="docutils literal"><span class="pre">departure_time</span></tt> plus current <tt class="docutils literal"><span class="pre">travel_time</span></tt>.</td>
 </tr>
 <tr class="row-even"><td><strong>wait_time</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>Time spent waiting for stop_id to open.</td>
+<td>FLOAT</td>
+<td>Time spent waiting for <tt class="docutils literal"><span class="pre">stop_id</span></tt> to open.</td>
 </tr>
 <tr class="row-odd"><td><strong>service_time</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>service time at current stop_id.</td>
+<td>FLOAT</td>
+<td>Service time at current stop_id.</td>
 </tr>
 <tr class="row-even"><td><strong>departure_time</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>arrival_time plus wait_time plus service_time</td>
+<td>FLOAT</td>
+<td><dl class="first last docutils">
+<dt>Previous <span class="math">\(departure\_time + travel\_time + wait\_time + service\_time\)</span>.</dt>
+<dd><ul class="first last simple">
+<li>When <tt class="docutils literal"><span class="pre">stop_id</span> <span class="pre">=</span> <span class="pre">0</span></tt> and <tt class="docutils literal"><span class="pre">vehicle_seq</span> <span class="pre">!=</span> <span class="pre">1</span></tt> has the total time for the current <tt class="docutils literal"><span class="pre">vehicle_id</span></tt>.</li>
+<li>When <tt class="docutils literal"><span class="pre">vehicle_id</span> <span class="pre">=</span> <span class="pre">-1</span></tt> has the aggregate total time</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
@@ -614,7 +621,7 @@ RETURNS SET OF (seq, vehicle_id, vehicle_seq, stop_id,
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 08, 2016.
+      Last updated on Jul 25, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

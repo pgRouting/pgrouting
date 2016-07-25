@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>User’s Recipes List &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
+    <title>User’s Recipes List &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (rewrite/vrppdtw)',
+        VERSION:     '2.3.0 (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,13 +25,13 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="next" title="Comparing topology of a unnoded network with a noded network" href="example_recipe.html" />
     <link rel="prev" title="Performance Tips" href="../tutorial/performance.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
         <h2 class="heading"><span>User’s Recipes List</span></h2>
       </div>
       <div class="topnav">
@@ -69,38 +69,38 @@
 <li>Create your recipe file</li>
 </ul>
 </div></blockquote>
-<div class="code highlight-python"><div class="highlight"><pre>cd doc/src/recipes/
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>doc/src/recipes/
 vi myrecipe.rst
 git add myrecipe.rst
-# include the recipe in this file
+<span class="c"># include the recipe in this file</span>
 vi index.rst
 </pre></div>
 </div>
 <p class="rubric">To create the test file of your recipe</p>
-<div class="code highlight-python"><div class="highlight"><pre>cd test
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd test</span>
 cp myrecipe.rst myrecipe.sql.test
 
-# make your test based on your recipe
+<span class="c"># make your test based on your recipe</span>
 vi myrecipe.sql.test
 git add myrecipe.sql.test
 
-# create your test results file
+<span class="c"># create your test results file</span>
 touch myrecipe.result
 git add myrecipe.result
 
-# add your test to the file
+<span class="c"># add your test to the file</span>
 vi test.conf
 </pre></div>
 </div>
 <p>Leave only the SQL code on <tt class="docutils literal"><span class="pre">myrecipe.sql.test</span></tt> by deleting lines or by commenting lines.</p>
 <p class="rubric">To get the results of your recipe</p>
 <p>From the root directory execute:</p>
-<div class="code highlight-python"><div class="highlight"><pre>tools/test-runner.pl -alg recipes -ignorenotice
+<div class="highlight-bash"><div class="highlight"><pre>tools/test-runner.pl -alg recipes -ignorenotice
 </pre></div>
 </div>
 <p>Copy the results of your recipe and paste them in the file <tt class="docutils literal"><span class="pre">myrecipe.result</span></tt>, and remove the &#8220;&gt; &#8221; from the file.</p>
 <p class="rubric">make a pull request.</p>
-<div class="code highlight-python"><div class="highlight"><pre>git commit -a -m &#39;myrecipe is for this and that&#39;
+<div class="highlight-bash"><div class="highlight"><pre>git commit -a -m <span class="s1">&#39;myrecipe is for this and that&#39;</span>
 git push
 </pre></div>
 </div>
@@ -123,7 +123,7 @@ git push
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 08, 2016.
+      Last updated on Jul 25, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

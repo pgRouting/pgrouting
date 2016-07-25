@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_tsp -Deprecated Signatures &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
+    <title>pgr_tsp -Deprecated Signatures &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (rewrite/vrppdtw)',
+        VERSION:     '2.3.0 (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,20 +25,20 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
     <link rel="next" title="pgr_flipEdges - Deprecated Function" href="../../convenience/doc/pgr_flipEdges.html" />
-    <link rel="prev" title="pgr_astar - Deprecated Signature" href="../../astar/doc/pgr_astar_v2.html" /> 
+    <link rel="prev" title="pgr_astar - Deprecated Signature" href="../../astar/doc/pgr_astar-v2.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
         <h2 class="heading"><span>pgr_tsp -Deprecated Signatures</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../astar/doc/pgr_astar_v2.html">pgr_astar - Deprecated Signature</a>
+        «&#160;&#160;<a href="../../astar/doc/pgr_astar-v2.html">pgr_astar - Deprecated Signature</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -77,7 +77,7 @@
 <p class="last">Use <a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> instead.</p>
 </div>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">pgr_makeDistanceMatrix</span></tt> - Returns a Eucleadian distance Matrix from the points provided in the sql result.</li>
+<li><tt class="docutils literal"><span class="pre">_pgr_makeDistanceMatrix</span></tt> - Returns a Eucleadian distance Matrix from the points provided in the sql result.</li>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -150,7 +150,7 @@
 <p class="rubric">Create a distance matrix</p>
 <p>For users that need a distance matrix we have a simple function that takes SQL in <tt class="docutils literal"><span class="pre">sql</span></tt> as described above and returns a record with <tt class="docutils literal"><span class="pre">dmatrix</span></tt> and <tt class="docutils literal"><span class="pre">ids</span></tt>.</p>
 <blockquote>
-<div><div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">dmatrix</span><span class="p">,</span> <span class="n">ids</span> <span class="k">from</span> <span class="n">pgr_makeDistanceMatrix</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">);</span>
+<div><div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">dmatrix</span><span class="p">,</span> <span class="n">ids</span> <span class="k">from</span> <span class="n">_pgr_makeDistanceMatrix</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -332,7 +332,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../astar/doc/pgr_astar_v2.html">pgr_astar - Deprecated Signature</a>
+        «&#160;&#160;<a href="../../astar/doc/pgr_astar-v2.html">pgr_astar - Deprecated Signature</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -343,7 +343,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 08, 2016.
+      Last updated on Jul 25, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

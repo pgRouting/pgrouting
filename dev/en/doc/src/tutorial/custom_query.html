@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dictionary of columns &amp; Custom Query &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
+    <title>Dictionary of columns &amp; Custom Query &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (rewrite/vrppdtw)',
+        VERSION:     '2.3.0 (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Tutorial" href="index.html" />
     <link rel="next" title="Performance Tips" href="performance.html" />
     <link rel="prev" title="Graph Analytics" href="analytics.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
         <h2 class="heading"><span>Dictionary of columns &amp; Custom Query</span></h2>
       </div>
       <div class="topnav">
@@ -59,8 +59,89 @@
 </tr>
 <tr class="field-even field"><th class="field-name">route:</th><td class="field-body">a sequence of paths.</td>
 </tr>
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">Any of the following types: SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">Any of the following types: SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="custom-queries">
+<h1>Custom Queries<a class="headerlink" href="#custom-queries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="edges-queries">
+<h2>Edges queries<a class="headerlink" href="#edges-queries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="columns-of-the-edges-sql-queries">
+<h3>Columns of the edges_sql queries<a class="headerlink" href="#columns-of-the-edges-sql-queries" title="Permalink to this headline">¶</a></h3>
+<p>Depending on the function used the following columns are expected</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge  <cite>(source, target)</cite></dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>-1</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="section" id="description-of-the-edges-sql-query">
 <h2>Description of the edges_sql query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h2>
 <table class="docutils field-list" frame="void" rules="none">
@@ -269,7 +350,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 08, 2016.
+      Last updated on Jul 25, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

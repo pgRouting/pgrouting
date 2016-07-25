@@ -88,26 +88,10 @@ This example returns a symmetric cost matrix.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-Description of the edge's SQL query
-...............................................................................
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-:edges_sql: is a ``TEXT`` that containes an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                      Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, real, float
 
 
 Description of the parameters of the signatures

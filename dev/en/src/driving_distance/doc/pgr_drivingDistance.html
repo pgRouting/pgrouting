@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</title>
+    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (rewrite/vrppdtw)',
+        VERSION:     '2.3.0 (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Driving Distance" href="drivingDistance.html" />
     <link rel="next" title="pgr_alphaShape" href="../../alpha_shape/doc/pgr_alphaShape.html" />
     <link rel="prev" title="Driving Distance" href="drivingDistance.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (rewrite/vrppdtw)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
         <h2 class="heading"><span>pgr_drivingDistance</span></h2>
       </div>
       <div class="topnav">
@@ -55,7 +55,7 @@
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_drivingDistance</span></tt> - Returns the driving distance from a start node.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside5.jpeg" src="../../../_images/boost-inside5.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside6.jpeg" src="../../../_images/boost-inside6.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 </div>
@@ -66,9 +66,9 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
-<span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
-<span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+<span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
+<span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
 
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="p">[</span><span class="n">start_vid</span><span class="p">,]</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
 </pre></div>
@@ -78,21 +78,21 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-use">
 <span id="index-0"></span><h3>Minimal Use<a class="headerlink" href="#minimal-use" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="driving-distance-from-a-single-starting-vertex">
 <span id="index-1"></span><h3>Driving Distance From A Single Starting Vertex<a class="headerlink" href="#driving-distance-from-a-single-starting-vertex" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="driving-distance-from-multiple-starting-vertices">
 <span id="index-2"></span><h3>Driving Distance From Multiple Starting Vertices<a class="headerlink" href="#driving-distance-from-multiple-starting-vertices" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
 <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -100,8 +100,8 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </div>
 <div class="section" id="description-of-the-signatures">
 <h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="description-of-the-sql-query">
-<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="description-of-the-edges-sql-query">
+<h3>Description of the edges_sql query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -112,36 +112,57 @@ The edges extracted will conform the corresponding spanning tree.</p>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="9%" />
-<col width="11%" />
-<col width="80%" />
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
 <th class="head">Type</th>
+<th class="head">Default</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>Weight of the edge <cite>(source, target)</cite>, If negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>&nbsp;</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge  <cite>(source, target)</cite></dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>(optional) Weight of the edge <cite>(target, source)</cite>, If negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>-1</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
@@ -598,7 +619,7 @@ SELECT * FROM pgr_drivingDistance(
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 08, 2016.
+      Last updated on Jul 25, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
