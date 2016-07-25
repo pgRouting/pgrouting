@@ -121,7 +121,6 @@ class PgrCardinalityGraph {
   void get_matched_vertices(std::vector<pgr_basic_edge_t> &matched_vertices,
                             const std::vector<int64_t> &mate_map) {
       V_it vi, vi_end;
-      int64_t id = 1;
       E e;
       bool exists;
       if (boost::is_directed(this->boost_graph)){
@@ -143,7 +142,6 @@ class PgrCardinalityGraph {
                   already_matched[*vi] = true;
                   already_matched[mate_map[*vi]] = true;
                   pgr_basic_edge_t matched_couple;
-                  matched_couple.id = id++;
                   matched_couple.source = this->getVid(*vi);
                   matched_couple.target = this->getVid(mate_map[*vi]);
                   matched_couple.edge_id = this->getEid(e);
@@ -158,7 +156,6 @@ class PgrCardinalityGraph {
               if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
                       && (*vi < mate_map[*vi])) {
                   pgr_basic_edge_t matched_couple;
-                  matched_couple.id = id++;
                   matched_couple.source = this->getVid(*vi);
                   matched_couple.target = this->getVid(mate_map[*vi]);
                   matched_couple.edge_id = this->getEid(e);

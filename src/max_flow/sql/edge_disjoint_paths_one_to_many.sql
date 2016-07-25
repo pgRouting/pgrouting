@@ -32,9 +32,9 @@ CREATE OR REPLACE FUNCTION pgr_edgedisjointpaths(
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq BIGINT,
     OUT path_seq BIGINT,
+    OUT end_vid BIGINt,
     OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT end_ID BIGINT
+    OUT edge BIGINT
     )
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'edge_disjoint_paths_one_to_many'

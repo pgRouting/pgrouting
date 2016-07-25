@@ -202,9 +202,9 @@ edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS) {
         // postgres starts counting from 1
         values[0] = Int64GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

@@ -68,7 +68,7 @@ do_pgr_max_flow_many_to_one(
         set_sink_vertices.insert(sink_vertex);
 
 
-        G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices);
+        G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices, algorithm);
 
         int64_t flow;
         if(strcmp(algorithm, "push_relabel") == 0){

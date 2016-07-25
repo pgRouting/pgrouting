@@ -40,7 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include "./../../common/src/pgr_types.h"
 
-#include <cstdint>
 #include <map>
 
 #include <boost/config.hpp>
@@ -78,7 +77,9 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
                                                                   boost::edge_reverse_t,
                                                                   Traits::edge_descriptor> > > >
     FlowGraph;
-typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::undirectedS>
+typedef boost::adjacency_list_traits<boost::vecS,
+                                     boost::vecS,
+                                     boost::undirectedS>
     UndirectedTraits;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS,
                               boost::property<boost::vertex_name_t, std::string,
@@ -129,42 +130,43 @@ class PgrFlowGraph {
   V sink_vertex;
 
   V get_boost_vertex(int64_t id) {
-      return this->id_to_V.find(id)->second;
+      return id_to_V.find(id)->second;
   }
 
   int64_t get_vertex_id(V v) {
-      return this->V_to_id.find(v)->second;
+      return V_to_id.find(v)->second;
   }
 
   int64_t get_edge_id(E e) {
-      return this->E_to_id.find(e)->second;
+      return E_to_id.find(e)->second;
   }
 
   int64_t push_relabel() {
-      return boost::push_relabel_max_flow(this->boost_graph,
-                                          this->source_vertex,
-                                          this->sink_vertex);
+      return boost::push_relabel_max_flow(boost_graph,
+                                          source_vertex,
+                                          sink_vertex);
   }
 
   int64_t edmonds_karp() {
-      return boost::edmonds_karp_max_flow(this->boost_graph,
-                                          this->source_vertex,
-                                          this->sink_vertex);
+      return boost::edmonds_karp_max_flow(boost_graph,
+                                          source_vertex,
+                                          sink_vertex);
   }
 
   int64_t boykov_kolmogorov() {
-      size_t num_v = boost::num_vertices(this->boost_graph);
+      size_t num_v = boost::num_vertices(boost_graph);
       std::vector<boost::default_color_type> color(num_v);
-      std::vector<long> distance(num_v);
-      return boost::boykov_kolmogorov_max_flow(this->boost_graph,
-                                               this->source_vertex,
-                                               this->sink_vertex);
+      std::vector<int64_t> distance(num_v);
+      return boost::boykov_kolmogorov_max_flow(boost_graph,
+                                               source_vertex,
+                                               sink_vertex);
   }
 
   void create_flow_graph(pgr_edge_t *data_edges,
                          size_t total_tuples,
                          const std::set<int64_t> &source_vertices,
-                         const std::set<int64_t> &sink_vertices) {
+                         const std::set<int64_t> &sink_vertices,
+                         char *algorithm) {
 
       /* In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity
        * The same applies for sinks.
@@ -184,96 +186,114 @@ class PgrFlowGraph {
           vertices.insert(data_edges[i].target);
       }
       for (int64_t id : vertices) {
-          V v = add_vertex(this->boost_graph);
-          this->id_to_V.insert(std::pair<int64_t, V>(id, v));
-          this->V_to_id.insert(std::pair<V, int64_t>(v, id));
+          V v = add_vertex(boost_graph);
+          id_to_V.insert(std::pair<int64_t, V>(id, v));
+          V_to_id.insert(std::pair<V, int64_t>(v, id));
       }
       bool added;
 
-      V supersource = add_vertex(this->boost_graph);
+      V supersource = add_vertex(boost_graph);
       for (int64_t source_id: source_vertices) {
-          V source = this->id_to_V.find(source_id)->second;
-          E e1, e1_rev;
-          boost::tie(e1, added) =
-              boost::add_edge(supersource, source, this->boost_graph);
-          boost::tie(e1_rev, added) =
-              boost::add_edge(source, supersource, this->boost_graph);
-          this->capacity[e1] = 999999999;
-          this->capacity[e1_rev] = 0;
-          this->rev[e1] = e1_rev;
-          this->rev[e1_rev] = e1;
+          V source = get_boost_vertex(source_id);
+          E e, e_rev;
+          boost::tie(e, added) =
+              boost::add_edge(supersource, source, boost_graph);
+          boost::tie(e_rev, added) =
+              boost::add_edge(source, supersource, boost_graph);
+          capacity[e] = 999999999;
+          capacity[e_rev] = 0;
+          rev[e] = e_rev;
+          rev[e_rev] = e;
       }
 
-      V supersink = add_vertex(this->boost_graph);
+      V supersink = add_vertex(boost_graph);
       for (int64_t sink_id: sink_vertices) {
-          V sink = this->id_to_V.find(sink_id)->second;
-          E e1, e1_rev;
-          boost::tie(e1, added) =
-              boost::add_edge(sink, supersink, this->boost_graph);
-          boost::tie(e1_rev, added) =
-              boost::add_edge(supersink, sink, this->boost_graph);
-          this->capacity[e1] = 999999999;
-          this->capacity[e1_rev] = 0;
-          this->rev[e1] = e1_rev;
-          this->rev[e1_rev] = e1;
+          V sink = get_boost_vertex(sink_id);
+          E e, e_rev;
+          boost::tie(e, added) = boost::add_edge(sink, supersink, boost_graph);
+          boost::tie(e_rev, added) =
+              boost::add_edge(supersink, sink, boost_graph);
+          capacity[e] = 999999999;
+          capacity[e_rev] = 0;
+          rev[e] = e_rev;
+          rev[e_rev] = e;
       }
 
-      this->source_vertex = supersource;
-      this->sink_vertex = supersink;
+      source_vertex = supersource;
+      sink_vertex = supersink;
 
-      this->capacity = get(boost::edge_capacity, this->boost_graph);
-      this->rev = get(boost::edge_reverse, this->boost_graph);
-      this->residual_capacity =
-          get(boost::edge_residual_capacity, this->boost_graph);
+      capacity = get(boost::edge_capacity, boost_graph);
+      rev = get(boost::edge_reverse, boost_graph);
+      residual_capacity = get(boost::edge_residual_capacity, boost_graph);
 
-      for (size_t i = 0; i < total_tuples; ++i) {
-          V v1 = this->get_boost_vertex(data_edges[i].source);
-          V v2 = this->get_boost_vertex(data_edges[i].target);
-          if (data_edges[i].cost > 0) {
-              E e1, e1_rev;
-              boost::tie(e1, added) =
-                  boost::add_edge(v1, v2, this->boost_graph);
-              this->E_to_id.insert(std::pair<E, int64_t>(e1, data_edges[i].id));
-              this->E_to_id.insert(std::pair<E, int64_t>(e1_rev, data_edges[i].id));
-              boost::tie(e1_rev, added) =
-                  boost::add_edge(v2, v1, this->boost_graph);
-              this->capacity[e1] = (int64_t) data_edges[i].cost;
-              this->capacity[e1_rev] = 0;
-              this->rev[e1] = e1_rev;
-              this->rev[e1_rev] = e1;
+      /*
+       * Push-relabel requires each edge to be mapped to its reverse with capacity 0.
+       * The other algorithms have no such requirement. (I can have half as many edges)
+       */
+      if (strcmp(algorithm, "push_relabel") == 0) {
+          for (size_t i = 0; i < total_tuples; ++i) {
+              V v1 = get_boost_vertex(data_edges[i].source);
+              V v2 = get_boost_vertex(data_edges[i].target);
+              E e1, e1_rev, e2, e2_rev;
+              if (data_edges[i].cost > 0) {
+                  boost::tie(e1, added) = boost::add_edge(v1, v2, boost_graph);
+                  boost::tie(e1_rev, added) =
+                      boost::add_edge(v2, v1, boost_graph);
+                  E_to_id.insert(std::pair<E, int64_t>(e1, data_edges[i].id));
+                  E_to_id.insert(std::pair<E, int64_t>(e1_rev,
+                                                       data_edges[i].id));
+                  capacity[e1] = (int64_t) data_edges[i].cost;
+                  capacity[e1_rev] = 0;
+                  rev[e1] = e1_rev;
+                  rev[e1_rev] = e1;
+              }
+              if (data_edges[i].reverse_cost > 0) {
+                  boost::tie(e2, added) = boost::add_edge(v2, v1, boost_graph);
+                  boost::tie(e2_rev, added) =
+                      boost::add_edge(v1, v2, boost_graph);
+                  E_to_id.insert(std::pair<E, int64_t>(e2, data_edges[i].id));
+                  E_to_id.insert(std::pair<E, int64_t>(e2_rev,
+                                                       data_edges[i].id));
+                  capacity[e2] = (int64_t) data_edges[i].reverse_cost;
+                  capacity[e2_rev] = 0;
+                  rev[e2] = e2_rev;
+                  rev[e2_rev] = e2;
+              }
           }
-          if (data_edges[i].reverse_cost > 0) {
-              E e2, e2_rev;
-              boost::tie(e2, added) =
-                  boost::add_edge(v2, v1, this->boost_graph);
-              boost::tie(e2_rev, added) =
-                  boost::add_edge(v1, v2, this->boost_graph);
-              this->E_to_id.insert(std::pair<E, int64_t>(e2, data_edges[i].id));
-              this->E_to_id.insert(std::pair<E, int64_t>(e2_rev, data_edges[i].id));
-              this->capacity[e2] = (int64_t) data_edges[i].reverse_cost;
-              this->capacity[e2_rev] = 0;
-              this->rev[e2] = e2_rev;
-              this->rev[e2_rev] = e2;
+      } else {
+          for (size_t i = 0; i < total_tuples; ++i) {
+              V v1 = get_boost_vertex(data_edges[i].source);
+              V v2 = get_boost_vertex(data_edges[i].target);
+              E e, e_rev;
+              boost::tie(e, added) = boost::add_edge(v1, v2, boost_graph);
+              boost::tie(e_rev, added) =
+                  boost::add_edge(v2, v1, boost_graph);
+              E_to_id.insert(std::pair<E, int64_t>(e, data_edges[i].id));
+              E_to_id.insert(std::pair<E, int64_t>(e_rev, data_edges[i].id));
+              capacity[e] =
+                  data_edges[i].cost > 0 ? (int64_t) data_edges[i].cost : 0;
+              capacity[e_rev] = data_edges[i].reverse_cost > 0
+                                ? (int64_t) data_edges[i].reverse_cost : 0;
+              rev[e] = e_rev;
+              rev[e_rev] = e;
           }
       }
   }
 
   void get_flow_edges(std::vector<pgr_flow_t> &flow_edges) {
-      int64_t id = 1;
       E_it e, e_end;
-      for (boost::tie(e, e_end) = boost::edges(this->boost_graph); e != e_end;
+      for (boost::tie(e, e_end) = boost::edges(boost_graph); e != e_end;
            ++e) {
           // A supersource/supersink is used internally
-          if (((this->capacity[*e] - this->residual_capacity[*e]) > 0) &&
-              ((*e).m_source != this->source_vertex) &&
-              ((*e).m_target != this->sink_vertex)) {
+          if (((capacity[*e] - residual_capacity[*e]) > 0) &&
+              ((*e).m_source != source_vertex) &&
+              ((*e).m_target != sink_vertex)) {
               pgr_flow_t edge;
-              edge.id = id++;
-              edge.edge = this->get_edge_id(*e);
-              edge.source = this->get_vertex_id((*e).m_source);
-              edge.target = this->get_vertex_id((*e).m_target);
-              edge.flow = this->capacity[*e] - this->residual_capacity[*e];
-              edge.residual_capacity = this->residual_capacity[*e];
+              edge.edge = get_edge_id(*e);
+              edge.source = get_vertex_id((*e).m_source);
+              edge.target = get_vertex_id((*e).m_target);
+              edge.flow = capacity[*e] - residual_capacity[*e];
+              edge.residual_capacity = residual_capacity[*e];
               flow_edges.push_back(edge);
           }
       }

@@ -185,7 +185,7 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(result_tuples[call_cntr].id);
+        values[0] = Int64GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].edge_id);
         values[2] = Int64GetDatum(result_tuples[call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[call_cntr].target);
