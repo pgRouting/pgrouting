@@ -27,13 +27,3 @@ UPDATE edge_table SET category = 'Regional', reverse_category = 'Local' WHERE id
 UPDATE edge_table SET category = 'Regional', reverse_category = 'Regional' WHERE id = 16;
 UPDATE edge_table SET category = 'Motorway', reverse_category = 'Primary' WHERE id = 17;
 UPDATE edge_table SET category = 'Local', reverse_category = 'Motorway' WHERE id = 18;
-
-
-SELECT * FROM pgr_maxflowpushrelabel('SELECT id, source, target, c1.capacity as cost, c2.capacity as reverse_cost
-FROM edge_table AS edges, category as c1, category as c2
-WHERE edges.category = c1.category AND edges.reverse_category = c2.category', 3, 5);
-
-SELECT * FROM pgr_maxflowpushrelabel('SELECT id, source, target, c1.capacity as capacity, c2.capacity as reverse_capacity
-FROM edge_table AS edges, category as c1, category as c2
-WHERE edges.category = c1.category AND edges.reverse_category = c2.category', ARRAY[3,7]::INTEGER[], ARRAY[5]::INTEGER[]);
-
