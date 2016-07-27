@@ -1,5 +1,5 @@
-﻿CREATE TABLE category (
-	category text PRIMARY KEY,
+﻿CREATE TEMPORARY TABLE category (
+	category text,
 	capacity BIGINT
 );
 
