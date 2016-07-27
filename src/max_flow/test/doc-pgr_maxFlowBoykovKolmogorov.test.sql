@@ -2,7 +2,7 @@
 
 BEGIN;
 SET client_min_messages TO NOTICE;
-\i sample_data_categories.sql
+\i src/max_flow/test/sample_data_categories.sql
 
 \echo -- q1
 SELECT * FROM pgr_maxflowboykovkolmogorov(
