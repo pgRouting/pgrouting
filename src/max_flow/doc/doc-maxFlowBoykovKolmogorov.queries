@@ -9,8 +9,6 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
     WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
     , 6, 11
 );
-
-
  id | edge_id | source | target | flow | residual_capacity
 ----+---------+--------+--------+------+-------------------
   1 |      10 |      5 |     10 |  100 |                30
@@ -33,7 +31,6 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
     WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
     , 6, ARRAY[12,1,13]::INTEGER[]
 );
-
  id | edge_id | source | target | flow | residual_capacity
 ----+---------+--------+--------+------+-------------------
   1 |       1 |      2 |      1 |  130 |                 0
@@ -62,7 +59,6 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
     WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
     , ARRAY[4,8,11]::INTEGER[], 10
 );
-
  id | edge_id | source | target | flow | residual_capacity
 ----+---------+--------+--------+------+-------------------
   1 |      10 |      5 |     10 |  130 |                 0
@@ -83,7 +79,6 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
     WHERE edges.category = c1.category AND edges.reverse_category = c2.category'
     , ARRAY[2,5,10]::INTEGER[], ARRAY[4,9,12]::INTEGER[]
 );
-
  id | edge_id | source | target | flow | residual_capacity
 ----+---------+--------+--------+------+-------------------
   1 |       2 |      2 |      3 |   80 |                 0

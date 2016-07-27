@@ -6,7 +6,7 @@ SET client_min_messages TO NOTICE;
 \i src/max_flow/test/sample_data_categories.sql
 
 \echo -- q1
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxflowedmondskarp(
     'SELECT id,
             source,
             target,
@@ -18,7 +18,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 );
 
 \echo -- q2
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxflowedmondskarp(
     'SELECT id,
             source,
             target,
@@ -30,7 +30,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 );
 
 \echo -- q3
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxflowedmondskarp(
     'SELECT id,
             source,
             target,
@@ -42,7 +42,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 );
 
 \echo -- q4
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxflowedmondskarp(
     'SELECT id,
             source,
             target,
