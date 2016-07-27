@@ -1,6 +1,7 @@
 --These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
 
 BEGIN;
+SET client_min_messages TO NOTICE;
 \i sample_data_categories.sql
 
 \echo -- q1
