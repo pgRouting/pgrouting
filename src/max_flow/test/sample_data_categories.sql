@@ -1,5 +1,4 @@
-﻿DROP TABLE IF EXISTS category;
-CREATE TABLE category (
+﻿CREATE TABLE category (
 	category text PRIMARY KEY,
 	capacity BIGINT
 );
