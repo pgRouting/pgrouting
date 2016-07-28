@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -35,13 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-
-/*
-  Uncomment when needed
-*/
-// #define DEBUG
-
 #include "fmgr.h"
+
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
@@ -53,8 +48,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum astarOneToOne(PG_FUNCTION_ARGS);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
 static
 void
 process(char* edges_sql,
@@ -81,7 +74,6 @@ process(char* edges_sql,
         ereport(ERROR,
                 (errmsg("Epsilon value out of range"),
                  errhint("Valid values: 1 or greater than 1")));
-        elog(ERROR, "epsilon value out of range, valid values: 1 or greater than 1");
     }
 
 
@@ -136,8 +128,6 @@ process(char* edges_sql,
     pfree(edges);
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PG_FUNCTION_INFO_V1(astarOneToOne);
 PGDLLEXPORT Datum
@@ -147,13 +137,8 @@ astarOneToOne(PG_FUNCTION_ARGS) {
     uint32_t            max_calls;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     General_path_element_t  *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -161,9 +146,7 @@ astarOneToOne(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        /*
+        /**********************************************************************
            edges_sql TEXT,
            start_vid BIGINT,
            end_vid BIGINT,
@@ -187,8 +170,6 @@ astarOneToOne(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                             */
-        /*******************************************************************************/
 
         funcctx->max_calls = (uint32_t) result_count;
         funcctx->user_fctx = result_tuples;
@@ -214,36 +195,32 @@ astarOneToOne(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /*******************************************************************************/
-        /*                          MODIFY!!!!!                                        */
-        /*  This has to match you ouput otherwise the server crashes                   */
-        /*
+        /**********************************************************************
            OUT seq INTEGER,
            OUT path_seq INTEGER,
            OUT node BIGINT,
            OUT edge BIGINT,
            OUT cost FLOAT,
            OUT agg_cost FLOAT
-         ********************************************************************************/
+         *********************************************************************/
 
 
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(bool));
 
         size_t i;
-        for(i = 0; i < 6; ++i) {
+        for (i = 0; i < 6; ++i) {
             nulls[i] = false;
         }
 
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-        /*******************************************************************************/
+
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

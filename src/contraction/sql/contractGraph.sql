@@ -34,13 +34,12 @@ CREATE OR REPLACE FUNCTION pgr_contractGraph(
     max_cycles integer DEFAULT 1,
     directed BOOLEAN DEFAULT true,
     OUT seq integer,
-    OUT id BIGINT,
     OUT type TEXT,
+    OUT id BIGINT,
+    OUT contracted_vertices BIGINT[],
     OUT source BIGINT,
     OUT target BIGINT,
-    OUT cost float,
-    OUT contracted_vertices BIGINT[],
-    OUT contracted_vertices_size integer)
+    OUT cost float)
 
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'contractGraph'

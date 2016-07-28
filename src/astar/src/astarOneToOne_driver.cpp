@@ -62,7 +62,8 @@ pgr_astar(
         double epsilon,
         bool only_cost = false) {
     Pgr_astar< G > fn_astar;
-    fn_astar.astar(graph, path, source, target, heuristic, factor, epsilon, only_cost);
+    fn_astar.astar(graph, path, source, target,
+            heuristic, factor, epsilon, only_cost);
 }
 
 
@@ -85,7 +86,7 @@ void do_pgr_astarOneToOne(
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream err;
     std::ostringstream log;
     try {
@@ -117,7 +118,8 @@ void do_pgr_astarOneToOne(
             log << digraph;
 #endif
             log << "Working with directed Graph 2\n";
-            pgr_astar(digraph, path, start_vid, end_vid, heuristic, factor, epsilon, only_cost);
+            pgr_astar(digraph, path, start_vid, end_vid,
+                    heuristic, factor, epsilon, only_cost);
             log << "Working with directed Graph 3\n";
         } else {
             log << "Working with Undirected Graph\n";
@@ -126,7 +128,8 @@ void do_pgr_astarOneToOne(
 #ifdef DEBUG
             log << undigraph;
 #endif
-            pgr_astar(undigraph, path, start_vid, end_vid, heuristic, factor, epsilon, only_cost);
+            pgr_astar(undigraph, path, start_vid, end_vid,
+                    heuristic, factor, epsilon, only_cost);
         }
 
         auto count = path.size();
@@ -134,8 +137,8 @@ void do_pgr_astarOneToOne(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log << 
-                "No paths found between Starting and any of the Ending vertices\n";
+            log <<
+                "No paths found\n";
             *log_msg = strdup(log.str().c_str());
             return;
         }
@@ -147,7 +150,6 @@ void do_pgr_astarOneToOne(
 
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());
-
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;

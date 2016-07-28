@@ -268,16 +268,10 @@ do_pgr_contractGraph(
 
 int is_valid_contraction(int64_t number) {
     switch (number) {
-        case -2:
-        return -1;
-        break;
-        case -1:
-        return -1;
-        break;
-        case 0:
+        case 1:
         return 1;
         break;
-        case 1:
+        case 2:
         return 1;
         break;
         default:

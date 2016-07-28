@@ -231,11 +231,11 @@ contractGraph(PG_FUNCTION_ARGS) {
         bool typbyval; 
         char typalign;
 
-        values =(Datum *)palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(bool));
+        values =(Datum *)palloc(7 * sizeof(Datum));
+        nulls = palloc(7 * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 8; ++i) {
+        for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
 
@@ -260,7 +260,7 @@ contractGraph(PG_FUNCTION_ARGS) {
                 contracted_vertices_size,
                 INT8OID,  typlen, typbyval, typalign);
 
-        TupleDescInitEntry(tuple_desc, (AttrNumber) 7, "contracted_vertices", 
+        TupleDescInitEntry(tuple_desc, (AttrNumber) 4, "contracted_vertices", 
                 INT8ARRAYOID, -1, 0); 
 
 #if 1
@@ -279,13 +279,13 @@ contractGraph(PG_FUNCTION_ARGS) {
         PGR_DBG("Storing complete\n");
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].id);
-        values[2] = CStringGetTextDatum(result_tuples[call_cntr].type);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].source);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].target);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[6] = PointerGetDatum(arrayType);
-        values[7] = Int32GetDatum(result_tuples[call_cntr].contracted_vertices_size);
+        values[1] = CStringGetTextDatum(result_tuples[call_cntr].type);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].id);
+        values[3] = PointerGetDatum(arrayType);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        //values[7] = Int32GetDatum(result_tuples[call_cntr].contracted_vertices_size);
 
 
 

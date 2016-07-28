@@ -35,13 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-
-/*
-  Uncomment when needed
-*/
-// #define DEBUG
-
 #include "fmgr.h"
+
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
@@ -60,8 +55,6 @@ PGDLLEXPORT Datum
 astarManyToMany(PG_FUNCTION_ARGS);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
 static
 void
 process(char* edges_sql,
@@ -94,7 +87,6 @@ process(char* edges_sql,
         ereport(ERROR,
                 (errmsg("Epsilon value out of range"),
                  errhint("Valid values: 1 or greater than 1")));
-        elog(ERROR, "epsilon value out of range, valid values: 1 or greater than 1");
     }
 
 
@@ -146,8 +138,6 @@ process(char* edges_sql,
     pfree(edges);
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 #ifndef _MSC_VER
 Datum
@@ -160,13 +150,8 @@ astarManyToMany(PG_FUNCTION_ARGS) {
     uint32_t            max_calls;
     TupleDesc           tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     General_path_element_t  *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -175,7 +160,6 @@ astarManyToMany(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
         /*
            edges_sql TEXT,
            start_vids ARRAY[ANY_INTEGER], -- anyarray
@@ -212,8 +196,6 @@ astarManyToMany(PG_FUNCTION_ARGS) {
         free(end_vidsArr);
         free(start_vidsArr);
 
-        /*                                                                             */
-        /*******************************************************************************/
 
         funcctx->max_calls = (uint32_t) result_count;
         funcctx->user_fctx = result_tuples;
@@ -239,10 +221,7 @@ astarManyToMany(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /*******************************************************************************/
-        /*                          MODIFY!!!!!                                        */
-        /*  This has to match you ouput otherwise the server crashes                   */
-        /*
+        /*********************************************************************
            OUT seq INTEGER,
            OUT path_seq INTEGER,
            OUT start_vid BIGINT,
@@ -251,19 +230,18 @@ astarManyToMany(PG_FUNCTION_ARGS) {
            OUT edge BIGINT,
            OUT cost FLOAT,
            OUT agg_cost FLOAT
-         ********************************************************************************/
+         **********************************************************************/
 
 
         values = palloc(8 * sizeof(Datum));
         nulls = palloc(8 * sizeof(bool));
 
         size_t i;
-        for(i = 0; i < 8; ++i) {
+        for (i = 0; i < 8; ++i) {
             nulls[i] = false;
         }
 
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
@@ -273,13 +251,11 @@ astarManyToMany(PG_FUNCTION_ARGS) {
         values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
-        /*******************************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
         if (result_tuples) free(result_tuples);
 
         SRF_RETURN_DONE(funcctx);

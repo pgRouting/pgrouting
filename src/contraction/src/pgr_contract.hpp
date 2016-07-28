@@ -125,7 +125,7 @@ void pgr_contractGraph(
                 break;
                 default:
                 debug << "contraction "<< front << " asked" << std::endl;
-                if (front == 0)
+                if (front == 1)
                 {
 
                     debug << "Graph before dead end contraction" << std::endl;
@@ -135,7 +135,7 @@ void pgr_contractGraph(
                     debug << "Graph after dead end contraction" << std::endl;
                     graph.print_graph(debug);
                 }
-                else if (front == 1)
+                else if (front == 2)
                 {
 
                     debug << "Graph before linear contraction" << std::endl;
