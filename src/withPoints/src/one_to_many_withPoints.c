@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -67,14 +67,13 @@ process(
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-
     driving_side[0] = (char) tolower(driving_side[0]);
-    PGR_DBG("driving side:%c",driving_side[0]);
-    if (! ((driving_side[0] == 'r')
-                || (driving_side[0] == 'l'))) {
-        driving_side[0] = 'b'; 
+    PGR_DBG("driving side:%c", driving_side[0]);
+    if (!((driving_side[0] == 'r')
+                 || (driving_side[0] == 'l'))) {
+        driving_side[0] = 'b';
     }
-    PGR_DBG("estimated driving side:%c",driving_side[0]);
+    PGR_DBG("estimated driving side:%c", driving_side[0]);
     pgr_SPI_connect();
 
     PGR_DBG("load the points");
@@ -86,14 +85,14 @@ process(
 #ifndef NDEBUG
     size_t i = 0;
     for (i = 0; i < total_points; i ++) {
-        PGR_DBG("%ld\t%ld\t%f\t%c",points[i].pid, points[i].edge_id, points[i].fraction, points[i].side);
+        PGR_DBG("%ld\t%ld\t%f\t%c", points[i].pid, points[i].edge_id, points[i].fraction, points[i].side);
     }
 #endif
 #endif
     /*
      * TODO move this code to c++
      */
-    PGR_DBG("  -- change the query");
+    PGR_DBG(" -- change the query");
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
     get_new_queries(
@@ -146,7 +145,7 @@ process(
     free(edges_of_points_query);
     free(edges_no_points_query);
 
-    if ( (total_edges + total_edges_of_points) == 0) {
+    if ((total_edges + total_edges_of_points) == 0) {
         PGR_DBG("No edges found");
         (*result_count) = 0;
         (*result_tuples) = NULL;
@@ -159,7 +158,7 @@ process(
     char *log_msg = NULL;
     clock_t start_t = clock();
     do_pgr_one_to_many_withPoints(
-            edges,  total_edges,
+            edges, total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,
             start_pid,
@@ -202,7 +201,7 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
     /*******************************************************************************/
     /*                          MODIFY AS NEEDED                                   */
     /*                                                                             */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t *result_tuples = 0;
     size_t result_count = 0;
     /*                                                                             */
     /*******************************************************************************/
@@ -287,7 +286,7 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
         nulls = palloc(7 * sizeof(bool));
 
         size_t i;
-        for(i = 0; i < 7; ++i) {
+        for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
 

@@ -51,7 +51,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstraVia(Minimal Use) - proposed in V2.2
+    single: dijkstraVia(Minimal Use) - proposed
 
 Minimal Signature
 ...............................................................................
@@ -69,7 +69,7 @@ Minimal Signature
     :end-before: -- q0
 
 .. index::
-    single: dijkstraVia(Full signature) - proposed in V2.2
+    single: dijkstraVia(Full signature) - proposed
 
 Complete Signature
 ...............................................................................

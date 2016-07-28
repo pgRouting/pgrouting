@@ -10,10 +10,8 @@ version: 2.3.{build}
 branches:
   only:
     - test/appveyor
-    - test/merge-gsoc-ch
     - master
     - develop
-    - test/merge-gsoc-ch
     - test/merge-gsoc-flow
     - gsoc-ch
     - gsoc-flow

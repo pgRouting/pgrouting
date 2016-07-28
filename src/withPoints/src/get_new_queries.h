@@ -4,9 +4,9 @@ File: get_new_queries.h
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -25,6 +25,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+#ifndef SRC_WITHPOINTS_SRC_GET_NEW_QUERIES_H_
+#define SRC_WITHPOINTS_SRC_GET_NEW_QUERIES_H_
 
 #pragma once
 
@@ -34,7 +36,7 @@ extern "C" {
 
     void get_new_queries(
             char *edges_sql,
-            char *points_sql, 
+            char *points_sql,
             char **edges_of_points_query,
             char **edges_no_points_query);
 
@@ -43,3 +45,4 @@ extern "C" {
 }
 #endif
 
+#endif  // SRC_WITHPOINTS_SRC_GET_NEW_QUERIES_H_

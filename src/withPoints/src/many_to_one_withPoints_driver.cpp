@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -28,12 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
+#if defined(__MINGW32__) ||  defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
 
+#include <algorithm>
+#include <set>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -58,17 +60,17 @@ extern "C" {
 
 int
 do_pgr_many_to_one_withPoints(
-        pgr_edge_t  *edges,                     size_t total_edges,
-        Point_on_edge_t  *points_p,             size_t total_points,
-        pgr_edge_t  *edges_of_points,           size_t total_edges_of_points,
-        int64_t  *start_pidsArr,                size_t size_start_pidsArr,
+        pgr_edge_t *edges, size_t total_edges,
+        Point_on_edge_t *points_p, size_t total_points,
+        pgr_edge_t *edges_of_points, size_t total_edges_of_points,
+        int64_t *start_pidsArr, size_t size_start_pidsArr,
         int64_t end_vid,
         char driving_side,
         bool details,
         bool directed,
         bool only_cost,
         General_path_element_t **return_tuples, size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         std::vector< Point_on_edge_t >
@@ -116,21 +118,21 @@ do_pgr_many_to_one_withPoints(
         }
 
 #if 0
-        for (auto &path :paths) {
+        for (auto &path : paths) {
             adjust_pids(points, path);
         }
 #endif
         if (!details) {
-            for (auto &path :paths) {
+            for (auto &path : paths) {
                 eliminate_details(path, edges_to_modify);
             }
         }
 
         /*
-         *  order paths based on the start_pid
+         * order paths based on the start_pid
          */
-        std::sort(paths.begin(), paths.end(), [](const Path &a,const  Path &b) {
-                return a.start_id() < b.start_id();   
+        std::sort(paths.begin(), paths.end(), [](const Path &a, const Path &b) {
+                return a.start_id() < b.start_id();
                 });
 
         size_t count(0);
