@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stddef.h>
 
-typedef struct vrp_vehicles
+typedef struct vrp_vehicles 
 {
 	int id;
 	int capacity;
@@ -34,7 +34,7 @@ typedef struct vrp_vehicles
 } vrp_vehicles_t;
 
 
-typedef struct vrp_orders
+typedef struct vrp_orders 
 {
 	int id;
 	int order_unit;
@@ -72,7 +72,7 @@ typedef struct vrp_result_element
 extern "C"
 #endif
 
-int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count,
+int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count, 
 					  vrp_orders_t *orders, size_t order_count,
 					  vrp_cost_element_t *costmatrix, size_t cost_count,
 					  int depot_id,

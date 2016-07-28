@@ -33,25 +33,25 @@ CVRPSolver solver;
 void loadOrders()
 {
 	FILE *fp = fopen("Orders.txt", "rt");
- if (fp == NULL)
+	if(fp == NULL)
 	{
 		fprintf(stderr, "Order file not found!\n");
 	}
 	bool bGotDepot = false;
 	// OrderId XCord YCord Demand StartTime EndTime ServiceTime
- while (fgets(buff, 1000, fp))
+	while(fgets(buff, 1000, fp))
 	{
-	 if (strlen(buff) == 0)
+		if(strlen(buff) == 0)
 			break;
 		StringTokenizer tokenizer;
 		tokenizer.parse(buff, " \t");
 		StringVector vecToken;
 		tokenizer.getTokens(vecToken);
 
-	 if (vecToken.size() != 7)
+		if(vecToken.size() != 7)
 			continue;
 
-	 if (!isdigit(vecToken[0][0]))
+		if(!isdigit(vecToken[0][0]))
 			continue;
 		
 		if (!bGotDepot)
@@ -116,25 +116,25 @@ void loadVehicles()
 {
 	FILE *fp = fopen("Vehicles.txt", "rt");
 
- if (fp == NULL)
+	if(fp == NULL)
 	{
 		fprintf(stderr, "Vehicle file not found!\n");
 	}
-	// VehicleId Capacity
+	// VehicleId Capacity 
 	// In terms of cost all the vehicle will have default cost of 1 for the first version
- while (fgets(buff, 1000, fp))
+	while(fgets(buff, 1000, fp))
 	{
-	 if (strlen(buff) == 0)
+		if(strlen(buff) == 0)
 			break;
 		StringTokenizer tokenizer;
 		tokenizer.parse(buff, " \t");
 		StringVector vecToken;
 		tokenizer.getTokens(vecToken);
 
-	 if (vecToken.size() != 2)
+		if(vecToken.size() != 2)
 			continue;
 
-	 if (!isdigit(vecToken[0][0]))
+		if(!isdigit(vecToken[0][0]))
 			continue;
 
 		CVehicleInfo vehicle;
@@ -157,26 +157,26 @@ void loadVehicles()
 void loadDistanceMatrix()
 {
 	FILE *fp = fopen("Distance.txt", "rt");
- if (fp == NULL)
+	if(fp == NULL)
 	{
 		fprintf(stderr, "Cost file not found!\n");
 		return;
 	}
 
 	// From To Cost
- while (fgets(buff, 1000, fp))
+	while(fgets(buff, 1000, fp))
 	{
-	 if (strlen(buff) == 0)
+		if(strlen(buff) == 0)
 			break;
 		StringTokenizer tokenizer;
 		tokenizer.parse(buff, " \t");
 		StringVector vecToken;
 		tokenizer.getTokens(vecToken);
 
-	 if (vecToken.size() != 3)
+		if(vecToken.size() != 3)
 			continue;
 
-	 if (!isdigit(vecToken[0][0]))
+		if(!isdigit(vecToken[0][0]))
 			continue;
 
 		int fromId = atoi(vecToken[0].c_str());
@@ -185,9 +185,9 @@ void loadDistanceMatrix()
 		cpack.cost = cpack.distance = atof(vecToken[2].c_str());
 		cpack.traveltime = cpack.cost;
 		
-	 if (fromId == 1)
+		if(fromId == 1)
 			solver.addDepotToOrderCost(fromId, toId, cpack);
-		else if (toId == 1)
+		else if(toId == 1)
 			solver.addOrderToDepotCost(fromId, toId, cpack);
 		else
 			solver.addOrderToOrderCost(fromId, toId, cpack);
@@ -201,14 +201,14 @@ void loadDistanceMatrix()
 bool print_solution(std::string strError)
 {
 	FILE *fp = fopen("result.txt", "wt");
- if (fp == NULL)
+	if(fp == NULL)
 	{
 		strError = "Could not open file";
 		return false;
 	}
 	CSolutionInfo solution;
 	bool bOK = solver.getSolution(solution, strError);
- if (bOK == false)
+	if(bOK == false)
 		return false;
 
 	int totalRoute = solution.getTourInfoVector().size();
@@ -219,7 +219,7 @@ bool print_solution(std::string strError)
 	fprintf(fp, "Total Distance: %.3lf\n", solution.getTotalDistance());
 	fprintf(fp, "Total TravelTime: %.3lf\n", solution.getTotalTravelTime());
 
- for (int i = 0; i < totalRoute; i++)
+	for(int i = 0; i < totalRoute; i++)
 	{
 		ctour = solution.getTour(i);
 		fprintf(fp, "Route No. %d: \n", i + 1);
@@ -230,13 +230,13 @@ bool print_solution(std::string strError)
 		std::vector<int> vecOrder = ctour.getOrderVector();
 		int totalOrder = vecOrder.size();
 		fprintf(fp, "Visited Order Ids: ");
-	 for (int j = 0; j < totalOrder; j++)
+		for(int j = 0; j < totalOrder; j++)
 		{
-		 if (j > 0)
+			if(j > 0)
 				fprintf(fp, " ");
 			fprintf(fp, "%d", vecOrder[j]);
-		 if (j < totalOrder - 1)
-				fprintf(fp, ", ");
+			if(j < totalOrder - 1)
+				fprintf(fp, ",");
 		}
 		fprintf(fp, "\n");
 	}
@@ -254,7 +254,7 @@ int main()
 	std::string strError;
 	bool bIsOK = solver.solveVRP(strError);
 	
- if (!bIsOK)
+	if(!bIsOK)
 	{
 		fprintf(stderr, "Error Occurred: %s\n", strError.c_str());
 	}

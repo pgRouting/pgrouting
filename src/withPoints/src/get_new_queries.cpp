@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include "string.h"
 #include <sstream>
-#include <string>
 #include "./get_new_queries.h"
 
 

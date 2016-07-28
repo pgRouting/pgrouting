@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) ||  defined(_MSC_VER)
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -41,7 +41,7 @@ void loadOrders(vrp_orders_t *orders, int order_count, int depotId)
 {
 	int i;
     PGR_LOGF("%s: %d\n", "Depot ID", id)
- for (i = 0; i < order_count; i++)
+	for(i = 0; i < order_count; i++)
 	{
 		int id = orders[i].id;
         PGR_LOGF("%s: %d\n", "Order ID", id)
@@ -104,7 +104,7 @@ void loadOrders(vrp_orders_t *orders, int order_count, int depotId)
 void loadVehicles(vrp_vehicles_t *vehicles, int vehicle_count)
 {
 	int i;
- for (i = 0; i < vehicle_count; i++)
+	for(i = 0; i < vehicle_count; i++)
 	{
 		CVehicleInfo vehicle;
 
@@ -124,18 +124,18 @@ void loadVehicles(vrp_vehicles_t *vehicles, int vehicle_count)
 void loadDistanceMatrix(vrp_cost_element_t *costmatrix, int cost_count, int depotId)
 {
 	int i;
- for (i = 0; i < cost_count; i++)
+	for(i = 0; i < cost_count; i++)
 	{
 		int fromId = costmatrix[i].src_id;
 		int toId = costmatrix[i].dest_id;
 		CostPack cpack;
 		cpack.cost = costmatrix[i].cost;
-		cpack.distance = costmatrix[i].distance;
+		cpack.distance = costmatrix[i].distance; 
 		cpack.traveltime = costmatrix[i].traveltime;
 
-	 if (fromId == depotId)
+		if(fromId == depotId)
 			solver.addDepotToOrderCost(fromId, toId, cpack);
-		else if (toId == depotId)
+		else if(toId == depotId)
 			solver.addOrderToDepotCost(fromId, toId, cpack);
 		else
 			solver.addOrderToOrderCost(fromId, toId, cpack);
@@ -186,14 +186,14 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count,
                 solver.getSolution(solution, strError);
 		auto totalRoute = solution.getTourInfoVector().size();
 		size_t totRows = 0;
-	 for (size_t i = 0; i < totalRoute; i++)
+		for(size_t i = 0; i < totalRoute; i++)
 		{
 			totRows += (solution.getTour(static_cast<int>(i)).getServedOrderCount() + 2);
 		}
 		*results = (vrp_result_element_t *) malloc(totRows * sizeof(vrp_result_element_t));
 		*result_count = totRows;
 		int cnt = 0;
-	 for (size_t i = 0; i < totalRoute; i++)
+		for(size_t i = 0; i < totalRoute; i++)
 		{
 			ctour = solution.getTour(static_cast<int>(i));
 			std::vector<int> vecOrder = ctour.getOrderVector();
@@ -208,7 +208,7 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count,
 			cnt++;
 			
 			// For each order
-		 for (size_t j = 0; j < totalOrder; j++)
+			for(size_t j = 0; j < totalOrder; j++)
 			{
 				(*results)[cnt].order_id = vecOrder[j];
 				(*results)[cnt].order_pos = static_cast<int>(j) + 1;
