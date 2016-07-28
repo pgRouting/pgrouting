@@ -4,9 +4,9 @@ File: withPoints_driver.h
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_
-#define SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_
+#ifndef SRC_WITHPOINTS_SRC_ONE_TO_ONE_WITHPOINTS_DRIVER_H_
+#define SRC_WITHPOINTS_SRC_ONE_TO_ONE_WITHPOINTS_DRIVER_H_
 
 
 #ifdef __cplusplus
@@ -36,16 +36,16 @@ extern "C" {
 
 #include "./../../common/src/pgr_types.h"
 
-    //  CREATE OR REPLACE FUNCTION pgr_withPoint(
-    //  edges_sql TEXT,
-    //  points_sql TEXT,
-    //  start_pid BIGINT,
-    //  end_pid BIGINT,
-    //  directed BOOLEAN DEFAULT true,
+    // CREATE OR REPLACE FUNCTION pgr_withPoint(
+    // edges_sql TEXT,
+    // points_sql TEXT,
+    // start_pid BIGINT,
+    // end_pid BIGINT,
+    // directed BOOLEAN DEFAULT true,
     void do_pgr_withPoints(
-            pgr_edge_t  *edges,           size_t total_edges,
-            Point_on_edge_t  *points,     size_t total_points,
-            pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
+            pgr_edge_t *edges, size_t total_edges,
+            Point_on_edge_t *points, size_t total_points,
+            pgr_edge_t *edges_of_points, size_t total_edges_of_points,
             int64_t start_pid,
             int64_t end_pid,
             bool directed,
@@ -61,4 +61,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_
+#endif  //  SRC_WITHPOINTS_SRC_ONE_TO_ONE_WITHPOINTS_DRIVER_H_

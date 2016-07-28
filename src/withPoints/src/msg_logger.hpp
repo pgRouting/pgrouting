@@ -4,9 +4,9 @@ File: msg_logger.hpp
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+#include <string>
+#include <vector>
 #include "./../../common/src/pgr_types.h"
 
 void
