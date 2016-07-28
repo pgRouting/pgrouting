@@ -398,7 +398,7 @@ get_edges_flow(
             size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %d edge tupĺes", ntuples);
+            PGR_DBG("processing %lu edge tupĺes", ntuples);
 
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
@@ -495,7 +495,7 @@ get_edges_basic(
             size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %d edge tupĺes", ntuples);
+            PGR_DBG("processing %ld edge tupĺes", ntuples);
 
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
