@@ -23,13 +23,12 @@ SELECT array[
 'max_cycles',
 'directed',
 'seq',
-'id',
 'type',
+'id',
+'contracted_vertices',
 'source',
 'target',
-'cost',
-'contracted_vertices',
-'contracted_vertices_size'];
+'cost'];
 
 SELECT set_has(
     $$SELECT proargnames FROM pg_proc WHERE proname = 'pgr_contractgraph'$$,
@@ -54,23 +53,29 @@ END LOOP;
 end_sql = ' FROM edge_table $$, ARRAY[]::integer[], ARRAY[0]::integer[], 1, true)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
+    raise notice 'Value: %', query;
     RETURN query SELECT lives_ok(query);
 
     query := start_sql || parameter || '::INTEGER ' || end_sql;
+    raise notice 'Value: %', query;
     RETURN query SELECT lives_ok(query);
 
     query := start_sql || parameter || '::BIGINT ' || end_sql;
+    raise notice 'Value: %', query;
     RETURN query SELECT lives_ok(query);
 
     query := start_sql || parameter || '::REAL ' || end_sql;
+    raise notice 'Value: %', query;
     RETURN query SELECT throws_ok(query,'XX000','Unexpected Column ' || '''' || parameter || '''' || ' type. Expected ANY-INTEGER',
     'throws because '|| parameter ||' is REAL');
 
     query := start_sql || parameter || '::FLOAT8 ' || end_sql;
+    raise notice 'Value: %', query;
     RETURN query SELECT throws_ok(query,'XX000','Unexpected Column ' || '''' || parameter || '''' || ' type. Expected ANY-INTEGER',
     'throws because '|| parameter ||' is FLOAT8');
 
     query := start_sql || parameter || '::TEXT ' || end_sql;
+    raise notice 'Value: %', query;
     RETURN query SELECT throws_ok(query,'XX000','Unexpected Column ' || '''' || parameter || '''' || ' type. Expected ANY-INTEGER',
     'throws because '|| parameter ||' is TEXT');
 END;
@@ -113,27 +118,27 @@ $BODY$ LANGUAGE plpgsql;
 -- CHECKING INNER QUERY
 
 --id ANY-INTEGER
-SELECT test_anyInteger('pgr_contractGraph',
+SELECT test_anyInteger('pgr_contractgraph',
     ARRAY['id', 'source::INTEGER', 'target::INTEGER', 'cost::FLOAT8', 'reverse_cost::FLOAT8'],
     'id');
 
 --source is only integer
-SELECT test_anyInteger('pgr_contractGraph',
+SELECT test_anyInteger('pgr_contractgraph',
     ARRAY['id::INTEGER', 'source', 'target::INTEGER', 'cost::FLOAT8', 'reverse_cost::FLOAT8'],
     'source');
 
 --target is only integer
-SELECT test_anyInteger('pgr_contractGraph',
+SELECT test_anyInteger('pgr_contractgraph',
     ARRAY['id::INTEGER', 'source::INTEGER', 'target', 'cost::FLOAT8', 'reverse_cost::FLOAT8'],
     'target');
 
 --cost is any numerical
-SELECT test_anyNumerical('pgr_contractGraph',
+SELECT test_anyNumerical('pgr_contractgraph',
     ARRAY['id::INTEGER', 'source::INTEGER', 'target::INTEGER', 'cost', 'reverse_cost::FLOAT8'],
     'cost');
 
 --reverse cost is any numerical
-SELECT test_anyNumerical('pgr_contractGraph',
+SELECT test_anyNumerical('pgr_contractgraph',
     ARRAY['id::INTEGER', 'source::INTEGER', 'target::INTEGER', 'cost::FLOAT8', 'reverse_cost'],
     'reverse_cost');
 
