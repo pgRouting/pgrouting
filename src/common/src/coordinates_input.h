@@ -21,6 +21,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+#ifndef SRC_COMMON_SRC_COORDINATES_INPUT_H_
+#define SRC_COMMON_SRC_COORDINATES_INPUT_H_
 
 #pragma once
 
@@ -35,3 +37,5 @@ void pgr_get_coordinates(
         char *sql,
         Coordinate_t **coordinates,
         size_t *total_coordinates);
+
+#endif  // SRC_COMMON_SRC_COORDINATES_INPUT_H_

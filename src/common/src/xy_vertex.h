@@ -22,6 +22,9 @@
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_XY_VERTEX_H_
+#define SRC_COMMON_SRC_XY_VERTEX_H_
+
 #pragma once
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
@@ -38,7 +41,7 @@
 // #include <boost/geometry/geometries/point_xy.hpp>
 #include <vector>
 
-#include "./pgr_types.h"  
+#include "./pgr_types.h"
 
 
 namespace pgrouting {
@@ -58,17 +61,17 @@ class XY_vertex {
 
   XY_vertex(const Pgr_edge_xy_t &other, bool is_source) :
       id(is_source? other.source : other.target),
-      point(is_source? Point(other.x1,other.y1) : Point(other.x2,other.y2))
+      point(is_source? Point(other.x1, other.y1) : Point(other.x2, other.y2))
       {}
 
 
   double x() const {return point.x();}
   double y() const {return point.y();}
 
-  inline void cp_members(const XY_vertex &other){
+  inline void cp_members(const XY_vertex &other) {
       this->id = other.id;
       this->point = other.point;
-  };
+  }
 
   friend std::ostream& operator<<(std::ostream& log, const XY_vertex &v);
   bool operator==(const XY_vertex &rhs) const;
@@ -99,4 +102,6 @@ std::vector < XY_vertex > extract_vertices(
     const std::vector < Pgr_edge_xy_t > data_edges);
 #endif
 
-} // namespace pgrouting
+}  // namespace pgrouting
+
+#endif  // SRC_COMMON_SRC_XY_VERTEX_H_

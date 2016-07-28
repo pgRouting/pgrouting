@@ -22,11 +22,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_ARRAYS_INPUT_H_
+#define SRC_COMMON_SRC_ARRAYS_INPUT_H_
+
 #pragma once
 
 #include "./pgr_types.h"
 
 int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input);
 
-// Allows the input array to be empty 
-int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input); 
+// Allows the input array to be empty
+int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input);
+
+#endif  // SRC_COMMON_SRC_ARRAYS_INPUT_H_
