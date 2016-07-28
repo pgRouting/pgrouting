@@ -64,7 +64,7 @@ SELECT * FROM pgr_dijkstra($$
     7, 13, false);
 
 \echo Case 5: The path contains a shortcut.
-\echo \echo We are going to route from 3 to 9
+\echo We are going to route from 3 to 9
 \echo Since 3 and 9 both are in the contracted graph we need not add any vertices. 
 SELECT * FROM pgr_dijkstra($$
     SELECT id, source, target, cost, reverse_cost 
