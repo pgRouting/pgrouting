@@ -22,17 +22,17 @@ SET id = id + POWER(10, 8);
 \echo --q3
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
+    ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
 
 \echo --q4
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
+    ARRAY[]::BIGINT[], ARRAY[2]::integer[], 1, true);
 
 \echo --q5
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0, 1]::integer[], 1, true);
+    ARRAY[]::BIGINT[], ARRAY[1, 2]::integer[], 1, true);
 
 ROLLBACK;
 
@@ -54,17 +54,17 @@ SET id = id + POWER(10, 12);
 \echo --q8
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
+    ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
 
 \echo --q9
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[1]::integer[], 1, true);
+    ARRAY[]::BIGINT[], ARRAY[2]::integer[], 1, true);
 
 \echo --q10
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0, 1]::integer[], 1, true);
+    ARRAY[]::BIGINT[], ARRAY[1, 2]::integer[], 1, true);
 
 \echo --q11
 
