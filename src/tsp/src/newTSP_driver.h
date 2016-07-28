@@ -27,6 +27,8 @@
  *
  *  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_TSP_SRC_NEWTSP_DRIVER_H_
+#define SRC_TSP_SRC_NEWTSP_DRIVER_H_
 #pragma once
 
 
@@ -60,3 +62,4 @@ do_pgr_tsp(
 }
 #endif
 
+#endif  // SRC_TSP_SRC_NEWTSP_DRIVER_H_
