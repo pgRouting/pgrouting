@@ -39,8 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/push_relabel_max_flow.hpp>
 #include <boost/graph/edmonds_karp_max_flow.hpp>
 #include <boost/graph/boykov_kolmogorov_max_flow.hpp>
-#include <boost/graph/max_cardinality_matching.hpp>
-#include <boost/assert.hpp>
 
 #if 0
 #include "./../../common/src/signalhandler.h"

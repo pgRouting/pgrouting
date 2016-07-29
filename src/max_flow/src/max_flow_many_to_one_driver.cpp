@@ -32,14 +32,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "./max_flow_many_to_one_driver.h"
 
 #include <sstream>
 #include <vector>
 #include <set>
 
-#include "./pgr_maxflow.hpp"
+#include "pgr_maxflow.hpp"
+#include "./max_flow_many_to_one_driver.h"
 #include "../../common/src/pgr_alloc.hpp"
+
+// #define DEBUG
+extern "C" {
+#include "./../../common/src/pgr_types.h"
+}
 
 void
 do_pgr_max_flow_many_to_one(
