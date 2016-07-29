@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_ONE_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
