@@ -31,6 +31,7 @@ branches:
     - test/merge-gsoc-flow
     - gsoc-flow
     - gsoc-ch
+    - Illedran-gsoc-flow
 
 env:
   - POSTGRESQL_VERSION=9.1
