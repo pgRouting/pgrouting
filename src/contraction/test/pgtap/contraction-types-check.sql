@@ -1,16 +1,16 @@
 \i setup.sql
-SELECT plan(40);
+SELECT plan(44);
 SET client_min_messages TO WARNING;
 SELECT has_function('pgr_contractgraph');
 
 SELECT has_function('pgr_contractgraph', ARRAY[
-    'text', 'bigint[]', 'bigint[]',
-    'integer', 'boolean'
+    'text', 'bigint[]',
+    'integer', 'bigint[]', 'boolean'
     ]);
 
 SELECT function_returns('pgr_contractgraph', ARRAY[
-    'text', 'bigint[]', 'bigint[]',
-    'integer', 'boolean'
+    'text', 'bigint[]',
+    'integer', 'bigint[]', 'boolean'
     ], 'setof record');
 
 
@@ -19,8 +19,8 @@ PREPARE parameters AS
 SELECT array[
 'edges_sql',
 'contraction_order',
-'forbidden_vertices',
 'max_cycles',
+'forbidden_vertices',
 'directed',
 'seq',
 'type',
@@ -50,7 +50,7 @@ BEGIN
     END IF;
     start_sql = start_sql || p || ', ';
 END LOOP;
-end_sql = ' FROM edge_table $$, ARRAY[]::integer[], ARRAY[0]::integer[], 1, true)';
+end_sql = ' FROM edge_table $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -87,7 +87,7 @@ BEGIN
     END IF;
     start_sql = start_sql || p || ', ';
 END LOOP;
-end_sql = ' FROM edge_table $$, ARRAY[]::integer[], ARRAY[0]::integer[], 1, true)';
+end_sql = ' FROM edge_table $$, ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true)';
 
     query := start_sql || parameter || '::SMALLINT ' || end_sql;
     RETURN query SELECT lives_ok(query);
@@ -133,36 +133,64 @@ SELECT test_anyNumerical('pgr_contractgraph',
     ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
     'reverse_cost');
 
+-- Minimal Signature
+PREPARE q10 AS
+SELECT *
+FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    ARRAY[1]::integer[]);
+
+
+PREPARE q11 AS
+SELECT *
+FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    ARRAY[1]::integer[], directed:= true);
+
+PREPARE q12 AS
+SELECT *
+FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    ARRAY[1]::integer[], directed:= false);
+
+
+PREPARE q13 AS
+SELECT *
+FROM pgr_contractgraph(
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+    ARRAY[1]::integer[], max_cycles:= 1, directed:= false);
+
+
 
 -- Forbidden vertices array dimension should be 0 or 1
 PREPARE q1 AS
 SELECT *
 FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[ [2,3,4,5], [4,5,6,7] ]::integer[][], ARRAY[0]::integer[], 1, true);
+    ARRAY[1]::integer[], 1, ARRAY[ [2,3,4,5], [4,5,6,7] ]::integer[][], true);
 
 -- Contraction order array cannot be empty
 PREPARE q2 AS
 SELECT *
 FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::integer[], ARRAY[]::integer[], 1, true);
+    ARRAY[]::integer[], 1, ARRAY[]::integer[], true);
 
 -- Forbidden vertices should be an integer array
 PREPARE q3 AS
 SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-ARRAY[ ]::integer[], ARRAY[0]::integer[], 1, true);
+ARRAY[1]::integer[], 1, ARRAY[ ]::integer[], true);
 
 PREPARE q4 AS
 SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-ARRAY[ ]::bigint[], ARRAY[0]::integer[], 1, true);
+ARRAY[1]::integer[], 1, ARRAY[ ]::bigint[], true);
 
 PREPARE q5 AS
 SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-ARRAY[ ]::smallint[], ARRAY[0]::integer[], 1, true);
+ARRAY[1]::integer[], 1, ARRAY[ ]::smallint[], true);
 
 /*
 PREPARE q5 AS
@@ -175,17 +203,17 @@ ARRAY[ ]::bigint[], ARRAY[0]::FLOAT8[], 1, true);
 PREPARE q7 AS
 SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-ARRAY[ ]::bigint[], ARRAY[0]::bigint[], 1, true);
+ARRAY[1]::bigint[], 1, ARRAY[ ]::bigint[], true);
 
 PREPARE q8 AS
 SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-ARRAY[ ]::bigint[], ARRAY[0]::integer[], 1);
+ARRAY[1]::integer[], 1, ARRAY[ ]::bigint[]);
 
 PREPARE q9 AS
 SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-ARRAY[ ]::bigint[], ARRAY[0]::smallint[], 1);
+ARRAY[1]::smallint[], 1, ARRAY[ ]::bigint[]);
 
 SELECT throws_ok('q1', 'XX000', 'Expected less than two dimension',
 'Throws because forbidden_vertices is BIGINT[][]');
@@ -200,7 +228,10 @@ SELECT lives_ok('q5');
 SELECT lives_ok('q7');
 SELECT lives_ok('q8');
 SELECT lives_ok('q9');
-
+SELECT lives_ok('q10');
+SELECT lives_ok('q11');
+SELECT lives_ok('q12');
+SELECT lives_ok('q13');
 
 SELECT finish();
 ROLLBACK;
