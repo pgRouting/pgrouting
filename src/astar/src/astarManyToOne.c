@@ -121,7 +121,7 @@ process(char* edges_sql,
             result_count,
             &log_msg,
             &err_msg,
-            false); // not normal
+            false);  // not normal
     time_msg(" processing pgr_astar(many to one)", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("LOG: %s\n", log_msg);

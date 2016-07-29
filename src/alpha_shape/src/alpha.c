@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /*
  * Define this to have profiling enabled
  */
-//#define PROFILE
+// #define PROFILE
 
 
 #ifdef _MSC_VER
@@ -49,55 +49,48 @@ Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 #include "../../common/src/debug_macro.h"
-    
+
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
 static char *
-text2char(text *in)
-{
+text2char(text *in) {
   char *out = palloc(VARSIZE(in));
-    
+
   memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
   out[VARSIZE(in) - VARHDRSZ] = '\0';
   return out;
 }
 
 static int
-finish(int code, int ret)
-{
+finish(int code, int ret) {
   code = SPI_finish();
-  if (code  != SPI_OK_FINISH )
-  {
-    elog(ERROR,"couldn't disconnect from SPI");
-    return -1 ;
+  if (code  != SPI_OK_FINISH) {
+    elog(ERROR, "couldn't disconnect from SPI");
+    return -1;
   }
   return ret;
 }
-		  
 
-typedef struct vertex_columns 
-{
+
+typedef struct vertex_columns {
   int id;
   int x;
   int y;
-
 } vertex_columns_t;
 
 
 
 static int
-fetch_vertices_columns(SPITupleTable *tuptable, 
-                       vertex_columns_t *vertex_columns)
-{
+fetch_vertices_columns(SPITupleTable *tuptable,
+                       vertex_columns_t *vertex_columns) {
   vertex_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   vertex_columns->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
   vertex_columns->y = SPI_fnumber(SPI_tuptable->tupdesc, "y");
 
   if (vertex_columns->id == SPI_ERROR_NOATTRIBUTE ||
       vertex_columns->x == SPI_ERROR_NOATTRIBUTE ||
-      vertex_columns->y == SPI_ERROR_NOATTRIBUTE) 
-    {
+      vertex_columns->y == SPI_ERROR_NOATTRIBUTE) {
       elog(ERROR, "Error, query must return columns "
            "'id', 'x' and 'y'");
       return -1;
@@ -105,20 +98,18 @@ fetch_vertices_columns(SPITupleTable *tuptable,
 
   if (SPI_gettypeid(SPI_tuptable->tupdesc, vertex_columns->id) != INT4OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, vertex_columns->x) != FLOAT8OID ||
-      SPI_gettypeid(SPI_tuptable->tupdesc, vertex_columns->y) != FLOAT8OID) 
-    {
-      elog(ERROR, 
+      SPI_gettypeid(SPI_tuptable->tupdesc, vertex_columns->y) != FLOAT8OID) {
+      elog(ERROR,
            "Error, column 'id' must be of type int4, 'x' and 'y' must be of type float8");
       return -1;
     }
-   
+
   return 0;
 }
 
 static void
-fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc, 
-             vertex_columns_t *vertex_columns, vertex_t *target_vertex)
-{
+fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc,
+             vertex_columns_t *vertex_columns, vertex_t *target_vertex) {
   Datum binval;
   bool isnull;
 
@@ -133,9 +124,7 @@ fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc,
   target_vertex->y = DatumGetFloat8(binval);
 }
 
-static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *res_count)
-{
-
+static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *res_count) {
   int SPIcode;
   void *SPIplan;
   Portal SPIportal;
@@ -144,43 +133,38 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
   vertex_t *vertices = NULL;
   uint32_t total_tuples = 0;
 #ifndef _MSC_VER
-  vertex_columns_t vertex_columns = {.id= -1, .x= -1, .y= -1};
-#else // _MSC_VER
+  vertex_columns_t vertex_columns = {.id = -1, .x = -1, .y = -1};
+#else   // _MSC_VER
   vertex_columns_t vertex_columns = {-1, -1, -1};
-#endif // _MSC_VER
+#endif  // _MSC_VER
   char *err_msg;
   int ret = -1;
 
   PGR_DBG("start alpha_shape\n");
-        
+
   SPIcode = SPI_connect();
-  if (SPIcode  != SPI_OK_CONNECT)
-    {
+  if (SPIcode  != SPI_OK_CONNECT) {
       elog(ERROR, "alpha_shape: couldn't open a connection to SPI");
       return -1;
     }
 
   SPIplan = SPI_prepare(sql, 0, NULL);
-  if (SPIplan  == NULL)
-    {
+  if (SPIplan  == NULL) {
       elog(ERROR, "alpha_shape: couldn't create query plan via SPI");
       return -1;
     }
 
-  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) 
-    {
+  if ((SPIportal = SPI_cursor_open(NULL, SPIplan, NULL, NULL, true)) == NULL) {
       elog(ERROR, "alpha_shape: SPI_cursor_open('%s') returns NULL", sql);
       return -1;
     }
 
-  while (moredata == TRUE)
-    {
+  while (moredata == TRUE) {
       SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
-      if (vertex_columns.id == -1) 
-        {
+      if (vertex_columns.id == -1) {
           if (fetch_vertices_columns(SPI_tuptable, &vertex_columns) == -1)
-	    return finish(SPIcode, ret);
+        return finish(SPIcode, ret);
         }
 
       ntuples = SPI_processed;
@@ -190,64 +174,57 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
       else
         vertices = repalloc(vertices, total_tuples * sizeof(vertex_t));
 
-      if (vertices == NULL) 
-        {
+      if (vertices == NULL) {
           elog(ERROR, "Out of memory");
           return finish(SPIcode, ret);
         }
 
-      if (ntuples > 0) 
-        {
+      if (ntuples > 0) {
           uint32_t t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
-                
-          for (t = 0; t < ntuples; t++) 
-            {
+
+          for (t = 0; t < ntuples; t++) {
               HeapTuple tuple = tuptable->vals[t];
-              fetch_vertex(&tuple, &tupdesc, &vertex_columns, 
+              fetch_vertex(&tuple, &tupdesc, &vertex_columns,
                            &vertices[total_tuples - ntuples + t]);
             }
           SPI_freetuptable(tuptable);
-        } 
-      else 
-        {
+        } else {
           moredata = FALSE;
         }
     }
 
 
   // if (total_tuples < 2) //this was the buggy code of the pgrouting project.
-  // TODO: report this as a bug to the pgrouting project
+  // TODO(someone): report this as a bug to the pgrouting project
   // the CGAL alpha-shape function crashes if called with less than three points!!!
 
   if (total_tuples < 3) {
-  	  elog(ERROR, "Less than 3 vertices. Alpha shape calculation needs at least 3 vertices.");
+      elog(ERROR, "Less than 3 vertices. Alpha shape calculation needs at least 3 vertices.");
       return finish(SPIcode, ret);
   }
   if (total_tuples == 1) {
-	  elog(ERROR, "Distance is too short. only 1 vertex for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
+      elog(ERROR, "Distance is too short. only 1 vertex for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
   }
   if (total_tuples == 2) {
-	  elog(ERROR, "Distance is too short. only 2 vertices for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
+      elog(ERROR, "Distance is too short. only 2 vertices for alpha shape calculation. alpha shape calculation needs at least 3 vertices.");
   }
-  if (total_tuples < 3)
-  {
+  if (total_tuples < 3) {
     // elog(ERROR, "Distance is too short ....");
     return finish(SPIcode, ret);
   }
 
   PGR_DBG("Calling CGAL alpha-shape\n");
-        
+
   ret = alpha_shape(vertices, total_tuples, alpha, res, res_count, &err_msg);
 
-  if (ret < 0)
-    {
-      //elog(ERROR, "Error computing shape: %s", err_msg);
+  if (ret < 0) {
+      // elog(ERROR, "Error computing shape: %s", err_msg);
       ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), errmsg("%s", err_msg)));
-    } 
-  
-  return finish(SPIcode, ret);    
+    }
+
+  return finish(SPIcode, ret);
 }
 
 PG_FUNCTION_INFO_V1(alphashape);
@@ -255,28 +232,26 @@ PG_FUNCTION_INFO_V1(alphashape);
 #ifdef _MSC_VER
 PGDLLEXPORT
 #endif
-Datum alphashape(PG_FUNCTION_ARGS)
-{
+Datum alphashape(PG_FUNCTION_ARGS) {
   FuncCallContext      *funcctx;
   uint32_t                  call_cntr;
   uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   vertex_t     *res = 0;
-                    
+
   /* stuff done only on the first call of the function */
-  if (SRF_IS_FIRSTCALL())
-    {
+  if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       size_t res_count;
-                            
-                                            
+
+
       /* create a function context for cross-call persistence */
       funcctx = SRF_FIRSTCALL_INIT();
-                                                                    
+
       /* switch to memory context appropriate for multiple function calls */
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-      compute_alpha_shape(text2char(PG_GETARG_TEXT_P(0)), 
+      compute_alpha_shape(text2char(PG_GETARG_TEXT_P(0)),
                                 PG_GETARG_FLOAT8(1), &res, &res_count);
 
       /* total number of tuples to be returned */
@@ -308,8 +283,8 @@ Datum alphashape(PG_FUNCTION_ARGS)
 
   PGR_DBG("Trying to allocate some memory\n");
 
-  if (call_cntr < max_calls)    /* do when there is more left to send */
-    {
+  if (call_cntr < max_calls) {
+      /* do when there is more left to send */
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
@@ -317,7 +292,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       double x;
       double y;
 
-      /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one    
+      /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one
 
       values = palloc(3 * sizeof(Datum));
       nulls = palloc(3 * sizeof(char));
@@ -329,27 +304,24 @@ Datum alphashape(PG_FUNCTION_ARGS)
       values[2] = Float8GetDatum(res[call_cntr].y);
       nulls[2] = ' ';
       */
-    
+
       values = palloc(2 * sizeof(Datum));
       nulls = palloc(2 * sizeof(bool));
 
       x = res[call_cntr].x;
       y = res[call_cntr].y;
-      if (x == DBL_MAX && y == DBL_MAX)
-      {
+      if (x == DBL_MAX && y == DBL_MAX) {
         values[0] = 0;
         values[1] = 0;
         nulls[0] = true;
         nulls[1] = true;
-      }
-      else
-      {
+      } else {
         values[0] = Float8GetDatum(x);
         values[1] = Float8GetDatum(y);
         nulls[0] = false;
         nulls[1] = false;
       }
-	
+
       PGR_DBG("Heap making\n");
 
       tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -366,9 +338,8 @@ Datum alphashape(PG_FUNCTION_ARGS)
       pfree(nulls);
 
       SRF_RETURN_NEXT(funcctx, result);
-    }
-  else    /* do when there is no more left */
-    {
+    } else  {
+      /* do when there is no more left */
       if (res) free(res);
       SRF_RETURN_DONE(funcctx);
     }
