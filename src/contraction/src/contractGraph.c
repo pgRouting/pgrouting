@@ -172,11 +172,11 @@ contractGraph(PG_FUNCTION_ARGS) {
          **********************************************************************/ 
 
         forbidden_vertices = (int64_t*)
-            pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(1));
+            pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(3));
         PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
 
         contraction_order = (int64_t*)
-            pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(2));
+            pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(1));
         PGR_DBG("size_contraction_order %ld ", size_contraction_order);
 
 
@@ -189,7 +189,7 @@ contractGraph(PG_FUNCTION_ARGS) {
                 contraction_order,
                 size_forbidden_vertices,
                 size_contraction_order,
-                PG_GETARG_INT32(3),
+                PG_GETARG_INT32(2),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
