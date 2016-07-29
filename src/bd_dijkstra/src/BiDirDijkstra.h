@@ -2,7 +2,7 @@
 
 * $Id$
 *
-* Project:  pgRouting bdsp and bdastar algorithms
+* Project: pgRouting bdsp and bdastar algorithms
 * Purpose:
 * Author:   Razequl Islam <ziboncsedu@gmail.com>
 Copyright (c) 2015 pgRouting developers
@@ -46,12 +46,12 @@ typedef std::vector<int64_t> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<double, int> PDI;
 
-typedef struct{
+typedef struct {
     int par_Node;
     int par_Edge;
 }PARENT_PATH;
 
-typedef struct{
+typedef struct {
     int NodeID;
     std::vector<int> Connected_Nodes;
     std::vector<int> Connected_Edges_Index;
@@ -70,8 +70,8 @@ public:
 };
 
 typedef std::vector<GraphEdgeInfo*> GraphEdgeVector;
-typedef std::map<int64_t,LongVector> Long2LongVectorMap;
-typedef std::map<int64_t,int64_t> Long2LongMap;
+typedef std::map<int64_t, LongVector> Long2LongVectorMap;
+typedef std::map<int64_t, int64_t> Long2LongMap;
 typedef std::vector<GraphNodeInfo*> GraphNodeVector;
 
 
@@ -80,10 +80,10 @@ class BiDirDijkstra
 public:
     BiDirDijkstra(void);
     ~BiDirDijkstra(void);
-    
+
     int bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
         path_element_t **path, int *path_count, char **err_msg);
-    
+
 
 private:
     bool construct_graph(edge_t *edges, int edge_count, int maxNode);
