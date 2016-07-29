@@ -26,8 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-MIT*/
 
-#ifndef BIDIRDIJKSTRA_H
-#define BIDIRDIJKSTRA_H
+#ifndef SRC_BD_DIJKSTRA_SRC_BIDIRDIJKSTRA_H_
+#define SRC_BD_DIJKSTRA_SRC_BIDIRDIJKSTRA_H_
+#pragma once
 
 #include <vector>
 #include <map>
@@ -36,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 
 #include "../../common/src/pgr_types.h"
-#include "bdsp_driver.h"
+#include "./bdsp_driver.h"
 
 #define INF 1e15
 
@@ -49,17 +50,16 @@ typedef std::pair<double, int> PDI;
 typedef struct {
     int par_Node;
     int par_Edge;
-}PARENT_PATH;
+} PARENT_PATH;
 
 typedef struct {
     int NodeID;
     std::vector<int> Connected_Nodes;
     std::vector<int> Connected_Edges_Index;
-}GraphNodeInfo;
+} GraphNodeInfo;
 
-struct GraphEdgeInfo
-{
-public:
+struct GraphEdgeInfo {
+ public:
     int EdgeID;
     int EdgeIndex;
     int Direction;
@@ -75,46 +75,46 @@ typedef std::map<int64_t, int64_t> Long2LongMap;
 typedef std::vector<GraphNodeInfo*> GraphNodeVector;
 
 
-class BiDirDijkstra
-{
-public:
-    BiDirDijkstra(void);
-    ~BiDirDijkstra(void);
+class BiDirDijkstra {
+ public:
+     BiDirDijkstra(void);
+     ~BiDirDijkstra(void);
 
-    int bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
-        path_element_t **path, int *path_count, char **err_msg);
+     int bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex,
+             path_element_t **path, int *path_count, char **err_msg);
 
 
-private:
-    bool construct_graph(edge_t *edges, int edge_count, int maxNode);
-    void fconstruct_path(int node_id);
-    void rconstruct_path(int node_id);
-    bool addEdge(edge_t edgeIn);
-    bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
-    void init();
-    void initall(int maxNode);
-    void deleteall();
-    void explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que);
-    double getcost(int node_id, int dir);
-    void setcost(int node_id, int dir, double c);
-    void setparent(int node_id, int dir, int parnode, int paredge);
+ private:
+     bool construct_graph(edge_t *edges, int edge_count, int maxNode);
+     void fconstruct_path(int node_id);
+     void rconstruct_path(int node_id);
+     bool addEdge(edge_t edgeIn);
+     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
+     void init();
+     void initall(int maxNode);
+     void deleteall();
+     void explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que);
+     double getcost(int node_id, int dir);
+     void setcost(int node_id, int dir, double c);
+     void setparent(int node_id, int dir, int parnode, int paredge);
 
-private:
-    GraphEdgeVector m_vecEdgeVector;
-    Long2LongMap m_mapEdgeId2Index;
-    Long2LongVectorMap m_mapNodeId2Edge;
-    GraphNodeVector m_vecNodeVector;
-    int max_node_id;
-    int max_edge_id;
-    int m_lStartNodeId;
-    int m_lEndNodeId;
+ private:
+     GraphEdgeVector m_vecEdgeVector;
+     Long2LongMap m_mapEdgeId2Index;
+     Long2LongVectorMap m_mapNodeId2Edge;
+     GraphNodeVector m_vecNodeVector;
+     int max_node_id;
+     int max_edge_id;
+     int m_lStartNodeId;
+     int m_lEndNodeId;
 
-    double m_MinCost;
-    int m_MidNode;
-    std::vector <path_element_t> m_vecPath;
-    PARENT_PATH *m_pFParent;
-    PARENT_PATH *m_pRParent;
-    double *m_pFCost;
-    double *m_pRCost;
+     double m_MinCost;
+     int m_MidNode;
+     std::vector <path_element_t> m_vecPath;
+     PARENT_PATH *m_pFParent;
+     PARENT_PATH *m_pRParent;
+     double *m_pFCost;
+     double *m_pRCost;
 };
-#endif
+
+#endif  // SRC_BD_DIJKSTRA_SRC_BIDIRDIJKSTRA_H_
