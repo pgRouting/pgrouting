@@ -27,32 +27,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_ONE_DRIVER_H_
-#define SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_ONE_DRIVER_H_
+#ifndef SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_MANY_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_MANY_DRIVER_H_
+
+#include <stddef.h>
 
 #include "./../../common/src/pgr_types.h"
-#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void
-do_pgr_edge_disjoint_paths_many_to_many(
-    pgr_basic_edge_t *data_edges,
-    size_t total_tuples,
-    int64_t *source_vertices,
-    size_t size_source_verticesArr,
-    int64_t *sink_vertices,
-    size_t size_sink_verticesArr,
-    bool directed,
-    General_path_element_t **return_tuples,
-    size_t *return_count,
-    char **err_msg);
+    void
+        do_pgr_edge_disjoint_paths_many_to_many(
+            pgr_basic_edge_t *data_edges,
+            size_t total_tuples,
+            int64_t *source_vertices,
+            size_t size_source_verticesArr,
+            int64_t *sink_vertices,
+            size_t size_sink_verticesArr,
+            bool directed,
+            General_path_element_t **return_tuples,
+            size_t *return_count,
+            char **err_msg);
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_ONE_DRIVER_H_
+#endif  // SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_MANY_TO_MANY_DRIVER_H_

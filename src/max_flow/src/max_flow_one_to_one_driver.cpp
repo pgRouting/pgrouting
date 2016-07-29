@@ -32,18 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "max_flow_one_to_one_driver.h"
+#include "./max_flow_one_to_one_driver.h"
 
 #include <sstream>
 #include <vector>
-#include "postgres.h"
+#include <set>
 
-#include "pgr_maxflow.hpp"
+#include "./pgr_maxflow.hpp"
 #include "../../common/src/pgr_alloc.hpp"
-// #define DEBUG
-
-extern "C" {
-}
 
 void
 do_pgr_max_flow_one_to_one(
@@ -51,7 +47,7 @@ do_pgr_max_flow_one_to_one(
     size_t total_tuples,
     int64_t source_vertex,
     int64_t sink_vertex,
-    char* algorithm,
+    char *algorithm,
     pgr_flow_t **return_tuples,
     size_t *return_count,
     char **err_msg) {
@@ -64,19 +60,19 @@ do_pgr_max_flow_one_to_one(
         std::set<int64_t> set_sink_vertices;
         set_sink_vertices.insert(sink_vertex);
 
-        G.create_flow_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices, algorithm);
+        G.create_flow_graph(data_edges,
+                            total_tuples,
+                            set_source_vertices,
+                            set_sink_vertices,
+                            algorithm);
 
-        int64_t flow;
-        if(strcmp(algorithm, "push_relabel") == 0){
-            flow = G.push_relabel();
-        }
-        else if(strcmp(algorithm, "edmonds_karp") == 0) {
-            flow = G.edmonds_karp();
-        }
-        else if(strcmp(algorithm, "boykov_kolmogorov") == 0) {
-            flow = G.boykov_kolmogorov();
-        }
-        else {
+        if (strcmp(algorithm, "push_relabel") == 0) {
+            G.push_relabel();
+        } else if (strcmp(algorithm, "edmonds_karp") == 0) {
+            G.edmonds_karp();
+        } else if (strcmp(algorithm, "boykov_kolmogorov") == 0) {
+            G.boykov_kolmogorov();
+        } else {
             log << "Unspecified algorithm!\n";
             (*return_tuples) = NULL;
             (*return_count) = 0;

@@ -34,15 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #endif
 
-
-
-#if 0
-#include "./../../common/src/signalhandler.h"
-#endif
-#include "./../../common/src/pgr_types.h"
-
-#include <map>
-
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/push_relabel_max_flow.hpp>
@@ -51,61 +42,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/max_cardinality_matching.hpp>
 #include <boost/assert.hpp>
 
+#if 0
+#include "./../../common/src/signalhandler.h"
+#endif
+#include "./../../common/src/pgr_types.h"
+
+#include <map>
+#include <string>
+#include <utility>
+#include <vector>
+#include <set>
+
+
 // user's functions
 // for development
 
 typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS>
     Traits;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
-                              boost::property<boost::vertex_name_t, std::string,
-                                              boost::property<boost::vertex_index_t,
-                                                              int64_t,
-                                                              boost::property<
-                                                                  boost::vertex_color_t,
-                                                                  boost::default_color_type,
-                                                                  boost::property<
-                                                                      boost::vertex_distance_t,
-                                                                      int64_t,
-                                                                      boost::property<
-                                                                          boost::vertex_predecessor_t,
-                                                                          Traits::edge_descriptor> > > > >,
-
-                              boost::property<boost::edge_capacity_t,
-                                              int64_t,
-                                              boost::property<boost::edge_residual_capacity_t,
-                                                              int64_t,
-                                                              boost::property<
-                                                                  boost::edge_reverse_t,
-                                                                  Traits::edge_descriptor> > > >
+        // Vertex properties
+        boost::property<boost::vertex_name_t, std::string,
+        boost::property<boost::vertex_index_t, int64_t,
+        boost::property<boost::vertex_color_t, boost::default_color_type,
+        boost::property<boost::vertex_distance_t, int64_t,
+        boost::property<boost::vertex_predecessor_t, Traits::edge_descriptor> > > > >,
+        // Edge properties
+        boost::property<boost::edge_capacity_t, int64_t,
+        boost::property<boost::edge_residual_capacity_t, int64_t,
+        boost::property<boost::edge_reverse_t, Traits::edge_descriptor> > > >
     FlowGraph;
-typedef boost::adjacency_list_traits<boost::vecS,
-                                     boost::vecS,
-                                     boost::undirectedS>
-    UndirectedTraits;
-typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS,
-                              boost::property<boost::vertex_name_t, std::string,
-                                              boost::property<boost::vertex_index_t,
-                                                              int64_t,
-                                                              boost::property<
-                                                                  boost::vertex_color_t,
-                                                                  boost::default_color_type,
-                                                                  boost::property<
-                                                                      boost::vertex_distance_t,
-                                                                      int64_t,
-                                                                      boost::property<
-                                                                          boost::vertex_predecessor_t,
-                                                                          UndirectedTraits::edge_descriptor> > > > >,
-
-                              boost::property<boost::edge_capacity_t,
-                                              int64_t,
-                                              boost::property<boost::edge_residual_capacity_t,
-                                                              int64_t,
-                                                              boost::property<
-                                                                  boost::edge_reverse_t,
-                                                                  UndirectedTraits::edge_descriptor> > > >
-    UndirectedFlowGraph;
-// Used internally for edge disjoint paths functionality
-
 
 template<class G>
 class PgrFlowGraph {
@@ -168,18 +133,15 @@ class PgrFlowGraph {
                          const std::set<int64_t> &source_vertices,
                          const std::set<int64_t> &sink_vertices,
                          char *algorithm) {
-
       /* In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity
        * The same applies for sinks.
        * To avoid code repetition, a supersource/sink is used even in the one to one signature.
        */
-
-
       std::set<int64_t> vertices;
-      for (int64_t source: source_vertices) {
+      for (int64_t source : source_vertices) {
           vertices.insert(source);
       }
-      for (int64_t sink: sink_vertices) {
+      for (int64_t sink : sink_vertices) {
           vertices.insert(sink);
       }
       for (size_t i = 0; i < total_tuples; ++i) {
@@ -194,7 +156,7 @@ class PgrFlowGraph {
       bool added;
 
       V supersource = add_vertex(boost_graph);
-      for (int64_t source_id: source_vertices) {
+      for (int64_t source_id : source_vertices) {
           V source = get_boost_vertex(source_id);
           E e, e_rev;
           boost::tie(e, added) =
@@ -208,7 +170,7 @@ class PgrFlowGraph {
       }
 
       V supersink = add_vertex(boost_graph);
-      for (int64_t sink_id: sink_vertices) {
+      for (int64_t sink_id : sink_vertices) {
           V sink = get_boost_vertex(sink_id);
           E e, e_rev;
           boost::tie(e, added) = boost::add_edge(sink, supersink, boost_graph);
