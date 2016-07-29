@@ -22,6 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_EDGES_INPUT_H_
+#define SRC_COMMON_SRC_EDGES_INPUT_H_
+
 #pragma once
 
 #include "./pgr_types.h"
@@ -232,3 +235,4 @@ Where:
 xy_edges_sql_end
 */
 
+#endif  // SRC_COMMON_SRC_EDGES_INPUT_H_

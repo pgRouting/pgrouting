@@ -4,9 +4,9 @@ File: withPoints_driver.h
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -27,13 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #pragma once
+#include <vector>
 
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/basePath_SSEC.hpp"
 
 int
 check_points(std::vector< Point_on_edge_t > &points,
-                std::ostringstream  &log);
+                std::ostringstream &log);
 
 void
 eliminate_details_dd(
@@ -52,14 +53,14 @@ adjust_pids(
 
 bool
 create_new_edges(
-        std::vector< Point_on_edge_t >  &points,
+        std::vector< Point_on_edge_t > &points,
         const std::vector< pgr_edge_t > &edges,
         char driving_side,
         std::vector< pgr_edge_t > &new_edges);
 
 bool
 create_new_edges(
-        std::vector< Point_on_edge_t >  &points,
+        std::vector< Point_on_edge_t > &points,
         const std::vector< pgr_edge_t > &edges,
         char driving_side,
         std::vector< pgr_edge_t > &new_edges,

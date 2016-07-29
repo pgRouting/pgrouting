@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef _BDSP_H
 #define _BDSP_H
 
-#if defined(_MSC_VER) && _MSC_VER < 1600
+#if defined(_MSC_VER) &&  _MSC_VER < 1600
 #define ELOG_H
 #endif
 #include "../../common/src/pgr_types.h"
@@ -37,15 +37,15 @@ typedef pgr_edge_t edge_t;
 extern "C"
 #endif
 
-int bidirsp_wrapper( edge_t *edges, 
+int bidirsp_wrapper( edge_t *edges,
 			unsigned int edge_count,
 			int maxNode,
-			int start_vertex, 
+			int start_vertex,
 			int end_vertex,
-		    bool directed, 
+		    bool directed,
 		    bool has_reverse_cost,
-            path_element_t **path, 
-            int *path_count, 
+            path_element_t **path,
+            int *path_count,
             char **err_msg
             );
 

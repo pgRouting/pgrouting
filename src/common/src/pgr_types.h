@@ -22,6 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_PGR_TYPES_H_
+#define SRC_COMMON_SRC_PGR_TYPES_H_
+
 #pragma once
 
 
@@ -36,8 +39,7 @@ typedef struct  {
     double y;
 } Coordinate_t;
 
-typedef struct edge_astar
-{
+typedef struct edge_astar {
     int id;
     int source;
     int target;
@@ -49,8 +51,7 @@ typedef struct edge_astar
     double t_y;
 } edge_astar_t;
 
-typedef struct 
-{
+typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
@@ -94,7 +95,7 @@ typedef struct {
 } General_path_element_t;
 
 
-typedef struct{
+typedef struct {
     int route_id;
     int path_id;
     int path_seq;
@@ -149,8 +150,7 @@ typedef struct matrix_cell {
 // Restrictions used in pgr_turnRestrictions
 
 #define  MAX_RULE_LENGTH 5
-typedef struct 
-{
+typedef struct {
     int64_t target_id;
     double to_cost;
     int64_t via[MAX_RULE_LENGTH];
@@ -162,7 +162,7 @@ typedef struct {
     int64_t edge_id;
     char side;  // 'r', 'l', 'b' (default is both)
     double fraction;
-    int64_t vertex_id; // number is negative and is used for processing
+    int64_t vertex_id;  // number is negative and is used for processing
 } Point_on_edge_t;
 
 // used for getting the data
@@ -181,10 +181,9 @@ struct {
     bool strict;
     char *name;
     expectType eType;
-
 } Column_info_t;
 
-enum graphType { UNDIRECTED= 0, DIRECTED};
+enum graphType {UNDIRECTED = 0, DIRECTED};
 
 /**************************************************************************
  * pickDelivery types
@@ -226,3 +225,5 @@ typedef struct  {
 } General_vehicle_orders_t;
 
 /*************************************************************************/
+
+#endif  // SRC_COMMON_SRC_PGR_TYPES_H_

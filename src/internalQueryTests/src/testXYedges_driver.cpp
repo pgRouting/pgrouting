@@ -53,7 +53,7 @@ do_pgr_testXYedges(
         Pgr_edge_xy_t *data_edges,
         size_t total_edges,
         char ** log_msg,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     std::ostringstream err;
     try {
@@ -66,7 +66,7 @@ do_pgr_testXYedges(
 
         log << "Original: \n" <<
             std::setprecision(32);
-        for (const auto edge: edges) {
+        for (const auto edge : edges) {
             log << "id = " << edge.id
                 << "\tsource = " << edge.source
                 << "\ttarget = " << edge.target
@@ -89,7 +89,6 @@ do_pgr_testXYedges(
             log << "  - Can do a dijKstra:\n";
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
-
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
@@ -104,7 +103,6 @@ do_pgr_testXYedges(
             log << "  - Can do a dijKstra:\n";
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
-
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using vector\n";
@@ -119,7 +117,6 @@ do_pgr_testXYedges(
             log << "  - Can do a dijKstra:\n";
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
-
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using C array\n";
@@ -134,7 +131,6 @@ do_pgr_testXYedges(
             log << "  - Can do a dijKstra:\n";
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
-
         }
 
         {
@@ -150,7 +146,6 @@ do_pgr_testXYedges(
             log << "  - Can do a dijKstra:\n";
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
-
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
@@ -165,7 +160,6 @@ do_pgr_testXYedges(
             log << "  - Can do a dijKstra:\n";
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
-
         }
         {
             log << "Testing Undirected ,  insertion using C array\n";
@@ -180,7 +174,6 @@ do_pgr_testXYedges(
             log << "  - Can do a dijKstra:\n";
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
-
         }
         {
             log << "Testing Undirected ,  creating with vertices, insertion using vector\n";
@@ -195,15 +188,11 @@ do_pgr_testXYedges(
             log << "  - Can do a dijKstra:\n";
             Path path;
             pgr_dijkstra(graph, path, 2, 3, true);
-
         }
-
-
 
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());
         return true;
-
     } catch (AssertFailedException &exept) {
         log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());

@@ -95,7 +95,6 @@ do_pgr_floydWarshall(
 
         *log_msg = strdup(log.str().c_str());
         return;
-
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;

@@ -24,13 +24,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #define _ALPHA_H
 
-#ifdef __MINGW64__
-#define ELOG_H
-#endif
 #include "../../common/src/pgr_types.h"
+#include "stddef.h"
 
-typedef struct vertex
-{
+typedef struct vertex {
   double x;
   double y;
 } vertex_t;
