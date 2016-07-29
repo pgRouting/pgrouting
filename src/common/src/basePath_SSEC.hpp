@@ -73,23 +73,23 @@ class Path {
 
 
     void erase(pthIt pos) {path.erase(pos);}
-    const Path_t& back() const {return path.back();};
-    Path_t& back() {return path.back();};
-    const Path_t& front() const {return path.front();};
-    Path_t& front() {return path.front();};
+    const Path_t& back() const {return path.back();}
+    Path_t& back() {return path.back();}
+    const Path_t& front() const {return path.front();}
+    Path_t& front() {return path.front();}
 
 
     Path_t set_data(
-            int64_t d_from, 
+            int64_t d_from,
             int64_t d_to,
             int64_t d_vertex,
-            int64_t d_edge, 
+            int64_t d_edge,
             double d_cost,
             double d_tot_cost);
 
     void push_front(
             int64_t d_vertex,
-            int64_t d_edge, 
+            int64_t d_edge,
             double d_cost,
             double d_tot_cost);
     void clear();
@@ -133,32 +133,31 @@ class Path {
 
     /*
      * sort the paths by size from greater to smaller
-     *        and sort each path by node 
+     *        and sort each path by node
      * all the nodes on p2 are going to be compared
      * with the nodes of p1
      *
      * When both paths reach the node and p1.agg_cost > p2.agg_cost
-     *    erase the node of p1 
+     *    erase the node of p1
      *    (cant erase from p2 because we loose the iterators
      *     so in a future cycle it will be deleted)
      *
-     * sort the paths by start_id, 
+     * sort the paths by start_id,
      */
 
     friend void equi_cost(std::deque< Path > &paths) {
-
         /* sort paths by size: largest first */
-        std::sort(paths.begin(), paths.end(), 
-                [](const Path &e1, const Path &e2)->bool { 
-                return e2.size() < e1.size(); 
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                return e2.size() < e1.size();
                 });
 
         /* sort each path by node: smaller id first */
         for (auto &p : paths) {
-            if (p.size() < 2) continue; 
-            std::sort(p.begin(), p.end(), 
-                    [](const Path_t &e1, const Path_t &e2)->bool { 
-                    return e1.node < e2.node; 
+            if (p.size() < 2) continue;
+            std::sort(p.begin(), p.end(),
+                    [](const Path_t &e1, const Path_t &e2)->bool {
+                    return e1.node < e2.node;
                     });
         }
 
@@ -168,10 +167,10 @@ class Path {
                 for (const auto &stop : p2.path) {
                     /* find the node of p2 in p1 */
                     auto pos = lower_bound(p1.begin(), p1.end(), stop,
-                            [](const Path_t &l, const Path_t &r )->bool { 
-                            return l.node < r.node; 
+                            [](const Path_t &l, const Path_t &r)->bool {
+                            return l.node < r.node;
                             });
-                            
+
                     if (pos != p1.end() && stop.node == pos->node && stop.agg_cost < pos->agg_cost) {
                         /* both share the same node &
                          * the second path has the smallest
@@ -183,22 +182,22 @@ class Path {
         }
 
         /* sort paths by start_id */
-        std::sort(paths.begin(), paths.end(), 
-                [](const Path &e1, const Path &e2)->bool { 
-                return e1.start_id() < e2.start_id(); 
+        std::sort(paths.begin(), paths.end(),
+                [](const Path &e1, const Path &e2)->bool {
+                return e1.start_id() < e2.start_id();
                 });
 
         /* sort each path by agg_cost, node */
         for (auto &path : paths) {
             /* least influential data first */
             std::sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)   
+                    [](const Path_t &l, const  Path_t &r)
                     { return l.node < r.node;});
             /* preserve the order of what we did before */
             std::stable_sort(path.begin(), path.end(),
-                    [](const Path_t &l, const  Path_t &r)   
+                    [](const Path_t &l, const  Path_t &r)
                     { return l.agg_cost < r.agg_cost;});
-        }                               
+        }
     }
 
     friend size_t count_tuples(const std::deque< Path > &paths) {

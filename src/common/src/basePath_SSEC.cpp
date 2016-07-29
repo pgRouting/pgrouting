@@ -57,7 +57,7 @@ void Path::reverse() {
                 (i == 0? 0 : path[i - 1].cost),
                 0
                 });
-    }  
+    }
     for (size_t i = 0; i < newpath.size(); ++i) {
         newpath[i].agg_cost = (i == 0)? 0 : newpath[i - 1].agg_cost +  newpath[i - 1].cost;
     }
@@ -119,10 +119,10 @@ void Path::appendPath(const Path &o_path) {
 
 void Path::generate_postgres_data(
         General_path_element_t **postgres_data,
-        size_t &sequence) const{
+        size_t &sequence) const {
     int i = 1;
     for (const auto e : path) {
-        (*postgres_data)[sequence] = 
+        (*postgres_data)[sequence] =
         {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
         ++i;
         ++sequence;
@@ -133,7 +133,6 @@ void Path::generate_postgres_data(
 void Path::get_pg_dd_path(
         General_path_element_t **ret_path,
         size_t &sequence) const {
-
     for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i;
         (*ret_path)[sequence].start_id = start_id();
@@ -150,7 +149,6 @@ void Path::get_pg_dd_path(
 void Path::get_pg_ksp_path(
         General_path_element_t **ret_path,
         size_t &sequence, int routeId) const {
-
     for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i + 1;
         (*ret_path)[sequence].start_id = routeId;
