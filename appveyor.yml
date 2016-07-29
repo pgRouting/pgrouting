@@ -15,6 +15,7 @@ branches:
     - test/merge-gsoc-flow
     - gsoc-ch
     - gsoc-flow
+    - Illedran-gsoc-flow
 
 image: Visual Studio 2013
 configuration: Release
