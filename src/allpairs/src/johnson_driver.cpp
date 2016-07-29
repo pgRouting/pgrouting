@@ -57,47 +57,47 @@ do_pgr_johnson(
         Matrix_cell_t **return_tuples,
         size_t *return_count,
         char **err_msg) {
-  std::ostringstream log;
-  try {
-    if (total_tuples == 1) {
-      log << "Required: more than one tuple\n";
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      *err_msg = strdup(log.str().c_str());
-      return;
+    std::ostringstream log;
+    try {
+        if (total_tuples == 1) {
+            log << "Required: more than one tuple\n";
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            *err_msg = strdup(log.str().c_str());
+            return;
+        }
+
+        graphType gType = directed? DIRECTED: UNDIRECTED;
+
+        std::deque< Path >paths;
+
+        if (directed) {
+            log << "Working with directed Graph\n";
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.graph_insert_data(data_edges, total_tuples);
+            pgr_johnson(digraph, *return_count, return_tuples);
+        } else {
+            log << "Working with Undirected Graph\n";
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.graph_insert_data(data_edges, total_tuples);
+            pgr_johnson(undigraph, *return_count, return_tuples);
+        }
+
+        if (*return_count == 0) {
+            log <<  "NOTICE: No Vertices found??? wiered error\n";
+            *err_msg = strdup(log.str().c_str());
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            return;
+        }
+
+#ifndef DEBUG
+        *err_msg = strdup("OK");
+#else
+        *err_msg = strdup(log.str().c_str());
+#endif
+    } catch ( ... ) {
+        log << "Caught unknown expection!\n";
+        *err_msg = strdup(log.str().c_str());
     }
-
-    graphType gType = directed? DIRECTED: UNDIRECTED;
-
-    std::deque< Path >paths;
-
-    if (directed) {
-      log << "Working with directed Graph\n";
-      pgrouting::DirectedGraph digraph(gType);
-      digraph.graph_insert_data(data_edges, total_tuples);
-      pgr_johnson(digraph, *return_count, return_tuples);
-    } else {
-      log << "Working with Undirected Graph\n";
-      pgrouting::UndirectedGraph undigraph(gType);
-      undigraph.graph_insert_data(data_edges, total_tuples);
-      pgr_johnson(undigraph, *return_count, return_tuples);
-    }
-
-    if (*return_count == 0) {
-      log <<  "NOTICE: No Vertices found??? wiered error\n";
-      *err_msg = strdup(log.str().c_str());
-      (*return_tuples) = NULL;
-      (*return_count) = 0;
-      return;
-    }
-
-    #ifndef DEBUG
-      *err_msg = strdup("OK");
-    #else
-      *err_msg = strdup(log.str().c_str());
-    #endif
-  } catch ( ... ) {
-    log << "Caught unknown expection!\n";
-    *err_msg = strdup(log.str().c_str());
-  }
 }

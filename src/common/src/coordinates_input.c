@@ -138,5 +138,4 @@ void pgr_get_coordinates(
 
     (*total_coordinates) = total_tuples;
     time_msg(" reading coordinates:", start_t, clock());
-
 }

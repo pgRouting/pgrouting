@@ -12,6 +12,7 @@
 
 #ifndef  SRC_COMMON_SRC_PGR_ASSERT_H_
 #define  SRC_COMMON_SRC_PGR_ASSERT_H_
+
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
@@ -85,7 +86,7 @@
 #define pgassert(expr) \
     ((expr) \
      ? static_cast<void>(0) \
-     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )  
+     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )
 #endif
 
 /*! @def pgassertwm(expr, msg)
@@ -99,14 +100,14 @@
     pgassert(2+2 == 5, log.str());
  @endcode
 */
-    
+
 #ifdef NDEBUG
 #define pgassertwm(expr, msg) ((void)0)
 #else
 #define pgassertwm(expr, msg) \
     ((expr) \
      ? static_cast<void>(0) \
-     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace(msg) ) )  
+     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace(msg) ) )
 #endif
 
 /*! @brief returns the execution path of the trace
@@ -124,13 +125,13 @@ std::string get_backtrace(const std::string &);
  * @brief Extends std::exception and is the exception that we throw if an assert fails.
  */
 class AssertFailedException : public std::exception {
-    private:
-        const std::string str;   ///< Holds what() we got as message
+ private:
+     const std::string str;   ///< Holds what() we got as message
 
-    public:
-        virtual const char *what() const throw();
-        explicit AssertFailedException(std::string msg);
-        virtual ~AssertFailedException() throw() {};
+ public:
+     virtual const char *what() const throw();
+     explicit AssertFailedException(std::string msg);
+     virtual ~AssertFailedException() throw() {}
 };
 
 #endif  //  SRC_COMMON_SRC_PGR_ASSERT_H_

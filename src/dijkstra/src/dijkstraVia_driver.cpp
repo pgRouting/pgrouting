@@ -38,11 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./dijkstraVia_driver.h"
 #include "./../../common/src/pgr_alloc.hpp"
 
-// #define DEBUG
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 
 template <class G>
@@ -54,7 +51,6 @@ pgr_dijkstraViaVertex(
         bool strict,
         bool U_turn_on_edge,
         std::ostringstream &log) {
-
     if (via_vertices.size() == 0) {
         return;
     }
@@ -62,7 +58,7 @@ pgr_dijkstraViaVertex(
     paths.clear();
     int64_t prev_vertex = via_vertices[0];
     Path path;
-    
+
     int64_t i = 0;
     for (const auto &vertex : via_vertices) {
         if (i == 0) {
@@ -72,7 +68,6 @@ pgr_dijkstraViaVertex(
 
         // Delete uTurn edges only valid for paths that are not the first path
         if (!U_turn_on_edge && i > 1) {
-
             // we can only delete if there is was a path, that is at least one edge size
             if (path.size() > 1) {
                 // Delete from the graph the last edge if its outgoing also
@@ -96,7 +91,7 @@ pgr_dijkstraViaVertex(
 
         if (!U_turn_on_edge && i > 1) {
             graph.restore_graph();
-            if (path.empty()) { 
+            if (path.empty()) {
                 /*
                  *  no path was found with the deleted edge
                  *  try with the edge back in the graph
@@ -129,7 +124,6 @@ get_path(
         double &route_cost,
         size_t &sequence) {
     int i = 0;
-    //for (size_t i = 0; i < path.size(); i++) {
     for (const auto e : path) {
         (*postgres_data)[sequence] = {
             route_id,
@@ -154,9 +148,9 @@ size_t
 get_route(
         Routes_t **ret_path,
         const std::deque< Path > &paths) {
-    size_t sequence = 0;    //arrys index
-    int path_id = 1;    // id's in posgresql start with 1
-    int route_id = 1;   
+    size_t sequence = 0;
+    int path_id = 1;
+    int route_id = 1;
     double route_cost = 0;  // routes_agg_cost
     for (const Path &path : paths) {
         if (path.size() > 0)
@@ -175,10 +169,9 @@ do_pgr_dijkstraViaVertex(
         bool strict,
         bool U_turn_on_edge,
         Routes_t **return_tuples,   size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
-
         if (total_tuples == 1) {
             log << "Required: more than one tuple\n";
             (*return_tuples) = NULL;
@@ -210,8 +203,8 @@ do_pgr_dijkstraViaVertex(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log << 
-                "No paths found between Starting and any of the Ending vertices\n";
+            log <<
+                "No paths found\n";
             *err_msg = strdup(log.str().c_str());
             return;
         }
