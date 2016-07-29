@@ -38,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./one_to_one_dijkstra_driver.h"
 
-//#define DEBUG
 
 #include "../../common/src/pgr_alloc.hpp"
 extern "C" {

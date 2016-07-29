@@ -34,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "./pickDeliver_driver.h"
+#include <string.h>
 #include <sstream>
 #include <string>
 #include <deque>
 #include <vector>
-#include <string.h>
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_alloc.hpp"

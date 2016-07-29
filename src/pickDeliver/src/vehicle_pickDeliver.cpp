@@ -179,7 +179,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
             err_log << "\ndelivery erased: " << tau();
 #endif
             ++deliver_pos.first;
-        };
+        }
         Vehicle::erase(pick_pos.first);
 #ifndef NDEBUG
         err_log << "\npickup erased: " << tau();

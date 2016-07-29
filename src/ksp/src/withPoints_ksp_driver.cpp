@@ -31,9 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
-//#ifdef unlink
-//#undef unlink
-//#endif
 #endif
 
 #include <sstream>
@@ -67,7 +64,7 @@ do_pgr_withPointsKsp(
         bool details,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         /*
