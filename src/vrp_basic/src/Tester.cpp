@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include <string>
+#include <vector>
 #include "VRP_Solver.h"
 #include "Utils.h"
 
@@ -29,18 +31,15 @@ char buff[1005];
 CVRPSolver solver;
 
 // Load orders from the order file. The first order represents the depot.
-// TODO: file names are hard coded, it should be changed to commandline argument.
-void loadOrders()
-{
+// TODO(someone) : file names are hard coded, it should be changed to commandline argument.
+void loadOrders() {
     FILE *fp = fopen("Orders.txt", "rt");
-    if (fp == NULL)
-    {
+    if (fp == NULL) {
         fprintf(stderr, "Order file not found!\n");
     }
     bool bGotDepot = false;
     // OrderId XCord YCord Demand StartTime EndTime ServiceTime
-    while (fgets(buff, 1000, fp))
-    {
+    while (fgets(buff, 1000, fp)) {
         if (strlen(buff) == 0)
             break;
         StringTokenizer tokenizer;
@@ -54,8 +53,7 @@ void loadOrders()
         if (!isdigit(vecToken[0][0]))
             continue;
 
-        if (!bGotDepot)
-        {
+        if (!bGotDepot) {
             // This order represents Deopot
             CDepotInfo depot;
             int id = atoi(vecToken[0].c_str());
@@ -76,9 +74,7 @@ void loadOrders()
 
             solver.addDepot(depot);
             bGotDepot = true;
-        }
-        else
-        {
+        } else {
             // This is an order
             COrderInfo order;
             int id = atoi(vecToken[0].c_str());
@@ -110,20 +106,17 @@ void loadOrders()
 }
 
 // Load vehicles from vehicle file.
-// TODO: file names are hard coded, it should be changed to commandline argument.
+// TODO(someone) : file names are hard coded, it should be changed to commandline argument.
 
-void loadVehicles()
-{
+void loadVehicles() {
     FILE *fp = fopen("Vehicles.txt", "rt");
 
-    if (fp == NULL)
-    {
+    if (fp == NULL) {
         fprintf(stderr, "Vehicle file not found!\n");
     }
     // VehicleId Capacity
     // In terms of cost all the vehicle will have default cost of 1 for the first version
-    while (fgets(buff, 1000, fp))
-    {
+    while (fgets(buff, 1000, fp)) {
         if (strlen(buff) == 0)
             break;
         StringTokenizer tokenizer;
@@ -153,19 +146,16 @@ void loadVehicles()
 }
 
 // Load the cost matrix
-// TODO: file names are hard coded, it should be changed to commandline argument.
-void loadDistanceMatrix()
-{
+// TODO(someone) : file names are hard coded, it should be changed to commandline argument.
+void loadDistanceMatrix() {
     FILE *fp = fopen("Distance.txt", "rt");
-    if (fp == NULL)
-    {
+    if (fp == NULL) {
         fprintf(stderr, "Cost file not found!\n");
         return;
     }
 
     // From To Cost
-    while (fgets(buff, 1000, fp))
-    {
+    while (fgets(buff, 1000, fp)) {
         if (strlen(buff) == 0)
             break;
         StringTokenizer tokenizer;
@@ -196,13 +186,11 @@ void loadDistanceMatrix()
 }
 
 // Print the solution to a file.
-// TODO: Currently prints on a fixed file. Later the file name will be taken as a command line argument
+// TODO(someone) : Currently prints on a fixed file. Later the file name will be taken as a command line argument
 
-bool print_solution(std::string strError)
-{
+bool print_solution(std::string strError) {
     FILE *fp = fopen("result.txt", "wt");
-    if (fp == NULL)
-    {
+    if (fp == NULL) {
         strError = "Could not open file";
         return false;
     }
@@ -219,8 +207,7 @@ bool print_solution(std::string strError)
     fprintf(fp, "Total Distance: %.3lf\n", solution.getTotalDistance());
     fprintf(fp, "Total TravelTime: %.3lf\n", solution.getTotalTravelTime());
 
-    for (int i = 0; i < totalRoute; i++)
-    {
+    for (int i = 0; i < totalRoute; i++) {
         ctour = solution.getTour(i);
         fprintf(fp, "Route No. %d: \n", i + 1);
         fprintf(fp, "Vehicle Id: %d\n", ctour.getVehicleId());
@@ -230,8 +217,7 @@ bool print_solution(std::string strError)
         std::vector<int> vecOrder = ctour.getOrderVector();
         int totalOrder = vecOrder.size();
         fprintf(fp, "Visited Order Ids: ");
-        for (int j = 0; j < totalOrder; j++)
-        {
+        for (int j = 0; j < totalOrder; j++) {
             if (j > 0)
                 fprintf(fp, " ");
             fprintf(fp, "%d", vecOrder[j]);
@@ -245,8 +231,7 @@ bool print_solution(std::string strError)
     return true;
 }
 
-int main()
-{
+int main() {
     loadOrders();
     loadVehicles();
     loadDistanceMatrix();
@@ -254,12 +239,9 @@ int main()
     std::string strError;
     bool bIsOK = solver.solveVRP(strError);
 
-    if (!bIsOK)
-    {
+    if (!bIsOK) {
         fprintf(stderr, "Error Occurred: %s\n", strError.c_str());
-    }
-    else
-    {
+    } else {
         print_solution(strError);
     }
 

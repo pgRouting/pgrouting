@@ -95,7 +95,7 @@ int  do_pgr_ksp(
             *err_msg = NULL;
             return 2;
         }
-
+        *path_count = count;
 
 #if 1
         *err_msg = strdup("OK");

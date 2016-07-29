@@ -293,22 +293,21 @@ CSolutionInfo CVRPSolver::generateInitialSolution() {
         curTour.setStartDepot(m_vDepotInfos[0].getDepotId());
         curTour.setEndDepot(m_vDepotInfos[0].getDepotId());
 
-        //use a random seed to start to tour. (we can use better approach in future)
+        // use a random seed to start to tour. (we can use better approach in future)
 
         bool insertAvailable = true;
 
-        while ( insertAvailable ) {
+        while (insertAvailable) {
             insertAvailable = false;
             std::pair<int, int> PotentialInsert;  //  first = insert_index, second = removed_order_index;
-            std::pair<int, double> bestInsert = std::make_pair(-1, DOUBLE_MAX);//first = order_insert_index, second = cost;
+            std::pair<int, double> bestInsert = std::make_pair(-1, DOUBLE_MAX);  // first = order_insert_index, second = cost;
 
-            for (int i = 0;i<iUnservedOrders;++i) {
+            for (int i = 0; i < iUnservedOrders; ++i) {
                 int orderInd = m_mapOrderIdToIndex[initialSolution.getUnservedOrderAt(i)];
                 COrderInfo curOrder = m_vOrderInfos[orderInd];
                 std::pair<int, double> curInsert = getPotentialInsert(curTour, curOrder);
 
-                if ( curInsert.second < bestInsert.second )
-                {
+                if (curInsert.second < bestInsert.second) {
                     insertAvailable = true;
                     bestInsert = curInsert;
                     PotentialInsert = std::make_pair(curInsert.first, i);
@@ -330,13 +329,12 @@ CSolutionInfo CVRPSolver::generateInitialSolution() {
 
 bool CVRPSolver::updateFinalSolution(CSolutionInfo& curSolution) {
     bool callUpdate = false;
-    if ( curSolution.getOrderServed() > m_solutionFinal.getOrderServed() ) {
+    if (curSolution.getOrderServed() > m_solutionFinal.getOrderServed()) {
         callUpdate = true;
     } else if (curSolution.getOrderServed() == m_solutionFinal.getOrderServed()) {
         if (curSolution.getTotalCost() < m_solutionFinal.getTotalCost()) {
             callUpdate = true;
-        }
-        else if (curSolution.getTotalCost() == m_solutionFinal.getTotalCost()) {
+        } else if (curSolution.getTotalCost() == m_solutionFinal.getTotalCost()) {
             if (curSolution.getTotalTravelTime() < m_solutionFinal.getTotalTravelTime()) {
                 callUpdate = true;
             } else if (curSolution.getTotalTravelTime() == m_solutionFinal.getTotalTravelTime()) {
@@ -367,26 +365,28 @@ std::pair<int, double> CVRPSolver::getPotentialInsert(CTourInfo& curTour, COrder
     if (curOrder.getOrderUnit() > curTour.getRemainingCapacity()) {
         return bestInsert;
     }
-    //check if ith position insert is fisible.
+    // check if ith position insert is fisible.
     std::vector<int> vecOrderId = curTour.getOrderVector();
-    for (unsigned int i = 0; i <= vecOrderId.size();++i) {
+    for (unsigned int i = 0; i <= vecOrderId.size(); ++i) {
         CostPack costToOrder, costFromOrder;
 
         if (!i) {
-            costToOrder = getDepotToOrderCost( curTour.getStartDepot(), curOrder.getOrderId());
-        } else
-            costToOrder = getOrderToOrderCost( vecOrderId[i-1], curOrder.getOrderId());
+            costToOrder = getDepotToOrderCost(curTour.getStartDepot(), curOrder.getOrderId());
+        } else {
+            costToOrder = getOrderToOrderCost(vecOrderId[i-1], curOrder.getOrderId());
+        }
 
         double dArrivalTime = costToOrder.traveltime + curTour.getStartTime(i);
 
-        if ( dArrivalTime > curOrder.getCloseTime()) {
+        if (dArrivalTime > curOrder.getCloseTime()) {
             continue;
         }
 
         if (i == vecOrderId.size()) {
-            costFromOrder = getOrderToDepotCost( curOrder.getOrderId(), curTour.getEndDepot() );
+            costFromOrder = getOrderToDepotCost(curOrder.getOrderId(), curTour.getEndDepot());
+        } else {
+            costFromOrder = getOrderToOrderCost(curOrder.getOrderId(), vecOrderId[i]);
         }
-        else costFromOrder = getOrderToOrderCost( curOrder.getOrderId(), vecOrderId[i] );
 
         dArrivalTime += curOrder.getServiceTime() + costFromOrder.traveltime;
 
@@ -396,8 +396,7 @@ std::pair<int, double> CVRPSolver::getPotentialInsert(CTourInfo& curTour, COrder
 
         CostPack totalCost = getCostForInsert(curTour, curOrder, i);
 
-
-        if ( totalCost.cost < bestInsert.second ) {
+        if (totalCost.cost < bestInsert.second) {
             bestInsert = std::make_pair(i, totalCost.cost);
         }
     }
@@ -412,7 +411,7 @@ bool CVRPSolver::tabuSearch(CSolutionInfo& curSolution) {
     m_iGeneratedSolutionCount = 0;
     m_iStepsSinceLastSolution = 0;
 
-    while ( numberOfSearch < TOTAL_NUMBER_OF_SEARCH ) {
+    while (numberOfSearch < TOTAL_NUMBER_OF_SEARCH) {
         // applyBestMoveInCurrentSolution(curSolution, identifyPotentialMove(curSolution) );
         insertUnservedOrders(curSolution);
         // attemptFeasibleNodeExchange(curSolution);
@@ -429,7 +428,7 @@ void CVRPSolver::applyBestMoveInCurrentSolution(CSolutionInfo& curSolution, CMov
     updateTabuCount(bestMove);
 
     int totalTour = static_cast<int>(bestMove.getModifiedTourCount());
-    for (int i = 0;i<totalTour;++i) {
+    for (int i = 0; i < totalTour; ++i) {
         CTourInfo tourInfo;
         bool bIsValid = bestMove.getModifiedTourAt(i, tourInfo);
 
@@ -437,7 +436,6 @@ void CVRPSolver::applyBestMoveInCurrentSolution(CSolutionInfo& curSolution, CMov
             curSolution.replaceTour(tourInfo);
     }
     updateFinalSolution(curSolution);
-
 }
 
 void CVRPSolver::insertUnservedOrders(CSolutionInfo& curSolution) {
@@ -762,11 +760,11 @@ void CVRPSolver::attempVehicleExchange(CSolutionInfo& solutionInfo) {
 
             int SecondTourRemainingCapacity = secondTour.getVehicleInfo().getCapacity() - firstTourLoad;
 
-            // int prevFreeCapacity = max( secondTour.getRemainingCapacity(), firstTour.getRemainingCapacity() );
+            // int prevFreeCapacity = max(secondTour.getRemainingCapacity(), firstTour.getRemainingCapacity() );
 
             int curFreeCapacity = (std::max)(FirstTourRemainingCapacity, SecondTourRemainingCapacity);
 
-            if ( (FirstTourRemainingCapacity > 0) &&  (SecondTourRemainingCapacity > 0) &&
+            if ((FirstTourRemainingCapacity > 0) &&  (SecondTourRemainingCapacity > 0) &&
                     // curFreeCapacity > curFreeCapacity autological compare evaluates to false (error on MAC)
                     (curFreeCapacity > bestFreeCapacity)) {
                 CVehicleInfo tempVehicle = m_vVehicleInfos[firstTour.getVehicleId()];
@@ -830,7 +828,7 @@ void CVRPSolver::attemptFeasibleNodeExchange(CSolutionInfo& solutionInfo) {
                     }
 
                     double curTourCost = pCurTour->getTourData()->calcCost(pCurTour->getAssignedVehicle());
-                    if ( curTourCost < lowestCost ) {
+                    if (curTourCost < lowestCost) {
                         *pBestMove = *pCurMove;
                         lowestCost = curTourCost;
                         bestSwapIndex = std::make_pair(j, k);
@@ -861,20 +859,22 @@ void CVRPSolver::updateTabuCount(CMoveInfo& bestMove) {
 
     if (mpIt == m_mapMoveFrequency.end()) {
         curMove = bestMove;
-    } else
+    } else {
         curMove = (*mpIt).first;
+    }
 
     m_mapMoveFrequency[curMove]++;
 
-    if ( m_mapMoveFrequency[curMove] >= MAXIMUM_MOVE_FREQUENCY ) {
+    if (m_mapMoveFrequency[curMove] >= MAXIMUM_MOVE_FREQUENCY) {
         CMoveInfo tmpMove;
         std::set<CMoveInfo>::iterator sIt = m_sTabuList.find(curMove);
 
         CMoveInfo tmpMove2;
         if (sIt == m_sTabuList.end()) {
             tmpMove2 = curMove;
-        } else
+        } else {
             tmpMove2 = (*sIt);
+        }
         m_sTabuList.insert(tmpMove2);
     }
     m_mapTabuCount[curMove] = std::make_pair(m_iGeneratedSolutionCount, m_iStepsSinceLastSolution);
