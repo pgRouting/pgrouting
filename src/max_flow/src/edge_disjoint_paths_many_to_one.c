@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <pgr_types.h>
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -38,8 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 /*
-  Uncomment when needed
-*/
+ * Uncomment when needed
+ */
+
 // #define DEBUG
 
 #include "fmgr.h"
@@ -48,8 +49,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "edge_disjoint_paths_many_to_one_driver.h"
 #include "./../../common/src/arrays_input.h"
+#include "edge_disjoint_paths_many_to_one_driver.h"
 
 PGDLLEXPORT Datum
 edge_disjoint_paths_many_to_one(PG_FUNCTION_ARGS);
@@ -133,12 +134,12 @@ edge_disjoint_paths_many_to_one(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
 
-        int64_t* source_vertices;
+        int64_t *source_vertices;
         size_t size_source_verticesArr;
-        source_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_source_verticesArr, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("source_verticesArr size %d ", size_source_verticesArr);
-
+        source_vertices = (int64_t *)
+            pgr_get_bigIntArray(&size_source_verticesArr,
+                                PG_GETARG_ARRAYTYPE_P(1));
+        PGR_DBG("source_verticesArr size %ld ", size_source_verticesArr);
 
         PGR_DBG("Calling process");
         process(
@@ -184,15 +185,14 @@ edge_disjoint_paths_many_to_one(PG_FUNCTION_ARGS) {
         values = palloc(5 * sizeof(Datum));
         nulls = palloc(5 * sizeof(bool));
 
-
         size_t i;
         for (i = 0; i < 5; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].node);
         values[4] = Int64GetDatum(result_tuples[call_cntr].edge);

@@ -27,19 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <pgr_types.h>
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
-#include "utils/array.h"
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
 
 /*
-  Uncomment when needed
-*/
+ * Uncomment when needed
+ */
+
 // #define DEBUG
 
 #include "fmgr.h"
@@ -182,15 +181,14 @@ edge_disjoint_paths_one_to_one(PG_FUNCTION_ARGS) {
         values = palloc(4 * sizeof(Datum));
         nulls = palloc(4 * sizeof(bool));
 
-
         size_t i;
         for (i = 0; i < 4; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].seq);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[call_cntr].node);
         values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
         /**********************************************************************/

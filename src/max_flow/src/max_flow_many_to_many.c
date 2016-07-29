@@ -27,7 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <pgr_types.h>
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -38,8 +37,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 /*
-  Uncomment when needed
-*/
+ * Uncomment when needed
+ */
+
 // #define DEBUG
 
 #include "fmgr.h"
@@ -62,15 +62,16 @@ process(
     char *edges_sql,
     int64_t *source_vertices, size_t size_source_verticesArr,
     int64_t *sink_vertices, size_t size_sink_verticesArr,
-    char* algorithm,
+    char *algorithm,
     pgr_flow_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
-    if(!(strcmp(algorithm, "push_relabel") == 0 || strcmp(algorithm, "edmonds_karp") == 0 || strcmp(algorithm, "boykov_kolmogorov") == 0)){
+    if (!(strcmp(algorithm, "push_relabel") == 0
+        || strcmp(algorithm, "edmonds_karp") == 0
+        || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
         elog(ERROR, "Unknown algorithm");
     }
-
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
@@ -140,17 +141,19 @@ max_flow_many_to_many(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         PGR_DBG("Initializing arrays");
-        int64_t* source_vertices;
+        int64_t *source_vertices;
         size_t size_source_verticesArr;
-        source_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_source_verticesArr, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("source_verticesArr size %d ", size_source_verticesArr);
+        source_vertices = (int64_t *)
+            pgr_get_bigIntArray(&size_source_verticesArr,
+                                PG_GETARG_ARRAYTYPE_P(1));
+        PGR_DBG("source_verticesArr size %ld ", size_source_verticesArr);
 
-        int64_t* sink_vertices;
+        int64_t *sink_vertices;
         size_t size_sink_verticesArr;
-        sink_vertices = (int64_t*)
-            pgr_get_bigIntArray(&size_sink_verticesArr, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("sink_verticesArr size %d ", size_sink_verticesArr);
+        sink_vertices = (int64_t *)
+            pgr_get_bigIntArray(&size_sink_verticesArr,
+                                PG_GETARG_ARRAYTYPE_P(2));
+        PGR_DBG("sink_verticesArr size %ld ", size_sink_verticesArr);
 
         PGR_DBG("Calling process");
         process(
@@ -195,14 +198,13 @@ max_flow_many_to_many(PG_FUNCTION_ARGS) {
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(bool));
 
-
         size_t i;
         for (i = 0; i < 6; ++i) {
             nulls[i] = false;
         }
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(call_cntr + 1);
+        values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[2] = Int64GetDatum(result_tuples[call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[call_cntr].target);
