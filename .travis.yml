@@ -27,7 +27,10 @@ branches:
   only:
     - master
     - develop
+    - test/appveyor
+    - test/merge-gsoc-flow
     - gsoc-flow
+    - gsoc-ch
 
 env:
   - POSTGRESQL_VERSION=9.1

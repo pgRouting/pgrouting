@@ -10,4 +10,3 @@ for file in files:
     if 'test.sql' in file:
         print "Processing %s" % file
         p = subprocess.Popen(command.format(TEST_DIR, file, file.replace('.test.sql', '.result')), shell=True)
-        p.wait()

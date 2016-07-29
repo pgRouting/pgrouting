@@ -96,11 +96,12 @@ set(PgRouting_SOURCE_NAMES
     #  - Not officialy on the release
     #  - number indicates version when was propsosed with code
     #----------------------
+    "max_flow"    # 2.3
     "contraction" # 2.3
     "pickDeliver" # 2.3
     "vrp_basic"   # 2.0 
     "withPoints"  # 2.2
-    "max_flow"    # 2.3
+
     # template generated name
     #"funnyDijkstra"
 
@@ -185,14 +186,15 @@ file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 set(PGROUTING_GIT_TAG "pgrouting-2.3.0-dev")
 
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-g([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
 
 set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
 set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_GIT_HASH}")
 
 message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
+message(STATUS "PGROUTING_BUILD_STRING: ${PGROUTING_BUILD_STRING}")
 message(STATUS "PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
 message(STATUS "PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
 message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")

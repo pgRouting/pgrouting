@@ -133,7 +133,7 @@ class PgrCardinalityGraph {
                */
               boost::tie(e, exists) =
                   boost::edge(*vi, mate_map[*vi], boost_graph);
-              if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
+              if (((uint64_t)mate_map[*vi] != boost::graph_traits<G>::null_vertex())
                   && exists && !already_matched[*vi]
                   && !already_matched[mate_map[*vi]]) {
                   already_matched[*vi] = true;
@@ -151,8 +151,8 @@ class PgrCardinalityGraph {
                ++vi) {
               boost::tie(e, exists) =
                   boost::edge(*vi, mate_map[*vi], boost_graph);
-              if ((mate_map[*vi] != boost::graph_traits<G>::null_vertex())
-                  && (*vi < mate_map[*vi])) {
+              if (((uint64_t)mate_map[*vi] != boost::graph_traits<G>::null_vertex())
+                  && (*vi < (uint64_t)mate_map[*vi])) {
                   pgr_basic_edge_t matched_couple;
                   matched_couple.source = get_vertex_id(*vi);
                   matched_couple.target = get_vertex_id(mate_map[*vi]);
