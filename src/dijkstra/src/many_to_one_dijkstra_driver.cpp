@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <set>
 #include "./pgr_dijkstra.hpp"
 #include "./many_to_one_dijkstra_driver.h"
 

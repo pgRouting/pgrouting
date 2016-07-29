@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #endif
 
-#include "./basic_edge.h"  
+#include "./basic_edge.h"
 
 
 namespace pgrouting {
@@ -40,4 +40,4 @@ namespace pgrouting {
         this->first = other.first;
     }
 
-} // namespace pgrouting
+}  // namespace pgrouting

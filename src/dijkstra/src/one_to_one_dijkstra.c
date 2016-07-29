@@ -36,10 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-/*
-  Uncomment when needed
-*/
-// #define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"

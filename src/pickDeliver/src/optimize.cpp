@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
+#include <algorithm>
+#include <limits>
 #include <set>
 #include "./solution.h"
 #include "./../../common/src/pgr_assert.h"
@@ -52,7 +54,7 @@ Optimize::Optimize(
             case 3:
                 move_wait_time_based();
                 break;
-            case 4:    
+            case 4:
                 inter_swap();
                 break;
         }
@@ -67,10 +69,10 @@ Optimize::inter_swap() {
     auto local_limit(fleet.size());
     size_t i(0);
     while (inter_swap(false) && (++i < local_limit)) {
-    };
+    }
     i = 0;
     while (inter_swap(true) && (++i < local_limit)) {
-    };
+    }
     sort_by_duration();
     delete_empty_truck();
     this->fleet = best_solution.fleet;
@@ -219,20 +221,19 @@ Optimize::delete_empty_truck() {
 
 void
 Optimize::move_duration_based() {
-
     auto local_limit(fleet.size());
     size_t i(0);
 
     sort_by_duration();
     problem->log << tau("\nmove duration based");
-    while (move_reduce_cost() && (++i < local_limit)) { };
+    while (move_reduce_cost() && (++i < local_limit)) { }
     delete_empty_truck();
 
     i = 0;
     sort_by_duration();
     std::reverse(fleet.begin(), fleet.end());
     problem->log << tau("\nmove duration based");
-    while (move_reduce_cost() && (++i < local_limit)) { };
+    while (move_reduce_cost() && (++i < local_limit)) { }
     sort_by_duration();
     delete_empty_truck();
     this->fleet = best_solution.fleet;
@@ -248,14 +249,14 @@ Optimize::move_wait_time_based() {
 
     sort_for_move();
     problem->log << tau("\nmove wait_time based");
-    while (move_reduce_cost() && (++i < local_limit)) { };
+    while (move_reduce_cost() && (++i < local_limit)) { }
     delete_empty_truck();
 
     i = 0;
     sort_for_move();
     std::reverse(fleet.begin(), fleet.end());
     problem->log << tau("\nmove wait_time based");
-    while (move_reduce_cost() && (++i < local_limit)) { };
+    while (move_reduce_cost() && (++i < local_limit)) { }
     sort_by_duration();
     delete_empty_truck();
     this->fleet = best_solution.fleet;
@@ -421,7 +422,7 @@ Optimize::decrease_truck(size_t cycle, bool &decreased) {
     std::ostringstream err_log;
     err_log << " --- Cycle " << cycle << "\n";
 
-    /* the front truck move to back */ 
+    /* the front truck move to back */
     std::rotate(fleet.begin(), fleet.begin() + 1, fleet.end());
     err_log << "\n after rotate" << tau();
 
@@ -493,4 +494,4 @@ Optimize::save_if_best() {
 
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting

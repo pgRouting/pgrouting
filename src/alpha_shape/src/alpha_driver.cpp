@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: alpha_drivedist.cpp 
+File: alpha_drivedist.cpp
 
 Copyright (c) 2006 Anton A. Patrushev, Orkney, Inc.
 Mail: project@pgrouting.org
@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 /***********************************************************************
-Takes a list of points and returns a list of segments 
+Takes a list of points and returns a list of segments
 corresponding to the Alpha shape.
 ************************************************************************/
 #if defined(__MINGW32__) || defined(_MSC_VER)
@@ -45,17 +45,11 @@ namespace boost {
   void tss_cleanup_implemented() { }
 }
 #endif
+#include "./alpha_driver.h"
+
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Filtered_kernel.h>
 #include <CGAL/algorithm.h>
-
-#include <vector>
-#include <list>
-#include <cmath>
-
-//#ifndef _MSC_VER
-#include "alpha_driver.h"
-//#endif // _MSC_VER
 
 #include <CGAL/Polygon_2.h>
 #include <CGAL/Delaunay_triangulation_2.h>
@@ -67,6 +61,14 @@ namespace boost {
 #include <CGAL/Alpha_shape_2.h>
 #include <CGAL/Alpha_shape_face_base_2.h>
 #include <CGAL/Alpha_shape_vertex_base_2.h>
+
+#include <vector>
+#include <list>
+#include <cmath>
+#include <utility>
+#include <algorithm>
+#include <set>
+
 
 typedef double coord_type;
 
@@ -81,10 +83,10 @@ typedef CGAL::Alpha_shape_vertex_base_2<K> Avb;
 typedef CGAL::Triangulation_hierarchy_vertex_base_2<Avb> Av;
 
 typedef CGAL::Triangulation_face_base_2<K> Tf;
-typedef CGAL::Alpha_shape_face_base_2<K,Tf> Af;
+typedef CGAL::Alpha_shape_face_base_2<K, Tf> Af;
 
-typedef CGAL::Triangulation_default_data_structure_2<K,Av,Af> Tds;
-typedef CGAL::Delaunay_triangulation_2<K,Tds> Dt;
+typedef CGAL::Triangulation_default_data_structure_2<K, Av, Af> Tds;
+typedef CGAL::Delaunay_triangulation_2<K, Tds> Dt;
 typedef CGAL::Triangulation_hierarchy_2<Dt> Ht;
 typedef CGAL::Alpha_shape_2<Ht> Alpha_shape_2;
 
@@ -94,211 +96,184 @@ typedef Alpha_shape_2::Vertex_circulator  Vertex_circulator;
 typedef Alpha_shape_2::Alpha_iterator Alpha_iterator;
 typedef Alpha_shape_2::Alpha_shape_edges_iterator Alpha_shape_edges_iterator;
 
-//---------------------------------------------------------------------
+// ---------------------------------------------------------------------
 
-double get_angle(Point p, Point q, Point r)
-{
-  double m_pi(3.14159265358979323846);
-  Vector v1(q, p);
-  Vector v2(q, r);
-  double cross = v1.x() * v2.y() - v1.y() * v2.x();
-  double dot = v1.x() * v2.x() + v1.y() * v2.y();
-  double angle = atan2(cross, dot);
-  if (angle < 0.0) {
-    angle += 2 * m_pi;
-  }
-  return angle;
+double get_angle(Point p, Point q, Point r) {
+    double m_pi(3.14159265358979323846);
+    Vector v1(q, p);
+    Vector v2(q, r);
+    double cross = v1.x() * v2.y() - v1.y() * v2.x();
+    double dot = v1.x() * v2.x() + v1.y() * v2.y();
+    double angle = atan2(cross, dot);
+    if (angle < 0.0) {
+        angle += 2 * m_pi;
+    }
+    return angle;
 }
 
 size_t prev_size = 0;
-void find_next_edge(Segment s, std::vector<Segment>& segments, 
-                    std::set<int>& unusedIndexes, std::vector<Polygon_2>& rings)
-{
-  if(unusedIndexes.empty()
-    || prev_size == unusedIndexes.size())
-  {
-    return;
-  }
-  
-  prev_size = unusedIndexes.size();
-  
-  Point start = s.source();
-  Point end = s.target();
-  rings.back().push_back(end);
-  
-  std::vector<int> nextIndexes;
-  for(unsigned int i = 0;i < segments.size(); i++)
-  {
-    if (unusedIndexes.find(i) != unusedIndexes.end())
-    {
-      Point source = segments.at(i).source();
-      if(source == end)
-      {
-        nextIndexes.push_back(i);
-      }
+void find_next_edge(Segment s, std::vector<Segment>& segments,
+        std::set<int>& unusedIndexes, std::vector<Polygon_2>& rings) {
+    if (unusedIndexes.empty()
+            || prev_size == unusedIndexes.size()) {
+        return;
     }
-  }
-  if (nextIndexes.size() == 1)
-  {
-    int i = nextIndexes.at(0);
-    unusedIndexes.erase(i);
-    find_next_edge(segments.at(i), segments, unusedIndexes, rings);
-  }
-  else if (nextIndexes.size() > 1)
-  {
-    std::vector< std::pair<double, int> > nextAngles;
-    for (unsigned int i = 0; i < nextIndexes.size(); i++)
-    {
-      int j = nextIndexes.at(i);
-      Point target = segments.at(j).target();
-      double angle = get_angle(start, end, target);
-      nextAngles.push_back(std::pair<double, int>(angle, j));
+
+    prev_size = unusedIndexes.size();
+
+    Point start = s.source();
+    Point end = s.target();
+    rings.back().push_back(end);
+
+    std::vector<int> nextIndexes;
+    for (unsigned int i = 0; i < segments.size(); i++) {
+        if (unusedIndexes.find(i) != unusedIndexes.end()) {
+            Point source = segments.at(i).source();
+            if (source == end) {
+                nextIndexes.push_back(i);
+            }
+        }
     }
-    std::sort(nextAngles.begin(), nextAngles.end());
-    int i = nextAngles.begin()->second;
-    unusedIndexes.erase(i);
-    find_next_edge(segments.at(i), segments, unusedIndexes, rings);
-  }
-  
-  if (!unusedIndexes.empty())
-  {
-    for (unsigned int i = 0; i < segments.size(); i++)
-    {
-      if (unusedIndexes.find(i) != unusedIndexes.end())
-      {
-        Polygon_2 ring;
-        ring.push_back(segments.at(i).source());
-        rings.push_back(ring);
+    if (nextIndexes.size() == 1) {
+        int i = nextIndexes.at(0);
         unusedIndexes.erase(i);
         find_next_edge(segments.at(i), segments, unusedIndexes, rings);
-      }
+    } else if (nextIndexes.size() > 1) {
+        std::vector< std::pair<double, int> > nextAngles;
+        for (unsigned int i = 0; i < nextIndexes.size(); i++) {
+            int j = nextIndexes.at(i);
+            Point target = segments.at(j).target();
+            double angle = get_angle(start, end, target);
+            nextAngles.push_back(std::pair<double, int>(angle, j));
+        }
+        std::sort(nextAngles.begin(), nextAngles.end());
+        int i = nextAngles.begin()->second;
+        unusedIndexes.erase(i);
+        find_next_edge(segments.at(i), segments, unusedIndexes, rings);
     }
-  }
+
+    if (!unusedIndexes.empty()) {
+        for (unsigned int i = 0; i < segments.size(); i++) {
+            if (unusedIndexes.find(i) != unusedIndexes.end()) {
+                Polygon_2 ring;
+                ring.push_back(segments.at(i).source());
+                rings.push_back(ring);
+                unusedIndexes.erase(i);
+                find_next_edge(segments.at(i), segments, unusedIndexes, rings);
+            }
+        }
+    }
 }
 
 template <class OutputIterator>
 void
-alpha_edges( const Alpha_shape_2&  A,
-             OutputIterator out)
-{ 
-
-  for(Alpha_shape_edges_iterator it =  A.alpha_shape_edges_begin();
-      it != A.alpha_shape_edges_end();
-      ++it){
-    *out++ = A.segment(*it);
-  }
+alpha_edges(const Alpha_shape_2& A,
+        OutputIterator out) {
+    for (Alpha_shape_edges_iterator it =  A.alpha_shape_edges_begin();
+            it != A.alpha_shape_edges_end();
+            ++it) {
+        *out++ = A.segment(*it);
+    }
 }
 
 
 int alpha_shape(vertex_t *vertices, size_t count, double alpha,
-                vertex_t **res, size_t *res_count, char **err_msg)
-{
+        vertex_t **res, size_t *res_count, char **err_msg) {
     try {
-  std::list<Point> points;
+        std::list<Point> points;
+        {
+            std::vector<Point> pv;
 
-  {
-    std::vector<Point> pv;
+            for (std::size_t j = 0; j < count; ++j) {
+                Point p(vertices[j].x, vertices[j].y);
+                pv.push_back(p);
+            }
 
-    for (std::size_t j = 0; j < count; ++j) {
-        Point p(vertices[j].x, vertices[j].y);
-        pv.push_back(p);
-    }
+            std::sort(pv.begin(), pv.end(),
+                    [](const Point &e1, const Point &e2)->bool {
+                    return e2.y() < e1.y();
+                    });
+            std::stable_sort(pv.begin(), pv.end(),
+                    [](const Point &e1, const Point &e2)->bool {
+                    return e2.x() < e1.x();
+                    });
+            pv.erase(std::unique(pv.begin(), pv.end()), pv.end());
+            if (pv.size() != count &&  pv.size() < 3) {
+                *err_msg = strdup("After eliminating duplicated points, less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.");
+                return -1;
+            }
+            points.insert(points.begin(), pv.begin(), pv.end());
+        }
 
-    std::sort(pv.begin(), pv.end(),
-        [](const Point &e1, const Point &e2)->bool {
-        return e2.y() < e1.y();
-        });
-    std::stable_sort(pv.begin(), pv.end(),
-        [](const Point &e1, const Point &e2)->bool {
-        return e2.x() < e1.x();
-        });
-    pv.erase(std::unique(pv.begin(), pv.end()), pv.end());
-    if (pv.size() != count &&  pv.size() < 3) {
-        *err_msg = strdup("After eliminating duplicated points, less than 3 points remain!!. Alpha shape calculation needs at least 3 vertices.");
-        return -1;
-    }
-    points.insert(points.begin(), pv.begin(), pv.end());
-  }
+        Alpha_shape_2 A(points.begin(), points.end(),
+                coord_type(10000),
+                Alpha_shape_2::REGULARIZED);
 
-  Alpha_shape_2 A(points.begin(), points.end(),
-                  coord_type(10000),
-                  Alpha_shape_2::REGULARIZED);
-  
-  std::vector<Segment> segments;
-//  std::vector<Segment> result;
+        std::vector<Segment> segments;
+        //  std::vector<Segment> result;
 
-//  Alpha_shape_2::Alpha_shape_vertices_iterator vit;
-//  Alpha_shape_2::Vertex_handle vertex;
-//  Alpha_shape_2::Alpha_shape_edges_iterator eit;
-//  Alpha_shape_2::Edge edge;
-//  Alpha_shape_2::Face_iterator fit;
-//  Alpha_shape_2::Face_handle face;
-  
-  if (alpha <= 0.0)
-  {
-    alpha = *A.find_optimal_alpha(1);
-  }
-  A.set_alpha(alpha);
+        //  Alpha_shape_2::Alpha_shape_vertices_iterator vit;
+        //  Alpha_shape_2::Vertex_handle vertex;
+        //  Alpha_shape_2::Alpha_shape_edges_iterator eit;
+        //  Alpha_shape_2::Edge edge;
+        //  Alpha_shape_2::Face_iterator fit;
+        //  Alpha_shape_2::Face_handle face;
 
-  alpha_edges( A, std::back_inserter(segments));
+        if (alpha <= 0.0) {
+            alpha = *A.find_optimal_alpha(1);
+        }
+        A.set_alpha(alpha);
 
-//  Segment s = segments.at(0);
-//  find_next_edge(s, segments, result);
-  if (segments.empty())
-  {
-    *res = NULL;
-    *res_count = 0;
-  }
-  else
-  {
-    std::set<int> unusedIndexes;
-    for (unsigned int i = 0; i < segments.size(); i++)
-    {
-      unusedIndexes.insert(i);
-    }
-    
-    std::vector<Polygon_2> rings;
-    Polygon_2 ring;
-    ring.push_back(segments.at(0).source());
-    rings.push_back(ring);
-    unusedIndexes.erase(0);
-    find_next_edge(segments.at(0), segments, unusedIndexes, rings);
+        alpha_edges(A, std::back_inserter(segments));
 
-    size_t result_count = 0;
-    for (unsigned int i = 0; i < rings.size(); i++)
-    {
-      Polygon_2 ring = rings.at(i);
-      result_count += ring.size();
-    }
-    result_count += rings.size() - 1;
-    *res = (vertex_t *) malloc(sizeof(vertex_t) * result_count);
-    *res_count = result_count;
+        //  Segment s = segments.at(0);
+        //  find_next_edge(s, segments, result);
+        if (segments.empty()) {
+            *res = NULL;
+            *res_count = 0;
+        } else {
+            std::set<int> unusedIndexes;
+            for (unsigned int i = 0; i < segments.size(); i++) {
+                unusedIndexes.insert(i);
+            }
 
-    int idx = 0;
-    for (unsigned int i = 0; i < rings.size(); i++)
-    {
-      if (i > 0)
-      {
-        (*res)[idx].x = DBL_MAX;
-        (*res)[idx].y = DBL_MAX;
-        idx++;
-      }
-      Polygon_2 ring = rings.at(i);
-      for(unsigned int j = 0; j < ring.size(); j++)
-      {
-        Point point = ring.vertex(j);
-        (*res)[idx].x = point.x();
-        (*res)[idx].y = point.y();
-        idx++;
-      }
-    }
-  }
-  *err_msg = NULL;
+            std::vector<Polygon_2> rings;
+            Polygon_2 ring;
+            ring.push_back(segments.at(0).source());
+            rings.push_back(ring);
+            unusedIndexes.erase(0);
+            find_next_edge(segments.at(0), segments, unusedIndexes, rings);
 
-  return EXIT_SUCCESS;
+            size_t result_count = 0;
+            for (unsigned int i = 0; i < rings.size(); i++) {
+                Polygon_2 ring = rings.at(i);
+                result_count += ring.size();
+            }
+            result_count += rings.size() - 1;
+            *res = (vertex_t *) malloc(sizeof(vertex_t) * result_count);
+            *res_count = result_count;
+
+            int idx = 0;
+            for (unsigned int i = 0; i < rings.size(); i++) {
+                if (i > 0) {
+                    (*res)[idx].x = DBL_MAX;
+                    (*res)[idx].y = DBL_MAX;
+                    idx++;
+                }
+                Polygon_2 ring = rings.at(i);
+                for (unsigned int j = 0; j < ring.size(); j++) {
+                    Point point = ring.vertex(j);
+                    (*res)[idx].x = point.x();
+                    (*res)[idx].y = point.y();
+                    idx++;
+                }
+            }
+        }
+        *err_msg = NULL;
+
+        return EXIT_SUCCESS;
     } catch ( ... ) {
         *err_msg = strdup("Caught unknown expection!");
     }
-        return -1;
-
+    return -1;
 }

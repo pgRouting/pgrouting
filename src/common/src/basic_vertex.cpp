@@ -34,15 +34,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 
 #include <sstream>
-#include "./basic_vertex.h"  
-#include "./pgr_types.h"  
+#include "./basic_vertex.h"
+#include "./pgr_types.h"
 #include "./pgr_assert.h"
 
 
 namespace pgrouting {
 
     std::ostream& operator<<(std::ostream& log, const Basic_vertex &v) {
-        log << v.id ;
+        log << v.id;
         return log;
     }
 
@@ -57,8 +57,7 @@ namespace pgrouting {
                 std::unique(
                     vertices.begin(), vertices.end(),
                     [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-                );
+                    {return lhs.id == rhs.id;}), vertices.end());
 
         return vertices.size() - count;
     }
@@ -79,7 +78,6 @@ namespace pgrouting {
 
             vertex.id = edge.target;
             vertices.push_back(vertex);
-
         }
 
         /*
@@ -92,8 +90,7 @@ namespace pgrouting {
         vertices.erase(
                 std::unique(vertices.begin(), vertices.end(),
                     [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-                );
+                    {return lhs.id == rhs.id;}), vertices.end());
 
         return vertices;
     }
@@ -101,7 +98,6 @@ namespace pgrouting {
 
     std::vector < Basic_vertex > extract_vertices(
             const std::vector <pgr_edge_t > data_edges) {
-
         std::vector< Basic_vertex > vertices;
         if (data_edges.empty()) return vertices;
 
@@ -115,7 +111,6 @@ namespace pgrouting {
 
             vertex.id = edge.target;
             vertices.push_back(vertex);
-
         }
 
         /*
@@ -128,8 +123,7 @@ namespace pgrouting {
         vertices.erase(
                 std::unique(vertices.begin(), vertices.end(),
                     [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-                );
+                    {return lhs.id == rhs.id;}), vertices.end());
 
         return vertices;
     }
@@ -145,4 +139,4 @@ namespace pgrouting {
         return extract_vertices(vertices, std::vector < pgr_edge_t >(data_edges, data_edges + count));
     }
 
-} // namespace pgrouting
+}  // namespace pgrouting

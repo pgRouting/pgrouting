@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-#ifdef __linux__ 
+#ifdef __linux__
 #include <execinfo.h>
 #endif
 #include <string>
@@ -38,7 +38,7 @@ std::string get_backtrace() {
         int i, trace_size = 0;
 
         trace_size = backtrace(trace, 16);
-        char** funcNames = backtrace_symbols( trace, trace_size );
+        char** funcNames = backtrace_symbols(trace, trace_size);
 
 
         std::string message = "\n*** Execution path***\n";
@@ -46,7 +46,7 @@ std::string get_backtrace() {
             message += "[bt]" + static_cast<std::string>(funcNames[i]) + "\n";
         }
 
-        free( funcNames );
+        free(funcNames);
         return message;
 #else
         return "";

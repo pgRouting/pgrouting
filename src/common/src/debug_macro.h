@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_DEBUG_MACRO_H_
+#define SRC_COMMON_SRC_DEBUG_MACRO_H_
+
 #pragma once
 #ifndef NDEBUG
 #include "postgres.h"
@@ -32,3 +35,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define PGR_DBG(...) do { ; } while (0)
 #endif
 
+#endif  // SRC_COMMON_SRC_DEBUG_MACRO_H_

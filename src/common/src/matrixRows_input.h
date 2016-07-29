@@ -22,6 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_MATRIXROWS_INPUT_H_
+#define SRC_COMMON_SRC_MATRIXROWS_INPUT_H_
+
 #pragma once
 
 #include "./../../common/src/pgr_types.h"
@@ -35,3 +38,5 @@ void pgr_get_matrixRows(
         char *sql,
         Matrix_cell_t **distaces,
         size_t *total_distances);
+
+#endif  // SRC_COMMON_SRC_MATRIXROWS_INPUT_H_
