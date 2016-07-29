@@ -23,7 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "../../common/src/pgr_types.h"
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -36,15 +35,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <stdlib.h>
 #include <search.h>
 
+#include "../../common/src/pgr_types.h"
 #include "../../common/src/postgres_connection.h"
-#include "bdastar_driver.h"
+#include "./bdastar_driver.h"
 
 
 //-------------------------------------------------------------------------
 
-#ifdef _MSC_VER
 PGDLLEXPORT
-#endif
 Datum bidir_astar_shortest_path(PG_FUNCTION_ARGS);
 
 #undef DEBUG
@@ -53,8 +51,7 @@ Datum bidir_astar_shortest_path(PG_FUNCTION_ARGS);
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-typedef struct edge_astar_columns
-{
+typedef struct edge_astar_columns {
   int id;
   int source;
   int target;
@@ -70,8 +67,7 @@ typedef struct edge_astar_columns
 static int
 fetch_edge_astar_columns(SPITupleTable *tuptable,
              edge_astar_columns_t *edge_columns,
-             bool has_reverse_cost)
-{
+             bool has_reverse_cost) {
   edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
@@ -81,7 +77,6 @@ fetch_edge_astar_columns(SPITupleTable *tuptable,
       edge_columns->source == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->target == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->cost == SPI_ERROR_NOATTRIBUTE) {
-
       elog(ERROR, "Error, query must return columns "
             "'id', 'source', 'target' and 'cost'");
       return -1;
@@ -92,7 +87,6 @@ fetch_edge_astar_columns(SPITupleTable *tuptable,
       SPI_gettypeid(SPI_tuptable->tupdesc,
             edge_columns->target) != INT4OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->cost) != FLOAT8OID) {
-
       elog(ERROR, "Error, columns 'source', 'target' must be of type int4, "
             "'cost' must be of type float8");
       return -1;
@@ -130,7 +124,6 @@ fetch_edge_astar_columns(SPITupleTable *tuptable,
       edge_columns->s_y == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->t_x == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->t_y == SPI_ERROR_NOATTRIBUTE) {
-
       elog(ERROR, "Error, query must return columns "
        "'x1', 'x2', 'y1' and 'y2'");
       return -1;
@@ -138,7 +131,7 @@ fetch_edge_astar_columns(SPITupleTable *tuptable,
 
   PGR_DBG("columns: x1 %i y1 %i x2 %i y2 %i",
       edge_columns->s_x, edge_columns->s_y,
-      edge_columns->t_x,edge_columns->t_y);
+      edge_columns->t_x, edge_columns->t_y);
 
   return 0;
 }
@@ -146,8 +139,7 @@ fetch_edge_astar_columns(SPITupleTable *tuptable,
 static void
 fetch_edge_astar(HeapTuple *tuple, TupleDesc *tupdesc,
          edge_astar_columns_t *edge_columns,
-         edge_astar_t *target_edge)
-{
+         edge_astar_t *target_edge) {
   Datum binval;
   bool isnull;
 
@@ -196,8 +188,7 @@ fetch_edge_astar(HeapTuple *tuple, TupleDesc *tupdesc,
 static int compute_shortest_path_astar(char* sql, int source_vertex_id,
                        int target_vertex_id, bool directed,
                        bool has_reverse_cost,
-                       path_element_t **path, size_t *path_count)
-{
+                       path_element_t **path, size_t *path_count) {
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
@@ -205,22 +196,22 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
   edge_astar_t *edges = NULL;
   size_t total_tuples = 0;
 
-  int v_max_id=0;
-  int v_min_id=INT_MAX;
+  int v_max_id = 0;
+  int v_min_id = INT_MAX;
 
 #ifndef _MSC_VER
-  edge_astar_columns_t edge_columns = {.id= -1, .source= -1, .target= -1,
-                       .cost= -1, .reverse_cost= -1,
-                       .s_x= -1, .s_y= -1, .t_x= -1, .t_y= -1};
-#else // _MSC_VER
+  edge_astar_columns_t edge_columns = {.id =  -1, .source =  -1, .target =  -1,
+                       .cost =  -1, .reverse_cost =  -1,
+                       .s_x =  -1, .s_y =  -1, .t_x =  -1, .t_y =  -1};
+#else  // _MSC_VER
   edge_astar_columns_t edge_columns = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
-#endif // _MSC_VER
+#endif  // _MSC_VER
   char *err_msg;
   int ret = -1;
   register int z;
 
-  int s_count=0;
-  int t_count=0;
+  int s_count = 0;
+  int t_count = 0;
 
   struct vItem {
     int id;
@@ -268,50 +259,48 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
                        &edges[total_tuples - ntuples + t]);
           }
           SPI_freetuptable(tuptable);
-      }
-      else {
+      } else {
           moredata = FALSE;
       }
   }
 
-  //defining min and max vertex id
+  // defining min and max vertex id
 
   PGR_DBG("Total %lu tuples", total_tuples);
 
-  for(z=0; z<total_tuples; z++)
-  {
-    if(edges[z].source<v_min_id) v_min_id=edges[z].source;
-    if(edges[z].source>v_max_id) v_max_id=edges[z].source;
-    if(edges[z].target<v_min_id) v_min_id=edges[z].target;
-    if(edges[z].target>v_max_id) v_max_id=edges[z].target;
+  for (z = 0; z < total_tuples; z++) {
+    if (edges[z].source < v_min_id) v_min_id = edges[z].source;
+    if (edges[z].source > v_max_id) v_max_id = edges[z].source;
+    if (edges[z].target < v_min_id) v_min_id = edges[z].target;
+    if (edges[z].target > v_max_id) v_max_id = edges[z].target;
     PGR_DBG("%i <-> %i", v_min_id, v_max_id);
   }
 
   //::::::::::::::::::::::::::::::::::::
   //:: reducing vertex id (renumbering)
   //::::::::::::::::::::::::::::::::::::
-  for(z=0; z<total_tuples; z++) {
-    //check if edges[] contains source and target
-    if(edges[z].source == source_vertex_id ||
+  for (z=0; z < total_tuples; z++) {
+    // check if edges[] contains source and target
+    if (edges[z].source == source_vertex_id ||
        edges[z].target == source_vertex_id)
       ++s_count;
-    if(edges[z].source == target_vertex_id ||
+    if (edges[z].source == target_vertex_id ||
        edges[z].target == target_vertex_id)
       ++t_count;
 
-    edges[z].source-=v_min_id;
-    edges[z].target-=v_min_id;
+    edges[z].source -= v_min_id;
+    edges[z].target -= v_min_id;
     PGR_DBG("%i - %i", edges[z].source, edges[z].target);
   }
 
   PGR_DBG("Total %lu tuples", total_tuples);
 
-  if(s_count == 0) {
+  if (s_count == 0) {
     elog(ERROR, "Start vertex was not found.");
     return -1;
   }
 
-  if(t_count == 0) {
+  if (t_count == 0) {
     elog(ERROR, "Target vertex was not found.");
     return -1;
   }
@@ -326,16 +315,16 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
             directed, has_reverse_cost,
             path, path_count, &err_msg);
 
-  PGR_DBG("SIZE %lu\n",*path_count);
+  PGR_DBG("SIZE %lu\n", *path_count);
 
-  PGR_DBG("ret =  %i\n",ret);
+  PGR_DBG("ret =  %i\n", ret);
 
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
-  for(z=0; z<*path_count; z++) {
-    //PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
-    (*path)[z].vertex_id+=v_min_id;
+  for (z = 0; z < *path_count; z++) {
+    // PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
+    (*path)[z].vertex_id += v_min_id;
   }
   if (ret < 0) {
       elog(ERROR, "Error computing path: %s", err_msg);
@@ -347,8 +336,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 
 PG_FUNCTION_INFO_V1(bidir_astar_shortest_path);
 PGDLLEXPORT Datum
-bidir_astar_shortest_path(PG_FUNCTION_ARGS)
-{
+bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   uint32_t                  call_cntr;
   uint32_t                  max_calls;
@@ -452,8 +440,7 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS)
       pfree(nulls);
 
       SRF_RETURN_NEXT(funcctx, result);
-  }
-  else {   /* do when there is no more left */
+  } else {   /* do when there is no more left */
       PGR_DBG("Freeing path");
       if (path) free(path);
       SRF_RETURN_DONE(funcctx);

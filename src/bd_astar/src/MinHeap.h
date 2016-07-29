@@ -32,41 +32,35 @@ THE SOFTWARE.
 
 ********************************************************************PGR-MIT*/
 
-#ifndef MINHEAP_H
-#define MINHEAP_H
+#ifndef SRC_BD_ASTAR_SRC_MINHEAP_H_
+#define SRC_BD_ASTAR_SRC_MINHEAP_H_
+#pragma once
 
-#include <string>
-#include <stdlib.h>
-#include <iostream>
-#include <map>
-#include <math.h>
-#include <string.h>
+#include <utility>
 
 typedef std::pair<double, int> PDI;
 
-class MinHeap
-{
-public:
-	MinHeap(int maxNode);
-	~MinHeap(void);
+class MinHeap {
+ public:
+     explicit MinHeap(int maxNode);
+     ~MinHeap(void);
 
-	bool reset(void);
-	bool init(int maxNode);
-	void push(PDI node);
-	PDI top();
-	void pop();
-	bool empty();
+     bool reset(void);
+     bool init(int maxNode);
+     void push(PDI node);
+     PDI top();
+     void pop();
+     bool empty();
 
-private:
-	void shift_up(int node);
-	void shift_down(int node);
+ private:
+     void shift_up(int node);
+     void shift_down(int node);
 
-private:
-	PDI *m_HeapTree;
-	int *m_Index;
-	int m_MaxNodeID;
-	int m_CurrentSize;
-
+ private:
+     PDI *m_HeapTree;
+     int *m_Index;
+     int m_MaxNodeID;
+     int m_CurrentSize;
 };
 
-#endif
+#endif  // SRC_BD_ASTAR_SRC_MINHEAP_H_

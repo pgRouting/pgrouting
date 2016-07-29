@@ -32,7 +32,10 @@ THE SOFTWARE.
 
 ********************************************************************PGR-MIT*/
 
-#include "MinHeap.h"
+#include "./MinHeap.h"
+#include <string.h>
+#include <utility>
+
 
 MinHeap::MinHeap(int maxNode) {
     init(maxNode);
