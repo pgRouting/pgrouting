@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "./max_flow_one_to_one_driver.h"
+#include "max_flow_one_to_one_driver.h"
 
 PGDLLEXPORT Datum
 max_flow_one_to_one(PG_FUNCTION_ARGS);

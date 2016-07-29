@@ -49,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./edge_disjoint_paths_one_to_many_driver.h"
+#include "edge_disjoint_paths_one_to_many_driver.h"
 
 PGDLLEXPORT Datum
 edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS);
