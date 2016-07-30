@@ -34,8 +34,8 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN source_vertex bigint,
     IN sink_vertex bigint,
     IN directed BOOLEAN DEFAULT TRUE,
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT
     )
@@ -52,8 +52,8 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN source_vertex bigint,
     IN sink_vertices ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT end_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT
@@ -71,8 +71,8 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN source_vertices ANYARRAY,
     IN sink_vertex BIGINT,
     IN directed BOOLEAN DEFAULT TRUE,
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT
@@ -90,8 +90,8 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN source_vertices ANYARRAY,
     IN sink_vertices ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
-    OUT seq BIGINT,
-    OUT path_seq BIGINT,
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT node BIGINT,

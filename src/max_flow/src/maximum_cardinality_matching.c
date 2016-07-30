@@ -47,7 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "maximum_cardinality_matching_driver.h"
+#include "./maximum_cardinality_matching_driver.h"
 
 
 PGDLLEXPORT Datum
@@ -175,7 +175,7 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(call_cntr + 1);
+        values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].edge_id);
         values[2] = Int64GetDatum(result_tuples[call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[call_cntr].target);
