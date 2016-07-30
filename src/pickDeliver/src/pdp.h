@@ -53,7 +53,7 @@ typedef struct  {
 
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 int64_t Solver(Customer *c,
         size_t total_tuples,
@@ -64,6 +64,6 @@ int64_t Solver(Customer *c,
         size_t *length_results);
 
 #ifdef __cplusplus
-extern "C"
+}
 #endif
 
