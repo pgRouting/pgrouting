@@ -138,29 +138,23 @@ contractGraph(PG_FUNCTION_ARGS) {
     size_t              call_cntr;
     size_t               max_calls;
     TupleDesc            tuple_desc;
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     pgr_contracted_blob  *result_tuples = NULL;
     size_t result_count = 0;
     int64_t* contraction_order;
     int64_t* forbidden_vertices;
     size_t size_contraction_order;
     size_t size_forbidden_vertices;
-    /*                                                                        */
-    /**************************************************************************/
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-        // TODO (Rohith) fix the comment to current signature
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
             edges_sql TEXT,
             contraction_order BIGINT[],
-            forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
             max_cycles integer DEFAULT 1,
+            forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
             directed BOOLEAN DEFAULT true
          **********************************************************************/ 
 
@@ -229,11 +223,6 @@ contractGraph(PG_FUNCTION_ARGS) {
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
         get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
-        #if 0
-        PGR_DBG("typlen %d", typlen);
-        PGR_DBG("typbyval %d", typbyval);
-        PGR_DBG("typalign %c", typalign);
-        #endif
         arrayType =  construct_array(contracted_vertices_array,
                 contracted_vertices_size,
                 INT8OID,  typlen, typbyval, typalign);
@@ -262,28 +251,14 @@ contractGraph(PG_FUNCTION_ARGS) {
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
+        // cleaning up the contracted vertices array
+        if (result_tuples[call_cntr].contracted_vertices) {
+            free(result_tuples[call_cntr].contracted_vertices);
+        }
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         // cleanup
         PGR_DBG("Freeing values");
-        // TODO (Rohith): URGENT BY TOMORROW there is a leak as the original data has an array and its not being freed
-        // TODO (rohith): please start removing #if 0 #endif
-#if 0
-        if (result_tuples) {
-            if (result_tuples->contracted_graph_name)
-                free(result_tuples->contracted_graph_name);
-            if (result_tuples->contracted_graph_blob)
-                free(result_tuples->contracted_graph_blob);
-            if (result_tuples->removedVertices)
-                free(result_tuples->removedVertices);
-            if (result_tuples->removedEdges)
-                free(result_tuples->removedEdges);
-            if (result_tuples->psuedoEdges)
-                free(result_tuples->psuedoEdges);
-            free(result_tuples);
-        }
-#endif
-        // cleanup
         if (result_tuples) free(result_tuples);
         SRF_RETURN_DONE(funcctx);
     }
