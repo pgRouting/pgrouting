@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_BD_ASTAR_SRC_BDASTAR_DRIVER_H_
 #pragma once
 
-#include "stdint.h"
+#include "stdlib.h"
 #include "../../common/src/pgr_types.h"
 
 
