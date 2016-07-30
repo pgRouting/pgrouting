@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
   int bdastar_wrapper(edge_astar_t *edges, size_t count, int maxnode,
@@ -39,7 +39,7 @@ extern "C"
                   bool directed, bool has_reverse_cost,
                   path_element_t **path, size_t *path_count, char **err_msg);
 #ifdef __cplusplus
-extern "C"
+}
 #endif
 
 #endif
