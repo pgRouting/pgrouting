@@ -1,5 +1,6 @@
 /*PGR-GNU*****************************************************************
 File: distances_input.h
+#include "./pgr_types.h"
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -26,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#include "./../../common/src/pgr_types.h"
+#include "./pgr_types.h"
 
 /*!
   bigint id,

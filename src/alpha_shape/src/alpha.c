@@ -42,9 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define PROFILE
 
 
-#ifdef _MSC_VER
 PGDLLEXPORT
-#endif
 Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
@@ -229,9 +227,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
 
 PG_FUNCTION_INFO_V1(alphashape);
 
-#ifdef _MSC_VER
 PGDLLEXPORT
-#endif
 Datum alphashape(PG_FUNCTION_ARGS) {
   FuncCallContext      *funcctx;
   uint32_t                  call_cntr;

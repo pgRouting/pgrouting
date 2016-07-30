@@ -39,13 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./astarOneToOne_driver.h"
 
-#define DEBUG
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
-// #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./pgr_astar.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
