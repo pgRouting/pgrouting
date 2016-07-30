@@ -72,16 +72,15 @@ process(char* edges_sql,
         pgr_contracted_blob **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
-
     PGR_DBG("num_cycles %d ", num_cycles);
     PGR_DBG("directed %d ", directed);
-    PGR_DBG("edges_sql %s",edges_sql);
+    PGR_DBG("edges_sql %s", edges_sql);
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    // TODO decide if is a requirement (ERROR) or not
+    // TODO (Rohith) decide if is a requirement (ERROR) or not
     if (num_cycles < 1) {
-        //TODO if ERROR free edges_sql, and the arrays
+        // TODO (Rohith) if ERROR free edges_sql, and the arrays
         PGR_DBG("Required: at least one cycle\n");
         (*result_count) = 0;
         (*result_tuples) = NULL;
@@ -99,7 +98,6 @@ process(char* edges_sql,
     }
     pgr_get_edges(edges_sql, &edges, &total_tuples);
     PGR_DBG("finished Loading");
-
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
         (*result_count) = 0;
@@ -108,7 +106,6 @@ process(char* edges_sql,
         return;
     }
     PGR_DBG("Total %ld tuples in query:", total_tuples);
-
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
 #if 1
@@ -127,7 +124,6 @@ process(char* edges_sql,
 #endif
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
-
     free(err_msg);
     pfree(edges);
     pgr_SPI_finish();
@@ -142,7 +138,6 @@ contractGraph(PG_FUNCTION_ARGS) {
     size_t              call_cntr;
     size_t               max_calls;
     TupleDesc            tuple_desc;
-
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
@@ -154,13 +149,11 @@ contractGraph(PG_FUNCTION_ARGS) {
     size_t size_forbidden_vertices;
     /*                                                                        */
     /**************************************************************************/
-
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
-
-        // TODO fix the comment to current signature
+        // TODO (Rohith) fix the comment to current signature
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
@@ -173,14 +166,11 @@ contractGraph(PG_FUNCTION_ARGS) {
 
         forbidden_vertices = (int64_t*)
             pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(3));
-        PGR_DBG("size_forbidden_vertices %ld",size_forbidden_vertices);
+        PGR_DBG("size_forbidden_vertices %ld", size_forbidden_vertices);
 
         contraction_order = (int64_t*)
             pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(1));
         PGR_DBG("size_contraction_order %ld ", size_contraction_order);
-
-
-
 #if 1
         PGR_DBG("Calling process");
         process(
@@ -198,8 +188,6 @@ contractGraph(PG_FUNCTION_ARGS) {
         free(contraction_order);
         free(forbidden_vertices);
         PGR_DBG("Returned %d tuples\n", (int)result_count);
-
-
         funcctx->max_calls = (uint32_t)result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
@@ -207,75 +195,60 @@ contractGraph(PG_FUNCTION_ARGS) {
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
-
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
-
     funcctx = SRF_PERCALL_SETUP();
     call_cntr = funcctx->call_cntr;
     max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (pgr_contracted_blob*) funcctx->user_fctx;
-
     if (call_cntr < max_calls) {
         HeapTuple   tuple;
         Datum       result;
         Datum       *values;
         Datum       *contracted_vertices_array;
         char        *nulls;
-
-
-        ArrayType * arrayType; 
-        int16 typlen; 
-        bool typbyval; 
+        ArrayType * arrayType;
+        int16 typlen;
+        bool typbyval;
         char typalign;
-
         values =(Datum *)palloc(7 * sizeof(Datum));
         nulls = palloc(7 * sizeof(bool));
-
         size_t i;
         for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
-
-        int contracted_vertices_size = 
+        int contracted_vertices_size =
             (int)result_tuples[call_cntr].contracted_vertices_size;
-
-        contracted_vertices_array = (Datum *)palloc(sizeof(Datum) * 
+        contracted_vertices_array = (Datum *)palloc(sizeof(Datum) *
                 (size_t)contracted_vertices_size);
         for (i = 0; i < contracted_vertices_size; ++i) {
-            PGR_DBG("Storing contracted vertex %ld",result_tuples[call_cntr].contracted_vertices[i]);
-            contracted_vertices_array[i] = 
+            PGR_DBG("Storing contracted vertex %ld", result_tuples[call_cntr].contracted_vertices[i]);
+            contracted_vertices_array[i] =
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
-
         get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
         #if 0
-        PGR_DBG("typlen %d",typlen);
-        PGR_DBG("typbyval %d",typbyval);
-        PGR_DBG("typalign %c",typalign);
+        PGR_DBG("typlen %d", typlen);
+        PGR_DBG("typbyval %d", typbyval);
+        PGR_DBG("typalign %c", typalign);
         #endif
         arrayType =  construct_array(contracted_vertices_array,
                 contracted_vertices_size,
                 INT8OID,  typlen, typbyval, typalign);
-
-        TupleDescInitEntry(tuple_desc, (AttrNumber) 4, "contracted_vertices", 
-                INT8ARRAYOID, -1, 0); 
+        TupleDescInitEntry(tuple_desc, (AttrNumber) 4, "contracted_vertices",
+                INT8ARRAYOID, -1, 0);
 
 #if 1
         PGR_DBG("%ld | %s | %ld | %ld | %f | %d",
-        result_tuples[call_cntr].id, 
+        result_tuples[call_cntr].id,
         result_tuples[call_cntr].type,
         result_tuples[call_cntr].source,
         result_tuples[call_cntr].target,
         result_tuples[call_cntr].cost,
         result_tuples[call_cntr].contracted_vertices_size);
 #endif
-
-
-
-
         PGR_DBG("Storing complete\n");
         // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
@@ -285,22 +258,16 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[call_cntr].source);
         values[5] = Int64GetDatum(result_tuples[call_cntr].target);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
-        //values[7] = Int32GetDatum(result_tuples[call_cntr].contracted_vertices_size);
-
-
-
+        // values[7] = Int32GetDatum(result_tuples[call_cntr].contracted_vertices_size);
         /*********************************************************************/
-
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         // cleanup
         PGR_DBG("Freeing values");
-
-        // TODO (Rohith) URGENT BY TOMORROW there is a leak as the original data has an array and its not being freed
-        // TODO (rohith) please start removing #if 0 #endif
-        
+        // TODO (Rohith): URGENT BY TOMORROW there is a leak as the original data has an array and its not being freed
+        // TODO (rohith): please start removing #if 0 #endif
 #if 0
         if (result_tuples) {
             if (result_tuples->contracted_graph_name)
@@ -315,7 +282,6 @@ contractGraph(PG_FUNCTION_ARGS) {
                 free(result_tuples->psuedoEdges);
             free(result_tuples);
         }
-
 #endif
         // cleanup
         if (result_tuples) free(result_tuples);
