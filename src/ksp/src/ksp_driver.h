@@ -24,11 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+#include "./../../common/src/pgr_types.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "./../../common/src/pgr_types.h"
 
     int  do_pgr_ksp(pgr_edge_t  * edges, size_t total_tuples,
             int64_t  start_vertex, int64_t end_vertex,

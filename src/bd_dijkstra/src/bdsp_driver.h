@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 typedef pgr_edge_t edge_t;
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 int bidirsp_wrapper(edge_t *edges,
@@ -47,5 +47,9 @@ int bidirsp_wrapper(edge_t *edges,
             path_element_t **path,
             int *path_count,
             char **err_msg);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif  // SRC_BD_DIJKSTRA_SRC_BDSP_DRIVER_H_
