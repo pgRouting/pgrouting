@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -67,7 +67,6 @@ process(
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-
     driving_side[0] = (char) tolower(driving_side[0]);
 
     pgr_SPI_connect();
@@ -97,7 +96,7 @@ process(
     free(edges_of_points_query);
     free(edges_no_points_query);
 
-    if ( (total_edges + total_edges_of_points) == 0) {
+    if ((total_edges + total_edges_of_points) == 0) {
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
@@ -106,8 +105,8 @@ process(
 
     char *err_msg = NULL;
     clock_t start_t = clock();
-    int  errcode = do_pgr_many_to_one_withPoints(
-            edges,  total_edges,
+    int errcode = do_pgr_many_to_one_withPoints(
+            edges, total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,
             start_pidsArr, size_start_pidsArr,
@@ -128,8 +127,8 @@ process(
     pfree(edges);
     pgr_SPI_finish();
 
-    
-    if (errcode)  {
+
+    if (errcode) {
         free(start_pidsArr);
         pgr_send_error(errcode);
     }
@@ -149,7 +148,7 @@ many_to_one_withPoints(PG_FUNCTION_ARGS) {
     /*******************************************************************************/
     /*                          MODIFY AS NEEDED                                   */
     /*                                                                             */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t *result_tuples = 0;
     size_t result_count = 0;
     /*                                                                             */
     /*******************************************************************************/
@@ -232,7 +231,7 @@ many_to_one_withPoints(PG_FUNCTION_ARGS) {
         nulls = palloc(7 * sizeof(bool));
 
         size_t i;
-        for(i = 0; i < 7; ++i) {
+        for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
 

@@ -232,7 +232,7 @@ Tw_node::Tw_node(
     m_service_time(data.Stime),
     m_demand(data.demand),
     m_type(type),
-    problem(p_problem){
+    problem(p_problem) {
     }
 
 
@@ -253,9 +253,8 @@ Tw_node::Tw_node(
     m_service_time(service_time),
     m_demand(demand),
     m_type(type),
-    problem(p_problem){
+    problem(p_problem) {
     }
-
 
 
 /*! * \brief Print the contents of a Twnode object. */

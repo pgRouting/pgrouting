@@ -108,13 +108,13 @@ Pgr_pickDeliver::get_postgres_result(
              * (twv, cv, fleet, wait, duration)
              */
             -1,
-            solutions.back().twvTot(), 
-            solutions.back().cvTot(),  
+            solutions.back().twvTot(),
+            solutions.back().cvTot(),
             solutions.back().total_travel_time(),
             0,  // not accounting arrival_travel_time
-            solutions.back().wait_time(),  
-            solutions.back().total_service_time(),  
-            solutions.back().duration(),  
+            solutions.back().wait_time(),
+            solutions.back().total_service_time(),
+            solutions.back().duration(),
             };
     result.push_back(aggregates);
 

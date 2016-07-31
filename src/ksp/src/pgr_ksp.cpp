@@ -53,7 +53,7 @@ void Pgr_ksp< G >::getFirstSolution(G &graph) {
 
 template < class G>
 std::deque<Path>
-Pgr_ksp< G >::Yen(G &graph, 
+Pgr_ksp< G >::Yen(G &graph,
   int64_t  start_vertex, int64_t end_vertex, int K, bool heap_paths) {
     m_ResultSet.clear();
     m_Heap.clear();
@@ -116,7 +116,7 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
         // THROW_ON_SIGINT
         Pgr_dijkstra< G > fn_dijkstra;
         fn_dijkstra.dijkstra(graph, spurPath, spurNodeId, m_end);
-        //this->dijkstra(spurPath, spurNodeId , m_end);
+        // this->dijkstra(spurPath, spurNodeId , m_end);
         // THROW_ON_SIGINT
 
         if (spurPath.size() > 0) {

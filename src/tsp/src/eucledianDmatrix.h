@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_TSP_SRC_EUCLEDIANDMATRIX_H_
+#define SRC_TSP_SRC_EUCLEDIANDMATRIX_H_
 #pragma once
 
 #include <iostream>
@@ -118,3 +120,5 @@ class eucledianDmatrix {
 
 }  // namespace tsp
 }  // namespace pgrouting
+
+#endif  // SRC_TSP_SRC_EUCLEDIANDMATRIX_H_

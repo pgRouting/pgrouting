@@ -31,15 +31,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ********************************************************************PGR-MIT*/
-#ifndef BIDIRASTAR_H
-#define BIDIRASTAR_H
+#ifndef SRC_BD_ASTAR_SRC_BIDIRASTAR_H_
+#define SRC_BD_ASTAR_SRC_BIDIRASTAR_H_
+#pragma once
 
 #include <vector>
 #include <map>
 #include <utility>
 
-#include "MinHeap.h"
-#include "bdastar_driver.h"
+#include "./MinHeap.h"
+#include "./bdastar_driver.h"
 
 #define INF 1e15
 
@@ -49,81 +50,78 @@ typedef std::vector<size_t> LongVector;
 typedef std::vector<LongVector> VectorOfLongVector;
 typedef std::pair<double, int> PDI;
 
-typedef struct{
+typedef struct {
     int par_Node;
     int par_Edge;
-}PARENT_PATH;
+} PARENT_PATH;
 
-typedef struct{
+typedef struct {
     int NodeID;
     double xpos;
     double ypos;
     std::vector<int> Connected_Nodes;
     std::vector<size_t> Connected_Edges_Index;
-}GraphNodeInfo;
+} GraphNodeInfo;
 
-struct GraphEdgeInfo
-{
-public:
-    int EdgeID;
-    size_t EdgeIndex;
-    int Direction;
-    double Cost;
-    double ReverseCost;
-    int StartNode;
-    int EndNode;
+struct GraphEdgeInfo {
+ public:
+     int EdgeID;
+     size_t EdgeIndex;
+     int Direction;
+     double Cost;
+     double ReverseCost;
+     int StartNode;
+     int EndNode;
 };
 
 typedef std::vector<GraphEdgeInfo> GraphEdgeVector;
-typedef std::map<size_t,LongVector> Long2LongVectorMap;
-typedef std::map<size_t,size_t> Long2LongMap;
+typedef std::map<size_t, LongVector> Long2LongVectorMap;
+typedef std::map<size_t, size_t> Long2LongMap;
 typedef std::vector<GraphNodeInfo> GraphNodeVector;
 
 
-class BiDirAStar
-{
-public:
-    BiDirAStar(void);
-    ~BiDirAStar(void);
-    
-    int bidir_astar(edge_astar_t *edges, size_t edge_count, int maxNode, int start_vertex, int end_vertex,
-        path_element_t **path, size_t *path_count, char **err_msg);
-    
+class BiDirAStar {
+ public:
+     BiDirAStar(void);
+     ~BiDirAStar(void);
 
-private:
-    bool construct_graph(edge_astar_t *edges, size_t edge_count, int maxNode);
-    void fconstruct_path(int node_id);
-    void rconstruct_path(int node_id);
-    bool addEdge(edge_astar_t edgeIn);
-    bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
-    void init();
-    void initall(int maxNode);
-    void deleteall();
-    //void explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que);
-    void explore(int cur_node, double cur_cost, int dir, MinHeap &que);
-    double getcost(int node_id, int dir);
-    void setcost(int node_id, int dir, double c);
-    void setparent(int node_id, int dir, int parnode, int paredge);
-    double gethcost(int node_id, int dir);
-    double dist(double x1, double y1, double x2, double y2);
+     int bidir_astar(edge_astar_t *edges, size_t edge_count, int maxNode, int start_vertex, int end_vertex,
+             path_element_t **path, size_t *path_count, char **err_msg);
 
-private:
-    GraphEdgeVector m_vecEdgeVector;
-    Long2LongMap m_mapEdgeId2Index;
-    Long2LongVectorMap m_mapNodeId2Edge;
-    GraphNodeVector m_vecNodeVector;
-    int max_node_id;
-    int max_edge_id;
-    int m_lStartNodeId;
-    int m_lEndNodeId;
+ private:
+     bool construct_graph(edge_astar_t *edges, size_t edge_count, int maxNode);
+     void fconstruct_path(int node_id);
+     void rconstruct_path(int node_id);
+     bool addEdge(edge_astar_t edgeIn);
+     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
+     void init();
+     void initall(int maxNode);
+     void deleteall();
+     // void explore(int cur_node, double cur_cost, int dir, std::priority_queue<PDI, std::vector<PDI>, std::greater<PDI> > &que);
+     void explore(int cur_node, double cur_cost, int dir, MinHeap &que);
+     double getcost(int node_id, int dir);
+     void setcost(int node_id, int dir, double c);
+     void setparent(int node_id, int dir, int parnode, int paredge);
+     double gethcost(int node_id, int dir);
+     double dist(double x1, double y1, double x2, double y2);
 
-    double m_MinCost;
-    int m_MidNode;
-    std::vector <path_element_t> m_vecPath;
-    PARENT_PATH *m_pFParent;
-    PARENT_PATH *m_pRParent;
-    double *m_pFCost;
-    double *m_pRCost;
+ private:
+     GraphEdgeVector m_vecEdgeVector;
+     Long2LongMap m_mapEdgeId2Index;
+     Long2LongVectorMap m_mapNodeId2Edge;
+     GraphNodeVector m_vecNodeVector;
+     int max_node_id;
+     int max_edge_id;
+     int m_lStartNodeId;
+     int m_lEndNodeId;
+
+     double m_MinCost;
+     int m_MidNode;
+     std::vector <path_element_t> m_vecPath;
+     PARENT_PATH *m_pFParent;
+     PARENT_PATH *m_pRParent;
+     double *m_pFCost;
+     double *m_pRCost;
 };
 
-#endif
+#endif  // SRC_BD_ASTAR_SRC_BIDIRASTAR_H_
