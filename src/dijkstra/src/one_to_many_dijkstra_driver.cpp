@@ -35,14 +35,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <set>
 #include "./pgr_dijkstra.hpp"
 #include "./one_to_many_dijkstra_driver.h"
 
-// #define DEBUG
 #include "../../common/src/pgr_alloc.hpp"
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vid bigint, end_vids anyarray, directed boolean default true,
 void

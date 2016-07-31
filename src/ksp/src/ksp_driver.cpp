@@ -91,10 +91,10 @@ int  do_pgr_ksp(
             ++route_id;
         }
 
-        if (count != sequence) {                                
+        if (count != sequence) {
             *err_msg = NULL;
             return 2;
-        }                                                                                                       
+        }
         *path_count = count;
 
 #if 1

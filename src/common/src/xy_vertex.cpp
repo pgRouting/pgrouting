@@ -33,8 +33,8 @@
 #include <vector>
 #include <algorithm>
 
-#include "./xy_vertex.h"  
-#include "./pgr_types.h"  
+#include "./xy_vertex.h"
+#include "./pgr_types.h"
 #include "./pgr_assert.h"
 
 
@@ -65,8 +65,7 @@ check_vertices(
         std::unique(
             vertices.begin(), vertices.end(),
             [](const XY_vertex &lhs, const XY_vertex &rhs)
-            {return lhs.id == rhs.id;}), vertices.end()
-        );
+            {return lhs.id == rhs.id;}), vertices.end());
 
     return count - vertices.size();
 }
@@ -99,8 +98,7 @@ extract_vertices(
         std::unique(
             vertices.begin(), vertices.end(),
             [](const XY_vertex &lhs, const XY_vertex &rhs)
-            {return lhs.id == rhs.id;}), vertices.end()
-        );
+            {return lhs.id == rhs.id;}), vertices.end());
     return vertices;
 }
 
@@ -108,8 +106,7 @@ std::vector < XY_vertex >
 extract_vertices(
     const Pgr_edge_xy_t *data_edges, int64_t count) {
     return extract_vertices(
-        std::vector < Pgr_edge_xy_t >( data_edges, data_edges + count)
-        );
+        std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
 }
 
 #if 0
@@ -136,13 +133,9 @@ std::vector < XY_vertex > extract_vertices(
     vertices.erase(
         std::unique(vertices.begin(), vertices.end(),
                     [](const XY_vertex &lhs, const XY_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-        );
-
+                    {return lhs.id == rhs.id;}), vertices.end());
     return vertices;
 }
-#endif
-#if 0
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
     const Pgr_edge_xy_t *data_edges, int64_t count) {
@@ -150,4 +143,4 @@ std::vector < XY_vertex > extract_vertices(
 }
 #endif
 
-} // namespace pgrouting
+}  // namespace pgrouting
