@@ -26,6 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
 #define SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
+#pragma once
+
+#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
@@ -33,20 +36,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #undef open
 #endif
 #endif
+#endif
 
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/property_map/property_map.hpp>
+#include <boost/graph/johnson_all_pairs_shortest.hpp>
+#include <boost/graph/floyd_warshall_shortest.hpp>
 
 
 #include <deque>
 #include <vector>
 #include <set>
 #include <limits>
-
-#include <boost/config.hpp>
-
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/graph/johnson_all_pairs_shortest.hpp>
-#include <boost/graph/floyd_warshall_shortest.hpp>
 
 
 extern "C" {
