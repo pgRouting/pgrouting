@@ -68,18 +68,9 @@ Signature Summary
     pgr_maximumcardinalitymatching(edges_sql)
     pgr_maximumcardinalitymatching(edges_sql, directed:=true)
 
-    RETURNS SET OF (id, source, target)
+    RETURNS SET OF (id, edge_id, source, target)
         OR EMPTY SET
 
-
-..
-  This is a reminder of how your query looks like
-        pgr_maximumcardinalitymatching(
-            edges_sql TEXT,
-            OUT id BIGINT,
-            OUT source BIGINT,
-            OUT target BIGINT
-        )
 
 Signatures
 ----------
@@ -91,7 +82,7 @@ Minimal signature
 .. code-block:: none
 
     pgr_maximumcardinalitymatching(edges_sql)
-    RETURNS SET OF (id, source, target) OR EMPTY SET
+    RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
 
 The minimal signature calculates one possible maximum cardinality matching.
 If the directed parameter is not specified, it is assumed that the graph is directed.

@@ -50,6 +50,17 @@ Stable proposed Functions
   - :ref:`pgr_withPointsKSP` - K shortest paths with points.
   - :ref:`pgr_withPointsDD` - Driving distance.
 
+- New :ref:`maxFlow`
+
+  - :ref:`pgr_maxFlowPushRelabel` - Maximum flow using push&relabel algorithm.
+  - :ref:`pgr_maxFlowEdmondsKarp` - Maximum flow using Edmonds&Karp algorithm.
+  - :ref:`pgr_maxFlowBoykovKolmogorov` - Maximum flow using Boykov&Kolmogorov algorithm.
+
+- New :ref:`maxFlowApplications`
+
+  - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
+  - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
+
 ..
     to-here
 
@@ -60,5 +71,6 @@ Stable proposed Functions
     ../src/costMatrix/doc/pgr_dijkstraCostMatrix
     ../src/dijkstra/doc/pgr_dijkstraVia
     ../src/withPoints/doc/withPoints
-
+    ../src/max_flow/doc/maxFlow
+    ../src/max_flow/doc/maxFlowApplications
 
