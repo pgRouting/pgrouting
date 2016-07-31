@@ -26,18 +26,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // Include C header first for windows build issue
 
+#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
+#endif
 
-
-#include <cmath>
 #include <boost/config.hpp>
-
 #include <boost/graph/graph_traits.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/astar_search.hpp>
+
+#include <cmath>
+
+
+#include <deque>
+#include <limits>
+#include <algorithm>
+#include <vector>
+#include <set>
 
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
@@ -45,10 +53,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 
+
 template < class G >
 class Pgr_astar {
  public:
-
      typedef typename G::V V;
      typedef typename G::B_G B_G;
 
@@ -90,7 +98,7 @@ class Pgr_astar {
 
      //@}
 
-  private:
+ private:
      //! Call to Astar  1 source to 1 target
      bool astar_1_to_1(
              G &graph,
@@ -153,15 +161,19 @@ class Pgr_astar {
       public:
           distance_heuristic(B_G &g, V goal, int heuristic, double factor)
               : m_g(g),
-                m_factor(factor),
-                m_heuristic(heuristic) {
-                    m_goals.insert(goal);
-            }
-          distance_heuristic(B_G &g, std::vector< V > goals, int heuristic, double factor)
+              m_factor(factor),
+              m_heuristic(heuristic) {
+                  m_goals.insert(goal);
+              }
+          distance_heuristic(
+                  B_G &g,
+                  std::vector< V > goals,
+                  int heuristic,
+                  double factor)
               : m_g(g),
-                m_goals(goals.begin(), goals.end()),
-                m_factor(factor),
-                m_heuristic(heuristic) {}
+              m_goals(goals.begin(), goals.end()),
+              m_factor(factor),
+              m_heuristic(heuristic) {}
 
           double operator()(V u) {
               if (m_heuristic == 0) return 0;
@@ -189,7 +201,7 @@ class Pgr_astar {
                   }
                   if (current < best_h) {
                       best_h = current;
-                  };
+                  }
               }
               {
                   auto s_it = m_goals.find(u);
@@ -199,51 +211,49 @@ class Pgr_astar {
                   }
               }
               return best_h;
-          };
+          }
 
       private:
           B_G &m_g;
           std::set< V > m_goals;
           double m_factor;
           int m_heuristic;
-     }; // class distance_heuristic
+     };  // class distance_heuristic
 
 
      //! visitor that terminates when we find the goal
      class astar_one_goal_visitor : public boost::default_astar_visitor {
-         public:
-             astar_one_goal_visitor(V goal) : m_goal(goal) {}
-             template <class B_G>
-                 void examine_vertex(V u, B_G &g) {
-                     if(u == m_goal)
-                         throw found_goals();
-                     // using g, otherwise is throws a warning
-                     num_edges(g); 
-                 }
-         private:
-             V m_goal;
-     }; // class astar_one_goal_visitor
+      public:
+          explicit astar_one_goal_visitor(V goal) : m_goal(goal) {}
+          template <class B_G>
+              void examine_vertex(V u, B_G &g) {
+                  if (u == m_goal)
+                      throw found_goals();
+                  // using g, otherwise is throws a warning
+                  num_edges(g);
+              }
+      private:
+          V m_goal;
+     };  // class astar_one_goal_visitor
 
      //! class for stopping when all targets are found
      class astar_many_goals_visitor : public boost::default_astar_visitor {
-         public:
-             explicit astar_many_goals_visitor(std::vector< V > goals)
-                 :m_goals(goals.begin(), goals.end()) {}
-             template <class B_G>
-                 void examine_vertex(V u, B_G &g) {
-                     auto s_it = m_goals.find(u);
-                     if (s_it == m_goals.end()) return;
-                     // found one more goal
-                     m_goals.erase(s_it);
-                     if (m_goals.size() == 0) throw found_goals();
-                     num_edges(g);
-                 }
-         private:
-             std::set< V > m_goals;
+      public:
+          explicit astar_many_goals_visitor(std::vector< V > goals)
+              :m_goals(goals.begin(), goals.end()) {}
+          template <class B_G>
+              void examine_vertex(V u, B_G &g) {
+                  auto s_it = m_goals.find(u);
+                  if (s_it == m_goals.end()) return;
+                  // found one more goal
+                  m_goals.erase(s_it);
+                  if (m_goals.size() == 0) throw found_goals();
+                  num_edges(g);
+              }
+      private:
+          std::set< V > m_goals;
      };
-
-
-}; //pgr_astar
+};  // pgr_astar
 
 /******************** IMPLEMENTTION ******************/
 
@@ -353,7 +363,8 @@ Pgr_astar< G >::astar(
             start_vertex.end());
 
     for (const auto &start : start_vertex) {
-        astar(graph, paths, start, end_vertex, heuristic, factor, epsilon, only_cost);
+        astar(graph, paths, start, end_vertex,
+                heuristic, factor, epsilon, only_cost);
     }
 
     std::sort(paths.begin(), paths.end(),
@@ -385,7 +396,8 @@ Pgr_astar< G >::astar_1_to_1(
         // Call A* named parameter interface
         boost::astar_search(
                 graph.graph, source,
-                distance_heuristic(graph.graph, target, heuristic, factor * epsilon),
+                distance_heuristic(graph.graph, target,
+                    heuristic, factor * epsilon),
                 boost::predecessor_map(&predecessors[0])
                 .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
@@ -412,7 +424,9 @@ Pgr_astar< G >::astar_1_to_many(
     try {
         boost::astar_search(
                 graph.graph, source,
-                distance_heuristic(graph.graph, targets, heuristic, factor * epsilon),
+                distance_heuristic(
+                    graph.graph, targets,
+                    heuristic, factor * epsilon),
                 boost::predecessor_map(&predecessors[0])
                 .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])

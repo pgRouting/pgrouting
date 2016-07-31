@@ -43,20 +43,20 @@ void fetch_restriction(
     restriction->target_id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     restriction->to_cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
     char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
-// TODO because its  text, there is no garanee that the text read is correct
+
+// TODO(someone) because its  text, there is no garanee that the text read is correct
 // move this code to c++ to tokenize the integers.
 
     int i = 0;
-    for(i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
+    for (i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
 
     if (str != NULL) {
         char *token = NULL;
         int i = 0;
 
-        token = (char *)strtok(str," ,");
+        token = (char *)strtok(str, " ,");
 
-        while (token != NULL && i < MAX_RULE_LENGTH)
-        {
+        while (token != NULL && i < MAX_RULE_LENGTH) {
             restriction->via[i] = atoi(token);
             i++;
             token = (char *)strtok(NULL, " ,");

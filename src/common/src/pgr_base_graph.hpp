@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <map>
 #include <limits>
 
-#include "./pgr_types.h" // for pgr_edge_t 
+#include "./pgr_types.h"  // for pgr_edge_t
 
 #include "./ch_vertex.h"
 #include "./ch_edge.h"
@@ -54,8 +54,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./xy_vertex.h"
 
 #include "./basic_edge.h"
-//#include "../../contraction/src/edge.h"
-
 #include "./pgr_assert.h"
 
 /*! @brief boost::graph simplified to pgRouting needs
@@ -220,11 +218,11 @@ digraph.graph_insert_data(new_edges);
 */
 namespace pgrouting {
 
-namespace graph{
+namespace graph {
 template <class G, typename Vertex, typename Edge>
 class Pgr_base_graph;
 
-} // namespace graph
+}  // namespace graph
 
 
 /** @name Graph types 
@@ -261,7 +259,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
 #ifndef NDEBUG
-// TODO (Rohith) this is only used on internal query tests
+// TODO(Rohith) this is only used on internal query tests
 typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
     boost::undirectedS,
@@ -277,7 +275,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
 //@}
 
 
-namespace graph{
+namespace graph {
 
 template <class G, typename T_V, typename T_E>
 class Pgr_base_graph {
@@ -416,7 +414,7 @@ class Pgr_base_graph {
          void graph_insert_data(const std::vector < T > &edges) {
 #if 0
              // This code does not work with contraction
-             if (num_vertices()==0) {
+             if (num_vertices() == 0) {
                  auto vertices = pgrouting::extract_vertices(edges);
                  pgassert(pgrouting::check_vertices(vertices) == 0);
                  add_vertices(vertices);
@@ -428,7 +426,7 @@ class Pgr_base_graph {
          }
      //@}
 
-    private:
+ private:
      /*! @brief adds the vertices into the graph
       *
       * PRECONDITIONS:
@@ -447,10 +445,7 @@ class Pgr_base_graph {
       */
      void add_vertices(std::vector< T_V > vertices);
 
-    public:
-
-
-
+ public:
      //! @name boost wrappers
      //@{
      //! @brief get the out-degree  of a vertex
@@ -460,7 +455,7 @@ class Pgr_base_graph {
 
        @param [in] vertex_id original vertex id
        */
-     degree_size_type out_degree(int64_t vertex_id) const{
+     degree_size_type out_degree(int64_t vertex_id) const {
          if (!has_vertex(vertex_id)) {
              return 0;
          }
@@ -498,7 +493,7 @@ class Pgr_base_graph {
      }
 
      //! @brief True when vid is in the graph
-     bool has_vertex(int64_t vid) const{
+     bool has_vertex(int64_t vid) const {
          return vertices_map.find(vid) != vertices_map.end();
      }
 
@@ -515,7 +510,7 @@ class Pgr_base_graph {
      //@}
 
 
-     //! @name edge disconection/reconnection 
+     //! @name edge disconection/reconnection
      //@{
      //! @brief Disconnects all edges from p_from to p_to
      /*!
@@ -575,7 +570,6 @@ class Pgr_base_graph {
      //@{
 
      friend std::ostream& operator<<(std::ostream &log, const Pgr_base_graph< G, T_V, T_E > &g) {
-
          typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
 
          for (auto vi = vertices(g.graph).first; vi != vertices(g.graph).second; ++vi) {
@@ -832,5 +826,5 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
     return;
 }
 
-} // namespace graph
+}  // namespace graph
 }  // namespace pgrouting

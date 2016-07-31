@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     edges_sql TEXT,
     directed BOOLEAN DEFAULT TRUE,
-    OUT id BIGINT,
+    OUT id INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
     OUT target BIGINT

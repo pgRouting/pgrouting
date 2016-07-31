@@ -34,6 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #endif
 
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/assert.hpp>
 
 #if 0
 #include "./../../common/src/signalhandler.h"
@@ -41,10 +44,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 
 #include <map>
-
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/assert.hpp>
+#include <utility>
+#include <vector>
+#include <set>
 
 #include "pgr_maxflow.hpp"
 
@@ -66,7 +68,6 @@ class PgrEdgeDisjointPathsGraph {
   typename boost::property_map<G, boost::edge_reverse_t>::type rev;
   typename boost::property_map<G, boost::edge_residual_capacity_t>::type
       residual_capacity;
-
 
   std::map<int64_t, V> id_to_V;
   std::map<V, int64_t> V_to_id;
@@ -90,7 +91,7 @@ class PgrEdgeDisjointPathsGraph {
   int64_t boykov_kolmogorov() {
       size_t num_v = boost::num_vertices(boost_graph);
       std::vector<boost::default_color_type> color(num_v);
-      std::vector<long> distance(num_v);
+      std::vector<int64_t> distance(num_v);
       return boost::boykov_kolmogorov_max_flow(boost_graph,
                                                source_vertex,
                                                sink_vertex);
@@ -101,12 +102,11 @@ class PgrEdgeDisjointPathsGraph {
                                         const std::set<int64_t> &source_vertices,
                                         const std::set<int64_t> &sink_vertices,
                                         bool directed) {
-
       std::set<int64_t> vertices;
-      for (int64_t source: source_vertices) {
+      for (int64_t source : source_vertices) {
           vertices.insert(source);
       }
-      for (int64_t sink: sink_vertices) {
+      for (int64_t sink : sink_vertices) {
           vertices.insert(sink);
       }
       for (size_t i = 0; i < total_tuples; ++i) {
@@ -121,11 +121,13 @@ class PgrEdgeDisjointPathsGraph {
       bool added;
 
       V supersource = add_vertex(boost_graph);
-      for (int64_t source_id: source_vertices) {
+      for (int64_t source_id : source_vertices) {
           V source = get_boost_vertex(source_id);
           E e, e_rev;
-          boost::tie(e, added) = boost::add_edge(supersource, source, boost_graph);
-          boost::tie(e_rev, added) = boost::add_edge(source, supersource, boost_graph);
+          boost::tie(e, added) =
+              boost::add_edge(supersource, source, boost_graph);
+          boost::tie(e_rev, added) =
+              boost::add_edge(source, supersource, boost_graph);
           capacity[e] = 999999999;
           capacity[e_rev] = 0;
           rev[e] = e_rev;
@@ -133,7 +135,7 @@ class PgrEdgeDisjointPathsGraph {
       }
 
       V supersink = add_vertex(boost_graph);
-      for (int64_t sink_id: sink_vertices) {
+      for (int64_t sink_id : sink_vertices) {
           V sink = get_boost_vertex(sink_id);
           E e1, e1_rev;
           boost::tie(e1, added) =
@@ -165,7 +167,7 @@ class PgrEdgeDisjointPathsGraph {
                   boost::add_edge(v2, v1, boost_graph);
               E_to_id.insert(std::pair<E, int64_t>(e, data_edges[i].id));
               E_to_id.insert(std::pair<E, int64_t>(e_rev,
-                                                         data_edges[i].id));
+                                                   data_edges[i].id));
               capacity[e] = data_edges[i].going ? 1 : 0;
               capacity[e_rev] = data_edges[i].coming ? 1 : 0;
               rev[e] = e_rev;
@@ -179,7 +181,7 @@ class PgrEdgeDisjointPathsGraph {
                       boost::add_edge(v2, v1, boost_graph);
                   E_to_id.insert(std::pair<E, int64_t>(e, data_edges[i].id));
                   E_to_id.insert(std::pair<E, int64_t>(e_rev,
-                                                             data_edges[i].id));
+                                                       data_edges[i].id));
                   capacity[e] = 1;
                   capacity[e_rev] = 1;
                   rev[e] = e_rev;
@@ -197,13 +199,12 @@ class PgrEdgeDisjointPathsGraph {
       if (boost::edge(vertex, sink_vertex, boost_graph).second) {
           int64_t v_id = get_vertex_id(vertex);
           paths[path_id].push_back(v_id);
-      }
-      else {
+      } else {
           for (boost::tie(ei, e_end) =
                    boost::out_edges(vertex, boost_graph);
                ei != e_end; ++ei) {
               if (residual_capacity[*ei] < capacity[*ei]) {
-                  //exclude this edge from subsequent visits
+                  // exclude this edge from subsequent visits
                   capacity[*ei] = -1;
                   int64_t v_id = get_vertex_id(vertex);
                   paths[path_id].push_back(v_id);
@@ -215,7 +216,6 @@ class PgrEdgeDisjointPathsGraph {
           }
       }
   }
-
 
   void
   get_edge_disjoint_paths(std::vector<General_path_element_t> &path_elements,
@@ -246,7 +246,7 @@ class PgrEdgeDisjointPathsGraph {
           size_t j;
           for (j = 0; j < size - 1; j++) {
               General_path_element_t edge;
-              edge.seq = j + 1;
+              edge.seq = (int) (j + 1);
               edge.start_id = paths[i][0];
               edge.end_id = paths[i][size - 1];
               edge.node = paths[i][j];
@@ -258,7 +258,7 @@ class PgrEdgeDisjointPathsGraph {
               path_elements.push_back(edge);
           }
           General_path_element_t edge;
-          edge.seq = j + 1;
+          edge.seq = (int) (j + 1);
           edge.start_id = paths[i][0];
           edge.end_id = paths[i][size - 1];
           edge.node = paths[i][j];
@@ -266,5 +266,4 @@ class PgrEdgeDisjointPathsGraph {
           path_elements.push_back(edge);
       }
   }
-
 };

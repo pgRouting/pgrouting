@@ -138,7 +138,7 @@ Vehicle::get_postgres_result(
     /* postgres numbering starts with 1 */
     int i(1);
     for (const auto p_stop : m_path) {
-        General_vehicle_orders_t data = 
+        General_vehicle_orders_t data =
                 {vid, i,
                 p_stop.original_id(),
                 p_stop.travel_time(),

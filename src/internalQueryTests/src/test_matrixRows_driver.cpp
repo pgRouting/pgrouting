@@ -38,16 +38,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cstring>
 #include "./test_matrixRows_driver.h"
-
-#define DEBUG
-
 #include "./../../common/src/pgr_assert.h"
 
 bool do_pgr_test_matrixRows(
         Matrix_cell_t *matrix_rows,
         size_t total_rows,
         char ** log_msg,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     std::ostringstream err;
     try {
@@ -58,7 +55,7 @@ bool do_pgr_test_matrixRows(
 
         log << "Original: \n" <<
             std::setprecision(32);
-        for (const auto row: matrix) {
+        for (const auto row : matrix) {
             log << "start_vid = " << row.from_vid
                 << "\tend_vid = " << row.to_vid
                 << "\tagg_cost = " << row.cost;
@@ -67,7 +64,6 @@ bool do_pgr_test_matrixRows(
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());
         return true;
-
     } catch (AssertFailedException &exept) {
         log << exept.what() << "\n";
         *err_msg = strdup(log.str().c_str());

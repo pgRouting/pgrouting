@@ -20,7 +20,7 @@ pgr_edgeDisjointPaths
 Name
 ----
 
-``pgr_edgeDisjointPaths`` — Calculates the number of edge disjoint paths between two groups of vertices.
+``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
 
 .. warning::  This is a proposed function.
 
@@ -37,11 +37,11 @@ Characteristics:
 ----------------
 
 The main characterics are:
-  - Calculates the number of edge disjoint paths between two vertices.
-  - Returns 0 if source and destination are the same, or cannot be reached.
+  - Calculates the number of edge disjoint paths between any two groups of vertices.
+  - Returns nothing if source and destination are the same, or cannot be reached.
   - The graph can be directed or undirected.
   - One to many, many to one, many to many versions are also supported.
-  - Running time: :math:`O( V^3)`. Uses :ref:`_pgr_maxFlowPushRelabel`.
+  - Uses :ref:`pgr_maxFlowBoykovKolmogorov`.
 
 Signature Summary
 -----------------
@@ -67,14 +67,13 @@ Signature Summary
 Signatures
 ----------
 
-
 Minimal signature
 .................
 
 .. code-block:: none
 
-    pgr_maximumcardinalitymatching(edges_sql, source_vertex, destination_vertex)
-    RETURNS BIGINT
+    pgr_edgedisjointpaths(edges_sql, source_vertex, destination_vertex)
+    RETURNS SET OF (seq, path_seq, node, edge)
 
 The minimal signature the number of edge disjoint paths between `source_vertex` and `destination_vertex`.
 If the directed parameter is not specified, it is assumed that the graph is directed.
@@ -85,11 +84,93 @@ If the directed parameter is not specified, it is assumed that the graph is dire
    :start-after: -- q1
    :end-before: -- q2
 
+Edge Disjoint Paths One to One
+------------------------------
+
+The available signature calculates edge disjoint paths from one source vertex to one destination vertex.
+The graph can be directed or undirected.
+
+.. code-block:: none
+
+    pgr_edgedisjointpaths(edges_sql, source_vertex, destination_vertex)
+    RETURNS SET OF (seq, path_seq, node, edge)
+          OR EMPTY SET
+
+:Example:
+
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+Edge Disjoint Paths One to Many
+-------------------------------
+
+The available signature calculates the maximum flow from one source vertex to many sink vertices.
+
+.. code-block:: none
+
+    pgr_edgedisjointpaths(edges_sql, source_vertex, destination_vertices)
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge)
+          OR EMPTY SET
+
+:Example:
+
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q5
+   :end-before: -- q6
+
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
+Edge Disjoint Paths Many to One
+-------------------------------
+
+The available signature calculates the maximum flow from many source vertices to one sink vertex.
+
+.. code-block:: none
+
+    pgr_edgedisjointpaths(edges_sql, source_vertices, destination_vertex)
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge)
+      OR EMPTY SET
+
+:Example:
+
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+Edge Disjoint Paths Many to Many
+--------------------------------
+
+The available signature calculates the maximum flow from many sources to many sinks.
+
+.. code-block:: none
+
+    pgr_edgedisjointpaths(edges_sql, source_vertices, destination_vertices)
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+      OR EMPTY SET
+
+:Example:
+
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q7
+   :end-before: -- q8
+
+.. literalinclude:: doc-edgeDisjointPaths.queries
+   :start-after: -- q8
+   :end-before: -- q9
+
 Description of the Signatures
 =============================
-
-..
-   DELETE / ADD DEPENDING ON YOUR REQUIREMENTS
 
 Description of the SQL query
 ----------------------------
@@ -121,31 +202,6 @@ Column            Type                   Description
 **sink_vertex**   ``BIGINT``             Identifier(s) of the destination vertex(vertices).
 **directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Default TRUE.
 ================= ====================== =================================================
-
-
-Examples
-========
-
-The examples of this section are based on the :ref:`sampledata` network.
-
-:Example:
-
-.. literalinclude:: doc-edgeDisjointPaths.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-.. literalinclude:: doc-edgeDisjointPaths.queries
-   :start-after: -- q3
-   :end-before: -- q4
-
-.. literalinclude:: doc-edgeDisjointPaths.queries
-   :start-after: -- q4
-   :end-before: -- q5
-
-Future Work
-===========
-
-The function will be extended to return all the paths with the sequence of nodes.
 
 
 .. rubric:: Indices and tables

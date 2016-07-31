@@ -27,14 +27,15 @@
  *
  *  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_TSP_SRC_NEWTSP_DRIVER_H_
+#define SRC_TSP_SRC_NEWTSP_DRIVER_H_
 #pragma once
 
+#include "../../common/src/pgr_types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "../../common/src/pgr_types.h"
 
 void
 do_pgr_tsp(
@@ -60,3 +61,4 @@ do_pgr_tsp(
 }
 #endif
 
+#endif  // SRC_TSP_SRC_NEWTSP_DRIVER_H_

@@ -32,21 +32,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "edge_disjoint_paths_one_to_many_driver.h"
 
 #include <sstream>
 #include <vector>
+#include <set>
 
-#include "pgr_edgedisjointpaths.hpp"
-#include "pgr_maxflow.hpp"
-
+#include "./pgr_edgedisjointpaths.hpp"
+#include "./edge_disjoint_paths_one_to_many_driver.h"
 #include "../../common/src/pgr_alloc.hpp"
-#include "../../common/src/pgr_types.h"
 
 // #define DEBUG
-
 extern "C" {
+#include "./../../common/src/pgr_types.h"
 }
+
 
 void
 do_pgr_edge_disjoint_paths_one_to_many(
@@ -66,14 +65,16 @@ do_pgr_edge_disjoint_paths_one_to_many(
         std::set<int64_t> set_source_vertices;
         set_source_vertices.insert(source_vertex);
         std::set<int64_t> set_sink_vertices;
-        for(size_t i=0; i<size_sink_verticesArr; ++i){
+        for (size_t i = 0; i < size_sink_verticesArr; ++i) {
             set_sink_vertices.insert(sink_vertices[i]);
         }
         PgrEdgeDisjointPathsGraph<FlowGraph> G;
 
         // I use a directed graph since I'm dependant on directed graphs
 
-        G.create_edge_disjoint_paths_graph(data_edges, total_tuples, set_source_vertices, set_sink_vertices, directed);
+        G.create_edge_disjoint_paths_graph(data_edges, total_tuples,
+                                           set_source_vertices,
+                                           set_sink_vertices, directed);
         int64_t flow = G.boykov_kolmogorov();
         G.get_edge_disjoint_paths(path_elements, flow);
 
