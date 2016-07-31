@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
+#include <postgres.h>
 #include "catalog/pg_type.h"
 #include "executor/spi.h"
 
@@ -35,7 +35,8 @@ void
 pgr_send_error(int errcode) {
     switch (errcode) {
         case 1:
-            elog(ERROR, "Unexpected point(s) with same pid but different edge/fraction/side combination found.");
+            elog(ERROR, "Unexpected point(s) with same pid but different"
+                   " edge/fraction/side combination found.");
             break;
         case 2:
             elog(ERROR, "Internal: Unexpected mismatch count and sequence number on results");
