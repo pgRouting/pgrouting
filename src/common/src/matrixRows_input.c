@@ -24,9 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 // #define DEBUG
 #include "./debug_macro.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
-#include "./../../common/src/get_check_data.h"
+#include "./pgr_types.h"
+#include "./postgres_connection.h"
+#include "./get_check_data.h"
 #include "./time_msg.h"
 #include "./matrixRows_input.h"
 
@@ -38,7 +38,6 @@ void pgr_fetch_row(
         TupleDesc *tupdesc,
         Column_info_t info[3],
         Matrix_cell_t *distance) {
-
     distance->from_vid = pgr_SPI_getBigInt(tuple, tupdesc,  info[0]);
     distance->to_vid = pgr_SPI_getBigInt(tuple, tupdesc,  info[1]);
     distance->cost = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
@@ -129,5 +128,4 @@ void pgr_get_matrixRows(
 
     (*total_rows) = total_tuples;
     time_msg(" reading Edges", start_t, clock());
-
 }

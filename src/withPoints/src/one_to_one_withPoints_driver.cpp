@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
+#if defined(__MINGW32__) ||  defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -57,9 +57,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_withPoints(
-        pgr_edge_t  *edges,           size_t total_edges,
-        Point_on_edge_t  *points_p,   size_t total_points,
-        pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
+        pgr_edge_t *edges, size_t total_edges,
+        Point_on_edge_t *points_p, size_t total_points,
+        pgr_edge_t *edges_of_points, size_t total_edges_of_points,
         int64_t start_pid,
         int64_t end_pid,
         bool directed,
@@ -69,7 +69,7 @@ do_pgr_withPoints(
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** log_msg,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     std::ostringstream err;
     try {
@@ -81,7 +81,7 @@ do_pgr_withPoints(
         log << "ntering do_pgr_withPoints\n";
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
-        
+
         log << "total points" << points.size() << "\n";
 
         /*
@@ -123,7 +123,7 @@ do_pgr_withPoints(
 
         log << "extracted vertices: ";
         for (const auto v : vertices) {
-            log << v.id << ",";
+            log << v.id << ", ";
         }
         log << "\n";
 
@@ -169,7 +169,6 @@ do_pgr_withPoints(
 
         *log_msg = strdup(log.str().c_str());
         pgassert(!*err_msg);
-
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;

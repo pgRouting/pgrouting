@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_TSP_SRC_DMATRIX_H_
+#define SRC_TSP_SRC_DMATRIX_H_
 #pragma once
 
 #include <iostream>
@@ -37,7 +39,6 @@ class Tour;  // for tourCost
 
 class Dmatrix {
  public:
-
     Dmatrix() = default;
     explicit Dmatrix(const std::vector < Matrix_cell_t > &data_costs);
 
@@ -120,3 +121,5 @@ class Dmatrix {
 
 }  // namespace tsp
 }  // namespace pgrouting
+
+#endif  // SRC_TSP_SRC_DMATRIX_H_

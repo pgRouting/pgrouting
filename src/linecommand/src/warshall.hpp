@@ -18,9 +18,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 */
+
+#include <string>
+#include <vector>
 #include "./../../warshall/src/pgr_warshall.hpp"
 
-template <typename G> 
+template <typename G>
 void process_warshall(G &graph, const std::vector<std::string> &tokens) {
       std::string::size_type sz;
 
@@ -48,7 +51,6 @@ void process_warshall(G &graph, const std::vector<std::string> &tokens) {
             std::cout << seq++ << "\t" << postgres_rows[i].from_vid << "\t" <<  postgres_rows[i].to_vid << "\t" << postgres_rows[i].cost << "\n";
         }
 #endif  // TEST_POSTGRES
-        
       } else {
         std::cout << "unknown number of parameters\n";
       }

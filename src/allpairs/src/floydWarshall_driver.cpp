@@ -42,10 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_allpairs.hpp"
 #include "./floydWarshall_driver.h"
 #include "./../../common/src/pgr_assert.h"
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 
 void
@@ -95,7 +92,6 @@ do_pgr_floydWarshall(
 
         *log_msg = strdup(log.str().c_str());
         return;
-
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;

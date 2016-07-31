@@ -20,15 +20,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-void process_drivingDistance(G &graph, const std::vector<std::string> &tokens) {
 
+#include <deque>
+#include <string>
+#include <vector>
+
+void process_drivingDistance(G &graph, const std::vector<std::string> &tokens) {
       std::string::size_type sz;
       if (tokens[1].compare("from") != 0) {
         std::cout << "missing 'from' kewyword\n";
         return;
       }
 
-      std::vector< int64_t > sources; 
+      std::vector< int64_t > sources;
       unsigned int i_ptr = 2;
 
       for ( ; i_ptr < tokens.size(); ++i_ptr) {
@@ -88,12 +92,12 @@ void process_drivingDistance(G &graph, const std::vector<std::string> &tokens) {
           std::cout << "\t\t\tTHE OPUTPUT\n";
           std::cout << "seq\tfrom\tnode\tedge\tcost\n";
           for (const auto &path :  paths) {
-            if (sizeof(path) == 0) return; //no solution found
+            if (sizeof(path) == 0) return;  // no solution found
             path.print_path();
           }
         } else {
           std::cout << "Performing pgr_DrivingDistance for multiple sources with equi-cost\n";
-          Path path = equi_cost(paths); 
+          Path path = equi_cost(paths);
           std::cout << "\t\t\tTHE EquiCost OPUTPUT\n";
           std::cout << "seq\tfrom\tnode\tedge\tcost\n";
           path.print_path();

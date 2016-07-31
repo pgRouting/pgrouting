@@ -27,14 +27,16 @@
  *
  *  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
+#define SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
+
 #pragma once
 
+#include "../../common/src/pgr_types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "../../common/src/pgr_types.h"
 
 void
 do_pgr_eucledianTSP(
@@ -59,3 +61,5 @@ do_pgr_eucledianTSP(
 #ifdef __cplusplus
 }
 #endif
+
+#endif  // SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_

@@ -39,17 +39,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-#include <cassert>
+#include <algorithm>
+#include <set>
+
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
 #include "./withPoints_dd_driver.h"
 
-// #define DEBUG
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-
 #include "./../../common/src/pgr_alloc.hpp"
 
 
@@ -177,12 +175,10 @@ do_pgr_many_withPointsDD(
         *err_msg = strdup(log.str().c_str());
 #endif
         return 0;
-
     } catch ( ... ) {
         *err_msg = strdup("Caught unknown expection!");
         return 1000;
     }
-
 }
 
 
@@ -212,7 +208,7 @@ do_pgr_withPointsDD(
 
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         /*

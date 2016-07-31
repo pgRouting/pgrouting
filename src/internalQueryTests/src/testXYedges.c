@@ -54,7 +54,7 @@ PGDLLEXPORT Datum testXYedges(PG_FUNCTION_ARGS);
 
 static
 void
-process( char* edges_sql,
+process(char* edges_sql,
         bool *result_bool) {
     pgr_SPI_connect();
 

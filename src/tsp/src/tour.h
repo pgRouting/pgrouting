@@ -22,6 +22,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_TSP_SRC_TOUR_H_
+#define SRC_TSP_SRC_TOUR_H_
+#pragma once
+
 #include <stdlib.h>
 #include <algorithm>
 #include <numeric>
@@ -151,3 +156,5 @@ class Tour {
 
 }  // namespace tsp
 }  // namespace pgrouting
+
+#endif  // SRC_TSP_SRC_TOUR_H_

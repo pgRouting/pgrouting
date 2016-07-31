@@ -22,25 +22,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#define _ALPHA_H
+#ifndef SRC_ALPHA_SHAPE_SRC_ALPHA_DRIVER_H_
+#define SRC_ALPHA_SHAPE_SRC_ALPHA_DRIVER_H_
+#pragma once
 
-#ifdef __MINGW64__
-#define ELOG_H
-#endif
+#include <stddef.h>
+
 #include "../../common/src/pgr_types.h"
 
-typedef struct vertex
-{
+typedef struct vertex {
   double x;
   double y;
 } vertex_t;
 
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-                                                                     
+
   int alpha_shape(vertex_t *vertices, size_t count, double alpha,
                   vertex_t **res, size_t *res_count, char **err_msg);
 
@@ -48,4 +47,5 @@ extern "C"
 }
 #endif
 
-                                        
+
+#endif  // SRC_ALPHA_SHAPE_SRC_ALPHA_DRIVER_H_

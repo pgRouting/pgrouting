@@ -39,12 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./astarOneToMany_driver.h"
 
-// #define DEBUG
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-
 #include "./pgr_astar.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
@@ -61,7 +57,8 @@ pgr_astar(
         double epsilon,
         bool only_cost = false) {
     Pgr_astar< G > fn_astar;
-    fn_astar.astar(graph, paths, source, targets, heuristic, factor, epsilon, only_cost);
+    fn_astar.astar(graph, paths, source, targets,
+            heuristic, factor, epsilon, only_cost);
 }
 
 
@@ -85,7 +82,7 @@ void do_pgr_astarOneToMany(
         size_t *return_count,
         char ** log_msg,
         char ** err_msg,
-        bool normal){
+        bool normal) {
     std::ostringstream err;
     std::ostringstream log;
     try {
@@ -106,7 +103,9 @@ void do_pgr_astarOneToMany(
 
         std::deque< Path >paths;
         log << "Inserting target vertices into a c++ vector structure\n";
-        std::vector< int64_t > end_vids(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector< int64_t > end_vids(
+                end_vidsArr,
+                end_vidsArr + size_end_vidsArr);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -116,14 +115,16 @@ void do_pgr_astarOneToMany(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
             digraph.graph_insert_data(edges, total_edges);
-            pgr_astar(digraph, paths, start_vid, end_vids, heuristic, factor, epsilon, only_cost);
+            pgr_astar(digraph, paths, start_vid, end_vids,
+                    heuristic, factor, epsilon, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::xyUndirectedGraph undigraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
             undigraph.graph_insert_data(edges, total_edges);
-            pgr_astar(undigraph, paths, start_vid, end_vids, heuristic, factor, epsilon, only_cost);
+            pgr_astar(undigraph, paths, start_vid, end_vids,
+                    heuristic, factor, epsilon, only_cost);
         }
         if (!normal) {
             for (auto &path : paths) {
@@ -148,7 +149,7 @@ void do_pgr_astarOneToMany(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             log <<
-                "No paths found between Starting and any of the Ending vertices\n";
+                "No paths found\n";
             *err_msg = strdup(log.str().c_str());
             return;
         }
@@ -159,7 +160,6 @@ void do_pgr_astarOneToMany(
 
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());
-
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
