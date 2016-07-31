@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN edges_sql TEXT,
     IN source_vertex bigint,
-    IN sink_vertex bigint,
+    IN destination_vertex bigint,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -50,7 +50,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN edges_sql TEXT,
     IN source_vertex bigint,
-    IN sink_vertices ANYARRAY,
+    IN destination_vertices ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -69,7 +69,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN edges_sql TEXT,
     IN source_vertices ANYARRAY,
-    IN sink_vertex BIGINT,
+    IN destination_vertex BIGINT,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -88,7 +88,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN edges_sql TEXT,
     IN source_vertices ANYARRAY,
-    IN sink_vertices ANYARRAY,
+    IN destination_vertices ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
