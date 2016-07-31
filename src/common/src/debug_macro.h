@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_COMMON_SRC_DEBUG_MACRO_H_
 #define SRC_COMMON_SRC_DEBUG_MACRO_H_
-
 #pragma once
+
 #ifndef NDEBUG
 #include <postgres.h>
 

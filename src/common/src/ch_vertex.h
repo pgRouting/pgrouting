@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_types.h"
 #include "./identifiers.hpp"
+
 namespace pgrouting {
 namespace contraction {
 

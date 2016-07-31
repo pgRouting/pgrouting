@@ -35,7 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_COMMON_SRC_SIGNALHANDLER_H_
 #define SRC_COMMON_SRC_SIGNALHANDLER_H_
 
-#include <stddef.h>     // defines NULL
+// defines NULL
+#include <stddef.h>
 #include <csignal>
 #include <exception>
 

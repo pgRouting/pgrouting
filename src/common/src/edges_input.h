@@ -24,7 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_COMMON_SRC_EDGES_INPUT_H_
 #define SRC_COMMON_SRC_EDGES_INPUT_H_
-
 #pragma once
 
 #include "./pgr_types.h"

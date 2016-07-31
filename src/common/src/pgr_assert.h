@@ -13,11 +13,12 @@
 #ifndef  SRC_COMMON_SRC_PGR_ASSERT_H_
 #define  SRC_COMMON_SRC_PGR_ASSERT_H_
 
+#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
-
+#endif
 
 #include <string>
 #include <exception>
