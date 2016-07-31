@@ -171,9 +171,11 @@ get_edges_9_columns(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (Pgr_edge_xy_t *)palloc0(total_tuples * sizeof(Pgr_edge_xy_t));
+                (*edges) = (Pgr_edge_xy_t *)
+                    palloc0(total_tuples * sizeof(Pgr_edge_xy_t));
             else
-                (*edges) = (Pgr_edge_xy_t *)repalloc((*edges), total_tuples * sizeof(Pgr_edge_xy_t));
+                (*edges) = (Pgr_edge_xy_t *)
+                    repalloc((*edges), total_tuples * sizeof(Pgr_edge_xy_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -269,9 +271,11 @@ get_edges_5_columns(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_edge_t *)palloc0(total_tuples * sizeof(pgr_edge_t));
+                (*edges) = (pgr_edge_t *)
+                    palloc0(total_tuples * sizeof(pgr_edge_t));
             else
-                (*edges) = (pgr_edge_t *)repalloc((*edges), total_tuples * sizeof(pgr_edge_t));
+                (*edges) = (pgr_edge_t *)
+                    repalloc((*edges), total_tuples * sizeof(pgr_edge_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");

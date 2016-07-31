@@ -86,7 +86,9 @@
 #define pgassert(expr) \
     ((expr) \
      ? static_cast<void>(0) \
-     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )
+     : throw AssertFailedException( \
+         "AssertFailedException: " __STRING(expr) \
+         " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )
 #endif
 
 /*! @def pgassertwm(expr, msg)
@@ -107,7 +109,9 @@
 #define pgassertwm(expr, msg) \
     ((expr) \
      ? static_cast<void>(0) \
-     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace(msg) ) )
+     : throw AssertFailedException( \
+         "AssertFailedException: " __STRING(expr) \
+         " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace(msg) ) )
 #endif
 
 /*! @brief returns the execution path of the trace

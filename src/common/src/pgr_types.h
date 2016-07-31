@@ -28,9 +28,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #ifndef __cplusplus
+
+// for bool
 #include <postgres.h>
-#endif
+
+// For NULL & size_t
 #include <stdlib.h>
+#endif
+
+// For int64_t etc
+#include <stdint.h>
 
 typedef struct  {
     int64_t id;
