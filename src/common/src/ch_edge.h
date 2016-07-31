@@ -1,6 +1,3 @@
-#ifndef SRC_COMMON_SRC_CH_EDGE_H_
-#define SRC_COMMON_SRC_CH_EDGE_H_
-
 /*PGR-GNU*****************************************************************
 File: ch_edge.h
 
@@ -29,6 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_COMMON_SRC_CH_EDGE_H_
+#define SRC_COMMON_SRC_CH_EDGE_H_
+#pragma once
+
 #include <iostream>
 #include <sstream>
 #include "./ch_vertex.h"
