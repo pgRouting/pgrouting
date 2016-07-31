@@ -112,9 +112,11 @@ pgr_get_points(
 
         if (ntuples > 0) {
             if ((*points) == NULL)
-                (*points) = (Point_on_edge_t *)palloc0(total_tuples * sizeof(Point_on_edge_t));
+                (*points) = (Point_on_edge_t *)
+                    palloc0(total_tuples * sizeof(Point_on_edge_t));
             else
-                (*points) = (Point_on_edge_t *)repalloc((*points), total_tuples * sizeof(Point_on_edge_t));
+                (*points) = (Point_on_edge_t *)
+                    repalloc((*points), total_tuples * sizeof(Point_on_edge_t));
 
             if ((*points) == NULL) {
                 elog(ERROR, "Out of memory");
