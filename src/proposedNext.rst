@@ -24,11 +24,11 @@ Stable proposed Functions
       - They will likely officialy be part of the next mayor release:
 
         - The functions make use of ANY-INTEGER and ANY-NUMERICAL
-        - Name might not change.
-        - Signature might not change.
-        - Functionality might not change.
+        - Name might not change. (But still can)
+        - Signature might not change. (But still can)
+        - Functionality might not change. (But still can)
         - pgTap tests have being done.
-        - Documentation is finished.
+        - Documentation is finished. (But still can)
 
 - For TSP preprocessing 
 
@@ -50,17 +50,6 @@ Stable proposed Functions
   - :ref:`pgr_withPointsKSP` - K shortest paths with points.
   - :ref:`pgr_withPointsDD` - Driving distance.
 
-- New :ref:`maxFlow`
-
-  - :ref:`pgr_maxFlowPushRelabel` - Maximum flow using push&relabel algorithm.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Maximum flow using Edmonds&Karp algorithm.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Maximum flow using Boykov&Kolmogorov algorithm.
-
-- New :ref:`maxFlowApplications`
-
-  - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
-  - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
-
 ..
     to-here
 
@@ -71,6 +60,4 @@ Stable proposed Functions
     ../src/costMatrix/doc/pgr_dijkstraCostMatrix
     ../src/dijkstra/doc/pgr_dijkstraVia
     ../src/withPoints/doc/withPoints
-    ../src/max_flow/doc/maxFlow
-    ../src/max_flow/doc/maxFlowApplications
 

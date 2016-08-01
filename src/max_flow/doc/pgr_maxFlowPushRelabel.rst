@@ -31,7 +31,7 @@ Name
    keep if uses boost (this is a comment)
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/graph_theory_review.html#sec:network-flow-algorithms
+   :target: http://www.boost.org/doc/libs/1_61_0/libs/graph/doc/push_relabel_max_flow.html 
 
    Boost Graph Inside
 
@@ -66,25 +66,28 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source\_vertex,  sink\_vertex)
-    pgr_maxflowpushrelabel(edges_sql, source\_vertices,  sink\_vertex)
-    pgr_maxflowpushrelabel(edges_sql, source\_vertex,  sink\_vertices)
-    pgr_maxflowpushrelabel(edges_sql, source\_vertices,  sink\_vertices)
+    pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertex)
+    pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertex)
+    pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertices)
+    pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 
 Signatures
-==========
-
-Push-Relabel One to One
 -----------------------
+
+.. index::
+    single: maxFlowPushRelabel(One to One) - Proposed
+
+One to One
+.....................................................................
 
 The available signature calculates the maximum flow from one source vertex to one sink vertex.
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source\_vertex,  sink\_vertex)
+    pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertex)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -94,14 +97,18 @@ The available signature calculates the maximum flow from one source vertex to on
    :start-after: -- q1
    :end-before: -- q2
 
-Push-Relabel One to Many
-------------------------
+
+.. index::
+    single: maxFlowPushRelabel(One to Many) - Proposed
+
+One to Many
+.....................................................................
 
 The available signature calculates the maximum flow from one source vertex to many sink vertices.
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source\_vertex,  sink\_vertices)
+    pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -111,14 +118,18 @@ The available signature calculates the maximum flow from one source vertex to ma
    :start-after: -- q2
    :end-before: -- q3
 
-Push-Relabel Many to One
-------------------------
+
+.. index::
+    single: maxFlowPushRelabel(Many to One) - Proposed
+
+Many to One
+.....................................................................
 
 The available signature calculates the maximum flow from many source vertices to one sink vertex.
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source\_vertices,  sink\_vertex)
+    pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertex)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -128,14 +139,18 @@ The available signature calculates the maximum flow from many source vertices to
    :start-after: -- q3
    :end-before: -- q4
 
-Push-Relabel Many to Many
--------------------------
+
+.. index::
+    single: maxFlowPushRelabel(Many to Many) - Proposed
+
+Many to Many
+.....................................................................
 
 The available signature calculates the maximum flow from many sources to many sinks.
 
 .. code-block:: none
 
-    pgr_maxflowpushrelabel(edges_sql, source\_vertices,  sink\_vertices)
+    pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -185,6 +200,7 @@ Column            Type                   Description
 See Also
 --------
 
+* http://www.boost.org/doc/libs/1_61_0/libs/graph/doc/push_relabel_max_flow.html
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
 .. rubric:: Indices and tables

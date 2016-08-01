@@ -9,12 +9,12 @@
 
 .. _maxFlow:
 
-maxFlow - Maximum Flow Problems
+Maximum Flow
 ===================================
 
-  - :ref:`pgr_maxFlowPushRelabel` - Push&relabel algorithm implementation for maximum flow.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds&Karp algorithm implementation for maximum flow.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov&Kolmogorov algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov algorithm implementation for maximum flow.
 
 The maximum flow through the graph is guaranteed to be the same with all implementations,
 but the actual flow through each edge may vary.
@@ -60,9 +60,9 @@ The weighted directed graph, :math:`G(V,E)`, is defined as:
 Given:
 
 
+  - :math:`G(V,E)`
   - :math:`source\_vertex \in V` the source vertex
   - :math:`sink\_vertex \in V` the sink vertex
-  - :math:`G(V,E)`
 
 Then:
 
