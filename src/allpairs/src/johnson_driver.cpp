@@ -41,12 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./pgr_allpairs.hpp"
 #include "./johnson_driver.h"
-
-// #define DEBUG
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 // CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN,
 void

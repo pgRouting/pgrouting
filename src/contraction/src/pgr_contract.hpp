@@ -35,9 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <queue>
 #include <string>
 #include <functional>
-extern "C" {
-#include "postgres.h"
-}
 
 #include "./pgr_contractionGraph.hpp"
 #include "./pgr_deadEndContraction.hpp"

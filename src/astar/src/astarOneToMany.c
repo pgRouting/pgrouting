@@ -47,11 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./astarOneToMany_driver.h"
 
 PG_FUNCTION_INFO_V1(astarOneToMany);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 astarOneToMany(PG_FUNCTION_ARGS);
 
 
@@ -137,11 +133,7 @@ process(char* edges_sql,
     pgr_SPI_finish();
 }
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 astarOneToMany(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t            call_cntr;

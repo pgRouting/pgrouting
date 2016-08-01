@@ -71,23 +71,8 @@ Signature Summary
     pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertex)
     pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertices)
     pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertices)
-    RETURNS SET OF (id, source, target, flow, residual_capacity)
+    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
-
-
-..
-  This is a reminder of how your query looks like
-        pgr_maxFlowEdmondsKarp(
-            edges_sql TEXT,
-            source_vertex BIGINT,
-            sink_vertex BIGINT,
-            OUT id BIGINT,
-            OUT source BIGINT,
-            OUT target BIGINT,
-            OUT flow BIGINT,
-            OUT residual_capacity BIGINT
-        )
-
 
 Signatures
 ==========
@@ -100,7 +85,7 @@ The available signature calculates the maximum flow from one source vertex to on
 .. code-block:: none
 
     pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertex)
-    RETURNS SET OF (id, source, target, flow, residual_capacity)
+    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -117,7 +102,7 @@ The available signature calculates the maximum flow from one source vertex to ma
 .. code-block:: none
 
     pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertices)
-    RETURNS SET OF (id, source, target, flow, residual_capacity)
+    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -134,7 +119,7 @@ The available signature calculates the maximum flow from many source vertices to
 .. code-block:: none
 
     pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertex)
-    RETURNS SET OF (id, source, target, flow, residual_capacity)
+    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -151,7 +136,7 @@ The available signature calculates the maximum flow from many sources to many si
 .. code-block:: none
 
     pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertices)
-    RETURNS SET OF (id, source, target, flow, residual_capacity)
+    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -171,9 +156,9 @@ Description of the SQL query
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
-    ====================  ===================   =================================================
-    Column                Type                  Description
-    ====================  ===================   =================================================
+====================  ===================   =================================================
+Column                Type                  Description
+====================  ===================   =================================================
 **id**                ``ANY-INTEGER``       Identifier of the edge.
 **source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
 **target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
@@ -196,23 +181,6 @@ Column            Type                   Description
 **source_vertex** ``BIGINT``             Identifier of the source vertex(or vertices).
 **sink_vertex**   ``BIGINT``             Identifier of the sink vertex(or vertices).
 ================= ====================== =================================================
-
-
-Examples
-========
-
-The examples of this section are based on the :ref:`sampledata` network extended with the roads categorization.
-
-:Example:
-
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
 
 See Also
 --------

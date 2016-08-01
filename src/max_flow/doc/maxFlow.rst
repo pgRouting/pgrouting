@@ -7,9 +7,9 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _maxflow:
+.. _maxFlow:
 
-pgr_maxFlow - Maximum Flow Problems
+maxFlow - Maximum Flow Problems
 ===================================
 
   - :ref:`pgr_maxFlowPushRelabel` - Push&relabel algorithm implementation for maximum flow.
@@ -24,7 +24,8 @@ but the actual flow through each edge may vary.
 
         ./pgr_maxFlowPushRelabel
         ./pgr_maxFlowEdmondsKarp
-        ./pgr_maxFlowBoykovKolmogorv
+        ./pgr_maxFlowBoykovKolmogorov
+
 
 Problem definition
 ==================

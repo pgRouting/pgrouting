@@ -38,7 +38,8 @@ THE SOFTWARE.
 #endif
 
 
-#include "BiDirAStar.h"
+#include <math.h>
+#include "./BiDirAStar.h"
 
 BiDirAStar::BiDirAStar(void) {
 }

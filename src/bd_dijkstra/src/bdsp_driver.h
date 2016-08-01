@@ -23,8 +23,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef _BDSP_H
-#define _BDSP_H
+#ifndef SRC_BD_DIJKSTRA_SRC_BDSP_DRIVER_H_
+#define SRC_BD_DIJKSTRA_SRC_BDSP_DRIVER_H_
 
 #if defined(_MSC_VER) &&  _MSC_VER < 1600
 #define ELOG_H
@@ -34,19 +34,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 typedef pgr_edge_t edge_t;
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
-int bidirsp_wrapper( edge_t *edges,
-			unsigned int edge_count,
-			int maxNode,
-			int start_vertex,
-			int end_vertex,
-		    bool directed,
-		    bool has_reverse_cost,
+int bidirsp_wrapper(edge_t *edges,
+            unsigned int edge_count,
+            int maxNode,
+            int start_vertex,
+            int end_vertex,
+            bool directed,
+            bool has_reverse_cost,
             path_element_t **path,
             int *path_count,
-            char **err_msg
-            );
+            char **err_msg);
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif  // SRC_BD_DIJKSTRA_SRC_BDSP_DRIVER_H_

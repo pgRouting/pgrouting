@@ -51,8 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 PGDLLEXPORT Datum bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS);
 
-typedef struct edge_columns
-{
+typedef struct edge_columns {
   int id;
   int source;
   int target;
@@ -68,8 +67,7 @@ typedef struct edge_columns
 */
 static int
 fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
-                   bool has_reverse_cost)
-{
+                   bool has_reverse_cost) {
   edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
@@ -79,7 +77,6 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
       edge_columns->source == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->target == SPI_ERROR_NOATTRIBUTE ||
       edge_columns->cost == SPI_ERROR_NOATTRIBUTE) {
-
       elog(ERROR, "Error, query must return columns "
            "'id', 'source', 'target' and 'cost'");
       return -1;
@@ -88,7 +85,6 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
   if (SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->source) != INT4OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->target) != INT4OID ||
       SPI_gettypeid(SPI_tuptable->tupdesc, edge_columns->cost) != FLOAT8OID) {
-
       elog(ERROR, "Error, columns 'source', 'target' must be of type int4, 'cost' must be of type float8");
       return -1;
   }
@@ -126,8 +122,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
 
 static void
 fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
-           edge_columns_t *edge_columns, edge_t *target_edge)
-{
+           edge_columns_t *edge_columns, edge_t *target_edge) {
   Datum binval;
   bool isnull;
 
@@ -158,8 +153,7 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
 static int compute_bidirsp(char* sql, int64_t start_vertex,
                                  int64_t end_vertex, bool directed,
                                  bool has_reverse_cost,
-                                 path_element_t **path, int *path_count)
-{
+                                 path_element_t **path, int *path_count) {
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
@@ -223,29 +217,28 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
                          &edges[total_tuples - ntuples + t]);
           }
           SPI_freetuptable(tuptable);
-      }
-      else {
+      } else {
           moredata = FALSE;
       }
   }
 
-  //defining min and max vertex id
+  // defining min and max vertex id
 
   PGR_DBG("Total %i tuples", total_tuples);
 
-  for (z = 0; z<total_tuples; z++) {
-    if (edges[z].source<v_min_id) v_min_id = edges[z].source;
-    if (edges[z].source>v_max_id) v_max_id = edges[z].source;
-    if (edges[z].target<v_min_id) v_min_id = edges[z].target;
-    if (edges[z].target>v_max_id) v_max_id = edges[z].target;
-    //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
+  for (z = 0; z < total_tuples; z++) {
+    if (edges[z].source < v_min_id) v_min_id = edges[z].source;
+    if (edges[z].source > v_max_id) v_max_id = edges[z].source;
+    if (edges[z].target < v_min_id) v_min_id = edges[z].target;
+    if (edges[z].target > v_max_id) v_max_id = edges[z].target;
+    // PGR_DBG("%i <-> %i", v_min_id, v_max_id);
   }
 
   //::::::::::::::::::::::::::::::::::::
   //:: reducing vertex id (renumbering)
   //::::::::::::::::::::::::::::::::::::
-  for (z = 0; z<total_tuples; z++) {
-    //check if edges[] contains source and target
+  for (z = 0; z < total_tuples; z++) {
+    // check if edges[] contains source and target
     if (edges[z].source == start_vertex ||  edges[z].target == start_vertex)
       ++s_count;
     if (edges[z].source == end_vertex ||  edges[z].target == end_vertex)
@@ -253,7 +246,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
 
     edges[z].source -= v_min_id;
     edges[z].target -= v_min_id;
-    //PGR_DBG("%i - %i", edges[z].source, edges[z].target);
+    // PGR_DBG("%i - %i", edges[z].source, edges[z].target);
   }
 
   PGR_DBG("Total %i tuples", total_tuples);
@@ -271,7 +264,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
   start_vertex -= v_min_id;
   end_vertex   -= v_min_id;
 
-  //v_max_id -= v_min_id;
+  // v_max_id -= v_min_id;
 
   PGR_DBG("Calling bidirsp_wrapper(edges, %u, %ld, %ld, %ld, %d, %d, ...)\n",
         total_tuples, v_max_id + 2, start_vertex, end_vertex,
@@ -291,8 +284,8 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
-  for (z = 0; z<*path_count; z++) {
-    //PGR_DBG("vetex %i\n", (*path)[z].vertex_id);
+  for (z = 0; z < *path_count; z++) {
+    // PGR_DBG("vetex %i\n", (*path)[z].vertex_id);
     (*path)[z].vertex_id+= v_min_id;
   }
 
@@ -305,9 +298,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
 
 PG_FUNCTION_INFO_V1(bidir_dijkstra_shortest_path);
 PGDLLEXPORT Datum
-bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
-{
-
+bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   uint32_t                  call_cntr;
   uint32_t                  max_calls;
@@ -332,7 +323,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
       // verify that the first 5 args are not NULL
-      for (i = 0; i<5; i++)
+      for (i = 0; i < 5; i++)
         if (PG_ARGISNULL(i)) {
             elog(ERROR, "bidir_dijkstra_shortest_path(): Argument %i may not be NULL", i+1);
         }
@@ -409,8 +400,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS)
       pfree(nulls);
 
       SRF_RETURN_NEXT(funcctx, result);
-  }
-  else {   // do when there is no more left
+  } else {   // do when there is no more left
       PGR_DBG("Going to free path");
       if (path) free(path);
       SRF_RETURN_DONE(funcctx);

@@ -47,11 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./astarOneToMany_driver.h"
 
 PG_FUNCTION_INFO_V1(astarManyToOne);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 astarManyToOne(PG_FUNCTION_ARGS);
 
 
@@ -121,7 +117,7 @@ process(char* edges_sql,
             result_count,
             &log_msg,
             &err_msg,
-            false); // not normal
+            false);  // not normal
     time_msg(" processing pgr_astar(many to one)", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("LOG: %s\n", log_msg);
@@ -138,11 +134,7 @@ process(char* edges_sql,
     pgr_SPI_finish();
 }
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 astarManyToOne(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t            call_cntr;

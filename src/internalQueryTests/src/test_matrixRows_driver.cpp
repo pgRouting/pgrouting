@@ -38,9 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cstring>
 #include "./test_matrixRows_driver.h"
-
-#define DEBUG
-
 #include "./../../common/src/pgr_assert.h"
 
 bool do_pgr_test_matrixRows(
