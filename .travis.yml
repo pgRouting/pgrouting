@@ -65,6 +65,7 @@ addons:
 install:
   #- sudo /etc/init.d/postgresql stop
   #- sudo /etc/init.d/postgresql stop
+  #
   #- sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
   #- sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
 
