@@ -49,7 +49,7 @@ class Identifiers {
     size_t size() const { return m_ids.size(); }
     typedef typename std::set<T>::iterator iterator;
     typedef typename std::set<T>::const_iterator const_iterator;
-    //! \brief Returns a boolean value true or false, to indicate whether the set is empty
+    //! \brief Returns true when the set is empty
     inline bool empty() const { return m_ids.empty(); }
     inline void clear() { m_ids.clear(); }
     bool has(const T other) const;
@@ -76,7 +76,9 @@ class Identifiers {
     Identifiers<T>& operator *=(const Identifiers<T> &other);
     Identifiers<T>& operator -=(const Identifiers<T> &other);
     template<T>
-    friend std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers);
+    friend std::ostream& operator<<(
+            std::ostream& os,
+            const Identifiers<T>& identifiers);
 
  private:
     std::set<T> m_ids;
@@ -326,7 +328,7 @@ Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
 
 //! \brief Prints the set of identifiers
 template <typename T>
-std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) {
+std::ostream& operator<<(std::ostream& os, const Identifiers<T>& identifiers) {
     os << "{";
     for (auto identifier : identifiers.ids()) {
         os << identifier << ", ";

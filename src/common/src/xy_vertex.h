@@ -26,17 +26,6 @@
 #define SRC_COMMON_SRC_XY_VERTEX_H_
 #pragma once
 
-#if 0
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-#undef Min
-#undef Max
-#undef sgn
-#undef K
-#endif
-
 #include <CGAL/Simple_cartesian.h>
 #include <vector>
 
