@@ -116,12 +116,29 @@ typedef struct {
 
 
 typedef struct {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  bool going;
+  bool coming;
+  int64_t edge_id;
+} pgr_basic_edge_t;
+
+typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
     double cost;
     double reverse_cost;
 } pgr_edge_t;
+
+typedef struct {
+  int64_t edge;
+  int64_t source;
+  int64_t target;
+  int64_t flow;
+  int64_t residual_capacity;
+} pgr_flow_t;
 
 typedef struct {
     int seq;

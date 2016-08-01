@@ -40,6 +40,8 @@ then
     pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
     echo "MADE TEST **********************"
 fi
+
+pg_prove ../../src/max_flow/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
