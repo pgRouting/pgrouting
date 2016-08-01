@@ -39,7 +39,7 @@ env:
   - POSTGRESQL_VERSION=9.3
   - POSTGRESQL_VERSION=9.4
   - POSTGRESQL_VERSION=9.5
-  #- POSTGRESQL_VERSION=9.6
+  - POSTGRESQL_VERSION=9.6
 
 
 # excecuted. So things have to be tested oe by one.
@@ -63,11 +63,11 @@ addons:
 
 
 install:
-  #- sudo /etc/init.d/postgresql stop
-  #- sudo /etc/init.d/postgresql stop
-  #
-  #- sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
-  #- sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
+  - sudo /etc/init.d/postgresql stop
+  - sudo /etc/init.d/postgresql stop
+
+  - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
+  - sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
 
 before_script:
   ## Install doxygen
