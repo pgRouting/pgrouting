@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 -- q1
 SELECT * FROM pgr_edgedisjointpaths(
     'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
@@ -163,3 +167,5 @@ SELECT * FROM pgr_edgedisjointpaths(
 (16 rows)
 
 -- q9
+ROLLBACK;
+ROLLBACK

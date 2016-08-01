@@ -89,7 +89,7 @@ If the directed parameter is not specified, it is assumed that the graph is dire
 
 :Example:
 
-.. literalinclude:: doc-maximumCardinalityMatching.queries
+.. literalinclude:: doc-pgr_maximumCardinalityMatching.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -136,11 +136,11 @@ The examples of this section are based on the :ref:`sampledata` network.
 
 :Example:
 
-.. literalinclude:: doc-maximumCardinalityMatching.queries
+.. literalinclude:: doc-pgr_maximumCardinalityMatching.queries
    :start-after: -- q2
    :end-before: -- q3
 
-.. literalinclude:: doc-maximumCardinalityMatching.queries
+.. literalinclude:: doc-pgr_maximumCardinalityMatching.queries
    :start-after: -- q3
    :end-before: -- q4
 

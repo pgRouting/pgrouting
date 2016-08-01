@@ -80,7 +80,7 @@ If the directed parameter is not specified, it is assumed that the graph is dire
 
 :Example:
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -98,11 +98,11 @@ The graph can be directed or undirected.
 
 :Example:
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q1
    :end-before: -- q2
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -119,11 +119,11 @@ The available signature calculates the maximum flow from one source vertex to ma
 
 :Example:
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q5
    :end-before: -- q6
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q6
    :end-before: -- q7
 
@@ -140,11 +140,11 @@ The available signature calculates the maximum flow from many source vertices to
 
 :Example:
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q3
    :end-before: -- q4
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q4
    :end-before: -- q5
 
@@ -161,11 +161,11 @@ The available signature calculates the maximum flow from many sources to many si
 
 :Example:
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q7
    :end-before: -- q8
 
-.. literalinclude:: doc-edgeDisjointPaths.queries
+.. literalinclude:: doc-pgr_edgeDisjointPaths.queries
    :start-after: -- q8
    :end-before: -- q9
 

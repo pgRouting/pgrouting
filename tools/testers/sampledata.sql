@@ -10,8 +10,11 @@ SET client_min_messages = WARNING;
 ------------------------------------------------------------------------------------------------------
 
     DROP TABLE IF EXISTS edge_table;
+    DROP TABLE IF EXISTS edge_table_vertices_pgr;
     DROP table if exists pointsOfInterest;
     DROP TABLE IF EXISTS restrictions;
+    DROP TABLE IF EXISTS vertex_table;
+    DROP TABLE IF EXISTS categories;
 
 --EDGE TABLE CREATE
 CREATE TABLE edge_table (
@@ -21,6 +24,8 @@ CREATE TABLE edge_table (
     target BIGINT,
     cost FLOAT,
     reverse_cost FLOAT,
+    category_id INTEGER,
+    reverse_category_id INTEGER,
     x1 FLOAT,
     y1 FLOAT,
     x2 FLOAT,
@@ -28,24 +33,24 @@ CREATE TABLE edge_table (
     the_geom geometry
 );
 --EDGE TABLE ADD DATA
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,0,   2,1);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES (-1, 1,  2,1,   3,1);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES (-1, 1,  3,1,   4,1);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,1,   2,2);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,1,   3,2);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  0,2,   1,2);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  1,2,   2,2);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,2,   3,2);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  3,2,   4,2);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,2,   2,3);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,2,   3,3);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  2,3,   3,3);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1,-1,  3,3,   4,3);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  2,3,   2,4);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  4,2,   4,3);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  4,1,   4,2);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  0.5,3.5,  1.999999999999,3.5);
-INSERT INTO edge_table (cost,reverse_cost,x1,y1,x2,y2) VALUES ( 1, 1,  3.5,2.3,  3.5,4);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (3,1,  1, 1,  2,0,   2,1);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (3,2, -1, 1,  2,1,   3,1);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (2,1, -1, 1,  3,1,   4,1);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (2,4,  1, 1,  2,1,   2,2);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (1,4,  1,-1,  3,1,   3,2);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (4,2,  1, 1,  0,2,   1,2);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (4,1,  1, 1,  1,2,   2,2);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (2,1,  1, 1,  2,2,   3,2);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (1,3,  1, 1,  3,2,   4,2);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (1,4,  1, 1,  2,2,   2,3);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (1,2,  1,-1,  3,2,   3,3);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (2,3,  1,-1,  2,3,   3,3);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (2,4,  1,-1,  3,3,   4,3);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (3,1,  1, 1,  2,3,   2,4);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (3,4,  1, 1,  4,2,   4,3);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (3,3,  1, 1,  4,1,   4,2);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (1,2,  1, 1,  0.5,3.5,  1.999999999999,3.5);
+INSERT INTO edge_table (category_id,reverse_category_id,  cost,reverse_cost,x1,y1,x2,y2) VALUES (4,1,  1, 1,  3.5,2.3,  3.5,4);
 
 UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
 dir = CASE WHEN (cost>0 and reverse_cost>0) THEN 'B'   -- both ways
@@ -107,3 +112,53 @@ COPY restrictions (rid, to_cost, target_id, from_edge, via_path) FROM stdin WITH
 \.
 --RESTRICTIONS END
 
+CREATE TABLE categories (
+    category_id INTEGER,
+    category text,
+    capacity BIGINT
+);
+
+INSERT INTO categories VALUES
+(1, 'Category 1', 130),
+(2, 'Category 2', 100),
+(3, 'Category 3',  80),
+(4, 'Category 4',  50);
+
+--CATEGORIES END
+
+/*
+
+drop table if exists category;
+CREATE TABLE category (
+    category text,
+    capacity BIGINT
+);
+
+INSERT INTO category VALUES
+('Motorway', 130),
+('Primary', 100),
+('Regional', 80),
+('Local', 50);
+
+ALTER TABLE edge_table ADD COLUMN category TEXT;
+ALTER TABLE edge_table ADD COLUMN reverse_category TEXT;
+
+UPDATE edge_table SET category = 'Regional', reverse_category = 'Motorway' WHERE id = 1;
+UPDATE edge_table SET category = 'Regional', reverse_category = 'Primary' WHERE id = 2;
+UPDATE edge_table SET category = 'Primary', reverse_category = 'Motorway' WHERE id = 3;
+UPDATE edge_table SET category = 'Primary', reverse_category = 'Local' WHERE id = 4;
+UPDATE edge_table SET category = 'Motorway', reverse_category = 'Local' WHERE id = 5;
+UPDATE edge_table SET category = 'Local', reverse_category = 'Primary' WHERE id = 6;
+UPDATE edge_table SET category = 'Local', reverse_category = 'Motorway' WHERE id = 7;
+UPDATE edge_table SET category = 'Primary', reverse_category = 'Motorway' WHERE id = 8;
+UPDATE edge_table SET category = 'Motorway', reverse_category = 'Regional' WHERE id = 9;
+UPDATE edge_table SET category = 'Motorway', reverse_category = 'Local' WHERE id = 10;
+UPDATE edge_table SET category = 'Motorway', reverse_category = 'Primary' WHERE id = 11;
+UPDATE edge_table SET category = 'Primary', reverse_category = 'Regional' WHERE id = 12;
+UPDATE edge_table SET category = 'Primary', reverse_category = 'Local' WHERE id = 13;
+UPDATE edge_table SET category = 'Regional', reverse_category = 'Motorway' WHERE id = 14;
+UPDATE edge_table SET category = 'Regional', reverse_category = 'Local' WHERE id = 15;
+UPDATE edge_table SET category = 'Regional', reverse_category = 'Regional' WHERE id = 16;
+UPDATE edge_table SET category = 'Motorway', reverse_category = 'Primary' WHERE id = 17;
+UPDATE edge_table SET category = 'Local', reverse_category = 'Motorway' WHERE id = 18;
+*/

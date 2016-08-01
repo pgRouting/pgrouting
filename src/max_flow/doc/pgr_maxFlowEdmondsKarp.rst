@@ -90,7 +90,7 @@ The available signature calculates the maximum flow from one source vertex to on
 
 :Example:
 
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-pgr_maxFlowEdmondsKarp.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -107,7 +107,7 @@ The available signature calculates the maximum flow from one source vertex to ma
 
 :Example:
 
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-pgr_maxFlowEdmondsKarp.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -124,7 +124,7 @@ The available signature calculates the maximum flow from many source vertices to
 
 :Example:
 
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-pgr_maxFlowEdmondsKarp.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -141,7 +141,7 @@ The available signature calculates the maximum flow from many sources to many si
 
 :Example:
 
-.. literalinclude:: doc-maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-pgr_maxFlowEdmondsKarp.queries
    :start-after: -- q4
    :end-before: -- q5
 
