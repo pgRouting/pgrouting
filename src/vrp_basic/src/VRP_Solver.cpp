@@ -28,19 +28,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./VRP_Solver.h"
 #include <algorithm>
-<<<<<<< HEAD
 #include <math.h>
-=======
->>>>>>> upstream/gsoc-flow
 #include <utility>
 #include <map>
 #include <set>
 #include <string>
 #include <vector>
-<<<<<<< HEAD
-=======
-#include "./VRP_Solver.h"
->>>>>>> upstream/gsoc-flow
 
 #undef PGR_LOGGER_ON
 #define PGR_LOGGER_LOC
