@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_maximumcardinalitymatching(
+SELECT * FROM pgr_maximumCardinalityMatching(
     'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table'
 );
  id | edge_id | source | target 
@@ -19,7 +19,7 @@ SELECT * FROM pgr_maximumcardinalitymatching(
 (8 rows)
 
 -- q2
-SELECT * FROM pgr_maximumcardinalitymatching(
+SELECT * FROM pgr_maximumCardinalityMatching(
     'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
     directed := false
 );

@@ -59,24 +59,27 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source_vertex,  sink_vertex)
-    pgr_maxflowedmondskarp(edges_sql, source_vertices,  sink_vertex)
-    pgr_maxflowedmondskarp(edges_sql, source_vertex,  sink_vertices)
-    pgr_maxflowedmondskarp(edges_sql, source_vertices,  sink_vertices)
+    pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertex)
+    pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertex)
+    pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertices)
+    pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 Signatures
-==========
-
-Edmonds-Karp One to One
 -----------------------
 
-The available signature calculates the maximum flow from one source vertex to one sink vertex.
+.. index::
+    single: maxFlowEdmondsKarp(One to One) - Proposed
+
+One to One
+.................................................
+
+Calculates the maximum flow from one source vertex to one sink vertex on a `directed` graph.
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertex)
+    pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertex)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -86,14 +89,17 @@ The available signature calculates the maximum flow from one source vertex to on
    :start-after: -- q1
    :end-before: -- q2
 
-Edmonds-Karp One to Many
-------------------------
+.. index::
+    single: maxFlowEdmondsKarp(One to Many) - Proposed
 
-The available signature calculates the maximum flow from one source vertex to many sink vertices.
+One to Many
+.................................................
+
+Calculates the maximum flow from one source vertex to many sink vertices on a `directed` graph.
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertices)
+    pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -103,14 +109,17 @@ The available signature calculates the maximum flow from one source vertex to ma
    :start-after: -- q2
    :end-before: -- q3
 
-Edmonds-Karp Many to One
-------------------------
+.. index::
+    single: maxFlowEdmondsKarp(Many to One) - Proposed
 
-The available signature calculates the maximum flow from many source vertices to one sink vertex.
+Many to One
+.................................................
+
+Calculates the maximum flow from many source vertices to one sink vertex on a `directed` graph.
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertex)
+    pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertex)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -120,14 +129,17 @@ The available signature calculates the maximum flow from many source vertices to
    :start-after: -- q3
    :end-before: -- q4
 
-Edmonds-Karp Many to Many
--------------------------
+.. index::
+    single: maxFlowEdmondsKarp(Many to Many) - Proposed
 
-The available signature calculates the maximum flow from many sources to many sinks.
+Many to Many
+.................................................
+
+Calculates the maximum flow from many sources to many sinks on a `directed` graph.
 
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertices)
+    pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -137,14 +149,13 @@ The available signature calculates the maximum flow from many sources to many si
    :start-after: -- q4
    :end-before: -- q5
 
-Description of the Signatures
-=============================
 
-..
-   DELETE / ADD DEPENDING ON YOUR REQUIREMENTS
+
+Description of the Signatures
+-----------------------------------------------
 
 Description of the SQL query
-----------------------------
+.................................................
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -164,7 +175,7 @@ Where:
 
 
 Description of the parameters of the signatures
------------------------------------------------
+.................................................
 
 ================= ====================== =================================================
 Column            Type                   Description
@@ -174,9 +185,16 @@ Column            Type                   Description
 **sink_vertex**   ``BIGINT``             Identifier of the sink vertex(or vertices).
 ================= ====================== =================================================
 
+Description of the return values
+.................................................
+
+TODO 
+
+
 See Also
 --------
 
+* :ref:`maxFlow`
 * http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 

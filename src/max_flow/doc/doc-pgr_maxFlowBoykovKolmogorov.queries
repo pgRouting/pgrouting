@@ -3,7 +3,7 @@ BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -26,7 +26,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 (7 rows)
 
 -- q2
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -54,7 +54,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 (12 rows)
 
 -- q3
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -75,7 +75,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 (5 rows)
 
 -- q4
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id,
             source,
             target,

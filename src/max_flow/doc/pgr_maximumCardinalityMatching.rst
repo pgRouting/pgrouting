@@ -62,8 +62,8 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maximumcardinalitymatching(edges_sql)
-    pgr_maximumcardinalitymatching(edges_sql, directed)
+    pgr_MaximumCardinalityMatching(edges_sql)
+    pgr_MaximumCardinalityMatching(edges_sql, directed)
 
     RETURNS SET OF (id, edge_id, source, target)
         OR EMPTY SET
@@ -72,13 +72,17 @@ Signature Summary
 Signatures
 ----------
 
+.. index::
+    single: MaximumCardinalityMatching(Minimal Use) - Proposed
+
+
 
 Minimal signature
 ....................
 
 .. code-block:: none
 
-    pgr_maximumcardinalitymatching(edges_sql)
+    pgr_MaximumCardinalityMatching(edges_sql)
     RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
 
 The minimal signature calculates one possible maximum cardinality matching on a `directed` graph.
@@ -89,12 +93,15 @@ The minimal signature calculates one possible maximum cardinality matching on a 
    :start-after: -- q1
    :end-before: -- q2
 
+.. index::
+    single: MaximumCardinalityMatching(Complete Signature) - Proposed
+
 Complete signature
 ....................
 
 .. code-block:: none
 
-    pgr_maximumcardinalitymatching(edges_sql, directed)
+    pgr_MaximumCardinalityMatching(edges_sql, directed)
     RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
 
 
@@ -128,8 +135,9 @@ Column                Type                  Description
 ====================  ===================   =================================================
 
 Where:
-    - :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-    - :ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION
+
+  - :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+  - :ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION
 
 Description of the parameters of the signatures
 ...........................................................

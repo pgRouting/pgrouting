@@ -5,7 +5,7 @@ BEGIN;
 SET client_min_messages TO NOTICE;
 
 \echo -- q1
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -18,7 +18,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 );
 
 \echo -- q2
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -31,7 +31,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 );
 
 \echo -- q3
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -44,7 +44,7 @@ SELECT * FROM pgr_maxflowboykovkolmogorov(
 );
 
 \echo -- q4
-SELECT * FROM pgr_maxflowboykovkolmogorov(
+SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id,
             source,
             target,

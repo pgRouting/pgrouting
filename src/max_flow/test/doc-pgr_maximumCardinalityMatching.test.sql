@@ -4,12 +4,12 @@ BEGIN;
 SET client_min_messages TO NOTICE;
 
 \echo -- q1
-SELECT * FROM pgr_maximumcardinalitymatching(
+SELECT * FROM pgr_maximumCardinalityMatching(
     'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table'
 );
 
 \echo -- q2
-SELECT * FROM pgr_maximumcardinalitymatching(
+SELECT * FROM pgr_maximumCardinalityMatching(
     'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
     directed := false
 );

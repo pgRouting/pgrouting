@@ -132,7 +132,7 @@ The available signature calculates the maximum flow from one source vertex to ma
 
 
 .. index::
-    single: edgeDisjointPaths(Many to Many) - Proposed
+    single: edgeDisjointPaths(Many to One) - Proposed
 
 Many to One
 .......................................
