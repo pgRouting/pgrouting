@@ -9,8 +9,8 @@
 
 .. _pgr_maximumCardinalityMatching:
 
-pgr_maximumCardinalityMatching
-==============================
+pgr_maximumCardinalityMatching - Proposed
+============================================================
 
 
 Name

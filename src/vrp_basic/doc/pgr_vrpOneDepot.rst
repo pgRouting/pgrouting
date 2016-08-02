@@ -10,7 +10,7 @@
 .. _pgr_vrp_basic:
 
 
-pgr_vrpOneDepot 
+pgr_vrpOneDepot - Proposed
 ===============================================================================
 
 

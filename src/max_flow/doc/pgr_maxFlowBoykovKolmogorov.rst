@@ -14,8 +14,8 @@
 
 .. _pgr_maxFlowBoykovKolmogorov:
 
-pgr_maxFlowBoykovKolmogorov
-===========================
+pgr_maxFlowBoykovKolmogorov - Proposed
+======================================================
 
 
 Name

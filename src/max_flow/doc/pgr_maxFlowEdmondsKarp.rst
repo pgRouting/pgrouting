@@ -10,8 +10,8 @@
 
 .. _pgr_maxFlowEdmondsKarp:
 
-pgr_maxFlowEdmondsKarp
-======================
+pgr_maxFlowEdmondsKarp - Proposed
+============================================
 
 
 Name

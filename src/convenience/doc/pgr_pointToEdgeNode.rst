@@ -9,7 +9,7 @@
 
 .. _pgr_point_to_edgenode:
 
-pgr_pointToEdgeNode
+pgr_pointToEdgeNode - Proposed
 ==============================================================================
 
 .. index::

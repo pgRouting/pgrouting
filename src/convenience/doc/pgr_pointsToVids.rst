@@ -9,7 +9,7 @@
 
 .. _pgr_points_to_vids:
 
-pgr_pointsToVids
+pgr_pointsToVids - Proposed
 ==============================================================================
 
 .. index::

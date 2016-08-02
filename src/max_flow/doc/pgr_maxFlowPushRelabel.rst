@@ -14,8 +14,8 @@
 
 .. _pgr_maxFlowPushRelabel:
 
-pgr_maxFlowPushRelabel
-======================
+pgr_maxFlowPushRelabel Proposed
+============================================
 
 
 Name

@@ -9,7 +9,7 @@
 
 .. _pgr_gsocvrppdtw:
 
-pgr_gsoc_vrppdtw
+pgr_gsoc_vrppdtw - Proposed
 ===============================================================================
 
 
@@ -113,7 +113,6 @@ Column             Type            Description
 Examples
 -------------------------------------------------------------------------------
 
-
 .. rubric:: Example: Total number of rows returned
 
 .. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
@@ -130,5 +129,6 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
+* The examples use :ref:`pickDeliverData`
 * current implementation is a wrapper of :ref:`pgr_pickDeliver`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem
