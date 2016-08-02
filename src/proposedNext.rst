@@ -16,7 +16,10 @@ Stable proposed Functions
     from-here
     :ref:`proposedNext`
 
-.. note::
+..
+    begin-warning
+
+.. warning::
 
     This are proposed functions for next mayor release.
 
@@ -27,15 +30,12 @@ Stable proposed Functions
         - Name might not change. (But still can)
         - Signature might not change. (But still can)
         - Functionality might not change. (But still can)
-        - pgTap tests have being done.
-        - Documentation is finished. (But still can)
+        - pgTap tests have being done. But might need more.
+        - Documentation might need refinement.
 
-- For TSP preprocessing 
+..
+    end-warning
 
-  - :ref:`CostMatrix`
-
-    - :ref:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to calculate a cost matrix.
-    - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
 
 - As part of the :ref:`dijkstra`
 
@@ -50,14 +50,22 @@ Stable proposed Functions
   - :ref:`pgr_withPointsKSP` - K shortest paths with points.
   - :ref:`pgr_withPointsDD` - Driving distance.
 
+
+- A new Section
+
+  - :ref:`CostMatrix`
+
+
 ..
     to-here
 
 .. toctree::
     :hidden:
 
-    ../src/costMatrix/doc/costMatrix
     ../src/costMatrix/doc/pgr_dijkstraCostMatrix
     ../src/dijkstra/doc/pgr_dijkstraVia
+
     ../src/withPoints/doc/withPoints
+
+    ../src/costMatrix/doc/costMatrix
 

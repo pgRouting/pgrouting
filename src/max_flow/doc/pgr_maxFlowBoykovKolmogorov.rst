@@ -24,14 +24,11 @@ Name
 ``pgr_maxFlowBoykovKolmogorov`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
 
-.. warning::  These are proposed functions.
 
-    - Are not officially in the release.
-    - Names could change.
-    - Signatures could change.
-    - Needs testing.
-    - Functionality could change.
-    - Documentation could be incomplete.
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg

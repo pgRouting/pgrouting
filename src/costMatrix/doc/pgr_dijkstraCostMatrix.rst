@@ -17,6 +17,13 @@ Name
 
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
 
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+
+
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 

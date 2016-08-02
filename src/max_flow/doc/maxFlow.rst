@@ -19,14 +19,10 @@ Maximum Flow
 The maximum flow through the graph is guaranteed to be the same with all implementations,
 but the actual flow through each edge may vary.
 
-.. warning::  These are proposed functions.
 
-    - Are not officially in the release.
-    - Names could change.
-    - Signatures could change.
-    - Needs testing.
-    - Functionality could change.
-    - Documentation could be incomplete.
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 .. toctree::
         :hidden:

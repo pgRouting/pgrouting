@@ -9,12 +9,16 @@
 
 .. _pgr_vrp_basic:
 
+
 pgr_vrpOneDepot 
 ===============================================================================
 
-No documentation available from the original developer
 
-.. warning:: this function is experimental and there is no assurance that it will work
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+No documentation available from the original developer
 
 * :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem

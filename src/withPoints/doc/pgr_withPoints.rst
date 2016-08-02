@@ -18,9 +18,10 @@ Name
 
 ``pgr_withPoints`` - Returns the shortest path in a graph with additional temporary vertices.
 
-.. note::  This is a proposed function
 
-     - Is not officially in the release.
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg

@@ -17,14 +17,11 @@ Applications of Maximum Flow
 
 Maximum flow algorithms provide solutions to other graph problems.
 
-.. warning::  These are proposed functions.
 
-    - Are not officially in the release.
-    - Names could change.
-    - Signatures could change.
-    - Needs testing.
-    - Functionality could change.
-    - Documentation could be incomplete.
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 
 .. toctree::
         :hidden:

@@ -18,15 +18,9 @@ Name
 
 ``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
 
-
-.. warning::  These are proposed functions.
-
-    - Are not officially in the release.
-    - Names could change.
-    - Signatures could change.
-    - Needs testing.
-    - Functionality could change.
-    - Documentation could be incomplete.
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg

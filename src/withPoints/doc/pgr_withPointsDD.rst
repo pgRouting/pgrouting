@@ -18,9 +18,10 @@ Name
 
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
 
-.. note::  This is a proposed function
 
-     - Is not officially in the release.
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg

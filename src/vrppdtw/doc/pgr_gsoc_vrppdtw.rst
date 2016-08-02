@@ -16,12 +16,11 @@ pgr_gsoc_vrppdtw
 Name
 -------------------------------------------------------------------------------
 
-``pgr_gsoc_vrppdtw`` — Returns optimized  solution
+``pgr_gsoc_vrppdtw`` — Returns a solution for `Pick and Delivery` with `time windows` Vehicle Routing Problem
 
-.. warning::  This is a proposed function.
-
-   - Is not officially in the current release.
-   - The implementation currently is a wrapper of :ref:`pgr_pickDeliver`
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 Signature Summary

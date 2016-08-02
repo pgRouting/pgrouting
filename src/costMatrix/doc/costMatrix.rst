@@ -15,11 +15,12 @@ Cost Matrix
   - :ref:`pgr_dijkstraCostMatrix`
   - :ref:`pgr_withPointsCostMatrix`
 
-.. toctree::
-    :hidden:
 
-    ./pgr_dijkstraCostMatrix
-    ./pgr_withPointsCostMatrix
+.. include:: ../../proposedNext.rst
+    :start-after: begin-warning
+    :end-before: end-warning
+
+
  
 General Information
 -------------------------------------------------------------------------------

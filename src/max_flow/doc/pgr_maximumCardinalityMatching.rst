@@ -19,14 +19,9 @@ Name
 ``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
 
 
-.. warning::  These are proposed functions.
-
-    - Are not officially in the release.
-    - Names could change.
-    - Signatures could change.
-    - Needs testing.
-    - Functionality could change.
-    - Documentation could be incomplete.
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
