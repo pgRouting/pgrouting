@@ -17,7 +17,7 @@ echo "User $PGUSER"
 if test "$POSTGRESQL_VERSION" = "9.6" ; then
 
     echo "Installing postgresql 9.6 & postgis for 9.6 pgtap & pg_prove"
-    sudo apt-get install -y postgresql-9.6 postgresql-9.6-postgis
+    sudo apt-get install -y postgresql-9.6 postgresql-9.6-postgis-2.2
     #sudo apt-get install -y pgtap libtap-parser-sourcehandler-pgtap-perl
     sudo cp /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/pg_config /usr/bin/pg_config
     sudo /etc/init.d/postgresql stop
