@@ -32,7 +32,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Topology
 
-- Before you test a routing function use this query to icreate a topology fill the source and target columns.
+- Before you test a routing function use this query to create a topology (fills the ``source`` and ``target`` columns).
 
 .. literalinclude:: ../../../tools/testers/sampledata.sql
    :start-after: --EDGE TABLE TOPOLOGY
@@ -65,7 +65,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Vertex table
 
-- Used in some depracated signatures or depracated functions.
+- Used in some deprecated signatures or deprecated functions.
 
 .. literalinclude:: ../../../tools/testers/sampledata.sql
    :start-after: --CATEGORIES END
