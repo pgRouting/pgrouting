@@ -23,15 +23,19 @@ Name
 
 ``pgr_maxFlowBoykovKolmogorov`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
-.. warning::  This is a proposed function.
 
-     - Is not officially in the current release
+.. warning::  These are proposed functions.
 
-..
-   keep if uses boost (this is a comment)
+    - Are not officially in the release.
+    - Names could change.
+    - Signatures could change.
+    - Needs testing.
+    - Functionality could change.
+    - Documentation could be incomplete.
+
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/graph_theory_review.html#sec:network-flow-algorithms
+   :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
 
@@ -42,9 +46,7 @@ Synopsis
 Calculates the maximum flow in a directed graph from a source node to a sink node.
 Edges must be weighted with non-negative capacities.
 Developed by Boykov and Kolmogorov.
-Implementation details_.
 
-.. _details: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
 Characteristics:
 ----------------
@@ -186,6 +188,7 @@ Column            Type                   Description
 See Also
 --------
 
+* http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 * http://www.csd.uwo.ca/~yuri/Papers/pami04.pdf
 
 .. rubric:: Indices and tables

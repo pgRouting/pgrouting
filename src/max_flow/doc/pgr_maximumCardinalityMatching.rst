@@ -7,11 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-   INSTRUCTIONS
-   - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropiate values
-   - one file / function,  may signatures of the same function go in the same file
-
 .. _pgr_maximumCardinalityMatching:
 
 pgr_maximumCardinalityMatching
@@ -21,14 +16,18 @@ pgr_maximumCardinalityMatching
 Name
 ----
 
-``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph. Implemented by Boost Graph Library.
+``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
 
-.. warning::  This is a proposed function.
 
-     - Is not officially in the current release
+.. warning::  These are proposed functions.
 
-..
-   keep if uses boost (this is a comment)
+    - Are not officially in the release.
+    - Names could change.
+    - Signatures could change.
+    - Needs testing.
+    - Functionality could change.
+    - Documentation could be incomplete.
+
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
@@ -40,15 +39,17 @@ Synopsis
 -------------------------------------------------------------------------------
 
 Calculates a maximum cardinality matching in a directed/undirected graph.
-Implementation details_.
 
-.. _details: http://www.boost.org/libs/graph/doc/maximum_matching.html
+- A matching or independent edge set in a graph is a set of edges without common vertices.
+- A maximum matching is a matching that contains the largest possible number of edges.
+- There may be many maximum matchings.
+
 
 Characteristics:
 ----------------
 
 The main characterics are:
-  - Calculates one possible maximum cardinality matching in a graph.
+  - Calculates **one** possible maximum cardinality matching in a graph.
   - The graph can be directed or undirected.
   - Running time: :math:`O( E*V * \alpha(E,V))`
   - :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
@@ -58,15 +59,11 @@ The main characterics are:
 Signature Summary
 -----------------
 
-..
-   If the function has more than one signature
-   Remove the unnecessary parts of the signature, just leaving the name of the parameters
-   Like in these examples
 
 .. code-block:: none
 
     pgr_maximumcardinalitymatching(edges_sql)
-    pgr_maximumcardinalitymatching(edges_sql, directed:=true)
+    pgr_maximumcardinalitymatching(edges_sql, directed)
 
     RETURNS SET OF (id, edge_id, source, target)
         OR EMPTY SET
@@ -77,15 +74,14 @@ Signatures
 
 
 Minimal signature
-.................
+....................
 
 .. code-block:: none
 
     pgr_maximumcardinalitymatching(edges_sql)
     RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
 
-The minimal signature calculates one possible maximum cardinality matching.
-If the directed parameter is not specified, it is assumed that the graph is directed.
+The minimal signature calculates one possible maximum cardinality matching on a `directed` graph.
 
 :Example:
 
@@ -93,14 +89,31 @@ If the directed parameter is not specified, it is assumed that the graph is dire
    :start-after: -- q1
    :end-before: -- q2
 
-Description of the Signatures
-=============================
+Complete signature
+....................
 
-..
-   DELETE / ADD DEPENDING ON YOUR REQUIREMENTS
+.. code-block:: none
+
+    pgr_maximumcardinalitymatching(edges_sql, directed)
+    RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
+
+
+The complete signature calculates one possible maximum cardinality matching.
+
+:Example:
+
+.. literalinclude:: doc-pgr_maximumCardinalityMatching.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+
+
+Description of the Signatures
+--------------------------------------------------------
+
 
 Description of the SQL query
-----------------------------
+...........................................................
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -119,7 +132,7 @@ Where:
     - :ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION
 
 Description of the parameters of the signatures
------------------------------------------------
+...........................................................
 
 ================= ====================== =================================================
 Column            Type                   Description
@@ -128,27 +141,24 @@ Column            Type                   Description
 **directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Default TRUE.
 ================= ====================== =================================================
 
+Description of the Result
+...........................................................
 
-Examples
-========
+..
+   TODO
 
-The examples of this section are based on the :ref:`sampledata` network.
 
-:Example:
+TODO
 
-.. literalinclude:: doc-pgr_maximumCardinalityMatching.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-.. literalinclude:: doc-pgr_maximumCardinalityMatching.queries
-   :start-after: -- q3
-   :end-before: -- q4
 
 
 See Also
 --------
 
+* :ref:`maxFlowApplications`
+* http://www.boost.org/libs/graph/doc/maximum_matching.html
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
+* https://en.wikipedia.org/wiki/Ackermann_function
 
 .. rubric:: Indices and tables
 

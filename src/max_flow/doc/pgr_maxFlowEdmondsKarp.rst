@@ -7,10 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-   INSTRUCTIONS
-   - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropiate values
-   - one file / function,  may signatures of the same function go in the same file
 
 .. _pgr_maxFlowEdmondsKarp:
 
@@ -23,15 +19,18 @@ Name
 
 ``pgr_maxFlowEdmondsKarp`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
-.. warning::  This is a proposed function.
+.. warning::  These are proposed functions.
 
-     - Is not officially in the current release
+    - Are not officially in the release.
+    - Names could change.
+    - Signatures could change.
+    - Needs testing.
+    - Functionality could change.
+    - Documentation could be incomplete.
 
-..
-   keep if uses boost (this is a comment)
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/graph_theory_review.html#sec:network-flow-algorithms
+   :target: http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 
    Boost Graph Inside
 
@@ -42,9 +41,7 @@ Synopsis
 Calculates the maximum flow in a directed graph from a source node to a sink node.
 Edges must be weighted with non-negative capacities.
 Developed by Edmonds and Karp.
-Implementation details_.
 
-.. _details: http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 
 Characteristics:
 ----------------
@@ -60,17 +57,12 @@ The main characterics are:
 Signature Summary
 -----------------
 
-..
-   If the function has more than one signature
-   Remove the unnecessary parts of the signature, just leaving the name of the parameters
-   Like in these examples
-
 .. code-block:: none
 
-    pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertex)
-    pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertex)
-    pgr_maxflowedmondskarp(edges_sql, source\_vertex,  sink\_vertices)
-    pgr_maxflowedmondskarp(edges_sql, source\_vertices,  sink\_vertices)
+    pgr_maxflowedmondskarp(edges_sql, source_vertex,  sink_vertex)
+    pgr_maxflowedmondskarp(edges_sql, source_vertices,  sink_vertex)
+    pgr_maxflowedmondskarp(edges_sql, source_vertex,  sink_vertices)
+    pgr_maxflowedmondskarp(edges_sql, source_vertices,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -185,6 +177,7 @@ Column            Type                   Description
 See Also
 --------
 
+* http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 
 .. rubric:: Indices and tables

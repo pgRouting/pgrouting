@@ -16,7 +16,15 @@ Applications of Maximum Flow
   - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
 
 Maximum flow algorithms provide solutions to other graph problems.
-These
+
+.. warning::  These are proposed functions.
+
+    - Are not officially in the release.
+    - Names could change.
+    - Signatures could change.
+    - Needs testing.
+    - Functionality could change.
+    - Documentation could be incomplete.
 
 .. toctree::
         :hidden:
@@ -25,22 +33,21 @@ These
         ./pgr_edgeDisjointPaths
 
 
-Example problems
-================
+Applications
+---------------------------------------------
 
 Maximum cardinality matching
-----------------------------
+...............................
 
-A matching or independent edge set in a graph is a set of edges without common vertices.
-
-A maximum matching is a matching that contains the largest possible number of edges.
-There may be many maximum matchings.
+- A matching or independent edge set in a graph is a set of edges without common vertices.
+- A maximum matching is a matching that contains the largest possible number of edges.
+- There may be many maximum matchings.
+- The graph can be directed or undirected.
 
 The :ref:`pgr_maximumCardinalityMatching` function can be used to calculate one such maximum matching.
-The graph can be directed or undirected.
 
 Edge disjoint paths
--------------------
+...............................
 
 In a undirected/directed graph, two paths are edge-disjoint(or edge-independant) if they do not have any internal edge in common.
 

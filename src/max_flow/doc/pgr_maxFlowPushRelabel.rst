@@ -23,15 +23,18 @@ Name
 
 ``pgr_maxFlowPushRelabel`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
-.. warning::  This is a proposed function.
+.. warning::  These are proposed functions.
 
-     - Is not officially in the current release
+    - Are not officially in the release.
+    - Names could change.
+    - Signatures could change.
+    - Needs testing.
+    - Functionality could change.
+    - Documentation could be incomplete.
 
-..
-   keep if uses boost (this is a comment)
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/doc/libs/1_61_0/libs/graph/doc/push_relabel_max_flow.html 
+   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 
    Boost Graph Inside
 
@@ -200,7 +203,7 @@ Column            Type                   Description
 See Also
 --------
 
-* http://www.boost.org/doc/libs/1_61_0/libs/graph/doc/push_relabel_max_flow.html
+* http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
 .. rubric:: Indices and tables

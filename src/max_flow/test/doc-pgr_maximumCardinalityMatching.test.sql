@@ -11,14 +11,8 @@ SELECT * FROM pgr_maximumcardinalitymatching(
 \echo -- q2
 SELECT * FROM pgr_maximumcardinalitymatching(
     'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
-    TRUE
+    directed := false
 );
 
 \echo -- q3
-SELECT * FROM pgr_maximumcardinalitymatching(
-    'SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table',
-    FALSE
-);
-
-\echo -- q4
 ROLLBACK;
