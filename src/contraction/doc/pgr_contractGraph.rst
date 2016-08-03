@@ -86,51 +86,18 @@ Minimal signature
    :start-after: -- q1
    :end-before: -- q2
 
+Complete signature
+.......................................
+
+.. code-block:: none
+       
+    pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
+
 :Example: Making a dead end contraction and a linear contraction and vertex 2 is forbidden from contraction
 
 .. literalinclude:: doc-contractGraph.queries
    :start-after: -- q2
    :end-before: -- q3
-
-pgr_contractGraph Dead end Contraction
----------------------------------------
-
-.. code-block:: none
-
-    pgr_contractGraph(TEXT edges_sql, ARRAY[]::integer[], ARRAY[0]::bigint[], 1, directed:= true);
-    RETURNS SETOF ( seq, id, type, source, target, cost,
-             contracted_vertices, contracted_vertices_size)
-
-This signature performs one cycle of dead end contraction on the graph:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-
-pgr_contractGraph Linear Contraction
--------------------------------------
-
-.. code-block:: none
-
-    pgr_contractGraph(TEXT edges_sql, ARRAY[]::integer[], ARRAY[1]::bigint[], 1, directed:= true);
-    RETURNS SETOF ( seq, id, type, source, target, cost,
-             contracted_vertices, contracted_vertices_size)
-
-This signature performs one cycle of linear contraction on the graph:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
-
-:Example:
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
 
 
 Description of the SQL query
@@ -192,110 +159,18 @@ Column                       Type            Description
 Examples
 ========
 
-Dead End Contraction
--------------------------------------
-
-The examples of this section are based on the :ref:`sampledata` network.
-
-:Example:
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q1
-   :end-before: -- q2
- 
-
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns for one cycle of dead end contraction
-----------------------------------------------------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig1`
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns for one cycle of dead end contraction
-----------------------------------------------------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig2`
+:Example: Only dead end contraction
 
 .. literalinclude:: doc-contractGraph.queries
    :start-after: -- q3
    :end-before: -- q4
 
-
-
-
-Examples for queries marked as ``directed`` with ``cost`` column for one cycle of dead end contraction
-----------------------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig3`
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q5
-   :end-before: -- q6
-
-
-Examples for queries marked as ``undirected`` with ``cost`` column for one cycle of dead end contraction
----------------------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig4`
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q7
-   :end-before: -- q8
-
-Linear Contraction
--------------------------------------
-
-The examples of this section are based on the :ref:`sampledata` network.
-
-:Example:
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q2
-   :end-before: -- q3
- 
-
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns for one cycle of linear contraction
---------------------------------------------------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig1`
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q2
-   :end-before: -- q3
-
-
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns for one cycle of linear contraction
---------------------------------------------------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig2`
+:Example: Only linear contraction
 
 .. literalinclude:: doc-contractGraph.queries
    :start-after: -- q4
    :end-before: -- q5
 
-
-
-Examples for queries marked as ``directed`` with ``cost`` column for one cycle of linear contraction
--------------------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig3`
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q6
-   :end-before: -- q7
-
-
-Examples for queries marked as ``undirected`` with ``cost`` column for one cycle of linear contraction
--------------------------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig4`
-
-.. literalinclude:: doc-contractGraph.queries
-   :start-after: -- q8
-   :end-before: -- q9
 
 .. rubric:: Indices and tables
 
