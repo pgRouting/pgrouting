@@ -127,7 +127,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
                     size_forbidden_vertices);
                 log << "Before contraction\n";
                 digraph.print_graph(log);
-
+                /* Function call to get the contracted graph. */
                 pgr_contractGraph(digraph,
                     forbid_vertices,
                     contraction_order, size_contraction_order,
@@ -192,7 +192,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
                             size_forbidden_vertices);
                         log << "Before contraction\n";
                         undigraph.print_graph(log);
-            /* Function call to get the contracted graph. */
+                        /* Function call to get the contracted graph. */
                         pgr_contractGraph(undigraph,
                             forbid_vertices,
                             contraction_order, size_contraction_order,
