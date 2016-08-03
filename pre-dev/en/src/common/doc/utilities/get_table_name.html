@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_getTableName - Deprecated Function &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    
+    <link rel="stylesheet" href="../../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '2.3.0 (test/appveyor)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../../index.html" />
+    <link rel="up" title="Deprecated Functions" href="../../../../doc/deprecated.html" />
+    <link rel="next" title="pgr_isColumnIndexed - Deprecated Function" href="is_column_indexed.html" />
+    <link rel="prev" title="pgr_getColumnName - Deprecated Function" href="get_column_name.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+        <h2 class="heading"><span>pgr_getTableName - Deprecated Function</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="get_column_name.html">pgr_getColumnName - Deprecated Function</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="is_column_indexed.html">pgr_isColumnIndexed - Deprecated Function</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-gettablename-deprecated-function">
+<span id="pgr-get-table-name"></span><h1>pgr_getTableName - Deprecated Function<a class="headerlink" href="#pgr-gettablename-deprecated-function" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This function is deprecated!!!</p>
+<ul class="last simple">
+<li>Is no longer supported.</li>
+<li>May be removed from future versions.</li>
+<li>There is no replacement.</li>
+</ul>
+</div>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_getTableName</span></tt> — Retrieves the name of the column as is stored in the postgres administration tables.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function is intended for the developer’s aid.</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Returns a record containing the registered names of the table and of the schema it belongs to.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="p">(</span><span class="nb">text</span> <span class="n">sname</span><span class="p">,</span> <span class="nb">text</span> <span class="n">tname</span><span class="p">)</span>  <span class="n">pgr_getTableName</span><span class="p">(</span><span class="nb">text</span> <span class="n">tab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">tab:</th><td class="field-body"><tt class="docutils literal"><span class="pre">text</span></tt> table name with or without schema component.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">sname:</th><td class="field-body"><ul class="first simple">
+<li><tt class="docutils literal"><span class="pre">text</span></tt> containing the registered name of the schema of table &#8220;tab&#8221;.<ul>
+<li>when the schema was not provided in &#8220;tab&#8221; the current schema is used.</li>
+</ul>
+</li>
+<li><tt class="docutils literal"><span class="pre">NULL</span></tt> when :<ul>
+<li>The schema is not found in the postgres administration tables.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">tname:</th><td class="field-body"><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">text</span></tt> containing the registered name of the table &#8220;tab&#8221;.</li>
+<li><tt class="docutils literal"><span class="pre">NULL</span></tt> when :<ul>
+<li>The schema is not found in the postgres administration tables.</li>
+<li>The table &#8220;tab&#8221; is not registered under the schema <tt class="docutils literal"><span class="pre">sname</span></tt> in the postgres administration tables</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>New in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pgr_getTableName</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">);</span>
+
+ <span class="n">sname</span>  <span class="o">|</span>   <span class="n">tname</span>
+<span class="c1">--------+------------</span>
+ <span class="k">public</span> <span class="o">|</span> <span class="n">edge_table</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pgr_getTableName</span><span class="p">(</span><span class="s1">&#39;EdgeTable&#39;</span><span class="p">);</span>
+
+ <span class="n">sname</span>  <span class="o">|</span>   <span class="n">tname</span>
+<span class="c1">--------+------------</span>
+ <span class="k">public</span> <span class="o">|</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pgr_getTableName</span><span class="p">(</span><span class="s1">&#39;data.Edge_Table&#39;</span><span class="p">);</span>
+ <span class="n">sname</span> <span class="o">|</span> <span class="n">tname</span>
+<span class="c1">-------+-------</span>
+       <span class="o">|</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The examples use the <a class="reference internal" href="../../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../../../doc/src/developer/developer_guide.html#developer"><em>Developer&#8217;s Guide</em></a> for the tree layout of the project.</li>
+<li><a class="reference internal" href="is_column_in_table.html#pgr-is-column-in-table"><em>pgr_isColumnInTable - Deprecated Function</em></a> to check only for the existance of the column.</li>
+<li><a class="reference internal" href="#pgr-get-table-name"><em>pgr_getTableName - Deprecated Function</em></a> to retrieve the name of the table as is stored in the postgres administration tables.</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="get_column_name.html">pgr_getColumnName - Deprecated Function</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="is_column_indexed.html">pgr_isColumnIndexed - Deprecated Function</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Aug 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

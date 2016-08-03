@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_maximumCardinalityMatching - Proposed &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (test/appveyor)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../index.html" />
+    <link rel="up" title="Applications of Maximum Flow" href="maxFlowApplications.html" />
+    <link rel="next" title="pgr_edgeDisjointPaths - Proposed" href="pgr_edgeDisjointPaths.html" />
+    <link rel="prev" title="Applications of Maximum Flow" href="maxFlowApplications.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+        <h2 class="heading"><span>pgr_maximumCardinalityMatching - Proposed</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="maxFlowApplications.html">Applications of Maximum Flow</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_edgeDisjointPaths.html">pgr_edgeDisjointPaths - Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-maximumcardinalitymatching-proposed">
+<span id="pgr-maximumcardinalitymatching"></span><h1>pgr_maximumCardinalityMatching - Proposed<a class="headerlink" href="#pgr-maximumcardinalitymatching-proposed" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_maximumCardinalityMatching</span></tt> — Calculates a maximum cardinality matching in a graph.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officialy be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/maximum_matching.html"><img alt="../../../_images/boost-inside8.jpeg" src="../../../_images/boost-inside8.jpeg" /></a>
+<p class="caption">Boost Graph Inside</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Calculates a maximum cardinality matching in a directed/undirected graph.</p>
+<ul class="simple">
+<li>A matching or independent edge set in a graph is a set of edges without common vertices.</li>
+<li>A maximum matching is a matching that contains the largest possible number of edges.</li>
+<li>There may be many maximum matchings.</li>
+</ul>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The main characterics are:</dt>
+<dd><ul class="first last simple">
+<li>Calculates <strong>one</strong> possible maximum cardinality matching in a graph.</li>
+<li>The graph can be directed or undirected.</li>
+<li>Running time: <span class="math">\(O( E*V * \alpha(E,V))\)</span></li>
+<li><span class="math">\(\alpha(E,V)\)</span> is the inverse of the <a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">Ackermann function</a>.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_MaximumCardinalityMatching(edges_sql)
+pgr_MaximumCardinalityMatching(edges_sql, directed)
+
+RETURNS SET OF (id, edge_id, source, target)
+    OR EMPTY SET
+</pre></div>
+</div>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_MaximumCardinalityMatching(edges_sql)
+RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
+</pre></div>
+</div>
+<p>The minimal signature calculates one possible maximum cardinality matching on a <cite>directed</cite> graph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maximumCardinalityMatching(
+    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;
+);
+ id | edge_id | source | target 
+----+---------+--------+--------
+  1 |       1 |      1 |      2
+  2 |       3 |      4 |      3
+  3 |       9 |      6 |      9
+  4 |       6 |      7 |      8
+  5 |      14 |     10 |     13
+  6 |      13 |     11 |     12
+  7 |      17 |     14 |     15
+  8 |      18 |     16 |     17
+(8 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-signature">
+<span id="index-1"></span><h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_MaximumCardinalityMatching(edges_sql, directed)
+RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
+</pre></div>
+</div>
+<p>The complete signature calculates one possible maximum cardinality matching.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maximumCardinalityMatching(
+    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
+    directed := false
+);
+ id | edge_id | source | target 
+----+---------+--------+--------
+  1 |       1 |      1 |      2
+  2 |       3 |      3 |      4
+  3 |       9 |      6 |      9
+  4 |       6 |      7 |      8
+  5 |      14 |     10 |     13
+  6 |      13 |     11 |     12
+  7 |      17 |     14 |     15
+  8 |      18 |     16 |     17
+(8 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-sql-query">
+<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="17%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>going</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERIC</span></tt></td>
+<td>A positive value represents the existence of the edge (source, target).</td>
+</tr>
+<tr class="row-even"><td><strong>coming</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERIC</span></tt></td>
+<td>A positive value represents the existence of the edge (target, source).</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<blockquote>
+<div><ul>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-NUMERIC:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="23%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>directed</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional) Determines the type of the graph. Default TRUE.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-result">
+<h3>Description of the Result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="maxFlowApplications.html#maxflowapplications"><em>Applications of Maximum Flow</em></a></li>
+<li><a class="reference external" href="http://www.boost.org/libs/graph/doc/maximum_matching.html">http://www.boost.org/libs/graph/doc/maximum_matching.html</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Matching_%28graph_theory%29">https://en.wikipedia.org/wiki/Matching_%28graph_theory%29</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Ackermann_function">https://en.wikipedia.org/wiki/Ackermann_function</a></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="maxFlowApplications.html">Applications of Maximum Flow</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_edgeDisjointPaths.html">pgr_edgeDisjointPaths - Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Aug 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_gsoc_vrppdtw - Proposed &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (test/appveyor)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../index.html" />
+    <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
+    <link rel="next" title="pgr_vrpOneDepot - Proposed" href="../../vrp_basic/doc/pgr_vrpOneDepot.html" />
+    <link rel="prev" title="pgr_labelGraph - Proposed" href="../../label_graph/doc/pgr_labelGraph.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+        <h2 class="heading"><span>pgr_gsoc_vrppdtw - Proposed</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../label_graph/doc/pgr_labelGraph.html">pgr_labelGraph - Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../vrp_basic/doc/pgr_vrpOneDepot.html">pgr_vrpOneDepot - Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-gsoc-vrppdtw-proposed">
+<span id="pgr-gsocvrppdtw"></span><h1>pgr_gsoc_vrppdtw - Proposed<a class="headerlink" href="#pgr-gsoc-vrppdtw-proposed" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></tt> — Returns a solution for <cite>Pick and Delivery</cite> with <cite>time windows</cite> Vehicle Routing Problem</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officialy be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+RETURNS SET OF pgr_costResult[]:
+</pre></div>
+</div>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="complete-signature">
+<span id="index-0"></span><h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
+Returns set of pgr_costResult[]:
+</pre></div>
+</div>
+<p class="rubric">Example: Show the id1</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT DISTINCT(id1) FROM pgr_gsoc_vrppdtw(
+    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200)
+ORDER BY id1;
+ id1 
+-----
+   1
+   2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+(9 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-sql-query">
+<h3>Description of the sql query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="16%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td><p class="first">Identifier of the customer.</p>
+<ul class="last simple">
+<li>A value of <tt class="docutils literal"><span class="pre">0</span></tt> identifies the starting location</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>x</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">X</span></tt> coordinate of the location.</td>
+</tr>
+<tr class="row-even"><td><strong>y</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">Y</span></tt> coordinate of the location.</td>
+</tr>
+<tr class="row-odd"><td><strong>demand</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td><p class="first">How much is added / removed from the vehicle.</p>
+<ul class="last simple">
+<li>Negative value is a delivery,</li>
+<li>Positive value is a pickup,</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>openTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The time relative to 0, when the customer opens.</td>
+</tr>
+<tr class="row-odd"><td><strong>closeTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The time relative to 0, when the customer closes.</td>
+</tr>
+<tr class="row-even"><td><strong>serviceTime</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>The duration of the loading / unloading.</td>
+</tr>
+<tr class="row-odd"><td><strong>pickup_id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Value used when the current customer is a Delivery to find the corresponding Pickup</td>
+</tr>
+<tr class="row-even"><td><strong>deliver_id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Value used when the current customer is a Pickup to find the corresponding Delivery</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="12%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>SQL query as decribed above.</td>
+</tr>
+<tr class="row-odd"><td><strong>vehicle_num</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Maximum number of vehicles in the result. (currently is ignored)</td>
+</tr>
+<tr class="row-even"><td><strong>capacity</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Capacity of the vehicle.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-result">
+<h3>Description of the result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h3>
+<p>RETURNS SET OF pgr_costResult[]:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="8%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>id1</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Current vehicle identifier.</td>
+</tr>
+<tr class="row-even"><td><strong>id2</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Customer identifier.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Previous <tt class="docutils literal"><span class="pre">cost</span></tt> plus <cite>travel time</cite> plus <cite>wait time</cite> plus <cite>service time</cite>.</dt>
+<dd><ul class="first last simple">
+<li>when <tt class="docutils literal"><span class="pre">id2</span> <span class="pre">=</span> <span class="pre">0</span></tt> for the second time for the same <tt class="docutils literal"><span class="pre">id1</span></tt>, then has the total time for the current <tt class="docutils literal"><span class="pre">id1</span></tt></li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Example: Total number of rows returned</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT count(*) FROM pgr_gsoc_vrppdtw(
+    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200);
+ count 
+-------
+   114
+(1 row)
+</pre></div>
+</div>
+<p class="rubric">Example: Results for only id1 values: 1, 5, and 9</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_gsoc_vrppdtw(
+    &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200)
+    WHERE id1 in (1, 5, 9);
+ seq | id1 | id2 |       cost       
+-----+-----+-----+------------------
+   1 |   1 |   0 |                0
+   2 |   1 |   5 | 105.132745950422
+   3 |   1 |   3 | 196.132745950422
+   4 |   1 |   7 | 288.132745950422
+   5 |   1 |   8 | 380.961173075168
+   6 |   1 |  10 | 474.566724350632
+   7 |   1 |  11 | 567.566724350632
+   8 |   1 |   9 |   660.7290020108
+   9 |   1 |   6 |   752.9650699883
+  10 |   1 |   4 |   845.2011379658
+  11 |   1 |   2 | 938.806689241264
+  12 |   1 |   1 | 1030.80668924126
+  13 |   1 |  75 | 1123.80668924126
+  14 |   1 |   0 | 1139.61807754211
+  51 |   5 |   0 |                0
+  52 |   5 |  43 | 106.552945357247
+  53 |   5 |  42 | 199.552945357247
+  54 |   5 |  41 | 291.552945357247
+  55 |   5 |  40 | 383.552945357247
+  56 |   5 |  44 | 476.552945357247
+  57 |   5 |  46 | 569.381372481993
+  58 |   5 |  45 | 661.381372481993
+  59 |   5 |  48 | 753.381372481993
+  60 |   5 |  51 | 756.381372481993
+  61 |   5 | 101 | 846.381372481993
+  62 |   5 |  50 | 938.617440459493
+  63 |   5 |  52 | 1031.77971811966
+  64 |   5 |  49 | 1124.77971811966
+  65 |   5 |  47 | 1216.77971811966
+  66 |   5 |   0 | 1234.80747449698
+ 103 |   9 |   0 |                0
+ 104 |   9 |  90 | 110.615528128088
+ 105 |   9 |  87 | 205.615528128088
+ 106 |   9 |  86 | 296.615528128088
+ 107 |   9 |  83 | 392.615528128088
+ 108 |   9 |  82 | 485.615528128088
+ 109 |   9 |  84 | 581.446480022934
+ 110 |   9 |  85 |  674.27490714768
+ 111 |   9 |  88 |  767.27490714768
+ 112 |   9 |  89 | 860.103334272426
+ 113 |   9 |  91 |  953.70888554789
+ 114 |   9 |   0 | 976.069565322888
+(42 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The examples use <a class="reference internal" href="../../../doc/src/developer/sampledata.html#pickdeliverdata"><em>Pick &amp; Deliver Data</em></a></li>
+<li>current implementation is a wrapper of <a class="reference internal" href="../../pickDeliver/doc/pgr_pickDeliver.html#pgr-pickdeliver"><em>__pgr_pickDeliver</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../label_graph/doc/pgr_labelGraph.html">pgr_labelGraph - Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../vrp_basic/doc/pgr_vrpOneDepot.html">pgr_vrpOneDepot - Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Aug 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

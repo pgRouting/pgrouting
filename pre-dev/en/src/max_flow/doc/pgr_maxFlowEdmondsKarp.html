@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_maxFlowEdmondsKarp - Proposed &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (test/appveyor)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../index.html" />
+    <link rel="up" title="Maximum Flow" href="maxFlow.html" />
+    <link rel="next" title="pgr_maxFlowBoykovKolmogorov - Proposed" href="pgr_maxFlowBoykovKolmogorov.html" />
+    <link rel="prev" title="pgr_maxFlowPushRelabel Proposed" href="pgr_maxFlowPushRelabel.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+        <h2 class="heading"><span>pgr_maxFlowEdmondsKarp - Proposed</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_maxFlowPushRelabel.html">pgr_maxFlowPushRelabel Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_maxFlowBoykovKolmogorov.html">pgr_maxFlowBoykovKolmogorov - Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-maxflowedmondskarp-proposed">
+<span id="pgr-maxflowedmondskarp"></span><h1>pgr_maxFlowEdmondsKarp - Proposed<a class="headerlink" href="#pgr-maxflowedmondskarp-proposed" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_maxFlowEdmondsKarp</span></tt> — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officialy be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html"><img alt="../../../_images/boost-inside8.jpeg" src="../../../_images/boost-inside8.jpeg" /></a>
+<p class="caption">Boost Graph Inside</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Calculates the maximum flow in a directed graph from a source node to a sink node.
+Edges must be weighted with non-negative capacities.
+Developed by Edmonds and Karp.</p>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The main characterics are:</dt>
+<dd><ul class="first last simple">
+<li>The graph must be directed.</li>
+<li>Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.</li>
+<li>The maximum flow through the graph can be calculated by aggregation on source/sink.</li>
+<li>Returns nothing if source and sink are the same.</li>
+<li>Allows multiple sources and sinks (See signatures below).</li>
+<li>Running time: <span class="math">\(O(V * E^2)\)</span>.</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertex)
+pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertex)
+pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertices)
+pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertices)
+RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+  OR EMPTY SET
+</pre></div>
+</div>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="one-to-one">
+<span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
+<p>Calculates the maximum flow from one source vertex to one sink vertex on a <cite>directed</cite> graph.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertex)
+RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+  OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlowEdmondsKarp(
+    &#39;SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id&#39;
+    , 6, 11
+);
+ id | edge_id | source | target | flow | residual_capacity 
+----+---------+--------+--------+------+-------------------
+  1 |      10 |      5 |     10 |  100 |                30
+  2 |       8 |      6 |      5 |  100 |                30
+  3 |       9 |      6 |      9 |   50 |                80
+  4 |      11 |      6 |     11 |  130 |                 0
+  5 |      15 |      9 |     12 |   50 |                30
+  6 |      12 |     10 |     11 |  100 |                 0
+  7 |      13 |     12 |     11 |   50 |                 0
+(7 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="one-to-many">
+<span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
+<p>Calculates the maximum flow from one source vertex to many sink vertices on a <cite>directed</cite> graph.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertices)
+RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+  OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlowEdmondsKarp(
+    &#39;SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id&#39;
+   , 6, ARRAY[1, 3, 11]
+);
+ id | edge_id | source | target | flow | residual_capacity 
+----+---------+--------+--------+------+-------------------
+  1 |       1 |      2 |      1 |   50 |                80
+  2 |       3 |      4 |      3 |   80 |                50
+  3 |       4 |      5 |      2 |   50 |                 0
+  4 |      10 |      5 |     10 |   80 |                50
+  5 |       5 |      6 |      3 |   50 |                 0
+  6 |       8 |      6 |      5 |  130 |                 0
+  7 |       9 |      6 |      9 |  130 |                 0
+  8 |      11 |      6 |     11 |  130 |                 0
+  9 |      15 |      9 |     12 |   50 |                30
+ 10 |      16 |      9 |      4 |   80 |                 0
+ 11 |      12 |     10 |     11 |   80 |                20
+ 12 |      13 |     12 |     11 |   50 |                 0
+(12 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="many-to-one">
+<span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
+<p>Calculates the maximum flow from many source vertices to one sink vertex on a <cite>directed</cite> graph.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertex)
+RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+  OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlowEdmondsKarp(
+    &#39;SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id&#39;
+   , ARRAY[6, 8, 12], 11
+);
+ id | edge_id | source | target | flow | residual_capacity 
+----+---------+--------+--------+------+-------------------
+  1 |      10 |      5 |     10 |  100 |                30
+  2 |       8 |      6 |      5 |  100 |                30
+  3 |      11 |      6 |     11 |  130 |                 0
+  4 |      12 |     10 |     11 |  100 |                 0
+  5 |      13 |     12 |     11 |   50 |                 0
+(5 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="many-to-many">
+<span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
+<p>Calculates the maximum flow from many sources to many sinks on a <cite>directed</cite> graph.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertices)
+RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+  OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maxFlowEdmondsKarp(
+    &#39;SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id&#39;
+   , ARRAY[6, 8, 12], ARRAY[1, 3, 11]
+);
+ id | edge_id | source | target | flow | residual_capacity 
+----+---------+--------+--------+------+-------------------
+  1 |       1 |      2 |      1 |   50 |                80
+  2 |       3 |      4 |      3 |   80 |                50
+  3 |       4 |      5 |      2 |   50 |                 0
+  4 |      10 |      5 |     10 |  100 |                30
+  5 |       5 |      6 |      3 |   50 |                 0
+  6 |       8 |      6 |      5 |  130 |                 0
+  7 |       9 |      6 |      9 |   80 |                50
+  8 |      11 |      6 |     11 |  130 |                 0
+  9 |       7 |      8 |      5 |   20 |                30
+ 10 |      16 |      9 |      4 |   80 |                 0
+ 11 |      12 |     10 |     11 |  100 |                 0
+ 12 |      13 |     12 |     11 |   50 |                 0
+(12 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-sql-query">
+<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="17%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>capacity</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Capacity of the edge <cite>(source, target)</cite>. Must be positive.</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_capacity</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>(optional) Weight of the edge <cite>(target, source)</cite>. Must be positive or null.</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="25%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>source_vertex</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the source vertex(or vertices).</td>
+</tr>
+<tr class="row-even"><td><strong>sink_vertex</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the sink vertex(or vertices).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values">
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="maxFlow.html#maxflow"><em>Maximum Flow</em></a></li>
+<li><a class="reference external" href="http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html">http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm">https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm</a></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_maxFlowPushRelabel.html">pgr_maxFlowPushRelabel Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_maxFlowBoykovKolmogorov.html">pgr_maxFlowBoykovKolmogorov - Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Aug 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_aStar &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (test/appveyor)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../index.html" />
+    <link rel="up" title="Routing Functions" href="../../routingFunctions.html" />
+    <link rel="next" title="pgr_bdAstar - Bi-directional A* Shortest Path" href="../../bd_astar/doc/pgr_bdAstar.html" />
+    <link rel="prev" title="pgr_johnson" href="../../allpairs/doc/pgr_johnson.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+        <h2 class="heading"><span>pgr_aStar</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../allpairs/doc/pgr_johnson.html">pgr_johnson</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../bd_astar/doc/pgr_bdAstar.html">pgr_bdAstar - Bi-directional A* Shortest Path</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-astar">
+<span id="id1"></span><h1>pgr_aStar<a class="headerlink" href="#pgr-astar" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_aStar</span></tt> — Returns the shortest path using A* algorithm.</p>
+<div class="figure">
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside2.jpeg" src="../../../_images/boost-inside2.jpeg" /></a>
+<p class="caption">Boost Graph Inside</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>The A* (pronounced &#8220;A Star&#8221;) algorithm is based on Dijkstra&#8217;s algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph.</p>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<p>The main Characteristics are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Process is done only on edges with positive costs.</li>
+<li>Vertices of the graph are:<ul>
+<li><strong>positive</strong> when it belongs to the edges_sql</li>
+<li><strong>negative</strong> when it belongs to the points_sql</li>
+</ul>
+</li>
+<li>Values are returned when there is a path.<ul>
+<li>When the starting vertex and ending vertex are the same, there is no path.<ul>
+<li>The agg_cost the non included values (v, v) is 0</li>
+</ul>
+</li>
+<li>When the starting vertex and ending vertex are the different and there is no path:<ul>
+<li>The agg_cost the non included values (u, v) is ∞</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>When (x,y) coordinates for the same vertex identifier differ:<ul>
+<li>A random selection of the vertex&#8217;s (x,y) coordinates is used.</li>
+</ul>
+</li>
+<li>Running time: <span class="math">\(O((E + V) * \log V)\)</span></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_aStar(edges_sql, start_vid, end_vid)
+pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This signature is deprecated</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_aStar</span><span class="p">(</span><span class="k">sql</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="n">pgr_costResult</span>
+</pre></div>
+</div>
+<ul class="last simple">
+<li>See <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a></li>
+<li>See <a class="reference internal" href="pgr_astar-v2.html#pgr-astar-v2-0"><em>pgr_astar - Deprecated Signature</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_aStar(edges_sql, start_vid, end_vid)
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Using the defaults</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_astar(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    2, 12);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-signature">
+<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Setting a Heuristic</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_astar(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    2, 12, heuristic := 1);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+
+SELECT * FROM pgr_astar(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    2, 12, heuristic := 2);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    4 |    1 |        0
+   2 |        2 |    5 |    8 |    1 |        1
+   3 |        3 |    6 |    9 |    1 |        2
+   4 |        4 |    9 |   15 |    1 |        3
+   5 |        5 |   12 |   -1 |    0 |        4
+(5 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following only aplies to the new signature(s)</p>
+</div>
+<div class="section" id="description-of-the-edges-sql-query">
+<h3>Description of the edges_sql query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge  <cite>(source, target)</cite></dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>-1</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>x1</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td>X coordinate of <cite>source</cite> vertex.</td>
+</tr>
+<tr class="row-even"><td><strong>y1</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td>Y coordinate of <cite>source</cite> vertex.</td>
+</tr>
+<tr class="row-odd"><td><strong>x2</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td>X coordinate of <cite>target</cite> vertex.</td>
+</tr>
+<tr class="row-even"><td><strong>y2</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td>Y coordinate of <cite>target</cite> vertex.</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="19%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>Edges SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Starting vertex identifier.</td>
+</tr>
+<tr class="row-even"><td><strong>end_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Ending vertex identifier.</td>
+</tr>
+<tr class="row-odd"><td><strong>directed</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td><ul class="first last simple">
+<li>Optional.<ul>
+<li>When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as Undirected.</li>
+<li>Default is <tt class="docutils literal"><span class="pre">true</span></tt> which considers the graph as Directed.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>heuristic</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><p class="first">(optional). Heuristic number. Current valid values 0~5. Default <tt class="docutils literal"><span class="pre">5</span></tt></p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
+<li>1: h(v) abs(max(dx, dy))</li>
+<li>2: h(v) abs(min(dx, dy))</li>
+<li>3: h(v) = dx * dx + dy * dy</li>
+<li>4: h(v) = sqrt(dx * dx + dy * dy)</li>
+<li>5: h(v) = abs(dx) + abs(dy)</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>factor</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>(optional). For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  Default <tt class="docutils literal"><span class="pre">1</span></tt>.</td>
+</tr>
+<tr class="row-even"><td><strong>epsilon</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>(optional). For less restricted results. <span class="math">\(factor &gt;= 1\)</span>.  Default <tt class="docutils literal"><span class="pre">1</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values">
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="10%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Row sequence.</td>
+</tr>
+<tr class="row-odd"><td><strong>path_seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Path sequence that indicates the relative position on the path.</td>
+</tr>
+<tr class="row-even"><td><strong>node</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Identifier of the node:</dt>
+<dd><ul class="first last simple">
+<li>A positive value indicates the node is a vertex of edges_sql.</li>
+<li>A negative value indicates the node is a point of points_sql.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>edge</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Identifier of the edge used to go from <tt class="docutils literal"><span class="pre">node</span></tt> to the next node in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">-1</span></tt> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Cost to traverse from <tt class="docutils literal"><span class="pre">node</span></tt> using <tt class="docutils literal"><span class="pre">edge</span></tt> to the next <tt class="docutils literal"><span class="pre">node</span></tt> in the path sequence.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">0</span></tt> for the last row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>agg_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Aggregate cost from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">node</span></tt>.</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">0</span></tt> for the first row in the path sequence.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="about-factor">
+<h2>About factor<a class="headerlink" href="#about-factor" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Analysis 1</p>
+<p>Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
+Factor = 1   (no need to change units)</p>
+<p class="rubric">Analysis 2</p>
+<p>Working with cost/reverse_cost as length in meters, x/y in lat/lon:
+Factor =  would depend on the location of the points:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="65%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">latitude</th>
+<th class="head">conversion</th>
+<th class="head">Factor</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>45</td>
+<td>1 longitude degree is  78846.81 m</td>
+<td>78846</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>1 longitude degree is 111319.46 m</td>
+<td>111319</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Analysis 3</p>
+<p>Working with cost/reverse_cost as time in seconds, x/y in lat/lon:
+Factor: would depend on the location of the points and on the average speed
+say 25m/s is the speed.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="70%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">latitude</th>
+<th class="head">conversion</th>
+<th class="head">Factor</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>45</td>
+<td>1 longitude degree is (78846.81m)/(25m/s)</td>
+<td>3153 s</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>1 longitude degree is (111319.46 m)/(25m/s)</td>
+<td>4452 s</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">History</p>
+<ul class="simple">
+<li>Functionality added version 2.3.0</li>
+<li>Renamed in version 2.0.0</li>
+</ul>
+</div>
+<div class="section" id="deprecated-signature">
+<h2>Deprecated Signature<a class="headerlink" href="#deprecated-signature" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Using the deprecated signature</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_astar(
+    &#39;SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    2, 12, true, true);
+NOTICE:  Deprecated signature of function pgr_astar
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   2 |   4 |    1
+   1 |   5 |   8 |    1
+   2 |   6 |   9 |    1
+   3 |   9 |  15 |    1
+   4 |  12 |  -1 |    0
+(5 rows)
+</pre></div>
+</div>
+<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://www.boost.org/libs/graph/doc/astar_search.html">http://www.boost.org/libs/graph/doc/astar_search.html</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/A*_search_algorithm">http://en.wikipedia.org/wiki/A*_search_algorithm</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../allpairs/doc/pgr_johnson.html">pgr_johnson</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../bd_astar/doc/pgr_bdAstar.html">pgr_bdAstar - Bi-directional A* Shortest Path</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Aug 03, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
