@@ -42,7 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#if 0
 #include "./../../common/src/pgr_base_graph.hpp"
+#endif
+#include "./../../contraction/src/pgr_contractionGraph.hpp"
 #include "./../../common/src/pgr_assert.h"
 
 
@@ -78,7 +81,7 @@ do_pgr_test_c_edges(
 
         {
             log << "Testing Directed ,  insertion using vector\n";
-            pgrouting::CDirectedGraph graph(DIRECTED);
+            pgrouting::CHDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -91,9 +94,10 @@ do_pgr_test_c_edges(
             pgr_dijkstra(graph, path, 2, 3, true);
 
         }
+        /*
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgrouting::CDirectedGraph graph(DIRECTED);
+            pgrouting::CHDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -108,7 +112,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using vector\n";
-            pgrouting::CDirectedGraph graph(vertices, DIRECTED);
+            pgrouting::CHDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -123,7 +127,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using C array\n";
-            pgrouting::CDirectedGraph graph(vertices, DIRECTED);
+            pgrouting::CHDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -139,7 +143,7 @@ do_pgr_test_c_edges(
 
         {
             log << "Testing Undirected ,  insertion using vector\n";
-            pgrouting::CDirectedGraph graph(UNDIRECTED);
+            pgrouting::CHUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -153,8 +157,8 @@ do_pgr_test_c_edges(
 
         }
         {
-            log << "Testing Directed ,  insertion using C array\n";
-            pgrouting::CDirectedGraph graph(UNDIRECTED);
+            log << "Testing Undirected ,  insertion using C array\n";
+            pgrouting::CHUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -169,7 +173,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Undirected ,  insertion using C array\n";
-            pgrouting::CDirectedGraph graph(UNDIRECTED);
+            pgrouting::CHUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -184,7 +188,7 @@ do_pgr_test_c_edges(
         }
         {
             log << "Testing Undirected ,  creating with vertices, insertion using vector\n";
-            pgrouting::CDirectedGraph graph(vertices, UNDIRECTED);
+            pgrouting::CHUndirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
@@ -201,7 +205,7 @@ do_pgr_test_c_edges(
         {
             log << "Testing Identifiers, creating with vertices, insertion using vector\n";
             log << "  - Created graph:\n";
-            pgrouting::CDirectedGraph graph(vertices, UNDIRECTED);
+            pgrouting::CHUndirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Inserting Edges:\n";
             graph.graph_insert_data(edges);
             log << "  - All vertices:\n";
@@ -213,9 +217,9 @@ do_pgr_test_c_edges(
             log << "    " << all_vertices;
             log << "\n";
             log << "  - Contracted vertices:\n";
-            /*
+            
              1, 7, 8, 13, 14, 16
-            */
+            
             contracted_vertices.insert(graph.get_V(1));
             contracted_vertices.insert(graph.get_V(7));
             contracted_vertices.insert(graph.get_V(8));
@@ -228,20 +232,12 @@ do_pgr_test_c_edges(
             remaining_vertices = all_vertices - contracted_vertices;
             log << "    " << remaining_vertices;
             log << "\n";
-            #if 0
-            
-            Pgr_contract<pgrouting::CDirectedGraph>  contractor;
-            contractor.getDeadEndSet(graph);
-            log << "  - Dead end vertices:\n";
-            contractor.print_dead_end_vertices(log);
-
-            #endif
         }
 
         {
             log << "Testing Vertex class, creating graph with vertices, insertion using vector\n";
             log << "  - Created graph:\n";
-            pgrouting::CDirectedGraph graph(vertices, UNDIRECTED);
+            pgrouting::CHDirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Inserting Edges:\n";
             graph.graph_insert_data(edges);
             int64_t vid1 = graph.get_V(1);
@@ -361,8 +357,7 @@ do_pgr_test_c_edges(
 
             #endif
         }
-
-
+        */
 
 
         *err_msg = NULL;

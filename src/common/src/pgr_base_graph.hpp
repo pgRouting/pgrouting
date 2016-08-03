@@ -258,7 +258,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
-#if 1
+#if 0
 // TODO(Rohith) this is only used on internal query tests
 typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,

@@ -64,6 +64,23 @@ void Edge::cp_members(const Edge &other, std::ostringstream& log) {
         log << *this;
         #endif
     }
+
+
+void Edge::cp_members(const Edge &other) {
+        
+        this->cost = other.cost;
+        this->id = other.id;
+        this->first = other.first;
+        this->source = other.source;
+        this->target = other.target;
+        this->m_contracted_vertices += other.contracted_vertices();
+    }
+
+void Edge::cp_members(const Basic_edge &other) {
+        this->id = other.id;
+        this->cost = other.cost;
+        this->first = other.first;
+    }
 bool Edge::has_contracted_vertices() const {
     if (m_contracted_vertices.size() == 0)
         return false;

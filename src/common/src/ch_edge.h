@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iostream>
 #include <sstream>
 #include "./ch_vertex.h"
-
+#include "./basic_edge.h"
 namespace pgrouting {
 namespace contraction {
 
@@ -50,6 +50,8 @@ class Edge {
          target(target), cost(cost), first(first) {}
 
      void cp_members(const Edge &other, std::ostringstream& log);
+     void cp_members(const Edge &other);
+     void cp_members(const Basic_edge &other);
      void add_contracted_vertex(Vertex& v, int64_t vid);
      void add_contracted_edge_vertices(Edge& e);
      bool has_contracted_vertices() const;
