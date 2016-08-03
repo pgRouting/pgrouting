@@ -1,7 +1,7 @@
 \echo -- q1
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+    ARRAY[1, 2]);
 
 \echo -- q2
 SELECT * FROM pgr_contractGraph(

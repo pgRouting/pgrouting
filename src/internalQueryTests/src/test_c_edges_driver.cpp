@@ -78,7 +78,8 @@ do_pgr_test_c_edges(
                 << "\treverse_cost = " << edge.reverse_cost
                 << ")\n";
         }
-
+        // TODO(Rohith) make the graph work with pgr_dijkstra
+        #if 0
         {
             log << "Testing Directed ,  insertion using vector\n";
             pgrouting::CHDirectedGraph graph(DIRECTED);
@@ -94,7 +95,7 @@ do_pgr_test_c_edges(
             pgr_dijkstra(graph, path, 2, 3, true);
 
         }
-        /*
+        
         {
             log << "Testing Directed ,  insertion using C array\n";
             pgrouting::CHDirectedGraph graph(DIRECTED);
@@ -217,9 +218,9 @@ do_pgr_test_c_edges(
             log << "    " << all_vertices;
             log << "\n";
             log << "  - Contracted vertices:\n";
-            
+            /*
              1, 7, 8, 13, 14, 16
-            
+            */
             contracted_vertices.insert(graph.get_V(1));
             contracted_vertices.insert(graph.get_V(7));
             contracted_vertices.insert(graph.get_V(8));
@@ -357,7 +358,7 @@ do_pgr_test_c_edges(
 
             #endif
         }
-        */
+        #endif
 
 
         *err_msg = NULL;
