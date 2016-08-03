@@ -42,7 +42,7 @@ The main Characteristics are:
   - Process is done only on edges with positive costs.
   
   - There are two types of contraction methods used namely,
-  
+
     - Dead End Contraction
     - Linear Contraction
   
@@ -62,9 +62,9 @@ The pgr_contractGraph function has the following signatures:
 .. code-block:: none
     
     pgr_contractGraph(edges_sql, contraction_order)
-    pgr_contractGraph(edges_sql, contraction_order,   max_cycles, forbidden_vertices, directed)
+    pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
 
-    RETURNS SETOF ( seq, type, id, contracted_vertices, source, target, cost)
+    RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 
 
 Signatures
@@ -85,6 +85,12 @@ Minimal signature
 .. literalinclude:: doc-contractGraph.queries
    :start-after: -- q1
    :end-before: -- q2
+
+:Example: Making a dead end contraction and a linear contraction and vertex 2 is forbidden from contraction
+
+.. literalinclude:: doc-contractGraph.queries
+   :start-after: -- q2
+   :end-before: -- q3
 
 pgr_contractGraph Dead end Contraction
 ---------------------------------------

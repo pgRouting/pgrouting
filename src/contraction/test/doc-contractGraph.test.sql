@@ -6,7 +6,7 @@ SELECT * FROM pgr_contractGraph(
 \echo -- q2
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
+ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 
 \echo -- q3
 SELECT * FROM pgr_contractGraph(
