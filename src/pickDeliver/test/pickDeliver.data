@@ -1,15 +1,15 @@
-drop table if exists customer cascade;
-create table customer (
-                id integer not null primary key,
-                x integer,
-                y integer,
-                demand integer,
-                openTime integer,
-                closeTime integer, 
-                serviceTime integer, 
-                pindex integer,
-                dindex integer 
-                );
+DROP TABLE IF EXISTS customer CASCADE;
+CREATE TABLE customer (
+    id INTEGER NOT NULL PRIMARY KEY,
+    x INTEGER,
+    y INTEGER,
+    demand INTEGER,
+    openTime INTEGER,
+    closeTime INTEGER, 
+    serviceTime INTEGER, 
+    pindex INTEGER,
+    dindex INTEGER 
+    );
 copy customer (id, x, y, demand, openTime, closeTime, serviceTime, pindex, dindex) from stdin;
 0	40	50	0	0	1236	0	0	0
 1	45	68	-10	912	967	90	11	0

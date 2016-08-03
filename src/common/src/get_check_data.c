@@ -22,14 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_types.h"
-#include "postgres.h"
-
+#include <postgres.h>
 #include "catalog/pg_type.h"
 #include "executor/spi.h"
 
 
 // #define DEBUG
+#include "./pgr_types.h"
 #include "./debug_macro.h"
 #include "./get_check_data.h"
 

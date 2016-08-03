@@ -34,7 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <queue>
 #include <string>
+#include <utility>
 #include <functional>
+#include <vector>
+#include <map>
 
 #include "./pgr_contractionGraph.hpp"
 #include "./pgr_deadEndContraction.hpp"
@@ -47,16 +50,14 @@ template < class G > class Pgr_contract;
 template < class G >
 void perform_deadEnd(G &graph,
     Identifiers<int64_t> forbidden_vertices,
-    std::ostringstream& debug)
-{
+    std::ostringstream& debug) {
     pgrouting::Pgr_deadEndContraction<G> deadendContractor;
     debug << "Setting forbidden_vertices";
     deadendContractor.setForbiddenVertices(graph, forbidden_vertices
         , debug);
 
     deadendContractor.calculateVertices(graph, debug);
-    try
-    {
+    try {
         #if 1
         deadendContractor.doContraction(graph, debug);
         #endif
@@ -71,15 +72,13 @@ void perform_deadEnd(G &graph,
 template < class G >
 void perform_linear(G &graph,
     Identifiers<int64_t>& forbidden_vertices,
-    std::ostringstream& debug)
-{
+    std::ostringstream& debug) {
     std::ostringstream linear_debug;
     pgrouting::Pgr_linearContraction<G> linearContractor;
     linearContractor.setForbiddenVertices(graph, forbidden_vertices
         , linear_debug);
     linearContractor.calculateVertices(graph, linear_debug);
-    try
-    {
+    try {
         #if 1
         linearContractor.doContraction(graph, linear_debug);
         #endif
@@ -88,7 +87,6 @@ void perform_linear(G &graph,
         linear_debug << "Caught unknown expection!\n";
     }
     debug << linear_debug.str().c_str() << "\n";
-
 }
 #endif
 
@@ -100,11 +98,10 @@ void pgr_contractGraph(
     size_t size_contraction_order,
     int64_t max_cycles,
     Identifiers<int64_t> &remaining_vertices,
-    std::vector<pgrouting::contraction::Edge> &shortcut_edges, 
+    std::vector<pgrouting::contraction::Edge> &shortcut_edges,
     std::ostringstream& debug) {
-
     std::deque<int64_t> contract_order;
-    // push -1 to indicate the start of the queue
+    //  push -1 to indicate the start of the queue
     contract_order.push_back(-1);
     for (size_t i = 0; i < size_contraction_order; ++i) {
         contract_order.push_back(contraction_order[i]);
@@ -122,19 +119,14 @@ void pgr_contractGraph(
                 break;
                 default:
                 debug << "contraction "<< front << " asked" << std::endl;
-                if (front == 0)
-                {
-
+                if (front == 1) {
                     debug << "Graph before dead end contraction" << std::endl;
                     graph.print_graph(debug);
                     debug << "Performing dead end contraction" << std::endl;
                     perform_deadEnd(graph, forbidden_vertices, debug);
                     debug << "Graph after dead end contraction" << std::endl;
                     graph.print_graph(debug);
-                }
-                else if (front == 1)
-                {
-
+                } else if (front == 2) {
                     debug << "Graph before linear contraction" << std::endl;
                     graph.print_graph(debug);
                     debug << "Performing linear contraction" << std::endl;
@@ -147,16 +139,15 @@ void pgr_contractGraph(
                 front = contract_order.front();
             }
         }
-
     }
     graph.get_changed_vertices(remaining_vertices);
-    //graph.get_shortcuts(shortcut_edges, debug);
+    //  graph.get_shortcuts(shortcut_edges, debug);
     debug << "Printing shortcuts\n";
     for (auto shortcut : graph.shortcuts) {
         debug << shortcut;
         shortcut_edges.push_back(shortcut);
     }
-    //graph.print_shortcuts(debug);
+    //  graph.print_shortcuts(debug);
 }
 
 bool is_valid_contraction_number(int number) {
@@ -181,9 +172,7 @@ bool is_valid_contraction_number(int number) {
 
 template < class G >
 class Pgr_contract {
-
-
-public:
+ public:
     /** @name Graph related types
        Type      |     boost meaning     |   pgRouting meaning
        :---------: | :-------------------- | :----------------------
@@ -195,7 +184,7 @@ public:
        EO_i     | out_edge_iterator     |   To cycle the out going edges of a vertex
        EI_i     | in_edge_iterator      |   To cycle the in coming edges of a vertex (only in bidirectional graphs)
     */
-     //@{
+     // @{
     typedef typename G::V V;
     typedef typename G::E E;
     typedef typename G::V_i V_i;
@@ -205,25 +194,23 @@ public:
     typedef typename G::degree_to_V_i degree_to_V_i;
     #endif
     typedef typename G::EI_i EI_i;
-    //@}
-
-    //! @name Framework related functions
-    //@{
+    // @}
+    // ! @name Framework related functions
+    // @{
     /*! \brief Disconnects all incoming and outgoing edges from the vertex
      *  Calls the disconnect_vertex function of the graph with assertions
      *  @param graph
      *  @param vertex_id
      */
     void disconnectVertex(G &graph, int64_t vertex_id);
-    
     /*! \brief Stores the ids of those vertices forbidden from contraction in a set
      *  Stores them in the set *forbidden_vertices*
      *  @param forbidden_vertices
      *  @param size_forbidden_vertices
      */
     void setForbiddenVertices(int64_t *forbidden_vertices,
-    size_t size_forbidden_vertices );
-    
+    size_t size_forbidden_vertices);
+
     /*! \brief Stores ids of all the vertices of the graph in a set
      *  Stores them in the set *all_vertices*
      *  @param graph
@@ -242,7 +229,6 @@ public:
      *  @param vertex_id
      */
     Identifiers<int64_t> getAdjacentVertices(G &graph, int64_t vertex_id);
-    
     /*! \brief Writes the string form of identifier class to the *stream*
      *  @param stream
      *  @param identifiers
@@ -253,30 +239,27 @@ public:
      *  @param stream
      */
     void print_forbidden_vertices(std::ostringstream& stream);
-    
+
     /*! \brief Writes the string form of all vertices to the *stream*
      *  @param stream
      */
     void print_all_vertices(std::ostringstream& stream);
-    
+
     /*! \brief Writes the string form of non contracted vertices to the *stream*
      *  @param stream
      */
     void print_non_contracted_vertices(std::ostringstream& stream);
 
-    //@}
-
-
-
-    //! @name Dead end contraction related functions
-    //@{
+    // @}
+    // ! @name Dead end contraction related functions
+    // @{
 
     /*! \brief Checks whether a vertex is a dead end vertex
      *  @param graph
      *  @param vertex_id
      */
     bool is_dead_end(G &graph, int64_t vertex_id) const;
-    
+
     /*! \brief Stores ids of dead end vertices of the graph in a set
      *  Stores them in the set *dead_end_vertices*
      *  @param graph
@@ -288,12 +271,9 @@ public:
      */
     void print_dead_end_vertices(std::ostringstream& stream);
 
-    //@}
+    // @}
 
-
-
-
-    //bool is_connected(G &graph, V v) const;
+    // bool is_connected(G &graph, V v) const;
     #if 0
     void contract_to_level(
         G &graph,
@@ -303,7 +283,7 @@ public:
     #if 0
     void dead_end_contraction(G &graph);
     void remove_2_degree_vertices(G &graph);
-    
+
 
     void calculateDegrees(G &graph);
 
@@ -318,68 +298,59 @@ public:
     void getRemovedV_string(std::ostringstream& vstring);
 
     void getPsuedoE_string(std::ostringstream& pstring);
-    
+
     typedef typename std::map<V, std::deque<Edge> > removed_V;
     typedef typename std::map<V, std::deque<Edge> >::iterator removed_V_i;
     typedef typename std::map<int64_t, std::pair<int64_t, int64_t> > psuedo_E;
     typedef typename std::map<int64_t, std::pair<int64_t, int64_t> >::iterator psuedo_E_i;
     typedef std::map< int, std::priority_queue<int64_t, std::vector<int64_t>, std::greater<int64_t> > > degree_to_V;
-    //typedef std::map< int, std::vector<int64_t> > degree_to_V;
+    //  typedef std::map< int, std::vector<int64_t> > degree_to_V;
     typedef typename std::vector<V>::iterator Q_i;
     #endif
-private:
 
-
+ private:
     int64_t last_edge_id;
-    //! Used for storing the ids of all vertices of the graph
+    // ! Used for storing the ids of all vertices of the graph
     Identifiers<int64_t> all;
-    //! Used for storing the ids of dead end vertices of the graph
+    // ! Used for storing the ids of dead end vertices of the graph
     Identifiers<int64_t> dead_end;
-    //! Used for storing the ids of vertices of the graph which are not contracted
+    // ! Used for storing the ids of vertices of the graph which are not contracted
     Identifiers<int64_t> non_contracted;
-    //! Used for storing the ids of vertices forbidden from contraction
+    // ! Used for storing the ids of vertices forbidden from contraction
     Identifiers<int64_t> forbidden;
     #if 0
     removed_V removedVertices;
     psuedo_E psuedoEdges;
     degree_to_V degree_to_V_map;
     #endif
-    //set of dead_end_vertices;
-    //Identifiers<V> dead_end_vertices;
-
+    // set of dead_end_vertices;
+    // Identifiers<V> dead_end_vertices;
 };
 
 
- /******************** IMPLEMENTATION ******************/
-
+/******************** IMPLEMENTATION ******************/
 template < class G >
 void Pgr_contract< G >::disconnectVertex(G &graph, int64_t vertex_id) {
-
-
     pgassert(graph.is_connected(vertex_id));
     pgassert(is_dead_end(vertex_id));
     graph.disconnect_vertex(vertex_id);
     pgassert(!graph.is_connected(vertex_id));
-
 }
 
 template < class G >
 void Pgr_contract< G >::setForbiddenVertices(int64_t *forbidden_vertices,
     size_t size_forbidden_vertices ) {
-
-
     for (int64_t i = 0; i < size_forbidden_vertices; ++i) {
             forbidden += forbidden_vertices[i];
         }
-
 }
 
 template <class G>
 void Pgr_contract< G >::getAllVertices(G &graph) {
-    //Identifiers<int64_t> dead_end_vertices;
+    // Identifiers<int64_t> dead_end_vertices;
     V_i vi;
     for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
-        // debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
+        //  debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
             all += graph.graph[(*vi)].id;
     }
 }
@@ -417,31 +388,31 @@ Identifiers<int64_t> Pgr_contract< G >::getAdjacentVertices(G &graph, int64_t ve
 
 template <class G>
 void Pgr_contract< G >::print_identifiers(std::ostringstream& stream, Identifiers<int64_t> identifiers) {
-    //std::ostringstream out;
+    // std::ostringstream out;
     stream << identifiers << '\n';
-    //return out;
+    // return out;
 }
 
 template <class G>
 void Pgr_contract< G >::print_forbidden_vertices(std::ostringstream& stream) {
-    //std::ostringstream out;
+    // std::ostringstream out;
     stream << forbidden << '\n';
-    //return out;
+    // return out;
 }
 
 template <class G>
 void Pgr_contract< G >::print_all_vertices(std::ostringstream& stream) {
-    //std::ostringstream out;
+    // std::ostringstream out;
     stream << all << '\n';
-    //return out;
+    // return out;
 }
 
 
 template <class G>
 void Pgr_contract< G >::print_non_contracted_vertices(std::ostringstream& stream) {
-    //std::ostringstream out;
+    // std::ostringstream out;
     stream << non_contracted << '\n';
-    //return out;
+    // return out;
 }
 #if 0
 template < class G >
@@ -455,17 +426,16 @@ bool  Pgr_contract< G >::is_connected(G &graph, V v) const {
 
 template < class G >
 bool Pgr_contract< G >::is_dead_end(G &graph, int64_t vertex_id) const {
-
-    //debug << "in_degree: " << graph.in_degree(vertex_id) << '\n';
-    //debug << "out_degree: " << graph.out_degree(vertex_id) << '\n';
+    // debug << "in_degree: " << graph.in_degree(vertex_id) << '\n';
+    // debug << "out_degree: " << graph.out_degree(vertex_id) << '\n';
     V v;
     if (!graph.has_vertex(vertex_id)) {
             return false;
     }
     v = graph.get_V(vertex_id);
-    if(graph.out_degree(v) == 1 && graph.in_degree(v) == 0) return true;
-    if(graph.out_degree(v) == 0 && graph.in_degree(v) == 1) return true;
-    if(graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
+    if (graph.out_degree(v) == 1 && graph.in_degree(v) == 0) return true;
+    if (graph.out_degree(v) == 0 && graph.in_degree(v) == 1) return true;
+    if (graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
         int64_t incoming_edge_id, outgoing_edge_id;
         EO_i out, out_end;
         EI_i in, in_end;
@@ -477,39 +447,36 @@ bool Pgr_contract< G >::is_dead_end(G &graph, int64_t vertex_id) const {
                         in != in_end; ++in) {
             incoming_edge_id = graph.graph[*in].id;
         }
-        if(incoming_edge_id == outgoing_edge_id)
+        if (incoming_edge_id == outgoing_edge_id)
             return true;
         return false;
-    } 
+    }
     return false;
 }
 
 template <class G>
 void Pgr_contract< G >::getDeadEndSet(G &graph) {
-    //Identifiers<int64_t> dead_end_vertices;
+    // Identifiers<int64_t> dead_end_vertices;
     V_i vi;
     for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
-        // debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
+        //  debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
         if (is_dead_end(graph, graph.graph[(*vi)].id)) {
-            // debug << "Adding " << graph.graph[(*vi)].id << "to dead end" << '\n';
+            //  debug << "Adding " << graph.graph[(*vi)].id << "to dead end" << '\n';
             dead_end += graph.graph[(*vi)].id;
         }
     }
-    //return dead_end_vertices;
+    // return dead_end_vertices;
 }
-
-
 
 template <class G>
 void Pgr_contract< G >::print_dead_end_vertices(std::ostringstream& stream) {
-    //std::ostringstream out;
+    // std::ostringstream out;
     stream << dead_end << '\n';
-    //return out;
+    // return out;
 }
 
-
 #if 0
- //! \brief Calculates the degree of every vertex in the graph
+// ! \brief Calculates the degree of every vertex in the graph
      /*!
        - A map is generated which maps the degree to a vector of vertices of the particlaur degree 
        - This map changes during the process of contraction 
@@ -518,10 +485,10 @@ template < class G >
        void
        Pgr_contract< G >::calculateDegrees(G &graph) {
            EO_i out, out_end;
-    // V_i vi;
+    //  V_i vi;
            for (auto vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
-        // graph.graph[(*vi)].degree=boost::out_degree(*vi,graph.graph);
-              int degree = boost::in_degree(*vi,graph.graph);
+        //  graph.graph[(*vi)].degree=boost::out_degree(*vi,graph.graph);
+              int degree = boost::in_degree(*vi, graph.graph);
               degree_to_V_map[degree].push(graph.graph[(*vi)].id);
           }
       }
@@ -529,12 +496,12 @@ template < class G >
 #endif
 
 #if 0
- //! \brief Generates the name of the contracted graph based upon the type of contraction
+// ! \brief Generates the name of the contracted graph based upon the type of contraction
 template < class G >
       void
       Pgr_contract< G >::getGraphName(std::ostringstream& name, Contraction_type ctype) {
        name << "contracted_graph_" << static_cast<int>(ctype);
-   }
+}
 
 
 #endif
@@ -542,38 +509,32 @@ template < class G >
 #if 0
 template < class G >
 void
-Pgr_contract< G >::contract_to_level(G &graph,int64_t level)
-{
-    switch(level)
-    {
+Pgr_contract< G >::contract_to_level(G &graph, int64_t level) {
+    switch (level) {
         case 0:
         remove_1_degree_vertices(graph);
         break;
         case 1:
         remove_2_degree_vertices(graph);
         default:
-        // do nothing
-        ;
+        //  do nothing;
     }
 }
 #endif
 
 
 #if 0
- //! \brief Returns the *degree_to_V_map* in string format
+// ! \brief Returns the *degree_to_V_map* in string format
 template < class G >
 void
-Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
-{
-    // cout << "Printing degree_V map" << endl;
+Pgr_contract< G >::degreeMap(G &graph, std::ostringstream& dmap) {
+    //  cout << "Printing degree_V map" << endl;
     degree_to_V_i it1;
-    dmap << "Degree --> Vertices" ;
+    dmap << "Degree --> Vertices";
     Q_i it2;
-    for ( it1=degree_to_V_map.begin(); it1!=degree_to_V_map.end(); ++it1)
-    {
-        dmap << it1->first << "-->" ;
-        for (it2=it1->second.begin(); it2 !=it1->second.end(); ++it2)
-        {
+    for (it1=degree_to_V_map.begin(); it1 != degree_to_V_map.end(); ++it1) {
+        dmap << it1->first << "-->";
+        for (it2=it1->second.begin(); it2 != it1->second.end(); ++it2) {
             dmap << graph.graph[(*it2)].id << ", ";
         }
         dmap << "\n";
@@ -583,28 +544,27 @@ Pgr_contract< G >::degreeMap(G &graph,std::ostringstream& dmap)
 
 
 #if 0
-//! \brief Performs dead-end contraction on the graph
+// ! \brief Performs dead-end contraction on the graph
      /*!
       
        - Picks up vertices in the order of the vertex id
        - Removes all those vertices with one incoming edge(directed)
        - In case of undirected the vertices having one incoming and one outgoing edge(both of same id)
          will be chosen.
-
        */
 template < class G >
          void
          Pgr_contract< G >::dead_end_contraction(G &graph) {
            E_i in, in_end;
            V front;
-    // errors << "first vertex: " << front ;
-    // std::vector<V> one_degree_vertices = degree_to_V_map[1];
+    //  errors << "first vertex: " << front ;
+    //  std::vector<V> one_degree_vertices = degree_to_V_map[1];
            degree_to_V_i it;
-    // std::cout << "1 degree vertices " << one_degree_vertices.size();
-    // std::cout << "Front id" << frontid;
-    // graph.m_num_vertices--;   
+    //  std::cout << "1 degree vertices " << one_degree_vertices.size();
+    //  std::cout << "Front id" << frontid;
+    //  graph.m_num_vertices--;
            while (degree_to_V_map[1].size() > 0) {
-        // std::cout << "Front " << graph.graph[front].id;
+        //  std::cout << "Front " << graph.graph[front].id;
               V front = degree_to_V_map[1].top();
               degree_to_V_map[1].pop();
               int64_t frontid = graph.graph[front].id;
@@ -614,15 +574,14 @@ template < class G >
               int64_t source_id = graph.graph[s].id;
               int64_t target_id = graph.graph[t].id;
               graph.graph[t].type = 1;
-        // degree_to_V_map[final_target_degree].push_back(t);
-        // Edge removed_edge = graph.graph[*in];
-        // graph.graph[s].removed_vertices.
-        // removedVertices[frontid].push_front(removed_edge);
+        //  degree_to_V_map[final_target_degree].push_back(t);
+        //  Edge removed_edge = graph.graph[*in];
+        //  graph.graph[s].removed_vertices.
+        //  removedVertices[frontid].push_front(removed_edge);
               graph.disconnect_vertex_c(target_id);
               graph.m_num_vertices--;
               int source_degree = boost::in_degree(s, graph.graph);
               degree_to_V_map[source_degree].push(s);
-
           }
       }
 
@@ -632,35 +591,35 @@ template < class G >
 template < class G >
 void
 Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
-    EO_i out,out_end;
+    EO_i out, out_end;
     std::vector<V> neighbors_desc;
     std::vector<V> two_degree_vertices = degree_to_V_map[2];
     std::vector<V> two_degree_vertices_0;
     for (Q_i it = two_degree_vertices.begin() ; it != two_degree_vertices.end(); ++it) {
-            //cout << "id" << reduced_graph->graph[*it].id << endl;
-            //cout << "contractions" << reduced_graph->graph[*it].contractions << endl;
+            // cout << "id" << reduced_graph->graph[*it].id << endl;
+            // cout << "contractions" << reduced_graph->graph[*it].contractions << endl;
         if (graph.graph[*it].contractions == 0) {
             two_degree_vertices_0.push_back(*it);
         }
     }
     degree_to_V_i it;
-    //std::cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
+    // std::cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
     if (two_degree_vertices_0.size() == 0) {
         return;
     }
     V front = two_degree_vertices_0.front();
     int64_t front_id = -1;
-    while (two_degree_vertices_0.size()>0) {
-            //cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
-            //cout << "Edge count" << num_edges(reduced_graph->graph) << endl;
-        std::cout << "Front " << graph.graph[front].id ;
+    while (two_degree_vertices_0.size() > 0) {
+            // cout << "2 degree vertices " << two_degree_vertices_0.size()  << endl;
+            // cout << "Edge count" << num_edges(reduced_graph->graph) << endl;
+        std::cout << "Front " << graph.graph[front].id;
         neighbors_desc.clear();
         front = two_degree_vertices_0.front();
         front_id = graph.graph[front].id;
-        if (graph.graph[front].contractions==0) {
+        if (graph.graph[front].contractions == 0) {
             int count = 0;
-            int64_t tid1=-1, tid2 = -1;
-            V  tdesc1=-1, tdesc2 = -1;
+            int64_t tid1 = -1, tid2 = -1;
+            V  tdesc1 = -1, tdesc2 = -1;
             float min_distance = 0.00000;
             for (boost::tie(out, out_end) = out_edges(front, graph.graph);
                 out != out_end; ++out) {
@@ -676,22 +635,21 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
                 tdesc2 = neighbors_desc[1];
                 tid1 = graph.graph[tdesc1].id;
                 tid2 = graph.graph[tdesc2].id;
-                E edesc1 = edge(tdesc1, front,graph.graph).first;
-                E edesc2 = edge(front, tdesc2,graph.graph).first;
+                E edesc1 = edge(tdesc1, front, graph.graph).first;
+                E edesc2 = edge(front, tdesc2, graph.graph).first;
                 int64_t eid1 = graph.graph[edesc1].id;
                 int64_t eid2 = graph.graph[edesc2].id;
                 int64_t eid;
-                bool b1 = edge(tdesc1, tdesc2,graph.graph).second;
-                bool b2 = edge(tdesc2, tdesc1,graph.graph).second;
+                bool b1 = edge(tdesc1, tdesc2, graph.graph).second;
+                bool b2 = edge(tdesc2, tdesc1, graph.graph).second;
                 if (b1 || b2) {
-                    E edesc = edge(tdesc1, tdesc2,graph.graph).first;
+                    E edesc = edge(tdesc1, tdesc2, graph.graph).first;
                     eid = graph.graph[edesc].id;
                     float dist = graph.graph[edesc].cost;
-                    if (min_distance-dist >= 0.000001)
-                    {
+                    if (min_distance-dist >= 0.000001) {
                         min_distance = dist;
                     } else {
-                        //std::cout << "Updating shortcut " << "(" << eid1 << ", " << eid2 << ")" << " with " << min_distance << endl;
+                        // std::cout << "Updating shortcut " << "(" << eid1 << ", " << eid2 << ")" << " with " << min_distance << endl;
                         graph.graph[edesc].cost = min_distance;
                         graph.graph[edesc].type = 1;
                     }
@@ -699,17 +657,16 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
                     shortcut.id = ++graph.last_edge_id;
                     eid = shortcut.id;
                     shortcut.source = tid1;
-                    shortcut.target = tid2; 
+                    shortcut.target = tid2;
                     shortcut.cost = min_distance;
                     shortcut.type = 2;
                     graph.graph_add_shortcut(shortcut);
                 }
-                psuedoEdges[eid] = std::make_pair(eid1,eid2);
+                psuedoEdges[eid] = std::make_pair(eid1, eid2);
                 Edge removed_edge;
-                for (int i = 0; i < 2; ++i)
-                {
+                for (int i = 0; i < 2; ++i) {
                     V t = neighbors_desc[i];
-                    removed_edge = graph.graph[edge(front, t,graph.graph).first];
+                    removed_edge = graph.graph[edge(front, t, graph.graph).first];
                     removedVertices[front_id].push_front(removed_edge);
                 }
                 graph.disconnect_vertex(front_id);
@@ -718,13 +675,12 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
         }
         two_degree_vertices_0.erase(two_degree_vertices_0.begin(),
             two_degree_vertices_0.begin()+1);
-
     }
 }
 #endif
 
 #if 0
-//! \brief Returns the information about the contracted graph in string format
+// ! \brief Returns the information about the contracted graph in string format
      /*!
        
        - Information about the outgoig edges of a particular vertex gets stored
@@ -734,10 +690,10 @@ Pgr_contract< G >::remove_2_degree_vertices(G &graph) {
        */
 template < class G >
        int64_t
-       Pgr_contract< G >::getGraph_string(G &graph,std::ostringstream& estring) {
+       Pgr_contract< G >::getGraph_string(G &graph, std::ostringstream& estring) {
            V_i vi;
-           EO_i out,out_end;
-           int64_t count=0;
+           EO_i out, out_end;
+           int64_t count = 0;
            for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
               for (boost::tie(out, out_end) = out_edges(*vi, graph.graph);
                  out != out_end; ++out) {
@@ -746,15 +702,13 @@ template < class G >
              int64_t source_id = graph.graph[source_desc].id;
              int64_t target_id = graph.graph[target_desc].id;
 
-             if (target_desc > source_desc)
-             {
+             if (target_desc > source_desc) {
                 estring << graph.graph[*out].id << ","
                 << source_id << "," << target_id << ","
                 << graph.graph[*out].cost << ","
                 << graph.graph[*out].reverse_cost << "$";
                 count++;
             }
-
         }
     }
     return count;
@@ -763,7 +717,7 @@ template < class G >
 #endif
 
 #if 0
-//! \brief Returns the information about the removed edges after contraction in string format
+// ! \brief Returns the information about the removed edges after contraction in string format
      /*!
       
        - The information of the removed edge includes id,source,target,cost
@@ -772,25 +726,22 @@ template < class G >
        */
 template < class G >
        void
-       Pgr_contract< G >::getRemovedE_string(G &graph,std::ostringstream& estring) {
-
+       Pgr_contract< G >::getRemovedE_string(G &graph, std::ostringstream& estring) {
     #if 0
-    for (removed_E_i iter = graph.removed_edges.begin(); iter != graph.removed_edges.end(); iter++)
-    {
-        // Edge temp=*iter ;
+    for (removed_E_i iter = graph.removed_edges.begin(); iter != graph.removed_edges.end(); iter++) {
+        //  Edge temp=*iter ;
         estring << iter->id << "," << iter->source << ","
-        << iter->target << "," << iter->cost << "$"; 
-        // << "," << iter->reverse_cost << "$";
+        << iter->target << "," << iter->cost << "$";
+        //  << "," << iter->reverse_cost << "$";
     }
     #endif
-
-    for (const auto re : graph.removed_edges_c) 
+    for (const auto re : graph.removed_edges_c)
         estring << re.first << "," << re.second.source << ","
     << re.second.target << "," << re.second.cost << ","
     <<re.second.reverse_cost<< "$";
 }
 #endif
-//! \brief Returns the information about the removed vertices after contraction in string format
+// ! \brief Returns the information about the removed vertices after contraction in string format
      /*!
       
        - The information of the removed vertex includes id
@@ -804,22 +755,21 @@ template < class G >
        void
        Pgr_contract< G >::getRemovedV_string(std::ostringstream& vstring) {
            for (removed_V_i iter = removedVertices.begin(); iter != removedVertices.end(); iter++) {
-              int64_t vid=iter->first;
+              int64_t vid = iter->first;
               std::deque<Edge>::iterator edge_iter;
               for (edge_iter = iter->second.begin(); edge_iter != iter->second.end(); edge_iter++) {
-                 Edge temp = *edge_iter ;
+                 Edge temp = *edge_iter;
                  vstring << vid <<","<< temp.id << ","
                  << temp.source << "," << temp.target << ","
                  << temp.cost << "," << temp.reverse_cost << "$";
              }
-        // std::cout << endl;
-         }      
-
+        //  std::cout << endl;
+         }
      }
 
 #endif
 #if 0
-//! \brief Returns the information about the new edges(shortcuts) after contraction in string format
+// ! \brief Returns the information about the new edges(shortcuts) after contraction in string format
      /*!
       
        - The information of the shortcut includes id,source,target,cost
@@ -833,6 +783,5 @@ template < class G >
               pstring << pe.first << "," << pe.second.first << ","
               << pe.second.second << "$";
           }
-
       }
 #endif
