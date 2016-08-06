@@ -88,9 +88,11 @@
 <dt>The main Characteristics are:</dt>
 <dd><ul class="first last simple">
 <li>Process is done only on edges with positive costs.</li>
-<li>There are two types of contraction methods used namely,
-- Dead End Contraction
-- Linear Contraction</li>
+<li>There are two types of contraction methods used namely,<ul>
+<li>Dead End Contraction</li>
+<li>Linear Contraction</li>
+</ul>
+</li>
 <li>The values returned include the added edges and contracted vertices.</li>
 <li>The returned values are ordered:<ul>
 <li><cite>id</cite> ascending</li>
@@ -102,94 +104,73 @@
 </div>
 <div class="section" id="signature-summary">
 <h2>Signature Summary:<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
-<p>The pgr_contractGraph function has the following declaration:</p>
+<p>The pgr_contractGraph function has the following signatures:</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_contractGraph(edges_sql, contraction_order)
-pgr_contractGraph(edges_sql, contraction_order, forbidden_vertices)
-pgr_contractGraph(edges_sql, contraction_order, forbidden_vertices,
-    max_cycles)
-pgr_contractGraph(edges_sql, contraction_order, forbidden_vertices,
-    max_cycles, directed:=true)
+pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
 
-
-RETURNS SETOF ( seq, id, type, source, target, cost,
-         contracted_vertices, contracted_vertices_size)
+RETURNS SETOF (seq, type, id, contracted_vertices, source, target, cost)
 </pre></div>
 </div>
 </div>
 <div class="section" id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="pgr-contractgraph-dead-end-contraction">
-<h2>pgr_contractGraph Dead end Contraction<a class="headerlink" href="#pgr-contractgraph-dead-end-contraction" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_contractGraph(TEXT edges_sql, ARRAY[]::integer[], ARRAY[0]::bigint[], 1, directed:= true);
-RETURNS SETOF ( seq, id, type, source, target, cost,
-         contracted_vertices, contracted_vertices_size)
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_contractGraph(edges_sql, contraction_order)
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>This signature performs one cycle of dead end contraction on the graph:</dt>
-<dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is missing or is set to <tt class="docutils literal"><span class="pre">true</span></tt>.</li>
-<li>on an <strong>undirected</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is set to <tt class="docutils literal"><span class="pre">false</span></tt>.</li>
-</ul>
-</dd>
-</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Making a dead end contraction and a linear contraction.</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 |  2 | v    |     -1 |     -1 |   -1 | {1}                 |                        1
-   2 |  5 | v    |     -1 |     -1 |   -1 | {7,8}               |                        2
-   3 | 10 | v    |     -1 |     -1 |   -1 | {13}                |                        1
-   4 | 15 | v    |     -1 |     -1 |   -1 | {14}                |                        1
-   5 | 17 | v    |     -1 |     -1 |   -1 | {16}                |                        1
-(5 rows)
+    ARRAY[1, 2]);
+ seq | type | id | contracted_vertices | source | target | cost 
+-----+------+----+---------------------+--------+--------+------
+   1 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
+   2 | v    | 15 | {14}                |     -1 |     -1 |   -1
+   3 | v    | 17 | {16}                |     -1 |     -1 |   -1
+   4 | e    | -1 | {1,2}               |      3 |      5 |    2
+   5 | e    | -2 | {4}                 |      9 |      3 |    2
+   6 | e    | -3 | {10,13}             |      5 |     11 |    2
+   7 | e    | -4 | {12}                |     11 |      9 |    2
+(7 rows)
 </pre></div>
 </div>
 </div>
-<div class="section" id="pgr-contractgraph-linear-contraction">
-<h2>pgr_contractGraph Linear Contraction<a class="headerlink" href="#pgr-contractgraph-linear-contraction" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none"><div class="highlight"><pre>pgr_contractGraph(TEXT edges_sql, ARRAY[]::integer[], ARRAY[1]::bigint[], 1, directed:= true);
-RETURNS SETOF ( seq, id, type, source, target, cost,
-         contracted_vertices, contracted_vertices_size)
+<div class="section" id="complete-signature">
+<h3>Complete signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>This signature performs one cycle of linear contraction on the graph:</dt>
-<dd><ul class="first last simple">
-<li>on a <strong>directed</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is missing or is set to <tt class="docutils literal"><span class="pre">true</span></tt>.</li>
-<li>on an <strong>undirected</strong> graph when <tt class="docutils literal"><span class="pre">directed</span></tt> flag is set to <tt class="docutils literal"><span class="pre">false</span></tt>.</li>
-</ul>
-</dd>
-</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Making a dead end contraction and a linear contraction and vertex 2 is forbidden from contraction</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, true);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 | -1 | e    |      9 |      3 |    2 | {4}                 |                        1
-   2 | -2 | e    |      5 |      7 |    2 | {8}                 |                        1
-   3 | -3 | e    |      7 |      5 |    2 | {8}                 |                        1
-   4 | -4 | e    |     11 |      9 |    2 | {12}                |                        1
-(4 rows)
+ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
+ seq | type | id | contracted_vertices | source | target | cost 
+-----+------+----+---------------------+--------+--------+------
+   1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
+   2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
+   3 | v    | 15 | {14}                |     -1 |     -1 |   -1
+   4 | v    | 17 | {16}                |     -1 |     -1 |   -1
+   5 | e    | -1 | {4}                 |      9 |      3 |    2
+   6 | e    | -2 | {10,13}             |      5 |     11 |    2
+   7 | e    | -3 | {12}                |     11 |      9 |    2
+(7 rows)
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="description-of-the-sql-query">
@@ -345,182 +326,45 @@ RETURNS SETOF ( seq, id, type, source, target, cost,
 </div>
 <div class="section" id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="dead-end-contraction">
-<h2>Dead End Contraction<a class="headerlink" href="#dead-end-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples of this section are based on the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Only dead end contraction</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 |  2 | v    |     -1 |     -1 |   -1 | {1}                 |                        1
-   2 |  5 | v    |     -1 |     -1 |   -1 | {7,8}               |                        2
-   3 | 10 | v    |     -1 |     -1 |   -1 | {13}                |                        1
-   4 | 15 | v    |     -1 |     -1 |   -1 | {14}                |                        1
-   5 | 17 | v    |     -1 |     -1 |   -1 | {16}                |                        1
+ARRAY[1]);
+ seq | type | id | contracted_vertices | source | target | cost 
+-----+------+----+---------------------+--------+--------+------
+   1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
+   2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
+   3 | v    | 10 | {13}                |     -1 |     -1 |   -1
+   4 | v    | 15 | {14}                |     -1 |     -1 |   -1
+   5 | v    | 17 | {16}                |     -1 |     -1 |   -1
 (5 rows)
 </pre></div>
 </div>
-</div>
-<div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns-for-one-cycle-of-dead-end-contraction">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns for one cycle of dead end contraction<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns-for-one-cycle-of-dead-end-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig1"><em>Graph 1: Directed, with cost and reverse cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
-    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 |  2 | v    |     -1 |     -1 |   -1 | {1}                 |                        1
-   2 |  5 | v    |     -1 |     -1 |   -1 | {7,8}               |                        2
-   3 | 10 | v    |     -1 |     -1 |   -1 | {13}                |                        1
-   4 | 15 | v    |     -1 |     -1 |   -1 | {14}                |                        1
-   5 | 17 | v    |     -1 |     -1 |   -1 | {16}                |                        1
-(5 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns-for-one-cycle-of-dead-end-contraction">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns for one cycle of dead end contraction<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns-for-one-cycle-of-dead-end-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig2"><em>Graph 2: Undirected, with cost and reverse cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
-    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, false);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 |  2 | v    |     -1 |     -1 |   -1 | {1}                 |                        1
-   2 |  5 | v    |     -1 |     -1 |   -1 | {7,8}               |                        2
-   3 | 10 | v    |     -1 |     -1 |   -1 | {13}                |                        1
-   4 | 15 | v    |     -1 |     -1 |   -1 | {14}                |                        1
-   5 | 17 | v    |     -1 |     -1 |   -1 | {16}                |                        1
-(5 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="examples-for-queries-marked-as-directed-with-cost-column-for-one-cycle-of-dead-end-contraction">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column for one cycle of dead end contraction<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column-for-one-cycle-of-dead-end-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig3"><em>Graph 3: Directed, with cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
-    &#39;SELECT id, source, target, cost FROM edge_table&#39;,
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 |  1 | v    |     -1 |     -1 |   -1 | {2,5,6,10,11,13}    |                        6
-   2 |  3 | v    |     -1 |     -1 |   -1 | {6,9,11,12}         |                        4
-   3 |  4 | v    |     -1 |     -1 |   -1 | {9,12}              |                        2
-   4 |  7 | v    |     -1 |     -1 |   -1 | {5,8}               |                        2
-   5 | 14 | v    |     -1 |     -1 |   -1 | {15}                |                        1
-   6 | 16 | v    |     -1 |     -1 |   -1 | {17}                |                        1
-(6 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column-for-one-cycle-of-dead-end-contraction">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column for one cycle of dead end contraction<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column-for-one-cycle-of-dead-end-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig4"><em>Graph 4: Undirected, with cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
-    &#39;SELECT id, source, target, cost FROM edge_table&#39;,
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, false);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 |  5 | v    |     -1 |     -1 |   -1 | {1,2,7,8}           |                        4
-   2 |  6 | v    |     -1 |     -1 |   -1 | {3}                 |                        1
-   3 |  9 | v    |     -1 |     -1 |   -1 | {4}                 |                        1
-   4 | 10 | v    |     -1 |     -1 |   -1 | {13}                |                        1
-   5 | 15 | v    |     -1 |     -1 |   -1 | {14}                |                        1
-   6 | 17 | v    |     -1 |     -1 |   -1 | {16}                |                        1
-(6 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="linear-contraction">
-<h2>Linear Contraction<a class="headerlink" href="#linear-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples of this section are based on the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Only linear contraction</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, true);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 | -1 | e    |      9 |      3 |    2 | {4}                 |                        1
-   2 | -2 | e    |      5 |      7 |    2 | {8}                 |                        1
-   3 | -3 | e    |      7 |      5 |    2 | {8}                 |                        1
-   4 | -4 | e    |     11 |      9 |    2 | {12}                |                        1
+ARRAY[2]);
+ seq | type | id | contracted_vertices | source | target | cost 
+-----+------+----+---------------------+--------+--------+------
+   1 | e    | -1 | {4}                 |      9 |      3 |    2
+   2 | e    | -2 | {8}                 |      5 |      7 |    2
+   3 | e    | -3 | {8}                 |      7 |      5 |    2
+   4 | e    | -4 | {12}                |     11 |      9 |    2
 (4 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns-for-one-cycle-of-linear-contraction">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns for one cycle of linear contraction<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns-for-one-cycle-of-linear-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig1"><em>Graph 1: Directed, with cost and reverse cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
-    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, true);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 | -1 | e    |      9 |      3 |    2 | {4}                 |                        1
-   2 | -2 | e    |      5 |      7 |    2 | {8}                 |                        1
-   3 | -3 | e    |      7 |      5 |    2 | {8}                 |                        1
-   4 | -4 | e    |     11 |      9 |    2 | {12}                |                        1
-(4 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns-for-one-cycle-of-linear-contraction">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns for one cycle of linear contraction<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns-for-one-cycle-of-linear-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig2"><em>Graph 2: Undirected, with cost and reverse cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
-    &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, false);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 | -1 | e    |      3 |      9 |    2 | {4}                 |                        1
-   2 | -2 | e    |      5 |      7 |    2 | {8}                 |                        1
-   3 | -3 | e    |      9 |     11 |    2 | {12}                |                        1
-(3 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="examples-for-queries-marked-as-directed-with-cost-column-for-one-cycle-of-linear-contraction">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column for one cycle of linear contraction<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column-for-one-cycle-of-linear-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig3"><em>Graph 3: Directed, with cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
-    &#39;SELECT id, source, target, cost FROM edge_table&#39;,
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, true);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 | -1 | e    |      1 |      5 |    2 | {2}                 |                        1
-   2 | -2 | e    |      7 |      5 |    2 | {8}                 |                        1
-(2 rows)
-</pre></div>
-</div>
-</div>
-<div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column-for-one-cycle-of-linear-contraction">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column for one cycle of linear contraction<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column-for-one-cycle-of-linear-contraction" title="Permalink to this headline">¶</a></h2>
-<p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig4"><em>Graph 4: Undirected, with cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_contractGraph(
-    &#39;SELECT id, source, target, cost FROM edge_table&#39;,
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, false);
- seq | id | type | source | target | cost | contracted_vertices | contracted_vertices_size 
------+----+------+--------+--------+------+---------------------+--------------------------
-   1 | -1 | e    |      1 |      5 |    2 | {2}                 |                        1
-   2 | -2 | e    |      5 |      7 |    2 | {8}                 |                        1
-   3 | -3 | e    |      9 |     11 |    2 | {12}                |                        1
-(3 rows)
 </pre></div>
 </div>
 <p class="rubric">Indices and tables</p>
@@ -528,7 +372,6 @@ RETURNS SETOF ( seq, id, type, source, target, cost,
 <li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
 <li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
 </ul>
-</div>
 </div>
 
 
@@ -547,7 +390,7 @@ RETURNS SETOF ( seq, id, type, source, target, cost,
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 03, 2016.
+      Last updated on Aug 06, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
