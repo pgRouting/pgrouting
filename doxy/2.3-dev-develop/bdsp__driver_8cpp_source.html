@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -113,7 +112,7 @@ $(document).ready(function(){initNavTree('bdsp__driver_8cpp_source.html','');});
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* $Id$</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* Project:  pgRouting bdsp and bdastar algorithms</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* Project: pgRouting bdsp and bdastar algorithms</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">* Purpose:</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* Author:   Razequl Islam &lt;ziboncsedu@gmail.com&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
@@ -137,30 +136,30 @@ $(document).ready(function(){initNavTree('bdsp__driver_8cpp_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">********************************************************************PGR-MIT*/</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if defined(__MINGW32__) || defined(_MSC_VER)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if defined(__MINGW32__) ||  defined(_MSC_VER)</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;winsock2.h&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="BiDirDijkstra_8h.html">BiDirDijkstra.h</a>&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bdsp__driver_8h.html">bdsp_driver.h</a>&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bdsp__driver_8h.html">./bdsp_driver.h</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="BiDirDijkstra_8h.html">./BiDirDijkstra.h</a>&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="bdsp__driver_8h.html#a772e098df4b9ddb2f01be2c1334c8879">   40</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="bdsp__driver_8cpp.html#a772e098df4b9ddb2f01be2c1334c8879">bidirsp_wrapper</a>(</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="structpgr__edge__t.html">edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730">edge_count</a>,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="BDATester_8cpp.html#ae627e7f1fc2e1d7f5b9361def8110527">maxNode</a>,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> start_vertex,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> end_vertex,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">bool</span> directed,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">bool</span> has_reverse_cost,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="structpath__element__t.html">path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    )</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="bdsp__driver_8h.html#a772e098df4b9ddb2f01be2c1334c8879">   41</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="bdsp__driver_8cpp.html#a772e098df4b9ddb2f01be2c1334c8879">bidirsp_wrapper</a>(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="structpgr__edge__t.html">edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730">edge_count</a>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="BDATester_8cpp.html#ae627e7f1fc2e1d7f5b9361def8110527">maxNode</a>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">int</span> start_vertex,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">int</span> end_vertex,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">bool</span> has_reverse_cost,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="structpath__element__t.html">path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">int</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        ) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> res;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">try</span> {</div>
@@ -168,37 +167,36 @@ $(document).ready(function(){initNavTree('bdsp__driver_8cpp_source.html','');});
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="classBiDirDijkstra.html">BiDirDijkstra</a> bddijkstra;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// DBG(&quot;BiDirDijkstra initialized\n&quot;);</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        res = bddijkstra.<a class="code" href="classBiDirDijkstra.html#a160e77586ad927274f51422e30015a0e">bidir_dijkstra</a>(edges, edge_count, maxNode, start_vertex, end_vertex, path, path_count, err_msg);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// TODO  this are an unused parameters have to be used</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span> (has_reverse_cost) {};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (directed) {};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">catch</span>(std::exception&amp; e) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="comment">// DBG(&quot;catch(std::exception e.what: %s\n&quot;, e.what());</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        *err_msg = (<span class="keywordtype">char</span> *) e.what();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// DBG(&quot;catch(...\n&quot;);</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        *err_msg = (<span class="keywordtype">char</span> *) <span class="stringliteral">&quot;Caught unknown exception!&quot;</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// DBG(&quot;Back from bddijkstra.bidir_dijkstra()\n&quot;);</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (res &lt; 0)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">return</span> res;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00111">pgr_types.h:111</a></div></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// TODO(someone) this are an unused parameters have to be used</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span> (has_reverse_cost) {}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (directed) {}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">catch</span>(std::exception&amp; e) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// DBG(&quot;catch(std::exception e.what: %s\n&quot;, e.what());</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        *err_msg = (<span class="keywordtype">char</span> *) e.what();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">catch</span>(...) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">// DBG(&quot;catch(...\n&quot;);</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        *err_msg = (<span class="keywordtype">char</span> *) <span class="stringliteral">&quot;Caught unknown exception!&quot;</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// DBG(&quot;Back from bddijkstra.bidir_dijkstra()\n&quot;);</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span> (res &lt; 0)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00127">pgr_types.h:127</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
 <div class="ttc" id="BiDirDijkstra_8h_html"><div class="ttname"><a href="BiDirDijkstra_8h.html">BiDirDijkstra.h</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_ae627e7f1fc2e1d7f5b9361def8110527"><div class="ttname"><a href="BDATester_8cpp.html#ae627e7f1fc2e1d7f5b9361def8110527">maxNode</a></div><div class="ttdeci">int maxNode</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00047">BDATester.cpp:47</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_a1a21f2fdaf8aa261214ed6c7c2b56730"><div class="ttname"><a href="BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730">edge_count</a></div><div class="ttdeci">int edge_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00047">BDATester.cpp:47</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
-<div class="ttc" id="bdsp__driver_8cpp_html_a772e098df4b9ddb2f01be2c1334c8879"><div class="ttname"><a href="bdsp__driver_8cpp.html#a772e098df4b9ddb2f01be2c1334c8879">bidirsp_wrapper</a></div><div class="ttdeci">int bidirsp_wrapper(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost, path_element_t **path, int *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="bdsp__driver_8cpp_source.html#l00040">bdsp_driver.cpp:40</a></div></div>
-<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00066">pgr_types.h:66</a></div></div>
+<div class="ttc" id="bdsp__driver_8cpp_html_a772e098df4b9ddb2f01be2c1334c8879"><div class="ttname"><a href="bdsp__driver_8cpp.html#a772e098df4b9ddb2f01be2c1334c8879">bidirsp_wrapper</a></div><div class="ttdeci">int bidirsp_wrapper(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost, path_element_t **path, int *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="bdsp__driver_8cpp_source.html#l00041">bdsp_driver.cpp:41</a></div></div>
+<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00073">pgr_types.h:73</a></div></div>
 <div class="ttc" id="classBiDirDijkstra_html"><div class="ttname"><a href="classBiDirDijkstra.html">BiDirDijkstra</a></div><div class="ttdef"><b>Definition:</b> <a href="BiDirDijkstra_8h_source.html#l00078">BiDirDijkstra.h:78</a></div></div>
-<div class="ttc" id="classBiDirDijkstra_html_a160e77586ad927274f51422e30015a0e"><div class="ttname"><a href="classBiDirDijkstra.html#a160e77586ad927274f51422e30015a0e">BiDirDijkstra::bidir_dijkstra</a></div><div class="ttdeci">int bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex, path_element_t **path, int *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="BiDirDijkstra_8cpp_source.html#l00276">BiDirDijkstra.cpp:276</a></div></div>
+<div class="ttc" id="classBiDirDijkstra_html_a160e77586ad927274f51422e30015a0e"><div class="ttname"><a href="classBiDirDijkstra.html#a160e77586ad927274f51422e30015a0e">BiDirDijkstra::bidir_dijkstra</a></div><div class="ttdeci">int bidir_dijkstra(edge_t *edges, unsigned int edge_count, int maxNode, int start_vertex, int end_vertex, path_element_t **path, int *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="BiDirDijkstra_8cpp_source.html#l00246">BiDirDijkstra.cpp:246</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
 <div class="ttc" id="bdsp__driver_8h_html"><div class="ttname"><a href="bdsp__driver_8h.html">bdsp_driver.h</a></div></div>
@@ -208,7 +206,7 @@ $(document).ready(function(){initNavTree('bdsp__driver_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d45295a976849345696ae19e8e628fab.html">bd_dijkstra</a></li><li class="navelem"><a class="el" href="dir_0e0fe66032089d7666222c320889d144.html">src</a></li><li class="navelem"><a class="el" href="bdsp__driver_8cpp.html">bdsp_driver.cpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:53 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

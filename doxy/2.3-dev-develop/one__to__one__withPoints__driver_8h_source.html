@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -115,9 +114,9 @@ $(document).ready(function(){initNavTree('one__to__one__withPoints__driver_8h_so
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">Function&#39;s developer: </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">Function&#39;s developer:</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">Copyright (c) 2015 Celia Virginia Vergara Castillo</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">Mail: </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">Mail:</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">------</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span></div>
@@ -137,47 +136,48 @@ $(document).ready(function(){initNavTree('one__to__one__withPoints__driver_8h_so
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">//  CREATE OR REPLACE FUNCTION pgr_withPoint(</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">//  edges_sql TEXT,</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">//  points_sql TEXT,</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">//  start_pid BIGINT,</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">//  end_pid BIGINT,</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//  directed BOOLEAN DEFAULT true,</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="one__to__one__withPoints__driver_8h.html#ab5d6715cb4e54ad61e9a98058a012b56">do_pgr_withPoints</a>(</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,           <span class="keywordtype">size_t</span> total_edges,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a>  *points,     <span class="keywordtype">size_t</span> total_points,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  *edges_of_points, <span class="keywordtype">size_t</span> total_edges_of_points,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            int64_t start_pid,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            int64_t end_pid,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordtype">bool</span> directed,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordtype">char</span> driving_side,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordtype">bool</span> details,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordtype">bool</span> only_cost,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **return_tuples,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordtype">size_t</span> *return_count,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordtype">char</span> ** log_msg,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif  // SRC_WITHPOINTS_SRC_WITHPOINTS_DRIVER_H_</span></div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00111">pgr_types.h:111</a></div></div>
-<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00086">pgr_types.h:86</a></div></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef SRC_WITHPOINTS_SRC_ONE_TO_ONE_WITHPOINTS_DRIVER_H_</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_WITHPOINTS_SRC_ONE_TO_ONE_WITHPOINTS_DRIVER_H_</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// CREATE OR REPLACE FUNCTION pgr_withPoint(</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// edges_sql TEXT,</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// points_sql TEXT,</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// start_pid BIGINT,</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// end_pid BIGINT,</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// directed BOOLEAN DEFAULT true,</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="one__to__one__withPoints__driver_8h.html#ab5d6715cb4e54ad61e9a98058a012b56">do_pgr_withPoints</a>(</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">size_t</span> total_edges,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> *points, <span class="keywordtype">size_t</span> total_points,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> *edges_of_points, <span class="keywordtype">size_t</span> total_edges_of_points,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            int64_t start_pid,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            int64_t end_pid,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordtype">char</span> driving_side,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordtype">bool</span> details,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordtype">bool</span> only_cost,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **return_tuples,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordtype">size_t</span> *return_count,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordtype">char</span> ** log_msg,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif  //  SRC_WITHPOINTS_SRC_ONE_TO_ONE_WITHPOINTS_DRIVER_H_</span></div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00127">pgr_types.h:127</a></div></div>
+<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00093">pgr_types.h:93</a></div></div>
 <div class="ttc" id="one__to__one__withPoints__driver_8h_html_ab5d6715cb4e54ad61e9a98058a012b56"><div class="ttname"><a href="one__to__one__withPoints__driver_8h.html#ab5d6715cb4e54ad61e9a98058a012b56">do_pgr_withPoints</a></div><div class="ttdeci">void do_pgr_withPoints(pgr_edge_t *edges, size_t total_edges, Point_on_edge_t *points, size_t total_points, pgr_edge_t *edges_of_points, size_t total_edges_of_points, int64_t start_pid, int64_t end_pid, bool directed, char driving_side, bool details, bool only_cost, General_path_element_t **return_tuples, size_t *return_count, char **log_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="one__to__one__withPoints__driver_8cpp_source.html#l00059">one_to_one_withPoints_driver.cpp:59</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
-<div class="ttc" id="structPoint__on__edge__t_html"><div class="ttname"><a href="structPoint__on__edge__t.html">Point_on_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00143">pgr_types.h:143</a></div></div>
+<div class="ttc" id="structPoint__on__edge__t_html"><div class="ttname"><a href="structPoint__on__edge__t.html">Point_on_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00166">pgr_types.h:166</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -185,7 +185,7 @@ $(document).ready(function(){initNavTree('one__to__one__withPoints__driver_8h_so
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_db4188eb592e899b4ab759c326d3f65f.html">withPoints</a></li><li class="navelem"><a class="el" href="dir_8dc78dc14affe115084060e017054e86.html">src</a></li><li class="navelem"><a class="el" href="one__to__one__withPoints__driver_8h.html">one_to_one_withPoints_driver.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:53 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

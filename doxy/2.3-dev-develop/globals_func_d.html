@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -158,6 +157,10 @@ $(document).ready(function(){initNavTree('globals_func_d.html','');});
 : <a class="el" href="astarOneToOne__driver_8cpp.html#a82202233b91f0550378d615190605298">astarOneToOne_driver.cpp</a>
 , <a class="el" href="astarOneToOne__driver_8h.html#a82202233b91f0550378d615190605298">astarOneToOne_driver.h</a>
 </li>
+<li>do_pgr_contractGraph()
+: <a class="el" href="contractGraph__driver_8cpp.html#a16f8542d30297ed006704b30f5c0ba38">contractGraph_driver.cpp</a>
+, <a class="el" href="contractGraph__driver_8h.html#a41cc8fba8b80e9edb177f4c78569ecec">contractGraph_driver.h</a>
+</li>
 <li>do_pgr_dijkstraViaVertex()
 : <a class="el" href="dijkstraVia__driver_8cpp.html#ab7c68814c918910b76e5e0b5ad35717f">dijkstraVia_driver.cpp</a>
 , <a class="el" href="dijkstraVia__driver_8h.html#ab7c68814c918910b76e5e0b5ad35717f">dijkstraVia_driver.h</a>
@@ -169,6 +172,22 @@ $(document).ready(function(){initNavTree('globals_func_d.html','');});
 <li>do_pgr_driving_many_to_dist()
 : <a class="el" href="boost__interface__drivedist_8cpp.html#acc45812b332a93ac9bca6a25e4a55df0">boost_interface_drivedist.cpp</a>
 , <a class="el" href="boost__interface__drivedist_8h.html#a549c0faeb40cfb65f18c1383e9cb8b86">boost_interface_drivedist.h</a>
+</li>
+<li>do_pgr_edge_disjoint_paths_many_to_many()
+: <a class="el" href="edge__disjoint__paths__many__to__many__driver_8cpp.html#ac485bad95508e78cf507823bfbd22b02">edge_disjoint_paths_many_to_many_driver.cpp</a>
+, <a class="el" href="edge__disjoint__paths__many__to__many__driver_8h.html#ac485bad95508e78cf507823bfbd22b02">edge_disjoint_paths_many_to_many_driver.h</a>
+</li>
+<li>do_pgr_edge_disjoint_paths_many_to_one()
+: <a class="el" href="edge__disjoint__paths__many__to__one__driver_8cpp.html#aad96d2aeef93a147b0fdd571f3eb8816">edge_disjoint_paths_many_to_one_driver.cpp</a>
+, <a class="el" href="edge__disjoint__paths__many__to__one__driver_8h.html#aad96d2aeef93a147b0fdd571f3eb8816">edge_disjoint_paths_many_to_one_driver.h</a>
+</li>
+<li>do_pgr_edge_disjoint_paths_one_to_many()
+: <a class="el" href="edge__disjoint__paths__one__to__many__driver_8cpp.html#a1a8261e7c44b69dc5aa2ffef2553abc3">edge_disjoint_paths_one_to_many_driver.cpp</a>
+, <a class="el" href="edge__disjoint__paths__one__to__many__driver_8h.html#a1a8261e7c44b69dc5aa2ffef2553abc3">edge_disjoint_paths_one_to_many_driver.h</a>
+</li>
+<li>do_pgr_edge_disjoint_paths_one_to_one()
+: <a class="el" href="edge__disjoint__paths__one__to__one__driver_8cpp.html#a9549b51c985baa1837efdaa352285a1e">edge_disjoint_paths_one_to_one_driver.cpp</a>
+, <a class="el" href="edge__disjoint__paths__one__to__one__driver_8h.html#a9549b51c985baa1837efdaa352285a1e">edge_disjoint_paths_one_to_one_driver.h</a>
 </li>
 <li>do_pgr_eucledianTSP()
 : <a class="el" href="eucledianTSP__driver_8cpp.html#a7c932f25372cc499ed675e673ca7ce21">eucledianTSP_driver.cpp</a>
@@ -203,24 +222,48 @@ $(document).ready(function(){initNavTree('globals_func_d.html','');});
 , <a class="el" href="many__to__one__withPoints__driver_8h.html#aef32f21924403029d9bf85849d1c7cae">many_to_one_withPoints_driver.h</a>
 </li>
 <li>do_pgr_many_withPointsDD()
-: <a class="el" href="withPoints__dd__driver_8h.html#af37e313845ec6738a5df395543a7b5bd">withPoints_dd_driver.h</a>
-, <a class="el" href="withPoints__dd__driver_8cpp.html#af37e313845ec6738a5df395543a7b5bd">withPoints_dd_driver.cpp</a>
+: <a class="el" href="withPoints__dd__driver_8cpp.html#af37e313845ec6738a5df395543a7b5bd">withPoints_dd_driver.cpp</a>
+, <a class="el" href="withPoints__dd__driver_8h.html#af37e313845ec6738a5df395543a7b5bd">withPoints_dd_driver.h</a>
+</li>
+<li>do_pgr_max_flow_many_to_many()
+: <a class="el" href="max__flow__many__to__many__driver_8h.html#a513bee7712dbd652b17866cc29a895d2">max_flow_many_to_many_driver.h</a>
+, <a class="el" href="max__flow__many__to__many__driver_8cpp.html#a513bee7712dbd652b17866cc29a895d2">max_flow_many_to_many_driver.cpp</a>
+</li>
+<li>do_pgr_max_flow_many_to_one()
+: <a class="el" href="max__flow__many__to__one__driver_8cpp.html#a65e488ff20a92b5c906127022f0be77f">max_flow_many_to_one_driver.cpp</a>
+, <a class="el" href="max__flow__many__to__one__driver_8h.html#a65e488ff20a92b5c906127022f0be77f">max_flow_many_to_one_driver.h</a>
+</li>
+<li>do_pgr_max_flow_one_to_many()
+: <a class="el" href="max__flow__one__to__many__driver_8h.html#ad9402dda41d7958cea978f549440c460">max_flow_one_to_many_driver.h</a>
+, <a class="el" href="max__flow__one__to__many__driver_8cpp.html#ad9402dda41d7958cea978f549440c460">max_flow_one_to_many_driver.cpp</a>
+</li>
+<li>do_pgr_max_flow_one_to_one()
+: <a class="el" href="max__flow__one__to__one__driver_8cpp.html#ab0bcbeb0aa111750b3313c0bdf7b7c19">max_flow_one_to_one_driver.cpp</a>
+, <a class="el" href="max__flow__one__to__one__driver_8h.html#ab0bcbeb0aa111750b3313c0bdf7b7c19">max_flow_one_to_one_driver.h</a>
+</li>
+<li>do_pgr_maximum_cardinality_matching()
+: <a class="el" href="maximum__cardinality__matching__driver_8cpp.html#a2b0133dd19eafe1c1be43ff1e675b82c">maximum_cardinality_matching_driver.cpp</a>
+, <a class="el" href="maximum__cardinality__matching__driver_8h.html#a2b0133dd19eafe1c1be43ff1e675b82c">maximum_cardinality_matching_driver.h</a>
 </li>
 <li>do_pgr_one_to_many_dijkstra()
 : <a class="el" href="one__to__many__dijkstra__driver_8cpp.html#a44ad0b40be61fbbb21302014228585ed">one_to_many_dijkstra_driver.cpp</a>
 , <a class="el" href="one__to__many__dijkstra__driver_8h.html#a44ad0b40be61fbbb21302014228585ed">one_to_many_dijkstra_driver.h</a>
 </li>
 <li>do_pgr_one_to_many_withPoints()
-: <a class="el" href="one__to__many__withPoints__driver_8h.html#aca950db17af242ea28a660bde42e8b91">one_to_many_withPoints_driver.h</a>
-, <a class="el" href="one__to__many__withPoints__driver_8cpp.html#abf222e70e2a1941371b3e07aa6656134">one_to_many_withPoints_driver.cpp</a>
+: <a class="el" href="one__to__many__withPoints__driver_8cpp.html#abf222e70e2a1941371b3e07aa6656134">one_to_many_withPoints_driver.cpp</a>
+, <a class="el" href="one__to__many__withPoints__driver_8h.html#aca950db17af242ea28a660bde42e8b91">one_to_many_withPoints_driver.h</a>
 </li>
 <li>do_pgr_one_to_one_dijkstra()
-: <a class="el" href="one__to__one__dijkstra__driver_8cpp.html#a7a9639d8c2faa6d5409a7ac0ffa67de3">one_to_one_dijkstra_driver.cpp</a>
-, <a class="el" href="one__to__one__dijkstra__driver_8h.html#a7a9639d8c2faa6d5409a7ac0ffa67de3">one_to_one_dijkstra_driver.h</a>
+: <a class="el" href="one__to__one__dijkstra__driver_8h.html#a7a9639d8c2faa6d5409a7ac0ffa67de3">one_to_one_dijkstra_driver.h</a>
+, <a class="el" href="one__to__one__dijkstra__driver_8cpp.html#a7a9639d8c2faa6d5409a7ac0ffa67de3">one_to_one_dijkstra_driver.cpp</a>
 </li>
 <li>do_pgr_pickDeliver()
-: <a class="el" href="pickDeliver__driver_8cpp.html#a55e6308e5ff67f92264dc6d941eaa671">pickDeliver_driver.cpp</a>
-, <a class="el" href="pickDeliver__driver_8h.html#a9d4685ad7bc35821294258b08b40464b">pickDeliver_driver.h</a>
+: <a class="el" href="pickDeliver__driver_8h.html#a9d4685ad7bc35821294258b08b40464b">pickDeliver_driver.h</a>
+, <a class="el" href="pickDeliver__driver_8cpp.html#a55e6308e5ff67f92264dc6d941eaa671">pickDeliver_driver.cpp</a>
+</li>
+<li>do_pgr_test_c_edges()
+: <a class="el" href="test__c__edges__driver_8h.html#ac49999b29b6bafbb8177d54fbdca83db">test_c_edges_driver.h</a>
+, <a class="el" href="test__c__edges__driver_8cpp.html#ac3de00057dce3c3680c67d6c99c61b50">test_c_edges_driver.cpp</a>
 </li>
 <li>do_pgr_test_matrixRows()
 : <a class="el" href="test__matrixRows__driver_8cpp.html#a34520c6b86d3d8cf75b8f42fdea9aefb">test_matrixRows_driver.cpp</a>
@@ -235,8 +278,8 @@ $(document).ready(function(){initNavTree('globals_func_d.html','');});
 , <a class="el" href="newTSP__driver_8h.html#a70257b377d427714d705d32e6dd42931">newTSP_driver.h</a>
 </li>
 <li>do_pgr_withPoints()
-: <a class="el" href="one__to__one__withPoints__driver_8h.html#ab5d6715cb4e54ad61e9a98058a012b56">one_to_one_withPoints_driver.h</a>
-, <a class="el" href="one__to__one__withPoints__driver_8cpp.html#ac03ed303d2480449383256eb4ecdd746">one_to_one_withPoints_driver.cpp</a>
+: <a class="el" href="one__to__one__withPoints__driver_8cpp.html#ac03ed303d2480449383256eb4ecdd746">one_to_one_withPoints_driver.cpp</a>
+, <a class="el" href="one__to__one__withPoints__driver_8h.html#ab5d6715cb4e54ad61e9a98058a012b56">one_to_one_withPoints_driver.h</a>
 </li>
 <li>do_pgr_withPointsDD()
 : <a class="el" href="withPoints__dd__driver_8cpp.html#a8e5912d68ba31cd0b5656c75bf557247">withPoints_dd_driver.cpp</a>
@@ -267,7 +310,7 @@ $(document).ready(function(){initNavTree('globals_func_d.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

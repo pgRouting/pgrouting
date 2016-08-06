@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -97,7 +96,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_vars_e.html#index_e"><span>e</span></a></li>
       <li><a href="functions_vars_f.html#index_f"><span>f</span></a></li>
       <li><a href="functions_vars_g.html#index_g"><span>g</span></a></li>
-      <li><a href="functions_vars_h.html#index_h"><span>h</span></a></li>
       <li><a href="functions_vars_i.html#index_i"><span>i</span></a></li>
       <li><a href="functions_vars_j.html#index_j"><span>j</span></a></li>
       <li><a href="functions_vars_l.html#index_l"><span>l</span></a></li>
@@ -148,24 +146,31 @@ $(document).ready(function(){initNavTree('functions_vars_r.html','');});
 &#160;
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
-<li>rank
-: <a class="el" href="structEdge.html#a590732962dd76c6855899b3747a30753">Edge</a>
-</li>
 <li>removed_edges
-: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a412918ac4e39a5decfd1be62b62ddc66">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad4e950b076a12de9d576d571254fe744">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+</li>
+<li>removed_vertices
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a7226271b2387e65e8f59375098ec2207">pgrouting::graph::Pgr_contractionGraph&lt; G, T_V, T_E &gt;</a>
+</li>
+<li>residual_capacity
+: <a class="el" href="structpgr__flow__t.html#a70ec27327e16df03e9c3b950eac7192f">pgr_flow_t</a>
+, <a class="el" href="classPgrEdgeDisjointPathsGraph.html#a9399db7458559f9a55a5152cb7594bc8">PgrEdgeDisjointPathsGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrFlowGraph.html#a19d56381eab69e565b2c69aceb3a593f">PgrFlowGraph&lt; G &gt;</a>
+</li>
+<li>rev
+: <a class="el" href="classPgrEdgeDisjointPathsGraph.html#a6b1a439e7175696be28486509e9090fa">PgrEdgeDisjointPathsGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrFlowGraph.html#a34ee17360b9a5edd6b353885d890c485">PgrFlowGraph&lt; G &gt;</a>
 </li>
 <li>reverse_cost
 : <a class="el" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">edge</a>
 , <a class="el" href="structedge__astar.html#a25864e744c50a04e60dd1f24fa68a2b2">edge_astar</a>
 , <a class="el" href="structedge__astar__columns.html#af4c47e8841b4846f7ccc6ccbfb96c4fa">edge_astar_columns</a>
 , <a class="el" href="structedge__columns.html#a7bf385252bb0745be50ad60330de710a">edge_columns</a>
-, <a class="el" href="structedge__shooting__star.html#a64821bb4cf3f34db78be6c38f40dd775">edge_shooting_star</a>
-, <a class="el" href="structedge__shooting__star__columns.html#a6fd9e2fb96447577903310585236c508">edge_shooting_star_columns</a>
 , <a class="el" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">pgr_edge_t</a>
 , <a class="el" href="structPgr__edge__xy__t.html#a6ab464e545a09586baf24552943d40e4">Pgr_edge_xy_t</a>
 </li>
 <li>reverse_count
-: <a class="el" href="classpgRouting_1_1tsp_1_1TSP.html#acffad47c0db1dc9e566864bf4e9d9108">pgRouting::tsp::TSP&lt; MATRIX &gt;</a>
+: <a class="el" href="classpgrouting_1_1tsp_1_1TSP.html#af846195864efbdbaf81a58c0bd532cbb">pgrouting::tsp::TSP&lt; MATRIX &gt;</a>
 </li>
 <li>ReverseCost
 : <a class="el" href="structGraphEdgeInfo.html#a8c8486076964685c0bf8e5efe84684b6">GraphEdgeInfo</a>
@@ -177,11 +182,7 @@ $(document).ready(function(){initNavTree('functions_vars_r.html','');});
 : <a class="el" href="structRoutes__t.html#a4632bf736943e5d62a9159c997997919">Routes_t</a>
 </li>
 <li>row
-: <a class="el" href="classpgRouting_1_1tsp_1_1eucledianDmatrix.html#a5986df0592198aeda1ce503a186402af">pgRouting::tsp::eucledianDmatrix</a>
-</li>
-<li>rule
-: <a class="el" href="structedge__shooting__star.html#a2996f859d3204d26c5d631b38045b95c">edge_shooting_star</a>
-, <a class="el" href="structedge__shooting__star__columns.html#ac9f4470a4503a345acabe907fb5279fd">edge_shooting_star_columns</a>
+: <a class="el" href="classpgrouting_1_1tsp_1_1eucledianDmatrix.html#af412d7be01bc72a24bb91c2a48ca0bd9">pgrouting::tsp::eucledianDmatrix</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -189,7 +190,7 @@ $(document).ready(function(){initNavTree('functions_vars_r.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

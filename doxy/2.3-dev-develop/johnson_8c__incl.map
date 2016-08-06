@@ -1,9 +1,0 @@
-<map id="johnson.c" name="johnson.c">
-<area shape="rect" id="node3" href="$postgres_8h.html" title="postgres.h" alt="" coords="735,261,816,288"/>
-<area shape="rect" id="node6" href="$debug__macro_8h.html" title="./../../common/src\l/debug_macro.h" alt="" coords="430,81,556,122"/>
-<area shape="rect" id="node7" href="$time__msg_8h.html" title="./../../common/src\l/time_msg.h" alt="" coords="97,81,223,122"/>
-<area shape="rect" id="node10" href="$pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="889,171,1015,213"/>
-<area shape="rect" id="node12" href="$postgres__connection_8h.html" title="./../../common/src\l/postgres_connection.h" alt="" coords="581,81,739,122"/>
-<area shape="rect" id="node14" href="$edges__input_8h.html" title="./../../common/src\l/edges_input.h" alt="" coords="814,81,940,122"/>
-<area shape="rect" id="node15" href="$johnson__driver_8h.html" title="./johnson_driver.h" alt="" coords="965,88,1091,115"/>
-</map>

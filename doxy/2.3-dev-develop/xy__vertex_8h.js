@@ -1,9 +1,9 @@
 var xy__vertex_8h =
 [
-    [ "XY_vertex", "classpgRouting_1_1XY__vertex.html", "classpgRouting_1_1XY__vertex" ],
-    [ "Point", "xy__vertex_8h.html#aaff0257083abb37d7bb0ff8b6b5c0a36", null ],
-    [ "Simple_cartasian", "xy__vertex_8h.html#af4d70c73f4b6caa4553fcbbd95dfa5bd", null ],
-    [ "check_vertices", "xy__vertex_8h.html#a9105acafddac515867285d503009b7bb", null ],
-    [ "extract_vertices", "xy__vertex_8h.html#a8ab539f5923a09bf5a23807dfdfdfaaf", null ],
-    [ "extract_vertices", "xy__vertex_8h.html#a3a02e6392a177a96d2ccac78f3bd6aaf", null ]
+    [ "XY_vertex", "classpgrouting_1_1XY__vertex.html", "classpgrouting_1_1XY__vertex" ],
+    [ "Point", "xy__vertex_8h.html#aead1fc5bb8b586fc6ee92075b56f7559", null ],
+    [ "Simple_cartasian", "xy__vertex_8h.html#a6ca0b9f8829c61b1b23673e01938aaf0", null ],
+    [ "check_vertices", "xy__vertex_8h.html#a95616a6e2e1f765d96feee326df7f5c0", null ],
+    [ "extract_vertices", "xy__vertex_8h.html#a8cb0d8ad883b5f8167d066526be04d57", null ],
+    [ "extract_vertices", "xy__vertex_8h.html#a57bb0ee39e4b594716e69db5ef7c6729", null ]
 ];

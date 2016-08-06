@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -114,19 +113,13 @@ $(document).ready(function(){initNavTree('withPoints__dd__driver_8cpp.html','');
 <div class="textblock"><code>#include &lt;sstream&gt;</code><br/>
 <code>#include &lt;deque&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
-<code>#include &lt;cassert&gt;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;set&gt;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__dijkstra_8hpp_source.html">./../../dijkstra/src/pgr_dijkstra.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__withPoints_8hpp_source.html">./../../withPoints/src/pgr_withPoints.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="withPoints__dd__driver_8h_source.html">./withPoints_dd_driver.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./../../common/src/pgr_types.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__alloc_8hpp_source.html">./../../common/src/pgr_alloc.hpp</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for withPoints_dd_driver.cpp:</div>
-<div class="dyncontent">
-<div class="center"><img src="withPoints__dd__driver_8cpp__incl.png" border="0" usemap="#withPoints__dd__driver_8cpp" alt=""/></div>
-<map name="withPoints__dd__driver_8cpp" id="withPoints__dd__driver_8cpp">
-<area shape="rect" id="node6" href="pgr__dijkstra_8hpp.html" title="./../../dijkstra/src\l/pgr_dijkstra.hpp" alt="" coords="1549,81,1667,122"/><area shape="rect" id="node13" href="pgr__types_8h.html" title="./pgr_types.h" alt="" coords="1533,352,1632,379"/><area shape="rect" id="node29" href="pgr__withPoints_8hpp.html" title="./../../withPoints\l/src/pgr_withPoints.hpp" alt="" coords="1867,81,2025,122"/><area shape="rect" id="node30" href="withPoints__dd__driver_8h.html" title="./withPoints_dd_driver.h" alt="" coords="2145,179,2308,205"/><area shape="rect" id="node31" href="pgr__alloc_8hpp.html" title="./../../common/src\l/pgr_alloc.hpp" alt="" coords="2237,81,2363,122"/><area shape="rect" id="node10" href="basePath__SSEC_8hpp.html" title="./../../common/src\l/basePath_SSEC.hpp" alt="" coords="1867,171,2017,213"/><area shape="rect" id="node16" href="pgr__base__graph_8hpp.html" title="./../../common/src\l/pgr_base_graph.hpp" alt="" coords="946,171,1088,213"/><area shape="rect" id="node14" href="postgres_8h.html" title="postgres.h" alt="" coords="1492,427,1573,453"/><area shape="rect" id="node22" href="basic__vertex_8h.html" title="./basic_vertex.h" alt="" coords="1093,269,1208,296"/><area shape="rect" id="node23" href="xy__vertex_8h.html" title="./xy_vertex.h" alt="" coords="251,269,349,296"/><area shape="rect" id="node25" href="basic__edge_8h.html" title="./basic_edge.h" alt="" coords="1283,269,1389,296"/><area shape="rect" id="node26" href="pgr__assert_8h.html" title="./pgr_assert.h" alt="" coords="966,269,1068,296"/></map>
-</div>
 </div>
 <p><a href="withPoints__dd__driver_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -246,9 +239,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00070">70</a> of file <a class="el" href="withPoints__dd__driver_8cpp_source.html">withPoints_dd_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00068">68</a> of file <a class="el" href="withPoints__dd__driver_8cpp_source.html">withPoints_dd_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00079">Path_t::agg_cost</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">check_points()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00220">create_new_edges()</a>, <a class="el" href="pgr__types_8h_source.html#l00170">DIRECTED</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00100">eliminate_details_dd()</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00370">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::graph_insert_data()</a>, <a class="el" href="pgr__types_8h_source.html#l00076">Path_t::node</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00059">pgr_drivingDistance()</a>, and <a class="el" href="pgr__types_8h_source.html#l00170">UNDIRECTED</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00086">Path_t::agg_cost</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00053">check_points()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00216">create_new_edges()</a>, <a class="el" href="pgr__types_8h_source.html#l00192">DIRECTED</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00096">eliminate_details_dd()</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00397">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::graph_insert_data()</a>, <a class="el" href="pgr__types_8h_source.html#l00083">Path_t::node</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00059">pgr_drivingDistance()</a>, and <a class="el" href="pgr__types_8h_source.html#l00192">UNDIRECTED</a>.</p>
 
 <p>Referenced by <a class="el" href="many__to__dist__withPointsDD_8c_source.html#l00050">process()</a>.</p>
 
@@ -350,9 +343,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00201">201</a> of file <a class="el" href="withPoints__dd__driver_8cpp_source.html">withPoints_dd_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00197">197</a> of file <a class="el" href="withPoints__dd__driver_8cpp_source.html">withPoints_dd_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__withPoints_8cpp_source.html#l00166">adjust_pids()</a>, <a class="el" href="pgr__types_8h_source.html#l00079">Path_t::agg_cost</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00069">Path::begin()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">check_points()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00220">create_new_edges()</a>, <a class="el" href="pgr__types_8h_source.html#l00170">DIRECTED</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00100">eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00070">Path::end()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00133">Path::get_pg_dd_path()</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00370">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::graph_insert_data()</a>, <a class="el" href="pgr__types_8h_source.html#l00076">Path_t::node</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00059">pgr_drivingDistance()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00061">Path::size()</a>, and <a class="el" href="pgr__types_8h_source.html#l00170">UNDIRECTED</a>.</p>
+<p>References <a class="el" href="pgr__withPoints_8cpp_source.html#l00162">adjust_pids()</a>, <a class="el" href="pgr__types_8h_source.html#l00086">Path_t::agg_cost</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00069">Path::begin()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00053">check_points()</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00216">create_new_edges()</a>, <a class="el" href="pgr__types_8h_source.html#l00192">DIRECTED</a>, <a class="el" href="pgr__withPoints_8cpp_source.html#l00096">eliminate_details_dd()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00070">Path::end()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00135">Path::get_pg_dd_path()</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00397">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::graph_insert_data()</a>, <a class="el" href="pgr__types_8h_source.html#l00083">Path_t::node</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00059">pgr_drivingDistance()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00061">Path::size()</a>, and <a class="el" href="pgr__types_8h_source.html#l00192">UNDIRECTED</a>.</p>
 
 <p>Referenced by <a class="el" href="withPoints__dd_8c_source.html#l00058">process()</a>.</p>
 
@@ -364,7 +357,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><a class="el" href="withPoints__dd__driver_8cpp.html">withPoints_dd_driver.cpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

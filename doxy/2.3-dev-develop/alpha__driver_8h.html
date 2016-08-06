@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -107,28 +106,14 @@ $(document).ready(function(){initNavTree('alpha__driver_8h.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">alpha_driver.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">../../common/src/pgr_types.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for alpha_driver.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="alpha__driver_8h__incl.png" border="0" usemap="#alpha__driver_8h" alt=""/></div>
-<map name="alpha__driver_8h" id="alpha__driver_8h">
-<area shape="rect" id="node2" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="26,81,165,122"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="5,171,87,197"/></map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="alpha__driver_8h__dep__incl.png" border="0" usemap="#alpha__driver_8hdep" alt=""/></div>
-<map name="alpha__driver_8hdep" id="alpha__driver_8hdep">
-<area shape="rect" id="node2" href="alpha_8c.html" title="alpha.c" alt="" coords="5,80,69,107"/><area shape="rect" id="node3" href="alpha__driver_8cpp.html" title="alpha_driver.cpp" alt="" coords="93,80,209,107"/></map>
-</div>
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__types_8h_source.html">../../common/src/pgr_types.h</a>&quot;</code><br/>
 </div>
 <p><a href="alpha__driver_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -136,11 +121,6 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvertex.html">vertex</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a18832edde3aaf0e52aadf3843dd75f8c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8h.html#a18832edde3aaf0e52aadf3843dd75f8c">_ALPHA_H</a></td></tr>
-<tr class="separator:a18832edde3aaf0e52aadf3843dd75f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -152,21 +132,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a64fca5dabc4ad9db224e524a154bbff1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8h.html#a64fca5dabc4ad9db224e524a154bbff1">alpha_shape</a> (<a class="el" href="alpha__driver_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> *vertices, size_t count, double alpha, <a class="el" href="alpha__driver_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1">vertex_t</a> **res, size_t *res_count, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
 <tr class="separator:a64fca5dabc4ad9db224e524a154bbff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a18832edde3aaf0e52aadf3843dd75f8c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _ALPHA_H</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="alpha__driver_8h_source.html#l00025">25</a> of file <a class="el" href="alpha__driver_8h_source.html">alpha_driver.h</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a class="anchor" id="ab653adde14e40dd8c6c8a1cfa37a87c1"></a>
 <div class="memitem">
@@ -229,11 +194,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00193">193</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00180">180</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="alpha__driver_8cpp_source.html#l00181">alpha_edges()</a>, <a class="el" href="alpha__driver_8cpp_source.html#l00114">find_next_edge()</a>, <a class="el" href="alpha__driver_8h_source.html#l00034">vertex::x</a>, and <a class="el" href="tsp_8h_source.html#l00040">point::x</a>.</p>
+<p>References <a class="el" href="alpha__driver_8cpp_source.html#l00170">alpha_edges()</a>, <a class="el" href="alpha__driver_8cpp_source.html#l00115">find_next_edge()</a>, <a class="el" href="alpha__driver_8h_source.html#l00034">vertex::x</a>, and <a class="el" href="tsp_8h_source.html#l00040">point::x</a>.</p>
 
-<p>Referenced by <a class="el" href="alpha_8c_source.html#l00136">compute_alpha_shape()</a>.</p>
+<p>Referenced by <a class="el" href="alpha_8c_source.html#l00125">compute_alpha_shape()</a>.</p>
 
 </div>
 </div>
@@ -243,7 +208,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha__driver_8h.html">alpha_driver.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -116,9 +115,9 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8cpp_source.html','');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">Copyright (c) 2015 pgRouting developers</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">Mail: project@pgrouting.org</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">Function&#39;s developer: </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">Function&#39;s developer:</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">Copyright (c) 2015 Celia Virginia Vergara Castillo</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">Mail: </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">Mail:</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">------</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span></div>
@@ -139,7 +138,7 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8cpp_source.html','');
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#if defined(__MINGW32__) || defined(_MSC_VER)</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#if defined(__MINGW32__) ||  defined(_MSC_VER)</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;winsock2.h&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;windows.h&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -149,430 +148,437 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8cpp_source.html','');
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;deque&gt;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__withPoints_8hpp.html">./pgr_withPoints.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// #define DEBUG</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__withPoints_8hpp.html">./pgr_withPoints.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="msg__logger_8hpp.html">./msg_logger.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * 0 = success</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> * non 0 = error code</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#aafd53873fa63967f96fc3bfcd6481d6c">   56</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="pgr__withPoints_8cpp.html#aafd53873fa63967f96fc3bfcd6481d6c">check_points</a>(std::vector&lt; Point_on_edge_t &gt; &amp;points,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        std::ostringstream  &amp;log) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a>(log, points, <span class="stringliteral">&quot;original points&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">/* </span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">     * deleting duplicate points</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::sort(points.begin(), points.end(),</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span>  <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;           -&gt; <span class="keywordtype">bool</span> {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">if</span> (a.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> != <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.pid) <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.pid;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (a.<a class="code" href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">edge_id</a> != <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.edge_id) <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">edge_id</a> &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.edge_id;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span> (a.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a> != <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.fraction) <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a> &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.fraction;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">side</a> &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.side;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            });</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a>(log, points, <span class="stringliteral">&quot;after sorting&quot;</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">auto</span> last = std::unique(points.begin(), points.end(),</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span>  <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.pid &amp;&amp;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            a.<a class="code" href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">edge_id</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.edge_id &amp;&amp;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            a.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.fraction &amp;&amp;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            a.<a class="code" href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">side</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.side;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            });</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    points.erase(last, points.end());</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">size_t</span> total_points = points.size();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a>(log, points, <span class="stringliteral">&quot;after deleting repetitions&quot;</span>);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;We have &quot;</span> &lt;&lt; total_points &lt;&lt; <span class="stringliteral">&quot; different points&quot;</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    last = std::unique(points.begin(), points.end(),</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span>  <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.pid;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            });</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    points.erase(last, points.end());</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a>(log, points, <span class="stringliteral">&quot;after deleting points with same id&quot;</span>);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">if</span> (points.size() != total_points) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#a78454780d695ee33ad171a220e3e9f38">  100</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#a78454780d695ee33ad171a220e3e9f38">eliminate_details_dd</a>(</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">/* </span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">     *  There is no path nothing to do</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="classPath.html">Path</a> newPath(path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>(), path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>());</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pathstop :  path) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> ((pathstop.node == path.start_id()) </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                || (pathstop.node == path.end_id())</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                || (pathstop.node &gt; 0)) {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            newPath.<a class="code" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">push_back</a>(pathstop);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * 0 = success</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * non 0 = error code</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#aafd53873fa63967f96fc3bfcd6481d6c">   53</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="pgr__withPoints_8cpp.html#aafd53873fa63967f96fc3bfcd6481d6c">check_points</a>(std::vector&lt; Point_on_edge_t &gt; &amp;points,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        std::ostringstream &amp;log) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a>(log, points, <span class="stringliteral">&quot;original points&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">     * deleting duplicate points</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::sort(points.begin(), points.end(),</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;           -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">if</span> (a.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> != <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.pid) <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.pid;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">if</span> (a.<a class="code" href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">edge_id</a> != <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.edge_id) <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">edge_id</a> &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.edge_id;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (a.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a> != <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.fraction) <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a> &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.fraction;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">side</a> &lt; <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.side;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            });</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a>(log, points, <span class="stringliteral">&quot;after sorting&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">auto</span> last = std::unique(points.begin(), points.end(),</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.pid &amp;&amp;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            a.<a class="code" href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">edge_id</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.edge_id &amp;&amp;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            a.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.fraction &amp;&amp;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            a.<a class="code" href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">side</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.side;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            });</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    points.erase(last, points.end());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">size_t</span> total_points = points.size();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a>(log, points, <span class="stringliteral">&quot;after deleting repetitions&quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    log &lt;&lt; <span class="stringliteral">&quot;We have &quot;</span> &lt;&lt; total_points &lt;&lt; <span class="stringliteral">&quot; different points&quot;</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    last = std::unique(points.begin(), points.end(),</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            [](<span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a> &amp;<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> a.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> == <a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>.pid;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            });</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    points.erase(last, points.end());</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a>(log, points, <span class="stringliteral">&quot;after deleting points with same id&quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">if</span> (points.size() != total_points) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#a78454780d695ee33ad171a220e3e9f38">   96</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#a78454780d695ee33ad171a220e3e9f38">eliminate_details_dd</a>(</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">     * There is no path nothing to do</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="classPath.html">Path</a> newPath(path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>(), path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>());</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pathstop : path) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">if</span> ((pathstop.node == path.start_id())</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                 || (pathstop.node == path.end_id())</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                 || (pathstop.node &gt; 0)) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            newPath.<a class="code" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">push_back</a>(pathstop);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    path = newPath;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    path = newPath;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">  121</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">eliminate_details</a>(</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>,</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">const</span> std::vector&lt; pgr_edge_t &gt; &amp;point_edges) {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">/* </span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">     *  There is no path nothing to do</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="classPath.html">Path</a> newPath(path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>(), path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>());</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">double</span> cost = 0.0;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pathstop :  path) {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span> ((pathstop.node == path.start_id()) </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                || (pathstop.node == path.end_id())</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                || (pathstop.node &gt; 0)) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            newPath.<a class="code" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">push_back</a>(pathstop);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">if</span> (pathstop.node != path.end_id()) cost = 0.0;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        cost += pathstop.cost;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    newPath[0].cost = newPath[1].agg_cost;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 1; i &lt; newPath.size() - 2; ++i) {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="comment">/* newPath[i] has: node, edge, cost, agg_cost </span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">         * pgr_type_t has: id, source, target, cost, reverse_cost</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">         *</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">         * find the edge where the pathstop.edge == edge.id */</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        int64_t edge_to_find =  newPath[i].edge;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">auto</span> edge_ptr = std::find_if(point_edges.begin(), point_edges.end(),</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                [&amp;edge_to_find](<span class="keyword">const</span> <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> &amp;<a class="code" href="structedge.html">edge</a>)</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                {<span class="keywordflow">return</span> edge_to_find == <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a>;});</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">if</span> (edge_ptr != point_edges.end()) {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            newPath[i].cost = edge_ptr-&gt;target ==  newPath[i+1].node ?</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                edge_ptr-&gt;cost : edge_ptr-&gt;reverse_cost;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    newPath[newPath.size()-2].cost += cost;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">  117</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">eliminate_details</a>(</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">const</span> std::vector&lt; pgr_edge_t &gt; &amp;point_edges) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">     * There is no path nothing to do</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="classPath.html">Path</a> newPath(path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>(), path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>());</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">double</span> cost = 0.0;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;pathstop : path) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">if</span> ((pathstop.node == path.start_id())</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                 || (pathstop.node == path.end_id())</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                 || (pathstop.node &gt; 0)) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            newPath.<a class="code" href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">push_back</a>(pathstop);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">if</span> (pathstop.node != path.end_id()) cost = 0.0;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        cost += pathstop.cost;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    newPath[0].cost = newPath[1].agg_cost;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 1; i &lt; newPath.size() - 2; ++i) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">/* newPath[i] has: node, edge, cost, agg_cost</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">         * pgr_type_t has: id, source, target, cost, reverse_cost</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">         *</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">         * find the edge where the pathstop.edge == edge.id */</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        int64_t edge_to_find = newPath[i].edge;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">auto</span> edge_ptr = std::find_if(point_edges.begin(), point_edges.end(),</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                [&amp;edge_to_find](<span class="keyword">const</span> <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> &amp;<a class="code" href="structedge.html">edge</a>)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                {<span class="keywordflow">return</span> edge_to_find == <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a>;});</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span> (edge_ptr != point_edges.end()) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            newPath[i].cost = edge_ptr-&gt;target == newPath[i+1].node ?</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                edge_ptr-&gt;cost : edge_ptr-&gt;reverse_cost;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    newPath[newPath.size()-2].cost += cost;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    path = newPath;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    path = newPath;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">  166</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a>(</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keyword">const</span> std::vector&lt; Point_on_edge_t &gt; &amp;points,</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keyword">const</span> int64_t &amp;start_pid,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keyword">const</span> int64_t &amp;end_pid,</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>(start_pid);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>(end_pid);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;path_stop : path) {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structpoint.html">point</a>: points) {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.vertex_id == path_stop.node) {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                path_stop.node = -<a class="code" href="structpoint.html">point</a>.pid;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#a8cec1ed8745e8bf1970157f97c499f43">  186</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a>(</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keyword">const</span> std::vector&lt; Point_on_edge_t &gt; &amp;points,</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>) {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">/* </span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">     *  There is no path nothing to do</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">     */</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">/* from, to:</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">     *      *  are constant along the path</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">     *           */</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    int64_t start_vid = path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>();</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    int64_t end_vid = path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>();</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    int64_t start_pid = 0;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    int64_t end_pid = 0;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : points) {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> (p.vertex_id == start_vid) {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            start_pid = -p.pid;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">if</span> (p.vertex_id == end_vid) {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            end_pid = -p.pid;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        }</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a>(points, start_pid, end_pid, path);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="structpointCompare.html">  214</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structpointCompare.html">pointCompare</a> {</div>
-<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="structpointCompare.html#ae83993f5a8a1ac8873cc8d04eb9a4d5c">  215</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structpointCompare.html#ae83993f5a8a1ac8873cc8d04eb9a4d5c">operator() </a>(<span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a>&amp; lhs, <span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a>&amp; rhs)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keyword">    </span>{ <span class="keywordflow">return</span> lhs.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a> &lt; rhs.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a>? <span class="keyword">true</span> : lhs.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> &lt; rhs.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a>;}</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;};</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#a1bbabefee9e49fba0af4190ec65d1529">  220</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a>(</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        std::vector&lt; Point_on_edge_t &gt;  &amp;points,</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keyword">const</span> std::vector&lt; pgr_edge_t &gt; &amp;<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keywordtype">char</span> driving_side,</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        std::vector&lt; pgr_edge_t &gt; &amp;new_edges) {</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    std::ostringstream log;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a>( points, edges, driving_side, new_edges, log);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#ae8f6bd07bf5d029729c6205fc0df098e">  232</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a>(</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        std::vector&lt; Point_on_edge_t &gt;  &amp;points,</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keyword">const</span> std::vector&lt; pgr_edge_t &gt; &amp;<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordtype">char</span> driving_side,</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        std::vector&lt; pgr_edge_t &gt; &amp;new_edges,</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        std::ostringstream &amp;log) {</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="structpoint.html">point</a> : points){</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;point: &quot;</span> </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.pid &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.edge_id &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.fraction &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.vertex_id &lt;&lt;<span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    int64_t vertex_id = 1;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    std::vector&lt; Point_on_edge_t &gt;  new_points;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structedge.html">edge</a> : edges) {</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        std::set&lt; Point_on_edge_t, pointCompare&gt; points_on_edge;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structpoint.html">point</a> : points) {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> == <a class="code" href="structpoint.html">point</a>.edge_id) {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                points_on_edge.insert(<a class="code" href="structpoint.html">point</a>);</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;working points: &quot;</span> </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.pid &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.edge_id &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.fraction &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.vertex_id &lt;&lt;<span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">if</span> (points_on_edge.empty()) {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;For some reason we didn&#39;t find a point belonging to the edge, must be an error\n&quot;</span>;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#if 0</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor"></span>        log &lt;&lt; <span class="stringliteral">&quot;breaking:  \n&quot;</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor"></span>        int64_t prev_target = <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        int64_t prev_rtarget = <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordtype">double</span> prev_fraction = 0;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keywordtype">double</span> prev_rfraction = 0;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        <span class="keywordtype">double</span> agg_cost = 0;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordtype">double</span> agg_rcost = 0;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordtype">double</span>  last_cost = 0;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keywordtype">double</span>  last_rcost = 0;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        std::vector&lt; Point_on_edge_t&gt; the_points(points_on_edge.begin(), points_on_edge.end());</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;<a class="code" href="structpoint.html">point</a> : the_points) {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="comment">/* the point either has</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">             * vertex_id = source</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">             * vertex_id = target</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">             * vertex_id = -newnumber</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">             */</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;\npid&quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.pid &lt;&lt; <span class="stringliteral">&quot;\teid&quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.edge_id &lt;&lt; <span class="stringliteral">&quot;/t&quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.fraction &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &lt;= 0 || <a class="code" href="structpoint.html">point</a>.fraction &gt;= 1) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;For some reason an invalid fraction was accepted, must be an error\n&quot;</span>;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            }</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction == 0) {</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;vertex_id of the point is the source&quot;</span> &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                <a class="code" href="structpoint.html">point</a>.vertex_id = <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a>;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            }</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction == 1) {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;vertex_id of the point is the target&quot;</span> &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                <a class="code" href="structpoint.html">point</a>.vertex_id = <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a>;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            }</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &gt; 0 &amp;&amp; <a class="code" href="structpoint.html">point</a>.fraction &lt; 1) {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;vertex_id of the point is &quot;</span> &lt;&lt; -<a class="code" href="structpoint.html">point</a>.pid &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                <a class="code" href="structpoint.html">point</a>.vertex_id = -<a class="code" href="structpoint.html">point</a>.pid;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                ++vertex_id;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            }</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            new_points.push_back(<a class="code" href="structpoint.html">point</a>);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordtype">double</span> deltaFraction = <a class="code" href="structpoint.html">point</a>.fraction - prev_fraction;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordtype">double</span> deltarFraction = <a class="code" href="structpoint.html">point</a>.fraction - prev_rfraction;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="keywordflow">if</span> ((<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &lt; 0 || <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &lt; 0)</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    || driving_side == <span class="charliteral">&#39;b&#39;</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                    || <a class="code" href="structpoint.html">point</a>.side == <span class="charliteral">&#39;b&#39;</span>) {</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;Edge is one way or driving side is both or point side is both\n&quot;</span>;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;Edge is one way: &quot;</span> &lt;&lt; (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &lt; 0 || <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &lt; 0) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;driving side: &quot;</span> &lt;&lt; driving_side &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;point side: &quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &gt; 0 &amp;&amp; <a class="code" href="structpoint.html">point</a>.fraction &lt; 1) {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &gt;= 0) {</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                        last_cost = deltaFraction * <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a>;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                        <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_target, <a class="code" href="structpoint.html">point</a>.vertex_id, last_cost, -1};</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                        new_edges.push_back(new_edge);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                        log &lt;&lt; <span class="stringliteral">&quot;new_edge: (id,source,target,cost,reverse_cost) = (&quot;</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    }</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &gt;= 0) {</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                        last_rcost = deltarFraction * <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a>;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_target, <a class="code" href="structpoint.html">point</a>.vertex_id, -1, last_rcost};</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                        new_edges.push_back(new_edge);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                        log &lt;&lt; <span class="stringliteral">&quot;new_edge: (id,source,target,cost,reverse_cost) = (&quot;</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                prev_target = <a class="code" href="structpoint.html">point</a>.vertex_id;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                prev_fraction = <a class="code" href="structpoint.html">point</a>.fraction;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                agg_cost += last_cost;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                prev_rtarget = <a class="code" href="structpoint.html">point</a>.vertex_id;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                prev_rfraction = <a class="code" href="structpoint.html">point</a>.fraction;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                agg_rcost += last_rcost;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            }</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            assert(<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &gt; 0 &amp;&amp; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &gt; 0);</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            assert(<a class="code" href="structpoint.html">point</a>.side != <span class="charliteral">&#39;b&#39;</span>);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            <span class="keywordflow">if</span> (driving_side == <a class="code" href="structpoint.html">point</a>.side) {</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;Edge is two way and driving side is the same as the side of the point\n&quot;</span>;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;Breaking (source, target) edge only when its not the extreme of the segment\n&quot;</span>;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &gt; 0 &amp;&amp; <a class="code" href="structpoint.html">point</a>.fraction &lt; 1) {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    last_cost = deltaFraction * <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a>;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_target, <a class="code" href="structpoint.html">point</a>.vertex_id, last_cost, -1};</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                    new_edges.push_back(new_edge);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                    log &lt;&lt; <span class="stringliteral">&quot;new_edge: (id,source,target,cost,reverse_cost) = (&quot;</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                }</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                prev_target = <a class="code" href="structpoint.html">point</a>.vertex_id;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                prev_fraction = <a class="code" href="structpoint.html">point</a>.fraction;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                agg_cost += last_cost;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            }</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Edge is two way and driving side is different than the side of the point\n&quot;</span>;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &gt; 0 &amp;&amp; <a class="code" href="structpoint.html">point</a>.fraction &lt; 1) {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                last_rcost = deltarFraction * <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a>;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_rtarget, <a class="code" href="structpoint.html">point</a>.vertex_id, -1, last_rcost};</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                new_edges.push_back(new_edge);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;new_edge: (id,source,target,cost,reverse_cost) = (&quot;</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            prev_rtarget = <a class="code" href="structpoint.html">point</a>.vertex_id;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            prev_rfraction = <a class="code" href="structpoint.html">point</a>.fraction;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            agg_rcost += last_rcost;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        }</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        { <span class="comment">// the last segments</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_target, <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a>,</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> - agg_cost), -1};</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            new_edges.push_back(new_edge);</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;last edge: (id,source,target,cost,reverse_cost) = (&quot;</span></div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_rtarget, <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a>,</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                -1, (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> - agg_rcost)};</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            new_edges.push_back(new_edge);</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;last edge: (id,source,target,cost,reverse_cost) = (&quot;</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        }</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    }</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    points = new_points;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="structpoint.html">point</a> : points){</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;point: &quot;</span> </div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.pid &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.edge_id &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.fraction &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt;<span class="stringliteral">&quot;\t&quot;</span></div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.vertex_id &lt;&lt;<span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    }</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;}</div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00111">pgr_types.h:111</a></div></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">  162</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a>(</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">const</span> std::vector&lt; Point_on_edge_t &gt; &amp;points,</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keyword">const</span> int64_t &amp;start_pid,</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keyword">const</span> int64_t &amp;end_pid,</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>(start_pid);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>(end_pid);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;path_stop : path) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structpoint.html">point</a> : points) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.vertex_id == path_stop.node) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                path_stop.node = -<a class="code" href="structpoint.html">point</a>.pid;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#a8cec1ed8745e8bf1970157f97c499f43">  182</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a>(</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keyword">const</span> std::vector&lt; Point_on_edge_t &gt; &amp;points,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>) {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">     * There is no path nothing to do</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">/* from, to:</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">     *      * are constant along the path</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">     *           */</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    int64_t start_vid = path.<a class="code" href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">start_id</a>();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    int64_t end_vid = path.<a class="code" href="classPath.html#af813241de9d44cf689932d9166147cf0">end_id</a>();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    int64_t start_pid = 0;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    int64_t end_pid = 0;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : points) {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">if</span> (p.vertex_id == start_vid) {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            start_pid = -p.pid;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">if</span> (p.vertex_id == end_vid) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            end_pid = -p.pid;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <a class="code" href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a>(points, start_pid, end_pid, path);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="structpointCompare.html">  210</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structpointCompare.html">pointCompare</a> {</div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="structpointCompare.html#ae83993f5a8a1ac8873cc8d04eb9a4d5c">  211</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structpointCompare.html#ae83993f5a8a1ac8873cc8d04eb9a4d5c">operator() </a>(<span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a>&amp; lhs, <span class="keyword">const</span> <a class="code" href="structPoint__on__edge__t.html">Point_on_edge_t</a>&amp; rhs)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="keyword">    </span>{ <span class="keywordflow">return</span> lhs.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a> &lt; rhs.<a class="code" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">fraction</a>? <span class="keyword">true</span> : lhs.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a> &lt; rhs.<a class="code" href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">pid</a>;}</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;};</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#a1bbabefee9e49fba0af4190ec65d1529">  216</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a>(</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        std::vector&lt; Point_on_edge_t &gt; &amp;points,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keyword">const</span> std::vector&lt; pgr_edge_t &gt; &amp;<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordtype">char</span> driving_side,</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        std::vector&lt; pgr_edge_t &gt; &amp;new_edges) {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    std::ostringstream log;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a>( points, edges, driving_side, new_edges, log);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="pgr__withPoints_8hpp.html#ae8f6bd07bf5d029729c6205fc0df098e">  228</a></span>&#160;<a class="code" href="pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a>(</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        std::vector&lt; Point_on_edge_t &gt; &amp;points,</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keyword">const</span> std::vector&lt; pgr_edge_t &gt; &amp;<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordtype">char</span> driving_side,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        std::vector&lt; pgr_edge_t &gt; &amp;new_edges,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        std::ostringstream &amp;log) {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="structpoint.html">point</a> : points) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;point: &quot;</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.pid &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.edge_id &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.fraction &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.vertex_id &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    int64_t vertex_id = 1;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    std::vector&lt; Point_on_edge_t &gt; new_points;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structedge.html">edge</a> : edges) {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        std::set&lt; Point_on_edge_t, pointCompare&gt; points_on_edge;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="structpoint.html">point</a> : points) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> == <a class="code" href="structpoint.html">point</a>.edge_id) {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                points_on_edge.insert(<a class="code" href="structpoint.html">point</a>);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;working points: &quot;</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.pid &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.edge_id &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.fraction &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    &lt;&lt; <a class="code" href="structpoint.html">point</a>.vertex_id &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">if</span> (points_on_edge.empty()) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;For some reason we didn&#39;t find a point belonging to the edge, must be an error\n&quot;</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor"></span>        log &lt;&lt; <span class="stringliteral">&quot;breaking: \n&quot;</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor"></span>        int64_t prev_target = <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a>;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        int64_t prev_rtarget = <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordtype">double</span> prev_fraction = 0;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordtype">double</span> prev_rfraction = 0;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordtype">double</span> agg_cost = 0;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordtype">double</span> agg_rcost = 0;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keywordtype">double</span> last_cost = 0;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordtype">double</span> last_rcost = 0;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        std::vector&lt; Point_on_edge_t&gt; the_points(points_on_edge.begin(), points_on_edge.end());</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;<a class="code" href="structpoint.html">point</a> : the_points) {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="comment">/* the point either has</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">             * vertex_id = source</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">             * vertex_id = target</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">             * vertex_id = -newnumber</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">             */</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;\npid&quot;</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                &lt;&lt; <a class="code" href="structpoint.html">point</a>.pid</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\teid&quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.edge_id</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;/t&quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.fraction</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &lt;= 0 ||  <a class="code" href="structpoint.html">point</a>.fraction &gt;= 1) {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;For some reason an invalid fraction was accepted, must be an error\n&quot;</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction == 0) {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;vertex_id of the point is the source&quot;</span> &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                <a class="code" href="structpoint.html">point</a>.vertex_id = <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a>;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction == 1) {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;vertex_id of the point is the target&quot;</span> &lt;&lt; <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <a class="code" href="structpoint.html">point</a>.vertex_id = <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &gt; 0 &amp;&amp;  <a class="code" href="structpoint.html">point</a>.fraction &lt; 1) {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;vertex_id of the point is &quot;</span> &lt;&lt; -<a class="code" href="structpoint.html">point</a>.pid &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                <a class="code" href="structpoint.html">point</a>.vertex_id = -<a class="code" href="structpoint.html">point</a>.pid;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                ++vertex_id;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            new_points.push_back(<a class="code" href="structpoint.html">point</a>);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <span class="keywordtype">double</span> deltaFraction = <a class="code" href="structpoint.html">point</a>.fraction - prev_fraction;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keywordtype">double</span> deltarFraction = <a class="code" href="structpoint.html">point</a>.fraction - prev_rfraction;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordflow">if</span> ((<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &lt; 0 ||  <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &lt; 0)</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                     || driving_side == <span class="charliteral">&#39;b&#39;</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                     || <a class="code" href="structpoint.html">point</a>.side == <span class="charliteral">&#39;b&#39;</span>) {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;Edge is one way or driving side is both or point side is both\n&quot;</span>;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;Edge is one way: &quot;</span> &lt;&lt; (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &lt; 0 ||  <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &lt; 0) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;driving side: &quot;</span> &lt;&lt; driving_side &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;point side: &quot;</span> &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &gt; 0 &amp;&amp;  <a class="code" href="structpoint.html">point</a>.fraction &lt; 1) {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &gt;= 0) {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                        last_cost = deltaFraction * <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a>;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                        <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_target, <a class="code" href="structpoint.html">point</a>.vertex_id, last_cost, -1};</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                        new_edges.push_back(new_edge);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                        log &lt;&lt; <span class="stringliteral">&quot;new_edge: (id, source, target, cost, reverse_cost) = (&quot;</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                    }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &gt;= 0) {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                        last_rcost = deltarFraction * <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a>;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                        <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_target, <a class="code" href="structpoint.html">point</a>.vertex_id, -1, last_rcost};</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                        new_edges.push_back(new_edge);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        log &lt;&lt; <span class="stringliteral">&quot;new_edge: (id, source, target, cost, reverse_cost) = (&quot;</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                            &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                    }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                prev_target = <a class="code" href="structpoint.html">point</a>.vertex_id;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                prev_fraction = <a class="code" href="structpoint.html">point</a>.fraction;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                agg_cost += last_cost;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                prev_rtarget = <a class="code" href="structpoint.html">point</a>.vertex_id;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                prev_rfraction = <a class="code" href="structpoint.html">point</a>.fraction;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                agg_rcost += last_rcost;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            assert(<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> &gt; 0 &amp;&amp;  <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> &gt; 0);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            assert(<a class="code" href="structpoint.html">point</a>.side != <span class="charliteral">&#39;b&#39;</span>);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">if</span> (driving_side == <a class="code" href="structpoint.html">point</a>.side) {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;two way and driving side is == than the side of the point\n&quot;</span>;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;Breaking (source, target) edge only when its not the extreme of the segment\n&quot;</span>;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &gt; 0 &amp;&amp;  <a class="code" href="structpoint.html">point</a>.fraction &lt; 1) {</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                    last_cost = deltaFraction * <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a>;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                    <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_target, <a class="code" href="structpoint.html">point</a>.vertex_id, last_cost, -1};</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    new_edges.push_back(new_edge);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                    log &lt;&lt; <span class="stringliteral">&quot;new_edge: (id, source, target, cost, reverse_cost) = (&quot;</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                        &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                prev_target = <a class="code" href="structpoint.html">point</a>.vertex_id;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                prev_fraction = <a class="code" href="structpoint.html">point</a>.fraction;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                agg_cost += last_cost;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            }</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;two way and driving side is != than the side of the point\n&quot;</span>;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="structpoint.html">point</a>.fraction &gt; 0 &amp;&amp;  <a class="code" href="structpoint.html">point</a>.fraction &lt; 1) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                last_rcost = deltarFraction * <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                    <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a>,</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                    prev_rtarget,</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                    <a class="code" href="structpoint.html">point</a>.vertex_id,</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                    -1,</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    last_rcost};</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                new_edges.push_back(new_edge);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;new_edge: (id, source, target, cost, reverse_cost) = (&quot;</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            }</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            prev_rtarget = <a class="code" href="structpoint.html">point</a>.vertex_id;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            prev_rfraction = <a class="code" href="structpoint.html">point</a>.fraction;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            agg_rcost += last_rcost;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        {  <span class="comment">//  the last segments</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a> new_edge = {</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a>,</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                prev_target,</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a>,</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> - agg_cost),</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                -1};</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            new_edges.push_back(new_edge);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;last edge: (id, source, target, cost, reverse_cost) = (&quot;</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            new_edge = {<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a64bbff727caf35c372648e9de602a549">id</a> , prev_rtarget, <a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a>,</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                -1, (<a class="code" href="structedge.html">edge</a>.<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> - agg_rcost)};</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            new_edges.push_back(new_edge);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;last edge: (id, source, target, cost, reverse_cost) = (&quot;</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">id</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">source</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">target</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">cost</a> &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                &lt;&lt; new_edge.<a class="code" href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">reverse_cost</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        }</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    }</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    points = new_points;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="structpoint.html">point</a> : points) {</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;point: &quot;</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.pid &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.edge_id &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.fraction &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.side &lt;&lt; <span class="stringliteral">&quot;\t&quot;</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            &lt;&lt; <a class="code" href="structpoint.html">point</a>.vertex_id &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;}</div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00127">pgr_types.h:127</a></div></div>
 <div class="ttc" id="structedge_html_a004cd70e32ea3f6ce31d5318b46158bd"><div class="ttname"><a href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">edge::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00070">tester/BiDirAStar.h:70</a></div></div>
-<div class="ttc" id="structpgr__edge__t_html_aa6da5703357e969cde0799a23bfa67e5"><div class="ttname"><a href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">pgr_edge_t::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00116">pgr_types.h:116</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_aa6da5703357e969cde0799a23bfa67e5"><div class="ttname"><a href="structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5">pgr_edge_t::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00132">pgr_types.h:132</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00061">tester/BiDirAStar.h:61</a></div></div>
-<div class="ttc" id="structpgr__edge__t_html_a04a67da786054e84776d9e8d4b434f27"><div class="ttname"><a href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">pgr_edge_t::source</a></div><div class="ttdeci">int64_t source</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00113">pgr_types.h:113</a></div></div>
-<div class="ttc" id="pgr__withPoints_8cpp_html_a0ed4ba674c8ad93b59ff6a23c43a744f"><div class="ttname"><a href="pgr__withPoints_8cpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">eliminate_details</a></div><div class="ttdeci">void eliminate_details(Path &amp;path, const std::vector&lt; pgr_edge_t &gt; &amp;point_edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00121">pgr_withPoints.cpp:121</a></div></div>
-<div class="ttc" id="structpgr__edge__t_html_a46e9fc03e52f0b84da533d63b7bbce1d"><div class="ttname"><a href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">pgr_edge_t::target</a></div><div class="ttdeci">int64_t target</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00114">pgr_types.h:114</a></div></div>
-<div class="ttc" id="structPoint__on__edge__t_html_acf4b5a08f42736890f38a77f1ef9c8e9"><div class="ttname"><a href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">Point_on_edge_t::pid</a></div><div class="ttdeci">int64_t pid</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00144">pgr_types.h:144</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_a04a67da786054e84776d9e8d4b434f27"><div class="ttname"><a href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">pgr_edge_t::source</a></div><div class="ttdeci">int64_t source</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00129">pgr_types.h:129</a></div></div>
+<div class="ttc" id="pgr__withPoints_8cpp_html_a0ed4ba674c8ad93b59ff6a23c43a744f"><div class="ttname"><a href="pgr__withPoints_8cpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">eliminate_details</a></div><div class="ttdeci">void eliminate_details(Path &amp;path, const std::vector&lt; pgr_edge_t &gt; &amp;point_edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00117">pgr_withPoints.cpp:117</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_a46e9fc03e52f0b84da533d63b7bbce1d"><div class="ttname"><a href="structpgr__edge__t.html#a46e9fc03e52f0b84da533d63b7bbce1d">pgr_edge_t::target</a></div><div class="ttdeci">int64_t target</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00130">pgr_types.h:130</a></div></div>
+<div class="ttc" id="structPoint__on__edge__t_html_acf4b5a08f42736890f38a77f1ef9c8e9"><div class="ttname"><a href="structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9">Point_on_edge_t::pid</a></div><div class="ttdeci">int64_t pid</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00167">pgr_types.h:167</a></div></div>
 <div class="ttc" id="structedge_html_a123c11d0720940e8a2556269ad340118"><div class="ttname"><a href="structedge.html#a123c11d0720940e8a2556269ad340118">edge::source</a></div><div class="ttdeci">int source</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00064">tester/BiDirAStar.h:64</a></div></div>
-<div class="ttc" id="structPoint__on__edge__t_html_a07e57c7143c82311b10fd870b067cb19"><div class="ttname"><a href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">Point_on_edge_t::fraction</a></div><div class="ttdeci">double fraction</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00147">pgr_types.h:147</a></div></div>
+<div class="ttc" id="structPoint__on__edge__t_html_a07e57c7143c82311b10fd870b067cb19"><div class="ttname"><a href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">Point_on_edge_t::fraction</a></div><div class="ttdeci">double fraction</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00170">pgr_types.h:170</a></div></div>
 <div class="ttc" id="tsplib_8c_html_aa4c2a5552e9bc49b1816ff532f558c74"><div class="ttname"><a href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a></div><div class="ttdeci">static int a</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00114">tsplib.c:114</a></div></div>
-<div class="ttc" id="pgr__withPoints_8cpp_html_ad7908e676e68d1ef712488e655e66ef0"><div class="ttname"><a href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a></div><div class="ttdeci">static void adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, const int64_t &amp;start_pid, const int64_t &amp;end_pid, Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00166">pgr_withPoints.cpp:166</a></div></div>
+<div class="ttc" id="pgr__withPoints_8cpp_html_ad7908e676e68d1ef712488e655e66ef0"><div class="ttname"><a href="pgr__withPoints_8cpp.html#ad7908e676e68d1ef712488e655e66ef0">adjust_pids</a></div><div class="ttdeci">static void adjust_pids(const std::vector&lt; Point_on_edge_t &gt; &amp;points, const int64_t &amp;start_pid, const int64_t &amp;end_pid, Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00162">pgr_withPoints.cpp:162</a></div></div>
 <div class="ttc" id="classPath_html_a5b5d58e304f85ef96637a260917c30ac"><div class="ttname"><a href="classPath.html#a5b5d58e304f85ef96637a260917c30ac">Path::push_back</a></div><div class="ttdeci">void push_back(Path_t data)</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00045">basePath_SSEC.cpp:45</a></div></div>
 <div class="ttc" id="classPath_html_af813241de9d44cf689932d9166147cf0"><div class="ttname"><a href="classPath.html#af813241de9d44cf689932d9166147cf0">Path::end_id</a></div><div class="ttdeci">int64_t end_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00057">basePath_SSEC.hpp:57</a></div></div>
 <div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00040">basePath_SSEC.hpp:40</a></div></div>
-<div class="ttc" id="structpointCompare_html_ae83993f5a8a1ac8873cc8d04eb9a4d5c"><div class="ttname"><a href="structpointCompare.html#ae83993f5a8a1ac8873cc8d04eb9a4d5c">pointCompare::operator()</a></div><div class="ttdeci">bool operator()(const Point_on_edge_t &amp;lhs, const Point_on_edge_t &amp;rhs) const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00215">pgr_withPoints.cpp:215</a></div></div>
-<div class="ttc" id="pgr__withPoints_8cpp_html_aafd53873fa63967f96fc3bfcd6481d6c"><div class="ttname"><a href="pgr__withPoints_8cpp.html#aafd53873fa63967f96fc3bfcd6481d6c">check_points</a></div><div class="ttdeci">int check_points(std::vector&lt; Point_on_edge_t &gt; &amp;points, std::ostringstream &amp;log)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00056">pgr_withPoints.cpp:56</a></div></div>
-<div class="ttc" id="structpgr__edge__t_html_a3258c31bdcbd1c071129cf92e5e46191"><div class="ttname"><a href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">pgr_edge_t::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00112">pgr_types.h:112</a></div></div>
-<div class="ttc" id="structPoint__on__edge__t_html_a0c5852ca1bbd99b96c92ca5c1f1cc9b4"><div class="ttname"><a href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">Point_on_edge_t::edge_id</a></div><div class="ttdeci">int64_t edge_id</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00145">pgr_types.h:145</a></div></div>
-<div class="ttc" id="structpgr__edge__t_html_ad41c20950820f890ccf557e431636b76"><div class="ttname"><a href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">pgr_edge_t::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00115">pgr_types.h:115</a></div></div>
+<div class="ttc" id="structpointCompare_html_ae83993f5a8a1ac8873cc8d04eb9a4d5c"><div class="ttname"><a href="structpointCompare.html#ae83993f5a8a1ac8873cc8d04eb9a4d5c">pointCompare::operator()</a></div><div class="ttdeci">bool operator()(const Point_on_edge_t &amp;lhs, const Point_on_edge_t &amp;rhs) const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00211">pgr_withPoints.cpp:211</a></div></div>
+<div class="ttc" id="pgr__withPoints_8cpp_html_aafd53873fa63967f96fc3bfcd6481d6c"><div class="ttname"><a href="pgr__withPoints_8cpp.html#aafd53873fa63967f96fc3bfcd6481d6c">check_points</a></div><div class="ttdeci">int check_points(std::vector&lt; Point_on_edge_t &gt; &amp;points, std::ostringstream &amp;log)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00053">pgr_withPoints.cpp:53</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_a3258c31bdcbd1c071129cf92e5e46191"><div class="ttname"><a href="structpgr__edge__t.html#a3258c31bdcbd1c071129cf92e5e46191">pgr_edge_t::id</a></div><div class="ttdeci">int64_t id</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00128">pgr_types.h:128</a></div></div>
+<div class="ttc" id="structPoint__on__edge__t_html_a0c5852ca1bbd99b96c92ca5c1f1cc9b4"><div class="ttname"><a href="structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4">Point_on_edge_t::edge_id</a></div><div class="ttdeci">int64_t edge_id</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00168">pgr_types.h:168</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html_ad41c20950820f890ccf557e431636b76"><div class="ttname"><a href="structpgr__edge__t.html#ad41c20950820f890ccf557e431636b76">pgr_edge_t::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00131">pgr_types.h:131</a></div></div>
 <div class="ttc" id="msg__logger_8hpp_html"><div class="ttname"><a href="msg__logger_8hpp.html">msg_logger.hpp</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
-<div class="ttc" id="structPoint__on__edge__t_html"><div class="ttname"><a href="structPoint__on__edge__t.html">Point_on_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00143">pgr_types.h:143</a></div></div>
-<div class="ttc" id="pgr__withPoints_8cpp_html_a1bbabefee9e49fba0af4190ec65d1529"><div class="ttname"><a href="pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a></div><div class="ttdeci">bool create_new_edges(std::vector&lt; Point_on_edge_t &gt; &amp;points, const std::vector&lt; pgr_edge_t &gt; &amp;edges, char driving_side, std::vector&lt; pgr_edge_t &gt; &amp;new_edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00220">pgr_withPoints.cpp:220</a></div></div>
+<div class="ttc" id="structPoint__on__edge__t_html"><div class="ttname"><a href="structPoint__on__edge__t.html">Point_on_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00166">pgr_types.h:166</a></div></div>
+<div class="ttc" id="pgr__withPoints_8cpp_html_a1bbabefee9e49fba0af4190ec65d1529"><div class="ttname"><a href="pgr__withPoints_8cpp.html#a1bbabefee9e49fba0af4190ec65d1529">create_new_edges</a></div><div class="ttdeci">bool create_new_edges(std::vector&lt; Point_on_edge_t &gt; &amp;points, const std::vector&lt; pgr_edge_t &gt; &amp;edges, char driving_side, std::vector&lt; pgr_edge_t &gt; &amp;new_edges)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00216">pgr_withPoints.cpp:216</a></div></div>
 <div class="ttc" id="tsplib_8c_html_a148e3876077787926724625411d6e7a9"><div class="ttname"><a href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a></div><div class="ttdeci">static int b</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00115">tsplib.c:115</a></div></div>
-<div class="ttc" id="structpointCompare_html"><div class="ttname"><a href="structpointCompare.html">pointCompare</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00214">pgr_withPoints.cpp:214</a></div></div>
-<div class="ttc" id="pgr__withPoints_8cpp_html_a78454780d695ee33ad171a220e3e9f38"><div class="ttname"><a href="pgr__withPoints_8cpp.html#a78454780d695ee33ad171a220e3e9f38">eliminate_details_dd</a></div><div class="ttdeci">void eliminate_details_dd(Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00100">pgr_withPoints.cpp:100</a></div></div>
+<div class="ttc" id="structpointCompare_html"><div class="ttname"><a href="structpointCompare.html">pointCompare</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00210">pgr_withPoints.cpp:210</a></div></div>
+<div class="ttc" id="pgr__withPoints_8cpp_html_a78454780d695ee33ad171a220e3e9f38"><div class="ttname"><a href="pgr__withPoints_8cpp.html#a78454780d695ee33ad171a220e3e9f38">eliminate_details_dd</a></div><div class="ttdeci">void eliminate_details_dd(Path &amp;path)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__withPoints_8cpp_source.html#l00096">pgr_withPoints.cpp:96</a></div></div>
 <div class="ttc" id="structedge_html_a64bbff727caf35c372648e9de602a549"><div class="ttname"><a href="structedge.html#a64bbff727caf35c372648e9de602a549">edge::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00063">tester/BiDirAStar.h:63</a></div></div>
 <div class="ttc" id="classPath_html_ac7035439d26c9e76a20ca1a06541923e"><div class="ttname"><a href="classPath.html#ac7035439d26c9e76a20ca1a06541923e">Path::start_id</a></div><div class="ttdeci">int64_t start_id() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00055">basePath_SSEC.hpp:55</a></div></div>
-<div class="ttc" id="msg__logger_8hpp_html_ab42bfc66d09595a17b08a01e01231201"><div class="ttname"><a href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a></div><div class="ttdeci">void PGR_LOG_POINTS(std::ostringstream &amp;log, const std::vector&lt; Point_on_edge_t &gt; &amp;points, const std::string &amp;title)</div><div class="ttdef"><b>Definition:</b> <a href="msg__logger_8hpp_source.html#l00034">msg_logger.hpp:34</a></div></div>
-<div class="ttc" id="structpoint_html"><div class="ttname"><a href="structpoint.html">point</a></div><div class="ttdef"><b>Definition:</b> <a href="tsp_8h_source.html#l00037">tsp.h:37</a></div></div>
+<div class="ttc" id="msg__logger_8hpp_html_ab42bfc66d09595a17b08a01e01231201"><div class="ttname"><a href="msg__logger_8hpp.html#ab42bfc66d09595a17b08a01e01231201">PGR_LOG_POINTS</a></div><div class="ttdeci">void PGR_LOG_POINTS(std::ostringstream &amp;log, const std::vector&lt; Point_on_edge_t &gt; &amp;points, const std::string &amp;title)</div><div class="ttdef"><b>Definition:</b> <a href="msg__logger_8hpp_source.html#l00036">msg_logger.hpp:36</a></div></div>
+<div class="ttc" id="structpoint_html"><div class="ttname"><a href="structpoint.html">point</a></div><div class="ttdef"><b>Definition:</b> <a href="tsp_8h_source.html#l00038">tsp.h:38</a></div></div>
 <div class="ttc" id="classPath_html_ad413fcb7c6c703e711d4be9b8cf91bf4"><div class="ttname"><a href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">Path::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00062">basePath_SSEC.hpp:62</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
 <div class="ttc" id="pgr__withPoints_8hpp_html"><div class="ttname"><a href="pgr__withPoints_8hpp.html">pgr_withPoints.hpp</a></div></div>
 <div class="ttc" id="structedge_html_a35006226be4289b23c1303ec5df12c07"><div class="ttname"><a href="structedge.html#a35006226be4289b23c1303ec5df12c07">edge::target</a></div><div class="ttdeci">int target</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00065">tester/BiDirAStar.h:65</a></div></div>
-<div class="ttc" id="structPoint__on__edge__t_html_ae859f164d035909491b099e6d490705e"><div class="ttname"><a href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">Point_on_edge_t::side</a></div><div class="ttdeci">char side</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00146">pgr_types.h:146</a></div></div>
+<div class="ttc" id="structPoint__on__edge__t_html_ae859f164d035909491b099e6d490705e"><div class="ttname"><a href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">Point_on_edge_t::side</a></div><div class="ttdeci">char side</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00169">pgr_types.h:169</a></div></div>
 <div class="ttc" id="structedge_html_aea228cd3916bb0978fd1d8dc512a8f38"><div class="ttname"><a href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">edge::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00071">tester/BiDirAStar.h:71</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -580,7 +586,7 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_db4188eb592e899b4ab759c326d3f65f.html">withPoints</a></li><li class="navelem"><a class="el" href="dir_8dc78dc14affe115084060e017054e86.html">src</a></li><li class="navelem"><a class="el" href="pgr__withPoints_8cpp.html">pgr_withPoints.cpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

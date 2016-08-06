@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['u',['u',['../structboost_1_1AStarHeuristicConcept.html#ae4727e1d4af440b290b42f20b5d26cd9',1,'boost::AStarHeuristicConcept::u()'],['../structboost_1_1ShootingStarVisitorConcept.html#a5d94e596e3957db421bcd1db909aa2ed',1,'boost::ShootingStarVisitorConcept::u()']]],
-  ['u_5fturn_5fcost',['U_TURN_COST',['../shooting__star__relax_8hpp.html#a70414f6f881dbaab4cbb7963e3b5f10f',1,'shooting_star_relax.hpp']]],
-  ['unassigned',['unassigned',['../classpgRouting_1_1vrp_1_1Initial__solution.html#af7d04660c9a51a926b23ad592328e7f4',1,'pgRouting::vrp::Initial_solution']]],
+  ['unassigned',['unassigned',['../classpgrouting_1_1vrp_1_1Initial__solution.html#a31712af6bd3bb7cd9777fc3d7d56919d',1,'pgrouting::vrp::Initial_solution']]],
   ['undirected',['UNDIRECTED',['../pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677',1,'pgr_types.h']]],
-  ['undirectedgraph',['UndirectedGraph',['../namespacepgRouting.html#aaf1c5cb485398868bf907563b03df297',1,'pgRouting']]],
+  ['undirectedgraph',['UndirectedGraph',['../namespacepgrouting.html#a268d17660990e69b13be963219157b85',1,'pgrouting']]],
   ['unifrand',['unifRand',['../tsplib_8c.html#aa24306b6624110a2b5763c0ed8227acb',1,'tsplib.c']]],
   ['unloadunit',['unloadUnit',['../classCVehicleInfo.html#ad36c10751e6576c3073a4e1b26634408',1,'CVehicleInfo']]],
-  ['update_5fif_5fbest',['update_if_best',['../classpgRouting_1_1tsp_1_1TSP.html#a9da3cd36abbecef0b57fa853cb92c105',1,'pgRouting::tsp::TSP']]],
-  ['updatecalls',['updatecalls',['../classpgRouting_1_1tsp_1_1TSP.html#abaad0dc3d1c2576d4001826ca75c6dd7',1,'pgRouting::tsp::TSP']]],
+  ['update_5fif_5fbest',['update_if_best',['../classpgrouting_1_1tsp_1_1TSP.html#a52439fc1de9570575952121a531d7efa',1,'pgrouting::tsp::TSP']]],
+  ['updatecalls',['updatecalls',['../classpgrouting_1_1tsp_1_1TSP.html#ac86e47c06d6a71137c0d1a20801cd085',1,'pgrouting::tsp::TSP']]],
   ['updatecost',['updateCost',['../classCTourInfo.html#ac5a226925fe44ba1e5aed566bf479908',1,'CTourInfo']]],
   ['updatefinalsolution',['updateFinalSolution',['../classCVRPSolver.html#acf1e18f7006566b357c932d215188e14',1,'CVRPSolver']]],
   ['updatetabucount',['updateTabuCount',['../classCVRPSolver.html#a37bf4faec4a3a457d78a3a3d8d5414b1',1,'CVRPSolver']]],

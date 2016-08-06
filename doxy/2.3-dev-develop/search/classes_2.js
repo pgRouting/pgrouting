@@ -1,7 +1,6 @@
 var searchData=
 [
   ['cdepotinfo',['CDepotInfo',['../classCDepotInfo.html',1,'']]],
-  ['closed_5fplus',['closed_plus',['../structboost_1_1closed__plus.html',1,'boost']]],
   ['cmoveinfo',['CMoveInfo',['../classCMoveInfo.html',1,'']]],
   ['column_5finfo_5ft',['Column_info_t',['../structColumn__info__t.html',1,'']]],
   ['comppaths',['compPaths',['../classPgr__ksp_1_1compPaths.html',1,'Pgr_ksp']]],

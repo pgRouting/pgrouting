@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['undirectedgraph',['UndirectedGraph',['../namespacepgRouting.html#aaf1c5cb485398868bf907563b03df297',1,'pgRouting']]]
+  ['undirectedgraph',['UndirectedGraph',['../namespacepgrouting.html#a268d17660990e69b13be963219157b85',1,'pgrouting']]]
 ];

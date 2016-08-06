@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['e',['e',['../structboost_1_1ShootingStarVisitorConcept.html#a527e9b5e63144d68f23801b58cd87041',1,'boost::ShootingStarVisitorConcept']]],
-  ['e_5fmax_5fid',['e_max_id',['../classshooting__star__goal__visitor.html#a4609aecfeb403c4055a5e08856150c2c',1,'shooting_star_goal_visitor::e_max_id()'],['../structboost_1_1ShootingStarVisitorConcept.html#ad9e1673d57eb9c88abce388681d42847',1,'boost::ShootingStarVisitorConcept::e_max_id()']]],
+  ['e_5fto_5fid',['E_to_id',['../classPgrEdgeDisjointPathsGraph.html#aee13395bb30db7b868f1544862293980',1,'PgrEdgeDisjointPathsGraph::E_to_id()'],['../classPgrFlowGraph.html#aacaa677b3542c8a041db7aef790eac22',1,'PgrFlowGraph::E_to_id()'],['../classPgrCardinalityGraph.html#a7ee398a08b95022ae2379c070549a9c7',1,'PgrCardinalityGraph::E_to_id()']]],
   ['ed_5find',['ed_ind',['../structGraphDefinition_1_1PARENT__PATH.html#a94183e5ccea224613f56de227ec2fb88',1,'GraphDefinition::PARENT_PATH']]],
-  ['edge',['edge',['../structPath__t.html#ae08f2ce5fed0574a1be10923fe5e686f',1,'Path_t::edge()'],['../structGeneral__path__element__t.html#a354771fb2151b5b368d4c35b30ce629e',1,'General_path_element_t::edge()'],['../structRoutes__t.html#a4d499ccac4781d4d4efce0711f3a6097',1,'Routes_t::edge()'],['../structpgr__path__t.html#ae9db7665531f0657bfa10b6f030a2969',1,'pgr_path_t::edge()']]],
+  ['edge',['edge',['../structPath__t.html#ae08f2ce5fed0574a1be10923fe5e686f',1,'Path_t::edge()'],['../structGeneral__path__element__t.html#a354771fb2151b5b368d4c35b30ce629e',1,'General_path_element_t::edge()'],['../structRoutes__t.html#a4d499ccac4781d4d4efce0711f3a6097',1,'Routes_t::edge()'],['../structpgr__flow__t.html#afb292c7ff975e970421647b9a47d362a',1,'pgr_flow_t::edge()'],['../structpgr__path__t.html#ae9db7665531f0657bfa10b6f030a2969',1,'pgr_path_t::edge()']]],
   ['edge_5fcount',['edge_count',['../BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730',1,'BDATester.cpp']]],
-  ['edge_5fid',['edge_id',['../structpath__element.html#a40a950d0c03df2431880b0964dede36e',1,'path_element::edge_id()'],['../structpath__element__t.html#ad9fec200bd8815c181b579dd3d3554ff',1,'path_element_t::edge_id()'],['../structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4',1,'Point_on_edge_t::edge_id()']]],
+  ['edge_5fid',['edge_id',['../structpath__element.html#a40a950d0c03df2431880b0964dede36e',1,'path_element::edge_id()'],['../structpath__element__t.html#ad9fec200bd8815c181b579dd3d3554ff',1,'path_element_t::edge_id()'],['../structpgr__basic__edge__t.html#aad287f0add3b68e0ac6e5cb2e2a06121',1,'pgr_basic_edge_t::edge_id()'],['../structPoint__on__edge__t.html#a0c5852ca1bbd99b96c92ca5c1f1cc9b4',1,'Point_on_edge_t::edge_id()']]],
   ['edgeid',['EdgeID',['../structGraphEdgeInfo.html#ab5e2d3a32c171e834cd9a53cb9e70da1',1,'GraphEdgeInfo']]],
   ['edgeindex',['EdgeIndex',['../structGraphEdgeInfo.html#a0e57ed43671372e723784d3e0e80ed46',1,'GraphEdgeInfo::EdgeIndex()'],['../structGraphEdgeInfo.html#a0e57ed43671372e723784d3e0e80ed46',1,'GraphEdgeInfo::EdgeIndex()']]],
   ['edges',['edges',['../BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863',1,'edges():&#160;BDATester.cpp'],['../testit_8c.html#aa44a74ef30e3ec88c97d809b9d681ffe',1,'edges():&#160;testit.c'],['../issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5',1,'edges():&#160;issue191-bad-m1.h'],['../issue191-bad_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5',1,'edges():&#160;issue191-bad.h'],['../issue191-good_8h.html#a555b152d62a23619e559150e5691cc20',1,'edges():&#160;issue191-good.h']]],
@@ -13,7 +12,7 @@ var searchData=
   ['end_5fvid',['end_vid',['../structRoutes__t.html#aa6c10a0d33fe8700ea0ad3d66a373fc7',1,'Routes_t']]],
   ['endcost',['endCost',['../structGraphDefinition_1_1CostHolder.html#afe14356d8c21e54fc262b4bf6f008377',1,'GraphDefinition::CostHolder']]],
   ['endnode',['EndNode',['../structGraphEdgeInfo.html#a9c395e4d6b2743a3298ae128c2772748',1,'GraphEdgeInfo']]],
-  ['epsilon',['epsilon',['../classpgRouting_1_1tsp_1_1TSP.html#a29b7b5077c49af318893b57622450fff',1,'pgRouting::tsp::TSP::epsilon()'],['../classpgRouting_1_1vrp_1_1Solution.html#a37d60ff98a95015bf71a8ba90206d04b',1,'pgRouting::vrp::Solution::EPSILON()']]],
+  ['epsilon',['epsilon',['../classpgrouting_1_1tsp_1_1TSP.html#a7628d006d4b62b638b85a7be047cab3a',1,'pgrouting::tsp::TSP::epsilon()'],['../classpgrouting_1_1vrp_1_1Solution.html#a6f585163bbc3f99d5f7252275701021d',1,'pgrouting::vrp::Solution::EPSILON()']]],
   ['err_5fmsg',['err_msg',['../BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d',1,'BDATester.cpp']]],
   ['etime',['Etime',['../structCustomer__t.html#a77a5e3a2ecadd21f35b3f9c884092087',1,'Customer_t']]],
   ['etype',['eType',['../structColumn__info__t.html#a80df9b5f6ef4c51effc2da146bb0d477',1,'Column_info_t']]]

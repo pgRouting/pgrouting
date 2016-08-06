@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -118,15 +117,8 @@ $(document).ready(function(){initNavTree('tsplib_8c.html','');});
 <div class="textblock"><code>#include &lt;<a class="el" href="postgres_8h_source.html">postgres.h</a>&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;math.h&gt;</code><br/>
-<code>#include &quot;<a class="el" href="tsp_8h_source.html">tsp.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="tsp_8h_source.html">./tsp.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">../../common/src/debug_macro.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for tsplib.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="tsplib_8c__incl.png" border="0" usemap="#tsplib_8c" alt=""/></div>
-<map name="tsplib_8c" id="tsplib_8c">
-<area shape="rect" id="node2" href="postgres_8h.html" title="postgres.h" alt="" coords="82,261,163,288"/><area shape="rect" id="node5" href="tsp_8h.html" title="tsp.h" alt="" coords="206,88,257,115"/><area shape="rect" id="node8" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="281,81,438,122"/><area shape="rect" id="node6" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="161,171,301,213"/></map>
-</div>
 </div>
 <p><a href="tsplib_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -137,23 +129,23 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ab0a5a46de18c70b767bea8e556b77560"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#ab0a5a46de18c70b767bea8e556b77560">COOLING</a>&#160;&#160;&#160;0.9 /* to lower down T (&lt; 1) */</td></tr>
+<tr class="memitem:ab0a5a46de18c70b767bea8e556b77560"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#ab0a5a46de18c70b767bea8e556b77560">COOLING</a>&#160;&#160;&#160;0.9 /* to lower down T(&lt; 1) */</td></tr>
 <tr class="separator:ab0a5a46de18c70b767bea8e556b77560"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ae508a8d305b460df210d2a0c2a5574"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(x, y)&#160;&#160;&#160;dist[(x)*n+y]</td></tr>
 <tr class="separator:a4ae508a8d305b460df210d2a0c2a5574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5173b2aa5c7848d04f815e5d35e590f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a5173b2aa5c7848d04f815e5d35e590f6">DQ</a>()&#160;&#160;&#160;arc[--l]</td></tr>
 <tr class="separator:a5173b2aa5c7848d04f815e5d35e590f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b7cf2a3641be7b89138615764d60ba3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a2b7cf2a3641be7b89138615764d60ba3">EMPTY</a>&#160;&#160;&#160;(l==0)</td></tr>
+<tr class="memitem:a2b7cf2a3641be7b89138615764d60ba3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a2b7cf2a3641be7b89138615764d60ba3">EMPTY</a>&#160;&#160;&#160;(l == 0)</td></tr>
 <tr class="separator:a2b7cf2a3641be7b89138615764d60ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b632f34716e536c9105586721d1e313"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a6b632f34716e536c9105586721d1e313">FINAL_T</a>&#160;&#160;&#160;0.1</td></tr>
 <tr class="separator:a6b632f34716e536c9105586721d1e313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb07c106fa663061e0193be95343c6f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#acb07c106fa663061e0193be95343c6f8">IMPROVED_PATH_PER_T</a>&#160;&#160;&#160;60*n</td></tr>
 <tr class="separator:acb07c106fa663061e0193be95343c6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa99ec4acc4ecb2dc3c2d05da15d0e3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#afa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)&#160;&#160;&#160;((<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>)&gt;(<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)?(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>):(<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>))</td></tr>
+<tr class="memitem:afa99ec4acc4ecb2dc3c2d05da15d0e3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#afa99ec4acc4ecb2dc3c2d05da15d0e3f">MAX</a>(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)&#160;&#160;&#160;((<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) &gt; (<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)?(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) : (<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>))</td></tr>
 <tr class="separator:afa99ec4acc4ecb2dc3c2d05da15d0e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3acffbd305ee72dcd4593c0d8af64a4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a3acffbd305ee72dcd4593c0d8af64a4f">MIN</a>(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)&#160;&#160;&#160;((<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>)&lt;(<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)?(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>):(<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>))</td></tr>
+<tr class="memitem:a3acffbd305ee72dcd4593c0d8af64a4f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a3acffbd305ee72dcd4593c0d8af64a4f">MIN</a>(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)&#160;&#160;&#160;((<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) &lt; (<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)?(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) : (<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>))</td></tr>
 <tr class="separator:a3acffbd305ee72dcd4593c0d8af64a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22e35eb1b689cb7f0d464874d6100254"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a>(i, n)&#160;&#160;&#160;((i) % (n) &gt;= 0 ? (i) % (n) : (i) % (n) + (n))</td></tr>
+<tr class="memitem:a22e35eb1b689cb7f0d464874d6100254"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a>(i, n)&#160;&#160;&#160;((i) %(n) &gt;= 0 ?(i) %(n) :(i) %(n) +(n))</td></tr>
 <tr class="separator:a22e35eb1b689cb7f0d464874d6100254"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89d85f0ec46dcd84d7e12c36d57e6033"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tsplib_8c.html#a89d85f0ec46dcd84d7e12c36d57e6033">NQ</a>(x)&#160;&#160;&#160;arc[l++] = x</td></tr>
 <tr class="separator:a89d85f0ec46dcd84d7e12c36d57e6033"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,14 +213,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define COOLING&#160;&#160;&#160;0.9 /* to lower down T (&lt; 1) */</td>
+          <td class="memname">#define COOLING&#160;&#160;&#160;0.9 /* to lower down T(&lt; 1) */</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00104">104</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -256,9 +248,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00189">189</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00187">187</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00200">findEulerianPath()</a>, <a class="el" href="tsplib_8c_source.html#l00386">getReverseCost()</a>, <a class="el" href="tsplib_8c_source.html#l00328">getThreeWayCost()</a>, and <a class="el" href="tsplib_8c_source.html#l00302">pathLength()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00198">findEulerianPath()</a>, <a class="el" href="tsplib_8c_source.html#l00369">getReverseCost()</a>, <a class="el" href="tsplib_8c_source.html#l00313">getThreeWayCost()</a>, and <a class="el" href="tsplib_8c_source.html#l00289">pathLength()</a>.</p>
 
 </div>
 </div>
@@ -275,7 +267,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00200">findEulerianPath()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00198">findEulerianPath()</a>.</p>
 
 </div>
 </div>
@@ -284,12 +276,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define EMPTY&#160;&#160;&#160;(l==0)</td>
+          <td class="memname">#define EMPTY&#160;&#160;&#160;(l == 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00200">findEulerianPath()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00198">findEulerianPath()</a>.</p>
 
 </div>
 </div>
@@ -305,7 +297,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00103">103</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -321,7 +313,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00106">106</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -344,14 +336,14 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;((<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>)&gt;(<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)?(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>):(<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>))</td>
+          <td></td><td>&#160;&#160;&#160;((<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) &gt; (<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)?(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) : (<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>))</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00192">192</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00190">190</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00496">find_tsp_solution()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00467">find_tsp_solution()</a>.</p>
 
 </div>
 </div>
@@ -374,12 +366,12 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;((<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>)&lt;(<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)?(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>):(<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>))</td>
+          <td></td><td>&#160;&#160;&#160;((<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) &lt; (<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>)?(<a class="el" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>) : (<a class="el" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>))</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00191">191</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00189">189</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
 </div>
 </div>
@@ -402,14 +394,14 @@ Variables</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;((i) % (n) &gt;= 0 ? (i) % (n) : (i) % (n) + (n))</td>
+          <td></td><td>&#160;&#160;&#160;((i) %(n) &gt;= 0 ?(i) %(n) :(i) %(n) +(n))</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00188">188</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00186">186</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>, <a class="el" href="tsplib_8c_source.html#l00402">doReverse()</a>, <a class="el" href="tsplib_8c_source.html#l00347">doThreeWay()</a>, <a class="el" href="tsplib_8c_source.html#l00386">getReverseCost()</a>, and <a class="el" href="tsplib_8c_source.html#l00328">getThreeWayCost()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>, <a class="el" href="tsplib_8c_source.html#l00383">doReverse()</a>, <a class="el" href="tsplib_8c_source.html#l00331">doThreeWay()</a>, <a class="el" href="tsplib_8c_source.html#l00369">getReverseCost()</a>, and <a class="el" href="tsplib_8c_source.html#l00313">getThreeWayCost()</a>.</p>
 
 </div>
 </div>
@@ -427,7 +419,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00200">findEulerianPath()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00198">findEulerianPath()</a>.</p>
 
 </div>
 </div>
@@ -443,7 +435,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00113">113</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, and <a class="el" href="tsplib_8c_source.html#l00147">Rand()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, and <a class="el" href="tsplib_8c_source.html#l00146">Rand()</a>.</p>
 
 </div>
 </div>
@@ -457,9 +449,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00167">167</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00165">165</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -473,9 +465,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00166">166</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00164">164</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -493,7 +485,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00193">193</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00191">191</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
 </div>
 </div>
@@ -509,7 +501,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00102">102</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -525,7 +517,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00105">105</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -543,9 +535,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00168">168</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00166">166</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -563,7 +555,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00200">findEulerianPath()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00198">findEulerianPath()</a>.</p>
 
 </div>
 </div>
@@ -578,7 +570,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00175">175</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00173">173</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
 </div>
 </div>
@@ -617,11 +609,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00422">422</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00401">401</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00181">tspstruct::bestlen</a>, <a class="el" href="tsplib_8c_source.html#l00184">tspstruct::border</a>, <a class="el" href="tsplib_8c_source.html#l00104">COOLING</a>, <a class="el" href="tsplib_8c_source.html#l00402">doReverse()</a>, <a class="el" href="tsplib_8c_source.html#l00347">doThreeWay()</a>, <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00103">FINAL_T</a>, <a class="el" href="tsplib_8c_source.html#l00386">getReverseCost()</a>, <a class="el" href="tsplib_8c_source.html#l00328">getThreeWayCost()</a>, <a class="el" href="tsplib_8c_source.html#l00106">IMPROVED_PATH_PER_T</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00188">MOD</a>, <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::n</a>, <a class="el" href="tsplib_8c_source.html#l00302">pathLength()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="tsplib_8c_source.html#l00167">RANDOM</a>, <a class="el" href="tsplib_8c_source.html#l00166">RREAL</a>, <a class="el" href="tsplib_8c_source.html#l00102">T_INIT</a>, <a class="el" href="tsplib_8c_source.html#l00105">TRIES_PER_T</a>, and <a class="el" href="tsplib_8c_source.html#l00168">unifRand</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00179">tspstruct::bestlen</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::border</a>, <a class="el" href="tsplib_8c_source.html#l00104">COOLING</a>, <a class="el" href="tsplib_8c_source.html#l00383">doReverse()</a>, <a class="el" href="tsplib_8c_source.html#l00331">doThreeWay()</a>, <a class="el" href="tsp_8h_source.html#l00033">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00103">FINAL_T</a>, <a class="el" href="tsplib_8c_source.html#l00369">getReverseCost()</a>, <a class="el" href="tsplib_8c_source.html#l00313">getThreeWayCost()</a>, <a class="el" href="tsplib_8c_source.html#l00106">IMPROVED_PATH_PER_T</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00186">MOD</a>, <a class="el" href="tsplib_8c_source.html#l00176">tspstruct::n</a>, <a class="el" href="tsplib_8c_source.html#l00289">pathLength()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="tsplib_8c_source.html#l00165">RANDOM</a>, <a class="el" href="tsplib_8c_source.html#l00164">RREAL</a>, <a class="el" href="tsplib_8c_source.html#l00102">T_INIT</a>, <a class="el" href="tsplib_8c_source.html#l00105">TRIES_PER_T</a>, and <a class="el" href="tsplib_8c_source.html#l00166">unifRand</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00496">find_tsp_solution()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00467">find_tsp_solution()</a>.</p>
 
 </div>
 </div>
@@ -657,11 +649,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00402">402</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00383">383</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00188">MOD</a>, and <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::n</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00186">MOD</a>, and <a class="el" href="tsplib_8c_source.html#l00176">tspstruct::n</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -697,11 +689,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00347">347</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00331">331</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00183">tspstruct::jorder</a>, <a class="el" href="tsplib_8c_source.html#l00188">MOD</a>, and <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::n</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00181">tspstruct::jorder</a>, <a class="el" href="tsplib_8c_source.html#l00186">MOD</a>, and <a class="el" href="tsplib_8c_source.html#l00176">tspstruct::n</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -759,11 +751,11 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00496">496</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00467">467</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>, <a class="el" href="tsplib_8c_source.html#l00181">tspstruct::bestlen</a>, <a class="el" href="tsplib_8c_source.html#l00184">tspstruct::border</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::dist</a>, <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00200">findEulerianPath()</a>, <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00183">tspstruct::jorder</a>, <a class="el" href="tsplib_8c_source.html#l00192">MAX</a>, <a class="el" href="tsplib_8c_source.html#l00179">tspstruct::maxd</a>, <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::n</a>, <a class="el" href="tsplib_8c_source.html#l00302">pathLength()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="tsplib_8c_source.html#l00485">reverse()</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>, <a class="el" href="tsplib_8c_source.html#l00179">tspstruct::bestlen</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::border</a>, <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::dist</a>, <a class="el" href="tsp_8h_source.html#l00033">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00198">findEulerianPath()</a>, <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00181">tspstruct::jorder</a>, <a class="el" href="tsplib_8c_source.html#l00190">MAX</a>, <a class="el" href="tsplib_8c_source.html#l00177">tspstruct::maxd</a>, <a class="el" href="tsplib_8c_source.html#l00176">tspstruct::n</a>, <a class="el" href="tsplib_8c_source.html#l00289">pathLength()</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="tsplib_8c_source.html#l00457">reverse()</a>.</p>
 
-<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00172">solve_tsp()</a>.</p>
+<p>Referenced by <a class="el" href="tsp2_8c_source.html#l00171">solve_tsp()</a>.</p>
 
 </div>
 </div>
@@ -789,11 +781,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00200">200</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00198">198</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00189">D</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::dist</a>, <a class="el" href="tsplib_8c.html#a5173b2aa5c7848d04f815e5d35e590f6">DQ</a>, <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="tsplib_8c.html#a2b7cf2a3641be7b89138615764d60ba3">EMPTY</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00183">tspstruct::jorder</a>, <a class="el" href="tsplib_8c_source.html#l00179">tspstruct::maxd</a>, <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::n</a>, <a class="el" href="tsplib_8c.html#a89d85f0ec46dcd84d7e12c36d57e6033">NQ</a>, and <a class="el" href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00187">D</a>, <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::dist</a>, <a class="el" href="tsplib_8c.html#a5173b2aa5c7848d04f815e5d35e590f6">DQ</a>, <a class="el" href="tsp_8h_source.html#l00033">DTYPE</a>, <a class="el" href="tsplib_8c.html#a2b7cf2a3641be7b89138615764d60ba3">EMPTY</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00181">tspstruct::jorder</a>, <a class="el" href="tsplib_8c_source.html#l00177">tspstruct::maxd</a>, <a class="el" href="tsplib_8c_source.html#l00176">tspstruct::n</a>, <a class="el" href="tsplib_8c.html#a89d85f0ec46dcd84d7e12c36d57e6033">NQ</a>, and <a class="el" href="tsplib_8c.html#ad743cf8bb46346b115dcecf0235e840c">VISITED</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00496">find_tsp_solution()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00467">find_tsp_solution()</a>.</p>
 
 </div>
 </div>
@@ -829,11 +821,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00386">386</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00369">369</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="tsplib_8c_source.html#l00189">D</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::dist</a>, <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00188">MOD</a>, and <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::n</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="tsplib_8c_source.html#l00187">D</a>, <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::dist</a>, <a class="el" href="tsp_8h_source.html#l00033">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00186">MOD</a>, and <a class="el" href="tsplib_8c_source.html#l00176">tspstruct::n</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -869,11 +861,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00328">328</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00313">313</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="tsplib_8c_source.html#l00189">D</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::dist</a>, <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00188">MOD</a>, and <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::n</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="tsplib_8c_source.html#l00187">D</a>, <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::dist</a>, <a class="el" href="tsp_8h_source.html#l00033">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::iorder</a>, <a class="el" href="tsplib_8c_source.html#l00186">MOD</a>, and <a class="el" href="tsplib_8c_source.html#l00176">tspstruct::n</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>.</p>
 
 </div>
 </div>
@@ -901,9 +893,9 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00122">122</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00116">arr</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="tsplib_8c_source.html#l00113">PRANDMAX</a>, and <a class="el" href="tsplib_8c_source.html#l00147">Rand()</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00116">arr</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="tsplib_8c_source.html#l00113">PRANDMAX</a>, and <a class="el" href="tsplib_8c_source.html#l00146">Rand()</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00496">find_tsp_solution()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00467">find_tsp_solution()</a>.</p>
 
 </div>
 </div>
@@ -929,11 +921,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00302">302</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00289">289</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00189">D</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::dist</a>, <a class="el" href="tsp_8h_source.html#l00032">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00182">tspstruct::iorder</a>, and <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::n</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00187">D</a>, <a class="el" href="tsplib_8c_source.html#l00178">tspstruct::dist</a>, <a class="el" href="tsp_8h_source.html#l00033">DTYPE</a>, <a class="el" href="tsplib_8c_source.html#l00180">tspstruct::iorder</a>, and <a class="el" href="tsplib_8c_source.html#l00176">tspstruct::n</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00422">annealing()</a>, and <a class="el" href="tsplib_8c_source.html#l00496">find_tsp_solution()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00401">annealing()</a>, and <a class="el" href="tsplib_8c_source.html#l00467">find_tsp_solution()</a>.</p>
 
 </div>
 </div>
@@ -959,7 +951,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00147">147</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00146">146</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
 <p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00116">arr</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, and <a class="el" href="tsplib_8c_source.html#l00113">PRANDMAX</a>.</p>
 
@@ -999,9 +991,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00485">485</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
+<p>Definition at line <a class="el" href="tsplib_8c_source.html#l00457">457</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="optimize_8cpp_source.html#l00405">pgRouting::vrp::Optimize::decrease_truck()</a>, <a class="el" href="eucledianTSP__driver_8cpp_source.html#l00049">do_pgr_eucledianTSP()</a>, <a class="el" href="newTSP__driver_8cpp_source.html#l00049">do_pgr_tsp()</a>, <a class="el" href="tsplib_8c_source.html#l00496">find_tsp_solution()</a>, <a class="el" href="optimize_8cpp_source.html#l00080">pgRouting::vrp::Optimize::inter_swap()</a>, <a class="el" href="optimize_8cpp_source.html#l00221">pgRouting::vrp::Optimize::move_duration_based()</a>, <a class="el" href="optimize_8cpp_source.html#l00243">pgRouting::vrp::Optimize::move_wait_time_based()</a>, and <a class="el" href="tour_8cpp_source.html#l00047">pgRouting::tsp::Tour::reverse()</a>.</p>
+<p>Referenced by <a class="el" href="optimize_8cpp_source.html#l00406">pgrouting::vrp::Optimize::decrease_truck()</a>, <a class="el" href="eucledianTSP__driver_8cpp_source.html#l00049">do_pgr_eucledianTSP()</a>, <a class="el" href="newTSP__driver_8cpp_source.html#l00049">do_pgr_tsp()</a>, <a class="el" href="tsplib_8c_source.html#l00467">find_tsp_solution()</a>, <a class="el" href="optimize_8cpp_source.html#l00082">pgrouting::vrp::Optimize::inter_swap()</a>, <a class="el" href="optimize_8cpp_source.html#l00223">pgrouting::vrp::Optimize::move_duration_based()</a>, <a class="el" href="optimize_8cpp_source.html#l00244">pgrouting::vrp::Optimize::move_wait_time_based()</a>, and <a class="el" href="tour_8cpp_source.html#l00047">pgrouting::tsp::Tour::reverse()</a>.</p>
 
 </div>
 </div>
@@ -1026,7 +1018,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00114">114</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">check_points()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="tsplib_8c_source.html#l00347">doThreeWay()</a>, <a class="el" href="tsplib_8c_source.html#l00200">findEulerianPath()</a>, <a class="el" href="pgr__tsp_8cpp_source.html#l00374">pgRouting::tsp::TSP&lt; MATRIX &gt;::getDeltaReverse()</a>, <a class="el" href="pgr__tsp_8cpp_source.html#l00322">pgRouting::tsp::TSP&lt; MATRIX &gt;::getDeltaSwap()</a>, <a class="el" href="tsplib_8c_source.html#l00386">getReverseCost()</a>, <a class="el" href="tsplib_8c_source.html#l00328">getThreeWayCost()</a>, <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, and <a class="el" href="tsplib_8c_source.html#l00147">Rand()</a>.</p>
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00053">check_points()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00060">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00062">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="tsplib_8c_source.html#l00331">doThreeWay()</a>, <a class="el" href="tsplib_8c_source.html#l00198">findEulerianPath()</a>, <a class="el" href="pgr__tsp_8cpp_source.html#l00374">pgrouting::tsp::TSP&lt; MATRIX &gt;::getDeltaReverse()</a>, <a class="el" href="pgr__tsp_8cpp_source.html#l00322">pgrouting::tsp::TSP&lt; MATRIX &gt;::getDeltaSwap()</a>, <a class="el" href="tsplib_8c_source.html#l00369">getReverseCost()</a>, <a class="el" href="tsplib_8c_source.html#l00313">getThreeWayCost()</a>, <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, and <a class="el" href="tsplib_8c_source.html#l00146">Rand()</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1042,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00116">116</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, and <a class="el" href="tsplib_8c_source.html#l00147">Rand()</a>.</p>
+<p>Referenced by <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, and <a class="el" href="tsplib_8c_source.html#l00146">Rand()</a>.</p>
 
 </div>
 </div>
@@ -1074,7 +1066,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tsplib_8c_source.html#l00115">115</a> of file <a class="el" href="tsplib_8c_source.html">tsplib.c</a>.</p>
 
-<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">check_points()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="tsplib_8c_source.html#l00347">doThreeWay()</a>, <a class="el" href="pgr__tsp_8cpp_source.html#l00374">pgRouting::tsp::TSP&lt; MATRIX &gt;::getDeltaReverse()</a>, <a class="el" href="pgr__tsp_8cpp_source.html#l00322">pgRouting::tsp::TSP&lt; MATRIX &gt;::getDeltaSwap()</a>, <a class="el" href="tsplib_8c_source.html#l00386">getReverseCost()</a>, <a class="el" href="tsplib_8c_source.html#l00328">getThreeWayCost()</a>, <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, <a class="el" href="shooting__star__relax_8hpp_source.html#l00074">boost::closed_plus&lt; T &gt;::operator()()</a>, <a class="el" href="pgr__allpairs_8hpp_source.html#l00153">Pgr_allpairs&lt; G &gt;::inf_plus&lt; T &gt;::operator()()</a>, and <a class="el" href="tsplib_8c_source.html#l00147">Rand()</a>.</p>
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00053">check_points()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00060">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00062">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="tsplib_8c_source.html#l00331">doThreeWay()</a>, <a class="el" href="pgr__tsp_8cpp_source.html#l00374">pgrouting::tsp::TSP&lt; MATRIX &gt;::getDeltaReverse()</a>, <a class="el" href="pgr__tsp_8cpp_source.html#l00322">pgrouting::tsp::TSP&lt; MATRIX &gt;::getDeltaSwap()</a>, <a class="el" href="tsplib_8c_source.html#l00369">getReverseCost()</a>, <a class="el" href="tsplib_8c_source.html#l00313">getThreeWayCost()</a>, <a class="el" href="tsplib_8c_source.html#l00122">initRand()</a>, <a class="el" href="pgr__allpairs_8hpp_source.html#l00152">Pgr_allpairs&lt; G &gt;::inf_plus&lt; T &gt;::operator()()</a>, and <a class="el" href="tsplib_8c_source.html#l00146">Rand()</a>.</p>
 
 </div>
 </div>
@@ -1084,7 +1076,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="tsplib_8c.html">tsplib.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

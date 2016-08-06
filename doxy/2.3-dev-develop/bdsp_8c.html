@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -123,13 +122,6 @@ $(document).ready(function(){initNavTree('bdsp_8c.html','');});
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">../../common/src/debug_macro.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__types_8h_source.html">../../common/src/pgr_types.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="postgres__connection_8h_source.html">../../common/src/postgres_connection.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for bdsp.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="bdsp_8c__incl.png" border="0" usemap="#bdsp_8c" alt=""/></div>
-<map name="bdsp_8c" id="bdsp_8c">
-<area shape="rect" id="node2" href="postgres_8h.html" title="postgres.h" alt="" coords="555,261,636,288"/><area shape="rect" id="node7" href="bdsp__driver_8h.html" title="bdsp_driver.h" alt="" coords="866,88,965,115"/><area shape="rect" id="node8" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="634,171,773,213"/><area shape="rect" id="node10" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="684,81,841,122"/><area shape="rect" id="node11" href="postgres__connection_8h.html" title="../../common/src/postgres\l_connection.h" alt="" coords="5,81,176,122"/></map>
-</div>
 </div>
 <p><a href="bdsp_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -174,7 +166,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="bdsp_8c_source.html#l00050">50</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
 
-<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00158">compute_bidirsp()</a>.</p>
+<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00153">compute_bidirsp()</a>.</p>
 
 </div>
 </div>
@@ -206,9 +198,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdsp_8c_source.html#l00308">308</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
+<p>Definition at line <a class="el" href="bdsp_8c_source.html#l00301">301</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
 
-<p>References <a class="el" href="bdsp_8c_source.html#l00158">compute_bidirsp()</a>, <a class="el" href="pgr__types_8h_source.html#l00069">path_element_t::cost</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="postgres__connection_8c_source.html#l00050">pgr_text2char()</a>.</p>
+<p>References <a class="el" href="bdsp_8c_source.html#l00153">compute_bidirsp()</a>, <a class="el" href="pgr__types_8h_source.html#l00076">path_element_t::cost</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="postgres__connection_8c_source.html#l00052">pgr_text2char()</a>.</p>
 
 </div>
 </div>
@@ -274,11 +266,11 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdsp_8c_source.html#l00158">158</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
+<p>Definition at line <a class="el" href="bdsp_8c_source.html#l00153">153</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
 
-<p>References <a class="el" href="bdsp__driver_8cpp_source.html#l00040">bidirsp_wrapper()</a>, <a class="el" href="BDATester_8cpp_source.html#l00046">edges</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="bdsp_8c_source.html#l00128">fetch_edge()</a>, <a class="el" href="bdsp_8c_source.html#l00070">fetch_edge_columns()</a>, <a class="el" href="bdsp_8c_source.html#l00056">edge_columns::id</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00092">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00061">pgr_SPI_finish()</a>, <a class="el" href="postgres__connection_8c_source.html#l00081">pgr_SPI_prepare()</a>, <a class="el" href="pgr__types_8h_source.html#l00113">pgr_edge_t::source</a>, <a class="el" href="pgr__types_8h_source.html#l00114">pgr_edge_t::target</a>, and <a class="el" href="bdsp_8c_source.html#l00050">TUPLIMIT</a>.</p>
+<p>References <a class="el" href="bdsp__driver_8cpp_source.html#l00041">bidirsp_wrapper()</a>, <a class="el" href="BDATester_8cpp_source.html#l00046">edges</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="bdsp_8c_source.html#l00124">fetch_edge()</a>, <a class="el" href="bdsp_8c_source.html#l00069">fetch_edge_columns()</a>, <a class="el" href="bdsp_8c_source.html#l00055">edge_columns::id</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="postgres__connection_8c_source.html#l00073">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00094">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00063">pgr_SPI_finish()</a>, <a class="el" href="postgres__connection_8c_source.html#l00083">pgr_SPI_prepare()</a>, <a class="el" href="pgr__types_8h_source.html#l00129">pgr_edge_t::source</a>, <a class="el" href="pgr__types_8h_source.html#l00130">pgr_edge_t::target</a>, and <a class="el" href="bdsp_8c_source.html#l00050">TUPLIMIT</a>.</p>
 
-<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00308">bidir_dijkstra_shortest_path()</a>.</p>
+<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00301">bidir_dijkstra_shortest_path()</a>.</p>
 
 </div>
 </div>
@@ -326,11 +318,11 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdsp_8c_source.html#l00128">128</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
+<p>Definition at line <a class="el" href="bdsp_8c_source.html#l00124">124</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
 
-<p>References <a class="el" href="bdsp_8c_source.html#l00059">edge_columns::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00115">pgr_edge_t::cost</a>, <a class="el" href="bdsp_8c_source.html#l00056">edge_columns::id</a>, <a class="el" href="pgr__types_8h_source.html#l00112">pgr_edge_t::id</a>, <a class="el" href="bdsp_8c_source.html#l00060">edge_columns::reverse_cost</a>, <a class="el" href="pgr__types_8h_source.html#l00116">pgr_edge_t::reverse_cost</a>, <a class="el" href="bdsp_8c_source.html#l00057">edge_columns::source</a>, <a class="el" href="pgr__types_8h_source.html#l00113">pgr_edge_t::source</a>, <a class="el" href="bdsp_8c_source.html#l00058">edge_columns::target</a>, and <a class="el" href="pgr__types_8h_source.html#l00114">pgr_edge_t::target</a>.</p>
+<p>References <a class="el" href="bdsp_8c_source.html#l00058">edge_columns::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00131">pgr_edge_t::cost</a>, <a class="el" href="bdsp_8c_source.html#l00055">edge_columns::id</a>, <a class="el" href="pgr__types_8h_source.html#l00128">pgr_edge_t::id</a>, <a class="el" href="bdsp_8c_source.html#l00059">edge_columns::reverse_cost</a>, <a class="el" href="pgr__types_8h_source.html#l00132">pgr_edge_t::reverse_cost</a>, <a class="el" href="bdsp_8c_source.html#l00056">edge_columns::source</a>, <a class="el" href="pgr__types_8h_source.html#l00129">pgr_edge_t::source</a>, <a class="el" href="bdsp_8c_source.html#l00057">edge_columns::target</a>, and <a class="el" href="pgr__types_8h_source.html#l00130">pgr_edge_t::target</a>.</p>
 
-<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00158">compute_bidirsp()</a>.</p>
+<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00153">compute_bidirsp()</a>.</p>
 
 </div>
 </div>
@@ -372,11 +364,11 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="bdsp_8c_source.html#l00070">70</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
+<p>Definition at line <a class="el" href="bdsp_8c_source.html#l00069">69</a> of file <a class="el" href="bdsp_8c_source.html">bdsp.c</a>.</p>
 
-<p>References <a class="el" href="bdsp_8c_source.html#l00059">edge_columns::cost</a>, <a class="el" href="bdsp_8c_source.html#l00056">edge_columns::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="bdsp_8c_source.html#l00060">edge_columns::reverse_cost</a>, <a class="el" href="bdsp_8c_source.html#l00057">edge_columns::source</a>, and <a class="el" href="bdsp_8c_source.html#l00058">edge_columns::target</a>.</p>
+<p>References <a class="el" href="bdsp_8c_source.html#l00058">edge_columns::cost</a>, <a class="el" href="bdsp_8c_source.html#l00055">edge_columns::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="bdsp_8c_source.html#l00059">edge_columns::reverse_cost</a>, <a class="el" href="bdsp_8c_source.html#l00056">edge_columns::source</a>, and <a class="el" href="bdsp_8c_source.html#l00057">edge_columns::target</a>.</p>
 
-<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00158">compute_bidirsp()</a>.</p>
+<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00153">compute_bidirsp()</a>.</p>
 
 </div>
 </div>
@@ -402,7 +394,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_d45295a976849345696ae19e8e628fab.html">bd_dijkstra</a></li><li class="navelem"><a class="el" href="dir_0e0fe66032089d7666222c320889d144.html">src</a></li><li class="navelem"><a class="el" href="bdsp_8c.html">bdsp.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

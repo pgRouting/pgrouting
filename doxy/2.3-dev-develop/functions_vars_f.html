@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -97,7 +96,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_vars_e.html#index_e"><span>e</span></a></li>
       <li class="current"><a href="functions_vars_f.html#index_f"><span>f</span></a></li>
       <li><a href="functions_vars_g.html#index_g"><span>g</span></a></li>
-      <li><a href="functions_vars_h.html#index_h"><span>h</span></a></li>
       <li><a href="functions_vars_i.html#index_i"><span>i</span></a></li>
       <li><a href="functions_vars_j.html#index_j"><span>j</span></a></li>
       <li><a href="functions_vars_l.html#index_l"><span>l</span></a></li>
@@ -149,10 +147,21 @@ $(document).ready(function(){initNavTree('functions_vars_f.html','');});
 
 <h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
 <li>first
-: <a class="el" href="classpgRouting_1_1Basic__edge.html#a3df14236e455fa694c9fc85772371729">pgRouting::Basic_edge</a>
+: <a class="el" href="classpgrouting_1_1Basic__edge.html#a2e7080d2f03a08e880523fa2895a2f01">pgrouting::Basic_edge</a>
+, <a class="el" href="classpgrouting_1_1contraction_1_1Edge.html#aa42b5fcdff3d800c9f5ffcc9f95c7370">pgrouting::contraction::Edge</a>
 </li>
 <li>fleet
-: <a class="el" href="classpgRouting_1_1vrp_1_1Solution.html#ac77d44b67c1188b7e5b535e1008db591">pgRouting::vrp::Solution</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Solution.html#accd5c70ed616a7e86bb9d21121ada225">pgrouting::vrp::Solution</a>
+</li>
+<li>flow
+: <a class="el" href="structpgr__flow__t.html#ad8e0d48f46f9ad92b0b3882ca8f31b87">pgr_flow_t</a>
+</li>
+<li>forbidden
+: <a class="el" href="classPgr__contract.html#a64eb4025c649cc31c41c28eed2d97f85">Pgr_contract&lt; G &gt;</a>
+</li>
+<li>forbiddenVertices
+: <a class="el" href="classpgrouting_1_1Pgr__deadEndContraction.html#a2049a4aa4dfc0f8a5feb1450002fafbd">pgrouting::Pgr_deadEndContraction&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1Pgr__linearContraction.html#a652e0f0213159724a825cd8f5e4a7da1">pgrouting::Pgr_linearContraction&lt; G &gt;</a>
 </li>
 <li>fraction
 : <a class="el" href="structPoint__on__edge__t.html#a07e57c7143c82311b10fd870b067cb19">Point_on_edge_t</a>
@@ -166,7 +175,7 @@ $(document).ready(function(){initNavTree('functions_vars_f.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

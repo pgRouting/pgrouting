@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -111,24 +110,17 @@ $(document).ready(function(){initNavTree('ksp_8c.html','');});
 <div class="title">ksp.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./../../common/src/pgr_types.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="postgres_8h_source.html">postgres.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="postgres_8h_source.html">postgres.h</a>&quot;</code><br/>
 <code>#include &quot;executor/spi.h&quot;</code><br/>
 <code>#include &quot;funcapi.h&quot;</code><br/>
 <code>#include &quot;catalog/pg_type.h&quot;</code><br/>
 <code>#include &quot;fmgr.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./../../common/src/pgr_types.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">./../../common/src/debug_macro.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="time__msg_8h_source.html">./../../common/src/time_msg.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="postgres__connection_8h_source.html">./../../common/src/postgres_connection.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="edges__input_8h_source.html">./../../common/src/edges_input.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="ksp__driver_8h_source.html">./ksp_driver.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for ksp.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="ksp_8c__incl.png" border="0" usemap="#ksp_8c" alt=""/></div>
-<map name="ksp_8c" id="ksp_8c">
-<area shape="rect" id="node2" href="pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="945,171,1071,213"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="209,261,291,288"/><area shape="rect" id="node9" href="debug__macro_8h.html" title="./../../common/src\l/debug_macro.h" alt="" coords="619,81,745,122"/><area shape="rect" id="node10" href="time__msg_8h.html" title="./../../common/src\l/time_msg.h" alt="" coords="770,81,896,122"/><area shape="rect" id="node13" href="postgres__connection_8h.html" title="./../../common/src\l/postgres_connection.h" alt="" coords="5,81,163,122"/><area shape="rect" id="node14" href="edges__input_8h.html" title="./../../common/src\l/edges_input.h" alt="" coords="1098,81,1224,122"/><area shape="rect" id="node15" href="ksp__driver_8h.html" title="./ksp_driver.h" alt="" coords="921,88,1023,115"/></map>
-</div>
 </div>
 <p><a href="ksp_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -212,7 +204,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="ksp_8c_source.html#l00045">45</a> of file <a class="el" href="ksp_8c_source.html">ksp.c</a>.</p>
 
-<p>References <a class="el" href="ksp__driver_8cpp_source.html#l00046">do_pgr_ksp()</a>, <a class="el" href="BDATester_8cpp_source.html#l00046">edges</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="edges__input_8c_source.html#l00314">pgr_get_edges()</a>, <a class="el" href="postgres__connection_8c_source.html#l00035">pgr_send_error()</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00061">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00009">time_msg()</a>.</p>
+<p>References <a class="el" href="ksp__driver_8cpp_source.html#l00046">do_pgr_ksp()</a>, <a class="el" href="BDATester_8cpp_source.html#l00046">edges</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="edges__input_8c_source.html#l00539">pgr_get_edges()</a>, <a class="el" href="postgres__connection_8c_source.html#l00035">pgr_send_error()</a>, <a class="el" href="postgres__connection_8c_source.html#l00073">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00063">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00031">time_msg()</a>.</p>
 
 <p>Referenced by <a class="el" href="ksp_8c_source.html#l00095">kshortest_path()</a>.</p>
 
@@ -234,7 +226,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="ksp_8c_source.html#l00095">95</a> of file <a class="el" href="ksp_8c_source.html">ksp.c</a>.</p>
 
-<p>References <a class="el" href="ksp_8c_source.html#l00045">compute()</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="postgres__connection_8c_source.html#l00050">pgr_text2char()</a>.</p>
+<p>References <a class="el" href="ksp_8c_source.html#l00045">compute()</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="postgres__connection_8c_source.html#l00052">pgr_text2char()</a>.</p>
 
 </div>
 </div>
@@ -260,7 +252,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2f5fb978aad6d15897bf76bd3f14c291.html">ksp</a></li><li class="navelem"><a class="el" href="dir_feb8149d5af3cd37103556366b14467a.html">src</a></li><li class="navelem"><a class="el" href="ksp_8c.html">ksp.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

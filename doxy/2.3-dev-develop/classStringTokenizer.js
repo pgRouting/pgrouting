@@ -2,8 +2,8 @@ var classStringTokenizer =
 [
     [ "StringTokenizer", "classStringTokenizer.html#abee9392f74f78f6232e090a78a669b8d", null ],
     [ "StringTokenizer", "classStringTokenizer.html#abee9392f74f78f6232e090a78a669b8d", null ],
+    [ "getToken", "classStringTokenizer.html#a64ad42c6abd0e3917fde698a9c8e5c82", null ],
     [ "getToken", "classStringTokenizer.html#ae7058708a583bb12e06e9d9efb9f23ec", null ],
-    [ "getToken", "classStringTokenizer.html#a49a83cbdea62db7963f10ec458a6fc2f", null ],
     [ "getTokenCount", "classStringTokenizer.html#a54bc919376624b02b0454fe174bb4be5", null ],
     [ "getTokenCount", "classStringTokenizer.html#a54bc919376624b02b0454fe174bb4be5", null ],
     [ "getTokens", "classStringTokenizer.html#a6590795686da6dc7953b602c4624baa2", null ],

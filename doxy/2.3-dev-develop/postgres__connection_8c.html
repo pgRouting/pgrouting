@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -111,18 +110,11 @@ $(document).ready(function(){initNavTree('postgres__connection_8c.html','');});
 <div class="title">postgres_connection.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="postgres_8h_source.html">postgres.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="postgres_8h_source.html">postgres.h</a>&gt;</code><br/>
 <code>#include &quot;catalog/pg_type.h&quot;</code><br/>
 <code>#include &quot;executor/spi.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">./debug_macro.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="postgres__connection_8h_source.html">./postgres_connection.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for postgres_connection.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="postgres__connection_8c__incl.png" border="0" usemap="#postgres__connection_8c" alt=""/></div>
-<map name="postgres__connection_8c" id="postgres__connection_8c">
-<area shape="rect" id="node2" href="postgres_8h.html" title="postgres.h" alt="" coords="19,155,101,181"/><area shape="rect" id="node5" href="debug__macro_8h.html" title="./debug_macro.h" alt="" coords="359,80,477,107"/><area shape="rect" id="node6" href="postgres__connection_8h.html" title="./postgres_connection.h" alt="" coords="173,80,334,107"/></map>
-</div>
 </div>
 <p><a href="postgres__connection_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -176,11 +168,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00071">71</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
+<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00073">73</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="ksp_8c_source.html#l00045">compute()</a>, <a class="el" href="bdsp_8c_source.html#l00158">compute_bidirsp()</a>, <a class="el" href="drivedist_8c_source.html#l00046">compute_driving_distance()</a>, <a class="el" href="bdastar_8c_source.html#l00196">compute_shortest_path_astar()</a>, <a class="el" href="trsp_8c_source.html#l00045">compute_trsp()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00047">driving_many_to_dist_driver()</a>, and <a class="el" href="astarManyToMany_8c_source.html#l00067">process()</a>.</p>
+<p>Referenced by <a class="el" href="ksp_8c_source.html#l00045">compute()</a>, <a class="el" href="bdsp_8c_source.html#l00153">compute_bidirsp()</a>, <a class="el" href="drivedist_8c_source.html#l00046">compute_driving_distance()</a>, <a class="el" href="bdastar_8c_source.html#l00188">compute_shortest_path_astar()</a>, <a class="el" href="trsp_8c_source.html#l00045">compute_trsp()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00047">driving_many_to_dist_driver()</a>, and <a class="el" href="astarManyToMany_8c_source.html#l00056">process()</a>.</p>
 
 </div>
 </div>
@@ -198,11 +190,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00092">92</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
+<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00094">94</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00158">compute_bidirsp()</a>, <a class="el" href="bdastar_8c_source.html#l00196">compute_shortest_path_astar()</a>, <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>, <a class="el" href="coordinates__input_8c_source.html#l00057">pgr_get_coordinates()</a>, <a class="el" href="customers__input_8c_source.html#l00056">pgr_get_customers_data()</a>, <a class="el" href="matrixRows__input_8c_source.html#l00052">pgr_get_matrixRows()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, and <a class="el" href="restrictions__input_8c_source.html#l00069">pgr_get_restriction_data()</a>.</p>
+<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00153">compute_bidirsp()</a>, <a class="el" href="bdastar_8c_source.html#l00188">compute_shortest_path_astar()</a>, <a class="el" href="edges__input_8c_source.html#l00238">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00129">get_edges_9_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00434">get_edges_basic()</a>, <a class="el" href="edges__input_8c_source.html#l00337">get_edges_flow()</a>, <a class="el" href="coordinates__input_8c_source.html#l00058">pgr_get_coordinates()</a>, <a class="el" href="customers__input_8c_source.html#l00056">pgr_get_customers_data()</a>, <a class="el" href="matrixRows__input_8c_source.html#l00051">pgr_get_matrixRows()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, and <a class="el" href="restrictions__input_8c_source.html#l00070">pgr_get_restriction_data()</a>.</p>
 
 </div>
 </div>
@@ -220,11 +212,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00061">61</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
+<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00063">63</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="ksp_8c_source.html#l00045">compute()</a>, <a class="el" href="bdsp_8c_source.html#l00158">compute_bidirsp()</a>, <a class="el" href="drivedist_8c_source.html#l00046">compute_driving_distance()</a>, <a class="el" href="bdastar_8c_source.html#l00196">compute_shortest_path_astar()</a>, <a class="el" href="trsp_8c_source.html#l00045">compute_trsp()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00047">driving_many_to_dist_driver()</a>, and <a class="el" href="astarManyToMany_8c_source.html#l00067">process()</a>.</p>
+<p>Referenced by <a class="el" href="ksp_8c_source.html#l00045">compute()</a>, <a class="el" href="bdsp_8c_source.html#l00153">compute_bidirsp()</a>, <a class="el" href="drivedist_8c_source.html#l00046">compute_driving_distance()</a>, <a class="el" href="bdastar_8c_source.html#l00188">compute_shortest_path_astar()</a>, <a class="el" href="trsp_8c_source.html#l00045">compute_trsp()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00047">driving_many_to_dist_driver()</a>, and <a class="el" href="astarManyToMany_8c_source.html#l00056">process()</a>.</p>
 
 </div>
 </div>
@@ -242,11 +234,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00081">81</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
+<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00083">83</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
 
 <p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>.</p>
 
-<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00158">compute_bidirsp()</a>, <a class="el" href="bdastar_8c_source.html#l00196">compute_shortest_path_astar()</a>, <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>, <a class="el" href="coordinates__input_8c_source.html#l00057">pgr_get_coordinates()</a>, <a class="el" href="customers__input_8c_source.html#l00056">pgr_get_customers_data()</a>, <a class="el" href="matrixRows__input_8c_source.html#l00052">pgr_get_matrixRows()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, and <a class="el" href="restrictions__input_8c_source.html#l00069">pgr_get_restriction_data()</a>.</p>
+<p>Referenced by <a class="el" href="bdsp_8c_source.html#l00153">compute_bidirsp()</a>, <a class="el" href="bdastar_8c_source.html#l00188">compute_shortest_path_astar()</a>, <a class="el" href="edges__input_8c_source.html#l00238">get_edges_5_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00129">get_edges_9_columns()</a>, <a class="el" href="edges__input_8c_source.html#l00434">get_edges_basic()</a>, <a class="el" href="edges__input_8c_source.html#l00337">get_edges_flow()</a>, <a class="el" href="coordinates__input_8c_source.html#l00058">pgr_get_coordinates()</a>, <a class="el" href="customers__input_8c_source.html#l00056">pgr_get_customers_data()</a>, <a class="el" href="matrixRows__input_8c_source.html#l00051">pgr_get_matrixRows()</a>, <a class="el" href="points__input_8c_source.html#l00062">pgr_get_points()</a>, and <a class="el" href="restrictions__input_8c_source.html#l00070">pgr_get_restriction_data()</a>.</p>
 
 </div>
 </div>
@@ -264,9 +256,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00050">50</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
+<p>Definition at line <a class="el" href="postgres__connection_8c_source.html#l00052">52</a> of file <a class="el" href="postgres__connection_8c_source.html">postgres_connection.c</a>.</p>
 
-<p>Referenced by <a class="el" href="astarManyToMany_8c_source.html#l00157">astarManyToMany()</a>, <a class="el" href="astarManyToOne_8c_source.html#l00156">astarManyToOne()</a>, <a class="el" href="astarOneToMany_8c_source.html#l00155">astarOneToMany()</a>, <a class="el" href="astarOneToOne_8c_source.html#l00144">astarOneToOne()</a>, <a class="el" href="bdastar_8c_source.html#l00350">bidir_astar_shortest_path()</a>, <a class="el" href="bdsp_8c_source.html#l00308">bidir_dijkstra_shortest_path()</a>, <a class="el" href="dijkstraVia_8c_source.html#l00115">dijkstraVia()</a>, <a class="el" href="drivedist_8c_source.html#l00091">driving_distance()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00099">driving_many_to_dist()</a>, <a class="el" href="eucledianTSP_8c_source.html#l00155">eucledianTSP()</a>, <a class="el" href="floydWarshall_8c_source.html#l00104">floydWarshall()</a>, <a class="el" href="johnson_8c_source.html#l00097">johnson()</a>, <a class="el" href="ksp_8c_source.html#l00095">kshortest_path()</a>, <a class="el" href="many__to__many__dijkstra_8c_source.html#l00115">many_to_many_dijkstra()</a>, <a class="el" href="many__to__many__withPoints_8c_source.html#l00149">many_to_many_withPoints()</a>, <a class="el" href="many__to__one__dijkstra_8c_source.html#l00114">many_to_one_dijkstra()</a>, <a class="el" href="many__to__one__withPoints_8c_source.html#l00143">many_to_one_withPoints()</a>, <a class="el" href="many__to__dist__withPointsDD_8c_source.html#l00145">many_withPointsDD()</a>, <a class="el" href="newTSP_8c_source.html#l00156">newTSP()</a>, <a class="el" href="one__to__many__dijkstra_8c_source.html#l00114">one_to_many_dijkstra()</a>, <a class="el" href="one__to__many__withPoints_8c_source.html#l00194">one_to_many_withPoints()</a>, <a class="el" href="one__to__one__dijkstra_8c_source.html#l00119">one_to_one_dijkstra()</a>, <a class="el" href="one__to__one__withPoints_8c_source.html#l00190">one_to_one_withPoints()</a>, <a class="el" href="pickDeliver_8c_source.html#l00139">pickDeliver()</a>, <a class="el" href="test__matrixRows_8c_source.html#l00112">test_matrixRows()</a>, <a class="el" href="testXYedges_8c_source.html#l00111">testXYedges()</a>, <a class="el" href="trsp_8c_source.html#l00348">turn_restrict_shortest_path_edge()</a>, <a class="el" href="trsp_8c_source.html#l00217">turn_restrict_shortest_path_vertex()</a>, <a class="el" href="withPoints__dd_8c_source.html#l00154">withPoints_dd()</a>, and <a class="el" href="withPoints__ksp_8c_source.html#l00160">withPoints_ksp()</a>.</p>
+<p>Referenced by <a class="el" href="astarManyToMany_8c_source.html#l00139">astarManyToMany()</a>, <a class="el" href="astarManyToOne_8c_source.html#l00138">astarManyToOne()</a>, <a class="el" href="astarOneToMany_8c_source.html#l00137">astarOneToMany()</a>, <a class="el" href="astarOneToOne_8c_source.html#l00134">astarOneToOne()</a>, <a class="el" href="bdastar_8c_source.html#l00339">bidir_astar_shortest_path()</a>, <a class="el" href="bdsp_8c_source.html#l00301">bidir_dijkstra_shortest_path()</a>, <a class="el" href="contractGraph_8c_source.html#l00136">contractGraph()</a>, <a class="el" href="dijkstraVia_8c_source.html#l00115">dijkstraVia()</a>, <a class="el" href="drivedist_8c_source.html#l00091">driving_distance()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00099">driving_many_to_dist()</a>, <a class="el" href="edge__disjoint__paths__many__to__many_8c_source.html#l00114">edge_disjoint_paths_many_to_many()</a>, <a class="el" href="edge__disjoint__paths__many__to__one_8c_source.html#l00114">edge_disjoint_paths_many_to_one()</a>, <a class="el" href="edge__disjoint__paths__one__to__many_8c_source.html#l00113">edge_disjoint_paths_one_to_many()</a>, <a class="el" href="edge__disjoint__paths__one__to__one_8c_source.html#l00117">edge_disjoint_paths_one_to_one()</a>, <a class="el" href="eucledianTSP_8c_source.html#l00155">eucledianTSP()</a>, <a class="el" href="floydWarshall_8c_source.html#l00104">floydWarshall()</a>, <a class="el" href="johnson_8c_source.html#l00097">johnson()</a>, <a class="el" href="ksp_8c_source.html#l00095">kshortest_path()</a>, <a class="el" href="many__to__many__dijkstra_8c_source.html#l00115">many_to_many_dijkstra()</a>, <a class="el" href="many__to__many__withPoints_8c_source.html#l00146">many_to_many_withPoints()</a>, <a class="el" href="many__to__one__dijkstra_8c_source.html#l00115">many_to_one_dijkstra()</a>, <a class="el" href="many__to__one__withPoints_8c_source.html#l00142">many_to_one_withPoints()</a>, <a class="el" href="many__to__dist__withPointsDD_8c_source.html#l00145">many_withPointsDD()</a>, <a class="el" href="max__flow__many__to__many_8c_source.html#l00121">max_flow_many_to_many()</a>, <a class="el" href="max__flow__many__to__one_8c_source.html#l00121">max_flow_many_to_one()</a>, <a class="el" href="max__flow__one__to__many_8c_source.html#l00121">max_flow_one_to_many()</a>, <a class="el" href="max__flow__one__to__one_8c_source.html#l00126">max_flow_one_to_one()</a>, <a class="el" href="maximum__cardinality__matching_8c_source.html#l00107">maximum_cardinality_matching()</a>, <a class="el" href="newTSP_8c_source.html#l00156">newTSP()</a>, <a class="el" href="one__to__many__dijkstra_8c_source.html#l00114">one_to_many_dijkstra()</a>, <a class="el" href="one__to__many__withPoints_8c_source.html#l00195">one_to_many_withPoints()</a>, <a class="el" href="one__to__one__dijkstra_8c_source.html#l00115">one_to_one_dijkstra()</a>, <a class="el" href="one__to__one__withPoints_8c_source.html#l00188">one_to_one_withPoints()</a>, <a class="el" href="pickDeliver_8c_source.html#l00139">pickDeliver()</a>, <a class="el" href="test__c__edges_8c_source.html#l00105">test_c_edges()</a>, <a class="el" href="test__matrixRows_8c_source.html#l00112">test_matrixRows()</a>, <a class="el" href="testXYedges_8c_source.html#l00110">testXYedges()</a>, <a class="el" href="trsp_8c_source.html#l00348">turn_restrict_shortest_path_edge()</a>, <a class="el" href="trsp_8c_source.html#l00217">turn_restrict_shortest_path_vertex()</a>, <a class="el" href="withPoints__dd_8c_source.html#l00154">withPoints_dd()</a>, and <a class="el" href="withPoints__ksp_8c_source.html#l00160">withPoints_ksp()</a>.</p>
 
 </div>
 </div>
@@ -276,7 +268,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="postgres__connection_8c.html">postgres_connection.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

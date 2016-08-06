@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -149,234 +148,227 @@ $(document).ready(function(){initNavTree('dijkstraVia__driver_8cpp_source.html',
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dijkstraVia__driver_8h.html">./dijkstraVia_driver.h</a>&quot;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_alloc.hpp&quot;</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// #define DEBUG</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> G&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">   50</a></span>&#160;<a class="code" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a>(</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        G &amp;graph,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">const</span> std::vector&lt; int64_t &gt; via_vertices,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::deque&lt; Path &gt; &amp;paths,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">bool</span> strict,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">bool</span> U_turn_on_edge,  </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        std::ostringstream &amp;log) {    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> G&gt;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">   47</a></span>&#160;<a class="code" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a>(</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        G &amp;graph,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">const</span> std::vector&lt; int64_t &gt; via_vertices,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        std::deque&lt; Path &gt; &amp;paths,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">bool</span> strict,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">bool</span> U_turn_on_edge,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::ostringstream &amp;log) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> (via_vertices.size() == 0) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (via_vertices.size() == 0) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    paths.clear();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    int64_t prev_vertex = via_vertices[0];</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classPath.html">Path</a> <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    paths.clear();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    int64_t prev_vertex = via_vertices[0];</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classPath.html">Path</a> <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    int64_t i = 0;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="structvertex.html">vertex</a> : via_vertices) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> (i == 0) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            prev_vertex = <a class="code" href="structvertex.html">vertex</a>; ++i;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">// Delete uTurn edges only valid for paths that are not the first path</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (!U_turn_on_edge &amp;&amp; i &gt; 1) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="comment">// we can only delete if there is was a path, that is at least one edge size</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>() &gt; 1) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">// Delete from the graph the last edge if its outgoing also</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="comment">// edge to be removed = second to last edge path[i].edge;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                int64_t edge_to_be_removed = path[path.<a class="code" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>() - 2].edge;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                int64_t last_vertex_of_path = prev_vertex;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="comment">// and the current vertex is not a dead end</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">if</span> (graph.out_degree(last_vertex_of_path) &gt; 1) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;departing from &quot;</span> &lt;&lt; last_vertex_of_path</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    &lt;&lt; <span class="stringliteral">&quot; deleting edge &quot;</span> &lt;&lt; edge_to_be_removed &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    graph.disconnect_out_going_edge(last_vertex_of_path, edge_to_be_removed);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    int64_t i = 0;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="structvertex.html">vertex</a> : via_vertices) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">if</span> (i == 0) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            prev_vertex = <a class="code" href="structvertex.html">vertex</a>; ++i;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// Delete uTurn edges only valid for paths that are not the first path</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (!U_turn_on_edge &amp;&amp; i &gt; 1) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="comment">// we can only delete if there is was a path, that is at least one edge size</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>() &gt; 1) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="comment">// Delete from the graph the last edge if its outgoing also</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="comment">// edge to be removed = second to last edge path[i].edge;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                int64_t edge_to_be_removed = path[path.<a class="code" href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">size</a>() - 2].edge;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                int64_t last_vertex_of_path = prev_vertex;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">// and the current vertex is not a dead end</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">if</span> (graph.out_degree(last_vertex_of_path) &gt; 1) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;departing from &quot;</span> &lt;&lt; last_vertex_of_path</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    &lt;&lt; <span class="stringliteral">&quot; deleting edge &quot;</span> &lt;&lt; edge_to_be_removed &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    graph.disconnect_out_going_edge(last_vertex_of_path, edge_to_be_removed);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        path.<a class="code" href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">clear</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;from &quot;</span> &lt;&lt; prev_vertex &lt;&lt; <span class="stringliteral">&quot; to &quot;</span> &lt;&lt; <a class="code" href="structvertex.html">vertex</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="pgr__dijkstra_8hpp.html#a725fd166c8ecd614f1428f7525bfcc2c">pgr_dijkstra</a>(graph, path, prev_vertex, vertex);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        path.<a class="code" href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">clear</a>();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;from &quot;</span> &lt;&lt; prev_vertex &lt;&lt; <span class="stringliteral">&quot; to &quot;</span> &lt;&lt; <a class="code" href="structvertex.html">vertex</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="pgr__dijkstra_8hpp.html#a725fd166c8ecd614f1428f7525bfcc2c">pgr_dijkstra</a>(graph, path, prev_vertex, vertex);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (!U_turn_on_edge &amp;&amp; i &gt; 1) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            graph.restore_graph();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) { </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="comment">/*</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">                 *  no path was found with the deleted edge</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">                 *  try with the edge back in the graph</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">                 */</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;WAS empty so again from &quot;</span> &lt;&lt; prev_vertex &lt;&lt; <span class="stringliteral">&quot; to &quot;</span> &lt;&lt; vertex &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <a class="code" href="pgr__dijkstra_8hpp.html#a725fd166c8ecd614f1428f7525bfcc2c">pgr_dijkstra</a>(graph, path, prev_vertex, vertex);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (!U_turn_on_edge &amp;&amp; i &gt; 1) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            graph.restore_graph();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">if</span> (path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="comment">/*</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">                 *  no path was found with the deleted edge</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">                 *  try with the edge back in the graph</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">                 */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                log &lt;&lt; <span class="stringliteral">&quot;WAS empty so again from &quot;</span> &lt;&lt; prev_vertex &lt;&lt; <span class="stringliteral">&quot; to &quot;</span> &lt;&lt; vertex &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <a class="code" href="pgr__dijkstra_8hpp.html#a725fd166c8ecd614f1428f7525bfcc2c">pgr_dijkstra</a>(graph, path, prev_vertex, vertex);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (strict &amp;&amp; path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            paths.clear();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (strict &amp;&amp; path.<a class="code" href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">empty</a>()) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            paths.clear();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        paths.push_back(path);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">/*</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">         * got to the next</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        prev_vertex = vertex; ++i;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">  124</a></span>&#160;<a class="code" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a>(</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordtype">int</span> route_id,</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordtype">int</span> path_id,</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>,</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="structRoutes__t.html">Routes_t</a> **postgres_data,</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordtype">double</span> &amp;route_cost,</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordtype">size_t</span> &amp;sequence) {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">//for (size_t i = 0; i &lt; path.size(); i++) {</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> e : path) {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        (*postgres_data)[sequence] = {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            route_id,</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            path_id,</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            i,</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            path.start_id(),</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            path.end_id(),</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            e.node,</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            e.edge,</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            e.cost,</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            e.agg_cost,</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            route_cost};</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        route_cost += path[i].cost;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        ++i;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        ++sequence;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    }</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">size_t</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">  154</a></span>&#160;<a class="code" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">get_route</a>(</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="structRoutes__t.html">Routes_t</a> **ret_path,</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">const</span> std::deque&lt; Path &gt; &amp;paths) {</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordtype">size_t</span> sequence = 0;    <span class="comment">//arrys index</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordtype">int</span> path_id = 1;    <span class="comment">// id&#39;s in posgresql start with 1</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordtype">int</span> route_id = 1;   </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">double</span> route_cost = 0;  <span class="comment">// routes_agg_cost</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a> : paths) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>.size() &gt; 0)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <a class="code" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a>(route_id, path_id, <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, ret_path, route_cost, sequence);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        ++path_id;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">return</span> sequence;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">// CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true,</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="dijkstraVia__driver_8h.html#ab7c68814c918910b76e5e0b5ad35717f">  171</a></span>&#160;<a class="code" href="dijkstraVia__driver_8cpp.html#ab7c68814c918910b76e5e0b5ad35717f">do_pgr_dijkstraViaVertex</a>(</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  *data_edges,    <span class="keywordtype">size_t</span> total_tuples,</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        int64_t  *via_vidsArr,      <span class="keywordtype">size_t</span> size_via_vidsArr,</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordtype">bool</span> strict,</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordtype">bool</span> U_turn_on_edge,</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <a class="code" href="structRoutes__t.html">Routes_t</a> **return_tuples,   <span class="keywordtype">size_t</span> *return_count,</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>){</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    std::ostringstream log;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">if</span> (total_tuples == 1) {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Required: more than one tuple\n&quot;</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            (*return_tuples) = NULL;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            (*return_count) = 0;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a> gType = directed? <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a>: <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a>;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        std::deque&lt; Path &gt;paths;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Inserting vertices into a c++ vector structure\n&quot;</span>;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        std::vector&lt; int64_t &gt; via_vertices(via_vidsArr, via_vidsArr + size_via_vidsArr);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">if</span> (directed) {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph\n&quot;</span>;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html">pgRouting::DirectedGraph</a> digraph(gType);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            digraph.<a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3319e904c931e866ccdcd0750aec0b18">graph_insert_data</a>(data_edges, total_tuples);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <a class="code" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a>(digraph, via_vertices, paths, strict, U_turn_on_edge, log);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with Undirected Graph\n&quot;</span>;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html">pgRouting::UndirectedGraph</a> undigraph(gType);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            undigraph.<a class="code" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3319e904c931e866ccdcd0750aec0b18">graph_insert_data</a>(data_edges, total_tuples);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <a class="code" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a>(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordtype">size_t</span> count(count_tuples(paths));</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            (*return_tuples) = NULL;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            (*return_count) = 0;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            log &lt;&lt; </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="stringliteral">&quot;No paths found between Starting and any of the Ending vertices\n&quot;</span>;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="comment">// get the space required to store all the paths</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(count, (*return_tuples));</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Converting a set of paths into the tuples\n&quot;</span>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        (*return_count) = (<a class="code" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">get_route</a>(return_tuples, paths));</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        (*return_tuples)[count - 1].edge = -2;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">#ifndef DEBUG</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor"></span>        *err_msg = strdup(<span class="stringliteral">&quot;OK&quot;</span>);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor"></span>        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor"></span>    } <span class="keywordflow">catch</span> ( ... ) {</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown expection!\n&quot;</span>;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00111">pgr_types.h:111</a></div></div>
-<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00032">alpha_driver.h:32</a></div></div>
-<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00170">pgr_types.h:170</a></div></div>
-<div class="ttc" id="dijkstraVia__driver_8cpp_html_a177cc6f573755bc3c2e872f43338e9e9"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a></div><div class="ttdeci">void pgr_dijkstraViaVertex(G &amp;graph, const std::vector&lt; int64_t &gt; via_vertices, std::deque&lt; Path &gt; &amp;paths, bool strict, bool U_turn_on_edge, std::ostringstream &amp;log)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00050">dijkstraVia_driver.cpp:50</a></div></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        paths.push_back(path);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">         * got to the next</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        prev_vertex = vertex; ++i;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">static</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">  119</a></span>&#160;<a class="code" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a>(</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">int</span> route_id,</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordtype">int</span> path_id,</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="structRoutes__t.html">Routes_t</a> **postgres_data,</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordtype">double</span> &amp;route_cost,</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordtype">size_t</span> &amp;sequence) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> e : path) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        (*postgres_data)[sequence] = {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            route_id,</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            path_id,</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            i,</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            path.start_id(),</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            path.end_id(),</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            e.node,</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            e.edge,</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            e.cost,</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            e.agg_cost,</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            route_cost};</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        route_cost += path[i].cost;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        ++i;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        ++sequence;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">static</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">size_t</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">  148</a></span>&#160;<a class="code" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">get_route</a>(</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <a class="code" href="structRoutes__t.html">Routes_t</a> **ret_path,</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">const</span> std::deque&lt; Path &gt; &amp;paths) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordtype">size_t</span> sequence = 0;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordtype">int</span> path_id = 1;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">int</span> route_id = 1;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">double</span> route_cost = 0;  <span class="comment">// routes_agg_cost</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="classPath.html">Path</a> &amp;<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a> : paths) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>.size() &gt; 0)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <a class="code" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a>(route_id, path_id, <a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, ret_path, route_cost, sequence);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        ++path_id;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">return</span> sequence;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">// CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true,</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="dijkstraVia__driver_8h.html#ab7c68814c918910b76e5e0b5ad35717f">  165</a></span>&#160;<a class="code" href="dijkstraVia__driver_8cpp.html#ab7c68814c918910b76e5e0b5ad35717f">do_pgr_dijkstraViaVertex</a>(</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  *data_edges,    <span class="keywordtype">size_t</span> total_tuples,</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        int64_t  *via_vidsArr,      <span class="keywordtype">size_t</span> size_via_vidsArr,</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordtype">bool</span> strict,</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordtype">bool</span> U_turn_on_edge,</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <a class="code" href="structRoutes__t.html">Routes_t</a> **return_tuples,   <span class="keywordtype">size_t</span> *return_count,</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    std::ostringstream log;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span> (total_tuples == 1) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Required: more than one tuple\n&quot;</span>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            (*return_tuples) = NULL;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            (*return_count) = 0;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a> gType = directed? <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a>: <a class="code" href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        std::deque&lt; Path &gt;paths;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Inserting vertices into a c++ vector structure\n&quot;</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        std::vector&lt; int64_t &gt; via_vertices(via_vidsArr, via_vidsArr + size_via_vidsArr);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">if</span> (directed) {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with directed Graph\n&quot;</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::DirectedGraph</a> digraph(gType);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            digraph.<a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a10d117c883157e9c1675749ae53a88b9">graph_insert_data</a>(data_edges, total_tuples);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <a class="code" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a>(digraph, via_vertices, paths, strict, U_turn_on_edge, log);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            log &lt;&lt; <span class="stringliteral">&quot;Working with Undirected Graph\n&quot;</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::UndirectedGraph</a> undigraph(gType);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            undigraph.<a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a10d117c883157e9c1675749ae53a88b9">graph_insert_data</a>(data_edges, total_tuples);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <a class="code" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a>(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordtype">size_t</span> count(count_tuples(paths));</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> (count == 0) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            (*return_tuples) = NULL;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            (*return_count) = 0;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            log &lt;&lt;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="stringliteral">&quot;No paths found\n&quot;</span>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="comment">// get the space required to store all the paths</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        (*return_tuples) = <a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(count, (*return_tuples));</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Converting a set of paths into the tuples\n&quot;</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        (*return_count) = (<a class="code" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">get_route</a>(return_tuples, paths));</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        (*return_tuples)[count - 1].edge = -2;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor">#ifndef DEBUG</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="preprocessor"></span>        *err_msg = strdup(<span class="stringliteral">&quot;OK&quot;</span>);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor"></span>        *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor"></span>    } <span class="keywordflow">catch</span> ( ... ) {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown expection!\n&quot;</span>;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00127">pgr_types.h:127</a></div></div>
+<div class="ttc" id="structvertex_html"><div class="ttname"><a href="structvertex.html">vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="alpha__driver_8h_source.html#l00033">alpha_driver.h:33</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea814399045afe50d214d2607be2f27677">UNDIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00192">pgr_types.h:192</a></div></div>
+<div class="ttc" id="dijkstraVia__driver_8cpp_html_a177cc6f573755bc3c2e872f43338e9e9"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a></div><div class="ttdeci">void pgr_dijkstraViaVertex(G &amp;graph, const std::vector&lt; int64_t &gt; via_vertices, std::deque&lt; Path &gt; &amp;paths, bool strict, bool U_turn_on_edge, std::ostringstream &amp;log)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00047">dijkstraVia_driver.cpp:47</a></div></div>
 <div class="ttc" id="dijkstraVia__driver_8h_html"><div class="ttname"><a href="dijkstraVia__driver_8h.html">dijkstraVia_driver.h</a></div></div>
 <div class="ttc" id="pgr__dijkstra_8hpp_html"><div class="ttname"><a href="pgr__dijkstra_8hpp.html">pgr_dijkstra.hpp</a></div></div>
-<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00170">pgr_types.h:170</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490ea2a58242d50c7fcc4067abd9c4db01be5">DIRECTED</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00192">pgr_types.h:192</a></div></div>
 <div class="ttc" id="classPath_html"><div class="ttname"><a href="classPath.html">Path</a></div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00040">basePath_SSEC.hpp:40</a></div></div>
-<div class="ttc" id="structRoutes__t_html"><div class="ttname"><a href="structRoutes__t.html">Routes_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00097">pgr_types.h:97</a></div></div>
+<div class="ttc" id="structRoutes__t_html"><div class="ttname"><a href="structRoutes__t.html">Routes_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00104">pgr_types.h:104</a></div></div>
 <div class="ttc" id="pgr__dijkstra_8hpp_html_a725fd166c8ecd614f1428f7525bfcc2c"><div class="ttname"><a href="pgr__dijkstra_8hpp.html#a725fd166c8ecd614f1428f7525bfcc2c">pgr_dijkstra</a></div><div class="ttdeci">void pgr_dijkstra(G &amp;graph, Path &amp;path, int64_t source, int64_t target, bool only_cost=false)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__dijkstra_8hpp_source.html#l00084">pgr_dijkstra.hpp:84</a></div></div>
-<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490e"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a></div><div class="ttdeci">graphType</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00170">pgr_types.h:170</a></div></div>
-<div class="ttc" id="dijkstraVia__driver_8cpp_html_a0f5d7eba38afe637689f28e6a51761be"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">get_route</a></div><div class="ttdeci">static size_t get_route(Routes_t **ret_path, const std::deque&lt; Path &gt; &amp;paths)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00154">dijkstraVia_driver.cpp:154</a></div></div>
-<div class="ttc" id="classpgRouting_1_1graph_1_1Pgr__base__graph_html"><div class="ttname"><a href="classpgRouting_1_1graph_1_1Pgr__base__graph.html">pgRouting::graph::Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00219">pgr_base_graph.hpp:219</a></div></div>
-<div class="ttc" id="dijkstraVia__driver_8cpp_html_ab7c68814c918910b76e5e0b5ad35717f"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#ab7c68814c918910b76e5e0b5ad35717f">do_pgr_dijkstraViaVertex</a></div><div class="ttdeci">void do_pgr_dijkstraViaVertex(pgr_edge_t *data_edges, size_t total_tuples, int64_t *via_vidsArr, size_t size_via_vidsArr, bool directed, bool strict, bool U_turn_on_edge, Routes_t **return_tuples, size_t *return_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00171">dijkstraVia_driver.cpp:171</a></div></div>
+<div class="ttc" id="pgr__types_8h_html_a3f8f7b519e692469f867b0af0ce0490e"><div class="ttname"><a href="pgr__types_8h.html#a3f8f7b519e692469f867b0af0ce0490e">graphType</a></div><div class="ttdeci">graphType</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00192">pgr_types.h:192</a></div></div>
+<div class="ttc" id="dijkstraVia__driver_8cpp_html_a0f5d7eba38afe637689f28e6a51761be"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">get_route</a></div><div class="ttdeci">static size_t get_route(Routes_t **ret_path, const std::deque&lt; Path &gt; &amp;paths)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00148">dijkstraVia_driver.cpp:148</a></div></div>
+<div class="ttc" id="dijkstraVia__driver_8cpp_html_ab7c68814c918910b76e5e0b5ad35717f"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#ab7c68814c918910b76e5e0b5ad35717f">do_pgr_dijkstraViaVertex</a></div><div class="ttdeci">void do_pgr_dijkstraViaVertex(pgr_edge_t *data_edges, size_t total_tuples, int64_t *via_vidsArr, size_t size_via_vidsArr, bool directed, bool strict, bool U_turn_on_edge, Routes_t **return_tuples, size_t *return_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00165">dijkstraVia_driver.cpp:165</a></div></div>
 <div class="ttc" id="pgr__alloc_8hpp_html_ac9d34b4a4d403ed9f24050b973087a9c"><div class="ttname"><a href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a></div><div class="ttdeci">T * pgr_alloc(std::size_t size, T *ptr)</div><div class="ttdoc">allocates memory </div><div class="ttdef"><b>Definition:</b> <a href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc.hpp:52</a></div></div>
 <div class="ttc" id="classPath_html_ad413fcb7c6c703e711d4be9b8cf91bf4"><div class="ttname"><a href="classPath.html#ad413fcb7c6c703e711d4be9b8cf91bf4">Path::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00062">basePath_SSEC.hpp:62</a></div></div>
+<div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html">pgrouting::graph::Pgr_base_graph</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00223">pgr_base_graph.hpp:223</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
 <div class="ttc" id="classPath_html_a173f5f76fcc498b81b97261251d6a9a3"><div class="ttname"><a href="classPath.html#a173f5f76fcc498b81b97261251d6a9a3">Path::size</a></div><div class="ttdeci">size_t size() const </div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8hpp_source.html#l00061">basePath_SSEC.hpp:61</a></div></div>
-<div class="ttc" id="classPath_html_a3e94fc24f7c713442f3d52478d0772fb"><div class="ttname"><a href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">Path::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00069">basePath_SSEC.cpp:69</a></div></div>
-<div class="ttc" id="dijkstraVia__driver_8cpp_html_ad4e2c3a96abf0877e03725f4dbc993ec"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a></div><div class="ttdeci">static void get_path(int route_id, int path_id, const Path &amp;path, Routes_t **postgres_data, double &amp;route_cost, size_t &amp;sequence)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00124">dijkstraVia_driver.cpp:124</a></div></div>
-<div class="ttc" id="classpgRouting_1_1graph_1_1Pgr__base__graph_html_a3319e904c931e866ccdcd0750aec0b18"><div class="ttname"><a href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a3319e904c931e866ccdcd0750aec0b18">pgRouting::graph::Pgr_base_graph::graph_insert_data</a></div><div class="ttdeci">void graph_insert_data(const T *edges, int64_t count)</div><div class="ttdoc">Inserts count edges of type T into the graph. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00370">pgr_base_graph.hpp:370</a></div></div>
+<div class="ttc" id="classPath_html_a3e94fc24f7c713442f3d52478d0772fb"><div class="ttname"><a href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">Path::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="basePath__SSEC_8cpp_source.html#l00071">basePath_SSEC.cpp:71</a></div></div>
+<div class="ttc" id="dijkstraVia__driver_8cpp_html_ad4e2c3a96abf0877e03725f4dbc993ec"><div class="ttname"><a href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a></div><div class="ttdeci">static void get_path(int route_id, int path_id, const Path &amp;path, Routes_t **postgres_data, double &amp;route_cost, size_t &amp;sequence)</div><div class="ttdef"><b>Definition:</b> <a href="dijkstraVia__driver_8cpp_source.html#l00119">dijkstraVia_driver.cpp:119</a></div></div>
+<div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_a10d117c883157e9c1675749ae53a88b9"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a10d117c883157e9c1675749ae53a88b9">pgrouting::graph::Pgr_base_graph::graph_insert_data</a></div><div class="ttdeci">void graph_insert_data(const T *edges, int64_t count)</div><div class="ttdoc">Inserts count edges of type T into the graph. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00397">pgr_base_graph.hpp:397</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_2a52a6a5123eeb3ef09f6d5b6e1e597e.html">src</a></li><li class="navelem"><a class="el" href="dijkstraVia__driver_8cpp.html">dijkstraVia_driver.cpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:53 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

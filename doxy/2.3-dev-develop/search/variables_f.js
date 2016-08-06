@@ -1,21 +1,13 @@
 var searchData=
 [
-  ['par_5fedge',['par_Edge',['../structPARENT__PATH.html#a79779ff90d61690b47e18aafc3a097ad',1,'PARENT_PATH']]],
-  ['par_5fnode',['par_Node',['../structPARENT__PATH.html#a26f8a458d613929e0c163414adda9c40',1,'PARENT_PATH']]],
-  ['parent',['parent',['../classGraphDefinition.html#a55dd6a0aaf37754d4c3e5276ac513673',1,'GraphDefinition']]],
-  ['path',['path',['../classPath.html#a0078a9d54940355ab4e63f7d90c9b911',1,'Path::path()'],['../BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de',1,'path():&#160;BDATester.cpp']]],
-  ['path_5fcount',['path_count',['../BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df',1,'BDATester.cpp']]],
-  ['path_5fid',['path_id',['../structRoutes__t.html#ae9d26e92b596aff25c77b1b751758633',1,'Routes_t']]],
-  ['path_5fseq',['path_seq',['../structRoutes__t.html#acb143a564da1fb8a5ba85f809bf021c9',1,'Routes_t']]],
-  ['pe',['pe',['../structboost_1_1ShootingStarVisitorConcept.html#a386757856ed2ba189137f4ec947232b8',1,'boost::ShootingStarVisitorConcept']]],
-  ['pg_5fmodule_5fmagic',['PG_MODULE_MAGIC',['../one__to__one__dijkstra_8c.html#a509119277abe280e6db17c34f79e01cf',1,'PG_MODULE_MAGIC():&#160;one_to_one_dijkstra.c'],['../VRP_8c.html#a509119277abe280e6db17c34f79e01cf',1,'PG_MODULE_MAGIC():&#160;VRP.c']]],
-  ['pickup_5fid',['pickup_id',['../classpgRouting_1_1vrp_1_1Order.html#aad236698117ed553894434940c6b627e',1,'pgRouting::vrp::Order']]],
-  ['pid',['pid',['../structPoint__on__edge__t.html#acf4b5a08f42736890f38a77f1ef9c8e9',1,'Point_on_edge_t']]],
-  ['pindex',['Pindex',['../structCustomer__t.html#a6322c65ce642d45e928ec227af9d40fc',1,'Customer_t']]],
-  ['point',['point',['../classpgRouting_1_1XY__vertex.html#a62d57c106689ed6ab12b86f1187c69a1',1,'pgRouting::XY_vertex']]],
-  ['pos',['pos',['../classtokenizer.html#a7849e50b15b670b4596e01b1eff4894d',1,'tokenizer']]],
-  ['precedencelist',['precedencelist',['../structGraphDefinition_1_1Rule.html#acb7d97d79719d21af7ed8c3c3cb35240',1,'GraphDefinition::Rule']]],
-  ['predecessors',['predecessors',['../classPgr__astar.html#ad1c15bda02522650d9b558683a6e9769',1,'Pgr_astar::predecessors()'],['../classPgr__dijkstra.html#a9ef39b953a6e26c217548bd480a639b1',1,'Pgr_dijkstra::predecessors()']]],
-  ['prev_5fsize',['prev_size',['../alpha__driver_8cpp.html#a7118ea995babe95c18fc3899f93d697a',1,'alpha_driver.cpp']]],
-  ['problem',['problem',['../classpgRouting_1_1vrp_1_1Order.html#a588a23940e287a9f16f12377f2598226',1,'pgRouting::vrp::Order::problem()'],['../classpgRouting_1_1vrp_1_1Solution.html#ab25eb5b0e4613455080f7f098162edc5',1,'pgRouting::vrp::Solution::problem()'],['../classpgRouting_1_1vrp_1_1Tw__node.html#a452064f0be57d565c489dacee07f29eb',1,'pgRouting::vrp::Tw_node::problem()'],['../classpgRouting_1_1vrp_1_1Vehicle__pickDeliver.html#a3e5b6551f926eefd84307fe1baab4875',1,'pgRouting::vrp::Vehicle_pickDeliver::problem()']]]
+  ['removed_5fedges',['removed_edges',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ad4e950b076a12de9d576d571254fe744',1,'pgrouting::graph::Pgr_base_graph']]],
+  ['removed_5fvertices',['removed_vertices',['../classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a7226271b2387e65e8f59375098ec2207',1,'pgrouting::graph::Pgr_contractionGraph']]],
+  ['residual_5fcapacity',['residual_capacity',['../structpgr__flow__t.html#a70ec27327e16df03e9c3b950eac7192f',1,'pgr_flow_t::residual_capacity()'],['../classPgrEdgeDisjointPathsGraph.html#a9399db7458559f9a55a5152cb7594bc8',1,'PgrEdgeDisjointPathsGraph::residual_capacity()'],['../classPgrFlowGraph.html#a19d56381eab69e565b2c69aceb3a593f',1,'PgrFlowGraph::residual_capacity()']]],
+  ['rev',['rev',['../classPgrEdgeDisjointPathsGraph.html#a6b1a439e7175696be28486509e9090fa',1,'PgrEdgeDisjointPathsGraph::rev()'],['../classPgrFlowGraph.html#a34ee17360b9a5edd6b353885d890c485',1,'PgrFlowGraph::rev()']]],
+  ['reverse_5fcost',['reverse_cost',['../structedge__astar__columns.html#af4c47e8841b4846f7ccc6ccbfb96c4fa',1,'edge_astar_columns::reverse_cost()'],['../structedge.html#aea228cd3916bb0978fd1d8dc512a8f38',1,'edge::reverse_cost()'],['../structedge__columns.html#a7bf385252bb0745be50ad60330de710a',1,'edge_columns::reverse_cost()'],['../structedge__astar.html#a25864e744c50a04e60dd1f24fa68a2b2',1,'edge_astar::reverse_cost()'],['../structPgr__edge__xy__t.html#a6ab464e545a09586baf24552943d40e4',1,'Pgr_edge_xy_t::reverse_cost()'],['../structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5',1,'pgr_edge_t::reverse_cost()'],['../structedge.html#aea228cd3916bb0978fd1d8dc512a8f38',1,'edge::reverse_cost()']]],
+  ['reverse_5fcount',['reverse_count',['../classpgrouting_1_1tsp_1_1TSP.html#af846195864efbdbaf81a58c0bd532cbb',1,'pgrouting::tsp::TSP']]],
+  ['reversecost',['ReverseCost',['../structGraphEdgeInfo.html#a8c8486076964685c0bf8e5efe84684b6',1,'GraphEdgeInfo']]],
+  ['route_5fagg_5fcost',['route_agg_cost',['../structRoutes__t.html#a4b23ed6e6dfbd4b53262a9e79ad2c1d1',1,'Routes_t']]],
+  ['route_5fid',['route_id',['../structRoutes__t.html#a4632bf736943e5d62a9159c997997919',1,'Routes_t']]],
+  ['row',['row',['../classpgrouting_1_1tsp_1_1eucledianDmatrix.html#af412d7be01bc72a24bb91c2a48ca0bd9',1,'pgrouting::tsp::eucledianDmatrix']]]
 ];

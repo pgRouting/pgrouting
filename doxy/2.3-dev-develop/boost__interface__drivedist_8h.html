@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -111,21 +110,8 @@ $(document).ready(function(){initNavTree('boost__interface__drivedist_8h.html','
 <div class="title">boost_interface_drivedist.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./../../common/src/pgr_types.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for boost_interface_drivedist.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="boost__interface__drivedist_8h__incl.png" border="0" usemap="#boost__interface__drivedist_8h" alt=""/></div>
-<map name="boost__interface__drivedist_8h" id="boost__interface__drivedist_8h">
-<area shape="rect" id="node2" href="pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="33,81,159,122"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="5,171,87,197"/></map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="boost__interface__drivedist_8h__dep__incl.png" border="0" usemap="#boost__interface__drivedist_8hdep" alt=""/></div>
-<map name="boost__interface__drivedist_8hdep" id="boost__interface__drivedist_8hdep">
-<area shape="rect" id="node2" href="boost__interface__drivedist_8cpp.html" title="boost_interface_drivedist.cpp" alt="" coords="5,88,197,115"/><area shape="rect" id="node3" href="drivedist_8c.html" title="drivedist.c" alt="" coords="221,88,303,115"/><area shape="rect" id="node4" href="many__to__dist__driving__distance_8c.html" title="many_to_dist_driving\l_distance.c" alt="" coords="329,81,473,122"/></map>
-</div>
+<div class="textblock"><code>#include &quot;stdlib.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./../../common/src/pgr_types.h</a>&quot;</code><br/>
 </div>
 <p><a href="boost__interface__drivedist_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -197,9 +183,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00108">108</a> of file <a class="el" href="boost__interface__drivedist_8cpp_source.html">boost_interface_drivedist.cpp</a>.</p>
+<p>Definition at line <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00105">105</a> of file <a class="el" href="boost__interface__drivedist_8cpp_source.html">boost_interface_drivedist.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00170">DIRECTED</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">Path::empty()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00133">Path::get_pg_dd_path()</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00370">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::graph_insert_data()</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00059">pgr_drivingDistance()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00061">Path::size()</a>, and <a class="el" href="pgr__types_8h_source.html#l00170">UNDIRECTED</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00192">DIRECTED</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">Path::empty()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00135">Path::get_pg_dd_path()</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00397">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::graph_insert_data()</a>, <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00059">pgr_drivingDistance()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00061">Path::size()</a>, and <a class="el" href="pgr__types_8h_source.html#l00192">UNDIRECTED</a>.</p>
 
 <p>Referenced by <a class="el" href="drivedist_8c_source.html#l00046">compute_driving_distance()</a>.</p>
 
@@ -277,9 +263,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00049">49</a> of file <a class="el" href="boost__interface__drivedist_8cpp_source.html">boost_interface_drivedist.cpp</a>.</p>
+<p>Definition at line <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00047">47</a> of file <a class="el" href="boost__interface__drivedist_8cpp_source.html">boost_interface_drivedist.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00170">DIRECTED</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00370">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::graph_insert_data()</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00059">pgr_drivingDistance()</a>, and <a class="el" href="pgr__types_8h_source.html#l00170">UNDIRECTED</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00192">DIRECTED</a>, <a class="el" href="pgr__base__graph_8hpp_source.html#l00397">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;::graph_insert_data()</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00059">pgr_drivingDistance()</a>, and <a class="el" href="pgr__types_8h_source.html#l00192">UNDIRECTED</a>.</p>
 
 <p>Referenced by <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00047">driving_many_to_dist_driver()</a>.</p>
 
@@ -291,7 +277,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><a class="el" href="boost__interface__drivedist_8h.html">boost_interface_drivedist.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

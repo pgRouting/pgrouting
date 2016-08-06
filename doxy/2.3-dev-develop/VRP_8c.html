@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -115,26 +114,18 @@ $(document).ready(function(){initNavTree('VRP_8c.html','');});
 <div class="title">VRP.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="VRP_8h_source.html">VRP.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="VRP_8h_source.html">./VRP.h</a>&quot;</code><br/>
+<code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;search.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="postgres_8h_source.html">postgres.h</a>&quot;</code><br/>
 <code>#include &quot;executor/spi.h&quot;</code><br/>
 <code>#include &quot;funcapi.h&quot;</code><br/>
 <code>#include &quot;catalog/pg_type.h&quot;</code><br/>
-<code>#include &lt;stdio.h&gt;</code><br/>
-<code>#include &lt;stdlib.h&gt;</code><br/>
-<code>#include &lt;search.h&gt;</code><br/>
-<code>#include &quot;string.h&quot;</code><br/>
-<code>#include &quot;math.h&quot;</code><br/>
 <code>#include &quot;fmgr.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./../../common/src/pgr_types.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">../../common/src/debug_macro.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for VRP.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="VRP_8c__incl.png" border="0" usemap="#VRP_8c" alt=""/></div>
-<map name="VRP_8c" id="VRP_8c">
-<area shape="rect" id="node2" href="VRP_8h.html" title="VRP.h" alt="" coords="9,88,71,115"/><area shape="rect" id="node4" href="postgres_8h.html" title="postgres.h" alt="" coords="536,171,617,197"/><area shape="rect" id="node14" href="pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="1051,81,1177,122"/><area shape="rect" id="node16" href="debug__macro_8h.html" title="../../common/src/debug\l_macro.h" alt="" coords="1203,81,1360,122"/></map>
-</div>
 </div>
 <p><a href="VRP_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -169,7 +160,7 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a34cf4a89d85450fb66ae0556917b764b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a34cf4a89d85450fb66ae0556917b764b">conn</a> (int *SPIcode)</td></tr>
 <tr class="separator:a34cf4a89d85450fb66ae0556917b764b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a061bc3cf09b8243bc29dbc162b826930"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a061bc3cf09b8243bc29dbc162b826930">fetch_distance</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="VRP_8c.html#a3204befca7e502dbb80f71125fadec96">distance_columns_t</a> *<a class="el" href="structdistance__columns.html">distance_columns</a>, <a class="el" href="VRP_8h.html#a5b7fc82f5a5ea82a10565d3dcb09db2e">vrp_cost_element_t</a> *dist, size_t t)</td></tr>
+<tr class="memitem:a061bc3cf09b8243bc29dbc162b826930"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a061bc3cf09b8243bc29dbc162b826930">fetch_distance</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="VRP_8c.html#a3204befca7e502dbb80f71125fadec96">distance_columns_t</a> *<a class="el" href="structdistance__columns.html">distance_columns</a>, <a class="el" href="VRP_8h.html#aae470533865a28e2a4488284d1a2bea2">vrp_cost_element_t</a> *dist, size_t t)</td></tr>
 <tr class="separator:a061bc3cf09b8243bc29dbc162b826930"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10e669980dbb80b9c047a8894c43612b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8c.html#a10e669980dbb80b9c047a8894c43612b">fetch_distance_columns</a> (SPITupleTable *tuptable, <a class="el" href="VRP_8c.html#a3204befca7e502dbb80f71125fadec96">distance_columns_t</a> *<a class="el" href="structdistance__columns.html">distance_columns</a>)</td></tr>
 <tr class="separator:a10e669980dbb80b9c047a8894c43612b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,7 +207,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP_8c_source.html#l00075">75</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>, and <a class="el" href="VRP_8c_source.html#l00779">vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>, and <a class="el" href="VRP_8c_source.html#l00730">vrp()</a>.</p>
 
 </div>
 </div>
@@ -246,7 +237,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP_8c_source.html#l00076">76</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>, and <a class="el" href="VRP_8c_source.html#l00779">vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>, and <a class="el" href="VRP_8c_source.html#l00730">vrp()</a>.</p>
 
 </div>
 </div>
@@ -262,7 +253,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP_8c_source.html#l00091">91</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -326,9 +317,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00413">413</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00393">393</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>Referenced by <a class="el" href="performance_2dijkstra_2pgRouting_8cpp_source.html#l00215">main()</a>, and <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="performance_2dijkstra_2pgRouting_8cpp_source.html#l00215">main()</a>, and <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -360,7 +351,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="VRP_8h.html#a5b7fc82f5a5ea82a10565d3dcb09db2e">vrp_cost_element_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="VRP_8h.html#aae470533865a28e2a4488284d1a2bea2">vrp_cost_element_t</a> *&#160;</td>
           <td class="paramname"><em>dist</em>, </td>
         </tr>
         <tr>
@@ -382,11 +373,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00179">179</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00170">170</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8h_source.html#l00054">vrp_cost_element::cost</a>, <a class="el" href="VRP_8c_source.html#l00120">distance_columns::cost</a>, <a class="el" href="VRP_8h_source.html#l00053">vrp_cost_element::dest_id</a>, <a class="el" href="VRP_8c_source.html#l00119">distance_columns::dest_id</a>, <a class="el" href="VRP_8h_source.html#l00055">vrp_cost_element::distance</a>, <a class="el" href="VRP_8c_source.html#l00121">distance_columns::distance</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8h_source.html#l00052">vrp_cost_element::src_id</a>, <a class="el" href="VRP_8c_source.html#l00118">distance_columns::src_id</a>, <a class="el" href="VRP_8h_source.html#l00056">vrp_cost_element::traveltime</a>, and <a class="el" href="VRP_8c_source.html#l00122">distance_columns::traveltime</a>.</p>
+<p>References <a class="el" href="VRP_8h_source.html#l00049">vrp_cost_element::cost</a>, <a class="el" href="VRP_8c_source.html#l00116">distance_columns::cost</a>, <a class="el" href="VRP_8h_source.html#l00048">vrp_cost_element::dest_id</a>, <a class="el" href="VRP_8c_source.html#l00115">distance_columns::dest_id</a>, <a class="el" href="VRP_8h_source.html#l00050">vrp_cost_element::distance</a>, <a class="el" href="VRP_8c_source.html#l00117">distance_columns::distance</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8h_source.html#l00047">vrp_cost_element::src_id</a>, <a class="el" href="VRP_8c_source.html#l00114">distance_columns::src_id</a>, <a class="el" href="VRP_8h_source.html#l00051">vrp_cost_element::traveltime</a>, and <a class="el" href="VRP_8c_source.html#l00118">distance_columns::traveltime</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -422,11 +413,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00154">154</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00147">147</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8c_source.html#l00120">distance_columns::cost</a>, <a class="el" href="VRP_8c_source.html#l00119">distance_columns::dest_id</a>, <a class="el" href="VRP_8c_source.html#l00121">distance_columns::distance</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8c_source.html#l00118">distance_columns::src_id</a>, and <a class="el" href="VRP_8c_source.html#l00122">distance_columns::traveltime</a>.</p>
+<p>References <a class="el" href="VRP_8c_source.html#l00116">distance_columns::cost</a>, <a class="el" href="VRP_8c_source.html#l00115">distance_columns::dest_id</a>, <a class="el" href="VRP_8c_source.html#l00117">distance_columns::distance</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8c_source.html#l00114">distance_columns::src_id</a>, and <a class="el" href="VRP_8c_source.html#l00118">distance_columns::traveltime</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -480,11 +471,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00276">276</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00263">263</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8h_source.html#l00042">vrp_orders::close_time</a>, <a class="el" href="VRP_8c_source.html#l00109">order_columns::close_time</a>, <a class="el" href="VRP_8h_source.html#l00039">vrp_orders::id</a>, <a class="el" href="VRP_8c_source.html#l00106">order_columns::id</a>, <a class="el" href="VRP_8h_source.html#l00041">vrp_orders::open_time</a>, <a class="el" href="VRP_8c_source.html#l00108">order_columns::open_time</a>, <a class="el" href="VRP_8h_source.html#l00040">vrp_orders::order_unit</a>, <a class="el" href="VRP_8c_source.html#l00107">order_columns::order_unit</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8h_source.html#l00043">vrp_orders::service_time</a>, <a class="el" href="VRP_8c_source.html#l00110">order_columns::service_time</a>, <a class="el" href="VRP_8h_source.html#l00045">vrp_orders::x</a>, <a class="el" href="VRP_8c_source.html#l00112">order_columns::x</a>, <a class="el" href="VRP_8h_source.html#l00046">vrp_orders::y</a>, and <a class="el" href="VRP_8c_source.html#l00113">order_columns::y</a>.</p>
+<p>References <a class="el" href="VRP_8h_source.html#l00039">vrp_orders::close_time</a>, <a class="el" href="VRP_8c_source.html#l00106">order_columns::close_time</a>, <a class="el" href="VRP_8h_source.html#l00036">vrp_orders::id</a>, <a class="el" href="VRP_8c_source.html#l00103">order_columns::id</a>, <a class="el" href="VRP_8h_source.html#l00038">vrp_orders::open_time</a>, <a class="el" href="VRP_8c_source.html#l00105">order_columns::open_time</a>, <a class="el" href="VRP_8h_source.html#l00037">vrp_orders::order_unit</a>, <a class="el" href="VRP_8c_source.html#l00104">order_columns::order_unit</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8h_source.html#l00040">vrp_orders::service_time</a>, <a class="el" href="VRP_8c_source.html#l00107">order_columns::service_time</a>, <a class="el" href="VRP_8h_source.html#l00042">vrp_orders::x</a>, <a class="el" href="VRP_8c_source.html#l00109">order_columns::x</a>, <a class="el" href="VRP_8h_source.html#l00043">vrp_orders::y</a>, and <a class="el" href="VRP_8c_source.html#l00110">order_columns::y</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -520,11 +511,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00242">242</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00231">231</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8c_source.html#l00109">order_columns::close_time</a>, <a class="el" href="VRP_8c_source.html#l00106">order_columns::id</a>, <a class="el" href="VRP_8c_source.html#l00108">order_columns::open_time</a>, <a class="el" href="VRP_8c_source.html#l00107">order_columns::order_unit</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8c_source.html#l00110">order_columns::service_time</a>, <a class="el" href="VRP_8c_source.html#l00112">order_columns::x</a>, and <a class="el" href="VRP_8c_source.html#l00113">order_columns::y</a>.</p>
+<p>References <a class="el" href="VRP_8c_source.html#l00106">order_columns::close_time</a>, <a class="el" href="VRP_8c_source.html#l00103">order_columns::id</a>, <a class="el" href="VRP_8c_source.html#l00105">order_columns::open_time</a>, <a class="el" href="VRP_8c_source.html#l00104">order_columns::order_unit</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8c_source.html#l00107">order_columns::service_time</a>, <a class="el" href="VRP_8c_source.html#l00109">order_columns::x</a>, and <a class="el" href="VRP_8c_source.html#l00110">order_columns::y</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -578,11 +569,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00376">376</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00358">358</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8h_source.html#l00032">vrp_vehicles::capacity</a>, <a class="el" href="VRP_8c_source.html#l00100">vehicle_columns::capacity</a>, <a class="el" href="VRP_8h_source.html#l00031">vrp_vehicles::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="VRP_8c_source.html#l00099">vehicle_columns::vehicle_id</a>.</p>
+<p>References <a class="el" href="VRP_8h_source.html#l00031">vrp_vehicles::capacity</a>, <a class="el" href="VRP_8c_source.html#l00099">vehicle_columns::capacity</a>, <a class="el" href="VRP_8h_source.html#l00030">vrp_vehicles::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="VRP_8c_source.html#l00098">vehicle_columns::vehicle_id</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -618,11 +609,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00356">356</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00341">341</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8c_source.html#l00100">vehicle_columns::capacity</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="VRP_8c_source.html#l00099">vehicle_columns::vehicle_id</a>.</p>
+<p>References <a class="el" href="VRP_8c_source.html#l00099">vehicle_columns::capacity</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="VRP_8c_source.html#l00098">vehicle_columns::vehicle_id</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -648,9 +639,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00140">140</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00135">135</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -702,9 +693,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00428">428</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00406">406</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -764,11 +755,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00449">449</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00424">424</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="VRP_8c_source.html#l00413">conn()</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="VRP_8c_source.html#l00179">fetch_distance()</a>, <a class="el" href="VRP_8c_source.html#l00154">fetch_distance_columns()</a>, <a class="el" href="VRP_8c_source.html#l00276">fetch_order()</a>, <a class="el" href="VRP_8c_source.html#l00242">fetch_order_columns()</a>, <a class="el" href="VRP_8c_source.html#l00376">fetch_vehicle()</a>, <a class="el" href="VRP_8c_source.html#l00356">fetch_vehicle_columns()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00147">find_vrp_solution()</a>, <a class="el" href="VRP_8c_source.html#l00140">finish()</a>, <a class="el" href="VRP_8c_source.html#l00106">order_columns::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8c_source.html#l00428">prepare_query()</a>, <a class="el" href="VRP_8c_source.html#l00075">profstart</a>, <a class="el" href="VRP_8c_source.html#l00076">profstop</a>, <a class="el" href="VRP_8c_source.html#l00118">distance_columns::src_id</a>, <a class="el" href="VRP_8c_source.html#l00091">TUPLIMIT</a>, and <a class="el" href="VRP_8c_source.html#l00099">vehicle_columns::vehicle_id</a>.</p>
+<p>References <a class="el" href="VRP_8c_source.html#l00393">conn()</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="VRP_8c_source.html#l00170">fetch_distance()</a>, <a class="el" href="VRP_8c_source.html#l00147">fetch_distance_columns()</a>, <a class="el" href="VRP_8c_source.html#l00263">fetch_order()</a>, <a class="el" href="VRP_8c_source.html#l00231">fetch_order_columns()</a>, <a class="el" href="VRP_8c_source.html#l00358">fetch_vehicle()</a>, <a class="el" href="VRP_8c_source.html#l00341">fetch_vehicle_columns()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00137">find_vrp_solution()</a>, <a class="el" href="VRP_8c_source.html#l00135">finish()</a>, <a class="el" href="VRP_8c_source.html#l00103">order_columns::id</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8c_source.html#l00406">prepare_query()</a>, <a class="el" href="VRP_8c_source.html#l00075">profstart</a>, <a class="el" href="VRP_8c_source.html#l00076">profstop</a>, <a class="el" href="VRP_8c_source.html#l00114">distance_columns::src_id</a>, <a class="el" href="VRP_8c_source.html#l00091">TUPLIMIT</a>, and <a class="el" href="VRP_8c_source.html#l00098">vehicle_columns::vehicle_id</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00779">vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00730">vrp()</a>.</p>
 
 </div>
 </div>
@@ -794,9 +785,9 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00130">130</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00126">126</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00779">vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00730">vrp()</a>.</p>
 
 </div>
 </div>
@@ -814,9 +805,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP_8c_source.html#l00779">779</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
+<p>Definition at line <a class="el" href="VRP_8c_source.html#l00730">730</a> of file <a class="el" href="VRP_8c_source.html">VRP.c</a>.</p>
 
-<p>References <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8c_source.html#l00075">profstart</a>, <a class="el" href="VRP_8c_source.html#l00076">profstop</a>, <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>, and <a class="el" href="VRP_8c_source.html#l00130">text2char()</a>.</p>
+<p>References <a class="el" href="BDATester_8cpp_source.html#l00049">path</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="VRP_8c_source.html#l00075">profstart</a>, <a class="el" href="VRP_8c_source.html#l00076">profstop</a>, <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>, and <a class="el" href="VRP_8c_source.html#l00126">text2char()</a>.</p>
 
 </div>
 </div>
@@ -841,7 +832,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e28fcb41c27d94935e6e1bded8372f10.html">vrp_basic</a></li><li class="navelem"><a class="el" href="dir_2c959b9bc6ee9cc8204048449dea20e7.html">src</a></li><li class="navelem"><a class="el" href="VRP_8c.html">VRP.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

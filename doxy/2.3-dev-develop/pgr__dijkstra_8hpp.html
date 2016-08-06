@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -119,20 +118,6 @@ $(document).ready(function(){initNavTree('pgr__dijkstra_8hpp.html','');});
 <code>#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</code><br/>
 <code>#include &quot;<a class="el" href="basePath__SSEC_8hpp_source.html">./../../common/src/basePath_SSEC.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__base__graph_8hpp_source.html">./../../common/src/pgr_base_graph.hpp</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for pgr_dijkstra.hpp:</div>
-<div class="dyncontent">
-<div class="center"><img src="pgr__dijkstra_8hpp__incl.png" border="0" usemap="#pgr__dijkstra_8hpp" alt=""/></div>
-<map name="pgr__dijkstra_8hpp" id="pgr__dijkstra_8hpp">
-<area shape="rect" id="node7" href="basePath__SSEC_8hpp.html" title="./../../common/src\l/basePath_SSEC.hpp" alt="" coords="138,81,288,122"/><area shape="rect" id="node13" href="pgr__base__graph_8hpp.html" title="./../../common/src\l/pgr_base_graph.hpp" alt="" coords="1013,81,1155,122"/><area shape="rect" id="node10" href="pgr__types_8h.html" title="./pgr_types.h" alt="" coords="1231,261,1329,288"/><area shape="rect" id="node11" href="postgres_8h.html" title="postgres.h" alt="" coords="1189,336,1271,363"/><area shape="rect" id="node19" href="basic__vertex_8h.html" title="./basic_vertex.h" alt="" coords="1497,179,1612,205"/><area shape="rect" id="node20" href="xy__vertex_8h.html" title="./xy_vertex.h" alt="" coords="1375,179,1473,205"/><area shape="rect" id="node22" href="basic__edge_8h.html" title="./basic_edge.h" alt="" coords="1244,179,1351,205"/><area shape="rect" id="node23" href="pgr__assert_8h.html" title="./pgr_assert.h" alt="" coords="475,179,577,205"/></map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="pgr__dijkstra_8hpp__dep__incl.png" border="0" usemap="#pgr__dijkstra_8hppdep" alt=""/></div>
-<map name="pgr__dijkstra_8hppdep" id="pgr__dijkstra_8hppdep">
-<area shape="rect" id="node2" href="dijkstraVia__driver_8cpp.html" title="dijkstraVia_driver.cpp" alt="" coords="5,88,152,115"/><area shape="rect" id="node3" href="many__to__many__dijkstra__driver_8cpp.html" title="many_to_many_dijkstra\l_driver.cpp" alt="" coords="176,81,335,122"/><area shape="rect" id="node4" href="many__to__one__dijkstra__driver_8cpp.html" title="many_to_one_dijkstra\l_driver.cpp" alt="" coords="360,81,508,122"/><area shape="rect" id="node5" href="one__to__many__dijkstra__driver_8cpp.html" title="one_to_many_dijkstra\l_driver.cpp" alt="" coords="533,81,681,122"/><area shape="rect" id="node6" href="one__to__one__dijkstra__driver_8cpp.html" title="one_to_one_dijkstra\l_driver.cpp" alt="" coords="707,81,845,122"/><area shape="rect" id="node7" href="boost__interface__drivedist_8cpp.html" title="boost_interface_drivedist.cpp" alt="" coords="869,88,1061,115"/><area shape="rect" id="node8" href="withPoints__dd__driver_8cpp.html" title="withPoints_dd_driver.cpp" alt="" coords="1085,88,1253,115"/><area shape="rect" id="node9" href="testXYedges__driver_8cpp.html" title="testXYedges_driver.cpp" alt="" coords="1278,88,1439,115"/><area shape="rect" id="node10" href="pgr__ksp_8hpp.html" title="pgr_ksp.hpp" alt="" coords="1464,88,1557,115"/><area shape="rect" id="node13" href="pgRouting_8cpp.html" title="pgRouting.cpp" alt="" coords="1581,171,1688,197"/><area shape="rect" id="node14" href="performance_2dijkstra_2pgRouting_8cpp.html" title="pgRouting.cpp" alt="" coords="1632,88,1739,115"/><area shape="rect" id="node15" href="many__to__many__withPoints__driver_8cpp.html" title="many_to_many_withPoints\l_driver.cpp" alt="" coords="1763,81,1941,122"/><area shape="rect" id="node16" href="many__to__one__withPoints__driver_8cpp.html" title="many_to_one_withPoints\l_driver.cpp" alt="" coords="1965,81,2133,122"/><area shape="rect" id="node17" href="one__to__many__withPoints__driver_8cpp.html" title="one_to_many_withPoints\l_driver.cpp" alt="" coords="2157,81,2325,122"/><area shape="rect" id="node18" href="one__to__one__withPoints__driver_8cpp.html" title="one_to_one_withPoints\l_driver.cpp" alt="" coords="2349,81,2507,122"/><area shape="rect" id="node11" href="ksp__driver_8cpp.html" title="ksp_driver.cpp" alt="" coords="1251,171,1357,197"/><area shape="rect" id="node12" href="withPoints__ksp__driver_8cpp.html" title="withPoints_ksp_driver.cpp" alt="" coords="1382,171,1556,197"/></map>
-</div>
 </div>
 <p><a href="pgr__dijkstra_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -225,7 +210,7 @@ template&lt;class G &gt; </div>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00535">Pgr_dijkstra&lt; G &gt;::dijkstra()</a>.</p>
 
-<p>Referenced by <a class="el" href="many__to__many__dijkstra__driver_8cpp_source.html#l00056">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__dijkstra__driver_8cpp_source.html#l00056">do_pgr_many_to_one_dijkstra()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="one__to__many__dijkstra__driver_8cpp_source.html#l00049">do_pgr_one_to_many_dijkstra()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="one__to__one__dijkstra__driver_8cpp_source.html#l00055">do_pgr_one_to_one_dijkstra()</a>, <a class="el" href="testXYedges__driver_8cpp_source.html#l00052">do_pgr_testXYedges()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00050">pgr_dijkstraViaVertex()</a>, and <a class="el" href="dijkstra_8hpp_source.html#l00026">process_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="many__to__many__dijkstra__driver_8cpp_source.html#l00051">do_pgr_many_to_many_dijkstra()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__dijkstra__driver_8cpp_source.html#l00053">do_pgr_many_to_one_dijkstra()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00060">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="one__to__many__dijkstra__driver_8cpp_source.html#l00047">do_pgr_one_to_many_dijkstra()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00062">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="one__to__one__dijkstra__driver_8cpp_source.html#l00052">do_pgr_one_to_one_dijkstra()</a>, <a class="el" href="test__c__edges__driver_8cpp_source.html#l00056">do_pgr_test_c_edges()</a>, <a class="el" href="testXYedges__driver_8cpp_source.html#l00051">do_pgr_testXYedges()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, <a class="el" href="dijkstraVia__driver_8cpp_source.html#l00047">pgr_dijkstraViaVertex()</a>, and <a class="el" href="dijkstra_8hpp_source.html#l00029">process_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -427,7 +412,7 @@ template&lt;class G &gt; </div>
 
 <p>References <a class="el" href="pgr__dijkstra_8hpp_source.html#l00499">Pgr_dijkstra&lt; G &gt;::drivingDistance()</a>.</p>
 
-<p>Referenced by <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00108">do_pgr_driving_distance()</a>, <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00049">do_pgr_driving_many_to_dist()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00070">do_pgr_many_withPointsDD()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00201">do_pgr_withPointsDD()</a>, and <a class="el" href="driving_8cpp_source.html#l00023">process_drivingDistance()</a>.</p>
+<p>Referenced by <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00105">do_pgr_driving_distance()</a>, <a class="el" href="boost__interface__drivedist_8cpp_source.html#l00047">do_pgr_driving_many_to_dist()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00068">do_pgr_many_withPointsDD()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00197">do_pgr_withPointsDD()</a>, and <a class="el" href="driving_8cpp_source.html#l00028">process_drivingDistance()</a>.</p>
 
 </div>
 </div>
@@ -481,7 +466,7 @@ template&lt;class G &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_2a52a6a5123eeb3ef09f6d5b6e1e597e.html">src</a></li><li class="navelem"><a class="el" href="pgr__dijkstra_8hpp.html">pgr_dijkstra.hpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

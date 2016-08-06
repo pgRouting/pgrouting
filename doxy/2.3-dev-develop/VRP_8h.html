@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -114,20 +113,6 @@ $(document).ready(function(){initNavTree('VRP_8h.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for VRP.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="VRP_8h__incl.png" border="0" usemap="#VRP_8h" alt=""/></div>
-<map name="VRP_8h" id="VRP_8h">
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="VRP_8h__dep__incl.png" border="0" usemap="#VRP_8hdep" alt=""/></div>
-<map name="VRP_8hdep" id="VRP_8hdep">
-<area shape="rect" id="node2" href="VRP_8c.html" title="VRP.c" alt="" coords="5,80,67,107"/><area shape="rect" id="node3" href="VRP__core_8cpp.html" title="VRP_core.cpp" alt="" coords="91,80,197,107"/></map>
-</div>
 </div>
 <p><a href="VRP_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -144,8 +129,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a5b7fc82f5a5ea82a10565d3dcb09db2e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvrp__cost__element.html">vrp_cost_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8h.html#a5b7fc82f5a5ea82a10565d3dcb09db2e">vrp_cost_element_t</a></td></tr>
-<tr class="separator:a5b7fc82f5a5ea82a10565d3dcb09db2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae470533865a28e2a4488284d1a2bea2"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvrp__cost__element.html">vrp_cost_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8h.html#aae470533865a28e2a4488284d1a2bea2">vrp_cost_element_t</a></td></tr>
+<tr class="separator:aae470533865a28e2a4488284d1a2bea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad58474d47424dd1395246e54f684f20c"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvrp__orders.html">vrp_orders</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8h.html#ad58474d47424dd1395246e54f684f20c">vrp_orders_t</a></td></tr>
 <tr class="separator:ad58474d47424dd1395246e54f684f20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00962394345c20d1d0995a20bf591367"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvrp__result__element.html">vrp_result_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8h.html#a00962394345c20d1d0995a20bf591367">vrp_result_element_t</a></td></tr>
@@ -155,16 +140,16 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aba4308faaa83828151c954997cb39308"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8h.html#aba4308faaa83828151c954997cb39308">find_vrp_solution</a> (<a class="el" href="VRP_8h.html#a2dc0dc8ce32d357f839ad8f692b880ca">vrp_vehicles_t</a> *vehicles, size_t vehicle_count, <a class="el" href="VRP_8h.html#ad58474d47424dd1395246e54f684f20c">vrp_orders_t</a> *orders, size_t order_count, <a class="el" href="VRP_8h.html#a5b7fc82f5a5ea82a10565d3dcb09db2e">vrp_cost_element_t</a> *costmatrix, size_t cost_count, int depot_id, <a class="el" href="VRP_8h.html#a00962394345c20d1d0995a20bf591367">vrp_result_element_t</a> **result, size_t *result_count, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
+<tr class="memitem:aba4308faaa83828151c954997cb39308"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VRP_8h.html#aba4308faaa83828151c954997cb39308">find_vrp_solution</a> (<a class="el" href="VRP_8h.html#a2dc0dc8ce32d357f839ad8f692b880ca">vrp_vehicles_t</a> *vehicles, size_t vehicle_count, <a class="el" href="VRP_8h.html#ad58474d47424dd1395246e54f684f20c">vrp_orders_t</a> *orders, size_t order_count, <a class="el" href="VRP_8h.html#aae470533865a28e2a4488284d1a2bea2">vrp_cost_element_t</a> *costmatrix, size_t cost_count, int depot_id, <a class="el" href="VRP_8h.html#a00962394345c20d1d0995a20bf591367">vrp_result_element_t</a> **result, size_t *result_count, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
 <tr class="separator:aba4308faaa83828151c954997cb39308"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="a5b7fc82f5a5ea82a10565d3dcb09db2e"></a>
+<a class="anchor" id="aae470533865a28e2a4488284d1a2bea2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structvrp__cost__element.html">vrp_cost_element</a> <a class="el" href="VRP_8h.html#a5b7fc82f5a5ea82a10565d3dcb09db2e">vrp_cost_element_t</a></td>
+          <td class="memname">typedef struct <a class="el" href="structvrp__cost__element.html">vrp_cost_element</a>  <a class="el" href="VRP_8h.html#aae470533865a28e2a4488284d1a2bea2">vrp_cost_element_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -239,7 +224,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="VRP_8h.html#a5b7fc82f5a5ea82a10565d3dcb09db2e">vrp_cost_element_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="VRP_8h.html#aae470533865a28e2a4488284d1a2bea2">vrp_cost_element_t</a> *&#160;</td>
           <td class="paramname"><em>costmatrix</em>, </td>
         </tr>
         <tr>
@@ -280,11 +265,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP__core_8cpp_source.html#l00147">147</a> of file <a class="el" href="VRP__core_8cpp_source.html">VRP_core.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VRP__core_8cpp_source.html#l00137">137</a> of file <a class="el" href="VRP__core_8cpp_source.html">VRP_core.cpp</a>.</p>
 
-<p>References <a class="el" href="VRP__Solver_8h_source.html#l00189">CTourInfo::getEndDepot()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00209">CTourInfo::getOrderVector()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00192">CTourInfo::getServedOrderCount()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00373">CVRPSolver::getServiceTime()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00661">CVRPSolver::getSolution()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00186">CTourInfo::getStartDepot()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00211">CTourInfo::getStartTime()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00253">CSolutionInfo::getTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00276">CSolutionInfo::getTourInfoVector()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00181">CTourInfo::getVehicleId()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00124">loadDistanceMatrix()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00040">loadOrders()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00104">loadVehicles()</a>, <a class="el" href="pgr__logger_8h_source.html#l00072">PGR_LOG</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00277">CVRPSolver::solveVRP()</a>.</p>
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00183">CTourInfo::getEndDepot()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00203">CTourInfo::getOrderVector()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00186">CTourInfo::getServedOrderCount()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00366">CVRPSolver::getServiceTime()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00558">CVRPSolver::getSolution()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00180">CTourInfo::getStartDepot()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00205">CTourInfo::getStartTime()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00250">CSolutionInfo::getTour()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00273">CSolutionInfo::getTourInfoVector()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00175">CTourInfo::getVehicleId()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00117">loadDistanceMatrix()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00042">loadOrders()</a>, <a class="el" href="VRP__core_8cpp_source.html#l00100">loadVehicles()</a>, <a class="el" href="pgr__logger_8h_source.html#l00072">PGR_LOG</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00232">CVRPSolver::solveVRP()</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP_8c_source.html#l00449">solve_vrp()</a>.</p>
+<p>Referenced by <a class="el" href="VRP_8c_source.html#l00424">solve_vrp()</a>.</p>
 
 </div>
 </div>
@@ -294,7 +279,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e28fcb41c27d94935e6e1bded8372f10.html">vrp_basic</a></li><li class="navelem"><a class="el" href="dir_2c959b9bc6ee9cc8204048449dea20e7.html">src</a></li><li class="navelem"><a class="el" href="VRP_8h.html">VRP.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

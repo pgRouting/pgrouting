@@ -1,7 +1,0 @@
-<map id="GraphDefinition" name="GraphDefinition">
-<area shape="rect" id="node3" href="$structpath__element__t.html" title="path_element_t" alt="" coords="667,12,778,39"/>
-<area shape="rect" id="node9" href="$structGraphDefinition_1_1Rule.html" title="GraphDefinition::Rule" alt="" coords="291,116,437,143"/>
-<area shape="rect" id="node11" href="$structGraphDefinition_1_1PARENT__PATH.html" title="GraphDefinition::PARENT_PATH" alt="" coords="613,252,832,279"/>
-<area shape="rect" id="node13" href="$structGraphEdgeInfo.html" title="GraphEdgeInfo" alt="" coords="668,311,777,337"/>
-<area shape="rect" id="node15" href="$structGraphDefinition_1_1CostHolder.html" title="GraphDefinition::CostHolder" alt="" coords="629,369,816,396"/>
-</map>

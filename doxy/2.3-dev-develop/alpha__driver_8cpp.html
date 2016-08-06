@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -113,13 +112,10 @@ $(document).ready(function(){initNavTree('alpha__driver_8cpp.html','');});
 <div class="title">alpha_driver.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;CGAL/Simple_cartesian.h&gt;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="alpha__driver_8h_source.html">./alpha_driver.h</a>&quot;</code><br/>
+<code>#include &lt;CGAL/Simple_cartesian.h&gt;</code><br/>
 <code>#include &lt;CGAL/Filtered_kernel.h&gt;</code><br/>
 <code>#include &lt;CGAL/algorithm.h&gt;</code><br/>
-<code>#include &lt;vector&gt;</code><br/>
-<code>#include &lt;list&gt;</code><br/>
-<code>#include &lt;cmath&gt;</code><br/>
-<code>#include &quot;<a class="el" href="alpha__driver_8h_source.html">alpha_driver.h</a>&quot;</code><br/>
 <code>#include &lt;CGAL/Polygon_2.h&gt;</code><br/>
 <code>#include &lt;CGAL/Delaunay_triangulation_2.h&gt;</code><br/>
 <code>#include &lt;CGAL/Triangulation_2.h&gt;</code><br/>
@@ -130,22 +126,21 @@ $(document).ready(function(){initNavTree('alpha__driver_8cpp.html','');});
 <code>#include &lt;CGAL/Alpha_shape_2.h&gt;</code><br/>
 <code>#include &lt;CGAL/Alpha_shape_face_base_2.h&gt;</code><br/>
 <code>#include &lt;CGAL/Alpha_shape_vertex_base_2.h&gt;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for alpha_driver.cpp:</div>
-<div class="dyncontent">
-<div class="center"><img src="alpha__driver_8cpp__incl.png" border="0" usemap="#alpha__driver_8cpp" alt=""/></div>
-<map name="alpha__driver_8cpp" id="alpha__driver_8cpp">
-<area shape="rect" id="node8" href="alpha__driver_8h.html" title="alpha_driver.h" alt="" coords="765,88,867,115"/><area shape="rect" id="node9" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="746,171,885,213"/><area shape="rect" id="node10" href="postgres_8h.html" title="postgres.h" alt="" coords="725,261,807,288"/></map>
-</div>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;list&gt;</code><br/>
+<code>#include &lt;cmath&gt;</code><br/>
+<code>#include &lt;utility&gt;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;set&gt;</code><br/>
 </div>
 <p><a href="alpha__driver_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a7155c8eafdbc90eeb28655f0642dad25"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<tr class="memitem:a2bf30744b384f68147498cd674b3ec30"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 CGAL::Alpha_shape_face_base_2<br class="typebreak"/>
-&lt; <a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#aa251133ce0379ca4ec93098f7066d497">Tf</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a7155c8eafdbc90eeb28655f0642dad25">Af</a></td></tr>
-<tr class="separator:a7155c8eafdbc90eeb28655f0642dad25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+&lt; <a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#aa251133ce0379ca4ec93098f7066d497">Tf</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a2bf30744b384f68147498cd674b3ec30">Af</a></td></tr>
+<tr class="separator:a2bf30744b384f68147498cd674b3ec30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96d79c2e2fa33b9b9575548752f1a75e"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 Alpha_shape_2::Alpha_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a96d79c2e2fa33b9b9575548752f1a75e">Alpha_iterator</a></td></tr>
 <tr class="separator:a96d79c2e2fa33b9b9575548752f1a75e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,16 +159,16 @@ CGAL::Alpha_shape_vertex_base_2<br class="typebreak"/>
 <tr class="separator:aadb90b396275ef364a8c2c690f94574d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf1a2afd1df69ffc5b3757e8ee8ad416"><td class="memItemLeft" align="right" valign="top">typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#acf1a2afd1df69ffc5b3757e8ee8ad416">coord_type</a></td></tr>
 <tr class="separator:acf1a2afd1df69ffc5b3757e8ee8ad416"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d6b60c2c2d8acdce06a85e1cc279f2c"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<tr class="memitem:a976449e779122510b93dc6f2e0b352f9"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 CGAL::Delaunay_triangulation_2<br class="typebreak"/>
-&lt; <a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#a3cef56c0deef8e75541273f4bdaf092c">Tds</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a2d6b60c2c2d8acdce06a85e1cc279f2c">Dt</a></td></tr>
-<tr class="separator:a2d6b60c2c2d8acdce06a85e1cc279f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+&lt; <a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#a667257751ccdefe175f7f308d5b573a4">Tds</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a976449e779122510b93dc6f2e0b352f9">Dt</a></td></tr>
+<tr class="separator:a976449e779122510b93dc6f2e0b352f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab02ea263f4af6825a98e18c38ea679e"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 Alpha_shape_2::Face_circulator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#aab02ea263f4af6825a98e18c38ea679e">Face_circulator</a></td></tr>
 <tr class="separator:aab02ea263f4af6825a98e18c38ea679e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a99e79ad9837ff40968379d7b43ad02"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 CGAL::Triangulation_hierarchy_2<br class="typebreak"/>
-&lt; <a class="el" href="alpha__driver_8cpp.html#a2d6b60c2c2d8acdce06a85e1cc279f2c">Dt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a8a99e79ad9837ff40968379d7b43ad02">Ht</a></td></tr>
+&lt; <a class="el" href="alpha__driver_8cpp.html#a976449e779122510b93dc6f2e0b352f9">Dt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a8a99e79ad9837ff40968379d7b43ad02">Ht</a></td></tr>
 <tr class="separator:a8a99e79ad9837ff40968379d7b43ad02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63061f915d352707f06760d3f7787df5"><td class="memItemLeft" align="right" valign="top">typedef CGAL::Filtered_kernel&lt; <a class="el" href="alpha__driver_8cpp.html#a276bf07b36a2a08ebd336b397b71944d">SC</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a></td></tr>
 <tr class="separator:a63061f915d352707f06760d3f7787df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,10 +181,10 @@ CGAL::Triangulation_hierarchy_2<br class="typebreak"/>
 <tr class="separator:a276bf07b36a2a08ebd336b397b71944d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a054d7b9fbb0af44fd39709a19a178fce"><td class="memItemLeft" align="right" valign="top">typedef K::Segment_2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a054d7b9fbb0af44fd39709a19a178fce">Segment</a></td></tr>
 <tr class="separator:a054d7b9fbb0af44fd39709a19a178fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cef56c0deef8e75541273f4bdaf092c"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+<tr class="memitem:a667257751ccdefe175f7f308d5b573a4"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 CGAL::Triangulation_default_data_structure_2<br class="typebreak"/>
-&lt; <a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#a3b5df359d00c095cf5609f9d9111ed12">Av</a>, <a class="el" href="alpha__driver_8cpp.html#a7155c8eafdbc90eeb28655f0642dad25">Af</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a3cef56c0deef8e75541273f4bdaf092c">Tds</a></td></tr>
-<tr class="separator:a3cef56c0deef8e75541273f4bdaf092c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+&lt; <a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#a3b5df359d00c095cf5609f9d9111ed12">Av</a>, <a class="el" href="alpha__driver_8cpp.html#a2bf30744b384f68147498cd674b3ec30">Af</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#a667257751ccdefe175f7f308d5b573a4">Tds</a></td></tr>
+<tr class="separator:a667257751ccdefe175f7f308d5b573a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa251133ce0379ca4ec93098f7066d497"><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 CGAL::Triangulation_face_base_2<br class="typebreak"/>
 &lt; <a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="alpha__driver_8cpp.html#aa251133ce0379ca4ec93098f7066d497">Tf</a></td></tr>
@@ -218,17 +213,17 @@ Variables</h2></td></tr>
 <tr class="separator:a7118ea995babe95c18fc3899f93d697a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="a7155c8eafdbc90eeb28655f0642dad25"></a>
+<a class="anchor" id="a2bf30744b384f68147498cd674b3ec30"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef CGAL::Alpha_shape_face_base_2&lt;<a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>,<a class="el" href="alpha__driver_8cpp.html#aa251133ce0379ca4ec93098f7066d497">Tf</a>&gt; <a class="el" href="alpha__driver_8cpp.html#a7155c8eafdbc90eeb28655f0642dad25">Af</a></td>
+          <td class="memname">typedef CGAL::Alpha_shape_face_base_2&lt;<a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#aa251133ce0379ca4ec93098f7066d497">Tf</a>&gt; <a class="el" href="alpha__driver_8cpp.html#a2bf30744b384f68147498cd674b3ec30">Af</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00084">84</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00086">86</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -242,7 +237,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00094">94</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00096">96</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -256,7 +251,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00089">89</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00091">91</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -270,7 +265,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00095">95</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00097">97</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -284,7 +279,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00081">81</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00083">83</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -298,7 +293,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00080">80</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00082">82</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -312,21 +307,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00071">71</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00073">73</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2d6b60c2c2d8acdce06a85e1cc279f2c"></a>
+<a class="anchor" id="a976449e779122510b93dc6f2e0b352f9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef CGAL::Delaunay_triangulation_2&lt;<a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>,<a class="el" href="alpha__driver_8cpp.html#a3cef56c0deef8e75541273f4bdaf092c">Tds</a>&gt; <a class="el" href="alpha__driver_8cpp.html#a2d6b60c2c2d8acdce06a85e1cc279f2c">Dt</a></td>
+          <td class="memname">typedef CGAL::Delaunay_triangulation_2&lt;<a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#a667257751ccdefe175f7f308d5b573a4">Tds</a>&gt; <a class="el" href="alpha__driver_8cpp.html#a976449e779122510b93dc6f2e0b352f9">Dt</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00087">87</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00089">89</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -340,7 +335,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00091">91</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00093">93</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -349,12 +344,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef CGAL::Triangulation_hierarchy_2&lt;<a class="el" href="alpha__driver_8cpp.html#a2d6b60c2c2d8acdce06a85e1cc279f2c">Dt</a>&gt; <a class="el" href="alpha__driver_8cpp.html#a8a99e79ad9837ff40968379d7b43ad02">Ht</a></td>
+          <td class="memname">typedef CGAL::Triangulation_hierarchy_2&lt;<a class="el" href="alpha__driver_8cpp.html#a976449e779122510b93dc6f2e0b352f9">Dt</a>&gt; <a class="el" href="alpha__driver_8cpp.html#a8a99e79ad9837ff40968379d7b43ad02">Ht</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00088">88</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00090">90</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -368,7 +363,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00074">74</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00076">76</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -382,7 +377,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00075">75</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00077">77</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -396,7 +391,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00078">78</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00080">80</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -410,7 +405,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00073">73</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00075">75</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -424,21 +419,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00076">76</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00078">78</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3cef56c0deef8e75541273f4bdaf092c"></a>
+<a class="anchor" id="a667257751ccdefe175f7f308d5b573a4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef CGAL::Triangulation_default_data_structure_2&lt;<a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>,<a class="el" href="alpha__driver_8cpp.html#a3b5df359d00c095cf5609f9d9111ed12">Av</a>,<a class="el" href="alpha__driver_8cpp.html#a7155c8eafdbc90eeb28655f0642dad25">Af</a>&gt; <a class="el" href="alpha__driver_8cpp.html#a3cef56c0deef8e75541273f4bdaf092c">Tds</a></td>
+          <td class="memname">typedef CGAL::Triangulation_default_data_structure_2&lt;<a class="el" href="alpha__driver_8cpp.html#a63061f915d352707f06760d3f7787df5">K</a>, <a class="el" href="alpha__driver_8cpp.html#a3b5df359d00c095cf5609f9d9111ed12">Av</a>, <a class="el" href="alpha__driver_8cpp.html#a2bf30744b384f68147498cd674b3ec30">Af</a>&gt; <a class="el" href="alpha__driver_8cpp.html#a667257751ccdefe175f7f308d5b573a4">Tds</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00086">86</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00088">88</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -452,7 +447,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00083">83</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00085">85</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -466,7 +461,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00077">77</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00079">79</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +475,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00092">92</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00094">94</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
 </div>
 </div>
@@ -511,9 +506,9 @@ template&lt;class OutputIterator &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00181">181</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00170">170</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="alpha__driver_8cpp_source.html#l00193">alpha_shape()</a>.</p>
+<p>Referenced by <a class="el" href="alpha__driver_8cpp_source.html#l00180">alpha_shape()</a>.</p>
 
 </div>
 </div>
@@ -565,11 +560,11 @@ template&lt;class OutputIterator &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00193">193</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00180">180</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="alpha__driver_8cpp_source.html#l00181">alpha_edges()</a>, <a class="el" href="alpha__driver_8cpp_source.html#l00114">find_next_edge()</a>, <a class="el" href="alpha__driver_8h_source.html#l00034">vertex::x</a>, and <a class="el" href="tsp_8h_source.html#l00040">point::x</a>.</p>
+<p>References <a class="el" href="alpha__driver_8cpp_source.html#l00170">alpha_edges()</a>, <a class="el" href="alpha__driver_8cpp_source.html#l00115">find_next_edge()</a>, <a class="el" href="alpha__driver_8h_source.html#l00034">vertex::x</a>, and <a class="el" href="tsp_8h_source.html#l00040">point::x</a>.</p>
 
-<p>Referenced by <a class="el" href="alpha_8c_source.html#l00136">compute_alpha_shape()</a>.</p>
+<p>Referenced by <a class="el" href="alpha_8c_source.html#l00125">compute_alpha_shape()</a>.</p>
 
 </div>
 </div>
@@ -609,11 +604,11 @@ template&lt;class OutputIterator &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00114">114</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00115">115</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
-<p>References <a class="el" href="alpha__driver_8cpp_source.html#l00099">get_angle()</a>, and <a class="el" href="alpha__driver_8cpp_source.html#l00113">prev_size</a>.</p>
+<p>References <a class="el" href="alpha__driver_8cpp_source.html#l00101">get_angle()</a>, and <a class="el" href="alpha__driver_8cpp_source.html#l00114">prev_size</a>.</p>
 
-<p>Referenced by <a class="el" href="alpha__driver_8cpp_source.html#l00193">alpha_shape()</a>.</p>
+<p>Referenced by <a class="el" href="alpha__driver_8cpp_source.html#l00180">alpha_shape()</a>.</p>
 
 </div>
 </div>
@@ -647,9 +642,9 @@ template&lt;class OutputIterator &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00099">99</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00101">101</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="alpha__driver_8cpp_source.html#l00114">find_next_edge()</a>.</p>
+<p>Referenced by <a class="el" href="alpha__driver_8cpp_source.html#l00115">find_next_edge()</a>.</p>
 
 </div>
 </div>
@@ -664,9 +659,9 @@ template&lt;class OutputIterator &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00113">113</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="alpha__driver_8cpp_source.html#l00114">114</a> of file <a class="el" href="alpha__driver_8cpp_source.html">alpha_driver.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="alpha__driver_8cpp_source.html#l00114">find_next_edge()</a>.</p>
+<p>Referenced by <a class="el" href="alpha__driver_8cpp_source.html#l00115">find_next_edge()</a>.</p>
 
 </div>
 </div>
@@ -676,7 +671,7 @@ template&lt;class OutputIterator &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha__driver_8cpp.html">alpha_driver.cpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

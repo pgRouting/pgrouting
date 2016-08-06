@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -136,38 +135,39 @@ $(document).ready(function(){initNavTree('boost__interface__drivedist_8h_source.
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="boost__interface__drivedist_8h.html#a549c0faeb40cfb65f18c1383e9cb8b86">do_pgr_driving_many_to_dist</a>(</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  * <a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">size_t</span> total_tuples,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            int64_t  *start_vertex, <span class="keywordtype">size_t</span> s_len,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordtype">double</span> distance,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordtype">bool</span> directed,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordtype">bool</span> equicost,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="boost__interface__drivedist_8h.html#af0ce30dbb809ccf6caa4443e62793b49">do_pgr_driving_distance</a>(</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  * <a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">size_t</span> total_tuples,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            int64_t  start_vertex, <span class="keywordtype">double</span> distance,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordtype">bool</span> directed,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif  //  SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_</span></div>
-<div class="ttc" id="boost__interface__drivedist_8h_html_a549c0faeb40cfb65f18c1383e9cb8b86"><div class="ttname"><a href="boost__interface__drivedist_8h.html#a549c0faeb40cfb65f18c1383e9cb8b86">do_pgr_driving_many_to_dist</a></div><div class="ttdeci">void do_pgr_driving_many_to_dist(pgr_edge_t *edges, size_t total_tuples, int64_t *start_vertex, size_t s_len, double distance, bool directed, bool equicost, General_path_element_t **ret_path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="boost__interface__drivedist_8cpp_source.html#l00049">boost_interface_drivedist.cpp:49</a></div></div>
-<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00111">pgr_types.h:111</a></div></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;stdlib.h&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="boost__interface__drivedist_8h.html#a549c0faeb40cfb65f18c1383e9cb8b86">do_pgr_driving_many_to_dist</a>(</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  * <a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">size_t</span> total_tuples,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            int64_t  *start_vertex, <span class="keywordtype">size_t</span> s_len,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordtype">double</span> distance,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordtype">bool</span> equicost,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="boost__interface__drivedist_8h.html#af0ce30dbb809ccf6caa4443e62793b49">do_pgr_driving_distance</a>(</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="structpgr__edge__t.html">pgr_edge_t</a>  * <a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">size_t</span> total_tuples,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            int64_t  start_vertex, <span class="keywordtype">double</span> distance,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordtype">bool</span> directed,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="structGeneral__path__element__t.html">General_path_element_t</a> **ret_path, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordtype">char</span> ** <a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif  //  SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_</span></div>
+<div class="ttc" id="boost__interface__drivedist_8h_html_a549c0faeb40cfb65f18c1383e9cb8b86"><div class="ttname"><a href="boost__interface__drivedist_8h.html#a549c0faeb40cfb65f18c1383e9cb8b86">do_pgr_driving_many_to_dist</a></div><div class="ttdeci">void do_pgr_driving_many_to_dist(pgr_edge_t *edges, size_t total_tuples, int64_t *start_vertex, size_t s_len, double distance, bool directed, bool equicost, General_path_element_t **ret_path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="boost__interface__drivedist_8cpp_source.html#l00047">boost_interface_drivedist.cpp:47</a></div></div>
+<div class="ttc" id="structpgr__edge__t_html"><div class="ttname"><a href="structpgr__edge__t.html">pgr_edge_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00127">pgr_types.h:127</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
-<div class="ttc" id="boost__interface__drivedist_8h_html_af0ce30dbb809ccf6caa4443e62793b49"><div class="ttname"><a href="boost__interface__drivedist_8h.html#af0ce30dbb809ccf6caa4443e62793b49">do_pgr_driving_distance</a></div><div class="ttdeci">void do_pgr_driving_distance(pgr_edge_t *edges, size_t total_tuples, int64_t start_vertex, double distance, bool directed, General_path_element_t **ret_path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="boost__interface__drivedist_8cpp_source.html#l00108">boost_interface_drivedist.cpp:108</a></div></div>
-<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00086">pgr_types.h:86</a></div></div>
+<div class="ttc" id="boost__interface__drivedist_8h_html_af0ce30dbb809ccf6caa4443e62793b49"><div class="ttname"><a href="boost__interface__drivedist_8h.html#af0ce30dbb809ccf6caa4443e62793b49">do_pgr_driving_distance</a></div><div class="ttdeci">void do_pgr_driving_distance(pgr_edge_t *edges, size_t total_tuples, int64_t start_vertex, double distance, bool directed, General_path_element_t **ret_path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="boost__interface__drivedist_8cpp_source.html#l00105">boost_interface_drivedist.cpp:105</a></div></div>
+<div class="ttc" id="structGeneral__path__element__t_html"><div class="ttname"><a href="structGeneral__path__element__t.html">General_path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00093">pgr_types.h:93</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -176,7 +176,7 @@ $(document).ready(function(){initNavTree('boost__interface__drivedist_8h_source.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><a class="el" href="boost__interface__drivedist_8h.html">boost_interface_drivedist.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:53 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

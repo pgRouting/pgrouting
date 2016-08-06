@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -133,63 +132,70 @@ $(document).ready(function(){initNavTree('get__check__data_8h_source.html','');}
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="get__check__data_8h.html#a242b8e2225de6f8c47cf3133c440588e">column_found</a>(<span class="keywordtype">int</span> colNumber);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#ae6967f852e7bc95d5d5131b06131de46">pgr_fetch_column_info</a>(</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info[],</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">int</span> info_size);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#a9a9d3d8cee4b4672b269170e6522c3bd">pgr_check_any_integer_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#a021bfad5d191a500af85882a008e79f9">pgr_check_any_numerical_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#ad2eb625caa8f72333db1ddd029ae6d15">pgr_check_text_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#a1523c0349e990ea6fda502c802ccf394">pgr_check_char_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">char</span> <a class="code" href="get__check__data_8h.html#a12adb8df2c301cc252f6c8eb585402d7">pgr_SPI_getChar</a>(</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        HeapTuple *tuple,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        TupleDesc *tupdesc,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">bool</span> strict,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">char</span> default_value);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;int64_t <a class="code" href="get__check__data_8h.html#ab4e654806d1a43314c3e7fa692705448">pgr_SPI_getBigInt</a>(</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        HeapTuple *tuple,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        TupleDesc *tupdesc,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">double</span>  <a class="code" href="get__check__data_8h.html#a6d8da632b86bd8f4e0f84f2a4219c887">pgr_SPI_getFloat8</a>(</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        HeapTuple *tuple,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        TupleDesc *tupdesc,</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="get__check__data_8h.html#a186311e0ed2aa6513ae5257d17395132">pgr_SPI_getText</a>(</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        HeapTuple *tuple,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        TupleDesc *tupdesc,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="get__check__data_8h.html#ad4fe39997ec8c8c721fa01864d1df6d5">pgr_stradd</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>);</div>
-<div class="ttc" id="get__check__data_8h_html_ad4fe39997ec8c8c721fa01864d1df6d5"><div class="ttname"><a href="get__check__data_8h.html#ad4fe39997ec8c8c721fa01864d1df6d5">pgr_stradd</a></div><div class="ttdeci">char * pgr_stradd(const char *a, const char *b)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00037">get_check_data.c:37</a></div></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef SRC_COMMON_SRC_GET_CHECK_DATA_H_</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_COMMON_SRC_GET_CHECK_DATA_H_</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="get__check__data_8h.html#a242b8e2225de6f8c47cf3133c440588e">column_found</a>(<span class="keywordtype">int</span> colNumber);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#ae6967f852e7bc95d5d5131b06131de46">pgr_fetch_column_info</a>(</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info[],</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">int</span> info_size);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#a9a9d3d8cee4b4672b269170e6522c3bd">pgr_check_any_integer_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#a021bfad5d191a500af85882a008e79f9">pgr_check_any_numerical_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#ad2eb625caa8f72333db1ddd029ae6d15">pgr_check_text_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#a1523c0349e990ea6fda502c802ccf394">pgr_check_char_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="get__check__data_8h.html#a514d2a609874062846ee1d2687d9b4ce">pgr_check_boolean_type</a>(<a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">char</span> <a class="code" href="get__check__data_8h.html#a12adb8df2c301cc252f6c8eb585402d7">pgr_SPI_getChar</a>(</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        HeapTuple *tuple,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        TupleDesc *tupdesc,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">bool</span> strict,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">char</span> default_value);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;int64_t <a class="code" href="get__check__data_8h.html#ab4e654806d1a43314c3e7fa692705448">pgr_SPI_getBigInt</a>(</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        HeapTuple *tuple,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        TupleDesc *tupdesc,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">double</span>  <a class="code" href="get__check__data_8h.html#a6d8da632b86bd8f4e0f84f2a4219c887">pgr_SPI_getFloat8</a>(</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        HeapTuple *tuple,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        TupleDesc *tupdesc,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="get__check__data_8h.html#a186311e0ed2aa6513ae5257d17395132">pgr_SPI_getText</a>(</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        HeapTuple *tuple,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        TupleDesc *tupdesc,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="structColumn__info__t.html">Column_info_t</a> info);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="get__check__data_8h.html#ad4fe39997ec8c8c721fa01864d1df6d5">pgr_stradd</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif  // SRC_COMMON_SRC_GET_CHECK_DATA_H_</span></div>
+<div class="ttc" id="get__check__data_8h_html_ad4fe39997ec8c8c721fa01864d1df6d5"><div class="ttname"><a href="get__check__data_8h.html#ad4fe39997ec8c8c721fa01864d1df6d5">pgr_stradd</a></div><div class="ttdeci">char * pgr_stradd(const char *a, const char *b)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00036">get_check_data.c:36</a></div></div>
 <div class="ttc" id="tsplib_8c_html_aa4c2a5552e9bc49b1816ff532f558c74"><div class="ttname"><a href="tsplib_8c.html#aa4c2a5552e9bc49b1816ff532f558c74">a</a></div><div class="ttdeci">static int a</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00114">tsplib.c:114</a></div></div>
-<div class="ttc" id="structColumn__info__t_html"><div class="ttname"><a href="structColumn__info__t.html">Column_info_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00160">pgr_types.h:160</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_ad2eb625caa8f72333db1ddd029ae6d15"><div class="ttname"><a href="get__check__data_8h.html#ad2eb625caa8f72333db1ddd029ae6d15">pgr_check_text_type</a></div><div class="ttdeci">void pgr_check_text_type(Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00106">get_check_data.c:106</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_a9a9d3d8cee4b4672b269170e6522c3bd"><div class="ttname"><a href="get__check__data_8h.html#a9a9d3d8cee4b4672b269170e6522c3bd">pgr_check_any_integer_type</a></div><div class="ttdeci">void pgr_check_any_integer_type(Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00113">get_check_data.c:113</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_a514d2a609874062846ee1d2687d9b4ce"><div class="ttname"><a href="get__check__data_8h.html#a514d2a609874062846ee1d2687d9b4ce">pgr_check_boolean_type</a></div><div class="ttdeci">void pgr_check_boolean_type(Column_info_t info)</div></div>
+<div class="ttc" id="structColumn__info__t_html"><div class="ttname"><a href="structColumn__info__t.html">Column_info_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00183">pgr_types.h:183</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_ad2eb625caa8f72333db1ddd029ae6d15"><div class="ttname"><a href="get__check__data_8h.html#ad2eb625caa8f72333db1ddd029ae6d15">pgr_check_text_type</a></div><div class="ttdeci">void pgr_check_text_type(Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00105">get_check_data.c:105</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_a9a9d3d8cee4b4672b269170e6522c3bd"><div class="ttname"><a href="get__check__data_8h.html#a9a9d3d8cee4b4672b269170e6522c3bd">pgr_check_any_integer_type</a></div><div class="ttdeci">void pgr_check_any_integer_type(Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00112">get_check_data.c:112</a></div></div>
 <div class="ttc" id="tsplib_8c_html_a148e3876077787926724625411d6e7a9"><div class="ttname"><a href="tsplib_8c.html#a148e3876077787926724625411d6e7a9">b</a></div><div class="ttdeci">static int b</div><div class="ttdef"><b>Definition:</b> <a href="tsplib_8c_source.html#l00115">tsplib.c:115</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_a12adb8df2c301cc252f6c8eb585402d7"><div class="ttname"><a href="get__check__data_8h.html#a12adb8df2c301cc252f6c8eb585402d7">pgr_SPI_getChar</a></div><div class="ttdeci">char pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info, bool strict, char default_value)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00140">get_check_data.c:140</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_a021bfad5d191a500af85882a008e79f9"><div class="ttname"><a href="get__check__data_8h.html#a021bfad5d191a500af85882a008e79f9">pgr_check_any_numerical_type</a></div><div class="ttdeci">void pgr_check_any_numerical_type(Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00123">get_check_data.c:123</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_a1523c0349e990ea6fda502c802ccf394"><div class="ttname"><a href="get__check__data_8h.html#a1523c0349e990ea6fda502c802ccf394">pgr_check_char_type</a></div><div class="ttdeci">void pgr_check_char_type(Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00099">get_check_data.c:99</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_a186311e0ed2aa6513ae5257d17395132"><div class="ttname"><a href="get__check__data_8h.html#a186311e0ed2aa6513ae5257d17395132">pgr_SPI_getText</a></div><div class="ttdeci">char * pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00224">get_check_data.c:224</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_ae6967f852e7bc95d5d5131b06131de46"><div class="ttname"><a href="get__check__data_8h.html#ae6967f852e7bc95d5d5131b06131de46">pgr_fetch_column_info</a></div><div class="ttdeci">void pgr_fetch_column_info(Column_info_t info[], int info_size)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00071">get_check_data.c:71</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_a6d8da632b86bd8f4e0f84f2a4219c887"><div class="ttname"><a href="get__check__data_8h.html#a6d8da632b86bd8f4e0f84f2a4219c887">pgr_SPI_getFloat8</a></div><div class="ttdeci">double pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00190">get_check_data.c:190</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_a242b8e2225de6f8c47cf3133c440588e"><div class="ttname"><a href="get__check__data_8h.html#a242b8e2225de6f8c47cf3133c440588e">column_found</a></div><div class="ttdeci">bool column_found(int colNumber)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00045">get_check_data.c:45</a></div></div>
-<div class="ttc" id="get__check__data_8h_html_ab4e654806d1a43314c3e7fa692705448"><div class="ttname"><a href="get__check__data_8h.html#ab4e654806d1a43314c3e7fa692705448">pgr_SPI_getBigInt</a></div><div class="ttdeci">int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00163">get_check_data.c:163</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_a12adb8df2c301cc252f6c8eb585402d7"><div class="ttname"><a href="get__check__data_8h.html#a12adb8df2c301cc252f6c8eb585402d7">pgr_SPI_getChar</a></div><div class="ttdeci">char pgr_SPI_getChar(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info, bool strict, char default_value)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00139">get_check_data.c:139</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_a021bfad5d191a500af85882a008e79f9"><div class="ttname"><a href="get__check__data_8h.html#a021bfad5d191a500af85882a008e79f9">pgr_check_any_numerical_type</a></div><div class="ttdeci">void pgr_check_any_numerical_type(Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00122">get_check_data.c:122</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_a1523c0349e990ea6fda502c802ccf394"><div class="ttname"><a href="get__check__data_8h.html#a1523c0349e990ea6fda502c802ccf394">pgr_check_char_type</a></div><div class="ttdeci">void pgr_check_char_type(Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00098">get_check_data.c:98</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_a186311e0ed2aa6513ae5257d17395132"><div class="ttname"><a href="get__check__data_8h.html#a186311e0ed2aa6513ae5257d17395132">pgr_SPI_getText</a></div><div class="ttdeci">char * pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00223">get_check_data.c:223</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_ae6967f852e7bc95d5d5131b06131de46"><div class="ttname"><a href="get__check__data_8h.html#ae6967f852e7bc95d5d5131b06131de46">pgr_fetch_column_info</a></div><div class="ttdeci">void pgr_fetch_column_info(Column_info_t info[], int info_size)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00070">get_check_data.c:70</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_a6d8da632b86bd8f4e0f84f2a4219c887"><div class="ttname"><a href="get__check__data_8h.html#a6d8da632b86bd8f4e0f84f2a4219c887">pgr_SPI_getFloat8</a></div><div class="ttdeci">double pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00189">get_check_data.c:189</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_a242b8e2225de6f8c47cf3133c440588e"><div class="ttname"><a href="get__check__data_8h.html#a242b8e2225de6f8c47cf3133c440588e">column_found</a></div><div class="ttdeci">bool column_found(int colNumber)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00044">get_check_data.c:44</a></div></div>
+<div class="ttc" id="get__check__data_8h_html_ab4e654806d1a43314c3e7fa692705448"><div class="ttname"><a href="get__check__data_8h.html#ab4e654806d1a43314c3e7fa692705448">pgr_SPI_getBigInt</a></div><div class="ttdeci">int64_t pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info)</div><div class="ttdef"><b>Definition:</b> <a href="get__check__data_8c_source.html#l00162">get_check_data.c:162</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="get__check__data_8h.html">get_check_data.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:53 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['xydirectedgraph',['xyDirectedGraph',['../namespacepgRouting.html#ad6f37e222e817c73d6afc7455fd0cf30',1,'pgRouting']]],
-  ['xyundirectedgraph',['xyUndirectedGraph',['../namespacepgRouting.html#aa0a2823218e595a5006b94ed17814c4b',1,'pgRouting']]]
+  ['xydirectedgraph',['xyDirectedGraph',['../namespacepgrouting.html#abb931ed9509bbc7bc3e8185d0e2907b5',1,'pgrouting']]],
+  ['xyundirectedgraph',['xyUndirectedGraph',['../namespacepgrouting.html#a9771a88c2a2947af6403a329491815c1',1,'pgrouting']]]
 ];

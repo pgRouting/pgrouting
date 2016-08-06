@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -111,7 +110,7 @@ $(document).ready(function(){initNavTree('restrictions__input_8c.html','');});
 <div class="title">restrictions_input.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="postgres_8h_source.html">postgres.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="postgres_8h_source.html">postgres.h</a>&gt;</code><br/>
 <code>#include &quot;executor/spi.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">./debug_macro.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./pgr_types.h</a>&quot;</code><br/>
@@ -119,13 +118,6 @@ $(document).ready(function(){initNavTree('restrictions__input_8c.html','');});
 <code>#include &quot;<a class="el" href="postgres__connection_8h_source.html">./postgres_connection.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="get__check__data_8h_source.html">./get_check_data.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="restrictions__input_8h_source.html">./restrictions_input.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for restrictions_input.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="restrictions__input_8c__incl.png" border="0" usemap="#restrictions__input_8c" alt=""/></div>
-<map name="restrictions__input_8c" id="restrictions__input_8c">
-<area shape="rect" id="node2" href="postgres_8h.html" title="postgres.h" alt="" coords="219,229,301,256"/><area shape="rect" id="node4" href="debug__macro_8h.html" title="./debug_macro.h" alt="" coords="37,80,155,107"/><area shape="rect" id="node5" href="pgr__types_8h.html" title="./pgr_types.h" alt="" coords="469,155,567,181"/><area shape="rect" id="node7" href="time__msg_8h.html" title="./time_msg.h" alt="" coords="366,80,465,107"/><area shape="rect" id="node10" href="postgres__connection_8h.html" title="./postgres_connection.h" alt="" coords="180,80,341,107"/><area shape="rect" id="node11" href="get__check__data_8h.html" title="./get_check_data.h" alt="" coords="539,80,673,107"/><area shape="rect" id="node12" href="restrictions__input_8h.html" title="./restrictions_input.h" alt="" coords="697,80,837,107"/></map>
-</div>
 </div>
 <p><a href="restrictions__input_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -183,9 +175,9 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="restrictions__input_8c_source.html#l00038">38</a> of file <a class="el" href="restrictions__input_8c_source.html">restrictions_input.c</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00134">MAX_RULE_LENGTH</a>, <a class="el" href="get__check__data_8c_source.html#l00163">pgr_SPI_getBigInt()</a>, <a class="el" href="get__check__data_8c_source.html#l00190">pgr_SPI_getFloat8()</a>, <a class="el" href="pgr__types_8h_source.html#l00137">Restrict_t::target_id</a>, <a class="el" href="pgr__types_8h_source.html#l00138">Restrict_t::to_cost</a>, and <a class="el" href="pgr__types_8h_source.html#l00139">Restrict_t::via</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00158">MAX_RULE_LENGTH</a>, <a class="el" href="get__check__data_8c_source.html#l00162">pgr_SPI_getBigInt()</a>, <a class="el" href="get__check__data_8c_source.html#l00189">pgr_SPI_getFloat8()</a>, <a class="el" href="pgr__types_8h_source.html#l00160">Restrict_t::target_id</a>, <a class="el" href="pgr__types_8h_source.html#l00161">Restrict_t::to_cost</a>, and <a class="el" href="pgr__types_8h_source.html#l00162">Restrict_t::via</a>.</p>
 
-<p>Referenced by <a class="el" href="restrictions__input_8c_source.html#l00069">pgr_get_restriction_data()</a>.</p>
+<p>Referenced by <a class="el" href="restrictions__input_8c_source.html#l00070">pgr_get_restriction_data()</a>.</p>
 
 </div>
 </div>
@@ -219,9 +211,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="restrictions__input_8c_source.html#l00069">69</a> of file <a class="el" href="restrictions__input_8c_source.html">restrictions_input.c</a>.</p>
+<p>Definition at line <a class="el" href="restrictions__input_8c_source.html#l00070">70</a> of file <a class="el" href="restrictions__input_8c_source.html">restrictions_input.c</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00154">ANY_INTEGER</a>, <a class="el" href="pgr__types_8h_source.html#l00155">ANY_NUMERICAL</a>, <a class="el" href="pgr__types_8h_source.html#l00162">Column_info_t::colNumber</a>, <a class="el" href="pgr__types_8h_source.html#l00166">Column_info_t::eType</a>, <a class="el" href="restrictions__input_8c_source.html#l00038">fetch_restriction()</a>, <a class="el" href="pgr__types_8h_source.html#l00165">Column_info_t::name</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="get__check__data_8c_source.html#l00071">pgr_fetch_column_info()</a>, <a class="el" href="postgres__connection_8c_source.html#l00092">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00081">pgr_SPI_prepare()</a>, <a class="el" href="pgr__types_8h_source.html#l00164">Column_info_t::strict</a>, <a class="el" href="pgr__types_8h_source.html#l00156">TEXT</a>, <a class="el" href="time__msg_8c_source.html#l00009">time_msg()</a>, and <a class="el" href="pgr__types_8h_source.html#l00163">Column_info_t::type</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00177">ANY_INTEGER</a>, <a class="el" href="pgr__types_8h_source.html#l00178">ANY_NUMERICAL</a>, <a class="el" href="pgr__types_8h_source.html#l00185">Column_info_t::colNumber</a>, <a class="el" href="pgr__types_8h_source.html#l00189">Column_info_t::eType</a>, <a class="el" href="restrictions__input_8c_source.html#l00038">fetch_restriction()</a>, <a class="el" href="pgr__types_8h_source.html#l00188">Column_info_t::name</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="get__check__data_8c_source.html#l00070">pgr_fetch_column_info()</a>, <a class="el" href="postgres__connection_8c_source.html#l00094">pgr_SPI_cursor_open()</a>, <a class="el" href="postgres__connection_8c_source.html#l00083">pgr_SPI_prepare()</a>, <a class="el" href="pgr__types_8h_source.html#l00187">Column_info_t::strict</a>, <a class="el" href="pgr__types_8h_source.html#l00179">TEXT</a>, <a class="el" href="time__msg_8c_source.html#l00031">time_msg()</a>, and <a class="el" href="pgr__types_8h_source.html#l00186">Column_info_t::type</a>.</p>
 
 <p>Referenced by <a class="el" href="trsp_8c_source.html#l00045">compute_trsp()</a>.</p>
 
@@ -233,7 +225,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="restrictions__input_8c.html">restrictions_input.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

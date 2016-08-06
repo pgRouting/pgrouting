@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -115,20 +114,6 @@ $(document).ready(function(){initNavTree('signalhandler_8h.html','');});
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br/>
 <code>#include &lt;csignal&gt;</code><br/>
 <code>#include &lt;exception&gt;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for signalhandler.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="signalhandler_8h__incl.png" border="0" usemap="#signalhandler_8h" alt=""/></div>
-<map name="signalhandler_8h" id="signalhandler_8h">
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="signalhandler_8h__dep__incl.png" border="0" usemap="#signalhandler_8hdep" alt=""/></div>
-<map name="signalhandler_8hdep" id="signalhandler_8hdep">
-<area shape="rect" id="node2" href="signalhandler_8cpp.html" title="signalhandler.cpp" alt="" coords="5,80,128,107"/></map>
-</div>
 </div>
 <p><a href="signalhandler_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -167,10 +152,10 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><a class="code" href="classSIGINT__Handler.html">SIGINT_Handler</a> sigint_handler; <a class="code" href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">\</a></div>
 <div class="line"><a class="code" href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">    SignalHandler::instance</a>()-&gt;<a class="code" href="classSignalHandler.html#af11376ff56c905f739de1700e6891476">registerHandler</a>(SIGINT, &amp;sigint_handler);</div>
 <div class="ttc" id="classSignalHandler_html_af11376ff56c905f739de1700e6891476"><div class="ttname"><a href="classSignalHandler.html#af11376ff56c905f739de1700e6891476">SignalHandler::registerHandler</a></div><div class="ttdeci">EventHandler * registerHandler(int signum, EventHandler *eh)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00047">signalhandler.cpp:47</a></div></div>
-<div class="ttc" id="classSIGINT__Handler_html"><div class="ttname"><a href="classSIGINT__Handler.html">SIGINT_Handler</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00106">signalhandler.h:106</a></div></div>
+<div class="ttc" id="classSIGINT__Handler_html"><div class="ttname"><a href="classSIGINT__Handler.html">SIGINT_Handler</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00108">signalhandler.h:108</a></div></div>
 <div class="ttc" id="classSignalHandler_html_ac9a307bf2b20263020913657b094db9e"><div class="ttname"><a href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">SignalHandler::instance</a></div><div class="ttdeci">static SignalHandler * instance(void)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00038">signalhandler.cpp:38</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00140">140</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
+<p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00142">142</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
 
 <p>Referenced by <a class="el" href="pgr__dijkstra_8hpp_source.html#l00263">Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor::examine_vertex()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00281">Pgr_dijkstra&lt; G &gt;::dijkstra_many_goal_visitor::examine_vertex()</a>, and <a class="el" href="pgr__dijkstra_8hpp_source.html#l00310">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor::examine_vertex()</a>.</p>
 
@@ -187,11 +172,11 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code" href="classSIGQUIT__Handler.html">SIGQUIT_Handler</a> sigquit_handler; <a class="code" href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">\</a></div>
 <div class="line"><a class="code" href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">    SignalHandler::instance</a>()-&gt;<a class="code" href="classSignalHandler.html#af11376ff56c905f739de1700e6891476">registerHandler</a>(SIGQUIT, &amp;sigquit_handler);</div>
-<div class="ttc" id="classSIGQUIT__Handler_html"><div class="ttname"><a href="classSIGQUIT__Handler.html">SIGQUIT_Handler</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00123">signalhandler.h:123</a></div></div>
+<div class="ttc" id="classSIGQUIT__Handler_html"><div class="ttname"><a href="classSIGQUIT__Handler.html">SIGQUIT_Handler</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00125">signalhandler.h:125</a></div></div>
 <div class="ttc" id="classSignalHandler_html_af11376ff56c905f739de1700e6891476"><div class="ttname"><a href="classSignalHandler.html#af11376ff56c905f739de1700e6891476">SignalHandler::registerHandler</a></div><div class="ttdeci">EventHandler * registerHandler(int signum, EventHandler *eh)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00047">signalhandler.cpp:47</a></div></div>
 <div class="ttc" id="classSignalHandler_html_ac9a307bf2b20263020913657b094db9e"><div class="ttname"><a href="classSignalHandler.html#ac9a307bf2b20263020913657b094db9e">SignalHandler::instance</a></div><div class="ttdeci">static SignalHandler * instance(void)</div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8cpp_source.html#l00038">signalhandler.cpp:38</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00143">143</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
+<p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00145">145</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
 
 </div>
 </div>
@@ -208,9 +193,9 @@ Macros</h2></td></tr>
 <div class="line">    if ( sigint_handler.gracefulQuit() == 1 ) \</div>
 <div class="line">        <span class="keywordflow">throw</span>(<a class="code" href="classUserQuitException.html">UserQuitException</a>(<span class="stringliteral">&quot;Abort on User Request!&quot;</span>)); \</div>
 <div class="line">    } <span class="keywordflow">while</span> (0);</div>
-<div class="ttc" id="classUserQuitException_html"><div class="ttname"><a href="classUserQuitException.html">UserQuitException</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00044">signalhandler.h:44</a></div></div>
+<div class="ttc" id="classUserQuitException_html"><div class="ttname"><a href="classUserQuitException.html">UserQuitException</a></div><div class="ttdef"><b>Definition:</b> <a href="signalhandler_8h_source.html#l00046">signalhandler.h:46</a></div></div>
 </div><!-- fragment -->
-<p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00146">146</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
+<p>Definition at line <a class="el" href="signalhandler_8h_source.html#l00148">148</a> of file <a class="el" href="signalhandler_8h_source.html">signalhandler.h</a>.</p>
 
 <p>Referenced by <a class="el" href="pgr__dijkstra_8hpp_source.html#l00263">Pgr_dijkstra&lt; G &gt;::dijkstra_one_goal_visitor::examine_vertex()</a>, <a class="el" href="pgr__dijkstra_8hpp_source.html#l00281">Pgr_dijkstra&lt; G &gt;::dijkstra_many_goal_visitor::examine_vertex()</a>, and <a class="el" href="pgr__dijkstra_8hpp_source.html#l00310">Pgr_dijkstra&lt; G &gt;::dijkstra_distance_visitor::examine_vertex()</a>.</p>
 
@@ -222,7 +207,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="signalhandler_8h.html">signalhandler.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

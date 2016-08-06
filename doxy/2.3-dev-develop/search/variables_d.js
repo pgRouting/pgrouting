@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['n',['n',['../classpgRouting_1_1tsp_1_1TSP.html#acde33495a586eb3436d5bcdba5408533',1,'pgRouting::tsp::TSP::n()'],['../structtspstruct.html#ad1fc38d6bb4ceee6b8802b11f7a5cb95',1,'tspstruct::n()']]],
-  ['name',['name',['../structColumn__info__t.html#ac166599b0a83f7da1a40e75cc1a955b9',1,'Column_info_t']]],
-  ['node',['node',['../structPath__t.html#a4446f5f95052373312fd971ff4ee73c7',1,'Path_t::node()'],['../structGeneral__path__element__t.html#aa5de730dfe559b320b2bf0b42e079d7a',1,'General_path_element_t::node()'],['../structRoutes__t.html#a30fbd530e5aec369329943b7da2c8a91',1,'Routes_t::node()']]],
-  ['nodeid',['NodeID',['../structGraphNodeInfo.html#af2eb3eb66cfa624a76991a24f3b722bd',1,'GraphNodeInfo']]],
-  ['nodesindistance',['nodesInDistance',['../classPgr__astar.html#aee4cd8f6c6f59bc176722a4cd6349b3f',1,'Pgr_astar::nodesInDistance()'],['../classPgr__dijkstra.html#a0c015629879ec92a2160bcc64ddcc7f1',1,'Pgr_dijkstra::nodesInDistance()']]]
+  ['open_5ftime',['open_time',['../structorder__columns.html#ab5fa9036b844b335eef59439cf643167',1,'order_columns::open_time()'],['../structvrp__orders.html#a2012e5238ed836e5bf595d8b75db10c4',1,'vrp_orders::open_time()']]],
+  ['order_5fid',['order_id',['../structGeneral__vehicle__orders__t.html#aed05b671682ceb7173687d1092fa40cb',1,'General_vehicle_orders_t::order_id()'],['../structvrp__result__element.html#afb9b14609e23d0f6c03ac84797355693',1,'vrp_result_element::order_id()']]],
+  ['order_5fpos',['order_pos',['../structvrp__result__element.html#a41f00a816e5554d483e4d6fa9c7df1a9',1,'vrp_result_element']]],
+  ['order_5funit',['order_unit',['../structorder__columns.html#a5a19399847ce81d4cf9d3e3ddb66c741',1,'order_columns::order_unit()'],['../structvrp__orders.html#a8899e6eed3b503d72734a51c5a29977a',1,'vrp_orders::order_unit()']]],
+  ['orders_5fin_5fvehicle',['orders_in_vehicle',['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a377bd5f0bd66615827ff367b2fbf0587',1,'pgrouting::vrp::Vehicle_pickDeliver']]]
 ];

@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -118,13 +117,6 @@ $(document).ready(function(){initNavTree('classBiDirDijkstra.html','');});
 <div class="contents">
 
 <p><code>#include &quot;<a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>&quot;</code></p>
-<div class="dynheader">
-Collaboration diagram for BiDirDijkstra:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBiDirDijkstra__coll__graph.png" border="0" usemap="#BiDirDijkstra_coll__map" alt="Collaboration graph"/></div>
-<map name="BiDirDijkstra_coll__map" id="BiDirDijkstra_coll__map">
-<area shape="rect" id="node3" href="structpath__element__t.html" title="path_element_t" alt="" coords="353,7,463,33"/><area shape="rect" id="node5" href="structGraphNodeInfo.html" title="GraphNodeInfo" alt="" coords="353,57,463,84"/><area shape="rect" id="node9" href="structPARENT__PATH.html" title="PARENT_PATH" alt="" coords="617,165,737,192"/><area shape="rect" id="node11" href="structGraphEdgeInfo.html" title="GraphEdgeInfo" alt="" coords="353,216,463,243"/><area shape="rect" id="node13" title="STL class. " alt="" coords="350,267,466,293"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -168,9 +160,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a0d3837bc40e53632f5cd51352da34c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ecefbb88c99a82d466418f1ed1566c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirDijkstra.html#a7ecefbb88c99a82d466418f1ed1566c3">m_lStartNodeId</a></td></tr>
 <tr class="separator:a7ecefbb88c99a82d466418f1ed1566c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac50a9e4f484837e6ffa6b2c27177bf00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="src_2BiDirAStar_8h.html#aaed92092d40a1e010be2421479fbafca">Long2LongMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirDijkstra.html#ac50a9e4f484837e6ffa6b2c27177bf00">m_mapEdgeId2Index</a></td></tr>
+<tr class="memitem:ac50a9e4f484837e6ffa6b2c27177bf00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="src_2BiDirAStar_8h.html#a5ec4e27c864b3508d5f3b40b0a2e91ca">Long2LongMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirDijkstra.html#ac50a9e4f484837e6ffa6b2c27177bf00">m_mapEdgeId2Index</a></td></tr>
 <tr class="separator:ac50a9e4f484837e6ffa6b2c27177bf00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf2d4ac868d691fbc2a271b62696e87e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="src_2BiDirAStar_8h.html#a556e9f82da7e728ae8d740a0af550f19">Long2LongVectorMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirDijkstra.html#abf2d4ac868d691fbc2a271b62696e87e">m_mapNodeId2Edge</a></td></tr>
+<tr class="memitem:abf2d4ac868d691fbc2a271b62696e87e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="src_2BiDirAStar_8h.html#a19aec644c14a4421505ced59296213f9">Long2LongVectorMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirDijkstra.html#abf2d4ac868d691fbc2a271b62696e87e">m_mapNodeId2Edge</a></td></tr>
 <tr class="separator:abf2d4ac868d691fbc2a271b62696e87e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cf05eb25a5320306dbd64096cf6f9a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirDijkstra.html#a7cf05eb25a5320306dbd64096cf6f9a3">m_MidNode</a></td></tr>
 <tr class="separator:a7cf05eb25a5320306dbd64096cf6f9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,7 +205,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00039">39</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00043">43</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
 </div>
 </div>
@@ -231,7 +223,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00043">43</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00046">46</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
 </div>
 </div>
@@ -258,11 +250,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00443">443</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00402">402</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00071">GraphEdgeInfo::Cost</a>, <a class="el" href="pgr__types_8h_source.html#l00115">pgr_edge_t::cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00070">GraphEdgeInfo::Direction</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00068">GraphEdgeInfo::EdgeID</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00069">GraphEdgeInfo::EdgeIndex</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00074">GraphEdgeInfo::EndNode</a>, <a class="el" href="pgr__types_8h_source.html#l00112">pgr_edge_t::id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00104">m_mapEdgeId2Index</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00103">m_vecEdgeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00106">m_vecNodeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00108">max_edge_id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00107">max_node_id</a>, <a class="el" href="pgr__types_8h_source.html#l00116">pgr_edge_t::reverse_cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00072">GraphEdgeInfo::ReverseCost</a>, <a class="el" href="pgr__types_8h_source.html#l00113">pgr_edge_t::source</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00073">GraphEdgeInfo::StartNode</a>, and <a class="el" href="pgr__types_8h_source.html#l00114">pgr_edge_t::target</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00071">GraphEdgeInfo::Cost</a>, <a class="el" href="pgr__types_8h_source.html#l00131">pgr_edge_t::cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00070">GraphEdgeInfo::Direction</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00068">GraphEdgeInfo::EdgeID</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00069">GraphEdgeInfo::EdgeIndex</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00074">GraphEdgeInfo::EndNode</a>, <a class="el" href="pgr__types_8h_source.html#l00128">pgr_edge_t::id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00103">m_mapEdgeId2Index</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00102">m_vecEdgeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00105">m_vecNodeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00107">max_edge_id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00106">max_node_id</a>, <a class="el" href="pgr__types_8h_source.html#l00132">pgr_edge_t::reverse_cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00072">GraphEdgeInfo::ReverseCost</a>, <a class="el" href="pgr__types_8h_source.html#l00129">pgr_edge_t::source</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00073">GraphEdgeInfo::StartNode</a>, and <a class="el" href="pgr__types_8h_source.html#l00130">pgr_edge_t::target</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00398">construct_graph()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00360">construct_graph()</a>.</p>
 
 </div>
 </div>
@@ -326,11 +318,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">276</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">246</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="BiDirDijkstra_8cpp_source.html#l00398">construct_graph()</a>, <a class="el" href="pgr__types_8h_source.html#l00069">path_element_t::cost</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00091">deleteall()</a>, <a class="el" href="pgr__types_8h_source.html#l00068">path_element_t::edge_id</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">explore()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">fconstruct_path()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00113">m_MidNode</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00112">m_MinCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pFCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00118">m_pRCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pRParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_vecPath</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00108">max_edge_id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00107">max_node_id</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Edge</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00173">rconstruct_path()</a>, and <a class="el" href="pgr__types_8h_source.html#l00067">path_element_t::vertex_id</a>.</p>
+<p>References <a class="el" href="BiDirDijkstra_8cpp_source.html#l00360">construct_graph()</a>, <a class="el" href="pgr__types_8h_source.html#l00076">path_element_t::cost</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00088">deleteall()</a>, <a class="el" href="pgr__types_8h_source.html#l00075">path_element_t::edge_id</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">explore()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00140">fconstruct_path()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00112">m_MidNode</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00111">m_MinCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pFCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pRCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pRParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00113">m_vecPath</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00107">max_edge_id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00106">max_node_id</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00055">PARENT_PATH::par_Edge</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="pgr__alloc_8hpp_source.html#l00052">pgr_alloc()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">rconstruct_path()</a>, and <a class="el" href="pgr__types_8h_source.html#l00074">path_element_t::vertex_id</a>.</p>
 
-<p>Referenced by <a class="el" href="bdsp__driver_8cpp_source.html#l00040">bidirsp_wrapper()</a>.</p>
+<p>Referenced by <a class="el" href="bdsp__driver_8cpp_source.html#l00041">bidirsp_wrapper()</a>.</p>
 
 </div>
 </div>
@@ -412,11 +404,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00398">398</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00360">360</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="BiDirDijkstra_8cpp_source.html#l00443">addEdge()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00062">GraphNodeInfo::Connected_Edges_Index</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00061">GraphNodeInfo::Connected_Nodes</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">edge_count</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00103">m_vecEdgeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00106">m_vecNodeVector</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00058">GraphNodeInfo::NodeID</a>.</p>
+<p>References <a class="el" href="BiDirDijkstra_8cpp_source.html#l00402">addEdge()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00063">GraphNodeInfo::Connected_Edges_Index</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00062">GraphNodeInfo::Connected_Nodes</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">edge_count</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00102">m_vecEdgeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00105">m_vecNodeVector</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00059">GraphNodeInfo::NodeID</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -441,11 +433,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00091">91</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00088">88</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pFCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00118">m_pRCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pRParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00103">m_vecEdgeVector</a>, and <a class="el" href="BiDirDijkstra_8h_source.html#l00106">m_vecNodeVector</a>.</p>
+<p>References <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pFCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pRCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pRParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00102">m_vecEdgeVector</a>, and <a class="el" href="BiDirDijkstra_8h_source.html#l00105">m_vecNodeVector</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -493,11 +485,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">195</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">176</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00071">GraphEdgeInfo::Cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00070">GraphEdgeInfo::Direction</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00068">GraphEdgeInfo::EdgeID</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00112">getcost()</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00113">m_MidNode</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00112">m_MinCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00103">m_vecEdgeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00106">m_vecNodeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00072">GraphEdgeInfo::ReverseCost</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00126">setcost()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00138">setparent()</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00073">GraphEdgeInfo::StartNode</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00071">GraphEdgeInfo::Cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00070">GraphEdgeInfo::Direction</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00068">GraphEdgeInfo::EdgeID</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00108">getcost()</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00112">m_MidNode</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00111">m_MinCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00102">m_vecEdgeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00105">m_vecNodeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00072">GraphEdgeInfo::ReverseCost</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00118">setcost()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00126">setparent()</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00073">GraphEdgeInfo::StartNode</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -523,11 +515,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">156</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00140">140</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00069">path_element_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00068">path_element_t::edge_id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pFCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Edge</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>, and <a class="el" href="pgr__types_8h_source.html#l00067">path_element_t::vertex_id</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00076">path_element_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00075">path_element_t::edge_id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pFCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00113">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00055">PARENT_PATH::par_Edge</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>, and <a class="el" href="pgr__types_8h_source.html#l00074">path_element_t::vertex_id</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -563,11 +555,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00112">112</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00108">108</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pFCost</a>, and <a class="el" href="BiDirDijkstra_8h_source.html#l00118">m_pRCost</a>.</p>
+<p>References <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pFCost</a>, and <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pRCost</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">explore()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">explore()</a>.</p>
 
 </div>
 </div>
@@ -592,7 +584,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00047">47</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00049">49</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
 </div>
 </div>
@@ -620,9 +612,9 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">57</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00044">INF</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00113">m_MidNode</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00112">m_MinCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pFCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00118">m_pRCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pRParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00106">m_vecNodeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_vecPath</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00045">INF</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00112">m_MidNode</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00111">m_MinCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pFCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pRCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pRParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00105">m_vecNodeVector</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00113">m_vecPath</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -648,11 +640,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00173">173</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">156</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00069">path_element_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00068">path_element_t::edge_id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00118">m_pRCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pRParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>, and <a class="el" href="pgr__types_8h_source.html#l00067">path_element_t::vertex_id</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00076">path_element_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00075">path_element_t::edge_id</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pRCost</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pRParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00113">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>, and <a class="el" href="pgr__types_8h_source.html#l00074">path_element_t::vertex_id</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -694,11 +686,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00126">126</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00118">118</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pFCost</a>, and <a class="el" href="BiDirDijkstra_8h_source.html#l00118">m_pRCost</a>.</p>
+<p>References <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pFCost</a>, and <a class="el" href="BiDirDijkstra_8h_source.html#l00117">m_pRCost</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">explore()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">explore()</a>.</p>
 
 </div>
 </div>
@@ -746,11 +738,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00138">138</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8cpp_source.html#l00126">126</a> of file <a class="el" href="BiDirDijkstra_8cpp_source.html">BiDirDijkstra.cpp</a>.</p>
 
-<p>References <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00116">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Edge</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>.</p>
+<p>References <a class="el" href="BiDirDijkstra_8h_source.html#l00114">m_pFParent</a>, <a class="el" href="BiDirDijkstra_8h_source.html#l00115">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00055">PARENT_PATH::par_Edge</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">explore()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">explore()</a>.</p>
 
 </div>
 </div>
@@ -773,7 +765,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00110">110</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00109">109</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
 </div>
 </div>
@@ -795,7 +787,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00109">109</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00108">108</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
 </div>
 </div>
@@ -807,7 +799,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="src_2BiDirAStar_8h.html#aaed92092d40a1e010be2421479fbafca">Long2LongMap</a> BiDirDijkstra::m_mapEdgeId2Index</td>
+          <td class="memname"><a class="el" href="src_2BiDirAStar_8h.html#a5ec4e27c864b3508d5f3b40b0a2e91ca">Long2LongMap</a> BiDirDijkstra::m_mapEdgeId2Index</td>
         </tr>
       </table>
   </td>
@@ -817,9 +809,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00104">104</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00103">103</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00443">addEdge()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00402">addEdge()</a>.</p>
 
 </div>
 </div>
@@ -831,7 +823,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="src_2BiDirAStar_8h.html#a556e9f82da7e728ae8d740a0af550f19">Long2LongVectorMap</a> BiDirDijkstra::m_mapNodeId2Edge</td>
+          <td class="memname"><a class="el" href="src_2BiDirAStar_8h.html#a19aec644c14a4421505ced59296213f9">Long2LongVectorMap</a> BiDirDijkstra::m_mapNodeId2Edge</td>
         </tr>
       </table>
   </td>
@@ -841,7 +833,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00105">105</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00104">104</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
 </div>
 </div>
@@ -863,9 +855,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00113">113</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00112">112</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">explore()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">explore()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>.</p>
 
 </div>
 </div>
@@ -887,9 +879,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00112">112</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00111">111</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">explore()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">explore()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>.</p>
 
 </div>
 </div>
@@ -911,9 +903,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00117">117</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00116">116</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00091">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">fconstruct_path()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00112">getcost()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00126">setcost()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00088">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00140">fconstruct_path()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00108">getcost()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00118">setcost()</a>.</p>
 
 </div>
 </div>
@@ -935,9 +927,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00115">115</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00114">114</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00091">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">fconstruct_path()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00138">setparent()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00088">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00140">fconstruct_path()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00126">setparent()</a>.</p>
 
 </div>
 </div>
@@ -959,9 +951,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00118">118</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00117">117</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00091">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00112">getcost()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00173">rconstruct_path()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00126">setcost()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00088">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00108">getcost()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">rconstruct_path()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00118">setcost()</a>.</p>
 
 </div>
 </div>
@@ -983,9 +975,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00116">116</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00115">115</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00091">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00173">rconstruct_path()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00138">setparent()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00088">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">rconstruct_path()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00126">setparent()</a>.</p>
 
 </div>
 </div>
@@ -1007,9 +999,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00103">103</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00102">102</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00443">addEdge()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00398">construct_graph()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00091">deleteall()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">explore()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00402">addEdge()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00360">construct_graph()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00088">deleteall()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">explore()</a>.</p>
 
 </div>
 </div>
@@ -1031,9 +1023,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00106">106</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00105">105</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00443">addEdge()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00398">construct_graph()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00091">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00195">explore()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00402">addEdge()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00360">construct_graph()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00088">deleteall()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00176">explore()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>.</p>
 
 </div>
 </div>
@@ -1055,9 +1047,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00114">114</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00113">113</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">fconstruct_path()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00173">rconstruct_path()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00140">fconstruct_path()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">initall()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00156">rconstruct_path()</a>.</p>
 
 </div>
 </div>
@@ -1079,9 +1071,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00108">108</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00107">107</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00443">addEdge()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00402">addEdge()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -1103,9 +1095,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00107">107</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
+<p>Definition at line <a class="el" href="BiDirDijkstra_8h_source.html#l00106">106</a> of file <a class="el" href="BiDirDijkstra_8h_source.html">BiDirDijkstra.h</a>.</p>
 
-<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00443">addEdge()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00276">bidir_dijkstra()</a>.</p>
+<p>Referenced by <a class="el" href="BiDirDijkstra_8cpp_source.html#l00402">addEdge()</a>, and <a class="el" href="BiDirDijkstra_8cpp_source.html#l00246">bidir_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -1119,7 +1111,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classBiDirDijkstra.html">BiDirDijkstra</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

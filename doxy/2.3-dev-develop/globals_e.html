@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -159,11 +158,17 @@ $(document).ready(function(){initNavTree('globals_e.html','');});
 <li>edge_count
 : <a class="el" href="BDATester_8cpp.html#a1a21f2fdaf8aa261214ed6c7c2b56730">BDATester.cpp</a>
 </li>
-<li>edge_shooting_star_columns_t
-: <a class="el" href="shooting__star_8c.html#a87e9f4395a9115869f1349d90b6181f8">shooting_star.c</a>
+<li>edge_disjoint_paths_many_to_many()
+: <a class="el" href="edge__disjoint__paths__many__to__many_8c.html#a428ef5f43c537f6aa69378581e302e65">edge_disjoint_paths_many_to_many.c</a>
 </li>
-<li>edge_shooting_star_t
-: <a class="el" href="shooting__star_8h.html#a6fd9e87e252d7c099fe4e2c374ee67fd">shooting_star.h</a>
+<li>edge_disjoint_paths_many_to_one()
+: <a class="el" href="edge__disjoint__paths__many__to__one_8c.html#a3c04bd9f52ec0f55f11102420b408dd5">edge_disjoint_paths_many_to_one.c</a>
+</li>
+<li>edge_disjoint_paths_one_to_many()
+: <a class="el" href="edge__disjoint__paths__one__to__many_8c.html#a586f7ddd1e116aaabb4932b55f66fba0">edge_disjoint_paths_one_to_many.c</a>
+</li>
+<li>edge_disjoint_paths_one_to_one()
+: <a class="el" href="edge__disjoint__paths__one__to__one_8c.html#ab05d4e9b8ee9ac2f4421a7872485839a">edge_disjoint_paths_one_to_one.c</a>
 </li>
 <li>edge_t
 : <a class="el" href="bdsp__driver_8h.html#a6f991778d67cbba9985791a787ff0e42">bdsp_driver.h</a>
@@ -172,15 +177,15 @@ $(document).ready(function(){initNavTree('globals_e.html','');});
 , <a class="el" href="trsp__driver_8h.html#a6f991778d67cbba9985791a787ff0e42">trsp_driver.h</a>
 </li>
 <li>edges
-: <a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">issue191-good.h</a>
-, <a class="el" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">BDATester.cpp</a>
+: <a class="el" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">issue191-bad-m1.h</a>
 , <a class="el" href="issue191-bad_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">issue191-bad.h</a>
+, <a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">issue191-good.h</a>
+, <a class="el" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">BDATester.cpp</a>
 , <a class="el" href="testit_8c.html#aa44a74ef30e3ec88c97d809b9d681ffe">testit.c</a>
-, <a class="el" href="issue191-bad-m1_8h.html#a6aec1c99b1844b7ec060b9c68a8a65a5">issue191-bad-m1.h</a>
 </li>
 <li>eliminate_details()
-: <a class="el" href="pgr__withPoints_8cpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">pgr_withPoints.cpp</a>
-, <a class="el" href="pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">pgr_withPoints.hpp</a>
+: <a class="el" href="pgr__withPoints_8hpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">pgr_withPoints.hpp</a>
+, <a class="el" href="pgr__withPoints_8cpp.html#a0ed4ba674c8ad93b59ff6a23c43a744f">pgr_withPoints.cpp</a>
 </li>
 <li>eliminate_details_dd()
 : <a class="el" href="pgr__withPoints_8cpp.html#a78454780d695ee33ad171a220e3e9f38">pgr_withPoints.cpp</a>
@@ -199,8 +204,8 @@ $(document).ready(function(){initNavTree('globals_e.html','');});
 : <a class="el" href="eucledianTSP_8c.html#adf80487dfc6947bf2381c9a40302897b">eucledianTSP.c</a>
 </li>
 <li>exit_nicely()
-: <a class="el" href="pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">pgRouting.cpp</a>
-, <a class="el" href="performance_2dijkstra_2pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">performance/dijkstra/pgRouting.cpp</a>
+: <a class="el" href="performance_2dijkstra_2pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">performance/dijkstra/pgRouting.cpp</a>
+, <a class="el" href="pgRouting_8cpp.html#a39f10fc492e3f116315a91e75c9be7c3">pgRouting.cpp</a>
 </li>
 <li>expectType
 : <a class="el" href="pgr__types_8h.html#a5bc91ed782fe6c30eaf15fe73b4474bb">pgr_types.h</a>
@@ -211,7 +216,7 @@ $(document).ready(function(){initNavTree('globals_e.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

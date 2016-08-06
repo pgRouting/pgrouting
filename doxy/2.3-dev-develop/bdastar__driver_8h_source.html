@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -135,29 +134,31 @@ $(document).ready(function(){initNavTree('bdastar__driver_8h_source.html','');})
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef _BDASTAR_H</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _BDASTAR_H</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="bdastar__driver_8h.html#a0f6d25fa9f620e3cbb590ea94b82eea3">bdastar_wrapper</a>(<a class="code" href="structedge.html">edge_astar_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">size_t</span> count, <span class="keywordtype">int</span> maxnode,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                  <span class="keywordtype">int</span> source_vertex_id, <span class="keywordtype">int</span> target_vertex_id,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                  <span class="keywordtype">bool</span> directed, <span class="keywordtype">bool</span> has_reverse_cost,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                  <a class="code" href="structpath__element__t.html">path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>, <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef SRC_BD_ASTAR_SRC_BDASTAR_DRIVER_H_</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_BD_ASTAR_SRC_BDASTAR_DRIVER_H_</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;stdlib.h&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;../../common/src/pgr_types.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="bdastar__driver_8h.html#a0f6d25fa9f620e3cbb590ea94b82eea3">bdastar_wrapper</a>(<a class="code" href="structedge.html">edge_astar_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a>, <span class="keywordtype">size_t</span> count, <span class="keywordtype">int</span> maxnode,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                  <span class="keywordtype">int</span> source_vertex_id, <span class="keywordtype">int</span> target_vertex_id,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                  <span class="keywordtype">bool</span> directed, <span class="keywordtype">bool</span> has_reverse_cost,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                  <a class="code" href="structpath__element__t.html">path_element_t</a> **<a class="code" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <span class="keywordtype">size_t</span> *<a class="code" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>, <span class="keywordtype">char</span> **<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor"></span>}</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif  // SRC_BD_ASTAR_SRC_BDASTAR_DRIVER_H_</span></div>
 <div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00061">tester/BiDirAStar.h:61</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
-<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00066">pgr_types.h:66</a></div></div>
+<div class="ttc" id="structpath__element__t_html"><div class="ttname"><a href="structpath__element__t.html">path_element_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00073">pgr_types.h:73</a></div></div>
 <div class="ttc" id="bdastar__driver_8h_html_a0f6d25fa9f620e3cbb590ea94b82eea3"><div class="ttname"><a href="bdastar__driver_8h.html#a0f6d25fa9f620e3cbb590ea94b82eea3">bdastar_wrapper</a></div><div class="ttdeci">int bdastar_wrapper(edge_astar_t *edges, size_t count, int maxnode, int source_vertex_id, int target_vertex_id, bool directed, bool has_reverse_cost, path_element_t **path, size_t *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="bdastar__driver_8cpp_source.html#l00045">bdastar_driver.cpp:45</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_adeffa16c2ebac77ad192e5a8e53378de"><div class="ttname"><a href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a></div><div class="ttdeci">path_element_t * path</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00049">BDATester.cpp:49</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
@@ -167,7 +168,7 @@ $(document).ready(function(){initNavTree('bdastar__driver_8h_source.html','');})
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1188af90c8f2ef20f286b8e78c6e14f.html">bd_astar</a></li><li class="navelem"><a class="el" href="dir_113f93645de6d06d40f731407c36f54e.html">src</a></li><li class="navelem"><a class="el" href="bdastar__driver_8h.html">bdastar_driver.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:11 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:53 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

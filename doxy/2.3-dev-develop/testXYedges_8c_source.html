@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -157,98 +156,97 @@ $(document).ready(function(){initNavTree('testXYedges_8c_source.html','');});
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/postgres_connection.h&quot;</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/edges_input.h&quot;</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/arrays_input.h&quot;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="testXYedges__driver_8h.html">./testXYedges_driver.h</a>&quot;</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;PGDLLEXPORT Datum <a class="code" href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">testXYedges</a>(PG_FUNCTION_ARGS);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="testXYedges__driver_8h.html">./testXYedges_driver.h</a>&quot;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;PGDLLEXPORT Datum <a class="code" href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">testXYedges</a>(PG_FUNCTION_ARGS);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">static</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">   58</a></span>&#160;<a class="code" href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">process</a>( <span class="keywordtype">char</span>* edges_sql,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">bool</span> *result_bool) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Load data&quot;</span>);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a> = NULL;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">size_t</span> total_edges = 0;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="edges__input_8c.html#a5483d52e67b7996d80cd0cf3583d1720">pgr_get_edges_xy</a>(edges_sql, &amp;edges, &amp;total_edges);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (total_edges == 0) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;No edges found&quot;</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        (*result_bool) = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        pfree(edges);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Total %ld tuples in query:&quot;</span>, total_edges);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">size_t</span> i;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; total_edges; ++i) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;id = %li \t source = %li \t target = %ld  cost = %lf reverse_cost = %lf&quot;</span>,</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;               edges[i].<span class="keywordtype">id</span>, edges[i].source, edges[i].target, edges[i].cost, edges[i].reverse_cost);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;    (x1,y1) = (%.32lf ,%.32lf) (x2,y2) = (%.32lf,.%.32lf)&quot;</span>,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;               edges[i].x1, edges[i].y1, edges[i].x2, edges[i].y2);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">static</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">   57</a></span>&#160;<a class="code" href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">process</a>(<span class="keywordtype">char</span>* edges_sql,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">bool</span> *result_bool) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Load data&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> *<a class="code" href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a> = NULL;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">size_t</span> total_edges = 0;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="edges__input_8c.html#a68e9476cc43d0bcc87a9f60734f76b38">pgr_get_edges_xy</a>(edges_sql, &amp;edges, &amp;total_edges);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (total_edges == 0) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;No edges found&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        (*result_bool) = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        pfree(edges);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Total %ld tuples in query:&quot;</span>, total_edges);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">size_t</span> i;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; total_edges; ++i) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;id = %li \t source = %li \t target = %ld  cost = %lf reverse_cost = %lf&quot;</span>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;               edges[i].<span class="keywordtype">id</span>, edges[i].source, edges[i].target, edges[i].cost, edges[i].reverse_cost);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;    (x1,y1) = (%.32lf ,%.32lf) (x2,y2) = (%.32lf,.%.32lf)&quot;</span>,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;               edges[i].x1, edges[i].y1, edges[i].x2, edges[i].y2);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Starting processing&quot;</span>);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a> = NULL;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">char</span> *log_msg = NULL;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    (*result_bool) = <a class="code" href="testXYedges__driver_8cpp.html#a321e9e233aaef7ffb5f581dd5060461d">do_pgr_testXYedges</a>(</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            edges,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            total_edges,</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            &amp;log_msg,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            &amp;err_msg);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    pfree(edges);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned log message = %s\n&quot;</span>, log_msg);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (log_msg) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        elog(DEBUG1, <span class="stringliteral">&quot;%s&quot;</span>, log_msg);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        free(log_msg);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned error message = %s\n&quot;</span>, err_msg);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (err_msg) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        elog(ERROR, <span class="stringliteral">&quot;%s&quot;</span>, err_msg);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        free(err_msg);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<a class="code" href="testXYedges_8c.html#ad5ed59bfda17de279f0d969c921ca831">PG_FUNCTION_INFO_V1</a>(<a class="code" href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">testXYedges</a>);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;PGDLLEXPORT Datum</div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">  111</a></span>&#160;<a class="code" href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">testXYedges</a>(PG_FUNCTION_ARGS) {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">bool</span>  result_bool = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">process</a>(</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a>(PG_GETARG_TEXT_P(0)),</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            &amp;result_bool);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    PG_RETURN_BOOL(result_bool);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Starting processing&quot;</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a> = NULL;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">char</span> *log_msg = NULL;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    (*result_bool) = <a class="code" href="testXYedges__driver_8cpp.html#a321e9e233aaef7ffb5f581dd5060461d">do_pgr_testXYedges</a>(</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            edges,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            total_edges,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            &amp;log_msg,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            &amp;err_msg);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    pfree(edges);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned log message = %s\n&quot;</span>, log_msg);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (log_msg) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        elog(DEBUG1, <span class="stringliteral">&quot;%s&quot;</span>, log_msg);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        free(log_msg);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a>(<span class="stringliteral">&quot;Returned error message = %s\n&quot;</span>, err_msg);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (err_msg) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        elog(ERROR, <span class="stringliteral">&quot;%s&quot;</span>, err_msg);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        free(err_msg);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<a class="code" href="testXYedges_8c.html#ad5ed59bfda17de279f0d969c921ca831">PG_FUNCTION_INFO_V1</a>(<a class="code" href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">testXYedges</a>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;PGDLLEXPORT Datum</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">  110</a></span>&#160;<a class="code" href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">testXYedges</a>(PG_FUNCTION_ARGS) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">bool</span>  result_bool = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">process</a>(</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <a class="code" href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a>(PG_GETARG_TEXT_P(0)),</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            &amp;result_bool);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    PG_RETURN_BOOL(result_bool);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
 <div class="ttc" id="testXYedges__driver_8h_html"><div class="ttname"><a href="testXYedges__driver_8h.html">testXYedges_driver.h</a></div></div>
 <div class="ttc" id="testXYedges_8c_html_ad5ed59bfda17de279f0d969c921ca831"><div class="ttname"><a href="testXYedges_8c.html#ad5ed59bfda17de279f0d969c921ca831">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(testXYedges)</div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
-<div class="ttc" id="edges__input_8c_html_a5483d52e67b7996d80cd0cf3583d1720"><div class="ttname"><a href="edges__input_8c.html#a5483d52e67b7996d80cd0cf3583d1720">pgr_get_edges_xy</a></div><div class="ttdeci">void pgr_get_edges_xy(char *sql, Pgr_edge_xy_t **edges, size_t *total_edges)</div><div class="ttdoc">normal graph </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00332">edges_input.c:332</a></div></div>
-<div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00061">postgres_connection.c:61</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00063">postgres_connection.c:63</a></div></div>
+<div class="ttc" id="edges__input_8c_html_a68e9476cc43d0bcc87a9f60734f76b38"><div class="ttname"><a href="edges__input_8c.html#a68e9476cc43d0bcc87a9f60734f76b38">pgr_get_edges_xy</a></div><div class="ttdeci">void pgr_get_edges_xy(char *edges_sql, Pgr_edge_xy_t **edges, size_t *total_edges)</div><div class="ttdoc">Edges with x, y vertices values. </div><div class="ttdef"><b>Definition:</b> <a href="edges__input_8c_source.html#l00557">edges_input.c:557</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
 <div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
-<div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00071">postgres_connection.c:71</a></div></div>
-<div class="ttc" id="testXYedges__driver_8cpp_html_a321e9e233aaef7ffb5f581dd5060461d"><div class="ttname"><a href="testXYedges__driver_8cpp.html#a321e9e233aaef7ffb5f581dd5060461d">do_pgr_testXYedges</a></div><div class="ttdeci">bool do_pgr_testXYedges(Pgr_edge_xy_t *data_edges, size_t total_edges, char **log_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="testXYedges__driver_8cpp_source.html#l00052">testXYedges_driver.cpp:52</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00073">postgres_connection.c:73</a></div></div>
+<div class="ttc" id="testXYedges__driver_8cpp_html_a321e9e233aaef7ffb5f581dd5060461d"><div class="ttname"><a href="testXYedges__driver_8cpp.html#a321e9e233aaef7ffb5f581dd5060461d">do_pgr_testXYedges</a></div><div class="ttdeci">bool do_pgr_testXYedges(Pgr_edge_xy_t *data_edges, size_t total_edges, char **log_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="testXYedges__driver_8cpp_source.html#l00051">testXYedges_driver.cpp:51</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
-<div class="ttc" id="postgres__connection_8c_html_ae5ca58a293115d0ec1ca944f56f4faa1"><div class="ttname"><a href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a></div><div class="ttdeci">char * pgr_text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00050">postgres_connection.c:50</a></div></div>
-<div class="ttc" id="testXYedges_8c_html_a4ca4a7c32f1fbc11ed4b5774a4f4f8d7"><div class="ttname"><a href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">testXYedges</a></div><div class="ttdeci">PGDLLEXPORT Datum testXYedges(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="testXYedges_8c_source.html#l00111">testXYedges.c:111</a></div></div>
-<div class="ttc" id="testXYedges_8c_html_a64f11fc66ebfd7c358be13b12d3f4e91"><div class="ttname"><a href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">process</a></div><div class="ttdeci">static void process(char *edges_sql, bool *result_bool)</div><div class="ttdef"><b>Definition:</b> <a href="testXYedges_8c_source.html#l00058">testXYedges.c:58</a></div></div>
-<div class="ttc" id="structPgr__edge__xy__t_html"><div class="ttname"><a href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00052">pgr_types.h:52</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_ae5ca58a293115d0ec1ca944f56f4faa1"><div class="ttname"><a href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a></div><div class="ttdeci">char * pgr_text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00052">postgres_connection.c:52</a></div></div>
+<div class="ttc" id="testXYedges_8c_html_a4ca4a7c32f1fbc11ed4b5774a4f4f8d7"><div class="ttname"><a href="testXYedges_8c.html#a4ca4a7c32f1fbc11ed4b5774a4f4f8d7">testXYedges</a></div><div class="ttdeci">PGDLLEXPORT Datum testXYedges(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="testXYedges_8c_source.html#l00110">testXYedges.c:110</a></div></div>
+<div class="ttc" id="testXYedges_8c_html_a64f11fc66ebfd7c358be13b12d3f4e91"><div class="ttname"><a href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">process</a></div><div class="ttdeci">static void process(char *edges_sql, bool *result_bool)</div><div class="ttdef"><b>Definition:</b> <a href="testXYedges_8c_source.html#l00057">testXYedges.c:57</a></div></div>
+<div class="ttc" id="structPgr__edge__xy__t_html"><div class="ttname"><a href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00060">pgr_types.h:60</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_07f79e339d2fb7fe8819c7acbc73ea87.html">internalQueryTests</a></li><li class="navelem"><a class="el" href="dir_024f5e92469607c1339aa02feb5755cf.html">src</a></li><li class="navelem"><a class="el" href="testXYedges_8c.html">testXYedges.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

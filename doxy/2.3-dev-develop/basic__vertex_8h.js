@@ -1,9 +1,9 @@
 var basic__vertex_8h =
 [
-    [ "Basic_vertex", "classpgRouting_1_1Basic__vertex.html", "classpgRouting_1_1Basic__vertex" ],
-    [ "check_vertices", "basic__vertex_8h.html#a9b0f64178792e5c6b0d51121827a1b7e", null ],
-    [ "extract_vertices", "basic__vertex_8h.html#a3461655e5f62107d921454d8e7923829", null ],
-    [ "extract_vertices", "basic__vertex_8h.html#a2252a1723475846ca43d29058d7d908e", null ],
-    [ "extract_vertices", "basic__vertex_8h.html#a1288671aacd111d71886f03c9310e98d", null ],
-    [ "extract_vertices", "basic__vertex_8h.html#a72df4b97554470c54fa03df475bcfd4f", null ]
+    [ "Basic_vertex", "classpgrouting_1_1Basic__vertex.html", "classpgrouting_1_1Basic__vertex" ],
+    [ "check_vertices", "basic__vertex_8h.html#ad2402e933265d52b372b92fd354aeca8", null ],
+    [ "extract_vertices", "basic__vertex_8h.html#a7f6c592f35e628f82429127580ed29fb", null ],
+    [ "extract_vertices", "basic__vertex_8h.html#a7b0e916d0ac26800bda2a59cd2820410", null ],
+    [ "extract_vertices", "basic__vertex_8h.html#a9a4a650140046a0ff4f6c5922a7040c1", null ],
+    [ "extract_vertices", "basic__vertex_8h.html#a50ebe07e88d2cec4c0d2a88a2e712449", null ]
 ];

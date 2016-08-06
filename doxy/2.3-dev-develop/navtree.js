@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "pgRouting", "index.html", [
-    [ "pgRouting Developer's Documentation", "index.html", [
+    [ "Developer's Documentation", "index.html", [
       [ "Introduction", "index.html#intro_sec", null ],
       [ "Installation for developing", "index.html#install_sec", null ],
       [ "Git Branching Model", "index.html#branch_model", null ],
@@ -17,9 +17,7 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ],
-        [ "Enumerator", "namespacemembers_eval.html", null ]
+        [ "Typedefs", "namespacemembers_type.html", null ]
       ] ]
     ] ],
     [ "Classes", null, [
@@ -55,15 +53,16 @@ var NAVTREEINDEX =
 [
 "BDATester_8cpp.html",
 "bdsp__driver_8h_source.html",
-"classCVRPSolver.html#ab55533a065e473677aa9e6406f7293c8",
-"classPgr__ksp.html#ac29356ebe96bd910808af028e0e508b6",
-"classpgRouting_1_1vrp_1_1Initial__solution.html#ac77d44b67c1188b7e5b535e1008db591",
-"classpgRouting_1_1vrp_1_1Vehicle__node.html#a39818b7cddf5ee62098cafaa840fedfc",
-"functions_func_i.html",
-"matrixRows__input_8c.html",
-"restrictions__input_8c_source.html",
-"structboost_1_1detail_1_1shooting__star__bfs__visitor.html#aaef6131e8e1ace02e0b795ad28a601eb",
-"trsp__driver_8cpp.html"
+"classCVRPSolver.html#a535946efd8c32afc53e6dd0c0588d3c7",
+"classPgrFlowGraph.html#a19d56381eab69e565b2c69aceb3a593f",
+"classpgrouting_1_1contraction_1_1Edge.html#a979b9895bb60e25532147ea764975355",
+"classpgrouting_1_1vrp_1_1Node.html#af4f30af76ecaedd67bc8fc60b998876f",
+"classpgrouting_1_1vrp_1_1Vehicle__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025",
+"floydWarshall_8c.html#a278df81f1fe600a3c5acac8e928a1b89",
+"many__to__many__withPoints_8c.html#a95dd26151729818ff7cabb194f782ff3",
+"pgr__edgedisjointpaths_8hpp.html",
+"structRoutes__t.html#acb143a564da1fb8a5ba85f809bf021c9",
+"trsp__driver_8cpp.html#a8610053389d1899ceed063c1c0af50e2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

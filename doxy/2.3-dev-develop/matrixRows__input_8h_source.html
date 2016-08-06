@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -133,23 +132,28 @@ $(document).ready(function(){initNavTree('matrixRows__input_8h_source.html','');
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">********************************************************************PGR-GNU*/</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;./../../common/src/pgr_types.h&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5">pgr_get_matrixRows</a>(</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">char</span> *sql,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> **distaces,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">size_t</span> *total_distances);</div>
-<div class="ttc" id="matrixRows__input_8h_html_a6d9e7937e5b60b1f2d1b49c5e19c68e5"><div class="ttname"><a href="matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5">pgr_get_matrixRows</a></div><div class="ttdeci">void pgr_get_matrixRows(char *sql, Matrix_cell_t **distaces, size_t *total_distances)</div><div class="ttdoc">bigint start_vid, bigint end_vid, float agg_cost, </div><div class="ttdef"><b>Definition:</b> <a href="matrixRows__input_8c_source.html#l00052">matrixRows_input.c:52</a></div></div>
-<div class="ttc" id="structmatrix__cell_html"><div class="ttname"><a href="structmatrix__cell.html">matrix_cell</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00126">pgr_types.h:126</a></div></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef SRC_COMMON_SRC_MATRIXROWS_INPUT_H_</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SRC_COMMON_SRC_MATRIXROWS_INPUT_H_</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pgr__types_8h.html">./pgr_types.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5">pgr_get_matrixRows</a>(</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">char</span> *sql,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="structmatrix__cell.html">Matrix_cell_t</a> **distaces,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">size_t</span> *total_distances);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif  // SRC_COMMON_SRC_MATRIXROWS_INPUT_H_</span></div>
+<div class="ttc" id="matrixRows__input_8h_html_a6d9e7937e5b60b1f2d1b49c5e19c68e5"><div class="ttname"><a href="matrixRows__input_8h.html#a6d9e7937e5b60b1f2d1b49c5e19c68e5">pgr_get_matrixRows</a></div><div class="ttdeci">void pgr_get_matrixRows(char *sql, Matrix_cell_t **distaces, size_t *total_distances)</div><div class="ttdoc">bigint start_vid, bigint end_vid, float agg_cost, </div><div class="ttdef"><b>Definition:</b> <a href="matrixRows__input_8c_source.html#l00051">matrixRows_input.c:51</a></div></div>
+<div class="ttc" id="structmatrix__cell_html"><div class="ttname"><a href="structmatrix__cell.html">matrix_cell</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00150">pgr_types.h:150</a></div></div>
+<div class="ttc" id="pgr__types_8h_html"><div class="ttname"><a href="pgr__types_8h.html">pgr_types.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="matrixRows__input_8h.html">matrixRows_input.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:53 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -149,17 +148,26 @@ $(document).ready(function(){initNavTree('functions_func_c.html','');});
 &#160;
 
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>calculateVertices()
+: <a class="el" href="classpgrouting_1_1Pgr__deadEndContraction.html#ab4d1fc4283d44f6b69650a32e9861d34">pgrouting::Pgr_deadEndContraction&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1Pgr__linearContraction.html#a0cf1d673f13b8542aba0ca1eddc38f1f">pgrouting::Pgr_linearContraction&lt; G &gt;</a>
+</li>
 <li>cargo()
-: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__node.html#acab1f9376da6f6ec6a2b07ea30fb5c57">pgRouting::vrp::Vehicle_node</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a96ef92d0217372452550dd61b9cc355f">pgrouting::vrp::Vehicle_node</a>
 </li>
 <li>CDepotInfo()
 : <a class="el" href="classCDepotInfo.html#a609c63c1c08b9da7fa06a205078c342a">CDepotInfo</a>
 </li>
 <li>clear()
-: <a class="el" href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">Path</a>
+: <a class="el" href="classIdentifiers.html#a25c5b0e66e42636322e638e7583b3736">Identifiers&lt; T &gt;</a>
+, <a class="el" href="classPath.html#a3e94fc24f7c713442f3d52478d0772fb">Path</a>
 , <a class="el" href="classPgr__astar.html#a0785762813536c8fb14b13cda52db0ee">Pgr_astar&lt; G &gt;</a>
 , <a class="el" href="classPgr__dijkstra.html#a2f5d0a4536457dd08f4d541ea5e5ffca">Pgr_dijkstra&lt; G &gt;</a>
 , <a class="el" href="classPgr__ksp.html#a8c4a810ebc0c9d3b5b24c0353075fc96">Pgr_ksp&lt; G &gt;</a>
+</li>
+<li>clear_contracted_vertices()
+: <a class="el" href="classpgrouting_1_1contraction_1_1Edge.html#ae1bb4736d3ddd5c77d28395078278d01">pgrouting::contraction::Edge</a>
+, <a class="el" href="classpgrouting_1_1contraction_1_1Vertex.html#a1769fa46d8f9e8ed10eac5110f3f51c0">pgrouting::contraction::Vertex</a>
 </li>
 <li>clearInitialTour()
 : <a class="el" href="classCMoveInfo.html#aef0359e1c47517f4674114b5e351f131">CMoveInfo</a>
@@ -168,24 +176,23 @@ $(document).ready(function(){initNavTree('functions_func_c.html','');});
 : <a class="el" href="classCMoveInfo.html#af4f8628bcadfe7670c9af777d0f94ec9">CMoveInfo</a>
 </li>
 <li>closes()
-: <a class="el" href="classpgRouting_1_1vrp_1_1Tw__node.html#afe66e9e29173e9c525e60b28e666a4e0">pgRouting::vrp::Tw_node</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Tw__node.html#ac9349481baefcf809b0bf31ad6e65719">pgrouting::vrp::Tw_node</a>
 </li>
 <li>CMoveInfo()
 : <a class="el" href="classCMoveInfo.html#a14944e2e98bfb2874bc68a79328244b2">CMoveInfo</a>
 </li>
 <li>comparable_distance()
-: <a class="el" href="classpgRouting_1_1tsp_1_1Dmatrix.html#a7d01f582bf7cb425e40b1dd91e4dd8fc">pgRouting::tsp::Dmatrix</a>
-, <a class="el" href="classpgRouting_1_1tsp_1_1eucledianDmatrix.html#a517a68f163549b7be381d9b4c6e9740c">pgRouting::tsp::eucledianDmatrix</a>
-, <a class="el" href="classpgRouting_1_1vrp_1_1Node.html#a0a95935c60cc643c7ffe7d275965059e">pgRouting::vrp::Node</a>
+: <a class="el" href="classpgrouting_1_1tsp_1_1Dmatrix.html#acc4b35ef148eeb5f5a63c8e0112f2741">pgrouting::tsp::Dmatrix</a>
+, <a class="el" href="classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a303896714de1d58dc3f185d2fa2b864a">pgrouting::tsp::eucledianDmatrix</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1Node.html#af4f30af76ecaedd67bc8fc60b998876f">pgrouting::vrp::Node</a>
+</li>
+<li>compareById()
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#aef7bc6e034e9e93407c9eb33508c649f">pgrouting::graph::Pgr_contractionGraph&lt; G, T_V, T_E &gt;</a>
 </li>
 <li>connectEdge()
 : <a class="el" href="classBiDirAStar.html#a022100a19ee0a0e76949956b35fe1952">BiDirAStar</a>
 , <a class="el" href="classBiDirDijkstra.html#aef40b5c4c48d8212d337f24019668c69">BiDirDijkstra</a>
 , <a class="el" href="classGraphDefinition.html#a03e605a7da63297b459419b8cfc17845">GraphDefinition</a>
-</li>
-<li>constraints()
-: <a class="el" href="structboost_1_1AStarHeuristicConcept.html#ad359bb5470fe40f37defc9de8cf8b1b8">boost::AStarHeuristicConcept&lt; Heuristic, Graph &gt;</a>
-, <a class="el" href="structboost_1_1ShootingStarVisitorConcept.html#a59d779990f3e9d4486998f75b8f1546d">boost::ShootingStarVisitorConcept&lt; Visitor, Graph &gt;</a>
 </li>
 <li>construct_graph()
 : <a class="el" href="classBiDirAStar.html#a3826d318c6fd41df6c3eecef14f7e408">BiDirAStar</a>
@@ -195,26 +202,41 @@ $(document).ready(function(){initNavTree('functions_func_c.html','');});
 <li>construct_path()
 : <a class="el" href="classGraphDefinition.html#ac61a71a508c679f798f05dab087eaba3">GraphDefinition</a>
 </li>
+<li>contracted_vertices()
+: <a class="el" href="classpgrouting_1_1contraction_1_1Edge.html#a5f0a255e5eaf5a7250077c2698851df4">pgrouting::contraction::Edge</a>
+, <a class="el" href="classpgrouting_1_1contraction_1_1Vertex.html#af4435ec2cbcf4212ad93199b88bab779">pgrouting::contraction::Vertex</a>
+</li>
 <li>COrderInfo()
 : <a class="el" href="classCOrderInfo.html#a8a009ebafc5fc4c70a23088403c65a4a">COrderInfo</a>
 </li>
 <li>cost()
-: <a class="el" href="classpgRouting_1_1vrp_1_1Solution.html#a588f813fb01a435ffd6e735bfd622f65">pgRouting::vrp::Solution</a>
-, <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#a68d858447f34507ecb637c788cabf10a">pgRouting::vrp::Vehicle</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Solution.html#a674433d019be75504877c559e3a8c276">pgrouting::vrp::Solution</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#a121239d471cfeefc7c40b23bf787a837">pgrouting::vrp::Vehicle</a>
 </li>
 <li>cost_compare()
-: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#a683a8f5d842c1a3161e45eb3f5d3340f">pgRouting::vrp::Vehicle</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#acc73992a7fe2a903bdaf35c5b3da0d09">pgrouting::vrp::Vehicle</a>
 </li>
 <li>cost_str()
-: <a class="el" href="classpgRouting_1_1vrp_1_1Solution.html#a14ff5e02ecef5b516a8beba1ace26b1f">pgRouting::vrp::Solution</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Solution.html#a207a641b1f0404bbe1a1061024b303b7">pgrouting::vrp::Solution</a>
 </li>
 <li>count_rows()
 : <a class="el" href="classPgr__allpairs.html#a6c65d764e29dffee18451019c4da0865">Pgr_allpairs&lt; G &gt;</a>
 </li>
 <li>cp_members()
-: <a class="el" href="classpgRouting_1_1Basic__edge.html#a70b53b8e15e954415c2b3f402ff25476">pgRouting::Basic_edge</a>
-, <a class="el" href="classpgRouting_1_1Basic__vertex.html#ab0b48c78199f00a689f76bed4da94eeb">pgRouting::Basic_vertex</a>
-, <a class="el" href="classpgRouting_1_1XY__vertex.html#a57b83074177ec23ee3e58d359c570e9a">pgRouting::XY_vertex</a>
+: <a class="el" href="classpgrouting_1_1Basic__edge.html#a80460f741fc6830e30c0ba0dd9ffa7eb">pgrouting::Basic_edge</a>
+, <a class="el" href="classpgrouting_1_1Basic__vertex.html#a566f5755c422a1e1bae8888816511c9d">pgrouting::Basic_vertex</a>
+, <a class="el" href="classpgrouting_1_1contraction_1_1Edge.html#a86a9d36426a01d3be32763d7cdf7ceae">pgrouting::contraction::Edge</a>
+, <a class="el" href="classpgrouting_1_1contraction_1_1Vertex.html#ab15b2d09c1fe61186cd94a74721a4ad6">pgrouting::contraction::Vertex</a>
+, <a class="el" href="classpgrouting_1_1XY__vertex.html#aca0f046077596390252d4f93a4299405">pgrouting::XY_vertex</a>
+</li>
+<li>create_edge_disjoint_paths_graph()
+: <a class="el" href="classPgrEdgeDisjointPathsGraph.html#a0dc00a2890938414e48a83493791c6dc">PgrEdgeDisjointPathsGraph&lt; G &gt;</a>
+</li>
+<li>create_flow_graph()
+: <a class="el" href="classPgrFlowGraph.html#acf5cf90ae0e49d5d967bbda8877250f6">PgrFlowGraph&lt; G &gt;</a>
+</li>
+<li>create_max_cardinality_graph()
+: <a class="el" href="classPgrCardinalityGraph.html#a1a750f32926b594bf43f0a698c34a78d">PgrCardinalityGraph&lt; G &gt;</a>
 </li>
 <li>CSolutionInfo()
 : <a class="el" href="classCSolutionInfo.html#a581d72f48cbe5593cd302a9072ade1f3">CSolutionInfo</a>
@@ -229,9 +251,9 @@ $(document).ready(function(){initNavTree('functions_func_c.html','');});
 : <a class="el" href="classCVRPSolver.html#ab4d2c4440b0d5db0cedc425c6af73a35">CVRPSolver</a>
 </li>
 <li>cvTot()
-: <a class="el" href="classpgRouting_1_1vrp_1_1Solution.html#a6e70c2b586e1361f0342c9d7d6c78d2a">pgRouting::vrp::Solution</a>
-, <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#a7c3c6c1826fc94c406ff14e68bdca71f">pgRouting::vrp::Vehicle</a>
-, <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__node.html#a38aec5c1c9286d6cb414e51e50cc909a">pgRouting::vrp::Vehicle_node</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Solution.html#a42b1ebb630efe2ef004521e7a10a400f">pgrouting::vrp::Solution</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#ac7497e9823f6f5f10743fe5c15f54e69">pgrouting::vrp::Vehicle</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#a8f980c43c354eaf38e224c15cc65a165">pgrouting::vrp::Vehicle_node</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -239,7 +261,7 @@ $(document).ready(function(){initNavTree('functions_func_c.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

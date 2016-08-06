@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -120,13 +119,6 @@ $(document).ready(function(){initNavTree('floydWarshall_8c.html','');});
 <code>#include &quot;<a class="el" href="postgres__connection_8h_source.html">./../../common/src/postgres_connection.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="edges__input_8h_source.html">./../../common/src/edges_input.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="floydWarshall__driver_8h_source.html">./floydWarshall_driver.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for floydWarshall.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="floydWarshall_8c__incl.png" border="0" usemap="#floydWarshall_8c" alt=""/></div>
-<map name="floydWarshall_8c" id="floydWarshall_8c">
-<area shape="rect" id="node2" href="postgres_8h.html" title="postgres.h" alt="" coords="651,261,732,288"/><area shape="rect" id="node5" href="debug__macro_8h.html" title="./../../common/src\l/debug_macro.h" alt="" coords="346,81,472,122"/><area shape="rect" id="node6" href="time__msg_8h.html" title="./../../common/src\l/time_msg.h" alt="" coords="13,81,139,122"/><area shape="rect" id="node9" href="pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="755,171,881,213"/><area shape="rect" id="node11" href="postgres__connection_8h.html" title="./../../common/src\l/postgres_connection.h" alt="" coords="497,81,655,122"/><area shape="rect" id="node13" href="edges__input_8h.html" title="./../../common/src\l/edges_input.h" alt="" coords="781,81,907,122"/><area shape="rect" id="node14" href="floydWarshall__driver_8h.html" title="./floydWarshall_driver.h" alt="" coords="931,88,1089,115"/></map>
-</div>
 </div>
 <p><a href="floydWarshall_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -156,7 +148,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="floydWarshall_8c_source.html#l00104">104</a> of file <a class="el" href="floydWarshall_8c_source.html">floydWarshall.c</a>.</p>
 
-<p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="postgres__connection_8c_source.html#l00050">pgr_text2char()</a>, and <a class="el" href="floydWarshall_8c_source.html#l00050">process()</a>.</p>
+<p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="postgres__connection_8c_source.html#l00052">pgr_text2char()</a>, and <a class="el" href="floydWarshall_8c_source.html#l00050">process()</a>.</p>
 
 </div>
 </div>
@@ -222,7 +214,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="floydWarshall_8c_source.html#l00050">50</a> of file <a class="el" href="floydWarshall_8c_source.html">floydWarshall.c</a>.</p>
 
-<p>References <a class="el" href="floydWarshall__driver_8cpp_source.html#l00052">do_pgr_floydWarshall()</a>, <a class="el" href="BDATester_8cpp_source.html#l00046">edges</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="edges__input_8c_source.html#l00323">pgr_get_edges_no_id()</a>, <a class="el" href="postgres__connection_8c_source.html#l00071">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00061">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00009">time_msg()</a>.</p>
+<p>References <a class="el" href="floydWarshall__driver_8cpp_source.html#l00049">do_pgr_floydWarshall()</a>, <a class="el" href="BDATester_8cpp_source.html#l00046">edges</a>, <a class="el" href="BDATester_8cpp_source.html#l00050">err_msg</a>, <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, <a class="el" href="edges__input_8c_source.html#l00548">pgr_get_edges_no_id()</a>, <a class="el" href="postgres__connection_8c_source.html#l00073">pgr_SPI_connect()</a>, <a class="el" href="postgres__connection_8c_source.html#l00063">pgr_SPI_finish()</a>, and <a class="el" href="time__msg_8c_source.html#l00031">time_msg()</a>.</p>
 
 <p>Referenced by <a class="el" href="floydWarshall_8c_source.html#l00104">floydWarshall()</a>.</p>
 
@@ -234,7 +226,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b225a6681fb098ede5646da9389b6da5.html">allpairs</a></li><li class="navelem"><a class="el" href="dir_bd2e1abbbe22b5d2d5e57369037a6da6.html">src</a></li><li class="navelem"><a class="el" href="floydWarshall_8c.html">floydWarshall.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

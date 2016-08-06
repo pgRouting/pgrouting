@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -152,12 +151,28 @@ $(document).ready(function(){initNavTree('functions_v.html','');});
 <h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
 <li>V
 : <a class="el" href="classPgr__astar.html#aa79ca737f8a97288d73fedea0913d251">Pgr_astar&lt; G &gt;</a>
+, <a class="el" href="classPgr__contract.html#a2907a6b7d378516e3f42e9d9a1982748">Pgr_contract&lt; G &gt;</a>
 , <a class="el" href="classPgr__dijkstra.html#ad2e2c37df0da33c877cfc1ea6b979f4d">Pgr_dijkstra&lt; G &gt;</a>
 , <a class="el" href="classPgr__ksp.html#af88d272ba3e52e4f6f82368344361fb0">Pgr_ksp&lt; G &gt;</a>
-, <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a88c52f93ffa572b9a06e4bee7dc371bd">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+, <a class="el" href="classPgrCardinalityGraph.html#ae5aa91f0f41563a15a71b616ffe16997">PgrCardinalityGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrEdgeDisjointPathsGraph.html#a41eb615814d5f3d96dece557e7068eb0">PgrEdgeDisjointPathsGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrFlowGraph.html#a1ba531433d01cab26e29b4439bfd797f">PgrFlowGraph&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#af99d7c620d0a572e15ff6c4802e04e53">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+, <a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ab45997ab5c7d7587e2034bb207cc1d9d">pgrouting::graph::Pgr_contractionGraph&lt; G, T_V, T_E &gt;</a>
+, <a class="el" href="classpgrouting_1_1Pgr__deadEndContraction.html#a4cd3ab4b90629ea8cde55acc33e391ab">pgrouting::Pgr_deadEndContraction&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1Pgr__linearContraction.html#adfede2f71052210f2992cca433e67599">pgrouting::Pgr_linearContraction&lt; G &gt;</a>
 </li>
 <li>V_i
-: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#af9b03ab3fc8d017f46341face27fbfe9">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+: <a class="el" href="classPgr__contract.html#af3af5f944488fc56ab79a09c320aa449">Pgr_contract&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#af190fa2b23e4c4237971e4a92af80458">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+, <a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a1405b2aed17ad370d096a79ed6a744ae">pgrouting::graph::Pgr_contractionGraph&lt; G, T_V, T_E &gt;</a>
+, <a class="el" href="classpgrouting_1_1Pgr__deadEndContraction.html#a416e6e4b28a6b2d51640e4ea19624865">pgrouting::Pgr_deadEndContraction&lt; G &gt;</a>
+, <a class="el" href="classpgrouting_1_1Pgr__linearContraction.html#a920d7a2f6a70bc9dfce777164be9d3c4">pgrouting::Pgr_linearContraction&lt; G &gt;</a>
+</li>
+<li>V_it
+: <a class="el" href="classPgrCardinalityGraph.html#a0ee20d7a0e827a35d970e9c8ae3968aa">PgrCardinalityGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrEdgeDisjointPathsGraph.html#a5f6b2eb30e60b40d28d50d1f70fa93e9">PgrEdgeDisjointPathsGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrFlowGraph.html#af057db80a77b085d0dadc34eb5c42c5a">PgrFlowGraph&lt; G &gt;</a>
 </li>
 <li>v_pos
 : <a class="el" href="structGraphDefinition_1_1PARENT__PATH.html#a3081e66b0a606e21efb244e88df57c09">GraphDefinition::PARENT_PATH</a>
@@ -168,6 +183,11 @@ $(document).ready(function(){initNavTree('functions_v.html','');});
 <li>v_target
 : <a class="el" href="classPgr__ksp.html#a272c77dfb567322b855a83887339a979">Pgr_ksp&lt; G &gt;</a>
 </li>
+<li>V_to_id
+: <a class="el" href="classPgrCardinalityGraph.html#acf9fe49c88add788205ae4d449101ec2">PgrCardinalityGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrEdgeDisjointPathsGraph.html#a3997f2a50507987c6a099d0b75cd3593">PgrEdgeDisjointPathsGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrFlowGraph.html#a5136b1d9c4a3bf723b3a3945aef2abe5">PgrFlowGraph&lt; G &gt;</a>
+</li>
 <li>vecTokens
 : <a class="el" href="classStringTokenizer.html#aeb98f55516c13541fd8047c6f48dfd76">StringTokenizer</a>
 </li>
@@ -175,7 +195,7 @@ $(document).ready(function(){initNavTree('functions_v.html','');});
 : <a class="el" href="classGraphDefinition.html#af6418fb688ea0981f38c066b7c3c5061">GraphDefinition</a>
 </li>
 <li>Vehicle()
-: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle.html#aa9311553191f961baa4d572e21e097a3">pgRouting::vrp::Vehicle</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle.html#a1d6dc2adef8008dde1ea1ded2b03e4ab">pgrouting::vrp::Vehicle</a>
 </li>
 <li>vehicle_id
 : <a class="el" href="structGeneral__vehicle__orders__t.html#aa69d4de94abecc2d47eb1ccaa585df32">General_vehicle_orders_t</a>
@@ -183,17 +203,17 @@ $(document).ready(function(){initNavTree('functions_v.html','');});
 , <a class="el" href="structvrp__result__element.html#a2a570a41cbe01de94a148e47f39177fc">vrp_result_element</a>
 </li>
 <li>Vehicle_node()
-: <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__node.html#a142ece7cfa8f80ed305b8d42ba8c5cc4">pgRouting::vrp::Vehicle_node</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__node.html#ad913ad0cf0e63d1f5abf8933e5775ed5">pgrouting::vrp::Vehicle_node</a>
 </li>
 <li>Vehicle_pickDeliver
-: <a class="el" href="classpgRouting_1_1vrp_1_1Pgr__pickDeliver.html#a5e0b18623283f68157fd2433e813cf7b">pgRouting::vrp::Pgr_pickDeliver</a>
-, <a class="el" href="classpgRouting_1_1vrp_1_1Vehicle__pickDeliver.html#ab40abbb56be782d7de44537858772a86">pgRouting::vrp::Vehicle_pickDeliver</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a5e0b18623283f68157fd2433e813cf7b">pgrouting::vrp::Pgr_pickDeliver</a>
+, <a class="el" href="classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a7f3b56c6dc15350b94095054eea2d79b">pgrouting::vrp::Vehicle_pickDeliver</a>
 </li>
 <li>vehicle_seq
 : <a class="el" href="structGeneral__vehicle__orders__t.html#a2804978ad81fce1570b216108661bb0a">General_vehicle_orders_t</a>
 </li>
-<li>Vertex
-: <a class="el" href="classboost_1_1astar__heuristic.html#ad0c330379e1b411b97cd93e8034f3128">boost::astar_heuristic&lt; Graph, CostType &gt;</a>
+<li>Vertex()
+: <a class="el" href="classpgrouting_1_1contraction_1_1Vertex.html#a3d0639b9cc7a48523b21211917b2f0ed">pgrouting::contraction::Vertex</a>
 </li>
 <li>vertex_id
 : <a class="el" href="structpath__element.html#a5ebbbb2b329f0b071a4c28ef8969b030">path_element</a>
@@ -201,16 +221,13 @@ $(document).ready(function(){initNavTree('functions_v.html','');});
 , <a class="el" href="structPoint__on__edge__t.html#a38e2fd8b1770612706fe6a0b337ed54d">Point_on_edge_t</a>
 </li>
 <li>vertices_map
-: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a59dc1767cefac36818dc094788215752">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab6b2a4bcbb103d1a1a1e06e91ce12ba6">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
 <li>vertices_size_type
-: <a class="el" href="classpgRouting_1_1graph_1_1Pgr__base__graph.html#a09ee1e9608694db60d7808c5cd203622">pgRouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a1f172b8114334cb9cb42e6d29198a0cc">pgrouting::graph::Pgr_base_graph&lt; G, Vertex, Edge &gt;</a>
 </li>
 <li>via
 : <a class="el" href="structRestrict__t.html#a7832e99f4b67c9cf3dcb823355e83ad6">Restrict_t</a>
-</li>
-<li>vis
-: <a class="el" href="structboost_1_1ShootingStarVisitorConcept.html#ad7a298a98e6532e866fb9bb163c9d882">boost::ShootingStarVisitorConcept&lt; Visitor, Graph &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -218,7 +235,7 @@ $(document).ready(function(){initNavTree('functions_v.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

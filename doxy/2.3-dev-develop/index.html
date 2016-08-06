@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>pgRouting: pgRouting Developer&#39;s Documentation</title>
+<title>pgRouting: Developer&#39;s Documentation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -100,12 +99,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title"><a class="el" href="namespacepgRouting.html" title="boost::graph simplified to pgRouting needs ">pgRouting</a> Developer's Documentation </div>  </div>
+<div class="title">Developer's Documentation </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>This documentation is focused on the developer of <a class="el" href="namespacepgRouting.html" title="boost::graph simplified to pgRouting needs ">pgRouting</a>.</p>
+<p>This documentation is focused on the developer of <a href="http://pgrouting.org">pgRouting</a>.</p>
 <p>A developer might want to:</p>
 <ul>
 <li>Fix a bug</li>
@@ -126,12 +125,12 @@ Introduction</h1>
 Installation for developing</h1>
 <p>Step by Step processing</p>
 <ol type="1">
-<li>Create a fork of the original <a class="el" href="namespacepgRouting.html" title="boost::graph simplified to pgRouting needs ">pgRouting</a> repository.<ul>
+<li>Create a fork of the original <a href="https://github.com/pgRouting/pgrouting">pgRouting</a> repository.<ul>
 <li>If you don't have an account in Github, please <a href="https://github.com/">create one</a><ul>
 <li>for purposes of this document the account name is: <code>acountName</code></li>
 </ul>
 </li>
-<li>Navigate to <a href="https://github.com/pgRouting/pgrouting">pgRouting repository</a></li>
+<li>Navigate to <a href="https://github.com/pgRouting/pgrouting">pgRouting</a> repository.</li>
 <li>In the top-right corner of the page, click Fork.</li>
 <li>Additional information can be found in <a href="https://help.github.com/articles/fork-a-repo">fork-a-repo</a></li>
 </ul>
@@ -144,11 +143,11 @@ Installation for developing</h1>
 </li>
 <li>Go to your repo <div class="fragment"><div class="line">cd pgrouting</div>
 </div><!-- fragment --></li>
-<li>Seting the remote fetching connections<ul>
-<li>More on remotes](<a href="https://help.github.com/categories/managing-remotes/">https://help.github.com/categories/managing-remotes/</a>) .</li>
+<li>Setting the remote fetching connections<ul>
+<li><a href="https://help.github.com/categories/managing-remotes/">More on remotes</a> .</li>
 <li>check the remote connection <div class="fragment"><div class="line">git remote -v</div>
 </div><!-- fragment --></li>
-<li>Add upstream remote (ussually the main repository) <div class="fragment"><div class="line">git remote add upstream https:<span class="comment">//github.com/pgRouting/pgrouting</span></div>
+<li>Add upstream remote (usually the main repository) <div class="fragment"><div class="line">git remote add upstream https:<span class="comment">//github.com/pgRouting/pgrouting</span></div>
 </div><!-- fragment --></li>
 <li>check the remote connection <div class="fragment"><div class="line">git remote -v</div>
 </div><!-- fragment --></li>
@@ -168,8 +167,8 @@ Git Branching Model</h1>
 <li>For micro changes</li>
 <li>let us branch Master to a quick-fix branch</li>
 <li>Merge into the quick-fix</li>
-<li>We need to do some changes for the release numers etc...</li>
-<li>Finnaly we merge into Master</li>
+<li>We need to do some changes for the release numbers etc...</li>
+<li>Finally we merge into Master</li>
 </ul>
 </li>
 <li>To accept a pull request into develop:<ul>
@@ -240,7 +239,7 @@ Git Branching Model</h1>
 </li>
 <li>Merge back your ideas when you feel its worth to keep: <div class="fragment"><div class="line">git checkout dev-myFeature</div>
 <div class="line">git merge dev-myFeature-idea1</div>
-<div class="line">&lt;fix conflics <span class="keywordflow">if</span> any&gt;</div>
+<div class="line">&lt;fix conflicts <span class="keywordflow">if</span> any&gt;</div>
 </div><!-- fragment --></li>
 </ol>
 <h1><a class="anchor" id="up_to_date"></a>
@@ -255,29 +254,31 @@ Keep Fork Up to Date</h1>
 </div><!-- fragment --></li>
 <li>Update your branch to include the change <div class="fragment"><div class="line">git checkout dev-myFeature</div>
 <div class="line">git merge develop</div>
-<div class="line">&lt;fix conflics <span class="keywordflow">if</span> any&gt;</div>
+<div class="line">&lt;fix conflicts <span class="keywordflow">if</span> any&gt;</div>
 </div><!-- fragment --></li>
 </ul>
 </li>
 </ol>
 <h1><a class="anchor" id="perform_tests"></a>
 Beware of Side Effects</h1>
-<p>Modifications that you make should not affect other parts of the library. <a class="el" href="namespacepgRouting.html" title="boost::graph simplified to pgRouting needs ">pgRouting</a> has a testing tool, so that developers make sure of</p>
+<p>Modifications that you make should not affect other parts of the library. pgRouting has a testing tool, for developers.</p>
+<p>Make sure that</p>
 <ul>
 <li>Code changes don't generate unexpected results</li>
 <li>Bug fixes actually fix the bug</li>
 <li>Expected output is generated</li>
 </ul>
-<p>Move to the root directory.</p>
+<p>To do this:</p>
 <ol type="1">
-<li>get the help of testing tool: <div class="fragment"><div class="line">tools/test-runner.pl -help</div>
+<li>Move to the root directory.</li>
+<li>get the help of testing tool: <div class="fragment"><div class="line">tools/testers/algorithm-tester.pl -help</div>
 </div><!-- fragment --></li>
-<li>run all the tests <div class="fragment"><div class="line">tools/test-runner.pl </div>
+<li>run all the tests <div class="fragment"><div class="line">tools/testers/algorithm-tester.pl</div>
 </div><!-- fragment --></li>
 </ol>
 <h1><a class="anchor" id="automate_process"></a>
 Make a run.sh</h1>
-<p>A shell to automate the compilation and execution is usefull when developing.</p>
+<p>A shell to automate the compilation and execution is useful when developing.</p>
 <ol type="1">
 <li>Move to the root directory.</li>
 <li>Create your tool: <div class="fragment"><div class="line">vi run.sh</div>
@@ -286,30 +287,35 @@ Make a run.sh</h1>
 <div class="line"><span class="preprocessor">#make clean</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#rm -rf *</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#cmake -DBOOST_ROOT:PATH=/usr/local/boost_1_58_0 ..</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#cmake -DWITH_DOC=ON ..</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#cmake -DWITH_DOC=ON -DBUILD_DOXY ..</span></div>
 <div class="line"><span class="preprocessor"></span>cmake ..</div>
 <div class="line"></div>
 <div class="line">make</div>
 <div class="line"></div>
 <div class="line">sudo make install</div>
 <div class="line"><span class="preprocessor">#make doc</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#make doxy</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line">cd ..</div>
-<div class="line">tools/test-runner.pl -alg common -v -clean -ignorenotice</div>
-<div class="line"><span class="preprocessor">#tools/test-runner.pl -alg dijkstra -v -clean </span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#tools/test-runner.pl -alg dijkstra_via_vertices -v -clean </span></div>
-<div class="line"><span class="preprocessor">#tools/test-runner.pl -alg doc -v -clean -ignorenotice</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># before testing everything</span></div>
+<div class="line"><span class="preprocessor"></span>tools/test-runner.pl -alg common </div>
+<div class="line">tools/test-runner.pl -alg dijkstra </div>
+<div class="line">tools/test-runner.pl -alg myfeature</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># test everything</span></div>
+<div class="line"><span class="preprocessor">tools/test-runner.pl -alg</span></div>
 </div><!-- fragment --></li>
-<li>Comment and uncommet the file depending on your particular needs and execute it. <div class="fragment"><div class="line">sh run.sh</div>
+<li>Comment and uncomment the file depending on your particular needs and execute it. <div class="fragment"><div class="line">sh run.sh</div>
 </div><!-- fragment --></li>
-<li>Don't add that file to the repository, its for your development only.</li>
 </ol>
+<dl class="section warning"><dt>Warning</dt><dd>Don't add run.sh to the repository, its for your development only.</dd></dl>
 <h1><a class="anchor" id="setup_travis"></a>
 Setup Travis</h1>
 <p>The main difference between your run.sh test and Travis test is:</p>
 <ul>
 <li>With run.sh you are testing locally.</li>
-<li>Travis test a matrix combination of postgreSQL and postGIS versions</li>
+<li>Travis tests a matrix combination of postgreSQL and postGIS versions</li>
 </ul>
 <p>To make use of travis test make sure that:</p>
 <ol type="1">
@@ -335,7 +341,7 @@ File conventions</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

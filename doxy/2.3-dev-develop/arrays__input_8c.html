@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -111,21 +110,14 @@ $(document).ready(function(){initNavTree('arrays__input_8c.html','');});
 <div class="title">arrays_input.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./pgr_types.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="postgres_8h_source.html">postgres.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="postgres_8h_source.html">postgres.h</a>&gt;</code><br/>
 <code>#include &quot;utils/lsyscache.h&quot;</code><br/>
 <code>#include &quot;catalog/pg_type.h&quot;</code><br/>
 <code>#include &quot;utils/array.h&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./pgr_types.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="time__msg_8h_source.html">./time_msg.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="debug__macro_8h_source.html">./debug_macro.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="arrays__input_8h_source.html">./arrays_input.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for arrays_input.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="arrays__input_8c__incl.png" border="0" usemap="#arrays__input_8c" alt=""/></div>
-<map name="arrays__input_8c" id="arrays__input_8c">
-<area shape="rect" id="node2" href="pgr__types_8h.html" title="./pgr_types.h" alt="" coords="93,155,192,181"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="5,229,87,256"/><area shape="rect" id="node8" href="time__msg_8h.html" title="./time_msg.h" alt="" coords="823,80,921,107"/><area shape="rect" id="node11" href="debug__macro_8h.html" title="./debug_macro.h" alt="" coords="679,80,797,107"/><area shape="rect" id="node12" href="arrays__input_8h.html" title="./arrays_input.h" alt="" coords="84,80,195,107"/></map>
-</div>
 </div>
 <p><a href="arrays__input_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -133,6 +125,8 @@ Include dependency graph for arrays_input.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a8b3b624e84ed449440408d11251384c1"><td class="memItemLeft" align="right" valign="top">int64_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">pgr_get_bigIntArray</a> (size_t *arrlen, ArrayType *input)</td></tr>
 <tr class="separator:a8b3b624e84ed449440408d11251384c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc139acaca9d25eca8151cb70f90a90f"><td class="memItemLeft" align="right" valign="top">int64_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arrays__input_8c.html#acc139acaca9d25eca8151cb70f90a90f">pgr_get_bigIntArray_allowEmpty</a> (size_t *arrlen, ArrayType *input)</td></tr>
+<tr class="separator:acc139acaca9d25eca8151cb70f90a90f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a8b3b624e84ed449440408d11251384c1"></a>
@@ -161,9 +155,41 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="arrays__input_8c_source.html#l00038">38</a> of file <a class="el" href="arrays__input_8c_source.html">arrays_input.c</a>.</p>
 
-<p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="time__msg_8c_source.html#l00009">time_msg()</a>.</p>
+<p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="time__msg_8c_source.html#l00031">time_msg()</a>.</p>
 
-<p>Referenced by <a class="el" href="astarManyToMany_8c_source.html#l00157">astarManyToMany()</a>, <a class="el" href="astarManyToOne_8c_source.html#l00156">astarManyToOne()</a>, <a class="el" href="astarOneToMany_8c_source.html#l00155">astarOneToMany()</a>, <a class="el" href="dijkstraVia_8c_source.html#l00115">dijkstraVia()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00099">driving_many_to_dist()</a>, <a class="el" href="many__to__many__dijkstra_8c_source.html#l00115">many_to_many_dijkstra()</a>, <a class="el" href="many__to__many__withPoints_8c_source.html#l00149">many_to_many_withPoints()</a>, <a class="el" href="many__to__one__dijkstra_8c_source.html#l00114">many_to_one_dijkstra()</a>, <a class="el" href="many__to__one__withPoints_8c_source.html#l00143">many_to_one_withPoints()</a>, <a class="el" href="many__to__dist__withPointsDD_8c_source.html#l00145">many_withPointsDD()</a>, <a class="el" href="one__to__many__dijkstra_8c_source.html#l00114">one_to_many_dijkstra()</a>, and <a class="el" href="one__to__many__withPoints_8c_source.html#l00194">one_to_many_withPoints()</a>.</p>
+<p>Referenced by <a class="el" href="astarManyToMany_8c_source.html#l00139">astarManyToMany()</a>, <a class="el" href="astarManyToOne_8c_source.html#l00138">astarManyToOne()</a>, <a class="el" href="astarOneToMany_8c_source.html#l00137">astarOneToMany()</a>, <a class="el" href="contractGraph_8c_source.html#l00136">contractGraph()</a>, <a class="el" href="dijkstraVia_8c_source.html#l00115">dijkstraVia()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00099">driving_many_to_dist()</a>, <a class="el" href="edge__disjoint__paths__many__to__many_8c_source.html#l00114">edge_disjoint_paths_many_to_many()</a>, <a class="el" href="edge__disjoint__paths__many__to__one_8c_source.html#l00114">edge_disjoint_paths_many_to_one()</a>, <a class="el" href="edge__disjoint__paths__one__to__many_8c_source.html#l00113">edge_disjoint_paths_one_to_many()</a>, <a class="el" href="many__to__many__dijkstra_8c_source.html#l00115">many_to_many_dijkstra()</a>, <a class="el" href="many__to__many__withPoints_8c_source.html#l00146">many_to_many_withPoints()</a>, <a class="el" href="many__to__one__dijkstra_8c_source.html#l00115">many_to_one_dijkstra()</a>, <a class="el" href="many__to__one__withPoints_8c_source.html#l00142">many_to_one_withPoints()</a>, <a class="el" href="many__to__dist__withPointsDD_8c_source.html#l00145">many_withPointsDD()</a>, <a class="el" href="max__flow__many__to__many_8c_source.html#l00121">max_flow_many_to_many()</a>, <a class="el" href="max__flow__many__to__one_8c_source.html#l00121">max_flow_many_to_one()</a>, <a class="el" href="max__flow__one__to__many_8c_source.html#l00121">max_flow_one_to_many()</a>, <a class="el" href="one__to__many__dijkstra_8c_source.html#l00114">one_to_many_dijkstra()</a>, and <a class="el" href="one__to__many__withPoints_8c_source.html#l00195">one_to_many_withPoints()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acc139acaca9d25eca8151cb70f90a90f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int64_t* pgr_get_bigIntArray_allowEmpty </td>
+          <td>(</td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>arrlen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ArrayType *&#160;</td>
+          <td class="paramname"><em>input</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="arrays__input_8c_source.html#l00119">119</a> of file <a class="el" href="arrays__input_8c_source.html">arrays_input.c</a>.</p>
+
+<p>References <a class="el" href="debug__macro_8h_source.html#l00033">PGR_DBG</a>, and <a class="el" href="time__msg_8c_source.html#l00031">time_msg()</a>.</p>
+
+<p>Referenced by <a class="el" href="contractGraph_8c_source.html#l00136">contractGraph()</a>.</p>
 
 </div>
 </div>
@@ -173,7 +199,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="arrays__input_8c.html">arrays_input.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

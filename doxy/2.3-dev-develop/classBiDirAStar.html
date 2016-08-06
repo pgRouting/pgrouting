@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -118,13 +117,6 @@ $(document).ready(function(){initNavTree('classBiDirAStar.html','');});
 <div class="contents">
 
 <p><code>#include &quot;<a class="el" href="src_2BiDirAStar_8h_source.html">BiDirAStar.h</a>&quot;</code></p>
-<div class="dynheader">
-Collaboration diagram for BiDirAStar:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBiDirAStar__coll__graph.png" border="0" usemap="#BiDirAStar_coll__map" alt="Collaboration graph"/></div>
-<map name="BiDirAStar_coll__map" id="BiDirAStar_coll__map">
-<area shape="rect" id="node3" href="structpath__element__t.html" title="path_element_t" alt="" coords="353,7,463,33"/><area shape="rect" id="node5" href="structGraphNodeInfo.html" title="GraphNodeInfo" alt="" coords="353,57,463,84"/><area shape="rect" id="node9" href="structPARENT__PATH.html" title="PARENT_PATH" alt="" coords="617,165,737,192"/><area shape="rect" id="node11" href="structGraphEdgeInfo.html" title="GraphEdgeInfo" alt="" coords="353,216,463,243"/><area shape="rect" id="node13" title="STL class. " alt="" coords="350,267,466,293"/></map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -206,9 +198,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a820fc7efee3463764e1b3c41cfeb3067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ea4323cc9be83d46234eaaf3c0ec9aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirAStar.html#a3ea4323cc9be83d46234eaaf3c0ec9aa">m_lStartNodeId</a></td></tr>
 <tr class="separator:a3ea4323cc9be83d46234eaaf3c0ec9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a73d48ee33579b24798a66205830840"><td class="memItemLeft" align="right" valign="top"><a class="el" href="src_2BiDirAStar_8h.html#aaed92092d40a1e010be2421479fbafca">Long2LongMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirAStar.html#a6a73d48ee33579b24798a66205830840">m_mapEdgeId2Index</a></td></tr>
+<tr class="memitem:a6a73d48ee33579b24798a66205830840"><td class="memItemLeft" align="right" valign="top"><a class="el" href="src_2BiDirAStar_8h.html#a5ec4e27c864b3508d5f3b40b0a2e91ca">Long2LongMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirAStar.html#a6a73d48ee33579b24798a66205830840">m_mapEdgeId2Index</a></td></tr>
 <tr class="separator:a6a73d48ee33579b24798a66205830840"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb472312f40d9b0c68427c6715cebdfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="src_2BiDirAStar_8h.html#a556e9f82da7e728ae8d740a0af550f19">Long2LongVectorMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirAStar.html#aeb472312f40d9b0c68427c6715cebdfa">m_mapNodeId2Edge</a></td></tr>
+<tr class="memitem:aeb472312f40d9b0c68427c6715cebdfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="src_2BiDirAStar_8h.html#a19aec644c14a4421505ced59296213f9">Long2LongVectorMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirAStar.html#aeb472312f40d9b0c68427c6715cebdfa">m_mapNodeId2Edge</a></td></tr>
 <tr class="separator:aeb472312f40d9b0c68427c6715cebdfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae04b92177980c695299a2a5e0228766c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBiDirAStar.html#ae04b92177980c695299a2a5e0228766c">m_MidNode</a></td></tr>
 <tr class="separator:ae04b92177980c695299a2a5e0228766c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -251,7 +243,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00043">43</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00044">44</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
 </div>
 </div>
@@ -328,11 +320,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00464">464</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00415">415</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="tester_2BiDirAStar_8h_source.html#l00070">edge::cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00071">GraphEdgeInfo::Cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00070">GraphEdgeInfo::Direction</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00068">GraphEdgeInfo::EdgeID</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00069">GraphEdgeInfo::EdgeIndex</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00074">GraphEdgeInfo::EndNode</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00063">edge::id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">m_mapEdgeId2Index</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00111">m_vecEdgeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">m_vecNodeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00116">max_edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00115">max_node_id</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00071">edge::reverse_cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00072">GraphEdgeInfo::ReverseCost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00066">edge::s_x</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00067">edge::s_y</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00064">edge::source</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00073">GraphEdgeInfo::StartNode</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00068">edge::t_x</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00069">edge::t_y</a>, and <a class="el" href="tester_2BiDirAStar_8h_source.html#l00065">edge::target</a>.</p>
+<p>References <a class="el" href="tester_2BiDirAStar_8h_source.html#l00070">edge::cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00071">GraphEdgeInfo::Cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00070">GraphEdgeInfo::Direction</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00068">GraphEdgeInfo::EdgeID</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00069">GraphEdgeInfo::EdgeIndex</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00074">GraphEdgeInfo::EndNode</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00063">edge::id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00110">m_mapEdgeId2Index</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00109">m_vecEdgeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">m_vecNodeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">max_edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00113">max_node_id</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00071">edge::reverse_cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00072">GraphEdgeInfo::ReverseCost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00066">edge::s_x</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00067">edge::s_y</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00064">edge::source</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00073">GraphEdgeInfo::StartNode</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00068">edge::t_x</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00069">edge::t_y</a>, and <a class="el" href="tester_2BiDirAStar_8h_source.html#l00065">edge::target</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00426">construct_graph()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00380">construct_graph()</a>.</p>
 
 </div>
 </div>
@@ -420,9 +412,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">307</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">269</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00426">construct_graph()</a>, <a class="el" href="pgr__types_8h_source.html#l00069">path_element_t::cost</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00095">deleteall()</a>, <a class="el" href="pgr__types_8h_source.html#l00068">path_element_t::edge_id</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00103">MinHeap::empty()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00180">fconstruct_path()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">m_lEndNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00117">m_lStartNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_MidNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">m_MinCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00125">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00126">m_pRCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00116">max_edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00115">max_node_id</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Edge</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00110">MinHeap::pop()</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00072">MinHeap::push()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00197">rconstruct_path()</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00098">MinHeap::top()</a>, and <a class="el" href="pgr__types_8h_source.html#l00067">path_element_t::vertex_id</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00380">construct_graph()</a>, <a class="el" href="pgr__types_8h_source.html#l00076">path_element_t::cost</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00089">deleteall()</a>, <a class="el" href="pgr__types_8h_source.html#l00075">path_element_t::edge_id</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00092">MinHeap::empty()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00156">fconstruct_path()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00116">m_lEndNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00115">m_lStartNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00119">m_MidNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">m_MinCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">max_edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00113">max_node_id</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00055">PARENT_PATH::par_Edge</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00098">MinHeap::pop()</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00069">MinHeap::push()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00172">rconstruct_path()</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00088">MinHeap::top()</a>, and <a class="el" href="pgr__types_8h_source.html#l00074">path_element_t::vertex_id</a>.</p>
 
 <p>Referenced by <a class="el" href="bdastar__driver_8cpp_source.html#l00045">bdastar_wrapper()</a>, and <a class="el" href="BDATester_8cpp_source.html#l00218">main()</a>.</p>
 
@@ -490,7 +482,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tester_2BiDirAStar_8cpp_source.html#l00289">289</a> of file <a class="el" href="tester_2BiDirAStar_8cpp_source.html">tester/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00426">construct_graph()</a>, <a class="el" href="pgr__types_8h_source.html#l00069">path_element_t::cost</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00095">deleteall()</a>, <a class="el" href="pgr__types_8h_source.html#l00068">path_element_t::edge_id</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00103">MinHeap::empty()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00180">fconstruct_path()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">m_lEndNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00117">m_lStartNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_MidNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">m_MinCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00125">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00126">m_pRCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">m_vecNodeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00116">max_edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00115">max_node_id</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00110">MinHeap::pop()</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00072">MinHeap::push()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00197">rconstruct_path()</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00098">MinHeap::top()</a>, and <a class="el" href="pgr__types_8h_source.html#l00067">path_element_t::vertex_id</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00380">construct_graph()</a>, <a class="el" href="pgr__types_8h_source.html#l00076">path_element_t::cost</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00089">deleteall()</a>, <a class="el" href="pgr__types_8h_source.html#l00075">path_element_t::edge_id</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00092">MinHeap::empty()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00156">fconstruct_path()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00116">m_lEndNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00115">m_lStartNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00119">m_MidNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">m_MinCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">m_vecNodeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">max_edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00113">max_node_id</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, <a class="el" href="BDATester_8cpp_source.html#l00051">path_count</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00098">MinHeap::pop()</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00069">MinHeap::push()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00172">rconstruct_path()</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00088">MinHeap::top()</a>, and <a class="el" href="pgr__types_8h_source.html#l00074">path_element_t::vertex_id</a>.</p>
 
 </div>
 </div>
@@ -612,11 +604,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00426">426</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00380">380</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00464">addEdge()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00062">GraphNodeInfo::Connected_Edges_Index</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00061">GraphNodeInfo::Connected_Nodes</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">edge_count</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00111">m_vecEdgeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">m_vecNodeVector</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00058">GraphNodeInfo::NodeID</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00415">addEdge()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00063">GraphNodeInfo::Connected_Edges_Index</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00062">GraphNodeInfo::Connected_Nodes</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">edge_count</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00109">m_vecEdgeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">m_vecNodeVector</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00059">GraphNodeInfo::NodeID</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>.</p>
 
 </div>
 </div>
@@ -660,7 +652,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="tester_2BiDirAStar_8cpp_source.html#l00410">410</a> of file <a class="el" href="tester_2BiDirAStar_8cpp_source.html">tester/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00464">addEdge()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00062">GraphNodeInfo::Connected_Edges_Index</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00061">GraphNodeInfo::Connected_Nodes</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">edge_count</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">m_vecNodeVector</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00058">GraphNodeInfo::NodeID</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00415">addEdge()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00063">GraphNodeInfo::Connected_Edges_Index</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00062">GraphNodeInfo::Connected_Nodes</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">edge_count</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">m_vecNodeVector</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00059">GraphNodeInfo::NodeID</a>.</p>
 
 </div>
 </div>
@@ -685,11 +677,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00095">95</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00089">89</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00125">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00126">m_pRCost</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRParent</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRCost</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_pRParent</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>.</p>
 
 </div>
 </div>
@@ -760,9 +752,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00122">122</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00111">111</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00132">gethcost()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00120">gethcost()</a>.</p>
 
 </div>
 </div>
@@ -856,11 +848,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">220</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">193</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00071">GraphEdgeInfo::Cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00070">GraphEdgeInfo::Direction</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00068">GraphEdgeInfo::EdgeID</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00109">getcost()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00132">gethcost()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_MidNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">m_MinCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00111">m_vecEdgeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">m_vecNodeVector</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00072">MinHeap::push()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00072">GraphEdgeInfo::ReverseCost</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00149">setcost()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00161">setparent()</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00073">GraphEdgeInfo::StartNode</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00071">GraphEdgeInfo::Cost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00070">GraphEdgeInfo::Direction</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00068">GraphEdgeInfo::EdgeID</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00102">getcost()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00120">gethcost()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00119">m_MidNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">m_MinCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00109">m_vecEdgeVector</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">m_vecNodeVector</a>, <a class="el" href="src_2MinHeap_8cpp_source.html#l00069">MinHeap::push()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00072">GraphEdgeInfo::ReverseCost</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00133">setcost()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00141">setparent()</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00073">GraphEdgeInfo::StartNode</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>.</p>
 
 </div>
 </div>
@@ -932,11 +924,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00180">180</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00156">156</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00069">path_element_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00068">path_element_t::edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00125">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Edge</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>, and <a class="el" href="pgr__types_8h_source.html#l00067">path_element_t::vertex_id</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00076">path_element_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00075">path_element_t::edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00055">PARENT_PATH::par_Edge</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>, and <a class="el" href="pgr__types_8h_source.html#l00074">path_element_t::vertex_id</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>.</p>
 
 </div>
 </div>
@@ -996,11 +988,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00109">109</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00102">102</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00125">m_pFCost</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00126">m_pRCost</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFCost</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRCost</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>.</p>
 
 </div>
 </div>
@@ -1070,11 +1062,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00132">132</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00120">120</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00122">dist()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">m_lEndNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00117">m_lStartNodeId</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">m_vecNodeVector</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00111">dist()</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00116">m_lEndNodeId</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00115">m_lStartNodeId</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">m_vecNodeVector</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>.</p>
 
 </div>
 </div>
@@ -1133,7 +1125,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00051">51</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00050">50</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
 </div>
 </div>
@@ -1182,11 +1174,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">62</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">59</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00044">INF</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_MidNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">m_MinCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00125">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00126">m_pRCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">m_vecNodeVector</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00045">INF</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00119">m_MidNode</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">m_MinCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">m_vecNodeVector</a>, <a class="el" href="BDATester_8cpp_source.html#l00047">maxNode</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>.</p>
 
 </div>
 </div>
@@ -1236,11 +1228,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00197">197</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00172">172</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__types_8h_source.html#l00069">path_element_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00068">path_element_t::edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00126">m_pRCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>, and <a class="el" href="pgr__types_8h_source.html#l00067">path_element_t::vertex_id</a>.</p>
+<p>References <a class="el" href="pgr__types_8h_source.html#l00076">path_element_t::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00075">path_element_t::edge_id</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRCost</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">m_vecPath</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>, and <a class="el" href="pgr__types_8h_source.html#l00074">path_element_t::vertex_id</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>.</p>
 
 </div>
 </div>
@@ -1306,11 +1298,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00149">149</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00133">133</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00125">m_pFCost</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00126">m_pRCost</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFCost</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRCost</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>.</p>
 
 </div>
 </div>
@@ -1398,11 +1390,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00161">161</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00141">141</a> of file <a class="el" href="src_2BiDirAStar_8cpp_source.html">src/BiDirAStar.cpp</a>.</p>
 
-<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Edge</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00053">PARENT_PATH::par_Node</a>.</p>
+<p>References <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">m_pFParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">m_pRParent</a>, <a class="el" href="src_2BiDirAStar_8h_source.html#l00055">PARENT_PATH::par_Edge</a>, and <a class="el" href="src_2BiDirAStar_8h_source.html#l00054">PARENT_PATH::par_Node</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>.</p>
 
 </div>
 </div>
@@ -1471,9 +1463,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">118</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00116">116</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00132">gethcost()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00120">gethcost()</a>.</p>
 
 </div>
 </div>
@@ -1495,9 +1487,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00117">117</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00115">115</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00132">gethcost()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00120">gethcost()</a>.</p>
 
 </div>
 </div>
@@ -1509,7 +1501,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="src_2BiDirAStar_8h.html#aaed92092d40a1e010be2421479fbafca">Long2LongMap</a> BiDirAStar::m_mapEdgeId2Index</td>
+          <td class="memname"><a class="el" href="src_2BiDirAStar_8h.html#a5ec4e27c864b3508d5f3b40b0a2e91ca">Long2LongMap</a> BiDirAStar::m_mapEdgeId2Index</td>
         </tr>
       </table>
   </td>
@@ -1519,9 +1511,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">112</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00110">110</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00464">addEdge()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00415">addEdge()</a>.</p>
 
 </div>
 </div>
@@ -1533,7 +1525,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="src_2BiDirAStar_8h.html#a556e9f82da7e728ae8d740a0af550f19">Long2LongVectorMap</a> BiDirAStar::m_mapNodeId2Edge</td>
+          <td class="memname"><a class="el" href="src_2BiDirAStar_8h.html#a19aec644c14a4421505ced59296213f9">Long2LongVectorMap</a> BiDirAStar::m_mapNodeId2Edge</td>
         </tr>
       </table>
   </td>
@@ -1543,7 +1535,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00113">113</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00111">111</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
 </div>
 </div>
@@ -1565,9 +1557,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">121</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00119">119</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>.</p>
 
 </div>
 </div>
@@ -1589,9 +1581,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">120</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00118">118</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>.</p>
 
 </div>
 </div>
@@ -1613,9 +1605,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00125">125</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">123</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00095">deleteall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00180">fconstruct_path()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00109">getcost()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00149">setcost()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00089">deleteall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00156">fconstruct_path()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00102">getcost()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00133">setcost()</a>.</p>
 
 </div>
 </div>
@@ -1637,9 +1629,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00123">123</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00121">121</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00095">deleteall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00180">fconstruct_path()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00161">setparent()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00089">deleteall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00156">fconstruct_path()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00141">setparent()</a>.</p>
 
 </div>
 </div>
@@ -1661,9 +1653,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00126">126</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">124</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00095">deleteall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00109">getcost()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00197">rconstruct_path()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00149">setcost()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00089">deleteall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00102">getcost()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00172">rconstruct_path()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00133">setcost()</a>.</p>
 
 </div>
 </div>
@@ -1685,9 +1677,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00124">124</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">122</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00095">deleteall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00197">rconstruct_path()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00161">setparent()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00089">deleteall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00172">rconstruct_path()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00141">setparent()</a>.</p>
 
 </div>
 </div>
@@ -1709,9 +1701,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00111">111</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00109">109</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00464">addEdge()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00426">construct_graph()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00415">addEdge()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00380">construct_graph()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>.</p>
 
 </div>
 </div>
@@ -1733,9 +1725,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">114</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00112">112</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00464">addEdge()</a>, <a class="el" href="tester_2BiDirAStar_8cpp_source.html#l00289">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00426">construct_graph()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00220">explore()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00132">gethcost()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">initall()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00415">addEdge()</a>, <a class="el" href="tester_2BiDirAStar_8cpp_source.html#l00289">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00380">construct_graph()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00193">explore()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00120">gethcost()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">initall()</a>.</p>
 
 </div>
 </div>
@@ -1757,9 +1749,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00122">122</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00120">120</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00180">fconstruct_path()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00197">rconstruct_path()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>, <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00156">fconstruct_path()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00172">rconstruct_path()</a>.</p>
 
 </div>
 </div>
@@ -1781,9 +1773,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00116">116</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00114">114</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00464">addEdge()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00415">addEdge()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>.</p>
 
 </div>
 </div>
@@ -1805,9 +1797,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00115">115</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00113">113</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00464">addEdge()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00307">bidir_astar()</a>.</p>
+<p>Referenced by <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00415">addEdge()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00269">bidir_astar()</a>.</p>
 
 </div>
 </div>
@@ -1821,7 +1813,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classBiDirAStar.html">BiDirAStar</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

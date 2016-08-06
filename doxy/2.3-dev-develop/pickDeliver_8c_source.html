@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -360,20 +359,20 @@ $(document).ready(function(){initNavTree('pickDeliver_8c_source.html','');});
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        SRF_RETURN_DONE(funcctx);</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;}</div>
-<div class="ttc" id="structCustomer__t_html"><div class="ttname"><a href="structCustomer__t.html">Customer_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00175">pgr_types.h:175</a></div></div>
+<div class="ttc" id="structCustomer__t_html"><div class="ttname"><a href="structCustomer__t.html">Customer_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00197">pgr_types.h:197</a></div></div>
 <div class="ttc" id="customers__input_8c_html_aba94bfaedd66a6c519b263b6497b3a9a"><div class="ttname"><a href="customers__input_8c.html#aba94bfaedd66a6c519b263b6497b3a9a">pgr_get_customers_data</a></div><div class="ttdeci">void pgr_get_customers_data(char *customers_sql, Customer_t **customers, size_t *total_customers)</div><div class="ttdef"><b>Definition:</b> <a href="customers__input_8c_source.html#l00056">customers_input.c:56</a></div></div>
 <div class="ttc" id="debug__macro_8h_html_a1de36e41fe82179fc7f8841b522787cf"><div class="ttname"><a href="debug__macro_8h.html#a1de36e41fe82179fc7f8841b522787cf">PGR_DBG</a></div><div class="ttdeci">#define PGR_DBG(...)</div><div class="ttdef"><b>Definition:</b> <a href="debug__macro_8h_source.html#l00033">debug_macro.h:33</a></div></div>
 <div class="ttc" id="customers__input_8h_html"><div class="ttname"><a href="customers__input_8h.html">customers_input.h</a></div></div>
 <div class="ttc" id="pickDeliver_8c_html_a3dc08419df4d841e2f16364039d8b6b7"><div class="ttname"><a href="pickDeliver_8c.html#a3dc08419df4d841e2f16364039d8b6b7">process</a></div><div class="ttdeci">static void process(char *customers_sql, int max_vehicles, double capacity, double speed, int max_cycles, General_vehicle_orders_t **result_tuples, size_t *result_count)</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliver_8c_source.html#l00057">pickDeliver.c:57</a></div></div>
 <div class="ttc" id="pickDeliver__driver_8h_html"><div class="ttname"><a href="pickDeliver__driver_8h.html">pickDeliver_driver.h</a></div></div>
-<div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00061">postgres_connection.c:61</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_ae36e7862564b5e72c25c9e26ae8e355f"><div class="ttname"><a href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">pgr_SPI_finish</a></div><div class="ttdeci">void pgr_SPI_finish(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00063">postgres_connection.c:63</a></div></div>
 <div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
-<div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00071">postgres_connection.c:71</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_aef5deb780b1cf78c56b1794ab826ac64"><div class="ttname"><a href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">pgr_SPI_connect</a></div><div class="ttdeci">void pgr_SPI_connect(void)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00073">postgres_connection.c:73</a></div></div>
 <div class="ttc" id="pickDeliver_8c_html_a7a053147dbbef85c2a19449d5300b785"><div class="ttname"><a href="pickDeliver_8c.html#a7a053147dbbef85c2a19449d5300b785">pickDeliver</a></div><div class="ttdeci">PGDLLEXPORT Datum pickDeliver(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliver_8c_source.html#l00139">pickDeliver.c:139</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af85e5d3f4ccadd94e0f588533aae0f2d"><div class="ttname"><a href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a></div><div class="ttdeci">char * err_msg</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00050">BDATester.cpp:50</a></div></div>
-<div class="ttc" id="structGeneral__vehicle__orders__t_html"><div class="ttname"><a href="structGeneral__vehicle__orders__t.html">General_vehicle_orders_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00200">pgr_types.h:200</a></div></div>
+<div class="ttc" id="structGeneral__vehicle__orders__t_html"><div class="ttname"><a href="structGeneral__vehicle__orders__t.html">General_vehicle_orders_t</a></div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00222">pgr_types.h:222</a></div></div>
 <div class="ttc" id="pickDeliver_8c_html_a76a2713722711aef10337e21fc50871d"><div class="ttname"><a href="pickDeliver_8c.html#a76a2713722711aef10337e21fc50871d">PG_FUNCTION_INFO_V1</a></div><div class="ttdeci">PG_FUNCTION_INFO_V1(pickDeliver)</div></div>
-<div class="ttc" id="postgres__connection_8c_html_ae5ca58a293115d0ec1ca944f56f4faa1"><div class="ttname"><a href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a></div><div class="ttdeci">char * pgr_text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00050">postgres_connection.c:50</a></div></div>
+<div class="ttc" id="postgres__connection_8c_html_ae5ca58a293115d0ec1ca944f56f4faa1"><div class="ttname"><a href="postgres__connection_8c.html#ae5ca58a293115d0ec1ca944f56f4faa1">pgr_text2char</a></div><div class="ttdeci">char * pgr_text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="postgres__connection_8c_source.html#l00052">postgres_connection.c:52</a></div></div>
 <div class="ttc" id="pickDeliver__driver_8cpp_html_a55e6308e5ff67f92264dc6d941eaa671"><div class="ttname"><a href="pickDeliver__driver_8cpp.html#a55e6308e5ff67f92264dc6d941eaa671">do_pgr_pickDeliver</a></div><div class="ttdeci">void do_pgr_pickDeliver(Customer_t *customers_arr, size_t total_customers, int max_vehicles, double capacity, double speed, int max_cycles, General_vehicle_orders_t **result_tuples, size_t *total_count, char **log_msg, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="pickDeliver__driver_8cpp_source.html#l00054">pickDeliver_driver.cpp:54</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -381,7 +380,7 @@ $(document).ready(function(){initNavTree('pickDeliver_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><a class="el" href="pickDeliver_8c.html">pickDeliver.c</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

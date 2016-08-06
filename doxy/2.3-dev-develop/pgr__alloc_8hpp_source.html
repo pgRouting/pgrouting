@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -145,8 +144,8 @@ $(document).ready(function(){initNavTree('pgr__alloc_8hpp_source.html','');});
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;T*</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">   52</a></span>&#160;<a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(std::size_t size, T *ptr){</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span>( !ptr ){</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">   52</a></span>&#160;<a class="code" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc</a>(std::size_t size, T *ptr) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span> (!ptr) {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        ptr = (T*) malloc(size * <span class="keyword">sizeof</span>(T));</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        ptr = (T*) realloc(ptr, size * <span class="keyword">sizeof</span>(T));</div>
@@ -160,7 +159,7 @@ $(document).ready(function(){initNavTree('pgr__alloc_8hpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="pgr__alloc_8hpp.html">pgr_alloc.hpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

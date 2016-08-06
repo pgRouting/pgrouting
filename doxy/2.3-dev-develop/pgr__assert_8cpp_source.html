@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -125,7 +124,7 @@ $(document).ready(function(){initNavTree('pgr__assert_8cpp_source.html','');});
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef __linux__ </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef __linux__</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;execinfo.h&gt;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;string&gt;</span></div>
@@ -149,7 +148,7 @@ $(document).ready(function(){initNavTree('pgr__assert_8cpp_source.html','');});
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">int</span> i, trace_size = 0;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        trace_size = backtrace(trace, 16);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">char</span>** funcNames = backtrace_symbols( trace, trace_size );</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">char</span>** funcNames = backtrace_symbols(trace, trace_size);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        std::string message = <span class="stringliteral">&quot;\n*** Execution path***\n&quot;</span>;</div>
@@ -157,7 +156,7 @@ $(document).ready(function(){initNavTree('pgr__assert_8cpp_source.html','');});
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            message += <span class="stringliteral">&quot;[bt]&quot;</span> + <span class="keyword">static_cast&lt;</span>std::string<span class="keyword">&gt;</span>(funcNames[i]) + <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        free( funcNames );</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        free(funcNames);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> message;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor"></span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
@@ -179,8 +178,8 @@ $(document).ready(function(){initNavTree('pgr__assert_8cpp_source.html','');});
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="ttc" id="pgr__assert_8cpp_html_a42375175231f734b4a0db0d8754be7b4"><div class="ttname"><a href="pgr__assert_8cpp.html#a42375175231f734b4a0db0d8754be7b4">get_backtrace</a></div><div class="ttdeci">std::string get_backtrace()</div><div class="ttdoc">returns the execution path of the trace </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00035">pgr_assert.cpp:35</a></div></div>
 <div class="ttc" id="classAssertFailedException_html_a54ed2b5c12e7f66818b1167dc772dc2f"><div class="ttname"><a href="classAssertFailedException.html#a54ed2b5c12e7f66818b1167dc772dc2f">AssertFailedException::AssertFailedException</a></div><div class="ttdeci">AssertFailedException(std::string msg)</div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00066">pgr_assert.cpp:66</a></div></div>
-<div class="ttc" id="classAssertFailedException_html_ab979c89db58aa0e6f6bef73eabf39887"><div class="ttname"><a href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">AssertFailedException::str</a></div><div class="ttdeci">const std::string str</div><div class="ttdoc">str Holds what() we got as message from the #define </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00111">pgr_assert.h:111</a></div></div>
-<div class="ttc" id="pgr__assert_8h_html"><div class="ttname"><a href="pgr__assert_8h.html">pgr_assert.h</a></div></div>
+<div class="ttc" id="classAssertFailedException_html_ab979c89db58aa0e6f6bef73eabf39887"><div class="ttname"><a href="classAssertFailedException.html#ab979c89db58aa0e6f6bef73eabf39887">AssertFailedException::str</a></div><div class="ttdeci">const std::string str</div><div class="ttdoc">Holds what() we got as message. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8h_source.html#l00128">pgr_assert.h:128</a></div></div>
+<div class="ttc" id="pgr__assert_8h_html"><div class="ttname"><a href="pgr__assert_8h.html">pgr_assert.h</a></div><div class="ttdoc">Assertions Handling. </div></div>
 <div class="ttc" id="classAssertFailedException_html_aafd3ed0f0334f5a66586307c6db69fd2"><div class="ttname"><a href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">AssertFailedException::what</a></div><div class="ttdeci">virtual const char * what() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__assert_8cpp_source.html#l00062">pgr_assert.cpp:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -188,7 +187,7 @@ $(document).ready(function(){initNavTree('pgr__assert_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="pgr__assert_8cpp.html">pgr_assert.cpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

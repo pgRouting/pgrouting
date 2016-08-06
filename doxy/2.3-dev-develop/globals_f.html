@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -149,6 +148,9 @@ $(document).ready(function(){initNavTree('globals_f.html','');});
 <li>Face_circulator
 : <a class="el" href="alpha__driver_8cpp.html#aab02ea263f4af6825a98e18c38ea679e">alpha_driver.cpp</a>
 </li>
+<li>fetch_basic_edge()
+: <a class="el" href="edges__input_8c.html#aa893998e756deec8a537ce2c8312430d">edges_input.c</a>
+</li>
 <li>fetch_column_info()
 : <a class="el" href="get__check__data_8c.html#a3374b600c9631f0cf958a8395098a1c3">get_check_data.c</a>
 </li>
@@ -162,8 +164,8 @@ $(document).ready(function(){initNavTree('globals_f.html','');});
 : <a class="el" href="VRP_8c.html#a10e669980dbb80b9c047a8894c43612b">VRP.c</a>
 </li>
 <li>fetch_edge()
-: <a class="el" href="bdsp_8c.html#abcd007a7a8d5408a84f9572afc0b13a0">bdsp.c</a>
-, <a class="el" href="edges__input_8c.html#a6465dba7644e959bbf3cb3cc1f5daeb4">edges_input.c</a>
+: <a class="el" href="edges__input_8c.html#a6465dba7644e959bbf3cb3cc1f5daeb4">edges_input.c</a>
+, <a class="el" href="bdsp_8c.html#abcd007a7a8d5408a84f9572afc0b13a0">bdsp.c</a>
 </li>
 <li>fetch_edge_astar()
 : <a class="el" href="bdastar_8c.html#ae915ad59cb87304d436f3b2677217c96">bdastar.c</a>
@@ -173,12 +175,6 @@ $(document).ready(function(){initNavTree('globals_f.html','');});
 </li>
 <li>fetch_edge_columns()
 : <a class="el" href="bdsp_8c.html#aa2255175b96837aebe5f2a28b57f72a7">bdsp.c</a>
-</li>
-<li>fetch_edge_shooting_star()
-: <a class="el" href="shooting__star_8c.html#a351b6c39d1283915f409b60aa96ea7a6">shooting_star.c</a>
-</li>
-<li>fetch_edge_shooting_star_columns()
-: <a class="el" href="shooting__star_8c.html#abb052e19235bdca6de6f980007cd7d5d">shooting_star.c</a>
 </li>
 <li>fetch_edge_with_xy()
 : <a class="el" href="edges__input_8c.html#a9efbb1cb5cbb9cb8758bc2b92112352d">edges_input.c</a>
@@ -218,21 +214,23 @@ $(document).ready(function(){initNavTree('globals_f.html','');});
 , <a class="el" href="tsp_8h.html#aec0429de892ce3c2e1856d2ca7bd0a5a">tsp.h</a>
 </li>
 <li>find_vrp_solution()
-: <a class="el" href="VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302">VRP_core.cpp</a>
-, <a class="el" href="VRP_8h.html#aba4308faaa83828151c954997cb39308">VRP.h</a>
+: <a class="el" href="VRP_8h.html#aba4308faaa83828151c954997cb39308">VRP.h</a>
+, <a class="el" href="VRP__core_8cpp.html#aefe196296126a4cf40cb2de106235302">VRP_core.cpp</a>
 </li>
 <li>findEulerianPath()
 : <a class="el" href="tsplib_8c.html#af3f6f7c1af4a71dc8ab56260947c4ecd">tsplib.c</a>
 </li>
 <li>finish()
-: <a class="el" href="shooting__star_8c.html#adbf69d62298e4d47f81c749cebaad544">shooting_star.c</a>
-, <a class="el" href="alpha_8c.html#adbf69d62298e4d47f81c749cebaad544">alpha.c</a>
+: <a class="el" href="alpha_8c.html#adbf69d62298e4d47f81c749cebaad544">alpha.c</a>
 , <a class="el" href="VRP_8c.html#a89545889dc88e835f385f06d011380c5">VRP.c</a>
 </li>
 <li>float8
-: <a class="el" href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">postgres.h</a>
+: <a class="el" href="testit_8c.html#a9155724ff2560eea2c49383a4d08fbd4">testit.c</a>
+, <a class="el" href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">postgres.h</a>
 , <a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">dijkstra.h</a>
-, <a class="el" href="testit_8c.html#a9155724ff2560eea2c49383a4d08fbd4">testit.c</a>
+</li>
+<li>FlowGraph
+: <a class="el" href="pgr__maxflow_8hpp.html#ab65fcec1cfc410f4096acfa9ab4bd2c0">pgr_maxflow.hpp</a>
 </li>
 <li>floydWarshall()
 : <a class="el" href="floydWarshall_8c.html#a658917e09af94c77c65736d7094d0084">floydWarshall.c</a>
@@ -243,7 +241,7 @@ $(document).ready(function(){initNavTree('globals_f.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -146,40 +145,56 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 <li>pathLength()
 : <a class="el" href="tsplib_8c.html#a5209f80fbb08309b494dfa1df9f2a58e">tsplib.c</a>
 </li>
+<li>perform_deadEnd()
+: <a class="el" href="pgr__contract_8hpp.html#aef5265d01b1272123921b9176e6e64a7">pgr_contract.hpp</a>
+</li>
+<li>perform_linear()
+: <a class="el" href="pgr__contract_8hpp.html#a4ae2da2ec6ea6ce8d7e99d2f922d73e0">pgr_contract.hpp</a>
+</li>
 <li>PG_FUNCTION_INFO_V1()
 : <a class="el" href="floydWarshall_8c.html#a278df81f1fe600a3c5acac8e928a1b89">floydWarshall.c</a>
-, <a class="el" href="alpha_8c.html#aa06bd1facff6ef040f510e2eb7c69257">alpha.c</a>
-, <a class="el" href="astarOneToOne_8c.html#af7591db79d305073bae140422391cd03">astarOneToOne.c</a>
+, <a class="el" href="astarManyToOne_8c.html#a782dbac911194c8ee0b48dca5e249ff0">astarManyToOne.c</a>
+, <a class="el" href="many__to__one__dijkstra_8c.html#a83d31dd273f89a249240eca27a117eac">many_to_one_dijkstra.c</a>
+, <a class="el" href="max__flow__many__to__many_8c.html#a5668fc9d77498da48b9225024d4c6568">max_flow_many_to_many.c</a>
+, <a class="el" href="max__flow__many__to__one_8c.html#aabdd059990d6014ee64ec18d9270dc43">max_flow_many_to_one.c</a>
+, <a class="el" href="one__to__many__dijkstra_8c.html#a0f6d367eea06ee7048f2656cbd312072">one_to_many_dijkstra.c</a>
+, <a class="el" href="max__flow__one__to__many_8c.html#a1fc92f10300ff5ed903cf292e112f0ad">max_flow_one_to_many.c</a>
+, <a class="el" href="max__flow__one__to__one_8c.html#af7f6336309bcdb67af1bb1a4df467684">max_flow_one_to_one.c</a>
+, <a class="el" href="astarOneToMany_8c.html#a7bda8295b876b95a029e5c5724188906">astarOneToMany.c</a>
+, <a class="el" href="one__to__one__dijkstra_8c.html#a61643eac162b1b217131f8bad129f814">one_to_one_dijkstra.c</a>
+, <a class="el" href="maximum__cardinality__matching_8c.html#a7e252642be9b64d1418e7312bb5507db">maximum_cardinality_matching.c</a>
+, <a class="el" href="pickDeliver_8c.html#a76a2713722711aef10337e21fc50871d">pickDeliver.c</a>
 , <a class="el" href="drivedist_8c.html#a98222bcd6486c76a59ba70cda7fbc628">drivedist.c</a>
+, <a class="el" href="trsp_8c.html#a6332a572255f484f4a57bc0ecc45463f">trsp.c</a>
+, <a class="el" href="johnson_8c.html#ae7c9e69203334e3a18dab6a08a648961">johnson.c</a>
+, <a class="el" href="astarOneToOne_8c.html#af7591db79d305073bae140422391cd03">astarOneToOne.c</a>
+, <a class="el" href="many__to__dist__driving__distance_8c.html#a58c5ee7d9291207074640cb7044a53cb">many_to_dist_driving_distance.c</a>
+, <a class="el" href="eucledianTSP_8c.html#aa909c0f8481001736f1a7aa55dfe1981">eucledianTSP.c</a>
+, <a class="el" href="newTSP_8c.html#ada0a40596419a2d5ca75e8a0c5e4abc9">newTSP.c</a>
+, <a class="el" href="many__to__dist__withPointsDD_8c.html#aafba7cc662bea29f95c1e10dc469dd11">many_to_dist_withPointsDD.c</a>
+, <a class="el" href="tsp2_8c.html#a0e51ea2f85fdd3edb9727e42fef824d9">tsp2.c</a>
+, <a class="el" href="VRP_8c.html#afa53f98a5857d42494887fcc296c4bfe">VRP.c</a>
+, <a class="el" href="bdastar_8c.html#a10c15fed6e47c41c10bb7606c5b1e28e">bdastar.c</a>
+, <a class="el" href="withPoints__dd_8c.html#a7bc6e20fafb8cdd758596a849ae2363c">withPoints_dd.c</a>
 , <a class="el" href="many__to__many__withPoints_8c.html#a611e25164ba8f84620fef92625f168d9">many_to_many_withPoints.c</a>
 , <a class="el" href="many__to__one__withPoints_8c.html#a8874bc5a665b93c47146c878ac47b5a3">many_to_one_withPoints.c</a>
-, <a class="el" href="many__to__dist__driving__distance_8c.html#a58c5ee7d9291207074640cb7044a53cb">many_to_dist_driving_distance.c</a>
+, <a class="el" href="test__c__edges_8c.html#a2d91fd9dbd76389fba82562e7b16a17b">test_c_edges.c</a>
 , <a class="el" href="one__to__many__withPoints_8c.html#a5fcbd11e5b6d31ba10a6603e0240a3e1">one_to_many_withPoints.c</a>
 , <a class="el" href="one__to__one__withPoints_8c.html#ae15711afb633068a59730bea17333062">one_to_one_withPoints.c</a>
-, <a class="el" href="bdastar_8c.html#a10c15fed6e47c41c10bb7606c5b1e28e">bdastar.c</a>
-, <a class="el" href="many__to__dist__withPointsDD_8c.html#aafba7cc662bea29f95c1e10dc469dd11">many_to_dist_withPointsDD.c</a>
-, <a class="el" href="withPoints__dd_8c.html#a7bc6e20fafb8cdd758596a849ae2363c">withPoints_dd.c</a>
-, <a class="el" href="astarManyToMany_8c.html#ae6591f9ad6b30a2af2a9c234486b1183">astarManyToMany.c</a>
+, <a class="el" href="alpha_8c.html#aa06bd1facff6ef040f510e2eb7c69257">alpha.c</a>
 , <a class="el" href="bdsp_8c.html#af259a03b2171b0cb4c246d8f7abf2690">bdsp.c</a>
 , <a class="el" href="test__matrixRows_8c.html#ae364922365b4a2f4f6ca43ca5fe26d86">test_matrixRows.c</a>
 , <a class="el" href="testXYedges_8c.html#ad5ed59bfda17de279f0d969c921ca831">testXYedges.c</a>
-, <a class="el" href="dijkstraVia_8c.html#a8227f96228ad1c863cf351d9bf49728c">dijkstraVia.c</a>
+, <a class="el" href="contractGraph_8c.html#ac099011ab6a0502de34746bcdf2182dd">contractGraph.c</a>
 , <a class="el" href="ksp_8c.html#a84c217b6fc6626d98fcf16f15aa9d484">ksp.c</a>
 , <a class="el" href="withPoints__ksp_8c.html#a6d1d7868fa1cd6beef837444616f8e75">withPoints_ksp.c</a>
-, <a class="el" href="johnson_8c.html#ae7c9e69203334e3a18dab6a08a648961">johnson.c</a>
-, <a class="el" href="astarManyToOne_8c.html#a782dbac911194c8ee0b48dca5e249ff0">astarManyToOne.c</a>
+, <a class="el" href="astarManyToMany_8c.html#ae6591f9ad6b30a2af2a9c234486b1183">astarManyToMany.c</a>
+, <a class="el" href="dijkstraVia_8c.html#a8227f96228ad1c863cf351d9bf49728c">dijkstraVia.c</a>
+, <a class="el" href="edge__disjoint__paths__many__to__many_8c.html#ae5f40f8f98c7c7b1a5452fed7cddb7c7">edge_disjoint_paths_many_to_many.c</a>
+, <a class="el" href="edge__disjoint__paths__many__to__one_8c.html#a0e08a105c4924c9229a5f0127be67502">edge_disjoint_paths_many_to_one.c</a>
 , <a class="el" href="many__to__many__dijkstra_8c.html#af6988c8e52f7591dc201a7cb539e73a1">many_to_many_dijkstra.c</a>
-, <a class="el" href="pickDeliver_8c.html#a76a2713722711aef10337e21fc50871d">pickDeliver.c</a>
-, <a class="el" href="shooting__star_8c.html#ae7822516e7073a1bf55f673e12985dea">shooting_star.c</a>
-, <a class="el" href="many__to__one__dijkstra_8c.html#a83d31dd273f89a249240eca27a117eac">many_to_one_dijkstra.c</a>
-, <a class="el" href="trsp_8c.html#a6332a572255f484f4a57bc0ecc45463f">trsp.c</a>
-, <a class="el" href="astarOneToMany_8c.html#a7bda8295b876b95a029e5c5724188906">astarOneToMany.c</a>
-, <a class="el" href="one__to__many__dijkstra_8c.html#a0f6d367eea06ee7048f2656cbd312072">one_to_many_dijkstra.c</a>
-, <a class="el" href="eucledianTSP_8c.html#aa909c0f8481001736f1a7aa55dfe1981">eucledianTSP.c</a>
-, <a class="el" href="newTSP_8c.html#ada0a40596419a2d5ca75e8a0c5e4abc9">newTSP.c</a>
-, <a class="el" href="one__to__one__dijkstra_8c.html#a61643eac162b1b217131f8bad129f814">one_to_one_dijkstra.c</a>
-, <a class="el" href="tsp2_8c.html#a0e51ea2f85fdd3edb9727e42fef824d9">tsp2.c</a>
-, <a class="el" href="VRP_8c.html#afa53f98a5857d42494887fcc296c4bfe">VRP.c</a>
+, <a class="el" href="edge__disjoint__paths__one__to__many_8c.html#a6a2234998eb170bf4c5c0dd92f9e05d5">edge_disjoint_paths_one_to_many.c</a>
+, <a class="el" href="edge__disjoint__paths__one__to__one_8c.html#a1bd06fdaa5166b7f13e1059efcfcd6c6">edge_disjoint_paths_one_to_one.c</a>
 </li>
 <li>pgr_alloc()
 : <a class="el" href="pgr__alloc_8hpp.html#ac9d34b4a4d403ed9f24050b973087a9c">pgr_alloc.hpp</a>
@@ -197,6 +212,9 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 : <a class="el" href="get__check__data_8c.html#a021bfad5d191a500af85882a008e79f9">get_check_data.c</a>
 , <a class="el" href="get__check__data_8h.html#a021bfad5d191a500af85882a008e79f9">get_check_data.h</a>
 </li>
+<li>pgr_check_boolean_type()
+: <a class="el" href="get__check__data_8h.html#a514d2a609874062846ee1d2687d9b4ce">get_check_data.h</a>
+</li>
 <li>pgr_check_char_type()
 : <a class="el" href="get__check__data_8c.html#a1523c0349e990ea6fda502c802ccf394">get_check_data.c</a>
 , <a class="el" href="get__check__data_8h.html#a1523c0349e990ea6fda502c802ccf394">get_check_data.h</a>
@@ -205,8 +223,11 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 : <a class="el" href="get__check__data_8c.html#ad2eb625caa8f72333db1ddd029ae6d15">get_check_data.c</a>
 , <a class="el" href="get__check__data_8h.html#ad2eb625caa8f72333db1ddd029ae6d15">get_check_data.h</a>
 </li>
+<li>pgr_contractGraph()
+: <a class="el" href="pgr__contract_8hpp.html#ae3ad5f0bd69f5c3235a4d339ca30b709">pgr_contract.hpp</a>
+</li>
 <li>pgr_dijkstra()
-: <a class="el" href="pgr__dijkstra_8hpp.html#a725fd166c8ecd614f1428f7525bfcc2c">pgr_dijkstra.hpp</a>
+: <a class="el" href="pgr__dijkstra_8hpp.html#af0896fb351f78c9bad04b87770ac9818">pgr_dijkstra.hpp</a>
 </li>
 <li>pgr_dijkstraViaVertex()
 : <a class="el" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">dijkstraVia_driver.cpp</a>
@@ -225,33 +246,45 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 <li>pgr_floydWarshall()
 : <a class="el" href="pgr__allpairs_8hpp.html#aeaa38557163906c525b923de110b84eb">pgr_allpairs.hpp</a>
 </li>
+<li>pgr_get_basic_edges()
+: <a class="el" href="edges__input_8c.html#a2185351317b6bfab35d0d6f971b98676">edges_input.c</a>
+, <a class="el" href="edges__input_8h.html#a2185351317b6bfab35d0d6f971b98676">edges_input.h</a>
+</li>
 <li>pgr_get_bigIntArray()
 : <a class="el" href="arrays__input_8c.html#a8b3b624e84ed449440408d11251384c1">arrays_input.c</a>
 , <a class="el" href="arrays__input_8h.html#a8b3b624e84ed449440408d11251384c1">arrays_input.h</a>
 </li>
+<li>pgr_get_bigIntArray_allowEmpty()
+: <a class="el" href="arrays__input_8c.html#acc139acaca9d25eca8151cb70f90a90f">arrays_input.c</a>
+, <a class="el" href="arrays__input_8h.html#acc139acaca9d25eca8151cb70f90a90f">arrays_input.h</a>
+</li>
 <li>pgr_get_coordinates()
-: <a class="el" href="coordinates__input_8h.html#a54deb1af794ff39f4589ca73b610b6d5">coordinates_input.h</a>
-, <a class="el" href="coordinates__input_8c.html#a54deb1af794ff39f4589ca73b610b6d5">coordinates_input.c</a>
+: <a class="el" href="coordinates__input_8c.html#a54deb1af794ff39f4589ca73b610b6d5">coordinates_input.c</a>
+, <a class="el" href="coordinates__input_8h.html#a54deb1af794ff39f4589ca73b610b6d5">coordinates_input.h</a>
 </li>
 <li>pgr_get_customers_data()
 : <a class="el" href="customers__input_8c.html#aba94bfaedd66a6c519b263b6497b3a9a">customers_input.c</a>
 , <a class="el" href="customers__input_8h.html#aba94bfaedd66a6c519b263b6497b3a9a">customers_input.h</a>
 </li>
 <li>pgr_get_edges()
-: <a class="el" href="edges__input_8c.html#a5598918a215c72c9bda7a7f016401b73">edges_input.c</a>
-, <a class="el" href="edges__input_8h.html#a5598918a215c72c9bda7a7f016401b73">edges_input.h</a>
+: <a class="el" href="edges__input_8c.html#af663e291b6bdfe777789be38b6bfcf76">edges_input.c</a>
+, <a class="el" href="edges__input_8h.html#af663e291b6bdfe777789be38b6bfcf76">edges_input.h</a>
 </li>
 <li>pgr_get_edges_no_id()
-: <a class="el" href="edges__input_8c.html#a747dea3b61ecc407746f9d83d923fa64">edges_input.c</a>
-, <a class="el" href="edges__input_8h.html#a747dea3b61ecc407746f9d83d923fa64">edges_input.h</a>
+: <a class="el" href="edges__input_8c.html#a723146f18c61ddd20c6574265e7bbb9e">edges_input.c</a>
+, <a class="el" href="edges__input_8h.html#a723146f18c61ddd20c6574265e7bbb9e">edges_input.h</a>
 </li>
 <li>pgr_get_edges_xy()
-: <a class="el" href="edges__input_8c.html#a5483d52e67b7996d80cd0cf3583d1720">edges_input.c</a>
-, <a class="el" href="edges__input_8h.html#a5483d52e67b7996d80cd0cf3583d1720">edges_input.h</a>
+: <a class="el" href="edges__input_8c.html#a68e9476cc43d0bcc87a9f60734f76b38">edges_input.c</a>
+, <a class="el" href="edges__input_8h.html#a68e9476cc43d0bcc87a9f60734f76b38">edges_input.h</a>
 </li>
 <li>pgr_get_edges_xy_reversed()
-: <a class="el" href="edges__input_8c.html#adce525c316ba6244510553a5cee8451f">edges_input.c</a>
-, <a class="el" href="edges__input_8h.html#adce525c316ba6244510553a5cee8451f">edges_input.h</a>
+: <a class="el" href="edges__input_8c.html#ac4bab7645a68309a2bc4b2c3ab26ffd3">edges_input.c</a>
+, <a class="el" href="edges__input_8h.html#ac4bab7645a68309a2bc4b2c3ab26ffd3">edges_input.h</a>
+</li>
+<li>pgr_get_flow_edges()
+: <a class="el" href="edges__input_8c.html#ac7adfa64fe69426a12eba52bcec214ca">edges_input.c</a>
+, <a class="el" href="edges__input_8h.html#ac7adfa64fe69426a12eba52bcec214ca">edges_input.h</a>
 </li>
 <li>pgr_get_matrixRows()
 : <a class="el" href="matrixRows__input_8c.html#ae90bc21303e611d25fabb5a2b629c199">matrixRows_input.c</a>
@@ -262,8 +295,8 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 , <a class="el" href="points__input_8h.html#ac232d3ed3b477a88ecbb17992c083aa8">points_input.h</a>
 </li>
 <li>pgr_get_restriction_data()
-: <a class="el" href="restrictions__input_8h.html#a4cd7e10c617159a5d830d8a094f8b530">restrictions_input.h</a>
-, <a class="el" href="restrictions__input_8c.html#ab6776c14d736c1be875fe879ff0e7daf">restrictions_input.c</a>
+: <a class="el" href="restrictions__input_8c.html#ab6776c14d736c1be875fe879ff0e7daf">restrictions_input.c</a>
+, <a class="el" href="restrictions__input_8h.html#a4cd7e10c617159a5d830d8a094f8b530">restrictions_input.h</a>
 </li>
 <li>pgr_johnson()
 : <a class="el" href="pgr__allpairs_8hpp.html#a49254f1a8cbcdf61b6afef9ad74ebd6b">pgr_allpairs.hpp</a>
@@ -276,16 +309,16 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 , <a class="el" href="postgres__connection_8h.html#a1b1c5e5998c9e01f49c037afe6f47bff">postgres_connection.h</a>
 </li>
 <li>pgr_SPI_connect()
-: <a class="el" href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">postgres_connection.c</a>
-, <a class="el" href="postgres__connection_8h.html#aef5deb780b1cf78c56b1794ab826ac64">postgres_connection.h</a>
+: <a class="el" href="postgres__connection_8h.html#aef5deb780b1cf78c56b1794ab826ac64">postgres_connection.h</a>
+, <a class="el" href="postgres__connection_8c.html#aef5deb780b1cf78c56b1794ab826ac64">postgres_connection.c</a>
 </li>
 <li>pgr_SPI_cursor_open()
 : <a class="el" href="postgres__connection_8c.html#a85cec439f5e567ec736a2a77a0533d9d">postgres_connection.c</a>
 , <a class="el" href="postgres__connection_8h.html#a85cec439f5e567ec736a2a77a0533d9d">postgres_connection.h</a>
 </li>
 <li>pgr_SPI_finish()
-: <a class="el" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">postgres_connection.c</a>
-, <a class="el" href="postgres__connection_8h.html#ae36e7862564b5e72c25c9e26ae8e355f">postgres_connection.h</a>
+: <a class="el" href="postgres__connection_8h.html#ae36e7862564b5e72c25c9e26ae8e355f">postgres_connection.h</a>
+, <a class="el" href="postgres__connection_8c.html#ae36e7862564b5e72c25c9e26ae8e355f">postgres_connection.c</a>
 </li>
 <li>pgr_SPI_getBigInt()
 : <a class="el" href="get__check__data_8c.html#ab4e654806d1a43314c3e7fa692705448">get_check_data.c</a>
@@ -308,8 +341,8 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 , <a class="el" href="postgres__connection_8c.html#aeb63bcfc2ca89c02b30317112bae5f12">postgres_connection.c</a>
 </li>
 <li>pgr_stradd()
-: <a class="el" href="get__check__data_8c.html#ad4fe39997ec8c8c721fa01864d1df6d5">get_check_data.c</a>
-, <a class="el" href="get__check__data_8h.html#ad4fe39997ec8c8c721fa01864d1df6d5">get_check_data.h</a>
+: <a class="el" href="get__check__data_8h.html#ad4fe39997ec8c8c721fa01864d1df6d5">get_check_data.h</a>
+, <a class="el" href="get__check__data_8c.html#ad4fe39997ec8c8c721fa01864d1df6d5">get_check_data.c</a>
 </li>
 <li>pgr_text2char()
 : <a class="el" href="postgres__connection_8h.html#ae5ca58a293115d0ec1ca944f56f4faa1">postgres_connection.h</a>
@@ -328,39 +361,50 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 : <a class="el" href="Tester_8cpp.html#aef46babf1dc5886358b5ded1652f82d2">Tester.cpp</a>
 </li>
 <li>process()
-: <a class="el" href="many__to__one__withPoints_8c.html#a11a92212c2cf2982d39c2716a9e38559">many_to_one_withPoints.c</a>
-, <a class="el" href="eucledianTSP_8c.html#a5c2ef61b450c280fda2f6a08cf0b1f05">eucledianTSP.c</a>
-, <a class="el" href="dijkstraVia_8c.html#adaae9ef0e2af436ef386108073ed3c13">dijkstraVia.c</a>
-, <a class="el" href="floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4">floydWarshall.c</a>
+: <a class="el" href="withPoints__dd_8c.html#a89a5b414eb50bfbaf1a8ebeed676cfb8">withPoints_dd.c</a>
+, <a class="el" href="performance_2dijkstra_2pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">performance/dijkstra/pgRouting.cpp</a>
+, <a class="el" href="test__c__edges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">test_c_edges.c</a>
+, <a class="el" href="test__matrixRows_8c.html#a519d0fc37b5cdd883e6ad51ee56f902d">test_matrixRows.c</a>
+, <a class="el" href="edge__disjoint__paths__many__to__many_8c.html#a6e76e7d97f3b2fb87177f189fc53afcb">edge_disjoint_paths_many_to_many.c</a>
+, <a class="el" href="johnson_8c.html#a99c400bfc9956ba2b5180fa07e2875d4">johnson.c</a>
+, <a class="el" href="newTSP_8c.html#ae4db2dfa7618e51d731b9c714b611258">newTSP.c</a>
+, <a class="el" href="astarOneToOne_8c.html#a7f90cb8ab96112af8e54b0a21a0da543">astarOneToOne.c</a>
+, <a class="el" href="pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">pgRouting.cpp</a>
 , <a class="el" href="one__to__many__dijkstra_8c.html#a3d83f2028563a038d7637943eb1765aa">one_to_many_dijkstra.c</a>
 , <a class="el" href="many__to__many__dijkstra_8c.html#a09e4f88c69edb24479d1958667218032">many_to_many_dijkstra.c</a>
-, <a class="el" href="astarManyToOne_8c.html#a998d69071da90caf52bef671b687947f">astarManyToOne.c</a>
+, <a class="el" href="edge__disjoint__paths__one__to__many_8c.html#ada1a02ba5417c92cba295bd270698512">edge_disjoint_paths_one_to_many.c</a>
+, <a class="el" href="edge__disjoint__paths__one__to__one_8c.html#a0435fa8413f90b57321c415d2bfa5e0b">edge_disjoint_paths_one_to_one.c</a>
 , <a class="el" href="many__to__many__withPoints_8c.html#a95dd26151729818ff7cabb194f782ff3">many_to_many_withPoints.c</a>
-, <a class="el" href="newTSP_8c.html#ae4db2dfa7618e51d731b9c714b611258">newTSP.c</a>
-, <a class="el" href="pickDeliver_8c.html#a3dc08419df4d841e2f16364039d8b6b7">pickDeliver.c</a>
+, <a class="el" href="dijkstraVia_8c.html#adaae9ef0e2af436ef386108073ed3c13">dijkstraVia.c</a>
 , <a class="el" href="one__to__one__dijkstra_8c.html#acf8bc036eadac2f86dae1a064e4591c8">one_to_one_dijkstra.c</a>
-, <a class="el" href="test__matrixRows_8c.html#a519d0fc37b5cdd883e6ad51ee56f902d">test_matrixRows.c</a>
-, <a class="el" href="johnson_8c.html#a99c400bfc9956ba2b5180fa07e2875d4">johnson.c</a>
-, <a class="el" href="withPoints__dd_8c.html#a89a5b414eb50bfbaf1a8ebeed676cfb8">withPoints_dd.c</a>
-, <a class="el" href="one__to__one__withPoints_8c.html#aa02331536251639014b3cef2c5678cd3">one_to_one_withPoints.c</a>
-, <a class="el" href="pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">pgRouting.cpp</a>
-, <a class="el" href="many__to__one__dijkstra_8c.html#aef827d5034c6ba27bb56b2fa6e1393e1">many_to_one_dijkstra.c</a>
-, <a class="el" href="many__to__dist__withPointsDD_8c.html#a553434213d8cfa8aefda442fb0ac7d16">many_to_dist_withPointsDD.c</a>
+, <a class="el" href="contractGraph_8c.html#a0a452db87b0e2b4047c0d7e46380a58d">contractGraph.c</a>
+, <a class="el" href="max__flow__one__to__one_8c.html#ab2bd0a781637e5e7c0b233633444d359">max_flow_one_to_one.c</a>
 , <a class="el" href="astarManyToMany_8c.html#a39a603d172747dd7be6fd32fac0bd6d8">astarManyToMany.c</a>
-, <a class="el" href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">testXYedges.c</a>
-, <a class="el" href="performance_2dijkstra_2pgRouting_8cpp.html#a3ec9be4cb3f2602b26273161cc5158d1">performance/dijkstra/pgRouting.cpp</a>
-, <a class="el" href="withPoints__ksp_8c.html#a6cbcd73bfc93daa8c4937ab6735babbf">withPoints_ksp.c</a>
+, <a class="el" href="pickDeliver_8c.html#a3dc08419df4d841e2f16364039d8b6b7">pickDeliver.c</a>
 , <a class="el" href="astarOneToMany_8c.html#a1aefcc7cee7dac45c51186de817241d8">astarOneToMany.c</a>
-, <a class="el" href="astarOneToOne_8c.html#a7f90cb8ab96112af8e54b0a21a0da543">astarOneToOne.c</a>
+, <a class="el" href="many__to__dist__withPointsDD_8c.html#a553434213d8cfa8aefda442fb0ac7d16">many_to_dist_withPointsDD.c</a>
+, <a class="el" href="testXYedges_8c.html#a64f11fc66ebfd7c358be13b12d3f4e91">testXYedges.c</a>
+, <a class="el" href="withPoints__ksp_8c.html#a6cbcd73bfc93daa8c4937ab6735babbf">withPoints_ksp.c</a>
+, <a class="el" href="edge__disjoint__paths__many__to__one_8c.html#a59eb4eb1008f22d7e628b44127b1ca0b">edge_disjoint_paths_many_to_one.c</a>
+, <a class="el" href="maximum__cardinality__matching_8c.html#a0f128f5cb3e4c125b4a75a02a858d86a">maximum_cardinality_matching.c</a>
+, <a class="el" href="many__to__one__dijkstra_8c.html#aef827d5034c6ba27bb56b2fa6e1393e1">many_to_one_dijkstra.c</a>
+, <a class="el" href="max__flow__one__to__many_8c.html#af415d6a40b1b0029c5a89b2cc862e9fd">max_flow_one_to_many.c</a>
+, <a class="el" href="max__flow__many__to__many_8c.html#a133e52c814c66c28859ad172513a872d">max_flow_many_to_many.c</a>
 , <a class="el" href="one__to__many__withPoints_8c.html#a21330a7159e5654598d485618d9114c7">one_to_many_withPoints.c</a>
+, <a class="el" href="max__flow__many__to__one_8c.html#a0f39940cab2caa70861d0c5f3b38e7d8">max_flow_many_to_one.c</a>
+, <a class="el" href="floydWarshall_8c.html#a99c400bfc9956ba2b5180fa07e2875d4">floydWarshall.c</a>
+, <a class="el" href="one__to__one__withPoints_8c.html#aa02331536251639014b3cef2c5678cd3">one_to_one_withPoints.c</a>
+, <a class="el" href="many__to__one__withPoints_8c.html#a11a92212c2cf2982d39c2716a9e38559">many_to_one_withPoints.c</a>
+, <a class="el" href="eucledianTSP_8c.html#a5c2ef61b450c280fda2f6a08cf0b1f05">eucledianTSP.c</a>
+, <a class="el" href="astarManyToOne_8c.html#a998d69071da90caf52bef671b687947f">astarManyToOne.c</a>
 </li>
 <li>process_command_line()
 : <a class="el" href="performance_2dijkstra_2pgRouting_8cpp.html#a372eb464c9ce278906217d91aaf1cfaf">performance/dijkstra/pgRouting.cpp</a>
 , <a class="el" href="pgRouting_8cpp.html#a372eb464c9ce278906217d91aaf1cfaf">pgRouting.cpp</a>
 </li>
 <li>process_dijkstra()
-: <a class="el" href="dijkstra_8hpp.html#aa8fd68ac88d3fe6d7f7a3792e154f5d8">dijkstra.hpp</a>
-, <a class="el" href="performance_2dijkstra_2dijkstra_8hpp.html#aa8fd68ac88d3fe6d7f7a3792e154f5d8">performance/dijkstra/dijkstra.hpp</a>
+: <a class="el" href="performance_2dijkstra_2dijkstra_8hpp.html#aa8fd68ac88d3fe6d7f7a3792e154f5d8">performance/dijkstra/dijkstra.hpp</a>
+, <a class="el" href="dijkstra_8hpp.html#aa8fd68ac88d3fe6d7f7a3792e154f5d8">dijkstra.hpp</a>
 </li>
 <li>process_drivingDistance()
 : <a class="el" href="driving_8cpp.html#a54752be3f5a512499a6ec47446cc44a2">driving.cpp</a>
@@ -377,7 +421,7 @@ $(document).ready(function(){initNavTree('globals_func_p.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

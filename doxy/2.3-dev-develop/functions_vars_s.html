@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -73,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -97,7 +96,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_vars_e.html#index_e"><span>e</span></a></li>
       <li><a href="functions_vars_f.html#index_f"><span>f</span></a></li>
       <li><a href="functions_vars_g.html#index_g"><span>g</span></a></li>
-      <li><a href="functions_vars_h.html#index_h"><span>h</span></a></li>
       <li><a href="functions_vars_i.html#index_i"><span>i</span></a></li>
       <li><a href="functions_vars_j.html#index_j"><span>j</span></a></li>
       <li><a href="functions_vars_l.html#index_l"><span>l</span></a></li>
@@ -149,25 +147,21 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>s
-: <a class="el" href="structboost_1_1ShootingStarVisitorConcept.html#a5b1cc32e8eff5e1ceb39396b875b2a94">boost::ShootingStarVisitorConcept&lt; Visitor, Graph &gt;</a>
-, <a class="el" href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">tokenizer</a>
+: <a class="el" href="classtokenizer.html#a222e64f5649224bf295364c6954b76e3">tokenizer</a>
 </li>
 <li>s_x
 : <a class="el" href="structedge.html#ab0473cf8695ef44549030817d45866a8">edge</a>
 , <a class="el" href="structedge__astar.html#a669a7817df1351ae0d767874152698b5">edge_astar</a>
 , <a class="el" href="structedge__astar__columns.html#a1034d6fe25fe1c54c7c7cb59359ee878">edge_astar_columns</a>
-, <a class="el" href="structedge__shooting__star.html#a77c7e4b9069a0db698e5c15c3f21de9d">edge_shooting_star</a>
-, <a class="el" href="structedge__shooting__star__columns.html#a722ea9b77f6442572bef4d10b0874e24">edge_shooting_star_columns</a>
 </li>
 <li>s_y
 : <a class="el" href="structedge.html#a05fd042e372f700fb2b19eee822ed326">edge</a>
 , <a class="el" href="structedge__astar.html#a710b49885c90b37eb85c7f3ccacd3002">edge_astar</a>
 , <a class="el" href="structedge__astar__columns.html#a02ca9abebc7d608b9be267ad34966bdc">edge_astar_columns</a>
-, <a class="el" href="structedge__shooting__star.html#a1a86a3572eaf513a8a2708ec998ea238">edge_shooting_star</a>
-, <a class="el" href="structedge__shooting__star__columns.html#ad58b89ec0ca5a65106660248aeb777e6">edge_shooting_star_columns</a>
 </li>
 <li>seq
 : <a class="el" href="structGeneral__path__element__t.html#a418496a4d4cb1aa0724bd998f6c5ea40">General_path_element_t</a>
+, <a class="el" href="structpgr__contracted__blob.html#ab1a4ea1e3ae4eca4f0aba738b667c7fa">pgr_contracted_blob</a>
 , <a class="el" href="structpgr__path__t.html#ae91cb0c033647bd38c1b26fe8c06da9f">pgr_path_t</a>
 </li>
 <li>service_time
@@ -177,33 +171,45 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 <li>serviceTime
 : <a class="el" href="structGeneral__vehicle__orders__t.html#ae3d128e43d4ad64ec58e887e71a05067">General_vehicle_orders_t</a>
 </li>
+<li>shortcuts
+: <a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a914370d1b0aad6271f56d8817066b911">pgrouting::graph::Pgr_contractionGraph&lt; G, T_V, T_E &gt;</a>
+</li>
 <li>side
 : <a class="el" href="structPoint__on__edge__t.html#ae859f164d035909491b099e6d490705e">Point_on_edge_t</a>
 </li>
 <li>signalHandlers_
 : <a class="el" href="classSignalHandler.html#ab0b19876ed234cbe79099ea84fb434af">SignalHandler</a>
 </li>
+<li>sink_vertex
+: <a class="el" href="classPgrEdgeDisjointPathsGraph.html#a930bb6917bea606f6c50a7681912e863">PgrEdgeDisjointPathsGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrFlowGraph.html#a46b2cbe29e582c3f0ab06c55ce3f6d08">PgrFlowGraph&lt; G &gt;</a>
+</li>
 <li>slide_count
-: <a class="el" href="classpgRouting_1_1tsp_1_1TSP.html#aeae8dbf78d5a6a87a50fdafdcc6af5d8">pgRouting::tsp::TSP&lt; MATRIX &gt;</a>
+: <a class="el" href="classpgrouting_1_1tsp_1_1TSP.html#a0862f5956ec0ad4d6906d64346704bd2">pgrouting::tsp::TSP&lt; MATRIX &gt;</a>
 </li>
 <li>solutions
-: <a class="el" href="classpgRouting_1_1vrp_1_1Pgr__pickDeliver.html#a693becba78b3cf73830ae8d98a1fd22d">pgRouting::vrp::Pgr_pickDeliver</a>
+: <a class="el" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#acbe52b027351b94eb17a06e060b2d18a">pgrouting::vrp::Pgr_pickDeliver</a>
 </li>
 <li>source
-: <a class="el" href="structEdge.html#adcf410ae923d69e22ede2cd59ee80108">Edge</a>
-, <a class="el" href="structedge.html#a123c11d0720940e8a2556269ad340118">edge</a>
+: <a class="el" href="structedge.html#a123c11d0720940e8a2556269ad340118">edge</a>
 , <a class="el" href="structedge__astar.html#aceafd8114a576f496eb9903d64d23794">edge_astar</a>
 , <a class="el" href="structedge__astar__columns.html#a9e5b12143ce1c9b11bf173be6ee340c2">edge_astar_columns</a>
 , <a class="el" href="structedge__columns.html#ab56450475f6dbbc6f05b6a01e6c4b62d">edge_columns</a>
-, <a class="el" href="structedge__shooting__star.html#aa9071d2bda56a093c56442467e7a543d">edge_shooting_star</a>
-, <a class="el" href="structedge__shooting__star__columns.html#a780a36f8c57848b07d6798327381fa64">edge_shooting_star_columns</a>
+, <a class="el" href="structpgr__basic__edge__t.html#acd325a50d26a09269e1731fd5f5cfb71">pgr_basic_edge_t</a>
+, <a class="el" href="structpgr__contracted__blob.html#a74b5c9291aae69cda411c4d50c6e13d7">pgr_contracted_blob</a>
 , <a class="el" href="structpgr__edge__t.html#a04a67da786054e84776d9e8d4b434f27">pgr_edge_t</a>
 , <a class="el" href="structPgr__edge__xy__t.html#aaa4df304d97f6b0ff634c630212103bc">Pgr_edge_xy_t</a>
+, <a class="el" href="structpgr__flow__t.html#a67975c9beaa8c9f424b6dfd90c7015c8">pgr_flow_t</a>
 , <a class="el" href="structpgr__path__t.html#ab6e99e39fb53e89b513ee4172a8e990e">pgr_path_t</a>
-, <a class="el" href="classpgRouting_1_1Basic__edge.html#a4e9e11c034ac2e5d873ecf5a686f3b1b">pgRouting::Basic_edge</a>
+, <a class="el" href="classpgrouting_1_1Basic__edge.html#a961e0ad0e0f3ab9d39b9cd2018c3352b">pgrouting::Basic_edge</a>
+, <a class="el" href="classpgrouting_1_1contraction_1_1Edge.html#ae9d4155abe2d57dfad344098fc863c3e">pgrouting::contraction::Edge</a>
+</li>
+<li>source_vertex
+: <a class="el" href="classPgrEdgeDisjointPathsGraph.html#a4de5d40100491e61cdfeb0580fc8c5d3">PgrEdgeDisjointPathsGraph&lt; G &gt;</a>
+, <a class="el" href="classPgrFlowGraph.html#a22917b64429696e09cc5022538da415a">PgrFlowGraph&lt; G &gt;</a>
 </li>
 <li>special_distance
-: <a class="el" href="classpgRouting_1_1tsp_1_1eucledianDmatrix.html#aa89f2cc11b2a6075736c2b63727be8e3">pgRouting::tsp::eucledianDmatrix</a>
+: <a class="el" href="classpgrouting_1_1tsp_1_1eucledianDmatrix.html#a574a33287eac1c03994ebe05ca928e0a">pgrouting::tsp::eucledianDmatrix</a>
 </li>
 <li>src_id
 : <a class="el" href="structdistance__columns.html#a5a06b8fd70093c7814ef75606fed3faa">distance_columns</a>
@@ -235,7 +241,7 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 : <a class="el" href="classStringTokenizer.html#a3f729cb35f8c0307ffb5c8a84bbec006">StringTokenizer</a>
 </li>
 <li>swap_count
-: <a class="el" href="classpgRouting_1_1tsp_1_1TSP.html#ae89ccc80cc417466e29b80eee071bfc9">pgRouting::tsp::TSP&lt; MATRIX &gt;</a>
+: <a class="el" href="classpgrouting_1_1tsp_1_1TSP.html#a67dedaf0e84ebce1af96d68c46712a80">pgrouting::tsp::TSP&lt; MATRIX &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -243,7 +249,7 @@ $(document).ready(function(){initNavTree('functions_vars_s.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:13 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:57 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

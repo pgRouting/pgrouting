@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -105,51 +104,88 @@ $(document).ready(function(){initNavTree('edges__input_8h.html','');});
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">edges_input.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./pgr_types.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for edges_input.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="edges__input_8h__incl.png" border="0" usemap="#edges__input_8h" alt=""/></div>
-<map name="edges__input_8h" id="edges__input_8h">
-<area shape="rect" id="node2" href="pgr__types_8h.html" title="./pgr_types.h" alt="" coords="47,80,145,107"/><area shape="rect" id="node3" href="postgres_8h.html" title="postgres.h" alt="" coords="5,155,87,181"/></map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="edges__input_8h__dep__incl.png" border="0" usemap="#edges__input_8hdep" alt=""/></div>
-<map name="edges__input_8hdep" id="edges__input_8hdep">
-<area shape="rect" id="node2" href="floydWarshall_8c.html" title="floydWarshall.c" alt="" coords="5,88,116,115"/><area shape="rect" id="node3" href="johnson_8c.html" title="johnson.c" alt="" coords="142,88,220,115"/><area shape="rect" id="node4" href="astarManyToMany_8c.html" title="astarManyToMany.c" alt="" coords="245,88,385,115"/><area shape="rect" id="node5" href="astarManyToOne_8c.html" title="astarManyToOne.c" alt="" coords="411,88,544,115"/><area shape="rect" id="node6" href="astarOneToMany_8c.html" title="astarOneToMany.c" alt="" coords="568,88,701,115"/><area shape="rect" id="node7" href="astarOneToOne_8c.html" title="astarOneToOne.c" alt="" coords="725,88,851,115"/><area shape="rect" id="node8" href="edges__input_8c.html" title="edges_input.c" alt="" coords="875,88,977,115"/><area shape="rect" id="node9" href="dijkstraVia_8c.html" title="dijkstraVia.c" alt="" coords="1002,88,1096,115"/><area shape="rect" id="node10" href="many__to__many__dijkstra_8c.html" title="many_to_many_dijkstra.c" alt="" coords="1121,88,1292,115"/><area shape="rect" id="node11" href="many__to__one__dijkstra_8c.html" title="many_to_one_dijkstra.c" alt="" coords="1316,88,1475,115"/><area shape="rect" id="node12" href="one__to__many__dijkstra_8c.html" title="one_to_many_dijkstra.c" alt="" coords="1500,88,1659,115"/><area shape="rect" id="node13" href="one__to__one__dijkstra_8c.html" title="one_to_one_dijkstra.c" alt="" coords="1684,88,1832,115"/><area shape="rect" id="node14" href="drivedist_8c.html" title="drivedist.c" alt="" coords="1857,88,1939,115"/><area shape="rect" id="node15" href="many__to__dist__driving__distance_8c.html" title="many_to_dist_driving\l_distance.c" alt="" coords="1965,81,2109,122"/><area shape="rect" id="node16" href="many__to__dist__withPointsDD_8c.html" title="many_to_dist_withPointsDD.c" alt="" coords="2134,88,2332,115"/><area shape="rect" id="node17" href="withPoints__dd_8c.html" title="withPoints_dd.c" alt="" coords="2357,88,2472,115"/><area shape="rect" id="node18" href="testXYedges_8c.html" title="testXYedges.c" alt="" coords="2497,88,2604,115"/><area shape="rect" id="node19" href="ksp_8c.html" title="ksp.c" alt="" coords="2629,88,2683,115"/><area shape="rect" id="node20" href="withPoints__ksp_8c.html" title="withPoints_ksp.c" alt="" coords="2708,88,2831,115"/><area shape="rect" id="node21" href="trsp_8c.html" title="trsp.c" alt="" coords="2855,88,2909,115"/><area shape="rect" id="node22" href="many__to__many__withPoints_8c.html" title="many_to_many_withPoints.c" alt="" coords="2934,88,3124,115"/><area shape="rect" id="node23" href="many__to__one__withPoints_8c.html" title="many_to_one_withPoints.c" alt="" coords="3149,88,3328,115"/><area shape="rect" id="node24" href="one__to__many__withPoints_8c.html" title="one_to_many_withPoints.c" alt="" coords="3352,88,3531,115"/><area shape="rect" id="node25" href="one__to__one__withPoints_8c.html" title="one_to_one_withPoints.c" alt="" coords="3555,88,3723,115"/></map>
-</div>
 </div>
 <p><a href="edges__input_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">pgr_get_edges</div></td></tr>
-<tr class="memitem:a747dea3b61ecc407746f9d83d923fa64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#a747dea3b61ecc407746f9d83d923fa64">pgr_get_edges_no_id</a> (char *sql, <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
-<tr class="memdesc:a747dea3b61ecc407746f9d83d923fa64"><td class="mdescLeft">&#160;</td><td class="mdescRight">read edges where id is of no interest  <a href="#a747dea3b61ecc407746f9d83d923fa64">More...</a><br/></td></tr>
-<tr class="separator:a747dea3b61ecc407746f9d83d923fa64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5598918a215c72c9bda7a7f016401b73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#a5598918a215c72c9bda7a7f016401b73">pgr_get_edges</a> (char *sql, <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
-<tr class="memdesc:a5598918a215c72c9bda7a7f016401b73"><td class="mdescLeft">&#160;</td><td class="mdescRight">read edges  <a href="#a5598918a215c72c9bda7a7f016401b73">More...</a><br/></td></tr>
-<tr class="separator:a5598918a215c72c9bda7a7f016401b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">pgr_get_edges_xy</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>read edges with additional (x,y) for source &amp; target</p>
-<p>Edges with x, y vertices values:</p>
-<p>bigint id, bigint source, bigint target, float8 cost float8 reverse_cost float8 x1, y1 &ndash; source float8 x2, y2 &ndash; target </p>
-</div></td></tr>
-<tr class="memitem:a5483d52e67b7996d80cd0cf3583d1720"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#a5483d52e67b7996d80cd0cf3583d1720">pgr_get_edges_xy</a> (char *sql, <a class="el" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
-<tr class="memdesc:a5483d52e67b7996d80cd0cf3583d1720"><td class="mdescLeft">&#160;</td><td class="mdescRight">normal graph  <a href="#a5483d52e67b7996d80cd0cf3583d1720">More...</a><br/></td></tr>
-<tr class="separator:a5483d52e67b7996d80cd0cf3583d1720"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adce525c316ba6244510553a5cee8451f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#adce525c316ba6244510553a5cee8451f">pgr_get_edges_xy_reversed</a> (char *sql, <a class="el" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
-<tr class="memdesc:adce525c316ba6244510553a5cee8451f"><td class="mdescLeft">&#160;</td><td class="mdescRight">reversed graph (for many to 1)  <a href="#adce525c316ba6244510553a5cee8451f">More...</a><br/></td></tr>
-<tr class="separator:adce525c316ba6244510553a5cee8451f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2185351317b6bfab35d0d6f971b98676"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#a2185351317b6bfab35d0d6f971b98676">pgr_get_basic_edges</a> (char *sql, <a class="el" href="structpgr__basic__edge__t.html">pgr_basic_edge_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
+<tr class="memdesc:a2185351317b6bfab35d0d6f971b98676"><td class="mdescLeft">&#160;</td><td class="mdescRight">read basic edges  <a href="#a2185351317b6bfab35d0d6f971b98676">More...</a><br/></td></tr>
+<tr class="separator:a2185351317b6bfab35d0d6f971b98676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af663e291b6bdfe777789be38b6bfcf76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#af663e291b6bdfe777789be38b6bfcf76">pgr_get_edges</a> (char *edges_sql, <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
+<tr class="memdesc:af663e291b6bdfe777789be38b6bfcf76"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic edge_sql  <a href="#af663e291b6bdfe777789be38b6bfcf76">More...</a><br/></td></tr>
+<tr class="separator:af663e291b6bdfe777789be38b6bfcf76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a723146f18c61ddd20c6574265e7bbb9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#a723146f18c61ddd20c6574265e7bbb9e">pgr_get_edges_no_id</a> (char *edges_sql, <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
+<tr class="memdesc:a723146f18c61ddd20c6574265e7bbb9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">edges_sql without id parameter  <a href="#a723146f18c61ddd20c6574265e7bbb9e">More...</a><br/></td></tr>
+<tr class="separator:a723146f18c61ddd20c6574265e7bbb9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68e9476cc43d0bcc87a9f60734f76b38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#a68e9476cc43d0bcc87a9f60734f76b38">pgr_get_edges_xy</a> (char *edges_sql, <a class="el" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
+<tr class="memdesc:a68e9476cc43d0bcc87a9f60734f76b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Edges with x, y vertices values.  <a href="#a68e9476cc43d0bcc87a9f60734f76b38">More...</a><br/></td></tr>
+<tr class="separator:a68e9476cc43d0bcc87a9f60734f76b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4bab7645a68309a2bc4b2c3ab26ffd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#ac4bab7645a68309a2bc4b2c3ab26ffd3">pgr_get_edges_xy_reversed</a> (char *edges_sql, <a class="el" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
+<tr class="memdesc:ac4bab7645a68309a2bc4b2c3ab26ffd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">for many to 1 on aStar  <a href="#ac4bab7645a68309a2bc4b2c3ab26ffd3">More...</a><br/></td></tr>
+<tr class="separator:ac4bab7645a68309a2bc4b2c3ab26ffd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7adfa64fe69426a12eba52bcec214ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edges__input_8h.html#ac7adfa64fe69426a12eba52bcec214ca">pgr_get_flow_edges</a> (char *sql, <a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> **<a class="el" href="issue191-good_8h.html#a555b152d62a23619e559150e5691cc20">edges</a>, size_t *total_edges)</td></tr>
+<tr class="memdesc:ac7adfa64fe69426a12eba52bcec214ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">read edges for flow  <a href="#ac7adfa64fe69426a12eba52bcec214ca">More...</a><br/></td></tr>
+<tr class="separator:ac7adfa64fe69426a12eba52bcec214ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a5598918a215c72c9bda7a7f016401b73"></a>
+<a class="anchor" id="a2185351317b6bfab35d0d6f971b98676"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pgr_get_basic_edges </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>sql</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpgr__basic__edge__t.html">pgr_basic_edge_t</a> **&#160;</td>
+          <td class="paramname"><em>edges</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>total_edges</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>read basic edges </p>
+<p>Edges:</p>
+<p>bigint id, bigint source, bigint target</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">IN]</td><td>sql </td></tr>
+    <tr><td class="paramname">OUT]</td><td>edges [OUT] total_edges </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00572">572</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
+
+<p>References <a class="el" href="edges__input_8c_source.html#l00434">get_edges_basic()</a>.</p>
+
+<p>Referenced by <a class="el" href="edge__disjoint__paths__many__to__many_8c_source.html#l00061">process()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af663e291b6bdfe777789be38b6bfcf76"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -157,7 +193,7 @@ Functions</h2></td></tr>
           <td class="memname">void pgr_get_edges </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>sql</em>, </td>
+          <td class="paramname"><em>edges_sql</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -179,26 +215,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>read edges </p>
-<p>Edges:</p>
-<p>bigint id, bigint source, bigint target, float8 cost float8 reverse_cost</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>basic edge_sql </p>
+<p>For queries of the type: </p>
+<div class="fragment"><div class="line">SELECT id, source, target, cost, [reverse_cost]</div>
+<div class="line">FROM edge_table;</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">IN]</td><td>sql </td></tr>
-    <tr><td class="paramname">OUT]</td><td>edges [OUT] total_edges </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">edges_sql</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">edges</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">total_edges</td><td></td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00314">314</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
+<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00539">539</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
 
-<p>References <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>.</p>
+<p>References <a class="el" href="edges__input_8c_source.html#l00238">get_edges_5_columns()</a>.</p>
 
-<p>Referenced by <a class="el" href="ksp_8c_source.html#l00045">compute()</a>, <a class="el" href="drivedist_8c_source.html#l00046">compute_driving_distance()</a>, <a class="el" href="trsp_8c_source.html#l00045">compute_trsp()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00047">driving_many_to_dist_driver()</a>, and <a class="el" href="dijkstraVia_8c_source.html#l00057">process()</a>.</p>
+<p>Referenced by <a class="el" href="ksp_8c_source.html#l00045">compute()</a>, <a class="el" href="drivedist_8c_source.html#l00046">compute_driving_distance()</a>, <a class="el" href="trsp_8c_source.html#l00045">compute_trsp()</a>, <a class="el" href="many__to__dist__driving__distance_8c_source.html#l00047">driving_many_to_dist_driver()</a>, and <a class="el" href="contractGraph_8c_source.html#l00065">process()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a747dea3b61ecc407746f9d83d923fa64"></a>
+<a class="anchor" id="a723146f18c61ddd20c6574265e7bbb9e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -206,6 +244,163 @@ Functions</h2></td></tr>
           <td class="memname">void pgr_get_edges_no_id </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>edges_sql</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> **&#160;</td>
+          <td class="paramname"><em>edges</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>total_edges</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>edges_sql without id parameter </p>
+<div class="fragment"><div class="line">SELECT source, target, cost, [reverse_cost]</div>
+<div class="line">FROM edge_table;</div>
+</div><!-- fragment --><p>Currently used in: allpairs</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">edges_sql</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">edges</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">total_edges</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00548">548</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
+
+<p>References <a class="el" href="edges__input_8c_source.html#l00238">get_edges_5_columns()</a>.</p>
+
+<p>Referenced by <a class="el" href="floydWarshall_8c_source.html#l00050">process()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a68e9476cc43d0bcc87a9f60734f76b38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pgr_get_edges_xy </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>edges_sql</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> **&#160;</td>
+          <td class="paramname"><em>edges</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>total_edges</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Edges with x, y vertices values. </p>
+<p>For queries of the type: </p>
+<div class="fragment"><div class="line">SELECT id, source, target, cost, [reverse_cost], x1, y1, x2, y2</div>
+<div class="line">FROM edge_table;</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">edges_sql</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">edges</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">total_edges</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00557">557</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
+
+<p>References <a class="el" href="edges__input_8c_source.html#l00129">get_edges_9_columns()</a>.</p>
+
+<p>Referenced by <a class="el" href="astarManyToMany_8c_source.html#l00056">process()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac4bab7645a68309a2bc4b2c3ab26ffd3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pgr_get_edges_xy_reversed </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>edges_sql</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> **&#160;</td>
+          <td class="paramname"><em>edges</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>total_edges</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>for many to 1 on aStar </p>
+<p>Used internally</p>
+<p>Transforms queries of the type: </p>
+<div class="fragment"><div class="line">SELECT id, source, target, cost, [reverse_cost], x1, y1, x2, y2</div>
+<div class="line">FROM edge_table;</div>
+</div><!-- fragment --><p>to </p>
+<div class="fragment"><div class="line">SELECT id, target, source, cost, [reverse_cost], x1, y1, x2, y2</div>
+<div class="line">FROM edge_table;</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">edges_sql</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">edges</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">total_edges</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00564">564</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
+
+<p>References <a class="el" href="edges__input_8c_source.html#l00129">get_edges_9_columns()</a>.</p>
+
+<p>Referenced by <a class="el" href="astarManyToOne_8c_source.html#l00056">process()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac7adfa64fe69426a12eba52bcec214ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pgr_get_flow_edges </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>sql</em>, </td>
         </tr>
         <tr>
@@ -228,10 +423,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>read edges where id is of no interest </p>
-<p>Edges: where the id is not of interest</p>
-<p>bigint source, bigint target, float8 cost, float8 reverse_cost</p>
-<p>Currently used in: allpairs</p>
+<p>read edges for flow </p>
+<p>Edges:</p>
+<p>bigint id, bigint source, bigint target, bigint capacity, bigint reverse_capacity</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">IN]</td><td>sql </td></tr>
@@ -240,105 +434,11 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00323">323</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
+<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00530">530</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
 
-<p>References <a class="el" href="edges__input_8c_source.html#l00215">get_edges_5_columns()</a>.</p>
+<p>References <a class="el" href="edges__input_8c_source.html#l00337">get_edges_flow()</a>.</p>
 
-<p>Referenced by <a class="el" href="floydWarshall_8c_source.html#l00050">process()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5483d52e67b7996d80cd0cf3583d1720"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void pgr_get_edges_xy </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>sql</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> **&#160;</td>
-          <td class="paramname"><em>edges</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t *&#160;</td>
-          <td class="paramname"><em>total_edges</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>normal graph </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">IN]</td><td>sql </td></tr>
-    <tr><td class="paramname">OUT]</td><td>edges [OUT] total_edges </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00332">332</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
-
-<p>References <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>.</p>
-
-<p>Referenced by <a class="el" href="astarManyToMany_8c_source.html#l00067">process()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="adce525c316ba6244510553a5cee8451f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void pgr_get_edges_xy_reversed </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>sql</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structPgr__edge__xy__t.html">Pgr_edge_xy_t</a> **&#160;</td>
-          <td class="paramname"><em>edges</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t *&#160;</td>
-          <td class="paramname"><em>total_edges</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>reversed graph (for many to 1) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">IN]</td><td>sql </td></tr>
-    <tr><td class="paramname">OUT]</td><td>edges [OUT] total_edges </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="edges__input_8c_source.html#l00339">339</a> of file <a class="el" href="edges__input_8c_source.html">edges_input.c</a>.</p>
-
-<p>References <a class="el" href="edges__input_8c_source.html#l00108">get_edges_9_columns()</a>.</p>
-
-<p>Referenced by <a class="el" href="astarManyToOne_8c_source.html#l00067">process()</a>.</p>
+<p>Referenced by <a class="el" href="max__flow__many__to__many_8c_source.html#l00061">process()</a>.</p>
 
 </div>
 </div>
@@ -348,7 +448,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="edges__input_8h.html">edges_input.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

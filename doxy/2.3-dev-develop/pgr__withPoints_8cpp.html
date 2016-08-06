@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -116,17 +115,11 @@ $(document).ready(function(){initNavTree('pgr__withPoints_8cpp.html','');});
 <code>#include &lt;deque&gt;</code><br/>
 <code>#include &lt;set&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
 <code>#include &lt;cassert&gt;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__withPoints_8hpp_source.html">./pgr_withPoints.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="msg__logger_8hpp_source.html">./msg_logger.hpp</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__types_8h_source.html">./../../common/src/pgr_types.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for pgr_withPoints.cpp:</div>
-<div class="dyncontent">
-<div class="center"><img src="pgr__withPoints_8cpp__incl.png" border="0" usemap="#pgr__withPoints_8cpp" alt=""/></div>
-<map name="pgr__withPoints_8cpp" id="pgr__withPoints_8cpp">
-<area shape="rect" id="node7" href="pgr__withPoints_8hpp.html" title="./pgr_withPoints.hpp" alt="" coords="385,80,525,107"/><area shape="rect" id="node8" href="pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="491,246,617,287"/><area shape="rect" id="node14" href="msg__logger_8hpp.html" title="./msg_logger.hpp" alt="" coords="601,163,724,189"/><area shape="rect" id="node11" href="basePath__SSEC_8hpp.html" title="./../../common/src\l/basePath_SSEC.hpp" alt="" coords="325,155,475,197"/><area shape="rect" id="node9" href="postgres_8h.html" title="postgres.h" alt="" coords="464,336,545,363"/></map>
-</div>
 </div>
 <p><a href="pgr__withPoints_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -197,11 +190,11 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00166">166</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00162">162</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
 
 <p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">Path::empty()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00057">Path::end_id()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00055">Path::start_id()</a>.</p>
 
-<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00186">adjust_pids()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00201">do_pgr_withPointsDD()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00057">do_pgr_withPointsKsp()</a>.</p>
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00182">adjust_pids()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00060">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00197">do_pgr_withPointsDD()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00054">do_pgr_withPointsKsp()</a>.</p>
 
 </div>
 </div>
@@ -229,9 +222,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00186">186</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00182">182</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__withPoints_8cpp_source.html#l00166">adjust_pids()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">Path::empty()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00057">Path::end_id()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00055">Path::start_id()</a>.</p>
+<p>References <a class="el" href="pgr__withPoints_8cpp_source.html#l00162">adjust_pids()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">Path::empty()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00057">Path::end_id()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00055">Path::start_id()</a>.</p>
 
 </div>
 </div>
@@ -259,11 +252,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00056">56</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00053">53</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
 
-<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="pgr__types_8h_source.html#l00145">Point_on_edge_t::edge_id</a>, <a class="el" href="pgr__types_8h_source.html#l00147">Point_on_edge_t::fraction</a>, <a class="el" href="msg__logger_8hpp_source.html#l00034">PGR_LOG_POINTS()</a>, <a class="el" href="pgr__types_8h_source.html#l00144">Point_on_edge_t::pid</a>, and <a class="el" href="pgr__types_8h_source.html#l00146">Point_on_edge_t::side</a>.</p>
+<p>References <a class="el" href="tsplib_8c_source.html#l00114">a</a>, <a class="el" href="tsplib_8c_source.html#l00115">b</a>, <a class="el" href="pgr__types_8h_source.html#l00168">Point_on_edge_t::edge_id</a>, <a class="el" href="pgr__types_8h_source.html#l00170">Point_on_edge_t::fraction</a>, <a class="el" href="msg__logger_8hpp_source.html#l00036">PGR_LOG_POINTS()</a>, <a class="el" href="pgr__types_8h_source.html#l00167">Point_on_edge_t::pid</a>, and <a class="el" href="pgr__types_8h_source.html#l00169">Point_on_edge_t::side</a>.</p>
 
-<p>Referenced by <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00070">do_pgr_many_withPointsDD()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00201">do_pgr_withPointsDD()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00057">do_pgr_withPointsKsp()</a>.</p>
+<p>Referenced by <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00060">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00068">do_pgr_many_withPointsDD()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00062">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00197">do_pgr_withPointsDD()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00054">do_pgr_withPointsKsp()</a>.</p>
 
 </div>
 </div>
@@ -303,11 +296,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00220">220</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00216">216</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
 
-<p>References <a class="el" href="pgr__withPoints_8cpp_source.html#l00220">create_new_edges()</a>.</p>
+<p>References <a class="el" href="pgr__withPoints_8cpp_source.html#l00216">create_new_edges()</a>.</p>
 
-<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00220">create_new_edges()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00070">do_pgr_many_withPointsDD()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00201">do_pgr_withPointsDD()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00057">do_pgr_withPointsKsp()</a>.</p>
+<p>Referenced by <a class="el" href="pgr__withPoints_8cpp_source.html#l00216">create_new_edges()</a>, <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00060">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00068">do_pgr_many_withPointsDD()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00062">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00197">do_pgr_withPointsDD()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00054">do_pgr_withPointsKsp()</a>.</p>
 
 </div>
 </div>
@@ -353,9 +346,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00232">232</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00228">228</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
 
-<p>References <a class="el" href="tester_2BiDirAStar_8h_source.html#l00070">edge::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00115">pgr_edge_t::cost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00063">edge::id</a>, <a class="el" href="pgr__types_8h_source.html#l00112">pgr_edge_t::id</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00071">edge::reverse_cost</a>, <a class="el" href="pgr__types_8h_source.html#l00116">pgr_edge_t::reverse_cost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00064">edge::source</a>, <a class="el" href="pgr__types_8h_source.html#l00113">pgr_edge_t::source</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00065">edge::target</a>, and <a class="el" href="pgr__types_8h_source.html#l00114">pgr_edge_t::target</a>.</p>
+<p>References <a class="el" href="tester_2BiDirAStar_8h_source.html#l00070">edge::cost</a>, <a class="el" href="pgr__types_8h_source.html#l00131">pgr_edge_t::cost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00063">edge::id</a>, <a class="el" href="pgr__types_8h_source.html#l00128">pgr_edge_t::id</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00071">edge::reverse_cost</a>, <a class="el" href="pgr__types_8h_source.html#l00132">pgr_edge_t::reverse_cost</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00064">edge::source</a>, <a class="el" href="pgr__types_8h_source.html#l00129">pgr_edge_t::source</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00065">edge::target</a>, and <a class="el" href="pgr__types_8h_source.html#l00130">pgr_edge_t::target</a>.</p>
 
 </div>
 </div>
@@ -383,11 +376,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00121">121</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00117">117</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
 
 <p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">Path::empty()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00057">Path::end_id()</a>, <a class="el" href="tester_2BiDirAStar_8h_source.html#l00063">edge::id</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00045">Path::push_back()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00055">Path::start_id()</a>.</p>
 
-<p>Referenced by <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00064">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00057">do_pgr_withPointsKsp()</a>.</p>
+<p>Referenced by <a class="el" href="many__to__many__withPoints__driver_8cpp_source.html#l00061">do_pgr_many_to_many_withPoints()</a>, <a class="el" href="many__to__one__withPoints__driver_8cpp_source.html#l00060">do_pgr_many_to_one_withPoints()</a>, <a class="el" href="one__to__many__withPoints__driver_8cpp_source.html#l00062">do_pgr_one_to_many_withPoints()</a>, <a class="el" href="one__to__one__withPoints__driver_8cpp_source.html#l00059">do_pgr_withPoints()</a>, and <a class="el" href="withPoints__ksp__driver_8cpp_source.html#l00054">do_pgr_withPointsKsp()</a>.</p>
 
 </div>
 </div>
@@ -405,11 +398,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00100">100</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
+<p>Definition at line <a class="el" href="pgr__withPoints_8cpp_source.html#l00096">96</a> of file <a class="el" href="pgr__withPoints_8cpp_source.html">pgr_withPoints.cpp</a>.</p>
 
 <p>References <a class="el" href="basePath__SSEC_8hpp_source.html#l00062">Path::empty()</a>, <a class="el" href="basePath__SSEC_8hpp_source.html#l00057">Path::end_id()</a>, <a class="el" href="basePath__SSEC_8cpp_source.html#l00045">Path::push_back()</a>, and <a class="el" href="basePath__SSEC_8hpp_source.html#l00055">Path::start_id()</a>.</p>
 
-<p>Referenced by <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00070">do_pgr_many_withPointsDD()</a>, and <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00201">do_pgr_withPointsDD()</a>.</p>
+<p>Referenced by <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00068">do_pgr_many_withPointsDD()</a>, and <a class="el" href="withPoints__dd__driver_8cpp_source.html#l00197">do_pgr_withPointsDD()</a>.</p>
 
 </div>
 </div>
@@ -419,7 +412,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_db4188eb592e899b4ab759c326d3f65f.html">withPoints</a></li><li class="navelem"><a class="el" href="dir_8dc78dc14affe115084060e017054e86.html">src</a></li><li class="navelem"><a class="el" href="pgr__withPoints_8cpp.html">pgr_withPoints.cpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -116,22 +115,8 @@ $(document).ready(function(){initNavTree('src_2BiDirAStar_8h.html','');});
 <div class="textblock"><code>#include &lt;vector&gt;</code><br/>
 <code>#include &lt;map&gt;</code><br/>
 <code>#include &lt;utility&gt;</code><br/>
-<code>#include &quot;<a class="el" href="src_2MinHeap_8h_source.html">MinHeap.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="bdastar__driver_8h_source.html">bdastar_driver.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for src/BiDirAStar.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="src_2BiDirAStar_8h__incl.png" border="0" usemap="#BiDirAStar_8h" alt=""/></div>
-<map name="BiDirAStar_8h" id="BiDirAStar_8h">
-<area shape="rect" id="node5" href="src_2MinHeap_8h.html" title="MinHeap.h" alt="" coords="216,80,301,107"/><area shape="rect" id="node11" href="bdastar__driver_8h.html" title="bdastar_driver.h" alt="" coords="463,80,577,107"/><area shape="rect" id="node12" href="pgr__types_8h.html" title="../../common/src/pgr\l_types.h" alt="" coords="542,155,681,197"/><area shape="rect" id="node13" href="postgres_8h.html" title="postgres.h" alt="" coords="521,245,603,272"/></map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="src_2BiDirAStar_8h__dep__incl.png" border="0" usemap="#BiDirAStar_8hdep" alt=""/></div>
-<map name="BiDirAStar_8hdep" id="BiDirAStar_8hdep">
-<area shape="rect" id="node2" href="bdastar__driver_8cpp.html" title="bdastar_driver.cpp" alt="" coords="5,80,133,107"/><area shape="rect" id="node3" href="src_2BiDirAStar_8cpp.html" title="BiDirAStar.cpp" alt="" coords="159,80,268,107"/></map>
-</div>
+<code>#include &quot;<a class="el" href="src_2MinHeap_8h_source.html">./MinHeap.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="bdastar__driver_8h_source.html">./bdastar_driver.h</a>&quot;</code><br/>
 </div>
 <p><a href="src_2BiDirAStar_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -159,11 +144,11 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aa0e62fb0bb43520461b5d33740470a29"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
 &lt; <a class="el" href="structGraphNodeInfo.html">GraphNodeInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2BiDirAStar_8h.html#aa0e62fb0bb43520461b5d33740470a29">GraphNodeVector</a></td></tr>
 <tr class="separator:aa0e62fb0bb43520461b5d33740470a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaed92092d40a1e010be2421479fbafca"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; size_t, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2BiDirAStar_8h.html#aaed92092d40a1e010be2421479fbafca">Long2LongMap</a></td></tr>
-<tr class="separator:aaed92092d40a1e010be2421479fbafca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a556e9f82da7e728ae8d740a0af550f19"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; size_t, <br class="typebreak"/>
-<a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2BiDirAStar_8h.html#a556e9f82da7e728ae8d740a0af550f19">Long2LongVectorMap</a></td></tr>
-<tr class="separator:a556e9f82da7e728ae8d740a0af550f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ec4e27c864b3508d5f3b40b0a2e91ca"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; size_t, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2BiDirAStar_8h.html#a5ec4e27c864b3508d5f3b40b0a2e91ca">Long2LongMap</a></td></tr>
+<tr class="separator:a5ec4e27c864b3508d5f3b40b0a2e91ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19aec644c14a4421505ced59296213f9"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; size_t, <br class="typebreak"/>
+<a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2BiDirAStar_8h.html#a19aec644c14a4421505ced59296213f9">Long2LongVectorMap</a></td></tr>
+<tr class="separator:a19aec644c14a4421505ced59296213f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f350bfae149eb77d2221cf1531dbf85"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a></td></tr>
 <tr class="separator:a4f350bfae149eb77d2221cf1531dbf85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3eaa8309455295e3b51522ed5317655"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; double, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="src_2BiDirAStar_8h.html#ae3eaa8309455295e3b51522ed5317655">PDI</a></td></tr>
@@ -182,9 +167,9 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00044">44</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00045">45</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00804">CVRPSolver::getCostForInsert()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">BiDirDijkstra::initall()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00062">BiDirAStar::initall()</a>.</p>
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00684">CVRPSolver::getCostForInsert()</a>, <a class="el" href="BiDirDijkstra_8cpp_source.html#l00057">BiDirDijkstra::initall()</a>, and <a class="el" href="src_2BiDirAStar_8cpp_source.html#l00059">BiDirAStar::initall()</a>.</p>
 
 </div>
 </div>
@@ -217,12 +202,12 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aaed92092d40a1e010be2421479fbafca"></a>
+<a class="anchor" id="a5ec4e27c864b3508d5f3b40b0a2e91ca"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::map&lt;size_t,size_t&gt; <a class="el" href="src_2BiDirAStar_8h.html#aaed92092d40a1e010be2421479fbafca">Long2LongMap</a></td>
+          <td class="memname">typedef std::map&lt;size_t, size_t&gt; <a class="el" href="src_2BiDirAStar_8h.html#a5ec4e27c864b3508d5f3b40b0a2e91ca">Long2LongMap</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -231,12 +216,12 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a556e9f82da7e728ae8d740a0af550f19"></a>
+<a class="anchor" id="a19aec644c14a4421505ced59296213f9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::map&lt;size_t,<a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a>&gt; <a class="el" href="src_2BiDirAStar_8h.html#a556e9f82da7e728ae8d740a0af550f19">Long2LongVectorMap</a></td>
+          <td class="memname">typedef std::map&lt;size_t, <a class="el" href="src_2BiDirAStar_8h.html#a4f350bfae149eb77d2221cf1531dbf85">LongVector</a>&gt; <a class="el" href="src_2BiDirAStar_8h.html#a19aec644c14a4421505ced59296213f9">Long2LongVectorMap</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -255,7 +240,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00048">48</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00049">49</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
 </div>
 </div>
@@ -269,7 +254,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00050">50</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00051">51</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
 </div>
 </div>
@@ -283,7 +268,7 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00049">49</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
+<p>Definition at line <a class="el" href="src_2BiDirAStar_8h_source.html#l00050">50</a> of file <a class="el" href="src_2BiDirAStar_8h_source.html">src/BiDirAStar.h</a>.</p>
 
 </div>
 </div>
@@ -293,7 +278,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1188af90c8f2ef20f286b8e78c6e14f.html">bd_astar</a></li><li class="navelem"><a class="el" href="dir_113f93645de6d06d40f731407c36f54e.html">src</a></li><li class="navelem"><a class="el" href="src_2BiDirAStar_8h.html">BiDirAStar.h</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,8 +1,0 @@
-<map id="test_matrixRows.c" name="test_matrixRows.c">
-<area shape="rect" id="node2" href="$postgres_8h.html" title="postgres.h" alt="" coords="680,261,761,288"/>
-<area shape="rect" id="node8" href="$debug__macro_8h.html" title="./../../common/src\l/debug_macro.h" alt="" coords="491,81,617,122"/>
-<area shape="rect" id="node9" href="$pgr__types_8h.html" title="./../../common/src\l/pgr_types.h" alt="" coords="828,171,954,213"/>
-<area shape="rect" id="node11" href="$postgres__connection_8h.html" title="./../../common/src\l/postgres_connection.h" alt="" coords="642,81,800,122"/>
-<area shape="rect" id="node12" href="$matrixRows__input_8h.html" title="./../../common/src\l/matrixRows_input.h" alt="" coords="875,81,1017,122"/>
-<area shape="rect" id="node13" href="$test__matrixRows__driver_8h.html" title="./test_matrixRows_driver.h" alt="" coords="1042,88,1221,115"/>
-</map>

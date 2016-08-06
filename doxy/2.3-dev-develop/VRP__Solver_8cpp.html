@@ -31,7 +31,6 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">pgRouting
-   &#160;<span id="projectnumber">2.3-dev</span>
    </div>
    <div id="projectbrief">pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.</div>
   </td>
@@ -112,16 +111,15 @@ $(document).ready(function(){initNavTree('VRP__Solver_8cpp.html','');});
 <div class="title">VRP_Solver.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &quot;<a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="VRP__Solver_8h_source.html">./VRP_Solver.h</a>&quot;</code><br/>
+<code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;math.h&gt;</code><br/>
+<code>#include &lt;utility&gt;</code><br/>
+<code>#include &lt;map&gt;</code><br/>
+<code>#include &lt;set&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
 <code>#include &quot;<a class="el" href="pgr__logger_8h_source.html">../../common/src/pgr_logger.h</a>&quot;</code><br/>
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for VRP_Solver.cpp:</div>
-<div class="dyncontent">
-<div class="center"><img src="VRP__Solver_8cpp__incl.png" border="0" usemap="#VRP__Solver_8cpp" alt=""/></div>
-<map name="VRP__Solver_8cpp" id="VRP__Solver_8cpp">
-<area shape="rect" id="node3" href="VRP__Solver_8h.html" title="VRP_Solver.h" alt="" coords="230,88,335,115"/><area shape="rect" id="node10" href="pgr__logger_8h.html" title="../../common/src/pgr\l_logger.h" alt="" coords="403,81,543,122"/></map>
-</div>
 </div>
 <p><a href="VRP__Solver_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -154,9 +152,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00037">37</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00043">43</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00320">CVRPSolver::generateInitialSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00436">CVRPSolver::getPotentialInsert()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00526">CVRPSolver::insertUnservedOrders()</a>.</p>
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00269">CVRPSolver::generateInitialSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00364">CVRPSolver::getPotentialInsert()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00442">CVRPSolver::insertUnservedOrders()</a>.</p>
 
 </div>
 </div>
@@ -170,7 +168,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00034">34</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00040">40</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -184,7 +182,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00033">33</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00039">39</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
 </div>
 </div>
@@ -213,9 +211,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00039">39</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00045">45</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
-<p>References <a class="el" href="VRP__Solver_8h_source.html#l00090">CVehicleInfo::m_iVehicleId</a>.</p>
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00088">CVehicleInfo::m_iVehicleId</a>.</p>
 
 </div>
 </div>
@@ -243,9 +241,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00044">44</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00049">49</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
-<p>References <a class="el" href="VRP__Solver_8h_source.html#l00227">CTourInfo::m_vehicleInfo</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00231">CTourInfo::m_viOrderIds</a>.</p>
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00225">CTourInfo::m_vehicleInfo</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00229">CTourInfo::m_viOrderIds</a>.</p>
 
 </div>
 </div>
@@ -273,9 +271,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00059">59</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00062">62</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
-<p>References <a class="el" href="VRP__Solver_8h_source.html#l00330">CMoveInfo::m_vInitialTour</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00331">CMoveInfo::m_vModifiedTour</a>.</p>
+<p>References <a class="el" href="VRP__Solver_8h_source.html#l00324">CMoveInfo::m_vInitialTour</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00325">CMoveInfo::m_vModifiedTour</a>.</p>
 
 </div>
 </div>
@@ -285,7 +283,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e28fcb41c27d94935e6e1bded8372f10.html">vrp_basic</a></li><li class="navelem"><a class="el" href="dir_2c959b9bc6ee9cc8204048449dea20e7.html">src</a></li><li class="navelem"><a class="el" href="VRP__Solver_8cpp.html">VRP_Solver.cpp</a></li>
-    <li class="footer">Generated on Fri Jul 8 2016 14:30:12 for pgRouting by
+    <li class="footer">Generated on Sat Aug 6 2016 12:23:54 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
