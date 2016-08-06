@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <algorithm>
 #include <set>
-#include "../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_assert.h"
 #include "./solution.h"
 #include "./pgr_pickDeliver.h"
 

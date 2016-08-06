@@ -18,10 +18,10 @@ Name
 
 ``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm.
 
-.. note::  This is a proposed function
 
-     - Is not officially in the release.
-
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph

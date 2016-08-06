@@ -1,5 +1,6 @@
 /*PGR-GNU*****************************************************************
 File: distances_input.h
+#include "./pgr_types.h"
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -21,10 +22,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
+#ifndef SRC_COMMON_SRC_COORDINATES_INPUT_H_
+#define SRC_COMMON_SRC_COORDINATES_INPUT_H_
 #pragma once
 
-#include "./../../common/src/pgr_types.h"
+#include "./pgr_types.h"
 
 /*!
   bigint id,
@@ -35,3 +37,5 @@ void pgr_get_coordinates(
         char *sql,
         Coordinate_t **coordinates,
         size_t *total_coordinates);
+
+#endif  // SRC_COMMON_SRC_COORDINATES_INPUT_H_

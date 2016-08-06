@@ -28,8 +28,10 @@ branches:
     - master
     - develop
     - test/appveyor
-    - test/merge-gsoc-ch
-    - documentation
+    - test/merge-gsoc-flow
+    - gsoc-flow
+    - gsoc-ch
+    - travis/pg96
 
 env:
   - POSTGRESQL_VERSION=9.1
@@ -63,8 +65,9 @@ addons:
 install:
   - sudo /etc/init.d/postgresql stop
   - sudo /etc/init.d/postgresql stop
+
   - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
-  - sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
+  #- sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
 
 before_script:
   ## Install doxygen
@@ -77,12 +80,15 @@ before_script:
 
   # Stop whichever version of PG that travis started
   - sudo /etc/init.d/postgresql stop
+
   # Start the version of PG that we want to test
   - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
+
   # Install pgtap and pg_prove
   # pgtap has to be installed after postgres has started
   - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
   - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
+
   # initialize databases
   - createdb  -U postgres ___pgr___test___
   - createdb  -U postgres pgr_test__db__test

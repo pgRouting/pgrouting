@@ -1,6 +1,3 @@
-#ifndef SRC_COMMON_SRC_CH_EDGE_H_
-#define SRC_COMMON_SRC_CH_EDGE_H_
-
 /*PGR-GNU*****************************************************************
 File: ch_edge.h
 
@@ -29,37 +26,50 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_COMMON_SRC_CH_EDGE_H_
+#define SRC_COMMON_SRC_CH_EDGE_H_
+#pragma once
+
 #include <iostream>
 #include <sstream>
 #include "./ch_vertex.h"
+#include "./basic_edge.h"
 namespace pgrouting {
 namespace contraction {
+
 class Edge {
  public:
-    Edge() = default;
-    Edge(int64_t eid, int64_t source, int64_t target, double cost) :
-    id(eid), source(source),
-    target(target), cost(cost), first(true) {}
-    Edge(int64_t eid, int64_t source, int64_t target, double cost, bool first) :
-    id(eid), source(source),
-    target(target), cost(cost), first(first) {}
-    void cp_members(const Edge &other, std::ostringstream& log);
-    int64_t id;
-    int64_t source;
-    int64_t target;
-    double cost;
-    bool first;
-    void add_contracted_vertex(Vertex& v, int64_t vid);
-    void add_contracted_edge_vertices(Edge& e);
-    bool has_contracted_vertices() const;
-    void clear_contracted_vertices() { m_contracted_vertices.clear(); }
-    const Identifiers<int64_t>& contracted_vertices() const;
-    friend std::ostream& operator <<(std::ostream& os, const Edge& e);
+     Edge() = default;
+     Edge(int64_t eid, int64_t source, int64_t target, double cost) :
+         id(eid), source(source),
+         target(target), cost(cost), first(true) {}
+     Edge(int64_t eid, int64_t source, int64_t target,
+             double cost, bool first) :
+         id(eid), source(source),
+         target(target), cost(cost), first(first) {}
 
+     void cp_members(const Edge &other, std::ostringstream& log);
+     void cp_members(const Edge &other);
+     void cp_members(const Basic_edge &other);
+     void add_contracted_vertex(Vertex& v, int64_t vid);
+     void add_contracted_edge_vertices(Edge& e);
+     bool has_contracted_vertices() const;
+     void clear_contracted_vertices() { m_contracted_vertices.clear(); }
+     const Identifiers<int64_t>& contracted_vertices() const;
+     friend std::ostream& operator <<(std::ostream& os, const Edge& e);
+
+ public:
+     int64_t id;
+     int64_t source;
+     int64_t target;
+     double cost;
+     bool first;
  private:
-    Identifiers<int64_t> m_contracted_vertices;
+     Identifiers<int64_t> m_contracted_vertices;
 };
 
 }  // namespace contraction
 }  // namespace pgrouting
+
 #endif  // SRC_COMMON_SRC_CH_EDGE_H_

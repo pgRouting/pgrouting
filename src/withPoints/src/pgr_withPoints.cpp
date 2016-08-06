@@ -43,10 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_withPoints.hpp"
 #include "./msg_logger.hpp"
 
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 /*
  * 0 = success

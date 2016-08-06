@@ -23,12 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 // #define DEBUG
-#include "./debug_macro.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
-#include "./../../common/src/get_check_data.h"
-#include "./time_msg.h"
 #include "./coordinates_input.h"
+
+#include "./debug_macro.h"
+#include "./pgr_types.h"
+#include "./postgres_connection.h"
+#include "./get_check_data.h"
+#include "./time_msg.h"
 
 
 
@@ -104,9 +105,12 @@ void pgr_get_coordinates(
 
         if (ntuples > 0) {
             if ((*coordinates) == NULL)
-                (*coordinates) = (Coordinate_t *)palloc0(total_tuples * sizeof(Coordinate_t));
+                (*coordinates) = (Coordinate_t *)
+                    palloc0(total_tuples * sizeof(Coordinate_t));
             else
-                (*coordinates) = (Coordinate_t *)repalloc((*coordinates), total_tuples * sizeof(Coordinate_t));
+                (*coordinates) = (Coordinate_t *)
+                    repalloc((*coordinates),
+                            total_tuples * sizeof(Coordinate_t));
 
             if ((*coordinates) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -138,5 +142,4 @@ void pgr_get_coordinates(
 
     (*total_coordinates) = total_tuples;
     time_msg(" reading coordinates:", start_t, clock());
-
 }

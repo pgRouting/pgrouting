@@ -150,12 +150,11 @@ class Pgr_deadEndContraction {
             if (graph.out_degree(v) == 0 && graph.in_degree(v) > 0) {
                 return true;
              }
-             #if 0
-             //  dead start
+             /*  dead start
              if (graph.in_degree(v) == 0 && graph.out_degree(v) > 0) {
                 return true;
              }
-             #endif
+             */
             debug << "No\n";
             return false;
         }
@@ -184,7 +183,6 @@ class Pgr_deadEndContraction {
             // debug << "Dead end vertices" << std::endl;
             // debug << deadendVertices;
             while (!deadendPriority.empty()) {
-            // for (auto deadendVertex : deadendVertices) {
                 V current_vertex = deadendPriority.top();
                 deadendPriority.pop();
                 if (!is_dead_end(graph, current_vertex, debug)) {
@@ -193,7 +191,7 @@ class Pgr_deadEndContraction {
                 Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(current_vertex);
                 for (auto adjacent_vertex : adjacent_vertices) {
                     // debug << "Current Vertex: "<< graph[current_vertex].id << std::endl;
-                // debug << "Adjacent Vertex: "<< graph[adjacent_vertex].id << std::endl;
+                    // debug << "Adjacent Vertex: "<< graph[adjacent_vertex].id << std::endl;
                 debug << "Contracting current vertex "<< graph[current_vertex].id << std::endl;
                 graph[adjacent_vertex].add_contracted_vertex(graph[current_vertex], current_vertex);
                 //  Adding contracted vertices of the edge

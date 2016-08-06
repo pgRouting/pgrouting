@@ -18,10 +18,11 @@ Name
 
 ``pgr_withPointsVia`` - Get a path using the vertices/points indicated
 
-.. note::  This is a proposed function.
 
-     - Is not officially in the current release.
-     - Documentation needs to be improved
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg

@@ -22,14 +22,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_types.h"
-#include "postgres.h"
+#include <postgres.h>
 #include "utils/lsyscache.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
 
 
 // #define DEBUG
+#include "./pgr_types.h"
 #include "./time_msg.h"
 #include "./debug_macro.h"
 #include "./arrays_input.h"
@@ -150,11 +150,10 @@ int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input) {
     ndims = ARR_NDIM(input);
     n = (*ARR_DIMS(input));
     (*arrlen) = (size_t)(n);
-    //PGR_DBG("dimensions %d", ndims);
-    //PGR_DBG("array size %ld", (*arrlen));
-    
-    if (ndims == 0)
-    {
+    // PGR_DBG("dimensions %d", ndims);
+    // PGR_DBG("array size %ld", (*arrlen));
+
+    if (ndims == 0) {
         (*arrlen) = 0;
         PGR_DBG("array size %ld", (*arrlen));
         return (int64_t*) NULL;

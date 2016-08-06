@@ -1,12 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: removed_vertices.cpp
+File: max_flow_many_to_many_driver.h
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
-Copyright (c) 2016 Rohith Reddy
-Mail: 
+Function's developer:
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -25,33 +26,32 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#include <set>
-#include "./removed_vertices.h"
+
+#ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_MANY_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_MANY_DRIVER_H_
+
+#include "./../../common/src/pgr_types.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    void
+        do_pgr_max_flow_many_to_many(
+            pgr_edge_t *data_edges,
+            size_t total_tuples,
+            int64_t* source_vertices,
+            size_t size_source_verticesArr,
+            int64_t* sink_vertices,
+            size_t size_sink_verticesArr,
+            char* algorithm,
+            pgr_flow_t **return_tuples,
+            size_t *return_count,
+            char **err_msg);
 
 
-bool Removed_vertices::isDisjoint(VID id) const {
-    return (removed_vertices.isDisjoint(id));
+#ifdef __cplusplus
 }
+#endif
 
-
-bool Removed_vertices::isDisjoint(Removed_vertices vertices) const {
-    return removed_vertices.isDisjoint(vertices.get_vertexSet());
-}
-
-void Removed_vertices::vertexUnion(VID id) {
-    removed_vertices.insert(id);
-}
-
-void Removed_vertices::vertexUnion(Removed_vertices vertices) {
-    removed_vertices.insert(vertices.get_identifiers());
-}
-
-
-const std::set<VID>& Removed_vertices::ids() const {
-    return removed_vertices.ids();
-}
-
-const Identifiers<VID>& get_identifiers() const {
-    return removed_vertices;
-}
-
+#endif  // SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_MANY_DRIVER_H_

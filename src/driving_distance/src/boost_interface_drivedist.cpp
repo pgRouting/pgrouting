@@ -30,18 +30,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #endif
 
-#include "unistd.h"
+#include "./boost_interface_drivedist.h"
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <set>
 
+#include "./../../common/src/pgr_types.h"
 #include "../../common/src/pgr_alloc.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
-#include "./boost_interface_drivedist.h"
 
-extern "C" {
-#include "./../../common/src/pgr_types.h"
-}
 
 
 
@@ -92,7 +90,6 @@ do_pgr_driving_many_to_dist(
         *err_msg = strdup(log.str().c_str());
 #endif
         return;
-
     } catch ( ... ) {
         *err_msg = strdup("Caught unknown expection!");
         if (ret_path) free(ret_path);

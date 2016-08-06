@@ -1,12 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: removed_vertices.h
+File: max_flow_many_to_one_driver.h
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
-Copyright (c) 2016 Rohith Reddy
-Mail: 
+Function's developer:
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -25,22 +26,31 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#ifndef SRC_CONTRACTION_SRC_REMOVED_VERTICES_H_
-#define SRC_CONTRACTION_SRC_REMOVED_VERTICES_H_
-#include <iostream>
-#include <string>
-#include <set>
-#include "./contraction_structs.hpp"
-#include "./identifiers.hpp"
-class Removed_vertices {
- private:
-    Identifiers<VID> removed_vertices;
- public:
-    bool isDisjoint(VID id) const;
-    bool isDisjoint(Removed_vertices vertices) const;
-    void vertexUnion(VID id);
-    void vertexUnion(Removed_vertices vertices);
-    const Identifiers<VID>& get_identifiers() const;
-    const std::set<VID>& ids() const;
-};
-#endif  // SRC_CONTRACTION_SRC_REMOVED_VERTICES_H_
+
+#ifndef SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_ONE_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_ONE_DRIVER_H_
+
+#include "./../../common/src/pgr_types.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    void
+        do_pgr_max_flow_many_to_one(
+            pgr_edge_t *data_edges,
+            size_t total_tuples,
+            int64_t* source_vertices,
+            size_t size_source_verticesArr,
+            int64_t sink_vertex,
+            char* algorithm,
+            pgr_flow_t **return_tuples,
+            size_t *return_count,
+            char **err_msg);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // SRC_MAX_FLOW_SRC_MAX_FLOW_MANY_TO_ONE_DRIVER_H_

@@ -48,10 +48,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_contract.hpp"
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
 #include "./structs.h"
-}
 
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/debug_macro.h"
@@ -129,7 +127,7 @@ extern "C" {
                     size_forbidden_vertices);
                 log << "Before contraction\n";
                 digraph.print_graph(log);
-
+                /* Function call to get the contracted graph. */
                 pgr_contractGraph(digraph,
                     forbid_vertices,
                     contraction_order, size_contraction_order,
@@ -194,7 +192,7 @@ extern "C" {
                             size_forbidden_vertices);
                         log << "Before contraction\n";
                         undigraph.print_graph(log);
-            /* Function call to get the contracted graph. */
+                        /* Function call to get the contracted graph. */
                         pgr_contractGraph(undigraph,
                             forbid_vertices,
                             contraction_order, size_contraction_order,

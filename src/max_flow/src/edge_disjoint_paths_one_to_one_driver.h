@@ -1,12 +1,13 @@
 /*PGR-GNU*****************************************************************
-File: contraction_structs.hpp
+File: edge_disjoint_paths_one_to_one_driver.h
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
-Copyright (c) 2016 Rohith Reddy
-Mail: 
+Function's developer:
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -26,31 +27,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#pragma once
+#ifndef SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_ONE_TO_ONE_DRIVER_H_
+#define SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_ONE_TO_ONE_DRIVER_H_
 
-#include <set>
-#include "./identifiers.hpp"
-
-
-/*enum class Contraction_type { 
-     none = -2,
-     last,
-     deadEnd
-};*/
+#include "./../../common/src/pgr_types.h"
 
 
-typedef int64_t VID;
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-typedef int64_t EID;
+    void
+        do_pgr_edge_disjoint_paths_one_to_one(
+            pgr_basic_edge_t *data_edges,
+            size_t total_tuples,
+            int64_t source_vertex,
+            int64_t sink_vertex,
+            bool directed,
+            General_path_element_t **return_tuples,
+            size_t *return_count,
+            char **err_msg);
 
+#ifdef __cplusplus
+}
+#endif
 
-// typedef std::set<Vid> RemovedVertices;
-
-
-typedef std::set<VID> Vertex_set;
-
-typedef Identifiers<VID> Removed_vertices;
-
-
-
-
+#endif  // SRC_MAX_FLOW_SRC_EDGE_DISJOINT_PATHS_ONE_TO_ONE_DRIVER_H_

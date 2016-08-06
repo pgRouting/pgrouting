@@ -39,13 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./many_to_many_dijkstra_driver.h"
 
-// #define DEBUG
-
 #include "../../common/src/pgr_alloc.hpp"
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(
 // sql text,

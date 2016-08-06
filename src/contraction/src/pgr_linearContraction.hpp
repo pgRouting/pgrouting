@@ -166,20 +166,7 @@ class Pgr_linearContraction {
                 V vertex_2 = adjacent_vertices[1];
                 contraction_debug << "Adjacent vertices\n";
                 contraction_debug << graph[vertex_1].id << ", " << graph[vertex_2].id << std::endl;
-                #if 0
-                contraction_debug << "Out degree of " << graph[vertex_1].id
-                    << " to " << graph[current_vertex].id
-                    << " : " << graph.out_degree_to_vertex(vertex_1, current_vertex) << std::endl;
-                contraction_debug << "Out degree of " << graph[vertex_2].id
-                    << " to " << graph[current_vertex].id
-                    << " : " << graph.out_degree_to_vertex(vertex_2, current_vertex) << std::endl;
-                contraction_debug << "In degree of " << graph[vertex_1].id
-                    << " from " << graph[current_vertex].id
-                    << " : " << graph.in_degree_from_vertex(vertex_1, current_vertex) << std::endl;
-                contraction_debug << "In degree of " << graph[vertex_2].id
-                    << " from " << graph[current_vertex].id
-                    << " : " << graph.in_degree_from_vertex(vertex_2, current_vertex) << std::endl;
-                #endif
+                
                 if (graph.m_gType == DIRECTED) {
                     if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0
                             && graph.in_degree_from_vertex(vertex_2, current_vertex) > 0) {

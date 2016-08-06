@@ -28,11 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+#include "./../../common/src/pgr_types.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "./../../common/src/pgr_types.h"
 
     //  CREATE OR REPLACE FUNCTION pgr_withPointKsp(
     //  edges_sql TEXT,

@@ -37,14 +37,23 @@ pgRouting 2.3.0 Release Notes
 Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 
 * pgr_TSP
-* pgr_eucledianTSP
 * pgr_aStar
 
+.. rubric:: New Functions
 
-.. rubric:: Proposed functions
+* pgr_eucledianTSP
+
+
+.. rubric:: New Proposed functions
 
 * pgr_dijkstraCostMatrix
 * pgr_withPointsCostMatrix
+* pgr_maxFlowPushRelabel
+* pgr_maxFlowEdmondsKarp
+* pgr_maxFlowBoykovKolmogorov 
+* pgr_maximumCardinalityMatching
+* pgr_edgeDisjointPaths
+* pgr_contractGraph
 
 
 .. rubric:: Deprecated Signatures
@@ -53,7 +62,7 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 * pgr_astar - use pgr_aStar instead
 
 
-.. rubric:: Deprecated functions
+.. rubric:: Deprecated Functions
 
 * pgr_flip_edges
 * pgr_vidsToDmatrix

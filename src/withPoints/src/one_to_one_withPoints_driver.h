@@ -28,13 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_WITHPOINTS_SRC_ONE_TO_ONE_WITHPOINTS_DRIVER_H_
 #define SRC_WITHPOINTS_SRC_ONE_TO_ONE_WITHPOINTS_DRIVER_H_
+#pragma once
 
+#include "./../../common/src/pgr_types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "./../../common/src/pgr_types.h"
 
     // CREATE OR REPLACE FUNCTION pgr_withPoint(
     // edges_sql TEXT,

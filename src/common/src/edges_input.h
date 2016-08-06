@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_EDGES_INPUT_H_
+#define SRC_COMMON_SRC_EDGES_INPUT_H_
 #pragma once
 
 #include "./pgr_types.h"
@@ -111,6 +113,41 @@ void pgr_get_edges_xy_reversed(
         size_t *total_edges);
 
 
+/*! @brief read edges for flow
+
+Edges:
+
+bigint id,
+bigint source,
+bigint target,
+bigint capacity,
+bigint reverse_capacity
+
+@param[IN] sql
+@param[OUT] edges
+@oaram[OUT] total_edges
+*/
+void pgr_get_flow_edges(
+    char *sql,
+    pgr_edge_t **edges,
+    size_t *total_edges);
+
+/*! @brief read basic edges
+
+Edges:
+
+bigint id,
+bigint source,
+bigint target
+
+@param[IN] sql
+@param[OUT] edges
+@oaram[OUT] total_edges
+*/
+void pgr_get_basic_edges(
+    char *sql,
+    pgr_basic_edge_t **edges,
+    size_t *total_edges);
 
 /* **************** FOR USERS DOCUMENTATION
 basic_edges_sql_start
@@ -197,3 +234,4 @@ Where:
 xy_edges_sql_end
 */
 
+#endif  // SRC_COMMON_SRC_EDGES_INPUT_H_

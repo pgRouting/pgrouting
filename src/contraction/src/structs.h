@@ -33,34 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include <stdint.h>
 
-#if 0
-// represents an edge
-typedef struct {
-    int64_t source, target, id, type;
-    float cost, reverse_cost;
-    float s_x, s_y, t_x, t_y;
-    bool first;
-} Edge;
-
-// represents an vertex
-typedef struct {
-    int64_t id;
-    int64_t degree;
-    int64_t contractions;
-    float x;
-    float y;
-} Vertex;
-
-// represents an edge
-typedef struct {
-    int64_t seq;
-    int64_t source;
-    int64_t target;
-    float cost;
-    float tot_cost;
-} PathElement;
-#endif
-
 typedef struct {
     int64_t seq;
     int64_t id;
@@ -72,8 +44,5 @@ typedef struct {
     int contracted_vertices_size;
 } pgr_contracted_blob;
 
-// represents the type of graph
-// already defined in postgres_connection.h
-// enum graphType { UNDIRECTED= 0, DIRECTED};
 
 #endif  // SRC_CONTRACTION_SRC_STRUCTS_H_

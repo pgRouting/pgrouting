@@ -2,7 +2,7 @@
 
 * $Id$
 *
-* Project:  pgRouting bdsp and bdastar algorithms
+* Project: pgRouting bdsp and bdastar algorithms
 * Purpose:
 * Author:   Razequl Islam <ziboncsedu@gmail.com>
 Copyright (c) 2015 pgRouting developers
@@ -26,30 +26,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-MIT*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
+#if defined(__MINGW32__) ||  defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
+#include "./bdsp_driver.h"
+
 #include <exception>
-#include "BiDirDijkstra.h"
-#include "bdsp_driver.h"
+#include "./BiDirDijkstra.h"
 
 
 
 int bidirsp_wrapper(
-    edge_t *edges,
-    unsigned int edge_count,
-    int maxNode,
-    int start_vertex,
-    int end_vertex,
-    bool directed,
-    bool has_reverse_cost,
-    path_element_t **path,
-    int *path_count,
-    char **err_msg
-    )
-{
+        edge_t *edges,
+        unsigned int edge_count,
+        int maxNode,
+        int start_vertex,
+        int end_vertex,
+        bool directed,
+        bool has_reverse_cost,
+        path_element_t **path,
+        int *path_count,
+        char **err_msg
+        ) {
     int res;
 
     try {
@@ -57,10 +57,9 @@ int bidirsp_wrapper(
         BiDirDijkstra bddijkstra;
         // DBG("BiDirDijkstra initialized\n");
         res = bddijkstra.bidir_dijkstra(edges, edge_count, maxNode, start_vertex, end_vertex, path, path_count, err_msg);
-        // TODO  this are an unused parameters have to be used
-        if (has_reverse_cost) {};
-        if (directed) {};
-
+        // TODO(someone) this are an unused parameters have to be used
+        if (has_reverse_cost) {}
+        if (directed) {}
     }
     catch(std::exception& e) {
         // DBG("catch(std::exception e.what: %s\n", e.what());

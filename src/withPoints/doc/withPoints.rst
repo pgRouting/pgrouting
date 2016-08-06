@@ -21,16 +21,22 @@ When points are also given as input:
     - :ref:`pgr_withPointsKSP` - K shortest paths.
     - :ref:`pgr_withPointsDD` - Driving distance.
 
-.. note:: The numbering of the points are handled with negative sign.
+.. toctree::
+    :hidden: 
 
-          - Original point identifiers are to be positive.
-          - Transformation to negative is done internally.
-          - For results for involving vertices identifiers 
+    ./pgr_withPoints
+    ./pgr_withPointsCost
+    ../../costMatrix/doc/pgr_withPointsCostMatrix
+    ./pgr_withPointsKSP
+    ./pgr_withPointsDD
 
-            - positive sign is a vertex of the original grpah
-            - negative sign is a point of the temporary points
 
-          The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+
 
 
 Images
@@ -98,6 +104,17 @@ In all this functions we have to take care of as many aspects as possible:
   - Permanent, for example the set of points of clients stored in a table in the data base
   - Temporal, for example points given thru a web application
 
+- The numbering of the points are handled with negative sign.
+
+  - Original point identifiers are to be positive.
+  - Transformation to negative is done internally.
+  - For results for involving vertices identifiers 
+
+    - positive sign is a vertex of the original grpah
+    - negative sign is a point of the temporary points
+
+The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.
+
 Graph & edges
 ----------------
 
@@ -164,13 +181,4 @@ From third image above:
     - (15, -1,9, 6) edge from point 1 to vertex 9 has cost 6
     - (15, 9,-1, 3) edge from vertex 9 to point 1 has cost 3
     - (15, -1,12, 7) edge from point 1 to vertex 12 has cost 7
-
-.. toctree::
-    :hidden: 
-
-    ./pgr_withPoints
-    ./pgr_withPointsCost
-    ./pgr_withPointsKSP
-    ./pgr_withPointsDD
-
 

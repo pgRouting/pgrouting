@@ -23,10 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "./debug_macro.h"
-#include "pgr_types.h"
-#include "postgres_connection.h"
-#include "get_check_data.h"
-#include "points_input.h"
+#include "./pgr_types.h"
+#include "./postgres_connection.h"
+#include "./get_check_data.h"
+#include "./points_input.h"
 
 
 
@@ -112,9 +112,11 @@ pgr_get_points(
 
         if (ntuples > 0) {
             if ((*points) == NULL)
-                (*points) = (Point_on_edge_t *)palloc0(total_tuples * sizeof(Point_on_edge_t));
+                (*points) = (Point_on_edge_t *)
+                    palloc0(total_tuples * sizeof(Point_on_edge_t));
             else
-                (*points) = (Point_on_edge_t *)repalloc((*points), total_tuples * sizeof(Point_on_edge_t));
+                (*points) = (Point_on_edge_t *)
+                    repalloc((*points), total_tuples * sizeof(Point_on_edge_t));
 
             if ((*points) == NULL) {
                 elog(ERROR, "Out of memory");

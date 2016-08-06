@@ -1,4 +1,5 @@
 /*PGR-GNU*****************************************************************
+
 File: identifiers.hpp
 
 Generated with Template by:
@@ -9,7 +10,6 @@ Function's developer:
 Copyright (c) 2016 Rohith Reddy
 Mail: 
 
-------
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+
 #pragma once
 #include <set>
 #include <algorithm>
@@ -34,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iterator>
 #include <iostream>
 #include <stdexcept>
+
 template <typename T>
 class Identifiers {
  public:
@@ -47,7 +49,7 @@ class Identifiers {
     size_t size() const { return m_ids.size(); }
     typedef typename std::set<T>::iterator iterator;
     typedef typename std::set<T>::const_iterator const_iterator;
-    //! \brief Returns a boolean value true or false, to indicate whether the set is empty
+    //! \brief Returns true when the set is empty
     inline bool empty() const { return m_ids.empty(); }
     inline void clear() { m_ids.clear(); }
     bool has(const T other) const;
@@ -74,7 +76,9 @@ class Identifiers {
     Identifiers<T>& operator *=(const Identifiers<T> &other);
     Identifiers<T>& operator -=(const Identifiers<T> &other);
     template<T>
-    friend std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers);
+    friend std::ostream& operator<<(
+            std::ostream& os,
+            const Identifiers<T>& identifiers);
 
  private:
     std::set<T> m_ids;
@@ -324,7 +328,7 @@ Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
 
 //! \brief Prints the set of identifiers
 template <typename T>
-std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) {
+std::ostream& operator<<(std::ostream& os, const Identifiers<T>& identifiers) {
     os << "{";
     for (auto identifier : identifiers.ids()) {
         os << identifier << ", ";

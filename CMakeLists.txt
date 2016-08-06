@@ -96,6 +96,7 @@ set(PgRouting_SOURCE_NAMES
     #  - Not officialy on the release
     #  - number indicates version when was propsosed with code
     #----------------------
+    "max_flow"    # 2.3
     "contraction" # 2.3
     "pickDeliver" # 2.3
     "vrp_basic"   # 2.0 
