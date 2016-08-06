@@ -1,12 +1,4 @@
-.. 
-   ****************************************************************************
-    pgRouting Manual
-    Copyright(c) pgRouting Contributors
-
-    This documentation is licensed under a Creative Commons Attribution-Share
-    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
-   ****************************************************************************
-
+/*! \mainpage Developer's Documentation
 
 .. _contraction:
 
@@ -64,8 +56,8 @@ Procedure
 
 .. code-block:: none
 
-    input: G(V,E);
-    removed_vertices = {};
+    input: G(V,E)
+    removed_vertices = {}
 
 
     <initial set up>
@@ -88,8 +80,7 @@ Procedure
 Contraction operations for this implementation
 -------------------------------------------------------------------------------
 
-Dead end contraction
-+++++++++++++++++++++
+### Dead end contraction
 
 Characteristics:
 
@@ -112,8 +103,7 @@ Characteristics:
 
 
 
-Linear contraction
-+++++++++++++++++++++
+### Linear contraction
 
 Characteristics:
 
@@ -134,9 +124,7 @@ Characteristics:
     }
 
 
-Notation
-++++++++++
-
+### Notation
 * V: is the set of vertices
 * E: is the set of edges
 * G: is the graph
@@ -159,8 +147,7 @@ Examples
 
 For simplicity all the edges in the examples have unit weight.
 
-Dead End
-+++++++++++++++++
+### Dead End
 
 * Perform dead end contraction operation first and then linear contraction
 * 1 cycle of contraction.
@@ -213,8 +200,7 @@ Visualy the results are
 
 
 
-Linear contraction
-++++++++++++++++++++
+### Linear contraction
 
 * Perform linear contraction operation first and then dead end contraction
 * 1 cycle of contraction.
@@ -275,8 +261,7 @@ Visualy the results are
  
 
 
-Sample Data
-++++++++++++++++++++++++
+### Sample Data
 
 * Perform dead end contraction operation first and then linear contraction
 * 1 cycle of contraction.
@@ -414,8 +399,7 @@ Visually the results are
 .. image:: images/undirected_sampledata_c.png
 
 
-Detailed Procedure
-+++++++++++++++++++
+### Detailed Procedure
 :Original Data:
 
 .. literalinclude:: doc-contraction.queries
@@ -426,8 +410,8 @@ Detailed Procedure
 
 .. code-block:: sql
 
-        ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
-        ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
+        ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false
+        ALTER TABLE edge_table ADD contracted_vertices BIGINT[]
 
 :Data After Adding Columns:
 
@@ -440,10 +424,10 @@ Detailed Procedure
 
 .. code-block:: sql
 
-        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-1, 3, 5, 2, 2, true, ARRAY[1, 2]);
-        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-2, 3, 9, 2, 2, true, ARRAY[4]);
-        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-3, 5, 11, 2, 2, true, ARRAY[10, 13]);
-        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-4, 9, 11, 2, 2, true, ARRAY[12]);
+        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-1, 3, 5, 2, 2, true, ARRAY[1, 2])
+        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-2, 3, 9, 2, 2, true, ARRAY[4])
+        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-3, 5, 11, 2, 2, true, ARRAY[10, 13])
+        INSERT INTO edge_table(id, source, target, cost, reverse_cost, is_contracted, contracted_vertices) VALUES (-4, 9, 11, 2, 2, true, ARRAY[12])
 
 :Data after addition of new edges:
 
@@ -460,8 +444,7 @@ Detailed Procedure
    :end-before: -- q11
 
 
-Dijkstra on contracted graph
-+++++++++++++++++++++++++++++++
+### Dijkstra on contracted graph
 
 There are five cases which arise when calculating the shortest path between a given source and target, 
 
@@ -531,9 +514,10 @@ This implies that it is a shortcut and should be expanded. The contracted subgra
    :end-before: -- q18
 
 
-References
-++++++++++++++++++++++++++
+### References
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
+
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
 
+*/
