@@ -53,7 +53,7 @@ The contraction skeleton
 In general we have an initial set up that may involve analizing the graph given as input and setting the
 non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
 until while possible, and then move to the next contraction operation.
-Adding a new operation then becomes an "easy" task; more things might be involved, because the
+Adding a new operation then becomes an "easy" task but more things might be involved, because the
 charachteristics of the graph change each time its contracted, so some interaction between contractions
 has to be implemented also.
 

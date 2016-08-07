@@ -100,25 +100,9 @@ Complete signature
    :end-before: -- q3
 
 
-Description of the SQL query
--------------------------------------------------------------------------------
-
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 
 Description of the parameters of the signatures
@@ -128,33 +112,44 @@ Description of the parameters of the signatures
 Column                  Type                   Description
 ======================= ====================== =================================================
 **edges_sql**           ``TEXT``               SQL query as decribed above.
-**contraction_order**   ``BIGINT[]``           Order of contraction operations.
-**forbidden_vertices**  ``BIGINT[]``           (optional). Identifiers of vertices forbidden from contraction. Default is an empty array.
-**max_cycles**          ``INTEGER``            (optional). Number of cycles of contraction. Default is **1**.
-**directed**            ``BOOLEAN``            (optional). When false the graph is considered as Undirected. Default is true which considers the graph as Directed.
+**contraction_order**   ``ARRAY[ANY-INTEGER]`` Ordered contraction operations.
+                                                -  1 = Dead end contraction
+                                                -  2 = Linear contraction
+**forbidden_vertices**  ``ARRAY[ANY-INTEGER]`` (optional). Identifiers of vertices forbidden from contraction. Default is an empty array.
+**max_cycles**          ``INTEGER``            (optional). Number of times the contraction operations on `contraction_order` will be performed. Default is 1.
+**directed**            ``BOOLEAN``            * When ``true`` Graph is considered `Directed`.
+                                               * When ``false`` the graph is considered as `Undirected`.
 ======================= ====================== =================================================
 
 
 Description of the return values
 -------------------------------------------------------------------------------
 
-RETURNS SETOF  ( seq, id, type, source, target, cost,
-             contracted_vertices, contracted_vertices_size)
+RETURNS SETOF  ( seq, type, id, contracted_vertices, source, target, cost)
 
 The function returns a single row. The columns of the row are:
 
-============================ =============   ==================================================
-Column                       Type            Description
-============================ =============   ==================================================
-**seq**                      ``INTEGER``     Sequential value starting from **1**.
-**id**                       ``BIGINT``      Identifier of the edge/vertex
-**type**                     ``TEXT``        Type(edge/vertex). **v** for vertex. **e** for edge 
-**source**                   ``BIGINT``      Identifier of the source vertex. Negative for **type** : **v** 
-**target**                   ``BIGINT``      Identifier of the target vertex. Negative for **type** : **v**
-**cost**                     ``FLOAT``       Weight of the shortcut (source, target). Negative for **type** : **v**
-**contracted_vertices**      ``BIGINT[]``    Array of contracted vertex identifiers.
-**contracted_vertices_size** ``INTEGER``     Size of **contracted_vertices** array.
-============================ =============   ==================================================
+============================ =================   ===================================================================
+Column                       Type                Description
+============================ =================   ===================================================================
+**seq**                      ``INTEGER``         Sequential value starting from **1**.
+**type**                     ``TEXT``            Type of the `id`. 
+                                                  - 'v' when `id` is an identifier of a vertex.
+                                                  - 'e' when `id` is an identifier of an edge.
+**id**                       ``BIGINT``          Identifier of:
+                                                  * the  vertex when `type = 'v'`.
+
+                                                    - The vertex belongs to the edge_table passed as a parameter.
+                                                  * the edge when `type = 'e'`.
+                                                  
+                                                    - The `id` is a decreasing sequence starting from **-1**.
+
+                                                    - Representing a pseudo `id` as is not incorporated into the edge_table.
+**contracted_vertices**      ``ARRAY[BIGINT]``   Array of contracted vertex identifiers.
+**source**                   ``BIGINT``          Identifier of the source vertex of the current edge `id`. Valid values when `type = 'e'`.
+**target**                   ``BIGINT``          Identifier of the target vertex of the current edge `id`. Valid values when `type = 'e'`.
+**cost**                     ``FLOAT``           Weight of the edge (`source`, `target`). Valid values when `type = 'e'`.
+============================ =================   ===================================================================
 
 Examples
 ========

@@ -172,9 +172,8 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="description-of-the-sql-query">
-<h2>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-edges-sql-query">
+<h3>Description of the edges_sql query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -185,36 +184,57 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="9%" />
-<col width="11%" />
-<col width="80%" />
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
 <th class="head">Type</th>
+<th class="head">Default</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>Weight of the edge <cite>(source, target)</cite>, If negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>&nbsp;</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge  <cite>(source, target)</cite></dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>(optional) Weight of the edge <cite>(target, source)</cite>, If negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>-1</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
@@ -230,13 +250,14 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
 <h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
+<col width="15%" />
 <col width="14%" />
-<col width="14%" />
-<col width="72%" />
+<col width="71%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -250,36 +271,45 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 <td>SQL query as decribed above.</td>
 </tr>
 <tr class="row-odd"><td><strong>contraction_order</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT[]</span></tt></td>
-<td>Order of contraction operations.</td>
+<td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
+<td><dl class="first last docutils">
+<dt>Ordered contraction operations.</dt>
+<dd><ul class="first last simple">
+<li>1 = Dead end contraction</li>
+<li>2 = Linear contraction</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-even"><td><strong>forbidden_vertices</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT[]</span></tt></td>
+<td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
 <td>(optional). Identifiers of vertices forbidden from contraction. Default is an empty array.</td>
 </tr>
 <tr class="row-odd"><td><strong>max_cycles</strong></td>
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
-<td>(optional). Number of cycles of contraction. Default is <strong>1</strong>.</td>
+<td>(optional). Number of times the contraction operations on <cite>contraction_order</cite> will be performed. Default is 1.</td>
 </tr>
 <tr class="row-even"><td><strong>directed</strong></td>
 <td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
-<td>(optional). When false the graph is considered as Undirected. Default is true which considers the graph as Directed.</td>
+<td><ul class="first last simple">
+<li>When <tt class="docutils literal"><span class="pre">true</span></tt> Graph is considered <cite>Directed</cite>.</li>
+<li>When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as <cite>Undirected</cite>.</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
 <h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>RETURNS SETOF  ( seq, id, type, source, target, cost,</dt>
-<dd>contracted_vertices, contracted_vertices_size)</dd>
-</dl>
+<p>RETURNS SETOF  ( seq, type, id, contracted_vertices, source, target, cost)</p>
 <p>The function returns a single row. The columns of the row are:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="25%" />
-<col width="12%" />
-<col width="63%" />
+<col width="21%" />
+<col width="13%" />
+<col width="66%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
@@ -292,33 +322,52 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
 <td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
-<tr class="row-odd"><td><strong>id</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
-<td>Identifier of the edge/vertex</td>
-</tr>
-<tr class="row-even"><td><strong>type</strong></td>
+<tr class="row-odd"><td><strong>type</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Type(edge/vertex). <strong>v</strong> for vertex. <strong>e</strong> for edge</td>
+<td><dl class="first last docutils">
+<dt>Type of the <cite>id</cite>.</dt>
+<dd><ul class="first last simple">
+<li>&#8216;v&#8217; when <cite>id</cite> is an identifier of a vertex.</li>
+<li>&#8216;e&#8217; when <cite>id</cite> is an identifier of an edge.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
-<tr class="row-odd"><td><strong>source</strong></td>
+<tr class="row-even"><td><strong>id</strong></td>
 <td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
-<td>Identifier of the source vertex. Negative for <strong>type</strong> : <strong>v</strong></td>
+<td><dl class="first last docutils">
+<dt>Identifier of:</dt>
+<dd><ul class="first last simple">
+<li>the  vertex when <cite>type = &#8216;v&#8217;</cite>.<ul>
+<li>The vertex belongs to the edge_table passed as a parameter.</li>
+</ul>
+</li>
+<li>the edge when <cite>type = &#8216;e&#8217;</cite>.<ul>
+<li>The <cite>id</cite> is a decreasing sequence starting from <strong>-1</strong>.</li>
+<li>Representing a pseudo <cite>id</cite> as is not incorporated into the edge_table.</li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
-<tr class="row-even"><td><strong>target</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
-<td>Identifier of the target vertex. Negative for <strong>type</strong> : <strong>v</strong></td>
-</tr>
-<tr class="row-odd"><td><strong>cost</strong></td>
-<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>Weight of the shortcut (source, target). Negative for <strong>type</strong> : <strong>v</strong></td>
-</tr>
-<tr class="row-even"><td><strong>contracted_vertices</strong></td>
-<td><tt class="docutils literal"><span class="pre">BIGINT[]</span></tt></td>
+<tr class="row-odd"><td><strong>contracted_vertices</strong></td>
+<td><tt class="docutils literal"><span class="pre">ARRAY[BIGINT]</span></tt></td>
 <td>Array of contracted vertex identifiers.</td>
 </tr>
-<tr class="row-odd"><td><strong>contracted_vertices_size</strong></td>
-<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
-<td>Size of <strong>contracted_vertices</strong> array.</td>
+<tr class="row-even"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the source vertex of the current edge <cite>id</cite>. Valid values when <cite>type = &#8216;e&#8217;</cite>.</td>
+</tr>
+<tr class="row-odd"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the target vertex of the current edge <cite>id</cite>. Valid values when <cite>type = &#8216;e&#8217;</cite>.</td>
+</tr>
+<tr class="row-even"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>Weight of the edge (<cite>source</cite>, <cite>target</cite>). Valid values when <cite>type = &#8216;e&#8217;</cite>.</td>
 </tr>
 </tbody>
 </table>
@@ -390,7 +439,7 @@ ARRAY[2]);
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 06, 2016.
+      Last updated on Aug 07, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
