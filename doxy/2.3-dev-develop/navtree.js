@@ -11,6 +11,29 @@ var NAVTREE =
       [ "Setup Travis", "index.html#setup_travis", null ],
       [ "File conventions", "index.html#file_convetions", null ]
     ] ],
+    [ "Contraction", "Contraction.html", [
+      [ "Introduction", "Contraction.html#contraction_intro", [
+        [ "The contraction skeleton", "Contraction.html#contraction_skeleton", null ],
+        [ "Notation for this documentation", "Contraction.html#contraction_notation", null ],
+        [ "Dead End Contraction", "Contraction.html#contraction_dead_end", null ],
+        [ "Linear Contraction", "Contraction.html#contraction_linear", null ]
+      ] ],
+      [ "Contraction examples", "Contraction.html#contraction_examples", [
+        [ "Dead End Contraction", "Contraction.html#contraction_examples_dead_end", null ],
+        [ "Linear Contraction", "Contraction.html#contraction_examples_linear", null ],
+        [ "Linear and Dead End Contraction", "Contraction.html#contraction_examples_linear_dead_end", null ],
+        [ "Contraction of Sample Data", "Contraction.html#contraction_examples_Sample", null ]
+      ] ],
+      [ "Generating the contracted graph", "Contraction.html#contraction_examples_Detailed", null ],
+      [ "Dijkstra on contracted graph", "Contraction.html#contraction_examples_dijkstra", [
+        [ "source and target belong to the contracted graph", "Contraction.html#contraction_examples_dijkstra1", null ],
+        [ "Source belongs to a contracted graph, while target belongs to a vertex subgraph.", "Contraction.html#contraction_examples_dijkstra2", null ],
+        [ "Source belongs to a contracted graph, while target belongs to an edge subgraph.", "Contraction.html#contraction_examples_dijkstra3", null ],
+        [ "Source belongs to a vertex subgraph, while target belongs to an edge subgraph.", "Contraction.html#contraction_examples_dijkstra4", null ],
+        [ "The path contains a new edge added by the contraction algorithm.", "Contraction.html#contraction_examples_dijkstra5", null ]
+      ] ],
+      [ "References", "Contraction.html#contraction_examples_references", null ]
+    ] ],
     [ "Todo List", "todo.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
@@ -52,17 +75,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BDATester_8cpp.html",
-"bdsp__driver_8h_source.html",
-"classCVRPSolver.html#a535946efd8c32afc53e6dd0c0588d3c7",
-"classPgrFlowGraph.html#a19d56381eab69e565b2c69aceb3a593f",
-"classpgrouting_1_1contraction_1_1Edge.html#a979b9895bb60e25532147ea764975355",
-"classpgrouting_1_1vrp_1_1Node.html#af4f30af76ecaedd67bc8fc60b998876f",
-"classpgrouting_1_1vrp_1_1Vehicle__node.html#a7ec2117b7b4a3df2a123f1e422439ac4ad7fee7b59ce02c42c3ceed6b7bfdc025",
-"floydWarshall_8c.html#a278df81f1fe600a3c5acac8e928a1b89",
-"many__to__many__withPoints_8c.html#a95dd26151729818ff7cabb194f782ff3",
-"pgr__edgedisjointpaths_8hpp.html",
-"structRoutes__t.html#acb143a564da1fb8a5ba85f809bf021c9",
-"trsp__driver_8cpp.html#a8610053389d1899ceed063c1c0af50e2"
+"bdastar__driver_8cpp_source.html",
+"classCTourInfo.html#afbb2a06f880213c22a23a556e684d70b",
+"classPgrEdgeDisjointPathsGraph.html#a41eb615814d5f3d96dece557e7068eb0",
+"classpgrouting_1_1XY__vertex.html#a110a5f3c90ff7b6dc725d73f299ff75c",
+"classpgrouting_1_1vrp_1_1Initial__solution.html#a91aa64972e779aa72f9df7900231c24e",
+"classpgrouting_1_1vrp_1_1Vehicle__node.html#a561022bf17ce680711eea5a7b2146dd1",
+"eucledianDmatrix_8cpp.html",
+"many__to__dist__driving__distance_8c_source.html",
+"pgr__contract_8hpp.html#a10f7337f7b67d14763fc6028abfb3a17",
+"structPoint__on__edge__t.html",
+"time__msg_8c_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
