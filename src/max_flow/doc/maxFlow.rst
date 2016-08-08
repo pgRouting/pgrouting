@@ -73,15 +73,15 @@ Then:
 
      :math:`pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}`
 
-     :math:`\boldsymbol{\Phi} = {(id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
+     :math:`\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
 
 where:
 
-  :math:`\boldsymbol{\Phi}` is a new subset of edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
+  :math:`\boldsymbol{\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
 
-  .. math::
-        id_i = i
-        residual\_capacity_i = capacity_i - flow_i
+  - :math:`id_i = i`
+  - :math:`edge\_id = id_i   \text{ in edges_sql}`
+  - :math:`residual\_capacity_i = capacity_i - flow_i`
 
 
 See Also

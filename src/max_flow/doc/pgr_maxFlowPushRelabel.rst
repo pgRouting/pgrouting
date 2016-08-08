@@ -188,7 +188,16 @@ Column            Type                   Description
 Description of the Return Values
 .....................................................................
 
-TODO
+=====================  ====================  =================================================
+Column                 Type                  Description
+=====================  ====================  =================================================
+**id**                 ``INTEGER``           Identifier of the edge.
+**edge_id**            ``BIGINT``            Identifier of the edge in the original query(edges_sql).
+**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
+**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
+**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
+**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
+=====================  ====================  =================================================
 
 See Also
 --------
