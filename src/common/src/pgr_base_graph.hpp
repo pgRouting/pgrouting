@@ -258,7 +258,7 @@ boost::adjacency_list < boost::listS, boost::vecS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
-#ifndef NDEBUG
+#if 0
 // TODO(Rohith) this is only used on internal query tests
 typedef graph::Pgr_base_graph <
 boost::adjacency_list < boost::listS, boost::vecS,
@@ -300,9 +300,12 @@ class Pgr_base_graph {
      typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
      typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
 
-     typedef typename boost::graph_traits < G >::vertices_size_type     vertices_size_type;
-     typedef typename boost::graph_traits < G >::edges_size_type        edges_size_type;
-     typedef typename boost::graph_traits < G >::degree_size_type       degree_size_type;
+     typedef typename boost::graph_traits < G >::vertices_size_type
+         vertices_size_type;
+     typedef typename boost::graph_traits < G >::edges_size_type
+         edges_size_type;
+     typedef typename boost::graph_traits < G >::degree_size_type
+         degree_size_type;
 
      //@}
 
@@ -351,7 +354,8 @@ class Pgr_base_graph {
        - inserts the vertices
        - The vertices must be checked (if necessary)  before calling the constructor
        */
-     Pgr_base_graph< G , T_V, T_E >(const std::vector< T_V > &vertices, graphType gtype)
+     Pgr_base_graph< G , T_V, T_E >(
+             const std::vector< T_V > &vertices, graphType gtype)
          : graph(vertices.size()),
          m_num_vertices(vertices.size()),
          m_gType(gtype) {
@@ -362,7 +366,8 @@ class Pgr_base_graph {
              pgassert(pgrouting::check_vertices(vertices) == 0);
 #endif
              size_t i = 0;
-             for (auto vi = boost::vertices(graph).first; vi != boost::vertices(graph).second; ++vi) {
+             for (auto vi = boost::vertices(graph).first;
+                     vi != boost::vertices(graph).second; ++vi) {
                  vertices_map[vertices[i].id] = (*vi);
                  graph[(*vi)].cp_members(vertices[i++]);
              }
@@ -528,7 +533,7 @@ class Pgr_base_graph {
      void disconnect_edge(int64_t p_from, int64_t p_to);
 
 
-     //! @brief Disconnects the outgoing edges with a particular original id from a vertex
+     //! @brief Disconnects the outgoing edges of a vertex
      /*!
 
        - No edge is disconnected if it doesn't exist in the graph
@@ -569,17 +574,21 @@ class Pgr_base_graph {
      //! @name only for stand by program
      //@{
 
-     friend std::ostream& operator<<(std::ostream &log, const Pgr_base_graph< G, T_V, T_E > &g) {
+     friend std::ostream& operator<<(
+             std::ostream &log, const Pgr_base_graph< G, T_V, T_E > &g) {
          typename Pgr_base_graph< G, T_V, T_E >::EO_i out, out_end;
 
-         for (auto vi = vertices(g.graph).first; vi != vertices(g.graph).second; ++vi) {
+         for (auto vi = vertices(g.graph).first;
+                 vi != vertices(g.graph).second; ++vi) {
              if ((*vi) >= g.m_num_vertices) break;
-             log << (*vi) << ": "  << " out_edges_of(" << g.graph[(*vi)] << "):";
+             log << (*vi) << ": " << " out_edges_of(" << g.graph[(*vi)] << "):";
              for (boost::tie(out, out_end) = out_edges(*vi, g.graph);
                      out != out_end; ++out) {
-                 log << ' ' << g.graph[*out].id << "=(" << g.graph[source(*out, g.graph)].id
-                     << ", " << g.graph[target(*out, g.graph)].id << ") = "
-                     <<  g.graph[*out].cost <<"@t";
+                 log << ' '
+                     << g.graph[*out].id << "=("
+                     << g.graph[source(*out, g.graph)].id << ", "
+                     << g.graph[target(*out, g.graph)].id << ") = "
+                     << g.graph[*out].cost <<"@t";
              }
              log << std::endl;
          }
@@ -638,7 +647,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
 
 template < class G, typename T_V, typename T_E >
 void
-Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id) {
+Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(
+        int64_t vertex_id, int64_t edge_id) {
     T_E d_edge;
 
     // nothing to do, the vertex doesnt exist
@@ -719,7 +729,10 @@ Pgr_base_graph< G, T_V, T_E >::restore_graph() {
 
 template < class G, typename T_V, typename T_E >
 int64_t
-Pgr_base_graph< G, T_V, T_E >::get_edge_id(V from, V to, double &distance) const {
+Pgr_base_graph< G, T_V, T_E >::get_edge_id(
+        V from,
+        V to,
+        double &distance) const {
     E e;
     EO_i out_i, out_end;
     V v_source, v_target;

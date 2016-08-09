@@ -24,13 +24,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_COMMON_SRC_PGR_TYPES_H_
 #define SRC_COMMON_SRC_PGR_TYPES_H_
-
 #pragma once
 
 
 #ifndef __cplusplus
-#include "postgres.h"
+
+// for bool
+#include <postgres.h>
+
+// For NULL & size_t
+#include <stdlib.h>
 #endif
+
+// For int64_t etc
 #include <stdint.h>
 
 typedef struct  {
@@ -110,12 +116,29 @@ typedef struct {
 
 
 typedef struct {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  bool going;
+  bool coming;
+  int64_t edge_id;
+} pgr_basic_edge_t;
+
+typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
     double cost;
     double reverse_cost;
 } pgr_edge_t;
+
+typedef struct {
+  int64_t edge;
+  int64_t source;
+  int64_t target;
+  int64_t flow;
+  int64_t residual_capacity;
+} pgr_flow_t;
 
 typedef struct {
     int seq;

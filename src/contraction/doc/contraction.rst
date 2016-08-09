@@ -13,6 +13,13 @@
 Contraction
 ===============================================================================
 
+
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+:ref:`pgr_contractGraph`
+
 Contracting a graph becomes a crucial operation when talking about big graphs like
 the graphs involved in routing across cities, countries, continents or the whole world.
 
@@ -37,7 +44,7 @@ And with the additional characteristics:
   - The user can decide how many times the cycle can be done.
   - If possible, the user can decide the order of the operations on a cycle.
 
-.. note:: Work on progress in contraction branch
+
 
 
 The contraction skeleton
@@ -46,7 +53,7 @@ The contraction skeleton
 In general we have an initial set up that may involve analizing the graph given as input and setting the
 non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
 until while possible, and then move to the next contraction operation.
-Adding a new operation then becomes an "easy" task; more things might be involved, because the
+Adding a new operation then becomes an "easy" task but more things might be involved, because the
 charachteristics of the graph change each time its contracted, so some interaction between contractions
 has to be implemented also.
 

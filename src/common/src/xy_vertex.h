@@ -24,21 +24,9 @@
 
 #ifndef SRC_COMMON_SRC_XY_VERTEX_H_
 #define SRC_COMMON_SRC_XY_VERTEX_H_
-
 #pragma once
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
-#undef Min
-#undef Max
-#undef sgn
-#undef K
 #include <CGAL/Simple_cartesian.h>
-// #include <boost/geometry.hpp>
-// #include <boost/geometry/geometries/point_xy.hpp>
 #include <vector>
 
 #include "./pgr_types.h"

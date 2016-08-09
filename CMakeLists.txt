@@ -96,6 +96,7 @@ set(PgRouting_SOURCE_NAMES
     #  - Not officialy on the release
     #  - number indicates version when was propsosed with code
     #----------------------
+    "max_flow"    # 2.3
     "contraction" # 2.3
     "pickDeliver" # 2.3
     "vrp_basic"   # 2.0 
@@ -193,6 +194,7 @@ set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANC
 set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_GIT_HASH}")
 
 message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
+message(STATUS "PGROUTING_BUILD_STRING: ${PGROUTING_BUILD_STRING}")
 message(STATUS "PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
 message(STATUS "PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
 message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")

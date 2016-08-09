@@ -15,6 +15,12 @@ Changes for 2.3.0
 
   * pgr_dijkstraCostMatrix
   * pgr_withPointsCostMatrix
+  * pgr_maxFlowPushRelabel
+  * pgr_maxFlowEdmondsKarp
+  * pgr_maxFlowBoykovKolmogorov
+  * pgr_maximumCardinalityMatching
+  * pgr_edgeDisjointPaths
+  * pgr_contractGraph
 
 
 * Deprecated Signatures
