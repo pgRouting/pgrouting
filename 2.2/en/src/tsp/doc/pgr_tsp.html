@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.3 (pgrouting-2.2.3)',
+        VERSION:     '2.2.4 (pgrouting-2.2.4)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -56,7 +56,7 @@
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route from a start node via a list of nodes.</li>
 <li><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route order when passed a disance matrix.</li>
-<li><tt class="docutils literal"><span class="pre">pgr_makeDistanceMatrix</span></tt> - Returns a Eucleadian distance Matrix from the points provided in the sql result.</li>
+<li><tt class="docutils literal"><span class="pre">_pgr_makeDistanceMatrix</span></tt> - Returns a Eucleadian distance Matrix from the points provided in the sql result.</li>
 </ul>
 </div>
 <div class="section" id="synopsis">
@@ -125,7 +125,7 @@
 <p class="rubric">Create a distance matrix</p>
 <p>For users that need a distance matrix we have a simple function that takes SQL in <tt class="docutils literal"><span class="pre">sql</span></tt> as described above and returns a record with <tt class="docutils literal"><span class="pre">dmatrix</span></tt> and <tt class="docutils literal"><span class="pre">ids</span></tt>.</p>
 <blockquote>
-<div><div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">dmatrix</span><span class="p">,</span> <span class="n">ids</span> <span class="k">from</span> <span class="n">pgr_makeDistanceMatrix</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">);</span>
+<div><div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">dmatrix</span><span class="p">,</span> <span class="n">ids</span> <span class="k">from</span> <span class="n">_pgr_makeDistanceMatrix</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -316,8 +316,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.3 (pgrouting-2.2.3).
-      Last updated on May 15, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
+      Last updated on Aug 09, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

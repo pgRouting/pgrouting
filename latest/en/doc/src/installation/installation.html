@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.3 (pgrouting-2.2.3)',
+        VERSION:     '2.2.4 (pgrouting-2.2.4)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -70,20 +70,21 @@
 </div>
 <div class="section" id="ubuntu-debian">
 <h3>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this headline">¶</a></h3>
-<p>Ubuntu packages are available in Launchpad repositories:</p>
-<ul class="simple">
-<li><em>stable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting">https://launchpad.net/~georepublic/+archive/pgrouting</a></li>
-<li><em>unstable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting-unstable">https://launchpad.net/~georepublic/+archive/pgrouting-unstable</a></li>
-</ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Add pgRouting launchpad repository (&quot;stable&quot; or &quot;unstable&quot;)</span>
-sudo add-apt-repository ppa:georepublic/pgrouting<span class="o">[</span>-unstable<span class="o">]</span>
+<p>Ubuntu packages are available in postgreSQL repositories.</p>
+<p>Using a terminal window:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.</span>
+sudo sh -c <span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
+
+<span class="c"># Import the repository key, update the package lists</span>
+sudo apt-get install wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update
 
-<span class="c"># Install pgRouting packages</span>
-sudo apt-get install postgresql-9.1-pgrouting
+<span class="c"># Install pgrouting based on your postgres Installation: for this example is 9.3</span>
+sudo apt-get install postgresql-9.3-pgrouting
 </pre></div>
 </div>
-<p>Use <a class="reference external" href="https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable">UbuntuGIS-unstable PPA</a> to install PostGIS 2.0.</p>
+<p>This will also install all required packages such as postgreSQL and postGIS if not installed yet.</p>
 </div>
 <div class="section" id="rhel-centos">
 <h3>RHEL/CentOS<a class="headerlink" href="#rhel-centos" title="Permalink to this headline">¶</a></h3>
@@ -162,8 +163,12 @@ make install clean
 </div>
 <div class="section" id="upgrading-the-database">
 <h2>Upgrading the database<a class="headerlink" href="#upgrading-the-database" title="Permalink to this headline">¶</a></h2>
-<p>To upgrade pgRouting to version 2.1.0 use the following command:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.1.0&quot;</span><span class="p">;</span>
+<p>To upgrade pgRouting to version 2.x.y use the following command:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.x.y&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>For example to upgrade to 2.2.3</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.2.3&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -184,8 +189,8 @@ make install clean
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.3 (pgrouting-2.2.3).
-      Last updated on May 15, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
+      Last updated on Aug 09, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

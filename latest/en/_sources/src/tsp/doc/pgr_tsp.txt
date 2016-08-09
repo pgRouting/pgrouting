@@ -17,14 +17,14 @@ pgr_tsp - Traveling Sales Person
     single: pgr_tsp(sql text, start_id integer, end_id integer)
     single: pgr_tsp(matrix float[][], start integer)
     single: pgr_tsp(matrix float[][], start integer, end integer)
-    single: pgr_makeDistanceMatrix(sqlin text)
+    single: _pgr_makeDistanceMatrix(sqlin text)
 
 Name
 -------------------------------------------------------------------------------
 
 * ``pgr_tsp`` - Returns the best route from a start node via a list of nodes.
 * ``pgr_tsp`` - Returns the best route order when passed a disance matrix.
-* ``pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
+* ``_pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
 
 
 Synopsis
@@ -82,7 +82,7 @@ For users that need a distance matrix we have a simple function that takes SQL i
 
     .. code-block:: sql
     
-        SELECT dmatrix, ids from pgr_makeDistanceMatrix('SELECT id, x, y FROM vertex_table');
+        SELECT dmatrix, ids from _pgr_makeDistanceMatrix('SELECT id, x, y FROM vertex_table');
 
 The function returns a record of ``dmatrix``, ``ids``:
 

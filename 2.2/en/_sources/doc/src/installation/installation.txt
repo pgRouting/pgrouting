@@ -40,21 +40,25 @@ Production Builds:
 Ubuntu/Debian
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ubuntu packages are available in Launchpad repositories:
+Ubuntu packages are available in postgreSQL repositories.
 
-* *stable* https://launchpad.net/~georepublic/+archive/pgrouting
-* *unstable* https://launchpad.net/~georepublic/+archive/pgrouting-unstable
+Using a terminal window:
 
 .. code-block:: bash
 
-	# Add pgRouting launchpad repository ("stable" or "unstable")
-	sudo add-apt-repository ppa:georepublic/pgrouting[-unstable]
-	sudo apt-get update
+    # Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.
+    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
-	# Install pgRouting packages
-	sudo apt-get install postgresql-9.1-pgrouting
+    # Import the repository key, update the package lists
+    sudo apt-get install wget ca-certificates
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    sudo apt-get update
 
-Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable>`_ to install PostGIS 2.0.
+    # Install pgrouting based on your postgres Installation: for this example is 9.3
+    sudo apt-get install postgresql-9.3-pgrouting
+
+This will also install all required packages such as postgreSQL and postGIS if not installed yet.
+
 
 
 RHEL/CentOS
@@ -156,10 +160,15 @@ pgRouting is an extension.
 Upgrading the database
 ----------------------
 
-To upgrade pgRouting to version 2.1.0 use the following command:
+To upgrade pgRouting to version 2.x.y use the following command:
 
 .. code-block:: sql
 
-   ALTER EXTENSION pgrouting UPDATE TO "2.1.0";
+   ALTER EXTENSION pgrouting UPDATE TO "2.x.y";
 
+For example to upgrade to 2.2.3
+
+.. code-block:: sql
+
+   ALTER EXTENSION pgrouting UPDATE TO "2.2.3";
 
