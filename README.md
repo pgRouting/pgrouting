@@ -6,7 +6,7 @@
 
 ### Branches
 
-The *master* branch reflects the current 2.2.3 release.
+The *master* branch reflects the current 2.2.4 release.
 The *develop* branch reflects the 2.3.0-dev
 
 
@@ -87,7 +87,7 @@ Family of functions include:
 
 ## INSTALLATION
 
-See online documentation: http://docs.pgrouting.org/
+See online documentation: http://docs.pgrouting.org/latest/en/doc/src/installation/installation.html
 
 ## COMPILATION
 
@@ -121,7 +121,7 @@ Postgresql 9.1+
 
 ## USAGE
 
-See online documentation: http://docs.pgrouting.org/2.2/en/doc/index.html
+See online documentation: http://docs.pgrouting.org/latest/en/doc/index.html
 
 
 ## LICENSE
