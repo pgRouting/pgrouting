@@ -83,7 +83,7 @@ do_pgr_tsp(
         }
 
         if (!costs.is_symmetric()) {
-            err << "A Non symetric Matrix was given as input";
+            err << "A Non symmetric Matrix was given as input";
             *err_msg = strdup(err.str().c_str());
             *log_msg = strdup(log.str().c_str());
             return;
@@ -201,16 +201,16 @@ do_pgr_tsp(
         *log_msg = strdup(log.str().c_str());
         (*err_msg) = NULL;
         return;
-    } catch (AssertFailedException &exept) {
+    } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what() << "\n";
+        err << except.what() << "\n";
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
-    } catch (std::exception& exept) {
+    } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what() << "\n";
+        err << except.what() << "\n";
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch(...) {

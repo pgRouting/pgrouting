@@ -111,11 +111,11 @@ class Vehicle_node: public Tw_node {
      ///@ {
 
      /*! \brief True when the total count for violations are 0 */
-     bool feasable() const {return m_twvTot == 0 &&  m_cvTot == 0;}
+     bool feasible() const {return m_twvTot == 0 &&  m_cvTot == 0;}
 
-     /*! \brief True doesnt have twc nor cv (including total counts) */
-     bool feasable(double cargoLimit) const {
-         return feasable() &&  !has_twv() &&  !has_cv(cargoLimit);
+     /*! \brief True doesn't have twc nor cv (including total counts) */
+     bool feasible(double cargoLimit) const {
+         return feasible() &&  !has_twv() &&  !has_cv(cargoLimit);
      }
 
      /*! \brief True when at this node does not violate time windows */
