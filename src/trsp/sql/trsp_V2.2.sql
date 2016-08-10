@@ -86,7 +86,7 @@ BEGIN
             new_sql := 
             'WITH old_sql AS (' || edges_sql || ')' ||
             '   SELECT id, source, target, cost FROM old_sql';
-        ELSE -- it does not have reverse_cost but user want's it
+        ELSE -- it does not have reverse_cost but user wants it
             RAISE EXCEPTION 'Error, reverse_cost is used, but query did''t return ''reverse_cost'' column'
             USING ERRCODE := 'XX000';
         END IF;
@@ -139,7 +139,7 @@ BEGIN
             new_sql := 
                'WITH old_sql AS (' || edges_sql || ')' ||
                 '   SELECT id, source, target, cost FROM old_sql';
-        ELSE -- it does not have reverse_cost but user want's it
+        ELSE -- it does not have reverse_cost but user wants it
             RAISE EXCEPTION 'Error, reverse_cost is used, but query did''t return ''reverse_cost'' column'
             USING ERRCODE := 'XX000';
         END IF;

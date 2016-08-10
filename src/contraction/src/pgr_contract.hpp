@@ -61,7 +61,7 @@ void perform_deadEnd(G &graph,
         deadendContractor.doContraction(graph, debug);
     }
     catch ( ... ) {
-        debug << "Caught unknown expection!\n";
+        debug << "Caught unknown exception!\n";
     }
 }
 
@@ -80,7 +80,7 @@ void perform_linear(G &graph,
         linearContractor.doContraction(graph, linear_debug);
     }
     catch ( ... ) {
-        linear_debug << "Caught unknown expection!\n";
+        linear_debug << "Caught unknown exception!\n";
     }
     debug << linear_debug.str().c_str() << "\n";
 }
@@ -291,7 +291,7 @@ class Pgr_contract {
 
     void getRemovedV_string(std::ostringstream& vstring);
 
-    void getPsuedoE_string(std::ostringstream& pstring);
+    void getPseudoE_string(std::ostringstream& pstring);
 
     typedef typename std::map<V, std::deque<Edge> > removed_V;
     typedef typename std::map<V, std::deque<Edge> >::iterator removed_V_i;
@@ -314,7 +314,7 @@ class Pgr_contract {
     Identifiers<int64_t> forbidden;
     #if 0
     removed_V removedVertices;
-    psuedo_E psuedoEdges;
+    psuedo_E pseudoEdges;
     degree_to_V degree_to_V_map;
     #endif
     // set of dead_end_vertices;

@@ -45,7 +45,7 @@ namespace vrp {
  *
  * General functionality for a vehicle in a VRP problem
  *
- * Recomended use:
+ * Recommended use:
  *
  * ~~~~{.c}
  *   Class my_vehicle : public vechicle

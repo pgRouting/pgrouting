@@ -84,7 +84,7 @@ This library contains following features:
 * Traveling Sales Person
 * Turn Restriction Shortest Path (TRSP)
 
-Additionaly, ready for testing and to be part of 2.3 official version:
+Additionally, ready for testing and to be part of 2.3 official version:
 
 * Shortest Path Dijkstra With Points Family of functions
 * Shortest Path Dijkstra Cost With Points Family of functions

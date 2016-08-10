@@ -93,7 +93,7 @@ set(PgRouting_SOURCE_NAMES
 
     #----------------------
     # Proposed
-    #  - Not officialy on the release
+    #  - Not officially on the release
     #  - number indicates version when was propsosed with code
     #----------------------
     "max_flow"    # 2.3
@@ -118,14 +118,14 @@ set(PgRouting_SQL_DIRECTORIES
 
     #----------------------
     # Proposed
-    #  Not officialy on the release
+    #  Not officially on the release
     #----------------------
     "convenience"  # most are deprecated
     "label_graph"  # needs to be rewritten using Boost
     "costMatrix"   # proposed on 2.3
 
     #----------------------
-    # Wrappers for backwards compatablity 
+    # Wrappers for backwards compatibility 
     #----------------------
     "apsp_johnson"  # 2.0 wrap of pgr_johnson
     "apsp_warshall" # 2.0 wrap of pgr_warshall
@@ -395,7 +395,7 @@ endif()
 
 
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes")
-#TODO remove the optimizer falg when pgr_bdijkstra gets fixed
+#TODO remove the optimizer flag when pgr_bdijkstra gets fixed
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -O1 -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

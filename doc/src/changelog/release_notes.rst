@@ -182,7 +182,7 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 
 .. rubric:: Proposed functionality
 
-- Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)
+- Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)
 
   - pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.
   - pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.

@@ -51,7 +51,7 @@ THE SOFTWARE.
 *
 **********************************************************************
 *
-* Simulated annealing and a non symetric
+* Simulated annealing and a non symmetric
 * Euclidian Traveling Salesman Problem.
 *
 * Solution based on local search heuristics for
@@ -70,7 +70,7 @@ THE SOFTWARE.
 * NOTE: costs are assumed to be ints, so scaling them to meters or
 * some other int would be advisable.
 *
-* NOTE: the internal cost calculations ASSUME a symetric matrix. There
+* NOTE: the internal cost calculations ASSUME a symmetric matrix. There
 * are notes of what needs to be updated, but all D(i, j)s need to be
 * reviewed because order is important for asymetric cases.
 *
@@ -324,7 +324,7 @@ DTYPE getThreeWayCost(TSP *tsp, Path p) {
     f = iorder[MOD(p[2]+1, n)];
 
     return(D(a, d) + D(e, b) + D(c, f) - D(a, b) - D(c, d) - D(e, f));
-        /* add cost between d and e if non symetric TSP */
+        /* add cost between d and e if non symmetric TSP */
 }
 
 static
@@ -378,7 +378,7 @@ DTYPE getReverseCost(TSP *tsp, Path p) {
     d = iorder[MOD(p[1]+1, n)];
 
     return(D(d, b) + D(c, a) - D(a, b) - D(c, d));
-    /* add cost between c and b if non symetric TSP */
+    /* add cost between c and b if non symmetric TSP */
 }
 static void doReverse(TSP *tsp, Path p) {
     int i, nswaps, first, last, tmp;

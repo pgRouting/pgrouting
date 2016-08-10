@@ -105,7 +105,7 @@ Description of the parameters of the signatures
 =================== ====================== =================================================
 Parameter           Type                   Description
 =================== ====================== =================================================
-**edges_sql**       ``TEXT``               SQL query as decribed above.
+**edges_sql**       ``TEXT``               SQL query as described above.
 **via_vertices**    ``ARRAY[ANY-INTEGER]`` Array of vertices identifiers
 **directed**        ``BOOLEAN``            (optional) Default is true (is directed). When set to false the graph is considered as Undirected
 **strict**          ``BOOLEAN``            (optional) ignores if a subsection of the route is missing and returns everything it found Default is true (is directed). When set to false the graph is considered as Undirected
