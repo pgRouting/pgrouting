@@ -291,7 +291,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                     tmplog << "The (pickup, delivery) = ("
                         << m_orders.back().pickup().original_id() << ", "
                         << m_orders.back().delivery().original_id()
-                        << ") is not feasable";
+                        << ") is not feasible";
                     error = tmplog.str();
                     return;
                 }

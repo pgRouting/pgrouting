@@ -105,7 +105,7 @@ do_pgr_max_flow_one_to_many(
 
         return;
     } catch (...) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
         return;
     }

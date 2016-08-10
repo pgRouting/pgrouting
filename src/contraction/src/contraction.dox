@@ -23,7 +23,7 @@ but to give a framework such that adding a contraction operation can be easily a
 For this contraction implementation, there are two operations:
 
  1. dead end contraction: vertices have one incoming edge
- 2. linear contraction: vertices have one incomming and one outgoing edge
+ 2. linear contraction: vertices have one incoming and one outgoing edge
 
 
 And with the additional characteristics:
@@ -119,7 +119,7 @@ Characteristics:
 
   - Contraction code: **2**
   - `V2`: vertex with 1 incoming edge and 1 outgoing edge:
-  - The outgoing edge must have different identifier of the incomming edge
+  - The outgoing edge must have different identifier of the incoming edge
 
 
 ~~~~{.c}
@@ -212,7 +212,7 @@ Visually the graph is
 @subsection contraction_examples_linear_dead_end Linear and Dead End Contraction
 
 - For simplicity all the edges in the example have unit weight.
-- A weigth different than 1 will be expressed explicitly.
+- A weight different than 1 will be expressed explicitly.
 * Perform linear contraction operation followed by a dead end operation.
 * 1 cycle of contraction.
 

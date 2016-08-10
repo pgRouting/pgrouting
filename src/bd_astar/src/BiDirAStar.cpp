@@ -150,7 +150,7 @@ void BiDirAStar::setparent(int node_id, int dir, int parnode, int paredge) {
 
 /*
    Reconstruct path for forward search. It is like normal dijkstra. The parent array contains the parent of the current node and there is a -1 in the source.
-   So one need to recurse upto the source and then add the current node and edge to the list.
+   So one need to recurse up to the source and then add the current node and edge to the list.
    */
 
 void BiDirAStar::fconstruct_path(int node_id) {
@@ -166,7 +166,7 @@ void BiDirAStar::fconstruct_path(int node_id) {
 
 /*
    Reconstruct path for the reverse search. In this case the subsequent node is stored in the parent and the target contains a -1. So one need to add the node
-   and edge to the list and then recurse through the parent upto hitting a -1.
+   and edge to the list and then recurse through the parent up to hitting a -1.
    */
 
 void BiDirAStar::rconstruct_path(int node_id) {
@@ -388,7 +388,7 @@ bool BiDirAStar::construct_graph(edge_astar_t* edges, size_t edge_count, int max
     nodeInfo.Connected_Nodes.clear();
 
     // Insert the dummy node into the node list. This acts as place holder. Also change the nodeId so that nodeId and node index in the vector are same.
-    // There may be some nodes here that does not appear in the edge list. The size of the list is upto maxNode which is equal to maximum node id.
+    // There may be some nodes here that does not appear in the edge list. The size of the list is up to maxNode which is equal to maximum node id.
     // DBG("    Adding nodes to m_vecNodeVector\n");
     for (i = 0; i <= maxNode; i++) {
         nodeInfo.NodeID = i;
@@ -408,7 +408,7 @@ bool BiDirAStar::construct_graph(edge_astar_t* edges, size_t edge_count, int max
 }
 
 /*
-   Process the edge and populate the member nodelist and edgelist. The nodelist already contains upto maxNode dummy entries with nodeId same as index. Now the
+   Process the edge and populate the member nodelist and edgelist. The nodelist already contains up to maxNode dummy entries with nodeId same as index. Now the
    connectivity information needs to be updated.
    */
 

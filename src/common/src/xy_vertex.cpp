@@ -110,7 +110,7 @@ extract_vertices(
 }
 
 #if 0
-/* the folowing might be needed when using withPoints */
+/* the following might be needed when using withPoints */
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
     const std::vector < Pgr_edge_xy_t > data_edges) {

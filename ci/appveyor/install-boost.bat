@@ -13,7 +13,7 @@ if not defined CONFIGURATION goto _error
     
 if defined BOOST_LOCAL_DEBUG (
     echo "install-boost.bat"
-    echo recieved environment
+    echo received environment
     echo BOOST_VERSION %BOOST_VERSION%
     echo COMMON_INSTALL_DIR %COMMON_INSTALL_DIR%
     echo MSVC_VER %MSVC_VER%

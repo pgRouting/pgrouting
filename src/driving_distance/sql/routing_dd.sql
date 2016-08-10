@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source bigint, di
              sql = 'SELECT id, source, target, cost, -1 as reverse_cost FROM (' || edges_sql || ') __q ';
          ELSE
              -- the user says it has reverse cost but its false
-             -- cant do anything
+             -- can't do anything
              RAISE EXCEPTION 'has_rcost set to true but reverse_cost not found';
          END IF;
       END IF;

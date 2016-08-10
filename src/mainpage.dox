@@ -142,7 +142,7 @@ For the rest of the document the following branch has being created in the main 
 ~~~~{.c}
     git add <file>
     git remove <file>
-    git mv <oldNmae> <newName>
+    git mv <oldName> <newName>
     git commit -a -m '<commit message>'
 ~~~~
 

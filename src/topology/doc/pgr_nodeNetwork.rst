@@ -120,7 +120,7 @@ The analysis tell us that the network has a gap and and an intersection. We try 
 	NOTICE:  pgr_nodeNetwork('edge_table',0.001,'the_geom','id','noded')
 	NOTICE:  Performing checks, pelase wait .....
 	NOTICE:  Processing, pelase wait .....
-	NOTICE:    Splitted Edges: 3
+	NOTICE:    Split Edges: 3
 	NOTICE:   Untouched Edges: 15
 	NOTICE:       Total original Edges: 18
 	NOTICE:   Edges generated: 6

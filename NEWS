@@ -92,7 +92,7 @@ Changes for 2.1.0
    - allow any-integer in the id's
    - allow any-numerical on the cost/reverse_cost columns
 
- - Three Functions where completly re-factored using the developers library and functionality was added.
+ - Three Functions where completely re-factored using the developers library and functionality was added.
 
    - pgr_dijkstra
    - pgr_ksp
@@ -106,7 +106,7 @@ Changes for 2.1.0
    - The library has a the prefix 2-1-0
 
  - Added proposed functions to be evaluated:
-   - Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)
+   - Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)
       - pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.
       - pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.
       - pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.

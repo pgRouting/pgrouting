@@ -21,7 +21,7 @@ Experimental and Proposed functions
 .. warning:: These are proposed functions
 
   - They are not officially of the current release.
-  - They likely will not be officialy be part of the next release:
+  - They likely will not be officially be part of the next release:
 
     - The functions might not make use of ANY-INTEGER and ANY-NUMERICAL
     - Name might change.

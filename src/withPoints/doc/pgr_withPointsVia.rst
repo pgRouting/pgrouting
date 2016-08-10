@@ -119,8 +119,8 @@ Description of the parameters of the signatures
 ================ ================= =================================================
 Parameter        Type              Description
 ================ ================= =================================================
-**edges_sql**    ``TEXT``          Edges SQL query as decribed above.
-**points_sql**   ``TEXT``          Points SQL query as decribed above.
+**edges_sql**    ``TEXT``          Edges SQL query as described above.
+**points_sql**   ``TEXT``          Points SQL query as described above.
 **start_pid**    ``ANY-INTEGER``   Starting point id.
 **distance**     ``ANY_NUMERICAL`` Distance from the start_pid
 **directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.

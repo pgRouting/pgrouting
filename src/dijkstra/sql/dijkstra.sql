@@ -39,7 +39,7 @@ Description of the parameters of the signatures
 ============== ================== ======== =================================================
 Column         Type               Default     Description
 ============== ================== ======== =================================================
-**sql**        ``TEXT``                    SQL query as decribed above.
+**sql**        ``TEXT``                    SQL query as described above.
 **start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
 **start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
 **end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.

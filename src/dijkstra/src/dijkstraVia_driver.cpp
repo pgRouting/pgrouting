@@ -221,7 +221,7 @@ do_pgr_dijkstraViaVertex(
         *err_msg = strdup(log.str().c_str());
 #endif
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
 }

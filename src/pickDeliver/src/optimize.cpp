@@ -321,7 +321,7 @@ Optimize::move_reduce_cost(size_t from_pos, size_t to_pos) {
     while (!orders.empty()) {
         /*
          * get the order that decreases the duration the most
-         * (there is allways a worse)
+         * (there is always a worse)
          */
         auto order = from_truck.get_worse_order(orders);
         orders.erase(order.id());

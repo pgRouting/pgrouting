@@ -116,8 +116,8 @@ Description of the parameters of the signatures
 ================ ================= =================================================
 Parameter        Type              Description
 ================ ================= =================================================
-**edges_sql**    ``TEXT``          Edges SQL query as decribed above.
-**points_sql**   ``TEXT``          Points SQL query as decribed above.
+**edges_sql**    ``TEXT``          Edges SQL query as described above.
+**points_sql**   ``TEXT``          Points SQL query as described above.
 **start_pid**    ``ANY-INTEGER``   Starting point id.
 **end_pid**      ``ANY-INTEGER``   Ending point id.
 **K**            ``INTEGER``       Number of shortest paths.
@@ -142,7 +142,7 @@ Returns set of ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
 Column           Type              Description
 ============ =========== =================================================
 **seq**      ``INTEGER`` Row sequence.
-**path_seq** ``INTEGER`` Relative position in the path of node and edge. Has value 1 for the begining of a path.
+**path_seq** ``INTEGER`` Relative position in the path of node and edge. Has value 1 for the beginning of a path.
 **path_id**  ``INTEGER``  Path identifier. The ordering of the paths: For two paths i, j if i < j then agg_cost(i) <= agg_cost(j).
 **node**     ``BIGINT``  Identifier of the node in the path. Negative values are the identifiers of a point.
 **edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence. 
