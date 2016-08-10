@@ -48,9 +48,9 @@ fi
 
 EXCLUDED_FILES="*/.svn*,configure,config.status,config.sub,*/autom4te.cache/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/hdf-eos/*,teststream.out,ogrogdilayer.cpp"
-EXCLUDED_FILES="$EXCLUDED_FILES,*/doc/i18n/fr/*"
-#EXCLUDED_FILES="$EXCLUDED_FILES,*/src/*/test/*"
-#EXCLUDED_FILES="$EXCLUDED_FILES,*/src/*/src/*"
+EXCLUDED_FILES="$EXCLUDED_FILES,*/doc/i18n/*"
+EXCLUDED_FILES="$EXCLUDED_FILES,*/src/*/test/*"
+EXCLUDED_FILES="$EXCLUDED_FILES,*/src/*/src/*"
 #EXCLUDED_FILES="$EXCLUDED_FILES,*/src/*/sql/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/src/*/doc/*"
 EXCLUDED_FILES="$EXCLUDED_FILES,*/fix_typos/*,*/build/*"
@@ -70,5 +70,5 @@ WORDS_WHITE_LIST="$WORDS_WHITE_LIST,THRESHHOLD_BILEVEL,THRESHHOLD_HALFTONE,THRES
 
 python3 fix_typos/codespell/codespell.py -w -i 3 -q 2 -S $EXCLUDED_FILES \
     -x tools/scripts/typos_whitelist.txt --words-white-list=$WORDS_WHITE_LIST \
-    -D fix_typos/gdal_dict.txt  ..
+    -D fix_typos/gdal_dict.txt  .
 

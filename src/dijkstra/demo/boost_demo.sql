@@ -72,7 +72,7 @@ UPDATE table1 SET target = table1_vertices.vid
 FROM table1_vertices
 WHERE target_name = name;
 
--- Their output starts with 0 so we substract 1 to the vid
+-- Their output starts with 0 so we subtract 1 to the vid
 -- pgrouting: no paths or 0 length (aka I am there, so no path) are not included
 SELECT end_vid-1, agg_cost FROM pgr_dijkstra(
     'SELECT id, source, target, cost FROM table1',

@@ -26,7 +26,7 @@ NOTICE:  PROCESSING:
 NOTICE:  pgr_nodeNetwork('edge_table', 0.001, 'id', 'the_geom', 'noded', '<NULL>',  f)
 NOTICE:  Performing checks, please wait .....
 NOTICE:  Processing, please wait .....
-NOTICE:    Splitted Edges: 3
+NOTICE:    Split Edges: 3
 NOTICE:   Untouched Edges: 15
 NOTICE:       Total original Edges: 18
 NOTICE:   Edges generated: 6
