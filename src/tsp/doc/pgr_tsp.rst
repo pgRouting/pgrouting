@@ -41,7 +41,7 @@ Signature Summary
         tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
         initial_temperature, final_temperature, cooling_factor,
         randomize,
-    RETURS SETOF (seq, node, cost, agg_cost)
+    RETURNS SETOF (seq, node, cost, agg_cost)
 
 Signatures
 -------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ Basic Use
 .. code-block:: none
 
     pgr_TSP(matrix_cell_sql)
-    RETURS SETOF (seq, node, cost, agg_cost)
+    RETURNS SETOF (seq, node, cost, agg_cost)
 
 :Example: 
 
@@ -87,7 +87,7 @@ Complete Signature
         tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
         initial_temperature, final_temperature, cooling_factor,
         randomize,
-    RETURS SETOF (seq, node, cost, agg_cost)
+    RETURNS SETOF (seq, node, cost, agg_cost)
 
 
 .. rubric:: Example:
@@ -118,7 +118,7 @@ Can be Used with:
 * :ref:`pgr_floydWarshall`
 * :ref:`pgr_johnson`
 
-To generate a symetric matrix
+To generate a symmetric matrix
 
 * directed := false.
 
@@ -143,7 +143,7 @@ Examples
 
 :Example: Using with points of interest.
 
-To generate a symetric matrix:
+To generate a symmetric matrix:
 
 * the **side** information of pointsOfInterset is ignored by not including it in the query
 * and **directed := false**

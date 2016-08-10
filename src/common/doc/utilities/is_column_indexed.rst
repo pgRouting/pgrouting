@@ -84,7 +84,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`developer` for the tree layout of the project.
-* :ref:`pgr_is_column_in_table` to check only for the existance of the column in the table.
+* :ref:`pgr_is_column_in_table` to check only for the existence of the column in the table.
 * :ref:`pgr_get_column_name` to get the name of the column as is stored in the postgres administration tables.
 * :ref:`pgr_get_table_name` to get the name of the table as is stored in the postgres administration tables.
 
