@@ -53,6 +53,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="#changelog-2-3-0"><em>pgRouting 2.3.0 Release Notes</em></a></li>
+<li><a class="reference internal" href="#changelog-2-2-4"><em>pgRouting 2.2.4 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-3"><em>pgRouting 2.2.3 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-2"><em>pgRouting 2.2.2 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-1"><em>pgRouting 2.2.1 Release Notes</em></a></li>
@@ -71,20 +72,29 @@
 <p>Indentifiers can be <cite>ANY-INTEGER</cite> and costs can be <cite>ANY-NUMERICAL</cite></p>
 <ul class="simple">
 <li>pgr_TSP</li>
-<li>pgr_eucledianTSP</li>
 <li>pgr_aStar</li>
 </ul>
-<p class="rubric">Proposed functions</p>
+<p class="rubric">New Functions</p>
+<ul class="simple">
+<li>pgr_eucledianTSP</li>
+</ul>
+<p class="rubric">New Proposed functions</p>
 <ul class="simple">
 <li>pgr_dijkstraCostMatrix</li>
 <li>pgr_withPointsCostMatrix</li>
+<li>pgr_maxFlowPushRelabel</li>
+<li>pgr_maxFlowEdmondsKarp</li>
+<li>pgr_maxFlowBoykovKolmogorov</li>
+<li>pgr_maximumCardinalityMatching</li>
+<li>pgr_edgeDisjointPaths</li>
+<li>pgr_contractGraph</li>
 </ul>
 <p class="rubric">Deprecated Signatures</p>
 <ul class="simple">
 <li>pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead</li>
 <li>pgr_astar - use pgr_aStar instead</li>
 </ul>
-<p class="rubric">Deprecated functions</p>
+<p class="rubric">Deprecated Functions</p>
 <ul class="simple">
 <li>pgr_flip_edges</li>
 <li>pgr_vidsToDmatrix</li>
@@ -92,12 +102,22 @@
 <li>pgr_textToPoints</li>
 </ul>
 </div>
+<div class="section" id="pgrouting-2-2-4-release-notes">
+<span id="changelog-2-2-4"></span><h1>pgRouting 2.2.4 Release Notes<a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.2.4%22+is%3Aclosed">Git closed issues for 2.2.4</a> on Github.</p>
+<p class="rubric">Bug Fixes</p>
+<ul class="simple">
+<li>Bogus uses of extern &#8220;C&#8221;</li>
+<li>Build error on Fedora 24 + GCC 6.0</li>
+<li>Regression error pgr_nodeNetwork</li>
+</ul>
+</div>
 <div class="section" id="pgrouting-2-2-3-release-notes">
 <span id="changelog-2-2-3"></span><h1>pgRouting 2.2.3 Release Notes<a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Permalink to this headline">¶</a></h1>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed">Git closed issues for 2.2.3</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Fixed  compatibility issues with PostgreSQL 9.6.</li>
+<li>Fixed compatibility issues with PostgreSQL 9.6.</li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-2-release-notes">
@@ -168,7 +188,7 @@
 </ul>
 <p class="rubric">Proposed functionality</p>
 <ul class="simple">
-<li>Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)<ul>
+<li>Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)<ul>
 <li>pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.</li>
 <li>pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.</li>
 <li>pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.</li>
@@ -344,7 +364,7 @@ The following release notes have been copied from the previous <tt class="docuti
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -61,19 +61,25 @@
 <li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD - Proposed</em></a> - Driving distance.</li>
 </ul>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>The numbering of the points are handled with negative sign.</p>
-<ul class="simple">
-<li>Original point identifiers are to be positive.</li>
-<li>Transformation to negative is done internally.</li>
-<li>For results for involving vertices identifiers<ul>
-<li>positive sign is a vertex of the original grpah</li>
-<li>negative sign is a point of the temporary points</li>
+<div class="toctree-wrapper compound">
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
 </ul>
 </li>
 </ul>
-<p class="last">The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.</p>
+</div></blockquote>
 </div>
 <div class="section" id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
@@ -136,10 +142,22 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 <li><p class="first">Some points are:</p>
 <ul class="simple">
 <li>Permanent, for example the set of points of clients stored in a table in the data base</li>
-<li>Temporal, for example points given thru a web application</li>
+<li>Temporal, for example points given through a web application</li>
+</ul>
+</li>
+<li><p class="first">The numbering of the points are handled with negative sign.</p>
+<ul class="simple">
+<li>Original point identifiers are to be positive.</li>
+<li>Transformation to negative is done internally.</li>
+<li>For results for involving vertices identifiers<ul>
+<li>positive sign is a vertex of the original grpah</li>
+<li>negative sign is a point of the temporary points</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<p>The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.</p>
 </div>
 <div class="section" id="graph-edges">
 <h2>Graph &amp; edges<a class="headerlink" href="#graph-edges" title="Permalink to this headline">¶</a></h2>
@@ -254,8 +272,6 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </li>
 </ul>
 </div></blockquote>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 
@@ -275,7 +291,7 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

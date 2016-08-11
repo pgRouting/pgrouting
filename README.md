@@ -25,17 +25,17 @@ It uses Sphinx template styles, but it is not generated automatically.
 
 # for user's documentation
 
-    rm -Rf dev 
-    mkdir dev
-    cp -r build/doc/html/en dev 
-    git add dev
+rm -Rf dev 
+mkdir dev
+cp -r build/doc/html/en dev 
+git add dev
 
 # for developers documentation
     
-    rm -Rf doxy/2.3-dev-develop
-    cp -r build/doxy/html doxy/2.3-dev-develop
-    git add doxy/2.3-dev-develop
-    
+rm -Rf doxy/2.3-dev-develop
+cp -r build/doxy/html doxy/2.3-dev-develop
+git add doxy/2.3-dev-develop
+
 
     cp build/latex/pgRoutingDocumentation.pdf dev/
     gzip -c build/man/pgrouting.7 > dev/pgrouting.7.gz

@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../index.html" />
-    <link rel="next" title="Cost Matrix" href="costMatrix/doc/costMatrix.html" />
+    <link rel="next" title="pgr_dijkstraCostMatrix - proposed" href="costMatrix/doc/pgr_dijkstraCostMatrix.html" />
     <link rel="prev" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="trsp/doc/pgr_trsp.html" /> 
   </head>
   <body>
@@ -41,7 +41,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="costMatrix/doc/costMatrix.html">Cost Matrix</a>&#160;&#160;»
+        <a href="costMatrix/doc/pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>&#160;&#160;»
         </p>
 
       </div>
@@ -50,33 +50,25 @@
         
   <div class="section" id="stable-proposed-functions">
 <span id="proposednext"></span><h1>Stable proposed Functions<a class="headerlink" href="#stable-proposed-functions" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p>This are proposed functions for next mayor release.</p>
 <blockquote class="last">
 <div><ul class="simple">
 <li>They are not officially in the current release.</li>
-<li>They will likely officialy be part of the next mayor release:<ul>
+<li>They will likely officially be part of the next mayor release:<ul>
 <li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might not change.</li>
-<li>Signature might not change.</li>
-<li>Functionality might not change.</li>
-<li>pgTap tests have being done.</li>
-<li>Documentation is finished.</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
 </ul>
 </li>
 </ul>
 </div></blockquote>
 </div>
 <ul class="simple">
-<li>For TSP preprocessing<ul>
-<li><a class="reference internal" href="costMatrix/doc/costMatrix.html#costmatrix"><em>Cost Matrix</em></a><ul>
-<li><a class="reference internal" href="costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a> - Use pgr_dijkstra to calculate a cost matrix.</li>
-<li><a class="reference internal" href="costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
-</ul>
-</li>
-</ul>
-</li>
 <li>As part of the <a class="reference internal" href="dijkstra/doc/dijkstra.html#dijkstra"><em>Dijkstra - Family of functions</em></a><ul>
 <li><a class="reference internal" href="costMatrix/doc/pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a> Use pgr_dijkstra to calculate a cost matrix.</li>
 <li><a class="reference internal" href="dijkstra/doc/pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia - Proposed</em></a> - Use pgr_dijkstra to make a route via vertices.</li>
@@ -88,6 +80,10 @@
 <li><a class="reference internal" href="costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a> - Use pgr_withPoints to calculate a cost matrix.</li>
 <li><a class="reference internal" href="withPoints/doc/pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP - Proposed</em></a> - K shortest paths with points.</li>
 <li><a class="reference internal" href="withPoints/doc/pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD - Proposed</em></a> - Driving distance.</li>
+</ul>
+</li>
+<li>A new Section<ul>
+<li><a class="reference internal" href="costMatrix/doc/costMatrix.html#costmatrix"><em>Cost Matrix</em></a></li>
 </ul>
 </li>
 </ul>
@@ -104,14 +100,14 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="costMatrix/doc/costMatrix.html">Cost Matrix</a>&#160;&#160;»
+        <a href="costMatrix/doc/pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

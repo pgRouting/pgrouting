@@ -27,7 +27,7 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="withPoints - Family of functions" href="withPoints.html" />
-    <link rel="next" title="pgr_withPointsKSP - Proposed" href="pgr_withPointsKSP.html" />
+    <link rel="next" title="pgr_withPointsCostMatrix - proposed" href="../../costMatrix/doc/pgr_withPointsCostMatrix.html" />
     <link rel="prev" title="pgr_withPoints - Proposed" href="pgr_withPoints.html" /> 
   </head>
   <body>
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_withPointsKSP.html">pgr_withPointsKSP - Proposed</a>&#160;&#160;»
+        <a href="../../costMatrix/doc/pgr_withPointsCostMatrix.html">pgr_withPointsCostMatrix - proposed</a>&#160;&#160;»
         </p>
 
       </div>
@@ -54,15 +54,26 @@
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_withPointsCost</span></tt> - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>This is a proposed function</p>
-<ul class="last simple">
-<li>Is not officially in the release.</li>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
 </ul>
+</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside8.jpeg" src="../../../_images/boost-inside8.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside9.jpeg" src="../../../_images/boost-inside9.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 </div>
@@ -440,11 +451,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Edges SQL query as decribed above.</td>
+<td>Edges SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>points_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Points SQL query as decribed above.</td>
+<td>Points SQL query as described above.</td>
 </tr>
 <tr class="row-even"><td><strong>start_vid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
@@ -610,14 +621,14 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_withPointsKSP.html">pgr_withPointsKSP - Proposed</a>&#160;&#160;»
+        <a href="../../costMatrix/doc/pgr_withPointsCostMatrix.html">pgr_withPointsCostMatrix - proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

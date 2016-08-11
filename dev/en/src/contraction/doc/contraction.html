@@ -27,8 +27,8 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
-    <link rel="next" title="pgr_contractGraph" href="pgr_contractGraph.html" />
-    <link rel="prev" title="pgr_vrpOneDepot" href="../../vrp_basic/doc/pgr_vrpOneDepot.html" /> 
+    <link rel="next" title="pgr_contractGraph - Proposed" href="pgr_contractGraph.html" />
+    <link rel="prev" title="Experimental and Proposed functions" href="../../proposed.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -38,11 +38,11 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../vrp_basic/doc/pgr_vrpOneDepot.html">pgr_vrpOneDepot</a>
+        «&#160;&#160;<a href="../../proposed.html">Experimental and Proposed functions</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_contractGraph.html">pgr_contractGraph</a>&#160;&#160;»
+        <a href="pgr_contractGraph.html">pgr_contractGraph - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
@@ -51,6 +51,29 @@
         
   <div class="section" id="contraction">
 <span id="id1"></span><h1>Contraction<a class="headerlink" href="#contraction" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><a class="reference internal" href="pgr_contractGraph.html#pgr-contractgraph"><em>pgr_contractGraph - Proposed</em></a></p>
 <p>Contracting a graph becomes a crucial operation when talking about big graphs like
 the graphs involved in routing across cities, countries, continents or the whole world.</p>
 <p>The contraction level and contraction operations can become very complex, as the complexity
@@ -63,7 +86,7 @@ but to give a framework such that adding a contraction operation can be easily a
 <blockquote>
 <div><ol class="arabic simple">
 <li>dead end contraction: vertices have one incoming edge</li>
-<li>linear contraction: vertices have one incomming and one outgoing edge</li>
+<li>linear contraction: vertices have one incoming and one outgoing edge</li>
 </ol>
 </div></blockquote>
 <p>And with the additional characteristics:</p>
@@ -74,18 +97,156 @@ but to give a framework such that adding a contraction operation can be easily a
 <li>If possible, the user can decide the order of the operations on a cycle.</li>
 </ul>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Work on progress in contraction branch</p>
-</div>
 <div class="section" id="the-contraction-skeleton">
 <h2>The contraction skeleton<a class="headerlink" href="#the-contraction-skeleton" title="Permalink to this headline">¶</a></h2>
 <p>In general we have an initial set up that may involve analizing the graph given as input and setting the
 non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
 until while possible, and then move to the next contraction operation.
-Adding a new operation then becomes an &#8220;easy&#8221; task; more things might be involved, because the
+Adding a new operation then becomes an &#8220;easy&#8221; task but more things might be involved, because the
 charachteristics of the graph change each time its contracted, so some interaction between contractions
 has to be implemented also.</p>
+<p>Currently, there are two implemented operation for contracting a graph</p>
+<ul class="simple">
+<li>Dead End contraction</li>
+<li>Linear contraction</li>
+</ul>
+</div>
+<div class="section" id="dead-end-contraction">
+<h2>Dead end contraction<a class="headerlink" href="#dead-end-contraction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dead-end-nodes">
+<h3>Dead end nodes<a class="headerlink" href="#dead-end-nodes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The green node <tt class="docutils literal"><span class="pre">B</span></tt> represents a dead end node</li>
+<li>The node <tt class="docutils literal"><span class="pre">A</span></tt> is the only node connecting to <tt class="docutils literal"><span class="pre">B</span></tt>.</li>
+<li>Node <tt class="docutils literal"><span class="pre">A</span></tt> is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.</li>
+<li>Directed graph</li>
+</ul>
+<p class="graphviz">
+<img src="../../../_images/graphviz-5234bd53dd71aa73dcdf49a40867bf76cd7eeece.png" alt="digraph G {
+    A [style=filled;color=deepskyblue];
+    B [style=filled; color=green];
+    &quot;G&quot; [shape=tripleoctagon;
+    style=filled;color=deepskyblue;
+    label = &quot;Rest of the Graph&quot;];
+
+    rankdir=LR;
+    G -&gt; A [dir=none, weight=1, penwidth=3];
+    A -&gt; B;
+}" />
+</p>
+</div>
+<div class="section" id="operation-dead-end-contraction">
+<h3>Operation: Dead End Contraction<a class="headerlink" href="#operation-dead-end-contraction" title="Permalink to this headline">¶</a></h3>
+<p>The dead end contraction will stop until there are no more dead end nodes.
+For example from the following graph:</p>
+<ul class="simple">
+<li>Node <tt class="docutils literal"><span class="pre">A</span></tt> is connected to the rest of the graph by an unlimited number of edges.</li>
+<li>Node <tt class="docutils literal"><span class="pre">B</span></tt> is connected to the rest of the graph with one incoming edge.</li>
+<li>The green node <tt class="docutils literal"><span class="pre">C</span></tt> represents a <cite>Dead End</cite> node</li>
+</ul>
+<p class="graphviz">
+<img src="../../../_images/graphviz-2fc5bee4aea052d2d99303cc04e3d2bd3b719d10.png" alt="digraph G {
+    A [style=filled;color=deepskyblue];
+    B [style=filled; color=deepskyblue];
+    C [style=filled; color=green];
+    &quot;G&quot; [shape=tripleoctagon;
+    style=filled;color=deepskyblue;
+    label = &quot;Rest of the Graph&quot;];
+
+    rankdir=LR;
+    G -&gt; A [dir=none, weight=1, penwidth=3];
+    A -&gt; B;
+    B -&gt; C;
+}" />
+</p>
+<p>After contracting <tt class="docutils literal"><span class="pre">B</span></tt>, node <tt class="docutils literal"><span class="pre">C</span></tt> is now a <cite>Dead End</cite> and is contracted:</p>
+<p class="graphviz">
+<img src="../../../_images/graphviz-c1fa41046ff4a91086fcef9533739ae0c21423e8.png" alt="digraph G {
+    A [style=filled;color=deepskyblue];
+    B [style=filled; color=green;label=&quot;B {C}&quot;;];
+    &quot;G&quot; [shape=tripleoctagon;
+    style=filled;color=deepskyblue;
+    label = &quot;Rest of the Graph&quot;];
+
+    rankdir=LR;
+    G -&gt; A [dir=none, weight=1, penwidth=3];
+    A -&gt; B;
+}" />
+</p>
+<p>Node <tt class="docutils literal"><span class="pre">B</span></tt> gets contracted</p>
+<p class="graphviz">
+<img src="../../../_images/graphviz-b06b0c770fa8f090fe488e5e05ad95accde5f494.png" alt="digraph G {
+    A [style=filled;color=deepskyblue;label=&quot;A {B, C}&quot;;];
+    &quot;G&quot; [shape=tripleoctagon;
+    style=filled;color=deepskyblue;
+    label = &quot;Rest of the Graph&quot;];
+
+    rankdir=LR;
+    G -&gt; A [dir=none, weight=1, penwidth=3];
+}" />
+</p>
+<p>Nodes <tt class="docutils literal"><span class="pre">B</span></tt> and <tt class="docutils literal"><span class="pre">C</span></tt> belong to node <tt class="docutils literal"><span class="pre">A</span></tt>.</p>
+</div>
+<div class="section" id="not-dead-end-nodes">
+<h3>Not Dead End nodes<a class="headerlink" href="#not-dead-end-nodes" title="Permalink to this headline">¶</a></h3>
+<p>In the next graph <tt class="docutils literal"><span class="pre">B</span></tt> is not a <cite>dead end</cite> node.</p>
+<p class="graphviz">
+<img src="../../../_images/graphviz-34238e76a3c7511d025e441305a318f778738bfe.png" alt="digraph G {
+    A [style=filled;color=deepskyblue];
+    B [style=filled; color=red];
+    &quot;G&quot; [shape=tripleoctagon;
+    style=filled;color=deepskyblue;
+    label = &quot;Rest of the Graph&quot;];
+
+    G -&gt; A [dir=none, weight=1, penwidth=3];
+    B -&gt; A;
+}" />
+</p>
+</div>
+</div>
+<div class="section" id="linear-contraction">
+<h2>Linear contraction<a class="headerlink" href="#linear-contraction" title="Permalink to this headline">¶</a></h2>
+<p>Characteristics:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(V2\)</span>: vertex with 1 incoming edge and 1 outgoing edge:<ul>
+<li>The outgoing edge must have different identifier of the incoming edge</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-none"><div class="highlight"><pre>while ( V2 is not empty ) {
+
+    delete vertex of V2
+    create edge (shortcut)
+    the deleted vertex add it to removed_vertices
+    inewly created edge, inherits the removed vertex
+
+    &lt;adjust any conditions that might affect other contraction operations&gt;
+}
+</pre></div>
+</div>
+<div class="section" id="notation">
+<h3>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>V: is the set of vertices</li>
+<li>E: is the set of edges</li>
+<li>G: is the graph</li>
+<li><span class="math">\(V1\)</span>: is the set of <em>dead end</em> vertices</li>
+<li><span class="math">\(V2\)</span>: is the set of <em>linear</em> vertices</li>
+<li>removed_vertices: is the set of removed vertices</li>
+</ul>
+<p>The contracted graph will be represented with two parameters, the modified Graph, and the removed_vertices set.</p>
+<p>removed_vertices = {(v,1):{2}, (e,-1):{3}}.</p>
+<dl class="docutils">
+<dt>The above notation indicates:</dt>
+<dd><ul class="first last simple">
+<li>Vertex 2 is removed, and belongs to vertex 1 subgraph</li>
+<li>Vertex 3 is removed, and belongs to edge -1 subgraph</li>
+</ul>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="procedure">
 <h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
@@ -111,76 +272,6 @@ do N times {
 
 output: G&#39;(V&#39;,E&#39;), removed_vertices
 </pre></div>
-</div>
-</div>
-<div class="section" id="contraction-operations-for-this-implementation">
-<h2>Contraction operations for this implementation<a class="headerlink" href="#contraction-operations-for-this-implementation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="dead-end-contraction">
-<h3>Dead end contraction<a class="headerlink" href="#dead-end-contraction" title="Permalink to this headline">¶</a></h3>
-<p>Characteristics:</p>
-<blockquote>
-<div><ul class="simple">
-<li><span class="math">\(V1\)</span>: set of vertices with 1 incoming edge in increasing order of id:<ul>
-<li>Edges with the same identifier are considered the same edge
-and if it has the <cite>reverse_cost</cite> valid the outgoing edge is ignored</li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
-<div class="highlight-none"><div class="highlight"><pre>while ( V1 is not empty ) {
-
-    delete vertex of V1
-    the deleted vertex add it to removed_vertices
-    vertex that leads to removed vertex, inherits the removed vertex
-
-    &lt;adjust any conditions that might affect other contraction operation&gt;
-}
-</pre></div>
-</div>
-</div>
-<div class="section" id="linear-contraction">
-<h3>Linear contraction<a class="headerlink" href="#linear-contraction" title="Permalink to this headline">¶</a></h3>
-<p>Characteristics:</p>
-<blockquote>
-<div><ul class="simple">
-<li><span class="math">\(V2\)</span>: vertex with 1 incoming edge and 1 outgoing edge:<ul>
-<li>The outgoing edge must have different identifier of the incomming edge</li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
-<div class="highlight-none"><div class="highlight"><pre>while ( V2 is not empty ) {
-
-    delete vertex of V2
-    create edge (shortcut)
-    the deleted vertex add it to removed_vertices
-    inewly created edge, inherits the removed vertex
-
-    &lt;adjust any conditions that might affect other contraction operations&gt;
-}
-</pre></div>
-</div>
-</div>
-<div class="section" id="notation">
-<h3>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>V: is the set of vertices</li>
-<li>E: is the set of edges</li>
-<li>G: is the graph</li>
-<li><span class="math">\(V1\)</span>: is the set of <em>dead end</em> vertices</li>
-<li><span class="math">\(V2\)</span>: is the set of <em>linear</em> vertices</li>
-<li>removed_vertices: is the set of removed vertices</li>
-</ul>
-<p>The contracted graph will be represented with two parameters, the modified Graph, and the removed_vertices set.</p>
-<p>removed_vertices = {(v,1):{2}, (e,-1):{3}}.</p>
-<dl class="docutils">
-<dt>The above notation indicates:</dt>
-<dd><ul class="first last simple">
-<li>Vertex 2 is removed, and belongs to vertex 1 subgraph</li>
-<li>Vertex 3 is removed, and belongs to edge -1 subgraph</li>
-</ul>
-</dd>
-</dl>
 </div>
 </div>
 <div class="section" id="examples">
@@ -313,8 +404,9 @@ G = {V:{1}, E:{}}
 <p>Visualy the results are</p>
 <img alt="../../../_images/threeNodestwoEdges_c.png" src="../../../_images/threeNodestwoEdges_c.png" />
 </div>
+</div>
 <div class="section" id="sample-data">
-<h3>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this headline">¶</a></h3>
+<h2>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Perform dead end contraction operation first and then linear contraction</li>
 <li>1 cycle of contraction.</li>
@@ -459,7 +551,6 @@ removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (e, -4):{12},
 </div>
 <p>Visually the results are</p>
 <img alt="../../../_images/undirected_sampledata_c.png" src="../../../_images/undirected_sampledata_c.png" />
-</div>
 <div class="section" id="detailed-procedure">
 <h3>Detailed Procedure<a class="headerlink" href="#detailed-procedure" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
@@ -617,8 +708,9 @@ contracted_vertices FROM edge_table;
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="dijkstra-on-contracted-graph">
-<h3>Dijkstra on contracted graph<a class="headerlink" href="#dijkstra-on-contracted-graph" title="Permalink to this headline">¶</a></h3>
+<h2>Dijkstra on contracted graph<a class="headerlink" href="#dijkstra-on-contracted-graph" title="Permalink to this headline">¶</a></h2>
 <p>There are five cases which arise when calculating the shortest path between a given source and target,</p>
 <p><strong>Case 1</strong>: Both source and target belong to the contracted graph.</p>
 <p><strong>Case 2</strong>: Source belongs to a contracted graph, while target belongs to a vertex subgraph.</p>
@@ -737,12 +829,11 @@ contracted_vertices FROM edge_table;
 </div>
 </div>
 <div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></li>
 <li><a class="reference external" href="http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></li>
 </ul>
-</div>
 </div>
 </div>
 
@@ -751,18 +842,18 @@ contracted_vertices FROM edge_table;
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../vrp_basic/doc/pgr_vrpOneDepot.html">pgr_vrpOneDepot</a>
+        «&#160;&#160;<a href="../../proposed.html">Experimental and Proposed functions</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_contractGraph.html">pgr_contractGraph</a>&#160;&#160;»
+        <a href="pgr_contractGraph.html">pgr_contractGraph - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

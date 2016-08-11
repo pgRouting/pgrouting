@@ -30,7 +30,9 @@ To be able to execute the sample queries, run the following SQL commands to crea
    :end-before: --EDGE TABLE TOPOLOGY
 
 
-Before you test a routing function use this query to fill the source and target columns.
+.. rubric:: Topology
+
+- Before you test a routing function use this query to create a topology (fills the ``source`` and ``target`` columns).
 
 .. literalinclude:: ../../../tools/testers/sampledata.sql
    :start-after: --EDGE TABLE TOPOLOGY
@@ -38,7 +40,8 @@ Before you test a routing function use this query to fill the source and target 
 
 .. rubric:: Points of interest
 
-When points outside of the graph
+- When points outside of the graph.
+- Used with the :ref:`withPoints` functions.
 
 .. literalinclude:: ../../../tools/testers/sampledata.sql
    :start-after: --POINTS CREATE
@@ -46,9 +49,27 @@ When points outside of the graph
 
 .. rubric:: Restrictions
 
+- Used with the :ref:`trsp` functions.
+
 .. literalinclude:: ../../../tools/testers/sampledata.sql
    :start-after: --RESTRICTIONS CREATE
    :end-before: --RESTRICTIONS END
+
+.. rubric:: Categories
+
+- Used with the :ref:`maxFlow` functions.
+
+.. literalinclude:: ../../../tools/testers/sampledata.sql
+   :start-after: --RESTRICTIONS END
+   :end-before: --CATEGORIES END
+
+.. rubric:: Vertex table
+
+- Used in some deprecated signatures or deprecated functions.
+
+.. literalinclude:: ../../../tools/testers/sampledata.sql
+   :start-after: --CATEGORIES END
+   :end-before: --VERTEX TABLE END
 
 
 Images
@@ -103,5 +124,13 @@ When working with city networks, this is recommended for point of view of pedest
    :scale: 20%
    
    **Graph 4: Undirected, with cost**
+
+
+.. _pickdeliverdata:
+
+Pick & Deliver Data
+.........................
+
+.. literalinclude:: ../../../src/pickDeliver/test/pickDeliver.data
 
 

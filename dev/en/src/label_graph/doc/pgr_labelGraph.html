@@ -27,8 +27,8 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
-    <link rel="next" title="pgr_gsoc_vrppdtw" href="../../vrppdtw/doc/pgr_gsoc_vrppdtw.html" />
-    <link rel="prev" title="pgr_pointsToVids" href="../../convenience/doc/pgr_pointsToVids.html" /> 
+    <link rel="next" title="pgr_gsoc_vrppdtw - Proposed" href="../../vrppdtw/doc/pgr_gsoc_vrppdtw.html" />
+    <link rel="prev" title="pgr_pointsToVids - Proposed" href="../../convenience/doc/pgr_pointsToVids.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -38,11 +38,11 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../convenience/doc/pgr_pointsToVids.html">pgr_pointsToVids</a>
+        «&#160;&#160;<a href="../../convenience/doc/pgr_pointsToVids.html">pgr_pointsToVids - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../vrppdtw/doc/pgr_gsoc_vrppdtw.html">pgr_gsoc_vrppdtw</a>&#160;&#160;»
+        <a href="../../vrppdtw/doc/pgr_gsoc_vrppdtw.html">pgr_gsoc_vrppdtw - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
@@ -52,11 +52,34 @@
   <div class="section" id="pgr-labelgraph-proposed">
 <span id="pgr-labelgraph"></span><h1>pgr_labelGraph - Proposed<a class="headerlink" href="#pgr-labelgraph-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_labelGraph</span></tt> — Locates and labels sub-networks within a network which are not topologically connected. Must be run after <tt class="docutils literal"><span class="pre">pgr_createTopology()</span></tt>. No use of <tt class="docutils literal"><span class="pre">geometry</span></tt> column. Only <tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="docutils literal"><span class="pre">source</span></tt> and  <tt class="docutils literal"><span class="pre">target</span></tt> columns are required.</p>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_labelGraph</span></tt> — Locates and labels sub-networks within a network which are not topologically connected.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Must be run after <tt class="docutils literal"><span class="pre">pgr_createTopology()</span></tt>. No use of <tt class="docutils literal"><span class="pre">geometry</span></tt> column. Only <tt class="docutils literal"><span class="pre">id</span></tt>, <tt class="docutils literal"><span class="pre">source</span></tt> and  <tt class="docutils literal"><span class="pre">target</span></tt> columns are required.</p>
 <p>The function returns:</p>
 <blockquote>
 <div><ul class="simple">
@@ -65,7 +88,7 @@
 <li><tt class="docutils literal"><span class="pre">rows_where</span> <span class="pre">condition</span> <span class="pre">generated</span> <span class="pre">0</span> <span class="pre">rows</span></tt> when passed SQL condition has not been fulfilled by any row.</li>
 </ul>
 </div></blockquote>
-<div class="highlight-sql"><div class="highlight"><pre><span class="nb">varchar</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">)</span>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span class="nb">varchar</span> <span class="n">pgr_labelGraph</span><span class="p">(</span><span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">,</span> <span class="nb">text</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -133,18 +156,18 @@ SELECT subgraph, count(*) FROM edge_table group by subgraph;
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../convenience/doc/pgr_pointsToVids.html">pgr_pointsToVids</a>
+        «&#160;&#160;<a href="../../convenience/doc/pgr_pointsToVids.html">pgr_pointsToVids - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../vrppdtw/doc/pgr_gsoc_vrppdtw.html">pgr_gsoc_vrppdtw</a>&#160;&#160;»
+        <a href="../../vrppdtw/doc/pgr_gsoc_vrppdtw.html">pgr_gsoc_vrppdtw - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

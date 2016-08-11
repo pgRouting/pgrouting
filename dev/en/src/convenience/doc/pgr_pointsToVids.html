@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_pointsToVids &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>pgr_pointsToVids - Proposed &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -28,17 +28,17 @@
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
     <link rel="next" title="pgr_labelGraph - Proposed" href="../../label_graph/doc/pgr_labelGraph.html" />
-    <link rel="prev" title="pgr_textToPoints - Deprecated Function" href="pgr_textToPoints.html" /> 
+    <link rel="prev" title="pgr_pointToEdgeNode - Proposed" href="pgr_pointToEdgeNode.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
-        <h2 class="heading"><span>pgr_pointsToVids</span></h2>
+        <h2 class="heading"><span>pgr_pointsToVids - Proposed</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_textToPoints.html">pgr_textToPoints - Deprecated Function</a>
+        «&#160;&#160;<a href="pgr_pointToEdgeNode.html">pgr_pointToEdgeNode - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -49,20 +49,31 @@
       <div class="content">
         
         
-  <div class="section" id="pgr-pointstovids">
-<span id="pgr-points-to-vids"></span><h1>pgr_pointsToVids<a class="headerlink" href="#pgr-pointstovids" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-pointstovids-proposed">
+<span id="pgr-points-to-vids"></span><h1>pgr_pointsToVids - Proposed<a class="headerlink" href="#pgr-pointstovids-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_pointsToVids</span></tt> - Converts an array of point geometries into vertex ids.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>This is a proposed function</p>
+<p>These are proposed functions</p>
 <ul class="last simple">
-<li>Is not officially in the release.</li>
-<li>Name could change.</li>
-<li>Signature could change.</li>
-<li>Needs testing.</li>
-<li>Functionality could change.</li>
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -81,7 +92,7 @@
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p class="rubric">Paramters</p>
+<p class="rubric">Parameters</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -121,7 +132,7 @@ NOTICE:  Deperecated function: pgr_textToPoints
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode</em></a> - convert a point geometry to the closest vertex_id of an edge..</li>
+<li><a class="reference internal" href="pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode - Proposed</em></a> - convert a point geometry to the closest vertex_id of an edge..</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -136,7 +147,7 @@ NOTICE:  Deperecated function: pgr_textToPoints
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_textToPoints.html">pgr_textToPoints - Deprecated Function</a>
+        «&#160;&#160;<a href="pgr_pointToEdgeNode.html">pgr_pointToEdgeNode - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -147,7 +158,7 @@ NOTICE:  Deperecated function: pgr_textToPoints
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

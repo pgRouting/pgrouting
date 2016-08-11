@@ -76,7 +76,7 @@ pgr_eucledianTSP(coordinates_sql,
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
     initial_temperature, final_temperature, cooling_factor,
     randomize,
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 </div>
@@ -85,7 +85,7 @@ RETURS SETOF (seq, node, cost, agg_cost)
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -122,7 +122,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 18;
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
     initial_temperature, final_temperature, cooling_factor,
     randomize,
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <p class="rubric">Example:</p>
@@ -403,7 +403,7 @@ Best cost reached = 18.7796
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

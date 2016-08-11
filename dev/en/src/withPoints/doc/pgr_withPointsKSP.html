@@ -28,7 +28,7 @@
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="withPoints - Family of functions" href="withPoints.html" />
     <link rel="next" title="pgr_withPointsDD - Proposed" href="pgr_withPointsDD.html" />
-    <link rel="prev" title="pgr_withPointsCost - Proposed" href="pgr_withPointsCost.html" /> 
+    <link rel="prev" title="pgr_withPointsCostMatrix - proposed" href="../../costMatrix/doc/pgr_withPointsCostMatrix.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -38,7 +38,7 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_withPointsCost.html">pgr_withPointsCost - Proposed</a>
+        «&#160;&#160;<a href="../../costMatrix/doc/pgr_withPointsCostMatrix.html">pgr_withPointsCostMatrix - proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -54,15 +54,26 @@
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_withPointsKSP</span></tt> - Find the K shortest paths using Yen&#8217;s algorithm.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>This is a proposed function</p>
-<ul class="last simple">
-<li>Is not officially in the release.</li>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
 </ul>
+</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside8.jpeg" src="../../../_images/boost-inside8.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside9.jpeg" src="../../../_images/boost-inside9.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 </div>
@@ -338,11 +349,11 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Edges SQL query as decribed above.</td>
+<td>Edges SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>points_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Points SQL query as decribed above.</td>
+<td>Points SQL query as described above.</td>
 </tr>
 <tr class="row-even"><td><strong>start_pid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
@@ -407,7 +418,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </tr>
 <tr class="row-odd"><td><strong>path_seq</strong></td>
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
-<td>Relative position in the path of node and edge. Has value 1 for the begining of a path.</td>
+<td>Relative position in the path of node and edge. Has value 1 for the beginning of a path.</td>
 </tr>
 <tr class="row-even"><td><strong>path_id</strong></td>
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
@@ -561,7 +572,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_withPointsCost.html">pgr_withPointsCost - Proposed</a>
+        «&#160;&#160;<a href="../../costMatrix/doc/pgr_withPointsCostMatrix.html">pgr_withPointsCostMatrix - proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -572,7 +583,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

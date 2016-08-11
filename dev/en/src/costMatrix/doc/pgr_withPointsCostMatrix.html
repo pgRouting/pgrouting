@@ -26,9 +26,9 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
-    <link rel="up" title="Cost Matrix" href="costMatrix.html" />
-    <link rel="next" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" />
-    <link rel="prev" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" /> 
+    <link rel="up" title="withPoints - Family of functions" href="../../withPoints/doc/withPoints.html" />
+    <link rel="next" title="pgr_withPointsKSP - Proposed" href="../../withPoints/doc/pgr_withPointsKSP.html" />
+    <link rel="prev" title="pgr_withPointsCost - Proposed" href="../../withPoints/doc/pgr_withPointsCost.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -38,11 +38,11 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>
+        «&#160;&#160;<a href="../../withPoints/doc/pgr_withPointsCost.html">pgr_withPointsCost - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>&#160;&#160;»
+        <a href="../../withPoints/doc/pgr_withPointsKSP.html">pgr_withPointsKSP - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
@@ -54,6 +54,24 @@
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_withPointsCostMatrix</span></tt> - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="figure">
 <a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside4.jpeg" src="../../../_images/boost-inside4.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
@@ -135,7 +153,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <ul class="simple">
 <li>Using the default <strong>side</strong> value on the <strong>points_sql</strong> query</li>
 <li>Using an undirected graph</li>
-<li>Using the defualt <strong>driving_side</strong> value</li>
+<li>Using the default <strong>driving_side</strong> value</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsCostMatrix(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
@@ -327,11 +345,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Edges SQL query as decribed above.</td>
+<td>Edges SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>points_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Points SQL query as decribed above.</td>
+<td>Points SQL query as described above.</td>
 </tr>
 <tr class="row-even"><td><strong>start_vids</strong></td>
 <td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
@@ -440,18 +458,18 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>
+        «&#160;&#160;<a href="../../withPoints/doc/pgr_withPointsCost.html">pgr_withPointsCost - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>&#160;&#160;»
+        <a href="../../withPoints/doc/pgr_withPointsKSP.html">pgr_withPointsKSP - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

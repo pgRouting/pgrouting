@@ -43,7 +43,7 @@ The function returns:
 Description
 -----------------------------------------------------------------------------
 
-.. rubric:: Paramters
+.. rubric:: Parameters
 
 :vids: ``integer[]`` - An array of ``vertex_id``.
 :pnts: ``geometry[]`` - An array of point geometries that approximates the extents of the ``vertex_id``.
@@ -53,7 +53,7 @@ Description
 .. warning::
 
     * we compute a symmetric matrix because TSP requires that so the distances are better the Euclidean but but are not perfect
-    * kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than the cost might get set to -1.0, so the dmatrix shoule be checked for this as it makes it invalid for TSP
+    * kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than the cost might get set to -1.0, so the dmatrix should be checked for this as it makes it invalid for TSP
 
 .. rubric:: History
 

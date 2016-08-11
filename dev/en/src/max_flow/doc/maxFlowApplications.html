@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Applications of Maximum Flow &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (develop)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
+    <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
+    <link rel="next" title="pgr_maximumCardinalityMatching - Proposed" href="pgr_maximumCardinalityMatching.html" />
+    <link rel="prev" title="pgr_maxFlowBoykovKolmogorov - Proposed" href="pgr_maxFlowBoykovKolmogorov.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
+        <h2 class="heading"><span>Applications of Maximum Flow</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_maxFlowBoykovKolmogorov.html">pgr_maxFlowBoykovKolmogorov - Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_maximumCardinalityMatching.html">pgr_maximumCardinalityMatching - Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="applications-of-maximum-flow">
+<span id="maxflowapplications"></span><h1>Applications of Maximum Flow<a class="headerlink" href="#applications-of-maximum-flow" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> - Calculates a maximum cardinality matching in a graph.</li>
+<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> - Calculates edge disjoint paths between two groups of vertices.</li>
+</ul>
+</div></blockquote>
+<p>Maximum flow algorithms provide solutions to other graph problems.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="maximum-cardinality-matching">
+<h3>Maximum cardinality matching<a class="headerlink" href="#maximum-cardinality-matching" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>A matching or independent edge set in a graph is a set of edges without common vertices.</li>
+<li>A maximum matching is a matching that contains the largest possible number of edges.</li>
+<li>There may be many maximum matchings.</li>
+<li>The graph can be directed or undirected.</li>
+</ul>
+<p>The <a class="reference internal" href="pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> function can be used to calculate one such maximum matching.</p>
+</div>
+<div class="section" id="edge-disjoint-paths">
+<h3>Edge disjoint paths<a class="headerlink" href="#edge-disjoint-paths" title="Permalink to this headline">¶</a></h3>
+<p>In a undirected/directed graph, two paths are edge-disjoint(or edge-independant) if they do not have any internal edge in common.</p>
+<p>While the number of maximum edge disjoint paths is fixed, there may be several different routes.</p>
+<p>The <a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> function returns the maximum number of paths and possible routes.</p>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_flow_problem#Application">https://en.wikipedia.org/wiki/Maximum_flow_problem#Application</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_maxFlowBoykovKolmogorov.html">pgr_maxFlowBoykovKolmogorov - Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_maximumCardinalityMatching.html">pgr_maximumCardinalityMatching - Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
+      Last updated on Aug 11, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -27,8 +27,8 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Stable proposed Functions" href="../../proposedNext.html" />
-    <link rel="next" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" />
-    <link rel="prev" title="Stable proposed Functions" href="../../proposedNext.html" /> 
+    <link rel="next" title="Experimental and Proposed functions" href="../../proposed.html" />
+    <link rel="prev" title="pgr_withPointsDD - Proposed" href="../../withPoints/doc/pgr_withPointsDD.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
@@ -38,11 +38,11 @@
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../proposedNext.html">Stable proposed Functions</a>
+        «&#160;&#160;<a href="../../withPoints/doc/pgr_withPointsDD.html">pgr_withPointsDD - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>&#160;&#160;»
+        <a href="../../proposed.html">Experimental and Proposed functions</a>&#160;&#160;»
         </p>
 
       </div>
@@ -57,7 +57,23 @@
 <li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a></li>
 </ul>
 </div></blockquote>
-<div class="toctree-wrapper compound">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="general-information">
 <h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
@@ -81,15 +97,15 @@
 </tbody>
 </table>
 </li>
-<li><p class="first">It will be the users responsability to make the matrix symmetric.</p>
+<li><p class="first">It will be the users responsibility to make the matrix symmetric.</p>
 <ul class="simple">
-<li>By using geometric or harmonic average of the non symetric values.</li>
-<li>By using max or min the non symetric values.</li>
+<li>By using geometric or harmonic average of the non symmetric values.</li>
+<li>By using max or min the non symmetric values.</li>
 <li>By setting the upper triangle to be the mirror image of the lower triangle.</li>
 <li>By setting the lower triangle to be the mirror image of the upper triangle.</li>
 </ul>
 </li>
-<li><p class="first">It is also the users responsability to fix an <span class="math">\(\infty\)</span> value.</p>
+<li><p class="first">It is also the users responsibility to fix an <span class="math">\(\infty\)</span> value.</p>
 </li>
 </ul>
 </li>
@@ -129,7 +145,7 @@
 <li><cite>end_vid</cite> ascending</li>
 </ul>
 </li>
-<li><p class="first">Runing time: aproximately <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></p>
+<li><p class="first">Running time: approximately <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></p>
 </li>
 </ul>
 </div>
@@ -152,18 +168,18 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../proposedNext.html">Stable proposed Functions</a>
+        «&#160;&#160;<a href="../../withPoints/doc/pgr_withPointsDD.html">pgr_withPointsDD - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>&#160;&#160;»
+        <a href="../../proposed.html">Experimental and Proposed functions</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

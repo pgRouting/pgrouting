@@ -57,7 +57,7 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>This is a bi-directional Dijkstra search algorithm. It searchs from the source toward the distination and at the same time from the destination to the source and terminates whe these to searchs meet in the middle. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that make up a path.</p>
+<p>This is a bi-directional Dijkstra search algorithm. It searches from the source toward the distination and at the same time from the destination to the source and terminates whe these to searches meet in the middle. Returns a set of <a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result"><em>pgr_costResult</em></a> (seq, id1, id2, cost) rows, that make up a path.</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult</span><span class="p">[]</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
                                 <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span><span class="p">);</span>
 </pre></div>
@@ -135,11 +135,11 @@
     4, 10, false, false);
  seq | id1 | id2 | cost 
 -----+-----+-----+------
-   0 |   4 |   3 |    0
-   1 |   3 |   2 |    0
-   2 |   2 |   4 |    1
-   3 |   5 |  10 |    1
-   4 |  10 |  -1 |    0
+   0 |   4 |     |    0
+   1 |   3 |     |    0
+   2 |   2 |     |    1
+   3 |   5 |     |    1
+   4 |  10 |     |    0
 (5 rows)
 </pre></div>
 </div>
@@ -188,7 +188,7 @@
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -95,7 +95,7 @@ Description of the parameters of the signatures
 ============== ====================== =================================================
 Column          Type                  Description
 ============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as decribed above.
+**edges_sql**  ``TEXT``               SQL query as described above.
 **start_vid**  ``BIGINT``             Identifier of the starting vertex.
 **start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices.
 **distance**   ``FLOAT``              Upper limit for the inclusion of the node in the result.
@@ -123,7 +123,7 @@ Column         Type        Description
 
 
 
-Aditional Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns

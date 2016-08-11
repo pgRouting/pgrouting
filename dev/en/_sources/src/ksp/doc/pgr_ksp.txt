@@ -76,7 +76,7 @@ Description of the Signatures
 ============== ============ =================================================                                                                                                                                          
 Column         Type           Description                                                                                                                                                                                
 ============== ============ =================================================
-**edges_sql**   ``TEXT``    SQL query as decribed above.
+**edges_sql**   ``TEXT``    SQL query as described above.
 **start_vid**   ``BIGINT``  Identifier of the starting vertex.
 **end_vid**     ``BIGINT``  Identifier of the ending vertex.
 **k**           ``INTEGER`` The desiered number of paths.
@@ -97,7 +97,7 @@ Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``
 Column         Type        Description
 ============== =========== =================================================
 **seq**        ``INTEGER`` Sequential value starting from **1**.
-**path_seq**   ``INTEGER`` Relative position in the path of ``node`` and ``edge``. Has value **1** for the begining of a path.
+**path_seq**   ``INTEGER`` Relative position in the path of ``node`` and ``edge``. Has value **1** for the beginning of a path.
 **path_id**    ``BIGINT``  Path identifier. The ordering of the paths For two paths i, j if i < j then agg_cost(i) <= agg_cost(j).
 **node**       ``BIGINT``  Identifier of the node in the path.
 **edge**       ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the route.

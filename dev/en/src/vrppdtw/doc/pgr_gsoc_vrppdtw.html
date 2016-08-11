@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_gsoc_vrppdtw &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>pgr_gsoc_vrppdtw - Proposed &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -27,13 +27,13 @@
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
     <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
-    <link rel="next" title="__pgr_pickDeliver" href="../../pickDeliver/doc/pgr_pickDeliver.html" />
+    <link rel="next" title="pgr_vrpOneDepot - Proposed" href="../../vrp_basic/doc/pgr_vrpOneDepot.html" />
     <link rel="prev" title="pgr_labelGraph - Proposed" href="../../label_graph/doc/pgr_labelGraph.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
           <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
-        <h2 class="heading"><span>pgr_gsoc_vrppdtw</span></h2>
+        <h2 class="heading"><span>pgr_gsoc_vrppdtw - Proposed</span></h2>
       </div>
       <div class="topnav">
       
@@ -42,24 +42,38 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../pickDeliver/doc/pgr_pickDeliver.html">__pgr_pickDeliver</a>&#160;&#160;»
+        <a href="../../vrp_basic/doc/pgr_vrpOneDepot.html">pgr_vrpOneDepot - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content">
         
         
-  <div class="section" id="pgr-gsoc-vrppdtw">
-<span id="pgr-gsocvrppdtw"></span><h1>pgr_gsoc_vrppdtw<a class="headerlink" href="#pgr-gsoc-vrppdtw" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-gsoc-vrppdtw-proposed">
+<span id="pgr-gsocvrppdtw"></span><h1>pgr_gsoc_vrppdtw - Proposed<a class="headerlink" href="#pgr-gsoc-vrppdtw-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></tt> — Returns optimized  solution</p>
+<p><tt class="docutils literal"><span class="pre">pgr_gsoc_vrppdtw</span></tt> — Returns a solution for <cite>Pick and Delivery</cite> with <cite>time windows</cite> Vehicle Routing Problem</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>This is a proposed function.</p>
+<p>These are proposed functions</p>
 <ul class="last simple">
-<li>Is not officially in the current release.</li>
-<li>The implementation currently is a wrapper of <a class="reference internal" href="../../pickDeliver/doc/pgr_pickDeliver.html#pgr-pickdeliver"><em>__pgr_pickDeliver</em></a></li>
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -180,7 +194,7 @@ ORDER BY id1;
 <tbody valign="top">
 <tr class="row-even"><td><strong>sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>SQL query as decribed above.</td>
+<td>SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>vehicle_num</strong></td>
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
@@ -302,6 +316,7 @@ ORDER BY id1;
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li>The examples use <a class="reference internal" href="../../../doc/src/developer/sampledata.html#pickdeliverdata"><em>Pick &amp; Deliver Data</em></a></li>
 <li>current implementation is a wrapper of <a class="reference internal" href="../../pickDeliver/doc/pgr_pickDeliver.html#pgr-pickdeliver"><em>__pgr_pickDeliver</em></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
 </ul>
@@ -317,14 +332,14 @@ ORDER BY id1;
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../pickDeliver/doc/pgr_pickDeliver.html">__pgr_pickDeliver</a>&#160;&#160;»
+        <a href="../../vrp_basic/doc/pgr_vrpOneDepot.html">pgr_vrpOneDepot - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Jul 25, 2016.
+      Last updated on Aug 11, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
