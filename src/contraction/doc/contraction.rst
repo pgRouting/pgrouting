@@ -20,8 +20,7 @@ Contraction
 
 :ref:`pgr_contractGraph`
 
-Contracting a graph becomes a crucial operation when talking about big graphs like
-the graphs involved in routing across cities, countries, continents or the whole world.
+Graph Contraction, when talking about big graphs, like the road graphs, or electric networks, can be used to speed up, some graph algorithms.
 
 The contraction level and contraction operations can become very complex, as the complexity
 of the graphs grows.
@@ -44,8 +43,31 @@ And with the additional characteristics:
   - The user can decide how many times the cycle can be done.
   - If possible, the user can decide the order of the operations on a cycle.
 
+Dead end vertex
+++++++++++++++++
 
+.. graphviz::
+digraph G {
+    T [shape=Mrecord, label="Rest of the graph" color=darkorange2, style=filled]
+    2 [color = black, fillcolor = gold,style=filled shape=circle];
+    T->2 [label=" id = 1"];
+}
 
+.. graphviz::
+digraph G {
+    T [shape=Mrecord, label="Rest of the graph" color=darkorange2, style=filled]
+    2 [color = black, fillcolor = gold,style=filled shape=circle];
+    T->2 [label=" id = 1"];
+    2->T [label=" id = 1"];
+}
+
+.. graphviz::
+digraph G {
+    T [shape=Mrecord, label="Rest of the graph" color=darkorange2, style=filled]
+    2 [color = black, fillcolor = gold,style=filled shape=circle];
+    T->2 [label=" id = 1"];
+    T->2 [label=" id = 3"];
+}
 
 The contraction skeleton
 -------------------------------------------------------------------------------
