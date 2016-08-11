@@ -482,7 +482,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
                         }
                     }
 
-                    /*! \brief Disconnects all incomming and outgoing edges from the vertex
+                    /*! \brief Disconnects all incoming and outgoing edges from the vertex
                     boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
                     simulated by disconnecting the vertex from the graph
                     - No edge is disconnected if the vertices id's do not exist in the graph
@@ -522,7 +522,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
                     boost::clear_vertex(vertex, this->graph);
                 }
                 catch ( ... ) {
-                    log << "Caught unknown expection!\n";
+                    log << "Caught unknown exception!\n";
                 }
             }
 };

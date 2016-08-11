@@ -34,7 +34,7 @@ but to give a framework such that adding a contraction operation can be easily a
 For this contraction proposal I am only making 2 operations:
 
  1. dead end contraction: vertices have one incoming edge
- 2. linear contraction: vertices have one incomming and one outgoing edge
+ 2. linear contraction: vertices have one incoming and one outgoing edge
    
 
 And with the additional characteristics:
@@ -141,7 +141,7 @@ Characteristics:
 
   - :math:`V2`: vertex with 1 incoming edge and 1 outgoing edge:
 
-    - The outgoing edge must have different identifier of the incomming edge
+    - The outgoing edge must have different identifier of the incoming edge
 
 .. code-block:: none
 

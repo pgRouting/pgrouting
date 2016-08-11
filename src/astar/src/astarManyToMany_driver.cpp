@@ -150,16 +150,16 @@ void do_pgr_astarManyToMany(
 
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());
-    } catch (AssertFailedException &exept) {
+    } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what() << "\n";
+        err << except.what() << "\n";
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
-    } catch (std::exception& exept) {
+    } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what() << "\n";
+        err << except.what() << "\n";
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch(...) {

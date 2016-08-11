@@ -403,11 +403,11 @@ class Pgr_base_graph {
         
         When the graph is empty calls:
         - @b extract_vertices
-        and throws an exeption if there are illegal vertices.
+        and throws an exception if there are illegal vertices.
         
         
         When developing:
-          - if an illegal vertex is found an exeption is thrown
+          - if an illegal vertex is found an exception is thrown
           - That means that the set of vertices should be checked in the
             code that is being developed
         
@@ -548,7 +548,7 @@ class Pgr_base_graph {
 
 
 
-     //! @brief Disconnects all incomming and outgoing edges from the vertex
+     //! @brief Disconnects all incoming and outgoing edges from the vertex
      /*!
        boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
        simulated by disconnecting the vertex from the graph
@@ -621,7 +621,7 @@ void
 Pgr_base_graph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
     T_E d_edge;
 
-    // nothing to do, the vertex doesnt exist
+    // nothing to do, the vertex doesn't exist
     if (!has_vertex(p_from) || !has_vertex(p_to)) return;
 
     EO_i out, out_end;
@@ -651,7 +651,7 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(
         int64_t vertex_id, int64_t edge_id) {
     T_E d_edge;
 
-    // nothing to do, the vertex doesnt exist
+    // nothing to do, the vertex doesn't exist
     if (!has_vertex(vertex_id)) return;
     auto v_from(get_V(vertex_id));
 
@@ -713,7 +713,7 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
         }
     }
 
-    // delete incomming and outgoing edges from the vertex
+    // delete incoming and outgoing edges from the vertex
     boost::clear_vertex(vertex, graph);
 }
 

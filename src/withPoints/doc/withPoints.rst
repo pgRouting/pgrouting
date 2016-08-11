@@ -102,7 +102,7 @@ In all this functions we have to take care of as many aspects as possible:
 - Some points are:
 
   - Permanent, for example the set of points of clients stored in a table in the data base
-  - Temporal, for example points given thru a web application
+  - Temporal, for example points given through a web application
 
 - The numbering of the points are handled with negative sign.
 

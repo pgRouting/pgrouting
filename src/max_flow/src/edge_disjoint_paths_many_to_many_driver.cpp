@@ -72,7 +72,7 @@ do_pgr_edge_disjoint_paths_many_to_many(
         }
         PgrEdgeDisjointPathsGraph<FlowGraph> G;
 
-        // I use a directed graph since I'm dependant on directed graphs
+        // I use a directed graph since I'm dependent on directed graphs
 
         G.create_edge_disjoint_paths_graph(data_edges, total_tuples,
                                            set_source_vertices,
@@ -94,7 +94,7 @@ do_pgr_edge_disjoint_paths_many_to_many(
 
         return;
     } catch (...) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
         return;
     }

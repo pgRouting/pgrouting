@@ -522,7 +522,7 @@ Pgr_astar< G >::get_path(
         return;
     }
 
-    // findout how large is the path
+    // find out how large is the path
     int64_t result_size = 1;
     while (target != source) {
         if (target == predecessors[target]) break;

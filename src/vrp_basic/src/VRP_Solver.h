@@ -369,7 +369,7 @@ class CVRPSolver {
      void applyBestMoveInCurrentSolution(CSolutionInfo& solutionInfo, CMoveInfo& bestMove);
      void insertUnservedOrders(CSolutionInfo& solutionInfo);
      // void attemptFeasibleNodeExchange(CSolutionInfo& solutionInfo);
-     void attempVehicleExchange(CSolutionInfo& solutionInfo);
+     void attemptVehicleExchange(CSolutionInfo& solutionInfo);
      // CMoveInfo identifyPotentialMove();
      void updateTabuCount(CMoveInfo& bestMove);
 

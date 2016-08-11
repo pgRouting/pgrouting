@@ -48,7 +48,7 @@ THE SOFTWARE.
 
        select pgr_analyzeGraph('mytab', 0.000002);
 
-   After the analyzing the graph, deadends are indentified by *cnt=1*
+   After the analyzing the graph, deadends are identified by *cnt=1*
    in the "vertices_tmp" table and potential problems are identified
    with *chk=1*.  (Using 'source' and 'target' columns for analysis)
 
@@ -64,7 +64,7 @@ Makes more checks:
    checks table edge_tab exists in the schema
    checks source and target columns exist in edge_tab
    checks that source and target are completely populated i.e. do not have NULL values
-   checks table edge_tabVertices exist in the appropiate schema
+   checks table edge_tabVertices exist in the appropriate schema
        if not, it creates it and populates it
    checks 'cnt','chk' columns exist in  edge_tabVertices
        if not, it creates them

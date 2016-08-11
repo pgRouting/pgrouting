@@ -92,15 +92,15 @@ do_pgr_floydWarshall(
 
         *log_msg = strdup(log.str().c_str());
         return;
-    } catch (AssertFailedException &exept) {
+    } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-    } catch (std::exception& exept) {
+    } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
