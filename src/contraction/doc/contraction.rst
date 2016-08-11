@@ -43,31 +43,6 @@ And with the additional characteristics:
   - The user can decide how many times the cycle can be done.
   - If possible, the user can decide the order of the operations on a cycle.
 
-Dead end vertex
-++++++++++++++++
-
-.. graphviz::
-digraph G {
-    T [shape=Mrecord, label="Rest of the graph" color=darkorange2, style=filled]
-    2 [color = black, fillcolor = gold,style=filled shape=circle];
-    T->2 [label=" id = 1"];
-}
-
-.. graphviz::
-digraph G {
-    T [shape=Mrecord, label="Rest of the graph" color=darkorange2, style=filled]
-    2 [color = black, fillcolor = gold,style=filled shape=circle];
-    T->2 [label=" id = 1"];
-    2->T [label=" id = 1"];
-}
-
-.. graphviz::
-digraph G {
-    T [shape=Mrecord, label="Rest of the graph" color=darkorange2, style=filled]
-    2 [color = black, fillcolor = gold,style=filled shape=circle];
-    T->2 [label=" id = 1"];
-    T->2 [label=" id = 3"];
-}
 
 The contraction skeleton
 -------------------------------------------------------------------------------
@@ -83,10 +58,6 @@ Currently, there are two implemented operation for contracting a graph
 
 - Dead End contraction
 - Linear contraction
-
-
-
-
 
 
 Dead end contraction
@@ -201,22 +172,125 @@ In the next graph ``B`` is not a `dead end` node.
 Linear contraction
 -------------------------------------------------------------------------------
 
-Characteristics:
+Linear nodes
+......................
 
-  - :math:`V2`: vertex with 1 incoming edge and 1 outgoing edge:
+- The green node ``B`` represents a linear node
+- The nodes ``A`` and ``C`` are the only nodes connecting to ``B``.
+- Node ``A`` is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.
+- Node ``C`` is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.
+- Directed graph
 
-    - The outgoing edge must have different identifier of the incoming edge
+.. graphviz::
 
-.. code-block:: none
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=green];
+        C [style=filled;color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
 
-    while ( V2 is not empty ) {
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> C [dir=none, weight=1, penwidth=3];
+        A -> B;
+        B -> C;
+    }
 
-        delete vertex of V2
-        create edge (shortcut)
-        the deleted vertex add it to removed_vertices
-        inewly created edge, inherits the removed vertex
+Operation: Linear Contraction
+.....................................
 
-        <adjust any conditions that might affect other contraction operations>
+The linear contraction will stop until there are no more linear nodes.
+For example from the following graph:
+
+- Node ``A`` is connected to the rest of the graph by an unlimited number of edges.
+- Node ``B`` is connected to the rest of the graph with one incoming edge and one outgoing edge.
+- Node ``C`` is connected to the rest of the graph with one incoming edge and one outgoing edge.
+- Node ``D`` is connected to the rest of the graph by an unlimited number of edges.
+- The green nodes ``B`` and ``C`` represents `Linear` nodes.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=green];
+        C [style=filled; color=green];
+        D [style=filled; color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> D [dir=none, weight=1, penwidth=3];
+        A -> B;
+        B -> C;
+        C -> D;
+
+    }
+
+After contracting ``B``, a new edge gets inserted between ``A`` and ``C`` which is represented by red color.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        C [style=filled; color=green];
+        D [style=filled; color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> D [dir=none, weight=1, penwidth=3];
+        A -> C [label="{B}";color=red]
+        C -> D;
+
+    }
+
+Node ``C`` is `linear node` and gets contracted.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        D [style=filled; color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> D [dir=none, weight=1, penwidth=3];
+        A -> D [label="{B, C}";color=red];
+
+    }
+
+Nodes ``B`` and ``C`` belong to edge connecting ``A`` and ``D`` which is represented by red color.
+
+
+Not Linear nodes
+......................
+
+In the next graph ``B`` is not a `linear` node.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=red];
+        C [style=filled;color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> C [dir=none, weight=1, penwidth=3];
+        A -> B;
+        C -> B;
     }
 
 
