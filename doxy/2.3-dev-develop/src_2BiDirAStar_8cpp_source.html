@@ -260,7 +260,7 @@ $(document).ready(function(){initNavTree('src_2BiDirAStar_8cpp_source.html','');
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">   Reconstruct path for forward search. It is like normal dijkstra. The parent array contains the parent of the current node and there is a -1 in the source.</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">   So one need to recurse upto the source and then add the current node and edge to the list.</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">   So one need to recurse up to the source and then add the current node and edge to the list.</span></div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">   */</span></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
 <div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="classBiDirAStar.html#a9409b9ce0d2091c00d44891370b82fe6">  156</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classBiDirAStar.html#a9409b9ce0d2091c00d44891370b82fe6">BiDirAStar::fconstruct_path</a>(<span class="keywordtype">int</span> node_id) {</div>
@@ -276,7 +276,7 @@ $(document).ready(function(){initNavTree('src_2BiDirAStar_8cpp_source.html','');
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">   Reconstruct path for the reverse search. In this case the subsequent node is stored in the parent and the target contains a -1. So one need to add the node</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">   and edge to the list and then recurse through the parent upto hitting a -1.</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">   and edge to the list and then recurse through the parent up to hitting a -1.</span></div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">   */</span></div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
 <div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="classBiDirAStar.html#a4de7fdcb8bc5f620179301cd6684e129">  172</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classBiDirAStar.html#a4de7fdcb8bc5f620179301cd6684e129">BiDirAStar::rconstruct_path</a>(<span class="keywordtype">int</span> node_id) {</div>
@@ -498,7 +498,7 @@ $(document).ready(function(){initNavTree('src_2BiDirAStar_8cpp_source.html','');
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    nodeInfo.<a class="code" href="structGraphNodeInfo.html#a673ee3624e046d5ebeebc2c64bae9d8f">Connected_Nodes</a>.clear();</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="comment">// Insert the dummy node into the node list. This acts as place holder. Also change the nodeId so that nodeId and node index in the vector are same.</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="comment">// There may be some nodes here that does not appear in the edge list. The size of the list is upto maxNode which is equal to maximum node id.</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="comment">// There may be some nodes here that does not appear in the edge list. The size of the list is up to maxNode which is equal to maximum node id.</span></div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="comment">// DBG(&quot;    Adding nodes to m_vecNodeVector\n&quot;);</span></div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt;= <a class="code" href="BDATester_8cpp.html#ae627e7f1fc2e1d7f5b9361def8110527">maxNode</a>; i++) {</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        nodeInfo.<a class="code" href="structGraphNodeInfo.html#af2eb3eb66cfa624a76991a24f3b722bd">NodeID</a> = i;</div>
@@ -518,7 +518,7 @@ $(document).ready(function(){initNavTree('src_2BiDirAStar_8cpp_source.html','');
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="comment">   Process the edge and populate the member nodelist and edgelist. The nodelist already contains upto maxNode dummy entries with nodeId same as index. Now the</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="comment">   Process the edge and populate the member nodelist and edgelist. The nodelist already contains up to maxNode dummy entries with nodeId same as index. Now the</span></div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment">   connectivity information needs to be updated.</span></div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="comment">   */</span></div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
@@ -663,7 +663,7 @@ $(document).ready(function(){initNavTree('src_2BiDirAStar_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1188af90c8f2ef20f286b8e78c6e14f.html">bd_astar</a></li><li class="navelem"><a class="el" href="dir_113f93645de6d06d40f731407c36f54e.html">src</a></li><li class="navelem"><a class="el" href="src_2BiDirAStar_8cpp.html">BiDirAStar.cpp</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:07 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:42:59 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -40,5 +40,5 @@ var searchData=
   ['astarmanytoone',['astarManyToOne',['../astarManyToOne_8c.html#ab8a26fb9d884f23dbf7e433e80d7c005',1,'astarManyToOne.c']]],
   ['astaronetomany',['astarOneToMany',['../astarOneToMany_8c.html#a4bd21e881fdd8965ccfde1609cebc90a',1,'astarOneToMany.c']]],
   ['astaronetoone',['astarOneToOne',['../astarOneToOne_8c.html#acf07fd4a51a9d2589f5c420a5d82c9da',1,'astarOneToOne.c']]],
-  ['attempvehicleexchange',['attempVehicleExchange',['../classCVRPSolver.html#a62099f3b0b7bddc8ad63762ca9c8955a',1,'CVRPSolver']]]
+  ['attemptvehicleexchange',['attemptVehicleExchange',['../classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393',1,'CVRPSolver']]]
 ];

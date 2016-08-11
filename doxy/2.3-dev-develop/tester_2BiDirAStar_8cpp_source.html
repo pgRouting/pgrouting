@@ -268,7 +268,7 @@ $(document).ready(function(){initNavTree('tester_2BiDirAStar_8cpp_source.html','
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">    Reconstruct path for forward search. It is like normal dijkstra. The parent array contains the parent of the current node and there is a -1 in the source.</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">    So one need to recurse upto the source and then add the current node and edge to the list.</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">    So one need to recurse up to the source and then add the current node and edge to the list.</span></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classBiDirAStar.html#a9409b9ce0d2091c00d44891370b82fe6">BiDirAStar::fconstruct_path</a>(<span class="keywordtype">int</span> node_id)</div>
@@ -285,7 +285,7 @@ $(document).ready(function(){initNavTree('tester_2BiDirAStar_8cpp_source.html','
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">    Reconstruct path for the reverse search. In this case the subsequent node is stored in the parent and the target contains a -1. So one need to add the node</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">    and edge to the list and then recurse through the parent upto hitting a -1.</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">    and edge to the list and then recurse through the parent up to hitting a -1.</span></div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classBiDirAStar.html#a4de7fdcb8bc5f620179301cd6684e129">BiDirAStar::rconstruct_path</a>(<span class="keywordtype">int</span> node_id)</div>
@@ -526,7 +526,7 @@ $(document).ready(function(){initNavTree('tester_2BiDirAStar_8cpp_source.html','
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    nodeInfo.<a class="code" href="structGraphNodeInfo.html#a673ee3624e046d5ebeebc2c64bae9d8f">Connected_Nodes</a>.clear();</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="comment">// Insert the dummy node into the node list. This acts as place holder. Also change the nodeId so that nodeId and node index in the vector are same.</span></div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="comment">// There may be some nodes here that does not appear in the edge list. The size of the list is upto maxNode which is equal to maximum node id.</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="comment">// There may be some nodes here that does not appear in the edge list. The size of the list is up to maxNode which is equal to maximum node id.</span></div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keywordflow">for</span>(i = 0; i &lt;= <a class="code" href="BDATester_8cpp.html#ae627e7f1fc2e1d7f5b9361def8110527">maxNode</a>; i++)</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    {</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        nodeInfo.<a class="code" href="structGraphNodeInfo.html#af2eb3eb66cfa624a76991a24f3b722bd">NodeID</a> = i;</div>
@@ -543,7 +543,7 @@ $(document).ready(function(){initNavTree('tester_2BiDirAStar_8cpp_source.html','
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="comment">    Process the edge and populate the member nodelist and edgelist. The nodelist already contains upto maxNode dummy entries with nodeId same as index. Now the</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="comment">    Process the edge and populate the member nodelist and edgelist. The nodelist already contains up to maxNode dummy entries with nodeId same as index. Now the</span></div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="comment">    connectivity information needs to be updated.</span></div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;</div>
@@ -698,7 +698,7 @@ $(document).ready(function(){initNavTree('tester_2BiDirAStar_8cpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1188af90c8f2ef20f286b8e78c6e14f.html">bd_astar</a></li><li class="navelem"><a class="el" href="dir_47ecdb6ca2dab78e256838ae4f51c221.html">tester</a></li><li class="navelem"><a class="el" href="tester_2BiDirAStar_8cpp.html">BiDirAStar.cpp</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:07 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:42:59 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

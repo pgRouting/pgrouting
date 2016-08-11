@@ -161,7 +161,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">*</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">**********************************************************************</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">*</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">* Simulated annealing and a non symetric</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">* Simulated annealing and a non symmetric</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">* Euclidian Traveling Salesman Problem.</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">*</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">* Solution based on local search heuristics for</span></div>
@@ -180,7 +180,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">* NOTE: costs are assumed to be ints, so scaling them to meters or</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">* some other int would be advisable.</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">*</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">* NOTE: the internal cost calculations ASSUME a symetric matrix. There</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">* NOTE: the internal cost calculations ASSUME a symmetric matrix. There</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">* are notes of what needs to be updated, but all D(i, j)s need to be</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">* reviewed because order is important for asymetric cases.</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">*</span></div>
@@ -434,7 +434,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    f = iorder[<a class="code" href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a>(p[2]+1, n)];</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">return</span>(<a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(a, d) + <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(e, b) + <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(c, f) - <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(a, b) - <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(c, d) - <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(e, f));</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="comment">/* add cost between d and e if non symetric TSP */</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="comment">/* add cost between d and e if non symmetric TSP */</span></div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="keyword">static</span></div>
@@ -488,7 +488,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    d = iorder[<a class="code" href="tsplib_8c.html#a22e35eb1b689cb7f0d464874d6100254">MOD</a>(p[1]+1, n)];</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordflow">return</span>(<a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(d, b) + <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(c, a) - <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(a, b) - <a class="code" href="tsplib_8c.html#a4ae508a8d305b460df210d2a0c2a5574">D</a>(c, d));</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="comment">/* add cost between c and b if non symetric TSP */</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="comment">/* add cost between c and b if non symmetric TSP */</span></div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;}</div>
 <div class="line"><a name="l00383"></a><span class="lineno"><a class="line" href="tsplib_8c.html#ae3e7f733bb18908171d4c80826281aa5">  383</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="tsplib_8c.html#ae3e7f733bb18908171d4c80826281aa5">doReverse</a>(<a class="code" href="structtspstruct.html">TSP</a> *tsp, <a class="code" href="classPath.html">Path</a> p) {</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordtype">int</span> i, nswaps, first, last, tmp;</div>
@@ -776,7 +776,7 @@ $(document).ready(function(){initNavTree('tsplib_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="tsplib_8c.html">tsplib.c</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:08 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:43:00 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

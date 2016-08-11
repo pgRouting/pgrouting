@@ -139,8 +139,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a572e5a68c5455f32909149d1bbc4ef0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad67d3350e6f6731388906a4309d2fdb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCVRPSolver.html#ad67d3350e6f6731388906a4309d2fdb3">applyBestMoveInCurrentSolution</a> (<a class="el" href="classCSolutionInfo.html">CSolutionInfo</a> &amp;solutionInfo, <a class="el" href="classCMoveInfo.html">CMoveInfo</a> &amp;bestMove)</td></tr>
 <tr class="separator:ad67d3350e6f6731388906a4309d2fdb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62099f3b0b7bddc8ad63762ca9c8955a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCVRPSolver.html#a62099f3b0b7bddc8ad63762ca9c8955a">attempVehicleExchange</a> (<a class="el" href="classCSolutionInfo.html">CSolutionInfo</a> &amp;solutionInfo)</td></tr>
-<tr class="separator:a62099f3b0b7bddc8ad63762ca9c8955a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a581a4d5694c773004f9fa5b77a28d393"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393">attemptVehicleExchange</a> (<a class="el" href="classCSolutionInfo.html">CSolutionInfo</a> &amp;solutionInfo)</td></tr>
+<tr class="separator:a581a4d5694c773004f9fa5b77a28d393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98e957d6621f536a52dbd9a98e3b7347"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCSolutionInfo.html">CSolutionInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCVRPSolver.html#a98e957d6621f536a52dbd9a98e3b7347">generateInitialSolution</a> ()</td></tr>
 <tr class="separator:a98e957d6621f536a52dbd9a98e3b7347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d474cec75ee3eb4e4c358cbc17f0efd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCostPack.html">CostPack</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd">getCostForInsert</a> (<a class="el" href="classCTourInfo.html">CTourInfo</a> &amp;curTour, <a class="el" href="classCOrderInfo.html">COrderInfo</a> &amp;curOrder, int pos)</td></tr>
@@ -515,12 +515,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a62099f3b0b7bddc8ad63762ca9c8955a"></a>
+<a class="anchor" id="a581a4d5694c773004f9fa5b77a28d393"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CVRPSolver::attempVehicleExchange </td>
+          <td class="memname">void CVRPSolver::attemptVehicleExchange </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classCSolutionInfo.html">CSolutionInfo</a> &amp;&#160;</td>
           <td class="paramname"><em>solutionInfo</em></td><td>)</td>
@@ -879,7 +879,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00401">m_veMoves</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attempVehicleExchange()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>.</p>
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attemptVehicleExchange()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>.</p>
 
 </div>
 </div>
@@ -977,7 +977,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP__Solver_8cpp_source.html#l00407">407</a> of file <a class="el" href="VRP__Solver_8cpp_source.html">VRP_Solver.cpp</a>.</p>
 
-<p>References <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attempVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00411">m_bFoundOptimal</a>, <a class="el" href="VRP__Solver_8h_source.html#l00409">m_iGeneratedSolutionCount</a>, <a class="el" href="VRP__Solver_8h_source.html#l00410">m_iStepsSinceLastSolution</a>, <a class="el" href="VRP__Solver_8h_source.html#l00037">TOTAL_NUMBER_OF_SEARCH</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00331">updateFinalSolution()</a>.</p>
+<p>References <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attemptVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00411">m_bFoundOptimal</a>, <a class="el" href="VRP__Solver_8h_source.html#l00409">m_iGeneratedSolutionCount</a>, <a class="el" href="VRP__Solver_8h_source.html#l00410">m_iStepsSinceLastSolution</a>, <a class="el" href="VRP__Solver_8h_source.html#l00037">TOTAL_NUMBER_OF_SEARCH</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00331">updateFinalSolution()</a>.</p>
 
 <p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00232">solveVRP()</a>.</p>
 
@@ -1001,7 +1001,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00246">CSolutionInfo::getOrderServed()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00262">CSolutionInfo::getTotalCost()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00263">CSolutionInfo::getTotalDistance()</a>, <a class="el" href="VRP__Solver_8h_source.html#l00264">CSolutionInfo::getTotalTravelTime()</a>, and <a class="el" href="VRP__Solver_8h_source.html#l00404">m_solutionFinal</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00425">applyBestMoveInCurrentSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attempVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00232">solveVRP()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00407">tabuSearch()</a>.</p>
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00425">applyBestMoveInCurrentSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attemptVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00232">solveVRP()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00407">tabuSearch()</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1023,7 @@ Private Attributes</h2></td></tr>
 
 <p>References <a class="el" href="VRP__Solver_8h_source.html#l00409">m_iGeneratedSolutionCount</a>, <a class="el" href="VRP__Solver_8h_source.html#l00410">m_iStepsSinceLastSolution</a>, <a class="el" href="VRP__Solver_8h_source.html#l00401">m_veMoves</a>, <a class="el" href="VRP__Solver_8h_source.html#l00038">MAXIMUM_MOVE_FREQUENCY</a>, and <a class="el" href="classCMoveInfo.html#acc6100438878e449445b1e15bd7b670f">CMoveInfo::reverseMove()</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00425">applyBestMoveInCurrentSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attempVehicleExchange()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>.</p>
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00425">applyBestMoveInCurrentSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attemptVehicleExchange()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>.</p>
 
 </div>
 </div>
@@ -1140,7 +1140,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00409">409</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00425">applyBestMoveInCurrentSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attempVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00407">tabuSearch()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00853">updateTabuCount()</a>.</p>
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00425">applyBestMoveInCurrentSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attemptVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00407">tabuSearch()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00853">updateTabuCount()</a>.</p>
 
 </div>
 </div>
@@ -1164,7 +1164,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00410">410</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00425">applyBestMoveInCurrentSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attempVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00407">tabuSearch()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00853">updateTabuCount()</a>.</p>
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00425">applyBestMoveInCurrentSolution()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attemptVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00442">insertUnservedOrders()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00407">tabuSearch()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00853">updateTabuCount()</a>.</p>
 
 </div>
 </div>
@@ -1476,7 +1476,7 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="VRP__Solver_8h_source.html#l00383">383</a> of file <a class="el" href="VRP__Solver_8h_source.html">VRP_Solver.h</a>.</p>
 
-<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00519">addVehicle()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attempVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00269">generateInitialSolution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00232">solveVRP()</a>.</p>
+<p>Referenced by <a class="el" href="VRP__Solver_8cpp_source.html#l00519">addVehicle()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00741">attemptVehicleExchange()</a>, <a class="el" href="VRP__Solver_8cpp_source.html#l00269">generateInitialSolution()</a>, and <a class="el" href="VRP__Solver_8cpp_source.html#l00232">solveVRP()</a>.</p>
 
 </div>
 </div>
@@ -1490,7 +1490,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classCVRPSolver.html">CVRPSolver</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:08 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:43:00 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

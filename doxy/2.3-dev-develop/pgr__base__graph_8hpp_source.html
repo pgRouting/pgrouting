@@ -420,7 +420,7 @@ $(document).ready(function(){initNavTree('pgr__base__graph_8hpp_source.html','')
 <div class="line"><a name="l00621"></a><span class="lineno"><a class="line" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#aef06d12469a32d16dd7825bae9dc541d">  621</a></span>&#160;<a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#aef06d12469a32d16dd7825bae9dc541d">Pgr_base_graph&lt; G, T_V, T_E &gt;::disconnect_edge</a>(int64_t p_from, int64_t p_to) {</div>
 <div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    T_E d_edge;</div>
 <div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    <span class="comment">// nothing to do, the vertex doesnt exist</span></div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    <span class="comment">// nothing to do, the vertex doesn&#39;t exist</span></div>
 <div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordflow">if</span> (!has_vertex(p_from) || !has_vertex(p_to)) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;</div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    <a class="code" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#aab63730561c08ef229661b31b6bcba43">EO_i</a> out, out_end;</div>
@@ -450,7 +450,7 @@ $(document).ready(function(){initNavTree('pgr__base__graph_8hpp_source.html','')
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        int64_t vertex_id, int64_t edge_id) {</div>
 <div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    T_E d_edge;</div>
 <div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    <span class="comment">// nothing to do, the vertex doesnt exist</span></div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    <span class="comment">// nothing to do, the vertex doesn&#39;t exist</span></div>
 <div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <span class="keywordflow">if</span> (!has_vertex(vertex_id)) <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    <span class="keyword">auto</span> v_from(get_V(vertex_id));</div>
 <div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;</div>
@@ -512,7 +512,7 @@ $(document).ready(function(){initNavTree('pgr__base__graph_8hpp_source.html','')
 <div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        }</div>
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    }</div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    <span class="comment">// delete incomming and outgoing edges from the vertex</span></div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;    <span class="comment">// delete incoming and outgoing edges from the vertex</span></div>
 <div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;    boost::clear_vertex(vertex, graph);</div>
 <div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;}</div>
 <div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;</div>
@@ -647,7 +647,7 @@ $(document).ready(function(){initNavTree('pgr__base__graph_8hpp_source.html','')
 <div class="ttc" id="basic__vertex_8h_html"><div class="ttname"><a href="basic__vertex_8h.html">basic_vertex.h</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_a4d7890a5a5fc336bbe905c17e74b0877"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a4d7890a5a5fc336bbe905c17e74b0877">pgrouting::graph::Pgr_base_graph::num_vertices</a></div><div class="ttdeci">size_t num_vertices() const </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00603">pgr_base_graph.hpp:603</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_a86ae73e312fbd88db46b435c78f9864f"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a86ae73e312fbd88db46b435c78f9864f">pgrouting::graph::Pgr_base_graph::E</a></div><div class="ttdeci">boost::graph_traits&lt; G &gt;::edge_descriptor E</div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00297">pgr_base_graph.hpp:297</a></div></div>
-<div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_a5a3eb1dbcdd63014d793456f82ad784f"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a5a3eb1dbcdd63014d793456f82ad784f">pgrouting::graph::Pgr_base_graph::disconnect_vertex</a></div><div class="ttdeci">void disconnect_vertex(int64_t p_vertex)</div><div class="ttdoc">Disconnects all incomming and outgoing edges from the vertex. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00682">pgr_base_graph.hpp:682</a></div></div>
+<div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_a5a3eb1dbcdd63014d793456f82ad784f"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a5a3eb1dbcdd63014d793456f82ad784f">pgrouting::graph::Pgr_base_graph::disconnect_vertex</a></div><div class="ttdeci">void disconnect_vertex(int64_t p_vertex)</div><div class="ttdoc">Disconnects all incoming and outgoing edges from the vertex. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00682">pgr_base_graph.hpp:682</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_ab837f9e86a8c3a7eb1ed70831a57a964"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab837f9e86a8c3a7eb1ed70831a57a964">pgrouting::graph::Pgr_base_graph::disconnect_out_going_edge</a></div><div class="ttdeci">void disconnect_out_going_edge(int64_t vertex_id, int64_t edge_id)</div><div class="ttdoc">Disconnects the outgoing edges of a vertex. </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00650">pgr_base_graph.hpp:650</a></div></div>
 <div class="ttc" id="classpgrouting_1_1XY__vertex_html"><div class="ttname"><a href="classpgrouting_1_1XY__vertex.html">pgrouting::XY_vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="xy__vertex_8h_source.html#l00042">xy_vertex.h:42</a></div></div>
 <div class="ttc" id="classpgrouting_1_1graph_1_1Pgr__base__graph_html_af95be0914ef2a758090a329710200494"><div class="ttname"><a href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#af95be0914ef2a758090a329710200494">pgrouting::graph::Pgr_base_graph::m_gType</a></div><div class="ttdeci">graphType m_gType</div><div class="ttdoc">type (DIRECTED or UNDIRECTED) </div><div class="ttdef"><b>Definition:</b> <a href="pgr__base__graph_8hpp_source.html#l00329">pgr_base_graph.hpp:329</a></div></div>
@@ -705,7 +705,7 @@ $(document).ready(function(){initNavTree('pgr__base__graph_8hpp_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fdedb0aba14d44ce9d99bc100e026e6a.html">common</a></li><li class="navelem"><a class="el" href="dir_93d6226967e8e187d15fc6a8b74b4a3e.html">src</a></li><li class="navelem"><a class="el" href="pgr__base__graph_8hpp.html">pgr_base_graph.hpp</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:07 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:43:00 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

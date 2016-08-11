@@ -199,9 +199,9 @@ $(document).ready(function(){initNavTree('pickDeliver__driver_8cpp_source.html',
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            pd_problem.<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a92a46ffb84ddb2f728d6b500788f505c">solve</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;except) {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            pd_problem.<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ab1b7cb8d1dc10faab1d18572d0c036b5">get_log</a>(log);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">throw</span> exept;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">throw</span> except;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        pd_problem.<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ab1b7cb8d1dc10faab1d18572d0c036b5">get_log</a>(log);</div>
@@ -223,11 +223,11 @@ $(document).ready(function(){initNavTree('pickDeliver__driver_8cpp_source.html',
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        pd_problem.<a class="code" href="classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#ab1b7cb8d1dc10faab1d18572d0c036b5">get_log</a>(log);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        log &lt;&lt; exept.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;except) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        log &lt;&lt; except.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; exept) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        log &lt;&lt; exept.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; except) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        log &lt;&lt; except.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        log &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!\n&quot;</span>;</div>
@@ -254,7 +254,7 @@ $(document).ready(function(){initNavTree('pickDeliver__driver_8cpp_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e1e5aebfba040cfbae1d1213d15e41c3.html">pickDeliver</a></li><li class="navelem"><a class="el" href="dir_24085d12740fb9ae479a2923b7dc06de.html">src</a></li><li class="navelem"><a class="el" href="pickDeliver__driver_8cpp.html">pickDeliver_driver.cpp</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:07 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:43:00 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

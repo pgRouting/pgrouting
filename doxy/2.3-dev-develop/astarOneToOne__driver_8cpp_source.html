@@ -255,16 +255,16 @@ $(document).ready(function(){initNavTree('astarOneToOne__driver_8cpp_source.html
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        *err_msg = NULL;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;except) {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        err &lt;&lt; exept.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        err &lt;&lt; except.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; exept) {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; except) {</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        err &lt;&lt; exept.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        err &lt;&lt; except.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
@@ -303,7 +303,7 @@ $(document).ready(function(){initNavTree('astarOneToOne__driver_8cpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c6e37fc9835c6783ca7f74105e7ae7b1.html">astar</a></li><li class="navelem"><a class="el" href="dir_7666b4aec57c6b7c1e3a3568b4a00b8f.html">src</a></li><li class="navelem"><a class="el" href="astarOneToOne__driver_8cpp.html">astarOneToOne_driver.cpp</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:07 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:42:59 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

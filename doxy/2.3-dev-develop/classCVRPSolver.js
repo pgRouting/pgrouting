@@ -10,7 +10,7 @@ var classCVRPSolver =
     [ "addOrderToOrderCost", "classCVRPSolver.html#a535946efd8c32afc53e6dd0c0588d3c7", null ],
     [ "addVehicle", "classCVRPSolver.html#a572e5a68c5455f32909149d1bbc4ef0c", null ],
     [ "applyBestMoveInCurrentSolution", "classCVRPSolver.html#ad67d3350e6f6731388906a4309d2fdb3", null ],
-    [ "attempVehicleExchange", "classCVRPSolver.html#a62099f3b0b7bddc8ad63762ca9c8955a", null ],
+    [ "attemptVehicleExchange", "classCVRPSolver.html#a581a4d5694c773004f9fa5b77a28d393", null ],
     [ "generateInitialSolution", "classCVRPSolver.html#a98e957d6621f536a52dbd9a98e3b7347", null ],
     [ "getCostForInsert", "classCVRPSolver.html#a9d474cec75ee3eb4e4c358cbc17f0efd", null ],
     [ "getDepotToOrderCost", "classCVRPSolver.html#a578925d6ca537852aac741d943a19161", null ],

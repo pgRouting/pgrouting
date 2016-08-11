@@ -196,7 +196,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6be942fd91ea1efe2ed447cd34fabb25"><td class="mdescLeft">&#160;</td><td class="mdescRight">add the contracted vertices of an edge <em>e</em> to the vertex <em>v</em>  <a href="#a6be942fd91ea1efe2ed447cd34fabb25">More...</a><br/></td></tr>
 <tr class="separator:a6be942fd91ea1efe2ed447cd34fabb25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dcf3b445d15d0d190afa94fe531284f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#a4dcf3b445d15d0d190afa94fe531284f">disconnect_vertex</a> (std::ostringstream &amp;log, <a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ab45997ab5c7d7587e2034bb207cc1d9d">V</a> <a class="el" href="structvertex.html">vertex</a>)</td></tr>
-<tr class="memdesc:a4dcf3b445d15d0d190afa94fe531284f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects all incomming and outgoing edges from the vertex boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is simulated by disconnecting the vertex from the graph.  <a href="#a4dcf3b445d15d0d190afa94fe531284f">More...</a><br/></td></tr>
+<tr class="memdesc:a4dcf3b445d15d0d190afa94fe531284f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects all incoming and outgoing edges from the vertex boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is simulated by disconnecting the vertex from the graph.  <a href="#a4dcf3b445d15d0d190afa94fe531284f">More...</a><br/></td></tr>
 <tr class="separator:a4dcf3b445d15d0d190afa94fe531284f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb3d15d00ea257b1fcb6d0cd49d54d03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ab45997ab5c7d7587e2034bb207cc1d9d">V</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#afb3d15d00ea257b1fcb6d0cd49d54d03">find_adjacent_vertex</a> (<a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ab45997ab5c7d7587e2034bb207cc1d9d">V</a> v) const </td></tr>
 <tr class="separator:afb3d15d00ea257b1fcb6d0cd49d54d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -297,7 +297,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab837f9e86a8c3a7eb1ed70831a57a964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects the outgoing edges of a vertex.  <a href="#ab837f9e86a8c3a7eb1ed70831a57a964">More...</a><br/></td></tr>
 <tr class="separator:ab837f9e86a8c3a7eb1ed70831a57a964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a3eb1dbcdd63014d793456f82ad784f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#a5a3eb1dbcdd63014d793456f82ad784f">disconnect_vertex</a> (int64_t p_vertex)</td></tr>
-<tr class="memdesc:a5a3eb1dbcdd63014d793456f82ad784f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects all incomming and outgoing edges from the vertex.  <a href="#a5a3eb1dbcdd63014d793456f82ad784f">More...</a><br/></td></tr>
+<tr class="memdesc:a5a3eb1dbcdd63014d793456f82ad784f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects all incoming and outgoing edges from the vertex.  <a href="#a5a3eb1dbcdd63014d793456f82ad784f">More...</a><br/></td></tr>
 <tr class="separator:a5a3eb1dbcdd63014d793456f82ad784f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af843e29278991d63fc0dd64101223121"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpgrouting_1_1graph_1_1Pgr__base__graph.html#af843e29278991d63fc0dd64101223121">disconnect_vertex</a> (<a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html#ab45997ab5c7d7587e2034bb207cc1d9d">V</a> <a class="el" href="structvertex.html">vertex</a>)</td></tr>
 <tr class="separator:af843e29278991d63fc0dd64101223121"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -855,7 +855,7 @@ template&lt;class G , typename T_V , typename T_E &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Disconnects all incomming and outgoing edges from the vertex boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is simulated by disconnecting the vertex from the graph. </p>
+<p>Disconnects all incoming and outgoing edges from the vertex boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is simulated by disconnecting the vertex from the graph. </p>
 <ul>
 <li>No edge is disconnected if the vertices id's do not exist in the graph</li>
 <li>All removed edges are stored for future reinsertion</li>
@@ -897,7 +897,7 @@ template&lt;class G , typename T_V , typename T_E &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Disconnects all incomming and outgoing edges from the vertex. </p>
+<p>Disconnects all incoming and outgoing edges from the vertex. </p>
 <p>boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is simulated by disconnecting the vertex from the graph</p>
 <ul>
 <li>No edge is disconnected if the vertices id's do not exist in the graph</li>
@@ -2375,7 +2375,7 @@ template&lt;class G , typename T_V , typename T_E &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepgrouting.html">pgrouting</a></li><li class="navelem"><a class="el" href="namespacepgrouting_1_1graph.html">graph</a></li><li class="navelem"><a class="el" href="classpgrouting_1_1graph_1_1Pgr__contractionGraph.html">Pgr_contractionGraph</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:09 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:43:02 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

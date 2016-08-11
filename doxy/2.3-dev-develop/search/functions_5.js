@@ -1,7 +1,7 @@
 var searchData=
 [
   ['fconstruct_5fpath',['fconstruct_path',['../classBiDirAStar.html#a9409b9ce0d2091c00d44891370b82fe6',1,'BiDirAStar::fconstruct_path(int node_id)'],['../classBiDirAStar.html#a9409b9ce0d2091c00d44891370b82fe6',1,'BiDirAStar::fconstruct_path(int node_id)'],['../classBiDirDijkstra.html#a869f938e8afb5a2ee76e9ac3fff2b39f',1,'BiDirDijkstra::fconstruct_path()']]],
-  ['feasable',['feasable',['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a260e5be63bdd1b19347bed224bb65396',1,'pgrouting::vrp::Vehicle_node::feasable() const '],['../classpgrouting_1_1vrp_1_1Vehicle__node.html#ad808a5dc15a709069c51b04871414448',1,'pgrouting::vrp::Vehicle_node::feasable(double cargoLimit) const ']]],
+  ['feasible',['feasible',['../classpgrouting_1_1vrp_1_1Vehicle__node.html#aa0a1e0f38690886132d58a5eb924cb81',1,'pgrouting::vrp::Vehicle_node::feasible() const '],['../classpgrouting_1_1vrp_1_1Vehicle__node.html#a0fcb63b0fbecf81f0d30b9dc199d60be',1,'pgrouting::vrp::Vehicle_node::feasible(double cargoLimit) const ']]],
   ['fetch_5fbasic_5fedge',['fetch_basic_edge',['../edges__input_8c.html#aa893998e756deec8a537ce2c8312430d',1,'edges_input.c']]],
   ['fetch_5fcolumn_5finfo',['fetch_column_info',['../get__check__data_8c.html#a3374b600c9631f0cf958a8395098a1c3',1,'get_check_data.c']]],
   ['fetch_5fcustomer',['fetch_customer',['../customers__input_8c.html#aee7df8a81d65f695f529a5b5a261f74c',1,'customers_input.c']]],

@@ -475,12 +475,12 @@ $(document).ready(function(){initNavTree('test__c__edges__driver_8cpp_source.htm
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        log &lt;&lt; exept.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;except) {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        log &lt;&lt; except.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; exept) {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        log &lt;&lt; exept.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; except) {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        log &lt;&lt; except.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        *err_msg = strdup(log.str().c_str());</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
@@ -531,7 +531,7 @@ $(document).ready(function(){initNavTree('test__c__edges__driver_8cpp_source.htm
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_07f79e339d2fb7fe8819c7acbc73ea87.html">internalQueryTests</a></li><li class="navelem"><a class="el" href="dir_024f5e92469607c1339aa02feb5755cf.html">src</a></li><li class="navelem"><a class="el" href="test__c__edges__driver_8cpp.html">test_c_edges_driver.cpp</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:07 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:43:00 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

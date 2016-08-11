@@ -295,16 +295,16 @@ $(document).ready(function(){initNavTree('eucledianTSP__driver_8cpp_source.html'
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        (*err_msg) = NULL;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;exept) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    } <span class="keywordflow">catch</span> (<a class="code" href="classAssertFailedException.html">AssertFailedException</a> &amp;except) {</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        err &lt;&lt; exept.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        err &lt;&lt; except.<a class="code" href="classAssertFailedException.html#aafd3ed0f0334f5a66586307c6db69fd2">what</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; exept) {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; except) {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">if</span> (*return_tuples) free(*return_tuples);</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        (*return_count) = 0;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        err &lt;&lt; exept.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        err &lt;&lt; except.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        *err_msg = strdup(err.str().c_str());</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        *log_msg = strdup(log.str().c_str());</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    } <span class="keywordflow">catch</span>(...) {</div>
@@ -351,7 +351,7 @@ $(document).ready(function(){initNavTree('eucledianTSP__driver_8cpp_source.html'
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9e339a970107aba9bd240d749e3cb49d.html">tsp</a></li><li class="navelem"><a class="el" href="dir_0d3e78207adb65bc83d3c3a96d9f71e7.html">src</a></li><li class="navelem"><a class="el" href="eucledianTSP__driver_8cpp.html">eucledianTSP_driver.cpp</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:07 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:42:59 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

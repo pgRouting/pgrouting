@@ -171,7 +171,7 @@ $(document).ready(function(){initNavTree('pgr__contract_8hpp_source.html','');})
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        deadendContractor.<a class="code" href="classpgrouting_1_1Pgr__deadEndContraction.html#acf9636725c7f531d0e25917c0f03813c">doContraction</a>(graph, debug);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">catch</span> ( ... ) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        debug &lt;&lt; <span class="stringliteral">&quot;Caught unknown expection!\n&quot;</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        debug &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!\n&quot;</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
@@ -190,7 +190,7 @@ $(document).ready(function(){initNavTree('pgr__contract_8hpp_source.html','');})
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        linearContractor.<a class="code" href="classpgrouting_1_1Pgr__linearContraction.html#ad32ae3f89dc3a935ff831be74bcc0007">doContraction</a>(graph, linear_debug);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">catch</span> ( ... ) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        linear_debug &lt;&lt; <span class="stringliteral">&quot;Caught unknown expection!\n&quot;</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        linear_debug &lt;&lt; <span class="stringliteral">&quot;Caught unknown exception!\n&quot;</span>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    debug &lt;&lt; linear_debug.str().c_str() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
@@ -343,7 +343,7 @@ $(document).ready(function(){initNavTree('pgr__contract_8hpp_source.html','');})
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordtype">void</span> getRemovedV_string(std::ostringstream&amp; vstring);</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordtype">void</span> getPsuedoE_string(std::ostringstream&amp; pstring);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordtype">void</span> getPseudoE_string(std::ostringstream&amp; pstring);</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::map&lt;V, std::deque&lt;Edge&gt; &gt; removed_V;</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::map&lt;V, std::deque&lt;Edge&gt; &gt;::iterator removed_V_i;</div>
@@ -366,7 +366,7 @@ $(document).ready(function(){initNavTree('pgr__contract_8hpp_source.html','');})
 <div class="line"><a name="l00314"></a><span class="lineno"><a class="line" href="classPgr__contract.html#a64eb4025c649cc31c41c28eed2d97f85">  314</a></span>&#160;    <a class="code" href="classIdentifiers.html">Identifiers&lt;int64_t&gt;</a> <a class="code" href="classPgr__contract.html#a64eb4025c649cc31c41c28eed2d97f85">forbidden</a>;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor">    #if 0</span></div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="preprocessor"></span>    removed_V removedVertices;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    psuedo_E psuedoEdges;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    psuedo_E pseudoEdges;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    degree_to_V degree_to_V_map;</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor">    #endif</span></div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor"></span>    <span class="comment">// set of dead_end_vertices;</span></div>
@@ -541,7 +541,7 @@ $(document).ready(function(){initNavTree('pgr__contract_8hpp_source.html','');})
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_62afd65db23a7b9f0a3e266dd1f617f8.html">contraction</a></li><li class="navelem"><a class="el" href="dir_1cdbf5d4419419d68ff74d045b4943c0.html">src</a></li><li class="navelem"><a class="el" href="pgr__contract_8hpp.html">pgr_contract.hpp</a></li>
-    <li class="footer">Generated on Sun Aug 7 2016 00:16:07 for pgRouting by
+    <li class="footer">Generated on Thu Aug 11 2016 18:43:00 for pgRouting by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
