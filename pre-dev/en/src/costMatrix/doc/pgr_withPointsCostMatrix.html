@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_withPointsCostMatrix - proposed &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    <title>pgr_withPointsCostMatrix - proposed &mdash; pgRouting Manual (2.3.0-dev) (spell/codespell)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (test/appveyor)',
+        VERSION:     '2.3.0 (spell/codespell)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (spell/codespell)" href="../../../index.html" />
     <link rel="up" title="withPoints - Family of functions" href="../../withPoints/doc/withPoints.html" />
     <link rel="next" title="pgr_withPointsKSP - Proposed" href="../../withPoints/doc/pgr_withPointsKSP.html" />
     <link rel="prev" title="pgr_withPointsCost - Proposed" href="../../withPoints/doc/pgr_withPointsCost.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (spell/codespell)</span></a></h1>
         <h2 class="heading"><span>pgr_withPointsCostMatrix - proposed</span></h2>
       </div>
       <div class="topnav">
@@ -60,7 +60,7 @@
 <blockquote class="last">
 <div><ul class="simple">
 <li>They are not officially in the current release.</li>
-<li>They will likely officialy be part of the next mayor release:<ul>
+<li>They will likely officially be part of the next mayor release:<ul>
 <li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
 <li>Name might not change. (But still can)</li>
 <li>Signature might not change. (But still can)</li>
@@ -153,7 +153,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <ul class="simple">
 <li>Using the default <strong>side</strong> value on the <strong>points_sql</strong> query</li>
 <li>Using an undirected graph</li>
-<li>Using the defualt <strong>driving_side</strong> value</li>
+<li>Using the default <strong>driving_side</strong> value</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_withPointsCostMatrix(
     &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id&#39;,
@@ -345,11 +345,11 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Edges SQL query as decribed above.</td>
+<td>Edges SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>points_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Points SQL query as decribed above.</td>
+<td>Points SQL query as described above.</td>
 </tr>
 <tr class="row-even"><td><strong>start_vids</strong></td>
 <td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
@@ -469,7 +469,7 @@ RETURNS SET OF (start_vid, end_vid, agg_cost)
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 07, 2016.
+      Last updated on Aug 10, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

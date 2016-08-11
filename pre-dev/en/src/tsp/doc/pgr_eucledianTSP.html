@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_eucledianTSP &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    <title>pgr_eucledianTSP &mdash; pgRouting Manual (2.3.0-dev) (spell/codespell)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (test/appveyor)',
+        VERSION:     '2.3.0 (spell/codespell)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (spell/codespell)" href="../../../index.html" />
     <link rel="up" title="Traveling Sales Person" href="tsp.html" />
     <link rel="next" title="pgr_trsp - Turn Restriction Shortest Path (TRSP)" href="../../trsp/doc/pgr_trsp.html" />
     <link rel="prev" title="pgr_TSP" href="pgr_tsp.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (spell/codespell)</span></a></h1>
         <h2 class="heading"><span>pgr_eucledianTSP</span></h2>
       </div>
       <div class="topnav">
@@ -76,7 +76,7 @@ pgr_eucledianTSP(coordinates_sql,
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
     initial_temperature, final_temperature, cooling_factor,
     randomize,
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 </div>
@@ -85,7 +85,7 @@ RETURS SETOF (seq, node, cost, agg_cost)
 <div class="section" id="minimal-signature">
 <span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_eucledianTSP(coordinates_sql)
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -122,7 +122,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 18;
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
     initial_temperature, final_temperature, cooling_factor,
     randomize,
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <p class="rubric">Example:</p>
@@ -403,7 +403,7 @@ Best cost reached = 18.7796
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 07, 2016.
+      Last updated on Aug 10, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -44,7 +44,7 @@ The function returns:
 Description
 -----------------------------------------------------------------------------
 
-.. rubric:: Paramters
+.. rubric:: Parameters
 
 :pnts: ``geometry[]`` - An array of point geometries.
 :edges: ``text`` - The edge table to be used for the conversion.

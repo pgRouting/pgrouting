@@ -9,7 +9,7 @@
 
    INSTRUCTIONS
    - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropiate values
+   - change [...] (including the square braquets) to appropriate values
    - one file / function,  may signatures of the same function go in the same file
 
 .. _pgr_maxFlowPushRelabel:

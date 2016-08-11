@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release Notes &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    <title>Release Notes &mdash; pgRouting Manual (2.3.0-dev) (spell/codespell)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (test/appveyor)',
+        VERSION:     '2.3.0 (spell/codespell)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,12 +25,12 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (spell/codespell)" href="../../../index.html" />
     <link rel="prev" title="pgr_endPoint - Deprecated Function" href="../../../src/common/doc/utilities/end_point.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (spell/codespell)</span></a></h1>
         <h2 class="heading"><span>Release Notes</span></h2>
       </div>
       <div class="topnav">
@@ -53,6 +53,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="#changelog-2-3-0"><em>pgRouting 2.3.0 Release Notes</em></a></li>
+<li><a class="reference internal" href="#changelog-2-2-4"><em>pgRouting 2.2.4 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-3"><em>pgRouting 2.2.3 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-2"><em>pgRouting 2.2.2 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-1"><em>pgRouting 2.2.1 Release Notes</em></a></li>
@@ -101,12 +102,22 @@
 <li>pgr_textToPoints</li>
 </ul>
 </div>
+<div class="section" id="pgrouting-2-2-4-release-notes">
+<span id="changelog-2-2-4"></span><h1>pgRouting 2.2.4 Release Notes<a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.2.4%22+is%3Aclosed">Git closed issues for 2.2.4</a> on Github.</p>
+<p class="rubric">Bug Fixes</p>
+<ul class="simple">
+<li>Bogus uses of extern &#8220;C&#8221;</li>
+<li>Build error on Fedora 24 + GCC 6.0</li>
+<li>Regression error pgr_nodeNetwork</li>
+</ul>
+</div>
 <div class="section" id="pgrouting-2-2-3-release-notes">
 <span id="changelog-2-2-3"></span><h1>pgRouting 2.2.3 Release Notes<a class="headerlink" href="#pgrouting-2-2-3-release-notes" title="Permalink to this headline">¶</a></h1>
 <p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed">Git closed issues for 2.2.3</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
-<li>Fixed  compatibility issues with PostgreSQL 9.6.</li>
+<li>Fixed compatibility issues with PostgreSQL 9.6.</li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-2-2-release-notes">
@@ -177,7 +188,7 @@
 </ul>
 <p class="rubric">Proposed functionality</p>
 <ul class="simple">
-<li>Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)<ul>
+<li>Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)<ul>
 <li>pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.</li>
 <li>pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.</li>
 <li>pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.</li>
@@ -353,7 +364,7 @@ The following release notes have been copied from the previous <tt class="docuti
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 07, 2016.
+      Last updated on Aug 10, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_TSP &mdash; pgRouting Manual (2.3.0-dev) (test/appveyor)</title>
+    <title>pgr_TSP &mdash; pgRouting Manual (2.3.0-dev) (spell/codespell)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (test/appveyor)',
+        VERSION:     '2.3.0 (spell/codespell)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (test/appveyor)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3.0-dev) (spell/codespell)" href="../../../index.html" />
     <link rel="up" title="Traveling Sales Person" href="tsp.html" />
     <link rel="next" title="pgr_eucledianTSP" href="pgr_eucledianTSP.html" />
     <link rel="prev" title="Traveling Sales Person" href="tsp.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (test/appveyor)</span></a></h1>
+          <span>pgRouting Manual (2.3.0-dev) (spell/codespell)</span></a></h1>
         <h2 class="heading"><span>pgr_TSP</span></h2>
       </div>
       <div class="topnav">
@@ -77,7 +77,7 @@ pgr_TSP(matrix_cell_sql,
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
     initial_temperature, final_temperature, cooling_factor,
     randomize,
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 </div>
@@ -90,7 +90,7 @@ RETURS SETOF (seq, node, cost, agg_cost)
 <div class="section" id="basic-use">
 <span id="index-0"></span><h3>Basic Use<a class="headerlink" href="#basic-use" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre>pgr_TSP(matrix_cell_sql)
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -131,7 +131,7 @@ SELECT agg_cost &lt; 20 AS under_20 FROM query WHERE seq = 14;
     tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
     initial_temperature, final_temperature, cooling_factor,
     randomize,
-RETURS SETOF (seq, node, cost, agg_cost)
+RETURNS SETOF (seq, node, cost, agg_cost)
 </pre></div>
 </div>
 <p class="rubric">Example:</p>
@@ -205,7 +205,7 @@ RETURS SETOF (seq, node, cost, agg_cost)
 <li><a class="reference internal" href="../../allpairs/doc/pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a></li>
 <li><a class="reference internal" href="../../allpairs/doc/pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a></li>
 </ul>
-<p>To generate a symetric matrix</p>
+<p>To generate a symmetric matrix</p>
 <ul class="simple">
 <li>directed := false.</li>
 </ul>
@@ -350,7 +350,7 @@ symmetric by fixing the non symmetric values according to your application needs
 </tr>
 </tbody>
 </table>
-<p>To generate a symetric matrix:</p>
+<p>To generate a symmetric matrix:</p>
 <ul class="simple">
 <li>the <strong>side</strong> information of pointsOfInterset is ignored by not including it in the query</li>
 <li>and <strong>directed := false</strong></li>
@@ -410,7 +410,7 @@ symmetric by fixing the non symmetric values according to your application needs
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 07, 2016.
+      Last updated on Aug 10, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
