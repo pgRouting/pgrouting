@@ -9,7 +9,7 @@
 
    INSTRUCTIONS
    - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropiate values
+   - change [...] (including the square braquets) to appropriate values
    - one file / function,  may signatures of the same function go in the same file
 
 .. _pgr_contractGraph:
@@ -33,7 +33,7 @@ pgr_contractGraph - Proposed
 Synopsis
 -------------
 
-Contraction reduces the size of the graph by removing some of the vertices and edges(according to a priority) and adds some psuedo edges,such that the number of edges are reduced on a whole.This reduces the time and space complexity of many algorithms that make various operations on the graph.
+Contraction reduces the size of the graph by removing some of the vertices and edges(according to a priority) and adds some pseudo edges,such that the number of edges are reduced on a whole.This reduces the time and space complexity of many algorithms that make various operations on the graph.
 
 Characteristics
 -------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ Description of the parameters of the signatures
 ======================= ====================== =================================================
 Column                  Type                   Description
 ======================= ====================== =================================================
-**edges_sql**           ``TEXT``               SQL query as decribed above.
+**edges_sql**           ``TEXT``               SQL query as described above.
 **contraction_order**   ``ARRAY[ANY-INTEGER]`` Ordered contraction operations.
                                                 -  1 = Dead end contraction
                                                 -  2 = Linear contraction

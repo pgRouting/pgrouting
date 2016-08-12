@@ -104,7 +104,7 @@ int  do_pgr_ksp(
 #endif
         return EXIT_SUCCESS;
     } catch ( ... ) {
-        *err_msg = strdup("Caught unknown expection!");
+        *err_msg = strdup("Caught unknown exception!");
         if (ksp_path) free(ksp_path);
         *path_count = 0;
         return -1;

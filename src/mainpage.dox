@@ -1,6 +1,6 @@
 /*! \mainpage Developer's Documentation
  
-\section intro_sec Introduction
+@section intro_sec Introduction
  
 This documentation is focused on the developer of [pgRouting](http://pgrouting.org).
 
@@ -18,7 +18,7 @@ The following steps are based on:
 wirtten by Mohamed Zia
   - [Git Branch Model](http://nvie.com/posts/a-successful-git-branching-model)
 
-\section install_sec Installation for developing
+@section install_sec Installation for developing
 
 
 Step by Step processing
@@ -64,7 +64,7 @@ upstream        https://github.com/acountName/pgrouting (fetch)
 upstream        https://github.com/acountName/pgrouting (push)
 ~~~~
 
-\section branch_model Git Branching Model
+@section branch_model Git Branching Model
 
 We are making big efforts to start using the Git Branching Model
 So here are some basic rules about Master and develop:
@@ -142,7 +142,7 @@ For the rest of the document the following branch has being created in the main 
 ~~~~{.c}
     git add <file>
     git remove <file>
-    git mv <oldNmae> <newName>
+    git mv <oldName> <newName>
     git commit -a -m '<commit message>'
 ~~~~
 
@@ -154,7 +154,7 @@ For the rest of the document the following branch has being created in the main 
 ~~~~
 
   
-\section up_to_date Keep Fork Up to Date
+@section up_to_date Keep Fork Up to Date
 
 1. To keep your local repository up-to-date
 ~~~~{.c}
@@ -176,7 +176,7 @@ For the rest of the document the following branch has being created in the main 
 ~~~~
 
 
-\section perform_tests Beware of Side Effects
+@section perform_tests Beware of Side Effects
 
 Modifications that you make should not affect other parts of the library.
 pgRouting has a testing tool, for developers.
@@ -197,7 +197,7 @@ To do this:
      tools/testers/algorithm-tester.pl
 ~~~~
 
-\section automate_process Make a run.sh
+@section automate_process Make a run.sh
 
 A shell to automate the compilation and execution is useful when developing.
 
@@ -242,7 +242,7 @@ tools/test-runner.pl -alg
 @warning Don't add run.sh to the repository, its for your development only.
 
 
-\section setup_travis Setup Travis
+@section setup_travis Setup Travis
 
 The main difference between your run.sh test and Travis test is:
   - With run.sh you are testing locally.
@@ -263,7 +263,7 @@ branches:
 
 
 
-\section file_convetions File conventions
+@section file_convetions File conventions
 
 Some conventions for directories and files
 ~~~~{.c}
@@ -274,5 +274,6 @@ Some conventions for directories and files
 /src/myfunction/test/test.conf ---> perl file to test the function
 /src/myfunction/CMakeLists.txt ---> CMake file
 ~~~~
+
 
 */

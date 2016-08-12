@@ -843,7 +843,9 @@ EXAMPLE_RECURSIVE      = NO
 # that contain images that are to be included in the documentation (see the
 # \image command).
 
-IMAGE_PATH             = @CMAKE_CURRENT_SOURCE_DIR@/../doc/static/images/developers
+IMAGE_PATH             = @CMAKE_CURRENT_SOURCE_DIR@/../doc/static/images/developers \
+                         @CMAKE_CURRENT_SOURCE_DIR@/../src/contraction/doc/images
+                        
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
@@ -1400,7 +1402,7 @@ EXT_LINKS_IN_WINDOW    = YES
 
 FORMULA_FONTSIZE       = 10
 
-# Use the FORMULA_TRANPARENT tag to determine whether or not the images
+# Use the FORMULA_TRANSPARENT tag to determine whether or not the images
 # generated for formulas are transparent PNGs. Transparent PNGs are not
 # supported properly for IE 6.0, but are supported on all modern browsers.
 #

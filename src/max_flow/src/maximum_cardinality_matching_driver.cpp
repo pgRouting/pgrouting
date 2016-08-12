@@ -86,7 +86,7 @@ do_pgr_maximum_cardinality_matching(
 
         return;
     } catch (...) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
         return;
     }

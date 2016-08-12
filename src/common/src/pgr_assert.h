@@ -87,7 +87,7 @@
 #endif
 
 /*! @def pgassertwm(expr, msg)
-  @brief Adds a messsage to the assertion.
+  @brief Adds a message to the assertion.
  
  Example:
  @code

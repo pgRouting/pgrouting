@@ -79,14 +79,14 @@ class Solution {
          problem(sol.problem)
     {};
 
-     /* @brief move assigment */
+     /* @brief move assignment */
      Solution& operator = (const Solution && sol) {
          EPSILON = 0.0001,
          fleet = sol.fleet;
          return *this;
      };
 
-     /* @brief copy assigment */
+     /* @brief copy assignment */
      Solution& operator = (const Solution& sol) {
          EPSILON = 0.0001,
          fleet = sol.fleet;

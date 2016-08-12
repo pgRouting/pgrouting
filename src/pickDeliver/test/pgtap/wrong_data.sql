@@ -61,7 +61,7 @@ SELECT * FROM _pgr_pickDeliver(
 
 SELECT throws_ok('q5',
     'XX000',
-    'The (pickup, delivery) = (11, 1) is not feasable',
+    'The (pickup, delivery) = (11, 1) is not feasible',
     'Should fail: Closing time of depot is too small and (pick,deliver) pair generates TWV');
 
 --------------------------------------

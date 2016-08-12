@@ -1,9 +1,9 @@
 # default build directory
 build
-src/turnRestricted
+fix_typos
+
 .DS_Store
 .vagrant
-issues
 tools/vagrant/packaging.sh
 *.mo
 .directory
