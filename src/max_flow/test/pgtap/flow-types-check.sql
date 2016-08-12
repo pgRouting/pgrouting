@@ -1,7 +1,8 @@
---\i setup.sql
+\i setup.sql
+SET client_min_messages TO WARNING;
+
 BEGIN;
 SELECT plan(39);
-SET client_min_messages TO WARNING;
 --Boykov-Kolmogorov
 SELECT has_function('pgr_maxflowboykovkolmogorov');
 
@@ -95,7 +96,7 @@ SELECT array[
 'edges_sql',
 'source_vertex',
 'sink_vertex',
-'id',
+'seq',
 'edge_id',
 'source',
 'target',
@@ -107,7 +108,7 @@ SELECT array[
 'edges_sql',
 'source_vertex',
 'sink_vertices',
-'id',
+'seq',
 'edge_id',
 'source',
 'target',
@@ -119,7 +120,7 @@ SELECT array[
 'edges_sql',
 'source_vertices',
 'sink_vertex',
-'id',
+'seq',
 'edge_id',
 'source',
 'target',
@@ -131,7 +132,7 @@ SELECT array[
 'edges_sql',
 'source_vertices',
 'sink_vertices',
-'id',
+'seq',
 'edge_id',
 'source',
 'target',

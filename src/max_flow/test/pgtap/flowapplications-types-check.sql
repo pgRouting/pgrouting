@@ -1,7 +1,8 @@
---\i setup.sql
+\i setup.sql
+SET client_min_messages TO WARNING;
+
 BEGIN;
 SELECT plan(17);
-SET client_min_messages TO WARNING;
 
 SELECT has_function('pgr_edgedisjointpaths');
 
@@ -93,7 +94,7 @@ PREPARE parameters_maxcardinalitymatching AS
 SELECT array[
 'edges_sql',
 'directed',
-'id',
+'seq',
 'edge_id',
 'source',
 'target'];

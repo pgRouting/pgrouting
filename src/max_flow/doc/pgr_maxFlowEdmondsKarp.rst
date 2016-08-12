@@ -187,7 +187,7 @@ Description of the return values
 =====================  ====================  =================================================
 Column                 Type                  Description
 =====================  ====================  =================================================
-**id**                 ``INTEGER``           Identifier of the edge.
+**seq**                ``INT``               Sequential value starting from **1**.
 **edge_id**            ``BIGINT``            Identifier of the edge in the original query(edges_sql).
 **source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
 **target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
