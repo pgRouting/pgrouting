@@ -174,7 +174,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
                         }
 
                         (*return_count) = sequence;
-                        log << "Returing from driver\n";
+                        log << "Returning from driver\n";
                     } else {
                         log << "Working with Undirected Graph\n";
 
@@ -245,11 +245,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
                             *err_msg = strdup(log.str().c_str());
 #endif
                         }
-                        catch (AssertFailedException &exept) {
-                            log << exept.what() << "\n";
+                        catch (AssertFailedException &except) {
+                            log << except.what() << "\n";
                             *err_msg = strdup(log.str().c_str());
-                        } catch (std::exception& exept) {
-                            log << exept.what() << "\n";
+                        } catch (std::exception& except) {
+                            log << except.what() << "\n";
                             *err_msg = strdup(log.str().c_str());
                         } catch(...) {
                             log << "Caught unknown exception!\n";

@@ -24,7 +24,7 @@ Stable proposed Functions
     This are proposed functions for next mayor release.
 
       - They are not officially in the current release.
-      - They will likely officialy be part of the next mayor release:
+      - They will likely officially be part of the next mayor release:
 
         - The functions make use of ANY-INTEGER and ANY-NUMERICAL
         - Name might not change. (But still can)

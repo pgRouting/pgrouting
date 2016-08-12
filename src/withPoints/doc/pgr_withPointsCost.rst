@@ -220,8 +220,8 @@ Description of the parameters of the signatures
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as decribed above.
-**points_sql**   ``TEXT``               Points SQL query as decribed above.
+**edges_sql**    ``TEXT``               Edges SQL query as described above.
+**points_sql**   ``TEXT``               Points SQL query as described above.
 **start_vid**    ``ANY-INTEGER``        Starting vertex identifier. When negative: is a point's pid.
 **end_vid**      ``ANY-INTEGER``        Ending vertex identifier. When negative: is a point's pid.
 **start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.

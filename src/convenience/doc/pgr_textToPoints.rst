@@ -40,7 +40,7 @@ The function returns:
 Description
 -----------------------------------------------------------------------------
 
-.. rubric:: Paramters
+.. rubric:: Parameters
 
 :pnts: ``text`` A text string of the format "x,y;x,y;x,y;..." where x is longitude and y is latitude if use values in lat-lon.
 :srid: ``integer`` The SRID to use when constructing the point geometry. If the paratmeter is absent it defaults to ``SRID:4326``.

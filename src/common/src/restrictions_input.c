@@ -45,7 +45,7 @@ void fetch_restriction(
     char *str = DatumGetCString(
             SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
 
-// TODO(someone) because its text, no garantee the text read is correct
+// TODO(someone) because its text, no guarantee the text read is correct
 // move this code to c++ to tokenize the integers.
 
     int i = 0;

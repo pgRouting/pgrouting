@@ -169,17 +169,17 @@ do_pgr_withPoints(
 
         *log_msg = strdup(log.str().c_str());
         pgassert(!*err_msg);
-    } catch (AssertFailedException &exept) {
+    } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         *log_msg = strdup(log.str().c_str());
-        err << exept.what() << "\n";
+        err << except.what() << "\n";
         *err_msg = strdup(err.str().c_str());
-    } catch (std::exception& exept) {
+    } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         *log_msg = strdup(log.str().c_str());
-        err << exept.what() << "\n";
+        err << except.what() << "\n";
         *err_msg = strdup(err.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);

@@ -35,7 +35,7 @@ but to give a framework such that adding a contraction operation can be easily a
 For this contraction proposal I am only making 2 operations:
 
  1. dead end contraction: vertices have one incoming edge
- 2. linear contraction: vertices have one incomming and one outgoing edge
+ 2. linear contraction: vertices have one incoming and one outgoing edge
    
 
 And with the additional characteristics:
@@ -56,6 +56,167 @@ until while possible, and then move to the next contraction operation.
 Adding a new operation then becomes an "easy" task but more things might be involved, because the
 charachteristics of the graph change each time its contracted, so some interaction between contractions
 has to be implemented also.
+
+Currently, there are two implemented operation for contracting a graph
+
+- Dead End contraction
+- Linear contraction
+
+
+
+
+
+
+Dead end contraction
+-------------------------------------------------------------------------------
+
+Dead end nodes
+......................
+
+- The green node ``B`` represents a dead end node
+- The node ``A`` is the only node connecting to ``B``.
+- Node ``A`` is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.
+- Directed graph
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=green];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        A -> B;
+    }
+
+
+Operation: Dead End Contraction
+.....................................
+
+The dead end contraction will stop until there are no more dead end nodes.
+For example from the following graph:
+
+- Node ``A`` is connected to the rest of the graph by an unlimited number of edges.
+- Node ``B`` is connected to the rest of the graph with one incoming edge.
+- The green node ``C`` represents a `Dead End` node
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=deepskyblue];
+        C [style=filled; color=green];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        A -> B;
+        B -> C;
+    }
+
+
+After contracting ``B``, node ``C`` is now a `Dead End` and is contracted:
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=green;label="B {C}";];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        A -> B;
+    }
+
+Node ``B`` gets contracted
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue;label="A {B, C}";];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+    }
+
+Nodes ``B`` and ``C`` belong to node ``A``.
+
+
+
+Not Dead End nodes
+......................
+
+In the next graph ``B`` is not a `dead end` node.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=red];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        G -> A [dir=none, weight=1, penwidth=3];
+        B -> A;
+    }
+
+
+
+
+
+Linear contraction
+-------------------------------------------------------------------------------
+
+Characteristics:
+
+  - :math:`V2`: vertex with 1 incoming edge and 1 outgoing edge:
+
+    - The outgoing edge must have different identifier of the incoming edge
+
+.. code-block:: none
+
+    while ( V2 is not empty ) {
+
+        delete vertex of V2
+        create edge (shortcut)
+        the deleted vertex add it to removed_vertices
+        inewly created edge, inherits the removed vertex
+
+        <adjust any conditions that might affect other contraction operations>
+    }
+
+
+Notation
+.........
+
+* V: is the set of vertices
+* E: is the set of edges
+* G: is the graph
+* :math:`V1`: is the set of *dead end* vertices 
+* :math:`V2`: is the set of *linear* vertices
+* removed_vertices: is the set of removed vertices
+
+The contracted graph will be represented with two parameters, the modified Graph, and the removed_vertices set.
+
+removed_vertices = {(v,1):{2}, (e,-1):{3}}.
+
+
+The above notation indicates:
+  - Vertex 2 is removed, and belongs to vertex 1 subgraph
+  - Vertex 3 is removed, and belongs to edge -1 subgraph
+
 
 Procedure
 ---------
@@ -83,84 +244,13 @@ Procedure
 
     output: G'(V',E'), removed_vertices
 
-
-
-Contraction operations for this implementation
--------------------------------------------------------------------------------
-
-Dead end contraction
-+++++++++++++++++++++
-
-Characteristics:
-
-  - :math:`V1`: set of vertices with 1 incoming edge in increasing order of id:
-
-    - Edges with the same identifier are considered the same edge
-      and if it has the `reverse_cost` valid the outgoing edge is ignored
-
-.. code-block:: none
-
-
-    while ( V1 is not empty ) {
-
-        delete vertex of V1
-        the deleted vertex add it to removed_vertices
-        vertex that leads to removed vertex, inherits the removed vertex
-
-        <adjust any conditions that might affect other contraction operation>
-    }
-
-
-
-Linear contraction
-+++++++++++++++++++++
-
-Characteristics:
-
-  - :math:`V2`: vertex with 1 incoming edge and 1 outgoing edge:
-
-    - The outgoing edge must have different identifier of the incomming edge
-
-.. code-block:: none
-
-    while ( V2 is not empty ) {
-
-        delete vertex of V2
-        create edge (shortcut)
-        the deleted vertex add it to removed_vertices
-        inewly created edge, inherits the removed vertex
-
-        <adjust any conditions that might affect other contraction operations>
-    }
-
-
-Notation
-++++++++++
-
-* V: is the set of vertices
-* E: is the set of edges
-* G: is the graph
-* :math:`V1`: is the set of *dead end* vertices 
-* :math:`V2`: is the set of *linear* vertices
-* removed_vertices: is the set of removed vertices
-
-The contracted graph will be represented with two parameters, the modified Graph, and the removed_vertices set.
-
-removed_vertices = {(v,1):{2}, (e,-1):{3}}.
-
-
-The above notation indicates:
-  - Vertex 2 is removed, and belongs to vertex 1 subgraph
-  - Vertex 3 is removed, and belongs to edge -1 subgraph
-
-
 Examples
 -------------------------------------------------------------------------------
 
 For simplicity all the edges in the examples have unit weight.
 
 Dead End
-+++++++++++++++++
+......................
 
 * Perform dead end contraction operation first and then linear contraction
 * 1 cycle of contraction.
@@ -214,7 +304,7 @@ Visualy the results are
 
 
 Linear contraction
-++++++++++++++++++++
+...........................................................
 
 * Perform linear contraction operation first and then dead end contraction
 * 1 cycle of contraction.
@@ -276,7 +366,7 @@ Visualy the results are
 
 
 Sample Data
-++++++++++++++++++++++++
+-------------------------------------------------------------
 
 * Perform dead end contraction operation first and then linear contraction
 * 1 cycle of contraction.
@@ -415,7 +505,7 @@ Visually the results are
 
 
 Detailed Procedure
-+++++++++++++++++++
+............................
 :Original Data:
 
 .. literalinclude:: doc-contraction.queries
@@ -461,7 +551,7 @@ Detailed Procedure
 
 
 Dijkstra on contracted graph
-+++++++++++++++++++++++++++++++
+----------------------------------
 
 There are five cases which arise when calculating the shortest path between a given source and target, 
 
@@ -532,7 +622,7 @@ This implies that it is a shortcut and should be expanded. The contracted subgra
 
 
 References
-++++++++++++++++++++++++++
+-------------
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf

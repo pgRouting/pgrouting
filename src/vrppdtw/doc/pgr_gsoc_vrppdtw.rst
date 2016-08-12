@@ -88,7 +88,7 @@ Description of the parameters of the signatures
 ================== ===========  =================================================
 Column             Type            Description
 ================== ===========  =================================================
-**sql**            ``TEXT``     SQL query as decribed above.
+**sql**            ``TEXT``     SQL query as described above.
 **vehicle_num**    ``INTEGER``  Maximum number of vehicles in the result. (currently is ignored)
 **capacity**       ``INTEGER``  Capacity of the vehicle.
 ================== ===========  =================================================

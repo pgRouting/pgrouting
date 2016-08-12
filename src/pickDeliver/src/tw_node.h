@@ -99,7 +99,7 @@ class Tw_node: public Node {
      /*! * \brief Returns the type of this node. */
      inline NodeType type() const { return m_type;}
 
-     /*! \brief Returns the length of time between the opening and closeing. */
+     /*! \brief Returns the length of time between the opening and closing. */
      inline double window_length() const {return m_closes - m_opens;}
 
      /*! \brief time = distance / speed. */

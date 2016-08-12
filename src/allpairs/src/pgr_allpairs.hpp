@@ -99,7 +99,7 @@ pgr_floydWarshall(
 // template class
 template < class G >
 class Pgr_allpairs {
-    // defualt constructors and destructors
+    // default constructors and destructors
     /*
        Matrix_cell_t description:
        int64_t from_vid;

@@ -9,7 +9,7 @@
 
    INSTRUCTIONS
    - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropiate values
+   - change [...] (including the square braquets) to appropriate values
    - one file / function,  may signatures of the same function go in the same file
 
 .. _pgr_pickDeliver:
@@ -71,7 +71,7 @@ Characteristics:
 - Less vehicle used is considered better.
 - Less total duration is better.
 - Less wait time is better.
-- the algorithm will raise an exeption when
+- the algorithm will raise an exception when
 
   - If there is a pickup-deliver pair than violates time window
   - The speed, max_cycles, ma_capacity have illegal values
@@ -189,7 +189,7 @@ Description of the parameters of the signatures
 ================== =========== ======== =================================================
 Column             Type        Default     Description
 ================== =========== ======== =================================================
-**customers_sql**  ``TEXT``             SQL query as decribed above.
+**customers_sql**  ``TEXT``             SQL query as described above.
 **max_vehicles**   ``INTEGER``          Maximum number of vehicles in the result. (currently is ignored)
 **capacity**       ``FLOAT``            Capacity of the vehicle.
 **speed**          ``FLOAT``   1        Speed of the vehicle.

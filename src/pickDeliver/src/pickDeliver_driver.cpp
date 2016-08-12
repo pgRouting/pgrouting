@@ -89,9 +89,9 @@ do_pgr_pickDeliver(
 
         try {
             pd_problem.solve();
-        } catch (AssertFailedException &exept) {
+        } catch (AssertFailedException &except) {
             pd_problem.get_log(log);
-            throw exept;
+            throw except;
         }
 
         pd_problem.get_log(log);
@@ -113,11 +113,11 @@ do_pgr_pickDeliver(
 
         pd_problem.get_log(log);
         *log_msg = strdup(log.str().c_str());
-    } catch (AssertFailedException &exept) {
-        log << exept.what() << "\n";
+    } catch (AssertFailedException &except) {
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-    } catch (std::exception& exept) {
-        log << exept.what() << "\n";
+    } catch (std::exception& except) {
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
     } catch(...) {
         log << "Caught unknown exception!\n";
