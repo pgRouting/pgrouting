@@ -1,7 +1,6 @@
 \i setup.sql
 SET client_min_messages TO WARNING;
 
-BEGIN;
 SELECT plan(17);
 
 SELECT has_function('pgr_edgedisjointpaths');
