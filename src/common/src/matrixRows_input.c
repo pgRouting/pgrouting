@@ -95,9 +95,11 @@ void pgr_get_matrixRows(
 
         if (ntuples > 0) {
             if ((*rows) == NULL)
-                (*rows) = (Matrix_cell_t *)palloc0(total_tuples * sizeof(Matrix_cell_t));
+                (*rows) = (Matrix_cell_t *)palloc0(
+                        total_tuples * sizeof(Matrix_cell_t));
             else
-                (*rows) = (Matrix_cell_t *)repalloc((*rows), total_tuples * sizeof(Matrix_cell_t));
+                (*rows) = (Matrix_cell_t *)repalloc(
+                        (*rows), total_tuples * sizeof(Matrix_cell_t));
 
             if ((*rows) == NULL) {
                 elog(ERROR, "Out of memory");

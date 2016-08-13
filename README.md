@@ -47,6 +47,25 @@ The *develop* branch reflects the 2.3.0-dev
 	</tr>
 </table>
 
+Postgis 2.2 on Travis and AppVeyor
+Postgis 2.3.0dev on Jenkins
+
+Postgres matrix of tests:
+
+ postgreSQL   | PostGis | Travis | AppVeyor | Jenkins
+--- |---- | --- | ---
+    | Precise | vs2013 | winnie 32 & 64 bits
+ 9.1 | yes | no | no 
+ 9.2 | yes | no | no
+ 9.3 | yes | no | no
+ 9.4 | yes | yes | yes
+ 9.5 | yes | no | yes
+ 9.6 | no  | no | yes
+
+
+
+
+
 ## INTRODUCTION
 
 pgRouting extends the PostGIS/PostgreSQL geospatial database to provide geospatial routing and other network analysis functionality.
@@ -65,7 +84,7 @@ This library contains following features:
 * Traveling Sales Person
 * Turn Restriction Shortest Path (TRSP)
 
-Additionaly, ready for testing and to be part of 2.3 official version:
+Additionally, ready for testing and to be part of 2.3 official version:
 
 * Shortest Path Dijkstra With Points Family of functions
 * Shortest Path Dijkstra Cost With Points Family of functions

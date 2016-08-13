@@ -64,12 +64,12 @@ bool do_pgr_test_matrixRows(
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());
         return true;
-    } catch (AssertFailedException &exept) {
-        log << exept.what() << "\n";
+    } catch (AssertFailedException &except) {
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
         return false;
-    } catch (std::exception& exept) {
-        log << exept.what() << "\n";
+    } catch (std::exception& except) {
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
         return false;
     } catch(...) {

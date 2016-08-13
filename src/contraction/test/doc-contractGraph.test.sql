@@ -1,52 +1,21 @@
 \echo -- q1
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
+    ARRAY[1, 2]);
 
 \echo -- q2
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, true);
+ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 
 \echo -- q3
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, false);
+ARRAY[1]);
 
 \echo -- q4
-SELECT * FROM pgr_contractGraph(
+ SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, false);
+ARRAY[2]);
 
 \echo -- q5
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, true);
-
-\echo -- q6
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost FROM edge_table',
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, true);
-
-\echo -- q7
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost FROM edge_table',
-    ARRAY[]::BIGINT[], ARRAY[0]::integer[], 1, false);
-
-\echo -- q8
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost FROM edge_table',
-    ARRAY[]::bigint[], ARRAY[1]::integer[], 1, false);
-
-\echo -- q9
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::bigint[], ARRAY[0, 1]::integer[], 1, false) WHERE type = 'e';
-
-\echo -- q10
-SELECT * FROM pgr_contractGraph(
-    'SELECT id, source, target, cost, reverse_cost FROM edge_table',
-    ARRAY[]::bigint[], ARRAY[0, 1]::integer[], 1, false) WHERE type = 'v';
-
-
-\echo -- q11

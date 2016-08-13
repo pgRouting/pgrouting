@@ -9,19 +9,18 @@
 
 .. _pgr_gsocvrppdtw:
 
-pgr_gsoc_vrppdtw
+pgr_gsoc_vrppdtw - Proposed
 ===============================================================================
 
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_gsoc_vrppdtw`` — Returns optimized  solution
+``pgr_gsoc_vrppdtw`` — Returns a solution for `Pick and Delivery` with `time windows` Vehicle Routing Problem
 
-.. warning::  This is a proposed function.
-
-   - Is not officially in the current release.
-   - The implementation currently is a wrapper of :ref:`pgr_pickDeliver`
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 Signature Summary
@@ -89,7 +88,7 @@ Description of the parameters of the signatures
 ================== ===========  =================================================
 Column             Type            Description
 ================== ===========  =================================================
-**sql**            ``TEXT``     SQL query as decribed above.
+**sql**            ``TEXT``     SQL query as described above.
 **vehicle_num**    ``INTEGER``  Maximum number of vehicles in the result. (currently is ignored)
 **capacity**       ``INTEGER``  Capacity of the vehicle.
 ================== ===========  =================================================
@@ -114,7 +113,6 @@ Column             Type            Description
 Examples
 -------------------------------------------------------------------------------
 
-
 .. rubric:: Example: Total number of rows returned
 
 .. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
@@ -131,5 +129,6 @@ Examples
 See Also
 -------------------------------------------------------------------------------
 
+* The examples use :ref:`pickDeliverData`
 * current implementation is a wrapper of :ref:`pgr_pickDeliver`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem

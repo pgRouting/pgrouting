@@ -9,7 +9,7 @@
 
 .. _pgr_points_to_vids:
 
-pgr_pointsToVids
+pgr_pointsToVids - Proposed
 ==============================================================================
 
 .. index::
@@ -21,13 +21,11 @@ Name
 
 ``pgr_pointsToVids`` - Converts an array of point geometries into vertex ids.
 
-.. warning::  This is a proposed function
 
-     - Is not officially in the release.
-     - Name could change.
-     - Signature could change.
-     - Needs testing.
-     - Functionality could change.
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 
 Synopsis
 ------------------------------------------------------------------------------
@@ -46,7 +44,7 @@ The function returns:
 Description
 -----------------------------------------------------------------------------
 
-.. rubric:: Paramters
+.. rubric:: Parameters
 
 :pnts: ``geometry[]`` - An array of point geometries.
 :edges: ``text`` - The edge table to be used for the conversion.

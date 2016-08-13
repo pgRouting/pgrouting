@@ -273,7 +273,7 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
 
         return EXIT_SUCCESS;
     } catch ( ... ) {
-        *err_msg = strdup("Caught unknown expection!");
+        *err_msg = strdup("Caught unknown exception!");
     }
     return -1;
 }

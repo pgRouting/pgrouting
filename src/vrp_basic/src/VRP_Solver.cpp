@@ -26,13 +26,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
+#include "./VRP_Solver.h"
 #include <algorithm>
+#include <math.h>
 #include <utility>
 #include <map>
 #include <set>
 #include <string>
 #include <vector>
-#include "./VRP_Solver.h"
 
 #undef PGR_LOGGER_ON
 #define PGR_LOGGER_LOC
@@ -246,18 +247,18 @@ bool CVRPSolver::solveVRP(std::string& strError) {
 
     m_solutionFinal.init(vecOrders, static_cast<int>(vecOrders.size()), vecVehicles);
     PGR_LOG("After init solution");
-    int iAttemtCount = 0;
-    while (iAttemtCount < MAXIMUM_TRY) {
+    int iAttemptCount = 0;
+    while (iAttemptCount < MAXIMUM_TRY) {
         bool bUpdateFound = false;
         CSolutionInfo initialSolution = generateInitialSolution();
         PGR_LOG("After Generate initial Solution");
-        iAttemtCount++;
+        iAttemptCount++;
         bUpdateFound = updateFinalSolution(initialSolution);
         PGR_LOG("After update final Solution");
         bool bUpdateFound2 = tabuSearch(initialSolution);
         PGR_LOG("After Tabu Search");
         if ((bUpdateFound == true) ||  (bUpdateFound2 == true)) {
-            iAttemtCount = 0;
+            iAttemptCount = 0;
         }
     }
     m_bIsSolutionReady = true;
@@ -415,7 +416,7 @@ bool CVRPSolver::tabuSearch(CSolutionInfo& curSolution) {
         // applyBestMoveInCurrentSolution(curSolution, identifyPotentialMove(curSolution) );
         insertUnservedOrders(curSolution);
         // attemptFeasibleNodeExchange(curSolution);
-        attempVehicleExchange(curSolution);
+        attemptVehicleExchange(curSolution);
         ++numberOfSearch;
     }
     return false;
@@ -737,7 +738,7 @@ CostPack CVRPSolver::getCostForInsert(CTourInfo& curTour, COrderInfo& curOrder, 
     return costRet;
 }
 
-void CVRPSolver::attempVehicleExchange(CSolutionInfo& solutionInfo) {
+void CVRPSolver::attemptVehicleExchange(CSolutionInfo& solutionInfo) {
     ++m_iGeneratedSolutionCount;
     ++m_iStepsSinceLastSolution;
     CMoveInfo curMove;

@@ -139,7 +139,7 @@ class Path {
      *
      * When both paths reach the node and p1.agg_cost > p2.agg_cost
      *    erase the node of p1
-     *    (cant erase from p2 because we loose the iterators
+     *    (can't erase from p2 because we loose the iterators
      *     so in a future cycle it will be deleted)
      *
      * sort the paths by start_id,
@@ -171,7 +171,9 @@ class Path {
                             return l.node < r.node;
                             });
 
-                    if (pos != p1.end() && stop.node == pos->node && stop.agg_cost < pos->agg_cost) {
+                    if (pos != p1.end()
+                            && (stop.node == pos->node)
+                            && (stop.agg_cost < pos->agg_cost)) {
                         /* both share the same node &
                          * the second path has the smallest
                          *  So erasing from the first path */

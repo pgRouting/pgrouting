@@ -53,7 +53,7 @@ The main Characteristics are:
   - Let be the case the values returned are stored in a table, so the unique index would be the pair:
     `(start_vid, end_vid)`.
 
-  - For undirected graphs, the results are symetric.
+  - For undirected graphs, the results are symmetric.
 
     - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
@@ -64,7 +64,7 @@ The main Characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 Signature Summary
 -------------------------------------------------------------------------------
@@ -232,7 +232,7 @@ Column        Type          Description
 ============= ============= =================================================
 
 
-Aditional Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example 1: Demonstration of repeated values are ignored, and result is sorted.

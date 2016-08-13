@@ -17,6 +17,13 @@ Name
 
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
 
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+
+
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
@@ -100,7 +107,7 @@ Description of the parameters of the signatures
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as decribed above.
+**edges_sql**    ``TEXT``               Edges SQL query as described above.
 **start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of the vertices.
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 ================ ====================== =================================================

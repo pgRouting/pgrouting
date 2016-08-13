@@ -35,7 +35,7 @@ Description of the parameters of the signatures
 =================== ====================== ========= =========================================
 Parameter           Type                   Default   Description
 =================== ====================== ========= =========================================
-**edges_sql**       ``TEXT``                         SQL query as decribed above.
+**edges_sql**       ``TEXT``                         SQL query as described above.
 **via_vertices**    ``ARRAY[ANY-INTEGER]``           Array of ordered vertices identifiers that are going to be visited.
 **directed**        ``BOOLEAN``            ``true``  - When ``true`` Graph is considered `Directed`
                                                      - When ``false`` the graph is considered as Undirected.

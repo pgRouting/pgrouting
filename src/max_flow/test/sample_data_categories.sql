@@ -1,9 +1,14 @@
 ﻿CREATE TEMPORARY TABLE category (
+    category_id SERIAL,
 	category text,
 	capacity BIGINT
 );
 
-INSERT INTO category VALUES ('Motorway', 130), ('Primary', 100), ('Regional', 80), ('Local', 50);
+INSERT INTO category VALUES
+('Motorway', 130),
+('Primary', 100),
+('Regional', 80),
+('Local', 50);
 
 ALTER TABLE edge_table ADD COLUMN category TEXT;
 ALTER TABLE edge_table ADD COLUMN reverse_category TEXT;

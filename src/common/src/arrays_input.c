@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
+#include <postgres.h>
 #include "utils/lsyscache.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
@@ -48,7 +48,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     int64_t      *data;
     clock_t start_t = clock();
 
-    PGR_DBG("Geting integer array");
+    PGR_DBG("Getting integer array");
     /* get input array element type */
     i_eltype = ARR_ELEMTYPE(input);
     get_typlenbyvalalign(i_eltype, &i_typlen, &i_typbyval, &i_typalign);
@@ -129,7 +129,7 @@ int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input) {
     int64_t      *data;
     clock_t start_t = clock();
 
-    PGR_DBG("Geting integer array");
+    PGR_DBG("Getting integer array");
     /* get input array element type */
     i_eltype = ARR_ELEMTYPE(input);
     get_typlenbyvalalign(i_eltype, &i_typlen, &i_typbyval, &i_typalign);

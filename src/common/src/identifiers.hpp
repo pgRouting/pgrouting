@@ -1,11 +1,15 @@
 /*PGR-GNU*****************************************************************
 
-FILE: __FILENAME__
+File: identifiers.hpp
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-------
+Function's developer: 
+Copyright (c) 2016 Rohith Reddy
+Mail: 
+
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,13 +35,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <iterator>
 #include <iostream>
 #include <stdexcept>
+
 template <typename T>
 class Identifiers {
  public:
     Identifiers<T>() = default;
     Identifiers<T>(T* container, size_t size) {
-        for (size_t i = 0; i < size; ++i)
-        {
+        for (size_t i = 0; i < size; ++i) {
             m_ids.insert(container[i]);
         }
     }
@@ -45,7 +49,7 @@ class Identifiers {
     size_t size() const { return m_ids.size(); }
     typedef typename std::set<T>::iterator iterator;
     typedef typename std::set<T>::const_iterator const_iterator;
-    //! \brief Returns a boolean value true or false, to indicate whether the set is empty
+    //! \brief Returns true when the set is empty
     inline bool empty() const { return m_ids.empty(); }
     inline void clear() { m_ids.clear(); }
     bool has(const T other) const;
@@ -58,7 +62,7 @@ class Identifiers {
     iterator end() { return m_ids.end(); }
     const_iterator end() const { return m_ids.end(); }
     bool operator ==(const Identifiers<T> &other) const;
-    const T& operator [](size_t index) const;
+    const T& operator[](size_t index) const;
     Identifiers<T> operator +(const T &other) const;
     Identifiers<T> operator *(const T &other) const;
     Identifiers<T> operator -(const T &other) const;
@@ -72,7 +76,10 @@ class Identifiers {
     Identifiers<T>& operator *=(const Identifiers<T> &other);
     Identifiers<T>& operator -=(const Identifiers<T> &other);
     template<T>
-    friend std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers);
+    friend std::ostream& operator<<(
+            std::ostream& os,
+            const Identifiers<T>& identifiers);
+
  private:
     std::set<T> m_ids;
 };
@@ -145,7 +152,7 @@ void Identifiers<T>::insert(const T &other) {
     m_ids.insert(other);
 }
 
-//! \brief Returns a boolean value 
+//! \brief Returns a boolean value
 /*!
   @param [in] other is a set of identifiers of type *Identifiers<T>*
   Returns:
@@ -154,11 +161,11 @@ void Identifiers<T>::insert(const T &other) {
   */
 template <typename T>
 bool Identifiers<T>::operator ==(const Identifiers<T> &other) const {
-    return std::equal(m_ids.begin(),m_ids.end(),other.ids().begin());
+    return std::equal(m_ids.begin(), m_ids.end(), other.ids().begin());
 }
 
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>*
 /*!
   @param [in] other is an identifier of type *T*
   Returns the set union of other with this set
@@ -171,7 +178,7 @@ Identifiers<T> Identifiers<T>::operator +(const T &other) const {
     return union_ids;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>*
 /*!
   @param [in] other is an identifier of type *T*
   Returns the set intersection of other with this set
@@ -184,7 +191,7 @@ Identifiers<T> Identifiers<T>::operator *(const T &other) const {
     return intersect_ids;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>*
 /*!
   @param [in] other is an identifier of type *T*
   Returns the set difference between this set and other
@@ -197,7 +204,7 @@ Identifiers<T> Identifiers<T>::operator -(const T &other) const {
     return diff_ids;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>*
 /*!
   @param [in] other is a set of identifiers of type *Identifiers<T>*
   Returns the set union of other with this set
@@ -210,7 +217,7 @@ Identifiers<T> Identifiers<T>::operator +(const Identifiers<T> &other) const {
     return union_ids;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>*
 /*!
   @param [in] other is a set of identifiers of type *Identifiers<T>*
   Returns the set intersection of other with this set
@@ -223,7 +230,7 @@ Identifiers<T> Identifiers<T>::operator *(const Identifiers<T> &other) const {
     return intersect_ids;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>*
 /*!
   @param [in] other is a set of identifiers of type *Identifiers<T>*
   Returns the set difference between this set and other
@@ -237,7 +244,7 @@ Identifiers<T> Identifiers<T>::operator -(const Identifiers<T> &other) const {
 }
 
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>&* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>&*
 /*!
   @param [in] other is an identifiers of type *T*
   Replaces this set with the set union of other with this set
@@ -248,7 +255,7 @@ Identifiers<T>& Identifiers<T>::operator +=(const T &other) {
     return *this;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>&* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>&*
 /*!
   @param [in] other is an identifiers of type *T*
   Replaces this set with the set intersection of other with this set
@@ -264,7 +271,7 @@ Identifiers<T>& Identifiers<T>::operator *=(const T &other) {
     return *this;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>&* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>&*
 /*!
   @param [in] other is a set of identifiers of type *T*
   Replaces this set with the set difference between this set and other
@@ -278,7 +285,7 @@ Identifiers<T>& Identifiers<T>::operator -=(const T &other) {
 }
 
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>&* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>&*
 /*!
   @param [in] other is a set of identifiers of type *Identifiers<T>*
   Replaces this set with the set union of other with this set
@@ -289,7 +296,7 @@ Identifiers<T>& Identifiers<T>::operator +=(const Identifiers<T> &other) {
     return *this;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>&* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>&*
 /*!
   @param [in] other is a set of identifiers of type *Identifiers<T>*
   Replaces this set with the set intersection of other with this set
@@ -304,7 +311,7 @@ Identifiers<T>& Identifiers<T>::operator *=(const Identifiers<T> &other) {
     return *this;
 }
 
-//! \brief Returns a set of identifiers of type *Identifiers<T>&* 
+//! \brief Returns a set of identifiers of type *Identifiers<T>&*
 /*!
   @param [in] other is a set of identifiers of type *Identifiers<T>*
   Replaces this set with the set difference between this set and other
@@ -321,7 +328,7 @@ Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
 
 //! \brief Prints the set of identifiers
 template <typename T>
-std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) {
+std::ostream& operator<<(std::ostream& os, const Identifiers<T>& identifiers) {
     os << "{";
     for (auto identifier : identifiers.ids()) {
         os << identifier << ", ";
@@ -330,12 +337,12 @@ std::ostream& operator << (std::ostream& os, const Identifiers<T>& identifiers) 
     return os;
 }
 
-//! \brief Returns an identifier of type *T* at position *index* in the set 
+//! \brief Returns an identifier of type *T* at position *index* in the set
 /*!
   @param [in] index is of type size_t 
   */
 template <typename T>
-const T& Identifiers<T>::operator [](size_t index) const {
+const T& Identifiers<T>::operator[](size_t index) const {
         if (index >= size()) {
             throw std::out_of_range("Index out of bounds");
         }

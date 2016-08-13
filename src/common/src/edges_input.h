@@ -24,7 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_COMMON_SRC_EDGES_INPUT_H_
 #define SRC_COMMON_SRC_EDGES_INPUT_H_
-
 #pragma once
 
 #include "./pgr_types.h"
@@ -124,9 +123,9 @@ bigint target,
 bigint capacity,
 bigint reverse_capacity
 
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
 */
 void pgr_get_flow_edges(
     char *sql,
@@ -141,9 +140,9 @@ bigint id,
 bigint source,
 bigint target
 
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
 */
 void pgr_get_basic_edges(
     char *sql,

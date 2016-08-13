@@ -97,7 +97,7 @@ Sample use:
 - Delete whitespace at end of line is easy fix.
 - Use your judgement!!!
 
-Some files like ``postgres.h`` are system dependant so don't include the directory.
+Some files like ``postgres.h`` are system dependent so don't include the directory.
 
 
 Other tools
@@ -146,7 +146,7 @@ Tests are part of the tree layout:
 
   - ``src/dijkstra/test``  Dijkstra's tests.
 
-    - ``test.conf``  Configuraton file.
+    - ``test.conf``  Configuration file.
     - ``<name>.test.sql``  Test file
     - ``<name>.result``  Results file bash
 

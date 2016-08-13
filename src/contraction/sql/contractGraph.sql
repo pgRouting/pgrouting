@@ -30,17 +30,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 CREATE OR REPLACE FUNCTION pgr_contractGraph(
     edges_sql TEXT,
     contraction_order BIGINT[],
-    forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
     max_cycles integer DEFAULT 1,
+    forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
     directed BOOLEAN DEFAULT true,
     OUT seq integer,
-    OUT id BIGINT,
     OUT type TEXT,
+    OUT id BIGINT,
+    OUT contracted_vertices BIGINT[],
     OUT source BIGINT,
     OUT target BIGINT,
-    OUT cost float,
-    OUT contracted_vertices BIGINT[],
-    OUT contracted_vertices_size integer)
+    OUT cost float)
 
   RETURNS SETOF RECORD AS
  '$libdir/${PGROUTING_LIBRARY_NAME}', 'contractGraph'

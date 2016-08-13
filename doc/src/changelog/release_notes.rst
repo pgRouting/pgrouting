@@ -18,6 +18,7 @@ Table of contents
 --------------------------
 
    - :ref:`changelog_2_3_0`
+   - :ref:`changelog_2_2_4`
    - :ref:`changelog_2_2_3`
    - :ref:`changelog_2_2_2`
    - :ref:`changelog_2_2_1`
@@ -37,14 +38,23 @@ pgRouting 2.3.0 Release Notes
 Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 
 * pgr_TSP
-* pgr_eucledianTSP
 * pgr_aStar
 
+.. rubric:: New Functions
 
-.. rubric:: Proposed functions
+* pgr_eucledianTSP
+
+
+.. rubric:: New Proposed functions
 
 * pgr_dijkstraCostMatrix
 * pgr_withPointsCostMatrix
+* pgr_maxFlowPushRelabel
+* pgr_maxFlowEdmondsKarp
+* pgr_maxFlowBoykovKolmogorov 
+* pgr_maximumCardinalityMatching
+* pgr_edgeDisjointPaths
+* pgr_contractGraph
 
 
 .. rubric:: Deprecated Signatures
@@ -53,7 +63,7 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 * pgr_astar - use pgr_aStar instead
 
 
-.. rubric:: Deprecated functions
+.. rubric:: Deprecated Functions
 
 * pgr_flip_edges
 * pgr_vidsToDmatrix
@@ -62,6 +72,18 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 
 
 
+.. _changelog_2_2_4:
+
+pgRouting 2.2.4 Release Notes
+===============================================================================
+
+To see the issues closed by this release see the `Git closed issues for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github.
+
+.. rubric:: Bug Fixes
+
+* Bogus uses of extern "C"
+* Build error on Fedora 24 + GCC 6.0
+* Regression error pgr_nodeNetwork
 
 .. _changelog_2_2_3:
 
@@ -72,7 +94,7 @@ To see the issues closed by this release see the `Git closed issues for 2.2.3 <h
 
 .. rubric:: Bug Fixes
 
-* Fixed  compatibility issues with PostgreSQL 9.6.
+* Fixed compatibility issues with PostgreSQL 9.6.
 
 .. _changelog_2_2_2:
 
@@ -160,7 +182,7 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 
 .. rubric:: Proposed functionality
 
-- Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)
+- Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)
 
   - pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.
   - pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.

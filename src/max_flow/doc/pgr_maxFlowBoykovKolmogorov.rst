@@ -9,13 +9,13 @@
 
    INSTRUCTIONS
    - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropiate values
+   - change [...] (including the square braquets) to appropriate values
    - one file / function,  may signatures of the same function go in the same file
 
 .. _pgr_maxFlowBoykovKolmogorov:
 
-pgr_maxFlowBoykovKolmogorov
-===========================
+pgr_maxFlowBoykovKolmogorov - Proposed
+======================================================
 
 
 Name
@@ -23,15 +23,16 @@ Name
 
 ``pgr_maxFlowBoykovKolmogorov`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
-.. warning::  This is a proposed function.
 
-     - Is not officially in the current release
 
-..
-   keep if uses boost (this is a comment)
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/graph_theory_review.html#sec:network-flow-algorithms
+   :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
 
@@ -42,9 +43,7 @@ Synopsis
 Calculates the maximum flow in a directed graph from a source node to a sink node.
 Edges must be weighted with non-negative capacities.
 Developed by Boykov and Kolmogorov.
-Implementation details_.
 
-.. _details: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
 Characteristics:
 ----------------
@@ -60,100 +59,110 @@ The main characterics are:
 Signature Summary
 -----------------
 
-..
-   If the function has more than one signature
-   Remove the unnecessary parts of the signature, just leaving the name of the parameters
-   Like in these examples
-
 .. code-block:: none
 
-    pgr_maxflowboykovkolmogorov(edges_sql, source\_vertex,  sink\_vertex)
-    pgr_maxflowboykovkolmogorov(edges_sql, source\_vertices,  sink\_vertex)
-    pgr_maxflowboykovkolmogorov(edges_sql, source\_vertex,  sink\_vertices)
-    pgr_maxflowboykovkolmogorov(edges_sql, source\_vertices,  sink\_vertices)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertex)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertex)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertices)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 
 Signatures
-==========
-
-Boykov-Kolmogorov One to One
 ----------------------------
+
+.. index::
+    single: maxFlowBoykovKolmogorov(One to One) - Proposed
+
+One to One
+..............................................
 
 The available signature calculates the maximum flow from one source vertex to one sink vertex.
 
 .. code-block:: none
 
-    pgr_maxflowboykovkolmogorov(edges_sql, source\_vertex,  sink\_vertex)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertex)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-maxFlowBoykovKolmogorov.queries
+.. literalinclude:: doc-pgr_maxFlowBoykovKolmogorov.queries
    :start-after: -- q1
    :end-before: -- q2
 
-Boykov-Kolmogorov One to Many
------------------------------
+
+.. index::
+    single: maxFlowBoykovKolmogorov(One to Many) - Proposed
+
+One to Many
+..............................................
 
 The available signature calculates the maximum flow from one source vertex to many sink vertices.
 
 .. code-block:: none
 
-    pgr_maxflowboykovkolmogorov(edges_sql, source\_vertex,  sink\_vertices)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-maxFlowBoykovKolmogorov.queries
+.. literalinclude:: doc-pgr_maxFlowBoykovKolmogorov.queries
    :start-after: -- q2
    :end-before: -- q3
 
-Boykov-Kolmogorov Many to One
------------------------------
+
+.. index::
+    single: maxFlowBoykovKolmogorov(Many to One) - Proposed
+
+Many to One
+..............................................
 
 The available signature calculates the maximum flow from many source vertices to one sink vertex.
 
 .. code-block:: none
 
-    pgr_maxflowboykovkolmogorov(edges_sql, source\_vertices,  sink\_vertex)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertex)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-maxFlowBoykovKolmogorov.queries
+.. literalinclude:: doc-pgr_maxFlowBoykovKolmogorov.queries
    :start-after: -- q3
    :end-before: -- q4
 
-Boykov-Kolmogorov Many to Many
-------------------------------
+
+.. index::
+    single: maxFlowBoykovKolmogorov(Many to Many) - Proposed
+
+Many to Many
+..............................................
 
 The available signature calculates the maximum flow from many sources to many sinks.
 
 .. code-block:: none
 
-    pgr_maxflowboykovkolmogorov(edges_sql, source\_vertices,  sink\_vertices)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertices)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-maxFlowBoykovKolmogorov.queries
+.. literalinclude:: doc-pgr_maxFlowBoykovKolmogorov.queries
    :start-after: -- q4
    :end-before: -- q5
 
-Description of the Signatures
-=============================
 
-..
-   DELETE / ADD DEPENDING ON YOUR REQUIREMENTS
+
+
+Description of the Signatures
+--------------------------------------------------------
 
 Description of the SQL query
-----------------------------
+..............................................
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
@@ -173,7 +182,7 @@ Where:
 
 
 Description of the parameters of the signatures
------------------------------------------------
+.......................................................
 
 ================= ====================== =================================================
 Column            Type                   Description
@@ -183,9 +192,24 @@ Column            Type                   Description
 **sink_vertex**   ``BIGINT``             Identifier of the sink vertex(or vertices).
 ================= ====================== =================================================
 
+Description of the Return Values
+.......................................................
+
+=====================  ====================  =================================================
+Column                 Type                  Description
+=====================  ====================  =================================================
+**seq**                ``INT``               Sequential value starting from **1**.
+**edge_id**            ``BIGINT``            Identifier of the edge in the original query(edges_sql).
+**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
+**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
+**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
+**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
+=====================  ====================  =================================================
+
 See Also
 --------
 
+* http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 * http://www.csd.uwo.ca/~yuri/Papers/pami04.pdf
 
 .. rubric:: Indices and tables

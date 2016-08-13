@@ -23,12 +23,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "time_msg.h"
+#include "./time_msg.h"
 #include <time.h>
-#include "postgres.h"
+#include <postgres.h>
 
 
 void time_msg(char *msg, clock_t start_t, clock_t end_t) {
     double elapsed_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-    elog(DEBUG1, "Elapsed time for %s: %lfsec = (%lf - %f) / CLOCKS_PER_SEC ", msg, elapsed_t, (double) end_t, (double) start_t);
+    elog(DEBUG1, "Elapsed time for %s: %lfsec = (%lf - %f) / CLOCKS_PER_SEC ",
+            msg,
+            elapsed_t,
+            (double) end_t,
+            (double) start_t);
 }

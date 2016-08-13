@@ -59,7 +59,9 @@ void Path::reverse() {
                 });
     }
     for (size_t i = 0; i < newpath.size(); ++i) {
-        newpath[i].agg_cost = (i == 0)? 0 : newpath[i - 1].agg_cost +  newpath[i - 1].cost;
+        newpath[i].agg_cost = (i == 0)?
+            0 :
+            newpath[i - 1].agg_cost +  newpath[i - 1].cost;
     }
     path = newpath;
 }
@@ -156,7 +158,9 @@ void Path::get_pg_ksp_path(
         (*ret_path)[sequence].node = path[i].node;
         (*ret_path)[sequence].edge = path[i].edge;
         (*ret_path)[sequence].cost = path[i].cost;
-        (*ret_path)[sequence].agg_cost = (i == 0)? 0: (*ret_path)[sequence-1].agg_cost +  path[i-1].cost;
+        (*ret_path)[sequence].agg_cost = (i == 0)?
+            0 :
+            (*ret_path)[sequence-1].agg_cost +  path[i-1].cost;
         sequence++;
     }
 }

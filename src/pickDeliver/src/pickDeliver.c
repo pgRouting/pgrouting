@@ -206,7 +206,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
         /*********************************************************************/
         /*                          MODIFY!!!!!                              */
-        /* This has to match you ouput otherwise the server crashes          */
+        /* This has to match you output otherwise the server crashes          */
         /*
            OUT seq INTEGER,
            OUT vehicle_id INTEGER,

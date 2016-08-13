@@ -116,7 +116,7 @@ process(
 
 
 
-    PGR_DBG("load the edges that dont match the points");
+    PGR_DBG("load the edges that don't match the points");
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_edges(edges_no_points_query, &edges, &total_edges);

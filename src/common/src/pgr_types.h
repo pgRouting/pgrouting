@@ -24,13 +24,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_COMMON_SRC_PGR_TYPES_H_
 #define SRC_COMMON_SRC_PGR_TYPES_H_
-
 #pragma once
 
 
 #ifndef __cplusplus
-#include "postgres.h"
+
+// for bool
+#include <postgres.h>
+
+// For NULL & size_t
+#include <stdlib.h>
 #endif
+
+// For int64_t etc
 #include <stdint.h>
 
 typedef struct  {

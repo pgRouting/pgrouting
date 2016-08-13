@@ -16,26 +16,26 @@ Stable proposed Functions
     from-here
     :ref:`proposedNext`
 
-.. note::
+..
+    begin-warning
+
+.. warning::
 
     This are proposed functions for next mayor release.
 
       - They are not officially in the current release.
-      - They will likely officialy be part of the next mayor release:
+      - They will likely officially be part of the next mayor release:
 
         - The functions make use of ANY-INTEGER and ANY-NUMERICAL
-        - Name might not change.
-        - Signature might not change.
-        - Functionality might not change.
-        - pgTap tests have being done.
-        - Documentation is finished.
+        - Name might not change. (But still can)
+        - Signature might not change. (But still can)
+        - Functionality might not change. (But still can)
+        - pgTap tests have being done. But might need more.
+        - Documentation might need refinement.
 
-- For TSP preprocessing 
+..
+    end-warning
 
-  - :ref:`CostMatrix`
-
-    - :ref:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to calculate a cost matrix.
-    - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
 
 - As part of the :ref:`dijkstra`
 
@@ -50,16 +50,11 @@ Stable proposed Functions
   - :ref:`pgr_withPointsKSP` - K shortest paths with points.
   - :ref:`pgr_withPointsDD` - Driving distance.
 
-- New :ref:`maxFlow`
 
-  - :ref:`pgr_maxFlowPushRelabel` - Maximum flow using push&relabel algorithm.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Maximum flow using Edmonds&Karp algorithm.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Maximum flow using Boykov&Kolmogorov algorithm.
+- A new Section
 
-- New :ref:`maxFlowApplications`
+  - :ref:`CostMatrix`
 
-  - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
-  - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
 
 ..
     to-here
@@ -67,10 +62,10 @@ Stable proposed Functions
 .. toctree::
     :hidden:
 
-    ../src/costMatrix/doc/costMatrix
     ../src/costMatrix/doc/pgr_dijkstraCostMatrix
     ../src/dijkstra/doc/pgr_dijkstraVia
+
     ../src/withPoints/doc/withPoints
-    ../src/max_flow/doc/maxFlow
-    ../src/max_flow/doc/maxFlowApplications
+
+    ../src/costMatrix/doc/costMatrix
 

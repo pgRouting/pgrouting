@@ -12,12 +12,7 @@
 
 #ifndef  SRC_COMMON_SRC_PGR_ASSERT_H_
 #define  SRC_COMMON_SRC_PGR_ASSERT_H_
-
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
+#pragma once
 
 #include <string>
 #include <exception>
@@ -86,11 +81,13 @@
 #define pgassert(expr) \
     ((expr) \
      ? static_cast<void>(0) \
-     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )
+     : throw AssertFailedException( \
+         "AssertFailedException: " __STRING(expr) \
+         " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace() ) )
 #endif
 
 /*! @def pgassertwm(expr, msg)
-  @brief Adds a messsage to the assertion.
+  @brief Adds a message to the assertion.
  
  Example:
  @code
@@ -107,7 +104,9 @@
 #define pgassertwm(expr, msg) \
     ((expr) \
      ? static_cast<void>(0) \
-     : throw AssertFailedException("AssertFailedException: " __STRING(expr) " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace(msg) ) )
+     : throw AssertFailedException( \
+         "AssertFailedException: " __STRING(expr) \
+         " at " __FILE__ ":" __TOSTRING(__LINE__) + get_backtrace(msg) ) )
 #endif
 
 /*! @brief returns the execution path of the trace

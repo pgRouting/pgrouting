@@ -9,15 +9,20 @@
 
 .. _maxFlow:
 
-maxFlow - Maximum Flow Problems
+Maximum Flow
 ===================================
 
-  - :ref:`pgr_maxFlowPushRelabel` - Push&relabel algorithm implementation for maximum flow.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds&Karp algorithm implementation for maximum flow.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov&Kolmogorov algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov algorithm implementation for maximum flow.
 
 The maximum flow through the graph is guaranteed to be the same with all implementations,
 but the actual flow through each edge may vary.
+
+
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 .. toctree::
         :hidden:
@@ -60,23 +65,23 @@ The weighted directed graph, :math:`G(V,E)`, is defined as:
 Given:
 
 
+  - :math:`G(V,E)`
   - :math:`source\_vertex \in V` the source vertex
   - :math:`sink\_vertex \in V` the sink vertex
-  - :math:`G(V,E)`
 
 Then:
 
      :math:`pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}`
 
-     :math:`\boldsymbol{\Phi} = {(id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
+     :math:`\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
 
 where:
 
-  :math:`\boldsymbol{\Phi}` is a new subset of edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
+  :math:`\boldsymbol{\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
 
-  .. math::
-        id_i = i
-        residual\_capacity_i = capacity_i - flow_i
+  - :math:`id_i = i`
+  - :math:`edge\_id = id_i   \text{ in edges_sql}`
+  - :math:`residual\_capacity_i = capacity_i - flow_i`
 
 
 See Also

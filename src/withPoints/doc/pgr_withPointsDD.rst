@@ -18,9 +18,10 @@ Name
 
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
 
-.. note::  This is a proposed function
 
-     - Is not officially in the release.
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -134,8 +135,8 @@ Description of the parameters of the signatures
 ================ ================= =================================================
 Parameter        Type              Description
 ================ ================= =================================================
-**edges_sql**    ``TEXT``          Edges SQL query as decribed above.
-**points_sql**   ``TEXT``          Points SQL query as decribed above.
+**edges_sql**    ``TEXT``          Edges SQL query as described above.
+**points_sql**   ``TEXT``          Points SQL query as described above.
 **start_vid**    ``ANY-INTEGER``   Starting point id
 **distance**     ``ANY-NUMERICAL`` Distance from the start_pid
 **directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.

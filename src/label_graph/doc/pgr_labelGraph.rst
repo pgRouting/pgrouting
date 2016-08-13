@@ -14,25 +14,29 @@
 pgr_labelGraph - Proposed
 ===============================================================================
 
-.. index:: 
-	single: labelGraph(Complete Signature) - Proposed
-
-
 Name
 -------------------------------------------------------------------------------
 
-``pgr_labelGraph`` — Locates and labels sub-networks within a network which are not topologically connected. Must be run after ``pgr_createTopology()``. No use of ``geometry`` column. Only ``id``, ``source`` and  ``target`` columns are required.
+``pgr_labelGraph`` — Locates and labels sub-networks within a network which are not topologically connected.
 
+.. include:: ../../proposed.rst
+    :start-after: begin-warning
+    :end-before: end-warning
 
 
 Synopsis
 -------------------------------------------------------------------------------
+
+Must be run after ``pgr_createTopology()``. No use of ``geometry`` column. Only ``id``, ``source`` and  ``target`` columns are required.
 
 The function returns:
 
   - ``OK`` when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of ``rows_where`` condition, non participating rows will have -1 integer values.
   - ``FAIL`` when the processing cannot be finished due to some error. Notice will be thrown accordingly.
   - ``rows_where condition generated 0 rows`` when passed SQL condition has not been fulfilled by any row. 
+
+.. index:: 
+	single: labelGraph(Complete Signature) - Proposed
 
 .. code-block:: sql
 
