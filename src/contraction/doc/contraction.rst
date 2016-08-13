@@ -435,32 +435,39 @@ Verify visually the updates.
 
 .. rubric:: case 1: Both source and target belong to the contracted graph. 
 
-.. note:: TODO: explain what the query
+Routing from 3 to 11.
+
+Since both 3 and 11 both are in the contracted graph it is not necessary expand the graph.
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case1
    :end-before: -- case2
 
-.. rubric:: case 2: Source belongs to a contracted graph, while target belongs to a vertex subgraph.
+.. rubric:: case 2: Source belongs to the contracted graph, while target belongs to a edge subgraph.
 
-.. note:: TODO: explain what the query
+Routing from 3 to 1.
+
+Since 1 is in the contracted subgraph of edge (3, 5), it is necessary to expand that edge by adding {1, 2} to the vertex set, so the vertex set becomes {3, 5, 6, 9, 11, 15, 17   , 1, 2}
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case2
    :end-before: -- case3
 
-.. rubric:: case 3: Source belongs to a contracted graph, while target belongs to an edge subgraph.
+.. rubric:: case 3: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
 
-.. note:: TODO: explain what the query
+Routing from 7 to 13.
+
+Since 13 is in the contracted subgraph of edge (5, 11), it is necessary to expand that edge by adding {10, 13} to the vertex set, and since 7 is in the contracted subgraph of vertex 5, it is necessary to expand that vertex by adding {7, 8} vertex set, so the vertex set becomes {3, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17}
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case3
    :end-before: -- case4
 
-.. rubric:: case 4: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
+.. rubric:: case 4: Source belongs to the contracted graph, while target belongs to an vertex subgraph.
 
-.. note:: TODO: explain what the query
+Routing from 3 to 7.
 
+Since 7 is in the contracted subgraph of vertex 5, it is necessary to expand that vertex by adding {7, 8} to the vertex set, so the vertex set becomes {3, 5, 6, 9, 11, 15, 17   , 7, 8}.
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case4
@@ -468,14 +475,14 @@ Verify visually the updates.
 
 .. rubric:: case 5: The path contains an edge added by the contraction algorithm.
 
-.. note:: TODO: explain what the query
+In the previous example we can see that the path from vertex 3 to vertex 7 contains an edge which is added by the contraction algorithm.
 
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case5q1
    :end-before: -- case5q2
 
-.. note:: TODO: explain what the query
+This implies that it is a shortcut and should be expanded. We can see that the contracted subgraph of the added edge is {1, 2}. It is necessary to expand the edge by adding {1, 2} to the vertex set, so the vertex set becomes {3, 4, 5, 6, 9, 11, 15, 17   , 1, 2}.
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case5q2
