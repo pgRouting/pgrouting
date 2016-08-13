@@ -365,10 +365,6 @@ get_edges_flow(
     info[0].strict = !ignore_id;
     info[4].strict = false;
 
-    info[3].eType = ANY_NUMERICAL;
-    info[4].eType = ANY_NUMERICAL;
-
-
     void *SPIplan;
     SPIplan = pgr_SPI_prepare(sql);
 
