@@ -415,7 +415,7 @@ sub createTestDB {
         -f "$dbshare/extension/postgis.control") {
         my $myver = '';
         if ($vpgr) {
-            $myver = " PGROUTING VERSION '$vpgr'";
+            $myver = " VERSION '$vpgr'";
         }
         print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
         mysystem("$psql $connopts -c \"create extension pgrouting $myver\" $databaseName");
