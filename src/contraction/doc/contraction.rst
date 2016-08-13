@@ -63,8 +63,13 @@ Currently, there are two implemented operation for contracting a graph
 Dead end contraction
 -------------------------------------------------------------------------------
 
+
 Dead end nodes
 ......................
+
+.. note:: TODO: based on the code explain precisely what is considered a dead end node
+
+.. rubric:: Examples
 
 - The green node ``B`` represents a dead end node
 - The node ``A`` is the only node connecting to ``B``.
@@ -174,6 +179,10 @@ Linear contraction
 
 Linear nodes
 ......................
+
+.. note:: TODO: based on the code explain precisely what is considered a linear node
+
+.. rubric:: Examples
 
 - The green node ``B`` represents a linear node
 - The nodes ``A`` and ``C`` are the only nodes connecting to ``B``.
