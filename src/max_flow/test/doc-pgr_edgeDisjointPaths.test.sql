@@ -34,5 +34,5 @@ SELECT * FROM pgr_edgeDisjointPaths(
     ARRAY[3, 6], ARRAY[4, 5, 10]
 );
 
-\echo -- q9
+\echo -- q6
 ROLLBACK;
