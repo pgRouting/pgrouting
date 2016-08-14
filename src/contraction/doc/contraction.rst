@@ -474,10 +474,12 @@ The results, on the contracted graph match the results as if it was done on the 
 .. rubric:: case 3: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
 
 Inspecting the contracted graph above, vertex 7 belongs to the contracted subgraph of vertex 5 and vertex 13 belongs to the contracted subgraph of edge 21. In the following query:
+
  - expand7 holds the contracted vertices of vertex 5.
  - expand13 holds the contracted vertices of edge 21.
  - vertices_in_graph hold the vertices that belong to the contracted graph, contracted vertices of vertex 5 and contracted vertices of edge 21.
  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+
 Visually, looking at the original graph, going from 7 to 13: 7 -> 8 -> 5 -> 10 -> 13, and in the contracted graph, it is also 7 -> 8 -> 5 -> 10 -> 13.
 The results, on the contracted graph match the results as if it was done on the original graph.
 
@@ -510,11 +512,13 @@ In the previous example we can see that the path from vertex 3 to vertex 7 conta
    :start-after: -- case5q1
    :end-before: -- case5q2
 
-Inspecting the contracted graph above, edge 19 should be expanded. In the following query::
+Inspecting the contracted graph above, edge 19 should be expanded. In the following query:
+
  - first_dijkstra holds the results of the dijkstra query.
  - edges_to_expand holds the edges added by the contraction algorithm and included in the path.
  - vertices_in_graph hold the vertices that belong to the contracted graph, vertices of the contracted solution and the contracted vertices of the edges added by the contraction algorithm and included in the contracted solution.
  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+
 Visually, looking at the original graph, going from 3 to 7: 3 -> 2 -> 5 -> 8 -> 7, and in the contracted graph, it is also 3 -> 2 -> 5 -> 8 -> 7.
 The results, on the contracted graph match the results as if it was done on the original graph.
 
