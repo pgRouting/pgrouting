@@ -444,9 +444,13 @@ Verify visually the updates.
 
 .. rubric:: case 1: Both source and target belong to the contracted graph. 
 
-Routing from 3 to 11.
+Inspecting the contracted graph above, vertex 3 and vertex 11 are part of the contracted graph. In the following query:
+ 
+ - vertices_in_graph hold the vertices that belong to the contracted graph.
+ - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
 
-Since both 3 and 11 both are in the contracted graph it is not necessary expand the graph.
+Visually, looking at the original graph, going from 3 to 11: 3 -> 6 -> 11, and in the contracted graph, it is also 3 -> 6-> 11.
+The results, on the contracted graph match the results as if it was done on the original graph.
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case1
@@ -454,29 +458,44 @@ Since both 3 and 11 both are in the contracted graph it is not necessary expand 
 
 .. rubric:: case 2: Source belongs to the contracted graph, while target belongs to a edge subgraph.
 
-Routing from 3 to 1.
+Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 1 belongs to the contracted subgraph of edge 19. In the following query:
+  - expand1 holds the contracted vertices of the edge where it belongs. (belongs to edge 19)
+  - vertices_in_graph hold the vertices that belong to the contracted graph and also the contracted vertices of edge 19.
+  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
 
-Since 1 is in the contracted subgraph of edge (3, 5), it is necessary to expand that edge by adding {1, 2} to the vertex set, so the vertex set becomes {3, 5, 6, 9, 11, 15, 17   , 1, 2}
+Visually, looking at the original graph, going from 3 to 1: 3 -> 2 -> 1, and in the contracted graph, it is also 3 -> 2 -> 1.
+The results, on the contracted graph match the results as if it was done on the original graph.
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case2
    :end-before: -- case3
 
+
 .. rubric:: case 3: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
 
-Routing from 7 to 13.
-
-Since 13 is in the contracted subgraph of edge (5, 11), it is necessary to expand that edge by adding {10, 13} to the vertex set, and since 7 is in the contracted subgraph of vertex 5, it is necessary to expand that vertex by adding {7, 8} vertex set, so the vertex set becomes {3, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17}
+Inspecting the contracted graph above, vertex 7 belongs to the contracted subgraph of vertex 5 and vertex 13 belongs to the contracted subgraph of edge 21. In the following query:
+ - expand7 holds the contracted vertices of vertex 5.
+ - expand13 holds the contracted vertices of edge 21.
+ - vertices_in_graph hold the vertices that belong to the contracted graph, contracted vertices of vertex 5 and contracted vertices of edge 21.
+ - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+Visually, looking at the original graph, going from 7 to 13: 7 -> 8 -> 5 -> 10 -> 13, and in the contracted graph, it is also 7 -> 8 -> 5 -> 10 -> 13.
+The results, on the contracted graph match the results as if it was done on the original graph.
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case3
    :end-before: -- case4
 
+
 .. rubric:: case 4: Source belongs to the contracted graph, while target belongs to an vertex subgraph.
 
-Routing from 3 to 7.
+Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 7 belongs to the contracted subgraph of vertex 5. In the following query:
+ 
+ - expand7 holds the contracted vertices of vertex where it belongs. (belongs to vertex 5)
+ - vertices_in_graph hold the vertices that belong to the contracted graph and the contracted vertices of vertex 5.
+ - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
 
-Since 7 is in the contracted subgraph of vertex 5, it is necessary to expand that vertex by adding {7, 8} to the vertex set, so the vertex set becomes {3, 5, 6, 9, 11, 15, 17   , 7, 8}.
+Visually, looking at the original graph, going from 3 to 7: 3 -> 2 -> 5 -> 8 -> 7, and in the contracted graph, it is also 3 -> 5 -> 8 -> 7.
+The results, on the contracted graph do not match the results as if it was done on the original graph. This is because the path contains edge 19 which is added by the contraction algorithm.
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case4
@@ -491,7 +510,13 @@ In the previous example we can see that the path from vertex 3 to vertex 7 conta
    :start-after: -- case5q1
    :end-before: -- case5q2
 
-This implies that it is a shortcut and should be expanded. We can see that the contracted subgraph of the added edge is {1, 2}. It is necessary to expand the edge by adding {1, 2} to the vertex set, so the vertex set becomes {3, 4, 5, 6, 9, 11, 15, 17   , 1, 2}.
+Inspecting the contracted graph above, edge 19 should be expanded. In the following query::
+ - first_dijkstra holds the results of the dijkstra query.
+ - edges_to_expand holds the edges added by the contraction algorithm and included in the path.
+ - vertices_in_graph hold the vertices that belong to the contracted graph, vertices of the contracted solution and the contracted vertices of the edges added by the contraction algorithm and included in the contracted solution.
+ - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+Visually, looking at the original graph, going from 3 to 7: 3 -> 2 -> 5 -> 8 -> 7, and in the contracted graph, it is also 3 -> 2 -> 5 -> 8 -> 7.
+The results, on the contracted graph match the results as if it was done on the original graph.
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case5q2
