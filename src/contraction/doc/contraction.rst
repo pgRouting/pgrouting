@@ -18,7 +18,9 @@ Contraction
    :start-after: begin-warning
    :end-before: end-warning
 
-:ref:`pgr_contractGraph`
+
+Introduction
+-------------
 
 Graph Contraction, when talking about big graphs, like the road graphs, or electric networks, can be used to speed up, some graph algorithms.
 
@@ -379,7 +381,7 @@ The following query shows the original data involved in the contraction operatio
    :start-after: -- q2
    :end-before: -- q3
 
-.. note:: TODO write a paragraph comparing the results with the last graph above.
+The above results do not represent the contracted graph. They represent the changes done to the graph after applying the contraction algorithm. We can see that vertices like 6 and 11 do not appear in the contraction results because they were not affected by the contraction algorithm.
 
 .. rubric:: step 1
 
@@ -537,11 +539,15 @@ The results, on the contracted graph match the results as if it was done on the 
    :start-after: -- case5q2
    :end-before: -- end
 
-
-
-References
+See Also
 -------------
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
+* The queries use :ref:`pgr_contractGraph` function and the :ref:`sampledata` network. 
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
 
