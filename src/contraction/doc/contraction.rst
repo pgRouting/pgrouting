@@ -25,17 +25,16 @@ Graph Contraction, when talking about big graphs, like the road graphs, or elect
 The contraction level and contraction operations can become very complex, as the complexity
 of the graphs grows.
 
-For this proposal, we are making our contraction algorithm simple as possible so that
+For this implementation, we are making our contraction algorithm simple as possible so that
 more contraction operations can be added in the future.
 
 We are not aiming with this work to implement all the possible contraction operations
 but to give a framework such that adding a contraction operation can be easily achieved.
 
-For this contraction proposal I am only making 2 operations:
+Currently, this implementation supports two operations:
 
- 1. dead end contraction: vertices have one incoming edge
- 2. linear contraction: vertices have one incoming and one outgoing edge
-   
+ 1. Dead end contraction
+ 2. Linear contraction   
 
 And with the additional characteristics:
 
@@ -47,11 +46,11 @@ And with the additional characteristics:
 The contraction skeleton
 -------------------------------------------------------------------------------
 
-In general we have an initial set up that may involve analizing the graph given as input and setting the
+In general we have an initial set up that may involve analyzing the graph given as input and setting the
 non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
 until while possible, and then move to the next contraction operation.
 Adding a new operation then becomes an "easy" task; more things might be involved, because the
-charachteristics of the graph change each time its contracted, so some interaction between contractions
+characteristics of the graph change each time its contracted, so some interaction between contractions
 has to be implemented also.
 
 Currently, there are two implemented operation for contracting a graph
@@ -67,7 +66,16 @@ Dead end contraction
 Dead end nodes
 ......................
 
-.. note:: TODO: based on the code explain precisely what is considered a dead end node
+The definition of a dead end node is different for a directed and an undirected graph.
+
+In case of a directed graph, a node is considered a dead end node if
+
+ - The number of adjacent vertices is 1.
+
+In case of an undirected graph, a node is considered a dead end node if
+
+ - There are no outgoing edges and has atleast one incoming edge.
+ - There is one incoming and one outgoing edge with the same id.
 
 .. rubric:: Examples
 
@@ -180,7 +188,10 @@ Linear contraction
 Linear nodes
 ......................
 
-.. note:: TODO: based on the code explain precisely what is considered a linear node
+A node is considered a linear node if satisfies the following:
+
+- The number of adjacent vertices are 2.
+- Should have atleast one incoming edge and one outgoing edge.
 
 .. rubric:: Examples
 
