@@ -33,7 +33,7 @@ pgr_contractGraph - Proposed
 Synopsis
 -------------
 
-Contraction reduces the size of the graph by removing some of the vertices and edges(according to a priority) and adds some pseudo edges,such that the number of edges are reduced on a whole.This reduces the time and space complexity of many algorithms that make various operations on the graph.
+Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms.
 
 Characteristics
 -------------------------------------------------------------------------------
@@ -48,9 +48,10 @@ The main Characteristics are:
   
   - The values returned include the added edges and contracted vertices.
 
-  - The returned values are ordered:
+  - The returned values are ordered as follows:
 
-    - `id` ascending
+    - column `id` ascending when type = `v`
+    - column `id` descending when type = `e`
 
 
 
@@ -117,7 +118,7 @@ Column                  Type                   Description
                                                 -  2 = Linear contraction
 **forbidden_vertices**  ``ARRAY[ANY-INTEGER]`` (optional). Identifiers of vertices forbidden from contraction. Default is an empty array.
 **max_cycles**          ``INTEGER``            (optional). Number of times the contraction operations on `contraction_order` will be performed. Default is 1.
-**directed**            ``BOOLEAN``            * When ``true`` Graph is considered `Directed`.
+**directed**            ``BOOLEAN``            * When ``true`` the graph is considered as `Directed`.
                                                * When ``false`` the graph is considered as `Undirected`.
 ======================= ====================== =================================================
 
@@ -125,7 +126,7 @@ Column                  Type                   Description
 Description of the return values
 -------------------------------------------------------------------------------
 
-RETURNS SETOF  ( seq, type, id, contracted_vertices, source, target, cost)
+RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)
 
 The function returns a single row. The columns of the row are:
 
