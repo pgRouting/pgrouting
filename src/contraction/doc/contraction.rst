@@ -35,7 +35,7 @@ Allowing the user to:
   - Forbid contraction on a set of nodes.
   - Decide the order of the contraction algorithms and set the maximum number of times they are to be executed.
 
-note:: UNDER DISCUSSION:  Forbid contraction on a set of edges
+.. note:: UNDER DISCUSSION:  Forbid contraction on a set of edges
 
 Dead end contraction
 -------------------------------------------------------------------------------
