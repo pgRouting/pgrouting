@@ -20,54 +20,40 @@ Contraction
 
 :ref:`pgr_contractGraph`
 
-Graph Contraction, when talking about big graphs, like the road graphs, or electric networks, can be used to speed up, some graph algorithms.
+Introduction
+-------------
 
-The contraction level and contraction operations can become very complex, as the complexity
-of the graphs grows.
+In big graphs, like the road graphs, or electric networks, graph contraction can be used to speed up some graph algorithms. Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms.
 
-For this proposal, we are making our contraction algorithm simple as possible so that
-more contraction operations can be added in the future.
+This implementation gives a flexible framework for adding contraction algorithms in the future, currently, it supports two algorithms:
 
-We are not aiming with this work to implement all the possible contraction operations
-but to give a framework such that adding a contraction operation can be easily achieved.
+ 1. Dead end contraction
+ 2. Linear contraction
 
-For this contraction proposal I am only making 2 operations:
+Allowing the user to:
 
- 1. dead end contraction: vertices have one incoming edge
- 2. linear contraction: vertices have one incoming and one outgoing edge
-   
+  - Forbid contraction on a set of nodes.
+  - Decide the order of the contraction algorithms and set the maximum number of times they are to be executed.
 
-And with the additional characteristics:
-
-  - The user can forbid to contract a particular set of nodes or edges.
-  - The user can decide how many times the cycle can be done.
-  - If possible, the user can decide the order of the operations on a cycle.
-
-
-The contraction skeleton
--------------------------------------------------------------------------------
-
-In general we have an initial set up that may involve analizing the graph given as input and setting the
-non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
-until while possible, and then move to the next contraction operation.
-Adding a new operation then becomes an "easy" task; more things might be involved, because the
-charachteristics of the graph change each time its contracted, so some interaction between contractions
-has to be implemented also.
-
-Currently, there are two implemented operation for contracting a graph
-
-- Dead End contraction
-- Linear contraction
-
+note:: UNDER DISCUSSION:  Forbid contraction on a set of edges
 
 Dead end contraction
 -------------------------------------------------------------------------------
-
+In the algorithm, dead end contraction is represented by 1.
 
 Dead end nodes
 ......................
 
-.. note:: TODO: based on the code explain precisely what is considered a dead end node
+The definition of a dead end node is different for a directed and an undirected graph.
+
+In case of a undirected graph, a node is considered a dead end node if
+
+ - The number of adjacent vertices is 1.
+
+In case of an directed graph, a node is considered a dead end node if
+
+ - There are no outgoing edges and has at least one incoming edge.
+ - There is one incoming and one outgoing edge with the same identifier.
 
 .. rubric:: Examples
 
@@ -99,6 +85,7 @@ For example from the following graph:
 
 - Node ``A`` is connected to the rest of the graph by an unlimited number of edges.
 - Node ``B`` is connected to the rest of the graph with one incoming edge.
+- Node ``B`` is the only node connecting to ``C``.
 - The green node ``C`` represents a `Dead End` node
 
 .. graphviz::
@@ -118,7 +105,7 @@ For example from the following graph:
     }
 
 
-After contracting ``B``, node ``C`` is now a `Dead End` and is contracted:
+After contracting ``C``, node ``B`` is now a `Dead End` node and is contracted:
 
 .. graphviz::
 
@@ -155,7 +142,7 @@ Nodes ``B`` and ``C`` belong to node ``A``.
 Not Dead End nodes
 ......................
 
-In the next graph ``B`` is not a `dead end` node.
+In this graph ``B`` is not a `dead end` node.
 
 .. graphviz::
 
@@ -170,17 +157,17 @@ In the next graph ``B`` is not a `dead end` node.
         B -> A;
     }
 
-
-
-
-
 Linear contraction
 -------------------------------------------------------------------------------
+In the algorithm, linear contraction is represented by 2.
 
 Linear nodes
 ......................
 
-.. note:: TODO: based on the code explain precisely what is considered a linear node
+A node is considered a linear node if satisfies the following:
+
+- The number of adjacent vertices are 2.
+- Should have at least one incoming edge and one outgoing edge.
 
 .. rubric:: Examples
 
@@ -279,11 +266,10 @@ Node ``C`` is `linear node` and gets contracted.
 
 Nodes ``B`` and ``C`` belong to edge connecting ``A`` and ``D`` which is represented by red color.
 
-
 Not Linear nodes
 ......................
 
-In the next graph ``B`` is not a `linear` node.
+In this graph ``B`` is not a `linear` node.
 
 .. graphviz::
 
@@ -303,13 +289,12 @@ In the next graph ``B`` is not a `linear` node.
     }
 
 
-The cyle
+The cycle
 ---------
 
-Contracting a graph, can be done with more than one operation.
-The order of the operations affect the resulting contracted graph, and after applying one operation, new vertices can be contracted in another operation.
+Contracting a graph, can be done with more than one operation. The order of the operations affect the resulting contracted graph, after applying one operation, the set of vertices that can be contracted by another operation changes.
 
-This implementation, cycles ``max_cycles`` times  through ``operations_order`` .
+This implementation, cycles ``max_cycles`` times through ``operations_order`` .
 
 .. code-block:: none
 
@@ -324,10 +309,10 @@ This implementation, cycles ``max_cycles`` times  through ``operations_order`` .
 Contracting Sample Data
 -------------------------------------------------------------
 
-In this section, building an using a contracted graph will be shown by example.
+In this section, building and using a contracted graph will be shown by example.
 
 - The :ref:`sampledata` for an undirected graph is used
-- a dead end operation first followed by a linear linear operation.
+- a dead end operation first followed by a linear operation.
 
 The original graph:
 
@@ -342,13 +327,13 @@ Doing a linear contraction operation to the graph above
 .. image:: images/undirected_sampledata_c.png
 
 
-There are five cases, in these documentation, which arise when calculating the shortest path between a given source and target.
-In this examples, pgr_dijkstra is used.
+There are five cases, in this documentation, which arise when calculating the shortest path between a given source and target.
+In this examples, ``pgr_dijkstra`` is used.
 
 - **Case 1**: Both source and target belong to the contracted graph.
-- **Case 2**: Source belongs to a contracted graph, while target belongs to a vertex subgraph.
-- **Case 3**: Source belongs to a contracted graph, while target belongs to an edge subgraph.
-- **Case 4**: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
+- **Case 2**: Source belongs to a contracted graph, while target belongs to a edge subgraph.
+- **Case 3**: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
+- **Case 4**: Source belongs to a contracted graph, while target belongs to an vertex subgraph.
 - **Case 5**: The path contains a new edge added by the contraction algorithm.
 
 Construction of the graph in the database
@@ -368,7 +353,7 @@ The following query shows the original data involved in the contraction operatio
    :start-after: -- q2
    :end-before: -- q3
 
-.. note:: TODO write a paragraph comparing the results with the last graph above.
+The above results do not represent the contracted graph. They represent the changes done to the graph after applying the contraction algorithm. We can see that vertices like 6 and 11 do not appear in the contraction results because they were not affected by the contraction algorithm.
 
 .. rubric:: step 1
 
@@ -388,7 +373,6 @@ Using the following queries:
    :start-after: -- q1
    :end-before: -- q2
 
-
 .. rubric:: step 2
 
 For simplicity, in this documentation, store the results of the call to pgr_contractGraph in a temporary table
@@ -396,7 +380,6 @@ For simplicity, in this documentation, store the results of the call to pgr_cont
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q3
    :end-before: -- q4
-
 
 .. rubric:: step 3
 
@@ -449,7 +432,7 @@ Inspecting the contracted graph above, vertex 3 and vertex 11 are part of the co
  - vertices_in_graph hold the vertices that belong to the contracted graph.
  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
 
-Visually, looking at the original graph, going from 3 to 11: 3 -> 6 -> 11, and in the contracted graph, it is also 3 -> 6-> 11.
+Visually, looking at the original graph, going from 3 to 11: 3 -> 6 -> 11, and in the contracted graph, it is also 3 -> 6 -> 11.
 The results, on the contracted graph match the results as if it was done on the original graph.
 
 .. literalinclude:: doc-contraction.queries
@@ -459,7 +442,7 @@ The results, on the contracted graph match the results as if it was done on the 
 .. rubric:: case 2: Source belongs to the contracted graph, while target belongs to a edge subgraph.
 
 Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 1 belongs to the contracted subgraph of edge 19. In the following query:
-  - expand1 holds the contracted vertices of the edge where it belongs. (belongs to edge 19)
+  - expand1 holds the contracted vertices of the edge where vertex 1 belongs. (belongs to edge 19).
   - vertices_in_graph hold the vertices that belong to the contracted graph and also the contracted vertices of edge 19.
   - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
 
@@ -475,8 +458,8 @@ The results, on the contracted graph match the results as if it was done on the 
 
 Inspecting the contracted graph above, vertex 7 belongs to the contracted subgraph of vertex 5 and vertex 13 belongs to the contracted subgraph of edge 21. In the following query:
 
- - expand7 holds the contracted vertices of vertex 5.
- - expand13 holds the contracted vertices of edge 21.
+ - expand7 holds the contracted vertices of vertex where vertex 7 belongs. (belongs to vertex 5)
+ - expand13 holds the contracted vertices of edge where vertex 13 belongs. (belongs to edge 21)
  - vertices_in_graph hold the vertices that belong to the contracted graph, contracted vertices of vertex 5 and contracted vertices of edge 21.
  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
 
@@ -492,11 +475,11 @@ The results, on the contracted graph match the results as if it was done on the 
 
 Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 7 belongs to the contracted subgraph of vertex 5. In the following query:
  
- - expand7 holds the contracted vertices of vertex where it belongs. (belongs to vertex 5)
+ - expand7 holds the contracted vertices of vertex where vertex 7 belongs. (belongs to vertex 5)
  - vertices_in_graph hold the vertices that belong to the contracted graph and the contracted vertices of vertex 5.
  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
 
-Visually, looking at the original graph, going from 3 to 7: 3 -> 2 -> 5 -> 8 -> 7, and in the contracted graph, it is also 3 -> 5 -> 8 -> 7.
+Visually, looking at the original graph, going from 3 to 7: 3 -> 2 -> 5 -> 8 -> 7, but in the contracted graph, it is 3 -> 5 -> 8 -> 7.
 The results, on the contracted graph do not match the results as if it was done on the original graph. This is because the path contains edge 19 which is added by the contraction algorithm.
 
 .. literalinclude:: doc-contraction.queries
@@ -506,7 +489,6 @@ The results, on the contracted graph do not match the results as if it was done 
 .. rubric:: case 5: The path contains an edge added by the contraction algorithm.
 
 In the previous example we can see that the path from vertex 3 to vertex 7 contains an edge which is added by the contraction algorithm.
-
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- case5q1
@@ -526,11 +508,15 @@ The results, on the contracted graph match the results as if it was done on the 
    :start-after: -- case5q2
    :end-before: -- end
 
-
-
-References
+See Also
 -------------
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
+* The queries use :ref:`pgr_contractGraph` function and the :ref:`sampledata` network. 
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
 
