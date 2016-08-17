@@ -133,16 +133,16 @@ RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_maximumCardinalityMatching(
     &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;
 );
- id | edge_id | source | target 
-----+---------+--------+--------
-  1 |       1 |      1 |      2
-  2 |       3 |      4 |      3
-  3 |       9 |      6 |      9
-  4 |       6 |      7 |      8
-  5 |      14 |     10 |     13
-  6 |      13 |     11 |     12
-  7 |      17 |     14 |     15
-  8 |      18 |     16 |     17
+ seq | edge_id | source | target 
+-----+---------+--------+--------
+   1 |       1 |      1 |      2
+   2 |       3 |      4 |      3
+   3 |       9 |      6 |      9
+   4 |       6 |      7 |      8
+   5 |      14 |     10 |     13
+   6 |      13 |     11 |     12
+   7 |      17 |     14 |     15
+   8 |      18 |     16 |     17
 (8 rows)
 </pre></div>
 </div>
@@ -166,16 +166,16 @@ RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
     &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
     directed := false
 );
- id | edge_id | source | target 
-----+---------+--------+--------
-  1 |       1 |      1 |      2
-  2 |       3 |      3 |      4
-  3 |       9 |      6 |      9
-  4 |       6 |      7 |      8
-  5 |      14 |     10 |     13
-  6 |      13 |     11 |     12
-  7 |      17 |     14 |     15
-  8 |      18 |     16 |     17
+ seq | edge_id | source | target 
+-----+---------+--------+--------
+   1 |       1 |      1 |      2
+   2 |       3 |      3 |      4
+   3 |       9 |      6 |      9
+   4 |       6 |      7 |      8
+   5 |      14 |     10 |     13
+   6 |      13 |     11 |     12
+   7 |      17 |     14 |     15
+   8 |      18 |     16 |     17
 (8 rows)
 </pre></div>
 </div>
@@ -280,7 +280,37 @@ RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
 </div>
 <div class="section" id="description-of-the-result">
 <h3>Description of the Result<a class="headerlink" href="#description-of-the-result" title="Permalink to this headline">¶</a></h3>
-<p>TODO</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="21%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INT</span></tt></td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>edge_id</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the edge in the original query(edges_sql).</td>
+</tr>
+<tr class="row-even"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="see-also">
@@ -315,7 +345,7 @@ RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 12, 2016.
+      Last updated on Aug 17, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

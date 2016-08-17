@@ -74,46 +74,45 @@
 </ul>
 </div>
 <p><a class="reference internal" href="pgr_contractGraph.html#pgr-contractgraph"><em>pgr_contractGraph - Proposed</em></a></p>
-<p>Graph Contraction, when talking about big graphs, like the road graphs, or electric networks, can be used to speed up, some graph algorithms.</p>
-<p>The contraction level and contraction operations can become very complex, as the complexity
-of the graphs grows.</p>
-<p>For this proposal, we are making our contraction algorithm simple as possible so that
-more contraction operations can be added in the future.</p>
-<p>We are not aiming with this work to implement all the possible contraction operations
-but to give a framework such that adding a contraction operation can be easily achieved.</p>
-<p>For this contraction proposal I am only making 2 operations:</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In big graphs, like the road graphs, or electric networks, graph contraction can be used to speed up some graph algorithms. Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms.</p>
+<p>This implementation gives a flexible framework for adding contraction algorithms in the future, currently, it supports two algorithms:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>dead end contraction: vertices have one incoming edge</li>
-<li>linear contraction: vertices have one incoming and one outgoing edge</li>
+<li>Dead end contraction</li>
+<li>Linear contraction</li>
 </ol>
 </div></blockquote>
-<p>And with the additional characteristics:</p>
+<p>Allowing the user to:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The user can forbid to contract a particular set of nodes or edges.</li>
-<li>The user can decide how many times the cycle can be done.</li>
-<li>If possible, the user can decide the order of the operations on a cycle.</li>
+<li>Forbid contraction on a set of nodes.</li>
+<li>Decide the order of the contraction algorithms and set the maximum number of times they are to be executed.</li>
 </ul>
 </div></blockquote>
-<div class="section" id="the-contraction-skeleton">
-<h2>The contraction skeleton<a class="headerlink" href="#the-contraction-skeleton" title="Permalink to this headline">¶</a></h2>
-<p>In general we have an initial set up that may involve analizing the graph given as input and setting the
-non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
-until while possible, and then move to the next contraction operation.
-Adding a new operation then becomes an &#8220;easy&#8221; task; more things might be involved, because the
-charachteristics of the graph change each time its contracted, so some interaction between contractions
-has to be implemented also.</p>
-<p>Currently, there are two implemented operation for contracting a graph</p>
-<ul class="simple">
-<li>Dead End contraction</li>
-<li>Linear contraction</li>
-</ul>
+<p>note:: UNDER DISCUSSION:  Forbid contraction on a set of edges</p>
 </div>
 <div class="section" id="dead-end-contraction">
 <h2>Dead end contraction<a class="headerlink" href="#dead-end-contraction" title="Permalink to this headline">¶</a></h2>
+<p>In the algorithm, dead end contraction is represented by 1.</p>
 <div class="section" id="dead-end-nodes">
 <h3>Dead end nodes<a class="headerlink" href="#dead-end-nodes" title="Permalink to this headline">¶</a></h3>
+<p>The definition of a dead end node is different for a directed and an undirected graph.</p>
+<p>In case of a undirected graph, a node is considered a dead end node if</p>
+<blockquote>
+<div><ul class="simple">
+<li>The number of adjacent vertices is 1.</li>
+</ul>
+</div></blockquote>
+<p>In case of an directed graph, a node is considered a dead end node if</p>
+<blockquote>
+<div><ul class="simple">
+<li>There are no outgoing edges and has at least one incoming edge.</li>
+<li>There is one incoming and one outgoing edge with the same identifier.</li>
+</ul>
+</div></blockquote>
+<p class="rubric">Examples</p>
 <ul class="simple">
 <li>The green node <tt class="docutils literal"><span class="pre">B</span></tt> represents a dead end node</li>
 <li>The node <tt class="docutils literal"><span class="pre">A</span></tt> is the only node connecting to <tt class="docutils literal"><span class="pre">B</span></tt>.</li>
@@ -141,6 +140,7 @@ For example from the following graph:</p>
 <ul class="simple">
 <li>Node <tt class="docutils literal"><span class="pre">A</span></tt> is connected to the rest of the graph by an unlimited number of edges.</li>
 <li>Node <tt class="docutils literal"><span class="pre">B</span></tt> is connected to the rest of the graph with one incoming edge.</li>
+<li>Node <tt class="docutils literal"><span class="pre">B</span></tt> is the only node connecting to <tt class="docutils literal"><span class="pre">C</span></tt>.</li>
 <li>The green node <tt class="docutils literal"><span class="pre">C</span></tt> represents a <cite>Dead End</cite> node</li>
 </ul>
 <p class="graphviz">
@@ -158,7 +158,7 @@ For example from the following graph:</p>
     B -&gt; C;
 }" />
 </p>
-<p>After contracting <tt class="docutils literal"><span class="pre">B</span></tt>, node <tt class="docutils literal"><span class="pre">C</span></tt> is now a <cite>Dead End</cite> and is contracted:</p>
+<p>After contracting <tt class="docutils literal"><span class="pre">C</span></tt>, node <tt class="docutils literal"><span class="pre">B</span></tt> is now a <cite>Dead End</cite> node and is contracted:</p>
 <p class="graphviz">
 <img src="../../../_images/graphviz-c1fa41046ff4a91086fcef9533739ae0c21423e8.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
@@ -188,7 +188,7 @@ For example from the following graph:</p>
 </div>
 <div class="section" id="not-dead-end-nodes">
 <h3>Not Dead End nodes<a class="headerlink" href="#not-dead-end-nodes" title="Permalink to this headline">¶</a></h3>
-<p>In the next graph <tt class="docutils literal"><span class="pre">B</span></tt> is not a <cite>dead end</cite> node.</p>
+<p>In this graph <tt class="docutils literal"><span class="pre">B</span></tt> is not a <cite>dead end</cite> node.</p>
 <p class="graphviz">
 <img src="../../../_images/graphviz-34238e76a3c7511d025e441305a318f778738bfe.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
@@ -205,8 +205,15 @@ For example from the following graph:</p>
 </div>
 <div class="section" id="linear-contraction">
 <h2>Linear contraction<a class="headerlink" href="#linear-contraction" title="Permalink to this headline">¶</a></h2>
+<p>In the algorithm, linear contraction is represented by 2.</p>
 <div class="section" id="linear-nodes">
 <h3>Linear nodes<a class="headerlink" href="#linear-nodes" title="Permalink to this headline">¶</a></h3>
+<p>A node is considered a linear node if satisfies the following:</p>
+<ul class="simple">
+<li>The number of adjacent vertices are 2.</li>
+<li>Should have at least one incoming edge and one outgoing edge.</li>
+</ul>
+<p class="rubric">Examples</p>
 <ul class="simple">
 <li>The green node <tt class="docutils literal"><span class="pre">B</span></tt> represents a linear node</li>
 <li>The nodes <tt class="docutils literal"><span class="pre">A</span></tt> and <tt class="docutils literal"><span class="pre">C</span></tt> are the only nodes connecting to <tt class="docutils literal"><span class="pre">B</span></tt>.</li>
@@ -299,7 +306,7 @@ For example from the following graph:</p>
 </div>
 <div class="section" id="not-linear-nodes">
 <h3>Not Linear nodes<a class="headerlink" href="#not-linear-nodes" title="Permalink to this headline">¶</a></h3>
-<p>In the next graph <tt class="docutils literal"><span class="pre">B</span></tt> is not a <cite>linear</cite> node.</p>
+<p>In this graph <tt class="docutils literal"><span class="pre">B</span></tt> is not a <cite>linear</cite> node.</p>
 <p class="graphviz">
 <img src="../../../_images/graphviz-033a3e1eb36d086bdf7edd1d02d4a6687beb9c8d.png" alt="digraph G {
     A [style=filled;color=deepskyblue];
@@ -318,11 +325,10 @@ For example from the following graph:</p>
 </p>
 </div>
 </div>
-<div class="section" id="the-cyle">
-<h2>The cyle<a class="headerlink" href="#the-cyle" title="Permalink to this headline">¶</a></h2>
-<p>Contracting a graph, can be done with more than one operation.
-The order of the operations affect the resulting contracted graph, and after applying one operation, new vertices can be contracted in another operation.</p>
-<p>This implementation, cycles <tt class="docutils literal"><span class="pre">max_cycles</span></tt> times  through <tt class="docutils literal"><span class="pre">operations_order</span></tt> .</p>
+<div class="section" id="the-cycle">
+<h2>The cycle<a class="headerlink" href="#the-cycle" title="Permalink to this headline">¶</a></h2>
+<p>Contracting a graph, can be done with more than one operation. The order of the operations affect the resulting contracted graph, after applying one operation, the set of vertices that can be contracted by another operation changes.</p>
+<p>This implementation, cycles <tt class="docutils literal"><span class="pre">max_cycles</span></tt> times through <tt class="docutils literal"><span class="pre">operations_order</span></tt> .</p>
 <div class="highlight-none"><div class="highlight"><pre>&lt;input&gt;
 do max_cycles times {
     for (operation in operations_order)
@@ -334,10 +340,10 @@ do max_cycles times {
 </div>
 <div class="section" id="contracting-sample-data">
 <h2>Contracting Sample Data<a class="headerlink" href="#contracting-sample-data" title="Permalink to this headline">¶</a></h2>
-<p>In this section, building an using a contracted graph will be shown by example.</p>
+<p>In this section, building and using a contracted graph will be shown by example.</p>
 <ul class="simple">
 <li>The <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> for an undirected graph is used</li>
-<li>a dead end operation first followed by a linear linear operation.</li>
+<li>a dead end operation first followed by a linear operation.</li>
 </ul>
 <p>The original graph:</p>
 <img alt="../../../_images/undirected_sampledata_a.png" src="../../../_images/undirected_sampledata_a.png" />
@@ -345,13 +351,13 @@ do max_cycles times {
 <img alt="../../../_images/undirected_sampledata_b.png" src="../../../_images/undirected_sampledata_b.png" />
 <p>Doing a linear contraction operation to the graph above</p>
 <img alt="../../../_images/undirected_sampledata_c.png" src="../../../_images/undirected_sampledata_c.png" />
-<p>There are five cases, in these documentation, which arise when calculating the shortest path between a given source and target.
-In this examples, pgr_dijkstra is used.</p>
+<p>There are five cases, in this documentation, which arise when calculating the shortest path between a given source and target.
+In this examples, <tt class="docutils literal"><span class="pre">pgr_dijkstra</span></tt> is used.</p>
 <ul class="simple">
 <li><strong>Case 1</strong>: Both source and target belong to the contracted graph.</li>
-<li><strong>Case 2</strong>: Source belongs to a contracted graph, while target belongs to a vertex subgraph.</li>
-<li><strong>Case 3</strong>: Source belongs to a contracted graph, while target belongs to an edge subgraph.</li>
-<li><strong>Case 4</strong>: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.</li>
+<li><strong>Case 2</strong>: Source belongs to a contracted graph, while target belongs to a edge subgraph.</li>
+<li><strong>Case 3</strong>: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.</li>
+<li><strong>Case 4</strong>: Source belongs to a contracted graph, while target belongs to an vertex subgraph.</li>
 <li><strong>Case 5</strong>: The path contains a new edge added by the contraction algorithm.</li>
 </ul>
 <div class="section" id="construction-of-the-graph-in-the-database">
@@ -398,10 +404,7 @@ In this examples, pgr_dijkstra is used.</p>
 (7 rows)
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">TODO write a paragraph comparing the results with the last graph above.</p>
-</div>
+<p>The above results do not represent the contracted graph. They represent the changes done to the graph after applying the contraction algorithm. We can see that vertices like 6 and 11 do not appear in the contraction results because they were not affected by the contraction algorithm.</p>
 <p class="rubric">step 1</p>
 <p>Adding extra columns to the <tt class="docutils literal"><span class="pre">edge_table</span></tt> and <tt class="docutils literal"><span class="pre">edge_table_vertices_pgr</span></tt> tables:</p>
 <table border="1" class="docutils">
@@ -559,10 +562,15 @@ ORDER BY id;
 </pre></div>
 </div>
 <p class="rubric">case 1: Both source and target belong to the contracted graph.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">TODO: explain what the query</p>
-</div>
+<p>Inspecting the contracted graph above, vertex 3 and vertex 11 are part of the contracted graph. In the following query:</p>
+<blockquote>
+<div><ul class="simple">
+<li>vertices_in_graph hold the vertices that belong to the contracted graph.</li>
+<li>when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.</li>
+</ul>
+</div></blockquote>
+<p>Visually, looking at the original graph, going from 3 to 11: 3 -&gt; 6 -&gt; 11, and in the contracted graph, it is also 3 -&gt; 6 -&gt; 11.
+The results, on the contracted graph match the results as if it was done on the original graph.</p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     $$
     WITH
@@ -582,11 +590,18 @@ ORDER BY id;
 (3 rows)
 </pre></div>
 </div>
-<p class="rubric">case 2: Source belongs to a contracted graph, while target belongs to a vertex subgraph.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">TODO: explain what the query</p>
-</div>
+<p class="rubric">case 2: Source belongs to the contracted graph, while target belongs to a edge subgraph.</p>
+<dl class="docutils">
+<dt>Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 1 belongs to the contracted subgraph of edge 19. In the following query:</dt>
+<dd><ul class="first last simple">
+<li>expand1 holds the contracted vertices of the edge where vertex 1 belongs. (belongs to edge 19).</li>
+<li>vertices_in_graph hold the vertices that belong to the contracted graph and also the contracted vertices of edge 19.</li>
+<li>when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.</li>
+</ul>
+</dd>
+</dl>
+<p>Visually, looking at the original graph, going from 3 to 1: 3 -&gt; 2 -&gt; 1, and in the contracted graph, it is also 3 -&gt; 2 -&gt; 1.
+The results, on the contracted graph match the results as if it was done on the original graph.</p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     $$
     WITH
@@ -611,11 +626,18 @@ ORDER BY id;
 (3 rows)
 </pre></div>
 </div>
-<p class="rubric">case 3: Source belongs to a contracted graph, while target belongs to an edge subgraph.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">TODO: explain what the query</p>
-</div>
+<p class="rubric">case 3: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.</p>
+<p>Inspecting the contracted graph above, vertex 7 belongs to the contracted subgraph of vertex 5 and vertex 13 belongs to the contracted subgraph of edge 21. In the following query:</p>
+<blockquote>
+<div><ul class="simple">
+<li>expand7 holds the contracted vertices of vertex where vertex 7 belongs. (belongs to vertex 5)</li>
+<li>expand13 holds the contracted vertices of edge where vertex 13 belongs. (belongs to edge 21)</li>
+<li>vertices_in_graph hold the vertices that belong to the contracted graph, contracted vertices of vertex 5 and contracted vertices of edge 21.</li>
+<li>when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.</li>
+</ul>
+</div></blockquote>
+<p>Visually, looking at the original graph, going from 7 to 13: 7 -&gt; 8 -&gt; 5 -&gt; 10 -&gt; 13, and in the contracted graph, it is also 7 -&gt; 8 -&gt; 5 -&gt; 10 -&gt; 13.
+The results, on the contracted graph match the results as if it was done on the original graph.</p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra(
     $$
     WITH
@@ -651,11 +673,17 @@ ORDER BY id;
 (5 rows)
 </pre></div>
 </div>
-<p class="rubric">case 4: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">TODO: explain what the query</p>
-</div>
+<p class="rubric">case 4: Source belongs to the contracted graph, while target belongs to an vertex subgraph.</p>
+<p>Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 7 belongs to the contracted subgraph of vertex 5. In the following query:</p>
+<blockquote>
+<div><ul class="simple">
+<li>expand7 holds the contracted vertices of vertex where vertex 7 belongs. (belongs to vertex 5)</li>
+<li>vertices_in_graph hold the vertices that belong to the contracted graph and the contracted vertices of vertex 5.</li>
+<li>when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.</li>
+</ul>
+</div></blockquote>
+<p>Visually, looking at the original graph, going from 3 to 7: 3 -&gt; 2 -&gt; 5 -&gt; 8 -&gt; 7, but in the contracted graph, it is 3 -&gt; 5 -&gt; 8 -&gt; 7.
+The results, on the contracted graph do not match the results as if it was done on the original graph. This is because the path contains edge 19 which is added by the contraction algorithm.</p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM  pgr_dijkstra(
     $$
     WITH
@@ -682,10 +710,7 @@ ORDER BY id;
 </pre></div>
 </div>
 <p class="rubric">case 5: The path contains an edge added by the contraction algorithm.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">TODO: explain what the query</p>
-</div>
+<p>In the previous example we can see that the path from vertex 3 to vertex 7 contains an edge which is added by the contraction algorithm.</p>
 <div class="highlight-python"><div class="highlight"><pre>WITH
 first_dijkstra AS (
     SELECT * FROM  pgr_dijkstra(
@@ -714,10 +739,17 @@ SELECT edge, contracted_vertices
 (1 row)
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">TODO: explain what the query</p>
-</div>
+<p>Inspecting the contracted graph above, edge 19 should be expanded. In the following query:</p>
+<blockquote>
+<div><ul class="simple">
+<li>first_dijkstra holds the results of the dijkstra query.</li>
+<li>edges_to_expand holds the edges added by the contraction algorithm and included in the path.</li>
+<li>vertices_in_graph hold the vertices that belong to the contracted graph, vertices of the contracted solution and the contracted vertices of the edges added by the contraction algorithm and included in the contracted solution.</li>
+<li>when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.</li>
+</ul>
+</div></blockquote>
+<p>Visually, looking at the original graph, going from 3 to 7: 3 -&gt; 2 -&gt; 5 -&gt; 8 -&gt; 7, and in the contracted graph, it is also 3 -&gt; 2 -&gt; 5 -&gt; 8 -&gt; 7.
+The results, on the contracted graph match the results as if it was done on the original graph.</p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_dijkstra($$
     WITH
     -- This returns the results from case 2
@@ -773,11 +805,17 @@ SELECT edge, contracted_vertices
 </div>
 </div>
 </div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf">http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf</a></li>
 <li><a class="reference external" href="http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf">http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf</a></li>
+<li>The queries use <a class="reference internal" href="pgr_contractGraph.html#pgr-contractgraph"><em>pgr_contractGraph - Proposed</em></a> function and the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
 </div>
@@ -798,7 +836,7 @@ SELECT edge, contracted_vertices
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 12, 2016.
+      Last updated on Aug 17, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

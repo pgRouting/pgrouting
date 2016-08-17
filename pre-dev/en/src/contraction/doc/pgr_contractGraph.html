@@ -80,7 +80,7 @@
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<p>Contraction reduces the size of the graph by removing some of the vertices and edges(according to a priority) and adds some pseudo edges,such that the number of edges are reduced on a whole.This reduces the time and space complexity of many algorithms that make various operations on the graph.</p>
+<p>Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms.</p>
 </div>
 <div class="section" id="characteristics">
 <h2>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
@@ -94,8 +94,9 @@
 </ul>
 </li>
 <li>The values returned include the added edges and contracted vertices.</li>
-<li>The returned values are ordered:<ul>
-<li><cite>id</cite> ascending</li>
+<li>The returned values are ordered as follows:<ul>
+<li>column <cite>id</cite> ascending when type = <cite>v</cite></li>
+<li>column <cite>id</cite> descending when type = <cite>e</cite></li>
 </ul>
 </li>
 </ul>
@@ -293,7 +294,7 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 <tr class="row-even"><td><strong>directed</strong></td>
 <td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
 <td><ul class="first last simple">
-<li>When <tt class="docutils literal"><span class="pre">true</span></tt> Graph is considered <cite>Directed</cite>.</li>
+<li>When <tt class="docutils literal"><span class="pre">true</span></tt> the graph is considered as <cite>Directed</cite>.</li>
 <li>When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as <cite>Undirected</cite>.</li>
 </ul>
 </td>
@@ -303,7 +304,7 @@ ARRAY[1, 2], forbidden_vertices:=ARRAY[2]);
 </div>
 <div class="section" id="description-of-the-return-values">
 <h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
-<p>RETURNS SETOF  ( seq, type, id, contracted_vertices, source, target, cost)</p>
+<p>RETURNS SETOF  (seq, type, id, contracted_vertices, source, target, cost)</p>
 <p>The function returns a single row. The columns of the row are:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -439,7 +440,7 @@ ARRAY[2]);
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 12, 2016.
+      Last updated on Aug 17, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

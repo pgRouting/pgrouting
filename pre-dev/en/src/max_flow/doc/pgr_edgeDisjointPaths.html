@@ -278,10 +278,6 @@ RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
    7 |        2 |         6 |       4 |    9 |   16
    8 |        3 |         6 |       4 |    4 |   -1
 (8 rows)
-
--- q9
-ROLLBACK;
-ROLLBACK
 </pre></div>
 </div>
 </div>
@@ -394,6 +390,45 @@ ROLLBACK
 </div>
 <div class="section" id="description-of-the-return-values">
 <h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INT</span></tt></td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>path_seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INT</span></tt></td>
+<td>Relative position in the path. Has value <strong>1</strong> for the beginning of a path.</td>
+</tr>
+<tr class="row-even"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the starting vertex. Used when multiple starting vertices are in the query.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the ending vertex. Used when multiple ending vertices are in the query.</td>
+</tr>
+<tr class="row-even"><td><strong>node</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the node in the path from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">end_vid</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><strong>edge</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the edge used to go from <tt class="docutils literal"><span class="pre">node</span></tt> to the next node in the path sequence. <tt class="docutils literal"><span class="pre">-1</span></tt> for the last node of the path.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
@@ -419,7 +454,7 @@ ROLLBACK
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 12, 2016.
+      Last updated on Aug 17, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
