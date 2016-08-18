@@ -205,8 +205,18 @@ Column            Type                   Description
 Description of the return values
 ........................................................
 
-..
-   TODO
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**seq**        ``INT``    Sequential value starting from **1**.
+**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
+**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vertices are in the query.
+**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
+**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
+============== ========== =================================================
+
+
 
 .. rubric:: Indices and tables
 
