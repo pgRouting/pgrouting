@@ -21,7 +21,7 @@ Stable proposed Functions
 
 .. warning::
 
-    This are proposed functions for next mayor release.
+    These are proposed functions for next mayor release.
 
       - They are not officially in the current release.
       - They will likely officially be part of the next mayor release:
