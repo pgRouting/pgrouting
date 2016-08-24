@@ -47,21 +47,9 @@ The *develop* branch reflects the 2.3.0-dev
 	</tr>
 </table>
 
-Postgis 2.2 on Travis and AppVeyor
-Postgis 2.3.0dev on Jenkins
-
-Postgres matrix of tests:
-
- postgreSQL   | PostGis | Travis | AppVeyor | Jenkins
---- |---- | --- | ---
-    | Precise | vs2013 | winnie 32 & 64 bits
- 9.1 | yes | no | no 
- 9.2 | yes | no | no
- 9.3 | yes | no | no
- 9.4 | yes | yes | yes
- 9.5 | yes | no | yes
- 9.6 | no  | no | yes
-
+Travis: Postgis 2.2 for  Postgres 9.1, 9.2, 9.3, 9.4, 9.5
+Jenkins: Postgis 2.3.0dev Postgres 9.4, 9.5, 9.6
+appveyor: vs1013 Postgis 2.2 Postgres 9.4
 
 
 
