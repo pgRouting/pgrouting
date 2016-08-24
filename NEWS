@@ -36,6 +36,20 @@ Changes for 2.3.0
   * pgr_pointsToDMatrix
   * pgr_textToPoints
 
+Changes for 2.2.4
+-------------------------------------------------------------------------------
+
+- Bogus uses of extern "C"
+- Build error on Fedora 24 + GCC 6.0
+- Regression error pgr_nodeNetwork
+
+
+
+Changes for 2.2.3
+-------------------------------------------------------------------------------
+
+- Fixed  compatibility issues with PostgreSQL 9.6.
+
 Changes for 2.2.2
 -------------------------------------------------------------------------------
 
