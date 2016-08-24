@@ -47,9 +47,9 @@ The *develop* branch reflects the 2.3.0-dev
 	</tr>
 </table>
 
-Travis: Postgis 2.2 for  Postgres 9.1, 9.2, 9.3, 9.4, 9.5
-Jenkins: Postgis 2.3.0dev Postgres 9.4, 9.5, 9.6
-appveyor: vs1013 Postgis 2.2 Postgres 9.4
+- travis: Postgis 2.2 for  Postgres 9.1, 9.2, 9.3, 9.4, 9.5
+- jenkins: on 32 & 64 bits for Postgis 2.3.0dev and Postgres 9.4, 9.5, 9.6
+- appveyor: vs1013 Postgis 2.2 Postgres 9.4
 
 
 
