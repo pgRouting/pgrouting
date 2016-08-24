@@ -6,8 +6,14 @@
 
 ### Branches
 
-The *master* branch reflects the current 2.2.2 release.
-The *develop* branch reflects the 2.3.0-dev
+The *master* branch has the latest minor release. (2.2.4)
+The *develop* branch has the next minor release. (2.4.0)
+
+The branch *release/v2.3.0* holds the next beta release.
+
+For the complete list of releases go to:
+https://github.com/pgRouting/pgrouting/releases
+
 
 ## LINKS
 
