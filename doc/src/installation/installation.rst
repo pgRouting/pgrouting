@@ -37,24 +37,41 @@ Production Builds:
 * Can also get PostGIS Bundle from http://download.osgeo.org/postgis/windows/
 
 
-Ubuntu/Debian
+Ubuntu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ubuntu packages are available in Launchpad repositories:
+pgRouting on Ubuntu can be installed using packages from a PostgreSQL repository:
 
-* *stable* https://launchpad.net/~georepublic/+archive/pgrouting
-* *unstable* https://launchpad.net/~georepublic/+archive/pgrouting-unstable
+Using a terminal window:
+
+* Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.
 
 .. code-block:: bash
 
-	# Add pgRouting launchpad repository ("stable" or "unstable")
-	sudo add-apt-repository ppa:georepublic/pgrouting[-unstable]
-	sudo apt-get update
+   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
-	# Install pgRouting packages
-	sudo apt-get install postgresql-9.1-pgrouting
+* Import the repository key, update the package lists
 
-Use `UbuntuGIS-unstable PPA <https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable>`_ to install PostGIS 2.0.
+.. code-block:: bash
+
+    sudo apt install wget ca-certificates
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    sudo apt update
+
+* Install pgrouting based on your postgres Installation: for this example is 9.3
+
+.. code-block:: bash
+
+sudo apt install postgresql-9.3-pgrouting
+
+This will also install all required packages such as PostgreSQL and PostGIS if not installed yet.
+
+* To be up-to-date with changes and improvements
+
+
+.. code-block:: bash
+
+sudo apt-get update & sudo apt-get upgrade
 
 
 RHEL/CentOS
