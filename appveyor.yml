@@ -9,12 +9,8 @@ version: 2.3.{build}
 
 branches:
   only:
-    - test/appveyor
-    - master
+    - release/2.3.0 
     - develop
-    - test/merge-gsoc-flow
-    - gsoc-ch
-    - gsoc-flow
 
 image: Visual Studio 2013
 configuration: Release
