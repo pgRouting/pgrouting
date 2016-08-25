@@ -27,11 +27,7 @@ branches:
   only:
     - master
     - develop
-    - test/appveyor
-    - test/merge-gsoc-flow
-    - gsoc-flow
-    - gsoc-ch
-    - travis/pg96
+    - release/2.3.0
 
 env:
   - POSTGRESQL_VERSION=9.1
@@ -98,7 +94,7 @@ script:
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   # tests as part of script so if a test fails the build fails
   - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION postgres
-  - ./tools/testers/pg_prove_tests.sh postgres DEBUG
+  - ./tools/testers/pg_prove_tests.sh postgres
 
 after_script: 
   # blank

@@ -18,7 +18,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
 if(NOT CMAKE_BUILD_TYPE)
     if (UNIX)
-        set(CMAKE_BUILD_TYPE Debug CACHE STRING
+        set(CMAKE_BUILD_TYPE Release CACHE STRING
             "Choose the type of build, options are: None Debug Release RelWithDebInfo
             MinSizeRel."
             FORCE)
@@ -183,7 +183,7 @@ set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-set(PGROUTING_GIT_TAG "pgrouting-2.3.0-dev")
+set(PGROUTING_GIT_TAG "pgrouting-2.3.0-alpha")
 
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})

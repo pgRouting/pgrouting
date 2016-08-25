@@ -9,7 +9,7 @@
 set -e 
 
 PGUSER=$1
-RELEASE_TYPE="$2"
+RELEASE_TYPE="b$2"
 echo "RELEASE_TYPE" $RELEASE_TYPE
 
 PGDATABASE="___pgr___test___"
@@ -35,7 +35,7 @@ run_psql -f setup_db.sql
 #TODO comment out peformance test before merging to MASTER
 
 
-if [ $RELEASE_TYPE = "DEBUG" ]
+if [ $RELEASE_TYPE = "bDEBUG" ]
 then
     pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
     echo "MADE TEST **********************"
