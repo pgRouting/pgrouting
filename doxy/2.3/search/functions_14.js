@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['vehicle',['Vehicle',['../classpgrouting_1_1vrp_1_1Vehicle.html#a1d6dc2adef8008dde1ea1ded2b03e4ab',1,'pgrouting::vrp::Vehicle']]],
+  ['vehicle_5fnode',['Vehicle_node',['../classpgrouting_1_1vrp_1_1Vehicle__node.html#ad913ad0cf0e63d1f5abf8933e5775ed5',1,'pgrouting::vrp::Vehicle_node::Vehicle_node(const Vehicle_node &amp;node)=default'],['../classpgrouting_1_1vrp_1_1Vehicle__node.html#af106ab5ad92b2294f95dd29e0abbddab',1,'pgrouting::vrp::Vehicle_node::Vehicle_node(const Tw_node &amp;node)']]],
+  ['vehicle_5fpickdeliver',['Vehicle_pickDeliver',['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a7f3b56c6dc15350b94095054eea2d79b',1,'pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(ID id, const Vehicle_node &amp;starting_site, const Vehicle_node &amp;ending_site, double max_capacity, const Pgr_pickDeliver *p_problem)'],['../classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a24f07bf4e309003922ddc418fa98c3d5',1,'pgrouting::vrp::Vehicle_pickDeliver::Vehicle_pickDeliver(const Vehicle_pickDeliver &amp;)=default']]],
+  ['vertex',['Vertex',['../classpgrouting_1_1contraction_1_1Vertex.html#a0e42cfa23a9d7c09d91608657466fa24',1,'pgrouting::contraction::Vertex::Vertex()=default'],['../classpgrouting_1_1contraction_1_1Vertex.html#a0021e93b27307784e13cac5a1a86d534',1,'pgrouting::contraction::Vertex::Vertex(const Vertex &amp;)=default'],['../classpgrouting_1_1contraction_1_1Vertex.html#a3d0639b9cc7a48523b21211917b2f0ed',1,'pgrouting::contraction::Vertex::Vertex(const pgr_edge_t &amp;other, bool is_source)']]],
+  ['vrp',['vrp',['../VRP_8c.html#af8a0ad5c2c0e6189829af74aa05be393',1,'VRP.c']]]
+];

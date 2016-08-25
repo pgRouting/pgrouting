@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Experimental and Proposed functions &mdash; pgRouting Manual (2.3.0-alpha) (release/2.3.0)</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.3.0-alpha (release/2.3.0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-alpha) (release/2.3.0)" href="../index.html" />
+    <link rel="next" title="Contraction" href="contraction/doc/contraction.html" />
+    <link rel="prev" title="Cost Matrix" href="costMatrix/doc/costMatrix.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>pgRouting Manual (2.3.0-alpha) (release/2.3.0)</span></a></h1>
+        <h2 class="heading"><span>Experimental and Proposed functions</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="costMatrix/doc/costMatrix.html">Cost Matrix</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="contraction/doc/contraction.html">Contraction</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="experimental-and-proposed-functions">
+<span id="proposed"></span><h1>Experimental and Proposed functions<a class="headerlink" href="#experimental-and-proposed-functions" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#proposed"><em>Experimental and Proposed functions</em></a></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="proposed-functions">
+<h2>Proposed functions<a class="headerlink" href="#proposed-functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="contraction/doc/contraction.html#contraction"><em>Contraction</em></a> - Reduce network size using contraction techniques<ul>
+<li><a class="reference internal" href="contraction/doc/pgr_contractGraph.html#pgr-contractgraph"><em>pgr_contractGraph - Proposed</em></a> - Reduce network size using contraction techniques</li>
+</ul>
+</li>
+<li><a class="reference internal" href="max_flow/doc/maxFlow.html#maxflow"><em>Maximum Flow</em></a><ul>
+<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Maximum flow using push&amp;relabel algorithm.</li>
+<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Maximum flow using Edmonds&amp;Karp algorithm.</li>
+<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Maximum flow using Boykov&amp;Kolmogorov algorithm.</li>
+</ul>
+</li>
+<li><a class="reference internal" href="max_flow/doc/maxFlowApplications.html#maxflowapplications"><em>Applications of Maximum Flow</em></a><ul>
+<li><a class="reference internal" href="max_flow/doc/pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> - Calculates a maximum cardinality matching.</li>
+<li><a class="reference internal" href="max_flow/doc/pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> - Calculates edge disjoint paths.</li>
+</ul>
+</li>
+<li>convenience<ul>
+<li><a class="reference internal" href="convenience/doc/pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode - Proposed</em></a> - convert a point geometry to a <tt class="docutils literal"><span class="pre">vertex_id</span></tt> based on closest edge.</li>
+<li><a class="reference internal" href="convenience/doc/pgr_pointsToVids.html#pgr-points-to-vids"><em>pgr_pointsToVids - Proposed</em></a> - convert an array of point geometries into vertex ids.</li>
+</ul>
+</li>
+<li>graph analysis<ul>
+<li><a class="reference internal" href="label_graph/doc/pgr_labelGraph.html#pgr-labelgraph"><em>pgr_labelGraph - Proposed</em></a> - Analyze / label  subgraphs within a network</li>
+</ul>
+</li>
+<li>Vehicle Routing Problems<ul>
+<li><a class="reference internal" href="vrppdtw/doc/pgr_gsoc_vrppdtw.html#pgr-gsocvrppdtw"><em>pgr_gsoc_vrppdtw - Proposed</em></a> - VRP Pickup &amp; Delivery (Euclidean)</li>
+<li><a class="reference internal" href="vrp_basic/doc/pgr_vrpOneDepot.html#pgr-vrp-basic"><em>pgr_vrpOneDepot - Proposed</em></a> - VRP One Depot</li>
+</ul>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="costMatrix/doc/costMatrix.html">Cost Matrix</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="contraction/doc/contraction.html">Contraction</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0-alpha.
+      Last updated on Aug 25, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

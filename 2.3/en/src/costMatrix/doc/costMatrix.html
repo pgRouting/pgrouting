@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cost Matrix &mdash; pgRouting Manual (2.3.0-alpha) (release/2.3.0)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0-alpha (release/2.3.0)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3.0-alpha) (release/2.3.0)" href="../../../index.html" />
+    <link rel="up" title="Stable proposed Functions" href="../../proposedNext.html" />
+    <link rel="next" title="Experimental and Proposed functions" href="../../proposed.html" />
+    <link rel="prev" title="pgr_withPointsDD - Proposed" href="../../withPoints/doc/pgr_withPointsDD.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3.0-alpha) (release/2.3.0)</span></a></h1>
+        <h2 class="heading"><span>Cost Matrix</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../withPoints/doc/pgr_withPointsDD.html">pgr_withPointsDD - Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../proposed.html">Experimental and Proposed functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="cost-matrix">
+<span id="costmatrix"></span><h1>Cost Matrix<a class="headerlink" href="#cost-matrix" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a></li>
+<li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a></li>
+</ul>
+</div></blockquote>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="general-information">
+<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sinopsis">
+<h3>Sinopsis<a class="headerlink" href="#sinopsis" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../../tsp/doc/tsp.html#tsp"><em>Traveling Sales Person</em></a> needs as input a symmetric cost matrix and no edge <cite>(u, v)</cite> must value <span class="math">\(\infty\)</span>.</p>
+<p>This collection of functions will return a cost matrix in form of a table.</p>
+</div>
+<div class="section" id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<p>The main Characteristics are:</p>
+<ul>
+<li><p class="first">Can be used as input to <a class="reference internal" href="../../tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a>.</p>
+<ul>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">directly:</th><td class="field-body">when the resulting matrix is symmetric and there is no <span class="math">\(\infty\)</span> value.</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p class="first">It will be the users responsibility to make the matrix symmetric.</p>
+<ul class="simple">
+<li>By using geometric or harmonic average of the non symmetric values.</li>
+<li>By using max or min the non symmetric values.</li>
+<li>By setting the upper triangle to be the mirror image of the lower triangle.</li>
+<li>By setting the lower triangle to be the mirror image of the upper triangle.</li>
+</ul>
+</li>
+<li><p class="first">It is also the users responsibility to fix an <span class="math">\(\infty\)</span> value.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Each function works as part of the family it belongs to.</p>
+</li>
+<li><p class="first">It does not return a path.</p>
+</li>
+<li><p class="first">Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.</p>
+</li>
+<li><p class="first">Process is done only on edges with positive costs.</p>
+</li>
+<li><p class="first">Values are returned when there is a path.</p>
+<ul class="simple">
+<li>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
+<li>When the starting vertex and ending vertex are the same, there is no path.<ul>
+<li>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite>.</li>
+</ul>
+</li>
+<li>When the starting vertex and ending vertex are the different and there is no path.<ul>
+<li>The <cite>agg_cost</cite> in the non included values <cite>(u, v)</cite> is <span class="math">\(\infty\)</span>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">Let be the case the values returned are stored in a table, so the unique index would be the pair: <cite>(start_vid, end_vid)</cite>.</p>
+</li>
+<li><p class="first">Depending on the function and its parameters, the results can be symmetric.</p>
+<ul class="simple">
+<li>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</li>
+</ul>
+</li>
+<li><p class="first">Any duplicated value in the <cite>start_vids</cite> are ignored.</p>
+</li>
+<li><p class="first">The returned values are ordered:</p>
+<ul class="simple">
+<li><cite>start_vid</cite> ascending</li>
+<li><cite>end_vid</cite> ascending</li>
+</ul>
+</li>
+<li><p class="first">Running time: approximately <span class="math">\(O(| start\_vids | * (V \log V + E))\)</span></p>
+</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="../../tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a></li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../withPoints/doc/pgr_withPointsDD.html">pgr_withPointsDD - Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../../proposed.html">Experimental and Proposed functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0-alpha.
+      Last updated on Aug 25, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
