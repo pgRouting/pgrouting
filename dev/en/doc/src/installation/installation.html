@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; pgRouting Manual (2.3.0-dev) (develop)</title>
+    <title>Installation &mdash; pgRouting Manual (2.4.0-dev) (develop)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (develop)',
+        VERSION:     '2.4.0 (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,13 +25,13 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.3.0-dev) (develop)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4.0-dev) (develop)" href="../../../index.html" />
     <link rel="next" title="Build Guide" href="build.html" />
     <link rel="prev" title="Introduction" href="../introduction/introduction.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.3.0-dev) (develop)</span></a></h1>
+          <span>pgRouting Manual (2.4.0-dev) (develop)</span></a></h1>
         <h2 class="heading"><span>Installation</span></h2>
       </div>
       <div class="topnav">
@@ -68,22 +68,39 @@
 <li>Can also get PostGIS Bundle from <a class="reference external" href="http://download.osgeo.org/postgis/windows/">http://download.osgeo.org/postgis/windows/</a></li>
 </ul>
 </div>
-<div class="section" id="ubuntu-debian">
-<h3>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this headline">¶</a></h3>
-<p>Ubuntu packages are available in Launchpad repositories:</p>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>pgRouting on Ubuntu can be installed using packages from a PostgreSQL repository:</p>
+<p>Using a terminal window:</p>
 <ul class="simple">
-<li><em>stable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting">https://launchpad.net/~georepublic/+archive/pgrouting</a></li>
-<li><em>unstable</em> <a class="reference external" href="https://launchpad.net/~georepublic/+archive/pgrouting-unstable">https://launchpad.net/~georepublic/+archive/pgrouting-unstable</a></li>
+<li>Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Add pgRouting launchpad repository (&quot;stable&quot; or &quot;unstable&quot;)</span>
-sudo add-apt-repository ppa:georepublic/pgrouting<span class="o">[</span>-unstable<span class="o">]</span>
-sudo apt-get update
-
-<span class="c"># Install pgRouting packages</span>
-sudo apt-get install postgresql-9.1-pgrouting
+<div class="highlight-bash"><div class="highlight"><pre>sudo sh -c <span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
 </pre></div>
 </div>
-<p>Use <a class="reference external" href="https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable">UbuntuGIS-unstable PPA</a> to install PostGIS 2.0.</p>
+<ul class="simple">
+<li>Import the repository key, update the package lists</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt install wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt update
+</pre></div>
+</div>
+<ul class="simple">
+<li>Install pgrouting based on your postgres Installation: for this example is 9.3</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>
+</pre></div>
+</div>
+<p>sudo apt install postgresql-9.3-pgrouting</p>
+<p>This will also install all required packages such as PostgreSQL and PostGIS if not installed yet.</p>
+<ul class="simple">
+<li>To be up-to-date with changes and improvements</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>
+</pre></div>
+</div>
+<p>sudo apt-get update &amp; sudo apt-get upgrade</p>
 </div>
 <div class="section" id="rhel-centos">
 <h3>RHEL/CentOS<a class="headerlink" href="#rhel-centos" title="Permalink to this headline">¶</a></h3>
@@ -190,8 +207,8 @@ make install clean
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.3.0 (pgrouting-2.3.0-dev).
-      Last updated on Aug 18, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.4.0 (pgrouting-2.4.0-dev).
+      Last updated on Aug 31, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

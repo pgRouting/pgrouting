@@ -1,0 +1,26 @@
+var classpgrouting_1_1vrp_1_1Solution =
+[
+    [ "Solution", "classpgrouting_1_1vrp_1_1Solution.html#af97923ccd9cad2fe26238b7377f48688", null ],
+    [ "Solution", "classpgrouting_1_1vrp_1_1Solution.html#adfa3a05659d8acd4fe8edf1a6b343a64", null ],
+    [ "Solution", "classpgrouting_1_1vrp_1_1Solution.html#a7c3395b2f22897ee95cd1b9dba2b4164", null ],
+    [ "cost", "classpgrouting_1_1vrp_1_1Solution.html#a674433d019be75504877c559e3a8c276", null ],
+    [ "cost_str", "classpgrouting_1_1vrp_1_1Solution.html#a207a641b1f0404bbe1a1061024b303b7", null ],
+    [ "cvTot", "classpgrouting_1_1vrp_1_1Solution.html#a42b1ebb630efe2ef004521e7a10a400f", null ],
+    [ "duration", "classpgrouting_1_1vrp_1_1Solution.html#a2bda1f2451fe1c361b76d1ee9a1ba732", null ],
+    [ "fleet_size", "classpgrouting_1_1vrp_1_1Solution.html#a390eb9c248578d9c4ae07677a96473ef", null ],
+    [ "get_postgres_result", "classpgrouting_1_1vrp_1_1Solution.html#a8e7c10ff0ece7268b2264b27e2d9c900", null ],
+    [ "is_feasable", "classpgrouting_1_1vrp_1_1Solution.html#a371eb25be74472610011a18ac21c62fc", null ],
+    [ "operator<", "classpgrouting_1_1vrp_1_1Solution.html#a15fee2726b63f1fac8ed8f759e0e1b64", null ],
+    [ "operator=", "classpgrouting_1_1vrp_1_1Solution.html#afcdcddf2b761be878a627b2806aaa1a7", null ],
+    [ "operator=", "classpgrouting_1_1vrp_1_1Solution.html#ab21af677ebe47f2fcfee71e93ab30ed3", null ],
+    [ "tau", "classpgrouting_1_1vrp_1_1Solution.html#a0646c3f46c2553bb17f57c34d2cb0611", null ],
+    [ "total_service_time", "classpgrouting_1_1vrp_1_1Solution.html#a727fb92ce20cd84bb852a75707cd7eca", null ],
+    [ "total_travel_time", "classpgrouting_1_1vrp_1_1Solution.html#a28dcd2a29635b96fa63478f3686ca0ab", null ],
+    [ "twvTot", "classpgrouting_1_1vrp_1_1Solution.html#ab6eaa4dbe06708054c4d27a46e3b2fbc", null ],
+    [ "wait_time", "classpgrouting_1_1vrp_1_1Solution.html#ac05b7458daf5673c21ecd5f0ea057ca3", null ],
+    [ "operator<<", "classpgrouting_1_1vrp_1_1Solution.html#a9bd311dd2a3505fca51408c4f73a7c8f", null ],
+    [ "Optimize", "classpgrouting_1_1vrp_1_1Solution.html#a7095b2afb20c698734f4c9b0446659f5", null ],
+    [ "EPSILON", "classpgrouting_1_1vrp_1_1Solution.html#a6f585163bbc3f99d5f7252275701021d", null ],
+    [ "fleet", "classpgrouting_1_1vrp_1_1Solution.html#accd5c70ed616a7e86bb9d21121ada225", null ],
+    [ "problem", "classpgrouting_1_1vrp_1_1Solution.html#af3e9a95b4caf59e5c90d84fbaaffe9ac", null ]
+];
