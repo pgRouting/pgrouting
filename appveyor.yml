@@ -5,16 +5,12 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-version: 2.3.{build}
+version: 2.4.{build}
 
 branches:
   only:
-    - test/appveyor
     - master
     - develop
-    - test/merge-gsoc-flow
-    - gsoc-ch
-    - gsoc-flow
 
 image: Visual Studio 2013
 configuration: Release
