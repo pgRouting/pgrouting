@@ -172,7 +172,7 @@ endif()
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
 set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "3")
+set(PGROUTING_VERSION_MINOR "4")
 set(PGROUTING_VERSION_PATCH "0")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
@@ -183,7 +183,7 @@ set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-set(PGROUTING_GIT_TAG "pgrouting-2.3.0-dev")
+set(PGROUTING_GIT_TAG "pgrouting-2.4.0-dev")
 
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})

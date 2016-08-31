@@ -71,21 +71,26 @@ dropdb   ___test_update
 } 
 
 #------------------------------------
+### updates from 2.3.x
+#------------------------------------
+update_test 2.3.0 2.4.0
+
+#------------------------------------
 ### updates from 2.2.x
 #------------------------------------
 
-update_test 2.2.4 2.3.0
-update_test 2.2.3 2.3.0
-update_test 2.2.2 2.3.0
-update_test 2.2.1 2.3.0
-update_test 2.2.0 2.3.0
+update_test 2.2.4 2.4.0
+update_test 2.2.3 2.4.0
+update_test 2.2.2 2.4.0
+update_test 2.2.1 2.4.0
+update_test 2.2.0 2.4.0
 
 
 #------------------------------------
 ### updates from 2.1.x
 #------------------------------------
 
-update_test 2.1.0 2.3.0
+update_test 2.1.0 2.4.0
 
 #------------------------------------
 ### updates from 2.0.x
@@ -93,7 +98,7 @@ update_test 2.1.0 2.3.0
 
 echo ------------------------------------
 echo ------------------------------------
-echo Updating from 2.0.0  to 2.3.0
+echo Updating from 2.0.0  to 2.4.0
 echo ------------------------------------
 
 createdb  ___test_update
@@ -103,7 +108,7 @@ create extension pgrouting with version '2.0.0';
 select pgr_version();
 alter extension pgrouting update to '2.1.0';
 select pgr_version();
-alter extension pgrouting update to '2.3.0';
+alter extension pgrouting update to '2.4.0';
 select pgr_version();
 EOF
 dropdb   ___test_update
