@@ -60,12 +60,15 @@ do_pgr_MY_FUNCTION_NAME(
         MY_RETURN_VALUE_TYPE **return_tuples,
         size_t *return_count,
         char ** log_msg,
+        char ** notice_msg,
         char ** err_msg){
     std::ostringstream err;
     std::ostringstream log;
+    std::ostringstream notice;
     try {
         
         pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert(*return_count == 0);
@@ -134,27 +137,32 @@ do_pgr_MY_FUNCTION_NAME(
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
+#if 0
+        // this is when its only one path
+        path.generate_postgres_data(return_tuples, sequence);
+#endif
 
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());
+        *notice_msg = strdup(notice.str().c_str());
 
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        err << exept.what();
+        *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch (std::exception& exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        err << exept.what();
+        *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!";
+        *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     }
 }

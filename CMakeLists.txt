@@ -77,30 +77,31 @@ set(PgRouting_SOURCE_NAMES
     #----------------------
     # Directories that have being rewritten
     #----------------------
-    "allpairs"
-    "astar"
-    "driving_distance"
-    "ksp"
-    "tsp"
+    #"allpairs"
+    #"astar"
+    #"driving_distance"
+    #"ksp"
+    #"tsp"
 
     #----------------------
     # Code needs to be rewritten
     #----------------------
-    "alpha_shape"
-    "bd_astar"
-    "bd_dijkstra"
-    "trsp"
+    #"alpha_shape"
+    #"bd_astar"
+    #"bd_dijkstra"
+    "bdDijkstra"
+    #"trsp"
 
     #----------------------
     # Proposed
     #  - Not officially on the release
     #  - number indicates version when was propsosed with code
     #----------------------
-    "max_flow"    # 2.3
-    "contraction" # 2.3
-    "pickDeliver" # 2.3
-    "vrp_basic"   # 2.0 
-    "withPoints"  # 2.2
+    #"max_flow"    # 2.3
+    #"contraction" # 2.3
+    #"pickDeliver" # 2.3
+    #"vrp_basic"   # 2.0 
+    #"withPoints"  # 2.2
 
     # template generated name
     #"funnyDijkstra"
