@@ -5,7 +5,7 @@
 MY_FUNCTION_NAME="funnyDijkstra"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara@hotmail.com" 
-YEAR="2015"
+YEAR="2016"
 
 # Notice the "\n     " (change line and four spaces) after each comma
 # first line are the inputs
@@ -18,15 +18,12 @@ MY_RETURN_VALUE_TYPE="General_path_element_t"
 MY_FUNCTION_NAME_UPPER=$(echo $MY_FUNCTION_NAME | tr 'a-z' 'A-Z')
 
 # Available types to store the edge information:
-#  pgr_edge_t      http://docs.pgrouting.org/doxy/2.3-dev-develop/structpgr__edge__t.html
-#  Pgr_edge_xy_t   http://docs.pgrouting.org/doxy/2.3-dev-develop/structPgr__edge__xy__t.html
+#  http://docs.pgrouting.org/doxy/dev/structpgr__edge__t.html
+#  http://docs.pgrouting.org/doxy/dev/structPgr__edge__xy__t.html
 MY_EDGE_TYPE="pgr_edge_t"
 
 # Available functions that read the edge information:
-# pgr_get_edges                 http://docs.pgrouting.org/doxy/2.3-dev-develop/edges__input_8h.html#a5598918a215c72c9bda7a7f016401b73
-# pgr_get_edges_xy              http://docs.pgrouting.org/doxy/2.3-dev-develop/edges__input_8h.html#a5483d52e67b7996d80cd0cf3583d1720
-# pgr_get_edges_xy_reversed     http://docs.pgrouting.org/doxy/2.3-dev-develop/edges__input_8h.html#adce525c316ba6244510553a5cee8451f
-# pgr_get_edges_no_id           http://docs.pgrouting.org/doxy/2.3-dev-develop/edges__input_8h.html#a747dea3b61ecc407746f9d83d923fa64
+# http://docs.pgrouting.org/doxy/dev/edges__input_8h.html#
 MY_EDGE_FUNCTION="pgr_get_edges"
 
 
