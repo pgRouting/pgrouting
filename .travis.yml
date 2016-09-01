@@ -27,11 +27,7 @@ branches:
   only:
     - master
     - develop
-    - test/appveyor
-    - test/merge-gsoc-flow
-    - gsoc-flow
-    - gsoc-ch
-    - travis/pg96
+    - rewrite/bd_dijkstra
 
 env:
   - POSTGRESQL_VERSION=9.1
