@@ -69,7 +69,7 @@ pgr_global_report(
         char **notice_msg,
         char **error_msg);
 
-/*! @brief notice with hint
+/*! @brief notice with no hint
  *
  *  ~~~~{.c}
  *  pgr_notice(&log_msg, &notice_msg);
@@ -81,6 +81,21 @@ pgr_global_report(
  */
 void
 pgr_notice(
+        char **notice_msg
+        );
+
+/*! @brief notice with hint
+ *
+ *  ~~~~{.c}
+ *  pgr_notice(&log_msg, &notice_msg);
+ *
+ *  precondition: before calling ereport
+ *      assert(!log_msg);
+ *      assert(!notice_msg);
+ *  ~~~~
+ */
+void
+pgr_notice2(
         char **log_msg,
         char **notice_msg
         );

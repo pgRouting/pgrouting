@@ -32,11 +32,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include "./MY_FUNCTION_NAME_driver.h"
-
 #include <sstream>
 #include <deque>
 #include <vector>
+
+#include "./MY_FUNCTION_NAME_driver.h"
+
 
 #include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_assert.h"
@@ -98,12 +99,19 @@ do_pgr_MY_FUNCTION_NAME(
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_edges);
-            path = pgr_MY_FUNCTION_NAME(digraph, start_vid, end_vid, only_cost);
+            path = pgr_MY_FUNCTION_NAME(digraph,
+                    start_vid,
+                    end_vid,
+                    only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_edges);
-            path = pgr_MY_FUNCTION_NAME(undigraph, start_vid, end_vid, only_cost);
+            path = pgr_MY_FUNCTION_NAME(
+                    undigraph,
+                    start_vid,
+                    end_vid,
+                    only_cost);
         }
 
         auto count = path.size();
@@ -122,9 +130,12 @@ do_pgr_MY_FUNCTION_NAME(
         (*return_count) = sequence;
 
         pgassert(*err_msg == NULL);
-        *log_msg = log.str().empty()? nullptr : strdup(log.str().c_str());
-        *notice_msg = notice.str().empty()? nullptr : strdup(notice.str().c_str());
-
+        *log_msg = log.str().empty()?
+            nullptr :
+            strdup(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            nullptr :
+            strdup(notice.str().c_str());
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;

@@ -85,7 +85,7 @@ do_pgr_one_to_one_dijkstra(
           (*return_tuples) = NULL;
           (*return_count) = 0;
           log <<
-              "No paths found between Starting and any of the Ending vertices\n";
+              "No paths found between Starting and any of the Ending vertices";
           *err_msg = strdup(log.str().c_str());
           return;
       }
@@ -95,13 +95,6 @@ do_pgr_one_to_one_dijkstra(
       path.generate_postgres_data(return_tuples, sequence);
       (*return_count) = sequence;
 
-#ifndef DEBUG
-      *err_msg = strdup("OK");
-#else
-      *err_msg = strdup(log.str().c_str());
-#endif
-
-      return;
   } catch ( ... ) {
       log << "Caught unknown exception!\n";
       *err_msg = strdup(log.str().c_str());

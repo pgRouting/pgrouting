@@ -28,17 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
+#include <postgres.h>
 #include "funcapi.h"
-#include "utils/array.h"
-#include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
 #include "fmgr.h"
 
-#include <string.h>
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
@@ -64,8 +60,6 @@ process(
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-
-
     pgr_SPI_connect();
 
     PGR_DBG("Load data");

@@ -30,6 +30,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_notice(
+        char **notice_msg) {
+
+    PGR_DBG("Returned notice message = %s", *notice_msg);
+
+    char *notice = NULL;
+    if (*notice_msg){
+        notice = pgr_cstring2char(*notice_msg);
+        free(*notice_msg);
+    }
+
+    if (notice) {
+        ereport(NOTICE,
+                (errmsg("%s", notice)));
+    }
+}
+
+void
+pgr_notice2(
         char **log_msg,
         char **notice_msg) {
 

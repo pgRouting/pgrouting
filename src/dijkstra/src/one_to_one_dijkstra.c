@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
@@ -104,6 +105,12 @@ process(
     PGR_DBG("Returned message = %s\n", err_msg);
 
     free(err_msg);
+
+#if 0
+    // TODO the message is actually a notice
+    pgr_notice(&err_msg);
+#endif
+
     pfree(edges);
     pgr_SPI_finish();
 }
