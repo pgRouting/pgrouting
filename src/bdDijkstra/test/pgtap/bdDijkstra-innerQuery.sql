@@ -5,10 +5,10 @@ SET client_min_messages TO ERROR;
 
 
 SELECT has_function('pgr_bddijkstra',
-    ARRAY['text', 'bigint', 'bigint', 'boolean','boolean']);
+    ARRAY['text', 'bigint', 'bigint', 'boolean']);
 
 SELECT function_returns('pgr_bddijkstra',
-    ARRAY['text', 'bigint', 'bigint', 'boolean','boolean'],
+    ARRAY['text', 'bigint', 'bigint', 'boolean'],
     'setof record');
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 
