@@ -27,46 +27,60 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
-#ifdef open
-#undef open
 #endif
-#endif
-
 
 #include <sstream>
 #include <deque>
-#include <algorithm>
 #include <vector>
-#include "./pgr_dijkstra.hpp"
+
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./MY_FUNCTION_NAME_driver.h"
 
-#include "./../../common/src/pgr_types.h"
+#include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_types.h"
+
+
 
 /************************************************************
   MY_QUERY_LINE1
  ***********************************************************/
+
+template < class G >
+static
+Path
+pgr_MY_FUNCTION_NAME(
+        G &graph,
+        int64_t source,
+        int64_t target,
+        bool only_cost = false) {
+    Path path;
+    Pgr_dijkstra< G > fn_dijkstra;
+    fn_dijkstra.dijkstra(graph, path, source, target, only_cost);
+    return path;
+}
+
+
 void
 do_pgr_MY_FUNCTION_NAME(
-        MY_EDGE_TYPE  *data_edges, size_t total_edges,
+        MY_EDGE_TYPE  *data_edges,
+        size_t total_edges,
         int64_t start_vid,
-        int64_t  *end_vidsArr, size_t size_end_vidsArr,
+        int64_t end_vid,
         bool directed,
+        bool only_cost,
         MY_RETURN_VALUE_TYPE **return_tuples,
         size_t *return_count,
         char ** log_msg,
         char ** notice_msg,
-        char ** err_msg){
-    std::ostringstream err;
+        char ** err_msg) {
     std::ostringstream log;
+    std::ostringstream err;
     std::ostringstream notice;
     try {
-        
         pgassert(!(*log_msg));
         pgassert(!(*notice_msg));
         pgassert(!(*err_msg));
@@ -74,77 +88,40 @@ do_pgr_MY_FUNCTION_NAME(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-        /* depending on the functionality some tests can be done here
-         * For example */
-        if (total_edges <= 1) {
-            err << "Required: more than one edges\n";
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            *err_msg = strdup(err.str().c_str());
-            return;
-        }
-
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
-        // samll logs
-        log << "Inserting vertices into a c++ vector structure\n";
-        std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-        std::sort(end_vertices.begin(),end_vertices.end());
-#ifndef NDEBUG
-        // big logs with cycles wrap them so on release they wont consume time
-        log << "end vids: ";
-        for (const auto &vid : end_vertices) log << vid << ",";
-        log << "\nstart vid:" << start_vid << "\n";
-#endif
+        Path path;
 
         if (directed) {
-            // very detailed logging
             log << "Working with directed Graph\n";
-            pgRouting::DirectedGraph digraph(gType);
-            log << "Working with directed Graph 1 \n";
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_edges);
-
-#ifndef NDEBUG
-            // a graph log is a big log
-            log << digraph;
-#endif
-            
-            log << "Working with directed Graph 2\n";
-            pgr_dijkstra(digraph, paths, start_vid, end_vertices, false);
-            log << "Working with directed Graph 3\n";
+            path = pgr_MY_FUNCTION_NAME(digraph, start_vid, end_vid, only_cost);
         } else {
-            // maybe the code is working so cleaner logging
             log << "Working with Undirected Graph\n";
-            pgRouting::UndirectedGraph undigraph(gType);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_edges);
-            pgr_dijkstra(undigraph, paths, start_vid, end_vertices, false);
+            path = pgr_MY_FUNCTION_NAME(undigraph, start_vid, end_vid, only_cost);
         }
 
-        // use auto when possible
-        auto count(count_tuples(paths));
+        auto count = path.size();
 
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log << 
-                "No paths found between Starting and any of the Ending vertices\n";
-            *log_msg = strdup(log.str().c_str());
+            notice <<
+                "No paths found between start_vid and end_vid vertices";
             return;
         }
 
-        // get the space required to store all the paths
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
-        (*return_count) = (collapse_paths(return_tuples, paths));
-#if 0
-        // this is when its only one path
+        size_t sequence = 0;
         path.generate_postgres_data(return_tuples, sequence);
-#endif
+        (*return_count) = sequence;
 
-        *err_msg = NULL;
-        *log_msg = strdup(log.str().c_str());
-        *notice_msg = strdup(notice.str().c_str());
+        pgassert(*err_msg == NULL);
+        *log_msg = log.str().empty()? nullptr : strdup(log.str().c_str());
+        *notice_msg = notice.str().empty()? nullptr : strdup(notice.str().c_str());
 
     } catch (AssertFailedException &exept) {
         if (*return_tuples) free(*return_tuples);

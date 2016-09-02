@@ -1,10 +1,13 @@
 /*PGR-GNU*****************************************************************
+File: bdDijkstra.sql
 
-Copyright (c) 2015 pgRouting developers
+Generated with Template by:
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-mail: vicky_vergara@hotmail.com
+Function's developer: 
+Copyright (c) 2016 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -24,72 +27,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(
+    edges_sql TEXT,
+    start_vid BIGINT,
+    end_vid BIGINT,
+    directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
+        OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
 
-CREATE OR REPLACE FUNCTION _pgr_bdDijkstra(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, directed BOOLEAN,
-  OUT seq integer, OUT path_seq integer, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'bdDijkstra'
-    LANGUAGE c IMMUTABLE STRICT;
-
-
-
--- V2 signature
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
-RETURNS SETOF pgr_costresult AS
-$BODY$
-DECLARE
-has_reverse BOOLEAN;
-sql TEXT;
-BEGIN
-    RAISE NOTICE 'Deprecated function';
-    has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
-    sql = edges_sql;
-    IF (has_reverse != has_rcost) THEN
-        IF (has_reverse) THEN
-            sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
-        ELSE
-            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
-        END IF;
-    END IF;
-
-    RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
-    FROM _pgr_dijkstra(sql, start_vid, end_vid, directed);
-  END
-$BODY$
-LANGUAGE plpgsql VOLATILE
-COST 100
-ROWS 1000;
-
--- V3 signature 1 to 1
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT,
-    OUT seq integer,  OUT path_seq integer, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
 RETURNS SETOF RECORD AS
-$BODY$
-DECLARE
- statement_txt record;
- sql TEXT;
-BEGIN
-    RETURN query
-    SELECT * FROM _pgr_dijkstra(_pgr_get_statement($1), start_vid, end_vid, true);
-  END
-$BODY$
-LANGUAGE plpgsql VOLATILE
-COST 100
-ROWS 1000;
-
-
--- V3 signature 1 to 1
-CREATE OR REPLACE FUNCTION pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, directed BOOLEAN,
-    OUT seq integer,  OUT path_seq integer, OUT node BIGINT, OUT edge BIGINT, OUT cost float, OUT agg_cost float)
-RETURNS SETOF RECORD AS
-$BODY$
-DECLARE
-BEGIN
-    RETURN query SELECT *
-    FROM _pgr_dijkstra(_pgr_get_statement($1), start_vid, end_vid, directed);
-  END
-$BODY$
-LANGUAGE plpgsql VOLATILE
-COST 100
-ROWS 1000;
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'bdDijkstra'
+LANGUAGE c IMMUTABLE STRICT;
 

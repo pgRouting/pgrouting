@@ -1,13 +1,14 @@
 /*PGR-GNU*****************************************************************
-File: one_to_one_dijkstra.c
+File: bdDijkstra.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2016 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
+
 
 ------
 
@@ -35,18 +36,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-
-
 #include "fmgr.h"
+
+#include <string.h>
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/error_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
+
 #include "./bdDijkstra_driver.h"
 
-
+PG_FUNCTION_INFO_V1(bdDijkstra);
 PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS);
+
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -60,62 +64,65 @@ process(
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
+
+
     pgr_SPI_connect();
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
+    size_t total_edges = 0;
 
     if (start_vid == end_vid) {
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
 
-    size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_edges);
+    PGR_DBG("Total %ld edges in query:", total_edges);
 
-    if (total_tuples == 0) {
+    if (total_edges == 0) {
         PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
     char *err_msg = NULL;
     do_pgr_bdDijkstra(
             edges,
-            total_tuples,
+            total_edges,
             start_vid,
             end_vid,
             directed,
             only_cost,
             result_tuples,
             result_count,
+            &log_msg,
+            &notice_msg,
             &err_msg);
 
-    time_msg(" processing Dijkstra one to one", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    time_msg(" processing pgr_bdDijkstra", start_t, clock());
+    PGR_DBG("Returning %ld tuples", *result_count);
 
-    free(err_msg);
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
+    }
+    pgr_error_report(&log_msg, &notice_msg, &err_msg);
+
     pfree(edges);
     pgr_SPI_finish();
 }
 /*                                                                            */
 /******************************************************************************/
 
-PG_FUNCTION_INFO_V1(bdDijkstra);
-PGDLLEXPORT Datum
-bdDijkstra(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t              call_cntr;
-    uint32_t               max_calls;
-    TupleDesc            tuple_desc;
+    uint32_t            call_cntr;
+    uint32_t            max_calls;
+    TupleDesc           tuple_desc;
 
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
@@ -133,12 +140,20 @@ bdDijkstra(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        // CREATE OR REPLACE FUNCTION pgr_dijkstra(
-        // sql text, start_vids BIGINT,
-        // end_vid BIGINT,
-        // directed BOOLEAN default true,
+        /*
+           edges_sql TEXT,
+    start_vid BIGINT,
+    end_vid BIGINT,
+    directed BOOLEAN DEFAULT true,
+    only_cost BOOLEAN DEFAULT false,
+         **********************************************************************/
+
 
         PGR_DBG("Calling process");
+        // Code standard:
+        // Use same order as in the query
+        // Pass the array and it's size on the same line
+
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
@@ -179,12 +194,14 @@ bdDijkstra(PG_FUNCTION_ARGS) {
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
-        // OUT seq INTEGER,
-        // OUT path_seq INTEGER,
-        // OUT node BIGINT,
-        // OUT edge BIGINT,
-        // OUT cost FLOAT,
-        // OUT agg_cost FLOAT
+        /*
+               OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT
+         ***********************************************************************/
 
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(bool));
@@ -208,10 +225,9 @@ bdDijkstra(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
+        PGR_DBG("cleanup");
         if (result_tuples) free(result_tuples);
 
         SRF_RETURN_DONE(funcctx);
     }
 }
-

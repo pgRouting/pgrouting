@@ -1,12 +1,13 @@
 /*PGR-GNU*****************************************************************
 File: MY_FUNCTION_NAME_driver.h
 
+Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer: 
-Copyright (c) YEAR DEVELOPER_NAME
-Mail: DEVELOPER_EMAIL
+Copyright (c) 2015 Celia Virginia Vergara Castillo
+Mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -28,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_MY_FUNCTION_NAME_UPPER_SRC_MY_FUNCTION_NAME_UPPER_DRIVER_H_
 #define SRC_MY_FUNCTION_NAME_UPPER_SRC_MY_FUNCTION_NAME_UPPER_DRIVER_H_
+#pragma once
 
 #include "./../../common/src/pgr_types.h"
 
@@ -39,17 +41,20 @@ extern "C" {
       MY_QUERY_LINE1
      ********************************************************/
 
-    // Code standard:
-    // Pass the arrays and the sizes on the same line
-    void do_pgr_MY_FUNCTION_NAME(
-            MY_EDGE_TYPE *data_edges, size_t total_edges,
-            int64_t start_vid,
-            int64_t  *end_vidsArr, size_t size_end_vidsArr,
-            bool directed,
-            MY_RETURN_VALUE_TYPE **return_tuples, size_t *return_count,
-            char ** log_msg,
-            char ** notice_msg,
-            char ** err_msg);
+
+    void
+        do_pgr_MY_FUNCTION_NAME(
+                MY_EDGE_TYPE  *data_edges,
+                size_t total_edges,
+                int64_t start_vid,
+                int64_t end_vid,
+                bool directed,
+                bool only_cost,
+                MY_RETURN_VALUE_TYPE **return_tuples,
+                size_t *return_count,
+                char ** log_msg,
+                char ** notice_msg,
+                char ** err_msg);
 
 
 #ifdef __cplusplus

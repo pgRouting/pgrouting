@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "catalog/pg_type.h"
 #include "executor/spi.h"
 
+#include <string.h>
 
 // #define DEBUG
 #include "./debug_macro.h"
@@ -56,6 +57,23 @@ pgr_text2char(text *in) {
     out[VARSIZE(in) - VARHDRSZ] = '\0';
     return out;
 }
+
+char*
+pgr_cstring2char(const char *inStr) {
+
+    if(!inStr) return NULL;
+
+    char *outStr;
+    outStr = palloc(strlen(inStr));
+    if (!outStr) return NULL;
+
+    memcpy(outStr, inStr, strlen(inStr));
+
+    outStr[strlen(inStr)] = '\0';
+
+    return outStr;
+}
+
 
 
 // http://www.postgresql.org/docs/9.4/static/spi-spi-finish.html

@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
+File: error_reporting.h
 
-File: debug_macro.h
-
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Function's developer:
+Copyright (c) 2016 Celia Virginia Vergara Castillo
 Mail: vicky_vergara@hotmail.com
 
 ------
@@ -23,17 +23,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_DEBUG_MACRO_H_
-#define SRC_COMMON_SRC_DEBUG_MACRO_H_
 #pragma once
 
-#ifndef NDEBUG
-#include <postgres.h>
+/**
+ * Report notice & error to postgreSQL
+ *
+ *  The char* messages are cleared.
+ *  New messages are made with palloc
+ *
+ *  when there is ERROR then postgreSQL takes over control
+ *
+ *  @warning Free all data not created with palloc before calling
+ *  ~~~~{.c}
+ *  if (err_msg) {
+ *      pfree(<data>);
+ *  }
+ *  pgr_error_report(log_msg, notice_msg, error_msg);
+ *  ~~~~
+ */
 
-#define PGR_DBG(...) \
-    elog(DEBUG1, __VA_ARGS__)
-#else
-#define PGR_DBG(...) do { ; } while (0)
-#endif
-
-#endif  // SRC_COMMON_SRC_DEBUG_MACRO_H_
+void
+pgr_error_report(
+    char **log_msg,
+    char **notice_msg,
+    char **err_msg);
