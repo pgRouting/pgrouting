@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: error_reporting.h
+File: e_report.h
 
 Function's developer:
 Copyright (c) 2016 Celia Virginia Vergara Castillo
@@ -21,29 +21,101 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #pragma once
 
-/**
- * Report notice & error to postgreSQL
+/*! @name Postgres ereport
+ *  Send notice or error to postgreSQL (cleans the char *)
+ *
+ *  From the C++ err_msg, log_msg, notice_msg are returned as a (char *),
+ *
+ *  Before exiting the C code the pointers need to be freed:
+ *   - This task can be done when there is no error,
+ *   - Call to ERROR, gives the control back to postgreSQL 
+ *     - leaves a leak
+ *
+ * on C++ side, the message to be returned;
+ * ~~~~{.c}
+ * std::ostringstream log;
+ * log << "the messaage";
+ * log_msg = strdup(log.str().c_str());
+ * ~~~~
+ *
  *
  *  The char* messages are cleared.
  *  New messages are made with palloc
  *
  *  when there is ERROR then postgreSQL takes over control
  *
- *  @warning Free all data not created with palloc before calling
+ *  @warning When error: Free all data not created with palloc before calling
+ *
+ */
+///@{
+/*! @brief notice & error
+ *
+ *  ~~~~{.c}
+ *  pgr_notice(&log_msg, &notice_msg, &error_msg);
+ *
+ *  precondition: before calling ereport
+ *      assert(!*log_msg);
+ *      assert(!*notice_msg);
+ *      assert(!*error_msg);
+ *  ~~~~
+ */
+void
+pgr_global_report(
+        char **log_msg,
+        char **notice_msg,
+        char **error_msg);
+
+/*! @brief notice with hint
+ *
+ *  ~~~~{.c}
+ *  pgr_notice(&log_msg, &notice_msg);
+ *
+ *  precondition: before calling ereport
+ *      assert(!log_msg);
+ *      assert(!notice_msg);
+ *  ~~~~
+ */
+void
+pgr_notice(
+        char **log_msg,
+        char **notice_msg
+        );
+
+/*! @brief error with no hint
+ *
+ * 
  *  ~~~~{.c}
  *  if (err_msg) {
  *      pfree(<data>);
  *  }
- *  pgr_error_report(log_msg, notice_msg, error_msg);
+ *  pgr_error(&error_msg);
+ *
+ *  precondition: before calling ereport
+ *      assert(!*error_msg);
  *  ~~~~
  */
-
 void
-pgr_error_report(
-    char **log_msg,
-    char **notice_msg,
-    char **err_msg);
+pgr_error(char **error_msg);
+
+/*! @brief error with hint
+ *
+ *  ~~~~{.c}
+ *  if (err_msg) {
+ *      pfree(<data>);
+ *  }
+ *  pgr_error(&log_msg, &error_msg);
+ *
+ *  precondition: before calling ereport
+ *      assert(!*log_msg);
+ *      assert(!*error_msg);
+ *  ~~~~
+ */
+void
+pgr_error2(
+        char **log_msg,
+        char **error_msg);
+///@}

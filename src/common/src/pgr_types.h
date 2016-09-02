@@ -27,14 +27,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#ifndef __cplusplus
+#ifdef __cplusplus
+
+#include <cstddef>
+
+#else  // __cplusplus
 
 // for bool
 #include <postgres.h>
 
 // For NULL & size_t
 #include <stdlib.h>
-#endif
+
+
+#endif  // __cplusplus
 
 // For int64_t etc
 #include <stdint.h>
