@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string.h>
 #include "./../../common/src/debug_macro.h"
-#include "./../../common/src/error_report.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
