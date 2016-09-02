@@ -1,14 +1,14 @@
 \i setup.sql
 
-SELECT plan(87);
+SELECT plan(47);
 SET client_min_messages TO ERROR;
 
 
 SELECT has_function('pgr_bddijkstra',
-    ARRAY['text', 'bigint', 'bigint', 'boolean']);
+    ARRAY['text', 'bigint', 'bigint', 'boolean','boolean']);
 
 SELECT function_returns('pgr_bddijkstra',
-    ARRAY['text', 'bigint', 'bigint', 'boolean'],
+    ARRAY['text', 'bigint', 'bigint', 'boolean','boolean'],
     'setof record');
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 

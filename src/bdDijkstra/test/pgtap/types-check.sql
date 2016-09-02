@@ -7,8 +7,11 @@ SELECT can(ARRAY['pgr_bddijkstra']);
 
 
 --V2.4+
-SELECT has_function('pgr_bddijkstra', ARRAY['text','bigint','bigint','boolean']);
-SELECT function_returns('pgr_bddijkstra', ARRAY['text','bigint','bigint','boolean'],'setof record');
+SELECT has_function('pgr_bddijkstra',
+    ARRAY['text','bigint','bigint','boolean','boolean']);
+SELECT function_returns('pgr_bddijkstra',
+    ARRAY['text','bigint','bigint','boolean','boolean'],
+    'setof record');
 
 -- testing for the signature that they return the correct names & columns
 

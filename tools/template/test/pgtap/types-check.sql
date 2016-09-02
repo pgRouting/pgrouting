@@ -7,8 +7,11 @@ SELECT can(ARRAY['pgr_MY_FUNCTION_NAME_LOWER']);
 
 
 --V2.4+
-SELECT has_function('pgr_MY_FUNCTION_NAME_LOWER', ARRAY['text','bigint','bigint','boolean']);
-SELECT function_returns('pgr_MY_FUNCTION_NAME_LOWER', ARRAY['text','bigint','bigint','boolean'],'setof record');
+SELECT has_function('pgr_MY_FUNCTION_NAME_LOWER',
+    ARRAY['text','bigint','bigint','boolean','boolean']);
+SELECT function_returns('pgr_MY_FUNCTION_NAME_LOWER',
+    ARRAY['text','bigint','bigint','boolean','boolean'],
+    'setof record');
 
 -- testing for the signature that they return the correct names & columns
 

@@ -23,16 +23,16 @@ BEGIN
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
-            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
+            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
-            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
+            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
 
 
@@ -40,9 +40,9 @@ BEGIN
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
-            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
+            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
 
 
@@ -51,16 +51,16 @@ BEGIN
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
-            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
+            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
-            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
+            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
 
 
@@ -68,9 +68,9 @@ BEGIN
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
-            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
+            RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
 
         END LOOP;

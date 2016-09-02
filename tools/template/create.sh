@@ -2,7 +2,7 @@
 
 
 #dont put pgr_ on MY_FUNCTION_NAME that is done automatically
-MY_FUNCTION_NAME="bdDijkstra"
+MY_FUNCTION_NAME="funnyDijkstra"
 DEVELOPER_NAME="Celia Virginia Vergara Castillo"
 DEVELOPER_EMAIL="vicky_vergara@hotmail.com" 
 YEAR="2016"
@@ -133,13 +133,13 @@ echo "updating test/doc-function1.test.sql"
 sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/test/doc-function1.test.sql
 
 echo "updating the test/pgtap/types-check.sql"
-sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/" "$MY_FUNCTION_NAME"/test/pgtap/types-check.sql
+sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/types-check.sql
 
 echo "updating the test/pgtap/function1-compare-dijkstra.sql"
-sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/" "$MY_FUNCTION_NAME"/test/pgtap/function1-compare-dijkstra.sql
+sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-compare-dijkstra.sql
 
 echo "updating the test/pgtap/function1-innerQuery.sql"
-sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/" "$MY_FUNCTION_NAME"/test/pgtap/function1-innerQuery.sql
+sed -i "s/MY_FUNCTION_NAME_LOWER/$MY_FUNCTION_NAME_LOWER/g" "$MY_FUNCTION_NAME"/test/pgtap/function1-innerQuery.sql
 
 mv "$MY_FUNCTION_NAME"/test/doc-function1.test.sql "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".test.sql
 mv "$MY_FUNCTION_NAME"/test/doc-function1.result "$MY_FUNCTION_NAME"/test/doc-"$MY_FUNCTION_NAME".result

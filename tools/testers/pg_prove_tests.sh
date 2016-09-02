@@ -42,7 +42,7 @@ then
 fi
 
 pg_prove ../../src/bdDijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/bd_dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+#pg_prove ../../src/bd_dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/max_flow/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
