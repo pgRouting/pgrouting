@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(1734);
+SELECT plan(1156);
 
 SET client_min_messages TO ERROR;
 
@@ -27,14 +27,6 @@ BEGIN
                 || ', true)';
             RETURN query SELECT set_eq(MY_FUNCTION_NAME_LOWER_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
 
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
-
-            MY_FUNCTION_NAME_LOWER_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
-            RETURN query SELECT set_eq(MY_FUNCTION_NAME_LOWER_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
-
-
 
             inner_sql := 'SELECT id, source, target, cost FROM edge_table';
             dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
@@ -54,14 +46,6 @@ BEGIN
             MY_FUNCTION_NAME_LOWER_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
             RETURN query SELECT set_eq(MY_FUNCTION_NAME_LOWER_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
-
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-
-            MY_FUNCTION_NAME_LOWER_sql := 'SELECT * FROM pgr_MY_FUNCTION_NAME_LOWER($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-            RETURN query SELECT set_eq(MY_FUNCTION_NAME_LOWER_sql, dijkstra_sql, MY_FUNCTION_NAME_LOWER_sql);
-
 
 
             inner_sql := 'SELECT id, source, target, cost FROM edge_table';
