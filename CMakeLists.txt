@@ -88,7 +88,8 @@ set(PgRouting_SOURCE_NAMES
     #----------------------
     "alpha_shape"
     "bd_astar"
-    "bdDijkstra" # 2.4
+    "bd_dijkstra" # 2.0
+    #"bdDijkstra" # 2.4
     "trsp"
 
     #----------------------
@@ -127,7 +128,7 @@ set(PgRouting_SQL_DIRECTORIES
     #----------------------
     # Wrappers for backwards compatibility 
     #----------------------
-    "bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
+    #"bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
     "apsp_johnson"  # 2.0 wrap of pgr_johnson
     "apsp_warshall" # 2.0 wrap of pgr_warshall
     "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
