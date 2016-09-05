@@ -49,7 +49,9 @@ static
 bool
 fetch_column_info(
         Column_info_t *info) {
+#if 0
     PGR_DBG("Fetching column info of %s", info->name);
+#endif
     info->colNumber =  SPI_fnumber(SPI_tuptable->tupdesc, info->name);
     if (info->strict && !column_found(info->colNumber)) {
         elog(ERROR, "Column '%s' not Found", info->name);
@@ -59,7 +61,9 @@ fetch_column_info(
         if (SPI_result == SPI_ERROR_NOATTRIBUTE) {
             elog(ERROR, "Type of column '%s' not Found", info->name);
         }
+#if 0
         PGR_DBG("Column %s found: %lu", info->name, info->type);
+#endif
         return true;
     }
     PGR_DBG("Column %s not found", info->name);
@@ -181,7 +185,9 @@ pgr_SPI_getBigInt(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-INTEGER",
                     info.name);
     }
+#if 0
     PGR_DBG("Variable: %s Value: %ld", info.name, value);
+#endif
     return value;
 }
 
@@ -215,7 +221,9 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
                     "Unexpected Column type of %s. Expected ANY-NUMERICAL",
                     info.name);
     }
+#if 0
     PGR_DBG("Variable: %s Value: %lf", info.name, value);
+#endif
     return value;
 }
 

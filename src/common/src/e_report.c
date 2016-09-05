@@ -122,10 +122,6 @@ pgr_global_report(
         char **notice_msg,
         char **err_msg) {
 
-    PGR_DBG("Returned log message = %s", *log_msg);
-    PGR_DBG("Returned notice message = %s", *notice_msg);
-    PGR_DBG("Returned error message = %s", *err_msg);
-
     char *notice = NULL;
     if (*notice_msg){
         notice = pgr_cstring2char(*notice_msg);
@@ -142,6 +138,10 @@ pgr_global_report(
     if (*log_msg){
         log = pgr_cstring2char(*log_msg);
         free(*log_msg);
+    }
+
+    if (!notice && log) {
+        PGR_DBG("%s", log);
     }
 
     if (notice) {

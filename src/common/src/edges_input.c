@@ -205,8 +205,9 @@ get_edges_9_columns(
             size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
+#if 0
             PGR_DBG("processing %ld edge tupĺes", ntuples);
-
+#endif
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_edge_with_xy(&tuple, &tupdesc, info,
@@ -227,7 +228,9 @@ get_edges_9_columns(
     }
 
     (*total_edges) = total_tuples;
+#if 0
     PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*total_edges));
+#endif
     time_msg(" reading Edges with xy", start_t, clock());
 }
 

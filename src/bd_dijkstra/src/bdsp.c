@@ -275,9 +275,11 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
                        path, path_count, &err_msg);
 
   PGR_DBG("Back from bidirsp_wrapper() ret: %d", ret);
+#if 0
   if (ret < 0) {
       elog(ERROR, "Error computing path: %s", err_msg);
   }
+#endif
 
   PGR_DBG("*path_count = %i\n", *path_count);
 
@@ -311,7 +313,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS) {
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
       int path_count = 0;
-#ifdef DEBUG
+#ifndef NDEBUG
       int ret = -1;
 #endif
       int i;
@@ -330,7 +332,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS) {
 
       PGR_DBG("Calling compute_bidirsp");
 
-#ifdef DEBUG
+#ifndef NDEBUG
       ret =
 #endif
         compute_bidirsp(pgr_text2char(PG_GETARG_TEXT_P(0)),
@@ -339,7 +341,7 @@ bidir_dijkstra_shortest_path(PG_FUNCTION_ARGS) {
                                    PG_GETARG_BOOL(3),
                                    PG_GETARG_BOOL(4),
                                    &path, &path_count);
-#ifdef DEBUG
+#ifndef NDEBUG
     double total_cost = 0;
       PGR_DBG("Ret is %i", ret);
       if (ret >= 0) {

@@ -3,6 +3,8 @@
 SELECT plan(47);
 SET client_min_messages TO ERROR;
 
+SELECT todo_start('pgr_bdDijstra rewrite');
+
 
 SELECT has_function('pgr_bddijkstra',
     ARRAY['text', 'bigint', 'bigint', 'boolean']);
@@ -111,6 +113,7 @@ SELECT test_anyNumerical('pgr_bddijkstra',
     ARRAY['id', 'source', 'target', 'cost'],
     'cost');
 
+SELECT todo_end();
 
 SELECT finish();
 ROLLBACK;

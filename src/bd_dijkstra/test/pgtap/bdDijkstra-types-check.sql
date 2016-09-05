@@ -33,6 +33,7 @@ SELECT lives_ok('q1', 'edges query accepts INTEGER & FLOAT');
 
 
 
+
 -- id
 SELECT lives_ok(
     'SELECT * FROM pgr_bddijkstra(

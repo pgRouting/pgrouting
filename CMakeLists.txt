@@ -13,6 +13,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 #
 # On Master cmake -DMAKE_BUILD_TYPE=Release
 #----------------------
+CMAKE_POLICY(SET CMP0046 OLD)
 
 
 message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
@@ -88,8 +89,7 @@ set(PgRouting_SOURCE_NAMES
     #----------------------
     "alpha_shape"
     "bd_astar"
-    "bd_dijkstra" # 2.0
-    #"bdDijkstra" # 2.4
+    "bdDijkstra" # 2.4
     "trsp"
 
     #----------------------
@@ -128,7 +128,7 @@ set(PgRouting_SQL_DIRECTORIES
     #----------------------
     # Wrappers for backwards compatibility 
     #----------------------
-    #"bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
+    "bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
     "apsp_johnson"  # 2.0 wrap of pgr_johnson
     "apsp_warshall" # 2.0 wrap of pgr_warshall
     "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
@@ -398,7 +398,7 @@ endif()
 
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes")
 #TODO remove the optimizer flag when pgr_bdijkstra gets fixed
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -O2 -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

@@ -65,7 +65,11 @@ END
 $BODY$
 language plpgsql;
 
+SELECT todo_start('pgr_bdDijstra rewrite');
+
 SELECT * from bddijkstra_compare_dijkstra();
+
+SELECT todo_end();
 
 
 SELECT * FROM finish();

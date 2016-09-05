@@ -43,7 +43,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#include "./pgr_bdDijkstra.hpp"
+#include "./../../common/src/pgr_base_graph.hpp"
 
 
 
@@ -63,10 +64,14 @@ pgr_bdDijkstra(
         G &graph,
         int64_t source,
         int64_t target,
+        std::ostream &log,
         bool only_cost = false) {
-    Path path;
-    Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, path, source, target, only_cost);
+    log << "entering static function\n";
+    Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
+
+    auto path = fn_bdDijkstra.pgr_bdDijkstra(graph, graph.get_V(source), graph.get_V(target), only_cost); 
+    log << fn_bdDijkstra.log();
+
     return path;
 }
 
@@ -99,6 +104,7 @@ do_pgr_bdDijkstra(
 
         Path path;
 
+        log << "starting process\n";
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
@@ -106,6 +112,7 @@ do_pgr_bdDijkstra(
             path = pgr_bdDijkstra(digraph,
                     start_vid,
                     end_vid,
+                    log,
                     only_cost);
         } else {
             log << "Working with Undirected Graph\n";
@@ -115,6 +122,7 @@ do_pgr_bdDijkstra(
                     undigraph,
                     start_vid,
                     end_vid,
+                    log,
                     only_cost);
         }
 
@@ -125,13 +133,12 @@ do_pgr_bdDijkstra(
             (*return_count) = 0;
             notice <<
                 "No paths found between start_vid and end_vid vertices";
-            return;
+        } else {
+            (*return_tuples) = pgr_alloc(count, (*return_tuples));
+            size_t sequence = 0;
+            path.generate_postgres_data(return_tuples, sequence);
+            (*return_count) = sequence;
         }
-
-        (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        size_t sequence = 0;
-        path.generate_postgres_data(return_tuples, sequence);
-        (*return_count) = sequence;
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?

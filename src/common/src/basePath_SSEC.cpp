@@ -35,6 +35,7 @@ along with this program; if not, write to the Free Software
 #include <iostream>
 #include <algorithm>
 #include "./pgr_types.h"
+#include "./pgr_assert.h"
 
 
 void Path::push_front(Path_t data) {
@@ -48,7 +49,7 @@ void Path::push_back(Path_t data) {
 }
 
 void Path::reverse() {
-    // std::swap(m_start_id, m_end_id);
+    std::swap(m_start_id, m_end_id);
     std::deque< Path_t > newpath;
     for (size_t i = 0; i < path.size(); ++i) {
         newpath.push_front({
@@ -65,7 +66,6 @@ void Path::reverse() {
     }
     path = newpath;
 }
-
 
 
 void Path::clear() {
@@ -116,6 +116,57 @@ bool Path::isEqual(const Path &subpath) const {
 void Path::appendPath(const Path &o_path) {
     path.insert(path.end(), o_path.path.begin(), o_path.path.end());
     m_tot_cost +=  o_path.m_tot_cost;
+}
+
+
+/*!
+ 
+    Path: 2 -> 9
+    seq   node    edge    cost    agg_cost
+    0     2       4       1       0
+    1     5       8       1       1
+    2     6       9       1       2
+    3     9       -1      0       3
+    Path: 9 -> 3
+    seq   node    edge    cost    agg_cost
+    0     9       16      1       0
+    1     4       3       1       1
+    2     3       -1      0       2
+    Path: 2 -> 3
+    seq   node    edge    cost    agg_cost
+    0     2       4       1       0
+    1     5       8       1       1
+    2     6       9       1       2
+    3     9       16      1       3
+    4     4       3       1       4
+    5     3       -1      0       5
+
+ */
+void Path::append(const Path &other) {
+    pgassert(m_end_id == other.m_start_id);
+    pgassert(path.back().cost == 0);
+    pgassert(path.back().edge == -1);
+    if (other.m_start_id == other.m_end_id) {
+        pgassert(other.path.empty());
+        return;
+    }
+    if (m_start_id == m_end_id) {
+        pgassert(path.empty());
+        *this = other;
+        return;
+    }
+
+    m_end_id = other.m_end_id;
+
+    auto last = path.back();
+    auto agg_cost = last.agg_cost;
+    
+    path.pop_back();
+
+    for (auto item : other.path) {
+        item.agg_cost += agg_cost;
+       push_back(item);
+    };
 }
 
 

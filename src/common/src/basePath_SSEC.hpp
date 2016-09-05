@@ -104,6 +104,7 @@ class Path {
 
     bool isEqual(const Path &subpath) const;
     void appendPath(const Path &o_path);
+    void append(const Path &other);
     void empty_path(unsigned int d_vertex);
 
     void get_pg_dd_path(

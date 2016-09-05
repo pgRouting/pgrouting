@@ -7,10 +7,10 @@
 
 #choose precise or trusty
 
-group: edge
-dist: trusty    
+#group: edge
+#dist: trusty    
 
-#dist: precise
+dist: precise
 
 sudo: required
 
@@ -100,7 +100,7 @@ after_script:
   # blank
 
 #after_success:
-  - make doc
+  #- make doc
   #- doxygen -v
   #- make doxy
 
