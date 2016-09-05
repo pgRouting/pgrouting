@@ -20,19 +20,19 @@ BEGIN
 
             -- DIRECTED
             inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            dijkstra_sql := 'SELECT seq,node,edge,cost::text,agg_cost::text FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT seq,node,edge,cost::text,agg_cost::text FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
             RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
 
             inner_sql := 'SELECT id, source, target, cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            dijkstra_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
             RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
@@ -40,19 +40,19 @@ BEGIN
 
             -- UNDIRECTED
             inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            dijkstra_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
             RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
 
             inner_sql := 'SELECT id, source, target, cost FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            dijkstra_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            bddijkstra_sql := 'SELECT * FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            bddijkstra_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
             RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
 
@@ -65,11 +65,9 @@ END
 $BODY$
 language plpgsql;
 
-SELECT todo_start('pgr_bdDijstra rewrite');
 
 SELECT * from bddijkstra_compare_dijkstra();
 
-SELECT todo_end();
 
 
 SELECT * FROM finish();

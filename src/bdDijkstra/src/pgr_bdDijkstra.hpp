@@ -143,17 +143,23 @@ class Pgr_bdDijkstra {
                      explore_backward(backward_node);
                  }
                  if (found(backward_node.second)
-                         || backward_node.second == v_source) break;
+                         || backward_node.second == v_source) {
+                     break;
+                 }
              } else {
                  forward_queue.pop();
                  if (!forward_finished[forward_node.second]) {
                      explore_forward(forward_node);
                  }
                  if (found(forward_node.second)
-                         || forward_node.second == v_target) break;
+                         || forward_node.second == v_target) {
+                     break;
+                 }
              }
          }
+
          if (v_min_node == -1) return Path();
+         // !forward_queue.empty() &&  !backward_queue.empty()
          Path forward_path = get_path(
                  graph,
                  v_source,
@@ -202,9 +208,11 @@ class Pgr_bdDijkstra {
 
              auto edge_cost = graph.graph[*out].cost;
              auto next_node = target(*out, graph.graph);
+             if (graph.m_gType == UNDIRECTED && next_node == current_node) {
+                 next_node = source(*out, graph.graph);
+             }
 
              if (forward_finished[next_node]) continue;
-
 
              if (edge_cost + current_cost < forward_cost[next_node]) {
                  forward_cost[next_node] = edge_cost + current_cost;
@@ -232,6 +240,7 @@ class Pgr_bdDijkstra {
              }
 
              if (backward_finished[next_node]) continue;
+
              if (edge_cost + current_cost < backward_cost[next_node]) {
                  backward_cost[next_node] = edge_cost + current_cost;
                  backward_predecessor[next_node] = current_node;
