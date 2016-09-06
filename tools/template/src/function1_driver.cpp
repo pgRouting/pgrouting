@@ -136,16 +136,16 @@ do_pgr_MY_FUNCTION_NAME(
         *notice_msg = notice.str().empty()?
             nullptr :
             strdup(notice.str().c_str());
-    } catch (AssertFailedException &exept) {
+    } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what();
+        err << except.what();
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
-    } catch (std::exception& exept) {
+    } catch (std::exception &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what();
+        err << execpt.what();
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch(...) {

@@ -147,16 +147,16 @@ do_pgr_bdDijkstra(
         *notice_msg = notice.str().empty()?
             nullptr :
             strdup(notice.str().c_str());
-    } catch (AssertFailedException &exept) {
+    } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what();
+        err << except.what();
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
-    } catch (std::exception& exept) {
+    } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << exept.what();
+        err << except.what();
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch(...) {
