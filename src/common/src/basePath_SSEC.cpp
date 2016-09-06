@@ -144,8 +144,6 @@ void Path::appendPath(const Path &o_path) {
  */
 void Path::append(const Path &other) {
     pgassert(m_end_id == other.m_start_id);
-    pgassert(path.back().cost == 0);
-    pgassert(path.back().edge == -1);
     if (other.m_start_id == other.m_end_id) {
         pgassert(other.path.empty());
         return;
@@ -155,6 +153,8 @@ void Path::append(const Path &other) {
         *this = other;
         return;
     }
+    pgassert(path.back().cost == 0);
+    pgassert(path.back().edge == -1);
 
     m_end_id = other.m_end_id;
 

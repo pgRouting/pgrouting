@@ -1,8 +1,8 @@
 \i setup.sql
 
-SELECT plan(1156);
-
 SET client_min_messages TO ERROR;
+
+SELECT plan(544);
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
@@ -15,8 +15,8 @@ dijkstra_sql TEXT;
 bddijkstra_sql TEXT;
 BEGIN
 
-    FOR i IN 1.. cant LOOP
-        FOR j IN 1.. cant LOOP
+    FOR i IN 1.. cant  LOOP
+        FOR j IN 2.. cant BY 2 LOOP
 
             -- DIRECTED
             inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';
@@ -35,8 +35,6 @@ BEGIN
             bddijkstra_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_bddijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
             RETURN query SELECT set_eq(bddijkstra_sql, dijkstra_sql, bddijkstra_sql);
-
-
 
             -- UNDIRECTED
             inner_sql := 'SELECT id, source, target, cost, reverse_cost FROM edge_table';

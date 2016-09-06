@@ -110,7 +110,7 @@ class Pgr_bdDijkstra {
          std::iota(backward_predecessor.begin(), backward_predecessor.end(), 0);
 
          v_min_node = -1;
-         m_MinCost = INF;
+         best_cost = INF;
      } 
 
      Path bidir_dijkstra() {
@@ -142,8 +142,7 @@ class Pgr_bdDijkstra {
                  if (!backward_finished[backward_node.second]) {
                      explore_backward(backward_node);
                  }
-                 if (found(backward_node.second)
-                         || backward_node.second == v_source) {
+                 if (found(backward_node.second)) {
                      break;
                  }
              } else {
@@ -151,8 +150,7 @@ class Pgr_bdDijkstra {
                  if (!forward_finished[forward_node.second]) {
                      explore_forward(forward_node);
                  }
-                 if (found(forward_node.second)
-                         || forward_node.second == v_target) {
+                 if (found(forward_node.second)) {
                      break;
                  }
              }
@@ -188,10 +186,14 @@ class Pgr_bdDijkstra {
          /*
           * Update common node
           */
-         if(forward_finished[node]
-                 && backward_finished[node]) {
-             v_min_node = node;
-             return true;
+         if(forward_finished[node] && backward_finished[node]) {
+             if (best_cost >= forward_cost[node] + backward_cost[node]) {
+                 v_min_node = node;
+                 best_cost =  forward_cost[node] + backward_cost[node];
+                 return false;
+             } else {
+                 return true;
+             }
          }
          return false;
      }
@@ -264,7 +266,7 @@ class Pgr_bdDijkstra {
      Priority_queue forward_queue;
      Priority_queue backward_queue;
 
-     double m_MinCost;
+     double best_cost;
      bool cost_only;
 
      std::vector<bool> backward_finished;
