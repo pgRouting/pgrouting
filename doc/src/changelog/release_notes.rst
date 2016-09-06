@@ -28,6 +28,22 @@ Table of contents
    - :ref:`changelog_2_0_0`
    - :ref:`changelog_1_x`
 
+.. _changelog_2_4_0:
+
+pgRouting 2.4.0 Release Notes
+===============================================================================
+
+.. rubric:: New Signatures
+
+Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
+
+* pgr_bdDijkstra
+
+.. rubric:: Deprecated Signatures
+
+* pgr_bddijkstra - use pgr_bdDijkstra instead
+
+
 .. _changelog_2_3_0:
 
 pgRouting 2.3.0 Release Notes

@@ -2,7 +2,18 @@
 Changes for 2.3.0
 -------------------------------------------------------------------------------
 
-- New Signatures:
+* New Signatures:
+
+  * pgr_bdDijkstra
+
+* Deprecated Signatures
+
+  * pgr_bddijkstra - use pgr_bdDijkstra instead
+
+Changes for 2.3.0
+-------------------------------------------------------------------------------
+
+* New Signatures:
 
   * pgr_TSP
   * pgr_aStar

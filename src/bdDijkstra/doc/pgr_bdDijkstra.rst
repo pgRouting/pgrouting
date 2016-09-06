@@ -12,11 +12,10 @@
 pgr_bdDijkstra
 ===============================================================================
 
-``pgr_bdDijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
-In particular, the Dijkstra algorithm implemented by Boost.Graph.
+``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional Dijkstra algorithm.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
+   :target: http://www.boost.org/libs/graph/doc
 
    Boost Graph Inside
 
@@ -24,35 +23,32 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 Synopsis
 -------------------------------------------------------------------------------
 
-Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
-It is a graph search algorithm that solves the shortest path problem for
-a graph with non-negative edge path costs, producing a shortest path from
+Based on Dijkstra's algorithm, the bidirectional search finds a shortest path
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
+It runs two simultaneous searches: one forward from the source, and one backward from the target,
+stopping when the two meet in the middle.
 This implementation can be used with a directed graph and an undirected graph.
 
 Characteristics
 -------------------------------------------------------------------------------
 
 The main Characteristics are:
-  - Process is done only on edges with positive costs.
-  - Values are returned when there is a path.
 
-    - When the starting vertex and ending vertex are the same, there is no path.
+- Process is done only on edges with positive costs.
+- Values are returned when there is a path.
 
-      - The `agg_cost` the non included values `(v, v)` is `0`
+- When the starting vertex and ending vertex are the same, there is no path.
 
-    - When the starting vertex and ending vertex are the different and there is no path:
+  - The `agg_cost` the non included values `(v, v)` is `0`
 
-      - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
+- When the starting vertex and ending vertex are the different and there is no path:
 
-  - For optimization purposes, any duplicated value in the `start_vids` or `end_vids` are ignored.
+  - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
 
-  - The returned values are ordered:
+- Running time (worse case scenario): :math:`O((V \log V + E))`
+- For large graphs where there is a path bewtween the starting vertex and ending vertex:
 
-    - `start_vid` ascending
-    - `end_vid` ascending
-
-  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
+  - It is expected to terminate faster than pgr_dijkstra (one to one)
 
 
 Signature Summary
@@ -61,6 +57,7 @@ Signature Summary
 .. code-block:: none
 
     pgr_dijkstra(edges_sql, start_vid,  end_vid)
+    pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
 
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
         OR EMPTY SET
@@ -97,7 +94,7 @@ Complete Signature
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed);
+    pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
@@ -146,7 +143,9 @@ Column         Type       Description
 See Also
 -------------------------------------------------------------------------------
 
-* http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* :ref:`pgr_dijkstra`
+* http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
+* https://en.wikipedia.org/wiki/Bidirectional_search
 * The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables

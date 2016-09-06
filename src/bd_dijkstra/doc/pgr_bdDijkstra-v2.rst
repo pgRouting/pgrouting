@@ -7,13 +7,16 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _bd_dijkstra:
+.. _bd_dijkstra_v2.0:
 
-pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path
+pgr_bdDijkstra  - Deprecated Signature
 ===============================================================================
 
-.. index:: 
-	single: bdDijkstra(Complete Signature)
+.. warning:: This function signature is deprecated!!!
+
+    * That means it has been replaced by new signature(s)
+    * This signature is no longer supported, and may be removed from future versions.
+    * All code that use this function signature should be converted to use its replacement :ref:`pgr_bddijkstra`.
 
 
 Name
