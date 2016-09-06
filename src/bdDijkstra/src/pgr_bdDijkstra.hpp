@@ -156,7 +156,7 @@ class Pgr_bdDijkstra {
              }
          }
 
-         if (v_min_node == -1) return Path();
+         if (best_cost == INF) return Path();
          // !forward_queue.empty() &&  !backward_queue.empty()
          Path forward_path = get_path(
                  graph,
