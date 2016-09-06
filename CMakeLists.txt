@@ -13,7 +13,9 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 #
 # On Master cmake -DMAKE_BUILD_TYPE=Release
 #----------------------
-CMAKE_POLICY(SET CMP0046 OLD)
+if(POLICY CMP0046)
+    cmake_policy(SET CMP0046 OLD)
+endif()
 
 
 message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
