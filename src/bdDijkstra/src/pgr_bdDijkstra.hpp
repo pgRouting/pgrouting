@@ -47,7 +47,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/basePath_SSEC.hpp"
-#include "./../../common/src/get_path.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
 
 
@@ -86,8 +85,7 @@ class Pgr_bdDijkstra {
          if (v_source == v_target) {
             return Path(v_source, v_target);
          }
-         cost_only = only_cost;
-         return bidir_dijkstra();
+         return bidir_dijkstra(only_cost);
      }
 
      std::string log() const {return m_log.str();}
@@ -113,7 +111,7 @@ class Pgr_bdDijkstra {
          best_cost = INF;
      } 
 
-     Path bidir_dijkstra() {
+     Path bidir_dijkstra(bool only_cost) {
          m_log << "bidir_dijkstra\n";
 
          Pgr_bdDijkstra< G >::initialize();
@@ -158,19 +156,21 @@ class Pgr_bdDijkstra {
 
          if (best_cost == INF) return Path();
          // !forward_queue.empty() &&  !backward_queue.empty()
-         Path forward_path = get_path(
+         Path forward_path(
                  graph,
                  v_source,
                  v_min_node,
                  forward_predecessor,
                  forward_cost,
+                 only_cost,
                  true);
-         Path backward_path = get_path(
+         Path backward_path(
                  graph,
                  v_target,
                  v_min_node,
                  backward_predecessor,
                  backward_cost,
+                 only_cost,
                  false);
          m_log << forward_path;
          backward_path.reverse();

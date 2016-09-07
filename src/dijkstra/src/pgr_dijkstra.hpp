@@ -44,9 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
-#if 0
-#include "./../../common/src/get_path.hpp"
-#endif
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
 #if 0
@@ -222,18 +219,6 @@ class Pgr_dijkstra {
      }
 
 
-#if 0
-     void get_path(
-             const G &graph,
-             V source,
-             V target,
-             Path &path) const;
-     void get_cost(
-             const G &graph,
-             V source,
-             V target,
-             Path &path) const;
-#endif
 
 
      // used when multiple goals
@@ -250,19 +235,6 @@ class Pgr_dijkstra {
          return paths;
      }
 
-#if 0
-     std::deque<Path> get_costs(
-             const G &graph,
-             V source,
-             std::vector< V > &targets) const {
-         std::deque<Path> paths;
-         for (const auto target : targets) {
-             paths.push_back(
-                     get_cost(graph, source, target, predecessors, distances));
-         }
-         return paths;
-     }
-#endif
 
 
      //! @name members;
@@ -375,122 +347,6 @@ Pgr_dijkstra< G >::get_nodesInDistance(
 }
 
 
-#if 0
-template < class G >
-void
-Pgr_dijkstra< G >::get_paths(
-        const G &graph,
-        std::deque< Path > &paths,
-        V source,
-        std::vector< V > &targets) const {
-    Path path;
-    typename std::vector< V >::iterator s_it;
-    for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
-        get_path(graph, source, *s_it, predecessors, distances));
-    }
-    for (const auto target : targets) {
-        paths.push_back(
-                get_path(graph, source, target, predecessors, distances));
-    }
-}
-
-template < class G >
-void
-Pgr_dijkstra< G >::get_path(
-        const G &graph,
-        V source,
-        V target,
-        Path &r_path) const {
-    // backup of the target
-    V target_back = target;
-    uint64_t from(graph.graph[source].id);
-    uint64_t to(graph.graph[target].id);
-
-    // no path was found
-    if (target == predecessors[target]) {
-        r_path.clear();
-        return;
-    }
-
-    // find out how large is the path
-    int64_t result_size = 1;
-    while (target != source) {
-        if (target == predecessors[target]) break;
-        result_size++;
-        target = predecessors[target];
-    }
-
-    // recover the target
-    target = target_back;
-
-    // variables that are going to be stored
-    int64_t vertex_id;
-    int64_t edge_id;
-    double cost;
-
-    // working from the last to the beginning
-
-    // initialize the sequence
-    auto seq = result_size;
-    // the last stop is the target
-    Path path(from, to);
-    path.push_front(
-            {graph.graph[target].id, -1,
-            0,  distances[target]});
-
-    while (target != source) {
-        // we are done when the predecesor of the target is the target
-        if (target == predecessors[target]) break;
-        // values to be inserted in the path
-        --seq;
-        cost = distances[target] - distances[predecessors[target]];
-        vertex_id = graph.graph[predecessors[target]].id;
-        edge_id = graph.get_edge_id(predecessors[target], target, cost);
-
-        path.push_front({vertex_id, edge_id,
-                cost, (distances[target] - cost)});
-        target = predecessors[target];
-    }
-    r_path = path;
-    return;
-}
-
-template < class G >
-void
-Pgr_dijkstra< G >::get_costs(
-        const G &graph,
-        std::deque< Path > &paths,
-        V source,
-        std::vector< V > &targets) const {
-    for (auto s_it = targets.begin(); s_it != targets.end(); ++s_it) {
-        paths.push_back(
-                get_cost(graph, source, *s_it, predecessors, distances));
-    }
-}
-
-
-template < class G >
-void
-Pgr_dijkstra< G >::get_cost(
-        const G &graph,
-        V source,
-        V target,
-        Path &r_path) const {
-    // backup of the target
-    int64_t from(graph.graph[source].id);
-    int64_t to(graph.graph[target].id);
-
-    // no path was found
-    if (target == predecessors[target]) {
-        r_path.clear();
-    } else {
-        Path path(from, to);
-        path.push_front(
-                {to, -1, distances[target], distances[target]});
-        r_path = path;
-    }
-}
-#endif
 
 template < class G >
 // preparation for many to distance
