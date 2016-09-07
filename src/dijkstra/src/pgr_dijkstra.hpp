@@ -438,13 +438,6 @@ Pgr_dijkstra< G >::dijkstra(
 
     // get the results
     path = Path(graph, v_source, v_target, predecessors, distances, only_cost, true);
-#if 0
-    if (only_cost) {
-        path = get_cost(graph, v_source, v_target, predecessors, distances);
-    } else {
-        path = Path(graph, v_source, v_target, predecessors, distances, only_cost, true);
-    }
-#endif
     return;
 }
 
@@ -480,13 +473,7 @@ Pgr_dijkstra< G >::dijkstra(
 
     // get the results // route id are the targets
     paths = get_paths(graph, v_source, v_targets, only_cost);
-#if 0
-    if (only_cost) {
-        paths = get_costs(graph, v_source, v_targets);
-    } else {
-        paths = get_paths(graph, v_source, v_targets);
-    }
-#endif
+
     std::stable_sort(paths.begin(), paths.end(),
             [](const Path &e1, const Path &e2)->bool {
             return e1.end_id() < e2.end_id();
