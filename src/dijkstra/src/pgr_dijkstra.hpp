@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
+#include "./../../common/src/get_path.hpp"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
 #if 0
@@ -219,6 +220,7 @@ class Pgr_dijkstra {
      }
 
 
+#if 0
      void get_path(
              const G &graph,
              V source,
@@ -229,16 +231,17 @@ class Pgr_dijkstra {
              V source,
              V target,
              Path &path) const;
+#endif
 
 
      // used when multiple goals
-     void get_path(
+     void get_paths(
              const G &graph,
              std::deque< Path > &paths,
              V source,
              std::vector< V > &targets) const;
 
-     void get_cost(
+     void get_costs(
              const G &graph,
              std::deque< Path > &paths,
              V source,
@@ -357,20 +360,25 @@ Pgr_dijkstra< G >::get_nodesInDistance(
 
 template < class G >
 void
-Pgr_dijkstra< G >::get_path(
+Pgr_dijkstra< G >::get_paths(
         const G &graph,
         std::deque< Path > &paths,
         V source,
         std::vector< V > &targets) const {
+#if 0
     Path path;
     typename std::vector< V >::iterator s_it;
     for (s_it = targets.begin(); s_it != targets.end(); ++s_it) {
-        path.clear();
-        get_path(graph, source, *s_it, path);
-        paths.push_back(path);
+                get_path(graph, source, *s_it, predecessors, distances));
+    }
+#endif
+    for (const auto target : targets) {
+        paths.push_back(
+                get_path(graph, source, target, predecessors, distances));
     }
 }
 
+#if 0
 template < class G >
 void
 Pgr_dijkstra< G >::get_path(
@@ -431,23 +439,23 @@ Pgr_dijkstra< G >::get_path(
     r_path = path;
     return;
 }
+#endif
 
 template < class G >
 void
-Pgr_dijkstra< G >::get_cost(
+Pgr_dijkstra< G >::get_costs(
         const G &graph,
         std::deque< Path > &paths,
         V source,
         std::vector< V > &targets) const {
-    Path path;
     for (auto s_it = targets.begin(); s_it != targets.end(); ++s_it) {
-        path.clear();
-        get_cost(graph, source, *s_it, path);
-        paths.push_back(path);
+        paths.push_back(
+                get_cost(graph, source, *s_it, predecessors, distances));
     }
 }
 
 
+#if 0
 template < class G >
 void
 Pgr_dijkstra< G >::get_cost(
@@ -469,6 +477,7 @@ Pgr_dijkstra< G >::get_cost(
         r_path = path;
     }
 }
+#endif
 
 template < class G >
 // preparation for many to distance
@@ -560,9 +569,9 @@ Pgr_dijkstra< G >::dijkstra(
 
     // get the results
     if (only_cost) {
-        get_cost(graph, v_source, v_target, path);
+        path = get_cost(graph, v_source, v_target, predecessors, distances);
     } else {
-        get_path(graph, v_source, v_target, path);
+        path = get_path(graph, v_source, v_target, predecessors, distances);
     }
     return;
 }
@@ -599,9 +608,9 @@ Pgr_dijkstra< G >::dijkstra(
 
     // get the results // route id are the targets
     if (only_cost) {
-        get_cost(graph, paths, v_source, v_targets);
+        get_costs(graph, paths, v_source, v_targets);
     } else {
-        get_path(graph, paths, v_source, v_targets);
+        get_paths(graph, paths, v_source, v_targets);
     }
 
     std::stable_sort(paths.begin(), paths.end(),

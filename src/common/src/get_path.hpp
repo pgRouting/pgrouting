@@ -41,6 +41,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_base_graph.hpp"
 
 
+/*! @brief returns a "path" from v_source to v_target
+ 
+  @returns empty path, when there is no path
+*/
 template < typename G , typename V>
 Path get_path( 
         const G &graph,
@@ -48,7 +52,7 @@ Path get_path(
         const V v_target,
         const std::vector<V> &predecessors,
         const std::vector<double> &distances,
-        bool normal) {
+        bool normal = true) {
     Path path(graph.graph[v_source].id, graph.graph[v_target].id);
     
     // no path was found
@@ -82,7 +86,8 @@ Path get_path(
          */
         auto cost = distances[target] - distances[predecessors[target]];
         auto vertex_id = graph.graph[predecessors[target]].id;
-        auto edge_id = normal? graph.get_edge_id(predecessors[target], target, cost)
+        auto edge_id = normal?
+            graph.get_edge_id(predecessors[target], target, cost)
             : graph.get_edge_id(target, predecessors[target], cost);
 
         path.push_front({
@@ -95,3 +100,30 @@ Path get_path(
 
     return path;
 }
+
+
+/*! @brief returns a "path" containing the only the cost
+
+  @returns empty path, when there is no path
+  */
+
+template < typename G , typename V>
+Path
+get_cost(
+        const G &graph,
+        const V v_source,
+        const V v_target,
+        const std::vector<V> &predecessors,
+        const std::vector<double> &distances) {
+    Path path(graph.graph[v_source].id, graph.graph[v_target].id);
+
+    if (v_target != predecessors[v_target]) {
+        path.push_front(
+                {graph.graph[v_target].id,
+                -1,
+                distances[v_target],
+                distances[v_target]});
+    }
+    return path;
+}
+
