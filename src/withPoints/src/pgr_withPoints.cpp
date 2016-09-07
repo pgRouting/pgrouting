@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_withPoints.hpp"
 #include "./msg_logger.hpp"
 
+#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 
 /*
@@ -350,8 +351,8 @@ create_new_edges(
                 continue;
             }
 
-            assert(edge.cost > 0 &&  edge.reverse_cost > 0);
-            assert(point.side != 'b');
+            pgassert(edge.cost > 0 &&  edge.reverse_cost > 0);
+            pgassert(point.side != 'b');
 
             if (driving_side == point.side) {
                 log << "two way and driving side is == than the side of the point\n";

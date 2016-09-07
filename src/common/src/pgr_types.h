@@ -85,12 +85,12 @@ typedef struct {
 /*
  * This one is for processing
  */
-typedef struct {
+struct Path_t{
     int64_t node;
     int64_t edge;
     double cost;
     double agg_cost;
-} Path_t;
+};
 
 /*
  * This ones are for returning the info to postgres

@@ -29,14 +29,12 @@ along with this program; if not, write to the Free Software
 #endif
 #endif
 
-
-#include "basePath_SSEC.hpp"
+#include "./basePath_SSEC.hpp"
 #include <deque>
 #include <iostream>
 #include <algorithm>
 #include "./pgr_types.h"
 #include "./pgr_assert.h"
-
 
 void Path::push_front(Path_t data) {
     path.push_front(data);
@@ -215,3 +213,94 @@ void Path::get_pg_ksp_path(
         sequence++;
     }
 }
+
+
+
+#if 0
+/*! @brief path constructor based on results
+
+  @returns empty path, when there is no path
+*/
+template <typename G , typename V>
+Path::Path(
+        const G &graph,
+        const V v_source,
+        const V v_target,
+        const std::vector<V> &predecessors,
+        const std::vector<double> &distances,
+        bool normal) : 
+    m_start_id(graph.graph[v_source].id),
+    m_end_id(graph.graph[v_target].id) {
+
+        // no path was found
+        if (v_target == predecessors[v_target]) {
+            return;
+        }
+
+        /*
+         * set the target
+         */
+        auto target = v_target;
+
+        /*
+         * the last stop is the target
+         */
+        push_front(
+                {graph.graph[target].id, -1,
+                0,  distances[target]});
+
+        /*
+         * get the path
+         */
+        while (target != v_source) {
+            /*
+             * done when the predecesor of the target is the target
+             */
+            if (target == predecessors[target]) break;
+
+            /*
+             * Inserting values in the path
+             */
+            auto cost = distances[target] - distances[predecessors[target]];
+            auto vertex_id = graph.graph[predecessors[target]].id;
+            auto edge_id = normal?
+                graph.get_edge_id(predecessors[target], target, cost)
+                : graph.get_edge_id(target, predecessors[target], cost);
+
+            push_front({
+                    vertex_id,
+                    edge_id,
+                    cost,
+                    distances[target] - cost});
+            target = predecessors[target];
+        }
+
+        return;
+    }
+
+
+/*! @brief returns a "path" containing the only the cost
+
+  @returns empty path, when there is no path
+  */
+
+template < typename G , typename V>
+Path
+get_cost(
+        const G &graph,
+        const V v_source,
+        const V v_target,
+        const std::vector<V> &predecessors,
+        const std::vector<double> &distances) {
+    Path path(graph.graph[v_source].id, graph.graph[v_target].id);
+
+    if (v_target != predecessors[v_target]) {
+        path.push_front(
+                {graph.graph[v_target].id,
+                -1,
+                distances[v_target],
+                distances[v_target]});
+    }
+    return path;
+}
+#endif
