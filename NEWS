@@ -1,5 +1,5 @@
 
-Changes for 2.3.0
+Changes for 2.4.0
 -------------------------------------------------------------------------------
 
 * New Signatures:
@@ -9,6 +9,12 @@ Changes for 2.3.0
 * Deprecated Signatures
 
   * pgr_bddijkstra - use pgr_bdDijkstra instead
+
+* Bug fix
+
+  * Bug fixes on proposed functions
+
+    * pgr_withPointsKSP: fixed ordering
 
 Changes for 2.3.0
 -------------------------------------------------------------------------------

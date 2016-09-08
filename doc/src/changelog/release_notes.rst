@@ -43,6 +43,12 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 
 * pgr_bddijkstra - use pgr_bdDijkstra instead
 
+.. rubric:: Bug fix
+
+* Bug fixes on proposed functions
+
+  * pgr_withPointsKSP: fixed ordering
+
 
 .. _changelog_2_3_0:
 
