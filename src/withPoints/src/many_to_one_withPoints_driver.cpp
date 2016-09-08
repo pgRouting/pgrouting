@@ -35,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include <algorithm>
-#include <set>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -93,8 +92,7 @@ do_pgr_many_to_one_withPoints(
                 new_edges);
 
 
-        std::set< int64_t > s_start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
-        std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
+        std::vector<int64_t> start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -106,20 +104,15 @@ do_pgr_many_to_one_withPoints(
             pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-            pgr_dijkstra(digraph, paths, start_vertices, end_vid, only_cost);
+            paths = pgr_dijkstra(digraph, start_vertices, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-            pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);
+            paths = pgr_dijkstra(undigraph, start_vertices, end_vid, only_cost);
         }
 
-#if 0
-        for (auto &path : paths) {
-            adjust_pids(points, path);
-        }
-#endif
         if (!details) {
             for (auto &path : paths) {
                 eliminate_details(path, edges_to_modify);

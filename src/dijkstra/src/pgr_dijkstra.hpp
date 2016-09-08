@@ -109,9 +109,9 @@ pgr_dijkstra(
 
 /* many to 1*/
 template < class G >
-void
-pgr_dijkstra(G &graph,
-        std::deque<Path> &paths,
+std::deque<Path>
+pgr_dijkstra(
+        G &graph,
         std::vector< int64_t > sources,
         int64_t  target,
         bool only_cost = false) {
@@ -121,7 +121,7 @@ pgr_dijkstra(G &graph,
             sources.end()); 
 
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, paths, sources, target, only_cost);
+    return fn_dijkstra.dijkstra(graph, sources, target, only_cost);
 }
 
 /* Many to Many */
@@ -184,9 +184,8 @@ class Pgr_dijkstra {
              bool only_cost = false);
 
      //! Many to one
-     void dijkstra(
+     std::deque<Path> dijkstra(
              G &graph,
-             std::deque< Path > &paths,
              const std::vector < int64_t > &start_vertex,
              int64_t end_vertex,
              bool only_cost = false);
@@ -504,16 +503,16 @@ Pgr_dijkstra< G >::dijkstra(
 
 // preparation for many to 1
 template < class G >
-void
+std::deque<Path>
 Pgr_dijkstra< G >::dijkstra(
-        G &graph, std::deque< Path > &paths,
+        G &graph,
         const std::vector < int64_t > &start_vertex,
         int64_t end_vertex,
         bool only_cost) {
-    // perform the algorithm // a call for each of the sources
+    std::deque<Path> paths;
+
     for (const auto &start : start_vertex) {
         Path path;
-        // each call cleans the local structures
         dijkstra(graph, path, start, end_vertex, only_cost);
         paths.push_back(path);
     }
@@ -522,7 +521,7 @@ Pgr_dijkstra< G >::dijkstra(
             [](const Path &e1, const Path &e2)->bool {
             return e1.start_id() < e2.start_id();
             });
-    return;
+    return paths;
 }
 
 
