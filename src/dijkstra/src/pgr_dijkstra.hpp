@@ -88,7 +88,7 @@ pgr_dijkstra(
         int64_t target,
         bool only_cost = false) {
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, path, source, target, only_cost);
+    path = fn_dijkstra.dijkstra(graph, source, target, only_cost);
 }
 
 /* 1 to many*/
@@ -176,9 +176,8 @@ class Pgr_dijkstra {
      //! @name Dijkstra
      //@{
      //! one to one
-     void dijkstra(
+     Path dijkstra(
              G &graph,
-             Path &path,
              int64_t start_vertex,
              int64_t end_vertex,
              bool only_cost = false);
@@ -427,10 +426,9 @@ Pgr_dijkstra< G >::drivingDistance(
 
 //! Dijkstra 1 to 1
 template < class G >
-void
+Path
 Pgr_dijkstra< G >::dijkstra(
         G &graph,
-        Path &path,
         int64_t start_vertex,
         int64_t end_vertex,
         bool only_cost) {
@@ -443,8 +441,7 @@ Pgr_dijkstra< G >::dijkstra(
 
     if (!graph.has_vertex(start_vertex)
             || !graph.has_vertex(end_vertex)) {
-        path.clear();
-        return;
+        return Path(start_vertex, end_vertex);
     }
 
     // get the graphs source and target
@@ -455,8 +452,7 @@ Pgr_dijkstra< G >::dijkstra(
     dijkstra_1_to_1(graph, v_source, v_target);
 
     // get the results
-    path = Path(graph, v_source, v_target, predecessors, distances, only_cost, true);
-    return;
+    return Path(graph, v_source, v_target, predecessors, distances, only_cost, true);
 }
 
 //! Dijkstra 1 to many
@@ -512,9 +508,8 @@ Pgr_dijkstra< G >::dijkstra(
     std::deque<Path> paths;
 
     for (const auto &start : start_vertex) {
-        Path path;
-        dijkstra(graph, path, start, end_vertex, only_cost);
-        paths.push_back(path);
+        paths.push_back(
+                dijkstra(graph, start, end_vertex, only_cost));
     }
 
     std::stable_sort(paths.begin(), paths.end(),

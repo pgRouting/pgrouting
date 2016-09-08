@@ -25,89 +25,107 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
-#ifdef open
-#undef open
-#endif
-#ifdef unlink
-#undef unlink
-#endif
 #endif
 
-#include <deque>
+
 #include <sstream>
-
+#include <deque>
+#include <vector>
 
 #include "./ksp_driver.h"
-#include "../../common/src/pgr_alloc.hpp"
+
+#include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_types.h"
+
 #include "./pgr_ksp.hpp"
+#include "./../../common/src/pgr_base_graph.hpp"
 
 
 
-int  do_pgr_ksp(
-        pgr_edge_t  *data_edges, size_t total_tuples,
-        int64_t  start_vertex, int64_t  end_vertex,
-        int k, bool directedFlag, bool heap_paths,
-        General_path_element_t **ksp_path, size_t *path_count,
+void  do_pgr_ksp(
+        pgr_edge_t *data_edges,
+        size_t total_edges,
+        int64_t  start_vid,
+        int64_t  end_vid,
+        int k,
+        bool directed,
+        bool heap_paths,
+        General_path_element_t **return_tuples,
+        size_t *return_count,
+        char ** log_msg,
+        char ** notice_msg,
         char ** err_msg) {
+    std::ostringstream err;
+    std::ostringstream log;
+    std::ostringstream notice;
     try {
-        *ksp_path = NULL;
-        *path_count = 0;
-        std::ostringstream log;
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+        pgassert(total_edges != 0);
+        log << "buuu";
 
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
+        graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque< Path > paths;
 
-        if (directedFlag) {
+        if (directed) {
             pgrouting::DirectedGraph digraph(gType);
             Pgr_ksp< pgrouting::DirectedGraph > fn_yen;
-            digraph.graph_insert_data(data_edges, total_tuples);
-            paths = fn_yen.Yen(digraph, start_vertex, end_vertex, k, heap_paths);
+            digraph.graph_insert_data(data_edges, total_edges);
+            paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
-            undigraph.graph_insert_data(data_edges, total_tuples);
-            paths = fn_yen.Yen(undigraph, start_vertex, end_vertex, k, heap_paths);
+            undigraph.graph_insert_data(data_edges, total_edges);
+            paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
 
         auto count(count_tuples(paths));
 
-        if (count == 0) {
-            *err_msg = strdup(
-                    "NOTICE: No paths found between Starting and Ending vertices");
-            return 0;
+        if (!(count == 0)) {
+            // get the space required to store all the paths
+            *return_tuples = NULL;
+            *return_tuples = pgr_alloc(count, (*return_tuples));
+
+            size_t sequence = 0;
+            int route_id = 0;
+            for (const auto &path : paths) {
+                if (path.size() > 0)
+                    path.get_pg_ksp_path(return_tuples, sequence, route_id);
+                ++route_id;
+            }
         }
+        *return_count = count;
 
-        // get the space required to store all the paths
-        *ksp_path = NULL;
-        *ksp_path = pgr_alloc(count, (*ksp_path));
-
-        size_t sequence = 0;
-        int route_id = 0;
-        for (const auto &path : paths) {
-            if (path.size() > 0)
-                path.get_pg_ksp_path(ksp_path, sequence, route_id);
-            ++route_id;
-        }
-
-        if (count != sequence) {
-            *err_msg = NULL;
-            return 2;
-        }
-        *path_count = count;
-
-#if 1
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
-        return EXIT_SUCCESS;
-    } catch ( ... ) {
-        *err_msg = strdup("Caught unknown exception!");
-        if (ksp_path) free(ksp_path);
-        *path_count = 0;
-        return -1;
+        pgassert(*err_msg == NULL);
+        *log_msg = log.str().empty()?
+            nullptr :
+            strdup(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            nullptr :
+            strdup(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+    } catch (std::exception& except) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
+    } catch(...) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = strdup(err.str().c_str());
+        *log_msg = strdup(log.str().c_str());
     }
 }
-

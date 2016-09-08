@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <set>
 #include "./../../common/src/basePath_SSEC.hpp"
+#include "./../../common/src/pgr_assert.h"
 
 template < class G >
 void Pgr_ksp< G >::clear() {
@@ -41,10 +42,9 @@ void Pgr_ksp< G >::clear() {
 
 template < class G >
 void Pgr_ksp< G >::getFirstSolution(G &graph) {
-     Path path;
 
      Pgr_dijkstra< G > fn_dijkstra;
-     fn_dijkstra.dijkstra(graph, path, m_start, m_end);
+     auto path = fn_dijkstra.dijkstra(graph, m_start, m_end);
 
      if (path.empty()) return;
      curr_result_path = path;
@@ -71,11 +71,32 @@ Pgr_ksp< G >::Yen(G &graph,
         executeYen(graph, K);
     }
 
-    while (!m_ResultSet.empty()) {
-        m_Heap.insert(*m_ResultSet.begin());
-        m_ResultSet.erase(m_ResultSet.begin());
-    }
-    std::deque<Path> l_ResultList(m_Heap.begin(), m_Heap.end());
+    std::deque<Path> l_ResultList(m_ResultSet.begin(), m_ResultSet.end());
+    l_ResultList.insert(l_ResultList.begin(), m_Heap.begin(), m_Heap.end());
+
+    std::sort(l_ResultList.begin(), l_ResultList.end(),
+            [](const Path &left, const Path &right) {
+            return left.size() < right.size();});
+
+    std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
+            [](const Path &left, const Path &right) {
+            return left.tot_cost() < right.tot_cost();});
+
+
+    std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
+            [](const Path &left, const Path &right) -> bool {
+            for (size_t i = 0 ; i < std::min(left.size(), right.size()); ++i) {
+                if (left[i].node < right[i].node) return true;
+                if (left[i].node > right[i].node) return false;
+            }
+            return false;
+            });
+
+    std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
+            [](const Path &left, const Path &right) {
+            return left.size() < right.size();});
+
+
     if (!heap_paths && l_ResultList.size() > (size_t) K)
         l_ResultList.resize(K);
     return l_ResultList;
@@ -101,6 +122,11 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
         spurNodeId = curr_result_path[i].node;
 
         rootPath = curr_result_path.getSubpath(i);
+        pgassert(rootPath.start_id() == curr_result_path.start_id());
+        pgassert(rootPath.end_id() == curr_result_path.end_id());
+        //pgassert(rootPath.tot_cost() <= curr_result_path.tot_cost());
+        auto foo = rootPath.tot_cost();
+
 
         for (const auto &path : m_ResultSet) {
             if (path.isEqual(rootPath)) {
@@ -112,15 +138,17 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
         }
         removeVertices(graph, rootPath);
 
-
-        // THROW_ON_SIGINT
         Pgr_dijkstra< G > fn_dijkstra;
-        fn_dijkstra.dijkstra(graph, spurPath, spurNodeId, m_end);
-        // this->dijkstra(spurPath, spurNodeId , m_end);
-        // THROW_ON_SIGINT
+        spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
+        pgassert(spurPath.start_id() == spurNodeId);
+        pgassert(spurPath.end_id() == curr_result_path.end_id());
+        auto bar = spurPath.tot_cost();
 
         if (spurPath.size() > 0) {
             rootPath.appendPath(spurPath);
+            pgassert(rootPath.start_id() == curr_result_path.start_id());
+            pgassert(rootPath.end_id() == curr_result_path.end_id());
+            pgassert( (foo + bar) >= rootPath.tot_cost());
             m_Heap.insert(rootPath);
         }
 
