@@ -5,8 +5,6 @@ SELECT plan(6);
 
 SELECT can(ARRAY['pgr_bddijkstra']);
 
-SELECT todo_start('pgr_bdDijstra rewrite');
-
 
 --V2.4+
 SELECT has_function('pgr_bddijkstra',
@@ -51,7 +49,6 @@ SELECT * FROM pgr_bddijkstra(
 SELECT lives_ok('v20q1','with reverse cost');
 SELECT lives_ok('v20q3','with NO reverse cost');
 
-SELECT todo_end();
 
 SELECT finish();
 ROLLBACK;
