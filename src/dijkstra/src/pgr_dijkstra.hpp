@@ -114,15 +114,26 @@ pgr_dijkstra(G &graph,
     fn_dijkstra.dijkstra(graph, paths, sources, target, only_cost);
 }
 
+/* Many to Many */
 template < class G >
-void
+std::deque<Path>
 pgr_dijkstra(
-        G &graph, std::deque<Path> &paths,
-        const std::vector< int64_t > &sources,
-        const std::vector< int64_t > &targets,
+        G &graph,
+        std::vector< int64_t > sources,
+        std::vector< int64_t > targets,
         bool only_cost = false) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end()); 
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end()); 
+
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, paths, sources, targets, only_cost);
+    return fn_dijkstra.dijkstra(graph, sources, targets, only_cost);
 }
 
 
@@ -171,9 +182,8 @@ class Pgr_dijkstra {
              bool only_cost = false);
 
      //! Many to Many
-     void dijkstra(
+     std::deque<Path> dijkstra(
              G &graph,
-             std::deque< Path > &paths,
              const std::vector< int64_t > &start_vertex,
              const std::vector< int64_t > &end_vertex,
              bool only_cost = false);
@@ -508,13 +518,14 @@ Pgr_dijkstra< G >::dijkstra(
 
 // preparation for many to many
 template < class G >
-void
+std::deque<Path>
 Pgr_dijkstra< G >::dijkstra(
-        G &graph, std::deque< Path > &paths,
+        G &graph,
         const std::vector< int64_t > &start_vertex,
         const std::vector< int64_t > &end_vertex,
         bool only_cost) {
     // a call to 1 to many is faster for each of the sources
+    std::deque<Path> paths;
     for (const auto &start : start_vertex) {
         std::deque<Path> r_paths;
         dijkstra(graph, r_paths, start, end_vertex, only_cost);
@@ -529,7 +540,7 @@ Pgr_dijkstra< G >::dijkstra(
             [](const Path &e1, const Path &e2)->bool {
             return e1.start_id() < e2.start_id();
             });
-    return;
+    return paths;
 }
 
 

@@ -64,25 +64,23 @@ do_pgr_many_to_many_dijkstra(
     try {
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
-        std::set< int64_t >
-            s_start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
-        std::set< int64_t >
-            s_end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+        std::vector<int64_t>
+            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+        std::vector< int64_t >
+            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
-        std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
-        std::vector< int64_t > end_vertices(s_end_vertices.begin(), s_end_vertices.end());
+        std::deque< Path >paths;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstra(digraph, paths, start_vertices, end_vertices, only_cost);
+            paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
-            pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);
+            paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost);
         }
 
 

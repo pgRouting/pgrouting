@@ -100,51 +100,28 @@ do_pgr_many_to_many_withPoints(
                 new_edges);
 
 
-        std::set< int64_t > s_start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
-        std::set< int64_t > s_end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
+        std::vector<int64_t>
+            start_vertices(start_pidsArr, start_pidsArr + size_start_pidsArr);
+        std::vector< int64_t >
+            end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
 
-        std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
-        std::vector< int64_t > end_vertices(s_end_vertices.begin(), s_end_vertices.end());
 
-#if 0
-
-        std::set< int64_t > start_vertices;
-        std::set< int64_t > end_vertices;
-
-        for (const auto &start_pid : start_points) {
-            for (const auto point : points) {
-                if (point.pid == start_pid) {
-                    start_vertices.insert(point.vertex_id);
-                    break;
-                }
-            }
-        }
-        for (const auto &end_pid : end_points) {
-            for (const auto point : points) {
-                if (point.pid == end_pid) {
-                    end_vertices.insert(point.vertex_id);
-                    break;
-                }
-            }
-        }
-#endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque< Path > paths;
-
 
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-            pgr_dijkstra(digraph, paths, start_vertices, end_vertices, only_cost);
+            paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-            pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);
+            paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost);
         }
 
 #if 0
