@@ -111,13 +111,8 @@ do_pgr_one_to_many_withPoints(
                 new_edges);
 
         log << "Inserting points into a c++ vector structure\n";
-        /*
-         * Eliminating duplicates
-         * & ordering the points
-         */
-        std::set< int64_t > s_end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
+        std::vector< int64_t > end_vertices(end_pidsArr, end_pidsArr + size_end_pidsArr);
 
-        std::vector< int64_t > end_vertices(s_end_vertices.begin(), s_end_vertices.end());
 
         log << "start_vid" << start_vid << "\n";
         log << "end_vertices";
@@ -140,7 +135,7 @@ do_pgr_one_to_many_withPoints(
                     gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-            pgr_dijkstra(digraph, paths, start_vid, end_vertices, only_cost);
+            paths = pgr_dijkstra(digraph, start_vid, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             auto vertices(pgrouting::extract_vertices(edges, total_edges));
@@ -149,7 +144,7 @@ do_pgr_one_to_many_withPoints(
             vertices.clear();
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-            pgr_dijkstra(undigraph, paths, start_vid, end_vertices, only_cost);
+            paths = pgr_dijkstra(undigraph, start_vid, end_vertices, only_cost);
         }
 
         if (!details) {

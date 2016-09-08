@@ -91,25 +91,35 @@ pgr_dijkstra(
     fn_dijkstra.dijkstra(graph, path, source, target, only_cost);
 }
 
+/* 1 to many*/
 template < class G >
-void
+std::deque<Path>
 pgr_dijkstra(
         G &graph,
-        std::deque<Path> &paths,
         int64_t  source,
-        const std::vector< int64_t > &targets,
+        std::vector< int64_t > targets,
         bool only_cost = false) {
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end()); 
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, paths, source, targets, only_cost);
+    return fn_dijkstra.dijkstra(graph, source, targets, only_cost);
 }
 
+/* many to 1*/
 template < class G >
 void
 pgr_dijkstra(G &graph,
         std::deque<Path> &paths,
-        const std::vector< int64_t > &sources,
+        std::vector< int64_t > sources,
         int64_t  target,
         bool only_cost = false) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end()); 
+
     Pgr_dijkstra< G > fn_dijkstra;
     fn_dijkstra.dijkstra(graph, paths, sources, target, only_cost);
 }
@@ -189,9 +199,8 @@ class Pgr_dijkstra {
              bool only_cost = false);
 
      //! one to Many
-     void dijkstra(
+     std::deque<Path> dijkstra(
              G &graph,
-             std::deque< Path > &paths,
              int64_t start_vertex,
              const std::vector< int64_t > &end_vertex,
              bool only_cost = false);
@@ -453,10 +462,9 @@ Pgr_dijkstra< G >::dijkstra(
 
 //! Dijkstra 1 to many
 template < class G >
-void
+std::deque<Path>
 Pgr_dijkstra< G >::dijkstra(
         G &graph,
-        std::deque< Path > &paths,
         int64_t start_vertex,
         const std::vector< int64_t > &end_vertex,
         bool only_cost) {
@@ -467,7 +475,8 @@ Pgr_dijkstra< G >::dijkstra(
     distances.resize(graph.num_vertices());
 
     // get the graphs source and target
-    if (!graph.has_vertex(start_vertex)) return;
+    if (!graph.has_vertex(start_vertex))
+        return std::deque<Path>();
     auto v_source(graph.get_V(start_vertex));
 
     std::set< V > s_v_targets;
@@ -481,6 +490,7 @@ Pgr_dijkstra< G >::dijkstra(
     // perform the algorithm
     dijkstra_1_to_many(graph, v_source, v_targets);
 
+    std::deque< Path > paths;
     // get the results // route id are the targets
     paths = get_paths(graph, v_source, v_targets, only_cost);
 
@@ -489,7 +499,7 @@ Pgr_dijkstra< G >::dijkstra(
             return e1.end_id() < e2.end_id();
             });
 
-    return;
+    return paths;
 }
 
 // preparation for many to 1
@@ -527,8 +537,7 @@ Pgr_dijkstra< G >::dijkstra(
     // a call to 1 to many is faster for each of the sources
     std::deque<Path> paths;
     for (const auto &start : start_vertex) {
-        std::deque<Path> r_paths;
-        dijkstra(graph, r_paths, start, end_vertex, only_cost);
+        auto r_paths = dijkstra(graph, start, end_vertex, only_cost);
         paths.insert(paths.begin(), r_paths.begin(), r_paths.end());
     }
 
