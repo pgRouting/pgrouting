@@ -34,7 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
-#include <set>
 
 #include "./../../common/src/pgr_types.h"
 #include "../../common/src/pgr_alloc.hpp"
@@ -59,17 +58,16 @@ do_pgr_driving_many_to_dist(
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
         std::deque< Path >paths;
-        std::set< int64_t > s_start_vertices(start_vertex, start_vertex + s_len);
-        std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
+        std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
 
         if (directedFlag) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
-            pgr_drivingDistance(digraph, paths, start_vertices, distance, equiCostFlag);
+            paths = pgr_drivingDistance(digraph, start_vertices, distance, equiCostFlag);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
-            pgr_drivingDistance(undigraph, paths, start_vertices, distance, equiCostFlag);
+            paths = pgr_drivingDistance(undigraph, start_vertices, distance, equiCostFlag);
         }
 
         size_t count(count_tuples(paths));
@@ -129,12 +127,12 @@ do_pgr_driving_distance(
             log << "NOTICE: Processing Directed graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_edges);
-            pgr_drivingDistance(digraph, path, start_vertex, distance);
+            path = pgr_drivingDistance(digraph, start_vertex, distance);
         } else {
             log << "NOTICE: Processing Undirected graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_edges);
-            pgr_drivingDistance(undigraph, path, start_vertex, distance);
+            path = pgr_drivingDistance(undigraph, start_vertex, distance);
         }
 
         log << "Returning number of tuples" << path.size() << "\n";

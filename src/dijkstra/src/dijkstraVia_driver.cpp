@@ -84,10 +84,8 @@ pgr_dijkstraViaVertex(
             }
         }
 
-        path.clear();
-
         log << "from " << prev_vertex << " to " << vertex << "\n";
-        pgr_dijkstra(graph, path, prev_vertex, vertex);
+        path = pgr_dijkstra(graph, prev_vertex, vertex);
 
         if (!U_turn_on_edge && i > 1) {
             graph.restore_graph();
@@ -97,7 +95,7 @@ pgr_dijkstraViaVertex(
                  *  try with the edge back in the graph
                  */
                 log << "WAS empty so again from " << prev_vertex << " to " << vertex << "\n";
-                pgr_dijkstra(graph, path, prev_vertex, vertex);
+                path = pgr_dijkstra(graph, prev_vertex, vertex);
             }
         }
 

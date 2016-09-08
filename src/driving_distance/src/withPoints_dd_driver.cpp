@@ -40,7 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <vector>
 #include <algorithm>
-#include <set>
 
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
@@ -111,20 +110,7 @@ do_pgr_many_withPointsDD(
                 new_edges,
                 log);
 
-        std::set< int64_t > s_start_vids(start_pids_arr, start_pids_arr + s_len);
-        std::vector< int64_t > start_vids(s_start_vids.begin(), s_start_vids.end());
-#if 0
-        std::set< int64_t > start_vids;
-
-        for (const auto start_pid : start_pids) {
-            for (const auto point : points) {
-                if (point.pid == start_pid) {
-                    start_vids.insert(point.vertex_id);
-                    break;
-                }
-            }
-        }
-#endif
+        std::vector< int64_t > start_vids(start_pids_arr, start_pids_arr + s_len);
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
@@ -135,12 +121,12 @@ do_pgr_many_withPointsDD(
             pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-            pgr_drivingDistance(digraph, paths, start_vids, distance, equiCost);
+            paths = pgr_drivingDistance(digraph, start_vids, distance, equiCost);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-            pgr_drivingDistance(undigraph, paths, start_vids, distance, equiCost);
+            paths = pgr_drivingDistance(undigraph, start_vids, distance, equiCost);
         }
 
         for (auto &path : paths) {
@@ -241,14 +227,6 @@ do_pgr_withPointsDD(
                 new_edges,
                 log);
 
-#if 0
-        int64_t start_vid = 0;
-        for (const auto point : points) {
-            if (point.pid == start_pid) {
-                start_vid = point.vertex_id;
-            }
-        }
-#endif
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -259,21 +237,16 @@ do_pgr_withPointsDD(
             pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-            pgr_drivingDistance(digraph, path, start_vid, distance);
+            path = pgr_drivingDistance(digraph, start_vid, distance);
         } else {
             log << "Working with undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-            pgr_drivingDistance(undigraph, path, start_vid, distance);
+            path = pgr_drivingDistance(undigraph, start_vid, distance);
         }
 
 
-#if 0
-        path.print_path(log);
-        adjust_pids(points, path);
-        path.print_path(log);
-#endif
 
         if (!details) {
             eliminate_details_dd(path);

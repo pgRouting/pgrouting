@@ -134,8 +134,7 @@ do_pgr_withPoints(
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
 
-
-            pgr_dijkstra(digraph, path, start_vid, end_vid, only_cost);
+            path = pgr_dijkstra(digraph, start_vid, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
 
@@ -143,7 +142,7 @@ do_pgr_withPoints(
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
 
-            pgr_dijkstra(undigraph, path, start_vid, end_vid, only_cost);
+            path = pgr_dijkstra(undigraph, start_vid, end_vid, only_cost);
         }
 
 

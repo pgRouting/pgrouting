@@ -122,10 +122,6 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
         spurNodeId = curr_result_path[i].node;
 
         rootPath = curr_result_path.getSubpath(i);
-        pgassert(rootPath.start_id() == curr_result_path.start_id());
-        pgassert(rootPath.end_id() == curr_result_path.end_id());
-        //pgassert(rootPath.tot_cost() <= curr_result_path.tot_cost());
-        auto foo = rootPath.tot_cost();
 
 
         for (const auto &path : m_ResultSet) {
@@ -140,15 +136,9 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
 
         Pgr_dijkstra< G > fn_dijkstra;
         spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
-        pgassert(spurPath.start_id() == spurNodeId);
-        pgassert(spurPath.end_id() == curr_result_path.end_id());
-        auto bar = spurPath.tot_cost();
 
         if (spurPath.size() > 0) {
             rootPath.appendPath(spurPath);
-            pgassert(rootPath.start_id() == curr_result_path.start_id());
-            pgassert(rootPath.end_id() == curr_result_path.end_id());
-            pgassert( (foo + bar) >= rootPath.tot_cost());
             m_Heap.insert(rootPath);
         }
 
