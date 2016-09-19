@@ -68,12 +68,12 @@ do_pgr_one_to_one_dijkstra(
       if (directed) {
           log << "Working with directed Graph\n";
           pgrouting::DirectedGraph digraph(gType);
-          digraph.graph_insert_data(data_edges, total_tuples);
+          digraph.insert_edges(data_edges, total_tuples);
           path = pgr_dijkstra(digraph, start_vid, end_vid, only_cost);
       } else {
           log << "Working with Undirected Graph\n";
           pgrouting::UndirectedGraph undigraph(gType);
-          undigraph.graph_insert_data(data_edges, total_tuples);
+          undigraph.insert_edges(data_edges, total_tuples);
           path = pgr_dijkstra(undigraph, start_vid, end_vid, only_cost);
       }
 

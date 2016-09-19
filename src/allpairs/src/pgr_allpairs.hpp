@@ -187,7 +187,7 @@ void Pgr_allpairs< G >::floydWarshall(
         G &graph,
         std::vector< Matrix_cell_t> &rows) {
     std::vector< std::vector<double>> matrix;
-    make_matrix(boost::num_vertices(graph.graph), matrix);
+    make_matrix(graph.num_vertices(), matrix);
     inf_plus<double> combine;
     boost::floyd_warshall_all_pairs_shortest_paths(
             graph.graph,
@@ -225,7 +225,7 @@ void Pgr_allpairs< G >::johnson(
         G &graph,
         std::vector< Matrix_cell_t> &rows) {
     std::vector< std::vector<double>> matrix;
-    make_matrix(boost::num_vertices(graph.graph), matrix);
+    make_matrix(graph.num_vertices(), matrix);
     inf_plus<double> combine;
     boost::johnson_all_pairs_shortest_paths(
             graph.graph,
@@ -250,6 +250,7 @@ void
 Pgr_allpairs< G >::make_matrix(
         size_t v_size,
         std::vector< std::vector<double>> &matrix) const {
+    // TODO in one step
     matrix.resize(v_size);
     for (size_t i=0; i < v_size; i++)
         matrix[i].resize(v_size);
@@ -285,13 +286,13 @@ Pgr_allpairs< G >::make_result(
 
 
     size_t seq = 0;
-    for (size_t i = 0; i < graph.num_vertices(); i++) {
-        for (size_t j = 0; j < graph.num_vertices(); j++) {
-            if (i == j) continue;
-            if (matrix[i][j] != std::numeric_limits<double>::max()) {
-                (*postgres_rows)[seq].from_vid = graph.graph[i].id;
-                (*postgres_rows)[seq].to_vid = graph.graph[j].id;
-                (*postgres_rows)[seq].cost =  matrix[i][j];
+    for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
+        for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
+            if (v_i == v_j) continue;
+            if (matrix[v_i][v_j] != std::numeric_limits<double>::max()) {
+                (*postgres_rows)[seq].from_vid = graph[v_i].id;
+                (*postgres_rows)[seq].to_vid = graph[v_j].id;
+                (*postgres_rows)[seq].cost =  matrix[v_i][v_j];
                 seq++;
             }  // if
         }  // for j
@@ -309,11 +310,11 @@ Pgr_allpairs< G >::make_result(
     rows.resize(count);
     size_t seq = 0;
 
-    for (size_t i = 0; i < graph.num_vertices(); i++) {
-        for (size_t j = 0; j < graph.num_vertices(); j++) {
-            if (matrix[i][j] != std::numeric_limits<double>::max()) {
+    for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
+        for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
+            if (matrix[v_i][v_j] != std::numeric_limits<double>::max()) {
                 rows[seq] =
-                    {graph.graph[i].id, graph.graph[j].id, matrix[i][j]};
+                    {graph[v_i].id, graph[v_j].id, matrix[v_i][v_j]};
                 seq++;
             }  // if
         }  // for j

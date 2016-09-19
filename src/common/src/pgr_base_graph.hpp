@@ -56,6 +56,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./basic_edge.h"
 #include "./pgr_assert.h"
 
+namespace pgrouting {
+
 /*! @brief boost::graph simplified to pgRouting needs
 
   This class gives the handling basics of a boost::graph of kind G
@@ -209,14 +211,13 @@ After initializing the graph with the vertices, the edges can be added.
 
 ~~~~{.c}
 // inserting edges from a C array
-digraph.graph_insert_data(my_edges, total_edges);
+digraph.insert_edges(my_edges, total_edges);
 
 // adding more edges to the graph from a vector container
-digraph.graph_insert_data(new_edges);
+digraph.insert_edges(new_edges);
 ~~~~
 
 */
-namespace pgrouting {
 
 namespace graph {
 template <class G, typename Vertex, typename Edge>
@@ -258,20 +259,6 @@ boost::adjacency_list < boost::listS, boost::vecS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
-#if 0
-// TODO(Rohith) this is only used on internal query tests
-typedef graph::Pgr_base_graph <
-boost::adjacency_list < boost::listS, boost::vecS,
-    boost::undirectedS,
-    contraction::Vertex, Basic_edge >,
-    contraction::Vertex, Basic_edge > CUndirectedGraph;
-
-typedef graph::Pgr_base_graph <
-boost::adjacency_list < boost::listS, boost::vecS,
-    boost::bidirectionalS,
-    contraction::Vertex, Basic_edge >,
-    contraction::Vertex, Basic_edge > CDirectedGraph;
-#endif
 //@}
 
 
@@ -383,7 +370,7 @@ class Pgr_base_graph {
          }
 
 
-     //! @name Insert data
+     //! @name Insert edges
      //@{
      /*! @brief Inserts *count* edges of type *T* into the graph
       *  
@@ -394,9 +381,10 @@ class Pgr_base_graph {
       *  @param count
       */
      template < typename T >
-         void graph_insert_data(const T *edges, int64_t count) {
-             graph_insert_data(std::vector < T >(edges, edges + count));
+         void insert_edges(const T *edges, int64_t count) {
+             insert_edges(std::vector < T >(edges, edges + count));
          }
+
      /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
 
         The set of edges should not have an illegal vertex defined
@@ -416,7 +404,7 @@ class Pgr_base_graph {
         @param edges
       */
      template < typename T >
-         void graph_insert_data(const std::vector < T > &edges) {
+         void insert_edges(const std::vector < T > &edges) {
 #if 0
              // This code does not work with contraction
              if (num_vertices() == 0) {
@@ -451,7 +439,7 @@ class Pgr_base_graph {
      void add_vertices(std::vector< T_V > vertices);
 
  public:
-     //! @name boost wrappers
+     //! @name boost wrappers with original id
      //@{
      //! @brief get the out-degree  of a vertex
 
@@ -465,6 +453,14 @@ class Pgr_base_graph {
              return 0;
          }
          return out_degree(get_V(vertex_id));
+     }
+     degree_size_type in_degree(int64_t vertex_id) const {
+         if (!has_vertex(vertex_id)) {
+             return 0;
+         }
+         return is_directed()? 
+             in_degree(get_V(vertex_id))
+             :  out_degree(get_V(vertex_id));
      }
 
 
@@ -502,9 +498,28 @@ class Pgr_base_graph {
          return vertices_map.find(vid) != vertices_map.end();
      }
 
+
+
+     //! @name to be or not to be
+     ///{
+
+     bool is_directed() const {return m_gType == DIRECTED;}
+     bool is_undirected() const {return m_gType == UNDIRECTED;}
+
+     ///}
+
+     //! @name boost wrappers with V 
+     ///{
+
+
+     T_V& operator[](V v_idx) {return graph[v_idx];}
+     const T_V& operator[](V v_idx) const {return graph[v_idx];}
+
      //! @brief True when vid is in the graph
      degree_size_type in_degree(V &v) const {
-         return boost::in_degree(v, graph);
+         return is_directed()?
+             boost::in_degree(v, graph) :
+             boost::out_degree(v, graph);
      }
 
      //! @brief True when vid is in the graph
@@ -601,10 +616,6 @@ class Pgr_base_graph {
      int64_t get_edge_id(V from, V to, double &distance) const;
 
      size_t num_vertices() const { return boost::num_vertices(graph);}
-
-     T_V operator[](V v) const {
-         return graph[v];
-     }
 
 
      void graph_add_edge(const T_E &edge);

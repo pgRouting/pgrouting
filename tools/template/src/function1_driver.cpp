@@ -98,7 +98,7 @@ do_pgr_MY_FUNCTION_NAME(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.graph_insert_data(data_edges, total_edges);
+            digraph.insert_edges(data_edges, total_edges);
             path = pgr_MY_FUNCTION_NAME(digraph,
                     start_vid,
                     end_vid,
@@ -106,7 +106,7 @@ do_pgr_MY_FUNCTION_NAME(
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(data_edges, total_edges);
+            undigraph.insert_edges(data_edges, total_edges);
             path = pgr_MY_FUNCTION_NAME(
                     undigraph,
                     start_vid,

@@ -46,18 +46,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_alloc.hpp"
 
 template < class G >
-void
+std::deque< Path >
 pgr_astar(
         G &graph,
-        std::deque< Path >  &paths,
         int64_t source,
         std::vector < int64_t > targets,
         int heuristic,
         double factor,
         double epsilon,
         bool only_cost = false) {
+    std::sort(targets.begin(), targets.end());
+    end_vertex.erase(
+            std::unique(targets.begin(), targets.end()),
+            end_vertex.end());
+
     Pgr_astar< G > fn_astar;
-    fn_astar.astar(graph, paths, source, targets,
+    return fn_astar.astar(graph, source, targets,
             heuristic, factor, epsilon, only_cost);
 }
 
@@ -114,16 +118,16 @@ void do_pgr_astarOneToMany(
             pgrouting::xyDirectedGraph digraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
-            digraph.graph_insert_data(edges, total_edges);
-            pgr_astar(digraph, paths, start_vid, end_vids,
+            digraph.insert_edges(edges, total_edges);
+            paths = pgr_astar(digraph, start_vid, end_vids,
                     heuristic, factor, epsilon, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::xyUndirectedGraph undigraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
-            undigraph.graph_insert_data(edges, total_edges);
-            pgr_astar(undigraph, paths, start_vid, end_vids,
+            undigraph.insert_edges(edges, total_edges);
+            paths = pgr_astar(undigraph, start_vid, end_vids,
                     heuristic, factor, epsilon, only_cost);
         }
         if (!normal) {

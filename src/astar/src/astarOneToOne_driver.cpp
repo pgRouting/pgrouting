@@ -46,18 +46,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_alloc.hpp"
 
 template < class G >
-void
+Path
 pgr_astar(
         G &graph,
-        Path &path,
         int64_t source,
         int64_t target,
         int heuristic,
         double factor,
         double epsilon,
         bool only_cost = false) {
-    Pgr_astar< G > fn_astar;
-    fn_astar.astar(graph, path, source, target,
+    pgrouting::algorithms::Pgr_astar< G > fn_astar;
+    return fn_astar.astar(graph, source, target,
             heuristic, factor, epsilon, only_cost);
 }
 
@@ -107,23 +106,15 @@ void do_pgr_astarOneToOne(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::xyDirectedGraph digraph(gType);
-            log << "Working with directed Graph 1 \n";
-            digraph.graph_insert_data(data_edges, total_edges);
-#ifdef DEBUG
-            log << digraph;
-#endif
-            log << "Working with directed Graph 2\n";
-            pgr_astar(digraph, path, start_vid, end_vid,
+            digraph.insert_edges(data_edges, total_edges);
+            path = pgr_astar(digraph, start_vid, end_vid,
                     heuristic, factor, epsilon, only_cost);
             log << "Working with directed Graph 3\n";
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::xyUndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(data_edges, total_edges);
-#ifdef DEBUG
-            log << undigraph;
-#endif
-            pgr_astar(undigraph, path, start_vid, end_vid,
+            undigraph.insert_edges(data_edges, total_edges);
+            path = pgr_astar(undigraph, start_vid, end_vid,
                     heuristic, factor, epsilon, only_cost);
         }
 

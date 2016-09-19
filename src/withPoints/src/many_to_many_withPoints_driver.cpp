@@ -112,14 +112,14 @@ do_pgr_many_to_many_withPoints(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.graph_insert_data(edges, total_edges);
-            digraph.graph_insert_data(new_edges);
+            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(new_edges);
             paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(edges, total_edges);
-            undigraph.graph_insert_data(new_edges);
+            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(new_edges);
             paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost);
         }
 

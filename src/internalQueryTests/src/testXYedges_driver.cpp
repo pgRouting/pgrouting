@@ -82,7 +82,7 @@ do_pgr_testXYedges(
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(edges);
+            graph.insert_edges(edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
@@ -95,7 +95,7 @@ do_pgr_testXYedges(
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(data_edges, total_edges);
+            graph.insert_edges(data_edges, total_edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
@@ -108,7 +108,7 @@ do_pgr_testXYedges(
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(edges);
+            graph.insert_edges(edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
@@ -121,7 +121,7 @@ do_pgr_testXYedges(
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(data_edges, total_edges);
+            graph.insert_edges(data_edges, total_edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
@@ -135,7 +135,7 @@ do_pgr_testXYedges(
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(edges);
+            graph.insert_edges(edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
@@ -148,7 +148,7 @@ do_pgr_testXYedges(
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(data_edges, total_edges);
+            graph.insert_edges(data_edges, total_edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
@@ -161,7 +161,7 @@ do_pgr_testXYedges(
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(data_edges, total_edges);
+            graph.insert_edges(data_edges, total_edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
@@ -174,7 +174,7 @@ do_pgr_testXYedges(
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(edges);
+            graph.insert_edges(edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";

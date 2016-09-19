@@ -187,12 +187,12 @@ do_pgr_dijkstraViaVertex(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.graph_insert_data(data_edges, total_tuples);
+            digraph.insert_edges(data_edges, total_tuples);
             pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, U_turn_on_edge, log);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(data_edges, total_tuples);
+            undigraph.insert_edges(data_edges, total_tuples);
             pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);
         }
 

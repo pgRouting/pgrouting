@@ -132,8 +132,8 @@ do_pgr_one_to_many_withPoints(
                         pgrouting::extract_vertices(edges, total_edges),
                         new_edges),
                     gType);
-            digraph.graph_insert_data(edges, total_edges);
-            digraph.graph_insert_data(new_edges);
+            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(new_edges);
             paths = pgr_dijkstra(digraph, start_vid, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
@@ -141,8 +141,8 @@ do_pgr_one_to_many_withPoints(
             vertices = pgrouting::extract_vertices(vertices, new_edges);
             pgrouting::UndirectedGraph undigraph(vertices, gType);
             vertices.clear();
-            undigraph.graph_insert_data(edges, total_edges);
-            undigraph.graph_insert_data(new_edges);
+            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(new_edges);
             paths = pgr_dijkstra(undigraph, start_vid, end_vertices, only_cost);
         }
 

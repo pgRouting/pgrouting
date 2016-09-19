@@ -119,13 +119,13 @@ do_pgr_many_withPointsDD(
 
         if (directed) {
             pgrouting::DirectedGraph digraph(gType);
-            digraph.graph_insert_data(edges, total_edges);
-            digraph.graph_insert_data(new_edges);
+            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(new_edges);
             paths = pgr_drivingDistance(digraph, start_vids, distance, equiCost);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(edges, total_edges);
-            undigraph.graph_insert_data(new_edges);
+            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(new_edges);
             paths = pgr_drivingDistance(undigraph, start_vids, distance, equiCost);
         }
 
@@ -235,14 +235,14 @@ do_pgr_withPointsDD(
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.graph_insert_data(edges, total_edges);
-            digraph.graph_insert_data(new_edges);
+            digraph.insert_edges(edges, total_edges);
+            digraph.insert_edges(new_edges);
             path = pgr_drivingDistance(digraph, start_vid, distance);
         } else {
             log << "Working with undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(edges, total_edges);
-            undigraph.graph_insert_data(new_edges);
+            undigraph.insert_edges(edges, total_edges);
+            undigraph.insert_edges(new_edges);
             path = pgr_drivingDistance(undigraph, start_vid, distance);
         }
 

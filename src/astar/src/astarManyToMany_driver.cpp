@@ -48,18 +48,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_alloc.hpp"
 
 template < class G >
-void
+std::deque<Path>
 pgr_astar(
         G &graph,
-        std::deque< Path >  &paths,
-        std::vector < int64_t > sources,
-        std::vector < int64_t > targets,
+        std::vector<int64_t> sources,
+        std::vector<int64_t> targets,
         int heuristic,
         double factor,
         double epsilon,
-        bool only_cost = false) {
+        bool only_cost) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
     Pgr_astar< G > fn_astar;
-    fn_astar.astar(graph, paths, sources, targets,
+    return fn_astar.astar(graph, sources, targets,
             heuristic, factor, epsilon, only_cost);
 }
 
@@ -102,7 +111,6 @@ void do_pgr_astarManyToMany(
             return;
         }
 
-        std::deque< Path >paths;
         log << "Inserting target vertices into a c++ vector structure\n";
         std::vector< int64_t > end_vids(
                 end_vidsArr,
@@ -113,21 +121,22 @@ void do_pgr_astarManyToMany(
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
+        std::deque< Path >paths;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::xyDirectedGraph digraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
-            digraph.graph_insert_data(edges, total_edges);
-            pgr_astar(digraph, paths, start_vids, end_vids,
+            digraph.insert_edges(edges, total_edges);
+            paths = pgr_astar(digraph, start_vids, end_vids,
                     heuristic, factor, epsilon, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::xyUndirectedGraph undigraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
-            undigraph.graph_insert_data(edges, total_edges);
-            pgr_astar(undigraph, paths, start_vids, end_vids,
+            undigraph.insert_edges(edges, total_edges);
+            paths = pgr_astar(undigraph, start_vids, end_vids,
                     heuristic, factor, epsilon, only_cost);
         }
 
