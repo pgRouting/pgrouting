@@ -39,20 +39,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 template <typename T>
 class Identifiers {
  public:
+    typedef typename std::set<T>::iterator iterator;
+    typedef typename std::set<T>::const_iterator const_iterator;
+
     Identifiers<T>() = default;
+    /* TODO avoid pointers */
     Identifiers<T>(T* container, size_t size) {
         for (size_t i = 0; i < size; ++i) {
             m_ids.insert(container[i]);
         }
     }
+
     const std::set<T>& ids() const;
     size_t size() const { return m_ids.size(); }
-    typedef typename std::set<T>::iterator iterator;
-    typedef typename std::set<T>::const_iterator const_iterator;
     //! \brief Returns true when the set is empty
     inline bool empty() const { return m_ids.empty(); }
     inline void clear() { m_ids.clear(); }
-    bool has(const T other) const;
+    bool has(const T element) const;
     bool isDisjoint(const T other) const;
     bool isDisjoint(const Identifiers<T> &other) const;
     void insert(const Identifiers<T> &other);
@@ -63,6 +66,10 @@ class Identifiers {
     const_iterator end() const { return m_ids.end(); }
     bool operator ==(const Identifiers<T> &other) const;
     const T& operator[](size_t index) const;
+
+    //! @name  mathematical set operations
+    /// @{
+
     Identifiers<T> operator +(const T &other) const;
     Identifiers<T> operator *(const T &other) const;
     Identifiers<T> operator -(const T &other) const;
@@ -75,6 +82,8 @@ class Identifiers {
     Identifiers<T>& operator +=(const Identifiers<T> &other);
     Identifiers<T>& operator *=(const Identifiers<T> &other);
     Identifiers<T>& operator -=(const Identifiers<T> &other);
+    /// @}
+
     template<T>
     friend std::ostream& operator<<(
             std::ostream& os,

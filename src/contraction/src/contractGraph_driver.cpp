@@ -85,14 +85,21 @@ static void process_contraction(
         }
     }
 
+#ifndef NDEBUG
     log << "Before contraction\n";
     graph.print_graph(log);
-    /* Function call to get the contracted graph. */
+#endif
+
+    /*
+     * Function call to get the contracted graph. 
+     */
     pgr_contractGraph(graph,
             forbid_vertices,
             contraction_order,
             max_cycles, remaining_vertices,
             shortcut_edges, log);
+
+#ifndef NDEBUG
     log << "After contraction\n";
     log << graph;
     log << "Remaining Vertices:" << "\n";
@@ -103,7 +110,44 @@ static void process_contraction(
     for (const auto edge : shortcut_edges) {
         log << edge << "\n";
     }
+#endif
 }
+
+template <typename G>
+void get_postgres_result(
+        G &graph,
+        const Identifiers<int64_t> remaining_vertices,
+        const std::vector< pgrouting::contraction::Edge > shortcut_edges,
+        pgr_contracted_blob *return_tuples) {
+    size_t sequence = 0;
+    int i = 1;
+    char *type;
+    for (auto id : remaining_vertices) {
+        type = strdup("v");
+        int64_t *contracted_vertices = NULL;
+        int contracted_vertices_size = 0;
+        graph.get_contracted_vertices(&contracted_vertices,
+                contracted_vertices_size, id);
+        return_tuples[sequence] = {i, id, type, -1, -1, -1.00,
+            contracted_vertices, contracted_vertices_size};
+        i++;
+        ++sequence;
+    }
+    for (auto edge : shortcut_edges) {
+        type = strdup("e");
+        int64_t *contracted_vertices = NULL;
+        int contracted_vertices_size = 0;
+        graph.get_ids(&contracted_vertices,
+                contracted_vertices_size, edge.contracted_vertices());
+        return_tuples[sequence] = {i, edge.id, type,
+            edge.source, edge.target, edge.cost,
+            contracted_vertices, contracted_vertices_size};
+        i++;
+        ++sequence;
+    }
+}
+
+
 
 
 /************************************************************
@@ -181,74 +225,13 @@ do_pgr_contractGraph(
                     max_cycles,
                     remaining_vertices, shortcut_edges,
                     log, err);
-
-#if 0
-            digraph.graph_insert_data(data_edges, total_edges);
-            log << "Checking for valid forbidden vertices\n";
-            for (size_t i = 0; i < size_forbidden_vertices; ++i) {
-                if (!digraph.has_vertex(forbidden_vertices[i])) {
-                    log << "Invalid forbidden vertex: " << forbidden_vertices[i] << "\n";
-                    *err_msg = strdup(log.str().c_str());
-                    return;
-                }
-            }
-            Identifiers<int64_t> forbid_vertices(forbidden_vertices,
-                    size_forbidden_vertices);
-            log << "Before contraction\n";
-            digraph.print_graph(log);
-            /* Function call to get the contracted graph. */
-            pgr_contractGraph(digraph,
-                    forbid_vertices,
-                    contraction_order, size_contraction_order,
-                    max_cycles, remaining_vertices,
-                    shortcut_edges, debug);
-
-            log << "After contraction\n";
-            digraph.print_graph(log);
-            log << debug.str().c_str() << "\n";
-#endif
             (*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
-            size_t sequence = 0;
-            int i = 1;
-#if 0
-            log << "Remaining Vertices:" << "\n";
-            for (const auto vertex : remaining_vertices) {
-                log << vertex << "\n";
-            }
-#endif
-            char *type;
-            for (auto id : remaining_vertices) {
-                type = strdup("v");
-                int64_t *contracted_vertices = NULL;
-                int contracted_vertices_size = 0;
-                digraph.get_contracted_vertices(&contracted_vertices,
-                        contracted_vertices_size, id);
-                (*return_tuples)[sequence] = {i, id, type, -1, -1, -1.00,
-                    contracted_vertices, contracted_vertices_size};
-                i++;
-                ++sequence;
-            }
-#if 0
-            log << "Added Edges:" << "\n";
-            for (const auto edge : shortcut_edges) {
-                log << edge << "\n";
-            }
-#endif
-            for (auto edge : shortcut_edges) {
-                type = strdup("e");
-                int64_t *contracted_vertices = NULL;
-                int contracted_vertices_size = 0;
-                digraph.get_ids(&contracted_vertices,
-                        contracted_vertices_size, edge.contracted_vertices());
-                (*return_tuples)[sequence] = {i, edge.id, type,
-                    edge.source, edge.target, edge.cost,
-                    contracted_vertices, contracted_vertices_size};
-                i++;
-                ++sequence;
-            }
-
-            (*return_count) = sequence;
-            log << "Returning from driver\n";
+            (*return_count) = remaining_vertices.size()+shortcut_edges.size();
+            get_postgres_result(
+                    digraph,
+                    remaining_vertices,
+                    shortcut_edges,
+                    *return_tuples);
         } else {
             log << "Working with Undirected Graph\n";
 
@@ -257,72 +240,16 @@ do_pgr_contractGraph(
                     max_cycles,
                     remaining_vertices, shortcut_edges,
                     log, err);
-#if 0
-            undigraph.graph_insert_data(data_edges, total_edges);
-            log << "Checking for valid forbidden vertices\n";
-            for (size_t i = 0; i < size_forbidden_vertices; ++i) {
-                if (!undigraph.has_vertex(forbidden_vertices[i])) {
-                    log << "Invalid forbidden vertex: " << forbidden_vertices[i] << "\n";
-                    *err_msg = strdup(log.str().c_str());
-                    return;
-                }
-            }
-            Identifiers<int64_t> forbid_vertices(forbidden_vertices,
-                    size_forbidden_vertices);
-            log << "Before contraction\n";
-            undigraph.print_graph(log);
-            /* Function call to get the contracted graph. */
-            pgr_contractGraph(undigraph,
-                    forbid_vertices,
-                    contraction_order, size_contraction_order,
-                    max_cycles, remaining_vertices,
-                    shortcut_edges, debug);
-            log << debug.str().c_str() << "\n";
-            log << "After contraction\n";
-            undigraph.print_graph(log);
-            log << "Size of remaining_vertices: " << remaining_vertices.size() << std::endl;
-#endif
             (*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
-            size_t sequence = 0;
-            int i = 1;
-#if 0
-            log << "Remaining Vertices:" << "\n";
-            for (const auto vertex : remaining_vertices) {
-                log << vertex << "\n";
-            }
-#endif
-            char *type;
-            for (auto id : remaining_vertices) {
-                type = strdup("v");
-                int64_t *contracted_vertices = NULL;
-                int contracted_vertices_size = 0;
-                undigraph.get_contracted_vertices(&contracted_vertices,
-                        contracted_vertices_size, id);
-                (*return_tuples)[sequence] = {i, id, type, -1, -1, -1.00,
-                    contracted_vertices, contracted_vertices_size};
-                i++;
-                ++sequence;
-            }
-#if 0
-            log << "Added Edges:" << "\n";
-            for (const auto edge : shortcut_edges) {
-                log << edge << "\n";
-            }
-#endif
-            for (auto edge : shortcut_edges) {
-                type = strdup("e");
-                int64_t *contracted_vertices = NULL;
-                int contracted_vertices_size = 0;
-                undigraph.get_ids(&contracted_vertices,
-                        contracted_vertices_size, edge.contracted_vertices());
-                (*return_tuples)[sequence] = {i, edge.id, type,
-                    edge.source, edge.target, edge.cost,
-                    contracted_vertices, contracted_vertices_size};
-                i++;
-                ++sequence;
-            }
-            (*return_count) = sequence;
+            (*return_count) = remaining_vertices.size()+shortcut_edges.size();
+
+            get_postgres_result(
+                    undigraph,
+                    remaining_vertices,
+                    shortcut_edges,
+                    *return_tuples);
         }
+
 #ifndef DEBUG
         *err_msg = strdup("OK");
 #else
