@@ -47,11 +47,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_contract.hpp"
 
-#include "./../../common/src/pgr_types.h"
-#include "./structs.h"
-
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/identifiers.hpp"
 
 
@@ -78,10 +76,10 @@ static void process_contraction(
         }
     }
 
-    Identifiers<int64_t> forbid_vertices;
+    Identifiers<typename G::V> forbid_vertices;
     for (const auto &vertex : forbidden_vertices) {
         if (graph.has_vertex(vertex)) {
-            forbid_vertices.insert(vertex);
+            forbid_vertices.insert(graph.get_V(vertex));
         }
     }
 
@@ -93,7 +91,7 @@ static void process_contraction(
     /*
      * Function call to get the contracted graph. 
      */
-    pgr_contractGraph(graph,
+    Pgr_contract<G> result(graph,
             forbid_vertices,
             contraction_order,
             max_cycles, remaining_vertices,
@@ -267,23 +265,4 @@ do_pgr_contractGraph(
         *err_msg = strdup(log.str().c_str());
     }
 }
-
-int is_valid_contraction(int64_t number) {
-    switch (number) {
-        case 1:
-            return 1;
-            break;
-        case 2:
-            return 1;
-            break;
-        default:
-            return -1;
-            break;
-    }
-}
-
-
-
-
-
 

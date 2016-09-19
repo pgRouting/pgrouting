@@ -449,7 +449,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        @param [in] edge of type *T_E* is to be added
        @param [in] log string stream used for debugging purposes
        */  
-     void add_shortcut(const T_E &edge, std::ostringstream& log) {
+     void add_shortcut(const T_E &edge) {
+         std::ostringstream log;
          bool inserted;
          E e;
          if (edge.cost < 0)

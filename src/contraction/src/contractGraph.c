@@ -49,7 +49,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define DEBUG
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
-#include "./structs.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
@@ -60,6 +59,21 @@ PGDLLEXPORT Datum contractGraph(PG_FUNCTION_ARGS);
 
 /********************************************************************/
 /*                          MODIFY AS NEEDED                        */
+
+static
+bool
+is_valid_contraction(int64_t number) {
+    switch (number) {
+        case 1:
+        case 2:
+            return true;
+            break;
+        default:
+            return false;
+            break;
+    }
+}
+
 static
 void
 process(char* edges_sql,
@@ -88,13 +102,13 @@ process(char* edges_sql,
         return;
     }
     for (size_t i = 0; i < size_contraction_order; ++i) {
-            if (is_valid_contraction(contraction_order[i]) != 1) {
-                PGR_DBG("Error: Enter a valid Contraction Type\n");
-                (*result_count) = 0;
-                (*result_tuples) = NULL;
-                pgr_SPI_finish();
-                return;
-            }
+        if (!is_valid_contraction(contraction_order[i])) {
+            PGR_DBG("Error: Invalid Contraction Type found\n");
+            (*result_count) = 0;
+            (*result_tuples) = NULL;
+            pgr_SPI_finish();
+            return;
+        }
     }
     pgr_get_edges(edges_sql, &edges, &total_tuples);
     PGR_DBG("finished Loading");
@@ -108,7 +122,6 @@ process(char* edges_sql,
     PGR_DBG("Total %ld tuples in query:", total_tuples);
     PGR_DBG("Starting processing");
     char *err_msg = NULL;
-#if 1
     do_pgr_contractGraph(
             edges,
             total_tuples,
@@ -121,7 +134,6 @@ process(char* edges_sql,
             result_tuples,
             result_count,
             &err_msg);
-#endif
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
     free(err_msg);
@@ -151,11 +163,11 @@ contractGraph(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
-            edges_sql TEXT,
-            contraction_order BIGINT[],
-            max_cycles integer DEFAULT 1,
-            forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
-            directed BOOLEAN DEFAULT true
+           edges_sql TEXT,
+           contraction_order BIGINT[],
+           max_cycles integer DEFAULT 1,
+           forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
+           directed BOOLEAN DEFAULT true
          **********************************************************************/ 
 
         forbidden_vertices = (int64_t*)
@@ -231,12 +243,12 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 #if 1
         PGR_DBG("%ld | %s | %ld | %ld | %f | %d",
-        result_tuples[call_cntr].id,
-        result_tuples[call_cntr].type,
-        result_tuples[call_cntr].source,
-        result_tuples[call_cntr].target,
-        result_tuples[call_cntr].cost,
-        result_tuples[call_cntr].contracted_vertices_size);
+                result_tuples[call_cntr].id,
+                result_tuples[call_cntr].type,
+                result_tuples[call_cntr].source,
+                result_tuples[call_cntr].target,
+                result_tuples[call_cntr].cost,
+                result_tuples[call_cntr].contracted_vertices_size);
 #endif
         PGR_DBG("Storing complete\n");
         // postgres starts counting from 1

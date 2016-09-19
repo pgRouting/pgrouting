@@ -38,7 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <queue>
 #include <vector>
 #include "../../common/src/identifiers.hpp"
+
 namespace pgrouting {
+
 template < class G >
 class Pgr_linearContraction {
  private:
@@ -53,36 +55,25 @@ class Pgr_linearContraction {
 
  public:
      Pgr_linearContraction():last_edge_id(0) {}
-     void setForbiddenVertices(G &graph,
-             Identifiers<int64_t> forbidden_vertices,
-             std::ostringstream& debug);
-     void setForbiddenVertices(G &graph, int64_t *forbidden_vertices,
-             size_t size_forbidden_vertices,
-             std::ostringstream& debug);
-     void calculateVertices(G &graph,
-             std::ostringstream& debug);
-     void doContraction(G &graph,
-             std::ostringstream& debug);
+     void setForbiddenVertices(
+             Identifiers<V> forbidden_vertices);
+     void calculateVertices(G &graph);
+     void doContraction(G &graph);
 
  private:
      int64_t& get_next_id() {
          return --last_edge_id;
      }
 
-     bool is_linear(G &graph, V v,
-             std::ostringstream& debug);
-     void add_if_linear(G &graph, V v,
-             std::ostringstream& debug);
+     bool is_linear(G &graph, V v);
+     void add_if_linear(G &graph, V v);
      void add_edge_pair(V vertex, int64_t &incoming_eid,
-             int64_t &outgoing_eid,
-             std::ostringstream& debug);
+             int64_t &outgoing_eid);
      void add_shortcut(G &graph, V vertex,
              E incoming_edge,
-             E outgoing_edge,
-             std::ostringstream& debug);
+             E outgoing_edge);
      void add_shortcut(G &graph,
-             pgrouting::contraction::Edge &shortcut,
-             std::ostringstream& debug);
+             pgrouting::contraction::Edge &shortcut);
 
  private:
      Identifiers<V> linearVertices;
@@ -92,30 +83,19 @@ class Pgr_linearContraction {
      std::ostringstream debug;
 };
 
-template < class G >
-void Pgr_linearContraction< G >::setForbiddenVertices(G &graph,
-        Identifiers<int64_t> forbidden_vertices,
-        std::ostringstream& debug) {
-    debug << "Setting forbidden vertices\n";
-    for (auto forbiddenVertex : forbidden_vertices) {
-        forbiddenVertices += graph.get_V(forbiddenVertex);
-    }
-}
+/*************** IMPLEMENTTION **************/
 
 template < class G >
-void Pgr_linearContraction< G >::setForbiddenVertices(G &graph,
-        int64_t *forbidden_vertices,
-        size_t size_forbidden_vertices,
-        std::ostringstream& debug) {
+void
+Pgr_linearContraction< G >::setForbiddenVertices(
+        Identifiers<V> forbidden_vertices) {
     debug << "Setting forbidden vertices\n";
-    for (int64_t i = 0; i < size_forbidden_vertices; ++i) {
-        forbiddenVertices += graph.get_V(forbidden_vertices[i]);
-    }
+    forbiddenVertices = forbidden_vertices;
 }
 
+
 template < class G >
-bool Pgr_linearContraction<G>::is_linear(G &graph, V v,
-        std::ostringstream& debug) {
+bool Pgr_linearContraction<G>::is_linear(G &graph, V v) {
     degree_size_type in_degree, out_degree;
     in_degree = graph.in_degree(v);
     out_degree = graph.out_degree(v);
@@ -131,13 +111,12 @@ bool Pgr_linearContraction<G>::is_linear(G &graph, V v,
 }
 
 template < class G >
-void Pgr_linearContraction<G>::calculateVertices(G &graph,
-        std::ostringstream& debug) {
+void Pgr_linearContraction<G>::calculateVertices(G &graph) {
     debug << "Calculating vertices\n";
     V_i vi;
     for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
         debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
-        if (is_linear(graph, *vi, debug)) {
+        if (is_linear(graph, *vi)) {
             // debug << "Adding " << graph.graph[(*vi)].id << " to linear" << '\n';
             linearVertices += (*vi);
         }
@@ -148,23 +127,22 @@ void Pgr_linearContraction<G>::calculateVertices(G &graph,
 
 
 template < class G >
-void Pgr_linearContraction<G>::doContraction(G &graph,
-        std::ostringstream& debug) {
+void Pgr_linearContraction<G>::doContraction(G &graph) {
     std::ostringstream contraction_debug;
     contraction_debug << "Performing contraction\n";
     std::priority_queue<V, std::vector<V>, std::greater<V> > linearPriority;
-    for (V linearVertex : linearVertices) {
+    for (const auto linearVertex : linearVertices) {
         linearPriority.push(linearVertex);
     }
     contraction_debug << "Linear vertices" << std::endl;
-    for (auto v : linearVertices) {
+    for (const auto v : linearVertices) {
         contraction_debug << graph[v].id << ", ";
     }
     contraction_debug << std::endl;
     while (!linearPriority.empty()) {
         V current_vertex = linearPriority.top();
         linearPriority.pop();
-        if (!is_linear(graph, current_vertex, debug)) {
+        if (!is_linear(graph, current_vertex)) {
             linearVertices -= current_vertex;
             continue;
         }
@@ -182,7 +160,7 @@ void Pgr_linearContraction<G>::doContraction(G &graph,
                         current_vertex);
                 E e2 = graph.get_min_cost_edge(current_vertex,
                         vertex_2);
-                add_shortcut(graph, current_vertex, e1, e2, contraction_debug);
+                add_shortcut(graph, current_vertex, e1, e2);
             }
 
             if (graph.out_degree_to_vertex(vertex_2, current_vertex) > 0
@@ -191,7 +169,7 @@ void Pgr_linearContraction<G>::doContraction(G &graph,
                         current_vertex);
                 E e2 = graph.get_min_cost_edge(current_vertex,
                         vertex_1);
-                add_shortcut(graph, current_vertex, e1, e2, contraction_debug);
+                add_shortcut(graph, current_vertex, e1, e2);
             }
         } else if (graph.m_gType == UNDIRECTED) {
             if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0
@@ -202,18 +180,18 @@ void Pgr_linearContraction<G>::doContraction(G &graph,
                         current_vertex);
                 E e2 = graph.get_min_cost_edge(current_vertex,
                         vertex_2);
-                add_shortcut(graph, current_vertex, e1, e2, contraction_debug);
+                add_shortcut(graph, current_vertex, e1, e2);
             }
         }
 
         graph.disconnect_vertex(contraction_debug, current_vertex);
         linearVertices -= current_vertex;
-        if (is_linear(graph, vertex_1, debug)
+        if (is_linear(graph, vertex_1)
                 && !forbiddenVertices.has(vertex_1)) {
             linearPriority.push(vertex_1);
             linearVertices += vertex_1;
         }
-        if (is_linear(graph, vertex_2, debug)
+        if (is_linear(graph, vertex_2)
                 && !forbiddenVertices.has(vertex_2)) {
             linearPriority.push(vertex_2);
             linearVertices += vertex_2;
@@ -227,8 +205,7 @@ void Pgr_linearContraction<G>::doContraction(G &graph,
 template < class G >
 void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
         E incoming_edge,
-        E outgoing_edge,
-        std::ostringstream& debug) {
+        E outgoing_edge) {
     if (graph.m_gType == UNDIRECTED) {
         Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(vertex);
         V vertex_1 = adjacent_vertices[0];
@@ -242,7 +219,7 @@ void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
         shortcut.add_contracted_edge_vertices(graph[outgoing_edge]);
         debug << "Adding shortcut\n";
         debug << shortcut;
-        graph.add_shortcut(shortcut, debug);
+        graph.add_shortcut(shortcut);
         debug << "Added shortcut\n";
     } else if (graph.m_gType == DIRECTED) {
         contraction::Edge shortcut(get_next_id(), graph[incoming_edge].source,
@@ -253,15 +230,14 @@ void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
         shortcut.add_contracted_edge_vertices(graph[outgoing_edge]);
         debug << "Adding shortcut\n";
         debug << shortcut;
-        graph.add_shortcut(shortcut, debug);
+        graph.add_shortcut(shortcut);
         debug << "Added shortcut\n";
     }
 }
 template < class G >
 void Pgr_linearContraction<G>::add_shortcut(G &graph,
-        pgrouting::contraction::Edge &shortcut,
-        std::ostringstream& debug) {
-    graph.add_shortcut(shortcut, debug);
+        pgrouting::contraction::Edge &shortcut) {
+    graph.add_shortcut(shortcut);
 }
 
 }  // namespace pgrouting

@@ -195,6 +195,23 @@ struct {
     expectType eType;
 } Column_info_t;
 
+
+/**************************************************************************
+ * return type for contraction
+ * ***********************************************************************/
+typedef struct {
+    int64_t seq;
+    int64_t id;
+    char *type;
+    int64_t source;
+    int64_t target;
+    double cost;
+    int64_t *contracted_vertices;
+    int contracted_vertices_size;
+} pgr_contracted_blob;
+
+
+
 enum graphType {UNDIRECTED = 0, DIRECTED};
 
 /**************************************************************************
@@ -214,16 +231,16 @@ typedef struct {
 } Customer_t;
 
 /*
-    OUT seq INTEGER,        done in the .c code
-    OUT vehicle_seq INTEGER,
-    OUT vehicle_id INTEGER,
-    OUT order_id BIGINT,
-    OUT travelTime FLOAT,
-    OUT arrivalTime FLOAT,
-    OUT waitTime FLOAT,
-    OUT serviceTime FLOAT,
-    OUT departureTime FLOAT,
-*/
+   OUT seq INTEGER,        done in the .c code
+   OUT vehicle_seq INTEGER,
+   OUT vehicle_id INTEGER,
+   OUT order_id BIGINT,
+   OUT travelTime FLOAT,
+   OUT arrivalTime FLOAT,
+   OUT waitTime FLOAT,
+   OUT serviceTime FLOAT,
+   OUT departureTime FLOAT,
+   */
 
 typedef struct  {
     int vehicle_id;
