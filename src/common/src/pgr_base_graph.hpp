@@ -505,6 +505,8 @@ class Pgr_base_graph {
 
      bool is_directed() const {return m_gType == DIRECTED;}
      bool is_undirected() const {return m_gType == UNDIRECTED;}
+     bool is_source(V v_idx, E e_idx) const {return v_idx == source(e_idx);}
+     bool is_target(V v_idx, E e_idx) const {return v_idx == target(e_idx);}
 
      ///}
 
@@ -512,17 +514,40 @@ class Pgr_base_graph {
      ///{
 
 
+     T_E& operator[](E e_idx) {return graph[e_idx];}
+     const T_E& operator[](E e_idx) const {return graph[e_idx];}
+
      T_V& operator[](V v_idx) {return graph[v_idx];}
      const T_V& operator[](V v_idx) const {return graph[v_idx];}
 
-     //! @brief True when vid is in the graph
+     V source(E e_idx) const {return boost::source(e_idx, graph);}
+     V target(E e_idx) const {return boost::target(e_idx, graph);}
+     V adjacent(V v_idx, E e_idx) const {
+         pgassert(is_source(v_idx, e_idx) || is_target(v_idx, e_idx)); 
+         return is_source(v_idx, e_idx)?
+             target(e_idx) :
+             source(e_idx);
+     }
+
+
+
+     /*! @brief in degree of a vertex
+      *
+      * - when its undirected there is no "concept" of in degree
+      *   - out degree is returned
+      * - on directed in degree of vertex is returned
+      */
      degree_size_type in_degree(V &v) const {
          return is_directed()?
              boost::in_degree(v, graph) :
              boost::out_degree(v, graph);
      }
 
-     //! @brief True when vid is in the graph
+     /*! @brief out degree of a vertex
+      *
+      * regardles of undirected or directed graph
+      * - out degree is returned
+      */
      degree_size_type out_degree(V &v) const {
          return boost::out_degree(v, graph);
      }
@@ -601,8 +626,8 @@ class Pgr_base_graph {
                      out != out_end; ++out) {
                  log << ' '
                      << g.graph[*out].id << "=("
-                     << g.graph[source(*out, g.graph)].id << ", "
-                     << g.graph[target(*out, g.graph)].id << ") = "
+                     << g[g.source(*out)].id << ", "
+                     << g[g.target(*out)].id << ") = "
                      << g.graph[*out].cost <<"@t";
              }
              log << std::endl;
@@ -642,10 +667,10 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
     // store the edges that are going to be removed
     for (boost::tie(out, out_end) = out_edges(g_from, graph);
             out != out_end; ++out) {
-        if (target(*out, graph) == g_to) {
+        if (target(*out) == g_to) {
             d_edge.id = graph[*out].id;
-            d_edge.source = graph[source(*out, graph)].id;
-            d_edge.target = graph[target(*out, graph)].id;
+            d_edge.source = graph[source(*out)].id;
+            d_edge.target = graph[target(*out)].id;
             d_edge.cost = graph[*out].cost;
             removed_edges.push_back(d_edge);
         }
@@ -675,8 +700,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(
                 out != out_end; ++out) {
             if (graph[*out].id  == edge_id) {
                 d_edge.id = graph[*out].id;
-                d_edge.source = graph[source(*out, graph)].id;
-                d_edge.target = graph[target(*out, graph)].id;
+                d_edge.source = graph[source(*out)].id;
+                d_edge.target = graph[target(*out)].id;
                 d_edge.cost = graph[*out].cost;
                 removed_edges.push_back(d_edge);
                 boost::remove_edge((*out), graph);
@@ -705,8 +730,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
     for (boost::tie(out, out_end) = out_edges(vertex, graph);
             out != out_end; ++out) {
         d_edge.id = graph[*out].id;
-        d_edge.source = graph[source(*out, graph)].id;
-        d_edge.target = graph[target(*out, graph)].id;
+        d_edge.source = graph[source(*out)].id;
+        d_edge.target = graph[target(*out)].id;
         d_edge.cost = graph[*out].cost;
         removed_edges.push_back(d_edge);
     }
@@ -717,8 +742,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
         for (boost::tie(in, in_end) = in_edges(vertex, graph);
                 in != in_end; ++in) {
             d_edge.id = graph[*in].id;
-            d_edge.source = graph[source(*in, graph)].id;
-            d_edge.target = graph[target(*in, graph)].id;
+            d_edge.source = graph[source(*in)].id;
+            d_edge.target = graph[target(*in)].id;
             d_edge.cost = graph[*in].cost;
             removed_edges.push_back(d_edge);
         }
@@ -752,8 +777,8 @@ Pgr_base_graph< G, T_V, T_E >::get_edge_id(
     for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
             out_i != out_end; ++out_i) {
         e = *out_i;
-        v_target = target(e, graph);
-        v_source = source(e, graph);
+        v_target = target(e);
+        v_source = source(e);
         if ((from == v_source) && (to == v_target)
                 && (distance == graph[e].cost))
             return graph[e].id;

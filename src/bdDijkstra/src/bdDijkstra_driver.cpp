@@ -69,7 +69,7 @@ pgr_bdDijkstra(
     log << "entering static function\n";
     Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
 
-    auto path = fn_bdDijkstra.pgr_bdDijkstra(graph, graph.get_V(source), graph.get_V(target), only_cost); 
+    auto path = fn_bdDijkstra.pgr_bdDijkstra(graph.get_V(source), graph.get_V(target), only_cost); 
     log << fn_bdDijkstra.log();
 
     return path;

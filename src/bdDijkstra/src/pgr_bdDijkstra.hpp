@@ -63,7 +63,6 @@ class Pgr_bdDijkstra {
          Cost_Vertex_pair,
          std::vector<Cost_Vertex_pair>,
          std::greater<Cost_Vertex_pair> > Priority_queue;
-     enum Colours {WHITE, GRAY, BLACK};
 
 
  public:
@@ -76,9 +75,8 @@ class Pgr_bdDijkstra {
      ~Pgr_bdDijkstra() = default;
 
 
-     Path pgr_bdDijkstra(G &pgraph, V start_vertex, V end_vertex, bool only_cost) {
+     Path pgr_bdDijkstra(V start_vertex, V end_vertex, bool only_cost) {
          m_log << "pgr_bdDijkstra\n";
-         graph = pgraph;
          v_source = start_vertex;
          v_target = end_vertex;
 
@@ -89,12 +87,27 @@ class Pgr_bdDijkstra {
      }
 
      std::string log() const {return m_log.str();}
-     void clean_log() {return log.clear();}
+     void clean_log() {log.clear();}
+     void clear() {
+         while (!forward_queue.empty()) forward_queue.pop();
+         while (!backward_queue.empty()) backward_queue.pop();
+
+         backward_finished.clear();
+         backward_edge.clear();
+         backward_predecessor.clear();
+         backward_cost.clear();
+
+         forward_finished.clear();
+         forward_edge.clear();
+         forward_predecessor.clear();
+         forward_cost.clear();
+     }
 
 
  private:
      void initialize() {
          m_log << "initializing\n";
+         clear();
          forward_predecessor.resize(graph.num_vertices());
          forward_finished.resize(graph.num_vertices(), false);
          forward_edge.resize(graph.num_vertices(), -1);
@@ -155,7 +168,7 @@ class Pgr_bdDijkstra {
          }
 
          if (best_cost == INF) return Path();
-         // !forward_queue.empty() &&  !backward_queue.empty()
+
          Path forward_path(
                  graph,
                  v_source,
@@ -208,18 +221,15 @@ class Pgr_bdDijkstra {
          for (boost::tie(out, out_end) = out_edges(current_node, graph.graph);
                  out != out_end; ++out) {
 
-             auto edge_cost = graph.graph[*out].cost;
-             auto next_node = target(*out, graph.graph);
-             if (graph.m_gType == UNDIRECTED && next_node == current_node) {
-                 next_node = source(*out, graph.graph);
-             }
+             auto edge_cost = graph[*out].cost;
+             auto next_node = graph.adjacent(current_node, *out);
 
              if (forward_finished[next_node]) continue;
 
              if (edge_cost + current_cost < forward_cost[next_node]) {
                  forward_cost[next_node] = edge_cost + current_cost;
                  forward_predecessor[next_node] = current_node;
-                 forward_edge[next_node] = graph.graph[*out].id;
+                 forward_edge[next_node] = graph[*out].id;
                  forward_queue.push({forward_cost[next_node], next_node});
              }
          }
@@ -235,18 +245,15 @@ class Pgr_bdDijkstra {
          for (boost::tie(in, in_end) = in_edges(current_node, graph.graph);
                  in != in_end; ++in) {
 
-             auto edge_cost = graph.graph[*in].cost;
-             auto next_node = source(*in, graph.graph);
-             if (graph.m_gType == UNDIRECTED && next_node == current_node) {
-                 next_node = target(*in, graph.graph);
-             }
+             auto edge_cost = graph[*in].cost;
+             auto next_node = graph.adjacent(current_node, *in);
 
              if (backward_finished[next_node]) continue;
 
              if (edge_cost + current_cost < backward_cost[next_node]) {
                  backward_cost[next_node] = edge_cost + current_cost;
                  backward_predecessor[next_node] = current_node;
-                 backward_edge[next_node] = graph.graph[*in].id;
+                 backward_edge[next_node] = graph[*in].id;
                  backward_queue.push({backward_cost[next_node], next_node});
              }
          }
