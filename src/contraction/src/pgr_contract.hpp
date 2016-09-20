@@ -56,13 +56,11 @@ class Pgr_contract {
             std::ostringstream& debug) {
         pgrouting::Pgr_deadEndContraction<G> deadendContractor;
         debug << "Setting forbidden_vertices";
-        deadendContractor.setForbiddenVertices(
-                forbidden_vertices
-                , debug);
+        deadendContractor.setForbiddenVertices(forbidden_vertices);
 
-        deadendContractor.calculateVertices(graph, debug);
+        deadendContractor.calculateVertices(graph);
         try {
-            deadendContractor.doContraction(graph, debug);
+            deadendContractor.doContraction(graph);
         }
         catch ( ... ) {
             debug << "Caught unknown exception!\n";
@@ -94,7 +92,7 @@ class Pgr_contract {
             std::vector<int64_t> contraction_order,
             int64_t max_cycles,
             Identifiers<int64_t> &remaining_vertices,
-            std::vector<pgrouting::contraction::Edge> &shortcut_edges,
+            std::vector<pgrouting::CH_edge> &shortcut_edges,
             std::ostringstream& debug) {
         std::deque<int64_t> contract_order;
         //  push -1 to indicate the start of the queue

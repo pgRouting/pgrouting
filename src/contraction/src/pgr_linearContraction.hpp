@@ -61,7 +61,7 @@ class Pgr_linearContraction {
      void doContraction(G &graph);
 
  private:
-     int64_t& get_next_id() {
+     int64_t get_next_id() {
          return --last_edge_id;
      }
 
@@ -73,7 +73,7 @@ class Pgr_linearContraction {
              E incoming_edge,
              E outgoing_edge);
      void add_shortcut(G &graph,
-             pgrouting::contraction::Edge &shortcut);
+             pgrouting::CH_edge &shortcut);
 
  private:
      Identifiers<V> linearVertices;
@@ -201,17 +201,38 @@ void Pgr_linearContraction<G>::doContraction(G &graph) {
 }
 
 
+/*! \brief add edges(shortuct) to the graph during contraction
+
+  a --incomming--> b ---outgoing--> c
+
+  a -> c
+
+  edge (a, c) is a new edge: @b shortcut
+  e.contracted_vertices = b + b.contracted vertices
+  b is "removed" disconnected from the graph
+  - by removing all edges to/from b
+  */
 
 template < class G >
-void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
+void
+ Pgr_linearContraction<G>::add_shortcut(
+        G &graph, V vertex,
         E incoming_edge,
         E outgoing_edge) {
-    if (graph.m_gType == UNDIRECTED) {
+    pgassert(incoming_edge != outgoing_edge);
+
+    auto a = graph.adjacent(vertex, incoming_edge);
+    auto c = graph.adjacent(vertex, outgoing_edge);
+    pgassert(a != vertex);
+    pgassert(a != c);
+    pgassert(vertex != c);
+
+    if (graph.is_undirected()) {
         Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(vertex);
         V vertex_1 = adjacent_vertices[0];
         V vertex_2 = adjacent_vertices[1];
         E shortcut_E;
-        contraction::Edge shortcut(get_next_id(), graph[vertex_1].id,
+        CH_edge shortcut(get_next_id(), graph[vertex_1].id,
                 graph[vertex_2].id,
                 graph[incoming_edge].cost + graph[outgoing_edge].cost);
         shortcut.add_contracted_vertex(graph[vertex], vertex);
@@ -221,9 +242,11 @@ void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
         debug << shortcut;
         graph.add_shortcut(shortcut);
         debug << "Added shortcut\n";
-    } else if (graph.m_gType == DIRECTED) {
-        contraction::Edge shortcut(get_next_id(), graph[incoming_edge].source,
-                graph[outgoing_edge].target,
+    } else {
+        CH_edge shortcut(
+                get_next_id(),
+                graph[a].id,
+                graph[c].id,
                 graph[incoming_edge].cost + graph[outgoing_edge].cost);
         shortcut.add_contracted_vertex(graph[vertex], vertex);
         shortcut.add_contracted_edge_vertices(graph[incoming_edge]);
@@ -236,7 +259,7 @@ void Pgr_linearContraction<G>::add_shortcut(G &graph, V vertex,
 }
 template < class G >
 void Pgr_linearContraction<G>::add_shortcut(G &graph,
-        pgrouting::contraction::Edge &shortcut) {
+        pgrouting::CH_edge &shortcut) {
     graph.add_shortcut(shortcut);
 }
 

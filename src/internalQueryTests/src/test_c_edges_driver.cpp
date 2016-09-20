@@ -40,13 +40,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./test_c_edges_driver.h"
 
 #include "./../../common/src/pgr_types.h"
-
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
-#if 0
-#include "./../../common/src/pgr_base_graph.hpp"
-#endif
-#include "./../../contraction/src/pgr_contractionGraph.hpp"
 #include "./../../common/src/pgr_assert.h"
+#include "./../../contraction/src/pgr_contractionGraph.hpp"
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 
 /************************************************************
@@ -64,8 +60,8 @@ do_pgr_test_c_edges(
         pgassert(!(*log_msg));
         pgassert(!(*err_msg));
 
-        std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
-        std::vector < pgrouting::contraction::Vertex > vertices(pgrouting::contraction::extract_vertices(edges));
+        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+        auto vertices(pgrouting::extract_vertices(edges));
 
 
         log << "Original: \n" <<
@@ -78,8 +74,8 @@ do_pgr_test_c_edges(
                 << "\treverse_cost = " << edge.reverse_cost
                 << ")\n";
         }
+
         // TODO(Rohith) make the graph work with pgr_dijkstra
-        #if 0
         {
             log << "Testing Directed ,  insertion using vector\n";
             pgrouting::CHDirectedGraph graph(DIRECTED);
@@ -91,11 +87,11 @@ do_pgr_test_c_edges(
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
+            pgr_dijkstra(graph, 2, 3, true);
 
         }
         
+        #if 0
         {
             log << "Testing Directed ,  insertion using C array\n";
             pgrouting::CHDirectedGraph graph(DIRECTED);

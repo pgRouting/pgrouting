@@ -36,41 +36,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./identifiers.hpp"
 
 namespace pgrouting {
-namespace contraction {
 
-
-class Vertex {
+class CH_vertex {
  public:
     int64_t id;
-    Vertex() = default;
-    Vertex(const Vertex &) = default;
-    Vertex(const pgr_edge_t &other, bool is_source) :
+    CH_vertex() = default;
+    CH_vertex(const CH_vertex &) = default;
+    CH_vertex(const pgr_edge_t &other, bool is_source) :
       id(is_source? other.source : other.target)
       {}
-    void cp_members(const Vertex &other) {
+    void cp_members(const CH_vertex &other) {
         this->id = other.id;
     }
-    void add_contracted_vertex(Vertex& v, int64_t vid);
+    void add_contracted_vertex(CH_vertex& v, int64_t vid);
     void add_vertex_id(int64_t vid) {m_contracted_vertices += vid;}
     const Identifiers<int64_t>& contracted_vertices() const;
     bool has_contracted_vertices() const;
     void clear_contracted_vertices() {m_contracted_vertices.clear();}
-    friend std::ostream& operator <<(std::ostream& os, const Vertex& v);
+    friend std::ostream& operator <<(std::ostream& os, const CH_vertex& v);
  private:
     Identifiers<int64_t> m_contracted_vertices;
 };
 
 size_t
-check_vertices(std::vector < Vertex > vertices);
+check_vertices(std::vector < CH_vertex > vertices);
 
-std::vector < Vertex >
+#if 0
+std::vector < CH_vertex >
 extract_vertices(
     const pgr_edge_t *data_edges, int64_t count);
 
-std::vector < Vertex >
+std::vector < CH_vertex >
 extract_vertices(
     const std::vector < pgr_edge_t > &data_edges);
-
-}  // namespace contraction
+#endif
 }  // namespace pgrouting
+
 #endif  // SRC_COMMON_SRC_CH_VERTEX_H_

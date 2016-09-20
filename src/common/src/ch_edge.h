@@ -36,28 +36,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./ch_vertex.h"
 #include "./basic_edge.h"
 namespace pgrouting {
-namespace contraction {
 
-class Edge {
+class CH_edge {
  public:
-     Edge() = default;
-     Edge(int64_t eid, int64_t source, int64_t target, double cost) :
+     CH_edge() = default;
+     CH_edge(int64_t eid, int64_t source, int64_t target, double cost) :
          id(eid), source(source),
          target(target), cost(cost), first(true) {}
-     Edge(int64_t eid, int64_t source, int64_t target,
+     CH_edge(int64_t eid, int64_t source, int64_t target,
              double cost, bool first) :
          id(eid), source(source),
          target(target), cost(cost), first(first) {}
 
-     void cp_members(const Edge &other, std::ostringstream& log);
-     void cp_members(const Edge &other);
+     void cp_members(const CH_edge &other, std::ostringstream& log);
+     void cp_members(const CH_edge &other);
      void cp_members(const Basic_edge &other);
-     void add_contracted_vertex(Vertex& v, int64_t vid);
-     void add_contracted_edge_vertices(Edge& e);
+     void add_contracted_vertex(CH_vertex& v, int64_t vid);
+     void add_contracted_edge_vertices(CH_edge& e);
      bool has_contracted_vertices() const;
      void clear_contracted_vertices() { m_contracted_vertices.clear(); }
      const Identifiers<int64_t>& contracted_vertices() const;
-     friend std::ostream& operator <<(std::ostream& os, const Edge& e);
+     friend std::ostream& operator <<(std::ostream& os, const CH_edge& e);
 
  public:
      int64_t id;
@@ -69,7 +68,6 @@ class Edge {
      Identifiers<int64_t> m_contracted_vertices;
 };
 
-}  // namespace contraction
 }  // namespace pgrouting
 
 #endif  // SRC_COMMON_SRC_CH_EDGE_H_

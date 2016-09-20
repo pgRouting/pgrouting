@@ -280,6 +280,7 @@ class Pgr_base_graph {
        */
      //@{
      typedef G B_G;
+     typedef T_E G_T_E;
      typedef typename boost::graph_traits < G >::vertex_descriptor V;
      typedef typename boost::graph_traits < G >::edge_descriptor E;
      typedef typename boost::graph_traits < G >::vertex_iterator V_i;
@@ -529,8 +530,7 @@ class Pgr_base_graph {
              source(e_idx);
      }
 
-
-
+     
      /*! @brief in degree of a vertex
       *
       * - when its undirected there is no "concept" of in degree
