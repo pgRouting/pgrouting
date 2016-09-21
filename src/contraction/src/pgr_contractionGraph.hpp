@@ -288,13 +288,13 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          EO_i out, out_end;
          for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
              if ((*vi) >= this->m_num_vertices) break;
-             log << this->graph[(*vi)].id << "(" << (*vi) << ")"
-                 << this->graph[(*vi)].contracted_vertices() << std::endl;
-             log << " out_edges_of(" << this->graph[(*vi)].id << "):";
+             log << this->graph[*vi].id << "(" << (*vi) << ")"
+                 << this->graph[*vi].contracted_vertices() << std::endl;
+             log << " out_edges_of(" << this->graph[*vi].id << "):";
              for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
                      out != out_end; ++out) {
-                 log << ' ' << this->graph[*out].id << "=(" << this->graph[source(*out, this->graph)].id
-                     << ", " << this->graph[target(*out, this->graph)].id << ") = "
+                 log << ' ' << this->graph[*out].id << "=(" << this->graph[this->source(*out)].id
+                     << ", " << this->graph[this->target(*out)].id << ") = "
                      <<  this->graph[*out].cost <<"\t";
              }
              log << std::endl;
