@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./contractGraph_driver.h"
 
+#include "./pgr_contractionGraph.hpp"
 #include "./pgr_contract.hpp"
 
 #include "./../../common/src/pgr_alloc.hpp"
