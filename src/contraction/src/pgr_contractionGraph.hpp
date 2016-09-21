@@ -84,7 +84,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      typedef typename boost::graph_traits < G >::degree_size_type       degree_size_type;
 
      Identifiers<V> removed_vertices;
-     std::vector< T_E > shortcuts;
+     std::vector<T_E> shortcuts;
 
      /*! @brief Binary function that accepts two elements , and returns a value convertible to bool.
        Used as a compare function to sort the edges in increasing order of edge id
@@ -106,78 +106,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      explicit Pgr_contractionGraph< G , T_V, T_E >(graphType gtype)
          : Pgr_base_graph< G , T_V, T_E >(gtype) {
          }
-
-     // ! @name Insert data
-     // @{
-     /*! \brief Inserts *count* edges of type *T* into the graph
-      *
-      *  Converts the edges to a std::vector<T> & calls the overloaded
-      *  twin function.
-      *
-      *  @param edges
-      *  @param count
-      */
-     template < typename T >
-         void graph_insert_data(const T *edges, int64_t count) {
-             graph_insert_data(std::vector < T >(edges, edges + count));
-         }
-     /*! \brief Inserts vector of edges of type *T* into the graph
-      *
-      *  @param edges
-      */
-     template < typename T >
-         void graph_insert_data(const std::vector < T > &edges) {
-             for (const auto edge : edges) {
-                 graph_add_edge(edge);
-             }
-         }
-     // @}
-
-#if 0
-     // ! @brief True when *v* is in the graph
-     /*!
-       True when
-       - Indegree of *v* is 0 &
-       - Outdegree of *v* is 0
-       @param [in] v vertex_id
-       */
-     bool is_connected(int64_t v) const {
-         if (this->in_degree(this->get_V(v)) == 0 && this->out_degree(this->get_V(v)) == 0) {
-             return false;
-         }
-         return true;
-     }
-#endif
-
-#if 0
-     // ! @brief get the vertex descriptor of the vertex adjacent to *v*
-     /*!
-       - Degree of *v* is 1
-       @param [in] v vertex_descriptor
-       @return V: The vertex descriptor of the vertex adjacent to *v*
-       */
-     V find_adjacent_vertex(V v) const {
-         EO_i out, out_end;
-         EI_i in, in_end;
-         V out_vertex, in_vertex;
-         out_vertex = in_vertex = -1;
-         for (boost::tie(out, out_end) = out_edges(v, this->graph);
-                 out != out_end; ++out) {
-             out_vertex = target(*out, this->graph);
-         }
-         for (boost::tie(in, in_end) = in_edges(v, this->graph);
-                 in != in_end; ++in) {
-             in_vertex = source(*in, this->graph);
-         }
-         if (in_vertex == -1)
-             return out_vertex;
-         else if (out_vertex == -1)
-             return in_vertex;
-         else if (out_vertex == in_vertex)
-             return in_vertex;
-         return out_vertex;
-     }
-#endif
 
      /*! @brief get the vertex descriptors of adjacent vertices of *v*
        @param [in] v vertex_descriptor
@@ -255,9 +183,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        @param [in] shortcut_edges The vector of edges added during contraction
        */
      void get_shortcuts(std::vector<T_E>& shortcut_edges) {
-         // log << "Getting shortcuts\n";
+         shortcut_edges = shortcuts;
          for (auto shortcut : shortcuts) {
-             // log << shortcut;
              shortcut_edges.push_back(shortcut);
          }
          std::sort(shortcut_edges.begin(), shortcut_edges.end(), compareById);
@@ -374,21 +301,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
      }
 
-#if 0
-     /*! @brief get the contracted vertex ids of a given vertex in string format
-       @param [in] vid vertex_id
-       @param [in] log stringstream which stores the vertex ids of contracted vertices of *vid*
-       */
-     void get_contracted_vertices(std::ostringstream &log, int64_t vid) {
-         if (!this->has_vertex(vid)) return;
-         V v = this->get_V(vid);
-         log << "{";
-         for (auto vertex : this->graph[v].contracted_vertices()) {
-             log << this->graph[vertex].id << ", ";
-         }
-         log << "}";
-     }
-#endif
 
 
      /*! @brief get the contracted vertex ids of a given vertex in array format
@@ -419,47 +331,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          e.clear_contracted_vertices();
      }
 
-     /*! \brief Inserts an edge of type *T* into the graph
-      *  @param edge
-      */
-     template < typename T>
-         void graph_add_edge(const T &edge) {
-             bool inserted;
-             E e;
-             if ((edge.cost < 0) && (edge.reverse_cost < 0))
-                 return;
-             /*
-              * true: for source
-              * false: for target
-              */
-             auto vm_s = this->get_V(T_V(edge, true));
-             auto vm_t = this->get_V(T_V(edge, false));
-             pgassert(this->vertices_map.find(edge.source) != this->vertices_map.end());
-             pgassert(this->vertices_map.find(edge.target) != this->vertices_map.end());
-             if (edge.cost >= 0) {
-                 boost::tie(e, inserted) =
-                     boost::add_edge(vm_s, vm_t, this->graph);
-                 this->graph[e].cost = edge.cost;
-                 this->graph[e].id = edge.id;
-                 this->graph[e].first = true;
-#if 0
-                 this->graph[e].source = edge.source;
-                 this->graph[e].target = edge.target;
-#endif
-             }
-             if (edge.reverse_cost >= 0) {
-                 boost::tie(e, inserted) =
-                     boost::add_edge(vm_t, vm_s, this->graph);
-
-                 this->graph[e].cost = edge.reverse_cost;
-                 this->graph[e].id = edge.id;
-                 this->graph[e].first = false;
-#if 0
-                 this->graph[e].target = edge.source;
-                 this->graph[e].source = edge.target;
-#endif
-             }
-         }
 
      /*! \brief add edges(shortuct) to the graph during contraction
        
@@ -483,32 +354,19 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          E e;
          if (edge.cost < 0)
              return;
-         /*
-          * true: for source
-          * false: for target
-          */
-         log << "Graph before adding shortcut\n";
-         print_graph(log);
+
          pgassert(this->vertices_map.find(edge.source) != this->vertices_map.end());
          pgassert(this->vertices_map.find(edge.target) != this->vertices_map.end());
+
          auto vm_s = this->get_V(edge.source);
          auto vm_t = this->get_V(edge.target);
-         log << "Adding edge between " << this->graph[vm_s] << ", "
-             << this->graph[vm_t] << std::endl;
 
-         if (edge.cost >= 0) {
-             boost::tie(e, inserted) =
-                 boost::add_edge(vm_s, vm_t, this->graph);
-             log << "inserted: " << inserted << std::endl;
-             this->graph[e].cp_members(edge, log);
-             log << this->graph[e];
-             // this->graph[e].id = this->graph[e].eid;
-             log << "Graph after adding shortcut\n";
-             print_graph(log);
-             T_E shortcut;
-             shortcut.cp_members(edge, log);
-             shortcuts.push_back(shortcut);
-         }
+         boost::tie(e, inserted) =
+             boost::add_edge(vm_s, vm_t, this->graph);
+
+         this->graph[e].cp_members(edge);
+
+         shortcuts.push_back(edge);
      }
 
      /*! \brief Disconnects all incoming and outgoing edges from the vertex

@@ -31,87 +31,46 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 namespace pgrouting {
 
-void CH_edge::cp_members(const CH_edge &other, std::ostringstream& log) {
-        log << "Copying members of edge\n";
-        log << other;
-        #if 0
-        this->cost = other.cost;
-        log << "after copying cost of edge\n";
-        log << *this;
-        this->first = other.first;
-        log << "after copying first of edge\n";
-        log << *this;
-        this->source = other.source;
-        log << "after copying source of edge\n";
-        log << *this;
-        this->target = other.target;
-        log << "after copying target of edge\n";
-        log << *this;
-        this->m_contracted_vertices += other.contracted_vertices();
-        log << "after adding contracted vertices\n";
-        log << *this;
-        #endif
-        this->cost = other.cost;
-        this->id = other.id;
-        this->first = other.first;
-        this->source = other.source;
-        this->target = other.target;
-        this->m_contracted_vertices += other.contracted_vertices();
-        #if 0
-        log << "copying eid: " << other.id << "\n";
-        this->id = other.id;
-        // log << "after copying id of edge\n";
-        log << *this;
-        #endif
-    }
-
-
-void CH_edge::cp_members(const CH_edge &other) {
-        this->cost = other.cost;
-        this->id = other.id;
-        this->first = other.first;
-        this->source = other.source;
-        this->target = other.target;
-        this->m_contracted_vertices += other.contracted_vertices();
-    }
-
-void CH_edge::cp_members(const Basic_edge &other) {
-        this->id = other.id;
-        this->cost = other.cost;
-        this->first = other.first;
-    }
-bool CH_edge::has_contracted_vertices() const {
-    if (m_contracted_vertices.size() == 0)
-        return false;
-    return true;
+void
+CH_edge::cp_members(const CH_edge &other) {
+    this->cost = other.cost;
+    this->id = other.id;
+    this->m_contracted_vertices += other.contracted_vertices();
 }
 
-const Identifiers<int64_t>& CH_edge::contracted_vertices() const {
+
+bool
+CH_edge::has_contracted_vertices() const {
+    return !m_contracted_vertices.empty();
+}
+
+const Identifiers<int64_t>&
+CH_edge::contracted_vertices() const {
     return m_contracted_vertices;
 }
 
 
-void CH_edge::add_contracted_vertex(CH_vertex& v, int64_t vid) {
+void
+CH_edge::add_contracted_vertex(CH_vertex& v, int64_t vid) {
     m_contracted_vertices += vid;
     m_contracted_vertices += v.contracted_vertices();
     v.clear_contracted_vertices();
 }
 
-void CH_edge::add_contracted_edge_vertices(CH_edge &e) {
+void
+CH_edge::add_contracted_edge_vertices(CH_edge &e) {
     m_contracted_vertices += e.contracted_vertices();
     e.clear_contracted_vertices();
 }
 
 std::ostream& operator <<(std::ostream& os, const CH_edge& e) {
-    os << "{\n    id: " << e.id << ",\n";
-    os << "    source: " << e.source << ",\n";
-    os << "    target: " << e.target << ",\n";
-    os << "    cost: " << e.cost << ",\n";
-    os << "    first: " << e.first << ",\n";
-    os << "    contracted vertices: ";
-    os << e.contracted_vertices();
-    os << "\n}";
-    os << "\n";
+    os << "{id: " << e.id << ",\t"
+        << "source: " << e.source << ",\t"
+        << "target: " << e.target << ",\t"
+        << "cost: " << e.cost << ",\t"
+        << "contracted vertices: "
+        << e.contracted_vertices()
+        << "}";
     return os;
 }
 

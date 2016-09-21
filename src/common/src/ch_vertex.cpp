@@ -33,7 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 
 
-const Identifiers<int64_t>& CH_vertex::contracted_vertices() const {
+const Identifiers<int64_t>&
+    CH_vertex::contracted_vertices() const {
     return m_contracted_vertices;
 }
 
@@ -51,66 +52,11 @@ void CH_vertex::add_contracted_vertex(CH_vertex& v, int64_t vid) {
 }
 
 std::ostream& operator <<(std::ostream& os, const CH_vertex& v) {
-    os << "{\n    id: " << v.id << ",\n";
-    os << "    contracted vertices: ";
-    os << v.contracted_vertices();
-    os << "\n}";
-    os << "\n";
+    os << "{id: " << v.id << ",\t"
+     << "contracted vertices: "
+     << v.contracted_vertices()
+     << "}";
     return os;
 }
-
-#if 0
-size_t
-check_vertices(
-    std::vector < CH_vertex > vertices) {
-    auto count(vertices.size());
-    std::stable_sort(
-        vertices.begin(), vertices.end(),
-        [](const CH_vertex &lhs, const CH_vertex &rhs)
-        {return lhs.id < rhs.id;});
-    vertices.erase(
-        std::unique(
-            vertices.begin(), vertices.end(),
-            [](const CH_vertex &lhs, const CH_vertex &rhs)
-            {return lhs.id == rhs.id;}), vertices.end());
-    return count - vertices.size();
-}
-
-std::vector < CH_vertex >
-extract_vertices(
-    const std::vector <pgr_edge_t > &data_edges) {
-    std::vector< CH_vertex > vertices;
-    if (data_edges.empty()) return vertices;
-    vertices.reserve(data_edges.size() * 2);
-    for (const auto edge : data_edges) {
-        CH_vertex v_source(edge, true);
-        vertices.push_back(v_source);
-
-        CH_vertex v_target(edge, false);
-        vertices.push_back(v_target);
-    }
-    /*
-     * sort and delete duplicates
-     */
-    std::stable_sort(
-        vertices.begin(), vertices.end(),
-        [](const CH_vertex &lhs, const CH_vertex &rhs)
-        {return lhs.id < rhs.id;});
-    vertices.erase(
-        std::unique(
-            vertices.begin(), vertices.end(),
-            [](const CH_vertex &lhs, const CH_vertex &rhs)
-            {return lhs.id == rhs.id;}), vertices.end());
-    return vertices;
-}
-
-std::vector < CH_vertex >
-extract_vertices(
-    const pgr_edge_t *data_edges,
-    int64_t count) {
-    return extract_vertices(
-        std::vector < pgr_edge_t >(data_edges, data_edges + count));
-}
-#endif
 
 }  // namespace pgrouting

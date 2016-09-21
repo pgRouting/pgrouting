@@ -28,6 +28,7 @@ branches:
     - master
     - develop
     - rewrite/bd_dijkstra
+    - internal/graph
 
 env:
   - POSTGRESQL_VERSION=9.1

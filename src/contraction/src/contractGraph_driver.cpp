@@ -64,7 +64,7 @@ static void process_contraction(
         std::vector< pgrouting::CH_edge > &shortcut_edges,
         std::ostringstream &log,
         std::ostringstream &err) {
-    graph.graph_insert_data(edges);
+    graph.insert_edges(edges);
     /*
      * this check does not ignore vertices ids that dont belong to the graph
      */

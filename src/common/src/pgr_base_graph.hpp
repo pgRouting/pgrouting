@@ -843,7 +843,6 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
             boost::add_edge(vm_s, vm_t, graph);
         graph[e].cost = edge.cost;
         graph[e].id = edge.id;
-        graph[e].first = true;
     }
 
     if (edge.reverse_cost >= 0) {
@@ -852,7 +851,6 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
 
         graph[e].cost = edge.reverse_cost;
         graph[e].id = edge.id;
-        graph[e].first = false;
     }
 }
 

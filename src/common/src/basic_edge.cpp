@@ -37,7 +37,6 @@ namespace pgrouting {
     void Basic_edge::cp_members(const Basic_edge &other) {
         this->id = other.id;
         this->cost = other.cost;
-        this->first = other.first;
     }
 
 }  // namespace pgrouting
