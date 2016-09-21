@@ -13,6 +13,7 @@ branches:
     - develop
     - internal/graph
 
+
 image: Visual Studio 2013
 configuration: Release
 platform: x64

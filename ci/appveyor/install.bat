@@ -54,6 +54,7 @@ for /f "tokens=*  delims=" %%a in ('cmake --version') do (
 )
 :_ExitForLoop1
 set CURR_CMAKE=%CURR_CMAKE:~14%
+echo cmake %CURR_CMAKE% found
 
 if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
