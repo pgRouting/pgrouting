@@ -85,7 +85,7 @@ process(char *edges_sql,
             &err_msg);
 
     pfree(edges);
-    elog(NOTICE, "Returned log message = %s\n", log_msg);
+    PGR_DBG("Returned log message = %s\n", log_msg);
     if (log_msg) {
         elog(DEBUG1, "%s", log_msg);
         free(log_msg);
