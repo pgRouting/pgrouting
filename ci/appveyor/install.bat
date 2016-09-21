@@ -56,7 +56,7 @@ for /f "tokens=*  delims=" %%a in ('cmake --version') do (
 set CURR_CMAKE=%CURR_CMAKE:~14%
 echo cmake %CURR_CMAKE% found
 
-if "%CURR_CMAKE%" == "%CMAKE_VERSION%" (
+if "%CURR_CMAKE%" GTR "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed
 ) else (
     echo Downloading cmake %CMAKE_VERSION%
