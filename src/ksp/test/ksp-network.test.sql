@@ -103,15 +103,17 @@ END $$;
 
 -- TESTS START
 
-SELECT DISTINCT node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
+SELECT DISTINCT node = network.source AS e1,  edge = network.id AS e2, round(network.cost::numeric,4) = round(result.cost::numeric, 4) AS e3
+FROM pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5::BIGINT,
-    15) result, network where id = edge order by seq;
+    15) result, network where id = edge order by e1, e2, e3;
 
 
-SELECT DISTINCT node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
+SELECT DISTINCT node = network.source AS e1,  edge = network.id AS e2, round(network.cost::numeric,4) = round(result.cost::numeric, 4) AS e3
+FROM pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5,
-    15) AS result, network WHERE id = edge ORDER BY seq;
+    15) result, network where id = edge order by e1, e2, e3;
 
 ROLLBACK;
