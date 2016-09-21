@@ -44,8 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./bdDijkstra_driver.h"
 
-PG_FUNCTION_INFO_V1(bdDijkstra);
 PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(bdDijkstra);
 
 
 /******************************************************************************/
