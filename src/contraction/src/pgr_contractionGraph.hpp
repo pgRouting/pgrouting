@@ -387,8 +387,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          for (boost::tie(out, out_end) = out_edges(vertex, this->graph);
                  out != out_end; ++out) {
              d_edge.id = this->graph[*out].id;
-             d_edge.source = this->graph[source(*out, this->graph)].id;
-             d_edge.target = this->graph[target(*out, this->graph)].id;
+             d_edge.source = this->graph[source(*out)].id;
+             d_edge.target = this->graph[target(*out)].id;
              d_edge.cost = this->graph[*out].cost;
              this->removed_edges.push_back(d_edge);
          }
@@ -399,8 +399,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              for (boost::tie(in, in_end) = in_edges(vertex, this->graph);
                      in != in_end; ++in) {
                  d_edge.id = this->graph[*in].id;
-                 d_edge.source = this->graph[source(*in, this->graph)].id;
-                 d_edge.target = this->graph[target(*in, this->graph)].id;
+                 d_edge.source = this->graph[this->source(*in)].id;
+                 d_edge.target = this->graph[this->target(*in)].id;
                  d_edge.cost = this->graph[*in].cost;
                  this->removed_edges.push_back(d_edge);
              }
