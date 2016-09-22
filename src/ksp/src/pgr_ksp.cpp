@@ -115,42 +115,30 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
 
     int64_t spurNodeId;
 
-    //log.str("");
-    // log << "original\n" << graph;
-    log << "\ncurr_result_path" << curr_result_path;
-    log << "\ncurr_result_path.size " << curr_result_path.size();
-    // if (curr_result_path.size() == 9) pgassertwm(true==false, log.str());
 
     for (unsigned int i = 0; i < curr_result_path.size(); ++i) {
 
         spurNodeId = curr_result_path[i].node;
-        log << "\nspurNodeId " << spurNodeId;
 
         auto rootPath = curr_result_path.getSubpath(i);
-        // log << "\nrootPath " << rootPath;
 
         for (const auto &path : m_ResultSet) {
-            // log << "working with this path\n" << path;
             if (path.isEqual(rootPath)) {
                 if (path.size() > i + 1) {
                     graph.disconnect_edge(path[i].node,     // from
                             path[i + 1].node);  // to
-           //         log << "after edge disconnection\n" << graph;
                 }
             }
         }
 
         removeVertices(graph, rootPath);
-        // log << "after removal\n" << graph;
 
         Pgr_dijkstra< G > fn_dijkstra;
         auto spurPath = fn_dijkstra.dijkstra(graph, spurNodeId, m_end);
 
         if (spurPath.size() > 0) {
             rootPath.appendPath(spurPath);
-            log << "before inserting heap size" << m_Heap.size();
             m_Heap.insert(rootPath);
-            log << "after inserting heap size" << m_Heap.size();
         }
 
         graph.restore_graph();
@@ -163,15 +151,20 @@ void Pgr_ksp< G >::executeYen(G &graph, int K) {
     getFirstSolution(graph);
 
     if (m_ResultSet.size() == 0) return;  // no path found
-    log << "before while heap size" << m_Heap.size();
 
     while (m_ResultSet.size() < (unsigned int) K) {
         doNextCycle(graph);
         if (m_Heap.empty()) break;
         curr_result_path = *m_Heap.begin();
         m_ResultSet.insert(curr_result_path);
-        log << "before erase heap size" << m_Heap.size();
         m_Heap.erase(m_Heap.begin());
+        /*
+         * whithout the next line withpointsKSP hungs with:
+         *  c++ 4.6
+         *  Debug mode
+         */
+#ifndef NDEBUG
         log << "end of while heap size" << m_Heap.size();
+#endif
     }
 }
