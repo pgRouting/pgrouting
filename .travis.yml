@@ -7,10 +7,10 @@
 
 #choose precise or trusty
 
-#group: edge
-#dist: trusty    
+group: edge
+dist: trusty    
 
-dist: precise
+#dist: precise
 
 sudo: required
 
@@ -29,6 +29,7 @@ branches:
     - develop
     - rewrite/bd_dijkstra
     - internal/graph
+    - fix/withpointKSP
 
 env:
   - POSTGRESQL_VERSION=9.1
