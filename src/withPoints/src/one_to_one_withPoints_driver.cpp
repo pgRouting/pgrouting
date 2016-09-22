@@ -78,7 +78,7 @@ do_pgr_withPoints(
         pgassert(!(*log_msg));
         pgassert(!(*err_msg));
 
-        log << "ntering do_pgr_withPoints\n";
+        log << "entering do_pgr_withPoints\n";
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
 

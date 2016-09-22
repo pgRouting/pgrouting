@@ -40,6 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "fmgr.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/time_msg.h"
+#include "./../../common/src/e_report.h"
+
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
@@ -111,9 +113,12 @@ process(
     }
 
     PGR_DBG("Starting processing");
-    char *err_msg = NULL;
     clock_t start_t = clock();
-    int errcode = do_pgr_withPointsKsp(
+
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
+    do_pgr_withPointsKsp(
             edges,
             total_edges,
             points,
@@ -131,22 +136,24 @@ process(
 
             result_tuples,
             result_count,
+
+            &log_msg,
+            &notice_msg,
             &err_msg);
     time_msg(" processing withPointsKSP", start_t, clock());
 
     PGR_DBG("Returned message = %s\n", err_msg);
 
-    if (!err_msg) free(err_msg);
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
+    }
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
     pfree(edges);
     pfree(edges_of_points);
     pfree(points);
 
     pgr_SPI_finish();
-
-    if (errcode) {
-        pgr_send_error(errcode);
-    }
 
 }
 
@@ -247,7 +254,7 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
            OUT seq INTEGER, OUT path_id INTEGER, OUT path_seq INTEGER,
            OUT node BIGINT, OUT edge BIGINT,
            OUT cost FLOAT, OUT agg_cost FLOAT)
-        */
+           */
 
 
         // postgres starts counting from 1

@@ -628,7 +628,7 @@ class Pgr_base_graph {
                      << g.graph[*out].id << "=("
                      << g[g.source(*out)].id << ", "
                      << g[g.target(*out)].id << ") = "
-                     << g.graph[*out].cost <<"@t";
+                     << g.graph[*out].cost <<"\t";
              }
              log << std::endl;
          }
