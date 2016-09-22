@@ -119,7 +119,7 @@ void Pgr_ksp< G >::doNextCycle(G &graph) {
     // log << "original\n" << graph;
     log << "\ncurr_result_path" << curr_result_path;
     log << "\ncurr_result_path.size " << curr_result_path.size();
-    if (curr_result_path.size() == 9) pgassertwm(true==false, log.str());
+    // if (curr_result_path.size() == 9) pgassertwm(true==false, log.str());
 
     for (unsigned int i = 0; i < curr_result_path.size(); ++i) {
 
