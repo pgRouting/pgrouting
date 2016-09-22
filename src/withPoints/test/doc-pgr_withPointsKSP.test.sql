@@ -27,6 +27,4 @@ BEGIN;
 
 
 
-    ROLLBACK;
-
-
+ROLLBACK;

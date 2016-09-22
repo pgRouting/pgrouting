@@ -12,6 +12,7 @@ branches:
     - master
     - develop
     - internal/graph
+    - fix/withpointKSP
 
 
 image: Visual Studio 2013
