@@ -169,7 +169,7 @@ do_pgr_withPoints(
 #endif
         return 0;
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
     return 1000;

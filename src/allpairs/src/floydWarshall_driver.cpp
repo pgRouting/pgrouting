@@ -88,7 +88,7 @@ do_pgr_floydWarshall(
 #endif
     return;
   } catch ( ... ) {
-    log << "Caught unknown expection!\n";
+    log << "Caught unknown exception!\n";
     *err_msg = strdup(log.str().c_str());
     *postgres_rows = NULL;
     *result_tuple_count = 0;
