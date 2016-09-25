@@ -15,7 +15,7 @@ Installation
 This is a basic guide to download and install pgRouting.
 
 The specific instructions for any given OS distribution may vary depending on the various package maintainers.
-Contact the specific OS package mantainer for details.
+Contact the specific OS package maintainer for details.
 
 .. note:: The following are only general instructions.
 
