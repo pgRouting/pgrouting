@@ -119,7 +119,7 @@ do_pgr_many_to_many_dijkstra(
 
         return;
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
         return;
     }

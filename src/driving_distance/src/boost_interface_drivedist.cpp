@@ -90,7 +90,7 @@ do_pgr_driving_many_to_dist(
         return;
 
     } catch ( ... ) {
-        *err_msg = strdup("Caught unknown expection!");
+        *err_msg = strdup("Caught unknown exception!");
         *ret_path = noResult(path_count, (*ret_path));
         return;
     }

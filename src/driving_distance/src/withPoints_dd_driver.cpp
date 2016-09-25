@@ -178,7 +178,7 @@ do_pgr_many_withPointsDD(
         return 0;
 
     } catch ( ... ) {
-        *err_msg = strdup("Caught unknown expection!");
+        *err_msg = strdup("Caught unknown exception!");
         return 1000;
     }
 
@@ -316,7 +316,7 @@ do_pgr_withPointsDD(
 #endif
         return 0;
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
     return 1000;

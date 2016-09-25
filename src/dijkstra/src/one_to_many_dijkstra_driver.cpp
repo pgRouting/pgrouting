@@ -106,8 +106,8 @@ do_pgr_one_to_many_dijkstra(
 
     return;
   } catch ( ... ) {
-      log << "Caught unknown expection!\n";
-      *err_msg = strdup("Caught unknown expection!\n");
+      log << "Caught unknown exception!\n";
+      *err_msg = strdup("Caught unknown exception!\n");
       return;
   }
 }
