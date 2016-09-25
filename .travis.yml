@@ -7,7 +7,7 @@
 
 #choose precise or trusty
 
-group: edge
+#group: edge
 dist: trusty    
 
 #dist: precise
