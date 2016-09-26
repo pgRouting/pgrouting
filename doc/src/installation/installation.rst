@@ -14,9 +14,16 @@ Installation
 
 This is a basic guide to download and install pgRouting.
 
-Additional notes can be found in `Installation Notes <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
+The specific instructions for any given OS distribution may vary depending on the various package maintainers.
+Contact the specific OS package maintainer for details.
+
+.. note:: The following are only general instructions.
+
+Additional notes and corrections can be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
 
 Also PostGIS provides some information about installation in this `Install Guide <http://www.postgis.us/presentations/postgis_install_guide_22.html>`__
+
+
 
 Download
 --------
@@ -29,7 +36,7 @@ Windows
 
 Winnie Bot Builds:
 
-* `Winnie PostgreSQL 9.2-9.5 32-bit/64-bit <http://postgis.net/windows_downloads>`_
+* `Winnie Bot Builds <http://postgis.net/windows_downloads>`_
 
 Production Builds:
 
@@ -37,28 +44,41 @@ Production Builds:
 * Can also get PostGIS Bundle from http://download.osgeo.org/postgis/windows/
 
 
-Ubuntu/Debian
+Ubuntu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ubuntu packages are available in postgreSQL repositories.
+pgRouting on Ubuntu can be installed using packages from a PostgreSQL repository:
 
 Using a terminal window:
 
+* Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.
+
 .. code-block:: bash
 
-    # Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.
-    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
-    # Import the repository key, update the package lists
-    sudo apt-get install wget ca-certificates
+* Import the repository key, update the package lists
+
+.. code-block:: bash
+
+    sudo apt install wget ca-certificates
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-    sudo apt-get update
+    sudo apt update
 
-    # Install pgrouting based on your postgres Installation: for this example is 9.3
-    sudo apt-get install postgresql-9.3-pgrouting
+* Install pgrouting based on your postgres Installation: for this example is 9.3
 
-This will also install all required packages such as postgreSQL and postGIS if not installed yet.
+.. code-block:: bash
 
+sudo apt install postgresql-9.3-pgrouting
+
+This will also install all required packages such as PostgreSQL and PostGIS if not installed yet.
+
+* To be up-to-date with changes and improvements
+
+
+.. code-block:: bash
+
+sudo apt-get update & sudo apt-get upgrade
 
 
 RHEL/CentOS
@@ -166,9 +186,10 @@ To upgrade pgRouting to version 2.x.y use the following command:
 
    ALTER EXTENSION pgrouting UPDATE TO "2.x.y";
 
-For example to upgrade to 2.2.3
+   For example to upgrade to 2.2.3
 
-.. code-block:: sql
+   .. code-block:: sql
 
    ALTER EXTENSION pgrouting UPDATE TO "2.2.3";
+
 

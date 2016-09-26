@@ -21,13 +21,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
+#ifndef SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
+#define SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
 #pragma once
 
-#include "postgres.h"
+#include <postgres.h>
 #include "executor/spi.h"
 
-// #include "./pgr_types.h"
 
 void pgr_send_error(int errcode);
 void pgr_SPI_finish(void);
@@ -35,3 +35,5 @@ void pgr_SPI_connect(void);
 SPIPlanPtr pgr_SPI_prepare(char* sql);
 Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan);
 char* pgr_text2char(text *in);
+
+#endif  // SRC_COMMON_SRC_POSTGRES_CONNECTION_H_

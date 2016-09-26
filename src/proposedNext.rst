@@ -9,44 +9,63 @@
 
 .. _proposedNext:
 
-Proposed Functions for version 2.3
+Stable proposed Functions
 ==================================
 
-:ref:`proposedNext`
+..
+    from-here
+    :ref:`proposedNext`
 
-This are proposed functions for version 2.3.
+..
+    begin-warning
 
-  - They are not officially in the version 2.2 release.
-  - They will likely officialy be part of the version 2.3 release:
+.. warning::
 
-    - The functions make use of ANY-INTEGER and ANY-NUMERICAL
-    - Name might not change.
-    - Signature might not  change.
-    - Functionality might not change.
-    - pgTap tests have being done.
-    - Needs feedback from the comunity.
+    These are proposed functions for next mayor release.
+
+      - They are not officially in the current release.
+      - They will likely officially be part of the next mayor release:
+
+        - The functions make use of ANY-INTEGER and ANY-NUMERICAL
+        - Name might not change. (But still can)
+        - Signature might not change. (But still can)
+        - Functionality might not change. (But still can)
+        - pgTap tests have being done. But might need more.
+        - Documentation might need refinement.
+
+..
+    end-warning
 
 
-Proposed Routing Functions
---------------------------
+- As part of the :ref:`dijkstra`
 
-:author: Vicky Vergara
+  - :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
+  - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
 
-  - As part of Dijkstra Family of functions
+- A new :ref:`withPoints`
 
-    - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
+  - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+  - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+  - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+  - :ref:`pgr_withPointsKSP` - K shortest paths with points.
+  - :ref:`pgr_withPointsDD` - Driving distance.
 
-  - :ref:`pgr_withPoints<withPoints>` - withPoints family functions
 
-    - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
-    - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-    - :ref:`pgr_withPointsKSP<pgr_withPointsKSP>` - K shortest paths with points.
-    - :ref:`pgr_withPointsDD<pgr_withPointsDD>` - Driving distance.
+- A new Section
 
+  - :ref:`CostMatrix`
+
+
+..
+    to-here
 
 .. toctree::
-   :hidden: 
+    :hidden:
 
-   ../src/dijkstra/doc/pgr_dijkstraVia
-   ../src/withPoints/doc/withPoints
+    ../src/costMatrix/doc/pgr_dijkstraCostMatrix
+    ../src/dijkstra/doc/pgr_dijkstraVia
+
+    ../src/withPoints/doc/withPoints
+
+    ../src/costMatrix/doc/costMatrix
 

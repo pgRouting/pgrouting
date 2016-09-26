@@ -21,9 +21,12 @@ along with this program; if not, write to the Free Software
 
 ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
+#endif
 #endif
 
 
@@ -31,7 +34,6 @@ along with this program; if not, write to the Free Software
 #include <deque>
 #include <iostream>
 #include <algorithm>
-#include "postgres.h"
 #include "./pgr_types.h"
 
 
@@ -43,6 +45,25 @@ void Path::push_front(Path_t data) {
 void Path::push_back(Path_t data) {
     path.push_back(data);
     m_tot_cost += data.cost;
+}
+
+void Path::reverse() {
+    // std::swap(m_start_id, m_end_id);
+    std::deque< Path_t > newpath;
+    for (size_t i = 0; i < path.size(); ++i) {
+        newpath.push_front({
+                path[i].node,
+                (i == 0? -1 : path[i - 1].edge),
+                (i == 0? 0 : path[i - 1].cost),
+                0
+                });
+    }
+    for (size_t i = 0; i < newpath.size(); ++i) {
+        newpath[i].agg_cost = (i == 0)?
+            0 :
+            newpath[i - 1].agg_cost +  newpath[i - 1].cost;
+    }
+    path = newpath;
 }
 
 
@@ -100,10 +121,10 @@ void Path::appendPath(const Path &o_path) {
 
 void Path::generate_postgres_data(
         General_path_element_t **postgres_data,
-        size_t &sequence) const{
+        size_t &sequence) const {
     int i = 1;
     for (const auto e : path) {
-        (*postgres_data)[sequence] = 
+        (*postgres_data)[sequence] =
         {i, start_id(), end_id(), e.node, e.edge, e.cost, e.agg_cost};
         ++i;
         ++sequence;
@@ -114,7 +135,6 @@ void Path::generate_postgres_data(
 void Path::get_pg_dd_path(
         General_path_element_t **ret_path,
         size_t &sequence) const {
-
     for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i;
         (*ret_path)[sequence].start_id = start_id();
@@ -131,7 +151,6 @@ void Path::get_pg_dd_path(
 void Path::get_pg_ksp_path(
         General_path_element_t **ret_path,
         size_t &sequence, int routeId) const {
-
     for (unsigned int i = 0; i < path.size(); i++) {
         (*ret_path)[sequence].seq = i + 1;
         (*ret_path)[sequence].start_id = routeId;
@@ -139,7 +158,9 @@ void Path::get_pg_ksp_path(
         (*ret_path)[sequence].node = path[i].node;
         (*ret_path)[sequence].edge = path[i].edge;
         (*ret_path)[sequence].cost = path[i].cost;
-        (*ret_path)[sequence].agg_cost = (i == 0)? 0: (*ret_path)[sequence-1].agg_cost +  path[i-1].cost;
+        (*ret_path)[sequence].agg_cost = (i == 0)?
+            0 :
+            (*ret_path)[sequence-1].agg_cost +  path[i-1].cost;
         sequence++;
     }
 }

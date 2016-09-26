@@ -30,8 +30,8 @@ a graph with non-negative edge path costs, producing a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
 This implementation can be used with a directed graph and an undirected graph.
 
-Characteristics:
-----------------
+Characteristics
+-------------------------------------------------------------------------------
 
 The main Characteristics are:
   - Process is done only on edges with positive costs.
@@ -52,7 +52,7 @@ The main Characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 
 Signature Summary
@@ -71,13 +71,13 @@ Signature Summary
 
 
 Signatures
-===============================================================================
+-------------------------------------------------------------------------------
 
 .. index::
-    single: dijkstra(edges_sql, start_vid, end_vid)
+    single: dijkstra(Minimal Use)
 
 Minimal signature
------------------
+.......................................
 
 .. code-block:: none
 
@@ -94,10 +94,10 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 
 .. index::
-    single: dijkstra(edges_sql, start_vid, end_vid, directed:=TRUE)
+    single: dijkstra(One to One)
 
-Dijkstra One to One
--------------------
+pgr_dijkstra One to One
+.......................................
 
 .. code-block:: none
 
@@ -117,10 +117,10 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 
 
 .. index::
-    single: dijkstra(edges_sql, start_vid, end_vids, directed:=TRUE)
+    single: dijkstra(One to Many)
 
-Dijkstra One to many
---------------------
+pgr_dijkstra One to many
+.......................................
 
 .. code-block:: none
 
@@ -148,10 +148,10 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 
 .. index::
-    single: dijkstra(edges_sql, start_vids, end_vid, directed)
+    single: dijkstra(Many to One)
 
-Dijkstra Many to One
---------------------
+pgr_dijkstra Many to One
+.......................................
 
 .. code-block:: none
 
@@ -178,10 +178,10 @@ where the ending vertex is fixed.
 
 
 .. index::
-    single: dijkstra(edges_sql, start_vids, end_vids, directed)
+    single: dijkstra(Many to Many)
 
-Dijkstra Many to Many
----------------------
+pgr_dijkstra Many to Many
+.......................................
 
 .. code-block:: none
 
@@ -208,47 +208,19 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
    :end-before: -- q6
 
 Description of the Signatures
-=============================
-
-Description of the SQL query
 -------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
-
-
-Description of the parameters of the signatures
--------------------------------------------------------------------------------
-
-============== ====================== =================================================
-Column         Type                   Description
-============== ====================== =================================================
-**sql**        ``TEXT``               SQL query as decribed above.
-**start_vid**  ``BIGINT``             Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``             Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-============== ====================== =================================================
+.. include:: ../sql/dijkstra.sql
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
 
 
 Description of the return values
--------------------------------------------------------------------------------
+...............................................................................
 
 Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
 
@@ -256,7 +228,7 @@ Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg
 Column         Type       Description
 ============== ========== =================================================
 **seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the begining of a path.
+**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
 **start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
 **end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
 **node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
@@ -266,8 +238,8 @@ Column         Type       Description
 ============== ========== =================================================
 
 
-Examples
-========
+Additional Examples
+--------------------------------------------------------------------------------------
 
 The examples of this section are based on the :ref:`sampledata` network.
 
@@ -275,7 +247,7 @@ The examples include combinations from starting vertices 2 and 11 to ending vert
 undirected graph with and with out reverse_cost.
 
 Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
---------------------------------------------------------------------------------------
+.........................................................................................
 
 The examples in this section use the following :ref:`fig1`
 
@@ -286,7 +258,7 @@ The examples in this section use the following :ref:`fig1`
 
 
 Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-----------------------------------------------------------------------------------------
+.........................................................................................
 
 The examples in this section use the following :ref:`fig2`
 
@@ -296,7 +268,7 @@ The examples in this section use the following :ref:`fig2`
 
 
 Examples for queries marked as ``directed`` with ``cost`` column
-----------------------------------------------------------------------------------------
+.........................................................................................
 
 The examples in this section use the following :ref:`fig3`
 
@@ -306,7 +278,7 @@ The examples in this section use the following :ref:`fig3`
 
 
 Examples for queries marked as ``undirected`` with ``cost`` column
-----------------------------------------------------------------------------------------
+.........................................................................................
 
 The examples in this section use the following :ref:`fig4`
 
@@ -316,39 +288,42 @@ The examples in this section use the following :ref:`fig4`
 
 
 Equvalences between signatures
-------------------------------
+.........................................................................................
 
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
-The examples in this section use the following :ref:`fig1`
+:Examples: For queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
+
+The examples in this section use the following:
+
+* :ref:`fig1`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q15
    :end-before: -- q16
 
 
-Equvalences between signatures
-------------------------------
 
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-The examples in this section use the following :ref:`fig2`
+:Examples: For queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
+
+The examples in this section use the following:
+
+* :ref:`fig2`
 
 .. literalinclude:: doc-pgr_dijkstra.queries
    :start-after: -- q17
    :end-before: -- q18
 
 
-The queries use the :ref:`sampledata` network.
-
 .. rubric:: History
 
-* Renamed in version 2.0.0
 * Added functionality in version 2.1.0
+* Renamed in version 2.0.0
 
 
 See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

@@ -160,15 +160,15 @@ BEGIN
   raise debug 'Checking Condition';
     -- issue #193 & issue #210 & #213
     -- this sql is for trying out the where clause
-    -- the select * is to avoid any colum name conflicts
+    -- the select * is to avoid any column name conflicts
     -- limit 1, just try on first record
-    -- if the where clasuse is ill formed it will be catched in the exception
+    -- if the where clasuse is ill formed it will be caught in the exception
     sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
     EXECUTE sql into dummyRec;
     -- end 
 
     -- if above where clasue works this one should work
-    -- any error will be catched by the exception also
+    -- any error will be caught by the exception also
     sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NULL or '||
 		sourcename||' is null or '||targetname||' is null)=true '||rows_where;
     raise debug '%',sql;

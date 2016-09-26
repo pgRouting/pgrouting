@@ -12,10 +12,6 @@
 pgr_nodeNetwork
 ===============================================================================
 
-.. index:: 
-	single: pgr_NodeNetwork(text,float8,text,text,text)
-	module: common
-
 Name
 -------------------------------------------------------------------------------
 
@@ -30,11 +26,13 @@ Synopsis
 
 The function reads edges from a not "noded" network table and writes the "noded" edges into a new table.
 
+.. index:: 
+	single: pgr_NodeNetwork(Complete Signature)
+
 .. code-block:: sql
 
-    text pgr_nodenetwork(text edge_table, float8, tolerance,
-			 text  id='id', text the_geom='the_geom',text table_ending='noded'
-             text rows_where ='', boolean outall=false)
+    pgr_nodenetwork(edge_table, tolerance, id, text the_geom, table_ending, rows_where, outall)
+    RETURNS TEXT
   
 
 Description
@@ -122,7 +120,7 @@ The analysis tell us that the network has a gap and and an intersection. We try 
 	NOTICE:  pgr_nodeNetwork('edge_table',0.001,'the_geom','id','noded')
 	NOTICE:  Performing checks, pelase wait .....
 	NOTICE:  Processing, pelase wait .....
-	NOTICE:    Splitted Edges: 3
+	NOTICE:    Split Edges: 3
 	NOTICE:   Untouched Edges: 15
 	NOTICE:       Total original Edges: 18
 	NOTICE:   Edges generated: 6

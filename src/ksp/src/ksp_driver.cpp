@@ -22,21 +22,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
+#endif
 #ifdef unlink
 #undef unlink
 #endif
 #endif
-
 
 #include <deque>
 #include <sstream>
 
 
 #include "./ksp_driver.h"
-#include "../../common/src/memory_func.hpp"
+#include "../../common/src/pgr_alloc.hpp"
 #include "./pgr_ksp.hpp"
 
 
@@ -48,22 +50,23 @@ int  do_pgr_ksp(
         General_path_element_t **ksp_path, size_t *path_count,
         char ** err_msg) {
     try {
+        *ksp_path = NULL;
+        *path_count = 0;
         std::ostringstream log;
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_tuples;
 
         std::deque< Path > paths;
 
         if (directedFlag) {
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
-            Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
-            digraph.graph_insert_data(data_edges, initial_size);
+            pgrouting::DirectedGraph digraph(gType);
+            Pgr_ksp< pgrouting::DirectedGraph > fn_yen;
+            digraph.graph_insert_data(data_edges, total_tuples);
             paths = fn_yen.Yen(digraph, start_vertex, end_vertex, k, heap_paths);
         } else {
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
-            Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
-            undigraph.graph_insert_data(data_edges, initial_size);
+            pgrouting::UndirectedGraph undigraph(gType);
+            Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
+            undigraph.graph_insert_data(data_edges, total_tuples);
             paths = fn_yen.Yen(undigraph, start_vertex, end_vertex, k, heap_paths);
         }
 
@@ -73,13 +76,12 @@ int  do_pgr_ksp(
         if (count == 0) {
             *err_msg = strdup(
                     "NOTICE: No paths found between Starting and Ending vertices");
-            *ksp_path = noResult(path_count, (*ksp_path));
             return 0;
         }
 
         // get the space required to store all the paths
         *ksp_path = NULL;
-        *ksp_path = get_memory(count, (*ksp_path));
+        *ksp_path = pgr_alloc(count, (*ksp_path));
 
         size_t sequence = 0;
         int route_id = 0;
@@ -89,10 +91,10 @@ int  do_pgr_ksp(
             ++route_id;
         }
 
-        if (count != sequence) {                                
+        if (count != sequence) {
             *err_msg = NULL;
             return 2;
-        }                                                                                                       
+        }
         *path_count = count;
 
 #if 1
@@ -102,7 +104,9 @@ int  do_pgr_ksp(
 #endif
         return EXIT_SUCCESS;
     } catch ( ... ) {
-        *err_msg = strdup("Caught unknown expection!");
+        *err_msg = strdup("Caught unknown exception!");
+        if (ksp_path) free(ksp_path);
+        *path_count = 0;
         return -1;
     }
 }

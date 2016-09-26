@@ -51,13 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "./one_to_many_dijkstra_driver.h"
 
-PG_FUNCTION_INFO_V1(one_to_many_dijkstra);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-one_to_many_dijkstra(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum one_to_many_dijkstra(PG_FUNCTION_ARGS);
 
 
 /******************************************************************************/
@@ -78,7 +72,7 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -115,11 +109,8 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(one_to_many_dijkstra);
 PGDLLEXPORT Datum
-#endif
 one_to_many_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;

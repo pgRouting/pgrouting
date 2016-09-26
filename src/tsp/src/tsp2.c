@@ -31,7 +31,11 @@ THE SOFTWARE.
 
 ********************************************************************PGR-MIT*/
 
-#include "tsp.h"
+/*
+ * This code is deprecated
+ */
+
+#include "./tsp.h"
 #include <math.h>
 
 #include "postgres.h"
@@ -45,28 +49,27 @@ THE SOFTWARE.
 
 #include "fmgr.h"
 
-#ifndef PG_MODULE_MAGIC
-PG_MODULE_MAGIC;
-#endif
+PGDLLEXPORT Datum tsp_matrix(PG_FUNCTION_ARGS);
 
 #undef DEBUG
-//#define DEBUG 1
 #include "../../common/src/debug_macro.h"
 
+#if 0
 #ifndef INFINITY
+#ifndef _MSC_VER
 #define INFINITY (1.0/0.0)
+#else  // _MSC_VER
+#define INFINITY (DBL_MAX + DBL_MAX);
+#endif  // _MSC_VER
+#endif
 #endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-PG_FUNCTION_INFO_V1(tsp_matrix);
-Datum
-tsp_matrix(PG_FUNCTION_ARGS);
 
-static DTYPE *get_pgarray(int *num, ArrayType *input)
-{
-    int         ndims, *dims; // , *lbs;
+static DTYPE *get_pgarray(int *num, ArrayType *input) {
+    int         ndims, *dims;  // , *lbs;
     bool       *nulls;
     Oid         i_eltype;
     int16       i_typlen;
@@ -82,7 +85,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
 
 
     /* validate input data type */
-    switch(i_eltype){
+    switch (i_eltype) {
     case INT2OID:
     case INT4OID:
     case FLOAT4OID:
@@ -109,8 +112,9 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
     PGR_DBG("get_pgarray: ndims=%d, n=%d", ndims, n);
 
 #ifdef DEBUG
-    for (i=0; i<ndims; i++) {
-        PGR_DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
+    for (i = 0; i < ndims; i++) {
+        // PGR_DBG("   dims[%d]=%d, lbs[%d]=%d", i, dims[i], i, lbs[i]);
+        PGR_DBG("   dims[%d]=%d", i, dims[i]);
     }
 #endif
 
@@ -120,12 +124,11 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
         elog(ERROR, "Error: Out of memory!");
     }
 
-    for (i=0; i<n; i++) {
+    for (i = 0; i < n; i++) {
         if (nulls[i]) {
-            data[i] = INFINITY;
-        }
-        else {
-            switch(i_eltype){
+            data[i] = (DTYPE) 0;
+        } else {
+            switch (i_eltype) {
                 case INT2OID:
                     data[i] = (DTYPE) DatumGetInt16(i_data[i]);
                     break;
@@ -145,8 +148,10 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
                that this will not work and you will get and error in
                findEulerianPath
             **********************************************************/
-            if (data[i] < 0)
-                data[i] = INFINITY;
+            if (data[i] < 0) {
+                data[i] = (DTYPE) 0;
+                nulls[i] = true;
+            }
         }
         PGR_DBG("    data[%d]=%.4f", i, data[i]);
     }
@@ -161,10 +166,9 @@ static DTYPE *get_pgarray(int *num, ArrayType *input)
 
 
 // macro to store distance values as matrix[num][num]
-#define D(i,j) matrix[(i)*num + j]
+#define D(i, j) matrix[(i) * num + j]
 
-static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
-{
+static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results) {
     int ret;
     int i;
     int *ids;
@@ -192,8 +196,8 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
     */
     if (end >= 0) {
         PGR_DBG("Updating start end costs");
-        D(start,end)=0.0;
-        D(end,start)=0.0;
+        D(start, end) = 0.0;
+        D(end, start) = 0.0;
     }
 
     PGR_DBG("Alloc ids");
@@ -203,7 +207,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
         elog(ERROR, "Error: Out of memory (solve_tsp)");
     }
 
-    for(i=0; i<num; i++) {
+    for (i = 0; i < num; i++) {
         ids[i] = i;
     }
 
@@ -226,9 +230,9 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results)
  *                             OUT seq int, OUT id int);
 */
 
-Datum
-tsp_matrix(PG_FUNCTION_ARGS)
-{
+PG_FUNCTION_INFO_V1(tsp_matrix);
+PGDLLEXPORT Datum
+tsp_matrix(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t                  call_cntr;
     uint32_t                  max_calls;
@@ -242,8 +246,8 @@ tsp_matrix(PG_FUNCTION_ARGS)
     /* stuff done only on the first call of the function */
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-        //int path_count;
-        int ret=-1;
+        // int path_count;
+        int ret = -1;
 
         /* create a function context for cross-call persistence */
         funcctx = SRF_FIRSTCALL_INIT();
@@ -254,8 +258,8 @@ tsp_matrix(PG_FUNCTION_ARGS)
         matrix = get_pgarray(&num, PG_GETARG_ARRAYTYPE_P(0));
 
         ret = solve_tsp(matrix, num,
-                        PG_GETARG_INT32(1), // start index
-                        PG_GETARG_INT32(2), // end  index 
+                        PG_GETARG_INT32(1),  // start index
+                        PG_GETARG_INT32(2),  // end  index
                         &tsp_res);
 
         pfree(matrix);
@@ -279,8 +283,8 @@ tsp_matrix(PG_FUNCTION_ARGS)
          * generate attribute metadata needed later to produce tuples from raw
          * C strings
          */
-        //attinmeta = TupleDescGetAttInMetadata(tuple_desc);
-        //funcctx->attinmeta = attinmeta;
+        // attinmeta = TupleDescGetAttInMetadata(tuple_desc);
+        // funcctx->attinmeta = attinmeta;
 
         MemoryContextSwitchTo(oldcontext);
     }
@@ -330,8 +334,7 @@ tsp_matrix(PG_FUNCTION_ARGS)
 
 
         SRF_RETURN_NEXT(funcctx, result);
-    }
-    else {   /* do when there is no more left */
+    } else {   /* do when there is no more left */
         PGR_DBG("Freeing tsp_res");
         free(tsp_res);
 

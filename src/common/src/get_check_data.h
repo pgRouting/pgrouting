@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_GET_CHECK_DATA_H_
+#define SRC_COMMON_SRC_GET_CHECK_DATA_H_
 #pragma once
 
 bool column_found(int colNumber);
@@ -34,6 +36,8 @@ void pgr_check_any_integer_type(Column_info_t info);
 void pgr_check_any_numerical_type(Column_info_t info);
 void pgr_check_text_type(Column_info_t info);
 void pgr_check_char_type(Column_info_t info);
+void pgr_check_boolean_type(Column_info_t info);
+
 
 char pgr_SPI_getChar(
         HeapTuple *tuple,
@@ -58,3 +62,5 @@ char* pgr_SPI_getText(
         Column_info_t info);
 
 char* pgr_stradd(const char *a, const char *b);
+
+#endif  // SRC_COMMON_SRC_GET_CHECK_DATA_H_

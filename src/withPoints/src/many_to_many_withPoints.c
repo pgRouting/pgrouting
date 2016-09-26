@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -36,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-//#define DEBUG
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
@@ -49,13 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./get_new_queries.h"
 #include "./many_to_many_withPoints_driver.h"
 
-PG_FUNCTION_INFO_V1(many_to_many_withPoints);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-many_to_many_withPoints(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum many_to_many_withPoints(PG_FUNCTION_ARGS);
 
 
 /*******************************************************************************/
@@ -79,8 +72,6 @@ process(
         General_path_element_t **result_tuples,
         size_t *result_count) {
 
-    driving_side[0] = tolower(driving_side[0]);
-
     pgr_SPI_connect();
 
     Point_on_edge_t *points = NULL;
@@ -98,17 +89,17 @@ process(
 
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_data_5_columns(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_data_5_columns(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     free(edges_of_points_query);
     free(edges_no_points_query);
 
-    if ( (total_edges + total_edges_of_points) == 0) {
+    if ((total_edges + total_edges_of_points) == 0) {
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
@@ -116,9 +107,10 @@ process(
     }
 
     char *err_msg = NULL;
+    char *log_msg = NULL;
     clock_t start_t = clock();
-    int  errcode = do_pgr_many_to_many_withPoints(
-            edges,  total_edges,
+    do_pgr_many_to_many_withPoints(
+            edges, total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,
             start_pidsArr, size_start_pidsArr,
@@ -130,31 +122,27 @@ process(
             result_tuples,
             result_count,
             &err_msg);
-    time_msg(" processing withPoints many to many", start_t, clock());
+    time_msg("Processing withPoints many to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    PGR_DBG("LOG: %s\n", err_msg);
+    if (log_msg) free(log_msg);
 
-    free(err_msg);
-    pfree(edges);
-
-    pgr_SPI_finish();
-
-    
-    if (errcode)  {
+    if (err_msg) {
         free(start_pidsArr);
         free(end_pidsArr);
-        pgr_send_error(errcode);
+        free(*result_tuples);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
     }
+    pfree(edges);
+    pgr_SPI_finish();
 }
 
 /*                                                                             */
 /*******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(many_to_many_withPoints);
 PGDLLEXPORT Datum
-#endif
 many_to_many_withPoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
@@ -164,7 +152,7 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
     /*******************************************************************************/
     /*                          MODIFY AS NEEDED                                   */
     /*                                                                             */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t *result_tuples = 0;
     size_t result_count = 0;
     /*                                                                             */
     /*******************************************************************************/
@@ -253,7 +241,7 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
         nulls = palloc(8 * sizeof(bool));
 
         size_t i;
-        for(i = 0; i < 8; ++i) {
+        for (i = 0; i < 8; ++i) {
             nulls[i] = false;
         }
 

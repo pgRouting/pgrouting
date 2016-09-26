@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) ||  defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
@@ -36,20 +36,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <sstream>
 #include <deque>
+#include <algorithm>
+#include <set>
 #include <vector>
 #include <cassert>
 
-// #define DEBUG
 
 #include "./pgr_dijkstra.hpp"
 #include "./pgr_withPoints.hpp"
 #include "./many_to_many_withPoints_driver.h"
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_alloc.hpp"
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
@@ -61,15 +59,15 @@ extern "C" {
 
 int
 do_pgr_many_to_many_withPoints(
-        pgr_edge_t  *edges,
+        pgr_edge_t *edges,
         size_t total_edges,
-        Point_on_edge_t  *points_p,
+        Point_on_edge_t *points_p,
         size_t total_points,
-        pgr_edge_t  *edges_of_points,
+        pgr_edge_t *edges_of_points,
         size_t total_edges_of_points,
-        int64_t  *start_pidsArr,
+        int64_t *start_pidsArr,
         size_t size_start_pidsArr,
-        int64_t  *end_pidsArr,
+        int64_t *end_pidsArr,
         size_t size_end_pidsArr,
 
         char driving_side,
@@ -78,7 +76,7 @@ do_pgr_many_to_many_withPoints(
         bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         std::vector< Point_on_edge_t >
@@ -131,46 +129,45 @@ do_pgr_many_to_many_withPoints(
         }
 #endif
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, paths, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);
         }
 
 #if 0
-        for (auto &path :paths) {
+        for (auto &path : paths) {
             adjust_pids(points, path);
         }
 #endif
         if (!details) {
-            for (auto &path :paths) {
+            for (auto &path : paths) {
                 eliminate_details(path, edges_to_modify);
             }
         }
 
         /*
-         *  order paths based on the start_pid, end_pid
+         * order paths based on the start_pid, end_pid
          */
         std::sort(paths.begin(), paths.end(),
-                [](const Path &a,const  Path &b)
+                [](const Path &a, const Path &b)
                 -> bool {
                 if (b.start_id() != a.start_id()) {
                 return a.start_id() < b.start_id();
                 }
-                return a.end_id() < b.end_id();  
+                return a.end_id() < b.end_id();
                 });
 
         size_t count(0);
@@ -186,25 +183,28 @@ do_pgr_many_to_many_withPoints(
             return 0;
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-#ifndef DEBUG
-        {
-            std::ostringstream log;
-            log << "OK";
-            *err_msg = strdup(log.str().c_str());
-        }
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
         return 0;
-    } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+    } catch (AssertFailedException &except) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-        return 1000;
+    } catch (std::exception& except) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << except.what() << "\n";
+        *err_msg = strdup(log.str().c_str());
+    } catch(...) {
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        log << "Caught unknown exception!\n";
+        *err_msg = strdup(log.str().c_str());
     }
-    return 0;
+
+    return 1000;
 }
 

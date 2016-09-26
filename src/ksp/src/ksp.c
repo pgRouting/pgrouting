@@ -22,7 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/pgr_types.h"
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -32,20 +31,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
+#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./ksp_driver.h"
 
-
-PG_FUNCTION_INFO_V1(kshortest_path);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif  // _MSC_VER
-kshortest_path(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
 
 
 static
@@ -68,7 +61,7 @@ void compute(char* sql, int64_t start_vertex,
   }
 
   PGR_DBG("Load data");
-  pgr_get_data_5_columns(sql, &edges, &total_tuples);
+  pgr_get_edges(sql, &edges, &total_tuples);
 
   PGR_DBG("Total %ld tuples in query:", total_tuples);
   PGR_DBG("Calling do_pgr_ksp\n");
@@ -82,7 +75,7 @@ void compute(char* sql, int64_t start_vertex,
   time_msg(" processing KSP", start_t, clock());
 
   PGR_DBG("total tuples found %ld\n", *path_count);
-  PGR_DBG("Exist Status = %i\n", ret);
+  PGR_DBG("Exit Status = %i\n", errcode);
   PGR_DBG("Returned message = %s\n", err_msg);
 
 
@@ -97,11 +90,8 @@ void compute(char* sql, int64_t start_vertex,
 }
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(kshortest_path);
 PGDLLEXPORT Datum
-#endif  // _MSC_VER
 kshortest_path(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t               call_cntr;
@@ -163,7 +153,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
     path = (General_path_element_t*) funcctx->user_fctx;
 
     if (call_cntr < max_calls) {   /* do when there is more left to send */
-        PGR_DBG("returning %ld \n", call_cntr);
+        PGR_DBG("returning %u \n", call_cntr);
         HeapTuple    tuple;
         Datum        result;
         /* //Datum values[4];

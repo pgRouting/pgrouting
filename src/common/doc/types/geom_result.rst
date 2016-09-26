@@ -14,7 +14,6 @@ pgr_geomResult[]
 
 .. index:: 
 	single: pgr_geomResult[]
-	module: types
 
 Name
 -------------------------------------------------------------------------------

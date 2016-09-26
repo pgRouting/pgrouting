@@ -17,20 +17,36 @@ MY_QUERY_LINE2="OUT seq INTEGER,\n    OUT path_seq INTEGER,\n    OUT start_vid B
 MY_RETURN_VALUE_TYPE="General_path_element_t" 
 MY_FUNCTION_NAME_UPPER=$(echo $MY_FUNCTION_NAME | tr 'a-z' 'A-Z')
 
+# Available types to store the edge information:
+#  pgr_edge_t      http://docs.pgrouting.org/doxy/2.3-dev-develop/structpgr__edge__t.html
+#  Pgr_edge_xy_t   http://docs.pgrouting.org/doxy/2.3-dev-develop/structPgr__edge__xy__t.html
+MY_EDGE_TYPE="pgr_edge_t"
+
+# Available functions that read the edge information:
+# pgr_get_edges                 http://docs.pgrouting.org/doxy/2.3-dev-develop/edges__input_8h.html#a5598918a215c72c9bda7a7f016401b73
+# pgr_get_edges_xy              http://docs.pgrouting.org/doxy/2.3-dev-develop/edges__input_8h.html#a5483d52e67b7996d80cd0cf3583d1720
+# pgr_get_edges_xy_reversed     http://docs.pgrouting.org/doxy/2.3-dev-develop/edges__input_8h.html#adce525c316ba6244510553a5cee8451f
+# pgr_get_edges_no_id           http://docs.pgrouting.org/doxy/2.3-dev-develop/edges__input_8h.html#a747dea3b61ecc407746f9d83d923fa64
+MY_EDGE_FUNCTION="pgr_get_edges"
+
+
+
+
+
 #the above variables must be defined
 
 if test -z "$MY_FUNCTION_NAME"; then 
-	exit
+    exit
 fi
 
 #if a directory named MY_FUNCTION_NAME exist we stop
 if [ -d "$MY_FUNCTION_NAME" ]; then
-        echo "directory exists please delete first"
-	exit
+    echo "directory exists please delete first"
+    exit 1
 fi
 if [ -d ../../src/"$MY_FUNCTION_NAME" ]; then
-        echo "directory exists please delete first"
-	exit
+    echo "directory exists please delete first"
+    exit 1
 fi
 
 mkdir "$MY_FUNCTION_NAME"
@@ -40,7 +56,6 @@ cp -r sql  "$MY_FUNCTION_NAME"
 cp -r doc  "$MY_FUNCTION_NAME"
 cp -r test  "$MY_FUNCTION_NAME"
 cp -r  src  "$MY_FUNCTION_NAME"
-cp CMakeLists.txt  "$MY_FUNCTION_NAME"
 
 
 
@@ -68,6 +83,8 @@ sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/src/function1
 sed -i "s/DEVELOPER_NAME/$DEVELOPER_NAME/" "$MY_FUNCTION_NAME"/src/function1.c
 sed -i "s/DEVELOPER_EMAIL/$MY_DEVELOPER_EMAIL/" "$MY_FUNCTION_NAME"/src/function1.c
 sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/src/function1.c
+sed -i "s/MY_EDGE_TYPE/$MY_EDGE_TYPE/" "$MY_FUNCTION_NAME"/src/function1.c
+sed -i "s/MY_EDGE_FUNCTION/$MY_EDGE_FUNCTION/" "$MY_FUNCTION_NAME"/src/function1.c
 sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/src/function1.c
 sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/src/function1.c
 sed -i "s/MY_RETURN_VALUE_TYPE/$MY_RETURN_VALUE_TYPE/" "$MY_FUNCTION_NAME"/src/function1.c
@@ -79,6 +96,7 @@ sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/src/function1
 sed -i "s/DEVELOPER_NAME/$DEVELOPER_NAME/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/DEVELOPER_EMAIL/$MY_DEVELOPER_EMAIL/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/src/function1_driver.h
+sed -i "s/MY_EDGE_TYPE/$MY_EDGE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/src/function1_driver.h
 sed -i "s/MY_RETURN_VALUE_TYPE/$MY_RETURN_VALUE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.h
@@ -89,6 +107,7 @@ sed -i "s/MY_FUNCTION_NAME/$MY_FUNCTION_NAME/" "$MY_FUNCTION_NAME"/src/function1
 sed -i "s/DEVELOPER_NAME/$DEVELOPER_NAME/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
 sed -i "s/DEVELOPER_EMAIL/$MY_DEVELOPER_EMAIL/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
 sed -i "s/YEAR/$YEAR/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
+sed -i "s/MY_EDGE_TYPE/$MY_EDGE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
 sed -i "s/MY_QUERY_LINE1/$MY_QUERY_LINE1/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
 sed -i "s/MY_QUERY_LINE2/$MY_QUERY_LINE2/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp
 sed -i "s/MY_RETURN_VALUE_TYPE/$MY_RETURN_VALUE_TYPE/" "$MY_FUNCTION_NAME"/src/function1_driver.cpp

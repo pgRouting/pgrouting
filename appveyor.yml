@@ -5,72 +5,56 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-
-
-
-
-notifications:
-  email:
-    on_failure: vicky_vergara@hotmail.com
+version: 2.3.{build}
 
 branches:
   only:
-    - master
+    - release/2.3.0 
     - develop
-    - dev-2.2
 
-    
+image: Visual Studio 2013
+configuration: Release
+platform: x64
+
+clone_depth: 1
+clone_folder: c:\build\pgrouting
+
+cache:
+  - downloads -> appveyor.yml
+  - c:\build\local\msvc120\x64 -> appveyor
 
 services:
-  - postgresql
+  - postgresql94
 
 environment:
-  POSTGRESQL_VERSION: 9.4
+  CONFIGURATION: Release
+  MSVC_VER: 12.0
+  BUILD_ROOT_DIR: c:\build
 
-# excecuted. So things have to be tested oe by one.
-#addons:
-#  apt:
-#    sources:
-# For gcc >= 4.8
-# - ubuntu-toolchain-r-test
-# For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
-#- kubuntu-backports
-#      - boost-latest
-#    packages:
-#- cmake
-#      - libboost-thread-dev
-#- libboost-graph-dev
-#- libcgal-dev
-#- postgresql-server-dev-all
-#- postgresql-common
+init:
+  - git config --global core.autocrlf false
+
+install:
+  # Install pgRouting prerequisites:
+  # cmake
+  # postGIS
+  # CGAL
+  - call ci\appveyor\install.bat
 
 
-#- export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH # Add our chosen PG version to the path
-#- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-#- sudo apt-get install -y postgresql-9.5
-#- sudo apt-get install -y postgresql-9.5-postgis
-#- sudo /etc/init.d/postgresql stop                      # Stop whichever version of PG that travis started
-#- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION # Start the version of PG that we want to test
-#before_script:
-    
-# - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION   # pgtap has to be installed after postgres has started
-#- sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
-#- createdb  ___pgr___test___
-#- createdb  pgr_test__db__test
-#- ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
+build_script:
+  - cd c:\build\pgrouting\ci\appveyor
+  - msbuild_pgrouting.bat 9.4 
+  - cd %PGROUTING_BUILD_DIR%
+  - msbuild PGROUTING.sln /target:Build /property:Configuration=%CONFIGURATION%
+  - msbuild INSTALL.vcxproj /target:Build /property:Configuration=%CONFIGURATION%
+  - copy c:\build\gmp\x64\lib\*.dll C:\Progra~1\PostgreSQL\9.4\bin\
 
-
-#before_install:
-
-#before_script:
-
-#script: 
-
-#- ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
-#- ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
-
-#after_script: 
-
-#- ./tools/travis/pg_prove_tests.sh postgres
-
-#after_success:
+test_script:
+  - set PGUSER=postgres
+  - set PGPASSWORD=Password12!
+  - set PGHOME=C:\Progra~1\PostgreSQL\9.4
+  - set PGPORT=5432
+  - set PATH=%PATH%;%PGHOME%\bin
+  # Execute algorithm test by Cygwin
+  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/9.4/bin/psql\""

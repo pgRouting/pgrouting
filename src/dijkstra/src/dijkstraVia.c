@@ -48,13 +48,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "./dijkstraVia_driver.h"
 
-PG_FUNCTION_INFO_V1(dijkstraVia);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-dijkstraVia(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum dijkstraVia(PG_FUNCTION_ARGS);
 
 /*******************************************************************************/
 /*                          MODIFY AS NEEDED                                   */
@@ -75,7 +69,7 @@ process( char* edges_sql,
     edges = NULL;
     size_t total_tuples;
     total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -116,11 +110,8 @@ process( char* edges_sql,
 /*                                                                             */
 /*******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(dijkstraVia);
 PGDLLEXPORT Datum
-#endif
 dijkstraVia(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t               call_cntr;

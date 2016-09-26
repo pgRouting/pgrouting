@@ -59,7 +59,7 @@ void driving_many_to_dist_driver(
     char *err_msg = (char *)"";
 
 
-    pgr_get_data_5_columns(sql, &edges, &total_tuples);
+    pgr_get_edges(sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -118,7 +118,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
         size_t num;
 
         sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("sourcesArr size %d ", num);
+        PGR_DBG("sourcesArr size %ld ", num);
 
         PGR_DBG("Calling driving_many_to_dist_driver");
         driving_many_to_dist_driver(

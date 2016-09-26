@@ -9,12 +9,14 @@
 
 .. _pgr_is_column_indexed:
 
-pgr_isColumnIndexed
+pgr_isColumnIndexed - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_isColumnIndexed(text,text) -- deprecated
-	module: common
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported.
+    * May be removed from future versions.
+    * There is no replacement.
 
 Name
 -------------------------------------------------------------------------------
@@ -22,9 +24,6 @@ Name
 ``pgr_isColumnIndexed`` — Check if a column in a table is indexed.
 
 .. note:: This function is intended for the developer’s aid.
-
-.. warning:: This function is deprecated in 2.1
-             Use `_pgr_isColumnIndexed` instead
 
 
 Synopsis
@@ -85,7 +84,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`developer` for the tree layout of the project.
-* :ref:`pgr_is_column_in_table` to check only for the existance of the column in the table.
+* :ref:`pgr_is_column_in_table` to check only for the existence of the column in the table.
 * :ref:`pgr_get_column_name` to get the name of the column as is stored in the postgres administration tables.
 * :ref:`pgr_get_table_name` to get the name of the table as is stored in the postgres administration tables.
 

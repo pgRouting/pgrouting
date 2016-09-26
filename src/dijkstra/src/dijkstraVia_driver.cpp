@@ -26,24 +26,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
-
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include "./pgr_dijkstra.hpp"
 #include "./dijkstraVia_driver.h"
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
-// #define DEBUG
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 
 template <class G>
@@ -53,9 +49,8 @@ pgr_dijkstraViaVertex(
         const std::vector< int64_t > via_vertices,
         std::deque< Path > &paths,
         bool strict,
-        bool U_turn_on_edge,  //! true = u turns are allowed between paths
-        std::ostringstream &log) {    
-
+        bool U_turn_on_edge,
+        std::ostringstream &log) {
     if (via_vertices.size() == 0) {
         return;
     }
@@ -63,8 +58,7 @@ pgr_dijkstraViaVertex(
     paths.clear();
     int64_t prev_vertex = via_vertices[0];
     Path path;
-    
-    //for (size_t i = 0; i < via_vertices.size() - 1; ++i) {
+
     int64_t i = 0;
     for (const auto &vertex : via_vertices) {
         if (i == 0) {
@@ -74,14 +68,12 @@ pgr_dijkstraViaVertex(
 
         // Delete uTurn edges only valid for paths that are not the first path
         if (!U_turn_on_edge && i > 1) {
-
             // we can only delete if there is was a path, that is at least one edge size
             if (path.size() > 1) {
                 // Delete from the graph the last edge if its outgoing also
                 // edge to be removed = second to last edge path[i].edge;
                 int64_t edge_to_be_removed = path[path.size() - 2].edge;
                 int64_t last_vertex_of_path = prev_vertex;
-               // path.path[path.path.size() - 1].vertex;
 
                 // and the current vertex is not a dead end
                 if (graph.out_degree(last_vertex_of_path) > 1) {
@@ -99,7 +91,7 @@ pgr_dijkstraViaVertex(
 
         if (!U_turn_on_edge && i > 1) {
             graph.restore_graph();
-            if (path.empty()) { 
+            if (path.empty()) {
                 /*
                  *  no path was found with the deleted edge
                  *  try with the edge back in the graph
@@ -132,7 +124,6 @@ get_path(
         double &route_cost,
         size_t &sequence) {
     int i = 0;
-    //for (size_t i = 0; i < path.size(); i++) {
     for (const auto e : path) {
         (*postgres_data)[sequence] = {
             route_id,
@@ -157,9 +148,9 @@ size_t
 get_route(
         Routes_t **ret_path,
         const std::deque< Path > &paths) {
-    size_t sequence = 0;    //arrys index
-    int path_id = 1;    // id's in posgresql start with 1
-    int route_id = 1;   
+    size_t sequence = 0;
+    int path_id = 1;
+    int route_id = 1;
     double route_cost = 0;  // routes_agg_cost
     for (const Path &path : paths) {
         if (path.size() > 0)
@@ -178,10 +169,9 @@ do_pgr_dijkstraViaVertex(
         bool strict,
         bool U_turn_on_edge,
         Routes_t **return_tuples,   size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
-
         if (total_tuples == 1) {
             log << "Required: more than one tuple\n";
             (*return_tuples) = NULL;
@@ -191,7 +181,6 @@ do_pgr_dijkstraViaVertex(
         }
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
@@ -199,12 +188,12 @@ do_pgr_dijkstraViaVertex(
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, U_turn_on_edge, log);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);
         }
@@ -214,14 +203,14 @@ do_pgr_dijkstraViaVertex(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log << 
-                "No paths found between Starting and any of the Ending vertices\n";
+            log <<
+                "No paths found\n";
             *err_msg = strdup(log.str().c_str());
             return;
         }
 
         // get the space required to store all the paths
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;
@@ -232,7 +221,7 @@ do_pgr_dijkstraViaVertex(
         *err_msg = strdup(log.str().c_str());
 #endif
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
 }

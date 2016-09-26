@@ -28,27 +28,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#ifdef open
+#undef open
 #endif
-
+#endif
 
 #include <sstream>
 #include <deque>
 #include <vector>
-#include <cassert>
+#include <algorithm>
+#include <set>
+
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
 #include "./withPoints_dd_driver.h"
 
-// #define DEBUG
 
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 
 /*******************************************************************************/
@@ -71,7 +71,7 @@ do_pgr_many_withPointsDD(
         pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
 
         int64_t  *start_pids_arr,    size_t s_len,
-        float8 distance,
+        double distance,
 
         bool directed,
         char driving_side,
@@ -128,17 +128,16 @@ do_pgr_many_withPointsDD(
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const size_t initial_size = total_edges;
 
         std::deque< Path >paths;
 
         if (directed) {
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_drivingDistance(digraph, paths, start_vids, distance, equiCost);
         } else {
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_drivingDistance(undigraph, paths, start_vids, distance, equiCost);
@@ -167,7 +166,7 @@ do_pgr_many_withPointsDD(
             *err_msg = strdup("NOTICE: No return values was found");
             return 0;
         }
-        *return_tuples = get_memory(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
         *return_count = collapse_paths(return_tuples, paths);
 
 #ifndef DEBUG
@@ -176,12 +175,10 @@ do_pgr_many_withPointsDD(
         *err_msg = strdup(log.str().c_str());
 #endif
         return 0;
-
     } catch ( ... ) {
-        *err_msg = strdup("Caught unknown expection!");
+        *err_msg = strdup("Caught unknown exception!");
         return 1000;
     }
-
 }
 
 
@@ -203,7 +200,7 @@ do_pgr_withPointsDD(
         pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
 
         int64_t start_vid,
-        float8      distance,
+        double      distance,
 
         char driving_side,
         bool details,
@@ -211,7 +208,7 @@ do_pgr_withPointsDD(
 
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         /*
@@ -254,19 +251,18 @@ do_pgr_withPointsDD(
 #endif
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const size_t initial_size = total_edges;
 
         Path path;
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_drivingDistance(digraph, path, start_vid, distance);
         } else {
             log << "Working with undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_drivingDistance(undigraph, path, start_vid, distance);
@@ -298,7 +294,7 @@ do_pgr_withPointsDD(
 
 
         *return_tuples = NULL;
-        *return_tuples = get_memory(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
 
         size_t sequence = 0;
         path.get_pg_dd_path(return_tuples, sequence);
@@ -316,7 +312,7 @@ do_pgr_withPointsDD(
 #endif
         return 0;
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
     return 1000;

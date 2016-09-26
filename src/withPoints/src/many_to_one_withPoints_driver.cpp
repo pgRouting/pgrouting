@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -28,12 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) ||  defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
 
+#include <algorithm>
+#include <set>
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -42,12 +44,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./pgr_withPoints.hpp"
 #include "./many_to_one_withPoints_driver.h"
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-#include "./../../common/src/memory_func.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
-// #define DEBUG
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
@@ -59,17 +58,17 @@ extern "C" {
 
 int
 do_pgr_many_to_one_withPoints(
-        pgr_edge_t  *edges,                     size_t total_edges,
-        Point_on_edge_t  *points_p,             size_t total_points,
-        pgr_edge_t  *edges_of_points,           size_t total_edges_of_points,
-        int64_t  *start_pidsArr,                size_t size_start_pidsArr,
+        pgr_edge_t *edges, size_t total_edges,
+        Point_on_edge_t *points_p, size_t total_points,
+        pgr_edge_t *edges_of_points, size_t total_edges_of_points,
+        int64_t *start_pidsArr, size_t size_start_pidsArr,
         int64_t end_vid,
         char driving_side,
         bool details,
         bool directed,
         bool only_cost,
         General_path_element_t **return_tuples, size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         std::vector< Point_on_edge_t >
@@ -98,41 +97,40 @@ do_pgr_many_to_one_withPoints(
         std::vector< int64_t > start_vertices(s_start_vertices.begin(), s_start_vertices.end());
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
             pgr_dijkstra(digraph, paths, start_vertices, end_vid, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vid, only_cost);
         }
 
 #if 0
-        for (auto &path :paths) {
+        for (auto &path : paths) {
             adjust_pids(points, path);
         }
 #endif
         if (!details) {
-            for (auto &path :paths) {
+            for (auto &path : paths) {
                 eliminate_details(path, edges_to_modify);
             }
         }
 
         /*
-         *  order paths based on the start_pid
+         * order paths based on the start_pid
          */
-        std::sort(paths.begin(), paths.end(), [](const Path &a,const  Path &b) {
-                return a.start_id() < b.start_id();   
+        std::sort(paths.begin(), paths.end(), [](const Path &a, const Path &b) {
+                return a.start_id() < b.start_id();
                 });
 
         size_t count(0);
@@ -148,11 +146,11 @@ do_pgr_many_to_one_withPoints(
             return 0;
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-#ifndef DEBUG
+#ifndef NDEBUG
         {
             std::ostringstream log;
             log << "OK";
@@ -164,7 +162,7 @@ do_pgr_many_to_one_withPoints(
 #endif
         return 0;
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
         return 1000;
     }

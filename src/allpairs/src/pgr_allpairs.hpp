@@ -26,6 +26,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
 #define SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
+#pragma once
+
+#if 0
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#include <winsock2.h>
+#include <windows.h>
+#ifdef open
+#undef open
+#endif
+#endif
+#endif
+
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/property_map/property_map.hpp>
+#include <boost/graph/johnson_all_pairs_shortest.hpp>
+#include <boost/graph/floyd_warshall_shortest.hpp>
 
 
 #include <deque>
@@ -33,21 +50,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
-#include <boost/config.hpp>
 
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/property_map/property_map.hpp>
-#include <boost/graph/johnson_all_pairs_shortest.hpp>
-#include <boost/graph/floyd_warshall_shortest.hpp>
-
-
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
-
-#include "../../common/src/memory_func.hpp"
+#include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/basePath_SSEC.hpp"
-#include "./../../common/src/baseGraph.hpp"
+#include "./../../common/src/pgr_base_graph.hpp"
 
 template < class G > class Pgr_allpairs;
 
@@ -92,7 +99,7 @@ pgr_floydWarshall(
 // template class
 template < class G >
 class Pgr_allpairs {
-    // defualt constructors and destructors
+    // default constructors and destructors
     /*
        Matrix_cell_t description:
        int64_t from_vid;
@@ -166,7 +173,7 @@ void Pgr_allpairs< G >::floydWarshall(
     boost::floyd_warshall_all_pairs_shortest_paths(
             graph.graph,
             matrix,
-            weight_map(get(&boost_edge_t::cost, graph.graph)).
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
             distance_inf(std::numeric_limits<double>::max()).
             distance_zero(0));
@@ -185,7 +192,7 @@ void Pgr_allpairs< G >::floydWarshall(
     boost::floyd_warshall_all_pairs_shortest_paths(
             graph.graph,
             matrix,
-            weight_map(get(&boost_edge_t::cost, graph.graph)).
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
             distance_inf(std::numeric_limits<double>::max()).
             distance_zero(0));
@@ -204,7 +211,7 @@ void Pgr_allpairs< G >::johnson(
     boost::johnson_all_pairs_shortest_paths(
             graph.graph,
             matrix,
-            weight_map(get(&boost_edge_t::cost, graph.graph)).
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
             distance_inf(std::numeric_limits<double>::max()).
             distance_zero(0));
@@ -223,7 +230,7 @@ void Pgr_allpairs< G >::johnson(
     boost::johnson_all_pairs_shortest_paths(
             graph.graph,
             matrix,
-            weight_map(get(&boost_edge_t::cost, graph.graph)).
+            weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
             distance_inf(std::numeric_limits<double>::max()).
             distance_zero(0));
@@ -274,7 +281,7 @@ Pgr_allpairs< G >::make_result(
         size_t &result_tuple_count,
         Matrix_cell_t **postgres_rows) const {
     result_tuple_count = count_rows(graph, matrix);
-    *postgres_rows = get_memory(result_tuple_count, (*postgres_rows));
+    *postgres_rows = pgr_alloc(result_tuple_count, (*postgres_rows));
 
 
     size_t seq = 0;

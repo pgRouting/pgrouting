@@ -38,17 +38,17 @@ extern "C" {
     /*********************************************************
       MY_QUERY_LINE1
      ********************************************************/
-    void
-        do_pgr_MY_FUNCTION_NAME(
-                pgr_edge_t  *data_edges,
-                size_t total_tuples,
-                int64_t start_vid,
-                int64_t  *end_vidsArr,
-                int size_end_vidsArr,
-                bool directed,
-                MY_RETURN_VALUE_TYPE **return_tuples,
-                size_t *return_count,
-                char ** err_msg);
+
+    // Code standard:
+    // Pass the arrays and the sizes on the same line
+    void do_pgr_MY_FUNCTION_NAME(
+            MY_EDGE_TYPE *data_edges, size_t total_edges,
+            int64_t start_vid,
+            int64_t  *end_vidsArr, size_t size_end_vidsArr,
+            bool directed,
+            MY_RETURN_VALUE_TYPE **return_tuples, size_t *return_count,
+            char ** log_msg,
+            char ** err_msg);
 
 
 #ifdef __cplusplus

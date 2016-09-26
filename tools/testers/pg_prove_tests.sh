@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ------------------------------------------------------------------------------
 # Travis CI scripts 
 # Copyright(c) pgRouting Contributors
@@ -9,6 +9,9 @@
 set -e 
 
 PGUSER=$1
+RELEASE_TYPE="b$2"
+echo "RELEASE_TYPE" $RELEASE_TYPE
+
 PGDATABASE="___pgr___test___"
 
 # Define alias function for psql command
@@ -29,6 +32,20 @@ echo "psql -f setup_db.sql"
 run_psql -f setup_db.sql
 #pg_prove ../../src/funnyDijkstra/test/pgtap/* -d $PGDATABASE
 
+#TODO comment out peformance test before merging to MASTER
+
+
+if [ $RELEASE_TYPE = "bDEBUG" ]
+then
+    pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+    echo "MADE TEST **********************"
+fi
+
+pg_prove ../../src/max_flow/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+
+
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/alpha_shape/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/apsp_johnson/test/pgtap/* -d $PGDATABASE  -U $PGUSER
@@ -41,11 +58,14 @@ pg_prove ../../src/driving_distance/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/kdijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/withPoints/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/tsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
-pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/bd_astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/bd_dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/convinience/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/convenience/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+
+pg_prove ../../src/tsp/test/performance/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/contraction/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 if [ "$?" -ne 0 ]
 then

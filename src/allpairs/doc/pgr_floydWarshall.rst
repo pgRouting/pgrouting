@@ -29,28 +29,8 @@ is a good choice to calculate the sum of the costs of the shortest path for each
 pair of nodes in the graph, for *dense graphs*. We make use of the  Boost's
 implementation which runs in :math:`\Theta(V^3)` time,
 
-    
-Signature
-===============================================================================
 
-
-.. index::
-    single: floydWarshall(edges_sql, directed)
-
-.. code-block:: none
-   
-    pgr_floydWarshall(edges_sql, directed:=true)
-         RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
-
-Example
--------
-.. code-block:: none
-   
-    pgr_floydWarshall(
-       'SELECT source, target, cost, reverse_cost FROM edge_table WHERE city_code = 304'
-    );
-
-Characteristics:
+Characteristics
 ----------------
 
 The main Characteristics are:
@@ -71,35 +51,66 @@ The main Characteristics are:
 
   - When  `start_vid` = `end_vid`, the `agg_cost` = 0.
 
-  - **Recomended, use a bounding box of no more than 3500 edges.**
+  - **Recommended, use a bounding box of no more than 3500 edges.**
+
+Signature Summary
+--------------------------------------------
+    
+.. code-block:: none
+   
+    pgr_floydWarshall(edges_sql)
+    pgr floydWarshall(edges_sql, directed)
+    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+
+Signatures
+--------------------------------------------
 
 
+.. index::
+    single: floydWarshall(Minimal Signature)
 
-Description of the Signature
-============================
+Minimal Signature
+...................
 
-Description of the SQL query
--------------------------------------------------------------------------------
+.. code-block:: none
+   
+    pgr_floydWarshall(edges_sql)
+    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 
-:edges_sql: is an SQL query, which should return a set of rows with the following columns:
+:Example 1: On a directed graph.
 
-================  ===================   =================================================
-Column            Type                      Description
-================  ===================   =================================================
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
+.. literalinclude:: doc-floydWarshall.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
-Where:
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+.. index::
+    single: floydWarshall(Complete Signature)
+
+Complete Signature
+...................
+
+.. code-block:: none
+   
+    pgr_floydWarshall(edges_sql, directed)
+    RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
+
+
+:Example 2: On an undirected graph.
+
+.. literalinclude:: doc-floydWarshall.queries
+   :start-after: -- q2
+
+Description of the Signatures
+------------------------------
+
+.. include:: ../../common/src/edges_input.h
+    :start-after: no_id_edges_sql_start
+    :end-before: no_id_edges_sql_end
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+................................................
 
 Receives  ``(edges_sql, directed)``
 
@@ -112,7 +123,7 @@ Parameter     Type          Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+..................................
 
 Returns set of ``(start_vid, end_vid, agg_cost)``
 
@@ -126,22 +137,6 @@ Column        Type          Description
 
 
 
-Examples
-============================
-
-:Example 1: On a directed graph.
-
-.. literalinclude:: doc-floydWarshall.queries
-   :start-after: -- q1
-   :end-before: -- q2
-
-:Example 2: On an undirected graph.
-
-.. literalinclude:: doc-floydWarshall.queries
-   :start-after: -- q2
-
-
-These queries uses the :ref:`sampledata` network.
 
 
 .. rubric:: History
@@ -153,6 +148,7 @@ See Also
 
 * :ref:`pgr_johnson`
 * `Boost floyd-Warshall <http://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_ algorithm
+* Queries uses the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

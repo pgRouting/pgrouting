@@ -22,26 +22,52 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_PGR_TYPES_H_
+#define SRC_COMMON_SRC_PGR_TYPES_H_
 #pragma once
 
+
 #ifndef __cplusplus
-#include "postgres.h"
+
+// for bool
+#include <postgres.h>
+
+// For NULL & size_t
+#include <stdlib.h>
 #endif
+
+// For int64_t etc
 #include <stdint.h>
 
-typedef struct edge_astar
-{
-  int id;
-  int source;
-  int target;
-  double cost;
-  double reverse_cost;
-  double s_x;
-  double s_y;
-  double t_x;
-  double t_y;
+typedef struct  {
+    int64_t id;
+    double x;
+    double y;
+} Coordinate_t;
+
+typedef struct edge_astar {
+    int id;
+    int source;
+    int target;
+    double cost;
+    double reverse_cost;
+    double s_x;
+    double s_y;
+    double t_x;
+    double t_y;
 } edge_astar_t;
 
+typedef struct {
+    int64_t id;
+    int64_t source;
+    int64_t target;
+    double cost;
+    double reverse_cost;
+    double x1;
+    double y1;
+    double x2;
+    double y2;
+} Pgr_edge_xy_t;
 
 
 typedef struct {
@@ -62,7 +88,7 @@ typedef struct {
 
 /*
  * This ones are for returning the info to postgres
-     */
+ */
 
 typedef struct {
     int seq;
@@ -75,7 +101,7 @@ typedef struct {
 } General_path_element_t;
 
 
-typedef struct{
+typedef struct {
     int route_id;
     int path_id;
     int path_seq;
@@ -90,12 +116,29 @@ typedef struct{
 
 
 typedef struct {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  bool going;
+  bool coming;
+  int64_t edge_id;
+} pgr_basic_edge_t;
+
+typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
     double cost;
     double reverse_cost;
 } pgr_edge_t;
+
+typedef struct {
+  int64_t edge;
+  int64_t source;
+  int64_t target;
+  int64_t flow;
+  int64_t residual_capacity;
+} pgr_flow_t;
 
 typedef struct {
     int seq;
@@ -113,8 +156,7 @@ typedef struct matrix_cell {
 // Restrictions used in pgr_turnRestrictions
 
 #define  MAX_RULE_LENGTH 5
-typedef struct 
-{
+typedef struct {
     int64_t target_id;
     double to_cost;
     int64_t via[MAX_RULE_LENGTH];
@@ -126,7 +168,7 @@ typedef struct {
     int64_t edge_id;
     char side;  // 'r', 'l', 'b' (default is both)
     double fraction;
-    int64_t vertex_id; // number is negative and is used for processing
+    int64_t vertex_id;  // number is negative and is used for processing
 } Point_on_edge_t;
 
 // used for getting the data
@@ -145,28 +187,12 @@ struct {
     bool strict;
     char *name;
     expectType eType;
-
 } Column_info_t;
 
-// used in boost
-struct boost_vertex_t {
-    int64_t id;
-};
+enum graphType {UNDIRECTED = 0, DIRECTED};
 
-struct boost_edge_t{
-    int64_t id;
-    double cost;
-    int64_t source;
-    int64_t target;
-    bool first;  // originally was true (source, target) false (target, source)
-};
-
-
-enum graphType { UNDIRECTED= 0, DIRECTED};
-
-#if 0
 /**************************************************************************
- * VRPPDTW types
+ * pickDelivery types
  * ***********************************************************************/
 typedef struct {
     int64_t id;
@@ -179,14 +205,31 @@ typedef struct {
     int64_t Pindex;
     int64_t Dindex;
     double Ddist;
-} Customer;
+} Customer_t;
+
+/*
+    OUT seq INTEGER,        done in the .c code
+    OUT vehicle_seq INTEGER,
+    OUT vehicle_id INTEGER,
+    OUT order_id BIGINT,
+    OUT travelTime FLOAT,
+    OUT arrivalTime FLOAT,
+    OUT waitTime FLOAT,
+    OUT serviceTime FLOAT,
+    OUT departureTime FLOAT,
+*/
 
 typedef struct  {
-    int seq;
-    int64_t rid;
-    int64_t nid;
-    double cost;
-} path_element;
+    int vehicle_id;
+    int vehicle_seq;
+    int64_t order_id;
+    double travelTime;
+    double arrivalTime;
+    double waitTime;
+    double serviceTime;
+    double departureTime;
+} General_vehicle_orders_t;
 
 /*************************************************************************/
-#endif
+
+#endif  // SRC_COMMON_SRC_PGR_TYPES_H_

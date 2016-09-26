@@ -29,10 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "fmgr.h"
-#include "trsp.h"
+#include "trsp_driver.h"
 
-Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 // #define DEBUG 
 #include "../../common/src/debug_macro.h"
@@ -59,7 +59,7 @@ static int compute_trsp(
     PGR_DBG("Load edges");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_5_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges(edges_sql, &edges, &total_tuples);
     PGR_DBG("Total %ld edges", total_tuples);
 
     PGR_DBG("Load restrictions");
@@ -78,7 +78,6 @@ static int compute_trsp(
     }
 #endif
     PGR_DBG("Total %ld restriction", total_restrict_tuples);
-
 
 
     int v_max_id=0;
@@ -103,7 +102,7 @@ static int compute_trsp(
 
     //defining min and max vertex id
 
-    PGR_DBG("Total %i edge tuples", total_tuples);
+    PGR_DBG("Total %ld edge tuples", total_tuples);
 
     for(z=0; z<total_tuples; z++) {
         if(edges[z].source<v_min_id)
@@ -117,11 +116,11 @@ static int compute_trsp(
 
         if(edges[z].target>v_max_id)
             v_max_id=(int)edges[z].target;      
-
         //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
 
     }
 
+//<<<<<<< HEAD
     //::::::::::::::::::::::::::::::::::::  
     //:: reducing vertex id (renumbering)
     //::::::::::::::::::::::::::::::::::::
@@ -165,7 +164,6 @@ static int compute_trsp(
         end_id   -= v_min_id;
     }
 
-
     if (dovertex) {
         PGR_DBG("Calling trsp_node_wrapper\n");
         ret = trsp_node_wrapper(edges, total_tuples, 
@@ -199,7 +197,7 @@ static int compute_trsp(
 
     PGR_DBG("ret = %i\n", ret);
 
-    PGR_DBG("*path_count = %i\n", *path_count);
+    PGR_DBG("*path_count = %ld\n", *path_count);
 
     if (ret < 0)
     {
@@ -215,7 +213,7 @@ static int compute_trsp(
 
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-    Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 
@@ -346,7 +344,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 }
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
-    Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 

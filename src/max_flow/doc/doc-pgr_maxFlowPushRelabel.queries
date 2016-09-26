@@ -1,0 +1,114 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- q1
+SELECT * FROM pgr_maxFlowPushRelabel(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id'
+    , 6, 11
+);
+ seq | edge_id | source | target | flow | residual_capacity 
+-----+---------+--------+--------+------+-------------------
+   1 |      10 |      5 |     10 |  100 |                30
+   2 |       8 |      6 |      5 |  100 |                30
+   3 |       9 |      6 |      9 |   50 |                80
+   4 |      11 |      6 |     11 |  130 |                 0
+   5 |      15 |      9 |     12 |   50 |                30
+   6 |      12 |     10 |     11 |  100 |                 0
+   7 |      13 |     12 |     11 |   50 |                 0
+(7 rows)
+
+-- q2
+SELECT * FROM pgr_maxFlowPushRelabel(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id'
+    , 6, ARRAY[11, 1, 13]
+);
+ seq | edge_id | source | target | flow | residual_capacity 
+-----+---------+--------+--------+------+-------------------
+   1 |       1 |      2 |      1 |  130 |                 0
+   2 |       4 |      2 |      5 |   20 |                80
+   3 |       2 |      3 |      2 |  100 |                 0
+   4 |       3 |      4 |      3 |   50 |                80
+   5 |       4 |      5 |      2 |   50 |                 0
+   6 |       7 |      5 |      8 |   50 |                80
+   7 |      10 |      5 |     10 |  100 |                30
+   8 |       5 |      6 |      3 |   50 |                 0
+   9 |       8 |      6 |      5 |  130 |                 0
+  10 |       9 |      6 |      9 |  100 |                30
+  11 |      11 |      6 |     11 |  130 |                 0
+  12 |       6 |      7 |      8 |   50 |                 0
+  13 |       6 |      8 |      7 |   50 |                50
+  14 |       7 |      8 |      5 |   50 |                 0
+  15 |      15 |      9 |     12 |   50 |                30
+  16 |      16 |      9 |      4 |   50 |                30
+  17 |      12 |     10 |     11 |  100 |                 0
+  18 |      13 |     12 |     11 |   50 |                 0
+(18 rows)
+
+-- q3
+SELECT * FROM pgr_maxFlowPushRelabel(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id'
+    , ARRAY[6, 8, 12], 11
+);
+ seq | edge_id | source | target | flow | residual_capacity 
+-----+---------+--------+--------+------+-------------------
+   1 |      10 |      5 |     10 |  100 |                30
+   2 |       8 |      6 |      5 |  100 |                30
+   3 |      11 |      6 |     11 |  130 |                 0
+   4 |      12 |     10 |     11 |  100 |                 0
+   5 |      13 |     12 |     11 |   50 |                 0
+(5 rows)
+
+-- q4
+SELECT * FROM pgr_maxFlowPushRelabel(
+    'SELECT id,
+            source,
+            target,
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id'
+    , ARRAY[6, 8, 12], ARRAY[1, 3, 11]
+);
+ seq | edge_id | source | target | flow | residual_capacity 
+-----+---------+--------+--------+------+-------------------
+   1 |       1 |      2 |      1 |   50 |                80
+   2 |       3 |      4 |      3 |   80 |                50
+   3 |       4 |      5 |      2 |   50 |                 0
+   4 |      10 |      5 |     10 |  100 |                30
+   5 |       5 |      6 |      3 |   50 |                 0
+   6 |       8 |      6 |      5 |  130 |                 0
+   7 |       9 |      6 |      9 |   30 |               100
+   8 |      11 |      6 |     11 |  130 |                 0
+   9 |       7 |      8 |      5 |   20 |                30
+  10 |      16 |      9 |      4 |   80 |                 0
+  11 |      12 |     10 |     11 |  100 |                 0
+  12 |      13 |     12 |     11 |   50 |                 0
+  13 |      15 |     12 |      9 |   50 |                 0
+(13 rows)
+
+-- q5
+ROLLBACK;
+ROLLBACK

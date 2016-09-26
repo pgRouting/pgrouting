@@ -1,0 +1,27 @@
+.. 
+   ****************************************************************************
+    pgRouting Manual
+    Copyright(c) pgRouting Contributors
+
+    This documentation is licensed under a Creative Commons Attribution-Share
+    Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
+   ****************************************************************************
+
+Description of the return values
+.................................
+
+Returns set of ``(seq, node, cost, agg_cost)``
+
+============= =========== =================================================
+Column           Type              Description
+============= =========== =================================================
+**seq**       ``INTEGER`` Row sequence.
+**node**      ``BIGINT``  Identifier of the node/coordinate/point.
+**cost**      ``FLOAT``   Cost to traverse from the current ``node`` ito the next ``node`` in the path sequence.
+                            - ``0`` for the last row in the path sequence.
+
+**agg_cost**  ``FLOAT``   Aggregate cost from the ``node`` at ``seq = 1`` to the current node.
+                            - ``0`` for the first row in the path sequence.
+
+============= =========== =================================================
+

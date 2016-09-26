@@ -45,13 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "./johnson_driver.h"
 
-PG_FUNCTION_INFO_V1(johnson);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-johnson(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum johnson(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
@@ -66,7 +60,7 @@ void process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_data_4_columns(edges_sql, &edges, &total_tuples);
+    pgr_get_edges_no_id(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -98,11 +92,8 @@ void process(
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(johnson);
 PGDLLEXPORT Datum
-#endif
 johnson(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     uint32_t              call_cntr;
@@ -161,7 +152,7 @@ johnson(PG_FUNCTION_ARGS) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
-        bool*        nulls;
+        bool         *nulls;
 
         /*********************************************************************/
         /*                          MODIFY AS NEEDED                         */

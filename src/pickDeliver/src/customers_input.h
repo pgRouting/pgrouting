@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: edges_input.h
+File: customers_input.h
 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
@@ -20,27 +20,13 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-********************************************************************PGR-GNU*/
+ ********************************************************************PGR-GNU*/
 
 #pragma once
 
-#include "./pgr_types.h"
-#include "./pdp.h"
+#include "./../../common/src/pgr_types.h"
 
-
-/*!
-  int64_t id;
-  double x;
-  double y;
-  double demand;
-  double Etime;
-  double Ltime;
-  double Stime;
-  int64_t Pindex;
-  int64_t Dindex;
-  double Ddist;
-*/
-void pgr_get_customers(
-        char *sql,
-        Customer **customers,
+void pgr_get_customers_data(
+        char *customers_sql,
+        Customer_t **customers,
         size_t *total_customers);

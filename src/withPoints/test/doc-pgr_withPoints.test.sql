@@ -70,7 +70,6 @@ BEGIN;
     \echo --q5
 
 
-
     ROLLBACK;
 
 

@@ -60,7 +60,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
     END;
 
     -- checking the fixed columns and data types of the integers
-    IF fn IN ('dijkstra') THEN
+    IF fn IN ('dijkstra','astar') THEN
         BEGIN
           execute 'select id,source,target,cost  from ('||safesql||') as __b__' into rec;
           EXCEPTION
@@ -82,8 +82,28 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
     END IF;
  
 
+    IF fn IN ('astar') THEN
+        BEGIN
+          execute 'select x1,y1,x2,y2  from ('||safesql||') as __b__' into rec;
+          EXCEPTION
+            WHEN OTHERS THEN
+                RAISE EXCEPTION 'An expected column was not found in the query'
+                  USING ERRCODE = 'XX000',
+                   HINT = 'Please veryfy the column names: x1,y1, x2,y2';
+        END;
+        execute 'select pg_typeof(x1)::text as x1_type, pg_typeof(y1)::text as y1_type, pg_typeof(x2)::text as x2_type, pg_typeof(y2)::text as y2_type'
+            || ' from ('||safesql||') AS __b__ ' into rec;
+        -- Version 2.0.0 is more restrictive
+        IF NOT(   (rec.x1_type = 'double precision'::text)
+              AND (rec.y1_type = 'double precision'::text)
+              AND (rec.x2_type = 'double precision'::text)
+              AND (rec.y2_type = 'double precision'::text)) THEN
+            RAISE EXCEPTION 'Columns: x1, y1, x2, y2 must be of type float8'
+            USING ERRCODE = 'XX000';
+        END IF;
+    END IF;
 
-        -- checking the fixed columns and data types of the integers
+    -- checking the fixed columns and data types of the integers
     IF fn IN ('johnson') THEN
         BEGIN
           execute 'select source,target,cost  from ('||safesql||') as __b__' into rec;
@@ -108,7 +128,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
 
     -- Checking the data types of the optional reverse_cost";
     has_rcost := false;
-    IF fn IN ('johnson','dijkstra') THEN
+    IF fn IN ('johnson','dijkstra','astar') THEN
       BEGIN
         execute 'select reverse_cost, pg_typeof(reverse_cost)::text as rev_type  from ('||safesql||' ) AS __b__ limit 1 ' into rec1;
         has_rcost := true;
@@ -125,7 +145,7 @@ CREATE OR REPLACE FUNCTION _pgr_parameter_check(fn text, sql text, big boolean d
            END IF;
         ELSE -- Version 2.0.0 is more restrictive
            IF (rec1.rev_type != 'double precision') then
-             RAISE EXCEPTION 'Illegal type in optional parameter reverse_cost, expected: double precision'
+             RAISE EXCEPTION 'Illegal type in optional parameter reverse_cost, must be of type float8'
              USING ERRCODE = 'XX000';
            END IF;
         END IF;

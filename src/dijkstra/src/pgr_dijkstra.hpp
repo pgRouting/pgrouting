@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #ifdef unlink
@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
 #include "./../../common/src/basePath_SSEC.hpp"
-#include "./../../common/src/baseGraph.hpp"
+#include "./../../common/src/pgr_base_graph.hpp"
 #if 0
 #include "./../../common/src/signalhandler.h"
 #endif
@@ -245,7 +245,7 @@ class Pgr_dijkstra {
              std::vector< V > &targets) const;
 
 
-     //! @name Variables
+     //! @name members;
      //@{
      struct found_goals{};  //!< exception for termination
      std::vector< V > predecessors;
@@ -389,7 +389,7 @@ Pgr_dijkstra< G >::get_path(
         return;
     }
 
-    // findout how large is the path
+    // find out how large is the path
     int64_t result_size = 1;
     while (target != source) {
         if (target == predecessors[target]) break;
@@ -509,8 +509,7 @@ Pgr_dijkstra< G >::drivingDistance(
     distances.resize(graph.num_vertices());
 
     // get source;
-    V v_source;
-    if (!graph.get_gVertex(start_vertex, v_source)) {
+    if (!graph.has_vertex(start_vertex)) {
         /* The node has to be in the path*/
         Path p(start_vertex, start_vertex);
         p.push_back({start_vertex, -1, 0, 0});
@@ -518,6 +517,7 @@ Pgr_dijkstra< G >::drivingDistance(
         return;
     }
 
+    auto v_source(graph.get_V(start_vertex));;
     dijkstra_1_to_distance(graph, v_source, distance); 
     get_nodesInDistance(graph, path, v_source, distance);
     std::sort(path.begin(), path.end(),
@@ -544,15 +544,16 @@ Pgr_dijkstra< G >::dijkstra(
     predecessors.resize(graph.num_vertices());
     distances.resize(graph.num_vertices());
 
-    // get the graphs source and target
-    V v_source;
-    V v_target;
 
-    if (!graph.get_gVertex(start_vertex, v_source)
-            || !graph.get_gVertex(end_vertex, v_target)) {
+    if (!graph.has_vertex(start_vertex)
+            || !graph.has_vertex(end_vertex)) {
         path.clear();
         return;
     }
+
+    // get the graphs source and target
+    auto v_source(graph.get_V(start_vertex));
+    auto v_target(graph.get_V(end_vertex));
 
     // perform the algorithm
     dijkstra_1_to_1(graph, v_source, v_target);
@@ -582,17 +583,13 @@ Pgr_dijkstra< G >::dijkstra(
     distances.resize(graph.num_vertices());
 
     // get the graphs source and target
-    V v_source;
-    if (!graph.get_gVertex(start_vertex, v_source)) {
-        // paths.clear();
-        return;
-    }
+    if (!graph.has_vertex(start_vertex)) return;
+    auto v_source(graph.get_V(start_vertex));
 
     std::set< V > s_v_targets;
     for (const auto &vertex : end_vertex) {    
-        V v_target;
-        if (graph.get_gVertex(vertex, v_target)) {
-            s_v_targets.insert(v_target);
+        if (graph.has_vertex(vertex)) {
+            s_v_targets.insert(graph.get_V(vertex));
         }
     }
 
@@ -675,11 +672,11 @@ Pgr_dijkstra< G >::dijkstra_1_to_1(
     try {
         boost::dijkstra_shortest_paths(graph.graph, source,
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&boost_edge_t::cost, graph.graph))
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
                 .visitor(dijkstra_one_goal_visitor(target)));
     }
-    catch(found_goals &fg) {
+    catch(found_goals &) {
         found = true;  // Target vertex found
     }
     return found;
@@ -694,14 +691,14 @@ Pgr_dijkstra< G >::dijkstra_1_to_distance(G &graph, V source, double distance) {
     try {
         boost::dijkstra_shortest_paths(graph.graph, source,
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&boost_edge_t::cost, graph.graph))
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
                 .visitor(dijkstra_distance_visitor(
                         distance,
                         nodesInDistance,
                         distances)));
     }
-    catch(found_goals &fg) {
+    catch(found_goals &) {
         found = true;
     }
     return found;
@@ -718,11 +715,11 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
     try {
         boost::dijkstra_shortest_paths(graph.graph, source,
                 boost::predecessor_map(&predecessors[0])
-                .weight_map(get(&boost_edge_t::cost, graph.graph))
+                .weight_map(get(&pgrouting::Basic_edge::cost, graph.graph))
                 .distance_map(&distances[0])
                 .visitor(dijkstra_many_goal_visitor(targets)));
     }
-    catch(found_goals &fg) {
+    catch(found_goals &) {
         found = true;  // Target vertex found
     }
     return found;

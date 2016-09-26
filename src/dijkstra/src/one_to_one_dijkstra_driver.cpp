@@ -27,11 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
-
 
 #include <sstream>
 #include <deque>
@@ -39,12 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./one_to_one_dijkstra_driver.h"
 
-//#define DEBUG
 
-#include "../../common/src/memory_func.hpp"
-extern "C" {
+#include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_types.h"
-}
 
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(
 // sql text,
@@ -66,18 +62,17 @@ do_pgr_one_to_one_dijkstra(
   std::ostringstream log;
   try {
       graphType gType = directed? DIRECTED: UNDIRECTED;
-      const auto initial_size = total_tuples;
 
       Path path;
 
       if (directed) {
           log << "Working with directed Graph\n";
-          Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+          pgrouting::DirectedGraph digraph(gType);
           digraph.graph_insert_data(data_edges, total_tuples);
           pgr_dijkstra(digraph, path, start_vid, end_vid, only_cost);
       } else {
           log << "Working with Undirected Graph\n";
-          Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+          pgrouting::UndirectedGraph undigraph(gType);
           undigraph.graph_insert_data(data_edges, total_tuples);
           pgr_dijkstra(undigraph, path, start_vid, end_vid, only_cost);
       }
@@ -95,7 +90,7 @@ do_pgr_one_to_one_dijkstra(
           return;
       }
 
-      (*return_tuples) = get_memory(count, (*return_tuples));
+      (*return_tuples) = pgr_alloc(count, (*return_tuples));
       size_t sequence = 0;
       path.generate_postgres_data(return_tuples, sequence);
       (*return_count) = sequence;
@@ -108,7 +103,7 @@ do_pgr_one_to_one_dijkstra(
 
       return;
   } catch ( ... ) {
-      log << "Caught unknown expection!\n";
+      log << "Caught unknown exception!\n";
       *err_msg = strdup(log.str().c_str());
       return;
   }

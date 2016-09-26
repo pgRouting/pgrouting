@@ -21,9 +21,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#undef min
+#undef max
 #endif
 
 
@@ -641,11 +643,11 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
     {
         //Connect current edge with existing edge with start node
         //connectEdge(
-        long lEdgeCount = itNodeMap->second.size();
-        long lEdgeIndex;
+        int64_t lEdgeCount = itNodeMap->second.size();
+        int64_t lEdgeIndex;
         for(lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++)
         {
-            long lEdge = itNodeMap->second.at(lEdgeIndex);    
+            int64_t lEdge = itNodeMap->second.at(lEdgeIndex);    
             connectEdge(newEdge, m_vecEdgeVector[lEdge], true);
         }
     }
@@ -657,11 +659,11 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
     {
         //Connect current edge with existing edge with end node
         //connectEdge(
-        long lEdgeCount = itNodeMap->second.size();
-        long lEdgeIndex;
+        int64_t lEdgeCount = itNodeMap->second.size();
+        int64_t lEdgeIndex;
         for(lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++)
         {
-            long lEdge = itNodeMap->second.at(lEdgeIndex);    
+            int64_t lEdge = itNodeMap->second.at(lEdgeIndex);    
             connectEdge(newEdge, m_vecEdgeVector[lEdge], false);
         }
     }

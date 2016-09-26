@@ -40,13 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "./boost_interface_drivedist.h"
 
-PG_FUNCTION_INFO_V1(driving_distance);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-driving_distance(PG_FUNCTION_ARGS); 
+PGDLLEXPORT Datum driving_distance(PG_FUNCTION_ARGS);
 
 static
 void compute_driving_distance(
@@ -65,7 +59,7 @@ void compute_driving_distance(
 
   PGR_DBG("Load data");
 
-  pgr_get_data_5_columns(sql, &edges, &total_edges);
+  pgr_get_edges(sql, &edges, &total_edges);
 
   if (total_edges == 0) {
     PGR_DBG("No edges found");
@@ -92,11 +86,8 @@ void compute_driving_distance(
 }
 
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
+PG_FUNCTION_INFO_V1(driving_distance);
 PGDLLEXPORT Datum
-#endif
 driving_distance(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   uint32_t             call_cntr;

@@ -22,7 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
+
+#include <postgres.h>
 #include "executor/spi.h"
 
 #include "./debug_macro.h"
@@ -41,21 +42,22 @@ void fetch_restriction(
         Restrict_t *restriction) {
     restriction->target_id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     restriction->to_cost = pgr_SPI_getFloat8(tuple, tupdesc,  info[1]);
-    char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
-// TODO because its  text, there is no garanee that the text read is correct
+    char *str = DatumGetCString(
+            SPI_getvalue(*tuple, *tupdesc, info[2].colNumber));
+
+// TODO(someone) because its text, no guarantee the text read is correct
 // move this code to c++ to tokenize the integers.
 
     int i = 0;
-    for(i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
+    for (i = 0; i < MAX_RULE_LENGTH; ++i) restriction->via[i] = -1;
 
     if (str != NULL) {
         char *token = NULL;
         int i = 0;
 
-        token = (char *)strtok(str," ,");
+        token = (char *)strtok(str, " ,");
 
-        while (token != NULL && i < MAX_RULE_LENGTH)
-        {
+        while (token != NULL && i < MAX_RULE_LENGTH) {
             restriction->via[i] = atoi(token);
             i++;
             token = (char *)strtok(NULL, " ,");
@@ -115,9 +117,12 @@ pgr_get_restriction_data(
         PGR_DBG("SPI_processed %ld", ntuples);
         if (ntuples > 0) {
             if ((*restrictions) == NULL)
-                (*restrictions) = (Restrict_t *)palloc0(total_tuples * sizeof(Restrict_t));
+                (*restrictions) = (Restrict_t *)palloc0(
+                        total_tuples * sizeof(Restrict_t));
             else
-                (*restrictions) = (Restrict_t *)repalloc((*restrictions), total_tuples * sizeof(Restrict_t));
+                (*restrictions) = (Restrict_t *)repalloc(
+                        (*restrictions),
+                        total_tuples * sizeof(Restrict_t));
 
             if ((*restrictions) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -145,7 +150,9 @@ pgr_get_restriction_data(
     }
 
     (*total_restrictions) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_restrictions));
+    PGR_DBG("Finish reading %ld data, %ld",
+            total_tuples,
+            (*total_restrictions));
     clock_t end_t = clock();
     time_msg(" reading Restrictions", start_t, end_t);
 }

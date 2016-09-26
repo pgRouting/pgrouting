@@ -14,87 +14,93 @@ Experimental and Proposed functions
 
 :ref:`proposed`
 
-These are proposed functions
+
+..
+   begin-warning
+
+.. warning:: These are proposed functions
 
   - They are not officially of the current release.
-  - They likely will not be officialy be part of the version 2.3 release:
+  - They likely will not be officially be part of the next release:
 
     - The functions might not make use of ANY-INTEGER and ANY-NUMERICAL
     - Name might change.
     - Signature might change.
     - Functionality might change.
-    - pgTap tests might not being done.
+    - pgTap tests might be missing.
     - Might need c/c++ coding.
-    - May lack documentation,
+    - May lack documentation.
     - Documentation if any might need to be rewritten.
     - Documentation examples might need to be automatically generated.
     - Might need a lot of feedback from the comunity.
-    - Might need a non official function of pgRouting
-    - Might need a deprecated function of pgRouting
+    - Might depend on a proposed function of pgRouting
+    - Might depend on a deprecated function of pgRouting
+
+..
+   end-warning
 
 
-Proposed functions: Proposed by Steve Woodbridge
+Proposed functions
 ------------------------------------------------
 
-:ref:`convenience_functions`
-  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-  -  :ref:`pgr_flip_edges` - flip the edges in an array of geometries so the connect end to end.
-  -  :ref:`pgr_text_to_points` - convert a string of ``x,y;x,y;...`` locations into point geometries.
-  -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
-  -  :ref:`pgr_points_to_dmatrix` - Create a distance matrix from an array of points.
-  -  :ref:`pgr_vids_to_dmatrix` - Create a distance matrix from an array of ``vertix_id``.
-  -  :ref:`pgr_vids_to_dmatrix2` - Create a distance matrix from an array of ``vertix_id``.
+- :ref:`contraction` - Reduce network size using contraction techniques
 
-Proposed functions: Proposed by Zia Mohammed
----------------------------------------------
+  - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
+
+- :ref:`maxFlow`
+
+  - :ref:`pgr_maxFlowPushRelabel` - Maximum flow using push&relabel algorithm.
+  - :ref:`pgr_maxFlowEdmondsKarp` - Maximum flow using Edmonds&Karp algorithm.
+  - :ref:`pgr_maxFlowBoykovKolmogorov` - Maximum flow using Boykov&Kolmogorov algorithm.
+  
+- :ref:`maxFlowApplications`
+
+  - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
+  - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
+
+- convenience
+
+  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
+  -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
+
+- graph analysis
 
   -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 
-.. toctree::
-  :hidden:
+- Vehicle Routing Problems
 
-  ../src/label_graph/doc/pgr_labelGraph.rst
+  -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
+  -  :ref:`pgr_vrp_basic` - VRP One Depot
 
-.. toctree::
-   :hidden:
-
-   ../src/convinience/doc/convenience
-
-
-Proposed functions: Proposed by Rohith Reddy
----------------------------------------------
-
-  -  :ref:`contraction` - Reduce network size using contraction techniques
-
-.. toctree::
-  :hidden:
-
-  ../src/contraction/doc/contraction.rst
 
 .. toctree::
   :hidden:
 
   ../src/contraction/doc/contraction
+  ../src/contraction/doc/pgr_contractGraph
+  ../src/max_flow/doc/maxFlow
+  ../src/max_flow/doc/maxFlowApplications
 
-Experimental functions: by GSoC Students
-----------------------------------------
+  ../src/convenience/doc/pgr_pointToEdgeNode
+  ../src/convenience/doc/pgr_pointsToVids
+  ../src/label_graph/doc/pgr_labelGraph
+  ../src/vrppdtw/doc/pgr_gsoc_vrppdtw
+  ../src/vrp_basic/doc/pgr_vrpOneDepot
 
-  -  :ref:`pgr_vrp_basic` - VRP One Depot
-  -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery
+  ../src/pickDeliver/doc/pgr_pickDeliver
 
-..
-    The template
-    ------------
 
+
+
+
+
+
+..  
+  The template
+   ------------
     - :ref:`pgr_funnyDijkstra`
-
-.. toctree::
+    .. toctree::
     :hidden:
-
-    ../src/vrp_basic/doc/pgr_vrpOneDepot
-    ../src/vrppdtw/doc/index
-
-..
-    ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
-    ../src/vrppdtw/doc/index.rst
+    ..
+     ../src/funnyDijkstra/doc/pgr_funnyDijkstra.rst
 

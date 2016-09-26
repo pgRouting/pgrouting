@@ -27,11 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
-
 
 #include <sstream>
 #include <deque>
@@ -40,13 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./many_to_many_dijkstra_driver.h"
 
-// #define DEBUG
-
-#include "../../common/src/memory_func.hpp"
-
-extern "C" {
+#include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_types.h"
-}
 
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(
 // sql text,
@@ -69,7 +63,6 @@ do_pgr_many_to_many_dijkstra(
     std::ostringstream log;
     try {
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_tuples;
 
         std::deque< Path >paths;
         log << "Inserting vertices into a c++ vector structure\n";
@@ -82,12 +75,12 @@ do_pgr_many_to_many_dijkstra(
         std::vector< int64_t > end_vertices(s_end_vertices.begin(), s_end_vertices.end());
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstra(digraph, paths, start_vertices, end_vertices, only_cost);
         } else {
             log << "Working with Undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(data_edges, total_tuples);
             pgr_dijkstra(undigraph, paths, start_vertices, end_vertices, only_cost);
         }
@@ -106,7 +99,7 @@ do_pgr_many_to_many_dijkstra(
             return;
         }
 
-        (*return_tuples) = get_memory(count, (*return_tuples));
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
@@ -119,7 +112,7 @@ do_pgr_many_to_many_dijkstra(
 
         return;
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
         return;
     }

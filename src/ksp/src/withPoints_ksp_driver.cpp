@@ -28,23 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
-//#ifdef unlink
-//#undef unlink
-//#endif
 #endif
-
 
 #include <sstream>
 #include <deque>
 #include <vector>
+#include "./pgr_ksp.hpp"
 #include "./withPoints_ksp_driver.h"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
-#include "./../../common/src/memory_func.hpp"
-#include "./pgr_ksp.hpp"
-
+#include "./../../common/src/pgr_alloc.hpp"
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPointsKSP(
@@ -69,7 +64,7 @@ do_pgr_withPointsKsp(
         bool details,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     try {
         /*
@@ -101,23 +96,22 @@ do_pgr_withPointsKsp(
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
-        const auto initial_size = total_edges;
 
         std::deque< Path > paths;
 
         if (directed) {
             log << "Working with directed Graph\n";
-            Pgr_base_graph< DirectedGraph > digraph(gType, initial_size);
+            pgrouting::DirectedGraph digraph(gType);
             digraph.graph_insert_data(edges, total_edges);
             digraph.graph_insert_data(new_edges);
-            Pgr_ksp< Pgr_base_graph< DirectedGraph > > fn_yen;
+            Pgr_ksp< pgrouting::DirectedGraph  > fn_yen;
             paths = fn_yen.Yen(digraph, start_vid, end_vid, k, heap_paths);
         } else {
             log << "Working with undirected Graph\n";
-            Pgr_base_graph< UndirectedGraph > undigraph(gType, initial_size);
+            pgrouting::UndirectedGraph undigraph(gType);
             undigraph.graph_insert_data(edges, total_edges);
             undigraph.graph_insert_data(new_edges);
-            Pgr_ksp< Pgr_base_graph< UndirectedGraph > > fn_yen;
+            Pgr_ksp< pgrouting::UndirectedGraph > fn_yen;
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
@@ -143,7 +137,7 @@ do_pgr_withPointsKsp(
 
 
         *return_tuples = NULL;
-        *return_tuples = get_memory(count, (*return_tuples));
+        *return_tuples = pgr_alloc(count, (*return_tuples));
 
         size_t sequence = 0;
         int route_id = 0;
@@ -166,7 +160,7 @@ do_pgr_withPointsKsp(
 #endif
         return 0;
     } catch ( ... ) {
-        log << "Caught unknown expection!\n";
+        log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
     return 1000;

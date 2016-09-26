@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
- * File: tsp_driver.cpp
+ * File: pgr_tsp.cpp
  *
  * Generated with Template by:
  * Copyright (c) 2015 pgRouting developers
@@ -27,355 +27,535 @@
  *
  *  ********************************************************************PGR-GNU*/
 
-#ifdef __MINGW32__
+#if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#undef min
+#undef max
 #endif
 
+#include "./pgr_tsp.hpp"
 
+#include <time.h>
 
+#include <iomanip>
+#include <limits>
 #include <vector>
+#include <set>
 #include <algorithm>
+#include <cmath>
 
 #include "../../common/src/pgr_types.h"
-#include "./pgr_tsp.hpp"
+#include "../../common/src/pgr_assert.h"
 
 
 
 static
 size_t
 rand(size_t n) {
-    return static_cast< size_t >(std::rand() * n);
+    pgassert(n > 0);
+    return static_cast< size_t >(std::rand() % n);
 }
 
 
 static
 size_t
 succ(size_t i, size_t n) {
+    pgassert(n > 0);
     return static_cast<size_t>((i + 1) % n);
 }
 
 static
 size_t
-MOD(size_t i, size_t n) {
-#if 1
-return succ(i, n);
-#else
-return  ((i) % (n) > 0 ? (i) % (n) : (i) % (n) + (n));
-#endif
+pred(size_t i, size_t n) {
+    return  i == 0? n - 1: i -1;
 }
 
-double
-TSP::D(size_t i, size_t j) {
-    return dist[i][j];
+
+namespace pgrouting {
+namespace tsp {
+
+template < typename MATRIX >
+void TSP<MATRIX>::invariant() const {
+    /* the calculated value & the actual value are the same */
+    pgassert(std::fabs(tourCost(current_tour) - current_cost) < epsilon);
+    pgassert(std::fabs(tourCost(best_tour) - bestCost) < epsilon);
+    pgassert(n == MATRIX::ids.size());
+    pgassert(n == current_tour.size());
+    pgassert(n == best_tour.size());
 }
 
+template < typename MATRIX >
 void
-TSP::update(Ids new_order) {
-    auto blength = dist.pathCost(new_order);
-    if (bestCost < blength) {
-        border = new_order;
-        bestCost = blength;
+TSP<MATRIX>::update_if_best() {
+    invariant();
+    ++updatecalls;
+
+    if (current_cost < bestCost) {
+        ++improve_count;
+        best_tour = current_tour;
+        bestCost = current_cost;
     }
+
+    invariant();
 }
 
-/*
- * Prim's approximated TSP tour
- * See also [Cristophides'92]
- */
-bool
-TSP::findEulerianPath() {
-    Ids iorder(n);
-    Ids mst(n);
-    Ids arc(n);
-    std::vector < double > dis(n);
-    double d;
-#if 0
-    int n, *iorder, *jorder;
-    DTYPE d;
-    DTYPE maxd;
-    DTYPE *dist;
-    DTYPE *dis;
 
-    jorder = tsp->jorder;
-    iorder = tsp->iorder;
-    dist   = tsp->dist;
-    maxd   = tsp->maxd;
-    n      = tsp->n;
 
-    if (!(mst = (int*) palloc(n * sizeof(int))) ||
-            !(arc = (int*) palloc(n * sizeof(int))) ||
-            !(dis = (DTYPE*) palloc(n * sizeof(DTYPE))) )
-    {
-        elog(ERROR, "Failed to allocate memory!");
-        return -1;
+template < typename MATRIX >
+size_t
+TSP<MATRIX>::find_closest_city(
+        size_t current_city,
+        const std::set<size_t> inserted) const {
+    invariant();
+
+    auto distance_row(get_row(current_city));
+    pgassert(distance_row.size() == n);
+
+#ifndef NDEBUG
+    std::ostringstream err;
+    for (const auto &d : distance_row) {
+        err  << d << ", ";
     }
 #endif
-    // PGR_DBG("findEulerianPath: 1");
 
-    size_t j(0);
-    double curr_maxd = maxd;
-    dis[0] = -1;
-
-    for (size_t i = 1; i < n; ++i) {
-        dis[i] = dist[i][0];
-        arc[i] = 0;
-        if (curr_maxd > dis[i]) {
-            curr_maxd = dis[i];
-            j = i;
-        }
-    }
-    //PGR_DBG("findEulerianPath: j=%d", j);
-
-    if (curr_maxd == maxd) {
-        // PGR_DBG("Error TSP fail to findEulerianPath, check your distance matrix is valid.");
-        return false;
-    }
-
-    /*
-     * O(n^2) Minimum Spanning Trees by Prim and Jarnick 
-     * for graphs with adjacency matrix. 
-     */
-    for (size_t a = 0; a < n - 1; a++) {
-        size_t k(0);
-        mst[a] = j * n + arc[j]; /* join fragment j with MST */
-        dis[j] = -1; 
-        d = maxd;
-        for (size_t i = 0; i < n; i++)
-        {
-            if (dis[i] >= 0) /* not connected yet */
-            {
-                if (dis[i] > dist[i][j])
-                {
-                    dis[i] = dist[i][j];
-                    arc[i] = j;
-                }
-                if (d > dis[i])
-                {
-                    d = dis[i];
-                    k = i;
-                }
-            }
-        }
-        j = k;
-    }
-    //PGR_DBG("findEulerianPath: 3");
-
-    /*
-     * Preorder Tour of MST
-     */
-#if 0
-#define VISITED(x) jorder[x]
-#define NQ(x) arc[l++] = x
-#define DQ()  arc[--l]
-#define EMPTY (l==0)
-#endif
-    for (auto &val : jorder) {
-        val = 0;
-    }
-
-#if 0
-    for (i = 0; i < n; i++) VISITED(i) = 0;
+    size_t best_city = 0;
+    auto best_distance = std::numeric_limits<double>::max();
+#ifndef NDEBUG
+    bool found(false);
 #endif
 
-    size_t l = 0;
-    size_t k = 0;
-    d = 0;
-    arc[l++] = 0;
-    while (!(l == 0)) {
-        size_t i = arc[--l];
-
-        if (!jorder[i]) {
-            iorder[k++] = i;
-            jorder[i]  = 1;            
-            /* push all kids of i */
-            for (size_t j = 0; j < n - 1; j++) {
-                if (i == mst[j] % n)
-                    arc[l++] = mst[j] % n; 
-            }
-        }
-    }
-
-#if 0
-    k = 0; l = 0; d = 0; NQ(0);
-    while (!EMPTY)
-    {
-        i = DQ();
-        if (!VISITED(i))
-        {
-            iorder[k++] = i;
-            VISITED(i)  = 1;            
-            for (j = 0; j < n - 1; j++) /* push all kids of i */
-            {
-                if (i == mst[j]%n) NQ(mst[j]/n); 
-            }    
-        }
-    }
+    for (size_t i = 0; i < distance_row.size(); ++i) {
+        if (i == current_city) continue;
+        if (inserted.find(i) != inserted.end()) continue;
+        if (distance_row[i] <  best_distance) {
+            best_city = i;
+            best_distance = distance_row[i];
+#ifndef NDEBUG
+            found = true;
 #endif
-    //PGR_DBG("findEulerianPath: 4");
+        }
+    }
+    pgassertwm(found, err.str());
 
-    update(iorder);
-    return true;
+    invariant();
+    return best_city;
 }
 
+
+
+template < typename MATRIX >
+void
+TSP<MATRIX>::greedyInitial(size_t idx_start) {
+    invariant();
+
+    std::set<size_t> pending(best_tour.cities.begin(), best_tour.cities.end());
+    std::set<size_t> inserted;
+    std::vector<size_t> tour_to_be;
+
+    auto current_city = idx_start;
+
+#ifndef NDEBUG
+    std::ostringstream err;
+    auto ps(pending.size());
+#endif
+
+    pending.erase(idx_start);
+
+#ifndef NDEBUG
+    pgassert(pending.size() == (ps - 1));
+#endif
+
+    tour_to_be.push_back(current_city);
+    inserted.insert(current_city);
+
+    while (!pending.empty()) {
+        auto next_city = find_closest_city(current_city, inserted);
+        tour_to_be.push_back(next_city);
+        inserted.insert(next_city);
+
+#ifndef NDEBUG
+        auto ps(pending.size());
+        err << "before";
+        for (const auto p : pending) {
+            err << p << ",";
+        }
+#endif
+
+        pending.erase(next_city);
+
+#ifndef NDEBUG
+        err << "\nafter deleting" << next_city << ":\t";
+        for (const auto p : pending) {
+            err << p << ",";
+        }
+        pgassertwm(pending.size() == (ps - 1), err.str());
+#endif
+
+        current_city = next_city;
+    }
+
+    pgassert(tour_to_be.size() == n);
+    current_tour = Tour(tour_to_be);
+    current_cost = tourCost(current_tour);
+    update_if_best();
+    swapClimb();
+
+    invariant();
+    return;
+}
+
+
+
 /*
- * Local Search Heuristics
- *  b-------a        b       a
- *  .       .   =>   .\     /.
- *  . d...e .        . e...d .  
- *  ./     \.        .       .
- *  c       f        c-------f
+ *
+ * 0 1 2 3 4 5 6 7 8 9
+ *     p   f     l
+ * slides [4,5,6] to position p
+ *
+ * 0 1 4 5 6 2 3 7 8 9
+ *
+ *
+ * 0 1 2 3 4 5 6 7 8 9
+ *     f     l     p
+ * slides [2,3,4] to position p
+ *
+ * 0 1 6 7 2 3 4 5 8 9
+ *
+ *
  */
 
+template < typename MATRIX >
 double
-TSP::getThreeWayCost(Path p) {
-    size_t a, b, c, d, e, f;
+TSP<MATRIX>::getDeltaSlide(size_t place, size_t first, size_t last) const {
+    invariant();
+#ifndef NDEBUG
+    std::ostringstream err;
+    err  << "\tplace" << place
+        << "\tfirst" << first
+        << "\tlast" << last
+        << "\tn" << n;
+#endif
 
-    a = iorder[MOD(p[0] - 1, n)];
-    b = iorder[p[0]];
-    c = iorder[p[1]];
-    d = iorder[MOD(p[1] + 1, n)];
-    e = iorder[p[2]];
-    f = iorder[MOD(p[2] + 1, n)];
+    pgassertwm(place < first || place > last, err.str());
+    pgassertwm(first < last, err.str());
+    pgassertwm(last < n, err.str());
+    pgassertwm(place < n, err.str());
+    pgassertwm(first < n, err.str());
 
-    return (D(a,d) + D(e,b) + D(c,f) - D(a,b) - D(c,d) - D(e,f)); 
-    /* add cost between d and e if non symetric TSP */ 
-}
+    /*
+     * Initial state
+     * [...f] [f+1 ... l] [l+1 ...p] [p+1 ...]
+     *
+     * final state
+     * [...f] [l+1 ... p] [f+1 ...l] [p+1 ...]
+     *
+     *
+     * Initial state
+     *   [f+1 ... l]
+     *     :      :
+     * [...f]   [l+1 ...p] [p+1 ...]
+     *
+     * final state
+     *               [f+1 ... l]
+     *                :       :
+     * [...f] [l+1 ...p]   [p+1 ...]
+     *
+     */
 
-void
-TSP::doThreeWay(Path p) {
-    size_t count, m1, m2, m3, a, b, c, d, e, f;
+    auto cityP = current_tour.cities[place];
+    auto cityF = current_tour.cities[first];
+    auto cityL = current_tour.cities[last];
+    auto cityP1 = current_tour.cities[succ(place, n)];
+    auto cityF1 = current_tour.cities[succ(first, n)];
+    auto cityL1 = current_tour.cities[succ(last, n)];
 
-    a = MOD(p[0]-1,n);
-    b = p[0];
-    c = p[1];
-    d = MOD(p[1]+1,n);
-    e = p[2];
-    f = MOD(p[2]+1,n);    
+    auto delta(
+            distance(cityF, cityL1)
+            + distance(cityP, cityF1)
+            + distance(cityL, cityP1)
+            - distance(cityF, cityF1)
+            - distance(cityL, cityL1)
+            - distance(cityP, cityP1));
 
-    m1 = MOD(n + c - b, n) + 1;  /* num cities from b to c */
-    m2 = MOD(n + a - f, n) + 1;  /* num cities from f to a */
-    m3 = MOD(n + e - d, n) + 1;  /* num cities from d to e */
+#ifndef NDEBUG
+    Tour new_tour(current_tour);
+    new_tour.slide(place, first, last);
 
-    count = 0;
-    /* [b..c] */
-    for (size_t i = 0; i < m1; i++)
-        jorder[count++] = iorder[MOD(i + b, n)];
+    err << "\ncurrent_tour:";
+    for (const auto id : current_tour.cities) {
+        err << id << ", ";
+    }
 
-    /* [f..a] */
-    for (size_t i = 0; i < m2; i++)
-        jorder[count++] = iorder[MOD(i+f,n)];
+    err << "\nnew_tour:";
+    for (const auto id : new_tour.cities) {
+        err << id << ", ";
+    }
 
-    /* [d..e] */
-    for (size_t i = 0; i < m3; i++)
-        jorder[count++] = iorder[MOD(i+d,n)];
+    auto exactDelta = tourCost(new_tour) - tourCost(current_tour);
+    err << "\n"
+        << exactDelta
+        << " - " <<  delta
+        << " = "
+        << exactDelta - delta
+        << " = "
+        << std::fabs(exactDelta - delta);
+    pgassertwm(std::fabs((exactDelta - delta)) < epsilon, err.str());
+#endif
 
-    /* copy segment back into iorder */
-    for (size_t i = 0; i < n; i++) iorder[i] = jorder[i];
+    invariant();
+    return delta;
 }
 
 
 /*
- *   c..b       c..b
- *    \/    =>  |  |
- *    /\        |  |
- *   a  d       a  d
+ *       c..d            c..d
+ *       |  |     =>     |  |
+ *       |  |            |  |
+ *  b -- a  e --f   b -- e  a -- f
  *
  *   a b 1  2   .. n-1 n c d
  *   a c n n-1  ..  2  1 c d
  */
+template < typename MATRIX >
 double
-TSP::getReverseCost(Path p) {
+TSP<MATRIX>::getDeltaSwap(size_t posA, size_t posE) const {
+    invariant();
 
-    auto a = iorder[MOD(p[0] - 1, n)];
-    auto b = iorder[p[0]];
-    auto c = iorder[p[1]];
-    auto d = iorder[MOD(p[1] + 1, n)];
+    if (succ(posE, n ) == posA) std::swap(posA, posE);
+    if (succ(posA, n) == posE) {
+        auto b = current_tour.cities[pred(posA, n)];
+        auto a = current_tour.cities[posA];
 
-    return (D(d,b) + D(c,a) - D(a,b) - D(c,d));
-    /* add cost between c and b if non symetric TSP */ 
-}
-
-void
-TSP::doReverse(Path p) {
-
-    /* reverse path b...c */
-    size_t nswaps = (MOD(p[1] - p[0], n) + 1) / 2;
-    for (size_t i = 0; i < nswaps; i++) {
-        size_t first = MOD(p[0]+i, n);
-        size_t last  = MOD(p[1]-i, n);
-        std::swap(iorder[first], iorder[last]);
-#if 0
-        tmp   = iorder[first];
-        iorder[first] = iorder[last];
-        iorder[last]  = tmp;
-#endif
+        auto e = current_tour.cities[posE];
+        auto f = current_tour.cities[succ(posE, n)];
+        return distance(b, e) + distance(e, a) + distance(a, f)
+            - distance(b, a) - distance(a, e)  - distance(e, f);
     }
+
+    auto b = current_tour.cities[pred(posA, n)];
+    auto a = current_tour.cities[posA];
+    auto c = current_tour.cities[succ(posA, n)];
+
+    auto d = current_tour.cities[pred(posE, n)];
+    auto e = current_tour.cities[posE];
+    auto f = current_tour.cities[succ(posE, n)];
+
+#ifndef NDEBUG
+    auto delta = distance(b, e) + distance(e, c) + distance(d, a) + distance(a, f)
+        - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f);
+    auto new_tour(current_tour);
+    new_tour.swap(posA, posE);
+    auto exactDelta = tourCost(new_tour) - tourCost(current_tour);
+    std::ostringstream log;
+    log << exactDelta
+        << " - " <<  delta
+        << " = "
+        << exactDelta - delta
+        << " = "
+        << std::fabs(exactDelta - delta);
+
+    pgassertwm(std::fabs((exactDelta - delta)) < epsilon, log.str());
+#endif
+
+    invariant();
+    return  distance(b, e) + distance(e, c) + distance(d, a) + distance(a, f)
+        - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f);
 }
 
+/*
+ *   ..A                    C
+ *       [                    )
+ *   ..a  b 1  2   .. n-1 n c d ..
+ *   ..a  c n n-1  ..  2  1 b d ..
+ */
+template < typename MATRIX >
+double
+TSP<MATRIX>::getDeltaReverse(size_t posA, size_t posC) const {
+    invariant();
 
+    if (posA == (posC - 1)) return 0;
+    auto a = current_tour.cities[posA];
+    auto b = current_tour.cities[succ(posA, n)];
+
+    auto c = current_tour.cities[posC];
+    auto d = current_tour.cities[succ(posC, n)];
+
+
+#ifndef NDEBUG
+    auto delta = distance(a, c) + distance(b, d) - distance(a, b) - distance(c, d);
+    auto new_tour(current_tour);
+    new_tour.reverse(posA, posC);
+    auto exactDelta = tourCost(new_tour) - tourCost(current_tour);
+
+    std::ostringstream log;
+    log << "exactDelta(" << exactDelta
+        << ") - delta(" <<  delta
+        << ") = "
+        << exactDelta - delta
+        << " = "
+        << (exactDelta - delta)
+        << " epsilon = " << epsilon;
+    pgassertwm(std::fabs((exactDelta - delta)) < epsilon, log.str());
+#endif
+
+    invariant();
+    return  distance(a, c) + distance(b, d) - distance(a, b) - distance(c, d);
+}
+
+template < typename MATRIX >
 void
-TSP::annealing() {
-    Path   p;
-    size_t    numOnPath, numNotOnPath;
+TSP<MATRIX>::swapClimb() {
+    invariant();
+    pgassert(n > 2);
 
-    double pathCost(dist.pathCost(iorder));
-    const double T_INIT = 100.0;
-    const double FINAL_T = 0.1;
-    const double COOLING = 0.9; /* to lower down T (< 1) */
-    const size_t TRIES_PER_T(500 * n);
-    const size_t IMPROVED_PATH_PER_T = 60 * n;
+    //    auto first = std::rand() % n;
+    //    for (size_t first = std::rand() % n; first < n; first++) {
+    for (size_t first = 0; first < n; first++) {
+        for (size_t last = first + 1; last < n; last++) {
+            pgassert(first < last);
+
+            auto energyChange = getDeltaSwap(first, last);
+
+            if (energyChange < 0 && epsilon < std::fabs(energyChange)) {
+                ++swap_count;
+                current_cost += energyChange;
+                current_tour.swap(first, last);
+                update_if_best();
+            }
+        }
+    }
+    invariant();
+}
+
+template < typename MATRIX >
+void
+TSP<MATRIX>::annealing(
+        double temperature,
+        double final_temperature,
+        double cooling_factor,
+        int64_t tries_per_temperature,
+        int64_t max_changes_per_temperature,
+        int64_t max_consecutive_non_changes,
+        bool randomize,
+        double time_limit) {
+    invariant();
+    clock_t start_time(clock());
+
+    if (randomize) {
+        std::srand(static_cast<unsigned int>(time(NULL)));
+    } else {
+        std::srand(1);
+    }
+
+
+
 
     /* annealing schedule */
-    for (double T = T_INIT; FINAL_T < T; T *= COOLING) {
-        size_t pathchg = 0;
-        for (size_t j = 0; j < TRIES_PER_T; j++) {
-            do {
-                p[0] = rand(n);
-                p[1] = rand(n);
-                /* non-empty path */
-                if (p[0] == p[1]) 
-                    p[1] = MOD(p[0] + 1, n);
+    for (; final_temperature < temperature; temperature *= cooling_factor) {
+        invariant();
 
-                numOnPath = MOD(p[1] - p[0], n) + 1;
-                numNotOnPath = n - numOnPath;
-            } while (numOnPath < 2 || numNotOnPath < 2); /* non-empty path */
+        log << "\nCycle(" << temperature <<") ";
 
-            if (rand(2)) {
-                /*  threeWay */
-                do {
-                    p[2] = MOD(rand(numNotOnPath) + p[1] + 1, n);
-                } while (p[0] == MOD(p[2] + 1, n)); /* avoids a non-change */
+        /*
+           how many times the tour changed in current temperature
+           */
+        int64_t pathchg = 0;
+        size_t enchg = 0;
+        int64_t non_change = 0;
+        for (int64_t j = 0; j < tries_per_temperature; j++) {
+            ++non_change;
 
-                auto energyChange = getThreeWayCost(p);
-                // if (energyChange < 0 || RREAL < exp(-energyChange / T) )
-                if (energyChange < 0 || std::rand() < exp(-energyChange / static_cast<double>(T)) ) {
-                    pathchg++;
-                    pathCost += energyChange;
-                    doThreeWay(p);
-                }
+            auto which = rand(2);
+            // which = 1;
+            switch (which) {
+                case 0: {
+                            /* reverse */
+                            pgassert(n > 2);
 
-            } else {
-                /* path Reverse */
-                auto energyChange = getReverseCost(p);
-                if (energyChange < 0 || std::rand() < exp(-energyChange / static_cast<double>(T)) ) {
-                    pathchg++;
-                    pathCost += energyChange;
-                    doReverse(p); 
-                }
+                            auto c1 = std::rand() % n;
+                            auto c2 = std::rand() % n;
+
+                            if (c1 == c2) c2 = succ(c2, n);
+                            if (c1 == (c2 - 1)) c2 = succ(c2, n);
+                            if (c1 > c2) std::swap(c1, c2);
+
+                            pgassert(c1 != c2);
+                            pgassert(c1 < n && c2 < n);
+                            pgassert(c1 < c2);
+
+                            auto energyChange = getDeltaReverse(c1, c2);
+
+                            if ( (energyChange < 0 && epsilon < std::fabs(energyChange))
+                                    || (0 < energyChange
+                                        &&  (static_cast<double>(std::rand()) / static_cast<double>(RAND_MAX))  < exp(-energyChange / temperature))) {
+                                if (energyChange < 0) ++enchg;
+                                ++reverse_count;
+                                ++pathchg;
+                                non_change = 0;
+                                current_cost += energyChange;
+                                current_tour.reverse(c1, c2);
+                                update_if_best();
+                            }
+                        }
+                        break;
+                case 1: {
+                            /* slide */
+                            pgassert(n > 3);
+
+                            auto first = std::rand() % n;
+                            auto last = std::rand() % n;
+
+                            if (first == last) last = succ(last, n);
+                            if (first > last) std::swap(first, last);
+                            if (first == 0 && last == (n - 1)) {
+                                first = succ(first, n);
+                            }
+
+                            pgassert((n - (last - first) - 1) > 0);
+                            auto place = std::rand() % (n - (last - first) - 1);
+                            place = place < first?  place :
+                                last + (place - first) + 1;
+
+
+                            pgassert((place < first || place > last) && (first < last));
+
+                            auto energyChange = getDeltaSlide(place, first, last);
+
+                            if ((energyChange < 0 && epsilon < std::fabs(energyChange))
+                                    || (0 < energyChange
+                                        &&  (static_cast<double>(std::rand()) / static_cast<double>(RAND_MAX))  < exp(-energyChange / temperature))) {
+                                if (energyChange < 0) ++enchg;
+                                ++slide_count;
+                                ++pathchg;
+                                non_change = 0;
+                                current_cost += energyChange;
+                                current_tour.slide(place, first, last);
+                                update_if_best();
+                            }
+                        }
+                        break;
+            }  // switch
+
+
+            if (max_changes_per_temperature < pathchg
+                    && max_consecutive_non_changes < non_change ) {
+                break;
             }
-            // if the new length is better than best then save it as best
-            update(iorder);
-#if 0
-            if (pathlen < tsp->bestlen) {
-                tsp->bestlen = pathlen;
-                for (i=0; i<tsp->n; i++) tsp->border[i] = tsp->iorder[i];
-            }
-#endif
-            if (pathchg > IMPROVED_PATH_PER_T) break; /* finish early */
-        }   
-        // PGR_DBG("T:%f L:%f B:%f C:%d", T, pathlen, tsp->bestlen, pathchg);
+        }  // for tries per temperature
+
+        swapClimb();
+        clock_t current_time(clock());
+        double elapsed_time = static_cast<double>(current_time - start_time) / CLOCKS_PER_SEC;
+        if (time_limit < elapsed_time) {
+            break;
+        }
+        log << "\ttotal changes =" << pathchg
+            << "\t" << enchg << " were because  delta energy < 0";
         if (pathchg == 0) break;   /* if no change then quit */
-    }
+    }  // for temperatures
 }
+
+}  // namespace tsp
+}  // namespace pgrouting
 
