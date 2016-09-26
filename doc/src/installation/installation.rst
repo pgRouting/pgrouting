@@ -75,10 +75,9 @@ Using a terminal window:
 
 * To be up-to-date with changes and improvements
 
-
 .. code-block:: bash
 
-sudo apt-get update & sudo apt-get upgrade
+    sudo apt-get update & sudo apt-get upgrade
 
 
 RHEL/CentOS
