@@ -9,7 +9,7 @@ version: 2.3.{build}
 
 branches:
   only:
-    - release/2.3.0 
+    - master
     - develop
 
 image: Visual Studio 2013
