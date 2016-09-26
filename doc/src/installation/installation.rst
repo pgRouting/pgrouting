@@ -51,14 +51,6 @@ pgRouting on Ubuntu can be installed using packages from a PostgreSQL repository
 
 Using a terminal window:
 
-* Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.
-
-.. code-block:: bash
-
-Ubuntu packages are available in postgreSQL repositories.
-
-Using a terminal window:
-
 .. code-block:: bash
 
     # Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.
