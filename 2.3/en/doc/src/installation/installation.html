@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.3.0 (master)',
+        VERSION:     '2.3.0 (release/2.3.0)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -81,25 +81,23 @@ Contact the specific OS package maintainer for details.</p>
 <ul class="simple">
 <li>Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre>sudo sh -c <span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li>Import the repository key, update the package lists</li>
-</ul>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt install wget ca-certificates
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt update
-</pre></div>
-</div>
-<ul class="simple">
-<li>Install pgrouting based on your postgres Installation: for this example is 9.3</li>
-</ul>
 <div class="highlight-bash"><div class="highlight"><pre>
 </pre></div>
 </div>
-<p>sudo apt install postgresql-9.3-pgrouting</p>
-<p>This will also install all required packages such as PostgreSQL and PostGIS if not installed yet.</p>
+<p>Ubuntu packages are available in postgreSQL repositories.</p>
+<p>Using a terminal window:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.</span>
+sudo sh -c <span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
+
+<span class="c"># Import the repository key, update the package lists</span>
+sudo apt-get install wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+
+<span class="c"># Install pgrouting based on your postgres Installation: for this example is 9.3</span>
+sudo apt-get install postgresql-9.3-pgrouting
+</pre></div>
+</div>
 <ul class="simple">
 <li>To be up-to-date with changes and improvements</li>
 </ul>
