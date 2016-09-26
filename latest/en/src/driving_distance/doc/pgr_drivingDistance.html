@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.2)</title>
+    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="up" title="Driving Distance" href="drivingDistance.html" />
     <link rel="next" title="pgr_alphaShape" href="../../alpha_shape/doc/pgr_alphaShape.html" />
     <link rel="prev" title="Driving Distance" href="drivingDistance.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>pgr_drivingDistance</span></h2>
       </div>
       <div class="topnav">
@@ -55,7 +55,7 @@
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_drivingDistance</span></tt> - Returns the driving distance from a start node.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside3.jpeg" src="../../../_images/boost-inside3.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside6.jpeg" src="../../../_images/boost-inside6.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 </div>
@@ -63,50 +63,105 @@
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>Using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value <tt class="docutils literal"><span class="pre">distance</span></tt>.
 The edges extracted will conform the corresponding spanning tree.</p>
-<p class="rubric" id="index-0">The minimal signature:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_v</span> <span class="nb">bigint</span><span class="p">,</span> <span class="n">distance</span> <span class="n">float8</span><span class="p">)</span>
-  <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
-</pre></div>
 </div>
-<p class="rubric" id="index-1">Driving Distance from a single starting point:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_vid</span> <span class="nb">bigint</span><span class="p">,</span> <span class="n">distance</span> <span class="n">float8</span><span class="p">,</span> <span class="n">directed</span> <span class="nb">boolean</span><span class="p">)</span>
-  <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="rubric" id="index-2">Driving Distance from a multiple starting points:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="n">start_vids</span> <span class="n">anyarray</span><span class="p">,</span> <span class="n">distance</span> <span class="n">float8</span><span class="p">,</span>
-      <span class="n">directed</span> <span class="nb">boolean</span> <span class="k">default</span> <span class="k">true</span><span class="p">,</span>
-      <span class="n">equicost</span> <span class="nb">boolean</span> <span class="k">default</span> <span class="k">false</span><span class="p">)</span>
-  <span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+<span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
+<span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
+
+<span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="p">[</span><span class="n">start_vid</span><span class="p">,]</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="description-of-the-sql-query">
-<h2>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-use">
+<span id="index-0"></span><h3>Minimal Use<a class="headerlink" href="#minimal-use" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="driving-distance-from-a-single-starting-vertex">
+<span id="index-1"></span><h3>Driving Distance From A Single Starting Vertex<a class="headerlink" href="#driving-distance-from-a-single-starting-vertex" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="driving-distance-from-multiple-starting-vertices">
+<span id="index-2"></span><h3>Driving Distance From Multiple Starting Vertices<a class="headerlink" href="#driving-distance-from-multiple-starting-vertices" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_drivingDistance</span><span class="p">(</span><span class="n">edges_sql</span><span class="p">,</span> <span class="n">start_vids</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">directed</span><span class="p">,</span> <span class="n">equicost</span><span class="p">)</span>
+<span class="k">RETURNS</span> <span class="k">SET</span> <span class="k">OF</span> <span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">start_vid</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">agg_cost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-edges-sql-query">
+<h3>Description of the edges_sql query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body"><p class="first">a SQL query, which should return a set of rows with the following columns:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span> <span class="p">[,</span><span class="n">reverse_cost</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">edge_table</span>
-</pre></div>
-</div>
-<table class="last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">id:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the edge.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">source:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the source vertex of the edge.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">target:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt> identifier of the target vertex of the edge.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt> value of the edge traversal cost. A negative cost will prevent the edge (<tt class="docutils literal"><span class="pre">source</span></tt>, <tt class="docutils literal"><span class="pre">target</span></tt>) from being inserted in the graph.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">reverse_cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt> (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (<tt class="docutils literal"><span class="pre">target</span></tt>, <tt class="docutils literal"><span class="pre">source</span></tt>) from being inserted in the graph.</td>
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
 </tr>
 </tbody>
 </table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge  <cite>(source, target)</cite></dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>-1</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -116,58 +171,103 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">smallint, int, bigint</td>
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
 </tr>
-<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">smallint, int, bigint, real, float</td>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="9%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">sql:</th><td class="field-body">SQL query as decribed above.</td>
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>SQL query as described above.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">start_v:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the starting vertex.</td>
+<tr class="row-odd"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the starting vertex.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">start_v:</th><td class="field-body"><tt class="docutils literal"><span class="pre">array[ANY-INTEGER]</span></tt> array of id of starting vertices.</td>
+<tr class="row-even"><td><strong>start_vids</strong></td>
+<td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
+<td>Array of identifiers of starting vertices.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">distance:</th><td class="field-body"><tt class="docutils literal"><span class="pre">FLOAT</span></tt> Upper limit for the inclusion of the node in the result.</td>
+<tr class="row-odd"><td><strong>distance</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>Upper limit for the inclusion of the node in the result.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">directed:</th><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> (optional). When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as Undirected. Default is <tt class="docutils literal"><span class="pre">true</span></tt> which considers the graph as Directed.</td>
+<tr class="row-even"><td><strong>directed</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional). When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as Undirected. Default is <tt class="docutils literal"><span class="pre">true</span></tt> which considers the graph as Directed.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">equicost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">boolean</span></tt> (optional). When <tt class="docutils literal"><span class="pre">true</span></tt> the node will only appear in the closest <tt class="docutils literal"><span class="pre">start_v</span></tt> list.  Default is <tt class="docutils literal"><span class="pre">false</span></tt> which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.</td>
+<tr class="row-odd"><td><strong>equicost</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional). When <tt class="docutils literal"><span class="pre">true</span></tt> the node will only appear in the closest <tt class="docutils literal"><span class="pre">start_vid</span></tt> list.  Default is <tt class="docutils literal"><span class="pre">false</span></tt> which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(seq</span> <span class="pre">[,</span> <span class="pre">start_v],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">seq:</th><td class="field-body"><tt class="docutils literal"><span class="pre">INT</span></tt> row sequence.</td>
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Sequential value starting from <strong>1</strong>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">start_v:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the starting vertex. Used when multiple starting vetrices are in the query.</td>
+<tr class="row-odd"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td>Identifier of the starting vertex.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">node:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the node within the limits from <tt class="docutils literal"><span class="pre">start_v</span></tt>.</td>
+<tr class="row-even"><td><strong>node</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the node in the path within the limits from <tt class="docutils literal"><span class="pre">start_vid</span></tt>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">edge:</th><td class="field-body"><tt class="docutils literal"><span class="pre">BIGINT</span></tt> id of the edge used to arrive to <tt class="docutils literal"><span class="pre">node</span></tt>. <tt class="docutils literal"><span class="pre">0</span></tt> when the <tt class="docutils literal"><span class="pre">node</span></tt> is the <tt class="docutils literal"><span class="pre">start_v</span></tt>.</td>
+<tr class="row-odd"><td><strong>edge</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the edge used to arrive to <tt class="docutils literal"><span class="pre">node</span></tt>. <tt class="docutils literal"><span class="pre">0</span></tt> when the <tt class="docutils literal"><span class="pre">node</span></tt> is the <tt class="docutils literal"><span class="pre">start_vid</span></tt>.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">FLOAT</span></tt> cost to traverse <tt class="docutils literal"><span class="pre">edge</span></tt>.</td>
+<tr class="row-even"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>Cost to traverse <tt class="docutils literal"><span class="pre">edge</span></tt>.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">agg_cost:</th><td class="field-body"><tt class="docutils literal"><span class="pre">FLOAT</span></tt> total cost from <tt class="docutils literal"><span class="pre">start_v</span></tt> to <tt class="docutils literal"><span class="pre">node</span></tt>.</td>
+<tr class="row-odd"><td><strong>agg_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>Aggregate cost from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">node</span></tt>.</td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
+<div class="section" id="additional-examples">
+<h2>Additional Examples<a class="headerlink" href="#additional-examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h2>
+<h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig1"><em>Graph 1: Directed, with cost and reverse cost</em></a></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
         &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
@@ -251,7 +351,7 @@ SELECT * FROM pgr_drivingDistance(
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h2>
+<h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig2"><em>Graph 2: Undirected, with cost and reverse cost</em></a></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
         &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
@@ -341,7 +441,7 @@ SELECT * FROM pgr_drivingDistance(
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-column">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h2>
+<h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-column" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig3"><em>Graph 3: Directed, with cost</em></a></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
         &#39;SELECT id, source, target, cost FROM edge_table&#39;,
@@ -401,7 +501,7 @@ SELECT * FROM pgr_drivingDistance(
 </div>
 </div>
 <div class="section" id="examples-for-queries-marked-as-undirected-with-cost-column">
-<h2>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h2>
+<h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">undirected</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> column<a class="headerlink" href="#examples-for-queries-marked-as-undirected-with-cost-column" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="../../../doc/src/developer/sampledata.html#fig4"><em>Graph 4: Undirected, with cost</em></a></p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
         &#39;SELECT id, source, target, cost FROM edge_table&#39;,
@@ -486,18 +586,14 @@ SELECT * FROM pgr_drivingDistance(
 (12 rows)
 </pre></div>
 </div>
-<p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
-<p class="rubric">History</p>
-<ul class="simple">
-<li>Renamed in version 2.0.0</li>
-<li>Added functionality in version 2.1</li>
-</ul>
+</div>
 </div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="../../alpha_shape/doc/pgr_alphaShape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
 <li><a class="reference internal" href="../../alpha_shape/doc/pgr_pointsAsPolygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
+<li><a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -522,8 +618,8 @@ SELECT * FROM pgr_drivingDistance(
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -9,7 +9,7 @@
 
 .. _pgr_withPoints:
 
-pgr_withPoints
+pgr_withPoints - Proposed
 ===============================================================================
 
 
@@ -18,9 +18,10 @@ Name
 
 ``pgr_withPoints`` - Returns the shortest path in a graph with additional temporary vertices.
 
-.. note::  This is a proposed function for version 2.3.
 
-     - Is not officially in the version 2.2 release.
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -61,7 +62,7 @@ The main Characteristics are:
     - start_vid ascending
     - end_vid ascending
 
-  - Runing time: :math:`O(|start\_vids|∗(V \log V + E))`
+  - Running time: :math:`O(|start\_vids|∗(V \log V + E))`
 
 
 Signature Summary
@@ -78,13 +79,13 @@ Signature Summary
 
 
 Signatures
-==========
+-------------------
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vid, end_vid) -- proposed
+    single: withPoints(Minimal Use) - Proposed
 
-Minimal signature
------------------
+Minimal Use
+.....................................................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -104,10 +105,10 @@ The minimal signature:
    :end-before: --e2
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details) -- proposed
+    single: withPoints(One to One) - Proposed
 
 One to One
-----------
+.....................................................................
 
 
 .. code-block:: none
@@ -123,12 +124,13 @@ One to One
    :start-after: --e2
    :end-before: --e3
 
+
+
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details) -- proposed
+    single: withPoints(One to Many) - Proposed
 
 One to Many
------------
-
+.....................................................................
 
 .. code-block:: none
 
@@ -143,12 +145,13 @@ One to Many
    :start-after: --e3
    :end-before: --e4
 
+
+
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details) -- proposed
+    single: withPoints(Many to One) - Proposed
 
 Many to One
------------
-
+.....................................................................
 
 .. code-block:: none
 
@@ -164,10 +167,10 @@ Many to One
    :end-before: --e5
 
 .. index::
-    single: withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details) -- proposed
+    single: withPoints(Many to Many) - Proposed
 
 Many to Many
-------------
+.....................................................................
 
 
 .. code-block:: none
@@ -187,24 +190,29 @@ Many to Many
 
 
 Description of the Signatures
-=============================
+---------------------------------
 
 ..
     description of the sql queries
 
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-.. include:: withPoints_queries.txt 
+.. include:: ../../common/src/points_input.h
+    :start-after: points_sql_start
+    :end-before: points_sql_end
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+.....................................................................
 
 
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as decribed above.
-**points_sql**   ``TEXT``               Points SQL query as decribed above.
+**edges_sql**    ``TEXT``               Edges SQL query as described above.
+**points_sql**   ``TEXT``               Points SQL query as described above.
 **start_vid**    ``ANY-INTEGER``        Starting vertex identifier. When negative: is a point's pid.
 **end_vid**      ``ANY-INTEGER``        Ending vertex identifier. When negative: is a point's pid.
 **start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.
@@ -221,7 +229,7 @@ Parameter        Type                   Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+.....................................................................
 
 Returns set of ``(seq, [path_seq,] [start_vid,] [end_vid,] node, edge, cost, agg_cost)``
 

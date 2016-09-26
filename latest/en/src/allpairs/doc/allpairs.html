@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>All pairs &mdash; pgRouting Manual (2.2)</title>
+    <title>All pairs &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="up" title="Routing Functions" href="../../routingFunctions.html" />
     <link rel="next" title="pgr_floydWarshall" href="pgr_floydWarshall.html" />
     <link rel="prev" title="Routing Functions" href="../../routingFunctions.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>All pairs</span></h2>
       </div>
       <div class="topnav">
@@ -60,9 +60,8 @@
 </div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
-</div>
 <div class="section" id="performance">
-<h1>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h1>
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The following tests:</dt>
 <dd><ul class="first last simple">
@@ -75,7 +74,7 @@
 </dd>
 </dl>
 <div class="section" id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>The following data was used</p>
 <div class="highlight-none"><div class="highlight"><pre>BBOX=&quot;-122.8,45.4,-122.5,45.6&quot;
 wget --progress=dot:mega -O &quot;sampledata.osm&quot; &quot;http://www.overpass-api.de/api/xapi?*[bbox=${BBOX}][@meta]&quot;
@@ -90,9 +89,15 @@ osm2pgrouting -f sampledata.osm -d portland -s 0
 </div>
 </div>
 <div class="section" id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="test-one">
-<h3>Test One<a class="headerlink" href="#test-one" title="Permalink to this headline">¶</a></h3>
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Test:</th><td class="field-body">One</td>
+</tr>
+</tbody>
+</table>
 <p>This test is not with a bounding box
 The density of the passed graph is extremely low.
 For each &lt;SIZE&gt; 30 tests were executed to get the average
@@ -284,9 +289,14 @@ SELECT count(*) FROM pgr_johnson(
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="test-two">
-<h3>Test Two<a class="headerlink" href="#test-two" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Test:</th><td class="field-body">Two</td>
+</tr>
+</tbody>
+</table>
 <p>This test is with a bounding box
 The density of the passed graph higher than of the Test One.
 For each &lt;SIZE&gt; 30 tests were executed to get the average
@@ -462,9 +472,8 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 </tbody>
 </table>
 </div>
-</div>
 <div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a></li>
 <li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a></li>
@@ -475,6 +484,7 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
 <li><a class="reference internal" href="../../../genindex.html"><em>Index</em></a></li>
 <li><a class="reference internal" href="../../../search.html"><em>Search Page</em></a></li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -493,8 +503,8 @@ SELECT count(*) FROM pgr_johnson(&lt;edge query&gt;)
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

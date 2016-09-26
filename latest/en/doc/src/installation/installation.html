@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; pgRouting Manual (2.2)</title>
+    <title>Installation &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,13 +25,13 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="next" title="Build Guide" href="build.html" />
     <link rel="prev" title="Introduction" href="../introduction/introduction.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>Installation</span></h2>
       </div>
       <div class="topnav">
@@ -51,7 +51,13 @@
   <div class="section" id="installation">
 <span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>This is a basic guide to download and install pgRouting.</p>
-<p>Additional notes can be found in <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation Notes</a></p>
+<p>The specific instructions for any given OS distribution may vary depending on the various package maintainers.
+Contact the specific OS package maintainer for details.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following are only general instructions.</p>
+</div>
+<p>Additional notes and corrections can be found in <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation wiki</a></p>
 <p>Also PostGIS provides some information about installation in this <a class="reference external" href="http://www.postgis.us/presentations/postgis_install_guide_22.html">Install Guide</a></p>
 <div class="section" id="download">
 <h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
@@ -60,7 +66,7 @@
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
 <p>Winnie Bot Builds:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://postgis.net/windows_downloads">Winnie PostgreSQL 9.2-9.5 32-bit/64-bit</a></li>
+<li><a class="reference external" href="http://postgis.net/windows_downloads">Winnie Bot Builds</a></li>
 </ul>
 <p>Production Builds:</p>
 <ul class="simple">
@@ -68,23 +74,39 @@
 <li>Can also get PostGIS Bundle from <a class="reference external" href="http://download.osgeo.org/postgis/windows/">http://download.osgeo.org/postgis/windows/</a></li>
 </ul>
 </div>
-<div class="section" id="ubuntu-debian">
-<h3>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this headline">¶</a></h3>
-<p>Ubuntu packages are available in postgreSQL repositories.</p>
+<div class="section" id="ubuntu">
+<h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h3>
+<p>pgRouting on Ubuntu can be installed using packages from a PostgreSQL repository:</p>
 <p>Using a terminal window:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.</span>
-sudo sh -c <span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
-
-<span class="c"># Import the repository key, update the package lists</span>
-sudo apt-get install wget ca-certificates
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
-
-<span class="c"># Install pgrouting based on your postgres Installation: for this example is 9.3</span>
-sudo apt-get install postgresql-9.3-pgrouting
+<ul class="simple">
+<li>Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>sudo sh -c <span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
 </pre></div>
 </div>
-<p>This will also install all required packages such as postgreSQL and postGIS if not installed yet.</p>
+<ul class="simple">
+<li>Import the repository key, update the package lists</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt install wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt update
+</pre></div>
+</div>
+<ul class="simple">
+<li>Install pgrouting based on your postgres Installation: for this example is 9.3</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>
+</pre></div>
+</div>
+<p>sudo apt install postgresql-9.3-pgrouting</p>
+<p>This will also install all required packages such as PostgreSQL and PostGIS if not installed yet.</p>
+<ul class="simple">
+<li>To be up-to-date with changes and improvements</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>
+</pre></div>
+</div>
+<p>sudo apt-get update &amp; sudo apt-get upgrade</p>
 </div>
 <div class="section" id="rhel-centos">
 <h3>RHEL/CentOS<a class="headerlink" href="#rhel-centos" title="Permalink to this headline">¶</a></h3>
@@ -165,10 +187,12 @@ make install clean
 <h2>Upgrading the database<a class="headerlink" href="#upgrading-the-database" title="Permalink to this headline">¶</a></h2>
 <p>To upgrade pgRouting to version 2.x.y use the following command:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.x.y&quot;</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>For example to upgrade to 2.2.3</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.2.3&quot;</span><span class="p">;</span>
+
+<span class="k">For</span> <span class="n">example</span> <span class="k">to</span> <span class="n">upgrade</span> <span class="k">to</span> <span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">3</span>
+
+<span class="p">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="k">sql</span>
+
+<span class="k">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="k">UPDATE</span> <span class="k">TO</span> <span class="ss">&quot;2.2.3&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -189,8 +213,8 @@ make install clean
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

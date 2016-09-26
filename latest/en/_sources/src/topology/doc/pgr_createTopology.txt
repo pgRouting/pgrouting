@@ -12,10 +12,6 @@
 pgr_createTopology
 ===============================================================================
 
-.. index:: 
-	single: pgr_createTopology(text,double precision,text,text,text,text,text)
-	module: common
-
 Name
 -------------------------------------------------------------------------------
 
@@ -29,6 +25,9 @@ The function returns:
 
   - ``OK`` after the network topology has been built and the vertices table created.
   - ``FAIL`` when the network topology was not built due to an error. 
+
+.. index:: 
+	single: createTopology(Complete Signature)
 
 .. code-block:: none
 
@@ -88,7 +87,7 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requirment of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
+The vertices table is a requirement of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
 
 The structure of the vertices table is:
 
@@ -134,7 +133,7 @@ We get the same result AS the simplest way to use the function.
 
 .. rubric:: When using the named notation
 
-Parameters defined with a default value can be omited, as long as the value matches the default
+Parameters defined with a default value can be omitted, as long as the value matches the default
 And The order of the parameters would not matter.
 
 .. literalinclude:: doc-pgr_createTopology.queries

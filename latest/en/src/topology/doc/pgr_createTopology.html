@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_createTopology &mdash; pgRouting Manual (2.2)</title>
+    <title>pgr_createTopology &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="up" title="Topology Functions" href="topology.html" />
     <link rel="next" title="pgr_createVerticesTable" href="pgr_createVerticesTable.html" />
     <link rel="prev" title="Topology Functions" href="topology.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>pgr_createTopology</span></h2>
       </div>
       <div class="topnav">
@@ -52,7 +52,7 @@
   <div class="section" id="pgr-createtopology">
 <span id="pgr-create-topology"></span><h1>pgr_createTopology<a class="headerlink" href="#pgr-createtopology" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_createTopology</span></tt> — Builds a network topology based on the geometry information.</p>
 </div>
 <div class="section" id="synopsis">
@@ -64,7 +64,7 @@
 <li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the network topology was not built due to an error.</li>
 </ul>
 </div></blockquote>
-<div class="highlight-none"><div class="highlight"><pre>varchar pgr_createTopology(text edge_table, double precision tolerance,
+<div class="highlight-none" id="index-0"><div class="highlight"><pre>varchar pgr_createTopology(text edge_table, double precision tolerance,
                    text the_geom:=&#39;the_geom&#39;, text id:=&#39;id&#39;,
                    text source:=&#39;source&#39;,text target:=&#39;target&#39;,
                    text rows_where:=&#39;true&#39;, boolean clean:=false)
@@ -139,7 +139,7 @@ all rows that where <tt class="docutils literal"><span class="pre">source</span>
 </ul>
 </div></blockquote>
 <p class="rubric">The Vertices Table</p>
-<p>The vertices table is a requirment of the <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> functions.</p>
+<p>The vertices table is a requirement of the <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> and the <a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a> functions.</p>
 <p>The structure of the vertices table is:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -222,7 +222,7 @@ NOTICE:  Unexpected error raise_exception
 </div>
 </div>
 <p class="rubric">When using the named notation</p>
-<p>Parameters defined with a default value can be omited, as long as the value matches the default
+<p>Parameters defined with a default value can be omitted, as long as the value matches the default
 And The order of the parameters would not matter.</p>
 <div class="highlight-python"><div class="highlight"><pre>SELECT  pgr_createTopology(&#39;edge_table&#39;, 0.001,
         the_geom:=&#39;the_geom&#39;, id:=&#39;id&#39;, source:=&#39;source&#39;, target:=&#39;target&#39;);
@@ -441,8 +441,8 @@ NOTICE:  ----------------------------------------------
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

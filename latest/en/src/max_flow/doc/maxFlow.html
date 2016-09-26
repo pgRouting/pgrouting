@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Maximum Flow &mdash; pgRouting Manual (2.3)</title>
+    
+    <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.3.0 (master)',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
+    <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
+    <link rel="next" title="pgr_maxFlowPushRelabel Proposed" href="pgr_maxFlowPushRelabel.html" />
+    <link rel="prev" title="pgr_contractGraph - Proposed" href="../../contraction/doc/pgr_contractGraph.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
+          <span>pgRouting Manual (2.3)</span></a></h1>
+        <h2 class="heading"><span>Maximum Flow</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../contraction/doc/pgr_contractGraph.html">pgr_contractGraph - Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_maxFlowPushRelabel.html">pgr_maxFlowPushRelabel Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="maximum-flow">
+<span id="maxflow"></span><h1>Maximum Flow<a class="headerlink" href="#maximum-flow" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Push and relabel algorithm implementation for maximum flow.</li>
+<li><a class="reference internal" href="pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Edmonds and Karp algorithm implementation for maximum flow.</li>
+<li><a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Boykov and Kolmogorov algorithm implementation for maximum flow.</li>
+</ul>
+</div></blockquote>
+<p>The maximum flow through the graph is guaranteed to be the same with all implementations,
+but the actual flow through each edge may vary.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="problem-definition">
+<h1>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h1>
+<p>A flow network is a directed graph where each edge has a capacity and a flow.
+The flow through an edge must not exceed the capacity of the edge.
+Additionally, the incoming and outgoing flow of a node must be equal except the for source which only has outgoing flow, and the destination(sink) which only has incoming flow.</p>
+<p>Maximum flow algorithms calculate the maximum flow through the graph and the flow of each edge.</p>
+<p>Given the following query:</p>
+<p>pgr_maxFlow <span class="math">\((edges\_sql, source\_vertex, sink\_vertex)\)</span></p>
+<p>where <span class="math">\(edges\_sql = \{(id_i, source_i, target_i, capacity_i, reverse\_capacity_i)\}\)</span></p>
+<p class="rubric">Graph definition</p>
+<p>The weighted directed graph, <span class="math">\(G(V,E)\)</span>, is defined as:</p>
+<ul class="simple">
+<li>the set of vertices  <span class="math">\(V\)</span><ul>
+<li><span class="math">\(source\_vertex  \cup  sink\_vertex  \bigcup  source_i  \bigcup  target_i\)</span></li>
+</ul>
+</li>
+<li>the set of edges <span class="math">\(E\)</span><ul>
+<li><span class="math">\(E = \begin{cases} &amp;\{(source_i, target_i, capacity_i) \text{ when } capacity &gt; 0 \} &amp;\quad  \text{ if } reverse\_capacity = \varnothing \\ \\ &amp;\{(source_i, target_i, capacity_i) \text{ when } capacity &gt; 0 \} \\ \cup &amp;\{(target_i, source_i, reverse\_capacity_i) \text{ when } reverse\_capacity_i &gt; 0)\} &amp;\quad \text{ if } reverse\_capacity \neq \varnothing \\ \end{cases}\)</span></li>
+</ul>
+</li>
+</ul>
+<p class="rubric">Maximum flow problem</p>
+<p>Given:</p>
+<blockquote>
+<div><ul class="simple">
+<li><span class="math">\(G(V,E)\)</span></li>
+<li><span class="math">\(source\_vertex \in V\)</span> the source vertex</li>
+<li><span class="math">\(sink\_vertex \in V\)</span> the sink vertex</li>
+</ul>
+</div></blockquote>
+<p>Then:</p>
+<blockquote>
+<div><p><span class="math">\(pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}\)</span></p>
+<p><span class="math">\(\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}\)</span></p>
+</div></blockquote>
+<p>where:</p>
+<blockquote>
+<div><p><span class="math">\(\boldsymbol{\Phi}\)</span> is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:</p>
+<ul class="simple">
+<li><span class="math">\(id_i = i\)</span></li>
+<li><span class="math">\(edge\_id = id_i   \text{ in edges_sql}\)</span></li>
+<li><span class="math">\(residual\_capacity_i = capacity_i - flow_i\)</span></li>
+</ul>
+</div></blockquote>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_flow_problem">https://en.wikipedia.org/wiki/Maximum_flow_problem</a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../../contraction/doc/pgr_contractGraph.html">pgr_contractGraph - Proposed</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../../../doc/index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_maxFlowPushRelabel.html">pgr_maxFlowPushRelabel Proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

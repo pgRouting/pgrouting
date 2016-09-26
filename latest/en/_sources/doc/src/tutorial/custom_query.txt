@@ -14,6 +14,47 @@ Dictionary of columns & Custom Query
 
 :path: a sequence of vertices/edges from A to B.
 :route: a sequence of paths. 
+:ANY-INTEGER: Any of the following types: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: Any of the following types: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+
+
+Custom Queries
+===============================================================================
+
+
+
+Edges queries
+-------------------------------------------------------------------------------
+
+
+Columns of the edges_sql queries
+...............................................................................
+
+
+Depending on the function used the following columns are expected
+
+================  ===================   ======== =================================================
+Column            Type                  Default  Description
+================  ===================   ======== =================================================
+**id**            ``ANY-INTEGER``                Identifier of the edge.
+**source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
+**target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
+**cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
+                                                   - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
+                                                   - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+================  ===================   ======== =================================================
+
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+
+
+
+
 
 Description of the edges_sql query
 -------------------------------------------------------------------------------
@@ -35,7 +76,7 @@ Where:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-:edges_sql: ``TEXT`` SQL query as decribed above.
+:edges_sql: ``TEXT`` SQL query as described above.
 :start_vid: ``BIGINT`` identifier of the starting vertex of the path.
 :start_vids: ``array[ANY-INTEGER]`` array of identifiers of starting vertices.
 :end_vid: ``BIGINT`` identifier of the ending vertex of the path.
@@ -49,9 +90,9 @@ Description of the return values
 Returns set of ``(seq [, start_vid] [, end_vid] , node, edge, cost, agg_cost)``
 
 :seq: ``INTEGER``  is a sequential value starting from **1**.
-:route_seq: ``INTEGER``  relative position in the route. Has value **1** for the begining of a route.
+:route_seq: ``INTEGER``  relative position in the route. Has value **1** for the beginning of a route.
 :route_id: ``INTEGER`` id of the route.
-:path_seq: ``INTEGER``  relative position in the path. Has value **1** for the begining of a path.
+:path_seq: ``INTEGER``  relative position in the path. Has value **1** for the beginning of a path.
 :path_id: ``INTEGER`` id of the path.
 :start_vid: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
 :end_vid: ``BIGINT`` id of the ending vertex. Used when multiple ending vertices are in the query.
@@ -127,7 +168,7 @@ When the columns required have the default names this can be used (pgr_func is t
 	SELECT pgr_analyzeOneway('edge_table', ARRAY['', 'B', 'TF'], ARRAY['', 'B', 'FT'], 
 					       ARRAY['', 'B', 'FT'], ARRAY['', 'B', 'TF']) 
 
-When the columns required do not have the default names its strongly recomended to use the *named notation*.
+When the columns required do not have the default names its strongly recommended to use the *named notation*.
 
 .. code-block:: sql
 

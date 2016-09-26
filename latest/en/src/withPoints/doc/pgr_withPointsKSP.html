@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_withPointsKSP &mdash; pgRouting Manual (2.2)</title>
+    <title>pgr_withPointsKSP - Proposed &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,44 +25,55 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="up" title="withPoints - Family of functions" href="withPoints.html" />
-    <link rel="next" title="pgr_withPointsDD" href="pgr_withPointsDD.html" />
-    <link rel="prev" title="pgr_withPointsCost" href="pgr_withPointsCost.html" /> 
+    <link rel="next" title="pgr_withPointsDD - Proposed" href="pgr_withPointsDD.html" />
+    <link rel="prev" title="pgr_withPointsCostMatrix - proposed" href="../../costMatrix/doc/pgr_withPointsCostMatrix.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
-        <h2 class="heading"><span>pgr_withPointsKSP</span></h2>
+          <span>pgRouting Manual (2.3)</span></a></h1>
+        <h2 class="heading"><span>pgr_withPointsKSP - Proposed</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_withPointsCost.html">pgr_withPointsCost</a>
+        «&#160;&#160;<a href="../../costMatrix/doc/pgr_withPointsCostMatrix.html">pgr_withPointsCostMatrix - proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_withPointsDD.html">pgr_withPointsDD</a>&#160;&#160;»
+        <a href="pgr_withPointsDD.html">pgr_withPointsDD - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content">
         
         
-  <div class="section" id="pgr-withpointsksp">
-<span id="id1"></span><h1>pgr_withPointsKSP<a class="headerlink" href="#pgr-withpointsksp" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-withpointsksp-proposed">
+<span id="pgr-withpointsksp"></span><h1>pgr_withPointsKSP - Proposed<a class="headerlink" href="#pgr-withpointsksp-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_withPointsKSP</span></tt> - Find the K shortest paths using Yen&#8217;s algorithm.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>This is a proposed function for version 2.3.</p>
-<ul class="last simple">
-<li>Is not officially in the version 2.2 release.</li>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
 </ul>
+</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside5.jpeg" src="../../../_images/boost-inside5.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="../../../_images/boost-inside9.jpeg" src="../../../_images/boost-inside9.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 </div>
@@ -79,11 +90,10 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="signatures">
-<h1>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="minimal-usage">
-<span id="index-0"></span><h2>Minimal Usage<a class="headerlink" href="#minimal-usage" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h3>Minimal Usage<a class="headerlink" href="#minimal-usage" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>The minimal usage:</dt>
 <dd><ul class="first last simple">
@@ -130,7 +140,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="complete-signature">
-<span id="index-1"></span><h2>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h2>
+<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
 <p>Finds the K shortest paths depending on the optional parameters setup.</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K,
     directed:=true, heap_paths:=false, driving_side:=&#39;b&#39;, details:=false)
@@ -173,9 +183,9 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </div>
 </div>
 <div class="section" id="description-of-the-signatures">
-<h1>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="description-of-the-edges-sql-query">
-<h2>Description of the Edges SQL query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the edges_sql query<a class="headerlink" href="#description-of-the-edges-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -186,42 +196,74 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="9%" />
-<col width="11%" />
-<col width="80%" />
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Column</th>
 <th class="head">Type</th>
+<th class="head">Default</th>
 <th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>id</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>source</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the first end point vertex of the edge.</td>
 </tr>
 <tr class="row-even"><td><strong>target</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
 <td>Identifier of the second end point vertex of the edge.</td>
 </tr>
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>Weight of the edge <cite>(source, target)</cite>, If negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>&nbsp;</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge  <cite>(source, target)</cite></dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
-<td>(optional) Weight of the edge <cite>(target, source)</cite>, If negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</td>
+<td>-1</td>
+<td><dl class="first last docutils">
+<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
+<dd><ul class="first last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="description-of-the-points-sql-query">
-<h2>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the Points SQL query<a class="headerlink" href="#description-of-the-points-sql-query" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -248,7 +290,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 <td><dl class="first last docutils">
 <dt>(optional) Identifier of the point.</dt>
 <dd><ul class="first last simple">
-<li>Can not be NULL.</li>
+<li>If column present, it can not be NULL.</li>
 <li>If column not present, a sequential identifier will be given automatically.</li>
 </ul>
 </dd>
@@ -291,7 +333,7 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 </table>
 </div>
 <div class="section" id="description-of-the-parameters-of-the-signatures">
-<h2>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%" />
@@ -307,11 +349,11 @@ RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 <tbody valign="top">
 <tr class="row-even"><td><strong>edges_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Edges SQL query as decribed above.</td>
+<td>Edges SQL query as described above.</td>
 </tr>
 <tr class="row-odd"><td><strong>points_sql</strong></td>
 <td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
-<td>Points SQL query as decribed above.</td>
+<td>Points SQL query as described above.</td>
 </tr>
 <tr class="row-even"><td><strong>start_pid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
@@ -355,7 +397,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </table>
 </div>
 <div class="section" id="description-of-the-return-values">
-<h2>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h2>
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_id,</span> <span class="pre">path_seq,</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
 <table border="1" class="docutils">
 <colgroup>
@@ -376,7 +418,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </tr>
 <tr class="row-odd"><td><strong>path_seq</strong></td>
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
-<td>Relative position in the path of node and edge. Has value 1 for the begining of a path.</td>
+<td>Relative position in the path of node and edge. Has value 1 for the beginning of a path.</td>
 </tr>
 <tr class="row-even"><td><strong>path_id</strong></td>
 <td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
@@ -421,6 +463,7 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -529,18 +572,18 @@ Default is <tt class="docutils literal"><span class="pre">false</span></tt> whic
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="pgr_withPointsCost.html">pgr_withPointsCost</a>
+        «&#160;&#160;<a href="../../costMatrix/doc/pgr_withPointsCostMatrix.html">pgr_withPointsCostMatrix - proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_withPointsDD.html">pgr_withPointsDD</a>&#160;&#160;»
+        <a href="pgr_withPointsDD.html">pgr_withPointsDD - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -9,20 +9,19 @@
 
 .. _pgr_apsp_warshall:
 
-pgr_apspWarshall
+pgr_apspWarshall - Deprecated Function
 ===============================================================================
 
-.. index::
-    single: pgr_apspWarshall(text, boolean, boolean) -- deprecated
+.. warning:: This function is deprecated!!!
+
+    * It has been replaced by a new function, is no longer supported, and may be removed from future versions.
+    * All code that uses this function should be converted to use its replacement: :ref:`pgr_FloydWarshall`. 
+
 
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_apspWarshall`` - Returns all costs for each pair of nodes in the graph.
-
-.. warning:: This function is deprecated in version 2.2
-             Use :ref:`pgr_floydWarshall` instead
-
 
 
 Synopsis

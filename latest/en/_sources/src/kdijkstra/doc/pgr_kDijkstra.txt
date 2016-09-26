@@ -10,25 +10,25 @@
 
 .. _pgr_kdijkstra:
 
-pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra
+pgr_kDijkstra - Deprecated Functions
 ===============================================================================
 
-.. index::
-    single: pgr_kDijkstraCost(text,integer,integer[],boolean,boolean) -- deprecated 
-    single: pgr_kDijkstraPath(text,integer,integer[],boolean,boolean) -- deprecated
+.. warning:: These functions are deprecated!!!
+
+    * It has been replaced by a new functions, are no longer supported, and may be removed from future versions.
+    * All code that uses the functions should be converted to use its replacement.
+
 
 Name
 -------------------------------------------------------------------------------
 
 * ``pgr_kdijkstraCost`` - Returns the costs for K shortest paths using Dijkstra algorithm.
 
-.. warning:: This functions is deprecated in 2.2.
-    Use :ref:`pgr_dijkstraCost` instead.
+.. warning:: Use :ref:`pgr_dijkstraCost` (One To Many) instead.
 
 * ``pgr_kdijkstraPath`` - Returns the paths for K shortest paths using Dijkstra algorithm.
 
-.. warning:: This function is deprecated in 2.2.
-    Use :ref:`pgr_dijkstra` instead.
+.. warning:: Use :ref:`pgr_dijkstra` (One To Many) instead.
 
 
 Synopsis
@@ -123,5 +123,6 @@ This behavior is a function of PostGIS functions ``st_linemerge()`` and
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`pgr_dijkstraCost`, :ref:`pgr_dijkstra`
 * :ref:`type_cost_result`
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm

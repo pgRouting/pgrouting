@@ -9,7 +9,7 @@
 
 .. _pgr_withPointsKSP:
 
-pgr_withPointsKSP
+pgr_withPointsKSP - Proposed
 ===============================================================================
 
 
@@ -18,10 +18,10 @@ Name
 
 ``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm.
 
-.. note::  This is a proposed function for version 2.3.
 
-     - Is not officially in the version 2.2 release.
-
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -45,13 +45,13 @@ Signature Summary
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
 
 Signatures
-==========
+-----------
 
 .. index::
-    single: withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K) -- proposed
+    single: withPointsKSP(Minimal Signature) - Proposed
 
 Minimal Usage
------------------
+....................................
 
 The minimal usage:
     - Is for a **directed** graph.
@@ -72,10 +72,10 @@ The minimal usage:
    :end-before: --q2
 
 .. index::
-    single: withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details) -- proposed
+    single: withPointsKSP(Complete Signature) - Proposed
 
 Complete Signature
-------------------------------------
+....................................
 
 Finds the K shortest paths depending on the optional parameters setup.
 
@@ -93,25 +93,31 @@ Finds the K shortest paths depending on the optional parameters setup.
    :end-before: --q3
 
 Description of the Signatures
-=============================
+-------------------------------
 
 
 ..
     description of the sql queries
 
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-.. include:: withPoints_queries.txt 
+.. include:: ../../common/src/points_input.h
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+..............................................................
 
 
 ================ ================= =================================================
 Parameter        Type              Description
 ================ ================= =================================================
-**edges_sql**    ``TEXT``          Edges SQL query as decribed above.
-**points_sql**   ``TEXT``          Points SQL query as decribed above.
+**edges_sql**    ``TEXT``          Edges SQL query as described above.
+**points_sql**   ``TEXT``          Points SQL query as described above.
 **start_pid**    ``ANY-INTEGER``   Starting point id.
 **end_pid**      ``ANY-INTEGER``   Ending point id.
 **K**            ``INTEGER``       Number of shortest paths.
@@ -128,7 +134,7 @@ Parameter        Type              Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+..............................................................
 
 Returns set of ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
 
@@ -136,7 +142,7 @@ Returns set of ``(seq, path_id, path_seq, node, edge, cost, agg_cost)``
 Column           Type              Description
 ============ =========== =================================================
 **seq**      ``INTEGER`` Row sequence.
-**path_seq** ``INTEGER`` Relative position in the path of node and edge. Has value 1 for the begining of a path.
+**path_seq** ``INTEGER`` Relative position in the path of node and edge. Has value 1 for the beginning of a path.
 **path_id**  ``INTEGER``  Path identifier. The ordering of the paths: For two paths i, j if i < j then agg_cost(i) <= agg_cost(j).
 **node**     ``BIGINT``  Identifier of the node in the path. Negative values are the identifiers of a point.
 **edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence. 

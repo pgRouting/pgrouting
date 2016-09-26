@@ -9,12 +9,14 @@
 
 .. _pgr_is_column_in_table:
 
-pgr_isColumnInTable
+pgr_isColumnInTable - Deprecated Function
 ===============================================================================
 
-.. index:: 
-	single: pgr_isColumnInTable(text,text) -- deprecated
-	module: common
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported.
+    * May be removed from future versions.
+    * There is no replacement.
 
 Name
 -------------------------------------------------------------------------------
@@ -22,10 +24,6 @@ Name
 ``pgr_isColumnInTable`` — Check if a column is in the table.
 
 .. note:: This function is intended for the developer’s aid.
-
-.. warning:: This function is  deprecated in 2.1
-             Use `_pgr_isColumnInTable` instead
-
 
 
 Synopsis

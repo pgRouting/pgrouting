@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Table of Contents &mdash; pgRouting Manual (2.2)</title>
+    <title>Table of Contents &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,12 +25,12 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../index.html" />
     <link rel="next" title="Introduction" href="src/introduction/introduction.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>Table of Contents</span></h2>
       </div>
       <div class="topnav">
@@ -48,7 +48,7 @@
   <div class="section" id="table-of-contents">
 <span id="index"></span><h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
 <p>pgRouting extends the <a class="reference external" href="http://postgis.net">PostGIS</a>/<a class="reference external" href="http://postgresql.org">PostgreSQL</a> geospatial database to provide geospatial routing and other network analysis functionality.</p>
-<p>This is the manual for pgRouting 2.2.4 (pgrouting-2.2.4).</p>
+<p>This is the manual for pgRouting 2.3.0 (master).</p>
 <img alt="Creative Commons Attribution-Share Alike 3.0 License" class="align-left" src="../_images/ccbysa.png" />
 <p>The pgRouting Manual is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to <a class="reference external" href="http://pgrouting.org">http://pgrouting.org</a>. For other licenses used in pgRouting see the <a class="reference internal" href="src/introduction/introduction.html#license"><em>License</em></a> page.</p>
 </div>
@@ -135,8 +135,9 @@
 <div class="toctree-wrapper compound">
 </div>
 </div>
+</div>
 <div class="section" id="topology-functions">
-<h2>Topology functions<a class="headerlink" href="#topology-functions" title="Permalink to this headline">¶</a></h2>
+<h1>Topology functions<a class="headerlink" href="#topology-functions" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../src/topology/doc/topology.html#topology-functions"><em>Topology Functions</em></a></p>
 <blockquote>
 <div><ul class="simple">
@@ -149,14 +150,15 @@
 </div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 <div class="section" id="routing-functions">
-<h2>Routing Functions<a class="headerlink" href="#routing-functions" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../src/routingFunctions.html#routing-functions"><em>Routing Functions</em></a></p>
-<blockquote>
-<div><ul class="simple">
+<h1>Routing Functions<a class="headerlink" href="#routing-functions" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../src/routingFunctions.html">Routing Functions</a></li>
+</ul>
+</div>
+<ul class="simple">
 <li><a class="reference internal" href="../src/allpairs/doc/allpairs.html#all-pairs"><em>All pairs</em></a> - All pair of vertices.<ul>
 <li><a class="reference internal" href="../src/allpairs/doc/pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a> - Floyd-Warshall&#8217;s Algorithm</li>
 <li><a class="reference internal" href="../src/allpairs/doc/pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a>- Johnson’s Algorithm</li>
@@ -181,19 +183,19 @@
 </li>
 <li><a class="reference internal" href="../src/ksp/doc/pgr_ksp.html#pgr-ksp"><em>pgr_ksp</em></a> - K-Shortest Path</li>
 <li><a class="reference internal" href="../src/trsp/doc/pgr_trsp.html#trsp"><em>pgr_trsp</em></a> - Turn Restriction Shortest Path (TRSP)</li>
-<li><a class="reference internal" href="../src/tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_tsp</em></a> - Traveling Sales Person</li>
+<li><a class="reference internal" href="../src/tsp/doc/tsp.html#tsp"><em>Traveling Sales Person</em></a><ul>
+<li><a class="reference internal" href="../src/tsp/doc/pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> - When input is a cost matrix.</li>
+<li><a class="reference internal" href="../src/tsp/doc/pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> - When input are coordinates.</li>
 </ul>
-</div></blockquote>
-</div>
+</li>
+</ul>
 </div>
 <div class="section" id="available-functions-but-not-official-pgrouting-functions">
 <h1>Available Functions but not official pgRouting functions<a class="headerlink" href="#available-functions-but-not-official-pgrouting-functions" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="../src/proposedNext.html#proposednext"><em>Proposed Functions for version 2.3</em></a></li>
+<ul class="simple">
+<li><a class="reference internal" href="../src/proposedNext.html#proposednext"><em>Stable proposed Functions</em></a></li>
 <li><a class="reference internal" href="../src/proposed.html#proposed"><em>Experimental and Proposed functions</em></a></li>
 </ul>
-</div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -210,17 +212,19 @@
 </div>
 <div class="section" id="change-log">
 <h1>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="src/changelog/index.html#change-log"><em>Release Notes</em></a></p>
+<p><a class="reference internal" href="src/changelog/release_notes.html#change-log"><em>Release Notes</em></a></p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="src/changelog/2_2_4.html#changelog-2-2-4"><em>pgRouting 2.2.4 Release Notes</em></a></li>
-<li><a class="reference internal" href="src/changelog/2_2_3.html#changelog-2-2-3"><em>pgRouting 2.2.3 Release Notes</em></a></li>
-<li><a class="reference internal" href="src/changelog/2_2_2.html#changelog-2-2-2"><em>pgRouting 2.2.2 Release Notes</em></a></li>
-<li><a class="reference internal" href="src/changelog/2_2_1.html#changelog-2-2-1"><em>pgRouting 2.2.1 Release Notes</em></a></li>
-<li><a class="reference internal" href="src/changelog/2_2_0.html#changelog-2-2-0"><em>pgRouting 2.2.0 Release Notes</em></a></li>
-<li><a class="reference internal" href="src/changelog/2_1_0.html#changelog-2-1-0"><em>pgRouting 2.1.0 Release Notes</em></a></li>
-<li><a class="reference internal" href="src/changelog/2_0.html#changelog-2-0"><em>pgRouting 2.0 Release Notes</em></a></li>
-<li><a class="reference internal" href="src/changelog/1_x.html#changelog-1-x"><em>pgRouting 1.x Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-3-0"><em>pgRouting 2.3.0 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-2-4"><em>pgRouting 2.2.4 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-2-3"><em>pgRouting 2.2.3 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-2-2"><em>pgRouting 2.2.2 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-2-1"><em>pgRouting 2.2.1 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-2-0"><em>pgRouting 2.2.0 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-1-0"><em>pgRouting 2.1.0 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-0-1"><em>pgRouting 2.0.1 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-2-0-0"><em>pgRouting 2.0.0 Release Notes</em></a></li>
+<li><a class="reference internal" href="src/changelog/release_notes.html#changelog-1-x"><em>pgRouting 1.x Release Notes</em></a></li>
 </ul>
 </div></blockquote>
 <div class="toctree-wrapper compound">
@@ -245,8 +249,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

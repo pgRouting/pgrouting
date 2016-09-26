@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Developer’s Guide &mdash; pgRouting Manual (2.2)</title>
+    <title>Developer’s Guide &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,13 +25,13 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="next" title="Sample Data" href="sampledata.html" />
     <link rel="prev" title="Handling parallels after getting a path (pgr_ksp focus)" href="../recipes/parallel_handling.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>Developer’s Guide</span></h2>
       </div>
       <div class="topnav">
@@ -83,24 +83,20 @@ in its on sub-tree with /doc, /sql, /src, and /test sub-directories.</dd>
 <div class="section" id="pre-commit">
 <h3>pre-commit<a class="headerlink" href="#pre-commit" title="Permalink to this headline">¶</a></h3>
 <p>To keep version/branch/commit up to date install pelase do the following:</p>
-<div class="code highlight-python"><div class="highlight"><pre>cp tools/pre-commit .git/hooks/pre-commit
+<div class="highlight-bash"><div class="highlight"><pre>cp tools/pre-commit .git/hooks/pre-commit
 </pre></div>
 </div>
 <p>After each commit a the file <strong>VERSION</strong> will remain. (The hash number will be one behind)</p>
 </div>
 <div class="section" id="doxygen">
 <h3>doxygen<a class="headerlink" href="#doxygen" title="Permalink to this headline">¶</a></h3>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><a class="reference internal" href="../../../src/common/doc/utilities/index.html#developer-functions"><em>Developers&#8217;s Functions</em></a> documentation is going to be deleted from the pgRouting documentation and included in the doxygen documentation.</p>
-</div>
 <p>To use doxygen:</p>
-<div class="code highlight-python"><div class="highlight"><pre>cd tools/doxygen/
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>tools/doxygen/
 make
 </pre></div>
 </div>
 <p>The code&#8217;s documentation can be found in:</p>
-<div class="code highlight-python"><div class="highlight"><pre><span class="n">build</span><span class="o">/</span><span class="n">doxy</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<div class="highlight-bash"><div class="highlight"><pre>build/doxy/html/index.html
 </pre></div>
 </div>
 </div>
@@ -109,9 +105,9 @@ make
 <p>We try to follow the following guidelines for C++ coding:</p>
 <p><a class="reference external" href="https://google-styleguide.googlecode.com/svn/trunk/cppguide.html">https://google-styleguide.googlecode.com/svn/trunk/cppguide.html</a></p>
 <p>Sample use:</p>
-<div class="code highlight-python"><div class="highlight"><pre>python cpplint.py ../src/dijkstra/src/dijkstra_driver.h
-../src/dijkstra/src/dijkstra_driver.h:34:  Lines should be &lt;= 80 characters long  [whitespace/line_length] [2]
-../src/dijkstra/src/dijkstra_driver.h:40:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+<div class="highlight-bash"><div class="highlight"><pre>python cpplint.py ../src/dijkstra/src/dijkstra_driver.h
+../src/dijkstra/src/dijkstra_driver.h:34:  Lines should be &lt;<span class="o">=</span> 80 characters long  <span class="o">[</span>whitespace/line_length<span class="o">]</span> <span class="o">[</span>2<span class="o">]</span>
+../src/dijkstra/src/dijkstra_driver.h:40:  Line ends in whitespace.  Consider deleting these extra spaces.  <span class="o">[</span>whitespace/end_of_line<span class="o">]</span> <span class="o">[</span>4<span class="o">]</span>
 Done processing ../src/dijkstra/src/dijkstra_driver.h
 Total errors found: 2
 </pre></div>
@@ -121,7 +117,7 @@ Total errors found: 2
 <li>Delete whitespace at end of line is easy fix.</li>
 <li>Use your judgement!!!</li>
 </ul>
-<p>Some files like <tt class="docutils literal"><span class="pre">postgres.h</span></tt> are system dependant so don&#8217;t include the directory.</p>
+<p>Some files like <tt class="docutils literal"><span class="pre">postgres.h</span></tt> are system dependent so don&#8217;t include the directory.</p>
 </div>
 <div class="section" id="other-tools">
 <h3>Other tools<a class="headerlink" href="#other-tools" title="Permalink to this headline">¶</a></h3>
@@ -170,9 +166,9 @@ in that directory.</p>
 <blockquote>
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">src/dijkstra/test</span></tt>  Dijkstra&#8217;s tests.<ul>
-<li><tt class="docutils literal"><span class="pre">test.conf</span></tt>  Configuraton file.</li>
+<li><tt class="docutils literal"><span class="pre">test.conf</span></tt>  Configuration file.</li>
 <li><tt class="docutils literal"><span class="pre">&lt;name&gt;.test.sql</span></tt>  Test file</li>
-<li><tt class="docutils literal"><span class="pre">&lt;name&gt;.result</span></tt>  Results file</li>
+<li><tt class="docutils literal"><span class="pre">&lt;name&gt;.result</span></tt>  Results file bash</li>
 </ul>
 </li>
 <li><tt class="docutils literal"><span class="pre">src/dijkstra/test/pgtap</span></tt>  Dijkstra&#8217;s pgTaptests.<ul>
@@ -213,8 +209,8 @@ dropdb  -U &lt;user&gt; ___pgr___test___
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

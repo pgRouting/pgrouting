@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Index &mdash; pgRouting Manual (2.2)</title>
+    <title>Index &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,11 +26,11 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="index.html" /> 
+    <link rel="top" title="pgRouting Manual (2.3)" href="index.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>Index</span></h2>
       </div>
       <div class="topnav">
@@ -47,13 +47,16 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#_"><strong>_</strong></a>
+ <a href="#A"><strong>A</strong></a>
  | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
  | <a href="#J"><strong>J</strong></a>
  | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#T"><strong>T</strong></a>
@@ -61,11 +64,17 @@
  | <a href="#W"><strong>W</strong></a>
  
 </div>
-<h2 id="_">_</h2>
+<h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/tsp/doc/pgr_tsp.html#index-0">_pgr_makeDistanceMatrix(sqlin text)</a>
+  <dt><a href="src/topology/doc/pgr_analyzeGraph.html#index-0">analyzeGraph(Complete Signature)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/topology/doc/pgr_analyzeOneWay.html#index-0">analyzeOneway(Complete Signature)</a>
   </dt>
 
   </dl></td>
@@ -75,16 +84,15 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt>
-    bidirectional, dijkstra
+  <dt><a href="src/bd_astar/doc/pgr_bdAstar.html#index-0">bdAstar(Complete Signaature)</a>
   </dt>
 
-      <dd><dl>
-        
-  <dt><a href="src/bd_dijkstra/doc/pgr_bdDijkstra.html#index-0">module</a>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/bd_dijkstra/doc/pgr_bdDijkstra.html#index-0">bdDijkstra(Complete Signature)</a>
   </dt>
 
-      </dl></dd>
   </dl></td>
 </tr></table>
 
@@ -92,16 +100,19 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt>
-    common
+  <dt><a href="src/contraction/doc/pgr_contractGraph.html#index-0">contractGraph(Minimal Use)</a>
   </dt>
 
-      <dd><dl>
-        
-  <dt><a href="src/label_graph/doc/pgr_labelGraph.html#index-0">module</a>, <a href="src/topology/doc/pgr_createVerticesTable.html#index-0">[1]</a>, <a href="src/topology/doc/pgr_createTopology.html#index-0">[2]</a>, <a href="src/topology/doc/pgr_analyzeOneWay.html#index-0">[3]</a>, <a href="src/common/doc/utilities/is_column_indexed.html#index-0">[4]</a>, <a href="src/topology/doc/pgr_analyzeGraph.html#index-0">[5]</a>, <a href="src/topology/doc/pgr_nodeNetwork.html#index-0">[6]</a>, <a href="src/common/doc/utilities/get_table_name.html#index-0">[7]</a>, <a href="src/common/doc/utilities/is_column_in_table.html#index-0">[8]</a>
+      
+  <dt><a href="src/topology/doc/pgr_createTopology.html#index-0">createTopology(Complete Signature)</a>
   </dt>
 
-      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/topology/doc/pgr_createVerticesTable.html#index-0">createVerticesTable(Complete Signature)</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
@@ -109,73 +120,109 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-0">dijkstra(edges_sql, start_vid, end_vid)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-4">dijkstra(Many to Many)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-1">dijkstra(edges_sql, start_vid, end_vid, directed:=TRUE)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-3">dijkstra(Many to One)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-2">dijkstra(edges_sql, start_vid, end_vids, directed:=TRUE)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-0">dijkstra(Minimal Use)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-3">dijkstra(edges_sql, start_vids, end_vid, directed)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-2">dijkstra(One to Many)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-4">dijkstra(edges_sql, start_vids, end_vids, directed)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstra.html#index-1">dijkstra(One to One)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstra_v2.html#index-0">dijkstra(sql, source, target, directed, has_rcost) -- deprecated</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-4">dijkstraCost(Many to Many)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-0">dijkstraCost(edges_sql, start_vid, end_vid)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-3">dijkstraCost(Many to One)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-1">dijkstraCost(edges_sql, start_vid, end_vid, directed)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-0">dijkstraCost(Minimal Use)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-3">dijkstraCost(edges_sql, start_vid, end_vids, directed)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-2">dijkstraCost(One to Many)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-2">dijkstraCost(edges_sql, start_vids, end_vid, directed)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-1">dijkstraCost(One to One)</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstraCost.html#index-4">dijkstraCost(edges_sql, start_vids, end_vids, directed)</a>
+  <dt><a href="src/costMatrix/doc/pgr_dijkstraCostMatrix.html#index-1">dijkstraCostMatrix(Complete Signature) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstraVia.html#index-0">dijkstraVia(edges_sql, via_vertices) -proposed</a>
+  <dt><a href="src/costMatrix/doc/pgr_dijkstraCostMatrix.html#index-0">dijkstraCostMatrix(Minimal Use) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/dijkstra/doc/pgr_dijkstraVia.html#index-1">dijkstraVia(edges_sql, via_vertices, strict:=false, U_turn_on_edge:=true, directed:=true) -proposed</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstraVia.html#index-1">dijkstraVia(Full signature) - proposed</a>
   </dt>
 
       
-  <dt><a href="src/driving_distance/doc/pgr_drivingDistance.html#index-0">drivingDistance(edges_sql, start_vid, distance)</a>
+  <dt><a href="src/dijkstra/doc/pgr_dijkstraVia.html#index-0">dijkstraVia(Minimal Use) - proposed</a>
   </dt>
 
       
-  <dt><a href="src/driving_distance/doc/pgr_drivingDistance.html#index-1">drivingDistance(edges_sql, start_vid, distance, directed)</a>
+  <dt><a href="src/driving_distance/doc/pgr_drivingDistance.html#index-0">drivingDistance(Minimal Use)</a>
   </dt>
 
       
-  <dt><a href="src/driving_distance/doc/pgr_drivingDistance.html#index-2">drivingDistance(edges_sql, start_vids, distance, directed, equiCost)</a>
+  <dt><a href="src/driving_distance/doc/pgr_drivingDistance.html#index-2">drivingDistance(Multiple Starting Vertices)</a>
   </dt>
 
       
-  <dt><a href="src/driving_distance/doc/pgr_drivingDistance_v2.html#index-0">drivingDistance(text,integer,double precision,boolean,boolean) -- deprecated</a>
+  <dt><a href="src/driving_distance/doc/pgr_drivingDistance.html#index-1">drivingDistance(Single Start Vertex)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/max_flow/doc/pgr_edgeDisjointPaths.html#index-4">edgeDisjointPaths(Many to Many) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_edgeDisjointPaths.html#index-3">edgeDisjointPaths(Many to One) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_edgeDisjointPaths.html#index-0">edgeDisjointPaths(Minimal Use) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_edgeDisjointPaths.html#index-2">edgeDisjointPaths(One to Many) - Proposed</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/max_flow/doc/pgr_edgeDisjointPaths.html#index-1">edgeDisjointPaths(One to One) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/tsp/doc/pgr_eucledianTSP.html#index-0">eucledianTSP(Basic Use)</a>
+  </dt>
+
+      
+  <dt><a href="src/tsp/doc/pgr_eucledianTSP.html#index-1">eucledianTSP(Complete Signature)</a>
   </dt>
 
   </dl></td>
@@ -185,13 +232,23 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/convinience/doc/pgr_flipEdges.html#index-0">flipEdges(ga geometry[]) --proposed</a>
+  <dt><a href="src/allpairs/doc/pgr_floydWarshall.html#index-1">floydWarshall(Complete Signature)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/allpairs/doc/pgr_floydWarshall.html#index-0">floydWarshall(edges_sql, directed)</a>
+  <dt><a href="src/allpairs/doc/pgr_floydWarshall.html#index-0">floydWarshall(Minimal Signature)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/vrppdtw/doc/pgr_gsoc_vrppdtw.html#index-0">gsoc_vrppdtw(Complete Signature) - proposed</a>
   </dt>
 
   </dl></td>
@@ -201,7 +258,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/allpairs/doc/pgr_johnson.html#index-0">johnson(edges_sql, directed)</a>
+  <dt><a href="src/allpairs/doc/pgr_johnson.html#index-1">johnson(Complete Signature)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/allpairs/doc/pgr_johnson.html#index-0">johnson(Minimal Signature)</a>
   </dt>
 
   </dl></td>
@@ -211,17 +274,23 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/ksp/doc/pgr_ksp.html#index-0">ksp(edges_sql, start_vid, end_vid, k)</a>
-  </dt>
-
-      
-  <dt><a href="src/ksp/doc/pgr_ksp.html#index-1">ksp(edges_sql, start_vid, end_vid, k, directed, heap_paths)</a>
+  <dt><a href="src/ksp/doc/pgr_ksp.html#index-1">ksp(Complete Signature)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/ksp/doc/pgr_ksp_v2.html#index-0">ksp(text,integer,integer,integer,boolean) -- deprecated</a>
+  <dt><a href="src/ksp/doc/pgr_ksp.html#index-0">ksp(Minimal Signature)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/label_graph/doc/pgr_labelGraph.html#index-0">labelGraph(Complete Signature) - Proposed</a>
   </dt>
 
   </dl></td>
@@ -231,28 +300,63 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt>
-    module
+  <dt><a href="src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html#index-3">maxFlowBoykovKolmogorov(Many to Many) - Proposed</a>
   </dt>
 
-      <dd><dl>
-        
-  <dt><a href="src/bd_dijkstra/doc/pgr_bdDijkstra.html#index-0">bidirectional, dijkstra</a>
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html#index-2">maxFlowBoykovKolmogorov(Many to One) - Proposed</a>
   </dt>
 
-        
-  <dt><a href="src/label_graph/doc/pgr_labelGraph.html#index-0">common</a>, <a href="src/topology/doc/pgr_createVerticesTable.html#index-0">[1]</a>, <a href="src/topology/doc/pgr_createTopology.html#index-0">[2]</a>, <a href="src/topology/doc/pgr_analyzeOneWay.html#index-0">[3]</a>, <a href="src/common/doc/utilities/is_column_indexed.html#index-0">[4]</a>, <a href="src/topology/doc/pgr_analyzeGraph.html#index-0">[5]</a>, <a href="src/topology/doc/pgr_nodeNetwork.html#index-0">[6]</a>, <a href="src/common/doc/utilities/get_table_name.html#index-0">[7]</a>, <a href="src/common/doc/utilities/is_column_in_table.html#index-0">[8]</a>
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html#index-1">maxFlowBoykovKolmogorov(One to Many) - Proposed</a>
   </dt>
 
-        
-  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">trsp</a>
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.html#index-0">maxFlowBoykovKolmogorov(One to One) - Proposed</a>
   </dt>
 
-        
-  <dt><a href="src/common/doc/types/geom_result.html#index-0">types</a>, <a href="src/common/doc/types/cost_result.html#index-0">[1]</a>, <a href="src/common/doc/types/cost_result.html#index-1">[2]</a>
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowEdmondsKarp.html#index-3">maxFlowEdmondsKarp(Many to Many) - Proposed</a>
   </dt>
 
-      </dl></dd>
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowEdmondsKarp.html#index-2">maxFlowEdmondsKarp(Many to One) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowEdmondsKarp.html#index-1">maxFlowEdmondsKarp(One to Many) - Proposed</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowEdmondsKarp.html#index-0">maxFlowEdmondsKarp(One to One) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowPushRelabel.html#index-3">maxFlowPushRelabel(Many to Many) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowPushRelabel.html#index-2">maxFlowPushRelabel(Many to One) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowPushRelabel.html#index-1">maxFlowPushRelabel(One to Many) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_maxFlowPushRelabel.html#index-0">maxFlowPushRelabel(One to One) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_maximumCardinalityMatching.html#index-1">MaximumCardinalityMatching(Complete Signature) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/max_flow/doc/pgr_maximumCardinalityMatching.html#index-0">MaximumCardinalityMatching(Minimal Use) - Proposed</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
@@ -264,31 +368,11 @@
   </dt>
 
       
-  <dt><a href="src/topology/doc/pgr_analyzeGraph.html#index-0">pgr_analyzeGraph(text,double precision,text,text,text,text,text)</a>
+  <dt><a href="src/astar/doc/pgr_astar.html#index-1">pgr_aStar(Complete Singature)</a>
   </dt>
 
       
-  <dt><a href="src/topology/doc/pgr_analyzeOneWay.html#index-0">pgr_analyzeOneway(text,text[],text[],text[],text[],text,text,text,boolean)</a>
-  </dt>
-
-      
-  <dt><a href="src/apsp_johnson/doc/pgr_apspJohnson.html#index-0">pgr_apspJohnson(text) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/apsp_warshall/doc/pgr_apspWarshall.html#index-0">pgr_apspWarshall(text, boolean, boolean) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/astar/doc/pgr_astar.html#index-0">pgr_astar(text, integer, integer, boolean, boolean)</a>
-  </dt>
-
-      
-  <dt><a href="src/bd_astar/doc/pgr_bdAstar.html#index-0">pgr_bdAstar(text, integer, integer, boolean, boolean)</a>
-  </dt>
-
-      
-  <dt><a href="src/bd_dijkstra/doc/pgr_bdDijkstra.html#index-0">pgr_bdDijkstra(text, integer, integer, boolean, boolean)</a>
+  <dt><a href="src/astar/doc/pgr_astar.html#index-0">pgr_aStar(Minimal Signature)</a>
   </dt>
 
       
@@ -299,58 +383,14 @@
   <dt><a href="src/common/doc/types/cost_result.html#index-0">pgr_costResult[]</a>
   </dt>
 
-      
-  <dt><a href="src/topology/doc/pgr_createTopology.html#index-0">pgr_createTopology(text,double precision,text,text,text,text,text)</a>
-  </dt>
-
-      
-  <dt><a href="src/topology/doc/pgr_createVerticesTable.html#index-0">pgr_createVerticesTable(text,text,text,text,text)</a>
-  </dt>
-
-      
-  <dt><a href="src/common/doc/utilities/end_point.html#index-0">pgr_endPoint(geometry) -- deprecated</a>
-  </dt>
-
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="src/common/doc/types/geom_result.html#index-0">pgr_geomResult[]</a>
   </dt>
 
       
-  <dt><a href="src/common/doc/utilities/get_column_name.html#index-0">pgr_getColumnName(text,text) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/common/doc/utilities/get_table_name.html#index-0">pgr_getTableName(text,text) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/vrppdtw/doc/index.html#index-0">pgr_gsoc_vrppdtw(text,integer,integer)</a>
-  </dt>
-
-      
-  <dt><a href="src/common/doc/utilities/is_column_indexed.html#index-0">pgr_isColumnIndexed(text,text) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/common/doc/utilities/is_column_in_table.html#index-0">pgr_isColumnInTable(text,text) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/kdijkstra/doc/pgr_kDijkstra.html#index-0">pgr_kDijkstraCost(text,integer,integer[],boolean,boolean) -- deprecated</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="src/kdijkstra/doc/pgr_kDijkstra.html#index-0">pgr_kDijkstraPath(text,integer,integer[],boolean,boolean) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/label_graph/doc/pgr_labelGraph.html#index-0">pgr_labelGraph(text, text, text, text, text, text)</a>
-  </dt>
-
-      
-  <dt><a href="src/topology/doc/pgr_nodeNetwork.html#index-0">pgr_NodeNetwork(text,float8,text,text,text)</a>
+  <dt><a href="src/topology/doc/pgr_nodeNetwork.html#index-0">pgr_NodeNetwork(Complete Signature)</a>
   </dt>
 
       
@@ -358,63 +398,11 @@
   </dt>
 
       
-  <dt><a href="src/common/doc/utilities/point_to_id.html#index-0">pgr_pointToId(geometry,double precision,text,integer) -- deprecated</a>
+  <dt><a href="src/convenience/doc/pgr_pointsToVids.html#index-0">pointsToVids(Complete Signature) --proposed</a>
   </dt>
 
       
-  <dt><a href="src/common/doc/utilities/quote_ident.html#index-0">pgr_quote_ident(text) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/common/doc/utilities/start_point.html#index-0">pgr_startPoint(geometry) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">pgr_trsp(text,integer,integer,boolean,boolean)</a>
-  </dt>
-
-      
-  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">pgr_trsp(text,integer,integer,boolean,boolean,text)</a>
-  </dt>
-
-      
-  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">pgr_trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)</a>
-  </dt>
-
-      
-  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">pgr_trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)</a>
-  </dt>
-
-      
-  <dt><a href="src/tsp/doc/pgr_tsp.html#index-0">pgr_tsp(matrix float[][], start integer)</a>
-  </dt>
-
-      
-  <dt><a href="src/tsp/doc/pgr_tsp.html#index-0">pgr_tsp(matrix float[][], start integer, end integer)</a>
-  </dt>
-
-      
-  <dt><a href="src/tsp/doc/pgr_tsp.html#index-0">pgr_tsp(sql text, start_id integer)</a>
-  </dt>
-
-      
-  <dt><a href="src/tsp/doc/pgr_tsp.html#index-0">pgr_tsp(sql text, start_id integer, end_id integer)</a>
-  </dt>
-
-      
-  <dt><a href="src/common/doc/utilities/versionless.html#index-0">pgr_versionless(text,text) -- deprecated</a>
-  </dt>
-
-      
-  <dt><a href="src/convinience/doc/pgr_pointsToDMatrix.html#index-0">pointsToDMatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[]) --proposed</a>
-  </dt>
-
-      
-  <dt><a href="src/convinience/doc/pgr_pointsToVids.html#index-0">pointsToVids(pnts geometry[], edges text, tol float8 DEFAULT(0.01)) --proposed</a>
-  </dt>
-
-      
-  <dt><a href="src/convinience/doc/pgr_pointToEdgeNode.html#index-0">pointToEdgeNode(edges text, pnt geometry, tol float8) --proposed</a>
+  <dt><a href="src/convenience/doc/pgr_pointToEdgeNode.html#index-0">pointToEdgeNode(Complete Signature) --proposed</a>
   </dt>
 
   </dl></td>
@@ -424,33 +412,31 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/convinience/doc/pgr_textToPoints.html#index-0">textToPoints(pnts text, srid integer DEFAULT(4326)) --proposed</a>
+  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">trsp(text,integer,integer,boolean,boolean)</a>
   </dt>
 
       
-  <dt>
-    trsp
+  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">trsp(text,integer,integer,boolean,boolean,text)</a>
   </dt>
 
-      <dd><dl>
-        
-  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">module</a>
+      
+  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)</a>
   </dt>
 
-      </dl></dd>
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt>
-    types
+  <dt><a href="src/trsp/doc/pgr_trsp.html#index-0">trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)</a>
   </dt>
 
-      <dd><dl>
-        
-  <dt><a href="src/common/doc/types/geom_result.html#index-0">module</a>, <a href="src/common/doc/types/cost_result.html#index-0">[1]</a>, <a href="src/common/doc/types/cost_result.html#index-1">[2]</a>
+      
+  <dt><a href="src/tsp/doc/pgr_tsp.html#index-0">TSP(Basic Use) -- New Signature</a>
   </dt>
 
-      </dl></dd>
+      
+  <dt><a href="src/tsp/doc/pgr_tsp.html#index-1">TSP(Complete Signature) -- New Signature</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
@@ -461,16 +447,6 @@
   <dt><a href="src/common/doc/pgr_version.html#index-0">version()</a>
   </dt>
 
-      
-  <dt><a href="src/convinience/doc/pgr_vidsToDMatrix2.html#index-0">vidsToDMatrix(IN sql text, IN vids integer[], IN directed boolean, IN has_reverse_cost boolean, IN want_symmetric boolean, OUT dmatrix double precision[]) --proposed</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="src/convinience/doc/pgr_vidsToDMatrix.html#index-0">vidsToDMatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1), OUT dmatrix double precision[], OUT ids integer[]) --proposed</a>
-  </dt>
-
   </dl></td>
 </tr></table>
 
@@ -478,65 +454,73 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-0">withPoints(edges_sql, points_sql, start_vid, end_vid) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-4">withPoints(Many to Many) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-1">withPoints(edges_sql, points_sql, start_vid, end_vid, directed, driving_side, details) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-3">withPoints(Many to One) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-2">withPoints(edges_sql, points_sql, start_vid, end_vids, directed, driving_side, details) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-0">withPoints(Minimal Use) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-3">withPoints(edges_sql, points_sql, start_vids, end_vid, directed, driving_side, details) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-2">withPoints(One to Many) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-4">withPoints(edges_sql, points_sql, start_vids, end_vids, directed, driving_side, details) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPoints.html#index-1">withPoints(One to One) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-0">withPointsCost(edges_sql, points_sql, start_pid, end_pid) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-4">withPointsCost(Many To Many) - proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-1">withPointsCost(edges_sql, points_sql, start_pid, end_pid, directed, driving_side) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-3">withPointsCost(Many To One) - proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-2">withPointsCost(edges_sql, points_sql, start_pid, end_pids, directed, driving_side) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-0">withPointsCost(Minimal Use) - proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-2">withPointsCost(One To Many) - proposed</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-3">withPointsCost(edges_sql, points_sql, start_pids, end_pid, directed, driving_side) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-1">withPointsCost(One To One) - proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsCost.html#index-4">withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)</a>
+  <dt><a href="src/costMatrix/doc/pgr_withPointsCostMatrix.html#index-1">withPointsCostMatrix(Complete Signature) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsDD.html#index-0">withPointsDD(edges_sql, points_sql, start_vid, distance) -- proposed</a>
+  <dt><a href="src/costMatrix/doc/pgr_withPointsCostMatrix.html#index-0">withPointsCostMatrix(Minimal use) - Proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsDD.html#index-1">withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPointsDD.html#index-0">withPointsDD(Minimal Use) - proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsDD.html#index-2">withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details, equicost) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPointsDD.html#index-2">withPointsDD(Multiple Starting Vertices) - proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsKSP.html#index-0">withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPointsDD.html#index-1">withPointsDD(Single Start Vertex) - proposed</a>
   </dt>
 
       
-  <dt><a href="src/withPoints/doc/pgr_withPointsKSP.html#index-1">withPointsKSP(edges_sql, points_sql, start_pid, end_pid, K, directed, heap_paths, driving_side, details) -- proposed</a>
+  <dt><a href="src/withPoints/doc/pgr_withPointsKSP.html#index-1">withPointsKSP(Complete Signature) - Proposed</a>
+  </dt>
+
+      
+  <dt><a href="src/withPoints/doc/pgr_withPointsKSP.html#index-0">withPointsKSP(Minimal Signature) - Proposed</a>
   </dt>
 
   </dl></td>
@@ -554,8 +538,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

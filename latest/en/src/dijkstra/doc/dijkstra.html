@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_dijkstra - Shortest Path Dijkstra &mdash; pgRouting Manual (2.2)</title>
+    <title>Dijkstra - Family of functions &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,15 +25,15 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="up" title="Routing Functions" href="../../routingFunctions.html" />
     <link rel="next" title="pgr_dijkstra" href="pgr_dijkstra.html" />
     <link rel="prev" title="pgr_bdDijkstra - Bi-directional Dijkstra Shortest Path" href="../../bd_dijkstra/doc/pgr_bdDijkstra.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
-        <h2 class="heading"><span>pgr_dijkstra - Shortest Path Dijkstra</span></h2>
+          <span>pgRouting Manual (2.3)</span></a></h1>
+        <h2 class="heading"><span>Dijkstra - Family of functions</span></h2>
       </div>
       <div class="topnav">
       
@@ -49,19 +49,25 @@
       <div class="content">
         
         
-  <div class="section" id="pgr-dijkstra-shortest-path-dijkstra">
-<span id="dijkstra"></span><h1>pgr_dijkstra - Shortest Path Dijkstra<a class="headerlink" href="#pgr-dijkstra-shortest-path-dijkstra" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dijkstra-family-of-functions">
+<span id="dijkstra"></span><h1>Dijkstra - Family of functions<a class="headerlink" href="#dijkstra-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> - Dijkstra&#8217;s algorithm for the shortest paths.</li>
-<li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> -Get the aggregate cost of the shortest paths.</li>
+</ul>
+</div></blockquote>
+<p>The following algorithms are based on pgr_dijkstra</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> - Get the aggregate cost of the shortest paths.</li>
+<li><a class="reference internal" href="../../driving_distance/doc/pgr_drivingDistance.html#pgr-drivingdistance"><em>pgr_drivingDistance</em></a> - Get catchament information.</li>
+<li><a class="reference internal" href="../../ksp/doc/pgr_ksp.html#pgr-ksp"><em>pgr_ksp</em></a> - Get the aggregate cost of the shortest paths.</li>
 </ul>
 </div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="the-problem-definition">
-<h1>The problem definition<a class="headerlink" href="#the-problem-definition" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-problem-definition-advanced-documentation">
+<h2>The problem definition (Advanced documentation)<a class="headerlink" href="#the-problem-definition-advanced-documentation" title="Permalink to this headline">¶</a></h2>
 <p>Given the following query:</p>
 <p>pgr_dijkstra(<span class="math">\(sql, start_{vid}, end_{vid}, directed\)</span>)</p>
 <p>where  <span class="math">\(sql = \{(id_i, source_i, target_i, cost_i, reverse\_cost_i)\}\)</span></p>
@@ -138,6 +144,7 @@
 </dl>
 <p>If there is no path, the resulting set is empty.</p>
 </div>
+</div>
 
 
       </div>
@@ -154,8 +161,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

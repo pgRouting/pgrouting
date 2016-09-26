@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_analyzeOneway &mdash; pgRouting Manual (2.2)</title>
+    <title>pgr_analyzeOneway &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="up" title="Topology Functions" href="topology.html" />
     <link rel="next" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" />
     <link rel="prev" title="pgr_analyzeGraph" href="pgr_analyzeGraph.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>pgr_analyzeOneway</span></h2>
       </div>
       <div class="topnav">
@@ -52,13 +52,13 @@
   <div class="section" id="pgr-analyzeoneway">
 <span id="pgr-analyze-oneway"></span><h1>pgr_analyzeOneway<a class="headerlink" href="#pgr-analyzeoneway" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_analyzeOneway</span></tt> — Analyzes oneway Sstreets and identifies flipped segments.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p>This function analyzes oneway streets in a graph and identifies any flipped segments.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span class="nb">text</span> <span class="n">pgr_analyzeOneway</span><span class="p">(</span><span class="n">geom_table</span> <span class="nb">text</span><span class="p">,</span>
                        <span class="nb">text</span><span class="p">[]</span> <span class="n">s_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">s_out_rules</span><span class="p">,</span>
                        <span class="nb">text</span><span class="p">[]</span> <span class="n">t_in_rules</span><span class="p">,</span> <span class="nb">text</span><span class="p">[]</span> <span class="n">t_out_rules</span><span class="p">,</span>
                        <span class="nb">text</span> <span class="n">oneway</span><span class="o">=</span><span class="s1">&#39;oneway&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="k">source</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span>
@@ -203,8 +203,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

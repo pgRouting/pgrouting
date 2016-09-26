@@ -13,11 +13,10 @@ pgr_trsp - Turn Restriction Shortest Path (TRSP)
 ===============================================================================
 
 .. index:: 
-	single: pgr_trsp(text,integer,integer,boolean,boolean)
-	single: pgr_trsp(text,integer,integer,boolean,boolean,text)
-	single: pgr_trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
-	single: pgr_trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
-	module: trsp
+	single: trsp(text,integer,integer,boolean,boolean)
+	single: trsp(text,integer,integer,boolean,boolean,text)
+	single: trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
+	single: trspViaEdges(text,integer,double precision,integer,double precision,boolean,boolean,text)
 
 Name
 -------------------------------------------------------------------------------
@@ -88,7 +87,7 @@ The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>
 
 	:to_cost: ``float8`` turn restriction cost
 	:target_id: ``int4`` target id
-	:via_path: ``text`` commar seperated list of edges in the reverse order of ``rule``
+	:via_path: ``text`` comma separated list of edges in the reverse order of ``rule``
 
 Another variant of TRSP allows to specify **EDGE id** of source and target together with a fraction to interpolate the position:
 
@@ -143,7 +142,7 @@ We also have support for vias where you can say generate a from A to B to C, etc
 
 	:to_cost: ``float8`` turn restriction cost
 	:target_id: ``int4`` target id
-	:via_path: ``text`` commar seperated list of edges in the reverse order of ``rule``
+	:via_path: ``text`` commar separated list of edges in the reverse order of ``rule``
 
 Another variant of TRSP allows to specify **EDGE id** together with a fraction to interpolate the position:
 

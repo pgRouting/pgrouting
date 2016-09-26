@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>withPoints - Family of functions &mdash; pgRouting Manual (2.2)</title>
+    <title>withPoints - Family of functions &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,24 +25,24 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
-    <link rel="up" title="Proposed Functions for version 2.3" href="../../proposedNext.html" />
-    <link rel="next" title="pgr_withPoints" href="pgr_withPoints.html" />
-    <link rel="prev" title="pgr_dijkstraVia" href="../../dijkstra/doc/pgr_dijkstraVia.html" /> 
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
+    <link rel="up" title="Stable proposed Functions" href="../../proposedNext.html" />
+    <link rel="next" title="pgr_withPoints - Proposed" href="pgr_withPoints.html" />
+    <link rel="prev" title="pgr_dijkstraVia - Proposed" href="../../dijkstra/doc/pgr_dijkstraVia.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>withPoints - Family of functions</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstraVia.html">pgr_dijkstraVia</a>
+        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstraVia.html">pgr_dijkstraVia - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_withPoints.html">pgr_withPoints</a>&#160;&#160;»
+        <a href="pgr_withPoints.html">pgr_withPoints - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
@@ -54,25 +54,32 @@
 <p>When points are also given as input:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints</em></a> - Route from/to points anywhere on the graph.</li>
-<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost</em></a> - Costs of the shortest paths.</li>
-<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP</em></a> - K shortest paths.</li>
-<li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD</em></a> - Driving distance.</li>
+<li><a class="reference internal" href="pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints - Proposed</em></a> - Route from/to points anywhere on the graph.</li>
+<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost - Proposed</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="../../costMatrix/doc/pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP - Proposed</em></a> - K shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD - Proposed</em></a> - Driving distance.</li>
 </ul>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>The numbering of the points are handled with negative sign.</p>
-<ul class="simple">
-<li>Original point identifiers are to be positive.</li>
-<li>Transformation to negative is done internally.</li>
-<li>For results for involving vertices identifiers<ul>
-<li>positive sign is a vertex of the original grpah</li>
-<li>negative sign is a point of the temporary points</li>
+<div class="toctree-wrapper compound">
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions for next mayor release.</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
 </ul>
 </li>
 </ul>
-<p class="last">The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.</p>
+</div></blockquote>
 </div>
 <div class="section" id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
@@ -135,10 +142,22 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 <li><p class="first">Some points are:</p>
 <ul class="simple">
 <li>Permanent, for example the set of points of clients stored in a table in the data base</li>
-<li>Temporal, for example points given thru a web application</li>
+<li>Temporal, for example points given through a web application</li>
+</ul>
+</li>
+<li><p class="first">The numbering of the points are handled with negative sign.</p>
+<ul class="simple">
+<li>Original point identifiers are to be positive.</li>
+<li>Transformation to negative is done internally.</li>
+<li>For results for involving vertices identifiers<ul>
+<li>positive sign is a vertex of the original grpah</li>
+<li>negative sign is a point of the temporary points</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<p>The reason for doing this is to avoid confusion when there is a vertex with the same number as identifier as the points identifier.</p>
 </div>
 <div class="section" id="graph-edges">
 <h2>Graph &amp; edges<a class="headerlink" href="#graph-edges" title="Permalink to this headline">¶</a></h2>
@@ -253,8 +272,6 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
 </li>
 </ul>
 </div></blockquote>
-<div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 
@@ -263,18 +280,18 @@ from arbitrary points more accurately reflect routing vehicles in road networks,
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstraVia.html">pgr_dijkstraVia</a>
+        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstraVia.html">pgr_dijkstraVia - Proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_withPoints.html">pgr_withPoints</a>&#160;&#160;»
+        <a href="pgr_withPoints.html">pgr_withPoints - Proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

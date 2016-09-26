@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_analyzeGraph &mdash; pgRouting Manual (2.2)</title>
+    <title>pgr_analyzeGraph &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="up" title="Topology Functions" href="topology.html" />
     <link rel="next" title="pgr_analyzeOneway" href="pgr_analyzeOneWay.html" />
     <link rel="prev" title="pgr_createVerticesTable" href="pgr_createVerticesTable.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
+          <span>pgRouting Manual (2.3)</span></a></h1>
         <h2 class="heading"><span>pgr_analyzeGraph</span></h2>
       </div>
       <div class="topnav">
@@ -52,7 +52,7 @@
   <div class="section" id="pgr-analyzegraph">
 <span id="pgr-analyze-graph"></span><h1>pgr_analyzeGraph<a class="headerlink" href="#pgr-analyzegraph" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_analyzeGraph</span></tt> — Analyzes the network topology.</p>
 </div>
 <div class="section" id="synopsis">
@@ -64,7 +64,7 @@
 <li><tt class="docutils literal"><span class="pre">FAIL</span></tt> when the analysis was not completed due to an error.</li>
 </ul>
 </div></blockquote>
-<div class="highlight-sql"><div class="highlight"><pre><span class="nb">varchar</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="nb">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">tolerance</span><span class="p">,</span>
+<div class="highlight-sql" id="index-0"><div class="highlight"><pre><span class="nb">varchar</span> <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="nb">text</span> <span class="n">edge_table</span><span class="p">,</span> <span class="n">double</span> <span class="k">precision</span> <span class="n">tolerance</span><span class="p">,</span>
                    <span class="nb">text</span> <span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span> <span class="nb">text</span> <span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
                    <span class="nb">text</span> <span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="nb">text</span> <span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 </pre></div>
@@ -107,7 +107,7 @@
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">OK</span></tt> after the analysis has finished.<ul>
 <li>Uses the vertices table: &lt;edge_table&gt;_vertices_pgr.</li>
-<li>Fills completly the <tt class="docutils literal"><span class="pre">cnt</span></tt> and <tt class="docutils literal"><span class="pre">chk</span></tt> columns of the vertices table.</li>
+<li>Fills completely the <tt class="docutils literal"><span class="pre">cnt</span></tt> and <tt class="docutils literal"><span class="pre">chk</span></tt> columns of the vertices table.</li>
 <li>Returns the analysis of the section of the network defined by  <tt class="docutils literal"><span class="pre">rows_where</span></tt></li>
 </ul>
 </li>
@@ -175,7 +175,7 @@
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">,</span><span class="n">id</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="n">target</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;target&#39;</span><span class="p">,</span><span class="n">the_geom</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;the_geom&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Parameters defined with a default value can be ommited, as long as the value matches the default:</p>
+<p>Parameters defined with a default value can be omitted, as long as the value matches the default:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span>  <span class="n">pgr_analyzeGraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">,</span><span class="k">source</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;source&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -407,8 +407,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

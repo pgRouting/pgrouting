@@ -9,11 +9,16 @@
 
 .. _pgr_driving_distance_v2:
 
-pgr_drivingDistance (V2.0)
+pgr_drivingDistance - Deprecated Signature
 ===============================================================================
 
-.. index:: 
-	single: drivingDistance(text,integer,double precision,boolean,boolean) -- deprecated
+.. warning:: This function signature is deprecated!!!
+
+    * That means it has been replaced by new signature(s)
+    * This signature is no longer supported, and may be removed from future versions.
+    * All code that use this function signature should be converted to use its replacement :ref:`pgr_drivingDistance`.
+
+
 
 Name
 -------------------------------------------------------------------------------
@@ -30,14 +35,6 @@ This function computes a Dijkstra shortest path solution them extracts the cost 
 
 	pgr_costResult[] pgr_drivingDistance(text sql, integer source, double precision distance,
                                       boolean directed, boolean has_rcost);
-
-.. warning:: This signature is being deprecated on version 2.1, Please use it
-             without the ``has_rcost`` flag instead:
-
-             ``pgr_drivingDistance(sql, start_v, distance, directed)``
-
-             See :ref:`pgr_drivingDistance`
-
 
 
 Description
@@ -95,5 +92,6 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`pgr_drivingDistance`
 * :ref:`pgr_alphashape` - Alpha shape computation
 * :ref:`pgr_points_as_polygon` - Polygon around set of points

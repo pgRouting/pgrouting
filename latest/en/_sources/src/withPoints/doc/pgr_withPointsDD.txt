@@ -9,7 +9,7 @@
 
 .. _pgr_withPointsDD:
 
-pgr_withPointsDD
+pgr_withPointsDD - Proposed
 ===============================================================================
 
 
@@ -18,9 +18,10 @@ Name
 
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
 
-.. note::  This is a proposed function for version 2.3.
 
-     - Is not officially in the version 2.2 release.
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -48,13 +49,13 @@ Signature Summary
     RETURNS SET OF (seq, node, edge, cost, agg_cost)
 
 Signatures
-==========
+------------
 
 .. index::
-    single: withPointsDD(edges_sql, points_sql, start_vid, distance) -- proposed
+    single: withPointsDD(Minimal Use) - proposed
 
-Minimal signature
------------------
+Minimal Use
+..................................
 
 The minimal signature:
     - Is for a **directed** graph.
@@ -75,10 +76,10 @@ The minimal signature:
    :end-before: --q2
 
 .. index::
-    single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details) -- proposed
+    single: withPointsDD(Single Start Vertex) - proposed
 
 Driving distance from a single point
-------------------------------------
+..............................................
 
 Finds the driving distance depending on the optional parameters setup.
 
@@ -95,10 +96,10 @@ Finds the driving distance depending on the optional parameters setup.
    :end-before: --q3
 
 .. index::
-    single: withPointsDD(edges_sql, points_sql, start_vid, distance, directed, driving_side, details, equicost) -- proposed
+    single: withPointsDD(Multiple Starting Vertices) - proposed
 
 Driving distance from many starting points
-------------------------------------------
+..................................................
 
 Finds the driving distance depending on the optional parameters setup.
 
@@ -112,25 +113,30 @@ Finds the driving distance depending on the optional parameters setup.
 
 
 Description of the Signatures
-=============================
-
+----------------------------------
 
 ..
     description of the sql queries
 
 
-.. include:: withPoints_queries.txt 
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: ../../common/src/points_input.h
+    :start-after: points_sql_start
+    :end-before: points_sql_end
 
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+........................................................
 
 
 ================ ================= =================================================
 Parameter        Type              Description
 ================ ================= =================================================
-**edges_sql**    ``TEXT``          Edges SQL query as decribed above.
-**points_sql**   ``TEXT``          Points SQL query as decribed above.
+**edges_sql**    ``TEXT``          Edges SQL query as described above.
+**points_sql**   ``TEXT``          Points SQL query as described above.
 **start_vid**    ``ANY-INTEGER``   Starting point id
 **distance**     ``ANY-NUMERICAL`` Distance from the start_pid
 **directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
@@ -146,7 +152,7 @@ Parameter        Type              Description
 
 
 Description of the return values
--------------------------------------------------------------------------------
+........................................................
 
 Returns set of ``(seq, node, edge, cost, agg_cost)``
 

@@ -30,88 +30,104 @@ Synopsis
 Using Dijkstra algorithm, extracts all the nodes that have costs less than or equal to the value ``distance``.
 The edges extracted will conform the corresponding spanning tree.
 
-.. index::
-	single: drivingDistance(edges_sql, start_vid, distance)
-
-.. rubric:: The minimal signature:
-
-.. code-block:: sql
-
-   pgr_drivingDistance(sql text, start_v bigint, distance float8)
-     RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
-
-.. index::
-	single: drivingDistance(edges_sql, start_vid, distance, directed)
-
-.. rubric:: Driving Distance from a single starting point:
-
-.. code-block:: sql
-
-   pgr_drivingDistance(sql text, start_vid bigint, distance float8, directed boolean)
-     RETURNS SET OF (seq, node, edge, cost, agg_cost)
-
-
-.. index::
-	single: drivingDistance(edges_sql, start_vids, distance, directed, equiCost)
-
-.. rubric:: Driving Distance from a multiple starting points:
-
-.. code-block:: sql
-
-   pgr_drivingDistance(sql text, start_vids anyarray, distance float8,
-         directed boolean default true,
-         equicost boolean default false)
-     RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
-
-Description of the SQL query
+Signature Summary
 -------------------------------------------------------------------------------
 
-:sql: a SQL query, which should return a set of rows with the following columns:
+.. code-block:: sql
 
-        .. code-block:: sql
+    pgr_drivingDistance(edges_sql, start_vid, distance)
+    pgr_drivingDistance(edges_sql, start_vid, distance, directed)
+    pgr_drivingDistance(edges_sql, start_vids, distance, directed, equicost)
 
-                SELECT id, source, target, cost [,reverse_cost] FROM edge_table
+    RETURNS SET OF (seq, [start_vid,] node, edge, cost, agg_cost)
 
 
-        :id: ``ANY-INTEGER`` identifier of the edge.
-        :source: ``ANY-INTEGER`` identifier of the source vertex of the edge.
-        :target: ``ANY-INTEGER`` identifier of the target vertex of the edge.
-        :cost: ``ANY-NUMERICAL`` value of the edge traversal cost. A negative cost will prevent the edge (``source``, ``target``) from being inserted in the graph.
-        :reverse_cost: ``ANY-NUMERICAL`` (optional) the value for the reverse traversal of the edge. A negative cost will prevent the edge (``target``, ``source``) from being inserted in the graph.
+Signatures
+-------------------------------------------------------------------------------
 
-Where:
+.. index::
+	single: drivingDistance(Minimal Use)
 
-:ANY-INTEGER: smallint, int, bigint
-:ANY-NUMERICAL: smallint, int, bigint, real, float
+Minimal Use
+...................
+
+.. code-block:: sql
+
+    pgr_drivingDistance(edges_sql, start_vid, distance)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+
+.. index::
+	single: drivingDistance(Single Start Vertex)
+
+Driving Distance From A Single Starting Vertex
+..............................................
+
+.. code-block:: sql
+
+    pgr_drivingDistance(edges_sql, start_vid, distance, directed)
+    RETURNS SET OF (seq, node, edge, cost, agg_cost)
+
+
+.. index::
+	single: drivingDistance(Multiple Starting Vertices)
+
+Driving Distance From Multiple Starting Vertices
+.................................................
+
+.. code-block:: sql
+
+    pgr_drivingDistance(edges_sql, start_vids, distance, directed, equicost)
+    RETURNS SET OF (seq, start_vid, node, edge, cost, agg_cost)
+
+Description of the Signatures
+-------------------------------------------------------------------------------
+
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
 
 Description of the parameters of the signatures
--------------------------------------------------------------------------------
+.................................................
 
-:sql: SQL query as decribed above.
-:start_v: ``BIGINT`` id of the starting vertex.
-:start_v: ``array[ANY-INTEGER]`` array of id of starting vertices.
-:distance: ``FLOAT`` Upper limit for the inclusion of the node in the result.
-:directed: ``boolean`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-:equicost: ``boolean`` (optional). When ``true`` the node will only appear in the closest ``start_v`` list.  Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.
+============== ====================== =================================================
+Column          Type                  Description
+============== ====================== =================================================
+**edges_sql**  ``TEXT``               SQL query as described above.
+**start_vid**  ``BIGINT``             Identifier of the starting vertex.
+**start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices.
+**distance**   ``FLOAT``              Upper limit for the inclusion of the node in the result.
+**directed**   ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
+**equicost**   ``BOOLEAN``            (optional). When ``true`` the node will only appear in the closest ``start_vid`` list.  Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrarely.
+============== ====================== =================================================
+
 
 
 Description of the return values
--------------------------------------------------------------------------------
+.................................................
 
 Returns set of ``(seq [, start_v], node, edge, cost, agg_cost)``
 
-:seq: ``INT`` row sequence.
-:start_v: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
-:node: ``BIGINT`` id of the node within the limits from ``start_v``.
-:edge: ``BIGINT`` id of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_v``.
-:cost: ``FLOAT`` cost to traverse ``edge``.
-:agg_cost:  ``FLOAT`` total cost from ``start_v`` to ``node``.
+============== =========== =================================================
+Column         Type        Description
+============== =========== =================================================
+**seq**        ``INTEGER`` Sequential value starting from **1**.
+**start_vid**  ``INTEGER`` Identifier of the starting vertex.
+**node**       ``BIGINT``  Identifier of the node in the path within the limits from ``start_vid``.
+**edge**       ``BIGINT``  Identifier of the edge used to arrive to ``node``. ``0`` when the ``node`` is the ``start_vid``.
+**cost**       ``FLOAT``   Cost to traverse ``edge``.
+**agg_cost**   ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
+============== =========== =================================================
 
 
+
+Additional Examples
+-------------------------------------------------------------------------------
 
 Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
---------------------------------------------------------------------------------------
+................................................................................................
 
 The examples in this section use the following :ref:`fig1`
 
@@ -120,7 +136,7 @@ The examples in this section use the following :ref:`fig1`
    :end-before: --q2
 
 Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-----------------------------------------------------------------------------------------
+................................................................................................
 
 The examples in this section use the following :ref:`fig2`
 
@@ -130,7 +146,7 @@ The examples in this section use the following :ref:`fig2`
    :end-before: --q3
 
 Examples for queries marked as ``directed`` with ``cost`` column
-----------------------------------------------------------------------------------------
+......................................................................................
 
 The examples in this section use the following :ref:`fig3`
 
@@ -141,7 +157,7 @@ The examples in this section use the following :ref:`fig3`
 
 
 Examples for queries marked as ``undirected`` with ``cost`` column
-----------------------------------------------------------------------------------------
+......................................................................................
 
 The examples in this section use the following :ref:`fig4`
 
@@ -149,19 +165,13 @@ The examples in this section use the following :ref:`fig4`
    :start-after: --q4
    :end-before: --q5
 
-The queries use the :ref:`sampledata` network.
-
-.. rubric:: History
-
-* Renamed in version 2.0.0
-* Added functionality in version 2.1
-
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`pgr_alphashape` - Alpha shape computation
 * :ref:`pgr_points_as_polygon` - Polygon around set of points
+* :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

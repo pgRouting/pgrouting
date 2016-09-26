@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_ksp (V 2.0) &mdash; pgRouting Manual (2.2)</title>
+    <title>pgr_ksp - Deprecated Signature &mdash; pgRouting Manual (2.3)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.2.4 (pgrouting-2.2.4)',
+        VERSION:     '2.3.0 (master)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,34 +25,43 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.2)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.3)" href="../../../index.html" />
     <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
-    <link rel="next" title="Developers’s Functions" href="../../common/doc/utilities/index.html" />
-    <link rel="prev" title="pgr_dijkstra (V 2.0)- Shortest Path Dijkstra" href="../../dijkstra/doc/pgr_dijkstra_v2.html" /> 
+    <link rel="next" title="pgr_drivingDistance - Deprecated Signature" href="../../driving_distance/doc/pgr_drivingDistance_v2.html" />
+    <link rel="prev" title="pgr_dijkstra - Deprecated Signature" href="../../dijkstra/doc/pgr_dijkstra_v2.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.2)</span></a></h1>
-        <h2 class="heading"><span>pgr_ksp (V 2.0)</span></h2>
+          <span>pgRouting Manual (2.3)</span></a></h1>
+        <h2 class="heading"><span>pgr_ksp - Deprecated Signature</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstra_v2.html">pgr_dijkstra (V 2.0)- Shortest Path Dijkstra</a>
+        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstra_v2.html">pgr_dijkstra - Deprecated Signature</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../common/doc/utilities/index.html">Developers&#8217;s Functions</a>&#160;&#160;»
+        <a href="../../driving_distance/doc/pgr_drivingDistance_v2.html">pgr_drivingDistance - Deprecated Signature</a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content">
         
         
-  <div class="section" id="pgr-ksp-v-2-0">
-<span id="pgr-ksp-v2"></span><h1>pgr_ksp (V 2.0)<a class="headerlink" href="#pgr-ksp-v-2-0" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pgr-ksp-deprecated-signature">
+<span id="pgr-ksp-v2"></span><h1>pgr_ksp - Deprecated Signature<a class="headerlink" href="#pgr-ksp-deprecated-signature" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This function signature is deprecated!!!</p>
+<ul class="last simple">
+<li>That means it has been replaced by new signature(s)</li>
+<li>This signature is no longer supported, and may be removed from future versions.</li>
+<li>All code that use this function signature should be converted to use its replacement <a class="reference internal" href="pgr_ksp.html#pgr-ksp"><em>pgr_ksp</em></a>.</li>
+</ul>
+</div>
 <div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
 <p><tt class="docutils literal"><span class="pre">pgr_ksp</span></tt> — Returns the &#8220;K&#8221; shortest paths.</p>
 </div>
 <div class="section" id="synopsis">
@@ -61,20 +70,6 @@
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_costResult3</span><span class="p">[]</span> <span class="n">pgr_ksp</span><span class="p">(</span><span class="k">sql</span> <span class="nb">text</span><span class="p">,</span> <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
                          <span class="n">paths</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">has_rcost</span> <span class="nb">boolean</span><span class="p">);</span>
 </pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>This signature is being deprecated in version 2.1, Please use it
-without the <tt class="docutils literal"><span class="pre">has_rcost</span></tt> flag instead.</p>
-<blockquote>
-<div><ul class="simple">
-<li>for undirected graph.
-<tt class="docutils literal"><span class="pre">pgr_ksp(sql,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">distance,</span> <span class="pre">directed:=false)</span></tt></li>
-<li>for directed graph.
-<tt class="docutils literal"><span class="pre">pgr_ksp(sql,</span> <span class="pre">source,</span> <span class="pre">target,</span> <span class="pre">distance,</span> <span class="pre">directed:=true)</span></tt></li>
-</ul>
-</div></blockquote>
-<p class="last">See <a class="reference internal" href="pgr_ksp.html#pgr-ksp"><em>pgr_ksp</em></a></p>
 </div>
 </div>
 <div class="section" id="description">
@@ -199,6 +194,7 @@ NOTICE:  Deprecated function
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><a class="reference internal" href="pgr_ksp.html#pgr-ksp"><em>pgr_ksp</em></a></li>
 <li><a class="reference internal" href="../../common/doc/types/cost_result.html#type-cost-result3"><em>pgr_costResult3[] - Multiple Path Results with Cost</em></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/K_shortest_path_routing">http://en.wikipedia.org/wiki/K_shortest_path_routing</a></li>
 </ul>
@@ -210,18 +206,18 @@ NOTICE:  Deprecated function
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstra_v2.html">pgr_dijkstra (V 2.0)- Shortest Path Dijkstra</a>
+        «&#160;&#160;<a href="../../dijkstra/doc/pgr_dijkstra_v2.html">pgr_dijkstra - Deprecated Signature</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="../../common/doc/utilities/index.html">Developers&#8217;s Functions</a>&#160;&#160;»
+        <a href="../../driving_distance/doc/pgr_drivingDistance_v2.html">pgr_drivingDistance - Deprecated Signature</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.2.4 (pgrouting-2.2.4).
-      Last updated on Aug 09, 2016.
+        &copy; Copyright pgRouting Contributors - Version 2.3.0.
+      Last updated on Sep 26, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
