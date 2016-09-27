@@ -58,9 +58,19 @@ Signature Summary
 
     pgr_dijkstra(edges_sql, start_vid,  end_vid)
     pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
-
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
         OR EMPTY SET
+
+.. NOTE:: This signature is deprecated
+
+    .. code-block:: sql
+
+        pgr_bdDijkstra(sql, source integer, target integer, directed boolean, has_rcost boolean)
+        RETURNS SET OF pgr_costResult
+
+    - See :ref:`pgr_costResult <type_cost_result>`
+    - See :ref:`bd_dijkstra_v2`
+
 
 
 Signatures
@@ -138,15 +148,26 @@ Column         Type       Description
 ============== ========== =================================================
 
 
+Deprecated Signature
+-------------------------------------------------------------------------------
+
+:Example: Using the deprecated signature
+
+The deprecated signature does not auto detects the existence of :code:`reverse_cost`
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
 
 
 See Also
 -------------------------------------------------------------------------------
 
+* The queries use the :ref:`sampledata` network.
 * :ref:`pgr_dijkstra`
 * http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
-* The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

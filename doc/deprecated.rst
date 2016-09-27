@@ -23,7 +23,7 @@ Deprecated on version 2.4
 Routing functions
 ...................
 
-- :ref:`bd_dijkstra_v2.0` - See new signatures of :ref:`pgr_bdDijkstra`
+- :ref:`bd_dijkstra_v2` - See new signatures of :ref:`pgr_bdDijkstra`
 
 Deprecated on version 2.3
 ----------------------------
