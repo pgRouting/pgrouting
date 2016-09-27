@@ -178,13 +178,16 @@ do_pgr_contractGraph(
          * Converting to C++ structures
          */
         std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
-        std::vector< int64_t > forbid(forbidden_vertices, forbidden_vertices + size_forbidden_vertices);
-        std::vector< int64_t > ordering(contraction_order, contraction_order + size_contraction_order);
+        std::vector< int64_t > forbid(
+                forbidden_vertices,
+                forbidden_vertices + size_forbidden_vertices);
+        std::vector< int64_t > ordering(
+                contraction_order,
+                contraction_order + size_contraction_order);
 
         /*
          * Extracting vertices of the graph
          */
-        // std::vector< pgrouting::CH_vertex > vertices(pgrouting::contraction::extract_vertices(edges));
         Identifiers<int64_t> remaining_vertices;
         std::vector< pgrouting::CH_edge > shortcut_edges;
 
@@ -224,8 +227,12 @@ do_pgr_contractGraph(
                     max_cycles,
                     remaining_vertices, shortcut_edges,
                     log, err);
-            (*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
+
+            (*return_tuples) = pgr_alloc(
+                    remaining_vertices.size()+shortcut_edges.size(),
+                    (*return_tuples));
             (*return_count) = remaining_vertices.size()+shortcut_edges.size();
+
             get_postgres_result(
                     digraph,
                     remaining_vertices,
@@ -239,7 +246,10 @@ do_pgr_contractGraph(
                     max_cycles,
                     remaining_vertices, shortcut_edges,
                     log, err);
-            (*return_tuples) = pgr_alloc(remaining_vertices.size()+shortcut_edges.size(), (*return_tuples));
+
+            (*return_tuples) = pgr_alloc(
+                    remaining_vertices.size()+shortcut_edges.size(),
+                    (*return_tuples));
             (*return_count) = remaining_vertices.size()+shortcut_edges.size();
 
             get_postgres_result(

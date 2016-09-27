@@ -49,6 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <map>
 #include "../../common/src/pgr_base_graph.hpp"
+#include "../../common/src/pgr_alloc.hpp"
 
 
 namespace pgrouting {
@@ -81,7 +82,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      typedef typename boost::graph_traits < G >::edge_iterator E_i;
      typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
      typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
-     typedef typename boost::graph_traits < G >::degree_size_type       degree_size_type;
+     typedef typename boost::graph_traits < G >::degree_size_type
+         degree_size_type;
 
      Identifiers<V> removed_vertices;
      std::vector<T_E> shortcuts;
@@ -96,7 +98,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      /*!
        Prepares the _graph_ to be of type *gtype* with vertices as *vertices*
        */
-     Pgr_contractionGraph< G , T_V, T_E >(const std::vector< T_V > &vertices, graphType gtype)
+     Pgr_contractionGraph< G , T_V, T_E >(
+             const std::vector< T_V > &vertices,
+             graphType gtype)
          : Pgr_base_graph< G , T_V, T_E >(vertices, gtype) {
          }
 
@@ -148,8 +152,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      void get_ids(int64_t **contracted_vertices,
              int &contracted_vertices_size,
              Identifiers<int64_t> boost_ids) {
-         contracted_vertices_size = (int)boost_ids.size();
-         (*contracted_vertices) = (int64_t*)malloc(sizeof(int64_t)*contracted_vertices_size);
+         contracted_vertices_size = static_cast<int>(boost_ids.size());
+         (*contracted_vertices) = pgr_alloc(
+                 sizeof(int64_t) * boost_ids.size(),
+                 (*contracted_vertices));
          int64_t count = 0;
          for (auto id : boost_ids) {
              (*contracted_vertices)[count++] = this->graph[id].id;
@@ -160,7 +166,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        @param [in] remaining_vertices The vector of vertices remaining after contraction
        */
      void get_remaining_vertices(std::vector<T_V>& remaining_vertices) {
-         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+         for (auto vi = vertices(this->graph).first;
+                 vi != vertices(this->graph).second;
+                 ++vi) {
              if (!removed_vertices.has(*vi)) {
                  remaining_vertices.push_back(this->graph[*vi]);
              }
@@ -172,8 +180,11 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        */
      void get_changed_vertices(Identifiers<int64_t>& remaining_vertices) {
          // log << "remaining_vertices\n";
-         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
-             if (!removed_vertices.has(*vi) && this->graph[*vi].has_contracted_vertices()) {
+         for (auto vi = vertices(this->graph).first;
+                 vi != vertices(this->graph).second;
+                 ++vi) {
+             if (!removed_vertices.has(*vi)
+                     && this->graph[*vi].has_contracted_vertices()) {
                  remaining_vertices += this->graph[*vi].id;
              }
          }
@@ -199,7 +210,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          EO_i out_i, out_end;
          E min_cost_edge;
          double min_cost = std::numeric_limits<double>::max();
-         for (boost::tie(out_i, out_end) = boost::out_edges(source, this->graph);
+         for (boost::tie(out_i, out_end) =
+                 boost::out_edges(source, this->graph);
                  out_i != out_end; ++out_i) {
              auto e = *out_i;
              if (this->target(e) == destination) {
@@ -226,7 +238,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 #endif
              degree_size_type degree = 0;
              EI_i in_i, in_end;
-             for (boost::tie(in_i, in_end) = boost::in_edges(vertex, this->graph);
+             for (boost::tie(in_i, in_end) =
+                     boost::in_edges(vertex, this->graph);
                      in_i != in_end; ++in_i) {
                  if (this->source(*in_i) == neighbor) {
                      degree++;
@@ -234,7 +247,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              }
              return degree;
 #ifdef TODO
-         };
+         }
          /*
           * undirected: in_degree = out_degree
           */
@@ -253,7 +266,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      degree_size_type out_degree_to_vertex(V vertex, V neighbor) {
          degree_size_type degree = 0;
          EO_i out_i, out_end;
-         for (boost::tie(out_i, out_end) = boost::out_edges(vertex, this->graph);
+         for (boost::tie(out_i, out_end) =
+                 boost::out_edges(vertex, this->graph);
                  out_i != out_end; ++out_i) {
 #ifdef TODO
              if (is_directed()) {
@@ -286,14 +300,17 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        */
      void print_graph(std::ostringstream &log) {
          EO_i out, out_end;
-         for (auto vi = vertices(this->graph).first; vi != vertices(this->graph).second; ++vi) {
+         for (auto vi = vertices(this->graph).first;
+                 vi != vertices(this->graph).second;
+                 ++vi) {
              if ((*vi) >= this->m_num_vertices) break;
              log << this->graph[*vi].id << "(" << (*vi) << ")"
                  << this->graph[*vi].contracted_vertices() << std::endl;
              log << " out_edges_of(" << this->graph[*vi].id << "):";
              for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
                      out != out_end; ++out) {
-                 log << ' ' << this->graph[*out].id << "=(" << this->graph[this->source(*out)].id
+                 log << ' ' << this->graph[*out].id
+                     << "=(" << this->graph[this->source(*out)].id
                      << ", " << this->graph[this->target(*out)].id << ") = "
                      <<  this->graph[*out].cost <<"\t";
              }
@@ -312,8 +329,11 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              int &contracted_vertices_size, int64_t vid) {
          if (!this->has_vertex(vid)) return;
          V v = this->get_V(vid);
-         contracted_vertices_size = (int)this->graph[v].contracted_vertices().size();
-         (*contracted_vertices) = (int64_t*)malloc(sizeof(int64_t)*contracted_vertices_size);
+         contracted_vertices_size =
+             static_cast<int>(this->graph[v].contracted_vertices().size());
+         (*contracted_vertices) = pgr_alloc(
+                 sizeof(int64_t) * this->graph[v].contracted_vertices().size(),
+                 (*contracted_vertices));
          int64_t count = 0;
          for (auto vertex : this->graph[v].contracted_vertices()) {
              (*contracted_vertices)[count++] = this->graph[vertex].id;
@@ -355,8 +375,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          if (edge.cost < 0)
              return;
 
-         pgassert(this->vertices_map.find(edge.source) != this->vertices_map.end());
-         pgassert(this->vertices_map.find(edge.target) != this->vertices_map.end());
+         pgassert(this->vertices_map.find(edge.source)
+                 != this->vertices_map.end());
+         pgassert(this->vertices_map.find(edge.target)
+                 != this->vertices_map.end());
 
          auto vm_s = this->get_V(edge.source);
          auto vm_t = this->get_V(edge.target);
@@ -381,7 +403,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      void disconnect_vertex(std::ostringstream &log, V vertex) {
          T_E d_edge;
          EO_i out, out_end;
-         log << "Disconnecting current vertex " << this->graph[vertex].id << "\n";
+         log << "Disconnecting current vertex "
+             << this->graph[vertex].id << "\n";
          removed_vertices += vertex;
          //  store the edges that are going to be removed
          for (boost::tie(out, out_end) = out_edges(vertex, this->graph);

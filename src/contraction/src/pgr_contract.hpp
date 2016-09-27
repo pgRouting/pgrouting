@@ -112,20 +112,27 @@ class Pgr_contract {
                         debug << "Finished cycle " << i+1 << std::endl;
                         break;
                     default:
-                        debug << "contraction "<< front << " asked" << std::endl;
+                        debug << "contraction "<< front
+                            << " asked" << std::endl;
                         if (front == 1) {
-                            debug << "Graph before dead end contraction" << std::endl;
+                            debug << "Graph before dead end contraction"
+                                << std::endl;
                             graph.print_graph(debug);
-                            debug << "Performing dead end contraction" << std::endl;
+                            debug << "Performing dead end contraction"
+                                << std::endl;
                             perform_deadEnd(graph, forbidden_vertices, debug);
-                            debug << "Graph after dead end contraction" << std::endl;
+                            debug << "Graph after dead end contraction"
+                                << std::endl;
                             graph.print_graph(debug);
                         } else if (front == 2) {
-                            debug << "Graph before linear contraction" << std::endl;
+                            debug << "Graph before linear contraction"
+                                << std::endl;
                             graph.print_graph(debug);
-                            debug << "Performing linear contraction" << std::endl;
+                            debug << "Performing linear contraction"
+                                << std::endl;
                             perform_linear(graph, forbidden_vertices, debug);
-                            debug << "Graph after linear contraction" << std::endl;
+                            debug << "Graph after linear contraction"
+                                << std::endl;
                             graph.print_graph(debug);
                         }
                         contract_order.pop_front();

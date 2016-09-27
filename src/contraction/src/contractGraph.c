@@ -27,9 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include <postgres.h>
+#include <funcapi.h>
 #include "utils/array.h"
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
@@ -37,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #include "utils/lsyscache.h"
 #include "utils/builtins.h"
-#include "fmgr.h"
 
 #ifndef INT8ARRAYOID
 #define INT8ARRAYOID    1016
@@ -92,9 +90,10 @@ process(char* edges_sql,
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    // TODO (Rohith) decide if is a requirement (ERROR) or not
+
+    // TODO(Rohith) decide if is a requirement (ERROR) or not
     if (num_cycles < 1) {
-        // TODO (Rohith) if ERROR free edges_sql, and the arrays
+        // TODO(Rohith) if ERROR free edges_sql, and the arrays
         PGR_DBG("Required: at least one cycle\n");
         (*result_count) = 0;
         (*result_tuples) = NULL;
@@ -171,13 +170,17 @@ contractGraph(PG_FUNCTION_ARGS) {
          **********************************************************************/ 
 
         forbidden_vertices = (int64_t*)
-            pgr_get_bigIntArray_allowEmpty(&size_forbidden_vertices , PG_GETARG_ARRAYTYPE_P(3));
+            pgr_get_bigIntArray_allowEmpty(
+                    &size_forbidden_vertices,
+                    PG_GETARG_ARRAYTYPE_P(3));
         PGR_DBG("size_forbidden_vertices %ld", size_forbidden_vertices);
 
         contraction_order = (int64_t*)
-            pgr_get_bigIntArray(&size_contraction_order, PG_GETARG_ARRAYTYPE_P(1));
+            pgr_get_bigIntArray(
+                    &size_contraction_order,
+                    PG_GETARG_ARRAYTYPE_P(1));
         PGR_DBG("size_contraction_order %ld ", size_contraction_order);
-#if 1
+
         PGR_DBG("Calling process");
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
@@ -189,7 +192,6 @@ contractGraph(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
-#endif
         PGR_DBG("Cleaning arrays");
         free(contraction_order);
         free(forbidden_vertices);
@@ -230,7 +232,8 @@ contractGraph(PG_FUNCTION_ARGS) {
         contracted_vertices_array = (Datum *)palloc(sizeof(Datum) *
                 (size_t)contracted_vertices_size);
         for (i = 0; i < contracted_vertices_size; ++i) {
-            PGR_DBG("Storing contracted vertex %ld", result_tuples[call_cntr].contracted_vertices[i]);
+            PGR_DBG("Storing contracted vertex %ld",
+                    result_tuples[call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] =
                 Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
@@ -259,7 +262,6 @@ contractGraph(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[call_cntr].source);
         values[5] = Int64GetDatum(result_tuples[call_cntr].target);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
-        // values[7] = Int32GetDatum(result_tuples[call_cntr].contracted_vertices_size);
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

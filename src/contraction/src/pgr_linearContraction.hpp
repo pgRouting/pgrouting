@@ -114,10 +114,11 @@ template < class G >
 void Pgr_linearContraction<G>::calculateVertices(G &graph) {
     debug << "Calculating vertices\n";
     V_i vi;
-    for (vi = vertices(graph.graph).first; vi != vertices(graph.graph).second; ++vi) {
+    for (vi = vertices(graph.graph).first;
+            vi != vertices(graph.graph).second;
+            ++vi) {
         debug << "Checking vertex " << graph.graph[(*vi)].id << '\n';
         if (is_linear(graph, *vi)) {
-            // debug << "Adding " << graph.graph[(*vi)].id << " to linear" << '\n';
             linearVertices += (*vi);
         }
     }
@@ -146,16 +147,19 @@ void Pgr_linearContraction<G>::doContraction(G &graph) {
             linearVertices -= current_vertex;
             continue;
         }
-        Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(current_vertex);
+        Identifiers<V> adjacent_vertices =
+            graph.find_adjacent_vertices(current_vertex);
         pgassert(adjacent_vertices.size() == 2);
         V vertex_1 = adjacent_vertices[0];
         V vertex_2 = adjacent_vertices[1];
         contraction_debug << "Adjacent vertices\n";
-        contraction_debug << graph[vertex_1].id << ", " << graph[vertex_2].id << std::endl;
+        contraction_debug << graph[vertex_1].id
+            << ", " << graph[vertex_2].id
+            << std::endl;
 
         if (graph.m_gType == DIRECTED) {
-            if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0
-                    && graph.in_degree_from_vertex(vertex_2, current_vertex) > 0) {
+            if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0 &&
+                    graph.in_degree_from_vertex(vertex_2, current_vertex) > 0) {
                 E e1 = graph.get_min_cost_edge(vertex_1,
                         current_vertex);
                 E e2 = graph.get_min_cost_edge(current_vertex,
@@ -163,8 +167,8 @@ void Pgr_linearContraction<G>::doContraction(G &graph) {
                 add_shortcut(graph, current_vertex, e1, e2);
             }
 
-            if (graph.out_degree_to_vertex(vertex_2, current_vertex) > 0
-                    && graph.in_degree_from_vertex(vertex_1, current_vertex) > 0) {
+            if (graph.out_degree_to_vertex(vertex_2, current_vertex) > 0 &&
+                    graph.in_degree_from_vertex(vertex_1, current_vertex) > 0) {
                 E e1 = graph.get_min_cost_edge(vertex_2,
                         current_vertex);
                 E e2 = graph.get_min_cost_edge(current_vertex,
@@ -172,8 +176,8 @@ void Pgr_linearContraction<G>::doContraction(G &graph) {
                 add_shortcut(graph, current_vertex, e1, e2);
             }
         } else if (graph.m_gType == UNDIRECTED) {
-            if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0
-                    && graph.in_degree_from_vertex(vertex_2, current_vertex) > 0) {
+            if (graph.out_degree_to_vertex(vertex_1, current_vertex) > 0 &&
+                    graph.in_degree_from_vertex(vertex_2, current_vertex) > 0) {
                 contraction_debug << "UNDIRECTED graph before contraction\n";
                 graph.print_graph(contraction_debug);
                 E e1 = graph.get_min_cost_edge(vertex_1,
@@ -215,7 +219,7 @@ void Pgr_linearContraction<G>::doContraction(G &graph) {
 
 template < class G >
 void
- Pgr_linearContraction<G>::add_shortcut(
+Pgr_linearContraction<G>::add_shortcut(
         G &graph, V vertex,
         E incoming_edge,
         E outgoing_edge) {
