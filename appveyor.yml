@@ -5,12 +5,7 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
-version: 2.4.{build}
-
-branches:
-  only:
-    - master
-    - develop
+version: 2.4.{build}.{branch}
 
 image: Visual Studio 2013
 configuration: Release
