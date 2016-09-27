@@ -298,7 +298,7 @@ sub process_single_test{
             next;
         };
     }
-    print PSQL "set client_min_messages to NOTICE;\n";
+    #print PSQL "set client_min_messages to NOTICE;\n";
     print PSQL "set client_min_messages to WARNING;\n" if $ignore;
     print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
 

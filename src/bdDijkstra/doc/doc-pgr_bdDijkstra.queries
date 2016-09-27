@@ -34,7 +34,7 @@ SELECT * FROM pgr_bdDijkstra(
     false, 
     false  
 );
-NOTICE:  Deprecated function
+NOTICE:  Deprecated Signature of pgr_bdDijkstra
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   2 |   4 |    1

@@ -6,7 +6,7 @@ SET
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',
     2, 3, false, false);
-NOTICE:  Deprecated function
+NOTICE:  Deprecated Signature of pgr_bdDijkstra
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   2 |   4 |    1
@@ -19,7 +19,7 @@ NOTICE:  Deprecated function
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     2, 3, true, true);
-NOTICE:  Deprecated function
+NOTICE:  Deprecated Signature of pgr_bdDijkstra
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   2 |   4 |    1
