@@ -9,7 +9,7 @@
 1|1|2|2|1|0
 2|2|3|-1|0|1
 -- q3
-NOTICE:  Deprecated function
+NOTICE:  Deprecated Signature of pgr_bdDijkstra
 0|2|4|1
 1|5|8|1
 2|6|5|1

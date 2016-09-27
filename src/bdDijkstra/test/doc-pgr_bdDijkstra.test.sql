@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo -- q1
 SELECT * FROM pgr_bdDijkstra(
@@ -13,6 +12,7 @@ SELECT * FROM pgr_bdDijkstra(
     false
 );
 \echo -- q3
+SET client_min_messages TO notice;
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
     2, 3,
@@ -21,4 +21,3 @@ SELECT * FROM pgr_bdDijkstra(
 );
 \echo -- q4
 
-ROLLBACK;
