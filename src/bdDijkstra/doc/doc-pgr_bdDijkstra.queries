@@ -1,5 +1,3 @@
-BEGIN;
-BEGIN
 -- q1
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -19,7 +17,7 @@ SELECT * FROM pgr_bdDijkstra(
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     2, 3,
-    FALSE
+    false
 );
  seq | path_seq | node | edge | cost | agg_cost 
 -----+----------+------+------+------+----------
@@ -28,5 +26,21 @@ SELECT * FROM pgr_bdDijkstra(
 (2 rows)
 
 -- q3
-ROLLBACK;
-ROLLBACK
+SET client_min_messages TO notice;
+SET
+SELECT * FROM pgr_bdDijkstra(
+    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT FROM edge_table',
+    2, 3,
+    false, 
+    false  
+);
+NOTICE:  Deprecated function
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   2 |   4 |    1
+   1 |   5 |   8 |    1
+   2 |   6 |   5 |    1
+   3 |   3 |  -1 |    0
+(4 rows)
+
+-- q4

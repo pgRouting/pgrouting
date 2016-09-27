@@ -33,7 +33,7 @@ DECLARE
 has_reverse BOOLEAN;
 sql TEXT;
 BEGIN
-    RAISE NOTICE 'Deprecated function';
+    RAISE NOTICE 'Deprecated Signature of pgr_bdDijkstra';
     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
     sql = edges_sql;
     IF (has_reverse != has_rcost) THEN

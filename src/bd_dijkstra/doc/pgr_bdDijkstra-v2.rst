@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _bd_dijkstra_v2.0:
+.. _bd_dijkstra_v2:
 
 pgr_bdDijkstra  - Deprecated Signature
 ===============================================================================
@@ -92,7 +92,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-* :ref:`bd_astar`
+* :ref:`pgr_bddijkstra`
 * http://en.wikipedia.org/wiki/Bidirectional_search
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 

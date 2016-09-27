@@ -107,6 +107,7 @@ class Pgr_ksp {
      typedef std::set<Path, compPaths> pSet;
      pSet m_ResultSet;  //!< ordered set of shortest paths
      pSet m_Heap;  //!< the heap
+
      std::ostringstream log;
 };
 
