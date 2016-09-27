@@ -159,7 +159,7 @@ void Pgr_ksp< G >::executeYen(G &graph, int K) {
         m_ResultSet.insert(curr_result_path);
         m_Heap.erase(m_Heap.begin());
         /*
-         * whithout the next line withpointsKSP hungs with:
+         * without the next line withpointsKSP hungs with:
          *  c++ 4.6
          *  Debug mode
          */

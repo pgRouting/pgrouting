@@ -67,7 +67,7 @@ static void process_contraction(
         std::ostringstream &err) {
     graph.insert_edges(edges);
     /*
-     * this check does not ignore vertices ids that dont belong to the graph
+     * this check does not ignore vertices ids that do not belong to the graph
      */
     log << "Checking for valid forbidden vertices\n";
     for (const auto vertex : forbidden_vertices) {
