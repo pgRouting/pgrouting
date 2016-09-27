@@ -38,8 +38,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./ksp_driver.h"
 
-PG_FUNCTION_INFO_V1(kshortest_path);
 PGDLLEXPORT Datum kshortest_path(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(kshortest_path);
 
 static
 void compute(
