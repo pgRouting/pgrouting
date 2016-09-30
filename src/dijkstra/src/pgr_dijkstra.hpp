@@ -175,7 +175,7 @@ class Pgr_dijkstra
              std::vector< int64_t > start_vertex,
               std::vector< int64_t > end_vertex) {
       // a call to 1 to many is faster for each of the sources
-      for (size_t i; i < start_vertex.size(); ++i) {
+      for (size_t i = 0; i < start_vertex.size(); ++i) {
          dijkstra(paths, start_vertex[i], end_vertex);
       }
       return;
