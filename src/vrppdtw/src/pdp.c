@@ -65,12 +65,13 @@ static char *text2char(text *in)
  static int
   finish(int code, int ret)
          {
-                    code = SPI_finish();
+              return SPI_finish();
+#if 0
                        if (code  != SPI_OK_FINISH ) {
                                     elog(ERROR,"couldn't disconnect from SPI");
-                                         return -1 ;
                                             }
                           return ret;
+#endif
                            }
  
 

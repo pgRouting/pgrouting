@@ -315,9 +315,9 @@ class Pgr_base_graph {
     void get_path(std::deque< Path > &paths, std::set< V > sources, V &target) const{
       // used with multiple sources
       Path path;
-      for (const auto source: sources) {
+      for (size_t i; i < sources.size(); ++i) {
         path.clear();
-        get_path(path, source, target);
+        get_path(path, sources[i], target);
         paths.push_back(path);
       }
     }
