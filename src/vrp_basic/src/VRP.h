@@ -68,17 +68,17 @@ typedef struct vrp_result_element
 
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
-int find_vrp_solution(vrp_vehicles_t *vehicles, int vehicle_count, 
-					  vrp_orders_t *orders, int order_count,
-					  vrp_cost_element_t *costmatrix, int cost_count,
+int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count, 
+					  vrp_orders_t *orders, size_t order_count,
+					  vrp_cost_element_t *costmatrix, size_t cost_count,
 					  int depot_id,
 					  vrp_result_element_t **result, int *result_count, char **err_msg);
 
 #ifdef __cplusplus
-extern "C"
+}
 #endif
 
 #endif
