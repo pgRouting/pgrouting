@@ -25,7 +25,7 @@
 
 //using namespace std;
 
-Datum apsp_warshall(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum apsp_warshall(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
@@ -321,7 +321,7 @@ static int compute_apsp_warshall(char* sql, bool directed,
 
 
 PG_FUNCTION_INFO_V1(apsp_warshall);
-Datum
+PGDLLEXPORT Datum
 apsp_warshall(PG_FUNCTION_ARGS)
 {
   FuncCallContext     *funcctx;
@@ -387,7 +387,7 @@ apsp_warshall(PG_FUNCTION_ARGS)
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one    
  
@@ -405,18 +405,18 @@ apsp_warshall(PG_FUNCTION_ARGS)
       */
     
       values = palloc(4 * sizeof(Datum));
-      nulls = palloc(4 * sizeof(char));
+      nulls = palloc(4 * sizeof(bool));
 
       values[0] = Int32GetDatum(call_cntr);
-      nulls[0] = ' ';
+      nulls[0] = false;
       values[1] = Int32GetDatum(pair[call_cntr].src_vertex_id);
-      nulls[1] = ' ';
+      nulls[1] = false;
       values[2] = Int32GetDatum(pair[call_cntr].dest_vertex_id);
-      nulls[2] = ' ';
+      nulls[2] = false;
       values[3] = Float8GetDatum(pair[call_cntr].cost);
-      nulls[3] = ' ';
+      nulls[3] = false;
 		      
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);
