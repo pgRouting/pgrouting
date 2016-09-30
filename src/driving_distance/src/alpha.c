@@ -350,7 +350,7 @@ PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS)
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
       double x;
       double y;
 
@@ -368,7 +368,7 @@ PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS)
       */
     
       values = palloc(2 * sizeof(Datum));
-      nulls = palloc(2 * sizeof(char));
+      nulls = palloc(2 * sizeof(bool));
 
       x = res[call_cntr].x;
       y = res[call_cntr].y;
@@ -376,15 +376,15 @@ PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS)
       {
         values[0] = 0;
         values[1] = 0;
-        nulls[0] = 'n';
-        nulls[1] = 'n';
+        nulls[0] = true;
+        nulls[1] = true;
       }
       else
       {
         values[0] = Float8GetDatum(x);
         values[1] = Float8GetDatum(y);
-        nulls[0] = ' ';
-        nulls[1] = ' ';
+        nulls[0] = false;
+        nulls[1] = false;
       }
 	
       DBG("Heap making\n");
