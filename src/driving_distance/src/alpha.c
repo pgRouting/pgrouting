@@ -74,7 +74,7 @@ long profipts1, profipts2, profopts;
 #endif // PROFILE
 
 
-Datum alphashape(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
@@ -289,7 +289,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, int *res
 
 PG_FUNCTION_INFO_V1(alphashape);
 
-Datum alphashape(PG_FUNCTION_ARGS)
+PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS)
 {
   FuncCallContext      *funcctx;
   int                  call_cntr;
@@ -389,7 +389,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
 	
       DBG("Heap making\n");
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       DBG("Datum making\n");
 

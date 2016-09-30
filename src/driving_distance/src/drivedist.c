@@ -83,19 +83,11 @@ static int compute_driving_distance(char* sql, int64_t start_vertex,
   return pgr_finish(SPIcode, ret);
 }
 
-#ifndef _MSC_VER
-Datum driving_distance(PG_FUNCTION_ARGS);
-#else  // _MSC_VER
 PGDLLEXPORT Datum driving_distance(PG_FUNCTION_ARGS);
-#endif  // _MSC_VER
 
 PG_FUNCTION_INFO_V1(driving_distance);
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 driving_distance(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   int                  call_cntr;
@@ -151,23 +143,23 @@ driving_distance(PG_FUNCTION_ARGS) {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       values = palloc(5 * sizeof(Datum));
-      nulls = palloc(5 * sizeof(char));
+      nulls = palloc(5 * sizeof(bool));
 
       values[0] = Int32GetDatum(ret_path[call_cntr].seq + 1);
-      nulls[0] = ' ';
+      nulls[0] = false;
       values[1] = Int64GetDatum(ret_path[call_cntr].vertex);
-      nulls[1] = ' ';
+      nulls[1] = false;
       values[2] = Int64GetDatum(ret_path[call_cntr].edge);
-      nulls[2] = ' ';
+      nulls[2] = false;
       values[3] = Float8GetDatum(ret_path[call_cntr].cost);
-      nulls[3] = ' ';
+      nulls[3] = false;
       values[4] = Float8GetDatum(ret_path[call_cntr].tot_cost);
-      nulls[4] = ' ';
+      nulls[4] = false;
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);
