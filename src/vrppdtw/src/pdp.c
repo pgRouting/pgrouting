@@ -65,13 +65,12 @@ static char *text2char(text *in)
  static int
   finish(int code, int ret)
          {
-              return SPI_finish();
-#if 0
+                    code = SPI_finish();
                        if (code  != SPI_OK_FINISH ) {
                                     elog(ERROR,"couldn't disconnect from SPI");
+                                         return -1 ;
                                             }
                           return ret;
-#endif
                            }
  
 
@@ -439,21 +438,21 @@ vrppdtw(PG_FUNCTION_ARGS)
                 HeapTuple    tuple;
                 Datum        result;
                 Datum *values;
-                char* nulls;
+                bool* nulls;
 
                 DBG("Till hereee ");
                 values = palloc(4 * sizeof(Datum));
-                nulls = palloc(4 * sizeof(char));
+                nulls = palloc(4 * sizeof(bool));
 
                 values[0] = Int32GetDatum(results[call_cntr].seq);
-                nulls[0] = ' ';
+                nulls[0] = false;
                 values[1] = Int32GetDatum(results[call_cntr].rid);
-                nulls[1] = ' ';
+                nulls[1] = false;
                 values[2] = Int32GetDatum(results[call_cntr].nid);
-                nulls[2] = ' ';
+                nulls[2] = false;
                 values[3] = Int32GetDatum(results[call_cntr].cost);
-                nulls[3] = ' ';
-                tuple = heap_formtuple(tuple_desc, values, nulls);
+                nulls[3] = false;
+                tuple = heap_form_tuple(tuple_desc, values, nulls);
 
                 /* make the tuple into a datum */
                 result = HeapTupleGetDatum(tuple);
