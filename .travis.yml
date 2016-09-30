@@ -20,7 +20,7 @@ branches:
   only:
     - master
     - develop
-    - release/2.2.1
+    - release/2.1.1
 
 addons:
   postgresql: "9.2"
