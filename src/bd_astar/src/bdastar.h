@@ -46,7 +46,7 @@ typedef struct path_element
 
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
   int bdastar_wrapper(edge_astar_t *edges, unsigned int count, int maxnode,
@@ -54,7 +54,7 @@ extern "C"
                   bool directed, bool has_reverse_cost,
                   path_element_t **path, int *path_count, char **err_msg);
 #ifdef __cplusplus
-extern "C"
+}
 #endif
 
 #endif

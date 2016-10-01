@@ -37,7 +37,7 @@
 PG_MODULE_MAGIC;
 #endif
 
-Datum shortest_path(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum shortest_path(PG_FUNCTION_ARGS);
 
 static int compute_shortest_path(char* sql, int64_t start_vertex,
                                  int64_t end_vertex, bool directed,
@@ -115,7 +115,7 @@ static int compute_shortest_path(char* sql, int64_t start_vertex,
 
 
 PG_FUNCTION_INFO_V1(shortest_path);
-Datum
+PGDLLEXPORT Datum
 shortest_path(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   int                  call_cntr;
@@ -168,25 +168,25 @@ shortest_path(PG_FUNCTION_ARGS) {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       values = palloc(6 * sizeof(Datum));
-      nulls = palloc(6 * sizeof(char));
+      nulls = palloc(6 * sizeof(bool));
 
       values[0] = Int32GetDatum(ret_path[call_cntr].seq);
-      nulls[0] = ' ';
+      nulls[0] = false;
       values[1] = Int32GetDatum(ret_path[call_cntr].seq);
-      nulls[1] = ' ';
+      nulls[1] = false;
       values[2] = Int64GetDatum(ret_path[call_cntr].vertex);
-      nulls[2] = ' ';
+      nulls[2] = false;
       values[3] = Int64GetDatum(ret_path[call_cntr].edge);
-      nulls[3] = ' ';
+      nulls[3] = false;
       values[4] = Float8GetDatum(ret_path[call_cntr].cost);
-      nulls[4] = ' ';
+      nulls[4] = false;
       values[5] = Float8GetDatum(ret_path[call_cntr].tot_cost);
-      nulls[5] = ' ';
+      nulls[5] = false;
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);

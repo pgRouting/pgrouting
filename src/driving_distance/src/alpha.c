@@ -74,7 +74,7 @@ long profipts1, profipts2, profopts;
 #endif // PROFILE
 
 
-Datum alphashape(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
@@ -289,7 +289,7 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, int *res
 
 PG_FUNCTION_INFO_V1(alphashape);
 
-Datum alphashape(PG_FUNCTION_ARGS)
+PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS)
 {
   FuncCallContext      *funcctx;
   int                  call_cntr;
@@ -350,7 +350,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
       double x;
       double y;
 
@@ -368,7 +368,7 @@ Datum alphashape(PG_FUNCTION_ARGS)
       */
     
       values = palloc(2 * sizeof(Datum));
-      nulls = palloc(2 * sizeof(char));
+      nulls = palloc(2 * sizeof(bool));
 
       x = res[call_cntr].x;
       y = res[call_cntr].y;
@@ -376,20 +376,20 @@ Datum alphashape(PG_FUNCTION_ARGS)
       {
         values[0] = 0;
         values[1] = 0;
-        nulls[0] = 'n';
-        nulls[1] = 'n';
+        nulls[0] = true;
+        nulls[1] = true;
       }
       else
       {
         values[0] = Float8GetDatum(x);
         values[1] = Float8GetDatum(y);
-        nulls[0] = ' ';
-        nulls[1] = ' ';
+        nulls[0] = false;
+        nulls[1] = false;
       }
 	
       DBG("Heap making\n");
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       DBG("Datum making\n");
 

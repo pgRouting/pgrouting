@@ -43,11 +43,15 @@ typedef struct apsp_element
 
 //TODO modify
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 int 
 boost_apsp(edge_t *edges, unsigned int edge_count, const int node_count,
 	       bool directed, bool has_reverse_cost,
 	       apsp_element_t **pair, int *pair_count, char **err_msg);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

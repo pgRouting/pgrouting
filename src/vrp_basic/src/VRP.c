@@ -78,7 +78,7 @@ long profipts1, profipts2, profopts;
 
 // ------------------------------------------------------------------------
 
-Datum vrp(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum vrp(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
@@ -781,7 +781,7 @@ static int solve_vrp(char* orders_sql, char* vehicles_sql,
 }
 
 PG_FUNCTION_INFO_V1(vrp);
-Datum
+PGDLLEXPORT Datum
 vrp(PG_FUNCTION_ARGS)
 {
 	FuncCallContext     *funcctx;
@@ -870,26 +870,26 @@ vrp(PG_FUNCTION_ARGS)
 		HeapTuple    tuple;
 		Datum        result;
 		Datum *values;
-		char* nulls;
+		bool* nulls;
 
 		values = palloc(5 * sizeof(Datum));
-		nulls = palloc(5 * sizeof(char));
+		nulls = palloc(5 * sizeof(bool));
 
 		values[0] = Int32GetDatum(path[call_cntr].order_id);   // order id
-		nulls[0] = ' ';
+		nulls[0] = false;
 		values[1] = Int32GetDatum(path[call_cntr].order_pos);  // order pos
-		nulls[1] = ' ';
+		nulls[1] = false;
 		values[2] = Int32GetDatum(path[call_cntr].vehicle_id); // vehicle id
-		nulls[2] = ' ';
+		nulls[2] = false;
 		values[3] = Int32GetDatum(path[call_cntr].arrival_time); // arrival time
-		nulls[3] = ' ';
+		nulls[3] = false;
 		//values[4] = TimeTzADTPGetDatum(&path[call_cntr].time);
 		values[4] = Int32GetDatum(path[call_cntr].depart_time);  // departure time
-		nulls[4] = ' ';
+		nulls[4] = false;
 
 		// DBG("Heap making\n");
 		//elog(NOTICE,"Result %d %d %d", call_cntr, path[call_cntr].order_id, max_calls);
-		tuple = heap_formtuple(tuple_desc, values, nulls);
+		tuple = heap_form_tuple(tuple_desc, values, nulls);
 
 		//DBG("Datum making\n");
 

@@ -159,10 +159,11 @@ class Pgr_dijkstra
       }
 
       // perform the algorithm // a call for each of the sources
-      for (const auto &v_source : v_sources) {
+      auto it = v_sources.begin();
+      for (;  it != v_sources.end(); ++it) {
          Path path;
-         dijkstra_1_to_1(v_source, v_target);
-         this->get_path(path, v_source, v_target);
+         dijkstra_1_to_1(*it, v_target);
+         this->get_path(path, *it, v_target);
          paths.push_back(path);
       }
       return;
@@ -174,8 +175,8 @@ class Pgr_dijkstra
              std::vector< int64_t > start_vertex,
               std::vector< int64_t > end_vertex) {
       // a call to 1 to many is faster for each of the sources
-      for (const auto &start : start_vertex) {
-         dijkstra(paths, start, end_vertex);
+      for (size_t i = 0; i < start_vertex.size(); ++i) {
+         dijkstra(paths, start_vertex[i], end_vertex);
       }
       return;
     }
@@ -238,10 +239,11 @@ class Pgr_dijkstra
       }
 
       // perform the algorithm
-      for (const auto &v_source : v_sources) {
-        dijkstra_1_to_distance(v_source, distance);
+      auto it = v_sources.begin();
+      for (;  it != v_sources.end(); ++it) {
+        dijkstra_1_to_distance(*it, distance);
         Path path;
-        this->get_nodesInDistance(path, v_source, distance);
+        this->get_nodesInDistance(path, *it, distance);
         paths.push_back(path);
       }
 

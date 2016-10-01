@@ -100,9 +100,9 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         int sequence = 0;
         int route_id = 0;
-        for (const auto &path : paths) {
-            if (path.path.size() > 0)
-               path.dpPrint(ksp_path, sequence, route_id);
+        for (auto it = paths.begin(); it != paths.end(); ++it) {
+            if (it->path.size() > 0)
+               it->dpPrint(ksp_path, sequence, route_id);
             ++route_id;
         }
 

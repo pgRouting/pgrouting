@@ -83,7 +83,7 @@ typedef struct
 } path_fromto_t;
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 int onetomany_dijkstra_boostdist(
@@ -98,9 +98,6 @@ int onetomany_dijkstra_boostdist(
         char **err_msg );
     
   
-#ifdef __cplusplus
-extern "C"
-#endif
 
 int onetomany_dijkstra_boostpath(
         edge_t *edges, unsigned int count, int start_vertex,
@@ -113,6 +110,10 @@ int onetomany_dijkstra_boostpath(
 	    path_fromto_t **pathdists,
 #endif
         char **err_msg );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

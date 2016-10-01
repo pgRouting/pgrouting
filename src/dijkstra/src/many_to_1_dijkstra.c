@@ -74,19 +74,10 @@ static int dijkstra_many_to_1_driver(
 }
 
 
-#ifndef _MSC_VER
-Datum dijkstra_many_to_1(PG_FUNCTION_ARGS);
-#else  // _MSC_VER
 PGDLLEXPORT Datum dijkstra_many_to_1(PG_FUNCTION_ARGS);
-#endif  // _MSC_VER
-
 
 PG_FUNCTION_INFO_V1(dijkstra_many_to_1);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 dijkstra_many_to_1(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
   int                  call_cntr;
@@ -149,27 +140,27 @@ dijkstra_many_to_1(PG_FUNCTION_ARGS) {
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       values = palloc(7 * sizeof(Datum));
-      nulls = palloc(7 * sizeof(char));
+      nulls = palloc(7 * sizeof(bool));
       // id, start_v, node, edge, cost, tot_cost
       values[0] = Int32GetDatum(call_cntr + 1);
-      nulls[0] = ' ';
+      nulls[0] = false;
       values[1] = Int32GetDatum(ret_path[call_cntr].seq);
-      nulls[1] = ' ';
+      nulls[1] = false;
       values[2] = Int64GetDatum(ret_path[call_cntr].from);
-      nulls[2] = ' ';
+      nulls[2] = false;
       values[3] = Int64GetDatum(ret_path[call_cntr].vertex);
-      nulls[3] = ' ';
+      nulls[3] = false;
       values[4] = Int64GetDatum(ret_path[call_cntr].edge);
-      nulls[4] = ' ';
+      nulls[4] = false;
       values[5] = Float8GetDatum(ret_path[call_cntr].cost);
-      nulls[5] = ' ';
+      nulls[5] = false;
       values[6] = Float8GetDatum(ret_path[call_cntr].tot_cost);
-      nulls[6] = ' ';
+      nulls[6] = false;
 
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       /* make the tuple into a datum */
       result = HeapTupleGetDatum(tuple);

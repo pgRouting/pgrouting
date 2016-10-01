@@ -125,7 +125,6 @@ class Path {
     Path result(p1);
     sort(result.path.begin(), result.path.end(), compareByVertexId);
 
-    //for (auto const &e : p2.path) {
     for (size_t i = 0; i < p2.path.size(); ++i) {
       auto e = p2.path[i];
       auto pos = find_if(result.path.begin(), result.path.end(), is_found(e));
