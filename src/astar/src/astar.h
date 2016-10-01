@@ -42,8 +42,7 @@ typedef struct edge_astar
 
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
   int boost_astar(edge_astar_t *edges, unsigned int count, 
                   int source_vertex_id, int target_vertex_id,

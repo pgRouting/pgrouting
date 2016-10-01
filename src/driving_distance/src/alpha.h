@@ -35,8 +35,7 @@ typedef struct vertex
 
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
                                                                      
   int alpha_shape(vertex_t *vertices, unsigned int count, double alpha,

@@ -42,7 +42,7 @@ typedef struct
 } path_element_t;
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 int bidirsp_wrapper( edge_t *edges, 
@@ -56,5 +56,9 @@ int bidirsp_wrapper( edge_t *edges,
             int *path_count, 
             char **err_msg
             );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

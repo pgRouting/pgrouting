@@ -53,8 +53,7 @@ typedef struct path_element
 } path_element_t;
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
   int boost_shooting_star(edge_shooting_star_t *edges, unsigned int count, 
                   int source_edge_id, int target_edge_id,

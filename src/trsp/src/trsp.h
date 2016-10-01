@@ -51,7 +51,7 @@ typedef struct path_element
 } path_element_t;
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 int trsp_node_wrapper(
@@ -68,9 +68,6 @@ int trsp_node_wrapper(
             char **err_msg
             );
 
-#ifdef __cplusplus
-extern "C"
-#endif
 
 int trsp_edge_wrapper(
 			edge_t *edges, 
@@ -87,5 +84,8 @@ int trsp_edge_wrapper(
             int *path_count, 
             char **err_msg
             );
+#ifdef __cplusplus
+}
+#endif
 
 #endif
