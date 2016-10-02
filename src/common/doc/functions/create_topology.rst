@@ -88,7 +88,7 @@ The function returns:
 
 .. rubric:: The Vertices Table
 
-The vertices table is a requirment of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
+The vertices table is a requirement of the :ref:`pgr_analyzeGraph <pgr_analyze_graph>` and the :ref:`pgr_analyzeOneway <pgr_analyze_oneway>` functions.
 
 The structure of the vertices table is:
 
@@ -138,7 +138,7 @@ The order of the parameters do not matter:
 
 	 SELECT  pgr_createTopology('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
 
-Parameters defined with a default value can be omited, AS long AS the value matches the default:
+Parameters defined with a default value can be omitted, AS long AS the value matches the default:
 
 .. code-block:: sql
 

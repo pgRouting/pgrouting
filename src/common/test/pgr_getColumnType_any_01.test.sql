@@ -56,11 +56,11 @@ select * from make_tests_return_text('select * from  _pgr_getColumnType (''stree
 select * from make_tests_return_text('select * from  _pgr_getColumnType (''Streets'',''ID'')',	'integer',	15);
 
 SET search_path TO "$user", public;
---NULL when table or column doesnt exist
+--NULL when table or column doesn't exist
 select * from make_tests_return_text('select * from  _pgr_getColumnType (''Streets'',''data'',0)',	NULL,	16);
 select * from make_tests_return_text('select * from  _pgr_getColumnType (''strats'',''id'',0)', 		NULL,	17);
 
--- becuase this dont test for schema or table names the expected results are NULL
+-- because this don't test for schema or table names the expected results are NULL
 select * from make_tests_return_text('select * from  _pgr_getColumnType (''publIc'',''Streets'',''gid'')',  NULL, 18);
 select * from make_tests_return_text('select * from  _pgr_getColumnType (''public'',''StrEets'',''gid'')',  NULL, 19);
 select * from make_tests_return_text('select * from  _pgr_getColumnType (''public'',''Streets'',''data'')',  NULL, 20);

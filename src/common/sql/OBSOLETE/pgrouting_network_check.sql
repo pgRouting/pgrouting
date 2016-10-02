@@ -27,8 +27,8 @@ BEGIN
 		geom geometry
 	) ON COMMIT DROP;
 
-	-- Count occurance of vertex as source/target
-	RAISE NOTICE 'Count occurance of vertex as source/target';
+	-- Count occurrence of vertex as source/target
+	RAISE NOTICE 'Count occurrence of vertex as source/target';
 	FOR rec IN EXECUTE sql
 	LOOP
 		-- Source

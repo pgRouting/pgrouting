@@ -119,7 +119,7 @@ int  do_pgr_driving_many_to_dist(pgr_edge_t  *data_edges, int64_t total_tuples,
         #endif
         return EXIT_SUCCESS;
     } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
+     *err_msg = strdup("Caught unknown exception!");
      return -1;
     }
 }
@@ -192,7 +192,7 @@ int  do_pgr_driving_distance(pgr_edge_t  *data_edges, int64_t total_tuples,
 
         return EXIT_SUCCESS;
     } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
+     *err_msg = strdup("Caught unknown exception!");
      return -1;
     }
 }

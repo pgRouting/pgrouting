@@ -78,7 +78,7 @@ Where:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-:sql_q: ``TEXT`` SQL query as decribed above.
+:sql_q: ``TEXT`` SQL query as described above.
 :start_vid: ``BIGINT`` id of the starting vertex.
 :end_vid: ``BIGINT`` id of the ending vertex.
 :k: ``INTEGER`` The desiered number of paths.
@@ -95,7 +95,7 @@ Description of the return values
 Returns set of ``(seq, path_seq, path_id, node, edge, cost, agg_cost)``
 
 :seq: ``INT`` sequential number starting from **1**.
-:path_seq: ``INT`` relative position in the pathi of ``node`` and ``edge``. Has value **1** for the begining of a path.
+:path_seq: ``INT`` relative position in the pathi of ``node`` and ``edge``. Has value **1** for the beginning of a path.
 :path_id: ``BIGINT`` path identifier. The ordering of the paths For two paths i, j if i < j then agg_cost(i) <= agg_cost(j).
 :node: ``BIGINT`` id of the node in the path.
 :edge: ``BIGINT`` id of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the route.

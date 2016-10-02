@@ -88,7 +88,7 @@ Where:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-:sql: SQL query as decribed above.
+:sql: SQL query as described above.
 :start_v: ``BIGINT`` id of the starting vertex.
 :start_v: ``array[ANY-INTEGER]`` array of id of starting vertices.
 :distance: ``FLOAT`` Upper limit for the inclusion of the node in the result.

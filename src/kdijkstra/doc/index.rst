@@ -9,7 +9,7 @@
 
 .. _pgr_kdijkstra:
 
-pgr_kDijkstra - Mutliple destination Shortest Path Dijkstra
+pgr_kDijkstra - Multiple destination Shortest Path Dijkstra
 ===============================================================================
 
 .. index::

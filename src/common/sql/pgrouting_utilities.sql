@@ -13,7 +13,7 @@
    Examples:
         *          select * from  _pgr_getTableName('tab');
         *        naming record;
-                 excecute 'select * from  _pgr_getTableName('||quote_literal(tab)||')' INTO naming;
+                 execute 'select * from  _pgr_getTableName('||quote_literal(tab)||')' INTO naming;
                  schema=naming.sname; table=naming.tname
 
 
@@ -114,8 +114,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
  Examples:
         *          select  _pgr_getColumnName('tab','col');
         *          select  _pgr_getColumnName('myschema','mytable','col');
-                 excecute 'select _pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
-                 excecute 'select _pgr_getColumnName('||quote_literal(sname)||','||quote_literal(sname)||','||quote_literal('col')||')' INTO column;
+                 execute 'select _pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
+                 execute 'select _pgr_getColumnName('||quote_literal(sname)||','||quote_literal(sname)||','||quote_literal('col')||')' INTO column;
 
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 
@@ -180,7 +180,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
    Examples:
         *          select  _pgr_isColumnName('tab','col');
         *        flag boolean;
-                 excecute 'select _pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
+                 execute 'select _pgr_getColumnName('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
 
    Returns true  if column "col" exists in table "tab"
            false when "tab" doesn't exist or when "col" is not in table "tab"
@@ -211,7 +211,7 @@ $BODY$
    Examples:
         *          select  _pgr_isColumnIndexed('tab','col');
         *        flag boolean;
-                 excecute 'select _pgr_getColumnIndexed('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
+                 execute 'select _pgr_getColumnIndexed('||quote_literal('tab')||','||quote_literal('col')||')' INTO flag;
 
    Author: Stephen Woodbridge <woodbri@imaptools.com>
 

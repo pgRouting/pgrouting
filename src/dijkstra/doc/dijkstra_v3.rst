@@ -166,7 +166,7 @@ For example:
 Description of the parameters of the signatures
 -------------------------------------------------------------------------------
 
-:sql: SQL query as decribed above.
+:sql: SQL query as described above.
 :start_vid: ``BIGINT`` identifier of the starting vertex of the path.
 :start_vids: ``array[ANY-INTEGER]`` array of identifiers of starting vertices.
 :end_vid: ``BIGINT`` identifier of the ending vertex of the path.
@@ -180,7 +180,7 @@ Description of the return values
 Returns set of ``(seq [, start_vid] [, end_vid] , node, edge, cost, agg_cost)``
 
 :seq: ``INT``  isequential value starting from **1**.
-:path_seq: ``INT``  relative position in the path. Has value **1** for the begining of a path.
+:path_seq: ``INT``  relative position in the path. Has value **1** for the beginning of a path.
 :start_vid: ``BIGINT`` id of the starting vertex. Used when multiple starting vetrices are in the query.
 :end_vid: ``BIGINT`` id of the ending vertex. Used when multiple ending vertices are in the query.
 :node: ``BIGINT`` id of the node in the path from start_vid to end_v.

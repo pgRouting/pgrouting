@@ -11,7 +11,7 @@ select * from edge_table order by id;
 \echo edge_table_vertices
 select * from edge_table_vertices_pgr order by id;
 --------------------------------------------------
-\echo paralell
+\echo parallel
 select * from parallel order by id;
 \echo paralell_vertices
 select * from parallel_vertices_pgr order by id;

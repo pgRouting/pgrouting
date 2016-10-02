@@ -46,8 +46,8 @@ class Pgr_dijkstra
      :Pgr_base_graph<G>(gtype, initial_size) {}
 
 
-    /*! \brief Perfom the inizialization of the graph
-     For Dijkstra  only requieres the data insertion.
+    /*! \brief Perform the inizialization of the graph
+     For Dijkstra  only requires the data insertion.
 
      Any other different initialization needs a different function.
      \param[in] data_edges

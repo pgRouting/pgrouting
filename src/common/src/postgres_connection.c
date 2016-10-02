@@ -368,7 +368,7 @@ int pgr_get_data(
 #endif
   if (total_tuples == 1) {
     // for some reason it needs at least a second edge for boost.graph to work
-    // makeing a simple test and asking boost people
+    // making a simple test and asking boost people
     ++total_tuples;
     (*edges) = (pgr_edge_t *)repalloc((*edges), total_tuples * sizeof(pgr_edge_t));
     (*edges)[1].source = -1;
