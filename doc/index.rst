@@ -118,7 +118,7 @@ Routing functions
   -  :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
   -  :ref:`pgr_dijkstra<pgr_dijkstra>` - Shortest Path Dijkstra
   -  :ref:`pgr_driving_distance<pgr_driving_distance>` - Driving Distance
-  -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra
+  -  :ref:`pgr_kDijkstra<pgr_kdijkstra>` - Multiple destination Shortest Path Dijkstra
   -  :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
   -  :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
   -  :ref:`pgr_tsp<pgr_tsp>` - Traveling Sales Person
@@ -241,7 +241,7 @@ The following functions are used internaly the topology functions.
   -  :ref:`pgr_get_column_name` - to get the name of the column as is stored in the postgres administration tables.
   -  :ref:`pgr_get_table_name` - to retrieve the name of the table as is stored in the postgres administration tables.
   -  :ref:`pgr_is_column_indexed` - to check if the column is indexed.
-  -  :ref:`pgr_is_column_in_table` - to check only for the existance of the column.
+  -  :ref:`pgr_is_column_in_table` - to check only for the existence of the column.
   -  :ref:`pgr_point_to_id` -to insert/get the id of the inserted point in a vertices table.
   -  :ref:`pgr_quote_ident` - to quotes the input text to be used as an identifier in an SQL statement string.
   -  :ref:`pgr_versionless` - to compare two version numbers.

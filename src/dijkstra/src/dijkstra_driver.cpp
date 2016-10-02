@@ -49,7 +49,7 @@ int do_pgr_dijkstra_many_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     char ** err_msg) {
   try {
     // in c code this should this must have been checked:
-    //  1) cant check anything
+    //  1) can't check anything
     if (total_tuples == 1) {
       *ret_path = noPathFound3(-1, path_count, (*ret_path));
       *ret_path = NULL;
@@ -105,7 +105,7 @@ log << "sequence" << sequence;
     *path_count = sequence;
     return EXIT_SUCCESS;
   } catch ( ... ) {
-    *err_msg = strdup("Caught unknown expection!");
+    *err_msg = strdup("Caught unknown exception!");
     return -1;
   }
 }
@@ -192,7 +192,7 @@ int  do_pgr_dijkstra_many_to_1(pgr_edge_t *data_edges, int64_t total_tuples,
     *path_count = sequence;
     return EXIT_SUCCESS;
   } catch ( ... ) {
-    *err_msg = strdup("Caught unknown expection!");
+    *err_msg = strdup("Caught unknown exception!");
     return -1;
   }
 }
@@ -270,7 +270,7 @@ int do_pgr_dijkstra_1_to_many(pgr_edge_t  *data_edges, int64_t total_tuples,
     *path_count = sequence;
     return EXIT_SUCCESS;
   } catch ( ... ) {
-    *err_msg = strdup("Caught unknown expection!");
+    *err_msg = strdup("Caught unknown exception!");
     return -1;
   }
 }
@@ -349,7 +349,7 @@ int  do_pgr_dijkstra(pgr_edge_t  *data_edges, int64_t total_tuples,
     *path_count = count;
     return EXIT_SUCCESS;
   } catch ( ... ) {
-    *err_msg = strdup("Caught unknown expection!");
+    *err_msg = strdup("Caught unknown exception!");
     return -1;
   }
 }

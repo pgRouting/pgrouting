@@ -191,7 +191,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/label_graph/src
 
 
-#not suported but directory exists
+#not supported but directory exists
 #    ${PGROUTING_SOURCE_DIR}/src/shooting_star/src
 #    ${PGROUTING_SOURCE_DIR}/src/vrpdptw/src
     )

@@ -122,8 +122,8 @@ LANGUAGE plpgsql VOLATILE STRICT;
  Examples:  
 	* 	 select  _pgr_getColumnType('tab','col');
 	* 	 select  _pgr_getColumnType('myschema','mytable','col');
-        	 excecute 'select _pgr_getColumnType('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
-        	 excecute 'select _pgr_getColumnType('||quote_literal(sname)||','||quote_literal(sname)||','||quote_literal('col')||')' INTO column;
+        	 execute 'select _pgr_getColumnType('||quote_literal('tab')||','||quote_literal('col')||')' INTO column;
+        	 execute 'select _pgr_getColumnType('||quote_literal(sname)||','||quote_literal(sname)||','||quote_literal('col')||')' INTO column;
 
    Author: Vicky Vergara <vicky_vergara@hotmail.com>>
 

@@ -126,7 +126,7 @@ road network. The general form of a route query is:
 
 .. code-block:: sql
 
-    select pgr_<algorithm>(<SQL for edges>, start, end, <additonal options>)
+    select pgr_<algorithm>(<SQL for edges>, start, end, <additional options>)
 
 As you can see this is fairly straight forward and you can look and the 
 specific algorithms for the details on how to use them. What you get as a

@@ -148,7 +148,7 @@ try {
 
     floyd_warshall_all_pairs_shortest_paths(g, D, distance_map(&d[0]));
 
-    //msg.append("\nactual boost function call successfull");
+    //msg.append("\nactual boost function call successful");
     //*err_msg = (char*)msg.c_str();
 
     /*for(int i=0;i<node_count;i++) {

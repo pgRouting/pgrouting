@@ -64,7 +64,7 @@ extern "C" {
   int pgr_get_data(
       char *sql,           //!< \param [IN]  sql from where we get the data
       pgr_edge_t **edges,  //!< \param [OUT] edges retrieved edges
-      int64_t *total_tuples,  //!< \param [OUT] total_tuples Total edges retrived
+      int64_t *total_tuples,  //!< \param [OUT] total_tuples Total edges retrieved
       bool has_rcost,      //!< \param [IN]  has_rcost flag for reverse_cost
       int64_t start_vertex,  //!< \param [IN] start_vertex index to look for
       int64_t end_vertex);   //!< \param [IN] end_vertex index to look for

@@ -73,7 +73,7 @@ select * from make_tests_return_text('select * from  _pgr_getColumnName (''s1'',
 select * from make_tests_return_text('select * from  _pgr_getColumnName (''s1'',''Streets'',''id'')',  NULL,29); 
 select * from make_tests_return_text('select * from  _pgr_getColumnName (''s1'',''Streets'',''ID'')',  'ID',30);
 
--- becuase this dont test for schema or table names the expected results are NULL
+-- because this don't test for schema or table names the expected results are NULL
 select * from make_tests_return_text('select * from  _pgr_getColumnName (''publIc'',''Streets'',''gid'')',  NULL,31);
 select * from make_tests_return_text('select * from  _pgr_getColumnName (''public'',''StrEets'',''gid'')', NULL,32);
 

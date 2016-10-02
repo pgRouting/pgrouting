@@ -4,7 +4,7 @@ $body$
 /*
  *  pgr_pointstodmatrix(pnts geometry[], OUT dmatrix double precision[], OUT ids integer[])
  *
- *  Create a distance symetric distance matrix suitable for TSP using Euclidean distances
+ *  Create a distance symmetric distance matrix suitable for TSP using Euclidean distances
  *  based on the st_distance(). You might want to create a variant of this the uses st_distance_sphere()
  *  or st_distance_spheriod() or some other function.
  *
@@ -48,7 +48,7 @@ $body$
  *  pgr_vidstodmatrix(IN vids integer[], IN pnts geometry[], IN edges text, tol float8 DEFAULT(0.1),
  *                    OUT dmatrix double precision[], OUT ids integer[])
  *
- *  This function thats an array vertex ids, the original array of points, the edge table name and a tol.
+ *  This function that's an array vertex ids, the original array of points, the edge table name and a tol.
  *  It then computes kdijkstra() distances for each vertex to all the other vertices and creates a symmetric
  *  distances matrix suitable for TSP. The pnt array and the tol are used to establish a BBOX for limiteding
  *  selection of edges.the extents of the points is expanded by tol.
@@ -57,7 +57,7 @@ $body$
  *  1. we compute a symmetric matrix because TSP requires that so the distances are better the Euclidean but
  *     but are not perfect
  *  2. kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than
- *     the cost might get set to -1.0, so the dmatrix shoule be checked for this as it makes it invalid for TSP
+ *     the cost might get set to -1.0, so the dmatrix should be checked for this as it makes it invalid for TSP
  *
 */
 declare

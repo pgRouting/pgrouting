@@ -1144,7 +1144,7 @@ static int many2many_dijkstra_dm(char *sql, int *vids, int num, bool directed,
     
     DBG("Making the matrix symmertic if requested!");
 
-    // if symmetric requsted, then average cells to make it symmetric
+    // if symmetric requested, then average cells to make it symmetric
 
     if (symmetric) {
         for (i=0; i<num; i++) {

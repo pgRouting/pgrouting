@@ -63,7 +63,7 @@ The function returns:
   - ``OK`` after the analysis has finished.
 
     * Uses the vertices table: <edge_table>_vertices_pgr.
-    * Fills completly the ``cnt`` and ``chk`` columns of the vertices table.
+    * Fills completely the ``cnt`` and ``chk`` columns of the vertices table.
     * Returns the analysis of the section of the network defined by  ``rows_where``
 
   - ``FAIL`` when the analysis was not completed due to an error. 
@@ -126,7 +126,7 @@ The order of the parameters do not matter:
 
 	 SELECT  pgr_analyzeGraph('edge_table',0.001,source:='source',id:='id',target:='target',the_geom:='the_geom');
 
-Parameters defined with a default value can be ommited, as long as the value matches the default:
+Parameters defined with a default value can be omitted, as long as the value matches the default:
 
 .. code-block:: sql
 

@@ -122,7 +122,7 @@ int  do_pgr_ksp(pgr_edge_t  *data_edges, int64_t total_tuples,
         *path_count = count;
         return EXIT_SUCCESS;
     } catch ( ... ) {
-     *err_msg = strdup("Caught unknown expection!");
+     *err_msg = strdup("Caught unknown exception!");
      return -1;
     }
 }

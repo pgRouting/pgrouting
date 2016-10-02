@@ -3,7 +3,7 @@
  NOTICE:  pgr_nodeNetwork('unnoded',1e-06,'the_geom','id','noded')
  NOTICE:  Performing checks, please wait .....
  NOTICE:  Processing, please wait .....
- NOTICE:    Splitted Edges: 8
+ NOTICE:    Split Edges: 8
  NOTICE:   Untouched Edges: 0
  NOTICE:       Total original Edges: 8
  NOTICE:   Edges generated: 40

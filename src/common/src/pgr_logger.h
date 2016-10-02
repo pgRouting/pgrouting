@@ -16,7 +16,7 @@
     // override the default log file "/tmp/pgr_logger.log"
     #define PGR_LOGGER_FILE "mylogger.log"
 
-    #undef PGR_LOGGER_LOC  // dont log filename and line number
+    #undef PGR_LOGGER_LOC  // don't log filename and line number
     #define PGR_LOGGER_LOC  // log filename and line number with log message
 
     // include the logger macros and configure based on defines above

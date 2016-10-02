@@ -148,7 +148,7 @@ class Pgr_base_graph {
   //! \brief Constructor
   /*!
     Prepares the _graph_ to be of type _gtype_ with the
-    aproximate number of vertices its coing to have as *initial_size*
+    approximate number of vertices its coing to have as *initial_size*
   */
   explicit Pgr_base_graph< G >(graphType gtype, const int initial_size)
      : graph(initial_size),
@@ -181,7 +181,7 @@ class Pgr_base_graph {
       V g_from;
       V g_to;
       pgr_edge_t d_edge;
-      // nothing to do, the vertex doesnt exist
+      // nothing to do, the vertex doesn't exist
       if (!get_gVertex(p_from, g_from)) return;
       if (!get_gVertex(p_to, g_to)) return;
       EO_i out, out_end;
@@ -202,7 +202,7 @@ class Pgr_base_graph {
   }
 
 
-  //! \brief Disconnects all incomming and outgoing edges from the vertex
+  //! \brief Disconnects all incoming and outgoing edges from the vertex
   /*!
     boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
     simulated by disconnecting the vertex from the graph
@@ -219,7 +219,7 @@ class Pgr_base_graph {
   void disconnect_vertex(int64_t p_vertex) {
       V g_vertex;
       pgr_edge_t d_edge;
-      // nothing to do, the vertex doesnt exist
+      // nothing to do, the vertex doesn't exist
       if (!get_gVertex(p_vertex, g_vertex)) return;
       EO_i out, out_end;
       // store the edges that are going to be removed
@@ -248,7 +248,7 @@ class Pgr_base_graph {
       }
 
       V d_vertex = boost::vertex(vertices_map.find(p_vertex)->second, graph);
-      // delete incomming and outgoing edges from the vertex
+      // delete incoming and outgoing edges from the vertex
       boost::clear_vertex(d_vertex, graph);
   }
 
@@ -346,7 +346,7 @@ class Pgr_base_graph {
           return;
       }
 
-      // findout how large is the path
+      // find out how large is the path
       int64_t result_size = 1;
       while (target != source) {
           if (target == predecessors[target]) break;
