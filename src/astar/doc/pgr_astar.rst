@@ -18,7 +18,7 @@ Name
 ``pgr_aStar`` — Returns the shortest path using A* algorithm.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: http://www.boost.org//libs/graph/doc/astar_search.html
 
    Boost Graph Inside
 
@@ -90,7 +90,7 @@ Signatures
 
 
 .. index::
-    single: aStar(Minimal Signature)
+    single: aStar(Minimal Use)
 
 
 Minimal Signature
@@ -110,7 +110,7 @@ Minimal Signature
 
 
 .. index::
-    single: aStar(One to Many)
+    single: aStar(One to One)
 
 
 One to One
@@ -307,3 +307,9 @@ See Also
 * :ref:`astar`
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+
