@@ -224,7 +224,7 @@ astarManyToOne(PG_FUNCTION_ARGS) {
 
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
         values[3] = Int64GetDatum(result_tuples[call_cntr].node);
         values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[call_cntr].cost);

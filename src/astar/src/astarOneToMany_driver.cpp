@@ -56,11 +56,11 @@ pgr_astar(
         double epsilon,
         bool only_cost = false) {
     std::sort(targets.begin(), targets.end());
-    end_vertex.erase(
+    targets.erase(
             std::unique(targets.begin(), targets.end()),
-            end_vertex.end());
+            targets.end());
 
-    Pgr_astar< G > fn_astar;
+    pgrouting::algorithms::Pgr_astar< G > fn_astar;
     return fn_astar.astar(graph, source, targets,
             heuristic, factor, epsilon, only_cost);
 }
@@ -106,7 +106,6 @@ void do_pgr_astarOneToMany(
         }
 
         std::deque< Path >paths;
-        log << "Inserting target vertices into a c++ vector structure\n";
         std::vector< int64_t > end_vids(
                 end_vidsArr,
                 end_vidsArr + size_end_vidsArr);
@@ -114,7 +113,6 @@ void do_pgr_astarOneToMany(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         if (directed) {
-            log << "Working with directed Graph\n";
             pgrouting::xyDirectedGraph digraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
@@ -122,7 +120,6 @@ void do_pgr_astarOneToMany(
             paths = pgr_astar(digraph, start_vid, end_vids,
                     heuristic, factor, epsilon, only_cost);
         } else {
-            log << "Working with Undirected Graph\n";
             pgrouting::xyUndirectedGraph undigraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
@@ -132,17 +129,8 @@ void do_pgr_astarOneToMany(
         }
         if (!normal) {
             for (auto &path : paths) {
-                log << "reversing path\n";
-                log << path;
                 path.reverse();
-                log << "reversed path\n";
-                log << path;
             }
-        }
-        log << "checking reversed paths\n";
-        for (auto path : paths) {
-            log << "reversed path\n";
-            log << path;
         }
 
         size_t count(0);
@@ -152,18 +140,17 @@ void do_pgr_astarOneToMany(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log <<
-                "No paths found\n";
-            *err_msg = strdup(log.str().c_str());
+            log << "No paths found\n";
+            *log_msg = strdup(log.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-        *err_msg = NULL;
+        pgassert(!(*err_msg));
         *log_msg = strdup(log.str().c_str());
+
     } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;

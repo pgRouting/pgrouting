@@ -37,6 +37,7 @@ Stable proposed Functions
     end-warning
 
 
+
 - As part of the :ref:`dijkstra`
 
   - :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
@@ -55,6 +56,9 @@ Stable proposed Functions
 
   - :ref:`CostMatrix`
 
+- A new Section
+
+  - ref:`astar`
 
 ..
     to-here
@@ -68,4 +72,5 @@ Stable proposed Functions
     ../src/withPoints/doc/withPoints
 
     ../src/costMatrix/doc/costMatrix
+    ../src/astar/doc/astar
 

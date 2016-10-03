@@ -67,7 +67,7 @@ pgr_astar(
             std::unique(targets.begin(), targets.end()),
             targets.end());
 
-    Pgr_astar< G > fn_astar;
+    pgrouting::algorithms::Pgr_astar< G > fn_astar;
     return fn_astar.astar(graph, sources, targets,
             heuristic, factor, epsilon, only_cost);
 }

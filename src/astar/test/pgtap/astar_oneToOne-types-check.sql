@@ -23,9 +23,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 \i setup.sql
 
-SELECT plan(93);
+SELECT plan(99);
 SET client_min_messages TO ERROR;
 
+
+SELECT has_function('pgr_astar',
+    ARRAY['text', 'anyarray', 'bigint', 'boolean',
+        'integer', 'double precision', 'double precision']);
+SELECT function_returns('pgr_astar',
+    ARRAY['text', 'anyarray', 'bigint', 'boolean',
+        'integer', 'double precision', 'double precision'],
+    'setof record');
+
+SELECT has_function('pgr_astar',
+    ARRAY['text', 'bigint', 'anyarray', 'boolean',
+        'integer', 'double precision', 'double precision']);
+SELECT function_returns('pgr_astar',
+    ARRAY['text', 'bigint', 'anyarray', 'boolean',
+        'integer', 'double precision', 'double precision'],
+    'setof record');
+
+SELECT has_function('pgr_astar',
+    ARRAY['text', 'anyarray', 'anyarray', 'boolean',
+        'integer', 'double precision', 'double precision']);
+SELECT function_returns('pgr_astar',
+    ARRAY['text', 'anyarray', 'anyarray', 'boolean',
+        'integer', 'double precision', 'double precision'],
+    'setof record');
 
 SELECT has_function('pgr_astar',
     ARRAY['text', 'bigint', 'bigint', 'boolean',

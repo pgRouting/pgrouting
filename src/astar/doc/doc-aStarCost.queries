@@ -1,0 +1,70 @@
+SET client_min_messages TO NOTICE;
+SET
+--q1
+SELECT * FROM pgr_aStarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    2, 12);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |      12 |        4
+(1 row)
+
+--q2
+SELECT * FROM pgr_aStarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    2, 12,
+    directed := false, heuristic := 2);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |      12 |        4
+(1 row)
+
+--q3
+SELECT * FROM pgr_aStarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    2, ARRAY[11, 12], heuristic := 2);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |      11 |        3
+         2 |      12 |        4
+(2 rows)
+
+--q4
+SELECT * FROM pgr_aStarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    2, 12, heuristic := 0);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |      12 |        4
+(1 row)
+
+SELECT * FROM pgr_aStarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    7, 12, heuristic := 0);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         7 |      12 |        5
+(1 row)
+
+SELECT * FROM pgr_aStarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    ARRAY[7, 2], 12, heuristic := 0);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |      12 |        0
+         7 |      12 |        0
+(2 rows)
+
+--q5
+SELECT * FROM pgr_aStarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
+    ARRAY[7, 2], ARRAY[11, 12], heuristic := 2);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |      11 |        3
+         2 |      12 |        4
+         7 |      11 |        4
+         7 |      12 |        5
+(4 rows)
+
+--q6

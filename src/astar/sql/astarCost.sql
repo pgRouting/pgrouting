@@ -26,6 +26,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+
+
+--
+-- pgr_astarCost subfamily of functions
+--
+
+-- one to one
 CREATE OR REPLACE FUNCTION pgr_astarCost(
     edges_sql TEXT, -- XY edges sql
     BIGINT, -- start_id
@@ -49,6 +56,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
+-- one to many
 CREATE OR REPLACE FUNCTION pgr_astarCost(
     edges_sql TEXT, -- XY edges sql
     BIGINT,
@@ -72,6 +80,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
+-- many to one
 CREATE OR REPLACE FUNCTION pgr_astarCost(
     edges_sql TEXT, -- XY edges sql
     start_vids ANYARRAY,
@@ -95,6 +104,7 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
+-- many to many
 CREATE OR REPLACE FUNCTION pgr_astarCost(
     edges_sql TEXT, -- XY edges sql
     start_vids ANYARRAY,

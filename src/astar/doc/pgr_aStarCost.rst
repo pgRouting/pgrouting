@@ -7,9 +7,9 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_aStar:
+.. _pgr_aStarCost:
 
-pgr_aStar
+pgr_aStarCost -- proposed
 ===============================================================================
 
 Name
@@ -57,86 +57,76 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid)
+    pgr_aStarCost(edges_sql, start_vid, end_vid)
+    pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+    pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
+    pgr_aStarCost(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- proposed
+    pgr_aStarCost(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
+    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+      OR EMPTY SET
 
 .. NOTE:: This signature is deprecated
 
     .. code-block:: sql
 
-        pgr_aStar(sql, source integer, target integer, directed boolean, has_rcost boolean)
+        pgr_aStarCost(sql, source integer, target integer, directed boolean, has_rcost boolean)
         RETURNS SET OF pgr_costResult
 
     - See :ref:`pgr_costResult <type_cost_result>`
     - See :ref:`pgr_aStar-V2.0`
 
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
-
-.. code-block:: none
-
-    pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
-    pgr_aStar(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
-    pgr_aStar(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- proposed
-    pgr_aStar(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-      OR EMPTY SET
-
-
 Signatures
 -----------------
 
 
-.. index::
-    single: aStar(Minimal Signature)
 
+.. index::
+    single: aStarCost(Minimal Signature) -- Proposed
 
 Minimal Signature
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid)
+    pgr_aStarCost(edges_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
 :Example: Using the defaults
 
-.. literalinclude:: doc-astar.queries
+.. literalinclude:: doc-aStarCost.queries
    :start-after: --q1
    :end-before: --q2
 
 
 
 .. index::
-    single: aStar(One to Many)
-
+    single: aStarCost(One to One) -- Proposed
 
 One to One
 ...............................................................................
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
+    pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
-:Example: Undirected using  Heuristic 2
+:Example: Setting a Heuristic  
 
-.. literalinclude:: doc-astar.queries
+.. literalinclude:: doc-aStarCost.queries
    :start-after: --q2
    :end-before: --q3
 
 
 
 .. index::
-    single: astar(One to Many) -- Proposed
+    single: aStarCost(One to Many) -- Proposed
 
 One to many
 .......................................
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
@@ -151,19 +141,19 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 :Example:
 
-.. literalinclude:: doc-astar.queries
-   :start-after: --q3
-   :end-before: --q4
+.. literalinclude:: doc-aStarCost.queries
+   :start-after: -- q3
+   :end-before: -- q4
 
 .. index::
-    single: aStar(Many to One) -- Proposed
+    single: aStarCost(Many to One) -- Proposed
 
 Many to One
 .......................................
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
     RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
@@ -178,21 +168,21 @@ where the ending vertex is fixed.
 
 :Example:
 
-.. literalinclude:: doc-astar.queries
-   :start-after: --q4
-   :end-before: --q5
+.. literalinclude:: doc-aStarCost.queries
+   :start-after: -- q4
+   :end-before: -- q5
 
 
 
 .. index::
-    single: aStar(Many to Many) -- Proposed
+    single: aStarCost(Many to Many) -- Proposed
 
 Many to Many
 .......................................
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
     RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
@@ -209,9 +199,9 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 
 :Example:
 
-.. literalinclude:: doc-astar.queries
-   :start-after: --q5
-   :end-before: --q6
+.. literalinclude:: doc-aStarCost.queries
+   :start-after: -- q5
+   :end-before: -- q6
 
 
 
@@ -319,24 +309,6 @@ latitude  conversion                                  Factor
 45       1 longitude degree is (78846.81m)/(25m/s)   3153 s
  0       1 longitude degree is (111319.46 m)/(25m/s) 4452 s
 ======== =========================================== ==========
-
-
-
-
-.. rubric:: History
-
-* Functionality added version 2.3.0
-* Renamed in version 2.0.0
-
-
-Deprecated Signature
--------------------------------------------------------------------------------
-
-:Example: Using the deprecated signature 
-
-.. literalinclude:: doc-astar.queries
-   :start-after: --q6
-   :end-before: --q7
 
 
 The queries use the :ref:`sampledata` network.
