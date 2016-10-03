@@ -58,6 +58,7 @@ Signature Summary
 .. code-block:: none
 
     pgr_aStar(edges_sql, start_vid, end_vid)
+    pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
 
 .. NOTE:: This signature is deprecated
 
@@ -77,7 +78,6 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
     pgr_aStar(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
     pgr_aStar(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- proposed
     pgr_aStar(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
@@ -254,7 +254,7 @@ Parameter        Type                   Description
                                           - 4: h(v) = sqrt(dx * dx + dy * dy)
                                           - 5: h(v) = abs(dx) + abs(dy)
 
-**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``.
+**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see :ref:`astar_factor`
 **epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
 ================ ====================== =================================================
 
@@ -287,47 +287,6 @@ Column           Type              Description
 ============= =========== =================================================
 
 
-About factor
--------------------------------------------------------------------------------
-
-.. rubric:: Analysis 1
-
-Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
-Factor = 1   (no need to change units)
-
-.. rubric:: Analysis 2
-
-Working with cost/reverse_cost as length in meters, x/y in lat/lon:
-Factor =  would depend on the location of the points:
-
-======== ================================= ==========
-latitude  conversion                        Factor
-======== ================================= ==========
-45       1 longitude degree is  78846.81 m   78846
- 0       1 longitude degree is 111319.46 m  111319
-======== ================================= ==========
-
-.. rubric:: Analysis 3
-
-Working with cost/reverse_cost as time in seconds, x/y in lat/lon:
-Factor: would depend on the location of the points and on the average speed
-say 25m/s is the speed.
-
-======== =========================================== ==========
-latitude  conversion                                  Factor
-======== =========================================== ==========
-45       1 longitude degree is (78846.81m)/(25m/s)   3153 s
- 0       1 longitude degree is (111319.46 m)/(25m/s) 4452 s
-======== =========================================== ==========
-
-
-
-
-.. rubric:: History
-
-* Functionality added version 2.3.0
-* Renamed in version 2.0.0
-
 
 Deprecated Signature
 -------------------------------------------------------------------------------
@@ -345,5 +304,6 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`astar`
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm

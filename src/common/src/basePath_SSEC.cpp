@@ -48,6 +48,7 @@ void Path::push_back(Path_t data) {
 
 void Path::reverse() {
     std::swap(m_start_id, m_end_id);
+    if (path.size() <= 1) return;
     std::deque< Path_t > newpath;
     for (size_t i = 0; i < path.size(); ++i) {
         newpath.push_front({

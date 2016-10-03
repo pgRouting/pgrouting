@@ -54,15 +54,23 @@ pgr_astar(
         int heuristic,
         double factor,
         double epsilon,
-        bool only_cost = false) {
+        bool only_cost,
+        bool normal) {
     std::sort(targets.begin(), targets.end());
     targets.erase(
             std::unique(targets.begin(), targets.end()),
             targets.end());
 
     pgrouting::algorithms::Pgr_astar< G > fn_astar;
-    return fn_astar.astar(graph, source, targets,
+    auto paths = fn_astar.astar(graph, source, targets,
             heuristic, factor, epsilon, only_cost);
+
+    if (!normal) {
+        for (auto &path : paths) {
+                path.reverse();
+        }
+    }
+    return paths;
 }
 
 
@@ -118,19 +126,14 @@ void do_pgr_astarOneToMany(
                     gType);
             digraph.insert_edges(edges, total_edges);
             paths = pgr_astar(digraph, start_vid, end_vids,
-                    heuristic, factor, epsilon, only_cost);
+                    heuristic, factor, epsilon, only_cost, normal);
         } else {
             pgrouting::xyUndirectedGraph undigraph(
                     pgrouting::extract_vertices(edges, total_edges),
                     gType);
             undigraph.insert_edges(edges, total_edges);
             paths = pgr_astar(undigraph, start_vid, end_vids,
-                    heuristic, factor, epsilon, only_cost);
-        }
-        if (!normal) {
-            for (auto &path : paths) {
-                path.reverse();
-            }
+                    heuristic, factor, epsilon, only_cost, normal);
         }
 
         size_t count(0);

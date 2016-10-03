@@ -22,48 +22,32 @@ SELECT * FROM pgr_aStarCost(
 --q3
 SELECT * FROM pgr_aStarCost(
     'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
-    2, ARRAY[11, 12], heuristic := 2);
+    2, ARRAY[3, 12], heuristic := 2);
  start_vid | end_vid | agg_cost 
 -----------+---------+----------
-         2 |      11 |        3
+         2 |       3 |        5
          2 |      12 |        4
 (2 rows)
 
 --q4
 SELECT * FROM pgr_aStarCost(
     'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
-    2, 12, heuristic := 0);
- start_vid | end_vid | agg_cost 
------------+---------+----------
-         2 |      12 |        4
-(1 row)
-
-SELECT * FROM pgr_aStarCost(
-    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
-    7, 12, heuristic := 0);
- start_vid | end_vid | agg_cost 
------------+---------+----------
-         7 |      12 |        5
-(1 row)
-
-SELECT * FROM pgr_aStarCost(
-    'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
     ARRAY[7, 2], 12, heuristic := 0);
  start_vid | end_vid | agg_cost 
 -----------+---------+----------
-         2 |      12 |        0
-         7 |      12 |        0
+         2 |      12 |        4
+         7 |      12 |        5
 (2 rows)
 
 --q5
 SELECT * FROM pgr_aStarCost(
     'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',
-    ARRAY[7, 2], ARRAY[11, 12], heuristic := 2);
+    ARRAY[7, 2], ARRAY[3, 12], heuristic := 2);
  start_vid | end_vid | agg_cost 
 -----------+---------+----------
-         2 |      11 |        3
+         2 |       3 |        5
          2 |      12 |        4
-         7 |      11 |        4
+         7 |       3 |        6
          7 |      12 |        5
 (4 rows)
 

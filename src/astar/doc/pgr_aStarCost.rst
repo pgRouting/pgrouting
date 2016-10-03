@@ -15,7 +15,7 @@ pgr_aStarCost -- proposed
 Name
 -------------------------------------------------------------------------------
 
-``pgr_aStar`` — Returns the shortest path using A* algorithm.
+``pgr_aStarCost`` — Returns the aggregate cost shortest path using :ref:`astar` algorithm.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
@@ -23,62 +23,26 @@ Name
    Boost Graph Inside
 
 
-
-Characteristics
--------------------------------------------------------------------------------
-
-The main Characteristics are:
-
-  - Process is done only on edges with positive costs.
-  - Vertices of the graph are:
-
-    - **positive** when it belongs to the edges_sql
-
-  - Values are returned when there is a path.
-
-    - When the starting vertex and ending vertex are the same, there is no path.
-
-      - The agg_cost the non included values (v, v) is 0
-
-    - When the starting vertex and ending vertex are the different and there is no path:
-
-      - The agg_cost the non included values (u, v) is ∞
-
-  - When (x,y) coordinates for the same vertex identifier differ:
-
-    - A random selection of the vertex's (x,y) coordinates is used.
-
-  - Running time: :math:`O((E + V) * \log V)`
-
-
-
 Signature Summary
 -----------------
 
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 .. code-block:: none
 
-    pgr_aStarCost(edges_sql, start_vid, end_vid)
-    pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
-    pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
-    pgr_aStarCost(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- proposed
-    pgr_aStarCost(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
+    pgr_aStarCost(edges_sql, start_vid, end_vid) -- Proposed
+    pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
+    pgr_aStarCost(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
       OR EMPTY SET
-
-.. NOTE:: This signature is deprecated
-
-    .. code-block:: sql
-
-        pgr_aStarCost(sql, source integer, target integer, directed boolean, has_rcost boolean)
-        RETURNS SET OF pgr_costResult
-
-    - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`pgr_aStar-V2.0`
 
 
 Signatures
 -----------------
-
 
 
 .. index::
@@ -129,7 +93,7 @@ One to many
     pgr_aStarCost(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
     RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
-This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
+This signature finds a path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
@@ -137,13 +101,13 @@ Using this signature, will load once the graph and perform a one to one `pgr_ast
 where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
   - The result is equivalent to the union of the results of the one to one `pgr_astar`.
-  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+  - The extra ``end_vid`` column in the result is used to distinguish to which path it belongs.
 
 :Example:
 
 .. literalinclude:: doc-aStarCost.queries
-   :start-after: -- q3
-   :end-before: -- q4
+   :start-after: --q3
+   :end-before: --q4
 
 .. index::
     single: aStarCost(Many to One) -- Proposed
@@ -164,13 +128,13 @@ Using this signature, will load once the graph and perform several one to one `p
 where the ending vertex is fixed.
 
   - The result is the union of the results of the one to one `pgr_aStar`.
-  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+  - The extra ``start_vid`` column  in the result is used to distinguish to which path it belongs.
 
 :Example:
 
 .. literalinclude:: doc-aStarCost.queries
-   :start-after: -- q4
-   :end-before: -- q5
+   :start-after: --q4
+   :end-before: --q5
 
 
 
@@ -200,8 +164,8 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 :Example:
 
 .. literalinclude:: doc-aStarCost.queries
-   :start-after: -- q5
-   :end-before: -- q6
+   :start-after: --q5
+   :end-before: --q6
 
 
 
@@ -244,7 +208,7 @@ Parameter        Type                   Description
                                           - 4: h(v) = sqrt(dx * dx + dy * dy)
                                           - 5: h(v) = abs(dx) + abs(dy)
 
-**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``.
+**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``. See :ref:`astar_factor`
 **epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
 ================ ====================== =================================================
 
@@ -277,45 +241,13 @@ Column           Type              Description
 ============= =========== =================================================
 
 
-About factor
--------------------------------------------------------------------------------
 
-.. rubric:: Analysis 1
-
-Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
-Factor = 1   (no need to change units)
-
-.. rubric:: Analysis 2
-
-Working with cost/reverse_cost as length in meters, x/y in lat/lon:
-Factor =  would depend on the location of the points:
-
-======== ================================= ==========
-latitude  conversion                        Factor
-======== ================================= ==========
-45       1 longitude degree is  78846.81 m   78846
- 0       1 longitude degree is 111319.46 m  111319
-======== ================================= ==========
-
-.. rubric:: Analysis 3
-
-Working with cost/reverse_cost as time in seconds, x/y in lat/lon:
-Factor: would depend on the location of the points and on the average speed
-say 25m/s is the speed.
-
-======== =========================================== ==========
-latitude  conversion                                  Factor
-======== =========================================== ==========
-45       1 longitude degree is (78846.81m)/(25m/s)   3153 s
- 0       1 longitude degree is (111319.46 m)/(25m/s) 4452 s
-======== =========================================== ==========
-
-
-The queries use the :ref:`sampledata` network.
 
 
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`astar`.
+* :ref:`sampledata` network.
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
