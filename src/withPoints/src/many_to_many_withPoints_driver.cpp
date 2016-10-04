@@ -48,6 +48,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
 
+template < class G >
+std::deque< Path >
+pgr_dijkstra(
+        G &graph,
+        std::vector < int64_t > sources,
+        std::vector < int64_t > targets,
+        bool only_cost,
+        bool normal) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+    Pgr_dijkstra< G > fn_dijkstra;
+    auto paths = fn_dijkstra.dijkstra(graph, sources, targets, only_cost);
+
+    if (!normal) {
+        for (auto &path : paths) {
+            path.reverse();
+        }
+    }
+    return paths;
+}
+
 
 // CREATE OR REPLACE FUNCTION pgr_withPoint(
 // edges_sql TEXT,
@@ -73,6 +102,7 @@ do_pgr_many_to_many_withPoints(
         bool details,
         bool directed,
         bool only_cost,
+        bool normal, 
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg) {
@@ -114,20 +144,15 @@ do_pgr_many_to_many_withPoints(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(new_edges);
-            paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost);
+            paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost, normal);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(new_edges);
-            paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost);
+            paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost, normal);
         }
 
-#if 0
-        for (auto &path : paths) {
-            adjust_pids(points, path);
-        }
-#endif
         if (!details) {
             for (auto &path : paths) {
                 eliminate_details(path, edges_to_modify);

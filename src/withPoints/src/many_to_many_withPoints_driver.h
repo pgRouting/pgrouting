@@ -64,6 +64,8 @@ extern "C" {
             bool details,
             bool directed,
             bool only_cost,
+            bool normal,
+
             General_path_element_t **return_tuples,
             size_t *return_count,
             char ** err_msg);

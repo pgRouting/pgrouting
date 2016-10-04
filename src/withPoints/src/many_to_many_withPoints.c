@@ -119,6 +119,7 @@ process(
             details,
             directed,
             only_cost,
+            true,
             result_tuples,
             result_count,
             &err_msg);
