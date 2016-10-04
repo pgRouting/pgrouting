@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
-#include "./one_to_one_dijkstra_driver.h"
+#include "./many_to_many_dijkstra_driver.h"
 
 PG_MODULE_MAGIC;
 
@@ -89,11 +89,11 @@ process(
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
     char *err_msg = NULL;
-    do_pgr_one_to_one_dijkstra(
+    do_pgr_many_to_many_dijkstra(
             edges,
             total_tuples,
-            start_vid,
-            end_vid,
+            &start_vid, 1,
+            &end_vid, 1,
             directed,
             only_cost,
             result_tuples,
