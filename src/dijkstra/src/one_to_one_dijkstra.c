@@ -90,12 +90,14 @@ process(
     clock_t start_t = clock();
     char *err_msg = NULL;
     do_pgr_many_to_many_dijkstra(
-            edges,
-            total_tuples,
+            edges, total_tuples,
             &start_vid, 1,
             &end_vid, 1,
+
             directed,
             only_cost,
+            true, // normal
+
             result_tuples,
             result_count,
             &err_msg);

@@ -41,6 +41,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_types.h"
 
+template < class G >
+std::deque< Path >
+pgr_dijkstra(
+        G &graph,
+        std::vector < int64_t > sources,
+        std::vector < int64_t > targets,
+        bool only_cost,
+        bool normal) {
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+    Pgr_dijkstra< G > fn_dijkstra;
+    auto paths = fn_dijkstra.dijkstra(graph, sources, targets, only_cost);
+
+    if (!normal) {
+        for (auto &path : paths) {
+            path.reverse();
+        }
+    }
+    return paths;
+}
+
+
+
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(
 // sql text,
 // start_vids anyarray,
@@ -56,6 +87,7 @@ do_pgr_many_to_many_dijkstra(
         size_t size_end_vidsArr,
         bool directed,
         bool only_cost,
+        bool normal,
         General_path_element_t **return_tuples,
         size_t *return_count,
         char ** err_msg) {
@@ -74,12 +106,12 @@ do_pgr_many_to_many_dijkstra(
             log << "Working with directed Graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_tuples);
-            paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost);
+            paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost, normal);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_tuples);
-            paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost);
+            paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost, normal);
         }
 
 

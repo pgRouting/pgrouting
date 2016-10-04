@@ -49,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./one_to_many_dijkstra_driver.h"
+#include "./many_to_many_dijkstra_driver.h"
 
 PGDLLEXPORT Datum one_to_many_dijkstra(PG_FUNCTION_ARGS);
 
@@ -89,18 +89,18 @@ process(
     clock_t start_t = clock();
 
     char *err_msg = NULL;
-    do_pgr_one_to_many_dijkstra(
-            edges,
-            total_tuples,
-            start_vid,
-            end_vidsArr,
-            size_end_vidsArr,
+    do_pgr_many_to_many_dijkstra(
+            edges, total_tuples,
+            &start_vid, 1,
+            end_vidsArr, size_end_vidsArr,
+
             directed,
             only_cost,
+            true, // normal
+
             result_tuples,
             result_count,
-            &err_msg,
-            true);
+            &err_msg);
     time_msg(" processing Dijkstra one to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);

@@ -88,14 +88,14 @@ process(
 
     char *err_msg = NULL;
     do_pgr_many_to_many_dijkstra(
-            edges,
-            total_tuples,
-            start_vidsArr,
-            size_start_vidsArr,
-            end_vidsArr,
-            size_end_vidsArr,
+            edges, total_tuples,
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
+
             directed,
             only_cost,
+            true,   // normal
+
             result_tuples,
             result_count,
             &err_msg);

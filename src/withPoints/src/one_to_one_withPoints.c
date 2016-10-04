@@ -42,10 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
-#include "./get_new_queries.h"
-#include "./one_to_one_withPoints_driver.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
+#include "./get_new_queries.h"
+#include "./many_to_many_withPoints_driver.h"
 
 PGDLLEXPORT Datum one_to_one_withPoints(PG_FUNCTION_ARGS);
 
@@ -149,22 +149,17 @@ process(
     char *err_msg = NULL;
     char *log_msg = NULL;
     clock_t start_t = clock();
-    do_pgr_withPoints(
-            edges,
-            total_edges,
-            points,
-            total_points,
-            edges_of_points,
-            total_edges_of_points,
-            start_pid,
-            end_pid,
-            directed,
+    do_pgr_many_to_many_withPoints(
+            edges, total_edges,
+            points, total_points,
+            edges_of_points, total_edges_of_points,
+            &start_pid, 1,
+            &end_pid, 1,
             driving_side[0],
             details,
+            directed,
             only_cost,
-            result_tuples,
-            result_count,
-            &log_msg,
+            result_tuples, result_count,
             &err_msg);
     time_msg(" processing withPoints one to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
