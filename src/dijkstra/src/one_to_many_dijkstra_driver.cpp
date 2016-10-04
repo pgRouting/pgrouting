@@ -41,6 +41,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_types.h"
 
+template < class G >
+std::deque< Path >
+pgr_dijkstra(
+        G &graph,
+        int64_t source,
+        std::vector < int64_t > targets,
+        bool only_cost,
+        bool normal) {
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+    Pgr_dijkstra< G > fn_dijkstra;
+    auto paths = fn_dijkstra.dijkstra(graph, source, targets, only_cost);
+
+    if (!normal) {
+        for (auto &path : paths) {
+            path.reverse();
+        }
+    }
+    return paths;
+}
+
+
+
 // CREATE OR REPLACE FUNCTION pgr_dijkstra(sql text, start_vid bigint, end_vids anyarray, directed boolean default true,
 void
 do_pgr_one_to_many_dijkstra(
@@ -53,57 +79,58 @@ do_pgr_one_to_many_dijkstra(
         bool only_cost,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** err_msg) {
-  std::ostringstream log;
-  try {
-    graphType gType = directed? DIRECTED: UNDIRECTED;
+        char ** err_msg,
+        bool normal) {
+    std::ostringstream log;
+    try {
+        graphType gType = directed? DIRECTED: UNDIRECTED;
 
-    log << "Inserting vertices into a c++ vector structure\n";
-    std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
-
-
-    std::deque< Path >paths;
-    if (directed) {
-        log << "Working with directed Graph\n";
-        pgrouting::DirectedGraph digraph(gType);
-        digraph.insert_edges(data_edges, total_tuples);
-        paths = pgr_dijkstra(digraph, start_vid, end_vertices, only_cost);
-    } else {
-        log << "Working with Undirected Graph\n";
-        pgrouting::UndirectedGraph undigraph(gType);
-        undigraph.insert_edges(data_edges, total_tuples);
-        paths = pgr_dijkstra(undigraph, start_vid, end_vertices, only_cost);
-    }
-
-    size_t count(0);
-    count = count_tuples(paths);
+        log << "Inserting vertices into a c++ vector structure\n";
+        std::vector< int64_t > end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
 
 
-    if (count == 0) {
-        (*return_tuples) = NULL;
-        (*return_count) = 0;
-        log <<
-            "No paths found between Starting and any of the Ending vertices\n";
-        *err_msg = strdup(log.str().c_str());
-        return;
-    }
+        std::deque< Path >paths;
+        if (directed) {
+            log << "Working with directed Graph\n";
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, total_tuples);
+            paths = pgr_dijkstra(digraph, start_vid, end_vertices, only_cost, normal);
+        } else {
+            log << "Working with Undirected Graph\n";
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_tuples);
+            paths = pgr_dijkstra(undigraph, start_vid, end_vertices, only_cost, normal);
+        }
 
-    (*return_tuples) = pgr_alloc(count, (*return_tuples));
-    log << "Converting a set of paths into the tuples\n";
-    (*return_count) = (collapse_paths(return_tuples, paths));
+        size_t count(0);
+        count = count_tuples(paths);
+
+
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            log <<
+                "No paths found between Starting and any of the Ending vertices\n";
+            *err_msg = strdup(log.str().c_str());
+            return;
+        }
+
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        log << "Converting a set of paths into the tuples\n";
+        (*return_count) = (collapse_paths(return_tuples, paths));
 
 #ifndef DEBUG
-    *err_msg = strdup("OK");
+        *err_msg = strdup("OK");
 #else
-    *err_msg = strdup(log.str().c_str());
+        *err_msg = strdup(log.str().c_str());
 #endif
 
-    return;
-  } catch ( ... ) {
-      log << "Caught unknown exception!\n";
-      *err_msg = strdup("Caught unknown exception!\n");
-      return;
-  }
+        return;
+    } catch ( ... ) {
+        log << "Caught unknown exception!\n";
+        *err_msg = strdup("Caught unknown exception!\n");
+        return;
+    }
 }
 
 

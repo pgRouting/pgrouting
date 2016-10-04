@@ -49,8 +49,6 @@ void pgr_get_edges_no_id(
 
 
 
-
-
 /*! @brief basic edge_sql
 
 For queries of the type:
@@ -64,6 +62,10 @@ FROM edge_table;
 @param[out] total_edges
 */
 void pgr_get_edges(
+        char *edges_sql,
+        pgr_edge_t **edges,
+        size_t *total_edges);
+void pgr_get_edges_reversed(
         char *edges_sql,
         pgr_edge_t **edges,
         size_t *total_edges);
@@ -148,6 +150,8 @@ void pgr_get_basic_edges(
     char *sql,
     pgr_basic_edge_t **edges,
     size_t *total_edges);
+
+
 
 /* **************** FOR USERS DOCUMENTATION
 basic_edges_sql_start

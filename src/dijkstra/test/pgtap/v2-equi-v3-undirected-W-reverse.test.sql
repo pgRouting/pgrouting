@@ -4,6 +4,9 @@ SET client_min_messages = WARNING;
 
 SELECT plan(10);
 
+UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+
+
 -- all this queries are equivalent (give the same results)
 PREPARE q00 AS
 SELECT  id2 FROM pgr_dijkstra(

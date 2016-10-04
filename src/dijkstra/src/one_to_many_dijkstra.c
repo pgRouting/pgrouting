@@ -54,6 +54,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum one_to_many_dijkstra(PG_FUNCTION_ARGS);
 
 
+
+
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
 static
@@ -97,7 +99,8 @@ process(
             only_cost,
             result_tuples,
             result_count,
-            &err_msg);
+            &err_msg,
+            true);
     time_msg(" processing Dijkstra one to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);

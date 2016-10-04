@@ -52,7 +52,8 @@ extern "C" {
                 bool only_cost,
                 General_path_element_t **return_tuples,
                 size_t *return_count,
-                char **err_msg);
+                char **err_msg,
+                bool normal);
 
 
 #ifdef __cplusplus

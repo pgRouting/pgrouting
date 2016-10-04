@@ -51,9 +51,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./many_to_one_dijkstra_driver.h"
+//#include "./many_to_one_dijkstra_driver.h"
+#include "./one_to_many_dijkstra_driver.h"
 
 PGDLLEXPORT Datum many_to_one_dijkstra(PG_FUNCTION_ARGS);
+
 /******************************************************************************/
 /*                          MODIFY AS NEEDED                                  */
 static
@@ -72,7 +74,7 @@ process(
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples);
+    pgr_get_edges_reversed(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
@@ -88,17 +90,18 @@ process(
     clock_t start_t = clock();
 
     char *err_msg = NULL;
-    do_pgr_many_to_one_dijkstra(
+    do_pgr_one_to_many_dijkstra(
             edges,
             total_tuples,
+            end_vid,
             start_vidsArr,
             size_start_vidsArr,
-            end_vid,
             directed,
             only_cost,
             result_tuples,
             result_count,
-            &err_msg);
+            &err_msg,
+            false); // not normal
     time_msg(" processing Dijkstra many to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
