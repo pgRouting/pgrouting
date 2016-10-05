@@ -29,12 +29,16 @@ sudo /etc/init.d/postgresql stop
 sudo apt-get -y remove --purge postgresql\*
 
 echo "Installing postgresql $POSTGRESQL_VERSION  & postgis "
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-sudo apt-get install wget ca-certificates
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
+# sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+# sudo apt-get install wget ca-certificates
+# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+# sudo apt-get update
 
-sudo apt-get install -y postgresql-$POSTGRESQL_VERSION postgresql-server-dev-$POSTGRESQL_VERSION  postgresql-9.5-postgis-$POSTGIS_VERSION
+sudo apt-get install -y \
+    postgresql-$POSTGRESQL_VERSION \
+    postgresql-server-dev-$POSTGRESQL_VERSION  \
+    postgresql-$POSTGRESQL_VERSION-postgis-$POSTGIS_VERSION \
+    postgresql-$POSTGRESQL_VERSION-pgtap
 
 #sudo apt-get install -y pgtap libtap-parser-sourcehandler-pgtap-perl
 sudo cp /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/pg_config /usr/bin/pg_config
