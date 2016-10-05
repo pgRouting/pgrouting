@@ -85,7 +85,7 @@ before_script:
 
   # Install pgtap and pg_prove
   # pgtap has to be installed after postgres has started
-  - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
+  ## ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
   - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
   # initialize databases

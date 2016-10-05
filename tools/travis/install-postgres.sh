@@ -63,7 +63,7 @@ sudo sed -i -e 's/port = 5433/port = 5432/g' /etc/postgresql/$POSTGRESQL_VERSION
 #echo "making grep after change"
 #grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
 #echo "finished grep"
-#sudo cp $TRAVIS_BUILD_DIR/tools/travis/pg_hba.conf /etc/postgresql/$POSTGRESQL_VERSION/main/pg_hba.conf
+sudo cp $TRAVIS_BUILD_DIR/tools/travis/pg_hba.conf /etc/postgresql/$POSTGRESQL_VERSION/main/pg_hba.conf
 sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
 ps -fea | grep postgres
 
