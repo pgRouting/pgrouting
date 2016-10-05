@@ -59,7 +59,7 @@ sudo cat /etc/postgresql/9.5/main/pg_hba.conf
 #echo "making grep before change"
 #grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
 #echo "finished grep"
-#sudo sed -i -e 's/port = 5433/port = 5432/g' /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
+sudo sed -i -e 's/port = 5433/port = 5432/g' /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
 #echo "making grep after change"
 #grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
 #echo "finished grep"
