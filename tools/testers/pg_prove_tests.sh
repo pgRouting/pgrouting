@@ -49,6 +49,7 @@ pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 
+pg_prove ../../src/withPoints/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/alpha_shape/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/apsp_johnson/test/pgtap/* -d $PGDATABASE  -U $PGUSER
@@ -59,7 +60,6 @@ pg_prove ../../src/common/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/driving_distance/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/kdijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/withPoints/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/tsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 

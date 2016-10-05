@@ -43,7 +43,7 @@ extern "C" {
 // start_pid ANYARRAY,
 // end_pid BIGINT,
 // directed BOOLEAN DEFAULT true,
-    int do_pgr_many_to_many_withPoints(
+    void do_pgr_many_to_many_withPoints(
             pgr_edge_t *edges,
             size_t total_edges,
 
@@ -68,6 +68,7 @@ extern "C" {
 
             General_path_element_t **return_tuples,
             size_t *return_count,
+            char ** log_msg,
             char ** err_msg);
 
 #ifdef __cplusplus

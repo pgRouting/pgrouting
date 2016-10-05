@@ -30,6 +30,7 @@ branches:
     - rewrite/bd_dijkstra
     - internal/graph
     - fix/withpointKSP
+    - experiment/dijkstra-code
 
 env:
   - POSTGRESQL_VERSION=9.1

@@ -34,9 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
+#include <algorithm>
 #include <sstream>
 #include <deque>
-#include <algorithm>
 #include <vector>
 #include <cassert>
 
@@ -85,38 +85,59 @@ pgr_dijkstra(
 // end_pid BIGINT,
 // directed BOOLEAN DEFAULT true
 
-int
+void
 do_pgr_many_to_many_withPoints(
-        pgr_edge_t *edges,
-        size_t total_edges,
-        Point_on_edge_t *points_p,
-        size_t total_points,
-        pgr_edge_t *edges_of_points,
-        size_t total_edges_of_points,
-        int64_t *start_pidsArr,
-        size_t size_start_pidsArr,
-        int64_t *end_pidsArr,
-        size_t size_end_pidsArr,
+        pgr_edge_t *edges, size_t total_edges,
+        Point_on_edge_t *points_p, size_t total_points,
+        pgr_edge_t *edges_of_points, size_t total_edges_of_points,
+        int64_t *start_pidsArr, size_t size_start_pidsArr,
+        int64_t *end_pidsArr, size_t size_end_pidsArr,
 
         char driving_side,
         bool details,
         bool directed,
         bool only_cost,
         bool normal, 
-        General_path_element_t **return_tuples,
-        size_t *return_count,
+
+        General_path_element_t **return_tuples, size_t *return_count,
+
+        char ** log_msg,
         char ** err_msg) {
     std::ostringstream log;
+    std::ostringstream err;
     try {
+        pgassert(!(*return_tuples));
+        pgassert((*return_count) == 0);
+        pgassert(!(*log_msg));
+        pgassert(!(*err_msg));
+
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
 
+        if (!normal) {
+            for (auto &point : points) {
+                if (point.side == 'r') {
+                    point.side = 'l';
+                } else if (point.side == 'l') {
+                    point.side = 'r';
+                };
+                point.fraction = 1 - point.fraction; 
+            }
+            if (driving_side == 'r') {
+                driving_side = 'l';
+            } else if (driving_side == 'l') {
+                driving_side = 'r';
+            }
+        }
+
         int errcode = check_points(points, log);
         if (errcode) {
-            /* Point(s) with same pid but different edge/fraction/side combination found */
-            *err_msg = strdup(log.str().c_str());
-            return errcode;
+            *log_msg = strdup(log.str().c_str());
+            err << "Unexpected point(s) with same pid but different edge/fraction/side combination found.";
+            *err_msg = strdup(err.str().c_str());
+            return;
         }
+
 
         std::vector< pgr_edge_t >
             edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
@@ -126,7 +147,7 @@ do_pgr_many_to_many_withPoints(
                 points,
                 edges_to_modify,
                 driving_side,
-                new_edges);
+                new_edges, log);
 
 
         std::vector<int64_t>
@@ -181,14 +202,13 @@ do_pgr_many_to_many_withPoints(
             log <<
                 "No paths found between Starting and any of the Ending vertices\n";
             *err_msg = strdup(log.str().c_str());
-            return 0;
+            return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
-
-        return 0;
+        *log_msg = strdup(log.str().c_str());
     } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
@@ -205,7 +225,5 @@ do_pgr_many_to_many_withPoints(
         log << "Caught unknown exception!\n";
         *err_msg = strdup(log.str().c_str());
     }
-
-    return 1000;
 }
 

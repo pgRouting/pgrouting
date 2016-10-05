@@ -115,13 +115,15 @@ process(
             edges_of_points, total_edges_of_points,
             start_pidsArr, size_start_pidsArr,
             end_pidsArr, size_end_pidsArr,
+
             driving_side[0],
             details,
             directed,
             only_cost,
             true,
-            result_tuples,
-            result_count,
+
+            result_tuples, result_count,
+            &log_msg,
             &err_msg);
     time_msg("Processing withPoints many to many", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);

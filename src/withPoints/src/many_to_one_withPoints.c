@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "./../../common/src/points_input.h"
 #include "./get_new_queries.h"
-#include "./many_to_one_withPoints_driver.h"
+#include "./many_to_many_withPoints_driver.h"
 
 PGDLLEXPORT Datum many_to_one_withPoints(PG_FUNCTION_ARGS);
 
@@ -86,12 +86,12 @@ process(
 
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges_reversed(edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_no_points_query, &edges, &total_edges);
+    pgr_get_edges_reversed(edges_no_points_query, &edges, &total_edges);
 
     free(edges_of_points_query);
     free(edges_no_points_query);
@@ -103,35 +103,39 @@ process(
         return;
     }
 
+    char *log_msg = NULL;
     char *err_msg = NULL;
     clock_t start_t = clock();
-    int errcode = do_pgr_many_to_one_withPoints(
+    do_pgr_many_to_many_withPoints(
             edges, total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,
+            &end_pid, 1,
             start_pidsArr, size_start_pidsArr,
-            end_pid,
             driving_side[0],
             details,
             directed,
             only_cost,
+            false,
             result_tuples,
             result_count,
+            &log_msg,
             &err_msg);
     time_msg(" processing withPoints many to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
+    PGR_DBG("Returned message = %s\n", log_msg);
     PGR_DBG("Returned message = %s\n", err_msg);
+    if (log_msg) free(log_msg);
 
-    if (err_msg) free(err_msg);
+    if (err_msg) {
+        free(start_pidsArr);
+        free(*result_tuples);
+        elog(ERROR, "%s", err_msg);
+        free(err_msg);
+    }
 
     pfree(edges);
     pgr_SPI_finish();
-
-
-    if (errcode) {
-        free(start_pidsArr);
-        pgr_send_error(errcode);
-    }
 }
 
 /*                                                                             */

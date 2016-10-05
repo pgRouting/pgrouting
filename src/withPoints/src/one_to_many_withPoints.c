@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "./../../common/src/points_input.h"
 #include "./get_new_queries.h"
-#include "./one_to_many_withPoints_driver.h"
+#include "./many_to_many_withPoints_driver.h"
 
 PGDLLEXPORT Datum one_to_many_withPoints(PG_FUNCTION_ARGS);
 
@@ -157,18 +157,21 @@ process(
     char *err_msg = NULL;
     char *log_msg = NULL;
     clock_t start_t = clock();
-    do_pgr_one_to_many_withPoints(
+    do_pgr_many_to_many_withPoints(
             edges, total_edges,
             points, total_points,
             edges_of_points, total_edges_of_points,
-            start_pid,
+            &start_pid, 1,
             end_pidsArr, size_end_pidsArr,
+
             driving_side[0],
             details,
             directed,
             only_cost,
-            result_tuples,
-            result_count,
+            true,
+
+            result_tuples, result_count,
+
             &log_msg,
             &err_msg);
     time_msg(" processing withPoints one to many", start_t, clock());

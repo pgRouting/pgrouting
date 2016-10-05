@@ -161,6 +161,7 @@ process(
             only_cost,
             true,
             result_tuples, result_count,
+            &log_msg,
             &err_msg);
     time_msg(" processing withPoints one to one", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
