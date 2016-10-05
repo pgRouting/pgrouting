@@ -38,7 +38,7 @@ env:
   - POSTGRESQL_VERSION=9.3
   - POSTGRESQL_VERSION=9.4
   - POSTGRESQL_VERSION=9.5
-  #- POSTGRESQL_VERSION=9.6
+  - POSTGRESQL_VERSION=9.6
 
 
 # executed. So things have to be tested oe by one.
@@ -51,7 +51,7 @@ addons:
       - kubuntu-backports
       - boost-latest
     packages:
-      - g++-4.8
+        #- g++-4.8
       - cmake
       - libboost-thread-dev
       - libboost-graph-dev
@@ -65,7 +65,7 @@ install:
   - sudo /etc/init.d/postgresql stop
   - sudo /etc/init.d/postgresql stop
 
-  - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
+  #- sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
   #- sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
 
 before_script:
@@ -75,6 +75,7 @@ before_script:
   #  doxygen --version ;
 
   # Add our chosen PG version to the path
+  - ls /usr/lib/postgresql 
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
   # Stop whichever version of PG that travis started
