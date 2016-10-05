@@ -16,6 +16,13 @@ echo "User $PGUSER"
 
 if test "$POSTGRESQL_VERSION" = "9.5" ; then
 
+    sudo /etc/init.d/postgresql stop
+    sudo apt-get -y remove --purge postgresql-9.1
+    sudo apt-get -y remove --purge postgresql-9.2
+    sudo apt-get -y remove --purge postgresql-9.3
+    sudo apt-get -y remove --purge postgresql-9.4
+    sudo apt-get -y remove --purge postgresql-9.5
+    sudo apt-get -y remove --purge postgresql-9.6
     echo "Installing postgresql 9.5 & postgis for 9.5 pgtap & pg_prove"
     sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
     sudo apt-get install wget ca-certificates
