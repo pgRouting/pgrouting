@@ -26,7 +26,12 @@ echo "User $PGUSER"
 sudo /etc/init.d/postgresql stop
 
 ## removing unused postgresql
-sudo apt-get -y remove --purge postgresql\*
+sudo apt-get -y remove --purge postgresql-9.1
+sudo apt-get -y remove --purge postgresql-9.2
+sudo apt-get -y remove --purge postgresql-9.3
+sudo apt-get -y remove --purge postgresql-9.4
+sudo apt-get -y remove --purge postgresql-9.5
+sudo apt-get -y remove --purge postgresql-9.6
 
 echo "Installing postgresql $POSTGRESQL_VERSION  & postgis "
 # sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
@@ -45,6 +50,12 @@ sudo cp /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/pg_config /usr/bin/pg_config
 sudo /etc/init.d/postgresql stop
 sudo /etc/init.d/postgresql stop
 ps -fea | grep postgres
+
+#sudo sh -c 'echo "local all postgres trust" > /etc/postgresql/9.5/main/pg_hba.conf'
+#sudo sh -c 'echo -n "host all all 127.0.0.1/32 trust" >> /etc/postgresql/9.5/main/pg_hba.conf'
+
+sudo more /etc/postgresql/9.5/main/pg_hba.conf
+
 #echo "making grep before change"
 #grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
 #echo "finished grep"
