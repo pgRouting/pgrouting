@@ -26,7 +26,7 @@ echo "User $PGUSER"
 sudo /etc/init.d/postgresql stop
 
 ## removing unused postgresql
-sudo apt-get -y remove --purge postgresql
+sudo apt-get -y remove --purge postgresql\*
 
 echo "Installing postgresql $POSTGRESQL_VERSION  & postgis "
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
