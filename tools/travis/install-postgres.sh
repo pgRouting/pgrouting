@@ -54,7 +54,7 @@ ps -fea | grep postgres
 #sudo sh -c 'echo "local all postgres trust" > /etc/postgresql/9.5/main/pg_hba.conf'
 #sudo sh -c 'echo -n "host all all 127.0.0.1/32 trust" >> /etc/postgresql/9.5/main/pg_hba.conf'
 
-sudo more /etc/postgresql/9.5/main/pg_hba.conf
+sudo cat /etc/postgresql/9.5/main/pg_hba.conf
 
 #echo "making grep before change"
 #grep port /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
