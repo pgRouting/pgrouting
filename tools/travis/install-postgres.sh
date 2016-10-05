@@ -42,8 +42,7 @@ echo "Installing postgresql $POSTGRESQL_VERSION  & postgis "
 sudo apt-get install -y \
     postgresql-$POSTGRESQL_VERSION \
     postgresql-server-dev-$POSTGRESQL_VERSION  \
-    postgresql-$POSTGRESQL_VERSION-postgis-$POSTGIS_VERSION \
-    postgresql-$POSTGRESQL_VERSION-pgtap
+    postgresql-$POSTGRESQL_VERSION-postgis-$POSTGIS_VERSION
 
 #sudo apt-get install -y pgtap libtap-parser-sourcehandler-pgtap-perl
 sudo cp /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/pg_config /usr/bin/pg_config
@@ -67,3 +66,4 @@ sudo cp $TRAVIS_BUILD_DIR/tools/travis/pg_hba.conf /etc/postgresql/$POSTGRESQL_V
 sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
 ps -fea | grep postgres
 
+sudo apt-get install -y  postgresql-$POSTGRESQL_VERSION-pgtap
