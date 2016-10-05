@@ -28,7 +28,7 @@ if test "$POSTGRESQL_VERSION" = "9.5" ; then
     sudo apt-get install wget ca-certificates
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
     sudo apt-get update
-    sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis
+    sudo apt-get install -y postgresql-9.5 postgresql-9.5-postgis-2.3
     #sudo apt-get install -y pgtap libtap-parser-sourcehandler-pgtap-perl
     sudo cp /usr/lib/postgresql/$POSTGRESQL_VERSION/bin/pg_config /usr/bin/pg_config
     sudo /etc/init.d/postgresql stop
