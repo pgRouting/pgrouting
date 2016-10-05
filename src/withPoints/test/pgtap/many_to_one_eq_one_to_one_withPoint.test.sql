@@ -72,7 +72,7 @@ SELECT  -1 AS start_vid, -5 AS end_vid,  agg_cost::text FROM pgr_withPoints(
 
 
 PREPARE q10 AS
-SELECT start_vid, end_vid, agg_cost::text  FROM pgr_withPointsCost(
+SELECT start_pid, end_pid, agg_cost::text  FROM pgr_withPointsCost(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
     'SELECT pid, edge_id, fraction, side from pointsOfInterest',
     -1, -5,
