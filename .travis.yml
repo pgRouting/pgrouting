@@ -76,6 +76,7 @@ before_script:
 
   # Add our chosen PG version to the path
   - ls /usr/lib/postgresql/*/* 
+  - ls /var/lib/postgresql/*/* 
   - grep 'port =' /etc/postgresql/$POSTGRESQL_VERSION/main/postgresql.conf
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
