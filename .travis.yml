@@ -25,12 +25,15 @@ compiler:
 
 
 env:
-  - POSTGRESQL_VERSION=9.1
-  - POSTGRESQL_VERSION=9.2
-  - POSTGRESQL_VERSION=9.3
-  - POSTGRESQL_VERSION=9.4
-  - POSTGRESQL_VERSION=9.5
-  - POSTGRESQL_VERSION=9.6
+  global:
+    - PG_USER=postgres
+  matrix:
+    - POSTGRESQL_VERSION=9.6
+    - POSTGRESQL_VERSION=9.5
+    - POSTGRESQL_VERSION=9.4
+    #- POSTGRESQL_VERSION=9.3
+    #- POSTGRESQL_VERSION=9.2
+    #- POSTGRESQL_VERSION=9.1
 
 
 # executed. So things have to be tested oe by one.
@@ -38,23 +41,22 @@ addons:
   apt:
     sources:
       # For gcc >= 4.8
-      - ubuntu-toolchain-r-test
+      #- ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
       - kubuntu-backports
       - boost-latest
     packages:
-      #- g++-4.8
       - cmake
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
-      - postgresql-server-dev-all
-      - postgresql-common
+      #- postgresql-server-dev-all
+      #- postgresql-common
       - python-sphinx
 
 
 install:
-  - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION postgres
+  - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION $PG_USER
 
 before_script:
   ## Install doxygen
@@ -68,21 +70,21 @@ before_script:
   #- sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
   # initialize databases
-  - createdb  -U postgres ___pgr___test___
-  - createdb  -U postgres pgr_test__db__test
+  - createdb  -U $PG_USER ___pgr___test___
+  - createdb  -U $PG_USER pgr_test__db__test
   - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
 
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   # tests as part of script so if a test fails the build fails
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION postgres
-  - ./tools/testers/pg_prove_tests.sh postgres DEBUG
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER
+  - ./tools/testers/pg_prove_tests.sh $PG_USER DEBUG
 
 after_script: 
   # blank
 
 #after_success:
-  - make doc
-  - doxygen -v
-  - make doxy
+  #- make doc
+  #- doxygen -v
+  #- make doxy
 
