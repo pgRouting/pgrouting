@@ -12,7 +12,6 @@
 
 #dist: precise
 
-sudo: required
 
 language: cpp
 
@@ -24,9 +23,6 @@ compiler:
 #    on_failure: project@pgrouting.org
 
 
-env:
-  global:
-    - PG_USER=postgres
 
 #  matrix:
 #    - POSTGRESQL_VERSION=9.6
@@ -37,30 +33,39 @@ env:
 #- POSTGRESQL_VERSION=9.1
       
 matrix:
+  env:
+    global:
+      - PG_USER=postgres
   include:
     - os: linux
+      sudo: required
       dist: precise
       env: POSTGRESQL_VERSION=9.6
 
     - os: linux
+      sudo: required
       dist: precise
       env: POSTGRESQL_VERSION=9.5
 
     - os: linux
+      sudo: required
       dist: precise
       env: POSTGRESQL_VERSION=9.4
 
     - os: linux
+      sudo: required
       dist: trusty
       group: edge
       env: POSTGRESQL_VERSION=9.6
 
     - os: linux
+      sudo: required
       dist: trusty
       group: edge
       env: POSTGRESQL_VERSION=9.5
 
     - os: linux
+      sudo: required
       dist: trusty
       group: edge
       env: POSTGRESQL_VERSION=9.4
