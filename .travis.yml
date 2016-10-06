@@ -7,20 +7,11 @@
 
 #choose precise or trusty
 
-#group: edge
-#dist: trusty    
+language: cpp
 
-#dist: precise
-
-sudo: required
-
-language: c++
 
 compiler:
     - gcc
-
-os: 
-  - linux
 
 #notifications:
 #  email:
@@ -28,20 +19,22 @@ os:
 
 
 env:
-  global:
-    #- POSTGRESQL_VERSION=9.1
-    #- POSTGRESQL_VERSION=9.2
-    #- POSTGRESQL_VERSION=9.3
-    - POSTGRESQL_VERSION=9.4
-    - POSTGRESQL_VERSION=9.5
-    - POSTGRESQL_VERSION=9.6
-  matrix:      
-    include:
-      - os: linux
-        dist: trusty    
-      - os: linux
-        dist: precise
-        group: edge
+  #- POSTGRESQL_VERSION=9.1
+  #- POSTGRESQL_VERSION=9.2
+  #- POSTGRESQL_VERSION=9.3
+  - POSTGRESQL_VERSION=9.4
+  - POSTGRESQL_VERSION=9.5
+  - POSTGRESQL_VERSION=9.6
+
+matrix:      
+  include:
+    - os: linux
+      dist: trusty    
+      sudo: required
+    - os: linux
+      dist: precise
+      group: edge
+      sudo: required
 
 
 
