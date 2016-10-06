@@ -33,42 +33,45 @@ compiler:
 #- POSTGRESQL_VERSION=9.1
       
 matrix:
-  env:
-    global:
-      - PG_USER=postgres
   include:
     - os: linux
       sudo: required
       dist: precise
-      env: POSTGRESQL_VERSION=9.6
+      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
+
 
     - os: linux
       sudo: required
       dist: precise
-      env: POSTGRESQL_VERSION=9.5
+      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
+
 
     - os: linux
       sudo: required
       dist: precise
-      env: POSTGRESQL_VERSION=9.4
+      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres
+
 
     - os: linux
       sudo: required
       dist: trusty
       group: edge
-      env: POSTGRESQL_VERSION=9.6
+      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
+
 
     - os: linux
       sudo: required
       dist: trusty
       group: edge
-      env: POSTGRESQL_VERSION=9.5
+      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
+
 
     - os: linux
       sudo: required
       dist: trusty
       group: edge
-      env: POSTGRESQL_VERSION=9.4
+      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres
+
 
 
 # executed. So things have to be tested oe by one.
