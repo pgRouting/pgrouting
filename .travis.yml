@@ -24,13 +24,13 @@ compiler:
 #    on_failure: project@pgrouting.org
 
 
-env:
-  global:
-    - PG_USER=postgres
-  matrix:
-    - POSTGRESQL_VERSION=9.6
-    - POSTGRESQL_VERSION=9.5
-    - POSTGRESQL_VERSION=9.4
+#env:
+#global:
+#- PG_USER=postgres
+#matrix:
+#- POSTGRESQL_VERSION=9.6
+#- POSTGRESQL_VERSION=9.5
+#- POSTGRESQL_VERSION=9.4
     #- POSTGRESQL_VERSION=9.3
     #- POSTGRESQL_VERSION=9.2
     #- POSTGRESQL_VERSION=9.1
@@ -39,9 +39,24 @@ matrix:
   include:
     - os: linux
       dist: precise
+      env:
+        global:
+          - PG_USER=postgres
+        matrix:
+          - POSTGRESQL_VERSION=9.6
+          - POSTGRESQL_VERSION=9.5
+          - POSTGRESQL_VERSION=9.4
+
     - os: linux
       dist: trusty
       group: edge
+      env:
+        global:
+          - PG_USER=postgres
+        matrix:
+          - POSTGRESQL_VERSION=9.6
+          - POSTGRESQL_VERSION=9.5
+          - POSTGRESQL_VERSION=9.4
 
 
 # executed. So things have to be tested oe by one.
@@ -49,7 +64,7 @@ addons:
   apt:
     sources:
       # For cmake
-      #- kubuntu-backports
+      - kubuntu-backports
       - boost-latest
     packages:
       - cmake
