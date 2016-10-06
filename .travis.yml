@@ -14,10 +14,13 @@
 
 sudo: required
 
-language: c
+language: c++
 
 compiler:
     - gcc
+
+os: 
+  - linux
 
 #notifications:
 #  email:
@@ -26,7 +29,8 @@ compiler:
 
 matrix:      
   include:
-    - dist: trusty    
+    - os: linux
+      dist: trusty    
       env:
         #- POSTGRESQL_VERSION=9.1
         #- POSTGRESQL_VERSION=9.2
@@ -34,7 +38,9 @@ matrix:
         - POSTGRESQL_VERSION=9.4
         - POSTGRESQL_VERSION=9.5
         - POSTGRESQL_VERSION=9.6
-    - dist: precise
+    - os: linux
+      dist: precise
+      group: edge
       env:
         - POSTGRESQL_VERSION=9.4
         - POSTGRESQL_VERSION=9.5
