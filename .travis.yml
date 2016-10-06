@@ -7,8 +7,14 @@
 
 #choose precise or trusty
 
-language: cpp
+#group: edge
+#dist: trusty    
 
+dist: precise
+
+sudo: required
+
+language: c
 
 compiler:
     - gcc
@@ -18,25 +24,13 @@ compiler:
 #    on_failure: project@pgrouting.org
 
 
-
-matrix:      
-  include:
-    - os: linux
-      dist: trusty    
-      sudo: required
-      env:
-        - POSTGRESQL_VERSION=9.4
-        - POSTGRESQL_VERSION=9.5
-        - POSTGRESQL_VERSION=9.6
-    - os: linux
-      dist: precise
-      group: edge
-      sudo: required
-      env:
-        - POSTGRESQL_VERSION=9.4
-        - POSTGRESQL_VERSION=9.5
-        - POSTGRESQL_VERSION=9.6
-
+env:
+  - POSTGRESQL_VERSION=9.1
+  - POSTGRESQL_VERSION=9.2
+  - POSTGRESQL_VERSION=9.3
+  - POSTGRESQL_VERSION=9.4
+  - POSTGRESQL_VERSION=9.5
+  - POSTGRESQL_VERSION=9.6
 
 
 # executed. So things have to be tested oe by one.
@@ -44,18 +38,18 @@ addons:
   apt:
     sources:
       # For gcc >= 4.8
-      #- ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
-      #- kubuntu-backports
+      - kubuntu-backports
       - boost-latest
     packages:
-      #- g++-4.8
-      #- cmake
+      - g++-4.8
+      - cmake
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
-      #- postgresql-server-dev-all
-      #- postgresql-common
+      - postgresql-server-dev-all
+      - postgresql-common
       - python-sphinx
 
 
@@ -76,14 +70,14 @@ before_script:
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
   # Stop whichever version of PG that travis started
-  - sudo /etc/init.d/postgresql stop
+  #- sudo /etc/init.d/postgresql stop
 
   # Start the version of PG that we want to test
-  - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
+  #- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
 
   # Install pgtap and pg_prove
   # pgtap has to be installed after postgres has started
-  ## ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
+  #- ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
   - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
   # initialize databases
@@ -101,7 +95,7 @@ after_script:
   # blank
 
 #after_success:
-  #- make doc
-  #- doxygen -v
-  #- make doxy
+  - make doc
+  - doxygen -v
+  - make doxy
 
