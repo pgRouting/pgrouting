@@ -43,9 +43,27 @@ matrix:
       env: POSTGRESQL_VERSION=9.6
 
     - os: linux
+      dist: precise
+      env: POSTGRESQL_VERSION=9.5
+
+    - os: linux
+      dist: precise
+      env: POSTGRESQL_VERSION=9.4
+
+    - os: linux
       dist: trusty
       group: edge
       env: POSTGRESQL_VERSION=9.6
+
+    - os: linux
+      dist: trusty
+      group: edge
+      env: POSTGRESQL_VERSION=9.5
+
+    - os: linux
+      dist: trusty
+      group: edge
+      env: POSTGRESQL_VERSION=9.4
 
 
 # executed. So things have to be tested oe by one.
