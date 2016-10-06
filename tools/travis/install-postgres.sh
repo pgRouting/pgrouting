@@ -30,12 +30,12 @@ sudo apt-get install -y \
 if [[ "$POSTGRESQL_VERSION" = "9.5" ||  "$POSTGRESQL_VERSION" = "9.6"  ]] ; then
 
     ## removing unused postgresql
-    sudo apt-get -y remove --purge postgresql-9.1
-    sudo apt-get -y remove --purge postgresql-9.2
-    sudo apt-get -y remove --purge postgresql-9.3
-    sudo apt-get -y remove --purge postgresql-9.4
-    sudo apt-get -y remove --purge postgresql-9.5
-    sudo apt-get -y remove --purge postgresql-9.6
+    #sudo apt-get -y remove --purge postgresql-9.1
+    #sudo apt-get -y remove --purge postgresql-9.2
+    #sudo apt-get -y remove --purge postgresql-9.3
+    #sudo apt-get -y remove --purge postgresql-9.4
+    #sudo apt-get -y remove --purge postgresql-9.5
+    #sudo apt-get -y remove --purge postgresql-9.6
 
     echo "Installing postgresql $POSTGRESQL_VERSION  & postgis "
 
