@@ -44,7 +44,7 @@ addons:
       - boost-latest
     packages:
       #- g++-4.8
-      #- cmake
+      - cmake
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
