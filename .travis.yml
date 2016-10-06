@@ -87,7 +87,7 @@ addons:
 
 install:
   - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION $PG_USER
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/install-doxygen.sh ;
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/install-doxygen.sh ; fi
 
 before_script:
   ## Install doxygen
@@ -114,4 +114,4 @@ after_script:
   # blank
 
 #after_success:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/test-documentation.sh ;
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/test-documentation.sh ; fi
