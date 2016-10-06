@@ -16,7 +16,7 @@
 language: cpp
 
 compiler:
-    - g++
+    - gcc
 
 #notifications:
 #  email:
