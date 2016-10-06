@@ -44,12 +44,12 @@ addons:
   apt:
     sources:
       # For gcc >= 4.8
-      - ubuntu-toolchain-r-test
+      #- ubuntu-toolchain-r-test
       # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
-      - kubuntu-backports
+      #- kubuntu-backports
       - boost-latest
     packages:
-      - g++-4.8
+      #- g++-4.8
       #- cmake
       - libboost-thread-dev
       - libboost-graph-dev
