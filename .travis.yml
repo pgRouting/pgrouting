@@ -70,6 +70,7 @@ matrix:
 addons:
   apt:
     sources:
+      - - ubuntu-toolchain-r-test
       # For cmake
       - kubuntu-backports
       - boost-latest
