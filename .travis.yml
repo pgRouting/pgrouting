@@ -26,18 +26,18 @@ compiler:
 
 matrix:      
   include:
-    - os: linux
-      dist: trusty    
+    - dist: trusty    
       env:
         #- POSTGRESQL_VERSION=9.1
         #- POSTGRESQL_VERSION=9.2
         #- POSTGRESQL_VERSION=9.3
-        #- POSTGRESQL_VERSION=9.4
-        #- POSTGRESQL_VERSION=9.5
+        - POSTGRESQL_VERSION=9.4
+        - POSTGRESQL_VERSION=9.5
         - POSTGRESQL_VERSION=9.6
-    - os: linux
-      dist: precise
+    - dist: precise
       env:
+        - POSTGRESQL_VERSION=9.4
+        - POSTGRESQL_VERSION=9.5
         - POSTGRESQL_VERSION=9.6
 
 
@@ -52,8 +52,8 @@ addons:
       - kubuntu-backports
       - boost-latest
     packages:
-        #- g++-4.8
-      - cmake
+      - g++-4.8
+      #- cmake
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
