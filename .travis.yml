@@ -14,10 +14,10 @@ dist: precise
 
 sudo: required
 
-language: c
+language: cpp
 
 compiler:
-    - gcc
+    - g++
 
 #notifications:
 #  email:
@@ -43,8 +43,8 @@ addons:
       - kubuntu-backports
       - boost-latest
     packages:
-      - g++-4.8
-      - cmake
+      #- g++-4.8
+      #- cmake
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
@@ -54,11 +54,7 @@ addons:
 
 
 install:
-  #- sudo /etc/init.d/postgresql stop
-  #- sudo /etc/init.d/postgresql stop
-
   - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION postgres
-  #- sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
 
 before_script:
   ## Install doxygen
@@ -69,16 +65,7 @@ before_script:
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
-  # Stop whichever version of PG that travis started
-  #- sudo /etc/init.d/postgresql stop
-
-  # Start the version of PG that we want to test
-  #- sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
-
-  # Install pgtap and pg_prove
-  # pgtap has to be installed after postgres has started
-  #- ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
-  - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
+  #- sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
 
   # initialize databases
   - createdb  -U postgres ___pgr___test___
