@@ -90,10 +90,6 @@ install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/install-doxygen.sh ; fi
 
 before_script:
-  ## Install doxygen
-  #- sudo add-apt-repository ppa:libreoffice/libreoffice-4-4 -y && sudo apt-get -qq update &&
-  #  sudo apt-get --no-install-suggests --no-install-recommends -qq install doxygen  &&
-  #  doxygen --version ;
 
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
