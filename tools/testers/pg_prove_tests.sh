@@ -35,7 +35,7 @@ run_psql -f setup_db.sql
 #TODO comment out peformance test before merging to MASTER
 
 
-if [ $RELEASE_TYPE = "bDEBUG" ]
+if [ $RELEASE_TYPE = "bDebug" ]
 then
     pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
     echo "MADE TEST **********************"
