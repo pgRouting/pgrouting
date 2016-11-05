@@ -7,11 +7,6 @@
 
 version: 2.3.{build}
 
-branches:
-  only:
-    - master
-    - develop
-
 image: Visual Studio 2013
 configuration: Release
 platform: x64
