@@ -10,97 +10,98 @@
 #group: edge
 #dist: trusty    
 
-dist: precise
+#dist: precise
 
-sudo: required
 
-language: c
+language: cpp
 
 compiler:
     - gcc
 
-notifications:
-  email:
-    on_failure: project@pgrouting.org
+#notifications:
+#  email:
+#    on_failure: project@pgrouting.org
 
-branches:
-  only:
-    - master
-    - develop
-    - release/2.3.0
+env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
+      
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      dist: precise
+      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
 
-env:
-  - POSTGRESQL_VERSION=9.1
-  - POSTGRESQL_VERSION=9.2
-  - POSTGRESQL_VERSION=9.3
-  - POSTGRESQL_VERSION=9.4
-  - POSTGRESQL_VERSION=9.5
-  #- POSTGRESQL_VERSION=9.6
+
+    - os: linux
+      sudo: required
+      dist: precise
+      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres
+
+
+    - os: linux
+      sudo: required
+      dist: trusty
+      group: edge
+      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
+
+
+    - os: linux
+      sudo: required
+      dist: trusty
+      group: edge
+      env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
+
+
+    - os: linux
+      sudo: required
+      dist: trusty
+      group: edge
+      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres
+
 
 
 # executed. So things have to be tested oe by one.
 addons:
   apt:
     sources:
-      # For gcc >= 4.8
-      - ubuntu-toolchain-r-test
-      # For cmake >= 2.8.8 (for CMakePackageConfigHelpers)
+      - - ubuntu-toolchain-r-test
+      # For cmake
       - kubuntu-backports
       - boost-latest
     packages:
-      - g++-4.8
       - cmake
       - libboost-thread-dev
       - libboost-graph-dev
       - libcgal-dev
-      - postgresql-server-dev-all
-      - postgresql-common
       - python-sphinx
 
 
-install:
-  - sudo /etc/init.d/postgresql stop
-  - sudo /etc/init.d/postgresql stop
 
-  - sudo ./tools/travis/install-postgres9.5.sh $POSTGRESQL_VERSION postgres
-  #- sudo ./tools/travis/install-postgres9.6.sh $POSTGRESQL_VERSION postgres
+
+
+install:
+  - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION $PG_USER
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/install-doxygen.sh ; fi
 
 before_script:
-  ## Install doxygen
-  #- sudo add-apt-repository ppa:libreoffice/libreoffice-4-4 -y && sudo apt-get -qq update &&
-  #  sudo apt-get --no-install-suggests --no-install-recommends -qq install doxygen  &&
-  #  doxygen --version ;
 
   # Add our chosen PG version to the path
   - export PATH=/usr/lib/postgresql/$POSTGRESQL_VERSION/bin:$PATH
 
-  # Stop whichever version of PG that travis started
-  - sudo /etc/init.d/postgresql stop
-
-  # Start the version of PG that we want to test
-  - sudo /etc/init.d/postgresql start $POSTGRESQL_VERSION
-
-  # Install pgtap and pg_prove
-  # pgtap has to be installed after postgres has started
-  - ./tools/travis/install_pgtap.sh $POSTGRESQL_VERSION
-  - sudo apt-get install -y libtap-parser-sourcehandler-pgtap-perl
-
   # initialize databases
-  - createdb  -U postgres ___pgr___test___
-  - createdb  -U postgres pgr_test__db__test
+  - createdb  -U $PG_USER ___pgr___test___
+  - createdb  -U $PG_USER pgr_test__db__test
   - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
+
 
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   # tests as part of script so if a test fails the build fails
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION postgres
-  - ./tools/testers/pg_prove_tests.sh postgres
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER
+  - ./tools/testers/pg_prove_tests.sh $PG_USER DEBUG
 
 after_script: 
   # blank
 
 #after_success:
-  - make doc
-  # - doxygen -v
-  - make doxy
-
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/test-documentation.sh ; fi
