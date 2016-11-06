@@ -24,6 +24,7 @@
 
 #define MAX_RULE_LENGTH 5
 
+#include <stdint.h>
 
 typedef struct edge
 {
