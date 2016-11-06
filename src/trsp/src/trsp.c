@@ -284,25 +284,25 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
 static int compute_trsp(
     char* sql,
     int dovertex,
-    int start_id,
+    long start_id,
     double start_pos,
-    int end_id,
+    long end_id,
     double end_pos,
     bool directed, 
     bool has_reverse_cost,
     char* restrict_sql,
     path_element_t **path,
-    int *path_count) 
+    uint32_t *path_count) 
 {
 
   int SPIcode;
   SPIPlanPtr SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  int ntuples;
+  uint32_t ntuples;
 
   edge_t *edges = NULL;
-  int total_tuples = 0;
+  uint32_t total_tuples = 0;
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
@@ -310,11 +310,11 @@ static int compute_trsp(
   edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif //_MSC_VER
   restrict_t *restricts = NULL;
-  int total_restrict_tuples = 0;
+  uint32_t total_restrict_tuples = 0;
   restrict_columns_t restrict_columns = {.target_id= -1, .via_path= -1,
                                  .to_cost= -1};
-  int v_max_id=0;
-  int v_min_id=INT_MAX;
+  long v_max_id=0;
+  long v_min_id=INT_MAX;
 
   /* track if start and end are both in edge tuples */
   int s_count = 0;
@@ -375,7 +375,7 @@ static int compute_trsp(
               return finish(SPIcode, ret);	  
           }
 
-          int t;
+          uint32_t t;
           SPITupleTable *tuptable = SPI_tuptable;
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
                 
@@ -441,7 +441,7 @@ static int compute_trsp(
     
   }
 
-  PGR_DBG("Min vertex id: %i , Max vid: %i",v_min_id,v_max_id);
+  PGR_DBG("Min vertex id: %ld , Max vid: %ld",v_min_id,v_max_id);
   PGR_DBG("Total %i edge tuples", total_tuples);
 
   if(s_count == 0) {
@@ -503,7 +503,7 @@ static int compute_trsp(
                   return finish(SPIcode, ret);
               }
 
-              int t;
+              uint32_t t;
               SPITupleTable *tuptable = SPI_tuptable;
               TupleDesc tupdesc = SPI_tuptable->tupdesc;
 
@@ -588,8 +588,8 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  uint32_t                  call_cntr;
+  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
@@ -598,7 +598,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      uint32_t path_count = 0;
 
       int ret = -1;
       if (ret == -1) {}; // to avoid warning set but not used
@@ -719,8 +719,8 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
-  int                  call_cntr;
-  int                  max_calls;
+  uint32_t                  call_cntr;
+  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
@@ -728,7 +728,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
       MemoryContext   oldcontext;
-      int path_count = 0;
+      uint32_t path_count = 0;
 #ifdef DEBUG
       int ret = -1;
 #endif

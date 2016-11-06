@@ -51,7 +51,7 @@ typedef struct path_element
 } path_element_t;
 
 #ifdef __cplusplus
-extern "C"
+extern "C" {
 #endif
 
 int trsp_node_wrapper(
@@ -59,33 +59,33 @@ int trsp_node_wrapper(
 			unsigned int edge_count, 
 			restrict_t *restricts, 
 			int restrict_count,
-			int start_vertex, 
-			int end_vertex,
+			long start_vertex, 
+			long end_vertex,
 		    bool directed, 
 		    bool has_reverse_cost,
             path_element_t **path, 
-            int *path_count, 
+            uint32_t *path_count, 
             char **err_msg
             );
-
-#ifdef __cplusplus
-extern "C"
-#endif
 
 int trsp_edge_wrapper(
 			edge_t *edges, 
 			unsigned int edge_count, 
 			restrict_t *restricts, 
 			int restrict_count,
-			int start_edge, 
+			long start_edge, 
             double start_pos,
-			int end_edge,
+			long end_edge,
             double end_pos,
 		    bool directed, 
 		    bool has_reverse_cost,
             path_element_t **path, 
-            int *path_count, 
+            uint32_t *path_count, 
             char **err_msg
             );
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif

@@ -35,12 +35,12 @@ int trsp_node_wrapper(
     unsigned int edge_count,
     restrict_t *restricts,
     int restrict_count,
-    int start_vertex,
-    int end_vertex,
+    long start_vertex,
+    long end_vertex,
     bool directed,
     bool has_reverse_cost,
     path_element_t **path,
-    size_t *path_count,
+    uint32_t *path_count,
     char **err_msg
     )
 {
@@ -61,8 +61,10 @@ int trsp_node_wrapper(
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
+        size_t count;
         GraphDefinition gdef;
-        int res = gdef.my_dijkstra3(edges, edge_count, start_vertex, end_vertex, directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
+        int res = gdef.my_dijkstra3(edges, edge_count, start_vertex, end_vertex, directed, has_reverse_cost, path, &count, err_msg, ruleTable);
+        *path_count = static_cast<uint32_t> (count);
 
 
         if (res < 0)
@@ -85,14 +87,14 @@ int trsp_edge_wrapper(
     unsigned int edge_count,
     restrict_t *restricts,
     int restrict_count,
-    int start_edge,
+    long start_edge,
     double start_pos,
-    int end_edge,
+    long end_edge,
     double end_pos,
     bool directed,
     bool has_reverse_cost,
     path_element_t **path,
-    size_t *path_count,
+    uint32_t *path_count,
     char **err_msg
     )
 {
@@ -114,7 +116,9 @@ int trsp_edge_wrapper(
         }
 
         GraphDefinition gdef;
-        int res = gdef.my_dijkstra4(edges, edge_count, start_edge, start_pos, end_edge, end_pos, directed, has_reverse_cost, path, path_count, err_msg, ruleTable);
+        size_t count;
+        int res = gdef.my_dijkstra4(edges, edge_count, start_edge, start_pos, end_edge, end_pos, directed, has_reverse_cost, path, &count, err_msg, ruleTable);
+        *path_count = static_cast<uint32_t>(count);
 
 
         if (res < 0)
