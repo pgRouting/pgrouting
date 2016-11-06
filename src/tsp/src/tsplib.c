@@ -292,7 +292,7 @@ DTYPE pathLength(TSP *tsp) {
 
     int *iorder = tsp->iorder;
     DTYPE *dist   = tsp->dist;
-    int  n = tsp->n;
+    auto  n = tsp->n;
 
     for (i = 0; i < n-1; i++) {
         len += D(iorder[i], iorder[i+1]);
