@@ -32,17 +32,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "fmgr.h"
 #include "trsp.h"
 
+#include "./../../common/src/debug_macro.h"
+
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
+#if 0
 #undef DEBUG
 //#define DEBUG 1
 
 #ifdef DEBUG
-#define DBG(format, arg...)                     \
+#define PGR_DBG(format, arg...)                     \
     elog(NOTICE, format , ## arg)
 #else
-#define DBG(format, arg...) do { ; } while (0)
+#define PGR_DBG(format, arg...) do { ; } while (0)
+#endif
 #endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
@@ -83,7 +87,7 @@ text2char(text *in)
 static int
 finish(int code, int ret)
 {
-  DBG("In finish, trying to disconnect from spi %d",ret);
+  PGR_DBG("In finish, trying to disconnect from spi %d",ret);
   code = SPI_finish();
   if (code  != SPI_OK_FINISH )
   {
@@ -152,7 +156,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
       return -1;
     }
 
-  DBG("columns: id %i source %i target %i cost %i", 
+  PGR_DBG("columns: id %i source %i target %i cost %i", 
       edge_columns->id, edge_columns->source, 
       edge_columns->target, edge_columns->cost);
 
@@ -175,7 +179,7 @@ fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns,
           return -1;
         }
 
-      DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
+      PGR_DBG("columns: reverse_cost cost %i", edge_columns->reverse_cost);
     }
     
   return 0;
@@ -223,7 +227,7 @@ fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc,
     }
 
   /*
-  DBG("edge: %i, %i, %i, %f, %f", target_edge->id, target_edge->source,
+  PGR_DBG("edge: %i, %i, %i, %f, %f", target_edge->id, target_edge->source,
     target_edge->target, target_edge->cost, target_edge->reverse_cost);
   */
 }
@@ -256,7 +260,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
   rest->to_cost = DatumGetFloat8(binval);
   char *str = DatumGetCString(SPI_getvalue(*tuple, *tupdesc, restrict_columns->via_path));
 
-  //DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
+  //PGR_DBG("restriction: %f, %i, %s", rest->to_cost, rest->target_id, str);
 
   if (str != NULL) {
     char* pch = NULL;
@@ -267,7 +271,7 @@ fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc,
     while (pch != NULL && ci < MAX_RULE_LENGTH)
     {
       rest->via[ci] = atoi(pch);
-      //DBG("    rest->via[%i]=%i", ci, rest->via[ci]);
+      //PGR_DBG("    rest->via[%i]=%i", ci, rest->via[ci]);
       ci++;
       pch = (char *)strtok (NULL, " ,");
     }
@@ -320,7 +324,7 @@ static int compute_trsp(
   int ret = -1;
   register int z;
 
-  DBG("start turn_restrict_shortest_path\n");
+  PGR_DBG("start turn_restrict_shortest_path\n");
         
   SPIcode = SPI_connect();
   if (SPIcode  != SPI_OK_CONNECT) {
@@ -340,7 +344,7 @@ static int compute_trsp(
   }
 
   while (moredata == TRUE) {
-      //DBG("calling SPI_cursor_fetch");
+      //PGR_DBG("calling SPI_cursor_fetch");
       SPI_cursor_fetch(SPIportal, TRUE, TUPLIMIT);
 
       if (SPI_tuptable == NULL) {
@@ -356,7 +360,7 @@ static int compute_trsp(
 
       ntuples = SPI_processed;
 
-      //DBG("Reading edges: %i - %i", total_tuples, total_tuples+ntuples);
+      //PGR_DBG("Reading edges: %i - %i", total_tuples, total_tuples+ntuples);
 
       total_tuples += ntuples;
 
@@ -376,14 +380,14 @@ static int compute_trsp(
           TupleDesc tupdesc = SPI_tuptable->tupdesc;
                 
           for (t = 0; t < ntuples; t++) {
-              //if (t%100 == 0) { DBG("    t: %i", t); }
+              //if (t%100 == 0) { PGR_DBG("    t: %i", t); }
               HeapTuple tuple = tuptable->vals[t];
               fetch_edge(&tuple, &tupdesc, &edge_columns, 
                          &edges[total_tuples - ntuples + t]);
           }
-          //DBG("calling SPI_freetuptable");
+          //PGR_DBG("calling SPI_freetuptable");
           SPI_freetuptable(tuptable);
-          //DBG("back from SPI_freetuptable");
+          //PGR_DBG("back from SPI_freetuptable");
       } 
       else {
           moredata = FALSE;
@@ -393,7 +397,7 @@ static int compute_trsp(
 
   //defining min and max vertex id
       
-  //DBG("Total %i edge tuples", total_tuples);
+  //PGR_DBG("Total %i edge tuples", total_tuples);
     
   for(z=0; z<total_tuples; z++) {
     if(edges[z].source<v_min_id)
@@ -408,7 +412,7 @@ static int compute_trsp(
     if(edges[z].target>v_max_id)
       v_max_id=edges[z].target;      
 								        
-    //DBG("%i <-> %i", v_min_id, v_max_id);
+    //PGR_DBG("%i <-> %i", v_min_id, v_max_id);
 							
   }
 	
@@ -433,12 +437,12 @@ static int compute_trsp(
     edges[z].source-=v_min_id;
     edges[z].target-=v_min_id;
     edges[z].cost = edges[z].cost;
-    //DBG("edgeID: %i SRc:%i - %i, cost: %f", edges[z].id,edges[z].source, edges[z].target,edges[z].cost);      
+    //PGR_DBG("edgeID: %i SRc:%i - %i, cost: %f", edges[z].id,edges[z].source, edges[z].target,edges[z].cost);      
     
   }
 
-  DBG("Min vertex id: %i , Max vid: %i",v_min_id,v_max_id);
-  DBG("Total %i edge tuples", total_tuples);
+  PGR_DBG("Min vertex id: %i , Max vid: %i",v_min_id,v_max_id);
+  PGR_DBG("Total %i edge tuples", total_tuples);
 
   if(s_count == 0) {
     elog(ERROR, "Start id was not found.");
@@ -455,10 +459,10 @@ static int compute_trsp(
       end_id   -= v_min_id;
   }
   
-  DBG("Fetching restriction tuples\n");
+  PGR_DBG("Fetching restriction tuples\n");
         
   if (restrict_sql == NULL) {
-      DBG("Sql for restrictions is null.");
+      PGR_DBG("Sql for restrictions is null.");
   }
   else {
       SPIplan = SPI_prepare(restrict_sql, 0, NULL);
@@ -478,7 +482,7 @@ static int compute_trsp(
 
           if (restrict_columns.target_id == -1) {
               if (fetch_restrict_columns(SPI_tuptable, &restrict_columns) == -1) {
-                DBG("fetch_restrict_columns failed!");
+                PGR_DBG("fetch_restrict_columns failed!");
                 return finish(SPIcode, ret);
               }
           }
@@ -486,7 +490,7 @@ static int compute_trsp(
           ntuples = SPI_processed;
           total_restrict_tuples += ntuples;
 
-          //DBG("Reading Restrictions: %i", total_restrict_tuples);
+          //PGR_DBG("Reading Restrictions: %i", total_restrict_tuples);
 
           if (ntuples > 0) {
               if (!restricts)
@@ -521,14 +525,14 @@ static int compute_trsp(
 #ifdef DEBUG_OFF
     int t;
     for (t=0; t<total_restrict_tuples; t++) {
-        DBG("restricts: %.2f, %i, %i, %i, %i, %i, %i", restricts[t].to_cost, restricts[t].target_id, restricts[t].via[0], restricts[t].via[1], restricts[t].via[2], restricts[t].via[3], restricts[t].via[4]);
+        PGR_DBG("restricts: %.2f, %i, %i, %i, %i, %i, %i", restricts[t].to_cost, restricts[t].target_id, restricts[t].via[0], restricts[t].via[1], restricts[t].via[2], restricts[t].via[3], restricts[t].via[4]);
     }
 #endif
 
-  DBG("Total %i restriction tuples", total_restrict_tuples);
+  PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
 
   if (dovertex) {
-      DBG("Calling trsp_node_wrapper\n");
+      PGR_DBG("Calling trsp_node_wrapper\n");
       /** hack always returns 0 -1 when installed on EDB VC++ 64-bit without this **/
       #if defined(__MINGW64__) 
       //  elog(NOTICE,"Calling trsp_node_wrapper\n");
@@ -540,7 +544,7 @@ static int compute_trsp(
                         path, path_count, &err_msg);
   }
   else {
-      DBG("Calling trsp_edge_wrapper\n");
+      PGR_DBG("Calling trsp_edge_wrapper\n");
       ret = trsp_edge_wrapper(edges, total_tuples, 
                         restricts, total_restrict_tuples,
                         start_id, start_pos, end_id, end_pos,
@@ -548,23 +552,23 @@ static int compute_trsp(
                         path, path_count, &err_msg);
   }
 
-  DBG("Message received from inside:");
-  DBG("%s",err_msg);
+  PGR_DBG("Message received from inside:");
+  PGR_DBG("%s",err_msg);
 
-  //DBG("SIZE %i\n",*path_count);
+  //PGR_DBG("SIZE %i\n",*path_count);
 
   //::::::::::::::::::::::::::::::::
   //:: restoring original vertex id
   //::::::::::::::::::::::::::::::::
   for(z=0;z<*path_count;z++) {
-    //DBG("vetex %i\n",(*path)[z].vertex_id);
+    //PGR_DBG("vetex %i\n",(*path)[z].vertex_id);
     if (z || (*path)[z].vertex_id != -1)
         (*path)[z].vertex_id+=v_min_id;
   }
 
-  DBG("ret = %i\n", ret);
+  PGR_DBG("ret = %i\n", ret);
 
-  DBG("*path_count = %i\n", *path_count);
+  PGR_DBG("*path_count = %i\n", *path_count);
 
   if (ret < 0)
     {
@@ -621,7 +625,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
             sql = NULL;
       }
 
-	  DBG("Calling compute_trsp");
+	  PGR_DBG("Calling compute_trsp");
 
 
       ret =
@@ -638,19 +642,19 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
                                    &path, &path_count);
 #ifdef DEBUG
 	double total_cost = 0;
-      DBG("Ret is %i", ret);
+      PGR_DBG("Ret is %i", ret);
       if (ret >= 0) 
         {
           int i;
           for (i = 0; i < path_count; i++) 
             {
-         //     DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-           //   DBG("        edge_id    %i ", path[i].edge_id);
-             // DBG("        cost       %f ", path[i].cost);
+         //     PGR_DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
+           //   PGR_DBG("        edge_id    %i ", path[i].edge_id);
+             // PGR_DBG("        cost       %f ", path[i].cost);
               total_cost+=path[i].cost;
             }
         }
-        DBG("Total cost is: %f",total_cost);
+        PGR_DBG("Total cost is: %f",total_cost);
 #endif
 
       // total number of tuples to be returned 
@@ -703,7 +707,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
     }
   else    // do when there is no more left 
     {
-      DBG("Going to free path");
+      PGR_DBG("Going to free path");
       if (path) free(path);
       SRF_RETURN_DONE(funcctx);
     }
@@ -770,7 +774,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
             sql = NULL;
       }
 
-	  DBG("Calling compute_trsp");
+	  PGR_DBG("Calling compute_trsp");
 
 #ifdef DEBUG
       ret =
@@ -787,19 +791,19 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
                                    &path, &path_count);
 #ifdef DEBUG
 	double total_cost = 0;
-      DBG("Ret is %i", ret);
+      PGR_DBG("Ret is %i", ret);
       if (ret >= 0) 
         {
           int i;
           for (i = 0; i < path_count; i++) 
             {
-         //     DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
-           //   DBG("        edge_id    %i ", path[i].edge_id);
-             // DBG("        cost       %f ", path[i].cost);
+         //     PGR_DBG("Step %i vertex_id  %i ", i, path[i].vertex_id);
+           //   PGR_DBG("        edge_id    %i ", path[i].edge_id);
+             // PGR_DBG("        cost       %f ", path[i].cost);
               total_cost+=path[i].cost;
             }
         }
-        DBG("Total cost is: %f",total_cost);
+        PGR_DBG("Total cost is: %f",total_cost);
 #endif
 
       // total number of tuples to be returned 
@@ -852,7 +856,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
     }
   else    // do when there is no more left 
     {
-      DBG("Going to free path");
+      PGR_DBG("Going to free path");
       if (path) free(path);
       SRF_RETURN_DONE(funcctx);
     }
