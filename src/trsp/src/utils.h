@@ -80,10 +80,10 @@ public:
 		return vecTokens.size();
 	}
 
-	bool getToken(std::string& strToken, long iTokenIndex)
+	bool getToken(std::string& strToken, size_t iTokenIndex)
 	{
-		long lTokenCount = vecTokens.size();
-		if(iTokenIndex < 0 || iTokenIndex < lTokenCount)
+		auto lTokenCount = vecTokens.size();
+		if(iTokenIndex < lTokenCount)
 		{
 			strToken = vecTokens[iTokenIndex];
 			return true;
