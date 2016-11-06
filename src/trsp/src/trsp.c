@@ -322,7 +322,7 @@ static int compute_trsp(
 
   char *err_msg;
   int ret = -1;
-  register int z;
+  uint32_t z;
 
   PGR_DBG("start turn_restrict_shortest_path\n");
         
