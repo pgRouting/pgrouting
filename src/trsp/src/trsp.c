@@ -1,3 +1,26 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
+
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
@@ -9,8 +32,8 @@
 #include "fmgr.h"
 #include "trsp.h"
 
-Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
@@ -556,7 +579,7 @@ static int compute_trsp(
 
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 	
@@ -687,7 +710,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 }
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
-Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 	
@@ -802,21 +825,21 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
-      char* nulls;
+      bool* nulls;
 
       values = palloc(4 * sizeof(Datum));
-      nulls = palloc(4 * sizeof(char));
+      nulls = palloc(4 * sizeof(bool));
 
       values[0] = Int32GetDatum(call_cntr);
-      nulls[0] = ' ';
+      nulls[0] = false;
       values[1] = Int32GetDatum(path[call_cntr].vertex_id);
-      nulls[1] = ' ';
+      nulls[1] = false;
       values[2] = Int32GetDatum(path[call_cntr].edge_id);
-      nulls[2] = ' ';
+      nulls[2] = false;
       values[3] = Float8GetDatum(path[call_cntr].cost);
-      nulls[3] = ' ';
+      nulls[3] = false;
 		      
-      tuple = heap_formtuple(tuple_desc, values, nulls);
+      tuple = heap_form_tuple(tuple_desc, values, nulls);
 
       // make the tuple into a datum 
       result = HeapTupleGetDatum(tuple);
