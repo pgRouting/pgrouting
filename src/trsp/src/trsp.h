@@ -28,9 +28,9 @@
 
 typedef struct edge
 {
-    int id;
-    int source;
-    int target;
+    long id;
+    long source;
+    long target;
     float8 cost;
     float8 reverse_cost;
 } edge_t;
@@ -45,8 +45,8 @@ restrict_t;
 
 typedef struct path_element 
 {
-    int vertex_id;
-    int edge_id;
+    long vertex_id;
+    long edge_id;
     float8 cost;
 } path_element_t;
 
