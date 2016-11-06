@@ -24,21 +24,20 @@
 
 #define MAX_RULE_LENGTH 5
 
-#include "postgres.h"
 
 typedef struct edge
 {
     long id;
     long source;
     long target;
-    float8 cost;
-    float8 reverse_cost;
+    double cost;
+    double reverse_cost;
 } edge_t;
 
 typedef struct restrict_struct
 {
 		int target_id;
-		float8 to_cost;
+		double to_cost;
         int via[MAX_RULE_LENGTH];
 } 
 restrict_t;
@@ -47,7 +46,7 @@ typedef struct path_element
 {
     long vertex_id;
     long edge_id;
-    float8 cost;
+    double cost;
 } path_element_t;
 
 #ifdef __cplusplus
