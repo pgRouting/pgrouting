@@ -531,7 +531,7 @@ static int compute_trsp(
       DBG("Calling trsp_node_wrapper\n");
       /** hack always returns 0 -1 when installed on EDB VC++ 64-bit without this **/
       #if defined(__MINGW64__) 
-        elog(NOTICE,"Calling trsp_node_wrapper\n");
+      //  elog(NOTICE,"Calling trsp_node_wrapper\n");
       #endif
       ret = trsp_node_wrapper(edges, total_tuples, 
                         restricts, total_restrict_tuples,
