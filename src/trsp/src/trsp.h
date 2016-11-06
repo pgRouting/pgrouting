@@ -55,9 +55,9 @@ extern "C" {
 
 int trsp_node_wrapper(
 			edge_t *edges, 
-			unsigned int edge_count, 
+			uint32_t edge_count, 
 			restrict_t *restricts, 
-			int restrict_count,
+			uint32_t restrict_count,
 			long start_vertex, 
 			long end_vertex,
 		    bool directed, 
@@ -69,9 +69,9 @@ int trsp_node_wrapper(
 
 int trsp_edge_wrapper(
 			edge_t *edges, 
-			unsigned int edge_count, 
+			uint32_t edge_count, 
 			restrict_t *restricts, 
-			int restrict_count,
+			uint32_t restrict_count,
 			long start_edge, 
             double start_pos,
 			long end_edge,
