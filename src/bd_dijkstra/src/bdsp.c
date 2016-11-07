@@ -226,7 +226,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
 
   PGR_DBG("Total %ld tuples", total_tuples);
 
-  for (z = 0; z < total_tuples; z++) {
+  for (z = 0; z < (int64_t)total_tuples; z++) {
     if (edges[z].source < v_min_id) v_min_id = edges[z].source;
     if (edges[z].source > v_max_id) v_max_id = edges[z].source;
     if (edges[z].target < v_min_id) v_min_id = edges[z].target;
@@ -237,7 +237,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
   //::::::::::::::::::::::::::::::::::::
   //:: reducing vertex id (renumbering)
   //::::::::::::::::::::::::::::::::::::
-  for (z = 0; z < total_tuples; z++) {
+  for (z = 0; z < (int64_t)total_tuples; z++) {
     // check if edges[] contains source and target
     if (edges[z].source == start_vertex ||  edges[z].target == start_vertex)
       ++s_count;

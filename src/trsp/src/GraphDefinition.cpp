@@ -325,7 +325,7 @@ int GraphDefinition::my_dijkstra1(long start_vertex, long end_vertex, size_t edg
         parent[cur_edge->m_lEdgeIndex].v_pos[0] = -1;
         parent[cur_edge->m_lEdgeIndex].ed_ind[0] = -1;
         //que.push(std::make_pair(cur_edge->m_dCost, std::make_pair(cur_edge->m_lEdgeIndex, true)));
-        que.push(PDP(cur_edge->m_dCost, PIB(cur_edge->m_lEdgeIndex, true)));
+        que.push(PDP(cur_edge->m_dCost, PIB((int)cur_edge->m_lEdgeIndex, true)));
         }
     }
     else
@@ -336,7 +336,7 @@ int GraphDefinition::my_dijkstra1(long start_vertex, long end_vertex, size_t edg
         parent[cur_edge->m_lEdgeIndex].v_pos[1] = -1;
         parent[cur_edge->m_lEdgeIndex].ed_ind[1] = -1;
         //que.push(std::make_pair(cur_edge->m_dReverseCost, std::make_pair(cur_edge->m_lEdgeIndex, false)));
-        que.push(PDP(cur_edge->m_dReverseCost, PIB(cur_edge->m_lEdgeIndex, false)));
+        que.push(PDP(cur_edge->m_dReverseCost, PIB((int)cur_edge->m_lEdgeIndex, false)));
         }
     }
     }
@@ -612,7 +612,7 @@ int GraphDefinition:: my_dijkstra2(edge_t *edges, unsigned int edge_count, long 
                 parent[cur_edge->m_lEdgeIndex].v_pos[0] = -1;
                 parent[cur_edge->m_lEdgeIndex].ed_ind[0] = -1;
                 //que.push(std::make_pair(cur_edge->m_dCost, std::make_pair(cur_edge->m_lEdgeIndex, true)));
-                que.push(PDP(cur_edge->m_dCost, PIB(cur_edge->m_lEdgeIndex, true)));
+                que.push(PDP(cur_edge->m_dCost, PIB((int)cur_edge->m_lEdgeIndex, true)));
             }
         }
         else
@@ -623,7 +623,7 @@ int GraphDefinition:: my_dijkstra2(edge_t *edges, unsigned int edge_count, long 
                 parent[cur_edge->m_lEdgeIndex].v_pos[1] = -1;
                 parent[cur_edge->m_lEdgeIndex].ed_ind[1] = -1;
                 //que.push(std::make_pair(cur_edge->m_dReverseCost, std::make_pair(cur_edge->m_lEdgeIndex, false)));
-                que.push(PDP(cur_edge->m_dReverseCost, PIB(cur_edge->m_lEdgeIndex, false)));
+                que.push(PDP(cur_edge->m_dReverseCost, PIB((int)cur_edge->m_lEdgeIndex, false)));
             }
         }
     }
