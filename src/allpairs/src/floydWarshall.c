@@ -39,12 +39,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic pop
 #endif
 
-#include "funcapi.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
 
-// #define DEBUG
 
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
