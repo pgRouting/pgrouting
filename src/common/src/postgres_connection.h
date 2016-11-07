@@ -26,8 +26,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
+
 #ifdef __GNUC__
-#pragma GCC diagnostic ignored "-pedantic"
+#pragma GCC diagnostic ignored "-Wsign-conversion"
 #endif
 
 #include <postgres.h>
@@ -36,15 +37,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic pop
 #endif
 
+
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wunused-parameter"
-#pragma GCC diagnostic ignored "-Wsign-conversion"
 #endif
 
 #include "executor/spi.h"
 
 #ifdef __GNUC__
-#pragma GCC diagnostic pop
 #pragma GCC diagnostic pop
 #endif
 
