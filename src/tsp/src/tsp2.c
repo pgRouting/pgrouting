@@ -34,12 +34,22 @@ THE SOFTWARE.
 /*
  * This code is deprecated
  */
+#include "./../../common/src/postgres_connection.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 
 #include "./tsp.h"
 #include <math.h>
 
-#include "postgres.h"
-#include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
 #include "utils/lsyscache.h"

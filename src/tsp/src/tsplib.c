@@ -88,14 +88,26 @@ THE SOFTWARE.
 // #define ELOG_H
 // #include <winsock2.h>
 // #endif
-#include <postgres.h>
+
+#if 0
+#include "./../../common/src/postgres_connection.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+#endif
+
 #include <string.h>    /* memcpy */
 #include <math.h>      /* exp    */
 
 #include "./tsp.h"
 
-#undef DEBUG
-// #define DEBUG 1
 #include "../../common/src/debug_macro.h"
 
 
