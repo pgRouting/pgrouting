@@ -198,7 +198,7 @@ void GraphDefinition::explore(
                     m_dCost[vecIndex[i]].startCost = totalCost;
                     parent[new_edge->m_lEdgeIndex].v_pos[1] = (isStart?0:1);
                     parent[new_edge->m_lEdgeIndex].ed_ind[1] = cur_edge.m_lEdgeIndex;
-                    que.push(std::make_pair(totalCost, std::make_pair(new_edge->m_lEdgeIndex, false)));
+                    que.push(PDP((double)totalCost, PIB((int)new_edge->m_lEdgeIndex, (bool)false)));
                 }
             }
         }
@@ -246,7 +246,7 @@ int GraphDefinition::multi_dijkstra(
             std::vector<Rule> temprules;
             temprules.clear();
             temprules.push_back(rule);
-            m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
+            m_ruleTable[dest_edge_id] = temprules;
         }
     }
     
