@@ -28,19 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string.h>
 // #include <math.h>
 
-#include "postgres.h"
+#include "./../../common/src/postgres_connection.h"
 
 #ifdef __GNUC__
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "executor/spi.h"
+#include "funcapi.h"
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
-#include "funcapi.h"
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
