@@ -43,7 +43,6 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     bool        i_typbyval;
     char        i_typalign;
     Datum      *i_data;
-    int         i;
     int         n;
     int64_t      *data;
     clock_t start_t = clock();
@@ -87,6 +86,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
 
     PGR_DBG("array size %ld", (*arrlen));
 
+    size_t i;
     for (i = 0; i < (*arrlen); i++) {
         if (nulls[i]) {
             free(data);
@@ -124,7 +124,6 @@ int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input) {
     bool        i_typbyval;
     char        i_typalign;
     Datum      *i_data;
-    int         i;
     int         n;
     int64_t      *data;
     clock_t start_t = clock();
@@ -176,6 +175,7 @@ int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input) {
 
     PGR_DBG("array size %ld", (*arrlen));
 
+    size_t i;
     for (i = 0; i < (*arrlen); i++) {
         if (nulls[i]) {
             free(data);

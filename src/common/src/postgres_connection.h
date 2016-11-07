@@ -26,7 +26,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #include "executor/spi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 
 
 void pgr_send_error(int errcode);

@@ -290,11 +290,11 @@ DTYPE pathLength(TSP *tsp) {
     unsigned int i;
     DTYPE len = 0;
 
-    int *iorder = tsp->iorder;
+    int* iorder = tsp->iorder;
     DTYPE *dist   = tsp->dist;
     int  n = tsp->n;
 
-    for (i = 0; i < n-1; i++) {
+    for (i = 0; (int)i < (int)(n-1); i++) {
         len += D(iorder[i], iorder[i+1]);
     }
     len += D(iorder[n-1], iorder[0]); /* close path */
@@ -465,6 +465,8 @@ void reverse(int num, int *ids) {
 
 
 int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE *total_len, char *err_msg) {
+    if (err_msg) {};
+
     int   i, j;
     int   istart = 0;
     int   jstart = 0;

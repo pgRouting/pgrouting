@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "postgres.h"
-#include "executor/spi.h"
 #include "funcapi.h"
 #include "utils/array.h"
 #include "catalog/pg_type.h"
@@ -194,8 +193,8 @@ astarManyToOne(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
+    call_cntr = (uint32_t)funcctx->call_cntr;
+    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 

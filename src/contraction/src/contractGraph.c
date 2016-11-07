@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "postgres.h"
-#include "executor/spi.h"
 #include "funcapi.h"
 #include "utils/array.h"
 #include "catalog/pg_type.h"
@@ -38,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/lsyscache.h"
 #include "utils/builtins.h"
 #include "fmgr.h"
+#include "./../../common/src/postgres_connection.h"
 
 #ifndef INT8ARRAYOID
 #define INT8ARRAYOID    1016
@@ -50,7 +50,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./structs.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
 #include "./contractGraph_driver.h"
@@ -209,7 +208,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         char typalign;
         values =(Datum *)palloc(7 * sizeof(Datum));
         nulls = palloc(7 * sizeof(bool));
-        size_t i;
+        int i;
         for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
