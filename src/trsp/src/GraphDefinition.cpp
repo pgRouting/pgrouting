@@ -180,7 +180,7 @@ void GraphDefinition::explore(
                     m_dCost[vecIndex[i]].endCost = totalCost;
                     parent[new_edge->m_lEdgeIndex].v_pos[0] = (isStart?0:1);
                     parent[new_edge->m_lEdgeIndex].ed_ind[0] = cur_edge.m_lEdgeIndex;
-                    que.push(std::make_pair(totalCost, std::make_pair(new_edge->m_lEdgeIndex, true)));
+                    que.push((PDP)std::make_pair((double)totalCost, (PIB)std::make_pair((int)new_edge->m_lEdgeIndex, (bool)true)));
                 }
             }
         }
