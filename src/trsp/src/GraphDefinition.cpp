@@ -523,7 +523,8 @@ int GraphDefinition:: my_dijkstra3(edge_t *edges, unsigned int edge_count, long 
             std::vector<Rule> temprules;
             temprules.clear();
             temprules.push_back(rule);
-            m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
+            //m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
+            m_ruleTable[dest_edge_id] =  temprules;
         }
     
         if(isStartVirtual)
@@ -535,7 +536,7 @@ int GraphDefinition:: my_dijkstra3(edge_t *edges, unsigned int edge_count, long 
                 {
                     rule.precedencelist.clear();
                     rule.precedencelist.push_back(m_vecEdgeVector[vecsource[kk]]->m_lEdgeID);
-                    m_ruleTable[dest_edge_id].push_back(rule);
+                    m_ruleTable.at(dest_edge_id).push_back(rule);
                 }
             }
         }
@@ -548,7 +549,8 @@ int GraphDefinition:: my_dijkstra3(edge_t *edges, unsigned int edge_count, long 
             vecsource = m_mapNodeId2Edge[end_vertex];
             for(kk = 0; kk < vecsource.size(); kk++)
             {
-                m_ruleTable.insert(std::make_pair(m_vecEdgeVector[vecsource[kk]]->m_lEdgeID, tmpRules));
+                //m_ruleTable.insert(std::make_pair(m_vecEdgeVector[vecsource[kk]]->m_lEdgeID, tmpRules));
+                m_ruleTable[m_vecEdgeVector[vecsource[kk]]->m_lEdgeID] = tmpRules;
             }
         }
     }
