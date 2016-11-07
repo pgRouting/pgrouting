@@ -324,7 +324,8 @@ int GraphDefinition::my_dijkstra1(long start_vertex, long end_vertex, size_t edg
         m_dCost[cur_edge->m_lEdgeIndex].endCost= cur_edge->m_dCost;
         parent[cur_edge->m_lEdgeIndex].v_pos[0] = -1;
         parent[cur_edge->m_lEdgeIndex].ed_ind[0] = -1;
-        que.push(std::make_pair(cur_edge->m_dCost, std::make_pair(cur_edge->m_lEdgeIndex, true)));
+        //que.push(std::make_pair(cur_edge->m_dCost, std::make_pair(cur_edge->m_lEdgeIndex, true)));
+        que.push(PDP(cur_edge->m_dCost, PIB(cur_edge->m_lEdgeIndex, true)));
         }
     }
     else
@@ -334,7 +335,8 @@ int GraphDefinition::my_dijkstra1(long start_vertex, long end_vertex, size_t edg
         m_dCost[cur_edge->m_lEdgeIndex].startCost = cur_edge->m_dReverseCost;
         parent[cur_edge->m_lEdgeIndex].v_pos[1] = -1;
         parent[cur_edge->m_lEdgeIndex].ed_ind[1] = -1;
-        que.push(std::make_pair(cur_edge->m_dReverseCost, std::make_pair(cur_edge->m_lEdgeIndex, false)));
+        //que.push(std::make_pair(cur_edge->m_dReverseCost, std::make_pair(cur_edge->m_lEdgeIndex, false)));
+        que.push(PDP(cur_edge->m_dReverseCost, PIB(cur_edge->m_lEdgeIndex, false)));
         }
     }
     }
@@ -609,7 +611,8 @@ int GraphDefinition:: my_dijkstra2(edge_t *edges, unsigned int edge_count, long 
                 m_dCost[cur_edge->m_lEdgeIndex].endCost= cur_edge->m_dCost;
                 parent[cur_edge->m_lEdgeIndex].v_pos[0] = -1;
                 parent[cur_edge->m_lEdgeIndex].ed_ind[0] = -1;
-                que.push(std::make_pair(cur_edge->m_dCost, std::make_pair(cur_edge->m_lEdgeIndex, true)));
+                //que.push(std::make_pair(cur_edge->m_dCost, std::make_pair(cur_edge->m_lEdgeIndex, true)));
+                que.push(PDP(cur_edge->m_dCost, PIB(cur_edge->m_lEdgeIndex, true)));
             }
         }
         else
@@ -619,7 +622,8 @@ int GraphDefinition:: my_dijkstra2(edge_t *edges, unsigned int edge_count, long 
                 m_dCost[cur_edge->m_lEdgeIndex].startCost = cur_edge->m_dReverseCost;
                 parent[cur_edge->m_lEdgeIndex].v_pos[1] = -1;
                 parent[cur_edge->m_lEdgeIndex].ed_ind[1] = -1;
-                que.push(std::make_pair(cur_edge->m_dReverseCost, std::make_pair(cur_edge->m_lEdgeIndex, false)));
+                //que.push(std::make_pair(cur_edge->m_dReverseCost, std::make_pair(cur_edge->m_lEdgeIndex, false)));
+                que.push(PDP(cur_edge->m_dReverseCost, PIB(cur_edge->m_lEdgeIndex, false)));
             }
         }
     }
@@ -892,7 +896,8 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
 
 
     //Adding edge to the list
-    m_mapEdgeId2Index.insert(std::make_pair(newEdge->m_lEdgeID, m_vecEdgeVector.size()));
+    //m_mapEdgeId2Index.insert(std::make_pair(newEdge->m_lEdgeID, m_vecEdgeVector.size()));
+    m_mapEdgeId2Index[newEdge->m_lEdgeID] = (long)m_vecEdgeVector.size();
     m_vecEdgeVector.push_back(newEdge);
 
     //
