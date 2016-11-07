@@ -831,7 +831,7 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
     newEdge->m_vecEndConnedtedEdge.clear();
     newEdge->m_vecRestrictedEdge.clear();
     newEdge->m_lEdgeID = edgeIn.id;
-    newEdge->m_lEdgeIndex = m_vecEdgeVector.size();    
+    newEdge->m_lEdgeIndex = (long)m_vecEdgeVector.size();    
     newEdge->m_lStartNode = edgeIn.source;
     newEdge->m_lEndNode = edgeIn.target;
     newEdge->m_dCost = edgeIn.cost;
@@ -857,7 +857,7 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
     {
         //Connect current edge with existing edge with start node
         //connectEdge(
-        long lEdgeCount = itNodeMap->second.size();
+        long lEdgeCount = (long)itNodeMap->second.size();
         long lEdgeIndex;
         for(lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++)
         {
@@ -873,7 +873,7 @@ bool GraphDefinition::addEdge(edge_t edgeIn)
     {
         //Connect current edge with existing edge with end node
         //connectEdge(
-        long lEdgeCount = itNodeMap->second.size();
+        long lEdgeCount = (long)itNodeMap->second.size();
         long lEdgeIndex;
         for(lEdgeIndex = 0; lEdgeIndex < lEdgeCount; lEdgeIndex++)
         {

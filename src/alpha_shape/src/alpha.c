@@ -127,9 +127,9 @@ static int compute_alpha_shape(char* sql, float8 alpha, vertex_t **res, size_t *
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  uint32_t ntuples;
+  size_t ntuples;
   vertex_t *vertices = NULL;
-  uint32_t total_tuples = 0;
+  size_t total_tuples = 0;
 #ifndef _MSC_VER
   vertex_columns_t vertex_columns = {.id = -1, .x = -1, .y = -1};
 #else   // _MSC_VER

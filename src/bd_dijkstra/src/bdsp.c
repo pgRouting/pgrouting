@@ -157,9 +157,9 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
   void *SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  uint32_t ntuples;
+  size_t ntuples;
   edge_t *edges = NULL;
-  uint32_t total_tuples = 0;
+  size_t total_tuples = 0;
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id = -1, .source = -1, .target = -1,
                                  .cost = -1, .reverse_cost = -1};
@@ -224,7 +224,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
 
   // defining min and max vertex id
 
-  PGR_DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %ld tuples", total_tuples);
 
   for (z = 0; z < total_tuples; z++) {
     if (edges[z].source < v_min_id) v_min_id = edges[z].source;
@@ -249,7 +249,7 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
     // PGR_DBG("%i - %i", edges[z].source, edges[z].target);
   }
 
-  PGR_DBG("Total %i tuples", total_tuples);
+  PGR_DBG("Total %ld tuples", total_tuples);
 
   if (s_count == 0) {
     elog(ERROR, "Start vertex was not found.");
@@ -266,11 +266,11 @@ static int compute_bidirsp(char* sql, int64_t start_vertex,
 
   // v_max_id -= v_min_id;
 
-  PGR_DBG("Calling bidirsp_wrapper(edges, %u, %ld, %ld, %ld, %d, %d, ...)\n",
+  PGR_DBG("Calling bidirsp_wrapper(edges, %ld, %ld, %ld, %ld, %d, %d, ...)\n",
         total_tuples, v_max_id + 2, start_vertex, end_vertex,
         directed, has_reverse_cost);
 
-  ret = bidirsp_wrapper(edges, total_tuples, (int)v_max_id + 2, (int)start_vertex, (int)end_vertex,
+  ret = bidirsp_wrapper(edges, (unsigned int)total_tuples, (int)v_max_id + 2, (int)start_vertex, (int)end_vertex,
                        directed, has_reverse_cost,
                        path, path_count, &err_msg);
 

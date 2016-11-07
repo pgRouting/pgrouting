@@ -299,10 +299,10 @@ static int compute_trsp(
   SPIPlanPtr SPIplan;
   Portal SPIportal;
   bool moredata = TRUE;
-  uint32_t ntuples;
+  size_t ntuples;
 
   edge_t *edges = NULL;
-  uint32_t total_tuples = 0;
+  size_t total_tuples = 0;
 #ifndef _MSC_VER
   edge_columns_t edge_columns = {.id= -1, .source= -1, .target= -1, 
                                  .cost= -1, .reverse_cost= -1};
@@ -310,9 +310,15 @@ static int compute_trsp(
   edge_columns_t edge_columns = {-1, -1, -1, -1, -1};
 #endif //_MSC_VER
   restrict_t *restricts = NULL;
-  uint32_t total_restrict_tuples = 0;
+  size_t total_restrict_tuples = 0;
+
+#ifndef _MSC_VER
   restrict_columns_t restrict_columns = {.target_id= -1, .via_path= -1,
                                  .to_cost= -1};
+#else // _MSC_VER
+  restrict_columns_t restrict_columns = {-1, -1, -1};
+#endif //_MSC_VER
+
   long v_max_id=0;
   long v_min_id=INT_MAX;
 
@@ -442,7 +448,7 @@ static int compute_trsp(
   }
 
   PGR_DBG("Min vertex id: %ld , Max vid: %ld",v_min_id,v_max_id);
-  PGR_DBG("Total %i edge tuples", total_tuples);
+  PGR_DBG("Total %ld edge tuples", total_tuples);
 
   if(s_count == 0) {
     elog(ERROR, "Start id was not found.");
@@ -529,7 +535,7 @@ static int compute_trsp(
     }
 #endif
 
-  PGR_DBG("Total %i restriction tuples", total_restrict_tuples);
+  PGR_DBG("Total %ld restriction tuples", total_restrict_tuples);
 
   if (dovertex) {
       PGR_DBG("Calling trsp_node_wrapper\n");
@@ -537,16 +543,16 @@ static int compute_trsp(
       #if defined(__MINGW64__) 
       //  elog(NOTICE,"Calling trsp_node_wrapper\n");
       #endif
-      ret = trsp_node_wrapper(edges, total_tuples, 
-                        restricts, total_restrict_tuples,
+      ret = trsp_node_wrapper(edges, (uint32_t)total_tuples, 
+                        restricts, (uint32_t)total_restrict_tuples,
                         start_id, end_id,
                         directed, has_reverse_cost,
                         path, path_count, &err_msg);
   }
   else {
       PGR_DBG("Calling trsp_edge_wrapper\n");
-      ret = trsp_edge_wrapper(edges, total_tuples, 
-                        restricts, total_restrict_tuples,
+      ret = trsp_edge_wrapper(edges, (uint32_t)total_tuples, 
+                        restricts, (uint32_t)total_restrict_tuples,
                         start_id, start_pos, end_id, end_pos,
                         directed, has_reverse_cost,
                         path, path_count, &err_msg);
@@ -670,8 +676,8 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   // stuff done on every call of the function 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = funcctx->call_cntr;
-  max_calls = funcctx->max_calls;
+  call_cntr = (uint32_t)funcctx->call_cntr;
+  max_calls = (uint32_t)funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
