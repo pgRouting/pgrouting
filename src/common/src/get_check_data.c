@@ -22,22 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <postgres.h>
+#include "./../../common/src/postgres_connection.h"
+
 #include "catalog/pg_type.h"
 
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
 
-#include "executor/spi.h"
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-
-
-// #define DEBUG
 #include "./pgr_types.h"
 #include "./debug_macro.h"
 #include "./get_check_data.h"
