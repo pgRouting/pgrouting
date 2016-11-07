@@ -398,7 +398,7 @@ if(NOT WIN32)
 endif()
 
 
-set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10 -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion -Werror")
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10 -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 #TODO remove the optimizer flag when pgr_bdijkstra gets fixed
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -O1 -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra -Wdouble-promotion -Werror")
 
