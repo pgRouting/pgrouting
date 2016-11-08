@@ -39,6 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic pop
 #endif
 
+#include "utils/builtins.h"  // for text_to_cstring
+
 #include "utils/array.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
@@ -179,7 +181,7 @@ astarManyToMany(PG_FUNCTION_ARGS) {
             pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
 
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 start_vidsArr, size_start_vidsArr,
                 end_vidsArr, size_end_vidsArr,
                 PG_GETARG_BOOL(3),

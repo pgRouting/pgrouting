@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "./postgres_connection.h"
+#include "utils/builtins.h"
 
 #include "catalog/pg_type.h"
 
@@ -49,11 +50,14 @@ pgr_send_error(int errcode) {
 
 char*
 pgr_text2char(text *in) {
+    return text_to_cstring(in);
+#if 0
     char *out = palloc(VARSIZE(in));
 
     memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
     out[VARSIZE(in) - VARHDRSZ] = '\0';
     return out;
+#endif
 }
 
 char*
