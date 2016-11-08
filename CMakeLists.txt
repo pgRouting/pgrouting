@@ -47,6 +47,10 @@ project(PGROUTING)
 #---------------------------------------------
 #---------------------------------------------
 
+if(POLICY CMP0046)
+   cmake_policy(SET CMP0046 OLD)
+endif()
+
 if(MSVC)
     cmake_policy(SET CMP0046 OLD)
 endif()
@@ -398,9 +402,8 @@ if(NOT WIN32)
 endif()
 
 
-set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes")
-#TODO remove the optimizer flag when pgr_bdijkstra gets fixed
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10 -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra -Wdouble-promotion -Werror")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

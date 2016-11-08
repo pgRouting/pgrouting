@@ -70,7 +70,7 @@ DECLARE
     sourcename text;
     targetname text;
     query text;
-    ecnt integer; 
+    ecnt bigint; 
     srid integer;
     sourcetype text;
     targettype text;

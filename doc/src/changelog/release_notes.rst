@@ -55,6 +55,8 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 pgRouting 2.3.0 Release Notes
 ===============================================================================
 
+To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github.
+
 .. rubric:: New Signatures
 
 Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
