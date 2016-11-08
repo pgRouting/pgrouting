@@ -22,13 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <postgres.h>
+#include "./postgres_connection.h"
+
 #include "utils/lsyscache.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
 
 
-// #define DEBUG
 #include "./pgr_types.h"
 #include "./time_msg.h"
 #include "./debug_macro.h"
@@ -43,7 +43,6 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
     bool        i_typbyval;
     char        i_typalign;
     Datum      *i_data;
-    int         i;
     int         n;
     int64_t      *data;
     clock_t start_t = clock();
@@ -87,6 +86,7 @@ int64_t* pgr_get_bigIntArray(size_t *arrlen, ArrayType *input) {
 
     PGR_DBG("array size %ld", (*arrlen));
 
+    size_t i;
     for (i = 0; i < (*arrlen); i++) {
         if (nulls[i]) {
             free(data);
@@ -124,7 +124,6 @@ int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input) {
     bool        i_typbyval;
     char        i_typalign;
     Datum      *i_data;
-    int         i;
     int         n;
     int64_t      *data;
     clock_t start_t = clock();
@@ -176,6 +175,7 @@ int64_t* pgr_get_bigIntArray_allowEmpty(size_t *arrlen, ArrayType *input) {
 
     PGR_DBG("array size %ld", (*arrlen));
 
+    size_t i;
     for (i = 0; i < (*arrlen); i++) {
         if (nulls[i]) {
             free(data);

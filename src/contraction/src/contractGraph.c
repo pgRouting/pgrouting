@@ -27,8 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <postgres.h>
-#include <funcapi.h>
+#include "./../../common/src/postgres_connection.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 #include "utils/array.h"
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
@@ -47,7 +57,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define DEBUG
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
 #include "./contractGraph_driver.h"
@@ -223,7 +232,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         char typalign;
         values =(Datum *)palloc(7 * sizeof(Datum));
         nulls = palloc(7 * sizeof(bool));
-        size_t i;
+        int i;
         for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
