@@ -2,7 +2,7 @@
 File: bdDijkstra.c
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -28,8 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <postgres.h>
+#include "./../../common/src/postgres_connection.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
@@ -39,7 +49,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 
 #include "./bdDijkstra_driver.h"
