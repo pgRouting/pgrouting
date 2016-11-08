@@ -184,12 +184,14 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
+#if 0
     call_cntr = funcctx->call_cntr;
     max_calls = funcctx->max_calls;
+#endif
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
