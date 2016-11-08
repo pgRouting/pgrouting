@@ -52,9 +52,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./astarOneToMany_driver.h"
 
+PGDLLEXPORT Datum astarOneToMany(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(astarOneToMany);
-PGDLLEXPORT Datum
-astarOneToMany(PG_FUNCTION_ARGS);
 
 
 static
