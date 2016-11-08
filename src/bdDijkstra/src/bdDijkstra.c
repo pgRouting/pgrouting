@@ -123,16 +123,12 @@ process(
 
 PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-#if 0
-    uint32_t            call_cntr;
-    uint32_t            max_calls;
-#endif
     TupleDesc           tuple_desc;
 
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -147,17 +143,12 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
            edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
+           start_vid BIGINT,
+           end_vid BIGINT,
+           directed BOOLEAN DEFAULT true,
+           only_cost BOOLEAN DEFAULT false,
          **********************************************************************/
 
-
-        PGR_DBG("Calling process");
-        // Code standard:
-        // Use same order as in the query
-        // Pass the array and it's size on the same line
 
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
@@ -186,11 +177,8 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-#if 0
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
-#endif
     tuple_desc = funcctx->tuple_desc;
+
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
@@ -202,12 +190,12 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
-               OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT
+           OUT seq INTEGER,
+           OUT path_seq INTEGER,
+           OUT node BIGINT,
+           OUT edge BIGINT,
+           OUT cost FLOAT,
+           OUT agg_cost FLOAT
          ***********************************************************************/
 
         values = palloc(6 * sizeof(Datum));
@@ -233,7 +221,7 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         PGR_DBG("cleanup");
-        if (result_tuples) free(result_tuples);
+        free(result_tuples);
 
         SRF_RETURN_DONE(funcctx);
     }
