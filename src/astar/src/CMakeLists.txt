@@ -2,7 +2,7 @@ ADD_LIBRARY(astar OBJECT
     astarOneToOne.c
     astarOneToOne_driver.cpp
 
-    #for version 3.0
+    #for version part of astar functionality
     #astarOneToMany.c
     #astarOneToMany_driver.cpp
 

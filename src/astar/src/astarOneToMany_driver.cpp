@@ -39,11 +39,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./astarOneToMany_driver.h"
 
-
 #include "./../../common/src/pgr_types.h"
-#include "./pgr_astar.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
+#include "./pgr_astar.hpp"
 
 template < class G >
 std::deque< Path >
@@ -56,11 +55,11 @@ pgr_astar(
         double epsilon,
         bool only_cost = false) {
     std::sort(targets.begin(), targets.end());
-    end_vertex.erase(
+    targets.erase(
             std::unique(targets.begin(), targets.end()),
-            end_vertex.end());
+            targets.end());
 
-    Pgr_astar< G > fn_astar;
+    pgrouting::algorithms::Pgr_astar< G > fn_astar;
     return fn_astar.astar(graph, source, targets,
             heuristic, factor, epsilon, only_cost);
 }
