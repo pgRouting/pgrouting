@@ -370,7 +370,7 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 #ifdef DEBUG
       ret =
 #endif
-         compute_shortest_path_astar(pgr_text2char(PG_GETARG_TEXT_P(0)),
+         compute_shortest_path_astar(text_to_cstring(PG_GETARG_TEXT_P(0)),
                     PG_GETARG_INT32(1),
                     PG_GETARG_INT32(2),
                     PG_GETARG_BOOL(3),

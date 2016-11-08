@@ -191,13 +191,13 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling driving_many_to_dist_driver");
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),  // edges_sql
-                pgr_text2char(PG_GETARG_TEXT_P(1)),  // points_sql
+                text_to_cstring(PG_GETARG_TEXT_P(0)),  // edges_sql
+                text_to_cstring(PG_GETARG_TEXT_P(1)),  // points_sql
                 sourcesArr, num,                     // start_pids array
                 PG_GETARG_FLOAT8(3),                 // distance
 
                 PG_GETARG_BOOL(4),                   // directed
-                pgr_text2char(PG_GETARG_TEXT_P(5)),  // driving side
+                text_to_cstring(PG_GETARG_TEXT_P(5)),  // driving side
                 PG_GETARG_BOOL(6),                   // details
                 PG_GETARG_BOOL(7),                   // equicost
                 &result_tuples, &result_count);

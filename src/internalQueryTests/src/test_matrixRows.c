@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "./../../common/src/postgres_connection.h"
-#include "funcapi.h"
 #include "utils/array.h"
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
@@ -111,7 +110,7 @@ test_matrixRows(PG_FUNCTION_ARGS) {
     bool  result_bool = false;
 
     process(
-            pgr_text2char(PG_GETARG_TEXT_P(0)),
+            text_to_cstring(PG_GETARG_TEXT_P(0)),
             &result_bool);
 
     PG_RETURN_BOOL(result_bool);

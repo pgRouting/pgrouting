@@ -207,16 +207,16 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         // details BOOLEAN -- DEFAULT false,
 
         PGR_DBG("Calling process");
-        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(7)));
+        PGR_DBG("initial driving side:%s", text_to_cstring(PG_GETARG_TEXT_P(7)));
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
-                pgr_text2char(PG_GETARG_TEXT_P(1)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
                 PG_GETARG_INT32(4),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
-                pgr_text2char(PG_GETARG_TEXT_P(7)),
+                text_to_cstring(PG_GETARG_TEXT_P(7)),
                 PG_GETARG_BOOL(8),
                 &result_tuples,
                 &result_count);

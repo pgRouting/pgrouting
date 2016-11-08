@@ -190,12 +190,12 @@ many_to_one_withPoints(PG_FUNCTION_ARGS) {
             pgr_get_bigIntArray(&size_start_pidsArr, PG_GETARG_ARRAYTYPE_P(2));
 
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
-                pgr_text2char(PG_GETARG_TEXT_P(1)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
                 start_pidsArr, size_start_pidsArr,
                 PG_GETARG_INT64(3),
                 PG_GETARG_BOOL(4),
-                pgr_text2char(PG_GETARG_TEXT_P(5)),
+                text_to_cstring(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 PG_GETARG_BOOL(7),
                 &result_tuples,

@@ -141,7 +141,7 @@ floydWarshall(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_BOOL(1),
                 &result_tuples,
                 &result_count);

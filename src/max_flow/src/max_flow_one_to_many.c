@@ -153,10 +153,10 @@ max_flow_one_to_many(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-            pgr_text2char(PG_GETARG_TEXT_P(0)),
+            text_to_cstring(PG_GETARG_TEXT_P(0)),
             PG_GETARG_INT64(1),
             sink_vertices, size_sink_verticesArr,
-            pgr_text2char(PG_GETARG_TEXT_P(3)),
+            text_to_cstring(PG_GETARG_TEXT_P(3)),
             &result_tuples,
             &result_count);
 

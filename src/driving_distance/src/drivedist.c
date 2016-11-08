@@ -118,9 +118,9 @@ driving_distance(PG_FUNCTION_ARGS) {
        CREATE OR REPLACE FUNCTION _pgr_drivingDistance(edges_sql text, start_vid bigint, distance float8, directed BOOLEAN,
        OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
       *************************************************************************************************************/
-      PGR_DBG("Sub query  %s\n", pgr_text2char(PG_GETARG_TEXT_P(0)));
+      PGR_DBG("Sub query  %s\n", text_to_cstring(PG_GETARG_TEXT_P(0)));
 
-      compute_driving_distance(pgr_text2char(PG_GETARG_TEXT_P(0)),       // edges_sql
+      compute_driving_distance(text_to_cstring(PG_GETARG_TEXT_P(0)),       // edges_sql
                                PG_GETARG_INT64(1),         // start_vid
                                PG_GETARG_FLOAT8(2),        // distance
                                PG_GETARG_BOOL(3),          // directed

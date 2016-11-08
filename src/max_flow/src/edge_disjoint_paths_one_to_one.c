@@ -141,7 +141,7 @@ edge_disjoint_paths_one_to_one(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-            pgr_text2char(PG_GETARG_TEXT_P(0)),
+            text_to_cstring(PG_GETARG_TEXT_P(0)),
             PG_GETARG_INT64(1),
             PG_GETARG_INT64(2),
             PG_GETARG_BOOL(3),

@@ -60,6 +60,7 @@ Datum alphashape(PG_FUNCTION_ARGS);
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
+#if 0
 static char *
 text2char(text *in) {
   char *out = palloc(VARSIZE(in));
@@ -68,6 +69,7 @@ text2char(text *in) {
   out[VARSIZE(in) - VARHDRSZ] = '\0';
   return out;
 }
+#endif
 
 static int
 finish(int code, int ret) {
@@ -257,7 +259,7 @@ Datum alphashape(PG_FUNCTION_ARGS) {
       /* switch to memory context appropriate for multiple function calls */
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-      compute_alpha_shape(text2char(PG_GETARG_TEXT_P(0)),
+      compute_alpha_shape(text_to_cstring(PG_GETARG_TEXT_P(0)),
                                 PG_GETARG_FLOAT8(1), &res, &res_count);
 
       /* total number of tuples to be returned */

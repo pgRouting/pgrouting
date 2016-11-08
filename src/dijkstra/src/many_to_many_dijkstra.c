@@ -163,7 +163,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 start_vidsArr, size_start_vidsArr,
                 end_vidsArr, size_end_vidsArr,
                 PG_GETARG_BOOL(3),

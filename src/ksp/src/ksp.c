@@ -152,7 +152,7 @@ kshortest_path(PG_FUNCTION_ARGS) {
            */
         PGR_DBG("Calling process");
         compute(
-                pgr_text2char(PG_GETARG_TEXT_P(0)), /* SQL  */
+                text_to_cstring(PG_GETARG_TEXT_P(0)), /* SQL  */
                 PG_GETARG_INT64(1),   /* start_vid */
                 PG_GETARG_INT64(2),   /* end_vid */
                 PG_GETARG_INT32(3),   /* k */

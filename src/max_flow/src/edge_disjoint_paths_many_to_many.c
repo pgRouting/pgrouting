@@ -153,7 +153,7 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-            pgr_text2char(PG_GETARG_TEXT_P(0)),
+            text_to_cstring(PG_GETARG_TEXT_P(0)),
             source_vertices, size_source_verticesArr,
             sink_vertices, size_sink_verticesArr,
             PG_GETARG_BOOL(3),

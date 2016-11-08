@@ -83,6 +83,7 @@ typedef struct restrict_columns
 
 
 
+#if 0
 static char *
 text2char(text *in)
 {
@@ -92,6 +93,7 @@ text2char(text *in)
   out[VARSIZE(in) - VARHDRSZ] = '\0';
   return out;
 }
+#endif
 
 static int
 finish(int code, int ret)
@@ -637,7 +639,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
       if (PG_ARGISNULL(5))
         sql = NULL;
       else {
-        sql = text2char(PG_GETARG_TEXT_P(5));
+        sql = text_to_cstring(PG_GETARG_TEXT_P(5));
         if (strlen(sql) == 0)
             sql = NULL;
       }
@@ -647,7 +649,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 
       ret =
 
- compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+ compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
                                    1, // do vertex
                                    PG_GETARG_INT32(1),
                                    0.5,
@@ -786,7 +788,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
       if (PG_ARGISNULL(7))
         sql = NULL;
       else {
-        sql = text2char(PG_GETARG_TEXT_P(7));
+        sql = text_to_cstring(PG_GETARG_TEXT_P(7));
         if (strlen(sql) == 0)
             sql = NULL;
       }
@@ -796,7 +798,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 #ifdef DEBUG
       ret =
 #endif
-         compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+         compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
                                    0,  //sdo edge
                                    PG_GETARG_INT32(1),
                                    s_pos,

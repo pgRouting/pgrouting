@@ -193,13 +193,13 @@ withPoints_dd(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
-                pgr_text2char(PG_GETARG_TEXT_P(1)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_FLOAT8(3),
 
                 PG_GETARG_BOOL(4),
-                pgr_text2char(PG_GETARG_TEXT_P(5)),
+                text_to_cstring(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
                 &result_tuples,
                 &result_count);

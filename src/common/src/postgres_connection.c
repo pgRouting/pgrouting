@@ -49,18 +49,6 @@ pgr_send_error(int errcode) {
 
 
 char*
-pgr_text2char(text *in) {
-    return text_to_cstring(in);
-#if 0
-    char *out = palloc(VARSIZE(in));
-
-    memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-    out[VARSIZE(in) - VARHDRSZ] = '\0';
-    return out;
-#endif
-}
-
-char*
 pgr_cstring2char(const char *inStr) {
 
     if(!inStr) return NULL;

@@ -131,6 +131,7 @@ typedef struct distance_columns {
 // float DISTANCE[MAX_TOWNS][MAX_TOWNS];
 // float x[MAX_TOWNS], y[MAX_TOWNS];
 
+#if 0
 static char *
 text2char(text *in) {
     char *out = (char*)palloc(VARSIZE(in));
@@ -139,6 +140,7 @@ text2char(text *in) {
     out[VARSIZE(in) - VARHDRSZ] = '\0';
     return out;
 }
+#endif
 
 static int
 finish(int *code) {
@@ -772,10 +774,10 @@ vrp(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling solve_vrp ...");
 
         //  ret =
-        solve_vrp(  // text2char(PG_GETARG_TEXT_P(0)),  //  points sql
-                text2char(PG_GETARG_TEXT_P(0)),  //   orders sql
-                text2char(PG_GETARG_TEXT_P(1)),  //   vehicles sql
-                text2char(PG_GETARG_TEXT_P(2)),  //   distances query
+        solve_vrp(  // text_to_cstring(PG_GETARG_TEXT_P(0)),  //  points sql
+                text_to_cstring(PG_GETARG_TEXT_P(0)),  //   orders sql
+                text_to_cstring(PG_GETARG_TEXT_P(1)),  //   vehicles sql
+                text_to_cstring(PG_GETARG_TEXT_P(2)),  //   distances query
                 PG_GETARG_INT32(3),  //   depot id
                 &path, &path_count);
 

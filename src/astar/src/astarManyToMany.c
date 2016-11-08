@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic pop
 #endif
 
-#include "utils/builtins.h"  // for text_to_cstring
 
 #include "utils/array.h"
 #if PGSQL_VERSION > 92

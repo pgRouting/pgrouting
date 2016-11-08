@@ -129,7 +129,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling driving_many_to_dist_driver");
         driving_many_to_dist_driver(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),  // sql
+                text_to_cstring(PG_GETARG_TEXT_P(0)),  // sql
                 sourcesArr, num,                     // array of sources
                 PG_GETARG_FLOAT8(2),                 // distance
                 PG_GETARG_BOOL(3),                   // directed
