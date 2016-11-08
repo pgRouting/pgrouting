@@ -42,7 +42,7 @@ master_doc = 'doc/index'
 
 # General information about the project.
 project = u'pgRouting'
-copyright = u'pgRouting Contributors - Version @PGROUTING_VERSION_STRING@ (@PGROUTING_GIT_TAG@)'
+copyright = u'pgRouting Contributors - Version @PGROUTING_VERSION_STRING@'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -115,8 +115,8 @@ html_theme_path = ['@SPHINX_THEME_DIR@']
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
 
-html_title = "pgRouting Manual (@PGROUTING_VERSION_STRING@-dev) (@PGROUTING_GIT_BRANCH@)"
-#html_title = "pgRouting Manual (@PGROUTING_VERSION@)"
+#html_title = "pgRouting Manual (@PGROUTING_VERSION_STRING@) (@PGROUTING_GIT_BRANCH@)"
+html_title = "pgRouting Manual (@PGROUTING_VERSION@)"
 
 
 # A shorter title for the navigation bar.  Default is the same as html_title.

@@ -29,12 +29,6 @@ matrix:
     - os: linux
       sudo: required
       dist: precise
-      env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
-
-
-    - os: linux
-      sudo: required
-      dist: precise
       env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
 
 

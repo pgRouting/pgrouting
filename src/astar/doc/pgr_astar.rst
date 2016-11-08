@@ -12,22 +12,16 @@
 pgr_aStar
 ===============================================================================
 
-
 Name
 -------------------------------------------------------------------------------
 
 ``pgr_aStar`` — Returns the shortest path using A* algorithm.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: http://www.boost.org//libs/graph/doc/astar_search.html
 
    Boost Graph Inside
 
-
-Synopsis
--------------------------------------------------------------------------------
-
-The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph.
 
 
 Characteristics
@@ -39,7 +33,6 @@ The main Characteristics are:
   - Vertices of the graph are:
 
     - **positive** when it belongs to the edges_sql
-    - **negative** when it belongs to the points_sql
 
   - Values are returned when there is a path.
 
@@ -66,8 +59,6 @@ Signature Summary
 
     pgr_aStar(edges_sql, start_vid, end_vid)
     pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-
 
 .. NOTE:: This signature is deprecated
 
@@ -79,11 +70,28 @@ Signature Summary
     - See :ref:`pgr_costResult <type_cost_result>`
     - See :ref:`pgr_aStar-V2.0`
 
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+
+.. code-block:: none
+
+    pgr_aStar(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
+    pgr_aStar(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- proposed
+    pgr_aStar(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- proposed
+    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+      OR EMPTY SET
+
+
 Signatures
 -----------------
 
-.. index:: 
-    single: pgr_aStar(Minimal Signature)
+
+.. index::
+    single: aStar(Minimal Use)
+
 
 Minimal Signature
 ...............................................................................
@@ -100,21 +108,112 @@ Minimal Signature
    :end-before: --q2
 
 
-.. index:: 
-    single: pgr_aStar(Complete Singature)
 
-Complete Signature
+.. index::
+    single: aStar(One to One)
+
+
+One to One
 ...............................................................................
 .. code-block:: none
 
     pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
 
-:Example: Setting a Heuristic  
+:Example: Undirected using  Heuristic 2
 
 .. literalinclude:: doc-astar.queries
    :start-after: --q2
    :end-before: --q3
+
+
+
+.. index::
+    single: astar(One to Many) -- Proposed
+
+One to many
+.......................................
+
+.. code-block:: none
+
+    pgr_aStar(edges_sql, start_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform a one to one `pgr_astar`
+where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
+
+  - The result is equivalent to the union of the results of the one to one `pgr_astar`.
+  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-astar.queries
+   :start-after: --q3
+   :end-before: --q4
+
+.. index::
+    single: aStar(Many to One) -- Proposed
+
+Many to One
+.......................................
+
+.. code-block:: none
+
+    pgr_aStar(edges_sql, starts_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to one `pgr_aStar`
+where the ending vertex is fixed.
+
+  - The result is the union of the results of the one to one `pgr_aStar`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-astar.queries
+   :start-after: --q4
+   :end-before: --q5
+
+
+
+.. index::
+    single: aStar(Many to Many) -- Proposed
+
+Many to Many
+.......................................
+
+.. code-block:: none
+
+    pgr_aStar(edges_sql, starts_vid, end_vids, directed, heuristic, factor, epsilon) -- Proposed
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
+for all ``start_vids``.
+
+  - The result is the union of the results of the one to one `pgr_dijkstra`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-astar.queries
+   :start-after: --q5
+   :end-before: --q6
+
+
 
 
 
@@ -155,8 +254,8 @@ Parameter        Type                   Description
                                           - 4: h(v) = sqrt(dx * dx + dy * dy)
                                           - 5: h(v) = abs(dx) + abs(dy)
 
-**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``.
-**epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`factor >= 1`.  Default ``1``.
+**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see :ref:`astar_factor`
+**epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
 ================ ====================== =================================================
 
  
@@ -188,47 +287,6 @@ Column           Type              Description
 ============= =========== =================================================
 
 
-About factor
--------------------------------------------------------------------------------
-
-.. rubric:: Analysis 1
-
-Working with cost/reverse_cost as length in degrees, x/y in lat/lon:
-Factor = 1   (no need to change units)
-
-.. rubric:: Analysis 2
-
-Working with cost/reverse_cost as length in meters, x/y in lat/lon:
-Factor =  would depend on the location of the points:
-
-======== ================================= ==========
-latitude  conversion                        Factor
-======== ================================= ==========
-45       1 longitude degree is  78846.81 m   78846
- 0       1 longitude degree is 111319.46 m  111319
-======== ================================= ==========
-
-.. rubric:: Analysis 3
-
-Working with cost/reverse_cost as time in seconds, x/y in lat/lon:
-Factor: would depend on the location of the points and on the average speed
-say 25m/s is the speed.
-
-======== =========================================== ==========
-latitude  conversion                                  Factor
-======== =========================================== ==========
-45       1 longitude degree is (78846.81m)/(25m/s)   3153 s
- 0       1 longitude degree is (111319.46 m)/(25m/s) 4452 s
-======== =========================================== ==========
-
-
-
-
-.. rubric:: History
-
-* Functionality added version 2.3.0
-* Renamed in version 2.0.0
-
 
 Deprecated Signature
 -------------------------------------------------------------------------------
@@ -236,8 +294,8 @@ Deprecated Signature
 :Example: Using the deprecated signature 
 
 .. literalinclude:: doc-astar.queries
-   :start-after: --q3
-   :end-before: --q4
+   :start-after: --q6
+   :end-before: --q7
 
 
 The queries use the :ref:`sampledata` network.
@@ -246,5 +304,12 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
+* :ref:`astar`
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+

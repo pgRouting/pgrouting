@@ -5,6 +5,8 @@
 # Main configuration
 # ------------------------------------------------------------------------------
 
+version: 2.4.{build}
+
 image: Visual Studio 2013
 configuration: Release
 platform: x64

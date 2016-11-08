@@ -1,25 +1,3 @@
-/*PGR-GNU*****************************************************************
-
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-------
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-********************************************************************PGR-GNU*/
 create or replace function pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
@@ -169,7 +147,7 @@ create or replace function pgr_trsp(sql text, vids integer[], directed boolean, 
     RETURNS SETOF pgr_costresult AS
 $body$
 begin
-    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspViaVertices( sql, vids, directed, has_reverse_cost, turn_restrict_sql);
+    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspVia( sql, vids, directed, has_reverse_cost, turn_restrict_sql);
 end;
 $body$
     language plpgsql stable
@@ -182,7 +160,7 @@ create or replace function pgr_trsp(sql text, eids integer[], pcts float8[], dir
     RETURNS SETOF pgr_costresult AS
 $body$
 begin
-    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspViaEdges(sql, eids, pcts, directed, has_reverse_cost, turn_restrict_sql);
+    return query select seq, id2 as id1, id3 as id2, cost from pgr_trspVia(sql, eids, pcts, directed, has_reverse_cost, turn_restrict_sql);
 end;
 $body$
     language plpgsql stable
