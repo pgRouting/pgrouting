@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./astarManyToMany_driver.h"
 
-// #define DEBUG
 
 #include "./../../common/src/pgr_types.h"
 
@@ -80,8 +79,7 @@ pgr_astar(
   end_vid BIGINT  directed BOOLEAN DEFAULT true,
  ***********************************************************/
 void do_pgr_astarManyToMany(
-        Pgr_edge_xy_t  *edges,
-        size_t total_edges,
+        Pgr_edge_xy_t  *edges, size_t total_edges,
         int64_t  *start_vidsArr, size_t size_start_vidsArr,
         int64_t  *end_vidsArr, size_t size_end_vidsArr,
         bool directed,

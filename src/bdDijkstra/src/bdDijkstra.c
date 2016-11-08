@@ -2,7 +2,7 @@
 File: bdDijkstra.c
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer:
@@ -28,8 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <postgres.h>
+#include "./../../common/src/postgres_connection.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
@@ -39,7 +49,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 
 #include "./bdDijkstra_driver.h"
@@ -114,14 +123,12 @@ process(
 
 PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t            call_cntr;
-    uint32_t            max_calls;
     TupleDesc           tuple_desc;
 
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_path_element_t  *result_tuples = 0;
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -136,17 +143,12 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
         /*
            edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
+           start_vid BIGINT,
+           end_vid BIGINT,
+           directed BOOLEAN DEFAULT true,
+           only_cost BOOLEAN DEFAULT false,
          **********************************************************************/
 
-
-        PGR_DBG("Calling process");
-        // Code standard:
-        // Use same order as in the query
-        // Pass the array and it's size on the same line
 
         process(
                 pgr_text2char(PG_GETARG_TEXT_P(0)),
@@ -175,12 +177,11 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
+
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
@@ -189,12 +190,12 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
         /*
-               OUT seq INTEGER,
-    OUT path_seq INTEGER,
-    OUT node BIGINT,
-    OUT edge BIGINT,
-    OUT cost FLOAT,
-    OUT agg_cost FLOAT
+           OUT seq INTEGER,
+           OUT path_seq INTEGER,
+           OUT node BIGINT,
+           OUT edge BIGINT,
+           OUT cost FLOAT,
+           OUT agg_cost FLOAT
          ***********************************************************************/
 
         values = palloc(6 * sizeof(Datum));
@@ -207,12 +208,12 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -220,7 +221,7 @@ PGDLLEXPORT Datum bdDijkstra(PG_FUNCTION_ARGS) {
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         PGR_DBG("cleanup");
-        if (result_tuples) free(result_tuples);
+        free(result_tuples);
 
         SRF_RETURN_DONE(funcctx);
     }

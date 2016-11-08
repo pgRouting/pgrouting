@@ -23,9 +23,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
+#include "./../../common/src/postgres_connection.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
@@ -36,7 +45,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <search.h>
 
 #include "../../common/src/pgr_types.h"
-#include "../../common/src/postgres_connection.h"
 #include "./bdastar_driver.h"
 
 
@@ -68,6 +76,7 @@ static int
 fetch_edge_astar_columns(SPITupleTable *tuptable,
              edge_astar_columns_t *edge_columns,
              bool has_reverse_cost) {
+    if (tuptable) {}
   edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
@@ -208,7 +217,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 #endif  // _MSC_VER
   char *err_msg;
   int ret = -1;
-  register int z;
+  size_t z;
 
   int s_count = 0;
   int t_count = 0;
@@ -398,8 +407,8 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = funcctx->call_cntr;
-  max_calls = funcctx->max_calls;
+  call_cntr = (uint32_t)funcctx->call_cntr;
+  max_calls = (uint32_t)funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 

@@ -34,12 +34,22 @@ THE SOFTWARE.
 /*
  * This code is deprecated
  */
+#include "./../../common/src/postgres_connection.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 
 #include "./tsp.h"
 #include <math.h>
 
-#include "postgres.h"
-#include "funcapi.h"
 #include "catalog/pg_type.h"
 #include "utils/array.h"
 #include "utils/lsyscache.h"
@@ -292,8 +302,8 @@ tsp_matrix(PG_FUNCTION_ARGS) {
     /* stuff done on every call of the function */
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr  = funcctx->call_cntr;
-    max_calls  = funcctx->max_calls;
+    call_cntr  = (uint32_t)funcctx->call_cntr;
+    max_calls  = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     tsp_res    = funcctx->user_fctx;
 
