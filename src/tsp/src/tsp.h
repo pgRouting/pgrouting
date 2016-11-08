@@ -32,7 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // define the type of object for the distance matrix
 #define DTYPE double
 
-#include "postgres.h"
+
+#include "./../../common/src/postgres_connection.h"
+
 #include "../../common/src/pgr_types.h"
 
 typedef struct point {

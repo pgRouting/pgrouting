@@ -28,9 +28,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string.h>
 // #include <math.h>
 
-#include "postgres.h"
-#include "executor/spi.h"
+#include "./../../common/src/postgres_connection.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 #include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
@@ -146,6 +155,7 @@ finish(int *code) {
 static int
 fetch_distance_columns(SPITupleTable *tuptable, distance_columns_t *distance_columns) {
     PGR_DBG("Fetching distance");
+    if (tuptable) {} 
 
     distance_columns->src_id = SPI_fnumber(SPI_tuptable->tupdesc, "src_id");
     distance_columns->dest_id = SPI_fnumber(SPI_tuptable->tupdesc, "dest_id");
@@ -171,6 +181,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
         distance_columns_t *distance_columns, vrp_cost_element_t *dist, size_t t) {
     Datum binval;
     bool isnull;
+    if (t) {}
 
     PGR_DBG("fetch_distance: src_id col:%i", distance_columns->src_id);
 
@@ -230,6 +241,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 static int
 fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns) {
     PGR_DBG("Fetching order");
+    if (tuptable) {} 
 
     // order_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
     order_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
@@ -340,6 +352,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 static int
 fetch_vehicle_columns(SPITupleTable *tuptable, vehicle_columns_t *vehicle_columns) {
     PGR_DBG("Fetching order");
+    if (tuptable) {} 
 
     vehicle_columns->vehicle_id = SPI_fnumber(SPI_tuptable->tupdesc, "vehicle_id");
     vehicle_columns->capacity = SPI_fnumber(SPI_tuptable->tupdesc, "capacity");
@@ -359,6 +372,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
         vehicle_columns_t *vehicle_columns, vrp_vehicles_t *vehicle, size_t t) {
     Datum binval;
     bool isnull;
+    if (t) {}
 
     PGR_DBG("inside fetch_vehicle\n");
 
@@ -798,8 +812,8 @@ vrp(PG_FUNCTION_ARGS) {
     /* stuff done on every call of the function */
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
+    call_cntr = (uint32_t)funcctx->call_cntr;
+    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
 
     path = (vrp_result_element_t *)funcctx->user_fctx;

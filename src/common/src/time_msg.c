@@ -23,9 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#include "./postgres_connection.h"
+
 #include "./time_msg.h"
 #include <time.h>
-#include <postgres.h>
 
 
 void time_msg(char *msg, clock_t start_t, clock_t end_t) {
