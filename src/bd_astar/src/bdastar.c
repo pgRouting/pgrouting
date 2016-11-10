@@ -336,6 +336,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
     (*path)[z].vertex_id += v_min_id;
   }
   if (ret < 0) {
+      pfree(path);
       elog(ERROR, "Error computing path: %s", err_msg);
   }
   pgr_SPI_finish();
@@ -351,6 +352,7 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
   uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
+  path = NULL;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
@@ -380,10 +382,10 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 #ifdef DEBUG
       PGR_DBG("Ret is %i", ret);
       if (ret >= 0) {
-          int i;
+          size_t i;
           for (i = 0; i < path_count; i++) {
-              PGR_DBG("Step # %i vertex_id  %i ", i, path[i].vertex_id);
-              PGR_DBG("        edge_id    %i ", path[i].edge_id);
+              PGR_DBG("Step # %ld vertex_id  %ld ", i, path[i].vertex_id);
+              PGR_DBG("        edge_id    %ld ", path[i].edge_id);
               PGR_DBG("        cost       %f ", path[i].cost);
           }
       }
@@ -412,7 +414,6 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
-  PGR_DBG("Trying to allocate some memory\n");
 
   if (call_cntr < max_calls) {   /* do when there is more left to send */
       HeapTuple    tuple;
@@ -450,8 +451,6 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 
       SRF_RETURN_NEXT(funcctx, result);
   } else {   /* do when there is no more left */
-      PGR_DBG("Freeing path");
-      if (path) free(path);
       SRF_RETURN_DONE(funcctx);
   }
 }

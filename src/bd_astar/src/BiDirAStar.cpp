@@ -40,6 +40,7 @@ THE SOFTWARE.
 
 #include <math.h>
 #include "./BiDirAStar.h"
+#include "./../../common/src/pgr_alloc.hpp"
 
 BiDirAStar::BiDirAStar(void) {
 }
@@ -88,10 +89,10 @@ void BiDirAStar::initall(int maxNode) {
 
 void BiDirAStar::deleteall() {
     // DBG("Calling BiDirAStar::deleteall\n");
-    delete [] m_pFParent;
-    delete [] m_pRParent;
-    delete [] m_pFCost;
-    delete [] m_pRCost;
+    delete m_pFParent;
+    delete m_pRParent;
+    delete m_pFCost;
+    delete m_pRCost;
     // DBG("Leaving BiDirAStar::deleteall\n");
 }
 
@@ -359,7 +360,7 @@ int BiDirAStar:: bidir_astar(edge_astar_t *edges, size_t edge_count, int maxNode
         m_vecPath.push_back(pelement);
 
         // Transfer data path to path_element_t format and allocate memory and populate the pointer
-        *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
+        *path = pgr_alloc(m_vecPath.size(), *path);
         *path_count = m_vecPath.size();
 
         for (size_t i = 0; i < *path_count; i++) {

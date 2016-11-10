@@ -33,9 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <postgres.h>
 
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
 
 
 #ifdef __GNUC__
@@ -46,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "executor/spi.h"
 
 #ifdef __GNUC__
+#pragma GCC diagnostic pop
 #pragma GCC diagnostic pop
 #pragma GCC diagnostic pop
 #endif
