@@ -319,7 +319,7 @@ class Pgr_astar {
                      .distance_map(&distances[0])
                      .visitor(astar_many_goals_visitor(targets)));
          }
-         catch(found_goals &fg) {
+         catch(found_goals &) {
              found = true;  // Target vertex found
          }
          return found;
