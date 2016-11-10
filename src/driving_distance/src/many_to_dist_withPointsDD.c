@@ -260,8 +260,6 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
 
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /* do when there is no more left */
-        if (result_tuples) free(result_tuples);
         SRF_RETURN_DONE(funcctx);
     }
 }

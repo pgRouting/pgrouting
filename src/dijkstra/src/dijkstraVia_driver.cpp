@@ -223,8 +223,3 @@ do_pgr_dijkstraViaVertex(
         *err_msg = strdup(log.str().c_str());
     }
 }
-
-
-
-
-

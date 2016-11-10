@@ -242,7 +242,6 @@ astarOneToMany(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        if (result_tuples) free(result_tuples);
         SRF_RETURN_DONE(funcctx);
     }
 }

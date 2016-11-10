@@ -320,6 +320,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
 
 
+     //TODO  move this code to postgres kindacode
      /*! @brief get the contracted vertex ids of a given vertex in array format
        @param [in] vid vertex_id
        @param [in] contracted_vertices The array of contracted vertices of *vid*

@@ -69,6 +69,7 @@ namespace boost {
 #include <algorithm>
 #include <set>
 
+#include "./../../common/src/pgr_alloc.hpp"
 
 typedef double coord_type;
 
@@ -250,7 +251,7 @@ int alpha_shape(vertex_t *vertices, size_t count, double alpha,
                 result_count += ring.size();
             }
             result_count += rings.size() - 1;
-            *res = (vertex_t *) malloc(sizeof(vertex_t) * result_count);
+            *res = pgr_alloc(result_count, (*res));
             *res_count = result_count;
 
             int idx = 0;

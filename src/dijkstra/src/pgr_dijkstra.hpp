@@ -534,6 +534,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_1(
     }
     catch(found_goals &) {
         found = true;  // Target vertex found
+    } catch (...) {
     }
     return found;
 }
@@ -556,6 +557,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_distance(G &graph, V source, double distance) {
     }
     catch(found_goals &) {
         found = true;
+    } catch (...) {
     }
     return found;
 }
@@ -577,6 +579,7 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
     }
     catch(found_goals &) {
         found = true;  // Target vertex found
+    } catch (...) {
     }
     return found;
 }

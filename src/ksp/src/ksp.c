@@ -213,10 +213,6 @@ kshortest_path(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {   /* do when there is no more left */
-        if (path) free(path);
-
         SRF_RETURN_DONE(funcctx);
     }
 }
-
-

@@ -114,9 +114,7 @@ do_pgr_many_to_many_dijkstra(
             paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost, normal);
         }
 
-
         size_t count(0);
-
         count = count_tuples(paths);
 
         if (count == 0) {

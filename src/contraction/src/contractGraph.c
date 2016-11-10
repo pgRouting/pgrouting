@@ -276,15 +276,11 @@ contractGraph(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         // cleaning up the contracted vertices array
         if (result_tuples[call_cntr].contracted_vertices) {
-            free(result_tuples[call_cntr].contracted_vertices);
+            pfree(result_tuples[call_cntr].contracted_vertices);
         }
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        PGR_DBG("Freeing values");
-        if (result_tuples) free(result_tuples);
         SRF_RETURN_DONE(funcctx);
     }
-    PGR_DBG("End of Function");
 }
 

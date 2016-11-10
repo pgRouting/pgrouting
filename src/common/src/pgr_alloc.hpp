@@ -32,6 +32,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <stdlib.h>
 
+extern "C" {
+#include "./postgres_connection.h"
+#include <utils/palloc.h>
+}
+
+
 /*! \fn pgr_alloc(std::size_t size, T *ptr)
  
 \brief allocates memory
@@ -47,13 +53,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  */
 
+
 template <typename T>
 T*
 pgr_alloc(std::size_t size, T *ptr) {
     if (!ptr) {
-        ptr = (T*) malloc(size * sizeof(T));
+        ptr = (T*) SPI_palloc(size * sizeof(T));
     } else {
-        ptr = (T*) realloc(ptr, size * sizeof(T));
+        ptr = (T*) SPI_repalloc(ptr, size * sizeof(T));
     }
     return (T*) ptr;
 }

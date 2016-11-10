@@ -194,8 +194,6 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
 
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /* do when there is no more left */
-        if (ret_path) free(ret_path);
         SRF_RETURN_DONE(funcctx);
     }
 }

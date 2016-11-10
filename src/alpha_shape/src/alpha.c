@@ -347,8 +347,6 @@ Datum alphashape(PG_FUNCTION_ARGS) {
 
       SRF_RETURN_NEXT(funcctx, result);
     } else  {
-      /* do when there is no more left */
-      if (res) free(res);
       SRF_RETURN_DONE(funcctx);
     }
 }
