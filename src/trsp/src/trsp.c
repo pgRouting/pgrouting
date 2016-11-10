@@ -612,6 +612,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
+  path = NULL;
 
 
   // stuff done only on the first call of the function 
@@ -726,8 +727,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
     }
   else    // do when there is no more left 
     {
-      PGR_DBG("Going to free path");
-      if (path) free(path);
       SRF_RETURN_DONE(funcctx);
     }
 }
@@ -743,6 +742,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
+  path = NULL;
 
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
@@ -875,8 +875,6 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
     }
   else    // do when there is no more left 
     {
-      PGR_DBG("Going to free path");
-      if (path) free(path);
       SRF_RETURN_DONE(funcctx);
     }
 }

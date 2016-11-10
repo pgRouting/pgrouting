@@ -871,7 +871,9 @@ vrp(PG_FUNCTION_ARGS) {
         profstop("total", prof_total);
         PGR_DBG("Profiles stopped\n");
 
+#if 0
         free(path);
+#endif
 
         PGR_DBG("Itinerary cleared\n");
 

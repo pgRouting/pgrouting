@@ -7,6 +7,8 @@
 
 #include "GraphDefinition.h"
 #include <functional>
+#include "./../../common/src/pgr_alloc.hpp"
+
 
 // -------------------------------------------------------------------------
 GraphDefinition::GraphDefinition(void)
@@ -267,7 +269,7 @@ int GraphDefinition::multi_dijkstra(
     }
     }
 
-    *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
+    *path = pgr_alloc(m_vecPath.size() + 1, *path);
     *path_count = m_vecPath.size();
 
     for(size_t i = 0; i < *path_count; i++)
@@ -701,7 +703,7 @@ int GraphDefinition:: my_dijkstra2(edge_t *edges, unsigned int edge_count, long 
             }
         }
         
-        *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
+        *path = pgr_alloc(m_vecPath.size() + 1, *path);
         *path_count = m_vecPath.size();
 
         for(size_t i = 0; i < *path_count; i++)
@@ -734,7 +736,7 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_t **path, 
     {
         if(start_edge_info->m_dCost >= 0.0 && start_edge_info->m_dCost * (m_dEndPart - m_dStartpart) <= total_cost)
         {
-            *path = (path_element_t *) malloc(sizeof(path_element_t) * (1));
+            *path = pgr_alloc(1, *path);
             *path_count = 1;
             (*path)[0].vertex_id = -1;
             (*path)[0].edge_id = m_lStartEdgeId;
@@ -747,7 +749,7 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_t **path, 
     {
         if(start_edge_info->m_dReverseCost >= 0.0 && start_edge_info->m_dReverseCost * (m_dStartpart - m_dEndPart) <= total_cost)
         {
-            *path = (path_element_t *) malloc(sizeof(path_element_t) * (1));
+            *path = pgr_alloc(1, *path);
             *path_count = 1;
             (*path)[0].vertex_id = -1;
             (*path)[0].edge_id = m_lStartEdgeId;

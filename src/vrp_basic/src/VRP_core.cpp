@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define PGR_LOGGER_LOC
 #define PGR_LOGGER_FILE "/tmp/vrp-debug.log"
 #include "../../common/src/pgr_logger.h"
+#include "../../common/src/pgr_alloc.hpp"
 
 CVRPSolver solver;
 
@@ -176,7 +177,7 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count,
         for (size_t i = 0; i < totalRoute; i++) {
             totRows += (solution.getTour(static_cast<int>(i)).getServedOrderCount() + 2);
         }
-        *results = (vrp_result_element_t *) malloc(totRows * sizeof(vrp_result_element_t));
+        *results = pgr_alloc(totRows, *results);
         *result_count = totRows;
         int cnt = 0;
         for (size_t i = 0; i < totalRoute; i++) {
