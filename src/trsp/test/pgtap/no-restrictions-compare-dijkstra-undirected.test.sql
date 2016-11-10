@@ -24,7 +24,7 @@
         inner_sql1 = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table ORDER BY id');
         inner_sql2 = quote_literal('SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table ORDER BY id');
         FOR i IN 1.. cant LOOP
-            FOR j IN 1..cant BY 1 LOOP
+            FOR j IN 1..cant BY 2 LOOP
 
                 -- this special case is tested on the other test
                 CONTINUE WHEN i = j;
