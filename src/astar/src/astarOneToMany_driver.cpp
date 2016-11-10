@@ -41,8 +41,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_alloc.hpp"
 #include "./pgr_astar.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
 
 template < class G >
 std::deque< Path >
