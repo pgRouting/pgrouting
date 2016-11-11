@@ -48,142 +48,139 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./boost_interface_drivedist.h"
 
 PGDLLEXPORT Datum driving_distance(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(driving_distance);
 
 static
 void compute_driving_distance(
-     char* sql,
-     int64_t start_vertex,
-     float8 distance,
-     bool directed,
-     General_path_element_t **path, size_t *path_count) {
-  pgr_SPI_connect();
+        char* sql,
+        int64_t start_vertex,
+        float8 distance,
+        bool directed,
+        General_path_element_t **path, size_t *path_count) {
+    pgr_SPI_connect();
 
-  pgr_edge_t *edges = NULL;
-  size_t total_edges = 0;
+    pgr_edge_t *edges = NULL;
+    size_t total_edges = 0;
 
 
-  char *err_msg = (char *)"";
+    char *err_msg = (char *)"";
 
-  PGR_DBG("Load data");
+    PGR_DBG("Load data");
 
-  pgr_get_edges(sql, &edges, &total_edges);
+    pgr_get_edges(sql, &edges, &total_edges);
 
-  if (total_edges == 0) {
-    PGR_DBG("No edges found");
-    *path = NULL;
-    (*path_count) = 0;
+    if (total_edges == 0) {
+        PGR_DBG("No edges found");
+        *path = NULL;
+        (*path_count) = 0;
+        pgr_SPI_finish();
+        return;
+    }
+    PGR_DBG("total edges read %ld\n", total_edges);
+
+    clock_t start_t = clock();
+    do_pgr_driving_distance(edges, total_edges,
+            start_vertex, distance,
+            directed, 
+            path, path_count, &err_msg);
+    time_msg(" processing Driving Distance one start", start_t, clock());
+
+
+    PGR_DBG("total tuples found %ld\n", *path_count);
+    PGR_DBG("Returned message = %s\n", err_msg);
+
+    pfree(edges);
     pgr_SPI_finish();
-    return;
-  }
-  PGR_DBG("total edges read %ld\n", total_edges);
-
-  clock_t start_t = clock();
-  do_pgr_driving_distance(edges, total_edges,
-                        start_vertex, distance,
-                        directed, 
-                        path, path_count, &err_msg);
-  time_msg(" processing Driving Distance one start", start_t, clock());
-
-
-  PGR_DBG("total tuples found %ld\n", *path_count);
-  PGR_DBG("Returned message = %s\n", err_msg);
-
-  pfree(edges);
-  pgr_SPI_finish();
 }
 
 
-PG_FUNCTION_INFO_V1(driving_distance);
 PGDLLEXPORT Datum
 driving_distance(PG_FUNCTION_ARGS) {
-  FuncCallContext     *funcctx;
-  uint32_t             call_cntr;
-  uint32_t             max_calls;
-  TupleDesc            tuple_desc;
-  General_path_element_t  *ret_path = 0;
+    FuncCallContext     *funcctx;
+    TupleDesc            tuple_desc;
+    General_path_element_t  *ret_path = 0;
 
-  /* stuff done only on the first call of the function */
-  if (SRF_IS_FIRSTCALL()) {
-      MemoryContext   oldcontext;
-      size_t path_count = 0;
+    if (SRF_IS_FIRSTCALL()) {
+        MemoryContext   oldcontext;
+        size_t result_count = 0;
 
-      /* create a function context for cross-call persistence */
-      funcctx = SRF_FIRSTCALL_INIT();
+        funcctx = SRF_FIRSTCALL_INIT();
+        oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-      /* switch to memory context appropriate for multiple function calls */
-      oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
+        /************************************************************************
+          QUERY
+          CREATE OR REPLACE FUNCTION _pgr_drivingDistance(
+          edges_sql text,
+          start_vid bigint,
+          distance float8,
+          directed BOOLEAN,
+          OUT seq integer,
+          OUT node bigint,
+          OUT edge bigint,
+          OUT cost float,
+          OUT agg_cost float)
+         ************************************************************************/
+        PGR_DBG("Sub query  %s\n", text_to_cstring(PG_GETARG_TEXT_P(0)));
 
-      /*************************************************************************************************************
-                                        QUERY
-       CREATE OR REPLACE FUNCTION _pgr_drivingDistance(edges_sql text, start_vid bigint, distance float8, directed BOOLEAN,
-       OUT seq integer, OUT node bigint, OUT edge bigint, OUT cost float, OUT agg_cost float)
-      *************************************************************************************************************/
-      PGR_DBG("Sub query  %s\n", text_to_cstring(PG_GETARG_TEXT_P(0)));
+        compute_driving_distance(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),       // edges_sql
+                PG_GETARG_INT64(1),         // start_vid
+                PG_GETARG_FLOAT8(2),        // distance
+                PG_GETARG_BOOL(3),          // directed
+                &ret_path, &result_count);
 
-      compute_driving_distance(text_to_cstring(PG_GETARG_TEXT_P(0)),       // edges_sql
-                               PG_GETARG_INT64(1),         // start_vid
-                               PG_GETARG_FLOAT8(2),        // distance
-                               PG_GETARG_BOOL(3),          // directed
-                                  &ret_path, &path_count);
+        /************************************************************************/
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
+        funcctx->user_fctx = ret_path;
 
-      /* total number of tuples to be returned */
-      funcctx->max_calls = (uint32_t)path_count;
-      funcctx->user_fctx = ret_path;
-
-      if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
-                            "that cannot accept type record")));
+                         "that cannot accept type record")));
 
-      funcctx->tuple_desc = tuple_desc;
+        funcctx->tuple_desc = tuple_desc;
 
-      MemoryContextSwitchTo(oldcontext);
-  }
+        MemoryContextSwitchTo(oldcontext);
+    }
 
-  /* stuff done on every call of the function */
-  funcctx = SRF_PERCALL_SETUP();
+    funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = (uint32_t)funcctx->call_cntr;
-  max_calls = (uint32_t)funcctx->max_calls;
-  tuple_desc = funcctx->tuple_desc;
-  ret_path = (General_path_element_t*) funcctx->user_fctx;
+    tuple_desc = funcctx->tuple_desc;
+    ret_path = (General_path_element_t*) funcctx->user_fctx;
 
-  /* do when there is more left to send */
-  if (call_cntr < max_calls) {
-      HeapTuple    tuple;
-      Datum        result;
-      Datum *values;
-      bool* nulls;
+    if (funcctx->call_cntr < funcctx->max_calls) {
+        HeapTuple    tuple;
+        Datum        result;
+        Datum *values;
+        bool* nulls;
 
-      values = palloc(5 * sizeof(Datum));
-      nulls = palloc(5 * sizeof(bool));
+        values = palloc(5 * sizeof(Datum));
+        nulls = palloc(5 * sizeof(bool));
 
-      // TODO version 3.0 change to 
-      // values[0] = Int64GetDatum(ret_path[call_cntr].seq + 1);
-      nulls[0] = false;
-      nulls[1] = false;
-      nulls[2] = false;
-      nulls[3] = false;
-      nulls[4] = false;
-      values[0] = Int32GetDatum(ret_path[call_cntr].seq + 1);
-      values[1] = Int64GetDatum(ret_path[call_cntr].node);
-      values[2] = Int64GetDatum(ret_path[call_cntr].edge);
-      values[3] = Float8GetDatum(ret_path[call_cntr].cost);
-      values[4] = Float8GetDatum(ret_path[call_cntr].agg_cost);
+        nulls[0] = false;
+        nulls[1] = false;
+        nulls[2] = false;
+        nulls[3] = false;
+        nulls[4] = false;
+        values[0] = Int32GetDatum(ret_path[funcctx->call_cntr].seq + 1);
+        values[1] = Int64GetDatum(ret_path[funcctx->call_cntr].node);
+        values[2] = Int64GetDatum(ret_path[funcctx->call_cntr].edge);
+        values[3] = Float8GetDatum(ret_path[funcctx->call_cntr].cost);
+        values[4] = Float8GetDatum(ret_path[funcctx->call_cntr].agg_cost);
 
-      tuple = heap_form_tuple(tuple_desc, values, nulls);
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
+        result = HeapTupleGetDatum(tuple);
 
-      /* make the tuple into a datum */
-      result = HeapTupleGetDatum(tuple);
+        pfree(values);
+        pfree(nulls);
 
-      /* clean up (this is not really necessary) */
-      pfree(values);
-      pfree(nulls);
-
-      SRF_RETURN_NEXT(funcctx, result);
-  } else {
-      SRF_RETURN_DONE(funcctx);
-  }
+        SRF_RETURN_NEXT(funcctx, result);
+    } else {
+        SRF_RETURN_DONE(funcctx);
+    }
 }
-

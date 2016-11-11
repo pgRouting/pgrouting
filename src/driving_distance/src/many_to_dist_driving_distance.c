@@ -49,6 +49,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./boost_interface_drivedist.h"
 
 
+PGDLLEXPORT Datum driving_many_to_dist(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(driving_many_to_dist);
+
 
 static 
 void driving_many_to_dist_driver(
@@ -90,23 +93,9 @@ void driving_many_to_dist_driver(
 }
 
 
-#ifndef _MSC_VER
-Datum driving_many_to_dist(PG_FUNCTION_ARGS);
-#else  // _MSC_VER
-PGDLLEXPORT Datum driving_many_to_dist(PG_FUNCTION_ARGS);
-#endif  // _MSC_VER
-
-
-PG_FUNCTION_INFO_V1(driving_many_to_dist);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 driving_many_to_dist(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t                  call_cntr;
-    uint32_t                  max_calls;
     TupleDesc            tuple_desc;
     General_path_element_t  *ret_path = 0;
 
@@ -152,16 +141,12 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    /* stuff done on every call of the function */
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     ret_path = (General_path_element_t*) funcctx->user_fctx;
 
-    /* do when there is more left to send */
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
@@ -176,19 +161,16 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
         nulls[3] = false;
         nulls[4] = false;
         nulls[5] = false;
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(ret_path[call_cntr].start_id);
-        values[2] = Int64GetDatum(ret_path[call_cntr].node);
-        values[3] = Int64GetDatum(ret_path[call_cntr].edge);
-        values[4] = Float8GetDatum(ret_path[call_cntr].cost);
-        values[5] = Float8GetDatum(ret_path[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(ret_path[funcctx->call_cntr].start_id);
+        values[2] = Int64GetDatum(ret_path[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(ret_path[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(ret_path[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(ret_path[funcctx->call_cntr].agg_cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
-
-        /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);
 
-        /* clean up (this is not really necessary) */
         pfree(values);
         pfree(nulls);
 

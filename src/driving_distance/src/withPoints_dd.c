@@ -161,8 +161,6 @@ PG_FUNCTION_INFO_V1(withPoints_dd);
 PGDLLEXPORT Datum
 withPoints_dd(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t              call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /*******************************************************************************/
@@ -207,7 +205,11 @@ withPoints_dd(PG_FUNCTION_ARGS) {
         /*                                                                             */
         /*******************************************************************************/
 
-        funcctx->max_calls = (uint32_t) result_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -220,12 +222,10 @@ withPoints_dd(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
@@ -248,13 +248,12 @@ withPoints_dd(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[3] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /*******************************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -264,4 +263,3 @@ withPoints_dd(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
