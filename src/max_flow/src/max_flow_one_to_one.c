@@ -127,8 +127,6 @@ PG_FUNCTION_INFO_V1(max_flow_one_to_one);
 PGDLLEXPORT Datum
 max_flow_one_to_one(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
-    uint32_t call_cntr;
-    uint32_t max_calls;
     TupleDesc tuple_desc;
 
     /**************************************************************************/
@@ -160,14 +158,18 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
         /*                                                                    */
         /**********************************************************************/
 
-        funcctx->max_calls = (uint32_t) result_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-            != TYPEFUNC_COMPOSITE) {
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                        errmsg("function returning record called in context "
-                                   "that cannot accept type record")));
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -175,12 +177,10 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (pgr_flow_t *) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
         Datum result;
         Datum *values;
@@ -198,12 +198,12 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].target);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].flow);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
+        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].residual_capacity);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
