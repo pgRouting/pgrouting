@@ -309,7 +309,6 @@ tsp_matrix(PG_FUNCTION_ARGS) {
     tsp_res    = funcctx->user_fctx;
 
     PGR_DBG("Trying to allocate some memory");
-    PGR_DBG("funcctx->call_cntr = %i, max_calls = %i", funcctx->call_cntr, funcctx->max_calls);
 
     if (funcctx->call_cntr < funcctx->max_calls) {   /* do when there is more left to send */
         HeapTuple    tuple;
@@ -325,7 +324,6 @@ tsp_matrix(PG_FUNCTION_ARGS) {
         values[1] = Int32GetDatum(tsp_res[funcctx->call_cntr]);
         nulls[1] = false;
 
-        PGR_DBG("RESULT: %d, %d", funcctx->call_cntr, tsp_res[funcctx->call_cntr]);
 
         PGR_DBG("Heap making");
 
@@ -336,7 +334,6 @@ tsp_matrix(PG_FUNCTION_ARGS) {
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);
 
-        PGR_DBG("RESULT: seq:%d, id:%d", funcctx->call_cntr, tsp_res[funcctx->call_cntr]);
         PGR_DBG("Trying to free some memory");
 
         /* clean up (this is not really necessary) */
