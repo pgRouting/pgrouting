@@ -198,7 +198,7 @@ typedef struct tspstruct {
 #define MOD(i, n)   ((i) %(n) >= 0 ?(i) %(n) :(i) %(n) +(n))
 #define D(x, y) dist[(x)*n+y]
 
-#define MIN(a, b)((a) < (b)?(a) : (b))
+funcctx->#define MIN(a, b)((a) < (b)?(a) : (b))
 #define MAX(a, b)((a) > (b)?(a) : (b))
 #define sqr(x)  ((x)*(x))
 

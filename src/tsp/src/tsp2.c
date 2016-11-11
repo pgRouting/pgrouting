@@ -244,8 +244,6 @@ PG_FUNCTION_INFO_V1(tsp_matrix);
 PGDLLEXPORT Datum
 tsp_matrix(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t                  call_cntr;
-    uint32_t                  max_calls;
     TupleDesc            tuple_desc;
     // AttInMetadata       *attinmeta;
 
@@ -277,7 +275,12 @@ tsp_matrix(PG_FUNCTION_ARGS) {
             elog(ERROR, "Error, failed to solve TSP.");
         }
 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = (size_t)num;
+#else
         funcctx->max_calls = (uint32_t)num;
+#endif
+
         funcctx->user_fctx = tsp_res;
 
         /* Build a tuple descriptor for our result type */
@@ -302,15 +305,13 @@ tsp_matrix(PG_FUNCTION_ARGS) {
     /* stuff done on every call of the function */
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr  = (uint32_t)funcctx->call_cntr;
-    max_calls  = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     tsp_res    = funcctx->user_fctx;
 
     PGR_DBG("Trying to allocate some memory");
-    PGR_DBG("call_cntr = %i, max_calls = %i", call_cntr, max_calls);
+    PGR_DBG("funcctx->call_cntr = %i, max_calls = %i", funcctx->call_cntr, funcctx->max_calls);
 
-    if (call_cntr < max_calls) {   /* do when there is more left to send */
+    if (funcctx->call_cntr < funcctx->max_calls) {   /* do when there is more left to send */
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
@@ -319,12 +320,12 @@ tsp_matrix(PG_FUNCTION_ARGS) {
         values = palloc(2 * sizeof(Datum));
         nulls = palloc(2 * sizeof(bool));
 
-        values[0] = Int32GetDatum(call_cntr);
+        values[0] = Int32GetDatum(funcctx->call_cntr);
         nulls[0] = false;
-        values[1] = Int32GetDatum(tsp_res[call_cntr]);
+        values[1] = Int32GetDatum(tsp_res[funcctx->call_cntr]);
         nulls[1] = false;
 
-        PGR_DBG("RESULT: %d, %d", call_cntr, tsp_res[call_cntr]);
+        PGR_DBG("RESULT: %d, %d", funcctx->call_cntr, tsp_res[funcctx->call_cntr]);
 
         PGR_DBG("Heap making");
 
@@ -335,7 +336,7 @@ tsp_matrix(PG_FUNCTION_ARGS) {
         /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);
 
-        PGR_DBG("RESULT: seq:%d, id:%d", call_cntr, tsp_res[call_cntr]);
+        PGR_DBG("RESULT: seq:%d, id:%d", funcctx->call_cntr, tsp_res[funcctx->call_cntr]);
         PGR_DBG("Trying to free some memory");
 
         /* clean up (this is not really necessary) */
@@ -352,4 +353,3 @@ tsp_matrix(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
