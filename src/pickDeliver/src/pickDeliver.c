@@ -145,8 +145,6 @@ PG_FUNCTION_INFO_V1(pickDeliver);
 PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t              call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
@@ -185,7 +183,11 @@ pickDeliver(PG_FUNCTION_ARGS) {
         /*                                                                   */
         /*********************************************************************/
 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -200,12 +202,10 @@ pickDeliver(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_vehicle_orders_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr <  funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
@@ -234,15 +234,15 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_id);
-        values[2] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].travelTime);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].waitTime);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
-        values[8] = Float8GetDatum(result_tuples[call_cntr].departureTime);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].vehicle_id);
+        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].vehicle_seq);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].order_id);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].travelTime);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].arrivalTime);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].waitTime);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].serviceTime);
+        values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].departureTime);
 
         /*********************************************************************/
 
