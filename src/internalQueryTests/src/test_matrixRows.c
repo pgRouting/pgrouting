@@ -96,6 +96,7 @@ process(char* matrix_rows_sql,
     PGR_DBG("Returned error message = %s\n", err_msg);
 
     if (err_msg) {
+        pgr_SPI_finish();
         elog(ERROR, "%s", err_msg);
         free(err_msg);
     }
