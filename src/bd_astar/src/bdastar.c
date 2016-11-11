@@ -348,8 +348,6 @@ PG_FUNCTION_INFO_V1(bidir_astar_shortest_path);
 PGDLLEXPORT Datum
 bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-  uint32_t                  call_cntr;
-  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
   path = NULL;
@@ -393,7 +391,11 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 
       /* total number of tuples to be returned */
       PGR_DBG("Conting tuples number\n");
+#if PGSQL_VERSION > 95
+      funcctx->max_calls = path_count;
+#else
       funcctx->max_calls = (uint32_t)path_count;
+#endif
       funcctx->user_fctx = path;
 
       PGR_DBG("Path count %lu", path_count);
@@ -409,13 +411,11 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = (uint32_t)funcctx->call_cntr;
-  max_calls = (uint32_t)funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
 
-  if (call_cntr < max_calls) {   /* do when there is more left to send */
+  if (funcctx->call_cntr < funcctx->max_calls) {   /* do when there is more left to send */
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
@@ -424,13 +424,13 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(bool));
 
-      values[0] = Int32GetDatum(call_cntr);
+      values[0] = Int32GetDatum(funcctx->call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
       nulls[2] = false;
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
       nulls[3] = false;
 
       PGR_DBG("Heap making\n");
