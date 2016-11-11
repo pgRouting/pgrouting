@@ -155,11 +155,11 @@ PG_FUNCTION_INFO_V1(contractGraph);
 PGDLLEXPORT Datum
 contractGraph(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    size_t              call_cntr;
-    size_t               max_calls;
     TupleDesc            tuple_desc;
+
     pgr_contracted_blob  *result_tuples = NULL;
     size_t result_count = 0;
+
     int64_t* contraction_order;
     int64_t* forbidden_vertices;
     size_t size_contraction_order;
@@ -201,11 +201,17 @@ contractGraph(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
+
         PGR_DBG("Cleaning arrays");
         free(contraction_order);
         free(forbidden_vertices);
-        PGR_DBG("Returned %d tuples\n", (int)result_count);
+        PGR_DBG("Returned %ld tuples\n", result_count);
+        /**********************************************************************/ 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -215,12 +221,12 @@ contractGraph(PG_FUNCTION_ARGS) {
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
+
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (pgr_contracted_blob*) funcctx->user_fctx;
-    if (call_cntr < max_calls) {
+
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple   tuple;
         Datum       result;
         Datum       *values;
@@ -230,22 +236,27 @@ contractGraph(PG_FUNCTION_ARGS) {
         int16 typlen;
         bool typbyval;
         char typalign;
+
         values =(Datum *)palloc(7 * sizeof(Datum));
         nulls = palloc(7 * sizeof(bool));
         int i;
         for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
+
         int contracted_vertices_size =
-            (int)result_tuples[call_cntr].contracted_vertices_size;
+            (int)result_tuples[funcctx->call_cntr].contracted_vertices_size;
+
         contracted_vertices_array = (Datum *)palloc(sizeof(Datum) *
                 (size_t)contracted_vertices_size);
+
         for (i = 0; i < contracted_vertices_size; ++i) {
             PGR_DBG("Storing contracted vertex %ld",
-                    result_tuples[call_cntr].contracted_vertices[i]);
+                    result_tuples[funcctx->call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] =
-                Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
+                Int64GetDatum(result_tuples[funcctx->call_cntr].contracted_vertices[i]);
         }
+
         get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
         arrayType =  construct_array(contracted_vertices_array,
                 contracted_vertices_size,
@@ -255,32 +266,31 @@ contractGraph(PG_FUNCTION_ARGS) {
 
 #if 1
         PGR_DBG("%ld | %s | %ld | %ld | %f | %d",
-                result_tuples[call_cntr].id,
-                result_tuples[call_cntr].type,
-                result_tuples[call_cntr].source,
-                result_tuples[call_cntr].target,
-                result_tuples[call_cntr].cost,
-                result_tuples[call_cntr].contracted_vertices_size);
+                result_tuples[funcctx->call_cntr].id,
+                result_tuples[funcctx->call_cntr].type,
+                result_tuples[funcctx->call_cntr].source,
+                result_tuples[funcctx->call_cntr].target,
+                result_tuples[funcctx->call_cntr].cost,
+                result_tuples[funcctx->call_cntr].contracted_vertices_size);
 #endif
         PGR_DBG("Storing complete\n");
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = CStringGetTextDatum(result_tuples[call_cntr].type);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].id);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = CStringGetTextDatum(result_tuples[funcctx->call_cntr].type);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
         values[3] = PointerGetDatum(arrayType);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].source);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].target);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
+        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         // cleaning up the contracted vertices array
-        if (result_tuples[call_cntr].contracted_vertices) {
-            pfree(result_tuples[call_cntr].contracted_vertices);
+        if (result_tuples[funcctx->call_cntr].contracted_vertices) {
+            pfree(result_tuples[funcctx->call_cntr].contracted_vertices);
         }
         SRF_RETURN_NEXT(funcctx, result);
     } else {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
