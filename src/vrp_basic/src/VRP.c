@@ -745,8 +745,6 @@ PG_FUNCTION_INFO_V1(vrp);
 PGDLLEXPORT Datum
 vrp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t                  call_cntr;
-    uint32_t                  max_calls;
     TupleDesc            tuple_desc;
     vrp_result_element_t         *path;
 
@@ -787,8 +785,11 @@ vrp(PG_FUNCTION_ARGS) {
         /* total number of tuples to be returned */
         // PGR_DBG("Counting tuples number\n");
 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = path_count;
+#else
         funcctx->max_calls = (uint32_t)path_count;
-
+#endif
         funcctx->user_fctx = path;
 
         /* Build a tuple descriptor for our result type */
@@ -814,17 +815,14 @@ vrp(PG_FUNCTION_ARGS) {
     /* stuff done on every call of the function */
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
-
     path = (vrp_result_element_t *)funcctx->user_fctx;
 
     // elog(NOTICE, "Point 1");
     // PGR_DBG("Trying to allocate some memory\n");
-    // PGR_DBG("call_cntr = %i, max_calls = %i\n", call_cntr, max_calls);
+    // PGR_DBG("funcctx->call_cntr = %i, max_calls = %i\n", funcctx->call_cntr, max_calls);
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr <  funcctx->max_calls) {
         /* do when there is more left to send */
         HeapTuple    tuple;
         Datum        result;
@@ -834,20 +832,20 @@ vrp(PG_FUNCTION_ARGS) {
         values = palloc(5 * sizeof(Datum));
         nulls = palloc(5 * sizeof(char));
 
-        values[0] = Int32GetDatum(path[call_cntr].order_id);   //  order id
+        values[0] = Int32GetDatum(path[funcctx->call_cntr].order_id);   //  order id
         nulls[0] = ' ';
-        values[1] = Int32GetDatum(path[call_cntr].order_pos);  //   order pos
+        values[1] = Int32GetDatum(path[funcctx->call_cntr].order_pos);  //   order pos
         nulls[1] = ' ';
-        values[2] = Int32GetDatum(path[call_cntr].vehicle_id);  //   vehicle id
+        values[2] = Int32GetDatum(path[funcctx->call_cntr].vehicle_id);  //   vehicle id
         nulls[2] = ' ';
-        values[3] = Int32GetDatum(path[call_cntr].arrival_time);  //   arrival time
+        values[3] = Int32GetDatum(path[funcctx->call_cntr].arrival_time);  //   arrival time
         nulls[3] = ' ';
-        // values[4] = TimeTzADTPGetDatum(&path[call_cntr].time);
-        values[4] = Int32GetDatum(path[call_cntr].depart_time);  //   departure time
+        // values[4] = TimeTzADTPGetDatum(&path[funcctx->call_cntr].time);
+        values[4] = Int32GetDatum(path[funcctx->call_cntr].depart_time);  //   departure time
         nulls[4] = ' ';
 
         //  PGR_DBG("Heap making\n");
-        // elog(NOTICE, "Result %d %d %d", call_cntr, path[call_cntr].order_id, max_calls);
+        // elog(NOTICE, "Result %d %d %d", funcctx->call_cntr, path[funcctx->call_cntr].order_id, max_calls);
         tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         // PGR_DBG("Datum making\n");
@@ -870,10 +868,6 @@ vrp(PG_FUNCTION_ARGS) {
         profstop("store", prof_store);
         profstop("total", prof_total);
         PGR_DBG("Profiles stopped\n");
-
-#if 0
-        free(path);
-#endif
 
         PGR_DBG("Itinerary cleared\n");
 
