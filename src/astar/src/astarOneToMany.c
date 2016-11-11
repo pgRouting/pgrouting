@@ -141,8 +141,6 @@ process(char* edges_sql,
 PGDLLEXPORT Datum
 astarOneToMany(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t            call_cntr;
-    uint32_t            max_calls;
     TupleDesc           tuple_desc;
 
     General_path_element_t  *result_tuples = 0;
@@ -185,7 +183,12 @@ astarOneToMany(PG_FUNCTION_ARGS) {
         free(end_vidsArr);
 
 
-        funcctx->max_calls = (uint32_t) result_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -198,25 +201,23 @@ astarOneToMany(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
         bool*        nulls;
 
         /*********************************************************************
-           OUT seq INTEGER,
-           OUT path_seq INTEGER,
-           OUT end_vid BIGINT,
-           OUT node BIGINT,
-           OUT edge BIGINT,
-           OUT cost FLOAT,
-           OUT agg_cost FLOAT
+          OUT seq INTEGER,
+          OUT path_seq INTEGER,
+          OUT end_vid BIGINT,
+          OUT node BIGINT,
+          OUT edge BIGINT,
+          OUT cost FLOAT,
+          OUT agg_cost FLOAT
          *********************************************************************/
 
 
@@ -229,13 +230,13 @@ astarOneToMany(PG_FUNCTION_ARGS) {
         }
 
 
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].end_id);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
