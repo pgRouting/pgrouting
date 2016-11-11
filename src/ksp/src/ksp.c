@@ -128,11 +128,9 @@ void compute(
 PGDLLEXPORT Datum
 kshortest_path(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t               call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
     General_path_element_t      *path = NULL;
-    size_t path_count = 0;
+    size_t result_count = 0;
 
     /* stuff done only on the first call of the function */
     if (SRF_IS_FIRSTCALL()) {
@@ -159,13 +157,17 @@ kshortest_path(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),    /* directed */
                 PG_GETARG_BOOL(5),    /* heap_paths */
                 &path,
-                &path_count);
-        PGR_DBG("Total number of tuples to be returned %ld \n", path_count);
+                &result_count);
+        PGR_DBG("Total number of tuples to be returned %ld \n", result_count);
 
         /*                                                                    */
         /**********************************************************************/
 
-        funcctx->max_calls = (uint32_t)path_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = path;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -180,13 +182,11 @@ kshortest_path(PG_FUNCTION_ARGS) {
 
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
 
     tuple_desc = funcctx->tuple_desc;
     path = (General_path_element_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {   /* do when there is more left to send */
+    if (funcctx->call_cntr < funcctx->max_calls) {   /* do when there is more left to send */
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
@@ -201,13 +201,13 @@ kshortest_path(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(path[call_cntr].start_id + 1);
-        values[2] = Int32GetDatum(path[call_cntr].seq);
-        values[3] = Int64GetDatum(path[call_cntr].node);
-        values[4] = Int64GetDatum(path[call_cntr].edge);
-        values[5] = Float8GetDatum(path[call_cntr].cost);
-        values[6] = Float8GetDatum(path[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(path[funcctx->call_cntr].start_id + 1);
+        values[2] = Int32GetDatum(path[funcctx->call_cntr].seq);
+        values[3] = Int64GetDatum(path[funcctx->call_cntr].node);
+        values[4] = Int64GetDatum(path[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(path[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(path[funcctx->call_cntr].agg_cost);
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
