@@ -122,8 +122,6 @@ PG_FUNCTION_INFO_V1(dijkstraVia);
 PGDLLEXPORT Datum
 dijkstraVia(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t               call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /*******************************************************************************/
@@ -141,7 +139,7 @@ dijkstraVia(PG_FUNCTION_ARGS) {
 
 
         /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   
+        /*
          * pgr_dijkstraVia(edges_sql text,
          *   vertices anyarray,
          *   directed boolean default true,
@@ -170,7 +168,11 @@ dijkstraVia(PG_FUNCTION_ARGS) {
         /*                                                                             */
         /*******************************************************************************/
 
+#if PGSQL_VERSION > 94
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -183,20 +185,28 @@ dijkstraVia(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (Routes_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
         bool*        nulls;
 
         /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   */
-        //    OUT seq BIGINT, OUT path_id BIGINT, OUT path_seq BIGINT, OUT start_vid BIGINT, OUT end_vid BIGINT, OUT node BIGINT, OUT edge BIGINT, OUT cost FLOAT, OUT agg_cost FLOAT, OUT route_agg_cost FLOAT)
+        /*
+           OUT seq INTEGER,
+           OUT path_id INTEGER,
+           OUT path_seq INTEGER,
+           OUT start_vid BIGINT,
+           OUT end_vid BIGINT,
+           OUT node BIGINT,
+           OUT edge BIGINT,
+           OUT cost FLOAT,
+           OUT agg_cost FLOAT,
+           OUT route_agg_cost FLOAT
+           */
 
         size_t numb_out = 10;
         values = palloc(numb_out * sizeof(Datum));
@@ -207,16 +217,16 @@ dijkstraVia(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].path_id);
-        values[2] = Int32GetDatum(result_tuples[call_cntr].path_seq + 1);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].start_vid);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].end_vid);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[6] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[8] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-        values[9] = Float8GetDatum(result_tuples[call_cntr].route_agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].path_id);
+        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].path_seq + 1);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_vid);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_vid);
+        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[9] = Float8GetDatum(result_tuples[funcctx->call_cntr].route_agg_cost);
 
         /*******************************************************************************/
 
