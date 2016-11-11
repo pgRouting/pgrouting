@@ -51,6 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./floydWarshall_driver.h"
 
 PGDLLEXPORT Datum floydWarshall(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(floydWarshall);
 
 static
 void
@@ -106,17 +107,14 @@ process(
 }
 
 
-PG_FUNCTION_INFO_V1(floydWarshall);
 PGDLLEXPORT Datum
 floydWarshall(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t              call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
     /*                                                                        */
-    Matrix_cell_t  *result_tuples = 0;
+    Matrix_cell_t  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -149,7 +147,11 @@ floydWarshall(PG_FUNCTION_ARGS) {
         /*                                                                   */
         /*********************************************************************/
 
+#if PGSQL_VERSION > 94
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -162,12 +164,10 @@ floydWarshall(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (Matrix_cell_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
@@ -178,11 +178,11 @@ floydWarshall(PG_FUNCTION_ARGS) {
         nulls = palloc(3 * sizeof(bool));
 
         // postgres starts counting from 1
-        values[0] = Int64GetDatum(result_tuples[call_cntr].from_vid);
+        values[0] = Int64GetDatum(result_tuples[funcctx->call_cntr].from_vid);
         nulls[0] = false;
-        values[1] = Int64GetDatum(result_tuples[call_cntr].to_vid);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].to_vid);
         nulls[1] = false;
-        values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         nulls[2] = false;
         /*********************************************************************/
 
