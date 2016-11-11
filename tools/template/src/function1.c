@@ -28,21 +28,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <postgres.h>
+/** @file MY_FUNCTION_NAME.c
+ * @brief Conecting code with postgres.
+ *
+ * This file is fully documented for understanding
+ *  how the postgres connectinon works
+ *
+ * TODO Remove unnecessary comments before submiting the function.
+ * some comments are in form of PGR_DBG message
+ */
+
+/**
+ *  postgres_connection.h 
+ *
+ *  - should allways be first in the C code
+ */
+#include "./../../common/src/postgres_connection.h"
+
+/**
+ *  funcapi.h
+ *
+ *  - While developing to not show postgres header files warnings:
+ *    - wrap the file(s) with the appropiate dignostic to be ignored
+ */
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #include "funcapi.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
 #include "fmgr.h"
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/e_report.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
-#include "./../../common/src/edges_input.h"
+#include "./../../common/src/debug_macro.h" // for macro PGR_DBG
+#include "./../../common/src/e_report.h"  // for pgr_global_report
+#include "./../../common/src/time_msg.h"  // for time_msg & clock
+#include "./../../common/src/pgr_types.h"  // for the current accepted types
+#include "./../../common/src/edges_input.h" // for functions to get edges informtion
 
-#include "./MY_FUNCTION_NAME_driver.h"
+#include "./MY_FUNCTION_NAME_driver.h"  // the C++ code of the function
 
 PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);
 PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS);
@@ -60,14 +90,16 @@ process(
         bool only_cost,
         MY_RETURN_VALUE_TYPE **result_tuples,
         size_t *result_count) {
-    pgr_SPI_connect();
+    pgr_SPI_connect(); // error handling wrapper for https://www.postgresql.org/docs/current/static/spi-spi-connect.html
+    (*result_tuples) = NULL;
+    (*result_count) = 0;
 
     PGR_DBG("Load data");
     MY_EDGE_TYPE *edges = NULL;
     size_t total_edges = 0;
 
     if (start_vid == end_vid) {
-        pgr_SPI_finish();
+        pgr_SPI_finish(); // error handling wrapper for https://www.postgresql.org/docs/current/static/spi-spi-finish.html
         return;
     }
 
@@ -114,14 +146,12 @@ process(
 
 PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t            call_cntr;
-    uint32_t            max_calls;
     TupleDesc           tuple_desc;
 
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    MY_RETURN_VALUE_TYPE  *result_tuples = 0;
+    MY_RETURN_VALUE_TYPE  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -140,12 +170,8 @@ PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
 
 
         PGR_DBG("Calling process");
-        // Code standard:
-        // Use same order as in the query
-        // Pass the array and it's size on the same line
-
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
                 PG_GETARG_BOOL(3),
@@ -156,7 +182,11 @@ PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
         /*                                                                    */
         /**********************************************************************/
 
+#if PGSQL_VERSION > 94
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -171,12 +201,10 @@ PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (MY_RETURN_VALUE_TYPE*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
@@ -198,20 +226,24 @@ PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        PGR_DBG("cleanup");
-        if (result_tuples) free(result_tuples);
+        /**********************************************************************/
+        /*                          MODIFY AS NEEDED                          */
+
+        PGR_DBG("Clean up code");
+
+        /**********************************************************************/
 
         SRF_RETURN_DONE(funcctx);
     }

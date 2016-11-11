@@ -62,8 +62,7 @@ pgr_MY_FUNCTION_NAME(
         bool only_cost = false) {
     Path path;
     Pgr_dijkstra< G > fn_dijkstra;
-    fn_dijkstra.dijkstra(graph, path, source, target, only_cost);
-    return path;
+    return fn_dijkstra.dijkstra(graph, source, target, only_cost);
 }
 
 
@@ -145,7 +144,7 @@ do_pgr_MY_FUNCTION_NAME(
     } catch (std::exception &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        err << execpt.what();
+        err << except.what();
         *err_msg = strdup(err.str().c_str());
         *log_msg = strdup(log.str().c_str());
     } catch(...) {

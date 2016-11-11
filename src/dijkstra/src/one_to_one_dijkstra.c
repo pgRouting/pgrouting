@@ -44,9 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-
-
 #include "fmgr.h"
+
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
@@ -229,4 +228,3 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-
