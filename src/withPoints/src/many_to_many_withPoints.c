@@ -185,13 +185,13 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
         // only_cost BOOLEAN DEFAULT false,
 
 
-        int64_t* start_pidsArr;
-        size_t size_start_pidsArr;
+        int64_t* start_pidsArr = NULL;
+        size_t size_start_pidsArr = 0;
         start_pidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_start_pidsArr, PG_GETARG_ARRAYTYPE_P(2));
 
-        int64_t* end_pidsArr;
-        size_t size_end_pidsArr;
+        int64_t* end_pidsArr = NULL;
+        size_t size_end_pidsArr = 0;
         end_pidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_pidsArr, PG_GETARG_ARRAYTYPE_P(3));
 
@@ -207,8 +207,8 @@ many_to_many_withPoints(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        if (start_pidsArr) free(start_pidsArr);
-        if (end_pidsArr) free(end_pidsArr);
+        pfree(start_pidsArr);
+        pfree(end_pidsArr);
         /*                                                                             */
         /*******************************************************************************/
 

@@ -142,8 +142,8 @@ max_flow_many_to_one(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
 
 
-        int64_t *source_vertices;
-        size_t size_source_verticesArr;
+        int64_t *source_vertices = NULL;
+        size_t size_source_verticesArr = 0;
         source_vertices = (int64_t *)
             pgr_get_bigIntArray(&size_source_verticesArr,
                                 PG_GETARG_ARRAYTYPE_P(1));

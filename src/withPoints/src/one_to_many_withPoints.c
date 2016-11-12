@@ -190,7 +190,8 @@ process(
 
     if (err_msg) {
         if (*result_tuples) free(*result_tuples);
-        if (end_pidsArr) free(end_pidsArr);
+        pfree(end_pidsArr);
+        pfree(edges);
         elog(ERROR, "%s", err_msg);
         free(err_msg);
     }
@@ -235,8 +236,8 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
 
 
         PGR_DBG("Initializing arrays");
-        int64_t* end_pidsArr;
-        size_t size_end_pidsArr;
+        int64_t* end_pidsArr = NULL;
+        size_t size_end_pidsArr = 0;
         end_pidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_pidsArr, PG_GETARG_ARRAYTYPE_P(3));
 
@@ -253,7 +254,7 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
                 &result_count);
 
         PGR_DBG("Cleaning arrays");
-        free(end_pidsArr);
+        pfree(end_pidsArr);
         /*                                                                             */
         /*******************************************************************************/
 

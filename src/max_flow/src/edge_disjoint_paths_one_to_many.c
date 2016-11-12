@@ -133,8 +133,8 @@ edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
 
-        int64_t *sink_vertices;
-        size_t size_sink_verticesArr;
+        int64_t *sink_vertices = NULL;
+        size_t size_sink_verticesArr = 0;
         sink_vertices = (int64_t *)
             pgr_get_bigIntArray(&size_sink_verticesArr,
                                 PG_GETARG_ARRAYTYPE_P(2));

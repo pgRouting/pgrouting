@@ -136,8 +136,8 @@ process(
     if (log_msg) free(log_msg);
 
     if (err_msg) {
-        free(start_pidsArr);
-        free(*result_tuples);
+        pfree(start_pidsArr);
+        pfree(*result_tuples);
         elog(ERROR, "%s", err_msg);
         free(err_msg);
     }
@@ -182,8 +182,8 @@ many_to_one_withPoints(PG_FUNCTION_ARGS) {
         // only_cost BOOLEAN DEFAULT false,
 
 
-        int64_t* start_pidsArr;
-        size_t size_start_pidsArr;
+        int64_t* start_pidsArr = NULL;
+        size_t size_start_pidsArr = 0;
         start_pidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_start_pidsArr, PG_GETARG_ARRAYTYPE_P(2));
 
@@ -199,7 +199,7 @@ many_to_one_withPoints(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        if (start_pidsArr) free(start_pidsArr);
+        pfree(start_pidsArr);
         /*                                                                             */
         /*******************************************************************************/
 

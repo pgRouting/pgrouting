@@ -148,8 +148,8 @@ many_to_one_dijkstra(PG_FUNCTION_ARGS) {
         // directed BOOLEAN default true,
 
         PGR_DBG("Initializing arrays");
-        int64_t* start_vidsArr;
-        size_t size_start_vidsArr;
+        int64_t* start_vidsArr = NULL;
+        size_t size_start_vidsArr = 0;
         start_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_start_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
         PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
@@ -165,7 +165,7 @@ many_to_one_dijkstra(PG_FUNCTION_ARGS) {
                 &result_count);
 
         PGR_DBG("Cleaning arrays");
-        free(start_vidsArr);
+        pfree(start_vidsArr);
         /*                                                                   */
         /*********************************************************************/
 

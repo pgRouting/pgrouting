@@ -181,8 +181,8 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         // details BOOLEAN -- DEFAULT false,
         // equicost BOOLEAN -- DEFAULT false,
 
-        int64_t *sourcesArr;
-        size_t num;
+        int64_t *sourcesArr= NULL;
+        size_t num = 0;
 
         sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(2));
         PGR_DBG("sourcesArr size %ld ", num);
@@ -200,7 +200,7 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(7),                   // equicost
                 &result_tuples, &result_count);
 
-        free(sourcesArr);
+        pfree(sourcesArr);
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;

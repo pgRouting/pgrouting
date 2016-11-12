@@ -69,19 +69,19 @@ process(char* edges_sql,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     if (heuristic > 5 || heuristic < 0) {
-        free(end_vidsArr);
+        pfree(end_vidsArr);
         ereport(ERROR,
                 (errmsg("Unknown heuristic"),
                  errhint("Valid values: 0~5")));
     }
     if (factor <= 0) {
-        free(end_vidsArr);
+        pfree(end_vidsArr);
         ereport(ERROR,
                 (errmsg("Factor value out of range"),
                  errhint("Valid values: positive non zero")));
     }
     if (epsilon < 1) {
-        free(end_vidsArr);
+        pfree(end_vidsArr);
         ereport(ERROR,
                 (errmsg("Epsilon value out of range"),
                  errhint("Valid values: 1 or greater than 1")));
@@ -163,8 +163,8 @@ astarOneToMany(PG_FUNCTION_ARGS) {
 
          ****************************************************************/
 
-        int64_t* end_vidsArr;
-        size_t size_end_vidsArr;
+        int64_t* end_vidsArr = NULL;
+        size_t size_end_vidsArr = 0;
         end_vidsArr = (int64_t*)
             pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
 
@@ -180,7 +180,7 @@ astarOneToMany(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        free(end_vidsArr);
+        pfree(end_vidsArr);
 
 
 #if PGSQL_VERSION > 95

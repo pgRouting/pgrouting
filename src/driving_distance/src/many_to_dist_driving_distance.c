@@ -110,8 +110,8 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
         /* switch to memory context appropriate for multiple function calls */
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        int64_t* sourcesArr;
-        size_t num;
+        int64_t* sourcesArr = NULL;
+        size_t num = 0;
 
         sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(1));
         PGR_DBG("sourcesArr size %ld ", num);
@@ -125,7 +125,7 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(4),                   // equicost
                 &ret_path, &path_count);
 
-        free(sourcesArr);
+        pfree(sourcesArr);
 
         /* total number of tuples to be returned */
         funcctx->max_calls = (uint32_t) path_count;

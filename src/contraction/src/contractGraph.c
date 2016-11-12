@@ -160,10 +160,6 @@ contractGraph(PG_FUNCTION_ARGS) {
     pgr_contracted_blob  *result_tuples = NULL;
     size_t result_count = 0;
 
-    int64_t* contraction_order;
-    int64_t* forbidden_vertices;
-    size_t size_contraction_order;
-    size_t size_forbidden_vertices;
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
         funcctx = SRF_FIRSTCALL_INIT();
@@ -177,6 +173,11 @@ contractGraph(PG_FUNCTION_ARGS) {
            forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
            directed BOOLEAN DEFAULT true
          **********************************************************************/ 
+
+        int64_t* contraction_order = NULL;
+        int64_t* forbidden_vertices = NULL;
+        size_t size_contraction_order = 0;
+        size_t size_forbidden_vertices = 0;
 
         forbidden_vertices = (int64_t*)
             pgr_get_bigIntArray_allowEmpty(
@@ -203,8 +204,11 @@ contractGraph(PG_FUNCTION_ARGS) {
                 &result_count);
 
         PGR_DBG("Cleaning arrays");
-        free(contraction_order);
-        free(forbidden_vertices);
+        if (contraction_order == NULL) PGR_DBG("empty contraction_order");
+        if (forbidden_vertices == NULL) PGR_DBG("empty forbidden_vertices");
+
+        pfree(contraction_order);
+        if (forbidden_vertices) pfree(forbidden_vertices);
         PGR_DBG("Returned %ld tuples\n", result_count);
         /**********************************************************************/ 
 #if PGSQL_VERSION > 95

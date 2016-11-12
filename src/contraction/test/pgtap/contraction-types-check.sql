@@ -215,7 +215,7 @@ SELECT * FROM pgr_contractgraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
 ARRAY[1]::smallint[], 1, ARRAY[ ]::bigint[]);
 
-SELECT throws_ok('q1', 'XX000', 'Expected less than two dimension',
+SELECT throws_ok('q1', 'XX000', 'One dimension expected',
 'Throws because forbidden_vertices is BIGINT[][]');
 
 SELECT throws_ok('q2', 'XX000', 'One dimension expected',

@@ -148,8 +148,8 @@ dijkstraVia(PG_FUNCTION_ARGS) {
          *******************************************************************************/
 
         PGR_DBG("Initializing arrays");
-        int64_t* via_vidsArr;
-        size_t size_via_vidsArr;
+        int64_t* via_vidsArr = NULL;
+        size_t size_via_vidsArr = 0;
         via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
         PGR_DBG("Via VertexArr size %ld ", size_via_vidsArr);
 
@@ -164,7 +164,7 @@ dijkstraVia(PG_FUNCTION_ARGS) {
                 &result_count);
 
         PGR_DBG("Cleaning arrays");
-        free(via_vidsArr);
+        pfree(via_vidsArr);
         /*                                                                             */
         /*******************************************************************************/
 
