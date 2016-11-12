@@ -158,6 +158,7 @@ max_flow_one_to_many(PG_FUNCTION_ARGS) {
             &result_tuples,
             &result_count);
 
+        free(sink_vertices);
         /*                                                                    */
         /**********************************************************************/
 

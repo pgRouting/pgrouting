@@ -149,6 +149,8 @@ edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS) {
             &result_tuples,
             &result_count);
 
+        free(sink_vertices);
+
         /*                                                                    */
         /**********************************************************************/
 

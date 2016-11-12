@@ -164,6 +164,9 @@ max_flow_many_to_many(PG_FUNCTION_ARGS) {
             &result_tuples,
             &result_count);
 
+        free(source_vertices);
+        free(sink_vertices);
+
         /*                                                                    */
         /**********************************************************************/
 
