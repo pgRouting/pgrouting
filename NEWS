@@ -1,3 +1,22 @@
+Changes for 2.1.1
+-------------------------------------------------------------------------------
+
+- Operative system support added
+  - Fixing some issues for supporting this version for postgres 9.5 & 9.6
+  - Code changes were reverted to give support to Centos-6
+  - Code changes for compatability issues with VS2013
+
+- Functionality changes 
+  - pgr_kdijstraCost
+    - code with bugs is eliminated
+    - Is a postgres plpgsql warp function pgr_dijkstra(one to many)
+  - pgr_kdijstraPath
+    - code with bugs is eliminated
+    - Is a postgres plpgsql warp function pgr_dijkstra(one to many)
+
+- Other changes
+  - Spelling on code an documentation
+
 
 Changes for 2.1.0
 -------------------------------------------------------------------------------

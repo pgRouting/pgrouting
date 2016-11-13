@@ -255,6 +255,7 @@ The following functions are used internaly the topology functions.
 
 :ref:`change_log`
 
+   - :ref:`changelog_2_1_1`
    - :ref:`changelog_2_1_0`
    - :ref:`changelog_2_0`
    - :ref:`changelog_1_x`
