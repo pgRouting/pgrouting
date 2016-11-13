@@ -24,7 +24,7 @@
 /*
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id integer, distance float8, directed boolean, has_reverse_cost boolean)
     RETURNS SETOF pgr_costResultBig
-    AS '$libdir/librouting_dd', 'driving_distance'
+    AS '$libdir/librouting_dd', 'driving_distance' -- is a comment
     LANGUAGE c IMMUTABLE STRICT;
 */
 CREATE OR REPLACE FUNCTION _pgr_drivingDistance(sql text, start_v bigint, distance float8, directed boolean, has_rcost boolean,

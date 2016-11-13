@@ -180,7 +180,7 @@ set(PGROUTING_INCLUDE_DIRECTORIES
     ${PGROUTING_SOURCE_DIR}/src/common/src
     ${PGROUTING_SOURCE_DIR}/src/dijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/driving_distance/src
-    #${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
+    ${PGROUTING_SOURCE_DIR}/src/kdijkstra/src
     ${PGROUTING_SOURCE_DIR}/src/ksp/src
     ${PGROUTING_SOURCE_DIR}/src/trsp/src
     ${PGROUTING_SOURCE_DIR}/src/tsp/src
@@ -267,7 +267,7 @@ add_library(routing-2.1
     $<TARGET_OBJECTS:common>
     $<TARGET_OBJECTS:dijkstra>
     $<TARGET_OBJECTS:driving_distance>
-    #$<TARGET_OBJECTS:kdijkstra>
+    $<TARGET_OBJECTS:kdijkstra>
     $<TARGET_OBJECTS:ksp>
     $<TARGET_OBJECTS:trsp>
     $<TARGET_OBJECTS:tsp>
