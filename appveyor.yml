@@ -1,0 +1,55 @@
+# ------------------------------------------------------------------------------
+# appVeyor script
+# Copyright(c) pgRouting Contributors
+#
+# Main configuration
+# ------------------------------------------------------------------------------
+
+version: 2.1.{build}
+
+image: Visual Studio 2013
+configuration: Release
+platform: x64
+
+clone_depth: 1
+clone_folder: c:\build\pgrouting
+
+cache:
+  - downloads -> appveyor.yml
+  - c:\build\local\msvc120\x64 -> appveyor
+
+services:
+  - postgresql94
+
+environment:
+  CONFIGURATION: Release
+  MSVC_VER: 12.0
+  BUILD_ROOT_DIR: c:\build
+
+init:
+  - git config --global core.autocrlf false
+
+install:
+  # Install pgRouting prerequisites:
+  # cmake
+  # postGIS
+  # CGAL
+  - call ci\appveyor\install.bat
+
+
+build_script:
+  - cd c:\build\pgrouting\ci\appveyor
+  - msbuild_pgrouting.bat 9.4 
+  - cd %PGROUTING_BUILD_DIR%
+  - msbuild PGROUTING.sln /target:Build /property:Configuration=%CONFIGURATION%
+  - msbuild INSTALL.vcxproj /target:Build /property:Configuration=%CONFIGURATION%
+  - copy c:\build\gmp\x64\lib\*.dll C:\Progra~1\PostgreSQL\9.4\bin\
+
+test_script:
+  - set PGUSER=postgres
+  - set PGPASSWORD=Password12!
+  - set PGHOME=C:\Progra~1\PostgreSQL\9.4
+  - set PGPORT=5432
+  - set PATH=%PATH%;%PGHOME%\bin
+  # Execute algorithm test by Cygwin
+  - C:\cygwin\bin\bash -lc "cd /cygdrive/c/build/pgrouting && tools/testers/algorithm-tester.pl -psql \"/cygdrive/c/Progra~1/PostgreSQL/9.4/bin/psql\""
