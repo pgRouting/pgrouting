@@ -90,14 +90,12 @@ before_script:
   # initialize databases
   - createdb  -U $PG_USER ___pgr___test___
   - createdb  -U $PG_USER pgr_test__db__test
-  - ./tools/travis/check-extensions.sh $POSTGRESQL_VERSION ___pgr___test___
 
 
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
   - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION
 
 #after_success:
