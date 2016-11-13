@@ -96,6 +96,6 @@ script:
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
 
 after_script: 
-  - ./tools/test-runner.pl -clean -pgver $POSTGRESQL_VERSION
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION 2.3
 
 #after_success:
