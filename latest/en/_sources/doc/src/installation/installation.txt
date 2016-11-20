@@ -51,34 +51,25 @@ pgRouting on Ubuntu can be installed using packages from a PostgreSQL repository
 
 Using a terminal window:
 
-* Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.
-
 .. code-block:: bash
 
-   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+    # Create /etc/apt/sources.list.d/pgdg.list. The distributions are called codename-pgdg.
+    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
-* Import the repository key, update the package lists
-
-.. code-block:: bash
-
-    sudo apt install wget ca-certificates
+    # Import the repository key, update the package lists
+    sudo apt-get install wget ca-certificates
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-    sudo apt update
+    sudo apt-get update
 
-* Install pgrouting based on your postgres Installation: for this example is 9.3
+    # Install pgrouting based on your postgres Installation: for this example is 9.3
+    sudo apt-get install postgresql-9.3-pgrouting
 
-.. code-block:: bash
-
-sudo apt install postgresql-9.3-pgrouting
-
-This will also install all required packages such as PostgreSQL and PostGIS if not installed yet.
 
 * To be up-to-date with changes and improvements
 
-
 .. code-block:: bash
 
-sudo apt-get update & sudo apt-get upgrade
+    sudo apt-get update & sudo apt-get upgrade
 
 
 RHEL/CentOS
