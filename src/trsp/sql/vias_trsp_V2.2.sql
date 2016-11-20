@@ -38,27 +38,14 @@ declare
     lrra boolean := false;
     seq integer := 0;
     seq2 integer := 0;
-    has_reverse BOOLEAN;
-    edges_sql TEXT;
 
 begin
-    has_reverse =_pgr_parameter_check('dijkstra', sql, false);
-    edges_sql = sql;
-    IF (has_reverse != has_rcost) THEN
-        IF (has_reverse) THEN
-            edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
-        ELSE
-            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
-        END IF;
-    END IF;
-
-
 
     -- loop through each pair of vids and compute the path
     for i in 1 .. array_length(vids, 1)-1 loop
         seq2 := seq2 + 1;
         for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from pgr_trsp(edges_sql, vids[i], vids[i+1], directed, has_rcost, turn_restrict_sql) as a loop
+                    from _pgr_trsp(sql, vids[i], vids[i+1], directed, has_rcost, turn_restrict_sql) as a loop
             -- filter out the individual path ends except the last one
             -- we might not want to do this so we can know where the via points are in the path result
             -- but this needs more thought
@@ -115,13 +102,20 @@ declare
 
 begin
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
-    edges_sql = sql;
+    edges_sql := sql;
     IF (has_reverse != has_rcost) THEN
         IF (has_reverse) THEN
             edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
         ELSE
             raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
         END IF;
+    END IF;
+
+    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
+        -- no restrictions then its a _pgr_withPointsVia
+        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+        FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed)
+        RETURN;
     END IF;
 
     if array_length(eids, 1) != array_length(pcts, 1) then

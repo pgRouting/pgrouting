@@ -157,6 +157,9 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
             &result_tuples,
             &result_count);
 
+        free(source_vertices);
+        free(sink_vertices);
+
         /*                                                                    */
         /**********************************************************************/
 
@@ -175,8 +178,8 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
+    call_cntr = (uint32_t)funcctx->call_cntr;
+    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t *) funcctx->user_fctx;
 

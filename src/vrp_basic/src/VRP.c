@@ -798,8 +798,8 @@ vrp(PG_FUNCTION_ARGS) {
     /* stuff done on every call of the function */
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
+    call_cntr = (uint32_t)funcctx->call_cntr;
+    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
 
     path = (vrp_result_element_t *)funcctx->user_fctx;

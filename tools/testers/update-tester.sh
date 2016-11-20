@@ -39,6 +39,7 @@ echo -
 #  bash tools/testers/update-tester.sh
 #
 
+CURRENT=2.3.1
 
 function update_test {
 set -e
@@ -55,7 +56,7 @@ then
     echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql found"
 else
     echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
-    exit 1
+#    exit 1
 fi
 
 createdb  ___test_update
@@ -71,43 +72,35 @@ dropdb   ___test_update
 } 
 
 #------------------------------------
+### updates from 2.3.0
+#------------------------------------
+
+update_test 2.3.0 $CURRENT
+
+#------------------------------------
 ### updates from 2.2.x
 #------------------------------------
 
-update_test 2.2.4 2.3.0
-update_test 2.2.3 2.3.0
-update_test 2.2.2 2.3.0
-update_test 2.2.1 2.3.0
-update_test 2.2.0 2.3.0
+update_test 2.2.4 $CURRENT
+update_test 2.2.3 $CURRENT
+update_test 2.2.2 $CURRENT
+update_test 2.2.1 $CURRENT
+update_test 2.2.0 $CURRENT
 
 
 #------------------------------------
 ### updates from 2.1.x
 #------------------------------------
 
-update_test 2.1.0 2.3.0
+update_test 2.1.0 $CURRENT
 
 #------------------------------------
 ### updates from 2.0.x
 #------------------------------------
 
-echo ------------------------------------
-echo ------------------------------------
-echo Updating from 2.0.0  to 2.3.0
-echo ------------------------------------
+update_test 2.0.0 $CURRENT
 
-createdb  ___test_update
-psql  ___test_update  <<EOF
-create extension postgis;
-create extension pgrouting with version '2.0.0';
-select pgr_version();
-alter extension pgrouting update to '2.1.0';
-select pgr_version();
-alter extension pgrouting update to '2.3.0';
-select pgr_version();
-EOF
-dropdb   ___test_update
-
-# CAN NOT BE Update test from 2.0.1  to 2.3.0
+echo Reached end of test, all tests passed
+# CAN NOT BE Update test from 2.0.1  to $CURRENT;
 
 

@@ -28,24 +28,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --     - For now just checking with static data, so the query is similar to shortest_paths.
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
-    sql text, 
-    source_vid integer, 
-    target_vid integer, 
-    directed boolean, 
-    has_reverse_cost boolean, 
+    sql text,
+    source_vid integer,
+    target_vid integer,
+    directed boolean,
+    has_reverse_cost boolean,
     turn_restrict_sql text DEFAULT null)
 RETURNS SETOF pgr_costResult
 AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'turn_restrict_shortest_path_vertex'
 LANGUAGE 'c' IMMUTABLE;
 
-CREATE OR REPLACE FUNCTION pgr_trsp(
-    sql text, 
-    source_eid integer, 
+CREATE OR REPLACE FUNCTION _pgr_trsp(
+    sql text,
+    source_eid integer,
     source_pos float8,
     target_eid integer,
     target_pos float8,
-    directed boolean, 
-    has_reverse_cost boolean, 
+    directed boolean,
+    has_reverse_cost boolean,
     turn_restrict_sql text DEFAULT null)
 RETURNS SETOF pgr_costResult
 AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'turn_restrict_shortest_path_edge'
@@ -70,7 +70,7 @@ CREATE OR REPLACE FUNCTION pgr_trsp(
     directed BOOLEAN,
     has_rcost BOOLEAN,
     restrictions_sql TEXT DEFAULT NULL)
-RETURNS SETOF pgr_costResult AS 
+RETURNS SETOF pgr_costResult AS
 $BODY$
 DECLARE
 has_reverse BOOLEAN;
@@ -83,7 +83,7 @@ BEGIN
     IF (has_reverse != has_rcost) THEN  -- user contradiction
         IF (has_reverse) THEN  -- it has reverse_cost but user don't want it.
             -- to be on the safe side because it reads the data wrong, sending only postitive values
-            new_sql := 
+            new_sql :=
             'WITH old_sql AS (' || edges_sql || ')' ||
             '   SELECT id, source, target, cost FROM old_sql';
         ELSE -- it does not have reverse_cost but user wants it
@@ -101,8 +101,6 @@ BEGIN
 
     RETURN query SELECT * FROM _pgr_trsp(new_sql, start_vid, end_vid, directed, has_rcost, restrictions_sql);
     RETURN;
-
-
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -124,7 +122,7 @@ CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
     directed BOOLEAN,
     has_rcost BOOLEAN,
     restrictions_sql TEXT DEFAULT NULL)
-RETURNS SETOF pgr_costResult3 AS 
+RETURNS SETOF pgr_costResult3 AS
 $BODY$
 DECLARE
 has_reverse BOOLEAN;
@@ -136,7 +134,7 @@ BEGIN
     new_sql := edges_sql;
     IF (has_reverse != has_rcost) THEN  -- user contradiction
         IF (has_reverse) THEN  -- it has reverse_cost but user don't want it.
-            new_sql := 
+            new_sql :=
                'WITH old_sql AS (' || edges_sql || ')' ||
                 '   SELECT id, source, target, cost FROM old_sql';
         ELSE -- it does not have reverse_cost but user wants it
@@ -151,10 +149,64 @@ BEGIN
             FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
         RETURN;
     END IF;
-   
+
 
     -- make the call without contradiction from part of the user
-    RETURN query SELECT * FROM _pgr_trspViaVertices(new_sql, via_vids, directed, has_rcost, restrictions_sql);
+    RETURN query SELECT * FROM _pgr_trspViaVertices(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql);
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
+
+CREATE OR REPLACE FUNCTION pgr_trsp(
+    sql text,
+    source_eid integer,
+    source_pos float8,
+    target_eid integer,
+    target_pos float8,
+    directed boolean,
+    has_reverse_cost boolean,
+    turn_restrict_sql text DEFAULT null)
+RETURNS SETOF pgr_costResult AS
+$BODY$
+DECLARE
+has_reverse BOOLEAN;
+new_sql TEXT;
+trsp_sql TEXT;
+BEGIN
+    has_reverse =_pgr_parameter_check('dijkstra', sql, false);
+
+    new_sql := sql;
+    IF (has_reverse != has_reverse_cost) THEN  -- user contradiction
+        IF (has_reverse) THEN
+            -- it has reverse_cost but user don't want it.
+            -- to be on the safe side because it reads the data wrong, sending only postitive values
+            new_sql :=
+            'WITH old_sql AS (' || sql || ')' ||
+            '   SELECT id, source, target, cost FROM old_sql';
+        ELSE -- it does not have reverse_cost but user wants it
+            RAISE EXCEPTION 'Error, reverse_cost is used, but query did''t return ''reverse_cost'' column'
+            USING ERRCODE := 'XX000';
+        END IF;
+    END IF;
+
+    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
+        -- no restrictions then its a with points
+        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+        FROM pgr_withpoints(new_sql,
+            '(SELECT 1 as pid, ' || source_eid || 'as edge_id, ' || source_pos || '::float8 as fraction)'
+            || ' UNION '
+            || '(SELECT 2, ' || target_eid || ', ' || target_pos || ')' ::TEXT,
+            -1, -2, directed)
+        WHERE node != -2;
+        RETURN;
+    END IF;
+
+    RETURN query SELECT * FROM _pgr_trsp(new_sql, source_eid, source_pos, target_eid, target_pos, directed, has_reverse_cost, turn_restrict_sql);
+    RETURN;
+
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

@@ -6,7 +6,7 @@
 
 ### Branches
 
-* The *master* branch has the latest minor release. (2.3.0)
+* The *master* branch has the latest minor release. (2.3.1)
 * The *develop* branch has the next minor release. (2.4.0)
 
 For the complete list of releases go to:
@@ -51,10 +51,11 @@ https://github.com/pgRouting/pgrouting/releases
 	</tr>
 </table>
 
-* travis: Postgis 2.2 for  Postgres 9.1, 9.2, 9.3, 9.4, 9.5
+* travis: Postgis 2.3.0 for  Postgres 9.4, 9.5, 9.6
   * precise
-* jenkins: g++ 4.8 on 32 & 64 bits for Postgis 2.3.0dev and Postgres 9.4, 9.5, 9.6
-* appveyor: vs1013 Postgis 2.2 Postgres 9.4
+  * trusty
+* jenkins: g++ 4.8 on 32 & 64 bits for Postgis 2.3.0 and Postgres 9.4, 9.5, 9.6
+* appveyor: vs1013 Postgis 2.3.0 Postgres 9.4
 
 
 
