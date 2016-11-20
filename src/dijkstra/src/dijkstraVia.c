@@ -175,8 +175,8 @@ dijkstraVia(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
+    call_cntr = (uint32_t)funcctx->call_cntr;
+    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (Routes_t*) funcctx->user_fctx;
 

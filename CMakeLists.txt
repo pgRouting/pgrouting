@@ -22,7 +22,7 @@ if(NOT CMAKE_BUILD_TYPE)
             "Choose the type of build, options are: None Debug Release RelWithDebInfo
             MinSizeRel."
             FORCE)
-        message("Running as: Debug")
+        message("Running as: Release")
     else()
         set(CMAKE_BUILD_TYPE Release CACHE STRING
             "Choose the type of build, options are: None Debug Release RelWithDebInfo
@@ -177,7 +177,7 @@ endif()
 # PGROUTING version number.
 set(PGROUTING_VERSION_MAJOR "2")
 set(PGROUTING_VERSION_MINOR "3")
-set(PGROUTING_VERSION_PATCH "0")
+set(PGROUTING_VERSION_PATCH "1")
 
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
@@ -187,7 +187,7 @@ set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-set(PGROUTING_GIT_TAG "pgrouting-2.3.0")
+set(PGROUTING_GIT_TAG "pgrouting-2.3.1")
 
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
@@ -400,7 +400,7 @@ endif()
 
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Wall -Wconversion -pedantic -fmax-errors=10  -Wmissing-prototypes")
 #TODO remove the optimizer flag when pgr_bdijkstra gets fixed
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -O1 -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -O1 -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra -Wdouble-promotion -Werror")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
