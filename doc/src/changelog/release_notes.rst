@@ -39,7 +39,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.1 <h
 
 .. rubric:: Bug Fixes
 
-* Fixed found leaks on proposed max_flow functions
+* Leaks on proposed max_flow functions
 * Regression error on pgr_trsp
 * Types discrepancy on pgr_createVerticesTable
 
