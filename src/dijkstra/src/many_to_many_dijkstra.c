@@ -65,13 +65,27 @@ static
 void
 process(
         char* edges_sql,
-        int64_t *start_vidsArr, size_t size_start_vidsArr,
-        int64_t *end_vidsArr, size_t size_end_vidsArr,
+        ArrayType *starts,
+        ArrayType *ends,
         bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
+
     pgr_SPI_connect();
+
+    PGR_DBG("Initializing arrays");
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
+
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
@@ -82,6 +96,8 @@ process(
         PGR_DBG("No edges found");
         (*result_count) = 0;
         (*result_tuples) = NULL;
+        if (end_vidsArr) pfree(end_vidsArr);
+        if (start_vidsArr) pfree(start_vidsArr);
         pgr_SPI_finish();
         return;
     }
@@ -107,8 +123,11 @@ process(
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 
+    PGR_DBG("Cleaning arrays");
+    if (end_vidsArr) pfree(end_vidsArr);
+    if (start_vidsArr) pfree(start_vidsArr);
+    if (edges) pfree(edges);
     free(err_msg);
-    pfree(edges);
     pgr_SPI_finish();
 }
 /*                                                                           */
@@ -141,32 +160,16 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         // end_vids anyarray,
         // directed boolean default true,
 
-        PGR_DBG("Initializing arrays");
-        int64_t* start_vidsArr = NULL;
-        size_t size_start_vidsArr = 0;
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
-
-        int64_t* end_vidsArr = NULL;
-        size_t size_end_vidsArr = 0;
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
-
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                start_vidsArr, size_start_vidsArr,
-                end_vidsArr, size_end_vidsArr,
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
-        PGR_DBG("Cleaning arrays");
-        pfree(end_vidsArr);
-        pfree(start_vidsArr);
         /*                                                                   */
         /*********************************************************************/
 

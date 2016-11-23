@@ -63,14 +63,19 @@ PGDLLEXPORT Datum dijkstraVia(PG_FUNCTION_ARGS);
 static
 void
 process( char* edges_sql,
-        int64_t *via_vidsArr,
-        size_t size_via_vidsArr,
+        ArrayType *vias, 
         bool directed,
         bool strict,
         bool U_turn_on_edge,
         Routes_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+
+    PGR_DBG("Initializing arrays");
+    int64_t* via_vidsArr = NULL;
+    size_t size_via_vidsArr = 0;
+    via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, vias);
+    PGR_DBG("Via VertexArr size %ld ", size_via_vidsArr);
 
     PGR_DBG("Load data");
     pgr_edge_t *edges;
@@ -83,6 +88,8 @@ process( char* edges_sql,
         PGR_DBG("No edges found");
         (*result_count) = 0;
         (*result_tuples) = NULL;
+        if (via_vidsArr) pfree(via_vidsArr);
+
         pgr_SPI_finish();
         return;
     }
@@ -112,7 +119,8 @@ process( char* edges_sql,
     PGR_DBG("Returned message = %s\n", err_msg);
 
     free(err_msg);
-    pfree(edges);
+    if (edges) pfree(edges);
+    if (via_vidsArr) pfree(via_vidsArr);
     pgr_SPI_finish();
 }
 /*                                                                             */
@@ -147,24 +155,17 @@ dijkstraVia(PG_FUNCTION_ARGS) {
          *   U_turn_on_edge boolean default false,
          *******************************************************************************/
 
-        PGR_DBG("Initializing arrays");
-        int64_t* via_vidsArr = NULL;
-        size_t size_via_vidsArr = 0;
-        via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("Via VertexArr size %ld ", size_via_vidsArr);
 
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                via_vidsArr, size_via_vidsArr,
+                PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_BOOL(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
-        PGR_DBG("Cleaning arrays");
-        pfree(via_vidsArr);
         /*                                                                             */
         /*******************************************************************************/
 

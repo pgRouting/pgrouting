@@ -70,14 +70,20 @@ static
 void
 process(
         char* edges_sql,
-        int64_t *start_vidsArr,
-        size_t size_start_vidsArr,
+        ArrayType *starts,
         int64_t end_vid,
         bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+
+    PGR_DBG("Initializing arrays");
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
@@ -88,6 +94,7 @@ process(
         PGR_DBG("No edges found");
         (*result_count) = 0;
         (*result_tuples) = NULL;
+        if (start_vidsArr) pfree(start_vidsArr);
         pgr_SPI_finish();
         return;
     }
@@ -114,6 +121,8 @@ process(
     PGR_DBG("Returned message = %s\n", err_msg);
 
     free(err_msg);
+    if (start_vidsArr) pfree(start_vidsArr);
+
     pfree(edges);
     pgr_SPI_finish();
 }
@@ -147,25 +156,15 @@ many_to_one_dijkstra(PG_FUNCTION_ARGS) {
         // end_vid BIGINT,
         // directed BOOLEAN default true,
 
-        PGR_DBG("Initializing arrays");
-        int64_t* start_vidsArr = NULL;
-        size_t size_start_vidsArr = 0;
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
-
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                start_vidsArr, size_start_vidsArr,
+                PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_INT64(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
-        PGR_DBG("Cleaning arrays");
-        pfree(start_vidsArr);
         /*                                                                   */
         /*********************************************************************/
 

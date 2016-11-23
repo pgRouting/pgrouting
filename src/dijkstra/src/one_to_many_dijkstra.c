@@ -70,13 +70,19 @@ void
 process(
         char* edges_sql,
         int64_t start_vid,
-        int64_t *end_vidsArr,
-        size_t size_end_vidsArr,
+        ArrayType *ends,
         bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
+
+    PGR_DBG("Initializing arrays");
+    int64_t* end_vidsArr = NULL;;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    PGR_DBG("targetsArr size %ld ", size_end_vidsArr);
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
@@ -85,6 +91,7 @@ process(
 
     if (total_tuples == 0) {
         PGR_DBG("No edges found");
+        if (end_vidsArr) pfree(end_vidsArr);
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
@@ -113,7 +120,8 @@ process(
     PGR_DBG("Returned message = %s\n", err_msg);
 
     free(err_msg);
-    pfree(edges);
+    if (edges) pfree(edges);
+    if (end_vidsArr) pfree(end_vidsArr);
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -146,25 +154,16 @@ one_to_many_dijkstra(PG_FUNCTION_ARGS) {
         // directed boolean default true,
         // only_cost boolean default false
 
-        PGR_DBG("Initializing arrays");
-        int64_t* end_vidsArr = NULL;;
-        size_t size_end_vidsArr = 0;
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("targetsArr size %ld ", size_end_vidsArr);
-
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
-                end_vidsArr, size_end_vidsArr,
+                PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
-        PGR_DBG("Cleaning arrays");
-        pfree(end_vidsArr);
         /*                                                                    */
         /**********************************************************************/
 

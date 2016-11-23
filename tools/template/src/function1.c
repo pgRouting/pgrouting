@@ -86,11 +86,41 @@ process(
         char* edges_sql,
         int64_t start_vid,
         int64_t end_vid,
+#if 0
+        /*
+         * handling arrays example
+         */
+        ArrayType *starts,
+        ArrayType *ends,
+#endif
         bool directed,
         bool only_cost,
         MY_RETURN_VALUE_TYPE **result_tuples,
         size_t *result_count) {
-    pgr_SPI_connect(); // error handling wrapper for https://www.postgresql.org/docs/current/static/spi-spi-connect.html
+
+    /* https://www.postgresql.org/docs/current/static/spi-spi-connect.html */
+    pgr_SPI_connect();
+
+
+#if 0
+    /*
+     *  handling arrays example
+     */
+
+    PGR_DBG("Initializing arrays");
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
+
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
+#endif
+
     (*result_tuples) = NULL;
     (*result_count) = 0;
 
@@ -99,7 +129,8 @@ process(
     size_t total_edges = 0;
 
     if (start_vid == end_vid) {
-        pgr_SPI_finish(); // error handling wrapper for https://www.postgresql.org/docs/current/static/spi-spi-finish.html
+        /* https://www.postgresql.org/docs/current/static/spi-spi-finish.html */
+        pgr_SPI_finish();
         return;
     }
 
@@ -122,6 +153,15 @@ process(
             total_edges,
             start_vid,
             end_vid,
+#if 0
+    /*
+     *  handling arrays example
+     */
+
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
+#endif
+
             directed,
             only_cost,
             result_tuples,
@@ -138,7 +178,16 @@ process(
     }
     pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
-    pfree(edges);
+    if (edges) pfree(edges);
+#if 0
+    /*
+     *  handling arrays example
+     */
+
+    if (end_vidsArr) pfree(end_vidsArr);
+    if (start_vidsArr) pfree(start_vidsArr);
+#endif
+
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -174,10 +223,19 @@ PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
+#if 0
+                /*
+                 *  handling arrays example
+                 */
+
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_ARRAYTYPE_P(2),
+#endif
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
+
 
         /*                                                                    */
         /**********************************************************************/
