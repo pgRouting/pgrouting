@@ -103,13 +103,8 @@ Dmatrix::get_id(size_t id) const {
  */
 Dmatrix::Dmatrix(const std::vector < Matrix_cell_t > &data_costs) {
     set_ids(data_costs);
-    costs.resize(ids.size());
-    for (auto &row : costs) {
-        row.resize(ids.size());
-        for (auto &cell : row) {
-            cell = std::numeric_limits<double>::max();
-        }
-    }
+    costs.resize(ids.size(), std::vector<double>(ids.size(), std::numeric_limits<double>::max()));
+
     for (const auto &data : data_costs) {
         costs[get_index(data.from_vid)][get_index(data.to_vid)] = data.cost;
     }
