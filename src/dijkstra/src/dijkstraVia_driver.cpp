@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./dijkstraVia_driver.h"
 #include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 
 
@@ -181,6 +182,13 @@ do_pgr_dijkstraVia(
     std::ostringstream notice;
 
     try {
+        pgassert(total_edges != 0);
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque< Path >paths;
@@ -219,7 +227,7 @@ do_pgr_dijkstraVia(
             (*return_count) = 0;
             notice <<
                 "No paths found";
-            *log_msg = strdup(notice.str().c_str());
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
