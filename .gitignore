@@ -1,6 +1,7 @@
 # default build directory
 build
 fix_typos
+code_linter
 
 .DS_Store
 .vagrant
