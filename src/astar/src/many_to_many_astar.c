@@ -33,32 +33,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
 #include "utils/array.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
+#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./astarManyToMany_driver.h"
 
-PGDLLEXPORT Datum astarOneToMany(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(astarOneToMany);
+#include "./astar_many_to_many_driver.h"
+
+PGDLLEXPORT Datum astarManyToMany(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(astarManyToMany);
+
 
 static
 void
 process(char* edges_sql,
-        int64_t start_vid,
+        ArrayType *starts,
         ArrayType *ends,
         bool directed,
         int heuristic,
@@ -69,10 +68,18 @@ process(char* edges_sql,
         size_t *result_count) {
     check_parameters(heuristic, factor, epsilon);
 
-    size_t size_end_vidsArr = 0;
-    int64_t* end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends);
-
     pgr_SPI_connect();
+
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
+
 
     Pgr_edge_xy_t *edges = NULL;
     size_t total_edges = 0;
@@ -88,13 +95,13 @@ process(char* edges_sql,
     }
 
     PGR_DBG("Starting processing");
-    char* log_msg = NULL;
-    char* notice_msg = NULL;
-    char* err_msg = NULL;
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
     clock_t start_t = clock();
     do_pgr_astarManyToMany(
             edges, total_edges,
-            &start_vid, 1,
+            start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
             directed,
             heuristic,
@@ -102,17 +109,15 @@ process(char* edges_sql,
             epsilon,
             only_cost,
             true,
-            result_tuples,
-            result_count,
+            result_tuples, result_count,
             &log_msg,
             &notice_msg,
-            &err_msg
-            );
+            &err_msg);
 
     if (only_cost) {
-        time_msg("processing pgr_astarCost(one to many)", start_t, clock());
+        time_msg("processing pgr_astarCost(many to many)", start_t, clock());
     } else {
-        time_msg("processing pgr_astar(one to many)", start_t, clock());
+        time_msg("processing pgr_astar(many to many)", start_t, clock());
     }
 
 
@@ -128,18 +133,21 @@ process(char* edges_sql,
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
     if (edges) pfree(edges);
+    if (start_vidsArr) pfree(start_vidsArr);
     if (end_vidsArr) pfree(end_vidsArr);
 
     pgr_SPI_finish();
 }
 
 PGDLLEXPORT Datum
-astarOneToMany(PG_FUNCTION_ARGS) {
+astarManyToMany(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
-    General_path_element_t  *result_tuples = 0;
+    /**********************************************************************/
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
+    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -147,21 +155,21 @@ astarOneToMany(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /*****************************************************************
-          edges_sql TEXT,
-          start_vid BIGINT,
-          end_vids ARRAY[ANY_INTEGER], -- anyarray
-          directed BOOLEAN DEFAULT true,
-          heuristic INTEGER DEFAULT 0,
-          factor FLOAT DEFAULT 1.0,
-          epsilon FLOAT DEFAULT 1.0,
+        /**********************************************************************/
+        /*
+           edges_sql TEXT,
+           start_vids ARRAY[ANY_INTEGER], -- anyarray
+           end_vids ARRAY[ANY_INTEGER], -- anyarray
+           directed BOOLEAN DEFAULT true,
+           heuristic INTEGER DEFAULT 0,
+           factor FLOAT DEFAULT 1.0,
+           epsilon FLOAT DEFAULT 1.0,
 
-         ****************************************************************/
-
+         **********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
+                PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_INT32(4),
@@ -172,13 +180,12 @@ astarOneToMany(PG_FUNCTION_ARGS) {
                 &result_count);
 
 
-
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
-
+        funcctx->max_calls = (uint32_t) result_count;
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -203,30 +210,33 @@ astarOneToMany(PG_FUNCTION_ARGS) {
         /*********************************************************************
           OUT seq INTEGER,
           OUT path_seq INTEGER,
+          OUT start_vid BIGINT,
           OUT end_vid BIGINT,
           OUT node BIGINT,
           OUT edge BIGINT,
           OUT cost FLOAT,
           OUT agg_cost FLOAT
-         *********************************************************************/
+         **********************************************************************/
 
 
-        values = palloc(7 * sizeof(Datum));
-        nulls = palloc(7 * sizeof(bool));
+        size_t numb = 8;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 7; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -236,4 +246,3 @@ astarOneToMany(PG_FUNCTION_ARGS) {
         SRF_RETURN_DONE(funcctx);
     }
 }
-

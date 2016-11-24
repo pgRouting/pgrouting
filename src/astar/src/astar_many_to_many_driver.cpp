@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <deque>
 #include <algorithm>
 #include <vector>
-#include "./astarManyToMany_driver.h"
+#include "./astar_many_to_many_driver.h"
 
 
 #include "./../../common/src/pgr_types.h"

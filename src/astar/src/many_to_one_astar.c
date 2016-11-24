@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
+Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Mail: 
 
 ------
 
@@ -33,34 +33,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
+#include "./../../common/src/arrays_input.h"
 
-#include "./astarManyToMany_driver.h"
+#include "./astar_many_to_many_driver.h"
 
-PGDLLEXPORT Datum astarOneToOne(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(astarOneToOne);
+PGDLLEXPORT Datum astarManyToOne(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(astarManyToOne);
 
 
 static
 void
 process(char* edges_sql,
-        int64_t start_vid,
+        ArrayType *starts,
         int64_t end_vid,
         bool directed,
         int heuristic,
@@ -73,12 +70,13 @@ process(char* edges_sql,
 
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
+    size_t size_start_vidsArr = 0;
+    int64_t* start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts);
+
     Pgr_edge_xy_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges_xy(edges_sql, &edges, &total_edges);
-    PGR_DBG("Total %ld edges in query:", total_edges);
+    pgr_get_edges_xy_reversed(edges_sql, &edges, &total_edges);
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
@@ -95,14 +93,14 @@ process(char* edges_sql,
     clock_t start_t = clock();
     do_pgr_astarManyToMany(
             edges, total_edges,
-            &start_vid, 1,
             &end_vid, 1,
+            start_vidsArr, size_start_vidsArr,
             directed,
             heuristic,
             factor,
             epsilon,
             only_cost,
-            true,
+            false, 
             result_tuples,
             result_count,
             &log_msg,
@@ -110,15 +108,16 @@ process(char* edges_sql,
             &err_msg);
 
     if (only_cost) {
-        time_msg("processing pgr_astarCost(one to one)", start_t, clock());
+        time_msg("processing pgr_astarCost(one to many)", start_t, clock());
     } else {
-        time_msg("processing pgr_astar(one to one)", start_t, clock());
+        time_msg("processing pgr_astar(one to many)", start_t, clock());
     }
+
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
-        (*result_count) = 0;
         (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
 
     pgr_global_report(log_msg, notice_msg, err_msg);
@@ -127,13 +126,13 @@ process(char* edges_sql,
     if (notice_msg) pfree(notice_msg);
     if (err_msg) pfree(err_msg);
     if (edges) pfree(edges);
+    if (start_vidsArr) pfree(start_vidsArr);
 
     pgr_SPI_finish();
-
 }
 
 PGDLLEXPORT Datum
-astarOneToOne(PG_FUNCTION_ARGS) {
+astarManyToOne(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc           tuple_desc;
 
@@ -149,7 +148,7 @@ astarOneToOne(PG_FUNCTION_ARGS) {
         /**********************************************************************
           edges_sql TEXT,
           start_vid BIGINT,
-          end_vid BIGINT,
+          end_vids ARRAY[ANY_INTEGER], -- anyarray
           directed BOOLEAN DEFAULT true,
           heuristic INTEGER DEFAULT 0,
           factor FLOAT DEFAULT 1.0,
@@ -157,10 +156,9 @@ astarOneToOne(PG_FUNCTION_ARGS) {
 
          **********************************************************************/
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
+                PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_INT64(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_INT32(4),
@@ -169,6 +167,7 @@ astarOneToOne(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(7),
                 &result_tuples,
                 &result_count);
+
 
 
 #if PGSQL_VERSION > 95
@@ -197,30 +196,33 @@ astarOneToOne(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /**********************************************************************
+        /*********************************************************************
           OUT seq INTEGER,
           OUT path_seq INTEGER,
+          OUT end_vid BIGINT,
           OUT node BIGINT,
           OUT edge BIGINT,
           OUT cost FLOAT,
           OUT agg_cost FLOAT
-         *********************************************************************/
+         **********************************************************************/
 
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+        values = palloc(7 * sizeof(Datum));
+        nulls = palloc(7 * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < 7; ++i) {
             nulls[i] = false;
         }
 
+
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
