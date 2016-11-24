@@ -26,9 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_ASTAR_SRC_ASTARMANYTOMANY_DRIVER_H_
-#define SRC_ASTAR_SRC_ASTARMANYTOMANY_DRIVER_H_
-
+#ifndef SRC_ASTAR_SRC_ASTAR_MANY_TO_MANY_DRIVER_H_
+#define SRC_ASTAR_SRC_ASTAR_MANY_TO_MANY_DRIVER_H_
 #pragma once
 
 #include "./../../common/src/pgr_types.h"
@@ -70,4 +69,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SRC_ASTAR_SRC_ASTARMANYTOMANY_DRIVER_H_
+#endif  // SRC_ASTAR_SRC_ASTAR_MANY_TO_MANY_DRIVER_H_

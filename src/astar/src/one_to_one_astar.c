@@ -125,7 +125,6 @@ process(char* edges_sql,
     if (edges) pfree(edges);
 
     pgr_SPI_finish();
-
 }
 
 PGDLLEXPORT Datum
@@ -173,7 +172,8 @@ astarOneToOne(PG_FUNCTION_ARGS) {
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "

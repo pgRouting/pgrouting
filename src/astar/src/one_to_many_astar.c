@@ -103,8 +103,7 @@ process(char* edges_sql,
             result_count,
             &log_msg,
             &notice_msg,
-            &err_msg
-            );
+            &err_msg);
 
     if (only_cost) {
         time_msg("processing pgr_astarCost(one to many)", start_t, clock());
@@ -177,7 +176,8 @@ astarOneToMany(PG_FUNCTION_ARGS) {
 #endif
 
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
