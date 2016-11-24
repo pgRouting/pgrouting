@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_HPP_
+#define SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_HPP_
 #pragma once
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
@@ -590,3 +592,4 @@ Pgr_dijkstra< G >::dijkstra_1_to_many(
     return found;
 }
 
+#endif  // SRC_DIJKSTRA_SRC_PGR_DIJKSTRA_HPP_

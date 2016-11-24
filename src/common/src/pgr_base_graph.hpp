@@ -121,7 +121,7 @@ Basic_edge >   // the edge class
 
 
 
-Eample Usage:
+Example Usage:
 =============
 
 For this example we will use:

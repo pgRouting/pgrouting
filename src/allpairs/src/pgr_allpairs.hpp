@@ -52,7 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./../../common/src/pgr_types.h"
-//TODO dont keep it here
+//TODO don't keep it here
 #include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
@@ -274,7 +274,7 @@ Pgr_allpairs< G >::count_rows(
     return result_tuple_count;
 }
 
-// TODO dont keep it here for postgres
+// TODO don't keep it here for postgres
 template < class G >
 void
 Pgr_allpairs< G >::make_result(
