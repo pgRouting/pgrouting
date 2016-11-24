@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-#include "fmgr.h"
+#include <fmgr.h>
 
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/e_report.h"
@@ -68,7 +68,6 @@ process(
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-
     pgr_SPI_connect();
 
     int64_t* start_vidsArr = NULL;
@@ -201,6 +200,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
         // OUT seq INTEGER,
@@ -221,14 +221,14 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

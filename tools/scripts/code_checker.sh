@@ -35,12 +35,27 @@ if ! test -d code_linter; then
     git clone https://github.com/google/styleguide
     cd styleguide
     git checkout gh-pages
-    cd ..
+    cd ../..
 fi
 
 DIRECTORY=$1
 if test -z "$DIRECTORY"; then
-    python code_linter/styleguide/cpplint/cpplint.py src/*/src/*
+    echo --------------------
+    echo ------   *.h  ------
+    echo --------------------
+    python code_linter/styleguide/cpplint/cpplint.py src/*/src/*.h
+    echo --------------------
+    echo ------ *.hpp  ------
+    echo --------------------
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/*/src/*.hpp
+    echo --------------------
+    echo ------   *.c  ------
+    echo --------------------
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=c src/*/src/*.c
+    echo --------------------
+    echo ------ *.cpp  ------
+    echo --------------------
+    python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/*/src/*.cpp
 else
     echo --------------------
     echo ------   *.h  ------
@@ -53,7 +68,7 @@ else
     echo --------------------
     echo ------   *.c  ------
     echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=c src/$DIRECTORY/src/*.c
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/$DIRECTORY/src/*.c
     echo --------------------
     echo ------ *.cpp  ------
     echo --------------------

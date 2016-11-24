@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <sstream>
 #include <deque>
 #include <vector>
+#include <algorithm>
 #include "./pgr_dijkstra.hpp"
 #include "./many_to_many_dijkstra_driver.h"
 
@@ -119,12 +120,18 @@ do_pgr_many_to_many_dijkstra(
             log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost, normal);
+            paths = pgr_dijkstra(
+                    digraph,
+                    start_vertices, end_vertices,
+                    only_cost, normal);
         } else {
             log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost, normal);
+            paths = pgr_dijkstra(
+                    undigraph,
+                    start_vertices, end_vertices,
+                    only_cost, normal);
         }
 
         size_t count(0);
@@ -134,7 +141,7 @@ do_pgr_many_to_many_dijkstra(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             notice <<
-                "No paths found between any Starting and any of the Ending vertices";
+                "No paths found";
             *log_msg = pgr_msg(notice.str().c_str());
             return;
         }

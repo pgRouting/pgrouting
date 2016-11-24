@@ -37,8 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./dijkstraVia_driver.h"
 #include "./../../common/src/pgr_alloc.hpp"
-
-
 #include "./../../common/src/pgr_types.h"
 
 
@@ -68,18 +66,25 @@ pgr_dijkstraViaVertex(
 
         // Delete U Turn edges only valid for paths that are not the first path
         if (!U_turn_on_edge && i > 1) {
-            // we can only delete if there is was a path, that is at least one edge size
+            /*
+             * Can only delete if there was a path,
+             * that is at least one edge size
+             */
             if (path.size() > 1) {
-                // Delete from the graph the last edge if its outgoing also
-                // edge to be removed = second to last edge path[i].edge;
+                /*
+                 * Delete from the graph the last edge if its outgoing also
+                 * edge to be removed = second to last edge path[i].edge;
+                 */
                 int64_t edge_to_be_removed = path[path.size() - 2].edge;
                 int64_t last_vertex_of_path = prev_vertex;
 
                 // and the current vertex is not a dead end
                 if (graph.out_degree(last_vertex_of_path) > 1) {
-                log << "\ndeparting from " << last_vertex_of_path
-                    << " deleting edge " << edge_to_be_removed << "\n";
-                    graph.disconnect_out_going_edge(last_vertex_of_path, edge_to_be_removed);
+                    log << "\ndeparting from " << last_vertex_of_path
+                        << " deleting edge " << edge_to_be_removed << "\n";
+                    graph.disconnect_out_going_edge(
+                            last_vertex_of_path,
+                            edge_to_be_removed);
                 }
             }
         }
@@ -94,7 +99,8 @@ pgr_dijkstraViaVertex(
                  *  no path was found with the deleted edge
                  *  try with the edge back in the graph
                  */
-                log << "\n was empty so again from " << prev_vertex << " to " << vertex;
+                log << "\nEmpty so again from "
+                    << prev_vertex << " to " << vertex;
                 path = pgr_dijkstra(graph, prev_vertex, vertex);
             }
         }
@@ -158,7 +164,6 @@ get_route(
     return sequence;
 }
 
-// CREATE OR REPLACE FUNCTION pgr_dijkstraVia(sql text, vertices anyarray, directed boolean default true,
 void
 do_pgr_dijkstraVia(
         pgr_edge_t* data_edges,    size_t total_edges,
@@ -171,7 +176,6 @@ do_pgr_dijkstraVia(
         char** log_msg,
         char** notice_msg,
         char** err_msg) {
-
     std::ostringstream log;
     std::ostringstream err;
     std::ostringstream notice;
@@ -181,18 +185,31 @@ do_pgr_dijkstraVia(
 
         std::deque< Path >paths;
         log << "\nInserting vertices into a c++ vector structure";
-        std::vector< int64_t > via_vertices(via_vidsArr, via_vidsArr + size_via_vidsArr);
+        std::vector< int64_t > via_vertices(
+                via_vidsArr, via_vidsArr + size_via_vidsArr);
 
         if (directed) {
             log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
-            pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, U_turn_on_edge, log);
+            pgr_dijkstraViaVertex(
+                    digraph,
+                    via_vertices,
+                    paths,
+                    strict,
+                    U_turn_on_edge,
+                    log);
         } else {
             log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
-            pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);
+            pgr_dijkstraViaVertex(
+                    undigraph,
+                    via_vertices,
+                    paths,
+                    strict,
+                    U_turn_on_edge,
+                    log);
         }
 
         size_t count(count_tuples(paths));
