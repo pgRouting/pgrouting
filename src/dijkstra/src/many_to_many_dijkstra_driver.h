@@ -55,11 +55,13 @@ extern "C" {
 
             General_path_element_t **return_tuples,
             size_t *return_count,
-            char ** err_msg);
 
+            char** log_msg,
+            char** notice_msg,
+            char** err_msg);
 
 #ifdef __cplusplus
-}
+    }
 #endif
 
 #endif  // SRC_DIJKSTRA_SRC_MANY_TO_MANY_DIJKSTRA_DRIVER_H_

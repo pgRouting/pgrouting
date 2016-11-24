@@ -66,7 +66,7 @@ pgr_dijkstraViaVertex(
             continue;
         }
 
-        // Delete uTurn edges only valid for paths that are not the first path
+        // Delete U Turn edges only valid for paths that are not the first path
         if (!U_turn_on_edge && i > 1) {
             // we can only delete if there is was a path, that is at least one edge size
             if (path.size() > 1) {
@@ -77,14 +77,14 @@ pgr_dijkstraViaVertex(
 
                 // and the current vertex is not a dead end
                 if (graph.out_degree(last_vertex_of_path) > 1) {
-                log << "departing from " << last_vertex_of_path
+                log << "\ndeparting from " << last_vertex_of_path
                     << " deleting edge " << edge_to_be_removed << "\n";
                     graph.disconnect_out_going_edge(last_vertex_of_path, edge_to_be_removed);
                 }
             }
         }
 
-        log << "from " << prev_vertex << " to " << vertex << "\n";
+        log << "\nfrom " << prev_vertex << " to " << vertex;
         path = pgr_dijkstra(graph, prev_vertex, vertex);
 
         if (!U_turn_on_edge && i > 1) {
@@ -94,7 +94,7 @@ pgr_dijkstraViaVertex(
                  *  no path was found with the deleted edge
                  *  try with the edge back in the graph
                  */
-                log << "WAS empty so again from " << prev_vertex << " to " << vertex << "\n";
+                log << "\n was empty so again from " << prev_vertex << " to " << vertex;
                 path = pgr_dijkstra(graph, prev_vertex, vertex);
             }
         }
@@ -158,41 +158,40 @@ get_route(
     return sequence;
 }
 
-// CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true,
+// CREATE OR REPLACE FUNCTION pgr_dijkstraVia(sql text, vertices anyarray, directed boolean default true,
 void
-do_pgr_dijkstraViaVertex(
-        pgr_edge_t  *data_edges,    size_t total_tuples,
-        int64_t  *via_vidsArr,      size_t size_via_vidsArr,
+do_pgr_dijkstraVia(
+        pgr_edge_t* data_edges,    size_t total_edges,
+        int64_t* via_vidsArr,     size_t size_via_vidsArr,
         bool directed,
         bool strict,
         bool U_turn_on_edge,
-        Routes_t **return_tuples,   size_t *return_count,
-        char ** err_msg) {
-    std::ostringstream log;
-    try {
-        if (total_tuples == 1) {
-            log << "Required: more than one tuple\n";
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            *err_msg = strdup(log.str().c_str());
-            return;
-        }
+        Routes_t** return_tuples,   size_t* return_count,
 
+        char** log_msg,
+        char** notice_msg,
+        char** err_msg) {
+
+    std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
+
+    try {
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
         std::deque< Path >paths;
-        log << "Inserting vertices into a c++ vector structure\n";
+        log << "\nInserting vertices into a c++ vector structure";
         std::vector< int64_t > via_vertices(via_vidsArr, via_vidsArr + size_via_vidsArr);
 
         if (directed) {
-            log << "Working with directed Graph\n";
+            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_tuples);
+            digraph.insert_edges(data_edges, total_edges);
             pgr_dijkstraViaVertex(digraph, via_vertices, paths, strict, U_turn_on_edge, log);
         } else {
-            log << "Working with Undirected Graph\n";
+            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_tuples);
+            undigraph.insert_edges(data_edges, total_edges);
             pgr_dijkstraViaVertex(undigraph, via_vertices, paths, strict, U_turn_on_edge, log);
         }
 
@@ -201,25 +200,43 @@ do_pgr_dijkstraViaVertex(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log <<
-                "No paths found\n";
-            *err_msg = strdup(log.str().c_str());
+            notice <<
+                "No paths found";
+            *log_msg = strdup(notice.str().c_str());
             return;
         }
 
         // get the space required to store all the paths
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
+        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (get_route(return_tuples, paths));
         (*return_tuples)[count - 1].edge = -2;
 
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
-    } catch ( ... ) {
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch(...) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
+
+

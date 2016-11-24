@@ -53,6 +53,8 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
 
     assert((*arrlen) == 0);
 
+    PGR_DBG("Initializing array");
+
     if (allow_empty && (ndim == 0 || nitems <= 0)) {
         PGR_DBG("ndim %i nitems % i", ndim, nitems);
         return (int64_t*) NULL;
@@ -117,7 +119,8 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
 
     pfree(elements);
     pfree(nulls);
-    time_msg(" reading Array", start_t, clock());
+    PGR_DBG("Array size %ld", (*arrlen));
+    time_msg("reading Array", start_t, clock());
     return c_array;
 }
 

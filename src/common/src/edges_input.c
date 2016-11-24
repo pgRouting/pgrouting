@@ -137,6 +137,7 @@ get_edges_9_columns(
         Pgr_edge_xy_t **edges,
         size_t *total_edges,
         bool normal) {
+    PGR_DBG("Load edges");
     clock_t start_t = clock();
 
     const int tuple_limit = 1000000;
@@ -229,15 +230,12 @@ get_edges_9_columns(
 
 
     if (total_tuples == 0 || valid_edges == 0) {
-        PGR_DBG("NO edges found");
-        return;
+        PGR_DBG("No edges found");
     }
 
     (*total_edges) = total_tuples;
-#if 0
-    PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*total_edges));
-#endif
-    time_msg(" reading Edges with xy", start_t, clock());
+    PGR_DBG("Finish reading %ld edges", total_tuples);
+    time_msg("reading edges", start_t, clock());
 }
 
 
@@ -250,6 +248,7 @@ get_edges_5_columns(
         size_t *totalTuples,
         bool ignore_id,
         bool normal) {
+    PGR_DBG("Load edges");
     clock_t start_t = clock();
 
     const int tuple_limit = 1000000;
@@ -315,8 +314,9 @@ get_edges_5_columns(
             size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
+#if 0
             PGR_DBG("processing %ld edge tupĺes", ntuples);
-
+#endif
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_edge(&tuple, &tupdesc, info,
@@ -333,14 +333,12 @@ get_edges_5_columns(
 
 
     if (total_tuples == 0 || valid_edges == 0) {
-        (*totalTuples) = 0;
-        PGR_DBG("NO edges");
-        return;
+        PGR_DBG("No edges found");
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*totalTuples));
-    time_msg(" reading Edges", start_t, clock());
+    PGR_DBG("Finish reading %ld edges", total_tuples);
+    time_msg("reading edges", start_t, clock());
 }
 
 static
@@ -425,16 +423,13 @@ get_edges_flow(
         }
     }
 
-
     if (total_tuples == 0 || valid_edges == 0) {
-        (*totalTuples) = 0;
-        PGR_DBG("NO edges");
-        return;
+        PGR_DBG("No edges found");
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*totalTuples));
-    time_msg(" reading Edges", start_t, clock());
+    PGR_DBG("Finish reading %ld edges", total_tuples);
+    time_msg("reading edges", start_t, clock());
 }
 
 static
@@ -522,16 +517,13 @@ get_edges_basic(
         }
     }
 
-
     if (total_tuples == 0 || valid_edges == 0) {
-        (*totalTuples) = 0;
-        PGR_DBG("NO edges");
-        return;
+        PGR_DBG("No edges found");
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Finish reading %ld edges, %ld", total_tuples, (*totalTuples));
-    time_msg(" reading Edges", start_t, clock());
+    PGR_DBG("Finish reading %ld edges", total_tuples);
+    time_msg("reading edges", start_t, clock());
 }
 
 void

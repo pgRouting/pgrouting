@@ -29,16 +29,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 pgr_notice(
-        char **notice_msg) {
+        char* notice) {
 
-    PGR_DBG("Returned notice message = %s", *notice_msg);
+    PGR_DBG("Returned notice message = %s", notice);
 
+#if 0
     char *notice = NULL;
     if (*notice_msg){
         notice = pgr_cstring2char(*notice_msg);
         free(*notice_msg);
     }
-
+#endif
     if (notice) {
         ereport(NOTICE,
                 (errmsg("%s", notice)));
@@ -47,12 +48,17 @@ pgr_notice(
 
 void
 pgr_notice2(
-        char **log_msg,
-        char **notice_msg) {
+        char* log,
+        char* notice) {
 
-    PGR_DBG("Returned log message = %s", *log_msg);
-    PGR_DBG("Returned notice message = %s", *notice_msg);
+    PGR_DBG("Returned log message = %s", log);
+    PGR_DBG("Returned notice message = %s", notice);
 
+    if (log) {
+        pgr_notice(notice);
+        return;
+    }
+#if 0
     char *notice = NULL;
     if (*notice_msg){
         notice = pgr_cstring2char(*notice_msg);
@@ -64,7 +70,7 @@ pgr_notice2(
         log = pgr_cstring2char(*log_msg);
         free(*log_msg);
     }
-
+#endif
     if (notice) {
         ereport(NOTICE,
                 (errmsg("%s", notice),
@@ -73,29 +79,31 @@ pgr_notice2(
 }
 
 void
-pgr_error(char **err_msg) {
-    PGR_DBG("Returned error message = %s", *err_msg);
+pgr_error(char* err) {
+    PGR_DBG("Returned error message = %s", err);
 
+#if 0
     char *error = NULL;
     if (*err_msg) {
         error = pgr_cstring2char(*err_msg);
         free(*err_msg);
     }
-
-    if (error) {
+#endif
+    if (err) {
         ereport(ERROR,
                 (errmsg_internal("Unexpected"),
-                 errhint("%s", error)));
+                 errhint("%s", err)));
     }
 }
 
 void
 pgr_error2(
-        char **log_msg,
-        char **err_msg) {
-    PGR_DBG("Returned log message = %s", *log_msg);
-    PGR_DBG("Returned error message = %s", *err_msg);
+        char* log,
+        char* err) {
+    PGR_DBG("Returned log message = %s", log);
+    PGR_DBG("Returned error message = %s", err);
 
+#if 0
     char *error = NULL;
     if (*err_msg) {
         error = pgr_cstring2char(*err_msg);
@@ -107,51 +115,44 @@ pgr_error2(
         log = pgr_cstring2char(*log_msg);
         free(*log_msg);
     }
-
-    if (error) {
+#endif
+    if (err) {
         ereport(ERROR,
-                (errmsg_internal("%s", error),
+                (errmsg_internal("%s", err),
                  errhint("%s", log)));
     }
 }
 
 void
 pgr_global_report(
-        char **log_msg,
-        char **notice_msg,
-        char **err_msg) {
-
-    char *notice = NULL;
-    if (*notice_msg){
-        notice = pgr_cstring2char(*notice_msg);
-        free(*notice_msg);
-    }
-
-    char *error = NULL;
-    if (*err_msg) {
-        error = pgr_cstring2char(*err_msg);
-        free(*err_msg);
-    }
-
-    char *log = NULL;
-    if (*log_msg){
-        log = pgr_cstring2char(*log_msg);
-        free(*log_msg);
-    }
+        char* log,
+        char* notice,
+        char* err) {
 
     if (!notice && log) {
-        PGR_DBG("%s", log);
+        ereport(DEBUG1,
+                (errmsg_internal("%s", log)));
     }
 
     if (notice) {
-        ereport(NOTICE,
-                (errmsg_internal("%s", notice),
-                 errhint("%s", log)));
+        if (log) {
+            ereport(NOTICE,
+                    (errmsg_internal("%s", notice),
+                     errhint("%s", log)));
+        } else {
+            ereport(NOTICE,
+                    (errmsg_internal("%s", notice)));
+        }
     }
 
-    if (error) {
-        ereport(ERROR,
-                (errmsg_internal("%s", error),
-                 errhint("%s", log)));
+    if (err) {
+        if (log) {
+            ereport(ERROR,
+                    (errmsg_internal("%s", err),
+                     errhint("%s", log)));
+        } else {
+            ereport(ERROR,
+                    (errmsg_internal("%s", err)));
+        }
     }
 }

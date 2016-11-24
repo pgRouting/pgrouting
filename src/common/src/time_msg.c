@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void time_msg(char *msg, clock_t start_t, clock_t end_t) {
     double elapsed_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-    elog(DEBUG1, "Elapsed time for %s: %lfsec = (%lf - %f) / CLOCKS_PER_SEC ",
+    elog(DEBUG1, "Elapsed time for %s:\n %lfsec = (%lf - %f) / CLOCKS_PER_SEC ",
             msg,
             elapsed_t,
             (double) end_t,

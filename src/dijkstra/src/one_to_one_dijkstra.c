@@ -58,8 +58,6 @@ PG_MODULE_MAGIC;
 PGDLLEXPORT Datum one_to_one_dijkstra(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(one_to_one_dijkstra);
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -70,35 +68,29 @@ process(
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-    pgr_SPI_connect();
-
-    PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
 
     if (start_vid == end_vid) {
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+        return;
+    }
+
+    pgr_SPI_connect();
+
+    pgr_edge_t *edges = NULL;
+    size_t total_edges = 0;
+    pgr_get_edges(edges_sql, &edges, &total_edges);
+
+    if (total_edges == 0) {
         pgr_SPI_finish();
         return;
     }
 
-    size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples);
-
-    if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        pgr_SPI_finish();
-        return;
-    }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
-
-    PGR_DBG("Starting processing");
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char *err_msg = NULL;
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
     do_pgr_many_to_many_dijkstra(
-            edges, total_tuples,
+            edges, total_edges,
             &start_vid, 1,
             &end_vid, 1,
 
@@ -108,32 +100,39 @@ process(
 
             result_tuples,
             result_count,
+
+            &log_msg,
+            &notice_msg,
             &err_msg);
 
-    time_msg(" processing Dijkstra one to one", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    time_msg("processing pgr_dijkstra(one to one)", start_t, clock());
 
-    free(err_msg);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+    }
 
-    pfree(edges);
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
+
 
 PGDLLEXPORT Datum
 one_to_one_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
+    /**********************************************************************/
     General_path_element_t  *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
+    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -142,13 +141,12 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-        // CREATE OR REPLACE FUNCTION pgr_dijkstra(
-        // sql text, start_vids BIGINT,
+        // pgr_dijkstra(
+        // sql TEXT,
+        // start_vids BIGINT,
         // end_vid BIGINT,
         // directed BOOLEAN default true,
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
@@ -158,7 +156,6 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                    */
         /**********************************************************************/
 
 #if PGSQL_VERSION > 95
@@ -191,7 +188,6 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
         bool*        nulls;
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
         // OUT seq INTEGER,
         // OUT path_seq INTEGER,
         // OUT node BIGINT,
@@ -199,16 +195,16 @@ one_to_one_dijkstra(PG_FUNCTION_ARGS) {
         // OUT cost FLOAT,
         // OUT agg_cost FLOAT
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+        size_t numb = 6;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);

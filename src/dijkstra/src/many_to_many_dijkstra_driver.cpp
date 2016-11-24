@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./many_to_many_dijkstra_driver.h"
 
 #include "../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 
 template < class G >
@@ -80,7 +81,7 @@ pgr_dijkstra(
 void
 do_pgr_many_to_many_dijkstra(
         pgr_edge_t  *data_edges,
-        size_t total_tuples,
+        size_t total_edges,
         int64_t  *start_vidsArr,
         size_t size_start_vidsArr,
         int64_t  *end_vidsArr,
@@ -90,12 +91,24 @@ do_pgr_many_to_many_dijkstra(
         bool normal,
         General_path_element_t **return_tuples,
         size_t *return_count,
+        char ** log_msg,
+        char ** notice_msg,
         char ** err_msg) {
     std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
+
     try {
+        pgassert(total_edges != 0);
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-        log << "Inserting vertices into a c++ vector structure\n";
+        log << "Inserting vertices into a c++ vector structure";
         std::vector<int64_t>
             start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
         std::vector< int64_t >
@@ -103,14 +116,14 @@ do_pgr_many_to_many_dijkstra(
 
         std::deque< Path >paths;
         if (directed) {
-            log << "Working with directed Graph\n";
+            log << "\nWorking with directed Graph";
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_tuples);
+            digraph.insert_edges(data_edges, total_edges);
             paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost, normal);
         } else {
-            log << "Working with Undirected Graph\n";
+            log << "\nWorking with Undirected Graph";
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_tuples);
+            undigraph.insert_edges(data_edges, total_edges);
             paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost, normal);
         }
 
@@ -120,32 +133,39 @@ do_pgr_many_to_many_dijkstra(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
-            log <<
-                "No paths found between Starting and any of the Ending vertices\n";
-            *err_msg = strdup(log.str().c_str());
+            notice <<
+                "No paths found between any Starting and any of the Ending vertices";
+            *log_msg = pgr_msg(notice.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
-        log << "Converting a set of paths into the tuples\n";
+        log << "\nConverting a set of paths into the tuples";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
-
-        return;
-    } catch ( ... ) {
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
-        return;
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch(...) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-
-
-
-

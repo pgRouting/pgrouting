@@ -65,9 +65,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 void
 pgr_global_report(
-        char **log_msg,
-        char **notice_msg,
-        char **error_msg);
+        char* log_msg,
+        char* notice_msg,
+        char* error_msg);
 
 /*! @brief notice with no hint
  *
@@ -81,7 +81,7 @@ pgr_global_report(
  */
 void
 pgr_notice(
-        char **notice_msg
+        char* notice_msg
         );
 
 /*! @brief notice with hint
@@ -96,8 +96,8 @@ pgr_notice(
  */
 void
 pgr_notice2(
-        char **log_msg,
-        char **notice_msg
+        char* log_msg,
+        char* notice_msg
         );
 
 /*! @brief error with no hint
@@ -114,7 +114,7 @@ pgr_notice2(
  *  ~~~~
  */
 void
-pgr_error(char **error_msg);
+pgr_error(char* error_msg);
 
 /*! @brief error with hint
  *
@@ -131,6 +131,6 @@ pgr_error(char **error_msg);
  */
 void
 pgr_error2(
-        char **log_msg,
-        char **error_msg);
+        char* log_msg,
+        char* error_msg);
 ///@}

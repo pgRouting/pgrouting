@@ -42,14 +42,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-
-/*
-  Uncomment when needed
-*/
-// #define DEBUG
-
 #include "fmgr.h"
+
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
@@ -57,12 +53,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./dijkstraVia_driver.h"
 
 PGDLLEXPORT Datum dijkstraVia(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(dijkstraVia);
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
 static
 void
-process( char* edges_sql,
+process(char* edges_sql,
         ArrayType *vias, 
         bool directed,
         bool strict,
@@ -71,74 +66,64 @@ process( char* edges_sql,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    PGR_DBG("Initializing arrays");
     int64_t* via_vidsArr = NULL;
     size_t size_via_vidsArr = 0;
     via_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_via_vidsArr, vias);
-    PGR_DBG("Via VertexArr size %ld ", size_via_vidsArr);
 
-    PGR_DBG("Load data");
-    pgr_edge_t *edges;
-    edges = NULL;
-    size_t total_tuples;
-    total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples);
+    pgr_edge_t* edges = NULL;
+    size_t total_edges = 0;
+    pgr_get_edges(edges_sql, &edges, &total_edges);
 
-    if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+    if (total_edges == 0) {
         if (via_vidsArr) pfree(via_vidsArr);
-
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
-    PGR_DBG("directed: %d", directed);
-    PGR_DBG("strict: %d", strict);
-    PGR_DBG("U_turn_on_edge: %d", U_turn_on_edge);
 
-
-    PGR_DBG("Starting processing");
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-
-    char *err_msg = (char *)"";
-    do_pgr_dijkstraViaVertex(
-            edges,
-            total_tuples,
-            via_vidsArr,
-            size_via_vidsArr,
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
+    do_pgr_dijkstraVia(
+            edges, total_edges,
+            via_vidsArr, size_via_vidsArr,
             directed,
             strict,
             U_turn_on_edge,
             result_tuples,
             result_count,
+            &log_msg,
+            &notice_msg,
             &err_msg);
-    time_msg(" processing Dijkstra Via", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    time_msg("processing pgr_dijkstraVia", start_t, clock());
 
-    free(err_msg);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
     if (edges) pfree(edges);
     if (via_vidsArr) pfree(via_vidsArr);
     pgr_SPI_finish();
 }
-/*                                                                             */
-/*******************************************************************************/
 
-PG_FUNCTION_INFO_V1(dijkstraVia);
+
 PGDLLEXPORT Datum
 dijkstraVia(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /*******************************************************************************/
-    /*                          MODIFY AS NEEDED                                   */
-    /*                                                                             */
+    /**********************************************************************/
     Routes_t  *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                             */
-    /*******************************************************************************/
+    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -146,17 +131,14 @@ dijkstraVia(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /*******************************************************************************/
-        /*
+        /**********************************************************************
          * pgr_dijkstraVia(edges_sql text,
          *   vertices anyarray,
          *   directed boolean default true,
          *   strict boolean default false,
          *   U_turn_on_edge boolean default false,
-         *******************************************************************************/
+         **********************************************************************/
 
-
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
@@ -166,8 +148,7 @@ dijkstraVia(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                             */
-        /*******************************************************************************/
+        /**********************************************************************/
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;

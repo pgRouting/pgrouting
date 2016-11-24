@@ -113,7 +113,7 @@ process(
     if (err_msg) {
         if (*result_tuples) free(*result_tuples);
     }
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
+    pgr_global_report(log_msg, notice_msg, err_msg);
 
     pfree(edges);
     pgr_SPI_finish();

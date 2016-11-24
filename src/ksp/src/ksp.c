@@ -91,7 +91,7 @@ void compute(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-#if 1
+
     do_pgr_ksp(
             edges,
             total_edges,
@@ -105,20 +105,13 @@ void compute(
             &log_msg,
             &notice_msg,
             &err_msg);
-#endif
     time_msg(" processing KSP", start_t, clock());
     PGR_DBG("total tuples found %ld\n", *path_count);
-#if 0
-    PGR_DBG("total tuples found %s\n", log_msg);
-    PGR_DBG("total tuples found %s\n", notice_msg);
-    PGR_DBG("total tuples found %s\n", err_msg);
-#endif
-    PGR_DBG("--------------------------------------\n");
 
     if (err_msg) {
         if (*ksp_path) free(*ksp_path);
     }
-    pgr_global_report(&log_msg, &notice_msg, &err_msg);
+    pgr_global_report(log_msg, notice_msg, err_msg);
 
     pfree(edges);
     pgr_SPI_finish();

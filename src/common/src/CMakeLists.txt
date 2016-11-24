@@ -20,4 +20,5 @@ ADD_LIBRARY(common OBJECT
     ch_vertex.cpp
     ch_edge.cpp
     basic_edge.cpp
+    pgr_alloc.cpp
     )
