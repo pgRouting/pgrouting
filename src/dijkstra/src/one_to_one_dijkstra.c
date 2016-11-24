@@ -104,7 +104,11 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("processing pgr_dijkstra(one to one)", start_t, clock());
+    if (only_cost) {
+        time_msg("processing pgr_dijkstraCost(one to one)", start_t, clock());
+    } else {
+        time_msg("processing pgr_dijkstra(one to one)", start_t, clock());
+    }
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);

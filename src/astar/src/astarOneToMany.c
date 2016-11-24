@@ -44,23 +44,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "access/htup_details.h"
 #endif
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
+#include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-
-#include "./astarOneToMany_driver.h"
+#include "./astarManyToMany_driver.h"
 
 PGDLLEXPORT Datum astarOneToMany(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(astarOneToMany);
-
 
 static
 void
 process(char* edges_sql,
         int64_t start_vid,
-        int64_t *end_vidsArr, size_t size_end_vidsArr,
+        ArrayType *ends,
         bool directed,
         int heuristic,
         double factor,
@@ -68,26 +67,10 @@ process(char* edges_sql,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-    if (heuristic > 5 || heuristic < 0) {
-        pfree(end_vidsArr);
-        ereport(ERROR,
-                (errmsg("Unknown heuristic"),
-                 errhint("Valid values: 0~5")));
-    }
-    if (factor <= 0) {
-        pfree(end_vidsArr);
-        ereport(ERROR,
-                (errmsg("Factor value out of range"),
-                 errhint("Valid values: positive non zero")));
-    }
-    if (epsilon < 1) {
-        pfree(end_vidsArr);
-        ereport(ERROR,
-                (errmsg("Epsilon value out of range"),
-                 errhint("Valid values: 1 or greater than 1")));
-    }
+    check_parameters(heuristic, factor, epsilon);
 
-
+    size_t size_end_vidsArr = 0;
+    int64_t* end_vidsArr = pgr_get_bigIntArray(&size_end_vidsArr, ends);
 
     pgr_SPI_connect();
 
@@ -105,36 +88,48 @@ process(char* edges_sql,
     }
 
     PGR_DBG("Starting processing");
-    char *err_msg = NULL;
-    char *log_msg = NULL;
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
     clock_t start_t = clock();
-    do_pgr_astarOneToMany(
-            edges,
-            total_edges,
-            start_vid,
+    do_pgr_astarManyToMany(
+            edges, total_edges,
+            &start_vid, 1,
             end_vidsArr, size_end_vidsArr,
             directed,
             heuristic,
             factor,
             epsilon,
             only_cost,
+            true,
             result_tuples,
             result_count,
             &log_msg,
-            &err_msg,
-            true);
-    time_msg(" processing pgr_astar(one to Many)", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("LOG: %s\n", log_msg);
-    if (log_msg) free(log_msg);
+            &notice_msg,
+            &err_msg
+            );
 
-    if (err_msg) {
-        if (*result_tuples) free(*result_tuples);
-        elog(ERROR, "%s", err_msg);
-        free(err_msg);
+    if (only_cost) {
+        time_msg("processing pgr_astarCost(one to many)", start_t, clock());
+    } else {
+        time_msg("processing pgr_astar(one to many)", start_t, clock());
     }
 
-    pfree(edges);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+    if (end_vidsArr) pfree(end_vidsArr);
+
     pgr_SPI_finish();
 }
 
@@ -153,25 +148,21 @@ astarOneToMany(PG_FUNCTION_ARGS) {
 
 
         /*****************************************************************
-           edges_sql TEXT,
-           start_vid BIGINT,
-           end_vids ARRAY[ANY_INTEGER], -- anyarray
-           directed BOOLEAN DEFAULT true,
-           heuristic INTEGER DEFAULT 0,
-           factor FLOAT DEFAULT 1.0,
-           epsilon FLOAT DEFAULT 1.0,
+          edges_sql TEXT,
+          start_vid BIGINT,
+          end_vids ARRAY[ANY_INTEGER], -- anyarray
+          directed BOOLEAN DEFAULT true,
+          heuristic INTEGER DEFAULT 0,
+          factor FLOAT DEFAULT 1.0,
+          epsilon FLOAT DEFAULT 1.0,
 
          ****************************************************************/
 
-        int64_t* end_vidsArr = NULL;
-        size_t size_end_vidsArr = 0;
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
-                end_vidsArr, size_end_vidsArr,
+                PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_INT32(4),
                 PG_GETARG_FLOAT8(5),
@@ -180,7 +171,6 @@ astarOneToMany(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        pfree(end_vidsArr);
 
 
 #if PGSQL_VERSION > 95

@@ -46,6 +46,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
 
+
+void
+check_parameters(
+        int heuristic,
+        double factor,
+        double epsilon) {
+    if (heuristic > 5 || heuristic < 0) {
+        ereport(ERROR,
+                (errmsg("Unknown heuristic"),
+                 errhint("Valid values: 0~5")));
+    }
+    if (factor <= 0) {
+        ereport(ERROR,
+                (errmsg("Factor value out of range"),
+                 errhint("Valid values: positive non zero")));
+    }
+    if (epsilon < 1) {
+        ereport(ERROR,
+                (errmsg("Epsilon value out of range"),
+                 errhint("Valid values: 1 or greater than 1")));
+    }
+}
+
 template < class G >
 std::deque<Path>
 pgr_astar(
@@ -55,7 +78,8 @@ pgr_astar(
         int heuristic,
         double factor,
         double epsilon,
-        bool only_cost) {
+        bool only_cost,
+        bool normal) {
     std::sort(sources.begin(), sources.end());
     sources.erase(
             std::unique(sources.begin(), sources.end()),
@@ -67,8 +91,15 @@ pgr_astar(
             targets.end());
 
     pgrouting::algorithms::Pgr_astar< G > fn_astar;
-    return fn_astar.astar(graph, sources, targets,
+    auto paths = fn_astar.astar(graph, sources, targets,
             heuristic, factor, epsilon, only_cost);
+
+    if (!normal) {
+        for (auto &path : paths) {
+            path.reverse();
+        }
+    }
+    return paths;
 }
 
 
@@ -87,12 +118,15 @@ void do_pgr_astarManyToMany(
         double factor,
         double epsilon,
         bool only_cost,
+        bool normal,
         General_path_element_t **return_tuples,
         size_t *return_count,
-        char ** log_msg,
-        char ** err_msg) {
-    std::ostringstream err;
+        char** log_msg,
+        char** notice_msg,
+        char** err_msg) {
     std::ostringstream log;
+    std::ostringstream notice;
+    std::ostringstream err;
     try {
         pgassert(!(*log_msg));
         pgassert(!(*err_msg));
@@ -100,14 +134,6 @@ void do_pgr_astarManyToMany(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
-
-        if (total_edges <= 1) {
-            err << "Required: more than one edge\n";
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            *err_msg = strdup(log.str().c_str());
-            return;
-        }
 
         log << "Inserting target vertices into a c++ vector structure\n";
         std::vector< int64_t > end_vids(
@@ -127,7 +153,7 @@ void do_pgr_astarManyToMany(
                     gType);
             digraph.insert_edges(edges, total_edges);
             paths = pgr_astar(digraph, start_vids, end_vids,
-                    heuristic, factor, epsilon, only_cost);
+                    heuristic, factor, epsilon, only_cost, normal);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::xyUndirectedGraph undigraph(
@@ -135,7 +161,7 @@ void do_pgr_astarManyToMany(
                     gType);
             undigraph.insert_edges(edges, total_edges);
             paths = pgr_astar(undigraph, start_vids, end_vids,
-                    heuristic, factor, epsilon, only_cost);
+                    heuristic, factor, epsilon, only_cost, normal);
         }
 
         size_t count(0);
@@ -147,7 +173,7 @@ void do_pgr_astarManyToMany(
             (*return_count) = 0;
             log <<
                 "No paths found\n";
-            *err_msg = strdup(log.str().c_str());
+            *log_msg = pgr_msg(log.str().c_str());
             return;
         }
 
@@ -155,25 +181,30 @@ void do_pgr_astarManyToMany(
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
 
-        *err_msg = NULL;
-        *log_msg = strdup(log.str().c_str());
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << except.what() << "\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
-    } catch (std::exception& except) {
-        if (*return_tuples) free(*return_tuples);
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << except.what() << "\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << "Caught unknown exception!\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
+

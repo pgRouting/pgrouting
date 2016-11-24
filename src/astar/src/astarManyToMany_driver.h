@@ -37,6 +37,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
+    void check_parameters(
+            int heuristic,
+            double factor,
+            double epsilon);
+
     /*********************************************************
       edges_sql TEXT,
       vertex_table TEXT,
@@ -53,10 +58,12 @@ extern "C" {
             double factor,
             double epsilon,
             bool only_cost,
+            bool normal,
             General_path_element_t **return_tuples,
             size_t *return_count,
-            char ** log_msg,
-            char ** err_msg);
+            char** log_msg,
+            char** notice_msg,
+            char** err_msg);
 
 
 #ifdef __cplusplus
