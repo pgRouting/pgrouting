@@ -34,13 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic pop
 #endif
 
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
@@ -54,7 +48,7 @@ static
 void compute_driving_distance(
         char* sql,
         int64_t start_vertex,
-        float8 distance,
+        double distance,
         bool directed,
         General_path_element_t **path, size_t *path_count) {
     pgr_SPI_connect();
@@ -79,10 +73,13 @@ void compute_driving_distance(
     PGR_DBG("total edges read %ld\n", total_edges);
 
     clock_t start_t = clock();
-    do_pgr_driving_distance(edges, total_edges,
-            start_vertex, distance,
+    do_pgr_driving_distance(
+            edges, total_edges,
+            start_vertex,
+            distance,
             directed, 
-            path, path_count, &err_msg);
+            path, path_count,
+            &err_msg);
     time_msg(" processing Driving Distance one start", start_t, clock());
 
 

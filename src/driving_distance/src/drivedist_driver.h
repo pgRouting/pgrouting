@@ -25,7 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_DRIVING_DISTANCE_SRC_DRIVEDIST_DRIVER_H_
 #define SRC_DRIVING_DISTANCE_SRC_DRIVEDIST_DRIVER_H_
 
-//#include "stdlib.h"
 #include "./../../common/src/pgr_types.h"
 
 #ifdef __cplusplus

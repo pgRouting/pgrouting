@@ -39,22 +39,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic pop
 #endif
 
-#include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-
-#include "fmgr.h"
-#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
+#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
 #include "./../../withPoints/src/get_new_queries.h"
 #include "./withPoints_dd_driver.h"
-// #define DEBUG
-#include "./../../common/src/debug_macro.h"
 
 PGDLLEXPORT Datum withPoints_dd(PG_FUNCTION_ARGS);
 
@@ -189,7 +182,6 @@ withPoints_dd(PG_FUNCTION_ARGS) {
         // driving_side CHAR -- DEFAULT 'b',
         // details BOOLEAN -- DEFAULT false,
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),

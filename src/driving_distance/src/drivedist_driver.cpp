@@ -58,16 +58,18 @@ do_pgr_driving_many_to_dist(
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
         std::deque< Path >paths;
-        std::vector< int64_t > start_vertices(start_vertex, start_vertex + s_len);
+        std::vector<int64_t> start_vertices(start_vertex, start_vertex + s_len);
 
         if (directedFlag) {
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_tuples);
-            paths = pgr_drivingDistance(digraph, start_vertices, distance, equiCostFlag);
+            paths = pgr_drivingDistance(
+                    digraph, start_vertices, distance, equiCostFlag);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_tuples);
-            paths = pgr_drivingDistance(undigraph, start_vertices, distance, equiCostFlag);
+            paths = pgr_drivingDistance(
+                    undigraph, start_vertices, distance, equiCostFlag);
         }
 
         size_t count(count_tuples(paths));
@@ -114,7 +116,7 @@ do_pgr_driving_distance(
         *ret_path = NULL;
         *path_count = 0;
 
-        log << "NOTICE: Started processing pgr_drivingDistance for 1 start_vid\n";
+        log << "Started processing pgr_drivingDistance for 1 start_vid";
         // in c code this should have been checked:
         //  1) start_vertex is in the data_edges  DONE
 
@@ -124,12 +126,12 @@ do_pgr_driving_distance(
 
 
         if (directedFlag) {
-            log << "NOTICE: Processing Directed graph\n";
+            log << "Processing Directed graph\n";
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(data_edges, total_edges);
             path = pgr_drivingDistance(digraph, start_vertex, distance);
         } else {
-            log << "NOTICE: Processing Undirected graph\n";
+            log << "Processing Undirected graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(data_edges, total_edges);
             path = pgr_drivingDistance(undigraph, start_vertex, distance);
@@ -137,7 +139,7 @@ do_pgr_driving_distance(
 
         log << "Returning number of tuples" << path.size() << "\n";
         if (path.empty()) {
-            log << "NOTICE: it should have at least the one for it self";
+            log << "it should have at least the one for it self";
             *err_msg = strdup(log.str().c_str());
             return;
         }
@@ -161,7 +163,7 @@ do_pgr_driving_distance(
 
         return;
     } catch ( ... ) {
-        log << "NOTICE: unknown exception cought";
+        log << "unknown exception cought";
         *err_msg = strdup(log.str().c_str());
         if (ret_path) free(ret_path);
         *path_count = 0;

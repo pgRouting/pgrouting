@@ -35,12 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
@@ -52,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 PGDLLEXPORT Datum many_withPointsDD(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(many_withPointsDD);
 
 static 
 void process(
@@ -67,16 +63,11 @@ void process(
 
         General_path_element_t **result_tuples,
         size_t *result_count  ){
-
-    driving_side[0] = (char) tolower(driving_side[0]);
-    PGR_DBG("driving side:%c",driving_side[0]);
-    if (! ((driving_side[0] == 'r')
-                || (driving_side[0] == 'l'))) {
-        driving_side[0] = 'b';
-    }
-
+    driving_side[0] = estimate_drivingSide(driving_side[0]);
+    PGR_DBG("estimated driving side:%c", driving_side[0]);
 
     pgr_SPI_connect();
+
     Point_on_edge_t *points = NULL;
     size_t total_points = 0;
     pgr_get_points(points_sql, &points, &total_points);
@@ -147,7 +138,6 @@ void process(
 
 
 
-PG_FUNCTION_INFO_V1(many_withPointsDD);
 PGDLLEXPORT Datum
 many_withPointsDD(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;

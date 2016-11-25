@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #endif
 
+#include "./withPoints_dd_driver.h"
 #include <sstream>
 #include <deque>
 #include <vector>
@@ -43,14 +44,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./../../withPoints/src/pgr_withPoints.hpp"
-#include "./withPoints_dd_driver.h"
 
 
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_alloc.hpp"
 
 
-/*******************************************************************************/
+/**********************************************************************/
 // CREATE OR REPLACE FUNCTION pgr_withPointsDD(
 // edges_sql TEXT,
 // points_sql TEXT,
@@ -99,8 +99,8 @@ do_pgr_many_withPointsDD(
             return errcode;
         }
 
-        std::vector< pgr_edge_t >
-            edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
+        std::vector<pgr_edge_t> edges_to_modify(
+                    edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
         create_new_edges(
@@ -110,7 +110,8 @@ do_pgr_many_withPointsDD(
                 new_edges,
                 log);
 
-        std::vector< int64_t > start_vids(start_pids_arr, start_pids_arr + s_len);
+        std::vector<int64_t> start_vids(
+                start_pids_arr, start_pids_arr + s_len);
 
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
@@ -121,12 +122,14 @@ do_pgr_many_withPointsDD(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(new_edges);
-            paths = pgr_drivingDistance(digraph, start_vids, distance, equiCost);
+            paths = pgr_drivingDistance(
+                    digraph, start_vids, distance, equiCost);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(new_edges);
-            paths = pgr_drivingDistance(undigraph, start_vids, distance, equiCost);
+            paths = pgr_drivingDistance(
+                    undigraph, start_vids, distance, equiCost);
         }
 
         for (auto &path : paths) {
@@ -217,7 +220,8 @@ do_pgr_withPointsDD(
 
 
         std::vector< pgr_edge_t >
-            edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
+            edges_to_modify(
+                    edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
         create_new_edges(

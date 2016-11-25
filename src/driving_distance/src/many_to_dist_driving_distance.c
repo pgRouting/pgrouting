@@ -80,7 +80,8 @@ void driving_many_to_dist_driver(
             distance,
             directed,
             equicost,
-            path, path_count, &err_msg);
+            path, path_count,
+            &err_msg);
     time_msg(" processing DrivingDistance many starts", start_t, clock());
 
     pfree(edges);
