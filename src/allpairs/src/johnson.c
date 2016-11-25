@@ -33,16 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
-
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
 
 
 #include "./../../common/src/debug_macro.h"
@@ -140,7 +135,8 @@ johnson(PG_FUNCTION_ARGS) {
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "

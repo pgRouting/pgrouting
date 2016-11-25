@@ -5,6 +5,8 @@
 ------------------------------------------------------------------------------------------------------
 BEGIN;
 
+SET client_min_messages TO NOTICE;
+
 \echo --q1
 SELECT * FROM pgr_drivingDistance(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost FROM edge_table',

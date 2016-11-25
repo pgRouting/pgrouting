@@ -28,15 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
 #pragma once
 
-#if 0
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
-#endif
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -52,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./../../common/src/pgr_types.h"
-//TODO don't keep it here
+// TODO(vicky) don't keep it here
 #include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
@@ -251,7 +242,7 @@ void
 Pgr_allpairs< G >::make_matrix(
         size_t v_size,
         std::vector< std::vector<double>> &matrix) const {
-    // TODO in one step
+    // TODO(vicky) in one step
     matrix.resize(v_size);
     for (size_t i=0; i < v_size; i++)
         matrix[i].resize(v_size);
@@ -274,7 +265,7 @@ Pgr_allpairs< G >::count_rows(
     return result_tuple_count;
 }
 
-// TODO don't keep it here for postgres
+// TODO(vicky) don't keep it here for postgres
 template < class G >
 void
 Pgr_allpairs< G >::make_result(

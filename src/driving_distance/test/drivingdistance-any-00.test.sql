@@ -3,6 +3,7 @@
 -- SELECT *, st_distance(st_makepoint(25,25), the_geom) from vertices_tmp where st_dwithin(st_makepoint(25,25), the_geom, 1.0) order by st_distance(st_makepoint(25,25), the_geom) limit 1;
 BEGIN;
 
+    SET client_min_messages TO NOTICE;
     -- create 50x50 grid of overlapping lines horizontal and vertical
 
     DO $$
