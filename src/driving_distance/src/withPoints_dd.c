@@ -50,10 +50,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./withPoints_dd_driver.h"
 
 PGDLLEXPORT Datum withPoints_dd(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(withPoints_dd);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
 static
 void
 process(
@@ -68,14 +67,17 @@ process(
 
         General_path_element_t **result_tuples,
         size_t *result_count) {
+    driving_side[0] = estimate_drivingSide(driving_side[0]);
+    PGR_DBG("estimated driving side:%c", driving_side[0]);
 
+#if 0
     driving_side[0] = (char) tolower(driving_side[0]);
     PGR_DBG("driving side:%c",driving_side[0]);
     if (! ((driving_side[0] == 'r')
                 || (driving_side[0] == 'l'))) {
         driving_side[0] = 'b'; 
     }
-
+#endif
     pgr_SPI_connect();
 
     Point_on_edge_t *points = NULL;
@@ -145,24 +147,16 @@ process(
 
 }
 
-/*                                                                             */
-/*******************************************************************************/
 
-
-
-PG_FUNCTION_INFO_V1(withPoints_dd);
 PGDLLEXPORT Datum
 withPoints_dd(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /*******************************************************************************/
-    /*                          MODIFY AS NEEDED                                   */
-    /*                                                                             */
-    General_path_element_t  *result_tuples = 0;
+    /**********************************************************************/
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                             */
-    /*******************************************************************************/
+    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -170,8 +164,7 @@ withPoints_dd(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   */
+        /**********************************************************************/
         // CREATE OR REPLACE FUNCTION pgr_withPoint(
         // edges_sql TEXT,
         // points_sql TEXT,
@@ -194,8 +187,7 @@ withPoints_dd(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                             */
-        /*******************************************************************************/
+        /**********************************************************************/
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -223,8 +215,7 @@ withPoints_dd(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   */
+        /**********************************************************************/
         // OUT seq BIGINT,
         // OUT node BIGINT,
         // OUT edge BIGINT,
@@ -232,21 +223,21 @@ withPoints_dd(PG_FUNCTION_ARGS) {
         // OUT agg_cost FLOAT)
 
 
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        size_t numb = 5;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for(i = 0; i < 6; ++i) {
+        for(i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /*******************************************************************************/
+        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

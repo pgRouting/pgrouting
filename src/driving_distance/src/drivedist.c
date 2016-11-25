@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
@@ -50,43 +51,52 @@ void compute_driving_distance(
         int64_t start_vertex,
         double distance,
         bool directed,
-        General_path_element_t **path, size_t *path_count) {
+        General_path_element_t** result_tuples,
+        size_t* result_count) {
     pgr_SPI_connect();
 
-    pgr_edge_t *edges = NULL;
+
+    pgr_edge_t* edges = NULL;
     size_t total_edges = 0;
-
-
-    char *err_msg = (char *)"";
-
-    PGR_DBG("Load data");
-
     pgr_get_edges(sql, &edges, &total_edges);
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
-        *path = NULL;
-        (*path_count) = 0;
         pgr_SPI_finish();
         return;
     }
     PGR_DBG("total edges read %ld\n", total_edges);
 
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    do_pgr_driving_distance(
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
+    do_pgr_driving_many_to_dist(
             edges, total_edges,
-            start_vertex,
+            &start_vertex, 1,
             distance,
-            directed, 
-            path, path_count,
+            directed,
+            false,
+            result_tuples, result_count,
+            &log_msg,
+            &notice_msg,
             &err_msg);
     time_msg(" processing Driving Distance one start", start_t, clock());
 
+    if (err_msg && (*result_tuples)) {
+                pfree(*result_tuples);
+                        (*result_tuples) = NULL;
+                                (*result_count) = 0;
+                                    }
 
-    PGR_DBG("total tuples found %ld\n", *path_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    pgr_global_report(log_msg, notice_msg, err_msg);
 
-    pfree(edges);
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+
     pgr_SPI_finish();
 }
 
@@ -95,11 +105,14 @@ PGDLLEXPORT Datum
 driving_distance(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
-    General_path_element_t  *ret_path = 0;
+
+    /************************************************************************/
+    General_path_element_t* result_tuples = NULL;
+    size_t result_count = 0;
+    /************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-        size_t result_count = 0;
 
         funcctx = SRF_FIRSTCALL_INIT();
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
@@ -124,7 +137,7 @@ driving_distance(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(1),         // start_vid
                 PG_GETARG_FLOAT8(2),        // distance
                 PG_GETARG_BOOL(3),          // directed
-                &ret_path, &result_count);
+                &result_tuples, &result_count);
 
         /************************************************************************/
 #if PGSQL_VERSION > 95
@@ -132,7 +145,7 @@ driving_distance(PG_FUNCTION_ARGS) {
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
-        funcctx->user_fctx = ret_path;
+        funcctx->user_fctx = result_tuples;
 
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -148,27 +161,31 @@ driving_distance(PG_FUNCTION_ARGS) {
     funcctx = SRF_PERCALL_SETUP();
 
     tuple_desc = funcctx->tuple_desc;
-    ret_path = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
-        Datum *values;
+        Datum* values;
         bool* nulls;
 
-        values = palloc(5 * sizeof(Datum));
-        nulls = palloc(5 * sizeof(bool));
+        /************************************************************************/
+        size_t numb = 5;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
-        nulls[0] = false;
-        nulls[1] = false;
-        nulls[2] = false;
-        nulls[3] = false;
-        nulls[4] = false;
-        values[0] = Int32GetDatum(ret_path[funcctx->call_cntr].seq + 1);
-        values[1] = Int64GetDatum(ret_path[funcctx->call_cntr].node);
-        values[2] = Int64GetDatum(ret_path[funcctx->call_cntr].edge);
-        values[3] = Float8GetDatum(ret_path[funcctx->call_cntr].cost);
-        values[4] = Float8GetDatum(ret_path[funcctx->call_cntr].agg_cost);
+        size_t i;
+        for(i = 0; i < numb; ++i) {
+            nulls[i] = false;
+        }
+
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+
+        /************************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

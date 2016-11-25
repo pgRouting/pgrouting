@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "./../../common/src/pgr_types.h"
+#include "./../../common/src/pgr_assert.h"
 #include "../../common/src/pgr_alloc.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
@@ -44,30 +45,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_driving_many_to_dist(
-        pgr_edge_t  *data_edges, size_t total_tuples,
-        int64_t  *start_vertex, size_t s_len,
+        pgr_edge_t  *data_edges, size_t total_edges,
+        int64_t *start_vertex, size_t s_len,
         double distance,
         bool directedFlag,
         bool equiCostFlag,
-        General_path_element_t **ret_path, size_t *path_count,
-        char ** err_msg) {
+        General_path_element_t **return_tuples, size_t *return_count,
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
+    std::ostringstream log;
+    std::ostringstream err;
+    std::ostringstream notice;
+
     try {
-        *ret_path = NULL;
-        *path_count = 0;
+        pgassert(total_edges != 0);
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+        pgassert((*return_tuples) == NULL);
 
         graphType gType = directedFlag? DIRECTED: UNDIRECTED;
 
-        std::deque< Path >paths;
+        std::deque<Path> paths;
         std::vector<int64_t> start_vertices(start_vertex, start_vertex + s_len);
 
         if (directedFlag) {
             pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_tuples);
+            digraph.insert_edges(data_edges, total_edges);
             paths = pgr_drivingDistance(
                     digraph, start_vertices, distance, equiCostFlag);
         } else {
             pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_tuples);
+            undigraph.insert_edges(data_edges, total_edges);
             paths = pgr_drivingDistance(
                     undigraph, start_vertices, distance, equiCostFlag);
         }
@@ -76,98 +88,37 @@ do_pgr_driving_many_to_dist(
 
 
         if (count == 0) {
-            *err_msg = strdup("NOTICE: No return values was found");
+            *notice_msg = pgr_msg("No return values was found");
             return;
         }
-        *ret_path = pgr_alloc(count, (*ret_path));
-        auto trueCount(collapse_paths(ret_path, paths));
-        *path_count = trueCount;
+        *return_tuples = pgr_alloc(count, (*return_tuples));
+        auto trueCount(collapse_paths(return_tuples, paths));
+        *return_count = trueCount;
 
 
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
-        return;
-    } catch ( ... ) {
-        *err_msg = strdup("Caught unknown exception!");
-        if (ret_path) free(ret_path);
-        *path_count = 0;
-        return;
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch(...) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-
-
-
-void
-do_pgr_driving_distance(
-        pgr_edge_t  *data_edges, size_t total_edges,
-        int64_t     start_vertex,
-        double      distance,
-        bool        directedFlag,
-        General_path_element_t **ret_path, size_t *path_count,
-        char                   **err_msg) {
-    std::ostringstream log;
-    try {
-        // if it already has values there will be a leak
-        // call with pointing to NULL
-        *ret_path = NULL;
-        *path_count = 0;
-
-        log << "Started processing pgr_drivingDistance for 1 start_vid";
-        // in c code this should have been checked:
-        //  1) start_vertex is in the data_edges  DONE
-
-        graphType gType = directedFlag? DIRECTED: UNDIRECTED;
-
-        Path path;
-
-
-        if (directedFlag) {
-            log << "Processing Directed graph\n";
-            pgrouting::DirectedGraph digraph(gType);
-            digraph.insert_edges(data_edges, total_edges);
-            path = pgr_drivingDistance(digraph, start_vertex, distance);
-        } else {
-            log << "Processing Undirected graph\n";
-            pgrouting::UndirectedGraph undigraph(gType);
-            undigraph.insert_edges(data_edges, total_edges);
-            path = pgr_drivingDistance(undigraph, start_vertex, distance);
-        }
-
-        log << "Returning number of tuples" << path.size() << "\n";
-        if (path.empty()) {
-            log << "it should have at least the one for it self";
-            *err_msg = strdup(log.str().c_str());
-            return;
-        }
-
-        log << "NOTICE: Calculating the number of tuples \n";
-        auto count = path.size();
-
-        log << "NOTICE Count: " << count << " tuples\n";
-
-        *ret_path = pgr_alloc(count, (*ret_path));
-
-        size_t sequence = 0;
-        path.get_pg_dd_path(ret_path, sequence);
-        *path_count = count;
-
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
-
-        return;
-    } catch ( ... ) {
-        log << "unknown exception cought";
-        *err_msg = strdup(log.str().c_str());
-        if (ret_path) free(ret_path);
-        *path_count = 0;
-        return;
-    }
-}
-

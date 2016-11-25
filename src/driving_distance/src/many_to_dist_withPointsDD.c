@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
@@ -53,7 +54,7 @@ static
 void process(
         char* edges_sql,
         char* points_sql,
-        int64_t *start_pids_arr, size_t size_arr,
+        int64_t *start_pidsArr, size_t size_arr,
         double distance,
 
         bool directed,
@@ -93,21 +94,23 @@ void process(
     free(edges_no_points_query);
 
     if ((total_edges + total_edges_of_points) == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+        if (edges) pfree(edges);
+        if (edges_of_points) pfree(edges_of_points);
+        if (points) pfree(points);
         pgr_SPI_finish();
         return;
     }
 
-    PGR_DBG("Starting processing");
-    char *err_msg = NULL;
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    int errcode = do_pgr_many_withPointsDD(
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
+    do_pgr_many_withPointsDD(
             edges,              total_edges,
             points,             total_points,
             edges_of_points,    total_edges_of_points,
-            start_pids_arr,     size_arr,
+            start_pidsArr,     size_arr,
             distance,
 
             directed,
@@ -117,23 +120,27 @@ void process(
 
             result_tuples,
             result_count,
+            &log_msg,
+            &notice_msg,
             &err_msg);
     time_msg(" processing withPointsDD many starts", start_t, clock());
 
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
-
-    if (!err_msg) free(err_msg);
-
-    pfree(edges);
-    pfree(edges_of_points);
-    pfree(points);
-
-    pgr_SPI_finish();
-
-    if (errcode) {
-        pgr_send_error(errcode);
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
     }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+    if (edges_of_points) pfree(edges_of_points);
+    if (points) pfree(points);
+    if (start_pidsArr) pfree(start_pidsArr);
+    pgr_SPI_finish();
 }
 
 
@@ -190,7 +197,6 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
                 PG_GETARG_BOOL(7),                   // equicost
                 &result_tuples, &result_count);
 
-        pfree(sourcesArr);
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;

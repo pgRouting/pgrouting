@@ -63,13 +63,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // equicost BOOLEAN -- DEFAULT false,
 
 
-int
+void
 do_pgr_many_withPointsDD(
         pgr_edge_t      *edges,             size_t total_edges,
         Point_on_edge_t *points_p,          size_t total_points,
         pgr_edge_t      *edges_of_points,   size_t total_edges_of_points,
 
-        int64_t  *start_pids_arr,    size_t s_len,
+        int64_t  *start_pidsArr,    size_t s_len,
         double distance,
 
         bool directed,
@@ -78,29 +78,48 @@ do_pgr_many_withPointsDD(
         bool equiCost,
 
         General_path_element_t **return_tuples, size_t *return_count,
-        char ** err_msg) {
+        char** log_msg,
+        char** notice_msg,
+        char** err_msg) {
     std::ostringstream log;
+    std::ostringstream notice;
+    std::ostringstream err;
     try {
-        /*
-         * This is the original state
-         */
-        if (*err_msg) free(err_msg);
-        if (*return_tuples) free(return_tuples);
-        (*return_count) = 0;
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert((*return_count) == 0);
+        pgassert(edges);
+        pgassert(points_p);
+        pgassert(edges_of_points);
+        pgassert(start_pidsArr);
 
-        std::vector< Point_on_edge_t >
+        /*
+         * storing on C++ containers
+         */
+        std::vector<int64_t> start_vids(
+                start_pidsArr, start_pidsArr + s_len);
+
+        std::vector<Point_on_edge_t>
             points(points_p, points_p + total_points);
 
+        std::vector<pgr_edge_t> edges_to_modify(
+                edges_of_points, edges_of_points + total_edges_of_points);
+
+        log << "start_vids :";
+        for (const auto v : start_vids) log << v << ", ";
         /*
          * checking here is easier than on the C code
          */
         int errcode = check_points(points, log);
         if (errcode) {
-            return errcode;
+            *log_msg = strdup(log.str().c_str());
+            err << "Unexpected point(s) with same pid"
+                << " but different edge/fraction/side combination found.";
+            *err_msg = pgr_msg(err.str().c_str());
+            return;
         }
-
-        std::vector<pgr_edge_t> edges_to_modify(
-                    edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
         create_new_edges(
@@ -109,10 +128,6 @@ do_pgr_many_withPointsDD(
                 driving_side,
                 new_edges,
                 log);
-
-        std::vector<int64_t> start_vids(
-                start_pids_arr, start_pids_arr + s_len);
-
 
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
@@ -152,23 +167,38 @@ do_pgr_many_withPointsDD(
 
 
         if (count == 0) {
-            *err_msg = strdup("NOTICE: No return values was found");
-            return 0;
+            *notice_msg = pgr_msg("No return values was found");
+            return;
         }
         *return_tuples = pgr_alloc(count, (*return_tuples));
         *return_count = collapse_paths(return_tuples, paths);
-
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
-        return 0;
-    } catch ( ... ) {
-        *err_msg = strdup("Caught unknown exception!");
-        return 1000;
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch(...) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
+
 
 
 // CREATE OR REPLACE FUNCTION pgr_withPointsDD(
@@ -189,7 +219,7 @@ do_pgr_withPointsDD(
         pgr_edge_t  *edges_of_points, size_t total_edges_of_points,
 
         int64_t start_vid,
-        double      distance,
+        double  distance,
 
         char driving_side,
         bool details,
