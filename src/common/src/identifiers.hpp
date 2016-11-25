@@ -27,8 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
+#ifndef SRC_COMMON_SRC_IDENTIFIERS_HPP_
+#define SRC_COMMON_SRC_IDENTIFIERS_HPP_
 #pragma once
+
 #include <set>
 #include <algorithm>
 #include <sstream>
@@ -357,3 +359,6 @@ const T& Identifiers<T>::operator[](size_t index) const {
         }
         return *std::next(m_ids.begin(), index);
 }
+
+
+#endif  // SRC_COMMON_SRC_IDENTIFIERS_HPP_

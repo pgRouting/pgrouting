@@ -33,6 +33,7 @@ along with this program; if not, write to the Free Software
 #include <deque>
 #include <iostream>
 #include <algorithm>
+#include <utility>
 #include "./pgr_types.h"
 #include "./pgr_assert.h"
 
@@ -99,8 +100,6 @@ Path Path::getSubpath(unsigned int j) const {
     }
     pgassert(result.tot_cost() != 0);
     pgassert(this->tot_cost() != 0);
-    //pgassert(true==false);
-    // pgassert(result.m_tot_cost >= m_tot_cost);
     return result;
 }
 
@@ -163,13 +162,13 @@ void Path::append(const Path &other) {
 
     auto last = path.back();
     auto agg_cost = last.agg_cost;
-    
+
     path.pop_back();
 
     for (auto item : other.path) {
         item.agg_cost += agg_cost;
-       push_back(item);
-    };
+        push_back(item);
+    }
 }
 
 

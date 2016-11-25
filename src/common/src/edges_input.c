@@ -491,9 +491,11 @@ get_edges_basic(
 
         if (ntuples > 0) {
             if ((*edges) == NULL)
-                (*edges) = (pgr_basic_edge_t *)palloc0(total_tuples * sizeof(pgr_basic_edge_t));
+                (*edges) = (pgr_basic_edge_t *)palloc0(
+                        total_tuples * sizeof(pgr_basic_edge_t));
             else
-                (*edges) = (pgr_basic_edge_t *)repalloc((*edges), total_tuples * sizeof(pgr_basic_edge_t));
+                (*edges) = (pgr_basic_edge_t *)repalloc(
+                        (*edges), total_tuples * sizeof(pgr_basic_edge_t));
 
             if ((*edges) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -546,7 +548,7 @@ pgr_get_edges(
     get_edges_5_columns(edges_sql, edges, total_edges, ignore_id, normal);
 }
 
-/* select id, source AS target, target AS source, cost, reverse_cost, x1, y1, x2, y2 */
+/* select id, source AS target, target AS source, cost, reverse_cost */
 void
 pgr_get_edges_reversed(
         char *edges_sql,
@@ -577,7 +579,11 @@ pgr_get_edges_xy(
     get_edges_9_columns(edges_sql, edges, total_edges, true);
 }
 
-/* select id, source AS target, target AS source, cost, reverse_cost, x1, y1, x2, y2 */
+/* select id,
+ * source AS target,
+ * target AS source,
+ * cost, reverse_cost,
+ * x1, y1, x2, y2 */
 void
 pgr_get_edges_xy_reversed(
         char *edges_sql,

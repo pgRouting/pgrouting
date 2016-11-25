@@ -22,10 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_
-#define SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_
+#ifndef SRC_DRIVING_DISTANCE_SRC_DRIVEDIST_DRIVER_H_
+#define SRC_DRIVING_DISTANCE_SRC_DRIVEDIST_DRIVER_H_
 
-#include "stdlib.h"
+//#include "stdlib.h"
 #include "./../../common/src/pgr_types.h"
 
 #ifdef __cplusplus
@@ -52,4 +52,4 @@ extern "C" {
 }
 #endif
 
-#endif  //  SRC_DRIVING_DISTANCE_SRC_BOOST_INTERFACE_DRIVEDIST_H_
+#endif  // SRC_DRIVING_DISTANCE_SRC_DRIVEDIST_DRIVER_H_

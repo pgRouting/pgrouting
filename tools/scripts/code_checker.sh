@@ -58,14 +58,6 @@ if test -z "$DIRECTORY"; then
     python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/*/src/*.cpp
 else
     echo --------------------
-    echo ------   *.h  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py src/$DIRECTORY/src/*.h
-    echo --------------------
-    echo ------ *.hpp  ------
-    echo --------------------
-    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/$DIRECTORY/src/*.hpp
-    echo --------------------
     echo ------   *.c  ------
     echo --------------------
     python code_linter/styleguide/cpplint/cpplint.py --extensions=c --filter=-readability/casting src/$DIRECTORY/src/*.c
@@ -73,6 +65,14 @@ else
     echo ------ *.cpp  ------
     echo --------------------
     python code_linter/styleguide/cpplint/cpplint.py --filter=-runtime/references src/$DIRECTORY/src/*.cpp
+    echo --------------------
+    echo ------   *.h  ------
+    echo --------------------
+    python code_linter/styleguide/cpplint/cpplint.py src/$DIRECTORY/src/*.h
+    echo --------------------
+    echo ------ *.hpp  ------
+    echo --------------------
+    python code_linter/styleguide/cpplint/cpplint.py --extensions=hpp --headers=hpp --filter=-runtime/references src/$DIRECTORY/src/*.hpp
 fi
 
 

@@ -22,7 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_
+#define SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_
 #pragma once
+
 #if defined(__MinGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
@@ -88,7 +91,7 @@ Data obtained from postgresql is stored in
 A C array of pgr_edge_t type.
 
 ~~~~{.c}
-std::vector< T_V > 
+std::vector< T_V >
 extract_vertices(pgr_edge_t *, size_t)
 ~~~~
 
@@ -97,7 +100,7 @@ Data obtained from postgresql is stored in
 o a vector container.
 
 ~~~~{.c}
-std::vector< T_V > 
+std::vector< T_V >
 extract_vertices(std::vector< pgr_edge_t >)
 ~~~~
 
@@ -114,7 +117,7 @@ The code is prepared to be used for:
 boost::adjacency_list
 < boost::vecS,  // not tested with other values
 boost::vecS,  // not tested with other values
-boost::undirectedS,  // USinG UNDIRECTED 
+boost::undirectedS,  // USinG UNDIRECTED
 Basic_vertex,  // the vertex class
 Basic_edge >   // the edge class
 ~~~~
@@ -126,7 +129,7 @@ Example Usage:
 
 For this example we will use:
 - Basic_vertex
-- Basic_edge 
+- Basic_edge
 - pgr_edge_t
 
 
@@ -136,7 +139,7 @@ Create Graph type
 ~~~~{.c}
 typedef typename
 graph::Pgr_base_graph <
-boost::adjacency_list < 
+boost::adjacency_list <
 boost::vecS,
     boost::vecS,
     boost::bidirectionalS,
@@ -160,7 +163,7 @@ Vector of unique vertices of the graph
 ~~~~{.c}
 size_t total_edges;
 pgr_edge_t *my_edges = NULL;
-pgr_get_edges(edges_sql, &my_edges, &total_tuples); 
+pgr_get_edges(edges_sql, &my_edges, &total_tuples);
 std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 ~~~~
 
@@ -204,7 +207,7 @@ pgrouting::DirectedGraph digraph(
   - the vertices are inserted
 
 
-Fill the graph 
+Fill the graph
 ---------------------
 
 After initializing the graph with the vertices, the edges can be added.
@@ -226,13 +229,13 @@ class Pgr_base_graph;
 }  // namespace graph
 
 
-/** @name Graph types 
+/** @name Graph types
   Type      |   pgRouting
   :---------: | :---------------------
   UndirectedGraph | Basic undirected graph
   DirectedGraph | Basic directed graph
-  xyUndirectedGraph | X & Y values stored on the vertex 
-  xyDirectedGraph | X & Y values stored on the vertex 
+  xyUndirectedGraph | X & Y values stored on the vertex
+  xyDirectedGraph | X & Y values stored on the vertex
   */
 //@{
 typedef graph::Pgr_base_graph <
@@ -374,7 +377,7 @@ class Pgr_base_graph {
      //! @name Insert edges
      //@{
      /*! @brief Inserts *count* edges of type *T* into the graph
-      *  
+      *
       *  Converts the edges to a std::vector<T> & calls the overloaded
       *  twin function.
       *
@@ -389,17 +392,17 @@ class Pgr_base_graph {
      /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
 
         The set of edges should not have an illegal vertex defined
-        
+
         When the graph is empty calls:
         - @b extract_vertices
         and throws an exception if there are illegal vertices.
-        
-        
+
+
         When developing:
           - if an illegal vertex is found an exception is thrown
           - That means that the set of vertices should be checked in the
             code that is being developed
-        
+
         No edge is inserted when there is an error on the vertices
 
         @param edges
@@ -426,14 +429,14 @@ class Pgr_base_graph {
       * PRECONDITIONS:
       * ~~~~~{.c}
       * precondition(boost::num_vertices(graph) == 0);
-      * for (vertex : vertices) 
+      * for (vertex : vertices)
       *    precondition(!has_vertex(vertex.id));
       * ~~~~~
       *
       * POSTCONDITIONS:
       * ~~~~~{.c}
       * postcondition(boost::num_vertices(graph) == vertices.size());
-      * for (vertex : vertices) 
+      * for (vertex : vertices)
       *    precondition(has_vertex(vertex.id));
       * ~~~~~
       */
@@ -459,7 +462,7 @@ class Pgr_base_graph {
          if (!has_vertex(vertex_id)) {
              return 0;
          }
-         return is_directed()? 
+         return is_directed()?
              in_degree(get_V(vertex_id))
              :  out_degree(get_V(vertex_id));
      }
@@ -511,7 +514,7 @@ class Pgr_base_graph {
 
      ///}
 
-     //! @name boost wrappers with V 
+     //! @name boost wrappers with V
      ///{
 
 
@@ -524,13 +527,13 @@ class Pgr_base_graph {
      V source(E e_idx) const {return boost::source(e_idx, graph);}
      V target(E e_idx) const {return boost::target(e_idx, graph);}
      V adjacent(V v_idx, E e_idx) const {
-         pgassert(is_source(v_idx, e_idx) || is_target(v_idx, e_idx)); 
+         pgassert(is_source(v_idx, e_idx) || is_target(v_idx, e_idx));
          return is_source(v_idx, e_idx)?
              target(e_idx) :
              source(e_idx);
      }
 
-     
+
      /*! @brief in degree of a vertex
       *
       * - when its undirected there is no "concept" of in degree
@@ -875,3 +878,5 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
 
 }  // namespace graph
 }  // namespace pgrouting
+
+#endif  // SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_

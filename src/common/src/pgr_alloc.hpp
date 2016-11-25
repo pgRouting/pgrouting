@@ -21,25 +21,18 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#pragma once
-#if 0
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
 
-// #include <stdlib.h>
-#endif
-#include <string>
+#ifndef SRC_COMMON_SRC_PGR_ALLOC_HPP_
+#define SRC_COMMON_SRC_PGR_ALLOC_HPP_
+#pragma once
+
 
 extern "C" {
 #include "./postgres_connection.h"
 #include <utils/palloc.h>
 }
 
+#include <string>
 
 /*! \fn pgr_alloc(std::size_t size, T *ptr)
  
@@ -59,13 +52,13 @@ extern "C" {
 
 template <typename T>
 T*
-pgr_alloc(std::size_t size, T *ptr) {
+pgr_alloc(std::size_t size, T* ptr) {
     if (!ptr) {
-        ptr = (T*) SPI_palloc(size * sizeof(T));
+        ptr = static_cast<T*>(SPI_palloc(size * sizeof(T)));
     } else {
-        ptr = (T*) SPI_repalloc(ptr, size * sizeof(T));
+        ptr = static_cast<T*>(SPI_repalloc(ptr, size * sizeof(T)));
     }
-    return (T*) ptr;
+    return ptr;
 }
 
 template <typename T>
@@ -74,8 +67,10 @@ pgr_free(T* ptr) {
     if (ptr) {
         pfree(ptr);
     }
-   return nullptr;
+    return nullptr;
 }
 
 char *
 pgr_msg(const std::string &msg);
+
+#endif  // SRC_COMMON_SRC_PGR_ALLOC_HPP_

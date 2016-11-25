@@ -45,7 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
-#include "./boost_interface_drivedist.h"
+#include "./drivedist_driver.h"
 
 PGDLLEXPORT Datum driving_distance(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(driving_distance);

@@ -23,23 +23,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "postgres_connection.h"
-#include "debug_macro.h"
-#include "e_report.h"
+#include "./postgres_connection.h"
+#include "./debug_macro.h"
+#include "./e_report.h"
 
 void
 pgr_notice(
         char* notice) {
-
     PGR_DBG("Returned notice message = %s", notice);
 
-#if 0
-    char *notice = NULL;
-    if (*notice_msg){
-        notice = pgr_cstring2char(*notice_msg);
-        free(*notice_msg);
-    }
-#endif
     if (notice) {
         ereport(NOTICE,
                 (errmsg("%s", notice)));
@@ -50,7 +42,6 @@ void
 pgr_notice2(
         char* log,
         char* notice) {
-
     PGR_DBG("Returned log message = %s", log);
     PGR_DBG("Returned notice message = %s", notice);
 
@@ -58,19 +49,7 @@ pgr_notice2(
         pgr_notice(notice);
         return;
     }
-#if 0
-    char *notice = NULL;
-    if (*notice_msg){
-        notice = pgr_cstring2char(*notice_msg);
-        free(*notice_msg);
-    }
 
-    char *log = NULL;
-    if (*log_msg){
-        log = pgr_cstring2char(*log_msg);
-        free(*log_msg);
-    }
-#endif
     if (notice) {
         ereport(NOTICE,
                 (errmsg("%s", notice),
@@ -103,19 +82,6 @@ pgr_error2(
     PGR_DBG("Returned log message = %s", log);
     PGR_DBG("Returned error message = %s", err);
 
-#if 0
-    char *error = NULL;
-    if (*err_msg) {
-        error = pgr_cstring2char(*err_msg);
-        free(*err_msg);
-    }
-
-    char *log = NULL;
-    if (*log_msg){
-        log = pgr_cstring2char(*log_msg);
-        free(*log_msg);
-    }
-#endif
     if (err) {
         ereport(ERROR,
                 (errmsg_internal("%s", err),
@@ -128,7 +94,6 @@ pgr_global_report(
         char* log,
         char* notice,
         char* err) {
-
     if (!notice && log) {
         ereport(DEBUG1,
                 (errmsg_internal("%s", log)));

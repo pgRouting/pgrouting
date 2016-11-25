@@ -22,7 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_BASEPATH_SSEC_HPP_
+#define SRC_COMMON_SRC_BASEPATH_SSEC_HPP_
 #pragma once
+
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
@@ -227,7 +230,6 @@ class Path {
             const std::vector<double> &distances) :
         m_start_id(graph.graph[v_source].id),
         m_end_id(graph.graph[v_source].id) {
-
         for (V i = 0; i < distances.size(); ++i) {
             if (distances[i] <= distance) {
                 auto cost = distances[i] - distances[predecessors[i]];
@@ -285,7 +287,6 @@ class Path {
             const std::vector<V> &predecessors,
             const std::vector<double> &distances,
             bool normal) {
-
         // no path was found
         if (v_target == predecessors[v_target]) {
             return;
@@ -334,3 +335,4 @@ class Path {
 };
 
 
+#endif  // SRC_COMMON_SRC_BASEPATH_SSEC_HPP_
