@@ -56,21 +56,6 @@ extern "C" {
             char ** err_msg);
 
 
-    int do_pgr_withPointsDD(
-            pgr_edge_t  *edges,             size_t total_edges,
-            Point_on_edge_t  *points,       size_t total_points,
-            pgr_edge_t  *edges_of_points,   size_t total_edges_of_points,
-
-            int64_t start_pid,
-            double  distance,
-
-            char driving_side,
-            bool details,
-            bool directed,
-
-            General_path_element_t **return_tuples,
-            size_t *return_count,
-            char** err_msg);
 #ifdef __cplusplus
 }
 #endif
