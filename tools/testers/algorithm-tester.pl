@@ -286,6 +286,7 @@ sub process_single_test{
             $stats{z_fail}++;
             next;
         };
+        print PSQL "set client_min_messages to NOTICE;\n";
         print PSQL "set client_min_messages to WARNING;\n" if $ignore;
         print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
     }
@@ -298,7 +299,7 @@ sub process_single_test{
             next;
         };
     }
-    #print PSQL "set client_min_messages to NOTICE;\n";
+    print PSQL "set client_min_messages to NOTICE;\n";
     print PSQL "set client_min_messages to WARNING;\n" if $ignore;
     print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
 
