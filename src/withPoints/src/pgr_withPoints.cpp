@@ -41,10 +41,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <cassert>
 #include "./pgr_withPoints.hpp"
-#include "./msg_logger.hpp"
 
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
+
+static
+void
+PGR_LOG_POINTS(
+        std::ostringstream &log,
+        const std::vector< Point_on_edge_t > &points,
+        const std::string &title) {
+    log << title << "\n";
+    for (const auto &p : points) {
+        log << p.pid << "\t"
+            << p.edge_id << "\t"
+            << p.fraction << "\t"
+            << p.side << "\n";
+    }
+}
 
 /*
  * 0 = success
@@ -59,7 +73,7 @@ int check_points(std::vector< Point_on_edge_t > &points,
      */
     std::sort(points.begin(), points.end(),
             [](const Point_on_edge_t &a, const Point_on_edge_t &b)
-           -> bool {
+            -> bool {
             if (a.pid != b.pid) return a.pid < b.pid;
             if (a.edge_id != b.edge_id) return a.edge_id < b.edge_id;
             if (a.fraction != b.fraction) return a.fraction < b.fraction;
@@ -104,8 +118,8 @@ eliminate_details_dd(
     Path newPath(path.start_id(), path.end_id());
     for (const auto &pathstop : path) {
         if ((pathstop.node == path.start_id())
-                 || (pathstop.node == path.end_id())
-                 || (pathstop.node > 0)) {
+                || (pathstop.node == path.end_id())
+                || (pathstop.node > 0)) {
             newPath.push_back(pathstop);
         }
     }
@@ -127,8 +141,8 @@ eliminate_details(
     double cost = 0.0;
     for (const auto &pathstop : path) {
         if ((pathstop.node == path.start_id())
-                 || (pathstop.node == path.end_id())
-                 || (pathstop.node > 0)) {
+                || (pathstop.node == path.end_id())
+                || (pathstop.node > 0)) {
             newPath.push_back(pathstop);
             if (pathstop.node != path.end_id()) cost = 0.0;
             continue;
