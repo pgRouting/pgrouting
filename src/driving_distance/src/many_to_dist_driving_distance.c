@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -49,13 +49,13 @@ PGDLLEXPORT Datum driving_many_to_dist(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(driving_many_to_dist);
 
 
-static 
+static
 void process(
         char* sql,
         ArrayType *starts,
         float8 distance,
         bool directed,
-        bool equicost, 
+        bool equicost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
@@ -86,7 +86,9 @@ void process(
             &log_msg,
             &notice_msg,
             &err_msg);
-    time_msg("processing pgr_drivingDistance(multiple starts)", start_t, clock());
+
+    time_msg("processing pgr_drivingDistance()",
+            start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -102,7 +104,7 @@ void process(
     if (edges) pfree(edges);
     if (start_vidsArr) pfree(start_vidsArr);
 
-    pgr_SPI_finish(); 
+    pgr_SPI_finish();
 }
 
 

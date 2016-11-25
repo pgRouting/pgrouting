@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -50,24 +50,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum many_withPointsDD(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(many_withPointsDD);
 
-static 
+static
 void process(
         char* edges_sql,
         char* points_sql,
-        int64_t *start_pidsArr, size_t size_arr,
+        ArrayType* starts,
         double distance,
 
         bool directed,
         char *driving_side,
         bool details,
-        bool equicost, 
+        bool equicost,
 
         General_path_element_t **result_tuples,
-        size_t *result_count  ){
+        size_t *result_count) {
     driving_side[0] = estimate_drivingSide(driving_side[0]);
     PGR_DBG("estimated driving side:%c", driving_side[0]);
 
     pgr_SPI_connect();
+
+    size_t total_starts = 0;
+    int64_t* start_pidsArr = pgr_get_bigIntArray(&total_starts, starts);
+    PGR_DBG("sourcesArr size %ld ", total_starts);
 
     Point_on_edge_t *points = NULL;
     size_t total_points = 0;
@@ -83,7 +87,8 @@ void process(
 
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(
+            edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
@@ -110,13 +115,13 @@ void process(
             edges,              total_edges,
             points,             total_points,
             edges_of_points,    total_edges_of_points,
-            start_pidsArr,     size_arr,
+            start_pidsArr,      total_starts,
             distance,
 
             directed,
             driving_side[0],
             details,
-            equicost, 
+            equicost,
 
             result_tuples,
             result_count,
@@ -150,13 +155,10 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc               tuple_desc;
 
-    /*******************************************************************************/
-    /*                          MODIFY AS NEEDED                                   */
-    /*                                                                             */
+    /**********************************************************************/
     General_path_element_t  *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                             */
-    /*******************************************************************************/
+    /**********************************************************************/
 
 
     if (SRF_IS_FIRSTCALL()) {
@@ -165,8 +167,7 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   */
+        /**********************************************************************/
         // CREATE OR REPLACE FUNCTION pgr_withPointsDD(
         // edges_sql TEXT,
         // points_sql TEXT,
@@ -178,25 +179,21 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         // details BOOLEAN -- DEFAULT false,
         // equicost BOOLEAN -- DEFAULT false,
 
-        int64_t *sourcesArr= NULL;
-        size_t num = 0;
-
-        sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("sourcesArr size %ld ", num);
 
         PGR_DBG("Calling driving_many_to_dist_driver");
         process(
-                text_to_cstring(PG_GETARG_TEXT_P(0)),  // edges_sql
-                text_to_cstring(PG_GETARG_TEXT_P(1)),  // points_sql
-                sourcesArr, num,                     // start_pids array
-                PG_GETARG_FLOAT8(3),                 // distance
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                PG_GETARG_ARRAYTYPE_P(2),
+                PG_GETARG_FLOAT8(3),
 
-                PG_GETARG_BOOL(4),                   // directed
-                text_to_cstring(PG_GETARG_TEXT_P(5)),  // driving side
-                PG_GETARG_BOOL(6),                   // details
-                PG_GETARG_BOOL(7),                   // equicost
+                PG_GETARG_BOOL(4),
+                text_to_cstring(PG_GETARG_TEXT_P(5)),
+                PG_GETARG_BOOL(6),
+                PG_GETARG_BOOL(7),
                 &result_tuples, &result_count);
 
+        /**********************************************************************/
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -204,7 +201,8 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -226,15 +224,16 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         Datum *values;
         bool* nulls;
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
+        /**********************************************************************/
+        size_t numb = 6;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
-        nulls[0] = false;
-        nulls[1] = false;
-        nulls[2] = false;
-        nulls[3] = false;
-        nulls[4] = false;
-        nulls[5] = false;
+        size_t i;
+        for (i = 0; i < numb; ++i) {
+            nulls[i] = false;
+        }
+
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
@@ -242,12 +241,11 @@ many_withPointsDD(PG_FUNCTION_ARGS) {
         values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
 
-        tuple = heap_form_tuple(tuple_desc, values, nulls);
+        /**********************************************************************/
 
-        /* make the tuple into a datum */
+        tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
 
-        /* clean up (this is not really necessary) */
         pfree(values);
         pfree(nulls);
 
