@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_BDDIJKSTRA_SRC_PGR_BDDIJKSTRA_HPP_
+#define SRC_BDDIJKSTRA_SRC_PGR_BDDIJKSTRA_HPP_
 #pragma once
 
 #if defined(__MINGW32__) || defined(_MSC_VER)
@@ -30,20 +32,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-#include <deque>
-#include <vector>
-
 #include <boost/config.hpp>
-
-
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/dijkstra_shortest_paths.hpp>
 
-#include <vector>
-#include <map>
+#include <string>
 #include <queue>
 #include <utility>
+#include <vector>
+#include <limits>
 #include <functional>
+
 
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/basePath_SSEC.hpp"
@@ -54,7 +53,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < typename G >
 class Pgr_bdDijkstra {
-
      typedef typename G::V V;
      typedef typename G::E E;
 
@@ -66,7 +64,7 @@ class Pgr_bdDijkstra {
 
 
  public:
-     Pgr_bdDijkstra(G &pgraph):
+     explicit Pgr_bdDijkstra(G &pgraph):
          graph(pgraph),
          INF(std::numeric_limits<double>::max()) {
              m_log << "constructor\n";
@@ -122,7 +120,7 @@ class Pgr_bdDijkstra {
 
          v_min_node = -1;
          best_cost = INF;
-     } 
+     }
 
      Path bidir_dijkstra(bool only_cost) {
          m_log << "bidir_dijkstra\n";
@@ -191,7 +189,7 @@ class Pgr_bdDijkstra {
          forward_path.append(backward_path);
          m_log << forward_path;
          return forward_path;
-     };
+     }
 
 
 
@@ -199,7 +197,7 @@ class Pgr_bdDijkstra {
          /*
           * Update common node
           */
-         if(forward_finished[node] && backward_finished[node]) {
+         if (forward_finished[node] && backward_finished[node]) {
              if (best_cost >= forward_cost[node] + backward_cost[node]) {
                  v_min_node = node;
                  best_cost =  forward_cost[node] + backward_cost[node];
@@ -211,16 +209,14 @@ class Pgr_bdDijkstra {
          return false;
      }
 
-     void explore_forward(const Cost_Vertex_pair &node){
+     void explore_forward(const Cost_Vertex_pair &node) {
          typename G::EO_i out, out_end;
 
          auto current_cost = node.first;
          auto current_node = node.second;
 
-
          for (boost::tie(out, out_end) = out_edges(current_node, graph.graph);
                  out != out_end; ++out) {
-
              auto edge_cost = graph[*out].cost;
              auto next_node = graph.adjacent(current_node, *out);
 
@@ -234,7 +230,7 @@ class Pgr_bdDijkstra {
              }
          }
          forward_finished[current_node] = true;
-     };
+     }
 
      void explore_backward(const Cost_Vertex_pair &node) {
          typename G::EI_i in, in_end;
@@ -244,7 +240,6 @@ class Pgr_bdDijkstra {
 
          for (boost::tie(in, in_end) = in_edges(current_node, graph.graph);
                  in != in_end; ++in) {
-
              auto edge_cost = graph[*in].cost;
              auto next_node = graph.adjacent(current_node, *in);
 
@@ -267,7 +262,7 @@ class Pgr_bdDijkstra {
      V v_target;  //!< target descriptor
      V v_min_node;  //!< target descriptor
 
-     double INF; //!< infinity
+     double INF;  //!< infinity
 
      mutable std::ostringstream m_log;
      Priority_queue forward_queue;
@@ -287,3 +282,4 @@ class Pgr_bdDijkstra {
      std::vector<double> forward_cost;
 };
 
+#endif  // SRC_BDDIJKSTRA_SRC_PGR_BDDIJKSTRA_HPP_

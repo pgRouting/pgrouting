@@ -34,16 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
 
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/e_report.h"
