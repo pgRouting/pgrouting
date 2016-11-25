@@ -97,19 +97,27 @@ do_pgr_many_to_many_withPoints(
         bool details,
         bool directed,
         bool only_cost,
-        bool normal, 
+        bool normal,
 
         General_path_element_t **return_tuples, size_t *return_count,
 
-        char ** log_msg,
-        char ** err_msg) {
+        char** log_msg,
+        char** notice_msg,
+        char** err_msg) {
     std::ostringstream log;
+    std::ostringstream notice;
     std::ostringstream err;
     try {
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
-        pgassert(!(*log_msg));
-        pgassert(!(*err_msg));
+        pgassert(edges);
+        pgassert(points_p);
+        pgassert(edges_of_points);
+        pgassert(start_pidsArr);
+        pgassert(end_pidsArr);
 
         std::vector< Point_on_edge_t >
             points(points_p, points_p + total_points);
@@ -120,8 +128,8 @@ do_pgr_many_to_many_withPoints(
                     point.side = 'l';
                 } else if (point.side == 'l') {
                     point.side = 'r';
-                };
-                point.fraction = 1 - point.fraction; 
+                }
+                point.fraction = 1 - point.fraction;
             }
             if (driving_side == 'r') {
                 driving_side = 'l';
@@ -133,14 +141,16 @@ do_pgr_many_to_many_withPoints(
         int errcode = check_points(points, log);
         if (errcode) {
             *log_msg = strdup(log.str().c_str());
-            err << "Unexpected point(s) with same pid but different edge/fraction/side combination found.";
-            *err_msg = strdup(err.str().c_str());
+            err << "Unexpected point(s) with same pid"
+                << " but different edge/fraction/side combination found.";
+            *err_msg = pgr_msg(err.str().c_str());
             return;
         }
 
 
         std::vector< pgr_edge_t >
-            edges_to_modify(edges_of_points, edges_of_points + total_edges_of_points);
+            edges_to_modify(
+                    edges_of_points, edges_of_points + total_edges_of_points);
 
         std::vector< pgr_edge_t > new_edges;
         create_new_edges(
@@ -165,13 +175,19 @@ do_pgr_many_to_many_withPoints(
             pgrouting::DirectedGraph digraph(gType);
             digraph.insert_edges(edges, total_edges);
             digraph.insert_edges(new_edges);
-            paths = pgr_dijkstra(digraph, start_vertices, end_vertices, only_cost, normal);
+            paths = pgr_dijkstra(
+                    digraph,
+                    start_vertices, end_vertices,
+                    only_cost, normal);
         } else {
             log << "Working with Undirected Graph\n";
             pgrouting::UndirectedGraph undigraph(gType);
             undigraph.insert_edges(edges, total_edges);
             undigraph.insert_edges(new_edges);
-            paths = pgr_dijkstra(undigraph, start_vertices, end_vertices, only_cost, normal);
+            paths = pgr_dijkstra(
+                    undigraph,
+                    start_vertices, end_vertices,
+                    only_cost, normal);
         }
 
         if (!details) {
@@ -200,30 +216,38 @@ do_pgr_many_to_many_withPoints(
             (*return_tuples) = NULL;
             (*return_count) = 0;
             log <<
-                "No paths found between Starting and any of the Ending vertices\n";
-            *err_msg = strdup(log.str().c_str());
+                "No paths found";
+            *err_msg = pgr_msg(log.str().c_str());
             return;
         }
 
         (*return_tuples) = pgr_alloc(count, (*return_tuples));
         log << "Converting a set of paths into the tuples\n";
         (*return_count) = (collapse_paths(return_tuples, paths));
-        *log_msg = strdup(log.str().c_str());
+
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
-    } catch (std::exception& except) {
-        if (*return_tuples) free(*return_tuples);
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
-

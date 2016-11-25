@@ -33,21 +33,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
@@ -59,47 +54,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum one_to_many_withPoints(PG_FUNCTION_ARGS);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
 static
 void
 process(
         char* edges_sql,
         char* points_sql,
         int64_t start_pid,
-        int64_t *end_pidsArr,
-        size_t size_end_pidsArr,
+        ArrayType *ends,
         bool directed,
         char *driving_side,
         bool details,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
-    driving_side[0] = (char) tolower(driving_side[0]);
-    PGR_DBG("driving side:%c", driving_side[0]);
-    if (!((driving_side[0] == 'r')
-                 || (driving_side[0] == 'l'))) {
-        driving_side[0] = 'b';
-    }
+    driving_side[0] = estimate_drivingSide(driving_side[0]);
     PGR_DBG("estimated driving side:%c", driving_side[0]);
+
     pgr_SPI_connect();
 
+    size_t size_end_pidsArr = 0;
+    int64_t* end_pidsArr =
+        pgr_get_bigIntArray(&size_end_pidsArr, ends);
+
     PGR_DBG("load the points");
-    Point_on_edge_t *points = NULL;
     size_t total_points = 0;
+    Point_on_edge_t *points = NULL;
     pgr_get_points(points_sql, &points, &total_points);
 
-#if 0
-#ifndef NDEBUG
-    size_t i = 0;
-    for (i = 0; i < total_points; i ++) {
-        PGR_DBG("%ld\t%ld\t%f\t%c", points[i].pid, points[i].edge_id, points[i].fraction, points[i].side);
-    }
-#endif
-#endif
-    /*
-     * TODO move this code to c++
-     */
     PGR_DBG(" -- change the query");
     char *edges_of_points_query = NULL;
     char *edges_no_points_query = NULL;
@@ -114,21 +95,10 @@ process(
     PGR_DBG("load the edges that match the points");
     pgr_edge_t *edges_of_points = NULL;
     size_t total_edges_of_points = 0;
-    pgr_get_edges(edges_of_points_query, &edges_of_points, &total_edges_of_points);
+    pgr_get_edges(
+            edges_of_points_query, &edges_of_points, &total_edges_of_points);
 
     PGR_DBG("Total %ld edges in query:", total_edges_of_points);
-#if 0
-#ifndef NDEBUG
-    for (i = 0; i < total_edges_of_points; i ++) {
-        PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
-                edges_of_points[i].id,
-                edges_of_points[i].source,
-                edges_of_points[i].target,
-                edges_of_points[i].cost,
-                edges_of_points[i].reverse_cost);
-    }
-#endif
-#endif
 
 
     PGR_DBG("load the edges that don't match the points");
@@ -137,34 +107,21 @@ process(
     pgr_get_edges(edges_no_points_query, &edges, &total_edges);
 
     PGR_DBG("Total %ld edges in query:", total_edges);
-#if 0
-#ifndef NDEBUG
-    for (i = 0; i < total_edges; i ++) {
-        PGR_DBG("%ld\t%ld\t%ld\t%f\t%f",
-                edges[i].id,
-                edges[i].source,
-                edges[i].target,
-                edges[i].cost,
-                edges[i].reverse_cost);
-    }
-#endif
-    PGR_DBG("freeing allocated memory not used anymore");
-#endif
+
     free(edges_of_points_query);
     free(edges_no_points_query);
 
     if ((total_edges + total_edges_of_points) == 0) {
         PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
 
-    PGR_DBG("Starting processing");
-    char *err_msg = NULL;
-    char *log_msg = NULL;
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
     do_pgr_many_to_many_withPoints(
             edges, total_edges,
             points, total_points,
@@ -181,26 +138,34 @@ process(
             result_tuples, result_count,
 
             &log_msg,
+            &notice_msg,
             &err_msg);
-    time_msg(" processing withPoints one to many", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("LOG: %s\n", log_msg);
 
-    if (log_msg) free(log_msg);
-
-    if (err_msg) {
-        if (*result_tuples) free(*result_tuples);
-        pfree(end_pidsArr);
-        pfree(edges);
-        elog(ERROR, "%s", err_msg);
-        free(err_msg);
+    if (only_cost) {
+        time_msg("processing pgr_withPointsCost(one to many)",
+                start_t, clock());
+    } else {
+        time_msg("processing pgr_withPoints(one to many)", start_t, clock());
     }
-    pfree(edges);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+    if (points) pfree(points);
+    if (edges_of_points) pfree(edges_of_points);
+    if (end_pidsArr) pfree(end_pidsArr);
     pgr_SPI_finish();
 }
 
-/*                                                                             */
-/*******************************************************************************/
 
 PG_FUNCTION_INFO_V1(one_to_many_withPoints);
 PGDLLEXPORT Datum
@@ -208,13 +173,10 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
-    /*******************************************************************************/
-    /*                          MODIFY AS NEEDED                                   */
-    /*                                                                             */
-    General_path_element_t *result_tuples = 0;
+    /**********************************************************************/
+    General_path_element_t *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                             */
-    /*******************************************************************************/
+    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -222,8 +184,7 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   */
+        /**********************************************************************/
         // CREATE OR REPLACE FUNCTION pgr_withPoint(
         // edges_sql TEXT,
         // points_sql TEXT,
@@ -235,17 +196,12 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
         // only_cost BOOLEAN DEFAULT false,
 
 
-        PGR_DBG("Initializing arrays");
-        int64_t* end_pidsArr = NULL;
-        size_t size_end_pidsArr = 0;
-        end_pidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_pidsArr, PG_GETARG_ARRAYTYPE_P(3));
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
-                end_pidsArr, size_end_pidsArr,
+                PG_GETARG_ARRAYTYPE_P(3),
                 PG_GETARG_BOOL(4),
                 text_to_cstring(PG_GETARG_TEXT_P(5)),
                 PG_GETARG_BOOL(6),
@@ -253,10 +209,7 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        PGR_DBG("Cleaning arrays");
-        pfree(end_pidsArr);
-        /*                                                                             */
-        /*******************************************************************************/
+        /**********************************************************************/
 
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
@@ -264,7 +217,8 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -284,8 +238,7 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
         Datum        *values;
         bool*        nulls;
 
-        /*******************************************************************************/
-        /*                          MODIFY AS NEEDED                                   */
+        /**********************************************************************/
         // OUT seq BIGINT,
         // OUT path_seq,
         // OUT node BIGINT,
@@ -311,7 +264,8 @@ one_to_many_withPoints(PG_FUNCTION_ARGS) {
         values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
         values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
         values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
-        /*******************************************************************************/
+
+        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);

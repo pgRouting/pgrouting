@@ -209,8 +209,10 @@ adjust_pids(
 
 
 struct pointCompare {
-    bool operator() (const Point_on_edge_t& lhs, const Point_on_edge_t& rhs) const
-    { return lhs.fraction < rhs.fraction? true : lhs.pid < rhs.pid;}
+    bool operator() (
+            const Point_on_edge_t& lhs,
+            const Point_on_edge_t& rhs) const
+    {return lhs.fraction < rhs.fraction? true : lhs.pid < rhs.pid;}
 };
 
 bool
@@ -257,7 +259,8 @@ create_new_edges(
             }
         }
         if (points_on_edge.empty()) {
-            log << "For some reason we didn't find a point belonging to the edge, must be an error\n";
+            log << "For some reason didn't find a point belonging to the edge"
+                << ", must be an error\n";
             return false;
         }
 #if 0
@@ -276,7 +279,8 @@ create_new_edges(
         double agg_rcost = 0;
         double last_cost = 0;
         double last_rcost = 0;
-        std::vector< Point_on_edge_t> the_points(points_on_edge.begin(), points_on_edge.end());
+        std::vector<Point_on_edge_t> the_points(
+                points_on_edge.begin(), points_on_edge.end());
 
         for (auto &point : the_points) {
             /* the point either has
@@ -290,15 +294,16 @@ create_new_edges(
                 << "/t" << point.fraction
                 << "\t" << point.side << "\n";
             if (point.fraction <= 0 ||  point.fraction >= 1) {
-                log << "For some reason an invalid fraction was accepted, must be an error\n";
+                log << "For some reason an invalid fraction was accepted,"
+                    << " must be an error\n";
                 return false;
             }
             if (point.fraction == 0) {
-                log << "vertex_id of the point is the source" << edge.source << "\n";
+                log << "Point's vertex_id = source" << edge.source << "\n";
                 point.vertex_id = edge.source;
             }
             if (point.fraction == 1) {
-                log << "vertex_id of the point is the target" << edge.target << "\n";
+                log << "point's vertex_id = target" << edge.target << "\n";
                 point.vertex_id = edge.target;
             }
             if (point.fraction > 0 &&  point.fraction < 1) {
@@ -311,18 +316,27 @@ create_new_edges(
             double deltaFraction = point.fraction - prev_fraction;
             double deltarFraction = point.fraction - prev_rfraction;
             if ((edge.cost < 0 ||  edge.reverse_cost < 0)
-                     || driving_side == 'b'
-                     || point.side == 'b') {
-                log << "Edge is one way or driving side is both or point side is both\n";
-                log << "Edge is one way: " << (edge.cost < 0 ||  edge.reverse_cost < 0) << "\n";
+                    || driving_side == 'b'
+                    || point.side == 'b') {
+                log << "Edge is one way "
+                    << " or driving side is both or point side is both\n";
+                log << "Edge is one way: "
+                    << (edge.cost < 0 || edge.reverse_cost < 0)
+                    << "\n";
                 log << "driving side: " << driving_side << "\n";
                 log << "point side: " << point.side << "\n";
                 if (point.fraction > 0 &&  point.fraction < 1) {
                     if (edge.cost >= 0) {
                         last_cost = deltaFraction * edge.cost;
-                        pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, last_cost, -1};
+                        pgr_edge_t new_edge = {
+                            edge.id,
+                            prev_target,
+                            point.vertex_id,
+                            last_cost,
+                            -1};
                         new_edges.push_back(new_edge);
-                        log << "new_edge: (id, source, target, cost, reverse_cost) = ("
+                        log << "new_edge("
+                            << "id, source, target, cost, reverse_cost) = ("
                             << new_edge.id << "\t"
                             << new_edge.source << "\t"
                             << new_edge.target << "\t"
@@ -331,9 +345,15 @@ create_new_edges(
                     }
                     if (edge.reverse_cost >= 0) {
                         last_rcost = deltarFraction * edge.reverse_cost;
-                        pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, -1, last_rcost};
+                        pgr_edge_t new_edge = {
+                            edge.id,
+                            prev_target,
+                            point.vertex_id,
+                            -1,
+                            last_rcost};
                         new_edges.push_back(new_edge);
-                        log << "new_edge: (id, source, target, cost, reverse_cost) = ("
+                        log << "new_edge("
+                            << "id, source, target, cost, reverse_cost) = ("
                             << new_edge.id << "\t"
                             << new_edge.source << "\t"
                             << new_edge.target << "\t"
@@ -355,13 +375,15 @@ create_new_edges(
             pgassert(point.side != 'b');
 
             if (driving_side == point.side) {
-                log << "two way and driving side is == than the side of the point\n";
-                log << "Breaking (source, target) edge only when its not the extreme of the segment\n";
+                log << "two way and driving side == the side of the point\n";
+                log << "Breaking (source, target) when its not the extreme\n";
                 if (point.fraction > 0 &&  point.fraction < 1) {
                     last_cost = deltaFraction * edge.cost;
-                    pgr_edge_t new_edge = {edge.id , prev_target, point.vertex_id, last_cost, -1};
+                    pgr_edge_t new_edge = {
+                        edge.id, prev_target, point.vertex_id, last_cost, -1};
                     new_edges.push_back(new_edge);
-                    log << "new_edge: (id, source, target, cost, reverse_cost) = ("
+                    log << "new_edge("
+                        << "id, source, target, cost, reverse_cost) = ("
                         << new_edge.id << "\t"
                         << new_edge.source << "\t"
                         << new_edge.target << "\t"
@@ -374,7 +396,7 @@ create_new_edges(
                 continue;
             }
 
-            log << "two way and driving side is != than the side of the point\n";
+            log << "\ntwo way and driving side != the side of the point";
             if (point.fraction > 0 &&  point.fraction < 1) {
                 last_rcost = deltarFraction * edge.reverse_cost;
                 pgr_edge_t new_edge = {
@@ -384,7 +406,7 @@ create_new_edges(
                     -1,
                     last_rcost};
                 new_edges.push_back(new_edge);
-                log << "new_edge: (id, source, target, cost, reverse_cost) = ("
+                log << "\nnew_edge(id, source, target, cost, reverse_cost) = ("
                     << new_edge.id << "\t"
                     << new_edge.source << "\t"
                     << new_edge.target << "\t"
