@@ -146,7 +146,7 @@ bool Pgr_deadEndContraction<G>::is_dead_end(G &graph, V v) {
      *       and both are from/to the same vertex
      *  (4) many incoming edges
      *       and no outgoing edges
-     *  (5) many outgoing edges
+     *  (5) many outgoing edges TODO but all go to same vertex
      *       and no incoming edges
      *
      * NOT dead end when:
@@ -200,16 +200,17 @@ bool Pgr_deadEndContraction<G>::is_dead_end(G &graph, V v) {
         return true;
     }
 
+#if 0
     /*
      * Case 5
      */
     if (graph.in_degree(v) == 0 && graph.out_degree(v) > 0) {
 #ifndef NDEBUG
-        debug << "\nIs Dead End case(4)";
+        debug << "\nIs Dead End case(5)";
 #endif
         return true;
     }
-
+#endif
     debug << "Is Not Dead End\n";
     return false;
 }
