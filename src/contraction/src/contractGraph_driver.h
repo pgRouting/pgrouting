@@ -55,7 +55,10 @@ extern "C" {
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
-        char ** err_msg);
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg);
+
 
 #ifdef __cplusplus
 }

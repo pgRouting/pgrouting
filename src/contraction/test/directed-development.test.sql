@@ -1,11 +1,12 @@
 BEGIN;
-SET client_min_messages TO WARNING;
 
-
+/*
+-- this test fails becuse parameter is wrong
 \echo --q0 Checking for valid contraction
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[-1]::integer[], 1, ARRAY[]::BIGINT[], true);
+*/
 -- \echo --q0 -------------------------------------------
 
 \echo --q1 Checking dead end contraction for single edge

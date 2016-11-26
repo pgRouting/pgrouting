@@ -200,9 +200,8 @@ struct {
  * return type for contraction
  * ***********************************************************************/
 typedef struct {
-    int64_t seq;
     int64_t id;
-    char *type;
+    char* type;
     int64_t source;
     int64_t target;
     double cost;

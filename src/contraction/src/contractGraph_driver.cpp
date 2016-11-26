@@ -51,6 +51,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_types.h"
 
+static
+bool
+is_valid_contraction(int64_t number) {
+    switch (number) {
+        case 1:
+        case 2:
+            return true;
+            break;
+        default:
+            return false;
+            break;
+    }
+}
+
 
 template <typename G>
 static void process_contraction(
@@ -111,35 +125,37 @@ static void process_contraction(
 }
 
 template <typename G>
+static
 void get_postgres_result(
         G &graph,
         const Identifiers<int64_t> remaining_vertices,
         const std::vector< pgrouting::CH_edge > shortcut_edges,
-        pgr_contracted_blob *return_tuples) {
+        pgr_contracted_blob **return_tuples) {
+
+    (*return_tuples) = pgr_alloc(
+            remaining_vertices.size() + shortcut_edges.size(),
+            (*return_tuples));
+
     size_t sequence = 0;
-    int i = 1;
-    char *type;
+
     for (auto id : remaining_vertices) {
-        type = strdup("v");
-        int64_t *contracted_vertices = NULL;
+        int64_t* contracted_vertices = NULL;
         int contracted_vertices_size = 0;
         graph.get_contracted_vertices(&contracted_vertices,
                 contracted_vertices_size, id);
-        return_tuples[sequence] = {i, id, type, -1, -1, -1.00,
+        (*return_tuples)[sequence] = {id, (char*)"v", -1, -1, -1.00,
             contracted_vertices, contracted_vertices_size};
-        i++;
         ++sequence;
     }
+
     for (auto edge : shortcut_edges) {
-        type = strdup("e");
-        int64_t *contracted_vertices = NULL;
+        int64_t* contracted_vertices = NULL;
         int contracted_vertices_size = 0;
         graph.get_ids(&contracted_vertices,
                 contracted_vertices_size, edge.contracted_vertices());
-        return_tuples[sequence] = {i, edge.id, type,
+        (*return_tuples)[sequence] = {edge.id, (char*)"e",
             edge.source, edge.target, edge.cost,
             contracted_vertices, contracted_vertices_size};
-        i++;
         ++sequence;
     }
 }
@@ -166,22 +182,43 @@ do_pgr_contractGraph(
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
-        char ** err_msg) {
+        char **log_msg, 
+        char **notice_msg, 
+        char **err_msg) {
     std::ostringstream log;
+    std::ostringstream notice;
     std::ostringstream err;
     try {
+        pgassert(total_edges != 0);
+        pgassert(size_contraction_order != 0);
+        pgassert(max_cycles != 0);
+        pgassert(!(*log_msg));
+        pgassert(!(*notice_msg));
+        pgassert(!(*err_msg));
+        pgassert(!(*return_tuples));
+        pgassert(*return_count == 0);
+
         std::ostringstream debug;
-        graphType gType = directed? DIRECTED: UNDIRECTED;
         /*
          * Converting to C++ structures
          */
-        std::vector< pgr_edge_t > edges(data_edges, data_edges + total_edges);
-        std::vector< int64_t > forbid(
+        std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
+        std::vector<int64_t> forbid(
                 forbidden_vertices,
                 forbidden_vertices + size_forbidden_vertices);
-        std::vector< int64_t > ordering(
+        std::vector<int64_t> ordering(
                 contraction_order,
                 contraction_order + size_contraction_order);
+
+        for (const auto o : ordering) {
+            if (!is_valid_contraction(o)) {
+                *err_msg = pgr_msg("Invalid Contraction Type found");
+                log << "Contraction type " << o << " not valid";
+                *log_msg = pgr_msg(log.str().c_str());
+                return;
+            }
+        }
+
 
         /*
          * Extracting vertices of the graph
@@ -214,9 +251,10 @@ do_pgr_contractGraph(
         }
         log << " }\n";
         log << "max_cycles " << max_cycles << "\n";
-        log << "directed " << gType << "\n";
+        log << "directed " << directed << "\n";
 #endif
 
+        graphType gType = directed? DIRECTED: UNDIRECTED;
         if (directed) {
             log << "Working with directed Graph\n";
             pgrouting::CHDirectedGraph digraph(gType);
@@ -226,16 +264,11 @@ do_pgr_contractGraph(
                     remaining_vertices, shortcut_edges,
                     log, err);
 
-            (*return_tuples) = pgr_alloc(
-                    remaining_vertices.size()+shortcut_edges.size(),
-                    (*return_tuples));
-            (*return_count) = remaining_vertices.size()+shortcut_edges.size();
-
             get_postgres_result(
                     digraph,
                     remaining_vertices,
                     shortcut_edges,
-                    *return_tuples);
+                    return_tuples);
         } else {
             log << "Working with Undirected Graph\n";
 
@@ -245,33 +278,39 @@ do_pgr_contractGraph(
                     remaining_vertices, shortcut_edges,
                     log, err);
 
-            (*return_tuples) = pgr_alloc(
-                    remaining_vertices.size()+shortcut_edges.size(),
-                    (*return_tuples));
-            (*return_count) = remaining_vertices.size()+shortcut_edges.size();
-
             get_postgres_result(
                     undigraph,
                     remaining_vertices,
                     shortcut_edges,
-                    *return_tuples);
+                    return_tuples);
         }
 
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
-    }
-    catch (AssertFailedException &except) {
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
-    } catch (std::exception& except) {
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        (*return_count) = remaining_vertices.size()+shortcut_edges.size();
+
+
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
