@@ -45,6 +45,7 @@ template < class G >
 class Pgr_deadEndContraction {
  private:
      typedef typename G::V V;
+     typedef typename G::E E;
 
  public:
      void setForbiddenVertices(
@@ -115,6 +116,9 @@ bool Pgr_deadEndContraction<G>::is_dead_end(G &graph, V v) {
     debug << "Is dead end: " << graph.graph[v].id << "?\n";
 #endif
 
+    if (forbiddenVertices.has(v)) {
+        return false;
+    }
     /*
      * Undirected graph
      */
@@ -131,56 +135,81 @@ bool Pgr_deadEndContraction<G>::is_dead_end(G &graph, V v) {
         return false;
     }
 
+    pgassert(graph.is_directed());
     /*
      * directed graph
+     *
+     * is dead end when:
+     *  (1) one outgoing edge, no incoming edge (dead start)
+     *  (2) one incoming edge, no outgoing edge (dead end)
+     *  (3) one outgoing edge, one incoming edge
+     *       and both are from/to the same vertex
+     *  (4) many incoming edges
+     *       and no outgoing edges
+     *  (5) many outgoing edges
+     *       and no incoming edges
+     *
+     * NOT dead end when:
+     *  (3) one outgoing edge, one incoming edge
+     *       and both from/to different vertex
+     *
+     * note: when contracting case 4 & 5, the vertex has to be
+     *       part of all the adjacent vertices
      */
-    if (graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
-#if 0
-        int64_t incoming_edge_id = -1;
-        int64_t outgoing_edge_id = -2;
 
-        auto o_edges = out_edges(v, graph.graph);
-        for (auto out = o_edges.first;
-                out != o_edges.second; ++out) {
-            outgoing_edge_id = graph[*out].id;
-        }
-        pgassert(outgoing_edge_id == graph[*(out_edges(v, graph.graph).first)].id);
-
-        auto i_edges = in_edges(v, graph.graph);
-        for (auto in = i_edges.first;
-                in != i_edges.second; ++in) {
-            incoming_edge_id = graph[*in].id;
-        }
-        pgassert(incoming_edge_id == graph[*(in_edges(v, graph.graph).first)].id);
-#endif
-        auto outgoing_edge_id = graph[*(in_edges(v, graph.graph).first)].id;
-        auto incoming_edge_id = graph[*(in_edges(v, graph.graph).first)].id;
-
-        if (incoming_edge_id == outgoing_edge_id) {
+    if (graph.in_degree(v) == 0 && graph.out_degree(v) == 1) {
 #ifndef NDEBUG
-            debug << "Is Dead End\n";
+        debug << "\n Dead End case (1)" << v;
+#endif
+        return true;
+    }
+
+    if (graph.in_degree(v) == 1 && graph.out_degree(v) == 0) {
+#ifndef NDEBUG
+        debug << "\n Dead End case (2)" << v;
+#endif
+        return true;
+    }
+
+    if (graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
+        E out_e = *(out_edges(v, graph.graph).first);
+        auto in_e = *(in_edges(v, graph.graph).first);
+
+        auto out_v = graph.is_source(v, out_e) ?
+                graph.target(out_e) : graph.source(out_e);
+        auto in_v = graph.is_source(v, in_e) ?
+                graph.target(in_e) : graph.source(in_e);
+
+        if (out_v == in_v) {
+#ifndef NDEBUG
+            debug << "\n Dead End case (3)" << v;
 #endif
             return true;
         }
+
 #ifndef NDEBUG
-        debug << "Is Not Dead End\n";
+        debug << "\nNot Dead End case(3)";
 #endif
         return false;
     }
-    //  additional cases
-    if (graph.out_degree(v) == 0 && graph.in_degree(v) > 0) {
+
+    if (graph.in_degree(v) > 0 && graph.out_degree(v) == 0) {
 #ifndef NDEBUG
-        debug << "Is Dead End\n";
+        debug << "\nIs Dead End case(4)";
 #endif
         return true;
     }
-#if 0
-    //  dead start
+
+    /*
+     * Case 5
+     */
     if (graph.in_degree(v) == 0 && graph.out_degree(v) > 0) {
-        debug << "Is Dead End\n";
+#ifndef NDEBUG
+        debug << "\nIs Dead End case(4)";
+#endif
         return true;
     }
-#endif
+
     debug << "Is Not Dead End\n";
     return false;
 }
@@ -200,7 +229,7 @@ Pgr_deadEndContraction<G>::doContraction(G &graph) {
     debug << "Performing contraction\n";
 #endif
     std::priority_queue<V, std::vector<V>, std::greater<V> > deadendPriority;
-    
+
     for (V deadendVertex : deadendVertices) {
         deadendPriority.push(deadendVertex);
     }
@@ -219,7 +248,7 @@ Pgr_deadEndContraction<G>::doContraction(G &graph) {
         for (auto adjacent_vertex : adjacent_vertices) {
 #ifndef NDEBUG
             debug << "Contracting current vertex "
-               << graph[current_vertex].id << std::endl;
+                << graph[current_vertex].id << std::endl;
 #endif
             graph[adjacent_vertex].add_contracted_vertex(
                     graph[current_vertex], current_vertex);

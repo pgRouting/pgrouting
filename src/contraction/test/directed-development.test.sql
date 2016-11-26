@@ -10,52 +10,85 @@ SELECT * FROM pgr_contractGraph(
 -- \echo --q0 -------------------------------------------
 
 \echo --q1 Checking dead end contraction for single edge
+-- GRAPH: 1 <=> 2
+-- EXPECTED
+--    1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+
+
 -- \echo --q1 -------------------------------------------
 
 \echo --q2 Checking dead end contraction for two edges
+--GRAPH: 1 <=> 2 <- 3 
+-- EXPECTED
+--   1 | v    |  3 | {1,2}               |     -1 |     -1 |   -1
+
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id < 3',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+
+
 -- \echo --q2 -------------------------------------------
 
 \echo --q3 Checking dead end contraction for sample data
+
+-- EXPECTED
+--   1 | v    |  2 | {1}                 |     -1 |     -1 |   -1
+--   2 | v    |  5 | {7,8}               |     -1 |     -1 |   -1
+--   3 | v    | 10 | {13}                |     -1 |     -1 |   -1
+--   4 | v    | 15 | {14}                |     -1 |     -1 |   -1
+--   5 | v    | 17 | {16}                |     -1 |     -1 |   -1
+
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
     ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+
+
 -- \echo --q3 -------------------------------------------
 
-/*
--- this test fails becuse parameter is wrong
-\echo --q4 Checking that forbidden vertices can only be one dimensional or empty
-SELECT * FROM pgr_contractGraph(
-	'SELECT id, source, target, cost, reverse_cost FROM edge_table WHERE id = 1',
-	ARRAY[ [2,3,4,5], [4,5,6,7] ]::BIGINT[][], ARRAY[0]::integer[], 1, true);
--- \echo --q4 -------------------------------------------
-*/
-
 \echo --q5 Checking dead end contraction for a graph with no dead end vertex
+-- 5 <- 6 
+-- "    ^
+-- 2 <- 3 
+
+-- EXPECTED
+-- (empty)
+
 SELECT * FROM pgr_contractGraph(
 	'SELECT id, source, target, cost, reverse_cost FROM edge_table 
 	WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
 	ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
+
 -- \echo --q5 -------------------------------------------
 
 \echo --q6 Checking for linear vertices case 1
+-- GRPAH 1 <=> 2 
+-- EXPECTED
+--   1 | e    | -1 | {3}                 |      4 |      6 |    2
+
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table 
     WHERE id = 3 OR id = 5',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
+
 -- \echo --q6 -------------------------------------------
 
 
 \echo --q7 Checking for linear vertices case 2
+-- GRAPH 10 <=> 5 <=> 6 
+-- EXPECTED
+--   1 | e    | -1 | {5}                 |      6 |     10 |    2
+--   2 | e    | -2 | {5}                 |     10 |      6 |    2
+-- New edges:  6 <=> 10
+
+
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table 
     WHERE id = 8 OR id = 10',
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
+
 -- \echo --q7 -------------------------------------------
 
 
@@ -98,6 +131,16 @@ SELECT * FROM pgr_contractGraph(
 -- \echo --q13 -------------------------------------------
 
 \echo --q14 Checking linear contraction, dead end for a square like graph
+-- GRAPH
+-- 5 <- 6 
+-- "    ^
+-- 2 <- 3 
+-- 1|v|3|{2,5,6}|-1|-1|-1
+-- 2|e|-1|{2}|3|5|2
+-- 3|e|-2|{2,5}|3|6|3
+
+-- 3 -> 5 
+
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table 
     WHERE id = 2 OR id = 4 OR id = 5 OR id = 8',
