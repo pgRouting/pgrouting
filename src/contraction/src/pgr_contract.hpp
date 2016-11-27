@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #pragma once
+#if 0
 #include <stack>
 #include <iostream>
 #include <sstream>
@@ -38,11 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <functional>
 #include <vector>
 #include <map>
+#endif
+
+#include "../../common/src/pgr_assert.h"
 
 #include "./pgr_contractionGraph.hpp"
-#include "./pgr_deadEndContraction.hpp"
 #include "./pgr_linearContraction.hpp"
-#include "../../common/src/pgr_assert.h"
+#include "./pgr_deadEndContraction.hpp"
 
 
 

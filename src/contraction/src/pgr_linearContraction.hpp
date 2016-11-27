@@ -27,6 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 #pragma once
+
+#if 0
 #ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
@@ -35,8 +37,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #endif
 #include <functional>
-#include <queue>
 #include <vector>
+#endif
+#include <queue>
 #include "../../common/src/identifiers.hpp"
 
 namespace pgrouting {
