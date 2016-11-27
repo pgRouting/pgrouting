@@ -29,11 +29,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
-#endif
 #endif
 
 #ifdef open
@@ -163,6 +161,16 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
      }
 
+     std::vector<int64_t> get_ids(
+             Identifiers<int64_t> boost_ids) const {
+         std::vector<int64_t> ids(boost_ids.size());
+         size_t count = 0;
+         for (auto id : boost_ids) {
+             ids[count++] = this->graph[id].id;
+         }
+         return ids;
+     }
+
      /*! @brief get the remaining vertices of the graph after contraction
        @param [in] remaining_vertices The vector of vertices remaining after contraction
        */
@@ -279,164 +287,164 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 #ifdef TODO
              } else {
                  if (this->adjacent(vertex, *out_i) {
-                     degree++;
-                 }
-             }
+                         degree++;
+                         }
+                         }
 #endif
-         }
-         return degree;
-     }
+                         }
+                         return degree;
+                         }
 
-     /*! @brief print the edges added during contraction
-     */
-     void print_shortcuts(std::ostringstream& log) {
-         log << "Printing shortcuts\n";
-         for (auto shortcut : shortcuts) {
-             log << shortcut;
-         }
-     }
+                         /*! @brief print the edges added during contraction
+                         */
+                         void print_shortcuts(std::ostringstream& log) {
+                         log << "Printing shortcuts\n";
+                         for (auto shortcut : shortcuts) {
+                         log << shortcut;
+                         }
+                         }
 
-     /*! @brief print the graph with contracted vertices of
-       all vertices and edges
-       */
-     void print_graph(std::ostringstream &log) {
-         EO_i out, out_end;
-         for (auto vi = vertices(this->graph).first;
-                 vi != vertices(this->graph).second;
-                 ++vi) {
-             if ((*vi) >= this->m_num_vertices) break;
-             log << this->graph[*vi].id << "(" << (*vi) << ")"
-                 << this->graph[*vi].contracted_vertices() << std::endl;
-             log << " out_edges_of(" << this->graph[*vi].id << "):";
-             for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
-                     out != out_end; ++out) {
-                 log << ' ' << this->graph[*out].id
-                     << "=(" << this->graph[this->source(*out)].id
-                     << ", " << this->graph[this->target(*out)].id << ") = "
-                     <<  this->graph[*out].cost <<"\t";
-             }
-             log << std::endl;
-         }
-     }
-
-
-
-     //TODO  move this code to postgres kindacode
-     /*! @brief get the contracted vertex ids of a given vertex in array format
-       @param [in] vid vertex_id
-       @param [in] contracted_vertices The array of contracted vertices of *vid*
-       @param [in] contracted_vertices_size The size of the array of contracted vertices of *vid*
-       */
-     void get_contracted_vertices(int64_t **contracted_vertices,
-             int &contracted_vertices_size, int64_t vid) {
-         if (!this->has_vertex(vid)) return;
-         V v = this->get_V(vid);
-         contracted_vertices_size =
-             static_cast<int>(this->graph[v].contracted_vertices().size());
-         (*contracted_vertices) = pgr_alloc(
-                 sizeof(int64_t) * this->graph[v].contracted_vertices().size(),
-                 (*contracted_vertices));
-         int64_t count = 0;
-         for (auto vertex : this->graph[v].contracted_vertices()) {
-             (*contracted_vertices)[count++] = this->graph[vertex].id;
-         }
-     }
-
-     /*! @brief add the contracted vertices of an edge *e* to the vertex *v*
-       @param [in] v vertex_descriptor
-       @param [in] e Edge of type *T_E*
-       */
-     void add_contracted_edge_vertices(V v, T_E &e) {
-         for (auto vid : e.contracted_vertices()) {
-             this->graph[v].add_vertex_id(vid);
-         }
-         e.clear_contracted_vertices();
-     }
+                         /*! @brief print the graph with contracted vertices of
+                           all vertices and edges
+                           */
+                         void print_graph(std::ostringstream &log) {
+                             EO_i out, out_end;
+                             for (auto vi = vertices(this->graph).first;
+                                     vi != vertices(this->graph).second;
+                                     ++vi) {
+                                 if ((*vi) >= this->m_num_vertices) break;
+                                 log << this->graph[*vi].id << "(" << (*vi) << ")"
+                                     << this->graph[*vi].contracted_vertices() << std::endl;
+                                 log << " out_edges_of(" << this->graph[*vi].id << "):";
+                                 for (boost::tie(out, out_end) = out_edges(*vi, this->graph);
+                                         out != out_end; ++out) {
+                                     log << ' ' << this->graph[*out].id
+                                         << "=(" << this->graph[this->source(*out)].id
+                                         << ", " << this->graph[this->target(*out)].id << ") = "
+                                         <<  this->graph[*out].cost <<"\t";
+                                 }
+                                 log << std::endl;
+                             }
+                         }
 
 
-     /*! \brief add edges(shortuct) to the graph during contraction
-       
-       a -> b -> c
 
-       a -> c
+                         //TODO  move this code to postgres kindacode
+                         /*! @brief get the contracted vertex ids of a given vertex in array format
+                           @param [in] vid vertex_id
+                           @param [in] contracted_vertices The array of contracted vertices of *vid*
+                           @param [in] contracted_vertices_size The size of the array of contracted vertices of *vid*
+                           */
+                         void get_contracted_vertices(int64_t **contracted_vertices,
+                                 int &contracted_vertices_size, int64_t vid) {
+                             if (!this->has_vertex(vid)) return;
+                             V v = this->get_V(vid);
+                             contracted_vertices_size =
+                                 static_cast<int>(this->graph[v].contracted_vertices().size());
+                             (*contracted_vertices) = pgr_alloc(
+                                     sizeof(int64_t) * this->graph[v].contracted_vertices().size(),
+                                     (*contracted_vertices));
+                             int64_t count = 0;
+                             for (auto vertex : this->graph[v].contracted_vertices()) {
+                                 (*contracted_vertices)[count++] = this->graph[vertex].id;
+                             }
+                         }
 
-       edge (a, c) is a new edge e
-       e.contracted_vertices = b + b.contracted vertices
-       b is "removed" disconnected from the graph
-         - by removing all edges to/from b
+                         /*! @brief add the contracted vertices of an edge *e* to the vertex *v*
+                           @param [in] v vertex_descriptor
+                           @param [in] e Edge of type *T_E*
+                           */
+                         void add_contracted_edge_vertices(V v, T_E &e) {
+                             for (auto vid : e.contracted_vertices()) {
+                                 this->graph[v].add_vertex_id(vid);
+                             }
+                             e.clear_contracted_vertices();
+                         }
 
 
-       @param [in] edge of type *T_E* is to be added
-       @param [in] log string stream used for debugging purposes
-       */
+                         /*! \brief add edges(shortuct) to the graph during contraction
 
-     void add_shortcut(const T_E &edge) {
-         std::ostringstream log;
-         bool inserted;
-         E e;
-         if (edge.cost < 0)
-             return;
+                           a -> b -> c
 
-         pgassert(this->vertices_map.find(edge.source)
-                 != this->vertices_map.end());
-         pgassert(this->vertices_map.find(edge.target)
-                 != this->vertices_map.end());
+                           a -> c
 
-         auto vm_s = this->get_V(edge.source);
-         auto vm_t = this->get_V(edge.target);
+                           edge (a, c) is a new edge e
+                           e.contracted_vertices = b + b.contracted vertices
+                           b is "removed" disconnected from the graph
+                           - by removing all edges to/from b
 
-         boost::tie(e, inserted) =
-             boost::add_edge(vm_s, vm_t, this->graph);
 
-         this->graph[e].cp_members(edge);
+                           @param [in] edge of type *T_E* is to be added
+                           @param [in] log string stream used for debugging purposes
+                           */
 
-         shortcuts.push_back(edge);
-     }
+                         void add_shortcut(const T_E &edge) {
+                             std::ostringstream log;
+                             bool inserted;
+                             E e;
+                             if (edge.cost < 0)
+                                 return;
 
-     /*! \brief Disconnects all incoming and outgoing edges from the vertex
-       boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
-       simulated by disconnecting the vertex from the graph
-       - No edge is disconnected if the vertices id's do not exist in the graph
-       - All removed edges are stored for future reinsertion
-       - All parallel edges are disconnected (automatically by boost)
-       @param [in] vertex original vertex id of the starting point of the edge
-       @param [in] log string stream used for debugging purposes
-       */
-     void disconnect_vertex(std::ostringstream &log, V vertex) {
-         T_E d_edge;
-         EO_i out, out_end;
-         log << "Disconnecting current vertex "
-             << this->graph[vertex].id << "\n";
-         removed_vertices += vertex;
-         //  store the edges that are going to be removed
-         for (boost::tie(out, out_end) = out_edges(vertex, this->graph);
-                 out != out_end; ++out) {
-             d_edge.id = this->graph[*out].id;
-             d_edge.source = this->graph[this->source(*out)].id;
-             d_edge.target = this->graph[this->target(*out)].id;
-             d_edge.cost = this->graph[*out].cost;
-             this->removed_edges.push_back(d_edge);
-         }
+                             pgassert(this->vertices_map.find(edge.source)
+                                     != this->vertices_map.end());
+                             pgassert(this->vertices_map.find(edge.target)
+                                     != this->vertices_map.end());
 
-         //  special case
-         if (this->m_gType == DIRECTED) {
-             EI_i in, in_end;
-             for (boost::tie(in, in_end) = in_edges(vertex, this->graph);
-                     in != in_end; ++in) {
-                 d_edge.id = this->graph[*in].id;
-                 d_edge.source = this->graph[this->source(*in)].id;
-                 d_edge.target = this->graph[this->target(*in)].id;
-                 d_edge.cost = this->graph[*in].cost;
-                 this->removed_edges.push_back(d_edge);
-             }
-         }
-         try {
-             boost::clear_vertex(vertex, this->graph);
-         }
-         catch ( ... ) {
-             log << "Caught unknown exception!\n";
-         }
-     }
+                             auto vm_s = this->get_V(edge.source);
+                             auto vm_t = this->get_V(edge.target);
+
+                             boost::tie(e, inserted) =
+                                 boost::add_edge(vm_s, vm_t, this->graph);
+
+                             this->graph[e].cp_members(edge);
+
+                             shortcuts.push_back(edge);
+                         }
+
+                         /*! \brief Disconnects all incoming and outgoing edges from the vertex
+                           boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
+                           simulated by disconnecting the vertex from the graph
+                           - No edge is disconnected if the vertices id's do not exist in the graph
+                           - All removed edges are stored for future reinsertion
+                           - All parallel edges are disconnected (automatically by boost)
+                           @param [in] vertex original vertex id of the starting point of the edge
+                           @param [in] log string stream used for debugging purposes
+                           */
+                         void disconnect_vertex(std::ostringstream &log, V vertex) {
+                             T_E d_edge;
+                             EO_i out, out_end;
+                             log << "Disconnecting current vertex "
+                                 << this->graph[vertex].id << "\n";
+                             removed_vertices += vertex;
+                             //  store the edges that are going to be removed
+                             for (boost::tie(out, out_end) = out_edges(vertex, this->graph);
+                                     out != out_end; ++out) {
+                                 d_edge.id = this->graph[*out].id;
+                                 d_edge.source = this->graph[this->source(*out)].id;
+                                 d_edge.target = this->graph[this->target(*out)].id;
+                                 d_edge.cost = this->graph[*out].cost;
+                                 this->removed_edges.push_back(d_edge);
+                             }
+
+                             //  special case
+                             if (this->m_gType == DIRECTED) {
+                                 EI_i in, in_end;
+                                 for (boost::tie(in, in_end) = in_edges(vertex, this->graph);
+                                         in != in_end; ++in) {
+                                     d_edge.id = this->graph[*in].id;
+                                     d_edge.source = this->graph[this->source(*in)].id;
+                                     d_edge.target = this->graph[this->target(*in)].id;
+                                     d_edge.cost = this->graph[*in].cost;
+                                     this->removed_edges.push_back(d_edge);
+                                 }
+                             }
+                             try {
+                                 boost::clear_vertex(vertex, this->graph);
+                             }
+                             catch ( ... ) {
+                                 log << "Caught unknown exception!\n";
+                             }
+                         }
 };
 }  // namespace graph
 }  // namespace pgrouting
