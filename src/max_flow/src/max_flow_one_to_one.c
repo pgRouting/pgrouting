@@ -55,36 +55,30 @@ max_flow_one_to_one(PG_FUNCTION_ARGS);
 static
 void
 process(
-    char *edges_sql,
-    int64_t source_vertex,
-    int64_t sink_vertex,
-    char *algorithm,
-    pgr_flow_t **result_tuples,
-    size_t *result_count) {
-
+        char *edges_sql,
+        int64_t source_vertex,
+        int64_t sink_vertex,
+        char *algorithm,
+        pgr_flow_t **result_tuples,
+        size_t *result_count) {
     if (!(strcmp(algorithm, "push_relabel") == 0
-        || strcmp(algorithm, "edmonds_karp") == 0
-        || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
+                || strcmp(algorithm, "edmonds_karp") == 0
+                || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
         elog(ERROR, "Unknown algorithm");
     }
 
-    pgr_SPI_connect();
-
-    PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
-
     if (source_vertex == sink_vertex) {
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
 
-    size_t total_tuples = 0;
+    pgr_SPI_connect();
 
     /* NOTE:
      * For flow, cost and reverse_cost are really capacity and reverse_capacity
      */
+    size_t total_tuples = 0;
+    pgr_edge_t *edges = NULL;
     pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
@@ -112,7 +106,14 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("processing max flow", start_t, clock());
+    if (strcmp(algorithm, "push_relabel") == 0) {
+        time_msg("processing pgr_maxFlowPushRelabel(one to one)", start_t, clock());
+    } else if (strcmp(algorithm, "edmonds_karp") == 0) {
+        time_msg("processing pgr_maxFlowEdmondsKarp(one to one)", start_t, clock());
+    } else {
+        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to one)", start_t, clock());
+    }
+
 
     if (edges) pfree(edges);
 

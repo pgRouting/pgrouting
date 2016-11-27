@@ -137,17 +137,24 @@ class PgrFlowGraph {
        * The same applies for sinks.
        * To avoid code repetition, a supersource/sink is used even in the one to one signature.
        */
-      std::set<int64_t> vertices;
+      std::set<int64_t> vertices(source_vertices);
+#if 0
       for (int64_t source : source_vertices) {
           vertices.insert(source);
       }
+#endif
+      vertices.insert(sink_vertices.begin(), sink_vertices.end());
+#if 0
       for (int64_t sink : sink_vertices) {
           vertices.insert(sink);
       }
+#endif
+      
       for (size_t i = 0; i < total_tuples; ++i) {
           vertices.insert(data_edges[i].source);
           vertices.insert(data_edges[i].target);
       }
+
       for (int64_t id : vertices) {
           V v = add_vertex(boost_graph);
           id_to_V.insert(std::pair<int64_t, V>(id, v));
@@ -164,7 +171,11 @@ class PgrFlowGraph {
           boost::tie(e_rev, added) =
               boost::add_edge(source, supersource, boost_graph);
           // TODO(vicky) set to std::max
+#if 1
           capacity[e] = 999999999;
+#else
+          capacity[e] = std::numeric_limits<int64_t>::max();
+#endif
           capacity[e_rev] = 0;
           rev[e] = e_rev;
           rev[e_rev] = e;

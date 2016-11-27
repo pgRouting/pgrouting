@@ -528,6 +528,7 @@ get_edges_basic(
     time_msg("reading edges", start_t, clock());
 }
 
+/* select id, source, target, capacity, reverse_capacity */
 void
 pgr_get_flow_edges(
     char *sql,

@@ -40,18 +40,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./max_flow_many_to_one_driver.h"
+#include "./max_flow_many_to_many_driver.h"
 
 PGDLLEXPORT Datum
 max_flow_many_to_one(PG_FUNCTION_ARGS);
@@ -62,27 +58,28 @@ static
 void
 process(
     char *edges_sql,
-    int64_t *source_vertices, size_t size_source_verticesArr,
+    ArrayType *starts,
     int64_t sink_vertex,
     char *algorithm,
     pgr_flow_t **result_tuples,
     size_t *result_count) {
-    pgr_SPI_connect();
-
     if (!(strcmp(algorithm, "push_relabel") == 0
         || strcmp(algorithm, "edmonds_karp") == 0
         || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
         elog(ERROR, "Unknown algorithm");
     }
 
-    PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    pgr_SPI_connect();
 
-    size_t total_tuples = 0;
+    size_t size_source_verticesArr = 0;
+    int64_t* source_vertices =
+        pgr_get_bigIntArray(&size_source_verticesArr, starts);
 
     /* NOTE:
      * For flow, cost and reverse_cost are really capacity and reverse_capacity
      */
+    pgr_edge_t *edges = NULL;
+    size_t total_tuples = 0;
     pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
@@ -96,23 +93,45 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_max_flow_many_to_one(
-        edges,
-        total_tuples,
-        source_vertices, size_source_verticesArr,
-        sink_vertex,
-        algorithm,
-        result_tuples,
-        result_count,
-        &err_msg);
+    do_pgr_max_flow_many_to_many(
+            edges, total_tuples,
+            source_vertices, size_source_verticesArr,
+            &sink_vertex,1,
+            algorithm,
 
-    time_msg("processing max flow", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+            result_tuples, result_count,
+            &log_msg,
+            &notice_msg,
+            &err_msg);
 
-    free(err_msg);
-    pfree(edges);
+
+    if (strcmp(algorithm, "push_relabel") == 0) {
+        time_msg("processing pgr_maxFlowPushRelabel(one to one)", start_t, clock());
+    } else if (strcmp(algorithm, "edmonds_karp") == 0) {
+        time_msg("processing pgr_maxFlowEdmondsKarp(one to one)", start_t, clock());
+    } else {
+        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to one)", start_t, clock());
+    }
+
+    if (edges) pfree(edges);
+    if (source_vertices) pfree(source_vertices);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+
+
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -142,21 +161,23 @@ max_flow_many_to_one(PG_FUNCTION_ARGS) {
         /*                          MODIFY AS NEEDED                          */
 
 
+#if 0
         int64_t *source_vertices = NULL;
         size_t size_source_verticesArr = 0;
         source_vertices = (int64_t *)
             pgr_get_bigIntArray(&size_source_verticesArr,
-                                PG_GETARG_ARRAYTYPE_P(1));
+                    PG_GETARG_ARRAYTYPE_P(1));
         PGR_DBG("source_verticesArr size %ld ", size_source_verticesArr);
 
         PGR_DBG("Calling process");
+#endif
         process(
-            text_to_cstring(PG_GETARG_TEXT_P(0)),
-            source_vertices, size_source_verticesArr,
-            PG_GETARG_INT64(2),
-            text_to_cstring(PG_GETARG_TEXT_P(3)),
-            &result_tuples,
-            &result_count);
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_INT64(2),
+                text_to_cstring(PG_GETARG_TEXT_P(3)),
+                &result_tuples,
+                &result_count);
 
         /*                                                                    */
         /**********************************************************************/
