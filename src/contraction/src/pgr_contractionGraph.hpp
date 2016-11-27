@@ -33,6 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#endif
+#endif
 
 #ifdef open
 #undef open
@@ -42,8 +44,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #undef unlink
 #endif
 
-#endif
-#endif
 
 #include <limits>
 #include <algorithm>
