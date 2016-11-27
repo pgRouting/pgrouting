@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
@@ -42,14 +43,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #endif
-
+#endif
 
 #include <limits>
 #include <algorithm>
 #include <vector>
 #include <map>
-#include "../../common/src/pgr_base_graph.hpp"
 #include "../../common/src/pgr_alloc.hpp"
+#include "../../common/src/pgr_base_graph.hpp"
 
 
 namespace pgrouting {
