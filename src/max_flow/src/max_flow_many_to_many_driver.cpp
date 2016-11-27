@@ -38,26 +38,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_maxflow.hpp"
 #include "./max_flow_many_to_many_driver.h"
+#include "../../common/src/pgr_assert.h"
 #include "../../common/src/pgr_alloc.hpp"
-
-// #define DEBUG
-extern "C" {
 #include "./../../common/src/pgr_types.h"
-}
 
 void
 do_pgr_max_flow_many_to_many(
-    pgr_edge_t *data_edges,
-    size_t total_tuples,
-    int64_t *source_vertices,
-    size_t size_source_verticesArr,
-    int64_t *sink_vertices,
-    size_t size_sink_verticesArr,
-    char *algorithm,
-    pgr_flow_t **return_tuples,
-    size_t *return_count,
-    char **err_msg) {
+        pgr_edge_t *data_edges,
+        size_t total_tuples,
+        int64_t *source_vertices,
+        size_t size_source_verticesArr,
+        int64_t *sink_vertices,
+        size_t size_sink_verticesArr,
+        char *algorithm,
+        pgr_flow_t **return_tuples,
+        size_t *return_count,
+        char** log_msg,
+        char** notice_msg,
+        char **err_msg) {
     std::ostringstream log;
+    std::ostringstream notice;
+    std::ostringstream err;
 
     try {
         PgrFlowGraph<FlowGraph> G;
@@ -71,7 +72,7 @@ do_pgr_max_flow_many_to_many(
         }
 
         G.create_flow_graph(data_edges, total_tuples, set_source_vertices,
-                            set_sink_vertices, algorithm);
+                set_sink_vertices, algorithm);
 
         if (strcmp(algorithm, "push_relabel") == 0) {
             G.push_relabel();
@@ -81,7 +82,7 @@ do_pgr_max_flow_many_to_many(
             G.boykov_kolmogorov();
         } else {
             log << "Unspecified algorithm!\n";
-            *err_msg = strdup(log.str().c_str());
+            *err_msg = pgr_msg(log.str().c_str());
             (*return_tuples) = NULL;
             (*return_count) = 0;
             return;
@@ -96,17 +97,31 @@ do_pgr_max_flow_many_to_many(
         }
         *return_count = flow_edges.size();
 
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
 
-        return;
-    } catch (...) {
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
-        return;
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch(...) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
 

@@ -39,17 +39,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic pop
 #endif
 
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
-#include "./max_flow_one_to_one_driver.h"
+#include "./max_flow_many_to_many_driver.h"
 
 PGDLLEXPORT Datum
 max_flow_one_to_one(PG_FUNCTION_ARGS);
@@ -65,13 +61,14 @@ process(
     char *algorithm,
     pgr_flow_t **result_tuples,
     size_t *result_count) {
-    pgr_SPI_connect();
 
     if (!(strcmp(algorithm, "push_relabel") == 0
         || strcmp(algorithm, "edmonds_karp") == 0
         || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
         elog(ERROR, "Unknown algorithm");
     }
+
+    pgr_SPI_connect();
 
     PGR_DBG("Load data");
     pgr_edge_t *edges = NULL;
@@ -91,9 +88,6 @@ process(
     pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
@@ -101,23 +95,39 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *err_msg = NULL;
-    do_pgr_max_flow_one_to_one(
-        edges,
-        total_tuples,
-        source_vertex,
-        sink_vertex,
-        algorithm,
-        result_tuples,
-        result_count,
-        &err_msg);
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
+
+    do_pgr_max_flow_many_to_many(
+            edges,
+            total_tuples,
+            &source_vertex, 1,
+            &sink_vertex, 1,
+            algorithm,
+
+            result_tuples, result_count,
+
+            &log_msg,
+            &notice_msg,
+            &err_msg);
 
     time_msg("processing max flow", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
 
-    free(err_msg);
-    pfree(edges);
+    if (edges) pfree(edges);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -148,12 +158,12 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-            text_to_cstring(PG_GETARG_TEXT_P(0)),
-            PG_GETARG_INT64(1),
-            PG_GETARG_INT64(2),
-            text_to_cstring(PG_GETARG_TEXT_P(3)),
-            &result_tuples,
-            &result_count);
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_INT64(1),
+                PG_GETARG_INT64(2),
+                text_to_cstring(PG_GETARG_TEXT_P(3)),
+                &result_tuples,
+                &result_count);
 
         /*                                                                    */
         /**********************************************************************/
