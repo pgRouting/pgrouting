@@ -18,8 +18,8 @@ ADD_LIBRARY(max_flow OBJECT
 
         maximum_cardinality_matching_driver.cpp
 
-        edge_disjoint_paths_one_to_one_driver.cpp
-        edge_disjoint_paths_one_to_many_driver.cpp
+        #edge_disjoint_paths_one_to_one_driver.cpp
+        #edge_disjoint_paths_one_to_many_driver.cpp
         edge_disjoint_paths_many_to_many_driver.cpp
         edge_disjoint_paths_many_to_one_driver.cpp
 )

@@ -41,7 +41,7 @@ then
     echo "MADE TEST **********************"
 fi
 
-pg_prove ../../src/contraction/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/max_flow/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/bdDijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/bd_dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER

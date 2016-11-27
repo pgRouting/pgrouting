@@ -37,19 +37,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <set>
 
+#include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_types.h"
 #include "./pgr_edgedisjointpaths.hpp"
 #include "./edge_disjoint_paths_many_to_many_driver.h"
-#include "../../common/src/pgr_alloc.hpp"
-
-// #define DEBUG
-extern "C" {
-#include "./../../common/src/pgr_types.h"
-}
 
 void
 do_pgr_edge_disjoint_paths_many_to_many(
     pgr_basic_edge_t *data_edges,
-    size_t total_tuples,
+    size_t total_edges,
     int64_t *source_vertices,
     size_t size_source_verticesArr,
     int64_t *sink_vertices,
@@ -57,9 +54,12 @@ do_pgr_edge_disjoint_paths_many_to_many(
     bool directed,
     General_path_element_t **return_tuples,
     size_t *return_count,
+    char** log_msg,
+    char** notice_msg,
     char **err_msg) {
     std::ostringstream log;
-
+    std::ostringstream notice;
+    std::ostringstream err;
     try {
         std::vector<General_path_element_t> path_elements;
         std::set<int64_t> set_source_vertices;
@@ -70,14 +70,17 @@ do_pgr_edge_disjoint_paths_many_to_many(
         for (size_t i = 0; i < size_sink_verticesArr; ++i) {
             set_sink_vertices.insert(sink_vertices[i]);
         }
+
         PgrEdgeDisjointPathsGraph<FlowGraph> G;
 
-        // I use a directed graph since I'm dependent on directed graphs
+        /*
+         * boykov_kolmogorov is only for directed graphs
+         */
 
-        G.create_edge_disjoint_paths_graph(data_edges, total_tuples,
-                                           set_source_vertices,
-                                           set_sink_vertices, directed);
-        int64_t flow = G.boykov_kolmogorov();
+        G.create_edge_disjoint_paths_graph(data_edges, total_edges,
+                set_source_vertices,
+                set_sink_vertices, directed);
+        auto flow = G.boykov_kolmogorov();
         G.get_edge_disjoint_paths(path_elements, flow);
 
         (*return_tuples) = pgr_alloc(path_elements.size(), (*return_tuples));
@@ -86,21 +89,30 @@ do_pgr_edge_disjoint_paths_many_to_many(
         }
         *return_count = path_elements.size();
 
-#ifndef DEBUG
-        *err_msg = strdup("OK");
-#else
-        *err_msg = strdup(log.str().c_str());
-#endif
 
-        return;
-    } catch (...) {
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
-        return;
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
+    } catch (AssertFailedException &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch(...) {
+        (*return_tuples) = pgr_free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
-
-
-
-
-

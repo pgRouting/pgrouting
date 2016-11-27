@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2016 Rohith Reddy
-Mail: 
+Mail:
 
 ------
 
@@ -102,7 +102,7 @@ static void process_contraction(
 #endif
 
     /*
-     * Function call to get the contracted graph. 
+     * Function call to get the contracted graph.
      */
     pgrouting::contraction::Pgr_contract<G> result(graph,
             forbid_vertices,
@@ -131,7 +131,6 @@ void get_postgres_result(
         const Identifiers<int64_t> remaining_vertices,
         const std::vector< pgrouting::CH_edge > shortcut_edges,
         pgr_contracted_blob **return_tuples) {
-
     (*return_tuples) = pgr_alloc(
             remaining_vertices.size() + shortcut_edges.size(),
             (*return_tuples));
@@ -140,7 +139,6 @@ void get_postgres_result(
 
     for (auto id : remaining_vertices) {
         int64_t* contracted_vertices = NULL;
-#if 1
         auto ids = graph.get_contracted_vertices(id);
         contracted_vertices = pgr_alloc(
                    ids.size(), contracted_vertices);
@@ -148,22 +146,14 @@ void get_postgres_result(
         for (const auto id : ids) {
             contracted_vertices[count++] = id;
         }
-        (*return_tuples)[sequence] = {id, (char*)"v", -1, -1, -1.00,
+        (*return_tuples)[sequence] = {id, const_cast<char*>("v"), -1, -1, -1.00,
             contracted_vertices, count};
 
-#else
-        int contracted_vertices_size = 0;
-        graph.get_contracted_vertices(&contracted_vertices,
-                contracted_vertices_size, id);
-        (*return_tuples)[sequence] = {id, (char*)"v", -1, -1, -1.00,
-            contracted_vertices, contracted_vertices_size};
-#endif
         ++sequence;
     }
 
     for (auto edge : shortcut_edges) {
         int64_t* contracted_vertices = NULL;
-#if 1
         auto ids = graph.get_ids(edge.contracted_vertices());
 
         contracted_vertices = pgr_alloc(
@@ -172,17 +162,10 @@ void get_postgres_result(
         for (const auto id : ids) {
             contracted_vertices[count++] = id;
         }
-        (*return_tuples)[sequence] = {edge.id, (char*)"e",
+        (*return_tuples)[sequence] = {edge.id, const_cast<char*>("e"),
             edge.source, edge.target, edge.cost,
             contracted_vertices, count};
-#else
 
-        graph.get_ids(&contracted_vertices,
-                contracted_vertices_size, edge.contracted_vertices());
-        (*return_tuples)[sequence] = {edge.id, (char*)"e",
-            edge.source, edge.target, edge.cost,
-            contracted_vertices, contracted_vertices_size};
-#endif
         ++sequence;
     }
 }
@@ -209,8 +192,8 @@ do_pgr_contractGraph(
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
-        char **log_msg, 
-        char **notice_msg, 
+        char **log_msg,
+        char **notice_msg,
         char **err_msg) {
     std::ostringstream log;
     std::ostringstream notice;

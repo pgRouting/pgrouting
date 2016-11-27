@@ -47,11 +47,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./edge_disjoint_paths_one_to_many_driver.h"
+#include "./edge_disjoint_paths_many_to_many_driver.h"
 
 PGDLLEXPORT Datum
 edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS);
@@ -63,11 +64,15 @@ void
 process(
     char *edges_sql,
     int64_t source_vertex,
-    int64_t *sink_vertices, size_t size_sink_verticesArr,
+    ArrayType *ends,
     bool directed,
     General_path_element_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
+
+    size_t size_sink_verticesArr = 0;
+    int64_t* sink_vertices =
+        pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
     PGR_DBG("Load data");
     pgr_basic_edge_t *edges = NULL;
@@ -87,24 +92,39 @@ process(
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_edge_disjoint_paths_one_to_many(
-        edges,
-        total_tuples,
-        source_vertex,
-        sink_vertices,
-        size_sink_verticesArr,
+    do_pgr_edge_disjoint_paths_many_to_many(
+
+        edges, total_tuples,
+        &source_vertex, 1,
+        sink_vertices, size_sink_verticesArr,
         directed,
-        result_tuples,
-        result_count,
+
+        result_tuples, result_count,
+
+        &log_msg,
+        &notice_msg,
         &err_msg);
 
     time_msg("processing edge disjoint paths", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
 
-    free(err_msg);
-    pfree(edges);
+
+    if (edges) pfree(edges);
+    if (sink_vertices) pfree(sink_vertices);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -133,18 +153,10 @@ edge_disjoint_paths_one_to_many(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
 
-        int64_t *sink_vertices = NULL;
-        size_t size_sink_verticesArr = 0;
-        sink_vertices = (int64_t *)
-            pgr_get_bigIntArray(&size_sink_verticesArr,
-                                PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("sink_verticesArr size %ld ", size_sink_verticesArr);
-
-        PGR_DBG("Calling process");
         process(
             text_to_cstring(PG_GETARG_TEXT_P(0)),
             PG_GETARG_INT64(1),
-            sink_vertices, size_sink_verticesArr,
+            PG_GETARG_ARRAYTYPE_P(2),
             PG_GETARG_BOOL(3),
             &result_tuples,
             &result_count);

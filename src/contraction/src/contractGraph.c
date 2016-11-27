@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2016 Rohith Reddy
-Mail: 
+Mail:
 
 ------
 
@@ -85,7 +85,7 @@ process(char* edges_sql,
     PGR_DBG("size_forbidden_vertices %ld", size_forbidden_vertices);
 
     size_t size_contraction_order = 0;
-    int64_t* contraction_order = 
+    int64_t* contraction_order =
         pgr_get_bigIntArray(
                 &size_contraction_order,
                 order);
@@ -160,7 +160,7 @@ contractGraph(PG_FUNCTION_ARGS) {
            forbidden_vertices BIGINT[] DEFAULT ARRAY[]::BIGINT[],
            directed BOOLEAN DEFAULT true,
 
-         **********************************************************************/ 
+         **********************************************************************/
 
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -172,14 +172,15 @@ contractGraph(PG_FUNCTION_ARGS) {
                 &result_count);
 
 
-        /**********************************************************************/ 
+        /**********************************************************************/
 #if PGSQL_VERSION > 95
         funcctx->max_calls = result_count;
 #else
         funcctx->max_calls = (uint32_t)result_count;
 #endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -198,8 +199,9 @@ contractGraph(PG_FUNCTION_ARGS) {
         Datum       *values;
         char        *nulls;
         int16 typlen;
+        size_t      call_cntr = funcctx->call_cntr;
 
-        /**********************************************************************/ 
+        /**********************************************************************/
         size_t numb = 7;
         values =(Datum *)palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
@@ -209,7 +211,7 @@ contractGraph(PG_FUNCTION_ARGS) {
         }
 
         size_t contracted_vertices_size =
-            (size_t)result_tuples[funcctx->call_cntr].contracted_vertices_size;
+            (size_t)result_tuples[call_cntr].contracted_vertices_size;
 
         Datum* contracted_vertices_array;
         contracted_vertices_array = (Datum*) palloc(sizeof(Datum) *
@@ -217,9 +219,9 @@ contractGraph(PG_FUNCTION_ARGS) {
 
         for (i = 0; i < contracted_vertices_size; ++i) {
             PGR_DBG("Storing contracted vertex %ld",
-                    result_tuples[funcctx->call_cntr].contracted_vertices[i]);
+                    result_tuples[call_cntr].contracted_vertices[i]);
             contracted_vertices_array[i] =
-                Int64GetDatum(result_tuples[funcctx->call_cntr].contracted_vertices[i]);
+                Int64GetDatum(result_tuples[call_cntr].contracted_vertices[i]);
         }
 
         bool typbyval;
@@ -227,13 +229,13 @@ contractGraph(PG_FUNCTION_ARGS) {
         get_typlenbyvalalign(INT8OID, &typlen, &typbyval, &typalign);
         ArrayType* arrayType;
         /*
-         * https://doxygen.postgresql.org/arrayfuncs_8c.html#a8bda3603f6831eeac237147fbca91f06
+         * https://doxygen.postgresql.org/arrayfuncs_8c.html
 
          ArrayType* construct_array(
          Datum*     elems,
          int     nelems,
-         Oid     elmtype, int elmlen, bool elmbyval, char elmalign 
-         )   
+         Oid     elmtype, int elmlen, bool elmbyval, char elmalign
+         )
          */
         arrayType =  construct_array(
                 contracted_vertices_array,
@@ -246,35 +248,27 @@ contractGraph(PG_FUNCTION_ARGS) {
            const char *    attributeName,
            Oid     oidtypeid,
            int32   typmod,
-           int     attdim 
-           )   
+           int     attdim
+           )
            */
         TupleDescInitEntry(tuple_desc, (AttrNumber) 4, "contracted_vertices",
                 INT8ARRAYOID, -1, 0);
 
-#if 0
-        PGR_DBG("%ld | %s | %ld | %ld | %f | %d",
-                result_tuples[funcctx->call_cntr].id,
-                result_tuples[funcctx->call_cntr].type,
-                result_tuples[funcctx->call_cntr].source,
-                result_tuples[funcctx->call_cntr].target,
-                result_tuples[funcctx->call_cntr].cost,
-                result_tuples[funcctx->call_cntr].contracted_vertices_size);
-#endif
-        PGR_DBG("Storing complete\n");
-        // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = CStringGetTextDatum(result_tuples[funcctx->call_cntr].type);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].id);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = CStringGetTextDatum(result_tuples[call_cntr].type);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].id);
         values[3] = PointerGetDatum(arrayType);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
 
         /*********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
-        // cleaning up the contracted vertices array
+
+        /*
+         *  cleaning up the contracted vertices array
+         */
         if (result_tuples[funcctx->call_cntr].contracted_vertices) {
             pfree(result_tuples[funcctx->call_cntr].contracted_vertices);
         }

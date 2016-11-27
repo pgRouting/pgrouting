@@ -40,14 +40,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
@@ -57,60 +52,77 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum
 edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS);
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
     char *edges_sql,
-    int64_t *source_vertices, size_t size_source_verticesArr,
-    int64_t *sink_vertices, size_t size_sink_verticesArr,
+    ArrayType *starts,
+    ArrayType *ends,
+
     bool directed,
     General_path_element_t **result_tuples,
     size_t *result_count) {
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
+    size_t size_source_verticesArr = 0;
+    int64_t* source_vertices =
+        pgr_get_bigIntArray(&size_source_verticesArr, starts);
+
+    size_t size_sink_verticesArr = 0;
+    int64_t* sink_vertices = 
+        pgr_get_bigIntArray(&size_sink_verticesArr, ends);
+
+
     pgr_basic_edge_t *edges = NULL;
+    size_t total_edges = 0;
 
-    size_t total_tuples = 0;
+    pgr_get_basic_edges(edges_sql, &edges, &total_edges);
 
-    pgr_get_basic_edges(edges_sql, &edges, &total_tuples);
-
-    if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+    if (total_edges == 0) {
+        if (source_vertices) pfree(source_vertices);
+        if (sink_vertices) pfree(sink_vertices);
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
-    PGR_DBG("Starting processing");
+
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-    char *err_msg = NULL;
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
+
     do_pgr_edge_disjoint_paths_many_to_many(
-        edges,
-        total_tuples,
-        source_vertices,
-        size_source_verticesArr,
-        sink_vertices,
-        size_sink_verticesArr,
+        edges, total_edges,
+        source_vertices, size_source_verticesArr,
+        sink_vertices, size_sink_verticesArr,
         directed,
-        result_tuples,
-        result_count,
+
+        result_tuples, result_count,
+
+        &log_msg,
+        &notice_msg,
         &err_msg);
 
     time_msg("processing edge disjoint paths", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
 
-    free(err_msg);
-    pfree(edges);
+    if (edges) pfree(edges);
+    if (source_vertices) pfree(source_vertices);
+    if (sink_vertices) pfree(sink_vertices);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PG_FUNCTION_INFO_V1(edge_disjoint_paths_many_to_many);
 PGDLLEXPORT Datum
@@ -119,11 +131,8 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
-    General_path_element_t *result_tuples = 0;
+    General_path_element_t *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -133,33 +142,15 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
-        int64_t *sink_vertices = NULL;
-        size_t size_sink_verticesArr = 0;
-        sink_vertices = (int64_t *)
-            pgr_get_bigIntArray(&size_sink_verticesArr,
-                                PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("sink_verticesArr size %ld ", size_sink_verticesArr);
-
-        int64_t *source_vertices = NULL;
-        size_t size_source_verticesArr = 0;
-        source_vertices = (int64_t *)
-            pgr_get_bigIntArray(&size_source_verticesArr,
-                                PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("source_verticesArr size %ld ", size_source_verticesArr);
-
-        PGR_DBG("Calling process");
         process(
-            text_to_cstring(PG_GETARG_TEXT_P(0)),
-            source_vertices, size_source_verticesArr,
-            sink_vertices, size_sink_verticesArr,
-            PG_GETARG_BOOL(3),
-            &result_tuples,
-            &result_count);
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_ARRAYTYPE_P(2),
+                PG_GETARG_BOOL(3),
+                &result_tuples,
+                &result_count);
 
-
-        /*                                                                    */
         /**********************************************************************/
 
 #if PGSQL_VERSION > 95
@@ -169,11 +160,11 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
 #endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-            != TYPEFUNC_COMPOSITE) {
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                        errmsg("function returning record called in context "
-                                   "that cannot accept type record")));
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -201,7 +192,6 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
