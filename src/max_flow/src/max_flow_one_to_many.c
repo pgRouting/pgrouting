@@ -113,7 +113,14 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("processing max flow", start_t, clock());
+    if (strcmp(algorithm, "push_relabel") == 0) {
+        time_msg("processing pgr_maxFlowPushRelabel(one to many)", start_t, clock());
+    } else if (strcmp(algorithm, "edmonds_karp") == 0) {
+        time_msg("processing pgr_maxFlowEdmondsKarp(one to many)", start_t, clock());
+    } else {
+        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to many)", start_t, clock());
+    }
+
 
     if (edges) pfree(edges);
     if (sink_vertices) pfree(sink_vertices);

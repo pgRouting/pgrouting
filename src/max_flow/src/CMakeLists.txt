@@ -12,7 +12,6 @@ ADD_LIBRARY(max_flow OBJECT
         edge_disjoint_paths_many_to_one.c
 
         max_flow_many_to_many_driver.cpp
-        max_flow_many_to_one_driver.cpp
 
         maximum_cardinality_matching_driver.cpp
 

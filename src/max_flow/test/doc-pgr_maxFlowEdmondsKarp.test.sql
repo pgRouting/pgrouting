@@ -2,7 +2,6 @@
 --The edge in the edge table are augmented with road-like categories for capacity values.
 
 BEGIN;
-SET client_min_messages TO NOTICE;
 
 \echo -- q1
 SELECT * FROM pgr_maxFlowEdmondsKarp(

@@ -109,11 +109,11 @@ process(
 
 
     if (strcmp(algorithm, "push_relabel") == 0) {
-        time_msg("processing pgr_maxFlowPushRelabel(one to one)", start_t, clock());
+        time_msg("processing pgr_maxFlowPushRelabel(many to one)", start_t, clock());
     } else if (strcmp(algorithm, "edmonds_karp") == 0) {
-        time_msg("processing pgr_maxFlowEdmondsKarp(one to one)", start_t, clock());
+        time_msg("processing pgr_maxFlowEdmondsKarp(many to one)", start_t, clock());
     } else {
-        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to one)", start_t, clock());
+        time_msg("processing pgr_maxFlowBoykovKolmogorov(many to one)", start_t, clock());
     }
 
     if (edges) pfree(edges);

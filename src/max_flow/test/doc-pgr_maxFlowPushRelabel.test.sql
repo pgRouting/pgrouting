@@ -3,7 +3,6 @@
 
 BEGIN;
 
-SET client_min_messages TO NOTICE;
 
 \echo -- q1
 SELECT * FROM pgr_maxFlowPushRelabel(

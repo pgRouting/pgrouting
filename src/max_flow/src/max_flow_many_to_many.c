@@ -53,8 +53,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 PGDLLEXPORT Datum
 max_flow_many_to_many(PG_FUNCTION_ARGS);
 
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -116,7 +114,14 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("processing max flow", start_t, clock());
+    if (strcmp(algorithm, "push_relabel") == 0) {
+        time_msg("processing pgr_maxFlowPushRelabel(many to many)", start_t, clock());
+    } else if (strcmp(algorithm, "edmonds_karp") == 0) {
+        time_msg("processing pgr_maxFlowEdmondsKarp(many to many)", start_t, clock());
+    } else {
+        time_msg("processing pgr_maxFlowBoykovKolmogorov(many to many)", start_t, clock());
+    }
+
 
     if (edges) pfree(edges);
     if (source_vertices) pfree(source_vertices);
@@ -137,8 +142,6 @@ process(
     pgr_SPI_finish();
 }
 
-/*                                                                            */
-/******************************************************************************/
 
 PG_FUNCTION_INFO_V1(max_flow_many_to_many);
 PGDLLEXPORT Datum
@@ -147,11 +150,8 @@ max_flow_many_to_many(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     pgr_flow_t *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -161,25 +161,7 @@ max_flow_many_to_many(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
-#if 0
-        PGR_DBG("Initializing arrays");
-        int64_t *source_vertices = NULL;
-        size_t size_source_verticesArr = 0;
-        source_vertices = (int64_t *)
-            pgr_get_bigIntArray(&size_source_verticesArr,
-                    PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("source_verticesArr size %ld ", size_source_verticesArr);
 
-        int64_t *sink_vertices = NULL;
-        size_t size_sink_verticesArr = 0;
-        sink_vertices = (int64_t *)
-            pgr_get_bigIntArray(&size_sink_verticesArr,
-                    PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("sink_verticesArr size %ld ", size_sink_verticesArr);
-
-        PGR_DBG("Calling process");
-#endif
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
