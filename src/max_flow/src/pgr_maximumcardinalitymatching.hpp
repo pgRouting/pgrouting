@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
@@ -33,14 +34,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #undef unlink
 #endif
 #endif
+#endif
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/max_cardinality_matching.hpp>
 
-#if 0
-#include "./../../common/src/signalhandler.h"
-#endif
 #include "./../../common/src/pgr_types.h"
 
 #include <map>

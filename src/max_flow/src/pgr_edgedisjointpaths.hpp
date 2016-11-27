@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
@@ -33,14 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #undef unlink
 #endif
 #endif
-
+#endif
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/assert.hpp>
 
-#if 0
-#include "./../../common/src/signalhandler.h"
-#endif
 #include "./../../common/src/pgr_types.h"
 
 #include <map>
@@ -128,6 +126,7 @@ class PgrEdgeDisjointPathsGraph {
               boost::add_edge(supersource, source, boost_graph);
           boost::tie(e_rev, added) =
               boost::add_edge(source, supersource, boost_graph);
+          //TODO(vicky) set to std::max
           capacity[e] = 999999999;
           capacity[e_rev] = 0;
           rev[e] = e_rev;
@@ -142,6 +141,7 @@ class PgrEdgeDisjointPathsGraph {
               boost::add_edge(sink, supersink, boost_graph);
           boost::tie(e1_rev, added) =
               boost::add_edge(supersink, sink, boost_graph);
+          //TODO(vicky) set to std::max
           capacity[e1] = 999999999;
           capacity[e1_rev] = 0;
           rev[e1] = e1_rev;

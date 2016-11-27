@@ -26,11 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
+#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #ifdef unlink
 #undef unlink
+#endif
 #endif
 #endif
 
@@ -161,6 +163,7 @@ class PgrFlowGraph {
               boost::add_edge(supersource, source, boost_graph);
           boost::tie(e_rev, added) =
               boost::add_edge(source, supersource, boost_graph);
+          // TODO(vicky) set to std::max
           capacity[e] = 999999999;
           capacity[e_rev] = 0;
           rev[e] = e_rev;
