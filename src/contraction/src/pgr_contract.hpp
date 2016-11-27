@@ -146,7 +146,7 @@ class Pgr_contract {
                 }
             }
         }
-        graph.get_changed_vertices(remaining_vertices);
+        remaining_vertices = graph.get_changed_vertices();
         debug << "Printing shortcuts\n";
         for (auto shortcut : graph.shortcuts) {
             debug << shortcut;

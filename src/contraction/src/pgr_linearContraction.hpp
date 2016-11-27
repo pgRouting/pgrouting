@@ -195,7 +195,7 @@ void Pgr_linearContraction<G>::doContraction(G &graph) {
             }
         }
 
-        graph.disconnect_vertex(contraction_debug, current_vertex);
+        graph.disconnect_vertex(current_vertex);
         linearVertices -= current_vertex;
         if (is_linear(graph, vertex_1)
                 && !forbiddenVertices.has(vertex_1)) {

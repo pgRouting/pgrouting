@@ -285,7 +285,7 @@ Pgr_deadEndContraction<G>::doContraction(G &graph) {
             debug << "Adjacent Vertex:\n";
             debug << graph[adjacent_vertex];
 #endif
-            graph.disconnect_vertex(debug, current_vertex);
+            graph.disconnect_vertex(current_vertex);
             deadendVertices -= current_vertex;
 #ifndef NDEBUG
             debug << "Adjacent vertex dead_end?: "

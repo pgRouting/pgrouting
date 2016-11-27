@@ -94,6 +94,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return edge1.id > edge2.id;
      }
 
+#if 0
      /*!
        Prepares the _graph_ to be of type *gtype* with vertices as *vertices*
        */
@@ -102,7 +103,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              graphType gtype)
          : Pgr_base_graph< G , T_V, T_E >(vertices, gtype) {
          }
-
+#endif
      /*!
        Prepares the _graph_ to be of type *gtype*
        */
@@ -121,15 +122,16 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
          for (boost::tie(out, out_end) = out_edges(v, this->graph);
                  out != out_end; ++out) {
-             adjacent_vertices += this->target(*out);
+             adjacent_vertices += this->adjacent(v, *out);
          }
          for (boost::tie(in, in_end) = in_edges(v, this->graph);
                  in != in_end; ++in) {
-             adjacent_vertices += this->source(*in);
+             adjacent_vertices += this->adjacent(v, *in);
          }
          return adjacent_vertices;
      }
 
+#if 0
      /*! @brief get the user ids given the boost graph ids in string format
        @param [in] log string
        @param [in] boost_ids The set of boost graph ids of vertices
@@ -143,7 +145,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          log << "}";
      }
 
-#if 0
      /*! @brief get the user ids given the boost graph ids in array format
        @param [in] boost_ids The set of boost graph ids of vertices
        @param [in] contracted_vertices The array of contracted vertices
@@ -162,6 +163,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          }
      }
 #endif
+
      std::vector<int64_t> get_ids(
              Identifiers<int64_t> boost_ids) const {
          std::vector<int64_t> ids(boost_ids.size());
@@ -172,6 +174,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return ids;
      }
 
+#if 0
      /*! @brief get the remaining vertices of the graph after contraction
        @param [in] remaining_vertices The vector of vertices remaining after contraction
        */
@@ -184,32 +187,39 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              }
          }
      }
+#endif
 
      /*! @brief get the vertices of the graph with atleast one contracted vertex
        @param [in] remaining_vertices The set of vertices with atleast one contracted vertex
        */
-     void get_changed_vertices(Identifiers<int64_t>& remaining_vertices) {
-         // log << "remaining_vertices\n";
+     Identifiers<int64_t> get_changed_vertices() {
+        Identifiers<int64_t> vids;
          for (auto vi = vertices(this->graph).first;
                  vi != vertices(this->graph).second;
                  ++vi) {
              if (!removed_vertices.has(*vi)
                      && this->graph[*vi].has_contracted_vertices()) {
-                 remaining_vertices += this->graph[*vi].id;
+                 vids += this->graph[*vi].id;
              }
          }
+         return vids;
      }
 
+#if 0
      /*! @brief get the edges of the graph that are added during contraction
        @param [in] shortcut_edges The vector of edges added during contraction
        */
-     void get_shortcuts(std::vector<T_E>& shortcut_edges) {
-         shortcut_edges = shortcuts;
+     std::vector<T_E> get_shortcuts() {
+         auto shortcut_edges = shortcuts;
+#if 0
          for (auto shortcut : shortcuts) {
              shortcut_edges.push_back(shortcut);
          }
+#endif
          std::sort(shortcut_edges.begin(), shortcut_edges.end(), compareById);
+         return shortcut_edges;
      }
+#endif
 
      /*! @brief get the edge with minimum cost between two vertices
        @param [in] source vertex_descriptor of source vertex
@@ -234,15 +244,15 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return min_cost_edge;
      }
 
-     /*! @brief get the in-degree of a vertex from its neighbor
-
-       The number of edges from @b neighbor to @b vertex
+     /*! @brief The number of edges from @b neighbor to @b vertex
 
        @param [in] vertex is the target of the edges
        @param [in] neighbor is the source of the edges
        @return degree_size_type: The in-degree of *vertex* from *neighbor*
        */
      degree_size_type in_degree_from_vertex(V vertex, V neighbor) {
+         return out_degree_to_vertex(neighbor, vertex);
+#if 0
 #ifdef TODO
          if (is_directed()) {
 #endif
@@ -263,11 +273,10 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
           */
          return out_degree_to_vertex(neighbor, vertex);
 #endif
+#endif
      }
 
-     /*! @brief get the out-degree of a vertex to its neighbor
-
-       The number of edges from @b vertex to @b neighbor
+     /*! @brief The number of edges from @b vertex to @b neighbor
 
        @param [in] vertex vertex_descriptor of the given vertex
        @param [in] neighbor vertex_descriptor of neighbor
@@ -279,23 +288,18 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          for (boost::tie(out_i, out_end) =
                  boost::out_edges(vertex, this->graph);
                  out_i != out_end; ++out_i) {
-#ifdef TODO
-             // if (is_directed()) {
-#endif
-             if (this->target(*out_i) == neighbor) {
+             if (this->is_directed()
+                     && (this->is_source(vertex, *out_i) && this->is_target(neighbor, *out_i))) {
+                 degree++;
+             } else if (this->is_undirected() &&
+                     this->adjacent(vertex, *out_i) == neighbor) {
                  degree++;
              }
-#ifdef TODO
-             // } else {
-             // if (this->adjacent(vertex, *out_i) {
-             //       degree++;
-             //}
-             //}
-#endif
          }
          return degree;
      }
 
+#if 0
      /*! @brief print the edges added during contraction
      */
      void print_shortcuts(std::ostringstream& log) {
@@ -304,6 +308,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              log << shortcut;
          }
      }
+#endif
 
      /*! @brief print the graph with contracted vertices of
        all vertices and edges
@@ -419,6 +424,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          shortcuts.push_back(edge);
      }
 
+#if 0
      /*! \brief Disconnects all incoming and outgoing edges from the vertex
        boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
        simulated by disconnecting the vertex from the graph
@@ -463,6 +469,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
              log << "Caught unknown exception!\n";
          }
      }
+#endif
 };
 }  // namespace graph
 }  // namespace pgrouting
