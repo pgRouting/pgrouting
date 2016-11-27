@@ -42,7 +42,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <queue>
 #include "../../common/src/identifiers.hpp"
 
+
 namespace pgrouting {
+namespace contraction {
 
 template < class G >
 class Pgr_linearContraction {
@@ -270,4 +272,5 @@ void Pgr_linearContraction<G>::add_shortcut(G &graph,
     graph.add_shortcut(shortcut);
 }
 
+}  // namespace contraction
 }  // namespace pgrouting

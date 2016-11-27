@@ -47,7 +47,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_linearContraction.hpp"
 #include "./pgr_deadEndContraction.hpp"
 
-
+namespace pgrouting {
+namespace contraction {
+ 
 
 template < class G >
 class Pgr_contract {
@@ -57,7 +59,7 @@ class Pgr_contract {
     void perform_deadEnd(G &graph,
             Identifiers<V> forbidden_vertices,
             std::ostringstream& debug) {
-        pgrouting::Pgr_deadEndContraction<G> deadendContractor;
+        Pgr_deadEndContraction<G> deadendContractor;
         debug << "Setting forbidden_vertices";
         deadendContractor.setForbiddenVertices(forbidden_vertices);
 
@@ -75,7 +77,7 @@ class Pgr_contract {
             Identifiers<V>& forbidden_vertices,
             std::ostringstream& debug) {
         std::ostringstream linear_debug;
-        pgrouting::Pgr_linearContraction<G> linearContractor;
+        Pgr_linearContraction<G> linearContractor;
         linearContractor.setForbiddenVertices(forbidden_vertices);
         linearContractor.calculateVertices(graph);
         try {
@@ -173,4 +175,5 @@ class Pgr_contract {
     }
 };
 
-
+}  // namespace contraction
+}  // namespace pgrouting

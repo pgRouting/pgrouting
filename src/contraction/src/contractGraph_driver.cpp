@@ -104,7 +104,7 @@ static void process_contraction(
     /*
      * Function call to get the contracted graph. 
      */
-    Pgr_contract<G> result(graph,
+    pgrouting::contraction::Pgr_contract<G> result(graph,
             forbid_vertices,
             contraction_order,
             max_cycles, remaining_vertices,

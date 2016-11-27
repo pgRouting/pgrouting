@@ -43,7 +43,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <queue>
 #include "../../common/src/identifiers.hpp"
+
 namespace pgrouting {
+namespace contraction {
 
 template < class G >
 class Pgr_deadEndContraction {
@@ -299,4 +301,5 @@ Pgr_deadEndContraction<G>::doContraction(G &graph) {
     }
 }
 
+}  // namespace contraction
 }  // namespace pgrouting
