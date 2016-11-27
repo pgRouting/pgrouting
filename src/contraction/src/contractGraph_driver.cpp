@@ -140,22 +140,49 @@ void get_postgres_result(
 
     for (auto id : remaining_vertices) {
         int64_t* contracted_vertices = NULL;
+#if 1
+        auto ids = graph.get_contracted_vertices(id);
+        contracted_vertices = pgr_alloc(
+                   ids.size(), contracted_vertices);
+        int count = 0;
+        for (const auto id : ids) {
+            contracted_vertices[count++] = id;
+        }
+        (*return_tuples)[sequence] = {id, (char*)"v", -1, -1, -1.00,
+            contracted_vertices, count};
+
+#else
         int contracted_vertices_size = 0;
         graph.get_contracted_vertices(&contracted_vertices,
                 contracted_vertices_size, id);
         (*return_tuples)[sequence] = {id, (char*)"v", -1, -1, -1.00,
             contracted_vertices, contracted_vertices_size};
+#endif
         ++sequence;
     }
 
     for (auto edge : shortcut_edges) {
         int64_t* contracted_vertices = NULL;
-        int contracted_vertices_size = 0;
+#if 1
+        auto ids = graph.get_ids(edge.contracted_vertices());
+
+        contracted_vertices = pgr_alloc(
+                   ids.size(), contracted_vertices);
+        int count = 0;
+        for (const auto id : ids) {
+            contracted_vertices[count++] = id;
+        }
+        (*return_tuples)[sequence] = {edge.id, (char*)"e",
+            edge.source, edge.target, edge.cost,
+            contracted_vertices, count};
+#else
+
         graph.get_ids(&contracted_vertices,
                 contracted_vertices_size, edge.contracted_vertices());
         (*return_tuples)[sequence] = {edge.id, (char*)"e",
             edge.source, edge.target, edge.cost,
             contracted_vertices, contracted_vertices_size};
+#endif
         ++sequence;
     }
 }
