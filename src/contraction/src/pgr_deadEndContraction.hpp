@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_contractionGraph.c
+File: pgr_deadend.hpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,18 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_CONTRACTION_SRC_PGR_DEADENDCONTRACTION_HPP_
+#define SRC_CONTRACTION_SRC_PGR_DEADENDCONTRACTION_HPP_
 #pragma once
 
-#if 0
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
-
-#endif
 
 #include <queue>
 #include <functional>
@@ -48,7 +41,7 @@ namespace pgrouting {
 namespace contraction {
 
 template < class G >
-class Pgr_deadEndContraction {
+class Pgr_deadend {
  private:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -83,7 +76,7 @@ class Pgr_deadEndContraction {
 /******* IMPLEMENTATION ************/
 template < class G >
 void
-Pgr_deadEndContraction< G >::setForbiddenVertices(
+Pgr_deadend< G >::setForbiddenVertices(
         Identifiers<V> forbidden_vertices) {
 #ifndef NDEBUG
     debug << "Setting forbidden vertices\n";
@@ -93,7 +86,7 @@ Pgr_deadEndContraction< G >::setForbiddenVertices(
 
 
 template < class G >
-void Pgr_deadEndContraction<G>::calculateVertices(G &graph) {
+void Pgr_deadend<G>::calculateVertices(G &graph) {
     debug << "Calculating vertices\n";
 
     for (auto vi = vertices(graph.graph).first;
@@ -117,7 +110,7 @@ void Pgr_deadEndContraction<G>::calculateVertices(G &graph) {
  */
 
 template < class G >
-bool Pgr_deadEndContraction<G>::is_dead_end(G &graph, V v) {
+bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
 #ifndef NDEBUG
     debug << "Is dead end: " << graph.graph[v].id << "?\n";
 #endif
@@ -223,7 +216,7 @@ bool Pgr_deadEndContraction<G>::is_dead_end(G &graph, V v) {
 
 template < class G >
 void
-Pgr_deadEndContraction<G>::add_if_dead_end(G &graph, V v) {
+Pgr_deadend<G>::add_if_dead_end(G &graph, V v) {
     if (is_dead_end(graph, v)) {
         deadendVertices += v;
     }
@@ -231,7 +224,7 @@ Pgr_deadEndContraction<G>::add_if_dead_end(G &graph, V v) {
 
 template < class G >
 void
-Pgr_deadEndContraction<G>::doContraction(G &graph) {
+Pgr_deadend<G>::doContraction(G &graph) {
 #ifndef NDEBUG
     debug << "Performing contraction\n";
 #endif
@@ -303,3 +296,5 @@ Pgr_deadEndContraction<G>::doContraction(G &graph) {
 
 }  // namespace contraction
 }  // namespace pgrouting
+
+#endif  // SRC_CONTRACTION_SRC_PGR_DEADENDCONTRACTION_HPP_

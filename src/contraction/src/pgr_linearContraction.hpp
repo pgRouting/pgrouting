@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_contractionGraph.c
+File: pgr_linear.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -26,17 +26,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_CONTRACTION_SRC_PGR_LINEARCONTRACTION_HPP_
+#define SRC_CONTRACTION_SRC_PGR_LINEARCONTRACTION_HPP_
 #pragma once
 
-#if 0
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
-#endif
 
 #include <queue>
 #include <functional>
@@ -49,7 +43,7 @@ namespace pgrouting {
 namespace contraction {
 
 template < class G >
-class Pgr_linearContraction {
+class Pgr_linear {
  private:
      typedef typename G::V V;
      typedef typename G::E E;
@@ -61,7 +55,7 @@ class Pgr_linearContraction {
 
 
  public:
-     Pgr_linearContraction():last_edge_id(0) {}
+     Pgr_linear():last_edge_id(0) {}
      void setForbiddenVertices(
              Identifiers<V> forbidden_vertices);
      void calculateVertices(G &graph);
@@ -94,7 +88,7 @@ class Pgr_linearContraction {
 
 template < class G >
 void
-Pgr_linearContraction< G >::setForbiddenVertices(
+Pgr_linear< G >::setForbiddenVertices(
         Identifiers<V> forbidden_vertices) {
     debug << "Setting forbidden vertices\n";
     forbiddenVertices = forbidden_vertices;
@@ -102,7 +96,7 @@ Pgr_linearContraction< G >::setForbiddenVertices(
 
 
 template < class G >
-bool Pgr_linearContraction<G>::is_linear(G &graph, V v) {
+bool Pgr_linear<G>::is_linear(G &graph, V v) {
     degree_size_type in_degree, out_degree;
     in_degree = graph.in_degree(v);
     out_degree = graph.out_degree(v);
@@ -118,7 +112,7 @@ bool Pgr_linearContraction<G>::is_linear(G &graph, V v) {
 }
 
 template < class G >
-void Pgr_linearContraction<G>::calculateVertices(G &graph) {
+void Pgr_linear<G>::calculateVertices(G &graph) {
     debug << "Calculating vertices\n";
     V_i vi;
     for (vi = vertices(graph.graph).first;
@@ -135,7 +129,7 @@ void Pgr_linearContraction<G>::calculateVertices(G &graph) {
 
 
 template < class G >
-void Pgr_linearContraction<G>::doContraction(G &graph) {
+void Pgr_linear<G>::doContraction(G &graph) {
     std::ostringstream contraction_debug;
     contraction_debug << "Performing contraction\n";
     std::priority_queue<V, std::vector<V>, std::greater<V> > linearPriority;
@@ -226,7 +220,7 @@ void Pgr_linearContraction<G>::doContraction(G &graph) {
 
 template < class G >
 void
-Pgr_linearContraction<G>::add_shortcut(
+Pgr_linear<G>::add_shortcut(
         G &graph, V vertex,
         E incoming_edge,
         E outgoing_edge) {
@@ -269,10 +263,12 @@ Pgr_linearContraction<G>::add_shortcut(
     }
 }
 template < class G >
-void Pgr_linearContraction<G>::add_shortcut(G &graph,
+void Pgr_linear<G>::add_shortcut(G &graph,
         pgrouting::CH_edge &shortcut) {
     graph.add_shortcut(shortcut);
 }
 
 }  // namespace contraction
 }  // namespace pgrouting
+
+#endif  // SRC_CONTRACTION_SRC_PGR_LINEARCONTRACTION_HPP_

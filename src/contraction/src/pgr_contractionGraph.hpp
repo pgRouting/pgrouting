@@ -27,22 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_CONTRACTION_SRC_PGR_CONTRACTIONGRAPH_HPP_
+#define SRC_CONTRACTION_SRC_PGR_CONTRACTIONGRAPH_HPP_
 #pragma once
 
-#if 0
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
-#ifdef open
-#undef open
-#endif
-
-#ifdef unlink
-#undef unlink
-#endif
-#endif
 
 #include <limits>
 #include <algorithm>
@@ -94,16 +82,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return edge1.id > edge2.id;
      }
 
-#if 0
-     /*!
-       Prepares the _graph_ to be of type *gtype* with vertices as *vertices*
-       */
-     Pgr_contractionGraph< G , T_V, T_E >(
-             const std::vector< T_V > &vertices,
-             graphType gtype)
-         : Pgr_base_graph< G , T_V, T_E >(vertices, gtype) {
-         }
-#endif
      /*!
        Prepares the _graph_ to be of type *gtype*
        */
@@ -131,38 +109,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return adjacent_vertices;
      }
 
-#if 0
-     /*! @brief get the user ids given the boost graph ids in string format
-       @param [in] log string
-       @param [in] boost_ids The set of boost graph ids of vertices
-       */
-     void get_ids(std::ostringstream &log,
-             Identifiers<int64_t> boost_ids) {
-         log << "{";
-         for (auto id : boost_ids) {
-             log << this->graph[id].id << ", ";
-         }
-         log << "}";
-     }
-
-     /*! @brief get the user ids given the boost graph ids in array format
-       @param [in] boost_ids The set of boost graph ids of vertices
-       @param [in] contracted_vertices The array of contracted vertices
-       @param [in] contracted_vertices_size The size of the array of contracted vertices
-       */
-     void get_ids(int64_t **contracted_vertices,
-             int &contracted_vertices_size,
-             Identifiers<int64_t> boost_ids) {
-         contracted_vertices_size = static_cast<int>(boost_ids.size());
-         (*contracted_vertices) = pgr_alloc(
-                 sizeof(int64_t) * boost_ids.size(),
-                 (*contracted_vertices));
-         int64_t count = 0;
-         for (auto id : boost_ids) {
-             (*contracted_vertices)[count++] = this->graph[id].id;
-         }
-     }
-#endif
 
      std::vector<int64_t> get_ids(
              Identifiers<int64_t> boost_ids) const {
@@ -174,20 +120,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return ids;
      }
 
-#if 0
-     /*! @brief get the remaining vertices of the graph after contraction
-       @param [in] remaining_vertices The vector of vertices remaining after contraction
-       */
-     void get_remaining_vertices(std::vector<T_V>& remaining_vertices) {
-         for (auto vi = vertices(this->graph).first;
-                 vi != vertices(this->graph).second;
-                 ++vi) {
-             if (!removed_vertices.has(*vi)) {
-                 remaining_vertices.push_back(this->graph[*vi]);
-             }
-         }
-     }
-#endif
 
      /*! @brief get the vertices of the graph with atleast one contracted vertex
        @param [in] remaining_vertices The set of vertices with atleast one contracted vertex
@@ -205,21 +137,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return vids;
      }
 
-#if 0
-     /*! @brief get the edges of the graph that are added during contraction
-       @param [in] shortcut_edges The vector of edges added during contraction
-       */
-     std::vector<T_E> get_shortcuts() {
-         auto shortcut_edges = shortcuts;
-#if 0
-         for (auto shortcut : shortcuts) {
-             shortcut_edges.push_back(shortcut);
-         }
-#endif
-         std::sort(shortcut_edges.begin(), shortcut_edges.end(), compareById);
-         return shortcut_edges;
-     }
-#endif
 
      /*! @brief get the edge with minimum cost between two vertices
        @param [in] source vertex_descriptor of source vertex
@@ -252,28 +169,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
        */
      degree_size_type in_degree_from_vertex(V vertex, V neighbor) {
          return out_degree_to_vertex(neighbor, vertex);
-#if 0
-#ifdef TODO
-         if (is_directed()) {
-#endif
-             degree_size_type degree = 0;
-             EI_i in_i, in_end;
-             for (boost::tie(in_i, in_end) =
-                     boost::in_edges(vertex, this->graph);
-                     in_i != in_end; ++in_i) {
-                 if (this->source(*in_i) == neighbor) {
-                     degree++;
-                 }
-             }
-             return degree;
-#ifdef TODO
-         }
-         /*
-          * undirected: in_degree = out_degree
-          */
-         return out_degree_to_vertex(neighbor, vertex);
-#endif
-#endif
      }
 
      /*! @brief The number of edges from @b vertex to @b neighbor
@@ -289,7 +184,8 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
                  boost::out_edges(vertex, this->graph);
                  out_i != out_end; ++out_i) {
              if (this->is_directed()
-                     && (this->is_source(vertex, *out_i) && this->is_target(neighbor, *out_i))) {
+                     && (this->is_source(vertex, *out_i)
+                         && this->is_target(neighbor, *out_i))) {
                  degree++;
              } else if (this->is_undirected() &&
                      this->adjacent(vertex, *out_i) == neighbor) {
@@ -299,16 +195,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
          return degree;
      }
 
-#if 0
-     /*! @brief print the edges added during contraction
-     */
-     void print_shortcuts(std::ostringstream& log) {
-         log << "Printing shortcuts\n";
-         for (auto shortcut : shortcuts) {
-             log << shortcut;
-         }
-     }
-#endif
 
      /*! @brief print the graph with contracted vertices of
        all vertices and edges
@@ -335,28 +221,11 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
 
 
-#if 0
-     //TODO  move this code to postgres kindacode
      /*! @brief get the contracted vertex ids of a given vertex in array format
        @param [in] vid vertex_id
-       @param [in] contracted_vertices The array of contracted vertices of *vid*
-       @param [in] contracted_vertices_size The size of the array of contracted vertices of *vid*
+
+       @returns ids of contracted_vertices
        */
-     void get_contracted_vertices(int64_t **contracted_vertices,
-             int &contracted_vertices_size, int64_t vid) {
-         if (!this->has_vertex(vid)) return;
-         V v = this->get_V(vid);
-         contracted_vertices_size =
-             static_cast<int>(this->graph[v].contracted_vertices().size());
-         (*contracted_vertices) = pgr_alloc(
-                 sizeof(int64_t) * this->graph[v].contracted_vertices().size(),
-                 (*contracted_vertices));
-         int64_t count = 0;
-         for (auto vertex : this->graph[v].contracted_vertices()) {
-             (*contracted_vertices)[count++] = this->graph[vertex].id;
-         }
-     }
-#endif
      std::vector<int64_t> get_contracted_vertices(int64_t vid) {
          if (!this->has_vertex(vid)) return std::vector<int64_t>();
          auto  v = this->get_V(vid);
@@ -423,53 +292,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
          shortcuts.push_back(edge);
      }
-
-#if 0
-     /*! \brief Disconnects all incoming and outgoing edges from the vertex
-       boost::graph doesn't recommend th to insert/remove vertices, so a vertex removal is
-       simulated by disconnecting the vertex from the graph
-       - No edge is disconnected if the vertices id's do not exist in the graph
-       - All removed edges are stored for future reinsertion
-       - All parallel edges are disconnected (automatically by boost)
-       @param [in] vertex original vertex id of the starting point of the edge
-       @param [in] log string stream used for debugging purposes
-       */
-     void disconnect_vertex(std::ostringstream &log, V vertex) {
-         T_E d_edge;
-         EO_i out, out_end;
-         log << "Disconnecting current vertex "
-             << this->graph[vertex].id << "\n";
-         removed_vertices += vertex;
-         //  store the edges that are going to be removed
-         for (boost::tie(out, out_end) = out_edges(vertex, this->graph);
-                 out != out_end; ++out) {
-             d_edge.id = this->graph[*out].id;
-             d_edge.source = this->graph[this->source(*out)].id;
-             d_edge.target = this->graph[this->target(*out)].id;
-             d_edge.cost = this->graph[*out].cost;
-             this->removed_edges.push_back(d_edge);
-         }
-
-         //  special case
-         if (this->m_gType == DIRECTED) {
-             EI_i in, in_end;
-             for (boost::tie(in, in_end) = in_edges(vertex, this->graph);
-                     in != in_end; ++in) {
-                 d_edge.id = this->graph[*in].id;
-                 d_edge.source = this->graph[this->source(*in)].id;
-                 d_edge.target = this->graph[this->target(*in)].id;
-                 d_edge.cost = this->graph[*in].cost;
-                 this->removed_edges.push_back(d_edge);
-             }
-         }
-         try {
-             boost::clear_vertex(vertex, this->graph);
-         }
-         catch ( ... ) {
-             log << "Caught unknown exception!\n";
-         }
-     }
-#endif
 };
+
 }  // namespace graph
 }  // namespace pgrouting
+
+#endif  // SRC_CONTRACTION_SRC_PGR_CONTRACTIONGRAPH_HPP_

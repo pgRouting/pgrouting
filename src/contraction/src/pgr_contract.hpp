@@ -27,20 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_CONTRACTION_SRC_PGR_CONTRACT_HPP_
+#define SRC_CONTRACTION_SRC_PGR_CONTRACT_HPP_
 #pragma once
-#if 0
-#include <stack>
-#include <iostream>
-#include <sstream>
-#include <deque>
-#include <queue>
-#include <string>
-#include <utility>
-#include <functional>
-#include <vector>
-#include <map>
-#endif
 
+#include <deque>
+#include <vector>
 #include "../../common/src/pgr_assert.h"
 
 #include "./pgr_contractionGraph.hpp"
@@ -59,7 +51,7 @@ class Pgr_contract {
     void perform_deadEnd(G &graph,
             Identifiers<V> forbidden_vertices,
             std::ostringstream& debug) {
-        Pgr_deadEndContraction<G> deadendContractor;
+        Pgr_deadend<G> deadendContractor;
         debug << "Setting forbidden_vertices";
         deadendContractor.setForbiddenVertices(forbidden_vertices);
 
@@ -77,7 +69,7 @@ class Pgr_contract {
             Identifiers<V>& forbidden_vertices,
             std::ostringstream& debug) {
         std::ostringstream linear_debug;
-        Pgr_linearContraction<G> linearContractor;
+        Pgr_linear<G> linearContractor;
         linearContractor.setForbiddenVertices(forbidden_vertices);
         linearContractor.calculateVertices(graph);
         try {
@@ -120,25 +112,33 @@ class Pgr_contract {
                         debug << "contraction "<< front
                             << " asked" << std::endl;
                         if (front == 1) {
+#ifndef NDEBUG
                             debug << "Graph before dead end contraction"
                                 << std::endl;
                             graph.print_graph(debug);
                             debug << "Performing dead end contraction"
                                 << std::endl;
+#endif
                             perform_deadEnd(graph, forbidden_vertices, debug);
+#ifndef NDEBUG
                             debug << "Graph after dead end contraction"
                                 << std::endl;
                             graph.print_graph(debug);
+#endif
                         } else if (front == 2) {
+#ifndef NDEBUG
                             debug << "Graph before linear contraction"
                                 << std::endl;
                             graph.print_graph(debug);
                             debug << "Performing linear contraction"
                                 << std::endl;
+#endif
                             perform_linear(graph, forbidden_vertices, debug);
+#ifndef NDEBUG
                             debug << "Graph after linear contraction"
                                 << std::endl;
                             graph.print_graph(debug);
+#endif
                         }
                         contract_order.pop_front();
                         contract_order.push_back(front);
@@ -154,6 +154,7 @@ class Pgr_contract {
         }
     }
 
+#if 0
     bool is_valid_contraction_number(int number) {
         switch (number) {
             case -2:
@@ -173,7 +174,10 @@ class Pgr_contract {
                 break;
         }
     }
+#endif
 };
 
 }  // namespace contraction
 }  // namespace pgrouting
+
+#endif  // SRC_CONTRACTION_SRC_PGR_CONTRACT_HPP_
