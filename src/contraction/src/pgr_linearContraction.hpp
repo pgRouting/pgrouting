@@ -36,10 +36,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #undef open
 #endif
 #endif
+#endif
+
+#include <queue>
 #include <functional>
 #include <vector>
-#endif
-#include <queue>
+
 #include "../../common/src/identifiers.hpp"
 
 

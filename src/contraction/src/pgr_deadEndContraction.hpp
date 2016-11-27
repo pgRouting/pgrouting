@@ -37,11 +37,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 #endif
 
-#include <functional>
-#include <vector>
 #endif
 
 #include <queue>
+#include <functional>
+#include <vector>
 #include "../../common/src/identifiers.hpp"
 
 namespace pgrouting {
