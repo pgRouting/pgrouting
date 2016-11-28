@@ -45,6 +45,7 @@ extern "C" {
             int64_t* sink_vertices,
             size_t size_sink_verticesArr,
             char* algorithm,
+            bool only_flow,
             pgr_flow_t **return_tuples,
             size_t *return_count,
             char** log_msg,

@@ -35,6 +35,7 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     source_vertex BIGINT,
     sink_vertex BIGINT,
     algorithm TEXT DEFAULT 'push_relabel',
+    only_flow BOOLEAN DEFAULT false,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -119,6 +120,7 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     source_vertex BIGINT,
     sink_vertices ANYARRAY,
     algorithm TEXT DEFAULT 'push_relabel',
+    only_flow BOOLEAN DEFAULT false,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -203,6 +205,7 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     source_vertices ANYARRAY,
     sink_vertex BIGINT,
     algorithm TEXT DEFAULT 'push_relabel',
+    only_flow BOOLEAN DEFAULT false,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -287,6 +290,7 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
     source_vertices ANYARRAY,
     sink_vertices ANYARRAY,
     algorithm TEXT DEFAULT 'push_relabel',
+    only_flow BOOLEAN DEFAULT false,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -359,3 +363,4 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
+

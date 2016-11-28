@@ -17,6 +17,8 @@ To see the full list of changes check the list of `Git commits <https://github.c
 Table of contents
 --------------------------
 
+   - :ref:`changelog_2_4_0`
+   - :ref:`changelog_2_3_1`
    - :ref:`changelog_2_3_0`
    - :ref:`changelog_2_2_4`
    - :ref:`changelog_2_2_3`
@@ -35,9 +37,20 @@ pgRouting 2.4.0 Release Notes
 
 .. rubric:: New Signatures
 
-Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
-
 * pgr_bdDijkstra
+
+
+.. rubric:: New Proposed Signatures
+* pgr_maxFlow
+* pgr_astar(one to many)
+* pgr_astar(many to one)
+* pgr_astar(many to many)
+* pgr_astarCost(one to one)
+* pgr_astarCost(one to many)
+* pgr_astarCost(many to one)
+* pgr_astarCost(many to many)
+
+
 
 .. rubric:: Deprecated Signatures
 
@@ -48,6 +61,19 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 * Bug fixes on proposed functions
 
   * pgr_withPointsKSP: fixed ordering
+
+.. _changelog_2_3_1:
+
+pgRouting 2.3.1 Release Notes
+===============================================================================
+
+To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github.
+
+.. rubric:: Bug Fixes
+
+* Leaks on proposed max_flow functions
+* Regression error on pgr_trsp
+* Types discrepancy on pgr_createVerticesTable
 
 
 .. _changelog_2_3_0:

@@ -59,6 +59,7 @@ process(
         int64_t source_vertex,
         int64_t sink_vertex,
         char *algorithm,
+        bool only_flow,
         pgr_flow_t **result_tuples,
         size_t *result_count) {
     if (!(strcmp(algorithm, "push_relabel") == 0
@@ -99,6 +100,7 @@ process(
             &source_vertex, 1,
             &sink_vertex, 1,
             algorithm,
+            only_flow,
 
             result_tuples, result_count,
 
@@ -163,6 +165,7 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
                 text_to_cstring(PG_GETARG_TEXT_P(3)),
+                PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 

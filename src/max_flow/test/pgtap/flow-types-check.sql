@@ -1,7 +1,7 @@
 \i setup.sql
 SET client_min_messages TO WARNING;
 
-SELECT plan(114);
+SELECT plan(123);
 --Boykov-Kolmogorov
 SELECT has_function('pgr_maxflowboykovkolmogorov');
 
@@ -89,6 +89,36 @@ SELECT function_returns('pgr_maxflowpushrelabel', ARRAY[
 SELECT function_returns('pgr_maxflowpushrelabel', ARRAY[
     'text', 'anyarray', 'anyarray'
     ], 'setof record');
+
+--pgr_max_flow
+SELECT has_function('pgr_maxflow');
+
+SELECT has_function('pgr_maxflow', ARRAY[
+    'text', 'bigint', 'bigint'
+    ]);
+SELECT has_function('pgr_maxflow', ARRAY[
+    'text', 'anyarray', 'bigint'
+    ]);
+SELECT has_function('pgr_maxflow', ARRAY[
+    'text', 'bigint', 'anyarray'
+    ]);
+SELECT has_function('pgr_maxflow', ARRAY[
+    'text', 'anyarray', 'anyarray'
+    ]);
+
+
+SELECT function_returns('pgr_maxflow', ARRAY[
+    'text', 'bigint', 'bigint'
+    ], 'bigint');
+SELECT function_returns('pgr_maxflow', ARRAY[
+    'text', 'bigint', 'anyarray'
+    ], 'bigint');
+SELECT function_returns('pgr_maxflow', ARRAY[
+    'text', 'anyarray', 'bigint'
+    ], 'bigint');
+SELECT function_returns('pgr_maxflow', ARRAY[
+    'text', 'anyarray', 'anyarray'
+    ], 'bigint');
 
 -- Push-relabel
 PREPARE pl_q_o2o AS

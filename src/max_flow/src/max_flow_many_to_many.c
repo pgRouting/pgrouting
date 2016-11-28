@@ -59,8 +59,8 @@ process(
     char *edges_sql,
     ArrayType *starts,
     ArrayType *ends,
-
     char *algorithm,
+    bool only_flow,
     pgr_flow_t **result_tuples,
     size_t *result_count) {
     if (!(strcmp(algorithm, "push_relabel") == 0
@@ -107,6 +107,7 @@ process(
             source_vertices, size_source_verticesArr,
             sink_vertices, size_sink_verticesArr,
             algorithm,
+            only_flow,
 
             result_tuples, result_count,
             
@@ -166,8 +167,8 @@ max_flow_many_to_many(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_ARRAYTYPE_P(2),
-
                 text_to_cstring(PG_GETARG_TEXT_P(3)),
+                PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 

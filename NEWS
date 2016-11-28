@@ -6,6 +6,17 @@ Changes for 2.4.0
 
   * pgr_bdDijkstra
 
+* New Proposed functions
+
+  * pgr_maxFlow
+  * pgr_astar(one to many)
+  * pgr_astar(many to one)
+  * pgr_astar(many to many)
+  * pgr_astarCost(one to one)
+  * pgr_astarCost(one to many)
+  * pgr_astarCost(many to one)
+  * pgr_astarCost(many to many)
+
 * Deprecated Signatures
 
   * pgr_bddijkstra - use pgr_bdDijkstra instead
@@ -15,6 +26,16 @@ Changes for 2.4.0
   * Bug fixes on proposed functions
 
     * pgr_withPointsKSP: fixed ordering
+
+
+Changes for 2.3.1
+-------------------------------------------------------------------------------
+
+* Bug fixes
+  * Leaks on proposed max_flow functions
+  * Regression error on pgr_trsp
+  * Types discrepancy on pgr_createVerticesTable
+
 
 Changes for 2.3.0
 -------------------------------------------------------------------------------
