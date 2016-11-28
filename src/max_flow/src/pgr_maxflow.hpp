@@ -165,8 +165,8 @@ class PgrFlowGraph {
           /*
            * NOTE: int64_t crashes the server
            */
-          /* From supersource to sources has maximum capacity*/
-          capacity[e] = std::numeric_limits<int32_t>::max();
+          /* From supersource to sources has maximum capacity */
+          capacity[e] = (std::numeric_limits<int32_t>::max)();
           /* From sources to supersource has 0 capacity*/
           capacity[e_rev] = 0;
           rev[e] = e_rev;
@@ -184,7 +184,7 @@ class PgrFlowGraph {
            * NOTE: int64_t crashes the server
            */
           /* From sinks to supersink has maximum capacity*/
-          capacity[e] = std::numeric_limits<int32_t>::max();
+          capacity[e] = (std::numeric_limits<int32_t>::max)();
           /* From supersink to sinks has 0 capacity*/
           capacity[e_rev] = 0;
           rev[e] = e_rev;
