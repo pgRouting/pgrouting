@@ -46,6 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <vector>
 #include <set>
+#include <limits>
 
 #include "pgr_maxflow.hpp"
 
@@ -127,8 +128,7 @@ class PgrEdgeDisjointPathsGraph {
               boost::add_edge(supersource, source, boost_graph);
           boost::tie(e_rev, added) =
               boost::add_edge(source, supersource, boost_graph);
-          //TODO(vicky) set to std::max
-          capacity[e] = 999999999;
+          capacity[e] = (std::numeric_limits<int32_t>::max)();
           capacity[e_rev] = 0;
           rev[e] = e_rev;
           rev[e_rev] = e;
@@ -142,8 +142,7 @@ class PgrEdgeDisjointPathsGraph {
               boost::add_edge(sink, supersink, boost_graph);
           boost::tie(e1_rev, added) =
               boost::add_edge(supersink, sink, boost_graph);
-          //TODO(vicky) set to std::max
-          capacity[e1] = 999999999;
+          capacity[e1] = (std::numeric_limits<int32_t>::max)();
           capacity[e1_rev] = 0;
           rev[e1] = e1_rev;
           rev[e1_rev] = e1;

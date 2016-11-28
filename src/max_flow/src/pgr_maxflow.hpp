@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_
+#define SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_
 #pragma once
 
 #ifdef unlink
@@ -36,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/edmonds_karp_max_flow.hpp>
 #include <boost/graph/boykov_kolmogorov_max_flow.hpp>
 
-#include "./../../common/src/pgr_types.h"
 
 #include <map>
 #include <string>
@@ -45,6 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
+#include "./../../common/src/pgr_types.h"
 
 // user's functions
 // for development
@@ -57,7 +59,8 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
         boost::property<boost::vertex_index_t, int64_t,
         boost::property<boost::vertex_color_t, boost::default_color_type,
         boost::property<boost::vertex_distance_t, int64_t,
-        boost::property<boost::vertex_predecessor_t, Traits::edge_descriptor> > > > >,
+        boost::property<boost::vertex_predecessor_t, Traits::edge_descriptor>
+        > > > >,
         // Edge properties
         boost::property<boost::edge_capacity_t, int64_t,
         boost::property<boost::edge_residual_capacity_t, int64_t,
@@ -135,7 +138,7 @@ class PgrFlowGraph {
        */
       std::set<int64_t> vertices(source_vertices);
       vertices.insert(sink_vertices.begin(), sink_vertices.end());
-      
+
       for (size_t i = 0; i < total_tuples; ++i) {
           vertices.insert(data_edges[i].source);
           vertices.insert(data_edges[i].target);
@@ -265,3 +268,5 @@ class PgrFlowGraph {
       }
   }
 };
+
+#endif  // SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_
