@@ -24,14 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_
+#define SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_
 #pragma once
-
-#if 0
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-#endif
 
 #ifdef unlink
 #undef unlink
@@ -40,7 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/assert.hpp>
 
-#include "./../../common/src/pgr_types.h"
 
 #include <map>
 #include <utility>
@@ -48,6 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <limits>
 
+#include "./../../common/src/pgr_types.h"
 #include "pgr_maxflow.hpp"
 
 // user's functions
@@ -98,10 +93,10 @@ class PgrEdgeDisjointPathsGraph {
   }
 
   void create_edge_disjoint_paths_graph(pgr_basic_edge_t *data_edges,
-                                        size_t total_tuples,
-                                        const std::set<int64_t> &source_vertices,
-                                        const std::set<int64_t> &sink_vertices,
-                                        bool directed) {
+          size_t total_tuples,
+          const std::set<int64_t> &source_vertices,
+          const std::set<int64_t> &sink_vertices,
+          bool directed) {
       std::set<int64_t> vertices;
       for (int64_t source : source_vertices) {
           vertices.insert(source);
@@ -246,7 +241,7 @@ class PgrEdgeDisjointPathsGraph {
           size_t j;
           for (j = 0; j < size - 1; j++) {
               General_path_element_t edge;
-              edge.seq = (int) (j + 1);
+              edge.seq = static_cast<int>(j + 1);
               edge.start_id = paths[i][0];
               edge.end_id = paths[i][size - 1];
               edge.node = paths[i][j];
@@ -258,7 +253,7 @@ class PgrEdgeDisjointPathsGraph {
               path_elements.push_back(edge);
           }
           General_path_element_t edge;
-          edge.seq = (int) (j + 1);
+          edge.seq = static_cast<int>(j + 1);
           edge.start_id = paths[i][0];
           edge.end_id = paths[i][size - 1];
           edge.node = paths[i][j];
@@ -267,3 +262,5 @@ class PgrEdgeDisjointPathsGraph {
       }
   }
 };
+
+#endif  // SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_
