@@ -42,9 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/edmonds_karp_max_flow.hpp>
 #include <boost/graph/boykov_kolmogorov_max_flow.hpp>
 
-#if 0
-#include "./../../common/src/signalhandler.h"
-#endif
 #include "./../../common/src/pgr_types.h"
 
 #include <map>
@@ -137,18 +134,12 @@ class PgrFlowGraph {
        * The same applies for sinks.
        * To avoid code repetition, a supersource/sink is used even in the one to one signature.
        */
+
+      /*
+       * vertices = {sources} U {sink} U {edges.source} U {edge.target}
+       */
       std::set<int64_t> vertices(source_vertices);
-#if 0
-      for (int64_t source : source_vertices) {
-          vertices.insert(source);
-      }
-#endif
       vertices.insert(sink_vertices.begin(), sink_vertices.end());
-#if 0
-      for (int64_t sink : sink_vertices) {
-          vertices.insert(sink);
-      }
-#endif
       
       for (size_t i = 0; i < total_tuples; ++i) {
           vertices.insert(data_edges[i].source);
@@ -170,12 +161,12 @@ class PgrFlowGraph {
               boost::add_edge(supersource, source, boost_graph);
           boost::tie(e_rev, added) =
               boost::add_edge(source, supersource, boost_graph);
-          // TODO(vicky) set to std::max
-#if 1
-          capacity[e] = 999999999;
-#else
-          capacity[e] = std::numeric_limits<int64_t>::max();
-#endif
+          /*
+           * NOTE: int64_t crashes the server
+           */
+          /* From supersource to sources has maximum capacity*/
+          capacity[e] = std::numeric_limits<int32_t>::max();
+          /* From sources to supersource has 0 capacity*/
           capacity[e_rev] = 0;
           rev[e] = e_rev;
           rev[e_rev] = e;
@@ -188,7 +179,12 @@ class PgrFlowGraph {
           boost::tie(e, added) = boost::add_edge(sink, supersink, boost_graph);
           boost::tie(e_rev, added) =
               boost::add_edge(supersink, sink, boost_graph);
-          capacity[e] = 999999999;
+          /*
+           * NOTE: int64_t crashes the server
+           */
+          /* From sinks to supersink has maximum capacity*/
+          capacity[e] = std::numeric_limits<int32_t>::max();
+          /* From supersink to sinks has 0 capacity*/
           capacity[e_rev] = 0;
           rev[e] = e_rev;
           rev[e_rev] = e;
@@ -201,9 +197,9 @@ class PgrFlowGraph {
       rev = get(boost::edge_reverse, boost_graph);
       residual_capacity = get(boost::edge_residual_capacity, boost_graph);
 
-      /*
+      /* Inserting edges
        * Push-relabel requires each edge to be mapped to its reverse with capacity 0.
-       * The other algorithms have no such requirement. (I can have half as many edges)
+       * The other algorithms have no such requirement. (can have have as many edges)
        */
       if (strcmp(algorithm, "push_relabel") == 0) {
           for (size_t i = 0; i < total_tuples; ++i) {
