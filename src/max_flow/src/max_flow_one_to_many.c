@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -53,7 +53,6 @@ PGDLLEXPORT Datum
 max_flow_one_to_many(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
@@ -64,7 +63,6 @@ process(
         bool only_flow,
         pgr_flow_t **result_tuples,
         size_t *result_count) {
-
     if (!(strcmp(algorithm, "push_relabel") == 0
                 || strcmp(algorithm, "edmonds_karp") == 0
                 || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
@@ -116,11 +114,14 @@ process(
             &err_msg);
 
     if (strcmp(algorithm, "push_relabel") == 0) {
-        time_msg("processing pgr_maxFlowPushRelabel(one to many)", start_t, clock());
+        time_msg("processing pgr_maxFlowPushRelabel(one to many)",
+                start_t, clock());
     } else if (strcmp(algorithm, "edmonds_karp") == 0) {
-        time_msg("processing pgr_maxFlowEdmondsKarp(one to many)", start_t, clock());
+        time_msg("processing pgr_maxFlowEdmondsKarp(one to many)",
+                start_t, clock());
     } else {
-        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to many)", start_t, clock());
+        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to many)",
+                start_t, clock());
     }
 
 
@@ -141,8 +142,6 @@ process(
 
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PG_FUNCTION_INFO_V1(max_flow_one_to_many);
 PGDLLEXPORT Datum
@@ -151,11 +150,8 @@ max_flow_one_to_many(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     pgr_flow_t *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -204,6 +200,7 @@ max_flow_one_to_many(PG_FUNCTION_ARGS) {
         Datum result;
         Datum *values;
         bool *nulls;
+        size_t call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
 
@@ -215,12 +212,12 @@ max_flow_one_to_many(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].residual_capacity);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].flow);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
 
         /**********************************************************************/
 

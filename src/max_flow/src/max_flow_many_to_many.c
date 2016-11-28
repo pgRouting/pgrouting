@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -110,17 +110,20 @@ process(
             only_flow,
 
             result_tuples, result_count,
-            
+
             &log_msg,
             &notice_msg,
             &err_msg);
 
     if (strcmp(algorithm, "push_relabel") == 0) {
-        time_msg("processing pgr_maxFlowPushRelabel(many to many)", start_t, clock());
+        time_msg("processing pgr_maxFlowPushRelabel(many to many)",
+                start_t, clock());
     } else if (strcmp(algorithm, "edmonds_karp") == 0) {
-        time_msg("processing pgr_maxFlowEdmondsKarp(many to many)", start_t, clock());
+        time_msg("processing pgr_maxFlowEdmondsKarp(many to many)",
+                start_t, clock());
     } else {
-        time_msg("processing pgr_maxFlowBoykovKolmogorov(many to many)", start_t, clock());
+        time_msg("processing pgr_maxFlowBoykovKolmogorov(many to many)",
+                start_t, clock());
     }
 
 
@@ -202,6 +205,7 @@ max_flow_many_to_many(PG_FUNCTION_ARGS) {
         Datum result;
         Datum *values;
         bool *nulls;
+        size_t call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
@@ -213,13 +217,12 @@ max_flow_many_to_many(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].residual_capacity);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].flow);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

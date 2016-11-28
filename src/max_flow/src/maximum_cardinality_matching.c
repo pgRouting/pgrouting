@@ -33,18 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
@@ -93,7 +88,7 @@ process(
         result_count,
         &err_msg);
 
-    time_msg("processing max flow", start_t, clock());
+    time_msg("processing maximumCardinalityMatching", start_t, clock());
     PGR_DBG("Returning %ld tuples\n", *result_count);
     PGR_DBG("Returned message = %s\n", err_msg);
 
@@ -101,8 +96,6 @@ process(
     pfree(edges);
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PG_FUNCTION_INFO_V1(maximum_cardinality_matching);
 PGDLLEXPORT Datum
@@ -111,11 +104,8 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     pgr_basic_edge_t *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -125,7 +115,6 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
         PGR_DBG("Calling process");
         process(
             text_to_cstring(PG_GETARG_TEXT_P(0)),
@@ -133,7 +122,6 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
             &result_tuples,
             &result_count);
 
-        /*                                                                    */
         /**********************************************************************/
 
 #if PGSQL_VERSION > 95
@@ -165,7 +153,6 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
         bool *nulls;
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
         values = palloc(4 * sizeof(Datum));
         nulls = palloc(4 * sizeof(bool));
@@ -176,11 +163,11 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge_id);
         values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

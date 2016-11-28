@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -69,7 +69,7 @@ process(
         pgr_get_bigIntArray(&size_source_verticesArr, starts);
 
     size_t size_sink_verticesArr = 0;
-    int64_t* sink_vertices = 
+    int64_t* sink_vertices =
         pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
 

@@ -55,6 +55,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #endif
 
 
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#include <funcapi.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+
 void pgr_send_error(int errcode);
 void pgr_SPI_finish(void);
 void pgr_SPI_connect(void);

@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
-#include "funcapi.h"
+#include <funcapi.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
@@ -109,11 +109,14 @@ process(
             &err_msg);
 
     if (strcmp(algorithm, "push_relabel") == 0) {
-        time_msg("processing pgr_maxFlowPushRelabel(one to one)", start_t, clock());
+        time_msg("processing pgr_maxFlowPushRelabel(one to one)",
+                start_t, clock());
     } else if (strcmp(algorithm, "edmonds_karp") == 0) {
-        time_msg("processing pgr_maxFlowEdmondsKarp(one to one)", start_t, clock());
+        time_msg("processing pgr_maxFlowEdmondsKarp(one to one)",
+                start_t, clock());
     } else {
-        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to one)", start_t, clock());
+        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to one)",
+                start_t, clock());
     }
 
 
@@ -143,11 +146,8 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     pgr_flow_t *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -157,9 +157,7 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
-        PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
@@ -169,7 +167,6 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
                 &result_tuples,
                 &result_count);
 
-        /*                                                                    */
         /**********************************************************************/
 
 #if PGSQL_VERSION > 95
@@ -199,9 +196,9 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
         Datum result;
         Datum *values;
         bool *nulls;
+        size_t call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(bool));
@@ -211,13 +208,12 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].flow);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].residual_capacity);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].source);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].flow);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
