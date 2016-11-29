@@ -27,16 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
+#include "./maximum_cardinality_matching_driver.h"
 
 #include <sstream>
 #include <vector>
 
 #include "./pgr_maximumcardinalitymatching.hpp"
-#include "./maximum_cardinality_matching_driver.h"
+
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_types.h"
 
@@ -55,13 +52,15 @@ do_pgr_maximum_cardinality_matching(
         std::vector<pgr_basic_edge_t> matched_vertices;
 
         if (directed) {
-            pgrouting::flow::PgrCardinalityGraph<pgrouting::BasicDirectedGraph> G;
+            pgrouting::flow::PgrCardinalityGraph<
+                pgrouting::BasicDirectedGraph> G;
             G.create_max_cardinality_graph(data_edges, total_tuples);
             std::vector<int64_t> mate_map(boost::num_vertices(G.boost_graph));
             G.maximum_cardinality_matching(mate_map);
             G.get_matched_vertices(matched_vertices, mate_map);
         } else {
-            pgrouting::flow::PgrCardinalityGraph<pgrouting::BasicUndirectedGraph> G;
+            pgrouting::flow::PgrCardinalityGraph<
+                pgrouting::BasicUndirectedGraph> G;
             G.create_max_cardinality_graph(data_edges, total_tuples);
             std::vector<int64_t> mate_map(boost::num_vertices(G.boost_graph));
             G.maximum_cardinality_matching(mate_map);

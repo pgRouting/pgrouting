@@ -169,7 +169,7 @@ class PgrCardinalityGraph {
   }
 };
 
-}  // namespace pgrouting
 }  // namespace flow
+}  // namespace pgrouting
 
 #endif  // SRC_MAX_FLOW_SRC_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
