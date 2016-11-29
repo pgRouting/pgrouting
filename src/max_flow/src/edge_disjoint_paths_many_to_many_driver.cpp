@@ -27,11 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#if 0
 #if defined(__MINGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
 #endif
+#endif
 
+#include "./pgr_edgedisjointpaths.hpp"
 
 #include <sstream>
 #include <vector>
@@ -40,7 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
-#include "./pgr_edgedisjointpaths.hpp"
 #include "./edge_disjoint_paths_many_to_many_driver.h"
 
 void
