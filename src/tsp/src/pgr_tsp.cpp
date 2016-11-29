@@ -27,6 +27,12 @@
  *
  *  ********************************************************************PGR-GNU*/
 
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#include <winsock2.h>
+#include <windows.h>
+#undef min
+#undef max
+#endif
 
 #include "./pgr_tsp.hpp"
 
@@ -114,7 +120,7 @@ TSP<MATRIX>::find_closest_city(
 #endif
 
     size_t best_city = 0;
-    auto best_distance = (std::numeric_limits<double>::max)();
+    auto best_distance = std::numeric_limits<double>::max();
 #ifndef NDEBUG
     bool found(false);
 #endif
