@@ -84,25 +84,6 @@ THE SOFTWARE.
 * that was placed in the public domain.
 *************************************************************************/
 
-// #ifdef __MINGW64__
-// #define ELOG_H
-// #include <winsock2.h>
-// #endif
-
-#if 0
-#include "./../../common/src/postgres_connection.h"
-
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-
-#include "funcapi.h"
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-#endif
-
 #include <string.h>    /* memcpy */
 #include <math.h>      /* exp    */
 

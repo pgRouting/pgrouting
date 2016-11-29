@@ -35,13 +35,13 @@ THE SOFTWARE.
  * This code is deprecated
  */
 #include "./../../common/src/postgres_connection.h"
+#include "catalog/pg_type.h"
+#include "utils/array.h"
+#include "utils/lsyscache.h"
 
 #include "./tsp.h"
 #include <math.h>
 
-#include "catalog/pg_type.h"
-#include "utils/array.h"
-#include "utils/lsyscache.h"
 
 PGDLLEXPORT Datum tsp_matrix(PG_FUNCTION_ARGS);
 
