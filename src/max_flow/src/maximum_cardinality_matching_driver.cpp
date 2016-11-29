@@ -32,18 +32,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <windows.h>
 #endif
 
-
 #include <sstream>
 #include <vector>
 
 #include "./pgr_maximumcardinalitymatching.hpp"
 #include "./maximum_cardinality_matching_driver.h"
-#include "../../common/src/pgr_alloc.hpp"
-
-// #define DEBUG
-extern "C" {
+#include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_types.h"
-}
+
 
 void
 do_pgr_maximum_cardinality_matching(
