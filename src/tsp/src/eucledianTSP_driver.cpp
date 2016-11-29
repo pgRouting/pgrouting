@@ -27,18 +27,13 @@
  *
  *  ******************************************************************** PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
+#include "./eucledianTSP_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <vector>
 #include <algorithm>
 
-#include "./eucledianTSP_driver.h"
 #include "./eucledianDmatrix.h"
 
 #include "./pgr_tsp.hpp"

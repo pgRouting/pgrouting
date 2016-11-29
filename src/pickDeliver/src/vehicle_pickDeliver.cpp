@@ -22,6 +22,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#include "./vehicle_pickDeliver.h"
+
 #include <iostream>
 #include <deque>
 #include <set>
@@ -33,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_assert.h"
 #include "./order.h"
 #include "./vehicle.h"
-#include "./vehicle_pickDeliver.h"
 #include "./pgr_pickDeliver.h"
 
 

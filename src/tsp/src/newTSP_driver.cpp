@@ -27,23 +27,18 @@
  *
  *  ******************************************************************** PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
+#include "./newTSP_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <vector>
 #include <algorithm>
 
-#include "./newTSP_driver.h"
-#include "./Dmatrix.h"
-
-#include "./pgr_tsp.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
+
+#include "./Dmatrix.h"
+#include "./pgr_tsp.hpp"
 
 void
 do_pgr_tsp(
