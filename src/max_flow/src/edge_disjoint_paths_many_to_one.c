@@ -29,19 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./../../common/src/postgres_connection.h"
-
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-
-#include <funcapi.h>
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
 #include "utils/array.h"
-
 
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/e_report.h"
