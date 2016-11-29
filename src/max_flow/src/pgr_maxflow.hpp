@@ -47,7 +47,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 namespace pgrouting {
-namespace flow {
 
 typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS>
     Traits;
@@ -64,6 +63,8 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
         boost::property<boost::edge_residual_capacity_t, int64_t,
         boost::property<boost::edge_reverse_t, Traits::edge_descriptor> > > >
     FlowGraph;
+
+namespace graph {
 
 template<class G>
 class PgrFlowGraph {
@@ -267,7 +268,7 @@ class PgrFlowGraph {
   }
 };
 
+}  // namespace graph
 }  // namespace pgrouting
-}  // namespace flow
 
 #endif  // SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_

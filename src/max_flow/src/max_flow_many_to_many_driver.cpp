@@ -62,7 +62,7 @@ do_pgr_max_flow_many_to_many(
     std::ostringstream err;
 
     try {
-        pgrouting::flow::PgrFlowGraph<pgrouting::flow::FlowGraph> G;
+        pgrouting::graph::PgrFlowGraph<pgrouting::FlowGraph> G;
         std::set<int64_t> set_source_vertices;
         std::set<int64_t> set_sink_vertices;
         for (size_t i = 0; i < size_source_verticesArr; ++i) {

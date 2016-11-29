@@ -51,16 +51,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 
 
-// user's functions
-// for development
 
 namespace pgrouting {
-namespace flow {
 
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS>
     BasicUndirectedGraph;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS>
     BasicDirectedGraph;
+
+namespace flow {
 
 template<class G>
 class PgrCardinalityGraph {

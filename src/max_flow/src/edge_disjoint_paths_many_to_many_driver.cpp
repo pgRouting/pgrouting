@@ -71,7 +71,7 @@ do_pgr_edge_disjoint_paths_many_to_many(
             set_sink_vertices.insert(sink_vertices[i]);
         }
 
-        pgrouting::flow::PgrEdgeDisjointPathsGraph<pgrouting::flow::FlowGraph> G;
+        pgrouting::flow::PgrEdgeDisjointPathsGraph<pgrouting::FlowGraph> G;
 
         /*
          * boykov_kolmogorov is only for directed graphs
