@@ -114,7 +114,7 @@ TSP<MATRIX>::find_closest_city(
 #endif
 
     size_t best_city = 0;
-    auto best_distance = std::numeric_limits<double>::max();
+    auto best_distance = (std::numeric_limits<double>::max)();
 #ifndef NDEBUG
     bool found(false);
 #endif
