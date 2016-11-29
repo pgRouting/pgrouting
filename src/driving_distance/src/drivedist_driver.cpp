@@ -22,23 +22,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
-
 #include "./drivedist_driver.h"
+
 #include <sstream>
 #include <deque>
 #include <vector>
 
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
+
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_assert.h"
 #include "../../common/src/pgr_alloc.hpp"
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 
 
