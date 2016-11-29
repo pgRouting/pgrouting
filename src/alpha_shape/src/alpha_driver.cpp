@@ -40,7 +40,6 @@ corresponding to the Alpha shape.
 namespace boost {
   void tss_cleanup_implemented() { }
 }
-#endif
 
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Filtered_kernel.h>
