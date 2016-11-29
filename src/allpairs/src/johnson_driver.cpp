@@ -27,20 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
-
+#include "./johnson_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
+
 #include "./pgr_allpairs.hpp"
-#include "./johnson_driver.h"
+
 #include "./../../common/src/pgr_types.h"
 
 // CREATE OR REPLACE FUNCTION pgr_johnson(edges_sql TEXT, directed BOOLEAN,

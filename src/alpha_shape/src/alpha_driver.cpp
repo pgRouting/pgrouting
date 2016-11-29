@@ -34,18 +34,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 Takes a list of points and returns a list of segments
 corresponding to the Alpha shape.
 ************************************************************************/
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-#ifdef __MINGW64__
 
+#include "./alpha_driver.h"
 
 namespace boost {
   void tss_cleanup_implemented() { }
 }
 #endif
-#include "./alpha_driver.h"
 
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Filtered_kernel.h>
