@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./max_flow_many_to_many_driver.h"
+#include "./max_flow_driver.h"
 
 PGDLLEXPORT Datum
 max_flow_one_to_many(PG_FUNCTION_ARGS);
@@ -89,7 +89,7 @@ process(
     char* notice_msg = NULL;
     char* err_msg = NULL;
 
-    do_pgr_max_flow_many_to_many(
+    do_pgr_max_flow(
             edges, total_tuples,
             &source_vertex, 1,
             sink_vertices, size_sink_verticesArr,

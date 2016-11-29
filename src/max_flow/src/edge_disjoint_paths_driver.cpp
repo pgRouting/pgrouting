@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: max_flow_many_to_many_driver.cpp
+File: edge_disjoint_paths_many_to_many_driver.cpp
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,42 +27,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
+#include "./pgr_edgedisjointpaths.hpp"
 
 #include <sstream>
 #include <vector>
 #include <set>
 
-#include "./pgr_maxflow.hpp"
-#include "./max_flow_many_to_many_driver.h"
-#include "../../common/src/pgr_assert.h"
-#include "../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
+#include "./edge_disjoint_paths_driver.h"
 
 void
-do_pgr_max_flow_many_to_many(
-        pgr_edge_t *data_edges,
-        size_t total_tuples,
-        int64_t *source_vertices,
-        size_t size_source_verticesArr,
-        int64_t *sink_vertices,
-        size_t size_sink_verticesArr,
-        char *algorithm,
-        bool only_flow,
-        pgr_flow_t **return_tuples,
-        size_t *return_count,
-        char** log_msg,
-        char** notice_msg,
-        char **err_msg) {
+do_pgr_edge_disjoint_paths(
+    pgr_basic_edge_t *data_edges,
+    size_t total_edges,
+    int64_t *source_vertices,
+    size_t size_source_verticesArr,
+    int64_t *sink_vertices,
+    size_t size_sink_verticesArr,
+    bool directed,
+    General_path_element_t **return_tuples,
+    size_t *return_count,
+    char** log_msg,
+    char** notice_msg,
+    char **err_msg) {
     std::ostringstream log;
     std::ostringstream notice;
     std::ostringstream err;
-
     try {
-        pgrouting::graph::PgrFlowGraph<pgrouting::FlowGraph> G;
+        std::vector<General_path_element_t> path_elements;
         std::set<int64_t> set_source_vertices;
         std::set<int64_t> set_sink_vertices;
         for (size_t i = 0; i < size_source_verticesArr; ++i) {
@@ -72,43 +66,23 @@ do_pgr_max_flow_many_to_many(
             set_sink_vertices.insert(sink_vertices[i]);
         }
 
-        G.create_flow_graph(data_edges, total_tuples, set_source_vertices,
-                set_sink_vertices, algorithm);
+        pgrouting::flow::PgrEdgeDisjointPathsGraph<pgrouting::FlowGraph> G;
 
-        int64_t max_flow;
-        if (strcmp(algorithm, "push_relabel") == 0) {
-            max_flow = G.push_relabel();
-        } else if (strcmp(algorithm, "edmonds_karp") == 0) {
-            max_flow = G.edmonds_karp();
-        } else if (strcmp(algorithm, "boykov_kolmogorov") == 0) {
-            max_flow = G.boykov_kolmogorov();
-        } else {
-            log << "Unspecified algorithm!\n";
-            *err_msg = pgr_msg(log.str().c_str());
-            (*return_tuples) = NULL;
-            (*return_count) = 0;
-            return;
+        /*
+         * boykov_kolmogorov is only for directed graphs
+         */
+
+        G.create_edge_disjoint_paths_graph(data_edges, total_edges,
+                set_source_vertices,
+                set_sink_vertices, directed);
+        auto flow = G.boykov_kolmogorov();
+        G.get_edge_disjoint_paths(path_elements, flow);
+
+        (*return_tuples) = pgr_alloc(path_elements.size(), (*return_tuples));
+        for (size_t i = 0; i < path_elements.size(); ++i) {
+            (*return_tuples)[i] = path_elements[i];
         }
-
-
-        std::vector<pgr_flow_t> flow_edges;
-
-        if (only_flow) {
-            pgr_flow_t edge;
-            edge.edge = -1;
-            edge.source = -1;
-            edge.target = -1;
-            edge.flow = max_flow;
-            edge.residual_capacity = -1;
-            flow_edges.push_back(edge);
-        } else {
-            G.get_flow_edges(flow_edges);
-        }
-        (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
-        for (size_t i = 0; i < flow_edges.size(); ++i) {
-            (*return_tuples)[i] = flow_edges[i];
-        }
-        *return_count = flow_edges.size();
+        *return_count = path_elements.size();
 
 
         *log_msg = log.str().empty()?
@@ -137,4 +111,3 @@ do_pgr_max_flow_many_to_many(
         *log_msg = pgr_msg(log.str().c_str());
     }
 }
-

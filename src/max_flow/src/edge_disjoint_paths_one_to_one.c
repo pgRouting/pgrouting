@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
-#include "./edge_disjoint_paths_many_to_many_driver.h"
+#include "./edge_disjoint_paths_driver.h"
 
 PGDLLEXPORT Datum
 edge_disjoint_paths_one_to_one(PG_FUNCTION_ARGS);
@@ -80,7 +80,7 @@ process(
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char *err_msg = NULL;
-    do_pgr_edge_disjoint_paths_many_to_many(
+    do_pgr_edge_disjoint_paths(
         edges, total_tuples,
         &source_vertex, 1,
         &sink_vertex, 1,
