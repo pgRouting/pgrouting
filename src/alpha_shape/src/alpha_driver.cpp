@@ -37,10 +37,6 @@ corresponding to the Alpha shape.
 
 #include "./alpha_driver.h"
 
-namespace boost {
-  void tss_cleanup_implemented() { }
-}
-
 #include <CGAL/Simple_cartesian.h>
 #include <CGAL/Filtered_kernel.h>
 #include <CGAL/algorithm.h>
