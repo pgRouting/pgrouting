@@ -28,9 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_
 #pragma once
 
-#ifdef unlink
-#undef unlink
-#endif
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/assert.hpp>
@@ -45,8 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "pgr_maxflow.hpp"
 
-// user's functions
-// for development
+namespace pgrouting {
+namespace flow {    
 
 template<class G>
 class PgrEdgeDisjointPathsGraph {
@@ -262,5 +259,8 @@ class PgrEdgeDisjointPathsGraph {
       }
   }
 };
+
+}  // namespace flow
+}  // namespace pgrouting
 
 #endif  // SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_

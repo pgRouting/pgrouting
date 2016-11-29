@@ -54,6 +54,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // user's functions
 // for development
 
+namespace pgrouting {
+namespace flow {
+
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS>
     BasicUndirectedGraph;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS>
@@ -172,5 +175,8 @@ class PgrCardinalityGraph {
                                            &mate_map[0]);
   }
 };
+
+}  // namespace pgrouting
+}  // namespace flow
 
 #endif  // SRC_MAX_FLOW_SRC_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
