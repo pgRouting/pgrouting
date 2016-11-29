@@ -36,28 +36,12 @@ THE SOFTWARE.
  */
 #include "./../../common/src/postgres_connection.h"
 
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-
-#include "funcapi.h"
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
-
 #include "./tsp.h"
 #include <math.h>
 
 #include "catalog/pg_type.h"
 #include "utils/array.h"
 #include "utils/lsyscache.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-
-#include "fmgr.h"
 
 PGDLLEXPORT Datum tsp_matrix(PG_FUNCTION_ARGS);
 
