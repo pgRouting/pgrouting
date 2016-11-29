@@ -21,19 +21,13 @@ along with this program; if not, write to the Free Software
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
-
 #include "./basePath_SSEC.hpp"
+
 #include <deque>
 #include <iostream>
 #include <algorithm>
 #include <utility>
+
 #include "./pgr_types.h"
 #include "./pgr_assert.h"
 
