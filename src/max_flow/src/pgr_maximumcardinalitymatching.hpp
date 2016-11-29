@@ -28,12 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_MAX_FLOW_SRC_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
 #pragma once
 
-#if 0
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-#endif
+#include "./../../common/src/pgr_types.h"
 #ifdef unlink
 #undef unlink
 #endif
@@ -48,7 +43,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <utility>
 #include <set>
 
-#include "./../../common/src/pgr_types.h"
 
 
 

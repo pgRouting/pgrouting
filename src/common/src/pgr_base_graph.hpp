@@ -26,14 +26,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_
 #pragma once
 
+#if 0
 #if defined(__MinGW32__) || defined(_MSC_VER)
 #include <winsock2.h>
 #include <windows.h>
+#endif
+#endif
+
+#ifdef min
 #undef min
+#endif
+#ifdef max
 #undef max
+#endif
 #ifdef open
 #undef open
-#endif
 #endif
 
 
