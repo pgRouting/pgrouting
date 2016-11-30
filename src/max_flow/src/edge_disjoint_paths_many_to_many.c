@@ -93,7 +93,7 @@ process(
         &notice_msg,
         &err_msg);
 
-    time_msg("processing edge disjoint paths", start_t, clock());
+    time_msg("pgr_edgeDisjointPaths(many to many)", start_t, clock());
 
     if (edges) pfree(edges);
     if (source_vertices) pfree(source_vertices);

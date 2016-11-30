@@ -64,24 +64,20 @@ process(
     int64_t* sink_vertices =
         pgr_get_bigIntArray(&size_sink_verticesArr, ends);
 
-    PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
 
-    size_t total_tuples = 0;
 
     /* NOTE:
      * For flow, cost and reverse_cost are really capacity and reverse_capacity
      */
+    size_t total_tuples = 0;
+    pgr_edge_t *edges = NULL;
     pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+        if (sink_vertices) pfree(sink_vertices);
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
@@ -102,14 +98,17 @@ process(
             &notice_msg,
             &err_msg);
 
-    if (strcmp(algorithm, "push_relabel") == 0) {
-        time_msg("processing pgr_maxFlowPushRelabel(one to many)",
+    if (only_flow) {
+        time_msg("pgr_maxFlow(many to many)",
+                start_t, clock());
+    } else if (strcmp(algorithm, "push_relabel") == 0) {
+        time_msg("pgr_maxFlowPushRelabel(one to many)",
                 start_t, clock());
     } else if (strcmp(algorithm, "edmonds_karp") == 0) {
-        time_msg("processing pgr_maxFlowEdmondsKarp(one to many)",
+        time_msg("pgr_maxFlowEdmondsKarp(one to many)",
                 start_t, clock());
     } else {
-        time_msg("processing pgr_maxFlowBoykovKolmogorov(one to many)",
+        time_msg("pgr_maxFlowBoykovKolmogorov(one to many)",
                 start_t, clock());
     }
 

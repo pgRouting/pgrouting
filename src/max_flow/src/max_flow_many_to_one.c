@@ -73,15 +73,12 @@ process(
     pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+        if (source_vertices) pfree(source_vertices);
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
-    PGR_DBG("Starting processing");
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
@@ -98,15 +95,17 @@ process(
             &notice_msg,
             &err_msg);
 
-
-    if (strcmp(algorithm, "push_relabel") == 0) {
-        time_msg("processing pgr_maxFlowPushRelabel(many to one)",
+    if (only_flow) {
+        time_msg("pgr_maxFlow(many to many)",
+                start_t, clock());
+    } else if (strcmp(algorithm, "push_relabel") == 0) {
+        time_msg("pgr_maxFlowPushRelabel(many to one)",
                 start_t, clock());
     } else if (strcmp(algorithm, "edmonds_karp") == 0) {
-        time_msg("processing pgr_maxFlowEdmondsKarp(many to one)",
+        time_msg("pgr_maxFlowEdmondsKarp(many to one)",
                 start_t, clock());
     } else {
-        time_msg("processing pgr_maxFlowBoykovKolmogorov(many to one)",
+        time_msg("pgr_maxFlowBoykovKolmogorov(many to one)",
                 start_t, clock());
     }
 

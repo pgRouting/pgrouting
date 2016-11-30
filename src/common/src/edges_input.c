@@ -137,7 +137,6 @@ get_edges_9_columns(
         Pgr_edge_xy_t **edges,
         size_t *total_edges,
         bool normal) {
-    PGR_DBG("Load edges");
     clock_t start_t = clock();
 
     const int tuple_limit = 1000000;
@@ -212,9 +211,6 @@ get_edges_9_columns(
             size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-#if 0
-            PGR_DBG("processing %ld edge tupĺes", ntuples);
-#endif
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_edge_with_xy(&tuple, &tupdesc, info,
@@ -248,7 +244,6 @@ get_edges_5_columns(
         size_t *totalTuples,
         bool ignore_id,
         bool normal) {
-    PGR_DBG("Load edges");
     clock_t start_t = clock();
 
     const int tuple_limit = 1000000;
@@ -314,9 +309,6 @@ get_edges_5_columns(
             size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-#if 0
-            PGR_DBG("processing %ld edge tupĺes", ntuples);
-#endif
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
                 fetch_edge(&tuple, &tupdesc, info,
@@ -337,7 +329,7 @@ get_edges_5_columns(
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Finish reading %ld edges", total_tuples);
+    PGR_DBG("Reading %ld edges", total_tuples);
     time_msg("reading edges", start_t, clock());
 }
 
@@ -407,7 +399,6 @@ get_edges_flow(
             size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %lu edge tupĺes", ntuples);
 
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
@@ -428,7 +419,7 @@ get_edges_flow(
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Finish reading %ld edges", total_tuples);
+    PGR_DBG("Reading %ld edges", total_tuples);
     time_msg("reading edges", start_t, clock());
 }
 
@@ -504,7 +495,6 @@ get_edges_basic(
             size_t t;
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("processing %ld edge tupĺes", ntuples);
 
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
@@ -524,7 +514,7 @@ get_edges_basic(
     }
 
     (*totalTuples) = total_tuples;
-    PGR_DBG("Finish reading %ld edges", total_tuples);
+    PGR_DBG("Reading %ld edges", total_tuples);
     time_msg("reading edges", start_t, clock());
 }
 

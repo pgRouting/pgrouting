@@ -60,7 +60,6 @@ process(
     int64_t* source_vertices =
         pgr_get_bigIntArray(&size_source_verticesArr, starts);
 
-    PGR_DBG("Load data");
     pgr_basic_edge_t *edges = NULL;
     size_t total_edges = 0;
     pgr_get_basic_edges(edges_sql, &edges, &total_edges);
@@ -89,7 +88,7 @@ process(
             &notice_msg,
             &err_msg);
 
-    time_msg("processing edge disjoint paths", start_t, clock());
+    time_msg("pgr_edgeDisjointPaths(many_to_one)", start_t, clock());
     if (edges) pfree(edges);
     if (source_vertices) pfree(source_vertices);
 

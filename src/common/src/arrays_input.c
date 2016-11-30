@@ -53,7 +53,6 @@ pgr_get_bigIntArr(ArrayType *v, size_t *arrlen, bool allow_empty) {
 
     assert((*arrlen) == 0);
 
-    PGR_DBG("Initializing array");
 
     if (allow_empty && (ndim == 0 || nitems <= 0)) {
         PGR_DBG("ndim %i nitems % i", ndim, nitems);

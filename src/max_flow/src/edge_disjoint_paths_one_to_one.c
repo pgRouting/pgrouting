@@ -52,34 +52,27 @@ process(
     size_t *result_count) {
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
-    pgr_basic_edge_t *edges = NULL;
 
     if (source_vertex == sink_vertex) {
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
 
     size_t total_tuples = 0;
-
+    pgr_basic_edge_t *edges = NULL;
     pgr_get_basic_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
-    PGR_DBG("Starting processing");
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
     char* log_msg = NULL;
     char* notice_msg = NULL;
     char *err_msg = NULL;
+
     do_pgr_edge_disjoint_paths(
         edges, total_tuples,
         &source_vertex, 1,
@@ -92,7 +85,7 @@ process(
         &notice_msg,
         &err_msg);
 
-    time_msg("processing edge disjoint paths", start_t, clock());
+    time_msg("pgr_edgeDisjointPaths(one to one)", start_t, clock());
 
     if (edges) pfree(edges);
 
@@ -121,7 +114,7 @@ edge_disjoint_paths_one_to_one(PG_FUNCTION_ARGS) {
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    General_path_element_t *result_tuples = 0;
+    General_path_element_t *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
