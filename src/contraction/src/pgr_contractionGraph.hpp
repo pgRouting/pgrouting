@@ -121,8 +121,9 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      }
 
 
-     /*! @brief get the vertices of the graph with atleast one contracted vertex
-       @param [in] remaining_vertices The set of vertices with atleast one contracted vertex
+     /*! @brief vertices with at least one contracted vertex
+      *
+       @result The vids Identifiers with at least one contracted vertex
        */
      Identifiers<int64_t> get_changed_vertices() {
         Identifiers<int64_t> vids;
@@ -254,7 +255,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      }
 
 
-     /*! \brief add edges(shortuct) to the graph during contraction
+     /*! @brief add edges(shortuct) to the graph during contraction
 
        a -> b -> c
 
@@ -267,7 +268,6 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
 
 
        @param [in] edge of type *T_E* is to be added
-       @param [in] log string stream used for debugging purposes
        */
 
      void add_shortcut(const T_E &edge) {
