@@ -27,22 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
+#include "./testXYedges_driver.h"
 
 #include <sstream>
 #include <iomanip>
 #include <vector>
-#include "./testXYedges_driver.h"
 
+#include "./../../common/src/pgr_base_graph.hpp"
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/pgr_base_graph.hpp"
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 /************************************************************
   edges_sql TEXT

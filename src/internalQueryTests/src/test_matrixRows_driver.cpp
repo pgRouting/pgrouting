@@ -27,17 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
+#include "./test_matrixRows_driver.h"
 
 #include <sstream>
 #include <iomanip>
 #include <vector>
 #include <cstring>
-#include "./test_matrixRows_driver.h"
+
 #include "./../../common/src/pgr_assert.h"
 
 bool do_pgr_test_matrixRows(

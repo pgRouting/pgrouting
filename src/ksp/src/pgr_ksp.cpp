@@ -80,7 +80,7 @@ Pgr_ksp< G >::Yen(G &graph,
 
     std::stable_sort(l_ResultList.begin(), l_ResultList.end(),
             [](const Path &left, const Path &right) -> bool {
-            for (size_t i = 0 ; i < std::min(left.size(), right.size()); ++i) {
+            for (size_t i = 0 ; i < (std::min)(left.size(), right.size()); ++i) {
             if (left[i].node < right[i].node) return true;
             if (left[i].node > right[i].node) return false;
             }
