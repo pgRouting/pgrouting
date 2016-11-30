@@ -80,7 +80,9 @@ do_pgr_eucledianTSP(
 
         /* The ending vertex needs to be by the starting vertex */
         double real_cost = 0;
-        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
+        if (costs.has_id(start_vid)
+                && costs.has_id(end_vid)
+                && start_vid != end_vid) {
             /*
              * Saving the real cost (distance)  between the start_vid and end_vid
              */
@@ -92,7 +94,8 @@ do_pgr_eucledianTSP(
         }
 
 
-        log << "pgr_eucledianTSP Processing Information \nInitializing tsp class --->";
+        log << "pgr_eucledianTSP Processing Information \n"
+            << "Initializing tsp class --->";
         pgrouting::tsp::TSP<pgrouting::tsp::eucledianDmatrix> tsp(costs);
 
 
@@ -118,7 +121,9 @@ do_pgr_eucledianTSP(
         auto bestTour(tsp.get_tour());
 
         /* The ending vertex needs to be by the starting vertex */
-        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
+        if (costs.has_id(start_vid)
+                && costs.has_id(end_vid)
+                && start_vid != end_vid) {
             /*
              * Restoring the real cost (distance)  between the start_vid and end_vid
              */
@@ -137,7 +142,9 @@ do_pgr_eucledianTSP(
                 start_ptr,
                 bestTour.cities.end());
 
-        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
+        if (costs.has_id(start_vid)
+                && costs.has_id(end_vid)
+                && start_vid != end_vid) {
             if (*(bestTour.cities.begin() + 1) == idx_end) {
                 std::reverse(
                         bestTour.cities.begin() + 1,

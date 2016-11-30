@@ -29,24 +29,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_TSP_SRC_TSP_H_
 #define SRC_TSP_SRC_TSP_H_
 
-// define the type of object for the distance matrix
-#define DTYPE double
 
-
-#include "./../../common/src/postgres_connection.h"
 
 #include "../../common/src/pgr_types.h"
 
 typedef struct point {
   int id;
-  float8 x;
-  float8 y;
+  double x;
+  double y;
 } point_t;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-  int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, int end, DTYPE *fit, char* err_msg);
+  int find_tsp_solution(int num, double *dist, int *p_ids,
+          int source, int end, double *fit, char* err_msg);
 #ifdef __cplusplus
 }
 #endif

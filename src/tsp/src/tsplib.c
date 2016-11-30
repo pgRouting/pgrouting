@@ -167,9 +167,9 @@ typedef int Path[3];      /* specify how to change path */
 
 typedef struct tspstruct {
     int n;
-    DTYPE maxd;
-    DTYPE *dist;
-    DTYPE bestlen;
+    double maxd;
+    double *dist;
+    double bestlen;
     int *iorder;
     int *jorder;
     int *border;  //  best order we find
@@ -192,10 +192,10 @@ int findEulerianPath(TSP *tsp) {
     int *mst, *arc;
     int i, j, k, l, a;
     int n, *iorder, *jorder;
-    DTYPE d;
-    DTYPE maxd;
-    DTYPE *dist;
-    DTYPE *dis;
+    double d;
+    double maxd;
+    double *dist;
+    double *dis;
 
     jorder = tsp->jorder;
     iorder = tsp->iorder;
@@ -205,7 +205,7 @@ int findEulerianPath(TSP *tsp) {
 
     if (!(mst =(int*) palloc((size_t) n * sizeof(int))) ||
         !(arc =(int*) palloc((size_t) n * sizeof(int))) ||
-        !(dis =(DTYPE*) palloc((size_t) n * sizeof(DTYPE))) ) {
+        !(dis =(double*) palloc((size_t) n * sizeof(double))) ) {
         elog(ERROR, "Failed to allocate memory!");
         return -1;
     }
@@ -279,12 +279,12 @@ int findEulerianPath(TSP *tsp) {
 }
 
 static
-DTYPE pathLength(TSP *tsp) {
+double pathLength(TSP *tsp) {
     unsigned int i;
-    DTYPE len = 0;
+    double len = 0;
 
     int* iorder = tsp->iorder;
-    DTYPE *dist   = tsp->dist;
+    double *dist   = tsp->dist;
     int  n = tsp->n;
 
     for (i = 0; (int)i < (int)(n-1); i++) {
@@ -303,10 +303,10 @@ DTYPE pathLength(TSP *tsp) {
  *  c       f        c-------f
  */
 static
-DTYPE getThreeWayCost(TSP *tsp, Path p) {
+double getThreeWayCost(TSP *tsp, Path p) {
     int a, b, c, d, e, f;
     int *iorder = tsp->iorder;
-    DTYPE *dist   = tsp->dist;
+    double *dist   = tsp->dist;
     int n       = tsp->n;
 
     a = iorder[MOD(p[0]-1, n)];
@@ -359,10 +359,10 @@ void doThreeWay(TSP *tsp, Path p) {
  *   a  d       a  d
  */
 static
-DTYPE getReverseCost(TSP *tsp, Path p) {
+double getReverseCost(TSP *tsp, Path p) {
     int a, b, c, d;
     int *iorder = tsp->iorder;
-    DTYPE *dist   = tsp->dist;
+    double *dist   = tsp->dist;
     int n       = tsp->n;
 
     a = iorder[MOD(p[0]-1, n)];
@@ -395,7 +395,7 @@ void annealing(TSP *tsp) {
     Path   p;
     int    i, j, pathchg;
     int    numOnPath, numNotOnPath;
-    DTYPE    pathlen;
+    double    pathlen;
     int    n = tsp->n;
     double energyChange, T;
 
@@ -457,7 +457,7 @@ void reverse(int num, int *ids) {
 }
 
 
-int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE *total_len, char *err_msg) {
+int find_tsp_solution(int num, double *cost, int *ids, int start, int end, double *total_len, char *err_msg) {
     if (err_msg) {};
 
     int   i, j;
@@ -468,7 +468,7 @@ int find_tsp_solution(int num, DTYPE *cost, int *ids, int start, int end, DTYPE 
     int   rev = 0;
     TSP   tsp;
     int64_t  seed = -314159L;
-    DTYPE blength;
+    double blength;
 
     PGR_DBG("sizeof(int64_t)=%d", (int)sizeof(int64_t));
 

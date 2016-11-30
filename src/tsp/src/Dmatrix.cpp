@@ -97,7 +97,11 @@ Dmatrix::get_id(size_t id) const {
  */
 Dmatrix::Dmatrix(const std::vector < Matrix_cell_t > &data_costs) {
     set_ids(data_costs);
-    costs.resize(ids.size(), std::vector<double>(ids.size(), std::numeric_limits<double>::max()));
+    costs.resize(
+            ids.size(),
+            std::vector<double>(
+                ids.size(),
+                std::numeric_limits<double>::max()));
 
     for (const auto &data : data_costs) {
         costs[get_index(data.from_vid)][get_index(data.to_vid)] = data.cost;
@@ -184,7 +188,8 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
             for (size_t k = 0; k < matrix.costs.size(); ++k) {
                 log << matrix.costs[i][k] << " <= ("
                     << matrix.costs[i][j] << " + "  << matrix.costs[j][k] << ")"
-                    << (matrix.costs[i][k] <= (matrix.costs[i][j] + matrix.costs[j][k]))
+                    << (matrix.costs[i][k]
+                            <= (matrix.costs[i][j] + matrix.costs[j][k]))
                     << "\n";
             }
         }

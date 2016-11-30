@@ -69,7 +69,8 @@ process(
      * errors in parameters
      */
     if (initial_temperature < final_temperature) {
-        elog(ERROR, "Condition not met: initial_temperature > final_temperature");
+        elog(ERROR, "Condition not met: initial_temperature"
+               " > final_temperature");
     }
     if (final_temperature <= 0) {
         elog(ERROR, "Condition not met: final_temperature > 0");

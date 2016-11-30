@@ -62,7 +62,7 @@ PGDLLEXPORT Datum tsp_matrix(PG_FUNCTION_ARGS);
 #define TUPLIMIT 1000
 
 
-static DTYPE *get_pgarray(int *num, ArrayType *input) {
+static double *get_pgarray(int *num, ArrayType *input) {
     int         ndims, *dims;  // , *lbs;
     bool       *nulls;
     Oid         i_eltype;
@@ -71,7 +71,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input) {
     char        i_typalign;
     Datum      *i_data;
     int         i, n;
-    DTYPE      *data;
+    double      *data;
 
     /* get input array element type */
     i_eltype = ARR_ELEMTYPE(input);
@@ -113,27 +113,27 @@ static DTYPE *get_pgarray(int *num, ArrayType *input) {
 #endif
 
     /* construct a C array */
-    data = (DTYPE *) palloc((size_t)(n) * sizeof(DTYPE));
+    data = (double *) palloc((size_t)(n) * sizeof(double));
     if (!data) {
         elog(ERROR, "Error: Out of memory!");
     }
 
     for (i = 0; i < n; i++) {
         if (nulls[i]) {
-            data[i] = (DTYPE) 0;
+            data[i] = (double) 0;
         } else {
             switch (i_eltype) {
                 case INT2OID:
-                    data[i] = (DTYPE) DatumGetInt16(i_data[i]);
+                    data[i] = (double) DatumGetInt16(i_data[i]);
                     break;
                 case INT4OID:
-                    data[i] = (DTYPE) DatumGetInt32(i_data[i]);
+                    data[i] = (double) DatumGetInt32(i_data[i]);
                     break;
                 case FLOAT4OID:
-                    data[i] = (DTYPE) DatumGetFloat4(i_data[i]);
+                    data[i] = (double) DatumGetFloat4(i_data[i]);
                     break;
                 case FLOAT8OID:
-                    data[i] = (DTYPE) DatumGetFloat8(i_data[i]);
+                    data[i] = (double) DatumGetFloat8(i_data[i]);
                     break;
             }
             /* we assume negative values are INFINTY */
@@ -143,7 +143,7 @@ static DTYPE *get_pgarray(int *num, ArrayType *input) {
                findEulerianPath
             **********************************************************/
             if (data[i] < 0) {
-                data[i] = (DTYPE) 0;
+                data[i] = (double) 0;
                 nulls[i] = true;
             }
         }
@@ -162,11 +162,11 @@ static DTYPE *get_pgarray(int *num, ArrayType *input) {
 // macro to store distance values as matrix[num][num]
 #define D(i, j) matrix[(i) * num + j]
 
-static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results) {
+static int solve_tsp(double *matrix, int num, int start, int end, int **results) {
     int ret;
     int i;
     int *ids;
-    DTYPE fit;
+    double fit;
     char *err_msg = NULL;
 
     PGR_DBG("In solve_tsp: num: %d, start: %d, end: %d", num, start, end);
@@ -207,7 +207,7 @@ static int solve_tsp(DTYPE *matrix, int num, int start, int end, int **results) 
 
     PGR_DBG("Calling find_tsp_solution");
 
-// int find_tsp_solution(int num, DTYPE *dist, int *p_ids, int source, DTYPE *fit, char* err_msg);
+// int find_tsp_solution(int num, double *dist, int *p_ids, int source, double *fit, char* err_msg);
     ret = find_tsp_solution(num, matrix, ids, start, end, &fit, err_msg);
     if (ret < 0) {
         elog(ERROR, "Error solving TSP, %s", err_msg);
@@ -231,7 +231,7 @@ tsp_matrix(PG_FUNCTION_ARGS) {
     TupleDesc            tuple_desc;
     // AttInMetadata       *attinmeta;
 
-    DTYPE               *matrix;
+    double               *matrix;
     int                 *tsp_res;
     int                  num;
 
