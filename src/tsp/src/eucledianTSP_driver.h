@@ -29,7 +29,6 @@
 
 #ifndef SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
 #define SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
-
 #pragma once
 
 #include "../../common/src/pgr_types.h"
