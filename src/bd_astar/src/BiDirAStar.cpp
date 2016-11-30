@@ -32,14 +32,10 @@ THE SOFTWARE.
 
 ********************************************************************PGR-MIT*/
 
-#if defined(__MINGW32__) ||  defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
+#include "./BiDirAStar.h"
 
 #include <math.h>
-#include "./BiDirAStar.h"
+
 #include "./../../common/src/pgr_alloc.hpp"
 
 BiDirAStar::BiDirAStar(void) {
