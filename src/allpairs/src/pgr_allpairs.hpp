@@ -43,10 +43,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./../../common/src/pgr_types.h"
-// TODO(vicky) don't keep it here
-#include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
+
+// TODO(vicky) don't keep it here
+#include "../../common/src/pgr_alloc.hpp"
 
 template < class G > class Pgr_allpairs;
 

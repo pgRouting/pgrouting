@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
+
 #include "./johnson_driver.h"
 
 PGDLLEXPORT Datum johnson(PG_FUNCTION_ARGS);
