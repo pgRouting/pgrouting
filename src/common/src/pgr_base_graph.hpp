@@ -763,7 +763,7 @@ Pgr_base_graph< G, T_V, T_E >::get_edge_id(
     E e;
     EO_i out_i, out_end;
     V v_source, v_target;
-    double minCost =  std::numeric_limits<double>::max();
+    double minCost =  (std::numeric_limits<double>::max)();
     int64_t minEdge = -1;
     for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
             out_i != out_end; ++out_i) {
