@@ -196,18 +196,18 @@ class Pgr_astar {
           double operator()(V u) {
               if (m_heuristic == 0) return 0;
               if (m_goals.empty()) return 0;
-              double best_h(std::numeric_limits<double>::max());
+              double best_h((std::numeric_limits<double>::max)());
               for (auto goal : m_goals) {
-                  double current(std::numeric_limits<double>::max());
+                  double current((std::numeric_limits<double>::max)());
                   double dx = m_g[goal].x() - m_g[u].x();
                   double dy = m_g[goal].y() - m_g[u].y();
                   switch (m_heuristic) {
                       case 0:
                           current = 0;
                       case 1:
-                          current = std::fabs(std::max(dx, dy)) * m_factor;
+                          current = std::fabs((std::max)(dx, dy)) * m_factor;
                       case 2:
-                          current = std::fabs(std::min(dx, dy)) * m_factor;
+                          current = std::fabs((std::min)(dx, dy)) * m_factor;
                       case 3:
                           current = (dx * dx + dy * dy) * m_factor * m_factor;
                       case 4:

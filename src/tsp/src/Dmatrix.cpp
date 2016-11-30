@@ -48,7 +48,7 @@ Dmatrix::tourCost(const Tour &tour) const {
     for (const auto &id : tour.cities) {
         if (id == tour.cities.front()) continue;
 
-        pgassert(distance(prev_id, id) != std::numeric_limits<double>::max());
+        pgassert(distance(prev_id, id) != (std::numeric_limits<double>::max)());
 
         total_cost += costs[prev_id][id];
         prev_id = id;
@@ -101,7 +101,7 @@ Dmatrix::Dmatrix(const std::vector < Matrix_cell_t > &data_costs) {
             ids.size(),
             std::vector<double>(
                 ids.size(),
-                std::numeric_limits<double>::max()));
+                (std::numeric_limits<double>::max)()));
 
     for (const auto &data : data_costs) {
         costs[get_index(data.from_vid)][get_index(data.to_vid)] = data.cost;
@@ -116,7 +116,7 @@ bool
 Dmatrix::has_no_infinity() const {
     for (const auto &row : costs) {
         for (const auto &val : row) {
-            if (val == std::numeric_limits<double>::max()) return false;
+            if (val == (std::numeric_limits<double>::max)()) return false;
         }
     }
     return true;

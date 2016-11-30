@@ -146,7 +146,7 @@ class Pgr_contractionGraph : public Pgr_base_graph<G, T_V, T_E> {
      E get_min_cost_edge(V source, V destination) {
          EO_i out_i, out_end;
          E min_cost_edge;
-         double min_cost = std::numeric_limits<double>::max();
+         double min_cost = (std::numeric_limits<double>::max)();
          for (boost::tie(out_i, out_end) =
                  boost::out_edges(source, this->graph);
                  out_i != out_end; ++out_i) {

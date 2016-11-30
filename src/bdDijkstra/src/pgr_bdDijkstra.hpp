@@ -62,7 +62,7 @@ class Pgr_bdDijkstra {
  public:
      explicit Pgr_bdDijkstra(G &pgraph):
          graph(pgraph),
-         INF(std::numeric_limits<double>::max()) {
+         INF((std::numeric_limits<double>::max)()) {
              m_log << "constructor\n";
          };
 
