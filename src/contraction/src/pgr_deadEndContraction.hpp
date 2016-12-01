@@ -51,18 +51,7 @@ class Pgr_deadend {
              Identifiers<V> forbidden_vertices);
 
      void calculateVertices(G &graph);
-     /*! @brief true when \b v is a dead end
-      *
-      * - undirected: the condition in case of undirected graph
-      *   - is all incoming edges come from a single vertex
-      *   - regardless of the number of edges:
-      *   @dot undirected dead end {
-      *   b [color=green];
-      *   rest - a - b;
-      *   rest - a - b;
-      *   }
-      *
-      */
+     /// @brief true when \b v is a dead end
      bool is_dead_end(G &graph, V v);
      void add_if_dead_end(G &graph, V v);
      void doContraction(G &graph);
@@ -105,10 +94,6 @@ void Pgr_deadend<G>::calculateVertices(G &graph) {
     deadendVertices -= forbiddenVertices;
 }
 
-/**
- * @returns true when the vertex @b v is a dead end
- */
-
 template < class G >
 bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
 #ifndef NDEBUG
@@ -116,18 +101,40 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
 #endif
 
     if (forbiddenVertices.has(v)) {
+        /**
+         * - fobbiden_vertices
+         *   - Not considered as dead end
+         */
+
         return false;
     }
-    /*
-     * Undirected graph
-     */
+
     if (graph.is_undirected()) {
+        /**
+         * undirected:
+         * ----------
+         *   - There is only one adjacent vertex:
+         *   - All adjcent edges are from a single vertex
+         *
+
+         @dot
+         graph G {
+         graph [rankdir=LR];
+         subgraph cluster0 {
+         node [shape=point,height=0.2,style=filled,color=black];
+         style=filled;
+         color=lightgrey;
+         a0; a1; a2;
+         label = "rest of graph";
+         }
+         v [color=green];
+         v -- a0;
+         v -- a0;
+         }
+         @enddot
+
+         */
         Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(v);
-#ifndef NDEBUG
-        debug << "undirected\nAdjacent Vertices\n";
-        debug << adjacent_vertices;
-#endif
-        //  only one adjacent vertex
         if (adjacent_vertices.size() == 1) {
             return true;
         }
@@ -139,7 +146,6 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
      * directed graph
      *
      * is dead end when:
-     *  (1) one outgoing edge, no incoming edge (dead start)
      *  (2) one incoming edge, no outgoing edge (dead end)
      *  (3) one outgoing edge, one incoming edge
      *       and both are from/to the same vertex
@@ -157,59 +163,161 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
      */
 
     if (graph.in_degree(v) == 0 && graph.out_degree(v) == 1) {
-#ifndef NDEBUG
-        debug << "\n Dead End case (1)" << v;
-#endif
+        /**
+         * directed
+         * ----------
+         *  case (1):  (dead start)
+         *   - one outgoing edge,
+         *   - no incoming edge
+         *
+
+         @dot
+         digraph G {
+         graph [rankdir=LR];
+         subgraph cluster0 {
+         node [shape=point,height=0.2,style=filled,color=black];
+         style=filled;
+         color=lightgrey;
+         a0; a1; a2;
+         label = "rest of graph";
+         }
+         v [color=green];
+         v -> a0;
+         }
+         @enddot
+
+         */
         return true;
     }
 
     if (graph.in_degree(v) == 1 && graph.out_degree(v) == 0) {
-#ifndef NDEBUG
-        debug << "\n Dead End case (2)" << v;
-#endif
+        /**
+         * case (2):  (dead end)
+         *   - no outgoing edge,
+         *   - one incoming edge
+         *
+
+         @dot
+         digraph G {
+         graph [rankdir=LR];
+         subgraph cluster0 {
+         node [shape=point,height=0.2,style=filled,color=black];
+         style=filled;
+         color=lightgrey;
+         a0; a1; a2;
+         label = "rest of graph";
+         }
+         v [color=green];
+         a0 -> v;
+         }
+         @enddot
+
+         */
         return true;
     }
 
     if (graph.out_degree(v) == 1 && graph.in_degree(v) == 1) {
-        E out_e = *(out_edges(v, graph.graph).first);
+        /**
+         * case (3):
+         *   - one outgoing edge,
+         *   - one incoming edge
+         *   - one adjacent vertex
+         *
+
+         @dot
+         digraph G {
+         graph [rankdir=LR];
+         subgraph cluster0 {
+         node [shape=point,height=0.2,style=filled,color=black];
+         style=filled;
+         color=lightgrey;
+         a0; a1; a2;
+         label = "rest of graph";
+         }
+         v [color=green];
+         v -> a0;
+         a0 -> v;
+         }
+         @enddot
+
+         */
+        auto out_e = *(out_edges(v, graph.graph).first);
         auto in_e = *(in_edges(v, graph.graph).first);
 
         auto out_v = graph.is_source(v, out_e) ?
-                graph.target(out_e) : graph.source(out_e);
+            graph.target(out_e) : graph.source(out_e);
         auto in_v = graph.is_source(v, in_e) ?
-                graph.target(in_e) : graph.source(in_e);
+            graph.target(in_e) : graph.source(in_e);
 
         if (out_v == in_v) {
-#ifndef NDEBUG
-            debug << "\n Dead End case (3)" << v;
-#endif
             return true;
         }
-
-#ifndef NDEBUG
-        debug << "\nNot Dead End case(3)";
-#endif
         return false;
     }
 
     if (graph.in_degree(v) > 0 && graph.out_degree(v) == 0) {
-#ifndef NDEBUG
-        debug << "\nIs Dead End case(4)";
-#endif
+        /**
+         * case (4):
+         *   - no outgoing edge,
+         *   - many incoming edges
+         *
+         *
+
+         @dot
+         digraph G {
+         graph [rankdir=LR];
+         subgraph cluster0 {
+         node [shape=point,height=0.2,style=filled,color=black];
+         style=filled;
+         color=lightgrey;
+         a0; a1; a2;
+         label = "rest of graph";
+         }
+         v [color=green];
+         a0 -> v;
+         a1 -> v;
+         a0 -> v;
+         }
+         @enddot
+
+         */
         return true;
     }
 
-#if 0
-    /*
-     * Case 5
-     */
-    if (graph.in_degree(v) == 0 && graph.out_degree(v) > 0) {
-#ifndef NDEBUG
-        debug << "\nIs Dead End case(5)";
-#endif
-        return true;
+    if (graph.in_degree(v) > 0 && graph.out_degree(v) > 0) {
+        /**
+         * case (5):
+         *   - many outgoing edge,
+         *   - many incoming edges
+         *   - All adjacent edges are from a single vertex
+         *
+         *
+
+         @dot
+         digraph G {
+         graph [rankdir=LR];
+         subgraph cluster0 {
+         node [shape=point,height=0.2,style=filled,color=black];
+         style=filled;
+         color=lightgrey;
+         a0; a1; a2;
+         label = "rest of graph";
+         }
+         v [color=green];
+         a0 -> v;
+         a0 -> v;
+         v -> a0;
+         v -> a0;
+         }
+         @enddot
+
+         */
+        
+        auto adjacent_vertices = graph.find_adjacent_vertices(v);
+        if (adjacent_vertices.size() == 1) {
+            return true;
+        }
     }
-#endif
     debug << "Is Not Dead End\n";
     return false;
 }

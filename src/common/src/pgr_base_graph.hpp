@@ -493,17 +493,17 @@ class Pgr_base_graph {
 
 
      //! @name to be or not to be
-     ///{
+     //@{
 
      bool is_directed() const {return m_gType == DIRECTED;}
      bool is_undirected() const {return m_gType == UNDIRECTED;}
      bool is_source(V v_idx, E e_idx) const {return v_idx == source(e_idx);}
      bool is_target(V v_idx, E e_idx) const {return v_idx == target(e_idx);}
 
-     ///}
+     //@}
 
      //! @name boost wrappers with V
-     ///{
+     //@{
 
 
      T_E& operator[](E e_idx) {return graph[e_idx];}
