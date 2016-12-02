@@ -286,9 +286,9 @@ sub process_single_test{
             $stats{z_fail}++;
             next;
         };
-        print PSQL "set client_min_messages to NOTICE;\n";
-        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+        #print PSQL "set client_min_messages to NOTICE;\n";
+        #print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+        #print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
     }
     else {
         open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
@@ -305,7 +305,10 @@ sub process_single_test{
 
     my @d = ();
     @d = <TIN>; #reads the whole file into the array @d 
+    print PSQL "BEGIN;\n";
     print PSQL @d; #prints the whole fle stored in @d
+    print PSQL "ROLLBACK;\n";
+
     close(PSQL); #executes everything
     close(TIN); #closes the input file  /TIN = test input
 
