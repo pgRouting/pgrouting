@@ -60,6 +60,10 @@ do_pgr_max_flow(
     std::ostringstream err;
 
     try {
+        pgassert(data_edges);
+        pgassert(source_vertices);
+        pgassert(sink_vertices);
+
         pgrouting::graph::PgrFlowGraph<pgrouting::FlowGraph> G;
         std::set<int64_t> set_source_vertices;
         std::set<int64_t> set_sink_vertices;
@@ -69,6 +73,16 @@ do_pgr_max_flow(
         for (size_t i = 0; i < size_sink_verticesArr; ++i) {
             set_sink_vertices.insert(sink_vertices[i]);
         }
+        std::set<int64_t> vertices(set_source_vertices);
+        vertices.insert(set_sink_vertices.begin(), set_sink_vertices.end());
+        if (vertices.size()
+                != (set_source_vertices.size() + set_sink_vertices.size())) {
+            *err_msg = pgr_msg("A source found as sink");
+            // TODO(vicky) return as hint the sources that are also sinks
+            return;
+        }
+
+
 
         G.create_flow_graph(data_edges, total_tuples, set_source_vertices,
                 set_sink_vertices, algorithm);

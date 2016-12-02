@@ -32,8 +32,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
     )
   RETURNS BIGINT AS
   $BODY$
-        SELECT flow
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, only_flow := true);
+        SELECT coalesce(sum(flow), 0)::BIGINT
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, algorithm := 'push_relabel', only_flow := true);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -49,7 +49,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   RETURNS BIGINT AS
   $BODY$
         SELECT flow
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, only_flow := true);
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, algorithm := 'push_relabel', only_flow := true);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -65,7 +65,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   RETURNS BIGINT AS
   $BODY$
         SELECT flow
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, only_flow := true);
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, algorithm := 'push_relabel', only_flow := true);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -81,6 +81,6 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
   RETURNS BIGINT AS
   $BODY$
         SELECT flow
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, only_flow := true);
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, algorithm := 'push_relabel', only_flow := true);
   $BODY$
   LANGUAGE SQL VOLATILE;

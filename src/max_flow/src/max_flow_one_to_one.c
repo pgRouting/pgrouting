@@ -58,7 +58,6 @@ process(
     }
 
     if (source_vertex == sink_vertex) {
-        pgr_SPI_finish();
         return;
     }
 
@@ -97,7 +96,7 @@ process(
             &err_msg);
 
     if (only_flow) {
-        time_msg("pgr_maxFlow(many to many)",
+        time_msg("pgr_maxFlow(one to one)",
                 start_t, clock());
     } else if (strcmp(algorithm, "push_relabel") == 0) {
         time_msg("pgr_maxFlowPushRelabel(one to one)",
