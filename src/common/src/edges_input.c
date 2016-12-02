@@ -124,6 +124,191 @@ void fetch_edge_with_xy(
     *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
 }
 
+
+
+
+
+static
+void fetch_edge_patrix(
+
+        HeapTuple *tuple,
+        TupleDesc *tupdesc,
+        Column_info_t info[9],
+
+		int64_t *default_id,
+        float8 default_rcost,
+
+		pgr_edge_t_patrix *edge,
+        size_t *valid_edges,
+        bool normal
+		)
+
+{
+    if (column_found(info[0].colNumber)) {
+        edge->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+    } else {
+        edge->id = *default_id;
+        ++(*default_id);
+    }
+
+    if (normal) {
+        edge->source = pgr_SPI_getBigInt(tuple, tupdesc,  info[1]);
+        edge->target = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
+    } else {
+        edge->target = pgr_SPI_getBigInt(tuple, tupdesc,  info[1]);
+        edge->source = pgr_SPI_getBigInt(tuple, tupdesc, info[2]);
+    }
+    edge->cost = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
+
+    if (column_found(info[4].colNumber)) {
+        edge->reverse_cost = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
+    } else {
+        edge->reverse_cost = default_rcost;
+    }
+
+    edge->distance      = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
+    edge->speed_limit   = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
+    edge->sens          = pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
+    edge->travel_speeds = pgr_SPI_getText(tuple, tupdesc, info[8]);
+    // edge->travel_speeds = strdup(pgr_SPI_getText(tuple, tupdesc, info[8]));
+
+    // TODO : vérifier cette partie
+    *valid_edges = edge->cost < 0? *valid_edges: *valid_edges + 1;
+    *valid_edges = edge->reverse_cost < 0? *valid_edges: *valid_edges + 1;
+}
+
+
+
+
+
+static
+void
+get_edges_9_columns_patrix(
+        char *sql,
+		pgr_edge_t_patrix **edges, // Pgr_edge_xy_t **edges,
+        size_t *total_edges,
+        bool normal)
+{
+    clock_t start_t = clock();
+
+    const int tuple_limit = 1000000;
+
+    size_t ntuples;
+    size_t total_tuples;
+    size_t valid_edges;
+
+    Column_info_t info[9];
+
+    info[0].name = strdup("id");			// patrix : integer
+    info[1].name = strdup("source");		// patrix : integer
+    info[2].name = strdup("target");		// patrix : integer
+    info[3].name = strdup("cost");			// patrix : numerical
+    info[4].name = strdup("reverse_cost");	// patrix : numerical
+    info[5].name = strdup("distance");		// patrix : numerical
+    info[6].name = strdup("speed_limit");	// patrix : integer
+    info[7].name = strdup("sens");  		// patrix : integer // TODO: estandariser les noms
+    info[8].name = strdup("travel_speeds");	// patrix : text
+
+    int i;
+    for (i = 0; i < 3; ++i) {
+        info[i].colNumber = -1;
+        info[i].type = 0;
+        info[i].strict = true;
+        info[i].eType = ANY_INTEGER;
+    }
+    for (i = 3; i < 8; ++i) {
+        info[i].colNumber = -1;
+        info[i].type = 0;
+        info[i].strict = true;
+        info[i].eType = ANY_NUMERICAL;
+    }
+
+    info[8].colNumber = -1;
+    info[8].type = 0;
+    info[8].strict = true;
+    info[8].eType = TEXT; /// TODO: PRUEBA CON EL VALO ENTERO LUEGO CMABIAMOS info[8].eType = TEXT;
+
+
+    /*
+     * reverse_cost is optional
+     */
+    info[4].strict = false;
+
+
+    void *SPIplan;
+    SPIplan = pgr_SPI_prepare(sql);
+
+    Portal SPIportal;
+    SPIportal = pgr_SPI_cursor_open(SPIplan);
+
+
+    bool moredata = TRUE;
+    (*total_edges) = total_tuples = valid_edges = 0;
+
+
+    int64_t default_id = 0;
+
+    while (moredata == TRUE)
+    {
+        SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
+        if (total_tuples == 0)
+            pgr_fetch_column_info(info, 9);
+
+        ntuples = SPI_processed;
+        total_tuples += ntuples;
+
+        if (ntuples > 0) {
+            if ((*edges) == NULL)
+                (*edges) = (pgr_edge_t_patrix *)
+                    palloc0(total_tuples * sizeof(pgr_edge_t_patrix));
+            else
+                (*edges) = (pgr_edge_t_patrix *)
+                    repalloc((*edges), total_tuples * sizeof(pgr_edge_t_patrix));
+
+            if ((*edges) == NULL) {
+                elog(ERROR, "Out of memory");
+            }
+
+            size_t t;
+            SPITupleTable *tuptable = SPI_tuptable;
+            TupleDesc tupdesc = SPI_tuptable->tupdesc;
+            PGR_DBG("processing %ld edge tupĺes", ntuples);
+
+            for (t = 0; t < ntuples; t++) {
+
+                HeapTuple tuple = tuptable->vals[t];
+
+                fetch_edge_patrix(
+                		&tuple,
+						&tupdesc,
+						info,
+                        &default_id,
+						-1,
+                        &(*edges)[total_tuples - ntuples + t],
+                        &valid_edges,
+						normal
+						);
+            }
+            SPI_freetuptable(tuptable);
+        } else {
+            moredata = FALSE;
+        }
+    }
+
+
+    if (total_tuples == 0 || valid_edges == 0) {
+        PGR_DBG("NO edges found");
+        return;
+    }
+
+    (*total_edges) = total_tuples;
+    PGR_DBG("Patrix : Finish reading %ld edges, %ld", total_tuples, (*total_edges));
+    time_msg(" reading Edges with xy", start_t, clock());
+}
+
+
+
+
 static
 void
 get_edges_9_columns(
@@ -535,10 +720,28 @@ void
 pgr_get_edges(
         char *edges_sql,
         pgr_edge_t **edges,
-        size_t *total_edges) {
+        size_t *total_edges)
+{
     bool ignore_id = false;
     get_edges_5_columns(edges_sql, edges, total_edges, ignore_id);
 }
+
+
+void
+pgr_get_edges_patrix(
+        char *edges_sql,
+		pgr_edge_t_patrix **edges,   // PRUEBA AQUI ...
+        size_t *total_edges)
+{
+    bool ignore_id = false;
+
+    // Patrix : On dois lire les 9 valeurs
+    get_edges_9_columns_patrix(edges_sql, edges, total_edges, ignore_id);
+
+    // TODO : falta modifica rel edges de 5 columasn por el de patrix columnas
+}
+
+
 
 void
 pgr_get_edges_no_id(
