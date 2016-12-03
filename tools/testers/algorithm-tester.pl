@@ -310,9 +310,9 @@ sub process_single_test{
 
     my @d = ();
     @d = <TIN>; #reads the whole file into the array @d 
-    #print PSQL "BEGIN;\n";
+    print PSQL "BEGIN;\n";
     print PSQL @d; #prints the whole fle stored in @d
-    #print PSQL "\nROLLBACK;\n";
+    print PSQL "\nROLLBACK;\n";
 
     close(PSQL); #executes everything
     close(TIN); #closes the input file  /TIN = test input
