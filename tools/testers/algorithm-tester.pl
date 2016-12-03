@@ -278,10 +278,15 @@ sub process_single_test{
         next;
     };
 
+    my $level = "NOTICE";
+    $level = "WARNING" if $ignore;
+    $level = "DEBUG1" if $DEBUG1;
+
+
     #reason of opening conection is because the set client_min_messages to warning;
     if ($DOCUMENTATION) {
         mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
-        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
+        open(PSQL, "|$psql $connopts -v client_min_messages=$level --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             $stats{z_fail}++;
             next;
@@ -299,15 +304,15 @@ sub process_single_test{
             next;
         };
     }
-    print PSQL "set client_min_messages to NOTICE;\n";
-    print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-    print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+    #print PSQL "set client_min_messages to NOTICE;\n";
+    #print PSQL "set client_min_messages to WARNING;\n" if $ignore;
+    #print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
 
     my @d = ();
     @d = <TIN>; #reads the whole file into the array @d 
-    print PSQL "BEGIN;\n";
+    #print PSQL "BEGIN;\n";
     print PSQL @d; #prints the whole fle stored in @d
-    print PSQL "ROLLBACK;\n";
+    #print PSQL "\nROLLBACK;\n";
 
     close(PSQL); #executes everything
     close(TIN); #closes the input file  /TIN = test input
