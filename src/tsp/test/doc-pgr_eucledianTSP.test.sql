@@ -1,6 +1,4 @@
-BEGIN;
 
-SET client_min_messages TO WARNING;
 \echo -- q1
 WITH
 query AS (
@@ -22,7 +20,8 @@ SELECT* from pgr_eucledianTSP(
     randomize := false
 );
 \echo -- q3
-SET client_min_messages TO NOTICE;
+SET client_min_messages TO DEBUG1;
+
 SELECT* from pgr_eucledianTSP(
     $$
     SELECT id, st_X(the_geom) AS x, st_Y(the_geom) AS y FROM edge_table_vertices_pgr
@@ -31,5 +30,3 @@ SELECT* from pgr_eucledianTSP(
     randomize := false
 );
 \echo -- q4
-
-ROLLBACK;

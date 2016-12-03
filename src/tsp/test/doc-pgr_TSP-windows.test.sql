@@ -1,5 +1,4 @@
 
-SET client_min_messages TO WARNING;
 \echo -- q1
 
 WITH

@@ -1,4 +1,3 @@
-BEGIN;
 
 SET client_min_messages TO WARNING;
 \echo -- q1
@@ -37,4 +36,3 @@ SELECT * FROM pgr_TSP(
     randomize := false
 );
 \echo -- q5
-ROLLBACK;
