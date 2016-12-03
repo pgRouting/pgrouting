@@ -1,5 +1,5 @@
-SET client_min_messages TO WARNING;
-SET
+BEGIN;
+BEGIN
 -- q1
 WITH
 query AS (
@@ -71,3 +71,5 @@ SELECT * FROM pgr_TSP(
 (6 rows)
 
 -- q4
+ROLLBACK;
+ROLLBACK
