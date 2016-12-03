@@ -1,5 +1,4 @@
 
-BEGIN;
 
     \echo --q1
     SELECT * FROM pgr_withPointsKSP(
@@ -24,7 +23,3 @@ BEGIN;
         -1, -2, 2,
         heap_paths := true, driving_side := 'r', details := true);
     \echo --q5
-
-
-
-ROLLBACK;

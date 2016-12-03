@@ -1,6 +1,4 @@
 
-BEGIN;
-
     \echo --e1
     SELECT * FROM pgr_withPoints(
         'SELECT id, source, target, cost, reverse_cost FROM edge_table ORDER BY id',
@@ -68,8 +66,5 @@ BEGIN;
         directed := false,
         details := true);
     \echo --q5
-
-
-    ROLLBACK;
 
 

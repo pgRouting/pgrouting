@@ -3,9 +3,6 @@
 --              PGR_drivingDistance
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
-BEGIN;
-
-SET client_min_messages TO NOTICE;
 
 \echo --q1
 SELECT * FROM pgr_drivingDistance(
@@ -18,4 +15,3 @@ SELECT * FROM pgr_drivingDistance(
     7, 1.5, true, true
 ) ;
 \echo --q2
-ROLLBACK;

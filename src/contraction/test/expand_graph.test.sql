@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo 'step 1: Initial edge table'
 
@@ -217,4 +216,3 @@ SELECT 'step 16: Vertex table representing the expanded graph';
 SELECT id, is_contracted, contracted_vertices FROM contracted_edge_table_vertices_pgr  ORDER BY id;
 */
 
-ROLLBACK;

@@ -1,4 +1,3 @@
-BEGIN;
 
 SET client_min_messages TO NOTICE;
 
@@ -56,4 +55,3 @@ SELECT * FROM pgr_tsp(
 );
 \echo --q5
 
-ROLLBACK;

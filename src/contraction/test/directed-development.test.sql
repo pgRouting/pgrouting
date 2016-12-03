@@ -1,4 +1,3 @@
-BEGIN;
 
 /*
 -- this test fails becuse parameter is wrong
@@ -148,4 +147,3 @@ SELECT * FROM pgr_contractGraph(
 
 
 
-ROLLBACK;

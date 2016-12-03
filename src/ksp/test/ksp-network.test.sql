@@ -1,4 +1,3 @@
-BEGIN;
 SET client_min_messages TO NOTICE;
 --
 -- Generate 15 shortest paths between nodes 4 and 5
@@ -116,4 +115,3 @@ FROM pgr_ksp(
     4, 5,
     15) result, network where id = edge order by e1, e2, e3;
 
-ROLLBACK;

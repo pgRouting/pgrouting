@@ -1,5 +1,4 @@
 
-BEGIN;
 
     \echo --q1
     SELECT * FROM pgr_withPointsVia(
@@ -28,9 +27,5 @@ BEGIN;
         driving_side := 'b',
         details := true);
     \echo --q5
-
-
-
-    ROLLBACK;
 
 

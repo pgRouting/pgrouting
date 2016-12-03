@@ -1,5 +1,4 @@
 
-BEGIN;
 
     \echo --e1
     SELECT * FROM pgr_withPointsCost(
@@ -49,7 +48,5 @@ BEGIN;
     \echo --q5
 
 
-
-    ROLLBACK;
 
 

@@ -1,6 +1,4 @@
-BEGIN;
 
-SET client_min_messages TO WARNING;
 \echo -- dijkstra q1
 SELECT * FROM pgr_dijkstraCostMatrix(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -48,4 +46,3 @@ SELECT * FROM pgr_TSP(
 );
 \echo -- withPoints q4
 
-ROLLBACK;
