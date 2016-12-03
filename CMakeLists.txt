@@ -402,8 +402,8 @@ if(NOT WIN32)
 endif()
 
 
-set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Werror -Wall -Wconversion -pedantic -fmax-errors=10 -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion  -Wreturn-local-addr")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Werror -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra -Wdouble-promotion  -Wreturn-local-addr")
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Werror -Wall -Wconversion -pedantic -fmax-errors=10 -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Werror -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
