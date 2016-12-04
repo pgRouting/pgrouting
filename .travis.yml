@@ -52,19 +52,12 @@ matrix:
       env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
 
 
-    - os: linux
-      sudo: required
-      dist: trusty
-      group: edge
-      env: POSTGRESQL_VERSION=9.3   PG_USER=postgres
-
-
 
 # executed. So things have to be tested oe by one.
 addons:
   apt:
     sources:
-      - - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
       # For cmake
       - kubuntu-backports
       - boost-latest
