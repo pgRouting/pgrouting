@@ -1,4 +1,3 @@
-SET client_min_messages TO NOTICE;
 
 \echo --q1
 

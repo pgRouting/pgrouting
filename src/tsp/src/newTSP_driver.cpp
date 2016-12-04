@@ -59,12 +59,14 @@ do_pgr_tsp(
         General_path_element_t **return_tuples,
         size_t *return_count,
         char **log_msg,
+        char **notice_msg,
         char **err_msg) {
-    std::ostringstream err;
     std::ostringstream log;
+    std::ostringstream notice;
+    std::ostringstream err;
 
     try {
-        std::vector < Matrix_cell_t > data_costs(
+        std::vector <Matrix_cell_t> data_costs(
                 distances,
                 distances + total_distances);
 
@@ -72,15 +74,13 @@ do_pgr_tsp(
 
         if (!costs.has_no_infinity()) {
             err << "An Infinity value was found on the Matrix";
-            *err_msg = strdup(err.str().c_str());
-            *log_msg = strdup(log.str().c_str());
+            *err_msg = pgr_msg(err.str().c_str());
             return;
         }
 
         if (!costs.is_symmetric()) {
             err << "A Non symmetric Matrix was given as input";
-            *err_msg = strdup(err.str().c_str());
-            *log_msg = strdup(log.str().c_str());
+            *err_msg = pgr_msg(err.str().c_str());
             return;
         }
 
@@ -200,26 +200,29 @@ do_pgr_tsp(
             ++seq;
         }
 
-        *log_msg = strdup(log.str().c_str());
-        (*err_msg) = NULL;
-        return;
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << except.what() << "\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
-    } catch (std::exception& except) {
-        if (*return_tuples) free(*return_tuples);
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << except.what() << "\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << "Caught unknown exception!\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }

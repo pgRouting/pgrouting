@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/matrixRows_input.h"
@@ -105,12 +106,15 @@ process(
         return;
     }
 
-    char *err_msg = NULL;
-    char *log_msg = NULL;
+
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
+
     do_pgr_tsp(
-            distances,
-            total_distances,
+            distances, total_distances,
             start_vid,
             end_vid,
             initial_temperature,
@@ -124,19 +128,24 @@ process(
             result_tuples,
             result_count,
             &log_msg,
+            &notice_msg,
             &err_msg);
-    time_msg(" processing eucledianTSP", start_t, clock());
-    if (log_msg) {
-        elog(NOTICE, "%s", log_msg);
-        free(log_msg);
-    }
-    if (err_msg) {
-        if (*result_tuples) free(*result_tuples);
-        elog(ERROR, "%s", err_msg);
-        free(err_msg);
+
+    time_msg("eucledianTSP", start_t, clock());
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
 
-    pfree(distances);
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (distances) pfree(distances);
+
     pgr_SPI_finish();
 }
 /*                                                                            */

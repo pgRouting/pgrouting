@@ -55,6 +55,7 @@ do_pgr_eucledianTSP(
         General_path_element_t **results,
         size_t *total_results,
         char **log_msg,
+        char **notice_msg,
         char **err_msg);
 
 #ifdef __cplusplus
