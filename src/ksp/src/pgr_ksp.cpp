@@ -82,7 +82,6 @@ Pgr_ksp< G >::Yen(G &graph,
             [](const Path &left, const Path &right) -> bool {
             for (size_t i = 0 ; i < (std::min)(left.size(), right.size()); ++i) {
             if (left[i].node < right[i].node) return true;
-            if (left[i].node > right[i].node) return false;
             }
             return false;
             });
@@ -93,6 +92,7 @@ Pgr_ksp< G >::Yen(G &graph,
 
     if (!heap_paths && l_ResultList.size() > (size_t) K)
         l_ResultList.resize(K);
+
     return l_ResultList;
 }
 
