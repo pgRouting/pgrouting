@@ -1,4 +1,3 @@
-BEGIN;
 --------------------------------------------------------------------------------
 --              PGR_alphaShape
 --------------------------------------------------------------------------------
@@ -23,4 +22,3 @@ FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
 FROM pgr_alphaShape('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr')
 
 ) AS a) AS foo;
-ROLLBACK;

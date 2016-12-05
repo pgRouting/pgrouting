@@ -1,4 +1,3 @@
-BEGIN;
 
 SET client_min_messages TO WARNING;
 \echo -- dijkstra q1
@@ -48,4 +47,3 @@ SELECT * FROM pgr_TSP(
 );
 \echo -- withPoints q4
 
-ROLLBACK;

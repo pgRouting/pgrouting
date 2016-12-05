@@ -1,5 +1,3 @@
-SET client_min_messages TO NOTICE;
-
 \echo --q1
 SELECT * FROM pgr_astar(
     'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table',

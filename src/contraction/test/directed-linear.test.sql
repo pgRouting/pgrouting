@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo --q6 Checking for linear vertices case 1
 SELECT * FROM pgr_contractGraph(
@@ -44,5 +43,3 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
 -- \echo --q13 -------------------------------------------
 
-
-ROLLBACK;

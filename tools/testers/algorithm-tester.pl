@@ -302,11 +302,14 @@ sub process_single_test{
             next;
         };
     }
-    print PSQL "\nSET client_min_messages TO $level;\n";
 
     my @d = ();
     @d = <TIN>; #reads the whole file into the array @d 
+
+    print PSQL "\nSET client_min_messages TO $level;\n";
+    print PSQL "BEGIN;\n";
     print PSQL @d; #prints the whole fle stored in @d
+    print PSQL "\nROLLBACK;\n";
     close(PSQL); #executes everything
     close(TIN); #closes the input file  /TIN = test input
 

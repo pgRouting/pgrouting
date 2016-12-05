@@ -1,5 +1,3 @@
-SET client_min_messages TO NOTICE;
-
 \echo -- q1
 SELECT * FROM pgr_AStar(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2

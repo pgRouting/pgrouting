@@ -20,8 +20,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-BEGIN;
-SET client_min_messages TO NOTICE;
 \echo --q1
 SELECT * FROM pgr_pointtoedgenode('edge_table', 'POINT(2 0)'::geometry, 0.02);
 SELECT * FROM pgr_pointtoedgenode('edge_table', 'POINT(3 2)'::geometry, 0.02);
@@ -48,4 +46,3 @@ SELECT * FROM pgr_pointstovids(
     'edge_table'
 );
 \echo --q5
-ROLLBACK;

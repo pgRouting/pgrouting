@@ -1,4 +1,3 @@
-BEGIN;
 \echo --q1
 SELECT * FROM pgr_dijkstraCost(
     'select id, source, target, cost, reverse_cost from edge_table',
@@ -35,4 +34,3 @@ SELECT * FROM pgr_dijkstraCost(
             ARRAY[5, 3, 4], ARRAY[5, 3, 4]);
 
 \echo --q8
-ROLLBACK

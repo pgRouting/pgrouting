@@ -1,6 +1,3 @@
-BEGIN;
-
-SET client_min_messages TO WARNING;
 
 ------------------------
 -- dijkstra
@@ -83,4 +80,3 @@ SELECT * FROM pgr_TSP(
 \echo -- astar q4
 
 
-ROLLBACK;

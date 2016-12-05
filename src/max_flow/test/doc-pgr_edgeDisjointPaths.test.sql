@@ -1,6 +1,5 @@
 --These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
 
-BEGIN;
 
 \echo -- q1
 SELECT * FROM pgr_edgeDisjointPaths(
@@ -34,4 +33,3 @@ SELECT * FROM pgr_edgeDisjointPaths(
 );
 
 \echo -- q6
-ROLLBACK;

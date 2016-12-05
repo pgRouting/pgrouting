@@ -1,5 +1,4 @@
 
-BEGIN;
 
     CREATE TABLE routing (gid serial, length integer, source integer, target integer, reverse_cost integer);
     INSERT INTO routing (length, source, target, reverse_cost) VALUES
@@ -13,4 +12,3 @@ BEGIN;
           1, 0.1, 1, 0.9, false, true
     );
 
-    ROLLBACK;

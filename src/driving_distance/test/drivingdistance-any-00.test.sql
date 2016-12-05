@@ -1,7 +1,6 @@
 -- each ring will increase by 4 because it is on a square grid
 -- to find the start node number
 -- SELECT *, st_distance(st_makepoint(25,25), the_geom) from vertices_tmp where st_dwithin(st_makepoint(25,25), the_geom, 1.0) order by st_distance(st_makepoint(25,25), the_geom) limit 1;
-BEGIN;
 
     -- create 50x50 grid of overlapping lines horizontal and vertical
 
@@ -64,4 +63,3 @@ BEGIN;
     SELECT seq, node, edge, round(cost::numeric, 2), round(agg_cost::numeric,2) from pgr_drivingdistance('SELECT id, source, target, 1.0::float8 as cost from ddnoded2', 1274, 10);
 
 
-    ROLLBACK;

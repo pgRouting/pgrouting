@@ -1,5 +1,3 @@
-BEGIN;
-SET client_min_messages TO WARNING;
 
 
 /*
@@ -44,4 +42,3 @@ SELECT * FROM pgr_contractGraph(
 	ARRAY[1]::integer[], 1, ARRAY[]::BIGINT[], true);
 -- \echo --q5 -------------------------------------------
 
-ROLLBACK;

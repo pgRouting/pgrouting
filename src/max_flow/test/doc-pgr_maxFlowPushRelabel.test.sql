@@ -1,7 +1,6 @@
 --These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
 --The edge in the edge table are augmented with road-like categories for capacity values.
 
-BEGIN;
 
 
 \echo -- q1
@@ -58,4 +57,3 @@ SELECT * FROM pgr_maxFlowPushRelabel(
 
 \echo -- q5
 
-ROLLBACK;
