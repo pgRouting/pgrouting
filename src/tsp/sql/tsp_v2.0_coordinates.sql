@@ -24,7 +24,7 @@ BEGIN
     RAISE NOTICE 'Deprecated Signature pgr_tsp(sql, integer, integer)';
     EXECUTE 'set client_min_messages  to '|| debuglevel;
 
-    table_sql := 'CREATE TABLE ___tmp  AS ' || sql ;
+    table_sql := 'CREATE TEMP TABLE ___tmp ON COMMIT DROP AS ' || sql ;
     EXECUTE table_sql;
 
 

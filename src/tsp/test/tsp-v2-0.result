@@ -1,8 +1,10 @@
 NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
 15.4787
-OK
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+FAIL
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
-1|0
+1|4
 2|3
 3|2
 NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
@@ -11,123 +13,147 @@ NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
 32.4721
 NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
 23.4706
-0|0
-1|2
-2|4
-3|3
-4|1
-----------------------------------
-0|0
-1|1
-2|3
-3|4
-4|2
-----------------------------------
-0|0
-1|2
-2|4
-3|1
-4|3
-----------------------------------
-0|0
-1|1
-2|3
-3|2
-4|4
-----------------------------------
-0|1
-1|3
-2|4
-3|2
-4|0
-----------------------------------
-0|1
-1|4
-2|3
-3|0
-4|2
-----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
 1|4
 2|2
-3|0
+3|5
+4|3
+5|1
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|1
+1|4
+2|2
+3|5
+4|3
+5|1
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|1
+1|4
+2|2
+3|5
+4|3
+5|1
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|1
+1|4
+2|2
+3|5
+4|3
+5|1
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|1
+1|4
+2|2
+3|5
 4|3
 ----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
 1|3
-2|0
-3|2
-4|4
-----------------------------------
-0|2
-1|4
-2|3
-3|1
-4|0
-----------------------------------
-0|2
-1|0
-2|3
+2|5
 3|4
-4|1
+4|2
 ----------------------------------
-0|2
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|1
 1|4
-2|1
-3|0
+2|2
+3|5
 4|3
 ----------------------------------
-0|2
-1|0
-2|1
-3|3
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|1
+1|3
+2|5
+3|2
 4|4
 ----------------------------------
-0|3
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|2
 1|1
-2|4
-3|2
-4|0
+2|3
+3|5
+4|4
 ----------------------------------
-0|3
-1|0
-2|2
-3|4
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|2
+1|4
+2|5
+3|3
 4|1
 ----------------------------------
-0|3
-1|0
-2|1
-3|4
-4|2
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|2
+1|5
+2|4
+3|1
+4|3
 ----------------------------------
-0|3
-1|1
-2|0
-3|2
-4|4
-----------------------------------
-0|4
-1|2
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|2
+1|5
 2|3
 3|1
-4|0
+4|4
 ----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|3
+1|5
+2|4
+3|2
+4|1
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|3
+1|5
+2|4
+3|2
+4|1
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|3
+1|5
+2|4
+3|1
+4|2
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|3
+1|5
+2|2
+3|1
+4|4
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|4
 1|2
-2|0
+2|1
+3|3
+4|5
+----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|4
+1|2
+2|5
 3|3
 4|1
 ----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|4
-1|3
-2|1
-3|0
+1|5
+2|3
+3|1
 4|2
 ----------------------------------
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|4
-1|2
-2|0
+1|5
+2|2
 3|1
 4|3
 ----------------------------------
@@ -144,36 +170,45 @@ NOTICE:  Deprecated Signature pgr_tsp(sql, integer, integer)
 9|10|10|2.50
 10|5|5|3.61
 ----------------------------------1(in ints)
-OK
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+FAIL
 ----------------------------------1(in tenths)
-OK
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+FAIL
 ----------------------------------1-0
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
 1|2
 2|3
-3|0
+3|4
 ----------------------------------1-2
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
-1|0
+1|4
 2|3
 3|2
 ----------------------------------1-3
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
-1|2
-2|0
+1|4
+2|2
 3|3
 ----------------------------------0-1
-0|0
-1|3
-2|2
-3|1
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
+0|1
+1|2
+2|3
+3|4
+4|1
 ----------------------------------2-1
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|2
 1|3
-2|0
+2|4
 3|1
 ----------------------------------3-1
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|3
-1|0
+1|4
 2|2
 3|1

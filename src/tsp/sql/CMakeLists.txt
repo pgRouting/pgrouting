@@ -1,7 +1,8 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     #This are the old signature
-    ${CMAKE_CURRENT_SOURCE_DIR}/routing_tsp.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/tsp_v2.0_matrix.sql
+    #${CMAKE_CURRENT_SOURCE_DIR}/routing_tsp.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/routing_tsp_wrappers.sql
 
     #this one implements the new tsp

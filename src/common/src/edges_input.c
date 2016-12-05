@@ -224,6 +224,7 @@ get_edges_9_columns(
         }
     }
 
+    SPI_cursor_close(SPIportal);
 
     if (total_tuples == 0 || valid_edges == 0) {
         PGR_DBG("No edges found");
@@ -323,6 +324,7 @@ get_edges_5_columns(
         }
     }
 
+    SPI_cursor_close(SPIportal);
 
     if (total_tuples == 0 || valid_edges == 0) {
         PGR_DBG("No edges found");
@@ -413,6 +415,8 @@ get_edges_flow(
             moredata = FALSE;
         }
     }
+
+    SPI_cursor_close(SPIportal);
 
     if (total_tuples == 0 || valid_edges == 0) {
         PGR_DBG("No edges found");
@@ -508,6 +512,8 @@ get_edges_basic(
             moredata = FALSE;
         }
     }
+
+    SPI_cursor_close(SPIportal);
 
     if (total_tuples == 0 || valid_edges == 0) {
         PGR_DBG("No edges found");
