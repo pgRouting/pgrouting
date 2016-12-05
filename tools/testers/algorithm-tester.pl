@@ -294,7 +294,7 @@ sub process_single_test{
         #print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
     }
     else {
-        open(PSQL, "|$psql $connopts -v client_min_messages=$level --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
+        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             if (!$INTERNAL_TESTS) {
                $stats{z_fail}++;
@@ -302,9 +302,7 @@ sub process_single_test{
             next;
         };
     }
-    #print PSQL "set client_min_messages to NOTICE;\n";
-    #print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-    #print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+    print PSQL "\nSET client_min_messages TO $level;\n";
 
     my @d = ();
     @d = <TIN>; #reads the whole file into the array @d 

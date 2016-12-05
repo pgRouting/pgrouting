@@ -38,12 +38,7 @@ DECLARE
 table_sql TEXT;
 debuglevel TEXT;
 BEGIN
-    -- checking the fixed columns and data types of the integers
-    EXECUTE 'SHOW client_min_messages' INTO debuglevel;
-
-    EXECUTE 'SET client_min_messages TO NOTICE';
     RAISE NOTICE 'Deprecated Signature pgr_tsp(float8[][], integer, integer)';
-    EXECUTE 'set client_min_messages  to '|| debuglevel;
 
     CREATE TEMP TABLE ___tmp2 ON COMMIT DROP AS SELECT * FROM _unnest_matrix( matrix );
 
