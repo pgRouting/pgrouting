@@ -73,6 +73,8 @@ class Pgr_ksp {
                       return true;
               }
 
+              pgassert(p1.tot_cost() == p2.tot_cost());
+              pgassert(p1.size() == p2.size());
 #ifdef NDEBUG
               for (i = 0; i < p1.size(); i++) {
                   pgassert(p1[i].node == p2[i].node);
