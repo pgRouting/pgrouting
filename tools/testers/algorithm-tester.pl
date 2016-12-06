@@ -306,6 +306,7 @@ sub process_single_test{
     @d = <TIN>; #reads the whole file into the array @d 
 
     print PSQL "BEGIN;\n";
+    print PSQL "SET client_min_messages TO $level;\n";
     #prints the whole fle stored in @d
     print PSQL @d;
     print PSQL "\nROLLBACK;";
