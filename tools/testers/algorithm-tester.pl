@@ -401,7 +401,6 @@ sub createTestDB {
     }
     #
 #    else {
-#        if ($vpgis && dbExists("template_postgis_$vpgis")) {
 #            $template = "template_postgis_$vpgis";
 #        }
 #        elsif (dbExists('template_postgis')) {
