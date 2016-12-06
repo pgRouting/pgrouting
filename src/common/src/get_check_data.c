@@ -226,12 +226,10 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     return value;
 }
 
+/**
+ * under development
+ */
 char*
 pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {
-    char* value = NULL;
-    char* val = NULL;
-    val = SPI_getvalue(*tuple, *tupdesc, info.colNumber);
-    value = DatumGetCString(&val);
-    pfree(val);
-    return value;
+    return DatumGetCString(SPI_getvalue(*tuple, *tupdesc, info.colNumber));
 }
