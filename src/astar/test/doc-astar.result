@@ -60,7 +60,7 @@
 23|5|7|12|9|15|1|4
 24|6|7|12|12|-1|0|5
 --q6
-NOTICE:  Deprecated signature of function pgr_astar
+NOTICE:  Deprecated signature pgr_astar(text, integer, integer, boolean, boolean)
 0|2|4|1
 1|5|8|1
 2|6|9|1
