@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 -- q1
 SELECT * FROM pgr_bdDijkstra(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -44,3 +48,5 @@ NOTICE:  Deprecated Signature of pgr_bdDijkstra
 (4 rows)
 
 -- q4
+ROLLBACK;
+ROLLBACK
