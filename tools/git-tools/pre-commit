@@ -20,6 +20,6 @@ then
     COMMITS=`git rev-list HEAD --count`
     HASH=`git rev-parse --short HEAD`
     BRANCH=`git branch | grep '*' | awk '{print $2}'`
-    echo $VERSION-$COMMITS-$HASH $BRANCH > $GIT_DIR/../VERSION
+    echo $COMMITS-$HASH $BRANCH > $GIT_DIR/../VERSION
     git add $GIT_DIR/../VERSION
 fi
