@@ -49,9 +49,10 @@ Proposed functions
 
 - :ref:`maxFlow`
 
-  - :ref:`pgr_maxFlowPushRelabel` - Maximum flow using push&relabel algorithm.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Maximum flow using Edmonds&Karp algorithm.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Maximum flow using Boykov&Kolmogorov algorithm.
+  - :ref:`pgr_maxFlow` - Maximum flow using push&relabel algorithm.
+  - :ref:`pgr_maxFlowPushRelabel` - Detailed Maximum flow using push&relabel algorithm.
+  - :ref:`pgr_maxFlowEdmondsKarp` - Detailed Maximum flow using Edmonds&Karp algorithm.
+  - :ref:`pgr_maxFlowBoykovKolmogorov` - Detailed Maximum flow using Boykov&Kolmogorov algorithm.
   
 - :ref:`maxFlowApplications`
 

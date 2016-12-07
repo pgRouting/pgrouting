@@ -90,7 +90,7 @@ Signatures
 
 
 .. index::
-    single: aStar(Minimal Use)
+    single: aStar(Minimal Use) -- New Signature
 
 
 Minimal Signature
@@ -110,7 +110,7 @@ Minimal Signature
 
 
 .. index::
-    single: aStar(One to One)
+    single: aStar(One to One) -- New Signature
 
 
 One to One

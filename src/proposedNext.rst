@@ -58,7 +58,7 @@ Stable proposed Functions
 
 - A new Section
 
-  - ref:`astar`
+  - :ref:`astar`
 
 ..
     to-here
