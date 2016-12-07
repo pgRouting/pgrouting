@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 -- q00
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
  id | source | target | cost | reverse_cost 
@@ -23,7 +27,7 @@ SELECT id, source, target, cost, reverse_cost FROM edge_table;
 (18 rows)
 
 -- q01
-SET client_min_messages TO error;
+SET client_min_messages TO ERROR;
 SET
 -- q1
 ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
@@ -34,6 +38,8 @@ ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
 ALTER TABLE
 ALTER TABLE edge_table_vertices_pgr ADD is_contracted BOOLEAN DEFAULT false;
 ALTER TABLE
+SET client_min_messages TO NOTICE;
+SET
 -- q2
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -352,3 +358,5 @@ SELECT * FROM pgr_dijkstra($$
 (5 rows)
 
 -- end
+ROLLBACK;
+ROLLBACK
