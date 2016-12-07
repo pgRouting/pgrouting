@@ -41,6 +41,7 @@ pgRouting 2.4.0 Release Notes
 
 
 .. rubric:: New Proposed Signatures
+
 * pgr_maxFlow
 * pgr_astar(one to many)
 * pgr_astar(many to one)
