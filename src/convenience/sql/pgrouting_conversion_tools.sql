@@ -173,6 +173,7 @@ declare
     g geometry;
     
 begin
+    RAISE NOTICE 'Deperecated function: pgr_pointsToVids';
     -- cycle through each point and locate the nearest edge and vertex on that edge
     for g in select unnest(pnts) loop
         v := v || pgr_pointtoedgenode(edges, g, tol);

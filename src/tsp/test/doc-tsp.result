@@ -42,7 +42,7 @@ NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
 1|2
 2|3
-3|4
+3|0
 -- q4
 1|8|3|0
 2|11|1|3

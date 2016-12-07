@@ -43,6 +43,7 @@ BEGIN
     CREATE TEMP TABLE ___tmp2 ON COMMIT DROP AS SELECT * FROM _unnest_matrix( matrix );
 
 
+    startpt := startpt + 1;
     IF endpt = -1 THEN endpt := startpt;
     END IF;
 
@@ -60,7 +61,7 @@ BEGIN
 
         randomize:=false)
     )
-    SELECT (row_number() over(ORDER BY result.seq) - 1)::INTEGER AS seq, (result.node)::INTEGER AS id
+    SELECT (row_number() over(ORDER BY result.seq) - 1)::INTEGER AS seq, (result.node - 1)::INTEGER AS id
 
     FROM result WHERE NOT(result.node = startpt AND result.seq != 1);
 

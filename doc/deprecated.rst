@@ -25,6 +25,11 @@ Routing functions
 
 - :ref:`bd_dijkstra_v2` - See new signatures of :ref:`pgr_bdDijkstra`
 
+Auxiliary functions
+...................
+
+- :ref:`pgr_points_to_vids`
+
 Deprecated on version 2.3
 ----------------------------
 

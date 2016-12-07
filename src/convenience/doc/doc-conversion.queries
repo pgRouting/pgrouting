@@ -82,6 +82,7 @@ SELECT * FROM pgr_pointstovids(
     'edge_table'
 );
 NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_pointsToVids
  pgr_pointstovids 
 ------------------
  {1,2,3,5}

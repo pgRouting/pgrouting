@@ -61,7 +61,6 @@ Proposed functions
 - convenience
 
   -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-  -  :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
 
 - graph analysis
 
