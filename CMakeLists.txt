@@ -77,30 +77,30 @@ set(PgRouting_SOURCE_NAMES
     #----------------------
     # Directories that have being rewritten
     #----------------------
-    "allpairs"
-    "astar"
-    "driving_distance"
-    "ksp"
-    "tsp"
+    #"allpairs"
+    #"astar"
+    #"driving_distance"
+    #"ksp"
+    #"tsp"
 
     #----------------------
     # Code needs to be rewritten
     #----------------------
-    "alpha_shape"
-    "bd_astar"
-    "bdDijkstra" # 2.4
-    "trsp"
+    #"alpha_shape"
+    #"bd_astar"
+    #"bdDijkstra" # 2.4
+    #"trsp"
 
     #----------------------
     # Proposed
     #  - Not officially on the release
     #  - number indicates version when was propsosed with code
     #----------------------
-    "max_flow"    # 2.3
-    "contraction" # 2.3
-    "pickDeliver" # 2.3
-    "vrp_basic"   # 2.0 
-    "withPoints"  # 2.2
+    #"max_flow"    # 2.3
+    #"contraction" # 2.3
+    #"pickDeliver" # 2.3
+    #"vrp_basic"   # 2.0 
+    #"withPoints"  # 2.2
 
     # template generated name
     #"funnyDijkstra"
@@ -120,18 +120,18 @@ set(PgRouting_SQL_DIRECTORIES
     # Proposed
     #  Not officially on the release
     #----------------------
-    "convenience"  # most are deprecated
-    "label_graph"  # needs to be rewritten using Boost
-    "costMatrix"   # proposed on 2.3
+    #"convenience"  # most are deprecated
+    #"label_graph"  # needs to be rewritten using Boost
+    #"costMatrix"   # proposed on 2.3
 
     #----------------------
     # Wrappers for backwards compatibility 
     #----------------------
-    "bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
-    "apsp_johnson"  # 2.0 wrap of pgr_johnson
-    "apsp_warshall" # 2.0 wrap of pgr_warshall
-    "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
-    "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver 
+    #"bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
+    #"apsp_johnson"  # 2.0 wrap of pgr_johnson
+    #"apsp_warshall" # 2.0 wrap of pgr_warshall
+    #"kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
+    #"vrppdtw"       # 2.1 wraps of _pgr_pickDeliver 
 
     )
 
@@ -178,20 +178,14 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     endif()
 else()
     message(STATUS "Unknown compiler minimum version for ${CMAKE_CXX_COMPILER_ID}")
-    message(STATUS "COMPILER_SUPPORTS_CXX0X= ${COMPILER_SUPPORTS_CXX0X}")
-    message(STATUS "COMPILER_SUPPORTS_CXX11= ${COMPILER_SUPPORTS_CXX11}")
 endif()
 
-if (!MSVC)
-    if(COMPILER_SUPPORTS_CXX11)
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-    else()
-        if(COMPILER_SUPPORTS_CXX0X)
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-        else()
-            message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 support.")
-        endif()
-    endif()
+if(COMPILER_SUPPORTS_CXX11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+elseif(COMPILER_SUPPORTS_CXX0X)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+else()
+    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 flags support.")
 endif()
 
 message(STATUS "CMAKE_CXX_COMPILER= ${CMAKE_CXX_COMPILER}")
@@ -201,27 +195,27 @@ message(STATUS "CMAKE_CXX_COMPILER= ${CMAKE_CXX_COMPILER}")
 set(PGROUTING_VERSION_MAJOR "2")
 set(PGROUTING_VERSION_MINOR "4")
 set(PGROUTING_VERSION_PATCH "0")
+set(PGROUTING_VERSION_DEV "-dev")
 
-set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
-set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
+set(PGROUTING_SHORT_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
+set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-set(PGROUTING_GIT_TAG "vpgrouting-2.4.0-dev")
+set(PGROUTING_FULL_VERSION "v${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}")
 
-#string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^(.+)-([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^(.+)-([0-9]+)-([0-9a-f]+) (.*)$" "\\4" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
+#string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
+string(REGEX REPLACE "^(.+)-([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
 
 set(PGROUTING_VERSION_REVISION_NAME "${PGROUTING_GIT_HASH} ${PGROUTING_GIT_BRANCH}")
-set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_GIT_HASH}")
+#set(PGROUTING_VERSION_REVISION_HASH "${PGROUTING_GIT_HASH}")
 
 message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
 message(STATUS "PGROUTING_BUILD_STRING: ${PGROUTING_BUILD_STRING}")
-message(STATUS "PGROUTING_GIT_TAG: ${PGROUTING_GIT_TAG}")
-message(STATUS "PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
+message(STATUS "PGROUTING_FULL_VERSION: ${PGROUTING_FULL_VERSION}")
+#message(STATUS "PGROUTING_GIT_BUILD: ${PGROUTING_GIT_BUILD}")
 message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
 message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
 message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NAME}")
@@ -229,7 +223,7 @@ message(STATUS "PGROUTING_VERSION_REVISION_NAME: ${PGROUTING_VERSION_REVISION_NA
 message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
 message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 
-message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
+#message(STATUS "PGROUTING_VERSION_REVISION_HASH: ${PGROUTING_VERSION_REVISION_HASH}")
 message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 
 
@@ -355,7 +349,7 @@ endif(SHARE_DIR)
 #-------------------------------------
 set(PROJECT_NAME  "pgRouting")
 set(PROJECT_BRIEF "pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.")
-set(PROJECT_NUMBER  "${PGROUTING_GIT_TAG}")
+set(PROJECT_NUMBER  "${PGROUTING_FULL_VERSION}")
 add_subdirectory(doxygen)
 add_subdirectory(doc)
 #-------------------------------------
@@ -493,14 +487,14 @@ message("Building the library names")
 #----------------------
 # PGROUTING installation files names have the following name
 #----------------------
-set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_VERSION}")
+set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_SHORT_VERSION}")
 
 
 #----------------------
 # PGROUTING library name used in the pgr_functions
 #  '$libdir/${PGROUTING_LIBRARY_NAME}'
 #----------------------
-set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_VERSION}")
+set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
 
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
@@ -566,9 +560,9 @@ foreach(file_in ${PACKAGE_SQL_FILES})
 endforeach()
 
 configure_file("${TEMP_LIB_FILENAME}"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
     )
-message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql")
+message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql")
 #
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -588,9 +582,9 @@ message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
 
 # create the signature file for this release
-message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION_STRING}.sig")
+message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
 execute_process(
-    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION_STRING}
+    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file ${PGROUTING_VERSION}
     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
     RESULT_VARIABLE SIG_RESULT
     )
@@ -600,7 +594,7 @@ endif(SIG_RESULT)
 
 # create the extension update scripts
 execute_process(
-    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION_STRING} ${PGROUTING_SOURCE_DIR}
+    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files ${PGROUTING_VERSION} ${PGROUTING_SOURCE_DIR}
     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
     RESULT_VARIABLE UPDATE_RESULT
     )
@@ -623,7 +617,7 @@ message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 install(FILES
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
+    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
     ${VERSION_UPDATE_FILES}
     DESTINATION "${SHARE_DIR}")
