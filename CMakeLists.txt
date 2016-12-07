@@ -7,32 +7,25 @@
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
-#---------------------------------------------
-# Setting kind of build
-#---------------------------------------------
-#
-# On Master cmake -DMAKE_BUILD_TYPE=Release
-#----------------------
 if(POLICY CMP0046)
     cmake_policy(SET CMP0046 OLD)
 endif()
 
+#---------------------------------------------
+# Setting kind of build
+#---------------------------------------------
+#
+# for developing
+# cmake -DMAKE_BUILD_TYPE=Develop
+#----------------------
 
 message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
-if(NOT CMAKE_BUILD_TYPE)
-    if (UNIX)
-        set(CMAKE_BUILD_TYPE Debug CACHE STRING
-            "Choose the type of build, options are: None Debug Release RelWithDebInfo
-            MinSizeRel."
-            FORCE)
-        message("Running as: Debug")
-    else()
-        set(CMAKE_BUILD_TYPE Release CACHE STRING
-            "Choose the type of build, options are: None Debug Release RelWithDebInfo
-            MinSizeRel."
-            FORCE)
-        message("Running as: Release")
-    endif()
+if (CMAKE_BUILD_TYPE MATCHES Develop)
+    set(CMAKE_BUILD_TYPE Debug CACHE STRING
+        "Choose the type of build, options are: None Debug Release RelWithDebInfo
+        MinSizeRel."
+        FORCE)
+    set(WITH_INTERNAL_TESTS)
 endif()
 message(STATUS "CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}")
 
@@ -147,9 +140,17 @@ set(PgRouting_SQL_DIRECTORIES
 #---------------------------------------------
 set(DOXYGEN_MINIMUM_VERSION "1.8.6")
 set(SPHINX_MINIMUM_VERSION "1.1")
+set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
+set(POSTGIS_MINIMUM_VERSION "2.0.0")
+set(GNU_CXX_MINIMUM_VERSION "4.6")
+set(CLANG_CXX_MINIMUM_VERSION "3.2")
 
 message(STATUS "DOXYGEN_MINIMUM_VERSION=${DOXYGEN_MINIMUM_VERSION}")
 message(STATUS "SPHINX_MINIMUM_VERSION=${SPHINX_MINIMUM_VERSION}")
+message(STATUS "POSTGRESQL_MINIMUM_VERSION=${POSTGRESQL_MINIMUM_VERSION}")
+message(STATUS "POSTGIS_MINIMUM_VERSION=${POSTGIS_MINIMUM_VERSION}")
+message(STATUS "GNU_CXX_MINIMUM_VERSION=${GNU_CXX_MINIMUM_VERSION}")
+message(STATUS "CLANG_CXX_MINIMUM_VERSION=${CLANG_CXX_MINIMUM_VERSION}")
 
 
 #---------------------------------------------
@@ -159,23 +160,34 @@ message(STATUS "SPHINX_MINIMUM_VERSION=${SPHINX_MINIMUM_VERSION}")
 
 include(CheckCXXCompilerFlag)
 
-if (NOT MSVC) 
-    CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS GNU_CXX_MINIMUM_VERSION)
+        message(FATAL_ERROR "GCC version must be at least ${GNU_CXX_MINIMUM_VERSION}!")
+    endif()
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS CLANG_CXX_MINIMUM_VERSION)
+        message(FATAL_ERROR "Clang version must be at least ${CLANG_CXX_MINIMUM_VERSION}!")
+    endif()
+else()
+    message(STATUS "Unknown compiler minimum version for ${CMAKE_CXX_COMPILER_ID}")
     message(STATUS "COMPILER_SUPPORTS_CXX0X= ${COMPILER_SUPPORTS_CXX0X}")
-    message(STATUS "CMAKE_CXX_COMPILER= ${CMAKE_CXX_COMPILER}")
+    message(STATUS "COMPILER_SUPPORTS_CXX11= ${COMPILER_SUPPORTS_CXX11}")
+endif()
+
+
+if(COMPILER_SUPPORTS_CXX11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+else()
     if(COMPILER_SUPPORTS_CXX0X)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
     else()
-        CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-        message(STATUS "COMPILER_SUPPORTS_CXX11= ${COMPILER_SUPPORTS_CXX11}")
-        if(COMPILER_SUPPORTS_CXX11)
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-        else()
-            message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++0x nor C++11 support.
-            Please use a different C++ compiler.")
-        endif()
+        message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++0x or C++11 support.")
     endif()
 endif()
+
+message(STATUS "CMAKE_CXX_COMPILER= ${CMAKE_CXX_COMPILER}")
 
 #-----------------------------------------------------------------------------
 # PGROUTING version number.
@@ -186,12 +198,10 @@ set(PGROUTING_VERSION_PATCH "0")
 set(PGROUTING_VERSION_STRING "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")
 set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
 
-set(POSTGRESQL_MINIMUM_VERSION "9.1.0")
-set(POSTGIS_MINIMUM_VERSION "2.0.0")
 
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-set(PGROUTING_GIT_TAG "pgrouting-2.4.0-dev")
+set(PGROUTING_GIT_TAG "vpgrouting-2.4.0-dev")
 
 #string(REGEX REPLACE "^(.+)-([0-9]+)-g([0-9a-f]+) (.*)$" "\\1" PGROUTING_GIT_TAG ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
@@ -220,9 +230,9 @@ message(STATUS "POSTGRESQL_BIN: ${POSTGRESQL_BIN}")
 #-----------------------------------------------------------------------------
 # CMAKE configuration
 # This is for my mingw64 environment, it should go away
-set(CMAKE_PREFIX_PATH /usr:/usr/local)
-set(CMAKE_INCLUDE_PATH /usr:/usr/local)
-set(CMAKE_LIBRARY_PATH /usr:/usr/local)
+#set(CMAKE_PREFIX_PATH /usr:/usr/local)
+#set(CMAKE_INCLUDE_PATH /usr:/usr/local)
+#set(CMAKE_LIBRARY_PATH /usr:/usr/local)
 
 add_subdirectory(cmake)
 set(CMAKE_MODULE_PATH "${PGROUTING_SOURCE_DIR}/cmake")
@@ -428,7 +438,7 @@ message(STATUS "MSVC=${MSVC}")
 # Include the working directories
 #====================================================================
 
-if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
+if(WITH_INTERNAL_TESTS)
     message("Including InternalQueryTests")
     set(PgRouting_SOURCE_NAMES ${PgRouting_SOURCE_NAMES} "internalQueryTests")
 endif()
