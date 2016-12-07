@@ -1,6 +1,6 @@
 BEGIN;
 BEGIN
-SET client_min_messages TO WARNING;
+SET client_min_messages TO NOTICE;
 SET
 -- dijkstra q1
 SELECT * FROM pgr_dijkstraCostMatrix(
