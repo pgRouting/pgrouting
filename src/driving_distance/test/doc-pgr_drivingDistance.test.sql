@@ -25,8 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 --              PGR_drivingDistance  V3
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
-BEGIN;
-    SET client_min_messages TO NOTICE;
 
 \echo --q1
 SELECT * FROM pgr_drivingDistance(
@@ -116,4 +114,3 @@ SELECT * FROM pgr_drivingDistance(
 
 \echo --q5
 
-ROLLBACK;

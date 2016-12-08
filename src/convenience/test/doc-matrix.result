@@ -5,6 +5,7 @@ NOTICE:  Deprecated function pgr_pointsToDMatrix
 --q1.1
 NOTICE:  Deperecated function: pgr_textToPoints
 NOTICE:  Deprecated function pgr_pointsToDMatrix
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
 1|3
 2|2
@@ -15,12 +16,15 @@ NOTICE:  Deprecated function pgr_vidsToDMatrix
 --q2.1
 NOTICE:  Deperecated function: pgr_textToPoints
 NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_pointsToVids
 NOTICE:  Deprecated function pgr_vidsToDMatrix
 {{0,1,4,2},{1,0,3,1},{4,3,0,2},{2,1,2,0}}|{1,2,3,5}
 --q2.2
 NOTICE:  Deperecated function: pgr_textToPoints
 NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_pointsToVids
 NOTICE:  Deprecated function pgr_vidsToDMatrix
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
 1|2
 2|3
@@ -32,6 +36,7 @@ NOTICE:  Deprecated function pgr_vidsToDMatrix
 {{0,1,2,2},{1,0,1,1},{2,1,0,2},{2,1,2,0}}
 --q4
 NOTICE:  Deprecated function pgr_vidsToDMatrix
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
 0|1
 1|2
 2|3

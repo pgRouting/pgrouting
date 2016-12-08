@@ -5,9 +5,10 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) YEAR DEVELOPER_NAME
 Mail: DEVELOPER_EMAIL
+
 
 ------
 
@@ -27,117 +28,179 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
+/** @file MY_FUNCTION_NAME.c
+ * @brief Conecting code with postgres.
+ *
+ * This file is fully documented for understanding
+ *  how the postgres connectinon works
+ *
+ * TODO Remove unnecessary comments before submiting the function.
+ * some comments are in form of PGR_DBG message
+ */
+
+/**
+ *  postgres_connection.h 
+ *
+ *  - should allways be first in the C code
+ */
+#include "./../../common/src/postgres_connection.h"
+
+/**
+ *  funcapi.h
+ *
+ *  - While developing to not show postgres header files warnings:
+ *    - wrap the file(s) with the appropiate dignostic to be ignored
+ */
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #include "funcapi.h"
-#include "utils/array.h"
-#include "catalog/pg_type.h"
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
-
-/*
-  Uncomment when needed
-*/
-// #define DEBUG
-
 #include "fmgr.h"
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/time_msg.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
-#include "./../../common/src/edges_input.h"
-#include "./../../common/src/arrays_input.h"
 
-#include "./MY_FUNCTION_NAME_driver.h"
+#include "./../../common/src/debug_macro.h" // for macro PGR_DBG
+#include "./../../common/src/e_report.h"  // for pgr_global_report
+#include "./../../common/src/time_msg.h"  // for time_msg & clock
+#include "./../../common/src/pgr_types.h"  // for the current accepted types
+#include "./../../common/src/edges_input.h" // for functions to get edges informtion
+
+#include "./MY_FUNCTION_NAME_driver.h"  // the C++ code of the function
 
 PG_FUNCTION_INFO_V1(MY_FUNCTION_NAME);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-MY_FUNCTION_NAME(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS);
 
 
-/*******************************************************************************/
-/*                          MODIFY AS NEEDED                                   */
+/******************************************************************************/
+/*                          MODIFY AS NEEDED                                  */
 static
 void
-process( char* edges_sql,
+process(
+        char* edges_sql,
         int64_t start_vid,
-        int64_t *end_vidsArr,
-        size_t size_end_vidsArr,
+        int64_t end_vid,
+#if 0
+        /*
+         * handling arrays example
+         */
+        ArrayType *starts,
+        ArrayType *ends,
+#endif
         bool directed,
+        bool only_cost,
         MY_RETURN_VALUE_TYPE **result_tuples,
         size_t *result_count) {
+
+    /* https://www.postgresql.org/docs/current/static/spi-spi-connect.html */
     pgr_SPI_connect();
+
+
+#if 0
+    /*
+     *  handling arrays example
+     */
+
+    PGR_DBG("Initializing arrays");
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+    PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
+
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
+#endif
+
+    (*result_tuples) = NULL;
+    (*result_count) = 0;
 
     PGR_DBG("Load data");
     MY_EDGE_TYPE *edges = NULL;
     size_t total_edges = 0;
+
+    if (start_vid == end_vid) {
+        /* https://www.postgresql.org/docs/current/static/spi-spi-finish.html */
+        pgr_SPI_finish();
+        return;
+    }
 
     MY_EDGE_FUNCTION(edges_sql, &edges, &total_edges);
     PGR_DBG("Total %ld edges in query:", total_edges);
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
 
     PGR_DBG("Starting processing");
-    char *err_msg = NULL;
-    char *log_msg = NULL;
-
-    // Code standard:
-    // Pass the arrays and the sizes on the same line
     clock_t start_t = clock();
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
     do_pgr_MY_FUNCTION_NAME(
-            edges, total_edges,
+            edges,
+            total_edges,
             start_vid,
+            end_vid,
+#if 0
+    /*
+     *  handling arrays example
+     */
+
+            start_vidsArr, size_start_vidsArr,
             end_vidsArr, size_end_vidsArr,
+#endif
+
             directed,
+            only_cost,
             result_tuples,
             result_count,
             &log_msg,
+            &notice_msg,
             &err_msg);
-    time_msg(" processing pgr_funnyDijkstra", start_t, clock());
 
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("LOG: %s\n", log_msg);
-    if (log_msg) free(log_msg);
+    time_msg(" processing pgr_MY_FUNCTION_NAME", start_t, clock());
+    PGR_DBG("Returning %ld tuples", *result_count);
 
     if (err_msg) {
         if (*result_tuples) free(*result_tuples);
-        if (end_vidsArr) free(end_vidsArr);
-        elog(ERROR, "%s", err_msg);
-        free(err_msg);
     }
+    pgr_global_report(&log_msg, &notice_msg, &err_msg);
 
-    pfree(edges);
+    if (edges) pfree(edges);
+#if 0
+    /*
+     *  handling arrays example
+     */
+
+    if (end_vidsArr) pfree(end_vidsArr);
+    if (start_vidsArr) pfree(start_vidsArr);
+#endif
+
     pgr_SPI_finish();
 }
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
-PGDLLEXPORT Datum
-#endif
-MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t            call_cntr;
-    uint32_t            max_calls;
     TupleDesc           tuple_desc;
 
     /**************************************************************************/
     /*                          MODIFY AS NEEDED                              */
     /*                                                                        */
-    MY_RETURN_VALUE_TYPE  *result_tuples = 0;
+    MY_RETURN_VALUE_TYPE  *result_tuples = NULL;
     size_t result_count = 0;
     /*                                                                        */
     /**************************************************************************/
@@ -154,90 +217,92 @@ MY_FUNCTION_NAME(PG_FUNCTION_ARGS) {
            MY_QUERY_LINE1
          **********************************************************************/
 
-        PGR_DBG("Initializing arrays");
-        int64_t* end_vidsArr;
-        size_t size_end_vidsArr;
-        end_vidsArr = (int64_t*) pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("targetsArr size %ld ", size_end_vidsArr);
 
         PGR_DBG("Calling process");
-        // Code standard:
-        // Use same order as in the query
-        // Pass the array and it's size on the same line
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
-                end_vidsArr, size_end_vidsArr,
+                PG_GETARG_INT64(2),
+#if 0
+                /*
+                 *  handling arrays example
+                 */
+
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_ARRAYTYPE_P(2),
+#endif
                 PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
-        // while developing leave the message as a reminder
-        PGR_DBG("Cleaning arrays using free(<array-name>)");
-        free(end_vidsArr);
-        /*                                                                             */
-        /*******************************************************************************/
 
-        funcctx->max_calls = (uint32_t) result_count;
+        /*                                                                    */
+        /**********************************************************************/
+
+#if PGSQL_VERSION > 94
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
                          "that cannot accept type record")));
+        }
 
         funcctx->tuple_desc = tuple_desc;
         MemoryContextSwitchTo(oldcontext);
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = funcctx->call_cntr;
-    max_calls = funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (MY_RETURN_VALUE_TYPE*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
         bool*        nulls;
 
-        /*******************************************************************************/
-        /*                          MODIFY!!!!!                                        */
-        /*  This has to match you ouput otherwise the server crashes                   */
+        /**********************************************************************/
+        /*                          MODIFY AS NEEDED                          */
         /*
            MY_QUERY_LINE2
-         ********************************************************************************/
+         ***********************************************************************/
 
+        values = palloc(6 * sizeof(Datum));
+        nulls = palloc(6 * sizeof(bool));
 
-        values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(bool));
 
         size_t i;
-        for(i = 0; i < 8; ++i) {
+        for (i = 0; i < 6; ++i) {
             nulls[i] = false;
         }
 
-
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-        /*******************************************************************************/
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
+        /**********************************************************************/
+        /*                          MODIFY AS NEEDED                          */
+
+        PGR_DBG("Clean up code");
+
+        /**********************************************************************/
 
         SRF_RETURN_DONE(funcctx);
     }
 }
-

@@ -9,7 +9,4 @@ ADD_LIBRARY(tsp OBJECT
     eucledianDmatrix.cpp
     tour.cpp
 
-    #Code for the old signature
-    tsp2.c
-    tsplib.c
     )

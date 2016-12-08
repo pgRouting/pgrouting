@@ -22,26 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "./../../common/src/postgres_connection.h"
-
-#ifdef __GNUC__
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-#endif
-
-#include "funcapi.h"
-
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
-
 #include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-
-#include "fmgr.h"
-#include "trsp.h"
 
 #include "./../../common/src/debug_macro.h"
+#include "trsp.h"
+
 
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
 PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
@@ -83,6 +68,7 @@ typedef struct restrict_columns
 
 
 
+#if 0
 static char *
 text2char(text *in)
 {
@@ -92,6 +78,7 @@ text2char(text *in)
   out[VARSIZE(in) - VARHDRSZ] = '\0';
   return out;
 }
+#endif
 
 static int
 finish(int code, int ret)
@@ -605,11 +592,10 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
-  uint32_t                  call_cntr;
-  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
+  path = NULL;
 
 
   // stuff done only on the first call of the function 
@@ -637,7 +623,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
       if (PG_ARGISNULL(5))
         sql = NULL;
       else {
-        sql = text2char(PG_GETARG_TEXT_P(5));
+        sql = text_to_cstring(PG_GETARG_TEXT_P(5));
         if (strlen(sql) == 0)
             sql = NULL;
       }
@@ -647,7 +633,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 
       ret =
 
- compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+ compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
                                    1, // do vertex
                                    PG_GETARG_INT32(1),
                                    0.5,
@@ -687,12 +673,10 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
   // stuff done on every call of the function 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = (uint32_t)funcctx->call_cntr;
-  max_calls = (uint32_t)funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
-  if (call_cntr < max_calls)    // do when there is more left to send 
+  if (funcctx->call_cntr < funcctx->max_calls)    // do when there is more left to send 
     {
       HeapTuple    tuple;
       Datum        result;
@@ -702,13 +686,13 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(bool));
 
-      values[0] = Int32GetDatum(call_cntr);
+      values[0] = Int32GetDatum(funcctx->call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
       nulls[2] = false;
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
       nulls[3] = false;
 		      
       tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -724,8 +708,6 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
     }
   else    // do when there is no more left 
     {
-      PGR_DBG("Going to free path");
-      if (path) free(path);
       SRF_RETURN_DONE(funcctx);
     }
 }
@@ -736,11 +718,10 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 	
   FuncCallContext     *funcctx;
-  uint32_t                  call_cntr;
-  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
   char *               sql;
+  path = NULL;
 
   // stuff done only on the first call of the function 
   if (SRF_IS_FIRSTCALL()) {
@@ -786,7 +767,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
       if (PG_ARGISNULL(7))
         sql = NULL;
       else {
-        sql = text2char(PG_GETARG_TEXT_P(7));
+        sql = text_to_cstring(PG_GETARG_TEXT_P(7));
         if (strlen(sql) == 0)
             sql = NULL;
       }
@@ -796,7 +777,7 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 #ifdef DEBUG
       ret =
 #endif
-         compute_trsp(text2char(PG_GETARG_TEXT_P(0)),
+         compute_trsp(text_to_cstring(PG_GETARG_TEXT_P(0)),
                                    0,  //sdo edge
                                    PG_GETARG_INT32(1),
                                    s_pos,
@@ -836,12 +817,10 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
   // stuff done on every call of the function 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = (uint32_t)funcctx->call_cntr;
-  max_calls = (uint32_t)funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
-  if (call_cntr < max_calls)    // do when there is more left to send 
+  if (funcctx->call_cntr <  funcctx->max_calls)    // do when there is more left to send 
     {
       HeapTuple    tuple;
       Datum        result;
@@ -851,13 +830,13 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(bool));
 
-      values[0] = Int32GetDatum(call_cntr);
+      values[0] = Int32GetDatum(funcctx->call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
       nulls[2] = false;
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
       nulls[3] = false;
 		      
       tuple = heap_form_tuple(tuple_desc, values, nulls);
@@ -873,8 +852,6 @@ turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
     }
   else    // do when there is no more left 
     {
-      PGR_DBG("Going to free path");
-      if (path) free(path);
       SRF_RETURN_DONE(funcctx);
     }
 }

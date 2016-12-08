@@ -1,4 +1,3 @@
-BEGIN;
 
 CREATE TABLE restrictions2 (
     rid integer NOT NULL,
@@ -27,4 +26,3 @@ select * from pgr_trsp(
     -- include the turn restrictions
     'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
 
-ROLLBACK;

@@ -1,5 +1,6 @@
 ADD_LIBRARY(common OBJECT 
     postgres_connection.c
+    e_report.c
     restrictions_input.c
     basePath_SSEC.cpp
 
@@ -19,4 +20,5 @@ ADD_LIBRARY(common OBJECT
     ch_vertex.cpp
     ch_edge.cpp
     basic_edge.cpp
+    pgr_alloc.cpp
     )

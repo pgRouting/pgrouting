@@ -7,7 +7,6 @@ int	(-2,147,483,648) to (2,147,483,647)
 /*
 Testing for ids > 10^8
 */
-BEGIN;
 
 \echo --q1
 UPDATE edge_table
@@ -68,4 +67,3 @@ SELECT * FROM pgr_contractGraph(
 
 \echo --q11
 
-ROLLBACK;

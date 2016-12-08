@@ -19,6 +19,7 @@ SELECT * from pgr_tsp(
 );
 NOTICE:  Deperecated function: pgr_textToPoints
 NOTICE:  Deprecated function pgr_pointsToDMatrix
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
  seq | id 
 -----+----
    0 |  1
@@ -46,6 +47,7 @@ SELECT * FROM pgr_vidstodmatrix(
     'edge_table');
 NOTICE:  Deperecated function: pgr_textToPoints
 NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_pointsToVids
 NOTICE:  Deprecated function pgr_vidsToDMatrix
                   dmatrix                  |    ids    
 -------------------------------------------+-----------
@@ -63,7 +65,9 @@ SELECT * FROM pgr_tsp(
 );
 NOTICE:  Deperecated function: pgr_textToPoints
 NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_pointsToVids
 NOTICE:  Deprecated function pgr_vidsToDMatrix
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
  seq | id 
 -----+----
    0 |  1
@@ -103,6 +107,7 @@ SELECT * FROM pgr_tsp(
     1
 );
 NOTICE:  Deprecated function pgr_vidsToDMatrix
+NOTICE:  Deprecated Signature pgr_tsp(float8[][], integer, integer)
  seq | id 
 -----+----
    0 |  1

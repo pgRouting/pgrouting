@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 -- q1
 SELECT * FROM pgr_contractGraph(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -54,3 +58,5 @@ ARRAY[2]);
 (4 rows)
 
 -- q5
+ROLLBACK;
+ROLLBACK

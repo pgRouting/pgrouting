@@ -24,14 +24,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_
+#define SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_
 #pragma once
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
 #ifdef unlink
 #undef unlink
-#endif
 #endif
 
 #include <boost/config.hpp>
@@ -40,20 +38,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <boost/graph/edmonds_karp_max_flow.hpp>
 #include <boost/graph/boykov_kolmogorov_max_flow.hpp>
 
-#if 0
-#include "./../../common/src/signalhandler.h"
-#endif
-#include "./../../common/src/pgr_types.h"
 
 #include <map>
 #include <string>
 #include <utility>
 #include <vector>
 #include <set>
+#include <limits>
+
+#include "./../../common/src/pgr_types.h"
 
 
-// user's functions
-// for development
+namespace pgrouting {
 
 typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS>
     Traits;
@@ -63,12 +59,15 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
         boost::property<boost::vertex_index_t, int64_t,
         boost::property<boost::vertex_color_t, boost::default_color_type,
         boost::property<boost::vertex_distance_t, int64_t,
-        boost::property<boost::vertex_predecessor_t, Traits::edge_descriptor> > > > >,
+        boost::property<boost::vertex_predecessor_t, Traits::edge_descriptor>
+        > > > >,
         // Edge properties
         boost::property<boost::edge_capacity_t, int64_t,
         boost::property<boost::edge_residual_capacity_t, int64_t,
         boost::property<boost::edge_reverse_t, Traits::edge_descriptor> > > >
     FlowGraph;
+
+namespace graph {
 
 template<class G>
 class PgrFlowGraph {
@@ -135,17 +134,18 @@ class PgrFlowGraph {
        * The same applies for sinks.
        * To avoid code repetition, a supersource/sink is used even in the one to one signature.
        */
-      std::set<int64_t> vertices;
-      for (int64_t source : source_vertices) {
-          vertices.insert(source);
-      }
-      for (int64_t sink : sink_vertices) {
-          vertices.insert(sink);
-      }
+
+      /*
+       * vertices = {sources} U {sink} U {edges.source} U {edge.target}
+       */
+      std::set<int64_t> vertices(source_vertices);
+      vertices.insert(sink_vertices.begin(), sink_vertices.end());
+
       for (size_t i = 0; i < total_tuples; ++i) {
           vertices.insert(data_edges[i].source);
           vertices.insert(data_edges[i].target);
       }
+
       for (int64_t id : vertices) {
           V v = add_vertex(boost_graph);
           id_to_V.insert(std::pair<int64_t, V>(id, v));
@@ -154,31 +154,7 @@ class PgrFlowGraph {
       bool added;
 
       V supersource = add_vertex(boost_graph);
-      for (int64_t source_id : source_vertices) {
-          V source = get_boost_vertex(source_id);
-          E e, e_rev;
-          boost::tie(e, added) =
-              boost::add_edge(supersource, source, boost_graph);
-          boost::tie(e_rev, added) =
-              boost::add_edge(source, supersource, boost_graph);
-          capacity[e] = 999999999;
-          capacity[e_rev] = 0;
-          rev[e] = e_rev;
-          rev[e_rev] = e;
-      }
-
       V supersink = add_vertex(boost_graph);
-      for (int64_t sink_id : sink_vertices) {
-          V sink = get_boost_vertex(sink_id);
-          E e, e_rev;
-          boost::tie(e, added) = boost::add_edge(sink, supersink, boost_graph);
-          boost::tie(e_rev, added) =
-              boost::add_edge(supersink, sink, boost_graph);
-          capacity[e] = 999999999;
-          capacity[e_rev] = 0;
-          rev[e] = e_rev;
-          rev[e_rev] = e;
-      }
 
       source_vertex = supersource;
       sink_vertex = supersink;
@@ -187,9 +163,9 @@ class PgrFlowGraph {
       rev = get(boost::edge_reverse, boost_graph);
       residual_capacity = get(boost::edge_residual_capacity, boost_graph);
 
-      /*
+      /* Inserting edges
        * Push-relabel requires each edge to be mapped to its reverse with capacity 0.
-       * The other algorithms have no such requirement. (I can have half as many edges)
+       * The other algorithms have no such requirement. (can have have as many edges)
        */
       if (strcmp(algorithm, "push_relabel") == 0) {
           for (size_t i = 0; i < total_tuples; ++i) {
@@ -239,6 +215,43 @@ class PgrFlowGraph {
               rev[e_rev] = e;
           }
       }
+      for (int64_t source_id : source_vertices) {
+          V source = get_boost_vertex(source_id);
+          int64_t total = 0;
+          for (auto edge = out_edges(source, boost_graph).first;
+                  edge != out_edges(source, boost_graph).second;
+                  ++edge) {
+             total += capacity[*edge];
+          }
+          E e, e_rev;
+          boost::tie(e, added) =
+              boost::add_edge(supersource, source, boost_graph);
+          boost::tie(e_rev, added) =
+              boost::add_edge(source, supersource, boost_graph);
+
+          capacity[e] = total;
+          /* From sources to supersource has 0 capacity*/
+          capacity[e_rev] = 0;
+          rev[e] = e_rev;
+          rev[e_rev] = e;
+      }
+      for (int64_t sink_id : sink_vertices) {
+          V sink = get_boost_vertex(sink_id);
+          E e, e_rev;
+          boost::tie(e, added) = boost::add_edge(sink, supersink, boost_graph);
+          boost::tie(e_rev, added) =
+              boost::add_edge(supersink, sink, boost_graph);
+          /*
+           * NOTE: int64_t crashes the server
+           */
+          /* From sinks to supersink has maximum capacity*/
+          capacity[e] = (std::numeric_limits<int32_t>::max)();
+          /* From supersink to sinks has 0 capacity*/
+          capacity[e_rev] = 0;
+          rev[e] = e_rev;
+          rev[e_rev] = e;
+      }
+
   }
 
   void get_flow_edges(std::vector<pgr_flow_t> &flow_edges) {
@@ -260,3 +273,8 @@ class PgrFlowGraph {
       }
   }
 };
+
+}  // namespace graph
+}  // namespace pgrouting
+
+#endif  // SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_

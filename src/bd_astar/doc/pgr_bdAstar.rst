@@ -97,6 +97,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-* :ref:`bd_dijkstra`
+* :ref:`pgr_bddijkstra`
 * http://en.wikipedia.org/wiki/Bidirectional_search
 * http://en.wikipedia.org/wiki/A*_search_algorithm

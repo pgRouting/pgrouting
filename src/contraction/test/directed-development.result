@@ -1,4 +1,3 @@
---q0 Checking for valid contraction
 --q1 Checking dead end contraction for single edge
 1|v|2|{1}|-1|-1|-1
 --q2 Checking dead end contraction for two edges
@@ -34,13 +33,14 @@
 7|e|-4|{12}|11|9|2
 --q12 Checking linear contraction, dead end for sample data
 1|v|2|{1}|-1|-1|-1
-2|v|10|{13}|-1|-1|-1
-3|v|15|{14}|-1|-1|-1
-4|v|17|{16}|-1|-1|-1
-5|e|-1|{4}|9|3|2
-6|e|-2|{8}|5|7|2
-7|e|-3|{8}|7|5|2
-8|e|-4|{12}|11|9|2
+2|v|5|{7,8}|-1|-1|-1
+3|v|10|{13}|-1|-1|-1
+4|v|15|{14}|-1|-1|-1
+5|v|17|{16}|-1|-1|-1
+6|e|-1|{4}|9|3|2
+7|e|-2|{8}|5|7|2
+8|e|-3|{8}|7|5|2
+9|e|-4|{12}|11|9|2
 --q13 Checking linear contraction for a square like graph
 1|e|-1|{2}|3|5|2
 2|e|-2|{2,5}|3|6|3

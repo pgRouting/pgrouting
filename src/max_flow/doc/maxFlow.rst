@@ -12,9 +12,10 @@
 Maximum Flow
 ===================================
 
-  - :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm implementation for maximum flow.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm implementation for maximum flow.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov algorithm implementation for maximum flow.
+  - :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
+  - :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm with details of flow on edges.
+  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
+  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
 
 The maximum flow through the graph is guaranteed to be the same with all implementations,
 but the actual flow through each edge may vary.
@@ -27,6 +28,7 @@ but the actual flow through each edge may vary.
 .. toctree::
         :hidden:
 
+        ./pgr_maxFlow
         ./pgr_maxFlowPushRelabel
         ./pgr_maxFlowEdmondsKarp
         ./pgr_maxFlowBoykovKolmogorov

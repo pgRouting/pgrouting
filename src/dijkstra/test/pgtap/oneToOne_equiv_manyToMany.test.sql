@@ -3,6 +3,8 @@
 
 SELECT plan(1);
 
+UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
+
 
 create or REPLACE FUNCTION foo(cant INTEGER default 18 )
 RETURNS SETOF TEXT AS

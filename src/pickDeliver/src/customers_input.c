@@ -24,7 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/postgres_connection.h"
 
-
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/get_check_data.h"
@@ -146,6 +145,8 @@ pgr_get_customers_data(
             moredata = FALSE;
         }
     }
+
+    SPI_cursor_close(SPIportal);
 
     if (total_tuples == 0) {
         (*total_customers) = 0;

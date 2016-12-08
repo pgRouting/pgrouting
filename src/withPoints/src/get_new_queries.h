@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
+    char estimate_drivingSide(char driving_side);
+
     void get_new_queries(
             char *edges_sql,
             char *points_sql,

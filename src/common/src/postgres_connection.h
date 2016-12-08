@@ -33,9 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <postgres.h>
 
-#ifdef __GNUC__
-#pragma GCC diagnostic pop
-#endif
 
 
 #ifdef __GNUC__
@@ -48,8 +45,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif
 
+#include "utils/builtins.h"  // for text_to_cstring
+
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
+
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#include <funcapi.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
 
 
 void pgr_send_error(int errcode);
@@ -57,6 +71,6 @@ void pgr_SPI_finish(void);
 void pgr_SPI_connect(void);
 SPIPlanPtr pgr_SPI_prepare(char* sql);
 Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan);
-char* pgr_text2char(text *in);
+char* pgr_cstring2char(const char *inStr);
 
 #endif  // SRC_COMMON_SRC_POSTGRES_CONNECTION_H_

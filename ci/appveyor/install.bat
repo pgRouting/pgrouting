@@ -20,7 +20,7 @@ if not defined COMMON_INSTALL_DIR set COMMON_INSTALL_DIR=%BUILD_ROOT_DIR%\local\
 
 :: for cmake its the min version
 if not defined CMAKE_VERSION set CMAKE_VERSION=3.5.2
-if not defined PG_VERSION set PG_VERSION=2.3.0
+if not defined PG_VERSION set PG_VERSION=2.3.1
 if not defined BOOST_VERSION set BOOST_VERSION=1.58.0
 if not defined CGAL_VERSION set CGAL_VERSION=4.8.1
 
@@ -55,6 +55,7 @@ for /f "tokens=*  delims=" %%a in ('cmake --version') do (
 )
 :_ExitForLoop1
 set CURR_CMAKE=%CURR_CMAKE:~14%
+echo cmake %CURR_CMAKE% found
 
 if "%CURR_CMAKE%" GTR "%CMAKE_VERSION%" (
     echo cmake %CMAKE_VERSION% already installed

@@ -22,18 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_
+#define SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_
 #pragma once
-#if defined(__MinGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#undef min
-#undef max
-#ifdef open
-#undef open
-#endif
-#endif
-
-
 
 #include <boost/graph/iteration_macros.hpp>
 #include <boost/config.hpp>
@@ -55,6 +46,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./basic_edge.h"
 #include "./pgr_assert.h"
+
+namespace pgrouting {
 
 /*! @brief boost::graph simplified to pgRouting needs
 
@@ -86,7 +79,7 @@ Data obtained from postgresql is stored in
 A C array of pgr_edge_t type.
 
 ~~~~{.c}
-std::vector< T_V > 
+std::vector< T_V >
 extract_vertices(pgr_edge_t *, size_t)
 ~~~~
 
@@ -95,7 +88,7 @@ Data obtained from postgresql is stored in
 o a vector container.
 
 ~~~~{.c}
-std::vector< T_V > 
+std::vector< T_V >
 extract_vertices(std::vector< pgr_edge_t >)
 ~~~~
 
@@ -112,19 +105,19 @@ The code is prepared to be used for:
 boost::adjacency_list
 < boost::vecS,  // not tested with other values
 boost::vecS,  // not tested with other values
-boost::undirectedS,  // USinG UNDIRECTED 
+boost::undirectedS,  // USinG UNDIRECTED
 Basic_vertex,  // the vertex class
 Basic_edge >   // the edge class
 ~~~~
 
 
 
-Eample Usage:
+Example Usage:
 =============
 
 For this example we will use:
 - Basic_vertex
-- Basic_edge 
+- Basic_edge
 - pgr_edge_t
 
 
@@ -134,7 +127,7 @@ Create Graph type
 ~~~~{.c}
 typedef typename
 graph::Pgr_base_graph <
-boost::adjacency_list < 
+boost::adjacency_list <
 boost::vecS,
     boost::vecS,
     boost::bidirectionalS,
@@ -158,7 +151,7 @@ Vector of unique vertices of the graph
 ~~~~{.c}
 size_t total_edges;
 pgr_edge_t *my_edges = NULL;
-pgr_get_edges(edges_sql, &my_edges, &total_tuples); 
+pgr_get_edges(edges_sql, &my_edges, &total_tuples);
 std::vector< Basic_Vertex > vertices(pgrouting::extract_vertices(my_edges));
 ~~~~
 
@@ -202,21 +195,20 @@ pgrouting::DirectedGraph digraph(
   - the vertices are inserted
 
 
-Fill the graph 
+Fill the graph
 ---------------------
 
 After initializing the graph with the vertices, the edges can be added.
 
 ~~~~{.c}
 // inserting edges from a C array
-digraph.graph_insert_data(my_edges, total_edges);
+digraph.insert_edges(my_edges, total_edges);
 
 // adding more edges to the graph from a vector container
-digraph.graph_insert_data(new_edges);
+digraph.insert_edges(new_edges);
 ~~~~
 
 */
-namespace pgrouting {
 
 namespace graph {
 template <class G, typename Vertex, typename Edge>
@@ -225,13 +217,13 @@ class Pgr_base_graph;
 }  // namespace graph
 
 
-/** @name Graph types 
+/** @name Graph types
   Type      |   pgRouting
   :---------: | :---------------------
   UndirectedGraph | Basic undirected graph
   DirectedGraph | Basic directed graph
-  xyUndirectedGraph | X & Y values stored on the vertex 
-  xyDirectedGraph | X & Y values stored on the vertex 
+  xyUndirectedGraph | X & Y values stored on the vertex
+  xyDirectedGraph | X & Y values stored on the vertex
   */
 //@{
 typedef graph::Pgr_base_graph <
@@ -258,20 +250,6 @@ boost::adjacency_list < boost::listS, boost::vecS,
     XY_vertex, Basic_edge >,
     XY_vertex, Basic_edge > xyDirectedGraph;
 
-#if 0
-// TODO(Rohith) this is only used on internal query tests
-typedef graph::Pgr_base_graph <
-boost::adjacency_list < boost::listS, boost::vecS,
-    boost::undirectedS,
-    contraction::Vertex, Basic_edge >,
-    contraction::Vertex, Basic_edge > CUndirectedGraph;
-
-typedef graph::Pgr_base_graph <
-boost::adjacency_list < boost::listS, boost::vecS,
-    boost::bidirectionalS,
-    contraction::Vertex, Basic_edge >,
-    contraction::Vertex, Basic_edge > CDirectedGraph;
-#endif
 //@}
 
 
@@ -293,6 +271,7 @@ class Pgr_base_graph {
        */
      //@{
      typedef G B_G;
+     typedef T_E G_T_E;
      typedef typename boost::graph_traits < G >::vertex_descriptor V;
      typedef typename boost::graph_traits < G >::edge_descriptor E;
      typedef typename boost::graph_traits < G >::vertex_iterator V_i;
@@ -383,10 +362,10 @@ class Pgr_base_graph {
          }
 
 
-     //! @name Insert data
+     //! @name Insert edges
      //@{
      /*! @brief Inserts *count* edges of type *T* into the graph
-      *  
+      *
       *  Converts the edges to a std::vector<T> & calls the overloaded
       *  twin function.
       *
@@ -394,29 +373,30 @@ class Pgr_base_graph {
       *  @param count
       */
      template < typename T >
-         void graph_insert_data(const T *edges, int64_t count) {
-             graph_insert_data(std::vector < T >(edges, edges + count));
+         void insert_edges(const T *edges, int64_t count) {
+             insert_edges(std::vector < T >(edges, edges + count));
          }
+
      /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
 
         The set of edges should not have an illegal vertex defined
-        
+
         When the graph is empty calls:
         - @b extract_vertices
         and throws an exception if there are illegal vertices.
-        
-        
+
+
         When developing:
           - if an illegal vertex is found an exception is thrown
           - That means that the set of vertices should be checked in the
             code that is being developed
-        
+
         No edge is inserted when there is an error on the vertices
 
         @param edges
       */
      template < typename T >
-         void graph_insert_data(const std::vector < T > &edges) {
+         void insert_edges(const std::vector < T > &edges) {
 #if 0
              // This code does not work with contraction
              if (num_vertices() == 0) {
@@ -437,21 +417,21 @@ class Pgr_base_graph {
       * PRECONDITIONS:
       * ~~~~~{.c}
       * precondition(boost::num_vertices(graph) == 0);
-      * for (vertex : vertices) 
+      * for (vertex : vertices)
       *    precondition(!has_vertex(vertex.id));
       * ~~~~~
       *
       * POSTCONDITIONS:
       * ~~~~~{.c}
       * postcondition(boost::num_vertices(graph) == vertices.size());
-      * for (vertex : vertices) 
+      * for (vertex : vertices)
       *    precondition(has_vertex(vertex.id));
       * ~~~~~
       */
      void add_vertices(std::vector< T_V > vertices);
 
  public:
-     //! @name boost wrappers
+     //! @name boost wrappers with original id
      //@{
      //! @brief get the out-degree  of a vertex
 
@@ -465,6 +445,14 @@ class Pgr_base_graph {
              return 0;
          }
          return out_degree(get_V(vertex_id));
+     }
+     degree_size_type in_degree(int64_t vertex_id) const {
+         if (!has_vertex(vertex_id)) {
+             return 0;
+         }
+         return is_directed()?
+             in_degree(get_V(vertex_id))
+             :  out_degree(get_V(vertex_id));
      }
 
 
@@ -502,12 +490,55 @@ class Pgr_base_graph {
          return vertices_map.find(vid) != vertices_map.end();
      }
 
-     //! @brief True when vid is in the graph
-     degree_size_type in_degree(V &v) const {
-         return boost::in_degree(v, graph);
+
+
+     //! @name to be or not to be
+     //@{
+
+     bool is_directed() const {return m_gType == DIRECTED;}
+     bool is_undirected() const {return m_gType == UNDIRECTED;}
+     bool is_source(V v_idx, E e_idx) const {return v_idx == source(e_idx);}
+     bool is_target(V v_idx, E e_idx) const {return v_idx == target(e_idx);}
+
+     //@}
+
+     //! @name boost wrappers with V
+     //@{
+
+
+     T_E& operator[](E e_idx) {return graph[e_idx];}
+     const T_E& operator[](E e_idx) const {return graph[e_idx];}
+
+     T_V& operator[](V v_idx) {return graph[v_idx];}
+     const T_V& operator[](V v_idx) const {return graph[v_idx];}
+
+     V source(E e_idx) const {return boost::source(e_idx, graph);}
+     V target(E e_idx) const {return boost::target(e_idx, graph);}
+     V adjacent(V v_idx, E e_idx) const {
+         pgassert(is_source(v_idx, e_idx) || is_target(v_idx, e_idx));
+         return is_source(v_idx, e_idx)?
+             target(e_idx) :
+             source(e_idx);
      }
 
-     //! @brief True when vid is in the graph
+
+     /*! @brief in degree of a vertex
+      *
+      * - when its undirected there is no "concept" of in degree
+      *   - out degree is returned
+      * - on directed in degree of vertex is returned
+      */
+     degree_size_type in_degree(V &v) const {
+         return is_directed()?
+             boost::in_degree(v, graph) :
+             boost::out_degree(v, graph);
+     }
+
+     /*! @brief out degree of a vertex
+      *
+      * regardles of undirected or directed graph
+      * - out degree is returned
+      */
      degree_size_type out_degree(V &v) const {
          return boost::out_degree(v, graph);
      }
@@ -586,9 +617,9 @@ class Pgr_base_graph {
                      out != out_end; ++out) {
                  log << ' '
                      << g.graph[*out].id << "=("
-                     << g.graph[source(*out, g.graph)].id << ", "
-                     << g.graph[target(*out, g.graph)].id << ") = "
-                     << g.graph[*out].cost <<"@t";
+                     << g[g.source(*out)].id << ", "
+                     << g[g.target(*out)].id << ") = "
+                     << g.graph[*out].cost <<"\t";
              }
              log << std::endl;
          }
@@ -601,10 +632,6 @@ class Pgr_base_graph {
      int64_t get_edge_id(V from, V to, double &distance) const;
 
      size_t num_vertices() const { return boost::num_vertices(graph);}
-
-     T_V operator[](V v) const {
-         return graph[v];
-     }
 
 
      void graph_add_edge(const T_E &edge);
@@ -631,10 +658,10 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_edge(int64_t p_from, int64_t p_to) {
     // store the edges that are going to be removed
     for (boost::tie(out, out_end) = out_edges(g_from, graph);
             out != out_end; ++out) {
-        if (target(*out, graph) == g_to) {
+        if (target(*out) == g_to) {
             d_edge.id = graph[*out].id;
-            d_edge.source = graph[source(*out, graph)].id;
-            d_edge.target = graph[target(*out, graph)].id;
+            d_edge.source = graph[source(*out)].id;
+            d_edge.target = graph[target(*out)].id;
             d_edge.cost = graph[*out].cost;
             removed_edges.push_back(d_edge);
         }
@@ -664,8 +691,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_out_going_edge(
                 out != out_end; ++out) {
             if (graph[*out].id  == edge_id) {
                 d_edge.id = graph[*out].id;
-                d_edge.source = graph[source(*out, graph)].id;
-                d_edge.target = graph[target(*out, graph)].id;
+                d_edge.source = graph[source(*out)].id;
+                d_edge.target = graph[target(*out)].id;
                 d_edge.cost = graph[*out].cost;
                 removed_edges.push_back(d_edge);
                 boost::remove_edge((*out), graph);
@@ -694,8 +721,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
     for (boost::tie(out, out_end) = out_edges(vertex, graph);
             out != out_end; ++out) {
         d_edge.id = graph[*out].id;
-        d_edge.source = graph[source(*out, graph)].id;
-        d_edge.target = graph[target(*out, graph)].id;
+        d_edge.source = graph[source(*out)].id;
+        d_edge.target = graph[target(*out)].id;
         d_edge.cost = graph[*out].cost;
         removed_edges.push_back(d_edge);
     }
@@ -706,8 +733,8 @@ Pgr_base_graph< G, T_V, T_E >::disconnect_vertex(V vertex) {
         for (boost::tie(in, in_end) = in_edges(vertex, graph);
                 in != in_end; ++in) {
             d_edge.id = graph[*in].id;
-            d_edge.source = graph[source(*in, graph)].id;
-            d_edge.target = graph[target(*in, graph)].id;
+            d_edge.source = graph[source(*in)].id;
+            d_edge.target = graph[target(*in)].id;
             d_edge.cost = graph[*in].cost;
             removed_edges.push_back(d_edge);
         }
@@ -736,13 +763,13 @@ Pgr_base_graph< G, T_V, T_E >::get_edge_id(
     E e;
     EO_i out_i, out_end;
     V v_source, v_target;
-    double minCost =  std::numeric_limits<double>::max();
+    double minCost =  (std::numeric_limits<double>::max)();
     int64_t minEdge = -1;
     for (boost::tie(out_i, out_end) = boost::out_edges(from, graph);
             out_i != out_end; ++out_i) {
         e = *out_i;
-        v_target = target(e, graph);
-        v_source = source(e, graph);
+        v_target = target(e);
+        v_source = source(e);
         if ((from == v_source) && (to == v_target)
                 && (distance == graph[e].cost))
             return graph[e].id;
@@ -807,7 +834,6 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
             boost::add_edge(vm_s, vm_t, graph);
         graph[e].cost = edge.cost;
         graph[e].id = edge.id;
-        graph[e].first = true;
     }
 
     if (edge.reverse_cost >= 0) {
@@ -816,7 +842,6 @@ Pgr_base_graph< G, T_V, T_E >::graph_add_edge(const T &edge) {
 
         graph[e].cost = edge.reverse_cost;
         graph[e].id = edge.id;
-        graph[e].first = false;
     }
 }
 
@@ -841,3 +866,5 @@ Pgr_base_graph< G, T_V, T_E >::add_vertices(
 
 }  // namespace graph
 }  // namespace pgrouting
+
+#endif  // SRC_COMMON_SRC_PGR_BASE_GRAPH_HPP_

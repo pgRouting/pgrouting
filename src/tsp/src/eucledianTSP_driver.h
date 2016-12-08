@@ -29,7 +29,6 @@
 
 #ifndef SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
 #define SRC_TSP_SRC_EUCLEDIANTSP_DRIVER_H_
-
 #pragma once
 
 #include "../../common/src/pgr_types.h"
@@ -56,6 +55,7 @@ do_pgr_eucledianTSP(
         General_path_element_t **results,
         size_t *total_results,
         char **log_msg,
+        char **notice_msg,
         char **err_msg);
 
 #ifdef __cplusplus

@@ -100,6 +100,7 @@ Complete Signature
 
 .. literalinclude:: doc-floydWarshall.queries
    :start-after: -- q2
+   :end-before: -- q3
 
 Description of the Signatures
 ------------------------------

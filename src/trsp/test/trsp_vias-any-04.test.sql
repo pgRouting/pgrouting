@@ -21,7 +21,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-BEGIN;
 
 
     SELECT * FROM pgr_trspViaVertices(
@@ -60,4 +59,3 @@ BEGIN;
         -- include the turn restrictions
         'SELECT to_cost, target_id::INTEGER, from_edge||coalesce('',''||via_path,'''') AS via_path FROM restrictions');
     \echo '---------------------------'
-    ROLLBACK;
