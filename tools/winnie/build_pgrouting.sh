@@ -142,6 +142,7 @@ make
 make install
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
+cp *.dll ${PGPATHEDB}/lib/  #TODO remove this once we fix so the .dlls are created in lib folder
 cp lib/*.dll ${PGPATHEDB}/lib/
 cp lib/*.sql ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
