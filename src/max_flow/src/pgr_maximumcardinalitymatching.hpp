@@ -24,24 +24,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_MAX_FLOW_SRC_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
+#define SRC_MAX_FLOW_SRC_PGR_MAXIMUMCARDINALITYMATCHING_HPP_
 #pragma once
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
+#include "./../../common/src/pgr_types.h"
 #ifdef unlink
 #undef unlink
-#endif
 #endif
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/max_cardinality_matching.hpp>
 
-#if 0
-#include "./../../common/src/signalhandler.h"
-#endif
-#include "./../../common/src/pgr_types.h"
 
 #include <map>
 #include <vector>
@@ -49,13 +44,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 
 
-// user's functions
-// for development
+
+
+namespace pgrouting {
 
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS>
     BasicUndirectedGraph;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS>
     BasicDirectedGraph;
+
+namespace flow {
 
 template<class G>
 class PgrCardinalityGraph {
@@ -133,7 +131,8 @@ class PgrCardinalityGraph {
                */
               boost::tie(e, exists) =
                   boost::edge(*vi, mate_map[*vi], boost_graph);
-              if (((uint64_t)mate_map[*vi] != boost::graph_traits<G>::null_vertex())
+              if (((uint64_t)mate_map[*vi]
+                          != boost::graph_traits<G>::null_vertex())
                   && exists && !already_matched[*vi]
                   && !already_matched[mate_map[*vi]]) {
                   already_matched[*vi] = true;
@@ -151,7 +150,8 @@ class PgrCardinalityGraph {
                ++vi) {
               boost::tie(e, exists) =
                   boost::edge(*vi, mate_map[*vi], boost_graph);
-              if (((uint64_t)mate_map[*vi] != boost::graph_traits<G>::null_vertex())
+              if (((uint64_t)mate_map[*vi]
+                          != boost::graph_traits<G>::null_vertex())
                   && (*vi < (uint64_t)mate_map[*vi])) {
                   pgr_basic_edge_t matched_couple;
                   matched_couple.source = get_vertex_id(*vi);
@@ -168,3 +168,8 @@ class PgrCardinalityGraph {
                                            &mate_map[0]);
   }
 };
+
+}  // namespace flow
+}  // namespace pgrouting
+
+#endif  // SRC_MAX_FLOW_SRC_PGR_MAXIMUMCARDINALITYMATCHING_HPP_

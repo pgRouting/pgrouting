@@ -21,5 +21,6 @@ POINT(3 1)
 POINT(2 2)
 --q4
 NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_pointsToVids
 {1,2,3,5}
 --q5

@@ -121,6 +121,8 @@ void pgr_get_matrixRows(
         }
     }
 
+    SPI_cursor_close(SPIportal);
+
 
     if (total_tuples == 0) {
         (*total_rows) = 0;

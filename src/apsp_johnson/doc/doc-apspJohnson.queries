@@ -1,3 +1,5 @@
+BEGIN;
+BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
@@ -13,3 +15,5 @@ NOTICE:  Deprecated function: Use pgr_johnson instead
 (3 rows)
 
 --q2
+ROLLBACK;
+ROLLBACK

@@ -24,34 +24,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_
+#define SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_
 #pragma once
-
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef unlink
-#undef unlink
-#endif
-#endif
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/assert.hpp>
 
-#if 0
-#include "./../../common/src/signalhandler.h"
-#endif
-#include "./../../common/src/pgr_types.h"
 
 #include <map>
 #include <utility>
 #include <vector>
 #include <set>
+#include <limits>
 
+#include "./../../common/src/pgr_types.h"
 #include "pgr_maxflow.hpp"
 
-// user's functions
-// for development
+namespace pgrouting {
+namespace flow {    
 
 template<class G>
 class PgrEdgeDisjointPathsGraph {
@@ -98,10 +90,10 @@ class PgrEdgeDisjointPathsGraph {
   }
 
   void create_edge_disjoint_paths_graph(pgr_basic_edge_t *data_edges,
-                                        size_t total_tuples,
-                                        const std::set<int64_t> &source_vertices,
-                                        const std::set<int64_t> &sink_vertices,
-                                        bool directed) {
+          size_t total_tuples,
+          const std::set<int64_t> &source_vertices,
+          const std::set<int64_t> &sink_vertices,
+          bool directed) {
       std::set<int64_t> vertices;
       for (int64_t source : source_vertices) {
           vertices.insert(source);
@@ -128,7 +120,7 @@ class PgrEdgeDisjointPathsGraph {
               boost::add_edge(supersource, source, boost_graph);
           boost::tie(e_rev, added) =
               boost::add_edge(source, supersource, boost_graph);
-          capacity[e] = 999999999;
+          capacity[e] = (std::numeric_limits<int32_t>::max)();
           capacity[e_rev] = 0;
           rev[e] = e_rev;
           rev[e_rev] = e;
@@ -142,7 +134,7 @@ class PgrEdgeDisjointPathsGraph {
               boost::add_edge(sink, supersink, boost_graph);
           boost::tie(e1_rev, added) =
               boost::add_edge(supersink, sink, boost_graph);
-          capacity[e1] = 999999999;
+          capacity[e1] = (std::numeric_limits<int32_t>::max)();
           capacity[e1_rev] = 0;
           rev[e1] = e1_rev;
           rev[e1_rev] = e1;
@@ -246,7 +238,7 @@ class PgrEdgeDisjointPathsGraph {
           size_t j;
           for (j = 0; j < size - 1; j++) {
               General_path_element_t edge;
-              edge.seq = (int) (j + 1);
+              edge.seq = static_cast<int>(j + 1);
               edge.start_id = paths[i][0];
               edge.end_id = paths[i][size - 1];
               edge.node = paths[i][j];
@@ -258,7 +250,7 @@ class PgrEdgeDisjointPathsGraph {
               path_elements.push_back(edge);
           }
           General_path_element_t edge;
-          edge.seq = (int) (j + 1);
+          edge.seq = static_cast<int>(j + 1);
           edge.start_id = paths[i][0];
           edge.end_id = paths[i][size - 1];
           edge.node = paths[i][j];
@@ -267,3 +259,8 @@ class PgrEdgeDisjointPathsGraph {
       }
   }
 };
+
+}  // namespace flow
+}  // namespace pgrouting
+
+#endif  // SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_

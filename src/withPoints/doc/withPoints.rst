@@ -76,7 +76,7 @@ information about which `side` of the edge the point is on, then routing
 from arbitrary points more accurately reflect routing vehicles in road networks,
 
 
-I talk about a family of functios because it includes different functionalities.
+I talk about a family of functions because it includes different functionalities.
   - pgr_withPoints is pgr_dijkstra based
   - pgr_withPointsCost is pgr_dijkstraCost based
   - pgr_withPointsKSP is pgr_ksp based

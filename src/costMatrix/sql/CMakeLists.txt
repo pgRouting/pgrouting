@@ -2,12 +2,8 @@
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/withPointsCostMatrix.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/dijkstraCostMatrix.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/astarCostMatrix.sql
 
-    #for version 3.0
-    #${CMAKE_CURRENT_SOURCE_DIR}/astarCostMatrix.sql
-
-    # coded but not used
-    #${CMAKE_CURRENT_SOURCE_DIR}/eucledianCostMatrix.sql
     )
 
 # set in parent scope

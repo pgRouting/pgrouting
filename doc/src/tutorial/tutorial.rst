@@ -81,7 +81,7 @@ How to check your graph for errors
 
 There are lots of possible sources for errors in a graph. The data that you
 started with may not have been designed with routing in mind. A graph has some
-very specific requirments. One is that it is *NODED*, this means that except
+very specific requirements. One is that it is *NODED*, this means that except
 for some very specific use cases, each road segment starts and ends at a node
 and that in general is does not cross another road segment that it should be
 connected to.

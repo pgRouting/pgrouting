@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo Adding an additional column to store if its part of the contracted graph
 ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
@@ -87,4 +86,3 @@ SELECT * FROM pgr_dijkstra($$
         AND is_contracted=false$$,
     3, 9, false);
 
-ROLLBACK;

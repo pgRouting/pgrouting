@@ -24,19 +24,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #pragma once
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef unlink
-#undef unlink
-#endif
-#endif
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 #include <set>
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
+#include <limits>
+
+#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/basePath_SSEC.hpp"
 
 template < class G >
@@ -49,19 +45,41 @@ class Pgr_ksp {
      class compPaths {
       public:
           bool operator()(const Path &p1, const Path &p2) const {
-              if (p1.tot_cost() != p2.tot_cost())
-                  return  (p1.tot_cost() < p2.tot_cost());
+              /*
+               * less cost is best
+               */
+              if (p1.tot_cost() > p2.tot_cost())
+                  return  false;
+              if (p1.tot_cost() < p2.tot_cost())
+                return  true;
 
-              // paths costs are equal now we check by length
+              pgassert(p1.tot_cost() == p2.tot_cost());
+
+              // paths costs are equal now check by length
+              if (p1.size() > p2.size())
+                  return false;
               if (p1.size() < p2.size())
-                  return (p1.size() < p2.size());
+                  return true;
 
-              // paths weights & lengths are equal now we check by ID
+              pgassert(p1.tot_cost() == p2.tot_cost());
+              pgassert(p1.size() == p2.size());
+
+              // paths weights & lengths are equal now check by node ID
               unsigned int i;
               for (i = 0; i < p1.size(); i++) {
-                  if (p1[i].node != p2[i].node)
-                      return (p1[i].node < p2[i].node);
+                  if (p1[i].node >  p2[i].node)
+                      return false;
+                  if (p1[i].node <  p2[i].node)
+                      return true;
               }
+
+              pgassert(p1.tot_cost() == p2.tot_cost());
+              pgassert(p1.size() == p2.size());
+#ifdef NDEBUG
+              for (i = 0; i < p1.size(); i++) {
+                  pgassert(p1[i].node == p2[i].node);
+              }
+#endif
 
               // we got here and everything is equal
               return false;
@@ -96,6 +114,8 @@ class Pgr_ksp {
      typedef std::set<Path, compPaths> pSet;
      pSet m_ResultSet;  //!< ordered set of shortest paths
      pSet m_Heap;  //!< the heap
+
+     std::ostringstream log;
 };
 
 #include "./pgr_ksp.cpp"

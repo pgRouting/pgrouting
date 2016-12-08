@@ -25,7 +25,7 @@ Routing Functions
 
 - :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
 - :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
-- :ref:`pgr_bdDijkstra<bd_dijkstra>` - Bi-directional Dijkstra Shortest Path
+- :ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 - :ref:`dijkstra<dijkstra>` - Dijkstra family functions
 
   - :ref:`pgr_dijkstra` - Dijkstra's shortest path algorithm.
@@ -56,7 +56,7 @@ Routing Functions
     ../src/allpairs/doc/allpairs
     ../src/astar/doc/pgr_astar
     ../src/bd_astar/doc/pgr_bdAstar
-    ../src/bd_dijkstra/doc/pgr_bdDijkstra
+    ../src/bdDijkstra/doc/pgr_bdDijkstra
     ../src/dijkstra/doc/dijkstra
     ../src/driving_distance/doc/drivingDistance
     ../src/ksp/doc/pgr_ksp

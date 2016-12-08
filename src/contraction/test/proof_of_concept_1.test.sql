@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo Adding an additional column to store if its part of the contracted graph
 ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
@@ -67,4 +66,3 @@ SELECT * FROM
 pgr_dijkstra('SELECT id, source, target, cost, reverse_cost FROM edge_table where source IN (3, 5, 6, 7, 8, 9, 11, 15, 17) AND target IN (3, 5, 6, 7, 8, 9, 11, 15, 17) AND is_contracted=false',
 3, 9, false);
 
-ROLLBACK;

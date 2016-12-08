@@ -1,8 +1,6 @@
 --These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
 --The edge in the edge table are augmented with road-like categories for capacity values.
 
-BEGIN;
-SET client_min_messages TO NOTICE;
 
 \echo -- q1
 SELECT * FROM pgr_maxFlowEdmondsKarp(
@@ -57,4 +55,3 @@ SELECT * FROM pgr_maxFlowEdmondsKarp(
 );
 
 \echo -- q5
-ROLLBACK;

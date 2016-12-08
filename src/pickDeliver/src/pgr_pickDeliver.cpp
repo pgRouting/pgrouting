@@ -23,12 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
+#include "./pgr_pickDeliver.h"
 
 #include <sstream>
 #include <string>
@@ -44,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./solution.h"
 #include "./initial_solution.h"
 #include "./optimize.h"
-#include "./pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {

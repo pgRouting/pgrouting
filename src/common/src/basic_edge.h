@@ -41,7 +41,6 @@ class Basic_edge{
 
      int64_t id;
      double cost;
-     bool first;  // originally was true (source, target) false (target, source)
 };
 
 }  // namespace pgrouting

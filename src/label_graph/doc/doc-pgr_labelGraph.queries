@@ -1,8 +1,10 @@
 BEGIN;
 BEGIN
-SET client_min_messages TO ERROR;
+SET client_min_messages TO NOTICE;
 SET
 --q1
+SET client_min_messages TO WARNING;
+SET
 SELECT pgr_labelGraph('edge_table', 'id', 'source', 'target', 'subgraph');
  pgr_labelgraph 
 ----------------
@@ -18,7 +20,5 @@ SELECT subgraph, count(*) FROM edge_table group by subgraph;
 (3 rows)
 
 --q2
-SET client_min_messages TO DEBUG;
-SET
 ROLLBACK;
 ROLLBACK

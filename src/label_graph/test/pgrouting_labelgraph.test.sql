@@ -20,8 +20,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-set client_min_messages to warning;
-SET search_path TO public;
 drop table if exists "ways";
 
 -- The following should be OK

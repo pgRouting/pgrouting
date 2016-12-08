@@ -28,15 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_ALLPAIRS_SRC_PGR_ALLPAIRS_HPP_
 #pragma once
 
-#if 0
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
-#endif
 
 #include <boost/config.hpp>
 #include <boost/graph/adjacency_list.hpp>
@@ -52,9 +43,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./../../common/src/pgr_types.h"
-#include "../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/basePath_SSEC.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
+
+// TODO(vicky) don't keep it here
+#include "../../common/src/pgr_alloc.hpp"
 
 template < class G > class Pgr_allpairs;
 
@@ -150,7 +143,7 @@ class Pgr_allpairs {
      template <typename T>
          struct inf_plus {
              T operator()(const T& a, const T& b) const {
-                 T inf = std::numeric_limits<T>::max();
+                 T inf = (std::numeric_limits<T>::max)();
                  if (a == inf || b == inf)
                      return inf;
                  return a + b;
@@ -175,7 +168,7 @@ void Pgr_allpairs< G >::floydWarshall(
             matrix,
             weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
-            distance_inf(std::numeric_limits<double>::max()).
+            distance_inf((std::numeric_limits<double>::max)()).
             distance_zero(0));
 
     make_result(graph, matrix, result_tuple_count, postgres_rows);
@@ -187,14 +180,14 @@ void Pgr_allpairs< G >::floydWarshall(
         G &graph,
         std::vector< Matrix_cell_t> &rows) {
     std::vector< std::vector<double>> matrix;
-    make_matrix(boost::num_vertices(graph.graph), matrix);
+    make_matrix(graph.num_vertices(), matrix);
     inf_plus<double> combine;
     boost::floyd_warshall_all_pairs_shortest_paths(
             graph.graph,
             matrix,
             weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
-            distance_inf(std::numeric_limits<double>::max()).
+            distance_inf((std::numeric_limits<double>::max)()).
             distance_zero(0));
 
     make_result(graph, matrix, rows);
@@ -213,7 +206,7 @@ void Pgr_allpairs< G >::johnson(
             matrix,
             weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
-            distance_inf(std::numeric_limits<double>::max()).
+            distance_inf((std::numeric_limits<double>::max)()).
             distance_zero(0));
 
     make_result(graph, matrix, result_tuple_count, postgres_rows);
@@ -225,14 +218,14 @@ void Pgr_allpairs< G >::johnson(
         G &graph,
         std::vector< Matrix_cell_t> &rows) {
     std::vector< std::vector<double>> matrix;
-    make_matrix(boost::num_vertices(graph.graph), matrix);
+    make_matrix(graph.num_vertices(), matrix);
     inf_plus<double> combine;
     boost::johnson_all_pairs_shortest_paths(
             graph.graph,
             matrix,
             weight_map(get(&pgrouting::Basic_edge::cost, graph.graph)).
             distance_combine(combine).
-            distance_inf(std::numeric_limits<double>::max()).
+            distance_inf((std::numeric_limits<double>::max)()).
             distance_zero(0));
 
     make_result(graph, matrix, rows);
@@ -250,6 +243,7 @@ void
 Pgr_allpairs< G >::make_matrix(
         size_t v_size,
         std::vector< std::vector<double>> &matrix) const {
+    // TODO(vicky) in one step
     matrix.resize(v_size);
     for (size_t i=0; i < v_size; i++)
         matrix[i].resize(v_size);
@@ -264,7 +258,7 @@ Pgr_allpairs< G >::count_rows(
     for (size_t i = 0; i < graph.num_vertices(); i++) {
         for (size_t j = 0; j < graph.num_vertices(); j++) {
             if (i == j) continue;
-            if (matrix[i][j] != std::numeric_limits<double>::max()) {
+            if (matrix[i][j] != (std::numeric_limits<double>::max)()) {
                 result_tuple_count++;
             }  // if
         }  // for j
@@ -272,7 +266,7 @@ Pgr_allpairs< G >::count_rows(
     return result_tuple_count;
 }
 
-// for postgres
+// TODO(vicky) don't keep it here for postgres
 template < class G >
 void
 Pgr_allpairs< G >::make_result(
@@ -285,13 +279,13 @@ Pgr_allpairs< G >::make_result(
 
 
     size_t seq = 0;
-    for (size_t i = 0; i < graph.num_vertices(); i++) {
-        for (size_t j = 0; j < graph.num_vertices(); j++) {
-            if (i == j) continue;
-            if (matrix[i][j] != std::numeric_limits<double>::max()) {
-                (*postgres_rows)[seq].from_vid = graph.graph[i].id;
-                (*postgres_rows)[seq].to_vid = graph.graph[j].id;
-                (*postgres_rows)[seq].cost =  matrix[i][j];
+    for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
+        for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
+            if (v_i == v_j) continue;
+            if (matrix[v_i][v_j] != (std::numeric_limits<double>::max)()) {
+                (*postgres_rows)[seq].from_vid = graph[v_i].id;
+                (*postgres_rows)[seq].to_vid = graph[v_j].id;
+                (*postgres_rows)[seq].cost =  matrix[v_i][v_j];
                 seq++;
             }  // if
         }  // for j
@@ -309,11 +303,11 @@ Pgr_allpairs< G >::make_result(
     rows.resize(count);
     size_t seq = 0;
 
-    for (size_t i = 0; i < graph.num_vertices(); i++) {
-        for (size_t j = 0; j < graph.num_vertices(); j++) {
-            if (matrix[i][j] != std::numeric_limits<double>::max()) {
+    for (typename G::V v_i = 0; v_i < graph.num_vertices(); v_i++) {
+        for (typename G::V v_j = 0; v_j < graph.num_vertices(); v_j++) {
+            if (matrix[v_i][v_j] != (std::numeric_limits<double>::max)()) {
                 rows[seq] =
-                    {graph.graph[i].id, graph.graph[j].id, matrix[i][j]};
+                    {graph[v_i].id, graph[v_j].id, matrix[v_i][v_j]};
                 seq++;
             }  // if
         }  // for j

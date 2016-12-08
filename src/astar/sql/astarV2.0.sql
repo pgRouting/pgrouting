@@ -30,7 +30,7 @@ DECLARE
 has_reverse BOOLEAN;
 sql TEXT;
 BEGIN
-    RAISE NOTICE 'Deprecated signature of function pgr_astar';
+    RAISE NOTICE 'Deprecated signature pgr_astar(text, integer, integer, boolean, boolean)';
     has_reverse =_pgr_parameter_check('astar', edges_sql, false);
     sql = edges_sql;
     IF (has_reverse != has_rcost) THEN

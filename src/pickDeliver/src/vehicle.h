@@ -51,7 +51,7 @@ namespace vrp {
  *   Class my_vehicle : public vechicle
  * ~~~~
  *
- * @note All members return @b true when the operation is succesfull
+ * @note All members return @b true when the operation is successful
  *
  * A vehicle is a sequence of @ref Vehicle_node 
  * from @b starting site to @b ending site.

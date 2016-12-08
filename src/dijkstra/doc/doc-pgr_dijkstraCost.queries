@@ -1,5 +1,7 @@
 BEGIN;
 BEGIN
+SET client_min_messages TO NOTICE;
+SET
 --q1
 SELECT * FROM pgr_dijkstraCost(
     'select id, source, target, cost, reverse_cost from edge_table',
@@ -79,5 +81,5 @@ SELECT * FROM pgr_dijkstraCost(
 (6 rows)
 
 --q8
-ROLLBACK
+ROLLBACK;
 ROLLBACK

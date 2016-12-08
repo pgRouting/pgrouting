@@ -10,6 +10,7 @@
  *
  *****************************************************************PGR-MIT*/
 #include "./pgr_assert.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
@@ -17,20 +18,10 @@
 #ifdef __linux__
 #include <execinfo.h>
 #endif
+
 #include <string>
 #include <exception>
 
-#if 0
-#ifdef assert
-#undef assert
-#endif
-
-#ifndef __STRING
-#define __STRING(x) #x
-#endif
-
-#define __TOSTRING(x) __STRING(x)
-#endif
 
 std::string get_backtrace() {
 #ifdef __linux__

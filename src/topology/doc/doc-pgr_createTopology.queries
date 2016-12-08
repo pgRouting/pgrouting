@@ -28,7 +28,7 @@ UPDATE edge_table SET source = NULL,  target = NULL;
 UPDATE 18
 --q2
 SELECT  pgr_createTopology('edge_table', 0.001,
-        'the_geom', 'id', 'source', 'target');
+    'the_geom', 'id', 'source', 'target');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table', 0.001, 'the_geom', 'id', 'source', 'target', rows_where := 'true', clean := f)
 NOTICE:  Performing checks, please wait .....
@@ -47,7 +47,7 @@ SET client_min_messages TO NOTICE;
 SET
 --q3
 SELECT  pgr_createTopology('edge_table', 0.001,
-        'id', 'the_geom');
+    'id', 'the_geom');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_createTopology('edge_table', 0.001, 'id', 'the_geom', 'source', 'target', rows_where := 'true', clean := f)
 NOTICE:  Performing checks, please wait .....
@@ -67,7 +67,7 @@ UPDATE edge_table SET source = NULL,  target = NULL;
 UPDATE 18
 --q4
 SELECT  pgr_createTopology('edge_table', 0.001,
-        the_geom:='the_geom', id:='id', source:='source', target:='target');
+    the_geom:='the_geom', id:='id', source:='source', target:='target');
  pgr_createtopology 
 --------------------
  OK
@@ -80,7 +80,7 @@ UPDATE edge_table SET source = NULL,  target = NULL;
 UPDATE 18
 --q5
 SELECT  pgr_createTopology('edge_table', 0.001,
-        source:='source', id:='id', target:='target', the_geom:='the_geom');
+    source:='source', id:='id', target:='target', the_geom:='the_geom');
  pgr_createtopology 
 --------------------
  OK
@@ -109,7 +109,7 @@ SELECT  pgr_createTopology('edge_table', 0.001, rows_where:='id < 10');
 --q7.1
 --q8
 SELECT  pgr_createTopology('edge_table', 0.001,
-        rows_where:='the_geom && (SELECT st_buffer(the_geom, 0.05) FROM edge_table WHERE id=5)');
+    rows_where:='the_geom && (SELECT st_buffer(the_geom, 0.05) FROM edge_table WHERE id=5)');
  pgr_createtopology 
 --------------------
  OK
@@ -120,7 +120,7 @@ SELECT  pgr_createTopology('edge_table', 0.001,
 CREATE TABLE otherTable AS  (SELECT 100 AS gid,  st_point(2.5, 2.5) AS other_geom);
 SELECT 1
 SELECT  pgr_createTopology('edge_table', 0.001,
-        rows_where:='the_geom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
+    rows_where:='the_geom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
  pgr_createtopology 
 --------------------
  OK
@@ -194,14 +194,14 @@ SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='
 (1 row)
 
 SELECT  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', 
-        rows_where:='mygeom && (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)');
+    rows_where:='mygeom && (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)');
  pgr_createtopology 
 --------------------
  OK
 (1 row)
 
 SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='tgt', the_geom:='mygeom', 
-        rows_where:='mygeom && (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)');
+    rows_where:='mygeom && (SELECT st_buffer(mygeom, 1) FROM mytable WHERE gid=5)');
  pgr_createtopology 
 --------------------
  OK
@@ -210,14 +210,14 @@ SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='
 --q15.1
 --q16
 SELECT  pgr_createTopology('mytable', 0.001, 'mygeom', 'gid', 'src', 'tgt', 
-        rows_where:='mygeom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
+    rows_where:='mygeom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
  pgr_createtopology 
 --------------------
  OK
 (1 row)
 
 SELECT  pgr_createTopology('mytable', 0.001, source:='src', id:='gid', target:='tgt', the_geom:='mygeom', 
-        rows_where:='mygeom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
+    rows_where:='mygeom && (SELECT st_buffer(other_geom, 1) FROM otherTable WHERE gid=100)');
  pgr_createtopology 
 --------------------
  OK

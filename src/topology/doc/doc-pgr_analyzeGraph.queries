@@ -317,7 +317,7 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',
-        rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
+    rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)')
 NOTICE:  Performing checks, please wait ...
@@ -338,7 +338,7 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-        rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
+    rows_where:='mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(mygeom,1) FROM mytable WHERE gid=5)')
 NOTICE:  Performing checks, please wait ...
@@ -363,7 +363,7 @@ DROP TABLE
 CREATE TABLE otherTable AS  (SELECT 'myhouse'::text AS place, st_point(2.5,2.5) AS other_geom) ;
 SELECT 1
 SELECT  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt',
-        rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
+    rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='myhouse')')
 NOTICE:  Performing checks, please wait ...
@@ -384,7 +384,7 @@ NOTICE:                      Ring geometries: 0
 (1 row)
 
 SELECT  pgr_analyzeGraph('mytable',0.001,source:='src',id:='gid',target:='tgt',the_geom:='mygeom',
-        rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
+    rows_where:='mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='||quote_literal('myhouse')||')');
 NOTICE:  PROCESSING:
 NOTICE:  pgr_analyzeGraph('mytable',0.001,'mygeom','gid','src','tgt','mygeom && (SELECT st_buffer(other_geom,1) FROM otherTable WHERE place='myhouse')')
 NOTICE:  Performing checks, please wait ...

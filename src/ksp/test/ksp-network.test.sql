@@ -1,5 +1,3 @@
-BEGIN;
-SET client_min_messages TO NOTICE;
 --
 -- Generate 15 shortest paths between nodes 4 and 5
 -- with auto detection
@@ -102,42 +100,17 @@ END $$;
 
 
 -- TESTS START
-/*
-SELECT seq, path_id, node, edge, round(cost::numeric, 4) from pgr_ksp(
+
+SELECT DISTINCT node = network.source AS e1,  edge = network.id AS e2, round(network.cost::numeric,4) = round(result.cost::numeric, 4) AS e3
+FROM pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5::BIGINT,
-    15);
-
-SELECT path_id, round(sum(cost)::numeric,4) from pgr_ksp(
-    'SELECT id, source, target, cost from network order by id',
-    4, 5::BIGINT,
-    15) group by path_id order by path_id;
-*/
-
--- the equality conditions
-SELECT node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
-    'SELECT id, source, target, cost from network order by id',
-    4, 5::BIGINT,
-    15) result, network where id = edge order by seq;
+    15) result, network where id = edge order by e1, e2, e3;
 
 
---VERSION 2.0
-/*
-SELECT seq, path_id, node, edge, round(cost::numeric, 4), round(agg_cost::numeric,4) from pgr_ksp(
+SELECT DISTINCT node = network.source AS e1,  edge = network.id AS e2, round(network.cost::numeric,4) = round(result.cost::numeric, 4) AS e3
+FROM pgr_ksp(
     'SELECT id, source, target, cost from network order by id',
     4, 5,
-    15);
+    15) result, network where id = edge order by e1, e2, e3;
 
-SELECT path_id, round(agg_cost::numeric,4) from pgr_ksp(
-    'SELECT id, source, target, cost from network order by id',
-    4, 5,
-    15) WHERE edge = -1;
-*/
-
--- the equality conditions
-SELECT node = network.source,  edge = network.id, round(network.cost::numeric,4) = round(result.cost::numeric, 4) from pgr_ksp(
-    'SELECT id, source, target, cost from network order by id',
-    4, 5,
-    15) AS result, network WHERE id = edge ORDER BY seq;
-
-ROLLBACK;

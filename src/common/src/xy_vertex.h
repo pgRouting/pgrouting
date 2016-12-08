@@ -26,6 +26,13 @@
 #define SRC_COMMON_SRC_XY_VERTEX_H_
 #pragma once
 
+#ifdef Max
+#undef Max
+#endif
+#ifdef Min
+#undef Min
+#endif
+
 #include <CGAL/Simple_cartesian.h>
 #include <vector>
 

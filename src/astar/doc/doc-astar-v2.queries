@@ -1,11 +1,13 @@
+BEGIN;
+BEGIN
 SET client_min_messages TO NOTICE;
 SET
 -- q1
-SELECT * FROM pgr_AStar(
+SELECT * FROM pgr_astar(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2
      FROM edge_table',
     4, 1, false, false);
-NOTICE:  Deprecated signature of function pgr_astar
+NOTICE:  Deprecated signature pgr_astar(text, integer, integer, boolean, boolean)
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   4 |  16 |    1
@@ -17,11 +19,11 @@ NOTICE:  Deprecated signature of function pgr_astar
 (6 rows)
 
 -- q2
-SELECT * FROM pgr_AStar(
+SELECT * FROM pgr_astar(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, x1, y1, x2, y2, reverse_cost
       FROM edge_table ',
     4, 1, true, true);
-NOTICE:  Deprecated signature of function pgr_astar
+NOTICE:  Deprecated signature pgr_astar(text, integer, integer, boolean, boolean)
  seq | id1 | id2 | cost 
 -----+-----+-----+------
    0 |   4 |   3 |    1
@@ -31,3 +33,5 @@ NOTICE:  Deprecated signature of function pgr_astar
 (4 rows)
 
 -- q3
+ROLLBACK;
+ROLLBACK

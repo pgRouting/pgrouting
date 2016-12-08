@@ -22,12 +22,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#undef min
-#undef max
-#endif
 
 #include "./Dmatrix.h"
 
@@ -38,9 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <cmath>
 
+#include "./tour.h"
 #include "../../common/src/pgr_assert.h"
 
-#include "./tour.h"
 
 namespace pgrouting {
 namespace tsp {
@@ -54,7 +48,7 @@ Dmatrix::tourCost(const Tour &tour) const {
     for (const auto &id : tour.cities) {
         if (id == tour.cities.front()) continue;
 
-        pgassert(distance(prev_id, id) != std::numeric_limits<double>::max());
+        pgassert(distance(prev_id, id) != (std::numeric_limits<double>::max)());
 
         total_cost += costs[prev_id][id];
         prev_id = id;
@@ -103,13 +97,12 @@ Dmatrix::get_id(size_t id) const {
  */
 Dmatrix::Dmatrix(const std::vector < Matrix_cell_t > &data_costs) {
     set_ids(data_costs);
-    costs.resize(ids.size());
-    for (auto &row : costs) {
-        row.resize(ids.size());
-        for (auto &cell : row) {
-            cell = std::numeric_limits<double>::max();
-        }
-    }
+    costs.resize(
+            ids.size(),
+            std::vector<double>(
+                ids.size(),
+                (std::numeric_limits<double>::max)()));
+
     for (const auto &data : data_costs) {
         costs[get_index(data.from_vid)][get_index(data.to_vid)] = data.cost;
     }
@@ -123,7 +116,8 @@ bool
 Dmatrix::has_no_infinity() const {
     for (const auto &row : costs) {
         for (const auto &val : row) {
-            if (val == std::numeric_limits<double>::max()) return false;
+            if (val == (std::numeric_limits<double>::infinity)()) return false;
+            if (val == (std::numeric_limits<double>::max)()) return false;
         }
     }
     return true;
@@ -185,7 +179,10 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
                 << "," << matrix.get_index(matrix.ids[j]) << ")"
                 << "\t = " << cost
                 << "\t = " << matrix.costs[i][j]
-                << "\t = " << matrix.costs[j][i] << "\n";
+                << "\t = " << matrix.costs[j][i]
+                << "=inf:" <<  (matrix.costs[i][j] == (std::numeric_limits<double>::infinity)())
+                << "=inf:" <<  (matrix.costs[j][i] == (std::numeric_limits<double>::infinity)())
+                << "\n";
             ++j;
         }
         ++i;
@@ -195,7 +192,8 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
             for (size_t k = 0; k < matrix.costs.size(); ++k) {
                 log << matrix.costs[i][k] << " <= ("
                     << matrix.costs[i][j] << " + "  << matrix.costs[j][k] << ")"
-                    << (matrix.costs[i][k] <= (matrix.costs[i][j] + matrix.costs[j][k]))
+                    << (matrix.costs[i][k]
+                            <= (matrix.costs[i][j] + matrix.costs[j][k]))
                     << "\n";
             }
         }

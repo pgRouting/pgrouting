@@ -1,4 +1,3 @@
-BEGIN;
 /*.. 
    ****************************************************************************
     pgRouting Manual
@@ -21,11 +20,11 @@ BEGIN;
 --The purpose of this recipe is to compare a not nodded network with a nodded network.
 
 --.. code-block:: sql
-set client_min_messages = warning;
 
+
+SET client_min_messages TO WARNING;
 	SELECT pgr_createTopology('edge_table', 0.001);
 	SELECT pgr_analyzegraph('edge_table', 0.001);
 	SELECT pgr_nodeNetwork('edge_table', 0.001);
 	SELECT pgr_createTopology('edge_table_noded', 0.001);
 	SELECT pgr_analyzegraph('edge_table_noded', 0.001); 
-ROLLBACK;

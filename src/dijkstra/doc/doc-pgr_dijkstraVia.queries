@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 --q00
 SELECT * FROM pgr_dijkstraVia(
     'SELECT id, source, target, cost, reverse_cost FROM edge_table order by id',
@@ -126,3 +130,5 @@ WHERE node = 9 and (agg_cost  <> 0 or seq = 1);
   11 |              8 |    9 |        2 | visits
 (2 rows)
 
+ROLLBACK;
+ROLLBACK

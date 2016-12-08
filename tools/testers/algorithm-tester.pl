@@ -278,7 +278,11 @@ sub process_single_test{
         next;
     };
 
-    #reason of opening conection is because the set client_min_messages to warning;
+    my $level = "NOTICE";
+    $level = "WARNING" if $ignore;
+    $level = "DEBUG1" if $DEBUG1;
+
+
     if ($DOCUMENTATION) {
         mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
         open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
@@ -286,11 +290,9 @@ sub process_single_test{
             $stats{z_fail}++;
             next;
         };
-        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
     }
     else {
-        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
+        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             if (!$INTERNAL_TESTS) {
                $stats{z_fail}++;
@@ -298,13 +300,21 @@ sub process_single_test{
             next;
         };
     }
-    print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-    print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+
+
     my @d = ();
     @d = <TIN>; #reads the whole file into the array @d 
-    print PSQL @d; #prints the whole fle stored in @d
-    close(PSQL); #executes everything
-    close(TIN); #closes the input file  /TIN = test input
+
+    print PSQL "BEGIN;\n";
+    print PSQL "SET client_min_messages TO $level;\n";
+    #prints the whole fle stored in @d
+    print PSQL @d;
+    print PSQL "\nROLLBACK;";
+
+    # executes everything
+    close(PSQL);
+    #closes the input file  /TIN = test input
+    close(TIN);
 
     return if $DOCUMENTATION;
 
@@ -394,7 +404,6 @@ sub createTestDB {
     }
     #
 #    else {
-#        if ($vpgis && dbExists("template_postgis_$vpgis")) {
 #            $template = "template_postgis_$vpgis";
 #        }
 #        elsif (dbExists('template_postgis')) {

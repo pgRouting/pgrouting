@@ -32,15 +32,11 @@ THE SOFTWARE.
 
 ********************************************************************PGR-MIT*/
 
-#if defined(__MINGW32__) ||  defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
 
 
+#include "./bdastar_driver.h"
 #include <exception>
 #include "./BiDirAStar.h"
-#include "./bdastar_driver.h"
 
 int bdastar_wrapper(edge_astar_t *edges, size_t edge_count, int maxnode,
                   int source_vertex_id, int target_vertex_id,
