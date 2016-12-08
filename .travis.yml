@@ -18,9 +18,6 @@ language: cpp
 compiler:
     - gcc
 
-#notifications:
-#  email:
-#    on_failure: project@pgrouting.org
 
 env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
       
