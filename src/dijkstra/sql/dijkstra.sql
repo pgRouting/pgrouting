@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/* ********** FOR USERS DOCUMENTATION
+/*FOR USERS DOCUMENTATION
 
 The following applies to:
     pgr_dijkstra
@@ -50,7 +50,7 @@ Column         Type               Default     Description
 
 pgr_dijkstra_parameters_end
 
-*/
+FOR-USER*/
 
 CREATE OR REPLACE FUNCTION _pgr_dijkstra(edges_sql TEXT, start_vid BIGINT, end_vid BIGINT, directed BOOLEAN,
     only_cost BOOLEAN DEFAULT false,

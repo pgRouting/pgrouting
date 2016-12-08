@@ -22,6 +22,15 @@ set(SPHINX_THEME "haiku")
 #set(SPHINX_THEME_DIR "_themes")
 
 if(WITH_DOC)
+    set(PROJECT_NAME  "pgRouting")
+    set(PROJECT_BRIEF "pgRouting extends the PostGIS / PostgreSQL geospatial database to provide geospatial routing functionality.")
+    set(PROJECT_NUMBER  "${PGROUTING_FULL_VERSION}")
+    if (PGROUTING_VERSION_DEV MATCHES "-dev")
+        set(PGROUTING_RELEASE_INFO "${PGROUTING_FULL_VERSION} (${PGROUTING_GIT_BRANCH})")
+    else()
+        set(PGROUTING_RELEASE_INFO "${PGROUTING_FULL_VERSION}")
+    endif()
+
 
     find_package(Sphinx "${SPHINX_MINIMUM_VERSION}")
 

@@ -25,7 +25,7 @@ Cost Matrix
 General Information
 -------------------------------------------------------------------------------
 
-Sinopsis
+Synopsis
 ...................
 
 :ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` must value :math:`\infty`.
