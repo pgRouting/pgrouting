@@ -111,8 +111,10 @@ cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${BOOSTR
 
 #first delete old pgrouting files from installed folder before we reinstall
 
+echo "Current contents of PGPATH ${PGPATH}"
 ls ${PGPATH}/lib/libpgrouting*
 ls ${PGPATH}/share/extension/pgrouting*
+echo "Current contents of PGPATHEDB ${PGPATHEDB}"
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
 
@@ -121,8 +123,10 @@ rm ${PGPATH}/share/extension/pgrouting*
 rm ${PGPATHEDB}/lib/libpgrouting*
 rm ${PGPATHEDB}/share/extension/pgrouting*
 
+echo "After removing in PGPATH ${PGPATH}"
 ls ${PGPATH}/lib/libpgrouting*
 ls ${PGPATH}/share/extension/pgrouting*
+echo "After removing in PGPATHEDB ${PGPATHEDB}"
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
 
@@ -134,8 +138,10 @@ cp lib/*.dll ${PGPATHEDB}/lib/
 cp lib/*.sql ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
 
+echo "After copy in PGPATH ${PGPATH}"
 ls ${PGPATH}/lib/libpgrouting*
 ls ${PGPATH}/share/extension/pgrouting*
+echo "After copyin PGPATHEDB ${PGPATHEDB}"
 ls ${PGPATHEDB}/lib/libpgrouting*
 ls ${PGPATHEDB}/share/extension/pgrouting*
 
