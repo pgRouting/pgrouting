@@ -2,7 +2,7 @@
 
 We are really glad you are reading this, because we need volunteer developers to help this project.
 
-If you have not already, come find us in [![Join the chat at https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pgRouting/pgrouting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge). We want you working on things you're excited about. Drop a message and if some one can assist you, will contact you back ASAP.
+If you have not already, come find us in [![Join the chat at https://gitter.im/pgRouting/pgrouting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pgRouting/pgrouting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) or contact us via [mailing list](http://lists.osgeo.org/mailman/listinfo/pgrouting-dev). We want you working on things you're excited about. Drop a message and if some one can assist you, will contact you back ASAP.
 
 Here are some important resources:
 
