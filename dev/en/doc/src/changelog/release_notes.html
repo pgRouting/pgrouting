@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Release Notes &mdash; pgRouting Manual (2.4.0-dev) (develop)</title>
+    <title>Release Notes &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.4.0 (develop)',
+        VERSION:     'v2.4.0-dev (dev-v2.4)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,12 +25,12 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4.0-dev) (develop)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="../../../index.html" />
     <link rel="prev" title="pgr_endPoint - Deprecated Function" href="../../../src/common/doc/utilities/end_point.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.4.0-dev) (develop)</span></a></h1>
+          <span>pgRouting Manual (2.4-dev)</span></a></h1>
         <h2 class="heading"><span>Release Notes</span></h2>
       </div>
       <div class="topnav">
@@ -52,6 +52,8 @@
 <h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
+<li><a class="reference internal" href="#changelog-2-4-0"><em>pgRouting 2.4.0 Release Notes</em></a></li>
+<li><a class="reference internal" href="#changelog-2-3-1"><em>pgRouting 2.3.1 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-3-0"><em>pgRouting 2.3.0 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-4"><em>pgRouting 2.2.4 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-3"><em>pgRouting 2.2.3 Release Notes</em></a></li>
@@ -66,8 +68,53 @@
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="pgrouting-2-4-0-release-notes">
+<span id="changelog-2-4-0"></span><h1>pgRouting 2.4.0 Release Notes<a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">New Signatures</p>
+<ul class="simple">
+<li>pgr_bdDijkstra</li>
+</ul>
+<p class="rubric">New Proposed Signatures</p>
+<ul class="simple">
+<li>pgr_maxFlow</li>
+<li>pgr_astar(one to many)</li>
+<li>pgr_astar(many to one)</li>
+<li>pgr_astar(many to many)</li>
+<li>pgr_astarCost(one to one)</li>
+<li>pgr_astarCost(one to many)</li>
+<li>pgr_astarCost(many to one)</li>
+<li>pgr_astarCost(many to many)</li>
+<li>pgr_astarCostMatrix</li>
+</ul>
+<p class="rubric">Deprecated Signatures</p>
+<ul class="simple">
+<li>pgr_bddijkstra - use pgr_bdDijkstra instead</li>
+</ul>
+<p class="rubric">Deprecated Functions</p>
+<ul class="simple">
+<li>pgr_pointsToVids</li>
+</ul>
+<p class="rubric">Bug fix</p>
+<ul class="simple">
+<li>Bug fixes on proposed functions<ul>
+<li>pgr_withPointsKSP: fixed ordering</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pgrouting-2-3-1-release-notes">
+<span id="changelog-2-3-1"></span><h1>pgRouting 2.3.1 Release Notes<a class="headerlink" href="#pgrouting-2-3-1-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.1%22+is%3Aclosed">Git closed issues for 2.3.1</a> on Github.</p>
+<p class="rubric">Bug Fixes</p>
+<ul class="simple">
+<li>Leaks on proposed max_flow functions</li>
+<li>Regression error on pgr_trsp</li>
+<li>Types discrepancy on pgr_createVerticesTable</li>
+</ul>
+</div>
 <div class="section" id="pgrouting-2-3-0-release-notes">
 <span id="changelog-2-3-0"></span><h1>pgRouting 2.3.0 Release Notes<a class="headerlink" href="#pgrouting-2-3-0-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.0%22+is%3Aclosed">Git closed issues for 2.3.0</a> on Github.</p>
 <p class="rubric">New Signatures</p>
 <p>Indentifiers can be <cite>ANY-INTEGER</cite> and costs can be <cite>ANY-NUMERICAL</cite></p>
 <ul class="simple">
@@ -363,8 +410,8 @@ The following release notes have been copied from the previous <tt class="docuti
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.4.0 (pgrouting-2.4.0-dev).
-      Last updated on Aug 31, 2016.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
+      Last updated on Dec 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -9,22 +9,21 @@
 
 .. _pgr_points_to_vids:
 
-pgr_pointsToVids - Proposed
+pgr_pointsToVids - Deprecated Function
 ==============================================================================
 
-.. index::
-        single: pointsToVids(Complete Signature) --proposed
+
+.. warning:: This function is deprecated!!!
+
+    * Is no longer supported.
+    * May be removed from future versions.
+    * There is no replacement.
 
 
 Name
 ------------------------------------------------------------------------------
 
 ``pgr_pointsToVids`` - Converts an array of point geometries into vertex ids.
-
-
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 
 Synopsis

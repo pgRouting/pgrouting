@@ -50,7 +50,7 @@ This Release Contributors
 Individuals (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Andrea Nardellli, Daniel Kastl, Ko Nagase, Mario Basa, Regina Obe, Rohith Reddy Stephen Woodbridge, Virginia Vergara
+Andrea Nardellli, Daniel Kastl, Ko Nagase, Mario Basa, Regina Obe, Rohith Reddy, Stephen Woodbridge, Virginia Vergara
 
 And all the people that gives us a little of their time making comments, finding issues, making pull requests etc.
 

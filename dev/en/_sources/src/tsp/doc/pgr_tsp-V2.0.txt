@@ -23,11 +23,11 @@ Name
 
 * ``pgr_tsp`` - Returns the best route from a start node via a list of nodes.
 
-.. warning:: Use :ref:`pgr_eucledianTSP` instead.  
+.. note:: Use :ref:`pgr_TSP` instead.  
 
-* ``pgr_tsp`` - Returns the best route order when passed a disance matrix.
+* ``pgr_tsp`` - Returns the best route order when passed a distance matrix.
 
-.. warning:: Use :ref:`pgr_TSP` instead.  
+.. note:: Use :ref:`pgr_eucledianTSP` instead.
 
 * ``_pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
 

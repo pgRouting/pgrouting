@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_alphaShape &mdash; pgRouting Manual (2.4.0-dev) (develop)</title>
+    <title>pgr_alphaShape &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.4.0 (develop)',
+        VERSION:     'v2.4.0-dev (dev-v2.4)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4.0-dev) (develop)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="../../../index.html" />
     <link rel="up" title="Driving Distance" href="../../driving_distance/doc/drivingDistance.html" />
     <link rel="next" title="pgr_pointsAsPolygon" href="pgr_pointsAsPolygon.html" />
     <link rel="prev" title="pgr_drivingDistance" href="../../driving_distance/doc/pgr_drivingDistance.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.4.0-dev) (develop)</span></a></h1>
+          <span>pgRouting Manual (2.4-dev)</span></a></h1>
         <h2 class="heading"><span>pgr_alphaShape</span></h2>
       </div>
       <div class="topnav">
@@ -113,54 +113,49 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>In the alpha shape code we have no way to control the order of the points so the actual output you might get could be similar but different. The simple query is followed by a more complex one that constructs a polygon and computes the areas of it. This should be the same as the result on your system. We leave the details of the complex query to the reader as an exercise if they wish to decompose it into understandable pieces or to just copy and paste it into a SQL window to run.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">);</span>
-
- <span class="n">x</span> <span class="o">|</span> <span class="n">y</span>
-<span class="c1">---+---</span>
- <span class="mi">2</span> <span class="o">|</span> <span class="mi">4</span>
- <span class="mi">0</span> <span class="o">|</span> <span class="mi">2</span>
- <span class="mi">2</span> <span class="o">|</span> <span class="mi">0</span>
- <span class="mi">4</span> <span class="o">|</span> <span class="mi">1</span>
- <span class="mi">4</span> <span class="o">|</span> <span class="mi">2</span>
- <span class="mi">4</span> <span class="o">|</span> <span class="mi">3</span>
-<span class="p">(</span><span class="mi">6</span> <span class="k">rows</span><span class="p">)</span>
-
-<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_MakePolygon</span><span class="p">(</span><span class="n">ST_AddPoint</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">openline</span><span class="p">,</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">openline</span><span class="p">))))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">st_area</span>
-<span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">points</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">openline</span> <span class="k">FROM</span>
-<span class="p">(</span><span class="k">SELECT</span> <span class="n">ST_MakePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">AS</span> <span class="n">points</span><span class="p">,</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="k">AS</span> <span class="n">id</span>
-<span class="k">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="s1">&#39;SELECT id, x, y FROM vertex_table&#39;</span><span class="p">)</span>
-<span class="p">)</span> <span class="k">AS</span> <span class="n">a</span><span class="p">)</span> <span class="k">AS</span> <span class="n">foo</span><span class="p">;</span>
-
- <span class="n">st_area</span>
-<span class="c1">---------</span>
-   <span class="mi">10</span><span class="p">.</span><span class="mi">00</span>
-<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
-
-
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr&#39;</span><span class="p">);</span>
-  <span class="n">x</span>  <span class="o">|</span>  <span class="n">y</span>
-<span class="c1">-----+-----</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">4</span>
- <span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="o">|</span> <span class="mi">3</span><span class="p">.</span><span class="mi">5</span>
-   <span class="mi">0</span> <span class="o">|</span>   <span class="mi">2</span>
-   <span class="mi">2</span> <span class="o">|</span>   <span class="mi">0</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">1</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">2</span>
-   <span class="mi">4</span> <span class="o">|</span>   <span class="mi">3</span>
- <span class="mi">3</span><span class="p">.</span><span class="mi">5</span> <span class="o">|</span>   <span class="mi">4</span>
-<span class="p">(</span><span class="mi">8</span> <span class="k">rows</span><span class="p">)</span>
-
-<span class="k">SELECT</span> <span class="n">round</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">ST_MakePolygon</span><span class="p">(</span><span class="n">ST_AddPoint</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">openline</span><span class="p">,</span> <span class="n">ST_StartPoint</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">openline</span><span class="p">))))::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">st_area</span>
-<span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">ST_MakeLine</span><span class="p">(</span><span class="n">points</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">openline</span> <span class="k">FROM</span>
-<span class="p">(</span><span class="k">SELECT</span> <span class="n">ST_MakePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">AS</span> <span class="n">points</span><span class="p">,</span> <span class="n">row_number</span><span class="p">()</span> <span class="n">over</span><span class="p">()</span> <span class="k">AS</span> <span class="n">id</span>
-<span class="k">FROM</span> <span class="n">pgr_alphaShape</span><span class="p">(</span><span class="s1">&#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr&#39;</span><span class="p">)</span>
-<span class="p">)</span> <span class="k">AS</span> <span class="n">a</span><span class="p">)</span> <span class="k">AS</span> <span class="n">foo</span><span class="p">;</span>
-
- <span class="n">st_area</span>
-<span class="c1">---------</span>
-   <span class="mi">11</span><span class="p">.</span><span class="mi">75</span>
-<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+<p>PgRouting&#8217;s alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
+The first query, has the output ordered, he second query shows an example usage:</p>
+<p class="rubric">Example: the (ordered) results</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_alphaShape(
+    &#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
+    FROM edge_table_vertices_pgr&#39;) ORDER BY x, y;
+  x  |  y  
+-----+-----
+   0 |   2
+ 0.5 | 3.5
+   2 |   0
+   2 |   4
+ 3.5 |   4
+   4 |   1
+   4 |   2
+   4 |   3
+(8 rows)
+</pre></div>
+</div>
+<p class="rubric">Example: calculating the area</p>
+<p>Steps:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Calculates the alpha shape
+- the <tt class="code docutils literal"><span class="pre">ORDER</span> <span class="pre">BY</span></tt> clause is not used.</li>
+<li>constructs a polygon</li>
+<li>and computes the area</li>
+</ul>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre>SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
+FROM (
+    SELECT ST_MakeLine(points ORDER BY id) AS openline
+    FROM (
+        SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
+        FROM pgr_alphaShape(
+            &#39;SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y
+            FROM edge_table_vertices_pgr&#39;)
+        ) AS a
+   ) AS foo;
+ st_area 
+---------
+   11.75
+(1 row)
 </pre></div>
 </div>
 <p>The queries use the <a class="reference internal" href="../../../doc/src/developer/sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
@@ -189,8 +184,8 @@ For more information, see <a class="reference external" href="http://doc.cgal.or
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.4.0 (pgrouting-2.4.0-dev).
-      Last updated on Aug 31, 2016.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
+      Last updated on Dec 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

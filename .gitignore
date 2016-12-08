@@ -1,4 +1,11 @@
 build
+doc/
+fix_typos/
+run.sh
+src/
+tools/
+travis.yml
+update-tester.sh
+
 .DS_Store
 .vagrant
-VERSION

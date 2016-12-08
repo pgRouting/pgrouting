@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Experimental and Proposed functions &mdash; pgRouting Manual (2.4.0-dev) (develop)</title>
+    <title>Experimental and Proposed functions &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.4.0 (develop)',
+        VERSION:     'v2.4.0-dev (dev-v2.4)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,19 +25,19 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4.0-dev) (develop)" href="../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="../index.html" />
     <link rel="next" title="Contraction" href="contraction/doc/contraction.html" />
-    <link rel="prev" title="Cost Matrix" href="costMatrix/doc/costMatrix.html" /> 
+    <link rel="prev" title="pgr_aStarCostMatrix - proposed" href="costMatrix/doc/pgr_aStarCostMatrix.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>pgRouting Manual (2.4.0-dev) (develop)</span></a></h1>
+          <span>pgRouting Manual (2.4-dev)</span></a></h1>
         <h2 class="heading"><span>Experimental and Proposed functions</span></h2>
       </div>
       <div class="topnav">
       
         <p>
-        «&#160;&#160;<a href="costMatrix/doc/costMatrix.html">Cost Matrix</a>
+        «&#160;&#160;<a href="costMatrix/doc/pgr_aStarCostMatrix.html">pgr_aStarCostMatrix - proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -81,9 +81,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="max_flow/doc/maxFlow.html#maxflow"><em>Maximum Flow</em></a><ul>
-<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Maximum flow using push&amp;relabel algorithm.</li>
-<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Maximum flow using Edmonds&amp;Karp algorithm.</li>
-<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Maximum flow using Boykov&amp;Kolmogorov algorithm.</li>
+<li><a class="reference internal" href="max_flow/doc/pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow Proposed</em></a> - Maximum flow using push&amp;relabel algorithm.</li>
+<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Detailed Maximum flow using push&amp;relabel algorithm.</li>
+<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Detailed Maximum flow using Edmonds&amp;Karp algorithm.</li>
+<li><a class="reference internal" href="max_flow/doc/pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Detailed Maximum flow using Boykov&amp;Kolmogorov algorithm.</li>
 </ul>
 </li>
 <li><a class="reference internal" href="max_flow/doc/maxFlowApplications.html#maxflowapplications"><em>Applications of Maximum Flow</em></a><ul>
@@ -93,7 +94,6 @@
 </li>
 <li>convenience<ul>
 <li><a class="reference internal" href="convenience/doc/pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode - Proposed</em></a> - convert a point geometry to a <tt class="docutils literal"><span class="pre">vertex_id</span></tt> based on closest edge.</li>
-<li><a class="reference internal" href="convenience/doc/pgr_pointsToVids.html#pgr-points-to-vids"><em>pgr_pointsToVids - Proposed</em></a> - convert an array of point geometries into vertex ids.</li>
 </ul>
 </li>
 <li>graph analysis<ul>
@@ -116,7 +116,7 @@
       <div class="bottomnav">
       
         <p>
-        «&#160;&#160;<a href="costMatrix/doc/costMatrix.html">Cost Matrix</a>
+        «&#160;&#160;<a href="costMatrix/doc/pgr_aStarCostMatrix.html">pgr_aStarCostMatrix - proposed</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -126,8 +126,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.4.0 (pgrouting-2.4.0-dev).
-      Last updated on Aug 31, 2016.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
+      Last updated on Dec 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_pointsToVids - Proposed &mdash; pgRouting Manual (2.4.0-dev) (develop)</title>
+    <title>pgr_pointsToVids - Deprecated Function &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.4.0 (develop)',
+        VERSION:     'v2.4.0-dev (dev-v2.4)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,15 +25,15 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4.0-dev) (develop)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="../../../index.html" />
     <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
     <link rel="next" title="pgr_labelGraph - Proposed" href="../../label_graph/doc/pgr_labelGraph.html" />
     <link rel="prev" title="pgr_pointToEdgeNode - Proposed" href="pgr_pointToEdgeNode.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.4.0-dev) (develop)</span></a></h1>
-        <h2 class="heading"><span>pgr_pointsToVids - Proposed</span></h2>
+          <span>pgRouting Manual (2.4-dev)</span></a></h1>
+        <h2 class="heading"><span>pgr_pointsToVids - Deprecated Function</span></h2>
       </div>
       <div class="topnav">
       
@@ -49,33 +49,20 @@
       <div class="content">
         
         
-  <div class="section" id="pgr-pointstovids-proposed">
-<span id="pgr-points-to-vids"></span><h1>pgr_pointsToVids - Proposed<a class="headerlink" href="#pgr-pointstovids-proposed" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="name">
-<span id="index-0"></span><h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_pointsToVids</span></tt> - Converts an array of point geometries into vertex ids.</p>
+  <div class="section" id="pgr-pointstovids-deprecated-function">
+<span id="pgr-points-to-vids"></span><h1>pgr_pointsToVids - Deprecated Function<a class="headerlink" href="#pgr-pointstovids-deprecated-function" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>These are proposed functions</p>
+<p>This function is deprecated!!!</p>
 <ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
-</ul>
-</li>
+<li>Is no longer supported.</li>
+<li>May be removed from future versions.</li>
+<li>There is no replacement.</li>
 </ul>
 </div>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_pointsToVids</span></tt> - Converts an array of point geometries into vertex ids.</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -121,6 +108,7 @@
     &#39;edge_table&#39;
 );
 NOTICE:  Deperecated function: pgr_textToPoints
+NOTICE:  Deperecated function: pgr_pointsToVids
  pgr_pointstovids 
 ------------------
  {1,2,3,5}
@@ -157,8 +145,8 @@ NOTICE:  Deperecated function: pgr_textToPoints
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.4.0 (pgrouting-2.4.0-dev).
-      Last updated on Aug 31, 2016.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
+      Last updated on Dec 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

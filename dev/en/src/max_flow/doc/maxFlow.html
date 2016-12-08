@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Maximum Flow &mdash; pgRouting Manual (2.4.0-dev) (develop)</title>
+    <title>Maximum Flow &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.4.0 (develop)',
+        VERSION:     'v2.4.0-dev (dev-v2.4)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4.0-dev) (develop)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="../../../index.html" />
     <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
-    <link rel="next" title="pgr_maxFlowPushRelabel Proposed" href="pgr_maxFlowPushRelabel.html" />
+    <link rel="next" title="pgr_maxFlow Proposed" href="pgr_maxFlow.html" />
     <link rel="prev" title="pgr_contractGraph - Proposed" href="../../contraction/doc/pgr_contractGraph.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.4.0-dev) (develop)</span></a></h1>
+          <span>pgRouting Manual (2.4-dev)</span></a></h1>
         <h2 class="heading"><span>Maximum Flow</span></h2>
       </div>
       <div class="topnav">
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_maxFlowPushRelabel.html">pgr_maxFlowPushRelabel Proposed</a>&#160;&#160;»
+        <a href="pgr_maxFlow.html">pgr_maxFlow Proposed</a>&#160;&#160;»
         </p>
 
       </div>
@@ -53,9 +53,10 @@
 <span id="maxflow"></span><h1>Maximum Flow<a class="headerlink" href="#maximum-flow" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Push and relabel algorithm implementation for maximum flow.</li>
-<li><a class="reference internal" href="pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Edmonds and Karp algorithm implementation for maximum flow.</li>
-<li><a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Boykov and Kolmogorov algorithm implementation for maximum flow.</li>
+<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow Proposed</em></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
+<li><a class="reference internal" href="pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Push and relabel algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Boykov and Kolmogorov with details of flow on edges.</li>
 </ul>
 </div></blockquote>
 <p>The maximum flow through the graph is guaranteed to be the same with all implementations,
@@ -146,14 +147,14 @@ Additionally, the incoming and outgoing flow of a node must be equal except the 
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_maxFlowPushRelabel.html">pgr_maxFlowPushRelabel Proposed</a>&#160;&#160;»
+        <a href="pgr_maxFlow.html">pgr_maxFlow Proposed</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.4.0 (pgrouting-2.4.0-dev).
-      Last updated on Aug 31, 2016.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
+      Last updated on Dec 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

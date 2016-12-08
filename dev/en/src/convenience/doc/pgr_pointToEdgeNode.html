@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_pointToEdgeNode - Proposed &mdash; pgRouting Manual (2.4.0-dev) (develop)</title>
+    <title>pgr_pointToEdgeNode - Proposed &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2.4.0 (develop)',
+        VERSION:     'v2.4.0-dev (dev-v2.4)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4.0-dev) (develop)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="../../../index.html" />
     <link rel="up" title="Experimental and Proposed functions" href="../../proposed.html" />
-    <link rel="next" title="pgr_pointsToVids - Proposed" href="pgr_pointsToVids.html" />
+    <link rel="next" title="pgr_pointsToVids - Deprecated Function" href="pgr_pointsToVids.html" />
     <link rel="prev" title="pgr_edgeDisjointPaths - Proposed" href="../../max_flow/doc/pgr_edgeDisjointPaths.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.4.0-dev) (develop)</span></a></h1>
+          <span>pgRouting Manual (2.4-dev)</span></a></h1>
         <h2 class="heading"><span>pgr_pointToEdgeNode - Proposed</span></h2>
       </div>
       <div class="topnav">
@@ -42,7 +42,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_pointsToVids.html">pgr_pointsToVids - Proposed</a>&#160;&#160;»
+        <a href="pgr_pointsToVids.html">pgr_pointsToVids - Deprecated Function</a>&#160;&#160;»
         </p>
 
       </div>
@@ -125,7 +125,29 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_pointtoedgenode(&#39;edge_table&#39;, &#39;POINT(2 0)&#39;::geometry, 0.02);
+<div class="highlight-python"><div class="highlight"><pre>/*PGR-GNU*****************************************************************
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License AS published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
+SELECT * FROM pgr_pointtoedgenode(&#39;edge_table&#39;, &#39;POINT(2 0)&#39;::geometry, 0.02);
  pgr_pointtoedgenode 
 ---------------------
                    1
@@ -143,7 +165,7 @@ SELECT * FROM pgr_pointtoedgenode(&#39;edge_table&#39;, &#39;POINT(3 2)&#39;::ge
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_pointsToVids.html#pgr-points-to-vids"><em>pgr_pointsToVids - Proposed</em></a> - convert an array of point geometries into vertex ids.</li>
+<li><a class="reference internal" href="pgr_pointsToVids.html#pgr-points-to-vids"><em>pgr_pointsToVids - Deprecated Function</em></a> - convert an array of point geometries into vertex ids.</li>
 </ul>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
@@ -162,14 +184,14 @@ SELECT * FROM pgr_pointtoedgenode(&#39;edge_table&#39;, &#39;POINT(3 2)&#39;::ge
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../../../doc/index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="pgr_pointsToVids.html">pgr_pointsToVids - Proposed</a>&#160;&#160;»
+        <a href="pgr_pointsToVids.html">pgr_pointsToVids - Deprecated Function</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version 2.4.0 (pgrouting-2.4.0-dev).
-      Last updated on Aug 31, 2016.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
+      Last updated on Dec 08, 2016.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

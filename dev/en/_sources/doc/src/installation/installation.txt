@@ -14,9 +14,16 @@ Installation
 
 This is a basic guide to download and install pgRouting.
 
-Additional notes can be found in `Installation Notes <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
+The specific instructions for any given OS distribution may vary depending on the various package maintainers.
+Contact the specific OS package maintainer for details.
+
+.. note:: The following are only general instructions.
+
+Additional notes and corrections can be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
 
 Also PostGIS provides some information about installation in this `Install Guide <http://www.postgis.us/presentations/postgis_install_guide_22.html>`__
+
+
 
 Download
 --------
@@ -29,7 +36,7 @@ Windows
 
 Winnie Bot Builds:
 
-* `Winnie PostgreSQL 9.2-9.5 32-bit/64-bit <http://postgis.net/windows_downloads>`_
+* `Winnie Bot Builds <http://postgis.net/windows_downloads>`_
 
 Production Builds:
 
