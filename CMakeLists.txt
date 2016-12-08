@@ -404,7 +404,7 @@ execute_process(
 
 if(NOT LIB_DIR)
     message(FATAL_ERROR "pg_config --pkglibdir failed to return a value. Please check your PostgreSQL installation!")
-endif(LIB_DIR)
+endif()
 
 #-------
 set(LIBRARY_INSTALL_PATH ${LIB_DIR})
@@ -441,7 +441,7 @@ if(WIN32)
     message(STATUS "LINK_DIRECTORIES = ${POSTGRESQL_LIBRARIES}")
     link_directories(${POSTGRESQL_LIBRARIES} ${LIB_DIR})
     link_libraries(postgres)
-endif(WIN32)
+endif()
 
 #-----------------------------------------------------------------------------
 
@@ -524,7 +524,7 @@ endforeach()
 
 # assemble the object files from the src functions into
 # a single library librouting.so
-#set(LIBRARY_OUTPUT_PATH lib)
+set(LIBRARY_OUTPUT_PATH lib)
 
 if(APPLE)
     set(LIBRARY_MODE_TARGET "MODULE")
@@ -663,7 +663,7 @@ execute_process(
     RESULT_VARIABLE SIG_RESULT
     )
 if(SIG_RESULT)
-    message(FATAL_ERROR "    SIG_RESULT: ${SIG_RESULT}")
+    message(FATAL_ERROR "SIG_RESULT: ${SIG_RESULT}")
 endif(SIG_RESULT)
 
 # create the extension update scripts
@@ -673,8 +673,8 @@ execute_process(
     RESULT_VARIABLE UPDATE_RESULT
     )
 if(UPDATE_RESULT)
-    message(FATAL_ERROR "   UPDATE_RESULT: ${UPDATE_RESULT}")
-endif(UPDATE_RESULT)
+    message(FATAL_ERROR "UPDATE_RESULT: ${UPDATE_RESULT}")
+endif()
 
 # make a list of the files we need to install for version updates
 file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
@@ -682,9 +682,9 @@ file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
 # this will create the commands in the makefile under the install target
 if(UNIX)
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
-else(UNIX)
+else()
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
-endif(UNIX)
+endif()
 
 message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 
