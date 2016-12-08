@@ -140,6 +140,8 @@ pgr_get_restriction_data(
         }
     }
 
+    SPI_cursor_close(SPIportal);
+
     if (total_tuples == 0) {
         (*total_restrictions) = 0;
         PGR_DBG("NO restrictions");

@@ -146,6 +146,8 @@ pgr_get_customers_data(
         }
     }
 
+    SPI_cursor_close(SPIportal);
+
     if (total_tuples == 0) {
         (*total_customers) = 0;
         PGR_DBG("NO customers");
