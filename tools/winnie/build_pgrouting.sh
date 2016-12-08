@@ -107,7 +107,15 @@ rm -rf build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 mkdir build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 cd build${PGROUTING_VER}w${OS_BUILD}${GCC_TYPE}
 
-cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DBOOST_ROOT:PATH=${BOOSTROOT_PATH} -DCGAL_ROOT:PATH=${CGAL_PATH} -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} -DBoost_USE_STATIC_LIBS=ON -DBoost_USE_MULTITHREADED=ON -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include"  ../branches/${PGROUTING_VER}
+cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
+ -DBOOST_ROOT:PATH=${BOOSTROOT_PATH} \
+ -DCGAL_ROOT:PATH=${CGAL_PATH} \
+ -DGMP_ROOT:PATH=${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE} \
+ -DBoost_USE_STATIC_LIBS=ON \
+ -DBoost_USE_MULTITHREADED=ON \
+ -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include \
+ -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include" \
+ ../branches/${PGROUTING_VER}
 
 #first delete old pgrouting files from installed folder before we reinstall
 
@@ -134,6 +142,7 @@ make
 make install
 
 #we need uninstall and reinstall copy to VC++ EDB instance if we want to test on standard Windows installed versions
+cp *.dll ${PGPATHEDB}/lib/  #TODO remove this once we fix so the .dlls are created in lib folder
 cp lib/*.dll ${PGPATHEDB}/lib/
 cp lib/*.sql ${PGPATHEDB}/share/extension/
 cp lib/*.control ${PGPATHEDB}/share/extension/
