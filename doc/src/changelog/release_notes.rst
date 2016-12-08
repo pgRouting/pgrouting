@@ -50,12 +50,15 @@ pgRouting 2.4.0 Release Notes
 * pgr_astarCost(one to many)
 * pgr_astarCost(many to one)
 * pgr_astarCost(many to many)
-
-
+* pgr_astarCostMatrix
 
 .. rubric:: Deprecated Signatures
 
 * pgr_bddijkstra - use pgr_bdDijkstra instead
+
+.. rubric:: Deprecated Functions
+
+* pgr_pointsToVids
 
 .. rubric:: Bug fix
 

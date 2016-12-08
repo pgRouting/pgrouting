@@ -16,10 +16,15 @@ Changes for 2.4.0
   * pgr_astarCost(one to many)
   * pgr_astarCost(many to one)
   * pgr_astarCost(many to many)
+  * pgr_astarCostMatrix
 
 * Deprecated Signatures
 
   * pgr_bddijkstra - use pgr_bdDijkstra instead
+
+* Deprecated functions
+
+  * pgr_pointsToVids
 
 * Bug fix
 
