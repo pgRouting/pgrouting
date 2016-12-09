@@ -13,7 +13,7 @@ Here are some important resources:
   * Participate fixing [Documentation](https://github.com/pgRouting/pgrouting/issues?q=is%3Aopen+is%3Aissue+label%3ADocumentation).
   * Find a bug? [Let us know](https://github.com/pgRouting/pgrouting/issues).
 
-## Contirbution agreement
+## Contribution agreement
 
 Any kind of contribution will automatically fall to the following Licences:
 
