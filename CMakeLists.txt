@@ -88,6 +88,7 @@ set(PgRouting_SOURCE_NAMES
     #----------------------
     "alpha_shape"
     "bd_astar"
+    "bdAstar"    # 2.5
     "bdDijkstra" # 2.4
     "trsp"
 
