@@ -204,8 +204,8 @@ endif()
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
-set(PGROUTING_VERSION_MAJOR "3")
-set(PGROUTING_VERSION_MINOR "0")
+set(PGROUTING_VERSION_MAJOR "2")
+set(PGROUTING_VERSION_MINOR "4")
 set(PGROUTING_VERSION_PATCH "0")
 set(PGROUTING_VERSION_DEV "-dev")
 
