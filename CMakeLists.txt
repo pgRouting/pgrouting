@@ -131,8 +131,7 @@ set(PgRouting_SQL_DIRECTORIES
     "apsp_johnson"  # 2.0 wrap of pgr_johnson
     "apsp_warshall" # 2.0 wrap of pgr_warshall
     "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
-    "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver 
-
+    "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
     )
 
 #---------------------------------------------
@@ -205,8 +204,8 @@ endif()
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 
-set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "4")
+set(PGROUTING_VERSION_MAJOR "3")
+set(PGROUTING_VERSION_MINOR "0")
 set(PGROUTING_VERSION_PATCH "0")
 set(PGROUTING_VERSION_DEV "-dev")
 
@@ -278,7 +277,6 @@ if(WIN32 AND MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_SCL_SECURE_NO_WARNINGS")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_CRT_NONSTDC_NO_DEPRECATE")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -EHsc")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
 endif()
 
 #-----------------------------------------------------------------------------
@@ -314,6 +312,7 @@ if(NOT POSTGRESQL_VERSION_STRING)
 endif(NOT POSTGRESQL_VERSION_STRING)
 string(SUBSTRING "${POSTGRESQL_VERSION_STRING}" 11 -1 POSTGRESQL_VERSION)
 string(REGEX REPLACE "^([0-9]+)\\.([0-9]+).*" "\\1\\2" PGSQL_VERSION ${POSTGRESQL_VERSION})
+
 if("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
     message(FATAL_ERROR " PostgreSQL ${POSTGRESQL_MINIMUM_VERSION} or greater is required.")
 endif("${POSTGRESQL_VERSION}" VERSION_LESS "${POSTGRESQL_MINIMUM_VERSION}")
@@ -326,7 +325,11 @@ if(WIN32)
         include_directories(${POSTGRESQL_INCLUDE_DIR}/port/win32_msvc/)
     endif(MSVC)
 endif(WIN32)
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DPGSQL_VERSION=${PGSQL_VERSION}")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -DPGSQL_VERSION=${PGSQL_VERSION}")
+message(STATUS "PGSQL_VERSION=${PGSQL_VERSION}")
+
 
 
 #---------------------------------------------
@@ -464,12 +467,6 @@ endif()
 
 CHECK_C_COMPILER_FLAG("-frounding-math" C_COMPILER_SUPPORTS_ROUNDING_MATH)
 CHECK_CXX_COMPILER_FLAG("-frounding-math" CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
-if(C_COMPILER_SUPPORTS_ROUNDING_MATH)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frounding-math ")
-endif()
-if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math ")
-endif()
 
 
 if(NOT WIN32)
@@ -477,6 +474,16 @@ if(NOT WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC ")
 endif()
 
+if(WIN32 AND MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_C_FLAGS}")
+endif()
+
+if(C_COMPILER_SUPPORTS_ROUNDING_MATH)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -frounding-math ")
+endif()
+if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math ")
+endif()
 
 set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Werror -Wall -Wconversion -pedantic -fmax-errors=10 -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Werror -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
