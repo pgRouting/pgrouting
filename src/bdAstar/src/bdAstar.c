@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: astarOneToOne.c
+File: bdAstar.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
