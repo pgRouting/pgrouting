@@ -32,9 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/dijkstra_shortest_paths.hpp>
+#include "./pgr_bidirectional.hpp"
 
 #include <string>
 #include <queue>
@@ -43,33 +41,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <functional>
 
-
-#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/basePath_SSEC.hpp"
-#include "./../../common/src/pgr_base_graph.hpp"
-
-
 
 
 template < typename G >
-class Pgr_bdAstar {
-    typedef typename G::V V;
-    typedef typename G::E E;
+class Pgr_bdAstar : public Pgr_bidirectional<G> {
+    typedef typename Pgr_bidirectional<G>::V V;
+    typedef typename Pgr_bidirectional<G>::E E;
+    typedef typename Pgr_bidirectional<G>::Cost_Vertex_pair Cost_Vertex_pair;
 
-    typedef std::pair<double, V> Cost_Vertex_pair;
-    typedef typename std::priority_queue<
-        Cost_Vertex_pair,
-        std::vector<Cost_Vertex_pair>,
-        std::greater<Cost_Vertex_pair> > Priority_queue;
+    using Pgr_bidirectional<G>::graph;
+    using Pgr_bidirectional<G>::m_log;
+    using Pgr_bidirectional<G>::v_source;
+    using Pgr_bidirectional<G>::v_target;
+
+    using Pgr_bidirectional<G>::backward_predecessor;
+    using Pgr_bidirectional<G>::backward_queue;
+    using Pgr_bidirectional<G>::backward_finished;
+    using Pgr_bidirectional<G>::backward_cost;
+    using Pgr_bidirectional<G>::backward_edge;
+
+    using Pgr_bidirectional<G>::forward_predecessor;
+    using Pgr_bidirectional<G>::forward_queue;
+    using Pgr_bidirectional<G>::forward_finished;
+    using Pgr_bidirectional<G>::forward_cost;
+    using Pgr_bidirectional<G>::forward_edge;
+
+
+    using Pgr_bidirectional<G>::bidirectional;
 
 
  public:
-    explicit Pgr_bdAstar(G &pgraph):
-        graph(pgraph),
-        INF((std::numeric_limits<double>::max)()),
+    explicit Pgr_bdAstar(G &pgraph) :
+        Pgr_bidirectional<G>(pgraph),
         m_heuristic(0),
         m_factor(1.0) {
-        m_log << "constructor\n";
+        m_log << "pgr_bdAstar constructor\n";
     };
 
     ~Pgr_bdAstar() = default;
@@ -82,134 +89,14 @@ class Pgr_bdAstar {
         if (v_source == v_target) {
             return Path(v_source, v_target);
         }
-        return bidir_astar(only_cost);
+        return bidirectional(only_cost);
     }
 
-    std::string log() const {return m_log.str();}
-    void clean_log() {log.clear();}
-    void clear() {
-        while (!forward_queue.empty()) forward_queue.pop();
-        while (!backward_queue.empty()) backward_queue.pop();
-
-        backward_finished.clear();
-        backward_edge.clear();
-        backward_predecessor.clear();
-        backward_cost.clear();
-
-        forward_finished.clear();
-        forward_edge.clear();
-        forward_predecessor.clear();
-        forward_cost.clear();
-    }
-
+    using Pgr_bidirectional<G>::log;
+    using Pgr_bidirectional<G>::clean_log;
 
  private:
-    void initialize() {
-        m_log << "initializing\n";
-        clear();
-        forward_predecessor.resize(graph.num_vertices());
-        forward_finished.resize(graph.num_vertices(), false);
-        forward_edge.resize(graph.num_vertices(), -1);
-        forward_cost.resize(graph.num_vertices(), INF);
-        std::iota(forward_predecessor.begin(), forward_predecessor.end(), 0);
 
-        backward_predecessor.resize(graph.num_vertices());
-        backward_finished.resize(graph.num_vertices(), false);
-        backward_edge.resize(graph.num_vertices(), -1);
-        backward_cost.resize(graph.num_vertices(), INF);
-        std::iota(backward_predecessor.begin(), backward_predecessor.end(), 0);
-
-        v_min_node = -1;
-        best_cost = INF;
-    }
-
-    Path bidir_astar(bool only_cost) {
-        m_log << "bidir_astar\n";
-
-        Pgr_bdAstar< G >::initialize();
-
-        forward_cost[v_source] = 0;
-        forward_queue.push(std::make_pair(0.0, v_source));
-
-
-        backward_cost[v_target] = 0;
-        backward_queue.push(std::make_pair(0.0, v_target));
-
-        while (!forward_queue.empty() &&  !backward_queue.empty()) {
-            auto forward_node = forward_queue.top();
-            auto backward_node = backward_queue.top();
-            /*
-             * done: there is no path with lower cost
-             */
-            if (forward_node.first == INF || backward_node.first == INF) {
-                break;
-            }
-
-            /*
-             * Explore from the cheapest side
-             */
-            if (backward_node.first < forward_node.first) {
-                backward_queue.pop();
-                if (!backward_finished[backward_node.second]) {
-                    explore_backward(backward_node);
-                }
-                if (found(backward_node.second)) {
-                    break;
-                }
-            } else {
-                forward_queue.pop();
-                if (!forward_finished[forward_node.second]) {
-                    explore_forward(forward_node);
-                }
-                if (found(forward_node.second)) {
-                    break;
-                }
-            }
-        }
-
-        if (best_cost == INF) return Path();
-
-        Path forward_path(
-                graph,
-                v_source,
-                v_min_node,
-                forward_predecessor,
-                forward_cost,
-                only_cost,
-                true);
-        Path backward_path(
-                graph,
-                v_target,
-                v_min_node,
-                backward_predecessor,
-                backward_cost,
-                only_cost,
-                false);
-        m_log << forward_path;
-        backward_path.reverse();
-        m_log << backward_path;
-        forward_path.append(backward_path);
-        m_log << forward_path;
-        return forward_path;
-    }
-
-
-
-    bool found(const V &node) {
-        /*
-         * Update common node
-         */
-        if (forward_finished[node] && backward_finished[node]) {
-            if (best_cost >= forward_cost[node] + backward_cost[node]) {
-                v_min_node = node;
-                best_cost =  forward_cost[node] + backward_cost[node];
-                return false;
-            } else {
-                return true;
-            }
-        }
-        return false;
-    }
 
     void explore_forward(const Cost_Vertex_pair &node) {
         typename G::EO_i out, out_end;
@@ -258,9 +145,6 @@ class Pgr_bdAstar {
     }
 
 
-
-
-
     double heuristic(V v, V u) {
         if (m_heuristic == 0) return 0;
 
@@ -288,30 +172,6 @@ class Pgr_bdAstar {
     }
 
  private:
-    G &graph;
-    V v_source;  //!< source descriptor
-    V v_target;  //!< target descriptor
-    V v_min_node;  //!< target descriptor
-
-    double INF;  //!< infinity
-
-    mutable std::ostringstream m_log;
-    Priority_queue forward_queue;
-    Priority_queue backward_queue;
-
-    double best_cost;
-    bool cost_only;
-
-    std::vector<bool> backward_finished;
-    std::vector<int64_t> backward_edge;
-    std::vector<V> backward_predecessor;
-    std::vector<double> backward_cost;
-
-    std::vector<bool> forward_finished;
-    std::vector<int64_t> forward_edge;
-    std::vector<V> forward_predecessor;
-    std::vector<double> forward_cost;
-
     int m_heuristic;
     double m_factor;
 
