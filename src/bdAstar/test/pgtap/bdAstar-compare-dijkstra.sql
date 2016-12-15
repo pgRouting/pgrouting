@@ -2,11 +2,10 @@
 
 SET client_min_messages TO ERROR;
 
-SELECT plan(4);
+SELECT plan(544);
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
-SELECT todo_start();
 
 CREATE or REPLACE FUNCTION bdastar_compare_dijkstra(cant INTEGER default 17)
 RETURNS SETOF TEXT AS
@@ -17,9 +16,8 @@ dijkstra_sql TEXT;
 bddijkstra_sql TEXT;
 BEGIN
 
-    -- TODO change to cant
-    FOR i IN 1.. 1  LOOP
-        FOR j IN 2.. 2 BY 2 LOOP
+    FOR i IN 1.. cant  LOOP
+        FOR j IN 2.. cant BY 2 LOOP
 
             -- DIRECTED
             inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2 FROM edge_table';
@@ -69,7 +67,6 @@ language plpgsql;
 
 SELECT * from bdastar_compare_dijkstra();
 
-SELECT todo_end();
 
 
 SELECT * FROM finish();

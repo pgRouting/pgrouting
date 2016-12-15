@@ -74,6 +74,9 @@ CREATE OR REPLACE FUNCTION pgr_bdAstar(
     start_vid BIGINT,
     end_vid BIGINT,
     directed BOOLEAN,
+    heuristic INTEGER DEFAULT 5,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
@@ -85,7 +88,7 @@ $BODY$
 DECLARE
 BEGIN
     RETURN query SELECT *
-    FROM _pgr_bdAstar(_pgr_get_statement($1), $2, $3, directed:=$4, only_cost:=false);
+    FROM _pgr_bdAstar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, false);
   END
 $BODY$
 LANGUAGE plpgsql VOLATILE

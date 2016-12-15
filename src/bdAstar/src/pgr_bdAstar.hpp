@@ -74,17 +74,23 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
  public:
     explicit Pgr_bdAstar(G &pgraph) :
         Pgr_bidirectional<G>(pgraph),
-        m_heuristic(0),
+        m_heuristic(5),
         m_factor(1.0) {
         m_log << "pgr_bdAstar constructor\n";
     };
 
     ~Pgr_bdAstar() = default;
 
-    Path pgr_bdAstar(V start_vertex, V end_vertex, bool only_cost) {
+    Path pgr_bdAstar(V start_vertex, V end_vertex,
+            int heuristic,
+            double factor,
+            double epsilon,
+            bool only_cost) {
         m_log << "pgr_bdAstar\n";
         v_source = start_vertex;
         v_target = end_vertex;
+        m_heuristic = heuristic;
+        m_factor = factor * epsilon;
 
         if (v_source == v_target) {
             return Path(v_source, v_target);
@@ -174,7 +180,6 @@ class Pgr_bdAstar : public Pgr_bidirectional<G> {
  private:
     int m_heuristic;
     double m_factor;
-
 };
 
 #endif  // SRC_BD_ASTAR_SRC_BIDIRASTAR_H_

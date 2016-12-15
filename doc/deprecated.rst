@@ -17,6 +17,19 @@ Deprecated Functions
     * That means they have been replaced by new functions or are no longer supported, and may be removed from future versions.
     * All code that uses the functions should be converted to use its replacement if one exists. 
 
+Deprecated on version 2.5
+----------------------------
+
+Routing functions
+...................
+
+- :ref:`bd_astar-v2` - See new signatures of :ref:`pgr_bdAstar`
+
+.. toctree::
+   :hidden:
+
+   ../src/bd_astar/doc/pgr_bdAstar-v2
+
 Deprecated on version 2.4
 ----------------------------
 
@@ -29,6 +42,12 @@ Auxiliary functions
 ...................
 
 - :ref:`pgr_points_to_vids`
+
+.. toctree::
+   :hidden:
+
+   ../src/bd_dijkstra/doc/pgr_bdDijkstra-v2
+   ../src/convenience/doc/pgr_pointsToVids
 
 Deprecated on version 2.3
 ----------------------------
@@ -53,7 +72,6 @@ Auxiliary functions
 .. toctree::
    :hidden:
 
-   ../src/bd_dijkstra/doc/pgr_bdDijkstra-v2
    ../src/astar/doc/pgr_astar-v2
    ../src/tsp/doc/pgr_tsp-V2.0
    ../src/convenience/doc/pgr_flipEdges

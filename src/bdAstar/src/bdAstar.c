@@ -83,15 +83,12 @@ process(char* edges_sql,
             start_vid,
             end_vid,
             directed,
-#if 0
+
             heuristic,
             factor,
             epsilon,
             only_cost,
-            true,
-#else
-            only_cost,
-#endif
+
             result_tuples,
             result_count,
             &log_msg,

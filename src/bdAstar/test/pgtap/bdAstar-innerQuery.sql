@@ -5,10 +5,10 @@ SET client_min_messages TO ERROR;
 
 
 SELECT has_function('pgr_bdastar',
-    ARRAY['text', 'bigint', 'bigint', 'boolean']);
+    ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'double precision', 'double precision']);
 
 SELECT function_returns('pgr_bdastar',
-    ARRAY['text', 'bigint', 'bigint', 'boolean'],
+    ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'double precision', 'double precision'],
     'setof record');
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 
@@ -122,6 +122,7 @@ SELECT test_anyInteger('pgr_bdastar',
 SELECT test_anyNumerical('pgr_bdastar',
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'cost');
+
 
 
 SELECT finish();

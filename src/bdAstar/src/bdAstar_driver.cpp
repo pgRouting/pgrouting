@@ -58,13 +58,16 @@ pgr_bdAstar(
         G &graph,
         int64_t source,
         int64_t target,
+        int heuristic,
+        double factor,
+        double epsilon,
         std::ostream &log,
         bool only_cost = false) {
     log << "entering static function\n";
     Pgr_bdAstar<G> fn_bdAstar(graph);
-    log << fn_bdAstar.log();
     auto path = fn_bdAstar.pgr_bdAstar(
-            graph.get_V(source), graph.get_V(target), only_cost);
+            graph.get_V(source), graph.get_V(target),
+            heuristic, factor, epsilon, only_cost);
     log << fn_bdAstar.log();
 
     return path;
@@ -73,14 +76,19 @@ pgr_bdAstar(
 
 void
 do_pgr_bdAstar(
-        Pgr_edge_xy_t *edges,
-        size_t total_edges,
+        Pgr_edge_xy_t *edges, size_t total_edges,
         int64_t start_vid,
         int64_t end_vid,
+
         bool directed,
+        int heuristic,
+        double factor,
+        double epsilon,
         bool only_cost,
+
         General_path_element_t **return_tuples,
         size_t *return_count,
+
         char ** log_msg,
         char ** notice_msg,
         char ** err_msg) {
@@ -110,6 +118,9 @@ do_pgr_bdAstar(
             path = pgr_bdAstar(digraph,
                     start_vid,
                     end_vid,
+                    heuristic,
+                    factor,
+                    epsilon,
                     log,
                     only_cost);
         } else {
@@ -123,6 +134,9 @@ do_pgr_bdAstar(
                     undigraph,
                     start_vid,
                     end_vid,
+                    heuristic,
+                    factor,
+                    epsilon,
                     log,
                     only_cost);
         }

@@ -8,9 +8,9 @@ SELECT can(ARRAY['pgr_bdastar']);
 
 --V2.4+
 SELECT has_function('pgr_bdastar',
-    ARRAY['text','bigint','bigint','boolean']);
+    ARRAY['text','bigint','bigint','boolean', 'integer', 'double precision', 'double precision']);
 SELECT function_returns('pgr_bdastar',
-    ARRAY['text','bigint','bigint','boolean'],
+    ARRAY['text','bigint','bigint','boolean', 'integer', 'double precision', 'double precision'],
     'setof record');
 
 -- testing for the signature that they return the correct names & columns

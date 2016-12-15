@@ -7,7 +7,7 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _bd_astar:
+.. _bd_astar-v2:
 
 pgr_bdAstar - Bi-directional A* Shortest Path
 ===============================================================================

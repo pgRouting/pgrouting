@@ -53,9 +53,14 @@ extern "C" {
                 int64_t start_vid,
                 int64_t end_vid,
                 bool directed,
+                int heuristic,
+                double factor,
+                double epsilon,
                 bool only_cost,
+
                 General_path_element_t **return_tuples,
                 size_t *return_count,
+
                 char** log_msg,
                 char** notice_msg,
                 char** err_msg);
