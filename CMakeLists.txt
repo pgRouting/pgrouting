@@ -87,7 +87,6 @@ set(PgRouting_SOURCE_NAMES
     # Code needs to be rewritten
     #----------------------
     "alpha_shape"
-    "bd_astar"
     "bdAstar"    # 2.5
     "bdDijkstra" # 2.4
     "trsp"
@@ -133,6 +132,7 @@ set(PgRouting_SQL_DIRECTORIES
     "apsp_warshall" # 2.0 wrap of pgr_warshall
     "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
     "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
+    "bd_astar"      # 2.5  wrap of pgr_bdAstar
     )
 
 #---------------------------------------------
