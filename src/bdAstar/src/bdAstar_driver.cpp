@@ -64,7 +64,7 @@ pgr_bdAstar(
         std::ostream &log,
         bool only_cost = false) {
     log << "entering static function\n";
-    Pgr_bdAstar<G> fn_bdAstar(graph);
+    pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
     auto path = fn_bdAstar.pgr_bdAstar(
             graph.get_V(source), graph.get_V(target),
             heuristic, factor, epsilon, only_cost);

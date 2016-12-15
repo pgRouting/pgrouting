@@ -63,7 +63,7 @@ pgr_bdDijkstra(
         std::ostream &log,
         bool only_cost = false) {
     log << "entering static function\n";
-    Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
+    pgrouting::bidirectional::Pgr_bdDijkstra<G> fn_bdDijkstra(graph);
 
     auto path = fn_bdDijkstra.pgr_bdDijkstra(
             graph.get_V(source), graph.get_V(target), only_cost);

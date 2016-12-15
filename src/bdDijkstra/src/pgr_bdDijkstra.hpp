@@ -41,6 +41,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/basePath_SSEC.hpp"
 
 
+namespace pgrouting {
+namespace bidirectional {
+
+
 template < typename G >
 class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
     typedef typename Pgr_bidirectional<G>::V V;
@@ -139,5 +143,8 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
          backward_finished[current_node] = true;
      }
 };
+
+} // namespace pgrouting
+} // namespace bidirectional
 
 #endif  // SRC_BDDIJKSTRA_SRC_PGR_BDDIJKSTRA_HPP_
