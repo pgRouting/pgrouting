@@ -174,7 +174,7 @@ class Pgr_astar {
      std::deque< V > nodesInDistance;
      //@}
 
-     // euclidean distance heuristic for one goal
+     // heuristic for one goal
      class distance_heuristic : public boost::astar_heuristic< B_G, double > {
       public:
           distance_heuristic(B_G &g, V goal, int heuristic, double factor)

@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pgr_bdastar.hpp
+File: pgr_bdAstar.hpp 
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_BDASTAR_SRC_PGR_BDASTAR_HPP_
-#define SRC_BDASTAR_SRC_PGR_BDASTAR_HPP_
+#ifndef SRC_BD_ASTAR_SRC_BIDIRASTAR_H_
+#define SRC_BD_ASTAR_SRC_BIDIRASTAR_H_
 #pragma once
 
 
@@ -53,233 +53,268 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < typename G >
 class Pgr_bdAstar {
-     typedef typename G::V V;
-     typedef typename G::E E;
+    typedef typename G::V V;
+    typedef typename G::E E;
 
-     typedef std::pair<double, V> Cost_Vertex_pair;
-     typedef typename std::priority_queue<
-         Cost_Vertex_pair,
-         std::vector<Cost_Vertex_pair>,
-         std::greater<Cost_Vertex_pair> > Priority_queue;
+    typedef std::pair<double, V> Cost_Vertex_pair;
+    typedef typename std::priority_queue<
+        Cost_Vertex_pair,
+        std::vector<Cost_Vertex_pair>,
+        std::greater<Cost_Vertex_pair> > Priority_queue;
 
 
  public:
-     explicit Pgr_bdAstar(G &pgraph):
-         graph(pgraph),
-         INF((std::numeric_limits<double>::max)()) {
-             m_log << "constructor\n";
-         };
+    explicit Pgr_bdAstar(G &pgraph):
+        graph(pgraph),
+        INF((std::numeric_limits<double>::max)()),
+        m_heuristic(0),
+        m_factor(1.0) {
+        m_log << "constructor\n";
+    };
 
-     ~Pgr_bdAstar() = default;
+    ~Pgr_bdAstar() = default;
 
+    Path pgr_bdAstar(V start_vertex, V end_vertex, bool only_cost) {
+        m_log << "pgr_bdAstar\n";
+        v_source = start_vertex;
+        v_target = end_vertex;
 
-     Path pgr_bdAstar(V start_vertex, V end_vertex, bool only_cost) {
-         m_log << "pgr_bdAstar\n";
-         v_source = start_vertex;
-         v_target = end_vertex;
-
-         if (v_source == v_target) {
+        if (v_source == v_target) {
             return Path(v_source, v_target);
-         }
-         return bidir_astar(only_cost);
-     }
+        }
+        return bidir_astar(only_cost);
+    }
 
-     std::string log() const {return m_log.str();}
-     void clean_log() {log.clear();}
-     void clear() {
-         while (!forward_queue.empty()) forward_queue.pop();
-         while (!backward_queue.empty()) backward_queue.pop();
+    std::string log() const {return m_log.str();}
+    void clean_log() {log.clear();}
+    void clear() {
+        while (!forward_queue.empty()) forward_queue.pop();
+        while (!backward_queue.empty()) backward_queue.pop();
 
-         backward_finished.clear();
-         backward_edge.clear();
-         backward_predecessor.clear();
-         backward_cost.clear();
+        backward_finished.clear();
+        backward_edge.clear();
+        backward_predecessor.clear();
+        backward_cost.clear();
 
-         forward_finished.clear();
-         forward_edge.clear();
-         forward_predecessor.clear();
-         forward_cost.clear();
-     }
-
-
- private:
-     void initialize() {
-         m_log << "initializing\n";
-         clear();
-         forward_predecessor.resize(graph.num_vertices());
-         forward_finished.resize(graph.num_vertices(), false);
-         forward_edge.resize(graph.num_vertices(), -1);
-         forward_cost.resize(graph.num_vertices(), INF);
-         std::iota(forward_predecessor.begin(), forward_predecessor.end(), 0);
-
-         backward_predecessor.resize(graph.num_vertices());
-         backward_finished.resize(graph.num_vertices(), false);
-         backward_edge.resize(graph.num_vertices(), -1);
-         backward_cost.resize(graph.num_vertices(), INF);
-         std::iota(backward_predecessor.begin(), backward_predecessor.end(), 0);
-
-         v_min_node = -1;
-         best_cost = INF;
-     }
-
-     Path bidir_astar(bool only_cost) {
-         m_log << "bidir_astar\n";
-
-         Pgr_bdAstar< G >::initialize();
-
-         forward_cost[v_source] = 0;
-         forward_queue.push(std::make_pair(0.0, v_source));
-
-         backward_cost[v_target] = 0;
-         backward_queue.push(std::make_pair(0.0, v_target));
-
-         while (!forward_queue.empty() &&  !backward_queue.empty()) {
-             auto forward_node = forward_queue.top();
-             auto backward_node = backward_queue.top();
-             /*
-              *  done: there is no path with lower cost
-              */
-             if (forward_node.first == INF || backward_node.first == INF) {
-                 break;
-             }
-
-             /*
-              * Explore from the cheapest side
-              */
-             if (backward_node.first < forward_node.first) {
-                 backward_queue.pop();
-                 if (!backward_finished[backward_node.second]) {
-                     explore_backward(backward_node);
-                 }
-                 if (found(backward_node.second)) {
-                     break;
-                 }
-             } else {
-                 forward_queue.pop();
-                 if (!forward_finished[forward_node.second]) {
-                     explore_forward(forward_node);
-                 }
-                 if (found(forward_node.second)) {
-                     break;
-                 }
-             }
-         }
-
-         if (best_cost == INF) return Path();
-
-         Path forward_path(
-                 graph,
-                 v_source,
-                 v_min_node,
-                 forward_predecessor,
-                 forward_cost,
-                 only_cost,
-                 true);
-         Path backward_path(
-                 graph,
-                 v_target,
-                 v_min_node,
-                 backward_predecessor,
-                 backward_cost,
-                 only_cost,
-                 false);
-         m_log << forward_path;
-         backward_path.reverse();
-         m_log << backward_path;
-         forward_path.append(backward_path);
-         m_log << forward_path;
-         return forward_path;
-     }
-
-
-
-     bool found(const V &node) {
-         /*
-          * Update common node
-          */
-         if (forward_finished[node] && backward_finished[node]) {
-             if (best_cost >= forward_cost[node] + backward_cost[node]) {
-                 v_min_node = node;
-                 best_cost =  forward_cost[node] + backward_cost[node];
-                 return false;
-             } else {
-                 return true;
-             }
-         }
-         return false;
-     }
-
-     void explore_forward(const Cost_Vertex_pair &node) {
-         typename G::EO_i out, out_end;
-
-         auto current_cost = node.first;
-         auto current_node = node.second;
-
-         for (boost::tie(out, out_end) = out_edges(current_node, graph.graph);
-                 out != out_end; ++out) {
-             auto edge_cost = graph[*out].cost;
-             auto next_node = graph.adjacent(current_node, *out);
-
-             if (forward_finished[next_node]) continue;
-
-             if (edge_cost + current_cost < forward_cost[next_node]) {
-                 forward_cost[next_node] = edge_cost + current_cost;
-                 forward_predecessor[next_node] = current_node;
-                 forward_edge[next_node] = graph[*out].id;
-                 forward_queue.push({forward_cost[next_node], next_node});
-             }
-         }
-         forward_finished[current_node] = true;
-     }
-
-     void explore_backward(const Cost_Vertex_pair &node) {
-         typename G::EI_i in, in_end;
-
-         auto current_cost = node.first;
-         auto current_node = node.second;
-
-         for (boost::tie(in, in_end) = in_edges(current_node, graph.graph);
-                 in != in_end; ++in) {
-             auto edge_cost = graph[*in].cost;
-             auto next_node = graph.adjacent(current_node, *in);
-
-             if (backward_finished[next_node]) continue;
-
-             if (edge_cost + current_cost < backward_cost[next_node]) {
-                 backward_cost[next_node] = edge_cost + current_cost;
-                 backward_predecessor[next_node] = current_node;
-                 backward_edge[next_node] = graph[*in].id;
-                 backward_queue.push({backward_cost[next_node], next_node});
-             }
-         }
-         backward_finished[current_node] = true;
-     }
+        forward_finished.clear();
+        forward_edge.clear();
+        forward_predecessor.clear();
+        forward_cost.clear();
+    }
 
 
  private:
-     G &graph;
-     V v_source;  //!< source descriptor
-     V v_target;  //!< target descriptor
-     V v_min_node;  //!< target descriptor
+    void initialize() {
+        m_log << "initializing\n";
+        clear();
+        forward_predecessor.resize(graph.num_vertices());
+        forward_finished.resize(graph.num_vertices(), false);
+        forward_edge.resize(graph.num_vertices(), -1);
+        forward_cost.resize(graph.num_vertices(), INF);
+        std::iota(forward_predecessor.begin(), forward_predecessor.end(), 0);
 
-     double INF;  //!< infinity
+        backward_predecessor.resize(graph.num_vertices());
+        backward_finished.resize(graph.num_vertices(), false);
+        backward_edge.resize(graph.num_vertices(), -1);
+        backward_cost.resize(graph.num_vertices(), INF);
+        std::iota(backward_predecessor.begin(), backward_predecessor.end(), 0);
 
-     mutable std::ostringstream m_log;
-     Priority_queue forward_queue;
-     Priority_queue backward_queue;
+        v_min_node = -1;
+        best_cost = INF;
+    }
 
-     double best_cost;
-     bool cost_only;
+    Path bidir_astar(bool only_cost) {
+        m_log << "bidir_astar\n";
 
-     std::vector<bool> backward_finished;
-     std::vector<int64_t> backward_edge;
-     std::vector<V> backward_predecessor;
-     std::vector<double> backward_cost;
+        Pgr_bdAstar< G >::initialize();
 
-     std::vector<bool> forward_finished;
-     std::vector<int64_t> forward_edge;
-     std::vector<V> forward_predecessor;
-     std::vector<double> forward_cost;
+        forward_cost[v_source] = 0;
+        forward_queue.push(std::make_pair(0.0, v_source));
+
+
+        backward_cost[v_target] = 0;
+        backward_queue.push(std::make_pair(0.0, v_target));
+
+        while (!forward_queue.empty() &&  !backward_queue.empty()) {
+            auto forward_node = forward_queue.top();
+            auto backward_node = backward_queue.top();
+            /*
+             * done: there is no path with lower cost
+             */
+            if (forward_node.first == INF || backward_node.first == INF) {
+                break;
+            }
+
+            /*
+             * Explore from the cheapest side
+             */
+            if (backward_node.first < forward_node.first) {
+                backward_queue.pop();
+                if (!backward_finished[backward_node.second]) {
+                    explore_backward(backward_node);
+                }
+                if (found(backward_node.second)) {
+                    break;
+                }
+            } else {
+                forward_queue.pop();
+                if (!forward_finished[forward_node.second]) {
+                    explore_forward(forward_node);
+                }
+                if (found(forward_node.second)) {
+                    break;
+                }
+            }
+        }
+
+        if (best_cost == INF) return Path();
+
+        Path forward_path(
+                graph,
+                v_source,
+                v_min_node,
+                forward_predecessor,
+                forward_cost,
+                only_cost,
+                true);
+        Path backward_path(
+                graph,
+                v_target,
+                v_min_node,
+                backward_predecessor,
+                backward_cost,
+                only_cost,
+                false);
+        m_log << forward_path;
+        backward_path.reverse();
+        m_log << backward_path;
+        forward_path.append(backward_path);
+        m_log << forward_path;
+        return forward_path;
+    }
+
+
+
+    bool found(const V &node) {
+        /*
+         * Update common node
+         */
+        if (forward_finished[node] && backward_finished[node]) {
+            if (best_cost >= forward_cost[node] + backward_cost[node]) {
+                v_min_node = node;
+                best_cost =  forward_cost[node] + backward_cost[node];
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void explore_forward(const Cost_Vertex_pair &node) {
+        typename G::EO_i out, out_end;
+
+        auto current_cost = node.first;
+        auto current_node = node.second;
+
+        for (boost::tie(out, out_end) = out_edges(current_node, graph.graph);
+                out != out_end; ++out) {
+            auto edge_cost = graph[*out].cost;
+            auto next_node = graph.adjacent(current_node, *out);
+
+            if (forward_finished[next_node]) continue;
+
+            if (edge_cost + current_cost < forward_cost[next_node]) {
+                forward_cost[next_node] = edge_cost + current_cost;
+                forward_predecessor[next_node] = current_node;
+                forward_edge[next_node] = graph[*out].id;
+                forward_queue.push({forward_cost[next_node] + heuristic(next_node, v_target) , next_node});
+            }
+        }
+        forward_finished[current_node] = true;
+    }
+
+    void explore_backward(const Cost_Vertex_pair &node) {
+        typename G::EI_i in, in_end;
+
+        auto current_cost = node.first;
+        auto current_node = node.second;
+
+        for (boost::tie(in, in_end) = in_edges(current_node, graph.graph);
+                in != in_end; ++in) {
+            auto edge_cost = graph[*in].cost;
+            auto next_node = graph.adjacent(current_node, *in);
+
+            if (backward_finished[next_node]) continue;
+
+            if (edge_cost + current_cost < backward_cost[next_node]) {
+                backward_cost[next_node] = edge_cost + current_cost;
+                backward_predecessor[next_node] = current_node;
+                backward_edge[next_node] = graph[*in].id;
+                backward_queue.push({backward_cost[next_node] + heuristic(next_node, v_source), next_node});
+            }
+        }
+        backward_finished[current_node] = true;
+    }
+
+
+
+
+
+    double heuristic(V v, V u) {
+        if (m_heuristic == 0) return 0;
+
+        double dx = graph[v].x() - graph[u].x();
+        double dy = graph[v].y() - graph[u].y();
+        double current;
+
+        switch (m_heuristic) {
+            case 0:
+                current = 0;
+            case 1:
+                current = std::fabs((std::max)(dx, dy)) * m_factor;
+            case 2:
+                current = std::fabs((std::min)(dx, dy)) * m_factor;
+            case 3:
+                current = (dx * dx + dy * dy) * m_factor * m_factor;
+            case 4:
+                current = std::sqrt(dx * dx + dy * dy) * m_factor;
+            case 5:
+                current = (std::fabs(dx) + std::fabs(dy)) * m_factor;
+            default:
+                current = 0;
+        }
+        return current;
+    }
+
+ private:
+    G &graph;
+    V v_source;  //!< source descriptor
+    V v_target;  //!< target descriptor
+    V v_min_node;  //!< target descriptor
+
+    double INF;  //!< infinity
+
+    mutable std::ostringstream m_log;
+    Priority_queue forward_queue;
+    Priority_queue backward_queue;
+
+    double best_cost;
+    bool cost_only;
+
+    std::vector<bool> backward_finished;
+    std::vector<int64_t> backward_edge;
+    std::vector<V> backward_predecessor;
+    std::vector<double> backward_cost;
+
+    std::vector<bool> forward_finished;
+    std::vector<int64_t> forward_edge;
+    std::vector<V> forward_predecessor;
+    std::vector<double> forward_cost;
+
+    int m_heuristic;
+    double m_factor;
+
 };
 
-#endif  // SRC_BDASTAR_SRC_PGR_BDASTAR_HPP_
+#endif  // SRC_BD_ASTAR_SRC_BIDIRASTAR_H_

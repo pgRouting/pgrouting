@@ -27,20 +27,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#include "./bdAstar_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
 
 #include "./pgr_bdAstar.hpp"
-#include "./bdAstar_driver.h"
-
 
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 
-#include "./../../common/src/pgr_base_graph.hpp"
 
 
 
@@ -64,7 +62,7 @@ pgr_bdAstar(
         bool only_cost = false) {
     log << "entering static function\n";
     Pgr_bdAstar<G> fn_bdAstar(graph);
-
+    log << fn_bdAstar.log();
     auto path = fn_bdAstar.pgr_bdAstar(
             graph.get_V(source), graph.get_V(target), only_cost);
     log << fn_bdAstar.log();
@@ -100,7 +98,6 @@ do_pgr_bdAstar(
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
 
-        if (false) {
         Path path;
         log << "starting process\n";
         if (directed) {
@@ -129,9 +126,7 @@ do_pgr_bdAstar(
                     log,
                     only_cost);
         }
-        }
-        Path path(start_vid,end_vid);
-        path.push_back({-1,-1,-1,-1});
+
 
         auto count = path.size();
 
@@ -150,27 +145,27 @@ do_pgr_bdAstar(
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?
             nullptr :
-            strdup(log.str().c_str());
+            pgr_msg(log.str().c_str());
         *notice_msg = notice.str().empty()?
             nullptr :
-            strdup(notice.str().c_str());
+            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << except.what();
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
         err << "Caught unknown exception!";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
