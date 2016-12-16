@@ -26,7 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include <string>
-// #include "./point.h"
 #include "../../common/src/xy_vertex.h"
 
 namespace pgrouting {
@@ -70,7 +69,7 @@ class Node {
      double comparable_distance(const Node &other) const;
 
 
- private:
+ protected:
      pgrouting::Point m_point;
      size_t m_id;                ///< internal node number
      int64_t m_original_id;  // /< user supplied node number

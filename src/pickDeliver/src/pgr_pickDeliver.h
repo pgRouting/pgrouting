@@ -51,7 +51,9 @@ class Pgr_pickDeliver {
 
  public:
     Pgr_pickDeliver(
-            const Customer_t *c1, size_t total_customers,
+            const PickDeliveryOrders_t *c1,
+            size_t total_orders,
+
             int VehicleLength,
             double capacity,
             double speed,
@@ -90,7 +92,7 @@ class Pgr_pickDeliver {
     size_t m_max_cycles;
     int max_vehicles;
     Vehicle_node m_starting_site, m_ending_site;
-    std::vector<Customer_t> m_original_data;
+    std::vector<PickDeliveryOrders_t> m_original_data;
     std::vector<Vehicle_node> m_nodes;
     std::vector<Order> m_orders;
     std::vector<Solution> solutions;

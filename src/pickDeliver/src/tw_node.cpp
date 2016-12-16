@@ -223,18 +223,27 @@ bool Tw_node::is_valid() const {
 
 Tw_node::Tw_node(
         size_t id,
-        Customer_t data,
+        /*
+         * TODO
+         */
+        PickDeliveryOrders_t data,
         NodeType type,
         const Pgr_pickDeliver *p_problem) :
-    Node(id, data.id, data.x, data.y),
-    m_opens(data.Etime),
-    m_closes(data.Ltime),
-    m_service_time(data.Stime),
+    Node(id, data.id, data.pick_x, data.pick_y),
+    m_opens(data.pick_open_t),
+    m_closes(data.pick_close_t),
+    m_service_time(data.pick_service_t),
     m_demand(data.demand),
     m_type(type),
     problem(p_problem) {
+        if (is_delivery()) {
+            m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
+            m_opens = data.deliver_open_t;
+            m_closes = data.deliver_close_t;
+            m_service_time = data.deliver_service_t;
+            m_demand *= -1;
+        }
     }
-
 
 Tw_node::Tw_node(
         size_t id,

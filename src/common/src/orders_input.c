@@ -22,12 +22,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
+#include "./postgres_connection.h"
 
-#include "./../../common/src/debug_macro.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/get_check_data.h"
-#include "./pd_orders_input.h"
+#include "./debug_macro.h"
+#include "./pgr_types.h"
+#include "./get_check_data.h"
+#include "./orders_input.h"
 
 
 static
@@ -37,6 +37,8 @@ void fetch_pd_orders(
         Column_info_t info[11],
         double default_pick_window_t,
         double default_deliver_window_t,
+        double default_pick_service_t,
+        double default_deliver_service_t,
         PickDeliveryOrders_t *pd_order) {
     pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
@@ -46,7 +48,7 @@ void fetch_pd_orders(
     if (column_found(info[5].colNumber)) {
         pd_order->pick_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
     } else {
-        pd_order->pick_close_t = pd_order->pick_opent + default_pick_window_t;
+        pd_order->pick_close_t = pd_order->pick_open_t + default_pick_window_t;
     }
     if (column_found(info[6].colNumber)) {
         pd_order->pick_service_t = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
@@ -60,10 +62,12 @@ void fetch_pd_orders(
     if (column_found(info[10].colNumber)) {
         pd_order->deliver_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[10]);
     } else {
-        pd_order->pick_close_t = pd_order->deliver_open_t + default_deliver_window_t;
+        pd_order->pick_close_t =
+            pd_order->deliver_open_t + default_deliver_window_t;
     }
     if (column_found(info[11].colNumber)) {
-        pd_order->deliver_service_t = pgr_SPI_getFloat8(tuple, tupdesc, info[11]);
+        pd_order->deliver_service_t =
+            pgr_SPI_getFloat8(tuple, tupdesc, info[11]);
     } else {
         pd_order->deliver_service_t = default_deliver_service_t;
     }
@@ -72,10 +76,12 @@ void fetch_pd_orders(
 
 
 void
-pgr_get_pd_orders_data(
-        char *pd_orders_sql,
+pgr_get_pd_orders(
+        const char *pd_orders_sql,
         double default_pick_window_t,
         double default_deliver_window_t,
+        double default_pick_service_t,
+        double default_deliver_service_t,
         PickDeliveryOrders_t **pd_orders,
         size_t *total_pd_orders) {
     const int tuple_limit = 1000000;
@@ -141,7 +147,8 @@ pgr_get_pd_orders_data(
                         total_tuples * sizeof(PickDeliveryOrders_t));
             else
                 (*pd_orders) = (PickDeliveryOrders_t *)repalloc(
-                        (*pd_orders), total_tuples * sizeof(PickDeliveryOrders_t));
+                        (*pd_orders),
+                        total_tuples * sizeof(PickDeliveryOrders_t));
 
             if ((*pd_orders) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -153,7 +160,11 @@ pgr_get_pd_orders_data(
             PGR_DBG("processing %ld", ntuples);
             for (t = 0; t < ntuples; t++) {
                 HeapTuple tuple = tuptable->vals[t];
-                fetch_fetch_pickDeliverOrder(&tuple, &tupdesc, info,
+                fetch_pd_orders(&tuple, &tupdesc, info,
+                        default_pick_window_t,
+                        default_deliver_window_t,
+                        default_pick_service_t,
+                        default_deliver_service_t,
                         &(*pd_orders)[total_tuples - ntuples + t]);
             }
             SPI_freetuptable(tuptable);

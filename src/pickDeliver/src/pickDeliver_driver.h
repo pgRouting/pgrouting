@@ -42,7 +42,8 @@ extern "C" {
       max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliver(
-            Customer_t *customers_arr, size_t total_customers,
+            PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
+
             int max_vehicles,
             double capacity,
             double speed,

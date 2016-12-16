@@ -123,7 +123,7 @@ Pgr_pickDeliver::get_postgres_result(
 /***** Constructor *******/
 
 Pgr_pickDeliver::Pgr_pickDeliver(
-        const Customer_t *customers_data, size_t total_customers,
+        const PickDeliveryOrders_t *pd_orders_data, size_t total_pd_orders,
         int p_max_vehicles,
         double p_capacity,
         double p_speed,
@@ -134,9 +134,13 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_speed(p_speed),
     m_max_cycles(p_max_cycles),
     max_vehicles(p_max_vehicles),
-    m_starting_site({0, customers_data[0], Tw_node::NodeType::kStart, this}),
-    m_ending_site({0, customers_data[0], Tw_node::NodeType::kEnd, this}),
-    m_original_data(customers_data, customers_data + total_customers) {
+    /*
+     * TODO(vicky) currently the vehicle start and endsites are defined in the orders
+     */
+    m_starting_site({0, pd_orders_data[0], Tw_node::NodeType::kStart, this}),
+    m_ending_site({1, pd_orders_data[0], Tw_node::NodeType::kEnd, this}),
+
+    m_original_data(pd_orders_data, pd_orders_data + total_pd_orders) {
         pgassert(m_speed > 0);
         pgassert(m_max_cycles > 0);
         pgassert(max_vehicles > 0);
@@ -147,7 +151,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         /* sort data by id */
         std::sort(m_original_data.begin(), m_original_data.end(),
-                [] (const Customer_t &c1, const Customer_t &c2)
+                [] (const PickDeliveryOrders_t &c1, const PickDeliveryOrders_t &c2)
                 {return c1.id < c2.id;});
 
         /*
@@ -160,9 +164,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         }
 
         m_starting_site = Vehicle_node(
-                {0, customers_data[0], Tw_node::NodeType::kStart, this});
+                {0, pd_orders_data[0], Tw_node::NodeType::kStart, this});
         m_ending_site = Vehicle_node(
-                {1, customers_data[0], Tw_node::NodeType::kEnd, this});
+                {1, pd_orders_data[0], Tw_node::NodeType::kEnd, this});
         if (!m_starting_site.is_start()) {
             log << "DEPOT" << m_starting_site;
             error = "Illegal values found on the starting site";
@@ -193,16 +197,24 @@ Pgr_pickDeliver::Pgr_pickDeliver(
              * 1 | 45 | 68 |    -10 |   912 |   967 |    90 |     11 |      0
              * 11 | 35 | 69 |     10 |   448 |   505 |    90 |      0 |      1
              *
+             * Now looks like:
+             * id | demand | pick_x | pick_y | pick_open_t | pick_close_t | pick_service_t | deliver_x | deliver_y | deliver_open_t | deliver_open_t | deliver_close_t | deliver_service_t
+             * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
              */
 
+#if 0
             /*
              * skip deliveries
              */
             if (p.Dindex == 0) continue;
+#endif
 
             /*
              * pickup is found
              */
+            Tw_node pickup({node_id++, p, Tw_node::NodeType::kPickup, this});
+            Tw_node delivery({node_id++, p, Tw_node::NodeType::kDelivery, this});
+#if 0
             Tw_node pickup({node_id++, p, Tw_node::NodeType::kPickup, this});
             if (!pickup.is_pickup()) {
                 log << "PICKUP" << pickup;
@@ -250,6 +262,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                 return;
             }
             pgassert(delivery.is_delivery());
+#endif
 
 
             /*

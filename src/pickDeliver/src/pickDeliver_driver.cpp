@@ -50,7 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ***********************************************************/
 void
 do_pgr_pickDeliver(
-        Customer_t *customers_arr,
+        PickDeliveryOrders_t *customers_arr,
         size_t total_customers,
         int max_vehicles,
         double capacity,

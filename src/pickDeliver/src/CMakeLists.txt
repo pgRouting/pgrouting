@@ -1,5 +1,4 @@
 ADD_LIBRARY(pickDeliver OBJECT
-    #   point.cpp
     node.cpp
     tw_node.cpp
     vehicle_node.cpp
@@ -14,7 +13,6 @@ ADD_LIBRARY(pickDeliver OBJECT
     pgr_pickDeliver.cpp
 
     pickDeliver_driver.cpp
-    customers_input.c
     pickDeliver.c
 
     )

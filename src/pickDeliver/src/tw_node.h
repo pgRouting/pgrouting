@@ -267,7 +267,10 @@ class Tw_node: public Node {
      Tw_node(const Tw_node &other) = default;
      Tw_node(
              size_t id,
-             Customer_t data,
+             /*
+              * TODO
+              */
+             PickDeliveryOrders_t data,
              NodeType type,
              const Pgr_pickDeliver *problem);
 
