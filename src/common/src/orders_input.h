@@ -40,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 void
 pgr_get_pd_orders(
-        const char *pd_orders_sql,
+        char *pd_orders_sql,
         double default_pick_window_t,
         double default_deliver_window_t,
         double default_pick_service_t,

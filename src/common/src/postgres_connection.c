@@ -92,7 +92,7 @@ pgr_SPI_connect(void) {
 }
 
 SPIPlanPtr
-pgr_SPI_prepare(const char* sql) {
+pgr_SPI_prepare(char* sql) {
 #if 0
     PGR_DBG("Preparing Plan");
 #endif

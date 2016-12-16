@@ -236,7 +236,7 @@ Tw_node::Tw_node(
     m_demand(data.demand),
     m_type(type),
     problem(p_problem) {
-        if (is_delivery()) {
+        if (m_type == kDelivery) {
             m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
             m_opens = data.deliver_open_t;
             m_closes = data.deliver_close_t;

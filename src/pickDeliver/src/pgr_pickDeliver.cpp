@@ -308,6 +308,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             ++order_id;
         }  //  for
 
+#if 0
         /*
          * double check we found all orders
          */
@@ -315,7 +316,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             error = "A pickup was not found";
             return;
         }
-
+#endif
         for (auto &o : m_orders) {
             o.setCompatibles();
         }

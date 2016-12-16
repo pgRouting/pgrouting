@@ -14,8 +14,8 @@ FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
 
 \echo --q1
 SELECT * FROM _pgr_pickDeliver(
-    'select * from orders ORDER BY id', 25, 200, 1, 30);
+    'SELECT * FROM orders ORDER BY id', 25, 200, 1, 30);
 \echo --q2
 SELECT * FROM _pgr_pickDeliver(
-    'select * from orders ORDER BY id', 25, 200, 10, 30);
+    'SELECT * FROM orders ORDER BY id', 25, 200, 10, 30);
 \echo --q3

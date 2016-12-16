@@ -34,17 +34,19 @@ static
 void fetch_pd_orders(
         HeapTuple *tuple,
         TupleDesc *tupdesc,
-        Column_info_t info[11],
+        Column_info_t info[12],
         double default_pick_window_t,
         double default_deliver_window_t,
         double default_pick_service_t,
         double default_deliver_service_t,
         PickDeliveryOrders_t *pd_order) {
     pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
+    PGR_DBG("id=%ld",  pd_order->id);
     pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
     pd_order->pick_x = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
     pd_order->pick_y = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
     pd_order->pick_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
+
     if (column_found(info[5].colNumber)) {
         pd_order->pick_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
     } else {
@@ -77,7 +79,7 @@ void fetch_pd_orders(
 
 void
 pgr_get_pd_orders(
-        const char *pd_orders_sql,
+        char *pd_orders_sql,
         double default_pick_window_t,
         double default_deliver_window_t,
         double default_pick_service_t,
@@ -89,10 +91,10 @@ pgr_get_pd_orders(
     PGR_DBG("pgr_get_pd_orders_data");
     PGR_DBG("%s", pd_orders_sql);
 
-    Column_info_t info[11];
+    Column_info_t info[12];
 
     int i;
-    for (i = 0; i < 9; ++i) {
+    for (i = 0; i < 12; ++i) {
         info[i].colNumber = -1;
         info[i].type = 0;
         info[i].strict = true;
@@ -136,7 +138,7 @@ pgr_get_pd_orders(
     while (moredata == TRUE) {
         SPI_cursor_fetch(SPIportal, TRUE, tuple_limit);
         if (total_tuples == 0) {
-            pgr_fetch_column_info(info, 9);
+            pgr_fetch_column_info(info, 12);
         }
         ntuples = SPI_processed;
         total_tuples += ntuples;
