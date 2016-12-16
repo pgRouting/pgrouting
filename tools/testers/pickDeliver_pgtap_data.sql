@@ -121,3 +121,17 @@ COPY customer (id, x, y, demand, opentime, closetime, servicetime, pindex, dinde
 104	88	35	-20	109	170	90	78	0
 105	5	45	-10	665	716	90	36	0
 106	60	85	-30	561	622	90	97	0
+\.
+
+WITH
+pickups AS (
+    SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
+    FROM  customer where pindex = 0
+),
+deliveries AS (
+    SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
+    FROM  customer where dindex = 0
+)
+SELECT * INTO orders
+FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
+
