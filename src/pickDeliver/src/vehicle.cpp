@@ -141,6 +141,8 @@ Vehicle::get_postgres_result(
         General_vehicle_orders_t data =
                 {vid, i,
                 p_stop.original_id(),
+                p_stop.type(),
+                p_stop.cargo(),
                 p_stop.travel_time(),
                 p_stop.arrival_time(),
                 p_stop.wait_time(),

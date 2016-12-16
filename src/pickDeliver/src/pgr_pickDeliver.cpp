@@ -104,6 +104,8 @@ Pgr_pickDeliver::get_postgres_result(
             -1,
             solutions.back().twvTot(),
             solutions.back().cvTot(),
+            -1, // summary
+            0, // not accounting total loads
             solutions.back().total_travel_time(),
             0,  // not accounting arrival_travel_time
             solutions.back().wait_time(),

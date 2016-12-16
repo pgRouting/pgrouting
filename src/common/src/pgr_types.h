@@ -257,6 +257,8 @@ typedef struct  {
     int vehicle_id;
     int vehicle_seq;
     int64_t order_id;
+    int64_t stop_type;
+    double cargo;
     double travelTime;
     double arrivalTime;
     double waitTime;

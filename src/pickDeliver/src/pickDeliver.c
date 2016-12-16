@@ -210,11 +210,12 @@ pickDeliver(PG_FUNCTION_ARGS) {
          *********************************************************************/
 
 
-        values = palloc(9 * sizeof(Datum));
-        nulls = palloc(9 * sizeof(bool));
+        size_t numb = 11;;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 9; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
@@ -224,11 +225,13 @@ pickDeliver(PG_FUNCTION_ARGS) {
         values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].vehicle_id);
         values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].vehicle_seq);
         values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].order_id);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].travelTime);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].arrivalTime);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].waitTime);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].serviceTime);
-        values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].departureTime);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].stop_type);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cargo);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].travelTime);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].arrivalTime);
+        values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].waitTime);
+        values[9] = Float8GetDatum(result_tuples[funcctx->call_cntr].serviceTime);
+        values[10] = Float8GetDatum(result_tuples[funcctx->call_cntr].departureTime);
 
         /*********************************************************************/
 
