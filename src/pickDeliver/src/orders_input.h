@@ -1,7 +1,7 @@
 /*PGR-GNU*****************************************************************
 File: customers_input.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
+Copyright (c) 2016 Celia Virginia Vergara Castillo
 vicky_vergara@hotmail.com
 
 ------
@@ -26,7 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_types.h"
 
-void pgr_get_customers_data(
-        char *customers_sql,
-        Customer_t **customers,
-        size_t *total_customers);
+void
+pgr_get_pd_orders_data(
+        char *pd_orders_sql,
+        double default_pick_window_t,
+        double default_deliver_window_t,
+        PickDeliveryOrders_t **pd_orders,
+        size_t *total_pd_orders);
+

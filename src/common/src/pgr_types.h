@@ -226,16 +226,20 @@ enum graphType {UNDIRECTED = 0, DIRECTED};
  * ***********************************************************************/
 typedef struct {
     int64_t id;
-    double x;
-    double y;
     double demand;
-    double Etime;
-    double Ltime;
-    double Stime;
-    int64_t Pindex;
-    int64_t Dindex;
-    double Ddist;
-} Customer_t;
+    double pick_x;
+    double pick_y;
+    double pick_open_t;
+    double pick_close_t;
+    double pick_service_t;
+    double deliver_x;
+    double deliver_y;
+    double deliver_open_t;
+    double deliver_close_t;
+    double deliver_service_t;
+} PickDeliveryOrders_t;
+
+
 
 /*
    OUT seq INTEGER,        done in the .c code
