@@ -22,6 +22,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_PICKDELIVER_SRC_SOLUTION_H_
+#define SRC_PICKDELIVER_SRC_SOLUTION_H_
 #pragma once
 
 #include <deque>
@@ -50,8 +53,8 @@ class Solution {
 
 
  public:
-     void get_postgres_result(
-             std::vector< General_vehicle_orders_t > &result) const;
+     std::vector<General_vehicle_orders_t>
+         get_postgres_result() const;
 
 
      /* @brief constructor
@@ -123,3 +126,5 @@ class Solution {
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_SOLUTION_H_

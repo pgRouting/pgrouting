@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_
+#define SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_
 #pragma once
 
 #include <set>
@@ -74,4 +76,6 @@ class Initial_solution : public Solution {
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_

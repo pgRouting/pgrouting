@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_NODE_H_
+#define SRC_PICKDELIVER_SRC_NODE_H_
 #pragma once
 
 #include <string>
@@ -77,3 +79,5 @@ class Node {
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_NODE_H_

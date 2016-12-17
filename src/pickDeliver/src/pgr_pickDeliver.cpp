@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <utility>
 
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_assert.h"
@@ -90,10 +91,9 @@ Pgr_pickDeliver::solve() {
 
 
 
-void
-Pgr_pickDeliver::get_postgres_result(
-        std::vector< General_vehicle_orders_t > &result) const {
-    solutions.back().get_postgres_result(result);
+std::vector< General_vehicle_orders_t >
+Pgr_pickDeliver::get_postgres_result() const {
+    auto result = solutions.back().get_postgres_result();
 
     General_vehicle_orders_t aggregates = {
             /*
@@ -104,8 +104,8 @@ Pgr_pickDeliver::get_postgres_result(
             -1,
             solutions.back().twvTot(),
             solutions.back().cvTot(),
-            -1, // summary
-            0, // not accounting total loads
+            -1,  // summary
+            0,  // not accounting total loads
             solutions.back().total_travel_time(),
             0,  // not accounting arrival_travel_time
             solutions.back().wait_time(),
@@ -115,9 +115,12 @@ Pgr_pickDeliver::get_postgres_result(
     result.push_back(aggregates);
 
 
+#ifndef NDEBUG
     for (const auto sol : solutions) {
         log << sol.tau();
     }
+#endif
+    return result;
 }
 
 
@@ -153,7 +156,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
         /* sort data by id */
         std::sort(m_original_data.begin(), m_original_data.end(),
-                [] (const PickDeliveryOrders_t &c1, const PickDeliveryOrders_t &c2)
+                [] (const PickDeliveryOrders_t &c1,
+                    const PickDeliveryOrders_t &c2)
                 {return c1.id < c2.id;});
 
         /*
@@ -196,18 +200,14 @@ Pgr_pickDeliver::Pgr_pickDeliver(
              * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
              */
 
-#if 0
-            /*
-             * skip deliveries
-             */
-            if (p.Dindex == 0) continue;
-#endif
 
             /*
              * pickup is found
              */
-            Tw_node pickup({node_id++, p, Tw_node::NodeType::kPickup, this});
-            Tw_node delivery({node_id++, p, Tw_node::NodeType::kDelivery, this});
+            Tw_node pickup(
+                    {node_id++, p, Tw_node::NodeType::kPickup, this});
+            Tw_node delivery(
+                    {node_id++, p, Tw_node::NodeType::kDelivery, this});
             if (!pickup.is_pickup()) {
                 log << "PICKUP" << pickup;
                 tmplog << "Illegal values found on Order " << p.id;
@@ -231,8 +231,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
              */
             pickup.set_Did(delivery.id());
             delivery.set_Pid(pickup.id());
-            m_nodes.push_back(pickup);
-            m_nodes.push_back(delivery);
+            m_nodes.push_back(
+                    static_cast<pgrouting::vrp::Vehicle_node>(pickup));
+            m_nodes.push_back(
+                    static_cast<pgrouting::vrp::Vehicle_node>(delivery));
 
             m_orders.push_back(
                     Order(order_id, node(node_id - 2),

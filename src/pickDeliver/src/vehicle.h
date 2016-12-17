@@ -2,7 +2,7 @@
 
 FILE: vehicle.h
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_VEHICLE_H_
+#define SRC_PICKDELIVER_SRC_VEHICLE_H_
 #pragma once
 
 #include <deque>
@@ -53,7 +55,7 @@ namespace vrp {
  *
  * @note All members return @b true when the operation is successful
  *
- * A vehicle is a sequence of @ref Vehicle_node 
+ * A vehicle is a sequence of @ref Vehicle_node
  * from @b starting site to @b ending site.
  *
  * @sa @ref Vehicle_node
@@ -72,9 +74,8 @@ class Vehicle {
       * (twv, cv, fleet_size, wait_time, dureation)
       */
      typedef std::tuple< int, int, size_t, double, double > Cost;
-     void get_postgres_result(
-             int vid,
-             std::vector< General_vehicle_orders_t > &result) const;
+     std::vector<General_vehicle_orders_t>
+           get_postgres_result(int vid) const;
 
      Vehicle(
              ID id,
@@ -194,7 +195,7 @@ class Vehicle {
       */
      void erase(POS pos);
 
-     /*! @brief return true when no nodes are in the truck 
+     /*! @brief return true when no nodes are in the truck
       *
       * ~~~~{.c}
       * True: S E
@@ -215,13 +216,13 @@ class Vehicle {
      }
      double total_wait_time() const {
          return m_path.back().total_wait_time();
-     } 
+     }
      double total_travel_time() const {
          return m_path.back().total_travel_time();
-     } 
+     }
      double total_service_time() const {
          return m_path.back().total_service_time();
-     } 
+     }
      double free_time() const {
          return total_wait_time() + (m_path[0].closes() - duration());
      }
@@ -316,10 +317,12 @@ class Vehicle {
 
      std::pair<POS, POS> position_limits(const Vehicle_node node) const;
 
-    private:
+ private:
      POS getPosLowLimit(const Vehicle_node &node) const;
      POS getPosHighLimit(const Vehicle_node &node) const;
 };
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_VEHICLE_H_

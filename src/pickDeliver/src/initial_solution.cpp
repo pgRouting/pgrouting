@@ -139,7 +139,8 @@ Initial_solution::fill_truck_while_compatibleJ(
             best_order = o;
         }
     }
-    auto intersect_orders = problem->orders()[best_order].subsetJ(possible_orders);
+    auto intersect_orders =
+        problem->orders()[best_order].subsetJ(possible_orders);
 
     truck.insert(problem->orders()[best_order]);
     if (!truck.is_feasable()) {
@@ -258,7 +259,8 @@ Initial_solution::fill_truck_while_compatibleI(
      * (all orders in the truck are in the assigned set)
      */
     std::set<size_t> invariant_set;
-    std::set_intersection(truck.orders_in_vehicle.begin(), truck.orders_in_vehicle.end(),
+    std::set_intersection(
+            truck.orders_in_vehicle.begin(), truck.orders_in_vehicle.end(),
             assigned.begin(), assigned.end(),
             std::inserter(invariant_set, invariant_set.begin()));
     pgassert(invariant_set == truck.orders_in_vehicle);
@@ -298,7 +300,8 @@ Initial_solution::fill_truck_while_compatibleI(
             best_order = o;
         }
     }
-    auto intersect_orders = problem->orders()[best_order].subsetI(possible_orders);
+    auto intersect_orders =
+        problem->orders()[best_order].subsetI(possible_orders);
 
     truck.insert(problem->orders()[best_order]);
     if (!truck.is_feasable()) {

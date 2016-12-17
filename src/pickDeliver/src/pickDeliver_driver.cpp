@@ -95,8 +95,7 @@ do_pgr_pickDeliver(
         pd_problem.get_log(log);
         log << "Finish solve\n";
 
-        std::vector<General_vehicle_orders_t> solution;
-        pd_problem.get_postgres_result(solution);
+        auto solution = pd_problem.get_postgres_result();
         pd_problem.get_log(tmp_log);
         log << "solution size: " << solution.size() << "\n";
 

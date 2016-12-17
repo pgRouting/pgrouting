@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_OPTIMIZE_H_
+#define SRC_PICKDELIVER_SRC_OPTIMIZE_H_
 #pragma once
 
 #include "./optimize.h"
@@ -49,6 +51,7 @@ class Optimize : public Solution {
      void move_duration_based();
      void inter_swap();
      Solution best_solution;
+
  private:
      void decrease_truck(size_t, bool&);
      bool move_reduce_cost(size_t, size_t);
@@ -62,15 +65,16 @@ class Optimize : public Solution {
      void move_order(
              Order order,
              Vehicle_pickDeliver &from_truck,
-             Vehicle_pickDeliver &to_truck); 
+             Vehicle_pickDeliver &to_truck);
      void swap_order(
              Order from_order,
              Vehicle_pickDeliver &from_truck,
              Order to_order,
-             Vehicle_pickDeliver &to_truck); 
+             Vehicle_pickDeliver &to_truck);
      void save_if_best();
-
 };
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_OPTIMIZE_H_

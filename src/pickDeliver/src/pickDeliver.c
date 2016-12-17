@@ -52,7 +52,6 @@ process(
         int max_cycles,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
-
     if (max_vehicles <= 0) {
         elog(ERROR, "Illegal value in parameter: max_vehicles");
         (*result_count) = 0;
@@ -84,7 +83,8 @@ process(
     PickDeliveryOrders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
     pgr_get_pd_orders(pd_orders_sql,
-           1,1,0,0,
+           1, 1,
+           0, 0,
            &pd_orders_arr, &total_pd_orders);
 
     if (total_pd_orders == 0) {
@@ -97,7 +97,7 @@ process(
 
     PGR_DBG("Starting processing");
     char *log_msg = NULL;
-    //char *notice_msg = NULL;
+    // char *notice_msg = NULL;
     char *err_msg = NULL;
     do_pgr_pickDeliver(
             pd_orders_arr, total_pd_orders,
@@ -192,10 +192,11 @@ pickDeliver(PG_FUNCTION_ARGS) {
     result_tuples = (General_vehicle_orders_t*) funcctx->user_fctx;
 
     if (funcctx->call_cntr <  funcctx->max_calls) {
-        HeapTuple    tuple;
-        Datum        result;
-        Datum        *values;
-        bool*        nulls;
+        HeapTuple   tuple;
+        Datum       result;
+        Datum       *values;
+        bool*       nulls;
+        size_t      call_cntr = funcctx->call_cntr;
 
         /*********************************************************************/
         /*                          MODIFY!!!!!                              */
@@ -222,16 +223,16 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].vehicle_id);
-        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].vehicle_seq);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].order_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].stop_type);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cargo);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].travelTime);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].arrivalTime);
-        values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].waitTime);
-        values[9] = Float8GetDatum(result_tuples[funcctx->call_cntr].serviceTime);
-        values[10] = Float8GetDatum(result_tuples[funcctx->call_cntr].departureTime);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_id);
+        values[2] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].order_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].stop_type);
+        values[5] = Float8GetDatum(result_tuples[call_cntr].cargo);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].travelTime);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].waitTime);
+        values[9] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
+        values[10] = Float8GetDatum(result_tuples[call_cntr].departureTime);
 
         /*********************************************************************/
 

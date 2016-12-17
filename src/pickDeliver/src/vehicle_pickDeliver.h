@@ -22,6 +22,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_PICKDELIVER_SRC_VEHICLE_PICKDELIVER_H_
+#define SRC_PICKDELIVER_SRC_VEHICLE_PICKDELIVER_H_
 #pragma once
 
 #include <set>
@@ -153,3 +156,4 @@ class Vehicle_pickDeliver : public Vehicle {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
+#endif  // SRC_PICKDELIVER_SRC_VEHICLE_PICKDELIVER_H_

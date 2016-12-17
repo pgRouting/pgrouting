@@ -131,10 +131,10 @@ Vehicle::cost_compare(const Cost &lhs, const Cost &rhs) const {
 
 
 
-void
+std::vector<General_vehicle_orders_t>
 Vehicle::get_postgres_result(
-        int vid,
-        std::vector< General_vehicle_orders_t > &result) const {
+        int vid) const {
+    std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
     int i(1);
     for (const auto p_stop : m_path) {
@@ -151,6 +151,7 @@ Vehicle::get_postgres_result(
         result.push_back(data);
         ++i;
     }
+    return result;
 }
 
 

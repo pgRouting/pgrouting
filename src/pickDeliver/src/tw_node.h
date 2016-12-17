@@ -23,7 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_TW_NODE_H_
+#define SRC_PICKDELIVER_SRC_TW_NODE_H_
 #pragma once
+
 #include <string>
 
 #include "./../../common/src/pgr_types.h"
@@ -34,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
- class Pgr_pickDeliver;
+class Pgr_pickDeliver;
 
 /*! \class Tw_node
  * \brief Extends the \ref Node class to create a Node with time window attributes.
@@ -300,3 +303,5 @@ class Tw_node: public Node {
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_TW_NODE_H_

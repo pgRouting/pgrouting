@@ -34,18 +34,19 @@ namespace pgrouting {
 namespace vrp {
 
 
-void
-Solution::get_postgres_result(
-        std::vector< General_vehicle_orders_t > &result) const {
+std::vector<General_vehicle_orders_t>
+Solution::get_postgres_result() const {
+    std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
     int i(1);
     for (const auto truck : fleet) {
-        std::vector< General_vehicle_orders_t > data;
-        truck.get_postgres_result(i, data);
+        std::vector<General_vehicle_orders_t> data =
+            truck.get_postgres_result(i);
         result.insert(result.end(), data.begin(), data.end());
 
         ++i;
     }
+    return result;
 }
 
 

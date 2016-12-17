@@ -22,6 +22,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_PICKDELIVER_SRC_PGR_PICKDELIVER_H_
+#define SRC_PICKDELIVER_SRC_PGR_PICKDELIVER_H_
 #pragma once
 
 
@@ -62,8 +65,9 @@ class Pgr_pickDeliver {
 
     void solve();
 
-    void get_postgres_result(
-            std::vector< General_vehicle_orders_t > &result) const;
+    std::vector<General_vehicle_orders_t>
+        get_postgres_result() const;
+
     /*****************/
 
     const Order order_of(const Vehicle_node &node) const;
@@ -84,7 +88,7 @@ class Pgr_pickDeliver {
     }
 
     Solution solve(const Solution init_solution);
-    size_t max_cycles() const {return m_max_cycles;};
+    size_t max_cycles() const {return m_max_cycles;}
 
  private:
     double max_capacity;
@@ -104,3 +108,5 @@ class Pgr_pickDeliver {
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_PGR_PICKDELIVER_H_
