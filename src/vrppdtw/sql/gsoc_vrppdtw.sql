@@ -43,7 +43,7 @@ BEGIN
                     x AS start_x, y AS start_y,
                     opentime AS start_open, closetime AS start_close, '
                 || $2 || ' AS number,' || $3 || ' AS capacity FROM customer_tmp1 WHERE id = 0$$,
-         30)
+         30) WHERE vehicle_id != -1
     )
     SELECT seq::INTEGER, vehicle_id::INTEGER AS id1,
         CASE
