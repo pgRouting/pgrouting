@@ -52,7 +52,7 @@ process(
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
     if (max_cycles <= 0) {
-        elog(ERROR, "Illegal value in parameter: max_cycles");
+        elog(ERROR, "Illegal value in parameter: max_cycles %d", max_cycles);
         (*result_count) = 0;
         (*result_tuples) = NULL;
         return;
@@ -170,7 +170,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                PG_GETARG_INT32(3),
+                PG_GETARG_INT32(2),
                 &result_tuples,
                 &result_count);
 

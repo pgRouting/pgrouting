@@ -17,14 +17,14 @@ BEGIN
     orders_sql :=
     'CREATE TEMP TABLE __vrp__orders ON COMMIT DROP AS (
     WITH
-    curstomer AS (' || $1 || '),
+    customer_tmp AS (' || $1 || '),
     pickups AS (
         SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
-        FROM customer where pindex = 0
+        FROM customer_tmp WHERE pindex = 0 AND id != 0
     ),
     deliveries AS (
         SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
-        FROM customer where dindex = 0
+        FROM customer_tmp WHERE dindex = 0 AND id != 0
     )
     SELECT * 
     FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id)';
@@ -33,11 +33,17 @@ BEGIN
 
     results_sql :='
     WITH
-    curstomer AS (' || $1 ||'),
+    customer_tmp AS (' || $1 || '),
     results AS (
         SELECT seq, order_id, vehicle_id, stop_type, departure_time FROM _pgr_pickDeliver(
             $$ SELECT * FROM __vrp__orders $$, 
-            ' || $2 || ',' || $3 || ', 1, 30) WHERE vehicle_id != -1
+            $$ WITH
+                customer_tmp1 AS (' || $1 || ')
+                SELECT id,
+                    x AS start_x, y AS start_y,
+                    opentime AS start_open, closetime AS start_close, '
+                || $2 || ' AS number,' || $3 || ' AS capacity FROM customer_tmp1 WHERE id = 0$$,
+         30)
     )
     SELECT seq::INTEGER, vehicle_id::INTEGER AS id1,
         CASE
@@ -45,8 +51,8 @@ BEGIN
             ELSE id   
         END::INTEGER AS id2,
         departure_time AS cost
-        FROM customer JOIN results
-        ON (customer.id = results.order_id)';
+        FROM customer_tmp JOIN results
+        ON (customer_tmp.id = results.order_id)';
 
     RETURN query EXECUTE results_sql;
     DROP TABLE IF EXISTS __vrp__orders;
