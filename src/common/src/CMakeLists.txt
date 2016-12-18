@@ -9,6 +9,8 @@ ADD_LIBRARY(common OBJECT
     get_check_data.c
     edges_input.c
     orders_input.c
+    orders_input.c
+    vehicles_input.c
     
     coordinates_input.c
     arrays_input.c

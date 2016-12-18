@@ -41,7 +41,6 @@ void fetch_pd_orders(
         double default_deliver_service_t,
         PickDeliveryOrders_t *pd_order) {
     pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
-    PGR_DBG("id=%ld",  pd_order->id);
     pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
     pd_order->pick_x = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
     pd_order->pick_y = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);

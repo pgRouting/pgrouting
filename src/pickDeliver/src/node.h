@@ -54,6 +54,7 @@ class Node {
 
      ///@}
 
+     Node() = default;
      Node(size_t id, int64_t original_id, double _x, double _y);
 
 

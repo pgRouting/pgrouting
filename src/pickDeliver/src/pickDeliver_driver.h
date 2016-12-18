@@ -43,13 +43,13 @@ extern "C" {
      ********************************************************/
     void do_pgr_pickDeliver(
             PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
+            Vehicle_t *vehicles_arr, size_t total_vehicles,
 
-            int max_vehicles,
-            double capacity,
-            double speed,
             int max_cycles,
+
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,
+
             char ** log_msg,
             char ** err_msg);
 

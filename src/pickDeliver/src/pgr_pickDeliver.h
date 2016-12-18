@@ -54,12 +54,8 @@ class Pgr_pickDeliver {
 
  public:
     Pgr_pickDeliver(
-            const PickDeliveryOrders_t *c1,
-            size_t total_orders,
-
-            int VehicleLength,
-            double capacity,
-            double speed,
+            const std::vector<PickDeliveryOrders_t> &pd_orders,
+            const std::vector<Vehicle_t> &vehicles,
             size_t max_cycles,
             std::string &error);
 

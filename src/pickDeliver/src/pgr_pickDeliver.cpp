@@ -128,156 +128,151 @@ Pgr_pickDeliver::get_postgres_result() const {
 /***** Constructor *******/
 
 Pgr_pickDeliver::Pgr_pickDeliver(
-        const PickDeliveryOrders_t *pd_orders_data, size_t total_pd_orders,
-        int p_max_vehicles,
-        double p_capacity,
-        double p_speed,
+        const std::vector<PickDeliveryOrders_t> &pd_orders,
+        const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
-        std::string &error) :
-    /* Set the depot to be the first ddata found */
-    max_capacity(p_capacity),
-    m_speed(p_speed),
-    m_max_cycles(p_max_cycles),
-    max_vehicles(p_max_vehicles),
+        std::string &error) {
+    pgassert(!pd_orders.empty());
+    pgassert(!vehicles.empty());
+
+    m_max_cycles = p_max_cycles;
+    pgassert(m_max_cycles > 0);
+    m_original_data = pd_orders;
+
+    std::ostringstream tmplog;
+    error = "";
+
+    log << "\n *** Constructor of problem ***\n";
+
+#if 0
+    /* sort data by id */
+    std::sort(m_original_data.begin(), m_original_data.end(),
+            [] (const PickDeliveryOrders_t &c1,
+                const PickDeliveryOrders_t &c2)
+            {return c1.id < c2.id;});
     /*
-     * TODO(vicky) currently the vehicle start and endsites are defined in the orders
+     * starting node:
+     * id must be 0
      */
-    m_starting_site({0, pd_orders_data[0], Tw_node::NodeType::kStart, this}),
-    m_ending_site({1, pd_orders_data[0], Tw_node::NodeType::kEnd, this}),
+    if (m_original_data[0].id != 0) {
+        error = "Depot node not found";
+        return;
+    }
+#endif
 
-    m_original_data(pd_orders_data, pd_orders_data + total_pd_orders) {
-        pgassert(m_speed > 0);
-        pgassert(m_max_cycles > 0);
-        pgassert(max_vehicles > 0);
-        std::ostringstream tmplog;
-        error = "";
+    max_vehicles = static_cast<int>(vehicles[0].cant_v);
+    max_capacity = vehicles[0].capacity;
+    m_speed = static_cast<int>(vehicles[0].speed);
+    auto start_n(Tw_node(0, vehicles[0], Tw_node::NodeType::kStart, this));
+    m_starting_site = Vehicle_node(
+            Tw_node(0, vehicles[0], Tw_node::NodeType::kStart, this));
+    m_ending_site = Vehicle_node(
+            Tw_node(1, vehicles[0], Tw_node::NodeType::kEnd, this));
+    if (!m_starting_site.is_start()) {
+        log << "DEPOT" << m_starting_site;
+        error = "Illegal values found on the starting site";
+        return;
+    }
+    pgassert(m_starting_site.is_start());
+    pgassert(m_ending_site.is_end());
 
-        log << "\n *** Constructor of problem ***\n";
+    m_nodes.push_back(m_starting_site);
+    m_nodes.push_back(m_ending_site);
 
-        /* sort data by id */
-        std::sort(m_original_data.begin(), m_original_data.end(),
-                [] (const PickDeliveryOrders_t &c1,
-                    const PickDeliveryOrders_t &c2)
-                {return c1.id < c2.id;});
+
+    ID order_id(0);
+    ID node_id(2);
+    for (const auto p : m_original_data) {
+        /*
+         * skip Starting site
+         */
+        if (p.id == 0) continue;
 
         /*
-         * starting node:
-         * id must be 0
+         * SAMPLE CORRECT INFORMATION
+         *
+         * id | demand | pick_x | pick_y | pick_open_t | pick_close_t | pick_service_t | deliver_x | deliver_y | deliver_open_t | deliver_open_t | deliver_close_t | deliver_service_t
+         * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
          */
-        if (m_original_data[0].id != 0) {
-            error = "Depot node not found";
+
+
+        /*
+         * pickup is found
+         */
+        Tw_node pickup(
+                {node_id++, p, Tw_node::NodeType::kPickup, this});
+        Tw_node delivery(
+                {node_id++, p, Tw_node::NodeType::kDelivery, this});
+        if (!pickup.is_pickup()) {
+            log << "PICKUP" << pickup;
+            tmplog << "Illegal values found on Order " << p.id;
+            error = tmplog.str();
             return;
         }
+        pgassert(pickup.is_pickup());
 
-        m_starting_site = Vehicle_node(
-                {0, pd_orders_data[0], Tw_node::NodeType::kStart, this});
-        m_ending_site = Vehicle_node(
-                {1, pd_orders_data[0], Tw_node::NodeType::kEnd, this});
-        if (!m_starting_site.is_start()) {
-            log << "DEPOT" << m_starting_site;
-            error = "Illegal values found on the starting site";
+        if (!delivery.is_delivery()) {
+            log << "DELIVERY" << delivery;
+            tmplog << "Illegal values found on Order "
+                << p.id;
+            error = tmplog.str();
             return;
         }
-        pgassert(m_starting_site.is_start());
-        pgassert(m_ending_site.is_end());
-
-        m_nodes.push_back(m_starting_site);
-        m_nodes.push_back(m_ending_site);
+        pgassert(delivery.is_delivery());
 
 
-        ID order_id(0);
-        ID node_id(2);
-        for (const auto p : m_original_data) {
-            /*
-             * skip Starting site
-             */
-            if (p.id == 0) continue;
+        /*
+         * add into an order & check the order
+         */
+        pickup.set_Did(delivery.id());
+        delivery.set_Pid(pickup.id());
+        m_nodes.push_back(
+                static_cast<pgrouting::vrp::Vehicle_node>(pickup));
+        m_nodes.push_back(
+                static_cast<pgrouting::vrp::Vehicle_node>(delivery));
 
-            /*
-             * SAMPLE CORRECT INFORMATION
-             *
-             * id | demand | pick_x | pick_y | pick_open_t | pick_close_t | pick_service_t | deliver_x | deliver_y | deliver_open_t | deliver_open_t | deliver_close_t | deliver_service_t
-             * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
-             */
+        m_orders.push_back(
+                Order(order_id, node(node_id - 2),
+                    node(node_id - 1),
+                    this));
+        pgassert(m_orders.back().pickup().is_pickup());
+        pgassert(m_orders.back().delivery().is_delivery());
+        pgassert(static_cast<Tw_node> (m_orders.back().pickup()) == pickup);
 
+        /*
+         * check the (S, P, D, E) order
+         */
+        {
+            Vehicle_pickDeliver truck(
+                    order_id,
+                    m_starting_site,
+                    m_ending_site,
+                    max_capacity,
+                    this);
+            truck.push_back(m_orders.back());
 
-            /*
-             * pickup is found
-             */
-            Tw_node pickup(
-                    {node_id++, p, Tw_node::NodeType::kPickup, this});
-            Tw_node delivery(
-                    {node_id++, p, Tw_node::NodeType::kDelivery, this});
-            if (!pickup.is_pickup()) {
-                log << "PICKUP" << pickup;
-                tmplog << "Illegal values found on Order " << p.id;
+            if (!truck.is_feasable()) {
+                log << truck << "\n";
+                tmplog << "The Order "
+                    << p.id
+                    << " is not feasible";
                 error = tmplog.str();
                 return;
             }
-            pgassert(pickup.is_pickup());
+            pgassert(truck.is_feasable());
+        }  //  check
 
-            if (!delivery.is_delivery()) {
-                log << "DELIVERY" << delivery;
-                tmplog << "Illegal values found on Order "
-                    << p.id;
-                error = tmplog.str();
-                return;
-            }
-            pgassert(delivery.is_delivery());
+        ++order_id;
+    }  //  for
 
+    for (auto &o : m_orders) {
+        o.setCompatibles();
+    }
 
-            /*
-             * add into an order & check the order
-             */
-            pickup.set_Did(delivery.id());
-            delivery.set_Pid(pickup.id());
-            m_nodes.push_back(
-                    static_cast<pgrouting::vrp::Vehicle_node>(pickup));
-            m_nodes.push_back(
-                    static_cast<pgrouting::vrp::Vehicle_node>(delivery));
-
-            m_orders.push_back(
-                    Order(order_id, node(node_id - 2),
-                        node(node_id - 1),
-                        this));
-            pgassert(m_orders.back().pickup().is_pickup());
-            pgassert(m_orders.back().delivery().is_delivery());
-            pgassert(static_cast<Tw_node> (m_orders.back().pickup()) == pickup);
-
-            /*
-             * check the (S, P, D, E) order
-             */
-            {
-                Vehicle_pickDeliver truck(
-                        order_id,
-                        m_starting_site,
-                        m_ending_site,
-                        max_capacity,
-                        this);
-                truck.push_back(m_orders.back());
-
-                if (!truck.is_feasable()) {
-                    log << truck << "\n";
-                    tmplog << "The Order "
-                        << p.id
-                        << " is not feasible";
-                    error = tmplog.str();
-                    return;
-                }
-                pgassert(truck.is_feasable());
-            }  //  check
-
-            ++order_id;
-        }  //  for
-
-        for (auto &o : m_orders) {
-            o.setCompatibles();
-        }
-
-        for (auto o : m_orders) {
-            log << o;
-        }
-    }  //  constructor
+    for (auto o : m_orders) {
+        log << o;
+    }
+}  //  constructor
 
 
 const Order

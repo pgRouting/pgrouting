@@ -241,6 +241,25 @@ typedef struct {
 
 
 
+typedef struct {
+    int64_t id;
+    double capacity;
+    double speed;
+    double start_x;
+    double start_y;
+    int64_t cant_v;
+    double start_open_t;
+    double start_close_t;
+    double start_service_t;
+    double end_x;
+    double end_y;
+    double end_open_t;
+    double end_close_t;
+    double end_service_t;
+} Vehicle_t;
+
+
+
 /*
    OUT seq INTEGER,        done in the .c code
    OUT vehicle_seq INTEGER,

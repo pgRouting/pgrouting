@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/orders_input.h"
+#include "./../../common/src/vehicles_input.h"
 
 #include "./pickDeliver_driver.h"
 
@@ -46,30 +47,10 @@ static
 void
 process(
         char* pd_orders_sql,
-        int max_vehicles,
-        double capacity,
-        double speed,
+        char* vehicles_sql,
         int max_cycles,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
-    if (max_vehicles <= 0) {
-        elog(ERROR, "Illegal value in parameter: max_vehicles");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        return;
-    }
-    if (capacity <= 0) {
-        elog(ERROR, "Illegal value in parameter: capacity");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        return;
-    }
-    if (speed <= 0) {
-        elog(ERROR, "Illegal value in parameter: speed");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
-        return;
-    }
     if (max_cycles <= 0) {
         elog(ERROR, "Illegal value in parameter: max_cycles");
         (*result_count) = 0;
@@ -79,7 +60,7 @@ process(
 
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
+    PGR_DBG("Load orders");
     PickDeliveryOrders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
     pgr_get_pd_orders(pd_orders_sql,
@@ -87,7 +68,36 @@ process(
            0, 0,
            &pd_orders_arr, &total_pd_orders);
 
-    if (total_pd_orders == 0) {
+    PGR_DBG("Load vehicles");
+    Vehicle_t *vehicles_arr = NULL;
+    size_t total_vehicles = 0;
+    pgr_get_vehicles(vehicles_sql,
+           &vehicles_arr, &total_vehicles);
+    PGR_DBG("total vehicles %ld", total_vehicles);
+
+    for (size_t i = 0; i < total_vehicles; i++) {
+        PGR_DBG("%ld %f %f / %f %f %f %f %f / %f %f %f %f %f / %ld ",
+               vehicles_arr[i].id,
+               vehicles_arr[i].capacity,
+               vehicles_arr[i].speed,
+
+               vehicles_arr[i].start_x,
+               vehicles_arr[i].start_y,
+               vehicles_arr[i].start_open_t,
+               vehicles_arr[i].start_close_t,
+               vehicles_arr[i].start_service_t,
+
+               vehicles_arr[i].end_x,
+               vehicles_arr[i].end_y,
+               vehicles_arr[i].end_open_t,
+               vehicles_arr[i].end_close_t,
+               vehicles_arr[i].end_service_t,
+
+               vehicles_arr[i].cant_v
+               );
+    }
+
+    if (total_pd_orders == 0 || total_vehicles == 0) {
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
@@ -101,12 +111,12 @@ process(
     char *err_msg = NULL;
     do_pgr_pickDeliver(
             pd_orders_arr, total_pd_orders,
-            max_vehicles,
-            capacity,
-            speed,
+            vehicles_arr, total_vehicles,
             max_cycles,
+
             result_tuples,
             result_count,
+
             &log_msg,
             &err_msg);
     PGR_DBG("Returning %ld tuples\n", *result_count);
@@ -159,10 +169,8 @@ pickDeliver(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT32(1),
-                PG_GETARG_FLOAT8(2),
-                PG_GETARG_FLOAT8(3),
-                PG_GETARG_INT32(4),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
+                PG_GETARG_INT32(3),
                 &result_tuples,
                 &result_count);
 

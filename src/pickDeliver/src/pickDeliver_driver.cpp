@@ -52,12 +52,15 @@ void
 do_pgr_pickDeliver(
         PickDeliveryOrders_t *customers_arr,
         size_t total_customers,
-        int max_vehicles,
-        double capacity,
-        double speed,
+
+        Vehicle_t *vehicles_arr,
+        size_t total_vehicles,
+
         int max_cycles,
+
         General_vehicle_orders_t **result_tuples,
         size_t *total_count,
+
         char ** log_msg,
         char ** err_msg) {
     std::ostringstream log;
@@ -66,14 +69,19 @@ do_pgr_pickDeliver(
         *result_tuples = NULL;
         *total_count = 0;
 
+        /*
+         * transform to C++ containers
+         */
+        std::vector<PickDeliveryOrders_t> orders(
+                customers_arr, customers_arr + total_customers);
+        std::vector<Vehicle_t> vehicles(
+                vehicles_arr, vehicles_arr + total_vehicles);
+
         log << "Read data\n";
         std::string error("");
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
-                customers_arr,
-                total_customers,
-                max_vehicles,
-                capacity,
-                speed,
+                orders,
+                vehicles,
                 max_cycles,
                 error);
         if (error.compare("")) {

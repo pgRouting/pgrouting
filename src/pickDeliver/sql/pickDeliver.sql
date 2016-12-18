@@ -28,10 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
-    customers_sql TEXT,
-    max_vehicles INTEGER,
-    capacity FLOAT,
-    speed FLOAT DEFAULT 1, 
+    orders_sql TEXT,
+    vehicles_sql TEXT,
     max_cycles INTEGER DEFAULT 10, 
 
     OUT seq INTEGER,
