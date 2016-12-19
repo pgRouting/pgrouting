@@ -38,11 +38,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+class Pgr_pickDeliver;
 
 class Fleet {
+#if 0
     friend Pgr_pickDeliver;
+#endif
+     Pgr_pickDeliver* problem;
+     typedef typename std::vector<Vehicle_pickDeliver> Trucks;
  public:
-     std::vector<Vehicle_pickDeliver> m_trucks;
+     typedef typename Trucks::iterator iterator;
+     Trucks m_trucks;
  protected:
      Identifiers<size_t> used; 
      Identifiers<size_t> un_used; 
@@ -55,12 +61,26 @@ class Fleet {
       * @params [in] p_problem \t pointer to problem
       *
       */
+     explicit Fleet(Pgr_pickDeliver *p_problem) :
+         problem(p_problem) {}
+
      void build_fleet(
              const std::vector<Vehicle_t> &vehicles,
-             std::string &error,
-             const Pgr_pickDeliver *p_problem
+             size_t &node_id 
              );
 
+
+
+     bool is_fleet_ok() const;
+     bool is_order_ok(const Order &order) const;
+
+     //! name vector like functions
+     //@{
+     size_t size() const {return m_trucks.size();}
+     Vehicle_pickDeliver& operator[](size_t i);
+     iterator begin() {return m_trucks.begin();};
+     iterator end() {return m_trucks.end();};
+     //@}
 #if 0
      std::string cost_str() const;
      std::string tau(const std::string &title = "Tau") const;

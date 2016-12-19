@@ -53,7 +53,8 @@ Order::subsetJ(const std::set<size_t> &J) const {
 }
 
 
-Order::Order(size_t p_id,
+Order::Order(
+        size_t p_id,
         const Vehicle_node &p_pickup,
         const Vehicle_node &p_delivery,
         const Pgr_pickDeliver *p_problem) :

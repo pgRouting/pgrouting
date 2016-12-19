@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./fleet.h"
 #include "./tw_node.h"
 #include "./vehicle_pickDeliver.h"
+#include "./pgr_pickDeliver.h"
 #include "./../../common/src/identifiers.hpp"
 
 
@@ -39,26 +40,24 @@ namespace vrp {
 void
 Fleet::build_fleet(
         const std::vector<Vehicle_t> &vehicles,
-        std::string &error,
-        const Pgr_pickDeliver *p_problem
+        size_t &node_id
         ) {
-    size_t node_id(0);
     for (auto vehicle : vehicles) {
 
         if (vehicle.cant_v < 0) {
-            error = "Illegal number of vehicles found vehicle";
-            return;
+            problem->error << "Illegal number of vehicles found vehicle";
+            problem->log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
+            continue;
         }
 
         auto starting_site = Vehicle_node(
-                Tw_node(node_id++, vehicle, Tw_node::NodeType::kStart, p_problem));
+                {node_id++, vehicle, Tw_node::NodeType::kStart, problem});
         auto ending_site = Vehicle_node(
-                Tw_node(node_id++, vehicle, Tw_node::NodeType::kEnd, p_problem));
+                {node_id++, vehicle, Tw_node::NodeType::kEnd, problem});
 
-        if (!starting_site.is_start()) {
-            error = "Illegal values found on the starting site";
-            return;
-        }
+        (problem->m_nodes).push_back(starting_site);
+        (problem->m_nodes).push_back(ending_site);
+
         for (int i = 0; i < vehicle.cant_v; ++i) {
             m_trucks.push_back(Vehicle_pickDeliver(
                         vehicle.id,
@@ -66,13 +65,47 @@ Fleet::build_fleet(
                         ending_site,
                         vehicle.capacity,
                         vehicle.speed,
-                        p_problem));
+                        problem));
         }
     }
     Identifiers<size_t> unused(m_trucks.size());
     un_used = unused;
 }
 
+bool
+Fleet::is_fleet_ok() const {
+    for (auto truck : m_trucks) {
+        if (!(truck.start_site().is_start()
+                    && truck.end_site().is_end())) {
+            problem->error << "Illegal values found on vehcile";
+            return false;
+        }
+        if (!truck.is_feasable()) {
+            problem->error << "Truck is not feasable";
+            return false;
+        }
+    }
+    return true;
+}
+
+bool
+Fleet::is_order_ok(const Order &order) const {
+    for (const auto truck : m_trucks) {
+        auto test_truck = truck;
+        test_truck.push_back(order);
+
+        if (test_truck.is_feasable()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+Vehicle_pickDeliver&
+Fleet::operator[](size_t i) {
+    pgassert(i < m_trucks.size());
+    return m_trucks[i];
+}
 #if 0
 std::vector<General_vehicle_orders_t>
 Solution::get_postgres_result() const {

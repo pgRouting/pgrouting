@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./vehicle_node.h"
 #include "./order.h"
+#include "./fleet.h"
 #include "./solution.h"
 
 namespace pgrouting {
@@ -50,6 +51,7 @@ class Pgr_pickDeliver {
     friend class Optimize;
     friend class Initial_solution;
     friend class Solution;
+    friend class Fleet;
     typedef size_t ID;
 
  public:
@@ -90,13 +92,17 @@ class Pgr_pickDeliver {
     double max_capacity;
     double m_speed;
     size_t m_max_cycles;
-    int max_vehicles;
+    size_t max_vehicles;
     Vehicle_node m_starting_site, m_ending_site;
     std::vector<PickDeliveryOrders_t> m_original_data;
     std::vector<Vehicle_node> m_nodes;
+    Fleet m_trucks;
     std::vector<Order> m_orders;
     std::vector<Solution> solutions;
+ protected:
     mutable std::ostringstream log;
+    mutable std::ostringstream notice;
+    mutable std::ostringstream error;
 #ifndef NDEBUG
     mutable std::ostringstream dbg_log;
 #endif
