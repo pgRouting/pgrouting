@@ -52,6 +52,10 @@ class Identifiers {
     //! @name constructors
     //@{
     Identifiers<T>() = default;
+    Identifiers<T>(const Identifiers<T>&) = default;
+    Identifiers<T>(const std::set<T>& data) {
+        m_ids = data;
+    };
 
     /* @brief inserts 1 ~ number
      *
@@ -62,324 +66,198 @@ class Identifiers {
         std::generate_n(std::inserter(m_ids, m_ids.begin()), number, [&i](){ return i++; });
     };
 
-    /* TODO avoid pointers */
-    Identifiers<T>(T* container, size_t size) {
-        for (size_t i = 0; i < size; ++i) {
-            m_ids.insert(container[i]);
-        }
-    }
     //@}
 
     //! @name set like operators
     //@{
     size_t size() const {return m_ids.size(); }
     inline bool empty() const {return m_ids.empty(); }
-    inline void clear() {m_ids.clear();}
+    inline T front() const {return *m_ids.begin();}
     const_iterator begin() const {return m_ids.begin();}
     const_iterator end() const {return m_ids.end();}
+    inline void pop_front() {m_ids.erase(m_ids.begin());}
+    inline void clear() {m_ids.clear();}
     iterator begin() {return m_ids.begin();}
     iterator end() {return m_ids.end();}
     //@}
 
-    const std::set<T>& ids() const;
-    bool has(const T element) const;
-    bool isDisjoint(const T other) const;
-    bool isDisjoint(const Identifiers<T> &other) const;
-    void insert(const Identifiers<T> &other);
-    void insert(const T &other);
-    bool operator ==(const Identifiers<T> &other) const;
-    const T& operator[](size_t index) const;
-
-    //! @name  mathematical set operations
-    /// @{
-
-    Identifiers<T> operator +(const T &other) const;
-    Identifiers<T> operator *(const T &other) const;
-    Identifiers<T> operator -(const T &other) const;
-    Identifiers<T> operator +(const Identifiers<T> &other) const;
-    Identifiers<T> operator *(const Identifiers<T> &other) const;
-    Identifiers<T> operator -(const Identifiers<T> &other) const;
-    Identifiers<T>& operator +=(const T &other);
-    Identifiers<T>& operator *=(const T &other);
-    Identifiers<T>& operator -=(const T &other);
-    Identifiers<T>& operator +=(const Identifiers<T> &other);
-    Identifiers<T>& operator *=(const Identifiers<T> &other);
-    Identifiers<T>& operator -=(const Identifiers<T> &other);
-    /// @}
-
-    template<T>
-    friend std::ostream& operator<<(
-            std::ostream& os,
-            const Identifiers<T>& identifiers);
 
  private:
     std::set<T> m_ids;
+
+ public:
+
+    //! \brief true ids() has element
+    /*!
+     * @param [in] other Identifier of type *T*
+     */
+    bool has(const T other) const {
+        return (m_ids.find(other) != m_ids.end());
+    }
+
+
+    //! \brief Inserts a set of identifiers
+    /*!
+     * @param [in] other set of identifiers
+     */
+    void insert(const Identifiers<T> &other) {
+        m_ids.insert(other.m_ids.begin(), other.m_ids.end());
+    }
+
+    //! \brief Inserts an element
+    /*!
+     * @param [in] other is an identifier of type *T*
+     */
+    void insert(const T &element) {
+        m_ids.insert(element);
+    }
+
+
+    //! \brief true when both sets are equal
+    /*!
+     * @param [in] other set of identifiers
+     */
+    bool operator==(const Identifiers<T> &rhs) const {
+        return std::equal(m_ids.begin(), m_ids.end(), rhs.m_ids.begin());
+    }
+
+    //! @name  set UNION
+    /// @{
+
+    //! \brief set UNION set
+    /*!
+     * @param [in] other set of identifiers
+     */
+    friend Identifiers<T> operator +(
+            const Identifiers<T> &lhs,
+            const Identifiers<T> &rhs) {
+        Identifiers<T> union_ids(lhs);
+        union_ids.insert(rhs);
+        return union_ids;
+    }
+
+    //! \brief compound set UNION set 
+    /*!
+     * @param [in] other set of identifiers
+     */
+    Identifiers<T>& operator +=(
+            const Identifiers<T> &other) {
+        this->insert(other);
+        return *this;
+    }
+    //! \brief compound set UNION element 
+    /*!
+     * @param [in] element of type *T*
+     */
+    Identifiers<T>& operator +=(const T &element) {
+        this->insert(element);
+        return *this;
+    }
+
+    /// @}
+
+
+
+    //! @name  set INTERSECTION
+    /// @{
+
+    //! \brief set INTERSECTION set
+    /*!
+      * @param [in] other is a set of identifiers of type *Identifiers<T>*
+      */
+    friend Identifiers<T> operator *(
+                const Identifiers<T> &lhs,
+                const Identifiers<T> &rhs) {
+            Identifiers<T> intersect;
+            std::set_intersection(
+                    lhs.begin(), lhs.end(),
+                    rhs.begin(), rhs.end(),
+                    std::inserter(intersect, intersect.begin()));
+            return intersect;
+        }
+
+    //! \brief coumpound set INTERSECTION set
+    /*!
+     * @param [in] other is a set of identifiers of type *Identifiers<T>*
+     */
+    Identifiers<T>& operator *=(
+            const Identifiers<T> &other) {
+        *this = *this * other;
+        return *this;
+    }
+
+    //! \brief compund set IINTERSECTION element
+    /*!
+     * @param [in] other is an identifiers of type *T*
+     */
+    Identifiers<T>& operator *=(const T &element) {
+        if (has(element)) {
+            m_ids.clear();
+            m_ids.insert(element);
+        } else {
+            m_ids.clear();
+        }
+        return *this;
+    }
+
+    /// @}
+
+
+    //! @name  set DIFFERENCE
+    /// @{
+
+    //! \brief set DIFFERENCE set
+    /*!
+     * @param [in] other is a set of identifiers of type *Identifiers<T>*
+     */
+    friend
+        Identifiers<T> operator -(
+                const Identifiers<T> &lhs,
+                const Identifiers<T> &rhs) {
+            std::set<T> result;
+            std::set_difference(
+                    lhs.m_ids.begin(), lhs.m_ids.end(),
+                    rhs.m_ids.begin(), rhs.m_ids.end(),
+                    std::inserter(result, result.begin()));
+            return Identifiers<T>(result);
+        }
+
+
+
+    //! \brief compound set DIFFERENCE set
+    /*!
+      @param [in] other is a set of identifiers of type *Identifiers<T>*
+      Replaces this set with the set difference between this set and other
+      */
+    Identifiers<T>& operator -=(const Identifiers<T> &other) {
+        *this = *this - other;
+        return *this;
+    }
+
+    //! \brief compund set DIFFERENCE element
+    /*!
+      @param [in] other is a set of identifiers of type *T*
+      */
+    Identifiers<T>& operator -=(const T &element) {
+            m_ids.erase(element);
+        return *this;
+    }
+
+    /// @}
+    
+    //! \brief Prints the set of identifiers
+    friend
+        std::ostream&
+        operator<<(std::ostream& os, const Identifiers<T>& identifiers) {
+            os << "{";
+            for (auto identifier : identifiers.m_ids) {
+                os << identifier << ", ";
+            }
+            os << "}";
+            return os;
+        }
+
+    /// @}
 };
-
-
-
-
-//! \brief Returns a set of identifiers of type *set<T>*
-template <typename T>
-const std::set<T>& Identifiers<T>::ids() const {
-    return m_ids;
-}
-
-//! \brief Returns a boolean value true or false
-/*!
-  @param [in] other Identifier of type *T*
-  Returns:
-  true: If other is in this set
-  false: Otherwise
-  */
-template <typename T>
-bool Identifiers<T>::has(const T other) const {
-    return (m_ids.find(other) != m_ids.end());
-}
-
-//! \brief Returns a boolean value true or false
-/*!
-  @param [in] other is an identifier of type *T*
-  Returns:
-  true: If other is not in this set
-  false: Otherwise
-  */
-template <typename T>
-bool Identifiers<T>::isDisjoint(const T other) const {
-    return (m_ids.find(other) == m_ids.end());
-}
-
-//! \brief Returns a boolean value true or false
-/*!
-  @param [in] other is set of identifiers of type *Identifiers<T>*
-  Returns:
-  true: If other and this set are disjoint
-  false: otherwise
-  */
-template <typename T>
-bool Identifiers<T>::isDisjoint(const Identifiers<T> &other) const {
-    for (auto identifier : other.ids()) {
-        if (!(m_ids.find(identifier) == m_ids.end())) {
-            return false;
-        }
-    }
-    return true;
-}
-
-//! \brief Inserts a set of identifiers of type *Identifiers<T>* to this set
-/*!
-  @param [in] other is a set of identifiers
-  */
-template <typename T>
-void Identifiers<T>::insert(const Identifiers<T> &other) {
-    m_ids.insert(other.ids().begin(), other.ids().end());
-}
-
-//! \brief Inserts an identifier of type *T* to this set
-/*!
-  @param [in] other is an identifier of type *T*
-  */
-template <typename T>
-void Identifiers<T>::insert(const T &other) {
-    m_ids.insert(other);
-}
-
-//! \brief Returns a boolean value
-/*!
-  @param [in] other is a set of identifiers of type *Identifiers<T>*
-  Returns:
-  true: If other and this set are equivalent
-  false: Otherwise
-  */
-template <typename T>
-bool Identifiers<T>::operator ==(const Identifiers<T> &other) const {
-    return std::equal(m_ids.begin(), m_ids.end(), other.ids().begin());
-}
-
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>*
-/*!
-  @param [in] other is an identifier of type *T*
-  Returns the set union of other with this set
-  */
-template <typename T>
-Identifiers<T> Identifiers<T>::operator +(const T &other) const {
-    Identifiers<T> union_ids;
-    union_ids.insert(*this);
-    union_ids.insert(other);
-    return union_ids;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>*
-/*!
-  @param [in] other is an identifier of type *T*
-  Returns the set intersection of other with this set
-  */
-template <typename T>
-Identifiers<T> Identifiers<T>::operator *(const T &other) const {
-    Identifiers<T> intersect_ids;
-    intersect_ids.insert(*this);
-    intersect_ids *= other;
-    return intersect_ids;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>*
-/*!
-  @param [in] other is an identifier of type *T*
-  Returns the set difference between this set and other
-  */
-template <typename T>
-Identifiers<T> Identifiers<T>::operator -(const T &other) const {
-    Identifiers<T> diff_ids;
-    diff_ids.insert(*this);
-    diff_ids -= other;
-    return diff_ids;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>*
-/*!
-  @param [in] other is a set of identifiers of type *Identifiers<T>*
-  Returns the set union of other with this set
-  */
-template <typename T>
-Identifiers<T> Identifiers<T>::operator +(const Identifiers<T> &other) const {
-    Identifiers<T> union_ids;
-    union_ids.insert(*this);
-    union_ids.insert(other);
-    return union_ids;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>*
-/*!
-  @param [in] other is a set of identifiers of type *Identifiers<T>*
-  Returns the set intersection of other with this set
-  */
-template <typename T>
-Identifiers<T> Identifiers<T>::operator *(const Identifiers<T> &other) const {
-    Identifiers<T> intersect_ids;
-    intersect_ids.insert(*this);
-    intersect_ids *= other;
-    return intersect_ids;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>*
-/*!
-  @param [in] other is a set of identifiers of type *Identifiers<T>*
-  Returns the set difference between this set and other
-  */
-template <typename T>
-Identifiers<T> Identifiers<T>::operator -(const Identifiers<T> &other) const {
-    Identifiers<T> diff_ids;
-    diff_ids.insert(*this);
-    diff_ids -= other;
-    return diff_ids;
-}
-
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>&*
-/*!
-  @param [in] other is an identifiers of type *T*
-  Replaces this set with the set union of other with this set
-  */
-template <typename T>
-Identifiers<T>& Identifiers<T>::operator +=(const T &other) {
-    this->insert(other);
-    return *this;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>&*
-/*!
-  @param [in] other is an identifiers of type *T*
-  Replaces this set with the set intersection of other with this set
-  */
-template <typename T>
-Identifiers<T>& Identifiers<T>::operator *=(const T &other) {
-    if (m_ids.find(other) != m_ids.end()) {
-        m_ids.clear();
-        m_ids.insert(other);
-    } else {
-        m_ids.clear();
-    }
-    return *this;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>&*
-/*!
-  @param [in] other is a set of identifiers of type *T*
-  Replaces this set with the set difference between this set and other
-  */
-template <typename T>
-Identifiers<T>& Identifiers<T>::operator -=(const T &other) {
-    if (m_ids.find(other) != m_ids.end()) {
-        m_ids.erase(m_ids.find(other));
-    }
-    return *this;
-}
-
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>&*
-/*!
-  @param [in] other is a set of identifiers of type *Identifiers<T>*
-  Replaces this set with the set union of other with this set
-  */
-template <typename T>
-Identifiers<T>& Identifiers<T>::operator +=(const Identifiers<T> &other) {
-    this->insert(other);
-    return *this;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>&*
-/*!
-  @param [in] other is a set of identifiers of type *Identifiers<T>*
-  Replaces this set with the set intersection of other with this set
-  */
-template <typename T>
-Identifiers<T>& Identifiers<T>::operator *=(const Identifiers<T> &other) {
-    for (auto identifier : m_ids) {
-        if (other.ids().find(identifier) == other.ids().end()) {
-            m_ids.erase(m_ids.find(identifier));
-        }
-    }
-    return *this;
-}
-
-//! \brief Returns a set of identifiers of type *Identifiers<T>&*
-/*!
-  @param [in] other is a set of identifiers of type *Identifiers<T>*
-  Replaces this set with the set difference between this set and other
-  */
-template <typename T>
-Identifiers<T>& Identifiers<T>::operator -=(const Identifiers<T> &other) {
-    for (auto identifier : m_ids) {
-        if (other.ids().find(identifier) != other.ids().end()) {
-            m_ids.erase(m_ids.find(identifier));
-        }
-    }
-    return *this;
-}
-
-//! \brief Prints the set of identifiers
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const Identifiers<T>& identifiers) {
-    os << "{";
-    for (auto identifier : identifiers.ids()) {
-        os << identifier << ", ";
-    }
-    os << "}";
-    return os;
-}
-
-//! \brief Returns an identifier of type *T* at position *index* in the set
-/*!
-  @param [in] index is of type size_t 
-  */
-template <typename T>
-const T& Identifiers<T>::operator[](size_t index) const {
-        if (index >= size()) {
-            throw std::out_of_range("Index out of bounds");
-        }
-        return *std::next(m_ids.begin(), index);
-}
-
 
 #endif  // SRC_COMMON_SRC_IDENTIFIERS_HPP_

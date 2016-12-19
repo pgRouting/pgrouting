@@ -37,6 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "../../common/src/pgr_base_graph.hpp"
+#include "../../common/src/ch_vertex.h"
+#include "../../common/src/ch_edge.h"
 
 
 namespace pgrouting {

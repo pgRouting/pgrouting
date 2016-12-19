@@ -151,8 +151,12 @@ void Pgr_linear<G>::doContraction(G &graph) {
         Identifiers<V> adjacent_vertices =
             graph.find_adjacent_vertices(current_vertex);
         pgassert(adjacent_vertices.size() == 2);
-        V vertex_1 = adjacent_vertices[0];
-        V vertex_2 = adjacent_vertices[1];
+
+        V vertex_1 = adjacent_vertices.front();
+        adjacent_vertices.pop_front();
+        V vertex_2 = adjacent_vertices.front();
+        adjacent_vertices.pop_front();
+
         contraction_debug << "Adjacent vertices\n";
         contraction_debug << graph[vertex_1].id
             << ", " << graph[vertex_2].id
@@ -234,8 +238,12 @@ Pgr_linear<G>::add_shortcut(
 
     if (graph.is_undirected()) {
         Identifiers<V> adjacent_vertices = graph.find_adjacent_vertices(vertex);
-        V vertex_1 = adjacent_vertices[0];
-        V vertex_2 = adjacent_vertices[1];
+
+        V vertex_1 = adjacent_vertices.front();
+        adjacent_vertices.pop_front();
+        V vertex_2 = adjacent_vertices.front();
+        adjacent_vertices.pop_front();
+
         E shortcut_E;
         CH_edge shortcut(get_next_id(), graph[vertex_1].id,
                 graph[vertex_2].id,
