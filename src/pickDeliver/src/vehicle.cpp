@@ -359,9 +359,9 @@ Vehicle::evaluate(POS from) {
 
     while (node != m_path.end()) {
         if (node == m_path.begin()) {
-            node->evaluate(max_capacity);
+            node->evaluate(m_capacity);
         } else {
-            node->evaluate(*(node - 1), max_capacity);
+            node->evaluate(*(node - 1), m_capacity);
         }
 
         ++node;
@@ -454,9 +454,12 @@ Vehicle::Vehicle(
         ID p_id,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
-        double p_max_capacity) :
+        double p_m_capacity,
+        double p_speed) :
     m_id(p_id),
-    max_capacity(p_max_capacity) {
+    m_capacity(p_m_capacity),
+    m_speed(p_speed)
+    {
         m_path.clear();
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);

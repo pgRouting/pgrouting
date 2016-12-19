@@ -33,10 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <set>
 #include <algorithm>
-#include <sstream>
 #include <iterator>
+#include <sstream>
 #include <iostream>
 #include <stdexcept>
+
+/* TODO(vicky)
+ * compiler check that type T is a integral type
+ */
 
 template <typename T>
 class Identifiers {
@@ -44,13 +48,27 @@ class Identifiers {
     typedef typename std::set<T>::iterator iterator;
     typedef typename std::set<T>::const_iterator const_iterator;
 
+
+    //! @name constructors
+    //@{
     Identifiers<T>() = default;
+
+    /* @brief inserts 1 ~ number
+     *
+     * @params [in] number
+     */
+    explicit Identifiers<T>(const size_t number) {
+        size_t i(0);
+        std::generate_n(std::inserter(m_ids, m_ids.begin()), number, [&i](){ return i++; });
+    };
+
     /* TODO avoid pointers */
     Identifiers<T>(T* container, size_t size) {
         for (size_t i = 0; i < size; ++i) {
             m_ids.insert(container[i]);
         }
     }
+    //@}
 
     const std::set<T>& ids() const;
     size_t size() const { return m_ids.size(); }

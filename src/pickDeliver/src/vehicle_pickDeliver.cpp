@@ -81,9 +81,10 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         size_t id,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
-        double max_capacity,
+        double p_capacity,
+        double p_speed,
         const Pgr_pickDeliver *p_problem) :
-    Vehicle(id, starting_site, ending_site, max_capacity),
+    Vehicle(id, starting_site, ending_site, p_capacity, p_speed),
     cost((std::numeric_limits<double>::max)()),
     problem(p_problem) {
         orders_in_vehicle.clear();

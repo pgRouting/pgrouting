@@ -206,6 +206,7 @@ Initial_solution::insert_while_compatibleJ() {
             problem->m_starting_site,
             problem->m_ending_site,
             problem->max_capacity,
+            problem->m_speed,
             problem);
 
     while (!unassigned.empty()) {
@@ -239,6 +240,7 @@ Initial_solution::insert_while_compatibleJ() {
                     problem->m_starting_site,
                     problem->m_ending_site,
                     problem->max_capacity,
+                    problem->m_speed,
                     problem);
             truck = newtruck;
         }
@@ -362,6 +364,7 @@ Initial_solution::insert_while_compatibleI() {
             problem->m_starting_site,
             problem->m_ending_site,
             problem->max_capacity,
+            problem->m_speed,
             problem);
 
     while (!unassigned.empty()) {
@@ -395,6 +398,7 @@ Initial_solution::insert_while_compatibleI() {
                     problem->m_starting_site,
                     problem->m_ending_site,
                     problem->max_capacity,
+                    problem->m_speed,
                     problem);
             truck = newtruck;
         }
@@ -416,6 +420,7 @@ Initial_solution::insert_while_feasable() {
             problem->m_starting_site,
             problem->m_ending_site,
             problem->max_capacity,
+            problem->m_speed,
             problem);
     problem->log << "\nInitial_solution::insert_while_feasable\n";
     while (!unassigned.empty()) {
@@ -431,6 +436,7 @@ Initial_solution::insert_while_feasable() {
                     problem->m_starting_site,
                     problem->m_ending_site,
                     problem->max_capacity,
+                    problem->m_speed,
                     problem);
             truck = newtruck;
         } else {
@@ -450,6 +456,7 @@ Initial_solution::push_front_while_feasable() {
             problem->m_starting_site,
             problem->m_ending_site,
             problem->max_capacity,
+            problem->m_speed,
             problem);
     while (!unassigned.empty()) {
         auto order(problem->orders()[*unassigned.begin()]);
@@ -463,6 +470,7 @@ Initial_solution::push_front_while_feasable() {
                     problem->m_starting_site,
                     problem->m_ending_site,
                     problem->max_capacity,
+                    problem->m_speed,
                     problem);
             truck = newtruck;
         } else {
@@ -482,6 +490,7 @@ Initial_solution::push_back_while_feasable() {
             problem->m_starting_site,
             problem->m_ending_site,
             problem->max_capacity,
+            problem->m_speed,
             problem);
     while (!unassigned.empty()) {
         auto order(problem->orders()[*unassigned.begin()]);
@@ -495,6 +504,7 @@ Initial_solution::push_back_while_feasable() {
                     problem->m_starting_site,
                     problem->m_ending_site,
                     problem->max_capacity,
+                    problem->m_speed,
                     problem);
             truck = newtruck;
         } else {
@@ -519,6 +529,7 @@ Initial_solution::one_truck_per_order() {
                 problem->m_starting_site,
                 problem->m_ending_site,
                 problem->max_capacity,
+                problem->m_speed,
                 problem);
         truck.push_back(order);
         fleet.push_back(truck);
@@ -541,6 +552,7 @@ Initial_solution::one_truck_all_orders() {
             problem->m_starting_site,
             problem->m_ending_site,
             problem->max_capacity,
+            problem->m_speed,
             problem);
     while (!unassigned.empty()) {
         auto order(problem->orders()[*unassigned.begin()]);

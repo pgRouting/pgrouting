@@ -248,6 +248,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                     m_starting_site,
                     m_ending_site,
                     max_capacity,
+                    m_speed,
                     this);
             truck.push_back(m_orders.back());
 

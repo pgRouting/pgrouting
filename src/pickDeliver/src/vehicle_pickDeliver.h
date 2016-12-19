@@ -54,7 +54,8 @@ class Vehicle_pickDeliver : public Vehicle {
              ID id,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
-             double max_capacity,
+             double p_capacity,
+             double p_speed,
              const Pgr_pickDeliver *p_problem);
 
      Vehicle_pickDeliver(const Vehicle_pickDeliver &) = default;

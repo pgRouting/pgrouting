@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "utils/array.h"
 
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
+#include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/orders_input.h"
 #include "./../../common/src/vehicles_input.h"
@@ -51,7 +53,7 @@ process(
         int max_cycles,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
-    if (max_cycles <= 0) {
+    if (max_cycles < 0) {
         elog(ERROR, "Illegal value in parameter: max_cycles %d", max_cycles);
         (*result_count) = 0;
         (*result_tuples) = NULL;
@@ -106,8 +108,9 @@ process(
     PGR_DBG("Total %ld orders in query:", total_pd_orders);
 
     PGR_DBG("Starting processing");
+            clock_t start_t = clock();
     char *log_msg = NULL;
-    // char *notice_msg = NULL;
+    char *notice_msg = NULL;
     char *err_msg = NULL;
     do_pgr_pickDeliver(
             pd_orders_arr, total_pd_orders,
@@ -118,21 +121,27 @@ process(
             result_count,
 
             &log_msg,
+            &notice_msg,
             &err_msg);
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned log = %s\n", log_msg);
-    if (log_msg) {
-        elog(DEBUG1, "%s", log_msg);
-        free(log_msg);
-    }
-    if (err_msg) {
-        elog(ERROR, "%s", err_msg);
-        free(err_msg);
+
+    time_msg("_pgr_ipickDeliver", start_t, clock());
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
     }
 
+    pgr_global_report(log_msg, notice_msg, err_msg);
 
-    pfree(pd_orders_arr);
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (pd_orders_arr) pfree(pd_orders_arr);
+    if (vehicles_arr) pfree(vehicles_arr);
+
     pgr_SPI_finish();
+
 }
 /*                                                                            */
 /******************************************************************************/

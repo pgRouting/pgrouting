@@ -67,7 +67,8 @@ class Vehicle {
      typedef size_t POS;
      ID m_id;
      std::deque< Vehicle_node > m_path;
-     double max_capacity;
+     double m_capacity;
+     double m_speed;
 
  public:
      /*
@@ -81,7 +82,8 @@ class Vehicle {
              ID id,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
-             double max_capacity);
+             double m_capacity,
+             double speed);
 
 
 
@@ -241,6 +243,10 @@ class Vehicle {
      bool is_feasable() const {
          return !(has_twv() ||  has_cv());
      }
+     const Vehicle_node start_site() {return m_path.front();}
+     const Vehicle_node end_site() {return m_path.back();}
+     double speed() {return m_speed;}
+     double capacity() {return m_capacity;}
      /// @}
 
 
