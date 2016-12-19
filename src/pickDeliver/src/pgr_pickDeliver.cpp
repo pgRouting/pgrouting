@@ -167,22 +167,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     pgassert(m_ending_site.is_end());
 #endif
 
-#if 0
-    for (const auto truck : m_trucks) {
-    }
-    m_nodes.push_back(m_starting_site);
-    m_nodes.push_back(m_ending_site);
-#endif
 
     ID order_id(0);
-    // ID node_id(2);
-    for (const auto p : m_original_data) {
-#if 0
-        /*
-         * skip Starting site
-         */
-        if (p.id == 0) continue;
-#endif
+    for (const auto order : pd_orders) {
         /*
          * SAMPLE CORRECT INFORMATION
          *
@@ -195,81 +182,39 @@ Pgr_pickDeliver::Pgr_pickDeliver(
          * pickup is found
          */
         Vehicle_node pickup(
-                {node_id++, p, Tw_node::NodeType::kPickup, this});
+                {node_id++, order, Tw_node::NodeType::kPickup, this});
         Vehicle_node delivery(
-                {node_id++, p, Tw_node::NodeType::kDelivery, this});
-#if 0
-        if (!pickup.is_pickup()) {
-            log << "PICKUP" << pickup;
-            tmplog << "Illegal values found on Order " << p.id;
-            error = tmplog.str();
-            return;
-        }
-        pgassert(pickup.is_pickup());
-
-        if (!delivery.is_delivery()) {
-            log << "DELIVERY" << delivery;
-            tmplog << "Illegal values found on Order "
-                << p.id;
-            error = tmplog.str();
-            return;
-        }
-        pgassert(delivery.is_delivery());
-
-#endif
+                {node_id++, order, Tw_node::NodeType::kDelivery, this});
 
         /*
          * add into an order & check the order
          */
-#if 1
-        /* TODO(vicky) maybe this is not longer needed */
         pickup.set_Did(delivery.id());
         delivery.set_Pid(pickup.id());
-#endif
+
         m_nodes.push_back(pickup);
         m_nodes.push_back(delivery);
 
         m_orders.push_back(
-                Order(order_id,
+                Order(order_id++,
                     pickup,
                     delivery,
                     this));
-
-#if 0
-        /* this is chekced in the constructor */
-        pgassert(m_orders.back().pickup().is_pickup());
-        pgassert(m_orders.back().delivery().is_delivery());
-#endif
-        /*
-         * check the (S, P, D, E) order on all vehicles
-         * stop when a feasable truck is found
-         */
-        {
-#if 0
-            bool order_is_ok(false);
-            for (const auto truck : m_trucks) {
-                auto test_truck = truck;
-                test_truck.push_back(m_orders.back());
-
-                if (test_truck.is_feasable()) {
-                    order_is_ok = true;
-                    break;
-                }
-            }
-            if (!order_is_ok) {
-#else
-            if (!m_trucks.is_order_ok(m_orders.back())) {
-#endif
-                tmplog << "The Order "
-                    << p.id
-                    << " is not feasible on any truck";
-                error = tmplog.str();
-                return;
-            }
-        }
-
-        ++order_id;
     }  //  for (creating orders)
+
+    /*
+     * check the (S, P, D, E) order on all vehicles
+     * stop when a feasable truck is found
+     */
+    for (const auto &o : m_orders) {
+        if (!m_trucks.is_order_ok(o)) {
+            tmplog << "The Order "
+                << o.pickup().id()
+                << " is not feasible on any truck";
+            error = tmplog.str();
+            return;
+        }
+    }
 
     for (auto &o : m_orders) {
         o.setCompatibles();
