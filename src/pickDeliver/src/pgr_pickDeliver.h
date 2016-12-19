@@ -94,7 +94,9 @@ class Pgr_pickDeliver {
     size_t m_max_cycles;
     size_t max_vehicles;
     Vehicle_node m_starting_site, m_ending_site;
+#if 0
     std::vector<PickDeliveryOrders_t> m_original_data;
+#endif
     std::vector<Vehicle_node> m_nodes;
     Fleet m_trucks;
     std::vector<Order> m_orders;

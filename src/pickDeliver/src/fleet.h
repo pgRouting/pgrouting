@@ -81,24 +81,6 @@ class Fleet {
      iterator begin() {return m_trucks.begin();};
      iterator end() {return m_trucks.end();};
      //@}
-#if 0
-     std::string cost_str() const;
-     std::string tau(const std::string &title = "Tau") const;
-     friend std::ostream& operator<<(
-             std::ostream &log,
-             const Fleet &solution);
-     bool operator <(const Fleet &s_rhs) const;
-
-     bool is_feasable() const;
-     double duration() const;
-     double wait_time() const;
-     double total_travel_time() const;
-     double total_service_time() const;
-     int twvTot() const;
-     int cvTot() const;
-     size_t fleet_size() const {return fleet.size();}
-     Vehicle::Cost cost() const;
-#endif
 };
 
 

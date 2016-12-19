@@ -62,8 +62,6 @@ Order::Order(
     pickup_id(p_pickup.id()),
     delivery_id(p_delivery.id()),
     problem(p_problem) {
-        pgassert(pickup().is_pickup());
-        pgassert(delivery().is_delivery());
     }
 
 std::ostream&

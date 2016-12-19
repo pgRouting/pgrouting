@@ -140,8 +140,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     m_max_cycles = p_max_cycles;
     pgassert(m_max_cycles > 0);
+#if 0
     m_original_data = pd_orders;
-
+#endif
     std::ostringstream tmplog;
     error = "";
 
@@ -150,10 +151,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     size_t node_id(0);
     m_trucks.build_fleet(vehicles, node_id);
     if (!m_trucks.is_fleet_ok()) {
-        /*
-         * TODO handle the user error
-         */
+        error = this->error.str();
+        return;
     };
+
 #if 1
     pgassert(m_trucks.m_trucks[0].end_site().is_end());
     pgassert(m_trucks.m_trucks[0].end_site().is_end());
@@ -179,22 +180,22 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
 
         /*
-         * pickup is found
+         * Creating the pickup & delivery nodes
          */
         Vehicle_node pickup(
                 {node_id++, order, Tw_node::NodeType::kPickup, this});
         Vehicle_node delivery(
                 {node_id++, order, Tw_node::NodeType::kDelivery, this});
 
-        /*
-         * add into an order & check the order
-         */
         pickup.set_Did(delivery.id());
         delivery.set_Pid(pickup.id());
 
         m_nodes.push_back(pickup);
         m_nodes.push_back(delivery);
 
+        /*
+         * add into an order
+         */
         m_orders.push_back(
                 Order(order_id++,
                     pickup,
@@ -207,6 +208,13 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      * stop when a feasable truck is found
      */
     for (const auto &o : m_orders) {
+        if (!o.is_valid()) {
+            tmplog << "The Order "
+                << o.pickup().id()
+                << " is invalid";
+            error = tmplog.str();
+            return;
+        }
         if (!m_trucks.is_order_ok(o)) {
             tmplog << "The Order "
                 << o.pickup().id()

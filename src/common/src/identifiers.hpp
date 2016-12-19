@@ -70,20 +70,23 @@ class Identifiers {
     }
     //@}
 
+    //! @name set like operators
+    //@{
+    size_t size() const {return m_ids.size(); }
+    inline bool empty() const {return m_ids.empty(); }
+    inline void clear() {m_ids.clear();}
+    const_iterator begin() const {return m_ids.begin();}
+    const_iterator end() const {return m_ids.end();}
+    iterator begin() {return m_ids.begin();}
+    iterator end() {return m_ids.end();}
+    //@}
+
     const std::set<T>& ids() const;
-    size_t size() const { return m_ids.size(); }
-    //! \brief Returns true when the set is empty
-    inline bool empty() const { return m_ids.empty(); }
-    inline void clear() { m_ids.clear(); }
     bool has(const T element) const;
     bool isDisjoint(const T other) const;
     bool isDisjoint(const Identifiers<T> &other) const;
     void insert(const Identifiers<T> &other);
     void insert(const T &other);
-    iterator begin() { return m_ids.begin(); }
-    const_iterator begin() const { return m_ids.begin(); }
-    iterator end() { return m_ids.end(); }
-    const_iterator end() const { return m_ids.end(); }
     bool operator ==(const Identifiers<T> &other) const;
     const T& operator[](size_t index) const;
 
