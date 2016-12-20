@@ -29,14 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./tw_node.h"
 #include "./vehicle_node.h"
 #include "./pgr_pickDeliver.h"
-#if 0
-#include <string>
-#include <vector>
-
-#include "./vehicle_pickDeliver.h"
-#include "./../../common/src/identifiers.hpp"
-#include "./vehicle_node.h"
-#endif
 
 namespace pgrouting {
 namespace vrp {
@@ -92,7 +84,8 @@ PD_Orders::is_valid() const {
      */
     for (const auto &o : m_orders) {
         if (!o.is_valid()) {
-            problem->error << "Error found on order";
+            error << "Error found on order";
+            log << o;
             return false;
         }
     }

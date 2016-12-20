@@ -34,13 +34,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./vehicle_pickDeliver.h"
+#include "./pgr_messages.h"
 #include "./../../common/src/identifiers.hpp"
 namespace pgrouting {
 namespace vrp {
 
 class Pgr_pickDeliver;
 
-class Fleet {
+class Fleet : public Pgr_messages {
      Pgr_pickDeliver* problem;
      typedef typename std::vector<Vehicle_pickDeliver> Trucks;
  public:

@@ -45,8 +45,8 @@ Fleet::build_fleet(
     for (auto vehicle : vehicles) {
 
         if (vehicle.cant_v < 0) {
-            problem->error << "Illegal number of vehicles found vehicle";
-            problem->log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
+            error << "Illegal number of vehicles found vehicle";
+            log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
             continue;
         }
 
@@ -55,8 +55,8 @@ Fleet::build_fleet(
         auto ending_site = Vehicle_node(
                 {node_id++, vehicle, Tw_node::NodeType::kEnd, problem});
 
-        (problem->m_nodes).push_back(starting_site);
-        (problem->m_nodes).push_back(ending_site);
+        problem->add_node(starting_site);
+        problem->add_node(ending_site);
 
         for (int i = 0; i < vehicle.cant_v; ++i) {
             m_trucks.push_back(Vehicle_pickDeliver(
@@ -77,11 +77,11 @@ Fleet::is_fleet_ok() const {
     for (auto truck : m_trucks) {
         if (!(truck.start_site().is_start()
                     && truck.end_site().is_end())) {
-            problem->error << "Illegal values found on vehcile";
+            error << "Illegal values found on vehcile";
             return false;
         }
         if (!truck.is_feasable()) {
-            problem->error << "Truck is not feasable";
+            error << "Truck is not feasable";
             return false;
         }
     }

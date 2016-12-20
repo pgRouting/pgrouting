@@ -34,8 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include <sstream>
 
-#include "./vehicle_node.h"
-#include "./order.h"
+#include "./pgr_messages.h"
 #include "./orders.h"
 #include "./fleet.h"
 #include "./solution.h"
@@ -44,17 +43,11 @@ namespace pgrouting {
 namespace vrp {
 
 
-class Optimize;
-class Initial_solution;
 
-class Pgr_pickDeliver {
-    friend class Vehicle_pickDeliver;
-    friend class Optimize;
+class Pgr_pickDeliver : public Pgr_messages{
     friend class Initial_solution;
-    friend class Solution;
-    friend class Fleet;
-    friend class PD_Orders;
-    friend class Order;
+    friend class Optimize;
+
     typedef size_t ID;
 
  public:
@@ -76,17 +69,6 @@ class Pgr_pickDeliver {
     const PD_Orders& orders() const {return m_orders;}
     double speed() const {return m_speed;}
 
-    /*! \brief get_log
-     *
-     * \returns the current contents of the log and clears the log
-     *
-     */
-    std::ostream& get_log(std::ostream &p_log) const {
-        p_log << log.str() << "\n";
-        log.str("");
-        log.clear();
-        return p_log;
-    }
 
     Solution solve(const Solution init_solution);
     size_t max_cycles() const {return m_max_cycles;}
@@ -119,13 +101,7 @@ class Pgr_pickDeliver {
     Fleet m_trucks;
     PD_Orders m_orders;
     std::vector<Solution> solutions;
- protected:
-    mutable std::ostringstream log;
-    mutable std::ostringstream notice;
-    mutable std::ostringstream error;
-#ifndef NDEBUG
-    mutable std::ostringstream dbg_log;
-#endif
+
 };
 
 }  //  namespace vrp

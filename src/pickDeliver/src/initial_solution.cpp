@@ -162,7 +162,7 @@ Initial_solution::first_ordersIJ() const {
 
 void
 Initial_solution::insert_while_compatibleJ() {
-    problem->log << "\nInitial_solution::insert_while_compatible\n";
+    log << "\nInitial_solution::insert_while_compatible\n";
     invariant();
 
 
@@ -297,7 +297,7 @@ Initial_solution::first_ordersJI() const {
 
 void
 Initial_solution::insert_while_compatibleI() {
-    problem->log << "\nInitial_solution::insert_while_compatible\n";
+    log << "\nInitial_solution::insert_while_compatible\n";
     invariant();
 
 
@@ -360,7 +360,7 @@ Initial_solution::insert_while_feasable() {
             problem->max_capacity,
             problem->m_speed,
             problem);
-    problem->log << "\nInitial_solution::insert_while_feasable\n";
+    log << "\nInitial_solution::insert_while_feasable\n";
     while (!unassigned.empty()) {
         auto order(problem->orders()[unassigned.front()]);
 

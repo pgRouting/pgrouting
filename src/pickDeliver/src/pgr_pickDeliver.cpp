@@ -133,7 +133,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
-        std::string &error) :
+        std::string &err) :
     m_trucks(this),
     m_orders(this)
 {
@@ -143,14 +143,15 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_max_cycles = p_max_cycles;
     pgassert(m_max_cycles > 0);
     std::ostringstream tmplog;
-    error = "";
+    err = "";
 
     log << "\n *** Constructor of problem ***\n";
 
     size_t node_id(0);
     m_trucks.build_fleet(vehicles, node_id);
     if (!m_trucks.is_fleet_ok()) {
-        error = this->error.str();
+        error << m_trucks.get_error();
+        err = error.str();
         return;
     };
 
@@ -169,7 +170,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     m_orders.build_orders(pd_orders, node_id);
     if (!m_orders.is_valid()) {
-        error = this->error.str();
+        error << m_orders.get_error();
+        err = error.str();
         return;
     };
 
@@ -180,10 +182,10 @@ Pgr_pickDeliver::Pgr_pickDeliver(
      */
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {
-            tmplog << "The Order "
+            error << "The Order "
                 << o.pickup().id()
                 << " is not feasible on any truck";
-            error = tmplog.str();
+            err = error.str();
             return;
         }
     }

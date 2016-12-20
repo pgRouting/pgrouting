@@ -38,12 +38,11 @@ namespace vrp {
  * \returns the current contents of the log and clears the log
  *
  */
-std::ostream&
-Pgr_messages::get_log(std::ostream &p_log) const {
-    p_log << log.str() << "\n";
-    log.str("");
+std::string
+Pgr_messages::get_log() {
+    std::string str = log.str();
     log.clear();
-    return p_log;
+    return str;
 }
 
 /*! \brief get notice messages
@@ -51,26 +50,23 @@ Pgr_messages::get_log(std::ostream &p_log) const {
  * \returns the current contents of the log and clears the log
  *
  */
-std::ostream&
-Pgr_messages::get_notice(std::ostream &p_log)
-    const {
-        p_log << notice.str() << "\n";
-        notice.str("");
-        notice.clear();
-        return p_log;
-    }
+std::string
+Pgr_messages::get_notice() {
+    std::string str = notice.str();
+    notice.clear();
+    return str;
+}
 
 /*! \brief get error messages
  *
  * \returns the current contents of the log and clears the log
  *
  */
-std::ostream&
-Pgr_messages::get_error(std::ostream &p_log) const {
-    p_log << error.str() << "\n";
-    error.str("");
+std::string
+Pgr_messages::get_error() {
+    std::string str = error.str();
     error.clear();
-    return p_log;
+    return str;
 }
 
 #ifndef NDEBUG
@@ -79,12 +75,11 @@ Pgr_messages::get_error(std::ostream &p_log) const {
  * \returns the current contents of the log and clears the log
  *
  */
-std::ostream&
-Pgr_messages::get_dbglog(std::ostream &p_log) const {
-    p_log << dbg_log.str() << "\n";
-    dbg_log.str("");
+std::string
+Pgr_messages::get_dbglog() {
+    std::string str = dbg_log.str();
     dbg_log.clear();
-    return p_log;
+    return str;
 }
 #endif
 

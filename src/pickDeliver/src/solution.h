@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./vehicle_pickDeliver.h"
 #include "./order.h"
+#include "./pgr_messages.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -42,7 +43,7 @@ namespace vrp {
 class Pgr_pckDeliver;
 class Optimize;
 
-class Solution {
+class Solution : public Pgr_messages {
     friend class Optimize;
  protected:
      double EPSILON;
@@ -77,6 +78,7 @@ class Solution {
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
+         Pgr_messages(),
          EPSILON(0.0001),
          fleet(sol.fleet),
          problem(sol.problem)

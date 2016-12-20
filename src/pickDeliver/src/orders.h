@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/identifiers.hpp"
+#include "./pgr_messages.h"
 
 
 namespace pgrouting {
@@ -38,7 +39,7 @@ namespace vrp {
 class Pgr_pickDeliver;
 class Order;
 
-class PD_Orders {
+class PD_Orders : public Pgr_messages {
      Pgr_pickDeliver* problem;
      typedef typename std::vector<Order> Orders;
  public:
