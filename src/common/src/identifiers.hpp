@@ -168,12 +168,12 @@ class Identifiers {
     friend Identifiers<T> operator *(
                 const Identifiers<T> &lhs,
                 const Identifiers<T> &rhs) {
-            Identifiers<T> intersect;
+            std::set<T> result;
             std::set_intersection(
-                    lhs.begin(), lhs.end(),
-                    rhs.begin(), rhs.end(),
-                    std::inserter(intersect, intersect.begin()));
-            return intersect;
+                    lhs.m_ids.begin(), lhs.m_ids.end(),
+                    rhs.m_ids.begin(), rhs.m_ids.end(),
+                    std::inserter(result, result.begin()));
+            return Identifiers<T>(result);
         }
 
     //! \brief coumpound set INTERSECTION set

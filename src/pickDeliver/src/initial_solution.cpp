@@ -37,52 +37,45 @@ namespace vrp {
 
 void
 Initial_solution::invariant() const {
-    std::set<size_t> orders(assigned);
-
-    orders.insert(unassigned.begin(), unassigned.end());
-
-    /* check the local book keeping is ok */
-    pgassert(all_orders == orders);
 
     /* this checks there is no order duplicated */
-    pgassert(all_orders.size() == orders.size());
+    pgassert(all_orders == (assigned + unassigned));
+    pgassert((assigned * unassigned).empty());
 }
 
 
 Initial_solution::Initial_solution(
         int kind,
         const Pgr_pickDeliver *p_problem) :
-    Solution(p_problem) {
-        for (const auto &order : problem->orders()) {
-            unassigned.insert(order.id());
-        }
-        all_orders = unassigned;
-        assigned.clear();
-
-        switch (kind) {
-            case 0:
-                one_truck_all_orders();
-                break;
-            case 1:
-                one_truck_per_order();
-                break;
-            case 2:
-                push_back_while_feasable();
-                break;
-            case 3:
-                push_front_while_feasable();
-                break;
-            case 4:
-                insert_while_feasable();
-                break;
-            case 5:
-                insert_while_compatibleJ();
-                break;
-            case 6:
-                insert_while_compatibleI();
-                break;
-        }
+    Solution(p_problem),
+    all_orders(problem->orders().size()),
+    unassigned(problem->orders().size()),
+    assigned()
+{
+    switch (kind) {
+        case 0:
+            one_truck_all_orders();
+            break;
+        case 1:
+            one_truck_per_order();
+            break;
+        case 2:
+            push_back_while_feasable();
+            break;
+        case 3:
+            push_front_while_feasable();
+            break;
+        case 4:
+            insert_while_feasable();
+            break;
+        case 5:
+            insert_while_compatibleJ();
+            break;
+        case 6:
+            insert_while_compatibleI();
+            break;
     }
+}
 
 
 
@@ -146,25 +139,14 @@ Initial_solution::fill_truck_while_compatibleJ(
     if (!truck.is_feasable()) {
         truck.erase(problem->orders()[best_order]);
     } else {
-        assigned.insert(best_order);
-        unassigned.erase(unassigned.find(best_order));
+        assigned += best_order;
+        unassigned -= best_order;
     }
 
     possible_orders.erase(possible_orders.find(best_order));
     fill_truck_while_compatibleJ(truck, possible_orders);
     invariant();
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -192,8 +174,6 @@ Initial_solution::first_ordersIJ() const {
 
 
 
-
-
 void
 Initial_solution::insert_while_compatibleJ() {
     problem->log << "\nInitial_solution::insert_while_compatible\n";
@@ -215,9 +195,9 @@ Initial_solution::insert_while_compatibleJ() {
         if (truck.empty()) {
             auto order(problem->orders()[orders.front()]);
             truck.insert(order);
-            assigned.insert(order.id());
+            assigned += order.id();
+            unassigned -= order.id();
             orders.pop_front();
-            unassigned.erase(unassigned.find(order.id()));
             invariant();
 
             std::set<size_t> compatible_orders(
@@ -309,8 +289,8 @@ Initial_solution::fill_truck_while_compatibleI(
     if (!truck.is_feasable()) {
         truck.erase(problem->orders()[best_order]);
     } else {
-        assigned.insert(best_order);
-        unassigned.erase(unassigned.find(best_order));
+        assigned += best_order;
+        unassigned -= best_order;
     }
 
     possible_orders.erase(possible_orders.find(best_order));
@@ -375,7 +355,7 @@ Initial_solution::insert_while_compatibleI() {
             truck.insert(order);
             assigned.insert(order.id());
             orders.pop_front();
-            unassigned.erase(unassigned.find(order.id()));
+            unassigned -= order.id();
             invariant();
 
             std::set<size_t> compatible_orders(
@@ -424,7 +404,7 @@ Initial_solution::insert_while_feasable() {
             problem);
     problem->log << "\nInitial_solution::insert_while_feasable\n";
     while (!unassigned.empty()) {
-        auto order(problem->orders()[*unassigned.begin()]);
+        auto order(problem->orders()[unassigned.front()]);
 
         truck.insert(order);
 
@@ -440,8 +420,8 @@ Initial_solution::insert_while_feasable() {
                     problem);
             truck = newtruck;
         } else {
-            assigned.insert(*unassigned.begin());
-            unassigned.erase(unassigned.begin());
+            assigned.insert(unassigned.front());
+            unassigned.pop_front();
         }
 
         invariant();
@@ -459,7 +439,7 @@ Initial_solution::push_front_while_feasable() {
             problem->m_speed,
             problem);
     while (!unassigned.empty()) {
-        auto order(problem->orders()[*unassigned.begin()]);
+        auto order(problem->orders()[unassigned.front()]);
 
         truck.push_front(order);
         if (!truck.is_feasable()) {
@@ -474,8 +454,8 @@ Initial_solution::push_front_while_feasable() {
                     problem);
             truck = newtruck;
         } else {
-            assigned.insert(*unassigned.begin());
-            unassigned.erase(unassigned.begin());
+            assigned.insert(unassigned.front());
+            unassigned.pop_front();
         }
 
         invariant();
@@ -508,8 +488,8 @@ Initial_solution::push_back_while_feasable() {
                     problem);
             truck = newtruck;
         } else {
-            assigned.insert(*unassigned.begin());
-            unassigned.erase(unassigned.begin());
+            assigned.insert(unassigned.front());
+            unassigned.pop_front();
         }
 
         invariant();
@@ -534,8 +514,8 @@ Initial_solution::one_truck_per_order() {
         truck.push_back(order);
         fleet.push_back(truck);
 
-        assigned.insert(*unassigned.begin());
-        unassigned.erase(unassigned.begin());
+        assigned.insert(unassigned.front());
+        unassigned.pop_front();
 
         invariant();
     }
@@ -559,8 +539,8 @@ Initial_solution::one_truck_all_orders() {
 
         truck.insert(order);
 
-        assigned.insert(*unassigned.begin());
-        unassigned.erase(unassigned.begin());
+        assigned.insert(unassigned.front());
+        unassigned.pop_front();
 
         invariant();
     }

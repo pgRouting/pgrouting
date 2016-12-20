@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <deque>
 #include "./solution.h"
+#include "./../../common/src/identifiers.hpp"
 
 namespace pgrouting {
 namespace vrp {
@@ -70,9 +71,9 @@ class Initial_solution : public Solution {
 
 
  private:
-     std::set<size_t> all_orders;
-     std::set<size_t> unassigned;
-     std::set<size_t> assigned;
+     Identifiers<size_t> all_orders;
+     Identifiers<size_t> unassigned;
+     Identifiers<size_t> assigned;
 };
 
 }  //  namespace vrp
