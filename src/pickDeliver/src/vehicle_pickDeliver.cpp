@@ -45,7 +45,7 @@ namespace vrp {
 
 Order
 Vehicle_pickDeliver::get_worse_order(
-        std::set<size_t> orders) const {
+        Identifiers<size_t> orders) const {
     invariant();
     pgassert(!empty());
 
@@ -57,7 +57,7 @@ Vehicle_pickDeliver::get_worse_order(
         auto truck(*this);
         auto order(problem->orders()[*orders.begin()]);
         pgassert(truck.has_order(order));
-        orders.erase(orders.begin());
+        orders -= order.id();
         truck.erase(order);
         auto delta = truck.duration() - curr_duration;
         if (delta < delta_duration) {
@@ -96,7 +96,7 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
 
 bool
 Vehicle_pickDeliver::has_order(const Order &order) const {
-    return !(orders_in_vehicle.find(order.id()) == orders_in_vehicle.end());
+    return orders_in_vehicle.has(order.id());
 }
 
 
@@ -159,7 +159,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
 
         while (deliver_pos.first <= deliver_pos.second) {
             Vehicle::insert(deliver_pos.first, order.delivery());
-            orders_in_vehicle.insert(order.id());
+            orders_in_vehicle += order.id();
             pgassertwm(has_order(order), err_log.str());
 #ifndef NDEBUG
             err_log << "\ndelivery inserted: " << tau();
@@ -187,7 +187,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
 #ifndef NDEBUG
         err_log << "\npickup erased: " << tau();
 #endif
-        orders_in_vehicle.erase(order.id());
+        orders_in_vehicle -= order.id();
         pgassertwm(!has_order(order), err_log.str());
 
         deliver_pos = d_pos_backup;
@@ -208,7 +208,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
     Vehicle::insert(best_pick_pos, order.pickup());
     Vehicle::insert(best_deliver_pos, order.delivery());
 
-    orders_in_vehicle.insert(order.id());
+    orders_in_vehicle += order.id();
     pgassertwm(is_feasable(), err_log.str());
     pgassertwm(has_order(order), err_log.str());
     pgassertwm(!has_cv(), err_log.str());
@@ -220,7 +220,7 @@ Vehicle_pickDeliver::push_back(const Order &order) {
     invariant();
     pgassert(!has_order(order));
 
-    orders_in_vehicle.insert(order.id());
+    orders_in_vehicle += order.id();
     m_path.insert(m_path.end() - 1, order.pickup());
     m_path.insert(m_path.end() - 1, order.delivery());
     evaluate(m_path.size() - 3);
@@ -235,7 +235,7 @@ Vehicle_pickDeliver::push_front(const Order &order) {
     invariant();
     pgassert(!has_order(order));
 
-    orders_in_vehicle.insert(order.id());
+    orders_in_vehicle += order.id();
     m_path.insert(m_path.begin() + 1, order.delivery());
     m_path.insert(m_path.begin() + 1, order.pickup());
     evaluate(1);
@@ -254,7 +254,7 @@ Vehicle_pickDeliver::erase(const Order &order) {
 
     Vehicle::erase(order.pickup());
     Vehicle::erase(order.delivery());
-    orders_in_vehicle.erase(orders_in_vehicle.find(order.id()));
+    orders_in_vehicle -= order.id();
 
     invariant();
     pgassert(!has_order(order));
@@ -299,7 +299,7 @@ Vehicle_pickDeliver::pop_back() {
     ID deleted_order_id(
             problem->order_of(problem->node(deleted_pick_id)).id());
 
-    orders_in_vehicle.erase(orders_in_vehicle.find(deleted_order_id));
+    orders_in_vehicle -= deleted_order_id;
 
     invariant();
     return deleted_order_id;
@@ -342,7 +342,7 @@ Vehicle_pickDeliver::pop_front() {
     ID deleted_order_id(
             problem->order_of(problem->node(deleted_pick_id)).id());
 
-    orders_in_vehicle.erase(orders_in_vehicle.find(deleted_order_id));
+    orders_in_vehicle -= deleted_order_id;
 
     invariant();
     return deleted_order_id;

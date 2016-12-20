@@ -86,27 +86,16 @@ Initial_solution::fill_truck_while_compatibleJ(
     invariant();
     /*
      * Precondition:
-     * truck.orders_in_vehicle intersection assigned == truck.orders_in_vehicle
-     * (all orders in the truck are in the assigned set)
+     * all orders in the truck are in the assigned set
      */
-    std::set<size_t> invariant_set;
-    std::set_intersection(
-            truck.orders_in_vehicle.begin(),
-            truck.orders_in_vehicle.end(),
-            assigned.begin(), assigned.end(),
-            std::inserter(invariant_set, invariant_set.begin()));
-    pgassert(invariant_set == truck.orders_in_vehicle);
+    pgassert(truck.orders_in_vehicle == (truck.orders_in_vehicle * assigned));
 
-    invariant_set.clear();
     /*
      * Precondition:
-     * possible_orders intersection unassigned == possible_orders
-     * (all possible orders are not in the assigned set)
+     *  all possible orders are not in the assigned set
      */
-    std::set_intersection(possible_orders.begin(), possible_orders.end(),
-            assigned.begin(), assigned.end(),
-            std::inserter(invariant_set, invariant_set.begin()));
-    pgassert(invariant_set.empty());
+    Identifiers<size_t> foo(possible_orders);
+    pgassert((foo * assigned).empty());
 
     /*
      * termination of recursion
@@ -237,26 +226,16 @@ Initial_solution::fill_truck_while_compatibleI(
     invariant();
     /*
      * Precondition:
-     * truck.orders_in_vehicle intersection assigned == truck.orders_in_vehicle
-     * (all orders in the truck are in the assigned set)
+     * all orders in the truck are in the assigned set
      */
-    std::set<size_t> invariant_set;
-    std::set_intersection(
-            truck.orders_in_vehicle.begin(), truck.orders_in_vehicle.end(),
-            assigned.begin(), assigned.end(),
-            std::inserter(invariant_set, invariant_set.begin()));
-    pgassert(invariant_set == truck.orders_in_vehicle);
+    pgassert(truck.orders_in_vehicle == (truck.orders_in_vehicle * assigned));
 
-    invariant_set.clear();
     /*
      * Precondition:
-     * possible_orders intersection unassigned == possible_orders
-     * (all possible orders are not in the assigned set)
+     *  all possible orders are not in the assigned set
      */
-    std::set_intersection(possible_orders.begin(), possible_orders.end(),
-            assigned.begin(), assigned.end(),
-            std::inserter(invariant_set, invariant_set.begin()));
-    pgassert(invariant_set.empty());
+    Identifiers<size_t> foo(possible_orders);
+    pgassert((foo * assigned).empty());
 
     /*
      * termination of recursion

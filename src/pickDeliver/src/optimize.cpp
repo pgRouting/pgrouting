@@ -115,11 +115,11 @@ Optimize::swap_worse(size_t from_pos, size_t to_pos) {
 
     while (!from_orders.empty() && --local_limit > 0) {
         auto from_order(from_truck.get_worse_order(from_orders));
-        from_orders.erase(from_order.id());
+        from_orders -= from_order.id();
 
         while (!to_orders.empty()) {
             auto to_order(to_truck.get_worse_order(to_orders));
-            to_orders.erase(to_order.id());
+            to_orders -= to_order.id();
 
             /*
              * delete from_order, and to order from their trucks
@@ -328,7 +328,7 @@ Optimize::move_reduce_cost(size_t from_pos, size_t to_pos) {
          * (there is always a worse)
          */
         auto order = from_truck.get_worse_order(orders);
-        orders.erase(order.id());
+        orders -= order.id();
 
         /*
          * insert it in the next truck
@@ -434,7 +434,7 @@ Optimize::decrease_truck(size_t cycle, bool &decreased) {
     while (!orders.empty()) {
         /* Step 2: grab an order */
         auto order(problem->orders()[*orders.begin()]);
-        orders.erase(orders.begin());
+        orders -= order.id();
         err_log << "\n truck with order: " << fleet.back().tau();
         err_log << "\nOrder" << order << "\n";
 

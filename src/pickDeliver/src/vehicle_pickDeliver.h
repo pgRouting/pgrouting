@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./order.h"
 #include "./tw_node.h"
 #include "./vehicle.h"
+#include "./../../common/src/identifiers.hpp"
 
 namespace pgrouting {
 namespace vrp {
@@ -42,7 +43,7 @@ class Optimize;
 class Vehicle_pickDeliver : public Vehicle {
  protected:
      double cost;
-     std::set<ID> orders_in_vehicle;  // /< orders inserted in this vehicle
+     Identifiers<size_t> orders_in_vehicle;  // /< orders inserted in this vehicle
      const Pgr_pickDeliver *problem;  // /< The vehicle belongs to this problem
 
 
@@ -141,7 +142,7 @@ class Vehicle_pickDeliver : public Vehicle {
      /* @brief 
       */
      Order get_first_order() const;
-     Order get_worse_order(std::set<size_t> of_this_subset) const;
+     Order get_worse_order(Identifiers<size_t> of_this_subset) const;
 
 
      /*!
