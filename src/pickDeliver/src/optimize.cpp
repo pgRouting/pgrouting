@@ -162,7 +162,7 @@ Optimize::swap_worse(size_t from_pos, size_t to_pos) {
                             to_order, fleet[to_pos]);
                     swapped = true;
                     save_if_best();
-                    from_orders.insert(to_order.id());
+                    from_orders += to_order.id();
 #ifndef NDEBUG
                     problem->dbg_log << "\nswappping after:";
                     problem->dbg_log << "\n" << fleet[to_pos].tau();

@@ -81,7 +81,7 @@ static void process_contraction(
     Identifiers<typename G::V> forbid_vertices;
     for (const auto &vertex : forbidden_vertices) {
         if (graph.has_vertex(vertex)) {
-            forbid_vertices.insert(graph.get_V(vertex));
+            forbid_vertices += graph.get_V(vertex);
         }
     }
 

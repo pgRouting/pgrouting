@@ -36,25 +36,11 @@ namespace vrp {
 
 Identifiers<size_t>
 Order::subsetI(const Identifiers<size_t> &I) const {
-#if 0
-    std::set<size_t> intersect;
-    std::set_intersection(m_compatibleI.begin(), m_compatibleI.end(),
-            I.begin(), I.end(),
-            std::inserter(intersect, intersect.begin()));
-    return intersect;
-#endif
     return m_compatibleI * I;
 }
 
 Identifiers<size_t>
 Order::subsetJ(const Identifiers<size_t> &J) const {
-#if 0
-    std::set<size_t> intersect;
-    std::set_intersection(m_compatibleJ.begin(), m_compatibleJ.end(),
-            J.begin(), J.end(),
-            std::inserter(intersect, intersect.begin()));
-    return intersect;
-#endif
     return m_compatibleJ * J;
 }
 
@@ -137,13 +123,13 @@ Order::setCompatibles() {
             /*
              * this -> {J}
              */
-            m_compatibleJ.insert(J.id());
+            m_compatibleJ += J.id();
         }
         if (this->isCompatibleIJ(J)) {
             /*
              * {J} -> this
              */
-            m_compatibleI.insert(J.id());
+            m_compatibleI += J.id();
         }
     }
 }

@@ -112,20 +112,18 @@ Initial_solution::fill_truck_while_compatibleJ(
      * In the possible orders set look for the order that
      * has more compatible orders with the current possible orders
      */
-    for (auto &o : possible_orders) {
-        auto other_orders = problem->orders()[o].m_compatibleJ;
-        auto intersect_orders = problem->orders()[o].subsetJ(possible_orders);
+    for (const auto &o : possible_orders) {
+        auto intersect_orders = problem->compatibleJ(o) * possible_orders;
         if (max_size < intersect_orders.size()) {
             max_size = intersect_orders.size();
             best_order = o;
         }
     }
-    auto intersect_orders =
-        problem->orders()[best_order].subsetJ(possible_orders);
+    auto intersect_orders = problem->compatibleJ(best_order) * possible_orders;
 
-    truck.insert(problem->orders()[best_order]);
+    truck.insert(problem->orders(best_order));
     if (!truck.is_feasable()) {
-        truck.erase(problem->orders()[best_order]);
+        truck.erase(problem->orders(best_order));
     } else {
         assigned += best_order;
         unassigned -= best_order;
@@ -318,7 +316,7 @@ Initial_solution::insert_while_compatibleI() {
         if (truck.empty()) {
             auto order(problem->orders()[orders.front()]);
             truck.insert(order);
-            assigned.insert(order.id());
+            assigned += order.id();
             orders.pop_front();
             unassigned -= order.id();
             invariant();
@@ -380,7 +378,7 @@ Initial_solution::insert_while_feasable() {
                     problem);
             truck = newtruck;
         } else {
-            assigned.insert(unassigned.front());
+            assigned += unassigned.front();
             unassigned.pop_front();
         }
 
@@ -414,7 +412,7 @@ Initial_solution::push_front_while_feasable() {
                     problem);
             truck = newtruck;
         } else {
-            assigned.insert(unassigned.front());
+            assigned += unassigned.front();
             unassigned.pop_front();
         }
 
@@ -448,7 +446,7 @@ Initial_solution::push_back_while_feasable() {
                     problem);
             truck = newtruck;
         } else {
-            assigned.insert(unassigned.front());
+            assigned += unassigned.front();
             unassigned.pop_front();
         }
 
@@ -474,7 +472,7 @@ Initial_solution::one_truck_per_order() {
         truck.push_back(order);
         fleet.push_back(truck);
 
-        assigned.insert(unassigned.front());
+        assigned += unassigned.front();
         unassigned.pop_front();
 
         invariant();
@@ -499,7 +497,7 @@ Initial_solution::one_truck_all_orders() {
 
         truck.insert(order);
 
-        assigned.insert(unassigned.front());
+        assigned += unassigned.front();
         unassigned.pop_front();
 
         invariant();

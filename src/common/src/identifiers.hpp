@@ -57,7 +57,7 @@ class Identifiers {
         m_ids = data;
     };
 
-    /* @brief inserts 1 ~ number
+    /* @brief initializes with {1 ~ number}
      *
      * @params [in] number
      */
@@ -96,23 +96,6 @@ class Identifiers {
     }
 
 
-    //! \brief Inserts a set of identifiers
-    /*!
-     * @param [in] other set of identifiers
-     */
-    void insert(const Identifiers<T> &other) {
-        m_ids.insert(other.m_ids.begin(), other.m_ids.end());
-    }
-
-    //! \brief Inserts an element
-    /*!
-     * @param [in] other is an identifier of type *T*
-     */
-    void insert(const T &element) {
-        m_ids.insert(element);
-    }
-
-
     //! \brief true when both sets are equal
     /*!
      * @param [in] other set of identifiers
@@ -132,7 +115,7 @@ class Identifiers {
             const Identifiers<T> &lhs,
             const Identifiers<T> &rhs) {
         Identifiers<T> union_ids(lhs);
-        union_ids.insert(rhs);
+        union_ids += rhs;
         return union_ids;
     }
 
@@ -142,7 +125,7 @@ class Identifiers {
      */
     Identifiers<T>& operator +=(
             const Identifiers<T> &other) {
-        this->insert(other);
+        m_ids.insert(other.m_ids.begin(), other.m_ids.end());
         return *this;
     }
     //! \brief compound set UNION element 
@@ -150,7 +133,7 @@ class Identifiers {
      * @param [in] element of type *T*
      */
     Identifiers<T>& operator +=(const T &element) {
-        this->insert(element);
+        m_ids.insert(element);
         return *this;
     }
 

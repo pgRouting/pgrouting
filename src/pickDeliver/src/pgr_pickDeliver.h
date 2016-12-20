@@ -88,9 +88,20 @@ class Pgr_pickDeliver {
     Solution solve(const Solution init_solution);
     size_t max_cycles() const {return m_max_cycles;}
 
-    inline Identifiers<size_t> compatibleJ(size_t oid) {
-        return m_orders[oid].m_compatibleJ;
+    //! name orders handling (TODO? in a class?
+    /// @{
+
+    /*! \brief I -> {J}
+     *
+     * gets the orders {J} that can be visited after visiting order I
+     */
+    inline Identifiers<size_t> compatibleJ(size_t I) const{
+        return m_orders[I].m_compatibleJ;
     }
+
+    inline Order orders(size_t o) const {return m_orders[o];}
+
+    /// @{
  private:
     double max_capacity;
     double m_speed;
