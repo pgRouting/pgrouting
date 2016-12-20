@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./vehicle_node.h"
 #include "./vehicle_pickDeliver.h"
 #include "./order.h"
+#include "./orders.h"
 #include "./fleet.h"
 #include "./solution.h"
 #include "./initial_solution.h"
@@ -133,16 +134,14 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
         std::string &error) :
-    m_trucks(this)
+    m_trucks(this),
+    m_orders(this)
 {
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
 
     m_max_cycles = p_max_cycles;
     pgassert(m_max_cycles > 0);
-#if 0
-    m_original_data = pd_orders;
-#endif
     std::ostringstream tmplog;
     error = "";
 
@@ -168,53 +167,18 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     pgassert(m_ending_site.is_end());
 #endif
 
+    m_orders.build_orders(pd_orders, node_id);
+    if (!m_orders.is_valid()) {
+        error = this->error.str();
+        return;
+    };
 
-    ID order_id(0);
-    for (const auto order : pd_orders) {
-        /*
-         * SAMPLE CORRECT INFORMATION
-         *
-         * id | demand | pick_x | pick_y | pick_open_t | pick_close_t | pick_service_t | deliver_x | deliver_y | deliver_open_t | deliver_open_t | deliver_close_t | deliver_service_t
-         * 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
-         */
-
-
-        /*
-         * Creating the pickup & delivery nodes
-         */
-        Vehicle_node pickup(
-                {node_id++, order, Tw_node::NodeType::kPickup, this});
-        Vehicle_node delivery(
-                {node_id++, order, Tw_node::NodeType::kDelivery, this});
-
-        pickup.set_Did(delivery.id());
-        delivery.set_Pid(pickup.id());
-
-        m_nodes.push_back(pickup);
-        m_nodes.push_back(delivery);
-
-        /*
-         * add into an order
-         */
-        m_orders.push_back(
-                Order(order_id++,
-                    pickup,
-                    delivery,
-                    this));
-    }  //  for (creating orders)
 
     /*
      * check the (S, P, D, E) order on all vehicles
      * stop when a feasable truck is found
      */
     for (const auto &o : m_orders) {
-        if (!o.is_valid()) {
-            tmplog << "The Order "
-                << o.pickup().id()
-                << " is invalid";
-            error = tmplog.str();
-            return;
-        }
         if (!m_trucks.is_order_ok(o)) {
             tmplog << "The Order "
                 << o.pickup().id()
@@ -224,15 +188,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         }
     }
 
-    for (auto &o : m_orders) {
-        o.setCompatibles();
-    }
-
-#ifndef NDEBUG
-    for (auto o : m_orders) {
-        log << o;
-    }
-#endif
 }  //  constructor
 
 

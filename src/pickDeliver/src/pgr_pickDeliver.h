@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./vehicle_node.h"
 #include "./order.h"
+#include "./orders.h"
 #include "./fleet.h"
 #include "./solution.h"
 
@@ -52,6 +53,8 @@ class Pgr_pickDeliver {
     friend class Initial_solution;
     friend class Solution;
     friend class Fleet;
+    friend class PD_Orders;
+    friend class Order;
     typedef size_t ID;
 
  public:
@@ -70,7 +73,7 @@ class Pgr_pickDeliver {
 
     const Order order_of(const Vehicle_node &node) const;
     const Vehicle_node& node(ID id) const;
-    const std::vector<Order>& orders() const {return m_orders;}
+    const PD_Orders& orders() const {return m_orders;}
     double speed() const {return m_speed;}
 
     /*! \brief get_log
@@ -101,6 +104,10 @@ class Pgr_pickDeliver {
 
     inline Order orders(size_t o) const {return m_orders[o];}
 
+    void add_node(const Vehicle_node &node) {
+        m_nodes.push_back(node);
+    }
+
     /// @{
  private:
     double max_capacity;
@@ -108,12 +115,9 @@ class Pgr_pickDeliver {
     size_t m_max_cycles;
     size_t max_vehicles;
     Vehicle_node m_starting_site, m_ending_site;
-#if 0
-    std::vector<PickDeliveryOrders_t> m_original_data;
-#endif
     std::vector<Vehicle_node> m_nodes;
     Fleet m_trucks;
-    std::vector<Order> m_orders;
+    PD_Orders m_orders;
     std::vector<Solution> solutions;
  protected:
     mutable std::ostringstream log;

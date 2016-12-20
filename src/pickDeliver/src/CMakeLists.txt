@@ -3,6 +3,7 @@ ADD_LIBRARY(pickDeliver OBJECT
     tw_node.cpp
     vehicle_node.cpp
     order.cpp
+    orders.cpp
     fleet.cpp
     vehicle.cpp
     vehicle_pickDeliver.cpp
@@ -12,6 +13,7 @@ ADD_LIBRARY(pickDeliver OBJECT
     optimize.cpp
 
     pgr_pickDeliver.cpp
+    pgr_messages.cpp
 
     pickDeliver_driver.cpp
     pickDeliver.c

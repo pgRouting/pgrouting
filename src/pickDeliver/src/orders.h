@@ -23,34 +23,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_PICKDELIVER_SRC_FLEET_H
-#define SRC_PICKDELIVER_SRC_FLEET_H
+#ifndef SRC_PICKDELIVER_SRC_ORDERS_H
+#define SRC_PICKDELIVER_SRC_ORDERS_H
 #pragma once
 
-#include <deque>
-#include <tuple>
-#include <string>
 #include <vector>
-
-
-#include "./vehicle_pickDeliver.h"
+#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/identifiers.hpp"
+
+
 namespace pgrouting {
 namespace vrp {
 
 class Pgr_pickDeliver;
+class Order;
 
-class Fleet {
+class PD_Orders {
      Pgr_pickDeliver* problem;
-     typedef typename std::vector<Vehicle_pickDeliver> Trucks;
+     typedef typename std::vector<Order> Orders;
  public:
-     typedef typename Trucks::iterator iterator;
-     Trucks m_trucks;
+     typedef typename Orders::iterator o_iterator;
+     typedef typename Orders::const_iterator o_const_iterator;
+     typedef size_t OID;
+     typedef Identifiers<OID> setof_OID;
  protected:
-     Identifiers<size_t> used; 
-     Identifiers<size_t> un_used; 
-
-
+     Orders m_orders;
 
  public:
      /* @brief constructor
@@ -58,30 +55,33 @@ class Fleet {
       * @params [in] p_problem \t pointer to problem
       *
       */
-     explicit Fleet(Pgr_pickDeliver *p_problem) :
+     explicit PD_Orders(Pgr_pickDeliver *p_problem) :
          problem(p_problem) {}
 
-     void build_fleet(
-             const std::vector<Vehicle_t> &vehicles,
+     void build_orders(
+             const std::vector<PickDeliveryOrders_t> &pd_orders,
              size_t &node_id 
              );
 
 
 
-     bool is_fleet_ok() const;
-     bool is_order_ok(const Order &order) const;
+     bool is_valid() const;
 
      //! name vector like functions
      //@{
-     size_t size() const {return m_trucks.size();}
-     Vehicle_pickDeliver& operator[](size_t i);
-     iterator begin() {return m_trucks.begin();};
-     iterator end() {return m_trucks.end();};
+     Order& operator[](OID o);
+     const Order& operator[](OID o) const;
+     size_t size() const {return m_orders.size();}
+     o_iterator begin() {return m_orders.begin();};
+     o_iterator end() {return m_orders.end();};
+     o_const_iterator begin() const {return m_orders.begin();};
+     o_const_iterator end() const {return m_orders.end();};
      //@}
+     
 };
 
 
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_FLEET_H
+#endif  // SRC_PICKDELIVER_SRC_ORDERS_H
