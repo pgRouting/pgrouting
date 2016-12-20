@@ -82,7 +82,7 @@ Initial_solution::Initial_solution(
 void
 Initial_solution::fill_truck_while_compatibleJ(
         Vehicle_pickDeliver &truck,
-        std::set<size_t> &possible_orders) {
+        Identifiers<size_t> &possible_orders) {
     invariant();
     /*
      * Precondition:
@@ -94,8 +94,7 @@ Initial_solution::fill_truck_while_compatibleJ(
      * Precondition:
      *  all possible orders are not in the assigned set
      */
-    Identifiers<size_t> foo(possible_orders);
-    pgassert((foo * assigned).empty());
+    pgassert((possible_orders * assigned).empty());
 
     /*
      * termination of recursion
@@ -106,7 +105,7 @@ Initial_solution::fill_truck_while_compatibleJ(
     /*
      * CODE
      */
-    auto best_order = *possible_orders.begin();
+    auto best_order = possible_orders.front();
     size_t max_size(0);
 
     /*
@@ -132,7 +131,7 @@ Initial_solution::fill_truck_while_compatibleJ(
         unassigned -= best_order;
     }
 
-    possible_orders.erase(possible_orders.find(best_order));
+    possible_orders -= best_order;
     fill_truck_while_compatibleJ(truck, possible_orders);
     invariant();
 }
@@ -189,14 +188,9 @@ Initial_solution::insert_while_compatibleJ() {
             orders.pop_front();
             invariant();
 
-            std::set<size_t> compatible_orders(
+            auto compatible_orders(
                     problem->orders()[order.id()].m_compatibleJ);
-            std::set<size_t> possible_orders;
-            std::set_intersection(
-                    compatible_orders.begin(), compatible_orders.end(),
-                    unassigned.begin(), unassigned.end(),
-                    std::inserter(possible_orders, possible_orders.begin()));
-
+            auto possible_orders = compatible_orders * unassigned;
 
             fill_truck_while_compatibleJ(truck, possible_orders);
             fleet.push_back(truck);
@@ -222,7 +216,7 @@ Initial_solution::insert_while_compatibleJ() {
 void
 Initial_solution::fill_truck_while_compatibleI(
         Vehicle_pickDeliver &truck,
-        std::set<size_t> &possible_orders) {
+        Identifiers<size_t> &possible_orders) {
     invariant();
     /*
      * Precondition:
@@ -234,8 +228,7 @@ Initial_solution::fill_truck_while_compatibleI(
      * Precondition:
      *  all possible orders are not in the assigned set
      */
-    Identifiers<size_t> foo(possible_orders);
-    pgassert((foo * assigned).empty());
+    pgassert((possible_orders * assigned).empty());
 
     /*
      * termination of recursion
@@ -272,17 +265,10 @@ Initial_solution::fill_truck_while_compatibleI(
         unassigned -= best_order;
     }
 
-    possible_orders.erase(possible_orders.find(best_order));
+    possible_orders -= best_order;
     fill_truck_while_compatibleI(truck, possible_orders);
     invariant();
 }
-
-
-
-
-
-
-
 
 
 
@@ -337,14 +323,9 @@ Initial_solution::insert_while_compatibleI() {
             unassigned -= order.id();
             invariant();
 
-            std::set<size_t> compatible_orders(
+            auto compatible_orders(
                     problem->orders()[order.id()].m_compatibleI);
-            std::set<size_t> possible_orders;
-            std::set_intersection(
-                    compatible_orders.begin(), compatible_orders.end(),
-                    unassigned.begin(), unassigned.end(),
-                    std::inserter(possible_orders, possible_orders.begin()));
-
+            auto possible_orders = compatible_orders * unassigned;
 
             fill_truck_while_compatibleI(truck, possible_orders);
             fleet.push_back(truck);

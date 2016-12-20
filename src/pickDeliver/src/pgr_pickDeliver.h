@@ -88,6 +88,9 @@ class Pgr_pickDeliver {
     Solution solve(const Solution init_solution);
     size_t max_cycles() const {return m_max_cycles;}
 
+    inline Identifiers<size_t> compatibleJ(size_t oid) {
+        return m_orders[oid].m_compatibleJ;
+    }
  private:
     double max_capacity;
     double m_speed;

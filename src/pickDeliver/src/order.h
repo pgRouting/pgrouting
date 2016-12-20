@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <set>
 #include <iostream>
 #include "./vehicle_node.h"
+#include "./../../common/src/identifiers.hpp"
 
 namespace pgrouting {
 namespace vrp {
@@ -75,8 +76,8 @@ class Order {
      bool isOrderCompatibleStart(const Vehicle_node &node) const;
      bool isOrderCompatibleEnd(const Vehicle_node &node) const;
 #endif
-     std::set<size_t> subsetJ(const std::set<size_t> &J) const;
-     std::set<size_t> subsetI(const std::set<size_t> &I) const;
+     Identifiers<size_t> subsetJ(const Identifiers<size_t> &J) const;
+     Identifiers<size_t> subsetI(const Identifiers<size_t> &I) const;
 
      friend std::ostream& operator << (std::ostream&, const Order &);
 
@@ -91,13 +92,13 @@ class Order {
       * I = this
       * I -> {J}
       */
-     std::set<size_t> m_compatibleJ;
+     Identifiers<size_t> m_compatibleJ;
 
      /*
       * J = this
       * {I} -> J
       */
-     std::set<size_t> m_compatibleI;
+     Identifiers<size_t> m_compatibleI;
 
 
      /* order belongs to this problem */

@@ -60,13 +60,13 @@ class Initial_solution : public Solution {
      void insert_while_compatibleJ();
      void fill_truck_while_compatibleJ(
              Vehicle_pickDeliver &truck,
-             std::set<size_t> &possible_orders);
+             Identifiers<size_t> &possible_orders);
      std::deque<size_t> first_ordersIJ() const;
 
      void insert_while_compatibleI();
      void fill_truck_while_compatibleI(
              Vehicle_pickDeliver &truck,
-             std::set<size_t> &possible_orders);
+             Identifiers<size_t> &possible_orders);
      std::deque<size_t> first_ordersJI() const;
 
 

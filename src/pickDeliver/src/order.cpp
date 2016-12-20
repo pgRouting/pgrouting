@@ -34,22 +34,28 @@ namespace pgrouting {
 namespace vrp {
 
 
-std::set<size_t>
-Order::subsetI(const std::set<size_t> &I) const {
+Identifiers<size_t>
+Order::subsetI(const Identifiers<size_t> &I) const {
+#if 0
     std::set<size_t> intersect;
     std::set_intersection(m_compatibleI.begin(), m_compatibleI.end(),
             I.begin(), I.end(),
             std::inserter(intersect, intersect.begin()));
     return intersect;
+#endif
+    return m_compatibleI * I;
 }
 
-std::set<size_t>
-Order::subsetJ(const std::set<size_t> &J) const {
+Identifiers<size_t>
+Order::subsetJ(const Identifiers<size_t> &J) const {
+#if 0
     std::set<size_t> intersect;
     std::set_intersection(m_compatibleJ.begin(), m_compatibleJ.end(),
             J.begin(), J.end(),
             std::inserter(intersect, intersect.begin()));
     return intersect;
+#endif
+    return m_compatibleJ * J;
 }
 
 
