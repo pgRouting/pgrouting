@@ -1,8 +1,5 @@
 
 DROP TABLE IF EXISTS customer CASCADE;
-
-
-
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS vehicles1 CASCADE;
 CREATE table customer (
