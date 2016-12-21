@@ -62,7 +62,7 @@ class Fleet : public Pgr_messages {
      explicit Fleet(Pgr_pickDeliver *p_problem) :
          problem(p_problem) {}
 
-     void build_fleet(
+     bool build_fleet(
              const std::vector<Vehicle_t> &vehicles,
              size_t &node_id 
              );

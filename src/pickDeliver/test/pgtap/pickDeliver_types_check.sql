@@ -20,7 +20,10 @@ SELECT
 'double precision'::text AS t10,
 'double precision'::text AS t11;
 
-SELECT * INTO pickDeliverResults FROM _pgr_pickdeliver($$SELECT * FROM orders order by id$$, 25, 200, 1, 30);
+SELECT * INTO pickDeliverResults FROM _pgr_pickdeliver(
+    $$SELECT * FROM orders ORDER BY id$$,
+    $$SELECT * FROM vehicles1 ORDER BY id$$,
+    30);
 
 
 PREPARE real_types AS

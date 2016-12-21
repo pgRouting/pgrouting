@@ -78,16 +78,16 @@ PD_Orders::build_orders(
 
 bool
 PD_Orders::is_valid() const {
-    /*
-     * check the (S, P, D, E) order on all vehicles
-     * stop when a feasable truck is found
-     */
     for (const auto &o : m_orders) {
         if (!o.is_valid()) {
-            error << "Error found on order";
-            log << o;
+            error << "The order " << o.pickup().original_id() << " is not feasible";
+            log << "The order " << o.pickup().original_id() << " is not feasible";
             return false;
         }
+        pgassert(o.pickup().is_pickup());
+        pgassert(o.delivery().is_delivery());
+            /* P -> D */
+        pgassert(o.delivery().is_compatible_IJ(o.pickup()));
     }
     return true;
 }

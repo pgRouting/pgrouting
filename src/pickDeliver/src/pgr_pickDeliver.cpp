@@ -148,8 +148,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     log << "\n *** Constructor of problem ***\n";
 
     size_t node_id(0);
-    m_trucks.build_fleet(vehicles, node_id);
-    if (!m_trucks.is_fleet_ok()) {
+    if (!m_trucks.build_fleet(vehicles, node_id)
+            || !m_trucks.is_fleet_ok()) {
         error << m_trucks.get_error();
         err = error.str();
         return;
@@ -169,6 +169,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 #endif
 
     m_orders.build_orders(pd_orders, node_id);
+    log << "validating orders";
     if (!m_orders.is_valid()) {
         error << m_orders.get_error();
         err = error.str();

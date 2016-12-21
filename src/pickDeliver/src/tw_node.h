@@ -63,12 +63,10 @@ class Tw_node: public Node {
 
 
      inline void set_Pid(size_t id) {
-         pgassert(is_delivery());
          m_otherid = id;
      }
 
      inline void set_Did(size_t id) {
-         pgassert(is_pickup());
          m_otherid = id;
      }
 

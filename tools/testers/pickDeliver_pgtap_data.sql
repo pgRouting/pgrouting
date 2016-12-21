@@ -1,5 +1,7 @@
 
 DROP TABLE IF EXISTS customer CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS vehicles1 CASCADE;
 CREATE table customer (
                 id BIGINT not null primary key,
                 x DOUBLE PRECISION,
@@ -125,13 +127,20 @@ COPY customer (id, x, y, demand, opentime, closetime, servicetime, pindex, dinde
 
 WITH
 pickups AS (
-    SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
-    FROM  customer where pindex = 0
+    SELECT id, demand, x AS pick_x, y AS pick_y, opentime AS pick_open, closetime AS pick_close, servicetime AS pick_service
+    FROM  customer WHERE pindex = 0 AND id != 0
 ),
 deliveries AS (
-    SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
-    FROM  customer where dindex = 0
+    SELECT pindex AS id, x AS deliver_x, y AS deliver_y, opentime AS deliver_open, closetime AS deliver_close, servicetime AS deliver_service
+    FROM  customer WHERE dindex = 0 AND id != 0
 )
 SELECT * INTO orders
-FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
+FROM pickups JOIN deliveries USING(id)
+ORDER BY pickups.id;
 
+SELECT id,
+    x AS start_x, y AS start_y,
+    opentime AS start_open, closetime AS start_close, 
+    25  AS number, 200 AS capacity
+INTO vehicles1
+FROM customer WHERE id = 0;

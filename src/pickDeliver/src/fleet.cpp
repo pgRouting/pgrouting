@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
-void
+bool
 Fleet::build_fleet(
         const std::vector<Vehicle_t> &vehicles,
         size_t &node_id
@@ -55,6 +55,12 @@ Fleet::build_fleet(
         auto ending_site = Vehicle_node(
                 {node_id++, vehicle, Tw_node::NodeType::kEnd, problem});
 
+        if (!(starting_site.is_start()
+                    && ending_site.is_end())) {
+            error << "Illegal values found on vehcile";
+            return false;
+        }
+
         problem->add_node(starting_site);
         problem->add_node(ending_site);
 
@@ -70,6 +76,7 @@ Fleet::build_fleet(
     }
     Identifiers<size_t> unused(m_trucks.size());
     un_used = unused;
+    return true;
 }
 
 bool

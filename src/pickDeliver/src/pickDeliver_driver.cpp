@@ -87,6 +87,8 @@ do_pgr_pickDeliver(
                 vehicles,
                 max_cycles,
                 error);
+        log << pd_problem.get_log();
+
         if (error.compare("")) {
             log << pd_problem.get_log();
             *log_msg = strdup(log.str().c_str());
