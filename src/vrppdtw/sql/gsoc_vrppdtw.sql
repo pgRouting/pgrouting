@@ -36,7 +36,7 @@ BEGIN
     customer_tmp AS (' || $1 || '),
     results AS (
         SELECT seq, order_id, vehicle_id, stop_type, departure_time FROM _pgr_pickDeliver(
-            $$ SELECT * FROM __vrp__orders $$, 
+            $$ SELECT * FROM __vrp__orders ORDER BY id$$,
             $$ WITH
                 customer_tmp1 AS (' || $1 || ')
                 SELECT id,
@@ -52,7 +52,8 @@ BEGIN
         END::INTEGER AS id2,
         departure_time AS cost
         FROM customer_tmp JOIN results
-        ON (customer_tmp.id = results.order_id)';
+        ON (customer_tmp.id = results.order_id)
+        ORDER BY seq';
 
     RETURN query EXECUTE results_sql;
     DROP TABLE IF EXISTS __vrp__orders;
