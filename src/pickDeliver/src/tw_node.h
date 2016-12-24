@@ -33,12 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_assert.h"
 
 #include "./node.h"
-#include "./pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
 
-class Pgr_pickDeliver;
 
 /*! \class Tw_node
  * \brief Extends the \ref Node class to create a Node with time window attributes.
@@ -51,7 +49,7 @@ class Pgr_pickDeliver;
  * values and requirements for \c type and \c streetid.
  *
  */
-class Tw_node: public Node, public PD_problem {
+class Tw_node: public Node {
  public:
      typedef enum {
          kStart = 0,  // /< starting site
