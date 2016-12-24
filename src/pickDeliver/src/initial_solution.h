@@ -42,8 +42,7 @@ class Pgr_pickDeliver;
 class Initial_solution : public Solution {
  public:
      Initial_solution(
-             int kind,
-             const Pgr_pickDeliver *problem);
+             int kind);
 
      void invariant() const;
 

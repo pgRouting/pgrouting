@@ -37,6 +37,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+
+//Pgr_pickDeliver* Fleet::problem;
+
+
 bool
 Fleet::build_fleet(
         const std::vector<Vehicle_t> &vehicles,
@@ -51,9 +55,9 @@ Fleet::build_fleet(
         }
 
         auto starting_site = Vehicle_node(
-                {node_id++, vehicle, Tw_node::NodeType::kStart, problem});
+                {node_id++, vehicle, Tw_node::NodeType::kStart});
         auto ending_site = Vehicle_node(
-                {node_id++, vehicle, Tw_node::NodeType::kEnd, problem});
+                {node_id++, vehicle, Tw_node::NodeType::kEnd});
 
         if (!(starting_site.is_start()
                     && ending_site.is_end())) {

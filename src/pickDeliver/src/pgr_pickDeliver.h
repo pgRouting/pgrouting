@@ -29,20 +29,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 #include "./../../common/src/pgr_types.h"
+#include "./../../common/src/identifiers.hpp"
 
 #include <string>
 #include <vector>
 #include <sstream>
 
 #include "./pgr_messages.h"
-#include "./orders.h"
+#include "./vehicle_node.h"
 #include "./fleet.h"
+#include "./orders.h"
 #include "./solution.h"
 
 namespace pgrouting {
 namespace vrp {
 
-
+class Order;
 
 class Pgr_pickDeliver : public Pgr_messages{
     friend class Initial_solution;
@@ -96,7 +98,10 @@ class Pgr_pickDeliver : public Pgr_messages{
     double m_speed;
     size_t m_max_cycles;
     size_t max_vehicles;
+#if 1
+    /* TODO not to be used when vehicle is from the m_trucks */
     Vehicle_node m_starting_site, m_ending_site;
+#endif
     std::vector<Vehicle_node> m_nodes;
     Fleet m_trucks;
     PD_Orders m_orders;

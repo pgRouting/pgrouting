@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/identifiers.hpp"
 #include "./pgr_messages.h"
+#include "./pd_problem.h"
 
 
 namespace pgrouting {
@@ -39,8 +40,7 @@ namespace vrp {
 class Pgr_pickDeliver;
 class Order;
 
-class PD_Orders : public Pgr_messages {
-     Pgr_pickDeliver* problem;
+class PD_Orders : public Pgr_messages , public PD_problem {
      typedef typename std::vector<Order> Orders;
  public:
      typedef typename Orders::iterator o_iterator;
@@ -56,8 +56,7 @@ class PD_Orders : public Pgr_messages {
       * @params [in] p_problem \t pointer to problem
       *
       */
-     explicit PD_Orders(Pgr_pickDeliver *p_problem) :
-         problem(p_problem) {}
+     PD_Orders() = default;
 
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders,
@@ -66,7 +65,7 @@ class PD_Orders : public Pgr_messages {
 
 
 
-     bool is_valid() const;
+     bool is_valid(double speed) const;
 
      //! name vector like functions
      //@{
@@ -78,7 +77,6 @@ class PD_Orders : public Pgr_messages {
      o_const_iterator begin() const {return m_orders.begin();};
      o_const_iterator end() const {return m_orders.end();};
      //@}
-     
 };
 
 

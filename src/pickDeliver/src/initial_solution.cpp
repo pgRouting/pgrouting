@@ -45,9 +45,8 @@ Initial_solution::invariant() const {
 
 
 Initial_solution::Initial_solution(
-        int kind,
-        const Pgr_pickDeliver *p_problem) :
-    Solution(p_problem),
+        int kind) :
+    Solution(),
     all_orders(problem->orders().size()),
     unassigned(problem->orders().size()),
     assigned()

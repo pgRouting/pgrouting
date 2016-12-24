@@ -60,7 +60,7 @@ class Order {
      inline size_t id() const {return m_id;}
      const Vehicle_node& delivery() const;
      const Vehicle_node& pickup() const;
-     void setCompatibles();
+     void setCompatibles(double speed);
 
      /*!
       * An order is valid when:
@@ -68,10 +68,10 @@ class Order {
       *   - The delivery is well formed
       *   - isCompatibleIJ to go to delivery after inmediatly visiting pickup
       */
-     bool is_valid() const;
+     bool is_valid(double speed) const;
 
 
-     bool isCompatibleIJ(const Order &other) const;
+     bool isCompatibleIJ(const Order &other, double speed) const;
 #if 0
      bool isOrderCompatibleStart(const Vehicle_node &node) const;
      bool isOrderCompatibleEnd(const Vehicle_node &node) const;

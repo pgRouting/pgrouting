@@ -34,7 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./vehicle_pickDeliver.h"
 #include "./order.h"
+#include "./fleet.h"
 #include "./pgr_messages.h"
+#include "./pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -43,15 +45,14 @@ namespace vrp {
 class Pgr_pckDeliver;
 class Optimize;
 
-class Solution : public Pgr_messages {
+class Solution : public Pgr_messages, public PD_problem {
     friend class Optimize;
  protected:
      double EPSILON;
      std::deque<Vehicle_pickDeliver> fleet;
 
      /* this solution belongs to this problem*/
-     const Pgr_pickDeliver *problem;
-
+     Fleet trucks;
 
  public:
      std::vector<General_vehicle_orders_t>
@@ -63,33 +64,37 @@ class Solution : public Pgr_messages {
       * @params [in] p_problem \t pointer to problem
       *
       */
-     explicit Solution(const Pgr_pickDeliver *p_problem) :
-         EPSILON(0.0001),
-         problem(p_problem)
+     explicit Solution() :
+         EPSILON(0.0001)
     {};
 
 
-     /* @brief move constructor */
-     Solution(const Solution && sol) :
-         EPSILON(0.0001),
-         fleet(std::move(sol.fleet)),
-         problem(std::move(sol.problem))
-         {};
 
+#if 0
+     /* @brief move constructor */
+     Solution(Solution &&sol) = default;
+         EPSILON(0.0001),
+         fleet(std::move(sol.fleet))
+         {};
+#endif
      /* @brief copy constructor */
      Solution(const Solution &sol) :
          Pgr_messages(),
+         PD_problem(),
          EPSILON(0.0001),
-         fleet(sol.fleet),
-         problem(sol.problem)
+         fleet(sol.fleet)
     {};
 
+#if 0
      /* @brief move assignment */
-     Solution& operator = (const Solution && sol) {
+     Solution& operator= (const Solution && sol) {
+         Pgr_messages(),
+         PD_problem(),
          EPSILON = 0.0001,
          fleet = sol.fleet;
          return *this;
      };
+#endif
 
      /* @brief copy assignment */
      Solution& operator = (const Solution& sol) {

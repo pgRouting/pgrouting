@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_assert.h"
 
 #include "./node.h"
+#include "./pd_problem.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -50,7 +51,7 @@ class Pgr_pickDeliver;
  * values and requirements for \c type and \c streetid.
  *
  */
-class Tw_node: public Node {
+class Tw_node: public Node, public PD_problem {
  public:
      typedef enum {
          kStart = 0,  // /< starting site
@@ -104,7 +105,7 @@ class Tw_node: public Node {
      inline double window_length() const {return m_closes - m_opens;}
 
      /*! \brief time = distance / speed. */
-     double travel_time_to(const Node &other) const;
+     double travel_time_to(const Node &other, double speed) const;
 
      ///@}
 
@@ -219,46 +220,46 @@ class Tw_node: public Node {
       * \b this node is visited directly after \b other node
       *   and that the actual arrival time at \b other node was opens(other)
       **/
-     double arrival_j_opens_i(const Tw_node &I) const;
+     double arrival_j_opens_i(const Tw_node &I, double speed) const;
 
      /*!
       * The actual arrival time at \b this node, given that:
       * \b this node is visited directly after \b other node
       * and that the actual arrival time at \b other node was closes(other)
       **/
-     double arrival_j_closes_i(const Tw_node &I) const;
+     double arrival_j_closes_i(const Tw_node &I, double speed) const;
 
 
      /*
       * is possible to arrive to \b this after visiting \bother
       *   - departing as early as possible from \b other it can arrives to \b this
       */
-     bool is_compatible_IJ(const Tw_node &I) const;
+     bool is_compatible_IJ(const Tw_node &I, double speed) const;
 
      /*
       * is possible to arrive to \b this after visiting \bother
       *   - departing as late as possible from \b other it can arrives to \b this
       */
-     bool is_partially_compatible_IJ(const Tw_node &I) const;
+     bool is_partially_compatible_IJ(const Tw_node &I, double speed) const;
 
      /*
       * is possible to arrive to \b this after visiting \bother
       *   - departing as late as possible from \b other it can arrives to \b this
       */
-     bool is_tight_compatible_IJ(const Tw_node &I) const;
+     bool is_tight_compatible_IJ(const Tw_node &I, double speed) const;
 
      /*
       * is possible to arrive to \b this after visiting \b other
       *   - departing as late as possible from \b other it can arrives to \b this
       */
-     bool is_partially_waitTime_compatible_IJ(const Tw_node &I) const;
+     bool is_partially_waitTime_compatible_IJ(const Tw_node &I, double speed) const;
 
      /*
       * is compatible to arrive to \b this after visiting \b other
       * - is fully compatible
       * - does not have a waiting time when arriving as earliest as possible after
       */
-     bool is_waitTime_compatible_IJ(const Tw_node &I) const;
+     bool is_waitTime_compatible_IJ(const Tw_node &I, double speed) const;
 
 
      ///@}
@@ -270,13 +271,11 @@ class Tw_node: public Node {
      Tw_node(
              size_t id,
              PickDeliveryOrders_t data,
-             NodeType type,
-             const Pgr_pickDeliver *problem);
+             NodeType type);
      Tw_node(
              size_t id,
              Vehicle_t data,
-             NodeType type,
-             const Pgr_pickDeliver *problem);
+             NodeType type);
 
      Tw_node(
              size_t id,
@@ -287,8 +286,7 @@ class Tw_node: public Node {
              double closes,
              double service_time,
              double demand,
-             NodeType type,
-             const Pgr_pickDeliver *problem);
+             NodeType type);
 
  protected:
      bool is_valid() const;
@@ -299,7 +297,6 @@ class Tw_node: public Node {
      double m_demand;       ///< The demand for the Node
      size_t m_otherid;      ///< the other's internal id
      NodeType m_type;       ///< The demand for the Node
-     const Pgr_pickDeliver *problem;
 };
 
 }  //  namespace vrp

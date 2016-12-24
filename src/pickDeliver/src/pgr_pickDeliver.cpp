@@ -63,20 +63,20 @@ Pgr_pickDeliver::solve() {
 #if 0
     solutions.push_back(Initial_solution(0, this));
 #endif
-    solutions.push_back(Initial_solution(1, this));
+    solutions.push_back(Initial_solution(1));
 
     solutions.push_back(solve(solutions.back()));
 
 #if 1
-    solutions.push_back(Initial_solution(2, this));
+    solutions.push_back(Initial_solution(2));
     solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(3, this));
+    solutions.push_back(Initial_solution(3));
     solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(4, this));
+    solutions.push_back(Initial_solution(4));
     solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(5, this));
+    solutions.push_back(Initial_solution(5));
     solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(6, this));
+    solutions.push_back(Initial_solution(6));
     solutions.push_back(solve(solutions.back()));
 #endif
 
@@ -133,18 +133,21 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
-        std::string &err) :
-    m_trucks(this),
-    m_orders(this)
+        std::string &err) 
 {
+    PD_problem(this);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
+
 
     m_max_cycles = p_max_cycles;
     pgassert(m_max_cycles > 0);
     std::ostringstream tmplog;
     err = "";
 
+#if 0
+    m_speed = m_trucks.m_trucks[0].speed();
+#endif
     log << "\n *** Constructor of problem ***\n";
 
     size_t node_id(0);
@@ -156,6 +159,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     };
 
 #if 1
+    m_speed = m_trucks.m_trucks[0].speed();
     pgassert(m_trucks.m_trucks[0].end_site().is_end());
     pgassert(m_trucks.m_trucks[0].end_site().is_end());
 
@@ -163,19 +167,19 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_ending_site = m_trucks.m_trucks[0].end_site();
     max_vehicles = m_trucks.m_trucks.size();
     max_capacity = m_trucks.m_trucks[0].capacity();
-    m_speed = m_trucks.m_trucks[0].speed();
     pgassert(m_starting_site.is_start());
     pgassert(m_ending_site.is_end());
 #endif
 
     m_orders.build_orders(pd_orders, node_id);
+#if 0
     log << "validating orders";
     if (!m_orders.is_valid()) {
         error << m_orders.get_error();
         err = error.str();
         return;
     };
-
+#endif
 
     /*
      * check the (S, P, D, E) order on all vehicles
@@ -190,6 +194,13 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             return;
         }
     }
+
+#if 1
+    for (auto &o : m_orders) {
+        o.setCompatibles(m_speed);
+    }
+#endif
+
 
 }  //  constructor
 

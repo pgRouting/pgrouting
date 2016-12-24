@@ -32,21 +32,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 
+#include "./../../common/src/identifiers.hpp"
 
 #include "./vehicle_pickDeliver.h"
 #include "./pgr_messages.h"
-#include "./../../common/src/identifiers.hpp"
+#include "./pd_problem.h"
+
 namespace pgrouting {
 namespace vrp {
 
 class Pgr_pickDeliver;
 
-class Fleet : public Pgr_messages {
-     Pgr_pickDeliver* problem;
+class Fleet : public Pgr_messages, public PD_problem {
      typedef typename std::vector<Vehicle_pickDeliver> Trucks;
+
  public:
+     // static Pgr_pickDeliver* problem;
      typedef typename Trucks::iterator iterator;
      Trucks m_trucks;
+
  protected:
      Identifiers<size_t> used; 
      Identifiers<size_t> un_used; 
@@ -59,8 +63,8 @@ class Fleet : public Pgr_messages {
       * @params [in] p_problem \t pointer to problem
       *
       */
-     explicit Fleet(Pgr_pickDeliver *p_problem) :
-         problem(p_problem) {}
+     Fleet() = default; 
+     Fleet(const Fleet &fleet) = default;
 
      bool build_fleet(
              const std::vector<Vehicle_t> &vehicles,

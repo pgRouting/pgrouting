@@ -6,6 +6,7 @@ ADD_LIBRARY(pickDeliver OBJECT
     orders.cpp
     fleet.cpp
     vehicle.cpp
+    pd_problem.cpp
     vehicle_pickDeliver.cpp
 
     solution.cpp

@@ -138,7 +138,7 @@ class Vehicle_node: public Tw_node {
      /** @name mutators */
      ///@ {
      void evaluate(double cargoLimit);
-     void evaluate(const Vehicle_node &pred, double cargoLimit);
+     void evaluate(const Vehicle_node &pred, double cargoLimit, double speed);
      ///@}
 
      /** @name Document*/
@@ -146,7 +146,8 @@ class Vehicle_node: public Tw_node {
 
      /*! \brief returns the arrval time at \b this visited after \b other */
      double arrival_i_arrives_j(
-             const Vehicle_node &other) const;
+             const Vehicle_node &other,
+             double speed) const;
 
      ///@}
 

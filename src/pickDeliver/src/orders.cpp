@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
+
 void
 PD_Orders::build_orders(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
@@ -51,9 +52,9 @@ PD_Orders::build_orders(
          * Creating the pickup & delivery nodes
          */
         Vehicle_node pickup(
-                {node_id++, order, Tw_node::NodeType::kPickup, problem});
+                {node_id++, order, Tw_node::NodeType::kPickup});
         Vehicle_node delivery(
-                {node_id++, order, Tw_node::NodeType::kDelivery, problem});
+                {node_id++, order, Tw_node::NodeType::kDelivery});
 
         pickup.set_Did(delivery.id());
         delivery.set_Pid(pickup.id());
@@ -71,15 +72,17 @@ PD_Orders::build_orders(
                     problem));
     }  //  for (creating orders)
 
+#if 0
     for (auto &o : m_orders) {
         o.setCompatibles();
     }
+#endif
 }
 
 bool
-PD_Orders::is_valid() const {
+PD_Orders::is_valid(double speed) const {
     for (const auto &o : m_orders) {
-        if (!o.is_valid()) {
+        if (!o.is_valid(speed)) {
             error << "The order " << o.pickup().original_id() << " is not feasible";
             log << "The order " << o.pickup().original_id() << " is not feasible";
             return false;
@@ -87,7 +90,7 @@ PD_Orders::is_valid() const {
         pgassert(o.pickup().is_pickup());
         pgassert(o.delivery().is_delivery());
             /* P -> D */
-        pgassert(o.delivery().is_compatible_IJ(o.pickup()));
+        pgassert(o.delivery().is_compatible_IJ(o.pickup(), speed));
     }
     return true;
 }
