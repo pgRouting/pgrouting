@@ -165,7 +165,7 @@ Initial_solution::insert_while_compatibleJ() {
     invariant();
 
 
-    size_t v_id(0);
+    // size_t v_id(0);
     auto truck = trucks.get_truck();
 #if 0
     Vehicle_pickDeliver truck(
