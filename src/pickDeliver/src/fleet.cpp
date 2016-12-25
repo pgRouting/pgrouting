@@ -38,7 +38,16 @@ namespace pgrouting {
 namespace vrp {
 
 
-//Pgr_pickDeliver* Fleet::problem;
+Vehicle_pickDeliver
+Fleet::get_truck() {
+    auto id = un_used.front();
+    log << "id" << id
+        << "size" << m_trucks.size();
+    pgassertwm(id < m_trucks.size(),log.str());
+    used += id;
+    if (un_used.size() > 1) un_used -= id;
+    return m_trucks[id];
+}
 
 
 bool
@@ -102,6 +111,7 @@ Fleet::is_fleet_ok() const {
 bool
 Fleet::is_order_ok(const Order &order) const {
     for (const auto truck : m_trucks) {
+        if (!order.is_valid(truck.speed())) continue; 
         auto test_truck = truck;
         test_truck.push_back(order);
 

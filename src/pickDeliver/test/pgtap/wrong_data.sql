@@ -37,7 +37,7 @@ SELECT * FROM _pgr_pickDeliver(
 
 SELECT throws_ok('q5',
     'XX000',
-    'The order 11 is not feasible',
+    'The order 11 is not feasible on any truck',
     'Should fail: Closing time of depot is too small and (pick,deliver) pair generates TWV');
 
 UPDATE orders SET deliver_close = 967 WHERE id =11;
@@ -62,14 +62,14 @@ UPDATE orders SET pick_open = 600 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',
-    'The order 11 is not feasible',
+    'The order 11 is not feasible on any truck',
     'Should fail: Opens(PICKUP) > closes(PICKUP)');
 
 UPDATE orders SET pick_open = 448, demand= -20 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',
-    'The order 11 is not feasible',
+    'The order 11 is not feasible on any truck',
     'Should fail: demand(PICKUP) < 0');
 
 UPDATE orders SET demand= 10 WHERE id =11;
@@ -81,9 +81,10 @@ UPDATE orders SET deliver_open = 1000 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',
-    'The order 11 is not feasible',
+    'The order 11 is not feasible on any truck',
     'Should fail: Opens(DELIVERY) > closes(DELIVERY)');
-
+/*
+*/
 
 
 SELECT finish();

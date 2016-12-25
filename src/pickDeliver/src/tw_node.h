@@ -275,17 +275,6 @@ class Tw_node: public Node {
              Vehicle_t data,
              NodeType type);
 
-     Tw_node(
-             size_t id,
-             int64_t p_original_id,
-             double x,
-             double y,
-             double opens,
-             double closes,
-             double service_time,
-             double demand,
-             NodeType type);
-
  protected:
      bool is_valid() const;
 

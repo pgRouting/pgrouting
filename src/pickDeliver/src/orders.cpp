@@ -83,13 +83,11 @@ bool
 PD_Orders::is_valid(double speed) const {
     for (const auto &o : m_orders) {
         if (!o.is_valid(speed)) {
-            error << "The order " << o.pickup().original_id() << " is not feasible";
-            log << "The order " << o.pickup().original_id() << " is not feasible";
             return false;
         }
         pgassert(o.pickup().is_pickup());
         pgassert(o.delivery().is_delivery());
-            /* P -> D */
+        /* P -> D */
         pgassert(o.delivery().is_compatible_IJ(o.pickup(), speed));
     }
     return true;

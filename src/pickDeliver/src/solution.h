@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "./vehicle_pickDeliver.h"
-#include "./order.h"
 #include "./fleet.h"
 #include "./pgr_messages.h"
 #include "./pd_problem.h"
@@ -41,9 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 namespace pgrouting {
 namespace vrp {
 
-
-class Pgr_pckDeliver;
-class Optimize;
 
 class Solution : public Pgr_messages, public PD_problem {
     friend class Optimize;
@@ -61,45 +57,27 @@ class Solution : public Pgr_messages, public PD_problem {
 
      /* @brief constructor
       *
-      * @params [in] p_problem \t pointer to problem
-      *
       */
-     explicit Solution() :
-         EPSILON(0.0001)
-    {};
+     Solution();
 
 
-
-#if 0
      /* @brief move constructor */
      Solution(Solution &&sol) = default;
-         EPSILON(0.0001),
-         fleet(std::move(sol.fleet))
-         {};
-#endif
+
      /* @brief copy constructor */
      Solution(const Solution &sol) :
          Pgr_messages(),
          PD_problem(),
          EPSILON(0.0001),
-         fleet(sol.fleet)
+         fleet(sol.fleet),
+         trucks(sol.trucks)
     {};
-
-#if 0
-     /* @brief move assignment */
-     Solution& operator= (const Solution && sol) {
-         Pgr_messages(),
-         PD_problem(),
-         EPSILON = 0.0001,
-         fleet = sol.fleet;
-         return *this;
-     };
-#endif
 
      /* @brief copy assignment */
      Solution& operator = (const Solution& sol) {
          EPSILON = 0.0001,
          fleet = sol.fleet;
+         trucks = sol.trucks;
          return *this;
      };
 

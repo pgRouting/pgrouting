@@ -23,16 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
-#include <string>
+#include "./solution.h"
 #include <vector>
 
-#include "./solution.h"
 #include "./pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
-
 
 std::vector<General_vehicle_orders_t>
 Solution::get_postgres_result() const {
@@ -220,6 +217,11 @@ Solution::operator<(const Solution &s_rhs) const {
 
     return false;
 }
+
+Solution::Solution() :
+    EPSILON(0.0001),
+    trucks(problem->trucks())
+{}
 
 }  //  namespace vrp
 }  //  namespace pgrouting

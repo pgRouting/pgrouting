@@ -37,7 +37,7 @@ namespace vrp {
 
 double
 Tw_node::travel_time_to(const Node &other, double speed) const {
-    pgassert(speed);
+    pgassert(speed != 0);
     return distance(other) / speed;
 }
 
@@ -255,24 +255,6 @@ Tw_node::Tw_node(
             m_closes = data.end_close_t;
             m_service_time = data.end_service_t;
         }
-    }
-
-Tw_node::Tw_node(
-        size_t id,
-        int64_t original_id,
-        double x,
-        double y,
-        double opens,
-        double closes,
-        double service_time,
-        double demand,
-        NodeType type) :
-    Node(id, original_id, x, y),
-    m_opens(opens),
-    m_closes(closes),
-    m_service_time(service_time),
-    m_demand(demand),
-    m_type(type) {
     }
 
 

@@ -91,6 +91,7 @@ class Pgr_pickDeliver : public Pgr_messages{
     void add_node(const Vehicle_node &node) {
         m_nodes.push_back(node);
     }
+    Fleet trucks() const {return m_trucks;}
 
     /// @{
  private:

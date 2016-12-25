@@ -64,14 +64,27 @@ class Fleet : public Pgr_messages, public PD_problem {
       *
       */
      Fleet() = default; 
-     Fleet(const Fleet &fleet) = default;
+     /* TODO move code to .cpp */
+     Fleet(const Fleet &fleet) :
+         Pgr_messages(),
+         PD_problem(),
+         m_trucks(fleet.m_trucks),
+         used(fleet.used),
+         un_used(fleet.un_used)
+    {}
+
+     /* TODO move code to .cpp */
+     Fleet& operator=(const Fleet &fleet) {
+         m_trucks = fleet.m_trucks;
+         used = fleet.used;
+         un_used = fleet.un_used;
+         return *this;
+    }
 
      bool build_fleet(
              const std::vector<Vehicle_t> &vehicles,
              size_t &node_id 
              );
-
-
 
      bool is_fleet_ok() const;
      bool is_order_ok(const Order &order) const;
@@ -82,6 +95,8 @@ class Fleet : public Pgr_messages, public PD_problem {
      Vehicle_pickDeliver& operator[](size_t i);
      iterator begin() {return m_trucks.begin();};
      iterator end() {return m_trucks.end();};
+     Vehicle_pickDeliver get_truck();
+
      //@}
 };
 
