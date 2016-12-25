@@ -167,15 +167,6 @@ Initial_solution::insert_while_compatibleJ() {
 
     // size_t v_id(0);
     auto truck = trucks.get_truck();
-#if 0
-    Vehicle_pickDeliver truck(
-            v_id++,
-            problem->m_starting_site,
-            problem->m_ending_site,
-            problem->max_capacity,
-            problem->m_speed,
-            problem);
-#endif
 
     while (!unassigned.empty()) {
         std::deque<size_t> orders(first_ordersIJ());
@@ -199,16 +190,6 @@ Initial_solution::insert_while_compatibleJ() {
                 break;
 
             truck = trucks.get_truck();
-#if 0
-            Vehicle_pickDeliver newtruck(
-                    v_id++,
-                    problem->m_starting_site,
-                    problem->m_ending_site,
-                    problem->max_capacity,
-                    problem->m_speed,
-                    problem);
-            truck = newtruck;
-#endif
         }
         invariant();
     }
@@ -355,8 +336,8 @@ Initial_solution::insert_while_feasable() {
             fleet.push_back(truck);
             truck = trucks.get_truck();
         } else {
-            assigned += unassigned.front();
-            unassigned.pop_front();
+            assigned += order.id();
+            unassigned -= order.id();
         }
 
         invariant();
@@ -369,17 +350,8 @@ Initial_solution::insert_while_feasable() {
 
 void
 Initial_solution::push_front_while_feasable() {
+    log << "\nInitial_solution::push_front_while_feasable\n";
     auto truck = trucks.get_truck();
-#if 0
-    size_t v_id(0);
-    Vehicle_pickDeliver truck(
-            v_id++,
-            problem->m_starting_site,
-            problem->m_ending_site,
-            problem->max_capacity,
-            problem->m_speed,
-            problem);
-#endif
     while (!unassigned.empty()) {
         auto order(problem->orders()[unassigned.front()]);
 
@@ -388,19 +360,9 @@ Initial_solution::push_front_while_feasable() {
             truck.pop_front();
             fleet.push_back(truck);
             truck = trucks.get_truck();
-#if 0
-            Vehicle_pickDeliver newtruck(
-                    v_id++,
-                    problem->m_starting_site,
-                    problem->m_ending_site,
-                    problem->max_capacity,
-                    problem->m_speed,
-                    problem);
-            truck = newtruck;
-#endif
         } else {
-            assigned += unassigned.front();
-            unassigned.pop_front();
+            assigned += order.id();
+            unassigned -= order.id();
         }
 
         invariant();
@@ -417,8 +379,6 @@ Initial_solution::push_back_while_feasable() {
     auto truck = trucks.get_truck();
 
     while (!unassigned.empty()) {
-        log << "\nassigned" << assigned;
-        log << "\ntau" << tau();
         auto order(problem->orders()[*unassigned.begin()]);
 
         truck.push_back(order);
@@ -442,25 +402,16 @@ Initial_solution::push_back_while_feasable() {
 
 void
 Initial_solution::one_truck_per_order() {
-    // size_t v_id(0);
+    log << "\nInitial_solution::one_truck_per_order\n";
     while (!unassigned.empty()) {
         auto order(problem->orders()[*unassigned.begin()]);
 
         auto truck = trucks.get_truck();
-#if 0
-        Vehicle_pickDeliver truck(
-                v_id++,
-                problem->m_starting_site,
-                problem->m_ending_site,
-                problem->max_capacity,
-                problem->m_speed,
-                problem);
-#endif
         truck.push_back(order);
         fleet.push_back(truck);
 
-        assigned += unassigned.front();
-        unassigned.pop_front();
+        assigned += order.id();
+        unassigned -= order.id();
 
         invariant();
     }
@@ -471,17 +422,8 @@ Initial_solution::one_truck_per_order() {
 
 void
 Initial_solution::one_truck_all_orders() {
-    // size_t v_id(0);
+    log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
-#if 0
-    Vehicle_pickDeliver truck(
-            v_id++,
-            problem->m_starting_site,
-            problem->m_ending_site,
-            problem->max_capacity,
-            problem->m_speed,
-            problem);
-#endif
     while (!unassigned.empty()) {
         auto order(problem->orders()[*unassigned.begin()]);
 

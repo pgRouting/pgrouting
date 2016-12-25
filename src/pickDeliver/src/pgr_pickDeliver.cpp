@@ -67,14 +67,6 @@ Pgr_pickDeliver::solve() {
     for (const auto sol : initial_sols) {
         solutions.push_back(solve(sol));
     }
-#if 0
-    solutions.push_back(solve(solutions.back()));
-    solutions.push_back(solve(solutions.back()));
-    solutions.push_back(solve(solutions.back()));
-    solutions.push_back(solve(solutions.back()));
-    solutions.push_back(solve(solutions.back()));
-    solutions.push_back(solve(solutions.back()));
-#endif
 
 #if 1
     /*
