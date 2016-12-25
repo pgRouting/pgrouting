@@ -95,7 +95,7 @@ do_pgr_pickDeliver(
             *err_msg = strdup(error.c_str());
             return;
         }
-        tmp_log << pd_problem.get_log();
+        log << pd_problem.get_log();
         log << "Finish Reading data\n";
 
         try {
@@ -105,11 +105,11 @@ do_pgr_pickDeliver(
             throw except;
         }
 
-            log << pd_problem.get_log();
+        log << pd_problem.get_log();
         log << "Finish solve\n";
 
         auto solution = pd_problem.get_postgres_result();
-        tmp_log << pd_problem.get_log();
+        log << pd_problem.get_log();
         log << "solution size: " << solution.size() << "\n";
 
 

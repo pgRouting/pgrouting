@@ -60,23 +60,19 @@ Pgr_pickDeliver::solve(const Solution init_solution) {
 
 void
 Pgr_pickDeliver::solve() {
+    auto initial_sols = solutions;
+    for (int i = 0; i < 7; ++ i) {
+        initial_sols.push_back(Initial_solution(i));
+    }
+    for (const auto sol : initial_sols) {
+        solutions.push_back(solve(sol));
+    }
 #if 0
-    solutions.push_back(Initial_solution(0, this));
-#endif
-    solutions.push_back(Initial_solution(1));
-
     solutions.push_back(solve(solutions.back()));
-
-#if 1
-    solutions.push_back(Initial_solution(2));
     solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(3));
     solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(4));
     solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(5));
     solutions.push_back(solve(solutions.back()));
-    solutions.push_back(Initial_solution(6));
     solutions.push_back(solve(solutions.back()));
 #endif
 

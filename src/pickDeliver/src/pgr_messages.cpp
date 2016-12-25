@@ -41,6 +41,7 @@ namespace vrp {
 std::string
 Pgr_messages::get_log() {
     std::string str = log.str();
+    log.str("");
     log.clear();
     return str;
 }
@@ -53,6 +54,7 @@ Pgr_messages::get_log() {
 std::string
 Pgr_messages::get_notice() {
     std::string str = notice.str();
+    notice.str("");
     notice.clear();
     return str;
 }
@@ -65,6 +67,7 @@ Pgr_messages::get_notice() {
 std::string
 Pgr_messages::get_error() {
     std::string str = error.str();
+    error.str("");
     error.clear();
     return str;
 }
@@ -78,6 +81,7 @@ Pgr_messages::get_error() {
 std::string
 Pgr_messages::get_dbglog() {
     std::string str = dbg_log.str();
+    dbg_log.str("");
     dbg_log.clear();
     return str;
 }
