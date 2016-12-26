@@ -69,8 +69,9 @@ class Pgr_pickDeliver : public Pgr_messages{
     const Order order_of(const Vehicle_node &node) const;
     const Vehicle_node& node(ID id) const;
     const PD_Orders& orders() const {return m_orders;}
+#if 1
     double speed() const {return m_speed;}
-
+#endif
 
     Solution solve(const Solution init_solution);
     size_t max_cycles() const {return m_max_cycles;}
@@ -95,11 +96,11 @@ class Pgr_pickDeliver : public Pgr_messages{
 
     /// @{
  private:
-    double max_capacity;
     double m_speed;
     size_t m_max_cycles;
+#if 0
+    double max_capacity;
     size_t max_vehicles;
-#if 1
     /* TODO not to be used when vehicle is from the m_trucks */
     Vehicle_node m_starting_site, m_ending_site;
 #endif

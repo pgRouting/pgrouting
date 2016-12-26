@@ -147,14 +147,16 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     };
 
 #if 1
-    m_speed = m_trucks.m_trucks[0].speed();
     pgassert(m_trucks.m_trucks[0].end_site().is_end());
     pgassert(m_trucks.m_trucks[0].end_site().is_end());
 
+#if 0
+    m_speed = m_trucks.m_trucks[0].speed();
     m_starting_site = m_trucks.m_trucks[0].start_site();
     m_ending_site = m_trucks.m_trucks[0].end_site();
     max_vehicles = m_trucks.m_trucks.size();
     max_capacity = m_trucks.m_trucks[0].capacity();
+#endif
     pgassert(m_starting_site.is_start());
     pgassert(m_ending_site.is_end());
 #endif
