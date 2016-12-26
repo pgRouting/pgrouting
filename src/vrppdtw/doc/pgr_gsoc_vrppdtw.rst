@@ -78,8 +78,8 @@ Column            Type                  Description
 **openTime**      ``ANY-NUMERICAL``     The time relative to 0, when the customer opens.
 **closeTime**     ``ANY-NUMERICAL``     The time relative to 0, when the customer closes.
 **serviceTime**   ``ANY-NUMERICAL``     The duration of the loading / unloading.
-**pIndex**     ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
-**dIndex**    ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
+**pIndex**        ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
+**dIndex**        ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
 ================  ===================   =================================================
 
 Description of the parameters of the signatures

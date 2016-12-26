@@ -31,7 +31,7 @@ Table of contents
    - :ref:`changelog_1_x`
 
 
-.. _changelog_2_3_1:
+.. _changelog_2_3_2:
 
 pgRouting 2.3.2 Release Notes
 ===============================================================================
