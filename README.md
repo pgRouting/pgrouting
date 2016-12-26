@@ -53,7 +53,7 @@ https://github.com/pgRouting/pgrouting/releases
 
 * travis: Postgis 2.3.0 for  Postgres 9.4, 9.5, 9.6
   * precise
-  * trusty (exept 9.4)
+  * trusty (except 9.4)
 * jenkins: g++ 4.8 on 32 & 64 bits for Postgis 2.3.0 and Postgres 9.4, 9.5, 9.6
 * appveyor: vs1013 Postgis 2.3.0 Postgres 9.4
 
