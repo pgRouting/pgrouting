@@ -76,8 +76,11 @@ BGE	1466	-1424	-84.636927799999995	30.971598100000001
 \.
 
 
--- crashes backend
-SELECT * FROM _pgr_pickDeliver(
+SELECT seq, vehicle_id, vehicle_seq, stop_id, travel_time,
+    to_char(arrival_time, 'FM9990.99') AS arrival_time,
+    wait_time,  service_time,
+    to_char(departure_time, 'FM9990.99') AS departure_time
+FROM _pgr_pickDeliver(
     'SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex
     FROM jet_customers
     ORDER BY id',
