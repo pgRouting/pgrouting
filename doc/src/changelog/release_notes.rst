@@ -17,6 +17,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 Table of contents
 --------------------------
 
+   - :ref:`changelog_2_3_2`
    - :ref:`changelog_2_3_1`
    - :ref:`changelog_2_3_0`
    - :ref:`changelog_2_2_4`
@@ -32,10 +33,21 @@ Table of contents
 
 .. _changelog_2_3_1:
 
+pgRouting 2.3.2 Release Notes
+===============================================================================
+
+To see the issues closed by this release see the `Git closed issues for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github.
+
+.. rubric:: Bug Fixes
+
+* Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.
+
+.. _changelog_2_3_1:
+
 pgRouting 2.3.1 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github.
 
 .. rubric:: Bug Fixes
 
