@@ -42,6 +42,7 @@ namespace pgrouting {
 namespace vrp {
 
 class Pgr_pickDeliver;
+class PD_Orders;
 
 class Fleet : public Pgr_messages, public PD_problem {
      typedef typename std::vector<Vehicle_pickDeliver> Trucks;
@@ -85,6 +86,7 @@ class Fleet : public Pgr_messages, public PD_problem {
              const std::vector<Vehicle_t> &vehicles,
              size_t &node_id 
              );
+     void set_compatibles(const PD_Orders &orders);
 
      bool is_fleet_ok() const;
      bool is_order_ok(const Order &order) const;

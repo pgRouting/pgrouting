@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <string>
 #include <vector>
 
+#include "./orders.h"
 #include "./fleet.h"
 #include "./tw_node.h"
 #include "./vehicle_pickDeliver.h"
@@ -126,6 +127,13 @@ Vehicle_pickDeliver&
 Fleet::operator[](size_t i) {
     pgassert(i < m_trucks.size());
     return m_trucks[i];
+}
+
+void
+Fleet::set_compatibles(const PD_Orders &orders) {
+    for (auto &truck : m_trucks) {
+        truck.set_compatibles(orders);
+    }
 }
 
 }  //  namespace vrp

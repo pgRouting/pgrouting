@@ -348,6 +348,12 @@ Vehicle_pickDeliver::pop_front() {
     return deleted_order_id;
 }
 
+void
+Vehicle_pickDeliver::set_compatibles(const PD_Orders &orders) {
+    m_orders = orders;
+    m_orders.set_compatibles(m_speed);
+}
+
 
 }  //  namespace vrp
 }  //  namespace pgrouting
