@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <set>
 #include <deque>
+#include "./orders.h"
 #include "./solution.h"
 #include "./../../common/src/identifiers.hpp"
 
@@ -42,7 +43,8 @@ class Pgr_pickDeliver;
 class Initial_solution : public Solution {
  public:
      Initial_solution(
-             int kind);
+             int kind,
+             size_t);
 
      void invariant() const;
 
@@ -50,11 +52,14 @@ class Initial_solution : public Solution {
      /*
       * one truck per order
       */
-     void one_truck_per_order();
      void one_truck_all_orders();
+#if 0
+     void one_truck_per_order();
      void push_back_while_feasable();
      void push_front_while_feasable();
      void insert_while_feasable();
+#endif
+     void do_while_foo(int kind);
 
      void insert_while_compatibleJ();
      void fill_truck_while_compatibleJ(
@@ -71,7 +76,7 @@ class Initial_solution : public Solution {
 
  private:
      Identifiers<size_t> all_orders;
-     Identifiers<size_t> unassigned;
+     Identifiers<PD_Orders::OID> unassigned;
      Identifiers<size_t> assigned;
 };
 

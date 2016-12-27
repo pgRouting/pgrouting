@@ -61,22 +61,26 @@ Pgr_pickDeliver::solve(const Solution init_solution) {
 void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
-    for (int i = 0; i < 7; ++ i) {
-        initial_sols.push_back(Initial_solution(i));
+
+    int j = 1;
+    for (int i = j; i < 4+1; ++ i) {
+        initial_sols.push_back(Initial_solution(i, m_orders.size()));
     }
+#if 0
     for (const auto sol : initial_sols) {
         solutions.push_back(solve(sol));
     }
-
-#if 1
+#else
+    solutions = initial_sols;
+#endif
     /*
      * Sorting solutions: the best is at the back
      */
+    pgassert(!solutions.empty());
     std::sort(solutions.begin(), solutions.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
             });
-#endif
 }
 
 
@@ -133,9 +137,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     std::ostringstream tmplog;
     err = "";
 
-#if 0
-    m_speed = m_trucks.m_trucks[0].speed();
-#endif
     log << "\n *** Constructor of problem ***\n";
 
     size_t node_id(0);
@@ -147,29 +148,13 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     };
 
 #if 1
-    pgassert(m_trucks.m_trucks[0].end_site().is_end());
-    pgassert(m_trucks.m_trucks[0].end_site().is_end());
-
-#if 0
     m_speed = m_trucks.m_trucks[0].speed();
-    m_starting_site = m_trucks.m_trucks[0].start_site();
-    m_ending_site = m_trucks.m_trucks[0].end_site();
-    max_vehicles = m_trucks.m_trucks.size();
-    max_capacity = m_trucks.m_trucks[0].capacity();
-#endif
-    pgassert(m_starting_site.is_start());
-    pgassert(m_ending_site.is_end());
 #endif
 
-    m_orders.build_orders(pd_orders, node_id);
 #if 0
-    log << "validating orders";
-    if (!m_orders.is_valid()) {
-        error << m_orders.get_error();
-        err = error.str();
-        return;
-    };
+    PD_Orders m_orders;
 #endif
+    m_orders.build_orders(pd_orders, node_id);
 
     /*
      * check the (S, P, D, E) order on all vehicles
@@ -185,12 +170,12 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         }
     }
 
-#if 1
+    m_trucks.set_compatibles(m_orders);
+#if 0
     for (auto &o : m_orders) {
         o.setCompatibles(m_speed);
     }
 #endif
-
 
 }  //  constructor
 

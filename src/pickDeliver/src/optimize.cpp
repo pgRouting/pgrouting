@@ -109,8 +109,8 @@ Optimize::swap_worse(size_t from_pos, size_t to_pos) {
     auto from_truck = fleet[from_pos];
     auto to_truck = fleet[to_pos];
     auto swapped(false);
-    auto from_orders(from_truck.orders_in_vehicle);
-    auto to_orders(to_truck.orders_in_vehicle);
+    auto from_orders(from_truck.orders_in_vehicle());
+    auto to_orders(to_truck.orders_in_vehicle());
     auto local_limit(from_orders.size() * to_orders.size() + 1);
 
     while (!from_orders.empty() && --local_limit > 0) {
@@ -321,7 +321,7 @@ Optimize::move_reduce_cost(size_t from_pos, size_t to_pos) {
     auto to_truck = fleet[to_pos];
     auto moved(false);
 
-    auto orders(from_truck.orders_in_vehicle);
+    auto orders(from_truck.orders_in_vehicle());
     while (!orders.empty()) {
         /*
          * get the order that decreases the duration the most
@@ -430,10 +430,10 @@ Optimize::decrease_truck(size_t cycle, bool &decreased) {
     std::rotate(fleet.begin(), fleet.begin() + 1, fleet.end());
     err_log << "\n after rotate" << tau();
 
-    auto orders(fleet.back().orders_in_vehicle);
+    auto orders(fleet.back().orders_in_vehicle());
     while (!orders.empty()) {
         /* Step 2: grab an order */
-        auto order(problem->orders()[*orders.begin()]);
+        auto order(fleet.back().orders()[*orders.begin()]);
         orders -= order.id();
         err_log << "\n truck with order: " << fleet.back().tau();
         err_log << "\nOrder" << order << "\n";

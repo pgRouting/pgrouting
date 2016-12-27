@@ -24,11 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
+#include "./order.h"
 
 #include <set>
 #include "./../../common/src/pgr_assert.h"
 #include "./pgr_pickDeliver.h"
-#include "./order.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -118,6 +118,24 @@ Order::is_valid(double speed) const {
  */
 
 void
+Order::set_compatibles(const Order J, double speed) {
+    if (J.id() == id()) return;
+    if (J.isCompatibleIJ(*this, speed)) {
+        /*
+         * this -> {J}
+         */
+        m_compatibleJ += J.id();
+    }
+    if (this->isCompatibleIJ(J, speed)) {
+        /*
+         * {J} -> this
+         */
+        m_compatibleI += J.id();
+    }
+}
+
+#if 0
+void
 Order::setCompatibles(double speed) {
     for (const auto J : problem->orders()) {
         if (J.id() == id()) continue;
@@ -135,6 +153,7 @@ Order::setCompatibles(double speed) {
         }
     }
 }
+#endif
 
 /*
  * True when

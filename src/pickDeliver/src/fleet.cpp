@@ -50,6 +50,47 @@ Fleet::get_truck() {
     return m_trucks[id];
 }
 
+void
+Fleet::release_truck(size_t id) {
+    used -= id;
+    un_used += id;
+}
+
+Vehicle_pickDeliver
+Fleet::get_truck(size_t order) {
+    auto id = m_trucks.front().id();
+    for (auto truck : m_trucks) {
+        if (truck.feasable_orders().has(order)) {
+            id = truck.id();
+            log << "id" << id
+                << "size" << m_trucks.size();
+            pgassertwm(id < m_trucks.size(),log.str());
+            used += id;
+            if (un_used.size() > 1) un_used -= id;
+            break;
+        }
+    }
+    return m_trucks[id];
+}
+
+
+Vehicle_pickDeliver
+Fleet::get_truck(const Order order) {
+    auto id = m_trucks.front().id();
+    for (auto truck : m_trucks) {
+        if (truck.feasable_orders().has(order.id())) {
+            id = truck.id();
+            log << "id" << id
+                << "size" << m_trucks.size();
+            pgassertwm(id < m_trucks.size(),log.str());
+            used += id;
+            if (un_used.size() > 1) un_used -= id;
+            break;
+        }
+    }
+    return m_trucks[id];
+}
+
 
 bool
 Fleet::build_fleet(
@@ -80,12 +121,15 @@ Fleet::build_fleet(
 
         for (int i = 0; i < vehicle.cant_v; ++i) {
             m_trucks.push_back(Vehicle_pickDeliver(
+                        m_trucks.size(),
                         vehicle.id,
                         starting_site,
                         ending_site,
                         vehicle.capacity,
                         vehicle.speed,
                         problem));
+            log << "inserting " << m_trucks.back().id();
+            pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
         }
     }
     Identifiers<size_t> unused(m_trucks.size());
@@ -113,12 +157,17 @@ bool
 Fleet::is_order_ok(const Order &order) const {
     for (const auto truck : m_trucks) {
         if (!order.is_valid(truck.speed())) continue; 
+        if (truck.is_order_feasable(order)) {
+            return true;
+        }
+#if 0
         auto test_truck = truck;
         test_truck.push_back(order);
 
         if (test_truck.is_feasable()) {
             return true;
         }
+#endif
     }
     return false;
 }

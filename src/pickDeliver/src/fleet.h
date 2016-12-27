@@ -91,13 +91,17 @@ class Fleet : public Pgr_messages, public PD_problem {
      bool is_fleet_ok() const;
      bool is_order_ok(const Order &order) const;
 
+     Vehicle_pickDeliver get_truck();
+     void release_truck(size_t id);
+     Vehicle_pickDeliver get_truck(size_t order);
+     Vehicle_pickDeliver get_truck(const Order order);
+
      //! name vector like functions
      //@{
      size_t size() const {return m_trucks.size();}
      Vehicle_pickDeliver& operator[](size_t i);
      iterator begin() {return m_trucks.begin();};
      iterator end() {return m_trucks.end();};
-     Vehicle_pickDeliver get_truck();
 
      //@}
 };

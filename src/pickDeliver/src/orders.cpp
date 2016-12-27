@@ -105,5 +105,15 @@ PD_Orders::operator[](OID i) const {
     return m_orders[i];
 }
 
+void
+PD_Orders::set_compatibles(double speed) {
+    for (auto &I : m_orders) {
+        for (const auto J : m_orders) {
+            I.set_compatibles(J, speed);
+        }
+    }
+}
+
+
 }  //  namespace vrp
 }  //  namespace pgrouting

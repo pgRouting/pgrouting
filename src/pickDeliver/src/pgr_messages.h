@@ -40,7 +40,10 @@ class Pgr_messages {
 
  public:
     Pgr_messages() = default;
-    Pgr_messages(const Pgr_messages&) = default;
+    Pgr_messages(const Pgr_messages&) { };
+    Pgr_messages& operator=(const Pgr_messages&) {
+        return *this;
+    };
 
     /*! \brief get_log
      *

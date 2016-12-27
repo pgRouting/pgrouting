@@ -68,9 +68,8 @@ class Pgr_pickDeliver : public Pgr_messages{
 
     const Order order_of(const Vehicle_node &node) const;
     const Vehicle_node& node(ID id) const;
+#if 0
     const PD_Orders& orders() const {return m_orders;}
-#if 1
-    double speed() const {return m_speed;}
 #endif
 
     Solution solve(const Solution init_solution);
@@ -96,17 +95,15 @@ class Pgr_pickDeliver : public Pgr_messages{
 
     /// @{
  private:
+#if 1
     double m_speed;
-    size_t m_max_cycles;
-#if 0
-    double max_capacity;
-    size_t max_vehicles;
-    /* TODO not to be used when vehicle is from the m_trucks */
-    Vehicle_node m_starting_site, m_ending_site;
 #endif
+    size_t m_max_cycles;
     std::vector<Vehicle_node> m_nodes;
     Fleet m_trucks;
+#if 1
     PD_Orders m_orders;
+#endif
     std::vector<Solution> solutions;
 
 };

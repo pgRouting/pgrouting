@@ -45,10 +45,12 @@ Initial_solution::invariant() const {
 
 
 Initial_solution::Initial_solution(
-        int kind) :
+        int kind,
+        size_t number_of_orders
+        ) :
     Solution(),
-    all_orders(problem->orders().size()),
-    unassigned(problem->orders().size()),
+    all_orders(number_of_orders),
+    unassigned(number_of_orders),
     assigned()
 {
     switch (kind) {
@@ -56,16 +58,10 @@ Initial_solution::Initial_solution(
             one_truck_all_orders();
             break;
         case 1:
-            one_truck_per_order();
-            break;
         case 2:
-            push_back_while_feasable();
-            break;
         case 3:
-            push_front_while_feasable();
-            break;
         case 4:
-            insert_while_feasable();
+            do_while_foo(kind);
             break;
         case 5:
             insert_while_compatibleJ();
@@ -87,7 +83,7 @@ Initial_solution::fill_truck_while_compatibleJ(
      * Precondition:
      * all orders in the truck are in the assigned set
      */
-    pgassert(truck.orders_in_vehicle == (truck.orders_in_vehicle * assigned));
+    pgassert(truck.orders_in_vehicle() == (truck.orders_in_vehicle() * assigned));
 
     /*
      * Precondition:
@@ -135,6 +131,7 @@ Initial_solution::fill_truck_while_compatibleJ(
 
 
 
+#if 0
 std::deque<size_t>
 Initial_solution::first_ordersIJ() const {
     /*
@@ -156,7 +153,7 @@ Initial_solution::first_ordersIJ() const {
             });
     return orders;
 }
-
+#endif
 
 
 void
@@ -167,12 +164,18 @@ Initial_solution::insert_while_compatibleJ() {
 
     // size_t v_id(0);
     auto truck = trucks.get_truck();
+    auto orders = all_orders;
 
     while (!unassigned.empty()) {
+#if 0
         std::deque<size_t> orders(first_ordersIJ());
-
+#endif
         if (truck.empty()) {
+#if 0
             auto order(problem->orders()[orders.front()]);
+#else
+            auto order(truck.orders()[orders.front()]);
+#endif
             truck.insert(order);
             assigned += order.id();
             unassigned -= order.id();
@@ -180,7 +183,7 @@ Initial_solution::insert_while_compatibleJ() {
             invariant();
 
             auto compatible_orders(
-                    problem->orders()[order.id()].m_compatibleJ);
+                    truck.orders()[order.id()].m_compatibleJ);
             auto possible_orders = compatible_orders * unassigned;
 
             fill_truck_while_compatibleJ(truck, possible_orders);
@@ -206,7 +209,7 @@ Initial_solution::fill_truck_while_compatibleI(
      * Precondition:
      * all orders in the truck are in the assigned set
      */
-    pgassert(truck.orders_in_vehicle == (truck.orders_in_vehicle * assigned));
+    pgassert(truck.orders_in_vehicle() == (truck.orders_in_vehicle() * assigned));
 
     /*
      * Precondition:
@@ -231,19 +234,19 @@ Initial_solution::fill_truck_while_compatibleI(
      * has more compatible orders with the current possible orders
      */
     for (auto &o : possible_orders) {
-        auto other_orders = problem->orders()[o].m_compatibleI;
-        auto intersect_orders = problem->orders()[o].subsetI(possible_orders);
+        auto other_orders = truck.orders()[o].m_compatibleI;
+        auto intersect_orders = truck.orders()[o].subsetI(possible_orders);
         if (max_size < intersect_orders.size()) {
             max_size = intersect_orders.size();
             best_order = o;
         }
     }
     auto intersect_orders =
-        problem->orders()[best_order].subsetI(possible_orders);
+        truck.orders()[best_order].subsetI(possible_orders);
 
-    truck.insert(problem->orders()[best_order]);
+    truck.insert(truck.orders()[best_order]);
     if (!truck.is_feasable()) {
-        truck.erase(problem->orders()[best_order]);
+        truck.erase(truck.orders()[best_order]);
     } else {
         assigned += best_order;
         unassigned -= best_order;
@@ -257,6 +260,7 @@ Initial_solution::fill_truck_while_compatibleI(
 
 
 
+#if 0
 std::deque<size_t>
 Initial_solution::first_ordersJI() const {
     /*
@@ -278,7 +282,7 @@ Initial_solution::first_ordersJI() const {
             });
     return orders;
 }
-
+#endif
 
 
 void
@@ -288,12 +292,14 @@ Initial_solution::insert_while_compatibleI() {
 
 
     auto truck = trucks.get_truck();
+    auto orders = all_orders;
 
     while (!unassigned.empty()) {
+#if 0
         std::deque<size_t> orders(first_ordersJI());
-
+#endif
         if (truck.empty()) {
-            auto order(problem->orders()[orders.front()]);
+            auto order(truck.orders()[orders.front()]);
             truck.insert(order);
             assigned += order.id();
             orders.pop_front();
@@ -301,7 +307,7 @@ Initial_solution::insert_while_compatibleI() {
             invariant();
 
             auto compatible_orders(
-                    problem->orders()[order.id()].m_compatibleI);
+                    truck.orders()[order.id()].m_compatibleI);
             auto possible_orders = compatible_orders * unassigned;
 
             fill_truck_while_compatibleI(truck, possible_orders);
@@ -319,7 +325,7 @@ Initial_solution::insert_while_compatibleI() {
 
 
 
-
+#if 0
 void
 Initial_solution::insert_while_feasable() {
     invariant();
@@ -327,7 +333,7 @@ Initial_solution::insert_while_feasable() {
     auto truck = trucks.get_truck();
     log << "\nInitial_solution::insert_while_feasable\n";
     while (!unassigned.empty()) {
-        auto order(problem->orders()[unassigned.front()]);
+        auto order(truck.orders()[unassigned.front()]);
 
         truck.insert(order);
 
@@ -347,76 +353,164 @@ Initial_solution::insert_while_feasable() {
         fleet.push_back(truck);
     }
 }
+#endif
+
+void
+Initial_solution::do_while_foo(int kind) {
+    log << "\nInitial_solution::push_front_while_feasable\n";
+    Identifiers<size_t> notused;
+    bool out_of_trucks;
+
+    while (!unassigned.empty()) {
+        auto truck = out_of_trucks?
+            trucks.get_truck(unassigned.front()) : 
+            trucks.get_truck();
+        switch (kind) {
+            case 1:
+                truck.one_truck_per_order(unassigned, assigned);
+                break;
+            case 2:
+                truck.push_back_while_feasable(unassigned, assigned);
+                break;
+            case 3:
+                truck.push_front_while_feasable(unassigned, assigned);
+                break;
+            case 4:
+                truck.insert_while_feasable(unassigned, assigned);
+                break;
+            default:
+                pgassert(false);
+        }
+
+        if (truck.orders_in_vehicle().empty()) {
+            out_of_trucks = notused.has(truck.id());
+            if (out_of_trucks) {
+                for (auto t : notused) {
+                    trucks.release_truck(t);
+                }
+            }
+            notused += truck.id();
+            continue;
+        }
+        fleet.push_back(truck);
+        invariant();
+    }
+    pgassert(is_feasable());
+}
+
+#if 0
+void
+Initial_solution::insert_while_feasable() {
+    log << "\nInitial_solution::push_front_while_feasable\n";
+    Identifiers<size_t> notused;
+    bool out_of_trucks;
+
+    while (!unassigned.empty()) {
+        auto truck = out_of_trucks?
+            trucks.get_truck(unassigned.front()) : 
+            trucks.get_truck();
+        truck.insert_while_feasable(unassigned, assigned);
+
+        if (truck.orders_in_vehicle().empty()) {
+            out_of_trucks = notused.has(truck.id());
+            if (out_of_trucks) {
+                for (auto t : notused) {
+                    trucks.release_truck(t);
+                }
+            }
+            notused += truck.id();
+            continue;
+        }
+        fleet.push_back(truck);
+        invariant();
+    }
+    pgassert(is_feasable());
+}
 
 void
 Initial_solution::push_front_while_feasable() {
     log << "\nInitial_solution::push_front_while_feasable\n";
-    auto truck = trucks.get_truck();
+    Identifiers<size_t> notused;
+    bool out_of_trucks;
+
     while (!unassigned.empty()) {
-        auto order(problem->orders()[unassigned.front()]);
-
-        truck.push_front(order);
-        if (!truck.is_feasable()) {
-            truck.pop_front();
-            fleet.push_back(truck);
-            truck = trucks.get_truck();
-        } else {
-            assigned += order.id();
-            unassigned -= order.id();
+        auto truck = out_of_trucks?
+            trucks.get_truck(unassigned.front()) : 
+            trucks.get_truck();
+        truck.push_front_while_feasable(unassigned, assigned);
+        if (truck.orders_in_vehicle().empty()) {
+            out_of_trucks = notused.has(truck.id());
+            if (out_of_trucks) {
+                for (auto t : notused) {
+                    trucks.release_truck(t);
+                }
+            }
+            notused += truck.id();
+            continue;
         }
-
+        fleet.push_back(truck);
         invariant();
     }
-
-    if (truck.orders_size() !=0 ) {
-        fleet.push_back(truck);
-    }
+    pgassert(is_feasable());
 }
 
 void
 Initial_solution::push_back_while_feasable() {
     log << "\nInitial_solution::push_back_while_feasable\n";
-    auto truck = trucks.get_truck();
+    Identifiers<size_t> notused;
+    bool out_of_trucks;
 
     while (!unassigned.empty()) {
-        auto order(problem->orders()[*unassigned.begin()]);
-
-        truck.push_back(order);
-        if (!truck.is_feasable()) {
-            truck.pop_back();
-            fleet.push_back(truck);
-            truck = trucks.get_truck();
-        } else {
-            assigned += order.id();
-            unassigned -= order.id();
+        auto truck = out_of_trucks?
+            trucks.get_truck(unassigned.front()) : 
+            trucks.get_truck();
+        truck.push_back_while_feasable(unassigned, assigned);
+        if (truck.orders_in_vehicle().empty()) {
+            out_of_trucks = notused.has(truck.id());
+            if (out_of_trucks) {
+                for (auto t : notused) {
+                    trucks.release_truck(t);
+                }
+            }
+            notused += truck.id();
+            continue;
         }
-
+        fleet.push_back(truck);
         invariant();
     }
-    if (truck.orders_size() !=0 ) {
-        fleet.push_back(truck);
-    }
+    pgassert(is_feasable());
 }
-
 
 
 void
 Initial_solution::one_truck_per_order() {
     log << "\nInitial_solution::one_truck_per_order\n";
+    Identifiers<size_t> notused;
+    bool out_of_trucks;
     while (!unassigned.empty()) {
-        auto order(problem->orders()[*unassigned.begin()]);
+        auto truck = out_of_trucks?
+            trucks.get_truck(unassigned.front()) : 
+            trucks.get_truck();
 
-        auto truck = trucks.get_truck();
-        truck.push_back(order);
+        truck.one_truck_per_order(unassigned, assigned);
+
+        if (truck.orders_in_vehicle().empty()) {
+            out_of_trucks = notused.has(truck.id());
+            if (out_of_trucks) {
+                for (auto t : notused) {
+                    trucks.release_truck(t);
+                }
+            }
+            notused += truck.id();
+            continue;
+        }
         fleet.push_back(truck);
-
-        assigned += order.id();
-        unassigned -= order.id();
-
         invariant();
     }
+    pgassert(is_feasable());
 }
 
+#endif
 
 
 
@@ -425,7 +519,7 @@ Initial_solution::one_truck_all_orders() {
     log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
     while (!unassigned.empty()) {
-        auto order(problem->orders()[*unassigned.begin()]);
+        auto order(truck.orders()[*unassigned.begin()]);
 
         truck.insert(order);
 

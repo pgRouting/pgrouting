@@ -452,11 +452,13 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
 Vehicle::Vehicle(
         ID p_id,
+        size_t p_kind,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_m_capacity,
         double p_speed) :
     m_id(p_id),
+    m_kind(p_kind),
     m_capacity(p_m_capacity),
     m_speed(p_speed)
     {

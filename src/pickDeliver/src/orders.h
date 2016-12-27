@@ -57,12 +57,13 @@ class PD_Orders : public Pgr_messages , public PD_problem {
       *
       */
      PD_Orders() = default;
+     PD_Orders(const PD_Orders&) = default;
 
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders,
              size_t &node_id 
              );
-
+     void set_compatibles(double speed);
 
 
      bool is_valid(double speed) const;

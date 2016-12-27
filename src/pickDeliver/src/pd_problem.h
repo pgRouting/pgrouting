@@ -38,8 +38,8 @@ class Pgr_pickDeliver;
 class PD_problem {
     public:
     explicit PD_problem(Pgr_pickDeliver* p_problem);
-    PD_problem(const PD_problem &) = default;
-    PD_problem() = default;
+    PD_problem(const PD_problem &) { };
+    PD_problem() { }
 
  protected:
      static Pgr_pickDeliver* problem;

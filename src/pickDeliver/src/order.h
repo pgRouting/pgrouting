@@ -60,7 +60,10 @@ class Order {
      inline size_t id() const {return m_id;}
      const Vehicle_node& delivery() const;
      const Vehicle_node& pickup() const;
+#if 0
      void setCompatibles(double speed);
+#endif
+     void set_compatibles(const Order order, double speed);
 
      /*!
       * An order is valid when:

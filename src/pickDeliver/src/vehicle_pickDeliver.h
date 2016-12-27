@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <set>
 #include "./order.h"
+#include "./orders.h"
 #include "./tw_node.h"
 #include "./vehicle.h"
 #include "./../../common/src/identifiers.hpp"
@@ -43,8 +44,10 @@ class Optimize;
 class Vehicle_pickDeliver : public Vehicle {
  protected:
      double cost;
-     Identifiers<size_t> orders_in_vehicle;  // /< orders inserted in this vehicle
+     Identifiers<size_t> m_orders_in_vehicle;  // /< orders inserted in this vehicle
      const Pgr_pickDeliver *problem;  // /< The vehicle belongs to this problem
+     PD_Orders m_orders;
+     Identifiers<PD_Orders::OID> m_feasable_orders;  // /< orders that fit in the truck
 
 
  public:
@@ -53,6 +56,7 @@ class Vehicle_pickDeliver : public Vehicle {
 
      Vehicle_pickDeliver(
              ID id,
+             size_t kind,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
              double p_capacity,
@@ -61,7 +65,14 @@ class Vehicle_pickDeliver : public Vehicle {
 
      Vehicle_pickDeliver(const Vehicle_pickDeliver &) = default;
 
-     size_t orders_size() const {return orders_in_vehicle.size();}
+
+     void set_compatibles(const PD_Orders &orders);
+     bool is_order_feasable(const Order &order) const;
+     Identifiers<size_t> feasable_orders() const {return m_feasable_orders;}
+
+     PD_Orders orders() const {return m_orders;}
+     size_t orders_size() const {return m_orders_in_vehicle.size();}
+     Identifiers<size_t> orders_in_vehicle() const {return m_orders_in_vehicle;}
 
      bool has_order(const Order &order) const;
 
@@ -83,6 +94,12 @@ class Vehicle_pickDeliver : public Vehicle {
       * No capacity violation
       */
      void push_back(const Order &order);
+     void push_back_while_feasable(
+             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &assigned);
+     void one_truck_per_order(
+             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &assigned);
 
 
 
@@ -104,6 +121,9 @@ class Vehicle_pickDeliver : public Vehicle {
       * No capacity violation
       */
      void push_front(const Order &order);
+     void push_front_while_feasable(
+             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &assigned);
 
 
 
@@ -128,6 +148,9 @@ class Vehicle_pickDeliver : public Vehicle {
       * No capacity violation
       */
      void insert(const Order &order);
+     void insert_while_feasable(
+             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &assigned);
 
      /* @brief erases the order from the vehicle
       *
