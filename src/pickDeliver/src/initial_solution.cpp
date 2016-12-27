@@ -340,13 +340,9 @@ Initial_solution::do_while_foo(int kind) {
                 truck.one_truck_per_order(unassigned, assigned);
                 break;
             case 2:
-                truck.push_back_while_feasable(unassigned, assigned);
-                break;
             case 3:
-                truck.push_front_while_feasable(unassigned, assigned);
-                break;
             case 4:
-                truck.insert_while_feasable(unassigned, assigned);
+                truck.do_while_feasable(kind, unassigned, assigned);
                 break;
             default:
                 pgassert(false);

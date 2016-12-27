@@ -224,6 +224,7 @@ Vehicle_pickDeliver::insert(const Order &order) {
     invariant();
 }
 
+#if 0
 void
 Vehicle_pickDeliver::insert_while_feasable(
         Identifiers<PD_Orders::OID> &unassigned,
@@ -253,7 +254,7 @@ Vehicle_pickDeliver::insert_while_feasable(
     pgassert(is_feasable());
     invariant();
 }
-
+#endif
 
 void
 Vehicle_pickDeliver::push_back(const Order &order) {
@@ -271,6 +272,7 @@ Vehicle_pickDeliver::push_back(const Order &order) {
 }
 
 
+#if 0
 void
 Vehicle_pickDeliver::push_back_while_feasable(
         Identifiers<PD_Orders::OID> &unassigned,
@@ -300,7 +302,7 @@ Vehicle_pickDeliver::push_back_while_feasable(
     pgassert(is_feasable());
     invariant();
 }
-
+#endif
 void
 Vehicle_pickDeliver::one_truck_per_order(
         Identifiers<PD_Orders::OID> &unassigned,
@@ -341,6 +343,7 @@ Vehicle_pickDeliver::push_front(const Order &order) {
     invariant();
 }
 
+#if 0
 void
 Vehicle_pickDeliver::push_front_while_feasable(
         Identifiers<PD_Orders::OID> &unassigned,
@@ -352,6 +355,49 @@ Vehicle_pickDeliver::push_front_while_feasable(
         auto order = m_orders[current_feasable.front()];
 
         push_front(order);
+        if (orders_size() == 1 && !is_feasable()) {
+            pgassert(false);
+        }
+
+        if (!is_feasable()) {
+            erase(order);
+        } else {
+            assigned += order.id();
+            unassigned -= order.id();
+        }
+
+        current_feasable -= order.id();
+        invariant();
+    }
+
+    pgassert(is_feasable());
+    invariant();
+}
+#endif
+
+void
+Vehicle_pickDeliver::do_while_feasable(
+        int kind,
+        Identifiers<PD_Orders::OID> &unassigned,
+        Identifiers<PD_Orders::OID> &assigned) {
+    pgassert(is_feasable());
+    auto current_feasable = m_feasable_orders * unassigned;
+
+    while (!current_feasable.empty()) {
+        auto order = m_orders[current_feasable.front()];
+
+        switch (kind) {
+            case 2:
+                push_back(order);
+                break;
+            case 3:
+                push_front(order);
+                break;
+            case 4:
+                insert(order);
+                break;
+            default: pgassert(false);
+        }
         if (orders_size() == 1 && !is_feasable()) {
             pgassert(false);
         }

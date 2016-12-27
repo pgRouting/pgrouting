@@ -94,9 +94,6 @@ class Vehicle_pickDeliver : public Vehicle {
       * No capacity violation
       */
      void push_back(const Order &order);
-     void push_back_while_feasable(
-             Identifiers<PD_Orders::OID> &unassigned, 
-             Identifiers<PD_Orders::OID> &assigned);
      void one_truck_per_order(
              Identifiers<PD_Orders::OID> &unassigned, 
              Identifiers<PD_Orders::OID> &assigned);
@@ -121,10 +118,6 @@ class Vehicle_pickDeliver : public Vehicle {
       * No capacity violation
       */
      void push_front(const Order &order);
-     void push_front_while_feasable(
-             Identifiers<PD_Orders::OID> &unassigned, 
-             Identifiers<PD_Orders::OID> &assigned);
-
 
 
      /*! @brief Inserts an order
@@ -148,9 +141,6 @@ class Vehicle_pickDeliver : public Vehicle {
       * No capacity violation
       */
      void insert(const Order &order);
-     void insert_while_feasable(
-             Identifiers<PD_Orders::OID> &unassigned, 
-             Identifiers<PD_Orders::OID> &assigned);
 #if 0
      void insert_while_compatible(
              Identifiers<PD_Orders::OID> &unassigned, 
@@ -171,7 +161,7 @@ class Vehicle_pickDeliver : public Vehicle {
      Order get_first_order() const;
      Order get_worse_order(Identifiers<size_t> of_this_subset) const;
 
-     void insert_while_foo(
+     void do_while_feasable(
              int kind,
              Identifiers<PD_Orders::OID> &unassigned, 
              Identifiers<PD_Orders::OID> &assigned);

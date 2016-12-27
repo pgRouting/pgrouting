@@ -63,7 +63,7 @@ Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
     int j = 1;
-    for (int i = j; i < 4+1; ++ i) {
+    for (int i = j; i < j+4; ++ i) {
         initial_sols.push_back(Initial_solution(i, m_orders.size()));
     }
 #if 0
