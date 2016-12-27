@@ -151,7 +151,11 @@ class Vehicle_pickDeliver : public Vehicle {
      void insert_while_feasable(
              Identifiers<PD_Orders::OID> &unassigned, 
              Identifiers<PD_Orders::OID> &assigned);
-
+#if 0
+     void insert_while_compatible(
+             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &assigned);
+#endif
      /* @brief erases the order from the vehicle
       *
       * Precondition:
@@ -166,6 +170,11 @@ class Vehicle_pickDeliver : public Vehicle {
       */
      Order get_first_order() const;
      Order get_worse_order(Identifiers<size_t> of_this_subset) const;
+
+     void insert_while_foo(
+             int kind,
+             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &assigned);
 
 
      /*!

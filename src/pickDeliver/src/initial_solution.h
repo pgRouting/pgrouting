@@ -53,12 +53,7 @@ class Initial_solution : public Solution {
       * one truck per order
       */
      void one_truck_all_orders();
-#if 0
-     void one_truck_per_order();
-     void push_back_while_feasable();
-     void push_front_while_feasable();
-     void insert_while_feasable();
-#endif
+
      void do_while_foo(int kind);
 
      void insert_while_compatibleJ();
