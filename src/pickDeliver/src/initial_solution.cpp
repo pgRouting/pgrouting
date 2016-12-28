@@ -337,8 +337,6 @@ Initial_solution::do_while_foo(int kind) {
             trucks.get_truck();
         switch (kind) {
             case 1:
-                truck.one_truck_per_order(unassigned, assigned);
-                break;
             case 2:
             case 3:
             case 4:

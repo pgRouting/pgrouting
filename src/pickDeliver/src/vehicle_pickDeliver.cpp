@@ -62,7 +62,7 @@ Vehicle_pickDeliver::get_worse_order(
 #if 0
         auto order(problem->orders()[*orders.begin()]);
 #else
-        auto order(m_orders[*orders.begin()]);
+        auto order = m_orders[*orders.begin()];
 #endif
         pgassert(truck.has_order(order));
         orders -= order.id();
@@ -81,7 +81,11 @@ Order
 Vehicle_pickDeliver::get_first_order() const {
     invariant();
     pgassert(!empty());
+#if 1
+    return m_orders[m_path[1].id()];
+#else
     return problem->order_of(m_path[1]);
+#endif
 }
 
 
@@ -91,11 +95,19 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_capacity,
-        double p_speed,
-        const Pgr_pickDeliver *p_problem) :
+        double p_speed
+#if 0
+     ,   const Pgr_pickDeliver *p_problem) :
+#else
+    ) :
+#endif
     Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed),
-    cost((std::numeric_limits<double>::max)()),
-    problem(p_problem) {
+    cost((std::numeric_limits<double>::max)())
+#if 0
+    ,problem(p_problem) {
+#else
+    {
+#endif
         m_orders_in_vehicle.clear();
 
         invariant();
@@ -224,37 +236,6 @@ Vehicle_pickDeliver::insert(const Order &order) {
     invariant();
 }
 
-#if 0
-void
-Vehicle_pickDeliver::insert_while_feasable(
-        Identifiers<PD_Orders::OID> &unassigned,
-        Identifiers<PD_Orders::OID> &assigned) {
-    pgassert(is_feasable());
-    auto current_feasable = m_feasable_orders * unassigned;
-
-    while (!current_feasable.empty()) {
-        auto order = m_orders[current_feasable.front()];
-
-        insert(order);
-        if (orders_size() == 1 && !is_feasable()) {
-            pgassert(false);
-        }
-
-        if (!is_feasable()) {
-            erase(order);
-        } else {
-            assigned += order.id();
-            unassigned -= order.id();
-        }
-
-        current_feasable -= order.id();
-        invariant();
-    }
-
-    pgassert(is_feasable());
-    invariant();
-}
-#endif
 
 void
 Vehicle_pickDeliver::push_back(const Order &order) {
@@ -268,62 +249,6 @@ Vehicle_pickDeliver::push_back(const Order &order) {
 
     pgassert(has_order(order));
     pgassert(!has_cv());
-    invariant();
-}
-
-
-#if 0
-void
-Vehicle_pickDeliver::push_back_while_feasable(
-        Identifiers<PD_Orders::OID> &unassigned,
-        Identifiers<PD_Orders::OID> &assigned) {
-    pgassert(is_feasable());
-    auto current_feasable = m_feasable_orders * unassigned;
-
-    while (!current_feasable.empty()) {
-        auto order = m_orders[current_feasable.front()];
-
-        push_back(order);
-        if (orders_size() == 1 && !is_feasable()) {
-            pgassert(false);
-        }
-
-        if (!is_feasable()) {
-            erase(order);
-        } else {
-            assigned += order.id();
-            unassigned -= order.id();
-        }
-
-        current_feasable -= order.id();
-        invariant();
-    }
-
-    pgassert(is_feasable());
-    invariant();
-}
-#endif
-void
-Vehicle_pickDeliver::one_truck_per_order(
-        Identifiers<PD_Orders::OID> &unassigned,
-        Identifiers<PD_Orders::OID> &assigned) {
-    pgassert(is_feasable());
-    pgassert(orders_size() == 0);
-    auto current_feasable = m_feasable_orders * unassigned;
-
-    if (!current_feasable.empty()) {
-        auto order = m_orders[current_feasable.front()];
-
-        push_back(order);
-        if (orders_size() == 1 && !is_feasable()) {
-            pgassert(false);
-        }
-
-        assigned += order.id();
-        unassigned -= order.id();
-    }
-
-    pgassert(is_feasable());
     invariant();
 }
 
@@ -343,37 +268,6 @@ Vehicle_pickDeliver::push_front(const Order &order) {
     invariant();
 }
 
-#if 0
-void
-Vehicle_pickDeliver::push_front_while_feasable(
-        Identifiers<PD_Orders::OID> &unassigned,
-        Identifiers<PD_Orders::OID> &assigned) {
-    pgassert(is_feasable());
-    auto current_feasable = m_feasable_orders * unassigned;
-
-    while (!current_feasable.empty()) {
-        auto order = m_orders[current_feasable.front()];
-
-        push_front(order);
-        if (orders_size() == 1 && !is_feasable()) {
-            pgassert(false);
-        }
-
-        if (!is_feasable()) {
-            erase(order);
-        } else {
-            assigned += order.id();
-            unassigned -= order.id();
-        }
-
-        current_feasable -= order.id();
-        invariant();
-    }
-
-    pgassert(is_feasable());
-    invariant();
-}
-#endif
 
 void
 Vehicle_pickDeliver::do_while_feasable(
@@ -387,6 +281,14 @@ Vehicle_pickDeliver::do_while_feasable(
         auto order = m_orders[current_feasable.front()];
 
         switch (kind) {
+            case 1:
+                push_back(order);
+                pgassert(is_feasable());
+                assigned += order.id();
+                unassigned -= order.id();
+                invariant();
+                return;
+                break;
             case 2:
                 push_back(order);
                 break;
@@ -448,9 +350,21 @@ Vehicle_pickDeliver::pop_back() {
 
     ID deleted_pick_id = pick_itr->id();
 
+    for (const auto o : m_orders) {
+        if (o.pickup().id() == deleted_pick_id) {
+            erase(o);
+            invariant();
+            return o.id();
+        }
+    }
+    pgassert(false);
+    return 0;
+   
 
+#if 0
+#if 0
     auto delivery_id = problem->node(deleted_pick_id).Did();
-
+#endif
     m_path.erase((pick_itr + 1).base());
 
     auto delivery_itr = m_path.rbegin();
@@ -475,6 +389,7 @@ Vehicle_pickDeliver::pop_back() {
 
     invariant();
     return deleted_order_id;
+#endif
 }
 
 
@@ -493,7 +408,17 @@ Vehicle_pickDeliver::pop_front() {
 
     ID deleted_pick_id = pick_itr->id();
 
+    for (const auto o : m_orders) {
+        if (o.pickup().id() == deleted_pick_id) {
+            erase(o);
+            invariant();
+            return o.id();
+        }
+    }
 
+    pgassert(false);
+    return 0;
+#if 0
     auto delivery_id = problem->node(deleted_pick_id).Did();
 
     m_path.erase(pick_itr);
@@ -518,6 +443,7 @@ Vehicle_pickDeliver::pop_front() {
 
     invariant();
     return deleted_order_id;
+#endif
 }
 
 void
