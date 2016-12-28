@@ -2,7 +2,7 @@
 
 FILE: vehicle_pickDeliver.cpp
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -50,20 +50,12 @@ Vehicle_pickDeliver::get_worse_order(
     pgassert(!empty());
 
     // auto orders(of_this_subset);
-#if 0
-    auto worse_order(problem->orders()[*orders.begin()]);
-#else
     auto worse_order(m_orders[*orders.begin()]);
-#endif
     auto delta_duration((std::numeric_limits<double>::max)());
     auto curr_duration(duration());
     while (!orders.empty()) {
         auto truck(*this);
-#if 0
-        auto order(problem->orders()[*orders.begin()]);
-#else
         auto order = m_orders[*orders.begin()];
-#endif
         pgassert(truck.has_order(order));
         orders -= order.id();
         truck.erase(order);
@@ -81,11 +73,7 @@ Order
 Vehicle_pickDeliver::get_first_order() const {
     invariant();
     pgassert(!empty());
-#if 1
     return m_orders[m_path[1].id()];
-#else
-    return problem->order_of(m_path[1]);
-#endif
 }
 
 
@@ -95,19 +83,10 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_capacity,
-        double p_speed
-#if 0
-     ,   const Pgr_pickDeliver *p_problem) :
-#else
-    ) :
-#endif
+        double p_speed) :
     Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed),
     cost((std::numeric_limits<double>::max)())
-#if 0
-    ,problem(p_problem) {
-#else
     {
-#endif
         m_orders_in_vehicle.clear();
 
         invariant();
@@ -359,37 +338,6 @@ Vehicle_pickDeliver::pop_back() {
     }
     pgassert(false);
     return 0;
-   
-
-#if 0
-#if 0
-    auto delivery_id = problem->node(deleted_pick_id).Did();
-#endif
-    m_path.erase((pick_itr + 1).base());
-
-    auto delivery_itr = m_path.rbegin();
-    while (delivery_itr != m_path.rend()
-            && !(delivery_itr->id() ==delivery_id)) {
-        ++delivery_itr;
-    }
-
-    pgassert(delivery_itr->is_delivery());
-    pgassert(delivery_itr->Pid() == deleted_pick_id);
-
-    m_path.erase((delivery_itr + 1).base());
-
-
-    /* figure out from where the evaluation is needed */
-    evaluate(1);
-
-    ID deleted_order_id(
-            problem->order_of(problem->node(deleted_pick_id)).id());
-
-    m_orders_in_vehicle -= deleted_order_id;
-
-    invariant();
-    return deleted_order_id;
-#endif
 }
 
 
@@ -418,32 +366,6 @@ Vehicle_pickDeliver::pop_front() {
 
     pgassert(false);
     return 0;
-#if 0
-    auto delivery_id = problem->node(deleted_pick_id).Did();
-
-    m_path.erase(pick_itr);
-
-    auto delivery_itr = m_path.begin();
-    while (delivery_itr != m_path.end()
-            && !(delivery_itr->id() == delivery_id)) {
-        ++delivery_itr;
-    }
-
-    pgassert(delivery_itr->is_delivery());
-    pgassert(delivery_itr->Pid() == deleted_pick_id);
-
-    m_path.erase(delivery_itr);
-
-    evaluate(1);
-
-    ID deleted_order_id(
-            problem->order_of(problem->node(deleted_pick_id)).id());
-
-    m_orders_in_vehicle -= deleted_order_id;
-
-    invariant();
-    return deleted_order_id;
-#endif
 }
 
 void

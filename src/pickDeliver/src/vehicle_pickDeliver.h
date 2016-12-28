@@ -2,7 +2,7 @@
 
 FILE: vehicle_pickDeliver.h
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -45,9 +45,6 @@ class Vehicle_pickDeliver : public Vehicle {
  protected:
      double cost;
      Identifiers<size_t> m_orders_in_vehicle;  // /< orders inserted in this vehicle
-#if 0
-     const Pgr_pickDeliver *problem;  // /< The vehicle belongs to this problem
-#endif
      PD_Orders m_orders;
      Identifiers<PD_Orders::OID> m_feasable_orders;  // /< orders that fit in the truck
 
@@ -62,13 +59,7 @@ class Vehicle_pickDeliver : public Vehicle {
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
              double p_capacity,
-             double p_speed
-#if 0
-             ,
-             const Pgr_pickDeliver *p_problem);
-#else
-     );
-#endif
+             double p_speed);
 
      Vehicle_pickDeliver(const Vehicle_pickDeliver &) = default;
 
@@ -149,6 +140,7 @@ class Vehicle_pickDeliver : public Vehicle {
              Identifiers<PD_Orders::OID> &unassigned, 
              Identifiers<PD_Orders::OID> &assigned);
 #endif
+
      /* @brief erases the order from the vehicle
       *
       * Precondition:
