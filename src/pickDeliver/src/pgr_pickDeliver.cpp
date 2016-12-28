@@ -62,12 +62,13 @@ void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
-    int j = 1;
-    for (int i = j; i < j+4; ++ i) {
+    for (int i = 1; i < 7; ++ i) {
         initial_sols.push_back(Initial_solution(i, m_orders.size()));
+        log << "solution " << i << "\n" << initial_sols.back().tau();
     }
 #if 0
-    for (const auto sol : initial_sols) {
+    int j = 1;
+    for (int i = j; i < j+1; ++ i) {
         solutions.push_back(solve(sol));
     }
 #else
@@ -109,10 +110,12 @@ Pgr_pickDeliver::get_postgres_result() const {
     result.push_back(aggregates);
 
 
+#if 0
 #ifndef NDEBUG
     for (const auto sol : solutions) {
         log << sol.tau();
     }
+#endif
 #endif
     return result;
 }

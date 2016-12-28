@@ -135,12 +135,12 @@ class Vehicle_pickDeliver : public Vehicle {
       * No capacity violation
       */
      void insert(const Order &order);
+
 #if 0
-     void insert_while_compatible(
+     void insert_while_compatibleJ(
              Identifiers<PD_Orders::OID> &unassigned, 
              Identifiers<PD_Orders::OID> &assigned);
 #endif
-
      /* @brief erases the order from the vehicle
       *
       * Precondition:

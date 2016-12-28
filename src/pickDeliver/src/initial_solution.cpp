@@ -64,10 +64,12 @@ Initial_solution::Initial_solution(
             do_while_foo(kind);
             break;
         case 5:
-            insert_while_compatibleJ();
+            do_while_foo(kind);
+            // insert_while_compatibleJ();
             break;
         case 6:
-            insert_while_compatibleI();
+            do_while_foo(kind);
+            // insert_while_compatibleI();
             break;
     }
 }
@@ -158,7 +160,7 @@ Initial_solution::first_ordersIJ() const {
 
 void
 Initial_solution::insert_while_compatibleJ() {
-    log << "\nInitial_solution::insert_while_compatible\n";
+    log << "\nInitial_solution::insert_while_compatibleJ\n";
     invariant();
 
 
@@ -327,7 +329,7 @@ Initial_solution::insert_while_compatibleI() {
 
 void
 Initial_solution::do_while_foo(int kind) {
-    log << "\nInitial_solution::push_front_while_feasable\n";
+    log << "\nInitial_solution::do_while_foo\n";
     Identifiers<size_t> notused;
     bool out_of_trucks;
 
@@ -340,6 +342,10 @@ Initial_solution::do_while_foo(int kind) {
             case 2:
             case 3:
             case 4:
+            case 5:
+                truck.do_while_feasable(kind, unassigned, assigned);
+                break;
+            case 6:
                 truck.do_while_feasable(kind, unassigned, assigned);
                 break;
             default:

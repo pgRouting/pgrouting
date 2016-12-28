@@ -114,6 +114,43 @@ PD_Orders::set_compatibles(double speed) {
     }
 }
 
+size_t
+PD_Orders::find_best_J(
+        Identifiers<size_t> &within_this_set) const {
+    pgassert(!within_this_set.empty());
+    auto best_order = within_this_set.front();
+    size_t max_size = 0;
+
+
+    for (auto o : within_this_set) {
+        auto size_J =  m_orders[o].subsetJ(within_this_set).size();
+        if (max_size < size_J) {
+            max_size = size_J;
+            best_order = o;
+        }
+    }
+    return best_order;      
+}
+
+
+size_t
+PD_Orders::find_best_I(
+        Identifiers<size_t> &within_this_set) const {
+    pgassert(!within_this_set.empty());
+    auto best_order = within_this_set.front();
+    size_t max_size = 0;
+
+
+    for (auto o : within_this_set) {
+        auto size_I =  m_orders[o].subsetI(within_this_set).size();
+        if (max_size < size_I) {
+            max_size = size_I;
+            best_order = o;
+        }
+    }
+    return best_order;      
+}
+
 
 }  //  namespace vrp
 }  //  namespace pgrouting

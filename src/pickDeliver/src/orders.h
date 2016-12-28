@@ -64,6 +64,8 @@ class PD_Orders : public Pgr_messages , public PD_problem {
              size_t &node_id 
              );
      void set_compatibles(double speed);
+     size_t find_best_J(Identifiers<size_t> &within_this_set) const;
+     size_t find_best_I(Identifiers<size_t> &within_this_set) const;
 
 
      bool is_valid(double speed) const;

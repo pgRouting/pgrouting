@@ -277,6 +277,14 @@ Vehicle_pickDeliver::do_while_feasable(
             case 4:
                 insert(order);
                 break;
+            case 5:
+                order = m_orders[m_orders.find_best_J(current_feasable)];
+                insert(order);
+                break;
+            case 6:
+                order = m_orders[m_orders.find_best_I(current_feasable)];
+                insert(order);
+                break;
             default: pgassert(false);
         }
         if (orders_size() == 1 && !is_feasable()) {
@@ -288,6 +296,12 @@ Vehicle_pickDeliver::do_while_feasable(
         } else {
             assigned += order.id();
             unassigned -= order.id();
+            if (kind == 5) {
+                current_feasable = m_orders[order.id()].subsetJ(current_feasable);
+            }
+            if (kind == 6) {
+                current_feasable = m_orders[order.id()].subsetI(current_feasable);
+            }
         }
 
         current_feasable -= order.id();
@@ -383,6 +397,7 @@ Vehicle_pickDeliver::is_order_feasable(const Order &order) const {
     test_truck.push_back(order);
     return test_truck.is_feasable();
 }
+
 
 }  //  namespace vrp
 }  //  namespace pgrouting
