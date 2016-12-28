@@ -53,6 +53,9 @@ Initial_solution::Initial_solution(
     unassigned(number_of_orders),
     assigned()
 {
+    invariant();
+    pgassert(kind >= 0 && kind < 7);
+
     switch (kind) {
         case 0:
             one_truck_all_orders();
@@ -61,274 +64,23 @@ Initial_solution::Initial_solution(
         case 2:
         case 3:
         case 4:
-            do_while_foo(kind);
-            break;
         case 5:
-            do_while_foo(kind);
-            // insert_while_compatibleJ();
-            break;
         case 6:
             do_while_foo(kind);
-            // insert_while_compatibleI();
             break;
-    }
-}
-
-
-
-void
-Initial_solution::fill_truck_while_compatibleJ(
-        Vehicle_pickDeliver &truck,
-        Identifiers<size_t> &possible_orders) {
-    invariant();
-    /*
-     * Precondition:
-     * all orders in the truck are in the assigned set
-     */
-    pgassert(truck.orders_in_vehicle() == (truck.orders_in_vehicle() * assigned));
-
-    /*
-     * Precondition:
-     *  all possible orders are not in the assigned set
-     */
-    pgassert((possible_orders * assigned).empty());
-
-    /*
-     * termination of recursion
-     */
-    if (possible_orders.empty())
-        return;
-
-    /*
-     * CODE
-     */
-    auto best_order = possible_orders.front();
-    size_t max_size(0);
-
-    /*
-     * In the possible orders set look for the order that
-     * has more compatible orders with the current possible orders
-     */
-    for (const auto &o : possible_orders) {
-        auto intersect_orders = problem->compatibleJ(o) * possible_orders;
-        if (max_size < intersect_orders.size()) {
-            max_size = intersect_orders.size();
-            best_order = o;
-        }
-    }
-    auto intersect_orders = problem->compatibleJ(best_order) * possible_orders;
-
-    truck.insert(problem->orders(best_order));
-    if (!truck.is_feasable()) {
-        truck.erase(problem->orders(best_order));
-    } else {
-        assigned += best_order;
-        unassigned -= best_order;
+        default: pgassert(false);
     }
 
-    possible_orders -= best_order;
-    fill_truck_while_compatibleJ(truck, possible_orders);
     invariant();
 }
-
-
-
-#if 0
-std::deque<size_t>
-Initial_solution::first_ordersIJ() const {
-    /*
-     * Sorted as:
-     * (| {I}|, | {J}|)
-     * orders: keep sorted based on the number of orders it is compatible with
-     */
-    std::deque<size_t> orders(unassigned.begin(), unassigned.end());
-    const Pgr_pickDeliver *prob = problem;
-    std::sort(orders.begin(), orders.end(), [&prob]
-            (const size_t &lhs, const size_t &rhs) -> bool
-            {return prob->orders()[lhs].m_compatibleJ.size()
-            < prob->orders()[rhs].m_compatibleJ.size();
-            });
-    std::stable_sort(orders.begin(), orders.end(), [&prob]
-            (const size_t &lhs, const size_t &rhs) -> bool
-            {return prob->orders()[lhs].m_compatibleI.size()
-            < prob->orders()[rhs].m_compatibleI.size();
-            });
-    return orders;
-}
-#endif
-
-
-void
-Initial_solution::insert_while_compatibleJ() {
-    log << "\nInitial_solution::insert_while_compatibleJ\n";
-    invariant();
-
-
-    // size_t v_id(0);
-    auto truck = trucks.get_truck();
-    auto orders = all_orders;
-
-    while (!unassigned.empty()) {
-#if 0
-        std::deque<size_t> orders(first_ordersIJ());
-#endif
-        if (truck.empty()) {
-#if 0
-            auto order(problem->orders()[orders.front()]);
-#else
-            auto order(truck.orders()[orders.front()]);
-#endif
-            truck.insert(order);
-            assigned += order.id();
-            unassigned -= order.id();
-            orders.pop_front();
-            invariant();
-
-            auto compatible_orders(
-                    truck.orders()[order.id()].m_compatibleJ);
-            auto possible_orders = compatible_orders * unassigned;
-
-            fill_truck_while_compatibleJ(truck, possible_orders);
-            fleet.push_back(truck);
-
-            if (unassigned.empty())
-                break;
-
-            truck = trucks.get_truck();
-        }
-        invariant();
-    }
-}
-
-
-
-void
-Initial_solution::fill_truck_while_compatibleI(
-        Vehicle_pickDeliver &truck,
-        Identifiers<size_t> &possible_orders) {
-    invariant();
-    /*
-     * Precondition:
-     * all orders in the truck are in the assigned set
-     */
-    pgassert(truck.orders_in_vehicle() == (truck.orders_in_vehicle() * assigned));
-
-    /*
-     * Precondition:
-     *  all possible orders are not in the assigned set
-     */
-    pgassert((possible_orders * assigned).empty());
-
-    /*
-     * termination of recursion
-     */
-    if (possible_orders.empty())
-        return;
-
-    /*
-     * CODE
-     */
-    auto best_order = *possible_orders.begin();
-    size_t max_size(0);
-
-    /*
-     * In the possible orders set look for the order that
-     * has more compatible orders with the current possible orders
-     */
-    for (auto &o : possible_orders) {
-        auto other_orders = truck.orders()[o].m_compatibleI;
-        auto intersect_orders = truck.orders()[o].subsetI(possible_orders);
-        if (max_size < intersect_orders.size()) {
-            max_size = intersect_orders.size();
-            best_order = o;
-        }
-    }
-    auto intersect_orders =
-        truck.orders()[best_order].subsetI(possible_orders);
-
-    truck.insert(truck.orders()[best_order]);
-    if (!truck.is_feasable()) {
-        truck.erase(truck.orders()[best_order]);
-    } else {
-        assigned += best_order;
-        unassigned -= best_order;
-    }
-
-    possible_orders -= best_order;
-    fill_truck_while_compatibleI(truck, possible_orders);
-    invariant();
-}
-
-
-
-
-#if 0
-std::deque<size_t>
-Initial_solution::first_ordersJI() const {
-    /*
-     * Sorted as:
-     * (| {J}|, | {I}|)
-     * orders: keep sorted based on the number of orders it is compatible with
-     */
-    std::deque<size_t> orders(unassigned.begin(), unassigned.end());
-    const Pgr_pickDeliver *prob = problem;
-    std::sort(orders.begin(), orders.end(), [&prob]
-            (const size_t &lhs, const size_t &rhs) -> bool
-            {return prob->orders()[lhs].m_compatibleI.size()
-            < prob->orders()[rhs].m_compatibleI.size();
-            });
-    std::stable_sort(orders.begin(), orders.end(), [&prob]
-            (const size_t &lhs, const size_t &rhs) -> bool
-            {return prob->orders()[lhs].m_compatibleJ.size()
-            < prob->orders()[rhs].m_compatibleJ.size();
-            });
-    return orders;
-}
-#endif
-
-
-void
-Initial_solution::insert_while_compatibleI() {
-    log << "\nInitial_solution::insert_while_compatible\n";
-    invariant();
-
-
-    auto truck = trucks.get_truck();
-    auto orders = all_orders;
-
-    while (!unassigned.empty()) {
-#if 0
-        std::deque<size_t> orders(first_ordersJI());
-#endif
-        if (truck.empty()) {
-            auto order(truck.orders()[orders.front()]);
-            truck.insert(order);
-            assigned += order.id();
-            orders.pop_front();
-            unassigned -= order.id();
-            invariant();
-
-            auto compatible_orders(
-                    truck.orders()[order.id()].m_compatibleI);
-            auto possible_orders = compatible_orders * unassigned;
-
-            fill_truck_while_compatibleI(truck, possible_orders);
-            fleet.push_back(truck);
-
-            if (unassigned.empty())
-                break;
-
-            truck = trucks.get_truck();
-        }
-        invariant();
-    }
-}
-
 
 
 
 void
 Initial_solution::do_while_foo(int kind) {
+    invariant();
+    pgassert(kind > 0 && kind < 7);
+
     log << "\nInitial_solution::do_while_foo\n";
     Identifiers<size_t> notused;
     bool out_of_trucks;
@@ -337,20 +89,10 @@ Initial_solution::do_while_foo(int kind) {
         auto truck = out_of_trucks?
             trucks.get_truck(unassigned.front()) : 
             trucks.get_truck();
-        switch (kind) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-                truck.do_while_feasable(kind, unassigned, assigned);
-                break;
-            case 6:
-                truck.do_while_feasable(kind, unassigned, assigned);
-                break;
-            default:
-                pgassert(false);
-        }
+        /*
+         * kind 1 to 7 work with the same code structure
+         */
+        truck.do_while_feasable(kind, unassigned, assigned);
 
         if (truck.orders_in_vehicle().empty()) {
             out_of_trucks = notused.has(truck.id());
@@ -365,7 +107,9 @@ Initial_solution::do_while_foo(int kind) {
         fleet.push_back(truck);
         invariant();
     }
+
     pgassert(is_feasable());
+    invariant();
 }
 
 
@@ -373,6 +117,7 @@ Initial_solution::do_while_foo(int kind) {
 
 void
 Initial_solution::one_truck_all_orders() {
+    invariant();
     log << "\nInitial_solution::one_truck_all_orders\n";
     auto truck = trucks.get_truck();
     while (!unassigned.empty()) {
@@ -386,6 +131,7 @@ Initial_solution::one_truck_all_orders() {
         invariant();
     }
     fleet.push_back(truck);
+    invariant();
 }
 
 

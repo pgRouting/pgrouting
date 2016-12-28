@@ -62,13 +62,13 @@ void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
-    for (int i = 1; i < 7; ++ i) {
+    int j = 1;
+    for (int i = j; i < j+1; ++ i) {
         initial_sols.push_back(Initial_solution(i, m_orders.size()));
         log << "solution " << i << "\n" << initial_sols.back().tau();
     }
 #if 0
-    int j = 1;
-    for (int i = j; i < j+1; ++ i) {
+    for (auto sol : initial_sols) {
         solutions.push_back(solve(sol));
     }
 #else
