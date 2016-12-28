@@ -68,7 +68,7 @@ void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
-    int j = 6;
+    int j = 1;
     for (int i = j; i < j+1; ++ i) {
         initial_sols.push_back(Initial_solution(i, m_orders.size()));
         log << "solution " << i << "\n" << initial_sols.back().tau();

@@ -405,37 +405,21 @@ Optimize::decrease_truck(size_t cycle) {
     /* end recursion */
     if (cycle < 2) return false;
 
-#if 0
-    problem->log << " --- Cycle " << cycle << "\n";
-    problem->log << " --- Truck " << cycle - 1 << "\n";
-#endif
 
     auto position = cycle - 1;
     for (auto orders = fleet[position].orders_in_vehicle();
             !orders.empty();
             orders.pop_front()) {
-#if 0
-        problem->log << " truck " << fleet[position].tau() << "\n";
-        problem->log << " orders " << orders << "\n";
-#endif
 
         /* Step 2: grab an order */
         auto order = fleet[position].orders()[orders.front()];
         pgassert(order.id() == orders.front());
 
-#if 0
-        problem->log << "\nOrder to 'move'" << order << "\n";
-        problem->log << " truck " << fleet[position].tau() << "\n";
-#endif
 
         /* Step 3: cycle the fleet (in reverse order) & insert in first truck possible */
 
-        auto best_truck = fleet[position -1];
+        // auto best_truck = fleet[position -1];
         for (size_t i = 0; i < position; ++i) {
-#if 0
-        for (size_t i = position - 1; i > 0; --i) {
-            problem->log << "\n ------->trying " << i << "\n";
-#endif
             fleet[i].insert(order);
             if (!fleet[i].is_feasable()) {
                 fleet[i].erase(order);
@@ -444,9 +428,6 @@ Optimize::decrease_truck(size_t cycle) {
                  * delete the order from the current truck
                  */
                 fleet[position].erase(order);
-#if 0
-                problem->log << "\n ******* success " << fleet[i].tau() << "\n";
-#endif
                 break;
             }
         }
