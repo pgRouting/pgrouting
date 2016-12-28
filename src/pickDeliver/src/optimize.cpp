@@ -39,30 +39,9 @@ namespace vrp {
 
 
 Optimize::Optimize(
-        int kind,
         const Solution &old_solution) :
     Solution(old_solution),
     best_solution(old_solution)  {
-        switch (kind) {
-            case 0:
-                sort_by_duration();
-                break;
-            case 1:
-                decrease_truck();
-                break;
-            case 2:
-                move_duration_based();
-                break;
-            case 3:
-                move_wait_time_based();
-                break;
-            case 4:
-                inter_swap();
-                break;
-        }
-        this->fleet = best_solution.fleet;
-        sort_by_duration();
-        delete_empty_truck();
     }
 
 
@@ -216,11 +195,12 @@ Optimize::sort_by_duration() {
 
 void
 Optimize::delete_empty_truck() {
-    while (fleet.back().empty()) {
-        problem->log << "\nEmpty truck";
-        fleet.pop_back();
-        save_if_best();
-    }
+    fleet.erase(std::remove_if(
+                fleet.begin(), 
+                fleet.end(),
+                [](const Vehicle_pickDeliver &v){
+                return v.orders_in_vehicle().empty();}),
+            fleet.end());
     save_if_best();
 }
 
@@ -408,74 +388,70 @@ Optimize::sort_for_move() {
  */
 void
 Optimize::decrease_truck() {
-    bool decreased(true);
-    while (decreased) {
-        decreased = false;
-        sort_by_duration();
-        std::reverse(fleet.begin(), fleet.end());
-        decrease_truck(fleet.size(), decreased);
+    bool decreased(false);
+    for (auto i = fleet.size(); i > 1; --i) {
+        decreased = decrease_truck(i) || decreased;
     }
-    this->fleet = best_solution.fleet;
+    if (decreased) {
+        delete_empty_truck();
+        save_if_best();
+        decrease_truck();
+    }
+    save_if_best();
 }
 
-void
-Optimize::decrease_truck(size_t cycle, bool &decreased) {
+bool
+Optimize::decrease_truck(size_t cycle) {
     /* end recursion */
-    if (cycle == 0) return;
+    if (cycle < 2) return false;
 
-    std::ostringstream err_log;
-    err_log << " --- Cycle " << cycle << "\n";
+#if 0
+    problem->log << " --- Cycle " << cycle << "\n";
+    problem->log << " --- Truck " << cycle - 1 << "\n";
+#endif
 
-    /* the front truck move to back */
-    std::rotate(fleet.begin(), fleet.begin() + 1, fleet.end());
-    err_log << "\n after rotate" << tau();
+    auto position = cycle - 1;
+    for (auto orders = fleet[position].orders_in_vehicle();
+            !orders.empty();
+            orders.pop_front()) {
+#if 0
+        problem->log << " truck " << fleet[position].tau() << "\n";
+        problem->log << " orders " << orders << "\n";
+#endif
 
-    auto orders(fleet.back().orders_in_vehicle());
-    while (!orders.empty()) {
         /* Step 2: grab an order */
-        auto order(fleet.back().orders()[*orders.begin()]);
-        orders -= order.id();
-        err_log << "\n truck with order: " << fleet.back().tau();
-        err_log << "\nOrder" << order << "\n";
+        auto order = fleet[position].orders()[orders.front()];
+        pgassert(order.id() == orders.front());
 
-        /* Step 3: delete the order from the back of the fleet */
-        pgassertwm(fleet.back().has_order(order), err_log.str());
-        fleet.back().erase(order);
-        pgassertwm(!fleet.back().has_order(order), err_log.str());
+#if 0
+        problem->log << "\nOrder to 'move'" << order << "\n";
+        problem->log << " truck " << fleet[position].tau() << "\n";
+#endif
 
-        /* Step 3: cycle the fleet & insert in best truck possible */
-        /* current truck is tried last */
-        err_log << " trying ";
-        auto best_truck(fleet.size() - 1);
-        auto current_duration(duration());
-        auto min_delta_duration = (std::numeric_limits<double>::max)();
-        size_t t_i(0);
-        for (auto &truck : fleet) {
-            truck.insert(order);
-            if (!truck.is_feasable()) {
-                err_log << "\n" << truck.tau();
+        /* Step 3: cycle the fleet (in reverse order) & insert in first truck possible */
+
+        auto best_truck = fleet[position -1];
+        for (size_t i = 0; i < position; ++i) {
+#if 0
+        for (size_t i = position - 1; i > 0; --i) {
+            problem->log << "\n ------->trying " << i << "\n";
+#endif
+            fleet[i].insert(order);
+            if (!fleet[i].is_feasable()) {
+                fleet[i].erase(order);
             } else {
-                err_log << "\n ******* success " << truck.tau() << "\n";
-                auto delta_duration = duration()-current_duration;
-                if (t_i != fleet.size() - 1
-                        && (delta_duration < min_delta_duration)) {
-                    min_delta_duration = delta_duration;
-                    best_truck = t_i;
-                }
+                /* 
+                 * delete the order from the current truck
+                 */
+                fleet[position].erase(order);
+#if 0
+                problem->log << "\n ******* success " << fleet[i].tau() << "\n";
+#endif
+                break;
             }
-            truck.erase(order);
-            ++t_i;
         }
-        fleet[best_truck].insert(order);
-        save_if_best();
     }
-
-    if (fleet.back().empty()) {
-        decreased = true;
-        fleet.pop_back();
-        save_if_best();
-    }
-    decrease_truck(--cycle, decreased);
+    return fleet[position].orders_in_vehicle().empty();
 }
 
 void

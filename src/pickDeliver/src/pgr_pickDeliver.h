@@ -72,7 +72,7 @@ class Pgr_pickDeliver : public Pgr_messages{
     const PD_Orders& orders() const {return m_orders;}
 #endif
 
-    Solution solve(const Solution init_solution);
+    Solution optimize(const Solution init_solution);
     size_t max_cycles() const {return m_max_cycles;}
 
     //! name orders handling (TODO? in a class?

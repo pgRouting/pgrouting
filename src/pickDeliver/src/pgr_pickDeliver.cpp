@@ -49,12 +49,18 @@ namespace vrp {
 
 
 Solution
-Pgr_pickDeliver::solve(const Solution init_solution) {
-    Optimize solution(0, init_solution);
+Pgr_pickDeliver::optimize(const Solution init_solution) {
+    /*
+     * OPtimize the initial solution
+     */
+    Optimize solution(init_solution);
     solution.decrease_truck();
+#if 0
     solution.move_duration_based();
     solution.move_wait_time_based();
     solution.inter_swap();
+#endif
+    log << solution.best_solution.tau("optimized");
     return solution.best_solution;
 }
 
@@ -62,14 +68,14 @@ void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
-    int j = 1;
+    int j = 6;
     for (int i = j; i < j+1; ++ i) {
         initial_sols.push_back(Initial_solution(i, m_orders.size()));
         log << "solution " << i << "\n" << initial_sols.back().tau();
     }
-#if 0
+#if 1
     for (auto sol : initial_sols) {
-        solutions.push_back(solve(sol));
+        solutions.push_back(optimize(sol));
     }
 #else
     solutions = initial_sols;

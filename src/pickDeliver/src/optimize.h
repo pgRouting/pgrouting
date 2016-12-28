@@ -38,8 +38,7 @@ class Pgr_pickDeliver;
 
 class Optimize : public Solution {
  public:
-     Optimize(int kind,
-             const Solution &solution);
+     Optimize(const Solution &solution);
 
      /* @brief decrease_truck
       *
@@ -53,7 +52,7 @@ class Optimize : public Solution {
      Solution best_solution;
 
  private:
-     void decrease_truck(size_t, bool&);
+     bool decrease_truck(size_t);
      bool move_reduce_cost(size_t, size_t);
      void sort_for_move();
      void sort_by_duration();
