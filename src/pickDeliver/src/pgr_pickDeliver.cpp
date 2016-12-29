@@ -58,8 +58,8 @@ Pgr_pickDeliver::optimize(const Solution init_solution) {
 #if 0
     solution.move_duration_based();
     solution.move_wait_time_based();
-    solution.inter_swap();
 #endif
+    solution.inter_swap();
     log << solution.best_solution.tau("optimized");
     return solution.best_solution;
 }

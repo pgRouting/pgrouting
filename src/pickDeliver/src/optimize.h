@@ -56,9 +56,10 @@ class Optimize : public Solution {
      bool move_reduce_cost(size_t, size_t);
      void sort_for_move();
      void sort_by_duration();
+     void sort_by_size();
      void delete_empty_truck();
 
-     bool swap_worse(size_t from_pos, size_t to_pos);
+     bool swap_worse(Vehicle_pickDeliver &from, Vehicle_pickDeliver &to);
      bool inter_swap(bool reversed);
 
      void move_order(

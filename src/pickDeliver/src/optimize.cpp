@@ -47,65 +47,123 @@ Optimize::Optimize(
 
 void
 Optimize::inter_swap() {
+#if 1
     auto local_limit(fleet.size());
+    local_limit = 10;
     size_t i(0);
-    while (inter_swap(false) && (++i < local_limit)) {
-    }
     i = 0;
     while (inter_swap(true) && (++i < local_limit)) {
+        problem-> log << "\n***************************" << i;
     }
+#else
+#if 1
+#endif
+    inter_swap(true);
+#endif
+#if 0
     sort_by_duration();
     delete_empty_truck();
     this->fleet = best_solution.fleet;
+#endif
 }
 
+/*
+ * ordering the trucks by number of orders it has
+ * - the truck with more orders wants to:
+ *   - make less time
+ *   - do more orders
+ * The inter_swap objective is to make the trucks with more orders
+ *  - less time consuming
+ */ 
 bool
 Optimize::inter_swap(bool reversed) {
-//    problem->log << tau("before sort");
-    sort_by_duration();
-    delete_empty_truck();
-    save_if_best();
-    if (reversed) {
-        std::reverse(fleet.begin(), fleet.end());
-    }
-//    problem->log << tau("after sort");
-    auto swapped = false;
-    size_t from_pos(fleet.size()-1);
-    while (from_pos > 1) {
-        for (size_t to_pos = 0; to_pos < from_pos; ++to_pos) {
-            swapped = swap_worse(from_pos, to_pos)? true : swapped;
-            swapped = move_reduce_cost(from_pos, to_pos)? true : swapped;
+    if (reversed) {};
+    problem->log << tau("before sort");
+    sort_by_size();
+    problem->log << tau("after sort");
+    auto swapped_f = false;
+    /*
+     *   .. to ... from ....
+     */
+    for (auto &from : fleet) {
+        for (auto &to : fleet) {
+            if (&from == &to) break;
+
+#if 0
+            problem->log
+                << "\nto " << to.id()
+                << "from " << from.id();
+#endif
+            auto swapped = false;
+            swapped = swap_worse(to, from) || swapped;
+#if 0
+            if (swapped) problem->log
+                << "\n" <<tau("after  movements");
+#endif
+            swapped_f = swapped_f || swapped;
         }
-        delete_empty_truck();
-        --from_pos;
     }
-    return swapped;
+
+    if (swapped_f) problem->log
+        << "\n" <<tau("after  swaps");
+    move_reduce_cost();
+    problem->log
+        << "\n" <<tau("after  move");
+    delete_empty_truck();
+
+    return swapped_f;
 }
 
+
+
+/*
+ *   .. to ... from ....
+ */
 bool
-Optimize::swap_worse(size_t from_pos, size_t to_pos) {
-    pgassert(to_pos < from_pos);
-    auto from_truck = fleet[from_pos];
-    auto to_truck = fleet[to_pos];
-    auto swapped(false);
-    auto from_orders(from_truck.orders_in_vehicle());
-    auto to_orders(to_truck.orders_in_vehicle());
-    auto local_limit(from_orders.size() * to_orders.size() + 1);
+Optimize::swap_worse(Vehicle_pickDeliver &to, Vehicle_pickDeliver &from) {
+#if 0
+    pgassert(from.orders_in_vehicle().size() <= to.orders_in_vehicle().size());
+#endif
+    auto from_truck = from;
+    auto to_truck = to;
 
-    while (!from_orders.empty() && --local_limit > 0) {
-        auto from_order(from_truck.get_worse_order(from_orders));
-        from_orders -= from_order.id();
+    auto swapped = false;
 
-        while (!to_orders.empty()) {
-            auto to_order(to_truck.get_worse_order(to_orders));
-            to_orders -= to_order.id();
+    for (auto from_orders = from_truck.orders_in_vehicle();
+            !from_orders.empty();
+            from_orders.pop_front()) {
+        auto from_order = from_truck.orders()[from_orders.front()];
+#if 0
+        pgassert(from_truck.has_order(from_order));
+        problem->log << "\n" << from_orders;
+        problem->log << "\n from " << from_order.id()
+            << "," << from_order.pickup().original_id();
+        pgassert(from_truck.has_order(from_order));
+#endif
+        auto curr_from_duration = from_truck.duration();
+        pgassert(from_truck.has_order(from_order));
+
+        for (auto to_orders = to_truck.orders_in_vehicle();
+                !to_orders.empty();
+                to_orders.pop_front()) {
+            pgassert(from_truck.has_order(from_order));
+
+            auto to_order = to.orders()[to_orders.front()];
+#if 0
+            problem->log << "\n" << to_orders;
+            problem->log << "\n To " << to_order.id();
+#endif
+            auto curr_to_duration = to_truck.duration();
 
             /*
              * delete from_order, and to order from their trucks
              */
-            auto curr_from_duration(from_truck.duration());
-            auto curr_to_duration(to_truck.duration());
-
+#if 0
+            pgassert(from_truck.has_order(from_order));
+            problem->log << "\n" << from_truck.tau();
+            problem->log << "\n" << from_order.id();
+            pgassert(from_truck.has_order(from_order));
+#endif
             from_truck.erase(from_order);
             to_truck.erase(to_order);
 
@@ -121,42 +179,51 @@ Optimize::swap_worse(size_t from_pos, size_t to_pos) {
                  *   - only swap when the total duration is reduced
                  *   - or from_truck duration is reduced 
                  */
-
-                if (((from_truck.duration() + to_truck.duration())
-                            < (curr_from_duration + curr_to_duration))
-                        || (from_truck.duration() < curr_from_duration)) {
-                    problem->log
-                        << "\n    Swap order " << from_order.id()
-                        << " from truck " << from_truck.id()
-                        << " with order " << to_order.id()
-                        << " of truck " << to_truck.id();
-#ifndef NDEBUG
-                    problem->dbg_log << "\nswappping before:";
-                    problem->dbg_log << "\n" << fleet[to_pos].tau();
-                    problem->dbg_log << "\n" << fleet[from_pos].tau();
+#if 0
+                problem->log << "\n Can swap";
+                problem->log << "\n Curr_from_duration " << curr_from_duration;
+                problem->log << " Curr_to_duration " << curr_to_duration;
+                problem->log << "\n  new_from_duration " << from_truck.duration();
+                problem->log << "  new_to_duration " << to_truck.duration();
 #endif
+                auto estimated_duration = duration()
+                    - (curr_from_duration + curr_to_duration)
+                    + (to_truck.duration() + from_truck.duration());
 
+                if (to_truck.duration() < curr_to_duration ||
+                    estimated_duration < best_solution.duration()) {
+                    problem->log
+                        << "\n    Swap order " << from_order.pickup().original_id()
+                        << " from truck " << from_truck.id()
+                        << " with order " << to_order.pickup().original_id()
+                        << " of truck " << to_truck.id();
+
+#if 0
+                    problem->log << "\nswappping before:";
+                    problem->log << "\n" << to.tau();
+                    problem->log << "\n" << from.tau();
+#endif
                     swap_order(
-                            from_order, fleet[from_pos],
-                            to_order, fleet[to_pos]);
+                            from_order, from,
+                            to_order, to);
                     swapped = true;
                     save_if_best();
-                    from_orders += to_order.id();
-#ifndef NDEBUG
-                    problem->dbg_log << "\nswappping after:";
-                    problem->dbg_log << "\n" << fleet[to_pos].tau();
-                    problem->dbg_log << "\n" << fleet[from_pos].tau();
+#if 0
+                    problem->log << "\nswappping after:";
+                    problem->log << "\n" << to.tau();
+                    problem->log << "\n" << from.tau();
+                    return true;
 #endif
                     break;
                 }
+
             }
-            /*
-             * wasn't swapped
-             */
-            to_truck = fleet[to_pos];
-            from_truck = fleet[from_pos];
+            to_truck = to;
+            from_truck = from;
         }
+        from_truck = from;
     }
+
     return swapped;
 }
 
@@ -182,6 +249,15 @@ Optimize::swap_order(
 
     pgassert(from_truck.has_order(to_order));
     pgassert(to_truck.has_order(from_order));
+}
+
+void
+Optimize::sort_by_size() {
+    std::sort(fleet.begin(), fleet.end(), []
+            (const Vehicle_pickDeliver &lhs, const Vehicle_pickDeliver &rhs)
+            -> bool {
+            return lhs.orders_in_vehicle().size() > rhs.orders_in_vehicle().size();
+            });
 }
 
 void
@@ -266,21 +342,16 @@ Optimize::move_wait_time_based() {
 bool
 Optimize::move_reduce_cost() {
     if (fleet.size() < 2) return false;
+    bool moved = false;
 
     size_t from_pos(fleet.size() - 1);
     while (from_pos > 1) {
         for (size_t to_pos = 0; to_pos < from_pos; ++to_pos) {
-            if (move_reduce_cost(from_pos, to_pos)) {
-                if (fleet[from_pos].empty()) {
-                    fleet.erase(fleet.begin() + from_pos);
-                    save_if_best();
-                }
-                return true;
-            }
+            moved = move_reduce_cost(from_pos, to_pos) || moved;
         }
         --from_pos;
     }
-    return false;
+    return moved;
 }
 
 /*
@@ -301,14 +372,13 @@ Optimize::move_reduce_cost(size_t from_pos, size_t to_pos) {
     auto to_truck = fleet[to_pos];
     auto moved(false);
 
-    auto orders(from_truck.orders_in_vehicle());
-    while (!orders.empty()) {
+    auto from_orders = from_truck.orders_in_vehicle();
+    while (!from_orders.empty()) {
         /*
-         * get the order that decreases the duration the most
-         * (there is always a worse)
+         * removing an order decreases the duration
          */
-        auto order = from_truck.get_worse_order(orders);
-        orders -= order.id();
+        auto order = from_truck.orders()[from_orders.front()];
+        from_orders -= order.id();
 
         /*
          * insert it in the next truck
@@ -316,7 +386,7 @@ Optimize::move_reduce_cost(size_t from_pos, size_t to_pos) {
         to_truck.insert(order);
         if (to_truck.is_feasable()) {
             problem->log
-                << "\n    Move order " << order.id()
+                << "\n    Move order " << order.pickup().original_id()
                 << " from truck " << from_truck.id()
                 << " to truck " << to_truck.id();
 #ifndef NDEBUG
