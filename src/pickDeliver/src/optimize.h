@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "./optimize.h"
-#include "./move.h"
+#include "./book_keeping.h"
 
 namespace pgrouting {
 namespace vrp {
