@@ -273,7 +273,8 @@ typedef struct {
    */
 
 typedef struct  {
-    int vehicle_id;
+    int vehicle_number;
+    int64_t vehicle_id;
     int vehicle_seq;
     int64_t order_id;
     int64_t stop_type;

@@ -57,6 +57,7 @@ class Optimize : public Solution {
      void sort_for_move();
      void sort_by_duration();
      void sort_by_size();
+     void sort_by_id();
      void delete_empty_truck();
 
      bool swap_worse(Vehicle_pickDeliver &from, Vehicle_pickDeliver &to);

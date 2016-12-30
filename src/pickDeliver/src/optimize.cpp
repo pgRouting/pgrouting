@@ -58,27 +58,20 @@ Optimize::Optimize(
 
 void
 Optimize::inter_swap(size_t times) {
-#if 1
     problem->log << tau("before sort");
     sort_by_size();
     problem->log << tau("after sort");
-#endif
-#if 1
+
     size_t i = 0;
     while (inter_swap() && (++i < times)) {
         problem-> log << "\n***************************" << i;
         std::rotate(fleet.begin(), fleet.begin() + 1, fleet.end());
     }
-#else
-#if 1
-#endif
-    inter_swap(true);
-#endif
-#if 0
-    sort_by_duration();
-    delete_empty_truck();
+    problem->log << tau("before sort");
+    best_solution.sort_by_id();
     this->fleet = best_solution.fleet;
-#endif
+    problem->log << tau("after sort");
+    problem->log <<  best_solution.tau();
 }
 
 /*
@@ -316,6 +309,15 @@ Optimize::swap_order(
 }
 
 void
+Optimize::sort_by_id() {
+    std::sort(fleet.begin(), fleet.end(), []
+            (const Vehicle_pickDeliver &lhs, const Vehicle_pickDeliver &rhs)
+            -> bool {
+            return lhs.orders_in_vehicle().size() > rhs.orders_in_vehicle().size();
+            });
+}
+
+void
 Optimize::sort_by_size() {
     std::sort(fleet.begin(), fleet.end(), []
             (const Vehicle_pickDeliver &lhs, const Vehicle_pickDeliver &rhs)
@@ -437,12 +439,15 @@ bool
 Optimize::move_reduce_cost(
         Vehicle_pickDeliver &from,
         Vehicle_pickDeliver &to) {
-    /*
-     * from the pair of trucks, move from the one that has more orders
-     * to the one with less orders
-     */
     auto from_truck = from;
     auto to_truck = to;
+
+    /*
+     * dont move from a real truck to a phoney truck
+     */
+    if (!from_truck.is_phony() && to_truck.is_phony()) {
+        return false;
+    }
 #if 0
     from.id()  > to.id()
         ?  to : from;

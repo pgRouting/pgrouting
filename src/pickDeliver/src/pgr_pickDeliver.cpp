@@ -98,12 +98,13 @@ Pgr_pickDeliver::get_postgres_result() const {
 
     General_vehicle_orders_t aggregates = {
             /*
-             * Vehicle id = -1 indicates its an aggregate row
+             * Vehicle id = -2 indicates its an aggregate row
              *
              * (twv, cv, fleet, wait, duration)
              */
-            -1,
+            -2,
             solutions.back().twvTot(),
+            -1,
             solutions.back().cvTot(),
             -1,  // summary
             0,  // not accounting total loads

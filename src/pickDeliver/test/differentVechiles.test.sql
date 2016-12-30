@@ -15,12 +15,11 @@ FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
 SELECT 0 AS id,
         40 AS start_x, 50 AS start_y,
         0 AS start_open, 1236 AS start_close,
-        200 AS capacity, 25 AS number INTO vehicles;
+        200 AS capacity, 1 AS number INTO vehicles;
 
-/*
 INSERT into vehicles (id, start_x, start_y, start_open, start_close, capacity, number)
 VALUES (1, 40, 50, 0, 400, 200, 25);
-*/
+
 SELECT * FROM _pgr_pickDeliver(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * FROM vehicles',

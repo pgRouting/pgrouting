@@ -228,7 +228,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
          *********************************************************************/
 
 
-        size_t numb = 11;;
+        size_t numb = 12;
         values = palloc(numb * sizeof(Datum));
         nulls = palloc(numb * sizeof(bool));
 
@@ -240,16 +240,17 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
         // postgres starts counting from 1
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_id);
-        values[2] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].stop_type);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].cargo);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].travelTime);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
-        values[8] = Float8GetDatum(result_tuples[call_cntr].waitTime);
-        values[9] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
-        values[10] = Float8GetDatum(result_tuples[call_cntr].departureTime);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_number);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
+        values[3] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].order_id);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].stop_type);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cargo);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].travelTime);
+        values[8] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
+        values[9] = Float8GetDatum(result_tuples[call_cntr].waitTime);
+        values[10] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
+        values[11] = Float8GetDatum(result_tuples[call_cntr].departureTime);
 
         /*********************************************************************/
 

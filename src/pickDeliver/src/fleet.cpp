@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include <string>
 #include <vector>
+#include <limits>
 
 #include "./orders.h"
 #include "./fleet.h"
@@ -94,9 +95,26 @@ Fleet::get_truck(const Order order) {
 
 bool
 Fleet::build_fleet(
-        const std::vector<Vehicle_t> &vehicles,
-        size_t &node_id
-        ) {
+        std::vector<Vehicle_t> vehicles,
+        size_t &node_id) {
+    /* creating a phoney truck with max capacity and max window */
+    vehicles.push_back({
+            -1,
+            std::numeric_limits<double>::infinity(),
+            vehicles[0].speed,
+            vehicles[0].start_x,
+            vehicles[0].start_y,
+            1,
+            0,
+            std::numeric_limits<double>::infinity(),
+            0,
+            vehicles[0].end_x,
+            vehicles[0].end_y,
+            0,
+            std::numeric_limits<double>::infinity(),
+            0});
+
+
     for (auto vehicle : vehicles) {
 
         if (vehicle.cant_v < 0) {

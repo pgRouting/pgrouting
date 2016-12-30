@@ -35,7 +35,7 @@ BEGIN
     WITH
     customer_tmp AS (' || $1 || '),
     results AS (
-        SELECT seq, order_id, vehicle_id, stop_type, departure_time FROM _pgr_pickDeliver(
+        SELECT seq, order_id, vehicle_number, stop_type, departure_time FROM _pgr_pickDeliver(
             $$ SELECT * FROM __vrp__orders ORDER BY id$$,
             $$ WITH
                 customer_tmp1 AS (' || $1 || ')
@@ -43,9 +43,9 @@ BEGIN
                     x AS start_x, y AS start_y,
                     opentime AS start_open, closetime AS start_close, '
                 || $2 || ' AS number,' || $3 || ' AS capacity FROM customer_tmp1 WHERE id = 0$$,
-         30) WHERE vehicle_id != -1
+         30) WHERE vehicle_number != -2
     )
-    SELECT seq::INTEGER, vehicle_id::INTEGER AS id1,
+    SELECT seq::INTEGER, vehicle_number::INTEGER AS id1,
         CASE
             WHEN stop_type = 2 THEN  dindex
             ELSE id   

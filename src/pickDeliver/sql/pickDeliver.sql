@@ -33,7 +33,8 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     max_cycles INTEGER DEFAULT 10, 
 
     OUT seq INTEGER,
-    OUT vehicle_id INTEGER,
+    OUT vehicle_number INTEGER,
+    OUT vehicle_id BIGINT,
     OUT vehicle_seq INTEGER,
     OUT order_id BIGINT,
     OUT stop_type INT,

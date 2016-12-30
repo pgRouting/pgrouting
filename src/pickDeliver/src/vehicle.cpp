@@ -136,10 +136,10 @@ Vehicle::get_postgres_result(
         int vid) const {
     std::vector<General_vehicle_orders_t> result;
     /* postgres numbering starts with 1 */
-    int i(1);
+    int vehicle_seq(1);
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data =
-                {vid, i,
+                {vid, m_kind, vehicle_seq,
                 p_stop.original_id(),
                 p_stop.type(),
                 p_stop.cargo(),
@@ -149,7 +149,7 @@ Vehicle::get_postgres_result(
                 p_stop.service_time(),
                 p_stop.departure_time()};
         result.push_back(data);
-        ++i;
+        ++vehicle_seq;
     }
     return result;
 }
@@ -452,7 +452,7 @@ Vehicle::getPosHighLimit(const Vehicle_node &nodeJ) const {
 
 Vehicle::Vehicle(
         ID p_id,
-        size_t p_kind,
+        int64_t p_kind,
         const Vehicle_node &starting_site,
         const Vehicle_node &ending_site,
         double p_m_capacity,

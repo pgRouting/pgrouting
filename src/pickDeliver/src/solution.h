@@ -81,6 +81,8 @@ class Solution : public Pgr_messages, public PD_problem {
          return *this;
      };
 
+     void sort_by_id();
+
      std::string cost_str() const;
      std::string tau(const std::string &title = "Tau") const;
      friend std::ostream& operator<<(
