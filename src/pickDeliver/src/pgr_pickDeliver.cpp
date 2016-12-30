@@ -54,12 +54,12 @@ Pgr_pickDeliver::optimize(const Solution init_solution) {
      * OPtimize the initial solution
      */
     Optimize solution(init_solution);
-    solution.decrease_truck();
 #if 0
+    solution.decrease_truck();
     solution.move_duration_based();
     solution.move_wait_time_based();
-#endif
     solution.inter_swap();
+#endif
     log << solution.best_solution.tau("optimized");
     return solution.best_solution;
 }
@@ -68,26 +68,26 @@ void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
-    int j = 1;
-    for (int i = j; i < j+1; ++ i) {
+    int j = 6;
+    for (int i = 1; i < j+1; ++ i) {
         initial_sols.push_back(Initial_solution(i, m_orders.size()));
         log << "solution " << i << "\n" << initial_sols.back().tau();
     }
-#if 1
-    for (auto sol : initial_sols) {
-        solutions.push_back(optimize(sol));
-    }
-#else
-    solutions = initial_sols;
-#endif
+    log << "one order per truck duration = " << initial_sols[0].duration();
+
     /*
      * Sorting solutions: the best is at the back
      */
-    pgassert(!solutions.empty());
-    std::sort(solutions.begin(), solutions.end(), []
+    pgassert(!initial_sols.empty());
+    std::sort(initial_sols.begin(), initial_sols.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
             });
+
+    solutions.push_back(Optimize(initial_sols.back()));
+
+    pgassert(solutions.size() == 1);
+    log << "best solution duration = " << solutions.back().duration();
 }
 
 

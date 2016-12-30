@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 #include "./optimize.h"
+#include "./move.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -39,39 +40,42 @@ class Pgr_pickDeliver;
 class Optimize : public Solution {
  public:
      Optimize(const Solution &solution);
+     Optimize(const Solution &solution, size_t times);
 
      /* @brief decrease_truck
       *
       * Optimization by decreasing trucks
       */
      void decrease_truck();
-     bool move_reduce_cost();
      void move_wait_time_based();
      void move_duration_based();
-     void inter_swap();
+     void inter_swap(size_t times);
      Solution best_solution;
 
  private:
      bool decrease_truck(size_t);
-     bool move_reduce_cost(size_t, size_t);
      void sort_for_move();
      void sort_by_duration();
      void sort_by_size();
      void delete_empty_truck();
 
      bool swap_worse(Vehicle_pickDeliver &from, Vehicle_pickDeliver &to);
-     bool inter_swap(bool reversed);
+     bool move_reduce_cost(Vehicle_pickDeliver &from, Vehicle_pickDeliver &to);
+     bool inter_swap();
 
      void move_order(
              Order order,
              Vehicle_pickDeliver &from_truck,
              Vehicle_pickDeliver &to_truck);
-     void swap_order(
+     bool swap_order();
+     bool swap_order(
              Order from_order,
              Vehicle_pickDeliver &from_truck,
              Order to_order,
              Vehicle_pickDeliver &to_truck);
      void save_if_best();
+ private:
+     Swap_bk p_swaps;
 };
 
 }  //  namespace vrp

@@ -1,4 +1,5 @@
 ADD_LIBRARY(pickDeliver OBJECT
+    move.cpp
     node.cpp
     tw_node.cpp
     vehicle_node.cpp
