@@ -97,7 +97,9 @@ bool
 Fleet::build_fleet(
         std::vector<Vehicle_t> vehicles,
         size_t &node_id) {
-    /* creating a phoney truck with max capacity and max window */
+    /*
+     *  creating a phoney truck with max capacity and max window
+     */
     vehicles.push_back({
             -1,
             std::numeric_limits<double>::infinity(),
