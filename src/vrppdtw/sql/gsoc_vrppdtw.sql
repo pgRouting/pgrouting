@@ -35,7 +35,7 @@ BEGIN
     WITH
     customer_tmp AS (' || $1 || '),
     results AS (
-        SELECT seq, order_id, vehicle_number, stop_type, departure_time FROM _pgr_pickDeliver(
+        SELECT seq, order_id, vehicle_number, stop_type, departure_time FROM _pgr_pickDeliverEuclidean(
             $$ SELECT * FROM __vrp__orders ORDER BY id$$,
             $$ WITH
                 customer_tmp1 AS (' || $1 || ')

@@ -13,7 +13,7 @@ FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
 
 
 \echo --q1
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT 0 AS id,
         40 AS start_x, 50 AS start_y,
@@ -21,7 +21,7 @@ SELECT * FROM _pgr_pickDeliver(
         200 AS capacity, 25 AS number',
     30);
 \echo --q2
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT   0 AS id,
         40 AS start_x, 50 AS start_y,

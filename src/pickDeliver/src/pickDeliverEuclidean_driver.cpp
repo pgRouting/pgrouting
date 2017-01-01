@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-#include "./pickDeliver_driver.h"
+#include "./pickDeliverEuclidean_driver.h"
 
 #include <string.h>
 #include <sstream>
@@ -49,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   max_cycles INTEGER,
  ***********************************************************/
 void
-do_pgr_pickDeliver(
+do_pgr_pickDeliverEuclidean(
         PickDeliveryOrders_t *customers_arr,
         size_t total_customers,
 

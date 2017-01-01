@@ -20,7 +20,7 @@ SELECT 0 AS id,
 INSERT into vehicles (id, start_x, start_y, start_open, start_close, capacity, number)
 VALUES (1, 40, 50, 0, 400, 200, 25);
 
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
     'SELECT * FROM vehicles',
     30);
@@ -31,7 +31,7 @@ orders_id AS (
 ), 
 results_id AS (
     SELECT DISTINCT order_id AS id
-    FROM _pgr_pickDeliver(
+    FROM _pgr_pickDeliverEuclidean(
         'SELECT * FROM orders ORDER BY id',
         'SELECT * FROM vehicles',
         30)
@@ -43,7 +43,7 @@ SELECT * FROM orders_id LEFT JOIN results_id USING(ID);
 WITH
 results AS (
     SELECT * 
-    FROM _pgr_pickDeliver(
+    FROM _pgr_pickDeliverEuclidean(
         'SELECT * FROM orders ORDER BY id',
         'SELECT * FROM vehicles',
         30)

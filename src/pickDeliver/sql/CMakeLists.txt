@@ -1,6 +1,6 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/pickDeliver.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/pickDeliverEuclidean.sql
 )
 
 # set in parent scope

@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
+CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
     orders_sql TEXT,
     vehicles_sql TEXT,
     max_cycles INTEGER DEFAULT 10, 
@@ -47,6 +47,6 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
 )
 
   RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliver'
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliverEuclidean'
     LANGUAGE c IMMUTABLE STRICT;
 
