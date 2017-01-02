@@ -75,7 +75,7 @@ BEGIN
     END LOOP;
     end_sql = ' FROM orders WHERE id = 11$$,
         $$SELECT * FROM vehicles ORDER BY id$$,
-        $$SELECT * FROM pgr_fooCostMatrix$$,
+        $$SELECT * FROM dist_matrix$$,
         30)';
     
     query := start_sql || parameter || '::SMALLINT ' || end_sql;

@@ -48,4 +48,20 @@ pgr_get_pd_orders(
         PickDeliveryOrders_t **pd_orders,
         size_t *total_pd_orders);
 
+/** @brief Reads the pick-Deliver orders
+ *
+ * @param[in] pd_orders_sql
+ * @param[in] default_pick_window_t
+ * @param[in] default_deliver_window_t
+ * @param[in] default_pick_service_t
+ * @param[in] default_deliver_service_t
+ * @param[out] pd_orders
+ * @param[out] total_pd_orders
+ */
+void
+pgr_get_pd_orders_with_id(
+        char *pd_orders_sql,
+        PickDeliveryOrders_t **pd_orders,
+        size_t *total_pd_orders);
+
 #endif  // SRC_COMMON_SRC_ORDERS_INPUT_H_
