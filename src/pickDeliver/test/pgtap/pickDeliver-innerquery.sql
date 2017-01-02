@@ -1,13 +1,14 @@
 \i setup.sql
 
 SELECT plan(52);
-SET client_min_messages TO ERROR;
+
+SELECT todo_start('Nothing is really implemented yet');
 
 /* A call looks like this
 SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
     $$SELECT * FROM orders ORDER BY id$$,
     $$SELECT * FROM vehicles ORDER BY id$$,
-    $$SELECT * FROM pgr_fooCostMatrix$$,
+    $$SELECT * FROM dist_matrix$$,
     30);
 */
 
@@ -94,7 +95,6 @@ BEGIN
 END;
 $BODY$ LANGUAGE plpgsql;
 
-SELECT todo_start('Nothing is really implemented yet');
 
 SELECT test_anyInteger('_pgr_pickdeliver',
     ARRAY['id', 'demand',

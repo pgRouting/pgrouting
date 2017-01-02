@@ -3,9 +3,11 @@
 
 SELECT plan(3);
 
+SELECT todo_start('Nothing is really implemented yet');
 
 SELECT has_function('_pgr_pickdeliver', ARRAY['text','text', 'text', 'integer']);
 SELECT function_returns('_pgr_pickdeliver', ARRAY['text','text', 'text', 'integer'],'setof record');
+
 
 PREPARE expected_types AS
 SELECT
@@ -44,7 +46,10 @@ pg_typeof(service_time)::TEXT AS t11,
 pg_typeof(departure_time)::TEXT AS t12
 FROM  pickdeliverResults LIMIT 1;
 
+
 SELECT set_eq('expected_types', 'real_types','_pgr_pickdeliver: SHOULD RETURN expected columns names & types');
+
+SELECT todo_end();
 
 SELECT finish();
 ROLLBACK;
