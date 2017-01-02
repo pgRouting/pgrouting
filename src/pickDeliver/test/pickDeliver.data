@@ -1,16 +1,21 @@
+
 DROP TABLE IF EXISTS customer CASCADE;
-CREATE TABLE customer (
-    id INTEGER NOT NULL PRIMARY KEY,
-    x INTEGER,
-    y INTEGER,
-    demand INTEGER,
-    openTime INTEGER,
-    closeTime INTEGER, 
-    serviceTime INTEGER, 
-    pindex INTEGER,
-    dindex INTEGER 
-    );
-copy customer (id, x, y, demand, openTime, closeTime, serviceTime, pindex, dindex) from stdin;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS vehicles CASCADE;
+CREATE table customer (
+                id BIGINT not null primary key,
+                x DOUBLE PRECISION,
+                y DOUBLE PRECISION,
+                demand INTEGER,
+                opentime INTEGER,
+                closetime INTEGER, 
+                servicetime INTEGER, 
+                pindex BIGINT,
+                dindex BIGINT 
+                );
+
+
+COPY customer (id, x, y, demand, opentime, closetime, servicetime, pindex, dindex) FROM stdin;
 0	40	50	0	0	1236	0	0	0
 1	45	68	-10	912	967	90	11	0
 2	45	70	-20	825	870	90	6	0
@@ -118,3 +123,32 @@ copy customer (id, x, y, demand, openTime, closeTime, serviceTime, pindex, dinde
 104	88	35	-20	109	170	90	78	0
 105	5	45	-10	665	716	90	36	0
 106	60	85	-30	561	622	90	97	0
+\.
+
+WITH
+pickups AS (
+    SELECT id, demand, x AS pick_x, y AS pick_y, opentime AS pick_open, closetime AS pick_close, servicetime AS pick_service
+    FROM  customer WHERE pindex = 0 AND id != 0
+),
+deliveries AS (
+    SELECT pindex AS id, x AS deliver_x, y AS deliver_y, opentime AS deliver_open, closetime AS deliver_close, servicetime AS deliver_service
+    FROM  customer WHERE dindex = 0 AND id != 0
+)
+SELECT *, pickups.id AS pick_node_id, deliveries.id AS delivery_node_id INTO orders
+FROM pickups JOIN deliveries USING(id)
+ORDER BY pickups.id;
+
+SELECT id,
+    x AS start_x, y AS start_y, id AS start_node_id,
+    opentime AS start_open, closetime AS start_close, 
+    25  AS number, 200 AS capacity
+INTO vehicles
+FROM customer WHERE id = 0;
+
+WITH
+A AS (SELECT id AS start_vid, x, y FROM customer),
+B AS (SELECT id AS end_vid, x, y FROM customer)
+SELECT start_vid, end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
+INTO dist_matrix
+FROM A, B;
+

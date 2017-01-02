@@ -1,7 +1,7 @@
 
 DROP TABLE IF EXISTS customer CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
-DROP TABLE IF EXISTS vehicles1 CASCADE;
+DROP TABLE IF EXISTS vehicles CASCADE;
 CREATE table customer (
                 id BIGINT not null primary key,
                 x DOUBLE PRECISION,
@@ -134,13 +134,20 @@ deliveries AS (
     SELECT pindex AS id, x AS deliver_x, y AS deliver_y, opentime AS deliver_open, closetime AS deliver_close, servicetime AS deliver_service
     FROM  customer WHERE dindex = 0 AND id != 0
 )
-SELECT * INTO orders
+SELECT *, pickups.id AS pick_node_id, deliveries.id AS delivery_node_id INTO orders
 FROM pickups JOIN deliveries USING(id)
 ORDER BY pickups.id;
 
 SELECT id,
-    x AS start_x, y AS start_y,
+    x AS start_x, y AS start_y, id AS start_node_id,
     opentime AS start_open, closetime AS start_close, 
     25  AS number, 200 AS capacity
-INTO vehicles1
+INTO vehicles
 FROM customer WHERE id = 0;
+
+WITH
+A AS (SELECT id AS start_vid, x, y FROM customer),
+B AS (SELECT id AS end_vid, x, y FROM customer)
+SELECT start_vid, end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) AS agg_cost
+INTO dist_matrix
+FROM A, B;

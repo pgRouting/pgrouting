@@ -4,8 +4,8 @@
 SELECT plan(3);
 
 
-SELECT has_function('_pgr_pickdelivereuclidean', ARRAY['text','text', 'integer']);
-SELECT function_returns('_pgr_pickdelivereuclidean', ARRAY['text','text', 'integer'],'setof record');
+SELECT has_function('_pgr_pickdeliver', ARRAY['text','text', 'text', 'integer']);
+SELECT function_returns('_pgr_pickdeliver', ARRAY['text','text', 'text', 'integer'],'setof record');
 
 PREPARE expected_types AS
 SELECT
@@ -22,9 +22,10 @@ SELECT
 'double precision'::text AS t11,
 'double precision'::text AS t12;
 
-SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
-    $$SELECT * FROM orders WHERE id = 11 $$,
+SELECT * INTO pickDeliverResults FROM _pgr_pickdeliver(
+    $$SELECT * FROM orders WHERE id in (11) $$,
     $$SELECT * FROM vehicles $$,
+    $$SELECT * FROM dist_matrix $$,
     30);
 
 
@@ -43,7 +44,7 @@ pg_typeof(service_time)::TEXT AS t11,
 pg_typeof(departure_time)::TEXT AS t12
 FROM  pickdeliverResults LIMIT 1;
 
-SELECT set_eq('expected_types', 'real_types','_pgr_pickdeliverEuclidean: SHOULD RETURN expected columns names & types');
+SELECT set_eq('expected_types', 'real_types','_pgr_pickdeliver: SHOULD RETURN expected columns names & types');
 
 SELECT finish();
 ROLLBACK;
