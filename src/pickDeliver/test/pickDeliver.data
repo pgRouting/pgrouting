@@ -138,6 +138,7 @@ SELECT *, pickups.id AS pick_node_id, deliveries.id AS deliver_node_id INTO orde
 FROM pickups JOIN deliveries USING(id)
 ORDER BY pickups.id;
 
+
 SELECT id,
     x AS start_x, y AS start_y, id AS start_node_id,
     opentime AS start_open, closetime AS start_close, 

@@ -174,7 +174,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         if (!m_trucks.is_order_ok(o)) {
             error << "The order "
                 << o.pickup().original_id()
-                << " is not feasible on any truck";
+                << " is not feasible on any truck"
+                << "\n" << o;
             err = error.str();
             return;
         }
