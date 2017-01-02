@@ -74,7 +74,7 @@ BEGIN
         start_sql = start_sql || p || ', ';
     END LOOP;
     end_sql = ' FROM orders WHERE id = 11$$,
-        $$SELECT * FROM vehicles1 ORDER BY id$$,
+        $$SELECT * FROM vehicles ORDER BY id$$,
         $$SELECT * FROM pgr_fooCostMatrix$$,
         30)';
     

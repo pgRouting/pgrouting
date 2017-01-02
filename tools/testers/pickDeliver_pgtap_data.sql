@@ -134,7 +134,7 @@ deliveries AS (
     SELECT pindex AS id, x AS deliver_x, y AS deliver_y, opentime AS deliver_open, closetime AS deliver_close, servicetime AS deliver_service
     FROM  customer WHERE dindex = 0 AND id != 0
 )
-SELECT *, pickups.id AS pick_node_id, deliveries.id AS delivery_node_id INTO orders
+SELECT *, pickups.id AS pick_node_id, deliveries.id AS deliver_node_id INTO orders
 FROM pickups JOIN deliveries USING(id)
 ORDER BY pickups.id;
 
