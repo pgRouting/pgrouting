@@ -1,6 +1,6 @@
 \i setup.sql
 
-SELECT plan(92);
+SELECT plan(122);
 
 
 /* A call looks like this
@@ -317,6 +317,9 @@ SELECT test_anynumerical_orders('_pgr_pickdeliver',
     'speed' is optional defaults to 1
     'start_service' is optional defaults to 0
 */
+/*
+without optional: number
+*/
 SELECT test_anyInteger_vehicles('_pgr_pickdeliver',
     ARRAY['id', 'capacity', 
     'start_node_id', 'start_open', 'start_close'],
@@ -339,6 +342,38 @@ SELECT test_anyNumerical_vehicles('_pgr_pickdeliver',
     'start_close');
 
 
+/*
+with optional: number
+*/
+SELECT test_anyInteger_vehicles('_pgr_pickdeliver',
+    ARRAY['id', 'capacity', 'number',
+    'start_node_id', 'start_open', 'start_close'],
+    'id');
+SELECT test_anyNumerical_vehicles('_pgr_pickdeliver',
+    ARRAY['id', 'capacity', 'number',
+    'start_node_id', 'start_open', 'start_close'],
+    'capacity');
+SELECT test_anyInteger_vehicles('_pgr_pickdeliver',
+    ARRAY['id', 'capacity', 'number',
+    'start_node_id', 'start_open', 'start_close'],
+    'number');
+SELECT test_anyInteger_vehicles('_pgr_pickdeliver',
+    ARRAY['id', 'capacity', 'number',
+    'start_node_id', 'start_open', 'start_close'],
+    'start_node_id');
+SELECT test_anyNumerical_vehicles('_pgr_pickdeliver',
+    ARRAY['id', 'capacity', 'number',
+    'start_node_id', 'start_open', 'start_close'],
+    'start_open');
+SELECT test_anyNumerical_vehicles('_pgr_pickdeliver',
+    ARRAY['id', 'capacity', 'number',
+    'start_node_id', 'start_open', 'start_close'],
+    'start_close');
+
+
+/*
+Testing the matrix
+*/
 SELECT test_anyInteger_matrix('_pgr_pickdeliver',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'start_vid');
@@ -348,6 +383,7 @@ SELECT test_anyInteger_matrix('_pgr_pickdeliver',
 SELECT test_anyNumerical_matrix('_pgr_pickdeliver',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'agg_cost');
+
 
 SELECT finish();
 ROLLBACK;
