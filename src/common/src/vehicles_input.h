@@ -31,14 +31,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 /** @brief Reads the vehicles orders
  *
  * @param[in] vehicles_sql
- * @param[in] default_capacity
- * @param[in] default_open_t
- * @param[in] default_close_t
  * @param[out] vehicles
  * @param[out] total_vehicles
  */
 void
 pgr_get_vehicles(
+        char *vehicles_sql,
+        Vehicle_t **vehicles,
+        size_t *total_vehicles);
+
+/** @brief Reads the vehicles orders
+ *
+ * @param[in] vehicles_sql
+ * @param[out] vehicles
+ * @param[out] total_vehicles
+ */
+void
+pgr_get_vehicles_with_id(
         char *vehicles_sql,
         Vehicle_t **vehicles,
         size_t *total_vehicles);

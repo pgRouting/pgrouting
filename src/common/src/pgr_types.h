@@ -257,16 +257,21 @@ typedef struct {
     int64_t id;
     double capacity;
     double speed;
+
     double start_x;
     double start_y;
     int64_t start_node_id;
+
     int64_t cant_v;
+
     double start_open_t;
     double start_close_t;
     double start_service_t;
+
     double end_x;
     double end_y;
     int64_t end_node_id;
+
     double end_open_t;
     double end_close_t;
     double end_service_t;
