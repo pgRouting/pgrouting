@@ -104,7 +104,8 @@ begin
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
     IF (has_reverse != has_rcost) THEN
-        IF (has_reverse) THEN
+        IF (NOT has_rcost) THEN
+            -- user does not want to use reverse cost column
             edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
         ELSE
             raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
@@ -113,7 +114,7 @@ begin
 
     IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
         -- no restrictions then its a _pgr_withPointsVia
-        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+        RETURN query SELECT (row_number() over())::INTEGER AS seq, path_id::INTEGER, node::INTEGER AS id1, edge::INTEGER AS id2, cost
         FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed)
         RETURN;
     END IF;
@@ -130,7 +131,7 @@ begin
                                   eids[i], pcts[i],
                                   eids[i+1], pcts[i+1],
                                   directed,
-                                  has_reverse,
+                                  has_rcost,
                                   turn_restrict_sql) as a loop
             -- combine intermediate via costs when cost is split across
             -- two parts of a segment because it stops it and
