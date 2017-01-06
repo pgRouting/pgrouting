@@ -21,20 +21,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./../../common/src/postgres_connection.h"
-#if 0
 #include "postgres.h"
 #include "executor/spi.h"
 #include "funcapi.h"
+#include "catalog/pg_type.h"
 #if PGSQL_VERSION > 92
 #include "access/htup_details.h"
 #endif
 
 #include "fmgr.h"
-#endif
 #include "trsp.h"
 
-#include "catalog/pg_type.h"
 #include "./../../common/src/debug_macro.h"
 
 PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
@@ -108,7 +105,6 @@ static int
 fetch_restrict_columns(SPITupleTable *tuptable,
                        restrict_columns_t *restrict_columns)
 {
-    if (tuptable) {}
   restrict_columns->target_id = SPI_fnumber(SPI_tuptable->tupdesc, "target_id");
   restrict_columns->via_path = SPI_fnumber(SPI_tuptable->tupdesc, "via_path");
   restrict_columns->to_cost =  SPI_fnumber(SPI_tuptable->tupdesc, "to_cost");
@@ -138,7 +134,6 @@ static int
 fetch_edge_columns(SPITupleTable *tuptable, edge_columns_t *edge_columns, 
                    bool has_reverse_cost)
 {
-    if (tuptable) {}
   edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
