@@ -32,6 +32,10 @@ Changes for 2.4.0
 
     * pgr_withPointsKSP: fixed ordering
 
+  * Calls to original trsp code without restrictions is no logner allowed
+
+    * Undefined behaviour in the result when a point is actually vertex (the fraction is 0 or 1)
+
 
 Changes for 2.3.1
 -------------------------------------------------------------------------------
