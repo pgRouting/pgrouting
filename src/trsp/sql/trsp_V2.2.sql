@@ -20,12 +20,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
------------------------------------------------------------------------
--- Core function for time_dependent_shortest_path computation
--- See README for description
------------------------------------------------------------------------
---TODO - Do we need to add another sql text for the query on time-dependent-weights table?
---     - For now just checking with static data, so the query is similar to shortest_paths.
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,
@@ -37,6 +31,7 @@ CREATE OR REPLACE FUNCTION _pgr_trsp(
 RETURNS SETOF pgr_costResult
 AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'turn_restrict_shortest_path_vertex'
 LANGUAGE 'c' IMMUTABLE;
+
 
 CREATE OR REPLACE FUNCTION _pgr_trsp(
     sql text,
@@ -52,16 +47,18 @@ AS '$libdir/${PGROUTING_LIBRARY_NAME}', 'turn_restrict_shortest_path_edge'
 LANGUAGE 'c' IMMUTABLE;
 
 
+-------------
+-- WRAPPERS
+-------------
 
 
-/*  pgr_trsp    VERTEX
+/*  pgr_trsp    (VERTEX)
 
  - if size of restrictions_sql  is Zero or no restrictions_sql are given
      then call to pgr_dijkstra is made
 
- - because it reads the data wrong, when there is a reverse_cost column:
-   - put all data costs in one cost column and
-   - a call is made to trsp without only the positive values
+ - when contradiction (has rcost but does not want it):
+   - a call is made to trsp only with cost column
 */
 CREATE OR REPLACE FUNCTION pgr_trsp(
     edges_sql TEXT,
@@ -82,7 +79,7 @@ BEGIN
     new_sql := edges_sql;
     IF (has_reverse != has_rcost) THEN  -- user contradiction
         IF (has_reverse) THEN  -- it has reverse_cost but user don't want it.
-            -- to be on the safe side because it reads the data wrong, sending only postitive values
+            -- to be on the safe side because it reads the data wrong, sending only the cost column
             new_sql :=
             'WITH old_sql AS (' || edges_sql || ')' ||
             '   SELECT id, source, target, cost FROM old_sql';
@@ -94,8 +91,8 @@ BEGIN
 
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
-        RETURN query SELECT a.seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
-        FROM pgr_dijkstra(new_sql, start_vid, end_vid, directed) a;
+        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+        FROM pgr_dijkstra(new_sql, start_vid, end_vid, directed);
         RETURN;
     END IF;
 
@@ -108,58 +105,16 @@ COST 100
 ROWS 1000;
 
 
-/* pgr_trspVia Vertices
+/*  pgr_trsp    (EDGES in the documentation)
+
+ From a point on an edge to a point on an edge
+
  - if size of restrictions_sql  is Zero or no restrictions_sql are given
-     then call to pgr_dijkstra is made
+     then call to pgr_withPoints is made
 
- - because it reads the data wrong, when there is a reverse_cost column:
-   - put all data costs in one cost column and
-   - a call is made to trspViaVertices without only the positive values
+ - when contradiction (has rcost but does not want it):
+   - a call is made to trsp only with cost column
 */
-CREATE OR REPLACE FUNCTION pgr_trspViaVertices(
-    edges_sql TEXT,
-    via_vids ANYARRAY,
-    directed BOOLEAN,
-    has_rcost BOOLEAN,
-    restrictions_sql TEXT DEFAULT NULL)
-RETURNS SETOF pgr_costResult3 AS
-$BODY$
-DECLARE
-has_reverse BOOLEAN;
-new_sql TEXT;
-BEGIN
-
-    has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
-
-    new_sql := edges_sql;
-    IF (has_reverse != has_rcost) THEN  -- user contradiction
-        IF (has_reverse) THEN  -- it has reverse_cost but user don't want it.
-            new_sql :=
-               'WITH old_sql AS (' || edges_sql || ')' ||
-                '   SELECT id, source, target, cost FROM old_sql';
-        ELSE -- it does not have reverse_cost but user wants it
-            RAISE EXCEPTION 'Error, reverse_cost is used, but query did''t return ''reverse_cost'' column'
-            USING ERRCODE := 'XX000';
-        END IF;
-    END IF;
-
-    IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
-        RETURN query SELECT (row_number() over())::INTEGER, path_id:: INTEGER, node::INTEGER,
-            (CASE WHEN edge = -2 THEN -1 ELSE edge END)::INTEGER, cost
-            FROM pgr_dijkstraVia(new_sql, via_vids, directed, strict:=true) WHERE edge != -1;
-        RETURN;
-    END IF;
-
-
-    -- make the call without contradiction from part of the user
-    RETURN query SELECT * FROM _pgr_trspViaVertices(new_sql, via_vids::INTEGER[], directed, has_rcost, restrictions_sql);
-END
-$BODY$
-LANGUAGE plpgsql VOLATILE
-COST 100
-ROWS 1000;
-
-
 CREATE OR REPLACE FUNCTION pgr_trsp(
     sql text,
     source_eid integer,
@@ -182,7 +137,7 @@ BEGIN
     IF (has_reverse != has_reverse_cost) THEN  -- user contradiction
         IF (has_reverse) THEN
             -- it has reverse_cost but user don't want it.
-            -- to be on the safe side because it reads the data wrong, sending only postitive values
+            -- to be on the safe side because it reads the data wrong, sending only cost column
             new_sql :=
             'WITH old_sql AS (' || sql || ')' ||
             '   SELECT id, source, target, cost FROM old_sql';
@@ -192,15 +147,15 @@ BEGIN
         END IF;
     END IF;
 
-    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) AND (source_pos NOT IN (0,1) AND target_pos NOT IN (0,1)) THEN
+    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
         -- no restrictions then its a with points
-        RETURN query SELECT a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
         FROM pgr_withpoints(new_sql,
             '(SELECT 1 as pid, ' || source_eid || 'as edge_id, ' || source_pos || '::float8 as fraction)'
             || ' UNION '
             || '(SELECT 2, ' || target_eid || ', ' || target_pos || ')' ::TEXT,
-            -1, -2, directed) a;
-        -- WHERE node != -2;
+            -1, -2, directed)
+        WHERE node != -2;
         RETURN;
     END IF;
 

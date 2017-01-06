@@ -47,6 +47,12 @@ CREATE OR REPLACE FUNCTION pgr_trspViaEdges(
     RETURNS SETOF pgr_costresult3 AS
 $BODY$
 DECLARE
+    i INTEGER;
+    rr pgr_costresult3;
+    lrr pgr_costresult3;
+    first BOOLEAN := true;
+    seq INTEGER := 0;
+    seq2 INTEGER :=0;
     has_reverse BOOLEAN;
     edges_sql TEXT;
 
@@ -63,7 +69,7 @@ BEGIN
 
     IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
         -- no restrictions then its a _pgr_withPointsVia
-        RETURN query SELECT ((row_number() over())-1)::INTEGER, path_id, node::INTEGER, edge::INTEGER, cost
+        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
         FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed)
         RETURN;
     END IF;
