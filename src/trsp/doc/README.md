@@ -1,3 +1,5 @@
+# Notes on pgr_trsp for version 2.3.2
+Table of contents
 * [Introduction](#introduction)
   * [The restriction](#the-restriction)
 * [The Vertices Signature Version](#the-vertices-signature-version)

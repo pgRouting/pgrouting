@@ -1,3 +1,7 @@
+\echo # Notes on pgr_trsp for version 2.3.2
+
+\echo Table of contents
+
 \echo * [Introduction](#introduction)
 \echo '  * [The restriction](#the-restriction)'
 \echo * [The Vertices Signature Version](#the-vertices-signature-version)
