@@ -1022,7 +1022,6 @@ when *_pgr_withPointsVia* is used
 * the renumbering still takes place
 
 ```
-when *_pgr_withPointsVia* is used
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[
@@ -1036,9 +1035,20 @@ SELECT * FROM pgr_trspViaEdges(
     false, 
     true
 );
-ERROR:  syntax error at or near "when"
-LINE 1: when *_pgr_withPointsVia* is used
-        ^
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.4
+   2 |   1 |   2 |   4 |  0.3
+   3 |   1 |  -3 |   4 |  0.3
+   4 |   1 |   5 |  10 |    1
+   5 |   1 |  10 |  12 |  0.6
+   6 |   1 |  -2 |  -1 |    0
+   7 |   2 |  -2 |  12 |  0.6
+   8 |   2 |  10 |  10 |    1
+   9 |   2 |   5 |   4 |  0.3
+  10 |   2 |  -3 |  -2 |    0
+(10 rows)
+
 ```
 Only routing points
 when originalcode is used (because there is a restriction)
