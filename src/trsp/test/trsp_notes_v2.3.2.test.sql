@@ -59,11 +59,16 @@
 ------------------
 \echo ## (Vertices) No path representation differences
 \echo Original code of pgr_trsp throws Error to represent no path found
+\echo Sometimes it crasses the server
 \echo '\`\`\`'
-SELECT * FROM _pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15, true, true
-);  
+\echo SELECT * FROM _pgr_trsp(
+\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+\echo     1, 15, true, true
+\echo );  
+\echo server closed the connection unexpectedly
+\echo This probably means the server terminated abnormally
+\echo before or while processing the request.
+\echo The connection to the server was lost. Attempting reset: Failed.
 \echo '\`\`\`'
 
 \echo dijkstra returns EMPTY SET to represent no path found
@@ -87,12 +92,17 @@ SELECT * FROM pgr_TRSP(
 
 \echo pgr_trsp use the original code  when there are restrictions
 \echo therefore throws Error to represent no path found
+\echo Can get a server crash
 \echo '\`\`\`'
-SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15, true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-);  
+\echo SELECT * FROM pgr_trsp(
+\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+\echo     1, 15, true, true,
+\echo     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+\echo );  
+\echo server closed the connection unexpectedly
+\echo This probably means the server terminated abnormally
+\echo before or while processing the request.
+\echo The connection to the server was lost. Attempting reset: Failed.
 \echo '\`\`\`'
 
 
@@ -113,9 +123,7 @@ SELECT * FROM pgr_dijkstra(
 \echo '\`\`\`'
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  
-    true, 
-    true
+    1, 1,  true, true
 );
 \echo '\`\`\`'
 
@@ -127,8 +135,7 @@ SELECT * FROM pgr_TRSP(
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1,  
-    true, 
-    true
+    true, true
 );
 \echo '\`\`\`'
 
@@ -218,14 +225,19 @@ SELECT * FROM _pgr_trsp(
 -----------------------------------------------------------------------------------------------
 \echo # The Edges signature version
 
-------------------
+------------------HERE
 \echo ## (Edges) No path representation differences
 \echo Original code of pgr_trsp throws Error to represent no path found
+\echo Can get a server crash
 \echo '\`\`\`'
-SELECT * FROM _pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 0.5, 17, 0.5, true, true
-);  
+\echo SELECT * FROM _pgr_trsp(
+\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+\echo     1, 0.5, 17, 0.5, true, true
+\echo );  
+\echo server closed the connection unexpectedly
+\echo This probably means the server terminated abnormally
+\echo before or while processing the request.
+\echo The connection to the server was lost. Attempting reset: Failed.
 \echo '\`\`\`'
 \echo pgr_withPoints returns EMPTY SET to represent no path found
 \echo '\`\`\`'
@@ -522,24 +534,33 @@ SELECT * FROM pgr_trsp(
 
 \echo pgr_trspViaVertices throws error when a path on the route was not found
 \echo this example no path is found (vertex 15 is disconnected) from the big graph
+\echo can crash the server
 \echo '\`\`\`'
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2],
-    false, 
-    true
-);
+\echo SELECT * FROM _pgr_trspViaVertices(
+\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+\echo     ARRAY[1, 15, 2],
+\echo     false, true
+\echo );
+\echo server closed the connection unexpectedly
+\echo This probably means the server terminated abnormally
+\echo before or while processing the request.
+\echo The connection to the server was lost. Attempting reset: Failed.
 \echo '\`\`\`'
 
 
 \echo In this example there exists a path from 2 to 1 but only complete routes are processed
+\echo can crash the server
 \echo '\`\`\`'
-SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2, 1],
-    false, 
-    true
-);
+\echo SELECT * FROM _pgr_trspViaVertices(
+\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+\echo     ARRAY[1, 15, 2, 1],
+\echo     false, 
+\echo     true
+\echo );
+\echo server closed the connection unexpectedly
+\echo This probably means the server terminated abnormally
+\echo before or while processing the request.
+\echo The connection to the server was lost. Attempting reset: Failed.
 \echo '\`\`\`'
 
 \echo **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
@@ -717,14 +738,18 @@ SELECT * FROM _pgr_withPointsVia(
 \echo * There is a vertex in disguise (fraction 0 or 1)
 \echo * *pgr_trspViaEdges* original code is used
 \echo * throws error to represent no route was not found
+\echo * sometimes crashes the server
 \echo
 \echo '\`\`\`'
-SELECT * FROM pgr_trspViaEdges(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
-    false, 
-    true
-);
+\echo SELECT * FROM pgr_trspViaEdges(
+\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+\echo     ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
+\echo     false, true
+\echo );
+\echo server closed the connection unexpectedly
+\echo This probably means the server terminated abnormally
+\echo before or while processing the request.
+\echo The connection to the server was lost. Attempting reset: Failed.
 \echo '\`\`\`'
 
 
@@ -734,12 +759,16 @@ SELECT * FROM pgr_trspViaEdges(
 \echo * throws error to represent no route was not found
 \echo
 \echo '\`\`\`'
-SELECT * FROM pgr_trspViaEdges(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 17, 1], ARRAY[0.5,0.5,0.5],
-    false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-);
+\echo SELECT * FROM pgr_trspViaEdges(
+\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+\echo     ARRAY[1, 17, 1], ARRAY[0.5,0.5,0.5],
+\echo     false, true,
+\echo     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+\echo );
+\echo server closed the connection unexpectedly
+\echo This probably means the server terminated abnormally
+\echo before or while processing the request.
+\echo The connection to the server was lost. Attempting reset: Failed.
 \echo '\`\`\`'
 
 \echo This example no path is found (edge 17 is disconnected) from the big graph.
