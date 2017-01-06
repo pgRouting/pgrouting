@@ -47,12 +47,16 @@ therefore the shortest path expected are as if there was no restriction involved
 # The Vertices signature version
 ## (Vertices) No path representation differences
 Original code of pgr_trsp throws Error to represent no path found
+Sometimes it crasses the server
 ```
 SELECT * FROM _pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15, true, true
+$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+1, 15, true, true
 );
-ERROR:  Error computing path: Path Not Found
+server closed the connection unexpectedly
+This probably means the server terminated abnormally
+before or while processing the request.
+The connection to the server was lost. Attempting reset: Failed.
 ```
 dijkstra returns EMPTY SET to represent no path found
 ```
@@ -79,14 +83,17 @@ SELECT * FROM pgr_TRSP(
 ```
 pgr_trsp use the original code when there are restrictions
 therefore throws Error to represent no path found
+Can get a server crash
 ```
 SELECT * FROM pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 15, true, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+1, 15, true, true,
+$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, 32, 33::TEXT AS via_path$$
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
+server closed the connection unexpectedly
+This probably means the server terminated abnormally
+before or while processing the request.
+The connection to the server was lost. Attempting reset: Failed.
 ```
 ## routing from/to same location
 using dijkstra to verify (1 to 1)
@@ -105,9 +112,7 @@ therefore is expected to return EMPTY SET to represent no path found
 ```
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  
-    true, 
-    true
+    1, 1,  true, true
 );
  seq | id1 | id2 | cost 
 -----+-----+-----+------
@@ -121,8 +126,7 @@ but "finds" a path when there should be no path.
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1,  
-    true, 
-    true
+    true, true
 );
  seq | id1 | id2 | cost 
 -----+-----+-----+------
@@ -281,12 +285,16 @@ SELECT * FROM _pgr_trsp(
 # The Edges signature version
 ## (Edges) No path representation differences
 Original code of pgr_trsp throws Error to represent no path found
+Can get a server crash
 ```
 SELECT * FROM _pgr_trsp(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-    1, 0.5, 17, 0.5, true, true
+$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+1, 0.5, 17, 0.5, true, true
 );
-ERROR:  Error computing path: Path Not Found
+server closed the connection unexpectedly
+This probably means the server terminated abnormally
+before or while processing the request.
+The connection to the server was lost. Attempting reset: Failed.
 ```
 pgr_withPoints returns EMPTY SET to represent no path found
 ```
@@ -697,26 +705,31 @@ SELECT * FROM pgr_trsp(
 ## pgr_trspViaVertices No path representation differences
 pgr_trspViaVertices throws error when a path on the route was not found
 this example no path is found (vertex 15 is disconnected) from the big graph
+can crash the server
 ```
 SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2],
-    false, 
-    true
+$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+ARRAY[1, 15, 2],
+false, true
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
+server closed the connection unexpectedly
+This probably means the server terminated abnormally
+before or while processing the request.
+The connection to the server was lost. Attempting reset: Failed.
 ```
 In this example there exists a path from 2 to 1 but only complete routes are processed
+can crash the server
 ```
 SELECT * FROM _pgr_trspViaVertices(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 15, 2, 1],
-    false, 
-    true
+$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+ARRAY[1, 15, 2, 1],
+false,
+true
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
+server closed the connection unexpectedly
+This probably means the server terminated abnormally
+before or while processing the request.
+The connection to the server was lost. Attempting reset: Failed.
 ```
 **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
 this case none is found
@@ -972,17 +985,18 @@ This example no path is found (edge 17 is disconnected) from the big graph.
 * There is a vertex in disguise (fraction 0 or 1)
 * *pgr_trspViaEdges* original code is used
 * throws error to represent no route was not found
+* sometimes crashes the server
 
 ```
 SELECT * FROM pgr_trspViaEdges(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
-    false, 
-    true
+$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
+false, true
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 35 at RETURN QUERY
-PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 55 at FOR over SELECT rows
+server closed the connection unexpectedly
+This probably means the server terminated abnormally
+before or while processing the request.
+The connection to the server was lost. Attempting reset: Failed.
 ```
 This example no path is found (edge 17 is disconnected) from the big graph.
 * Has a restriction
@@ -991,14 +1005,15 @@ This example no path is found (edge 17 is disconnected) from the big graph.
 
 ```
 SELECT * FROM pgr_trspViaEdges(
-    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    ARRAY[1, 17, 1], ARRAY[0.5,0.5,0.5],
-    false, true,
-    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+ARRAY[1, 17, 1], ARRAY[0.5,0.5,0.5],
+false, true,
+$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, 32, 33::TEXT AS via_path$$
 );
-ERROR:  Error computing path: Path Not Found
-CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text) line 35 at RETURN QUERY
-PL/pgSQL function pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text) line 55 at FOR over SELECT rows
+server closed the connection unexpectedly
+This probably means the server terminated abnormally
+before or while processing the request.
+The connection to the server was lost. Attempting reset: Failed.
 ```
 This example no path is found (edge 17 is disconnected) from the big graph.
 * *_pgr_withPointsVia* is used
