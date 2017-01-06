@@ -98,7 +98,9 @@ declare
     seq integer := 0;
     seq2 integer :=0;
     has_reverse BOOLEAN;
+    point_is_vertex BOOLEAN := false;
     edges_sql TEXT;
+    f float;
 
 begin
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
@@ -112,10 +114,16 @@ begin
         END IF;
     END IF;
 
-    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
+    FOREACH f IN ARRAY pcts LOOP
+        IF f in (0,1) THEN
+           point_is_vertex := true;
+        END IF;
+    END LOOP;
+
+    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) AND NOT point_is_vertex THEN
         -- no restrictions then its a _pgr_withPointsVia
-        RETURN query SELECT (row_number() over())::INTEGER AS seq, path_id::INTEGER, node::INTEGER AS id1, edge::INTEGER AS id2, cost
-        FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed)
+        RETURN query SELECT a.seq::INTEGER, path_id::INTEGER AS id1, node::INTEGER AS id2, edge::INTEGER AS id3, cost
+        FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed) a;
         RETURN;
     END IF;
 
