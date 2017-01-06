@@ -1,3 +1,4 @@
+ROLLBACK;
 \echo # Notes on pgr_trsp for version 2.3.2
 
 \echo Table of contents
@@ -61,10 +62,10 @@
 \echo Original code of pgr_trsp throws Error to represent no path found
 \echo Sometimes it crasses the server
 \echo '\`\`\`'
-\echo SELECT * FROM _pgr_trsp(
-\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-\echo     1, 15, true, true
-\echo );  
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 15, true, true
+);  
 \echo server closed the connection unexpectedly
 \echo This probably means the server terminated abnormally
 \echo before or while processing the request.
@@ -844,3 +845,4 @@ SELECT * FROM pgr_trspViaEdges(
     true
 );
 \echo '\`\`\`'
+BEGIN;
