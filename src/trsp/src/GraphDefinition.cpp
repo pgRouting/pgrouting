@@ -1,12 +1,30 @@
+/*PGR-GNU*****************************************************************
 
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
 
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+    
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+    
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
 
 #include "GraphDefinition.h"
 #include <functional>
+#include "./../../common/src/pgr_alloc.hpp"
+
 
 // -------------------------------------------------------------------------
 GraphDefinition::GraphDefinition(void)
@@ -267,7 +285,7 @@ int GraphDefinition::multi_dijkstra(
     }
     }
 
-    *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
+    *path = pgr_alloc(m_vecPath.size() + 1, *path);
     *path_count = m_vecPath.size();
 
     for(size_t i = 0; i < *path_count; i++)
@@ -701,7 +719,7 @@ int GraphDefinition:: my_dijkstra2(edge_t *edges, unsigned int edge_count, long 
             }
         }
         
-        *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
+        *path = pgr_alloc(m_vecPath.size() + 1, *path);
         *path_count = m_vecPath.size();
 
         for(size_t i = 0; i < *path_count; i++)
@@ -734,7 +752,7 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_t **path, 
     {
         if(start_edge_info->m_dCost >= 0.0 && start_edge_info->m_dCost * (m_dEndPart - m_dStartpart) <= total_cost)
         {
-            *path = (path_element_t *) malloc(sizeof(path_element_t) * (1));
+            *path = pgr_alloc(1, *path);
             *path_count = 1;
             (*path)[0].vertex_id = -1;
             (*path)[0].edge_id = m_lStartEdgeId;
@@ -747,7 +765,7 @@ bool GraphDefinition::get_single_cost(double total_cost, path_element_t **path, 
     {
         if(start_edge_info->m_dReverseCost >= 0.0 && start_edge_info->m_dReverseCost * (m_dStartpart - m_dEndPart) <= total_cost)
         {
-            *path = (path_element_t *) malloc(sizeof(path_element_t) * (1));
+            *path = pgr_alloc(1, *path);
             *path_count = 1;
             (*path)[0].vertex_id = -1;
             (*path)[0].edge_id = m_lStartEdgeId;
