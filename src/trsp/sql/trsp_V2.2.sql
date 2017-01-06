@@ -192,7 +192,7 @@ BEGIN
         END IF;
     END IF;
 
-    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) AND (source_pos NOT IN (0,1) AND target_pos NOT IN (0,1)) THEN
+    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
         -- no restrictions then its a with points
         RETURN query SELECT a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
         FROM pgr_withpoints(new_sql,

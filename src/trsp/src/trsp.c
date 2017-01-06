@@ -531,6 +531,10 @@ static int compute_trsp(
 
   }
 
+  if (total_restrict_tuples == 0) {
+      ereport(ERROR, (errcode(ERRCODE_E_R_E_CONTAINING_SQL_NOT_PERMITTED), 
+        errmsg("Function called without restrictions")));
+  }
 #ifdef DEBUG_OFF
     int t;
     for (t=0; t<total_restrict_tuples; t++) {

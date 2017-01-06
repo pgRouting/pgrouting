@@ -1,5 +1,5 @@
 ROLLBACK;
-\echo # Notes on pgr_trsp for version 2.3.2
+\echo # Notes on pgr_trsp for version 2.4.0
 
 \echo Table of contents
 
@@ -59,17 +59,17 @@ ROLLBACK;
 \echo # The Vertices signature version
 ------------------
 \echo ## (Vertices) No path representation differences
-\echo Original code of pgr_trsp throws Error to represent no path found
-\echo Sometimes it crasses the server
+\echo Original function code
+\echo  * Sometimes it crasses the server when no path was found
+\echo  * Sometimes represents with Error a no path found
+\echo  * Forcing the user to use the wrapper or the replacement function
+\echo 
+\echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
 );  
-\echo server closed the connection unexpectedly
-\echo This probably means the server terminated abnormally
-\echo before or while processing the request.
-\echo The connection to the server was lost. Attempting reset: Failed.
 \echo '\`\`\`'
 
 \echo dijkstra returns EMPTY SET to represent no path found
@@ -79,8 +79,6 @@ SELECT * FROM pgr_dijkstra(
     1, 15
 );  
 \echo '\`\`\`'
-
-
 
 \echo pgr_trsp use the pgr_dijkstra when there are no restrictions
 \echo therefore returns EMPTY SET to represent no path found
@@ -130,13 +128,12 @@ SELECT * FROM pgr_TRSP(
 
 
 \echo call forcing the use of the original code (1 to 1)
-\echo therefore is expected to return Error to represent no path found
-\echo but "finds" a path when there should be no path.
+\echo * not longer allowed without restrictions
+\echo 
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-    1, 1,  
-    true, true
+    1, 1,  true, true
 );
 \echo '\`\`\`'
 
@@ -188,14 +185,14 @@ SELECT * FROM pgr_TRSP(
 );
 \echo '\`\`\`'
 
-\echo call to the original function (2 to 3)
-\echo does not find the shortest path
+\echo call forcing the use of the original code
+\echo * not longer allowed without restrictions
+\echo 
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     2, 3,
-    false, 
-    true
+    false, true
 );
 \echo '\`\`\`'
 
@@ -205,8 +202,7 @@ SELECT * FROM _pgr_trsp(
 SELECT * FROM pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     2, 3,
-    false, 
-    true,
+    false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 \echo '\`\`\`'
@@ -228,17 +224,17 @@ SELECT * FROM _pgr_trsp(
 
 ------------------HERE
 \echo ## (Edges) No path representation differences
-\echo Original code of pgr_trsp throws Error to represent no path found
-\echo Can get a server crash
+\echo Original function code
+\echo  * Sometimes it crasses the server when no path was found
+\echo  * Sometimes represents with Error a no path found
+\echo  * Forcing the user to use the wrapper or the replacement function
+\echo 
+\echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
-\echo SELECT * FROM _pgr_trsp(
-\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-\echo     1, 0.5, 17, 0.5, true, true
-\echo );  
-\echo server closed the connection unexpectedly
-\echo This probably means the server terminated abnormally
-\echo before or while processing the request.
-\echo The connection to the server was lost. Attempting reset: Failed.
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 0.5, 17, 0.5, true, true
+);  
 \echo '\`\`\`'
 \echo pgr_withPoints returns EMPTY SET to represent no path found
 \echo '\`\`\`'
@@ -260,9 +256,8 @@ SELECT * FROM pgr_withPoints(
 \echo One point might be on the left side other on the right side, pgr_trsp does not take into account
 \echo the side of the point
 
-\echo Using the original code (with and without restrictions) it returns a path
-\echo of N edge and N vertex instead of N edge and N+1 vertices
-\echo * with out restrictions
+\echo calls forcing the use of the original code
+\echo * not longer allowed without restrictions
 \echo 
 \echo '\`\`\`'
 SELECT * FROM _pgr_trsp(
@@ -508,7 +503,7 @@ SELECT * FROM pgr_withPoints(
 
 \echo * Vertex 6 is on edge 8 at 1 fraction
 \echo * Vertex 6 is also edge 11 at 0 fraction
-\echo * The *_pgr_trsp* is used because at least one of the "points" is an actual vertex
+\echo * Undefined behaviour when at least one of the "points" is an actual vertex
 \echo
 \echo '\`\`\`'
 SELECT * FROM pgr_trsp(
@@ -533,35 +528,23 @@ SELECT * FROM pgr_trsp(
 ------------------
 \echo ## pgr_trspViaVertices No path representation differences
 
-\echo pgr_trspViaVertices throws error when a path on the route was not found
-\echo this example no path is found (vertex 15 is disconnected) from the big graph
-\echo can crash the server
+\echo pgr_trspViaVertices uses _pgr_trsp which as mentioned before
+\echo  * Sometimes it crasses the server when no path was found
+\echo  * Sometimes represents with Error a no path found
+\echo  * Forcing the user to use the wrapper or the replacement function
+\echo 
+\echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
-\echo SELECT * FROM _pgr_trspViaVertices(
-\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-\echo     ARRAY[1, 15, 2],
-\echo     false, true
-\echo );
-\echo server closed the connection unexpectedly
-\echo This probably means the server terminated abnormally
-\echo before or while processing the request.
-\echo The connection to the server was lost. Attempting reset: Failed.
-\echo '\`\`\`'
-
-
-\echo In this example there exists a path from 2 to 1 but only complete routes are processed
-\echo can crash the server
-\echo '\`\`\`'
-\echo SELECT * FROM _pgr_trspViaVertices(
-\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-\echo     ARRAY[1, 15, 2, 1],
-\echo     false, 
-\echo     true
-\echo );
-\echo server closed the connection unexpectedly
-\echo This probably means the server terminated abnormally
-\echo before or while processing the request.
-\echo The connection to the server was lost. Attempting reset: Failed.
+SELECT * FROM _pgr_trspViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 15, 2],
+    false, true
+);
+SELECT * FROM _pgr_trspViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 15, 2, 1],
+    false, true
+);
 \echo '\`\`\`'
 
 \echo **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
@@ -604,21 +587,16 @@ SELECT * FROM pgr_dijkstraVia(
 SELECT * FROM pgr_TRSPViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
-    false, 
-    true
+    false, true
 );
 \echo '\`\`\`'
 
-\echo Using the original code
-\echo Because there is no path from 1 to 1 then there is no complete route 1 to 1 to 2
-\echo therefore the expected result is Error to represent no route was found
-\echo gives a result even that there is no path from 1 to 1
+\echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
-    false, 
-    true
+    false, true
 );
 \echo '\`\`\`'
 
@@ -627,8 +605,7 @@ SELECT * FROM _pgr_trspViaVertices(
 SELECT * FROM pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
-    false, 
-    true,
+    false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 \echo '\`\`\`'
@@ -639,8 +616,7 @@ SELECT * FROM pgr_trspViaVertices(
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 1, 2],
-    false, 
-    true,
+    false, true,
     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
 \echo '\`\`\`'
@@ -668,7 +644,7 @@ SELECT * FROM pgr_TRSPViaVertices(
 );
 \echo '\`\`\`'
 
-\echo forcing to use the original code, it give not give the shortest path from 2 to 3
+\echo Calls to the original function of is no longer allowed without restrictions
 \echo '\`\`\`'
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
@@ -707,7 +683,8 @@ SELECT * FROM pgr_trspViaEdges(
 \echo '\`\`\`'
 \echo A temporay wraper function is used when: 
 \echo * There are no restrictions
-\echo * No point is a vertex in disguise (with pcts value of 0)
+\echo * Before: No point is a vertex in disguise (with pcts value of 0)
+\echo * Now: c$Undefined behaviour when a point is a vertex in disguise (with pcts value of 0)
 \echo
 \echo Internaly:
 \echo * builds a new graph and calls pgr_dijkstraVia
@@ -737,20 +714,14 @@ SELECT * FROM _pgr_withPointsVia(
 
 \echo This example no path is found (edge 17 is disconnected) from the big graph.
 \echo * There is a vertex in disguise (fraction 0 or 1)
-\echo * *pgr_trspViaEdges* original code is used
-\echo * throws error to represent no route was not found
-\echo * sometimes crashes the server
+\echo * Undefined behaviour
 \echo
 \echo '\`\`\`'
-\echo SELECT * FROM pgr_trspViaEdges(
-\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-\echo     ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
-\echo     false, true
-\echo );
-\echo server closed the connection unexpectedly
-\echo This probably means the server terminated abnormally
-\echo before or while processing the request.
-\echo The connection to the server was lost. Attempting reset: Failed.
+SELECT * FROM pgr_trspViaEdges(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
+    false, true
+);
 \echo '\`\`\`'
 
 
@@ -829,7 +800,7 @@ SELECT * FROM pgr_trspViaEdges(
 
 \echo Routing points & vertices
 \echo * vertex 6 is on edge 11 with fraction 0
-\echo original code is used
+\echo  * Undefined behavior
 \echo '\`\`\`'
 SELECT * FROM pgr_trspViaEdges(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
