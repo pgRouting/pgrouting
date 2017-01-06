@@ -761,8 +761,6 @@ SELECT * FROM pgr_trspViaEdges(
 \echo Only routing points
 \echo when *_pgr_withPointsVia* is used
 \echo * the renumbering still takes place
-
-when *_pgr_withPointsVia* is used
 \echo
 \echo '\`\`\`'
 SELECT * FROM pgr_trspViaEdges(
