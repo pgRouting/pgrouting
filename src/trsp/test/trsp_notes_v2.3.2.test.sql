@@ -22,8 +22,8 @@
 \echo '  * [when a path does not exist on the route](#when-a-path-does-not-exist-on-the-route)'
 \echo '  * [from 2 to 3 to 2](#from-2-to-3-to-2)' 
 \echo * [pgr_trspViaEdges](#pgr_trspviaedges)
-\echo '  * [pgr_trspViaEdges No path representation differences](#pgr_trspviaedges-No-path-representation-differences)'
-\echo '  * [Using a points of interest table](#pgr_trspviaedges-using-a-points-of-interest-table)'
+\echo '  * [pgr_trspViaEdges No path representation differences](#pgr_trspviaedges-no-path-representation-differences)'
+\echo '  * [Using a points of interest table](#pgr_trspviaedges-using-the-pointsofinterest-table)'
 \echo 
 
 

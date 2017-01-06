@@ -20,8 +20,8 @@ Table of contents
   * [when a path does not exist on the route](#when-a-path-does-not-exist-on-the-route)
   * [from 2 to 3 to 2](#from-2-to-3-to-2)
 * [pgr_trspViaEdges](#pgr_trspviaedges)
-  * [pgr_trspViaEdges No path representation differences](#pgr_trspviaedges-No-path-representation-differences)
-  * [Using a points of interest table](#pgr_trspviaedges-using-a-points-of-interest-table)
+  * [pgr_trspViaEdges No path representation differences](#pgr_trspviaedges-no-path-representation-differences)
+  * [Using a points of interest table](#pgr_trspviaedges-using-the-pointsofinterest-table)
 
 # Introduction
 pgr_trsp code has issues that are not being fixed yet, but as time passes and new functionality is added to pgRouting with wrappers to **hide** the issues, not to fix them.
