@@ -14,11 +14,14 @@ Table of contents
   * [Using a points of interest table](#using-a-points-of-interest-table)
   * [Routing from/to the same point](#routing-fromto-the-same-point)
   * [Passing in front of other points](#passing-in-front-of-other-points)
-  * [Routing from a vertex to a point](#Routing from a vertex to a point)
-* [pgr_trspViaVertices](#pgr_trspViaVertices)
+  * [Routing from a vertex to a point](#edges-routing-from-a-vertex-to-a-point)
+* [pgr_trspViaVertices](#pgr_trspviavertices)
   * [pgr_trspViaVertices No path representation differences](#pgr_trspviavertices-no-path-representation-differences)
   * [when a path does not exist on the route](#when-a-path-does-not-exist-on-the-route)
   * [from 2 to 3 to 2](#from-2-to-3-to-2)
+* [pgr_trspViaEdges](#pgr_trspviaedges)
+  * [pgr_trspViaEdges No path representation differences](#pgr_trspviaedges-No-path-representation-differences)
+  * [Using a points of interest table](#pgr_trspviaedges-using-a-points-of-interest-table)
 
 # Introduction
 pgr_trsp code has issues that are not being fixed yet, but as time passes and new functionality is added to pgRouting with wrappers to **hide** the issues, not to fix them.
@@ -1013,7 +1016,7 @@ SELECT * FROM pgr_trspViaEdges(
 (0 rows)
 
 ```
-## Using the pointsOfInterest table
+## (pgr_trspViaEdges) Using the pointsOfInterest table
 Only routing points
 when *_pgr_withPointsVia* is used
 * the renumbering still takes place

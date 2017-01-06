@@ -16,11 +16,14 @@
 \echo '  * [Using a points of interest table](#using-a-points-of-interest-table)'
 \echo '  * [Routing from/to the same point](#routing-fromto-the-same-point)'
 \echo '  * [Passing in front of other points](#passing-in-front-of-other-points)'
-\echo '  * [Routing from a vertex to a point](#Routing from a vertex to a point)'
-\echo * [pgr_trspViaVertices](#pgr_trspViaVertices)
+\echo '  * [Routing from a vertex to a point](#edges-routing-from-a-vertex-to-a-point)'
+\echo * [pgr_trspViaVertices](#pgr_trspviavertices)
 \echo '  * [pgr_trspViaVertices No path representation differences](#pgr_trspviavertices-no-path-representation-differences)'
 \echo '  * [when a path does not exist on the route](#when-a-path-does-not-exist-on-the-route)'
 \echo '  * [from 2 to 3 to 2](#from-2-to-3-to-2)' 
+\echo * [pgr_trspViaEdges](#pgr_trspviaedges)
+\echo '  * [pgr_trspViaEdges No path representation differences](#pgr_trspviaedges-No-path-representation-differences)'
+\echo '  * [Using a points of interest table](#pgr_trspviaedges-using-a-points-of-interest-table)'
 \echo 
 
 
@@ -753,7 +756,7 @@ SELECT * FROM pgr_trspViaEdges(
 \echo '\`\`\`'
 
 ----------------
-\echo ## Using the pointsOfInterest table
+\echo ## (pgr_trspViaEdges) Using the pointsOfInterest table
 
 \echo Only routing points
 \echo when *_pgr_withPointsVia* is used
