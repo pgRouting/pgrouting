@@ -130,5 +130,4 @@ See Also
 -------------------------------------------------------------------------------
 
 * The examples use :ref:`pickDeliverData`
-* current implementation is a wrapper of :ref:`pgr_pickDeliver`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem
