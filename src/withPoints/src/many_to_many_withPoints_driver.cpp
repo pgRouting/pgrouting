@@ -210,9 +210,11 @@ do_pgr_many_to_many_withPoints(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
+#if 0
             log <<
                 "No paths found";
             *err_msg = pgr_msg(log.str().c_str());
+#endif
             return;
         }
 
