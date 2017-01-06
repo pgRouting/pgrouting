@@ -63,9 +63,11 @@ pgRouting 2.4.0 Release Notes
 .. rubric:: Bug fix
 
 * Bug fixes on proposed functions
+
   * pgr_withPointsKSP: fixed ordering
   * Calls to original trsp code without restrictions is no logner allowed
-   * Undefined behaviour in the result when a point is actually vertex (the fraction is 0 or 1)
+
+    * Undefined behaviour in the result when a point is actually vertex (the fraction is 0 or 1)
 
 
 .. _changelog_2_3_1:
