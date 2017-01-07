@@ -590,7 +590,6 @@ endif(UPDATE_RESULT)
 
 # make a list of the files we need to install for version updates
 file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
-
 # this will create the commands in the makefile under the install target
 if(UNIX)
     file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
@@ -600,7 +599,7 @@ endif(UNIX)
 
 message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
 
-install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
+#install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION_STRING}.sql"
