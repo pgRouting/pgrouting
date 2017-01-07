@@ -16,12 +16,14 @@ SELECT seq, id1, id2, cost::TEXT FROM pgr_trsp(
 
 
 PREPARE q2 AS
-SELECT seq-1, node::INTEGER, edge::INTEGER, cost::TEXT FROM _pgr_withPointsVia(
-    'select id, source, target, cost, reverse_cost from edge_table',
-    ARRAY[1, 6],
-    ARRAY[0.5, 0.5]) WHERE edge != -2;
+SELECT seq-1, node::INTEGER, edge::INTEGER, cost::TEXT FROM pgr_withPoints(
+    $$SELECT id, source, target, cost, reverse_cost from edge_table$$,
+    $$(SELECT 1 AS pid, 1 AS edge_id, 0.5::float  AS fraction)
+    UNION 
+    (SELECT 2, 6, 0.5)$$,
+    -1, -2);
 
-SELECT set_eq('q2', 'q1', 'No turn restriction from 1 to 5 returns same as pgr_withPointsVia');
+SELECT set_eq('q2', 'q1', 'No turn restriction from 1 to 5 returns same as pgr_withPoints');
 
 -- Finish the tests and clean up.
 SELECT * FROM finish();

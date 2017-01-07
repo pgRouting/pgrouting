@@ -98,23 +98,32 @@ declare
     seq integer := 0;
     seq2 integer :=0;
     has_reverse BOOLEAN;
+    point_is_vertex BOOLEAN := false;
     edges_sql TEXT;
+    f float;
 
 begin
     has_reverse =_pgr_parameter_check('dijkstra', sql, false);
     edges_sql := sql;
     IF (has_reverse != has_rcost) THEN
-        IF (has_reverse) THEN
+        IF (NOT has_rcost) THEN
+            -- user does not want to use reverse cost column
             edges_sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
         ELSE
             raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
         END IF;
     END IF;
 
-    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
+    FOREACH f IN ARRAY pcts LOOP
+        IF f in (0,1) THEN
+           point_is_vertex := true;
+        END IF;
+    END LOOP;
+
+    IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) AND NOT point_is_vertex THEN
         -- no restrictions then its a _pgr_withPointsVia
-        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
-        FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed)
+        RETURN query SELECT a.seq::INTEGER, path_id::INTEGER AS id1, node::INTEGER AS id2, edge::INTEGER AS id3, cost
+        FROM _pgr_withPointsVia(edges_sql, eids, pcts, directed) a;
         RETURN;
     END IF;
 
@@ -130,7 +139,7 @@ begin
                                   eids[i], pcts[i],
                                   eids[i+1], pcts[i+1],
                                   directed,
-                                  has_reverse,
+                                  has_rcost,
                                   turn_restrict_sql) as a loop
             -- combine intermediate via costs when cost is split across
             -- two parts of a segment because it stops it and

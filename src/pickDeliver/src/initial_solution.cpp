@@ -437,6 +437,9 @@ Initial_solution::insert_while_feasable() {
 
         invariant();
     }
+    if (truck.orders_size() !=0 ) {
+        fleet.push_back(truck);
+    }
 }
 
 void
@@ -469,6 +472,9 @@ Initial_solution::push_front_while_feasable() {
 
         invariant();
     }
+    if (truck.orders_size() !=0 ) {
+        fleet.push_back(truck);
+    }
 }
 
 void
@@ -500,6 +506,10 @@ Initial_solution::push_back_while_feasable() {
         }
 
         invariant();
+    }
+
+    if (truck.orders_size() !=0 ) {
+        fleet.push_back(truck);
     }
 }
 
