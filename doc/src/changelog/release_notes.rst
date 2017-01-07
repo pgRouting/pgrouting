@@ -42,6 +42,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.2 <h
 
 * Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.
 * Fixed pgr_trsp: 
+
   * Alternate code is not executed when the point is in reality a vertex
   * Fixed ambiguity on seq
 
