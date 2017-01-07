@@ -87,8 +87,6 @@ Proposed functions
   ../src/vrppdtw/doc/pgr_gsoc_vrppdtw
   ../src/vrp_basic/doc/pgr_vrpOneDepot
 
-  ../src/pickDeliver/doc/pgr_pickDeliver
-
 
 
 
