@@ -39,7 +39,7 @@ echo -
 #  bash tools/testers/update-tester.sh
 #
 
-CURRENT=2.3.1
+CURRENT=2.3.2
 
 function update_test {
 set -e
@@ -72,9 +72,10 @@ dropdb   ___test_update
 } 
 
 #------------------------------------
-### updates from 2.3.0
+### updates from 2.3.x
 #------------------------------------
 
+update_test 2.3.1 $CURRENT
 update_test 2.3.0 $CURRENT
 
 #------------------------------------

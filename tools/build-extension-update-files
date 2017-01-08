@@ -54,6 +54,7 @@ sub Usage {
     die "Usage: build-extension-update-files <version> [<pgrouting-src-dir>]\n";
 }
 
+print "Building the updating files\n";
 # get the commandline options
 # these are typically set by cmake
 my $version = shift @ARGV || Usage();
@@ -252,6 +253,7 @@ EOF
     # append the new extension SQL to the update script
     print OUT @file;
     close(OUT);
+    print "  -- Created lib/pgrouting--$o_ver--$n_ver.sql\n";
 }
 
 

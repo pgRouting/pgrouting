@@ -13,14 +13,15 @@ ORDER BY id1;
    7
    8
    9
-(9 rows)
+  10
+(10 rows)
 
 --q2
 SELECT count(*) FROM pgr_gsoc_vrppdtw(
     'SELECT * FROM customer ORDER BY id', 25, 200);
  count 
 -------
-   114
+   126
 (1 row)
 
 --q3
