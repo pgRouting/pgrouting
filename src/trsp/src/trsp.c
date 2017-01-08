@@ -19,7 +19,7 @@ Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 #define DBG(format, arg...)                     \
     elog(NOTICE, format , ## arg)
 #else
-#define DBG(format, arg...) do { ; } while (0)
+#define DBG(format,...) do { ; } while (0)
 #endif
 
 // The number of tuples to fetch from the SPI cursor at each iteration
