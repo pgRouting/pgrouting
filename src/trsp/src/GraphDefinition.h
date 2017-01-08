@@ -7,6 +7,7 @@
 #include <string>
 #include <stdlib.h>
 #include <iostream>
+#include <functional>
 
 #include "trsp.h"
 
