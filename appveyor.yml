@@ -22,7 +22,7 @@ services:
   - postgresql94
 
 environment:
-  CONFIGURATION: Debug
+  CONFIGURATION: Release
   MSVC_VER: 12.0
   BUILD_ROOT_DIR: c:\build
 
