@@ -9,8 +9,8 @@
 #include "fmgr.h"
 #include "trsp.h"
 
-Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
-Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 //#define DEBUG 1
@@ -556,7 +556,7 @@ static int compute_trsp(
 
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_vertex);
-Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 {
 	
@@ -687,7 +687,7 @@ turn_restrict_shortest_path_vertex(PG_FUNCTION_ARGS)
 }
 
 PG_FUNCTION_INFO_V1(turn_restrict_shortest_path_edge);
-Datum
+PGDLLEXPORT Datum
 turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)
 {
 	
