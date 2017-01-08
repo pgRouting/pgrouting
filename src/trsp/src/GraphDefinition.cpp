@@ -5,6 +5,7 @@
 #endif
 
 
+#include <functional>
 #include "GraphDefinition.h"
 
 // -------------------------------------------------------------------------
