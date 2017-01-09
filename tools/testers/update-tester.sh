@@ -3,7 +3,7 @@
 
 # FILE: update_tester.sh
 
-# Copyright (c) 2015 pgRouting developers
+# Copyright (c) 2016 pgRouting developers
 # Mail: project@pgrouting.org
 #
 # ------
@@ -39,7 +39,7 @@ echo -
 #  bash tools/testers/update-tester.sh
 #
 
-CURRENT=2.4.0
+CURRENT=2.5.0
 
 function update_test {
 set -e
@@ -70,6 +70,12 @@ EOF
 
 dropdb   ___test_update
 } 
+
+#------------------------------------
+### updates from 2.4
+#------------------------------------
+
+update_test 2.4.0 $CURRENT
 
 #------------------------------------
 ### updates from 2.3.0
