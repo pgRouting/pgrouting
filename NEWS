@@ -3,11 +3,8 @@ Changes for 2.4.0
 -------------------------------------------------------------------------------
 
 * New Signatures:
-
   * pgr_bdDijkstra
-
 * New Proposed functions
-
   * pgr_maxFlow
   * pgr_astar(one to many)
   * pgr_astar(many to one)
@@ -17,20 +14,14 @@ Changes for 2.4.0
   * pgr_astarCost(many to one)
   * pgr_astarCost(many to many)
   * pgr_astarCostMatrix
-
 * Deprecated Signatures
-
   * pgr_bddijkstra - use pgr_bdDijkstra instead
-
 * Deprecated functions
-
   * pgr_pointsToVids
+* Bug fixes on proposed functions
+  * pgr_withPointsKSP: fixed ordering
+* TRSP original code is used with no changes on the compilation warnings
 
-* Bug fix
-
-  * Bug fixes on proposed functions
-
-    * pgr_withPointsKSP: fixed ordering
 
 
 Changes for 2.3.1
