@@ -1,4 +1,4 @@
-#VERSION pgrouting 2.3.1
+#VERSION pgrouting 2.3.2
 #TYPES
 contraction_vertex(int,int,char,text)
 pgr_costResult(integer,integer,integer,float8)
