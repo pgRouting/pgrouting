@@ -18,6 +18,7 @@ Table of contents
 --------------------------
 
    - :ref:`changelog_2_4_0`
+   - :ref:`changelog_2_3_2`
    - :ref:`changelog_2_3_1`
    - :ref:`changelog_2_3_0`
    - :ref:`changelog_2_2_4`
@@ -34,6 +35,8 @@ Table of contents
 
 pgRouting 2.4.0 Release Notes
 ===============================================================================
+
+To see the issues closed by this release see the `Git closed issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github.
 
 .. rubric:: New Signatures
 
@@ -65,9 +68,8 @@ pgRouting 2.4.0 Release Notes
 * Bug fixes on proposed functions
 
   * pgr_withPointsKSP: fixed ordering
-  * Calls to original trsp code without restrictions is no logner allowed
 
-    * Undefined behaviour in the result when a point is actually vertex (the fraction is 0 or 1)
+* TRSP original code is used with no changes on the compilation warnings
 
 .. _changelog_2_3_2:
 
@@ -90,7 +92,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.2 <h
 pgRouting 2.3.1 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github.
 
 .. rubric:: Bug Fixes
 
@@ -104,7 +106,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.1 <h
 pgRouting 2.3.0 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github.
 
 .. rubric:: New Signatures
 
@@ -150,7 +152,7 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 pgRouting 2.2.4 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github.
 
 .. rubric:: Bug Fixes
 
@@ -199,7 +201,7 @@ To see the issues closed by this release see the `Git closed issues for 2.2.1 <h
 pgRouting 2.2.0 Release Notes
 ===============================================================================
 
-To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github.
+To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github.
 
 
 .. rubric:: Improvements
