@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     'v2.4.0-dev (dev-v2.4)',
+        VERSION:     'v2.4.0-dev (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -53,6 +53,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="#changelog-2-4-0"><em>pgRouting 2.4.0 Release Notes</em></a></li>
+<li><a class="reference internal" href="#changelog-2-3-2"><em>pgRouting 2.3.2 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-3-1"><em>pgRouting 2.3.1 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-3-0"><em>pgRouting 2.3.0 Release Notes</em></a></li>
 <li><a class="reference internal" href="#changelog-2-2-4"><em>pgRouting 2.2.4 Release Notes</em></a></li>
@@ -70,6 +71,7 @@
 </div>
 <div class="section" id="pgrouting-2-4-0-release-notes">
 <span id="changelog-2-4-0"></span><h1>pgRouting 2.4.0 Release Notes<a class="headerlink" href="#pgrouting-2-4-0-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed">Git closed issues for 2.4.0</a> on Github.</p>
 <p class="rubric">New Signatures</p>
 <ul class="simple">
 <li>pgr_bdDijkstra</li>
@@ -100,11 +102,25 @@
 <li>pgr_withPointsKSP: fixed ordering</li>
 </ul>
 </li>
+<li>TRSP original code is used with no changes on the compilation warnings</li>
+</ul>
+</div>
+<div class="section" id="pgrouting-2-3-2-release-notes">
+<span id="changelog-2-3-2"></span><h1>pgRouting 2.3.2 Release Notes<a class="headerlink" href="#pgrouting-2-3-2-release-notes" title="Permalink to this headline">¶</a></h1>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed">Git closed issues for 2.3.2</a> on Github.</p>
+<p class="rubric">Bug Fixes</p>
+<ul class="simple">
+<li>Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.</li>
+<li>Fixed pgr_trsp:<ul>
+<li>Alternate code is not executed when the point is in reality a vertex</li>
+<li>Fixed ambiguity on seq</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="pgrouting-2-3-1-release-notes">
 <span id="changelog-2-3-1"></span><h1>pgRouting 2.3.1 Release Notes<a class="headerlink" href="#pgrouting-2-3-1-release-notes" title="Permalink to this headline">¶</a></h1>
-<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.1%22+is%3Aclosed">Git closed issues for 2.3.1</a> on Github.</p>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed">Git closed issues for 2.3.1</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
 <li>Leaks on proposed max_flow functions</li>
@@ -114,7 +130,7 @@
 </div>
 <div class="section" id="pgrouting-2-3-0-release-notes">
 <span id="changelog-2-3-0"></span><h1>pgRouting 2.3.0 Release Notes<a class="headerlink" href="#pgrouting-2-3-0-release-notes" title="Permalink to this headline">¶</a></h1>
-<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.3.0%22+is%3Aclosed">Git closed issues for 2.3.0</a> on Github.</p>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed">Git closed issues for 2.3.0</a> on Github.</p>
 <p class="rubric">New Signatures</p>
 <p>Indentifiers can be <cite>ANY-INTEGER</cite> and costs can be <cite>ANY-NUMERICAL</cite></p>
 <ul class="simple">
@@ -151,7 +167,7 @@
 </div>
 <div class="section" id="pgrouting-2-2-4-release-notes">
 <span id="changelog-2-2-4"></span><h1>pgRouting 2.2.4 Release Notes<a class="headerlink" href="#pgrouting-2-2-4-release-notes" title="Permalink to this headline">¶</a></h1>
-<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.2.4%22+is%3Aclosed">Git closed issues for 2.2.4</a> on Github.</p>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed">Git closed issues for 2.2.4</a> on Github.</p>
 <p class="rubric">Bug Fixes</p>
 <ul class="simple">
 <li>Bogus uses of extern &#8220;C&#8221;</li>
@@ -186,7 +202,7 @@
 </div>
 <div class="section" id="pgrouting-2-2-0-release-notes">
 <span id="changelog-2-2-0"></span><h1>pgRouting 2.2.0 Release Notes<a class="headerlink" href="#pgrouting-2-2-0-release-notes" title="Permalink to this headline">¶</a></h1>
-<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+milestone%3A%22Release+2.2.0%22+is%3Aclosed">Git closed issues for 2.2.0</a> on Github.</p>
+<p>To see the issues closed by this release see the <a class="reference external" href="https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed">Git closed issues for 2.2.0</a> on Github.</p>
 <p class="rubric">Improvements</p>
 <ul class="simple">
 <li>pgr_nodeNetwork<ul>
@@ -411,7 +427,7 @@ The following release notes have been copied from the previous <tt class="docuti
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
-      Last updated on Dec 08, 2016.
+      Last updated on Jan 09, 2017.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

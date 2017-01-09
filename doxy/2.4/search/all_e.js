@@ -9,7 +9,7 @@ var searchData=
   ['newtsp_5fdriver_2eh',['newTSP_driver.h',['../newTSP__driver_8h.html',1,'']]],
   ['next_5ftoken',['next_token',['../classtokenizer.html#a1100e65df2c744c3170c540b7d051721',1,'tokenizer']]],
   ['node',['Node',['../classpgrouting_1_1vrp_1_1Node.html',1,'pgrouting::vrp']]],
-  ['node',['Node',['../classpgrouting_1_1vrp_1_1Node.html#ae40d4e5c40ea96725851c53a0f2738d8',1,'pgrouting::vrp::Node::Node()'],['../structPath__t.html#a4446f5f95052373312fd971ff4ee73c7',1,'Path_t::node()'],['../structGeneral__path__element__t.html#aa5de730dfe559b320b2bf0b42e079d7a',1,'General_path_element_t::node()'],['../structRoutes__t.html#a30fbd530e5aec369329943b7da2c8a91',1,'Routes_t::node()'],['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a9d40537444c258b123d8eb956617838f',1,'pgrouting::vrp::Pgr_pickDeliver::node()']]],
+  ['node',['node',['../structPath__t.html#a4446f5f95052373312fd971ff4ee73c7',1,'Path_t::node()'],['../structGeneral__path__element__t.html#aa5de730dfe559b320b2bf0b42e079d7a',1,'General_path_element_t::node()'],['../structRoutes__t.html#a30fbd530e5aec369329943b7da2c8a91',1,'Routes_t::node()'],['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a9d40537444c258b123d8eb956617838f',1,'pgrouting::vrp::Pgr_pickDeliver::node()'],['../classpgrouting_1_1vrp_1_1Node.html#ae40d4e5c40ea96725851c53a0f2738d8',1,'pgrouting::vrp::Node::Node()']]],
   ['node_2ecpp',['node.cpp',['../node_8cpp.html',1,'']]],
   ['node_2eh',['node.h',['../node_8h.html',1,'']]],
   ['nodeid',['NodeID',['../structGraphNodeInfo.html#af2eb3eb66cfa624a76991a24f3b722bd',1,'GraphNodeInfo']]],

@@ -7,6 +7,6 @@ var trsp_8h =
     [ "edge_t", "trsp_8h.html#aff905ba824de026b4ae434817a5b923c", null ],
     [ "path_element_t", "trsp_8h.html#a0d9814712039cb4b46fb2ab88751878e", null ],
     [ "restrict_t", "trsp_8h.html#ac40c9d5cbf214b57feef4052b13233eb", null ],
-    [ "trsp_edge_wrapper", "trsp_8h.html#a21e97f3ab880d7efa96e232ec4ad0b66", null ],
-    [ "trsp_node_wrapper", "trsp_8h.html#a4e7900f075bb05b5caf66485e0cc6e2d", null ]
+    [ "trsp_edge_wrapper", "trsp_8h.html#a9e3654636a269010c05b503d4f26c397", null ],
+    [ "trsp_node_wrapper", "trsp_8h.html#abc067ebc58ac7d4c8183df5df655ff11", null ]
 ];

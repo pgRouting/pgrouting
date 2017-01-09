@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     'v2.4.0-dev (dev-v2.4)',
+        VERSION:     'v2.4.0-dev (develop)',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -107,7 +107,8 @@ ORDER BY id1;
    7
    8
    9
-(9 rows)
+  10
+(10 rows)
 </pre></div>
 </div>
 </div>
@@ -166,11 +167,11 @@ ORDER BY id1;
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>The duration of the loading / unloading.</td>
 </tr>
-<tr class="row-odd"><td><strong>pickup_id</strong></td>
+<tr class="row-odd"><td><strong>pIndex</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
 <td>Value used when the current customer is a Delivery to find the corresponding Pickup</td>
 </tr>
-<tr class="row-even"><td><strong>deliver_id</strong></td>
+<tr class="row-even"><td><strong>dIndex</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
 <td>Value used when the current customer is a Pickup to find the corresponding Delivery</td>
 </tr>
@@ -257,7 +258,7 @@ ORDER BY id1;
     &#39;SELECT * FROM customer ORDER BY id&#39;, 25, 200);
  count 
 -------
-   114
+   126
 (1 row)
 </pre></div>
 </div>
@@ -317,7 +318,6 @@ ORDER BY id1;
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>The examples use <a class="reference internal" href="../../../doc/src/developer/sampledata.html#pickdeliverdata"><em>Pick &amp; Deliver Data</em></a></li>
-<li>current implementation is a wrapper of <a class="reference internal" href="../../pickDeliver/doc/pgr_pickDeliver.html#pgr-pickdeliver"><em>__pgr_pickDeliver</em></a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
 </ul>
 </div>
@@ -339,7 +339,7 @@ ORDER BY id1;
 
     <div class="footer">
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
-      Last updated on Dec 08, 2016.
+      Last updated on Jan 09, 2017.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

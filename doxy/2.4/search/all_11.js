@@ -24,7 +24,7 @@ var searchData=
   ['restrictions_5finput_2eh',['restrictions_input.h',['../restrictions__input_8h.html',1,'']]],
   ['rev',['rev',['../classpgrouting_1_1flow_1_1PgrEdgeDisjointPathsGraph.html#a35c35c682c1688d408d21c786526ce6f',1,'pgrouting::flow::PgrEdgeDisjointPathsGraph::rev()'],['../classpgrouting_1_1graph_1_1PgrFlowGraph.html#a3e386636c92f1e0809e0f284cca9185c',1,'pgrouting::graph::PgrFlowGraph::rev()']]],
   ['reverse',['reverse',['../classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e',1,'Path::reverse()'],['../classpgrouting_1_1tsp_1_1Tour.html#abbdd3586a26f8af6d5770deabd242617',1,'pgrouting::tsp::Tour::reverse()']]],
-  ['reverse_5fcost',['reverse_cost',['../structedge__astar__columns.html#af4c47e8841b4846f7ccc6ccbfb96c4fa',1,'edge_astar_columns::reverse_cost()'],['../structedge.html#a0f50b5efbd0183afdc1a1ab96f126cd3',1,'edge::reverse_cost()'],['../structedge__astar.html#a25864e744c50a04e60dd1f24fa68a2b2',1,'edge_astar::reverse_cost()'],['../structPgr__edge__xy__t.html#a6ab464e545a09586baf24552943d40e4',1,'Pgr_edge_xy_t::reverse_cost()'],['../structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5',1,'pgr_edge_t::reverse_cost()'],['../structedge.html#aea228cd3916bb0978fd1d8dc512a8f38',1,'edge::reverse_cost()'],['../structedge__columns.html#a7bf385252bb0745be50ad60330de710a',1,'edge_columns::reverse_cost()']]],
+  ['reverse_5fcost',['reverse_cost',['../structedge__astar__columns.html#af4c47e8841b4846f7ccc6ccbfb96c4fa',1,'edge_astar_columns::reverse_cost()'],['../structedge.html#aea228cd3916bb0978fd1d8dc512a8f38',1,'edge::reverse_cost()'],['../structedge__astar.html#a25864e744c50a04e60dd1f24fa68a2b2',1,'edge_astar::reverse_cost()'],['../structPgr__edge__xy__t.html#a6ab464e545a09586baf24552943d40e4',1,'Pgr_edge_xy_t::reverse_cost()'],['../structpgr__edge__t.html#aa6da5703357e969cde0799a23bfa67e5',1,'pgr_edge_t::reverse_cost()'],['../structedge.html#aea228cd3916bb0978fd1d8dc512a8f38',1,'edge::reverse_cost()'],['../structedge__columns.html#a7bf385252bb0745be50ad60330de710a',1,'edge_columns::reverse_cost()']]],
   ['reverse_5fcount',['reverse_count',['../classpgrouting_1_1tsp_1_1TSP.html#af846195864efbdbaf81a58c0bd532cbb',1,'pgrouting::tsp::TSP']]],
   ['reversecost',['ReverseCost',['../structGraphEdgeInfo.html#a8c8486076964685c0bf8e5efe84684b6',1,'GraphEdgeInfo']]],
   ['reversemove',['reverseMove',['../classCMoveInfo.html#acc6100438878e449445b1e15bd7b670f',1,'CMoveInfo']]],
@@ -34,5 +34,5 @@ var searchData=
   ['routes_5ft',['Routes_t',['../structRoutes__t.html',1,'']]],
   ['row',['row',['../classpgrouting_1_1tsp_1_1eucledianDmatrix.html#af412d7be01bc72a24bb91c2a48ca0bd9',1,'pgrouting::tsp::eucledianDmatrix']]],
   ['rule',['Rule',['../structRule.html',1,'']]],
-  ['ruletable',['RuleTable',['../GraphDefinition_8h.html#a783bdbdf6ee9ff27d18188bdc0ad2557',1,'GraphDefinition.h']]]
+  ['ruletable',['RuleTable',['../GraphDefinition_8h.html#a6337436037cbf9e76fe0e00644f218d4',1,'GraphDefinition.h']]]
 ];

@@ -229,7 +229,7 @@ $(document).ready(function(){initNavTree('VRP_8c_source.html','');});
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#if 0</span></div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor"></span><span class="keyword">static</span> <span class="keywordtype">char</span> *</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;text2char(text *in) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<a class="code" href="trsp_8c.html#a8745898afb7409587ee98f384ee40a39">text2char</a>(text *in) {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">char</span> *out = (<span class="keywordtype">char</span>*)palloc(VARSIZE(in));</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);</div>
@@ -1010,6 +1010,7 @@ $(document).ready(function(){initNavTree('VRP_8c_source.html','');});
 <div class="ttc" id="structvrp__result__element_html_afb9b14609e23d0f6c03ac84797355693"><div class="ttname"><a href="structvrp__result__element.html#afb9b14609e23d0f6c03ac84797355693">vrp_result_element::order_id</a></div><div class="ttdeci">int order_id</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8h_source.html#l00056">VRP.h:56</a></div></div>
 <div class="ttc" id="VRP_8c_html_aadc1f40eb5fa0812b014efad10c62379"><div class="ttname"><a href="VRP_8c.html#aadc1f40eb5fa0812b014efad10c62379">fetch_order_columns</a></div><div class="ttdeci">static int fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns)</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8c_source.html#l00230">VRP.c:230</a></div></div>
 <div class="ttc" id="structvrp__orders_html_ae327bf31517b17f128a56d647a6343d1"><div class="ttname"><a href="structvrp__orders.html#ae327bf31517b17f128a56d647a6343d1">vrp_orders::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8h_source.html#l00036">VRP.h:36</a></div></div>
+<div class="ttc" id="trsp_8c_html_a8745898afb7409587ee98f384ee40a39"><div class="ttname"><a href="trsp_8c.html#a8745898afb7409587ee98f384ee40a39">text2char</a></div><div class="ttdeci">static char * text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00051">trsp.c:51</a></div></div>
 <div class="ttc" id="structvrp__result__element_html_ab5ac5e6c44ef6c9c035322a1e29fbf95"><div class="ttname"><a href="structvrp__result__element.html#ab5ac5e6c44ef6c9c035322a1e29fbf95">vrp_result_element::arrival_time</a></div><div class="ttdeci">int arrival_time</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8h_source.html#l00059">VRP.h:59</a></div></div>
 <div class="ttc" id="structdistance__columns_html_a14d8dfaa02331744888b7a74ab97467a"><div class="ttname"><a href="structdistance__columns.html#a14d8dfaa02331744888b7a74ab97467a">distance_columns::cost</a></div><div class="ttdeci">int cost</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8c_source.html#l00111">VRP.c:111</a></div></div>
 <div class="ttc" id="structvrp__result__element_html_a41f00a816e5554d483e4d6fa9c7df1a9"><div class="ttname"><a href="structvrp__result__element.html#a41f00a816e5554d483e4d6fa9c7df1a9">vrp_result_element::order_pos</a></div><div class="ttdeci">int order_pos</div><div class="ttdef"><b>Definition:</b> <a href="VRP_8h_source.html#l00057">VRP.h:57</a></div></div>
@@ -1041,7 +1042,7 @@ $(document).ready(function(){initNavTree('VRP_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e28fcb41c27d94935e6e1bded8372f10.html">vrp_basic</a></li><li class="navelem"><a class="el" href="dir_2c959b9bc6ee9cc8204048449dea20e7.html">src</a></li><li class="navelem"><a class="el" href="VRP_8c.html">VRP.c</a></li>
-    <li class="footer">Generated on Thu Dec 8 2016 14:28:52 for PGROUTING by
+    <li class="footer">Generated on Mon Jan 9 2017 10:30:52 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

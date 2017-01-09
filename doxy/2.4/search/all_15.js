@@ -32,7 +32,7 @@ var searchData=
   ['vertex_5fcirculator',['Vertex_circulator',['../alpha__driver_8cpp.html#adad078e09171776a159f465e96252de1',1,'alpha_driver.cpp']]],
   ['vertex_5fcolumns',['vertex_columns',['../structvertex__columns.html',1,'']]],
   ['vertex_5fcolumns_5ft',['vertex_columns_t',['../alpha_8c.html#a800c891e5d5eb186fddf615d946e4d60',1,'alpha.c']]],
-  ['vertex_5fid',['vertex_id',['../structpath__element.html#a5ebbbb2b329f0b071a4c28ef8969b030',1,'path_element::vertex_id()'],['../structpath__element__t.html#aa18a86fa1b1334bcb065fe93c9ba8eaa',1,'path_element_t::vertex_id()'],['../structPoint__on__edge__t.html#a38e2fd8b1770612706fe6a0b337ed54d',1,'Point_on_edge_t::vertex_id()'],['../structpath__element.html#a543a5dc705feaf0914f3c6fd3cf0ba0d',1,'path_element::vertex_id()']]],
+  ['vertex_5fid',['vertex_id',['../structpath__element.html#a5ebbbb2b329f0b071a4c28ef8969b030',1,'path_element::vertex_id()'],['../structpath__element__t.html#aa18a86fa1b1334bcb065fe93c9ba8eaa',1,'path_element_t::vertex_id()'],['../structPoint__on__edge__t.html#a38e2fd8b1770612706fe6a0b337ed54d',1,'Point_on_edge_t::vertex_id()']]],
   ['vertex_5ft',['vertex_t',['../alpha__driver_8h.html#ab653adde14e40dd8c6c8a1cfa37a87c1',1,'alpha_driver.h']]],
   ['vertices_5fmap',['vertices_map',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#ab6b2a4bcbb103d1a1a1e06e91ce12ba6',1,'pgrouting::graph::Pgr_base_graph']]],
   ['vertices_5fsize_5ftype',['vertices_size_type',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a1f172b8114334cb9cb42e6d29198a0cc',1,'pgrouting::graph::Pgr_base_graph']]],

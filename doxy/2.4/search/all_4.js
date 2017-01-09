@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['dbg',['DBG',['../trsp_8c.html#a6501edf16d8399a262ad56d2e3ae11e2',1,'trsp.c']]],
   ['dbg_5flog',['dbg_log',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a97cbcb0f48371511abc573fc2ffbea26',1,'pgrouting::vrp::Pgr_pickDeliver']]],
   ['ddist',['Ddist',['../structCustomer__t.html#a16da01512f25472fffe5dbf9edeabaeb',1,'Customer_t']]],
   ['deadendvertices',['deadendVertices',['../classpgrouting_1_1contraction_1_1Pgr__deadend.html#a999531a34bb650c8419b31ed004f8f57',1,'pgrouting::contraction::Pgr_deadend']]],

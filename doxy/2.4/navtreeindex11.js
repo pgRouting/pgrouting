@@ -1,8 +1,5 @@
 var NAVTREEINDEX11 =
 {
-"xy__vertex_8cpp.html#a8cb0d8ad883b5f8167d066526be04d57":[5,0,214,1],
-"xy__vertex_8cpp.html#a95616a6e2e1f765d96feee326df7f5c0":[5,0,214,0],
-"xy__vertex_8cpp.html#aee46b163d3b76d1f7417289255384659":[5,0,214,3],
 "xy__vertex_8cpp_source.html":[5,0,214],
 "xy__vertex_8h.html":[5,0,215],
 "xy__vertex_8h.html#a57bb0ee39e4b594716e69db5ef7c6729":[5,0,215,5],
