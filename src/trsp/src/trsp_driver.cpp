@@ -20,13 +20,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
-#include "trsp_driver.h"
+#if defined(__MINGW32__) || defined(_MSC_VER)
+#include <winsock2.h>
+#include <windows.h>
+#endif
 
 #include <string.h>
 #include <sstream>
-
 #include "GraphDefinition.h"
+#include "trsp_driver.h"
 
 
 int trsp_node_wrapper(

@@ -9,7 +9,7 @@ SELECT function_returns('_pgr_pickdeliver', ARRAY['text','text', 'integer'],'set
 PREPARE expected_types AS
 SELECT
 'integer'::text AS t1,
-'integer'::text AS t2,
+'bigint'::text AS t2,
 'integer'::text AS t3,
 'bigint'::text AS t4,
 'integer'::text AS t5,
