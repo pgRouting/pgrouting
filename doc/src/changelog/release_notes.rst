@@ -69,6 +69,21 @@ pgRouting 2.4.0 Release Notes
 
     * Undefined behaviour in the result when a point is actually vertex (the fraction is 0 or 1)
 
+.. _changelog_2_3_2:
+
+pgRouting 2.3.2 Release Notes
+===============================================================================
+
+To see the issues closed by this release see the `Git closed issues for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github.
+
+.. rubric:: Bug Fixes
+
+* Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.
+* Fixed pgr_trsp: 
+
+  * Alternate code is not executed when the point is in reality a vertex
+  * Fixed ambiguity on seq
+
 
 .. _changelog_2_3_1:
 

@@ -63,7 +63,7 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 15, true, true
 );
-ERROR:  Function called without restrictions
+ERROR:  Error computing path: Path Not Found
 ```
 dijkstra returns EMPTY SET to represent no path found
 ```
@@ -134,7 +134,19 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     1, 1,  true, true
 );
-ERROR:  Function called without restrictions
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   1 |   1 |    1
+   1 |   2 |   4 |    1
+   2 |   5 |   8 |    1
+   3 |   6 |   9 |    1
+   4 |   9 |  16 |    1
+   5 |   4 |   3 |    1
+   6 |   3 |   2 |    1
+   7 |   2 |   1 |    1
+   8 |   1 |  -1 |    0
+(9 rows)
+
 ```
 trsp with restrictions (1 to 1) use the original code
 is expected to return Error to represent no path found
@@ -223,7 +235,16 @@ SELECT * FROM _pgr_trsp(
     2, 3,
     false, true
 );
-ERROR:  Function called without restrictions
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   2 |   4 |    1
+   1 |   5 |   8 |    1
+   2 |   6 |   9 |    1
+   3 |   9 |  16 |    1
+   4 |   4 |   3 |    1
+   5 |   3 |  -1 |    0
+(6 rows)
+
 ```
 trsp with restrictions (2 to 3)
 does not find the shortest path
@@ -279,7 +300,7 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 17, 0.5, true, true
 );
-ERROR:  Function called without restrictions
+ERROR:  Error computing path: Path Not Found
 ```
 pgr_withPoints returns EMPTY SET to represent no path found
 ```
@@ -309,7 +330,11 @@ SELECT * FROM _pgr_trsp(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
     1, 0.5, 1, 0.5, true, true
 );
-ERROR:  Function called without restrictions
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |    0
+(1 row)
+
 ```
 * with restrictions
 ```
@@ -689,14 +714,14 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 15, 2],
     false, true
 );
-ERROR:  Function called without restrictions
+ERROR:  Error computing path: Path Not Found
 CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
 SELECT * FROM _pgr_trspViaVertices(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
     ARRAY[1, 15, 2, 1],
     false, true
 );
-ERROR:  Function called without restrictions
+ERROR:  Error computing path: Path Not Found
 CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
 ```
 **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
@@ -750,7 +775,6 @@ SELECT * FROM pgr_TRSPViaVertices(
     ARRAY[1, 1, 2],
     false, true
 );
-NOTICE:  here
  seq | id1 | id2 | id3 | cost 
 -----+-----+-----+-----+------
 (0 rows)
@@ -763,8 +787,20 @@ SELECT * FROM _pgr_trspViaVertices(
     ARRAY[1, 1, 2],
     false, true
 );
-ERROR:  Function called without restrictions
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   1 |   1 |    1
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |   9 |    1
+   5 |   1 |   9 |  16 |    1
+   6 |   1 |   4 |   3 |    1
+   7 |   1 |   3 |   2 |    1
+   8 |   1 |   2 |   1 |    1
+   9 |   2 |   1 |   1 |    1
+  10 |   2 |   2 |  -1 |    0
+(10 rows)
+
 ```
 with restrictions the original code is used
 ```
@@ -837,7 +873,6 @@ SELECT * FROM pgr_TRSPViaVertices(
     false, 
     true
 );
-NOTICE:  here
  seq | id1 | id2 | id3 | cost 
 -----+-----+-----+-----+------
    1 |   1 |   2 |   2 |    1
@@ -854,8 +889,17 @@ SELECT * FROM _pgr_trspViaVertices(
     false, 
     true
 );
-ERROR:  Function called without restrictions
-CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   4 |    1
+   2 |   1 |   5 |   8 |    1
+   3 |   1 |   6 |   9 |    1
+   4 |   1 |   9 |  16 |    1
+   5 |   1 |   4 |   3 |    1
+   6 |   2 |   3 |   2 |    1
+   7 |   2 |   2 |  -1 |    0
+(7 rows)
+
 ```
 # pgr_trspViaEdges
 *pgr_trspViaEdges* will use the original code when
