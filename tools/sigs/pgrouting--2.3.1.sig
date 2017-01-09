@@ -139,4 +139,3 @@ pgr_withpointscostmatrix(text,text,anyarray,boolean ,char ,out bigint,out bigint
 pgr_withpointsdd(text,text,anyarray,float,boolean ,char ,boolean ,boolean ,out integer,out bigint,out bigint,out bigint,out float,out float)
 pgr_withpointsdd(text,text,bigint,float,boolean ,char ,boolean ,out integer,out bigint,out bigint,out float,out float)
 pgr_withpointsksp(text,text,bigint,bigint,integer,boolean ,boolean ,char ,boolean ,out integer,out integer,out integer,out bigint,out bigint,out float,out float)
-
