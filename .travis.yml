@@ -66,6 +66,7 @@ addons:
       - libcgal-dev
       - python-sphinx
       - graphviz
+      - texlive-font-utils
 
 
 
