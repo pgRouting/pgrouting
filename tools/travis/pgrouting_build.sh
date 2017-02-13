@@ -13,4 +13,5 @@ set -e
 cmake  -DPOSTGRESQL_VERSION=$POSTGRESQL_VERSION -DWITH_DOC=1 -DBUILD_DOXY=1 -DCMAKE_BUILD_TYPE=Debug
 make
 sudo make install
-
+make doc
+make doxy
