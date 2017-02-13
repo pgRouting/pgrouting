@@ -94,5 +94,5 @@ script:
 after_script: 
   # blank
 
-#after_success:
+after_success:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/test-documentation.sh ; fi
