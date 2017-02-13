@@ -22,7 +22,14 @@ Changes for 2.4.0
   * pgr_withPointsKSP: fixed ordering
 * TRSP original code is used with no changes on the compilation warnings
 
+Changes for 2.3.2
+-------------------------------------------------------------------------------
 
+* Bug fixes
+  * Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.
+  * Fixed pgr_trsp:
+    * Alternate code is not executed when the point is in reality a vertex
+    * Fixed ambiguity on seq
 
 Changes for 2.3.1
 -------------------------------------------------------------------------------
