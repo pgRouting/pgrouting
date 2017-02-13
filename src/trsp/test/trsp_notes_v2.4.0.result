@@ -475,7 +475,7 @@ What it returns
 * the points are renumbered to -1, -2 .. -N
 * if a point is part of a path it will show on the path
 
-Note: I don't mention the wrapper name due to the fact that this is not official documentation
+Note: I do not mention the wrapper name due to the fact that this is not official documentation
 Note: I will use *_pgr_withPointsVia* as the wrapper name just for sake of this notes
 Example excution
 ```

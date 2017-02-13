@@ -696,7 +696,7 @@ SELECT * FROM pgr_trspViaEdges(
 \echo * the points are renumbered to -1, -2 .. -N 
 \echo * if a point is part of a path it will show on the path
 \echo
-\echo Note: I don't mention the wrapper name due to the fact that this is not official documentation
+\echo Note: I do not mention the wrapper name due to the fact that this is not official documentation
 \echo Note: I will use *_pgr_withPointsVia* as the wrapper name just for sake of this notes
 
 \echo Example excution
