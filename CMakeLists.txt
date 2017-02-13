@@ -137,7 +137,7 @@ set(PgRouting_SQL_DIRECTORIES
 #---------------------------------------------
 # minimum versions
 #---------------------------------------------
-set(DOXYGEN_MINIMUM_VERSION "1.8.6")
+set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "1.1")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
 set(BOOST_MINIMUM_VERSION "1.46")
