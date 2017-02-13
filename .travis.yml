@@ -65,6 +65,7 @@ addons:
       - libboost-graph-dev
       - libcgal-dev
       - python-sphinx
+      - graphviz
 
 
 
