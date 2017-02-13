@@ -105,4 +105,4 @@ update_test 2.0.0 $CURRENT
 echo Reached end of test, all tests passed
 # CAN NOT BE Update test from 2.0.1  to $CURRENT;
 
-
+exit 0
