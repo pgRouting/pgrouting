@@ -98,6 +98,10 @@ We ignore the costs because we want all the parallels
     group by seq,route,source,target order by seq;
 
    select route, source, targets, edges from paths;
+
+
+.. code-block::
+
      route | source | target |  edges  
     -------+--------+--------+---------
          1 |      1 |      2 | {1}
@@ -130,6 +134,7 @@ To generate a table with all the combinations for parallel routes, we need some 
     stype = integer,
     initcond = 1
   );
+
 
 .. rubric:: And a function that "Expands" the table
 
