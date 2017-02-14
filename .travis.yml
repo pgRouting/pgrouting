@@ -72,13 +72,16 @@ addons:
       - libcgal-dev
       - python-sphinx
       - graphviz
+      - texlive
       - texlive-font-utils
-
+      - texlive-font-extra
+      - texlive-latex-extra
 
 
 
 
 install:
+  - pip install sphinx && sphinx-build -h
   - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION $PG_USER
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/install-doxygen.sh ; fi
 
