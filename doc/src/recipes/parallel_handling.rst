@@ -100,7 +100,7 @@ We ignore the costs because we want all the parallels
    select route, source, targets, edges from paths;
 
 
-.. code-block::
+::
 
      route | source | target |  edges  
     -------+--------+--------+---------
