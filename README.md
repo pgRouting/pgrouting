@@ -33,7 +33,7 @@ git add dev
 # for developers documentation
     
 rm -Rf doxy/2.4
-cp -r build/doxy/html doxy/2.4
+cp -r build/doxygen/html doxy/2.4
 git add doxy/2.4
 
 
