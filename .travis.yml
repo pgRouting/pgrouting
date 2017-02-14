@@ -74,7 +74,6 @@ addons:
       - graphviz
       - texlive
       - texlive-font-utils
-      - texlive-font-extra
       - texlive-latex-extra
       - ghostscript
 
