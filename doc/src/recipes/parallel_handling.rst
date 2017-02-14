@@ -119,7 +119,7 @@ We ignore the costs because we want all the parallels
 
 To generate a table with all the combinations for parallel routes, we need some more aggregates
 
-.. code-block:: sql
+::
 
   create or replace function multiply( integer, integer )
   returns integer as
