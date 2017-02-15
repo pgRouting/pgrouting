@@ -53,6 +53,7 @@ pg_prove ../../src/bdDijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/common/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/contraction/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+pg_prove ../../src/costMatrix/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/driving_distance/test/pgtap/* -d $PGDATABASE  -U $PGUSER
