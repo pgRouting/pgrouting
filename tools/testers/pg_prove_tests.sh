@@ -38,8 +38,11 @@ run_psql -f setup_db.sql
 if [ $RELEASE_TYPE = "bDebug" ]
 then
     pg_prove ../../src/internalQueryTests/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+    pg_prove ../../src/tsp/test/performance/* -d $PGDATABASE  -U $PGUSER
     echo "MADE TEST **********************"
 fi
+
+pg_prove ../../src/bd_dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/alpha_shape/test/pgtap/* -d $PGDATABASE  -U $PGUSER
@@ -53,21 +56,21 @@ pg_prove ../../src/contraction/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/dijkstra/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/driving_distance/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
 
 pg_prove ../../src/ksp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+
+pg_prove ../../src/max_flow/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+
+pg_prove ../../src/pickDeliver/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+
 pg_prove ../../src/topology/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/trsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/tsp/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
-pg_prove ../../src/convenience/test/pgtap/* -d $PGDATABASE  -U $PGUSER
-
-pg_prove ../../src/tsp/test/performance/* -d $PGDATABASE  -U $PGUSER
-pg_prove ../../src/max_flow/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/withPoints/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 #deprecated for 3.0
+pg_prove ../../src/convenience/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/apsp_johnson/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/apsp_warshall/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/bd_astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
