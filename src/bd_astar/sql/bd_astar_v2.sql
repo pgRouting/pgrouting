@@ -49,8 +49,6 @@ BEGIN
         END IF;
     END IF;
 
-    -- RETURN query SELECT *
-    --FROM __pgr_bdAstar(sql, start_vid, end_vid, directed, has_rcost);
     RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
     FROM _pgr_bdAstar(sql, start_vid, end_vid, directed);
   END
