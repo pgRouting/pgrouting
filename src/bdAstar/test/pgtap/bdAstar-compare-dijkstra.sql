@@ -26,7 +26,7 @@ BEGIN
                 || ', true)';
 
             bdastar_sql := 'SELECT seq,node,edge,cost::text,agg_cost::text FROM pgr_bdastar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
+                || ', true, 0)';
             RETURN query SELECT set_eq(bdastar_sql, dijkstra_sql, bdastar_sql);
 
 
@@ -37,7 +37,7 @@ BEGIN
                 || ', true)';
 
             bdastar_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_bdastar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
+                || ', true, 0)';
             RETURN query SELECT set_eq(bdastar_sql, dijkstra_sql, bdastar_sql);
 
             -- UNDIRECTED
@@ -47,7 +47,7 @@ BEGIN
                 || ', false)';
 
             bdastar_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_bdastar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
+                || ', false, 0)';
             RETURN query SELECT set_eq(bdastar_sql, dijkstra_sql, bdastar_sql);
 
 
@@ -58,7 +58,7 @@ BEGIN
                 || ', false)';
 
             bdastar_sql := 'SELECT  seq,node,edge,cost::text,agg_cost::text FROM pgr_bdastar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
+                || ', false, 0)';
             RETURN query SELECT set_eq(bdastar_sql, dijkstra_sql, bdastar_sql);
 
 
