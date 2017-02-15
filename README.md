@@ -6,7 +6,7 @@
 
 ### Branches
 
-* The *master* branch has the latest minor release. (2.3.0)
+* The *master* branch has the latest minor release. (2.3.2)
 * The *develop* branch has the next minor release. (2.4.0)
 
 For the complete list of releases go to:

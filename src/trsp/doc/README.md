@@ -506,8 +506,8 @@ SELECT * FROM pointsOfInterest;
 On *pgr_trsp*, to be able to use the table information:
 * Each parameter has to be extracted explicitly from the table
 * Regardles of the point pid original value
-  * will allways be -1 for the first point
-  * will allways be -2 for the second point
+  * will always be -1 for the first point
+  * will always be -2 for the second point
 ```
 SELECT * FROM pgr_TRSP(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
@@ -616,7 +616,7 @@ SELECT * FROM pgr_withPoints(
 
 ```
 **pgr_withPoints** can be used to see when the route passes in front of other points
-In ths example point pid=6 is passed in front of
+In this example point pid=6 is passed in front of
 ```
 SELECT * FROM pgr_withPoints(
     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
@@ -941,13 +941,13 @@ Internaly:
 * builds a new graph and calls pgr_dijkstraVia
 
 What it returns
-* returns EMTPY SET to represent no route
+* returns EMPTY SET to represent no route
 * edge = -1 in the result to represent the end of a intermediate path
 * edge = -2 in the result to represent the end of the last path & route
 * the points are renumbered to -1, -2 .. -N
 * if a point is part of a path it will show on the path
 
-Note: I dont mention the wrapper name due to the fact that this is not official documentation
+Note: I don't mention the wrapper name due to the fact that this is not official documentation
 Note: I will use *_pgr_withPointsVia* as the wrapper name just for sake of this notes
 Example excution
 ```
@@ -1003,7 +1003,7 @@ The connection to the server was lost. Attempting reset: Failed.
 ```
 This example no path is found (edge 17 is disconnected) from the big graph.
 * *_pgr_withPointsVia* is used
-* returns EMTPY SET to represent no route
+* returns EMPTY SET to represent no route
 
 ```
 SELECT * FROM pgr_trspViaEdges(
