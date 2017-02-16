@@ -19,7 +19,7 @@ class Swap_info {
     public:
 
         Swap_info() = default;
-        Swap_info(const Swap_info &other) = default;
+        Swap_info(const Swap_info &) = default;
         Swap_info(const Vehicle_pickDeliver &from,
                 const Vehicle_pickDeliver &to,
                 size_t from_o,
