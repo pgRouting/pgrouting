@@ -1,5 +1,5 @@
 --q1
-NOTICE:  Deprecated function
+NOTICE:  Deprecated signature of pgr_ksp
 0|0|7|6|1
 1|0|8|7|1
 2|0|5|8|1
@@ -13,7 +13,7 @@ NOTICE:  Deprecated function
 10|1|11|13|1
 11|1|12|-1|0
 --q2
-NOTICE:  Deprecated function
+NOTICE:  Deprecated signature of pgr_ksp
 0|0|7|6|1
 1|0|8|7|1
 2|0|5|8|1
