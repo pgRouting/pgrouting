@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(53);
+SELECT plan(54);
 
 SELECT todo_start();
 
@@ -27,7 +27,7 @@ SELECT hasnt_function('pgr_pointtoedgenode');
 SELECT hasnt_function('pgr_dijkstra',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT hasnt_function('pgr_astar',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT hasnt_function('pgr_ksp',ARRAY['text', 'integer', 'integer', 'integer', 'boolean']);
-SELECT hasnt_function('pgr_drivingdistance',ARRAY['text', 'bigint', 'double precision', 'boolean', 'boolean']);
+SELECT hasnt_function('pgr_drivingdistance',ARRAY['text', 'integer', 'double precision', 'boolean', 'boolean']);
 SELECT hasnt_function('pgr_bdastar',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT hasnt_function('pgr_bddijkstra',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT hasnt_function('pgr_tsp',ARRAY['(double precision[]', 'integer', 'integer']);
@@ -65,7 +65,8 @@ SELECT has_function('pgr_pointtoedgenode');
 SELECT has_function('pgr_dijkstra',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT has_function('pgr_astar',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT has_function('pgr_ksp',ARRAY['text', 'integer', 'integer', 'integer', 'boolean']);
-SELECT has_function('pgr_drivingdistance',ARRAY['text', 'bigint', 'double precision', 'boolean', 'boolean']);
+SELECT has_function('pgr_drivingdistance',ARRAY['text', 'bigint', 'double precision', 'boolean']);
+SELECT has_function('pgr_drivingdistance',ARRAY['text', 'anyarray', 'double precision', 'boolean', 'boolean']);
 SELECT has_function('pgr_bdastar',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT has_function('pgr_bddijkstra',ARRAY['text', 'integer', 'integer', 'boolean', 'boolean']);
 SELECT has_function('pgr_tsp',ARRAY['double precision[]', 'integer', 'integer']);
