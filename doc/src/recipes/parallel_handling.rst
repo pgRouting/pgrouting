@@ -140,7 +140,7 @@ To generate a table with all the combinations for parallel routes, we need some 
 
 
 
-.. code-block:: sql
+.. code-block:: none
 
   CREATE OR REPLACE function   expand_parallel_edge_paths(tab text)
     returns TABLE (
