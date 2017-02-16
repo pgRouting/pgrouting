@@ -60,7 +60,7 @@ ROWS 1000;
 
 
 -- OLD SIGNATURE
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source bigint, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
   RETURNS SETOF pgr_costresult AS
   $BODY$
   DECLARE
