@@ -1,0 +1,2 @@
+NOTICE:  column "node_count" of relation "edge_table" does not exist, skipping
+NOTICE:  column "another_column" of relation "edge_table" does not exist, skipping
