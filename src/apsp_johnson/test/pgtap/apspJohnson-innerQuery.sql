@@ -1,7 +1,6 @@
 \i setup.sql
 
 SELECT plan(17);
-SET client_min_messages TO ERROR;
 
 
 SELECT has_function('pgr_apspjohnson',
