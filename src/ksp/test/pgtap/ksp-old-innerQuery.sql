@@ -11,38 +11,10 @@ SELECT function_returns('pgr_ksp',
     'setof pgr_costresult3');
 
 
--- ONE SOURCE
---with reverse cost
-SELECT test_integer('pgr_ksp', ',2,3,2, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'id');
-SELECT test_integer('pgr_ksp', ',2,3,2, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'source');
-SELECT test_integer('pgr_ksp', ',2,3,2, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'target');
-SELECT test_float('pgr_ksp', ',2,3,2, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'cost');
-SELECT test_float('pgr_ksp', ',2,3,2, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'reverse_cost');
+-- ONE TO ONE
+SELECT style_old_dijkstra_with('pgr_ksp', ',2,3,2, true)');
+SELECT style_old_dijkstra_no_rev('pgr_ksp', ',2,3,2, false)');
 
-
---without reverse cost
-SELECT test_integer('pgr_ksp', ',2,3,2, false)',
-    ARRAY['id', 'source', 'target', 'cost'],
-    'id');
-SELECT test_integer('pgr_ksp', ',2,3,2, false)',
-    ARRAY['id', 'source', 'target', 'cost'],
-    'source');
-SELECT test_integer('pgr_ksp', ',2,3,2, false)',
-    ARRAY['id', 'source', 'target', 'cost'],
-    'target');
-SELECT test_float('pgr_ksp', ',2,3,2, false)',
-    ARRAY['id', 'source', 'target', 'cost'],
-    'cost');
 
 SELECT finish();
 ROLLBACK;
