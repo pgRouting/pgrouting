@@ -123,16 +123,16 @@ RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
     ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'cost');
 RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
+    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'x1');
 RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
+    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y1');
 RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
+    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'x2');
 RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
+    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
     'y2');
 
 END;
