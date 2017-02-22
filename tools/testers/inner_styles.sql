@@ -139,3 +139,14 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION style_withpoints(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+RETURN QUERY SELECT style_dijkstra(fn,  $$, 'SELECT * from pointsOfInterest' $$ || rest_sql);
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+

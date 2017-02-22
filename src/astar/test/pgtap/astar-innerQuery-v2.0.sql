@@ -11,62 +11,11 @@ SELECT function_returns('pgr_astar',
     'setof pgr_costresult');
 
 
+
 -- ONE TO ONE
 --with reverse cost
-SELECT test_integer('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'id');
-SELECT test_integer('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'source');
-SELECT test_integer('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'target');
-SELECT test_float('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'cost');
-SELECT test_float('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'reverse_cost');
-SELECT test_float('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'x1');
-SELECT test_float('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'y1');
-SELECT test_float('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'x2');
-SELECT test_float('pgr_astar', ',2,3, true, true)',
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost', 'x1', 'y1', 'x2', 'y2'],
-    'y2');
-
-
---without reverse cost
-SELECT test_integer('pgr_astar', ',2,3, true, false)',
-    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
-    'id');
-SELECT test_integer('pgr_astar', ',2,3, true, false)',
-    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
-    'source');
-SELECT test_integer('pgr_astar', ',2,3, true, false)',
-    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
-    'target');
-SELECT test_float('pgr_astar', ',2,3, true, false)',
-    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
-    'cost');
-SELECT test_float('pgr_astar', ',2,3, true, false)',
-    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
-    'x1');
-SELECT test_float('pgr_astar', ',2,3, true, false)',
-    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
-    'y1');
-SELECT test_float('pgr_astar', ',2,3, true, false)',
-    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
-    'x2');
-SELECT test_float('pgr_astar', ',2,3, true, false)',
-    ARRAY['id', 'source', 'target', 'cost', 'x1', 'y1', 'x2', 'y2'],
-    'y2');
+SELECT style_old_astar_with('pgr_astar', ',2,3, true, true)');
+SELECT style_old_astar_no_rev('pgr_astar', ',2,3, true, false)');
 
 
 SELECT finish();
