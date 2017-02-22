@@ -17,90 +17,11 @@ SELECT function_returns('pgr_withpointsdd',
 
 
 -- ONE SOURCE
---with reverse cost
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'id');
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'source');
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'target');
-SELECT test_anyNumerical('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'cost');
-SELECT test_anyNumerical('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'reverse_cost');
-
-
---without reverse cost
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'id');
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'source');
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'target');
-SELECT test_anyNumerical('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', 2, 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'cost');
-
+SELECT style_withpoints('pgr_withpointsdd', ', 2, 3, true)');
 
 
 -- MANY SOURCES
---with reverse cost
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'id');
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'source');
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'target');
-SELECT test_anyNumerical('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'cost');
-SELECT test_anyNumerical('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost', 'reverse_cost'],
-    'reverse_cost');
-
-
---without reverse cost
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'id');
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'source');
-SELECT test_anyInteger('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'target');
-SELECT test_anyNumerical('pgr_withpointsdd',
-    $$, 'SELECT * from pointsOfInterest', ARRAY[2], 3, true)$$,
-    ARRAY['id', 'source', 'target', 'cost'],
-    'cost');
+SELECT style_withpoints('pgr_withpointsdd', ', ARRAY[2], 3, true)');
 
 
 
