@@ -136,11 +136,11 @@ void pgr_get_flow_edges(
 
 /*! @brief read basic edges
 
-Edges:
-
-bigint id,
-bigint source,
-bigint target
+For queries of the type:
+~~~~{.c}
+SELECT id, source, target, going, [comming]
+FROM edge_table;
+~~~~
 
 @param[in] sql
 @param[out] edges

@@ -150,3 +150,91 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
+
+CREATE OR REPLACE FUNCTION style_max_flow(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+--with reverse cost
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity'],
+    'id');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity'],
+    'source');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity'],
+    'target');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity'],
+    'capacity');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity', 'reverse_capacity'],
+    'reverse_capacity');
+
+
+--without reverse cost
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity'],
+    'id');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity'],
+    'source');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity'],
+    'target');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'capacity'],
+    'capacity');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION style_cardinalitymatch(fn TEXT, rest_sql TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+ALTER TABLE edge_table RENAME cost TO going;
+ALTER TABLE edge_table RENAME reverse_cost TO coming;
+
+--with reverse cost
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going', 'coming'],
+    'id');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going', 'coming'],
+    'source');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going', 'coming'],
+    'target');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going', 'coming'],
+    'going');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going', 'coming'],
+    'coming');
+
+
+--without coming
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going'],
+    'id');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going'],
+    'source');
+RETURN QUERY SELECT test_anyInteger(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going'],
+    'target');
+RETURN QUERY SELECT test_anyNumerical(fn, rest_sql,
+    ARRAY['id', 'source', 'target', 'going'],
+    'going');
+
+ALTER TABLE edge_table RENAME going TO cost;
+ALTER TABLE edge_table RENAME coming TO reverse_cost;
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
