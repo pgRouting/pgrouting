@@ -14,17 +14,9 @@ SELECT function_returns('pgr_apspjohnson',
 
 -- only works with source, target, cost
 -- no reverse_cost and no id
-SELECT test_integer('pgr_apspjohnson', ')',
-    ARRAY['source', 'target', 'cost'],
-    'source');
-SELECT test_integer('pgr_apspjohnson', ')',
-    ARRAY['source', 'target', 'cost'],
-    'target');
-SELECT test_float('pgr_apspjohnson', ')',
-    ARRAY['source', 'target', 'cost'],
-    'cost');
+-- when reverse_cost or id are added they are ignored???
 
-
+SELECT style_old_dijkstra_no_id_no_reverse('pgr_apspjohnson', ')');
 
 SELECT finish();
 ROLLBACK;

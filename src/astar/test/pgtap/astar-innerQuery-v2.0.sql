@@ -70,6 +70,5 @@ SELECT test_float('pgr_astar', ',2,3, true, false)',
     'y2');
 
 
-
 SELECT finish();
 ROLLBACK;
