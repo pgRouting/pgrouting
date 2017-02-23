@@ -78,7 +78,7 @@ do_pgr_max_flow(
 
 
         pgrouting::graph::PgrFlowGraph digraph(
-        edges, sources, targets, algorithm);
+                edges, sources, targets, algorithm);
         // digraph.create_flow_graph(edges, sources, targets, algorithm);
 
         int64_t max_flow;

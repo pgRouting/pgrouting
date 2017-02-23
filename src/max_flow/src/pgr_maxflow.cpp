@@ -56,9 +56,8 @@ PgrFlowGraph::PgrFlowGraph(const std::vector<pgr_edge_t> &edges,
         V_to_id.insert(std::pair<V, int64_t>(v, id));
     }
 
-    supersource = add_vertex(graph);
-    supersink = add_vertex(graph);
-
+    set_supersource(source_vertices);
+    set_supersink(sink_vertices);
 
     capacity = get(boost::edge_capacity, graph);
     rev = get(boost::edge_reverse, graph);
@@ -74,8 +73,6 @@ PgrFlowGraph::PgrFlowGraph(const std::vector<pgr_edge_t> &edges,
         insert_edges(edges);
     }
 
-    set_supersource(source_vertices);
-    set_supersink(sink_vertices);
 }
 
 void PgrFlowGraph::insert_edges_push_relabel(
@@ -133,21 +130,16 @@ void PgrFlowGraph::insert_edges(
 void PgrFlowGraph::set_supersource(
         const std::set<int64_t> &source_vertices) {
     bool added;
+    supersource = add_vertex(graph);
     for (int64_t source_id : source_vertices) {
         V source = get_boost_vertex(source_id);
-        int64_t total = 0;
-        for (auto edge = out_edges(source, graph).first;
-                edge != out_edges(source, graph).second;
-                ++edge) {
-            total += capacity[*edge];
-        }
         E e, e_rev;
         boost::tie(e, added) =
             boost::add_edge(supersource, source, graph);
         boost::tie(e_rev, added) =
             boost::add_edge(source, supersource, graph);
 
-        capacity[e] = total;
+        capacity[e] = (std::numeric_limits<int32_t>::max)();
         /* From sources to supersource has 0 capacity*/
         capacity[e_rev] = 0;
         rev[e] = e_rev;
@@ -158,6 +150,7 @@ void PgrFlowGraph::set_supersource(
 void PgrFlowGraph::set_supersink(
         const std::set<int64_t> &sink_vertices) {
     bool added;
+    supersink = add_vertex(graph);
     for (int64_t sink_id : sink_vertices) {
         V sink = get_boost_vertex(sink_id);
         E e, e_rev;
@@ -174,7 +167,6 @@ void PgrFlowGraph::set_supersink(
         rev[e] = e_rev;
         rev[e_rev] = e;
     }
-
 }
 
 std::vector<pgr_flow_t>
@@ -223,32 +215,8 @@ PgrFlowGraph:: PgrFlowGraph(
     }
     bool added;
 
-    supersource = add_vertex(graph);
-    for (int64_t source_id : source_vertices) {
-        V source = get_boost_vertex(source_id);
-        E e, e_rev;
-        boost::tie(e, added) =
-            boost::add_edge(supersource, source, graph);
-        boost::tie(e_rev, added) =
-            boost::add_edge(source, supersource, graph);
-        capacity[e] = (std::numeric_limits<int32_t>::max)();
-        capacity[e_rev] = 0;
-        rev[e] = e_rev;
-        rev[e_rev] = e;
-    }
-    supersink = add_vertex(graph);
-    for (int64_t sink_id : sink_vertices) {
-        V sink = get_boost_vertex(sink_id);
-        E e1, e1_rev;
-        boost::tie(e1, added) =
-            boost::add_edge(sink, supersink, graph);
-        boost::tie(e1_rev, added) =
-            boost::add_edge(supersink, sink, graph);
-        capacity[e1] = (std::numeric_limits<int32_t>::max)();
-        capacity[e1_rev] = 0;
-        rev[e1] = e1_rev;
-        rev[e1_rev] = e1;
-    }
+    set_supersource(source_vertices);
+    set_supersink(sink_vertices);
 
     capacity = get(boost::edge_capacity, graph);
     rev = get(boost::edge_reverse, graph);
