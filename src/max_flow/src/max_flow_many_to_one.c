@@ -46,16 +46,14 @@ max_flow_many_to_one(PG_FUNCTION_ARGS);
 static
 void
 process(
-    char *edges_sql,
-    ArrayType *starts,
-    int64_t sink_vertex,
-    char *algorithm,
-    bool only_flow,
-    pgr_flow_t **result_tuples,
-    size_t *result_count) {
-    if (!(strcmp(algorithm, "push_relabel") == 0
-        || strcmp(algorithm, "edmonds_karp") == 0
-        || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
+        char *edges_sql,
+        ArrayType *starts,
+        int64_t sink_vertex,
+        int algorithm,
+        bool only_flow,
+        pgr_flow_t **result_tuples,
+        size_t *result_count) {
+    if (algorithm < 1 || algorithm > 3) {
         elog(ERROR, "Unknown algorithm");
     }
 
@@ -96,12 +94,12 @@ process(
             &err_msg);
 
     if (only_flow) {
-        time_msg("pgr_maxFlow(many to many)",
+        time_msg("pgr_maxFlow(many to one)",
                 start_t, clock());
-    } else if (strcmp(algorithm, "push_relabel") == 0) {
+    } else if (algorithm == 1) {
         time_msg("pgr_maxFlowPushRelabel(many to one)",
                 start_t, clock());
-    } else if (strcmp(algorithm, "edmonds_karp") == 0) {
+    } else if (algorithm == 3) {
         time_msg("pgr_maxFlowEdmondsKarp(many to one)",
                 start_t, clock());
     } else {
@@ -153,7 +151,7 @@ max_flow_many_to_one(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_ARRAYTYPE_P(1),
                 PG_GETARG_INT64(2),
-                text_to_cstring(PG_GETARG_TEXT_P(3)),
+                PG_GETARG_INT32(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);

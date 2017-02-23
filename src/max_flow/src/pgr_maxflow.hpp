@@ -69,10 +69,10 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
 
 namespace graph {
 
-template<class G>
+template <typename G>
 class PgrFlowGraph {
  public:
-  G boost_graph;
+  G graph;
 
   typedef typename boost::graph_traits<G>::vertex_descriptor V;
   typedef typename boost::graph_traits<G>::edge_descriptor E;
@@ -105,31 +105,30 @@ class PgrFlowGraph {
   }
 
   int64_t push_relabel() {
-      return boost::push_relabel_max_flow(boost_graph,
+      return boost::push_relabel_max_flow(graph,
                                           source_vertex,
                                           sink_vertex);
   }
 
   int64_t edmonds_karp() {
-      return boost::edmonds_karp_max_flow(boost_graph,
+      return boost::edmonds_karp_max_flow(graph,
                                           source_vertex,
                                           sink_vertex);
   }
 
   int64_t boykov_kolmogorov() {
-      size_t num_v = boost::num_vertices(boost_graph);
+      size_t num_v = boost::num_vertices(graph);
       std::vector<boost::default_color_type> color(num_v);
       std::vector<int64_t> distance(num_v);
-      return boost::boykov_kolmogorov_max_flow(boost_graph,
+      return boost::boykov_kolmogorov_max_flow(graph,
                                                source_vertex,
                                                sink_vertex);
   }
 
-  void create_flow_graph(pgr_edge_t *data_edges,
-                         size_t total_tuples,
-                         const std::set<int64_t> &source_vertices,
-                         const std::set<int64_t> &sink_vertices,
-                         char *algorithm) {
+  PgrFlowGraph(const std::vector<pgr_edge_t> &edges,
+          const std::set<int64_t> &source_vertices,
+          const std::set<int64_t> &sink_vertices,
+          int algorithm) {
       /* In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity
        * The same applies for sinks.
        * To avoid code repetition, a supersource/sink is used even in the one to one signature.
@@ -141,76 +140,73 @@ class PgrFlowGraph {
       std::set<int64_t> vertices(source_vertices);
       vertices.insert(sink_vertices.begin(), sink_vertices.end());
 
-      for (size_t i = 0; i < total_tuples; ++i) {
-          vertices.insert(data_edges[i].source);
-          vertices.insert(data_edges[i].target);
+      for (const auto e : edges) {
+          vertices.insert(e.source);
+          vertices.insert(e.target);
       }
 
-      for (int64_t id : vertices) {
-          V v = add_vertex(boost_graph);
+      for (const auto id : vertices) {
+          V v = add_vertex(graph);
           id_to_V.insert(std::pair<int64_t, V>(id, v));
           V_to_id.insert(std::pair<V, int64_t>(v, id));
       }
       bool added;
 
-      V supersource = add_vertex(boost_graph);
-      V supersink = add_vertex(boost_graph);
+      V supersource = add_vertex(graph);
+      V supersink = add_vertex(graph);
 
       source_vertex = supersource;
       sink_vertex = supersink;
 
-      capacity = get(boost::edge_capacity, boost_graph);
-      rev = get(boost::edge_reverse, boost_graph);
-      residual_capacity = get(boost::edge_residual_capacity, boost_graph);
+      capacity = get(boost::edge_capacity, graph);
+      rev = get(boost::edge_reverse, graph);
+      residual_capacity = get(boost::edge_residual_capacity, graph);
 
       /* Inserting edges
        * Push-relabel requires each edge to be mapped to its reverse with capacity 0.
        * The other algorithms have no such requirement. (can have have as many edges)
        */
-      if (strcmp(algorithm, "push_relabel") == 0) {
-          for (size_t i = 0; i < total_tuples; ++i) {
-              V v1 = get_boost_vertex(data_edges[i].source);
-              V v2 = get_boost_vertex(data_edges[i].target);
+      if (algorithm == 1) {
+          for (const auto edge : edges) {
+              V v1 = get_boost_vertex(edge.source);
+              V v2 = get_boost_vertex(edge.target);
               E e1, e1_rev, e2, e2_rev;
-              if (data_edges[i].cost > 0) {
-                  boost::tie(e1, added) = boost::add_edge(v1, v2, boost_graph);
+              if (edge.cost > 0) {
+                  boost::tie(e1, added) = boost::add_edge(v1, v2, graph);
                   boost::tie(e1_rev, added) =
-                      boost::add_edge(v2, v1, boost_graph);
-                  E_to_id.insert(std::pair<E, int64_t>(e1, data_edges[i].id));
-                  E_to_id.insert(std::pair<E, int64_t>(e1_rev,
-                                                       data_edges[i].id));
-                  capacity[e1] = (int64_t) data_edges[i].cost;
+                      boost::add_edge(v2, v1, graph);
+                  E_to_id.insert(std::pair<E, int64_t>(e1, edge.id));
+                  E_to_id.insert(std::pair<E, int64_t>(e1_rev, edge.id));
+                  capacity[e1] = (int64_t) edge.cost;
                   capacity[e1_rev] = 0;
                   rev[e1] = e1_rev;
                   rev[e1_rev] = e1;
               }
-              if (data_edges[i].reverse_cost > 0) {
-                  boost::tie(e2, added) = boost::add_edge(v2, v1, boost_graph);
+              if (edge.reverse_cost > 0) {
+                  boost::tie(e2, added) = boost::add_edge(v2, v1, graph);
                   boost::tie(e2_rev, added) =
-                      boost::add_edge(v1, v2, boost_graph);
-                  E_to_id.insert(std::pair<E, int64_t>(e2, data_edges[i].id));
-                  E_to_id.insert(std::pair<E, int64_t>(e2_rev,
-                                                       data_edges[i].id));
-                  capacity[e2] = (int64_t) data_edges[i].reverse_cost;
+                      boost::add_edge(v1, v2, graph);
+                  E_to_id.insert(std::pair<E, int64_t>(e2, edge.id));
+                  E_to_id.insert(std::pair<E, int64_t>(e2_rev, edge.id));
+                  capacity[e2] = (int64_t) edge.reverse_cost;
                   capacity[e2_rev] = 0;
                   rev[e2] = e2_rev;
                   rev[e2_rev] = e2;
               }
           }
       } else {
-          for (size_t i = 0; i < total_tuples; ++i) {
-              V v1 = get_boost_vertex(data_edges[i].source);
-              V v2 = get_boost_vertex(data_edges[i].target);
+          for (const auto edge : edges) {
+              V v1 = get_boost_vertex(edge.source);
+              V v2 = get_boost_vertex(edge.target);
               E e, e_rev;
-              boost::tie(e, added) = boost::add_edge(v1, v2, boost_graph);
+              boost::tie(e, added) = boost::add_edge(v1, v2, graph);
               boost::tie(e_rev, added) =
-                  boost::add_edge(v2, v1, boost_graph);
-              E_to_id.insert(std::pair<E, int64_t>(e, data_edges[i].id));
-              E_to_id.insert(std::pair<E, int64_t>(e_rev, data_edges[i].id));
-              capacity[e] =
-                  data_edges[i].cost > 0 ? (int64_t) data_edges[i].cost : 0;
-              capacity[e_rev] = data_edges[i].reverse_cost > 0
-                                ? (int64_t) data_edges[i].reverse_cost : 0;
+                  boost::add_edge(v2, v1, graph);
+              E_to_id.insert(std::pair<E, int64_t>(e, edge.id));
+              E_to_id.insert(std::pair<E, int64_t>(e_rev, edge.id));
+              capacity[e] = edge.cost > 0 ? (int64_t) edge.cost : 0;
+              capacity[e_rev] = edge.reverse_cost > 0
+                                ? (int64_t) edge.reverse_cost : 0;
               rev[e] = e_rev;
               rev[e_rev] = e;
           }
@@ -218,16 +214,16 @@ class PgrFlowGraph {
       for (int64_t source_id : source_vertices) {
           V source = get_boost_vertex(source_id);
           int64_t total = 0;
-          for (auto edge = out_edges(source, boost_graph).first;
-                  edge != out_edges(source, boost_graph).second;
+          for (auto edge = out_edges(source, graph).first;
+                  edge != out_edges(source, graph).second;
                   ++edge) {
              total += capacity[*edge];
           }
           E e, e_rev;
           boost::tie(e, added) =
-              boost::add_edge(supersource, source, boost_graph);
+              boost::add_edge(supersource, source, graph);
           boost::tie(e_rev, added) =
-              boost::add_edge(source, supersource, boost_graph);
+              boost::add_edge(source, supersource, graph);
 
           capacity[e] = total;
           /* From sources to supersource has 0 capacity*/
@@ -238,9 +234,9 @@ class PgrFlowGraph {
       for (int64_t sink_id : sink_vertices) {
           V sink = get_boost_vertex(sink_id);
           E e, e_rev;
-          boost::tie(e, added) = boost::add_edge(sink, supersink, boost_graph);
+          boost::tie(e, added) = boost::add_edge(sink, supersink, graph);
           boost::tie(e_rev, added) =
-              boost::add_edge(supersink, sink, boost_graph);
+              boost::add_edge(supersink, sink, graph);
           /*
            * NOTE: int64_t crashes the server
            */
@@ -256,7 +252,7 @@ class PgrFlowGraph {
 
   void get_flow_edges(std::vector<pgr_flow_t> &flow_edges) {
       E_it e, e_end;
-      for (boost::tie(e, e_end) = boost::edges(boost_graph); e != e_end;
+      for (boost::tie(e, e_end) = boost::edges(graph); e != e_end;
            ++e) {
           // A supersource/supersink is used internally
           if (((capacity[*e] - residual_capacity[*e]) > 0) &&

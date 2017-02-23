@@ -236,6 +236,31 @@ Where:
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
 xy_edges_sql_end
+
+flow_edges_sql_start
+
+Description of the edges_sql query
+...............................................................................
+
+:edges_sql: an SQL query, which should return a set of rows with the following columns:
+
+==================== =================== ======== =================================================
+Column               Type                Default  Description
+==================== =================== ======== =================================================
+**id**               ``ANY-INTEGER``              Identifier of the edge.
+**source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
+**target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
+**capacity**         ``ANY-INTEGER``              Weight of the edge  `(source, target)`
+                                                   - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+**reverse_capacity** ``ANY-INTEGER``       -1     Weight of the edge `(target, source)`,
+                                                   - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+==================== =================== ======== =================================================
+
+Where:
+
+:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
+flow_edges_sql_end
 */
 
 #endif  // SRC_COMMON_SRC_EDGES_INPUT_H_

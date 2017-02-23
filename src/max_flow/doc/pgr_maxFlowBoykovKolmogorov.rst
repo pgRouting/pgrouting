@@ -61,10 +61,10 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertex)
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertex)
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertices)
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertices)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, start_vid,  end_vid)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, start_vids, end_vid)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, start_vid,  end_vids)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, start_vids, end_vids)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -82,7 +82,7 @@ The available signature calculates the maximum flow from one source vertex to on
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertex)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, start_vid, end_vid)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -103,7 +103,7 @@ The available signature calculates the maximum flow from one source vertex to ma
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertices)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, start_vid,  end_vids)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -124,7 +124,7 @@ The available signature calculates the maximum flow from many source vertices to
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertex)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, start_vids,  end_vid)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -145,7 +145,7 @@ The available signature calculates the maximum flow from many sources to many si
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertices)
+    pgr_maxFlowBoykovKolmogorov(edges_sql, start_vids,  end_vids)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -180,17 +180,17 @@ Where:
 
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 
+.. include:: ../../common/src/edges_input.h
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
 
-Description of the parameters of the signatures
-.......................................................
 
-================= ====================== =================================================
-Column            Type                   Description
-================= ====================== =================================================
-**edges_sql**     ``TEXT``               SQL query as described above.
-**source_vertex** ``BIGINT``             Identifier of the source vertex(or vertices).
-**sink_vertex**   ``BIGINT``             Identifier of the sink vertex(or vertices).
-================= ====================== =================================================
+
+.. include:: ../sql/max_flow.sql
+    :start-after: pgr_flow_parameters_start
+    :end-before: pgr_flow_parameters_end
+
+
 
 Description of the Return Values
 .......................................................
