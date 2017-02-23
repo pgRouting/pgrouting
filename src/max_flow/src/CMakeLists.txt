@@ -12,6 +12,7 @@ ADD_LIBRARY(max_flow OBJECT
         edge_disjoint_paths_many_to_one.c
 
         max_flow_driver.cpp
+        pgr_maxflow.cpp
         maximum_cardinality_matching_driver.cpp
         edge_disjoint_paths_driver.cpp
 )

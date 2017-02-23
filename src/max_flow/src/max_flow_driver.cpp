@@ -108,7 +108,7 @@ do_pgr_max_flow(
             edge.residual_capacity = -1;
             flow_edges.push_back(edge);
         } else {
-            digraph.get_flow_edges(flow_edges);
+            flow_edges = digraph.get_flow_edges();
         }
         (*return_tuples) = pgr_alloc(flow_edges.size(), (*return_tuples));
         for (size_t i = 0; i < flow_edges.size(); ++i) {
