@@ -69,19 +69,18 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
 
 namespace graph {
 
-template <typename G>
 class PgrFlowGraph {
  public:
-  G graph;
+  FlowGraph graph;
 
-  typedef typename boost::graph_traits<G>::vertex_descriptor V;
-  typedef typename boost::graph_traits<G>::edge_descriptor E;
-  typedef typename boost::graph_traits<G>::vertex_iterator V_it;
-  typedef typename boost::graph_traits<G>::edge_iterator E_it;
+  typedef typename boost::graph_traits<FlowGraph>::vertex_descriptor V;
+  typedef typename boost::graph_traits<FlowGraph>::edge_descriptor E;
+  typedef typename boost::graph_traits<FlowGraph>::vertex_iterator V_it;
+  typedef typename boost::graph_traits<FlowGraph>::edge_iterator E_it;
 
-  typename boost::property_map<G, boost::edge_capacity_t>::type capacity;
-  typename boost::property_map<G, boost::edge_reverse_t>::type rev;
-  typename boost::property_map<G, boost::edge_residual_capacity_t>::type
+  typename boost::property_map<FlowGraph, boost::edge_capacity_t>::type capacity;
+  typename boost::property_map<FlowGraph, boost::edge_reverse_t>::type rev;
+  typename boost::property_map<FlowGraph, boost::edge_residual_capacity_t>::type
       residual_capacity;
 
 
@@ -231,6 +230,11 @@ class PgrFlowGraph {
           rev[e] = e_rev;
           rev[e_rev] = e;
       }
+      set_supersink(sink_vertices) {
+  }
+
+  void set_supersink(
+          const std::set<int64_t> &sink_vertices) {
       for (int64_t sink_id : sink_vertices) {
           V sink = get_boost_vertex(sink_id);
           E e, e_rev;
