@@ -95,8 +95,7 @@ class PgrFlowGraph {
              int algorithm);
 
      PgrFlowGraph(
-             pgr_basic_edge_t *data_edges,
-             size_t total_tuples,
+             const std::vector<pgr_basic_edge_t> &edges,
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices,
              bool directed);
@@ -125,15 +124,45 @@ class PgrFlowGraph {
              const std::set<int64_t> &source_vertices);
      void set_supersink(
              const std::set<int64_t> &sink_vertices);
+
      void insert_edges_push_relabel(
              const std::vector<pgr_edge_t> &edges);
      void insert_edges(
              const std::vector<pgr_edge_t> &edges);
+     void insert_edges_edge_disjoint(
+             const std::vector<pgr_basic_edge_t> &edges,
+             bool directed);
 
      void flow_dfs(
              V vertex,
              int64_t path_id,
              std::vector<std::vector<int64_t> > &paths);
+
+     /*
+      * vertices = {sources} U {sink} U {edges.source} U {edge.target}
+      */
+     template <typename T>
+     void add_vertices(
+             const T &edges,
+             const std::set<int64_t> &source_vertices,
+             const std::set<int64_t> &sink_vertices) {
+         std::set<int64_t> vertices(source_vertices);
+         vertices.insert(sink_vertices.begin(), sink_vertices.end());
+
+         for (const auto e : edges) {
+             vertices.insert(e.source);
+             vertices.insert(e.target);
+         }
+
+         for (const auto id : vertices) {
+             V v = add_vertex(graph);
+             id_to_V.insert(std::pair<int64_t, V>(id, v));
+             V_to_id.insert(std::pair<V, int64_t>(v, id));
+         }
+
+         set_supersource(source_vertices);
+         set_supersink(sink_vertices);
+     }
 
  private:
      FlowGraph graph;
@@ -141,6 +170,11 @@ class PgrFlowGraph {
      std::map<V, int64_t> V_to_id;
      std::map<E, int64_t> E_to_id;
 
+
+    /* In multi source flow graphs, a super source is created connected to all sources with "infinite" capacity
+     * The same applies for sinks.
+     * To avoid code repetition, a supersource/sink is used even in the one to one signature.
+     */
      V supersource;
      V supersink;
 

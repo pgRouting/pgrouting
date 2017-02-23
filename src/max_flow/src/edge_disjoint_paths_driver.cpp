@@ -58,32 +58,18 @@ do_pgr_edge_disjoint_paths(
     std::ostringstream err;
     try {
         std::vector<General_path_element_t> path_elements;
-        std::set<int64_t> set_source_vertices;
-        std::set<int64_t> set_sink_vertices;
-        for (size_t i = 0; i < size_source_verticesArr; ++i) {
-            set_source_vertices.insert(source_vertices[i]);
-        }
-        for (size_t i = 0; i < size_sink_verticesArr; ++i) {
-            set_sink_vertices.insert(sink_vertices[i]);
-        }
+        std::set<int64_t> set_source_vertices(source_vertices, source_vertices + size_source_verticesArr);
+        std::set<int64_t> set_sink_vertices(sink_vertices, sink_vertices + size_sink_verticesArr);
+        std::vector<pgr_basic_edge_t> edges(data_edges, data_edges + total_edges);
 
-#if 0
-        pgrouting::flow::PgrEdgeDisjointPathsGraph<pgrouting::FlowGraph> G;
-#endif
         pgrouting::graph::PgrFlowGraph G(
-                data_edges, total_edges,
+                edges,
                 set_source_vertices,
                 set_sink_vertices, directed);
 
         /*
          * boykov_kolmogorov is only for directed graphs
          */
-#if 0
-        G.create_edge_disjoint_paths_graph(
-                data_edges, total_edges,
-                set_source_vertices,
-                set_sink_vertices, directed);
-#endif
         auto flow = G.boykov_kolmogorov();
         G.get_edge_disjoint_paths(path_elements, flow);
 
