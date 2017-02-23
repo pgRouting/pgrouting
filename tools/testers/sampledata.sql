@@ -111,7 +111,7 @@ INSERT INTO restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
 (3, 100,  9, 16, NULL);
 
 --RESTRICTIONS END
-
+/*
 CREATE TABLE categories (
     category_id INTEGER,
     category text,
@@ -123,7 +123,7 @@ INSERT INTO categories VALUES
 (2, 'Category 2', 100),
 (3, 'Category 3',  80),
 (4, 'Category 4',  50);
-
+*/
 --CATEGORIES END
 
 CREATE TABLE vertex_table (
