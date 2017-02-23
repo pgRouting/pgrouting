@@ -63,7 +63,7 @@ class Swap_bk {
                 }
         };
     public:
-    typedef typename std::priority_queue<
+    typedef std::priority_queue<
             Swap_info,
             std::vector<Swap_info>,
             Compare >  Swaps_queue;
