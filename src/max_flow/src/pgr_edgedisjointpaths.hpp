@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define SRC_MAX_FLOW_SRC_PGR_EDGEDISJOINTPATHS_HPP_
 #pragma once
 
-#include <boost/config.hpp>
-#include <boost/graph/adjacency_list.hpp>
+#include "pgr_flowgraph.hpp"
+#include <boost/graph/boykov_kolmogorov_max_flow.hpp>
 #include <boost/assert.hpp>
 
 
@@ -40,7 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 
 #include "./../../common/src/pgr_types.h"
-#include "pgr_maxflow.hpp"
 
 namespace pgrouting {
 namespace flow {    
@@ -48,17 +47,17 @@ namespace flow {
 template<class G>
 class PgrEdgeDisjointPathsGraph {
  public:
-  G boost_graph;
+  FlowGraph boost_graph;
 
-  typedef typename boost::graph_traits<G>::vertex_descriptor V;
-  typedef typename boost::graph_traits<G>::edge_descriptor E;
-  typedef typename boost::graph_traits<G>::vertex_iterator V_it;
-  typedef typename boost::graph_traits<G>::edge_iterator E_it;
-  typedef typename boost::graph_traits<G>::out_edge_iterator Eout_it;
+  typedef typename boost::graph_traits<FlowGraph>::vertex_descriptor V;
+  typedef typename boost::graph_traits<FlowGraph>::edge_descriptor E;
+  typedef typename boost::graph_traits<FlowGraph>::vertex_iterator V_it;
+  typedef typename boost::graph_traits<FlowGraph>::edge_iterator E_it;
+  typedef typename boost::graph_traits<FlowGraph>::out_edge_iterator Eout_it;
 
-  typename boost::property_map<G, boost::edge_capacity_t>::type capacity;
-  typename boost::property_map<G, boost::edge_reverse_t>::type rev;
-  typename boost::property_map<G, boost::edge_residual_capacity_t>::type
+  typename boost::property_map<FlowGraph, boost::edge_capacity_t>::type capacity;
+  typename boost::property_map<FlowGraph, boost::edge_reverse_t>::type rev;
+  typename boost::property_map<FlowGraph, boost::edge_residual_capacity_t>::type
       residual_capacity;
 
   std::map<int64_t, V> id_to_V;

@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_edgedisjointpaths.hpp"
+#include "./pgr_maxflow.hpp"
 
 #include <sstream>
 #include <vector>
@@ -67,15 +67,23 @@ do_pgr_edge_disjoint_paths(
             set_sink_vertices.insert(sink_vertices[i]);
         }
 
+#if 0
         pgrouting::flow::PgrEdgeDisjointPathsGraph<pgrouting::FlowGraph> G;
+#endif
+        pgrouting::graph::PgrFlowGraph G(
+                data_edges, total_edges,
+                set_source_vertices,
+                set_sink_vertices, directed);
 
         /*
          * boykov_kolmogorov is only for directed graphs
          */
-
-        G.create_edge_disjoint_paths_graph(data_edges, total_edges,
+#if 0
+        G.create_edge_disjoint_paths_graph(
+                data_edges, total_edges,
                 set_source_vertices,
                 set_sink_vertices, directed);
+#endif
         auto flow = G.boykov_kolmogorov();
         G.get_edge_disjoint_paths(path_elements, flow);
 
