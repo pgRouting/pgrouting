@@ -57,11 +57,11 @@ class PgrFlowGraph {
      typedef boost::graph_traits<FlowGraph>::out_edge_iterator Eout_it;
 
 
-     typedef boost::property_map
+     boost::property_map
          <FlowGraph, boost::edge_capacity_t>::type capacity;
-     typedef boost::property_map
+     boost::property_map
          <FlowGraph, boost::edge_reverse_t>::type rev;
-     typedef boost::property_map
+     boost::property_map
          <FlowGraph, boost::edge_residual_capacity_t>::type residual_capacity;
 
 
