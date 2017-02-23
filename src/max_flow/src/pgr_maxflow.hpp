@@ -50,11 +50,11 @@ namespace graph {
 
 
 class PgrFlowGraph {
-     typedef typename boost::graph_traits<FlowGraph>::vertex_descriptor V;
-     typedef typename boost::graph_traits<FlowGraph>::edge_descriptor E;
-     typedef typename boost::graph_traits<FlowGraph>::vertex_iterator V_it;
-     typedef typename boost::graph_traits<FlowGraph>::edge_iterator E_it;
-     typedef typename boost::graph_traits<FlowGraph>::out_edge_iterator Eout_it;
+     typedef boost::graph_traits<FlowGraph>::vertex_descriptor V;
+     typedef boost::graph_traits<FlowGraph>::edge_descriptor E;
+     typedef boost::graph_traits<FlowGraph>::vertex_iterator V_it;
+     typedef boost::graph_traits<FlowGraph>::edge_iterator E_it;
+     typedef boost::graph_traits<FlowGraph>::out_edge_iterator Eout_it;
 
 
      typename boost::property_map
