@@ -1,0 +1,152 @@
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
+
+#ifndef SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_
+#define SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_
+#pragma once
+
+
+#include "pgr_flowgraph.hpp"
+#include <boost/graph/push_relabel_max_flow.hpp>
+#include <boost/graph/edmonds_karp_max_flow.hpp>
+#include <boost/graph/boykov_kolmogorov_max_flow.hpp>
+
+
+#include <map>
+#include <string>
+#include <utility>
+#include <vector>
+#include <set>
+#include <limits>
+
+#include "./../../common/src/pgr_types.h"
+
+
+namespace pgrouting {
+namespace graph {
+
+
+class PgrFlowGraph {
+     typedef typename boost::graph_traits<FlowGraph>::vertex_descriptor V;
+     typedef typename boost::graph_traits<FlowGraph>::edge_descriptor E;
+     typedef typename boost::graph_traits<FlowGraph>::vertex_iterator V_it;
+     typedef typename boost::graph_traits<FlowGraph>::edge_iterator E_it;
+     typedef typename boost::graph_traits<FlowGraph>::out_edge_iterator Eout_it;
+
+
+     typename boost::property_map<FlowGraph, boost::edge_capacity_t>::type capacity;
+     typename boost::property_map<FlowGraph, boost::edge_reverse_t>::type rev;
+     typename boost::property_map<FlowGraph, boost::edge_residual_capacity_t>::type
+         residual_capacity;
+
+
+ public:
+     int64_t push_relabel() {
+         return boost::push_relabel_max_flow(
+                 graph,
+                 supersource,
+                 supersink);
+     }
+
+     int64_t edmonds_karp() {
+         return boost::edmonds_karp_max_flow(
+                 graph,
+                 supersource,
+                 supersink);
+     }
+
+     int64_t boykov_kolmogorov() {
+         size_t num_v = boost::num_vertices(graph);
+         std::vector<boost::default_color_type> color(num_v);
+         std::vector<int64_t> distance(num_v);
+         return boost::boykov_kolmogorov_max_flow(
+                 graph,
+                 supersource,
+                 supersink);
+     }
+
+     PgrFlowGraph(
+             const std::vector<pgr_edge_t> &edges,
+             const std::set<int64_t> &source_vertices,
+             const std::set<int64_t> &sink_vertices,
+             int algorithm);
+
+     PgrFlowGraph(
+             pgr_basic_edge_t *data_edges,
+             size_t total_tuples,
+             const std::set<int64_t> &source_vertices,
+             const std::set<int64_t> &sink_vertices,
+             bool directed);
+
+
+     std::vector<pgr_flow_t> get_flow_edges() const;
+
+     void get_edge_disjoint_paths(
+             std::vector<General_path_element_t> &path_elements,
+             int64_t flow);
+
+ private:
+     V get_boost_vertex(int64_t id) const {
+         return id_to_V.at(id);
+     }
+
+     int64_t get_vertex_id(V v) const {
+         return V_to_id.at(v);
+     }
+
+     int64_t get_edge_id(E e) const {
+         return E_to_id.at(e);
+     }
+
+     void set_supersource(
+             const std::set<int64_t> &source_vertices);
+     void set_supersink(
+             const std::set<int64_t> &sink_vertices);
+     void insert_edges_push_relabel(
+             const std::vector<pgr_edge_t> &edges);
+     void insert_edges(
+             const std::vector<pgr_edge_t> &edges);
+
+     void flow_dfs(
+             V vertex,
+             int64_t path_id,
+             std::vector<std::vector<int64_t> > &paths);
+
+ private:
+     FlowGraph graph;
+     std::map<int64_t, V> id_to_V;
+     std::map<V, int64_t> V_to_id;
+     std::map<E, int64_t> E_to_id;
+
+     V supersource;
+     V supersink;
+
+};
+
+}  // namespace graph
+}  // namespace pgrouting
+
+#endif  // SRC_MAX_FLOW_SRC_PGR_MAXFLOW_HPP_
