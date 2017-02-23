@@ -27,13 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_maxflow.hpp"
+#include "./max_flow_driver.h"
 
 #include <sstream>
 #include <vector>
 #include <set>
 
-#include "./max_flow_driver.h"
+#include "./pgr_maxflow.hpp"
 
 #include "../../common/src/pgr_assert.h"
 #include "../../common/src/pgr_alloc.hpp"
@@ -62,8 +62,10 @@ do_pgr_max_flow(
         pgassert(sink_vertices);
 
         std::vector<pgr_edge_t> edges(data_edges, data_edges + total_edges);
-        std::set<int64_t> sources(source_vertices, source_vertices + size_source_verticesArr);
-        std::set<int64_t> targets(sink_vertices, sink_vertices + size_sink_verticesArr);
+        std::set<int64_t> sources(
+                source_vertices, source_vertices + size_source_verticesArr);
+        std::set<int64_t> targets(
+                sink_vertices, sink_vertices + size_sink_verticesArr);
 
         std::set<int64_t> vertices(sources);
         vertices.insert(targets.begin(), targets.end());

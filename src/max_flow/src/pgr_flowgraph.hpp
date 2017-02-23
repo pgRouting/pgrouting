@@ -38,12 +38,11 @@ typedef boost::adjacency_list_traits<boost::vecS, boost::vecS, boost::directedS>
     Traits;
 typedef boost::adjacency_list<boost::listS, boost::vecS, boost::directedS,
         // Vertex properties
-        boost::property<boost::vertex_name_t, std::string,
         boost::property<boost::vertex_index_t, int64_t,
         boost::property<boost::vertex_color_t, boost::default_color_type,
         boost::property<boost::vertex_distance_t, int64_t,
         boost::property<boost::vertex_predecessor_t, Traits::edge_descriptor>
-        > > > >,
+        > > >,
         // Edge properties
         boost::property<boost::edge_capacity_t, int64_t,
         boost::property<boost::edge_residual_capacity_t, int64_t,

@@ -27,25 +27,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_maxflow.hpp"
+#include "./edge_disjoint_paths_driver.h"
 
 #include <sstream>
 #include <vector>
 #include <set>
 
+#include "./pgr_maxflow.hpp"
+
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 
-#include "./edge_disjoint_paths_driver.h"
 
 void
 do_pgr_edge_disjoint_paths(
     pgr_basic_edge_t *data_edges,
     size_t total_edges,
-    int64_t *source_vertices,
+    int64_t *sources,
     size_t size_source_verticesArr,
-    int64_t *sink_vertices,
+    int64_t *sinks,
     size_t size_sink_verticesArr,
     bool directed,
     General_path_element_t **return_tuples,
@@ -58,9 +59,12 @@ do_pgr_edge_disjoint_paths(
     std::ostringstream err;
     try {
         std::vector<General_path_element_t> path_elements;
-        std::set<int64_t> set_source_vertices(source_vertices, source_vertices + size_source_verticesArr);
-        std::set<int64_t> set_sink_vertices(sink_vertices, sink_vertices + size_sink_verticesArr);
-        std::vector<pgr_basic_edge_t> edges(data_edges, data_edges + total_edges);
+        std::set<int64_t> set_source_vertices(
+                sources, sources + size_source_verticesArr);
+        std::set<int64_t> set_sink_vertices(
+                sinks, sinks + size_sink_verticesArr);
+        std::vector<pgr_basic_edge_t> edges(
+                data_edges, data_edges + total_edges);
 
         pgrouting::graph::PgrFlowGraph G(
                 edges,

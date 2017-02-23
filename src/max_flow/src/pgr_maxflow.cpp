@@ -26,6 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "pgr_maxflow.hpp"
 
+#include <limits>
+#include <utility>
+#include <vector>
+#include <set>
+
 namespace pgrouting {
 namespace graph {
 
@@ -246,7 +251,8 @@ PgrFlowGraph::flow_dfs(V vertex,
 }
 
 void
-PgrFlowGraph::get_edge_disjoint_paths(std::vector<General_path_element_t> &path_elements,
+PgrFlowGraph::get_edge_disjoint_paths(
+        std::vector<General_path_element_t> &path_elements,
         int64_t flow) {
     std::vector<std::vector<int64_t> > paths(flow, std::vector<int64_t>());
     int64_t path_id = 0;

@@ -57,10 +57,12 @@ class PgrFlowGraph {
      typedef typename boost::graph_traits<FlowGraph>::out_edge_iterator Eout_it;
 
 
-     typename boost::property_map<FlowGraph, boost::edge_capacity_t>::type capacity;
-     typename boost::property_map<FlowGraph, boost::edge_reverse_t>::type rev;
-     typename boost::property_map<FlowGraph, boost::edge_residual_capacity_t>::type
-         residual_capacity;
+     typename boost::property_map
+         <FlowGraph, boost::edge_capacity_t>::type capacity;
+     typename boost::property_map
+         <FlowGraph, boost::edge_reverse_t>::type rev;
+     typename boost::property_map
+         <FlowGraph, boost::edge_residual_capacity_t>::type residual_capacity;
 
 
  public:
@@ -177,7 +179,6 @@ class PgrFlowGraph {
      */
      V supersource;
      V supersink;
-
 };
 
 }  // namespace graph
