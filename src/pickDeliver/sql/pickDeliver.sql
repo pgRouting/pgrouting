@@ -27,6 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+-- for the sake of Reginas book I am keeping this signature
+
 CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     customers_sql TEXT,
     max_vehicles INTEGER,
@@ -52,32 +54,32 @@ DECLARE
     final_sql TEXT;
 BEGIN
     first_sql = $$WITH
-        customer AS ($$ || customers_sql || $$ ),
+        customer_data AS ($$ || customers_sql || $$ ),
         pickups AS (
             SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
-            FROM  customer WHERE pindex = 0 AND id != 0
+            FROM  customer_data WHERE pindex = 0 AND id != 0
         ),
         deliveries AS (
             SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
-            FROM  customer WHERE dindex = 0 AND id != 0
+            FROM  customer_data WHERE dindex = 0 AND id != 0
         )
         SELECT * FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id
     $$;
 
     second_sql = $$WITH
-        customer AS ($$ || customers_sql || $$ )
+        customer_data AS ($$ || customers_sql || $$ )
         SELECT id, x AS start_x, y AS start_y,
             opentime AS start_open, closetime AS start_close, $$ ||
             capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number 
-            FROM customer WHERE id = 0 LIMIT 1
+            FROM customer_data WHERE id = 0 LIMIT 1
         $$;
 
     final_sql = $$ WITH
-        customer AS ($$ || customers_sql || $$ ),
+        customer_data AS ($$ || customers_sql || $$ ),
         pick_deliver AS (SELECT * FROM _pgr_pickDeliver('$$ || first_sql || $$',  '$$ || second_sql || $$',  $$ || max_cycles || $$)),
-        picks AS (SELECT pick_deliver.*, pindex, dindex, id AS the_id FROM pick_deliver JOIN customer ON (id = order_id AND stop_type = 1)),
-        delivers AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer ON (id = order_id AND stop_type = 2)),
-        depots AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer ON (id = order_id AND order_id = 0)),
+        picks AS (SELECT pick_deliver.*, pindex, dindex, id AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 1)),
+        delivers AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
+        depots AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND order_id = 0)),
         the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
 
         SELECT a.seq, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
@@ -89,6 +91,7 @@ $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
 
 
+-- LATEST signature
 CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     orders_sql TEXT,
     vehicles_sql TEXT,
