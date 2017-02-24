@@ -22,7 +22,7 @@ SELECT
 
 SELECT * INTO pickDeliverResults FROM _pgr_pickdeliver(
     $$SELECT * FROM orders ORDER BY id$$,
-    $$SELECT * FROM vehicles1 ORDER BY id$$,
+    $$SELECT * FROM vehicles ORDER BY id$$,
     30);
 
 

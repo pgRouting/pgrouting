@@ -6,7 +6,7 @@ SELECT plan(7);
 PREPARE q1 AS
 SELECT * FROM _pgr_pickDeliver(
     $$SELECT * FROM orders$$,
-    $$SELECT * FROM vehicles1$$,
+    $$SELECT * FROM vehicles$$,
     30);
 
 
@@ -19,7 +19,7 @@ SELECT lives_ok('q1', 'Original query should not fail');
 PREPARE q2 AS
 SELECT * FROM _pgr_pickDeliver(
     $$SELECT * FROM orders$$,
-    $$SELECT id FROM vehicles1$$,
+    $$SELECT id FROM vehicles$$,
     30);
 
 SELECT throws_ok('q2',
@@ -32,7 +32,7 @@ UPDATE orders SET deliver_close = 500 WHERE id =11;
 PREPARE q5 AS
 SELECT * FROM _pgr_pickDeliver(
     'SELECT * FROM orders WHERE id in (11) ORDER BY id',
-    $$SELECT * FROM vehicles1$$,
+    $$SELECT * FROM vehicles$$,
     30);
 
 SELECT throws_ok('q5',
@@ -45,14 +45,14 @@ UPDATE orders SET deliver_close = 967 WHERE id =11;
 --------------------------------------
 -- testing wrong data on DEPOT 
 --------------------------------------
-UPDATE vehicles1 SET start_open = 3000  WHERE id = 0;
+UPDATE vehicles SET start_open = 3000;
 
 SELECT throws_ok('q5',
     'XX000',
     'Illegal values found on vehcile',
     'Should fail: Opens(DEPOT) > closes(DEPOT)');
 
-UPDATE vehicles1 SET start_open = 0 WHERE id =0;
+UPDATE vehicles SET start_open = 0;
 
 
 --------------------------------------
@@ -83,8 +83,6 @@ SELECT throws_ok('q5',
     'XX000',
     'The order 11 is not feasible on any truck',
     'Should fail: Opens(DELIVERY) > closes(DELIVERY)');
-/*
-*/
 
 
 SELECT finish();

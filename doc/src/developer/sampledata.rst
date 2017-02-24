@@ -131,6 +131,6 @@ When working with city networks, this is recommended for point of view of pedest
 pgr_gsoc_vrppdtw data
 .........................
 
-.. literalinclude:: ../../../tools/tester/pickDeliver_pgtap_data.sql
+.. literalinclude:: ../../../tools/testers/vrppdtw_data.sql
 
 
