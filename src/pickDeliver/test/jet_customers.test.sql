@@ -75,31 +75,6 @@ BKW	1644	-614	-81.124200000000002	37.787300000000002
 BGE	1466	-1424	-84.636927799999995	30.971598100000001
 \.
 
-/** query that was used to generate jet_customers **/
-
-/** CREATE TABLE jet_customers AS 
-WITH pairs AS ( SELECT ((row_number() OVER())::integer*2 - 1) As pid, 
-    ((row_number() OVER())::integer*2) AS did,  
-    s1.x As p_x, s1.y As p_y, s2.x As d_x, s2.y As d_y,
-    (1 + random()*20)::integer As num_passengers, 0::float As openTime, 60000::float As closeTime,
-        30::float As serviceTime
-FROM (SELECT * FROM stops ORDER BY random() LIMIT 4) As s1 ,
-    (SELECT * FROM stops ORDER BY random() LIMIT 4) As s2 
-WHERE s1.iata_faa != s2.iata_faa
-        )
-SELECT pid As id, p_x As x, p_y As y, 0 As pIndex, did AS dIndex, 
-    num_passengers As demand, openTime, closeTime, serviceTime
-FROM pairs AS pickups
-UNION ALL
-SELECT did As id, d_x As x, d_y As y, pid As pIndex, 0 AS dIndex,
-    -num_passengers As demand, openTime, closeTime, serviceTime
-FROM pairs AS pickups
-UNION ALL
--- our 0 point
-SELECT 0 AS id, x, y, 0 As pIndex, 0 As dIndex, 0 AS demand,
-    0 As openTime, 60000::float As closeTime, 0 As serviceTime
-FROM stops WHERE iata_faa = 'TEB'; **/
-
 -- crashes backend
 WITH
 pickups AS (
@@ -110,7 +85,7 @@ deliveries AS (
     SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
     FROM  jet_customers WHERE dindex = 0 AND id != 0
 )
-SELECT * INTO orders
+SELECT * INTO jet_orders
 FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
 
 /*
@@ -119,7 +94,7 @@ SELECT * FROM _pgr_pickDeliver(
 */
 
 SELECT * FROM _pgr_pickDeliver(
-    'SELECT * FROM orders ORDER BY id',
+    'SELECT * FROM jet_orders ORDER BY id',
     'SELECT 0 AS id,
     2138 AS start_x, -119 AS start_y,
     0 AS start_open, 60000 AS start_close,
