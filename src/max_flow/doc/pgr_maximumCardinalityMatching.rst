@@ -19,7 +19,7 @@ Name
 ``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
 
 
-.. include:: ../../proposed.rst
+.. include:: ../../proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -38,6 +38,8 @@ Calculates a maximum cardinality matching in a directed/undirected graph.
 - A matching or independent edge set in a graph is a set of edges without common vertices.
 - A maximum matching is a matching that contains the largest possible number of edges.
 - There may be many maximum matchings.
+- The graph can be directed or undirected.
+
 
 
 Characteristics:
@@ -159,7 +161,7 @@ Column                 Type                  Description
 See Also
 --------
 
-* :ref:`maxFlowApplications`
+* :ref:`maxFlow`
 * http://www.boost.org/libs/graph/doc/maximum_matching.html
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 * https://en.wikipedia.org/wiki/Ackermann_function

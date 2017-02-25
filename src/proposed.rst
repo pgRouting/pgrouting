@@ -47,18 +47,6 @@ Proposed functions
 
   - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
-- :ref:`maxFlow`
-
-  - :ref:`pgr_maxFlow` - Maximum flow using push&relabel algorithm.
-  - :ref:`pgr_maxFlowPushRelabel` - Detailed Maximum flow using push&relabel algorithm.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Detailed Maximum flow using Edmonds&Karp algorithm.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Detailed Maximum flow using Boykov&Kolmogorov algorithm.
-  
-- :ref:`maxFlowApplications`
-
-  - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
-  - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
-
 - convenience
 
   -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
@@ -78,19 +66,12 @@ Proposed functions
 
   ../src/contraction/doc/contraction
   ../src/contraction/doc/pgr_contractGraph
-  ../src/max_flow/doc/maxFlow
-  ../src/max_flow/doc/maxFlowApplications
 
   ../src/convenience/doc/pgr_pointToEdgeNode
   ../src/convenience/doc/pgr_pointsToVids
   ../src/label_graph/doc/pgr_labelGraph
   ../src/vrppdtw/doc/pgr_gsoc_vrppdtw
   ../src/vrp_basic/doc/pgr_vrpOneDepot
-
-
-
-
-
 
 
 

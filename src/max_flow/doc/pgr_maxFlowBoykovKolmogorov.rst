@@ -25,7 +25,7 @@ Name
 
 
 
-.. include:: ../../proposed.rst
+.. include:: ../../proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -161,50 +161,19 @@ The available signature calculates the maximum flow from many sources to many si
 Description of the Signatures
 --------------------------------------------------------
 
-Description of the SQL query
-..............................................
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-====================  ===================   =================================================
-Column                Type                  Description
-====================  ===================   =================================================
-**id**                ``ANY-INTEGER``       Identifier of the edge.
-**source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**capacity**          ``ANY-INTEGER``       Capacity of the edge `(source, target)`. Must be positive.
-**reverse_capacity**  ``ANY-INTEGER``       (optional) Weight of the edge `(target, source)`. Must be positive or null.
-====================  ===================   =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
-
-
 
 .. include:: ../sql/max_flow.sql
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
+.. include:: ./pgr_maxFlowPushRelabel.rst
+    :start-after: result_start
+    :end-before: result_end
 
-
-Description of the Return Values
-.......................................................
-
-=====================  ====================  =================================================
-Column                 Type                  Description
-=====================  ====================  =================================================
-**seq**                ``INT``               Sequential value starting from **1**.
-**edge_id**            ``BIGINT``            Identifier of the edge in the original query(edges_sql).
-**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
-**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
-**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
-**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
-=====================  ====================  =================================================
 
 See Also
 --------

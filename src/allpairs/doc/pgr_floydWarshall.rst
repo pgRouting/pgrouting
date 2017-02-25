@@ -105,7 +105,7 @@ Complete Signature
 Description of the Signatures
 ------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: no_id_edges_sql_start
     :end-before: no_id_edges_sql_end
 
