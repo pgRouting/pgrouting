@@ -17,6 +17,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 Table of contents
 --------------------------
 
+   - :ref:`changelog_2_5_0`
    - :ref:`changelog_2_4_0`
    - :ref:`changelog_2_3_2`
    - :ref:`changelog_2_3_1`
@@ -30,6 +31,18 @@ Table of contents
    - :ref:`changelog_2_0_1`
    - :ref:`changelog_2_0_0`
    - :ref:`changelog_1_x`
+
+.. _changelog_2_5_0:
+
+Changes for 2.5.0
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
+
+.. rubric:: Moved to the stable proposed functions
+
+* All Flow functions
+
 
 .. _changelog_2_4_0:
 

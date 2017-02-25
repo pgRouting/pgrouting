@@ -40,6 +40,7 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
+
 .. basic_edges_sql_end
 
 .. no_id_edges_sql_start
@@ -65,7 +66,7 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
-no_id_edges_sql_end
+.. no_id_edges_sql_end
 
 
 .. xy_edges_sql_start
@@ -97,6 +98,7 @@ Where:
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
 :ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
 
+
 .. xy_edges_sql_end
 
 .. flow_edges_sql_start
@@ -121,6 +123,7 @@ Column               Type                Default  Description
 Where:
 
 :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
+
 
 .. flow_edges_sql_end
 

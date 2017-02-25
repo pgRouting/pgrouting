@@ -72,6 +72,8 @@ Description of the Signatures
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
+Description of the parameters of the signatures
+..................................................
 
 ============== ============ =================================================                                                                                                                                          
 Column         Type           Description                                                                                                                                                                                
