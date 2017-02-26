@@ -155,14 +155,14 @@ void GraphDefinition::explore(
     std::priority_queue<PDP, std::vector<PDP>,
     std::greater<PDP> > &que)
 {
-    unsigned int i;
+    //unsigned int i;
     double extCost = 0.0;
     GraphEdgeInfo* new_edge;
     // int new_node;
     double totalCost;
-    for(i = 0; i < vecIndex.size(); i++)
+    for(const auto &index : vecIndex)
     {
-        new_edge = m_vecEdgeVector[vecIndex[i]];
+        new_edge = m_vecEdgeVector[index];
         extCost = 0.0;
         if(m_bIsturnRestrictOn)
         {
@@ -178,9 +178,9 @@ void GraphDefinition::explore(
                     totalCost = m_dCost[cur_edge.m_lEdgeIndex].endCost + new_edge->m_dCost + extCost;
                 else
                     totalCost = m_dCost[cur_edge.m_lEdgeIndex].startCost + new_edge->m_dCost + extCost;
-                if(totalCost < m_dCost[vecIndex[i]].endCost)
+                if(totalCost < m_dCost[index].endCost)
                 {
-                    m_dCost[vecIndex[i]].endCost = totalCost;
+                    m_dCost[index].endCost = totalCost;
                     parent[new_edge->m_lEdgeIndex].v_pos[0] = (isStart?0:1);
                     parent[new_edge->m_lEdgeIndex].ed_ind[0] = cur_edge.m_lEdgeIndex;
                     que.push(std::make_pair(totalCost, std::make_pair(new_edge->m_lEdgeIndex, true)));
@@ -196,9 +196,9 @@ void GraphDefinition::explore(
                     totalCost = m_dCost[cur_edge.m_lEdgeIndex].endCost + new_edge->m_dReverseCost + extCost;
                 else
                     totalCost = m_dCost[cur_edge.m_lEdgeIndex].startCost + new_edge->m_dReverseCost + extCost;
-                if(totalCost < m_dCost[vecIndex[i]].startCost)
+                if(totalCost < m_dCost[index].startCost)
                 {
-                    m_dCost[vecIndex[i]].startCost = totalCost;
+                    m_dCost[index].startCost = totalCost;
                     parent[new_edge->m_lEdgeIndex].v_pos[1] = (isStart?0:1);
                     parent[new_edge->m_lEdgeIndex].ed_ind[1] = cur_edge.m_lEdgeIndex;
                     que.push(std::make_pair(totalCost, std::make_pair(new_edge->m_lEdgeIndex, false)));
