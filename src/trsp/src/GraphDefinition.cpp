@@ -110,13 +110,15 @@ double GraphDefinition::getRestrictionCost(
         return(0.0);
     }
     std::vector<Rule> vecRules = m_ruleTable[edge_id];
-    int ruleIndex;
-    int totalRule = vecRules.size();
+    //int ruleIndex;
+    //int totalRule = vecRules.size();
     int st_edge_ind = edge_ind;
-    for(ruleIndex = 0; ruleIndex < totalRule; ruleIndex++)
+    for(const auto &rule : vecRules)
+    //for(ruleIndex = 0; ruleIndex < totalRule; ruleIndex++)
     {
         bool flag = true;
-        int total_edge = vecRules[ruleIndex].precedencelist.size();
+        //int total_edge = vecRules[ruleIndex].precedencelist.size();
+        int total_edge = rule.precedencelist.size();
         int i;
         int v_pos = (isStart?0:1);
         edge_ind = st_edge_ind;
@@ -127,7 +129,8 @@ double GraphDefinition::getRestrictionCost(
                 flag = false;
                 break;
             }
-            if(vecRules[ruleIndex].precedencelist[i] != m_vecEdgeVector[edge_ind]->m_lEdgeID)
+           // if(vecRules[ruleIndex].precedencelist[i] != m_vecEdgeVector[edge_ind]->m_lEdgeID)
+            if(rule.precedencelist[i] != m_vecEdgeVector[edge_ind]->m_lEdgeID)
             {
                 flag = false;
                 break;
@@ -137,7 +140,7 @@ double GraphDefinition::getRestrictionCost(
             edge_ind = parent_ind;
         }
         if(flag)
-            cost += vecRules[ruleIndex].cost;
+            cost += rule.cost;
     }
     return cost;
 }
