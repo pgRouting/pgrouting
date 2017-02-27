@@ -110,18 +110,14 @@ double GraphDefinition::getRestrictionCost(
         return(0.0);
     }
     std::vector<Rule> vecRules = m_ruleTable[edge_id];
-    //int ruleIndex;
-    //int totalRule = vecRules.size();
     int st_edge_ind = edge_ind;
     
     for (const auto &rule : vecRules)
     {
         bool flag = true;
-        auto total_edge = rule.precedencelist.size();
-        int i;
         int v_pos = (isStart?0:1);
         edge_ind = st_edge_ind;
-        for (const auto &precedence : precedencelist)
+        for (const auto &precedence : rule.precedencelist)
         {
             if(edge_ind == -1)
             {
