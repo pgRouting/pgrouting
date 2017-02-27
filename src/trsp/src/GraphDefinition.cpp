@@ -258,7 +258,7 @@ int GraphDefinition::multi_dijkstra(
     *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
     *path_count = static_cast<int>(m_vecPath.size());
 
-    for(i = 0; i < *path_count; i++)
+    for(int i = 0; i < *path_count; i++)
     {
     (*path)[i].vertex_id = m_vecPath[i].vertex_id;
     (*path)[i].edge_id = m_vecPath[i].edge_id;
@@ -270,7 +270,7 @@ int GraphDefinition::multi_dijkstra(
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition::my_dijkstra(int start_vertex, int end_vertex, unsigned int edge_count, char **err_msg)
+int GraphDefinition::my_dijkstra(long start_vertex, long end_vertex, unsigned int edge_count, char **err_msg)
 {
     if(!m_bIsGraphConstructed)
     {
@@ -484,7 +484,7 @@ int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int sta
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost,
+int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, long start_vertex, long end_vertex, bool directed, bool has_reverse_cost,
                                   path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
@@ -547,7 +547,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost,
+int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, long start_vertex, long end_vertex, bool directed, bool has_reverse_cost,
                 path_element_t **path, int *path_count, char **err_msg)
 {
     if(!m_bIsGraphConstructed)

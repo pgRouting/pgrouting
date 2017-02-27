@@ -89,17 +89,17 @@ public:
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra(int start_vertex, int end_vertex,
+    int my_dijkstra(long start_vertex, long end_vertex,
                     unsigned int edge_count, char** err_msg);
 
     int my_dijkstra(edge_t *edges, unsigned int edge_count,
-                    int start_vertex, int end_vertex,
+                    long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_t **path, int *path_count,
                     char **err_msg);
 
     int my_dijkstra(edge_t *edges, unsigned int edge_count,
-                    int start_vertex, int end_vertex,
+                    long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_t **path, int *path_count,
                     char **err_msg,
