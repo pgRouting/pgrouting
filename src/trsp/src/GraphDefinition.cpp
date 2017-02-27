@@ -505,23 +505,23 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
                                   path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
-    int total_rule = ruleList.size();
+    //int total_rule = ruleList.size();
     //int i;
     LongVector vecsource;
     //unsigned int kk;
     // for(i = 0; i < total_rule; i++)
     // {
-    for(const auto &rule:total_rule)
+    for(const auto &ruleIndex:ruleList)
     {
         Rule rule;
-        rule.cost = rule.first;
+        rule.cost = ruleIndex.first;
         int j;
-        int seq_cnt = rule.second.size();
+        int seq_cnt = ruleIndex.second.size();
         for(j = 1; j < seq_cnt; j++)
         {
-            rule.precedencelist.push_back(rule.second[j]);
+            rule.precedencelist.push_back(ruleIndex.second[j]);
         }
-        int dest_edge_id = rule.second[0];
+        int dest_edge_id = ruleIndex.second[0];
         if(m_ruleTable.find(dest_edge_id) != m_ruleTable.end())
         {
             m_ruleTable[dest_edge_id].push_back(rule);
@@ -536,7 +536,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 
         if(isStartVirtual)
         {
-            if(seq_cnt == 2 && rule.second[1] == m_lStartEdgeId)
+            if(seq_cnt == 2 && ruleIndex.second[1] == m_lStartEdgeId)
             {
                 vecsource = m_mapNodeId2Edge[start_vertex];
                 for(kk = 0; kk < vecsource.size(); kk++)
@@ -607,9 +607,11 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo* cur_edge = NULL;
 
-    for(i = 0; i < vecsource.size(); i++)
+    // for(i = 0; i < vecsource.size(); i++)
+    // {
+    for(const auto &rule:vecsource)
     {
-        cur_edge = m_vecEdgeVector[vecsource[i]];
+        cur_edge = m_vecEdgeVector[rule];
         if(cur_edge->m_lStartNode == start_vertex)
         {
             if(cur_edge->m_dCost >= 0.0)
