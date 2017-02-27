@@ -281,8 +281,8 @@ template <class G, typename T_V, typename T_E>
 class Pgr_base_graph {
  public:
      /** @name Graph related types
-       Type      |     boost meaning     |   pgRouting meaning
-       :---------: | :-------------------- | :----------------------
+      Type      |     boost meaning     |   pgRouting meaning
+    :---------: | :-------------------- | :----------------------
        G        | boost::adjacency_list |   Graph
        V        | vertex_descriptor     |   Think of it as local ID of a vertex
        E        | edge_descriptor       |   Think of it as local ID of an edge
@@ -293,19 +293,16 @@ class Pgr_base_graph {
        */
      //@{
      typedef G B_G;
-     typedef typename boost::graph_traits < G >::vertex_descriptor V;
-     typedef typename boost::graph_traits < G >::edge_descriptor E;
-     typedef typename boost::graph_traits < G >::vertex_iterator V_i;
-     typedef typename boost::graph_traits < G >::edge_iterator E_i;
-     typedef typename boost::graph_traits < G >::out_edge_iterator EO_i;
-     typedef typename boost::graph_traits < G >::in_edge_iterator EI_i;
+     typedef typename boost::graph_traits < G >::vertex_descriptor   V;
+     typedef typename boost::graph_traits < G >::edge_descriptor     E;
+     typedef typename boost::graph_traits < G >::vertex_iterator     V_i;
+     typedef typename boost::graph_traits < G >::edge_iterator       E_i;
+     typedef typename boost::graph_traits < G >::out_edge_iterator   EO_i;
+     typedef typename boost::graph_traits < G >::in_edge_iterator    EI_i;
 
-     typedef typename boost::graph_traits < G >::vertices_size_type
-         vertices_size_type;
-     typedef typename boost::graph_traits < G >::edges_size_type
-         edges_size_type;
-     typedef typename boost::graph_traits < G >::degree_size_type
-         degree_size_type;
+     typedef typename boost::graph_traits < G >::vertices_size_type  vertices_size_type;
+     typedef typename boost::graph_traits < G >::edges_size_type     edges_size_type;
+     typedef typename boost::graph_traits < G >::degree_size_type    degree_size_type;
 
      //@}
 
@@ -394,9 +391,10 @@ class Pgr_base_graph {
       *  @param count
       */
      template < typename T >
-         void graph_insert_data(const T *edges, int64_t count) {
+         void graph_insert_data(const T *edges, int64_t count)
+     {
              graph_insert_data(std::vector < T >(edges, edges + count));
-         }
+     }
      /*! @brief Inserts *count* edges of type *pgr_edge_t* into the graph
 
         The set of edges should not have an illegal vertex defined

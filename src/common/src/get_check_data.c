@@ -137,8 +137,8 @@ void pgr_check_any_numerical_type(Column_info_t info) {
  */
 char
 pgr_SPI_getChar(
-        HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info,
-        bool strict, char default_value) {
+        HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info, bool strict, char default_value)
+{
     Datum binval;
     bool isNull;
     char value = default_value;
@@ -218,6 +218,7 @@ pgr_SPI_getFloat8(HeapTuple *tuple, TupleDesc *tupdesc, Column_info_t info) {
     PGR_DBG("Variable: %s Value: %lf", info.name, value);
     return value;
 }
+
 
 char*
 pgr_SPI_getText(HeapTuple *tuple, TupleDesc *tupdesc,  Column_info_t info) {

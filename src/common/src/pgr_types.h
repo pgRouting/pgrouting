@@ -132,6 +132,27 @@ typedef struct {
     double reverse_cost;
 } pgr_edge_t;
 
+
+// Patrix : Adition d'une nouvelle structure pour l'algorithme TDQPPP
+
+typedef struct {
+    int64_t id;
+    int64_t source;
+    int64_t target;
+    double cost;
+    double reverse_cost;
+    double distance;
+    int64_t speed_limit;
+	int64_t sens;
+//	int64_t travel_speeds;
+	char   *travel_speeds; // TODO : esto se alamacenará en un arreglo, para las horas de trafico.
+
+} pgr_edge_t_patrix;
+
+
+
+
+
 typedef struct {
   int64_t edge;
   int64_t source;
