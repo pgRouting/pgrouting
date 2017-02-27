@@ -53,7 +53,7 @@ void GraphDefinition::deleteall()
 
 
 // -------------------------------------------------------------------------
-double GraphDefinition::construct_path(int ed_id, int v_pos)
+double GraphDefinition::construct_path(long ed_id, int v_pos)
 {
     if(parent[ed_id].ed_ind[v_pos] == -1)
     {
@@ -99,43 +99,36 @@ double GraphDefinition::construct_path(int ed_id, int v_pos)
 
 // -------------------------------------------------------------------------
 double GraphDefinition::getRestrictionCost(
-    int edge_ind,
+    long edge_ind,
     GraphEdgeInfo& new_edge,
     bool isStart)
 {
     double cost = 0.0;
-    int edge_id = new_edge.m_lEdgeID;
+    long edge_id = new_edge.m_lEdgeID;
     if(m_ruleTable.find(edge_id) == m_ruleTable.end())
     {    
         return(0.0);
     }
     std::vector<Rule> vecRules = m_ruleTable[edge_id];
-    //int ruleIndex;
-    //int totalRule = vecRules.size();
     int st_edge_ind = edge_ind;
     for(const auto &rule : vecRules)
-    //for(ruleIndex = 0; ruleIndex < totalRule; ruleIndex++)
     {
         bool flag = true;
-        //int total_edge = vecRules[ruleIndex].precedencelist.size();
-        int total_edge = rule.precedencelist.size();
-        int i;
         int v_pos = (isStart?0:1);
         edge_ind = st_edge_ind;
-        for(i = 0; i < total_edge; i++)
+        for(auto const &precedence : rule.precedencelist)
         {
             if(edge_ind == -1)
             {
                 flag = false;
                 break;
             }
-           // if(vecRules[ruleIndex].precedencelist[i] != m_vecEdgeVector[edge_ind]->m_lEdgeID)
-            if(rule.precedencelist[i] != m_vecEdgeVector[edge_ind]->m_lEdgeID)
+            if(precedence != m_vecEdgeVector[edge_ind]->m_lEdgeID)
             {
                 flag = false;
                 break;
             }
-            int parent_ind = parent[edge_ind].ed_ind[v_pos];
+            long parent_ind = parent[edge_ind].ed_ind[v_pos];
             v_pos = parent[edge_ind].v_pos[v_pos];
             edge_ind = parent_ind;
         }
@@ -155,10 +148,8 @@ void GraphDefinition::explore(
     std::priority_queue<PDP, std::vector<PDP>,
     std::greater<PDP> > &que)
 {
-    //unsigned int i;
     double extCost = 0.0;
     GraphEdgeInfo* new_edge;
-    // int new_node;
     double totalCost;
     for(const auto &index : vecIndex)
     {
@@ -172,8 +163,6 @@ void GraphDefinition::explore(
         {
             if(new_edge->m_dCost >= 0.0)
             {
-                //new_node = new_edge->m_lEndNode;
-                
                 if(isStart)
                     totalCost = m_dCost[cur_edge.m_lEdgeIndex].endCost + new_edge->m_dCost + extCost;
                 else

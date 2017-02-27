@@ -45,8 +45,8 @@ restrict_t;
 
 typedef struct path_element 
 {
-    int vertex_id;
-    int edge_id;
+    long vertex_id;
+    long edge_id;
     float8 cost;
 } path_element_t;
 

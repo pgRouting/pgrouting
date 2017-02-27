@@ -38,7 +38,7 @@ typedef struct path_element
 */
 
 typedef struct{
-    int ed_ind[2];
+    long ed_ind[2];
     int v_pos[2];
 } PARENT_PATH;
 
@@ -51,7 +51,7 @@ typedef struct{
     double startCost, endCost;
 } CostHolder;
 
-typedef std::map<int, std::vector<Rule> > RuleTable;
+typedef std::map<long, std::vector<Rule> > RuleTable;
 
 
 
@@ -125,9 +125,9 @@ public:
 
 
 private:
-    double construct_path(int ed_id, int v_pos);
+    double construct_path(long ed_id, int v_pos);
     void explore(int cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
-    double getRestrictionCost(int cur_node, GraphEdgeInfo& new_edge, bool isStart);
+    double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge, bool isStart);
     bool addEdge(edge edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_t **path, int *path_count);
