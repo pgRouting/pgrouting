@@ -311,9 +311,9 @@ int GraphDefinition::my_dijkstra(int start_vertex, int end_vertex, unsigned int 
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo* cur_edge = NULL;
 
-    for(i = 0; i < vecsource.size(); i++)
+    for (const auto &source : vecsource)    
     {
-    cur_edge = m_vecEdgeVector[vecsource[i]];
+    cur_edge = m_vecEdgeVector[source];
     if(cur_edge->m_lStartNode == start_vertex)
     {
         if(cur_edge->m_dCost >= 0.0)
@@ -496,21 +496,18 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
                                   path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
-    int total_rule = ruleList.size();
-    int i;
     LongVector vecsource;
-    unsigned int kk;
-    for(i = 0; i < total_rule; i++)
+    for (const auto &rulelist : ruleList)    
     {
         Rule rule;
-        rule.cost = ruleList[i].first;
+        rule.cost = rulelist.first;
         int j;
-        int seq_cnt = ruleList[i].second.size();
+        int seq_cnt = rulelist.second.size();
         for(j = 1; j < seq_cnt; j++)
         {
-            rule.precedencelist.push_back(ruleList[i].second[j]);
+            rule.precedencelist.push_back(rulelist.second[j]);
         }
-        int dest_edge_id = ruleList[i].second[0];
+        int dest_edge_id = rulelist.second[0];
         if(m_ruleTable.find(dest_edge_id) != m_ruleTable.end())
         {
             m_ruleTable[dest_edge_id].push_back(rule);
@@ -525,13 +522,13 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
     
         if(isStartVirtual)
         {
-            if(seq_cnt == 2 && ruleList[i].second[1] == m_lStartEdgeId)
+            if(seq_cnt == 2 && rulelist.second[1] == m_lStartEdgeId)
             {
                 vecsource = m_mapNodeId2Edge[start_vertex];
-                for(kk = 0; kk < vecsource.size(); kk++)
+                for (const auto &source : vecsource)    
                 {
                     rule.precedencelist.clear();
-                    rule.precedencelist.push_back(m_vecEdgeVector[vecsource[kk]]->m_lEdgeID);
+                    rule.precedencelist.push_back(m_vecEdgeVector[source]->m_lEdgeID);
                     m_ruleTable[dest_edge_id].push_back(rule);
                 }
             }
@@ -543,9 +540,9 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
         {
             std::vector<Rule> tmpRules = m_ruleTable[m_lEndEdgeId];
             vecsource = m_mapNodeId2Edge[end_vertex];
-            for(kk = 0; kk < vecsource.size(); kk++)
+            for (const auto &source : vecsource)
             {
-                m_ruleTable.insert(std::make_pair(m_vecEdgeVector[vecsource[kk]]->m_lEdgeID, tmpRules));
+                m_ruleTable.insert(std::make_pair(m_vecEdgeVector[source]->m_lEdgeID, tmpRules));
             }
         }
     }
@@ -594,9 +591,9 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo* cur_edge = NULL;
 
-    for(i = 0; i < vecsource.size(); i++)
+    for (const auto &source : vecsource)
     {
-        cur_edge = m_vecEdgeVector[vecsource[i]];
+        cur_edge = m_vecEdgeVector[source];
         if(cur_edge->m_lStartNode == start_vertex)
         {
             if(cur_edge->m_dCost >= 0.0)
