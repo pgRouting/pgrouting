@@ -318,9 +318,11 @@ int GraphDefinition::my_dijkstra(int start_vertex, int end_vertex, unsigned int 
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo* cur_edge = NULL;
 
-    for(i = 0; i < vecsource.size(); i++)
+    // for(i = 0; i < vecsource.size(); i++)
+    // {
+    for(const auto &rule:vecsource)
     {
-    cur_edge = m_vecEdgeVector[vecsource[i]];
+    cur_edge = m_vecEdgeVector[rule];
     if(cur_edge->m_lStartNode == start_vertex)
     {
         if(cur_edge->m_dCost >= 0.0)
@@ -504,20 +506,22 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 {
     m_ruleTable.clear();
     int total_rule = ruleList.size();
-    int i;
+    //int i;
     LongVector vecsource;
-    unsigned int kk;
-    for(i = 0; i < total_rule; i++)
+    //unsigned int kk;
+    // for(i = 0; i < total_rule; i++)
+    // {
+    for(const auto &rule:total_rule)
     {
         Rule rule;
-        rule.cost = ruleList[i].first;
+        rule.cost = rule.first;
         int j;
-        int seq_cnt = ruleList[i].second.size();
+        int seq_cnt = rule.second.size();
         for(j = 1; j < seq_cnt; j++)
         {
-            rule.precedencelist.push_back(ruleList[i].second[j]);
+            rule.precedencelist.push_back(rule.second[j]);
         }
-        int dest_edge_id = ruleList[i].second[0];
+        int dest_edge_id = rule.second[0];
         if(m_ruleTable.find(dest_edge_id) != m_ruleTable.end())
         {
             m_ruleTable[dest_edge_id].push_back(rule);
@@ -532,7 +536,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 
         if(isStartVirtual)
         {
-            if(seq_cnt == 2 && ruleList[i].second[1] == m_lStartEdgeId)
+            if(seq_cnt == 2 && rule.second[1] == m_lStartEdgeId)
             {
                 vecsource = m_mapNodeId2Edge[start_vertex];
                 for(kk = 0; kk < vecsource.size(); kk++)
@@ -550,9 +554,11 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
         {
             std::vector<Rule> tmpRules = m_ruleTable[m_lEndEdgeId];
             vecsource = m_mapNodeId2Edge[end_vertex];
-            for(kk = 0; kk < vecsource.size(); kk++)
+            // for(kk = 0; kk < vecsource.size(); kk++)
+            // {
+            for(const auto &kk:vecsource)
             {
-                m_ruleTable.insert(std::make_pair(m_vecEdgeVector[vecsource[kk]]->m_lEdgeID, tmpRules));
+                m_ruleTable.insert(std::make_pair(m_vecEdgeVector[kk]->m_lEdgeID, tmpRules));
             }
         }
     }
