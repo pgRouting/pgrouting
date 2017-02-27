@@ -539,10 +539,12 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
             if(seq_cnt == 2 && ruleIndex.second[1] == m_lStartEdgeId)
             {
                 vecsource = m_mapNodeId2Edge[start_vertex];
-                for(kk = 0; kk < vecsource.size(); kk++)
+                // for(kk = 0; kk < vecsource.size(); kk++)
+                // {
+                for(const auto &vecsourceIndex:vecsource)
                 {
                     rule.precedencelist.clear();
-                    rule.precedencelist.push_back(m_vecEdgeVector[vecsource[kk]]->m_lEdgeID);
+                    rule.precedencelist.push_back(m_vecEdgeVector[vecsourceIndex]->m_lEdgeID);
                     m_ruleTable[dest_edge_id].push_back(rule);
                 }
             }
