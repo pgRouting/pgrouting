@@ -29,8 +29,8 @@
 typedef struct edge
 {
     int id;
-    int source;
-    int target;
+    long source;
+    long target;
     float8 cost;
     float8 reverse_cost;
 } edge_t;

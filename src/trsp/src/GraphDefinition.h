@@ -44,7 +44,7 @@ typedef struct{
 
 typedef struct{
     double cost;
-    std::vector<int> precedencelist;
+    std::vector<long> precedencelist;
 } Rule;
 
 typedef struct{
@@ -126,7 +126,7 @@ public:
 
 private:
     double construct_path(long ed_id, int v_pos);
-    void explore(int cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
+    void explore(long cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
     double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge, bool isStart);
     bool addEdge(edge edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
@@ -138,7 +138,7 @@ private:
     GraphEdgeVector m_vecEdgeVector;
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
-    int max_node_id;
+    long max_node_id;
     int max_edge_id;
     int m_lStartEdgeId;
     int m_lEndEdgeId;

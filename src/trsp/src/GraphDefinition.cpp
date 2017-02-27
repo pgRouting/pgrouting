@@ -110,7 +110,7 @@ double GraphDefinition::getRestrictionCost(
         return(0.0);
     }
     std::vector<Rule> vecRules = m_ruleTable[edge_id];
-    int st_edge_ind = edge_ind;
+    long st_edge_ind = edge_ind;
     for(const auto &rule : vecRules)
     {
         bool flag = true;
@@ -141,7 +141,7 @@ double GraphDefinition::getRestrictionCost(
 
 // -------------------------------------------------------------------------
 void GraphDefinition::explore(
-    int cur_node,
+    long cur_node,
     GraphEdgeInfo& cur_edge,
     bool isStart,
     LongVector &vecIndex,
@@ -214,21 +214,17 @@ int GraphDefinition::multi_dijkstra(
     if(ruleList.size() > 0)
     {
     m_ruleTable.clear();
-    int total_rule = ruleList.size();
-    int i;
     LongVector vecsource;
     // int kk;
-    for(i = 0; i < total_rule; i++)
+    for(const auto &ruleL_i : ruleList)
     {
         Rule rule;
-        rule.cost = ruleList[i].first;
-        int j;
-        int seq_cnt = ruleList[i].second.size();
-        for(j = 1; j < seq_cnt; j++)
+        rule.cost = ruleL_i.first;
+	for(auto const &seq : ruleL_i.second)
         {
-            rule.precedencelist.push_back(ruleList[i].second[j]);
+            rule.precedencelist.push_back(seq);
         }
-        int dest_edge_id = ruleList[i].second[0];
+        int dest_edge_id = ruleL_i.second[0];
         if(m_ruleTable.find(dest_edge_id) != m_ruleTable.end())
         {
             m_ruleTable[dest_edge_id].push_back(rule);
@@ -247,8 +243,8 @@ int GraphDefinition::multi_dijkstra(
     parent = new PARENT_PATH[edge_count + 1];
     m_dCost = new CostHolder[edge_count + 1];
     m_vecPath.clear();
-    int i;
-    int total_vertices = vertices.size();
+    size_t i;
+    size_t total_vertices = vertices.size();
     for(i = 0; i < total_vertices - 1; i++)
     {
     int ret = my_dijkstra(vertices[i], vertices[i + 1], edge_count, err_msg);
@@ -260,7 +256,7 @@ int GraphDefinition::multi_dijkstra(
     }
 
     *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
-    *path_count = m_vecPath.size();
+    *path_count = static_cast<int>(m_vecPath.size());
 
     for(i = 0; i < *path_count; i++)
     {
@@ -333,7 +329,7 @@ int GraphDefinition::my_dijkstra(int start_vertex, int end_vertex, unsigned int 
     }
     
     // int new_node;
-    int cur_node = -1;
+    long cur_node = -1;
 
     while(!que.empty())
     {
@@ -403,7 +399,7 @@ int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int sta
     }
     GraphEdgeInfo* start_edge_info = m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
     edge_t start_edge;
-    int start_vertex, end_vertex;
+    long start_vertex, end_vertex;
     m_dStartpart = start_part;
     m_dEndPart = end_part;
     m_lStartEdgeId = start_edge_id;
@@ -500,8 +496,8 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
     {
         Rule rule;
         rule.cost = ruleL_i.first;
-        int j;
-        int seq_cnt = ruleL_i.second.size();
+        size_t j;
+        size_t seq_cnt = ruleL_i.second.size();
         for(j = 1; j < seq_cnt; j++)
         {
             rule.precedencelist.push_back(ruleL_i.second[j]);
@@ -619,7 +615,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
     //m_dCost[start_vertex] = 0.0;
 
     // int new_node;
-    int cur_node = -1;
+    long cur_node = -1;
 
     while(!que.empty())
     {
@@ -689,7 +685,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
         }
         
         *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
-        *path_count = m_vecPath.size();
+        *path_count = static_cast<int>(m_vecPath.size());
 
         for(int i = 0; i < *path_count; i++)
         {
