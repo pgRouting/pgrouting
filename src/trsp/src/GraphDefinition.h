@@ -42,10 +42,11 @@ typedef struct{
     int v_pos[2];
 } PARENT_PATH;
 
-typedef struct{
+typedef struct Rule{
     double cost;
     std::vector<long> precedencelist;
-} Rule;
+    Rule(double c, std::vector<long> p) : cost(c), precedencelist(p) { }
+}Rule;
 
 typedef struct{
     double startCost, endCost;
