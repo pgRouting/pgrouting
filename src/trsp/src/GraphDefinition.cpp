@@ -215,29 +215,27 @@ int GraphDefinition::multi_dijkstra(
     {
     m_ruleTable.clear();
     LongVector vecsource;
-    // int kk;
-    for(const auto &ruleL_i : ruleList)
+    for(const auto &rule : ruleList)
     {
-        Rule rule;
-        rule.cost = ruleL_i.first;
-	for(auto const &seq : ruleL_i.second)
-        {
-            rule.precedencelist.push_back(seq);
-        }
-        int dest_edge_id = ruleL_i.second[0];
-        if(m_ruleTable.find(dest_edge_id) != m_ruleTable.end())
-        {
-            m_ruleTable[dest_edge_id].push_back(rule);
-        }
-        else
-        {
-            std::vector<Rule> temprules;
-            temprules.clear();
-            temprules.push_back(rule);
-            m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
-        }
+	std::vector<long> temp_precedencelist;
+	temp_precedencelist.clear();
+	for(auto const &seq : rule.second)
+	{
+	    temp_precedencelist.push_back(seq);
+	}
+	int dest_edge_id = rule.second[0];
+	if(m_ruleTable.find(dest_edge_id) != m_ruleTable.end())
+	{
+	    m_ruleTable[dest_edge_id].push_back((Rule){rule.first, temp_precedencelist});
+	}
+	else
+	{
+	    std::vector<Rule> temprules;
+	    temprules.clear();
+	    temprules.push_back((Rule){rule.first, temp_precedencelist});
+	    m_ruleTable.insert(std::make_pair(dest_edge_id, temprules));
+	}
     }
-    
     m_bIsturnRestrictOn = true;
     }
     parent = new PARENT_PATH[edge_count + 1];
