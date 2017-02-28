@@ -53,7 +53,7 @@ void GraphDefinition::deleteall()
 
 
 // -------------------------------------------------------------------------
-double GraphDefinition::construct_path(int ed_id, int v_pos)
+double GraphDefinition::construct_path(long ed_id, int v_pos)
 {
     if(parent[ed_id].ed_ind[v_pos] == -1)
     {
@@ -99,25 +99,24 @@ double GraphDefinition::construct_path(int ed_id, int v_pos)
 
 // -------------------------------------------------------------------------
 double GraphDefinition::getRestrictionCost(
-    int edge_ind,
+    long edge_ind,
     GraphEdgeInfo& new_edge,
     bool isStart)
 {
     double cost = 0.0;
-    int edge_id = new_edge.m_lEdgeID;
+    long edge_id = new_edge.m_lEdgeID;
     if(m_ruleTable.find(edge_id) == m_ruleTable.end())
     {    
         return(0.0);
     }
     std::vector<Rule> vecRules = m_ruleTable[edge_id];
-    int st_edge_ind = edge_ind;
-    
-    for (const auto &rule : vecRules)
+    long st_edge_ind = edge_ind;
+    for(const auto &rule : vecRules)
     {
         bool flag = true;
         int v_pos = (isStart?0:1);
         edge_ind = st_edge_ind;
-        for (const auto &precedence : rule.precedencelist)
+        for(auto const &precedence : rule.precedencelist)
         {
             if(edge_ind == -1)
             {
@@ -129,7 +128,7 @@ double GraphDefinition::getRestrictionCost(
                 flag = false;
                 break;
             }
-            int parent_ind = parent[edge_ind].ed_ind[v_pos];
+            auto parent_ind = parent[edge_ind].ed_ind[v_pos];
             v_pos = parent[edge_ind].v_pos[v_pos];
             edge_ind = parent_ind;
         }
@@ -143,18 +142,17 @@ double GraphDefinition::getRestrictionCost(
 
 // -------------------------------------------------------------------------
 void GraphDefinition::explore(
-    int cur_node,
+    long cur_node,
     GraphEdgeInfo& cur_edge,
     bool isStart,
     LongVector &vecIndex,
     std::priority_queue<PDP, std::vector<PDP>,
     std::greater<PDP> > &que)
 {
-    unsigned int i;
     double extCost = 0.0;
     GraphEdgeInfo* new_edge;
     double totalCost;
-    for (const auto &index: vecIndex)    
+    for(const auto &index : vecIndex)
     {
         new_edge = m_vecEdgeVector[index];
         extCost = 0.0;
@@ -166,8 +164,6 @@ void GraphDefinition::explore(
         {
             if(new_edge->m_dCost >= 0.0)
             {
-                //new_node = new_edge->m_lEndNode;
-                
                 if(isStart)
                     totalCost = m_dCost[cur_edge.m_lEdgeIndex].endCost + new_edge->m_dCost + extCost;
                 else
@@ -219,21 +215,17 @@ int GraphDefinition::multi_dijkstra(
     if(ruleList.size() > 0)
     {
     m_ruleTable.clear();
-    int total_rule = ruleList.size();
-    int i;
     LongVector vecsource;
     // int kk;
-    for(i = 0; i < total_rule; i++)
+    for(const auto &ruleL_i : ruleList)
     {
         Rule rule;
-        rule.cost = ruleList[i].first;
-        int j;
-        int seq_cnt = ruleList[i].second.size();
-        for(j = 1; j < seq_cnt; j++)
+        rule.cost = ruleL_i.first;
+	for(auto const &seq : ruleL_i.second)
         {
-            rule.precedencelist.push_back(ruleList[i].second[j]);
+            rule.precedencelist.push_back(seq);
         }
-        int dest_edge_id = ruleList[i].second[0];
+        int dest_edge_id = ruleL_i.second[0];
         if(m_ruleTable.find(dest_edge_id) != m_ruleTable.end())
         {
             m_ruleTable[dest_edge_id].push_back(rule);
@@ -252,8 +244,8 @@ int GraphDefinition::multi_dijkstra(
     parent = new PARENT_PATH[edge_count + 1];
     m_dCost = new CostHolder[edge_count + 1];
     m_vecPath.clear();
-    int i;
-    int total_vertices = vertices.size();
+    size_t i;
+    size_t total_vertices = vertices.size();
     for(i = 0; i < total_vertices - 1; i++)
     {
     int ret = my_dijkstra(vertices[i], vertices[i + 1], edge_count, err_msg);
@@ -265,9 +257,9 @@ int GraphDefinition::multi_dijkstra(
     }
 
     *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
-    *path_count = m_vecPath.size();
+    *path_count = static_cast<int>(m_vecPath.size());
 
-    for(i = 0; i < *path_count; i++)
+    for(int i = 0; i < *path_count; i++)
     {
     (*path)[i].vertex_id = m_vecPath[i].vertex_id;
     (*path)[i].edge_id = m_vecPath[i].edge_id;
@@ -279,7 +271,7 @@ int GraphDefinition::multi_dijkstra(
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition::my_dijkstra(int start_vertex, int end_vertex, unsigned int edge_count, char **err_msg)
+int GraphDefinition::my_dijkstra(long start_vertex, long end_vertex, unsigned int edge_count, char **err_msg)
 {
     if(!m_bIsGraphConstructed)
     {
@@ -311,7 +303,7 @@ int GraphDefinition::my_dijkstra(int start_vertex, int end_vertex, unsigned int 
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo* cur_edge = NULL;
 
-    for (const auto &source : vecsource)    
+    for(const auto &source : vecsource)
     {
     cur_edge = m_vecEdgeVector[source];
     if(cur_edge->m_lStartNode == start_vertex)
@@ -337,7 +329,7 @@ int GraphDefinition::my_dijkstra(int start_vertex, int end_vertex, unsigned int 
     }
     
     // int new_node;
-    int cur_node = -1;
+    long cur_node = -1;
 
     while(!que.empty())
     {
@@ -407,7 +399,7 @@ int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int sta
     }
     GraphEdgeInfo* start_edge_info = m_vecEdgeVector[m_mapEdgeId2Index[start_edge_id]];
     edge_t start_edge;
-    int start_vertex, end_vertex;
+    long start_vertex, end_vertex;
     m_dStartpart = start_part;
     m_dEndPart = end_part;
     m_lStartEdgeId = start_edge_id;
@@ -492,22 +484,23 @@ int GraphDefinition::my_dijkstra(edge_t *edges, unsigned int edge_count, int sta
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost,
+int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, long start_vertex, long end_vertex, bool directed, bool has_reverse_cost,
                                   path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
     LongVector vecsource;
-    for (const auto &rulelist : ruleList)    
+    unsigned int kk;
+    for (const auto &ruleL_i : ruleList)
     {
         Rule rule;
-        rule.cost = rulelist.first;
-        int j;
-        int seq_cnt = rulelist.second.size();
+        rule.cost = ruleL_i.first;
+        size_t j;
+        size_t seq_cnt = ruleL_i.second.size();
         for(j = 1; j < seq_cnt; j++)
         {
-            rule.precedencelist.push_back(rulelist.second[j]);
+            rule.precedencelist.push_back(ruleL_i.second[j]);
         }
-        int dest_edge_id = rulelist.second[0];
+        int dest_edge_id = ruleL_i.second[0];
         if(m_ruleTable.find(dest_edge_id) != m_ruleTable.end())
         {
             m_ruleTable[dest_edge_id].push_back(rule);
@@ -522,7 +515,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
     
         if(isStartVirtual)
         {
-            if(seq_cnt == 2 && rulelist.second[1] == m_lStartEdgeId)
+            if(seq_cnt == 2 && ruleL_i.second[1] == m_lStartEdgeId)
             {
                 vecsource = m_mapNodeId2Edge[start_vertex];
                 for (const auto &source : vecsource)    
@@ -552,7 +545,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 
 
 // -------------------------------------------------------------------------
-int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int start_vertex, int end_vertex, bool directed, bool has_reverse_cost,
+int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, long start_vertex, long end_vertex, bool directed, bool has_reverse_cost,
                 path_element_t **path, int *path_count, char **err_msg)
 {
     if(!m_bIsGraphConstructed)
@@ -590,8 +583,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
 
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo* cur_edge = NULL;
-
-    for (const auto &source : vecsource)
+    for(const auto &source: vecsource)
     {
         cur_edge = m_vecEdgeVector[source];
         if(cur_edge->m_lStartNode == start_vertex)
@@ -620,7 +612,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
     //m_dCost[start_vertex] = 0.0;
 
     // int new_node;
-    int cur_node = -1;
+    long cur_node = -1;
 
     while(!que.empty())
     {
@@ -690,7 +682,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
         }
         
         *path = (path_element_t *) malloc(sizeof(path_element_t) * (m_vecPath.size() + 1));
-        *path_count = m_vecPath.size();
+        *path_count = static_cast<int>(m_vecPath.size());
 
         for(int i = 0; i < *path_count; i++)
         {
