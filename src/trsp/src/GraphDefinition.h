@@ -38,20 +38,20 @@ typedef struct path_element
 */
 
 typedef struct{
-    int ed_ind[2];
+    long ed_ind[2];
     int v_pos[2];
 } PARENT_PATH;
 
 typedef struct{
     double cost;
-    std::vector<int> precedencelist;
+    std::vector<long> precedencelist;
 } Rule;
 
 typedef struct{
     double startCost, endCost;
 } CostHolder;
 
-typedef std::map<int, std::vector<Rule> > RuleTable;
+typedef std::map<long, std::vector<Rule> > RuleTable;
 
 
 
@@ -89,17 +89,17 @@ public:
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra(int start_vertex, int end_vertex,
+    int my_dijkstra(long start_vertex, long end_vertex,
                     unsigned int edge_count, char** err_msg);
 
     int my_dijkstra(edge_t *edges, unsigned int edge_count,
-                    int start_vertex, int end_vertex,
+                    long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_t **path, int *path_count,
                     char **err_msg);
 
     int my_dijkstra(edge_t *edges, unsigned int edge_count,
-                    int start_vertex, int end_vertex,
+                    long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
                     path_element_t **path, int *path_count,
                     char **err_msg,
@@ -125,9 +125,9 @@ public:
 
 
 private:
-    double construct_path(int ed_id, int v_pos);
-    void explore(int cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
-    double getRestrictionCost(int cur_node, GraphEdgeInfo& new_edge, bool isStart);
+    double construct_path(long ed_id, int v_pos);
+    void explore(long cur_node, GraphEdgeInfo& cur_edge, bool isStart, LongVector &vecIndex, std::priority_queue<PDP, std::vector<PDP>, std::greater<PDP> > &que);
+    double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge, bool isStart);
     bool addEdge(edge edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
     bool get_single_cost(double total_cost, path_element_t **path, int *path_count);
@@ -138,7 +138,7 @@ private:
     GraphEdgeVector m_vecEdgeVector;
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
-    int max_node_id;
+    long max_node_id;
     int max_edge_id;
     int m_lStartEdgeId;
     int m_lEndEdgeId;

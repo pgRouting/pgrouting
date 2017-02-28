@@ -8,11 +8,11 @@
 
 set -e
 
-OS="$(lsb_release -c -s)"
+#OS="$(lsb_release -c -s)"
 
-if [[ "$OS" != "trusty" ]] ; then
-    exit 0
-fi
+#if [[ "$OS" != "trusty" ]] ; then
+#    exit 0
+#fi
 
 
 #install doxygen only on trusty

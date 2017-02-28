@@ -265,8 +265,8 @@ The points of interest
 On *pgr_trsp*, to be able to use the table information:
 * Each parameter has to be extracted explicitly from the table
 * Regardles of the point pid original value
-  * will allways be -1 for the first point
-  * will allways be -2 for the second point
+  * will always be -1 for the first point
+  * will always be -2 for the second point
 ```
 0|-1|1|0.6
 1|2|4|0.7
@@ -311,7 +311,7 @@ using pgr_withPoints to verify the shortest path from pids (1 to 3)
 5|5|-3|-1|0|3.2
 ```
 **pgr_withPoints** can be used to see when the route passes in front of other points
-In ths example point pid=6 is passed in front of
+In this example point pid=6 is passed in front of
 ```
 1|1|-1|1|0.6|0
 2|2|2|4|0.7|0.6
@@ -469,13 +469,13 @@ Internaly:
 * builds a new graph and calls pgr_dijkstraVia
 
 What it returns
-* returns EMTPY SET to represent no route
+* returns EMPTY SET to represent no route
 * edge = -1 in the result to represent the end of a intermediate path
 * edge = -2 in the result to represent the end of the last path & route
 * the points are renumbered to -1, -2 .. -N
 * if a point is part of a path it will show on the path
 
-Note: I dont mention the wrapper name due to the fact that this is not official documentation
+Note: I do not mention the wrapper name due to the fact that this is not official documentation
 Note: I will use *_pgr_withPointsVia* as the wrapper name just for sake of this notes
 Example excution
 ```
@@ -513,7 +513,7 @@ The connection to the server was lost. Attempting reset: Failed.
 ```
 This example no path is found (edge 17 is disconnected) from the big graph.
 * *_pgr_withPointsVia* is used
-* returns EMTPY SET to represent no route
+* returns EMPTY SET to represent no route
 
 ```
 ```
