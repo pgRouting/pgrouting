@@ -79,23 +79,15 @@ int trsp_edge_wrapper(
 
         int i, j;
         ruleTable.clear();
-        // for (i=0; i<restrict_count; i++) {
-        for(const auto &rule:restricts)
-        {
+        for (i=0; i<restrict_count; i++) {
             std::vector<int> seq;
             seq.clear();
-            seq.push_back(rule.target_id);
-            // for(j = 0; j<MAX_RULE_LENGTH && rule.via[j]>-1; j++)
-            // {
-            for(const auto &innerRule:MAX_RULE_LENGTH)
+            seq.push_back(restricts[i].target_id);
+            for(j = 0; j<MAX_RULE_LENGTH && restricts[i].via[j]>-1; j++)
             {
-              if(rule.via[innerRule]<=-1)
-              {
-                break;
-              }
-                seq.push_back(rule.via[innerRule]);
+                seq.push_back(restricts[i].via[j]);
             }
-            ruleTable.push_back(make_pair(rule.to_cost, seq));
+            ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
 
         GraphDefinition gdef;
