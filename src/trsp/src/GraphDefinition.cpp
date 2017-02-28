@@ -128,7 +128,7 @@ double GraphDefinition::getRestrictionCost(
                 flag = false;
                 break;
             }
-            long parent_ind = parent[edge_ind].ed_ind[v_pos];
+            auto parent_ind = parent[edge_ind].ed_ind[v_pos];
             v_pos = parent[edge_ind].v_pos[v_pos];
             edge_ind = parent_ind;
         }
@@ -488,8 +488,6 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, long s
                                   path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
-    //int total_rule = ruleList.size();
-    //int i;
     LongVector vecsource;
     unsigned int kk;
     for (const auto &ruleL_i : ruleList)
