@@ -110,11 +110,7 @@ double GraphDefinition::getRestrictionCost(
         return(0.0);
     }
     std::vector<Rule> vecRules = m_ruleTable[edge_id];
-    // int ruleIndex;
-    // int totalRule = vecRules.size();
     long st_edge_ind = edge_ind;
-    // for(ruleIndex = 0; ruleIndex < totalRule; ruleIndex++)
-    // {
     for(const auto &rule:vecRules)
     {
         bool flag = true;
@@ -157,10 +153,7 @@ void GraphDefinition::explore(
     unsigned int i;
     double extCost = 0.0;
     GraphEdgeInfo* new_edge;
-    // int new_node;
     double totalCost;
-    // for(i = 0; i < vecIndex.size(); i++)
-    // {
     for(const auto &rule:vecIndex)
     {
         new_edge = m_vecEdgeVector[rule];
@@ -229,7 +222,6 @@ int GraphDefinition::multi_dijkstra(
     int total_rule = ruleList.size();
     int i;
     LongVector vecsource;
-    // int kk;
     for(i = 0; i < total_rule; i++)
     {
         Rule rule;
@@ -505,12 +497,7 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
                                   path_element_t **path, int *path_count, char **err_msg, std::vector<PDVI> &ruleList)
 {
     m_ruleTable.clear();
-    //int total_rule = ruleList.size();
-    //int i;
     LongVector vecsource;
-    //unsigned int kk;
-    // for(i = 0; i < total_rule; i++)
-    // {
     for(const auto &ruleIndex:ruleList)
     {
         Rule rule;
@@ -556,8 +543,6 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
         {
             std::vector<Rule> tmpRules = m_ruleTable[m_lEndEdgeId];
             vecsource = m_mapNodeId2Edge[end_vertex];
-            // for(kk = 0; kk < vecsource.size(); kk++)
-            // {
             for(const auto &kk:vecsource)
             {
                 m_ruleTable.insert(std::make_pair(m_vecEdgeVector[kk]->m_lEdgeID, tmpRules));
@@ -609,8 +594,6 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, int st
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo* cur_edge = NULL;
 
-    // for(i = 0; i < vecsource.size(); i++)
-    // {
     for(const auto &rule:vecsource)
     {
         cur_edge = m_vecEdgeVector[rule];
