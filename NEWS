@@ -5,6 +5,14 @@ Changes for 2.5.0
 * New Signatures:
   * pgr_bdAstar(one to one)
 * New Proposed functions
+  * pgr_bdAstar(one to many)
+  * pgr_bdAstar(many to one)
+  * pgr_bdAstar(many to many)
+  * pgr_bdAstarCost(one to one)
+  * pgr_bdAstarCost(one to many)
+  * pgr_bdAstarCost(many to one)
+  * pgr_bdAstarCost(many to many)
+  * pgr_bdAstarCostMatrix
   * pgr_bdDijkstra(one to many)
   * pgr_bdDijkstra(many to one)
   * pgr_bdDijkstra(many to many)
