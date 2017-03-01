@@ -24,16 +24,24 @@ int trsp_node_wrapper(
     try {
 
         std::vector<PDVI> ruleTable;
-
-        int i, j;
+        int i;
         ruleTable.clear();
-        for (i=0; i<restrict_count; i++) {
+        for (i=0 ; i<restrict_count; i++) {
             std::vector<int> seq;
             seq.clear();
             seq.push_back(restricts[i].target_id);
-            for(j = 0; j<MAX_RULE_LENGTH && restricts[i].via[j]>-1; j++)
+            int counter = 0;
+            for(const auto &innervia : restricts[i].via)
             {
-                seq.push_back(restricts[i].via[j]);
+               if((counter++ < MAX_RULE_LENGTH) && (innervia >-1))
+               {
+                   seq.push_back(innervia);
+               }
+
+	       else
+               {
+                   break;
+               }	
             }
             ruleTable.push_back(make_pair(restricts[i].to_cost, seq));
         }
