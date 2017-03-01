@@ -47,13 +47,11 @@ process(
         char *edges_sql,
         int64_t source_vertex,
         int64_t sink_vertex,
-        char *algorithm,
+        int algorithm,
         bool only_flow,
         pgr_flow_t **result_tuples,
         size_t *result_count) {
-    if (!(strcmp(algorithm, "push_relabel") == 0
-                || strcmp(algorithm, "edmonds_karp") == 0
-                || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
+    if (algorithm < 1 || algorithm > 3) {
         elog(ERROR, "Unknown algorithm");
     }
 
@@ -98,14 +96,14 @@ process(
     if (only_flow) {
         time_msg("pgr_maxFlow(one to one)",
                 start_t, clock());
-    } else if (strcmp(algorithm, "push_relabel") == 0) {
+    } else if (algorithm == 1) {
         time_msg("pgr_maxFlowPushRelabel(one to one)",
                 start_t, clock());
-    } else if (strcmp(algorithm, "edmonds_karp") == 0) {
-        time_msg("pgr_maxFlowEdmondsKarp(one to one)",
+    } else if (algorithm == 2) {
+        time_msg("pgr_maxFlowBoykovKolmogorov(one to one)",
                 start_t, clock());
     } else {
-        time_msg("pgr_maxFlowBoykovKolmogorov(one to one)",
+        time_msg("pgr_maxFlowEdmondsKarp(one to one)",
                 start_t, clock());
     }
 
@@ -152,7 +150,7 @@ max_flow_one_to_one(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
-                text_to_cstring(PG_GETARG_TEXT_P(3)),
+                PG_GETARG_INT32(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);

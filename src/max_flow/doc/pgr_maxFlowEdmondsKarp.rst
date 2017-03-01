@@ -20,7 +20,7 @@ Name
 ``pgr_maxFlowEdmondsKarp`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
 
-.. include:: ../../proposed.rst
+.. include:: ../../proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -55,10 +55,10 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertex)
-    pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertex)
-    pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertices)
-    pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertices)
+    pgr_maxFlowEdmondsKarp(edges_sql, source,  target)
+    pgr_maxFlowEdmondsKarp(edges_sql, sources, target)
+    pgr_maxFlowEdmondsKarp(edges_sql, source,  targets)
+    pgr_maxFlowEdmondsKarp(edges_sql, sources, targets)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -75,7 +75,7 @@ Calculates the maximum flow from one source vertex to one sink vertex on a `dire
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertex)
+    pgr_maxFlowEdmondsKarp(edges_sql, source,  target)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -95,7 +95,7 @@ Calculates the maximum flow from one source vertex to many sink vertices on a `d
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertices)
+    pgr_maxFlowEdmondsKarp(edges_sql, source,  targets)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -115,7 +115,7 @@ Calculates the maximum flow from many source vertices to one sink vertex on a `d
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertex)
+    pgr_maxFlowEdmondsKarp(edges_sql, sources,  target)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -135,7 +135,7 @@ Calculates the maximum flow from many sources to many sinks on a `directed` grap
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertices)
+    pgr_maxFlowEdmondsKarp(edges_sql, sources,  targets)
     RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
@@ -150,50 +150,19 @@ Calculates the maximum flow from many sources to many sinks on a `directed` grap
 Description of the Signatures
 -----------------------------------------------
 
-Description of the SQL query
-.................................................
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
 
-====================  ===================   =================================================
-Column                Type                  Description
-====================  ===================   =================================================
-**id**                ``ANY-INTEGER``       Identifier of the edge.
-**source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**capacity**          ``ANY-INTEGER``       Capacity of the edge `(source, target)`. Must be positive.
-**reverse_capacity**  ``ANY-INTEGER``       (optional) Weight of the edge `(target, source)`. Must be positive or null.
-====================  ===================   =================================================
+.. include:: ../sql/max_flow.sql
+    :start-after: pgr_flow_parameters_start
+    :end-before: pgr_flow_parameters_end
 
-Where:
+.. include:: ./pgr_maxFlowPushRelabel.rst
+    :start-after: result_start
+    :end-before: result_end
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-
-
-Description of the parameters of the signatures
-.................................................
-
-================= ====================== =================================================
-Column            Type                   Description
-================= ====================== =================================================
-**edges_sql**     ``TEXT``               SQL query as described above.
-**source_vertex** ``BIGINT``             Identifier of the source vertex(or vertices).
-**sink_vertex**   ``BIGINT``             Identifier of the sink vertex(or vertices).
-================= ====================== =================================================
-
-Description of the return values
-.................................................
-
-=====================  ====================  =================================================
-Column                 Type                  Description
-=====================  ====================  =================================================
-**seq**                ``INT``               Sequential value starting from **1**.
-**edge_id**            ``BIGINT``            Identifier of the edge in the original query(edges_sql).
-**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
-**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
-**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
-**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
-=====================  ====================  =================================================
 
 See Also
 --------

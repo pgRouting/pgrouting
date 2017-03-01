@@ -178,6 +178,7 @@ Change Log
 
 :ref:`change_log`
 
+   - :ref:`changelog_2_5_0`
    - :ref:`changelog_2_4_0`
    - :ref:`changelog_2_3_2`
    - :ref:`changelog_2_3_1`

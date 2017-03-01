@@ -9,19 +9,27 @@
 
 .. _maxFlow:
 
-Maximum Flow
+Flow - Group Of Functions
 ===================================
+
+- Maximum Flow
 
   - :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
   - :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm with details of flow on edges.
   - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
   - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
 
+- Flow Applications
+
+  - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching in a graph.
+  - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
+
+
 The maximum flow through the graph is guaranteed to be the same with all implementations,
 but the actual flow through each edge may vary.
 
 
-.. include:: ../../proposed.rst
+.. include:: ../../proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -32,6 +40,9 @@ but the actual flow through each edge may vary.
         ./pgr_maxFlowPushRelabel
         ./pgr_maxFlowEdmondsKarp
         ./pgr_maxFlowBoykovKolmogorov
+        ./pgr_maximumCardinalityMatching
+        ./pgr_edgeDisjointPaths
+
 
 
 Problem definition

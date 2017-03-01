@@ -193,7 +193,7 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 

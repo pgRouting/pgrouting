@@ -61,8 +61,10 @@ class Solution : public Pgr_messages, public PD_problem {
      Solution();
 
 
+#if 0
      /* @brief move constructor */
      Solution(Solution &&sol) = default;
+#endif
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :

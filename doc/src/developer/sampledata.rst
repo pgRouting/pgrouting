@@ -128,9 +128,9 @@ When working with city networks, this is recommended for point of view of pedest
 
 .. _pickdeliverdata:
 
-Pick & Deliver Data
+pgr_gsoc_vrppdtw data
 .........................
 
-.. literalinclude:: ../../../src/pickDeliver/test/pickDeliver.data
+.. literalinclude:: ../../../tools/testers/vrppdtw_data.sql
 
 

@@ -27,25 +27,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./pgr_edgedisjointpaths.hpp"
+#include "./edge_disjoint_paths_driver.h"
 
 #include <sstream>
 #include <vector>
 #include <set>
 
+#include "./pgr_maxflow.hpp"
+
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
 
-#include "./edge_disjoint_paths_driver.h"
 
 void
 do_pgr_edge_disjoint_paths(
     pgr_basic_edge_t *data_edges,
     size_t total_edges,
-    int64_t *source_vertices,
+    int64_t *sources,
     size_t size_source_verticesArr,
-    int64_t *sink_vertices,
+    int64_t *sinks,
     size_t size_sink_verticesArr,
     bool directed,
     General_path_element_t **return_tuples,
@@ -58,24 +59,21 @@ do_pgr_edge_disjoint_paths(
     std::ostringstream err;
     try {
         std::vector<General_path_element_t> path_elements;
-        std::set<int64_t> set_source_vertices;
-        std::set<int64_t> set_sink_vertices;
-        for (size_t i = 0; i < size_source_verticesArr; ++i) {
-            set_source_vertices.insert(source_vertices[i]);
-        }
-        for (size_t i = 0; i < size_sink_verticesArr; ++i) {
-            set_sink_vertices.insert(sink_vertices[i]);
-        }
+        std::set<int64_t> set_source_vertices(
+                sources, sources + size_source_verticesArr);
+        std::set<int64_t> set_sink_vertices(
+                sinks, sinks + size_sink_verticesArr);
+        std::vector<pgr_basic_edge_t> edges(
+                data_edges, data_edges + total_edges);
 
-        pgrouting::flow::PgrEdgeDisjointPathsGraph<pgrouting::FlowGraph> G;
+        pgrouting::graph::PgrFlowGraph G(
+                edges,
+                set_source_vertices,
+                set_sink_vertices, directed);
 
         /*
          * boykov_kolmogorov is only for directed graphs
          */
-
-        G.create_edge_disjoint_paths_graph(data_edges, total_edges,
-                set_source_vertices,
-                set_sink_vertices, directed);
         auto flow = G.boykov_kolmogorov();
         G.get_edge_disjoint_paths(path_elements, flow);
 

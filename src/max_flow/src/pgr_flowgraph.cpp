@@ -1,8 +1,10 @@
 /*PGR-GNU*****************************************************************
-File: points_input.h
 
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-vicky_vergara@hotmail.com
+Copyright (c) 2015 pgRouting developers
+Mail: project@pgrouting.org
+
+Copyright (c) 2016 Andrea Nardelli
+Mail: nrd.nardelli@gmail.com
 
 ------
 
@@ -22,29 +24,4 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_COMMON_SRC_POINTS_INPUT_H_
-#define SRC_COMMON_SRC_POINTS_INPUT_H_
-#pragma once
-
-#include "./pgr_types.h"
-
-/*! @brief pgr_get_points 
-
-For queries of the type:
-~~~~{.c}
-SELECT pid, edge_id, fraction, [side]
-FROM edge_table;
-~~~~
-
-@param[in] points_sql
-@param[out] points
-@param[out] total_points
-*/
-void pgr_get_points(
-        char *points_sql,
-        Point_on_edge_t **points,
-        size_t *total_points);
-
-
-
-#endif  // SRC_COMMON_SRC_POINTS_INPUT_H_
+#include "pgr_flowgraph.hpp"

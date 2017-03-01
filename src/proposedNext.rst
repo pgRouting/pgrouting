@@ -67,6 +67,22 @@ Stable proposed Functions
 
   - :ref:`astar`
 
+- A new Section
+
+  - :ref:`maxFlow`
+
+    - Maximum Flow
+
+      - :ref:`pgr_maxFlow` - Maximum flow using push & relabel algorithm.
+      - :ref:`pgr_maxFlowPushRelabel` - Detailed Maximum flow using push & relabel algorithm.
+      - :ref:`pgr_maxFlowEdmondsKarp` - Detailed Maximum flow using Edmonds & Karp algorithm.
+      - :ref:`pgr_maxFlowBoykovKolmogorov` - Detailed Maximum flow using Boykov & Kolmogorov algorithm.
+
+    - Flow Applications
+
+      - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
+      - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
+
 ..
     to-here
 
@@ -82,3 +98,4 @@ Stable proposed Functions
     ../src/bdDijkstra/doc/bdDijkstra
     ../src/astar/doc/astar
 
+    ../src/max_flow/doc/maxFlow

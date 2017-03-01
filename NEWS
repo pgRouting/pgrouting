@@ -12,6 +12,8 @@ Changes for 2.5.0
   * pgr_bdDijkstraCost(many to one)
   * pgr_bdDijkstraCost(many to many)
   * pgr_bdDijkstraCostMatrix
+* Moved to the stable proposed functions
+  * All Flow functions
 
 Changes for 2.4.0
 -------------------------------------------------------------------------------
