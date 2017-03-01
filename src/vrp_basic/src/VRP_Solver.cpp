@@ -233,12 +233,13 @@ bool CVRPSolver::solveVRP(std::string& strError) {
     // }
     PGR_LOG("Inside Solve VRP");
     std::vector<int> vecOrders, vecVehicles;
-    for (unsigned int i = 0; i < m_vOrderInfos.size(); i++) {
-        vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+    for(auto &rule:m_vOrderInfos)
+    {
+      vecOrders.push_back(rule.getOrderId());
     }
 
-    for (unsigned int i = 0; i < m_vVehicleInfos.size(); i++) {
-        vecVehicles.push_back(m_vVehicleInfos[i].getId());
+    for (auto &rule:m_vVehicleInfos) {
+        vecVehicles.push_back(rule.getId());
     }
 
     m_solutionFinal.init(vecOrders, static_cast<int>(vecOrders.size()), vecVehicles);
@@ -888,5 +889,3 @@ bool CVRPSolver::isTabuMove(CMoveInfo& curMove) {
     }
     return false;
 }
-
-
