@@ -138,6 +138,7 @@ double GraphDefinition::getRestrictionCost(
     return cost;
 }
 
+    
 
 // -------------------------------------------------------------------------
 void GraphDefinition::explore(
@@ -508,6 +509,8 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, long s
             if(seq_cnt == 2 && rule.second[1] == m_lStartEdgeId)
             {
                 vecsource = m_mapNodeId2Edge[start_vertex];
+
+
 		for(const auto &source : vecsource)
                 {
                     temp_precedencelist.clear();
@@ -523,7 +526,11 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, long s
         {
             std::vector<Rule> tmpRules = m_ruleTable[m_lEndEdgeId];
             vecsource = m_mapNodeId2Edge[end_vertex];
+
+
+
 	    for(const auto &source : vecsource)
+
             {
                 m_ruleTable.insert(std::make_pair(m_vecEdgeVector[source]->m_lEdgeID, tmpRules));
             }
@@ -573,7 +580,6 @@ int GraphDefinition:: my_dijkstra(edge_t *edges, unsigned int edge_count, long s
 
     LongVector vecsource = m_mapNodeId2Edge[start_vertex];
     GraphEdgeInfo* cur_edge = NULL;
-
     for(const auto &source: vecsource)
     {
         cur_edge = m_vecEdgeVector[source];

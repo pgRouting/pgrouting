@@ -158,8 +158,9 @@ bool CSolutionInfo::addTour(CTourInfo& tour) {
 
     m_iOrdersServed += static_cast<int>(vecOrders.size());
 
-    for (unsigned int i = 0; i < vecOrders.size(); i++) {
-        int oid = vecOrders[i];
+    for (const auto &order :vecOrders)
+    {
+        int oid = order;
         it = std::find(m_vUnservedOrderId.begin(), m_vUnservedOrderId.end(), oid);
         if (it != m_vUnservedOrderId.end()) {
             m_vUnservedOrderId.erase(it);
