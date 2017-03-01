@@ -33,7 +33,7 @@ CREATE OR REPLACE FUNCTION pgr_bdDijkstraCostMatrix(edges_sql TEXT, vids ANYARRA
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, true) a;
+    FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, true) a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100

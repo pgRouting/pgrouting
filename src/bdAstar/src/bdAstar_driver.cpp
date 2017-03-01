@@ -53,32 +53,55 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 template < class G >
 static
-Path
+std::deque<Path>
 pgr_bdAstar(
         G &graph,
-        int64_t source,
-        int64_t target,
+        std::vector < int64_t > sources,
+        std::vector < int64_t > targets,
+
         int heuristic,
         double factor,
         double epsilon,
         std::ostream &log,
-        bool only_cost = false) {
+        bool only_cost) {
     log << "entering static function\n";
+    std::sort(sources.begin(), sources.end());
+    sources.erase(
+            std::unique(sources.begin(), sources.end()),
+            sources.end());
+
+    std::sort(targets.begin(), targets.end());
+    targets.erase(
+            std::unique(targets.begin(), targets.end()),
+            targets.end());
+
+
     pgrouting::bidirectional::Pgr_bdAstar<G> fn_bdAstar(graph);
-    auto path = fn_bdAstar.pgr_bdAstar(
+    std::deque<Path> paths;
+    for (const auto source: sources) {
+        for (const auto target: targets) {
+            fn_bdAstar.clear();
+
+            paths.push_back(fn_bdAstar.pgr_bdAstar(
             graph.get_V(source), graph.get_V(target),
-            heuristic, factor, epsilon, only_cost);
+            heuristic, factor, epsilon, only_cost));
+        }
+    }
     log << fn_bdAstar.log();
 
-    return path;
+    return paths;
 }
 
 
 void
 do_pgr_bdAstar(
-        Pgr_edge_xy_t *edges, size_t total_edges,
-        int64_t start_vid,
-        int64_t end_vid,
+        Pgr_edge_xy_t *edges,
+        size_t total_edges,
+        int64_t  *start_vidsArr,
+        size_t size_start_vidsArr,
+        int64_t  *end_vidsArr,
+        size_t size_end_vidsArr,
+
 
         bool directed,
         int heuristic,
@@ -103,10 +126,16 @@ do_pgr_bdAstar(
         pgassert(*return_count == 0);
         pgassert(total_edges != 0);
 
+
+        log << "Inserting vertices into a c++ vector structure";
+        std::vector<int64_t>
+            start_vertices(start_vidsArr, start_vidsArr + size_start_vidsArr);
+        std::vector< int64_t >
+            end_vertices(end_vidsArr, end_vidsArr + size_end_vidsArr);
+
         graphType gType = directed? DIRECTED: UNDIRECTED;
 
-
-        Path path;
+        std::deque<Path> paths;
         log << "starting process\n";
         if (directed) {
             log << "Working with directed Graph\n";
@@ -115,9 +144,9 @@ do_pgr_bdAstar(
                     gType);
             digraph.insert_edges(edges, total_edges);
 
-            path = pgr_bdAstar(digraph,
-                    start_vid,
-                    end_vid,
+            paths = pgr_bdAstar(digraph,
+                    start_vertices,
+                    end_vertices,
                     heuristic,
                     factor,
                     epsilon,
@@ -130,10 +159,10 @@ do_pgr_bdAstar(
                     gType);
             undigraph.insert_edges(edges, total_edges);
 
-            path = pgr_bdAstar(
+            paths = pgr_bdAstar(
                     undigraph,
-                    start_vid,
-                    end_vid,
+                    start_vertices,
+                    end_vertices,
                     heuristic,
                     factor,
                     epsilon,
@@ -141,7 +170,24 @@ do_pgr_bdAstar(
                     only_cost);
         }
 
+        size_t count(0);
+        count = count_tuples(paths);
 
+        if (count == 0) {
+            (*return_tuples) = NULL;
+            (*return_count) = 0;
+            notice <<
+                "No paths found";
+            *log_msg = pgr_msg(notice.str().c_str());
+            return;
+        }
+
+        (*return_tuples) = pgr_alloc(count, (*return_tuples));
+        log << "\nConverting a set of paths into the tuples";
+        (*return_count) = (collapse_paths(return_tuples, paths));
+
+
+#if 0
         auto count = path.size();
 
         if (count == 0) {
@@ -155,6 +201,7 @@ do_pgr_bdAstar(
             path.generate_postgres_data(return_tuples, sequence);
             (*return_count) = sequence;
         }
+#endif
 
         pgassert(*err_msg == NULL);
         *log_msg = log.str().empty()?

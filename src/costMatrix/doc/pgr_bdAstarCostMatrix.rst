@@ -7,15 +7,15 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_bdDijkstraCostMatrix:
+.. _pgr_bdAstarCostMatrix:
 
-pgr_bdDijkstraCostMatrix - proposed
+pgr_bdAstarCostMatrix - proposed
 ===============================================================================
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_bdDijkstraCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_bdDijkstra`.
+``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_bdAstar`.
 
 
 .. include:: ../../proposedNext.rst
@@ -39,8 +39,8 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vids)
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vids, directed)
+    pgr_bdAstarCostMatrix(edges_sql, start_vids)
+    pgr_bdAstarCostMatrix(edges_sql, start_vids, directed)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -49,7 +49,7 @@ Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: bdDijkstraCostMatrix(Minimal Use) - Proposed
+    single: bdAstarCostMatrix(Minimal Use) - Proposed
 
 Minimal Signature
 ...............................................................................
@@ -59,7 +59,7 @@ The minimal signature:
 
 .. code-block:: none
 
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vid)
+    pgr_bdAstarCostMatrix(edges_sql, start_vid)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -67,19 +67,19 @@ The minimal signature:
 
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
-   :start-after: -- bdDijkstra q1
-   :end-before: -- bdDijkstra q2
+   :start-after: -- bdAstar q1
+   :end-before: -- bdAstar q2
 
 
 .. index::
-    single: bdDijkstraCostMatrix(Complete Signature) - Proposed
+    single: bdAstarCostMatrix(Complete Signature) - Proposed
 
 Complete Signature
 ...............................................................................
 
 .. code-block:: none
 
-    pgr_bdDijkstraCostMatrix(edges_sql, start_vids, directed:=true)
+    pgr_bdAstarCostMatrix(edges_sql, start_vids, directed:=true)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 
@@ -88,16 +88,16 @@ Complete Signature
 This example returns a symmetric cost matrix.
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
-   :start-after: -- bdDijkstra q2
-   :end-before: -- bdDijkstra q3
+   :start-after: -- bdAstar q2
+   :end-before: -- bdAstar q3
 
 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
 .. include:: ../../../doc/src/tutorial/custom_query.rst
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+    :start-after: xy_edges_sql_start
+    :end-before: xy_edges_sql_end
 
 
 
@@ -125,14 +125,14 @@ Examples
 :Example: Use with tsp
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
-   :start-after: -- bdDijkstra q3
-   :end-before: -- bdDijkstra q4
+   :start-after: -- bdAstar q3
+   :end-before: -- bdAstar q4
 
 
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`bdDijkstra`
+* :ref:`bdAstar`
 * :ref:`costMatrix`
 * :ref:`tsp`
 * The queries use the :ref:`sampledata` network.

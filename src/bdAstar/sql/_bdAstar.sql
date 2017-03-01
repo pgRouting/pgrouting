@@ -24,35 +24,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
--- V2 signature
-CREATE OR REPLACE FUNCTION pgr_bdAstar(
+CREATE OR REPLACE FUNCTION _pgr_bdAstar(
     edges_sql TEXT,
-    start_vid INTEGER,
-    end_vid INTEGER,
-    directed BOOLEAN,
-    has_rcost BOOLEAN)
-RETURNS SETOF pgr_costresult AS
-$BODY$
-DECLARE
-has_reverse BOOLEAN;
-sql TEXT;
-BEGIN
-    RAISE NOTICE 'Deprecated Signature of pgr_bdAstar';
-    has_reverse =_pgr_parameter_check('astar', edges_sql, false);
-    sql = edges_sql;
-    IF (has_reverse != has_rcost) THEN
-        IF (has_reverse) THEN
-            sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
-        ELSE
-            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
-        END IF;
-    END IF;
+    start_vids ANYARRAY,
+    end_vids ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
+    only_cost BOOLEAN DEFAULT false,
 
-    RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
-    FROM _pgr_bdAstar(sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed);
-  END
-$BODY$
-LANGUAGE plpgsql VOLATILE
-COST 100
-ROWS 1000;
+    OUT seq INTEGER,
+    OUT path_seq INTEGER,
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT node BIGINT,
+    OUT edge BIGINT,
+    OUT cost FLOAT,
+    OUT agg_cost FLOAT)
+RETURNS SETOF RECORD AS
+    '$libdir/${PGROUTING_LIBRARY_NAME}', 'bd_astar'
+LANGUAGE C IMMUTABLE STRICT;
+
+

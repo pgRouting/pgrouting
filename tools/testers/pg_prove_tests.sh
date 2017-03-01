@@ -41,6 +41,7 @@ then
     pg_prove ../../src/tsp/test/performance/* -d $PGDATABASE  -U $PGUSER
     echo "MADE TEST **********************"
 fi
+pg_prove ../../src/bdAstar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 
 pg_prove ../../src/max_flow/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER

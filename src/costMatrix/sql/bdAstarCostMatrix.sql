@@ -1,9 +1,9 @@
 /*PGR-GNU*****************************************************************
 
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Copyright (c) 2016 Celia Virginia Vergara Castillo
+Copyright (c) 2015 Celia Virginia Vergara Castillo
 mail: vicky_vergara@hotmail.com
 
 ------
@@ -25,34 +25,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
--- V2 signature
-CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vid INTEGER,
-    end_vid INTEGER,
-    directed BOOLEAN,
-    has_rcost BOOLEAN)
-RETURNS SETOF pgr_costresult AS
-$BODY$
-DECLARE
-has_reverse BOOLEAN;
-sql TEXT;
-BEGIN
-    RAISE NOTICE 'Deprecated Signature of pgr_bdAstar';
-    has_reverse =_pgr_parameter_check('astar', edges_sql, false);
-    sql = edges_sql;
-    IF (has_reverse != has_rcost) THEN
-        IF (has_reverse) THEN
-            sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
-        ELSE
-            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
-        END IF;
-    END IF;
+--  BIDIRECTIONAL DIJKSTRA Matrix
 
-    RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
-    FROM _pgr_bdAstar(sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed);
-  END
+
+CREATE OR REPLACE FUNCTION pgr_bdAstarCostMatrix(
+    edges_sql TEXT,
+    vids ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
+    only_cost BOOLEAN DEFAULT false,
+
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost float)
+RETURNS SETOF RECORD AS
 $BODY$
-LANGUAGE plpgsql VOLATILE
+    SELECT a.start_vid, a.end_vid, a.agg_cost
+    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, $4, $5, $6, true) a;
+$BODY$
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
+
+
+

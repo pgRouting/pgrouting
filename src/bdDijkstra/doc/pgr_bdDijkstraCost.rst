@@ -175,7 +175,7 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
@@ -187,7 +187,7 @@ Description of the Signatures
 Description of the return values
 ...............................................................................
 
-Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
+Returns set of ``start_vid, end_vid, agg_cost)``
 
 ============== ========== =================================================
 Column         Type       Description

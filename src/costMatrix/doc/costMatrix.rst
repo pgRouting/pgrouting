@@ -16,6 +16,7 @@ Cost Matrix
   - :ref:`pgr_bdDijkstraCostMatrix`
   - :ref:`pgr_withPointsCostMatrix`
   - :ref:`pgr_astarCostMatrix`
+  - :ref:`pgr_bdAstarCostMatrix`
 
 
 .. include:: ../../proposedNext.rst

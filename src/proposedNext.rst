@@ -69,6 +69,10 @@ Stable proposed Functions
 
 - A new Section
 
+  - :ref:`bdAstar`
+
+- A new Section
+
   - :ref:`maxFlow`
 
     - Maximum Flow
@@ -97,5 +101,6 @@ Stable proposed Functions
     ../src/costMatrix/doc/costMatrix
     ../src/bdDijkstra/doc/bdDijkstra
     ../src/astar/doc/astar
+    ../src/bdAstar/doc/bdAstar
 
     ../src/max_flow/doc/maxFlow

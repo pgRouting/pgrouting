@@ -1,0 +1,66 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+-- q1
+SELECT * FROM pgr_bdAstarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
+    FROM edge_table',
+    2, 3
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        5
+(1 row)
+
+-- q2
+SELECT * FROM pgr_bdAstarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
+    FROM edge_table',
+    2, 3,
+    false
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        1
+(1 row)
+
+-- q3
+SELECT * FROM pgr_bdAstarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
+    FROM edge_table',
+    2, ARRAY[3],
+    false
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        1
+(1 row)
+
+-- q4
+SELECT * FROM pgr_bdAstarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
+    FROM edge_table',
+    ARRAY[2], 3,
+    false
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        1
+(1 row)
+
+-- q5
+SELECT * FROM pgr_bdAstarCost(
+    'SELECT id, source, target, cost, reverse_cost, x1,y1,x2,y2
+    FROM edge_table',
+    ARRAY[2], ARRAY[3],
+    false
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         2 |       3 |        1
+(1 row)
+
+-- q6
+ROLLBACK;
+ROLLBACK
