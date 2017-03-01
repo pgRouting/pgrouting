@@ -2,6 +2,7 @@
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/withPointsCostMatrix.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/dijkstraCostMatrix.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/bdDijkstraCostMatrix.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/astarCostMatrix.sql
 
     )

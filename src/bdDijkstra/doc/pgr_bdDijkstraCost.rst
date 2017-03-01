@@ -7,12 +7,12 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_bdDijkstra:
+.. _pgr_bdDijkstraCost:
 
-pgr_bdDijkstra
+pgr_bdDijkstraCost - Proposed
 ===============================================================================
 
-``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional Dijkstra algorithm.
+``pgr_bdDijkstraCost`` — Returns the shortest path(s)'s cost using Bidirectional Dijkstra algorithm.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc
@@ -23,73 +23,55 @@ pgr_bdDijkstra
 Signature Summary
 -----------------
 
-.. code-block:: none
-
-    pgr_dijkstra(edges_sql, start_vid,  end_vid)
-    pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-    OR EMPTY SET
-
-
-
-
 .. include:: ../../proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
+
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
-    pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
-    pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
+    pgr_dijkstraCost(edges_sql, start_vid,  end_vid)
+    pgr_bdDijkstraCost(edges_sql, start_vid, end_vid, directed)
+    pgr_bdDijkstraCost(edges_sql, start_vid, end_vids, directed)
+    pgr_bdDijkstraCost(edges_sql, start_vids, end_vid, directed)
+    pgr_bdDijkstraCost(edges_sql, start_vids, end_vids, directed)
 
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
-
-.. NOTE:: This signature is deprecated
-
-    .. code-block:: sql
-
-        pgr_bdDijkstra(sql, source integer, target integer, directed boolean, has_rcost boolean)
-        RETURNS SET OF pgr_costResult
-
-    - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`bd_dijkstra_v2`
-
 
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-    single: bdDijkstra(Minimal Use)
+    single: bdDijkstraCost(Minimal Use) - Proposed
 
 Minimal signature
 .......................................
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid, end_vid)
+    pgr_bdDijkstraCost(edges_sql, start_vid, end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
 
 :Example:
 
-.. literalinclude:: doc-pgr_bdDijkstra.queries
+.. literalinclude:: doc-pgr_bdDijkstraCost.queries
    :start-after: -- q1
    :end-before: -- q2
 
 
 .. index::
-    single: bdDijkstra(One to One)
+    single: bdDijkstraCost(One to One)
 
-pgr_bdDijkstra One to One
+pgr_bdDijkstraCost One to One
 .......................................
 
 .. code-block:: none
 
-    pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
+    pgr_bdDijkstraCost(edges_sql, start_vid, end_vid, directed)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
@@ -104,9 +86,9 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 
 
 .. index::
-    single: bdDijkstra(One to Many) - Proposed
+    single: bdDijkstraCost(One to Many) - Proposed
 
-pgr_bdDijkstra One to many
+pgr_bdDijkstraCost One to many
 .......................................
 
 .. code-block:: none
@@ -126,15 +108,15 @@ where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
 :Example:
 
-.. literalinclude:: doc-pgr_bdDijkstra.queries
+.. literalinclude:: doc-pgr_bdDijkstraCost.queries
    :start-after: -- q3
    :end-before: -- q4
 
 .. index::
-    single: bdDijkstra(Many to One) - Proposed
+    single: bdDijkstraCost(Many to One) - Proposed
 
 
-pgr_bdDijkstra Many to One
+pgr_bdDijkstraCost Many to One
 .......................................
 
 .. code-block:: none
@@ -160,9 +142,9 @@ where the ending vertex is fixed.
 
 
 .. index::
-    single: bdDijkstra(Many to Many) - Proposed
+    single: bdDijkstraCost(Many to Many) - Proposed
 
-pgr_bdDijkstra Many to Many
+pgr_bdDijkstraCost Many to Many
 .......................................
 
 .. code-block:: none
@@ -210,28 +192,10 @@ Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg
 ============== ========== =================================================
 Column         Type       Description
 ============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
 **start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
 **end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
 **agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
 ============== ========== =================================================
-
-
-
-Deprecated Signature
--------------------------------------------------------------------------------
-
-:Example: Using the deprecated signature
-
-The deprecated signature does not auto detects the existence of :code:`reverse_cost`
-
-.. literalinclude:: doc-pgr_bdDijkstra.queries
-   :start-after: -- q6
-   :end-before: -- q7
 
 
 
@@ -239,7 +203,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * The queries use the :ref:`sampledata` network.
-* :ref:`bdDijkstra`
+* :ref:`pgr_bdDijkstra`
 * http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
 

@@ -58,6 +58,13 @@ Stable proposed Functions
 
 - A new Section
 
+  - :ref:`bdDijkstra`
+
+    - :ref:`pgr_bdDijkstraCost` Use pgr_bdDijkstra to calculate only the cost.
+    - :ref:`pgr_bdDijkstraCostMatrix` Use pgr_bdDijkstra to calculate the cost Matrix.
+
+- A new Section
+
   - :ref:`astar`
 
 ..
@@ -72,5 +79,6 @@ Stable proposed Functions
     ../src/withPoints/doc/withPoints
 
     ../src/costMatrix/doc/costMatrix
+    ../src/bdDijkstra/doc/bdDijkstra
     ../src/astar/doc/astar
 

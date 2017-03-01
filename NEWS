@@ -1,4 +1,18 @@
 
+Changes for 2.5.0
+-------------------------------------------------------------------------------
+
+* New Signatures:
+* New Proposed functions
+  * pgr_bdDijkstra(one to many)
+  * pgr_bdDijkstra(many to one)
+  * pgr_bdDijkstra(many to many)
+  * pgr_bdDijkstraCost(one to one)
+  * pgr_bdDijkstraCost(one to many)
+  * pgr_bdDijkstraCost(many to one)
+  * pgr_bdDijkstraCost(many to many)
+  * pgr_bdDijkstraCostMatrix
+
 Changes for 2.4.0
 -------------------------------------------------------------------------------
 

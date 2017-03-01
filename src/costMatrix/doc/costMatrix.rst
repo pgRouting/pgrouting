@@ -13,6 +13,7 @@ Cost Matrix
 ===============================================================================
 
   - :ref:`pgr_dijkstraCostMatrix`
+  - :ref:`pgr_bdDijkstraCostMatrix`
   - :ref:`pgr_withPointsCostMatrix`
   - :ref:`pgr_astarCostMatrix`
 

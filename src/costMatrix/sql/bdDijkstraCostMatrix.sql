@@ -1,13 +1,10 @@
 /*PGR-GNU*****************************************************************
-File: bdDijkstra_driver.h
 
-Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: vicky_vergara@hotmail.com
+mail: vicky_vergara@hotmail.com
 
 ------
 
@@ -27,37 +24,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_BDDIJKSTRA_SRC_BDDIJKSTRA_DRIVER_H_
-#define SRC_BDDIJKSTRA_SRC_BDDIJKSTRA_DRIVER_H_
-#pragma once
 
-#include "./../../common/src/pgr_types.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+--  BIDIRECTIONAL DIJKSTRA Matrix
 
 
-    void do_pgr_bdDijkstra(
-            pgr_edge_t  *data_edges,
-            size_t total_edges,
-            int64_t  *start_vidsArr,
-            size_t size_start_vidsArr,
-            int64_t  *end_vidsArr,
-            size_t size_end_vidsArr,
-
-            bool directed,
-            bool only_cost,
-
-            General_path_element_t **return_tuples,
-            size_t *return_count,
-            char ** log_msg,
-            char ** notice_msg,
-            char ** err_msg);
+CREATE OR REPLACE FUNCTION pgr_bdDijkstraCostMatrix(edges_sql TEXT, vids ANYARRAY, directed BOOLEAN DEFAULT true,
+    OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
+RETURNS SETOF RECORD AS
+$BODY$
+    SELECT a.start_vid, a.end_vid, a.agg_cost
+    FROM _pgr_dijkstra(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, true) a;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
 
 
-#ifdef __cplusplus
-}
-#endif
 
-#endif  // SRC_BDDIJKSTRA_SRC_BDDIJKSTRA_DRIVER_H_
