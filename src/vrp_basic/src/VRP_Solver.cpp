@@ -47,12 +47,7 @@ bool operator == (const CTourInfo& cur, const CTourInfo& that) {
         return false;
     if (cur.m_viOrderIds.size() != that.m_viOrderIds.size())
         return false;
-    auto tot = cur.m_viOrderIds.size();
-    for (size_t i = 0; i < tot; i++) {
-        if (cur.m_viOrderIds[i] != that.m_viOrderIds[i])
-            return false;
-    }
-    return true;
+    return std::equal(cur.m_viOrderIds.begin(), cur.m_viOrderIds.end(), that.m_viOrderIds.begin());
 }
 
 bool operator == (const CMoveInfo& cur, const CMoveInfo& that) {
