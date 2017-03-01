@@ -3,6 +3,7 @@ Changes for 2.5.0
 -------------------------------------------------------------------------------
 
 * New Signatures:
+  * pgr_bdAstar(one to one)
 * New Proposed functions
   * pgr_bdDijkstra(one to many)
   * pgr_bdDijkstra(many to one)
@@ -12,6 +13,8 @@ Changes for 2.5.0
   * pgr_bdDijkstraCost(many to one)
   * pgr_bdDijkstraCost(many to many)
   * pgr_bdDijkstraCostMatrix
+* Deprecated Signatures
+  * pgr_bdastar - use pgr_bdAstar instead
 * Moved to the stable proposed functions
   * All Flow functions
 
