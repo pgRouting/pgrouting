@@ -233,6 +233,7 @@ bool CVRPSolver::solveVRP(std::string& strError) {
     // }
     PGR_LOG("Inside Solve VRP");
     std::vector<int> vecOrders, vecVehicles;
+
     for(auto &rule:m_vOrderInfos)
     {
       vecOrders.push_back(rule.getOrderId());
