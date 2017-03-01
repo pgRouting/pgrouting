@@ -47,10 +47,14 @@ bool operator == (const CTourInfo& cur, const CTourInfo& that) {
         return false;
     if (cur.m_viOrderIds.size() != that.m_viOrderIds.size())
         return false;
-    auto tot = cur.m_viOrderIds.size();
-    for (size_t i = 0; i < tot; i++) {
-        if (cur.m_viOrderIds[i] != that.m_viOrderIds[i])
+    auto cur_m_viOrderIdsIter = cur.m_viOrderIds.begin();
+    auto that_m_viOrderIdsIter = that.m_viOrderIds.begin();
+    while(cur_m_viOrderIdsIter != cur.m_viOrderIds.end())
+    {
+        if(cur_m_viOrderIdsIter != that_m_viOrderIdsIter)
             return false;
+        cur_m_viOrderIdsIter++;
+        that_m_viOrderIdsIter++;
     }
     return true;
 }
