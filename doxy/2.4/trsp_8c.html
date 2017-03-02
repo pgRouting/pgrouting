@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">2.4-beta</span>
+   &#160;<span id="projectnumber">2.4-rc</span>
    </div>
   </td>
  </tr>
@@ -145,11 +145,11 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4c893d2c0b28be7cbca1ad6cd35d76ab"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp_8c.html#a4c893d2c0b28be7cbca1ad6cd35d76ab">compute_trsp</a> (char *sql, int dovertex, int start_id, double start_pos, int end_id, double end_pos, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> directed, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> has_reverse_cost, char *restrict_sql, <a class="el" href="structpath__element__t.html">path_element_t</a> **<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, int *<a class="el" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>)</td></tr>
+<tr class="memitem:a4c893d2c0b28be7cbca1ad6cd35d76ab"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp_8c.html#a4c893d2c0b28be7cbca1ad6cd35d76ab">compute_trsp</a> (char *sql, int dovertex, int start_id, double start_pos, int end_id, double end_pos, bool directed, bool has_reverse_cost, char *restrict_sql, <a class="el" href="structpath__element__t.html">path_element_t</a> **<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, int *<a class="el" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>)</td></tr>
 <tr class="separator:a4c893d2c0b28be7cbca1ad6cd35d76ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abcd007a7a8d5408a84f9572afc0b13a0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp_8c.html#abcd007a7a8d5408a84f9572afc0b13a0">fetch_edge</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="trsp_8c.html#ae9aa00313fa46386a7cd22735241a385">edge_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, <a class="el" href="dijkstra_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a> *target_edge)</td></tr>
+<tr class="memitem:abcd007a7a8d5408a84f9572afc0b13a0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp_8c.html#abcd007a7a8d5408a84f9572afc0b13a0">fetch_edge</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="trsp_8c.html#ae9aa00313fa46386a7cd22735241a385">edge_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, <a class="el" href="trsp_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a> *target_edge)</td></tr>
 <tr class="separator:abcd007a7a8d5408a84f9572afc0b13a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2255175b96837aebe5f2a28b57f72a7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp_8c.html#aa2255175b96837aebe5f2a28b57f72a7">fetch_edge_columns</a> (SPITupleTable *tuptable, <a class="el" href="trsp_8c.html#ae9aa00313fa46386a7cd22735241a385">edge_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> has_reverse_cost)</td></tr>
+<tr class="memitem:aa2255175b96837aebe5f2a28b57f72a7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp_8c.html#aa2255175b96837aebe5f2a28b57f72a7">fetch_edge_columns</a> (SPITupleTable *tuptable, <a class="el" href="trsp_8c.html#ae9aa00313fa46386a7cd22735241a385">edge_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, bool has_reverse_cost)</td></tr>
 <tr class="separator:aa2255175b96837aebe5f2a28b57f72a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08bb74b6255b8a583fd953d6995723df"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trsp_8c.html#a08bb74b6255b8a583fd953d6995723df">fetch_restrict</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="trsp_8c.html#ae27f63a26f710135b25dd4c441c8f0c1">restrict_columns_t</a> *<a class="el" href="structrestrict__columns.html">restrict_columns</a>, <a class="el" href="trsp_8h.html#ac40c9d5cbf214b57feef4052b13233eb">restrict_t</a> *rest)</td></tr>
 <tr class="separator:a08bb74b6255b8a583fd953d6995723df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -287,13 +287,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>directed</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>has_reverse_cost</em>, </td>
         </tr>
         <tr>
@@ -364,7 +364,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="dijkstra_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="trsp_8h.html#aff905ba824de026b4ae434817a5b923c">edge_t</a> *&#160;</td>
           <td class="paramname"><em>target_edge</em>&#160;</td>
         </tr>
         <tr>
@@ -410,7 +410,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>has_reverse_cost</em>&#160;</td>
         </tr>
         <tr>
@@ -672,7 +672,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ff9a90ff40b28e0f207f5cd80dcba32.html">trsp</a></li><li class="navelem"><a class="el" href="dir_b47eebdcbf6a29b61fc577aaf4f15079.html">src</a></li><li class="navelem"><a class="el" href="trsp_8c.html">trsp.c</a></li>
-    <li class="footer">Generated on Tue Feb 21 2017 12:55:46 for PGROUTING by
+    <li class="footer">Generated on Wed Mar 1 2017 20:32:48 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

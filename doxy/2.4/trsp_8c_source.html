@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">2.4-beta</span>
+   &#160;<span id="projectnumber">2.4-rc</span>
    </div>
   </td>
  </tr>
@@ -298,7 +298,7 @@ $(document).ready(function(){initNavTree('trsp_8c_source.html','');});
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  binval = SPI_getbinval(*tuple, *tupdesc, edge_columns-&gt;<a class="code" href="structedge__columns.html#ae543a17157037d95212232b9688d29aa">cost</a>, &amp;isnull);</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="keywordflow">if</span> (isnull)</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    elog(ERROR, <span class="stringliteral">&quot;cost contains a null value&quot;</span>);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  target_edge-&gt;<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> = DatumGetFloat8(binval);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  target_edge-&gt;<a class="code" href="structedge.html#adcf5e749cda6ce70db2e654cfad92445">cost</a> = DatumGetFloat8(binval);</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordflow">if</span> (edge_columns-&gt;<a class="code" href="structedge__columns.html#a7bf385252bb0745be50ad60330de710a">reverse_cost</a> != -1) </div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    {</div>
@@ -306,7 +306,7 @@ $(document).ready(function(){initNavTree('trsp_8c_source.html','');});
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                             &amp;isnull);</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      <span class="keywordflow">if</span> (isnull)</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        elog(ERROR, <span class="stringliteral">&quot;reverse_cost contains a null value&quot;</span>);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      target_edge-&gt;<a class="code" href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">reverse_cost</a> =  DatumGetFloat8(binval);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      target_edge-&gt;<a class="code" href="structedge.html#a0f50b5efbd0183afdc1a1ab96f126cd3">reverse_cost</a> =  DatumGetFloat8(binval);</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="comment">/*</span></div>
@@ -519,7 +519,7 @@ $(document).ready(function(){initNavTree('trsp_8c_source.html','');});
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    edges[z].<a class="code" href="structedge.html#a123c11d0720940e8a2556269ad340118">source</a>-=v_min_id;</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    edges[z].<a class="code" href="structedge.html#a35006226be4289b23c1303ec5df12c07">target</a>-=v_min_id;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    edges[z].<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a> = edges[z].<a class="code" href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">cost</a>;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    edges[z].<a class="code" href="structedge.html#adcf5e749cda6ce70db2e654cfad92445">cost</a> = edges[z].<a class="code" href="structedge.html#adcf5e749cda6ce70db2e654cfad92445">cost</a>;</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    <span class="comment">//DBG(&quot;edgeID: %i SRc:%i - %i, cost: %f&quot;, edges[z].id,edges[z].source, edges[z].target,edges[z].cost);      </span></div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    </div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  }</div>
@@ -946,13 +946,13 @@ $(document).ready(function(){initNavTree('trsp_8c_source.html','');});
 <div class="ttc" id="structedge__columns_html"><div class="ttname"><a href="structedge__columns.html">edge_columns</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00032">trsp.c:32</a></div></div>
 <div class="ttc" id="structedge__columns_html_a7bf385252bb0745be50ad60330de710a"><div class="ttname"><a href="structedge__columns.html#a7bf385252bb0745be50ad60330de710a">edge_columns::reverse_cost</a></div><div class="ttdeci">int reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00038">trsp.c:38</a></div></div>
 <div class="ttc" id="structrestrict__columns_html_ade7bb1824c15fbde7f49c8e5e71fdf2c"><div class="ttname"><a href="structrestrict__columns.html#ade7bb1824c15fbde7f49c8e5e71fdf2c">restrict_columns::to_cost</a></div><div class="ttdeci">int to_cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00045">trsp.c:45</a></div></div>
-<div class="ttc" id="structedge_html_a004cd70e32ea3f6ce31d5318b46158bd"><div class="ttname"><a href="structedge.html#a004cd70e32ea3f6ce31d5318b46158bd">edge::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00070">tester/BiDirAStar.h:70</a></div></div>
 <div class="ttc" id="trsp_8h_html_a9e3654636a269010c05b503d4f26c397"><div class="ttname"><a href="trsp_8h.html#a9e3654636a269010c05b503d4f26c397">trsp_edge_wrapper</a></div><div class="ttdeci">int trsp_edge_wrapper(edge_t *edges, unsigned int edge_count, restrict_t *restricts, int restrict_count, int start_edge, double start_pos, int end_edge, double end_pos, bool directed, bool has_reverse_cost, path_element_t **path, int *path_count, char **err_msg)</div><div class="ttdef"><b>Definition:</b> <a href="trsp__core_8cpp_source.html#l00060">trsp_core.cpp:60</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_a485972124000c974fc113e9c5c0330df"><div class="ttname"><a href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a></div><div class="ttdeci">int path_count</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00051">BDATester.cpp:51</a></div></div>
 <div class="ttc" id="structrestrict__columns_html"><div class="ttname"><a href="structrestrict__columns.html">restrict_columns</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00041">trsp.c:41</a></div></div>
 <div class="ttc" id="trsp_8c_html_abcd007a7a8d5408a84f9572afc0b13a0"><div class="ttname"><a href="trsp_8c.html#abcd007a7a8d5408a84f9572afc0b13a0">fetch_edge</a></div><div class="ttdeci">static void fetch_edge(HeapTuple *tuple, TupleDesc *tupdesc, edge_columns_t *edge_columns, edge_t *target_edge)</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00167">trsp.c:167</a></div></div>
 <div class="ttc" id="structedge_html"><div class="ttname"><a href="structedge.html">edge</a></div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00061">tester/BiDirAStar.h:61</a></div></div>
 <div class="ttc" id="structedge_html_a123c11d0720940e8a2556269ad340118"><div class="ttname"><a href="structedge.html#a123c11d0720940e8a2556269ad340118">edge::source</a></div><div class="ttdeci">int source</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00064">tester/BiDirAStar.h:64</a></div></div>
+<div class="ttc" id="structedge_html_adcf5e749cda6ce70db2e654cfad92445"><div class="ttname"><a href="structedge.html#adcf5e749cda6ce70db2e654cfad92445">edge::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00070">tester/BiDirAStar.h:70</a></div></div>
 <div class="ttc" id="trsp_8c_html_ae9aa00313fa46386a7cd22735241a385"><div class="ttname"><a href="trsp_8c.html#ae9aa00313fa46386a7cd22735241a385">edge_columns_t</a></div><div class="ttdeci">struct edge_columns edge_columns_t</div></div>
 <div class="ttc" id="structedge__columns_html_a7629d815fc9cdfb42b4f3e1da0d66efa"><div class="ttname"><a href="structedge__columns.html#a7629d815fc9cdfb42b4f3e1da0d66efa">edge_columns::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00034">trsp.c:34</a></div></div>
 <div class="ttc" id="structrestrict__columns_html_a30a7044878bb8cb05fd5e0bb03edabfc"><div class="ttname"><a href="structrestrict__columns.html#a30a7044878bb8cb05fd5e0bb03edabfc">restrict_columns::via_path</a></div><div class="ttdeci">int via_path</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00044">trsp.c:44</a></div></div>
@@ -968,6 +968,7 @@ $(document).ready(function(){initNavTree('trsp_8c_source.html','');});
 <div class="ttc" id="structrestrict__struct_html_a031fb0e31f95ccff997607c94c8174be"><div class="ttname"><a href="structrestrict__struct.html#a031fb0e31f95ccff997607c94c8174be">restrict_struct::to_cost</a></div><div class="ttdeci">float8 to_cost</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00041">trsp.h:41</a></div></div>
 <div class="ttc" id="structrestrict__columns_html_a469abbb030bb630db6a1080f6f353db0"><div class="ttname"><a href="structrestrict__columns.html#a469abbb030bb630db6a1080f6f353db0">restrict_columns::target_id</a></div><div class="ttdeci">int target_id</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00043">trsp.c:43</a></div></div>
 <div class="ttc" id="trsp_8c_html_a08bb74b6255b8a583fd953d6995723df"><div class="ttname"><a href="trsp_8c.html#a08bb74b6255b8a583fd953d6995723df">fetch_restrict</a></div><div class="ttdeci">static void fetch_restrict(HeapTuple *tuple, TupleDesc *tupdesc, restrict_columns_t *restrict_columns, restrict_t *rest)</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00215">trsp.c:215</a></div></div>
+<div class="ttc" id="structedge_html_a0f50b5efbd0183afdc1a1ab96f126cd3"><div class="ttname"><a href="structedge.html#a0f50b5efbd0183afdc1a1ab96f126cd3">edge::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00071">tester/BiDirAStar.h:71</a></div></div>
 <div class="ttc" id="trsp_8c_html_a8745898afb7409587ee98f384ee40a39"><div class="ttname"><a href="trsp_8c.html#a8745898afb7409587ee98f384ee40a39">text2char</a></div><div class="ttdeci">static char * text2char(text *in)</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00051">trsp.c:51</a></div></div>
 <div class="ttc" id="BDATester_8cpp_html_af3b19696458a753adff8d0e0e7f4c863"><div class="ttname"><a href="BDATester_8cpp.html#af3b19696458a753adff8d0e0e7f4c863">edges</a></div><div class="ttdeci">edge_astar_t * edges</div><div class="ttdef"><b>Definition:</b> <a href="BDATester_8cpp_source.html#l00046">BDATester.cpp:46</a></div></div>
 <div class="ttc" id="postgres_8h_html"><div class="ttname"><a href="postgres_8h.html">postgres.h</a></div></div>
@@ -986,7 +987,6 @@ $(document).ready(function(){initNavTree('trsp_8c_source.html','');});
 <div class="ttc" id="trsp_8c_html_ae27f63a26f710135b25dd4c441c8f0c1"><div class="ttname"><a href="trsp_8c.html#ae27f63a26f710135b25dd4c441c8f0c1">restrict_columns_t</a></div><div class="ttdeci">struct restrict_columns restrict_columns_t</div></div>
 <div class="ttc" id="trsp_8c_html_a938bf6c15c229413b975362c1bc510ce"><div class="ttname"><a href="trsp_8c.html#a938bf6c15c229413b975362c1bc510ce">turn_restrict_shortest_path_edge</a></div><div class="ttdeci">PGDLLEXPORT Datum turn_restrict_shortest_path_edge(PG_FUNCTION_ARGS)</div><div class="ttdef"><b>Definition:</b> <a href="trsp_8c_source.html#l00691">trsp.c:691</a></div></div>
 <div class="ttc" id="structrestrict__struct_html"><div class="ttname"><a href="structrestrict__struct.html">restrict_struct</a></div><div class="ttdef"><b>Definition:</b> <a href="trsp_8h_source.html#l00038">trsp.h:38</a></div></div>
-<div class="ttc" id="structedge_html_aea228cd3916bb0978fd1d8dc512a8f38"><div class="ttname"><a href="structedge.html#aea228cd3916bb0978fd1d8dc512a8f38">edge::reverse_cost</a></div><div class="ttdeci">double reverse_cost</div><div class="ttdef"><b>Definition:</b> <a href="tester_2BiDirAStar_8h_source.html#l00071">tester/BiDirAStar.h:71</a></div></div>
 <div class="ttc" id="structpath__element__t_html_a9fffdd8747e83dc763bba6e8c7191e63"><div class="ttname"><a href="structpath__element__t.html#a9fffdd8747e83dc763bba6e8c7191e63">path_element_t::cost</a></div><div class="ttdeci">double cost</div><div class="ttdef"><b>Definition:</b> <a href="pgr__types_8h_source.html#l00090">pgr_types.h:90</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -994,7 +994,7 @@ $(document).ready(function(){initNavTree('trsp_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3ff9a90ff40b28e0f207f5cd80dcba32.html">trsp</a></li><li class="navelem"><a class="el" href="dir_b47eebdcbf6a29b61fc577aaf4f15079.html">src</a></li><li class="navelem"><a class="el" href="trsp_8c.html">trsp.c</a></li>
-    <li class="footer">Generated on Tue Feb 21 2017 12:55:46 for PGROUTING by
+    <li class="footer">Generated on Wed Mar 1 2017 20:32:47 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

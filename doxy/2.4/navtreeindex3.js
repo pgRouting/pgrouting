@@ -1,9 +1,6 @@
 var NAVTREEINDEX3 =
 {
-"classStringTokenizer.html#a49a83cbdea62db7963f10ec458a6fc2f":[4,0,57,3],
-"classStringTokenizer.html#a54bc919376624b02b0454fe174bb4be5":[4,0,57,6],
 "classStringTokenizer.html#a54bc919376624b02b0454fe174bb4be5":[4,0,57,8],
-"classStringTokenizer.html#a54bc919376624b02b0454fe174bb4be5":[4,0,57,7],
 "classStringTokenizer.html#a64ad42c6abd0e3917fde698a9c8e5c82":[4,0,57,4],
 "classStringTokenizer.html#a6590795686da6dc7953b602c4624baa2":[4,0,57,9],
 "classStringTokenizer.html#a6590795686da6dc7953b602c4624baa2":[4,0,57,10],
@@ -249,5 +246,8 @@ var NAVTREEINDEX3 =
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#adf97e69a48e3d65856b77fdc19d741eb":[4,0,0,3,0,30],
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#ae18b01b92cc87e321ebea894c8ae3140":[4,0,0,3,0,5],
 "classpgrouting_1_1graph_1_1Pgr__base__graph.html#ae710bf74b768f6b51c8808fe7b08f2fa":[4,0,0,3,0,3],
-"classpgrouting_1_1graph_1_1Pgr__base__graph.html#aef06d12469a32d16dd7825bae9dc541d":[4,0,0,3,0,17]
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#aef06d12469a32d16dd7825bae9dc541d":[4,0,0,3,0,17],
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#af190fa2b23e4c4237971e4a92af80458":[4,0,0,3,0,11],
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#af36a60d4971439b58c3bcba1cd6c49c8":[4,0,0,3,0,36],
+"classpgrouting_1_1graph_1_1Pgr__base__graph.html#af403c5f2fa90d9be39d0f71a289673c2":[4,0,0,3,0,7]
 };

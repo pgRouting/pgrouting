@@ -28,7 +28,6 @@ var files =
     [ "tester/BiDirAStar.cpp", "tester_2BiDirAStar_8cpp.html", null ],
     [ "src/BiDirAStar.h", "src_2BiDirAStar_8h.html", "src_2BiDirAStar_8h" ],
     [ "tester/BiDirAStar.h", "tester_2BiDirAStar_8h.html", "tester_2BiDirAStar_8h" ],
-    [ "boost_wrapper.cpp", "boost__wrapper_8cpp.html", "boost__wrapper_8cpp" ],
     [ "ch_edge.cpp", "ch__edge_8cpp.html", "ch__edge_8cpp" ],
     [ "ch_edge.h", "ch__edge_8h.html", [
       [ "CH_edge", "classpgrouting_1_1CH__edge.html", "classpgrouting_1_1CH__edge" ]
@@ -43,7 +42,6 @@ var files =
     [ "customers_input.c", "customers__input_8c.html", "customers__input_8c" ],
     [ "customers_input.h", "customers__input_8h.html", "customers__input_8h" ],
     [ "debug_macro.h", "debug__macro_8h.html", "debug__macro_8h" ],
-    [ "dijkstra.h", "dijkstra_8h.html", "dijkstra_8h" ],
     [ "dijkstra.hpp", "dijkstra_8hpp.html", "dijkstra_8hpp" ],
     [ "performance/dijkstra/dijkstra.hpp", "performance_2dijkstra_2dijkstra_8hpp.html", "performance_2dijkstra_2dijkstra_8hpp" ],
     [ "dijkstraVia.c", "dijkstraVia_8c.html", "dijkstraVia_8c" ],
@@ -221,7 +219,6 @@ var files =
     [ "test_matrixRows_driver.cpp", "test__matrixRows__driver_8cpp.html", "test__matrixRows__driver_8cpp" ],
     [ "test_matrixRows_driver.h", "test__matrixRows__driver_8h.html", "test__matrixRows__driver_8h" ],
     [ "Tester.cpp", "Tester_8cpp.html", "Tester_8cpp" ],
-    [ "testit.c", "testit_8c.html", "testit_8c" ],
     [ "testit.cpp", "testit_8cpp.html", "testit_8cpp" ],
     [ "testXYedges.c", "testXYedges_8c.html", "testXYedges_8c" ],
     [ "testXYedges_driver.cpp", "testXYedges__driver_8cpp.html", "testXYedges__driver_8cpp" ],

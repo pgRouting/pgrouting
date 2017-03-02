@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">2.4-beta</span>
+   &#160;<span id="projectnumber">2.4-rc</span>
    </div>
   </td>
  </tr>
@@ -124,10 +124,10 @@ $(document).ready(function(){initNavTree('many__to__many__dijkstra__driver_8cpp.
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a610a470a45977a0ffd7cf0e6b077ba99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="many__to__many__dijkstra__driver_8cpp.html#a610a470a45977a0ffd7cf0e6b077ba99">do_pgr_many_to_many_dijkstra</a> (<a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> *data_edges, size_t total_edges, int64_t *start_vidsArr, size_t size_start_vidsArr, int64_t *end_vidsArr, size_t size_end_vidsArr, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> directed, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> only_cost, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> normal, <a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
+<tr class="memitem:a610a470a45977a0ffd7cf0e6b077ba99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="many__to__many__dijkstra__driver_8cpp.html#a610a470a45977a0ffd7cf0e6b077ba99">do_pgr_many_to_many_dijkstra</a> (<a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> *data_edges, size_t total_edges, int64_t *start_vidsArr, size_t size_start_vidsArr, int64_t *end_vidsArr, size_t size_end_vidsArr, bool directed, bool only_cost, bool normal, <a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
 <tr class="separator:a610a470a45977a0ffd7cf0e6b077ba99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeb05fe552d2db0ce4bcfd0501a38efa"><td class="memTemplParams" colspan="2">template&lt;class G &gt; </td></tr>
-<tr class="memitem:afeb05fe552d2db0ce4bcfd0501a38efa"><td class="memTemplItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="many__to__many__dijkstra__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa">pgr_dijkstra</a> (G &amp;graph, std::vector&lt; int64_t &gt; sources, std::vector&lt; int64_t &gt; targets, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> only_cost, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> normal)</td></tr>
+<tr class="memitem:afeb05fe552d2db0ce4bcfd0501a38efa"><td class="memTemplItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="many__to__many__dijkstra__driver_8cpp.html#afeb05fe552d2db0ce4bcfd0501a38efa">pgr_dijkstra</a> (G &amp;graph, std::vector&lt; int64_t &gt; sources, std::vector&lt; int64_t &gt; targets, bool only_cost, bool normal)</td></tr>
 <tr class="separator:afeb05fe552d2db0ce4bcfd0501a38efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -174,19 +174,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>directed</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>only_cost</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>normal</em>, </td>
         </tr>
         <tr>
@@ -262,13 +262,13 @@ template&lt;class G &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>only_cost</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>normal</em>&#160;</td>
         </tr>
         <tr>
@@ -293,7 +293,7 @@ template&lt;class G &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_2a52a6a5123eeb3ef09f6d5b6e1e597e.html">src</a></li><li class="navelem"><a class="el" href="many__to__many__dijkstra__driver_8cpp.html">many_to_many_dijkstra_driver.cpp</a></li>
-    <li class="footer">Generated on Tue Feb 21 2017 12:55:46 for PGROUTING by
+    <li class="footer">Generated on Wed Mar 1 2017 20:32:47 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

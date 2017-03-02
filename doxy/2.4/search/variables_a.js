@@ -134,7 +134,7 @@ var searchData=
   ['m_5fwait_5ftime',['m_wait_time',['../classpgrouting_1_1vrp_1_1Vehicle__node.html#acf38aa5cd9a368f40d80c66b2e6a5095',1,'pgrouting::vrp::Vehicle_node']]],
   ['max_5fcapacity',['max_capacity',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a6901b72d3231262741ab592d13bab694',1,'pgrouting::vrp::Pgr_pickDeliver::max_capacity()'],['../classpgrouting_1_1vrp_1_1Vehicle.html#a4007a75ee16a4033246a5fb86d12fb3d',1,'pgrouting::vrp::Vehicle::max_capacity()']]],
   ['max_5fedge_5fid',['max_edge_id',['../classBiDirAStar.html#ac17b42d4b7cae2a0322a236c1bd7c4f2',1,'BiDirAStar::max_edge_id()'],['../classGraphDefinition.html#ace382c606118ae3832b49ab4857f69c4',1,'GraphDefinition::max_edge_id()']]],
-  ['max_5fnode_5fid',['max_node_id',['../classBiDirAStar.html#ae6e65116d72aed68a3cddd80419642de',1,'BiDirAStar::max_node_id()'],['../classGraphDefinition.html#aad695867d2cc0e493bbbaab15864c6a6',1,'GraphDefinition::max_node_id()']]],
+  ['max_5fnode_5fid',['max_node_id',['../classBiDirAStar.html#ae6e65116d72aed68a3cddd80419642de',1,'BiDirAStar::max_node_id()'],['../classGraphDefinition.html#a8de256de4918213b64cec842591a60a7',1,'GraphDefinition::max_node_id()']]],
   ['max_5fvehicles',['max_vehicles',['../classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a9418bba321eee643dd92160aece54cfe',1,'pgrouting::vrp::Pgr_pickDeliver']]],
   ['maxnode',['maxNode',['../BDATester_8cpp.html#ae627e7f1fc2e1d7f5b9361def8110527',1,'BDATester.cpp']]]
 ];

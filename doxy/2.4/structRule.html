@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">2.4-beta</span>
+   &#160;<span id="projectnumber">2.4-rc</span>
    </div>
   </td>
  </tr>
@@ -107,6 +107,7 @@ $(document).ready(function(){initNavTree('structRule.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structRule-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -116,17 +117,59 @@ $(document).ready(function(){initNavTree('structRule.html','');});
 
 <p><code>#include &quot;<a class="el" href="GraphDefinition_8h_source.html">GraphDefinition.h</a>&quot;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a6ffcc7183b152637e1fbc84014ab09a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRule.html#a6ffcc7183b152637e1fbc84014ab09a2">Rule</a> (double c, std::vector&lt; long &gt; p)</td></tr>
+<tr class="separator:a6ffcc7183b152637e1fbc84014ab09a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae8442475c726d8bed6d069d0536dd696"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRule.html#ae8442475c726d8bed6d069d0536dd696">cost</a></td></tr>
 <tr class="separator:ae8442475c726d8bed6d069d0536dd696"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa92c3d7ba97f12169c3de515f36320fd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRule.html#aa92c3d7ba97f12169c3de515f36320fd">precedencelist</a></td></tr>
-<tr class="separator:aa92c3d7ba97f12169c3de515f36320fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a797ae14eced5681ba837833ac15c97e7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; long &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRule.html#a797ae14eced5681ba837833ac15c97e7">precedencelist</a></td></tr>
+<tr class="separator:a797ae14eced5681ba837833ac15c97e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="GraphDefinition_8h_source.html#l00045">45</a> of file <a class="el" href="GraphDefinition_8h_source.html">GraphDefinition.h</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a6ffcc7183b152637e1fbc84014ab09a2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Rule::Rule </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; long &gt;&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="GraphDefinition_8h_source.html#l00048">48</a> of file <a class="el" href="GraphDefinition_8h_source.html">GraphDefinition.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="ae8442475c726d8bed6d069d0536dd696"></a>
 <div class="memitem">
 <div class="memproto">
@@ -139,23 +182,19 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="GraphDefinition_8h_source.html#l00046">46</a> of file <a class="el" href="GraphDefinition_8h_source.html">GraphDefinition.h</a>.</p>
 
-<p>Referenced by <a class="el" href="GraphDefinition_8cpp_source.html#l00210">GraphDefinition::multi_dijkstra()</a>, and <a class="el" href="GraphDefinition_8cpp_source.html#l00498">GraphDefinition::my_dijkstra()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="aa92c3d7ba97f12169c3de515f36320fd"></a>
+<a class="anchor" id="a797ae14eced5681ba837833ac15c97e7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;int&gt; Rule::precedencelist</td>
+          <td class="memname">std::vector&lt;long&gt; Rule::precedencelist</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="GraphDefinition_8h_source.html#l00047">47</a> of file <a class="el" href="GraphDefinition_8h_source.html">GraphDefinition.h</a>.</p>
-
-<p>Referenced by <a class="el" href="GraphDefinition_8cpp_source.html#l00210">GraphDefinition::multi_dijkstra()</a>, and <a class="el" href="GraphDefinition_8cpp_source.html#l00498">GraphDefinition::my_dijkstra()</a>.</p>
 
 </div>
 </div>
@@ -168,7 +207,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structRule.html">Rule</a></li>
-    <li class="footer">Generated on Tue Feb 21 2017 12:55:47 for PGROUTING by
+    <li class="footer">Generated on Wed Mar 1 2017 20:32:49 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

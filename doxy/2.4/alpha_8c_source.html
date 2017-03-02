@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">2.4-beta</span>
+   &#160;<span id="projectnumber">2.4-rc</span>
    </div>
   </td>
  </tr>
@@ -219,7 +219,7 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  target_vertex-&gt;<a class="code" href="structvertex.html#a8b9f211498390a67c369fd43f3722a19">y</a> = DatumGetFloat8(binval);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="alpha_8c.html#a4f47c3e26aa156219529477b79343691">  112</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="alpha_8c.html#a4f47c3e26aa156219529477b79343691">compute_alpha_shape</a>(<span class="keywordtype">char</span>* sql, <a class="code" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> alpha, <a class="code" href="structvertex.html">vertex_t</a> **res, <span class="keywordtype">size_t</span> *res_count) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="alpha_8c.html#a4f47c3e26aa156219529477b79343691">  112</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="alpha_8c.html#a4f47c3e26aa156219529477b79343691">compute_alpha_shape</a>(<span class="keywordtype">char</span>* sql, <a class="code" href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> alpha, <a class="code" href="structvertex.html">vertex_t</a> **res, <span class="keywordtype">size_t</span> *res_count) {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordtype">int</span> SPIcode;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">void</span> *SPIplan;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  Portal SPIportal;</div>
@@ -433,7 +433,7 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div class="ttc" id="alpha_8c_html_aae005778b70e07968ac950c42a4ff58e"><div class="ttname"><a href="alpha_8c.html#aae005778b70e07968ac950c42a4ff58e">fetch_vertices_columns</a></div><div class="ttdeci">static int fetch_vertices_columns(SPITupleTable *tuptable, vertex_columns_t *vertex_columns)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00069">alpha.c:69</a></div></div>
 <div class="ttc" id="alpha_8c_html_ad02862c5f625c4a429bbfe0596c93c76"><div class="ttname"><a href="alpha_8c.html#ad02862c5f625c4a429bbfe0596c93c76">fetch_vertex</a></div><div class="ttdeci">static void fetch_vertex(HeapTuple *tuple, TupleDesc *tupdesc, vertex_columns_t *vertex_columns, vertex_t *target_vertex)</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00096">alpha.c:96</a></div></div>
 <div class="ttc" id="alpha__driver_8h_html"><div class="ttname"><a href="alpha__driver_8h.html">alpha_driver.h</a></div></div>
-<div class="ttc" id="dijkstra_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="dijkstra_8h_source.html#l00047">dijkstra.h:47</a></div></div>
+<div class="ttc" id="postgres_8h_html_a9155724ff2560eea2c49383a4d08fbd4"><div class="ttname"><a href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a></div><div class="ttdeci">double float8</div><div class="ttdef"><b>Definition:</b> <a href="postgres_8h_source.html#l00023">postgres.h:23</a></div></div>
 <div class="ttc" id="structvertex__columns_html_a0c582ef5b2f2c44c8cbf6b89ebc8d183"><div class="ttname"><a href="structvertex__columns.html#a0c582ef5b2f2c44c8cbf6b89ebc8d183">vertex_columns::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00062">alpha.c:62</a></div></div>
 <div class="ttc" id="alpha_8c_html_a0938455e5ec9df9cd6255f4fcc04162b"><div class="ttname"><a href="alpha_8c.html#a0938455e5ec9df9cd6255f4fcc04162b">TUPLIMIT</a></div><div class="ttdeci">#define TUPLIMIT</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00046">alpha.c:46</a></div></div>
 <div class="ttc" id="structvertex__columns_html_a03a173f0d61443a379ca4e6afce8f0eb"><div class="ttname"><a href="structvertex__columns.html#a03a173f0d61443a379ca4e6afce8f0eb">vertex_columns::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="alpha_8c_source.html#l00061">alpha.c:61</a></div></div>
@@ -448,7 +448,7 @@ $(document).ready(function(){initNavTree('alpha_8c_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2bac365cc0c9272c53aba84dab0c0e45.html">alpha_shape</a></li><li class="navelem"><a class="el" href="dir_317b15ee777fcb874b96be9ec209d890.html">src</a></li><li class="navelem"><a class="el" href="alpha_8c.html">alpha.c</a></li>
-    <li class="footer">Generated on Tue Feb 21 2017 12:55:45 for PGROUTING by
+    <li class="footer">Generated on Wed Mar 1 2017 20:32:47 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

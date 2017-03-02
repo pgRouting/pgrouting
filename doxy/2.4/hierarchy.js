@@ -117,7 +117,6 @@ var hierarchy =
     [ "StringTokenizer", "classStringTokenizer.html", null ],
     [ "tokenizer", "classtokenizer.html", null ],
     [ "vehicle_columns", "structvehicle__columns.html", null ],
-    [ "Vertex", "structVertex.html", null ],
     [ "vertex", "structvertex.html", null ],
     [ "vertex_columns", "structvertex__columns.html", null ],
     [ "vrp_cost_element", "structvrp__cost__element.html", null ],

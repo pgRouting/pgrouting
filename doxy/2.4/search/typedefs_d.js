@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['path_5felement_5ft',['path_element_t',['../tester_2BiDirAStar_8h.html#a4232dd2b6d43eeb802b01c326cb5edec',1,'path_element_t():&#160;BiDirAStar.h'],['../dijkstra_8h.html#a0d9814712039cb4b46fb2ab88751878e',1,'path_element_t():&#160;dijkstra.h'],['../testit_8c.html#a0d9814712039cb4b46fb2ab88751878e',1,'path_element_t():&#160;testit.c'],['../trsp_8h.html#a0d9814712039cb4b46fb2ab88751878e',1,'path_element_t():&#160;trsp.h']]],
+  ['path_5felement_5ft',['path_element_t',['../tester_2BiDirAStar_8h.html#a4232dd2b6d43eeb802b01c326cb5edec',1,'path_element_t():&#160;BiDirAStar.h'],['../trsp_8h.html#a0d9814712039cb4b46fb2ab88751878e',1,'path_element_t():&#160;trsp.h']]],
   ['pdi',['PDI',['../src_2BiDirAStar_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;BiDirAStar.h'],['../src_2MinHeap_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;MinHeap.h'],['../tester_2BiDirAStar_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;BiDirAStar.h'],['../tester_2MinHeap_8h.html#ae3eaa8309455295e3b51522ed5317655',1,'PDI():&#160;MinHeap.h']]],
   ['pdp',['PDP',['../GraphDefinition_8h.html#a201f29a23ae268300cc7bf8219d62813',1,'GraphDefinition.h']]],
   ['pdvi',['PDVI',['../GraphDefinition_8h.html#a2b47d44b968d09a78256a0b251e805d5',1,'GraphDefinition.h']]],

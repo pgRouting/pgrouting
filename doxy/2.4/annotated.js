@@ -61,7 +61,6 @@ var annotated =
     [ "tokenizer", "classtokenizer.html", "classtokenizer" ],
     [ "UserQuitException", "classUserQuitException.html", "classUserQuitException" ],
     [ "vehicle_columns", "structvehicle__columns.html", "structvehicle__columns" ],
-    [ "Vertex", "structVertex.html", "structVertex" ],
     [ "vertex", "structvertex.html", "structvertex" ],
     [ "vertex_columns", "structvertex__columns.html", "structvertex__columns" ],
     [ "vrp_cost_element", "structvrp__cost__element.html", "structvrp__cost__element" ],

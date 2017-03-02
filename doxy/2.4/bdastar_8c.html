@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">2.4-beta</span>
+   &#160;<span id="projectnumber">2.4-rc</span>
    </div>
   </td>
  </tr>
@@ -143,11 +143,11 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:af1c883ea100b801834f8d7e7b99c8466"><td class="memItemLeft" align="right" valign="top">PGDLLEXPORT Datum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#af1c883ea100b801834f8d7e7b99c8466">bidir_astar_shortest_path</a> (PG_FUNCTION_ARGS)</td></tr>
 <tr class="separator:af1c883ea100b801834f8d7e7b99c8466"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecf038ac24cec5a60156be39a61e9857"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#aecf038ac24cec5a60156be39a61e9857">compute_shortest_path_astar</a> (char *sql, int source_vertex_id, int target_vertex_id, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> directed, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> has_reverse_cost, <a class="el" href="structpath__element__t.html">path_element_t</a> **<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, size_t *<a class="el" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>)</td></tr>
+<tr class="memitem:aecf038ac24cec5a60156be39a61e9857"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#aecf038ac24cec5a60156be39a61e9857">compute_shortest_path_astar</a> (char *sql, int source_vertex_id, int target_vertex_id, bool directed, bool has_reverse_cost, <a class="el" href="structpath__element__t.html">path_element_t</a> **<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, size_t *<a class="el" href="BDATester_8cpp.html#a485972124000c974fc113e9c5c0330df">path_count</a>)</td></tr>
 <tr class="separator:aecf038ac24cec5a60156be39a61e9857"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae915ad59cb87304d436f3b2677217c96"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#ae915ad59cb87304d436f3b2677217c96">fetch_edge_astar</a> (HeapTuple *tuple, TupleDesc *tupdesc, <a class="el" href="bdastar_8c.html#a0dcf01245d021e5c02078c8020af8c6e">edge_astar_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, <a class="el" href="tester_2BiDirAStar_8h.html#af873dc3ac3f0b68bc6985779bcd69e96">edge_astar_t</a> *target_edge)</td></tr>
 <tr class="separator:ae915ad59cb87304d436f3b2677217c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae76df99390f65a2ce971790230d9c253"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#ae76df99390f65a2ce971790230d9c253">fetch_edge_astar_columns</a> (SPITupleTable *tuptable, <a class="el" href="bdastar_8c.html#a0dcf01245d021e5c02078c8020af8c6e">edge_astar_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> has_reverse_cost)</td></tr>
+<tr class="memitem:ae76df99390f65a2ce971790230d9c253"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#ae76df99390f65a2ce971790230d9c253">fetch_edge_astar_columns</a> (SPITupleTable *tuptable, <a class="el" href="bdastar_8c.html#a0dcf01245d021e5c02078c8020af8c6e">edge_astar_columns_t</a> *<a class="el" href="structedge__columns.html">edge_columns</a>, bool has_reverse_cost)</td></tr>
 <tr class="separator:ae76df99390f65a2ce971790230d9c253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c15fed6e47c41c10bb7606c5b1e28e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bdastar_8c.html#a10c15fed6e47c41c10bb7606c5b1e28e">PG_FUNCTION_INFO_V1</a> (<a class="el" href="bdastar_8c.html#af1c883ea100b801834f8d7e7b99c8466">bidir_astar_shortest_path</a>)</td></tr>
 <tr class="separator:a10c15fed6e47c41c10bb7606c5b1e28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -231,13 +231,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>directed</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>has_reverse_cost</em>, </td>
         </tr>
         <tr>
@@ -347,7 +347,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>has_reverse_cost</em>&#160;</td>
         </tr>
         <tr>
@@ -393,7 +393,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a1188af90c8f2ef20f286b8e78c6e14f.html">bd_astar</a></li><li class="navelem"><a class="el" href="dir_113f93645de6d06d40f731407c36f54e.html">src</a></li><li class="navelem"><a class="el" href="bdastar_8c.html">bdastar.c</a></li>
-    <li class="footer">Generated on Tue Feb 21 2017 12:55:46 for PGROUTING by
+    <li class="footer">Generated on Wed Mar 1 2017 20:32:47 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

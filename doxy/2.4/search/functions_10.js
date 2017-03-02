@@ -13,5 +13,6 @@ var searchData=
   ['restore_5fgraph',['restore_graph',['../classpgrouting_1_1graph_1_1Pgr__base__graph.html#a55d28f24fac0d6355361a292d0d099cf',1,'pgrouting::graph::Pgr_base_graph']]],
   ['reverse',['reverse',['../classPath.html#a7bba11c6c32823d91b1e9bf00a6baa2e',1,'Path::reverse()'],['../classpgrouting_1_1tsp_1_1Tour.html#abbdd3586a26f8af6d5770deabd242617',1,'pgrouting::tsp::Tour::reverse()']]],
   ['reversemove',['reverseMove',['../classCMoveInfo.html#acc6100438878e449445b1e15bd7b670f',1,'CMoveInfo']]],
-  ['rotate',['rotate',['../classpgrouting_1_1tsp_1_1Tour.html#a33fbdb2e976e23ff5e1a8e00b20f141f',1,'pgrouting::tsp::Tour']]]
+  ['rotate',['rotate',['../classpgrouting_1_1tsp_1_1Tour.html#a33fbdb2e976e23ff5e1a8e00b20f141f',1,'pgrouting::tsp::Tour']]],
+  ['rule',['Rule',['../structRule.html#a6ffcc7183b152637e1fbc84014ab09a2',1,'Rule']]]
 ];

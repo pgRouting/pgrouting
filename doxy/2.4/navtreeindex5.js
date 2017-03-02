@@ -1,8 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a042934806ea9ec5c0fdcd1b7cbc844b0":[4,0,0,5,4,18],
-"classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a1404346e4ad5ba9d397a5c0a407bca43":[4,0,0,5,4,21],
-"classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a187fefd5e543a4f1b8ec71d9352abed8":[4,0,0,5,4,1],
 "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a196ba6fb904c6d6b31d970df3ff28f25":[4,0,0,5,4,11],
 "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a1d0f5376c7a21fa936a385cbaea1c476":[4,0,0,5,4,10],
 "classpgrouting_1_1vrp_1_1Pgr__pickDeliver.html#a258460907dbf4aeea16ce5dfff7478db":[4,0,0,5,4,4],
@@ -249,5 +246,8 @@ var NAVTREEINDEX5 =
 "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a25fa4725c5aefec021fae42463761476":[4,0,0,5,9,15],
 "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a29fa1db0481ca446927ff0cbb8356c04":[4,0,0,5,9,30],
 "classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a2c972904c3b3a8cdb6de53ae3c657fca":[4,0,0,5,9,0],
-"classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69":[4,0,0,5,9,37]
+"classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a34330126d1614d29dff7fc48a6a43f69":[4,0,0,5,9,37],
+"classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a36df8fd6ae985f8f0a27b84638d075b8":[4,0,0,5,9,28],
+"classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a377bd5f0bd66615827ff367b2fbf0587":[4,0,0,5,9,51],
+"classpgrouting_1_1vrp_1_1Vehicle__pickDeliver.html#a37934771b6c2ed2644eec4e61a7cfe5a":[4,0,0,5,9,8]
 };

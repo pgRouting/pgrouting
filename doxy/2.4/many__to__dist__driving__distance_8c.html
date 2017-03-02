@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">2.4-beta</span>
+   &#160;<span id="projectnumber">2.4-rc</span>
    </div>
   </td>
  </tr>
@@ -128,7 +128,7 @@ Functions</h2></td></tr>
 <tr class="separator:aa06bcbb9f84b2c97db4ff61efb2851f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58c5ee7d9291207074640cb7044a53cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="many__to__dist__driving__distance_8c.html#a58c5ee7d9291207074640cb7044a53cb">PG_FUNCTION_INFO_V1</a> (<a class="el" href="many__to__dist__driving__distance_8c.html#aa06bcbb9f84b2c97db4ff61efb2851f0">driving_many_to_dist</a>)</td></tr>
 <tr class="separator:a58c5ee7d9291207074640cb7044a53cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a7f016973820d0c041c43d2e97edd1a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="many__to__dist__driving__distance_8c.html#a6a7f016973820d0c041c43d2e97edd1a">process</a> (char *sql, ArrayType *starts, <a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> distance, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> directed, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> equicost, <a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **result_tuples, size_t *result_count)</td></tr>
+<tr class="memitem:a6a7f016973820d0c041c43d2e97edd1a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="many__to__dist__driving__distance_8c.html#a6a7f016973820d0c041c43d2e97edd1a">process</a> (char *sql, ArrayType *starts, <a class="el" href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a> distance, bool directed, bool equicost, <a class="el" href="structGeneral__path__element__t.html">General_path_element_t</a> **result_tuples, size_t *result_count)</td></tr>
 <tr class="separator:a6a7f016973820d0c041c43d2e97edd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -190,19 +190,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="dijkstra_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="postgres_8h.html#a9155724ff2560eea2c49383a4d08fbd4">float8</a>&#160;</td>
           <td class="paramname"><em>distance</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>directed</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>equicost</em>, </td>
         </tr>
         <tr>
@@ -244,7 +244,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_9b3fa77b78162e3e9798b6b980f3e1a9.html">driving_distance</a></li><li class="navelem"><a class="el" href="dir_330b2fb77ec4b18692766894438b09ce.html">src</a></li><li class="navelem"><a class="el" href="many__to__dist__driving__distance_8c.html">many_to_dist_driving_distance.c</a></li>
-    <li class="footer">Generated on Tue Feb 21 2017 12:55:46 for PGROUTING by
+    <li class="footer">Generated on Wed Mar 1 2017 20:32:47 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

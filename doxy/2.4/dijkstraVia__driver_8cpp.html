@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="pgrouting-logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">PGROUTING
-   &#160;<span id="projectnumber">2.4-beta</span>
+   &#160;<span id="projectnumber">2.4-rc</span>
    </div>
   </td>
  </tr>
@@ -123,14 +123,14 @@ $(document).ready(function(){initNavTree('dijkstraVia__driver_8cpp.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a65bae4bd90fab026ee5f54f17655e776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dijkstraVia__driver_8cpp.html#a65bae4bd90fab026ee5f54f17655e776">do_pgr_dijkstraVia</a> (<a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> *data_edges, size_t total_edges, int64_t *via_vidsArr, size_t size_via_vidsArr, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> directed, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> strict, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> U_turn_on_edge, <a class="el" href="structRoutes__t.html">Routes_t</a> **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
+<tr class="memitem:a65bae4bd90fab026ee5f54f17655e776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dijkstraVia__driver_8cpp.html#a65bae4bd90fab026ee5f54f17655e776">do_pgr_dijkstraVia</a> (<a class="el" href="structpgr__edge__t.html">pgr_edge_t</a> *data_edges, size_t total_edges, int64_t *via_vidsArr, size_t size_via_vidsArr, bool directed, bool strict, bool U_turn_on_edge, <a class="el" href="structRoutes__t.html">Routes_t</a> **return_tuples, size_t *return_count, char **log_msg, char **notice_msg, char **<a class="el" href="BDATester_8cpp.html#af85e5d3f4ccadd94e0f588533aae0f2d">err_msg</a>)</td></tr>
 <tr class="separator:a65bae4bd90fab026ee5f54f17655e776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4e2c3a96abf0877e03725f4dbc993ec"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dijkstraVia__driver_8cpp.html#ad4e2c3a96abf0877e03725f4dbc993ec">get_path</a> (int route_id, int path_id, const <a class="el" href="classPath.html">Path</a> &amp;<a class="el" href="BDATester_8cpp.html#adeffa16c2ebac77ad192e5a8e53378de">path</a>, <a class="el" href="structRoutes__t.html">Routes_t</a> **postgres_data, double &amp;route_cost, size_t &amp;sequence)</td></tr>
 <tr class="separator:ad4e2c3a96abf0877e03725f4dbc993ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f5d7eba38afe637689f28e6a51761be"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dijkstraVia__driver_8cpp.html#a0f5d7eba38afe637689f28e6a51761be">get_route</a> (<a class="el" href="structRoutes__t.html">Routes_t</a> **ret_path, const std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;paths)</td></tr>
 <tr class="separator:a0f5d7eba38afe637689f28e6a51761be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a177cc6f573755bc3c2e872f43338e9e9"><td class="memTemplParams" colspan="2">template&lt;class G &gt; </td></tr>
-<tr class="memitem:a177cc6f573755bc3c2e872f43338e9e9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a> (G &amp;graph, const std::vector&lt; int64_t &gt; via_vertices, std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;paths, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> strict, <a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a> U_turn_on_edge, std::ostringstream &amp;log)</td></tr>
+<tr class="memitem:a177cc6f573755bc3c2e872f43338e9e9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="dijkstraVia__driver_8cpp.html#a177cc6f573755bc3c2e872f43338e9e9">pgr_dijkstraViaVertex</a> (G &amp;graph, const std::vector&lt; int64_t &gt; via_vertices, std::deque&lt; <a class="el" href="classPath.html">Path</a> &gt; &amp;paths, bool strict, bool U_turn_on_edge, std::ostringstream &amp;log)</td></tr>
 <tr class="separator:a177cc6f573755bc3c2e872f43338e9e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -165,19 +165,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>directed</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>strict</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>U_turn_on_edge</em>, </td>
         </tr>
         <tr>
@@ -355,13 +355,13 @@ template&lt;class G &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>strict</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="testit_8c.html#a1062901a7428fdd9c7f180f5e01ea056">bool</a>&#160;</td>
+          <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>U_turn_on_edge</em>, </td>
         </tr>
         <tr>
@@ -392,7 +392,7 @@ template&lt;class G &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_082cc17fcca3afb2d43283795abba117.html">dijkstra</a></li><li class="navelem"><a class="el" href="dir_2a52a6a5123eeb3ef09f6d5b6e1e597e.html">src</a></li><li class="navelem"><a class="el" href="dijkstraVia__driver_8cpp.html">dijkstraVia_driver.cpp</a></li>
-    <li class="footer">Generated on Tue Feb 21 2017 12:55:46 for PGROUTING by
+    <li class="footer">Generated on Wed Mar 1 2017 20:32:47 for PGROUTING by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
