@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
 
-#include "./astar_many_to_many_driver.h"
+#include "./astar_driver.h"
 
 PGDLLEXPORT Datum astarManyToMany(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(astarManyToMany);

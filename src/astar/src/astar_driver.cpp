@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./astar_many_to_many_driver.h"
+#include "./astar_driver.h"
 
 #include <sstream>
 #include <deque>
