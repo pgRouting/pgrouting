@@ -33,8 +33,8 @@ CREATE OR REPLACE FUNCTION pgr_bdAstarCostMatrix(
     vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
     only_cost BOOLEAN DEFAULT false,
 
     OUT start_vid BIGINT,
@@ -43,7 +43,7 @@ CREATE OR REPLACE FUNCTION pgr_bdAstarCostMatrix(
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, $4, $5, $6, true) a;
+    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, $4, $5::FLOAT, $6::FLOAT, true) a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100

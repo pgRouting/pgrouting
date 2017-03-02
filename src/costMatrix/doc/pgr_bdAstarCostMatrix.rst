@@ -40,9 +40,9 @@ Signature Summary
 .. code-block:: none
 
     pgr_bdAstarCostMatrix(edges_sql, start_vids)
-    pgr_bdAstarCostMatrix(edges_sql, start_vids, directed)
+    pgr_bdAstarCostMatrix(edges_sql, start_vids, [, directed , heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
-
+    OR EMPTY SET
 
 
 Signatures
@@ -54,13 +54,17 @@ Signatures
 Minimal Signature
 ...............................................................................
 
-The minimal signature:
-    - Is for a **directed** graph.
-
 .. code-block:: none
 
-    pgr_bdAstarCostMatrix(edges_sql, start_vid)
+    pgr_bdAstarCostMatrix(edges_sql, start_vids)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
+    OR EMPTY SET
+
+This usage calculates the cost from the each ``start_vid`` in ``start_vids`` to  each ``start_vid`` in ``start_vids``
+  -  on a **directed** graph
+  -  with **heuristic**'s value 5
+  -  with **factor**'s value 1
+  -  with **epsilon**'s value 1
 
 
 :Example: Cost matrix for vertices 1, 2, 3, and 4.
@@ -79,8 +83,15 @@ Complete Signature
 
 .. code-block:: none
 
-    pgr_bdAstarCostMatrix(edges_sql, start_vids, directed:=true)
+    pgr_bdAstarCostMatrix(edges_sql, start_vids, [, directed , heuristic, factor, epsilon])
     RETURNS SET OF (start_vid, end_vid, agg_cost)
+    OR EMPTY SET
+
+This usage calculates the cost from the each ``start_vid`` in ``start_vids`` to  each ``start_vid`` in ``start_vids`` allowing the user to choose
+    * if the graph is **directed** or **undirected**
+    * **heuristic**,
+    * and/or **factor**
+    * and/or **epsilon**.
 
 
 :Example: Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.
@@ -99,24 +110,13 @@ Description of the Signatures
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
+.. include:: ./../../bdAstar/doc/bdAstar.rst
+    :start-after: parameters_begin
+    :end-before: parameters_end
 
-
-Description of the parameters of the signatures
-...............................................................................
-
-================ ====================== =================================================
-Parameter        Type                   Description
-================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as described above.
-**start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of the vertices.
-**directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-================ ====================== =================================================
-
-
-
-.. Description of the return values
-
-.. include:: dmatrix_return_values.txt
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
 Examples

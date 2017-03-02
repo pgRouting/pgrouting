@@ -32,15 +32,15 @@ CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
     BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6, $7, true) AS a;
+    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
@@ -51,17 +51,17 @@ CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
     edges_sql TEXT,
     BIGINT,
     end_vids ANYARRAY,
-    directed BOOLEAN,
+    directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6, $7, true) AS a;
+    FROM _pgr_bdAstar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
@@ -72,17 +72,17 @@ CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
     edges_sql TEXT,
     start_vids ANYARRAY,
     BIGINT,
-    directed BOOLEAN,
+    directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6, $7, true) AS a;
+    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
@@ -93,17 +93,17 @@ CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
     edges_sql TEXT,
     start_vids ANYARRAY,
     end_vids ANYARRAY,
-    directed BOOLEAN,
+    directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6, $7, true) AS a;
+    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100

@@ -64,7 +64,7 @@ pgr_astarcost(text,anyarray,bigint,boolean ,integer ,float ,float ,out bigint,ou
 pgr_astarcost(text,anyarray,anyarray,boolean ,integer ,float ,float ,out bigint,out bigint,out float)
 pgr_bdastar(text,bigint,bigint,out integer,out integer,out bigint,out bigint,out float,out float)
 pgr_bdastar(text,integer,integer,boolean,boolean)
-pgr_bdastarcostmatrix(text,anyarray,boolean ,integer ,float ,float ,boolean ,out bigint,out bigint,out float)
+pgr_bdastarcostmatrix(text,anyarray,boolean ,integer ,numeric ,numeric ,boolean ,out bigint,out bigint,out float)
 pgr_bddijkstracostmatrix(text,anyarray,boolean ,out bigint,out bigint,out float)
 pgr_createtopology(text,double precision,text ,text ,text ,text ,text ,boolean )
 pgr_createverticestable(text,text ,text ,text ,text )

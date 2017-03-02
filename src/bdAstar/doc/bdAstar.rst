@@ -9,12 +9,12 @@
 
 .. _bdastar:
 
-Bidirectional Astar - Family of functions
+Bidirectional A* - Family of functions
 ===============================================================================
 
-  - :ref:`pgr_bdAstar` - Dijkstra's algorithm for the shortest paths.
-  - :ref:`pgr_bdAstarCost` - Dijkstra's algorithm for the shortest paths.
-  - :ref:`pgr_bdAstarCostMatrix` - Dijkstra's algorithm for the shortest paths.
+  - :ref:`pgr_bdAstar` - A* algorithm for the shortest paths.
+  - :ref:`pgr_bdAstarCost` - A* algorithm for the shortest path's cost.
+  - :ref:`pgr_bdAstarCostMatrix` - A* algorithm for obtaining a :ref:`costMatrix`.
 
 .. toctree::
     :hidden:
@@ -22,16 +22,15 @@ Bidirectional Astar - Family of functions
     ./pgr_bdAstar
     ./pgr_bdAstarCost
     ./../../costMatrix/doc/pgr_bdAstarCostMatrix
-    ./../../costMatrix/doc/pgr_bdAstarCostMatrix
 
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-Based on Dijkstra's algorithm, the bidirectional search finds a shortest path
+Based on A* algorithm, the bidirectional search finds a shortest path from
 a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
-It runs two simultaneous searches: one forward from the source, and one backward from the target,
+It runs two simultaneous searches: one forward from the ``start_vid``, and one backward from the ``end_vid``,
 stopping when the two meet in the middle.
 This implementation can be used with a directed graph and an undirected graph.
 
@@ -51,8 +50,47 @@ The main Characteristics are:
 
   - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
 
-- Running time (worse case scenario): :math:`O((V \log V + E))`
+- Running time (worse case scenario): :math:`O((E + V) * \log V)`
 - For large graphs where there is a path bewtween the starting vertex and ending vertex:
 
-  - It is expected to terminate faster than pgr_dijkstra 
+  - It is expected to terminate faster than pgr_astar 
 
+Description of the Signatures
+--------------------------------
+
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: xy_edges_sql_start
+    :end-before: xy_edges_sql_end
+
+.. parameters_begin
+
+Description of the parameters of the signatures
+.................................................
+
+================ ====================== =================================================
+Parameter        Type                   Description
+================ ====================== =================================================
+**edges_sql**    ``TEXT``               Edges SQL query as described above.
+**start_vid**    ``ANY-INTEGER``        Starting vertex identifier.
+**start_vids**   ``ARRAY[ANY-INTEGER]`` Starting vertices identifierers.
+**end_vid**      ``ANY-INTEGER``        Ending vertex identifier.
+**end_vids**     ``ARRAY[ANY-INTEGER]`` Ending vertices identifiers.
+**directed**     ``BOOLEAN``            - Optional.
+
+                                          - When ``false`` the graph is considered as Undirected.
+                                          - Default is ``true`` which considers the graph as Directed.
+
+**heuristic**    ``INTEGER``            (optional). Heuristic number. Current valid values 0~5. Default ``5``
+
+                                          - 0: h(v) = 0 (Use this value to compare with pgr_dijkstra)
+                                          - 1: h(v) abs(max(dx, dy))
+                                          - 2: h(v) abs(min(dx, dy))
+                                          - 3: h(v) = dx * dx + dy * dy
+                                          - 4: h(v) = sqrt(dx * dx + dy * dy)
+                                          - 5: h(v) = abs(dx) + abs(dy)
+
+**factor**       ``FLOAT``              (optional). For units manipulation. :math:`factor > 0`.  Default ``1``. see :ref:`astar_factor`
+**epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
+================ ====================== =================================================
+
+.. parameters_end

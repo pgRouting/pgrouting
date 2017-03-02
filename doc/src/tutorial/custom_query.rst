@@ -9,12 +9,14 @@
 
 .. _custom_query:
 
-Inner Queries
+Queries & Results
 ===============================================================================
 
-There are several kinds of valid inner queries.
+There are several kinds of valid inner queries and also the columns returned are debending of the function..
 Which kind of **edges_sql** will depend on the function(s) requirements.
 
+Inner Queries
+-------------------------------------------------------------------------------
 
 .. basic_edges_sql_start
 
@@ -159,3 +161,45 @@ Where:
 .. points_sql_end
 
 
+Description of the return values
+--------------------------------------------------------------------------------
+
+
+.. return_path_start
+
+Description of the return values for a path
+...............................................................................
+
+Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
+
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**seq**        ``INT``    Sequential value starting from **1**.
+**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
+**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
+**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
+**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
+**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
+**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
+============== ========== =================================================
+
+.. return_path_end
+
+.. return_cost_start
+
+Description of the return values for a Cost function
+...............................................................................
+
+Returns set of ``(start_vid, end_vid, agg_cost)``
+
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
+**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
+**agg_cost**   ``FLOAT``  Aggregate cost from ``start_vid`` to ``end_vid``.
+============== ========== =================================================
+
+.. return_cost_end
