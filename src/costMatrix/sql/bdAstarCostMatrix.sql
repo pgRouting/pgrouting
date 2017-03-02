@@ -25,19 +25,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
---  BIDIRECTIONAL DIJKSTRA Matrix
+--  BIDIRECTIONAL ASTAR Matrix
 
 
-CREATE OR REPLACE FUNCTION pgr_bdDijkstraCostMatrix(edges_sql TEXT, vids ANYARRAY, directed BOOLEAN DEFAULT true,
-    OUT start_vid BIGINT, OUT end_vid BIGINT, OUT agg_cost float)
+CREATE OR REPLACE FUNCTION pgr_bdAstarCostMatrix(
+    edges_sql TEXT,
+    vids ANYARRAY,
+    directed BOOLEAN DEFAULT true,
+    heuristic INTEGER DEFAULT 5,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
+
+    OUT start_vid BIGINT,
+    OUT end_vid BIGINT,
+    OUT agg_cost float)
 RETURNS SETOF RECORD AS
 $BODY$
     SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_bdDijkstra(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, true) a;
+    FROM _pgr_bdAstar(_pgr_get_statement($1), $2::BIGINT[], $2::BIGINT[], $3, $4, $5::FLOAT, $6::FLOAT, true) a;
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
+COMMENT ON FUNCTION pgr_bdAstarCostMatrix(TEXT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_bdAstarCostMatrix';
 
 
 

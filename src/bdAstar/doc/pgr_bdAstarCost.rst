@@ -7,15 +7,15 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_bdAstar:
+.. _pgr_bdAstarCost:
 
-pgr_bdAstar
+pgr_bdAstarCost - Proposed
 ===============================================================================
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_bdAstar`` — Returns the shortest path using A* algorithm.
+``pgr_bdAstarCost`` — Returns the shortest path using A* algorithm.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org//libs/graph
@@ -26,31 +26,25 @@ Name
 Signature Summary
 -----------------
 
-.. code-block:: none
-
-    pgr_bdAstar(edges_sql, start_vid, end_vid)
-    pgr_bdAstar(edges_sql, start_vid, end_vid, directed [, heuristic, factor, epsilon])
-    RETURNS SET OF (seq, path_seq , node, edge, cost, agg_cost)
-      OR EMPTY SET
-
-
 .. include:: ../../proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
-    pgr_bdAstar(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
-    pgr_bdAstar(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_bdAstarCost(edges_sql, start_vid, end_vid)
+    pgr_bdAstarCost(edges_sql, start_vid, end_vid [, directed , heuristic, factor, epsilon])
+    pgr_bdAstarCost(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
+    pgr_bdAstarCost(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
+    pgr_bdAstarCost(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
 
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
     OR EMPTY SET
 
 
-Using these signatures, will load once the graph and perform several one to one `pgr_bdAstar`
+Using these signatures, will load once the graph and perform several one to one `pgr_bdAstarCost`
 
-  - The result is the union of the results of the one to one `pgr_bdAStar`.
+  - The result is the union of the results of the one to one `pgr_bdAstarCost`.
   - The extra ``start_vid`` and/or ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 .. NOTE:: This signature is deprecated
@@ -71,7 +65,7 @@ Signatures
 
 
 .. index::
-    single: bdAstar(Minimal Use) -- New Signature
+    single: bdAstarCost(Minimal Use) -- New Signature
 
 
 Minimal Signature
@@ -79,8 +73,8 @@ Minimal Signature
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    pgr_bdAstarCost(edges_sql, start_vid, end_vid)
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 This usage finds the shortest path from the ``start_vid`` to the ``end_vid``
   -  on a **directed** graph
@@ -90,24 +84,25 @@ This usage finds the shortest path from the ``start_vid`` to the ``end_vid``
 
 :Example: Using the defaults
 
-.. literalinclude:: doc-pgr_bdAstar.queries
+.. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q1
    :end-before: -- q2
 
 
 
 .. index::
-    single: bdAstar(One to One) -- New Signature
+    single: bdAstarCost(One to One) -- New Signature
 
 
-pgr_bdAstar One to One
+pgr_bdAstarCost One to One
 ...............................................................................
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vid, directed [, heuristic, factor, epsilon])
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    pgr_bdAstarCost(edges_sql, start_vid, end_vid [, directed, heuristic, factor, epsilon])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-This usage finds the shortest path from the ``start_vid`` to the ``end_vid`` allowing the user to choose
+This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in ``end_vids`` allowing the user to choose 
+    * if the graph is **directed** or **undirected**
     * **heuristic**,
     * and/or **factor**
     * and/or **epsilon**.
@@ -117,21 +112,21 @@ This usage finds the shortest path from the ``start_vid`` to the ``end_vid`` all
 
 :Example: Directed using Heuristic 2
 
-.. literalinclude:: doc-pgr_bdAstar.queries
+.. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q2
    :end-before: -- q3
 
 
 .. index::
-    single: bdAstar(One to Many) - Proposed
+    single: bdAstarCost(One to Many) - Proposed
 
-pgr_bdAstar One to many
+pgr_bdAstarCost One to many
 .......................................
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bdAstarCost(edges_sql, start_vid, end_vids [, directed, heuristic, factor, epsilon])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in ``end_vids`` allowing the user to choose 
     * if the graph is **directed** or **undirected**
@@ -142,21 +137,21 @@ This usage finds the shortest path from the ``start_vid`` to each ``end_vid`` in
 
 :Example: Directed using Heuristic 3 and a factor of 3.5
 
-.. literalinclude:: doc-pgr_bdAstar.queries
+.. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q3
    :end-before: -- q4
 
 .. index::
-    single: bdAstar(Many to One) - Proposed
+    single: bdAstarCost(Many to One) - Proposed
 
 
-pgr_bdAstar Many to One
+pgr_bdAstarCost Many to One
 .......................................
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bdAstarCost(edges_sql, start_vids, end_vid [, directed, heuristic, factor, epsilon])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to the ``end_vid`` allowing the user to choose 
     * if the graph is **directed** or **undirected**
@@ -166,21 +161,21 @@ This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to 
 
 :Example: Undirected graph with Heuristic 4
 
-.. literalinclude:: doc-pgr_bdAstar.queries
+.. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q4
    :end-before: -- q5
 
 
 .. index::
-    single: bdAstar(Many to Many) - Proposed
+    single: bdAstarCost(Many to Many) - Proposed
 
-pgr_bdAstar Many to Many
+pgr_bdAstarCost Many to Many
 .......................................
 
 .. code-block:: none
 
-    pgr_bdAstar(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+    pgr_bdAstarCost(edges_sql, start_vids, end_vids [, directed, heuristic, factor, epsilon])
+    RETURNS SET OF (start_vid, end_vid, agg_cost)
 
 This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to each ``end_vid`` in ``end_vids`` allowing the user to choose 
     * if the graph is **directed** or **undirected**
@@ -190,14 +185,12 @@ This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to 
 
 :Example: Directed graph with a factor of 0.5
 
-.. literalinclude:: doc-pgr_bdAstar.queries
+.. literalinclude:: doc-pgr_bdAstarCost.queries
    :start-after: -- q5
    :end-before: -- q6
 
 Description of the Signatures
 --------------------------------
-
-.. NOTE:: The following only aplies to the new signatures
 
 .. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: xy_edges_sql_start
@@ -208,28 +201,19 @@ Description of the Signatures
     :end-before: parameters_end
 
 .. include:: ../../../doc/src/tutorial/custom_query.rst
-    :start-after: return_path_start
-    :end-before: return_path_end
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
 
-Deprecated Signature
--------------------------------------------------------------------------------
 
-:Example: Using the deprecated signature 
-
-.. literalinclude:: doc-pgr_bdAstar.queries
-   :start-after: -- q6
-   :end-before: -- q7
-
-
-The queries use the :ref:`sampledata` network.
 
 
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`bdAstar`
+* The examples use the :ref:`sampledata` network.
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
 

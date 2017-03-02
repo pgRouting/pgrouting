@@ -5,9 +5,9 @@ SELECT plan(10);
 
 
 SELECT has_function('pgr_bdastar',
-    ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'double precision', 'double precision']);
+    ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'numeric', 'numeric']);
 SELECT function_returns('pgr_bdastar',
-    ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'double precision', 'double precision'],
+    ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'numeric', 'numeric'],
     'setof record','Returns set record');
 
 SELECT has_function('pgr_bdastar',ARRAY['text', 'bigint', 'bigint']);
