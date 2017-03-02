@@ -53,6 +53,7 @@ process(char* edges_sql,
         double factor,
         double epsilon,
         bool only_cost,
+        bool normal,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     check_parameters(heuristic, factor, epsilon);
@@ -61,19 +62,26 @@ process(char* edges_sql,
 
     int64_t* start_vidsArr = NULL;
     size_t size_start_vidsArr = 0;
-    start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
 
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
-    end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
-
 
     Pgr_edge_xy_t *edges = NULL;
     size_t total_edges = 0;
 
-    pgr_get_edges_xy(edges_sql, &edges, &total_edges);
+    if (normal) {
+        pgr_get_edges_xy(edges_sql, &edges, &total_edges);
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    } else {
+        pgr_get_edges_xy_reversed(edges_sql, &edges, &total_edges);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, starts);
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, ends);
+    }
 
     if (total_edges == 0) {
         PGR_DBG("No edges found");
@@ -97,7 +105,7 @@ process(char* edges_sql,
             factor,
             epsilon,
             only_cost,
-            true,
+            normal,
             result_tuples, result_count,
             &log_msg,
             &notice_msg,
@@ -165,6 +173,7 @@ astarManyToMany(PG_FUNCTION_ARGS) {
                 PG_GETARG_FLOAT8(5),
                 PG_GETARG_FLOAT8(6),
                 PG_GETARG_BOOL(7),
+                PG_GETARG_BOOL(8),
                 &result_tuples,
                 &result_count);
 

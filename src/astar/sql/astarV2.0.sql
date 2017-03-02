@@ -42,7 +42,7 @@ BEGIN
     END IF;
 
     RETURN query SELECT seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost 
-    FROM pgr_astar(sql, source_id, target_id, directed);
+    FROM pgr_astar(sql, ARRAY[$2], ARRAY[$3], directed);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
