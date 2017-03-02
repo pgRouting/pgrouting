@@ -39,6 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/arrays_input.h"
 #include "./many_to_many_dijkstra_driver.h"
 
+PG_MODULE_MAGIC;
+
 PGDLLEXPORT Datum many_to_many_dijkstra(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
 
@@ -50,24 +52,32 @@ process(
         ArrayType *ends,
         bool directed,
         bool only_cost,
+        bool normal,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
     int64_t* start_vidsArr = NULL;
     size_t size_start_vidsArr = 0;
-    start_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_start_vidsArr, starts);
 
     int64_t* end_vidsArr = NULL;
     size_t size_end_vidsArr = 0;
-    end_vidsArr = (int64_t*)
-        pgr_get_bigIntArray(&size_end_vidsArr, ends);
 
     pgr_edge_t *edges = NULL;
     size_t total_edges = 0;
-    pgr_get_edges(edges_sql, &edges, &total_edges);
-
+    if (normal) {
+        pgr_get_edges(edges_sql, &edges, &total_edges);
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, starts);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, ends);
+    } else {
+        pgr_get_edges_reversed(edges_sql, &edges, &total_edges);
+        end_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_end_vidsArr, starts);
+        start_vidsArr = (int64_t*)
+            pgr_get_bigIntArray(&size_start_vidsArr, ends);
+    }
 
     if (total_edges == 0) {
         if (end_vidsArr) pfree(end_vidsArr);
@@ -88,7 +98,7 @@ process(
 
             directed,
             only_cost,
-            true,  // normal
+            normal,
 
             result_tuples,
             result_count,
@@ -98,9 +108,9 @@ process(
             &err_msg);
 
     if (only_cost) {
-        time_msg("processing pgr_dijkstraCost(many to many)", start_t, clock());
+        time_msg("processing pgr_dijkstraCost", start_t, clock());
     } else {
-        time_msg("processing pgr_dijkstra(many to many)", start_t, clock());
+        time_msg("processing pgr_dijkstra", start_t, clock());
     }
 
 
@@ -151,6 +161,7 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
                 PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
+                PG_GETARG_BOOL(5),
                 &result_tuples,
                 &result_count);
 
