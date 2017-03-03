@@ -128,9 +128,10 @@ Parameter        Type                   Description
 
 
 
-.. Description of the return values
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
-.. include:: dmatrix_return_values.txt
 
 
 Examples

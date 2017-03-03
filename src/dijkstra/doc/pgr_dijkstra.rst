@@ -214,9 +214,26 @@ Description of the Signatures
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../sql/dijkstra.sql
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+
+.. pgr_dijkstra_parameters_start
+
+Description of the parameters of the signatures
+...............................................................................
+
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**sql**        ``TEXT``                    SQL query as described above.
+**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                           - When ``false`` the graph is considered as `Undirected`.
+============== ================== ======== =================================================
+
+.. pgr_dijkstra_parameters_end
+
 
 .. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: return_path_start
