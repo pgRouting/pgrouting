@@ -4,7 +4,7 @@
 SELECT plan(7);
 
 PREPARE q1 AS
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT * FROM vehicles$$,
     30);
@@ -17,7 +17,7 @@ SELECT lives_ok('q1', 'Original query should not fail');
  1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
 */
 PREPARE q2 AS
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     $$SELECT * FROM orders$$,
     $$SELECT id FROM vehicles$$,
     30);
@@ -30,7 +30,7 @@ SELECT throws_ok('q2',
 UPDATE orders SET deliver_close = 500 WHERE id =11;
 
 PREPARE q5 AS
-SELECT * FROM _pgr_pickDeliver(
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders WHERE id in (11) ORDER BY id',
     $$SELECT * FROM vehicles$$,
     30);

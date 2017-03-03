@@ -104,12 +104,12 @@ Pgr_pickDeliver::get_postgres_result() const {
              */
             -2,
             solutions.back().twvTot(),
-            -1,
             solutions.back().cvTot(),
+            -1,
             -1,  // summary
-            0,  // not accounting total loads
+            -1,  // not accounting total loads
             solutions.back().total_travel_time(),
-            0,  // not accounting arrival_travel_time
+            -1,  // not accounting arrival_travel_time
             solutions.back().wait_time(),
             solutions.back().total_service_time(),
             solutions.back().duration(),
