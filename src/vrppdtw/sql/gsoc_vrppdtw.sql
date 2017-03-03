@@ -1,68 +1,41 @@
+/*PGR-GNU*****************************************************************
+File: pickDeliver.sql
+
+Generated with Template by:
+Copyright (c) 2017 pgRouting developers
+Mail: project@pgrouting.org
+
+Function's developer: 
+Copyright (c) 2017 Celia Virginia Vergara Castillo
+Mail: 
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(
     sql text,
     vehicle_num INTEGER,
-    capacity INTEGER
-)
+    capacity INTEGER)
 RETURNS SETOF pgr_costresult AS
 $BODY$
-DECLARE
-    has_reverse BOOLEAN;
-    orders_sql TEXT;
-    results_sql TEXT;
-BEGIN
-
-    /* the query has to meet the wanted queries in pick_delivery */
-
-    orders_sql :=
-    'CREATE TEMP TABLE __vrp__orders ON COMMIT DROP AS (
-    WITH
-    customer_tmp AS (' || $1 || '),
-    pickups AS (
-        SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
-        FROM customer_tmp WHERE pindex = 0 AND id != 0
-    ),
-    deliveries AS (
-        SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
-        FROM customer_tmp WHERE dindex = 0 AND id != 0
-    )
-    SELECT * 
-    FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id)';
-
-    EXECUTE orders_sql;
-
-    results_sql :='
-    WITH
-    customer_tmp AS (' || $1 || '),
-    results AS (
-        SELECT seq, order_id, vehicle_number, stop_type, departure_time FROM _pgr_pickDeliver(
-            $$ SELECT * FROM __vrp__orders ORDER BY id$$,
-            $$ WITH
-                customer_tmp1 AS (' || $1 || ')
-                SELECT id,
-                    x AS start_x, y AS start_y,
-                    opentime AS start_open, closetime AS start_close, '
-                || $2 || ' AS number,' || $3 || ' AS capacity FROM customer_tmp1 WHERE id = 0$$,
-         30) WHERE vehicle_number != -2
-    )
-    SELECT seq::INTEGER, vehicle_number::INTEGER AS id1,
-        CASE
-            WHEN stop_type = 2 THEN  dindex
-            ELSE id   
-        END::INTEGER AS id2,
-        departure_time AS cost
-        FROM customer_tmp JOIN results
-        ON (customer_tmp.id = results.order_id)
-        ORDER BY seq';
-
-    RETURN query EXECUTE results_sql;
-    DROP TABLE IF EXISTS __vrp__orders;
-
-    EXCEPTION WHEN others THEN 
-        DROP TABLE IF EXISTS __vrp__orders;
-        RAISE EXCEPTION '% %', SQLERRM, SQLSTATE;
-END
+    SELECT seq,  vehicle_id::INTEGER AS id1, stop_id::INTEGER AS id2, departure_time AS cost
+    FROM _pgr_pickDeliver($1, $2, $3) WHERE  vehicle_id != -2;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
