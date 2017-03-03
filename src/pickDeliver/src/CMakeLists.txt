@@ -17,7 +17,7 @@ ADD_LIBRARY(pickDeliver OBJECT
     pgr_pickDeliver.cpp
     pgr_messages.cpp
 
-    pickDeliver_driver.cpp
-    pickDeliver.c
+    pickDeliverEuclidean_driver.cpp
+    pickDeliverEuclidean.c
 
     )

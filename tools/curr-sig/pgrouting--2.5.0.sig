@@ -29,7 +29,7 @@ _pgr_maxflow(text,anyarray,anyarray,integer ,boolean ,out integer,out bigint,out
 _pgr_msg(in int,in text,in text )
 _pgr_onerror(in boolean,in int,in text,in text,in text ,in text )
 _pgr_parameter_check(text,text,boolean )
-_pgr_pickdeliver(text,text,integer ,out integer,out integer,out bigint,out integer,out bigint,out int,out float,out float,out float,out float,out float,out float )
+_pgr_pickdelivereuclidean(text,text,integer ,out integer,out integer,out bigint,out integer,out bigint,out int,out float,out float,out float,out float,out float,out float )
 _pgr_pointtoid(geometry,double precision,text,integer)
 _pgr_quote_ident(text)
 _pgr_startpoint(geometry)

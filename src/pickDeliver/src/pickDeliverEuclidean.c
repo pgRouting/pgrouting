@@ -37,10 +37,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/orders_input.h"
 #include "./../../common/src/vehicles_input.h"
 
-#include "./pickDeliver_driver.h"
+#include "./pickDeliverEuclidean_driver.h"
 
 PGDLLEXPORT Datum
-pickDeliver(PG_FUNCTION_ARGS);
+pickDeliverEuclidean(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(pickDeliverEuclidean);
 
 
 /*********************************************************************/
@@ -146,9 +147,8 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PG_FUNCTION_INFO_V1(pickDeliver);
 PGDLLEXPORT Datum
-pickDeliver(PG_FUNCTION_ARGS) {
+pickDeliverEuclidean(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 

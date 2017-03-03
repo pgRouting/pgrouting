@@ -76,7 +76,7 @@ BEGIN
 
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
-        pick_deliver AS (SELECT * FROM _pgr_pickDeliver('$$ || first_sql || $$',  '$$ || second_sql || $$',  $$ || max_cycles || $$)),
+        pick_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || first_sql || $$',  '$$ || second_sql || $$',  $$ || max_cycles || $$)),
         picks AS (SELECT pick_deliver.*, pindex, dindex, id AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 1)),
         delivers AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
         depots AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND order_id = 0)),
@@ -92,7 +92,7 @@ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 -- LATEST signature
-CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
+CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean(
     orders_sql TEXT,
     vehicles_sql TEXT,
     max_cycles INTEGER DEFAULT 10, 
@@ -112,6 +112,6 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
 )
 
 RETURNS SETOF RECORD AS
-'$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliver'
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliverEuclidean'
 LANGUAGE c VOLATILE STRICT;
 
