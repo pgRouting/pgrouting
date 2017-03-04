@@ -36,8 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../contraction/src/pgr_contractionGraph.hpp"
 #include "./../../dijkstra/src/pgr_dijkstra.hpp"
 
-#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_types.h"
 
 /************************************************************
   edges_sql TEXT
