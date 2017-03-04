@@ -70,16 +70,16 @@ BEGIN
         customer_data AS ($$ || customers_sql || $$ )
         SELECT id, x AS start_x, y AS start_y,
             opentime AS start_open, closetime AS start_close, $$ ||
-            capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number 
+            capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number, $$ || speed || $$ AS speed
             FROM customer_data WHERE id = 0 LIMIT 1
         $$;
 
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
         pick_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || first_sql || $$',  '$$ || second_sql || $$',  $$ || max_cycles || $$)),
-        picks AS (SELECT pick_deliver.*, pindex, dindex, id AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 1)),
-        delivers AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
-        depots AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND order_id = 0)),
+        picks AS (SELECT pick_deliver.*, pindex, dindex, id AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
+        delivers AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 3)),
+        depots AS (SELECT pick_deliver.*, -1 AS pindex, -1 AS dindex, -1 AS the_id FROM pick_deliver WHERE stop_type IN (1, 6, -1)),
         the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
 
         SELECT a.seq, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time

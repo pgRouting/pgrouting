@@ -33,7 +33,9 @@ CREATE OR REPLACE FUNCTION pgr_gsoc_vrppdtw(
     capacity INTEGER)
 RETURNS SETOF pgr_costresult AS
 $BODY$
-    SELECT seq,  vehicle_id::INTEGER AS id1, stop_id::INTEGER AS id2, departure_time AS cost
+    SELECT row_number() over ()::INTEGER,  vehicle_id::INTEGER AS id1,
+        CASE WHEN stop_id = -1 THEN 0
+        ELSE stop_id END::INTEGER AS id2, departure_time AS cost
     FROM _pgr_pickDeliver($1, $2, $3) WHERE  vehicle_id != -2;
 $BODY$
 LANGUAGE sql VOLATILE
