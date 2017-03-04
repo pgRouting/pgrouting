@@ -27,12 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) ||  defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
-
 #include "./many_to_many_withPoints_driver.h"
 
 #include <algorithm>
@@ -45,9 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./pgr_withPoints.hpp"
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_types.h"
 
 template < class G >
 std::deque< Path >
