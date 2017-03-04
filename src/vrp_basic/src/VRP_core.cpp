@@ -21,6 +21,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+
 
 #include "../../common/src/pgr_alloc.hpp"
 #include "VRP.h"
