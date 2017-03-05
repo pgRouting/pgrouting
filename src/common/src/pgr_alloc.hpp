@@ -28,6 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 extern "C" {
+#if PGSQL_VERSION < 94
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
+#endif
+
 #include "./postgres_connection.h"
 #include <utils/palloc.h>
 }

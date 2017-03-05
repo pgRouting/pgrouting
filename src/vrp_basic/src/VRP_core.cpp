@@ -21,7 +21,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifdef __MINGW32__
+#include <winsock2.h>
+#include <windows.h>
+#endif
 
+
+#include "../../common/src/pgr_alloc.hpp"
 #include "VRP.h"
 #include "VRP_Solver.h"
 #include <vector>
@@ -32,7 +38,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #define PGR_LOGGER_LOC
 #define PGR_LOGGER_FILE "/tmp/vrp-debug.log"
 #include "../../common/src/pgr_logger.h"
-#include "../../common/src/pgr_alloc.hpp"
 
 CVRPSolver solver;
 
