@@ -39,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_pickDeliver.h"
 
 #include "./../../common/src/pgr_assert.h"
-#include "./../../common/src/pgr_types.h"
 #include "./../../common/src/pgr_alloc.hpp"
 
 /************************************************************
