@@ -98,9 +98,6 @@ class Pgr_pickDeliver : public Pgr_messages{
     /// @{
  private:
     int m_optimization_id;
-#if 1
-    double m_speed;
-#endif
     size_t m_max_cycles;
     std::vector<Vehicle_node> m_nodes;
     Fleet m_trucks;

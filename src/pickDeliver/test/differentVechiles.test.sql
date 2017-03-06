@@ -1,6 +1,9 @@
 
+
 INSERT into vehicles(start_x, start_y, start_open, start_close, capacity, number)
-VALUES (40, 50, 0, 400, 200, 25);
+VALUES (40, 50, 0, 400, 200, 1);
+
+UPDATE vehicles SET number = 1;
 
 SELECT * INTO results
 FROM _pgr_pickDeliverEuclidean(
@@ -28,3 +31,5 @@ the_results AS (
 )
 SELECT ((SELECT max(vehicle_number) FROM results) * 2 + 53 * 2 + 1) =
     (SELECT count(*) from the_results) AS correct_value;
+
+SELECT * FROM results;

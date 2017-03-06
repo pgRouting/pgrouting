@@ -167,9 +167,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         return;
     }
 
-#if 1
-    m_speed = m_trucks.m_trucks[0].speed();
-#endif
 
 #if 0
     PD_Orders m_orders;
