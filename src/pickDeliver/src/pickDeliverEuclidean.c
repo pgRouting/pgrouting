@@ -96,8 +96,7 @@ process(
                vehicles_arr[i].end_close_t,
                vehicles_arr[i].end_service_t,
 
-               vehicles_arr[i].cant_v
-               );
+               vehicles_arr[i].cant_v);
     }
 
     if (total_pd_orders == 0 || total_vehicles == 0) {
@@ -142,7 +141,6 @@ process(
     if (vehicles_arr) pfree(vehicles_arr);
 
     pgr_SPI_finish();
-
 }
 /*                                                                            */
 /******************************************************************************/
