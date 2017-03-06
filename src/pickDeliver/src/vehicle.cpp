@@ -461,8 +461,7 @@ Vehicle::Vehicle(
     m_id(p_id),
     m_kind(p_kind),
     m_capacity(p_m_capacity),
-    m_speed(p_speed)
-    {
+    m_speed(p_speed) {
         m_path.clear();
         m_path.push_back(starting_site);
         m_path.push_back(ending_site);

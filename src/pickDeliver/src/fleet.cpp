@@ -23,13 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#include "./fleet.h"
 
 #include <string>
 #include <vector>
 #include <limits>
 
 #include "./orders.h"
-#include "./fleet.h"
 #include "./tw_node.h"
 #include "./vehicle_pickDeliver.h"
 #include "./pgr_pickDeliver.h"
@@ -45,7 +45,7 @@ Fleet::get_truck() {
     auto id = un_used.front();
     log << "id" << id
         << "size" << m_trucks.size();
-    pgassertwm(id < m_trucks.size(),log.str());
+    pgassertwm(id < m_trucks.size(), log.str());
     used += id;
     if (un_used.size() > 1) un_used -= id;
     return m_trucks[id];
@@ -65,7 +65,7 @@ Fleet::get_truck(size_t order) {
             id = truck.id();
             log << "id" << id
                 << "size" << m_trucks.size();
-            pgassertwm(id < m_trucks.size(),log.str());
+            pgassertwm(id < m_trucks.size(), log.str());
             used += id;
             if (un_used.size() > 1) un_used -= id;
             break;
@@ -83,7 +83,7 @@ Fleet::get_truck(const Order order) {
             id = truck.id();
             log << "id" << id
                 << "size" << m_trucks.size();
-            pgassertwm(id < m_trucks.size(),log.str());
+            pgassertwm(id < m_trucks.size(), log.str());
             used += id;
             if (un_used.size() > 1) un_used -= id;
             break;
@@ -118,7 +118,6 @@ Fleet::build_fleet(
 
 
     for (auto vehicle : vehicles) {
-
         if (vehicle.cant_v < 0) {
             error << "Illegal number of vehicles found vehicle";
             log << vehicle.cant_v << "< 0 on vehicle " << vehicle.id;
@@ -146,8 +145,7 @@ Fleet::build_fleet(
                         starting_site,
                         ending_site,
                         vehicle.capacity,
-                        vehicle.speed
-                        ));
+                        vehicle.speed));
             log << "inserting " << m_trucks.back().id();
             pgassert((m_trucks.back().id() + 1)  == m_trucks.size());
         }
@@ -176,7 +174,7 @@ Fleet::is_fleet_ok() const {
 bool
 Fleet::is_order_ok(const Order &order) const {
     for (const auto truck : m_trucks) {
-        if (!order.is_valid(truck.speed())) continue; 
+        if (!order.is_valid(truck.speed())) continue;
         if (truck.is_order_feasable(order)) {
             return true;
         }

@@ -66,7 +66,8 @@ operator << (std::ostream &log, const Order &order) {
         log << "\tis_partially_compatible_IJ: ";
     } else if (order.delivery().is_tight_compatible_IJ(order.pickup(), speed)) {
         log << "\tis_tight_compatible_IJ: ";
-    } else if (order.delivery().is_waitTime_compatible_IJ(order.pickup(), speed)) {
+    } else if (order.delivery().is_waitTime_compatible_IJ(
+                order.pickup(), speed)) {
         log << "\tis_waitTime_compatible_IJ: ";
     } else {
         pgassert(false);

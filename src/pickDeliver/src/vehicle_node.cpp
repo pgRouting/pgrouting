@@ -63,7 +63,10 @@ Vehicle_node::evaluate(double cargoLimit) {
   \param[in] cargoLimit The cargo limit of the vehicle.
   */
 void
-Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit, double speed) {
+Vehicle_node::evaluate(
+        const Vehicle_node &pred,
+        double cargoLimit,
+        double speed) {
     /* time */
     m_travel_time    = pred.travel_time_to(*this, speed);
     m_arrival_time   = pred.departure_time() + travel_time();
@@ -143,7 +146,9 @@ Vehicle_node::deltaGeneratesTWV(double delta_time) const {
   and that the actual arrival time at \b other node was arrival(other)
   */
 double
-Vehicle_node::arrival_i_arrives_j(const Vehicle_node &other, double speed) const {
+Vehicle_node::arrival_i_arrives_j(
+        const Vehicle_node &other,
+        double speed) const {
     return other.arrival_time()
         + other.service_time()
         + other.travel_time_to(*this, speed);

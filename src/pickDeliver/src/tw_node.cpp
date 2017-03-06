@@ -91,7 +91,9 @@ Tw_node::is_tight_compatible_IJ(const Tw_node &I, double speed) const {
 }
 
 bool
-Tw_node::is_partially_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
+Tw_node::is_partially_waitTime_compatible_IJ(
+        const Tw_node &I,
+        double speed) const {
     return
         is_compatible_IJ(I, speed)
          && is_early_arrival(arrival_j_opens_i(I, speed));

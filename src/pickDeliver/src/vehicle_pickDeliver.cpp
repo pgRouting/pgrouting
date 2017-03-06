@@ -85,8 +85,7 @@ Vehicle_pickDeliver::Vehicle_pickDeliver(
         double p_capacity,
         double p_speed) :
     Vehicle(id, kind, starting_site, ending_site, p_capacity, p_speed),
-    cost((std::numeric_limits<double>::max)())
-    {
+    cost((std::numeric_limits<double>::max)()) {
         m_orders_in_vehicle.clear();
 
         invariant();
@@ -297,10 +296,12 @@ Vehicle_pickDeliver::do_while_feasable(
             assigned += order.id();
             unassigned -= order.id();
             if (kind == 5) {
-                current_feasable = m_orders[order.id()].subsetJ(current_feasable);
+                current_feasable = m_orders[order.id()].subsetJ(
+                        current_feasable);
             }
             if (kind == 6) {
-                current_feasable = m_orders[order.id()].subsetI(current_feasable);
+                current_feasable = m_orders[order.id()].subsetI(
+                        current_feasable);
             }
         }
 

@@ -24,8 +24,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 #include "./orders.h"
-#include "./order.h"
 
+#include <vector>
+
+#include "./order.h"
 #include "./tw_node.h"
 #include "./vehicle_node.h"
 #include "./pgr_pickDeliver.h"
@@ -129,7 +131,7 @@ PD_Orders::find_best_J(
             best_order = o;
         }
     }
-    return best_order;      
+    return best_order;
 }
 
 
@@ -148,7 +150,7 @@ PD_Orders::find_best_I(
             best_order = o;
         }
     }
-    return best_order;      
+    return best_order;
 }
 
 

@@ -37,7 +37,6 @@ namespace vrp {
 
 void
 Initial_solution::invariant() const {
-
     /* this checks there is no order duplicated */
     pgassert(all_orders == (assigned + unassigned));
     pgassert((assigned * unassigned).empty());
@@ -46,30 +45,28 @@ Initial_solution::invariant() const {
 
 Initial_solution::Initial_solution(
         int kind,
-        size_t number_of_orders
-        ) :
+        size_t number_of_orders) :
     Solution(),
     all_orders(number_of_orders),
     unassigned(number_of_orders),
-    assigned()
-{
-    invariant();
-    pgassert(kind >= 0 && kind < 7);
+    assigned() {
+        invariant();
+        pgassert(kind >= 0 && kind < 7);
 
-    switch (kind) {
-        case 0:
-            one_truck_all_orders();
-            break;
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-            do_while_foo(kind);
-            break;
-        default: pgassert(false);
-    }
+        switch (kind) {
+            case 0:
+                one_truck_all_orders();
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                do_while_foo(kind);
+                break;
+            default: pgassert(false);
+        }
 
     invariant();
 }
@@ -87,7 +84,7 @@ Initial_solution::do_while_foo(int kind) {
 
     while (!unassigned.empty()) {
         auto truck = out_of_trucks?
-            trucks.get_truck(unassigned.front()) : 
+            trucks.get_truck(unassigned.front()) :
             trucks.get_truck();
         /*
          * kind 1 to 7 work with the same code structure

@@ -69,7 +69,7 @@ Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
     int j = 6;
-    for (int i = 1; i < j+1; ++ i) {
+    for (int i = 1; i < j+1; ++i) {
         initial_sols.push_back(Initial_solution(i, m_orders.size()));
         log << "solution " << i << "\n" << initial_sols.back().tau();
     }
@@ -135,8 +135,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
-        std::string &err) 
-{
+        std::string &err) {
     PD_problem(this);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
@@ -155,7 +154,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         error << m_trucks.get_error();
         err = error.str();
         return;
-    };
+    }
 
 #if 1
     m_speed = m_trucks.m_trucks[0].speed();
@@ -186,7 +185,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         o.setCompatibles(m_speed);
     }
 #endif
-
 }  //  constructor
 
 
