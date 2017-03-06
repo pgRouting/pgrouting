@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo -- q1
 SELECT * FROM pgr_MY_FUNCTION_NAME(
@@ -14,4 +13,3 @@ SELECT * FROM pgr_MY_FUNCTION_NAME(
 );
 \echo -- q3
 
-ROLLBACK;

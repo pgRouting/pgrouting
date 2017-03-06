@@ -115,30 +115,18 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../../dijkstra/sql/dijkstra.sql
+.. include:: ../../dijkstra/doc/pgr_dijkstra.rst
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
 
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_path_start
+    :end-before: return_path_end
 
-Description of the return values
-...............................................................................
-
-Returns set of ``(seq, path_seq, node, edge, cost, agg_cost)``
-
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
-============== ========== =================================================
 
 
 
