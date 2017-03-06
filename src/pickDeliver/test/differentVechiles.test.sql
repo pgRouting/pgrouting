@@ -34,4 +34,4 @@ the_results AS (
 SELECT ((SELECT max(vehicle_number) FROM results) * 2 + 53 * 2 + 1) =
     (SELECT count(*) from the_results) AS correct_value;
 
-SELECT * FROM results;
+-- SELECT * FROM results;
