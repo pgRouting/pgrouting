@@ -3,8 +3,8 @@
 
 SELECT plan(3);
 
-SELECT has_function('_pgr_pickdelivereuclidean', ARRAY['text','text', 'integer']);
-SELECT function_returns('_pgr_pickdelivereuclidean', ARRAY['text','text', 'integer'],'setof record');
+SELECT has_function('_pgr_pickdelivereuclidean', ARRAY['text','text', 'integer', 'integer']);
+SELECT function_returns('_pgr_pickdelivereuclidean', ARRAY['text','text', 'integer','integer'],'setof record');
 
 PREPARE expected_types AS
 SELECT

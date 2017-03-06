@@ -58,6 +58,7 @@ class Pgr_pickDeliver : public Pgr_messages{
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
             size_t max_cycles,
+            int optimization,
             std::string &error);
 
     void solve();
@@ -96,6 +97,7 @@ class Pgr_pickDeliver : public Pgr_messages{
 
     /// @{
  private:
+    int m_optimization_id;
 #if 1
     double m_speed;
 #endif

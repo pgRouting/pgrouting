@@ -52,6 +52,8 @@ process(
         char* pd_orders_sql,
         char* vehicles_sql,
         int max_cycles,
+        int optimization,
+
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
     if (max_cycles < 0) {
@@ -116,6 +118,7 @@ process(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
             max_cycles,
+            optimization,
 
             result_tuples,
             result_count,
@@ -178,6 +181,7 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT32(2),
+                PG_GETARG_INT32(3),
                 &result_tuples,
                 &result_count);
 

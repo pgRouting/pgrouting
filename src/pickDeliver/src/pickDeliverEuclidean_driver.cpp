@@ -56,6 +56,7 @@ do_pgr_pickDeliver(
         size_t total_vehicles,
 
         int max_cycles,
+        int optimization,
 
         General_vehicle_orders_t **return_tuples,
         size_t *return_count,
@@ -85,6 +86,7 @@ do_pgr_pickDeliver(
                 orders,
                 vehicles,
                 max_cycles,
+                optimization,
                 error);
         log << pd_problem.get_log();
 

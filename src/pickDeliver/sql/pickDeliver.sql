@@ -96,6 +96,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean(
     orders_sql TEXT,
     vehicles_sql TEXT,
     max_cycles INTEGER DEFAULT 10, 
+    initial INTEGER DEFAULT 4,
 
     OUT seq INTEGER,
     OUT vehicle_number INTEGER,

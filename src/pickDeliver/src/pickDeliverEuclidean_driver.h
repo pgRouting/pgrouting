@@ -46,6 +46,7 @@ extern "C" {
             Vehicle_t *vehicles_arr, size_t total_vehicles,
 
             int max_cycles,
+            int optimization,
 
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,

@@ -68,11 +68,17 @@ void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
-    int j = 6;
-    for (int i = 1; i < j+1; ++i) {
-        initial_sols.push_back(Initial_solution(i, m_orders.size()));
-        log << "solution " << i << "\n" << initial_sols.back().tau();
+    if (m_optimization_id == 0) {
+        log << "trying all \n";
+        for (int i = 1; i < 7; ++i) {
+            initial_sols.push_back(Initial_solution(i, m_orders.size()));
+            log << "solution " << i << "\n" << initial_sols.back().tau();
+        }
+    } else {
+        log << "only trying " << m_optimization_id << "\n";
+        initial_sols.push_back(Initial_solution(m_optimization_id, m_orders.size()));
     }
+
     log << "one order per truck duration = " << initial_sols[0].duration();
 
     /*
@@ -135,6 +141,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
+        int optimization,
         std::string &err) {
     PD_problem(this);
     pgassert(!pd_orders.empty());
@@ -142,7 +149,11 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
 
     m_max_cycles = p_max_cycles;
+    m_optimization_id = optimization;
+
     pgassert(m_max_cycles > 0);
+    pgassert(m_optimization_id > 0 && m_optimization_id < 7);
+
     std::ostringstream tmplog;
     err = "";
 

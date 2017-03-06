@@ -4,7 +4,7 @@ SELECT plan(61);
 
 
 SELECT has_function('_pgr_pickdelivereuclidean',
-    ARRAY['text', 'text', 'integer']);
+    ARRAY['text', 'text', 'integer', 'integer']);
 
 
 -- pick deliver
