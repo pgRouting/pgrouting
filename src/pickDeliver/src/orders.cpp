@@ -38,8 +38,7 @@ namespace vrp {
 
 void
 PD_Orders::build_orders(
-        const std::vector<PickDeliveryOrders_t> &pd_orders,
-        size_t &node_id
+        const std::vector<PickDeliveryOrders_t> &pd_orders
         ) {
     OID order_id(0);
     for (const auto order : pd_orders) {
@@ -54,9 +53,9 @@ PD_Orders::build_orders(
          * Creating the pickup & delivery nodes
          */
         Vehicle_node pickup(
-                {node_id++, order, Tw_node::NodeType::kPickup});
+                {problem->node_id()++, order, Tw_node::NodeType::kPickup});
         Vehicle_node delivery(
-                {node_id++, order, Tw_node::NodeType::kDelivery});
+                {problem->node_id()++, order, Tw_node::NodeType::kDelivery});
 
         pickup.set_Did(delivery.id());
         delivery.set_Pid(pickup.id());

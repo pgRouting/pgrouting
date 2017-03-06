@@ -5,6 +5,8 @@ VALUES (40, 50, 0, 400, 200, 1);
 
 UPDATE vehicles SET number = 1;
 
+ALTER TABLE vehicles DROP COLUMN number;
+
 SELECT * INTO results
 FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',

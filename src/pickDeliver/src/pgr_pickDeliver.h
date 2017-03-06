@@ -58,7 +58,7 @@ class Pgr_pickDeliver : public Pgr_messages{
             const std::vector<PickDeliveryOrders_t> &pd_orders,
             const std::vector<Vehicle_t> &vehicles,
             size_t max_cycles,
-            int optimization,
+            int initial,
             std::string &error);
 
     void solve();
@@ -90,6 +90,8 @@ class Pgr_pickDeliver : public Pgr_messages{
 
     inline Order orders(size_t o) const {return m_orders[o];}
 
+    inline size_t& node_id() {return m_node_id;}
+
     void add_node(const Vehicle_node &node) {
         m_nodes.push_back(node);
     }
@@ -97,8 +99,11 @@ class Pgr_pickDeliver : public Pgr_messages{
 
     /// @{
  private:
-    int m_optimization_id;
+    //! used define the initial solution algorithm to be used
+    int m_initial_id;
     size_t m_max_cycles;
+    //! used to keep track of the next id the node gets
+    size_t m_node_id;
     std::vector<Vehicle_node> m_nodes;
     Fleet m_trucks;
 #if 1

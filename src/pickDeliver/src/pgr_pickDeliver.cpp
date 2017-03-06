@@ -68,15 +68,15 @@ void
 Pgr_pickDeliver::solve() {
     auto initial_sols = solutions;
 
-    if (m_optimization_id == 0) {
+    if (m_initial_id == 0) {
         log << "trying all \n";
         for (int i = 1; i < 7; ++i) {
             initial_sols.push_back(Initial_solution(i, m_orders.size()));
             log << "solution " << i << "\n" << initial_sols.back().tau();
         }
     } else {
-        log << "only trying " << m_optimization_id << "\n";
-        initial_sols.push_back(Initial_solution(m_optimization_id, m_orders.size()));
+        log << "only trying " << m_initial_id << "\n";
+        initial_sols.push_back(Initial_solution(m_initial_id, m_orders.size()));
     }
 
     log << "one order per truck duration = " << initial_sols[0].duration();
@@ -141,26 +141,24 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
         size_t p_max_cycles,
-        int optimization,
-        std::string &err) {
+        int initial,
+        std::string &err) :
+    m_initial_id(initial),
+    m_max_cycles(p_max_cycles),
+    m_node_id(0)
+{
     PD_problem(this);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
-
-
-    m_max_cycles = p_max_cycles;
-    m_optimization_id = optimization;
-
     pgassert(m_max_cycles > 0);
-    pgassert(m_optimization_id > 0 && m_optimization_id < 7);
+    pgassert(m_initial_id > 0 && m_initial_id < 7);
 
     std::ostringstream tmplog;
     err = "";
 
     log << "\n *** Constructor of problem ***\n";
 
-    size_t node_id(0);
-    if (!m_trucks.build_fleet(vehicles, node_id)
+    if (!m_trucks.build_fleet(vehicles)
             || !m_trucks.is_fleet_ok()) {
         error << m_trucks.get_error();
         err = error.str();
@@ -168,10 +166,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     }
 
 
-#if 0
-    PD_Orders m_orders;
-#endif
-    m_orders.build_orders(pd_orders, node_id);
+    m_orders.build_orders(pd_orders);
 
     /*
      * check the (S, P, D, E) order on all vehicles
@@ -188,11 +183,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     }
 
     m_trucks.set_compatibles(m_orders);
-#if 0
-    for (auto &o : m_orders) {
-        o.setCompatibles(m_speed);
-    }
-#endif
 }  //  constructor
 
 

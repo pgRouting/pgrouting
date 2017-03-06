@@ -161,6 +161,73 @@ Where:
 .. points_sql_end
 
 
+.. pd_euclidean_sql_start
+
+
+Description of the orders SQL query for pickDeliveryEucledian
+...............................................................................
+
+=================== ===================   ================ =================================================
+Column              Type                  Default          Description
+=================== ===================   ================ =================================================
+**id**              ``ANY-INTEGER``                        Identifier of the order.
+**demand**          ``ANY-NUMERICAL``                      How much is added / removed from the vehicle. ::math::`Demand > 0`
+                                
+**pick_x**          ``ANY-NUMERICAL``                      ``X`` coordinate of the pickup location.
+**pick_y**          ``ANY-NUMERICAL``                      ``Y`` coordinate of the pickup location.
+**pick_opens**      ``ANY-NUMERICAL``     0                The time relative to 0, when the pickup location opens.
+**pick_closes**     ``ANY-NUMERICAL``     :math:`\infty`   The time relative to 0, when the pickup location closes.
+**pick_service**    ``ANY-NUMERICAL``     0                The duration of the pickup service.
+**deliver_x**       ``ANY-NUMERICAL``                      ``X`` coordinate of the delivery location.
+**deliver_y**       ``ANY-NUMERICAL``                      ``Y`` coordinate of the delivery location.
+**deliver_opens**   ``ANY-NUMERICAL``     pick_opens       The time relative to 0, when the delivery location opens.
+**deliver_closes**  ``ANY-NUMERICAL``     pick_closes      The time relative to 0, when the delivery location closes.
+**deliver_service** ``ANY-NUMERICAL``     pick_service     The duration of the delivery service.
+=================== ===================   ================ =================================================
+
+
+Where:
+
+:ANY-INTEGER: smallint, int, bigint
+:ANY-NUMERICAL: smallint, int, bigint, real, float
+
+.. pd_euclidean_sql_end
+
+.. pd_vehicle_sql_start
+
+
+Description of the orders SQL query for pickDeliveryEucledian
+...............................................................................
+
+=================== ===================   ==============  =================================================
+Column              Type                  Default         Description
+=================== ===================   ==============  =================================================
+**id**               ``ANY-INTEGER``                      Identifier of the order.
+**capacity**         ``ANY-NUMERICAL``                    How much is added / removed from the vehicle. ::math::`Demand > 0`
+**speed**            ``ANY-NUMERICAL``                    How much is added / removed from the vehicle. ::math::`Demand > 0`
+**start_x**          ``ANY-NUMERICAL``                    ``X`` coordinate of the pickup location.
+**start_y**          ``ANY-NUMERICAL``                    ``Y`` coordinate of the pickup location.
+**start_opens**      ``ANY-NUMERICAL``                    The time relative to 0, when the pickup location opens.
+**start_closes**     ``ANY-NUMERICAL``                    The time relative to 0, when the pickup location closes.
+**start_service**    ``ANY-NUMERICAL``                    The duration of the pickup service.
+**end_x**            ``ANY-NUMERICAL``     start_x        ``X`` coordinate of the delivery location.
+**end_y**            ``ANY-NUMERICAL``     start_y        ``Y`` coordinate of the delivery location.
+**end_opens**        ``ANY-NUMERICAL``     start_opens    The time relative to 0, when the delivery location opens.
+**end_closes**       ``ANY-NUMERICAL``     start_closes   The time relative to 0, when the delivery location closes.
+**end_service**      ``ANY-NUMERICAL``     start_service  The duration of the delivery service.
+=================== ===================   ==============  =================================================
+
+
+Where:
+
+:ANY-INTEGER: smallint, int, bigint
+:ANY-NUMERICAL: smallint, int, bigint, real, float
+
+.. pd_vehicle_sql_end
+
+
+
+
 Description of the return values
 --------------------------------------------------------------------------------
 

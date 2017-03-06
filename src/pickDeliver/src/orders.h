@@ -63,8 +63,7 @@ class PD_Orders : public Pgr_messages , public PD_problem {
 
      // TODO(vicky) return the new node_id
      void build_orders(
-             const std::vector<PickDeliveryOrders_t> &pd_orders,
-             size_t &node_id);
+             const std::vector<PickDeliveryOrders_t> &pd_orders);
      void set_compatibles(double speed);
      // TODO(vicky) check if it has to be const
      size_t find_best_J(Identifiers<size_t> &within_this_set) const;

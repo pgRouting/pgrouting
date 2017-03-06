@@ -95,10 +95,10 @@ Fleet::get_truck(const Order order) {
 
 bool
 Fleet::build_fleet(
-        std::vector<Vehicle_t> vehicles,
-        size_t &node_id) {
+        std::vector<Vehicle_t> vehicles) {
     /*
      *  creating a phoney truck with max capacity and max window
+     *  with the start & end points of the first vehicle given
      */
     vehicles.push_back({
             -1,
@@ -125,9 +125,9 @@ Fleet::build_fleet(
         }
 
         auto starting_site = Vehicle_node(
-                {node_id++, vehicle, Tw_node::NodeType::kStart});
+                {problem->node_id()++, vehicle, Tw_node::NodeType::kStart});
         auto ending_site = Vehicle_node(
-                {node_id++, vehicle, Tw_node::NodeType::kEnd});
+                {problem->node_id()++, vehicle, Tw_node::NodeType::kEnd});
 
         if (!(starting_site.is_start()
                     && ending_site.is_end())) {

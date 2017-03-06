@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./postgres_connection.h"
 
+
 #include "./debug_macro.h"
 #include "./pgr_types.h"
 #include "./get_check_data.h"
@@ -42,36 +43,36 @@ void fetch_pd_orders(
         PickDeliveryOrders_t *pd_order) {
     pd_order->id = pgr_SPI_getBigInt(tuple, tupdesc, info[0]);
     pd_order->demand = pgr_SPI_getFloat8(tuple, tupdesc, info[1]);
+
     pd_order->pick_x = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
     pd_order->pick_y = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
-    pd_order->pick_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[4]);
 
-    if (column_found(info[5].colNumber)) {
-        pd_order->pick_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[5]);
-    } else {
-        pd_order->pick_close_t = pd_order->pick_open_t + default_pick_window_t;
-    }
-    if (column_found(info[6].colNumber)) {
-        pd_order->pick_service_t = pgr_SPI_getFloat8(tuple, tupdesc, info[6]);
-    } else {
-        pd_order->pick_service_t = default_pick_service_t;
-    }
+    pd_order->pick_open_t = (column_found(info[4].colNumber)) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[4]) :
+        0;
+
+    pd_order->pick_close_t = (column_found(info[5].colNumber)) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[5]) :
+        DBL_MAX;
+
+    pd_order->pick_service_t = (column_found(info[6].colNumber)) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[6]) :
+        0;
 
     pd_order->deliver_x = pgr_SPI_getFloat8(tuple, tupdesc, info[7]);
     pd_order->deliver_y = pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
-    pd_order->deliver_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[9]);
-    if (column_found(info[10].colNumber)) {
-        pd_order->deliver_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[10]);
-    } else {
-        pd_order->pick_close_t =
-            pd_order->deliver_open_t + default_deliver_window_t;
-    }
-    if (column_found(info[11].colNumber)) {
-        pd_order->deliver_service_t =
-            pgr_SPI_getFloat8(tuple, tupdesc, info[11]);
-    } else {
-        pd_order->deliver_service_t = default_deliver_service_t;
-    }
+
+    pd_order->deliver_open_t = (column_found(info[9].colNumber)) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[9]) :
+        pd_order->pick_open_t;
+
+    pd_order->deliver_close_t = (column_found(info[10].colNumber)) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[10]) :
+        pd_order->pick_close_t;
+
+    pd_order->deliver_service_t = (column_found(info[11].colNumber)) ?
+        pgr_SPI_getFloat8(tuple, tupdesc, info[11]) :
+        pd_order->pick_service_t;
 }
 
 
@@ -115,6 +116,7 @@ pgr_get_pd_orders(
 
     info[0].eType = ANY_INTEGER;
 
+    info[4].strict = false;
     info[5].strict = false;
     info[6].strict = false;
     info[10].strict = false;

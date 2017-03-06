@@ -83,8 +83,7 @@ class Fleet : public Pgr_messages, public PD_problem {
     }
 
      bool build_fleet(
-             std::vector<Vehicle_t> vehicles,
-             size_t &node_id);
+             std::vector<Vehicle_t> vehicles);
      void set_compatibles(const PD_Orders &orders);
 
      bool is_fleet_ok() const;

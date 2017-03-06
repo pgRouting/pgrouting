@@ -87,6 +87,9 @@ Stable proposed Functions
       - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
       - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
 
+- :ref:`pgr_pickDeliverEuclidean`
+- :ref:`pgr_pickDeliver`
+
 ..
     to-here
 
@@ -104,3 +107,6 @@ Stable proposed Functions
     ../src/bdAstar/doc/bdAstar
 
     ../src/max_flow/doc/maxFlow
+
+    ../src/pickDeliver/doc/pgr_pickDeliverEuclidean
+    ../src/pickDeliver/doc/pgr_pickDeliver
