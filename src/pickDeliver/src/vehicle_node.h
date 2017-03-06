@@ -154,9 +154,9 @@ class Vehicle_node: public Tw_node {
 
 
      /*! \brief Construct from parameters */
-     Vehicle_node() : Tw_node() {};
+     Vehicle_node() : Tw_node() {}
      Vehicle_node(const Vehicle_node &node) = default;
-     Vehicle_node(const Tw_node &node);
+     explicit Vehicle_node(const Tw_node &node);
 
  protected:
      /** @name Node evaluation members */

@@ -2,7 +2,7 @@
 
 FILE: pgr_pickDeliver.h
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -28,12 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #pragma once
 
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/identifiers.hpp"
 
 #include <string>
 #include <vector>
 #include <sstream>
+
+#include "./../../common/src/pgr_types.h"
+#include "./../../common/src/identifiers.hpp"
 
 #include "./pgr_messages.h"
 #include "./vehicle_node.h"
@@ -82,7 +83,7 @@ class Pgr_pickDeliver : public Pgr_messages{
      *
      * gets the orders {J} that can be visited after visiting order I
      */
-    inline Identifiers<size_t> compatibleJ(size_t I) const{
+    inline Identifiers<size_t> compatibleJ(size_t I) const {
         return m_orders[I].m_compatibleJ;
     }
 
@@ -105,7 +106,6 @@ class Pgr_pickDeliver : public Pgr_messages{
     PD_Orders m_orders;
 #endif
     std::vector<Solution> solutions;
-
 };
 
 }  //  namespace vrp

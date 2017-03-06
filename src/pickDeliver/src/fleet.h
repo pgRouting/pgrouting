@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
 
-FILE: solution.h
+FILE: fleet.h
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_PICKDELIVER_SRC_FLEET_H
-#define SRC_PICKDELIVER_SRC_FLEET_H
+#ifndef SRC_PICKDELIVER_SRC_FLEET_H_
+#define SRC_PICKDELIVER_SRC_FLEET_H_
 #pragma once
 
 #include <deque>
@@ -53,8 +53,8 @@ class Fleet : public Pgr_messages, public PD_problem {
      Trucks m_trucks;
 
  protected:
-     Identifiers<size_t> used; 
-     Identifiers<size_t> un_used; 
+     Identifiers<size_t> used;
+     Identifiers<size_t> un_used;
 
 
 
@@ -64,7 +64,7 @@ class Fleet : public Pgr_messages, public PD_problem {
       * @params [in] p_problem \t pointer to problem
       *
       */
-     Fleet() = default; 
+     Fleet() = default;
      /* TODO move code to .cpp */
      Fleet(const Fleet &fleet) :
          Pgr_messages(),
@@ -84,8 +84,7 @@ class Fleet : public Pgr_messages, public PD_problem {
 
      bool build_fleet(
              std::vector<Vehicle_t> vehicles,
-             size_t &node_id 
-             );
+             size_t &node_id);
      void set_compatibles(const PD_Orders &orders);
 
      bool is_fleet_ok() const;
@@ -100,8 +99,8 @@ class Fleet : public Pgr_messages, public PD_problem {
      //@{
      size_t size() const {return m_trucks.size();}
      Vehicle_pickDeliver& operator[](size_t i);
-     iterator begin() {return m_trucks.begin();};
-     iterator end() {return m_trucks.end();};
+     iterator begin() {return m_trucks.begin();}
+     iterator end() {return m_trucks.end();}
 
      //@}
 };
@@ -110,4 +109,4 @@ class Fleet : public Pgr_messages, public PD_problem {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_FLEET_H
+#endif  // SRC_PICKDELIVER_SRC_FLEET_H_

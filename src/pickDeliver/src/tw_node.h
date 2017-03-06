@@ -250,7 +250,9 @@ class Tw_node: public Node {
       * is possible to arrive to \b this after visiting \b other
       *   - departing as late as possible from \b other it can arrives to \b this
       */
-     bool is_partially_waitTime_compatible_IJ(const Tw_node &I, double speed) const;
+     bool is_partially_waitTime_compatible_IJ(
+             const Tw_node &I,
+             double speed) const;
 
      /*
       * is compatible to arrive to \b this after visiting \b other
@@ -264,7 +266,7 @@ class Tw_node: public Node {
 
 
 
-     Tw_node() : Node() {};
+     Tw_node() : Node() {}
      Tw_node(const Tw_node &other) = default;
      Tw_node(
              size_t id,

@@ -1,6 +1,6 @@
 /*PGR-GNU*****************************************************************
 
-FILE: solution.h
+FILE: orders.h
 
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_PICKDELIVER_SRC_ORDERS_H
-#define SRC_PICKDELIVER_SRC_ORDERS_H
+#ifndef SRC_PICKDELIVER_SRC_ORDERS_H_
+#define SRC_PICKDELIVER_SRC_ORDERS_H_
 #pragma once
 
 #include <vector>
@@ -42,11 +42,13 @@ class Order;
 
 class PD_Orders : public Pgr_messages , public PD_problem {
      typedef std::vector<Order> Orders;
+
  public:
      typedef Orders::iterator o_iterator;
      typedef Orders::const_iterator o_const_iterator;
      typedef size_t OID;
      typedef Identifiers<OID> setof_OID;
+
  protected:
      Orders m_orders;
 
@@ -59,11 +61,12 @@ class PD_Orders : public Pgr_messages , public PD_problem {
      PD_Orders() = default;
      PD_Orders(const PD_Orders&) = default;
 
+     // TODO(vicky) return the new node_id
      void build_orders(
              const std::vector<PickDeliveryOrders_t> &pd_orders,
-             size_t &node_id 
-             );
+             size_t &node_id);
      void set_compatibles(double speed);
+     // TODO(vicky) check if it has to be const
      size_t find_best_J(Identifiers<size_t> &within_this_set) const;
      size_t find_best_I(Identifiers<size_t> &within_this_set) const;
 
@@ -75,10 +78,10 @@ class PD_Orders : public Pgr_messages , public PD_problem {
      Order& operator[](OID o);
      const Order& operator[](OID o) const;
      size_t size() const {return m_orders.size();}
-     o_iterator begin() {return m_orders.begin();};
-     o_iterator end() {return m_orders.end();};
-     o_const_iterator begin() const {return m_orders.begin();};
-     o_const_iterator end() const {return m_orders.end();};
+     o_iterator begin() {return m_orders.begin();}
+     o_iterator end() {return m_orders.end();}
+     o_const_iterator begin() const {return m_orders.begin();}
+     o_const_iterator end() const {return m_orders.end();}
      //@}
 };
 
@@ -86,4 +89,4 @@ class PD_Orders : public Pgr_messages , public PD_problem {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_PICKDELIVER_SRC_ORDERS_H
+#endif  // SRC_PICKDELIVER_SRC_ORDERS_H_

@@ -39,7 +39,7 @@ class Pgr_pickDeliver;
 
 class Optimize : public Solution {
  public:
-     Optimize(const Solution &solution);
+     explicit Optimize(const Solution &solution);
      Optimize(const Solution &solution, size_t times);
 
      /* @brief decrease_truck
@@ -75,6 +75,7 @@ class Optimize : public Solution {
              Order to_order,
              Vehicle_pickDeliver &to_truck);
      void save_if_best();
+
  private:
      Swap_bk p_swaps;
 };

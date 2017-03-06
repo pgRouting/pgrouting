@@ -23,8 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#ifndef SRC_MESSAGES_SRC_PGR_PICKDELIVER_H_
-#define SRC_MESSAGES_SRC_PGR_PICKDELIVER_H_
+#ifndef SRC_PICKDELIVER_SRC_PGR_MESSAGES_H_
+#define SRC_PICKDELIVER_SRC_PGR_MESSAGES_H_
 #pragma once
 
 
@@ -37,13 +37,12 @@ namespace vrp {
 
 
 class Pgr_messages {
-
  public:
     Pgr_messages() = default;
-    Pgr_messages(const Pgr_messages&) { };
+    Pgr_messages(const Pgr_messages&) { }
     Pgr_messages& operator=(const Pgr_messages&) {
         return *this;
-    };
+    }
 
     /*! \brief get_log
      *
@@ -88,4 +87,4 @@ class Pgr_messages {
 }  //  namespace vrp
 }  //  namespace pgrouting
 
-#endif  // SRC_MESSAGES_SRC_PGR_PICKDELIVER_H_
+#endif  // SRC_PICKDELIVER_SRC_PGR_MESSAGES_H_

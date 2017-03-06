@@ -44,9 +44,11 @@ class Optimize;
 class Vehicle_pickDeliver : public Vehicle {
  protected:
      double cost;
-     Identifiers<size_t> m_orders_in_vehicle;  // /< orders inserted in this vehicle
+     //! orders inserted in this vehicle
+     Identifiers<size_t> m_orders_in_vehicle;
      PD_Orders m_orders;
-     Identifiers<PD_Orders::OID> m_feasable_orders;  // /< orders that fit in the truck
+     //! orders that fit in the truck
+     Identifiers<PD_Orders::OID> m_feasable_orders;
 
 
  public:
@@ -138,7 +140,7 @@ class Vehicle_pickDeliver : public Vehicle {
 
 #if 0
      void insert_while_compatibleJ(
-             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &unassigned,
              Identifiers<PD_Orders::OID> &assigned);
 #endif
      /* @brief erases the order from the vehicle
@@ -158,7 +160,7 @@ class Vehicle_pickDeliver : public Vehicle {
 
      void do_while_feasable(
              int kind,
-             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &unassigned,
              Identifiers<PD_Orders::OID> &assigned);
 
 

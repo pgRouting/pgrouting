@@ -25,9 +25,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+#ifndef SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
+#define SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
 #pragma once
-#ifndef SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
-#define SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
 
 #include "./../../common/src/pgr_types.h"
 
@@ -59,4 +59,4 @@ extern "C" {
 }
 #endif
 
-#endif  //  SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
+#endif  // SRC_PICKDELIVER_SRC_PICKDELIVEREUCLIDEAN_DRIVER_H_
