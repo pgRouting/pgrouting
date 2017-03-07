@@ -12,11 +12,12 @@
 pgr_dijkstra - Deprecated Signature
 ===============================================================================
 
-.. warning:: This function signature is deprecated!!!
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * That means it has been replaced by new signature(s)
-    * This signature is no longer supported, and may be removed from future versions.
-    * All code that use this function signature should be converted to use its replacement :ref:`pgr_dijkstra` (One to One).
+.. rubric:: Replacement  :ref:`pgr_dijkstra` (One to One)
+
 
 Name
 -------------------------------------------------------------------------------

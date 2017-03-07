@@ -12,12 +12,12 @@
 pgr_pointsToVids - Deprecated Function
 ==============================================================================
 
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-.. warning:: This function is deprecated!!!
+.. rubric:: No replacement
 
-    * Is no longer supported.
-    * May be removed from future versions.
-    * There is no replacement.
 
 
 Name

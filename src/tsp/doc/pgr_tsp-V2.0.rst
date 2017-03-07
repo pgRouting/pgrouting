@@ -9,30 +9,28 @@
 
 .. _pgr_tsp-V2.0:
 
-pgr_tsp -Deprecated Signatures
+pgr_tsp - Deprecated Signatures
 ===============================================================================
 
-.. warning:: These functions signatures are deprecated!!!
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * That means they has been replaced by new signatures.
-    * These signatures are no longer supported, and may be removed from future versions.
-    * All code that use these functions signatures should be converted to use its replacement.
 
 Name
 -------------------------------------------------------------------------------
 
 * ``pgr_tsp`` - Returns the best route from a start node via a list of nodes.
 
-.. note:: Use :ref:`pgr_TSP` instead.  
+.. rubric:: Replacement :ref:`pgr_eucledianTSP`
 
 * ``pgr_tsp`` - Returns the best route order when passed a distance matrix.
 
-.. note:: Use :ref:`pgr_eucledianTSP` instead.
+.. rubric:: Replacement :ref:`pgr_TSP`
 
 * ``_pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
 
-.. warning:: There is no replacement.
-
+.. rubric:: No Replacement
 
 Synopsis
 -------------------------------------------------------------------------------
