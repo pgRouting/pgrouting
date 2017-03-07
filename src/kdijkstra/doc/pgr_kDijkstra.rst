@@ -13,7 +13,7 @@
 pgr_kDijkstra - Deprecated Functions
 ===============================================================================
 
-.. include:: ../../../doc/deprecated.rst
+.. include:: deprecated.rst
    :start-after: deprecated_warning_start
    :end-before: deprecated_warning_end
 

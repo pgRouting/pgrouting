@@ -196,7 +196,7 @@ Change Log
 .. toctree::
     :hidden:
 
-    changelog/release_notes
+    release_notes
 
 
 .. rubric:: Indices and tables

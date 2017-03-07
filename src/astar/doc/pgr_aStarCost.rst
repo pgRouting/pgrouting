@@ -17,7 +17,7 @@ Name
 
 ``pgr_aStarCost`` — Returns the aggregate cost shortest path using :ref:`astar` algorithm.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org//libs/graph/doc/astar_search.html
 
    Boost Graph Inside
@@ -26,7 +26,7 @@ Name
 Signature Summary
 -----------------
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -178,7 +178,7 @@ Description of the Signatures
 ..
     description of the edges_sql queries
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
@@ -212,19 +212,9 @@ Parameter        Type                   Description
 
  
 
-
-Description of the return values
-.................................................
-
-Returns set of ``(start_vid, end_vid, agg_cost)``
-
-============= ============= =================================================
-Column        Type          Description
-============= ============= =================================================
-**start_vid** ``BIGINT``    Identifier of the starting vertex.
-**end_vid**   ``BIGINT``    Identifier of the ending vertex.
-**agg_cost**  ``FLOAT``     Aggregate cost of the shortest path from ``start_vid`` to ``end_vid``.
-============= ============= =================================================
+.. include:: custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
 

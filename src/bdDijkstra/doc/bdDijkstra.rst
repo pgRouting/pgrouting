@@ -19,9 +19,9 @@ Bidirectional Dijkstra - Family of functions
 .. toctree::
     :hidden:
 
-    ./pgr_bdDijkstra
-    ./pgr_bdDijkstraCost
-    ./pgr_bdDijkstraCostMatrix
+    pgr_bdDijkstra
+    pgr_bdDijkstraCost
+    pgr_bdDijkstraCostMatrix
 
 
 

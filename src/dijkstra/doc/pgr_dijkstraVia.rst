@@ -91,11 +91,11 @@ Complete Signature
 Description of the Signature
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../sql/dijkstraVia.sql
+.. include:: ../sql_queries/dijkstraVia.sql
     :start-after: pgr_dijkstra_via_parameters_start
     :end-before: pgr_dijkstra_via_parameters_end
 

@@ -14,7 +14,7 @@ Contraction
 ===============================================================================
 
 
-.. include:: ../../proposed.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

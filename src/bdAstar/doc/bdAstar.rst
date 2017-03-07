@@ -58,7 +58,7 @@ The main Characteristics are:
 Description of the Signatures
 --------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 

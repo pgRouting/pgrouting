@@ -17,7 +17,7 @@ Name
 
 ``pgr_bdAstarCost`` — Returns the shortest path using A* algorithm.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org//libs/graph
 
    Boost Graph Inside
@@ -26,7 +26,7 @@ Name
 Signature Summary
 -----------------
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -192,15 +192,15 @@ This usage finds the shortest path from each ``start_vid`` in ``start_vids`` to 
 Description of the Signatures
 --------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
-.. include:: ./bdAstar.rst
+.. include:: bdAstar.rst
     :start-after: parameters_begin
     :end-before: parameters_end
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 

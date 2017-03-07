@@ -208,15 +208,15 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include::custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ./pgr_dijkstra.rst
+.. include:: pgr_dijkstra.rst
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 

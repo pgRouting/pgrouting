@@ -14,7 +14,7 @@ pgr_bdDijkstra
 
 ``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional Dijkstra algorithm.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc
 
    Boost Graph Inside
@@ -33,7 +33,7 @@ Signature Summary
 
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -193,15 +193,15 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../../dijkstra/doc/pgr_dijkstra.rst
+.. include:: pgr_dijkstra.rst
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: return_path_start
     :end-before: return_path_end
 
