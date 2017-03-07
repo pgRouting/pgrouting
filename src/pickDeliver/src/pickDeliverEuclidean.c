@@ -52,12 +52,19 @@ process(
         char* pd_orders_sql,
         char* vehicles_sql,
         int max_cycles,
-        int optimization,
+        int initial,
 
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
     if (max_cycles < 0) {
-        elog(ERROR, "Illegal value in parameter: max_cycles %d", max_cycles);
+        elog(ERROR, "Illegal value in parameter: max_cycles");
+        (*result_count) = 0;
+        (*result_tuples) = NULL;
+        return;
+    }
+
+    if (initial <= 0 || initial > 6) {
+        elog(ERROR, "Illegal value in parameter: initial");
         (*result_count) = 0;
         (*result_tuples) = NULL;
         return;
@@ -118,7 +125,7 @@ process(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
             max_cycles,
-            optimization,
+            initial,
 
             result_tuples,
             result_count,

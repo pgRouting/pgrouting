@@ -53,7 +53,7 @@ Pgr_pickDeliver::optimize(const Solution init_solution) {
     /*
      * OPtimize the initial solution
      */
-    Optimize solution(init_solution);
+    Optimize solution(init_solution, m_max_cycles);
 #if 0
     solution.decrease_truck();
     solution.move_duration_based();
@@ -150,7 +150,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     PD_problem(this);
     pgassert(!pd_orders.empty());
     pgassert(!vehicles.empty());
-    pgassert(m_max_cycles > 0);
     pgassert(m_initial_id > 0 && m_initial_id < 7);
 
     std::ostringstream tmplog;
