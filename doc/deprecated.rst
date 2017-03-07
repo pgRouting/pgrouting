@@ -37,7 +37,6 @@ Auxiliary functions
    ../src/convenience/doc/pgr_pointToEdgeNode
 
 
-.. toctree::
 Deprecated on version 2.4
 ----------------------------
 

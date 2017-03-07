@@ -39,6 +39,38 @@ Changes for 2.5.0
 
 To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
 
+
+.. rubric:: New Signatures
+
+* pgr_bdAstar(one to one)
+
+.. rubric:: New Proposed Signatures
+
+* pgr_bdAstar(one to many)
+* pgr_bdAstar(many to one)
+* pgr_bdAstar(many to many)
+* pgr_bdAstarCost(one to one)
+* pgr_bdAstarCost(one to many)
+* pgr_bdAstarCost(many to one)
+* pgr_bdAstarCost(many to many)
+* pgr_bdAstarCostMatrix
+* pgr_bdDijkstra(one to many)
+* pgr_bdDijkstra(many to one)
+* pgr_bdDijkstra(many to many)
+* pgr_bdDijkstraCost(one to one)
+* pgr_bdDijkstraCost(one to many)
+* pgr_bdDijkstraCost(many to one)
+* pgr_bdDijkstraCost(many to many)
+* pgr_bdDijkstraCostMatrix
+
+.. rubric:: Deprecated Functions
+
+* pgr_pointtoedgenode
+
+.. rubric:: Deprecated Signatures
+
+* pgr_bdastar - use pgr_bdAstar instead
+
 .. rubric:: Moved to the stable proposed functions
 
 * All Flow functions

@@ -9,7 +9,7 @@
 
 .. _bd_astar-v2:
 
-pgr_bdAstar - Bi-directional A* Shortest Path
+pgr_bdAstar - Deprecated Signature
 ===============================================================================
 
 .. index:: 
