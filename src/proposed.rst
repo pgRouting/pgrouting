@@ -47,10 +47,6 @@ Proposed functions
 
   - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
-- convenience
-
-  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
-
 - graph analysis
 
   -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
@@ -67,8 +63,6 @@ Proposed functions
   ../src/contraction/doc/contraction
   ../src/contraction/doc/pgr_contractGraph
 
-  ../src/convenience/doc/pgr_pointToEdgeNode
-  ../src/convenience/doc/pgr_pointsToVids
   ../src/label_graph/doc/pgr_labelGraph
   ../src/vrppdtw/doc/pgr_gsoc_vrppdtw
   ../src/vrp_basic/doc/pgr_vrpOneDepot

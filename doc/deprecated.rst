@@ -25,11 +25,19 @@ Routing functions
 
 - :ref:`bd_astar-v2` - See new signatures of :ref:`pgr_bdAstar`
 
+Auxiliary functions
+...................
+
+- :ref:`pgr_point_to_edgenode`
+
 .. toctree::
    :hidden:
 
    ../src/bd_astar/doc/pgr_bdAstar-v2
+   ../src/convenience/doc/pgr_pointToEdgeNode
 
+
+.. toctree::
 Deprecated on version 2.4
 ----------------------------
 
