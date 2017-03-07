@@ -88,12 +88,14 @@ deliveries AS (
 SELECT * INTO jet_orders
 FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
 
-/*
-SELECT * FROM _pgr_pickDeliver(
-    'SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex FROM jet_customers ORDER BY id', max_vehicles := 20, capacity:= 100, speed := 1000);
-*/
+
+SELECT * FROM pgr_gsoc_vrppdtw(
+    'SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex FROM jet_customers ORDER BY id', 20, 100);
 
 SELECT * FROM _pgr_pickDeliver(
+    'SELECT id, x, y, demand, opentime, closetime, servicetime, pindex, dindex FROM jet_customers ORDER BY id', max_vehicles := 20, capacity:= 100, speed := 1000);
+
+SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM jet_orders ORDER BY id',
     'SELECT 0 AS id,
     2138 AS start_x, -119 AS start_y,
