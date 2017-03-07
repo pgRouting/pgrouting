@@ -19,12 +19,12 @@ Name
 ``pgr_maxFlow`` — Calculates the maximum flow in a directed graph given source(s) and sink(s).
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 
    Boost Graph Inside
@@ -144,7 +144,7 @@ Description of the Signatures
 --------------------------------------------------------
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: doc/src/tutorial/custom_query.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 

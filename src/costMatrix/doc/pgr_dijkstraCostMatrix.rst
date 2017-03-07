@@ -18,7 +18,7 @@ Name
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -95,7 +95,7 @@ This example returns a symmetric cost matrix.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
@@ -113,7 +113,7 @@ Parameter        Type                   Description
 ================ ====================== =================================================
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 

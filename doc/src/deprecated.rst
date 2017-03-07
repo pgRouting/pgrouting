@@ -39,7 +39,7 @@ Routing functions
 Auxiliary functions
 ...................
 
-- :ref:`pgr_point_to_edgenode:`
+- :ref:`pgr_point_to_edgenode`
 
 .. toctree::
    :hidden:

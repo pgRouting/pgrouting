@@ -25,13 +25,13 @@ Name
 
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
@@ -162,7 +162,7 @@ Description of the Signatures
 --------------------------------------------------------
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
@@ -170,7 +170,7 @@ Description of the Signatures
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
-.. include:: ./pgr_maxFlowPushRelabel.rst
+.. include:: pgr_maxFlowPushRelabel.rst
     :start-after: result_start
     :end-before: result_end
 

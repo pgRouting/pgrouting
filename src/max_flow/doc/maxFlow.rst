@@ -29,19 +29,19 @@ The maximum flow through the graph is guaranteed to be the same with all impleme
 but the actual flow through each edge may vary.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
 .. toctree::
         :hidden:
 
-        ./pgr_maxFlow
-        ./pgr_maxFlowPushRelabel
-        ./pgr_maxFlowEdmondsKarp
-        ./pgr_maxFlowBoykovKolmogorov
-        ./pgr_maximumCardinalityMatching
-        ./pgr_edgeDisjointPaths
+        pgr_maxFlow
+        pgr_maxFlowPushRelabel
+        pgr_maxFlowEdmondsKarp
+        pgr_maxFlowBoykovKolmogorov
+        pgr_maximumCardinalityMatching
+        pgr_edgeDisjointPaths
 
 
 

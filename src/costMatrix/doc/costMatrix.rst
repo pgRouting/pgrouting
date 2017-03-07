@@ -19,7 +19,7 @@ Cost Matrix
   - :ref:`pgr_bdAstarCostMatrix`
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
     :start-after: begin-warning
     :end-before: end-warning
 

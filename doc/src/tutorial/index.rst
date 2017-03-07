@@ -40,6 +40,6 @@ Advanced Topics
          
     An overview of a topology for routing algorithms.        <topology>
     An overview of the analysis of a graph.        <analytics>
-    How to write a query for the routing algorithms        <custom_query>
+    ../custom_query
     How to handle performance        <performance>
 

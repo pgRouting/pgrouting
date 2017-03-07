@@ -9,21 +9,17 @@
 
 .. _pgr_point_to_edgenode:
 
-pgr_pointToEdgeNode - Proposed
+pgr_pointToEdgeNode - Deprecated
 ==============================================================================
-
-.. index::
-        single: pointToEdgeNode(Complete Signature) --proposed
-
-Name
-------------------------------------------------------------------------------
 
 ``pgr_pointToEdgeNode`` - Converts a point to a ``vertex_id`` based on closest edge.
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
+
+.. rubric:: No Replacement
 
 
 Synopsis

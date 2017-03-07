@@ -119,11 +119,11 @@ Description of the Signatures
     description of the sql queries
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 
