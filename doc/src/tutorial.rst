@@ -9,7 +9,7 @@
 
 .. _tutorial:
 
-Getting Started
+Tutorial
 ===============================================================================
 
 This is a simple guide to walk you through the steps of getting started
@@ -22,6 +22,23 @@ with pgRouting. In this guide we will cover:
     * How to compute a route
     * How to use other tools to view your graph and route
     * How to create a web app
+
+
+- Advanced Topics
+
+  - :ref:`topology` for an overview of a topology for routing algorithms.
+  - :ref:`analytics` for an overview of the analysis of a graph.
+  - :ref:`custom_query` that is used in the routing algorithms.
+  - :ref:`performance` to improve your performance.
+
+.. toctree:: 
+   :hidden: 
+         
+    tutorial-topology
+    analytics
+    custom_query
+    performance
+
 
 How to create a database
 -------------------------------------------------------------------------------

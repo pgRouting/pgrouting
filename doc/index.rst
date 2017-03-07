@@ -30,10 +30,10 @@ General
 .. toctree::
     :maxdepth: 2
 
-    introduction/introduction
-    installation/installation
-    installation/build
-    introduction/support
+    introduction
+    installation
+    build
+    support
 
 
 *******************************************************************************
@@ -56,7 +56,7 @@ For a more complete introduction how to build a routing application read the `pg
 .. toctree::
    :hidden:
 
-   tutorial/index
+   tutorial
    recipes/index
    developer/developer_guide
    

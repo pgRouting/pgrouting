@@ -91,7 +91,7 @@ Inside
 
 .. _boost-inside:
 
-.. figure:: ./images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
