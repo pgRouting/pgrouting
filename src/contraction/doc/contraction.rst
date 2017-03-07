@@ -13,402 +13,510 @@
 Contraction
 ===============================================================================
 
-Contracting a graph becomes a crucial operation when talking about big graphs like
-the graphs involved in routing across cities, countries, continents or the whole world.
 
-The contraction level and contraction operations can become very complex, as the complexity
-of the graphs grows.
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
-For this proposal, we are making our contraction algorithm simple as possible so that
-more contraction operations can be added in the future.
+:ref:`pgr_contractGraph`
 
-We are not aiming with this work to implement all the possible contraction operations
-but to give a framework such that adding a contraction operation can be easily achieved.
+Introduction
+-------------
 
-For this contraction proposal I am only making 2 operations:
+In big graphs, like the road graphs, or electric networks, graph contraction can be used to speed up some graph algorithms. Contraction reduces the size of the graph by removing some of the vertices and edges and, for example, might add edges that represent a sequence of original edges decreasing the total time and space used in graph algorithms.
 
- 1. dead end contraction: vertices have one incoming edge
- 2. linear contraction: vertices have one incomming and one outgoing edge
-   
+This implementation gives a flexible framework for adding contraction algorithms in the future, currently, it supports two algorithms:
 
-And with the additional characteristics:
+ 1. Dead end contraction
+ 2. Linear contraction
 
-  - The user can forbid to contract a particular set of nodes or edges.
-  - The user can decide how many times the cycle can be done.
-  - If possible, the user can decide the order of the operations on a cycle.
+Allowing the user to:
 
-.. note:: Work on progress in contraction branch
+  - Forbid contraction on a set of nodes.
+  - Decide the order of the contraction algorithms and set the maximum number of times they are to be executed.
 
-
-The contraction skeleton
--------------------------------------------------------------------------------
-
-In general we have an initial set up that may involve analizing the graph given as input and setting the
-non contractable nodes or edges. We have a cycle that will go and perform a contraction operation
-until while possible, and then move to the next contraction operation.
-Adding a new operation then becomes an "easy" task; more things might be involved, because the
-charachteristics of the graph change each time its contracted, so some interaction between contractions
-has to be implemented also.
-
-Procedure
----------
-
-* For contracting, we are going to cycle as follows
-
-.. code-block:: none
-
-    input: G(V,E);
-    removed_vertices = {};
-
-
-    <initial set up>
-    do N times {
-
-        while ( <conditions for 1> ) {
-            < contraction operation 1 >
-        }
-       
-        while ( <conditions for 2> ) {
-            < contraction operation 2>
-        }
-        .....
-    }
-
-    output: G'(V',E'), removed_vertices
-
-
-
-Contraction operations for this implementation
--------------------------------------------------------------------------------
+.. note:: UNDER DISCUSSION:  Forbid contraction on a set of edges
 
 Dead end contraction
-+++++++++++++++++++++
-
-Characteristics:
-
-  - :math:`V1`: set of vertices with 1 incoming edge in increasing order of id:
-
-    - Edges with the same identifier are considered the same edge
-      and if it has the `reverse_cost` valid the outgoing edge is ignored
-
-.. code-block:: none
-
-
-    while ( V1 is not empty ) {
-
-        delete vertex of V1
-        the deleted vertex add it to removed_vertices
-        vertex that leads to removed vertex, inherits the removed vertex
-
-        <adjust any conditions that might affect other contraction operation>
-    }
-
-
-
-Linear contraction
-+++++++++++++++++++++
-
-Characteristics:
-
-  - :math:`V2`: vertex with 1 incoming edge and 1 outgoing edge:
-
-    - The outgoing edge must have different identifier of the incomming edge
-
-.. code-block:: none
-
-    while ( V2 is not empty ) {
-
-        delete vertex of V2
-        create edge (shortcut)
-        the deleted vertex add it to removed_vertices
-        inewly created edge, inherits the removed vertex
-
-        <adjust any conditions that might affect other contraction operations>
-    }
-
-
-Notation
-++++++++++
-
-* V: is the set of vertices
-* E: is the set of edges
-* G: is the graph
-* :math:`V1`: is the set of *dead end* vertices 
-* :math:`V2`: is the set of *linear* vertices
-* removed_vertices: is the set of removed vertices
-
-The contracted graph will be represented with two parameters, the modified Graph, and the removed_vertices set.
-
-removed_vertices = {(v,1):{2}, (e,-1):{3}}.
-
-
-The above notation indicates:
-  - Vertex 2 is removed, and belongs to vertex 1 subgraph
-  - Vertex 3 is removed, and belongs to edge -1 subgraph
-
-
-Examples
 -------------------------------------------------------------------------------
+In the algorithm, dead end contraction is represented by 1.
 
-For simplicity all the edges in the examples have unit weight.
+Dead end nodes
+......................
 
-Dead End
-+++++++++++++++++
+The definition of a dead end node is different for a directed and an undirected graph.
 
-* Perform dead end contraction operation first and then linear contraction
-* 1 cycle of contraction.
+In case of a undirected graph, a node is considered a dead end node if
 
-.. image:: images/twoNodesoneEdge_a.png
+ - The number of adjacent vertices is 1.
 
-:Input:  G = {V:{1, 2}, E:{(1, 2)}}
+In case of an directed graph, a node is considered a dead end node if
 
-:initial set up:
+ - There are no outgoing edges and has at least one incoming edge.
+ - There is one incoming and one outgoing edge with the same identifier.
 
-.. code-block:: none
+.. rubric:: Examples
 
-    removed_vertices={}
-    V1 = {2}
-    V2 = {}
+- The green node ``B`` represents a dead end node
+- The node ``A`` is the only node connecting to ``B``.
+- Node ``A`` is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.
+- Directed graph
 
+.. graphviz::
 
-:procedure:
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=green];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
 
-.. code-block:: none
-
-    V1 = {2} is not empty
-
-        V1 = {}
-        V2 = {}
-        G = {V:{1}, E:{}}
-        removed_vertices = {(v, 1):{2}}.
-
-    V1 is empty
-
-Since V1 is empty we go on to the next contraction operation
-    
-.. code-block:: none
-
-    V2 is empty
-    
-
-So we do not perform any linear contraction operation.
-
-:Results:
-
-.. code-block:: none
-
-    G = {V:{1}, E:{}}
-    removed_vertices = {(v, 1):{2}}
-
-Visualy the results are
-    
-.. image:: images/twoNodesoneEdge_b.png
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        A -> B;
+    }
 
 
+Operation: Dead End Contraction
+.....................................
+
+The dead end contraction will stop until there are no more dead end nodes.
+For example from the following graph:
+
+- Node ``A`` is connected to the rest of the graph by an unlimited number of edges.
+- Node ``B`` is connected to the rest of the graph with one incoming edge.
+- Node ``B`` is the only node connecting to ``C``.
+- The green node ``C`` represents a `Dead End` node
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=deepskyblue];
+        C [style=filled; color=green];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        A -> B;
+        B -> C;
+    }
+
+
+After contracting ``C``, node ``B`` is now a `Dead End` node and is contracted:
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=green;label="B {C}";];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        A -> B;
+    }
+
+Node ``B`` gets contracted
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue;label="A {B, C}";];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+    }
+
+Nodes ``B`` and ``C`` belong to node ``A``.
+
+
+
+Not Dead End nodes
+......................
+
+In this graph ``B`` is not a `dead end` node.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=red];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        G -> A [dir=none, weight=1, penwidth=3];
+        B -> A;
+    }
 
 Linear contraction
-++++++++++++++++++++
+-------------------------------------------------------------------------------
+In the algorithm, linear contraction is represented by 2.
 
-* Perform linear contraction operation first and then dead end contraction
-* 1 cycle of contraction.
+Linear nodes
+......................
 
-.. image:: images/threeNodestwoEdges_a.png
+A node is considered a linear node if satisfies the following:
+
+- The number of adjacent vertices are 2.
+- Should have at least one incoming edge and one outgoing edge.
+
+.. rubric:: Examples
+
+- The green node ``B`` represents a linear node
+- The nodes ``A`` and ``C`` are the only nodes connecting to ``B``.
+- Node ``A`` is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.
+- Node ``C`` is part of the rest of the graph and has an unlimited number of incoming and outgoing edges.
+- Directed graph
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=green];
+        C [style=filled;color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> C [dir=none, weight=1, penwidth=3];
+        A -> B;
+        B -> C;
+    }
+
+Operation: Linear Contraction
+.....................................
+
+The linear contraction will stop until there are no more linear nodes.
+For example from the following graph:
+
+- Node ``A`` is connected to the rest of the graph by an unlimited number of edges.
+- Node ``B`` is connected to the rest of the graph with one incoming edge and one outgoing edge.
+- Node ``C`` is connected to the rest of the graph with one incoming edge and one outgoing edge.
+- Node ``D`` is connected to the rest of the graph by an unlimited number of edges.
+- The green nodes ``B`` and ``C`` represents `Linear` nodes.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=green];
+        C [style=filled; color=green];
+        D [style=filled; color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> D [dir=none, weight=1, penwidth=3];
+        A -> B;
+        B -> C;
+        C -> D;
+
+    }
+
+After contracting ``B``, a new edge gets inserted between ``A`` and ``C`` which is represented by red color.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        C [style=filled; color=green];
+        D [style=filled; color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> D [dir=none, weight=1, penwidth=3];
+        A -> C [label="{B}";color=red]
+        C -> D;
+
+    }
+
+Node ``C`` is `linear node` and gets contracted.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        D [style=filled; color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> D [dir=none, weight=1, penwidth=3];
+        A -> D [label="{B, C}";color=red];
+
+    }
+
+Nodes ``B`` and ``C`` belong to edge connecting ``A`` and ``D`` which is represented by red color.
+
+Not Linear nodes
+......................
+
+In this graph ``B`` is not a `linear` node.
+
+.. graphviz::
+
+    digraph G {
+        A [style=filled;color=deepskyblue];
+        B [style=filled; color=red];
+        C [style=filled;color=deepskyblue];
+        "G" [shape=tripleoctagon;
+        style=filled;color=deepskyblue;
+        label = "Rest of the Graph"];
+
+        rankdir=LR;
+        G -> A [dir=none, weight=1, penwidth=3];
+        G -> C [dir=none, weight=1, penwidth=3];
+        A -> B;
+        C -> B;
+    }
 
 
-:Input: G = {V:{1, 2, 3}, E:{(1, 2), (2, 3)}}
+The cycle
+---------
 
+Contracting a graph, can be done with more than one operation. The order of the operations affect the resulting contracted graph, after applying one operation, the set of vertices that can be contracted by another operation changes.
 
-:initial set up:
+This implementation, cycles ``max_cycles`` times through ``operations_order`` .
 
 .. code-block:: none
 
-    removed_vertices={}
-    V1 = {3}
-    V2 = {2}
-
-:procedure:
-
-.. code-block:: none
-
-    V2 = {2} is not empty
-
-        V1 = {3}
-        removed_vertices = {(e, -1):{2}}
-        V2 = {}
-        G = {V:{1, 3}, E:{-1(1,3,c=2)}}
-
-    V2 is empty
-
-.. image:: images/threeNodestwoEdges_b.png
-
-Since V2 is empty we go on to the next contraction operation
-    
-.. code-block:: none
-
-    V1 = {3} is not empty
-
-        V1 = {}
-        V2 = {}
-        removed_vertices = {(v, 1):{3, 2}}.
-        G = {V:{1}, E:{}}
-
-    V1 is empty
+    <input>
+    do max_cycles times {
+        for (operation in operations_order) 
+         { do operation }
+    }
+    <output>
 
 
-:Results:
+Contracting Sample Data
+-------------------------------------------------------------
 
-.. code-block:: none
+In this section, building and using a contracted graph will be shown by example.
 
-    removed_vertices = {(v, 1):{3, 2}}.
-    G = {V:{1}, E:{}}
+- The :ref:`sampledata` for an undirected graph is used
+- a dead end operation first followed by a linear operation.
 
-Visualy the results are
-    
-.. image:: images/threeNodestwoEdges_c.png
- 
-
-
-Sample Data
-++++++++++++++++++++++++
-
-* Perform dead end contraction operation first and then linear contraction
-* 1 cycle of contraction.
+The original graph:
 
 .. image:: images/undirected_sampledata_a.png
 
-:Input:  G = {V:{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}, 
-         E:{1(1, 2), 2(2,3), 3(3,4), 4(2,5), 5(3,6), 6(7,8), 7(8,5), 8(5,6),
-         9(6,9), 10(5,10), 11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12),
-         16(4,9), 17(14,15), 18(16,17)}}
-
-:initial set up:
-
-.. code-block:: none
-
-    removed_vertices={}
-    V1 = {1,7,13,14,15,16,17}
-    V2 = {4,8,12}
-
-
-:procedure:
-
-.. code-block:: none
-
-    V1 = {1,7,13,14,15,16,17} is not empty
-
-        V1 = {7,13,14,15,16,17}
-        V2 = {2,4,8,12}
-        G = {V:{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}, 
-        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 6(7,8), 7(8,5), 8(5,6), 9(6,9),
-            10(5,10), 11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
-        removed_vertices = {(v, 2):{1}}.
-
-    
-    V1 = {7,13,14,15,16,17} is not empty
-
-        V1 = {8,13,14,15,16,17}
-        V2 = {2,4,12}
-        G = {V:{2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}, 
-        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 7(8,5), 8(5,6), 9(6,9), 10(5,10),
-            11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
-        removed_vertices = {(v, 2):{1}, (v,8):{7}}.
-
-    V1 = {8,13,14,15,16,17} is not empty
-
-        V1 = {13,14,15,16,17}
-        V2 = {2,4,12}
-        G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17}, 
-        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
-             11(6,11), 12(10,11), 13(11,12), 14(10,13), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
-        removed_vertices = {(v, 2):{1}, (v,5):{8,7}}.
-
-    V1 = {13,14,15,16,17} is not empty
-
-        V1 = {14,15,16,17}
-        V2 = {2,4,10,12}
-        G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 14, 15, 16, 17}, 
-        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
-             11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9), 17(14,15), 18(16,17)}}
-        removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}}.
-
-    V1 = {14,15,16,17} is not empty
-
-        V1 = {16,17}
-        V2 = {2,4,10,12}
-        G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 15, 16, 17}, 
-        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
-             11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}, 18(16,17)}
-        removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}}.
-
-    V1 = {16,17} is not empty
-
-        V1 = {}
-        V2 = {2,4,10,12}
-        G = {V:{2, 3, 4, 5, 6, 9, 10, 11, 12, 15, 17}, 
-        E:{2(2,3), 3(3,4), 4(2,5), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
-             11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}}
-        removed_vertices = {(v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
-
-    Since V1 is empty we go on to the next contraction operation
+After doing a dead end contraction operation:
     
 .. image:: images/undirected_sampledata_b.png
 
-.. code-block:: none
-
-    V2 = {2,4,10,12} is not empty
-
-        V1 = {}
-        V2 = {4,10,12}
-        G = {V:{3, 4, 5, 6, 9, 10, 11, 12, 15, 17}, 
-        E:{-1(3,5), 3(3,4), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
-             11(6,11), 12(10,11), 13(11,12), 15(9,12), 16(4,9)}}
-        removed_vertices = {(e, -1):{1,2}, (v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
-
-    V2 = {4,10,12} is not empty
-
-        V1 = {}
-        V2 = {10,12}
-        G = {V:{3, 5, 6, 9, 10, 11, 12, 15, 17}, 
-        E:{-1(3,5),-2(3,9), 5(3,6), 8(5,6), 9(6,9), 10(5,10),
-             11(6,11), 12(10,11), 13(11,12), 15(9,12)}}
-        removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (v, 2):{1}, (v,5):{8,7}, (v,10):{13}, (v,15):{14}, (v,17):{16}}.
-
-    V2 = {10,12} is not empty
-
-        V1 = {}
-        V2 = {12}
-        G = {V:{3, 5, 6, 9, 11, 12, 15, 17}, 
-        E:{-1(3,5),-2(3,9), -3(5,11), 5(3,6), 8(5,6), 9(6,9),
-             11(6,11), 13(11,12), 15(9,12)}}
-        removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
-
-    V2 = {12} is not empty
-
-        V1 = {}
-        V2 = {}
-        G = {V:{3, 5, 6, 9, 11, 15, 17}, 
-        E:{-1(3,5),-2(3,9), -3(5,11), -4(9,11), 5(3,6), 8(5,6), 9(6,9), 11(6,11)}}
-        removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (e, -4):{12},
-             (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
-
-Since V1 and V2 are empty we stop our contraction here. 
-
-:Results:
-
-.. code-block:: none
-
-    G = {V:{3, 5, 6, 9, 11, 15, 17}, 
-    E:{-1(3,5),-2(3,9), -3(5,11), -4(9,11), 5(3,6), 8(5,6), 9(6,9), 11(6,11)}}
-    removed_vertices = {(e, -1):{1,2}, (e, -2):{4}, (e,-3):{10,13}, (e, -4):{12},
-         (v, 2):{1}, (v,5):{8,7}, (v,15):{14}, (v,17):{16}}.
-
-Visualy the results are
+Doing a linear contraction operation to the graph above
     
 .. image:: images/undirected_sampledata_c.png
 
 
-References
-++++++++++++++++++++++++++
+There are five cases, in this documentation, which arise when calculating the shortest path between a given source and target.
+In this examples, ``pgr_dijkstra`` is used.
+
+- **Case 1**: Both source and target belong to the contracted graph.
+- **Case 2**: Source belongs to a contracted graph, while target belongs to a edge subgraph.
+- **Case 3**: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
+- **Case 4**: Source belongs to a contracted graph, while target belongs to an vertex subgraph.
+- **Case 5**: The path contains a new edge added by the contraction algorithm.
+
+Construction of the graph in the database
+..........................................
+
+.. rubric:: Original Data
+
+The following query shows the original data involved in the contraction operation.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q00
+   :end-before: -- q01
+
+.. rubric:: Contraction Results
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+The above results do not represent the contracted graph. They represent the changes done to the graph after applying the contraction algorithm. We can see that vertices like 6 and 11 do not appear in the contraction results because they were not affected by the contraction algorithm.
+
+.. rubric:: step 1
+
+Adding extra columns to the ``edge_table`` and ``edge_table_vertices_pgr`` tables:
+
+=======================  ==================================================
+Column                    Description
+=======================  ==================================================
+**contracted_vertices**    The vertices set belonging to the vertex/edge
+**is_contracted**          On a `vertex` table: when ``true`` the vertex is contracted, so is not part of the contracted graph.
+**is_contracted**          On an `edge` table: when ``true`` the edge was generated by the contraction algorithm.
+=======================  ==================================================
+
+Using the following queries:
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q1
+   :end-before: -- q2
+
+.. rubric:: step 2
+
+For simplicity, in this documentation, store the results of the call to pgr_contractGraph in a temporary table
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+.. rubric:: step 3
+
+Update the `vertex` and `edge` tables using the results of the call to pgr_contraction
+
+- In `edge_table_vertices_pgr.is_contracted` indicate the vertices that are contracted.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+- Add to `edge_table_vertices_pgr.contracted_vertices`  the contracted vertices belonging to the vertices.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q6
+   :end-before: -- q7
+
+- Insert the new edges generated by  pgr_contractGraph.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q8
+   :end-before: -- q9
+
+.. rubric:: step 3.1
+
+Verify visually the updates.
+
+- On the `edge_table_vertices_pgr`
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q7
+   :end-before: -- q8
+
+- On the `edge_table`
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q9
+   :end-before: -- q10
+
+- vertices that belong to the contracted graph are the non contracted vertices 
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- q10
+   :end-before: -- case1
+
+.. rubric:: case 1: Both source and target belong to the contracted graph. 
+
+Inspecting the contracted graph above, vertex 3 and vertex 11 are part of the contracted graph. In the following query:
+ 
+ - vertices_in_graph hold the vertices that belong to the contracted graph.
+ - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+
+Visually, looking at the original graph, going from 3 to 11: 3 -> 6 -> 11, and in the contracted graph, it is also 3 -> 6 -> 11.
+The results, on the contracted graph match the results as if it was done on the original graph.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- case1
+   :end-before: -- case2
+
+.. rubric:: case 2: Source belongs to the contracted graph, while target belongs to a edge subgraph.
+
+Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 1 belongs to the contracted subgraph of edge 19. In the following query:
+  - expand1 holds the contracted vertices of the edge where vertex 1 belongs. (belongs to edge 19).
+  - vertices_in_graph hold the vertices that belong to the contracted graph and also the contracted vertices of edge 19.
+  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+
+Visually, looking at the original graph, going from 3 to 1: 3 -> 2 -> 1, and in the contracted graph, it is also 3 -> 2 -> 1.
+The results, on the contracted graph match the results as if it was done on the original graph.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- case2
+   :end-before: -- case3
+
+
+.. rubric:: case 3: Source belongs to a vertex subgraph, while target belongs to an edge subgraph.
+
+Inspecting the contracted graph above, vertex 7 belongs to the contracted subgraph of vertex 5 and vertex 13 belongs to the contracted subgraph of edge 21. In the following query:
+
+ - expand7 holds the contracted vertices of vertex where vertex 7 belongs. (belongs to vertex 5)
+ - expand13 holds the contracted vertices of edge where vertex 13 belongs. (belongs to edge 21)
+ - vertices_in_graph hold the vertices that belong to the contracted graph, contracted vertices of vertex 5 and contracted vertices of edge 21.
+ - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+
+Visually, looking at the original graph, going from 7 to 13: 7 -> 8 -> 5 -> 10 -> 13, and in the contracted graph, it is also 7 -> 8 -> 5 -> 10 -> 13.
+The results, on the contracted graph match the results as if it was done on the original graph.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- case3
+   :end-before: -- case4
+
+
+.. rubric:: case 4: Source belongs to the contracted graph, while target belongs to an vertex subgraph.
+
+Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 7 belongs to the contracted subgraph of vertex 5. In the following query:
+ 
+ - expand7 holds the contracted vertices of vertex where vertex 7 belongs. (belongs to vertex 5)
+ - vertices_in_graph hold the vertices that belong to the contracted graph and the contracted vertices of vertex 5.
+ - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+
+Visually, looking at the original graph, going from 3 to 7: 3 -> 2 -> 5 -> 8 -> 7, but in the contracted graph, it is 3 -> 5 -> 8 -> 7.
+The results, on the contracted graph do not match the results as if it was done on the original graph. This is because the path contains edge 19 which is added by the contraction algorithm.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- case4
+   :end-before: -- case5q1
+
+.. rubric:: case 5: The path contains an edge added by the contraction algorithm.
+
+In the previous example we can see that the path from vertex 3 to vertex 7 contains an edge which is added by the contraction algorithm.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- case5q1
+   :end-before: -- case5q2
+
+Inspecting the contracted graph above, edge 19 should be expanded. In the following query:
+
+ - first_dijkstra holds the results of the dijkstra query.
+ - edges_to_expand holds the edges added by the contraction algorithm and included in the path.
+ - vertices_in_graph hold the vertices that belong to the contracted graph, vertices of the contracted solution and the contracted vertices of the edges added by the contraction algorithm and included in the contracted solution.
+ - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
+
+Visually, looking at the original graph, going from 3 to 7: 3 -> 2 -> 5 -> 8 -> 7, and in the contracted graph, it is also 3 -> 2 -> 5 -> 8 -> 7.
+The results, on the contracted graph match the results as if it was done on the original graph.
+
+.. literalinclude:: doc-contraction.queries
+   :start-after: -- case5q2
+   :end-before: -- end
+
+See Also
+-------------
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
+* The queries use :ref:`pgr_contractGraph` function and the :ref:`sampledata` network. 
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+

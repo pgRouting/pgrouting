@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION pgr_test_matrixRows(
+CREATE OR REPLACE FUNCTION _pgr_test_matrixRows(
     matrix_rows_sql TEXT) 
 
   RETURNS BOOLEAN AS

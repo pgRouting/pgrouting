@@ -9,35 +9,33 @@
 
 .. _pgr_tsp-V2.0:
 
-pgr_tsp -Deprecated Signatures
+pgr_tsp - Deprecated Signatures
 ===============================================================================
 
-.. warning:: These functions signatures are deprecated!!!
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * That means they has been replaced by new signatures.
-    * These signatures are no longer supported, and may be removed from future versions.
-    * All code that use these functions signatures should be converted to use its replacement.
 
 Name
 -------------------------------------------------------------------------------
 
 * ``pgr_tsp`` - Returns the best route from a start node via a list of nodes.
 
-.. warning:: Use :ref:`pgr_eucledianTSP` instead.  
+.. rubric:: Replacement :ref:`pgr_eucledianTSP`
 
-* ``pgr_tsp`` - Returns the best route order when passed a disance matrix.
+* ``pgr_tsp`` - Returns the best route order when passed a distance matrix.
 
-.. warning:: Use :ref:`pgr_TSP` instead.  
+.. rubric:: Replacement :ref:`pgr_TSP`
 
-* ``pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
+* ``_pgr_makeDistanceMatrix`` - Returns a Eucleadian distance Matrix from the points provided in the sql result.
 
-.. warning:: There is no replacement.
-
+.. rubric:: No Replacement
 
 Synopsis
 -------------------------------------------------------------------------------
 
-The travelling salesman problem (TSP) or travelling salesperson problem asks the following question: Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city? This algoritm uses simulated annealing to return a high quality approximate solution. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The travelling salesman problem (TSP) or travelling salesperson problem asks the following question: Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city? This algorithm uses simulated annealing to return a high quality approximate solution. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -89,7 +87,7 @@ For users that need a distance matrix we have a simple function that takes SQL i
 
     .. code-block:: sql
     
-        SELECT dmatrix, ids from pgr_makeDistanceMatrix('SELECT id, x, y FROM vertex_table');
+        SELECT dmatrix, ids from _pgr_makeDistanceMatrix('SELECT id, x, y FROM vertex_table');
 
 The function returns a record of ``dmatrix``, ``ids``:
 

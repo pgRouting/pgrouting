@@ -26,6 +26,9 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  *  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_TSP_SRC_PGR_TSP_HPP_
+#define SRC_TSP_SRC_PGR_TSP_HPP_
 #pragma once
 
 #include <sstream>
@@ -40,7 +43,7 @@
 #include "./tour.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 namespace tsp {
 
 template < typename MATRIX >
@@ -139,6 +142,8 @@ class TSP: public MATRIX {
 };
 
 }  // namespace tsp
-}  // namespace pgRouting
+}  // namespace pgrouting
 
 #include "pgr_tsp.cpp"
+
+#endif   // SRC_TSP_SRC_PGR_TSP_HPP_

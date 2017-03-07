@@ -1,3 +1,123 @@
+
+Changes for 2.5.0
+-------------------------------------------------------------------------------
+
+* New Signatures:
+  * pgr_bdAstar(one to one)
+* New Proposed functions
+  * pgr_bdAstar(one to many)
+  * pgr_bdAstar(many to one)
+  * pgr_bdAstar(many to many)
+  * pgr_bdAstarCost(one to one)
+  * pgr_bdAstarCost(one to many)
+  * pgr_bdAstarCost(many to one)
+  * pgr_bdAstarCost(many to many)
+  * pgr_bdAstarCostMatrix
+  * pgr_bdDijkstra(one to many)
+  * pgr_bdDijkstra(many to one)
+  * pgr_bdDijkstra(many to many)
+  * pgr_bdDijkstraCost(one to one)
+  * pgr_bdDijkstraCost(one to many)
+  * pgr_bdDijkstraCost(many to one)
+  * pgr_bdDijkstraCost(many to many)
+  * pgr_bdDijkstraCostMatrix
+* Deprecated Signatures
+  * pgr_bdastar - use pgr_bdAstar instead
+* Moved to the stable proposed functions
+  * All Flow functions
+
+Changes for 2.4.0
+-------------------------------------------------------------------------------
+
+* New Signatures:
+  * pgr_bdDijkstra
+* New Proposed functions
+  * pgr_maxFlow
+  * pgr_astar(one to many)
+  * pgr_astar(many to one)
+  * pgr_astar(many to many)
+  * pgr_astarCost(one to one)
+  * pgr_astarCost(one to many)
+  * pgr_astarCost(many to one)
+  * pgr_astarCost(many to many)
+  * pgr_astarCostMatrix
+* Deprecated Signatures
+  * pgr_bddijkstra - use pgr_bdDijkstra instead
+* Deprecated functions
+  * pgr_pointsToVids
+* Bug fixes on proposed functions
+  * pgr_withPointsKSP: fixed ordering
+* TRSP original code is used with no changes on the compilation warnings
+
+Changes for 2.3.2
+-------------------------------------------------------------------------------
+
+* Bug fixes
+  * Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.
+  * Fixed pgr_trsp:
+    * Alternate code is not executed when the point is in reality a vertex
+    * Fixed ambiguity on seq
+
+Changes for 2.3.1
+-------------------------------------------------------------------------------
+
+* Bug fixes
+  * Leaks on proposed max_flow functions
+  * Regression error on pgr_trsp
+  * Types discrepancy on pgr_createVerticesTable
+
+
+Changes for 2.3.0
+-------------------------------------------------------------------------------
+
+* New Signatures:
+
+  * pgr_TSP
+  * pgr_aStar
+
+* New Functions:
+
+  * pgr_eucledianTSP
+
+* New Proposed functions
+
+  * pgr_dijkstraCostMatrix
+  * pgr_withPointsCostMatrix
+  * pgr_maxFlowPushRelabel
+  * pgr_maxFlowEdmondsKarp
+  * pgr_maxFlowBoykovKolmogorov
+  * pgr_maximumCardinalityMatching
+  * pgr_edgeDisjointPaths
+  * pgr_contractGraph
+
+
+* Deprecated Signatures
+
+  * pgr_tsp - use pgr_TSP or pgr_eucledianTSP instead
+  * pgr_astar - use pgr_aStar instead
+
+
+* Deprecated functions
+
+  * pgr_flip_edges
+  * pgr_vidsToDmatrix
+  * pgr_pointsToDMatrix
+  * pgr_textToPoints
+
+Changes for 2.2.4
+-------------------------------------------------------------------------------
+
+- Bogus uses of extern "C"
+- Build error on Fedora 24 + GCC 6.0
+- Regression error pgr_nodeNetwork
+
+
+
+Changes for 2.2.3
+-------------------------------------------------------------------------------
+
+- Fixed  compatibility issues with PostgreSQL 9.6.
+
 Changes for 2.2.2
 -------------------------------------------------------------------------------
 
@@ -12,31 +132,31 @@ Changes for 2.2.1
 Changes for 2.2.0
 -------------------------------------------------------------------------------
 
-  - Improved:
-    - pgr_nodeNetwork
-      - Adding a row_where and outall optional parameters
+- Improved:
+  - pgr_nodeNetwork
+    - Adding a row_where and outall optional parameters
 
-  - Signature fix
-    - pgr_dijkstra  -- to match what was documented (the pgr_dijkstra from V2.0)
+- Signature fix
+  - pgr_dijkstra  -- to match what was documented (the pgr_dijkstra from V2.0)
 
-  - New functions
-    - pgr_floydWarshall
-    - pgr_Johnson
-    - pgr_DijkstraCost
+- New functions
+  - pgr_floydWarshall
+  - pgr_Johnson
+  - pgr_DijkstraCost
 
-  - New Proposed functions
-    - pgr_withPoints
-    - pgr_withPointsCost
-    - pgr_withPointsDD
-    - pgr_withPointsKSP
-    - pgr_dijkstraVia
+- New Proposed functions
+  - pgr_withPoints
+  - pgr_withPointsCost
+  - pgr_withPointsDD
+  - pgr_withPointsKSP
+  - pgr_dijkstraVia
 
 
-  - Deprecated functions:
-    - pgr_apspWarshall  use pgr_floydWarshall instead
-    - pgr_apspJohnson   use pgr_Johnson instead
-    - pgr_kDijkstraCost use pgr_dijkstraCost instead
-    - pgr_kDijkstraPath use pgr_dijkstra instead
+- Deprecated functions:
+  - pgr_apspWarshall  use pgr_floydWarshall instead
+  - pgr_apspJohnson   use pgr_Johnson instead
+  - pgr_kDijkstraCost use pgr_dijkstraCost instead
+  - pgr_kDijkstraPath use pgr_dijkstra instead
 
 
 
@@ -54,7 +174,7 @@ Changes for 2.1.0
    - allow any-integer in the id's
    - allow any-numerical on the cost/reverse_cost columns
 
- - Three Functions where completly re-factored using the developers library and functionality was added.
+ - Three Functions where completely re-factored using the developers library and functionality was added.
 
    - pgr_dijkstra
    - pgr_ksp
@@ -68,7 +188,7 @@ Changes for 2.1.0
    - The library has a the prefix 2-1-0
 
  - Added proposed functions to be evaluated:
-   - Proposed functions from Steve Woodbridge, (Classified as Convinience by the author.)
+   - Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)
       - pgr_pointToEdgeNode - convert a point geometry to a vertex_id based on closest edge.
       - pgr_flipEdges - flip the edges in an array of geometries so the connect end to end.
       - pgr_textToPoints - convert a string of x,y;x,y;... locations into point geometries.

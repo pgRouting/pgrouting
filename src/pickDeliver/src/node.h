@@ -23,13 +23,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_NODE_H_
+#define SRC_PICKDELIVER_SRC_NODE_H_
 #pragma once
 
 #include <string>
-// #include "./point.h"
 #include "../../common/src/xy_vertex.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 /*! \class Node
@@ -53,6 +54,7 @@ class Node {
 
      ///@}
 
+     Node() = default;
      Node(size_t id, int64_t original_id, double _x, double _y);
 
 
@@ -70,11 +72,13 @@ class Node {
      double comparable_distance(const Node &other) const;
 
 
- private:
-     pgRouting::Point m_point;
+ protected:
+     pgrouting::Point m_point;
      size_t m_id;                ///< internal node number
      int64_t m_original_id;  // /< user supplied node number
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_NODE_H_

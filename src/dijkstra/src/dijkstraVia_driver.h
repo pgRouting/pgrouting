@@ -25,8 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#ifndef SRC_DIJKSTRAVIAVERTEX_SRC_DIJKSTRAVIAVERTEX_DRIVER_H_
-#define SRC_DIJKSTRAVIAVERTEX_SRC_DIJKSTRAVIAVERTEX_DRIVER_H_
+#ifndef SRC_DIJKSTRA_SRC_DIJKSTRAVIA_DRIVER_H_
+#define SRC_DIJKSTRA_SRC_DIJKSTRAVIA_DRIVER_H_
+#pragma once
 
 #include "./../../common/src/pgr_types.h"
 
@@ -34,20 +35,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-    //  CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(sql text, vertices anyarray, directed boolean default true,
+    /*
+       CREATE OR REPLACE FUNCTION pgr_dijkstraViaVertices(
+       sql text,
+       vertices anyarray,
+       directed boolean default true,
+       */
     void
-        do_pgr_dijkstraViaVertex(
-                pgr_edge_t  *data_edges,  size_t total_tuples,
+        do_pgr_dijkstraVia(
+                pgr_edge_t  *data_edges,  size_t total_edges,
                 int64_t  *via_vidsArr,    size_t size_via_vidsArr,
                 bool directed,
                 bool strict,
                 bool U_turn_on_edge,
                 Routes_t **return_tuples, size_t *return_count,
-                char ** err_msg);
 
+                char** log_msg,
+                char** notice_msg,
+                char** err_msg);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // SRC_DIJKSTRAVIAVERTEX_SRC_DIJKSTRAVIAVERTEX_DRIVER_H_
+#endif  // SRC_DIJKSTRA_SRC_DIJKSTRAVIA_DRIVER_H_

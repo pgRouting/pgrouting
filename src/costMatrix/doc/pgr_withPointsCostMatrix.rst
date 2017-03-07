@@ -19,6 +19,12 @@ Name
 ``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
 
 
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+
+
 .. figure:: introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
@@ -80,7 +86,7 @@ Complete Signature
 
 * Using the default **side** value on the **points_sql** query
 * Using an undirected graph
-* Using the defualt **driving_side** value
+* Using the default **driving_side** value
 
 .. literalinclude:: doc-pgr_fooDmatrix.queries
    :start-after: -- withPoints q2
@@ -95,7 +101,13 @@ Description of the Signatures
     description of the sql queries
 
 
-.. include:: withPoints_parameters.txt 
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
 
 
 Description of the parameters of the signatures
@@ -105,8 +117,8 @@ Description of the parameters of the signatures
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as decribed above.
-**points_sql**   ``TEXT``               Points SQL query as decribed above.
+**edges_sql**    ``TEXT``               Edges SQL query as described above.
+**points_sql**   ``TEXT``               Points SQL query as described above.
 **start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices. When negative: is a point's pid.
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 **driving_side** ``CHAR``               (optional) Value in ['b', 'r', 'l', NULL] indicating if the driving side is:
@@ -117,10 +129,9 @@ Parameter        Type                   Description
 ================ ====================== =================================================
 
 
-
-.. Description of the return values
-
-.. include:: dmatrix_return_values.txt
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
 Examples

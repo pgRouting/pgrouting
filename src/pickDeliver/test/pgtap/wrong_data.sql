@@ -1,130 +1,88 @@
 
 \i setup.sql
-\i pickDeliver_pgtap_data.sql
 
-SELECT plan(11);
+SELECT plan(7);
 
 PREPARE q1 AS
 SELECT * FROM _pgr_pickDeliver(
-    'SELECT *
-    FROM customer ORDER BY id'::text, 25, 200, 1, 30);
+    $$SELECT * FROM orders$$,
+    $$SELECT * FROM vehicles$$,
+    30);
 
 
 SELECT lives_ok('q1', 'Original query should not fail');
 
 /*
- id | x  | y  | demand | etime | ltime | stime | pindex | dindex 
-----+----+----+--------+-------+-------+-------+--------+--------
-  0 | 40 | 50 |      0 |     0 |  1236 |     0 |      0 |      0
+ id | demand | pick_x | pick_y | pick_open_t | pick_close_t | pick_service_t | deliver_x | deliver_y | deliver_open_t | deliver_open_t | deliver_close_t | deliver_service_t
+ 1  | 10     |   35   |   69   |   448       |   505        |    90          |    45     |   68      |    912         |   967          |    90           |    35
 */
 PREPARE q2 AS
 SELECT * FROM _pgr_pickDeliver(
-    'SELECT *
-    FROM customer WHERE id != 0 ORDER BY id'::text, 25, 200, 30);
+    $$SELECT * FROM orders$$,
+    $$SELECT id FROM vehicles$$,
+    30);
 
 SELECT throws_ok('q2',
     'XX000',
-    'Depot node not found',
+    $$Column 'capacity' not Found$$,
     'Should fail: depot is not included in data');
 
-/*
- 11 | 35 | 69 |     10 |   448 |   505 |    90 |      0 |      1
-*/
-PREPARE q3 AS
-SELECT * FROM _pgr_pickDeliver(
-    'SELECT *
-    FROM customer WHERE id != 11 ORDER BY id'::text, 25, 200, 30);
-
-SELECT throws_ok('q3',
-    'XX000',
-    'A pickup was not found',
-    'Should fail: 11 is a Pickup and is missing');
-
-/*
-  1 | 45 | 68 |    -10 |   912 |   967 |    90 |     11 |      0
-*/
-PREPARE q4 AS
-SELECT * FROM _pgr_pickDeliver(
-    'SELECT *
-    FROM customer WHERE id != 1 ORDER BY id'::text, 25, 200, 30);
-
-SELECT throws_ok('q4',
-    'XX000',
-    'For Pickup 11 the corresponding Delivery was not found',
-    'Should fail: id 1 is a delivery and is missing');
-
-UPDATE customer SET closetime = 500 WHERE id =0;
+UPDATE orders SET deliver_close = 500 WHERE id =11;
 
 PREPARE q5 AS
 SELECT * FROM _pgr_pickDeliver(
-    'SELECT *
-    FROM customer WHERE id in (0,1,11) ORDER BY id'::text, 25, 200, 30);
+    'SELECT * FROM orders WHERE id in (11) ORDER BY id',
+    $$SELECT * FROM vehicles$$,
+    30);
 
 SELECT throws_ok('q5',
     'XX000',
-    'The (pickup, delivery) = (11, 1) is not feasable',
+    'The order 11 is not feasible on any truck',
     'Should fail: Closing time of depot is too small and (pick,deliver) pair generates TWV');
+
+UPDATE orders SET deliver_close = 967 WHERE id =11;
 
 --------------------------------------
 -- testing wrong data on DEPOT 
 --------------------------------------
-UPDATE customer SET opentime = 3000, closetime = 1236 WHERE id =0;
+UPDATE vehicles SET start_open = 3000;
 
 SELECT throws_ok('q5',
     'XX000',
-    'Illegal values found on the starting site',
+    'Illegal values found on vehcile',
     'Should fail: Opens(DEPOT) > closes(DEPOT)');
 
-UPDATE customer SET opentime = 0, demand = 20 WHERE id =0;
+UPDATE vehicles SET start_open = 0;
 
-SELECT throws_ok('q5',
-    'XX000',
-    'Illegal values found on the starting site',
-    'Should fail: Demand(DEPOT) != 0');
-
-UPDATE customer SET demand = 0 WHERE id =0;
 
 --------------------------------------
 -- testing wrong data on pickup 
 --------------------------------------
-UPDATE customer SET opentime = 600 WHERE id =11;
+UPDATE orders SET pick_open = 600 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',
-    'Illegal values found on Pickup 11',
+    'The order 11 is not feasible on any truck',
     'Should fail: Opens(PICKUP) > closes(PICKUP)');
 
-UPDATE customer SET opentime = 448, demand= -20 WHERE id =11;
+UPDATE orders SET pick_open = 448, demand= -20 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',
-    'Illegal values found on Pickup 11',
+    'The order 11 is not feasible on any truck',
     'Should fail: demand(PICKUP) < 0');
 
-UPDATE customer SET demand= 10 WHERE id =11;
+UPDATE orders SET demand= 10 WHERE id =11;
 
 --------------------------------------
 -- testing wrong data on delivery 
 --------------------------------------
-UPDATE customer SET opentime = 1000 WHERE id =1;
+UPDATE orders SET deliver_open = 1000 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',
-    'Illegal values found on Delivery 1',
+    'The order 11 is not feasible on any truck',
     'Should fail: Opens(DELIVERY) > closes(DELIVERY)');
-
-UPDATE customer SET opentime = 912, demand= 20 WHERE id =1;
-
-SELECT throws_ok('q5',
-    'XX000',
-    'Illegal values found on Delivery 1',
-    'Should fail: demand(DELIVERY) > 0');
-
-UPDATE customer SET demand = -10 WHERE id =11;
-
-
-
-
 
 
 SELECT finish();

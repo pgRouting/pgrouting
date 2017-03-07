@@ -141,34 +141,18 @@ Routing Functions
    :end-before: to-here
     
 
-*******************************************************************************
-Stable Proposed Functions
-*******************************************************************************
-
-..
-    ROUTING FUNCTIONS SECTION
-    :hidden:
-    :maxdepth: 0
-    
-.. toctree::
-    :hidden:
-
-    proposedNext
-
-.. include:: proposedNext.rst
-   :start-after: from-here
-   :end-before: to-here
-
 
 *******************************************************************************
 Available Functions but not official pgRouting functions
 *******************************************************************************
 
+- :ref:`proposedNext`
 - :ref:`proposed`
 
 .. toctree::
     :hidden:
 
+    proposedNext
     proposed
 
 
@@ -194,6 +178,12 @@ Change Log
 
 :ref:`change_log`
 
+   - :ref:`changelog_2_5_0`
+   - :ref:`changelog_2_4_0`
+   - :ref:`changelog_2_3_2`
+   - :ref:`changelog_2_3_1`
+   - :ref:`changelog_2_3_0`
+   - :ref:`changelog_2_2_4`
    - :ref:`changelog_2_2_3`
    - :ref:`changelog_2_2_2`
    - :ref:`changelog_2_2_1`

@@ -2,7 +2,7 @@
 
 FILE: vehicle_pickDeliver.h
 
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 ------
@@ -22,14 +22,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_PICKDELIVER_SRC_VEHICLE_PICKDELIVER_H_
+#define SRC_PICKDELIVER_SRC_VEHICLE_PICKDELIVER_H_
 #pragma once
 
 #include <set>
 #include "./order.h"
+#include "./orders.h"
 #include "./tw_node.h"
 #include "./vehicle.h"
+#include "./../../common/src/identifiers.hpp"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 
@@ -39,8 +44,9 @@ class Optimize;
 class Vehicle_pickDeliver : public Vehicle {
  protected:
      double cost;
-     std::set<ID> orders_in_vehicle;  // /< orders inserted in this vehicle
-     const Pgr_pickDeliver *problem;  // /< The vehicle belongs to this problem
+     Identifiers<size_t> m_orders_in_vehicle;  // /< orders inserted in this vehicle
+     PD_Orders m_orders;
+     Identifiers<PD_Orders::OID> m_feasable_orders;  // /< orders that fit in the truck
 
 
  public:
@@ -49,14 +55,22 @@ class Vehicle_pickDeliver : public Vehicle {
 
      Vehicle_pickDeliver(
              ID id,
+             size_t kind,
              const Vehicle_node &starting_site,
              const Vehicle_node &ending_site,
-             double max_capacity,
-             const Pgr_pickDeliver *p_problem);
+             double p_capacity,
+             double p_speed);
 
      Vehicle_pickDeliver(const Vehicle_pickDeliver &) = default;
 
-     size_t orders_size() const {return orders_in_vehicle.size();}
+
+     void set_compatibles(const PD_Orders &orders);
+     bool is_order_feasable(const Order &order) const;
+     Identifiers<size_t> feasable_orders() const {return m_feasable_orders;}
+
+     PD_Orders orders() const {return m_orders;}
+     size_t orders_size() const {return m_orders_in_vehicle.size();}
+     Identifiers<size_t> orders_in_vehicle() const {return m_orders_in_vehicle;}
 
      bool has_order(const Order &order) const;
 
@@ -69,14 +83,15 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S <nodes> P D E
+      * ~~~~
       *
       * Can generate time window violation
       * No capacity violation
       */
      void push_back(const Order &order);
-
 
 
      /*! @brief Puts an order at the end front of the truck
@@ -88,14 +103,15 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S P D <nodes> E
+      * ~~~~
       *
       * Can generate time window violation
       * No capacity violation
       */
      void push_front(const Order &order);
-
 
 
      /*! @brief Inserts an order
@@ -107,8 +123,10 @@ class Vehicle_pickDeliver : public Vehicle {
       * has_order(order)
       * !has_cv();
       *
+      * ~~~~{.c}
       * Before: S <nodes> E
       *   After: S ....P .... D .... E
+      * ~~~~
       *
       * push_back is performed when
       *   - pickup
@@ -118,6 +136,11 @@ class Vehicle_pickDeliver : public Vehicle {
       */
      void insert(const Order &order);
 
+#if 0
+     void insert_while_compatibleJ(
+             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &assigned);
+#endif
      /* @brief erases the order from the vehicle
       *
       * Precondition:
@@ -131,7 +154,12 @@ class Vehicle_pickDeliver : public Vehicle {
      /* @brief 
       */
      Order get_first_order() const;
-     Order get_worse_order(std::set<size_t> of_this_subset) const;
+     Order get_worse_order(Identifiers<size_t> of_this_subset) const;
+
+     void do_while_feasable(
+             int kind,
+             Identifiers<PD_Orders::OID> &unassigned, 
+             Identifiers<PD_Orders::OID> &assigned);
 
 
      /*!
@@ -145,5 +173,6 @@ class Vehicle_pickDeliver : public Vehicle {
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
 
+#endif  // SRC_PICKDELIVER_SRC_VEHICLE_PICKDELIVER_H_

@@ -22,12 +22,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_PGR_TYPES_H_
+#define SRC_COMMON_SRC_PGR_TYPES_H_
 #pragma once
 
 
-#ifndef __cplusplus
-#include "postgres.h"
+#ifdef __cplusplus
+
+#include <cstddef>
+
+#else  // __cplusplus
+
+// for bool
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
 #endif
+
+#include <postgres.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
+// For NULL & size_t
+#include <stdlib.h>
+
+
+#endif  // __cplusplus
+
+// For int64_t etc
 #include <stdint.h>
 
 typedef struct  {
@@ -36,8 +59,7 @@ typedef struct  {
     double y;
 } Coordinate_t;
 
-typedef struct edge_astar
-{
+typedef struct edge_astar {
     int id;
     int source;
     int target;
@@ -49,8 +71,7 @@ typedef struct edge_astar
     double t_y;
 } edge_astar_t;
 
-typedef struct 
-{
+typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
@@ -72,12 +93,12 @@ typedef struct {
 /*
  * This one is for processing
  */
-typedef struct {
+struct Path_t{
     int64_t node;
     int64_t edge;
     double cost;
     double agg_cost;
-} Path_t;
+};
 
 /*
  * This ones are for returning the info to postgres
@@ -94,7 +115,7 @@ typedef struct {
 } General_path_element_t;
 
 
-typedef struct{
+typedef struct {
     int route_id;
     int path_id;
     int path_seq;
@@ -109,12 +130,29 @@ typedef struct{
 
 
 typedef struct {
+  int64_t id;
+  int64_t source;
+  int64_t target;
+  bool going;
+  bool coming;
+  int64_t edge_id;
+} pgr_basic_edge_t;
+
+typedef struct {
     int64_t id;
     int64_t source;
     int64_t target;
     double cost;
     double reverse_cost;
 } pgr_edge_t;
+
+typedef struct {
+  int64_t edge;
+  int64_t source;
+  int64_t target;
+  int64_t flow;
+  int64_t residual_capacity;
+} pgr_flow_t;
 
 typedef struct {
     int seq;
@@ -132,8 +170,7 @@ typedef struct matrix_cell {
 // Restrictions used in pgr_turnRestrictions
 
 #define  MAX_RULE_LENGTH 5
-typedef struct 
-{
+typedef struct {
     int64_t target_id;
     double to_cost;
     int64_t via[MAX_RULE_LENGTH];
@@ -145,7 +182,7 @@ typedef struct {
     int64_t edge_id;
     char side;  // 'r', 'l', 'b' (default is both)
     double fraction;
-    int64_t vertex_id; // number is negative and is used for processing
+    int64_t vertex_id;  // number is negative and is used for processing
 } Point_on_edge_t;
 
 // used for getting the data
@@ -164,43 +201,84 @@ struct {
     bool strict;
     char *name;
     expectType eType;
-
 } Column_info_t;
 
-enum graphType { UNDIRECTED= 0, DIRECTED};
+
+/**************************************************************************
+ * return type for contraction
+ * ***********************************************************************/
+typedef struct {
+    int64_t id;
+    char* type;
+    int64_t source;
+    int64_t target;
+    double cost;
+    int64_t *contracted_vertices;
+    int contracted_vertices_size;
+} pgr_contracted_blob;
+
+
+
+enum graphType {UNDIRECTED = 0, DIRECTED};
 
 /**************************************************************************
  * pickDelivery types
  * ***********************************************************************/
 typedef struct {
     int64_t id;
-    double x;
-    double y;
     double demand;
-    double Etime;
-    double Ltime;
-    double Stime;
-    int64_t Pindex;
-    int64_t Dindex;
-    double Ddist;
-} Customer_t;
+    double pick_x;
+    double pick_y;
+    double pick_open_t;
+    double pick_close_t;
+    double pick_service_t;
+    double deliver_x;
+    double deliver_y;
+    double deliver_open_t;
+    double deliver_close_t;
+    double deliver_service_t;
+} PickDeliveryOrders_t;
+
+
+
+typedef struct {
+    int64_t id;
+    double capacity;
+    double speed;
+    double start_x;
+    double start_y;
+    int64_t cant_v;
+    double start_open_t;
+    double start_close_t;
+    double start_service_t;
+    double end_x;
+    double end_y;
+    double end_open_t;
+    double end_close_t;
+    double end_service_t;
+} Vehicle_t;
+
+
 
 /*
-    OUT seq INTEGER,        done in the .c code
-    OUT vehicle_seq INTEGER,
-    OUT vehicle_id INTEGER,
-    OUT order_id BIGINT,
-    OUT travelTime FLOAT,
-    OUT arrivalTime FLOAT,
-    OUT waitTime FLOAT,
-    OUT serviceTime FLOAT,
-    OUT departureTime FLOAT,
-*/
+   OUT seq INTEGER,        done in the .c code
+   OUT vehicle_seq INTEGER,
+   OUT vehicle_id INTEGER,
+   OUT order_id BIGINT,
+   OUT travelTime FLOAT,
+   OUT arrivalTime FLOAT,
+   OUT waitTime FLOAT,
+   OUT serviceTime FLOAT,
+   OUT departureTime FLOAT,
+   */
 
 typedef struct  {
-    int vehicle_id;
+    int vehicle_number;
+    int64_t vehicle_id;
     int vehicle_seq;
     int64_t order_id;
+    int stop_type;
+    double cargo;
     double travelTime;
     double arrivalTime;
     double waitTime;
@@ -209,3 +287,5 @@ typedef struct  {
 } General_vehicle_orders_t;
 
 /*************************************************************************/
+
+#endif  // SRC_COMMON_SRC_PGR_TYPES_H_

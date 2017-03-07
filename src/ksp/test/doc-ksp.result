@@ -1,5 +1,5 @@
 --q1
-NOTICE:  Deprecated function
+NOTICE:  Deprecated signature of pgr_ksp
 0|0|2|4|1
 1|0|5|8|1
 2|0|6|9|1

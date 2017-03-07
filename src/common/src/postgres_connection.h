@@ -21,17 +21,57 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-
+#ifndef SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
+#define SRC_COMMON_SRC_POSTGRES_CONNECTION_H_
 #pragma once
 
-#include "postgres.h"
+
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-pedantic"
+#endif
+
+#include <postgres.h>
+
+
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
 #include "executor/spi.h"
 
-// #include "./pgr_types.h"
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
+#endif
+
+#include "utils/builtins.h"  // for text_to_cstring
+
+#if PGSQL_VERSION > 92
+#include "access/htup_details.h"
+#endif
+
+
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#endif
+
+#include <funcapi.h>
+#include <fmgr.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 
 void pgr_send_error(int errcode);
 void pgr_SPI_finish(void);
 void pgr_SPI_connect(void);
 SPIPlanPtr pgr_SPI_prepare(char* sql);
 Portal pgr_SPI_cursor_open(SPIPlanPtr SPIplan);
-char* pgr_text2char(text *in);
+char* pgr_cstring2char(const char *inStr);
+
+#endif  // SRC_COMMON_SRC_POSTGRES_CONNECTION_H_

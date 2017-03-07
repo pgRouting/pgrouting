@@ -22,13 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-// #define DEBUG
-#include "./debug_macro.h"
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
-#include "./../../common/src/get_check_data.h"
-#include "./time_msg.h"
+#include "./postgres_connection.h"
+
 #include "./coordinates_input.h"
+#include "./debug_macro.h"
+#include "./pgr_types.h"
+#include "./get_check_data.h"
+#include "./time_msg.h"
 
 
 
@@ -104,9 +104,12 @@ void pgr_get_coordinates(
 
         if (ntuples > 0) {
             if ((*coordinates) == NULL)
-                (*coordinates) = (Coordinate_t *)palloc0(total_tuples * sizeof(Coordinate_t));
+                (*coordinates) = (Coordinate_t *)
+                    palloc0(total_tuples * sizeof(Coordinate_t));
             else
-                (*coordinates) = (Coordinate_t *)repalloc((*coordinates), total_tuples * sizeof(Coordinate_t));
+                (*coordinates) = (Coordinate_t *)
+                    repalloc((*coordinates),
+                            total_tuples * sizeof(Coordinate_t));
 
             if ((*coordinates) == NULL) {
                 elog(ERROR, "Out of memory");
@@ -114,7 +117,7 @@ void pgr_get_coordinates(
 
             SPITupleTable *tuptable = SPI_tuptable;
             TupleDesc tupdesc = SPI_tuptable->tupdesc;
-            PGR_DBG("Processing %d coordinates tupĺes", ntuples);
+            PGR_DBG("Processing %ld coordinates tupĺes", ntuples);
 
             size_t t;
             for (t = 0; t < ntuples; t++) {
@@ -129,6 +132,8 @@ void pgr_get_coordinates(
         }
     }
 
+    SPI_cursor_close(SPIportal);
+
 
     if (total_tuples == 0) {
         (*total_coordinates) = 0;
@@ -138,5 +143,4 @@ void pgr_get_coordinates(
 
     (*total_coordinates) = total_tuples;
     time_msg(" reading coordinates:", start_t, clock());
-
 }

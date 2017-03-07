@@ -17,6 +17,13 @@ Name
 
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
 
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
+
+
 .. figure:: introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
@@ -88,26 +95,10 @@ This example returns a symmetric cost matrix.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-Description of the edge's SQL query
-...............................................................................
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-:edges_sql: is a ``TEXT`` that containes an SQL query, which should return a set of rows with the following columns:
-
-================  ===================   =================================================
-Column            Type                      Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, if negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, if negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, real, float
 
 
 Description of the parameters of the signatures
@@ -116,16 +107,15 @@ Description of the parameters of the signatures
 ================ ====================== =================================================
 Parameter        Type                   Description
 ================ ====================== =================================================
-**edges_sql**    ``TEXT``               Edges SQL query as decribed above.
+**edges_sql**    ``TEXT``               Edges SQL query as described above.
 **start_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of the vertices.
 **directed**     ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
 ================ ====================== =================================================
 
 
-
-.. Description of the return values
-
-.. include:: dmatrix_return_values.txt
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
 Examples

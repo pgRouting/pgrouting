@@ -33,7 +33,7 @@ The first steps are:
   - Create a branch for your recipe or wrapper
   - Create your recipe file
 
-.. code::
+.. code-block:: bash
 
     cd doc/src/recipes/
     vi myrecipe.rst
@@ -43,7 +43,7 @@ The first steps are:
 
 .. rubric:: To create the test file of your recipe
 
-.. code::
+.. code-block:: bash
 
     cd test
     cp myrecipe.rst myrecipe.sql.test
@@ -66,7 +66,7 @@ Leave only the SQL code on ``myrecipe.sql.test`` by deleting lines or by comment
 
 From the root directory execute:
 
-.. code::
+.. code-block:: bash
 
     tools/test-runner.pl -alg recipes -ignorenotice
 
@@ -74,7 +74,7 @@ Copy the results of your recipe and paste them in the file ``myrecipe.result``, 
 
 .. rubric::  make a pull request.
 
-.. code::
+.. code-block:: bash
 
     git commit -a -m 'myrecipe is for this and that'
     git push

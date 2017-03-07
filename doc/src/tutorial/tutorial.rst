@@ -81,7 +81,7 @@ How to check your graph for errors
 
 There are lots of possible sources for errors in a graph. The data that you
 started with may not have been designed with routing in mind. A graph has some
-very specific requirments. One is that it is *NODED*, this means that except
+very specific requirements. One is that it is *NODED*, this means that except
 for some very specific use cases, each road segment starts and ends at a node
 and that in general is does not cross another road segment that it should be
 connected to.
@@ -113,7 +113,7 @@ network. The general form of a route query is:
 
 .. code-block:: sql
 
-    select pgr_<algorithm>(<SQL for edges>, start, end, <additonal options>)
+    select pgr_<algorithm>(<SQL for edges>, start, end, <additional options>)
 
 As you can see this is fairly straight forward and you can look and the 
 specific algorithms for the details of the signatures and how to use them.

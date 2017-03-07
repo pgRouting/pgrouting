@@ -22,29 +22,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_BASIC_EDGE_H_
+#define SRC_COMMON_SRC_BASIC_EDGE_H_
 #pragma once
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
+
+#include "./pgr_types.h"
 
 
-#include "./pgr_types.h"  
+namespace pgrouting {
 
+class Basic_edge{
+ public:
+     void cp_members(const Basic_edge &other);
 
-namespace pgRouting {
+ public:
+     int64_t source;
+     int64_t target;
 
-    class Basic_edge{
-        public:
-            void cp_members(const Basic_edge &other);
+     int64_t id;
+     double cost;
+};
 
-        public:
-            int64_t source;
-            int64_t target;
+}  // namespace pgrouting
 
-            int64_t id;
-            double cost;
-            bool first;  // originally was true (source, target) false (target, source)
-    };
-
-} // namespace pgRouting
+#endif  // SRC_COMMON_SRC_BASIC_EDGE_H_

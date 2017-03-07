@@ -16,26 +16,27 @@ Stable proposed Functions
     from-here
     :ref:`proposedNext`
 
-.. note::
+..
+    begin-warning
 
-    This are proposed functions for next mayor release.
+.. warning::
+
+    These are proposed functions for next mayor release.
 
       - They are not officially in the current release.
-      - They will likely officialy be part of the next mayor release:
+      - They will likely officially be part of the next mayor release:
 
         - The functions make use of ANY-INTEGER and ANY-NUMERICAL
-        - Name might not change.
-        - Signature might not change.
-        - Functionality might not change.
-        - pgTap tests have being done.
-        - Documentation is finished.
+        - Name might not change. (But still can)
+        - Signature might not change. (But still can)
+        - Functionality might not change. (But still can)
+        - pgTap tests have being done. But might need more.
+        - Documentation might need refinement.
 
-- For TSP preprocessing 
+..
+    end-warning
 
-  - :ref:`CostMatrix`
 
-    - :ref:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to calculate a cost matrix.
-    - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
 
 - As part of the :ref:`dijkstra`
 
@@ -50,6 +51,45 @@ Stable proposed Functions
   - :ref:`pgr_withPointsKSP` - K shortest paths with points.
   - :ref:`pgr_withPointsDD` - Driving distance.
 
+
+- A new Section
+
+  - :ref:`CostMatrix`
+
+- A new Section
+
+  - :ref:`bdDijkstra`
+
+    - :ref:`pgr_bdDijkstraCost` Use pgr_bdDijkstra to calculate only the cost.
+    - :ref:`pgr_bdDijkstraCostMatrix` Use pgr_bdDijkstra to calculate the cost Matrix.
+
+- A new Section
+
+  - :ref:`astar`
+
+    - :ref:`pgr_aStarCost` - Costs of the shortest paths.
+    - :ref:`pgr_aStarCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+
+- A new Section
+
+  - :ref:`bdAstar`
+
+- A new Section
+
+  - :ref:`maxFlow`
+
+    - Maximum Flow
+
+      - :ref:`pgr_maxFlow` - Maximum flow using push & relabel algorithm.
+      - :ref:`pgr_maxFlowPushRelabel` - Detailed Maximum flow using push & relabel algorithm.
+      - :ref:`pgr_maxFlowEdmondsKarp` - Detailed Maximum flow using Edmonds & Karp algorithm.
+      - :ref:`pgr_maxFlowBoykovKolmogorov` - Detailed Maximum flow using Boykov & Kolmogorov algorithm.
+
+    - Flow Applications
+
+      - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
+      - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
+
 ..
     to-here
 
@@ -60,5 +100,7 @@ Stable proposed Functions
     pgr_dijkstraCostMatrix
     pgr_dijkstraVia
     withPoints
-
-
+    bdDijkstra
+    astar
+    bdAstar
+    maxFlow

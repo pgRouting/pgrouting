@@ -52,7 +52,7 @@ With :ref:`pgr_analyze_graph` the graph can be checked for errors. For example f
 
 In the vertices table "mytab_vertices_pgr":
 
-  - Deadends are indentified by ``cnt=1`` 
+  - Deadends are identified by ``cnt=1`` 
   - Potencial gap problems are identified with ``chk=1``.
 
 .. code-block:: sql

@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_INTERNALQUERYTESTS_SRC_TEST_MATRIXROWS_DRIVER_H_
+#define SRC_INTERNALQUERYTESTS_SRC_TEST_MATRIXROWS_DRIVER_H_
 #pragma once
 
 #include "./../../common/src/pgr_types.h"
@@ -45,3 +47,4 @@ extern "C" {
 }
 #endif
 
+#endif  // SRC_INTERNALQUERYTESTS_SRC_TEST_MATRIXROWS_DRIVER_H_

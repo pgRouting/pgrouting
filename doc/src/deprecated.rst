@@ -12,11 +12,48 @@
 Deprecated Functions
 ====================
 
-.. warning:: These functions are deprecated!!!
+.. deprecated_warning_start
 
-    * That means they have been replaced by new functions or are no longer supported, and may be removed from future versions.
+.. warning:: These function(s) are deprecated!!!
+
+    * Are no longer supported,
+    * May be removed from future versions.
+    * May have been replaced by new functions.
     * All code that uses the functions should be converted to use its replacement if one exists. 
 
+.. deprecated_warning_end
+
+Deprecated on version 2.5
+----------------------------
+
+Routing functions
+...................
+
+- :ref:`bd_astar-v2` - See new signatures of :ref:`pgr_bdAstar`
+
+.. toctree::
+   :hidden:
+
+   ../src/bd_astar/doc/pgr_bdAstar-v2
+
+Deprecated on version 2.4
+----------------------------
+
+Routing functions
+...................
+
+- :ref:`bd_dijkstra_v2` - See new signatures of :ref:`pgr_bdDijkstra`
+
+Auxiliary functions
+...................
+
+- :ref:`pgr_points_to_vids`
+
+.. toctree::
+   :hidden:
+
+   ../src/bd_dijkstra/doc/pgr_bdDijkstra-v2
+   ../src/convenience/doc/pgr_pointsToVids
 
 Deprecated on version 2.3
 ----------------------------
@@ -24,7 +61,7 @@ Deprecated on version 2.3
 Routing functions
 ...................
 
-- :ref:`pgr_astar-V2.0` - See new signatures of :ref:`pgr_astar`
+- :ref:`pgr_astar-V2.0` - See new signatures of :ref:`pgr_aStar`
 - :ref:`pgr_tsp-V2.0` - See new signatures of :ref:`tsp`
 
 
@@ -103,10 +140,10 @@ Auxiliary functions
    utilities/get_table_name
    utilities/is_column_indexed
    utilities/is_column_in_table
-   utilities/point_to_id
    utilities/quote_ident
    utilities/versionless
    utilities/start_point
    utilities/end_point
+   utilities/point_to_id
 
 

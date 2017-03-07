@@ -5,7 +5,7 @@
 \echo --q1
 
    SELECT * FROM pgr_ksp(
-     'SELECT id, source, target, cost, reverse_cost FROM edge_table',
+     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
       2, 12, 2, 
       true   -- takes the (V2.0) signature (has_rcost = true and works on directed graph)
    );

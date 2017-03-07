@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_VEHICLE_NODE_H_
+#define SRC_PICKDELIVER_SRC_VEHICLE_NODE_H_
 #pragma once
 
 
@@ -30,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./tw_node.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 
@@ -104,18 +106,18 @@ class Vehicle_node: public Tw_node {
 
      ///@}
 
-     /*! \brief True when \barrival_time + \b delta_time generates TWV.*/
+     /*! \brief True when \b arrival_time + \b delta_time generates TWV.*/
      bool deltaGeneratesTWV(double delta_time) const;
 
      /** @name State */
      ///@ {
 
      /*! \brief True when the total count for violations are 0 */
-     bool feasable() const {return m_twvTot == 0 &&  m_cvTot == 0;}
+     bool feasible() const {return m_twvTot == 0 &&  m_cvTot == 0;}
 
-     /*! \brief True doesnt have twc nor cv (including total counts) */
-     bool feasable(double cargoLimit) const {
-         return feasable() &&  !has_twv() &&  !has_cv(cargoLimit);
+     /*! \brief True doesn't have twc nor cv (including total counts) */
+     bool feasible(double cargoLimit) const {
+         return feasible() &&  !has_twv() &&  !has_cv(cargoLimit);
      }
 
      /*! \brief True when at this node does not violate time windows */
@@ -136,21 +138,23 @@ class Vehicle_node: public Tw_node {
      /** @name mutators */
      ///@ {
      void evaluate(double cargoLimit);
-     void evaluate(const Vehicle_node &pred, double cargoLimit);
+     void evaluate(const Vehicle_node &pred, double cargoLimit, double speed);
      ///@}
 
      /** @name Document*/
      ///@ {
 
-     /*! \brief returns the arrval time at \bthis: visited after \bother */
+     /*! \brief returns the arrval time at \b this visited after \b other */
      double arrival_i_arrives_j(
-             const Vehicle_node &other) const;
+             const Vehicle_node &other,
+             double speed) const;
 
      ///@}
 
 
 
      /*! \brief Construct from parameters */
+     Vehicle_node() : Tw_node() {};
      Vehicle_node(const Vehicle_node &node) = default;
      Vehicle_node(const Tw_node &node);
 
@@ -180,4 +184,6 @@ class Vehicle_node: public Tw_node {
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_VEHICLE_NODE_H_

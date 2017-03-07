@@ -12,10 +12,11 @@
 pgr_apspWarshall - Deprecated Function
 ===============================================================================
 
-.. warning:: This function is deprecated!!!
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * It has been replaced by a new function, is no longer supported, and may be removed from future versions.
-    * All code that uses this function should be converted to use its replacement: :ref:`pgr_FloydWarshall`. 
+.. rubric::  Replacement :ref:`pgr_FloydWarshall`
 
 
 Name

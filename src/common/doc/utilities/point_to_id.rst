@@ -12,11 +12,12 @@
 pgr_pointToId - Deprecated Function
 ===============================================================================
 
-.. warning:: This function is deprecated!!!
+.. include:: ../../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * Is no longer supported.
-    * May be removed from future versions.
-    * There is no replacement.
+.. rubric:: No replacement
+
 
 Name
 -------------------------------------------------------------------------------
@@ -46,8 +47,8 @@ Description
 
 This function returns the id of the row that corresponds to the ``point`` geometry 
 
-  - When the ``point`` geometry already exists in the vertices table ``vertname``, it returns the corresponing ``id``.
-  - When the ``point`` geometry is not found in the vertices table ``vertname``, the funcion inserts the ``point`` and returns the corresponing ``id`` of the newly created vertex.
+  - When the ``point`` geometry already exists in the vertices table ``vertname``, it returns the corresponding ``id``.
+  - When the ``point`` geometry is not found in the vertices table ``vertname``, the function inserts the ``point`` and returns the corresponding ``id`` of the newly created vertex.
  
 .. warning:: The function do not perform any checking of the parameters. Any validation has to be done before calling this function.
 

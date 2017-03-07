@@ -21,24 +21,17 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
 
+#include "./xy_vertex.h"
 
 #include <vector>
 #include <algorithm>
 
-#include "./xy_vertex.h"  
-#include "./pgr_types.h"  
+#include "./pgr_types.h"
 #include "./pgr_assert.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 
 
 std::ostream& operator<<(std::ostream& log, const XY_vertex &v) {
@@ -65,8 +58,7 @@ check_vertices(
         std::unique(
             vertices.begin(), vertices.end(),
             [](const XY_vertex &lhs, const XY_vertex &rhs)
-            {return lhs.id == rhs.id;}), vertices.end()
-        );
+            {return lhs.id == rhs.id;}), vertices.end());
 
     return count - vertices.size();
 }
@@ -99,8 +91,7 @@ extract_vertices(
         std::unique(
             vertices.begin(), vertices.end(),
             [](const XY_vertex &lhs, const XY_vertex &rhs)
-            {return lhs.id == rhs.id;}), vertices.end()
-        );
+            {return lhs.id == rhs.id;}), vertices.end());
     return vertices;
 }
 
@@ -108,12 +99,11 @@ std::vector < XY_vertex >
 extract_vertices(
     const Pgr_edge_xy_t *data_edges, int64_t count) {
     return extract_vertices(
-        std::vector < Pgr_edge_xy_t >( data_edges, data_edges + count)
-        );
+        std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
 }
 
 #if 0
-/* the folowing might be needed when using withPoints */
+/* the following might be needed when using withPoints */
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
     const std::vector < Pgr_edge_xy_t > data_edges) {
@@ -136,18 +126,15 @@ std::vector < XY_vertex > extract_vertices(
     vertices.erase(
         std::unique(vertices.begin(), vertices.end(),
                     [](const XY_vertex &lhs, const XY_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-        );
-
+                    {return lhs.id == rhs.id;}), vertices.end());
     return vertices;
 }
-#endif
-#if 0
 std::vector < XY_vertex > extract_vertices(
     std::vector < XY_vertex > vertices,
     const Pgr_edge_xy_t *data_edges, int64_t count) {
-    return extract_vertices(vertices, std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
+    return extract_vertices(vertices,
+            std::vector < Pgr_edge_xy_t >(data_edges, data_edges + count));
 }
 #endif
 
-} // namespace pgRouting
+}  // namespace pgrouting

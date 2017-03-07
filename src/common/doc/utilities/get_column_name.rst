@@ -12,11 +12,12 @@
 pgr_getColumnName - Deprecated Function
 ===============================================================================
 
-.. warning:: This function is deprecated!!!
+.. include:: ../../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * Is no longer supported.
-    * May be removed from future versions.
-    * There is no replacement.
+.. rubric:: No replacement
+
 
 Name
 -------------------------------------------------------------------------------
@@ -42,7 +43,7 @@ Description
 Parameters
 
 :tab: ``text`` table name with or without schema component.
-:col: ``text`` column name to be retrived.
+:col: ``text`` column name to be retrieved.
 
 Returns 
 
@@ -83,6 +84,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`developer` for the tree layout of the project.
-* :ref:`pgr_is_column_in_table` to check only for the existance of the column.
+* :ref:`pgr_is_column_in_table` to check only for the existence of the column.
 * :ref:`pgr_get_table_name` to retrieve the name of the table as is stored in the postgres administration tables.
 

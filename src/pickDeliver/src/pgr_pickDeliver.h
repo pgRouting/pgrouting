@@ -22,87 +22,93 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_PICKDELIVER_SRC_PGR_PICKDELIVER_H_
+#define SRC_PICKDELIVER_SRC_PGR_PICKDELIVER_H_
 #pragma once
 
-#ifdef __MINGW32__
-#include <winsock2.h>
-#include <windows.h>
-#endif
 
 #include "./../../common/src/pgr_types.h"
+#include "./../../common/src/identifiers.hpp"
 
 #include <string>
 #include <vector>
 #include <sstream>
 
+#include "./pgr_messages.h"
 #include "./vehicle_node.h"
-#include "./order.h"
+#include "./fleet.h"
+#include "./orders.h"
 #include "./solution.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
+class Order;
 
-class Optimize;
-class Initial_solution;
-
-class Pgr_pickDeliver {
-    friend class Vehicle_pickDeliver;
-    friend class Optimize;
+class Pgr_pickDeliver : public Pgr_messages{
     friend class Initial_solution;
-    friend class Solution;
+    friend class Optimize;
+
     typedef size_t ID;
 
  public:
     Pgr_pickDeliver(
-            const Customer_t *c1, size_t total_customers,
-            int VehicleLength,
-            double capacity,
-            double speed,
+            const std::vector<PickDeliveryOrders_t> &pd_orders,
+            const std::vector<Vehicle_t> &vehicles,
             size_t max_cycles,
             std::string &error);
 
     void solve();
 
-    void get_postgres_result(
-            std::vector< General_vehicle_orders_t > &result) const;
+    std::vector<General_vehicle_orders_t>
+        get_postgres_result() const;
+
     /*****************/
 
     const Order order_of(const Vehicle_node &node) const;
     const Vehicle_node& node(ID id) const;
-    const std::vector<Order>& orders() const {return m_orders;}
-    double speed() const {return m_speed;}
+#if 0
+    const PD_Orders& orders() const {return m_orders;}
+#endif
 
-    /*! \brief get_log
+    Solution optimize(const Solution init_solution);
+    size_t max_cycles() const {return m_max_cycles;}
+
+    //! name orders handling (TODO? in a class?
+    /// @{
+
+    /*! \brief I -> {J}
      *
-     * \returns the current contents of the log and clears the log
-     *
+     * gets the orders {J} that can be visited after visiting order I
      */
-    std::ostream& get_log(std::ostream &p_log) const {
-        p_log << log.str() << "\n";
-        log.str("");
-        log.clear();
-        return p_log;
+    inline Identifiers<size_t> compatibleJ(size_t I) const{
+        return m_orders[I].m_compatibleJ;
     }
 
-    Solution solve(const Solution init_solution);
-    size_t max_cycles() const {return m_max_cycles;};
+    inline Order orders(size_t o) const {return m_orders[o];}
 
+    void add_node(const Vehicle_node &node) {
+        m_nodes.push_back(node);
+    }
+    Fleet trucks() const {return m_trucks;}
+
+    /// @{
  private:
-    double max_capacity;
+#if 1
     double m_speed;
-    size_t m_max_cycles;
-    int max_vehicles;
-    Vehicle_node m_starting_site, m_ending_site;
-    std::vector<Customer_t> m_original_data;
-    std::vector<Vehicle_node> m_nodes;
-    std::vector<Order> m_orders;
-    std::vector<Solution> solutions;
-    mutable std::ostringstream log;
-#ifndef NDEBUG
-    mutable std::ostringstream dbg_log;
 #endif
+    size_t m_max_cycles;
+    std::vector<Vehicle_node> m_nodes;
+    Fleet m_trucks;
+#if 1
+    PD_Orders m_orders;
+#endif
+    std::vector<Solution> solutions;
+
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_PGR_PICKDELIVER_H_

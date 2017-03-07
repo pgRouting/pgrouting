@@ -5,9 +5,9 @@ Generated with Template by:
 Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer: 
+Function's developer:
 Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail: 
+Mail:
 
 ------
 
@@ -27,10 +27,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include <sstream>
-#include "string.h"
 #include "./get_new_queries.h"
+#include <string.h>
+#include <sstream>
 
+char
+estimate_drivingSide(char driving_side) {
+    char d_side = static_cast<char>(tolower(driving_side));
+    if (!((d_side == 'r')
+                || (d_side == 'l'))) {
+        d_side = 'b';
+    }
+    return d_side;
+}
 
 void
 get_new_queries(
@@ -38,22 +47,21 @@ get_new_queries(
         char *points_sql,
         char **edges_of_points_query,
         char **edges_no_points_query) {
-
     std::ostringstream edges_of_points_sql;
     std::ostringstream edges_no_points_sql;
 
     edges_of_points_sql << "WITH "
-        << " edges AS (" << edges_sql << "),"
+        << " edges AS (" << edges_sql << "), "
         << " points AS (" << points_sql << ")"
         << " SELECT DISTINCT edges.* FROM edges JOIN points ON (id = edge_id)";
     *edges_of_points_query = strdup(edges_of_points_sql.str().c_str());
 
     edges_no_points_sql << "WITH "
-        << " edges AS (" << edges_sql << "),"
+        << " edges AS (" << edges_sql << "), "
         << " points AS (" << points_sql << ")"
-        << " SELECT edges.* FROM edges WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
+        << " SELECT edges.*"
+        << " FROM edges"
+        << " WHERE NOT EXISTS (SELECT edge_id FROM points WHERE id = edge_id)";
     *edges_no_points_query = strdup(edges_no_points_sql.str().c_str());
 }
-
-
 

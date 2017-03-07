@@ -53,7 +53,7 @@ The main Characteristics are:
   - Let be the case the values returned are stored in a table, so the unique index would be the pair:
     `(start_vid, end_vid)`.
 
-  - For undirected graphs, the results are symetric.
+  - For undirected graphs, the results are symmetric.
 
     - The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
@@ -64,7 +64,7 @@ The main Characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 Signature Summary
 -------------------------------------------------------------------------------
@@ -208,24 +208,20 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstra_parameters.txt
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: ./pgr_dijkstra.rst
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
+
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
-Description of the return values
-...............................................................................
-
-Returns set of ``(start_vid, end_vid, agg_cost)``
-
-============= ============= =================================================
-Column        Type          Description
-============= ============= =================================================
-**start_vid** ``BIGINT``    Identifier of the starting vertex.
-**end_vid**   ``BIGINT``    Identifier of the ending vertex.
-**agg_cost**  ``FLOAT``     Aggregate cost of the shortest path from ``start_vid`` to ``end_vid``.
-============= ============= =================================================
-
-
-Aditional Examples
+Additional Examples
 -------------------------------------------------------------------------------
 
 :Example 1: Demonstration of repeated values are ignored, and result is sorted.

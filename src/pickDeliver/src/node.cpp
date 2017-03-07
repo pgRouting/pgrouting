@@ -25,18 +25,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./node.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 bool Node::isSamePos(const Node &other) const {
     return comparable_distance(other) == 0;
 }
-
-#if 0
-double Node::travel_time_to(const Node &other) const {
-    return distance(other);
-}
-#endif
 
 std::ostream& operator << (std::ostream &log, const Node &node) {
     log << node.m_original_id
@@ -76,6 +70,6 @@ Node::operator ==(const Node &rhs) const {
 }
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
 
 

@@ -202,7 +202,7 @@ BEGIN
 
     -- second temp table with locus (index of intersection point on the line)
     -- to avoid updating the previous table
-    -- we keep only intersection points occuring onto the line, not at one of its ends
+    -- we keep only intersection points occurring onto the line, not at one of its ends
 --    drop table if exists inter_loc;
 
 --HAD TO CHANGE THIS QUERY
@@ -267,7 +267,7 @@ BEGIN
 		' from '|| _pgr_quote_ident(intab) ||' where  '||quote_ident(n_pkey)||' not in (select * from used)' || rows_where || ')';
 	GET DIAGNOSTICS untouched = ROW_COUNT;
 
-	raise NOTICE '  Splitted Edges: %', touched;
+	raise NOTICE '  Split Edges: %', touched;
 	raise NOTICE ' Untouched Edges: %', untouched;
 	raise NOTICE '     Total original Edges: %', touched+untouched;
         RAISE NOTICE ' Edges generated: %', splits;

@@ -1,4 +1,3 @@
-BEGIN;
 
 \echo --q1
 SELECT * FROM pgr_pointstodmatrix(pgr_texttopoints('2,0;2,1;3,1;2,2', 0));
@@ -54,4 +53,3 @@ SELECT * FROM pgr_tsp(
 );
 \echo --q5
 
-ROLLBACK;

@@ -16,6 +16,7 @@ use vars qw/*name *dir *prune/;
 *prune  = *File::Find::prune;
 
 my $DOCUMENTATION = 0;
+my $INTERNAL_TESTS = 0;
 my $VERBOSE = 0;
 my $DRYRUN = 0;
 my $DEBUG = 0;
@@ -36,6 +37,7 @@ sub Usage {
     "       -pgrver vpgr        - pgrouting version\n" .
     "       -psql /path/to/psql - optional path to psql\n" .
     "       -v                  - verbose messages for small debuging\n" .
+    "       -dbg                - use when CMAKE_BUILD_TYPE = DEBUG\n" .
     "       -debug              - verbose messages for debuging(enter twice for more)\n" .
     "       -debug1             - DEBUG1 messages (for timing reports)\n" .
     "       -clean              - dropdb pgr_test__db__test\n" .
@@ -113,6 +115,9 @@ while (my $a = shift @ARGV) {
         $DOCUMENTATION = 1;
         $DEBUG1 = 0; # disbale timing reports during documentation generation
     }
+    elsif ($a =~ /^-dbg/i) {
+        $INTERNAL_TESTS = 1; #directory internalQueryTests is also tested
+    }
     else {
         warn "Error: unknown option '$a'\n";
         Usage();
@@ -144,7 +149,7 @@ if (length($psql)) {
         $psql = "\"$psql\"";
     }
 }
-print "Operative system found: $OS";
+print "Operative system found: $OS\n";
 
 
 # Traverse desired filesystems
@@ -225,6 +230,11 @@ sub run_test {
         mysystem("$psql $connopts -A -t -q -f '$dir/$x' $DBNAME >> $TMP2 2>\&1 ");
     }
 
+    if ($INTERNAL_TESTS) {
+        for my $x (@{$t->{debugtests}}) {
+            process_single_test($x, $dir,, $DBNAME, \%res)
+        }
+    }
     if ($DOCUMENTATION) {
         for my $x (@{$t->{documentation}}) {
             process_single_test($x, $dir,, $DBNAME, \%res)
@@ -234,7 +244,7 @@ sub run_test {
         for my $x (@{$t->{tests}}) {
             process_single_test($x, $dir,, $DBNAME, \%res)
         }
-        if ($OS =~ /msys/ || $OS=~/MSW/ || $OS =~ /cygwin/) {
+        if ($OS =~/msys/ || $OS=~/MSW/ || $OS =~/cygwin/) {
             for my $x (@{$t->{windows}}) {
                 process_single_test($x, $dir,, $DBNAME, \%res)
             }
@@ -268,7 +278,11 @@ sub process_single_test{
         next;
     };
 
-    #reason of opening conection is because the set client_min_messages to warning;
+    my $level = "NOTICE";
+    $level = "WARNING" if $ignore;
+    $level = "DEBUG1" if $DEBUG1;
+
+
     if ($DOCUMENTATION) {
         mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
         open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
@@ -276,23 +290,31 @@ sub process_single_test{
             $stats{z_fail}++;
             next;
         };
-        print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-        print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
     }
     else {
-        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
+        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
-            $stats{z_fail}++;
+            if (!$INTERNAL_TESTS) {
+               $stats{z_fail}++;
+            }
             next;
         };
     }
-    print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-    print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+
+
     my @d = ();
     @d = <TIN>; #reads the whole file into the array @d 
-    print PSQL @d; #prints the whole fle stored in @d
-    close(PSQL); #executes everything
-    close(TIN); #closes the input file  /TIN = test input
+
+    print PSQL "BEGIN;\n";
+    print PSQL "SET client_min_messages TO $level;\n";
+    #prints the whole fle stored in @d
+    print PSQL @d;
+    print PSQL "\nROLLBACK;";
+
+    # executes everything
+    close(PSQL);
+    #closes the input file  /TIN = test input
+    close(TIN);
 
     return if $DOCUMENTATION;
 
@@ -382,7 +404,6 @@ sub createTestDB {
     }
     #
 #    else {
-#        if ($vpgis && dbExists("template_postgis_$vpgis")) {
 #            $template = "template_postgis_$vpgis";
 #        }
 #        elsif (dbExists('template_postgis')) {
@@ -403,7 +424,7 @@ sub createTestDB {
         -f "$dbshare/extension/postgis.control") {
         my $myver = '';
         if ($vpgr) {
-            $myver = " PGROUTING VERSION '$vpgr'";
+            $myver = " VERSION '$vpgr'";
         }
         print "-- Trying to install pgrouting extension $myver\n" if $DEBUG;
         mysystem("$psql $connopts -c \"create extension pgrouting $myver\" $databaseName");

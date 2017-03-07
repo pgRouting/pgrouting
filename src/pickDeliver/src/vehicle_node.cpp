@@ -24,11 +24,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ********************************************************************PGR-GNU*/
 
 
-
-#include <cassert>
 #include "./vehicle_node.h"
 
-namespace pgRouting {
+
+namespace pgrouting {
 namespace vrp {
 
 
@@ -60,13 +59,13 @@ Vehicle_node::evaluate(double cargoLimit) {
 }
 
 /*!
-  \param[in] pred The node preceeding this node (in the path).
+  \param[in] pred The node preceding this node (in the path).
   \param[in] cargoLimit The cargo limit of the vehicle.
   */
 void
-Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit) {
+Vehicle_node::evaluate(const Vehicle_node &pred, double cargoLimit, double speed) {
     /* time */
-    m_travel_time    = pred.travel_time_to(*this);
+    m_travel_time    = pred.travel_time_to(*this, speed);
     m_arrival_time   = pred.departure_time() + travel_time();
     m_wait_time      = is_early_arrival(arrival_time()) ?
         opens() - m_arrival_time :
@@ -109,15 +108,11 @@ operator << (std::ostream &log, const Vehicle_node &v) {
 }
 
 
-/*!
- * \param[in] id The User node id
- * \param[in] x The X or longitude coordinate for its location
- * \param[in] y The Y or latitude coordinate for its location
- * \param[in] opens The earliest arrival time (TW open)
- * \param[in] closes The latest arrival time (TW close)
- * \param[in] service_time The service time
- * \param[in] demand The demand in units of vehicle capacity
- * \param[in] streetId The street id this node is located
+/*! @brief Creates a disconected vehicle node
+ *
+ * A node that is not served by any vehicle
+ *
+ * @param[in] node Time window node
  */
 Vehicle_node::Vehicle_node(const Tw_node &node)
     : Tw_node(node),
@@ -148,11 +143,11 @@ Vehicle_node::deltaGeneratesTWV(double delta_time) const {
   and that the actual arrival time at \b other node was arrival(other)
   */
 double
-Vehicle_node::arrival_i_arrives_j(const Vehicle_node &other) const {
+Vehicle_node::arrival_i_arrives_j(const Vehicle_node &other, double speed) const {
     return other.arrival_time()
         + other.service_time()
-        + other.travel_time_to(*this);
+        + other.travel_time_to(*this, speed);
 }
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting

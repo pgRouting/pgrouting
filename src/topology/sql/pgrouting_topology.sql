@@ -171,15 +171,15 @@ BEGIN
     BEGIN 
         -- issue #193 & issue #210 & #213
         -- this sql is for trying out the where clause
-        -- the select * is to avoid any colum name conflicts
+        -- the select * is to avoid any column name conflicts
         -- limit 1, just try on first record
-        -- if the where clasuse is ill formed it will be catched in the exception
+        -- if the where clasuse is ill formed it will be caught in the exception
         sql = 'select * from '||_pgr_quote_ident(tabname)||' WHERE true'||rows_where ||' limit 1';
         EXECUTE sql into dummyRec;
         -- end 
 
         -- if above where clasue works this one should work
-        -- any error will be catched by the exception also
+        -- any error will be caught by the exception also
         sql = 'select count(*) from '||_pgr_quote_ident(tabname)||' WHERE (' || gname || ' IS NOT NULL AND '||
 	    idname||' IS NOT NULL)=false '||rows_where;
         EXECUTE SQL  into notincluded;
@@ -194,7 +194,7 @@ BEGIN
                 rows_where=  ' and ('||quote_ident(sourcename)||' is null or '||quote_ident(targetname)||' is  null)'; 
             end if;
         end if;
-        -- my thoery is that the select Count(*) will never go thru here
+        -- my thoery is that the select Count(*) will never go through here
         EXCEPTION WHEN OTHERS THEN  
              RAISE NOTICE 'Got %', SQLERRM; -- issue 210,211
              RAISE NOTICE 'ERROR: Condition is not correct, please execute the following query to test your condition'; 
@@ -214,7 +214,7 @@ BEGIN
                 execute 'SELECT DROPGEOMETRYCOLUMN('||quote_literal(sname)||','||quote_literal(vname)||','||quote_literal('the_geom')||')';
                 emptied = true;
             end if;
-         ELSE -- table doesnt exist
+         ELSE -- table doesn't exist
             execute 'CREATE TABLE '||_pgr_quote_ident(vertname)||' (id bigserial PRIMARY KEY,cnt integer,chk integer,ein integer,eout integer)';
             emptied = true;
          END IF;

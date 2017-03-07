@@ -220,6 +220,7 @@ SELECT * FROM pgr_dijkstra(
     ARRAY[2], ARRAY[3]
 );
 -- Version 2.0
+SET client_min_messages TO NOTICE;
 SELECT * FROM pgr_dijkstra(
     'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table',
     2, 3,
@@ -263,5 +264,4 @@ SELECT * FROM pgr_dijkstra(
     TRUE      -- has_rcost
 );
 \echo -- q18
-
 

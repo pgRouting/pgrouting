@@ -98,6 +98,10 @@ We ignore the costs because we want all the parallels
     group by seq,route,source,target order by seq;
 
    select route, source, targets, edges from paths;
+
+
+::
+
      route | source | target |  edges  
     -------+--------+--------+---------
          1 |      1 |      2 | {1}
@@ -115,7 +119,7 @@ We ignore the costs because we want all the parallels
 
 To generate a table with all the combinations for parallel routes, we need some more aggregates
 
-.. code-block:: sql
+::
 
   create or replace function multiply( integer, integer )
   returns integer as
@@ -131,11 +135,12 @@ To generate a table with all the combinations for parallel routes, we need some 
     initcond = 1
   );
 
+
 .. rubric:: And a function that "Expands" the table
 
 
 
-.. code-block:: sql
+.. code-block:: none
 
   CREATE OR REPLACE function   expand_parallel_edge_paths(tab text)
     returns TABLE (

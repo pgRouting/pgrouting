@@ -48,7 +48,7 @@ pre-commit
 
 To keep version/branch/commit up to date install pelase do the following:
 
-.. code::
+.. code-block:: bash
 
   cp tools/pre-commit .git/hooks/pre-commit
 
@@ -59,12 +59,10 @@ After each commit a the file **VERSION** will remain. (The hash number will be o
 doxygen
 *******
 
-.. warning:: :ref:`developer_functions` documentation is going to be deleted from the pgRouting documentation and included in the doxygen documentation.
-
 To use doxygen:
 
 
-.. code::
+.. code-block:: bash
 
   cd tools/doxygen/
   make
@@ -72,7 +70,7 @@ To use doxygen:
 The code's documentation can be found in:
 
 
-.. code::
+.. code-block:: bash
 
   build/doxy/html/index.html
 
@@ -86,7 +84,7 @@ https://google-styleguide.googlecode.com/svn/trunk/cppguide.html
 
 Sample use:
 
-.. code::
+.. code-block:: bash
 
   python cpplint.py ../src/dijkstra/src/dijkstra_driver.h
   ../src/dijkstra/src/dijkstra_driver.h:34:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
@@ -99,7 +97,7 @@ Sample use:
 - Delete whitespace at end of line is easy fix.
 - Use your judgement!!!
 
-Some files like ``postgres.h`` are system dependant so don't include the directory.
+Some files like ``postgres.h`` are system dependent so don't include the directory.
 
 
 Other tools
@@ -148,9 +146,9 @@ Tests are part of the tree layout:
 
   - ``src/dijkstra/test``  Dijkstra's tests.
 
-    - ``test.conf``  Configuraton file.
+    - ``test.conf``  Configuration file.
     - ``<name>.test.sql``  Test file
-    - ``<name>.result``  Results file
+    - ``<name>.result``  Results file bash
 
   - ``src/dijkstra/test/pgtap``  Dijkstra's pgTaptests.
 

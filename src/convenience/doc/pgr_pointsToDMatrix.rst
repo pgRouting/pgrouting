@@ -12,11 +12,12 @@
 pgr_pointsToDMatrix - Deprecated Function
 ==============================================================================
 
-.. warning:: This function is deprecated!!!
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * Is no longer supported.
-    * May be removed from future versions.
-    * There is no replacement.
+.. rubric:: No replacement
+
 
 Name
 ------------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Name
 Synopsis
 ------------------------------------------------------------------------------
 
-Create a distance symetric distance matrix suitable for TSP using Euclidean distances based on the st_distance(). You might want to create a variant of this the uses st_distance_sphere() or st_distance_spheriod() or some other function.
+Create a distance symmetric distance matrix suitable for TSP using Euclidean distances based on the st_distance(). You might want to create a variant of this the uses st_distance_sphere() or st_distance_spheriod() or some other function.
 
 The function returns:
 
@@ -42,7 +43,7 @@ The function returns:
 Description
 -----------------------------------------------------------------------------
 
-.. rubric:: Paramters
+.. rubric:: Parameters
 
 :pnts: ``geometry[]`` - An array of point geometries.
 

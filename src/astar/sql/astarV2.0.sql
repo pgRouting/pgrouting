@@ -30,7 +30,7 @@ DECLARE
 has_reverse BOOLEAN;
 sql TEXT;
 BEGIN
-    RAISE NOTICE 'Deprecated signature of function pgr_astar';
+    RAISE NOTICE 'Deprecated signature pgr_astar(text, integer, integer, boolean, boolean)';
     has_reverse =_pgr_parameter_check('astar', edges_sql, false);
     sql = edges_sql;
     IF (has_reverse != has_rcost) THEN
@@ -42,7 +42,7 @@ BEGIN
     END IF;
 
     RETURN query SELECT seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost 
-    FROM pgr_astar(sql, source_id, target_id, directed);
+    FROM pgr_astar(sql, ARRAY[$2], ARRAY[$3], directed);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

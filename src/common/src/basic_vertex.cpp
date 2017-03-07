@@ -21,28 +21,22 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
 
+#include "./basic_vertex.h"
 
 #include <vector>
 #include <algorithm>
-
 #include <sstream>
-#include "./basic_vertex.h"  
-#include "./pgr_types.h"  
+#include <ostream>
+
+#include "./pgr_types.h"
 #include "./pgr_assert.h"
 
 
-namespace pgRouting {
+namespace pgrouting {
 
     std::ostream& operator<<(std::ostream& log, const Basic_vertex &v) {
-        log << v.id ;
+        log << v.id;
         return log;
     }
 
@@ -57,8 +51,7 @@ namespace pgRouting {
                 std::unique(
                     vertices.begin(), vertices.end(),
                     [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-                );
+                    {return lhs.id == rhs.id;}), vertices.end());
 
         return vertices.size() - count;
     }
@@ -79,7 +72,6 @@ namespace pgRouting {
 
             vertex.id = edge.target;
             vertices.push_back(vertex);
-
         }
 
         /*
@@ -92,8 +84,7 @@ namespace pgRouting {
         vertices.erase(
                 std::unique(vertices.begin(), vertices.end(),
                     [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-                );
+                    {return lhs.id == rhs.id;}), vertices.end());
 
         return vertices;
     }
@@ -101,7 +92,6 @@ namespace pgRouting {
 
     std::vector < Basic_vertex > extract_vertices(
             const std::vector <pgr_edge_t > data_edges) {
-
         std::vector< Basic_vertex > vertices;
         if (data_edges.empty()) return vertices;
 
@@ -115,7 +105,6 @@ namespace pgRouting {
 
             vertex.id = edge.target;
             vertices.push_back(vertex);
-
         }
 
         /*
@@ -128,21 +117,24 @@ namespace pgRouting {
         vertices.erase(
                 std::unique(vertices.begin(), vertices.end(),
                     [](const Basic_vertex &lhs, const Basic_vertex &rhs)
-                    {return lhs.id == rhs.id;}), vertices.end()
-                );
+                    {return lhs.id == rhs.id;}), vertices.end());
 
         return vertices;
     }
 
     std::vector < Basic_vertex > extract_vertices(
             const pgr_edge_t *data_edges, int64_t count) {
-        return extract_vertices(std::vector < pgr_edge_t >(data_edges, data_edges + count));
+        return extract_vertices(
+                std::vector < pgr_edge_t >(
+                    data_edges, data_edges + count));
     }
 
     std::vector < Basic_vertex > extract_vertices(
             std::vector < Basic_vertex > vertices,
             const pgr_edge_t *data_edges, int64_t count) {
-        return extract_vertices(vertices, std::vector < pgr_edge_t >(data_edges, data_edges + count));
+        return extract_vertices(
+                vertices, std::vector < pgr_edge_t >(
+                    data_edges, data_edges + count));
     }
 
-} // namespace pgRouting
+}  // namespace pgrouting

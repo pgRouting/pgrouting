@@ -22,90 +22,135 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_EDGES_INPUT_H_
+#define SRC_COMMON_SRC_EDGES_INPUT_H_
 #pragma once
 
 #include "./pgr_types.h"
 
-/*! @name pgr_get_edges
- *
- *
- * 
- */
-//@{
 
-/*! @brief read edges where id is of no interest
+/*! @brief edges_sql without id parameter
+ 
+~~~~{.c}
+SELECT source, target, cost, [reverse_cost]
+FROM edge_table;
+~~~~
 
-Edges: where the id is not of interest
+Currently used in: allpairs
 
-bigint source,
-bigint target,
-float8 cost,
-float8 reverse_cost
-
-Currently used in:
-allpairs
-
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
+@param[in] edges_sql
+@param[out] edges
+@param[out] total_edges
 */
 void pgr_get_edges_no_id(
-        char *sql,
+        char *edges_sql,
         pgr_edge_t **edges,
         size_t *total_edges);
 
-/*! @brief read edges 
+
+
+/*! @brief basic edge_sql
+
+For queries of the type:
+~~~~{.c}
+SELECT id, source, target, cost, [reverse_cost]
+FROM edge_table;
+~~~~
+
+@param[in] edges_sql
+@param[out] edges
+@param[out] total_edges
+*/
+void pgr_get_edges(
+        char *edges_sql,
+        pgr_edge_t **edges,
+        size_t *total_edges);
+void pgr_get_edges_reversed(
+        char *edges_sql,
+        pgr_edge_t **edges,
+        size_t *total_edges);
+
+
+
+/*! @brief Edges with x, y vertices values
+
+For queries of the type:
+~~~~{.c}
+SELECT id, source, target, cost, [reverse_cost], x1, y1, x2, y2
+FROM edge_table;
+~~~~
+
+@param[in] edges_sql
+@param[out] edges
+@param[out] total_edges
+*/
+void pgr_get_edges_xy(
+        char *edges_sql,
+        Pgr_edge_xy_t **edges,
+        size_t *total_edges);
+
+/*! @brief for many to 1 on aStar
+
+Used internally
+
+Transforms queries of the type:
+~~~~{.c}
+SELECT id, source, target, cost, [reverse_cost], x1, y1, x2, y2
+FROM edge_table;
+~~~~
+
+to
+~~~~{.c}
+SELECT id, target, source, cost, [reverse_cost], x1, y1, x2, y2
+FROM edge_table;
+~~~~
+
+@param[in] edges_sql
+@param[out] edges
+@param[out] total_edges
+*/
+void pgr_get_edges_xy_reversed(
+        char *edges_sql,
+        Pgr_edge_xy_t **edges,
+        size_t *total_edges);
+
+
+/*! @brief read edges for flow
 
 Edges:
 
 bigint id,
 bigint source,
 bigint target,
-float8 cost
-float8 reverse_cost
+bigint capacity,
+bigint reverse_capacity
 
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
 */
-void pgr_get_edges(
-        char *sql,
-        pgr_edge_t **edges,
-        size_t *total_edges);
+void pgr_get_flow_edges(
+    char *sql,
+    pgr_edge_t **edges,
+    size_t *total_edges);
 
-/*! @name pgr_get_edges_xy
- 
-  @brief read edges with additional (x,y) for source & target
+/*! @brief read basic edges
 
-  Edges with x, y vertices values:
+For queries of the type:
+~~~~{.c}
+SELECT id, source, target, going, [comming]
+FROM edge_table;
+~~~~
 
-  bigint id,
-  bigint source,
-  bigint target,
-  float8 cost
-  float8 reverse_cost
-  float8 x1, y1   -- source
-  float8 x2, y2   -- target
+@param[in] sql
+@param[out] edges
+@param[out] total_edges
 */
+void pgr_get_basic_edges(
+    char *sql,
+    pgr_basic_edge_t **edges,
+    size_t *total_edges);
 
-/*! @brief normal graph
 
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
-*/
-void pgr_get_edges_xy(
-        char *sql,
-        Pgr_edge_xy_t **edges,
-        size_t *total_edges);
 
-/*! @brief reversed graph (for many to 1)
-
-@param[IN] sql
-@param[OUT] edges
-@oaram[OUT] total_edges
-*/
-void pgr_get_edges_xy_reversed(
-        char *sql,
-        Pgr_edge_xy_t **edges,
-        size_t *total_edges);
+#endif  // SRC_COMMON_SRC_EDGES_INPUT_H_

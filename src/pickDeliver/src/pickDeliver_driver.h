@@ -29,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #ifndef SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
 #define SRC_PICKDELIVER_SRC_PICKDELIVER_DRIVER_H_
 
-#include <stddef.h>
 #include "./../../common/src/pgr_types.h"
 
 #ifdef __cplusplus
@@ -43,15 +42,17 @@ extern "C" {
       max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliver(
-            Customer_t *customers_arr, size_t total_customers,
-            int max_vehicles,
-            double capacity,
-            double speed,
+            PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
+            Vehicle_t *vehicles_arr, size_t total_vehicles,
+
             int max_cycles,
+
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,
-            char ** log_msg,
-            char ** err_msg);
+
+            char **log_msg,
+            char **notice_msg,
+            char **err_msg);
 
 
 #ifdef __cplusplus

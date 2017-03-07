@@ -20,7 +20,7 @@ t
 17|2|1|17.7795767601752
 18|1|0|18.7795767601752
 -- q3
-NOTICE:  pgr_eucledianTSP Processing Information 
+DEBUG:  pgr_eucledianTSP Processing Information 
 Initializing tsp class ---> tsp.greedyInitial ---> tsp.annealing ---> OK
 
 Cycle(100)    total changes =0        0 were because  delta energy < 0

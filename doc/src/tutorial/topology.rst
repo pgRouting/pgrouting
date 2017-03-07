@@ -92,7 +92,7 @@ The function :ref:`pgr_createTopology() <pgr_create_topology>` will create the `
                        WHEN fcc='A69' THEN 15
                        ELSE null END;
 
-    -- UPDATE the cost infomation based on oneway streets
+    -- UPDATE the cost information based on oneway streets
 
     UPDATE edge_table SET
         cost_time = CASE

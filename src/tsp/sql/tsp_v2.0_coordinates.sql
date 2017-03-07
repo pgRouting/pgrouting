@@ -1,4 +1,28 @@
+/*PGR-GNU*****************************************************************
 
+Copyright (c) 2016 pgRouting developers
+Mail: project@pgrouting.org
+
+Copyright (c) 2016 Celia Virginia Vergara Castillo
+mail: vicky_vergara@hotmail.com
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
 /*
     Old signature has:
     sql: id INTEGER, x FLOAT, y FLOAT
@@ -17,14 +41,9 @@ debuglevel TEXT;
 n BIGINT;
 
 BEGIN
-    -- checking the fixed columns and data types of the integers
-    EXECUTE 'SHOW client_min_messages' INTO debuglevel;
-
-    EXECUTE 'SET client_min_messages TO NOTICE';
     RAISE NOTICE 'Deprecated Signature pgr_tsp(sql, integer, integer)';
-    EXECUTE 'set client_min_messages  to '|| debuglevel;
 
-    table_sql := 'CREATE TABLE ___tmp  AS ' || sql ;
+    table_sql := 'CREATE TEMP TABLE ___tmp ON COMMIT DROP AS ' || sql ;
     EXECUTE table_sql;
 
 
@@ -54,7 +73,6 @@ BEGIN
     EXECUTE 'SELECT count(*) AS n FROM (' || sql || ') AS __a__' INTO rec;
     n = rec.n;
 
-    EXECUTE 'SET client_min_messages TO ERROR';
     RETURN query
         SELECT (seq - 1)::INTEGER AS seq, node::INTEGER AS id1, node::INTEGER AS id2, cost
         FROM pgr_eucledianTSP(sql, start_id, end_id,
@@ -65,7 +83,6 @@ BEGIN
 
             randomize := false) WHERE seq <= n;
     DROP TABLE ___tmp;
-    EXECUTE 'set client_min_messages  to '|| debuglevel;
 
 END;
 $body$

@@ -13,18 +13,22 @@ Cost Matrix
 ===============================================================================
 
   - :ref:`pgr_dijkstraCostMatrix`
+  - :ref:`pgr_bdDijkstraCostMatrix`
   - :ref:`pgr_withPointsCostMatrix`
+  - :ref:`pgr_astarCostMatrix`
+  - :ref:`pgr_bdAstarCostMatrix`
 
-.. toctree::
-    :hidden:
 
-    ./pgr_dijkstraCostMatrix
-    ./pgr_withPointsCostMatrix
+.. include:: ../../proposedNext.rst
+    :start-after: begin-warning
+    :end-before: end-warning
+
+
  
 General Information
 -------------------------------------------------------------------------------
 
-Sinopsis
+Synopsis
 ...................
 
 :ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` must value :math:`\infty`.
@@ -40,14 +44,14 @@ The main Characteristics are:
 * Can be used as input to :ref:`pgr_tsp`.
 
   * :directly: when the resulting matrix is symmetric and there is no :math:`\infty` value.
-  * It will be the users responsability to make the matrix symmetric.
+  * It will be the users responsibility to make the matrix symmetric.
 
-    * By using geometric or harmonic average of the non symetric values.
-    * By using max or min the non symetric values.
+    * By using geometric or harmonic average of the non symmetric values.
+    * By using max or min the non symmetric values.
     * By setting the upper triangle to be the mirror image of the lower triangle.
     * By setting the lower triangle to be the mirror image of the upper triangle.
 
-  * It is also the users responsability to fix an :math:`\infty` value.
+  * It is also the users responsibility to fix an :math:`\infty` value.
 
 * Each function works as part of the family it belongs to.
 * It does not return a path.
@@ -78,7 +82,7 @@ The main Characteristics are:
   * `start_vid` ascending
   * `end_vid` ascending
 
-* Runing time: aproximately :math:`O(| start\_vids | * (V \log V + E))`
+* Running time: approximately :math:`O(| start\_vids | * (V \log V + E))`
 
 
 

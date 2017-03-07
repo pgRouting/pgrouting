@@ -52,7 +52,7 @@ The main Characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
 
 
 Signature Summary
@@ -210,27 +210,34 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: pgr_dijkstra_parameters.txt
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
 
+.. pgr_dijkstra_parameters_start
 
-Description of the return values
+Description of the parameters of the signatures
 ...............................................................................
 
-Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**sql**        ``TEXT``                    SQL query as described above.
+**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                           - When ``false`` the graph is considered as `Undirected`.
+============== ================== ======== =================================================
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the begining of a path.
-**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
-**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
-============== ========== =================================================
+.. pgr_dijkstra_parameters_end
+
+
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_path_start
+    :end-before: return_path_end
 
 
 Additional Examples

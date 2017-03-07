@@ -16,8 +16,7 @@
 
 # A check condition to see if those variables are set
 
-#POSTGRESQL_BIN ia an optional commandline argument to specify a non-standard path to the postgresql program executables
-SET(POSTGRESQL_BIN "" CACHE STRING "Some user-specified option")    
+SET(POSTGRESQL_BIN "" CACHE STRING "non-standard path to the postgresql program executables")    
 
 if(POSTGRESQL_INCLUDE_DIR AND POSTGRESQL_LIBRARIES AND POSTGRESQL_EXECUTABLE AND POSTGRESQL_VERSION_STRING)
     set(POSTGRESQL_FOUND TRUE)

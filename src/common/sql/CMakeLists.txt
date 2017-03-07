@@ -1,5 +1,6 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/pgRouting-header.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting-types.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_version.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_utilities.sql

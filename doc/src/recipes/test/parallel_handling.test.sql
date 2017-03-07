@@ -1,5 +1,5 @@
-BEGIN;
-  SET client_min_messages = WARNING;
+SET client_min_messages = WARNING;
+
   drop table if exists parallel;
   CREATE TABLE parallel (
     id serial,
@@ -21,6 +21,8 @@ BEGIN;
   UPDATE parallel SET the_geom = ST_makeline(ARRAY[ST_point(1,1),ST_point(2,1),ST_point(2,3),ST_point(1,3)])
                                 WHERE id = 4;
   UPDATE parallel SET cost = ST_length(the_geom), reverse_cost = ST_length(the_geom);
+
+  SET client_min_messages = WARNING;
   SELECT pgr_createTopology('parallel',0.001);
 
 
@@ -121,4 +123,3 @@ BEGIN;
 
 
   select * from expand_parallel_edge_paths( 'paths' );
-ROLLBACK;

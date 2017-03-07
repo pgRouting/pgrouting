@@ -39,7 +39,7 @@ Signature Summary
         tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
         initial_temperature, final_temperature, cooling_factor,
         randomize,
-    RETURS SETOF (seq, node, cost, agg_cost)
+    RETURNS SETOF (seq, node, cost, agg_cost)
 
 
 Signatures
@@ -54,7 +54,7 @@ Minimal Signature
 .. code-block:: none
 
     pgr_eucledianTSP(coordinates_sql)
-    RETURS SETOF (seq, node, cost, agg_cost)
+    RETURNS SETOF (seq, node, cost, agg_cost)
 
 :Example: 
 
@@ -81,7 +81,7 @@ Complete Signature
         tries_per_temperature, max_changes_per_temperature, max_consecutive_non_changes,
         initial_temperature, final_temperature, cooling_factor,
         randomize,
-    RETURS SETOF (seq, node, cost, agg_cost)
+    RETURNS SETOF (seq, node, cost, agg_cost)
 
 
 .. rubric:: Example:

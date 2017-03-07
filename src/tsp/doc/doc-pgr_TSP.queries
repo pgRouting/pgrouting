@@ -1,4 +1,6 @@
-SET client_min_messages TO WARNING;
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
 SET
 -- q1
 WITH
@@ -71,3 +73,5 @@ SELECT * FROM pgr_TSP(
 (6 rows)
 
 -- q4
+ROLLBACK;
+ROLLBACK

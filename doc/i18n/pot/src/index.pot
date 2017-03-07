@@ -53,7 +53,7 @@ msgstr ""
 
 #: ../../../src/index.rst:21
 # 969c1456730541eab216fd6f9256a548
-msgid ":ref:`pgr_kDijkstra<pgr_kdijkstra>` - Mutliple destination Shortest Path Dijkstra"
+msgid ":ref:`pgr_kDijkstra<pgr_kdijkstra>` - Multiple destination Shortest Path Dijkstra"
 msgstr ""
 
 #: ../../../src/index.rst:22

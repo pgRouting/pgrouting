@@ -2,11 +2,11 @@
 \i setup.sql
 
 
-SELECT plan(10);
+SELECT plan(4);
 
 PREPARE q1 AS
 SELECT * FROM pgr_floydWarshall(
-    'SELECT id::BIGINT, source::SMALLINT, target::BIGINT, cost::INTEGER, reverse_cost::SMALLINT FROM edge_table'
+    'SELECT id, source, target, cost, reverse_cost FROM edge_table'
 );
 
 PREPARE q2 AS
@@ -14,70 +14,37 @@ SELECT * FROM pgr_floydWarshall(
     'SELECT source, target, cost, reverse_cost FROM edge_table'
 );
 
+
 PREPARE q3 AS
 SELECT * FROM pgr_floydWarshall(
-    'SELECT source, target, cost, reverse_cost FROM edge_table',
-    false
-);
-
-PREPARE q4 AS
-SELECT * FROM pgr_floydWarshall(
-    'SELECT source, target, cost, reverse_cost FROM edge_table',
+    'SELECT source, target, cost FROM edge_table',
     true
 );
 
 
-SELECT lives_ok('q1', 'edges query accepts ANY-INTEGER & ANY NUMERICAL');
-SELECT lives_ok('q2', 'without id it works');
-SELECT lives_ok('q3', 'directed flag works ok with false');
-SELECT lives_ok('q4', 'directed flag works ok with true');
+SELECT lives_ok('q1', 'SHOULD WORK: without flag & with id');
+SELECT lives_ok('q2', 'SHOULD WORK: without flag');
+SELECT lives_ok('q3', 'SHOULD WORK: with flag');
 
 
-PREPARE q10 AS
-SELECT * FROM pgr_floydWarshall(
-    'SELECT id::FLOAT, source, target, cost, reverse_cost FROM edge_table',
-    true);
+-- CHECKING THE RETURN TYPES
+PREPARE v21q00 AS
+SELECT pg_typeof(start_vid)::text AS t1,
+    pg_typeof(end_vid)::text AS t2,
+    pg_typeof(agg_cost)::TEXT AS t3
+FROM (
+    SELECT * FROM pgr_floydWarshall(
+        'SELECT id, source, target, cost, reverse_cost FROM edge_table'
+    ))  AS a
+LIMIT 1
+;
 
-PREPARE q11 AS
-SELECT * FROM pgr_floydWarshall(
-    'SELECT id::REAL, source, target, cost, reverse_cost FROM edge_table',
-    true);
+PREPARE v21q01 AS
+SELECT  'bigint'::text AS t1,
+        'bigint'::text AS t2,
+        'double precision'::text AS t3;
 
-SELECT throws_ok('q10', 'XX000', 'Unexpected Column ''id'' type. Expected ANY-INTEGER',
-    'Throws because id is FLOAT');
-SELECT throws_ok('q11', 'XX000', 'Unexpected Column ''id'' type. Expected ANY-INTEGER',
-    'Throws because id is REAL');
-
-PREPARE q12 AS
-SELECT * FROM pgr_floydWarshall(
-    'SELECT id, source::FLOAT, target, cost, reverse_cost FROM edge_table',
-    true);
-
-PREPARE q13 AS
-SELECT * FROM pgr_floydWarshall(
-    'SELECT id, source::REAL, target, cost, reverse_cost FROM edge_table',
-    true);
-
-SELECT throws_ok('q12', 'XX000', 'Unexpected Column ''source'' type. Expected ANY-INTEGER',
-    'Throws because source is FLOAT');
-SELECT throws_ok('q13', 'XX000', 'Unexpected Column ''source'' type. Expected ANY-INTEGER',
-    'Throws because source is REAL');
-
-PREPARE q14 AS
-SELECT * FROM pgr_floydWarshall(
-    'SELECT id, source, target::FLOAT, cost, reverse_cost FROM edge_table',
-    true);
-
-PREPARE q15 AS
-SELECT * FROM pgr_floydWarshall(
-    'SELECT id, source, target::REAL, cost, reverse_cost FROM edge_table',
-    true);
-
-SELECT throws_ok('q14', 'XX000', 'Unexpected Column ''target'' type. Expected ANY-INTEGER',
-    'Throws because source is FLOAT');
-SELECT throws_ok('q15', 'XX000', 'Unexpected Column ''target'' type. Expected ANY-INTEGER',
-    'Throws because source is REAL');
-
+SELECT set_eq('v21q00', 'v21q01','Expected columns names & types');
 
 
 

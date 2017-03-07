@@ -12,11 +12,12 @@
 pgr_vidsToDMatrix - Deprecated Function
 ==============================================================================
 
-.. warning:: This function is deprecated!!!
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * Is no longer supported.
-    * May be removed from future versions.
-    * There is no replacement.
+.. rubric:: No replacement
+
 
 Name
 ------------------------------------------------------------------------------
@@ -41,7 +42,7 @@ The function returns:
 Description
 -----------------------------------------------------------------------------
 
-.. rubric:: Paramters
+.. rubric:: Parameters
 
 :sql: ``text`` - A SQL statement to select the edges needed for the solution.
 :vids: ``integer[]`` - An array of ``vertex_id``.
@@ -51,7 +52,7 @@ Description
 
 .. warning::
 
-    * kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than the cost might get set to -1.0, so the dmatrix shoule be checked for this as it makes it invalid for TSP
+    * kdijkstra() can fail to find a path between some of the vertex ids. We to not detect this other than the cost might get set to -1.0, so the dmatrix should be checked for this as it makes it invalid for TSP
 
 
 

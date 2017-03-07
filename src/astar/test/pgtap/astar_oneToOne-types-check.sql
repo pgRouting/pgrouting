@@ -23,16 +23,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 \i setup.sql
 
-SELECT plan(93);
+SELECT plan(99);
 SET client_min_messages TO ERROR;
 
 
 SELECT has_function('pgr_astar',
+    ARRAY['text', 'anyarray', 'bigint', 'boolean',
+        'integer', 'numeric', 'numeric']);
+SELECT function_returns('pgr_astar',
+    ARRAY['text', 'anyarray', 'bigint', 'boolean',
+        'integer', 'numeric', 'numeric'],
+    'setof record');
+
+SELECT has_function('pgr_astar',
+    ARRAY['text', 'bigint', 'anyarray', 'boolean',
+        'integer', 'numeric', 'numeric']);
+SELECT function_returns('pgr_astar',
+    ARRAY['text', 'bigint', 'anyarray', 'boolean',
+        'integer', 'numeric', 'numeric'],
+    'setof record');
+
+SELECT has_function('pgr_astar',
+    ARRAY['text', 'anyarray', 'anyarray', 'boolean',
+        'integer', 'numeric', 'numeric']);
+SELECT function_returns('pgr_astar',
+    ARRAY['text', 'anyarray', 'anyarray', 'boolean',
+        'integer', 'numeric', 'numeric'],
+    'setof record');
+
+SELECT has_function('pgr_astar',
     ARRAY['text', 'bigint', 'bigint', 'boolean',
-        'integer', 'double precision', 'double precision']);
+        'integer', 'numeric', 'numeric']);
 SELECT function_returns('pgr_astar',
     ARRAY['text', 'bigint', 'bigint', 'boolean',
-        'integer', 'double precision', 'double precision'],
+        'integer', 'numeric', 'numeric'],
     'setof record');
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 

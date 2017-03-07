@@ -27,7 +27,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real work navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -87,7 +87,7 @@ The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>
 
 	:to_cost: ``float8`` turn restriction cost
 	:target_id: ``int4`` target id
-	:via_path: ``text`` commar seperated list of edges in the reverse order of ``rule``
+	:via_path: ``text`` comma separated list of edges in the reverse order of ``rule``
 
 Another variant of TRSP allows to specify **EDGE id** of source and target together with a fraction to interpolate the position:
 
@@ -142,7 +142,7 @@ We also have support for vias where you can say generate a from A to B to C, etc
 
 	:to_cost: ``float8`` turn restriction cost
 	:target_id: ``int4`` target id
-	:via_path: ``text`` commar seperated list of edges in the reverse order of ``rule``
+	:via_path: ``text`` commar separated list of edges in the reverse order of ``rule``
 
 Another variant of TRSP allows to specify **EDGE id** together with a fraction to interpolate the position:
 

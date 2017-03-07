@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 -- q1
 SELECT * FROM pgr_johnson(
     'SELECT source, target, cost FROM edge_table WHERE id < 5
@@ -26,3 +30,6 @@ SELECT * FROM pgr_johnson(
          5 |       2 |        1
 (6 rows)
 
+-- q3
+ROLLBACK;
+ROLLBACK

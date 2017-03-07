@@ -124,8 +124,6 @@ pgTap & pg_prove & perl for tests
 
 .. warning:: cmake does not test for this packages.
 
-Installing the tests dependencies:
-
 .. code-block:: none
 
     sudo apt-get install -y perl

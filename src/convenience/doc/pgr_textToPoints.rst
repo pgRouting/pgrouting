@@ -12,11 +12,12 @@
 pgr_textToPoints - Deprecated Function
 ==============================================================================
 
-.. warning:: This function is deprecated!!!
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * Is no longer supported.
-    * May be removed from future versions.
-    * There is no replacement.
+.. rubric:: No replacement
+
 
 Name
 ------------------------------------------------------------------------------
@@ -40,7 +41,7 @@ The function returns:
 Description
 -----------------------------------------------------------------------------
 
-.. rubric:: Paramters
+.. rubric:: Parameters
 
 :pnts: ``text`` A text string of the format "x,y;x,y;x,y;..." where x is longitude and y is latitude if use values in lat-lon.
 :srid: ``integer`` The SRID to use when constructing the point geometry. If the paratmeter is absent it defaults to ``SRID:4326``.

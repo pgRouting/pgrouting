@@ -26,6 +26,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
+#ifndef SRC_ALLPAIRS_SRC_JOHNSON_DRIVER_H_
+#define SRC_ALLPAIRS_SRC_JOHNSON_DRIVER_H_
 
 #pragma once
 
@@ -49,3 +51,5 @@ do_pgr_johnson(
 #ifdef __cplusplus
 }
 #endif
+
+#endif  // SRC_ALLPAIRS_SRC_JOHNSON_DRIVER_H_

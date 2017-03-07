@@ -27,25 +27,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
-
+#include "./floydWarshall_driver.h"
 
 #include <sstream>
 #include <deque>
 #include <vector>
-#include "./pgr_allpairs.hpp"
-#include "./floydWarshall_driver.h"
-#include "./../../common/src/pgr_assert.h"
 
-extern "C" {
+#include "./pgr_allpairs.hpp"
+
+#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
-}
 
 
 void
@@ -72,14 +63,14 @@ do_pgr_floydWarshall(
 
         if (directedFlag) {
             log << "Processing Directed graph\n";
-            pgRouting::DirectedGraph digraph(gType);
-            digraph.graph_insert_data(data_edges, total_tuples);
+            pgrouting::DirectedGraph digraph(gType);
+            digraph.insert_edges(data_edges, total_tuples);
             log << digraph;
             pgr_floydWarshall(digraph, *return_count, return_tuples);
         } else {
             log << "Processing Undirected graph\n";
-            pgRouting::UndirectedGraph undigraph(gType);
-            undigraph.graph_insert_data(data_edges, total_tuples);
+            pgrouting::UndirectedGraph undigraph(gType);
+            undigraph.insert_edges(data_edges, total_tuples);
             log << undigraph;
             pgr_floydWarshall(undigraph, *return_count, return_tuples);
         }
@@ -95,16 +86,15 @@ do_pgr_floydWarshall(
 
         *log_msg = strdup(log.str().c_str());
         return;
-
-    } catch (AssertFailedException &exept) {
+    } catch (AssertFailedException &except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
-    } catch (std::exception& exept) {
+    } catch (std::exception& except) {
         if (*return_tuples) free(*return_tuples);
         (*return_count) = 0;
-        log << exept.what() << "\n";
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
     } catch(...) {
         if (*return_tuples) free(*return_tuples);

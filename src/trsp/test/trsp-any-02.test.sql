@@ -1,4 +1,3 @@
-BEGIN;
 
 CREATE TABLE restrictions2 (
     rid integer NOT NULL,
@@ -17,7 +16,7 @@ COPY restrictions2 (rid, to_cost, teid, feid, via) FROM stdin WITH NULL '__NULL_
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
 select * from pgr_trsp(
-    'select id, source::integer, target::integer,cost, reverse_cost from edge_table ORDER BY ID',
+    'select id::integer, source::integer, target::integer,cost, reverse_cost from edge_table ORDER BY ID',
     1,    -- edge_id for start
     0.5,  -- midpoint of edge
     6,    -- edge_id of route end
@@ -27,4 +26,3 @@ select * from pgr_trsp(
     -- include the turn restrictions
     'select to_cost, teid as target_id, feid||coalesce('',''||via,'''') as via_path from restrictions2');
 
-ROLLBACK;

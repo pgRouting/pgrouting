@@ -18,10 +18,11 @@ Name
 
 ``pgr_withPointsVia`` - Get a path using the vertices/points indicated
 
-.. note::  This is a proposed function.
 
-     - Is not officially in the current release.
-     - Documentation needs to be improved
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 
 
 .. figure:: introduction/images/boost-inside.jpeg
@@ -101,8 +102,14 @@ Description of the Signatures
 ..
     description of the sql queries
 
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-.. include:: withPoints_parameters.txt 
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: points_sql_start
+    :end-before: points_sql_end
+
 
 
 Description of the parameters of the signatures
@@ -112,8 +119,8 @@ Description of the parameters of the signatures
 ================ ================= =================================================
 Parameter        Type              Description
 ================ ================= =================================================
-**edges_sql**    ``TEXT``          Edges SQL query as decribed above.
-**points_sql**   ``TEXT``          Points SQL query as decribed above.
+**edges_sql**    ``TEXT``          Edges SQL query as described above.
+**points_sql**   ``TEXT``          Points SQL query as described above.
 **start_pid**    ``ANY-INTEGER``   Starting point id.
 **distance**     ``ANY_NUMERICAL`` Distance from the start_pid
 **directed**     ``BOOLEAN``       (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.

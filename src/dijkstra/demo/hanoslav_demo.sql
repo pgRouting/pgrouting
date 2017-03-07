@@ -78,7 +78,7 @@ INSERT INTO table1 (source, target, cost) VALUES (11, 12, 2145);
 
 SET client_min_messages TO NOTICE;
 
--- Their output starts with 0 so we substract 1 to the vid
+-- Their output starts with 0 so we subtract 1 to the vid
 -- pgrouting: no paths or 0 length (aka I am there, so no path) are not included
 SELECT  name, cost, agg_cost  FROM pgr_dijkstra(
     'SELECT id, source, target, cost FROM table1',

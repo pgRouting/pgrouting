@@ -22,6 +22,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#ifndef SRC_PICKDELIVER_SRC_SOLUTION_H_
+#define SRC_PICKDELIVER_SRC_SOLUTION_H_
 #pragma once
 
 #include <deque>
@@ -30,68 +33,57 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <vector>
 
 #include "./vehicle_pickDeliver.h"
-#include "./order.h"
+#include "./fleet.h"
+#include "./pgr_messages.h"
+#include "./pd_problem.h"
 
-namespace pgRouting {
+namespace pgrouting {
 namespace vrp {
 
 
-class Pgr_pckDeliver;
-class Optimize;
-
-class Solution {
+class Solution : public Pgr_messages, public PD_problem {
     friend class Optimize;
  protected:
      double EPSILON;
      std::deque<Vehicle_pickDeliver> fleet;
 
      /* this solution belongs to this problem*/
-     const Pgr_pickDeliver *problem;
-
+     Fleet trucks;
 
  public:
-     void get_postgres_result(
-             std::vector< General_vehicle_orders_t > &result) const;
+     std::vector<General_vehicle_orders_t>
+         get_postgres_result() const;
 
 
      /* @brief constructor
       *
-      * @params [in] p_problem \t pointer to problem
-      *
       */
-     explicit Solution(const Pgr_pickDeliver *p_problem) :
-         EPSILON(0.0001),
-         problem(p_problem)
-    {};
+     Solution();
 
 
+#if 0
      /* @brief move constructor */
-     Solution(const Solution && sol) :
-         EPSILON(0.0001),
-         fleet(std::move(sol.fleet)),
-         problem(std::move(sol.problem))
-         {};
+     Solution(Solution &&sol) = default;
+#endif
 
      /* @brief copy constructor */
      Solution(const Solution &sol) :
+         Pgr_messages(),
+         PD_problem(),
          EPSILON(0.0001),
          fleet(sol.fleet),
-         problem(sol.problem)
+         trucks(sol.trucks)
     {};
 
-     /* @brief move assigment */
-     Solution& operator = (const Solution && sol) {
-         EPSILON = 0.0001,
-         fleet = sol.fleet;
-         return *this;
-     };
-
-     /* @brief copy assigment */
+     /* @brief copy assignment */
      Solution& operator = (const Solution& sol) {
          EPSILON = 0.0001,
          fleet = sol.fleet;
+         trucks = sol.trucks;
          return *this;
      };
+
+     void sort_by_id();
 
      std::string cost_str() const;
      std::string tau(const std::string &title = "Tau") const;
@@ -122,4 +114,6 @@ class Solution {
 
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_SOLUTION_H_

@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_ALLPAIRS_SRC_FLOYDWARSHALL_DRIVER_H_
 #define SRC_ALLPAIRS_SRC_FLOYDWARSHALL_DRIVER_H_
+#pragma once
 
 #include "./../../common/src/pgr_types.h"
 
@@ -46,7 +47,7 @@ do_pgr_floydWarshall(
     Matrix_cell_t **ret_matrix,
     size_t *return_tuple_count,
     char ** log_msg,
-    char ** err_msg); 
+    char ** err_msg);
 
 #ifdef __cplusplus
 }

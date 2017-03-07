@@ -27,23 +27,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
+#include "./testXYedges_driver.h"
 
 #include <sstream>
 #include <iomanip>
 #include <vector>
-#include "./testXYedges_driver.h"
 
-#define DEBUG
-
-#include "./../../common/src/pgr_types.h"
-#include "./../../dijkstra/src/pgr_dijkstra.hpp"
 #include "./../../common/src/pgr_base_graph.hpp"
+#include "./../../dijkstra/src/pgr_dijkstra.hpp"
+
 #include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_types.h"
 
 /************************************************************
   edges_sql TEXT
@@ -53,7 +47,7 @@ do_pgr_testXYedges(
         Pgr_edge_xy_t *data_edges,
         size_t total_edges,
         char ** log_msg,
-        char ** err_msg){
+        char ** err_msg) {
     std::ostringstream log;
     std::ostringstream err;
     try {
@@ -61,12 +55,12 @@ do_pgr_testXYedges(
         pgassert(!(*err_msg));
 
         std::vector< Pgr_edge_xy_t > edges(data_edges, data_edges + total_edges);
-        auto vertices(pgRouting::extract_vertices(edges));
+        auto vertices(pgrouting::extract_vertices(edges));
 
 
         log << "Original: \n" <<
             std::setprecision(32);
-        for (const auto edge: edges) {
+        for (const auto edge : edges) {
             log << "id = " << edge.id
                 << "\tsource = " << edge.source
                 << "\ttarget = " << edge.target
@@ -78,138 +72,119 @@ do_pgr_testXYedges(
 
         {
             log << "Testing Directed ,  insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(DIRECTED);
+            pgrouting::xyDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(edges);
+            graph.insert_edges(edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
-
+            pgr_dijkstra(graph, 2, 3, true);
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(DIRECTED);
+            pgrouting::xyDirectedGraph graph(DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(data_edges, total_edges);
+            graph.insert_edges(data_edges, total_edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
-
+            pgr_dijkstra(graph, 2, 3, true);
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using vector\n";
-            pgRouting::xyDirectedGraph graph(vertices, DIRECTED);
+            pgrouting::xyDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(edges);
+            graph.insert_edges(edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
-
+            pgr_dijkstra(graph, 2, 3, true);
         }
         {
             log << "Testing Directed ,  creating with vertices, insertion using C array\n";
-            pgRouting::xyDirectedGraph graph(vertices, DIRECTED);
+            pgrouting::xyDirectedGraph graph(vertices, DIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(data_edges, total_edges);
+            graph.insert_edges(data_edges, total_edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
-
+            pgr_dijkstra(graph, 2, 3, true);
         }
 
         {
             log << "Testing Undirected ,  insertion using vector\n";
-            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
+            pgrouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(edges);
+            graph.insert_edges(edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
-
+            pgr_dijkstra(graph, 2, 3, true);
         }
         {
             log << "Testing Directed ,  insertion using C array\n";
-            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
+            pgrouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(data_edges, total_edges);
+            graph.insert_edges(data_edges, total_edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
-
+            pgr_dijkstra(graph, 2, 3, true);
         }
         {
             log << "Testing Undirected ,  insertion using C array\n";
-            pgRouting::xyUndirectedGraph graph(UNDIRECTED);
+            pgrouting::xyUndirectedGraph graph(UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(data_edges, total_edges);
+            graph.insert_edges(data_edges, total_edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
-
+            pgr_dijkstra(graph, 2, 3, true);
         }
         {
             log << "Testing Undirected ,  creating with vertices, insertion using vector\n";
-            pgRouting::xyUndirectedGraph graph(vertices, UNDIRECTED);
+            pgrouting::xyUndirectedGraph graph(vertices, UNDIRECTED);
             log << "  - Created graph:\n";
             log << graph;
 
             log << "  - Inserting Edges:\n";
-            graph.graph_insert_data(edges);
+            graph.insert_edges(edges);
             log << graph;
 
             log << "  - Can do a dijKstra:\n";
-            Path path;
-            pgr_dijkstra(graph, path, 2, 3, true);
-
+            pgr_dijkstra(graph, 2, 3, true);
         }
-
-
 
         *err_msg = NULL;
         *log_msg = strdup(log.str().c_str());
         return true;
-
-    } catch (AssertFailedException &exept) {
-        log << exept.what() << "\n";
+    } catch (AssertFailedException &except) {
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
         return false;
-    } catch (std::exception& exept) {
-        log << exept.what() << "\n";
+    } catch (std::exception& except) {
+        log << except.what() << "\n";
         *err_msg = strdup(log.str().c_str());
         return false;
     } catch(...) {
