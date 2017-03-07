@@ -31,8 +31,8 @@ The following algorithms are based on :code:`pgr_aStar`
 .. toctree::
     :hidden:
 
-    ./pgr_aStarCost
-    ./../../costMatrix/doc/pgr_aStarCostMatrix
+    pgr_aStarCost
+    pgr_aStarCostMatrix
 
 
 The problem definition (Advanced documentation)

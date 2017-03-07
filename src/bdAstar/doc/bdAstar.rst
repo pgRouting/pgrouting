@@ -19,9 +19,9 @@ Bidirectional A* - Family of functions
 .. toctree::
     :hidden:
 
-    ./pgr_bdAstar
-    ./pgr_bdAstarCost
-    ./../../costMatrix/doc/pgr_bdAstarCostMatrix
+    pgr_bdAstar
+    pgr_bdAstarCost
+    pgr_bdAstarCostMatrix
 
 
 

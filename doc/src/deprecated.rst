@@ -34,7 +34,17 @@ Routing functions
 .. toctree::
    :hidden:
 
-   ../src/bd_astar/doc/pgr_bdAstar-v2
+   pgr_bdAstar-v2
+
+Auxiliary functions
+...................
+
+- :ref:`pgr_point_to_edgenode:`
+
+.. toctree::
+   :hidden:
+
+   pgr_pointToEdgeNode
 
 Deprecated on version 2.4
 ----------------------------
@@ -52,8 +62,8 @@ Auxiliary functions
 .. toctree::
    :hidden:
 
-   ../src/bd_dijkstra/doc/pgr_bdDijkstra-v2
-   ../src/convenience/doc/pgr_pointsToVids
+   pgr_bdDijkstra-v2
+   pgr_pointsToVids
 
 Deprecated on version 2.3
 ----------------------------
@@ -78,7 +88,7 @@ Auxiliary functions
 .. toctree::
    :hidden:
 
-   pgr_astar_v2
+   pgr_astar-v2
    pgr_tsp-V2.0
    pgr_flipEdges
    pgr_vidsToDMatrix
@@ -136,14 +146,14 @@ Auxiliary functions
    pgr_dijkstra_v2
    pgr_ksp_v2
    pgr_drivingDistance_v2
-   utilities/get_column_name
-   utilities/get_table_name
-   utilities/is_column_indexed
-   utilities/is_column_in_table
-   utilities/quote_ident
-   utilities/versionless
-   utilities/start_point
-   utilities/end_point
-   utilities/point_to_id
+   get_column_name
+   get_table_name
+   is_column_indexed
+   is_column_in_table
+   quote_ident
+   versionless
+   start_point
+   end_point
+   point_to_id
 
 

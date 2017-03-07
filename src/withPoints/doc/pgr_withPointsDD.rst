@@ -19,7 +19,7 @@ Name
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 

@@ -226,7 +226,7 @@ Description of the Signatures
 ..
     description of the edges_sql queries
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: tutorial/custom_query.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 

@@ -19,7 +19,7 @@ Name
 ``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 

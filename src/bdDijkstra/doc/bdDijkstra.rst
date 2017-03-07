@@ -21,7 +21,7 @@ Bidirectional Dijkstra - Family of functions
 
     ./pgr_bdDijkstra
     ./pgr_bdDijkstraCost
-    ./../../costMatrix/doc/pgr_bdDijkstraCostMatrix
+    ./pgr_bdDijkstraCostMatrix
 
 
 
