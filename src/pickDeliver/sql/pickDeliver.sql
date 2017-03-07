@@ -101,7 +101,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean(
     OUT seq INTEGER,
     OUT vehicle_number INTEGER,
     OUT vehicle_id BIGINT,
-    OUT vehicle_seq INTEGER,
+    OUT stop INTEGER,
     OUT order_id BIGINT,
     OUT stop_type INT,
     OUT cargo FLOAT,

@@ -23,16 +23,9 @@ Name
 
 ``_pgr_pickDeliver`` - Pickup and delivery Vehicle Routing Problem
 
-.. warning::  This is developers function.
-
-   - Is not officially in the current release
-   - Functionality currently is incomplete
-   - Final name currently is undecided
-   - Signature can and will change without notice.
-   - Please use :ref:`pgr_gsocvrppdtw` for a non changing Signature between releases
-   - It has the underscore until final functionality and name are decided
-
-
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 

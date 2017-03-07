@@ -44,11 +44,11 @@ void fetch_vehicles(
     vehicle->start_x = pgr_SPI_getFloat8(tuple, tupdesc, info[2]);
     vehicle->start_y = pgr_SPI_getFloat8(tuple, tupdesc, info[3]);
 
-    vehicle->cant_v =  column_found(info[4].colNumber) ?
-        pgr_SPI_getBigInt(tuple, tupdesc, info[4]) :
-        1;
     vehicle->speed = column_found(info[13].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[13]) :
+        1;
+    vehicle->cant_v =  column_found(info[4].colNumber) ?
+        pgr_SPI_getBigInt(tuple, tupdesc, info[4]) :
         1;
     vehicle->start_open_t = column_found(info[5].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[5]) :
@@ -102,9 +102,9 @@ pgr_get_vehicles(
     info[0].name = strdup("id");
     info[1].name = strdup("capacity");
     info[13].name = strdup("speed");
+    info[4].name = strdup("number");
     info[2].name = strdup("start_x");
     info[3].name = strdup("start_y");
-    info[4].name = strdup("number");
     info[5].name = strdup("start_open");
     info[6].name = strdup("start_close");
     info[7].name = strdup("start_service");

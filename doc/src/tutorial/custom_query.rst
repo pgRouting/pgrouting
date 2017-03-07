@@ -172,14 +172,14 @@ Column              Type                  Default          Description
 =================== ===================   ================ =================================================
 **id**              ``ANY-INTEGER``                        Identifier of the order.
 **demand**          ``ANY-NUMERICAL``                      How much is added / removed from the vehicle. ::math::`Demand > 0`
-                                
 **pick_x**          ``ANY-NUMERICAL``                      ``X`` coordinate of the pickup location.
 **pick_y**          ``ANY-NUMERICAL``                      ``Y`` coordinate of the pickup location.
+**deliver_x**       ``ANY-NUMERICAL``                      ``X`` coordinate of the delivery location.
+**deliver_y**       ``ANY-NUMERICAL``                      ``Y`` coordinate of the delivery location.
+
 **pick_opens**      ``ANY-NUMERICAL``     0                The time relative to 0, when the pickup location opens.
 **pick_closes**     ``ANY-NUMERICAL``     :math:`\infty`   The time relative to 0, when the pickup location closes.
 **pick_service**    ``ANY-NUMERICAL``     0                The duration of the pickup service.
-**deliver_x**       ``ANY-NUMERICAL``                      ``X`` coordinate of the delivery location.
-**deliver_y**       ``ANY-NUMERICAL``                      ``Y`` coordinate of the delivery location.
 **deliver_opens**   ``ANY-NUMERICAL``     pick_opens       The time relative to 0, when the delivery location opens.
 **deliver_closes**  ``ANY-NUMERICAL``     pick_closes      The time relative to 0, when the delivery location closes.
 **deliver_service** ``ANY-NUMERICAL``     pick_service     The duration of the delivery service.
@@ -196,26 +196,29 @@ Where:
 .. pd_vehicle_sql_start
 
 
-Description of the orders SQL query for pickDeliveryEucledian
+Description of the Vehicles SQL query for pickDeliveryEucledian
 ...............................................................................
 
-=================== ===================   ==============  =================================================
+=================== ===================   =============== =================================================
 Column              Type                  Default         Description
-=================== ===================   ==============  =================================================
+=================== ===================   =============== =================================================
 **id**               ``ANY-INTEGER``                      Identifier of the order.
-**capacity**         ``ANY-NUMERICAL``                    How much is added / removed from the vehicle. ::math::`Demand > 0`
-**speed**            ``ANY-NUMERICAL``                    How much is added / removed from the vehicle. ::math::`Demand > 0`
-**start_x**          ``ANY-NUMERICAL``                    ``X`` coordinate of the pickup location.
-**start_y**          ``ANY-NUMERICAL``                    ``Y`` coordinate of the pickup location.
-**start_opens**      ``ANY-NUMERICAL``                    The time relative to 0, when the pickup location opens.
-**start_closes**     ``ANY-NUMERICAL``                    The time relative to 0, when the pickup location closes.
-**start_service**    ``ANY-NUMERICAL``                    The duration of the pickup service.
+**capacity**         ``ANY-NUMERICAL``                    Capacity of the vehicle.
+**start_x**          ``ANY-NUMERICAL``                    ``X`` coordinate of the starting location.
+**start_y**          ``ANY-NUMERICAL``                    ``Y`` coordinate of the ending location.
+
+**speed**            ``ANY-NUMERICAL``     1              Speed of the vehicle
+**number**           ``ANY-NUMERICAL``     1              Number of vehicles.
+**start_opens**      ``ANY-NUMERICAL``     0              The time relative to 0, when the pickup location opens.
+**start_closes**     ``ANY-NUMERICAL``     :math:`\infty` The time relative to 0, when the pickup location closes.
+**start_service**    ``ANY-NUMERICAL``     0              The duration of the pickup service.
+
 **end_x**            ``ANY-NUMERICAL``     start_x        ``X`` coordinate of the delivery location.
 **end_y**            ``ANY-NUMERICAL``     start_y        ``Y`` coordinate of the delivery location.
 **end_opens**        ``ANY-NUMERICAL``     start_opens    The time relative to 0, when the delivery location opens.
 **end_closes**       ``ANY-NUMERICAL``     start_closes   The time relative to 0, when the delivery location closes.
 **end_service**      ``ANY-NUMERICAL``     start_service  The duration of the delivery service.
-=================== ===================   ==============  =================================================
+=================== ===================   =============== =================================================
 
 
 Where:
@@ -270,3 +273,67 @@ Column         Type       Description
 ============== ========== =================================================
 
 .. return_cost_end
+
+.. return_vrp_start
+
+Description of the Vehicle Routing Problem functions
+...............................................................................
+
+Returns set of ``(seq, vehicle_number, vehicle_id, stop, order_id, stop_type, cargo, travel_time, arrival_time, wait_time, service_time, departure_time)``
+
+=================== ============= =================================================
+Column              Type            Description
+=================== ============= =================================================
+**seq**              ``INTEGER``    Sequential value starting from **1**.
+**vehicle_number**   ``INTEGER``    Sequential numbering of the vehicles.
+
+                                      * Starting from **1** for the beginning of a path.
+                                      * ``-2`` is used to indicate the row is a **summary**
+
+**vehicle_id**       ``BIGINT``     Relative position in the path. Has value **1** for the beginning of a path.
+
+                                      * ``-1`` is used to indicate the vehicle is "made up"
+                                      * Holds the number of times there is a time windows violation when the row is a **summary**
+
+**stop**             ``INTEGER``    Stop number of the vehicle. Has value **1** for the beginning of the trip.
+
+                                      * Holds the number of times there is a capacity violation when the row is a **summary**
+
+**order_id**         ``BIGINT``     Order identifier that is attended on the current ``stop``.
+
+                                      * ``-1`` when its the `starting site` or the `ending site`
+
+**stop_type**        ``INTEGER``    Identifier of the ending vertex. Used when multiple ending vertices are in the query.
+
+                                      * ``1`` when its the `starting` location
+                                      * ``2`` when its a `pickup` location
+                                      * ``3`` when its an `deliver` location
+                                      * ``5`` when its the `ending` location
+
+**cargo**            ``FLOAT``      Cargo of the vehicle before departing from the ``stop``.
+
+**travel_time**      ``FLOAT``      Travel time from the previous ``vehicle_seq`` to the current. ``0`` for the first stop of the vehicle.
+
+                                      * ``departure time`` of the previous ``stop`` plus the ``travel_time``
+                                      * Holds the total travel_time when the row is a **summary**
+
+**wait_time**        ``FLOAT``      Waiting time at the ``stop``.
+
+                                      * ``0`` when the vehicle arrives within the ``stop``'s time window.
+                                      * ``> 0`` when the vehicle arrives before the ``stop`` opens.
+                                      * Holds the total waiting_time when the row is a **summary**
+
+**service_time**     ``FLOAT``      Service time at the ``stop``.
+
+                                      * Holds the total service_time when the row is a **summary**
+
+**departure_time**   ``FLOAT``      Time at which the vehicle departs
+
+                                      * ``departure time`` of the previous ``stop`` plus the ``travel_time`` plus the ``wait_time`` plus the ``service_time``.
+                                      * Holds the total duration time when the row is a **summary**
+
+=================== ============= =================================================
+
+
+
+.. return_vrp_end
