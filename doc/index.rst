@@ -40,7 +40,7 @@ General
 Tutorial
 *******************************************************************************
 
-:ref:`Tutorial <tutorial1>`
+:ref:`Tutorial <tutorial>`
 
   - :ref:`Getting started <tutorial>`
   - :ref:`topology` for an overview of a topology for routing algorithms.
