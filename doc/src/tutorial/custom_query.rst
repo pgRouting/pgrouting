@@ -314,8 +314,11 @@ Column              Type            Description
 
 **travel_time**      ``FLOAT``      Travel time from the previous ``vehicle_seq`` to the current. ``0`` for the first stop of the vehicle.
 
-                                      * ``departure time`` of the previous ``stop`` plus the ``travel_time``
                                       * Holds the total travel_time when the row is a **summary**
+
+**arrival_time**     ``FLOAT``      Time of arrival.
+
+                                      * ``departure time`` of the previous ``stop`` plus the ``travel_time``
 
 **wait_time**        ``FLOAT``      Waiting time at the ``stop``.
 
@@ -329,7 +332,7 @@ Column              Type            Description
 
 **departure_time**   ``FLOAT``      Time at which the vehicle departs
 
-                                      * ``departure time`` of the previous ``stop`` plus the ``travel_time`` plus the ``wait_time`` plus the ``service_time``.
+                                      * ``arrival_time`` of the ``stop`` plus the ``wait_time`` plus the ``service_time``.
                                       * Holds the total duration time when the row is a **summary**
 
 =================== ============= =================================================
