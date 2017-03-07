@@ -34,7 +34,7 @@ Table of contents
 
 .. _changelog_2_5_0:
 
-Changes for 2.5.0
+pgRouting 2.5.0 Release Notes
 -------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
