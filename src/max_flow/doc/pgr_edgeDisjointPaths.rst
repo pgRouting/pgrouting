@@ -23,7 +23,7 @@ Name
    :end-before: end-warning
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside

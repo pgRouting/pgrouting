@@ -24,7 +24,7 @@ Name
    :end-before: end-warning
 
 
-.. figure:: introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
 
    Boost Graph Inside

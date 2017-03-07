@@ -31,7 +31,7 @@ Name
 
 
 
-.. figure:: introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
@@ -166,7 +166,7 @@ Description of the Signatures
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
-.. include:: ../sql/max_flow.sql
+.. include:: ../sql_queries/max_flow.sql
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 

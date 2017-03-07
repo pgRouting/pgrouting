@@ -21,7 +21,7 @@ Synopsis
 Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
 aggregate cost of the shortest path(s) found, for the combination of vertices given.
 
-.. figure:: introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside

@@ -16,7 +16,7 @@ The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a h
 
   - :ref:`pgr_aStar` - A* algorithm for the shortest path.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/astar_search.html
 
    Boost Graph Inside

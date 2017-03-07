@@ -20,7 +20,7 @@ Name
 a list of vertices.
 
 
-.. figure:: introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside

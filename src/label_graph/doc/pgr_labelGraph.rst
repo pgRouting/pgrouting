@@ -19,7 +19,7 @@ Name
 
 ``pgr_labelGraph`` — Locates and labels sub-networks within a network which are not topologically connected.
 
-.. include:: ../../proposed.rst
+.. include:: proposed.rst
     :start-after: begin-warning
     :end-before: end-warning
 

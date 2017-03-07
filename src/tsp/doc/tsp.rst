@@ -18,8 +18,8 @@ Traveling Sales Person
 .. toctree::
     :hidden:
 
-    ./pgr_tsp
-    ./pgr_eucledianTSP
+    pgr_tsp
+    pgr_eucledianTSP
 
 .. NOTE:: These signatures are being deprecated
 
