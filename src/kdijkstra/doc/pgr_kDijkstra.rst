@@ -13,10 +13,9 @@
 pgr_kDijkstra - Deprecated Functions
 ===============================================================================
 
-.. warning:: These functions are deprecated!!!
-
-    * It has been replaced by a new functions, are no longer supported, and may be removed from future versions.
-    * All code that uses the functions should be converted to use its replacement.
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
 
 Name
@@ -24,11 +23,11 @@ Name
 
 * ``pgr_kdijkstraCost`` - Returns the costs for K shortest paths using Dijkstra algorithm.
 
-.. warning:: Use :ref:`pgr_dijkstraCost` (One To Many) instead.
+.. rubric:: Replacement :ref:`pgr_dijkstraCost` (One To Many)
 
 * ``pgr_kdijkstraPath`` - Returns the paths for K shortest paths using Dijkstra algorithm.
 
-.. warning:: Use :ref:`pgr_dijkstra` (One To Many) instead.
+.. rubric:: Use :ref:`pgr_dijkstra` (One To Many)
 
 
 Synopsis

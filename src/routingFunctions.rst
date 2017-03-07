@@ -60,6 +60,6 @@ Routing Functions
     ../src/dijkstra/doc/dijkstra
     ../src/driving_distance/doc/drivingDistance
     ../src/ksp/doc/pgr_ksp
-    ../src/tsp/doc/tsp
     ../src/trsp/doc/pgr_trsp
+    ../src/tsp/doc/tsp
 

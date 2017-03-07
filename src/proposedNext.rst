@@ -67,6 +67,9 @@ Stable proposed Functions
 
   - :ref:`astar`
 
+    - :ref:`pgr_aStarCost` - Costs of the shortest paths.
+    - :ref:`pgr_aStarCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+
 - A new Section
 
   - :ref:`bdAstar`
