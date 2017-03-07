@@ -9,6 +9,7 @@ SELECT function_returns('_pgr_pickdelivereuclidean', ARRAY['text','text', 'integ
 PREPARE expected_types AS
 SELECT
 'integer'::text AS t1,
+'integer'::text AS ta1,
 'bigint'::text AS t2,
 'integer'::text AS t3,
 'bigint'::text AS t4,
@@ -28,8 +29,9 @@ SELECT * INTO pickDeliverResults FROM _pgr_pickdeliverEuclidean(
 
 PREPARE real_types AS
 SELECT pg_typeof(seq)::text AS t1,
+pg_typeof(vehicle_number)::text AS ta1,
 pg_typeof(vehicle_id)::text AS t2,
-pg_typeof(vehicle_seq)::text AS t3,
+pg_typeof(stop)::text AS t3,
 pg_typeof(order_id)::text AS t4,
 pg_typeof(stop_type)::text AS t5,
 pg_typeof(cargo)::text AS t6,
