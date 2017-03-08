@@ -127,14 +127,12 @@ Topology functions
 Routing Functions
 *******************************************************************************
 
-..
-    ROUTING FUNCTIONS SECTION
-    :hidden:
-    :maxdepth: 0
-    
 .. toctree::
+    :hidden:
 
     ../src/routingFunctions
+
+:ref:`routing_functions`
 
 .. include:: ../src/routingFunctions.rst
    :start-after: from-here
