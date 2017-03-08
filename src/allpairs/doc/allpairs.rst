@@ -20,7 +20,6 @@ The following functions work an all vertices pair combinations
 
      
 .. toctree::
-    :hidden:
 
     ./pgr_floydWarshall
     ./pgr_johnson

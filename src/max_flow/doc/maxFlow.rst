@@ -34,14 +34,13 @@ but the actual flow through each edge may vary.
    :end-before: end-warning
 
 .. toctree::
-        :hidden:
 
-        pgr_maxFlow
-        pgr_maxFlowPushRelabel
-        pgr_maxFlowEdmondsKarp
-        pgr_maxFlowBoykovKolmogorov
-        pgr_maximumCardinalityMatching
-        pgr_edgeDisjointPaths
+     pgr_maxFlow
+     pgr_maxFlowPushRelabel
+     pgr_maxFlowEdmondsKarp
+     pgr_maxFlowBoykovKolmogorov
+     pgr_maximumCardinalityMatching
+     pgr_edgeDisjointPaths
 
 
 

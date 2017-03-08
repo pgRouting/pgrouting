@@ -22,7 +22,6 @@ When points are also given as input:
     - :ref:`pgr_withPointsDD` - Driving distance.
 
 .. toctree::
-    :hidden: 
 
     pgr_withPoints
     pgr_withPointsCost

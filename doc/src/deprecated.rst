@@ -26,41 +26,17 @@ Deprecated Functions
 Deprecated on version 2.5
 ----------------------------
 
-Routing functions
-...................
-
-- :ref:`bd_astar-v2` - See new signatures of :ref:`pgr_bdAstar`
-
 .. toctree::
-   :hidden:
+   :titlesonly:
 
    pgr_bdAstar-v2
-
-Auxiliary functions
-...................
-
-- :ref:`pgr_point_to_edgenode`
-
-.. toctree::
-   :hidden:
-
    pgr_pointToEdgeNode
 
 Deprecated on version 2.4
 ----------------------------
 
-Routing functions
-...................
-
-- :ref:`bd_dijkstra_v2` - See new signatures of :ref:`pgr_bdDijkstra`
-
-Auxiliary functions
-...................
-
-- :ref:`pgr_points_to_vids`
-
 .. toctree::
-   :hidden:
+   :titlesonly:
 
    pgr_bdDijkstra-v2
    pgr_pointsToVids
@@ -68,25 +44,8 @@ Auxiliary functions
 Deprecated on version 2.3
 ----------------------------
 
-Routing functions
-...................
-
-- :ref:`pgr_astar-V2.0` - See new signatures of :ref:`pgr_aStar`
-- :ref:`pgr_tsp-V2.0` - See new signatures of :ref:`tsp`
-
-
-Auxiliary functions
-...................
-
-- :ref:`pgr_flip_edges`
-- :ref:`pgr_vids_to_dmatrix`
-- :ref:`pgr_vids_to_dmatrix2`
-- :ref:`pgr_points_to_dmatrix`
-- :ref:`pgr_text_to_points`
-
-
 .. toctree::
-   :hidden:
+   :titlesonly:
 
    pgr_astar-v2
    pgr_tsp-V2.0
@@ -100,15 +59,8 @@ Auxiliary functions
 Deprecated on version 2.2
 ----------------------------
 
-Routing functions
-...................
-
-- :ref:`pgr_apsp_johnson` - Replaced with :ref:`pgr_johnson` 
-- :ref:`pgr_apsp_warshall` - Replaced with :ref:`pgr_floydWarshall`
-- :ref:`pgr_kdijkstra` - Replaced with :ref:`pgr_dijkstraCost` and :ref:`pgr_dijkstra` (one to many)
-
 .. toctree::
-   :hidden: 
+   :titlesonly:
 
    pgr_apspJohnson
    pgr_apspWarshall
@@ -118,30 +70,8 @@ Routing functions
 Deprecated on version 2.1
 ------------------------------------------
 
-Routing functions
-...................
-
-- :ref:`pgr_dijkstra_v2` - See new signature in :ref:`pgr_dijkstra` (one to one)
-- :ref:`pgr_ksp_v2` - See new signature in :ref:`pgr_ksp`
-- :ref:`pgr_driving_distance_v2` - See new signature in :ref:`pgr_drivingDistance`
-
-
-Auxiliary functions
-...................
-
--  :ref:`pgr_get_column_name`
--  :ref:`pgr_get_table_name`
--  :ref:`pgr_is_column_indexed`
--  :ref:`pgr_is_column_in_table`
--  :ref:`pgr_quote_ident`
--  :ref:`pgr_versionless`
--  :ref:`pgr_start_point`
--  :ref:`pgr_end_point`
-
-
-
 .. toctree::
-   :hidden: 
+   :titlesonly:
 
    pgr_dijkstra_v2
    pgr_ksp_v2

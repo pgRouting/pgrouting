@@ -29,7 +29,6 @@ The following algorithms are based on :code:`pgr_aStar`
 
 
 .. toctree::
-    :hidden:
 
     pgr_aStarCost
     pgr_aStarCostMatrix

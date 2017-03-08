@@ -17,7 +17,6 @@ Bidirectional A* - Family of functions
   - :ref:`pgr_bdAstarCostMatrix` - A* algorithm for obtaining a :ref:`costMatrix`.
 
 .. toctree::
-    :hidden:
 
     pgr_bdAstar
     pgr_bdAstarCost

@@ -62,7 +62,6 @@ Proposed functions
 
 
 .. toctree::
-  :hidden:
 
   contraction
   pgr_contractGraph

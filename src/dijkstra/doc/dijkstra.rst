@@ -22,7 +22,6 @@ The following algorithms are based on pgr_dijkstra
 
 
 .. toctree::
-    :hidden:
 
     ./pgr_dijkstra
     ./pgr_dijkstraCost

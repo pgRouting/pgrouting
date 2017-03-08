@@ -51,7 +51,6 @@ Routing Functions
     to-here
 
 .. toctree::
-    :hidden:
 
     allpairs
     pgr_astar
