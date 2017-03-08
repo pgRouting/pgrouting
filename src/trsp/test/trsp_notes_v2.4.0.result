@@ -66,6 +66,7 @@ pgr_trsp use the original code when there are restrictions
 therefore throws Error to represent no path found
 ```
 ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
 ```
 ## routing from/to same location
 using dijkstra to verify (1 to 1)
