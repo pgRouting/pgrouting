@@ -58,7 +58,7 @@ For a more complete introduction how to build a routing application read the `pg
 
    tutorial
    recipes/index
-   developer/developer_guide
+   developer_guide
    
 *******************************************************************************
 Sample Data
@@ -69,7 +69,7 @@ Sample Data
 .. toctree::
    :hidden:
 
-   developer/sampledata
+   sampledata
 
 
 
@@ -166,7 +166,7 @@ Discontinued & Deprecated Functions
 .. toctree::
    :hidden:
 
-   developer/discontinued
+   discontinued
    deprecated
 
 

@@ -18,14 +18,14 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 .. rubric:: Create table
 
-.. literalinclude:: ../sampledata/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --EDGE TABLE CREATE
    :end-before: --EDGE TABLE ADD DATA
 
 
 .. rubric:: Insert data
 
-.. literalinclude:: ../sampledata/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --EDGE TABLE ADD DATA
    :end-before: --EDGE TABLE TOPOLOGY
 
@@ -34,7 +34,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 - Before you test a routing function use this query to create a topology (fills the ``source`` and ``target`` columns).
 
-.. literalinclude:: ../sampledata/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --EDGE TABLE TOPOLOGY
    :end-before: --POINTS CREATE
 
@@ -43,7 +43,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 - When points outside of the graph.
 - Used with the :ref:`withPoints` functions.
 
-.. literalinclude:: ../sampledata/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --POINTS CREATE
    :end-before: --RESTRICTIONS CREATE
 
@@ -51,7 +51,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 - Used with the :ref:`trsp` functions.
 
-.. literalinclude:: ../../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --RESTRICTIONS CREATE
    :end-before: --RESTRICTIONS END
 
@@ -59,7 +59,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 - Used with the :ref:`maxFlow` functions.
 
-.. literalinclude:: ../../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --RESTRICTIONS END
    :end-before: --CATEGORIES END
 
@@ -67,7 +67,7 @@ To be able to execute the sample queries, run the following SQL commands to crea
 
 - Used in some deprecated signatures or deprecated functions.
 
-.. literalinclude:: ../../../tools/testers/sampledata.sql
+.. literalinclude:: sampledata/sampledata.sql
    :start-after: --CATEGORIES END
    :end-before: --VERTEX TABLE END
 
@@ -131,6 +131,6 @@ When working with city networks, this is recommended for point of view of pedest
 pgr_gsoc_vrppdtw data
 .........................
 
-.. literalinclude:: ../../../tools/testers/vrppdtw_data.sql
+.. literalinclude:: ../../tools/testers/vrppdtw_data.sql
 
 

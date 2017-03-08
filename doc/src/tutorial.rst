@@ -31,13 +31,14 @@ with pgRouting. In this guide we will cover:
   - :ref:`custom_query` that is used in the routing algorithms.
   - :ref:`performance` to improve your performance.
 
+
 .. toctree:: 
    :hidden: 
          
-    tutorial-topology
-    analytics
-    custom_query
-    performance
+   tutorial-topology
+   analytics
+   custom_query
+   performance
 
 
 How to create a database
