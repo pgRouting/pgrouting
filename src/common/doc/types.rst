@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -21,7 +21,7 @@ The following are commonly used data types for some of the pgRouting functions.
 
 
 .. toctree::
-   :hidden:
+   :numbered:
 
-	pgr_costResult[] - Path Result with Cost <cost_result>
-	pgr_geomResult[] - Path Result with Geometry  <geom_result>
+   cost_result
+   geom_result

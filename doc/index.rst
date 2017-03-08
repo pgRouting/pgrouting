@@ -28,12 +28,12 @@ General
 *******************************************************************************
 
 .. toctree::
-    :maxdepth: 2
+   :numbered:
 
-    introduction
-    installation
-    build
-    support
+   pgRouting_introduction
+   installation
+   build
+   support
 
 
 *******************************************************************************
@@ -54,7 +54,7 @@ For a more complete introduction how to build a routing application read the `pg
 
 
 .. toctree::
-   :hidden:
+   :numbered:
 
    tutorial
    recipes
@@ -67,7 +67,7 @@ Sample Data
   - :ref:`sampledata` that is used in the examples of this manual.
 
 .. toctree::
-   :hidden:
+   :numbered:
 
    sampledata
 
@@ -83,7 +83,7 @@ Version
 :ref:`pgr_version` - to get pgRouting's version information.
 
 .. toctree::
-   :hidden:
+   :numbered:
 
    pgr_version
 
@@ -100,7 +100,7 @@ Data Types
   -  :ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute.
 
 .. toctree::
-   :hidden:
+   :numbered:
 
    types
 
@@ -118,7 +118,7 @@ Topology functions
   -  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
 
 .. toctree::
-   :hidden:
+   :numbered:
 
    topology
 
@@ -133,8 +133,9 @@ Routing Functions
     :maxdepth: 0
     
 .. toctree::
+   :numbered:
 
-    routingFunctions
+   routingFunctions
 
 .. include:: routingFunctions.rst
    :start-after: from-here
@@ -150,10 +151,10 @@ Available Functions but not official pgRouting functions
 - :ref:`proposed`
 
 .. toctree::
-    :hidden:
+   :numbered:
 
-    proposedNext
-    proposed
+   proposedNext
+   proposed
 
 
 *******************************************************************************
@@ -164,7 +165,7 @@ Discontinued & Deprecated Functions
   - :ref:`deprecated`
 
 .. toctree::
-   :hidden:
+   :numbered:
 
    discontinued
    deprecated
@@ -176,27 +177,9 @@ Discontinued & Deprecated Functions
 Change Log
 *******************************************************************************
 
-:ref:`change_log`
-
-   - :ref:`changelog_2_5_0`
-   - :ref:`changelog_2_4_0`
-   - :ref:`changelog_2_3_2`
-   - :ref:`changelog_2_3_1`
-   - :ref:`changelog_2_3_0`
-   - :ref:`changelog_2_2_4`
-   - :ref:`changelog_2_2_3`
-   - :ref:`changelog_2_2_2`
-   - :ref:`changelog_2_2_1`
-   - :ref:`changelog_2_2_0`
-   - :ref:`changelog_2_1_0`
-   - :ref:`changelog_2_0_1`
-   - :ref:`changelog_2_0_0`
-   - :ref:`changelog_1_x`
-
 .. toctree::
-    :hidden:
 
-    release_notes
+   release_notes
 
 
 .. rubric:: Indices and tables

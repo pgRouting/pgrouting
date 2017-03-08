@@ -94,7 +94,7 @@ Stable proposed Functions
     to-here
 
 .. toctree::
-    :hidden:
+    :numbered:
 
     costMatrix
     pgr_dijkstraCostMatrix

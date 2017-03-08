@@ -62,21 +62,16 @@ Proposed functions
 
 
 .. toctree::
-  :hidden:
+   :numbered:
 
-  contraction
-  pgr_contractGraph
-  pgr_textToPoints
-  pgr_pointsToVids
-  pgr_labelGraph
-  pgr_gsoc_vrppdtw
-  pgr_vrpOneDepot
+   contraction
+   pgr_contractGraph
+   pgr_textToPoints
+   pgr_pointsToVids
+   pgr_labelGraph
+   pgr_gsoc_vrppdtw
+   pgr_vrpOneDepot
 
-
-.. toctree::
-  :hidden:
-
-  contraction
 
 
 ..  

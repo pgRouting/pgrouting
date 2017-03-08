@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -300,7 +300,7 @@ This implementation, cycles ``max_cycles`` times through ``operations_order`` .
 
     <input>
     do max_cycles times {
-        for (operation in operations_order) 
+        for (operation in operations_order)
          { do operation }
     }
     <output>
@@ -319,11 +319,11 @@ The original graph:
 .. image:: images/undirected_sampledata_a.png
 
 After doing a dead end contraction operation:
-    
+
 .. image:: images/undirected_sampledata_b.png
 
 Doing a linear contraction operation to the graph above
-    
+
 .. image:: images/undirected_sampledata_c.png
 
 
@@ -419,16 +419,16 @@ Verify visually the updates.
    :start-after: -- q9
    :end-before: -- q10
 
-- vertices that belong to the contracted graph are the non contracted vertices 
+- vertices that belong to the contracted graph are the non contracted vertices
 
 .. literalinclude:: doc-contraction.queries
    :start-after: -- q10
    :end-before: -- case1
 
-.. rubric:: case 1: Both source and target belong to the contracted graph. 
+.. rubric:: case 1: Both source and target belong to the contracted graph.
 
 Inspecting the contracted graph above, vertex 3 and vertex 11 are part of the contracted graph. In the following query:
- 
+
  - vertices_in_graph hold the vertices that belong to the contracted graph.
  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
 
@@ -474,7 +474,7 @@ The results, on the contracted graph match the results as if it was done on the 
 .. rubric:: case 4: Source belongs to the contracted graph, while target belongs to an vertex subgraph.
 
 Inspecting the contracted graph above, vertex 3 is part of the contracted graph and vertex 7 belongs to the contracted subgraph of vertex 5. In the following query:
- 
+
  - expand7 holds the contracted vertices of vertex where vertex 7 belongs. (belongs to vertex 5)
  - vertices_in_graph hold the vertices that belong to the contracted graph and the contracted vertices of vertex 5.
  - when selecting the edges, only edges that have the source and the target in that set are the edges belonging to the contracted graph, that is done in the WHERE clause.
@@ -513,7 +513,7 @@ See Also
 
 * http://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
 * http://algo2.iti.kit.edu/documents/routeplanning/geisberger_dipl.pdf
-* The queries use :ref:`pgr_contractGraph` function and the :ref:`sampledata` network. 
+* The queries use :ref:`pgr_contractGraph` function and the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 
