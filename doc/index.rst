@@ -57,7 +57,7 @@ For a more complete introduction how to build a routing application read the `pg
    :hidden:
 
    tutorial
-   recipes/index
+   recipes
    developer_guide
    
 *******************************************************************************
