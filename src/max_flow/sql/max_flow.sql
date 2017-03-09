@@ -61,26 +61,6 @@ FOR-USER*/
 -- 3 edmonds_karp
 ***********************************/
 
---INTERNAL FUNCTIONS
-
-CREATE OR REPLACE FUNCTION _pgr_maxflow(
-    edges_sql TEXT,
-    BIGINT,
-    BIGINT,
-    algorithm INTEGER DEFAULT 1,
-    only_flow BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT edge_id BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_one_to_one'
-    LANGUAGE c IMMUTABLE STRICT;
-
---FUNCTIONS
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
@@ -95,12 +75,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 1);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 1);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
@@ -115,12 +93,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 2);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 2);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
@@ -135,37 +111,15 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 3);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 3);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 /***********************************
         ONE TO MANY
 ***********************************/
 
---INTERNAL FUNCTIONS
-
-CREATE OR REPLACE FUNCTION _pgr_maxflow(
-    edges_sql TEXT,
-    BIGINT,
-    targets ANYARRAY,
-    algorithm INTEGER DEFAULT 1,
-    only_flow BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT edge_id BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_one_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
-
---FUNCTIONS
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
@@ -180,12 +134,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 1);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 1);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
@@ -200,12 +152,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 2);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 2);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
@@ -220,37 +170,15 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 3);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 3);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 /***********************************
         MANY TO ONE
 ***********************************/
 
---INTERNAL FUNCTIONS
-
-CREATE OR REPLACE FUNCTION _pgr_maxflow(
-    edges_sql TEXT,
-    sources ANYARRAY,
-    BIGINT,
-    algorithm INTEGER DEFAULT 1,
-    only_flow BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT edge_id BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_many_to_one'
-    LANGUAGE c IMMUTABLE STRICT;
-
---FUNCTIONS
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
@@ -265,12 +193,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 1);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 1);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
@@ -285,12 +211,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 2);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 2);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
@@ -305,38 +229,15 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 3);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 3);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 /***********************************
         MANY TO MANY
 ***********************************/
 
---INTERNAL FUNCTIONS
-
-CREATE OR REPLACE FUNCTION _pgr_maxflow(
-    edges_sql TEXT,
-    sources ANYARRAY,
-    targets ANYARRAY,
-    algorithm INTEGER DEFAULT 1,
-    only_flow BOOLEAN DEFAULT false,
-    OUT seq INTEGER,
-    OUT edge_id BIGINT,
-    OUT source BIGINT,
-    OUT target BIGINT,
-    OUT flow BIGINT,
-    OUT residual_capacity BIGINT
-    )
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'max_flow_many_to_many'
-    LANGUAGE c IMMUTABLE STRICT;
-
---FUNCTIONS
-
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
     sources ANYARRAY,
@@ -350,12 +251,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 1);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 1);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
@@ -370,12 +269,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 2);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 2);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
@@ -390,10 +287,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-  BEGIN
-        RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, 3);
-  END
+        SELECT *
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 3);
   $BODY$
-  LANGUAGE plpgsql VOLATILE;
+  LANGUAGE sql VOLATILE;
 

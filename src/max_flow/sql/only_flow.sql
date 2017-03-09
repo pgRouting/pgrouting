@@ -22,18 +22,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 /***********************************
+        MANY TO MANY
+***********************************/
+
+CREATE OR REPLACE FUNCTION pgr_maxFlow(
+    edges_sql TEXT,
+    sources ANYARRAY,
+    targets ANYARRAY
+    )
+  RETURNS BIGINT AS
+  $BODY$
+        SELECT flow
+        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], algorithm := 1, only_flow := true);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+/***********************************
         ONE TO ONE
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    source_vertices BIGINT,
-    sink_vertices BIGINT
+    source BIGINT,
+    target BIGINT
     )
   RETURNS BIGINT AS
   $BODY$
-        SELECT coalesce(sum(flow), 0)::BIGINT
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, algorithm := 1, only_flow := true);
+        SELECT *
+        FROM pgr_maxflow($1, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[]);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -43,13 +59,13 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    source_vertices BIGINT,
-    sink_vertices ANYARRAY
+    source  BIGINT,
+    targets ANYARRAY
     )
   RETURNS BIGINT AS
   $BODY$
-        SELECT flow
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, algorithm := 1, only_flow := true);
+        SELECT *
+        FROM pgr_maxflow($1, ARRAY[$2]::BIGINT[], $3::BIGINT[]);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
@@ -59,28 +75,13 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    source_vertices ANYARRAY,
-    sink_vertices BIGINT
+    sources ANYARRAY,
+    target  BIGINT
     )
   RETURNS BIGINT AS
   $BODY$
-        SELECT flow
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, algorithm := 1, only_flow := true);
+        SELECT *
+        FROM pgr_maxflow($1, $2::BIGINT[], ARRAY[$3]::BIGINT[]);
   $BODY$
   LANGUAGE SQL VOLATILE;
 
-/***********************************
-        MANY TO MANY
-***********************************/
-
-CREATE OR REPLACE FUNCTION pgr_maxFlow(
-    edges_sql TEXT,
-    source_vertices ANYARRAY,
-    sink_vertices ANYARRAY
-    )
-  RETURNS BIGINT AS
-  $BODY$
-        SELECT flow
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2, $3, algorithm := 1, only_flow := true);
-  $BODY$
-  LANGUAGE SQL VOLATILE;
