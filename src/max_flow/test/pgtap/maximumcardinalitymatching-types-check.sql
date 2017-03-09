@@ -43,7 +43,7 @@ SELECT set_eq('mcm_q', 'mcm_v','Expected returning, columns names & types');
 
 -- testing column names
 SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_maximumcardinalitymatching'$$,
     $$SELECT  '{"edges_sql","directed","seq","edge","source","target"}'::TEXT[] $$
 );
 
