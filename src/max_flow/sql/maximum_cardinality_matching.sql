@@ -30,7 +30,7 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     edges_sql TEXT,
     directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
-    OUT edge_id BIGINT,
+    OUT edge BIGINT,
     OUT source BIGINT,
     OUT target BIGINT
     )
