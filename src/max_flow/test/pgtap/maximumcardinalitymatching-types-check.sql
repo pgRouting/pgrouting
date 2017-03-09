@@ -26,7 +26,7 @@ SELECT lives_ok('mcm_dir','directed');
 SELECT lives_ok('mcm_undir','undirected');
 
 PREPARE mcm_q AS
-SELECT pg_typeof(seq)::text AS t1, pg_typeof(edge_id)::text AS t2,
+SELECT pg_typeof(seq)::text AS t1, pg_typeof(edge)::text AS t2,
     pg_typeof(source)::text AS t3, pg_typeof(target)::text AS t4
     FROM (
         SELECT * FROM pgr_maximumCardinalityMatching(
