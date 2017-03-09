@@ -1,5 +1,5 @@
 ROLLBACK;
-\echo # Notes on pgr_trsp for version 2.4.0
+\echo # Notes on pgr_trsp for version 2.5.0
 
 \echo Table of contents
 
