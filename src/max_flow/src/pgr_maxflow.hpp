@@ -97,7 +97,7 @@ class PgrFlowGraph {
              int algorithm);
 
      PgrFlowGraph(
-             const std::vector<pgr_basic_edge_t> &edges,
+             const std::vector<pgr_edge_t> &edges,
              const std::set<int64_t> &source_vertices,
              const std::set<int64_t> &sink_vertices,
              bool directed);
@@ -132,7 +132,7 @@ class PgrFlowGraph {
      void insert_edges(
              const std::vector<pgr_edge_t> &edges);
      void insert_edges_edge_disjoint(
-             const std::vector<pgr_basic_edge_t> &edges,
+             const std::vector<pgr_edge_t> &edges,
              bool directed);
 
      void flow_dfs(

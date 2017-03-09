@@ -54,7 +54,7 @@ PgrFlowGraph::PgrFlowGraph(
 }
 
 PgrFlowGraph::PgrFlowGraph(
-        const std::vector<pgr_basic_edge_t> &edges,
+        const std::vector<pgr_edge_t> &edges,
         const std::set<int64_t> &source_vertices,
         const std::set<int64_t> &sink_vertices,
         bool directed) {
@@ -130,7 +130,7 @@ void PgrFlowGraph::insert_edges(
  * for the edge_disjoint_paths  algorithms
  */
 void PgrFlowGraph::insert_edges_edge_disjoint(
-        const std::vector<pgr_basic_edge_t> &edges,
+        const std::vector<pgr_edge_t> &edges,
         bool directed) {
     bool added;
     for (const auto edge : edges) {
@@ -145,10 +145,10 @@ void PgrFlowGraph::insert_edges_edge_disjoint(
         E_to_id.insert(std::pair<E, int64_t>(e_rev,
                     edge.id));
         if (directed) {
-            capacity[e] = edge.going ? 1 : 0;
-            capacity[e_rev] = edge.coming ? 1 : 0;
+            capacity[e] = edge.cost >= 0 ? 1 : 0;
+            capacity[e_rev] = edge.reverse_cost >= 0 ? 1 : 0;
         } else {
-            if (edge.going || edge.coming) {
+            if (edge.cost >= 0 || edge.reverse_cost >= 0) {
                 capacity[e] = 1;
                 capacity[e_rev] = 1;
             }

@@ -38,7 +38,7 @@ extern "C" {
 
     void
         do_pgr_edge_disjoint_paths(
-            pgr_basic_edge_t *data_edges,
+            pgr_edge_t *data_edges,
             size_t total_tuples,
             int64_t *source_vertices,
             size_t size_source_verticesArr,

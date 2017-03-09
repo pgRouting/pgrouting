@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./pgr_maxflow.hpp"
 
+#include "./../../common/src/identifiers.hpp"
 #include "./../../common/src/pgr_alloc.hpp"
 #include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_types.h"
@@ -42,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 void
 do_pgr_edge_disjoint_paths(
-    pgr_basic_edge_t *data_edges,
+    pgr_edge_t *data_edges,
     size_t total_edges,
     int64_t *sources,
     size_t size_source_verticesArr,
@@ -63,7 +64,7 @@ do_pgr_edge_disjoint_paths(
                 sources, sources + size_source_verticesArr);
         std::set<int64_t> set_sink_vertices(
                 sinks, sinks + size_sink_verticesArr);
-        std::vector<pgr_basic_edge_t> edges(
+        std::vector<pgr_edge_t> edges(
                 data_edges, data_edges + total_edges);
 
         pgrouting::graph::PgrFlowGraph G(
@@ -76,6 +77,49 @@ do_pgr_edge_disjoint_paths(
          */
         auto flow = G.boykov_kolmogorov();
         G.get_edge_disjoint_paths(path_elements, flow);
+
+        if (path_elements.empty()) {
+            *return_tuples = nullptr;
+            *return_count = 0;
+            return;
+        }
+
+        /*
+         * Initializing the cost
+         */
+        for (auto &r : path_elements) {
+            r.agg_cost = r.cost = 0;
+        }
+
+        /*
+         * Calculating the cost
+         */
+        auto found = path_elements.size();
+        for (const auto &e : edges) {
+            for (auto &r : path_elements) {
+                if (r.edge == e.id) {
+                    r.cost = (r.node == e.source) ?
+                        e.cost : e.reverse_cost;
+                    --found;
+                }
+            }
+            if (found == 0) break;
+        }
+
+        /*
+         * Calculating the agg_cost
+         */
+        auto prev = path_elements[0];
+        for (auto &r : path_elements) {
+            if (r.seq == 1) {
+                r.agg_cost = 0;
+            } else {
+                r.agg_cost = prev.agg_cost + prev.cost;
+            }
+            prev = r;
+        }
+
+
 
         (*return_tuples) = pgr_alloc(path_elements.size(), (*return_tuples));
         for (size_t i = 0; i < path_elements.size(); ++i) {
