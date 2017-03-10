@@ -76,7 +76,7 @@ Calculates the maximum flow from one source vertex to one sink vertex on a `dire
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, source,  target)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -96,7 +96,7 @@ Calculates the maximum flow from one source vertex to many sink vertices on a `d
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, source,  targets)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -116,7 +116,7 @@ Calculates the maximum flow from many source vertices to one sink vertex on a `d
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, sources,  target)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -136,7 +136,7 @@ Calculates the maximum flow from many sources to many sinks on a `directed` grap
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, sources,  targets)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:

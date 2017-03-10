@@ -62,7 +62,7 @@ Signature Summary
     pgr_MaximumCardinalityMatching(edges_sql)
     pgr_MaximumCardinalityMatching(edges_sql, directed)
 
-    RETURNS SET OF (id, edge_id, source, target)
+    RETURNS SET OF (seq, edge_id, source, target)
         OR EMPTY SET
 
 
@@ -80,7 +80,7 @@ Minimal signature
 .. code-block:: none
 
     pgr_MaximumCardinalityMatching(edges_sql)
-    RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
+    RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
 The minimal signature calculates one possible maximum cardinality matching on a `directed` graph.
 
@@ -99,7 +99,7 @@ Complete signature
 .. code-block:: none
 
     pgr_MaximumCardinalityMatching(edges_sql, directed)
-    RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
+    RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
 
 The complete signature calculates one possible maximum cardinality matching.

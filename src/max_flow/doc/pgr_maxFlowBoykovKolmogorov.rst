@@ -83,7 +83,7 @@ The available signature calculates the maximum flow from one source vertex to on
 .. code-block:: none
 
     pgr_maxFlowBoykovKolmogorov(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -125,7 +125,7 @@ The available signature calculates the maximum flow from many source vertices to
 .. code-block:: none
 
     pgr_maxFlowBoykovKolmogorov(edges_sql, start_vids,  end_vid)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -146,7 +146,7 @@ The available signature calculates the maximum flow from many sources to many si
 .. code-block:: none
 
     pgr_maxFlowBoykovKolmogorov(edges_sql, start_vids,  end_vids)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
