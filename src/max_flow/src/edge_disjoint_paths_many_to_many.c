@@ -173,22 +173,23 @@ edge_disjoint_paths_many_to_many(PG_FUNCTION_ARGS) {
         /**********************************************************************/
         /*                          MODIFY AS NEEDED                          */
 
-        values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(bool));
+        values = palloc(9 * sizeof(Datum));
+        nulls = palloc(9 * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 8; ++i) {
+        for (i = 0; i < 9; ++i) {
             nulls[i] = false;
         }
 
         values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
-        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].start_id + 1);
+        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].end_id);
+        values[5] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[6] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

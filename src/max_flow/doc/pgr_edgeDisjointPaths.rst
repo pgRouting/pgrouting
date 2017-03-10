@@ -58,7 +58,7 @@ Signature Summary
     pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
     pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
 
-    RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, path_id, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
     OR EMPTY SET
 
 
@@ -68,16 +68,16 @@ Signatures
 .. index::
     single: edgeDisjointPaths(Minimal Use) - Proposed
 
-Minimal signature
+Minimal use
 .................
 
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
-The minimal signature is between `source_vertex` and `destination_vertex` for a `directed` graph.
+The minimal use is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
 
 :Example:
 
@@ -91,13 +91,15 @@ The minimal signature is between `source_vertex` and `destination_vertex` for a 
 One to One
 .......................................
 
-The available signature calculates edge disjoint paths from one source vertex to one destination vertex.
-The graph can be directed or undirected.
+This signature finds the set of dijoint paths from one ``start_vid`` to one ``end_vid``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
 
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
-    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example:
@@ -113,12 +115,19 @@ The graph can be directed or undirected.
 One to Many
 .......................................
 
-The available signature calculates the maximum flow from one source vertex to many sink vertices.
+This signature finds the sset of disjoint paths  from the ``start_vid`` to each one of the ``end_vid`` in ``end_vids``:
+  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  - on an **undirected** graph when ``directed`` flag is set to ``false``.
+  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+
+
 
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, path_id, path_seq, end_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example:
@@ -135,12 +144,16 @@ The available signature calculates the maximum flow from one source vertex to ma
 Many to One
 .......................................
 
-The available signature calculates the maximum flow from many source vertices to one sink vertex.
+This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to the ``end_vid``:
+  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  - on an **undirected** graph when ``directed`` flag is set to ``false``.
+  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
 
 .. code-block:: none
 
     pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    RETURNS SET OF (seq, path_id, path_seq, start_vid, node, edge, cost, agg_cost)
     OR EMPTY SET
 
 :Example:
@@ -157,7 +170,11 @@ The available signature calculates the maximum flow from many source vertices to
 Many to Many
 .......................................
 
-The available signature calculates the maximum flow from many sources to many sinks.
+This signature finds the set of disjoint paths from each one of the ``start_vid`` in ``start_vids`` to each one of the ``end_vid`` in ``end_vids``:
+  - on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  - on an **undirected** graph when ``directed`` flag is set to ``false``.
+  - The result is equivalent to the union of the results of the one to one `pgr_edgeDisjointPaths`.
+  - The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 .. code-block:: none
 

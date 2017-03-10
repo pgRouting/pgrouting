@@ -28,7 +28,8 @@ SELECT
     'bigint'::text AS t3,
     'bigint'::text AS t4,
     'double precision'::text AS t5,
-    'double precision'::text AS t6;
+    'double precision'::text AS t6,
+    'integer'::text AS t10;
 
 PREPARE edp_q_o2o AS
 SELECT pg_typeof(seq)::text AS t1,
@@ -36,7 +37,8 @@ SELECT pg_typeof(seq)::text AS t1,
     pg_typeof(node)::text AS t3,
     pg_typeof(edge)::text AS t4,
     pg_typeof(cost)::text AS t5,
-    pg_typeof(agg_cost)::text AS t6
+    pg_typeof(agg_cost)::text AS t6,
+    pg_typeof(path_id)::text AS t10
     FROM (
         SELECT * FROM pgr_edgeDisjointPaths(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -57,7 +59,8 @@ SELECT
     'bigint'::text AS t4,
     'bigint'::text AS t5,
     'double precision'::text AS t6,
-    'double precision'::text AS t7;
+    'double precision'::text AS t7,
+    'integer'::text AS t10;
 
 PREPARE edp_q_o2m AS
 SELECT pg_typeof(seq)::text AS t1,
@@ -66,7 +69,8 @@ SELECT pg_typeof(seq)::text AS t1,
     pg_typeof(node)::text AS t4,
     pg_typeof(edge)::text AS t5,
     pg_typeof(cost)::text AS t6,
-    pg_typeof(agg_cost)::text AS t7
+    pg_typeof(agg_cost)::text AS t7,
+    pg_typeof(path_id)::text AS t10
     FROM (
         SELECT * FROM pgr_edgeDisjointPaths(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -82,7 +86,8 @@ SELECT pg_typeof(seq)::text AS t1,
     pg_typeof(node)::text AS t4,
     pg_typeof(edge)::text AS t5,
     pg_typeof(cost)::text AS t6,
-    pg_typeof(agg_cost)::text AS t7
+    pg_typeof(agg_cost)::text AS t7,
+    pg_typeof(path_id)::text AS t10
     FROM (
         SELECT * FROM pgr_edgeDisjointPaths(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -100,7 +105,8 @@ SELECT
     'bigint'::text AS t5,
     'bigint'::text AS t6,
     'double precision'::text AS t7,
-    'double precision'::text AS t8;
+    'double precision'::text AS t8,
+    'integer'::text AS t10;
 
 PREPARE edp_q_m2m AS
 SELECT pg_typeof(seq)::text AS t1,
@@ -110,7 +116,8 @@ SELECT pg_typeof(seq)::text AS t1,
     pg_typeof(node)::text AS t5,
     pg_typeof(edge)::text AS t6,
     pg_typeof(cost)::text AS t7,
-    pg_typeof(agg_cost)::text AS t8
+    pg_typeof(agg_cost)::text AS t8,
+    pg_typeof(path_id)::text AS t10
     FROM (
         SELECT * FROM pgr_edgeDisjointPaths(
             'SELECT id, source, target, cost, reverse_cost FROM edge_table',
@@ -129,19 +136,19 @@ SELECT set_eq('edp_v_m2m', 'edp_q_m2m','many to many: Expected returning, column
 -- testing column names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
-    $$SELECT  '{"edges_sql","start_vid","end_vid","directed","seq","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","start_vid","end_vid","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
-    $$SELECT  '{"edges_sql","start_vid","end_vids","directed","seq","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","start_vid","end_vids","directed","seq","path_id","path_seq","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
-    $$SELECT  '{"edges_sql","start_vids","end_vid","directed","seq","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","start_vids","end_vid","directed","seq","path_id","path_seq","start_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_edgedisjointpaths'$$,
-    $$SELECT  '{"edges_sql","start_vids","end_vids","directed","seq","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","start_vids","end_vids","directed","seq","path_id","path_seq","start_vid","end_vid","node","edge","cost","agg_cost"}'::TEXT[] $$
 );
 
 SELECT * FROM finish();

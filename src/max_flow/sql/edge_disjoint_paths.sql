@@ -36,6 +36,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN end_vids ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
+    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -58,6 +59,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN end_vid bigint,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
+    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
     OUT edge BIGINT,
@@ -66,7 +68,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-    SELECT a.seq, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
+    SELECT a.seq, a.path_id, a.path_seq, a.node, a.edge, a.cost, a.agg_cost
     FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
   $BODY$
 LANGUAGE sql VOLATILE;
@@ -81,6 +83,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN end_vids ANYARRAY,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
+    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT end_vid BIGINT,
     OUT node BIGINT,
@@ -90,7 +93,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-    SELECT a.seq, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT a.seq, a.path_id, a.path_seq, a.end_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], $4) AS a;
   $BODY$
 LANGUAGE sql VOLATILE;
@@ -105,6 +108,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     IN end_vid BIGINT,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
+    OUT path_id INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
     OUT node BIGINT,
@@ -114,7 +118,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-    SELECT a.seq, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
+    SELECT a.seq, a.path_id, a.path_seq, a.start_vid, a.node, a.edge, a.cost, a.agg_cost
     FROM pgr_edgeDisjointPaths(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], $4) AS a;
   $BODY$
 LANGUAGE sql VOLATILE;

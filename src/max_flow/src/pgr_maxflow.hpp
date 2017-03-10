@@ -89,6 +89,16 @@ class PgrFlowGraph {
                  supersource,
                  supersink);
      }
+     std::vector<General_path_element_t> edge_disjoint_paths() {
+         size_t num_v = boost::num_vertices(graph);
+         std::vector<boost::default_color_type> color(num_v);
+         std::vector<int64_t> distance(num_v);
+         auto flow = boost::boykov_kolmogorov_max_flow(
+                 graph,
+                 supersource,
+                 supersink);
+         return get_edge_disjoint_paths(flow);
+     }
 
      PgrFlowGraph(
              const std::vector<pgr_edge_t> &edges,
@@ -105,8 +115,7 @@ class PgrFlowGraph {
 
      std::vector<pgr_flow_t> get_flow_edges() const;
 
-     void get_edge_disjoint_paths(
-             std::vector<General_path_element_t> &path_elements,
+     std::vector<General_path_element_t> get_edge_disjoint_paths(
              int64_t flow);
 
  private:
