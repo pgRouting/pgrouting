@@ -176,7 +176,7 @@ Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg
 Column         Type       Description
 ============== ========== =================================================
 **seq**        ``INT``    Sequential value starting from **1**.
-**path_id**    ``INT``    Path identifier. Has value **1** for the first of a path. Used when multiple paths for the same ``start_vid`` to ``end_vid`` combination.
+**path_id**    ``INT``    Path identifier. Has value **1** for the first of a path. Used when there are multiple paths for the same ``start_vid`` to ``end_vid`` combination.
 **path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
 **start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
 **end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.

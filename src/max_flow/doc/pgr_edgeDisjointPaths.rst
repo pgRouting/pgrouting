@@ -45,7 +45,6 @@ The main characterics are:
   - The graph can be directed or undirected.
   - One to many, many to one, many to many versions are also supported.
   - Uses :ref:`pgr_maxFlowBoykovKolmogorov` to calculate the paths.
-  - No `cost` or `aggregate cost` of the paths are returned. (Under discussion)
 
 Signature Summary
 -----------------
