@@ -43,37 +43,37 @@ PREPARE boostSample1 AS
 SELECT sum(flow) FROM pgr_maxFlowEdmondsKarp(
     'SELECT id, source, target,capacity
     FROM boost_example'
-   ,1, 8) WHERE source = 1;
+   ,1, 8) WHERE start_vid = 1;
 
 PREPARE boostSample2 AS
 SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id, source, target,capacity
     FROM boost_example'
-   ,1, 8) WHERE source = 1;
+   ,1, 8) WHERE start_vid = 1;
 
 PREPARE boostSample3 AS
 SELECT * FROM pgr_maxFlowPushRelabel(
     'SELECT id, source, target,capacity
     FROM boost_example'
-   ,1, 8) WHERE source = 1;
+   ,1, 8) WHERE start_vid = 1;
 
 PREPARE boostSample4 AS
 SELECT sum(flow) FROM pgr_maxFlowEdmondsKarp(
     'SELECT id, source, target,capacity
     FROM boost_example'
-   ,1, 8) WHERE target = 8;
+    ,1, 8) WHERE end_vid = 8;
 
 PREPARE boostSample5 AS
 SELECT * FROM pgr_maxFlowBoykovKolmogorov(
     'SELECT id, source, target,capacity
     FROM boost_example'
-   ,1, 8) WHERE target = 8;
+    ,1, 8) WHERE end_vid = 8;
 
 PREPARE boostSample6 AS
 SELECT * FROM pgr_maxFlowPushRelabel(
     'SELECT id, source, target,capacity
     FROM boost_example'
-   ,1, 8) WHERE target = 8;
+    ,1, 8) WHERE end_vid = 8;
 
 SELECT ('boostSample1',13, 'BOOST: pgr_maxFlowEdmondsKarp, flow from source is 13');
 SELECT ('boostSample4',13, 'BOOST: pgr_maxFlowEdmondsKarp, flow from source is 13');

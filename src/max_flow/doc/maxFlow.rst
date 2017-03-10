@@ -44,9 +44,30 @@ but the actual flow through each edge may vary.
         ./pgr_edgeDisjointPaths
 
 
+General Information
+------------------------
+
+.. pgr_flow_parameters_start
+
+Description of the parameters of the signatures
+...............................................................................
+
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**edges_sql**  ``TEXT``                    SQL query as described.
+**source**     ``BIGINT``                  Identifier of the starting vertex of the flow.
+**sources**    ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
+**target**     ``BIGINT``                  Identifier of the ending vertex of the flow.
+**targets**    ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
+============== ================== ======== =================================================
+
+.. pgr_flow_parameters_end
+
+
 
 Problem definition
-==================
+------------------------
 
 A flow network is a directed graph where each edge has a capacity and a flow.
 The flow through an edge must not exceed the capacity of the edge.

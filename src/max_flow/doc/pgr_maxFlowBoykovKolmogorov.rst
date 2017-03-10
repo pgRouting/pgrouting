@@ -166,7 +166,7 @@ Description of the Signatures
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
-.. include:: ../sql/max_flow.sql
+.. include:: ./maxFlow.rst
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
