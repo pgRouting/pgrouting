@@ -12,6 +12,10 @@
 Flow - Group Of Functions
 ===================================
 
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 - Maximum Flow
 
   - :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
@@ -25,13 +29,6 @@ Flow - Group Of Functions
   - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
 
 
-The maximum flow through the graph is guaranteed to be the same with all implementations,
-but the actual flow through each edge may vary.
-
-
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 .. toctree::
         :hidden:
@@ -47,6 +44,15 @@ but the actual flow through each edge may vary.
 General Information
 ------------------------
 
+:ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is garanteed to be the same on the functions :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>`, :ref:`pgr_maxFlowEdmondsKarp <pgr_maxFlowEdmondsKarp>`, :ref:`pgr_maxFlowBoykovKolmogorov <pgr_maxFlowBoykovKolmogorov>`, but the actual flow through each edge may vary.
+
+The Maximum Flow Functions use the same **edge_sql** and the same **parameters**:
+
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
+
+
 .. pgr_flow_parameters_start
 
 Description of the parameters of the signatures
@@ -55,7 +61,7 @@ Description of the parameters of the signatures
 ============== ================== ======== =================================================
 Column         Type               Default     Description
 ============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    SQL query as described.
+**edges_sql**  ``TEXT``                    The edges SQL query as described above.
 **source**     ``BIGINT``                  Identifier of the starting vertex of the flow.
 **sources**    ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
 **target**     ``BIGINT``                  Identifier of the ending vertex of the flow.

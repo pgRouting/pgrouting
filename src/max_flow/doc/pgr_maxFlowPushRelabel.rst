@@ -7,10 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-   INSTRUCTIONS
-   - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropriate values
-   - one file / function,  may signatures of the same function go in the same file
 
 .. _pgr_maxFlowPushRelabel:
 
@@ -21,7 +17,7 @@ pgr_maxFlowPushRelabel Proposed
 Name
 ----
 
-``pgr_maxFlowPushRelabel`` — Calculates the maximum flow in a directed graph given a source and a destination.
+``pgr_maxFlowPushRelabel`` — Calculates the maximum flow in a directed graph for the given source(s) and targets(s).
 
 
 .. include:: ../../proposedNext.rst
@@ -45,10 +41,15 @@ Characteristics:
 ----------------
 
 The main characterics are:
+  - Process is done only on edges with positive capacities.
+  - When the maximum flow is 0 then there is no flow and **EMPTY SET** is returned.
+
+    - There is no flow when a **source** is the same as a **target**.
+
+  - Any duplicated value in the source(s) or target(s) are ignored.
   - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
-  - The maximum flow through the graph can be calculated by aggregation on source/sink.
-  - Returns nothing if source and sink are the same.
-  - Allows multiple sources and sinks.
+  - Creates a **super source** and edges to all the source(s), and a **super target** and the edges from all the targets(s).
+  - The maximum flow through the graph can be calculated by aggregation on source/sink which is garanteed to be the value returned by :ref:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters.
   - Running time: :math:`O( V ^ 3)`
 
 Signature Summary
@@ -60,8 +61,8 @@ Signature Summary
     pgr_maxFlowPushRelabel(edges_sql, sources, target)
     pgr_maxFlowPushRelabel(edges_sql, source,  targets)
     pgr_maxFlowPushRelabel(edges_sql, sources, targets)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 
 Signatures
@@ -78,8 +79,8 @@ Calculates the maximum flow from one source vertex to one sink vertex in a direc
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source,  target)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 :Example:
 
@@ -99,8 +100,8 @@ Ccalculates the maximum flow from one source vertex to many sink vertices in a d
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source,  targets)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 :Example:
 
@@ -120,8 +121,8 @@ Calculates the maximum flow from many source vertices to one sink vertex in a di
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, sources,  target)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 :Example:
 
@@ -141,8 +142,8 @@ Calculates the maximum flow from many sources to many sinks in a directed graph.
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, sources,  targets)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 :Example:
 
@@ -163,23 +164,10 @@ Description of the Signatures
     :end-before: pgr_flow_parameters_end
 
 
-.. result_start
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: result_flow_start
+    :end-before: result_flow_end
 
-Description of the Return Values
-.....................................................................
-
-=====================  ====================  =================================================
-Column                 Type                  Description
-=====================  ====================  =================================================
-**seq**                ``INT``               Sequential value starting from **1**.
-**edge_id**            ``BIGINT``            Identifier of the edge in the original query(edges_sql).
-**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
-**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
-**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
-**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
-=====================  ====================  =================================================
-
-.. result_end
 
 See Also
 --------

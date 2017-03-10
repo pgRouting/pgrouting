@@ -9,14 +9,14 @@
 
 .. _pgr_maxFlow:
 
-pgr_maxFlow Proposed
+pgr_maxFlow - Proposed
 ============================================
 
 
 Name
 ----
 
-``pgr_maxFlow`` — Calculates the maximum flow in a directed graph given source(s) and sink(s).
+``pgr_maxFlow`` — Calculates the maximum flow in a directed graph given source(s) and targets(s).
 
 
 .. include:: ../../proposedNext.rst
