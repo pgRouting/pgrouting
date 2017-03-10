@@ -52,13 +52,14 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
-    pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex, directed)
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
-    pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertices, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
 
-    RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge) OR EMPTY SET
+    RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 
 Signatures
@@ -72,8 +73,9 @@ Minimal signature
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
-    RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 The minimal signature is between `source_vertex` and `destination_vertex` for a `directed` graph.
 
@@ -94,8 +96,9 @@ The graph can be directed or undirected.
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
-    RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vid, directed)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example:
 
@@ -114,8 +117,9 @@ The available signature calculates the maximum flow from one source vertex to ma
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
-    RETURNS SET OF (seq, path_seq, end_vid, node, edge) OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vid, end_vids, directed)
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example:
 
@@ -135,9 +139,9 @@ The available signature calculates the maximum flow from many source vertices to
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex)
-    RETURNS SET OF (seq, path_seq, start_vid, node, edge)
-      OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vid, directed)
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example:
 
@@ -157,8 +161,9 @@ The available signature calculates the maximum flow from many sources to many si
 
 .. code-block:: none
 
-    pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertices, directed)
-    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
+    pgr_edgeDisjointPaths(edges_sql, start_vids, end_vids, directed)
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost)
+    OR EMPTY SET
 
 :Example:
 
@@ -171,50 +176,19 @@ The available signature calculates the maximum flow from many sources to many si
 Description of the Signatures
 ----------------------------------------------
 
-Description of the SQL query
-.......................................
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
 
-====================  ===================   =================================================
-Column                Type                  Description
-====================  ===================   =================================================
-**id**                ``ANY-INTEGER``       Identifier of the edge.
-**source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**going**             ``ANY-NUMERIC``       A positive value represents the existence of the edge (source, target).
-**coming**            ``ANY-NUMERIC``       A positive value represents the existence of the edge (target, source).
-====================  ===================   =================================================
+.. include:: ../../dijkstra/doc/pgr_dijkstra.rst
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
 
-Where:
-  - :ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-  - :ANY-NUMERIC: SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION
 
-Description of the parameters of the signatures
-........................................................
-
-================= ====================== =================================================
-Column            Type                   Description
-================= ====================== =================================================
-**edges_sql**     ``TEXT``               SQL query as described above.
-**source_vertex** ``BIGINT``             Identifier(s) of the source vertex(vertices).
-**sink_vertex**   ``BIGINT``             Identifier(s) of the destination vertex(vertices).
-**directed**      ``BOOLEAN``            (optional) Determines the type of the graph. Default TRUE.
-================= ====================== =================================================
-
-Description of the return values
-........................................................
-
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
-**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vertices are in the query.
-**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-============== ========== =================================================
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_path_start
+    :end-before: return_path_end
 
 
 
