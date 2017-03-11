@@ -13,8 +13,8 @@ pgr_maximumCardinalityMatching - Proposed
 ============================================================
 
 
-Name
-----
+Synopsis
+------------------------------------------------------------
 
 ``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
 
@@ -30,59 +30,48 @@ Name
    Boost Graph Inside
 
 
-Synopsis
--------------------------------------------------------------------------------
+.. rubric:: Characteristics
 
-Calculates a maximum cardinality matching in a directed/undirected graph.
+* A matching or independent edge set in a graph is a set of edges without common vertices.
+* A maximum matching is a matching that contains the largest possible number of edges.
 
-- A matching or independent edge set in a graph is a set of edges without common vertices.
-- A maximum matching is a matching that contains the largest possible number of edges.
-- There may be many maximum matchings.
-- The graph can be directed or undirected.
+  * There may be many maximum matchings.
+  * Calculates **one** possible maximum cardinality matching in a graph.
+
+* The graph can be **directed** or **undirected**.
+* Running time: :math:`O( E*V * \alpha(E,V))`
+
+    * :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
 
 
-
-Characteristics:
-----------------
-
-The main characterics are:
-  - Calculates **one** possible maximum cardinality matching in a graph.
-  - The graph can be directed or undirected.
-  - Running time: :math:`O( E*V * \alpha(E,V))`
-  - :math:`\alpha(E,V)` is the inverse of the `Ackermann function`_.
-
-  .. _Ackermann function: https://en.wikipedia.org/wiki/Ackermann_function
+.. _Ackermann function: https://en.wikipedia.org/wiki/Ackermann_function
 
 Signature Summary
------------------
-
+------------------------------------------------------------
 
 .. code-block:: none
 
-    pgr_MaximumCardinalityMatching(edges_sql)
-    pgr_MaximumCardinalityMatching(edges_sql, directed)
+    pgr_MaximumCardinalityMatching(edges_sql) - Proposed
+    pgr_MaximumCardinalityMatching(edges_sql, directed) - Proposed
 
     RETURNS SET OF (seq, edge_id, source, target)
         OR EMPTY SET
 
-
-Signatures
-----------
 
 .. index::
     single: MaximumCardinalityMatching(Minimal Use) - Proposed
 
 
 
-Minimal signature
-....................
+Minimal Use
+.............................................
 
 .. code-block:: none
 
     pgr_MaximumCardinalityMatching(edges_sql)
     RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
-The minimal signature calculates one possible maximum cardinality matching on a `directed` graph.
+The minimal use calculates one possible maximum cardinality matching on a **directed** graph.
 
 :Example:
 
@@ -94,7 +83,7 @@ The minimal signature calculates one possible maximum cardinality matching on a 
     single: MaximumCardinalityMatching(Complete Signature) - Proposed
 
 Complete signature
-....................
+.............................................
 
 .. code-block:: none
 
@@ -154,8 +143,8 @@ Column                 Type                  Description
 =====================  ====================  =================================================
 **seq**                ``INT``               Sequential value starting from **1**.
 **edge**               ``BIGINT``            Identifier of the edge in the original query(edges_sql).
-**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
-**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
+**source**             ``BIGINT``            Identifier of the first end point of the edge.
+**target**             ``BIGINT``            Identifier of the second end point of the edge.
 =====================  ====================  =================================================
 
 See Also

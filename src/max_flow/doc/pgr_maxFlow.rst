@@ -55,9 +55,6 @@ Signature Summary
     RETURNS BIGINT
 
 
-Signatures
------------------------
-
 .. index::
     single: maxFlow(One to One) - Proposed
 

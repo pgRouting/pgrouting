@@ -50,9 +50,6 @@ Signature Summary
     OR EMPTY SET
 
 
-Signatures
------------------------
-
 .. index::
     single: maxFlowPushRelabel(One to One) - Proposed
 

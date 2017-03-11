@@ -50,8 +50,6 @@ Signature Summary
     OR EMPTY SET
 
 
-Signatures
------------------------
 
 .. index::
     single: maxFlowEdmondsKarp(One to One) - Proposed

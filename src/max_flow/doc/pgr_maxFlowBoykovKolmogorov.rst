@@ -50,9 +50,6 @@ Signature Summary
     OR EMPTY SET
 
 
-Signatures
------------------------
-
 .. index::
     single: maxFlowBoykovKolmogorov(One to One) - Proposed
 
