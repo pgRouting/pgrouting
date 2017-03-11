@@ -13,10 +13,10 @@ pgr_maxFlow - Proposed
 ============================================
 
 
-Name
-----
+Synopsis
+-------------------------------------------------------------------------------
 
-``pgr_maxFlow`` — Calculates the maximum flow in a directed graph given source(s) and targets(s).
+``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm.
 
 
 .. include:: ../../proposedNext.rst
@@ -30,21 +30,18 @@ Name
    Boost Graph Inside
 
 
-Synopsis
--------------------------------------------------------------------------------
 
-Calculates the maximum flow in a directed graph from a source node to a sink node.
+.. rubric:: Characteristics
 
-Characteristics:
-----------------
+- The graph is **directed**.
+- When the maximum flow is 0 then there is no flow and **0** is returned.
 
-The main characterics are:
-  - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
-  - The maximum flow through the graph can be calculated by aggregation on source/sink.
-  - Edges must be weighted with non-negative capacities.
-  - Returns 0 if source and sink are the same.
-  - Allows multiple sources and sinks.
-  - Running time: :math:`O( V ^ 3)`
+  - There is no flow when a **source** is the same as a **target**.
+      
+- Any duplicated value in the source(s) or target(s) are ignored.
+- Uses the :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>` algorithm.
+
+* Running time: :math:`O( V ^ 3)`
 
 Signature Summary
 -----------------
@@ -67,7 +64,7 @@ Signatures
 One to One
 .....................................................................
 
-Calculates the maximum flow from one source vertex to one sink vertex in a directed graph.
+Calculates the maximum flow from the `source` to the `target`.
 
 .. code-block:: none
 
@@ -87,7 +84,7 @@ Calculates the maximum flow from one source vertex to one sink vertex in a direc
 One to Many
 .....................................................................
 
-Ccalculates the maximum flow from one source vertex to many sink vertices in a directed graph.
+Calculates the maximum flow from the `source` to all of the `targets`.
 
 .. code-block:: none
 
@@ -107,7 +104,7 @@ Ccalculates the maximum flow from one source vertex to many sink vertices in a d
 Many to One
 .....................................................................
 
-Calculates the maximum flow from many source vertices to one sink vertex in a directed graph.
+Calculates the maximum flow from all the `sources` to the `target`.
 
 .. code-block:: none
 
@@ -127,7 +124,7 @@ Calculates the maximum flow from many source vertices to one sink vertex in a di
 Many to Many
 .....................................................................
 
-Calculates the maximum flow from many sources to many sinks in a directed graph.
+Calculates the maximum flow from all of the `sources` to all of the `targets`.
 
 .. code-block:: none
 
@@ -148,9 +145,23 @@ Description of the Signatures
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
-.. include::  ./maxFlow.rst
-    :start-after: pgr_flow_parameters_start
-    :end-before: pgr_flow_parameters_end
+
+.. pgr_flow_parameters_start
+
+Description of the Parameters of the Flow Signatures
+...............................................................................
+
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**edges_sql**  ``TEXT``                    The edges SQL query as described above.
+**source**     ``BIGINT``                  Identifier of the starting vertex of the flow.
+**sources**    ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
+**target**     ``BIGINT``                  Identifier of the ending vertex of the flow.
+**targets**    ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
+============== ================== ======== =================================================
+
+.. pgr_flow_parameters_end
 
 
 

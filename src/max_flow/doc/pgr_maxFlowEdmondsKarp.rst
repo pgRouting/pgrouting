@@ -14,10 +14,10 @@ pgr_maxFlowEdmondsKarp - Proposed
 ============================================
 
 
-Name
-----
+Synopsis
+-------------------------------------------------------------------------------
 
-``pgr_maxFlowEdmondsKarp`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
+``pgr_maxFlowEdmondsKarp`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel Algorithm.
 
 
 .. include:: ../../proposedNext.rst
@@ -26,41 +26,29 @@ Name
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
+   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 
    Boost Graph Inside
 
 
-Synopsis
--------------------------------------------------------------------------------
+.. include::  ./maxFlow.rst
+    :start-after: characteristics_start
+    :end-before: characteristics_end
 
-Calculates the maximum flow in a directed graph from a source node to a sink node.
-Edges must be weighted with non-negative capacities.
-Developed by Edmonds and Karp.
-
-
-Characteristics:
-----------------
-
-The main characterics are:
-  - The graph must be directed.
-  - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
-  - The maximum flow through the graph can be calculated by aggregation on source/sink.
-  - Returns nothing if source and sink are the same.
-  - Allows multiple sources and sinks (See signatures below).
-  - Running time: :math:`O(V * E^2)`.
+* Running time: :math:`O( V * E ^ 2)`
 
 Signature Summary
 -----------------
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source,  target)
-    pgr_maxFlowEdmondsKarp(edges_sql, sources, target)
-    pgr_maxFlowEdmondsKarp(edges_sql, source,  targets)
-    pgr_maxFlowEdmondsKarp(edges_sql, sources, targets)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    pgr_maxFlowEdmondsKarp(edges_sql, source,  target) - Proposed
+    pgr_maxFlowEdmondsKarp(edges_sql, sources, target) - Proposed
+    pgr_maxFlowEdmondsKarp(edges_sql, source,  targets) - Proposed
+    pgr_maxFlowEdmondsKarp(edges_sql, sources, targets) - Proposed
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
+
 
 Signatures
 -----------------------
@@ -69,15 +57,15 @@ Signatures
     single: maxFlowEdmondsKarp(One to One) - Proposed
 
 One to One
-.................................................
+.....................................................................
 
-Calculates the maximum flow from one source vertex to one sink vertex on a `directed` graph.
+Calculates the flow on the graph edges that maximizes the flow from the `source` to the `target`.
 
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, source,  target)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 :Example:
 
@@ -85,19 +73,20 @@ Calculates the maximum flow from one source vertex to one sink vertex on a `dire
    :start-after: -- q1
    :end-before: -- q2
 
+
 .. index::
     single: maxFlowEdmondsKarp(One to Many) - Proposed
 
 One to Many
-.................................................
+.....................................................................
 
-Calculates the maximum flow from one source vertex to many sink vertices on a `directed` graph.
+Calculates the flow on the graph edges that maximizes the flow from the `source` to all of the `targets`.
 
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, source,  targets)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 :Example:
 
@@ -105,19 +94,20 @@ Calculates the maximum flow from one source vertex to many sink vertices on a `d
    :start-after: -- q2
    :end-before: -- q3
 
+
 .. index::
     single: maxFlowEdmondsKarp(Many to One) - Proposed
 
 Many to One
-.................................................
+.....................................................................
 
-Calculates the maximum flow from many source vertices to one sink vertex on a `directed` graph.
+Calculates the flow on the graph edges that maximizes the flow from all of the `sources` to the `target`.
 
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, sources,  target)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 :Example:
 
@@ -125,19 +115,20 @@ Calculates the maximum flow from many source vertices to one sink vertex on a `d
    :start-after: -- q3
    :end-before: -- q4
 
+
 .. index::
     single: maxFlowEdmondsKarp(Many to Many) - Proposed
 
 Many to Many
-.................................................
+.....................................................................
 
-Calculates the maximum flow from many sources to many sinks on a `directed` graph.
+Calculates the flow on the graph edges that maximizes the flow from all of the `sources` to all of the `targets`.
 
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, sources,  targets)
-    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
-      OR EMPTY SET
+    RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
+    OR EMPTY SET
 
 :Example:
 
@@ -145,29 +136,28 @@ Calculates the maximum flow from many sources to many sinks on a `directed` grap
    :start-after: -- q4
    :end-before: -- q5
 
-
-
 Description of the Signatures
------------------------------------------------
-
+--------------------------------------------------------
 
 .. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
-.. include::  ./maxFlow.rst
+
+.. include::  ./pgr_maxFlow.rst
     :start-after: pgr_flow_parameters_start
     :end-before: pgr_flow_parameters_end
 
-.. include:: ./pgr_maxFlowPushRelabel.rst
-    :start-after: result_start
-    :end-before: result_end
+
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: result_flow_start
+    :end-before: result_flow_end
 
 
 See Also
 --------
 
-* :ref:`maxFlow`
+* :ref:`maxFlow`, :ref:`pgr_maxFlowBoykovKolmogorov <pgr_maxFlowBoykovKolmogorov>`, :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>`
 * http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 

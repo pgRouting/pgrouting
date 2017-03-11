@@ -16,17 +16,18 @@ Flow - Group Of Functions
    :start-after: begin-warning
    :end-before: end-warning
 
-- Maximum Flow
+.. rubric:: Flow functions
 
-  - :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
-  - :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm with details of flow on edges.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
+* :ref:`pgr_maxFlow` - Calculates the maximum flow using Push and Relabel algorithm.
+* :ref:`pgr_maxFlowPushRelabel` - Flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel algorithm.
+* :ref:`pgr_maxFlowEdmondsKarp` - Flow on the graph edges that maximizes the flow from the sources to the targets using Edmonds Karp algorithm.
+* :ref:`pgr_maxFlowBoykovKolmogorov` - Flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
-- Flow Applications
 
-  - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching in a graph.
-  - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
+.. rubric:: Flow Applications
+
+* :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching in a graph.
+* :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
 
 
 
@@ -41,34 +42,35 @@ Flow - Group Of Functions
         ./pgr_edgeDisjointPaths
 
 
-General Information
-------------------------
+Flow Functions General Information
+-----------------------------------
 
-:ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is garanteed to be the same on the functions :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>`, :ref:`pgr_maxFlowEdmondsKarp <pgr_maxFlowEdmondsKarp>`, :ref:`pgr_maxFlowBoykovKolmogorov <pgr_maxFlowBoykovKolmogorov>`, but the actual flow through each edge may vary.
+.. characteristics_start
 
-The Maximum Flow Functions use the same **edge_sql** and the same **parameters**:
-
-.. include:: ../../../doc/src/tutorial/custom_query.rst
-    :start-after: flow_edges_sql_start
-    :end-before: flow_edges_sql_end
+.. rubric:: Characteristics
 
 
-.. pgr_flow_parameters_start
+- The graph is **directed**.
+- Process is done only on edges with positive capacities.
+- When the maximum flow is 0 then there is no flow and **EMPTY SET** is returned.
 
-Description of the parameters of the signatures
-...............................................................................
+  - There is no flow when a **source** is the same as a **target**.
 
-============== ================== ======== =================================================
-Column         Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    The edges SQL query as described above.
-**source**     ``BIGINT``                  Identifier of the starting vertex of the flow.
-**sources**    ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
-**target**     ``BIGINT``                  Identifier of the ending vertex of the flow.
-**targets**    ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
-============== ================== ======== =================================================
+- Any duplicated value in the source(s) or target(s) are ignored.
+- Calculates the flow/residual capacity for each edge. In the output
 
-.. pgr_flow_parameters_end
+  - Edges with zero flow are omitted.
+
+- Creates a **super source** and edges to all the source(s), and a **super target** and the edges from all the targets(s).
+- The maximum flow through the graph is guaranteed to be the value returned by :ref:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and can be calculated:
+
+  - By aggregation of the outgoing flow from the sources
+  - By aggregation of the incoming flow to the targets
+
+.. characteristics_end
+
+
+:ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>`, :ref:`pgr_maxFlowEdmondsKarp <pgr_maxFlowEdmondsKarp>`, :ref:`pgr_maxFlowBoykovKolmogorov <pgr_maxFlowBoykovKolmogorov>`, but the actual flow through each edge may vary.
 
 
 
@@ -115,7 +117,7 @@ Then:
 
      :math:`\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
 
-where:
+Where:
 
   :math:`\boldsymbol{\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
 
