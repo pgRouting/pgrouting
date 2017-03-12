@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_maxFlowPushRelabel Proposed &mdash; pgRouting Manual (2.4-rc1)</title>
+    <title>pgr_maxFlowPushRelabel Proposed &mdash; pgRouting Manual (2.4-rc2)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     'v2.4.0-rc1',
+        VERSION:     'v2.4.0-rc2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4-rc1)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-rc2)" href="../../../index.html" />
     <link rel="up" title="Maximum Flow" href="maxFlow.html" />
     <link rel="next" title="pgr_maxFlowEdmondsKarp - Proposed" href="pgr_maxFlowEdmondsKarp.html" />
     <link rel="prev" title="pgr_maxFlow Proposed" href="pgr_maxFlow.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.4-rc1)</span></a></h1>
+          <span>pgRouting Manual (2.4-rc2)</span></a></h1>
         <h2 class="heading"><span>pgr_maxFlowPushRelabel Proposed</span></h2>
       </div>
       <div class="topnav">
@@ -106,7 +106,7 @@ Edges must be weighted with non-negative capacities.</p>
 pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertex)
 pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertices)
 pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertices)
-RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
   OR EMPTY SET
 </pre></div>
 </div>
@@ -117,7 +117,7 @@ RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
 <span id="index-0"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from one source vertex to one sink vertex in a directed graph.</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertex)
-RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
   OR EMPTY SET
 </pre></div>
 </div>
@@ -157,7 +157,7 @@ RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
 <span id="index-1"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
 <p>Ccalculates the maximum flow from one source vertex to many sink vertices in a directed graph.</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertices)
-RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
   OR EMPTY SET
 </pre></div>
 </div>
@@ -208,7 +208,7 @@ RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
 <span id="index-2"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from many source vertices to one sink vertex in a directed graph.</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertex)
-RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
   OR EMPTY SET
 </pre></div>
 </div>
@@ -246,7 +246,7 @@ RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
 <span id="index-3"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
 <p>Calculates the maximum flow from many sources to many sinks in a directed graph.</p>
 <div class="highlight-none"><div class="highlight"><pre>pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertices)
-RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
   OR EMPTY SET
 </pre></div>
 </div>
@@ -449,8 +449,8 @@ RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version v2.4.0-rc1.
-      Last updated on Mar 05, 2017.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-rc2.
+      Last updated on Mar 12, 2017.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

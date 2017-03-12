@@ -69,7 +69,7 @@ Using a terminal window:
 
 .. code-block:: bash
 
-sudo apt install postgresql-9.3-pgrouting
+    sudo apt install postgresql-9.3-pgrouting
 
 This will also install all required packages such as PostgreSQL and PostGIS if not installed yet.
 
@@ -78,7 +78,7 @@ This will also install all required packages such as PostgreSQL and PostGIS if n
 
 .. code-block:: bash
 
-sudo apt-get update & sudo apt-get upgrade
+    sudo apt-get update & sudo apt-get upgrade
 
 
 RHEL/CentOS

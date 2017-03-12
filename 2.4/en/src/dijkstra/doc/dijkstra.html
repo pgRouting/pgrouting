@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dijkstra - Family of functions &mdash; pgRouting Manual (2.4-rc1)</title>
+    <title>Dijkstra - Family of functions &mdash; pgRouting Manual (2.4-rc2)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     'v2.4.0-rc1',
+        VERSION:     'v2.4.0-rc2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,14 +25,14 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4-rc1)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-rc2)" href="../../../index.html" />
     <link rel="up" title="Routing Functions" href="../../routingFunctions.html" />
     <link rel="next" title="pgr_dijkstra" href="pgr_dijkstra.html" />
     <link rel="prev" title="pgr_bdDijkstra" href="../../bdDijkstra/doc/pgr_bdDijkstra.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.4-rc1)</span></a></h1>
+          <span>pgRouting Manual (2.4-rc2)</span></a></h1>
         <h2 class="heading"><span>Dijkstra - Family of functions</span></h2>
       </div>
       <div class="topnav">
@@ -119,12 +119,12 @@
 \text{shortest path } \boldsymbol{\pi} \text{ between } start_{vid} \text{and } end_{vid} &amp;\quad \text{if } \exists  \boldsymbol{\pi}  \\
 \varnothing &amp;\quad \text{otherwise} \\
 \end{cases}\end{split}\]</div>
-<p><span class="math">\(\boldsymbol{\pi} = \{(path_\seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}\)</span></p>
+<p><span class="math">\(\boldsymbol{\pi} = \{(path\_seq_i, node_i, edge_i, cost_i, agg\_cost_i)\}\)</span></p>
 <dl class="docutils">
 <dt>where:</dt>
 <dd><ul class="first last simple">
-<li><span class="math">\(path_\seq_i = i\)</span></li>
-<li><span class="math">\(path_\seq_{| \pi |} = | \pi |\)</span></li>
+<li><span class="math">\(path\_seq_i = i\)</span></li>
+<li><span class="math">\(path\_seq_{| \pi |} = | \pi |\)</span></li>
 <li><span class="math">\(node_i \in V\)</span></li>
 <li><span class="math">\(node_1 = start_{vid}\)</span></li>
 <li><span class="math">\(node_{| \pi |}  = end_{vid}\)</span></li>
@@ -136,7 +136,7 @@
 </dd>
 <dt>In other words: The algorithm returns a the shortest path between <span class="math">\(start_{vid}\)</span> and <span class="math">\(end_{vid}\)</span> , if it exists, in terms of a sequence of nodes  and of edges,</dt>
 <dd><ul class="first last simple">
-<li><span class="math">\(path_\seq\)</span> indicates the relative position in the path of the <span class="math">\(node\)</span> or <span class="math">\(edge\)</span>.</li>
+<li><span class="math">\(path\_seq\)</span> indicates the relative position in the path of the <span class="math">\(node\)</span> or <span class="math">\(edge\)</span>.</li>
 <li><span class="math">\(cost\)</span> is the cost of the edge to be used to go to the next node.</li>
 <li><span class="math">\(agg\_cost\)</span> is the cost from the <span class="math">\(start_{vid}\)</span> up to the node.</li>
 </ul>
@@ -161,8 +161,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version v2.4.0-rc1.
-      Last updated on Mar 05, 2017.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-rc2.
+      Last updated on Mar 12, 2017.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>

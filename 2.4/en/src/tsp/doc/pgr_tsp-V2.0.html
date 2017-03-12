@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_tsp -Deprecated Signatures &mdash; pgRouting Manual (2.4-rc1)</title>
+    <title>pgr_tsp - Deprecated Signatures &mdash; pgRouting Manual (2.4-rc2)</title>
     
     <link rel="stylesheet" href="../../../_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     'v2.4.0-rc1',
+        VERSION:     'v2.4.0-rc2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,15 +25,15 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4-rc1)" href="../../../index.html" />
+    <link rel="top" title="pgRouting Manual (2.4-rc2)" href="../../../index.html" />
     <link rel="up" title="Deprecated Functions" href="../../../doc/deprecated.html" />
     <link rel="next" title="pgr_flipEdges - Deprecated Function" href="../../convenience/doc/pgr_flipEdges.html" />
     <link rel="prev" title="pgr_astar - Deprecated Signature" href="../../astar/doc/pgr_astar-v2.html" /> 
   </head>
   <body>
       <div class="header"><img class="rightlogo" src="../../../_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="../../../index.html">
-          <span>pgRouting Manual (2.4-rc1)</span></a></h1>
-        <h2 class="heading"><span>pgr_tsp -Deprecated Signatures</span></h2>
+          <span>pgRouting Manual (2.4-rc2)</span></a></h1>
+        <h2 class="heading"><span>pgr_tsp - Deprecated Signatures</span></h2>
       </div>
       <div class="topnav">
       
@@ -50,14 +50,15 @@
         
         
   <div class="section" id="pgr-tsp-deprecated-signatures">
-<span id="pgr-tsp-v2-0"></span><h1>pgr_tsp -Deprecated Signatures<a class="headerlink" href="#pgr-tsp-deprecated-signatures" title="Permalink to this headline">¶</a></h1>
+<span id="pgr-tsp-v2-0"></span><h1>pgr_tsp - Deprecated Signatures<a class="headerlink" href="#pgr-tsp-deprecated-signatures" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>These functions signatures are deprecated!!!</p>
+<p>These function(s) are deprecated!!!</p>
 <ul class="last simple">
-<li>That means they has been replaced by new signatures.</li>
-<li>These signatures are no longer supported, and may be removed from future versions.</li>
-<li>All code that use these functions signatures should be converted to use its replacement.</li>
+<li>Are no longer supported,</li>
+<li>May be removed from future versions.</li>
+<li>May have been replaced by new functions.</li>
+<li>All code that uses the functions should be converted to use its replacement if one exists.</li>
 </ul>
 </div>
 <div class="section" id="name">
@@ -65,24 +66,15 @@
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route from a start node via a list of nodes.</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Use <a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a> instead.</p>
-</div>
+<p class="rubric">Replacement <a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a></p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">pgr_tsp</span></tt> - Returns the best route order when passed a distance matrix.</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Use <a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> instead.</p>
-</div>
+<p class="rubric">Replacement <a class="reference internal" href="pgr_tsp.html#pgr-tsp"><em>pgr_TSP</em></a></p>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">_pgr_makeDistanceMatrix</span></tt> - Returns a Eucleadian distance Matrix from the points provided in the sql result.</li>
 </ul>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">There is no replacement.</p>
-</div>
+<p class="rubric">No Replacement</p>
 </div>
 <div class="section" id="synopsis">
 <h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
@@ -342,8 +334,8 @@
       </div>
 
     <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version v2.4.0-rc1.
-      Last updated on Mar 05, 2017.
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-rc2.
+      Last updated on Mar 12, 2017.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
