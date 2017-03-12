@@ -84,7 +84,7 @@ File::Find::find({wanted => \&wanted}, $sig_dir);
 
 # foreach old files
 for my $old_file ( sort @old_files ) {
-    print "\ngenerating $old_file upgrade file\n"; 
+    print "\ngenerating $old_file upgrade file\n" if $DEBUG; 
     # read and parse the .sig
     my $old_hash = read_sig_file( $old_file );
     # and generate and write the update script file
@@ -155,14 +155,6 @@ sub generate_upgrade_script {
     my $ntype = $new->{types};
     my $otype = $old->{types};
 
-    #TODO DELETE
-    for my $x (@{$ntype}) {
-        print "new type $x\n";
-    }
-    for my $x (@{$otype}) {
-        print "new type $x\n";
-    }
-    
     # create a hash like <name> => <column_list> for new types
     my %ntype_h = ();
     for my $x (@{$ntype}) {

@@ -69,8 +69,10 @@ Pgr_pickDeliver::solve() {
     solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(3, this));
     solutions.push_back(solve(solutions.back()));
+#endif
     solutions.push_back(Initial_solution(4, this));
     solutions.push_back(solve(solutions.back()));
+#if 0
     solutions.push_back(Initial_solution(5, this));
     solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(6, this));
