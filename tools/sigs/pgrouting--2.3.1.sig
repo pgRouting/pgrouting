@@ -4,7 +4,7 @@ contraction_vertex
 pgr_costresult
 pgr_costresult3
 pgr_geomresult
-FUNCTIONS
+#FUNCTIONS
 pgr_alphashape(text,double precision)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)
 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
