@@ -12,10 +12,16 @@
 Deprecated Functions
 ====================
 
-.. warning:: These functions are deprecated!!!
+.. deprecated_warning_start
 
-    * That means they have been replaced by new functions or are no longer supported, and may be removed from future versions.
+.. warning:: These function(s) are deprecated!!!
+
+    * Are no longer supported,
+    * May be removed from future versions.
+    * May have been replaced by new functions.
     * All code that uses the functions should be converted to use its replacement if one exists. 
+
+.. deprecated_warning_end
 
 Deprecated on version 2.4
 ----------------------------
@@ -54,6 +60,7 @@ Auxiliary functions
    :hidden:
 
    ../src/bd_dijkstra/doc/pgr_bdDijkstra-v2
+   ../src/convenience/doc/pgr_pointsToVids
    ../src/astar/doc/pgr_astar-v2
    ../src/tsp/doc/pgr_tsp-V2.0
    ../src/convenience/doc/pgr_flipEdges
@@ -116,10 +123,10 @@ Auxiliary functions
    ../src/common/doc/utilities/get_table_name
    ../src/common/doc/utilities/is_column_indexed
    ../src/common/doc/utilities/is_column_in_table
-   ../src/common/doc/utilities/point_to_id
    ../src/common/doc/utilities/quote_ident
    ../src/common/doc/utilities/versionless
    ../src/common/doc/utilities/start_point
    ../src/common/doc/utilities/end_point
+   ../src/common/doc/utilities/point_to_id
 
 

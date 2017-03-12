@@ -82,7 +82,6 @@ Proposed functions
   ../src/max_flow/doc/maxFlowApplications
 
   ../src/convenience/doc/pgr_pointToEdgeNode
-  ../src/convenience/doc/pgr_pointsToVids
   ../src/label_graph/doc/pgr_labelGraph
   ../src/vrppdtw/doc/pgr_gsoc_vrppdtw
   ../src/vrp_basic/doc/pgr_vrpOneDepot

@@ -60,7 +60,7 @@ Signature Summary
     pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertex)
     pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertices)
     pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 
@@ -78,7 +78,7 @@ Calculates the maximum flow from one source vertex to one sink vertex in a direc
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertex)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -99,7 +99,7 @@ Ccalculates the maximum flow from one source vertex to many sink vertices in a d
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -120,7 +120,7 @@ Calculates the maximum flow from many source vertices to one sink vertex in a di
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertex)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -141,7 +141,7 @@ Calculates the maximum flow from many sources to many sinks in a directed graph.
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:

@@ -225,7 +225,9 @@ Vehicle_pickDeliver::push_back(const Order &order) {
     evaluate(m_path.size() - 3);
 
     pgassert(has_order(order));
+#if 0
     pgassert(!has_cv());
+#endif
     invariant();
 }
 
@@ -240,7 +242,9 @@ Vehicle_pickDeliver::push_front(const Order &order) {
     evaluate(1);
 
     pgassert(has_order(order));
+#if 0
     pgassert(!has_cv());
+#endif
     invariant();
 }
 

@@ -12,11 +12,12 @@
 pgr_isColumnInTable - Deprecated Function
 ===============================================================================
 
-.. warning:: This function is deprecated!!!
+.. include:: ../../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
-    * Is no longer supported.
-    * May be removed from future versions.
-    * There is no replacement.
+.. rubric:: No replacement
+
 
 Name
 -------------------------------------------------------------------------------

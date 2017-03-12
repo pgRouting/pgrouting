@@ -84,6 +84,7 @@ File::Find::find({wanted => \&wanted}, $sig_dir);
 
 # foreach old files
 for my $old_file ( sort @old_files ) {
+    print "\ngenerating $old_file upgrade file\n" if $DEBUG; 
     # read and parse the .sig
     my $old_hash = read_sig_file( $old_file );
     # and generate and write the update script file
@@ -157,23 +158,19 @@ sub generate_upgrade_script {
     # create a hash like <name> => <column_list> for new types
     my %ntype_h = ();
     for my $x (@{$ntype}) {
-        $x =~ m/(\w+)(\([^\)]+\))$/;
-        $ntype_h{lc($1)} = lc($2);
+        #$x =~ m/(\w+)(\([^\)]+\))$/;
+        $ntype_h{lc($x)} = lc($x);
     }
 
     # check if old type exists with different column types
     for my $x (@{$otype}) {
-        $x =~ m/(\w+)(\([^\)]+\))$/;
-        my $name = lc($1);
-        my $cols = lc($2);
-        if ($ntype_h{$name}) {
-            if ($ntype_h{$name} ne $cols) {
-                warn "WARNING: old type '$name$cols' changed to '$name$ntype_h{$name}' !\n";
-                $err = 1;
-            }
-            else {
-                push @types2remove, $name;
-            }
+        my $name = lc($x);
+        if (!exists $ntype_h{$name}) {
+            #types no longer used are droped form the extension
+            push @commands, "ALTER EXTENSION pgrouting DROP TYPE $name;\n";
+            push @commands, "DROP TYPE $name;\n";
+        } else {
+            push @types2remove, $name;
         }
     }
 
