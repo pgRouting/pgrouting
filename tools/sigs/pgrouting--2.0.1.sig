@@ -1,9 +1,9 @@
-#VERSION pgrouting 2.0.0
+#VERSION pgrouting 2.0.1
 #TYPES
 pgr_costresult
 pgr_costresult3
 pgr_geomresult
-FUNCTIONS
+#FUNCTIONS
 pgr_alphashape(text)
 pgr_analyzegraph(text,double precision,text,text,text,text,text)
 pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)
