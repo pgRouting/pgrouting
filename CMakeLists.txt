@@ -666,7 +666,8 @@ message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 # create the signature file for this release
 message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
 execute_process(
-    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file.pl ${PGROUTING_VERSION}
+    COMMAND cp ${PGROUTING_SOURCE_DIR}/tools/curr-sig/pgrouting--${PGROUTING_VERSION}.sig ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sig
+    #COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file.pl ${PGROUTING_VERSION}
     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
     RESULT_VARIABLE SIG_RESULT
     )

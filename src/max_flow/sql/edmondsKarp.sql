@@ -25,11 +25,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 ------------------------------------
--- 3 pgr_maxFlowEdmondsKarp
+-- 3 pgr_edmondsKarp
 ------------------------------------
 
 
-CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     edges_sql TEXT,
     source BIGINT,
     target BIGINT,
@@ -49,7 +49,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
 
 
 
-CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     edges_sql TEXT,
     source  BIGINT,
     targets ANYARRAY,
@@ -69,7 +69,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
 
 
 
-CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     edges_sql TEXT,
     sources ANYARRAY,
     target  BIGINT,
@@ -88,7 +88,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   LANGUAGE sql VOLATILE;
 
 
-CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
     edges_sql TEXT,
     sources  ANYARRAY,
     targets  ANYARRAY,
