@@ -59,12 +59,12 @@ void
 Pgr_pickDeliver::solve() {
 #if 0
     solutions.push_back(Initial_solution(0, this));
-#endif
     solutions.push_back(Initial_solution(1, this));
 
     solutions.push_back(solve(solutions.back()));
+#endif
 
-#if 1
+#if 0
     solutions.push_back(Initial_solution(2, this));
     solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(3, this));
