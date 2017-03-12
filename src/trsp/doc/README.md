@@ -90,17 +90,14 @@ SELECT * FROM pgr_TRSP(
 ```
 pgr_trsp use the original code when there are restrictions
 therefore throws Error to represent no path found
-Can get a server crash
 ```
 SELECT * FROM pgr_trsp(
-$$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
-1, 15, true, true,
-$$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, 32, 33::TEXT AS via_path$$
+     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+     1, 15, true, true,
+     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
 );
-server closed the connection unexpectedly
-This probably means the server terminated abnormally
-before or while processing the request.
-The connection to the server was lost. Attempting reset: Failed.
+ERROR:  Error computing path: Path Not Found
+CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
 ```
 ## routing from/to same location
 using dijkstra to verify (1 to 1)
@@ -947,7 +944,7 @@ What it returns
 * the points are renumbered to -1, -2 .. -N
 * if a point is part of a path it will show on the path
 
-Note: I don't mention the wrapper name due to the fact that this is not official documentation
+Note: I do not mention the wrapper name due to the fact that this is not official documentation
 Note: I will use *_pgr_withPointsVia* as the wrapper name just for sake of this notes
 Example excution
 ```

@@ -12,11 +12,13 @@
 pgr_flipEdges - Deprecated Function
 ==============================================================================
 
-.. warning:: This function is deprecated!!!
 
-    * Is no longer supported.
-    * May be removed from future versions.
-    * There is no replacement.
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
+
+.. rubric:: No replacement
+
 
 Name
 ------------------------------------------------------------------------------

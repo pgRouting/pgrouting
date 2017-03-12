@@ -91,17 +91,12 @@ SELECT * FROM pgr_TRSP(
 
 \echo pgr_trsp use the original code  when there are restrictions
 \echo therefore throws Error to represent no path found
-\echo Can get a server crash
 \echo '\`\`\`'
-\echo SELECT * FROM pgr_trsp(
-\echo     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
-\echo     1, 15, true, true,
-\echo     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
-\echo );  
-\echo server closed the connection unexpectedly
-\echo This probably means the server terminated abnormally
-\echo before or while processing the request.
-\echo The connection to the server was lost. Attempting reset: Failed.
+ SELECT * FROM pgr_trsp(
+     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+     1, 15, true, true,
+     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);  
 \echo '\`\`\`'
 
 
