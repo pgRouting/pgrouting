@@ -168,6 +168,7 @@ sub generate_upgrade_script {
         if (!exists $ntype_h{$name}) {
             #types no longer used are droped form the extension
             push @commands, "ALTER EXTENSION pgrouting DROP TYPE $name;\n";
+            push @commands, "DROP TYPE $name;\n";
         } else {
             push @types2remove, $name;
         }
