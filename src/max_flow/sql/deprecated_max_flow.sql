@@ -46,7 +46,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 1);
+        FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -66,7 +66,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 1);
+        FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -86,7 +86,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 1);
+        FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -112,7 +112,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 1);
+        FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -132,7 +132,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 1);
+        FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -152,7 +152,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 1);
+        FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -178,7 +178,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 1);
+        FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -198,7 +198,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 1);
+        FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -218,7 +218,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 1);
+        FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -245,7 +245,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 1);
+        FROM pgr_PushRelabel($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -265,7 +265,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 1);
+        FROM pgr_boykovKolmogorov($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;
@@ -285,7 +285,7 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
   $BODY$
   BEGIN
         RETURN QUERY SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 1);
+        FROM pgr_edmondsKarp($1, $2, $3);
   END
   $BODY$
   LANGUAGE plpgsql VOLATILE;

@@ -4,7 +4,7 @@
 
 
 \echo -- q1
-SELECT * FROM pgr_maxFlowPushRelabel(
+SELECT * FROM pgr_pushRelabel(
     'SELECT id,
             source,
             target,
@@ -15,7 +15,7 @@ SELECT * FROM pgr_maxFlowPushRelabel(
 );
 
 \echo -- q2
-SELECT * FROM pgr_maxFlowPushRelabel(
+SELECT * FROM pgr_pushRelabel(
     'SELECT id,
             source,
             target,
@@ -26,7 +26,7 @@ SELECT * FROM pgr_maxFlowPushRelabel(
 );
 
 \echo -- q3
-SELECT * FROM pgr_maxFlowPushRelabel(
+SELECT * FROM pgr_pushRelabel(
     'SELECT id,
             source,
             target,
@@ -37,7 +37,7 @@ SELECT * FROM pgr_maxFlowPushRelabel(
 );
 
 \echo -- q4
-SELECT * FROM pgr_maxFlowPushRelabel(
+SELECT * FROM pgr_pushRelabel(
     'SELECT id,
             source,
             target,

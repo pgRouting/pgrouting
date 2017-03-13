@@ -1,6 +1,6 @@
 
 \echo -- q1
-SELECT * FROM pgr_maxFlowBoykovKolmogorov(
+SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -11,7 +11,7 @@ SELECT * FROM pgr_maxFlowBoykovKolmogorov(
 );
 
 \echo -- q2
-SELECT * FROM pgr_maxFlowBoykovKolmogorov(
+SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -22,7 +22,7 @@ SELECT * FROM pgr_maxFlowBoykovKolmogorov(
 );
 
 \echo -- q3
-SELECT * FROM pgr_maxFlowBoykovKolmogorov(
+SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
             target,
@@ -33,7 +33,7 @@ SELECT * FROM pgr_maxFlowBoykovKolmogorov(
 );
 
 \echo -- q4
-SELECT * FROM pgr_maxFlowBoykovKolmogorov(
+SELECT * FROM pgr_boykovKolmogorov(
     'SELECT id,
             source,
             target,

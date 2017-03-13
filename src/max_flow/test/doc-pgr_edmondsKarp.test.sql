@@ -1,6 +1,6 @@
 
 \echo -- q1
-SELECT * FROM pgr_maxFlowEdmondsKarp(
+SELECT * FROM pgr_edmondsKarp(
     'SELECT id,
             source,
             target,
@@ -11,7 +11,7 @@ SELECT * FROM pgr_maxFlowEdmondsKarp(
 );
 
 \echo -- q2
-SELECT * FROM pgr_maxFlowEdmondsKarp(
+SELECT * FROM pgr_edmondsKarp(
     'SELECT id,
             source,
             target,
@@ -22,7 +22,7 @@ SELECT * FROM pgr_maxFlowEdmondsKarp(
 );
 
 \echo -- q3
-SELECT * FROM pgr_maxFlowEdmondsKarp(
+SELECT * FROM pgr_edmondsKarp(
     'SELECT id,
             source,
             target,
@@ -33,7 +33,7 @@ SELECT * FROM pgr_maxFlowEdmondsKarp(
 );
 
 \echo -- q4
-SELECT * FROM pgr_maxFlowEdmondsKarp(
+SELECT * FROM pgr_edmondsKarp(
     'SELECT id,
             source,
             target,
