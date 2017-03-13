@@ -14,7 +14,7 @@
 
 .. _pgr_maxFlowPushRelabel:
 
-pgr_maxFlowPushRelabel Proposed
+pgr_maxFlowPushRelabel - Deprecated Function
 ============================================
 
 
@@ -24,10 +24,13 @@ Name
 ``pgr_maxFlowPushRelabel`` — Calculates the maximum flow in a directed graph given a source and a destination.
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
+
+
+.. rubric:: Replacement: :ref:`pgr_pushRelabel`
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
@@ -67,8 +70,6 @@ Signature Summary
 Signatures
 -----------------------
 
-.. index::
-    single: maxFlowPushRelabel(One to One) - Proposed
 
 One to One
 .....................................................................
@@ -88,8 +89,6 @@ Calculates the maximum flow from one source vertex to one sink vertex in a direc
    :end-before: -- q2
 
 
-.. index::
-    single: maxFlowPushRelabel(One to Many) - Proposed
 
 One to Many
 .....................................................................
@@ -109,8 +108,6 @@ Ccalculates the maximum flow from one source vertex to many sink vertices in a d
    :end-before: -- q3
 
 
-.. index::
-    single: maxFlowPushRelabel(Many to One) - Proposed
 
 Many to One
 .....................................................................
@@ -130,8 +127,6 @@ Calculates the maximum flow from many source vertices to one sink vertex in a di
    :end-before: -- q4
 
 
-.. index::
-    single: maxFlowPushRelabel(Many to Many) - Proposed
 
 Many to Many
 .....................................................................

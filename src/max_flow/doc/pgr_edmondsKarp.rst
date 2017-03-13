@@ -52,7 +52,7 @@ Signature Summary
 
 
 .. index::
-    single: maxFlowEdmondsKarp(One to One) - Proposed
+    single: edmondsKarp(One to One) - Proposed
 
 One to One
 .....................................................................
@@ -73,7 +73,7 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 
 .. index::
-    single: maxFlowEdmondsKarp(One to Many) - Proposed
+    single: edmondsKarp(One to Many) - Proposed
 
 One to Many
 .....................................................................
@@ -94,7 +94,7 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 
 .. index::
-    single: maxFlowEdmondsKarp(Many to One) - Proposed
+    single: edmondsKarp(Many to One) - Proposed
 
 Many to One
 .....................................................................
@@ -115,7 +115,7 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 
 
 .. index::
-    single: maxFlowEdmondsKarp(Many to Many) - Proposed
+    single: edmondsKarp(Many to Many) - Proposed
 
 Many to Many
 .....................................................................

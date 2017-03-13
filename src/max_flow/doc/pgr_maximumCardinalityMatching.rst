@@ -9,7 +9,7 @@
 
 .. _pgr_maximumCardinalityMatching:
 
-pgr_maximumCardinalityMatching - Proposed
+pgr_maximumCardinalityMatching - Deprecated Function
 ============================================================
 
 
@@ -19,9 +19,13 @@ Name
 ``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
+
+
+.. rubric:: Replacement: :ref:`pgr_maxCardinalityMatch`
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -67,8 +71,6 @@ Signature Summary
 Signatures
 ----------
 
-.. index::
-    single: MaximumCardinalityMatching(Minimal Use) - Proposed
 
 
 
@@ -88,8 +90,6 @@ The minimal signature calculates one possible maximum cardinality matching on a 
    :start-after: -- q1
    :end-before: -- q2
 
-.. index::
-    single: MaximumCardinalityMatching(Complete Signature) - Proposed
 
 Complete signature
 ....................
@@ -159,7 +159,7 @@ Column                 Type                  Description
 See Also
 --------
 
-* :ref:`maxFlowApplications`
+* :ref:`maxFlow`
 * http://www.boost.org/libs/graph/doc/maximum_matching.html
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 * https://en.wikipedia.org/wiki/Ackermann_function

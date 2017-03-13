@@ -10,7 +10,7 @@
 
 .. _pgr_maxFlowEdmondsKarp:
 
-pgr_maxFlowEdmondsKarp - Proposed
+pgr_maxFlowEdmondsKarp - Deprecated Function
 ============================================
 
 
@@ -21,8 +21,8 @@ Name
 
 
 .. include:: ../../../doc/deprecated.rst
-   :start-after: warning-start
-   :end-before: warning-end
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
 .. rubric:: Replacement  :ref:`pgr_edmondsKarp`
 

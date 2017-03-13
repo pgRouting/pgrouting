@@ -7,16 +7,16 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _pgr_maximumCardinalityMatching:
+.. _pgr_maxCardinalityMatch:
 
-pgr_maximumCardinalityMatching - Proposed
+pgr_maxCardinalityMatch - Proposed
 ============================================================
 
 
 Synopsis
 ------------------------------------------------------------
 
-``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
+``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a graph.
 
 
 .. include:: ../../proposedNext.rst
@@ -75,7 +75,7 @@ The minimal use calculates one possible maximum cardinality matching on a **dire
 
 :Example:
 
-.. literalinclude:: doc-pgr_maximumCardinalityMatching.queries
+.. literalinclude:: doc-pgr_maxCardinalityMatch.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -95,7 +95,7 @@ The complete signature calculates one possible maximum cardinality matching.
 
 :Example:
 
-.. literalinclude:: doc-pgr_maximumCardinalityMatching.queries
+.. literalinclude:: doc-pgr_maxCardinalityMatch.queries
    :start-after: -- q2
    :end-before: -- q3
 

@@ -14,7 +14,7 @@
 
 .. _pgr_maxFlowBoykovKolmogorov:
 
-pgr_maxFlowBoykovKolmogorov
+pgr_maxFlowBoykovKolmogorov - Deprecated Function
 ======================================================
 
 
@@ -23,18 +23,11 @@ Name
 
 ``pgr_maxFlowBoykovKolmogorov`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
-
-
 .. include:: ../../../doc/deprecated.rst
-   :start-after: warning-start
-   :end-before: warning-end
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
 
 .. rubric:: Replacement  :ref:`pgr_boykovKolmogorov`
-
-
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 
 

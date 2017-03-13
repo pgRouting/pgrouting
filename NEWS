@@ -4,6 +4,10 @@ Changes for 2.5.0
 
 * New Signatures:
   * pgr_bdAstar(one to one)
+  * pgr_pushRelabel
+  * pgr_edmondsKarp 
+  * pgr_boykovKolmogorov 
+  * pgr_maxCardinalityMatch 
 * New Proposed functions
   * pgr_bdAstar(one to many)
   * pgr_bdAstar(many to one)
@@ -23,13 +27,15 @@ Changes for 2.5.0
   * pgr_bdDijkstraCostMatrix
 * Deprecated Signatures
   * pgr_bdastar - use pgr_bdAstar instead
+  * pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
+  * pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
+  * pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
+  * pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
 * Breaking change on:
   * pgr_edgeDisjointPaths:
     * Added path_id, cost and agg_cost columns on the result
     * Parameter names changed
     * The many version results are the union of the one to one version
-* Moved to the stable proposed functions
-  * All Flow functions
 
 Changes for 2.4.0
 -------------------------------------------------------------------------------
