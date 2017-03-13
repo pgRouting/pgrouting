@@ -14,7 +14,7 @@
 
 .. _pgr_maxFlowBoykovKolmogorov:
 
-pgr_maxFlowBoykovKolmogorov - Proposed
+pgr_maxFlowBoykovKolmogorov
 ======================================================
 
 
@@ -23,6 +23,13 @@ Name
 
 ``pgr_maxFlowBoykovKolmogorov`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
+
+
+.. include:: ../../../doc/deprecated.rst
+   :start-after: warning-start
+   :end-before: warning-end
+
+.. rubric:: Replacement  :ref:`pgr_boykovKolmogorov`
 
 
 .. include:: ../../proposed.rst
@@ -72,8 +79,6 @@ Signature Summary
 Signatures
 ----------------------------
 
-.. index::
-    single: maxFlowBoykovKolmogorov(One to One) - Proposed
 
 One to One
 ..............................................
@@ -93,8 +98,6 @@ The available signature calculates the maximum flow from one source vertex to on
    :end-before: -- q2
 
 
-.. index::
-    single: maxFlowBoykovKolmogorov(One to Many) - Proposed
 
 One to Many
 ..............................................
@@ -114,8 +117,6 @@ The available signature calculates the maximum flow from one source vertex to ma
    :end-before: -- q3
 
 
-.. index::
-    single: maxFlowBoykovKolmogorov(Many to One) - Proposed
 
 Many to One
 ..............................................
@@ -135,8 +136,6 @@ The available signature calculates the maximum flow from many source vertices to
    :end-before: -- q4
 
 
-.. index::
-    single: maxFlowBoykovKolmogorov(Many to Many) - Proposed
 
 Many to Many
 ..............................................

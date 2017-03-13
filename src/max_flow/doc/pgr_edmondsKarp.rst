@@ -8,16 +8,16 @@
    ****************************************************************************
 
 
-.. _pgr_maxFlowEdmondsKarp:
+.. _pgr_edmondsKarp:
 
-pgr_maxFlowEdmondsKarp - Proposed
+pgr_edmondsKarp - Proposed
 ============================================
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-``pgr_maxFlowEdmondsKarp`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel Algorithm.
+``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel Algorithm.
 
 
 .. include:: ../../proposedNext.rst
@@ -42,10 +42,10 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source,  target) - Proposed
-    pgr_maxFlowEdmondsKarp(edges_sql, sources, target) - Proposed
-    pgr_maxFlowEdmondsKarp(edges_sql, source,  targets) - Proposed
-    pgr_maxFlowEdmondsKarp(edges_sql, sources, targets) - Proposed
+    pgr_edmondsKarp(edges_sql, source,  target) - Proposed
+    pgr_edmondsKarp(edges_sql, sources, target) - Proposed
+    pgr_edmondsKarp(edges_sql, source,  targets) - Proposed
+    pgr_edmondsKarp(edges_sql, sources, targets) - Proposed
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
@@ -61,13 +61,13 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source,  target)
+    pgr_edmondsKarp(edges_sql, source,  target)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-pgr_maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-pgr_edmondsKarp.queries
    :start-after: -- q1
    :end-before: -- q2
 
@@ -82,13 +82,13 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, source,  targets)
+    pgr_edmondsKarp(edges_sql, source,  targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-pgr_maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-pgr_edmondsKarp.queries
    :start-after: -- q2
    :end-before: -- q3
 
@@ -103,13 +103,13 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, sources,  target)
+    pgr_edmondsKarp(edges_sql, sources,  target)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-pgr_maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-pgr_edmondsKarp.queries
    :start-after: -- q3
    :end-before: -- q4
 
@@ -124,13 +124,13 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 
 .. code-block:: none
 
-    pgr_maxFlowEdmondsKarp(edges_sql, sources,  targets)
+    pgr_edmondsKarp(edges_sql, sources,  targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-pgr_maxFlowEdmondsKarp.queries
+.. literalinclude:: doc-pgr_edmondsKarp.queries
    :start-after: -- q4
    :end-before: -- q5
 

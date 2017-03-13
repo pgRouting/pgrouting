@@ -20,10 +20,11 @@ Name
 ``pgr_maxFlowEdmondsKarp`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: ../../../doc/deprecated.rst
+   :start-after: warning-start
+   :end-before: warning-end
 
+.. rubric:: Replacement  :ref:`pgr_edmondsKarp`
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
@@ -65,8 +66,6 @@ Signature Summary
 Signatures
 -----------------------
 
-.. index::
-    single: maxFlowEdmondsKarp(One to One) - Proposed
 
 One to One
 .................................................
@@ -85,8 +84,6 @@ Calculates the maximum flow from one source vertex to one sink vertex on a `dire
    :start-after: -- q1
    :end-before: -- q2
 
-.. index::
-    single: maxFlowEdmondsKarp(One to Many) - Proposed
 
 One to Many
 .................................................
@@ -105,8 +102,6 @@ Calculates the maximum flow from one source vertex to many sink vertices on a `d
    :start-after: -- q2
    :end-before: -- q3
 
-.. index::
-    single: maxFlowEdmondsKarp(Many to One) - Proposed
 
 Many to One
 .................................................
@@ -125,8 +120,6 @@ Calculates the maximum flow from many source vertices to one sink vertex on a `d
    :start-after: -- q3
    :end-before: -- q4
 
-.. index::
-    single: maxFlowEdmondsKarp(Many to Many) - Proposed
 
 Many to Many
 .................................................

@@ -19,14 +19,14 @@ Flow - Group Of Functions
 .. rubric:: Flow functions
 
 * :ref:`pgr_maxFlow` - Calculates the maximum flow using Push and Relabel algorithm.
-* :ref:`pgr_maxFlowPushRelabel` - Flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel algorithm.
-* :ref:`pgr_maxFlowEdmondsKarp` - Flow on the graph edges that maximizes the flow from the sources to the targets using Edmonds Karp algorithm.
-* :ref:`pgr_maxFlowBoykovKolmogorov` - Flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
+* :ref:`pgr_pushRelabel` - Flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel algorithm.
+* :ref:`pgr_edmondsKarp` - Flow on the graph edges that maximizes the flow from the sources to the targets using Edmonds Karp algorithm.
+* :ref:`pgr_boykovKolmogorov` - Flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
 
 .. rubric:: Flow Applications
 
-* :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching in a graph.
+* :ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph.
 * :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
 
 
@@ -35,10 +35,10 @@ Flow - Group Of Functions
         :hidden:
 
         ./pgr_maxFlow
-        ./pgr_maxFlowPushRelabel
-        ./pgr_maxFlowEdmondsKarp
-        ./pgr_maxFlowBoykovKolmogorov
-        ./pgr_maximumCardinalityMatching
+        ./pgr_pushRelabel
+        ./pgr_edmondsKarp
+        ./pgr_boykovKolmogorov
+        ./pgr_maxCardinalityMatch
         ./pgr_edgeDisjointPaths
 
 

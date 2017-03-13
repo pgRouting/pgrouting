@@ -8,16 +8,16 @@
    ****************************************************************************
 
 
-.. _pgr_maxFlowBoykovKolmogorov:
+.. _pgr_boykovKolmogorov:
 
-pgr_maxFlowBoykovKolmogorov - Proposed
+pgr_boykovKolmogorov - Proposed
 ============================================
 
 
 Synopsis
 -------------------------------------------------------------------------------
 
-``pgr_maxFlowBoykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
+``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
 
 .. include:: ../../proposedNext.rst
@@ -42,16 +42,16 @@ Signature Summary
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source,  target) - Proposed
-    pgr_maxFlowBoykovKolmogorov(edges_sql, sources, target) - Proposed
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source,  targets) - Proposed
-    pgr_maxFlowBoykovKolmogorov(edges_sql, sources, targets) - Proposed
+    pgr_boykovKolmogorov(edges_sql, source,  target) - Proposed
+    pgr_boykovKolmogorov(edges_sql, sources, target) - Proposed
+    pgr_boykovKolmogorov(edges_sql, source,  targets) - Proposed
+    pgr_boykovKolmogorov(edges_sql, sources, targets) - Proposed
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 
 .. index::
-    single: maxFlowBoykovKolmogorov(One to One) - Proposed
+    single: boykovKolmogorov(One to One) - Proposed
 
 One to One
 .....................................................................
@@ -60,19 +60,19 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source,  target)
+    pgr_boykovKolmogorov(edges_sql, source,  target)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-pgr_maxFlowBoykovKolmogorov.queries
+.. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q1
    :end-before: -- q2
 
 
 .. index::
-    single: maxFlowBoykovKolmogorov(One to Many) - Proposed
+    single: boykovKolmogorov(One to Many) - Proposed
 
 One to Many
 .....................................................................
@@ -81,19 +81,19 @@ Calculates the flow on the graph edges that maximizes the flow from the `source`
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, source,  targets)
+    pgr_boykovKolmogorov(edges_sql, source,  targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-pgr_maxFlowBoykovKolmogorov.queries
+.. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q2
    :end-before: -- q3
 
 
 .. index::
-    single: maxFlowBoykovKolmogorov(Many to One) - Proposed
+    single: boykovKolmogorov(Many to One) - Proposed
 
 Many to One
 .....................................................................
@@ -102,19 +102,19 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, sources,  target)
+    pgr_boykovKolmogorov(edges_sql, sources,  target)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-pgr_maxFlowBoykovKolmogorov.queries
+.. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q3
    :end-before: -- q4
 
 
 .. index::
-    single: maxFlowBoykovKolmogorov(Many to Many) - Proposed
+    single: boykovKolmogorov(Many to Many) - Proposed
 
 Many to Many
 .....................................................................
@@ -123,13 +123,13 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 
 .. code-block:: none
 
-    pgr_maxFlowBoykovKolmogorov(edges_sql, sources,  targets)
+    pgr_boykovKolmogorov(edges_sql, sources,  targets)
     RETURNS SET OF (seq, edge, start_vid, end_vid, flow, residual_capacity)
     OR EMPTY SET
 
 :Example:
 
-.. literalinclude:: doc-pgr_maxFlowBoykovKolmogorov.queries
+.. literalinclude:: doc-pgr_boykovKolmogorov.queries
    :start-after: -- q4
    :end-before: -- q5
 
