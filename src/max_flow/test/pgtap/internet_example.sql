@@ -40,47 +40,47 @@ VALUES
 /* NOTE: what is equal between the three algorithms is the maximum flow achieved */
 
 PREPARE boostSample1 AS
-SELECT sum(flow) FROM pgr_maxFlowEdmondsKarp(
+SELECT sum(flow) FROM pgr_EdmondsKarp(
     'SELECT id, source, target,capacity
     FROM boost_example'
    ,1, 8) WHERE start_vid = 1;
 
 PREPARE boostSample2 AS
-SELECT * FROM pgr_maxFlowBoykovKolmogorov(
+SELECT * FROM pgr_BoykovKolmogorov(
     'SELECT id, source, target,capacity
     FROM boost_example'
    ,1, 8) WHERE start_vid = 1;
 
 PREPARE boostSample3 AS
-SELECT * FROM pgr_maxFlowPushRelabel(
+SELECT * FROM pgr_PushRelabel(
     'SELECT id, source, target,capacity
     FROM boost_example'
    ,1, 8) WHERE start_vid = 1;
 
 PREPARE boostSample4 AS
-SELECT sum(flow) FROM pgr_maxFlowEdmondsKarp(
+SELECT sum(flow) FROM pgr_EdmondsKarp(
     'SELECT id, source, target,capacity
     FROM boost_example'
     ,1, 8) WHERE end_vid = 8;
 
 PREPARE boostSample5 AS
-SELECT * FROM pgr_maxFlowBoykovKolmogorov(
+SELECT * FROM pgr_BoykovKolmogorov(
     'SELECT id, source, target,capacity
     FROM boost_example'
     ,1, 8) WHERE end_vid = 8;
 
 PREPARE boostSample6 AS
-SELECT * FROM pgr_maxFlowPushRelabel(
+SELECT * FROM pgr_PushRelabel(
     'SELECT id, source, target,capacity
     FROM boost_example'
     ,1, 8) WHERE end_vid = 8;
 
-SELECT ('boostSample1',13, 'BOOST: pgr_maxFlowEdmondsKarp, flow from source is 13');
-SELECT ('boostSample4',13, 'BOOST: pgr_maxFlowEdmondsKarp, flow from source is 13');
-SELECT ('boostSample2',13, 'BOOST: pgr_maxFlowBoykovKolmogorov, flow from source is 13');
-SELECT ('boostSample5',13, 'BOOST: pgr_maxFlowBoykovKolmogorov, flow from source is 13');
-SELECT ('boostSample3',13, 'BOOST: pgr_maxFlowPushRelabel, flow from source is 13');
-SELECT ('boostSample6',13, 'BOOST: pgr_maxFlowPushRelabel, flow from source is 13');
+SELECT ('boostSample1',13, 'BOOST: pgr_EdmondsKarp, flow from source is 13');
+SELECT ('boostSample4',13, 'BOOST: pgr_EdmondsKarp, flow from source is 13');
+SELECT ('boostSample2',13, 'BOOST: pgr_BoykovKolmogorov, flow from source is 13');
+SELECT ('boostSample5',13, 'BOOST: pgr_BoykovKolmogorov, flow from source is 13');
+SELECT ('boostSample3',13, 'BOOST: pgr_PushRelabel, flow from source is 13');
+SELECT ('boostSample6',13, 'BOOST: pgr_PushRelabel, flow from source is 13');
 
 /**************************** WIKI EXAMPLE ****************/
 
@@ -108,19 +108,19 @@ VALUES
 
 
 PREPARE wikiSample1 AS
-SELECT * FROM pgr_maxFlowEdmondsKarp(
+SELECT * FROM pgr_EdmondsKarp(
     'SELECT id, source, target,capacity
     FROM wiki_example'
    ,1, 6);
 
 PREPARE wikiSample2 AS
-SELECT * FROM pgr_maxFlowBoykovKolmogorov(
+SELECT * FROM pgr_BoykovKolmogorov(
     'SELECT id, source, target,capacity
     FROM wiki_example'
    ,1, 6);
 
 PREPARE wikiSample3 AS
-SELECT * FROM pgr_maxFlowPushRelabel(
+SELECT * FROM pgr_PushRelabel(
     'SELECT id, source, target,capacity
     FROM wiki_example'
    ,1, 6);
@@ -137,8 +137,8 @@ FROM (VALUES
     (7, 8, 5, 6, 3, 0)
 ) AS t(seq, edge_id, source, target, flow, residual_capacity);
 
-SELECT set_eq('wikiSample1', 'wikiresult', 'WIKI: pgr_maxFlowEdmondsKarp');
-SELECT set_eq('wikiSample2', 'wikiresult', 'WIKI: pgr_maxFlowBoykovKolmogorov');
-SELECT set_eq('wikiSample3', 'wikiresult', 'WIKI: pgr_maxFlowPushRelabel');
+SELECT set_eq('wikiSample1', 'wikiresult', 'WIKI: pgr_EdmondsKarp');
+SELECT set_eq('wikiSample2', 'wikiresult', 'WIKI: pgr_BoykovKolmogorov');
+SELECT set_eq('wikiSample3', 'wikiresult', 'WIKI: pgr_PushRelabel');
 
 ROLLBACK;

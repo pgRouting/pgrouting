@@ -17,19 +17,19 @@ SELECT function_returns('pgr_maxflowedmondskarp', ARRAY[ 'text', 'anyarray', 'an
 -- testing column names
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflowedmondskarp'$$,
-    $$SELECT  '{"edges_sql","source","target","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","source_vertex","sink_vertex","seq","edge_id","source","target","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflowedmondskarp'$$,
-    $$SELECT  '{"edges_sql","source","targets","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","source_vertex","sink_vertices","seq","edge_id","source","target","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflowedmondskarp'$$,
-    $$SELECT  '{"edges_sql","sources","target","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","source_vertices","sink_vertex","seq","edge_id","source","target","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
     $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflowedmondskarp'$$,
-    $$SELECT  '{"edges_sql","sources","targets","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
+    $$SELECT  '{"edges_sql","source_vertices","sink_vertices","seq","edge_id","source","target","flow","residual_capacity"}'::TEXT[] $$
 );
 
 
@@ -74,9 +74,9 @@ SELECT
 
 PREPARE q1 AS
 SELECT pg_typeof(seq)::text AS t1,
-    pg_typeof(edge)::text AS t2,
-    pg_typeof(start_vid)::text as t3,
-    pg_typeof(end_vid)::text as t4,
+    pg_typeof(edge_id)::text AS t2,
+    pg_typeof(source)::text as t3,
+    pg_typeof(target)::text as t4,
     pg_typeof(flow)::text AS t5,
     pg_typeof(residual_capacity)::text AS t6
     FROM (
@@ -89,9 +89,9 @@ SELECT pg_typeof(seq)::text AS t1,
 
 PREPARE q2 AS
 SELECT pg_typeof(seq)::text AS t1,
-    pg_typeof(edge)::text AS t2,
-    pg_typeof(start_vid)::text as t3,
-    pg_typeof(end_vid)::text as t4,
+    pg_typeof(edge_id)::text AS t2,
+    pg_typeof(source)::text as t3,
+    pg_typeof(target)::text as t4,
     pg_typeof(flow)::text AS t5,
     pg_typeof(residual_capacity)::text AS t6
     FROM (
@@ -104,9 +104,9 @@ SELECT pg_typeof(seq)::text AS t1,
 
 PREPARE q3 AS
 SELECT pg_typeof(seq)::text AS t1,
-    pg_typeof(edge)::text AS t2,
-    pg_typeof(start_vid)::text as t3,
-    pg_typeof(end_vid)::text as t4,
+    pg_typeof(edge_id)::text AS t2,
+    pg_typeof(source)::text as t3,
+    pg_typeof(target)::text as t4,
     pg_typeof(flow)::text AS t5,
     pg_typeof(residual_capacity)::text AS t6
     FROM (
@@ -119,9 +119,9 @@ SELECT pg_typeof(seq)::text AS t1,
 
 PREPARE q4 AS
 SELECT pg_typeof(seq)::text AS t1,
-    pg_typeof(edge)::text AS t2,
-    pg_typeof(start_vid)::text as t3,
-    pg_typeof(end_vid)::text as t4,
+    pg_typeof(edge_id)::text AS t2,
+    pg_typeof(source)::text as t3,
+    pg_typeof(target)::text as t4,
     pg_typeof(flow)::text AS t5,
     pg_typeof(residual_capacity)::text AS t6
     FROM (

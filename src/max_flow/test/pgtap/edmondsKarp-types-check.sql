@@ -2,63 +2,63 @@
 
 SELECT plan(21);
 
-SELECT has_function('pgr_maxflowedmondskarp');
+SELECT has_function('pgr_edmondskarp');
 
-SELECT has_function('pgr_maxflowedmondskarp', ARRAY[ 'text', 'bigint', 'bigint' ]);
-SELECT has_function('pgr_maxflowedmondskarp', ARRAY[ 'text', 'anyarray', 'bigint' ]);
-SELECT has_function('pgr_maxflowedmondskarp', ARRAY[ 'text', 'bigint', 'anyarray' ]);
-SELECT has_function('pgr_maxflowedmondskarp', ARRAY[ 'text', 'anyarray', 'anyarray' ]);
+SELECT has_function('pgr_edmondskarp', ARRAY[ 'text', 'bigint', 'bigint' ]);
+SELECT has_function('pgr_edmondskarp', ARRAY[ 'text', 'anyarray', 'bigint' ]);
+SELECT has_function('pgr_edmondskarp', ARRAY[ 'text', 'bigint', 'anyarray' ]);
+SELECT has_function('pgr_edmondskarp', ARRAY[ 'text', 'anyarray', 'anyarray' ]);
 
-SELECT function_returns('pgr_maxflowedmondskarp', ARRAY[ 'text', 'bigint', 'bigint' ], 'setof record');
-SELECT function_returns('pgr_maxflowedmondskarp', ARRAY[ 'text', 'bigint', 'anyarray' ], 'setof record');
-SELECT function_returns('pgr_maxflowedmondskarp', ARRAY[ 'text', 'anyarray', 'bigint' ], 'setof record');
-SELECT function_returns('pgr_maxflowedmondskarp', ARRAY[ 'text', 'anyarray', 'anyarray' ], 'setof record');
+SELECT function_returns('pgr_edmondskarp', ARRAY[ 'text', 'bigint', 'bigint' ], 'setof record');
+SELECT function_returns('pgr_edmondskarp', ARRAY[ 'text', 'bigint', 'anyarray' ], 'setof record');
+SELECT function_returns('pgr_edmondskarp', ARRAY[ 'text', 'anyarray', 'bigint' ], 'setof record');
+SELECT function_returns('pgr_edmondskarp', ARRAY[ 'text', 'anyarray', 'anyarray' ], 'setof record');
 
 -- testing column names
 SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflowedmondskarp'$$,
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_edmondskarp'$$,
     $$SELECT  '{"edges_sql","source","target","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflowedmondskarp'$$,
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_edmondskarp'$$,
     $$SELECT  '{"edges_sql","source","targets","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflowedmondskarp'$$,
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_edmondskarp'$$,
     $$SELECT  '{"edges_sql","sources","target","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
 );
 SELECT bag_has(
-    $$SELECT  proargnames from pg_proc where proname = 'pgr_maxflowedmondskarp'$$,
+    $$SELECT  proargnames from pg_proc where proname = 'pgr_edmondskarp'$$,
     $$SELECT  '{"edges_sql","sources","targets","seq","edge","start_vid","end_vid","flow","residual_capacity"}'::TEXT[] $$
 );
 
 
--- pgr_maxflowedmondskarp works
+-- pgr_edmondskarp works
 PREPARE t1 AS
-SELECT * FROM pgr_maxflowedmondskarp(
+SELECT * FROM pgr_edmondskarp(
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
     3, 5
 );
 PREPARE t2 AS
-SELECT * FROM pgr_maxflowedmondskarp(
+SELECT * FROM pgr_edmondskarp(
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
     3, ARRAY[5]
 );
 PREPARE t3 AS
-SELECT * FROM pgr_maxflowedmondskarp(
+SELECT * FROM pgr_edmondskarp(
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
     ARRAY[3], 5
 );
 PREPARE t4 AS
-SELECT * FROM pgr_maxflowedmondskarp(
+SELECT * FROM pgr_edmondskarp(
     'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
     ARRAY[3], ARRAY[5]
 );
 
-SELECT lives_ok('t1','pgr_pgr_maxflowedmondskarp(one to one)');
-SELECT lives_ok('t2','pgr_pgr_maxflowedmondskarp(one to many)');
-SELECT lives_ok('t3','pgr_pgr_maxflowedmondskarp(many to one)');
-SELECT lives_ok('t4','pgr_pgr_maxflowedmondskarp(many to many)');
+SELECT lives_ok('t1','pgr_pgr_edmondskarp(one to one)');
+SELECT lives_ok('t2','pgr_pgr_edmondskarp(one to many)');
+SELECT lives_ok('t3','pgr_pgr_edmondskarp(many to one)');
+SELECT lives_ok('t4','pgr_pgr_edmondskarp(many to many)');
 
 
 -- preparing for testing return types
@@ -80,7 +80,7 @@ SELECT pg_typeof(seq)::text AS t1,
     pg_typeof(flow)::text AS t5,
     pg_typeof(residual_capacity)::text AS t6
     FROM (
-        SELECT * FROM pgr_maxflowedmondskarp(
+        SELECT * FROM pgr_edmondskarp(
             'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
         3, 5
         ) ) AS a
@@ -95,7 +95,7 @@ SELECT pg_typeof(seq)::text AS t1,
     pg_typeof(flow)::text AS t5,
     pg_typeof(residual_capacity)::text AS t6
     FROM (
-        SELECT * FROM pgr_maxflowedmondskarp(
+        SELECT * FROM pgr_edmondskarp(
             'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
         3, ARRAY[5]
         ) ) AS a
@@ -110,7 +110,7 @@ SELECT pg_typeof(seq)::text AS t1,
     pg_typeof(flow)::text AS t5,
     pg_typeof(residual_capacity)::text AS t6
     FROM (
-        SELECT * FROM pgr_maxflowedmondskarp(
+        SELECT * FROM pgr_edmondskarp(
             'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
         ARRAY[3], 5
         ) ) AS a
@@ -125,7 +125,7 @@ SELECT pg_typeof(seq)::text AS t1,
     pg_typeof(flow)::text AS t5,
     pg_typeof(residual_capacity)::text AS t6
     FROM (
-        SELECT * FROM pgr_maxflowedmondskarp(
+        SELECT * FROM pgr_edmondskarp(
             'SELECT id, source, target, capacity, reverse_capacity FROM edge_table',
         ARRAY[3], ARRAY[5]
         ) ) AS a

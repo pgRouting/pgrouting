@@ -5,7 +5,7 @@ LIST(APPEND PACKAGE_SQL_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/edmondsKarp.sql
         ${CMAKE_CURRENT_SOURCE_DIR}/boykovKolmogorov.sql
         ${CMAKE_CURRENT_SOURCE_DIR}/pushRelabel.sql
-        ${CMAKE_CURRENT_SOURCE_DIR}/only_flow.sql
+        ${CMAKE_CURRENT_SOURCE_DIR}/maxFlow.sql
         ${CMAKE_CURRENT_SOURCE_DIR}/maxCardinalityMatch.sql
         ${CMAKE_CURRENT_SOURCE_DIR}/edge_disjoint_paths.sql
 
