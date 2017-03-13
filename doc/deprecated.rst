@@ -30,11 +30,19 @@ Routing functions
 ...................
 
 - :ref:`bd_astar-v2` - See new signatures of :ref:`pgr_bdAstar`
+- :ref:`pgr_maxFlowBoykovKolmogorov` - See new signatures of :ref:`pgr_boykovKolmogorov`
+- :ref:`pgr_maxFlowEdmondsKarp` - See new signatures of :ref:`pgr_edmondsKarp`
+- :ref:`pgr_maxFlowPushRelabel` - See new signatures of :ref:`pgr_pushRelabel`
+- :ref:`pgr_maximumCardinalityMatching` - See new signatures of :ref:`pgr_maxCardinalityMatch`
 
 .. toctree::
    :hidden:
 
    ../src/bd_astar/doc/pgr_bdAstar-v2
+   ../src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.rst
+   ../src/max_flow/doc/pgr_maxFlowEdmondsKarp.rst
+   ../src/max_flow/doc/pgr_maxFlowPushRelabel.rst
+   ../src/max_flow/doc/pgr_maximumCardinalityMatching.rst
 
 Deprecated on version 2.4
 ----------------------------

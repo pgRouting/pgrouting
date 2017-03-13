@@ -24,48 +24,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/*FOR USERS DOCUMENTATION
-
-The following applies to:
-    pgr_maxFlowBoykovKolmogorov
-    pgr_maxFlowPushRelabel
-    pgr_maxFlowEdmondsKarp
-    pgr_maxFlow
-
-
-pgr_flow_parameters_start
-
-Description of the parameters of the signatures
-...............................................................................
-
-============== ================== ======== =================================================
-Column         Type               Default     Description
-============== ================== ======== =================================================
-**edges_sql**  ``TEXT``                    SQL query as described above.
-**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the flow.
-**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
-**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the flow.
-**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
-============== ================== ======== =================================================
-
-pgr_flow_parameters_end
-
-FOR-USER*/
-
-
-
 /***********************************
         ONE TO ONE
--- 1 PushRelabel
--- 2 boykov_kolmogorov
--- 3 edmonds_karp
 ***********************************/
 
 
+--FUNCTIONS
+
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
-    BIGINT,
-    BIGINT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -75,15 +44,17 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 1);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_PushRelabel($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
-    BIGINT,
-    BIGINT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -93,15 +64,17 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 2);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_boykovKolmogorov($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
-    BIGINT,
-    BIGINT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -111,20 +84,23 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], 3);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_edmondsKarp($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 /***********************************
         ONE TO MANY
 ***********************************/
 
+--INTERNAL FUNCTIONS
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
-    BIGINT,
-    targets ANYARRAY,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -134,15 +110,17 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 1);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_PushRelabel($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
-    BIGINT,
-    targets ANYARRAY,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -152,15 +130,17 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 2);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_boykovKolmogorov($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
-    BIGINT,
-    targets ANYARRAY,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -170,20 +150,23 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), ARRAY[$2]::BIGINT[], $3::BIGINT[], 3);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_edmondsKarp($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 /***********************************
         MANY TO ONE
 ***********************************/
 
+--FUNCTIONS
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
-    sources ANYARRAY,
-    BIGINT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -193,15 +176,17 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 1);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_PushRelabel($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
-    sources ANYARRAY,
-    BIGINT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -211,15 +196,17 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 2);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_boykovKolmogorov($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
-    sources ANYARRAY,
-    BIGINT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -229,19 +216,24 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], ARRAY[$3]::BIGINT[], 3);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_edmondsKarp($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 /***********************************
         MANY TO MANY
 ***********************************/
 
+
+--FUNCTIONS
+
 CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     edges_sql TEXT,
-    sources ANYARRAY,
-    targets ANYARRAY,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -251,15 +243,17 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 1);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_PushRelabel($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     edges_sql TEXT,
-    sources ANYARRAY,
-    targets ANYARRAY,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -269,15 +263,17 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 2);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_boykovKolmogorov($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 
 CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     edges_sql TEXT,
-    sources ANYARRAY,
-    targets ANYARRAY,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
     OUT seq INTEGER,
     OUT edge_id BIGINT,
     OUT source BIGINT,
@@ -287,8 +283,10 @@ CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT *
-        FROM _pgr_maxflow(_pgr_get_statement($1), $2::BIGINT[], $3::BIGINT[], 3);
+  BEGIN
+        RETURN QUERY SELECT *
+        FROM pgr_edmondsKarp($1, $2, $3);
+  END
   $BODY$
-  LANGUAGE sql VOLATILE;
+  LANGUAGE plpgsql VOLATILE;
 

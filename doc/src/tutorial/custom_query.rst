@@ -176,6 +176,7 @@ Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg
 Column         Type       Description
 ============== ========== =================================================
 **seq**        ``INT``    Sequential value starting from **1**.
+**path_id**    ``INT``    Path identifier. Has value **1** for the first of a path. Used when there are multiple paths for the same ``start_vid`` to ``end_vid`` combination.
 **path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
 **start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
 **end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
@@ -203,3 +204,24 @@ Column         Type       Description
 ============== ========== =================================================
 
 .. return_cost_end
+
+
+
+.. result_flow_start
+
+Description of the Return Values
+.....................................................................
+
+=====================  ====================  =================================================
+Column                 Type                  Description
+=====================  ====================  =================================================
+**seq**                ``INT``               Sequential value starting from **1**.
+**edge_id**            ``BIGINT``            Identifier of the edge in the original query(edges_sql).
+**source**             ``BIGINT``            Identifier of the first end point vertex of the edge.
+**target**             ``BIGINT``            Identifier of the second end point vertex of the edge.
+**flow**               ``BIGINT``            Flow through the edge in the direction (source, target).
+**residual_capacity**  ``BIGINT``            Residual capacity of the edge in the direction (source, target).
+=====================  ====================  =================================================
+
+.. result_flow_end
+

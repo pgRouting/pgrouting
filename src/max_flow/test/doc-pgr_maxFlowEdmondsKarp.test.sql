@@ -1,12 +1,17 @@
+--These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
+--The edge in the edge table are augmented with road-like categories for capacity values.
+
 
 \echo -- q1
 SELECT * FROM pgr_maxFlowEdmondsKarp(
     'SELECT id,
             source,
             target,
-            capacity,
-            reverse_capacity
-    FROM edge_table'
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id'
     , 6, 11
 );
 
@@ -15,9 +20,11 @@ SELECT * FROM pgr_maxFlowEdmondsKarp(
     'SELECT id,
             source,
             target,
-            capacity,
-            reverse_capacity
-    FROM edge_table'
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id'
    , 6, ARRAY[1, 3, 11]
 );
 
@@ -26,9 +33,11 @@ SELECT * FROM pgr_maxFlowEdmondsKarp(
     'SELECT id,
             source,
             target,
-            capacity,
-            reverse_capacity
-    FROM edge_table'
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id'
    , ARRAY[6, 8, 12], 11
 );
 
@@ -37,9 +46,11 @@ SELECT * FROM pgr_maxFlowEdmondsKarp(
     'SELECT id,
             source,
             target,
-            capacity,
-            reverse_capacity
-    FROM edge_table'
+            c1.capacity as capacity,
+            c2.capacity as reverse_capacity
+    FROM edge_table JOIN categories AS c1 USING(category_id), categories AS c2
+    WHERE edge_table.reverse_category_id = c2.category_id
+    ORDER BY id'
    , ARRAY[6, 8, 12], ARRAY[1, 3, 11]
 );
 

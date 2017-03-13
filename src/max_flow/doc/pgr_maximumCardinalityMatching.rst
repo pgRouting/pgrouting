@@ -9,7 +9,7 @@
 
 .. _pgr_maximumCardinalityMatching:
 
-pgr_maximumCardinalityMatching - Proposed
+pgr_maximumCardinalityMatching - Deprecated Function
 ============================================================
 
 
@@ -19,9 +19,13 @@ Name
 ``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
 
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+
+.. include:: ../../../doc/deprecated.rst
+   :start-after: deprecated_warning_start
+   :end-before: deprecated_warning_end
+
+
+.. rubric:: Replacement: :ref:`pgr_maxCardinalityMatch`
 
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
@@ -38,8 +42,6 @@ Calculates a maximum cardinality matching in a directed/undirected graph.
 - A matching or independent edge set in a graph is a set of edges without common vertices.
 - A maximum matching is a matching that contains the largest possible number of edges.
 - There may be many maximum matchings.
-- The graph can be directed or undirected.
-
 
 
 Characteristics:
@@ -69,8 +71,6 @@ Signature Summary
 Signatures
 ----------
 
-.. index::
-    single: MaximumCardinalityMatching(Minimal Use) - Proposed
 
 
 
@@ -90,8 +90,6 @@ The minimal signature calculates one possible maximum cardinality matching on a 
    :start-after: -- q1
    :end-before: -- q2
 
-.. index::
-    single: MaximumCardinalityMatching(Complete Signature) - Proposed
 
 Complete signature
 ....................

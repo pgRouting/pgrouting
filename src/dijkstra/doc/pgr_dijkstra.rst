@@ -84,7 +84,7 @@ Minimal signature
     pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
 
 :Example:
 

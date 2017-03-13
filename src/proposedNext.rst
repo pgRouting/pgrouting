@@ -81,13 +81,13 @@ Stable proposed Functions
     - Maximum Flow
 
       - :ref:`pgr_maxFlow` - Maximum flow using push & relabel algorithm.
-      - :ref:`pgr_maxFlowPushRelabel` - Detailed Maximum flow using push & relabel algorithm.
-      - :ref:`pgr_maxFlowEdmondsKarp` - Detailed Maximum flow using Edmonds & Karp algorithm.
-      - :ref:`pgr_maxFlowBoykovKolmogorov` - Detailed Maximum flow using Boykov & Kolmogorov algorithm.
+      - :ref:`pgr_pushRelabel` - Detailed Maximum flow using push & relabel algorithm.
+      - :ref:`pgr_edmondsKarp` - Detailed Maximum flow using Edmonds & Karp algorithm.
+      - :ref:`pgr_boykovKolmogorov` - Detailed Maximum flow using Boykov & Kolmogorov algorithm.
 
     - Flow Applications
 
-      - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
+      - :ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching.
       - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
 
 ..
