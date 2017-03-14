@@ -76,7 +76,3 @@ Examples
     (1 row)
 
 
-See Also
--------------------------------------------------------------------------------
-
-* :ref:`pgr_versionless` to compare two version numbers

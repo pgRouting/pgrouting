@@ -126,15 +126,15 @@ Routing functions
 Auxiliary functions
 ...................
 
--  :ref:`pgr_get_column_name`
--  :ref:`pgr_get_table_name`
--  :ref:`pgr_is_column_indexed`
--  :ref:`pgr_is_column_in_table`
+-  :ref:`pgr_getColumnName`
+-  :ref:`pgr_getTableName`
+-  :ref:`pgr_isColumnCndexed`
+-  :ref:`pgr_isColumnInTable`
 -  :ref:`pgr_quote_ident`
 -  :ref:`pgr_versionless`
--  :ref:`pgr_start_point`
--  :ref:`pgr_end_point`
-
+-  :ref:`pgr_startPoint`
+-  :ref:`pgr_endPoint`
+-  :ref:`pgr_pointToId`
 
 
 .. toctree::
@@ -143,6 +143,8 @@ Auxiliary functions
    ../src/dijkstra/doc/pgr_dijkstra_v2
    ../src/ksp/doc/pgr_ksp_v2
    ../src/driving_distance/doc/pgr_drivingDistance_v2
+
+..
    ../src/common/doc/utilities/get_column_name
    ../src/common/doc/utilities/get_table_name
    ../src/common/doc/utilities/is_column_indexed

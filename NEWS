@@ -212,6 +212,17 @@ Changes for 2.1.0
    - Added proposed functions from GSoc Projects:
       - pgr_vrppdtw
 
+ - Deprecated functions
+    - pgr_getColumnName`
+    - pgr_getTableName`
+    - pgr_isColumnCndexed`
+    - pgr_isColumnInTable`
+    - pgr_quote_ident`
+    - pgr_versionless`
+    - pgr_startPoint`
+    - pgr_endPoint`
+    - pgr_pointToId`
+
  - Removed the 1.x legacy functions
 
  - Some bug fixes in other functions
