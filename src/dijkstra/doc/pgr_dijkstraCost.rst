@@ -26,6 +26,10 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* pgr_dijkstraCost(all signaturess) 2.2.0
+
 The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for a subset of pairs of nodes of the graph.
 We make use of the Boost's implementation of dijkstra which runs in
@@ -236,10 +240,6 @@ Additional Examples
     :start-after: --q7
     :end-before: --q8
 
-
-.. rubric:: History
-
-* New in version  2.2.0
 
 
 See Also
