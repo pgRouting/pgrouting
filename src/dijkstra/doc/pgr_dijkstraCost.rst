@@ -28,7 +28,7 @@ aggregate cost of the shortest path(s) found, for the combination of vertices gi
 
 .. rubric:: Availability
 
-* pgr_dijkstraCost(all signaturess) 2.2.0
+* pgr_dijkstraCost(all signatures) 2.2.0
 
 The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for a subset of pairs of nodes of the graph.

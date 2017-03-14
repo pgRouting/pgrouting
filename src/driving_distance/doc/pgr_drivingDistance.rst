@@ -24,6 +24,12 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* pgr_drivingDistance(single vertex) 2.0.0, signature change 2.1.0
+* pgr_drivingDistance(multiple vertices) 2.1.0
+
+ 
 Synopsis
 -------------------------------------------------------------------------------
 
