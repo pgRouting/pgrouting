@@ -137,14 +137,10 @@ Auxiliary functions
 -  :ref:`pgr_pointToId`
 
 
-.. toctree::
-   :hidden: 
-
+..
    ../src/dijkstra/doc/pgr_dijkstra_v2
    ../src/ksp/doc/pgr_ksp_v2
    ../src/driving_distance/doc/pgr_drivingDistance_v2
-
-..
    ../src/common/doc/utilities/get_column_name
    ../src/common/doc/utilities/get_table_name
    ../src/common/doc/utilities/is_column_indexed
