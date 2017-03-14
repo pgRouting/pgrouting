@@ -29,7 +29,7 @@ Deprecated on version 2.5
 Routing functions
 ...................
 
-- :ref:`bd_astar-v2` - See new signatures of :ref:`pgr_bdAstar`
+- pgr_bdastar - See new signatures of :ref:`pgr_bdAstar`
 - :ref:`pgr_maxFlowBoykovKolmogorov` - See new signatures of :ref:`pgr_boykovKolmogorov`
 - :ref:`pgr_maxFlowEdmondsKarp` - See new signatures of :ref:`pgr_edmondsKarp`
 - :ref:`pgr_maxFlowPushRelabel` - See new signatures of :ref:`pgr_pushRelabel`
@@ -38,7 +38,6 @@ Routing functions
 .. toctree::
    :hidden:
 
-   ../src/bd_astar/doc/pgr_bdAstar-v2
    ../src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.rst
    ../src/max_flow/doc/pgr_maxFlowEdmondsKarp.rst
    ../src/max_flow/doc/pgr_maxFlowPushRelabel.rst

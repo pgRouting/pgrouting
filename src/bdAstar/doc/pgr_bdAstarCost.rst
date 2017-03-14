@@ -47,15 +47,10 @@ Using these signatures, will load once the graph and perform several one to one 
   - The result is the union of the results of the one to one `pgr_bdAstarCost`.
   - The extra ``start_vid`` and/or ``end_vid`` in the result is used to distinguish to which path it belongs.
 
-.. NOTE:: This signature is deprecated
 
-    .. code-block:: sql
+.. rubric:: Avaliability
 
-        pgr_bdastar(sql, source integer, target integer, directed boolean, has_rcost boolean)
-        RETURNS SET OF pgr_costResult
-
-    - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`bd_astar-v2`
+* pgr_bdAstar(group) 2.5
 
 
 
@@ -206,14 +201,12 @@ Description of the Signatures
 
 
 
-
-
-
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`bdAstar`
-* The examples use the :ref:`sampledata` network.
+* :ref:`sampledata` network.
+* `Migration Guide <https://github.com/cvvergara/pgrouting/wiki/Migration-Guide#pgr_bdastar>`_
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
 
