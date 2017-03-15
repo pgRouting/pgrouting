@@ -22,6 +22,7 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.4.0
 
 Signature Summary
 -----------------
@@ -178,7 +179,7 @@ Description of the Signatures
 ..
     description of the edges_sql queries
 
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 

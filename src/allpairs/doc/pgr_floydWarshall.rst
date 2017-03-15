@@ -23,6 +23,10 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.0.0
+
+* Renamed on 2.2.0, previous name pgr_apspWarshall 
+
 
 The Floyd-Warshall algorithm, also known as Floyd's algorithm,
 is a good choice to calculate the sum of the costs of the shortest path for each
@@ -105,7 +109,7 @@ Complete Signature
 Description of the Signatures
 ------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: no_id_edges_sql_start
     :end-before: no_id_edges_sql_end
 
