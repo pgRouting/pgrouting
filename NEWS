@@ -179,7 +179,7 @@ Changes for 2.2.0
   - pgr_apspJohnson   use pgr_johnson instead
   - pgr_kDijkstraCost use pgr_dijkstraCost instead
   - pgr_kDijkstraPath use pgr_dijkstra instead
-
+  - pgr_makeDistanceMatrix
 
 
 Changes for 2.1.0

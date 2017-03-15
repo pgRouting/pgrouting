@@ -104,9 +104,8 @@ Routing functions
 - :ref:`pgr_apsp_warshall` - Replaced with :ref:`pgr_floydWarshall`
 - :ref:`pgr_kdijkstra` - Replaced with :ref:`pgr_dijkstraCost` and :ref:`pgr_dijkstra` (one to many)
 
-.. toctree::
-   :hidden: 
 
+..
    ../src/apsp_johnson/doc/pgr_apspJohnson
    ../src/apsp_warshall/doc/pgr_apspWarshall
    ../src/kdijkstra/doc/pgr_kDijkstra

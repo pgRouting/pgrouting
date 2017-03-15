@@ -22,6 +22,11 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability:
+
+* pgr_bdAstar(one to one) 2.0.0, Signature change on 2.5.0
+* pgr_bdAstar(other signatures) 2.5.0
+
 
 Signature Summary
 -----------------
@@ -204,9 +209,6 @@ Description of the Signatures
 .. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: return_path_start
     :end-before: return_path_end
-
-
-
 
 
 
