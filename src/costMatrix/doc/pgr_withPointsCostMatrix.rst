@@ -30,6 +30,8 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.2.0
+
 
 Signature Summary
 -------------------------------------------------------------------------------
@@ -101,11 +103,11 @@ Description of the Signatures
     description of the sql queries
 
 
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../../common/src/points_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 
@@ -129,10 +131,9 @@ Parameter        Type                   Description
 ================ ====================== =================================================
 
 
-
-.. Description of the return values
-
-.. include:: dmatrix_return_values.txt
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
 Examples

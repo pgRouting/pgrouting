@@ -29,6 +29,8 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.4.0
+
 Synopsis
 -------------------------------------------------------------------------------
 
@@ -95,7 +97,7 @@ This example returns a symmetric cost matrix.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: ../../../doc/src/tutorial/custom_query.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
@@ -128,9 +130,10 @@ Parameter        Type                   Description
 
 
 
-.. Description of the return values
+.. include:: ../../../doc/src/tutorial/custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
-.. include:: dmatrix_return_values.txt
 
 
 Examples
