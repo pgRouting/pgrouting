@@ -30,6 +30,8 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.2.0
+
 
 Signature Summary
 -------------------------------------------------------------------------------

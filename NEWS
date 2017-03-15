@@ -199,7 +199,7 @@ Changes for 2.1.0
    - pgr_drivingDistance(single vertex)
 
  - Improved
-   Alphashape function now can generate better polygons with holes and custom parameter
+   - pgr_alphaShape function now can generate better polygons with holes and custom parameter
 
  - Added proposed functions to be evaluated:
    - Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)
@@ -216,15 +216,15 @@ Changes for 2.1.0
       - pgr_vrponedepot
 
  - Deprecated functions
-    - pgr_getColumnName`
-    - pgr_getTableName`
-    - pgr_isColumnCndexed`
-    - pgr_isColumnInTable`
-    - pgr_quote_ident`
-    - pgr_versionless`
-    - pgr_startPoint`
-    - pgr_endPoint`
-    - pgr_pointToId`
+    - pgr_getColumnName
+    - pgr_getTableName
+    - pgr_isColumnCndexed
+    - pgr_isColumnInTable
+    - pgr_quote_ident
+    - pgr_versionless
+    - pgr_startPoint
+    - pgr_endPoint
+    - pgr_pointToId
 
  - Instead of generating many libraries:
    - All functions are encapsulated in one library
