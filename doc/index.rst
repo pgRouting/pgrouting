@@ -56,7 +56,7 @@ For a more complete introduction how to build a routing application read the `pg
 .. toctree::
    :hidden:
 
-   src/tutorial/index
+   tutorial-index
    src/recipes/index
    src/developer/developer_guide
    

@@ -33,13 +33,9 @@ Advanced Topics
 .. toctree:: 
    :hidden: 
          
-    Getting started        <tutorial>
-
-.. toctree:: 
-   :hidden: 
-         
-    An overview of a topology for routing algorithms.        <topology>
-    An overview of the analysis of a graph.        <analytics>
-    How to write a query for the routing algorithms        <custom_query>
-    How to handle performance        <performance>
+   pgRouting-tutorial
+   tutorial-topology
+   tutorial-analytics
+   custom_query
+   tutorial-performance
 
