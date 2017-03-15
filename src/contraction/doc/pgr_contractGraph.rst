@@ -25,7 +25,7 @@ pgr_contractGraph - Proposed
 
    Boost Graph Inside
 
-.. Availability:: 2.3.0
+.. rubric:: Availability: 2.3.0
 
 .. include:: ../../proposed.rst
    :start-after: begin-warning
