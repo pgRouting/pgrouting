@@ -81,6 +81,9 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 * pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
 * pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
 
+.. rubric:: Deprecated function
+
+* pgr_pointToEdgeNode
 
 
 .. _changelog_2_4_0:
