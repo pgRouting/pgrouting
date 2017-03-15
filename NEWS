@@ -230,6 +230,7 @@ Changes for 2.0.0
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
 * Better documentation: http://docs.pgrouting.org
+* shooting_star is discontinued
 
 
 Changes for release 1.05

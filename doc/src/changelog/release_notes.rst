@@ -402,6 +402,8 @@ As a result of this effort:
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
 * Better documentation: http://docs.pgrouting.org
+* shooting_star is discontinued
+
 
 
 .. _changelog_1_x:
