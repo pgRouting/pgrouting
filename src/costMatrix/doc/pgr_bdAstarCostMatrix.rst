@@ -18,12 +18,6 @@ Name
 ``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_bdAstar`.
 
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
-
-
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
@@ -31,6 +25,10 @@ Name
 
 .. rubric:: Availability: 2.5.0
    
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
+
 Synopsis
 -------------------------------------------------------------------------------
 

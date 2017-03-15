@@ -49,10 +49,6 @@ Using these signatures, will load once the graph and perform several one to one 
   - The extra ``start_vid`` and/or ``end_vid`` in the result is used to distinguish to which path it belongs.
 
 
-.. rubric:: Avaliability
-
-* pgr_bdAstar(group) 2.5
-
 
 
 

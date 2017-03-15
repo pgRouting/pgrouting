@@ -216,8 +216,6 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 --------------------------------
 
-.. NOTE:: The following only aplies to the new signature(s)
-
 ..
     description of the edges_sql queries
 

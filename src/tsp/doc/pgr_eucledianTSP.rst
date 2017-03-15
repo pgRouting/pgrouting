@@ -15,7 +15,9 @@ pgr_eucledianTSP
 Name
 -------------------------------------------------------------------------------
 
-* ``pgr_eucledianTSP`` - Returns a route that visits all the coordinates pairs exactly once.
+``pgr_eucledianTSP`` - Returns a route that visits all the coordinates pairs exactly once.
+
+.. rubric:: Availability: 2.3.0
 
 
 Synopsis
