@@ -78,8 +78,6 @@ The example uses the :ref:`sampledata` network.
 See Also
 -----------------------------------------------------------------------------
 
-* :ref:`pgr_points_to_vids` - convert an array of point geometries into vertex ids.
-
 
 .. rubric:: Indices and tables
 
