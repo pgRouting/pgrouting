@@ -19,6 +19,8 @@ pgr_bdDijkstraCost - Proposed
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.5.0
+
 
 Signature Summary
 -----------------

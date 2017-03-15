@@ -19,6 +19,10 @@ pgr_bdDijkstra
 
    Boost Graph Inside
 
+.. rubric:: Availability:
+
+* pgr_bdDijkstra(one to one) 2.0.0, Signature changed 2.4.0
+* pgr_bdDijkstra(other signatures) 2.5.0
 
 Signature Summary
 -----------------
@@ -29,8 +33,6 @@ Signature Summary
     pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
-
-
 
 
 .. include:: ../../proposedNext.rst
@@ -46,15 +48,7 @@ Signature Summary
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
-.. NOTE:: This signature is deprecated
 
-    .. code-block:: sql
-
-        pgr_bdDijkstra(sql, source integer, target integer, directed boolean, has_rcost boolean)
-        RETURNS SET OF pgr_costResult
-
-    - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`bd_dijkstra_v2`
 
 
 
