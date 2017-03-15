@@ -110,8 +110,6 @@ To see the issues closed by this release see the `Git closed issues for 2.3.0 <h
 
 .. rubric:: New Signatures
 
-Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
-
 * pgr_TSP
 * pgr_aStar
 
@@ -124,11 +122,23 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 
 * pgr_dijkstraCostMatrix
 * pgr_withPointsCostMatrix
-* pgr_maxFlowPushRelabel
-* pgr_maxFlowEdmondsKarp
-* pgr_maxFlowBoykovKolmogorov 
+* pgr_maxFlowPushRelabel(one to one)
+* pgr_maxFlowPushRelabel(one to many)
+* pgr_maxFlowPushRelabel(many to one)
+* pgr_maxFlowPushRelabel(many to many)
+* pgr_maxFlowEdmondsKarp(one to one)
+* pgr_maxFlowEdmondsKarp(one to many)
+* pgr_maxFlowEdmondsKarp(many to one)
+* pgr_maxFlowEdmondsKarp(many to many)
+* pgr_maxFlowBoykovKolmogorov (one to one)
+* pgr_maxFlowBoykovKolmogorov (one to many)
+* pgr_maxFlowBoykovKolmogorov (many to one)
+* pgr_maxFlowBoykovKolmogorov (many to many)
 * pgr_maximumCardinalityMatching
-* pgr_edgeDisjointPaths
+* pgr_edgeDisjointPaths(one to one)
+* pgr_edgeDisjointPaths(one to many)
+* pgr_edgeDisjointPaths(many to one)
+* pgr_edgeDisjointPaths(many to many)
 * pgr_contractGraph
 
 
@@ -219,13 +229,23 @@ To see the issues closed by this release see the `Git closed issues for 2.2.0 <h
 
 - pgr_floydWarshall
 - pgr_Johnson
-- pgr_DijkstraCost
+- pgr_dijkstraCost(one to one)
+- pgr_dijkstraCost(one to many)
+- pgr_dijkstraCost(many to one)
+- pgr_dijkstraCost(many to many)
 
 .. rubric:: Proposed functionality
 
-- pgr_withPoints
-- pgr_withPointsCost
-- pgr_withPointsDD
+- pgr_withPoints(one to one)
+- pgr_withPoints(one to many)
+- pgr_withPoints(many to one)
+- pgr_withPoints(many to many)
+- pgr_withPointsCost(one to one)
+- pgr_withPointsCost(one to many)
+- pgr_withPointsCost(many to one)
+- pgr_withPointsCost(many to many)
+- pgr_withPointsDD(single vertex)
+- pgr_withPointsDD(multiple vertices)
 - pgr_withPointsKSP
 - pgr_dijkstraVia
 
@@ -237,6 +257,10 @@ To see the issues closed by this release see the `Git closed issues for 2.2.0 <h
 - pgr_kDijkstraCost use pgr_dijkstraCost instead
 - pgr_kDijkstraPath use pgr_dijkstra instead
 
+.. rubric:: Renamed and deprecated function
+
+- pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix
+
 
 .. _changelog_2_1_0:
 
@@ -245,15 +269,22 @@ pgRouting 2.1.0 Release Notes
 
 To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github.
 
+.. rubric:: New Signatures
+
+- pgr_dijkstra(one to many)
+- pgr_dijkstra(many to one)
+- pgr_dijkstra(many to many)
+- pgr_drivingDistance(multiple vertices)
+
 .. rubric:: Refactored
 
-- pgr_dijkstra
+- pgr_dijkstra(one to one)
 - pgr_ksp
-- pgr_drivingDistance
+- pgr_drivingDistance(single vertex)
 
 .. rubric:: Improvements
 
-- Alphashape function now can generate better (multi)polygon with holes and alpha parameter.
+- pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter.
 
 .. rubric:: Proposed functionality
 
@@ -270,6 +301,19 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 - Added proposed functions from GSoc Projects:
 
   - pgr_vrppdtw
+  - pgr_vrponedepot
+
+.. rubric:: Deprecated functions
+
+- pgr_getColumnName
+- pgr_getTableName
+- pgr_isColumnCndexed
+- pgr_isColumnInTable
+- pgr_quote_ident
+- pgr_versionless
+- pgr_startPoint
+- pgr_endPoint
+- pgr_pointToId
 
 .. rubric:: No longer supported
 
