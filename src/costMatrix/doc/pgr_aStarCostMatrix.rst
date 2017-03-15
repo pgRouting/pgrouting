@@ -29,6 +29,8 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.4.0
+
 Synopsis
 -------------------------------------------------------------------------------
 

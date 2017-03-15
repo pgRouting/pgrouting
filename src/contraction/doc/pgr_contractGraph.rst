@@ -20,14 +20,16 @@ pgr_contractGraph - Proposed
 ``pgr_contractGraph`` — Performs graph contraction and returns the contracted vertices and edges. 
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
+
+.. Availability:: 2.3.0
+
+.. include:: ../../proposed.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 Synopsis

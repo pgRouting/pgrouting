@@ -117,5 +117,4 @@ See Also
 
 * :ref:`pgr_create_topology`
 * :ref:`pgr_node_network`
-* :ref:`pgr_point_to_id`
 

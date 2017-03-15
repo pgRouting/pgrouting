@@ -56,7 +56,7 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 Description
 -------------------------------------------------------------------------------
 
-The Turn Restricted Shortest Path algorithm (TRSP) is similar to the :ref:`shooting_star` in that you can specify turn restrictions.
+The Turn Restricted Shortest Path algorithm (TRSP) is similar to the shooting star in that you can specify turn restrictions.
 
 The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.
 

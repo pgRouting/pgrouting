@@ -19,16 +19,16 @@ Synopsis
 ``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm.
 
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
-
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 
    Boost Graph Inside
 
+.. Rubric:: Availability: 2.4.0
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. rubric:: Characteristics
@@ -39,7 +39,7 @@ Synopsis
   - There is no flow when a **source** is the same as a **target**.
       
 - Any duplicated value in the source(s) or target(s) are ignored.
-- Uses the :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>` algorithm.
+- Uses the :ref:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
 
 * Running time: :math:`O( V ^ 3)`
 

@@ -22,6 +22,11 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability:
+
+* pgr_bdAstar(one to one) 2.0.0, Signature change on 2.5.0
+* pgr_bdAstar(other signatures) 2.5.0
+
 
 Signature Summary
 -----------------
@@ -47,22 +52,16 @@ Signature Summary
     RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
     OR EMPTY SET
 
-
 Using these signatures, will load once the graph and perform several one to one `pgr_bdAstar`
 
   - The result is the union of the results of the one to one `pgr_bdAStar`.
   - The extra ``start_vid`` and/or ``end_vid`` in the result is used to distinguish to which path it belongs.
 
-.. NOTE:: This signature is deprecated
 
-    .. code-block:: sql
+.. rubric:: Avaliability
 
-        pgr_bdastar(sql, source integer, target integer, directed boolean, has_rcost boolean)
-        RETURNS SET OF pgr_costResult
-
-    - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`bd_astar-v2`
-
+* pgr_bdAstar(one to one) 2.0, signature change on 2.5
+* pgr_bdAstar(other signatures) 2.5
 
 
 
@@ -213,23 +212,11 @@ Description of the Signatures
 
 
 
-Deprecated Signature
--------------------------------------------------------------------------------
-
-:Example: Using the deprecated signature 
-
-.. literalinclude:: doc-pgr_bdAstar.queries
-   :start-after: -- q6
-   :end-before: -- q7
-
-
-The queries use the :ref:`sampledata` network.
-
-
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`bdAstar`
+* :ref:`sampledata` network.
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
 

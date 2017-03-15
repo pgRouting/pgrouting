@@ -70,7 +70,7 @@ Flow Functions General Information
 .. characteristics_end
 
 
-:ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>`, :ref:`pgr_maxFlowEdmondsKarp <pgr_maxFlowEdmondsKarp>`, :ref:`pgr_maxFlowBoykovKolmogorov <pgr_maxFlowBoykovKolmogorov>`, but the actual flow through each edge may vary.
+:ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :ref:`pgr_pushRelabel <pgr_pushRelabel>`, :ref:`pgr_edmondsKarp <pgr_edmondsKarp>`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary.
 
 
 

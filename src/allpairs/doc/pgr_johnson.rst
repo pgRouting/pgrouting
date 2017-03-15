@@ -23,6 +23,10 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.0.0
+
+* Renamed on 2.2.0, previous name pgr_apspJohnson
+
 
 The Johnson algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for each pair of nodes in the graph, for *sparse graphs*.

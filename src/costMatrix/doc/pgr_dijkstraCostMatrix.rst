@@ -23,11 +23,12 @@ Name
    :end-before: end-warning
 
 
-
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
+
+.. rubric:: Availability: 2.3.0
 
 Synopsis
 -------------------------------------------------------------------------------

@@ -20,6 +20,10 @@ In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* pgr_dijkstra(one to one) 2.0.0, signature change 2.1.0
+* pgr_dijkstra(other signatures) 2.1.0
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -314,11 +318,6 @@ The examples in this section use the following:
    :start-after: -- q17
    :end-before: -- q18
 
-
-.. rubric:: History
-
-* Added functionality in version 2.1.0
-* Renamed in version 2.0.0
 
 
 See Also

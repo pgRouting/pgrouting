@@ -17,6 +17,10 @@ Name
 
 * ``pgr_TSP`` - Returns a route that visits all the nodes exactly once.
 
+.. rubric:: Availability: 2.0.0
+
+* Signature changed 2.3.0
+
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -26,7 +30,7 @@ The travelling salesman problem (TSP) or travelling salesperson problem asks the
   - Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
    
 This implementation uses simulated annealing to return the approximate solution when the input is given in the form of matrix cell contents.
-The matrix informetion must be symmetrical.
+The matrix information must be symmetrical.
 
 
 Signature Summary
@@ -45,8 +49,6 @@ Signature Summary
 
 Signatures
 -------------------------------------------------------------------------------
-
-.. NOTE:: The following only aplies to the new signature(s)
 
 
 .. index::
@@ -153,14 +155,6 @@ To generate a symmetric matrix:
    :end-before: -- q4
 
 The queries use the :ref:`sampledata` network.
-
-
-
-.. rubric:: History
-
-* Rewritten in version 2.3.0
-* Renamed in version 2.0.0
-* GAUL dependency removed in version 2.0.0
 
 
 

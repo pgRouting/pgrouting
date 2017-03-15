@@ -20,15 +20,19 @@ Synopsis
 ``pgr_boykovKolmogorov`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Boykov Kolmogorov algorithm.
 
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
-
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html 
 
    Boost Graph Inside
+
+.. Rubric:: Availability:
+
+* Renamed 2.5.0, Previous name pgr_maxFlowBoykovKolmogorov
+* New in 2.3.0
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. include::  ./maxFlow.rst
@@ -154,7 +158,7 @@ Description of the Signatures
 See Also
 --------
 
-* :ref:`maxFlow`, :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>`, :ref:`pgr_maxFlowEdmondsKarp <pgr_maxFlowEdmondsKarp>`
+* :ref:`maxFlow`, :ref:`pgr_pushRelabel <pgr_pushRelabel>`, :ref:`pgr_EdmondsKarp <pgr_edmondsKarp>`
 * http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html 
 
 .. rubric:: Indices and tables

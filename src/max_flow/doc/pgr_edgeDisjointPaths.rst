@@ -18,16 +18,17 @@ Name
 
 ``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
 
+.. Rubric:: Availability: 2.3.0
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 Synopsis
@@ -44,7 +45,7 @@ The main characterics are:
   - Returns EMPTY SET when source and destination are the same, or cannot be reached.
   - The graph can be directed or undirected.
   - One to many, many to one, many to many versions are also supported.
-  - Uses :ref:`pgr_maxFlowBoykovKolmogorov` to calculate the paths.
+  - Uses :ref:`pgr_boykovKolmogorov` to calculate the paths.
 
 Signature Summary
 -----------------
@@ -206,7 +207,10 @@ Description of the Signatures
     :start-after: return_path_start
     :end-before: return_path_end
 
+See Also
+--------
 
+* :ref:`maxFlow`
 
 .. rubric:: Indices and tables
 

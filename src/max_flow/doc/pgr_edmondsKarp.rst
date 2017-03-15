@@ -20,15 +20,19 @@ Synopsis
 ``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel Algorithm.
 
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
-
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 
    Boost Graph Inside
+
+.. Rubric:: Availability:
+
+* Renamed 2.5.0, Previous name pgr_maxFlowEdmondsKarp
+* New in 2.3.0
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 
 .. include::  ./maxFlow.rst
@@ -155,7 +159,7 @@ Description of the Signatures
 See Also
 --------
 
-* :ref:`maxFlow`, :ref:`pgr_maxFlowBoykovKolmogorov <pgr_maxFlowBoykovKolmogorov>`, :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>`
+* :ref:`maxFlow`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :ref:`pgr_PushRelabel <pgr_pushRelabel>`
 * http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 
