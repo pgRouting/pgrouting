@@ -21,7 +21,7 @@ Name
 ``pgr_pointToEdgeNode`` - Converts a point to a ``vertex_id`` based on closest edge.
 
 
-.. include:: ../../proposed.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

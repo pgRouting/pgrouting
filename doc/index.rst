@@ -17,7 +17,7 @@ pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgr
 
 This is the manual for pgRouting |release|.
 
-.. image:: static/images/ccbysa.png
+.. image:: ccbysa.png
     :align: left
     :alt: Creative Commons Attribution-Share Alike 3.0 License
 
@@ -102,7 +102,7 @@ Data Types
 .. toctree::
    :hidden:
 
-   ../src/common/doc/types/index
+   types/index
 
 
 *******************************************************************************

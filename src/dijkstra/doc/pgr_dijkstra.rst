@@ -15,7 +15,7 @@ pgr_dijkstra
 ``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
 In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
@@ -214,7 +214,7 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
@@ -239,7 +239,7 @@ Column         Type               Default     Description
 .. pgr_dijkstra_parameters_end
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: return_path_start
     :end-before: return_path_end
 

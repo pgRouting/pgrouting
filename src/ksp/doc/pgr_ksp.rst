@@ -18,7 +18,7 @@ Name
 ``pgr_ksp`` — Returns the "K" shortest paths.
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
@@ -72,7 +72,7 @@ Complete Signature
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 

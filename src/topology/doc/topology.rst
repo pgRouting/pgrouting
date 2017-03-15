@@ -25,9 +25,9 @@ We also provide a function to node an unoded network.
 .. toctree::
   :hidden: 
 
-  ./pgr_createTopology
-  ./pgr_createVerticesTable
-  ./pgr_analyzeGraph
-  ./pgr_analyzeOneWay
-  ./pgr_nodeNetwork
+  pgr_createTopology
+  pgr_createVerticesTable
+  pgr_analyzeGraph
+  pgr_analyzeOneWay
+  pgr_nodeNetwork
 

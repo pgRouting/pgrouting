@@ -18,7 +18,7 @@ Applications of Maximum Flow
 Maximum flow algorithms provide solutions to other graph problems.
 
 
-.. include:: ../../proposed.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

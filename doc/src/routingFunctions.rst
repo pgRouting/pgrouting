@@ -53,13 +53,13 @@ Routing Functions
 .. toctree::
     :hidden:
 
-    ../src/allpairs/doc/allpairs
-    ../src/astar/doc/pgr_astar
-    ../src/bd_astar/doc/pgr_bdAstar
-    ../src/bdDijkstra/doc/pgr_bdDijkstra
-    ../src/dijkstra/doc/dijkstra
-    ../src/driving_distance/doc/drivingDistance
-    ../src/ksp/doc/pgr_ksp
-    ../src/trsp/doc/pgr_trsp
-    ../src/tsp/doc/tsp
+    allpairs
+    pgr_astar
+    pgr_bdAstar
+    pgr_bdDijkstra
+    dijkstra
+    drivingDistance
+    pgr_ksp
+    pgr_trsp
+    tsp
 

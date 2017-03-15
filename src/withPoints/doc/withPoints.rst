@@ -24,15 +24,15 @@ When points are also given as input:
 .. toctree::
     :hidden: 
 
-    ./pgr_withPoints
-    ./pgr_withPointsCost
-    ../../costMatrix/doc/pgr_withPointsCostMatrix
-    ./pgr_withPointsKSP
-    ./pgr_withPointsDD
+    pgr_withPoints
+    pgr_withPointsCost
+    pgr_withPointsCostMatrix
+    pgr_withPointsKSP
+    pgr_withPointsDD
 
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
