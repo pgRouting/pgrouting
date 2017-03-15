@@ -20,16 +20,19 @@ Synopsis
 ``pgr_pushRelabel`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel Algorithm.
 
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
-
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 
    Boost Graph Inside
 
+.. Rubric:: Availability:
+
+* Renamed 2.5.0, Previous name pgr_maxFlowPushRelabel
+* New in 2.3.0
+
+.. include:: ../../proposedNext.rst
+   :start-after: begin-warning
+   :end-before: end-warning
 
 .. include::  ./maxFlow.rst
     :start-after: characteristics_start

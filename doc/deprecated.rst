@@ -35,9 +35,7 @@ Routing functions
 - :ref:`pgr_maxFlowPushRelabel` - See new signatures of :ref:`pgr_pushRelabel`
 - :ref:`pgr_maximumCardinalityMatching` - See new signatures of :ref:`pgr_maxCardinalityMatch`
 
-.. toctree::
-   :hidden:
-
+..
    ../src/max_flow/doc/pgr_maxFlowBoykovKolmogorov.rst
    ../src/max_flow/doc/pgr_maxFlowEdmondsKarp.rst
    ../src/max_flow/doc/pgr_maxFlowPushRelabel.rst
@@ -56,9 +54,7 @@ Auxiliary functions
 
 - :ref:`pgr_points_to_vids`
 
-.. toctree::
-   :hidden:
-
+..
    ../src/bd_dijkstra/doc/pgr_bdDijkstra-v2
    ../src/convenience/doc/pgr_pointsToVids
 
@@ -82,9 +78,7 @@ Auxiliary functions
 - :ref:`pgr_text_to_points`
 
 
-.. toctree::
-   :hidden:
-
+..
    ../src/astar/doc/pgr_astar-v2
    ../src/tsp/doc/pgr_tsp-V2.0
    ../src/convenience/doc/pgr_flipEdges
