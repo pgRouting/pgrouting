@@ -154,21 +154,6 @@ Available Functions but not official pgRouting functions
     ../src/proposed
 
 
-*******************************************************************************
-Discontinued & Deprecated Functions
-*******************************************************************************
-
-  - :ref:`discontinued`
-  - :ref:`deprecated`
-
-.. toctree::
-   :hidden:
-
-   src/developer/discontinued
-   deprecated
-
-
-
 
 *******************************************************************************
 Change Log
