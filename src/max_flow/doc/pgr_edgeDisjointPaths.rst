@@ -45,7 +45,7 @@ The main characterics are:
   - Returns EMPTY SET when source and destination are the same, or cannot be reached.
   - The graph can be directed or undirected.
   - One to many, many to one, many to many versions are also supported.
-  - Uses :ref:`pgr_maxFlowBoykovKolmogorov` to calculate the paths.
+  - Uses :ref:`pgr_boykovKolmogorov` to calculate the paths.
 
 Signature Summary
 -----------------
@@ -207,7 +207,10 @@ Description of the Signatures
     :start-after: return_path_start
     :end-before: return_path_end
 
+See Also
+--------
 
+* :ref:`maxFlow`
 
 .. rubric:: Indices and tables
 

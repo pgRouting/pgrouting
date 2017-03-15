@@ -157,7 +157,7 @@ Description of the Signatures
 See Also
 --------
 
-* :ref:`maxFlow`, :ref:`pgr_maxFlowBoykovKolmogorov <pgr_maxFlowBoykovKolmogorov>`, :ref:`pgr_maxFlowEdmondsKarp <pgr_maxFlowEdmondsKarp>`
+* :ref:`maxFlow`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :ref:`pgr_edmondsKarp <pgr_edmondsKarp>`
 * http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 

@@ -39,7 +39,7 @@ Synopsis
   - There is no flow when a **source** is the same as a **target**.
       
 - Any duplicated value in the source(s) or target(s) are ignored.
-- Uses the :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>` algorithm.
+- Uses the :ref:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
 
 * Running time: :math:`O( V ^ 3)`
 

@@ -159,7 +159,7 @@ Description of the Signatures
 See Also
 --------
 
-* :ref:`maxFlow`, :ref:`pgr_maxFlowBoykovKolmogorov <pgr_maxFlowBoykovKolmogorov>`, :ref:`pgr_maxFlowPushRelabel <pgr_maxFlowPushRelabel>`
+* :ref:`maxFlow`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, :ref:`pgr_PushRelabel <pgr_pushRelabel>`
 * http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 
