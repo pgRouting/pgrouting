@@ -236,7 +236,7 @@ Changes for 2.1.0
    - encapsulates Boost.Graph graphs
 
      - Directed Boost.Graph 
-     - Undirected Boost.graph.
+     - Undirected Boost.graph
 
    - allow any-integer in the id's
    - allow any-numerical on the cost/reverse_cost columns
