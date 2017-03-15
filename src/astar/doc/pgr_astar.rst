@@ -22,6 +22,11 @@ Name
 
    Boost Graph Inside
 
+.. rubric:: Availability:
+
+* pgr_astar(one to one) 2.0.0, Signature changed 2.3.0
+* pgr_astar(other signatures) 2.4.0
+
 
 
 Characteristics
@@ -59,16 +64,6 @@ Signature Summary
 
     pgr_aStar(edges_sql, start_vid, end_vid)
     pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
-
-.. NOTE:: This signature is deprecated
-
-    .. code-block:: sql
-
-        pgr_aStar(sql, source integer, target integer, directed boolean, has_rcost boolean)
-        RETURNS SET OF pgr_costResult
-
-    - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`pgr_aStar-V2.0`
 
 
 .. include:: ../../proposedNext.rst
@@ -288,23 +283,11 @@ Column           Type              Description
 
 
 
-Deprecated Signature
--------------------------------------------------------------------------------
-
-:Example: Using the deprecated signature 
-
-.. literalinclude:: doc-astar.queries
-   :start-after: --q6
-   :end-before: --q7
-
-
-The queries use the :ref:`sampledata` network.
-
-
 See Also
 -------------------------------------------------------------------------------
 
 * :ref:`astar`
+* :ref:`sampledata`
 * http://www.boost.org/libs/graph/doc/astar_search.html
 * http://en.wikipedia.org/wiki/A*_search_algorithm
 
