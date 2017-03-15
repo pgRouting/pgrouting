@@ -15,7 +15,7 @@ Developer's Guide
 This contains some basic comments about developing.
 More detailed information can be found on:
 
-http://docs.pgrouting.org/doxy/2.2/index.html
+http://docs.pgrouting.org/doxy/2.4/index.html
 
 Source Tree Layout
 -------------------------------------------------------------------------------

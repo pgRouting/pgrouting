@@ -17,7 +17,7 @@ pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgr
 
 This is the manual for pgRouting |release|.
 
-.. image:: ccbysa.png
+.. image:: _build/static/images/ccbysa.png
     :align: left
     :alt: Creative Commons Attribution-Share Alike 3.0 License
 
