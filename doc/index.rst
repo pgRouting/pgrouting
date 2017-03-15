@@ -30,10 +30,10 @@ General
 .. toctree::
     :maxdepth: 2
 
-    src/introduction/introduction
-    src/installation/installation
-    src/installation/build
-    src/introduction/support
+    introduction
+    installation
+    build
+    support
 
 
 *******************************************************************************
@@ -57,8 +57,8 @@ For a more complete introduction how to build a routing application read the `pg
    :hidden:
 
    tutorial-index
-   src/recipes/index
-   src/developer/developer_guide
+   recipes-index
+   developer_guide
    
 *******************************************************************************
 Sample Data
@@ -69,7 +69,7 @@ Sample Data
 .. toctree::
    :hidden:
 
-   src/developer/sampledata
+   sampledata
 
 
 
@@ -85,7 +85,7 @@ Version
 .. toctree::
    :hidden:
 
-   ../src/common/doc/pgr_version
+   pgr_version
 
 
 
@@ -120,7 +120,7 @@ Topology functions
 .. toctree::
    :hidden:
 
-   ../src/topology/doc/topology
+   topology
 
 
 *******************************************************************************
@@ -130,11 +130,11 @@ Routing Functions
 .. toctree::
     :hidden:
 
-    ../src/routingFunctions
+    routingFunctions
 
 :ref:`routing_functions`
 
-.. include:: ../src/routingFunctions.rst
+.. include:: routingFunctions.rst
    :start-after: from-here
    :end-before: to-here
     
@@ -150,8 +150,8 @@ Available Functions but not official pgRouting functions
 .. toctree::
     :hidden:
 
-    ../src/proposedNext
-    ../src/proposed
+    proposedNext
+    proposed
 
 
 
