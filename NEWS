@@ -112,7 +112,7 @@ Changes for 2.3.0
 * Deprecated functions
 
   * pgr_flip_edges
-  * pgr_vidsToDmatrix
+  * pgr_vidsToDmatrix(2 signatures)
   * pgr_pointsToDMatrix
   * pgr_textToPoints
 
