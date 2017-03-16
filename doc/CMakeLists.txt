@@ -24,8 +24,12 @@ if(WITH_DOC)
 
     find_package(Sphinx REQUIRED)
 
-    set(SPHINX_THEME "haiku")
-    #set(SPHINX_THEME_DIR "_themes")
+    #set(SPHINX_THEME "haiku")
+    #set(SPHINX_THEME_DIR "['']")
+
+    set(SPHINX_THEME "bootstrap")
+    set(SPHINX_THEME_DIR "sphinx_bootstrap_theme.get_html_theme_path()")
+
 
     if (NOT SPHINX_FOUND)
         message(WARNING "Sphinx not found. Cannot generate documentation!")

@@ -90,7 +90,7 @@ Driving Distance From Multiple Starting Vertices
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 

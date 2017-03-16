@@ -104,11 +104,11 @@ Description of the Signatures
 ..
     description of the sql queries
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 

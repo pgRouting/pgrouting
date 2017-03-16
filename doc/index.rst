@@ -37,28 +37,19 @@ General
 
 
 *******************************************************************************
-Tutorial
+:ref:`pgrouting_concepts`
 *******************************************************************************
 
-:ref:`Tutorial <tutorial1>`
-
-  - :ref:`Getting started <tutorial>`
-  - :ref:`topology` for an overview of a topology for routing algorithms.
-  - :ref:`analytics` for an overview of the analysis of a graph.
-  - :ref:`custom_query` that is used in the routing algorithms.
-  - :ref:`performance` to improve your performance.
-  - :ref:`recipes`
-  - :ref:`developer`
-
-For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
+.. include:: pgRouting-concepts.rst
+   :start-after: concepts_start
+   :end-before: concepts_end
 
 
 .. toctree::
    :hidden:
 
-   tutorial-index
-   recipes-index
-   developer_guide
+
+   pgRouting-concepts
    
 *******************************************************************************
 Sample Data

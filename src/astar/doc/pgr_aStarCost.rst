@@ -179,7 +179,7 @@ Description of the Signatures
 ..
     description of the edges_sql queries
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 

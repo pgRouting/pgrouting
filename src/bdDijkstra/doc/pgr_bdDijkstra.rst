@@ -84,7 +84,7 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
@@ -92,7 +92,7 @@ Description of the Signatures
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: return_path_start
     :end-before: return_path_end
 

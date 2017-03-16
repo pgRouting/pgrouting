@@ -103,7 +103,7 @@ Complete signature
    :end-before: -- q3
 
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 

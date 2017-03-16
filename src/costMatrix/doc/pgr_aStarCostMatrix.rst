@@ -97,7 +97,7 @@ This example returns a symmetric cost matrix.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
@@ -130,7 +130,7 @@ Parameter        Type                   Description
 
 
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 

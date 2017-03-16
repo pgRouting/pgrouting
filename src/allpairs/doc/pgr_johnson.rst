@@ -108,7 +108,7 @@ Complete Signature
 Description of the Signatures
 ------------------------------
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: no_id_edges_sql_start
     :end-before: no_id_edges_sql_end
 
