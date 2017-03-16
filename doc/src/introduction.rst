@@ -52,7 +52,7 @@ Individuals (in alphabetical order)
 
 Virginia Vergara
 
-And all the people that gives us a little of their time making comments, finding issues, making pull requests etc.
+And all the people that give us a little of their time making comments, finding issues, making pull requests etc.
 
 Corporate Sponsors (in alphabetical order)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -104,4 +104,5 @@ More Information
 * PostGIS extension at the PostGIS project web site http://postgis.net.
 * Boost C++ source libraries at http://www.boost.org.
 * Computational Geometry Algorithms Library (CGAL) at http://www.cgal.org.
+* `Migration guide <https://github.com/pgRouting/pgrouting/wiki/Migration-Guide>`_
 
