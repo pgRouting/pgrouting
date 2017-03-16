@@ -76,12 +76,6 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">pgRouting Concepts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#queries-results">Queries &amp; Results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#advanced-topics">Advanced Topics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#performance-tips">Performance Tips</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#user-s-recipes-list">User&#8217;s Recipes List</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#how-to-contribute">How to contribute.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#developer-s-guide">Developer&#8217;s Guide</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
@@ -104,19 +98,6 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-4-0-release-notes">pgRouting 2.4.0 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-2-release-notes">pgRouting 2.3.2 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-1-release-notes">pgRouting 2.3.1 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-0-release-notes">pgRouting 2.3.0 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-4-release-notes">pgRouting 2.2.4 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-3-release-notes">pgRouting 2.2.3 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-2-release-notes">pgRouting 2.2.2 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-1-release-notes">pgRouting 2.2.1 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-0-release-notes">pgRouting 2.2.0 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-1-0-release-notes">pgRouting 2.1.0 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-0-1-release-notes">pgRouting 2.0.1 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-0-0-release-notes">pgRouting 2.0.0 Release Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-1-x-release-notes">pgRouting 1.x Release Notes</a></li>
 </ul>
 </ul>
 </li>
@@ -139,9 +120,6 @@
 <li><a class="reference internal" href="#compute-a-path">Compute a Path</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a class="reference internal" href="#queries-results">Queries &amp; Results</a><ul>
 <li><a class="reference internal" href="#inner-queries">Inner Queries</a><ul>
 <li><a class="reference internal" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions">Description of the edges_sql query for dijkstra like functions</a></li>
 <li><a class="reference internal" href="#description-of-the-edges-sql-query-id-is-not-necessary">Description of the edges_sql query (id is not necessary)</a></li>
@@ -156,31 +134,22 @@
 <li><a class="reference internal" href="#description-of-the-return-values">Description of the Return Values</a></li>
 </ul>
 </li>
-</ul>
-</li>
 <li><a class="reference internal" href="#advanced-topics">Advanced Topics</a><ul>
 <li><a class="reference internal" href="#routing-topology">Routing Topology</a></li>
-<li><a class="reference internal" href="#see-also">See Also</a><ul>
-<li><a class="reference internal" href="#graph-analytics">Graph Analytics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#graph-analytics">Graph Analytics</a><ul>
 <li><a class="reference internal" href="#analyze-a-graph">Analyze a Graph</a></li>
 <li><a class="reference internal" href="#analyze-one-way-streets">Analyze One Way Streets</a></li>
 <li><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">See Also</a></li>
+<li><a class="reference internal" href="#performance-tips">Performance Tips</a><ul>
+<li><a class="reference internal" href="#for-the-routing-functions">For the Routing functions</a></li>
+<li><a class="reference internal" href="#for-the-topology-functions">For the topology functions:</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#performance-tips">Performance Tips</a></li>
-<li><a class="reference internal" href="#user-s-recipes-list">User&#8217;s Recipes List</a></li>
-<li><a class="reference internal" href="#how-to-contribute">How to contribute.</a><ul>
-<li><a class="reference internal" href="#comparing-topology-of-a-unnoded-network-with-a-noded-network">Comparing topology of a unnoded network with a noded network</a></li>
-<li><a class="reference internal" href="#handling-parallels-after-getting-a-path-pgr-ksp-focus">Handling parallels after getting a path (pgr_ksp focus)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#developer-s-guide">Developer&#8217;s Guide</a><ul>
-<li><a class="reference internal" href="#source-tree-layout">Source Tree Layout</a></li>
-<li><a class="reference internal" href="#tools">Tools</a></li>
-<li><a class="reference internal" href="#documentation-layout">Documentation Layout</a></li>
+<li><a class="reference internal" href="#how-to-contribute">How to contribute</a></li>
 </ul>
 </li>
 </ul>
@@ -203,12 +172,6 @@
             
             
             
-            
-              <li class="hidden-sm">
-<div id="sourcelink">
-  <a href="_sources/pgRouting-concepts.txt"
-     rel="nofollow">Source</a>
-</div></li>
             
           </ul>
 
@@ -240,25 +203,18 @@
 <li><a class="reference internal" href="#build-topology"><em>Build a Routing Topology</em></a></li>
 <li><a class="reference internal" href="#check-graph"><em>Check the Routing Topology</em></a></li>
 <li><a class="reference internal" href="#compute-path"><em>Compute a Path</em></a></li>
+<li><a class="reference external" href="http://workshop.pgrouting.org">pgRouting Workshop</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#custom-query"><em>Queries &amp; Results</em></a><ul>
 <li><a class="reference internal" href="#inner-queries"><em>Inner Queries</em></a></li>
 <li><a class="reference internal" href="#return-values"><em>Return columns &amp; values</em></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#advanced-topics"><em>Advanced Topics</em></a><ul>
-<li><a class="reference internal" href="#topology"><em>Routing Topology</em></a> for an overview of a topology for routing algorithms.</li>
-<li><a class="reference internal" href="#analytics"><em>Graph Analytics</em></a> for an overview of the analysis of a graph.</li>
-<li><a class="reference internal" href="#performance"><em>Performance Tips</em></a> to improve your performance.</li>
+<li><a class="reference internal" href="#topology"><em>Routing Topology</em></a></li>
+<li><a class="reference internal" href="#analytics"><em>Graph Analytics</em></a></li>
+<li><a class="reference internal" href="#performance"><em>Performance Tips</em></a></li>
 </ul>
 </li>
-<li>Contributing<ul>
-<li><a class="reference internal" href="#recipes"><em>User&#8217;s Recipes List</em></a></li>
-<li><a class="reference internal" href="#developer"><em>Developer&#8217;s Guide</em></a></li>
-</ul>
-</li>
-<li><a class="reference external" href="http://workshop.pgrouting.org">pgRouting Workshop</a></li>
+<li><a class="reference internal" href="#how-contribute"><em>How to contribute</em></a></li>
 </ul>
 <div class="section" id="getting-started">
 <span id="id2"></span><h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
@@ -385,13 +341,10 @@ to get more information about each step in the path.</p>
 </ul>
 </div>
 </div>
-</div>
-<div class="section" id="queries-results">
-<span id="custom-query"></span><h1>Queries &amp; Results<a class="headerlink" href="#queries-results" title="Permalink to this headline">¶</a></h1>
-<p>There are several kinds of valid inner queries and also the columns returned are debending of the function..
-Which kind of <strong>edges_sql</strong> will depend on the function(s) requirements.</p>
 <div class="section" id="inner-queries">
 <span id="id4"></span><h2>Inner Queries<a class="headerlink" href="#inner-queries" title="Permalink to this headline">¶</a></h2>
+<p>There are several kinds of valid inner queries and also the columns returned are depending of the function..
+Which kind of <strong>edges_sql</strong> will depend on the function(s) requirements.</p>
 <div class="section" id="description-of-the-edges-sql-query-for-dijkstra-like-functions">
 <h3>Description of the edges_sql query for dijkstra like functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-dijkstra-like-functions" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
@@ -790,6 +743,7 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 </div>
 <div class="section" id="return-columns-values">
 <span id="return-values"></span><h2>Return columns &amp; values<a class="headerlink" href="#return-columns-values" title="Permalink to this headline">¶</a></h2>
+<p>There are several kinds of columns returned are depending of the function.</p>
 <div class="section" id="description-of-the-return-values-for-a-path">
 <h3>Description of the return values for a path<a class="headerlink" href="#description-of-the-return-values-for-a-path" title="Permalink to this headline">¶</a></h3>
 <p>Returns set of <tt class="docutils literal"><span class="pre">(seq,</span> <span class="pre">path_seq</span> <span class="pre">[,</span> <span class="pre">start_vid]</span> <span class="pre">[,</span> <span class="pre">end_vid],</span> <span class="pre">node,</span> <span class="pre">edge,</span> <span class="pre">cost,</span> <span class="pre">agg_cost)</span></tt></p>
@@ -919,11 +873,10 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 </table>
 </div>
 </div>
-</div>
 <div class="section" id="advanced-topics">
-<span id="id5"></span><h1>Advanced Topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h1>
+<span id="id5"></span><h2>Advanced Topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="routing-topology">
-<span id="topology"></span><h2>Routing Topology<a class="headerlink" href="#routing-topology" title="Permalink to this headline">¶</a></h2>
+<span id="topology"></span><h3>Routing Topology<a class="headerlink" href="#routing-topology" title="Permalink to this headline">¶</a></h3>
 <p class="rubric">Overview</p>
 <p>Typically when GIS files are loaded into the data database for use with pgRouting they do not have topology information associated with them. To create a useful topology the data needs to be &#8220;noded&#8221;. This means that where two or more roads form an intersection there it needs to be a node at the intersection and all the road segments need to be broken at the intersection, assuming that you can navigate from any of these segments to any other segment via that intersection.</p>
 <p>You can use the <a class="reference internal" href="#analytics"><em>graph analysis functions</em></a> to help you see where you might have topology problems in your data. If you need to node your data, we also have a function <a class="reference internal" href="pgr_nodeNetwork.html#pgr-node-network"><em>pgr_nodeNetwork()</em></a> that might work for you. This function splits ALL crossing segments and nodes them. There are some cases where this might NOT be the right thing to do.</p>
@@ -1009,18 +962,12 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 </div>
 <p>Now your database should be ready to use any (most?) of the pgRouting algorithms.</p>
 </div>
-<div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference internal" href="pgr_createTopology.html#pgr-create-topology"><em>pgr_createTopology</em></a></li>
-<li><a class="reference internal" href="pgr_nodeNetwork.html#pgr-node-network"><em>pgr_nodeNetwork</em></a></li>
-</ul>
+</div>
 <div class="section" id="graph-analytics">
-<span id="analytics"></span><h3>Graph Analytics<a class="headerlink" href="#graph-analytics" title="Permalink to this headline">¶</a></h3>
+<span id="analytics"></span><h2>Graph Analytics<a class="headerlink" href="#graph-analytics" title="Permalink to this headline">¶</a></h2>
 <p class="rubric">Overview</p>
 <p>It is common to find problems with graphs that have not been constructed fully noded or in graphs with z-levels at intersection that have been entered incorrectly. An other problem is one way streets that have been entered in the wrong direction. We can not detect errors with respect to &#8220;ground&#8221; truth, but we can look for inconsistencies and some anomalies in a graph and report them for additional inspections.</p>
 <p>We do not current have any visualization tools for these problems, but I have used mapserver to render the graph and highlight potential problem areas. Someone familiar with graphviz might contribute tools for generating images with that.</p>
-</div>
 <div class="section" id="analyze-a-graph">
 <h3>Analyze a Graph<a class="headerlink" href="#analyze-a-graph" title="Permalink to this headline">¶</a></h3>
 <p>With <a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a> the graph can be checked for errors. For example for table &#8220;mytab&#8221; that has &#8220;mytab_vertices_pgr&#8221; as the vertices table:</p>
@@ -1110,21 +1057,28 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 <p>The above tools do not detect all network issues, but they will identify some common problems. There are other problems that are hard to detect because they are more global in nature like multiple disconnected networks. Think of an island with a road network that is not connected to the mainland network because the bridge or ferry routes are missing.</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>See Also<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference internal" href="pgr_analyzeGraph.html#pgr-analyze-graph"><em>pgr_analyzeGraph</em></a></li>
-<li><a class="reference internal" href="pgr_analyzeOneWay.html#pgr-analyze-oneway"><em>pgr_analyzeOneway</em></a></li>
-<li><a class="reference internal" href="pgr_nodeNetwork.html#pgr-node-network"><em>pgr_nodeNetwork</em></a></li>
-</ul>
-</div>
-</div>
 <div class="section" id="performance-tips">
-<span id="performance"></span><h1>Performance Tips<a class="headerlink" href="#performance-tips" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To get faster results bound your queries to the area of interest of routing to have, for example, no more than one million rows.</p>
+<span id="performance"></span><h2>Performance Tips<a class="headerlink" href="#performance-tips" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="for-the-routing-functions">
+<h3>For the Routing functions<a class="headerlink" href="#for-the-routing-functions" title="Permalink to this headline">¶</a></h3>
+<p>To get faster results bound your queries to the area of interest of routing to have, for example, no more than one million rows.</p>
+<p>Use an inner query SQL that does not include some edges in the routing function</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span>
+        <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="k">and</span>
+        <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="k">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="k">FROM</span>  <span class="n">edge_table</span> <span class="k">where</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
 </div>
+<p>Integrating the inner query to the pgRouting function:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pgr_dijkstra</span><span class="p">(</span>
+        <span class="s1">&#39;SELECT id, source, target from edge_table WHERE</span>
+<span class="s1">            id &lt; 17 and</span>
+<span class="s1">            the_geom  &amp;&amp; (select st_buffer(the_geom,1) as myarea FROM  edge_table where id = 5)&#39;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-the-topology-functions">
+<h3>For the topology functions:<a class="headerlink" href="#for-the-topology-functions" title="Permalink to this headline">¶</a></h3>
 <p>When &#8220;you know&#8221; that you are going to remove a set of edges from the edges table, and without those edges you are going to use a routing function you can do the following:</p>
 <p>Analize the new topology based on the actual topology:</p>
 <div class="highlight-sql"><div class="highlight"><pre><span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
@@ -1135,412 +1089,22 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span><span class="n">rows_where</span><span class="p">:</span><span class="o">=</span><span class="s1">&#39;id &lt; 17&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Use an SQL that &#8220;removes&#8221; the edges in the routing function</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">17</span>
-</pre></div>
 </div>
-<p>When &#8220;you know&#8221; that the route will not go out of a particular area, to speed up the process you can use a more complex SQL query like</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span> <span class="k">from</span> <span class="n">edge_table</span> <span class="k">WHERE</span>
-        <span class="n">id</span> <span class="o">&lt;</span> <span class="mi">17</span> <span class="k">and</span>
-        <span class="n">the_geom</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="k">select</span> <span class="n">st_buffer</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">myarea</span> <span class="k">FROM</span>  <span class="n">edge_table</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Note that the  same condition <tt class="docutils literal"><span class="pre">id</span> <span class="pre">&lt;</span> <span class="pre">17</span></tt> is used in all cases.</p>
-</div>
-<div class="section" id="user-s-recipes-list">
-<span id="recipes"></span><h1>User&#8217;s Recipes List<a class="headerlink" href="#user-s-recipes-list" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul class="simple">
-</ul>
-</div>
-<p><em>No more contributions</em></p>
 </div>
 <div class="section" id="how-to-contribute">
-<h1>How to contribute.<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h1>
-<p class="rubric">To add a recipie or a wrapper</p>
-<p>The first steps are:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Fork the repository</li>
-<li>Create a branch for your recipe or wrapper</li>
-<li>Create your recipe file</li>
-</ul>
-</div></blockquote>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>doc/src/recipes/
-vi myrecipe.rst
-git add myrecipe.rst
-<span class="c"># include the recipe in this file</span>
-vi index.rst
-</pre></div>
-</div>
-<p class="rubric">To create the test file of your recipe</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd test</span>
-cp myrecipe.rst myrecipe.sql.test
-
-<span class="c"># make your test based on your recipe</span>
-vi myrecipe.sql.test
-git add myrecipe.sql.test
-
-<span class="c"># create your test results file</span>
-touch myrecipe.result
-git add myrecipe.result
-
-<span class="c"># add your test to the file</span>
-vi test.conf
-</pre></div>
-</div>
-<p>Leave only the SQL code on <tt class="docutils literal"><span class="pre">myrecipe.sql.test</span></tt> by deleting lines or by commenting lines.</p>
-<p class="rubric">To get the results of your recipe</p>
-<p>From the root directory execute:</p>
-<div class="highlight-bash"><div class="highlight"><pre>tools/test-runner.pl -alg recipes -ignorenotice
-</pre></div>
-</div>
-<p>Copy the results of your recipe and paste them in the file <tt class="docutils literal"><span class="pre">myrecipe.result</span></tt>, and remove the &#8220;&gt; &#8221; from the file.</p>
-<p class="rubric">make a pull request.</p>
-<div class="highlight-bash"><div class="highlight"><pre>git commit -a -m <span class="s1">&#39;myrecipe is for this and that&#39;</span>
-git push
-</pre></div>
-</div>
-<p>From your fork in github make a pull request over develop</p>
-<div class="section" id="comparing-topology-of-a-unnoded-network-with-a-noded-network">
-<span id="example-recipe"></span><h2>Comparing topology of a unnoded network with a noded network<a class="headerlink" href="#comparing-topology-of-a-unnoded-network-with-a-noded-network" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">pgRouting team.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Licence:</th><td class="field-body">Open Source</td>
-</tr>
-</tbody>
-</table>
-<p>This recipe uses the <a class="reference internal" href="sampledata.html#sampledata"><em>Sample Data</em></a> network.</p>
-<p>The purpose of this recipe is to compare a not nodded network with a nodded network.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
-<span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
-<span class="k">SELECT</span> <span class="n">pgr_nodeNetwork</span><span class="p">(</span><span class="s1">&#39;edge_table&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
-<span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
-<span class="k">SELECT</span> <span class="n">pgr_analyzegraph</span><span class="p">(</span><span class="s1">&#39;edge_table_noded&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="handling-parallels-after-getting-a-path-pgr-ksp-focus">
-<span id="parallel-handling"></span><h2>Handling parallels after getting a path (pgr_ksp focus)<a class="headerlink" href="#handling-parallels-after-getting-a-path-pgr-ksp-focus" title="Permalink to this headline">¶</a></h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">pgRouting team.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Licence:</th><td class="field-body">Open Source</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">The graph</p>
-<img alt="_images/parallelImage.png" src="_images/parallelImage.png" />
-<p class="rubric">Data</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">drop</span> <span class="k">table</span> <span class="n">if</span> <span class="k">exists</span> <span class="n">parallel</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">parallel</span> <span class="p">(</span>
-  <span class="n">id</span> <span class="nb">serial</span><span class="p">,</span>
-  <span class="k">source</span> <span class="nb">integer</span><span class="p">,</span>
-  <span class="n">target</span> <span class="nb">integer</span><span class="p">,</span>
-  <span class="n">cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
-  <span class="n">reverse_cost</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
-  <span class="n">x1</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
-  <span class="n">y1</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
-  <span class="n">x2</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
-  <span class="n">y2</span> <span class="n">double</span> <span class="k">precision</span><span class="p">,</span>
-  <span class="n">the_geom</span> <span class="n">geometry</span>
-<span class="p">);</span>
-
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">parallel</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
-  <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
-<span class="k">UPDATE</span> <span class="n">parallel</span> <span class="k">SET</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="n">ST_makeline</span><span class="p">(</span><span class="n">ST_point</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">));</span>
-<span class="k">UPDATE</span> <span class="n">parallel</span> <span class="k">SET</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="n">ST_makeline</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-<span class="k">UPDATE</span> <span class="n">parallel</span> <span class="k">SET</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="n">ST_makeline</span><span class="p">(</span><span class="nb">ARRAY</span><span class="p">[</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">ST_point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
-                              <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="k">UPDATE</span> <span class="n">parallel</span> <span class="k">SET</span> <span class="n">cost</span> <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">reverse_cost</span> <span class="o">=</span> <span class="n">ST_length</span><span class="p">(</span><span class="n">the_geom</span><span class="p">);</span>
-<span class="k">SELECT</span> <span class="n">pgr_createTopology</span><span class="p">(</span><span class="s1">&#39;parallel&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">001</span><span class="p">);</span>
-</pre></div>
-</div>
-<p class="rubric">pgr_ksp results</p>
-<p>We ignore the costs because we want all the parallels</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="n">seq</span><span class="p">,</span> <span class="n">path_id</span> <span class="k">AS</span> <span class="n">route</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span> <span class="k">INTO</span> <span class="n">routes</span>
-  <span class="k">from</span> <span class="n">pgr_ksp</span><span class="p">(</span><span class="s1">&#39;select id, source, target, cost, reverse_cost from parallel&#39;</span><span class="p">,</span>
-  <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-
-<span class="k">select</span> <span class="n">route</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">edge</span> <span class="k">from</span> <span class="n">routes</span><span class="p">;</span>
-  <span class="n">route</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span>
- <span class="c1">-------+------+------</span>
-      <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
-      <span class="mi">1</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span>
-      <span class="mi">1</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span>
-      <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
-      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">1</span>
-      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span>
-      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">5</span> <span class="o">|</span>    <span class="mi">7</span>
-      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">6</span> <span class="o">|</span>    <span class="mi">8</span>
-      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">3</span> <span class="o">|</span>    <span class="mi">5</span>
-      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
- <span class="p">(</span><span class="mi">10</span> <span class="k">rows</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="rubric">We need an aggregate function:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">AGGREGATE</span> <span class="n">array_accum</span> <span class="p">(</span><span class="n">anyelement</span><span class="p">)</span>
-<span class="p">(</span>
-  <span class="n">sfunc</span> <span class="o">=</span> <span class="n">array_append</span><span class="p">,</span>
-  <span class="k">stype</span> <span class="o">=</span> <span class="n">anyarray</span><span class="p">,</span>
-  <span class="n">initcond</span> <span class="o">=</span> <span class="s1">&#39;{}&#39;</span>
-<span class="p">);</span>
-</pre></div>
-</div>
-<p class="rubric">Now lets generate a table with the parallel edges.</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="k">distinct</span> <span class="n">seq</span><span class="p">,</span><span class="n">route</span><span class="p">,</span><span class="k">source</span><span class="p">,</span><span class="n">target</span><span class="p">,</span> <span class="n">array_accum</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">as</span> <span class="n">edges</span> <span class="k">into</span> <span class="n">paths</span>
-  <span class="k">from</span> <span class="p">(</span><span class="k">select</span> <span class="n">seq</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">target</span>
-        <span class="k">from</span> <span class="n">parallel</span><span class="p">,</span> <span class="n">routes</span> <span class="k">where</span> <span class="n">id</span> <span class="o">=</span> <span class="n">edge</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span>
-     <span class="k">join</span> <span class="n">parallel</span> <span class="k">using</span> <span class="p">(</span><span class="k">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-  <span class="k">group</span> <span class="k">by</span> <span class="n">seq</span><span class="p">,</span><span class="n">route</span><span class="p">,</span><span class="k">source</span><span class="p">,</span><span class="n">target</span> <span class="k">order</span> <span class="k">by</span> <span class="n">seq</span><span class="p">;</span>
-
- <span class="k">select</span> <span class="n">route</span><span class="p">,</span> <span class="k">source</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">edges</span> <span class="k">from</span> <span class="n">paths</span><span class="p">;</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre> route | source | target |  edges
--------+--------+--------+---------
-     1 |      1 |      2 | {1}
-     2 |      1 |      2 | {1}
-     2 |      2 |      5 | {6}
-     1 |      2 |      3 | {2,3,4}
-     2 |      5 |      6 | {7}
-     1 |      3 |      4 | {5}
-     2 |      6 |      3 | {8}
-     2 |      3 |      4 | {5}
-(8 rows)
-</pre></div>
-</div>
-<p class="rubric">Some more aggregate functions</p>
-<p>To generate a table with all the combinations for parallel routes, we need some more aggregates</p>
-<div class="highlight-python"><div class="highlight"><pre>create or replace function multiply( integer, integer )
-returns integer as
-$$
-  select $1 * $2;
-$$
-language sql stable;
-
-create aggregate prod(integer)
-(
-  sfunc = multiply,
-  stype = integer,
-  initcond = 1
-);
-</pre></div>
-</div>
-<p class="rubric">And a function that &#8220;Expands&#8221; the table</p>
-<div class="highlight-sql"><div class="highlight"><pre>CREATE OR REPLACE function   expand_parallel_edge_paths(tab text)
-  returns TABLE (
-                seq    INTEGER,
-                route  INTEGER,
-                source INTEGER, target INTEGER, -- this ones are not really needed
-                edge   INTEGER ) AS
- $body$
- DECLARE
- nroutes   INTEGER;
- newroutes INTEGER;
- rec   record;
- seq2 INTEGER := 1;
- rnum INTEGER := 0;
-
- BEGIN     -- get the number of distinct routes
-   execute &#39;select count(DISTINCT route) from &#39; || tab INTO nroutes;
-   FOR i IN 0..nroutes-1
-   LOOP
-       -- compute the number of new routes this route will expand into
-       -- this is the product of the lengths of the edges array for each route
-       execute &#39;select prod(array_length(edges, 1))-1 from &#39;
-       ||       quote_ident(tab) || &#39; where route=&#39;    || i INTO newroutes;
-       -- now we generate the number of new routes for this route
-       -- by repeatedly listing the route and swapping out the parallel edges
-       FOR j IN 0..newroutes
-       LOOP
-           -- query the specific route
-           FOR rec IN execute &#39;select * from &#39; || quote_ident(tab) ||&#39; where route=&#39; || i
-                       || &#39; order by seq&#39;
-           LOOP
-               seq := seq2;
-               route := rnum;
-               source := rec.source;
-               target := rec.target;
-               -- using module arithmetic iterate through the various edge choices
-               edge := rec.edges[(j % (array_length(rec.edges, 1)))+1];
-               -- return a new record
-               RETURN next;
-               seq2 := seq2 + 1;    -- increment the record count
-            END LOOP;
-            seq := seq2;
-            route := rnum;
-            source := rec.target;
-            target := -1;
-            edge := -1;
-            RETURN next;  -- Insert the ending record of the route
-            seq2 := seq2 + 1;
-
-            rnum := rnum + 1;  -- increment the route count
-        END LOOP;
-     END LOOP;
- END;
- $body$
- language plpgsql volatile strict   cost 100 rows 100;
-</pre></div>
-</div>
-<p class="rubric">Test it</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">expand_parallel_edge_paths</span><span class="p">(</span> <span class="s1">&#39;paths&#39;</span> <span class="p">);</span>
- <span class="n">seq</span> <span class="o">|</span> <span class="n">route</span> <span class="o">|</span> <span class="k">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">edge</span>
-<span class="c1">-----+-------+--------+--------+------</span>
-   <span class="mi">1</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">2</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">2</span>
-   <span class="mi">3</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span>
-   <span class="mi">4</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
-   <span class="mi">5</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
-   <span class="mi">6</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">3</span>
-   <span class="mi">7</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span>
-   <span class="mi">8</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
-   <span class="mi">9</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">10</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">4</span>
-  <span class="mi">11</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span>
-  <span class="mi">12</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
-  <span class="mi">13</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">1</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>    <span class="mi">1</span>
-  <span class="mi">14</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">2</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>    <span class="mi">6</span>
-  <span class="mi">15</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">5</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>    <span class="mi">7</span>
-  <span class="mi">16</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">6</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>    <span class="mi">8</span>
-  <span class="mi">17</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>    <span class="mi">5</span>
-  <span class="mi">18</span> <span class="o">|</span>     <span class="mi">3</span> <span class="o">|</span>      <span class="mi">4</span> <span class="o">|</span>     <span class="o">-</span><span class="mi">1</span> <span class="o">|</span>   <span class="o">-</span><span class="mi">1</span>
-<span class="p">(</span><span class="mi">18</span> <span class="k">rows</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="developer-s-guide">
-<span id="developer"></span><h1>Developer&#8217;s Guide<a class="headerlink" href="#developer-s-guide" title="Permalink to this headline">¶</a></h1>
-<p>This contains some basic comments about developing.
-More detailed information can be found on:</p>
-<p><a class="reference external" href="http://docs.pgrouting.org/doxy/2.4/index.html">http://docs.pgrouting.org/doxy/2.4/index.html</a></p>
-<div class="section" id="source-tree-layout">
-<h2>Source Tree Layout<a class="headerlink" href="#source-tree-layout" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt><em>cmake/</em></dt>
-<dd>cmake scripts used as part of our build system.</dd>
-<dt><em>src/</em></dt>
-<dd>This is the algorithm source tree. Each algorithm is to be contained
-in its on sub-tree with /doc, /sql, /src, and /test sub-directories.</dd>
-</dl>
-<p>For example:</p>
-<blockquote>
-<div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">src/dijkstra</span></tt>  Main direcotry for dijkstra algorithm.</li>
-<li><tt class="docutils literal"><span class="pre">src/dijkstra/doc</span></tt>  Dijkstra&#8217;s documentation directory.</li>
-<li><tt class="docutils literal"><span class="pre">src/dijkstra/src</span></tt>  Dijkstra&#8217;s C and/or C++ code.</li>
-<li><tt class="docutils literal"><span class="pre">src/dijkstra/sql</span></tt>  Dijkstra&#8217;s sql code.</li>
-<li><tt class="docutils literal"><span class="pre">src/dijkstra/test</span></tt>  Dijkstra&#8217;s tests.</li>
-<li><tt class="docutils literal"><span class="pre">src/dijkstra/test/pgtap</span></tt>  Dijkstra&#8217;s pgTaptests.</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="tools">
-<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt><em>tools/</em></dt>
-<dd>Miscellaneous scripts and tools.</dd>
-</dl>
-<p>To keep version/branch/commit up to date install pelase do the following:</p>
-<div class="highlight-bash"><div class="highlight"><pre>cp tools/pre-commit .git/hooks/pre-commit
-</pre></div>
-</div>
-<p>After each commit a the file <strong>VERSION</strong> will remain. (The hash number will be one behind)</p>
-<p>To use doxygen:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>tools/doxygen/
-make
-</pre></div>
-</div>
-<p>The code&#8217;s documentation can be found in:</p>
-<div class="highlight-bash"><div class="highlight"><pre>build/doxy/html/index.html
-</pre></div>
-</div>
-<p>We try to follow the following guidelines for C++ coding:</p>
-<p><a class="reference external" href="https://google-styleguide.googlecode.com/svn/trunk/cppguide.html">https://google-styleguide.googlecode.com/svn/trunk/cppguide.html</a></p>
-<p>Sample use:</p>
-<div class="highlight-bash"><div class="highlight"><pre>python cpplint.py ../src/dijkstra/src/dijkstra_driver.h
-../src/dijkstra/src/dijkstra_driver.h:34:  Lines should be &lt;<span class="o">=</span> 80 characters long  <span class="o">[</span>whitespace/line_length<span class="o">]</span> <span class="o">[</span>2<span class="o">]</span>
-../src/dijkstra/src/dijkstra_driver.h:40:  Line ends in whitespace.  Consider deleting these extra spaces.  <span class="o">[</span>whitespace/end_of_line<span class="o">]</span> <span class="o">[</span>4<span class="o">]</span>
-Done processing ../src/dijkstra/src/dijkstra_driver.h
-Total errors found: 2
-</pre></div>
-</div>
+<span id="how-contribute"></span><h2>How to contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Wiki</p>
 <ul class="simple">
-<li>Maybe line 34 is a very complicated calculation so you can just ignore the message</li>
-<li>Delete whitespace at end of line is easy fix.</li>
-<li>Use your judgement!!!</li>
-</ul>
-<p>Some files like <tt class="docutils literal"><span class="pre">postgres.h</span></tt> are system dependent so don&#8217;t include the directory.</p>
-<dl class="docutils">
-<dt>Tools like:</dt>
-<dd><ul class="first last simple">
-<li>doit</li>
-<li>winnie</li>
-<li>publish_doc.sh</li>
-</ul>
-</dd>
-</dl>
-<p>are very specific for the deployment of new versions, so please ask first!</p>
-</div>
-<div class="section" id="documentation-layout">
-<h2>Documentation Layout<a class="headerlink" href="#documentation-layout" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All documentation should be in reStructuredText format.
-See: &lt;<a class="reference external" href="http://docutils.sf.net/rst.html">http://docutils.sf.net/rst.html</a>&gt; for introductory docs.</p>
-</div>
-<p>Documentation is distributed into the source tree. This top level &#8220;doc&#8221;
-directory is intended for high level documentation cover subjects like:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Compiling and testing</li>
-<li>Installation</li>
-<li>Tutorials</li>
-<li>Users&#8217; Guide front materials</li>
-<li>Reference Manual front materials</li>
-<li>etc</li>
-</ul>
-</div></blockquote>
-<p>Since the algorithm specific documentation is contained in the source
-tree with the algorithm specific files, the process of building the
-documentation and publishing it will need to assemble the details with
-the front material as needed.</p>
-<p>Also, to keep the &#8220;doc&#8221; directory from getting cluttered, each major book
-like those listed above, should be contained in a separate directory under
-&#8220;doc&#8221;. Any images or other materials related to the book should also be kept
-in that directory.</p>
-<p>Tests are part of the tree layout:</p>
-<blockquote>
-<div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">src/dijkstra/test</span></tt>  Dijkstra&#8217;s tests.<ul>
-<li><tt class="docutils literal"><span class="pre">test.conf</span></tt>  Configuration file.</li>
-<li><tt class="docutils literal"><span class="pre">&lt;name&gt;.test.sql</span></tt>  Test file</li>
-<li><tt class="docutils literal"><span class="pre">&lt;name&gt;.result</span></tt>  Results file bash</li>
+<li>Edit an existing  <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a> page.</li>
+<li>Or create a new Wiki page<ul>
+<li>Create a page on the <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki">pgRouting Wiki</a></li>
+<li>Give the title an appropiate name</li>
 </ul>
 </li>
-<li><tt class="docutils literal"><span class="pre">src/dijkstra/test/pgtap</span></tt>  Dijkstra&#8217;s pgTaptests.<ul>
-<li><tt class="docutils literal"><span class="pre">&lt;name&gt;.sql</span></tt> pgTap test file</li>
+<li><a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)">Example</a></li>
 </ul>
-</li>
-</ul>
-</div></blockquote>
-<p class="rubric">Testing</p>
-<p>Testing is executed from the top level of the tree layout:</p>
-<div class="highlight-bash"><div class="highlight"><pre>tools/testers/algorithm-tester.pl
-createdb  -U &lt;user&gt; ___pgr___test___
-sh ./tools/testers/pg_prove_tests.sh &lt;user&gt;
-dropdb  -U &lt;user&gt; ___pgr___test___
-</pre></div>
-</div>
+<p class="rubric">Adding Functionaity to pgRouting</p>
+<p>Consult the <a class="reference external" href="http://docs.pgrouting.org/doxy/2.4/index.html">developer&#8217;s documentation</a></p>
 <p class="rubric">Indices and tables</p>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
