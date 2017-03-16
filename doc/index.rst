@@ -17,7 +17,7 @@ pgRouting extends the `PostGIS <http://postgis.net>`_/`PostgreSQL <http://postgr
 
 This is the manual for pgRouting |release|.
 
-.. image:: static/images/ccbysa.png
+.. image:: _build/static/images/ccbysa.png
     :align: left
     :alt: Creative Commons Attribution-Share Alike 3.0 License
 
@@ -30,10 +30,10 @@ General
 .. toctree::
     :maxdepth: 2
 
-    src/introduction/introduction
-    src/installation/installation
-    src/installation/build
-    src/introduction/support
+    introduction
+    installation
+    build
+    support
 
 
 *******************************************************************************
@@ -56,9 +56,9 @@ For a more complete introduction how to build a routing application read the `pg
 .. toctree::
    :hidden:
 
-   src/tutorial/index
-   src/recipes/index
-   src/developer/developer_guide
+   tutorial-index
+   recipes-index
+   developer_guide
    
 *******************************************************************************
 Sample Data
@@ -69,7 +69,7 @@ Sample Data
 .. toctree::
    :hidden:
 
-   src/developer/sampledata
+   sampledata
 
 
 
@@ -85,7 +85,7 @@ Version
 .. toctree::
    :hidden:
 
-   ../src/common/doc/pgr_version
+   pgr_version
 
 
 
@@ -102,7 +102,7 @@ Data Types
 .. toctree::
    :hidden:
 
-   ../src/common/doc/types/index
+   types/index
 
 
 *******************************************************************************
@@ -120,7 +120,7 @@ Topology functions
 .. toctree::
    :hidden:
 
-   ../src/topology/doc/topology
+   topology
 
 
 *******************************************************************************
@@ -130,11 +130,11 @@ Routing Functions
 .. toctree::
     :hidden:
 
-    ../src/routingFunctions
+    routingFunctions
 
 :ref:`routing_functions`
 
-.. include:: ../src/routingFunctions.rst
+.. include:: routingFunctions.rst
    :start-after: from-here
    :end-before: to-here
     
@@ -150,23 +150,8 @@ Available Functions but not official pgRouting functions
 .. toctree::
     :hidden:
 
-    ../src/proposedNext
-    ../src/proposed
-
-
-*******************************************************************************
-Discontinued & Deprecated Functions
-*******************************************************************************
-
-  - :ref:`discontinued`
-  - :ref:`deprecated`
-
-.. toctree::
-   :hidden:
-
-   src/developer/discontinued
-   deprecated
-
+    proposedNext
+    proposed
 
 
 
@@ -193,7 +178,7 @@ Change Log
 .. toctree::
     :hidden:
 
-    src/changelog/release_notes
+    release_notes
 
 
 .. rubric:: Indices and tables

@@ -19,14 +19,16 @@ Name
 ``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
+
+.. rubric:: Availability: 2.2.0
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -99,11 +101,11 @@ Description of the Signatures
 ..
     description of the sql queries
 
-.. include:: ../../common/src/edges_input.h
+.. include:: custom_query.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../../common/src/points_input.h
+.. include:: custom_query.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 

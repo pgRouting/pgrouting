@@ -18,16 +18,18 @@ Name
 ``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_aStar`.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposedNext.rst
    :start-after: begin-warning
    :end-before: end-warning
 
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
+
+.. rubric:: Availability: 2.4.0
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -95,7 +97,7 @@ This example returns a symmetric cost matrix.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: custom_query.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
@@ -128,9 +130,10 @@ Parameter        Type                   Description
 
 
 
-.. Description of the return values
+.. include:: custom_query.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
-.. include:: dmatrix_return_values.txt
 
 
 Examples

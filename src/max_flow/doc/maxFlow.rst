@@ -21,7 +21,7 @@ The maximum flow through the graph is guaranteed to be the same with all impleme
 but the actual flow through each edge may vary.
 
 
-.. include:: ../../proposed.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

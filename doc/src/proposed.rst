@@ -76,15 +76,14 @@ Proposed functions
 .. toctree::
   :hidden:
 
-  ../src/contraction/doc/contraction
-  ../src/contraction/doc/pgr_contractGraph
-  ../src/max_flow/doc/maxFlow
-  ../src/max_flow/doc/maxFlowApplications
-
-  ../src/convenience/doc/pgr_pointToEdgeNode
-  ../src/label_graph/doc/pgr_labelGraph
-  ../src/vrppdtw/doc/pgr_gsoc_vrppdtw
-  ../src/vrp_basic/doc/pgr_vrpOneDepot
+  contraction
+  pgr_contractGraph
+  maxFlow
+  maxFlowApplications
+  pgr_pointToEdgeNode
+  pgr_labelGraph
+  pgr_gsoc_vrppdtw
+  pgr_vrpOneDepot
 
 
 
