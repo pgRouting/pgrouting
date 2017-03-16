@@ -6,6 +6,7 @@ src/
 tools/
 travis.yml
 update-tester.sh
+_sources/
 
 .DS_Store
 .vagrant
