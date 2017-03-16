@@ -14,27 +14,30 @@ Release Notes
 
 To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
 
-Table of contents
---------------------------
+.. rubric:: Table of contents
 
-   - :ref:`changelog_2_4_0`
-   - :ref:`changelog_2_3_2`
-   - :ref:`changelog_2_3_1`
-   - :ref:`changelog_2_3_0`
-   - :ref:`changelog_2_2_4`
-   - :ref:`changelog_2_2_3`
-   - :ref:`changelog_2_2_2`
-   - :ref:`changelog_2_2_1`
-   - :ref:`changelog_2_2_0`
-   - :ref:`changelog_2_1_0`
-   - :ref:`changelog_2_0_1`
-   - :ref:`changelog_2_0_0`
-   - :ref:`changelog_1_x`
+.. changelog start
+
+* :ref:`changelog_2_4_0`
+* :ref:`changelog_2_3_2`
+* :ref:`changelog_2_3_1`
+* :ref:`changelog_2_3_0`
+* :ref:`changelog_2_2_4`
+* :ref:`changelog_2_2_3`
+* :ref:`changelog_2_2_2`
+* :ref:`changelog_2_2_1`
+* :ref:`changelog_2_2_0`
+* :ref:`changelog_2_1_0`
+* :ref:`changelog_2_0_1`
+* :ref:`changelog_2_0_0`
+* :ref:`changelog_1_x`
+
+.. changelog end
 
 .. _changelog_2_4_0:
 
 pgRouting 2.4.0 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.4.0%22+is%3Aclosed>`_ on Github.
 
@@ -74,7 +77,7 @@ To see the issues closed by this release see the `Git closed issues for 2.4.0 <h
 .. _changelog_2_3_2:
 
 pgRouting 2.3.2 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.2%22+is%3Aclosed>`_ on Github.
 
@@ -90,7 +93,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.2 <h
 .. _changelog_2_3_1:
 
 pgRouting 2.3.1 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.1%22+is%3Aclosed>`_ on Github.
 
@@ -104,7 +107,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.1 <h
 .. _changelog_2_3_0:
 
 pgRouting 2.3.0 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.3.0%22+is%3Aclosed>`_ on Github.
 
@@ -160,7 +163,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.0 <h
 .. _changelog_2_2_4:
 
 pgRouting 2.2.4 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.4%22+is%3Aclosed>`_ on Github.
 
@@ -173,7 +176,7 @@ To see the issues closed by this release see the `Git closed issues for 2.2.4 <h
 .. _changelog_2_2_3:
 
 pgRouting 2.2.3 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.3%22+is%3Aclosed>`_ on Github.
 
@@ -184,7 +187,7 @@ To see the issues closed by this release see the `Git closed issues for 2.2.3 <h
 .. _changelog_2_2_2:
 
 pgRouting 2.2.2 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.2%22+is%3Aclosed>`_ on Github.
 
@@ -196,7 +199,7 @@ To see the issues closed by this release see the `Git closed issues for 2.2.2 <h
 .. _changelog_2_2_1:
 
 pgRouting 2.2.1 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A2.2.1+is%3Aclosed>`_ on Github.
 
@@ -209,7 +212,7 @@ To see the issues closed by this release see the `Git closed issues for 2.2.1 <h
 .. _changelog_2_2_0:
 
 pgRouting 2.2.0 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.2.0%22+is%3Aclosed>`_ on Github.
 
@@ -265,7 +268,7 @@ To see the issues closed by this release see the `Git closed issues for 2.2.0 <h
 .. _changelog_2_1_0:
 
 pgRouting 2.1.0 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github.
 
@@ -346,7 +349,7 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 .. _changelog_2_0_1:
 
 pgRouting 2.0.1 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 Minor bug fixes.
 
@@ -358,7 +361,7 @@ Minor bug fixes.
 .. _changelog_2_0_0:
 
 pgRouting 2.0.0 Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.0.0%22+is%3Aclosed>`_ on Github.
 
@@ -409,40 +412,40 @@ As a result of this effort:
 .. _changelog_1_x:
 
 pgRouting 1.x Release Notes
-===============================================================================
+-------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 1.x <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_ on Github.
 The following release notes have been copied from the previous ``RELEASE_NOTES`` file and are kept as a reference.
 
 
 Changes for release 1.05
--------------------------------------------------------------------------------
+...............................................................................
 
 * Bugfixes
 
 
 Changes for release 1.03
--------------------------------------------------------------------------------
+...............................................................................
 
 * Much faster topology creation
 * Bugfixes
 
 
 Changes for release 1.02
--------------------------------------------------------------------------------
+...............................................................................
 
 * Shooting* bugfixes
 * Compilation problems solved
 
 
 Changes for release 1.01
--------------------------------------------------------------------------------
+...............................................................................
 
 * Shooting* bugfixes
 
 
 Changes for release 1.0
--------------------------------------------------------------------------------
+...............................................................................
 
 * Core and extra functions are separated
 * Cmake build process
@@ -450,28 +453,28 @@ Changes for release 1.0
 
 
 Changes for release 1.0.0b
--------------------------------------------------------------------------------
+...............................................................................
 
 * Additional SQL file with more simple names for wrapper functions
 * Bugfixes
 
 
 Changes for release 1.0.0a
--------------------------------------------------------------------------------
+...............................................................................
 
 * Shooting* shortest path algorithm for real road networks
 * Several SQL bugs were fixed
 
 
 Changes for release 0.9.9
--------------------------------------------------------------------------------
+...............................................................................
 
 * PostgreSQL 8.2 support
 * Shortest path functions return empty result if they couldn’t find any path
 
 
 Changes for release 0.9.8
--------------------------------------------------------------------------------
+...............................................................................
 
 * Renumbering scheme was added to shortest path functions
 * Directed shortest path functions were added

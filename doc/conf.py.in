@@ -106,7 +106,11 @@ html_theme = '@SPHINX_THEME@'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+    # Location of link to source.
+    # Options are "nav" (default), "footer" or anything else to exclude.
+    'source_link_position': "none",
+    }
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = @SPHINX_THEME_DIR@

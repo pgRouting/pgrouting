@@ -55,7 +55,7 @@ General
 Sample Data
 *******************************************************************************
 
-  - :ref:`sampledata` that is used in the examples of this manual.
+- :ref:`sampledata` that is used in the examples of this manual.
 
 .. toctree::
    :hidden:
@@ -79,16 +79,13 @@ Version
    pgr_version
 
 
-
-
-Data Types
+:ref:`data_types`
 ===============================================================================
 
-:ref:`data_types`
 
-  -  :ref:`type_cost_result` -  A set of records to describe a path result with cost attribute.
-  -  :ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a path result with cost attribute.
-  -  :ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute.
+-  :ref:`type_cost_result` -  A set of records to describe a path result with cost attribute.
+-  :ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a path result with cost attribute.
+-  :ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute.
 
 .. toctree::
    :hidden:
@@ -97,16 +94,15 @@ Data Types
 
 
 *******************************************************************************
-Topology functions
+:ref:`topology_functions`
 *******************************************************************************
 
-:ref:`topology_functions`
 
-  -  :ref:`pgr_create_topology` -  to create a topology based on the geometry.
-  -  :ref:`pgr_create_vert_table` - to reconstruct the vertices table based on the source and target information.
-  -  :ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge table.
-  -  :ref:`pgr_analyze_oneway` - to analyze directionality of the edges.
-  -  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
+-  :ref:`pgr_create_topology` -  to create a topology based on the geometry.
+-  :ref:`pgr_create_vert_table` - to reconstruct the vertices table based on the source and target information.
+-  :ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge table.
+-  :ref:`pgr_analyze_oneway` - to analyze directionality of the edges.
+-  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
 
 .. toctree::
    :hidden:
@@ -115,7 +111,7 @@ Topology functions
 
 
 *******************************************************************************
-Routing Functions
+:ref:`routing_functions`
 *******************************************************************************
 
 .. toctree::
@@ -123,7 +119,6 @@ Routing Functions
 
     routingFunctions
 
-:ref:`routing_functions`
 
 .. include:: routingFunctions.rst
    :start-after: from-here
@@ -147,24 +142,13 @@ Available Functions but not official pgRouting functions
 
 
 *******************************************************************************
-Change Log
+:ref:`change_log`
 *******************************************************************************
 
-:ref:`change_log`
+.. include:: release_notes.rst
+   :start-after: changelog start
+   :end-before: changelog end
 
-   - :ref:`changelog_2_4_0`
-   - :ref:`changelog_2_3_2`
-   - :ref:`changelog_2_3_1`
-   - :ref:`changelog_2_3_0`
-   - :ref:`changelog_2_2_4`
-   - :ref:`changelog_2_2_3`
-   - :ref:`changelog_2_2_2`
-   - :ref:`changelog_2_2_1`
-   - :ref:`changelog_2_2_0`
-   - :ref:`changelog_2_1_0`
-   - :ref:`changelog_2_0_1`
-   - :ref:`changelog_2_0_0`
-   - :ref:`changelog_1_x`
 
 .. toctree::
     :hidden:
