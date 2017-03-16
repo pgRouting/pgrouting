@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Build Guide &mdash; pgRouting Manual (2.4-dev)</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
+    <link rel="next" title="Dependencies Installation" href="install-dependencies.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Build Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#queries-results">Queries &amp; Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#advanced-topics">Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#user-s-recipes-list">User&#8217;s Recipes List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">How to contribute.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#developer-s-guide">Developer&#8217;s Guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types_index.html">pgRouting Data Types</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Topology Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="proposedNext.html">Stable proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html">Experimental and Proposed functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-4-0-release-notes">pgRouting 2.4.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-2-release-notes">pgRouting 2.3.2 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-1-release-notes">pgRouting 2.3.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-0-release-notes">pgRouting 2.3.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-4-release-notes">pgRouting 2.2.4 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-3-release-notes">pgRouting 2.2.3 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-2-release-notes">pgRouting 2.2.2 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-1-release-notes">pgRouting 2.2.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-0-release-notes">pgRouting 2.2.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-1-0-release-notes">pgRouting 2.1.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-0-1-release-notes">pgRouting 2.0.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-0-0-release-notes">pgRouting 2.0.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-1-x-release-notes">pgRouting 1.x Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Build Guide</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li><a class="reference internal" href="#configurable-variables">Configurable variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building">Building</a></li>
+<li><a class="reference internal" href="#installation-and-reinstallation">Installation and reinstallation</a><ul>
+<li><a class="reference internal" href="#for-mingw-on-windows">For MinGW on Windows</a></li>
+<li><a class="reference internal" href="#for-linux">For Linux</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dependencies-installation">Dependencies Installation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="installation.html" title="Previous Chapter: Installation"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Installation</span>
+    </a>
+  </li>
+  <li>
+    <a href="install-dependencies.html" title="Next Chapter: Dependencies Installation"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Dependencies Ins... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/build.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="build-guide">
+<span id="build"></span><h1>Build Guide<a class="headerlink" href="#build-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>To be able to compile pgRouting make sure that the following dependencies are met:</p>
+<ul class="simple">
+<li>C and C++0x compilers</li>
+<li>Postgresql version &gt;= 9.1</li>
+<li>PostGIS version &gt;= 2.0</li>
+<li>The Boost Graph Library (BGL). Version &gt;= 1.46</li>
+<li>CMake &gt;= 2.8.8</li>
+<li>CGAL &gt;=  4.2</li>
+<li>(optional, for Documentation) Sphinx &gt;= 1.1</li>
+<li>(optional, for Documentation as PDF) Latex &gt;= [TBD]</li>
+</ul>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>PgRouting uses the <cite>cmake</cite> system to do the configuration.</p>
+<p>The following instructions start from <em>path/to/pgrouting/</em></p>
+<p>Ccreate the build directory</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir build
+</pre></div>
+</div>
+<p>To configure:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>build
+<span class="nv">$ </span>cmake -L ..
+</pre></div>
+</div>
+<div class="section" id="configurable-variables">
+<h3>Configurable variables<a class="headerlink" href="#configurable-variables" title="Permalink to this headline">¶</a></h3>
+<p>The documentation configurable variables are:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">WITH_DOC:</th><td class="field-body">BOOL=OFF     &#8211; Turn on/off building the documentation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">BUILD_HTML:</th><td class="field-body">BOOL=ON     &#8211; If WITH_DOC=ON, turn on/off building HTML</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">BUILD_LATEX:</th><td class="field-body">BOOL=OFF    &#8211; If WITH_DOC=ON, turn on/off building PDF</td>
+</tr>
+<tr class="field-even field"><th class="field-name">BUILD_MAN:</th><td class="field-body">BOOL=OFF    &#8211; If WITH_DOC=ON, turn on/off building MAN pages</td>
+</tr>
+</tbody>
+</table>
+<p>Configuring with documentation</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cmake -DWITH_DOC<span class="o">=</span>ON ..
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Most of the effort of the documentation has being on the html files.</p>
+</div>
+</div>
+</div>
+<div class="section" id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<p>Using <tt class="docutils literal"><span class="pre">make</span></tt> to build the code and the docuemtnation</p>
+<p>The following instructions start from <em>path/to/pgrouting/build</em></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>make          <span class="c"># build the code but not the documentation</span>
+<span class="nv">$ </span>make doc      <span class="c"># build only the documentation</span>
+<span class="nv">$ </span>make all doc  <span class="c"># build both the code and the documentation</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation-and-reinstallation">
+<h2>Installation and reinstallation<a class="headerlink" href="#installation-and-reinstallation" title="Permalink to this headline">¶</a></h2>
+<p>We have tested on several plataforms, For installing or reinstalling all the steps are needed.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The sql signatures are configured and build in the <tt class="docutils literal"><span class="pre">cmake</span></tt> command.</p>
+</div>
+<div class="section" id="for-mingw-on-windows">
+<h3>For MinGW on Windows<a class="headerlink" href="#for-mingw-on-windows" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir build
+<span class="nv">$ </span><span class="nb">cd </span>build
+<span class="nv">$ </span>cmake -G<span class="s2">&quot;MSYS Makefiles&quot;</span> ..
+<span class="nv">$ </span>make
+<span class="nv">$ </span>make install
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-linux">
+<h3>For Linux<a class="headerlink" href="#for-linux" title="Permalink to this headline">¶</a></h3>
+<p>The following instructions start from <em>path/to/pgrouting</em></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir build
+<span class="nv">$ </span><span class="nb">cd </span>build
+<span class="nv">$ </span>cmake  ..
+<span class="nv">$ </span>make
+<span class="nv">$ </span>sudo make install
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dependencies-installation">
+<h2>Dependencies Installation<a class="headerlink" href="#dependencies-installation" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install-dependencies.html">Dependencies Installation</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
+      Last updated on Mar 16, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

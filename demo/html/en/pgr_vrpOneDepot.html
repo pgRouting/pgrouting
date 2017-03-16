@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_vrpOneDepot - Proposed &mdash; pgRouting Manual (2.4-dev)</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
+    <link rel="up" title="Experimental and Proposed functions" href="proposed.html" />
+    <link rel="next" title="Release Notes" href="release_notes.html" />
+    <link rel="prev" title="pgr_gsoc_vrppdtw - Proposed" href="pgr_gsoc_vrppdtw.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Build Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#queries-results">Queries &amp; Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#advanced-topics">Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#user-s-recipes-list">User&#8217;s Recipes List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">How to contribute.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#developer-s-guide">Developer&#8217;s Guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types_index.html">pgRouting Data Types</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Topology Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposedNext.html">Stable proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Experimental and Proposed functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-4-0-release-notes">pgRouting 2.4.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-2-release-notes">pgRouting 2.3.2 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-1-release-notes">pgRouting 2.3.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-0-release-notes">pgRouting 2.3.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-4-release-notes">pgRouting 2.2.4 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-3-release-notes">pgRouting 2.2.3 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-2-release-notes">pgRouting 2.2.2 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-1-release-notes">pgRouting 2.2.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-0-release-notes">pgRouting 2.2.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-1-0-release-notes">pgRouting 2.1.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-0-1-release-notes">pgRouting 2.0.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-0-0-release-notes">pgRouting 2.0.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-1-x-release-notes">pgRouting 1.x Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_vrpOneDepot - Proposed</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_gsoc_vrppdtw.html" title="Previous Chapter: pgr_gsoc_vrppdtw - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_gsoc_vrppdtw...</span>
+    </a>
+  </li>
+  <li>
+    <a href="release_notes.html" title="Next Chapter: Release Notes"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Release Notes &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/pgr_vrpOneDepot.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-vrponedepot-proposed">
+<span id="pgr-vrp-basic"></span><h1>pgr_vrpOneDepot - Proposed<a class="headerlink" href="#pgr-vrponedepot-proposed" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>No documentation available from the original developer</p>
+<ul class="simple">
+<li><a class="reference internal" href="cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
+</ul>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
+      Last updated on Mar 16, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

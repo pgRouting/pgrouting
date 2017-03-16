@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_edgeDisjointPaths - Proposed &mdash; pgRouting Manual (2.4-dev)</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
+    <link rel="up" title="Applications of Maximum Flow" href="maxFlowApplications.html" />
+    <link rel="next" title="pgr_pointToEdgeNode - Proposed" href="pgr_pointToEdgeNode.html" />
+    <link rel="prev" title="pgr_maximumCardinalityMatching - Proposed" href="pgr_maximumCardinalityMatching.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.0-dev</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Build Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#queries-results">Queries &amp; Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#advanced-topics">Advanced Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#user-s-recipes-list">User&#8217;s Recipes List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#how-to-contribute">How to contribute.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html#developer-s-guide">Developer&#8217;s Guide</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types_index.html">pgRouting Data Types</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="topology.html">Topology Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="proposedNext.html">Stable proposed Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Experimental and Proposed functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-4-0-release-notes">pgRouting 2.4.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-2-release-notes">pgRouting 2.3.2 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-1-release-notes">pgRouting 2.3.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-3-0-release-notes">pgRouting 2.3.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-4-release-notes">pgRouting 2.2.4 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-3-release-notes">pgRouting 2.2.3 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-2-release-notes">pgRouting 2.2.2 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-1-release-notes">pgRouting 2.2.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-2-0-release-notes">pgRouting 2.2.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-1-0-release-notes">pgRouting 2.1.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-0-1-release-notes">pgRouting 2.0.1 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-2-0-0-release-notes">pgRouting 2.0.0 Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html#pgrouting-1-x-release-notes">pgRouting 1.x Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">pgr_edgeDisjointPaths - Proposed</a><ul>
+<li><a class="reference internal" href="#name">Name</a></li>
+<li><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li><a class="reference internal" href="#characteristics">Characteristics:</a></li>
+<li><a class="reference internal" href="#signature-summary">Signature Summary</a></li>
+<li><a class="reference internal" href="#signatures">Signatures</a><ul>
+<li><a class="reference internal" href="#minimal-signature">Minimal signature</a></li>
+<li><a class="reference internal" href="#one-to-one">One to One</a></li>
+<li><a class="reference internal" href="#one-to-many">One to Many</a></li>
+<li><a class="reference internal" href="#many-to-one">Many to One</a></li>
+<li><a class="reference internal" href="#many-to-many">Many to Many</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#description-of-the-signatures">Description of the Signatures</a><ul>
+<li><a class="reference internal" href="#description-of-the-sql-query">Description of the SQL query</a></li>
+<li><a class="reference internal" href="#description-of-the-parameters-of-the-signatures">Description of the parameters of the signatures</a></li>
+<li><a class="reference internal" href="#description-of-the-return-values">Description of the return values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_maximumCardinalityMatching.html" title="Previous Chapter: pgr_maximumCardinalityMatching - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_maximumCardi...</span>
+    </a>
+  </li>
+  <li>
+    <a href="pgr_pointToEdgeNode.html" title="Next Chapter: pgr_pointToEdgeNode - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_pointToEdgeN... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/pgr_edgeDisjointPaths.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="pgr-edgedisjointpaths-proposed">
+<span id="pgr-edgedisjointpaths"></span><h1>pgr_edgeDisjointPaths - Proposed<a class="headerlink" href="#pgr-edgedisjointpaths-proposed" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_edgeDisjointPaths</span></tt> — Calculates edge disjoint paths between two groups of vertices.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions</p>
+<ul class="last simple">
+<li>They are not officially of the current release.</li>
+<li>They likely will not be officially be part of the next release:<ul>
+<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might change.</li>
+<li>Signature might change.</li>
+<li>Functionality might change.</li>
+<li>pgTap tests might be missing.</li>
+<li>Might need c/c++ coding.</li>
+<li>May lack documentation.</li>
+<li>Documentation if any might need to be rewritten.</li>
+<li>Documentation examples might need to be automatically generated.</li>
+<li>Might need a lot of feedback from the comunity.</li>
+<li>Might depend on a proposed function of pgRouting</li>
+<li>Might depend on a deprecated function of pgRouting</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<p class="caption">Boost Graph Inside</p>
+</div>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Calculates the edge disjoint paths between two groups of vertices.
+Utilizes underlying maximum flow algorithms to calculate the paths.</p>
+</div>
+<div class="section" id="characteristics">
+<h2>Characteristics:<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The main characterics are:</dt>
+<dd><ul class="first last simple">
+<li>Calculates the edge disjoint paths between any two groups of vertices.</li>
+<li>Returns EMPTY SET when source and destination are the same, or cannot be reached.</li>
+<li>The graph can be directed or undirected.</li>
+<li>One to many, many to one, many to many versions are also supported.</li>
+<li>Uses <a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> to calculate the paths.</li>
+<li>No <cite>cost</cite> or <cite>aggregate cost</cite> of the paths are returned. (Under discussion)</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
+pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
+pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex, directed)
+pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
+pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertices, directed)
+
+RETURNS SET OF (seq, path_seq, [start_vid,] [end_vid,] node, edge) OR EMPTY SET
+</pre></div>
+</div>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h3>Minimal signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex)
+RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
+</pre></div>
+</div>
+<p>The minimal signature is between <cite>source_vertex</cite> and <cite>destination_vertex</cite> for a <cite>directed</cite> graph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
+    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
+    3, 5
+);
+ seq | path_seq | node | edge 
+-----+----------+------+------
+   1 |        1 |    3 |    2
+   2 |        2 |    2 |    4
+   3 |        3 |    5 |   -1
+   4 |        1 |    3 |    5
+   5 |        2 |    6 |    8
+   6 |        3 |    5 |   -1
+(6 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="one-to-one">
+<span id="index-1"></span><h3>One to One<a class="headerlink" href="#one-to-one" title="Permalink to this headline">¶</a></h3>
+<p>The available signature calculates edge disjoint paths from one source vertex to one destination vertex.
+The graph can be directed or undirected.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertex, directed)
+RETURNS SET OF (seq, path_seq, node, edge) OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
+    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
+    3, 5,
+    directed := false
+);
+ seq | path_seq | node | edge 
+-----+----------+------+------
+   1 |        1 |    3 |    2
+   2 |        2 |    2 |    4
+   3 |        3 |    5 |   -1
+   4 |        1 |    3 |    3
+   5 |        2 |    4 |   16
+   6 |        3 |    9 |    9
+   7 |        4 |    6 |    8
+   8 |        5 |    5 |   -1
+   9 |        1 |    3 |    5
+  10 |        2 |    6 |   11
+  11 |        3 |   11 |   12
+  12 |        4 |   10 |   10
+  13 |        5 |    5 |   -1
+(13 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="one-to-many">
+<span id="index-2"></span><h3>One to Many<a class="headerlink" href="#one-to-many" title="Permalink to this headline">¶</a></h3>
+<p>The available signature calculates the maximum flow from one source vertex to many sink vertices.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertex, destination_vertices, directed)
+RETURNS SET OF (seq, path_seq, end_vid, node, edge) OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
+    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
+    3, ARRAY[4, 5, 10]
+);
+ seq | path_seq | end_vid | node | edge 
+-----+----------+---------+------+------
+   1 |        1 |       5 |    3 |    2
+   2 |        2 |       5 |    2 |    4
+   3 |        3 |       5 |    5 |   -1
+   4 |        1 |       5 |    3 |    5
+   5 |        2 |       5 |    6 |    8
+   6 |        3 |       5 |    5 |   -1
+(6 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="many-to-one">
+<span id="index-3"></span><h3>Many to One<a class="headerlink" href="#many-to-one" title="Permalink to this headline">¶</a></h3>
+<p>The available signature calculates the maximum flow from many source vertices to one sink vertex.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertex)
+RETURNS SET OF (seq, path_seq, start_vid, node, edge)
+  OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
+    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
+    ARRAY[3, 6], 5
+);
+ seq | path_seq | start_vid | node | edge 
+-----+----------+-----------+------+------
+   1 |        1 |         3 |    3 |    2
+   2 |        2 |         3 |    2 |    4
+   3 |        3 |         3 |    5 |   -1
+   4 |        1 |         6 |    6 |    8
+   5 |        2 |         6 |    5 |   -1
+(5 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="many-to-many">
+<span id="index-4"></span><h3>Many to Many<a class="headerlink" href="#many-to-many" title="Permalink to this headline">¶</a></h3>
+<p>The available signature calculates the maximum flow from many sources to many sinks.</p>
+<div class="highlight-none"><div class="highlight"><pre>pgr_edgeDisjointPaths(edges_sql, source_vertices, destination_vertices, directed)
+RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge) OR EMPTY SET
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_edgeDisjointPaths(
+    &#39;SELECT id, source, target, cost AS going, reverse_cost AS coming FROM edge_table&#39;,
+    ARRAY[3, 6], ARRAY[4, 5, 10]
+);
+ seq | path_seq | start_vid | end_vid | node | edge 
+-----+----------+-----------+---------+------+------
+   1 |        1 |         3 |       5 |    3 |    2
+   2 |        2 |         3 |       5 |    2 |    4
+   3 |        3 |         3 |       5 |    5 |   -1
+   4 |        1 |         6 |       5 |    6 |    8
+   5 |        2 |         6 |       5 |    5 |   -1
+   6 |        1 |         6 |       4 |    6 |    9
+   7 |        2 |         6 |       4 |    9 |   16
+   8 |        3 |         6 |       4 |    4 |   -1
+(8 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-sql-query">
+<h3>Description of the SQL query<a class="headerlink" href="#description-of-the-sql-query" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="17%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>going</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERIC</span></tt></td>
+<td>A positive value represents the existence of the edge (source, target).</td>
+</tr>
+<tr class="row-even"><td><strong>coming</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERIC</span></tt></td>
+<td>A positive value represents the existence of the edge (target, source).</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Where:</dt>
+<dd><ul class="first last">
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-NUMERIC:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, DOUBLE PRECISION</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="23%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>source_vertex</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier(s) of the source vertex(vertices).</td>
+</tr>
+<tr class="row-even"><td><strong>sink_vertex</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier(s) of the destination vertex(vertices).</td>
+</tr>
+<tr class="row-odd"><td><strong>directed</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td>(optional) Determines the type of the graph. Default TRUE.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values">
+<h3>Description of the return values<a class="headerlink" href="#description-of-the-return-values" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INT</span></tt></td>
+<td>Sequential value starting from <strong>1</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>path_seq</strong></td>
+<td><tt class="docutils literal"><span class="pre">INT</span></tt></td>
+<td>Relative position in the path. Has value <strong>1</strong> for the beginning of a path.</td>
+</tr>
+<tr class="row-even"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the starting vertex. Used when multiple starting vertices are in the query.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the ending vertex. Used when multiple ending vertices are in the query.</td>
+</tr>
+<tr class="row-even"><td><strong>node</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the node in the path from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">end_vid</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><strong>edge</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the edge used to go from <tt class="docutils literal"><span class="pre">node</span></tt> to the next node in the path sequence. <tt class="docutils literal"><span class="pre">-1</span></tt> for the last node of the path.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
+      Last updated on Mar 16, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
