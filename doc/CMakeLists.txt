@@ -20,7 +20,7 @@ option(BUILD_MAN
 
 
 if(WITH_DOC)
-    message("PROCESSING DOCUMENTATION------------")
+    #message("PROCESSING DOCUMENTATION------------")
 
     find_package(Sphinx REQUIRED)
 
@@ -55,13 +55,13 @@ if(WITH_DOC)
 
         file(GLOB PGR_DOCUMENTATION_SOURCES "src/*")
         foreach (file ${PGR_DOCUMENTATION_SOURCES})
-            message("${file}")
+            #message("${file}")
             file(COPY "${file}" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
         endforeach()
 
         file(GLOB  PGR_DOCUMENTATION_SOURCES "../src/*/doc/*")
         foreach (file ${PGR_DOCUMENTATION_SOURCES})
-            message("${file}")
+            #message("${file}")
             file(COPY "${file}" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
         endforeach()
 
@@ -161,5 +161,5 @@ if(WITH_DOC)
         message("-- Building documentation enabled for: ${DOC_TARGETS}")
     endif()
 
-    message("END PROCESSING DOCUMENTATION------------")
+    #message("END PROCESSING DOCUMENTATION------------")
 endif(WITH_DOC)
