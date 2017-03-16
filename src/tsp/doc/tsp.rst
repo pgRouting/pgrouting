@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -22,10 +22,10 @@ Traveling Sales Person
     ./pgr_eucledianTSP
 
 
-General Information 
+General Information
 ------------------------------------
 
-Origin 
+Origin
 ..........
 
 The traveling sales person problem was studied in the 18th century by mathematicians
@@ -35,20 +35,20 @@ A discussion about the work of Hamilton & Kirkman
 can be found in the book **Graph Theory (Biggs et  al. 1976)**.
 
 * ISBN-13: 978-0198539162
-* ISBN-10: 0198539169 
+* ISBN-10: 0198539169
 
 It is believed that the general form of the TSP have been first studied by Kalr Menger in Vienna and Harvard.
 The problem  was  later promoted by Hassler, Whitney  &  Merrill at Princeton.
-A detailed  description about the connection between Menger & Whitney, and the development of the  
+A detailed  description about the connection between Menger & Whitney, and the development of the
 TSP can be found in  `On the history of combinatorial optimization (till 1960) <http://www.cwi.nl/~lex/files/histco.ps>`_
 
-Problem Definition 
+Problem Definition
 ...................
 
 Given a collection of cities and travel cost between each pair,
 find the cheapest way for visiting all of the cities and returning to the starting point.
 
-Characteristics 
+Characteristics
 ................
 
 - The travel costs are symmetric:
@@ -118,7 +118,7 @@ simulated annealing process.
 
 To cool down faster to the next temperature:
 
-    - max_changes_per_temperature: limits the number of changes in the solution per temperature 
+    - max_changes_per_temperature: limits the number of changes in the solution per temperature
     - max_consecutive_non_changes: limits the number of consecutive non changes per temperature
 
 This is done by doing some book keeping on the times **solution ← snew;** is executed.
@@ -191,7 +191,7 @@ A recommendation is to play with the values and see what fits to the particular 
     description of control parameters
 
 
-.. include:: tsp_parameters.txt 
+.. include:: tsp_parameters.txt
 
 
 

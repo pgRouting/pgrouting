@@ -81,7 +81,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.2 <h
 .. rubric:: Bug Fixes
 
 * Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.
-* Fixed pgr_trsp: 
+* Fixed pgr_trsp:
 
   * Alternate code is not executed when the point is in reality a vertex
   * Fixed ambiguity on seq
@@ -368,7 +368,7 @@ The main Goals for this release are:
 * Major restructuring of pgRouting.
 * Standardiziation of the function naming
 * Prepararation of the project for future development.
- 
+
 As a result of this effort:
 
 * pgRouting has a simplified structure

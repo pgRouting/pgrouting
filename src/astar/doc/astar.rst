@@ -39,7 +39,7 @@ The problem definition (Advanced documentation)
 -----------------------------------------------
 
 The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic, that is an estimation of the remaining cost from the vertex to the goal,
-that allows to solve most shortest path problems by evaluation only a sub-set of the overall graph. 
+that allows to solve most shortest path problems by evaluation only a sub-set of the overall graph.
 Running time: :math:`O((E + V) * \log V)`
 
 

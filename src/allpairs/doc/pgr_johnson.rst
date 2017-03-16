@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -58,9 +58,9 @@ The main Characteristics are:
 
 Signature Summary
 --------------------------------------------
-    
+
 .. code-block:: none
-   
+
     pgr_johnson(edges_sql)
     pgr johnson(edges_sql, directed)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
@@ -76,7 +76,7 @@ Minimal Signature
 ...................
 
 .. code-block:: none
-   
+
     pgr_johnson(edges_sql)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 
@@ -94,7 +94,7 @@ Complete Signature
 ...................
 
 .. code-block:: none
-   
+
     pgr_johnson(edges_sql, directed)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 

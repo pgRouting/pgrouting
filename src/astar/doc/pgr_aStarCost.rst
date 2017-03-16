@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -75,7 +75,7 @@ One to One
     pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-:Example: Setting a Heuristic  
+:Example: Setting a Heuristic
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q2
@@ -211,7 +211,7 @@ Parameter        Type                   Description
 **epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
 ================ ====================== =================================================
 
- 
+
 
 
 Description of the return values

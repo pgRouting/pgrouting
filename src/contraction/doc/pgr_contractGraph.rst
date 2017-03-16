@@ -17,7 +17,7 @@
 pgr_contractGraph - Proposed
 ===============================================================================
 
-``pgr_contractGraph`` — Performs graph contraction and returns the contracted vertices and edges. 
+``pgr_contractGraph`` — Performs graph contraction and returns the contracted vertices and edges.
 
 
 .. figure:: images/boost-inside.jpeg
@@ -42,12 +42,12 @@ Characteristics
 
 The main Characteristics are:
   - Process is done only on edges with positive costs.
-  
+
   - There are two types of contraction methods used namely,
 
     - Dead End Contraction
     - Linear Contraction
-  
+
   - The values returned include the added edges and contracted vertices.
 
   - The returned values are ordered as follows:
@@ -63,7 +63,7 @@ Signature Summary:
 The pgr_contractGraph function has the following signatures:
 
 .. code-block:: none
-    
+
     pgr_contractGraph(edges_sql, contraction_order)
     pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
 
@@ -80,7 +80,7 @@ Minimal signature
 .......................................
 
 .. code-block:: none
-       
+
     pgr_contractGraph(edges_sql, contraction_order)
 
 :Example: Making a dead end contraction and a linear contraction.
@@ -93,7 +93,7 @@ Complete signature
 .......................................
 
 .. code-block:: none
-       
+
     pgr_contractGraph(edges_sql, contraction_order, max_cycles, forbidden_vertices, directed)
 
 :Example: Making a dead end contraction and a linear contraction and vertex 2 is forbidden from contraction
@@ -136,7 +136,7 @@ The function returns a single row. The columns of the row are:
 Column                       Type                Description
 ============================ =================   ===================================================================
 **seq**                      ``INTEGER``         Sequential value starting from **1**.
-**type**                     ``TEXT``            Type of the `id`. 
+**type**                     ``TEXT``            Type of the `id`.
                                                   - 'v' when `id` is an identifier of a vertex.
                                                   - 'e' when `id` is an identifier of an edge.
 **id**                       ``BIGINT``          Identifier of:
@@ -144,7 +144,7 @@ Column                       Type                Description
 
                                                     - The vertex belongs to the edge_table passed as a parameter.
                                                   * the edge when `type = 'e'`.
-                                                  
+
                                                     - The `id` is a decreasing sequence starting from **-1**.
 
                                                     - Representing a pseudo `id` as is not incorporated into the edge_table.

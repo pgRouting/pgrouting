@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -251,7 +251,7 @@ Parameter        Type                   Description
 **epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
 ================ ====================== =================================================
 
- 
+
 
 
 Description of the return values

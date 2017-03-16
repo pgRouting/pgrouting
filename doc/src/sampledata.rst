@@ -80,7 +80,7 @@ Images
 * Points are outside the graph.
 * Click on the graph to enlarge.
 
-.. note:: On all graphs, 
+.. note:: On all graphs,
 
 .. rubric:: Network for queries marked as ``directed`` and ``cost`` and ``reverse_cost`` columns are used:
 
@@ -122,7 +122,7 @@ When working with city networks, this is recommended for point of view of pedest
 
 .. figure:: images/Fig4-costUndirected.png
    :scale: 20%
-   
+
    **Graph 4: Undirected, with cost**
 
 

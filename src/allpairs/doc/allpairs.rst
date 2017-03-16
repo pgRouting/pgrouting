@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -18,7 +18,7 @@ The following functions work an all vertices pair combinations
     - :ref:`pgr_floydWarshall` - Floyd-Warshall's algorithm.
     - :ref:`pgr_johnson` - Johnson's algorithm
 
-     
+
 .. toctree::
     :hidden:
 
@@ -81,10 +81,10 @@ The results of this tests are presented as:
 
 :SIZE: is the number of edges given as input.
 :EDGES: is the total number of records in the query.
-:DENSITY: is the density of the data :math:`\dfrac{E}{V \times (V-1)}`. 
+:DENSITY: is the density of the data :math:`\dfrac{E}{V \times (V-1)}`.
 :OUT ROWS: is the number of records returned by the queries.
 :Floyd-Warshall: is the average execution time in seconds of pgr_floydWarshall.
-:Johnson: is the average execution time in seconds of pgr_johnson.  
+:Johnson: is the average execution time in seconds of pgr_johnson.
 
 
 ====== ======  ========== ======== ============== =============
@@ -122,7 +122,7 @@ The tested edge query is:
 
 .. code-block:: none
 
-    WITH  
+    WITH
         buffer AS (SELECT ST_Buffer(ST_Centroid(ST_Extent(the_geom)), SIZE) AS geom FROM ways),
         bbox AS (SELECT ST_Envelope(ST_Extent(geom)) as box from buffer)
     SELECT gid as id, source, target, cost, reverse_cost FROM ways where the_geom && (SELECT box from bbox);

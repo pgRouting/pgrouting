@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -34,7 +34,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points and 
+Modify the graph to include points and
 using Dijkstra algorithm, extracts all the nodes and points that have costs less
 than or equal to the value ``distance`` from the starting point.
 The edges extracted will conform the corresponding spanning tree.
@@ -149,7 +149,7 @@ Parameter        Type              Description
 
 **details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in the ``distance``.
                                    Default is ``false`` which ignores other points of the points_sql.
-**equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.                                   
+**equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.
 ================ ================= =================================================
 
 

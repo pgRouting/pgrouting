@@ -22,7 +22,7 @@ Cost Matrix
     :end-before: end-warning
 
 
- 
+
 General Information
 -------------------------------------------------------------------------------
 

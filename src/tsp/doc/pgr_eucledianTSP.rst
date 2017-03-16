@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -26,7 +26,7 @@ Synopsis
 The travelling salesman problem (TSP) or travelling salesperson problem asks the following question:
 
   - Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city?
-   
+
 This implementation uses simulated annealing to return the approximate solution when the input is given in the form of coordinates.
 
 Signature Summary
@@ -58,7 +58,7 @@ Minimal Signature
     pgr_eucledianTSP(coordinates_sql)
     RETURNS SETOF (seq, node, cost, agg_cost)
 
-:Example: 
+:Example:
 
 Because the documentation examples are auto generated and tested for non changing results,
 and the default is to have random execution, the example is wrapping the actual call.

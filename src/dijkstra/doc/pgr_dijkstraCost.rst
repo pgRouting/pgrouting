@@ -9,7 +9,7 @@
 
 .. _pgr_dijkstraCost:
 
-pgr_dijkstraCost 
+pgr_dijkstraCost
 ===============================================================================
 
 

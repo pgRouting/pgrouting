@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -14,7 +14,7 @@ Introduction
 
 pgRouting is an extension of `PostGIS <http://postgis.net>`_ and `PostgreSQL <http://postgresql.org>`_ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp <http://camptocamp.com>`_, was later extended by `Orkney <http://www.orkney.co.jp>`_ and renamed to pgRouting. The project is now supported and maintained by `Georepublic <http://georepublic.info>`_, `iMaptools <http://imaptools.com/>`__ and a broad user community.
 
-pgRouting is an `OSGeo Labs <http://wiki.osgeo.org/wiki/OSGeo_Labs>`_ project of the `OSGeo Foundation <http://osgeo.org>`_ and included on `OSGeo Live <http://live.osgeo.org/>`_. 
+pgRouting is an `OSGeo Labs <http://wiki.osgeo.org/wiki/OSGeo_Labs>`_ project of the `OSGeo Foundation <http://osgeo.org>`_ and included on `OSGeo Live <http://live.osgeo.org/>`_.
 
 
 .. _license:
@@ -28,7 +28,7 @@ The following licenses can be found in pgRouting:
    :widths: 250 500
 
    * - **License**
-     - 
+     -
    * - GNU General Public License, version 2
      - Most features of pgRouting are available under `GNU General Public License, version 2 <http://www.gnu.org/licenses/gpl-2.0.html>`_.
    * - Boost Software License - Version 1.0

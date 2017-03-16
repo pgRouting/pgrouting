@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -39,8 +39,8 @@ Handling parallels after getting a path (pgr_ksp focus)
     y2 double precision,
     the_geom geometry
   );
- 
-  INSERT INTO parallel (x1,y1,x2,y2) 
+
+  INSERT INTO parallel (x1,y1,x2,y2)
     VALUES (1,0,1,1),(1,1,1,3),(1,1,1,3),(1,1,1,3),(1,3,1,4),(1,1,-1,1),(-1,1,-1,3),(-1,3,1,3);
   UPDATE parallel SET the_geom = ST_makeline(ST_point(x1,y1),ST_point(x2,y2));
   UPDATE parallel SET the_geom = ST_makeline(ARRAY[ST_point(1,1),ST_point(0,2),ST_point(1,3)]) WHERE id = 3;
@@ -60,7 +60,7 @@ We ignore the costs because we want all the parallels
     1, 4, 3);
 
   select route, node, edge from routes;
-    route | node | edge 
+    route | node | edge
    -------+------+------
         1 |    1 |    1
         1 |    2 |    2
@@ -92,7 +92,7 @@ We ignore the costs because we want all the parallels
 .. code-block:: sql
 
   select distinct seq,route,source,target, array_accum(id) as edges into paths
-    from (select seq, route, source, target 
+    from (select seq, route, source, target
           from parallel, routes where id = edge) as r
        join parallel using (source, target)
     group by seq,route,source,target order by seq;
@@ -102,7 +102,7 @@ We ignore the costs because we want all the parallels
 
 ::
 
-     route | source | target |  edges  
+     route | source | target |  edges
     -------+--------+--------+---------
          1 |      1 |      2 | {1}
          2 |      1 |      2 | {1}
@@ -163,7 +163,7 @@ To generate a table with all the combinations for parallel routes, we need some 
          -- compute the number of new routes this route will expand into
          -- this is the product of the lengths of the edges array for each route
          execute 'select prod(array_length(edges, 1))-1 from '
-         ||       quote_ident(tab) || ' where route='    || i INTO newroutes; 
+         ||       quote_ident(tab) || ' where route='    || i INTO newroutes;
          -- now we generate the number of new routes for this route
          -- by repeatedly listing the route and swapping out the parallel edges
          FOR j IN 0..newroutes
@@ -172,7 +172,7 @@ To generate a table with all the combinations for parallel routes, we need some 
              FOR rec IN execute 'select * from ' || quote_ident(tab) ||' where route=' || i
                          || ' order by seq'
              LOOP
-                 seq := seq2;              
+                 seq := seq2;
                  route := rnum;
                  source := rec.source;
                  target := rec.target;
@@ -189,7 +189,7 @@ To generate a table with all the combinations for parallel routes, we need some 
               edge := -1;
               RETURN next;  -- Insert the ending record of the route
               seq2 := seq2 + 1;
-              
+
               rnum := rnum + 1;  -- increment the route count
           END LOOP;
        END LOOP;
@@ -202,7 +202,7 @@ To generate a table with all the combinations for parallel routes, we need some 
 .. code-block:: sql
 
   select * from expand_parallel_edge_paths( 'paths' );
-   seq | route | source | target | edge 
+   seq | route | source | target | edge
   -----+-------+--------+--------+------
      1 |     0 |      1 |      2 |    1
      2 |     0 |      2 |      3 |    2

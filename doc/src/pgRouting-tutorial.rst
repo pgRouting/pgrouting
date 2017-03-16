@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -26,8 +26,8 @@ with pgRouting. In this guide we will cover:
 How to create a database
 -------------------------------------------------------------------------------
 
-The first thing we need to do is create a database and load pgrouting in 
-the database. Typically you will create a database for each project. Once 
+The first thing we need to do is create a database and load pgrouting in
+the database. Typically you will create a database for each project. Once
 you have a database to work in, your can load your data and build your
 application in that database. This makes it easy to move your project
 later if you want to to say a production server.
@@ -52,7 +52,7 @@ various OpenSource tools that can help you, like:
 :ogr2ogr: - this is a vector data conversion utility
 :osm2pgsql: - this is a tool for loading OSM data into postgresql
 
-So these tools and probably others will allow you to read vector data so that 
+So these tools and probably others will allow you to read vector data so that
 you may then load that data into your database as a table of some kind. At this
 point you need to know a little about your data structure and content. One easy
 way to browse your new data table is with pgAdmin3 or phpPgAdmin.
@@ -115,7 +115,7 @@ network. The general form of a route query is:
 
     select pgr_<algorithm>(<SQL for edges>, start, end, <additional options>)
 
-As you can see this is fairly straight forward and you can look and the 
+As you can see this is fairly straight forward and you can look and the
 specific algorithms for the details of the signatures and how to use them.
 These results have information like edge id and/or the
 node id along with the cost or geometry for the step in the path from *start*

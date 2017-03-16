@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -35,7 +35,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points and 
+Modify the graph to include points and
 using Dijkstra algorithm, extracts all the nodes and points that have costs less
 than or equal to the value ``distance`` from the starting point.
 The edges extracted will conform the corresponding spanning tree.

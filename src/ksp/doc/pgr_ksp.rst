@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -45,7 +45,7 @@ Signature Summary
 Signatures
 -------------------------------------------------------------------------------
 
-.. index:: 
+.. index::
   single: ksp(Minimal Signature)
 
 Minimal Signature
@@ -57,7 +57,7 @@ Minimal Signature
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 
-.. index:: 
+.. index::
   single: ksp(Complete Signature)
 
 Complete Signature
@@ -79,15 +79,15 @@ Description of the Signatures
 Description of the parameters of the signatures
 ..................................................
 
-============== ============ =================================================                                                                                                                                          
-Column         Type           Description                                                                                                                                                                                
+============== ============ =================================================
+Column         Type           Description
 ============== ============ =================================================
 **edges_sql**   ``TEXT``    SQL query as described above.
 **start_vid**   ``BIGINT``  Identifier of the starting vertex.
 **end_vid**     ``BIGINT``  Identifier of the ending vertex.
 **k**           ``INTEGER`` The desiered number of paths.
 **directed**    ``BOOLEAN`` (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-**heap_paths**  ``BOOLEAN`` (optional). When ``true`` returns all the paths stored in the process heap. Default is ``false`` which only returns ``k`` pahts. 
+**heap_paths**  ``BOOLEAN`` (optional). When ``true`` returns all the paths stored in the process heap. Default is ``false`` which only returns ``k`` pahts.
 ============== ============ =================================================
 
 Roughly, if the shortest path has ``N`` edges, the heap will contain about than ``N * k`` paths for small value of ``k`` and ``k > 1``.

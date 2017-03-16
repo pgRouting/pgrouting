@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -30,7 +30,7 @@ Routing Functions
 
   - :ref:`pgr_dijkstra` - Dijkstra's shortest path algorithm.
   - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
-      
+
 - :ref:`Driving Distance<drivingDistance>` - Driving Distance
 
   - :ref:`pgr_drivingDistance<pgr_drivingDistance>` - Driving Distance

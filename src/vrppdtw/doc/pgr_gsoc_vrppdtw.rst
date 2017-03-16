@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -26,7 +26,7 @@ Name
 Signature Summary
 -----------------
 
-     
+
 .. code-block:: none
 
     pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
@@ -35,7 +35,7 @@ Signature Summary
 Signatures
 -----------
 
-.. index:: 
+.. index::
     single: gsoc_vrppdtw(Complete Signature) - proposed
 
 

@@ -142,7 +142,7 @@ OS X
 Source Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can find all the pgRouting Releases: 
+You can find all the pgRouting Releases:
 
 https://github.com/pgRouting/pgrouting/releases
 
@@ -169,7 +169,7 @@ See :ref:`build` to build the binaries from the source.
 Installing in the database
 --------------------------
 
-pgRouting is an extension. 
+pgRouting is an extension.
 
 .. code-block:: sql
 

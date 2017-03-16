@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -12,7 +12,7 @@
 pgr_trsp - Turn Restriction Shortest Path (TRSP)
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: trsp(text,integer,integer,boolean,boolean)
 	single: trsp(text,integer,integer,boolean,boolean,text)
 	single: trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
@@ -37,7 +37,7 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_trsp(sql text, source_edge integer, source_pos float8, 
+	pgr_costResult[] pgr_trsp(sql text, source_edge integer, source_pos float8,
 	                target_edge integer, target_pos float8,
                     directed boolean, has_rcost boolean [,restrict_sql text]);
 
@@ -93,7 +93,7 @@ Another variant of TRSP allows to specify **EDGE id** of source and target toget
 
 :source_edge: ``int4`` **EDGE id** of the start edge
 :source_pos: ``float8`` fraction of 1 defines the position on the start edge
-:target_edge: ``int4`` **EDGE id** of the end edge 
+:target_edge: ``int4`` **EDGE id** of the end edge
 :target_pos: ``float8`` fraction of 1 defines the position on the end edge
 
 Returns set of :ref:`type_cost_result`:

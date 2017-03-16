@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -142,7 +142,7 @@ Description of the Points SQL query
 Column            Type              Description
 ============ ================= =================================================
 **pid**      ``ANY-INTEGER``   (optional) Identifier of the point.
-                                 - If column present, it can not be NULL. 
+                                 - If column present, it can not be NULL.
                                  - If column not present, a sequential identifier will be given automatically.
 
 **edge_id**  ``ANY-INTEGER``   Identifier of the "closest" edge to the point.

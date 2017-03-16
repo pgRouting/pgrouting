@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -44,7 +44,7 @@ With :ref:`pgr_analyze_graph` the graph can be checked for errors. For example f
     NOTICE:  Potential gaps found near dead ends: 527
     NOTICE:               Intersections detected: 2560
     NOTICE:                      Ring geometries: 0
-    pgr_analyzeGraph 
+    pgr_analyzeGraph
     ----------
        OK
     (1 row)
@@ -52,23 +52,23 @@ With :ref:`pgr_analyze_graph` the graph can be checked for errors. For example f
 
 In the vertices table "mytab_vertices_pgr":
 
-  - Deadends are identified by ``cnt=1`` 
+  - Deadends are identified by ``cnt=1``
   - Potencial gap problems are identified with ``chk=1``.
 
 .. code-block:: sql
 
     SELECT count(*) as deadends  FROM mytab_vertices_pgr WHERE cnt = 1;
-    deadends 
+    deadends
     ----------
         20028
      (1 row)
 
     SELECT count(*) as gaps  FROM mytab_vertices_pgr WHERE chk = 1;
-     gaps 
+     gaps
      -----
        527
      (1 row)
-     
+
 
 
 For isolated road segments, for example, a segment where both ends are deadends. you can find these with the following query:

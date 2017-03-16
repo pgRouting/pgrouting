@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -22,7 +22,7 @@ When points are also given as input:
     - :ref:`pgr_withPointsDD` - Driving distance.
 
 .. toctree::
-    :hidden: 
+    :hidden:
 
     pgr_withPoints
     pgr_withPointsCost
@@ -81,7 +81,7 @@ I talk about a family of functions because it includes different functionalities
   - pgr_withPointsCost is pgr_dijkstraCost based
   - pgr_withPointsKSP is pgr_ksp based
   - pgr_withPointsDD is pgr_drivingDistance based
-  
+
 In all this functions we have to take care of as many aspects as possible:
 
 - Must work for routing:
@@ -108,7 +108,7 @@ In all this functions we have to take care of as many aspects as possible:
 
   - Original point identifiers are to be positive.
   - Transformation to negative is done internally.
-  - For results for involving vertices identifiers 
+  - For results for involving vertices identifiers
 
     - positive sign is a vertex of the original grpah
     - negative sign is a point of the temporary points
@@ -128,13 +128,13 @@ Graph & edges
 Point Definition
 ----------------
 
-- A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)` 
+- A point is defined by the quadruplet: :math:`(pid, eid, fraction, side)`
 
   - :ped: is the point identifier
   - :eid: is an edge id of the `edges_sql`
   - :fraction: represents where the edge `eid` will be cut.
   - :side: Indicates the side of the edge where the point is located.
-  
+
 
 Creating Temporary Vertices in the Graph
 ----------------------------------------

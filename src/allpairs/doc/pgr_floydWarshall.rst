@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -25,7 +25,7 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
 
 .. rubric:: Availability: 2.0.0
 
-* Renamed on 2.2.0, previous name pgr_apspWarshall 
+* Renamed on 2.2.0, previous name pgr_apspWarshall
 
 
 The Floyd-Warshall algorithm, also known as Floyd's algorithm,
@@ -59,9 +59,9 @@ The main Characteristics are:
 
 Signature Summary
 --------------------------------------------
-    
+
 .. code-block:: none
-   
+
     pgr_floydWarshall(edges_sql)
     pgr floydWarshall(edges_sql, directed)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
@@ -77,7 +77,7 @@ Minimal Signature
 ...................
 
 .. code-block:: none
-   
+
     pgr_floydWarshall(edges_sql)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 
@@ -95,7 +95,7 @@ Complete Signature
 ...................
 
 .. code-block:: none
-   
+
     pgr_floydWarshall(edges_sql, directed)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 

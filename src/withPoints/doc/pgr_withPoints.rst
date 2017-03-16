@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -34,7 +34,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points defined by points_sql. 
+Modify the graph to include points defined by points_sql.
 Using Dijkstra algorithm, find the shortest path(s)
 
 Characteristics:

@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -19,12 +19,12 @@ Dependencies
 To be able to compile pgRouting make sure that the following dependencies are met:
 
 * C and C++0x compilers
-* Postgresql version >= 9.1 
-* PostGIS version >= 2.0 
+* Postgresql version >= 9.1
+* PostGIS version >= 2.0
 * The Boost Graph Library (BGL). Version >= 1.46
 * CMake >= 2.8.8
 * CGAL >=  4.2
-* (optional, for Documentation) Sphinx >= 1.1 
+* (optional, for Documentation) Sphinx >= 1.1
 * (optional, for Documentation as PDF) Latex >= [TBD]
 
 Configuration

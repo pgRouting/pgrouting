@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -113,7 +113,7 @@ are very specific for the deployment of new versions, so please ask first!
 Documentation Layout
 -------------------------------------------------------------------------------
 
-.. note:: 
+.. note::
 	All documentation should be in reStructuredText format.
 	See: <http://docutils.sf.net/rst.html> for introductory docs.
 
@@ -129,7 +129,7 @@ directory is intended for high level documentation cover subjects like:
     * etc
 
 Since the algorithm specific documentation is contained in the source
-tree with the algorithm specific files, the process of building the 
+tree with the algorithm specific files, the process of building the
 documentation and publishing it will need to assemble the details with
 the front material as needed.
 

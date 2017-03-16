@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -89,7 +89,7 @@ Signature Summary
     pgr_withPointsCost(edges_sql, points_sql, start_vids, end_vids, directed, driving_side)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.  
+.. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.
 
 
 Signatures

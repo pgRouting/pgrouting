@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -13,8 +13,8 @@ User's Recipes List
 ===============================================================================
 
 
-.. toctree:: 
-         
+.. toctree::
+
    ./example_recipe.rst
    ./parallel_handling.rst
 
@@ -29,7 +29,7 @@ How to contribute.
 
 The first steps are:
 
-  - Fork the repository 
+  - Fork the repository
   - Create a branch for your recipe or wrapper
   - Create your recipe file
 
@@ -47,7 +47,7 @@ The first steps are:
 
     cd test
     cp myrecipe.rst myrecipe.sql.test
-    
+
     # make your test based on your recipe
     vi myrecipe.sql.test
     git add myrecipe.sql.test
