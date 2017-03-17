@@ -7,11 +7,6 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-   INSTRUCTIONS
-   - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropriate values
-   - one file / function,  may signatures of the same function go in the same file
-
 .. _pgr_contractGraph:
 
 pgr_contractGraph - Proposed
@@ -28,8 +23,8 @@ pgr_contractGraph - Proposed
 .. rubric:: Availability: 2.3.0
 
 .. include:: proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 Synopsis

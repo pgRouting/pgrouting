@@ -56,7 +56,7 @@ General
    pgRouting-concepts
    
 
-Reference
+.. rubric:: Reference
 
 :ref:`pgr_version` - to get pgRouting's version information.
 
@@ -112,18 +112,17 @@ Reference
 Available Functions but not official pgRouting functions
 ===============================================================================
 
-- :ref:`proposedNext`
+- :ref:`stable`
 - :ref:`proposed`
 
 .. toctree::
     :hidden:
 
-    proposedNext
     proposed
 
 
 
-:ref:`change_log`
+:ref:`Change Log <change_log>`
 ===============================================================================
 
 .. include:: release_notes.rst

@@ -66,7 +66,7 @@ Signature Summary
     pgr_aStar(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
 
 
-.. include:: proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

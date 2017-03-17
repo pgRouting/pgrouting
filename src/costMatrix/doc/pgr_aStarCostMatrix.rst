@@ -18,7 +18,7 @@ Name
 ``pgr_aStarCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_aStar`.
 
 
-.. include:: proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

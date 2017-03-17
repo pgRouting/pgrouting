@@ -19,7 +19,7 @@ Name
 ``pgr_withPointsVia`` - Get a path using the vertices/points indicated
 
 
-.. include:: proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

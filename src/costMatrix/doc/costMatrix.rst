@@ -17,7 +17,7 @@ Cost Matrix
   - :ref:`pgr_astarCostMatrix`
 
 
-.. include:: proposedNext.rst
+.. include:: proposed.rst
     :start-after: begin-warning
     :end-before: end-warning
 

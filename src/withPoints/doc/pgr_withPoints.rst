@@ -19,7 +19,7 @@ Name
 ``pgr_withPoints`` - Returns the shortest path in a graph with additional temporary vertices.
 
 
-.. include:: proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

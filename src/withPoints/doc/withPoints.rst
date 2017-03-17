@@ -32,7 +32,7 @@ When points are also given as input:
 
 
 
-.. include:: proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 

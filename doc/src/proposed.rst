@@ -7,16 +7,76 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. _Stable:
+
+Stable proposed Functions
+==================================
+
+..  stable-begin-warning
+
+.. warning::
+
+    These are proposed functions for next mayor release.
+
+      - They are not officially in the current release.
+      - They will likely officially be part of the next mayor release:
+
+        - The functions make use of ANY-INTEGER and ANY-NUMERICAL
+        - Name might not change. (But still can)
+        - Signature might not change. (But still can)
+        - Functionality might not change. (But still can)
+        - pgTap tests have being done. But might need more.
+        - Documentation might need refinement.
+
+..  stable-end-warning
+
+
+
+- As part of the :ref:`dijkstra`
+
+  - :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
+  - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
+
+- A new :ref:`withPoints`
+
+  - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+  - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+  - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+  - :ref:`pgr_withPointsKSP` - K shortest paths with points.
+  - :ref:`pgr_withPointsDD` - Driving distance.
+
+
+- A new Section
+
+  - :ref:`CostMatrix`
+
+- A new Section
+
+  - :ref:`astar`
+
+    - :ref:`pgr_aStarCost` - Costs of the shortest paths.
+    - :ref:`pgr_aStarCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+
+
+.. toctree::
+    :hidden:
+
+    pgr_dijkstraCostMatrix
+    pgr_dijkstraVia
+
+    withPoints
+
+    costMatrix
+    astar
+
+
 .. _proposed:
 
 Experimental and Proposed functions
 ===============================================================================
 
-:ref:`proposed`
 
-
-..
-   begin-warning
+..  begin-warn-expr
 
 .. warning:: These are proposed functions
 
@@ -36,12 +96,8 @@ Experimental and Proposed functions
     - Might depend on a proposed function of pgRouting
     - Might depend on a deprecated function of pgRouting
 
-..
-   end-warning
+..  end-warn-expr
 
-
-Proposed functions
-------------------------------------------------
 
 - :ref:`contraction` - Reduce network size using contraction techniques
 

@@ -27,7 +27,7 @@ Name
 Signature Summary
 -----------------
 
-.. include:: proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 
