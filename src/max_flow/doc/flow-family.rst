@@ -9,7 +9,7 @@
 
 .. _maxFlow:
 
-Maximum Flow
+Flow - Family of functions
 ===================================
 
 .. index from here

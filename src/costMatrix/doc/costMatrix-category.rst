@@ -9,7 +9,7 @@
 
 .. _CostMatrix:
 
-Cost Matrix Functions
+Cost Matrix - Category
 ===============================================================================
 
 .. index from here

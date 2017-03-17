@@ -10,7 +10,7 @@
 
 .. _drivingDistance:
 
-Driving Distance Category
+Driving Distance - Category
 ===============================================================================
 
 .. index from here
