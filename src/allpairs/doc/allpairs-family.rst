@@ -10,20 +10,23 @@
 .. _all_pairs:
 
 
-All pairs
+All Pairs - Family of Functions
 ===============================================================================
 
 The following functions work an all vertices pair combinations
 
+.. index from here
+
     - :ref:`pgr_floydWarshall` - Floyd-Warshall's algorithm.
     - :ref:`pgr_johnson` - Johnson's algorithm
 
+.. index to here
 
 .. toctree::
     :hidden:
 
-    ./pgr_floydWarshall
-    ./pgr_johnson
+    pgr_floydWarshall
+    pgr_johnson
 
 
 Performance

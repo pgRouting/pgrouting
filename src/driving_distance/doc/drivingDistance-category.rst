@@ -10,24 +10,20 @@
 
 .. _drivingDistance:
 
-Driving Distance
+Driving Distance Category
 ===============================================================================
 
+.. index from here
 
-  - :ref:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra
+* :ref:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra
+* :ref:`pgr_withPointsDD` - Driving Distance based on pgr_dijkstra
+* Post pocessing
 
-.. toctree::
-    :hidden:
+  * :ref:`pgr_alphaShape` - Alpha shape computation
+  * :ref:`pgr_points_as_polygon` - Polygon around set of points
 
-    pgr_drivingDistance.rst
+.. index to here
 
-.. _pgr_driving_distance_post:
-
-Driving Distance post-processing
-===============================================================================
-
-  - :ref:`pgr_alphaShape` - Alpha shape computation
-  - :ref:`pgr_points_as_polygon` - Polygon around set of points
 
 .. toctree::
     :hidden:

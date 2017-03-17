@@ -9,17 +9,21 @@
 
 .. _tsp:
 
-Traveling Sales Person
+Traveling Sales Person - Family of functions
 ===============================================================================
 
-- :ref:`pgr_TSP` - When input is given as matrix cell information.
-- :ref:`pgr_eucledianTSP` - When input are coordinates.
+.. index from here
+
+* :ref:`pgr_TSP` - When input is given as matrix cell information.
+* :ref:`pgr_eucledianTSP` - When input are coordinates.
+
+.. index to here
 
 .. toctree::
     :hidden:
 
-    ./pgr_tsp
-    ./pgr_eucledianTSP
+    pgr_tsp
+    pgr_eucledianTSP
 
 
 General Information

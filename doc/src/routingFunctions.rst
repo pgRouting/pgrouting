@@ -18,19 +18,16 @@ Routing Functions
     from-here
 
 
-- :ref:`All pairs<all_pairs>` - All pair of vertices.
+:ref:`all_pairs`
 
-  - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
-  - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
+- :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
+- :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
 
-:ref:`astar` - Shortest Path A*
+:ref:`pgr_astar` - Shortest Path A*
 
-.. include:: aStar-family.rst
-   :start-after: index from here
-   :end-before: index to here
+:ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
 
-- :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
-- :ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
+:ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 
 
 :ref:`dijkstra`
@@ -39,35 +36,32 @@ Routing Functions
    :start-after: index from here
    :end-before: index to here
 
+:ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
 
-:ref:`Driving Distance<drivingDistance>` - Driving Distance
+:ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
 
-  - :ref:`pgr_drivingDistance<pgr_drivingDistance>` - Driving Distance
+:ref:`tsp`
 
-  - Post processing
+.. include:: TSP-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
-    - :ref:`pgr_alphaShape` - Alpha shape computation
-    - :ref:`pgr_points_as_polygon` - Polygon around set of points
+:ref:`drivingDistance`
 
-- :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
-- :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-- :ref:`tsp`
+.. include:: drivingDistance-category.rst
+   :start-after: index from here
+   :end-before: index to here
 
-  - :ref:`pgr_TSP<pgr_TSP>` - When input is a cost matrix.
-  - :ref:`pgr_eucledianTSP<pgr_eucledianTSP>` - When input are coordinates.
-
-..
-    to-here
+..  to-here
 
 .. toctree::
     :hidden:
 
-    allpairs
-    aStar-family
+    allpairs-family
     pgr_bdAstar
     pgr_bdDijkstra
     dijkstra-family
-    drivingDistance
     pgr_ksp
     pgr_trsp
-    tsp
+    TSP-family
+    drivingDistance-category

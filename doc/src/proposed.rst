@@ -32,30 +32,31 @@ Stable proposed Functions
 
 
 
-- As part of the :ref:`dijkstra`
+As part of the :ref:`dijkstra`
 
   - :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
   - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
 
-- A new :ref:`withPoints`
-
-  - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
-  - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-  - :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
-  - :ref:`pgr_withPointsKSP` - K shortest paths with points.
-  - :ref:`pgr_withPointsDD` - Driving distance.
-
-
-
-
-
-.. rubric:: A new Section
+.. rubric:: New Families
 
 :ref:`astar`
  
 .. include:: aStar-family.rst
    :start-after: index from here
    :end-before: index to here
+
+
+:ref:`withPoints`
+
+.. include:: withPoints-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+* :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+* :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+* :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+* :ref:`pgr_withPointsKSP` - K shortest paths with points.
+* :ref:`pgr_withPointsDD` - Driving distance.
 
 
 .. rubric:: New categories
@@ -75,10 +76,8 @@ Stable proposed Functions
 .. toctree::
     :hidden:
 
-    pgr_dijkstraCostMatrix
-    pgr_dijkstraVia
-
-    withPoints
+    aStar-family
+    withPoints-family
 
     cost-category
     costMatrix-category

@@ -19,6 +19,7 @@ Dijkstra - Family of functions
 * :ref:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix.
 * :ref:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information.
 * :ref:`pgr_ksp` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.
+* :ref:`pgr_dijkstraVia` - Get a route of a seuence of vertices.
 
 .. index to here
 
@@ -31,6 +32,7 @@ Dijkstra - Family of functions
     pgr_dijkstraCostMatrix
     pgr_drivingDistance
     pgr_ksp
+    pgr_dijkstraVia
 
 
 The problem definition (Advanced documentation)
