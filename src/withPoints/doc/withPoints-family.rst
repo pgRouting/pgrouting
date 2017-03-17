@@ -15,11 +15,15 @@ withPoints - Family of functions
 
 When points are also given as input:
 
-    - :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
-    - :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-    - :ref:`pgr_withPointsCostMatrix` - Costs of the shortest paths.
-    - :ref:`pgr_withPointsKSP` - K shortest paths.
-    - :ref:`pgr_withPointsDD` - Driving distance.
+.. index from here
+
+- :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
+- :ref:`pgr_withPointsCost` - Costs of the shortest paths.
+- :ref:`pgr_withPointsCostMatrix` - Costs of the shortest paths.
+- :ref:`pgr_withPointsKSP` - K shortest paths.
+- :ref:`pgr_withPointsDD` - Driving distance.
+
+.. index to here
 
 .. toctree::
     :hidden:

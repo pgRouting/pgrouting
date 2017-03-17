@@ -162,14 +162,6 @@ to get more information about each step in the path.
 * :ref:`pgr_dijkstra`
 
 
-.. rubric:: Indices and tables
-
-* :ref:`genindex`
-* :ref:`search`
-
-
-
-
 
 .. _inner_queries:
 
@@ -186,17 +178,21 @@ Description of the edges_sql query for dijkstra like functions
 
 :edges_sql: an SQL query, which should return a set of rows with the following columns:
 
-================  ===================   ======== =================================================
-Column            Type                  Default  Description
-================  ===================   ======== =================================================
+================= =================== ======== =================================================
+Column            Type                 Default  Description
+================= =================== ======== =================================================
 **id**            ``ANY-INTEGER``                Identifier of the edge.
 **source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
 **target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
 **cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-                                                   - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
+                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
 **reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-                                                   - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   ======== =================================================
+
+                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+
+================= =================== ======== =================================================
 
 Where:
 
@@ -219,9 +215,13 @@ Column            Type                  Default  Description
 **source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
 **target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
 **cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-                                                  * When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
+                                                 * When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
 **reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+
+                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+
 ================  ===================   ======== =================================================
 
 Where:
@@ -246,9 +246,12 @@ Column            Type                  Default  Description
 **source**        ``ANY-INTEGER``                Identifier of the first end point vertex of the edge.
 **target**        ``ANY-INTEGER``                Identifier of the second end point vertex of the edge.
 **cost**          ``ANY-NUMERICAL``              Weight of the edge  `(source, target)`
-                                                   - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
+                                                 - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
 **reverse_cost**  ``ANY-NUMERICAL``       -1     Weight of the edge `(target, source)`,
-                                                   - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+
+                                                 - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
 
 **x1**            ``ANY-NUMERICAL``              X coordinate of `source` vertex.
 **y1**            ``ANY-NUMERICAL``              Y coordinate of `source` vertex.
@@ -278,9 +281,13 @@ Column               Type                Default  Description
 **source**           ``ANY-INTEGER``              Identifier of the first end point vertex of the edge.
 **target**           ``ANY-INTEGER``              Identifier of the second end point vertex of the edge.
 **capacity**         ``ANY-INTEGER``              Weight of the edge  `(source, target)`
-                                                   - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
+                                                  - When negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
+
 **reverse_capacity** ``ANY-INTEGER``       -1     Weight of the edge `(target, source)`,
-                                                   - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+
+                                                  - When negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
+
 ==================== =================== ======== =================================================
 
 Where:
@@ -303,15 +310,18 @@ Description of the Points SQL query
 Column            Type              Description
 ============ ================= =================================================
 **pid**      ``ANY-INTEGER``   (optional) Identifier of the point.
-                                 - If column present, it can not be NULL.
-                                 - If column not present, a sequential identifier will be given automatically.
+
+                               - If column present, it can not be NULL.
+                               - If column not present, a sequential identifier will be given automatically.
 
 **edge_id**  ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
 **fraction** ``ANY-NUMERICAL`` Value in <0,1> that indicates the relative postition from the first end point of the edge.
 **side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
-                                 - In the right, left of the edge or
-                                 - If it doesn't matter with 'b' or NULL.
-                                 - If column not present 'b' is considered.
+
+                               - In the right, left of the edge or
+                               - If it doesn't matter with 'b' or NULL.
+                               - If column not present 'b' is considered.
+
 ============ ================= =================================================
 
 Where:

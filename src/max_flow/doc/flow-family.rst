@@ -12,13 +12,18 @@
 Maximum Flow
 ===================================
 
-  - :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
-  - :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm with details of flow on edges.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
+.. index from here
 
-The maximum flow through the graph is guaranteed to be the same with all implementations,
-but the actual flow through each edge may vary.
+* :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
+* :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
+* :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
+* :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm with details of flow on edges.
+* Applications
+
+  * :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
+  * :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching in a graph.
+
+.. index to here
 
 
 .. include:: proposed.rst
@@ -26,12 +31,14 @@ but the actual flow through each edge may vary.
    :end-before: end-warn-expr
 
 .. toctree::
-        :hidden:
+    :hidden:
 
-        ./pgr_maxFlow
-        ./pgr_maxFlowPushRelabel
-        ./pgr_maxFlowEdmondsKarp
-        ./pgr_maxFlowBoykovKolmogorov
+    pgr_maxFlow
+    pgr_maxFlowBoykovKolmogorov
+    pgr_maxFlowEdmondsKarp
+    pgr_maxFlowPushRelabel
+    pgr_edgeDisjointPaths
+    pgr_maximumCardinalityMatching
 
 
 Problem definition
@@ -43,6 +50,8 @@ Additionally, the incoming and outgoing flow of a node must be equal except the 
 
 Maximum flow algorithms calculate the maximum flow through the graph and the flow of each edge.
 
+The maximum flow through the graph is guaranteed to be the same with all implementations,
+but the actual flow through each edge may vary.
 Given the following query:
 
 pgr_maxFlow :math:`(edges\_sql, source\_vertex, sink\_vertex)`

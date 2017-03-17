@@ -71,7 +71,7 @@ gettext_compact = False
 exclude_patterns = [
     'doc/build',
     'pgr_withPointsVia.rst',
-    'src/travelingSalesPerson',
+    'maxFlowApplications.rst',
     '*/notUsed',
     'tools/template'
     ]

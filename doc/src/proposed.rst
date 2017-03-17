@@ -14,19 +14,17 @@ Stable proposed Functions
 
 ..  stable-begin-warning
 
-.. warning::
+.. warning:: These are proposed functions for next mayor release.
 
-    These are proposed functions for next mayor release.
+  - They are not officially in the current release.
+  - They will likely officially be part of the next mayor release:
 
-      - They are not officially in the current release.
-      - They will likely officially be part of the next mayor release:
-
-        - The functions make use of ANY-INTEGER and ANY-NUMERICAL
-        - Name might not change. (But still can)
-        - Signature might not change. (But still can)
-        - Functionality might not change. (But still can)
-        - pgTap tests have being done. But might need more.
-        - Documentation might need refinement.
+    - The functions make use of ANY-INTEGER and ANY-NUMERICAL
+    - Name might not change. (But still can)
+    - Signature might not change. (But still can)
+    - Functionality might not change. (But still can)
+    - pgTap tests have being done. But might need more.
+    - Documentation might need refinement.
 
 ..  stable-end-warning
 
@@ -34,8 +32,8 @@ Stable proposed Functions
 
 As part of the :ref:`dijkstra`
 
-  - :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
-  - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
+- :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
+- :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
 
 .. rubric:: New Families
 
@@ -52,13 +50,6 @@ As part of the :ref:`dijkstra`
    :start-after: index from here
    :end-before: index to here
 
-* :ref:`pgr_withPoints` - Route from/to points anywhere on the graph.
-* :ref:`pgr_withPointsCost` - Costs of the shortest paths.
-* :ref:`pgr_withPointsCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
-* :ref:`pgr_withPointsKSP` - K shortest paths with points.
-* :ref:`pgr_withPointsDD` - Driving distance.
-
-
 .. rubric:: New categories
 
 :ref:`Cost`
@@ -73,6 +64,12 @@ As part of the :ref:`dijkstra`
    :start-after: index from here
    :end-before: index to here
 
+:ref:`KSP`
+
+.. include:: KSP-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
 .. toctree::
     :hidden:
 
@@ -81,6 +78,7 @@ As part of the :ref:`dijkstra`
 
     cost-category
     costMatrix-category
+    KSP-category
 
 
 .. _proposed:
@@ -112,34 +110,29 @@ Experimental and Proposed functions
 ..  end-warn-expr
 
 
-- :ref:`contraction` - Reduce network size using contraction techniques
+:ref:`contraction` - Reduce network size using contraction techniques
 
-  - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
+- :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
-- :ref:`maxFlow`
+:ref:`maxFlow`
 
-  - :ref:`pgr_maxFlow` - Maximum flow using push&relabel algorithm.
-  - :ref:`pgr_maxFlowPushRelabel` - Detailed Maximum flow using push&relabel algorithm.
-  - :ref:`pgr_maxFlowEdmondsKarp` - Detailed Maximum flow using Edmonds&Karp algorithm.
-  - :ref:`pgr_maxFlowBoykovKolmogorov` - Detailed Maximum flow using Boykov&Kolmogorov algorithm.
+.. include:: flow-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
-- :ref:`maxFlowApplications`
 
-  - :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching.
-  - :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths.
+.. rubric:: Convenience
 
-- convenience
+-  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
 
-  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
+.. rubric:: Graph Analysis
 
-- graph analysis
+-  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 
-  -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
+.. rubric:: Vehicle Routing Problems
 
-- Vehicle Routing Problems
-
-  -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
-  -  :ref:`pgr_vrp_basic` - VRP One Depot
+-  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
+-  :ref:`pgr_vrp_basic` - VRP One Depot
 
 
 .. toctree::
@@ -147,8 +140,7 @@ Experimental and Proposed functions
 
   contraction
   pgr_contractGraph
-  maxFlow
-  maxFlowApplications
+  flow-family
   pgr_pointToEdgeNode
   pgr_labelGraph
   pgr_gsoc_vrppdtw
