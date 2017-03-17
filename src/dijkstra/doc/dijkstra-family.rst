@@ -12,20 +12,25 @@
 Dijkstra - Family of functions
 ===============================================================================
 
-  - :ref:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
+.. index from here
 
-The following algorithms are based on pgr_dijkstra
+* :ref:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths.
+* :ref:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths.
+* :ref:`pgr_dijkstraCostMatrix` - Use pgr_dijkstra to create a costs matrix.
+* :ref:`pgr_drivingDistance` - Use pgr_dijkstra to calculate catchament information.
+* :ref:`pgr_ksp` - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.
 
-  - :ref:`pgr_dijkstraCost` - Get the aggregate cost of the shortest paths.
-  - :ref:`pgr_drivingDistance` - Get catchament information.
-  - :ref:`pgr_ksp` - Get the aggregate cost of the shortest paths.
+.. index to here
 
 
 .. toctree::
     :hidden:
 
-    ./pgr_dijkstra
-    ./pgr_dijkstraCost
+    pgr_dijkstra
+    pgr_dijkstraCost
+    pgr_dijkstraCostMatrix
+    pgr_drivingDistance
+    pgr_ksp
 
 
 The problem definition (Advanced documentation)

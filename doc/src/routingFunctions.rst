@@ -23,15 +23,24 @@ Routing Functions
   - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
   - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
 
-- :ref:`pgr_astar<pgr_astar>` - Shortest Path A*
+:ref:`astar` - Shortest Path A*
+
+.. include:: aStar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 - :ref:`pgr_bdAstar<bd_astar>` - Bi-directional A* Shortest Path
 - :ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
-- :ref:`dijkstra<dijkstra>` - Dijkstra family functions
 
-  - :ref:`pgr_dijkstra` - Dijkstra's shortest path algorithm.
-  - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
 
-- :ref:`Driving Distance<drivingDistance>` - Driving Distance
+:ref:`dijkstra`
+
+.. include:: dijkstra-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+
+:ref:`Driving Distance<drivingDistance>` - Driving Distance
 
   - :ref:`pgr_drivingDistance<pgr_drivingDistance>` - Driving Distance
 
@@ -54,12 +63,11 @@ Routing Functions
     :hidden:
 
     allpairs
-    pgr_astar
+    aStar-family
     pgr_bdAstar
     pgr_bdDijkstra
-    dijkstra
+    dijkstra-family
     drivingDistance
     pgr_ksp
     pgr_trsp
     tsp
-

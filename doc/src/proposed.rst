@@ -46,16 +46,25 @@ Stable proposed Functions
   - :ref:`pgr_withPointsDD` - Driving distance.
 
 
-- A new Section
+.. rubric:: A new Section
 
-  - :ref:`CostMatrix`
+:ref:`CostMatrix`
 
-- A new Section
+.. include:: costMatrix.rst
+   :start-after: index from here
+   :end-before: index to here
 
-  - :ref:`astar`
 
-    - :ref:`pgr_aStarCost` - Costs of the shortest paths.
-    - :ref:`pgr_aStarCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
+.. rubric:: A new Section
+
+- :ref:`astar`
+ 
+.. include:: aStar.rst
+   :start-after: index from here
+   :end-before: index to here
+
+- :ref:`pgr_aStarCost` - Costs of the shortest paths.
+- :ref:`pgr_aStarCostMatrix` - Use pgr_withPoints to calculate a cost matrix.
 
 
 .. toctree::
@@ -67,7 +76,6 @@ Stable proposed Functions
     withPoints
 
     costMatrix
-    astar
 
 
 .. _proposed:

@@ -12,15 +12,24 @@
 Cost Matrix
 ===============================================================================
 
-  - :ref:`pgr_dijkstraCostMatrix`
-  - :ref:`pgr_withPointsCostMatrix`
-  - :ref:`pgr_astarCostMatrix`
+.. index from here
 
+* :ref:`pgr_aStarCostMatrix`
+* :ref:`pgr_dijkstraCostMatrix`
+* :ref:`pgr_withPointsCostMatrix`
+
+.. index to here
 
 .. include:: proposed.rst
     :start-after: begin-warning
     :end-before: end-warning
 
+.. toctree::
+    :hidden:
+
+    pgr_aStarCostMatrix
+    pgr_dijkstraCostMatrix
+    pgr_withPointsCostMatrix
 
 
 General Information

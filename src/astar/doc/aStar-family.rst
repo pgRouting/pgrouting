@@ -9,28 +9,23 @@
 
 .. _astar:
 
-AStar - Family of functions
+aStar - Family of functions
 ===============================================================================
 
 The A* (pronounced "A Star") algorithm is based on Dijkstra's algorithm with a heuristic that allow it to solve most shortest path problems by evaluation only a sub-set of the overall graph.
 
-  - :ref:`pgr_aStar` - A* algorithm for the shortest path.
+.. index from here
 
-.. figure:: images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/astar_search.html
+- :ref:`pgr_aStar` - A* algorithm for the shortest path.
+- :ref:`pgr_aStarCost` - Get the aggregate cost of the shortest paths.
+- :ref:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths.
 
-   Boost Graph Inside
-
-The following algorithms are based on :code:`pgr_aStar`
-
-  - :ref:`pgr_aStarCost` - Get the aggregate cost of the shortest paths.
-  - :ref:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths.
-
-
+.. index to here
 
 .. toctree::
     :hidden:
 
+    pgr_aStar
     pgr_aStarCost
     pgr_aStarCostMatrix
 
