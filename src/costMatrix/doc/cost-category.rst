@@ -7,16 +7,16 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-.. _CostMatrix:
+.. _Cost:
 
-Cost Matrix
+Cost functions
 ===============================================================================
 
 .. index from here
 
-* :ref:`pgr_aStarCostMatrix`
-* :ref:`pgr_dijkstraCostMatrix`
-* :ref:`pgr_withPointsCostMatrix`
+* :ref:`pgr_aStarCost`
+* :ref:`pgr_dijkstraCost`
+* :ref:`pgr_withPointsCost`
 
 .. index to here
 
@@ -24,23 +24,8 @@ Cost Matrix
     :start-after: begin-warning
     :end-before: end-warning
 
-.. toctree::
-    :hidden:
-
-    pgr_aStarCostMatrix
-    pgr_dijkstraCostMatrix
-    pgr_withPointsCostMatrix
-
-
 General Information
 -------------------------------------------------------------------------------
-
-Synopsis
-...................
-
-:ref:`tsp` needs as input a symmetric cost matrix and no edge `(u, v)` must value :math:`\infty`.
-
-This collection of functions will return a cost matrix in form of a table.
 
 
 Characteristics
@@ -48,21 +33,9 @@ Characteristics
 
 The main Characteristics are:
 
-* Can be used as input to :ref:`pgr_tsp`.
-
-  * :directly: when the resulting matrix is symmetric and there is no :math:`\infty` value.
-  * It will be the users responsibility to make the matrix symmetric.
-
-    * By using geometric or harmonic average of the non symmetric values.
-    * By using max or min the non symmetric values.
-    * By setting the upper triangle to be the mirror image of the lower triangle.
-    * By setting the lower triangle to be the mirror image of the upper triangle.
-
-  * It is also the users responsibility to fix an :math:`\infty` value.
-
 * Each function works as part of the family it belongs to.
 * It does not return a path.
-* Returns the sum of the costs of the shortest path for pair combination of nodes in the graph.
+* Returns the sum of the costs of the resulting path(s) for pair combination of nodes in the graph.
 * Process is done only on edges with positive costs.
 * Values are returned when there is a path.
 
@@ -82,21 +55,17 @@ The main Characteristics are:
 
   * The  `agg_cost` of `(u, v)` is the same as for `(v, u)`.
 
-* Any duplicated value in the `start_vids` are ignored.
+* Any duplicated value in the `start_vids` or in `end_vids` are ignored.
 
 * The returned values are ordered:
 
   * `start_vid` ascending
   * `end_vid` ascending
 
-* Running time: approximately :math:`O(| start\_vids | * (V \log V + E))`
-
 
 
 See Also
 ................
-
-* :ref:`pgr_tsp`
 
 .. rubric:: Indices and tables
 
