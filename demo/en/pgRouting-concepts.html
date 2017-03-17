@@ -334,11 +334,6 @@ to get more information about each step in the path.</p>
 <ul class="simple">
 <li><a class="reference internal" href="pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a></li>
 </ul>
-<p class="rubric">Indices and tables</p>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
-</ul>
 </div>
 </div>
 <div class="section" id="inner-queries">
@@ -388,25 +383,19 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>&nbsp;</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge  <cite>(source, target)</cite></dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
 <li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>-1</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
 <li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
@@ -461,25 +450,19 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 <tr class="row-even"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>&nbsp;</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge  <cite>(source, target)</cite></dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
 <li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>-1</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
 <li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
@@ -539,25 +522,19 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>&nbsp;</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge  <cite>(source, target)</cite></dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
 <li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>-1</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
 <li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>x1</strong></td>
@@ -637,25 +614,19 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 <tr class="row-odd"><td><strong>capacity</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
 <td>&nbsp;</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge  <cite>(source, target)</cite></dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
 <li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_capacity</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
 <td>-1</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
 <li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
@@ -695,14 +666,11 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 <tbody valign="top">
 <tr class="row-even"><td><strong>pid</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
-<td><dl class="first last docutils">
-<dt>(optional) Identifier of the point.</dt>
-<dd><ul class="first last simple">
+<td><p class="first">(optional) Identifier of the point.</p>
+<ul class="last simple">
 <li>If column present, it can not be NULL.</li>
 <li>If column not present, a sequential identifier will be given automatically.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>edge_id</strong></td>
@@ -715,15 +683,12 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
 </tr>
 <tr class="row-odd"><td><strong>side</strong></td>
 <td><tt class="docutils literal"><span class="pre">CHAR</span></tt></td>
-<td><dl class="first last docutils">
-<dt>(optional) Value in [&#8216;b&#8217;, &#8216;r&#8217;, &#8216;l&#8217;, NULL] indicating if the point is:</dt>
-<dd><ul class="first last simple">
+<td><p class="first">(optional) Value in [&#8216;b&#8217;, &#8216;r&#8217;, &#8216;l&#8217;, NULL] indicating if the point is:</p>
+<ul class="last simple">
 <li>In the right, left of the edge or</li>
 <li>If it doesn&#8217;t matter with &#8216;b&#8217; or NULL.</li>
 <li>If column not present &#8216;b&#8217; is considered.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
@@ -1126,7 +1091,7 @@ Which kind of <strong>edges_sql</strong> will depend on the function(s) requirem
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 16, 2017.<br/>
+      Last updated on Mar 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

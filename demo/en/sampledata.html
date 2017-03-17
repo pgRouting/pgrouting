@@ -223,7 +223,7 @@ dir = CASE WHEN (cost&gt;0 AND reverse_cost&gt;0) THEN &#39;B&#39;   -- both way
 <p class="rubric">Points of interest</p>
 <ul class="simple">
 <li>When points outside of the graph.</li>
-<li>Used with the <a class="reference internal" href="withPoints.html#withpoints"><em>withPoints - Family of functions</em></a> functions.</li>
+<li>Used with the <a class="reference internal" href="withPoints-family.html#withpoints"><em>withPoints - Family of functions</em></a> functions.</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre>CREATE TABLE pointsOfInterest(
     pid BIGSERIAL,
@@ -272,7 +272,7 @@ INSERT INTO restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
 </div>
 <p class="rubric">Categories</p>
 <ul class="simple">
-<li>Used with the <a class="reference internal" href="maxFlow.html#maxflow"><em>Maximum Flow</em></a> functions.</li>
+<li>Used with the <a class="reference internal" href="flow-family.html#maxflow"><em>Flow - Family of functions</em></a> functions.</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre>CREATE TABLE categories (
     category_id INTEGER,
@@ -476,7 +476,7 @@ copy customer (id, x, y, demand, openTime, closeTime, serviceTime, pindex, dinde
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 16, 2017.<br/>
+      Last updated on Mar 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

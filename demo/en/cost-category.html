@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_vrpOneDepot - Proposed &mdash; pgRouting Manual (2.4-dev)</title>
+    <title>Cost - Category &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -33,8 +33,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
     <link rel="up" title="Stable proposed Functions" href="proposed.html" />
-    <link rel="next" title="Release Notes" href="release_notes.html" />
-    <link rel="prev" title="pgr_gsoc_vrppdtw - Proposed" href="pgr_gsoc_vrppdtw.html" />
+    <link rel="next" title="Cost Matrix - Category" href="costMatrix-category.html" />
+    <link rel="prev" title="pgr_withPointsDD - Proposed" href="pgr_withPointsDD.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -94,8 +94,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -112,7 +112,14 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">pgr_vrpOneDepot - Proposed</a></li>
+<li><a class="reference internal" href="#">Cost - Category</a><ul>
+<li><a class="reference internal" href="#general-information">General Information</a><ul>
+<li><a class="reference internal" href="#characteristics">Characteristics</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -122,11 +129,11 @@
               
                 
   <li>
-    <a href="pgr_gsoc_vrppdtw.html" title="Previous Chapter: pgr_gsoc_vrppdtw - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_gsoc_vrppdtw...</span>
+    <a href="pgr_withPointsDD.html" title="Previous Chapter: pgr_withPointsDD - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsDD...</span>
     </a>
   </li>
   <li>
-    <a href="release_notes.html" title="Next Chapter: Release Notes"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Release Notes &raquo;</span>
+    <a href="costMatrix-category.html" title="Next Chapter: Cost Matrix - Category"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Cost Matrix - Ca... &raquo;</span>
     </a>
   </li>
               
@@ -154,35 +161,73 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="pgr-vrponedepot-proposed">
-<span id="pgr-vrp-basic"></span><h1>pgr_vrpOneDepot - Proposed<a class="headerlink" href="#pgr-vrponedepot-proposed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cost-category">
+<span id="cost"></span><h1>Cost - Category<a class="headerlink" href="#cost-category" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_aStarCost.html#pgr-astarcost"><em>pgr_aStarCost &#8211; proposed</em></a></li>
+<li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a></li>
+<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost - Proposed</em></a></li>
+</ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>These are proposed functions</p>
+<p>These are proposed functions for next mayor release.</p>
 <ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
 </ul>
 </li>
 </ul>
 </div>
-<p>No documentation available from the original developer</p>
+<div class="section" id="general-information">
+<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Permalink to this headline">¶</a></h3>
+<p>The main Characteristics are:</p>
 <ul class="simple">
-<li><a class="reference internal" href="cost_result.html#type-cost-result"><em>pgr_costResult[]</em></a></li>
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Vehicle_routing_problem">http://en.wikipedia.org/wiki/Vehicle_routing_problem</a></li>
+<li>Each function works as part of the family it belongs to.</li>
+<li>It does not return a path.</li>
+<li>Returns the sum of the costs of the resulting path(s) for pair combination of nodes in the graph.</li>
+<li>Process is done only on edges with positive costs.</li>
+<li>Values are returned when there is a path.<ul>
+<li>The returned values are in the form of a set of <cite>(start_vid, end_vid, agg_cost)</cite>.</li>
+<li>When the starting vertex and ending vertex are the same, there is no path.<ul>
+<li>The <cite>agg_cost</cite> int the non included values <cite>(v, v)</cite> is <cite>0</cite>.</li>
 </ul>
+</li>
+<li>When the starting vertex and ending vertex are the different and there is no path.<ul>
+<li>The <cite>agg_cost</cite> in the non included values <cite>(u, v)</cite> is <span class="math">\(\infty\)</span>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Let be the case the values returned are stored in a table, so the unique index would be the pair: <cite>(start_vid, end_vid)</cite>.</li>
+<li>Depending on the function and its parameters, the results can be symmetric.<ul>
+<li>The  <cite>agg_cost</cite> of <cite>(u, v)</cite> is the same as for <cite>(v, u)</cite>.</li>
+</ul>
+</li>
+<li>Any duplicated value in the <cite>start_vids</cite> or in <cite>end_vids</cite> are ignored.</li>
+<li>The returned values are ordered:<ul>
+<li><cite>start_vid</cite> ascending</li>
+<li><cite>end_vid</cite> ascending</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 

@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cost Matrix &mdash; pgRouting Manual (2.4-dev)</title>
+    <title>Cost Matrix - Category &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -33,8 +33,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
     <link rel="up" title="Stable proposed Functions" href="proposed.html" />
-    <link rel="next" title="AStar - Family of functions" href="astar.html" />
-    <link rel="prev" title="pgr_withPointsDD - Proposed" href="pgr_withPointsDD.html" />
+    <link rel="next" title="pgr_aStarCostMatrix - proposed" href="pgr_aStarCostMatrix.html" />
+    <link rel="prev" title="Cost - Category" href="cost-category.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -112,7 +112,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Cost Matrix</a><ul>
+<li><a class="reference internal" href="#">Cost Matrix - Category</a><ul>
 <li><a class="reference internal" href="#general-information">General Information</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#characteristics">Characteristics</a></li>
@@ -130,11 +130,11 @@
               
                 
   <li>
-    <a href="pgr_withPointsDD.html" title="Previous Chapter: pgr_withPointsDD - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsDD...</span>
+    <a href="cost-category.html" title="Previous Chapter: Cost - Category"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Cost - Category</span>
     </a>
   </li>
   <li>
-    <a href="astar.html" title="Next Chapter: AStar - Family of functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">AStar - Family o... &raquo;</span>
+    <a href="pgr_aStarCostMatrix.html" title="Next Chapter: pgr_aStarCostMatrix - proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_aStarCostMat... &raquo;</span>
     </a>
   </li>
               
@@ -162,20 +162,17 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="cost-matrix">
-<span id="costmatrix"></span><h1>Cost Matrix<a class="headerlink" href="#cost-matrix" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><ul class="simple">
+  <div class="section" id="cost-matrix-category">
+<span id="costmatrix"></span><h1>Cost Matrix - Category<a class="headerlink" href="#cost-matrix-category" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><em>pgr_aStarCostMatrix - proposed</em></a></li>
 <li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a></li>
 <li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a></li>
-<li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><em>pgr_aStarCostMatrix - proposed</em></a></li>
 </ul>
-</div></blockquote>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>These are proposed functions for next mayor release.</p>
-<blockquote class="last">
-<div><ul class="simple">
+<ul class="last simple">
 <li>They are not officially in the current release.</li>
 <li>They will likely officially be part of the next mayor release:<ul>
 <li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
@@ -187,13 +184,14 @@
 </ul>
 </li>
 </ul>
-</div></blockquote>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="section" id="general-information">
 <h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="synopsis">
 <h3>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="tsp.html#tsp"><em>Traveling Sales Person</em></a> needs as input a symmetric cost matrix and no edge <cite>(u, v)</cite> must value <span class="math">\(\infty\)</span>.</p>
+<p><a class="reference internal" href="TSP-family.html#tsp"><em>Traveling Sales Person - Family of functions</em></a> needs as input a symmetric cost matrix and no edge <cite>(u, v)</cite> must value <span class="math">\(\infty\)</span>.</p>
 <p>This collection of functions will return a cost matrix in form of a table.</p>
 </div>
 <div class="section" id="characteristics">
@@ -290,7 +288,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 16, 2017.<br/>
+      Last updated on Mar 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Maximum Flow &mdash; pgRouting Manual (2.4-dev)</title>
+    <title>Flow - Family of functions &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -112,7 +112,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Maximum Flow</a></li>
+<li><a class="reference internal" href="#">Flow - Family of functions</a></li>
 <li><a class="reference internal" href="#problem-definition">Problem definition</a><ul>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
@@ -158,18 +158,19 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="maximum-flow">
-<span id="maxflow"></span><h1>Maximum Flow<a class="headerlink" href="#maximum-flow" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><ul class="simple">
+  <div class="section" id="flow-family-of-functions">
+<span id="maxflow"></span><h1>Flow - Family of functions<a class="headerlink" href="#flow-family-of-functions" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
 <li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow Proposed</em></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
-<li><a class="reference internal" href="pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Push and relabel algorithm with details of flow on edges.</li>
-<li><a class="reference internal" href="pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
 <li><a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Boykov and Kolmogorov with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Push and relabel algorithm with details of flow on edges.</li>
+<li>Applications<ul>
+<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> - Calculates edge disjoint paths between two groups of vertices.</li>
+<li><a class="reference internal" href="pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> - Calculates a maximum cardinality matching in a graph.</li>
 </ul>
-</div></blockquote>
-<p>The maximum flow through the graph is guaranteed to be the same with all implementations,
-but the actual flow through each edge may vary.</p>
+</li>
+</ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>These are proposed functions</p>
@@ -201,7 +202,9 @@ but the actual flow through each edge may vary.</p>
 The flow through an edge must not exceed the capacity of the edge.
 Additionally, the incoming and outgoing flow of a node must be equal except the for source which only has outgoing flow, and the destination(sink) which only has incoming flow.</p>
 <p>Maximum flow algorithms calculate the maximum flow through the graph and the flow of each edge.</p>
-<p>Given the following query:</p>
+<p>The maximum flow through the graph is guaranteed to be the same with all implementations,
+but the actual flow through each edge may vary.
+Given the following query:</p>
 <p>pgr_maxFlow <span class="math">\((edges\_sql, source\_vertex, sink\_vertex)\)</span></p>
 <p>where <span class="math">\(edges\_sql = \{(id_i, source_i, target_i, capacity_i, reverse\_capacity_i)\}\)</span></p>
 <p class="rubric">Graph definition</p>
@@ -260,7 +263,7 @@ Additionally, the incoming and outgoing flow of a node must be equal except the 
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 16, 2017.<br/>
+      Last updated on Mar 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

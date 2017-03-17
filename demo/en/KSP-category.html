@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Applications of Maximum Flow &mdash; pgRouting Manual (2.4-dev)</title>
+    <title>KSP Category &mdash; pgRouting Manual (2.4-dev)</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -33,8 +33,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
     <link rel="up" title="Stable proposed Functions" href="proposed.html" />
-    <link rel="next" title="pgr_maximumCardinalityMatching - Proposed" href="pgr_maximumCardinalityMatching.html" />
-    <link rel="prev" title="pgr_maxFlowBoykovKolmogorov - Proposed" href="pgr_maxFlowBoykovKolmogorov.html" />
+    <link rel="next" title="Contraction" href="contraction.html" />
+    <link rel="prev" title="pgr_withPointsCostMatrix - proposed" href="pgr_withPointsCostMatrix.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -94,8 +94,8 @@
 <li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="proposed.html">Stable proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proposed.html#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
@@ -112,15 +112,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Applications of Maximum Flow</a><ul>
-<li><a class="reference internal" href="#applications">Applications</a><ul>
-<li><a class="reference internal" href="#maximum-cardinality-matching">Maximum cardinality matching</a></li>
-<li><a class="reference internal" href="#edge-disjoint-paths">Edge disjoint paths</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">KSP Category</a></li>
 </ul>
 </ul>
 </li>
@@ -130,11 +122,11 @@
               
                 
   <li>
-    <a href="pgr_maxFlowBoykovKolmogorov.html" title="Previous Chapter: pgr_maxFlowBoykovKolmogorov - Proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_maxFlowBoyko...</span>
+    <a href="pgr_withPointsCostMatrix.html" title="Previous Chapter: pgr_withPointsCostMatrix - proposed"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_withPointsCo...</span>
     </a>
   </li>
   <li>
-    <a href="pgr_maximumCardinalityMatching.html" title="Next Chapter: pgr_maximumCardinalityMatching - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_maximumCardi... &raquo;</span>
+    <a href="contraction.html" title="Next Chapter: Contraction"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Contraction &raquo;</span>
     </a>
   </li>
               
@@ -162,64 +154,12 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="applications-of-maximum-flow">
-<span id="maxflowapplications"></span><h1>Applications of Maximum Flow<a class="headerlink" href="#applications-of-maximum-flow" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> - Calculates a maximum cardinality matching in a graph.</li>
-<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> - Calculates edge disjoint paths between two groups of vertices.</li>
-</ul>
-</div></blockquote>
-<p>Maximum flow algorithms provide solutions to other graph problems.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>These are proposed functions</p>
-<ul class="last simple">
-<li>They are not officially of the current release.</li>
-<li>They likely will not be officially be part of the next release:<ul>
-<li>The functions might not make use of ANY-INTEGER and ANY-NUMERICAL</li>
-<li>Name might change.</li>
-<li>Signature might change.</li>
-<li>Functionality might change.</li>
-<li>pgTap tests might be missing.</li>
-<li>Might need c/c++ coding.</li>
-<li>May lack documentation.</li>
-<li>Documentation if any might need to be rewritten.</li>
-<li>Documentation examples might need to be automatically generated.</li>
-<li>Might need a lot of feedback from the comunity.</li>
-<li>Might depend on a proposed function of pgRouting</li>
-<li>Might depend on a deprecated function of pgRouting</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="section" id="applications">
-<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="maximum-cardinality-matching">
-<h3>Maximum cardinality matching<a class="headerlink" href="#maximum-cardinality-matching" title="Permalink to this headline">¶</a></h3>
+  <div class="section" id="ksp-category">
+<span id="ksp"></span><h1>KSP Category<a class="headerlink" href="#ksp-category" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li>A matching or independent edge set in a graph is a set of edges without common vertices.</li>
-<li>A maximum matching is a matching that contains the largest possible number of edges.</li>
-<li>There may be many maximum matchings.</li>
-<li>The graph can be directed or undirected.</li>
+<li><a class="reference internal" href="pgr_ksp.html#pgr-ksp"><em>pgr_ksp</em></a> - Driving Distance based on pgr_dijkstra</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP - Proposed</em></a> - Driving Distance based on pgr_dijkstra</li>
 </ul>
-<p>The <a class="reference internal" href="pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> function can be used to calculate one such maximum matching.</p>
-</div>
-<div class="section" id="edge-disjoint-paths">
-<h3>Edge disjoint paths<a class="headerlink" href="#edge-disjoint-paths" title="Permalink to this headline">¶</a></h3>
-<p>In a undirected/directed graph, two paths are edge-disjoint(or edge-independant) if they do not have any internal edge in common.</p>
-<p>While the number of maximum edge disjoint paths is fixed, there may be several different routes.</p>
-<p>The <a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> function returns the maximum number of paths and possible routes.</p>
-</div>
-</div>
-<div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_flow_problem#Application">https://en.wikipedia.org/wiki/Maximum_flow_problem#Application</a></li>
-</ul>
-</div>
 </div>
 
 
@@ -235,7 +175,7 @@
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 16, 2017.<br/>
+      Last updated on Mar 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

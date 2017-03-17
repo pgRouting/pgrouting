@@ -32,9 +32,9 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
-    <link rel="up" title="AStar - Family of functions" href="astar.html" />
+    <link rel="up" title="aStar - Family of functions" href="aStar-family.html" />
     <link rel="next" title="pgr_aStarCostMatrix - proposed" href="pgr_aStarCostMatrix.html" />
-    <link rel="prev" title="AStar - Family of functions" href="astar.html" />
+    <link rel="prev" title="pgr_aStar" href="pgr_aStar.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -141,7 +141,7 @@
               
                 
   <li>
-    <a href="astar.html" title="Previous Chapter: AStar - Family of functions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; AStar - Family o...</span>
+    <a href="pgr_aStar.html" title="Previous Chapter: pgr_aStar"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_aStar</span>
     </a>
   </li>
   <li>
@@ -177,9 +177,9 @@
 <span id="pgr-astarcost"></span><h1>pgr_aStarCost &#8211; proposed<a class="headerlink" href="#pgr-astarcost-proposed" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="name">
 <h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">pgr_aStarCost</span></tt> — Returns the aggregate cost shortest path using <a class="reference internal" href="astar.html#astar"><em>AStar - Family of functions</em></a> algorithm.</p>
+<p><tt class="docutils literal"><span class="pre">pgr_aStarCost</span></tt> — Returns the aggregate cost shortest path using <a class="reference internal" href="aStar-family.html#astar"><em>aStar - Family of functions</em></a> algorithm.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org//libs/graph/doc/astar_search.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org//libs/graph/doc/astar_search.html"><img alt="_images/boost-inside1.jpeg" src="_images/boost-inside1.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 <p class="rubric">Availability: 2.4.0</p>
@@ -189,8 +189,7 @@
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>These are proposed functions for next mayor release.</p>
-<blockquote class="last">
-<div><ul class="simple">
+<ul class="last simple">
 <li>They are not officially in the current release.</li>
 <li>They will likely officially be part of the next mayor release:<ul>
 <li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
@@ -202,7 +201,6 @@
 </ul>
 </li>
 </ul>
-</div></blockquote>
 </div>
 <div class="highlight-none"><div class="highlight"><pre>pgr_aStarCost(edges_sql, start_vid, end_vid) -- Proposed
 pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon) -- Proposed
@@ -437,25 +435,19 @@ for all <tt class="docutils literal"><span class="pre">start_vids</span></tt>.</
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>&nbsp;</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge  <cite>(source, target)</cite></dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
 <li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>-1</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
 <li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-odd"><td><strong>x1</strong></td>
@@ -547,7 +539,7 @@ for all <tt class="docutils literal"><span class="pre">start_vids</span></tt>.</
 </tr>
 <tr class="row-odd"><td><strong>factor</strong></td>
 <td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
-<td>(optional). For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  Default <tt class="docutils literal"><span class="pre">1</span></tt>. See <a class="reference internal" href="astar.html#astar-factor"><em>Factor</em></a></td>
+<td>(optional). For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  Default <tt class="docutils literal"><span class="pre">1</span></tt>. See <a class="reference internal" href="aStar-family.html#astar-factor"><em>Factor</em></a></td>
 </tr>
 <tr class="row-even"><td><strong>epsilon</strong></td>
 <td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
@@ -591,7 +583,7 @@ for all <tt class="docutils literal"><span class="pre">start_vids</span></tt>.</
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="astar.html#astar"><em>AStar - Family of functions</em></a>.</li>
+<li><a class="reference internal" href="aStar-family.html#astar"><em>aStar - Family of functions</em></a>.</li>
 <li><a class="reference internal" href="sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
 <li><a class="reference external" href="http://www.boost.org/libs/graph/doc/astar_search.html">http://www.boost.org/libs/graph/doc/astar_search.html</a></li>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/A*_search_algorithm">http://en.wikipedia.org/wiki/A*_search_algorithm</a></li>
@@ -612,7 +604,7 @@ for all <tt class="docutils literal"><span class="pre">start_vids</span></tt>.</
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 16, 2017.<br/>
+      Last updated on Mar 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

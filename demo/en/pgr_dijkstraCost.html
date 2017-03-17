@@ -32,8 +32,8 @@
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
-    <link rel="up" title="Dijkstra - Family of functions" href="dijkstra.html" />
-    <link rel="next" title="Driving Distance" href="drivingDistance.html" />
+    <link rel="up" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
+    <link rel="next" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" />
     <link rel="prev" title="pgr_dijkstra" href="pgr_dijkstra.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -147,7 +147,7 @@
     </a>
   </li>
   <li>
-    <a href="drivingDistance.html" title="Next Chapter: Driving Distance"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Driving Distance &raquo;</span>
+    <a href="pgr_dijkstraCostMatrix.html" title="Next Chapter: pgr_dijkstraCostMatrix - proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_dijkstraCost... &raquo;</span>
     </a>
   </li>
               
@@ -183,7 +183,7 @@
 <p>Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
 aggregate cost of the shortest path(s) found, for the combination of vertices given.</p>
 <div class="figure">
-<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html"><img alt="_images/boost-inside1.jpeg" src="_images/boost-inside1.jpeg" /></a>
 <p class="caption">Boost Graph Inside</p>
 </div>
 <p class="rubric">Availability</p>
@@ -447,25 +447,19 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
 <tr class="row-odd"><td><strong>cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>&nbsp;</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge  <cite>(source, target)</cite></dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
 <li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 <tr class="row-even"><td><strong>reverse_cost</strong></td>
 <td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
 <td>-1</td>
-<td><dl class="first last docutils">
-<dt>Weight of the edge <cite>(target, source)</cite>,</dt>
-<dd><ul class="first last simple">
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
 <li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
 </ul>
-</dd>
-</dl>
 </td>
 </tr>
 </tbody>
@@ -642,7 +636,7 @@ pgr_dijkstraCost(edges_sql, start_vids, end_vids, directed);
     </p>
     <p>
         &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 16, 2017.<br/>
+      Last updated on Mar 17, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
