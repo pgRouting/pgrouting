@@ -86,16 +86,6 @@ These are corporate entities that have contributed developer time, hosting, or d
  - Paragon Corporation
 
 
-Inside
-------
-
-.. _boost-inside:
-
-.. figure:: ./images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
-
-   Boost Graph Inside
-
 More Information
 -------------------------------------------------------------------------------
 
@@ -104,5 +94,5 @@ More Information
 * PostGIS extension at the PostGIS project web site http://postgis.net.
 * Boost C++ source libraries at http://www.boost.org.
 * Computational Geometry Algorithms Library (CGAL) at http://www.cgal.org.
-* `Migration guide <https://github.com/pgRouting/pgrouting/wiki/Migration-Guide>`_
+* The Migration guide can be found at https://github.com/pgRouting/pgrouting/wiki/Migration-Guide.
 
