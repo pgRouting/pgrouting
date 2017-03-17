@@ -23,9 +23,8 @@ This is the manual for pgRouting |release|.
 
 The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page.
 
-*******************************************************************************
 General
-*******************************************************************************
+===============================================================================
 
 .. toctree::
     :maxdepth: 2
@@ -36,9 +35,15 @@ General
     support
 
 
-*******************************************************************************
-:ref:`pgrouting_concepts`
-*******************************************************************************
+- :ref:`sampledata` that is used in the examples of this manual.
+
+.. toctree::
+   :hidden:
+
+   sampledata
+
+:ref:`Pgrouting Concepts <pgrouting_concepts>`
+===============================================================================
 
 .. include:: pgRouting-concepts.rst
    :start-after: concepts_start
@@ -48,28 +53,10 @@ General
 .. toctree::
    :hidden:
 
-
    pgRouting-concepts
    
-*******************************************************************************
-Sample Data
-*******************************************************************************
 
-- :ref:`sampledata` that is used in the examples of this manual.
-
-.. toctree::
-   :hidden:
-
-   sampledata
-
-
-
-*******************************************************************************
-Functions
-*******************************************************************************
-
-Version
-===============================================================================
+Reference
 
 :ref:`pgr_version` - to get pgRouting's version information.
 
@@ -79,13 +66,12 @@ Version
    pgr_version
 
 
-:ref:`data_types`
+:ref:`Data Types <data_types>`
 ===============================================================================
 
-
--  :ref:`type_cost_result` -  A set of records to describe a path result with cost attribute.
--  :ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a path result with cost attribute.
--  :ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute.
+- :ref:`type_cost_result` -  A set of records to describe a path result with cost attribute.
+- :ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a path result with cost attribute.
+- :ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute.
 
 .. toctree::
    :hidden:
@@ -93,10 +79,8 @@ Version
    types_index
 
 
-*******************************************************************************
-:ref:`topology_functions`
-*******************************************************************************
-
+:ref:`Topology Functions <topology_functions>`
+===============================================================================
 
 -  :ref:`pgr_create_topology` -  to create a topology based on the geometry.
 -  :ref:`pgr_create_vert_table` - to reconstruct the vertices table based on the source and target information.
@@ -110,9 +94,8 @@ Version
    topology
 
 
-*******************************************************************************
-:ref:`routing_functions`
-*******************************************************************************
+:ref:`Routing functions <routing_functions>`
+===============================================================================
 
 .. toctree::
     :hidden:
@@ -126,9 +109,8 @@ Version
     
 
 
-*******************************************************************************
 Available Functions but not official pgRouting functions
-*******************************************************************************
+===============================================================================
 
 - :ref:`proposedNext`
 - :ref:`proposed`
@@ -141,9 +123,8 @@ Available Functions but not official pgRouting functions
 
 
 
-*******************************************************************************
 :ref:`change_log`
-*******************************************************************************
+===============================================================================
 
 .. include:: release_notes.rst
    :start-after: changelog start
