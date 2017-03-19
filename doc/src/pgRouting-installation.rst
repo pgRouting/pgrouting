@@ -22,7 +22,7 @@ Installation
 * :ref:`install_build`
 * :ref:`install_testing`
 
-Instructions for downloading and installing binaries for different Operative systems instructions and additional notes and corrections not included in this documentationcan be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
+Instructions for downloading and installing binaries for different Operative systems instructions and additional notes and corrections not included in this documentation can be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__
 
 To use pgRouting postGIS needs to be installed, please read the information about installation in this `Install Guide <http://www.postgis.us/presentations/postgis_install_guide_22.html>`__
 
@@ -101,7 +101,7 @@ Enabeling and upgrading in the database
 
 .. rubric:: Enabeling the database
 
-pgRouting is an extension and depends on postGIS. Enabling postGIS before enabeling pgRouring in the database
+pgRouting is an extension and depends on postGIS. Enabling postGIS before enabling pgRouting in the database
 
 .. code-block:: sql
 
@@ -127,7 +127,7 @@ More information can be found in https://www.postgresql.org/docs/current/static/
 Dependencies
 -------------------------------------------------------------------------------
 
-.. rubric:: Compliation Dependencies
+.. rubric:: Compilation Dependencies
 
 To be able to compile pgRouting, make sure that the following dependencies are met:
 
@@ -147,9 +147,9 @@ For user's documentation
 * Sphinx >= 1.1
 * Latex
 
-For developers's documentation
+For developer's documentation
 
-* Doxigen >= 1.7
+* Doxygen >= 1.7
 
 For testing
 
@@ -187,11 +187,11 @@ Installing the optional dependencies
 Configuring
 -------------------------
 
-PgRouting uses the `cmake` system to do the configuration.
+pgRouting uses the `cmake` system to do the configuration.
 
 The build directory is different from the source directory
 
-Ccreate the build directory
+Create the build directory
 
 .. code-block:: bash
 
@@ -239,7 +239,7 @@ Configuring with documentation
 Building
 ----------------------------------------------------------------
 
-Using ``make`` to build the code and the docuemtnation
+Using ``make`` to build the code and the documentation
 
 The following instructions start from *path/to/pgrouting/build*
 
@@ -250,7 +250,7 @@ The following instructions start from *path/to/pgrouting/build*
     $ make all doc  # build both the code and the documentation
 
 
-We have tested on several plataforms, For installing or reinstalling all the steps are needed.
+We have tested on several platforms, For installing or reinstalling all the steps are needed.
 
 .. warning:: The sql signatures are configured and build in the ``cmake`` command.
 
