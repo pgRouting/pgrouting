@@ -18,17 +18,27 @@ option(BUILD_HTML
 option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
+option(DOC_USE_BOOTSTRAP
+    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
+
 
 if(WITH_DOC)
     #message("PROCESSING DOCUMENTATION------------")
 
     find_package(Sphinx REQUIRED)
 
-    #set(SPHINX_THEME "haiku")
-    #set(SPHINX_THEME_DIR "['']")
+    if (DOC_USE_BOOTSTRAP)
+        set(SPHINX_INCLUDE "import sphinx_bootstrap_theme")
+        set(SPHINX_THEME "bootstrap")
+        set(SPHINX_THEME_DIR "sphinx_bootstrap_theme.get_html_theme_path()")
+        set(SPHINX_THEME_OPTIONS "'source_link_position': \"none\",")
+    else()
+        set(SPHINX_INCLUDE "")
+        set(SPHINX_THEME "haiku")
+        set(SPHINX_THEME_DIR "['']")
+        set(SPHINX_THEME_OPTIONS "")
+    endif()
 
-    set(SPHINX_THEME "bootstrap")
-    set(SPHINX_THEME_DIR "sphinx_bootstrap_theme.get_html_theme_path()")
 
 
     if (NOT SPHINX_FOUND)

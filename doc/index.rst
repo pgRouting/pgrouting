@@ -30,8 +30,7 @@ General
     :maxdepth: 2
 
     pgRouting-introduction
-    installation
-    build
+    pgRouting-installation
     support
 
 
