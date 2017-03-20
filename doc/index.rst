@@ -91,7 +91,7 @@ General
 .. toctree::
    :hidden:
 
-   topology
+   topology-functions
 
 
 :ref:`Routing functions <routing_functions>`

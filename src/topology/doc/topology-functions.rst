@@ -9,7 +9,7 @@
 
 .. _topology_functions:
 
-Topology Functions
+Topology - Family of Functions
 ===============================================================================
 
 The pgRouting's topology of a network, represented with an edge table with source and target attributes and a vertices table associated with it.
