@@ -9,13 +9,13 @@
 
 .. _pgr_ksp:
 
-pgr_ksp
+pgr_KSP
 ===============================================================================
 
 Name
 -------------------------------------------------------------------------------
 
-``pgr_ksp`` — Returns the "K" shortest paths.
+``pgr_KSP`` — Returns the "K" shortest paths.
 
 
 .. figure:: images/boost-inside.jpeg
@@ -38,15 +38,15 @@ Signature Summary
 
 .. code-block:: sql
 
-    pgr_ksp(edges_sql, start_vid, end_vid, K);
-    pgr_ksp(edges_sql, start_vid, end_vid, k, directed, heap_paths)
+    pgr_KSP(edges_sql, start_vid, end_vid, K);
+    pgr_KSP(edges_sql, start_vid, end_vid, k, directed, heap_paths)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 Signatures
 -------------------------------------------------------------------------------
 
 .. index::
-  single: ksp(Minimal Signature)
+  single: KSP(Minimal Signature)
 
 Minimal Signature
 ..................
@@ -65,7 +65,7 @@ Complete Signature
 
 .. code-block:: sql
 
-    pgr_ksp(edges_sql, start_vid, end_vid, k, directed, heap_paths)
+    pgr_KSP(edges_sql, start_vid, end_vid, k, directed, heap_paths)
     RETURNS SET OF (seq, path_id, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 

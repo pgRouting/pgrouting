@@ -20,8 +20,8 @@ Routing Functions
 
 :ref:`all_pairs`
 
-- :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
-- :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
+- :ref:`pgr_floydWarshall` - Floyd-Warshall's Algorithm
+- :ref:`pgr_johnson`- Johnson’s Algorithm
 
 :ref:`pgr_astar` - Shortest Path A*
 
@@ -36,7 +36,7 @@ Routing Functions
    :start-after: index from here
    :end-before: index to here
 
-:ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
+:ref:`pgr_ksp` - K-Shortest Path
 
 :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
 
@@ -61,7 +61,7 @@ Routing Functions
     pgr_bdAstar
     pgr_bdDijkstra
     dijkstra-family
-    pgr_ksp
+    pgr_KSP
     pgr_trsp
     TSP-family
     drivingDistance-category

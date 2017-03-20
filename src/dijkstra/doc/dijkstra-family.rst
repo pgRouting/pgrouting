@@ -31,7 +31,7 @@ Dijkstra - Family of functions
     pgr_dijkstraCost
     pgr_dijkstraCostMatrix
     pgr_drivingDistance
-    pgr_ksp
+    pgr_KSP
     pgr_dijkstraVia
 
 
