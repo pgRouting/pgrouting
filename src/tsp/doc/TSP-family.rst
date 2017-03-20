@@ -22,7 +22,7 @@ Traveling Sales Person - Family of functions
 .. toctree::
     :hidden:
 
-    pgr_tsp
+    pgr_TSP
     pgr_eucledianTSP
 
 
@@ -78,10 +78,10 @@ TSP & Simulated Annealing
 The simulated annealing algorithm was originally inspired from the process of
 annealing in metal work.
 
-    Annealing involves heating and cooling a material to
-    alter its physical properties due to the changes in its internal structure.
-    As the metal cools its new structure becomes fixed,
-    consequently causing the metal to retain its newly obtained properties.
+Annealing involves heating and cooling a material to
+alter its physical properties due to the changes in its internal structure.
+As the metal cools its new structure becomes fixed,
+consequently causing the metal to retain its newly obtained properties. [C001]_
 
 
 .. rubric:: Pseudocode
@@ -122,18 +122,18 @@ simulated annealing process.
 
 To cool down faster to the next temperature:
 
-    - max_changes_per_temperature: limits the number of changes in the solution per temperature
-    - max_consecutive_non_changes: limits the number of consecutive non changes per temperature
+- max_changes_per_temperature: limits the number of changes in the solution per temperature
+- max_consecutive_non_changes: limits the number of consecutive non changes per temperature
 
 This is done by doing some book keeping on the times **solution ← snew;** is executed.
 
-    - max_changes_per_temperature: Increases by one when **solution** changes
-    - max_consecutive_non_changes: Reset to 0 when **solution** changes, and increased each **try**
+- max_changes_per_temperature: Increases by one when **solution** changes
+- max_consecutive_non_changes: Reset to 0 when **solution** changes, and increased each **try**
 
 Additionally to stop the algorithm at a higher temperature than the desired one:
 
-    - max_processing_time: limits the time the simulated annealing is performed.
-    - book keeping is done to see if there was a change in **solution** on the last temperature
+- max_processing_time: limits the time the simulated annealing is performed.
+- book keeping is done to see if there was a change in **solution** on the last temperature
 
 Note that, if no change was found in the first **max_consecutive_non_changes** tries, then the
 simulated annealing will stop.
@@ -203,5 +203,16 @@ A recommendation is to play with the values and see what fits to the particular 
 See Also
 .........................
 
-  * http://en.wikipedia.org/wiki/Traveling_salesman_problem
-  * http://en.wikipedia.org/wiki/Simulated_annealing
+.. rubric:: References
+
+.. [C001] `Simulated annaeling algorithm for beginners <http://www.theprojectspot.com/tutorial-post/simulated-annealing-algorithm-for-beginners/6>`_
+
+* http://en.wikipedia.org/wiki/Traveling_salesman_problem
+* http://en.wikipedia.org/wiki/Simulated_annealing
+
+.. rubric:: Indices and tables
+
+* :ref:`genindex`
+* :ref:`search`
+
+

@@ -16,7 +16,7 @@ Driving Distance - Category
 .. index from here
 
 * :ref:`pgr_drivingDistance` - Driving Distance based on pgr_dijkstra
-* :ref:`pgr_withPointsDD` - Driving Distance based on pgr_dijkstra
+* :ref:`pgr_withPointsDD` - Driving Distance based on pgr_withPoints
 * Post pocessing
 
   * :ref:`pgr_alphaShape` - Alpha shape computation
