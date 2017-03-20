@@ -1,20 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Experimental and Proposed functions &mdash; pgRouting Manual (2.4-dev)</title>
+    <title>Stable proposed Functions &mdash; pgRouting Manual (2.4-dev)</title>
     
-    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '',
+        VERSION:     'v2.4.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,33 +26,194 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
-    <link rel="next" title="Contraction" href="contraction.html" />
-    <link rel="prev" title="pgr_aStarCostMatrix - proposed" href="pgr_aStarCostMatrix.html" /> 
+    <link rel="next" title="aStar - Family of functions" href="aStar-family.html" />
+    <link rel="prev" title="pgr_pointsAsPolygon" href="pgr_pointsAsPolygon.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   </head>
   <body>
-      <div class="header"><img class="rightlogo" src="_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>pgRouting Manual (2.4-dev)</span></a></h1>
-        <h2 class="heading"><span>Experimental and Proposed functions</span></h2>
-      </div>
-      <div class="topnav">
-      
-        <p>
-        «&#160;&#160;<a href="pgr_aStarCostMatrix.html">pgr_aStarCostMatrix - proposed</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="contraction.html">Contraction</a>&#160;&#160;»
-        </p>
 
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
+          pgRouting</a>
+        <span class="navbar-text navbar-version pull-left"><b>v2.4.0-dev</b></span>
       </div>
-      <div class="content">
-        
-        
-  <div class="section" id="experimental-and-proposed-functions">
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sampledata.html">Sample Data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgRouting-concepts.html">pgRouting Concepts</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pgr_version.html">pgr_version</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types_index.html">pgRouting Data Types</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="topology-functions.html">Topology - Family of Functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="routingFunctions.html">Routing Functions</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Stable proposed Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Stable proposed Functions</a></li>
+<li><a class="reference internal" href="#experimental-and-proposed-functions">Experimental and Proposed functions</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="pgr_pointsAsPolygon.html" title="Previous Chapter: pgr_pointsAsPolygon"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; pgr_pointsAsPoly...</span>
+    </a>
+  </li>
+  <li>
+    <a href="aStar-family.html" title="Next Chapter: aStar - Family of functions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">aStar - Family o... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="stable-proposed-functions">
+<span id="stable"></span><h1>Stable proposed Functions<a class="headerlink" href="#stable-proposed-functions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions for next mayor release.</p>
+<ul class="last simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>As part of the <a class="reference internal" href="dijkstra-family.html#dijkstra"><em>Dijkstra - Family of functions</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a> Use pgr_dijkstra to calculate a cost matrix.</li>
+<li><a class="reference internal" href="pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia - Proposed</em></a> - Use pgr_dijkstra to make a route via vertices.</li>
+</ul>
+<p class="rubric">Families</p>
+<p><a class="reference internal" href="aStar-family.html#astar"><em>aStar - Family of functions</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_aStar.html#pgr-astar"><em>pgr_aStar</em></a> - A* algorithm for the shortest path.</li>
+<li><a class="reference internal" href="pgr_aStarCost.html#pgr-astarcost"><em>pgr_aStarCost &#8211; proposed</em></a> - Get the aggregate cost of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><em>pgr_aStarCostMatrix - proposed</em></a> - Get the cost matrix of the shortest paths.</li>
+</ul>
+<p><a class="reference internal" href="withPoints-family.html#withpoints"><em>withPoints - Family of functions</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_withPoints.html#pgr-withpoints"><em>pgr_withPoints - Proposed</em></a> - Route from/to points anywhere on the graph.</li>
+<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost - Proposed</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a> - Costs of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP - Proposed</em></a> - K shortest paths.</li>
+<li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD - Proposed</em></a> - Driving distance.</li>
+</ul>
+<p class="rubric">categories</p>
+<p><a class="reference internal" href="cost-category.html#cost"><em>Cost - Category</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_aStarCost.html#pgr-astarcost"><em>pgr_aStarCost &#8211; proposed</em></a></li>
+<li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a></li>
+<li><a class="reference internal" href="pgr_withPointsCost.html#pgr-withpointscost"><em>pgr_withPointsCost - Proposed</em></a></li>
+</ul>
+<p><a class="reference internal" href="costMatrix-category.html#costmatrix"><em>Cost Matrix - Category</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_aStarCostMatrix.html#pgr-astarcostmatrix"><em>pgr_aStarCostMatrix - proposed</em></a></li>
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a></li>
+<li><a class="reference internal" href="pgr_withPointsCostMatrix.html#pgr-withpointscostmatrix"><em>pgr_withPointsCostMatrix - proposed</em></a></li>
+</ul>
+<p><a class="reference internal" href="KSP-category.html#ksp"><em>KSP Category</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_KSP.html#pgr-ksp"><em>pgr_KSP</em></a> - Driving Distance based on pgr_dijkstra</li>
+<li><a class="reference internal" href="pgr_withPointsKSP.html#pgr-withpointsksp"><em>pgr_withPointsKSP - Proposed</em></a> - Driving Distance based on pgr_dijkstra</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="experimental-and-proposed-functions">
 <span id="proposed"></span><h1>Experimental and Proposed functions<a class="headerlink" href="#experimental-and-proposed-functions" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="#proposed"><em>Experimental and Proposed functions</em></a></p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>These are proposed functions</p>
@@ -73,62 +236,56 @@
 </li>
 </ul>
 </div>
-<div class="section" id="proposed-functions">
-<h2>Proposed functions<a class="headerlink" href="#proposed-functions" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="contraction-family.html#contraction"><em>Contraction - Family of functions</em></a> - Reduce network size using contraction techniques</p>
 <ul class="simple">
-<li><a class="reference internal" href="contraction.html#contraction"><em>Contraction</em></a> - Reduce network size using contraction techniques<ul>
 <li><a class="reference internal" href="pgr_contractGraph.html#pgr-contractgraph"><em>pgr_contractGraph - Proposed</em></a> - Reduce network size using contraction techniques</li>
 </ul>
-</li>
-<li><a class="reference internal" href="maxFlow.html#maxflow"><em>Maximum Flow</em></a><ul>
-<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow Proposed</em></a> - Maximum flow using push&amp;relabel algorithm.</li>
-<li><a class="reference internal" href="pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Detailed Maximum flow using push&amp;relabel algorithm.</li>
-<li><a class="reference internal" href="pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Detailed Maximum flow using Edmonds&amp;Karp algorithm.</li>
-<li><a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Detailed Maximum flow using Boykov&amp;Kolmogorov algorithm.</li>
+<p><a class="reference internal" href="flow-family.html#maxflow"><em>Flow - Family of functions</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow Proposed</em></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
+<li><a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Boykov and Kolmogorov with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Push and relabel algorithm with details of flow on edges.</li>
+<li>Applications<ul>
+<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> - Calculates edge disjoint paths between two groups of vertices.</li>
+<li><a class="reference internal" href="pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> - Calculates a maximum cardinality matching in a graph.</li>
 </ul>
 </li>
-<li><a class="reference internal" href="maxFlowApplications.html#maxflowapplications"><em>Applications of Maximum Flow</em></a><ul>
-<li><a class="reference internal" href="pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> - Calculates a maximum cardinality matching.</li>
-<li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> - Calculates edge disjoint paths.</li>
 </ul>
-</li>
-<li>convenience<ul>
+<p class="rubric">Convenience</p>
+<ul class="simple">
 <li><a class="reference internal" href="pgr_pointToEdgeNode.html#pgr-point-to-edgenode"><em>pgr_pointToEdgeNode - Proposed</em></a> - convert a point geometry to a <tt class="docutils literal"><span class="pre">vertex_id</span></tt> based on closest edge.</li>
 </ul>
-</li>
-<li>graph analysis<ul>
+<p class="rubric">Graph Analysis</p>
+<ul class="simple">
 <li><a class="reference internal" href="pgr_labelGraph.html#pgr-labelgraph"><em>pgr_labelGraph - Proposed</em></a> - Analyze / label  subgraphs within a network</li>
 </ul>
-</li>
-<li>Vehicle Routing Problems<ul>
+<p class="rubric">Vehicle Routing Problems</p>
+<ul class="simple">
 <li><a class="reference internal" href="pgr_gsoc_vrppdtw.html#pgr-gsocvrppdtw"><em>pgr_gsoc_vrppdtw - Proposed</em></a> - VRP Pickup &amp; Delivery (Euclidean)</li>
 <li><a class="reference internal" href="pgr_vrpOneDepot.html#pgr-vrp-basic"><em>pgr_vrpOneDepot - Proposed</em></a> - VRP One Depot</li>
-</ul>
-</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 </div>
-</div>
 
 
-      </div>
-      <div class="bottomnav">
-      
-        <p>
-        «&#160;&#160;<a href="pgr_aStarCostMatrix.html">pgr_aStarCostMatrix - proposed</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="contraction.html">Contraction</a>&#160;&#160;»
-        </p>
-
-      </div>
-
-    <div class="footer">
-        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.
-      Last updated on Mar 16, 2017.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
+      Last updated on Mar 19, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>

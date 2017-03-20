@@ -17,17 +17,13 @@ The following steps are needed to update the documentation:
 The `index.html` documentation landing page needs to be edited manually. 
 It uses Sphinx template styles, but it is not generated automatically.
 
-## Example
 
-    git checkout gh-pages
-    rm -Rf dev 
-    mkdir dev
-
-# for user's documentation
+# for user's documentation in develop
 
 rm -Rf dev 
 mkdir dev
 cp -r build/doc/html/en dev 
+rm -rf dev/en/_sources
 git add dev
 
 # for developers documentation
