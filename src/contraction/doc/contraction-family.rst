@@ -10,7 +10,7 @@
 
 .. _contraction:
 
-Contraction
+Contraction - Family of functions
 ===============================================================================
 
 
@@ -19,6 +19,11 @@ Contraction
    :end-before: end-warn-expr
 
 :ref:`pgr_contractGraph`
+
+.. toctree::
+    :hidden:
+
+    pgr_contractGraph
 
 Introduction
 -------------

@@ -35,7 +35,7 @@ As part of the :ref:`dijkstra`
 - :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
 - :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
 
-.. rubric:: New Families
+.. rubric:: Families
 
 :ref:`astar`
  
@@ -50,7 +50,7 @@ As part of the :ref:`dijkstra`
    :start-after: index from here
    :end-before: index to here
 
-.. rubric:: New categories
+.. rubric:: categories
 
 :ref:`Cost`
 
@@ -138,8 +138,7 @@ Experimental and Proposed functions
 .. toctree::
   :hidden:
 
-  contraction
-  pgr_contractGraph
+  contraction-family
   flow-family
   pgr_pointToEdgeNode
   pgr_labelGraph
