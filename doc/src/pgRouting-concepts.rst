@@ -686,7 +686,7 @@ How to contribute
 * Or create a new Wiki page
 
   * Create a page on the `pgRouting Wiki <https://github.com/pgRouting/pgrouting/wiki>`_
-  * Give the title an appropiate name
+  * Give the title an appropriate name
 
 
 * `Example <https://github.com/pgRouting/pgrouting/wiki/How-to:-Handle-parallel-edges-(KSP)>`_
