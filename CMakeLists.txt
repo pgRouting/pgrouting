@@ -11,6 +11,12 @@ if(POLICY CMP0046)
     cmake_policy(SET CMP0046 OLD)
 endif()
 
+if ( ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR} )
+        message(FATAL_ERROR "In-source builds not allowed.
+        Please make a new directory (called a build directory) and run CMake from there.
+        You may need to remove CMakeCache.txt." )
+endif()
+
 #---------------------------------------------
 # Setting kind of build
 #---------------------------------------------
@@ -207,7 +213,7 @@ endif()
 set(PGROUTING_VERSION_MAJOR "2")
 set(PGROUTING_VERSION_MINOR "4")
 set(PGROUTING_VERSION_PATCH "0")
-set(PGROUTING_VERSION_DEV "-rc2")
+set(PGROUTING_VERSION_DEV "")
 
 set(PGROUTING_SHORT_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}")
 set(PGROUTING_VERSION "${PGROUTING_VERSION_MAJOR}.${PGROUTING_VERSION_MINOR}.${PGROUTING_VERSION_PATCH}")

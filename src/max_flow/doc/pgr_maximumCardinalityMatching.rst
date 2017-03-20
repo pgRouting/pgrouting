@@ -19,12 +19,12 @@ Name
 ``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
 
    Boost Graph Inside
@@ -159,7 +159,7 @@ Column                 Type                  Description
 See Also
 --------
 
-* :ref:`maxFlowApplications`
+* :ref:`maxFlow`
 * http://www.boost.org/libs/graph/doc/maximum_matching.html
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 * https://en.wikipedia.org/wiki/Ackermann_function

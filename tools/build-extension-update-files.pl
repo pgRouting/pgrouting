@@ -150,29 +150,6 @@ sub generate_upgrade_script {
     my $n_ver = $new->{VERSION};
     my $o_ver = $old->{VERSION};
 
-    # analyze types
-
-    my $ntype = $new->{types};
-    my $otype = $old->{types};
-
-    # create a hash like <name> => <column_list> for new types
-    my %ntype_h = ();
-    for my $x (@{$ntype}) {
-        #$x =~ m/(\w+)(\([^\)]+\))$/;
-        $ntype_h{lc($x)} = lc($x);
-    }
-
-    # check if old type exists with different column types
-    for my $x (@{$otype}) {
-        my $name = lc($x);
-        if (!exists $ntype_h{$name}) {
-            #types no longer used are droped form the extension
-            push @commands, "ALTER EXTENSION pgrouting DROP TYPE $name;\n";
-            push @commands, "DROP TYPE $name;\n";
-        } else {
-            push @types2remove, $name;
-        }
-    }
 
 
     # analyze function sigs
@@ -202,6 +179,30 @@ sub generate_upgrade_script {
         # so it will not fail on create or replace function
         print "DROP FUNCTION IF EXISTS $x;\n" if $DEBUG;
         push @commands, "DROP FUNCTION IF EXISTS $x;\n";
+    }
+
+    # analyze types
+
+    my $ntype = $new->{types};
+    my $otype = $old->{types};
+
+    # create a hash like <name> => <column_list> for new types
+    my %ntype_h = ();
+    for my $x (@{$ntype}) {
+        #$x =~ m/(\w+)(\([^\)]+\))$/;
+        $ntype_h{lc($x)} = lc($x);
+    }
+
+    # check if old type exists with different column types
+    for my $x (@{$otype}) {
+        my $name = lc($x);
+        if (!exists $ntype_h{$name}) {
+            #types no longer used are droped form the extension
+            push @commands, "ALTER EXTENSION pgrouting DROP TYPE $name;\n";
+            push @commands, "DROP TYPE $name;\n";
+        } else {
+            push @types2remove, $name;
+        }
     }
 
     # UGH! someone change the definition of the TYPE or reused an existing
