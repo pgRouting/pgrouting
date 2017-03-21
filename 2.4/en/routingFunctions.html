@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Routing Functions &mdash; pgRouting Manual (2.4)</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v2.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="next" title="All Pairs - Family of Functions" href="allpairs-family.html" />
+    <link rel="prev" title="pgr_nodeNetwork" href="pgr_nodeNetwork.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="index.html">
+          <span>pgRouting Manual (2.4)</span></a></h1>
+        <h2 class="heading"><span>Routing Functions</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_nodeNetwork.html">pgr_nodeNetwork</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="allpairs-family.html">All Pairs - Family of Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="routing-functions">
+<span id="id1"></span><h1>Routing Functions<a class="headerlink" href="#routing-functions" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="allpairs-family.html#all-pairs"><em>All Pairs - Family of Functions</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_floydWarshall.html#pgr-floydwarshall"><em>pgr_floydWarshall</em></a> - Floyd-Warshall&#8217;s Algorithm</li>
+<li><a class="reference internal" href="pgr_johnson.html#pgr-johnson"><em>pgr_johnson</em></a>- Johnson’s Algorithm</li>
+</ul>
+<p><a class="reference internal" href="pgr_aStar.html#pgr-astar"><em>pgr_aStar</em></a> - Shortest Path A*</p>
+<p><a class="reference internal" href="pgr_bdAstar.html#bd-astar"><em>pgr_bdAstar</em></a> - Bi-directional A* Shortest Path</p>
+<p><a class="reference internal" href="pgr_bdDijkstra.html#pgr-bddijkstra"><em>pgr_bdDijkstra</em></a> - Bi-directional Dijkstra Shortest Path</p>
+<p><a class="reference internal" href="dijkstra-family.html#dijkstra"><em>Dijkstra - Family of functions</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_dijkstra.html#pgr-dijkstra"><em>pgr_dijkstra</em></a> - Dijkstra&#8217;s algorithm for the shortest paths.</li>
+<li><a class="reference internal" href="pgr_dijkstraCost.html#pgr-dijkstracost"><em>pgr_dijkstraCost</em></a> - Get the aggregate cost of the shortest paths.</li>
+<li><a class="reference internal" href="pgr_dijkstraCostMatrix.html#pgr-dijkstracostmatrix"><em>pgr_dijkstraCostMatrix - proposed</em></a> - Use pgr_dijkstra to create a costs matrix.</li>
+<li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><em>pgr_drivingDistance</em></a> - Use pgr_dijkstra to calculate catchament information.</li>
+<li><a class="reference internal" href="pgr_KSP.html#pgr-ksp"><em>pgr_KSP</em></a> - Use Yen algorithm with pgr_dijkstra to get the K shortest paths.</li>
+<li><a class="reference internal" href="pgr_dijkstraVia.html#pgr-dijkstravia"><em>pgr_dijkstraVia - Proposed</em></a> - Get a route of a seuence of vertices.</li>
+</ul>
+<p><a class="reference internal" href="pgr_KSP.html#pgr-ksp"><em>pgr_KSP</em></a> - K-Shortest Path</p>
+<p><a class="reference internal" href="pgr_trsp.html#trsp"><em>pgr_trsp</em></a> - Turn Restriction Shortest Path (TRSP)</p>
+<p><a class="reference internal" href="TSP-family.html#tsp"><em>Traveling Sales Person - Family of functions</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_TSP.html#pgr-tsp"><em>pgr_TSP</em></a> - When input is given as matrix cell information.</li>
+<li><a class="reference internal" href="pgr_eucledianTSP.html#pgr-euclediantsp"><em>pgr_eucledianTSP</em></a> - When input are coordinates.</li>
+</ul>
+<p><a class="reference internal" href="drivingDistance-category.html#drivingdistance"><em>Driving Distance - Category</em></a></p>
+<ul class="simple">
+<li><a class="reference internal" href="pgr_drivingDistance.html#pgr-drivingdistance"><em>pgr_drivingDistance</em></a> - Driving Distance based on pgr_dijkstra</li>
+<li><a class="reference internal" href="pgr_withPointsDD.html#pgr-withpointsdd"><em>pgr_withPointsDD - Proposed</em></a> - Driving Distance based on pgr_withPoints</li>
+<li>Post pocessing<ul>
+<li><a class="reference internal" href="pgr_alphaShape.html#pgr-alphashape"><em>pgr_alphaShape</em></a> - Alpha shape computation</li>
+<li><a class="reference internal" href="pgr_pointsAsPolygon.html#pgr-points-as-polygon"><em>pgr_pointsAsPolygon</em></a> - Polygon around set of points</li>
+</ul>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="pgr_nodeNetwork.html">pgr_nodeNetwork</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="allpairs-family.html">All Pairs - Family of Functions</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version v2.4.0.
+      Last updated on Mar 20, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

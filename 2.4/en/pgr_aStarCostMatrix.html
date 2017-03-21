@@ -1,0 +1,428 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pgr_aStarCostMatrix - proposed &mdash; pgRouting Manual (2.4)</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v2.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="pgRouting Manual (2.4)" href="index.html" />
+    <link rel="up" title="Cost Matrix - Category" href="costMatrix-category.html" />
+    <link rel="next" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" />
+    <link rel="prev" title="Cost Matrix - Category" href="costMatrix-category.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="_static/pgrouting.png" alt="Logo"/><h1 class="heading"><a href="index.html">
+          <span>pgRouting Manual (2.4)</span></a></h1>
+        <h2 class="heading"><span>pgr_aStarCostMatrix - proposed</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="costMatrix-category.html">Cost Matrix - Category</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="pgr-astarcostmatrix-proposed">
+<span id="pgr-astarcostmatrix"></span><h1>pgr_aStarCostMatrix - proposed<a class="headerlink" href="#pgr-astarcostmatrix-proposed" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pgr_aStarCostMatrix</span></tt> - Calculates the a cost matrix using <a class="reference internal" href="pgr_aStar.html#pgr-astar"><em>pgr_aStar</em></a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>These are proposed functions for next mayor release.</p>
+<ul class="last simple">
+<li>They are not officially in the current release.</li>
+<li>They will likely officially be part of the next mayor release:<ul>
+<li>The functions make use of ANY-INTEGER and ANY-NUMERICAL</li>
+<li>Name might not change. (But still can)</li>
+<li>Signature might not change. (But still can)</li>
+<li>Functionality might not change. (But still can)</li>
+<li>pgTap tests have being done. But might need more.</li>
+<li>Documentation might need refinement.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="http://www.boost.org/libs/graph"><img alt="_images/boost-inside.jpeg" src="_images/boost-inside.jpeg" /></a>
+<p class="caption">Boost Graph Inside</p>
+</div>
+<p class="rubric">Availability: 2.4.0</p>
+</div>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Using aStar algorithm, calculate and return a cost matrix.</p>
+</div>
+<div class="section" id="signature-summary">
+<h2>Signature Summary<a class="headerlink" href="#signature-summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none"><div class="highlight"><pre>pgr_aStarCostMatrix(edges_sql, vids)
+pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
+</pre></div>
+</div>
+</div>
+<div class="section" id="signatures">
+<h2>Signatures<a class="headerlink" href="#signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="minimal-signature">
+<span id="index-0"></span><h3>Minimal Signature<a class="headerlink" href="#minimal-signature" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>The minimal signature:</dt>
+<dd><ul class="first last simple">
+<li>Is for a <strong>directed</strong> graph.</li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-none"><div class="highlight"><pre>pgr_aStarCostMatrix(edges_sql, vids)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for vertices 1, 2, 3, and 4.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_aStarCostMatrix(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 5)
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         1 |       2 |        1
+         1 |       3 |        6
+         1 |       4 |        5
+         2 |       1 |        1
+         2 |       3 |        5
+         2 |       4 |        4
+         3 |       1 |        2
+         3 |       2 |        1
+         3 |       4 |        3
+         4 |       1 |        3
+         4 |       2 |        2
+         4 |       3 |        1
+(12 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="complete-signature">
+<span id="index-1"></span><h3>Complete Signature<a class="headerlink" href="#complete-signature" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none"><div class="highlight"><pre>pgr_aStarCostMatrix(edges_sql, vids, directed, heuristic, factor, epsilon)
+RETURNS SET OF (start_vid, end_vid, agg_cost)
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Cost matrix for an undirected graph for vertices 1, 2, 3, and 4.</td>
+</tr>
+</tbody>
+</table>
+<p>This example returns a symmetric cost matrix.</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_aStarCostMatrix(
+    &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+    (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 5),
+    directed := false, heuristic := 2
+);
+ start_vid | end_vid | agg_cost 
+-----------+---------+----------
+         1 |       2 |        1
+         1 |       3 |        2
+         1 |       4 |        3
+         2 |       1 |        1
+         2 |       3 |        1
+         2 |       4 |        2
+         3 |       1 |        2
+         3 |       2 |        1
+         3 |       4 |        1
+         4 |       1 |        3
+         4 |       2 |        2
+         4 |       3 |        1
+(12 rows)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="description-of-the-signatures">
+<h2>Description of the Signatures<a class="headerlink" href="#description-of-the-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-edges-sql-query-for-astar-like-functions">
+<h3>Description of the edges_sql query for astar like functions<a class="headerlink" href="#description-of-the-edges-sql-query-for-astar-like-functions" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">edges_sql:</th><td class="field-body">an SQL query, which should return a set of rows with the following columns:</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="6%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>id</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>source</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the first end point vertex of the edge.</td>
+</tr>
+<tr class="row-even"><td><strong>target</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-INTEGER</span></tt></td>
+<td>&nbsp;</td>
+<td>Identifier of the second end point vertex of the edge.</td>
+</tr>
+<tr class="row-odd"><td><strong>cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td><p class="first">Weight of the edge  <cite>(source, target)</cite></p>
+<ul class="last simple">
+<li>When negative: edge <cite>(source, target)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>reverse_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>-1</td>
+<td><p class="first">Weight of the edge <cite>(target, source)</cite>,</p>
+<ul class="last simple">
+<li>When negative: edge <cite>(target, source)</cite> does not exist, therefore it&#8217;s not part of the graph.</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>x1</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td>X coordinate of <cite>source</cite> vertex.</td>
+</tr>
+<tr class="row-even"><td><strong>y1</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td>Y coordinate of <cite>source</cite> vertex.</td>
+</tr>
+<tr class="row-odd"><td><strong>x2</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td>X coordinate of <cite>target</cite> vertex.</td>
+</tr>
+<tr class="row-even"><td><strong>y2</strong></td>
+<td><tt class="docutils literal"><span class="pre">ANY-NUMERICAL</span></tt></td>
+<td>&nbsp;</td>
+<td>Y coordinate of <cite>target</cite> vertex.</td>
+</tr>
+</tbody>
+</table>
+<p>Where:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ANY-INTEGER:</th><td class="field-body">SMALLINT, INTEGER, BIGINT</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ANY-NUMERICAL:</th><td class="field-body">SMALLINT, INTEGER, BIGINT, REAL, FLOAT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-parameters-of-the-signatures">
+<h3>Description of the parameters of the signatures<a class="headerlink" href="#description-of-the-parameters-of-the-signatures" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="19%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>edges_sql</strong></td>
+<td><tt class="docutils literal"><span class="pre">TEXT</span></tt></td>
+<td>Edges SQL query as described above.</td>
+</tr>
+<tr class="row-odd"><td><strong>vids</strong></td>
+<td><tt class="docutils literal"><span class="pre">ARRAY[ANY-INTEGER]</span></tt></td>
+<td>Array of vertices_identifiers.</td>
+</tr>
+<tr class="row-even"><td><strong>directed</strong></td>
+<td><tt class="docutils literal"><span class="pre">BOOLEAN</span></tt></td>
+<td><ul class="first last simple">
+<li>Optional.<ul>
+<li>When <tt class="docutils literal"><span class="pre">false</span></tt> the graph is considered as Undirected.</li>
+<li>Default is <tt class="docutils literal"><span class="pre">true</span></tt> which considers the graph as Directed.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>heuristic</strong></td>
+<td><tt class="docutils literal"><span class="pre">INTEGER</span></tt></td>
+<td><p class="first">(optional). Heuristic number. Current valid values 0~5. Default <tt class="docutils literal"><span class="pre">5</span></tt></p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>0: h(v) = 0 (Use this value to compare with pgr_dijkstra)</li>
+<li>1: h(v) abs(max(dx, dy))</li>
+<li>2: h(v) abs(min(dx, dy))</li>
+<li>3: h(v) = dx * dx + dy * dy</li>
+<li>4: h(v) = sqrt(dx * dx + dy * dy)</li>
+<li>5: h(v) = abs(dx) + abs(dy)</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><strong>factor</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>(optional). For units manipulation. <span class="math">\(factor &gt; 0\)</span>.  Default <tt class="docutils literal"><span class="pre">1</span></tt>.</td>
+</tr>
+<tr class="row-odd"><td><strong>epsilon</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>(optional). For less restricted results. <span class="math">\(epsilon &gt;= 1\)</span>.  Default <tt class="docutils literal"><span class="pre">1</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description-of-the-return-values-for-a-cost-function">
+<h3>Description of the return values for a Cost function<a class="headerlink" href="#description-of-the-return-values-for-a-cost-function" title="Permalink to this headline">¶</a></h3>
+<p>Returns set of <tt class="docutils literal"><span class="pre">(start_vid,</span> <span class="pre">end_vid,</span> <span class="pre">agg_cost)</span></tt></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>start_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the starting vertex. Used when multiple starting vetrices are in the query.</td>
+</tr>
+<tr class="row-odd"><td><strong>end_vid</strong></td>
+<td><tt class="docutils literal"><span class="pre">BIGINT</span></tt></td>
+<td>Identifier of the ending vertex. Used when multiple ending vertices are in the query.</td>
+</tr>
+<tr class="row-even"><td><strong>agg_cost</strong></td>
+<td><tt class="docutils literal"><span class="pre">FLOAT</span></tt></td>
+<td>Aggregate cost from <tt class="docutils literal"><span class="pre">start_vid</span></tt> to <tt class="docutils literal"><span class="pre">end_vid</span></tt>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">Use with tsp</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_TSP(
+    $$
+    SELECT * FROM pgr_aStarCostMatrix(
+        &#39;SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table&#39;,
+        (SELECT array_agg(id) FROM edge_table_vertices_pgr WHERE id &lt; 5),
+        directed:= false, heuristic := 2
+    )
+    $$,
+    randomize := false
+);
+ seq | node | cost | agg_cost 
+-----+------+------+----------
+   1 |    1 |    1 |        0
+   2 |    2 |    1 |        1
+   3 |    3 |    1 |        2
+   4 |    4 |    3 |        3
+   5 |    1 |    0 |        6
+(5 rows)
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="aStar-family.html#astar"><em>aStar - Family of functions</em></a></li>
+<li><a class="reference internal" href="costMatrix-category.html#costmatrix"><em>Cost Matrix - Category</em></a></li>
+<li><a class="reference internal" href="TSP-family.html#tsp"><em>Traveling Sales Person - Family of functions</em></a></li>
+<li>The queries use the <a class="reference internal" href="sampledata.html#sampledata"><em>Sample Data</em></a> network.</li>
+</ul>
+<p class="rubric">Indices and tables</p>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="costMatrix-category.html">Cost Matrix - Category</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="pgr_dijkstraCostMatrix.html">pgr_dijkstraCostMatrix - proposed</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright pgRouting Contributors - Version v2.4.0.
+      Last updated on Mar 20, 2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
