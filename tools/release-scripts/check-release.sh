@@ -29,10 +29,10 @@ if [[ -z  $4 ]]; then
     exit 1;
 fi
 
-MAYOR=$1
-MINOR=$2
+MAYOR=2
+MINOR=5
 MICRO=0
-PREV_REL=$4
+PREV_REL="2.4.0"
 RC="-dev"
 
 #---------------------------------------------------------------------
@@ -248,18 +248,6 @@ test_file 2.0.0
 #---------------------------------------------------------------------
 echo "### Locally make a clean build as Release"
 #---------------------------------------------------------------------
-echo "\`\`\`"
-echo "sudo rm -f /usr/lib/postgresql/9.3/lib/libpgrouting-2.4.so"
-echo "sudo rm -f /usr/share/postgresql/9.3/extension/pgrouting*2.4.0*"
-echo "rm -rf build"
-echo cd build
-echo cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release ..
-echo make
-echo sudo make install
-echo make doc
-echo make doxy
-echo cd ..
-echo "\`\`\`"
 
 echo - [x] completed local builds
 
@@ -272,20 +260,20 @@ bash tools/release-scripts/compile-release.sh 4.8
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ curr-sig > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.1 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.3.0 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.4 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.3 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.2 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.1 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.2.0 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.1.0 ___sig_generate___ sigs > build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ curr-sig 
+sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sigs 
+sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sigs 
+sh tools/release-scripts/get_signatures.sh 2.3.1 ___sig_generate___ sigs 
+sh tools/release-scripts/get_signatures.sh 2.3.0 ___sig_generate___ sigs
+sh tools/release-scripts/get_signatures.sh 2.2.4 ___sig_generate___ sigs
+sh tools/release-scripts/get_signatures.sh 2.2.3 ___sig_generate___ sigs
+sh tools/release-scripts/get_signatures.sh 2.2.2 ___sig_generate___ sigs
+sh tools/release-scripts/get_signatures.sh 2.2.1 ___sig_generate___ sigs
+sh tools/release-scripts/get_signatures.sh 2.2.0 ___sig_generate___ sigs 
+sh tools/release-scripts/get_signatures.sh 2.1.0 ___sig_generate___ sigs
 #version 2.0.1 can not be upgraded
 #sh tools/release-scripts/get_signatures.sh 2.0.1 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.0.0 ___sig_generate___ sigs > build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.0.0 ___sig_generate___ sigs
 
 echo
 echo - [x] completed check: OK
@@ -312,7 +300,7 @@ echo "\`\`\`"
 echo tools/testers/algorithm-tester.pl -documentation
 echo git status
 echo "\`\`\`"
-tools/testers/algorithm-tester.pl -documentation > build/tmp_generate_doc.txt
+tools/testers/algorithm-tester.pl -documentation
 if [[ $? != 0 ]]; then
     echo "FATAL errors found generating documentation result files"
     exit 1

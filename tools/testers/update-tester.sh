@@ -42,7 +42,6 @@ echo -
 CURRENT=2.5.0
 
 function update_test {
-set -e
 
 echo ------------------------------------
 echo ------------------------------------
@@ -56,7 +55,7 @@ then
     echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql found"
 else
     echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
-#    exit 1
+    exit 1
 fi
 
 createdb  ___test_update
