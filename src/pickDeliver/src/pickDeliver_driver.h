@@ -42,15 +42,17 @@ extern "C" {
       max_cycles INTEGER,
      ********************************************************/
     void do_pgr_pickDeliver(
-            Customer_t *customers_arr, size_t total_customers,
-            int max_vehicles,
-            double capacity,
-            double speed,
+            PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
+            Vehicle_t *vehicles_arr, size_t total_vehicles,
+
             int max_cycles,
+
             General_vehicle_orders_t **return_tuples,
             size_t *return_count,
-            char ** log_msg,
-            char ** err_msg);
+
+            char **log_msg,
+            char **notice_msg,
+            char **err_msg);
 
 
 #ifdef __cplusplus

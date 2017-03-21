@@ -49,76 +49,105 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  ***********************************************************/
 void
 do_pgr_pickDeliver(
-        Customer_t *customers_arr,
+        PickDeliveryOrders_t *customers_arr,
         size_t total_customers,
-        int max_vehicles,
-        double capacity,
-        double speed,
+
+        Vehicle_t *vehicles_arr,
+        size_t total_vehicles,
+
         int max_cycles,
-        General_vehicle_orders_t **result_tuples,
-        size_t *total_count,
-        char ** log_msg,
-        char ** err_msg) {
+
+        General_vehicle_orders_t **return_tuples,
+        size_t *return_count,
+
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg) {
     std::ostringstream log;
+    std::ostringstream notice;
+    std::ostringstream err;
     try {
         std::ostringstream tmp_log;
-        *result_tuples = NULL;
-        *total_count = 0;
+        *return_tuples = NULL;
+        *return_count = 0;
+
+        /*
+         * transform to C++ containers
+         */
+        std::vector<PickDeliveryOrders_t> orders(
+                customers_arr, customers_arr + total_customers);
+        std::vector<Vehicle_t> vehicles(
+                vehicles_arr, vehicles_arr + total_vehicles);
 
         log << "Read data\n";
         std::string error("");
         pgrouting::vrp::Pgr_pickDeliver pd_problem(
-                customers_arr,
-                total_customers,
-                max_vehicles,
-                capacity,
-                speed,
+                orders,
+                vehicles,
                 max_cycles,
                 error);
+        log << pd_problem.get_log();
+
         if (error.compare("")) {
-            pd_problem.get_log(log);
+            log << pd_problem.get_log();
             *log_msg = strdup(log.str().c_str());
             *err_msg = strdup(error.c_str());
             return;
         }
-        pd_problem.get_log(tmp_log);
+        log << pd_problem.get_log();
         log << "Finish Reading data\n";
 
         try {
             pd_problem.solve();
         } catch (AssertFailedException &except) {
-            pd_problem.get_log(log);
+            log << pd_problem.get_log();
             throw except;
         }
 
-        pd_problem.get_log(log);
+        log << pd_problem.get_log();
         log << "Finish solve\n";
 
-        std::vector<General_vehicle_orders_t> solution;
-        pd_problem.get_postgres_result(solution);
-        pd_problem.get_log(tmp_log);
+        auto solution = pd_problem.get_postgres_result();
+        log << pd_problem.get_log();
         log << "solution size: " << solution.size() << "\n";
 
 
-        (*result_tuples) = pgr_alloc(solution.size(), (*result_tuples));
+        (*return_tuples) = pgr_alloc(solution.size(), (*return_tuples));
         int seq = 0;
         for (const auto &row : solution) {
-            (*result_tuples)[seq] = row;
+            (*return_tuples)[seq] = row;
             ++seq;
         }
-        (*total_count) = solution.size();
+        (*return_count) = solution.size();
 
-        pd_problem.get_log(log);
-        *log_msg = strdup(log.str().c_str());
+        log << pd_problem.get_log();
+
+        pgassert(*err_msg == NULL);
+        *log_msg = log.str().empty()?
+            nullptr :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            nullptr :
+            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch (std::exception& except) {
-        log << except.what() << "\n";
-        *err_msg = strdup(log.str().c_str());
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        log << "Caught unknown exception!\n";
-        *err_msg = strdup(log.str().c_str());
+        if (*return_tuples) free(*return_tuples);
+        (*return_count) = 0;
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }
+
 

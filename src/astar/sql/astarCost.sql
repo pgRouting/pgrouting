@@ -27,104 +27,100 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-
---
--- pgr_astarCost subfamily of functions
---
-
--- one to one
-CREATE OR REPLACE FUNCTION pgr_astarCost(
+CREATE OR REPLACE FUNCTION pgr_aStarCost(
     edges_sql TEXT, -- XY edges sql
-    BIGINT, -- start_id
-    BIGINT, -- end_id
+    start_vid BIGINT,
+    end_vid BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
+
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT $2, $3, a.agg_cost
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, true) a;
-END
+    SELECT a.start_vid, a.end_vid, a.agg_cost
+    FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
+    ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
--- one to many
-CREATE OR REPLACE FUNCTION pgr_astarCost(
+CREATE OR REPLACE FUNCTION pgr_aStarCost(
     edges_sql TEXT, -- XY edges sql
-    BIGINT,
+    start_vid BIGINT,
     end_vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
+
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
-
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT $2, a.end_vid, a.agg_cost 
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, true) a;
-END
+    SELECT a.start_vid, a.end_vid, a.agg_cost
+    FROM _pgr_aStar(_pgr_get_statement($1), ARRAY[$2]::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
+    ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
--- many to one
-CREATE OR REPLACE FUNCTION pgr_astarCost(
+CREATE OR REPLACE FUNCTION pgr_aStarCost(
     edges_sql TEXT, -- XY edges sql
     start_vids ANYARRAY,
-    BIGINT,
+    end_vid BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
+
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
-
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT  a.start_vid, $3, a.agg_cost
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, true) a;
-END
+    SELECT a.start_vid, a.end_vid, a.agg_cost
+    FROM _pgr_aStar(_pgr_get_statement($1), $2::BIGINT[],  ARRAY[$3]::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true, normal:=false) AS a
+    ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
--- many to many
-CREATE OR REPLACE FUNCTION pgr_astarCost(
+CREATE OR REPLACE FUNCTION pgr_aStarCost(
     edges_sql TEXT, -- XY edges sql
     start_vids ANYARRAY,
     end_vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
+
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
 
 RETURNS SETOF RECORD AS
 $BODY$
-BEGIN
-    RETURN query SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $3, $4, $5, $6, $7, true) a;
-END
+    SELECT a.start_vid, a.end_vid, a.agg_cost
+    FROM _pgr_aStar(_pgr_get_statement($1), $2::BIGINT[],  $3::BIGINT[], $4, $5, $6::FLOAT, $7::FLOAT, true) AS a
+    ORDER BY  a.start_vid, a.end_vid;
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
+
+-- COMMENTS
+
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_aStarCost(One to One)';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_aStarCost(One to Many)';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_aStarCost(Many to One)';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_aStarCost(Many to Many)';

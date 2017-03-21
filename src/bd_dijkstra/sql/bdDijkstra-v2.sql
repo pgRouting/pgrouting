@@ -45,7 +45,7 @@ BEGIN
     END IF;
 
     RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
-    FROM _pgr_bdDijkstra(sql, start_vid, end_vid, directed, false);
+    FROM _pgr_bdDijkstra(sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
   END
 $BODY$
 LANGUAGE plpgsql VOLATILE

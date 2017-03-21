@@ -37,28 +37,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 extern "C" {
 #endif
 
-    /*********************************************************
-      edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN DEFAULT true,
-    only_cost BOOLEAN DEFAULT false,
-     ********************************************************/
 
+    void do_pgr_bdDijkstra(
+            pgr_edge_t  *data_edges,
+            size_t total_edges,
+            int64_t  *start_vidsArr,
+            size_t size_start_vidsArr,
+            int64_t  *end_vidsArr,
+            size_t size_end_vidsArr,
 
-    void
-        do_pgr_bdDijkstra(
-                pgr_edge_t  *data_edges,
-                size_t total_edges,
-                int64_t start_vid,
-                int64_t end_vid,
-                bool directed,
-                bool only_cost,
-                General_path_element_t **return_tuples,
-                size_t *return_count,
-                char ** log_msg,
-                char ** notice_msg,
-                char ** err_msg);
+            bool directed,
+            bool only_cost,
+
+            General_path_element_t **return_tuples,
+            size_t *return_count,
+            char ** log_msg,
+            char ** notice_msg,
+            char ** err_msg);
 
 
 #ifdef __cplusplus

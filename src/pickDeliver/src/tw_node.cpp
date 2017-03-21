@@ -30,16 +30,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "./../../common/src/pgr_assert.h"
 
-#include "./pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
 
 
 double
-Tw_node::travel_time_to(const Node &other) const {
-    pgassert(problem->speed() > 0);
-    return distance(other) / problem->speed();
+Tw_node::travel_time_to(const Node &other, double speed) const {
+    pgassert(speed != 0);
+    return distance(other) / speed;
 }
 
 
@@ -47,22 +46,22 @@ Tw_node::travel_time_to(const Node &other) const {
  * I -> J = (*this)
  */
 double
-Tw_node::arrival_j_opens_i(const Tw_node &I) const {
+Tw_node::arrival_j_opens_i(const Tw_node &I, double speed) const {
     if (m_type == kStart) return (std::numeric_limits<double>::max)();
-    return I.opens() + I.service_time() + I.travel_time_to(*this);
+    return I.opens() + I.service_time() + I.travel_time_to(*this, speed);
 }
 
 double
-Tw_node::arrival_j_closes_i(const Tw_node &I) const {
+Tw_node::arrival_j_closes_i(const Tw_node &I, double speed) const {
     if (m_type == kStart) return  (std::numeric_limits<double>::max)();
-    return I.closes() + I.service_time() + I.travel_time_to(*this);
+    return I.closes() + I.service_time() + I.travel_time_to(*this, speed);
 }
 
 
 
 
 bool
-Tw_node::is_compatible_IJ(const Tw_node &I) const {
+Tw_node::is_compatible_IJ(const Tw_node &I, double speed) const {
     /*
      * I /->  kStart
      */
@@ -72,37 +71,37 @@ Tw_node::is_compatible_IJ(const Tw_node &I) const {
      */
     if (I.m_type == kEnd) return false;
 
-    return !is_late_arrival(arrival_j_opens_i(I));
+    return !is_late_arrival(arrival_j_opens_i(I, speed));
 }
 
 bool
-Tw_node::is_partially_compatible_IJ(const Tw_node &I) const {
+Tw_node::is_partially_compatible_IJ(const Tw_node &I, double speed) const {
     return
-        is_compatible_IJ(I)
-         && !is_early_arrival(arrival_j_opens_i(I))
-         && is_late_arrival(arrival_j_closes_i(I));
+        is_compatible_IJ(I, speed)
+         && !is_early_arrival(arrival_j_opens_i(I, speed))
+         && is_late_arrival(arrival_j_closes_i(I, speed));
 }
 
 bool
-Tw_node::is_tight_compatible_IJ(const Tw_node &I) const {
+Tw_node::is_tight_compatible_IJ(const Tw_node &I, double speed) const {
     return
-        is_compatible_IJ(I)
-         && !is_early_arrival(arrival_j_opens_i(I))
-         && !is_late_arrival(arrival_j_closes_i(I));
+        is_compatible_IJ(I, speed)
+         && !is_early_arrival(arrival_j_opens_i(I, speed))
+         && !is_late_arrival(arrival_j_closes_i(I, speed));
 }
 
 bool
-Tw_node::is_partially_waitTime_compatible_IJ(const Tw_node &I) const {
+Tw_node::is_partially_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
     return
-        is_compatible_IJ(I)
-         && is_early_arrival(arrival_j_opens_i(I));
+        is_compatible_IJ(I, speed)
+         && is_early_arrival(arrival_j_opens_i(I, speed));
 }
 
 bool
-Tw_node::is_waitTime_compatible_IJ(const Tw_node &I) const {
+Tw_node::is_waitTime_compatible_IJ(const Tw_node &I, double speed) const {
     return
-        is_compatible_IJ(I)
-         && is_early_arrival(arrival_j_opens_i(I));
+        is_compatible_IJ(I, speed)
+         && is_early_arrival(arrival_j_opens_i(I, speed));
 }
 
 
@@ -223,37 +222,39 @@ bool Tw_node::is_valid() const {
 
 Tw_node::Tw_node(
         size_t id,
-        Customer_t data,
-        NodeType type,
-        const Pgr_pickDeliver *p_problem) :
-    Node(id, data.id, data.x, data.y),
-    m_opens(data.Etime),
-    m_closes(data.Ltime),
-    m_service_time(data.Stime),
+        PickDeliveryOrders_t data,
+        NodeType type) :
+    Node(id, data.id, data.pick_x, data.pick_y),
+    m_opens(data.pick_open_t),
+    m_closes(data.pick_close_t),
+    m_service_time(data.pick_service_t),
     m_demand(data.demand),
-    m_type(type),
-    problem(p_problem) {
+    m_type(type)  {
+        if (m_type == kDelivery) {
+            m_point = pgrouting::Point(data.deliver_x, data.deliver_y);
+            m_opens = data.deliver_open_t;
+            m_closes = data.deliver_close_t;
+            m_service_time = data.deliver_service_t;
+            m_demand *= -1;
+        }
     }
-
 
 Tw_node::Tw_node(
         size_t id,
-        int64_t original_id,
-        double x,
-        double y,
-        double opens,
-        double closes,
-        double service_time,
-        double demand,
-        NodeType type,
-        const Pgr_pickDeliver *p_problem) :
-    Node(id, original_id, x, y),
-    m_opens(opens),
-    m_closes(closes),
-    m_service_time(service_time),
-    m_demand(demand),
-    m_type(type),
-    problem(p_problem) {
+        Vehicle_t data,
+        NodeType type) :
+    Node(id, data.id, data.start_x, data.start_y),
+    m_opens(data.start_open_t),
+    m_closes(data.start_close_t),
+    m_service_time(data.start_service_t),
+    m_demand(0),
+    m_type(type) {
+        if (m_type == kEnd) {
+            m_point = pgrouting::Point(data.end_x, data.end_y);
+            m_opens = data.end_open_t;
+            m_closes = data.end_close_t;
+            m_service_time = data.end_service_t;
+        }
     }
 
 

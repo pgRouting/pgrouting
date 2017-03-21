@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_5_0`
 * :ref:`changelog_2_4_0`
 * :ref:`changelog_2_3_2`
 * :ref:`changelog_2_3_1`
@@ -33,6 +34,60 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_2_5_0:
+
+Changes for 2.5.0
+-------------------------------------------------------------------------------
+
+To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
+
+.. rubric:: Breaking change on:
+
+* pgr_edgeDisjointPaths:
+
+  * Added path_id, cost and agg_cost columns on the result
+  * Parameter names changed
+  * The many version results are the union of the one to one version
+
+.. rubric:: New Signatures:
+
+* pgr_bdAstar(one to one)
+
+.. rubric:: New Proposed functions
+
+* pgr_bdAstar(one to many)
+* pgr_bdAstar(many to one)
+* pgr_bdAstar(many to many)
+* pgr_bdAstarCost(one to one)
+* pgr_bdAstarCost(one to many)
+* pgr_bdAstarCost(many to one)
+* pgr_bdAstarCost(many to many)
+* pgr_bdAstarCostMatrix
+* pgr_bdDijkstra(one to many)
+* pgr_bdDijkstra(many to one)
+* pgr_bdDijkstra(many to many)
+* pgr_bdDijkstraCost(one to one)
+* pgr_bdDijkstraCost(one to many)
+* pgr_bdDijkstraCost(many to one)
+* pgr_bdDijkstraCost(many to many)
+* pgr_bdDijkstraCostMatrix
+
+.. rubric:: Deprecated Signatures
+
+* pgr_bdastar - use pgr_bdAstar instead
+
+.. rubric:: Renamed Functions
+
+* pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
+* pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
+* pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
+* pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
+
+.. rubric:: Deprecated function
+
+* pgr_pointToEdgeNode
+
 
 .. _changelog_2_4_0:
 

@@ -93,7 +93,7 @@ set(PgRouting_SOURCE_NAMES
     # Code needs to be rewritten
     #----------------------
     "alpha_shape"
-    "bd_astar"
+    "bdAstar"    # 2.5
     "bdDijkstra" # 2.4
     "trsp"
 
@@ -138,6 +138,7 @@ set(PgRouting_SQL_DIRECTORIES
     "apsp_warshall" # 2.0 wrap of pgr_warshall
     "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
     "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
+    "bd_astar"      # 2.5  wrap of pgr_bdAstar
     )
 
 #---------------------------------------------
@@ -211,7 +212,7 @@ endif()
 #-----------------------------------------------------------------------------
 
 set(PGROUTING_VERSION_MAJOR "2")
-set(PGROUTING_VERSION_MINOR "4")
+set(PGROUTING_VERSION_MINOR "5")
 set(PGROUTING_VERSION_PATCH "0")
 set(PGROUTING_VERSION_DEV "-dev")
 
@@ -491,8 +492,9 @@ if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math ")
 endif()
 
-set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -pedantic -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic  -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+# TODO use -Werror when TRSP gets rewritten
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -pedantic -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

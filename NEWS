@@ -1,4 +1,43 @@
 
+Changes for 2.5.0
+-------------------------------------------------------------------------------
+
+* Breaking change on:
+  * pgr_edgeDisjointPaths:
+    * Added path_id, cost and agg_cost columns on the result
+    * Parameter names changed
+    * The many version results are the union of the one to one version
+* New Signatures:
+  * pgr_bdAstar(one to one)
+* New Proposed functions
+  * pgr_bdAstar(one to many)
+  * pgr_bdAstar(many to one)
+  * pgr_bdAstar(many to many)
+  * pgr_bdAstarCost(one to one)
+  * pgr_bdAstarCost(one to many)
+  * pgr_bdAstarCost(many to one)
+  * pgr_bdAstarCost(many to many)
+  * pgr_bdAstarCostMatrix
+  * pgr_bdDijkstra(one to many)
+  * pgr_bdDijkstra(many to one)
+  * pgr_bdDijkstra(many to many)
+  * pgr_bdDijkstraCost(one to one)
+  * pgr_bdDijkstraCost(one to many)
+  * pgr_bdDijkstraCost(many to one)
+  * pgr_bdDijkstraCost(many to many)
+  * pgr_bdDijkstraCostMatrix
+  * pgr_pushRelabel
+  * pgr_edmondsKarp
+  * pgr_boykovKolmogorov
+  * pgr_maxCardinalityMatch
+* Deprecated Signatures
+  * pgr_bdastar - use pgr_bdAstar instead
+* Deprecated Functions
+  * pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
+  * pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
+  * pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
+  * pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
+
 Changes for 2.4.0
 -------------------------------------------------------------------------------
 
@@ -196,7 +235,7 @@ Changes for 2.1.0
    - encapsulates postgreSQL related functions
    - encapsulates Boost.Graph graphs
 
-     - Directed Boost.Graph 
+     - Directed Boost.Graph
      - Undirected Boost.graph
 
    - allow any-integer in the id's
@@ -222,8 +261,8 @@ Changes for 2.0.0
 * Improved build process for Windows
 * Automated testing on Linux and Windows platforms trigger by every commit
 * Modular library design
-* Compatibility with PostgreSQL 9.1 or newer 
-* Compatibility with PostGIS 2.0 or newer 
+* Compatibility with PostgreSQL 9.1 or newer
+* Compatibility with PostGIS 2.0 or newer
 * Installs as PostgreSQL EXTENSION
 * Return types refactored and unified
 * Support for table SCHEMA in function parameters

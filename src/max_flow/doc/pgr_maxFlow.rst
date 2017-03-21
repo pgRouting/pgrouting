@@ -9,19 +9,14 @@
 
 .. _pgr_maxFlow:
 
-pgr_maxFlow Proposed
+pgr_maxFlow - Proposed
 ============================================
 
 
-Name
-----
+Synopsis
+-------------------------------------------------------------------------------
 
-``pgr_maxFlow`` — Calculates the maximum flow in a directed graph given source(s) and sink(s).
-
-
-.. include:: proposed.rst
-   :start-after: begin-warn-expr
-   :end-before: end-warn-expr
+``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm.
 
 
 .. figure:: images/boost-inside.jpeg
@@ -29,37 +24,36 @@ Name
 
    Boost Graph Inside
 
+.. Rubric:: Availability: 2.4.0
 
-Synopsis
--------------------------------------------------------------------------------
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
-Calculates the maximum flow in a directed graph from a source node to a sink node.
 
-Characteristics:
-----------------
+.. rubric:: Characteristics
 
-The main characterics are:
-  - Calculates the flow/residual capacity for each edge. In the output, edges with zero flow are omitted.
-  - The maximum flow through the graph can be calculated by aggregation on source/sink.
-  - Edges must be weighted with non-negative capacities.
-  - Returns 0 if source and sink are the same.
-  - Allows multiple sources and sinks.
-  - Running time: :math:`O( V ^ 3)`
+- The graph is **directed**.
+- When the maximum flow is 0 then there is no flow and **0** is returned.
+
+  - There is no flow when a **source** is the same as a **target**.
+      
+- Any duplicated value in the source(s) or target(s) are ignored.
+- Uses the :ref:`pgr_pushRelabel <pgr_pushRelabel>` algorithm.
+
+* Running time: :math:`O( V ^ 3)`
 
 Signature Summary
 -----------------
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, source_vertex,  sink_vertex)
-    pgr_maxFlow(edges_sql, source_vertices,  sink_vertex)
-    pgr_maxFlow(edges_sql, source_vertex,  sink_vertices)
-    pgr_maxFlow(edges_sql, source_vertices,  sink_vertices)
+    pgr_maxFlow(edges_sql, source,  target)
+    pgr_maxFlow(edges_sql, sources,  target)
+    pgr_maxFlow(edges_sql, source,  targets)
+    pgr_maxFlow(edges_sql, sources,  targets)
     RETURNS BIGINT
 
-
-Signatures
------------------------
 
 .. index::
     single: maxFlow(One to One) - Proposed
@@ -67,11 +61,11 @@ Signatures
 One to One
 .....................................................................
 
-Calculates the maximum flow from one source vertex to one sink vertex in a directed graph.
+Calculates the maximum flow from the `source` to the `target`.
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, source_vertex,  sink_vertex)
+    pgr_maxFlow(edges_sql, source,  target)
     RETURNS BIGINT
 
 :Example:
@@ -87,11 +81,11 @@ Calculates the maximum flow from one source vertex to one sink vertex in a direc
 One to Many
 .....................................................................
 
-Ccalculates the maximum flow from one source vertex to many sink vertices in a directed graph.
+Calculates the maximum flow from the `source` to all of the `targets`.
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, source_vertex,  sink_vertices)
+    pgr_maxFlow(edges_sql, source,  targets)
     RETURNS BIGINT
 
 :Example:
@@ -107,11 +101,11 @@ Ccalculates the maximum flow from one source vertex to many sink vertices in a d
 Many to One
 .....................................................................
 
-Calculates the maximum flow from many source vertices to one sink vertex in a directed graph.
+Calculates the maximum flow from all the `sources` to the `target`.
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, source_vertices,  sink_vertex)
+    pgr_maxFlow(edges_sql, sources,  target)
     RETURNS BIGINT
 
 :Example:
@@ -127,11 +121,11 @@ Calculates the maximum flow from many source vertices to one sink vertex in a di
 Many to Many
 .....................................................................
 
-Calculates the maximum flow from many sources to many sinks in a directed graph.
+Calculates the maximum flow from all of the `sources` to all of the `targets`.
 
 .. code-block:: none
 
-    pgr_maxFlow(edges_sql, source_vertices,  sink_vertices)
+    pgr_maxFlow(edges_sql, sources,  targets)
     RETURNS BIGINT
 
 :Example:
@@ -144,37 +138,38 @@ Description of the Signatures
 --------------------------------------------------------
 
 
-Description of the SQL query
+.. include:: pgRouting-concepts.rst
+    :start-after: flow_edges_sql_start
+    :end-before: flow_edges_sql_end
+
+
+.. pgr_flow_parameters_start
+
+Description of the Parameters of the Flow Signatures
+...............................................................................
+
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**edges_sql**  ``TEXT``                    The edges SQL query as described above.
+**source**     ``BIGINT``                  Identifier of the starting vertex of the flow.
+**sources**    ``ARRAY[BIGINT]``           Array of identifiers of the starting vertices of the flow.
+**target**     ``BIGINT``                  Identifier of the ending vertex of the flow.
+**targets**    ``ARRAY[BIGINT]``           Array of identifiers of the ending vertices of the flow.
+============== ================== ======== =================================================
+
+.. pgr_flow_parameters_end
+
+
+
+Description of the return value
 .....................................................................
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
-
-====================  ===================   =================================================
-Column                Type                  Description
-====================  ===================   =================================================
-**id**                ``ANY-INTEGER``       Identifier of the edge.
-**source**            ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**            ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**capacity**          ``ANY-INTEGER``       Capacity of the edge `(source, target)`. Must be positive.
-**reverse_capacity**  ``ANY-INTEGER``       (optional) Weight of the edge `(target, source)`. Must be positive or null.
-====================  ===================   =================================================
-
-Where:
-
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-
-
-Description of the parameters of the signatures
-.....................................................................
-
-================= ====================== =================================================
-Column            Type                   Description
-================= ====================== =================================================
-**edges_sql**     ``TEXT``               SQL query as described above.
-**source_vertex** ``BIGINT``             Identifier of the source vertex(or vertices).
-**sink_vertex**   ``BIGINT``             Identifier of the sink vertex(or vertices).
-================= ====================== =================================================
-
+====================== =================================================
+Type                   Description
+====================== =================================================
+``BIGINT``             Maximum flow possible from the source(s) to the target(s)
+====================== =================================================
 
 See Also
 --------

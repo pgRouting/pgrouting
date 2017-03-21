@@ -15,13 +15,13 @@ Flow - Family of functions
 .. index from here
 
 * :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
-* :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
-* :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
-* :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm with details of flow on edges.
+* :ref:`pgr_BoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
+* :ref:`pgr_EdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
+* :ref:`pgr_PushRelabel` - Push and relabel algorithm with details of flow on edges.
 * Applications
 
   * :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
-  * :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching in a graph.
+  * :ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph.
 
 .. index to here
 
@@ -34,15 +34,47 @@ Flow - Family of functions
     :hidden:
 
     pgr_maxFlow
-    pgr_maxFlowBoykovKolmogorov
-    pgr_maxFlowEdmondsKarp
-    pgr_maxFlowPushRelabel
+    pgr_pushRelabel
+    pgr_edmondsKarp
+    pgr_boykovKolmogorov
+    pgr_maxCardinalityMatch
     pgr_edgeDisjointPaths
-    pgr_maximumCardinalityMatching
+
+
+Flow Functions General Information
+-----------------------------------
+
+.. characteristics_start
+
+.. rubric:: Characteristics
+
+
+- The graph is **directed**.
+- Process is done only on edges with positive capacities.
+- When the maximum flow is 0 then there is no flow and **EMPTY SET** is returned.
+
+  - There is no flow when a **source** is the same as a **target**.
+
+- Any duplicated value in the source(s) or target(s) are ignored.
+- Calculates the flow/residual capacity for each edge. In the output
+
+  - Edges with zero flow are omitted.
+
+- Creates a **super source** and edges to all the source(s), and a **super target** and the edges from all the targets(s).
+- The maximum flow through the graph is guaranteed to be the value returned by :ref:`pgr_maxFlow <pgr_maxFlow>` when executed with the same parameters and can be calculated:
+
+  - By aggregation of the outgoing flow from the sources
+  - By aggregation of the incoming flow to the targets
+
+.. characteristics_end
+
+
+:ref:`pgr_maxFlow <pgr_maxFlow>`  is the  maximum Flow and that maximum is guaranteed to be the same on the functions :ref:`pgr_pushRelabel <pgr_pushRelabel>`, :ref:`pgr_edmondsKarp <pgr_edmondsKarp>`, :ref:`pgr_boykovKolmogorov <pgr_boykovKolmogorov>`, but the actual flow through each edge may vary.
+
 
 
 Problem definition
-==================
+------------------------
 
 A flow network is a directed graph where each edge has a capacity and a flow.
 The flow through an edge must not exceed the capacity of the edge.
@@ -86,7 +118,7 @@ Then:
 
      :math:`\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}`
 
-where:
+Where:
 
   :math:`\boldsymbol{\Phi}` is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:
 

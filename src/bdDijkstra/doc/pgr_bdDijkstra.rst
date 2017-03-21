@@ -22,6 +22,7 @@ pgr_bdDijkstra
 .. rubric:: Availability:
 
 * pgr_bdDijkstra(one to one) 2.0.0, Signature changed 2.4.0
+* pgr_bdDijkstra(other signatures) 2.5.0
 
 Signature Summary
 -----------------
@@ -32,6 +33,20 @@ Signature Summary
     pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
     OR EMPTY SET
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
+.. code-block:: none
+
+    pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
+    pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
+    pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
+
+    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+    OR EMPTY SET
+
 
 
 
@@ -80,6 +95,92 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
    :end-before: -- q3
 
 
+.. index::
+    single: bdDijkstra(One to Many) - Proposed
+
+pgr_bdDijkstra One to many
+.......................................
+
+.. code-block:: none
+
+    pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform a one to one `pgr_dijkstra`
+where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
+
+  - The result is equivalent to the union of the results of the one to one `pgr_dijkstra`.
+  - The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+   :start-after: -- q3
+   :end-before: -- q4
+
+.. index::
+    single: bdDijkstra(Many to One) - Proposed
+
+
+pgr_bdDijkstra Many to One
+.......................................
+
+.. code-block:: none
+
+    pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to one `pgr_dijkstra`
+where the ending vertex is fixed.
+
+  - The result is the union of the results of the one to one `pgr_dijkstra`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+
+.. index::
+    single: bdDijkstra(Many to Many) - Proposed
+
+pgr_bdDijkstra Many to Many
+.......................................
+
+.. code-block:: none
+
+    pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
+  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
+for all ``start_vids``.
+
+  - The result is the union of the results of the one to one `pgr_dijkstra`.
+  - The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+   :start-after: -- q5
+   :end-before: -- q6
+
+
 
 Description of the Signatures
 -------------------------------------------------------------------------------
@@ -103,6 +204,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * The queries use the :ref:`sampledata` network.
+* :ref:`bdDijkstra`
 * http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
 
