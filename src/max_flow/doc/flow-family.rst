@@ -15,13 +15,13 @@ Flow - Family of functions
 .. index from here
 
 * :ref:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm.
-* :ref:`pgr_maxFlowBoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
-* :ref:`pgr_maxFlowEdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
-* :ref:`pgr_maxFlowPushRelabel` - Push and relabel algorithm with details of flow on edges.
+* :ref:`pgr_BoykovKolmogorov` - Boykov and Kolmogorov with details of flow on edges.
+* :ref:`pgr_EdmondsKarp` - Edmonds and Karp algorithm with details of flow on edges.
+* :ref:`pgr_PushRelabel` - Push and relabel algorithm with details of flow on edges.
 * Applications
 
   * :ref:`pgr_edgeDisjointPaths` - Calculates edge disjoint paths between two groups of vertices.
-  * :ref:`pgr_maximumCardinalityMatching` - Calculates a maximum cardinality matching in a graph.
+  * :ref:`pgr_maxCardinalityMatch` - Calculates a maximum cardinality matching in a graph.
 
 .. index to here
 

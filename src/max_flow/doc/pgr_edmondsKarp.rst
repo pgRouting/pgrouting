@@ -20,7 +20,7 @@ Synopsis
 ``pgr_edmondsKarp`` — Calculates the flow on the graph edges that maximizes the flow from the sources to the targets using Push Relabel Algorithm.
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
 
    Boost Graph Inside
@@ -30,12 +30,12 @@ Synopsis
 * Renamed 2.5.0, Previous name pgr_maxFlowEdmondsKarp
 * New in 2.3.0
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
-.. include::  ./maxFlow.rst
+.. include::  flow-family.rst
     :start-after: characteristics_start
     :end-before: characteristics_end
 
@@ -141,7 +141,7 @@ Calculates the flow on the graph edges that maximizes the flow from all of the `
 Description of the Signatures
 --------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: flow_edges_sql_start
     :end-before: flow_edges_sql_end
 
@@ -151,7 +151,7 @@ Description of the Signatures
     :end-before: pgr_flow_parameters_end
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: result_flow_start
     :end-before: result_flow_end
 

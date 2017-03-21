@@ -30,7 +30,7 @@ Cost Matrix - Category
     :hidden:
 
     pgr_aStarCostMatrix
-    pgr_bdAStarCostMatrix
+    pgr_bdAstarCostMatrix
     pgr_bdDijkstraCostMatrix
     pgr_dijkstraCostMatrix
     pgr_withPointsCostMatrix

@@ -12,16 +12,20 @@
 Bidirectional Dijkstra - Family of functions
 ===============================================================================
 
+.. index from here
+
   - :ref:`pgr_bdDijkstra` - Dijkstra's algorithm for the shortest paths.
   - :ref:`pgr_bdDijkstraCost` - Dijkstra's algorithm for the shortest paths.
   - :ref:`pgr_bdDijkstraCostMatrix` - Dijkstra's algorithm for the shortest paths.
 
+.. index to here
+
 .. toctree::
     :hidden:
 
-    ./pgr_bdDijkstra
-    ./pgr_bdDijkstraCost
-    ./../../costMatrix/doc/pgr_bdDijkstraCostMatrix
+    pgr_bdDijkstra
+    pgr_bdDijkstraCost
+    pgr_bdDijkstraCostMatrix
 
 
 

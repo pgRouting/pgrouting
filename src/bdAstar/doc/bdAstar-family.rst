@@ -12,16 +12,20 @@
 Bidirectional A* - Family of functions
 ===============================================================================
 
+.. index from here
+
   - :ref:`pgr_bdAstar` - A* algorithm for the shortest paths.
   - :ref:`pgr_bdAstarCost` - A* algorithm for the shortest path's cost.
   - :ref:`pgr_bdAstarCostMatrix` - A* algorithm for obtaining a :ref:`costMatrix`.
 
+.. index to here
+
 .. toctree::
     :hidden:
 
-    ./pgr_bdAstar
-    ./pgr_bdAstarCost
-    ./../../costMatrix/doc/pgr_bdAstarCostMatrix
+    pgr_bdAstar
+    pgr_bdAstarCost
+    pgr_bdAstarCostMatrix
 
 
 
@@ -58,7 +62,7 @@ The main Characteristics are:
 Description of the Signatures
 --------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
