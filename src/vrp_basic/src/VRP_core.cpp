@@ -21,11 +21,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#if defined(__MINGW32__) ||  defined(_MSC_VER)
+#ifdef __MINGW32__
 #include <winsock2.h>
 #include <windows.h>
 #endif
 
+
+#include "../../common/src/pgr_alloc.hpp"
 #include "VRP.h"
 #include "VRP_Solver.h"
 #include <vector>
@@ -176,7 +178,7 @@ int find_vrp_solution(vrp_vehicles_t *vehicles, size_t vehicle_count,
         for (size_t i = 0; i < totalRoute; i++) {
             totRows += (solution.getTour(static_cast<int>(i)).getServedOrderCount() + 2);
         }
-        *results = (vrp_result_element_t *) malloc(totRows * sizeof(vrp_result_element_t));
+        *results = pgr_alloc(totRows, *results);
         *result_count = totRows;
         int cnt = 0;
         for (size_t i = 0; i < totalRoute; i++) {

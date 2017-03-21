@@ -23,13 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 
-#include <postgres.h>
-#include "executor/spi.h"
-
+#include "./postgres_connection.h"
 #include "./debug_macro.h"
 #include "./pgr_types.h"
 #include "./time_msg.h"
-#include "./postgres_connection.h"
 #include "./get_check_data.h"
 #include "./restrictions_input.h"
 
@@ -142,6 +139,8 @@ pgr_get_restriction_data(
             moredata = FALSE;
         }
     }
+
+    SPI_cursor_close(SPIportal);
 
     if (total_tuples == 0) {
         (*total_restrictions) = 0;

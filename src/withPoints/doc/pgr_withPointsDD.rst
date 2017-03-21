@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -19,20 +19,22 @@ Name
 ``pgr_withPointsDD`` - Returns the driving distance from a starting point.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.2.0
+
 Synopsis
 -------------------------------------------------------------------------------
 
-Modify the graph to include points and 
+Modify the graph to include points and
 using Dijkstra algorithm, extracts all the nodes and points that have costs less
 than or equal to the value ``distance`` from the starting point.
 The edges extracted will conform the corresponding spanning tree.
@@ -119,11 +121,11 @@ Description of the Signatures
     description of the sql queries
 
 
-.. include:: ../../common/src/edges_input.h
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../../common/src/points_input.h
+.. include:: pgRouting-concepts.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 
@@ -147,7 +149,7 @@ Parameter        Type              Description
 
 **details**      ``BOOLEAN``       (optional). When ``true`` the results will include the driving distance to the points with in the ``distance``.
                                    Default is ``false`` which ignores other points of the points_sql.
-**equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.                                   
+**equicost**     ``BOOLEAN``       (optional). When ``true`` the nodes will only appear in the closest start_v list. Default is ``false`` which resembles several calls using the single starting point signatures. Tie brakes are arbitrary.
 ================ ================= =================================================
 
 

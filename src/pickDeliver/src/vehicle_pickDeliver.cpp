@@ -22,6 +22,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
+
+#include "./vehicle_pickDeliver.h"
+
 #include <iostream>
 #include <deque>
 #include <set>
@@ -33,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_assert.h"
 #include "./order.h"
 #include "./vehicle.h"
-#include "./vehicle_pickDeliver.h"
 #include "./pgr_pickDeliver.h"
 
 
@@ -223,7 +225,9 @@ Vehicle_pickDeliver::push_back(const Order &order) {
     evaluate(m_path.size() - 3);
 
     pgassert(has_order(order));
+#if 0
     pgassert(!has_cv());
+#endif
     invariant();
 }
 
@@ -238,7 +242,9 @@ Vehicle_pickDeliver::push_front(const Order &order) {
     evaluate(1);
 
     pgassert(has_order(order));
+#if 0
     pgassert(!has_cv());
+#endif
     invariant();
 }
 

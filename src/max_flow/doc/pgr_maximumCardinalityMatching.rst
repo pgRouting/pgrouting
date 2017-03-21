@@ -19,12 +19,12 @@ Name
 ``pgr_maximumCardinalityMatching`` — Calculates a maximum cardinality matching in a graph.
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
 
    Boost Graph Inside
@@ -60,7 +60,7 @@ Signature Summary
     pgr_MaximumCardinalityMatching(edges_sql)
     pgr_MaximumCardinalityMatching(edges_sql, directed)
 
-    RETURNS SET OF (id, edge_id, source, target)
+    RETURNS SET OF (seq, edge_id, source, target)
         OR EMPTY SET
 
 
@@ -78,7 +78,7 @@ Minimal signature
 .. code-block:: none
 
     pgr_MaximumCardinalityMatching(edges_sql)
-    RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
+    RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
 The minimal signature calculates one possible maximum cardinality matching on a `directed` graph.
 
@@ -97,7 +97,7 @@ Complete signature
 .. code-block:: none
 
     pgr_MaximumCardinalityMatching(edges_sql, directed)
-    RETURNS SET OF (id, edge_id, source, target) OR EMPTY SET
+    RETURNS SET OF (seq, edge_id, source, target) OR EMPTY SET
 
 
 The complete signature calculates one possible maximum cardinality matching.
@@ -159,7 +159,7 @@ Column                 Type                  Description
 See Also
 --------
 
-* :ref:`maxFlowApplications`
+* :ref:`maxFlow`
 * http://www.boost.org/libs/graph/doc/maximum_matching.html
 * https://en.wikipedia.org/wiki/Matching_%28graph_theory%29
 * https://en.wikipedia.org/wiki/Ackermann_function

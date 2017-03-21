@@ -15,11 +15,15 @@ pgr_dijkstra
 ``pgr_dijkstra`` — Returns the shortest path(s) using Dijkstra algorithm.
 In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
 
+.. rubric:: Availability
+
+* pgr_dijkstra(one to one) 2.0.0, signature change 2.1.0
+* pgr_dijkstra(other signatures) 2.1.0
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -84,7 +88,7 @@ Minimal signature
     pgr_dijkstra(TEXT edges_sql, BIGINT start_vid, BIGINT end_vid)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
-The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
+The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``.
 
 :Example:
 
@@ -210,32 +214,34 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../sql/dijkstra.sql
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
 
+.. pgr_dijkstra_parameters_start
 
-Description of the return values
+Description of the parameters of the signatures
 ...............................................................................
 
-Returns set of ``(seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)``
+============== ================== ======== =================================================
+Column         Type               Default     Description
+============== ================== ======== =================================================
+**sql**        ``TEXT``                    SQL query as described above.
+**start_vid**  ``BIGINT``                  Identifier of the starting vertex of the path.
+**start_vids** ``ARRAY[BIGINT]``           Array of identifiers of starting vertices.
+**end_vid**    ``BIGINT``                  Identifier of the ending vertex of the path.
+**end_vids**   ``ARRAY[BIGINT]``           Array of identifiers of ending vertices.
+**directed**   ``BOOLEAN``        ``true`` - When ``true`` Graph is considered `Directed`
+                                           - When ``false`` the graph is considered as `Undirected`.
+============== ================== ======== =================================================
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
-**start_vid**  ``BIGINT`` Identifier of the starting vertex. Used when multiple starting vetrices are in the query.
-**end_vid**    ``BIGINT`` Identifier of the ending vertex. Used when multiple ending vertices are in the query.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
-============== ========== =================================================
+.. pgr_dijkstra_parameters_end
+
+
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_start
+    :end-before: return_path_end
 
 
 Additional Examples
@@ -312,11 +318,6 @@ The examples in this section use the following:
    :start-after: -- q17
    :end-before: -- q18
 
-
-.. rubric:: History
-
-* Added functionality in version 2.1.0
-* Renamed in version 2.0.0
 
 
 See Also

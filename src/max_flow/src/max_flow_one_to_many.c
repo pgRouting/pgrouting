@@ -27,109 +27,119 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-/*
- * Uncomment when needed
- */
-
-// #define DEBUG
-
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./max_flow_one_to_many_driver.h"
+#include "./max_flow_driver.h"
 
 PGDLLEXPORT Datum
 max_flow_one_to_many(PG_FUNCTION_ARGS);
 
 /******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
-    char *edges_sql,
-    int64_t source_vertex,
-    int64_t *sink_vertices, size_t size_sink_verticesArr,
-    char *algorithm,
-    pgr_flow_t **result_tuples,
-    size_t *result_count) {
-    pgr_SPI_connect();
-
+        char *edges_sql,
+        int64_t source_vertex,
+        ArrayType *ends,
+        char *algorithm,
+        bool only_flow,
+        pgr_flow_t **result_tuples,
+        size_t *result_count) {
     if (!(strcmp(algorithm, "push_relabel") == 0
-        || strcmp(algorithm, "edmonds_karp") == 0
-        || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
+                || strcmp(algorithm, "edmonds_karp") == 0
+                || strcmp(algorithm, "boykov_kolmogorov") == 0)) {
         elog(ERROR, "Unknown algorithm");
     }
 
-    PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
+    pgr_SPI_connect();
 
-    size_t total_tuples = 0;
+    size_t size_sink_verticesArr = 0;
+    int64_t* sink_vertices =
+        pgr_get_bigIntArray(&size_sink_verticesArr, ends);
+
+
 
     /* NOTE:
      * For flow, cost and reverse_cost are really capacity and reverse_capacity
      */
+    size_t total_tuples = 0;
+    pgr_edge_t *edges = NULL;
     pgr_get_flow_edges(edges_sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+        if (sink_vertices) pfree(sink_vertices);
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
     PGR_DBG("Starting processing");
     clock_t start_t = clock();
-    char *err_msg = NULL;
-    do_pgr_max_flow_one_to_many(
-        edges,
-        total_tuples,
-        source_vertex,
-        sink_vertices, size_sink_verticesArr,
-        algorithm,
-        result_tuples,
-        result_count,
-        &err_msg);
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
 
-    time_msg("processing max flow", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+    do_pgr_max_flow(
+            edges, total_tuples,
+            &source_vertex, 1,
+            sink_vertices, size_sink_verticesArr,
+            algorithm,
+            only_flow,
 
-    free(err_msg);
-    pfree(edges);
+            result_tuples, result_count,
+
+            &log_msg,
+            &notice_msg,
+            &err_msg);
+
+    if (only_flow) {
+        time_msg("pgr_maxFlow(many to many)",
+                start_t, clock());
+    } else if (strcmp(algorithm, "push_relabel") == 0) {
+        time_msg("pgr_maxFlowPushRelabel(one to many)",
+                start_t, clock());
+    } else if (strcmp(algorithm, "edmonds_karp") == 0) {
+        time_msg("pgr_maxFlowEdmondsKarp(one to many)",
+                start_t, clock());
+    } else {
+        time_msg("pgr_maxFlowBoykovKolmogorov(one to many)",
+                start_t, clock());
+    }
+
+
+    if (edges) pfree(edges);
+    if (sink_vertices) pfree(sink_vertices);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PG_FUNCTION_INFO_V1(max_flow_one_to_many);
 PGDLLEXPORT Datum
 max_flow_one_to_many(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
-    uint32_t call_cntr;
-    uint32_t max_calls;
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
     pgr_flow_t *result_tuples = 0;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -139,37 +149,30 @@ max_flow_one_to_many(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
-
-        int64_t *sink_vertices;
-        size_t size_sink_verticesArr;
-        sink_vertices = (int64_t *)
-            pgr_get_bigIntArray(&size_sink_verticesArr,
-                                PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("sink_verticesArr size %ld ", size_sink_verticesArr);
-
-        PGR_DBG("Calling process");
         process(
-            pgr_text2char(PG_GETARG_TEXT_P(0)),
-            PG_GETARG_INT64(1),
-            sink_vertices, size_sink_verticesArr,
-            pgr_text2char(PG_GETARG_TEXT_P(3)),
-            &result_tuples,
-            &result_count);
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_INT64(1),
+                PG_GETARG_ARRAYTYPE_P(2),
+                text_to_cstring(PG_GETARG_TEXT_P(3)),
+                PG_GETARG_BOOL(4),
+                &result_tuples,
+                &result_count);
 
-        free(sink_vertices);
-        /*                                                                    */
         /**********************************************************************/
 
-        funcctx->max_calls = (uint32_t) result_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-            != TYPEFUNC_COMPOSITE) {
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                        errmsg("function returning record called in context "
-                                   "that cannot accept type record")));
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -177,19 +180,18 @@ max_flow_one_to_many(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (pgr_flow_t *) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
         Datum result;
         Datum *values;
         bool *nulls;
+        size_t call_cntr = funcctx->call_cntr;
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
+
         values = palloc(6 * sizeof(Datum));
         nulls = palloc(6 * sizeof(bool));
 
@@ -198,22 +200,19 @@ max_flow_one_to_many(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
         values[0] = Int32GetDatum(call_cntr + 1);
         values[1] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[2] = Int64GetDatum(result_tuples[call_cntr].source);
         values[3] = Int64GetDatum(result_tuples[call_cntr].target);
         values[4] = Int64GetDatum(result_tuples[call_cntr].flow);
         values[5] = Int64GetDatum(result_tuples[call_cntr].residual_capacity);
+
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
-
         SRF_RETURN_DONE(funcctx);
     }
 }

@@ -28,103 +28,108 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-/*
-   Uncomment when needed
-   */
-
-// #define DEBUG
-
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
 #include "./many_to_many_dijkstra_driver.h"
 
 PGDLLEXPORT Datum many_to_many_dijkstra(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
 
-
-/******************************************************************************/
-/*                          MODIFY AS NEEDED                                  */
 static
 void
 process(
         char* edges_sql,
-        int64_t *start_vidsArr, size_t size_start_vidsArr,
-        int64_t *end_vidsArr, size_t size_end_vidsArr,
+        ArrayType *starts,
+        ArrayType *ends,
         bool directed,
         bool only_cost,
         General_path_element_t **result_tuples,
         size_t *result_count) {
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
-    pgr_edge_t *edges = NULL;
-    size_t total_tuples = 0;
-    pgr_get_edges(edges_sql, &edges, &total_tuples);
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
 
-    if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
+
+    pgr_edge_t *edges = NULL;
+    size_t total_edges = 0;
+    pgr_get_edges(edges_sql, &edges, &total_edges);
+
+
+    if (total_edges == 0) {
+        if (end_vidsArr) pfree(end_vidsArr);
+        if (start_vidsArr) pfree(start_vidsArr);
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
-    PGR_DBG("Starting processing");
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
-
-    char *err_msg = NULL;
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
     do_pgr_many_to_many_dijkstra(
-            edges,
-            total_tuples,
-            start_vidsArr,
-            size_start_vidsArr,
-            end_vidsArr,
-            size_end_vidsArr,
+            edges, total_edges,
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
+
             directed,
             only_cost,
+            true,  // normal
+
             result_tuples,
             result_count,
-            &err_msg);
-    time_msg(" processing Dijkstra many to many", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
 
-    free(err_msg);
-    pfree(edges);
+            &log_msg,
+            &notice_msg,
+            &err_msg);
+
+    if (only_cost) {
+        time_msg("processing pgr_dijkstraCost(many to many)", start_t, clock());
+    } else {
+        time_msg("processing pgr_dijkstra(many to many)", start_t, clock());
+    }
+
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+    if (start_vidsArr) pfree(start_vidsArr);
+    if (end_vidsArr) pfree(end_vidsArr);
     pgr_SPI_finish();
 }
-/*                                                                           */
-/*****************************************************************************/
 
-PG_FUNCTION_INFO_V1(many_to_many_dijkstra);
 PGDLLEXPORT Datum
 many_to_many_dijkstra(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t              call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
-    /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
-    General_path_element_t  *result_tuples = 0;
+    /**********************************************************************/
+    General_path_element_t  *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
-    /**************************************************************************/
+    /**********************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
@@ -132,44 +137,31 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
 
-        /*********************************************************************/
-        /*                          MODIFY AS NEEDED                         */
-        // CREATE OR REPLACE FUNCTION pgr_dijkstra(
-        // sql text,
-        // start_vids anyarray,
-        // end_vids anyarray,
-        // directed boolean default true,
+        /**********************************************************************/
+        // pgr_dijkstra(
+        // sql TEXT,
+        // start_vids ANYARRAY,
+        // end_vids ANYARRAY,
+        // directed BOOLEAN default true,
+        // only_cost BOOLEAN default false
 
-        PGR_DBG("Initializing arrays");
-        int64_t* start_vidsArr;
-        size_t size_start_vidsArr;
-        start_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_start_vidsArr, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("start_vidsArr size %ld ", size_start_vidsArr);
-
-        int64_t* end_vidsArr;
-        size_t size_end_vidsArr;
-        end_vidsArr = (int64_t*)
-            pgr_get_bigIntArray(&size_end_vidsArr, PG_GETARG_ARRAYTYPE_P(2));
-        PGR_DBG("end_vidsArr size %ld ", size_end_vidsArr);
-
-        PGR_DBG("Calling process");
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
-                start_vidsArr, size_start_vidsArr,
-                end_vidsArr, size_end_vidsArr,
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_ARRAYTYPE_P(2),
                 PG_GETARG_BOOL(3),
                 PG_GETARG_BOOL(4),
                 &result_tuples,
                 &result_count);
 
-        PGR_DBG("Cleaning arrays");
-        free(end_vidsArr);
-        free(start_vidsArr);
-        /*                                                                   */
-        /*********************************************************************/
+        /**********************************************************************/
 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -184,33 +176,32 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
 
-        /*********************************************************************/
-        /*                          MODIFY AS NEEDED                         */
-        // OUT seq integer,
+        /**********************************************************************/
+        // OUT seq INTEGER,
         // OUT path_seq INTEGER,
-        // OUT start_vid,
+        // OUT start_vid BIGINT,
         // OUT end_vid BIGINT,
-        // OUT node bigint,
-        // OUT edge bigint,
-        // OUT cost float,
-        // OUT agg_cost float)
+        // OUT node BIGINT,
+        // OUT edge BIGINT,
+        // OUT cost FLOAT,
+        // OUT agg_cost FLOAT)
 
-        values = palloc(8 * sizeof(Datum));
-        nulls = palloc(8 * sizeof(bool));
+        size_t numb = 8;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 8; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
@@ -222,15 +213,12 @@ many_to_many_dijkstra(PG_FUNCTION_ARGS) {
         values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
         values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
-        /*********************************************************************/
+        /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
-
         SRF_RETURN_DONE(funcctx);
     }
 }

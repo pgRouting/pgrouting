@@ -21,21 +21,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "./VRP.h"
+#include "./../../common/src/postgres_connection.h"
+#include "catalog/pg_type.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <search.h>
 #include <string.h>
 // #include <math.h>
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
+
+#include "./VRP.h"
 
 
 
@@ -122,6 +117,7 @@ typedef struct distance_columns {
 // float DISTANCE[MAX_TOWNS][MAX_TOWNS];
 // float x[MAX_TOWNS], y[MAX_TOWNS];
 
+#if 0
 static char *
 text2char(text *in) {
     char *out = (char*)palloc(VARSIZE(in));
@@ -130,6 +126,7 @@ text2char(text *in) {
     out[VARSIZE(in) - VARHDRSZ] = '\0';
     return out;
 }
+#endif
 
 static int
 finish(int *code) {
@@ -146,6 +143,7 @@ finish(int *code) {
 static int
 fetch_distance_columns(SPITupleTable *tuptable, distance_columns_t *distance_columns) {
     PGR_DBG("Fetching distance");
+    if (tuptable) {} 
 
     distance_columns->src_id = SPI_fnumber(SPI_tuptable->tupdesc, "src_id");
     distance_columns->dest_id = SPI_fnumber(SPI_tuptable->tupdesc, "dest_id");
@@ -171,6 +169,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
         distance_columns_t *distance_columns, vrp_cost_element_t *dist, size_t t) {
     Datum binval;
     bool isnull;
+    if (t) {}
 
     PGR_DBG("fetch_distance: src_id col:%i", distance_columns->src_id);
 
@@ -230,6 +229,7 @@ fetch_distance(HeapTuple *tuple, TupleDesc *tupdesc,
 static int
 fetch_order_columns(SPITupleTable *tuptable, order_columns_t *order_columns) {
     PGR_DBG("Fetching order");
+    if (tuptable) {} 
 
     // order_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
     order_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
@@ -340,6 +340,7 @@ fetch_order(HeapTuple *tuple, TupleDesc *tupdesc,
 static int
 fetch_vehicle_columns(SPITupleTable *tuptable, vehicle_columns_t *vehicle_columns) {
     PGR_DBG("Fetching order");
+    if (tuptable) {} 
 
     vehicle_columns->vehicle_id = SPI_fnumber(SPI_tuptable->tupdesc, "vehicle_id");
     vehicle_columns->capacity = SPI_fnumber(SPI_tuptable->tupdesc, "capacity");
@@ -359,6 +360,7 @@ fetch_vehicle(HeapTuple *tuple, TupleDesc *tupdesc,
         vehicle_columns_t *vehicle_columns, vrp_vehicles_t *vehicle, size_t t) {
     Datum binval;
     bool isnull;
+    if (t) {}
 
     PGR_DBG("inside fetch_vehicle\n");
 
@@ -729,8 +731,6 @@ PG_FUNCTION_INFO_V1(vrp);
 PGDLLEXPORT Datum
 vrp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t                  call_cntr;
-    uint32_t                  max_calls;
     TupleDesc            tuple_desc;
     vrp_result_element_t         *path;
 
@@ -758,10 +758,10 @@ vrp(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling solve_vrp ...");
 
         //  ret =
-        solve_vrp(  // text2char(PG_GETARG_TEXT_P(0)),  //  points sql
-                text2char(PG_GETARG_TEXT_P(0)),  //   orders sql
-                text2char(PG_GETARG_TEXT_P(1)),  //   vehicles sql
-                text2char(PG_GETARG_TEXT_P(2)),  //   distances query
+        solve_vrp(  // text_to_cstring(PG_GETARG_TEXT_P(0)),  //  points sql
+                text_to_cstring(PG_GETARG_TEXT_P(0)),  //   orders sql
+                text_to_cstring(PG_GETARG_TEXT_P(1)),  //   vehicles sql
+                text_to_cstring(PG_GETARG_TEXT_P(2)),  //   distances query
                 PG_GETARG_INT32(3),  //   depot id
                 &path, &path_count);
 
@@ -771,8 +771,11 @@ vrp(PG_FUNCTION_ARGS) {
         /* total number of tuples to be returned */
         // PGR_DBG("Counting tuples number\n");
 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = path_count;
+#else
         funcctx->max_calls = (uint32_t)path_count;
-
+#endif
         funcctx->user_fctx = path;
 
         /* Build a tuple descriptor for our result type */
@@ -798,17 +801,14 @@ vrp(PG_FUNCTION_ARGS) {
     /* stuff done on every call of the function */
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
-
     path = (vrp_result_element_t *)funcctx->user_fctx;
 
     // elog(NOTICE, "Point 1");
     // PGR_DBG("Trying to allocate some memory\n");
-    // PGR_DBG("call_cntr = %i, max_calls = %i\n", call_cntr, max_calls);
+    // PGR_DBG("funcctx->call_cntr = %i, max_calls = %i\n", funcctx->call_cntr, max_calls);
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr <  funcctx->max_calls) {
         /* do when there is more left to send */
         HeapTuple    tuple;
         Datum        result;
@@ -818,20 +818,20 @@ vrp(PG_FUNCTION_ARGS) {
         values = palloc(5 * sizeof(Datum));
         nulls = palloc(5 * sizeof(char));
 
-        values[0] = Int32GetDatum(path[call_cntr].order_id);   //  order id
+        values[0] = Int32GetDatum(path[funcctx->call_cntr].order_id);   //  order id
         nulls[0] = ' ';
-        values[1] = Int32GetDatum(path[call_cntr].order_pos);  //   order pos
+        values[1] = Int32GetDatum(path[funcctx->call_cntr].order_pos);  //   order pos
         nulls[1] = ' ';
-        values[2] = Int32GetDatum(path[call_cntr].vehicle_id);  //   vehicle id
+        values[2] = Int32GetDatum(path[funcctx->call_cntr].vehicle_id);  //   vehicle id
         nulls[2] = ' ';
-        values[3] = Int32GetDatum(path[call_cntr].arrival_time);  //   arrival time
+        values[3] = Int32GetDatum(path[funcctx->call_cntr].arrival_time);  //   arrival time
         nulls[3] = ' ';
-        // values[4] = TimeTzADTPGetDatum(&path[call_cntr].time);
-        values[4] = Int32GetDatum(path[call_cntr].depart_time);  //   departure time
+        // values[4] = TimeTzADTPGetDatum(&path[funcctx->call_cntr].time);
+        values[4] = Int32GetDatum(path[funcctx->call_cntr].depart_time);  //   departure time
         nulls[4] = ' ';
 
         //  PGR_DBG("Heap making\n");
-        // elog(NOTICE, "Result %d %d %d", call_cntr, path[call_cntr].order_id, max_calls);
+        // elog(NOTICE, "Result %d %d %d", funcctx->call_cntr, path[funcctx->call_cntr].order_id, max_calls);
         tuple = heap_form_tuple(tuple_desc, values, nulls);
 
         // PGR_DBG("Datum making\n");
@@ -854,8 +854,6 @@ vrp(PG_FUNCTION_ARGS) {
         profstop("store", prof_store);
         profstop("total", prof_total);
         PGR_DBG("Profiles stopped\n");
-
-        free(path);
 
         PGR_DBG("Itinerary cleared\n");
 

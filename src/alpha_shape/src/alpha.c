@@ -22,18 +22,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
+
 #include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
 #include "../../common/src/pgr_types.h"
 #include "alpha_driver.h"
 
-#include "fmgr.h"
 
 
 /*
@@ -42,8 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 // #define PROFILE
 
 
-PGDLLEXPORT
-Datum alphashape(PG_FUNCTION_ARGS);
+PGDLLEXPORT Datum alphashape(PG_FUNCTION_ARGS);
 
 #undef DEBUG
 #include "../../common/src/debug_macro.h"
@@ -51,14 +45,6 @@ Datum alphashape(PG_FUNCTION_ARGS);
 // The number of tuples to fetch from the SPI cursor at each iteration
 #define TUPLIMIT 1000
 
-static char *
-text2char(text *in) {
-  char *out = palloc(VARSIZE(in));
-
-  memcpy(out, VARDATA(in), VARSIZE(in) - VARHDRSZ);
-  out[VARSIZE(in) - VARHDRSZ] = '\0';
-  return out;
-}
 
 static int
 finish(int code, int ret) {
@@ -82,6 +68,7 @@ typedef struct vertex_columns {
 static int
 fetch_vertices_columns(SPITupleTable *tuptable,
                        vertex_columns_t *vertex_columns) {
+    if (tuptable) {}; // TODO this is unused parameter
   vertex_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   vertex_columns->x = SPI_fnumber(SPI_tuptable->tupdesc, "x");
   vertex_columns->y = SPI_fnumber(SPI_tuptable->tupdesc, "y");
@@ -230,10 +217,8 @@ PG_FUNCTION_INFO_V1(alphashape);
 PGDLLEXPORT
 Datum alphashape(PG_FUNCTION_ARGS) {
   FuncCallContext      *funcctx;
-  uint32_t                  call_cntr;
-  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
-  vertex_t     *res = 0;
+  vertex_t     *res = NULL;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
@@ -247,12 +232,16 @@ Datum alphashape(PG_FUNCTION_ARGS) {
       /* switch to memory context appropriate for multiple function calls */
       oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-      compute_alpha_shape(text2char(PG_GETARG_TEXT_P(0)),
+      compute_alpha_shape(text_to_cstring(PG_GETARG_TEXT_P(0)),
                                 PG_GETARG_FLOAT8(1), &res, &res_count);
 
       /* total number of tuples to be returned */
       PGR_DBG("Conting tuples number\n");
+#if PGSQL_VERSION > 95
+      funcctx->max_calls = res_count;
+#else
       funcctx->max_calls = (uint32_t)res_count;
+#endif
       funcctx->user_fctx = res;
 
       PGR_DBG("Total count %lu", res_count);
@@ -272,14 +261,12 @@ Datum alphashape(PG_FUNCTION_ARGS) {
   PGR_DBG("Strange stuff doing\n");
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = (uint32_t)funcctx->call_cntr;
-  max_calls = (uint32_t)funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
-  res = (vertex_t*) funcctx->user_fctx;
+  res = (vertex_t*)funcctx->user_fctx;
 
   PGR_DBG("Trying to allocate some memory\n");
 
-  if (call_cntr < max_calls) {
+  if (funcctx->call_cntr < funcctx->max_calls) {
       /* do when there is more left to send */
       HeapTuple    tuple;
       Datum        result;
@@ -288,24 +275,11 @@ Datum alphashape(PG_FUNCTION_ARGS) {
       double x;
       double y;
 
-      /* This will work for some compilers. If it crashes with segfault, try to change the following block with this one
-
-      values = palloc(3 * sizeof(Datum));
-      nulls = palloc(3 * sizeof(char));
-
-      values[0] = call_cntr;
-      nulls[0] = ' ';
-      values[1] = Float8GetDatum(res[call_cntr].x);
-      nulls[1] = ' ';
-      values[2] = Float8GetDatum(res[call_cntr].y);
-      nulls[2] = ' ';
-      */
-
       values = palloc(2 * sizeof(Datum));
       nulls = palloc(2 * sizeof(bool));
 
-      x = res[call_cntr].x;
-      y = res[call_cntr].y;
+      x = res[funcctx->call_cntr].x;
+      y = res[funcctx->call_cntr].y;
       if (x == DBL_MAX && y == DBL_MAX) {
         values[0] = 0;
         values[1] = 0;
@@ -335,8 +309,6 @@ Datum alphashape(PG_FUNCTION_ARGS) {
 
       SRF_RETURN_NEXT(funcctx, result);
     } else  {
-      /* do when there is no more left */
-      if (res) free(res);
       SRF_RETURN_DONE(funcctx);
     }
 }

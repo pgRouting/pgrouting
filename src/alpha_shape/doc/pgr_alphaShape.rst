@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -12,7 +12,7 @@
 pgr_alphaShape
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: pgr_alphashape(text,float8)
 
 Name
@@ -62,61 +62,32 @@ If a result includes multiple outer/inner rings, return those with separator row
 
 Examples
 -------------------------------------------------------------------------------
-In the alpha shape code we have no way to control the order of the points so the actual output you might get could be similar but different. The simple query is followed by a more complex one that constructs a polygon and computes the areas of it. This should be the same as the result on your system. We leave the details of the complex query to the reader as an exercise if they wish to decompose it into understandable pieces or to just copy and paste it into a SQL window to run.
-
-.. code-block:: sql
-
-    SELECT * FROM pgr_alphaShape('SELECT id, x, y FROM vertex_table');
-
-     x | y 
-    ---+---
-     2 | 4
-     0 | 2
-     2 | 0
-     4 | 1
-     4 | 2
-     4 | 3
-    (6 rows)
-
-    SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
-    FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
-    (SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
-    FROM pgr_alphaShape('SELECT id, x, y FROM vertex_table')
-    ) AS a) AS foo;
-
-     st_area
-    ---------
-       10.00
-    (1 row)
+PgRouting's alpha shape implementation has no way to control the order of the output points, so the actual output might different for the same input data.
+The first query, has the output ordered, he second query shows an example usage:
 
 
-    SELECT * FROM pgr_alphaShape('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr');
-      x  |  y  
-    -----+-----
-       2 |   4
-     0.5 | 3.5
-       0 |   2
-       2 |   0
-       4 |   1
-       4 |   2
-       4 |   3
-     3.5 |   4
-    (8 rows)
+.. rubric:: Example: the (ordered) results
 
-    SELECT round(ST_Area(ST_MakePolygon(ST_AddPoint(foo.openline, ST_StartPoint(foo.openline))))::numeric, 2) AS st_area
-    FROM (SELECT ST_MakeLine(points ORDER BY id) AS openline FROM
-    (SELECT ST_MakePoint(x, y) AS points, row_number() over() AS id
-    FROM pgr_alphaShape('SELECT id::integer, ST_X(the_geom)::float AS x, ST_Y(the_geom)::float AS y FROM edge_table_vertices_pgr')
-    ) AS a) AS foo;
+.. literalinclude:: doc-pgr_alphashape.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
-     st_area
-    ---------
-       11.75
-    (1 row)
+.. rubric:: Example: calculating the area
 
- 
+Steps:
+
+  - Calculates the alpha shape
+    - the :code:`ORDER BY` clause is not used.
+  - constructs a polygon
+  - and computes the area
+
+.. literalinclude:: doc-pgr_alphashape.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+
+
 The queries use the :ref:`sampledata` network.
-
 
 See Also
 -------------------------------------------------------------------------------

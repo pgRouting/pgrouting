@@ -23,20 +23,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
 #include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <search.h>
 
 #include "../../common/src/pgr_types.h"
-#include "../../common/src/postgres_connection.h"
 #include "./bdastar_driver.h"
 
 
@@ -68,6 +62,7 @@ static int
 fetch_edge_astar_columns(SPITupleTable *tuptable,
              edge_astar_columns_t *edge_columns,
              bool has_reverse_cost) {
+    if (tuptable) {}
   edge_columns->id = SPI_fnumber(SPI_tuptable->tupdesc, "id");
   edge_columns->source = SPI_fnumber(SPI_tuptable->tupdesc, "source");
   edge_columns->target = SPI_fnumber(SPI_tuptable->tupdesc, "target");
@@ -208,7 +203,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
 #endif  // _MSC_VER
   char *err_msg;
   int ret = -1;
-  register int z;
+  size_t z;
 
   int s_count = 0;
   int t_count = 0;
@@ -327,6 +322,7 @@ static int compute_shortest_path_astar(char* sql, int source_vertex_id,
     (*path)[z].vertex_id += v_min_id;
   }
   if (ret < 0) {
+      pfree(path);
       elog(ERROR, "Error computing path: %s", err_msg);
   }
   pgr_SPI_finish();
@@ -338,10 +334,9 @@ PG_FUNCTION_INFO_V1(bidir_astar_shortest_path);
 PGDLLEXPORT Datum
 bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
   FuncCallContext     *funcctx;
-  uint32_t                  call_cntr;
-  uint32_t                  max_calls;
   TupleDesc            tuple_desc;
   path_element_t      *path;
+  path = NULL;
 
   /* stuff done only on the first call of the function */
   if (SRF_IS_FIRSTCALL()) {
@@ -361,7 +356,7 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 #ifdef DEBUG
       ret =
 #endif
-         compute_shortest_path_astar(pgr_text2char(PG_GETARG_TEXT_P(0)),
+         compute_shortest_path_astar(text_to_cstring(PG_GETARG_TEXT_P(0)),
                     PG_GETARG_INT32(1),
                     PG_GETARG_INT32(2),
                     PG_GETARG_BOOL(3),
@@ -371,10 +366,10 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 #ifdef DEBUG
       PGR_DBG("Ret is %i", ret);
       if (ret >= 0) {
-          int i;
+          size_t i;
           for (i = 0; i < path_count; i++) {
-              PGR_DBG("Step # %i vertex_id  %i ", i, path[i].vertex_id);
-              PGR_DBG("        edge_id    %i ", path[i].edge_id);
+              PGR_DBG("Step # %ld vertex_id  %ld ", i, path[i].vertex_id);
+              PGR_DBG("        edge_id    %ld ", path[i].edge_id);
               PGR_DBG("        cost       %f ", path[i].cost);
           }
       }
@@ -382,7 +377,11 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 
       /* total number of tuples to be returned */
       PGR_DBG("Conting tuples number\n");
+#if PGSQL_VERSION > 95
+      funcctx->max_calls = path_count;
+#else
       funcctx->max_calls = (uint32_t)path_count;
+#endif
       funcctx->user_fctx = path;
 
       PGR_DBG("Path count %lu", path_count);
@@ -398,14 +397,11 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 
   funcctx = SRF_PERCALL_SETUP();
 
-  call_cntr = (uint32_t)funcctx->call_cntr;
-  max_calls = (uint32_t)funcctx->max_calls;
   tuple_desc = funcctx->tuple_desc;
   path = (path_element_t*) funcctx->user_fctx;
 
-  PGR_DBG("Trying to allocate some memory\n");
 
-  if (call_cntr < max_calls) {   /* do when there is more left to send */
+  if (funcctx->call_cntr < funcctx->max_calls) {   /* do when there is more left to send */
       HeapTuple    tuple;
       Datum        result;
       Datum *values;
@@ -414,13 +410,13 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
       values = palloc(4 * sizeof(Datum));
       nulls = palloc(4 * sizeof(bool));
 
-      values[0] = Int32GetDatum(call_cntr);
+      values[0] = Int32GetDatum(funcctx->call_cntr);
       nulls[0] = false;
-      values[1] = Int32GetDatum(path[call_cntr].vertex_id);
+      values[1] = Int32GetDatum(path[funcctx->call_cntr].vertex_id);
       nulls[1] = false;
-      values[2] = Int32GetDatum(path[call_cntr].edge_id);
+      values[2] = Int32GetDatum(path[funcctx->call_cntr].edge_id);
       nulls[2] = false;
-      values[3] = Float8GetDatum(path[call_cntr].cost);
+      values[3] = Float8GetDatum(path[funcctx->call_cntr].cost);
       nulls[3] = false;
 
       PGR_DBG("Heap making\n");
@@ -441,8 +437,6 @@ bidir_astar_shortest_path(PG_FUNCTION_ARGS) {
 
       SRF_RETURN_NEXT(funcctx, result);
   } else {   /* do when there is no more left */
-      PGR_DBG("Freeing path");
-      if (path) free(path);
       SRF_RETURN_DONE(funcctx);
   }
 }

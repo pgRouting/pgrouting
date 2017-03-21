@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -24,14 +24,14 @@ Synopsis
 The function returns:
 
   - ``OK`` after the network topology has been built and the vertices table created.
-  - ``FAIL`` when the network topology was not built due to an error. 
+  - ``FAIL`` when the network topology was not built due to an error.
 
-.. index:: 
+.. index::
 	single: createTopology(Complete Signature)
 
 .. code-block:: none
 
-	varchar pgr_createTopology(text edge_table, double precision tolerance, 
+	varchar pgr_createTopology(text edge_table, double precision tolerance,
                            text the_geom:='the_geom', text id:='id',
                            text source:='source',text target:='target',
                            text rows_where:='true', boolean clean:=false)
@@ -47,10 +47,10 @@ The topology creation function accepts the following parameters:
 
 :edge_table: ``text`` Network table name. (may contain the schema name AS well)
 :tolerance: ``float8`` Snapping tolerance of disconnected edges. (in projection unit)
-:the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.  
-:id: ``text``  Primary key column name of the network table. Default value is ``id``. 
+:the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.
+:id: ``text``  Primary key column name of the network table. Default value is ``id``.
 :source: ``text`` Source column name of the network table. Default value is ``source``.
-:target: ``text``  Target column name of the network table.  Default value is ``target``. 
+:target: ``text``  Target column name of the network table.  Default value is ``target``.
 :rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate
  all rows that where ``source`` or ``target`` have a null value, otherwise the condition is used.
 :clean: ``boolean`` Clean any previous topology.  Default value is ``false``.
@@ -95,7 +95,7 @@ The structure of the vertices table is:
 :cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
 :chk: ``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
 :ein: ``integer`` Number of vertices in the edge_table that reference this vertex AS incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex AS outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`. 
+:eout: ``integer`` Number of vertices in the edge_table that reference this vertex AS outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 .. rubric:: History
@@ -104,8 +104,8 @@ The structure of the vertices table is:
 
 Usage when the edge table's columns MATCH the default values:
 -------------------------------------------------------------------------------
- 
-.. rubric:: The simplest way to use pgr_createTopology is: 
+
+.. rubric:: The simplest way to use pgr_createTopology is:
 
 .. literalinclude:: doc-pgr_createTopology.queries
    :start-after: --q1
@@ -124,7 +124,7 @@ We get the same result AS the simplest way to use the function.
 
 .. warning::  | An error would occur when the arguments are not given in the appropriate order:
     | In this example, the column ``id`` of the table ``ege_table`` is passed to the function as the geometry column,
-    | and the geometry column ``the_geom`` is passed to the function as the id column. 
+    | and the geometry column ``the_geom`` is passed to the function as the id column.
 
     .. literalinclude:: doc-pgr_createTopology.queries
        :start-after: --q3
@@ -173,14 +173,14 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 
 Usage when the edge table's columns DO NOT MATCH the default values:
 -------------------------------------------------------------------------------
- 
+
 For the following table
 
 .. literalinclude:: doc-pgr_createTopology.queries
    :start-after: --q10
    :end-before: --q10.1
 
-.. rubric:: Using positional notation: 
+.. rubric:: Using positional notation:
 
 The arguments need to be given in the order described in the parameters.
 

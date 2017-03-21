@@ -24,13 +24,13 @@ Name
 ``pgr_maxFlowPushRelabel`` — Calculates the maximum flow in a directed graph given a source and a destination.
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
+.. figure:: images/boost-inside.jpeg
+   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 
    Boost Graph Inside
 
@@ -60,7 +60,7 @@ Signature Summary
     pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertex)
     pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertices)
     pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 
@@ -78,7 +78,7 @@ Calculates the maximum flow from one source vertex to one sink vertex in a direc
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertex)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -99,7 +99,7 @@ Ccalculates the maximum flow from one source vertex to many sink vertices in a d
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source_vertex,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -120,7 +120,7 @@ Calculates the maximum flow from many source vertices to one sink vertex in a di
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertex)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -141,7 +141,7 @@ Calculates the maximum flow from many sources to many sinks in a directed graph.
 .. code-block:: none
 
     pgr_maxFlowPushRelabel(edges_sql, source_vertices,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -203,7 +203,7 @@ See Also
 --------
 
 * :ref:`maxFlow`
-* http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
+* http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
 .. rubric:: Indices and tables

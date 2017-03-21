@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -19,10 +19,16 @@ Name
 ``pgr_drivingDistance`` - Returns the driving distance from a start node.
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
+
+.. rubric:: Availability
+
+* pgr_drivingDistance(single vertex) 2.0.0, signature change 2.1.0
+* pgr_drivingDistance(multiple vertices) 2.1.0
+
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -84,7 +90,7 @@ Driving Distance From Multiple Starting Vertices
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 

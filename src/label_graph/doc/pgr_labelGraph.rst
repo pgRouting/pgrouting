@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
    ****************************************************************************
     pgRouting Manual
@@ -19,9 +19,9 @@ Name
 
 ``pgr_labelGraph`` — Locates and labels sub-networks within a network which are not topologically connected.
 
-.. include:: ../../proposed.rst
-    :start-after: begin-warning
-    :end-before: end-warning
+.. include:: proposed.rst
+    :start-after: begin-warn-expr
+    :end-before: end-warn-expr
 
 
 Synopsis
@@ -33,9 +33,9 @@ The function returns:
 
   - ``OK`` when a column with provided name has been generated and populated successfully. All connected edges will have unique similar integer values. In case of ``rows_where`` condition, non participating rows will have -1 integer values.
   - ``FAIL`` when the processing cannot be finished due to some error. Notice will be thrown accordingly.
-  - ``rows_where condition generated 0 rows`` when passed SQL condition has not been fulfilled by any row. 
+  - ``rows_where condition generated 0 rows`` when passed SQL condition has not been fulfilled by any row.
 
-.. index:: 
+.. index::
 	single: labelGraph(Complete Signature) - Proposed
 
 .. code-block:: sql
@@ -52,7 +52,7 @@ A network behind any routing query may consist of sub-networks completely isolat
 - An island with no bridge connecting to the mainland.
 - An edge or mesh of edges failed to connect to other networks because of human negligence during data generation.
 - The data is not properly noded.
-- Topology creation failed to succeed. 
+- Topology creation failed to succeed.
 
 pgr_labelGraph() will create an integer column (with the name provided by the user) and will assign same integer values to all those edges in the network which are connected topologically. Thus better analysis regarding network structure is possible. In case of ``rows_where`` condition, non participating rows will have -1 integer values.
 
@@ -66,7 +66,7 @@ Function accepts the following parameters:
 :source: ``text`` Source column name generated after ``pgr_createTopology()``. Default is ``source``.
 :target: ``text`` Target column name generated after ``pgr_createTopology()``. Default is ``target``.
 :subgraph: ``text`` Column name which will hold the integer labels for each sub-graph. Default is ``subgraph``.
-:rows_where: ``text`` The SQL where condition. Default is ``true``, means the processing will be done on the whole table. 
+:rows_where: ``text`` The SQL where condition. Default is ``true``, means the processing will be done on the whole table.
 
 
 

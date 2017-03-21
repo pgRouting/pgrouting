@@ -9,7 +9,6 @@
 #include <iostream>
 #include <functional>
 
-
 #include "trsp.h"
 
 //using namespace std;
@@ -43,10 +42,11 @@ typedef struct{
     int v_pos[2];
 } PARENT_PATH;
 
-typedef struct{
+typedef struct Rule{
     double cost;
     std::vector<long> precedencelist;
-} Rule;
+    Rule(double c, std::vector<long> p) : cost(c), precedencelist(p) { }
+}Rule;
 
 typedef struct{
     double startCost, endCost;
@@ -90,34 +90,34 @@ public:
     GraphDefinition(void);
     ~GraphDefinition(void);
 
-    int my_dijkstra1(long start_vertex, long end_vertex,
-                    size_t edge_count, char** err_msg);
+    int my_dijkstra(long start_vertex, long end_vertex,
+                    unsigned int edge_count, char** err_msg);
 
-    int my_dijkstra2(edge_t *edges, unsigned int edge_count,
+    int my_dijkstra(edge_t *edges, unsigned int edge_count,
                     long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, size_t *path_count,
+                    path_element_t **path, int *path_count,
                     char **err_msg);
 
-    int my_dijkstra3(edge_t *edges, unsigned int edge_count,
+    int my_dijkstra(edge_t *edges, unsigned int edge_count,
                     long start_vertex, long end_vertex,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, size_t *path_count,
+                    path_element_t **path, int *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
-    int my_dijkstra4(edge_t *edges, unsigned int edge_count,
-                    long start_edge, double start_part,
-                    long end_edge, double end_part,
+    int my_dijkstra(edge_t *edges, unsigned int edge_count,
+                    int start_edge, double start_part,
+                    int end_edge, double end_part,
                     bool directed, bool has_reverse_cost,
-                    path_element_t **path, size_t *path_count,
+                    path_element_t **path, int *path_count,
                     char **err_msg,
                     std::vector<PDVI> &ruleList);
 
     int multi_dijkstra(edge_t *edges, unsigned int edge_count,
                        std::vector<int> vertices,
                        bool directed, bool has_reverse_cost,
-                       path_element_t **path, size_t *path_count,
+                       path_element_t **path, int *path_count,
                        char **err_msg,
                        std::vector<PDVI> &ruleList);
 
@@ -131,7 +131,7 @@ private:
     double getRestrictionCost(long cur_node, GraphEdgeInfo& new_edge, bool isStart);
     bool addEdge(edge edgeIn);
     bool connectEdge(GraphEdgeInfo& firstEdge, GraphEdgeInfo& secondEdge, bool bIsStartNodeSame);
-    bool get_single_cost(double total_cost, path_element_t **path, size_t *path_count);
+    bool get_single_cost(double total_cost, path_element_t **path, int *path_count);
     void init();
     void deleteall();
 
@@ -140,9 +140,9 @@ private:
     Long2LongMap m_mapEdgeId2Index;
     Long2LongVectorMap m_mapNodeId2Edge;
     long max_node_id;
-    long max_edge_id;
-    long m_lStartEdgeId;
-    long m_lEndEdgeId;
+    int max_edge_id;
+    int m_lStartEdgeId;
+    int m_lEndEdgeId;
     double m_dStartpart;
     double m_dEndPart;
     bool isStartVirtual;

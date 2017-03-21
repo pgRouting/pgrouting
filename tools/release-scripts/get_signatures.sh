@@ -1,18 +1,31 @@
 #!/bin/sh
 
-if [  "$#" -eq 0 ] ; then
+set -e
+
+if [  "$#" -lt 3 ] ; then
     echo "Usage: getSignatures.sh VERSION DB_ARGS"
     echo "  VERSION like '2.4.0'"
-    echo "  DB_ARGS like -U postgres -h localhost -p 5432 dbname"
+    echo "  DB_NAME like 'routing'"
+    echo "  DIR: 'curr-sig' OR 'sigs'"
+    echo "  (optional) DB_ARGS like  -U postgres -h localhost -p 5432 "
     exit 0
 fi
 
 VERSION=$1
-FILE=tools/curr-sig/pgrouting--$VERSION.sig
-#FILE=test.sig
+DB_NAME=$2
+DIR=$3
 shift
+shift
+shift
+# DB_ARGS is the remaining of the arguments
 
-psql  $*  <<EOF
+FILE=tools/$DIR/pgrouting--$VERSION.sig
+#FILE=test.sig
+
+createdb $* $DB_NAME
+
+psql  $*  $DB_NAME <<EOF
+SET client_min_messages = WARNING;
 drop extension if exists pgrouting;
 drop extension if exists postgis;
 create extension postgis;
@@ -21,6 +34,8 @@ EOF
 
 echo "#VERSION pgrouting $VERSION" > $FILE
 echo "#TYPES" >> $FILE
-psql $* -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> $FILE
+psql $* $DB_NAME -c '\dx+ pgrouting' -A | grep '^type' | cut -d ' ' -f2- | sort >> $FILE
 echo "#FUNCTIONS" >> $FILE
-psql $* -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> $FILE
+psql $* $DB_NAME -c '\dx+ pgrouting' -A | grep '^function' | cut -d ' ' -f2- | sort >> $FILE
+
+dropdb --if-exists $* $DB_NAME

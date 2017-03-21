@@ -2,13 +2,14 @@
 SELECT id, source, target, cost, reverse_cost FROM edge_table;
 \echo -- q01
 
-SET client_min_messages TO error;
+SET client_min_messages TO ERROR;
 \echo -- q1
 ALTER TABLE edge_table ADD contracted_vertices BIGINT[];
 ALTER TABLE edge_table_vertices_pgr ADD contracted_vertices BIGINT[];
 ALTER TABLE edge_table ADD is_contracted BOOLEAN DEFAULT false;
 ALTER TABLE edge_table_vertices_pgr ADD is_contracted BOOLEAN DEFAULT false;
 
+SET client_min_messages TO NOTICE;
 \echo -- q2
 -- showing original results
 SELECT * FROM pgr_contractGraph(

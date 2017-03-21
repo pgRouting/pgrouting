@@ -7,34 +7,16 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
-   INSTRUCTIONS
-   - if section consists of only one value then use this file as index.rst
-   - change [...] (including the square braquets) to appropiate values
-   - one file / function,  may signatures of the same function go in the same file
-
 .. _pgr_MY_FUNCTION_NAME:
 
 pgr_MY_FUNCTION_NAME
 ===============================================================================
 
-
-Name
--------------------------------------------------------------------------------
-
-``pgr_MY_FUNCTION_NAME`` — [medium description of
-function1 it can span many
-lines]
-
-.. warning::  This is a proposed function.
-
-     - Is not officially in the current release
-
-
-..
-   keep if uses boost (this is a comment)
+``pgr_MY_FUNCTION_NAME`` — Returns the shortest path(s) using Dijkstra algorithm.
+In particular, the Dijkstra algorithm implemented by Boost.Graph.
 
 .. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph
+   :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
 
@@ -42,18 +24,14 @@ lines]
 Synopsis
 -------------------------------------------------------------------------------
 
-Very long description of function
+Dijkstra's algorithm, conceived by Dutch computer scientist Edsger Dijkstra in 1956.
+It is a graph search algorithm that solves the shortest path problem for
+a graph with non-negative edge path costs, producing a shortest path from
+a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
+This implementation can be used with a directed graph and an undirected graph.
 
-..
-   SPHINX manual
-   http://www.sphinx-doc.org/en/stable/rest.html
-
-
-Characteristics:
-----------------
-
-..
-   Here is a sample of the kind of information in this section:
+Characteristics
+-------------------------------------------------------------------------------
 
 The main Characteristics are:
   - Process is done only on edges with positive costs.
@@ -74,208 +52,102 @@ The main Characteristics are:
     - `start_vid` ascending
     - `end_vid` ascending
 
-  - Runing time: :math:`O(| start\_vids | * (V \log V + E))`
+  - Running time: :math:`O(| start\_vids | * (V \log V + E))`
+
 
 Signature Summary
 -----------------
 
-..
-   If the function has more than one signature
-   Remove the unneseary parts of the signature, just leving the name of the parameters
-   Like in these examples
-
 .. code-block:: none
 
-    pgr_MY_FUNCTION_NAME(edges_sql, start_vid,  end_vids)
-    pgr_MY_FUNCTION_NAME(edges_sql, start_vids, end_vids, directed:=true)
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-      OR EMPTY SET
+    pgr_dijkstra(edges_sql, start_vid,  end_vid)
 
-
-..
-  This is a reminder of how your query looks like
-  pgr_MY_FUNCTION_NAME(
-    MY_QUERY_LINE1
-    MY_QUERY_LINE2)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
+        OR EMPTY SET
 
 
 Signatures
-===============================================================================
+-------------------------------------------------------------------------------
 
-.. index:: 
-    single: pgr_MY_FUNCTION_NAME(edges_sql, start_vid,  end_vids) - proposed
+.. index::
+    single: MY_FUNCTION_NAME(Minimal Use)
 
 Minimal signature
------------------
-
-
-..
-   Small description, example:
-
-The minimal signature is for a **directed** graph from one ``start_vid`` to many ``end_vids``:
+.......................................
 
 .. code-block:: none
 
-    pgr_MY_FUNCTION_NAME(edges_sql, start_vid,  end_vids)
-    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
-      OR EMPTY SET
+    pgr_MY_FUNCTION_NAME(edges_sql, start_vid, end_vid)
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+
+The minimal signature is for a **directed** graph from one ``start_vid`` to one ``end_vid``:
 
 :Example:
 
-.. literalinclude:: doc-MY_FUNCTION_NAME.queries
-   :start-after: --q1
-   :end-before: --q2
+.. literalinclude:: doc-pgr_MY_FUNCTION_NAME.queries
+   :start-after: -- q1
+   :end-before: -- q2
 
 
-Complete signature
-------------------
+.. index::
+    single: MY_FUNCTION_NAME(Complete signature)
 
-This signature performs a .....
+Complete Signature
+.......................................
 
+.. code-block:: none
+
+    pgr_MY_FUNCTION_NAME(edges_sql, start_vid, end_vid, directed);
+    RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
   -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
   -  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-.. index:: 
-    single: pgr_MY_FUNCTION_NAME(edges_sql, start_vids, end_vids, directed:=true) - proposed
-
-.. code-block:: none
-
-    pgr_MY_FUNCTION_NAME(  [parameters],
-        boolean directed:=true);
-    RETURNS SET OF ( [output] ) or EMPTY SET
-
-
 :Example:
 
-.. literalinclude:: doc-MY_FUNCTION_NAME.queries
-   :start-after: --q2
-   :end-before: --q3
+.. literalinclude:: doc-pgr_MY_FUNCTION_NAME.queries
+   :start-after: -- q2
+   :end-before: -- q3
+
+
 
 Description of the Signatures
-=============================
-
-..
-   DELETE / ADD DEPENDING ON YOUR REQUIREMENTS
-
-Description of the SQL query
 -------------------------------------------------------------------------------
 
-:edges_sql: an SQL query, which should return a set of rows with the following columns:
+.. include:: ../../common/src/edges_input.h
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
 
-================  ===================   =================================================
-Column            Type                  Description
-================  ===================   =================================================
-**id**            ``ANY-INTEGER``       Identifier of the edge.
-**source**        ``ANY-INTEGER``       Identifier of the first end point vertex of the edge.
-**target**        ``ANY-INTEGER``       Identifier of the second end point vertex of the edge.
-**cost**          ``ANY-NUMERICAL``     Weight of the edge `(source, target)`, If negative: edge `(source, target)` does not exist, therefore it's not part of the graph.
-**reverse_cost**  ``ANY-NUMERICAL``     (optional) Weight of the edge `(target, source)`, If negative: edge `(target, source)` does not exist, therefore it's not part of the graph.
-================  ===================   =================================================
-
-Description of the Points SQL query
--------------------------------------------------------------------------------
-
-:points_sql: an SQL query, which should return a set of rows with the following columns:
-
-============ ================= =================================================
-Column            Type              Description
-============ ================= =================================================
-**pid**      ``ANY-INTEGER``   (optional) Identifier of the point. Can not be NULL. If column not present, a sequential identifier will be given automatically.
-**eid**      ``ANY-INTEGER``   Identifier of the "closest" edge to the point.
-**fraction** ``ANY-NUMERICAL`` Value in [0,1] that indicates the relative postition from the first end point of the edge.
-**side**     ``CHAR``          (optional) Value in ['b', 'r', 'l', NULL] indicating if the point is:
-                                 - In the right, left of the edge or
-                                 - If it doesn't matter with 'b' or NULL.
-                                 - If column not present 'b' is considered.
-
-                               Can be in upper or lower case.
-============ ================= =================================================
+.. include:: ../../dijkstra/sql/dijkstra.sql
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
 
 
-Where:
+Description of the return values
+...............................................................................
 
-:ANY-INTEGER: SMALLINT, INTEGER, BIGINT
-:ANY-NUMERICAL: SMALLINT, INTEGER, BIGINT, REAL, FLOAT
+Returns set of ``(seq, path_seq, node, edge, cost, agg_cost)``
 
-
-Description of the parameters of the signatures
--------------------------------------------------------------------------------
-
-============== ====================== =================================================
-Column         Type                   Description
-============== ====================== =================================================
-**edges_sql**  ``TEXT``               SQL query as decribed above.
-**points_sql** ``TEXT``               Points SQL query as decribed above.
-**start_vid**  ``BIGINT``             Identifier of the starting vertex of the path.
-**start_vids** ``ARRAY[ANY-INTEGER]`` Array of identifiers of starting vertices.
-**end_vid**    ``BIGINT``             Identifier of the ending vertex of the path.
-**end_vids**   ``ARRAY[ANY-INTEGER]`` Array of identifiers of ending vertices.
-**directed**   ``BOOLEAN``            (optional). When ``false`` the graph is considered as Undirected. Default is ``true`` which considers the graph as Directed.
-============== ====================== =================================================
+============== ========== =================================================
+Column         Type       Description
+============== ========== =================================================
+**seq**        ``INT``    Sequential value starting from **1**.
+**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
+**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
+**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
+**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
+**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
+============== ========== =================================================
 
 
-Examples
-========
-
-The examples of this section are based on the :ref:`sampledata` network.
-
-
-
-[put as many examples as needed and use the documentation data for the examples]
-
-:Example:
-
-.. literalinclude:: doc-MY_FUNCTION_NAME.queries
-   :start-after: --q2
-   :end-before: --q3
-
-..
-   If needed here are some subtitles  
-
-Examples for queries marked as ``directed`` with ``cost`` and ``reverse_cost`` columns
---------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig1`
-
-:Example: This example is in a subtitle
-
-.. literalinclude:: doc-MY_FUNCTION_NAME.queries
-   :start-after: --q2
-   :end-before: --q3
-
-
-Examples for queries marked as ``undirected`` with ``cost`` and ``reverse_cost`` columns
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig2`
-
-
-
-Examples for queries marked as ``directed`` with ``cost`` column
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig3`
-
-
-Examples for queries marked as ``undirected`` with ``cost`` column
-----------------------------------------------------------------------------------------
-
-The examples in this section use the following :ref:`fig4`
-
-
-
-The queries use the :ref:`sampledata` network.
-
-.. rubric:: History
-
-* Official in version X.X
-* Proposed in version Y.Y 
 
 
 See Also
 -------------------------------------------------------------------------------
 
 * http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+* The queries use the :ref:`sampledata` network.
 
 .. rubric:: Indices and tables
 

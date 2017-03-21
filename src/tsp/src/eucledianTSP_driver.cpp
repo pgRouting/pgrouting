@@ -27,23 +27,19 @@
  *
  *  ******************************************************************** PGR-GNU*/
 
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
 
+#include "./eucledianTSP_driver.h"
 
 #include <string.h>
 #include <sstream>
 #include <vector>
 #include <algorithm>
 
-#include "./eucledianTSP_driver.h"
+#include "./pgr_tsp.hpp"
 #include "./eucledianDmatrix.h"
 
-#include "./pgr_tsp.hpp"
-#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
 
 void
 do_pgr_eucledianTSP(
@@ -64,9 +60,11 @@ do_pgr_eucledianTSP(
         General_path_element_t **return_tuples,
         size_t *return_count,
         char **log_msg,
+        char **notice_msg,
         char **err_msg) {
-    std::ostringstream err;
     std::ostringstream log;
+    std::ostringstream notice;
+    std::ostringstream err;
 
     try {
         std::vector< Coordinate_t > coordinates(
@@ -75,7 +73,6 @@ do_pgr_eucledianTSP(
 
         pgrouting::tsp::eucledianDmatrix costs(coordinates);
 
-        double real_cost = -1;
 
         size_t idx_start = costs.has_id(start_vid) ?
             costs.get_index(start_vid) : 0;
@@ -83,14 +80,24 @@ do_pgr_eucledianTSP(
         size_t idx_end = costs.has_id(end_vid) ?
             costs.get_index(end_vid) : 0;
 
-        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
-            /* An ending vertex needs to be by the starting vertex */
+        /* The ending vertex needs to be by the starting vertex */
+        double real_cost = 0;
+        if (costs.has_id(start_vid)
+                && costs.has_id(end_vid)
+                && start_vid != end_vid) {
+            /*
+             * Saving the real cost (distance)  between the start_vid and end_vid
+             */
             real_cost = costs.distance(idx_start, idx_end);
+            /*
+             * Temporarly setting the cost between the start_vid and end_vid to 0
+             */
             costs.set(idx_start, idx_end, 0);
         }
 
 
-        log << "pgr_eucledianTSP Processing Information \nInitializing tsp class --->";
+        log << "pgr_eucledianTSP Processing Information\n"
+            << "Initializing tsp class --->";
         pgrouting::tsp::TSP<pgrouting::tsp::eucledianDmatrix> tsp(costs);
 
 
@@ -109,13 +116,20 @@ do_pgr_eucledianTSP(
                 max_consecutive_non_changes,
                 randomize,
                 time_limit);
-        log << " OK\n";
-        log << tsp.get_log();
-        log << tsp.get_stats();
+         log << " OK\n";
+         log << tsp.get_log();
+         log << tsp.get_stats();
+
 
         auto bestTour(tsp.get_tour());
 
-        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
+        /* The ending vertex needs to be by the starting vertex */
+        if (costs.has_id(start_vid)
+                && costs.has_id(end_vid)
+                && start_vid != end_vid) {
+            /*
+             * Restoring the real cost (distance)  between the start_vid and end_vid
+             */
             costs.set(idx_start, idx_end, real_cost);
         }
 
@@ -131,7 +145,9 @@ do_pgr_eucledianTSP(
                 start_ptr,
                 bestTour.cities.end());
 
-        if (costs.has_id(start_vid) && costs.has_id(end_vid) && start_vid != end_vid) {
+        if (costs.has_id(start_vid)
+                && costs.has_id(end_vid)
+                && start_vid != end_vid) {
             if (*(bestTour.cities.begin() + 1) == idx_end) {
                 std::reverse(
                         bestTour.cities.begin() + 1,
@@ -182,26 +198,30 @@ do_pgr_eucledianTSP(
             ++seq;
         }
 
-        *log_msg = strdup(log.str().c_str());
-        (*err_msg) = NULL;
-        return;
+        pgassert(!log.str().empty());
+        *log_msg = log.str().empty()?
+            *log_msg :
+            pgr_msg(log.str().c_str());
+        *notice_msg = notice.str().empty()?
+            *notice_msg :
+            pgr_msg(notice.str().c_str());
     } catch (AssertFailedException &except) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << except.what() << "\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
-    } catch (std::exception& except) {
-        if (*return_tuples) free(*return_tuples);
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
+    } catch (std::exception &except) {
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << except.what() << "\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        err << except.what();
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     } catch(...) {
-        if (*return_tuples) free(*return_tuples);
+        (*return_tuples) = pgr_free(*return_tuples);
         (*return_count) = 0;
-        err << "Caught unknown exception!\n";
-        *err_msg = strdup(err.str().c_str());
-        *log_msg = strdup(log.str().c_str());
+        err << "Caught unknown exception!";
+        *err_msg = pgr_msg(err.str().c_str());
+        *log_msg = pgr_msg(log.str().c_str());
     }
 }

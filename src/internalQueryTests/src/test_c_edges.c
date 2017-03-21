@@ -27,19 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
 
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 
 #include "./test_c_edges_driver.h"
@@ -85,7 +77,7 @@ process(char *edges_sql,
             &err_msg);
 
     pfree(edges);
-    elog(NOTICE, "Returned log message = %s\n", log_msg);
+    PGR_DBG("Returned log message = %s\n", log_msg);
     if (log_msg) {
         elog(DEBUG1, "%s", log_msg);
         free(log_msg);
@@ -93,6 +85,7 @@ process(char *edges_sql,
     PGR_DBG("Returned error message = %s\n", err_msg);
 
     if (err_msg) {
+        pgr_SPI_finish();
         elog(ERROR, "%s", err_msg);
         free(err_msg);
     }
@@ -105,7 +98,7 @@ PGDLLEXPORT Datum
 test_c_edges(PG_FUNCTION_ARGS) {
     bool  result_bool = false;
     process(
-            pgr_text2char(PG_GETARG_TEXT_P(0)),
+            text_to_cstring(PG_GETARG_TEXT_P(0)),
             &result_bool);
 
     PG_RETURN_BOOL(result_bool);

@@ -1,7 +1,9 @@
+BEGIN;
+BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
-SELECT * FROM pgr_ksp(
+SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, 
       true   
@@ -21,7 +23,7 @@ NOTICE:  Deprecated function
    9 |   1 |  12 |  -1 |    0
 (10 rows)
 
-SELECT * FROM pgr_ksp(
+SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2,
       directed:=true   
@@ -40,7 +42,7 @@ SELECT * FROM pgr_ksp(
   10 |       2 |        5 |   12 |   -1 |    0 |        4
 (10 rows)
 
-SELECT * FROM pgr_ksp(
+SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2
    );
@@ -59,7 +61,7 @@ SELECT * FROM pgr_ksp(
 (10 rows)
 
 --q2
-SELECT * FROM pgr_ksp(
+SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2
    );
@@ -77,7 +79,7 @@ SELECT * FROM pgr_ksp(
   10 |       2 |        5 |   12 |   -1 |    0 |        4
 (10 rows)
 
-SELECT * FROM pgr_ksp(
+SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, heap_paths:=true
    );
@@ -100,7 +102,7 @@ SELECT * FROM pgr_ksp(
   15 |       3 |        5 |   12 |   -1 |    0 |        4
 (15 rows)
 
-SELECT * FROM pgr_ksp(
+SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, true, true
    );
@@ -124,7 +126,7 @@ SELECT * FROM pgr_ksp(
 (15 rows)
 
 --q3
-SELECT * FROM pgr_ksp(
+SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, directed:=false
    );
@@ -142,7 +144,7 @@ SELECT * FROM pgr_ksp(
   10 |       2 |        5 |   12 |   -1 |    0 |        4
 (10 rows)
 
-SELECT * FROM pgr_ksp(
+SELECT * FROM pgr_KSP(
      'SELECT id, source, target, cost, reverse_cost FROM edge_table',
       2, 12, 2, false, true
    );
@@ -173,7 +175,7 @@ SELECT * FROM pgr_ksp(
 (22 rows)
 
 --q4
-SELECT  * FROM pgr_ksp(
+SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 3, 2
    );
@@ -181,7 +183,7 @@ SELECT  * FROM pgr_ksp(
 -----+---------+----------+------+------+------+----------
 (0 rows)
 
-SELECT  * FROM pgr_ksp(
+SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2
    );
@@ -199,7 +201,7 @@ SELECT  * FROM pgr_ksp(
   10 |       2 |        5 |   12 |   -1 |    0 |        4
 (10 rows)
 
-SELECT   * FROM pgr_ksp(
+SELECT   * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, heap_paths:=true
    );
@@ -222,7 +224,7 @@ SELECT   * FROM pgr_ksp(
   15 |       3 |        5 |   12 |   -1 |    0 |        4
 (15 rows)
 
-SELECT  * FROM pgr_ksp(
+SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, true, true
    );
@@ -246,7 +248,7 @@ SELECT  * FROM pgr_ksp(
 (15 rows)
 
 --q5
-SELECT  * FROM pgr_ksp(
+SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, directed:=false
    );
@@ -264,7 +266,7 @@ SELECT  * FROM pgr_ksp(
   10 |       2 |        5 |   12 |   -1 |    0 |        4
 (10 rows)
 
-SELECT  * FROM pgr_ksp(
+SELECT  * FROM pgr_KSP(
      'SELECT id, source, target, cost FROM edge_table',
       2, 12, 2, directed:=false, heap_paths:=true
    );
@@ -288,3 +290,5 @@ SELECT  * FROM pgr_ksp(
 (15 rows)
 
 --q6
+ROLLBACK;
+ROLLBACK

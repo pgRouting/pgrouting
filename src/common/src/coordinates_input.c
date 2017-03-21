@@ -22,12 +22,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-// #define DEBUG
-#include "./coordinates_input.h"
+#include "./postgres_connection.h"
 
+#include "./coordinates_input.h"
 #include "./debug_macro.h"
 #include "./pgr_types.h"
-#include "./postgres_connection.h"
 #include "./get_check_data.h"
 #include "./time_msg.h"
 
@@ -132,6 +131,8 @@ void pgr_get_coordinates(
             moredata = FALSE;
         }
     }
+
+    SPI_cursor_close(SPIportal);
 
 
     if (total_tuples == 0) {

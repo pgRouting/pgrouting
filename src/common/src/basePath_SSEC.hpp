@@ -22,20 +22,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
+#ifndef SRC_COMMON_SRC_BASEPATH_SSEC_HPP_
+#define SRC_COMMON_SRC_BASEPATH_SSEC_HPP_
 #pragma once
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#ifdef open
-#undef open
-#endif
-#endif
+
+
+#include <boost/config.hpp>
+#include <boost/graph/adjacency_list.hpp>
 
 
 #include <deque>
+#include <vector>
 #include <iostream>
 #include <algorithm>
 #include "./pgr_types.h"
+#include "./pgr_base_graph.hpp"
+
 
 class Path {
     typedef std::deque< Path_t >::iterator pthIt;
@@ -52,6 +54,7 @@ class Path {
     Path(int64_t s_id, int64_t e_id)
         : m_start_id(s_id), m_end_id(e_id), m_tot_cost(0)
     {}
+    Path(const Path&) = default;
     int64_t start_id() const {return m_start_id;}
     void start_id(int64_t value) {m_start_id = value;}
     int64_t end_id()  const {return m_end_id;}
@@ -104,6 +107,7 @@ class Path {
 
     bool isEqual(const Path &subpath) const;
     void appendPath(const Path &o_path);
+    void append(const Path &other);
     void empty_path(unsigned int d_vertex);
 
     void get_pg_dd_path(
@@ -209,6 +213,119 @@ class Path {
         }
         return count;
     }
+
+
+    template <typename G , typename V> Path(
+            G &graph,
+            V v_source,
+            double distance,
+            const std::vector<V> &predecessors,
+            const std::vector<double> &distances) :
+        m_start_id(graph.graph[v_source].id),
+        m_end_id(graph.graph[v_source].id) {
+        for (V i = 0; i < distances.size(); ++i) {
+            if (distances[i] <= distance) {
+                auto cost = distances[i] - distances[predecessors[i]];
+                auto edge_id = graph.get_edge_id(predecessors[i], i, cost);
+                push_back(
+                        {graph[i].id,
+                        edge_id, cost,
+                        distances[i]});
+            }
+        }
+    }
+
+
+
+    template <typename G , typename V> Path(
+            const G &graph,
+            const V v_source,
+            const V v_target,
+            const std::vector<V> &predecessors,
+            const std::vector<double> &distances,
+            bool only_cost,
+            bool normal = true) :
+        m_start_id(graph.graph[v_source].id),
+        m_end_id(graph.graph[v_target].id) {
+            if (!only_cost) {
+                complete_path(graph,
+                        v_source,
+                        v_target,
+                        predecessors,
+                        distances,
+                        normal);
+                return;
+            }
+            /*
+             * only_cost
+             */
+            if (v_target != predecessors[v_target]) {
+                push_front(
+                        {graph.graph[v_target].id,
+                        -1,
+                        distances[v_target],
+                        distances[v_target]});
+            }
+            return;
+        }
+
+    /*! @brief constructs a path based on results
+     *
+     * Normal = false for reversed search path like in pgr_bdDijkstra
+     */
+    template <typename G , typename V> void complete_path(
+            const G &graph,
+            const V v_source,
+            const V v_target,
+            const std::vector<V> &predecessors,
+            const std::vector<double> &distances,
+            bool normal) {
+        // no path was found
+        if (v_target == predecessors[v_target]) {
+            return;
+        }
+
+        /*
+         * set the target
+         */
+        auto target = v_target;
+
+        /*
+         * the last stop is the target
+         */
+        push_front(
+                {graph.graph[target].id, -1,
+                0,  distances[target]});
+
+        /*
+         * get the path
+         */
+        while (target != v_source) {
+            /*
+             * done when the predecesor of the target is the target
+             */
+            if (target == predecessors[target]) break;
+
+            /*
+             * Inserting values in the path
+             */
+            auto cost = distances[target] - distances[predecessors[target]];
+            auto vertex_id = graph.graph[predecessors[target]].id;
+            auto edge_id = normal?
+                graph.get_edge_id(predecessors[target], target, cost)
+                : graph.get_edge_id(target, predecessors[target], cost);
+
+            push_front({
+                    vertex_id,
+                    edge_id,
+                    cost,
+                    distances[target] - cost});
+            target = predecessors[target];
+        }
+
+        return;
+    }
 };
 
 
+#endif  // SRC_COMMON_SRC_BASEPATH_SSEC_HPP_

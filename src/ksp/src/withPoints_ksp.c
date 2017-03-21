@@ -27,20 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-
-#include "fmgr.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/time_msg.h"
-#include "./../../common/src/postgres_connection.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/points_input.h"
 #include "./../../withPoints/src/get_new_queries.h"
@@ -48,6 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/debug_macro.h"
 
 PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(withPoints_ksp);
 
 
 /*******************************************************************************/
@@ -111,9 +104,12 @@ process(
     }
 
     PGR_DBG("Starting processing");
-    char *err_msg = NULL;
     clock_t start_t = clock();
-    int errcode = do_pgr_withPointsKsp(
+
+    char *log_msg = NULL;
+    char *notice_msg = NULL;
+    char *err_msg = NULL;
+    do_pgr_withPointsKsp(
             edges,
             total_edges,
             points,
@@ -131,22 +127,24 @@ process(
 
             result_tuples,
             result_count,
+
+            &log_msg,
+            &notice_msg,
             &err_msg);
     time_msg(" processing withPointsKSP", start_t, clock());
 
     PGR_DBG("Returned message = %s\n", err_msg);
 
-    if (!err_msg) free(err_msg);
+    if (err_msg) {
+        if (*result_tuples) free(*result_tuples);
+    }
+    pgr_global_report(log_msg, notice_msg, err_msg);
 
     pfree(edges);
     pfree(edges_of_points);
     pfree(points);
 
     pgr_SPI_finish();
-
-    if (errcode) {
-        pgr_send_error(errcode);
-    }
 
 }
 
@@ -155,12 +153,8 @@ process(
 
 
 
-PG_FUNCTION_INFO_V1(withPoints_ksp);
-PGDLLEXPORT Datum
-withPoints_ksp(PG_FUNCTION_ARGS) {
+PGDLLEXPORT Datum withPoints_ksp(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t             call_cntr;
-    uint32_t             max_calls;
     TupleDesc            tuple_desc;
 
     /*******************************************************************************/
@@ -192,16 +186,16 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         // details BOOLEAN -- DEFAULT false,
 
         PGR_DBG("Calling process");
-        PGR_DBG("initial driving side:%s", pgr_text2char(PG_GETARG_TEXT_P(7)));
+        PGR_DBG("initial driving side:%s", text_to_cstring(PG_GETARG_TEXT_P(7)));
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
-                pgr_text2char(PG_GETARG_TEXT_P(1)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(1)),
                 PG_GETARG_INT64(2),
                 PG_GETARG_INT64(3),
                 PG_GETARG_INT32(4),
                 PG_GETARG_BOOL(5),
                 PG_GETARG_BOOL(6),
-                pgr_text2char(PG_GETARG_TEXT_P(7)),
+                text_to_cstring(PG_GETARG_TEXT_P(7)),
                 PG_GETARG_BOOL(8),
                 &result_tuples,
                 &result_count);
@@ -209,7 +203,11 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
         /*                                                                             */
         /*******************************************************************************/
 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
@@ -222,12 +220,10 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
@@ -247,26 +243,23 @@ withPoints_ksp(PG_FUNCTION_ARGS) {
            OUT seq INTEGER, OUT path_id INTEGER, OUT path_seq INTEGER,
            OUT node BIGINT, OUT edge BIGINT,
            OUT cost FLOAT, OUT agg_cost FLOAT)
-        */
+           */
 
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum((int)(result_tuples[call_cntr].start_id + 1));
-        values[2] = Int32GetDatum(result_tuples[call_cntr].seq);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[4] = Int64GetDatum(result_tuples[call_cntr].edge);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum((int)(result_tuples[funcctx->call_cntr].start_id + 1));
+        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[4] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /*******************************************************************************/
 
         tuple =heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
-
         SRF_RETURN_DONE(funcctx);
     }
 }

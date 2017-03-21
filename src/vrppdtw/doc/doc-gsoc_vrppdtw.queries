@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 --q1
 SELECT DISTINCT(id1) FROM pgr_gsoc_vrppdtw(
     'SELECT * FROM customer ORDER BY id', 25, 200)
@@ -75,3 +79,5 @@ SELECT * FROM pgr_gsoc_vrppdtw(
 (42 rows)
 
 --q4
+ROLLBACK;
+ROLLBACK

@@ -27,22 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
-
-#define DEBUG
 
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/matrixRows_input.h"
 #include "./newTSP_driver.h"
 
@@ -80,7 +71,8 @@ process(
      */
 
     if (initial_temperature < final_temperature) {
-        elog(ERROR, "Condition not met: initial_temperature > final_temperature");
+        elog(ERROR, "Condition not met: initial_temperature"
+               " > final_temperature");
     }
     if (final_temperature <= 0) {
         elog(ERROR, "Condition not met: final_temperature > 0");
@@ -114,12 +106,15 @@ process(
         return;
     }
 
-    char *err_msg = NULL;
-    char *log_msg = NULL;
+
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
+
     do_pgr_tsp(
-            distances,
-            total_distances,
+            distances, total_distances,
             start_vid,
             end_vid,
             initial_temperature,
@@ -133,19 +128,24 @@ process(
             result_tuples,
             result_count,
             &log_msg,
+            &notice_msg,
             &err_msg);
-    time_msg(" processing eucledianTSP", start_t, clock());
-    if (log_msg) {
-        elog(NOTICE, "%s", log_msg);
-        free(log_msg);
-    }
-    if (err_msg) {
-        if (*result_tuples) free(*result_tuples);
-        elog(ERROR, "%s", err_msg);
-        free(err_msg);
+
+    time_msg("eucledianTSP", start_t, clock());
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
     }
 
-    pfree(distances);
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (distances) pfree(distances);
+
     pgr_SPI_finish();
 }
 /*                                                                            */
@@ -155,8 +155,6 @@ PG_FUNCTION_INFO_V1(newTSP);
 PGDLLEXPORT Datum
 newTSP(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t              call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
@@ -196,7 +194,7 @@ newTSP(PG_FUNCTION_ARGS) {
            */
 
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT64(1),
                 PG_GETARG_INT64(2),
 
@@ -216,7 +214,12 @@ newTSP(PG_FUNCTION_ARGS) {
         /*                                                                    */
         /**********************************************************************/
 
-        funcctx->max_calls = (uint32_t) result_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
+
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -231,12 +234,10 @@ newTSP(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
@@ -259,19 +260,16 @@ newTSP(PG_FUNCTION_ARGS) {
         }
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].node);
-        values[2] = Float8GetDatum(result_tuples[call_cntr].cost);
-        values[3] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[2] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[3] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
-
         SRF_RETURN_DONE(funcctx);
     }
 }

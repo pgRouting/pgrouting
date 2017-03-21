@@ -25,13 +25,13 @@ Name
 
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
@@ -65,7 +65,7 @@ Signature Summary
     pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertex)
     pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertices)
     pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 
@@ -83,7 +83,7 @@ The available signature calculates the maximum flow from one source vertex to on
 .. code-block:: none
 
     pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertex,  sink_vertex)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -125,7 +125,7 @@ The available signature calculates the maximum flow from many source vertices to
 .. code-block:: none
 
     pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertex)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -146,7 +146,7 @@ The available signature calculates the maximum flow from many sources to many si
 .. code-block:: none
 
     pgr_maxFlowBoykovKolmogorov(edges_sql, source_vertices,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:

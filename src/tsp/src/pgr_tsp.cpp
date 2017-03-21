@@ -27,10 +27,12 @@
  *
  *  ********************************************************************PGR-GNU*/
 
+
 #include "./pgr_tsp.hpp"
 
 #include <time.h>
 
+#include <utility>
 #include <iomanip>
 #include <limits>
 #include <vector>
@@ -113,7 +115,7 @@ TSP<MATRIX>::find_closest_city(
 #endif
 
     size_t best_city = 0;
-    auto best_distance = std::numeric_limits<double>::max();
+    auto best_distance = (std::numeric_limits<double>::max)();
 #ifndef NDEBUG
     bool found(false);
 #endif
@@ -335,7 +337,8 @@ TSP<MATRIX>::getDeltaSwap(size_t posA, size_t posE) const {
     auto f = current_tour.cities[succ(posE, n)];
 
 #ifndef NDEBUG
-    auto delta = distance(b, e) + distance(e, c) + distance(d, a) + distance(a, f)
+    auto delta = distance(b, e)
+        + distance(e, c) + distance(d, a) + distance(a, f)
         - distance(b, a) - distance(a, c)  - distance(d, e) - distance(e, f);
     auto new_tour(current_tour);
     new_tour.swap(posA, posE);
@@ -376,7 +379,8 @@ TSP<MATRIX>::getDeltaReverse(size_t posA, size_t posC) const {
 
 
 #ifndef NDEBUG
-    auto delta = distance(a, c) + distance(b, d) - distance(a, b) - distance(c, d);
+    auto delta =
+        distance(a, c) + distance(b, d) - distance(a, b) - distance(c, d);
     auto new_tour(current_tour);
     new_tour.reverse(posA, posC);
     auto exactDelta = tourCost(new_tour) - tourCost(current_tour);
@@ -479,9 +483,13 @@ TSP<MATRIX>::annealing(
 
                             auto energyChange = getDeltaReverse(c1, c2);
 
-                            if ( (energyChange < 0 && epsilon < std::fabs(energyChange))
+                            if ( (energyChange < 0
+                                        && epsilon < std::fabs(energyChange))
                                     || (0 < energyChange
-                                        &&  (static_cast<double>(std::rand()) / static_cast<double>(RAND_MAX))  < exp(-energyChange / temperature))) {
+                                        &&  (
+                                            static_cast<double>(std::rand()) /
+                                            static_cast<double>(RAND_MAX))
+                                        < exp(-energyChange / temperature))) {
                                 if (energyChange < 0) ++enchg;
                                 ++reverse_count;
                                 ++pathchg;
@@ -494,6 +502,10 @@ TSP<MATRIX>::annealing(
                         break;
                 case 1: {
                             /* slide */
+                            if (n <= 3) {
+                                break;
+                            }
+
                             pgassert(n > 3);
 
                             auto first = std::rand() % n;
@@ -511,13 +523,19 @@ TSP<MATRIX>::annealing(
                                 last + (place - first) + 1;
 
 
-                            pgassert((place < first || place > last) && (first < last));
+                            pgassert((place < first
+                                        || place > last)
+                                    && (first < last));
 
-                            auto energyChange = getDeltaSlide(place, first, last);
+                            auto energyChange = getDeltaSlide(
+                                    place, first, last);
 
-                            if ((energyChange < 0 && epsilon < std::fabs(energyChange))
+                            if ((energyChange < 0
+                                        && epsilon < std::fabs(energyChange))
                                     || (0 < energyChange
-                                        &&  (static_cast<double>(std::rand()) / static_cast<double>(RAND_MAX))  < exp(-energyChange / temperature))) {
+                                        &&  (static_cast<double>(std::rand())
+                                            / static_cast<double>(RAND_MAX))
+                                        < exp(-energyChange / temperature))) {
                                 if (energyChange < 0) ++enchg;
                                 ++slide_count;
                                 ++pathchg;
@@ -539,7 +557,8 @@ TSP<MATRIX>::annealing(
 
         swapClimb();
         clock_t current_time(clock());
-        double elapsed_time = static_cast<double>(current_time - start_time) / CLOCKS_PER_SEC;
+        double elapsed_time = static_cast<double>(
+                current_time - start_time) / CLOCKS_PER_SEC;
         if (time_limit < elapsed_time) {
             break;
         }

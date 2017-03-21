@@ -22,119 +22,119 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-// #define DEBUG
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
 
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./../../common/src/arrays_input.h"
-#include "./boost_interface_drivedist.h"
+#include "./drivedist_driver.h"
 
 
+PGDLLEXPORT Datum driving_many_to_dist(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(driving_many_to_dist);
 
-static 
-void driving_many_to_dist_driver(
+
+static
+void process(
         char* sql,
-        int64_t *start_vertex, size_t num,
+        ArrayType *starts,
         float8 distance,
         bool directed,
-        bool equicost, 
-        General_path_element_t **path, size_t *path_count) {
+        bool equicost,
+        General_path_element_t **result_tuples,
+        size_t *result_count) {
     pgr_SPI_connect();
+
+    size_t size_start_vidsArr = 0;
+    int64_t* start_vidsArr = pgr_get_bigIntArray(&size_start_vidsArr, starts);
+
     pgr_edge_t *edges = NULL;
     size_t total_tuples = 0;
-
-
-    char *err_msg = (char *)"";
-
-
     pgr_get_edges(sql, &edges, &total_tuples);
 
     if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*path_count) = 0;
-        *path = NULL;
         return;
     }
 
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
+    char* err_msg = NULL;
     do_pgr_driving_many_to_dist(
             edges, total_tuples,
-            start_vertex, num,
+            start_vidsArr, size_start_vidsArr,
             distance,
             directed,
             equicost,
-            path, path_count, &err_msg);
-    time_msg(" processing DrivingDistance many starts", start_t, clock());
+            result_tuples, result_count,
+            &log_msg,
+            &notice_msg,
+            &err_msg);
 
-    pfree(edges);
-    pgr_SPI_finish(); 
+    time_msg("processing pgr_drivingDistance()",
+            start_t, clock());
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+    if (edges) pfree(edges);
+    if (start_vidsArr) pfree(start_vidsArr);
+
+    pgr_SPI_finish();
 }
 
 
-#ifndef _MSC_VER
-Datum driving_many_to_dist(PG_FUNCTION_ARGS);
-#else  // _MSC_VER
-PGDLLEXPORT Datum driving_many_to_dist(PG_FUNCTION_ARGS);
-#endif  // _MSC_VER
-
-
-PG_FUNCTION_INFO_V1(driving_many_to_dist);
-#ifndef _MSC_VER
-Datum
-#else  // _MSC_VER
 PGDLLEXPORT Datum
-#endif
 driving_many_to_dist(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t                  call_cntr;
-    uint32_t                  max_calls;
     TupleDesc            tuple_desc;
-    General_path_element_t  *ret_path = 0;
 
-    /* stuff done only on the first call of the function */
+    /**********************************************************************/
+    General_path_element_t* result_tuples = 0;
+    size_t result_count = 0;
+    /**********************************************************************/
+
     if (SRF_IS_FIRSTCALL()) {
         MemoryContext   oldcontext;
-        size_t path_count = 0;
 
-        /* create a function context for cross-call persistence */
         funcctx = SRF_FIRSTCALL_INIT();
-
-        /* switch to memory context appropriate for multiple function calls */
         oldcontext = MemoryContextSwitchTo(funcctx->multi_call_memory_ctx);
 
-        int64_t* sourcesArr;
-        size_t num;
-
-        sourcesArr = (int64_t*) pgr_get_bigIntArray(&num, PG_GETARG_ARRAYTYPE_P(1));
-        PGR_DBG("sourcesArr size %ld ", num);
+        /**********************************************************************/
 
         PGR_DBG("Calling driving_many_to_dist_driver");
-        driving_many_to_dist_driver(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),  // sql
-                sourcesArr, num,                     // array of sources
-                PG_GETARG_FLOAT8(2),                 // distance
-                PG_GETARG_BOOL(3),                   // directed
-                PG_GETARG_BOOL(4),                   // equicost
-                &ret_path, &path_count);
+        process(
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_FLOAT8(2),
+                PG_GETARG_BOOL(3),
+                PG_GETARG_BOOL(4),
+                &result_tuples, &result_count);
 
-        free(sourcesArr);
+        /**********************************************************************/
 
-        /* total number of tuples to be returned */
-        funcctx->max_calls = (uint32_t) path_count;
-        funcctx->user_fctx = ret_path;
-        if (get_call_result_type(fcinfo, NULL, &tuple_desc) != TYPEFUNC_COMPOSITE)
+
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
+        funcctx->user_fctx = result_tuples;
+        if (get_call_result_type(fcinfo, NULL, &tuple_desc)
+                != TYPEFUNC_COMPOSITE)
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
                      errmsg("function returning record called in context "
@@ -145,50 +145,42 @@ driving_many_to_dist(PG_FUNCTION_ARGS) {
         MemoryContextSwitchTo(oldcontext);
     }
 
-    /* stuff done on every call of the function */
     funcctx = SRF_PERCALL_SETUP();
 
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
-    ret_path = (General_path_element_t*) funcctx->user_fctx;
+    result_tuples = (General_path_element_t*) funcctx->user_fctx;
 
-    /* do when there is more left to send */
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum *values;
         bool* nulls;
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
-        // id, start_v, node, edge, cost, tot_cost
-        nulls[0] = false;
-        nulls[1] = false;
-        nulls[2] = false;
-        nulls[3] = false;
-        nulls[4] = false;
-        nulls[5] = false;
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(ret_path[call_cntr].start_id);
-        values[2] = Int64GetDatum(ret_path[call_cntr].node);
-        values[3] = Int64GetDatum(ret_path[call_cntr].edge);
-        values[4] = Float8GetDatum(ret_path[call_cntr].cost);
-        values[5] = Float8GetDatum(ret_path[call_cntr].agg_cost);
+        /**********************************************************************/
+        size_t numb = 6;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
+        size_t i;
+        for (i = 0; i < numb; ++i) {
+            nulls[i] = false;
+        }
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].start_id);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+
+        /**********************************************************************/
         tuple = heap_form_tuple(tuple_desc, values, nulls);
-
-        /* make the tuple into a datum */
         result = HeapTupleGetDatum(tuple);
 
-        /* clean up (this is not really necessary) */
         pfree(values);
         pfree(nulls);
 
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        /* do when there is no more left */
-        if (ret_path) free(ret_path);
         SRF_RETURN_DONE(funcctx);
     }
 }

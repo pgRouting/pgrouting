@@ -1,7 +1,5 @@
 --These tests used the sample data provided here: http://docs.pgrouting.org/2.2/en/doc/src/developer/sampledata.html#sampledata
 
-BEGIN;
-SET client_min_messages TO NOTICE;
 
 \echo -- q1
 SELECT * FROM pgr_maximumCardinalityMatching(
@@ -15,4 +13,3 @@ SELECT * FROM pgr_maximumCardinalityMatching(
 );
 
 \echo -- q3
-ROLLBACK;

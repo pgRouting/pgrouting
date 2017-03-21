@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 -- q1
 SELECT * FROM pgr_floydWarshall(
     'SELECT id, source, target, cost FROM edge_table where id < 5'
@@ -24,3 +28,6 @@ SELECT * FROM pgr_floydWarshall(
          5 |       2 |        1
 (6 rows)
 
+-- q3
+ROLLBACK;
+ROLLBACK

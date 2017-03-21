@@ -23,12 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
-#if defined(__MINGW32__) || defined(_MSC_VER)
-#include <winsock2.h>
-#include <windows.h>
-#endif
-
+#include "./pgr_pickDeliver.h"
 
 #include <sstream>
 #include <string>
@@ -44,7 +39,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./solution.h"
 #include "./initial_solution.h"
 #include "./optimize.h"
-#include "./pgr_pickDeliver.h"
 
 namespace pgrouting {
 namespace vrp {
@@ -65,18 +59,20 @@ void
 Pgr_pickDeliver::solve() {
 #if 0
     solutions.push_back(Initial_solution(0, this));
-#endif
     solutions.push_back(Initial_solution(1, this));
 
     solutions.push_back(solve(solutions.back()));
+#endif
 
-#if 1
+#if 0
     solutions.push_back(Initial_solution(2, this));
     solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(3, this));
     solutions.push_back(solve(solutions.back()));
+#endif
     solutions.push_back(Initial_solution(4, this));
     solutions.push_back(solve(solutions.back()));
+#if 0
     solutions.push_back(Initial_solution(5, this));
     solutions.push_back(solve(solutions.back()));
     solutions.push_back(Initial_solution(6, this));

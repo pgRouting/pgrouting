@@ -2,7 +2,7 @@
 File: MY_FUNCTION_NAME.sql
 
 Generated with Template by:
-Copyright (c) 2015 pgRouting developers
+Copyright (c) 2016 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer: 
@@ -31,7 +31,7 @@ CREATE OR REPLACE FUNCTION pgr_MY_FUNCTION_NAME(
     MY_QUERY_LINE1
     MY_QUERY_LINE2)
 
-  RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'MY_FUNCTION_NAME'
-    LANGUAGE c IMMUTABLE STRICT;
+RETURNS SETOF RECORD AS
+'$libdir/${PGROUTING_LIBRARY_NAME}', 'MY_FUNCTION_NAME'
+LANGUAGE c IMMUTABLE STRICT;
 

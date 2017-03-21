@@ -27,6 +27,8 @@
  *
  *  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_TSP_SRC_PGR_TSP_HPP_
+#define SRC_TSP_SRC_PGR_TSP_HPP_
 #pragma once
 
 #include <sstream>
@@ -143,3 +145,5 @@ class TSP: public MATRIX {
 }  // namespace pgrouting
 
 #include "pgr_tsp.cpp"
+
+#endif   // SRC_TSP_SRC_PGR_TSP_HPP_

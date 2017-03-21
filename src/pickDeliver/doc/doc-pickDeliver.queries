@@ -1,3 +1,7 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 --q1
 SELECT * FROM _pgr_pickDeliver(
     'select * from customer order by id', 25, 200, 1, 30);
@@ -267,3 +271,5 @@ SELECT * FROM _pgr_pickDeliver(
 (127 rows)
 
 --q3
+ROLLBACK;
+ROLLBACK

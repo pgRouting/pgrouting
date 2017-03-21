@@ -9,7 +9,7 @@
 
 .. _pgr_dijkstraCost:
 
-pgr_dijkstraCost 
+pgr_dijkstraCost
 ===============================================================================
 
 
@@ -21,10 +21,14 @@ Synopsis
 Using Dijkstra algorithm implemented by Boost.Graph, and extract only the
 aggregate cost of the shortest path(s) found, for the combination of vertices given.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html
 
    Boost Graph Inside
+
+.. rubric:: Availability
+
+* pgr_dijkstraCost(all signatures) 2.2.0
 
 The ``pgr_dijkstraCost`` algorithm, is a good choice to calculate the sum of the costs
 of the shortest path for a subset of pairs of nodes of the graph.
@@ -208,28 +212,17 @@ This signature performs a Dijkstra from each ``start_vid`` in  ``start_vids`` to
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../common/src/edges_input.h
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../sql/dijkstra.sql
+.. include:: ./pgr_dijkstra.rst
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
 
-
-
-Description of the return values
-...............................................................................
-
-Returns set of ``(start_vid, end_vid, agg_cost)``
-
-============= ============= =================================================
-Column        Type          Description
-============= ============= =================================================
-**start_vid** ``BIGINT``    Identifier of the starting vertex.
-**end_vid**   ``BIGINT``    Identifier of the ending vertex.
-**agg_cost**  ``FLOAT``     Aggregate cost of the shortest path from ``start_vid`` to ``end_vid``.
-============= ============= =================================================
+.. include:: pgRouting-concepts.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
 Additional Examples
@@ -247,10 +240,6 @@ Additional Examples
     :start-after: --q7
     :end-before: --q8
 
-
-.. rubric:: History
-
-* New in version  2.2.0
 
 
 See Also

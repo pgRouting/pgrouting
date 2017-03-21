@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -12,7 +12,7 @@
 pgr_bdAstar - Bi-directional A* Shortest Path
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: bdAstar(Complete Signaature)
 
 Name
@@ -97,6 +97,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * :ref:`type_cost_result`
-* :ref:`bd_dijkstra`
+* :ref:`pgr_bddijkstra`
 * http://en.wikipedia.org/wiki/Bidirectional_search
 * http://en.wikipedia.org/wiki/A*_search_algorithm

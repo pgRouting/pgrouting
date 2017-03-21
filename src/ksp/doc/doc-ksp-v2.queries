@@ -1,3 +1,5 @@
+BEGIN;
+BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
@@ -45,3 +47,5 @@ NOTICE:  Deprecated function
 (12 rows)
 
 --q3
+ROLLBACK;
+ROLLBACK

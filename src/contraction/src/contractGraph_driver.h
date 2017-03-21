@@ -28,9 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #ifndef SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
 #define SRC_CONTRACTION_SRC_CONTRACTGRAPH_DRIVER_H_
+#pragma once
 
 #include "./../../common/src/pgr_types.h"
-#include "./structs.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,8 +55,10 @@ extern "C" {
         bool directed,
         pgr_contracted_blob **return_tuples,
         size_t *return_count,
-        char ** err_msg);
-    int is_valid_contraction(int64_t number);
+        char **log_msg,
+        char **notice_msg,
+        char **err_msg);
+
 
 #ifdef __cplusplus
 }

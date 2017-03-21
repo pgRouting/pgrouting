@@ -27,25 +27,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
+#include "./../../common/src/postgres_connection.h"
 
-/*
- * Uncomment when needed
- */
-
-// #define DEBUG
-
-#include "fmgr.h"
 #include "./../../common/src/debug_macro.h"
+#include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./../../common/src/edges_input.h"
 #include "./maximum_cardinality_matching_driver.h"
 
@@ -64,58 +51,60 @@ process(
     size_t *result_count) {
     pgr_SPI_connect();
 
-    PGR_DBG("Load data");
     pgr_basic_edge_t *edges = NULL;
+    size_t total_edges = 0;
+    pgr_get_basic_edges(edges_sql, &edges, &total_edges);
 
-    size_t total_tuples = 0;
-
-    pgr_get_basic_edges(edges_sql, &edges, &total_tuples);
-
-    if (total_tuples == 0) {
-        PGR_DBG("No edges found");
-        (*result_count) = 0;
-        (*result_tuples) = NULL;
+    if (total_edges == 0) {
         pgr_SPI_finish();
         return;
     }
-    PGR_DBG("Total %ld tuples in query:", total_tuples);
 
-    PGR_DBG("Starting processing");
+    PGR_DBG("Starting timer");
     clock_t start_t = clock();
+    char* log_msg = NULL;
+    char* notice_msg = NULL;
     char *err_msg = NULL;
+
     do_pgr_maximum_cardinality_matching(
-        edges,
-        directed,
-        total_tuples,
-        result_tuples,
-        result_count,
-        &err_msg);
+            edges, total_edges,
+            directed,
+            result_tuples,
+            result_count,
 
-    time_msg("processing max flow", start_t, clock());
-    PGR_DBG("Returning %ld tuples\n", *result_count);
-    PGR_DBG("Returned message = %s\n", err_msg);
+            &log_msg,
+            &notice_msg,
+            &err_msg);
 
-    free(err_msg);
-    pfree(edges);
+    time_msg("pgr_maximumCardinalityMatching()", start_t, clock());
+
+    if (edges) pfree(edges);
+
+    if (err_msg && (*result_tuples)) {
+        pfree(*result_tuples);
+        (*result_tuples) = NULL;
+        (*result_count) = 0;
+    }
+
+    pgr_global_report(log_msg, notice_msg, err_msg);
+
+    if (log_msg) pfree(log_msg);
+    if (notice_msg) pfree(notice_msg);
+    if (err_msg) pfree(err_msg);
+
+
     pgr_SPI_finish();
 }
-/*                                                                            */
-/******************************************************************************/
 
 PG_FUNCTION_INFO_V1(maximum_cardinality_matching);
 PGDLLEXPORT Datum
 maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     FuncCallContext *funcctx;
-    uint32_t call_cntr;
-    uint32_t max_calls;
     TupleDesc tuple_desc;
 
     /**************************************************************************/
-    /*                          MODIFY AS NEEDED                              */
-    /*                                                                        */
-    pgr_basic_edge_t *result_tuples = 0;
+    pgr_basic_edge_t *result_tuples = NULL;
     size_t result_count = 0;
-    /*                                                                        */
     /**************************************************************************/
 
     if (SRF_IS_FIRSTCALL()) {
@@ -125,25 +114,27 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
 
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
         PGR_DBG("Calling process");
         process(
-            pgr_text2char(PG_GETARG_TEXT_P(0)),
-            PG_GETARG_BOOL(1),
-            &result_tuples,
-            &result_count);
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
+                PG_GETARG_BOOL(1),
+                &result_tuples,
+                &result_count);
 
-        /*                                                                    */
         /**********************************************************************/
 
-        funcctx->max_calls = (uint32_t) result_count;
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
+        funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
-            != TYPEFUNC_COMPOSITE) {
+                != TYPEFUNC_COMPOSITE) {
             ereport(ERROR,
                     (errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-                        errmsg("function returning record called in context "
-                                   "that cannot accept type record")));
+                     errmsg("function returning record called in context "
+                         "that cannot accept type record")));
         }
 
         funcctx->tuple_desc = tuple_desc;
@@ -151,19 +142,16 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (pgr_basic_edge_t *) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr < funcctx->max_calls) {
         HeapTuple tuple;
         Datum result;
         Datum *values;
         bool *nulls;
 
         /**********************************************************************/
-        /*                          MODIFY AS NEEDED                          */
 
         values = palloc(4 * sizeof(Datum));
         nulls = palloc(4 * sizeof(bool));
@@ -174,20 +162,17 @@ maximum_cardinality_matching(PG_FUNCTION_ARGS) {
             nulls[i] = false;
         }
 
-        // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int64GetDatum(result_tuples[call_cntr].edge_id);
-        values[2] = Int64GetDatum(result_tuples[call_cntr].source);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].target);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge_id);
+        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].source);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].target);
+
         /**********************************************************************/
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
-
         SRF_RETURN_DONE(funcctx);
     }
 }

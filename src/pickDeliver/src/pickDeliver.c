@@ -27,21 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-#include "postgres.h"
-#include "executor/spi.h"
-#include "funcapi.h"
+#include "./../../common/src/postgres_connection.h"
 #include "utils/array.h"
-#include "catalog/pg_type.h"
-#if PGSQL_VERSION > 92
-#include "access/htup_details.h"
-#endif
-#include "fmgr.h"
-
-// #define DEBUG
 
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/pgr_types.h"
-#include "./../../common/src/postgres_connection.h"
 #include "./customers_input.h"
 
 #include "./pickDeliver_driver.h"
@@ -138,8 +128,6 @@ PG_FUNCTION_INFO_V1(pickDeliver);
 PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
-    uint32_t              call_cntr;
-    uint32_t               max_calls;
     TupleDesc            tuple_desc;
 
     /**************************************************************************/
@@ -167,7 +155,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
         PGR_DBG("Calling process");
         process(
-                pgr_text2char(PG_GETARG_TEXT_P(0)),
+                text_to_cstring(PG_GETARG_TEXT_P(0)),
                 PG_GETARG_INT32(1),
                 PG_GETARG_FLOAT8(2),
                 PG_GETARG_FLOAT8(3),
@@ -178,7 +166,11 @@ pickDeliver(PG_FUNCTION_ARGS) {
         /*                                                                   */
         /*********************************************************************/
 
+#if PGSQL_VERSION > 95
+        funcctx->max_calls = result_count;
+#else
         funcctx->max_calls = (uint32_t)result_count;
+#endif
         funcctx->user_fctx = result_tuples;
         if (get_call_result_type(fcinfo, NULL, &tuple_desc)
                 != TYPEFUNC_COMPOSITE) {
@@ -193,12 +185,10 @@ pickDeliver(PG_FUNCTION_ARGS) {
     }
 
     funcctx = SRF_PERCALL_SETUP();
-    call_cntr = (uint32_t)funcctx->call_cntr;
-    max_calls = (uint32_t)funcctx->max_calls;
     tuple_desc = funcctx->tuple_desc;
     result_tuples = (General_vehicle_orders_t*) funcctx->user_fctx;
 
-    if (call_cntr < max_calls) {
+    if (funcctx->call_cntr <  funcctx->max_calls) {
         HeapTuple    tuple;
         Datum        result;
         Datum        *values;
@@ -227,15 +217,15 @@ pickDeliver(PG_FUNCTION_ARGS) {
 
 
         // postgres starts counting from 1
-        values[0] = Int32GetDatum(call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[call_cntr].vehicle_id);
-        values[2] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
-        values[3] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[4] = Float8GetDatum(result_tuples[call_cntr].travelTime);
-        values[5] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
-        values[6] = Float8GetDatum(result_tuples[call_cntr].waitTime);
-        values[7] = Float8GetDatum(result_tuples[call_cntr].serviceTime);
-        values[8] = Float8GetDatum(result_tuples[call_cntr].departureTime);
+        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].vehicle_id);
+        values[2] = Int32GetDatum(result_tuples[funcctx->call_cntr].vehicle_seq);
+        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].order_id);
+        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].travelTime);
+        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].arrivalTime);
+        values[6] = Float8GetDatum(result_tuples[funcctx->call_cntr].waitTime);
+        values[7] = Float8GetDatum(result_tuples[funcctx->call_cntr].serviceTime);
+        values[8] = Float8GetDatum(result_tuples[funcctx->call_cntr].departureTime);
 
         /*********************************************************************/
 
@@ -243,9 +233,6 @@ pickDeliver(PG_FUNCTION_ARGS) {
         result = HeapTupleGetDatum(tuple);
         SRF_RETURN_NEXT(funcctx, result);
     } else {
-        // cleanup
-        if (result_tuples) free(result_tuples);
-
         SRF_RETURN_DONE(funcctx);
     }
 }

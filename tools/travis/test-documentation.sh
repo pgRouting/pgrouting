@@ -8,15 +8,10 @@
 
 set -e
 
-OS="$(lsb_release -c -s)"
-
-if [[ "$OS" != "trusty" ]] ; then
-    exit 0
-fi
-
-
 #testing doxygen only on trusty
 
+echo "generating users documentation"
 make doc
+echo "generating developers documentation"
 make doxy
 

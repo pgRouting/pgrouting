@@ -20,12 +20,12 @@ Name
 ``pgr_maxFlowEdmondsKarp`` — Calculates the maximum flow in a directed graph given a source and a destination. Implemented by Boost Graph Library.
 
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html
 
    Boost Graph Inside
@@ -76,7 +76,7 @@ Calculates the maximum flow from one source vertex to one sink vertex on a `dire
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertex)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -96,7 +96,7 @@ Calculates the maximum flow from one source vertex to many sink vertices on a `d
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, source_vertex,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -116,7 +116,7 @@ Calculates the maximum flow from many source vertices to one sink vertex on a `d
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertex)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
@@ -136,7 +136,7 @@ Calculates the maximum flow from many sources to many sinks on a `directed` grap
 .. code-block:: none
 
     pgr_maxFlowEdmondsKarp(edges_sql, source_vertices,  sink_vertices)
-    RETURNS SET OF (id, edge_id, source, target, flow, residual_capacity)
+    RETURNS SET OF (seq, edge_id, source, target, flow, residual_capacity)
       OR EMPTY SET
 
 :Example:
