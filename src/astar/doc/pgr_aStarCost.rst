@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -17,7 +17,7 @@ Name
 
 ``pgr_aStarCost`` — Returns the aggregate cost shortest path using :ref:`astar` algorithm.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org//libs/graph/doc/astar_search.html
 
    Boost Graph Inside
@@ -27,7 +27,7 @@ Name
 Signature Summary
 -----------------
 
-.. include:: ../../proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 
@@ -75,7 +75,7 @@ One to One
     pgr_aStarCost(edges_sql, start_vid, end_vid, directed, heuristic, factor, epsilon)
     RETURNS SET OF (start_vid, end_vid, agg_cost) OR EMPTY SET
 
-:Example: Setting a Heuristic  
+:Example: Setting a Heuristic
 
 .. literalinclude:: doc-aStarCost.queries
    :start-after: --q2
@@ -179,7 +179,7 @@ Description of the Signatures
 ..
     description of the edges_sql queries
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
@@ -211,7 +211,7 @@ Parameter        Type                   Description
 **epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
 ================ ====================== =================================================
 
- 
+
 
 
 Description of the return values

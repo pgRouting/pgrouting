@@ -18,17 +18,18 @@ Name
 
 ``pgr_edgeDisjointPaths`` — Calculates edge disjoint paths between two groups of vertices.
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html
 
    Boost Graph Inside
 
 .. Rubric:: Availability: 2.3.0
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 
 Synopsis

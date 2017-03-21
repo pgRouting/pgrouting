@@ -20,7 +20,7 @@ Name
 a list of vertices.
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
@@ -93,11 +93,11 @@ Complete Signature
 Description of the Signature
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../sql/dijkstraVia.sql
+.. include:: ../sql_queries/dijkstraVia.sql
     :start-after: pgr_dijkstra_via_parameters_start
     :end-before: pgr_dijkstra_via_parameters_end
 

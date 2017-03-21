@@ -18,9 +18,12 @@ Synopsis
 
 ``pgr_maxCardinalityMatch`` — Calculates a maximum cardinality matching in a graph.
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc/maximum_matching.html
 
    Boost Graph Inside
@@ -30,9 +33,6 @@ Synopsis
 * Renamed 2.5.0, Previous name pgr_maximumCardinalityMatching
 * New in 2.3.0
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 .. rubric:: Characteristics
 

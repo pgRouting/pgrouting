@@ -27,9 +27,9 @@ Changes for 2.5.0
   * pgr_bdDijkstraCost(many to many)
   * pgr_bdDijkstraCostMatrix
   * pgr_pushRelabel
-  * pgr_edmondsKarp 
-  * pgr_boykovKolmogorov 
-  * pgr_maxCardinalityMatch 
+  * pgr_edmondsKarp
+  * pgr_boykovKolmogorov
+  * pgr_maxCardinalityMatch
 * Deprecated Signatures
   * pgr_bdastar - use pgr_bdAstar instead
 * Deprecated Functions
@@ -235,7 +235,7 @@ Changes for 2.1.0
    - encapsulates postgreSQL related functions
    - encapsulates Boost.Graph graphs
 
-     - Directed Boost.Graph 
+     - Directed Boost.Graph
      - Undirected Boost.graph
 
    - allow any-integer in the id's
@@ -261,14 +261,15 @@ Changes for 2.0.0
 * Improved build process for Windows
 * Automated testing on Linux and Windows platforms trigger by every commit
 * Modular library design
-* Compatibility with PostgreSQL 9.1 or newer 
-* Compatibility with PostGIS 2.0 or newer 
+* Compatibility with PostgreSQL 9.1 or newer
+* Compatibility with PostGIS 2.0 or newer
 * Installs as PostgreSQL EXTENSION
 * Return types refactored and unified
 * Support for table SCHEMA in function parameters
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
 * Better documentation: http://docs.pgrouting.org
+* shooting_star is discontinued
 
 
 Changes for release 1.05

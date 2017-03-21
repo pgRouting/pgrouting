@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -19,13 +19,13 @@ Name
 ``pgr_withPointsCostMatrix`` - Calculates the shortest path and returns only the aggregate cost of the shortest path(s) found, for the combination of points given.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 
 
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
@@ -42,7 +42,7 @@ Signature Summary
     pgr_withPointsCostMatrix(edges_sql, points_sql, start_vids, directed, driving_side)
     RETURNS SET OF (start_vid, end_vid, agg_cost)
 
-.. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.  
+.. note:: There is no **details** flag, unlike the other members of the withPoints family of functions.
 
 
 Signatures
@@ -103,11 +103,11 @@ Description of the Signatures
     description of the sql queries
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 
@@ -131,7 +131,7 @@ Parameter        Type                   Description
 ================ ====================== =================================================
 
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 

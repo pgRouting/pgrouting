@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -22,16 +22,16 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-This function analyzes oneway streets in a graph and identifies any flipped segments. 
+This function analyzes oneway streets in a graph and identifies any flipped segments.
 
-.. index:: 
+.. index::
 	single: analyzeOneway(Complete Signature)
 
 .. code-block:: sql
 
-	text pgr_analyzeOneway(geom_table text, 
-			       text[] s_in_rules, text[] s_out_rules, 
-                               text[] t_in_rules, text[] t_out_rules, 
+	text pgr_analyzeOneway(geom_table text,
+			       text[] s_in_rules, text[] s_out_rules,
+                               text[] t_in_rules, text[] t_out_rules,
 			       text oneway='oneway', text source='source', text target='target',
 			       boolean two_way_if_null=true);
 
@@ -50,7 +50,7 @@ So by counting the number of edges entering and exiting each node we can identif
 The  edge table to be analyzed must contain a source column and a target column filled with id's of the vertices of the segments and the corresponding vertices table <edge_table>_vertices_pgr that stores the vertices information.
 
   - Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
-  - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table. 
+  - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
 
 .. rubric:: Parameters
 
@@ -61,7 +61,7 @@ The  edge table to be analyzed must contain a source column and a target column 
 :t_out_rules: ``text[]`` target node **out** rules
 :oneway: ``text`` oneway column name name of the network table. Default value is ``oneway``.
 :source: ``text`` Source column name of the network table. Default value is ``source``.
-:target: ``text``  Target column name of the network table.  Default value is ``target``. 
+:target: ``text``  Target column name of the network table.  Default value is ``target``.
 :two_way_if_null: ``boolean`` flag to treat oneway NULL values as bi-directional.  Default value is ``true``.
 
 .. note:: It is strongly recommended to use the named notation. See :ref:`pgr_createVerticesTable <pgr_create_vert_table>` or :ref:`pgr_createTopology <pgr_create_topology>` for examples.
@@ -74,7 +74,7 @@ The function returns:
     * Uses the vertices table: <edge_table>_vertices_pgr.
     * Fills completely the ``ein`` and ``eout`` columns of the vertices table.
 
-  - ``FAIL`` when the analysis was not completed due to an error. 
+  - ``FAIL`` when the analysis was not completed due to an error.
 
     * The vertices table is not found.
     * A required column of the Network table is not found or is not of the appropriate type.
@@ -91,7 +91,7 @@ The structure of the vertices table is:
 :id: ``bigint`` Identifier of the vertex.
 :cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGgraph <pgr_analyze_graph>`.
 :chk: ``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
-:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. 
+:ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming.
 :eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
@@ -106,7 +106,7 @@ Examples
 
 .. code-block:: sql
 
-	SELECT pgr_analyzeOneway('edge_table', 
+	SELECT pgr_analyzeOneway('edge_table',
         ARRAY['', 'B', 'TF'],
         ARRAY['', 'B', 'FT'],
         ARRAY['', 'B', 'FT'],
@@ -121,7 +121,7 @@ Examples
 	NOTICE:  Analysis 100% complete ...
 	NOTICE:  Found 0 potential problems in directionality
 
-	pgr_analyzeoneway 
+	pgr_analyzeoneway
 	-------------------
 	OK
 	(1 row)

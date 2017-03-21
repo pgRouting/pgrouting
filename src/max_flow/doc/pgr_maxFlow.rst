@@ -18,17 +18,17 @@ Synopsis
 
 ``pgr_maxFlow`` — Calculates the maximum flow in a directed graph from the source(s) to the targets(s) using the Push Relabel algorithm.
 
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
-   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
+
+.. figure:: images/boost-inside.jpeg
+   :target: http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 
    Boost Graph Inside
 
 .. Rubric:: Availability: 2.4.0
-
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 
 .. rubric:: Characteristics
@@ -175,7 +175,7 @@ See Also
 --------
 
 * :ref:`maxFlow`
-* http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html 
+* http://www.boost.org/libs/graph/doc/push_relabel_max_flow.html
 * https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm
 
 .. rubric:: Indices and tables
