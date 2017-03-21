@@ -33,7 +33,7 @@ MAYOR=$1
 MINOR=$2
 MICRO=0
 PREV_REL=$4
-RC=""
+RC="-dev"
 
 #---------------------------------------------------------------------
 echo "### Verify branch to be release/$MAYOR.$MINOR"
@@ -51,7 +51,7 @@ else
    echo "\`\`\`"
    echo git checkout release/$MAYOR.$MINOR
    echo "\`\`\`"
-   git checkout release/$MAYOR.$MINOR
+   #git checkout release/$MAYOR.$MINOR
 fi
 
 #---------------------------------------------------------------------
@@ -231,6 +231,7 @@ fi
 
 #---------------------------------------------------------------------
 echo "### Checking signature files"
+test_file 2.4.0
 test_file 2.3.2
 test_file 2.3.1
 test_file 2.3.0
@@ -262,16 +263,17 @@ echo "\`\`\`"
 
 echo - [x] completed local builds
 
-bash tools/release-scripts/compile-release.sh 5
-bash tools/release-scripts/compile-release.sh 4.9
-bash tools/release-scripts/compile-release.sh 4.6
+#bash tools/release-scripts/compile-release.sh 5
+#bash tools/release-scripts/compile-release.sh 4.9
+#bash tools/release-scripts/compile-release.sh 4.6
 bash tools/release-scripts/compile-release.sh 4.8
 
 #---------------------------------------------------------------------
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ curr-sig > build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ curr-sig > build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sigs > build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sigs > build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.3.1 ___sig_generate___ sigs > build/tmp_sigs.txt
 sh tools/release-scripts/get_signatures.sh 2.3.0 ___sig_generate___ sigs > build/tmp_sigs.txt

@@ -443,7 +443,7 @@ Optimize::move_reduce_cost(
     auto to_truck = to;
 
     /*
-     * dont move from a real truck to a phoney truck
+     * don't move from a real truck to a phoney truck
      */
     if (!from_truck.is_phony() && to_truck.is_phony()) {
         return false;

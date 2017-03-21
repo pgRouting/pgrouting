@@ -111,7 +111,7 @@ This usage finds the shortest path from the ``start_vid`` to the ``end_vid`` all
     * and/or **epsilon**.
 
 .. NOTE::
-    In the One to One signature, because of the deprecated signature existance, it is compulsory to indicate if the graph is **directed** or **undirected**.
+    In the One to One signature, because of the deprecated signature existence, it is compulsory to indicate if the graph is **directed** or **undirected**.
 
 :Example: Directed using Heuristic 2
 
