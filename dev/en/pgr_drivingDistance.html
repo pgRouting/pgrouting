@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.4-dev)</title>
+    <title>pgr_drivingDistance &mdash; pgRouting Manual (2.5-dev)</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.0-dev',
+        VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
     <link rel="up" title="Dijkstra - Family of functions" href="dijkstra-family.html" />
     <link rel="next" title="pgr_KSP" href="pgr_KSP.html" />
     <link rel="prev" title="pgr_dijkstraCostMatrix - proposed" href="pgr_dijkstraCostMatrix.html" />
@@ -54,7 +54,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -397,34 +397,7 @@ The edges extracted will conform the corresponding spanning tree.</p>
 <div class="section" id="examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns">
 <h3>Examples for queries marked as <tt class="docutils literal"><span class="pre">directed</span></tt> with <tt class="docutils literal"><span class="pre">cost</span></tt> and <tt class="docutils literal"><span class="pre">reverse_cost</span></tt> columns<a class="headerlink" href="#examples-for-queries-marked-as-directed-with-cost-and-reverse-cost-columns" title="Permalink to this headline">¶</a></h3>
 <p>The examples in this section use the following <a class="reference internal" href="sampledata.html#fig1"><em>Graph 1: Directed, with cost and reverse cost</em></a></p>
-<div class="highlight-python"><div class="highlight"><pre>/*PGR-GNU*****************************************************************
-
-Copyright (c) 2015 pgRouting developers
-Mail: project@pgrouting.org
-
-------
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-********************************************************************PGR-GNU*/
-
-
-
-
-
-SELECT * FROM pgr_drivingDistance(
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM pgr_drivingDistance(
         &#39;SELECT id, source, target, cost, reverse_cost FROM edge_table&#39;,
         2, 3
       );
@@ -770,8 +743,8 @@ SELECT * FROM pgr_drivingDistance(
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 19, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
+      Last updated on Mar 21, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

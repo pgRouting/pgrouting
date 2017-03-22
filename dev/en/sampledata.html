@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sample Data &mdash; pgRouting Manual (2.4-dev)</title>
+    <title>Sample Data &mdash; pgRouting Manual (2.5-dev)</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.0-dev',
+        VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
     <link rel="next" title="pgRouting Concepts" href="pgRouting-concepts.html" />
     <link rel="prev" title="Support" href="support.html" />
 <meta charset='utf-8'>
@@ -53,7 +53,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -112,7 +112,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Sample Data</a><ul>
 <li><a class="reference internal" href="#images">Images</a><ul>
-<li><a class="reference internal" href="#pick-deliver-data">Pick &amp; Deliver Data</a></li>
+<li><a class="reference internal" href="#pgr-gsoc-vrppdtw-data">pgr_gsoc_vrppdtw data</a></li>
 </ul>
 </li>
 </ul>
@@ -170,6 +170,8 @@ To be able to execute the sample queries, run the following SQL commands to crea
     target BIGINT,
     cost FLOAT,
     reverse_cost FLOAT,
+    capacity BIGINT,
+    reverse_capacity BIGINT,
     category_id INTEGER,
     reverse_category_id INTEGER,
     x1 FLOAT,
@@ -184,26 +186,27 @@ To be able to execute the sample queries, run the following SQL commands to crea
 <div class="highlight-python"><div class="highlight"><pre>INSERT INTO edge_table (
     category_id, reverse_category_id,
     cost, reverse_cost,
+    capacity, reverse_capacity,
     x1, y1,
     x2, y2) VALUES 
-(3, 1,    1,  1,  2,   0,    2, 1),
-(3, 2,   -1,  1,  2,   1,    3, 1),
-(2, 1,   -1,  1,  3,   1,    4, 1),
-(2, 4,    1,  1,  2,   1,    2, 2),
-(1, 4,    1, -1,  3,   1,    3, 2),
-(4, 2,    1,  1,  0,   2,    1, 2),
-(4, 1,    1,  1,  1,   2,    2, 2),
-(2, 1,    1,  1,  2,   2,    3, 2),
-(1, 3,    1,  1,  3,   2,    4, 2),
-(1, 4,    1,  1,  2,   2,    2, 3),
-(1, 2,    1, -1,  3,   2,    3, 3),
-(2, 3,    1, -1,  2,   3,    3, 3),
-(2, 4,    1, -1,  3,   3,    4, 3),
-(3, 1,    1,  1,  2,   3,    2, 4),
-(3, 4,    1,  1,  4,   2,    4, 3),
-(3, 3,    1,  1,  4,   1,    4, 2),
-(1, 2,    1,  1,  0.5, 3.5,  1.999999999999,3.5),
-(4, 1,    1,  1,  3.5, 2.3,  3.5,4);
+(3, 1,    1,  1,  80, 130,   2,   0,    2, 1),
+(3, 2,   -1,  1,  -1, 100,   2,   1,    3, 1),
+(2, 1,   -1,  1,  -1, 130,   3,   1,    4, 1),
+(2, 4,    1,  1, 100,  50,   2,   1,    2, 2),
+(1, 4,    1, -1, 130,  -1,   3,   1,    3, 2),
+(4, 2,    1,  1,  50, 100,   0,   2,    1, 2),
+(4, 1,    1,  1,  50, 130,   1,   2,    2, 2),
+(2, 1,    1,  1, 100, 130,   2,   2,    3, 2),
+(1, 3,    1,  1, 130,  80,   3,   2,    4, 2),
+(1, 4,    1,  1, 130,  50,   2,   2,    2, 3),
+(1, 2,    1, -1, 130,  -1,   3,   2,    3, 3),
+(2, 3,    1, -1, 100,  -1,   2,   3,    3, 3),
+(2, 4,    1, -1, 100,  -1,   3,   3,    4, 3),
+(3, 1,    1,  1,  80, 130,   2,   3,    2, 4),
+(3, 4,    1,  1,  80,  50,   4,   2,    4, 3),
+(3, 3,    1,  1,  80,  80,   4,   1,    4, 2),
+(1, 2,    1,  1, 130, 100,   0.5, 3.5,  1.999999999999,3.5),
+(4, 1,    1,  1,  50, 130,   3.5, 2.3,  3.5,4);
 
 UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
 dir = CASE WHEN (cost&gt;0 AND reverse_cost&gt;0) THEN &#39;B&#39;   -- both ways
@@ -273,7 +276,8 @@ INSERT INTO restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
 <ul class="simple">
 <li>Used with the <a class="reference internal" href="flow-family.html#maxflow"><em>Flow - Family of functions</em></a> functions.</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre>CREATE TABLE categories (
+<div class="highlight-python"><div class="highlight"><pre>/*
+CREATE TABLE categories (
     category_id INTEGER,
     category text,
     capacity BIGINT
@@ -284,6 +288,7 @@ INSERT INTO categories VALUES
 (2, &#39;Category 2&#39;, 100),
 (3, &#39;Category 3&#39;,  80),
 (4, &#39;Category 4&#39;,  50);
+*/
 </pre></div>
 </div>
 <p class="rubric">Vertex table</p>
@@ -334,21 +339,23 @@ INSERT INTO vertex_table VALUES
 <a class="reference internal image-reference" href="_images/Fig4-costUndirected.png"><img alt="_images/Fig4-costUndirected.png" src="_images/Fig4-costUndirected.png" style="width: 131.2px; height: 127.2px;" /></a>
 <p class="caption"><strong>Graph 4: Undirected, with cost</strong></p>
 </div>
-<div class="section" id="pick-deliver-data">
-<span id="pickdeliverdata"></span><h3>Pick &amp; Deliver Data<a class="headerlink" href="#pick-deliver-data" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="pgr-gsoc-vrppdtw-data">
+<span id="pickdeliverdata"></span><h3>pgr_gsoc_vrppdtw data<a class="headerlink" href="#pgr-gsoc-vrppdtw-data" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre>DROP TABLE IF EXISTS customer CASCADE;
-CREATE TABLE customer (
-    id INTEGER NOT NULL PRIMARY KEY,
-    x INTEGER,
-    y INTEGER,
-    demand INTEGER,
-    openTime INTEGER,
-    closeTime INTEGER, 
-    serviceTime INTEGER, 
-    pindex INTEGER,
-    dindex INTEGER 
-    );
-copy customer (id, x, y, demand, openTime, closeTime, serviceTime, pindex, dindex) from stdin;
+CREATE table customer (
+                id BIGINT not null primary key,
+                x DOUBLE PRECISION,
+                y DOUBLE PRECISION,
+                demand INTEGER,
+                opentime INTEGER,
+                closetime INTEGER, 
+                servicetime INTEGER, 
+                pindex BIGINT,
+                dindex BIGINT 
+                );
+
+
+COPY customer (id, x, y, demand, opentime, closetime, servicetime, pindex, dindex) FROM stdin;  
 0	40	50	0	0	1236	0	0	0
 1	45	68	-10	912	967	90	11	0
 2	45	70	-20	825	870	90	6	0
@@ -456,6 +463,7 @@ copy customer (id, x, y, demand, openTime, closeTime, serviceTime, pindex, dinde
 104	88	35	-20	109	170	90	78	0
 105	5	45	-10	665	716	90	36	0
 106	60	85	-30	561	622	90	97	0
+\.
 </pre></div>
 </div>
 </div>
@@ -474,8 +482,8 @@ copy customer (id, x, y, demand, openTime, closeTime, serviceTime, pindex, dinde
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 19, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
+      Last updated on Mar 21, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>

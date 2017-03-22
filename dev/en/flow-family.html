@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Flow - Family of functions &mdash; pgRouting Manual (2.4-dev)</title>
+    <title>Flow - Family of functions &mdash; pgRouting Manual (2.5-dev)</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     'v2.4.0-dev',
+        VERSION:     'v2.5.0-dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,9 +31,9 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="pgRouting Manual (2.4-dev)" href="index.html" />
+    <link rel="top" title="pgRouting Manual (2.5-dev)" href="index.html" />
     <link rel="up" title="Stable proposed Functions" href="proposed.html" />
-    <link rel="next" title="pgr_maxFlow Proposed" href="pgr_maxFlow.html" />
+    <link rel="next" title="pgr_maxFlow - Proposed" href="pgr_maxFlow.html" />
     <link rel="prev" title="pgr_contractGraph - Proposed" href="pgr_contractGraph.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -54,7 +54,7 @@
         </button>
         <a class="navbar-brand" href="index.html"><span><img src="_static/pgrouting.png"></span>
           pgRouting</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.4.0-dev</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.5.0-dev</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -111,8 +111,9 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Flow - Family of functions</a></li>
-<li><a class="reference internal" href="#problem-definition">Problem definition</a><ul>
+<li><a class="reference internal" href="#">Flow - Family of functions</a><ul>
+<li><a class="reference internal" href="#flow-functions-general-information">Flow Functions General Information</a></li>
+<li><a class="reference internal" href="#problem-definition">Problem definition</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
@@ -129,7 +130,7 @@
     </a>
   </li>
   <li>
-    <a href="pgr_maxFlow.html" title="Next Chapter: pgr_maxFlow Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_maxFlow Prop... &raquo;</span>
+    <a href="pgr_maxFlow.html" title="Next Chapter: pgr_maxFlow - Proposed"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">pgr_maxFlow - Pr... &raquo;</span>
     </a>
   </li>
               
@@ -160,13 +161,13 @@
   <div class="section" id="flow-family-of-functions">
 <span id="maxflow"></span><h1>Flow - Family of functions<a class="headerlink" href="#flow-family-of-functions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow Proposed</em></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
-<li><a class="reference internal" href="pgr_maxFlowBoykovKolmogorov.html#pgr-maxflowboykovkolmogorov"><em>pgr_maxFlowBoykovKolmogorov - Proposed</em></a> - Boykov and Kolmogorov with details of flow on edges.</li>
-<li><a class="reference internal" href="pgr_maxFlowEdmondsKarp.html#pgr-maxflowedmondskarp"><em>pgr_maxFlowEdmondsKarp - Proposed</em></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
-<li><a class="reference internal" href="pgr_maxFlowPushRelabel.html#pgr-maxflowpushrelabel"><em>pgr_maxFlowPushRelabel Proposed</em></a> - Push and relabel algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow - Proposed</em></a> - Only the Max flow calculation using Push and Relabel algorithm.</li>
+<li><a class="reference internal" href="pgr_boykovKolmogorov.html#pgr-boykovkolmogorov"><em>pgr_boykovKolmogorov - Proposed</em></a> - Boykov and Kolmogorov with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><em>pgr_edmondsKarp - Proposed</em></a> - Edmonds and Karp algorithm with details of flow on edges.</li>
+<li><a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><em>pgr_pushRelabel - Proposed</em></a> - Push and relabel algorithm with details of flow on edges.</li>
 <li>Applications<ul>
 <li><a class="reference internal" href="pgr_edgeDisjointPaths.html#pgr-edgedisjointpaths"><em>pgr_edgeDisjointPaths - Proposed</em></a> - Calculates edge disjoint paths between two groups of vertices.</li>
-<li><a class="reference internal" href="pgr_maximumCardinalityMatching.html#pgr-maximumcardinalitymatching"><em>pgr_maximumCardinalityMatching - Proposed</em></a> - Calculates a maximum cardinality matching in a graph.</li>
+<li><a class="reference internal" href="pgr_maxCardinalityMatch.html#pgr-maxcardinalitymatch"><em>pgr_maxCardinalityMatch - Proposed</em></a> - Calculates a maximum cardinality matching in a graph.</li>
 </ul>
 </li>
 </ul>
@@ -194,9 +195,32 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<div class="section" id="flow-functions-general-information">
+<h2>Flow Functions General Information<a class="headerlink" href="#flow-functions-general-information" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Characteristics</p>
+<ul class="simple">
+<li>The graph is <strong>directed</strong>.</li>
+<li>Process is done only on edges with positive capacities.</li>
+<li>When the maximum flow is 0 then there is no flow and <strong>EMPTY SET</strong> is returned.<ul>
+<li>There is no flow when a <strong>source</strong> is the same as a <strong>target</strong>.</li>
+</ul>
+</li>
+<li>Any duplicated value in the source(s) or target(s) are ignored.</li>
+<li>Calculates the flow/residual capacity for each edge. In the output<ul>
+<li>Edges with zero flow are omitted.</li>
+</ul>
+</li>
+<li>Creates a <strong>super source</strong> and edges to all the source(s), and a <strong>super target</strong> and the edges from all the targets(s).</li>
+<li>The maximum flow through the graph is guaranteed to be the value returned by <a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow</em></a> when executed with the same parameters and can be calculated:<ul>
+<li>By aggregation of the outgoing flow from the sources</li>
+<li>By aggregation of the incoming flow to the targets</li>
+</ul>
+</li>
+</ul>
+<p><a class="reference internal" href="pgr_maxFlow.html#pgr-maxflow"><em>pgr_maxFlow</em></a>  is the  maximum Flow and that maximum is guaranteed to be the same on the functions <a class="reference internal" href="pgr_pushRelabel.html#pgr-pushrelabel"><em>pgr_pushRelabel</em></a>, <a class="reference internal" href="pgr_edmondsKarp.html#pgr-edmondskarp"><em>pgr_edmondsKarp</em></a>, <a class="reference internal" href="pgr_boykovKolmogorov.html#pgr-boykovkolmogorov"><em>pgr_boykovKolmogorov</em></a>, but the actual flow through each edge may vary.</p>
 </div>
 <div class="section" id="problem-definition">
-<h1>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h1>
+<h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
 <p>A flow network is a directed graph where each edge has a capacity and a flow.
 The flow through an edge must not exceed the capacity of the edge.
 Additionally, the incoming and outgoing flow of a node must be equal except the for source which only has outgoing flow, and the destination(sink) which only has incoming flow.</p>
@@ -232,7 +256,7 @@ Given the following query:</p>
 <div><p><span class="math">\(pgr\_maxFlow(edges\_sql, source, sink) = \boldsymbol{\Phi}\)</span></p>
 <p><span class="math">\(\boldsymbol{\Phi} = {(id_i, edge\_id_i, source_i, target_i, flow_i, residual\_capacity_i)}\)</span></p>
 </div></blockquote>
-<p>where:</p>
+<p>Where:</p>
 <blockquote>
 <div><p><span class="math">\(\boldsymbol{\Phi}\)</span> is a subset of the original edges with their residual capacity and flow. The maximum flow through the graph can be obtained by aggregating on the source or sink and summing the flow from/to it. In particular:</p>
 <ul class="simple">
@@ -241,6 +265,7 @@ Given the following query:</p>
 <li><span class="math">\(residual\_capacity_i = capacity_i - flow_i\)</span></li>
 </ul>
 </div></blockquote>
+</div>
 <div class="section" id="see-also">
 <h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -261,8 +286,8 @@ Given the following query:</p>
       
     </p>
     <p>
-        &copy; Copyright pgRouting Contributors - Version v2.4.0-dev.<br/>
-      Last updated on Mar 19, 2017.<br/>
+        &copy; Copyright pgRouting Contributors - Version v2.5.0-dev.<br/>
+      Last updated on Mar 21, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
     </p>
   </div>
