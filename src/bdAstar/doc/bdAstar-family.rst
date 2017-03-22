@@ -14,9 +14,9 @@ Bidirectional A* - Family of functions
 
 .. index from here
 
-  - :ref:`pgr_bdAstar` - A* algorithm for the shortest paths.
-  - :ref:`pgr_bdAstarCost` - A* algorithm for the shortest path's cost.
-  - :ref:`pgr_bdAstarCostMatrix` - A* algorithm for obtaining a :ref:`costMatrix`.
+* :ref:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths.
+* :ref:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths.
+* :ref:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths.
 
 .. index to here
 

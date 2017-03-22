@@ -55,6 +55,12 @@ As part of the :ref:`dijkstra`
    :start-after: index from here
    :end-before: index to here
 
+:ref:`maxFlow`
+
+.. include:: flow-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
 :ref:`withPoints`
 
 .. include:: withPoints-family.rst
@@ -126,12 +132,6 @@ Experimental and Proposed functions
 :ref:`contraction` - Reduce network size using contraction techniques
 
 - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
-
-:ref:`maxFlow`
-
-.. include:: flow-family.rst
-   :start-after: index from here
-   :end-before: index to here
 
 
 .. rubric:: Graph Analysis

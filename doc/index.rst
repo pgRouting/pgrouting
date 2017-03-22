@@ -112,7 +112,7 @@ General
 Available Functions but not official pgRouting functions
 ===============================================================================
 
-- :ref:`stable`
+- :ref:`Stable`
 - :ref:`proposed`
 
 .. toctree::
