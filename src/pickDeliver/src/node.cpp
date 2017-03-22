@@ -32,12 +32,6 @@ bool Node::isSamePos(const Node &other) const {
     return comparable_distance(other) == 0;
 }
 
-#if 0
-double Node::travel_time_to(const Node &other) const {
-    return distance(other);
-}
-#endif
-
 std::ostream& operator << (std::ostream &log, const Node &node) {
     log << node.m_original_id
         << "(" << node.m_id << ")"

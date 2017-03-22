@@ -9,3 +9,4 @@ SELECT * FROM pgr_johnson(
          ORDER BY id',
     false
 );
+\echo -- q3

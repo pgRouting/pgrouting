@@ -149,7 +149,7 @@ if (length($psql)) {
         $psql = "\"$psql\"";
     }
 }
-print "Operative system found: $OS";
+print "Operative system found: $OS\n";
 
 
 # Traverse desired filesystems
@@ -244,7 +244,7 @@ sub run_test {
         for my $x (@{$t->{tests}}) {
             process_single_test($x, $dir,, $DBNAME, \%res)
         }
-        if ($OS =~ /msys/ || $OS=~/MSW/ || $OS =~ /cygwin/) {
+        if ($OS =~/msys/ || $OS=~/MSW/ || $OS =~/cygwin/) {
             for my $x (@{$t->{windows}}) {
                 process_single_test($x, $dir,, $DBNAME, \%res)
             }
@@ -283,20 +283,16 @@ sub process_single_test{
     $level = "DEBUG1" if $DEBUG1;
 
 
-    #reason of opening conection is because the set client_min_messages to warning;
     if ($DOCUMENTATION) {
         mysystem("mkdir -p '$dir/../doc' "); # make sure the directory exists
-        open(PSQL, "|$psql $connopts -v client_min_messages=$level --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
+        open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/../doc/$x.queries 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             $stats{z_fail}++;
             next;
         };
-        #print PSQL "set client_min_messages to NOTICE;\n";
-        #print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-        #print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
     }
     else {
-        open(PSQL, "|$psql $connopts -v client_min_messages=$level --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
+        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             if (!$INTERNAL_TESTS) {
                $stats{z_fail}++;
@@ -304,18 +300,21 @@ sub process_single_test{
             next;
         };
     }
-    #print PSQL "set client_min_messages to NOTICE;\n";
-    #print PSQL "set client_min_messages to WARNING;\n" if $ignore;
-    #print PSQL "set client_min_messages to DEBUG1;\n" if $DEBUG1;
+
 
     my @d = ();
     @d = <TIN>; #reads the whole file into the array @d 
-    print PSQL "BEGIN;\n";
-    print PSQL @d; #prints the whole fle stored in @d
-    print PSQL "\nROLLBACK;\n";
 
-    close(PSQL); #executes everything
-    close(TIN); #closes the input file  /TIN = test input
+    print PSQL "BEGIN;\n";
+    print PSQL "SET client_min_messages TO $level;\n";
+    #prints the whole fle stored in @d
+    print PSQL @d;
+    print PSQL "\nROLLBACK;";
+
+    # executes everything
+    close(PSQL);
+    #closes the input file  /TIN = test input
+    close(TIN);
 
     return if $DOCUMENTATION;
 
@@ -405,7 +404,6 @@ sub createTestDB {
     }
     #
 #    else {
-#        if ($vpgis && dbExists("template_postgis_$vpgis")) {
 #            $template = "template_postgis_$vpgis";
 #        }
 #        elsif (dbExists('template_postgis')) {

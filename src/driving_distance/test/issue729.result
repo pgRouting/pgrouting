@@ -1,0 +1,5 @@
+NOTICE:  column "node_count" of relation "edge_table" does not exist, skipping
+NOTICE:  column "another_column" of relation "edge_table" does not exist, skipping
+NOTICE:  table "network" does not exist, skipping
+NOTICE:  column "node_count" of relation "network" does not exist, skipping
+NOTICE:  column "another_column" of relation "network" does not exist, skipping

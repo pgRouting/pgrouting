@@ -21,5 +21,9 @@ BEGIN;
 
     \i sampledata.sql
     \i pickDeliver_pgtap_data.sql
+    \i innerQuery.sql
+    \i innerQuery_old.sql
+    \i inner_styles.sql
+    \i old_inner_styles.sql
 
 END;

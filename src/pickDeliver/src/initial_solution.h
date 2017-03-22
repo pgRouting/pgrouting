@@ -23,11 +23,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
+#ifndef SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_
+#define SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_
 #pragma once
 
 #include <set>
 #include <deque>
+#include "./orders.h"
 #include "./solution.h"
+#include "./../../common/src/identifiers.hpp"
 
 namespace pgrouting {
 namespace vrp {
@@ -40,7 +44,7 @@ class Initial_solution : public Solution {
  public:
      Initial_solution(
              int kind,
-             const Pgr_pickDeliver *problem);
+             size_t);
 
      void invariant() const;
 
@@ -48,30 +52,18 @@ class Initial_solution : public Solution {
      /*
       * one truck per order
       */
-     void one_truck_per_order();
      void one_truck_all_orders();
-     void push_back_while_feasable();
-     void push_front_while_feasable();
-     void insert_while_feasable();
 
-     void insert_while_compatibleJ();
-     void fill_truck_while_compatibleJ(
-             Vehicle_pickDeliver &truck,
-             std::set<size_t> &possible_orders);
-     std::deque<size_t> first_ordersIJ() const;
-
-     void insert_while_compatibleI();
-     void fill_truck_while_compatibleI(
-             Vehicle_pickDeliver &truck,
-             std::set<size_t> &possible_orders);
-     std::deque<size_t> first_ordersJI() const;
+     void do_while_foo(int kind);
 
 
  private:
-     std::set<size_t> all_orders;
-     std::set<size_t> unassigned;
-     std::set<size_t> assigned;
+     Identifiers<size_t> all_orders;
+     Identifiers<PD_Orders::OID> unassigned;
+     Identifiers<size_t> assigned;
 };
 
 }  //  namespace vrp
-}  //  namespace pgRouting
+}  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_INITIAL_SOLUTION_H_

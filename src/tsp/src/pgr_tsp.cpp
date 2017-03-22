@@ -502,6 +502,10 @@ TSP<MATRIX>::annealing(
                         break;
                 case 1: {
                             /* slide */
+                            if (n <= 3) {
+                                break;
+                            }
+
                             pgassert(n > 3);
 
                             auto first = std::rand() % n;

@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -19,19 +19,21 @@ Name
 ``pgr_withPointsKSP`` - Find the K shortest paths using Yen's algorithm.
 
 
-.. include:: ../../proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.2.0
+
 Synopsis
 -------------------------------------------------------------------------------
 
-Modifies the graph to include the points defined in the ``points_sql`` and 
+Modifies the graph to include the points defined in the ``points_sql`` and
 using Yen algorithm, finds the K shortest paths.
 
 
@@ -99,11 +101,11 @@ Description of the Signatures
 ..
     description of the sql queries
 
-.. include:: ../../common/src/edges_input.h
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
-.. include:: ../../common/src/points_input.h
+.. include:: pgRouting-concepts.rst
     :start-after: points_sql_start
     :end-before: points_sql_end
 
@@ -145,10 +147,10 @@ Column           Type              Description
 **path_seq** ``INTEGER`` Relative position in the path of node and edge. Has value 1 for the beginning of a path.
 **path_id**  ``INTEGER``  Path identifier. The ordering of the paths: For two paths i, j if i < j then agg_cost(i) <= agg_cost(j).
 **node**     ``BIGINT``  Identifier of the node in the path. Negative values are the identifiers of a point.
-**edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence. 
+**edge**     ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence.
                            - ``-1`` for the last row in the path sequence.
 
-**cost**     ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence. 
+**cost**     ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence.
                            - ``0`` for the last row in the path sequence.
 
 **agg_cost** ``FLOAT``   Aggregate cost from ``start_pid`` to ``node``.
@@ -183,7 +185,7 @@ The queries use the :ref:`sampledata` network.
 See Also
 -------------------------------------------------------------------------------
 
-* :ref:`withPoints` 
+* :ref:`withPoints`
 
 .. rubric:: Indices and tables
 

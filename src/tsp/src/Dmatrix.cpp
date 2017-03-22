@@ -116,6 +116,7 @@ bool
 Dmatrix::has_no_infinity() const {
     for (const auto &row : costs) {
         for (const auto &val : row) {
+            if (val == (std::numeric_limits<double>::infinity)()) return false;
             if (val == (std::numeric_limits<double>::max)()) return false;
         }
     }
@@ -178,7 +179,10 @@ std::ostream& operator<<(std::ostream &log, const Dmatrix &matrix) {
                 << "," << matrix.get_index(matrix.ids[j]) << ")"
                 << "\t = " << cost
                 << "\t = " << matrix.costs[i][j]
-                << "\t = " << matrix.costs[j][i] << "\n";
+                << "\t = " << matrix.costs[j][i]
+                << "=inf:" <<  (matrix.costs[i][j] == (std::numeric_limits<double>::infinity)())
+                << "=inf:" <<  (matrix.costs[j][i] == (std::numeric_limits<double>::infinity)())
+                << "\n";
             ++j;
         }
         ++i;

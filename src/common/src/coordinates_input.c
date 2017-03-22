@@ -132,6 +132,8 @@ void pgr_get_coordinates(
         }
     }
 
+    SPI_cursor_close(SPIportal);
+
 
     if (total_tuples == 0) {
         (*total_coordinates) = 0;

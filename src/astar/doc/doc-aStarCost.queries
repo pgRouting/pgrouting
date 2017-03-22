@@ -1,3 +1,5 @@
+BEGIN;
+BEGIN
 SET client_min_messages TO NOTICE;
 SET
 --q1
@@ -52,3 +54,5 @@ SELECT * FROM pgr_aStarCost(
 (4 rows)
 
 --q6
+ROLLBACK;
+ROLLBACK

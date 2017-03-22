@@ -312,7 +312,7 @@ bool Pgr_deadend<G>::is_dead_end(G &graph, V v) {
          @enddot
 
          */
-        
+
         auto adjacent_vertices = graph.find_adjacent_vertices(v);
         if (adjacent_vertices.size() == 1) {
             return true;

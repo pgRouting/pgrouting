@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -18,15 +18,15 @@ Name
 
 ``pgr_gsoc_vrppdtw`` — Returns a solution for `Pick and Delivery` with `time windows` Vehicle Routing Problem
 
-.. include:: ../../proposed.rst
-   :start-after: begin-warning
-   :end-before: end-warning
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 
 Signature Summary
 -----------------
 
-     
+
 .. code-block:: none
 
     pgr_gsoc_vrppdtw(sql, vehicle_num, capacity)
@@ -35,7 +35,7 @@ Signature Summary
 Signatures
 -----------
 
-.. index:: 
+.. index::
     single: gsoc_vrppdtw(Complete Signature) - proposed
 
 
@@ -48,7 +48,7 @@ Complete signature
     Returns set of pgr_costResult[]:
 
 
-.. rubric:: Example: Show the id1
+.. rubric:: Example:
 
 .. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
    :start-after: --q1
@@ -58,7 +58,7 @@ Complete signature
 Description of the Signatures
 -------------------------------
 
-Description of the sql query
+Description of the inner sql query
 .........................................................................................
 
 ================  ===================   =================================================
@@ -78,8 +78,8 @@ Column            Type                  Description
 **openTime**      ``ANY-NUMERICAL``     The time relative to 0, when the customer opens.
 **closeTime**     ``ANY-NUMERICAL``     The time relative to 0, when the customer closes.
 **serviceTime**   ``ANY-NUMERICAL``     The duration of the loading / unloading.
-**pickup_id**     ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
-**deliver_id**    ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
+**pIndex**        ``ANY-INTEGER``       Value used when the current customer is a Delivery to find the corresponding Pickup
+**dIndex**        ``ANY-INTEGER``       Value used when the current customer is a Pickup to find the corresponding Delivery
 ================  ===================   =================================================
 
 Description of the parameters of the signatures
@@ -110,25 +110,8 @@ Column             Type            Description
 
 
 
-Examples
--------------------------------------------------------------------------------
-
-.. rubric:: Example: Total number of rows returned
-
-.. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
-   :start-after: --q2
-   :end-before: --q3
-
-.. rubric:: Example: Results for only id1 values: 1, 5, and 9
-
-.. literalinclude:: ../doc/doc-gsoc_vrppdtw.queries
-   :start-after: --q3
-   :end-before: --q4
-
-
 See Also
 -------------------------------------------------------------------------------
 
-* The examples use :ref:`pickDeliverData`
-* current implementation is a wrapper of :ref:`pgr_pickDeliver`
+* The example use :ref:`pickDeliverData`
 * http://en.wikipedia.org/wiki/Vehicle_routing_problem

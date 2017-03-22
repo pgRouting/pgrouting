@@ -151,13 +151,6 @@ do_pgr_withPointsKsp(
             paths = fn_yen.Yen(undigraph, start_vid, end_vid, k, heap_paths);
         }
 
-#if 0
-        for (auto &path : paths) {
-            path.print_path(log);
-            adjust_pids(points, path);
-            path.print_path(log);
-        }
-#endif
 
         if (!details) {
             for (auto &path : paths) {

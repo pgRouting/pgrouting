@@ -94,8 +94,8 @@ BEGIN
 
     IF (restrictions_sql IS NULL OR length(restrictions_sql) = 0) THEN
         -- no restrictions then its a dijkstra
-        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
-        FROM pgr_dijkstra(new_sql, start_vid, end_vid, directed);
+        RETURN query SELECT a.seq - 1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+        FROM pgr_dijkstra(new_sql, start_vid, end_vid, directed) a;
         RETURN;
     END IF;
 
@@ -194,13 +194,13 @@ BEGIN
 
     IF (turn_restrict_sql IS NULL OR length(turn_restrict_sql) = 0) THEN
         -- no restrictions then its a with points
-        RETURN query SELECT seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
+        RETURN query SELECT a.seq-1 AS seq, node::INTEGER AS id1, edge::INTEGER AS id2, cost
         FROM pgr_withpoints(new_sql,
             '(SELECT 1 as pid, ' || source_eid || 'as edge_id, ' || source_pos || '::float8 as fraction)'
             || ' UNION '
             || '(SELECT 2, ' || target_eid || ', ' || target_pos || ')' ::TEXT,
-            -1, -2, directed)
-        WHERE node != -2;
+            -1, -2, directed) a;
+        -- WHERE node != -2;
         RETURN;
     END IF;
 

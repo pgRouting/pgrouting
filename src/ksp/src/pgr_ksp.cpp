@@ -93,6 +93,7 @@ Pgr_ksp< G >::Yen(G &graph,
 
     if (!heap_paths && l_ResultList.size() > (size_t) K)
         l_ResultList.resize(K);
+
     return l_ResultList;
 }
 

@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./postgres_connection.h"
 
 #define PGR_DBG(...) \
-    elog(DEBUG1, __VA_ARGS__)
+    elog(DEBUG3, __VA_ARGS__)
 #else
 #define PGR_DBG(...) do { ; } while (0)
 #endif

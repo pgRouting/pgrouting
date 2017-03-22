@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-/* ******** FOR USERS DOCUMENTATION
+/*FOR USERS DOCUMENTATION
 
 pgr_dijkstra_via_parameters_start
 
@@ -47,7 +47,7 @@ Parameter           Type                   Default   Description
 
 pgr_dijkstra_via_parameters_end
 
-*/
+USER*/
 
 
 CREATE OR REPLACE FUNCTION pgr_dijkstraVia(

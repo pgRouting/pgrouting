@@ -18,9 +18,6 @@ language: cpp
 compiler:
     - gcc
 
-#notifications:
-#  email:
-#    on_failure: project@pgrouting.org
 
 env: POSTGRESQL_VERSION=9.6   PG_USER=postgres
       
@@ -52,19 +49,13 @@ matrix:
       env: POSTGRESQL_VERSION=9.5   PG_USER=postgres
 
 
-    - os: linux
-      sudo: required
-      dist: trusty
-      group: edge
-      env: POSTGRESQL_VERSION=9.4   PG_USER=postgres
-
 
 
 # executed. So things have to be tested oe by one.
 addons:
   apt:
     sources:
-      - - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
       # For cmake
       - kubuntu-backports
       - boost-latest
@@ -74,12 +65,17 @@ addons:
       - libboost-graph-dev
       - libcgal-dev
       - python-sphinx
-
+      - graphviz
+      - texlive
+      - texlive-font-utils
+      - texlive-latex-extra
+      - ghostscript
 
 
 
 
 install:
+  - pip install sphinx
   - sudo ./tools/travis/install-postgres.sh $POSTGRESQL_VERSION $PG_USER
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/install-doxygen.sh ; fi
 
@@ -97,11 +93,10 @@ before_script:
 script: 
   - ./tools/travis/pgrouting_build.sh $POSTGRESQL_VERSION $POSTGIS_VERSION
   # tests as part of script so if a test fails the build fails
-  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER
   - ./tools/testers/pg_prove_tests.sh $PG_USER DEBUG
 
 after_script: 
-  # blank
+  - ./tools/travis/pgrouting_test.sh $POSTGRESQL_VERSION $PG_USER
 
 #after_success:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo ./tools/travis/test-documentation.sh ; fi
+  # blank

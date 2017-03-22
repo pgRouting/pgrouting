@@ -23,12 +23,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-
+#ifndef SRC_PICKDELIVER_SRC_ORDER_H_
+#define SRC_PICKDELIVER_SRC_ORDER_H_
 #pragma once
+
 
 #include <set>
 #include <iostream>
 #include "./vehicle_node.h"
+#include "./../../common/src/identifiers.hpp"
 
 namespace pgrouting {
 namespace vrp {
@@ -57,7 +60,10 @@ class Order {
      inline size_t id() const {return m_id;}
      const Vehicle_node& delivery() const;
      const Vehicle_node& pickup() const;
-     void setCompatibles();
+#if 0
+     void setCompatibles(double speed);
+#endif
+     void set_compatibles(const Order order, double speed);
 
      /*!
       * An order is valid when:
@@ -65,16 +71,16 @@ class Order {
       *   - The delivery is well formed
       *   - isCompatibleIJ to go to delivery after inmediatly visiting pickup
       */
-     bool is_valid() const;
+     bool is_valid(double speed) const;
 
 
-     bool isCompatibleIJ(const Order &other) const;
+     bool isCompatibleIJ(const Order &other, double speed) const;
 #if 0
      bool isOrderCompatibleStart(const Vehicle_node &node) const;
      bool isOrderCompatibleEnd(const Vehicle_node &node) const;
 #endif
-     std::set<size_t> subsetJ(const std::set<size_t> &J) const;
-     std::set<size_t> subsetI(const std::set<size_t> &I) const;
+     Identifiers<size_t> subsetJ(const Identifiers<size_t> &J) const;
+     Identifiers<size_t> subsetI(const Identifiers<size_t> &I) const;
 
      friend std::ostream& operator << (std::ostream&, const Order &);
 
@@ -89,13 +95,13 @@ class Order {
       * I = this
       * I -> {J}
       */
-     std::set<size_t> m_compatibleJ;
+     Identifiers<size_t> m_compatibleJ;
 
      /*
       * J = this
       * {I} -> J
       */
-     std::set<size_t> m_compatibleI;
+     Identifiers<size_t> m_compatibleI;
 
 
      /* order belongs to this problem */
@@ -104,3 +110,5 @@ class Order {
 
 }  //  namespace vrp
 }  //  namespace pgrouting
+
+#endif  // SRC_PICKDELIVER_SRC_ORDER_H_

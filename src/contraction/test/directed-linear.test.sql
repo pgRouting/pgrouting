@@ -43,4 +43,3 @@ SELECT * FROM pgr_contractGraph(
     ARRAY[2]::integer[], 1, ARRAY[]::BIGINT[], true);
 -- \echo --q13 -------------------------------------------
 
-

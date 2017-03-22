@@ -6,7 +6,7 @@
 
 ### Branches
 
-* The *master* branch has the latest minor release. (2.3.0)
+* The *master* branch has the latest minor release. (2.3.2)
 * The *develop* branch has the next minor release. (2.4.0)
 
 For the complete list of releases go to:
@@ -94,17 +94,23 @@ Family of functions include:
 
 ## REQUIREMENTS
 
+Building reqirements
+--------------------
+* perl 
 * C and C++ compilers
-  * g++ >= 4.6
-* Postgresql version >= 9.1
-* PostGIS version >= 2.0
-* The Boost Graph Library (BGL).
-  * Version >= 1.46
-* Version >= 1.55 for linux
-* Version >= 1.58 for MAC
+  * GNU >= 4.6
+  * MSVC >= 18.0
+* Postgresql >= 9.2
+* The Boost Graph Library (BGL) >= 1.46
 * CMake >= 2.8.8
 * CGAL >= 4.4
 * Sphinx >= 1.2
+
+
+User's reqirements
+--------------------
+
+* PostGIS  >= 2.0
 
 ## INSTALLATION
 
@@ -134,7 +140,7 @@ Build with documentation (requires [Sphinx](http://sphinx-doc.org/))
 
 	cmake -DWITH_DOC=ON ..
 
-Postgresql 9.1+
+Postgresql 9.2+
 
 	createdb mydatabase
 	psql mydatabase -c "CREATE EXTENSION postgis"

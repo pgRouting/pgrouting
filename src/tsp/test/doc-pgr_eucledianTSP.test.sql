@@ -1,4 +1,3 @@
-
 \echo -- q1
 WITH
 query AS (
@@ -21,6 +20,8 @@ SELECT* from pgr_eucledianTSP(
 );
 \echo -- q3
 SET client_min_messages TO DEBUG1;
+
+-- TODO see what this outputs
 
 SELECT* from pgr_eucledianTSP(
     $$

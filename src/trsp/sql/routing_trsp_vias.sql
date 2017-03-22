@@ -1,4 +1,27 @@
-create or replace function pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
+/*PGR-GNU*****************************************************************
+
+Copyright (c) 2013 pgRouting developers
+Mail: project@pgrouting.org
+
+------
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+********************************************************************PGR-GNU*/
+
+create or replace function _pgr_trspViaVertices(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
 /*
@@ -55,7 +78,7 @@ $body$
 
 ----------------------------------------------------------------------------------------------------------
 
-create or replace function pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
+create or replace function _pgr_trspViaEdges(sql text, eids integer[], pcts float8[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult3 AS
 $body$
 /*
@@ -84,7 +107,7 @@ begin
     for i in 1 .. array_length(eids, 1)-1 loop
         seq2 := seq2 + 1;
         for rr in select a.seq, seq2 as id1, a.id1 as id2, a.id2 as id3, a.cost
-                    from pgr_trsp(sql,
+                    from _pgr_trsp(sql,
                                   eids[i], pcts[i],
                                   eids[i+1], pcts[i+1],
                                   directed,
@@ -141,7 +164,7 @@ $body$
 
 
 ----------------------------------------------------------------------------------------------------------
-/*this via functions are not documented they will be deleted on 2.2*/
+/*this via functions are not documented they will be deleted on 2.2
 
 create or replace function pgr_trsp(sql text, vids integer[], directed boolean, has_reverse_cost boolean, turn_restrict_sql text DEFAULT NULL::text)
     RETURNS SETOF pgr_costresult AS
@@ -166,3 +189,4 @@ $body$
     language plpgsql stable
     cost 100
     rows 1000;
+*/
