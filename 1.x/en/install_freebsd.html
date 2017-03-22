@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation on FreeBSD &mdash; Open Source Routing Library</title>
+    
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Open Source Routing Library" href="../../index.html" />
+    <link rel="up" title="pgRouting Documentation" href="index.html" />
+    <link rel="prev" title="Installation on CentOS" href="install_centos.html" />
+    
+
+  </head>
+  <body role="document">
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../../index.html">pgRouting</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../index.html">Home</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    	
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Installation on FreeBSD</a></li>
+      </ul>
+    </div>
+    
+
+    	
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install_centos.html"
+                        title="previous chapter">Installation on CentOS</a></p>
+    
+
+        </div>
+      </div>
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation-on-freebsd">
+<span id="install-freebsd"></span><h1>Installation on FreeBSD<a class="headerlink" href="#installation-on-freebsd" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Only valid for pgRouting v1.x. For pgRouting v2.0 or higher see <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></p>
+</div>
+<p>Here&#8217;s how I managed to install pgrouting 1.0.3 on FreeBSD together with TSP and DD.</p>
+<ul class="simple">
+<li>FreeBSD version: 8.1 (amd64)</li>
+<li>PostgreSQL version: 9.0.1 (installed from FreeBSD ports)</li>
+<li>PostGIS version: 1.5.1 (installed from FreeBSD ports)</li>
+</ul>
+<ol class="arabic simple">
+<li>Install devel/cmake port if not already installed. I installed version 2.8.2.</li>
+<li>Install devel/boost-libs port if not already installed. I installed version 1.43.0</li>
+<li>Install (a modified) devel/gaul port. I installed version 0.1849.0_2.</li>
+</ol>
+<p>pgRouting docs suggest installing gaul without slang support. So before you
+install the port, change the port Makefile, commenting out the LIB_DEPENDS line
+which pulls in libslang, and add a line to disable slang support:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#LIB_DEPENDS=    slang.2:${PORTSDIR}/devel/libslang2</span>
+CONFIGURE_ARGS+<span class="o">=</span> --disable-slang
+</pre></div>
+</div>
+<p>After installing gaul you need to modify one header file, otherwise you can&#8217;t
+compile pgrouting later. In file /usr/local/include/gaul/gaul_util.h, add this
+line after line 177:</p>
+<div class="highlight-bash"><div class="highlight"><pre>typedef short _Bool<span class="p">;</span>
+</pre></div>
+</div>
+<p>End result should look like:</p>
+<div class="highlight-bash"><div class="highlight"><pre>175: <span class="c1">#if HAVE__BOOL != 1</span>
+176: typedef short _Bool<span class="p">;</span>
+177: <span class="c1">#endif</span>
+178: typedef short _Bool<span class="p">;</span>
+</pre></div>
+</div>
+<p>This is certainly not a proper fix, but it seems that for some reason _Bool is
+not getting defined on FreeBSD and this band-aid fix allows pgrouting
+compilation to succeed. Someone more versed in software development on FreeBSD
+can probably suggest a proper fix.</p>
+<ol class="arabic" start="4">
+<li><p class="first">Install the math/cgal port. I installed version 3.6.1. This pulls in a large chunk of x.org...</p>
+</li>
+<li><p class="first">Make some modifications to the source.</p>
+<blockquote>
+<div><p>5.1. In following files:</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre>core/src/dijkstra.c
+core/src/astar.c
+core/src/shooting_star.c
+extra/driving_distance/src/alpha.c
+extra/driving_distance/src/drivedist.c
+</pre></div>
+</div>
+<p>you need to add a line &#8216;#include &#8220;catalog/pg_type.h&#8221;&#8217; after line
+&#8216;#include &#8220;executor/spi.h&#8221;&#8217;. This is probably only necessary with PostgreSQL 8.4
+and newer.</p>
+<blockquote>
+<div>5.2. In following files:</div></blockquote>
+<div class="highlight-bash"><div class="highlight"><pre>core/src/shooting_star_relax.hpp
+core/src/edge_visitors.hpp
+</pre></div>
+</div>
+<p>you need to change the path to include file property_map.hpp so the line reads
+like this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#include &lt;boost/property_map/property_map.hpp&gt;</span>
+</pre></div>
+</div>
+<p>This is probably not necessary with older versions of boost-libs, but I&#8217;m not
+sure which version introduces the need for this change.</p>
+<blockquote>
+<div>5.3. In file core/src/shooting_star_boost_wrapper.cpp you need to change the path to include file vector_property_map.hpp in a way not unlike the previous change:</div></blockquote>
+<div class="highlight-bash"><div class="highlight"><pre>#include &lt;boost/property_map/vector_property_map.hpp&gt;
+
+
+5.4. In file CMakeLists.txt, you need to add &quot;-frounding-math&quot; to variables CMAKE_C_FLAGS and CMAKE_CXX_FLAGS, otherwise you&#39;ll run into problems later when trying to add DD functions to the database. The end result should look like this:
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>SET<span class="o">(</span>CMAKE_C_FLAGS <span class="s2">&quot;-O2 -g -frounding-math&quot;</span><span class="o">)</span>
+SET<span class="o">(</span>CMAKE_CXX_FLAGS <span class="s2">&quot;-O2 -g -frounding-math&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>This change is probably only necessary on 64bit systems, as discussed in ticket #204.</p>
+<blockquote>
+<div>5.5. Also in CMakeLists.txt, you might want to change the variable SQL_INSTALL_PATH to point to /usr/local/share/postlbs instead of /usr/share/postlbs, since the former is more in line with FreeBSD&#8217;s standard directory layout.</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>After making all these changes you can proceed to compile pgRouting and create a routing-enabled database as discussed in the installation manual.</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+            <li class="right" >
+              <a href="install_centos.html" title="Installation on CentOS"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" >pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Installation on FreeBSD</a></li>
+      </ul>
+    </div>
+
+	<div class="footer">
+      	&copy; Copyright, pgRouting Community<br/>
+        pgRouting is hosted on <a href="https://github.com/pgRouting/pgrouting">Github</a>
+      	<script type="text/javascript"> 
+      		document.write('<a href="mailto:' + new Array("project","pgrouting.org").join("@") + '">Contact administrators</a>'); 
+      	</script>
+    </div>
+    
+	<!-- Piwik -->
+	<script type="text/javascript">
+	var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.georepublic.net/" : "http://stats.georepublic.net/");
+	document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script type="text/javascript">
+	try {
+	var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+	piwikTracker.trackPageView();
+	piwikTracker.enableLinkTracking();
+	} catch( err ) {}
+	</script><noscript><p><img src="http://stats.georepublic.net/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+	<!-- End Piwik Tag -->
+
+  </body>
+</html>

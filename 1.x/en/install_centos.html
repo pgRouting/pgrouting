@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation on CentOS &mdash; Open Source Routing Library</title>
+    
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Open Source Routing Library" href="../../index.html" />
+    <link rel="up" title="pgRouting Documentation" href="index.html" />
+    <link rel="next" title="Installation on FreeBSD" href="install_freebsd.html" />
+    <link rel="prev" title="Installation on Ubuntu" href="install_ubuntu.html" />
+    
+
+  </head>
+  <body role="document">
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../../index.html">pgRouting</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../index.html">Home</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    	
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Installation on CentOS</a></li>
+      </ul>
+    </div>
+    
+
+    	
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation on CentOS</a><ul>
+<li><a class="reference internal" href="#install-required-packages">Install required packages</a></li>
+<li><a class="reference internal" href="#compile-proj4-geos">Compile proj4 &amp; geos</a></li>
+<li><a class="reference internal" href="#compile-postgis">Compile PostGIS</a></li>
+<li><a class="reference internal" href="#setup-postgresql">Setup PostgreSQL</a></li>
+<li><a class="reference internal" href="#compile-cmake">Compile cmake</a></li>
+<li><a class="reference internal" href="#compile-pgrouting">Compile pgRouting</a></li>
+<li><a class="reference internal" href="#create-routing-database">Create routing database</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install_ubuntu.html"
+                        title="previous chapter">Installation on Ubuntu</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install_freebsd.html"
+                        title="next chapter">Installation on FreeBSD</a></p>
+    
+
+        </div>
+      </div>
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation-on-centos">
+<span id="install-centos"></span><h1>Installation on CentOS<a class="headerlink" href="#installation-on-centos" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Only valid for pgRouting v1.x. For pgRouting v2.0 or higher see <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This install manual was written for CentOS 5.1</p>
+</div>
+<div class="section" id="install-required-packages">
+<h2>Install required packages<a class="headerlink" href="#install-required-packages" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>sudo yum install git-core boost-devel gcc-c++
+sudo yum install postgresql-server postgresql-devel flex
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-proj4-geos">
+<h2>Compile proj4 &amp; geos<a class="headerlink" href="#compile-proj4-geos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>proj4</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>wget ftp://ftp.remotesensing.org/proj/proj-4.6.0.tar.gz
+tar -zxvf proj-4.6.0.tar.gz
+<span class="nb">cd</span> proj-4.6.0
+./configure
+sudo make install
+</pre></div>
+</div>
+<ul class="simple">
+<li>geos</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ..
+wget http://geos.refractions.net/downloads/geos-3.0.0.tar.bz2
+tar -jxvf geos-3.0.0.tar.bz2
+<span class="nb">cd</span> geos-3.0.0
+./configure
+sudo make install
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add lib path to ld.so.conf file</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>sudo vi /etc/ld.so.conf
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1"># add this line</span>
+/usr/local/lib
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>sudo /sbin/ldconfig
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-postgis">
+<h2>Compile PostGIS<a class="headerlink" href="#compile-postgis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ..
+Wget http://www.postgis.net/download/postgis-1.3.3.tar.gz
+tar -zxvf postgis-1.3.3.tar.gz
+<span class="nb">cd</span> postgis-1.3.3
+./configure
+sudo make install
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-postgresql">
+<h2>Setup PostgreSQL<a class="headerlink" href="#setup-postgresql" title="Permalink to this headline">¶</a></h2>
+<p>Set local database connections to &#8220;trust&#8221; in &#8220;pg_hba.conf&#8221; to be able to work
+with PostgreSQL as user &#8220;postgres&#8221;. Then restart PostgreSQL.</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo vi /var/lib/pgsql/data/pg_hba.conf
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1"># &quot;local&quot; is for Unix domain socket connections only</span>
+<span class="c1">#local   all         all                               ident sameuser</span>
+<span class="nb">local</span>   all     all                                     trust
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>sudo /etc/init.d/postgresql restart
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-cmake">
+<h2>Compile cmake<a class="headerlink" href="#compile-cmake" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> ..
+wget http://www.cmake.org/files/v2.4/cmake-2.4.8.tar.gz
+tar -zxvf cmake-2.4.8.tar.gz
+<span class="nb">cd</span> cmake-2.4.8
+./configure
+gmake
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-pgrouting">
+<h2>Compile pgRouting<a class="headerlink" href="#compile-pgrouting" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git://github.com/pgRouting/pgrouting.git pgrouting
+<span class="nb">cd</span> pgrouting/
+sudo <span class="o">[</span>cmake_dir<span class="o">]</span>/bin/cmake .
+sudo make install
+</pre></div>
+</div>
+<p>Please replace [cmake_dir] with the path which cmake is installed ex)/home/hoge/cmake-2.4.8</p>
+</div>
+<div class="section" id="create-routing-database">
+<h2>Create routing database<a class="headerlink" href="#create-routing-database" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>createdb -U postgres routing
+createlang -U postgres plpgsql routing
+
+<span class="c1"># Add PostGIS functions</span>
+psql -U postgres -f /usr/share/lwpostgis.sql routing
+psql -U postgres -f /usr/share/spatial_ref_sys.sql routing
+
+<span class="c1"># Add core pgRouting functions</span>
+psql -U postgres -f /usr/share/postlbs/routing_core.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_core_wrappers.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_topology.sql routing
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="install_freebsd.html" title="Installation on FreeBSD"
+                 accesskey="N">next</a></li>
+            <li class="right" >
+              <a href="install_ubuntu.html" title="Installation on Ubuntu"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" >pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Installation on CentOS</a></li>
+      </ul>
+    </div>
+
+	<div class="footer">
+      	&copy; Copyright, pgRouting Community<br/>
+        pgRouting is hosted on <a href="https://github.com/pgRouting/pgrouting">Github</a>
+      	<script type="text/javascript"> 
+      		document.write('<a href="mailto:' + new Array("project","pgrouting.org").join("@") + '">Contact administrators</a>'); 
+      	</script>
+    </div>
+    
+	<!-- Piwik -->
+	<script type="text/javascript">
+	var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.georepublic.net/" : "http://stats.georepublic.net/");
+	document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script type="text/javascript">
+	try {
+	var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+	piwikTracker.trackPageView();
+	piwikTracker.enableLinkTracking();
+	} catch( err ) {}
+	</script><noscript><p><img src="http://stats.georepublic.net/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+	<!-- End Piwik Tag -->
+
+  </body>
+</html>

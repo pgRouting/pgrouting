@@ -1,0 +1,272 @@
+/*
+@import url("abc.css");*/
+@import url(sphinxdoc.css);
+
+/* override some of sphinxdoc.css */
+html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    border: none;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    min-width: 900px;
+}
+a {
+	color: #008008;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #333333;
+}
+table{
+	margin: 1.5em 0 0;
+	width: 90%;
+}
+table td, table th {
+    padding: 0;
+}
+table.docutils td, table.docutils th {
+	padding: 1px 8px 1px 5px;
+}
+div.related {
+    margin: 0 80px;
+    width: auto;
+}
+div.related ul {
+    border: 1px solid #EEEEEE;
+}
+div.bodywrapper {
+    border-right: 0;
+}
+a.reference em {
+    font-style: normal;
+}
+div.sphinxsidebar {
+    padding-right: 95px;
+}
+div.sphinxsidebar h3, div.sphinxsidebar h4 {
+    background: inherit;
+    border: none;
+    color: #385F95;
+    padding: 0;
+}
+div.sphinxsidebar h3 a {
+    color: inherit;
+}
+div.document {
+    margin: 0 80px;
+    background: none;
+}
+div.documentwrapper {
+    width: auto;
+    border-left: none solid #EEE;
+    border-right: none solid #EEE;
+}
+div.footer {
+    background-color: #555;
+    color: #d9d9d9;
+    padding: 10px 0 15px;
+    text-align: center;
+}
+div.related ul {
+	border: none;
+	background: none;
+}
+div.related ul li a {
+	color: #008008;
+}
+
+/* custom header */
+div.header {
+    position: relative;
+    height: 120px;
+    background: transparent url(img/header_map.gif) no-repeat;
+    border-bottom: 5px solid #555;
+    margin-bottom: 10px;
+}
+div.header div.wrap {
+    margin: 0 80px;
+}
+#logo {
+    padding: 5px 5px;
+}
+#logo a {
+    float: left;
+    width: 350px;
+    height: 130px;
+    text-indent: -9999em;
+    background: url(img/pgrouting-logo.png) no-repeat 0 0;
+}
+#top-nav {
+    position: absolute;
+    bottom: 8px;
+    right: 90px;
+    list-style: none;
+    margin: 0;
+    font-size: 1.2em;
+}
+#top-nav li {
+    display: inline;
+    margin: 0;
+    padding: 0 8px;
+    border-left: 2px solid #555;
+}
+#top-nav li:first-child, #top-nav li.first {
+    border-left: 0;
+}
+#top-nav li a {
+	color: #008008;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+#top-nav li a:hover {
+	color: #2491cf;
+}
+
+/* search box style */
+#searchbox {
+    position: absolute;
+    bottom: 70px;
+    right: 95px;
+    background: transparent url(img/search-box.png) top left no-repeat;
+    height: 28px;
+    width: 190px;
+}
+#searchbox-query {
+    color: #555;
+    font-size: 0.92em;
+    border: 0;
+    background: transparent;
+    width: 175px;
+    margin: 5px 0 0 8px;
+}
+#searchbox-submit {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+}
+a.headerlink {
+    display: none;
+}
+
+/* meta-info about a class/module get pulled out */
+.meta {
+    float: right;
+    padding: 0 2em;
+    background-color: white;
+}
+.meta ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* overriding clear: both on dl */
+dl.class {
+    clear: left;
+}
+
+/* don't display class names for attributes or methods*/
+.attribute .descclassname {
+    display: none;
+}
+.method .descclassname {
+    display: none;
+}
+.classmethod .descclassname, .classmethod .property {
+    display: none;
+}
+
+/* headers with bottom border get some padding */
+h2, h3, h4 {
+    padding-bottom: 4px;
+}
+
+/* making code samples less gigantic */
+pre {
+    font-size: 0.8em;
+}
+
+/* blog entry style */
+ul.rss_items li.rss_item {
+    padding-bottom: 0.5em;
+}
+
+/* execute button style */
+.x-btn.execute {
+    margin: 1em;
+}
+
+.exampleblock {
+    width: 225px;
+    margin: 5px;
+    height: 110px;
+    overflow: auto;
+}
+.exampleblock h2 {
+    margin-top: 0;
+    font-size: 1em;
+}
+a.examplelink {
+    margin: 5px;
+    text-decoration: none !important;
+    float: left;
+    display: block;
+    border: 1px solid #FFFFFF;
+}
+a.examplelink:hover {
+    border: 1px solid #E5EDD3;
+    background-color: #F5FDE3
+}
+
+
+/* builder page style */
+div.builder-form {
+    margin-top: 1em;
+}
+.module-desc {
+    padding: 0 0 5px;
+    font-size: 12px;
+}
+.component label {
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    font-size: 11px;
+}
+
+div.download-button {
+    margin: 0 1em 2em;
+}
+div.download-button>table {
+    float: right;
+}
+
+p.credit {
+    font-size: smaller;
+    color: #666666;
+}
+
+.footer a {
+	color: #FFFFFF !important;
+}
+
+select.paypal_currency {
+	position: relative;
+	bottom: 7px;
+}
+
+.align-right {
+	float: right;
+}
+
+img.align-right, 
+.figure.align-right, 
+object.align-right  {
+    clear: none;
+}
+
+.callout-sidebar img {
+    display: block;
+    margin: 0 auto 20px auto;
+}

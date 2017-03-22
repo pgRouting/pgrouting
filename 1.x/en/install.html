@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; Open Source Routing Library</title>
+    
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Open Source Routing Library" href="../../index.html" />
+    <link rel="up" title="pgRouting Documentation" href="index.html" />
+    <link rel="next" title="Shortest Path Dijkstra" href="dijkstra.html" />
+    <link rel="prev" title="pgRouting Documentation" href="index.html" />
+    
+
+  </head>
+  <body role="document">
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../../index.html">pgRouting</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../index.html">Home</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    	
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Installation</a></li>
+      </ul>
+    </div>
+    
+
+    	
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li><a class="reference internal" href="#pgrouting-core-shortest-path-algorithms">pgRouting Core - Shortest-Path algorithms</a></li>
+<li><a class="reference internal" href="#pgrouting-extra-with-tsp">pgRouting Extra - with TSP</a></li>
+<li><a class="reference internal" href="#pgrouting-extra-with-driving-distance">pgRouting Extra - with Driving Distance</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation-instructions">Installation Instructions</a><ul>
+<li><a class="reference internal" href="#step-1-libraries-installation">Step 1: Libraries installation</a></li>
+<li><a class="reference internal" href="#step-2-compiling-the-pgrouting-library">Step 2: Compiling the pgRouting library</a></li>
+<li><a class="reference internal" href="#step-3-create-a-routing-database-and-load-postgis-and-pgrouting-functions">Step 3: Create a routing database and load PostGIS and pgRouting functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">pgRouting Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dijkstra.html"
+                        title="next chapter">Shortest Path Dijkstra</a></p>
+    
+
+        </div>
+      </div>
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<span id="install"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Only valid for pgRouting v1.x. For pgRouting v2.0 or higher see <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For pgRouting version &gt;= 1.0 RC1
+(Previous versions cannot be compiled without TSP and Driving Distance
+functionality)</p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pgrouting-core-shortest-path-algorithms">
+<h3>pgRouting Core - Shortest-Path algorithms<a class="headerlink" href="#pgrouting-core-shortest-path-algorithms" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>C and C++ compilers</li>
+<li>Postgresql version &gt;= 8.0</li>
+<li>PostGIS version &gt;= 1.0</li>
+<li>The Boost Graph Library (BGL). Version &gt;= 1.33 which contains the astar.hpp.</li>
+</ul>
+</div>
+<div class="section" id="pgrouting-extra-with-tsp">
+<h3>pgRouting Extra - with TSP<a class="headerlink" href="#pgrouting-extra-with-tsp" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The Genetic Algorithm Utility Library (GAUL). See <a class="reference external" href="http://gaul.sourceforge.net">http://gaul.sourceforge.net</a></li>
+</ul>
+</div>
+<div class="section" id="pgrouting-extra-with-driving-distance">
+<h3>pgRouting Extra - with Driving Distance<a class="headerlink" href="#pgrouting-extra-with-driving-distance" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Computational Geometry Algorithms Library (CGAL) version &gt;= 3.2. See <a class="reference external" href="http://www.cgal.org">http://www.cgal.org</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="installation-instructions">
+<h2>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-libraries-installation">
+<h3>Step 1: Libraries installation<a class="headerlink" href="#step-1-libraries-installation" title="Permalink to this headline">¶</a></h3>
+<p>Compile and install PostgreSQL, PostGIS, Proj, GEOS, BGL and GAUL. Usually it is
+sufficient to run:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1"># ./configure</span>
+<span class="c1"># make</span>
+<span class="c1"># make install</span>
+</pre></div>
+</div>
+<p>in corresponding directory.</p>
+<p>If you have BGL installed but the version is less than 1.33.0, just download
+the astar.hpp file from <a class="reference external" href="http://www.boost.org/boost/graph/astar_search.hpp">http://www.boost.org/boost/graph/astar_search.hpp</a> and
+copy it to &#8216;&#8217;BOOST_PATH/graph&#8217;&#8217; directory.</p>
+<p class="rubric">For Traveling Salesperson Problem (optional)</p>
+<p>The GAUL library should be compiled with &#8211;enable-slang=no option. Otherwise
+make sure you have slang.h installed in &#8216;&#8217;/usr/include&#8217;&#8216;. For more details
+please refer to corresponding &#8216;&#8217;README&#8217;&#8217; or &#8216;&#8217;INSTALL&#8217;&#8217; file.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1"># ./configure --disable-slang</span>
+</pre></div>
+</div>
+<p class="rubric">For Driving Distance (optional)</p>
+<p>For CGAL, the compile option below can be used to create the library:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1"># ./install_cgal --prefix=/usr --with-boost=n --without-autofind -ni /usr/bin/g++</span>
+</pre></div>
+</div>
+<p><strong>CGAL needs special treatment!</strong></p>
+<p>After you install CGAL, you need to locate the directory with CGAL header files.
+In that directory you need to find &#8216;&#8217;config&#8217;&#8217; subdirectory.
+This directory contains one or more subdirectories with platform-dependent information.</p>
+<p>It may look like this, for example:</p>
+<div class="highlight-bash"><div class="highlight"><pre>/
+<span class="p">|</span>
++- usr
+  <span class="p">|</span>
+  +- include
+         <span class="p">|</span>
+         +- CGAL
+            <span class="p">|</span>
+            +- config
+               <span class="p">|</span>
+               +- i686_Linux-2.6_g++4.1.1
+               <span class="p">|</span>  <span class="p">|</span>
+               <span class="p">|</span>  +- CGAL
+               <span class="p">|</span>     <span class="p">|</span>
+               <span class="p">|</span>     +- compiler_config.h   <span class="o">&lt;&lt;&lt;</span> this is the file you need
+               <span class="p">|</span>
+               +- msvc7
+               <span class="p">|</span>  <span class="p">|</span>
+               <span class="p">|</span>  +- CGAL
+               <span class="p">|</span>     <span class="p">|</span>
+               <span class="p">|</span>     +- compiler_config.h
+               <span class="p">|</span>
+              etc...
+</pre></div>
+</div>
+<p>All you need to do is to choose &#8216;&#8217;compiler_config.h&#8217;&#8217; for your platform and make
+a symlink or copy it to the main headers directory.</p>
+<p>For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1"># ln -s /usr/include/CGAL/config/i686_Linux-2.6_g++4.1.1/compiler_config.h /usr/include/CGAL/compiler_config.h</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-compiling-the-pgrouting-library">
+<h3>Step 2: Compiling the pgRouting library<a class="headerlink" href="#step-2-compiling-the-pgrouting-library" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><a class="reference internal" href="../../download.html#download"><span>Get pgRouting source</span></a></li>
+<li>Change to pgRouting directory</li>
+<li>Compile and install pgRouting</li>
+</ol>
+<p class="rubric">For pgRouting core (required)</p>
+<div class="highlight-bash"><div class="highlight"><pre>cmake .
+make
+make install
+</pre></div>
+</div>
+<p class="rubric">For pgRouting extras (optional)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1"># Add Traveling Salesperson functionality:  -DWITH_TSP=ON</span>
+<span class="c1"># Add Driving Distance functionality     :  -DWITH_DD=ON</span>
+
+cmake -DWITH_TSP<span class="o">=</span>ON -DWITH_DD<span class="o">=</span>ON .
+make
+make install
+</pre></div>
+</div>
+<p>If your program compiles but you get an error like the following one:</p>
+<div class="highlight-bash"><div class="highlight"><pre>error <span class="k">while</span> loading shared libraries: libgaul.so.0: cannot open
+shared object file: No such file or directory
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Add the library path (ie. /usr/local/pgsql/lib) to /etc/ld.co.conf</li>
+<li>Run ldconfig</li>
+</ol>
+<p>Maybe you installed PostgreSQL from Source-code, while compiling pgRouting you might get an error like</p>
+<div class="highlight-bash"><div class="highlight"><pre>Output directory <span class="k">for</span> libraries is <span class="nb">set</span> to sh: pg_config: <span class="nb">command</span> not found
+....
+....
+ERROR: could not access file <span class="s2">&quot;</span>$<span class="s2">libdir/librouting</span>
+</pre></div>
+</div>
+<p>Then you need to type at the shell-console:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span>$<span class="s2">PATH:/usr/local/pgsql/bin&quot;</span>
+</pre></div>
+</div>
+<p>presuming you installed PostgreSQL at /usr/local/pgsql/bin</p>
+</div>
+<div class="section" id="step-3-create-a-routing-database-and-load-postgis-and-pgrouting-functions">
+<h3>Step 3: Create a routing database and load PostGIS and pgRouting functions<a class="headerlink" href="#step-3-create-a-routing-database-and-load-postgis-and-pgrouting-functions" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Create a routing database and load PostGIS</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre>createdb -U postgres -E UNICODE routing
+createlang -U postgres plpgsql routing
+
+psql -U postgres -f /path/to/postgis/lwpostgis.sql routing
+psql -U postgres -f /path/to/postgis/spatial_ref_sys.sql routing
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Add pgRouting core functions (required)</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre>psql -U postgres -f /usr/share/postlbs/routing_core.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_core_wrappers.sql routing
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Add pgRouting extra functions (optional)</li>
+</ol>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1"># With TSP</span>
+psql -U postgres -f /usr/share/postlbs/routing_tsp.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_tsp_wrappers.sql routing
+
+<span class="c1"># With Driving Distance</span>
+psql -U postgres -f /usr/share/postlbs/routing_dd.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_dd_wrappers.sql routing
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="dijkstra.html" title="Shortest Path Dijkstra"
+                 accesskey="N">next</a></li>
+            <li class="right" >
+              <a href="index.html" title="pgRouting Documentation"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" >pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Installation</a></li>
+      </ul>
+    </div>
+
+	<div class="footer">
+      	&copy; Copyright, pgRouting Community<br/>
+        pgRouting is hosted on <a href="https://github.com/pgRouting/pgrouting">Github</a>
+      	<script type="text/javascript"> 
+      		document.write('<a href="mailto:' + new Array("project","pgrouting.org").join("@") + '">Contact administrators</a>'); 
+      	</script>
+    </div>
+    
+	<!-- Piwik -->
+	<script type="text/javascript">
+	var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.georepublic.net/" : "http://stats.georepublic.net/");
+	document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script type="text/javascript">
+	try {
+	var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+	piwikTracker.trackPageView();
+	piwikTracker.enableLinkTracking();
+	} catch( err ) {}
+	</script><noscript><p><img src="http://stats.georepublic.net/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+	<!-- End Piwik Tag -->
+
+  </body>
+</html>

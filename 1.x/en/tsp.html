@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Traveling Sales Person (TSP) &mdash; Open Source Routing Library</title>
+    
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Open Source Routing Library" href="../../index.html" />
+    <link rel="up" title="pgRouting Documentation" href="index.html" />
+    <link rel="next" title="Installation on Ubuntu" href="install_ubuntu.html" />
+    <link rel="prev" title="Driving Distance calculation" href="dd.html" />
+    
+
+  </head>
+  <body role="document">
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../../index.html">pgRouting</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../index.html">Home</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    	
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Traveling Sales Person (TSP)</a></li>
+      </ul>
+    </div>
+    
+
+    	
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Traveling Sales Person (TSP)</a><ul>
+<li><a class="reference internal" href="#function">Function:</a></li>
+<li><a class="reference internal" href="#arguments">Arguments:</a></li>
+<li><a class="reference internal" href="#output">Output:</a></li>
+<li><a class="reference internal" href="#examples">Examples:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dd.html"
+                        title="previous chapter">Driving Distance calculation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install_ubuntu.html"
+                        title="next chapter">Installation on Ubuntu</a></p>
+    
+
+        </div>
+      </div>
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="traveling-sales-person-tsp">
+<span id="tsp"></span><h1>Traveling Sales Person (TSP)<a class="headerlink" href="#traveling-sales-person-tsp" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Only valid for pgRouting v1.x. For pgRouting v2.0 or higher see <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></p>
+</div>
+<p>The tsp solution is based on ordering the points using straight line (euclidean)
+distance between nodes. There was some thought given to pre-calculating the
+driving distances between the nodes using Dijkstra, but then I read a paper
+(unfortunately I don&#8217;t remember who wrote it), where it was proved that the
+quality of TSP with euclidean distance is only slightly worse that one with real
+distance in case of normal city layout. In case of very sparse network or rivers
+and bridges it becomes more inaccurate, but still wholly satisfactory. Of course
+it is nice to have exact solution, but this is a compromise between quality and
+speed (and development time also).</p>
+<p>The TSP solver is using a genetic algorithm. It is not an exact solution, but it
+is guarantied that you get a solution after certain number of iterations.</p>
+<div class="section" id="function">
+<h2>Function:<a class="headerlink" href="#function" title="Permalink to this headline">¶</a></h2>
+<p>The pgpsql tsp function has the following signature:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">FUNCTION</span> <span class="n">tsp</span><span class="p">(</span>
+                        <span class="k">sql</span> <span class="nb">text</span><span class="p">,</span>
+                        <span class="n">ids</span> <span class="nb">varchar</span><span class="p">,</span>
+                        <span class="n">source_id</span> <span class="nb">integer</span><span class="p">)</span>
+        <span class="k">RETURNS</span> <span class="k">SETOF</span> <span class="n">path_result</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments:<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<p><strong>sql</strong>: a SQL query, which should return a set of rows with the following columns:</p>
+<ul class="simple">
+<li>source_id: an int4 identifier of the vertex</li>
+<li>x: x coordinate of the vertex</li>
+<li>y: y coordinate of the vertex</li>
+</ul>
+<p><strong>ids</strong>: text string containig int4 ids of vertices separated by commas</p>
+<p><strong>source_id</strong>: int 4 id of the start point</p>
+</div>
+<div class="section" id="output">
+<h2>Output:<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<p>The function returns a set of rows. There is one row for each crossed edge, and
+an additional one containing the terminal vertex. The columns of each row are:</p>
+<ul class="simple">
+<li>vertex_id: the identifier of source vertex of each edge. There is one more row after the last edge, which contains the vertex identifier of the target path.</li>
+<li>edge_id: unused, always 0</li>
+<li>cost: unused, always 0</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tsp</span><span class="p">(</span><span class="s1">&#39;SELECT distinct source AS source_id,</span>
+<span class="s1">                       x1::double precision AS x,</span>
+<span class="s1">                       y1::double precision AS y FROM dourol</span>
+<span class="s1">             WHERE source IN (83593,66059,10549,18842,13)&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;83593,66059,10549,18842,13&#39;</span><span class="p">,</span> <span class="mi">10549</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre> <span class="n">vertex_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span> <span class="n">cost</span>
+<span class="c1">-----------+---------+------</span>
+         <span class="mi">10549</span> <span class="o">|</span>       <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+         <span class="mi">83593</span> <span class="o">|</span>       <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+         <span class="mi">66059</span> <span class="o">|</span>       <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+         <span class="mi">18842</span> <span class="o">|</span>       <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+            <span class="mi">13</span> <span class="o">|</span>       <span class="mi">0</span> <span class="o">|</span>    <span class="mi">0</span>
+<span class="p">(</span><span class="mi">5</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Afterwards vertex_id column can be used for shortest path calculation.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="install_ubuntu.html" title="Installation on Ubuntu"
+                 accesskey="N">next</a></li>
+            <li class="right" >
+              <a href="dd.html" title="Driving Distance calculation"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" >pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Traveling Sales Person (TSP)</a></li>
+      </ul>
+    </div>
+
+	<div class="footer">
+      	&copy; Copyright, pgRouting Community<br/>
+        pgRouting is hosted on <a href="https://github.com/pgRouting/pgrouting">Github</a>
+      	<script type="text/javascript"> 
+      		document.write('<a href="mailto:' + new Array("project","pgrouting.org").join("@") + '">Contact administrators</a>'); 
+      	</script>
+    </div>
+    
+	<!-- Piwik -->
+	<script type="text/javascript">
+	var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.georepublic.net/" : "http://stats.georepublic.net/");
+	document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script type="text/javascript">
+	try {
+	var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+	piwikTracker.trackPageView();
+	piwikTracker.enableLinkTracking();
+	} catch( err ) {}
+	</script><noscript><p><img src="http://stats.georepublic.net/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+	<!-- End Piwik Tag -->
+
+  </body>
+</html>

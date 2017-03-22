@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation on Ubuntu &mdash; Open Source Routing Library</title>
+    
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Open Source Routing Library" href="../../index.html" />
+    <link rel="up" title="pgRouting Documentation" href="index.html" />
+    <link rel="next" title="Installation on CentOS" href="install_centos.html" />
+    <link rel="prev" title="Traveling Sales Person (TSP)" href="tsp.html" />
+    
+
+  </head>
+  <body role="document">
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../../index.html">pgRouting</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../index.html">Home</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    	
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Installation on Ubuntu</a></li>
+      </ul>
+    </div>
+    
+
+    	
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation on Ubuntu</a><ul>
+<li><a class="reference internal" href="#install-required-packages">Install required packages</a></li>
+<li><a class="reference internal" href="#compile-pgrouting-core-with-tsp-and-dd-flag-on">Compile pgRouting core (with TSP and DD flag on)</a></li>
+<li><a class="reference internal" href="#setup-postgresql">Setup PostgreSQL</a></li>
+<li><a class="reference internal" href="#create-routing-database">Create routing database</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tsp.html"
+                        title="previous chapter">Traveling Sales Person (TSP)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install_centos.html"
+                        title="next chapter">Installation on CentOS</a></p>
+    
+
+        </div>
+      </div>
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation-on-ubuntu">
+<span id="install-ubuntu"></span><h1>Installation on Ubuntu<a class="headerlink" href="#installation-on-ubuntu" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Only valid for pgRouting v1.x. For pgRouting v2.0 or higher see <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Installation on Ubuntu 9.04 (with PostgreSQL 8.3) with TSP and Driving
+Distance (Extras). (After had some troubles to install pgRouting on Ubuntu
+8.10, it works again with Ubuntu 9.04.)</p>
+</div>
+<div class="section" id="install-required-packages">
+<h2>Install required packages<a class="headerlink" href="#install-required-packages" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install build-essential git-core cmake
+sudo apt-get install postgresql-8.3-postgis postgresql-server-dev-8.3
+</pre></div>
+</div>
+<p>If you&#8217;re <strong>not</strong> planning to install CGAL from Ubuntu multiverse, you can use
+default Boost library from the repository. This will be version 1.34 at the moment.</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install libboost-graph-dev
+</pre></div>
+</div>
+<ul class="simple">
+<li>For Driving Distance</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install libcgal*
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you install CGAL later from Ubuntu multiverse it will upgrade to Boost
+1.35. This might cause troubles if you compiled pgRouting core already with
+Boost 1.34.</p>
+</div>
+<ul class="simple">
+<li>For TSP</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>wget http://downloads.sourceforge.net/gaul/gaul-devel-0.1849-0.tar.gz
+tar -xzf gaul-devel-0.1849-0.tar.gz
+<span class="nb">cd</span> gaul-devel-0.1849-0/
+./configure --disable-slang
+make
+sudo make install
+sudo ldconfig
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-pgrouting-core-with-tsp-and-dd-flag-on">
+<h2>Compile pgRouting core (with TSP and DD flag on)<a class="headerlink" href="#compile-pgrouting-core-with-tsp-and-dd-flag-on" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git://github.com/pgRouting/pgrouting.git pgrouting
+
+<span class="nb">cd</span> pgrouting/
+cmake -DWITH_TSP<span class="o">=</span>ON -DWITH_DD<span class="o">=</span>ON .
+make
+sudo make install
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-postgresql">
+<h2>Setup PostgreSQL<a class="headerlink" href="#setup-postgresql" title="Permalink to this headline">¶</a></h2>
+<p>Set local database connections to &#8220;trust&#8221; in &#8220;pg_hba.conf&#8221; to be able to work
+with PostgreSQL as user &#8220;postgres&#8221;. Then restart PostgreSQL.</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo gedit /etc/postgresql/8.3/main/pg_hba.conf
+sudo /etc/init.d/postgresql-8.3 restart
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-routing-database">
+<h2>Create routing database<a class="headerlink" href="#create-routing-database" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>createdb -U postgres routing
+createlang -U postgres plpgsql routing
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add PostGIS functions</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>psql -U postgres -f /usr/share/postgresql-8.3-postgis/lwpostgis.sql routing
+psql -U postgres -f /usr/share/postgresql-8.3-postgis/spatial_ref_sys.sql routing
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add pgRouting functions</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>psql -U postgres -f /usr/share/postlbs/routing_core.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_core_wrappers.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_topology.sql routing
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add TSP functions</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>psql -U postgres -f /usr/share/postlbs/routing_tsp.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_tsp_wrappers.sql routing
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add Driving Distance functions</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>psql -U postgres -f /usr/share/postlbs/routing_dd.sql routing
+psql -U postgres -f /usr/share/postlbs/routing_dd_wrappers.sql routing
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="install_centos.html" title="Installation on CentOS"
+                 accesskey="N">next</a></li>
+            <li class="right" >
+              <a href="tsp.html" title="Traveling Sales Person (TSP)"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" >pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Installation on Ubuntu</a></li>
+      </ul>
+    </div>
+
+	<div class="footer">
+      	&copy; Copyright, pgRouting Community<br/>
+        pgRouting is hosted on <a href="https://github.com/pgRouting/pgrouting">Github</a>
+      	<script type="text/javascript"> 
+      		document.write('<a href="mailto:' + new Array("project","pgrouting.org").join("@") + '">Contact administrators</a>'); 
+      	</script>
+    </div>
+    
+	<!-- Piwik -->
+	<script type="text/javascript">
+	var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.georepublic.net/" : "http://stats.georepublic.net/");
+	document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script type="text/javascript">
+	try {
+	var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+	piwikTracker.trackPageView();
+	piwikTracker.enableLinkTracking();
+	} catch( err ) {}
+	</script><noscript><p><img src="http://stats.georepublic.net/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+	<!-- End Piwik Tag -->
+
+  </body>
+</html>

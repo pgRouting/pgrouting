@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Driving Distance calculation &mdash; Open Source Routing Library</title>
+    
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Open Source Routing Library" href="../../index.html" />
+    <link rel="up" title="pgRouting Documentation" href="index.html" />
+    <link rel="next" title="Traveling Sales Person (TSP)" href="tsp.html" />
+    <link rel="prev" title="Shortest Path Shooting Star" href="shooting.html" />
+    
+
+  </head>
+  <body role="document">
+    <div class="header">
+        <div class="wrap">
+            <h1 id="logo"><a href="../../index.html">pgRouting</a></h1>
+            <ul id="top-nav">
+                <li class="first"><a href="../../index.html">Home</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+    	
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Driving Distance calculation</a></li>
+      </ul>
+    </div>
+    
+
+    	
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Driving Distance calculation</a><ul>
+<li><a class="reference internal" href="#function">Function:</a></li>
+<li><a class="reference internal" href="#arguments">Arguments:</a></li>
+<li><a class="reference internal" href="#output">Output:</a></li>
+<li><a class="reference internal" href="#examples">Examples:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="shooting.html"
+                        title="previous chapter">Shortest Path Shooting Star</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tsp.html"
+                        title="next chapter">Traveling Sales Person (TSP)</a></p>
+    
+
+        </div>
+      </div>
+    
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="driving-distance-calculation">
+<span id="dd"></span><h1>Driving Distance calculation<a class="headerlink" href="#driving-distance-calculation" title="Permalink to this headline">¶</a></h1>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Only valid for pgRouting v1.x. For pgRouting v2.0 or higher see <a class="reference external" href="http://docs.pgrouting.org">http://docs.pgrouting.org</a></p>
+</div>
+<div class="section" id="function">
+<h2>Function:<a class="headerlink" href="#function" title="Permalink to this headline">¶</a></h2>
+<p>The driving_distance function has the following signature:</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">FUNCTION</span> <span class="n">driving_distance</span><span class="p">(</span>
+                        <span class="k">sql</span> <span class="nb">text</span><span class="p">,</span>
+                        <span class="n">source_id</span> <span class="nb">integer</span><span class="p">,</span>
+                        <span class="n">distance</span> <span class="n">float8</span><span class="p">,</span>
+                        <span class="n">directed</span> <span class="nb">boolean</span><span class="p">,</span>
+                        <span class="n">has_reverse_cost</span> <span class="nb">boolean</span><span class="p">)</span>
+        <span class="k">RETURNS</span> <span class="k">SETOF</span> <span class="n">path_result</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments:<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<p><strong>sql</strong>: a SQL query, which should return a set of rows with the following columns:</p>
+<ul class="simple">
+<li>id: an int4 identifier of the edge</li>
+<li>source: an int4 identifier of the source vertex</li>
+<li>target: an int4 identifier of the target vertex</li>
+<li>cost: an float8 value, of the edge traversal cost. (a negative cost will prevent the edge from being inserted in the graph).</li>
+</ul>
+<p><strong>source_id</strong>: int4 id of the start point distance: float8 value of distance in degrees</p>
+<p><strong>distance</strong>: float8 value in edge cost units (not in projection units - they might be different).</p>
+<p><strong>directed</strong>: true if the graph is directed</p>
+<p><strong>has_reverse_cost</strong>: if true, the reverse_cost column of the SQL generated set of rows will be used for the cost of the traversal of the edge in the opposite direction.</p>
+</div>
+<div class="section" id="output">
+<h2>Output:<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<p>The function returns a set of rows. There is one row for each crossed edge, and
+an additional one containing the terminal vertex. The columns of each row are:</p>
+<ul class="simple">
+<li>vertex_id: the identifier of source vertex of each edge. There is one more row after the last edge, which contains the vertex identifier of the target path.</li>
+<li>edge_id: the identifier of the edge crossed</li>
+<li>cost: The cost associated to the current edge. It is 0 for the row after the last edge. Thus, the path total cost can be computated using a sum of all rows in the cost column.</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">driving_distance</span><span class="p">(</span><span class="s1">&#39;SELECT gid AS id,source,target,</span>
+<span class="s1">             length::double precision AS cost FROM dourol&#39;</span><span class="p">,</span><span class="mi">10549</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">,</span><span class="k">false</span><span class="p">,</span><span class="k">false</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-sql"><div class="highlight"><pre> <span class="n">vertex_id</span> <span class="o">|</span> <span class="n">edge_id</span> <span class="o">|</span>     <span class="n">cost</span>
+<span class="c1">-----------+---------+---------------</span>
+          <span class="mi">6190</span> <span class="o">|</span>  <span class="mi">120220</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00967666852</span>
+          <span class="mi">6205</span> <span class="o">|</span>  <span class="mi">118671</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00961557335</span>
+          <span class="mi">6225</span> <span class="o">|</span>  <span class="mi">119384</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00965668162</span>
+          <span class="mi">6320</span> <span class="o">|</span>  <span class="mi">119378</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00959826176</span>
+          <span class="p">...</span>
+          <span class="p">...</span>
+          <span class="p">...</span>
+         <span class="mi">15144</span> <span class="o">|</span>  <span class="mi">122612</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00973386526</span>
+         <span class="mi">15285</span> <span class="o">|</span>  <span class="mi">120471</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00912965866</span>
+         <span class="mi">15349</span> <span class="o">|</span>  <span class="mi">122085</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00944814966</span>
+         <span class="mi">15417</span> <span class="o">|</span>  <span class="mi">120471</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00942316736</span>
+         <span class="mi">15483</span> <span class="o">|</span>  <span class="mi">121629</span> <span class="o">|</span> <span class="mi">0</span><span class="p">.</span><span class="mi">00972957546</span>
+<span class="p">(</span><span class="mi">293</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+            <li class="right" style="margin-right: 10px">
+              <a href="tsp.html" title="Traveling Sales Person (TSP)"
+                 accesskey="N">next</a></li>
+            <li class="right" >
+              <a href="shooting.html" title="Shortest Path Shooting Star"
+                 accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Home</a> &raquo;</li>
+          <li><a href="index.html" >pgRouting 1.x</a> &raquo;</li>
+        <li><a href="#">Driving Distance calculation</a></li>
+      </ul>
+    </div>
+
+	<div class="footer">
+      	&copy; Copyright, pgRouting Community<br/>
+        pgRouting is hosted on <a href="https://github.com/pgRouting/pgrouting">Github</a>
+      	<script type="text/javascript"> 
+      		document.write('<a href="mailto:' + new Array("project","pgrouting.org").join("@") + '">Contact administrators</a>'); 
+      	</script>
+    </div>
+    
+	<!-- Piwik -->
+	<script type="text/javascript">
+	var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.georepublic.net/" : "http://stats.georepublic.net/");
+	document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script><script type="text/javascript">
+	try {
+	var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+	piwikTracker.trackPageView();
+	piwikTracker.enableLinkTracking();
+	} catch( err ) {}
+	</script><noscript><p><img src="http://stats.georepublic.net/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+	<!-- End Piwik Tag -->
+
+  </body>
+</html>
