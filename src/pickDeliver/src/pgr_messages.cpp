@@ -73,7 +73,7 @@ Pgr_messages::get_error() {
 }
 
 #ifndef NDEBUG
-/*! \brief get debuging logs
+/*! \brief get debugging logs
  *
  * \returns the current contents of the log and clears the log
  *

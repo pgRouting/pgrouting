@@ -19,13 +19,15 @@ pgr_bdDijkstraCost - Proposed
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.5.0
+
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
+
 
 Signature Summary
 -----------------
-
-.. include:: proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
 
 
 .. code-block:: none
@@ -175,7 +177,7 @@ The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to 
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: custom_query.rst
+.. include::  pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
@@ -183,7 +185,7 @@ Description of the Signatures
     :start-after: pgr_dijkstra_parameters_start
     :end-before: pgr_dijkstra_parameters_end
 
-.. include:: custom_query.rst
+.. include::  pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 

@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -9,10 +9,10 @@
 
 .. _type_geom_result:
 
-pgr_geomResult[] 
+pgr_geomResult[]
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: pgr_geomResult[]
 
 Name

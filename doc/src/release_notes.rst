@@ -14,16 +14,79 @@ Release Notes
 
 To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
 
+.. rubric:: Table of contents
+
+.. changelog start
+
+* :ref:`changelog_2_5_0`
+* :ref:`changelog_2_4_0`
+* :ref:`changelog_2_3_2`
+* :ref:`changelog_2_3_1`
+* :ref:`changelog_2_3_0`
+* :ref:`changelog_2_2_4`
+* :ref:`changelog_2_2_3`
+* :ref:`changelog_2_2_2`
+* :ref:`changelog_2_2_1`
+* :ref:`changelog_2_2_0`
+* :ref:`changelog_2_1_0`
+* :ref:`changelog_2_0_1`
+* :ref:`changelog_2_0_0`
+* :ref:`changelog_1_x`
+
+.. changelog end
+
 .. _changelog_2_5_0:
 
-pgRouting 2.5.0 Release Notes
+Changes for 2.5.0
 -------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
 
-.. rubric:: Moved to the stable proposed functions
+.. rubric:: Breaking change on:
 
-* All Flow functions
+* pgr_edgeDisjointPaths:
+
+  * Added path_id, cost and agg_cost columns on the result
+  * Parameter names changed
+  * The many version results are the union of the one to one version
+
+.. rubric:: New Signatures:
+
+* pgr_bdAstar(one to one)
+
+.. rubric:: New Proposed functions
+
+* pgr_bdAstar(one to many)
+* pgr_bdAstar(many to one)
+* pgr_bdAstar(many to many)
+* pgr_bdAstarCost(one to one)
+* pgr_bdAstarCost(one to many)
+* pgr_bdAstarCost(many to one)
+* pgr_bdAstarCost(many to many)
+* pgr_bdAstarCostMatrix
+* pgr_bdDijkstra(one to many)
+* pgr_bdDijkstra(many to one)
+* pgr_bdDijkstra(many to many)
+* pgr_bdDijkstraCost(one to one)
+* pgr_bdDijkstraCost(one to many)
+* pgr_bdDijkstraCost(many to one)
+* pgr_bdDijkstraCost(many to many)
+* pgr_bdDijkstraCostMatrix
+
+.. rubric:: Deprecated Signatures
+
+* pgr_bdastar - use pgr_bdAstar instead
+
+.. rubric:: Renamed Functions
+
+* pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
+* pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
+* pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
+* pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
+
+.. rubric:: Deprecated function
+
+* pgr_pointToEdgeNode
 
 
 .. _changelog_2_4_0:
@@ -76,7 +139,7 @@ To see the issues closed by this release see the `Git closed issues for 2.3.2 <h
 .. rubric:: Bug Fixes
 
 * Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck.
-* Fixed pgr_trsp: 
+* Fixed pgr_trsp:
 
   * Alternate code is not executed when the point is in reality a vertex
   * Fixed ambiguity on seq
@@ -105,8 +168,6 @@ To see the issues closed by this release see the `Git closed issues for 2.3.0 <h
 
 .. rubric:: New Signatures
 
-Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
-
 * pgr_TSP
 * pgr_aStar
 
@@ -119,11 +180,23 @@ Indentifiers can be `ANY-INTEGER` and costs can be `ANY-NUMERICAL`
 
 * pgr_dijkstraCostMatrix
 * pgr_withPointsCostMatrix
-* pgr_maxFlowPushRelabel
-* pgr_maxFlowEdmondsKarp
-* pgr_maxFlowBoykovKolmogorov 
+* pgr_maxFlowPushRelabel(one to one)
+* pgr_maxFlowPushRelabel(one to many)
+* pgr_maxFlowPushRelabel(many to one)
+* pgr_maxFlowPushRelabel(many to many)
+* pgr_maxFlowEdmondsKarp(one to one)
+* pgr_maxFlowEdmondsKarp(one to many)
+* pgr_maxFlowEdmondsKarp(many to one)
+* pgr_maxFlowEdmondsKarp(many to many)
+* pgr_maxFlowBoykovKolmogorov (one to one)
+* pgr_maxFlowBoykovKolmogorov (one to many)
+* pgr_maxFlowBoykovKolmogorov (many to one)
+* pgr_maxFlowBoykovKolmogorov (many to many)
 * pgr_maximumCardinalityMatching
-* pgr_edgeDisjointPaths
+* pgr_edgeDisjointPaths(one to one)
+* pgr_edgeDisjointPaths(one to many)
+* pgr_edgeDisjointPaths(many to one)
+* pgr_edgeDisjointPaths(many to many)
 * pgr_contractGraph
 
 
@@ -214,13 +287,23 @@ To see the issues closed by this release see the `Git closed issues for 2.2.0 <h
 
 - pgr_floydWarshall
 - pgr_Johnson
-- pgr_DijkstraCost
+- pgr_dijkstraCost(one to one)
+- pgr_dijkstraCost(one to many)
+- pgr_dijkstraCost(many to one)
+- pgr_dijkstraCost(many to many)
 
 .. rubric:: Proposed functionality
 
-- pgr_withPoints
-- pgr_withPointsCost
-- pgr_withPointsDD
+- pgr_withPoints(one to one)
+- pgr_withPoints(one to many)
+- pgr_withPoints(many to one)
+- pgr_withPoints(many to many)
+- pgr_withPointsCost(one to one)
+- pgr_withPointsCost(one to many)
+- pgr_withPointsCost(many to one)
+- pgr_withPointsCost(many to many)
+- pgr_withPointsDD(single vertex)
+- pgr_withPointsDD(multiple vertices)
 - pgr_withPointsKSP
 - pgr_dijkstraVia
 
@@ -232,6 +315,10 @@ To see the issues closed by this release see the `Git closed issues for 2.2.0 <h
 - pgr_kDijkstraCost use pgr_dijkstraCost instead
 - pgr_kDijkstraPath use pgr_dijkstra instead
 
+.. rubric:: Renamed and deprecated function
+
+- pgr_makeDistanceMatrix renamed to _pgr_makeDistanceMatrix
+
 
 .. _changelog_2_1_0:
 
@@ -240,15 +327,22 @@ pgRouting 2.1.0 Release Notes
 
 To see the issues closed by this release see the `Git closed issues for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?q=is%3Aissue+milestone%3A%22Release+2.1.0%22+is%3Aclosed>`_ on Github.
 
+.. rubric:: New Signatures
+
+- pgr_dijkstra(one to many)
+- pgr_dijkstra(many to one)
+- pgr_dijkstra(many to many)
+- pgr_drivingDistance(multiple vertices)
+
 .. rubric:: Refactored
 
-- pgr_dijkstra
+- pgr_dijkstra(one to one)
 - pgr_ksp
-- pgr_drivingDistance
+- pgr_drivingDistance(single vertex)
 
 .. rubric:: Improvements
 
-- Alphashape function now can generate better (multi)polygon with holes and alpha parameter.
+- pgr_alphaShape function now can generate better (multi)polygon with holes and alpha parameter.
 
 .. rubric:: Proposed functionality
 
@@ -265,6 +359,19 @@ To see the issues closed by this release see the `Git closed issues for 2.1.0 <h
 - Added proposed functions from GSoc Projects:
 
   - pgr_vrppdtw
+  - pgr_vrponedepot
+
+.. rubric:: Deprecated functions
+
+- pgr_getColumnName
+- pgr_getTableName
+- pgr_isColumnCndexed
+- pgr_isColumnInTable
+- pgr_quote_ident
+- pgr_versionless
+- pgr_startPoint
+- pgr_endPoint
+- pgr_pointToId
 
 .. rubric:: No longer supported
 
@@ -319,7 +426,7 @@ The main Goals for this release are:
 * Major restructuring of pgRouting.
 * Standardiziation of the function naming
 * Prepararation of the project for future development.
- 
+
 As a result of this effort:
 
 * pgRouting has a simplified structure
@@ -353,41 +460,47 @@ As a result of this effort:
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
 * Better documentation: http://docs.pgrouting.org
+* shooting_star is discontinued
+
 
 
 .. _changelog_1_x:
 
-
-Changes for release 1.05
+pgRouting 1.x Release Notes
 -------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 1.x <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+1.x%22+is%3Aclosed>`_ on Github.
+The following release notes have been copied from the previous ``RELEASE_NOTES`` file and are kept as a reference.
+
+
+Changes for release 1.05
+...............................................................................
 
 * Bugfixes
 
 
 Changes for release 1.03
--------------------------------------------------------------------------------
+...............................................................................
 
 * Much faster topology creation
 * Bugfixes
 
 
 Changes for release 1.02
--------------------------------------------------------------------------------
+...............................................................................
 
 * Shooting* bugfixes
 * Compilation problems solved
 
 
 Changes for release 1.01
--------------------------------------------------------------------------------
+...............................................................................
 
 * Shooting* bugfixes
 
 
 Changes for release 1.0
--------------------------------------------------------------------------------
+...............................................................................
 
 * Core and extra functions are separated
 * Cmake build process
@@ -395,28 +508,28 @@ Changes for release 1.0
 
 
 Changes for release 1.0.0b
--------------------------------------------------------------------------------
+...............................................................................
 
 * Additional SQL file with more simple names for wrapper functions
 * Bugfixes
 
 
 Changes for release 1.0.0a
--------------------------------------------------------------------------------
+...............................................................................
 
 * Shooting* shortest path algorithm for real road networks
 * Several SQL bugs were fixed
 
 
 Changes for release 0.9.9
--------------------------------------------------------------------------------
+...............................................................................
 
 * PostgreSQL 8.2 support
 * Shortest path functions return empty result if they couldn’t find any path
 
 
 Changes for release 0.9.8
--------------------------------------------------------------------------------
+...............................................................................
 
 * Renumbering scheme was added to shortest path functions
 * Directed shortest path functions were added

@@ -166,7 +166,7 @@ Fleet::is_fleet_ok() const {
             return false;
         }
         if (!truck.is_feasable()) {
-            error << "Truck is not feasable";
+            error << "Truck is not feasible";
             return false;
         }
     }

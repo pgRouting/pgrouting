@@ -17,7 +17,7 @@ EXTENSION=$1
 
 echo $EXTENSION
 # remove trailing spaces
-perl -pi -e 's/\s\+$//' *.$EXTENSION
+perl -pi -e 's/\s+$//' *.$EXTENSION
 
 # " )" -> ")"
 perl -pi -e 's/\s\+\)/)/g' *.$EXTENSION

@@ -18,14 +18,28 @@ option(BUILD_HTML
 option(BUILD_MAN
     "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
 
+option(DOC_USE_BOOTSTRAP
+    "Set ON|OFF (default=ON) to build Documentation library tree as MAN page" OFF)
+
 
 if(WITH_DOC)
-    message("PROCESSING DOCUMENTATION------------")
+    #message("PROCESSING DOCUMENTATION------------")
 
     find_package(Sphinx REQUIRED)
 
-    set(SPHINX_THEME "bootstrap")
-    set(SPHINX_THEME_DIR "sphinx_bootstrap_theme.get_html_theme_path()")
+    if (DOC_USE_BOOTSTRAP)
+        set(SPHINX_INCLUDE "import sphinx_bootstrap_theme")
+        set(SPHINX_THEME "bootstrap")
+        set(SPHINX_THEME_DIR "sphinx_bootstrap_theme.get_html_theme_path()")
+        set(SPHINX_THEME_OPTIONS "'source_link_position': \"none\",")
+    else()
+        set(SPHINX_INCLUDE "")
+        set(SPHINX_THEME "haiku")
+        set(SPHINX_THEME_DIR "['']")
+        set(SPHINX_THEME_OPTIONS "")
+    endif()
+
+
 
     if (NOT SPHINX_FOUND)
         message(WARNING "Sphinx not found. Cannot generate documentation!")
@@ -55,13 +69,13 @@ if(WITH_DOC)
 
         file(GLOB PGR_DOCUMENTATION_SOURCES "src/*")
         foreach (file ${PGR_DOCUMENTATION_SOURCES})
-            message("${file}")
+            #message("${file}")
             file(COPY "${file}" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
         endforeach()
 
         file(GLOB  PGR_DOCUMENTATION_SOURCES "../src/*/doc/*")
         foreach (file ${PGR_DOCUMENTATION_SOURCES})
-            message("${file}")
+            #message("${file}")
             file(COPY "${file}" DESTINATION "${PGR_DOCUMENTATION_SOURCE_DIR}")
         endforeach()
 
@@ -161,5 +175,5 @@ if(WITH_DOC)
         message("-- Building documentation enabled for: ${DOC_TARGETS}")
     endif()
 
-    message("END PROCESSING DOCUMENTATION------------")
+    #message("END PROCESSING DOCUMENTATION------------")
 endif(WITH_DOC)

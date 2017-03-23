@@ -115,6 +115,7 @@ cmake -G "MSYS Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON \
  -DBoost_USE_MULTITHREADED=ON \
  -DCMAKE_CXX_FLAGS="-I${PROJECTS}/CGAL/rel-gmp-${GMP_VER}w${OS_BUILD}${GCC_TYPE}/include \
  -I${PROJECTS}/CGAL/rel-mpfr-${MPFR_VER}w${OS_BUILD}${GCC_TYPE}/include" \
+ -DCMAKE_BUILD_TYPE=Release \
  ../branches/${PGROUTING_VER}
 
 #first delete old pgrouting files from installed folder before we reinstall

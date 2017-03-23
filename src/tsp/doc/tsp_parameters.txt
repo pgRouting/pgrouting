@@ -27,8 +27,8 @@ Parameter                       Type         Default       Description
 **cooling_factor**              ``FLOAT``    `0.9`         Value between between 0 and 1 (not including) used to calculate the next temperature.
 **randomize**                   ``BOOLEAN``  `true`        Choose the random seed
 
-                                                             - true: Use current time as seed
-                                                             - false: Use `1` as seed. Using this value will get the same results with the same data in each execution.
+                                                           - true: Use current time as seed
+                                                           - false: Use `1` as seed. Using this value will get the same results with the same data in each execution.
 
 =============================== ===========  ============  =================================================
 

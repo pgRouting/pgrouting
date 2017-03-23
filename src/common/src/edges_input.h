@@ -138,7 +138,7 @@ void pgr_get_flow_edges(
 
 For queries of the type:
 ~~~~{.c}
-SELECT id, source, target, going, [comming]
+SELECT id, source, target, going, [coming]
 FROM edge_table;
 ~~~~
 
