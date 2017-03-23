@@ -9,6 +9,7 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_conversion_tools.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_dmatrix_tools.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgr_vidsToDMatrix.sql
+    ${CMAKE_CURRENT_SOURCE_DIR}/dijkstra_v2.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/deprecated-comments.sql
     )
 
