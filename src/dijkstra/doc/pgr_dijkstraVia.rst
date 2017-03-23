@@ -25,6 +25,8 @@ a list of vertices.
 
    Boost Graph Inside
 
+.. rubric:: Availability: 2.2.0
+
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -91,7 +93,7 @@ Complete Signature
 Description of the Signature
 -------------------------------------------------------------------------------
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 

@@ -1,7 +1,7 @@
 
 \i setup.sql
 
-SELECT plan(69);
+SELECT plan(90);
 
 SELECT todo_start();
 
@@ -35,10 +35,10 @@ SELECT has_function('pgr_withpointsdd');
 
 SELECT has_function('pgr_contractgraph');
 SELECT has_function('pgr_maxflow');
-SELECT has_function('pgr_maxflowpushrelabel');
-SELECT has_function('pgr_maxflowedmondskarp');
-SELECT has_function('pgr_maxflowboykovkolmogorov');
-SELECT has_function('pgr_maximumcardinalitymatching');
+SELECT has_function('pgr_pushrelabel');
+SELECT has_function('pgr_edmondskarp');
+SELECT has_function('pgr_boykovkolmogorov');
+SELECT has_function('pgr_maxcardinalitymatch');
 SELECT has_function('pgr_edgedisjointpaths');
 
 -- testing with parameters
@@ -105,6 +105,37 @@ SELECT has_function('pgr_bdastarcost', ARRAY['text', 'bigint', 'anyarray', 'bool
 SELECT has_function('pgr_bdastarcost', ARRAY['text', 'anyarray', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
 
 SELECT has_function('pgr_bdastarcostmatrix', ARRAY['text', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
+
+-- max flow
+SELECT has_function('pgr_maxflow', ARRAY[ 'text', 'bigint', 'bigint' ]);
+SELECT has_function('pgr_maxflow', ARRAY[ 'text', 'anyarray', 'bigint' ]);
+SELECT has_function('pgr_maxflow', ARRAY[ 'text', 'bigint', 'anyarray' ]);
+SELECT has_function('pgr_maxflow', ARRAY[ 'text', 'anyarray', 'anyarray' ]);
+
+SELECT has_function('pgr_boykovkolmogorov', ARRAY[ 'text', 'bigint', 'bigint' ]);
+SELECT has_function('pgr_boykovkolmogorov', ARRAY[ 'text', 'anyarray', 'bigint' ]);
+SELECT has_function('pgr_boykovkolmogorov', ARRAY[ 'text', 'bigint', 'anyarray' ]);
+SELECT has_function('pgr_boykovkolmogorov', ARRAY[ 'text', 'anyarray', 'anyarray' ]);
+
+SELECT has_function('pgr_edmondskarp', ARRAY[ 'text', 'bigint', 'bigint' ]);
+SELECT has_function('pgr_edmondskarp', ARRAY[ 'text', 'anyarray', 'bigint' ]);
+SELECT has_function('pgr_edmondskarp', ARRAY[ 'text', 'bigint', 'anyarray' ]);
+SELECT has_function('pgr_edmondskarp', ARRAY[ 'text', 'anyarray', 'anyarray' ]);
+
+SELECT has_function('pgr_pushrelabel', ARRAY[ 'text', 'bigint', 'bigint' ]);
+SELECT has_function('pgr_pushrelabel', ARRAY[ 'text', 'anyarray', 'bigint' ]);
+SELECT has_function('pgr_pushrelabel', ARRAY[ 'text', 'bigint', 'anyarray' ]);
+SELECT has_function('pgr_pushrelabel', ARRAY[ 'text', 'anyarray', 'anyarray' ]);
+
+SELECT has_function('pgr_maxcardinalitymatch', ARRAY['text', 'boolean']);
+
+SELECT has_function('pgr_edgedisjointpaths', ARRAY['text', 'bigint', 'bigint', 'boolean']);
+SELECT has_function('pgr_edgedisjointpaths', ARRAY['text', 'bigint', 'anyarray', 'boolean']);
+SELECT has_function('pgr_edgedisjointpaths', ARRAY['text', 'anyarray', 'bigint', 'boolean']);
+SELECT has_function('pgr_edgedisjointpaths', ARRAY['text', 'anyarray', 'anyarray', 'boolean']);
+
+
+
 
 SELECT finish();
 ROLLBACK;

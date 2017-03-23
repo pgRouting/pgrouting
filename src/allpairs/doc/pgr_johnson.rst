@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -22,6 +22,10 @@ pair of nodes in the graph using Floyd-Warshall algorithm.
    :target: http://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html
 
    Boost Graph Inside
+
+.. rubric:: Availability: 2.0.0
+
+* Renamed on 2.2.0, previous name pgr_apspJohnson
 
 
 The Johnson algorithm, is a good choice to calculate the sum of the costs
@@ -54,9 +58,9 @@ The main Characteristics are:
 
 Signature Summary
 --------------------------------------------
-    
+
 .. code-block:: none
-   
+
     pgr_johnson(edges_sql)
     pgr johnson(edges_sql, directed)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
@@ -72,7 +76,7 @@ Minimal Signature
 ...................
 
 .. code-block:: none
-   
+
     pgr_johnson(edges_sql)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 
@@ -90,7 +94,7 @@ Complete Signature
 ...................
 
 .. code-block:: none
-   
+
     pgr_johnson(edges_sql, directed)
     RETURNS SET OF (start_vid, end_vid,  agg_cost) or EMPTY SET
 
@@ -104,7 +108,7 @@ Complete Signature
 Description of the Signatures
 ------------------------------
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: no_id_edges_sql_start
     :end-before: no_id_edges_sql_end
 

@@ -1,9 +1,9 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
 
-    This documentation is licensed under a Creative Commons Attribution-Share  
+    This documentation is licensed under a Creative Commons Attribution-Share
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
@@ -22,16 +22,16 @@ Bugs are reported and managed in an `issue tracker <https://github.com/pgrouting
 
 1. Search the tickets to see if your problem has already been reported. If so, add any extra context you might have found, or at least indicate that you too are having the problem. This will help us prioritize common issues.
 2. If your problem is unreported, create a `new issue <https://github.com/pgRouting/pgrouting/issues/new>`_ for it.
-3. In your report include explicit instructions to replicate your issue. The best tickets include the exact SQL necessary to replicate a problem. 
+3. In your report include explicit instructions to replicate your issue. The best tickets include the exact SQL necessary to replicate a problem.
 4. If you can test older versions of PostGIS for your problem, please do. On your ticket, note the earliest version the problem appears.
 5. For the versions where you can replicate the problem, note the operating system and version of pgRouting, PostGIS and PostgreSQL.
-6. It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem. 
+6. It is recommended to use the following wrapper on the problem to pin point the step that is causing the problem.
 
 .. code-block:: sql
 
-    SET client_min_messages TO debug; 
+    SET client_min_messages TO debug;
       <your code>
-    SET client_min_messages TO notice; 
+    SET client_min_messages TO notice;
 
 
 

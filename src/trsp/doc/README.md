@@ -4,7 +4,7 @@ SET client_min_messages TO NOTICE;
 SET
 ROLLBACK;
 ROLLBACK
-# Notes on pgr_trsp for version 2.4.0
+# Notes on pgr_trsp for version 2.5.0
 Table of contents
 * [Introduction](#introduction)
   * [The restriction](#the-restriction)

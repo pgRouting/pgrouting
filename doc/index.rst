@@ -23,119 +23,85 @@ This is the manual for pgRouting |release|.
 
 The pgRouting Manual is licensed under a `Creative Commons Attribution-Share Alike 3.0 License <http://creativecommons.org/licenses/by-sa/3.0/>`_. Feel free to use this material any way you like, but we ask that you attribute credit to the pgRouting Project and wherever possible, a link back to http://pgrouting.org. For other licenses used in pgRouting see the :ref:`license` page.
 
-*******************************************************************************
 General
-*******************************************************************************
+===============================================================================
 
 .. toctree::
-   :numbered:
+    :maxdepth: 2
 
-   pgRouting_introduction
-   installation
-   build
-   support
+    pgRouting-introduction
+    pgRouting-installation
+    support
 
 
-*******************************************************************************
-Tutorial
-*******************************************************************************
-
-:ref:`Tutorial <tutorial>`
-
-  - :ref:`Getting started <tutorial>`
-  - :ref:`topology` for an overview of a topology for routing algorithms.
-  - :ref:`analytics` for an overview of the analysis of a graph.
-  - :ref:`custom_query` that is used in the routing algorithms.
-  - :ref:`performance` to improve your performance.
-  - :ref:`recipes`
-  - :ref:`developer`
-
-For a more complete introduction how to build a routing application read the `pgRouting Workshop <http://workshop.pgrouting.org>`_.
-
+- :ref:`sampledata` that is used in the examples of this manual.
 
 .. toctree::
-   :numbered:
-
-   tutorial
-   recipes
-   developer_guide
-   
-*******************************************************************************
-Sample Data
-*******************************************************************************
-
-  - :ref:`sampledata` that is used in the examples of this manual.
-
-.. toctree::
-   :numbered:
+   :hidden:
 
    sampledata
 
-
-
-*******************************************************************************
-Functions
-*******************************************************************************
-
-Version
+:ref:`Pgrouting Concepts <pgrouting_concepts>`
 ===============================================================================
+
+.. include:: pgRouting-concepts.rst
+   :start-after: concepts_start
+   :end-before: concepts_end
+
+
+.. toctree::
+   :hidden:
+
+   pgRouting-concepts
+   
+
+.. rubric:: Reference
 
 :ref:`pgr_version` - to get pgRouting's version information.
 
 .. toctree::
-   :numbered:
+   :hidden:
 
    pgr_version
 
 
-
-
-Data Types
+:ref:`Data Types <data_types>`
 ===============================================================================
 
-:ref:`data_types`
 
-  -  :ref:`type_cost_result` -  A set of records to describe a path result with cost attribute.
-  -  :ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a path result with cost attribute.
-  -  :ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute.
-
-.. toctree::
-   :numbered:
-
-   types
-
-
-*******************************************************************************
-Topology functions
-*******************************************************************************
-
-:ref:`topology_functions`
-
-  -  :ref:`pgr_create_topology` -  to create a topology based on the geometry.
-  -  :ref:`pgr_create_vert_table` - to reconstruct the vertices table based on the source and target information.
-  -  :ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge table.
-  -  :ref:`pgr_analyze_oneway` - to analyze directionality of the edges.
-  -  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
+- :ref:`type_cost_result` -  A set of records to describe a path result with cost attribute.
+- :ref:`pgr_costResult3[]<type_cost_result3>` - A set of records to describe a path result with cost attribute.
+- :ref:`pgr_geomResult<type_geom_result>` - A set of records to describe a path result with geometry attribute.
 
 .. toctree::
-   :numbered:
+   :hidden:
 
-   topology
+   types_index
 
 
-*******************************************************************************
-Routing Functions
-*******************************************************************************
+:ref:`Topology Functions <topology_functions>`
+===============================================================================
 
-..
-    ROUTING FUNCTIONS SECTION
+-  :ref:`pgr_create_topology` -  to create a topology based on the geometry.
+-  :ref:`pgr_create_vert_table` - to reconstruct the vertices table based on the source and target information.
+-  :ref:`pgr_analyze_graph`  - to analyze the edges and vertices of the edge table.
+-  :ref:`pgr_analyze_oneway` - to analyze directionality of the edges.
+-  :ref:`pgr_node_network`  -to create nodes to a not noded edge table.
+
+.. toctree::
+   :hidden:
+
+   topology-functions
+
+
+:ref:`Routing functions <routing_functions>`
+===============================================================================
+
+.. toctree::
     :hidden:
-    :maxdepth: 0
-    
-.. toctree::
-   :numbered:
 
-   routingFunctions
+    routingFunctions
+
 
 .. include:: routingFunctions.rst
    :start-after: from-here
@@ -143,43 +109,31 @@ Routing Functions
     
 
 
-*******************************************************************************
 Available Functions but not official pgRouting functions
-*******************************************************************************
+===============================================================================
 
-- :ref:`proposedNext`
+- :ref:`Stable`
 - :ref:`proposed`
 
 .. toctree::
-   :numbered:
+    :hidden:
 
-   proposedNext
-   proposed
+    proposed
 
 
-*******************************************************************************
-Discontinued & Deprecated Functions
-*******************************************************************************
 
-  - :ref:`discontinued`
-  - :ref:`deprecated`
+:ref:`Change Log <change_log>`
+===============================================================================
+
+.. include:: release_notes.rst
+   :start-after: changelog start
+   :end-before: changelog end
+
 
 .. toctree::
-   :numbered:
+    :hidden:
 
-   discontinued
-   deprecated
-
-
-
-
-*******************************************************************************
-Change Log
-*******************************************************************************
-
-.. toctree::
-
-   release_notes
+    release_notes
 
 
 .. rubric:: Indices and tables

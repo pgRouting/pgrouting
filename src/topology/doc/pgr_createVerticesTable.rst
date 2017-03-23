@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -9,7 +9,7 @@
 
 .. _pgr_create_vert_table:
 
-pgr_createVerticesTable 
+pgr_createVerticesTable
 ===============================================================================
 
 Name
@@ -24,9 +24,9 @@ Synopsis
 The function returns:
 
   - ``OK`` after the vertices table has been reconstructed.
-  - ``FAIL`` when the vertices table was not reconstructed due to an error. 
+  - ``FAIL`` when the vertices table was not reconstructed due to an error.
 
-.. index:: 
+.. index::
 	single: createVerticesTable(Complete Signature)
 
 .. code-block:: sql
@@ -44,9 +44,9 @@ Description
 The reconstruction of the vertices table  function accepts the following parameters:
 
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
-:the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.  
+:the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.
 :source: ``text`` Source column name of the network table. Default value is ``source``.
-:target: ``text``  Target column name of the network table.  Default value is ``target``. 
+:target: ``text``  Target column name of the network table.  Default value is ``target``.
 :rows_where: ``text``   Condition to SELECT a subset or rows.  Default value is ``true`` to indicate all rows.
 
 .. warning::
@@ -66,7 +66,7 @@ The function returns:
     * Creates a vertices table: <edge_table>_vertices_pgr.
     * Fills ``id`` and ``the_geom`` columns of the vertices table based on the source and target columns of the edge table.
 
-  - ``FAIL`` when the vertices table was not reconstructed due to an error. 
+  - ``FAIL`` when the vertices table was not reconstructed due to an error.
 
     * A required column of the Network table is not found or is not of the appropriate type.
     * The condition is not well formed.
@@ -83,7 +83,7 @@ The structure of the vertices table is:
 :cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
 :chk: ``integer``  Indicator that the vertex might have a problem. See :ref:`pgr_analyzeGraph <pgr_analyze_graph>`.
 :ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`. 
+:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 .. rubric:: History
@@ -92,8 +92,8 @@ The structure of the vertices table is:
 
 Usage when the edge table's columns MATCH the default values:
 -------------------------------------------------------------------------------
- 
-.. rubric:: The simplest way to use pgr_createVerticesTable is: 
+
+.. rubric:: The simplest way to use pgr_createVerticesTable is:
 
 .. code-block:: sql
 
@@ -108,7 +108,7 @@ Usage when the edge table's columns MATCH the default values:
 
 We get the same result as the simplest way to use the function.
 
-.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column. 
+.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column source column ``source`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the source column.
  | ``SELECT  pgr_createVerticesTable('edge_table','source','the_geom','target');``
 
 
@@ -149,14 +149,14 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 .. code-block:: sql
 
 	DROP TABLE IF EXISTS otherTable;
-	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ; 
+	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
 	SELECT  pgr_createVerticesTable('edge_table',rows_where:='the_geom && (select st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 
 
 
 Usage when the edge table's columns DO NOT MATCH the default values:
 -------------------------------------------------------------------------------
- 
+
 For the following table
 
 .. code-block:: sql
@@ -164,7 +164,7 @@ For the following table
 	DROP TABLE IF EXISTS mytable;
 	CREATE TABLE mytable AS (SELECT id AS gid, the_geom AS mygeom,source AS src ,target AS tgt FROM edge_table) ;
 
-.. rubric:: Using positional notation: 
+.. rubric:: Using positional notation:
 
 The arguments need to be given in the order described in the parameters:
 
@@ -220,7 +220,7 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 .. code-block:: sql
 
 	DROP TABLE IF EXISTS otherTable;
-	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ; 
+	CREATE TABLE otherTable AS  (SELECT 100 AS gid, st_point(2.5,2.5) AS other_geom) ;
 	SELECT  pgr_createVerticesTable('mytable','mygeom','src','tgt',
 	                            rows_where:='the_geom && (SELECT st_buffer(othergeom,0.5) FROM otherTable WHERE gid=100)');
 
@@ -247,8 +247,8 @@ Examples
     NOTICE:                              Edges processed: 18
     NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
     NOTICE:  ----------------------------------------------
-               
-	 pgr_createVerticesTable 
+
+	 pgr_createVerticesTable
 	--------------------
 	 OK
 	(1 row)

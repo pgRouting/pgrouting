@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -18,48 +18,50 @@ Routing Functions
     from-here
 
 
-- :ref:`All pairs<all_pairs>` - All pair of vertices.
+:ref:`all_pairs`
 
-  - :ref:`pgr_floydWarshall<pgr_floydWarshall>` - Floyd-Warshall's Algorithm
-  - :ref:`pgr_johnson<pgr_johnson>`- Johnson’s Algorithm
+- :ref:`pgr_floydWarshall` - Floyd-Warshall's Algorithm
+- :ref:`pgr_johnson`- Johnson’s Algorithm
 
-- :ref:`pgr_astar` - Shortest Path A*
-- :ref:`pgr_bdAstar` - Bi-directional A* Shortest Path
-- :ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
-- :ref:`dijkstra<dijkstra>` - Dijkstra family functions
+:ref:`pgr_astar` - Shortest Path A*
 
-  - :ref:`pgr_dijkstra` - Dijkstra's shortest path algorithm.
-  - :ref:`pgr_dijkstraCost` - Use pgr_dijkstra to calculate the costs of the shortest paths.
-      
-- :ref:`Driving Distance<drivingDistance>` - Driving Distance
+:ref:`pgr_bdAstar` - Bi-directional A* Shortest Path
 
-  - :ref:`pgr_drivingDistance<pgr_drivingDistance>` - Driving Distance
+:ref:`pgr_bdDijkstra` - Bi-directional Dijkstra Shortest Path
 
-  - Post processing
 
-    - :ref:`pgr_alphaShape` - Alpha shape computation
-    - :ref:`pgr_points_as_polygon` - Polygon around set of points
+:ref:`dijkstra`
 
-- :ref:`pgr_ksp<pgr_ksp>` - K-Shortest Path
-- :ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
-- :ref:`tsp`
+.. include:: dijkstra-family.rst
+   :start-after: index from here
+   :end-before: index to here
 
-  - :ref:`pgr_TSP<pgr_TSP>` - When input is a cost matrix.
-  - :ref:`pgr_eucledianTSP<pgr_eucledianTSP>` - When input are coordinates.
+:ref:`pgr_ksp` - K-Shortest Path
 
-..
-    to-here
+:ref:`pgr_trsp<trsp>` - Turn Restriction Shortest Path (TRSP)
+
+:ref:`tsp`
+
+.. include:: TSP-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`drivingDistance`
+
+.. include:: drivingDistance-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+..  to-here
 
 .. toctree::
-    :numbered:
+    :hidden:
 
-    allpairs
-    pgr_astar
+    allpairs-family
     pgr_bdAstar
     pgr_bdDijkstra
-    dijkstra
-    drivingDistance
-    pgr_ksp
+    dijkstra-family
+    pgr_KSP
     pgr_trsp
-    tsp
-
+    TSP-family
+    drivingDistance-category

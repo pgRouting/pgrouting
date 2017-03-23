@@ -1,0 +1,45 @@
+#!/usr/bin/perl -w
+use strict;
+
+sub Usage {
+  die "Usage: notes2news infile [outfile]\n";
+}
+
+my $in = shift @ARGV || Usage();
+my $out = shift @ARGV;
+
+# set up the output io channel
+my $ofh;
+if ( defined $out ) {
+  open($ofh, ">$out") || die "ERROR: failed to open '$out' for write! : $!\n";
+}
+else {
+  $ofh = *STDOUT;
+}
+
+my $ifh;
+open($ifh, "$in") || die "ERROR: failed to open '$in' for read! : $!\n";
+
+my $skipping = 1;
+while (my $line = <$ifh>) {
+  if ($skipping) {
+    if ($line =~ /^\.\. _changelog_/) {
+      $skipping = 0;
+    }
+    next;
+  }
+
+  # convert urls to markdown
+  $line =~ s/`([^<]+)<([^>]+)>`_/\[$1\]($2)/g;
+
+  # convert rubric to bold
+  $line =~ s/^\.\. rubric::\s*(.+)$/*$1*/;
+
+  next if $line =~ /^\.\. _changelog/;
+
+  print $ofh $line;
+}
+
+close($ifh);
+close($ofh) if $out;
+

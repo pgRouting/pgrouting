@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -9,10 +9,10 @@
 
 .. _type_cost_result:
 
-pgr_costResult[] 
+pgr_costResult[]
 ===============================================================================
 
-.. index:: 
+.. index::
     single: pgr_costResult[]
 
 Name
@@ -45,7 +45,7 @@ Description
 pgr_costResult3[] - Multiple Path Results with Cost
 ===============================================================================
 
-.. index:: 
+.. index::
     single: pgr_costResult3[]
 
 Name

@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -18,16 +18,17 @@ Name
 ``pgr_dijkstraCostMatrix`` - Calculates the a cost matrix using pgr_dijktras.
 
 
-.. include:: proposedNext.rst
+.. include:: proposed.rst
    :start-after: begin-warning
    :end-before: end-warning
-
 
 
 .. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
+
+.. rubric:: Availability: 2.3.0
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -95,7 +96,7 @@ This example returns a symmetric cost matrix.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: basic_edges_sql_start
     :end-before: basic_edges_sql_end
 
@@ -113,7 +114,7 @@ Parameter        Type                   Description
 ================ ====================== =================================================
 
 
-.. include:: custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 

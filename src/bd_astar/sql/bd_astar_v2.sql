@@ -56,4 +56,5 @@ $BODY$
 LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
+
 COMMENT ON FUNCTION pgr_bdAstar(TEXT, INTEGER, INTEGER, BOOLEAN,BOOLEAN) IS 'pgr_bdAstar(Deprecated signature)';

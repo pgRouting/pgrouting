@@ -2,6 +2,11 @@
 Changes for 2.5.0
 -------------------------------------------------------------------------------
 
+* Breaking change on:
+  * pgr_edgeDisjointPaths:
+    * Added path_id, cost and agg_cost columns on the result
+    * Parameter names changed
+    * The many version results are the union of the one to one version
 * New Signatures:
   * pgr_bdAstar(one to one)
 * New Proposed functions
@@ -21,10 +26,17 @@ Changes for 2.5.0
   * pgr_bdDijkstraCost(many to one)
   * pgr_bdDijkstraCost(many to many)
   * pgr_bdDijkstraCostMatrix
+  * pgr_pushRelabel
+  * pgr_edmondsKarp
+  * pgr_boykovKolmogorov
+  * pgr_maxCardinalityMatch
 * Deprecated Signatures
   * pgr_bdastar - use pgr_bdAstar instead
-* Moved to the stable proposed functions
-  * All Flow functions
+* Deprecated Functions
+  * pgr_maxFlowPushRelabel - use pgr_pushRelabel instead
+  * pgr_maxFlowEdmondsKarp -use pgr_edmondsKarp instead
+  * pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
+  * pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
 
 Changes for 2.4.0
 -------------------------------------------------------------------------------
@@ -100,7 +112,7 @@ Changes for 2.3.0
 * Deprecated functions
 
   * pgr_flip_edges
-  * pgr_vidsToDmatrix
+  * pgr_vidsToDmatrix(2 signatures)
   * pgr_pointsToDMatrix
   * pgr_textToPoints
 
@@ -137,55 +149,57 @@ Changes for 2.2.0
     - Adding a row_where and outall optional parameters
 
 - Signature fix
-  - pgr_dijkstra  -- to match what was documented (the pgr_dijkstra from V2.0)
+  - pgr_dijkstra  -- to match what was documented on the pgr_dijkstra from V2.0
 
 - New functions
   - pgr_floydWarshall
   - pgr_Johnson
-  - pgr_DijkstraCost
+  - pgr_dijkstraCost(one to one)
+  - pgr_dijkstraCost(one to many)
+  - pgr_dijkstraCost(many to one)
+  - pgr_dijkstraCost(many to many)
 
 - New Proposed functions
-  - pgr_withPoints
-  - pgr_withPointsCost
-  - pgr_withPointsDD
+  - pgr_withPoints(one to one)
+  - pgr_withPoints(one to many)
+  - pgr_withPoints(many to one)
+  - pgr_withPoints(many to many)
+  - pgr_withPointsCost(one to one)
+  - pgr_withPointsCost(one to many)
+  - pgr_withPointsCost(many to one)
+  - pgr_withPointsCost(many to many)
+  - pgr_withPointsDD(single vertex)
+  - pgr_withPointsDD(multiple vertices)
   - pgr_withPointsKSP
   - pgr_dijkstraVia
 
 
 - Deprecated functions:
   - pgr_apspWarshall  use pgr_floydWarshall instead
-  - pgr_apspJohnson   use pgr_Johnson instead
+  - pgr_apspJohnson   use pgr_johnson instead
   - pgr_kDijkstraCost use pgr_dijkstraCost instead
   - pgr_kDijkstraPath use pgr_dijkstra instead
-
+  - pgr_makeDistanceMatrix
 
 
 Changes for 2.1.0
 -------------------------------------------------------------------------------
 
- - A C and C++ library for developer was created
 
-   - encapsulates postgreSQL related functions
-   - encapsulates Boost.Graph graphs
+ - New Signatures
+   - pgr_dijkstra(one to many)
+   - pgr_dijkstra(many to one)
+   - pgr_dijkstra(many to many)
+   - pgr_drivingDistance(multiple vertices)
 
-     - Directed Boost.Graph 
-     - Undirected Boost.graph.
+ - Three Functions where completely re-factored
 
-   - allow any-integer in the id's
-   - allow any-numerical on the cost/reverse_cost columns
-
- - Three Functions where completely re-factored using the developers library and functionality was added.
-
-   - pgr_dijkstra
+   - pgr_dijkstra(one to one)
    - pgr_ksp
-   - pgr_drivingDistance
+   - pgr_drivingDistance(single vertex)
 
  - Improved
-   Alphashape function now can generate better polygons with holes and custom parameter
-
- - Instead of generating many libraries:
-   - All functions are encapsulated in one library
-   - The library has a the prefix 2-1-0
+   - pgr_alphaShape function now can generate better polygons with holes and custom parameter
 
  - Added proposed functions to be evaluated:
    - Proposed functions from Steve Woodbridge, (Classified as Convenience by the author.)
@@ -199,7 +213,33 @@ Changes for 2.1.0
 
    - Added proposed functions from GSoc Projects:
       - pgr_vrppdtw
+      - pgr_vrponedepot
 
+ - Deprecated functions
+    - pgr_getColumnName
+    - pgr_getTableName
+    - pgr_isColumnCndexed
+    - pgr_isColumnInTable
+    - pgr_quote_ident
+    - pgr_versionless
+    - pgr_startPoint
+    - pgr_endPoint
+    - pgr_pointToId
+
+ - Instead of generating many libraries:
+   - All functions are encapsulated in one library
+   - The library has a the prefix 2-1-0
+
+ - A C and C++ library for developer was created
+
+   - encapsulates postgreSQL related functions
+   - encapsulates Boost.Graph graphs
+
+     - Directed Boost.Graph
+     - Undirected Boost.graph
+
+   - allow any-integer in the id's
+   - allow any-numerical on the cost/reverse_cost columns
  - Removed the 1.x legacy functions
 
  - Some bug fixes in other functions
@@ -221,14 +261,15 @@ Changes for 2.0.0
 * Improved build process for Windows
 * Automated testing on Linux and Windows platforms trigger by every commit
 * Modular library design
-* Compatibility with PostgreSQL 9.1 or newer 
-* Compatibility with PostGIS 2.0 or newer 
+* Compatibility with PostgreSQL 9.1 or newer
+* Compatibility with PostGIS 2.0 or newer
 * Installs as PostgreSQL EXTENSION
 * Return types refactored and unified
 * Support for table SCHEMA in function parameters
 * Support for ``st_`` PostGIS function prefix
 * Added ``pgr_`` prefix to functions and types
 * Better documentation: http://docs.pgrouting.org
+* shooting_star is discontinued
 
 
 Changes for release 1.05

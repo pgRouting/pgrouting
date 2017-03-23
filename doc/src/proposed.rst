@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -7,16 +7,106 @@
     Alike 3.0 License: http://creativecommons.org/licenses/by-sa/3.0/
    ****************************************************************************
 
+.. _Stable:
+
+Stable proposed Functions
+==================================
+
+..  stable-begin-warning
+
+.. warning:: These are proposed functions for next mayor release.
+
+  - They are not officially in the current release.
+  - They will likely officially be part of the next mayor release:
+
+    - The functions make use of ANY-INTEGER and ANY-NUMERICAL
+    - Name might not change. (But still can)
+    - Signature might not change. (But still can)
+    - Functionality might not change. (But still can)
+    - pgTap tests have being done. But might need more.
+    - Documentation might need refinement.
+
+..  stable-end-warning
+
+
+
+As part of the :ref:`dijkstra`
+
+- :ref:`pgr_dijkstraCostMatrix` Use pgr_dijkstra to calculate a cost matrix.
+- :ref:`pgr_dijkstraVia` - Use pgr_dijkstra to make a route via vertices.
+
+.. rubric:: Families
+
+:ref:`astar`
+ 
+.. include:: aStar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`bdAstar`
+ 
+.. include:: bdAstar-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`bdDijkstra`
+ 
+.. include:: bdDijkstra-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`maxFlow`
+
+.. include:: flow-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`withPoints`
+
+.. include:: withPoints-family.rst
+   :start-after: index from here
+   :end-before: index to here
+
+.. rubric:: categories
+
+:ref:`Cost`
+
+.. include:: cost-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`CostMatrix`
+
+.. include:: costMatrix-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+:ref:`KSP`
+
+.. include:: KSP-category.rst
+   :start-after: index from here
+   :end-before: index to here
+
+.. toctree::
+    :hidden:
+
+    aStar-family
+    bdAstar-family
+    bdDijkstra-family
+    withPoints-family
+
+    cost-category
+    costMatrix-category
+    KSP-category
+
+
 .. _proposed:
 
 Experimental and Proposed functions
 ===============================================================================
 
-:ref:`proposed`
 
-
-..
-   begin-warning
+..  begin-warn-expr
 
 .. warning:: These are proposed functions
 
@@ -36,45 +126,41 @@ Experimental and Proposed functions
     - Might depend on a proposed function of pgRouting
     - Might depend on a deprecated function of pgRouting
 
-..
-   end-warning
+..  end-warn-expr
 
 
-Proposed functions
-------------------------------------------------
+:ref:`contraction` - Reduce network size using contraction techniques
 
-- :ref:`contraction` - Reduce network size using contraction techniques
+- :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
-  - :ref:`pgr_contractgraph` - Reduce network size using contraction techniques
 
-- convenience
+.. rubric:: Graph Analysis
 
-  -  :ref:`pgr_point_to_edgenode` - convert a point geometry to a ``vertex_id`` based on closest edge.
+-  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
 
-- graph analysis
+.. rubric:: Vehicle Routing Problems
 
-  -  :ref:`pgr_labelGraph` - Analyze / label  subgraphs within a network
-
-- Vehicle Routing Problems
-
-  -  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
-  -  :ref:`pgr_vrp_basic` - VRP One Depot
+-  :ref:`pgr_gsocvrppdtw` - VRP Pickup & Delivery (Euclidean)
+-  :ref:`pgr_vrp_basic` - VRP One Depot
 
 
 .. toctree::
-   :numbered:
+  :hidden:
 
-   contraction
-   pgr_contractGraph
-   pgr_textToPoints
-   pgr_pointsToVids
-   pgr_labelGraph
-   pgr_gsoc_vrppdtw
-   pgr_vrpOneDepot
+  contraction-family
+  flow-family
+  pgr_labelGraph
+  pgr_gsoc_vrppdtw
+  pgr_vrpOneDepot
 
 
 
-..  
+
+
+
+
+
+..
   The template
    ------------
     - :ref:`pgr_funnyDijkstra`
