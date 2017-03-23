@@ -81,7 +81,7 @@ class Pgr_bdDijkstra {
      }
 
      std::string log() const {return m_log.str();}
-     void clean_log() {log.clear();}
+     void clean_log() {m_log.clear();}
      void clear() {
          while (!forward_queue.empty()) forward_queue.pop();
          while (!backward_queue.empty()) backward_queue.pop();
