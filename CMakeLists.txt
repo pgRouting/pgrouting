@@ -78,16 +78,16 @@ set(PgRouting_SOURCE_NAMES
     # "dijkstra" can not be removed 
     #   Has the command needed to link with prostgresl
     #----------------------
-    "dijkstra" 
+    "dijkstra" #2.1
 
     #----------------------
     # Directories that have being rewritten
     #----------------------
-    "allpairs"
-    "astar"
-    "driving_distance"
-    "ksp"
-    "tsp"
+    "allpairs" # 2.2
+    "astar"    # 2.4
+    "driving_distance" # 2.1
+    "ksp" # 2.1
+    "tsp" # 2.3
 
     #----------------------
     # Code needs to be rewritten
@@ -126,19 +126,14 @@ set(PgRouting_SQL_DIRECTORIES
     # Proposed
     #  Not officially on the release
     #----------------------
-    "convenience"  # most are deprecated
     "label_graph"  # needs to be rewritten using Boost
     "costMatrix"   # proposed on 2.3
 
     #----------------------
     # Wrappers for backwards compatibility 
     #----------------------
-    "bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
-    "apsp_johnson"  # 2.0 wrap of pgr_johnson
-    "apsp_warshall" # 2.0 wrap of pgr_warshall
-    "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
+    "deprecated"
     "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
-    "bd_astar"      # 2.5  wrap of pgr_bdAstar
     )
 
 #---------------------------------------------
