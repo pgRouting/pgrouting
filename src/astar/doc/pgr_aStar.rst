@@ -256,9 +256,6 @@ Parameter        Type                   Description
     :end-before: return_path_end
 
 
-
-
-
 See Also
 -------------------------------------------------------------------------------
 

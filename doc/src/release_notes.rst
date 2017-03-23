@@ -9,8 +9,9 @@
 
 .. _change_log:
 
-Release Notes
-===============================================================================
+*******************************************************************************
+Change log
+*******************************************************************************
 
 To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
 
@@ -37,7 +38,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. _changelog_2_5_0:
 
-Changes for 2.5.0
+Release 2.5.0
 -------------------------------------------------------------------------------
 
 To see the issues closed by this release see the `Git closed issues for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?q=milestone%3A%22Release+2.5.0%22+is%3Aclosed>`_ on Github.
@@ -475,6 +476,7 @@ The following release notes have been copied from the previous ``RELEASE_NOTES``
 
 Changes for release 1.05
 ...............................................................................
+>>>>>>> develop:doc/src/release_notes.rst
 
 * Bugfixes
 
