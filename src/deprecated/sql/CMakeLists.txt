@@ -1,5 +1,6 @@
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/noUnderUtilities.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/apsp_johnson_v2.2.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/apsp_warshall_v2.2.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/astarV2.0.sql
