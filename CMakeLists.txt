@@ -132,8 +132,8 @@ set(PgRouting_SQL_DIRECTORIES
     #----------------------
     # Wrappers for backwards compatibility 
     #----------------------
-    "deprecated"
     "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
+    "deprecated"
     )
 
 #---------------------------------------------
