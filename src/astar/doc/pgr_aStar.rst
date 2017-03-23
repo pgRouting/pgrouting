@@ -251,33 +251,11 @@ Parameter        Type                   Description
 **epsilon**      ``FLOAT``              (optional). For less restricted results. :math:`epsilon >= 1`.  Default ``1``.
 ================ ====================== =================================================
 
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_start
+    :end-before: return_path_end
 
 
-
-Description of the return values
-.................................................
-
-Returns set of ``(seq, path_seq, node, edge, cost, agg_cost)``
-
-============= =========== =================================================
-Column           Type              Description
-============= =========== =================================================
-**seq**       ``INTEGER`` Row sequence.
-**path_seq**  ``INTEGER`` Path sequence that indicates the relative position on the path.
-**node**      ``BIGINT``  Identifier of the node:
-                            - A positive value indicates the node is a vertex of edges_sql.
-                            - A negative value indicates the node is a point of points_sql.
-
-**edge**      ``BIGINT``  Identifier of the edge used to go from ``node`` to the next node in the path sequence.
-                            - ``-1`` for the last row in the path sequence.
-
-**cost**      ``FLOAT``   Cost to traverse from ``node`` using ``edge`` to the next ``node`` in the path sequence.
-                            - ``0`` for the last row in the path sequence.
-
-**agg_cost**  ``FLOAT``   Aggregate cost from ``start_vid`` to ``node``.
-                            - ``0`` for the first row in the path sequence.
-
-============= =========== =================================================
 
 
 
