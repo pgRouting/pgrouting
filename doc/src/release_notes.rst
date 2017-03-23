@@ -9,9 +9,8 @@
 
 .. _change_log:
 
-*******************************************************************************
-Change log
-*******************************************************************************
+Release Notes
+===============================================================================
 
 To see the full list of changes check the list of `Git commits <https://github.com/pgRouting/pgrouting/commits>`_ on Github.
 
@@ -476,7 +475,6 @@ The following release notes have been copied from the previous ``RELEASE_NOTES``
 
 Changes for release 1.05
 ...............................................................................
->>>>>>> develop:doc/src/release_notes.rst
 
 * Bugfixes
 
