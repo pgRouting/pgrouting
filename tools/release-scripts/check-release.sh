@@ -31,7 +31,7 @@ fi
 
 MAYOR=$1
 MINOR=$2
-MICRO=0
+MICRO=$3
 PREV_REL=$4
 RC=""
 
@@ -231,6 +231,7 @@ fi
 
 #---------------------------------------------------------------------
 echo "### Checking signature files"
+test_file 2.4.0
 test_file 2.3.2
 test_file 2.3.1
 test_file 2.3.0

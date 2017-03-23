@@ -18,6 +18,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 
 .. changelog start
 
+* :ref:`changelog_2_4_1`
 * :ref:`changelog_2_4_0`
 * :ref:`changelog_2_3_2`
 * :ref:`changelog_2_3_1`
@@ -33,6 +34,15 @@ To see the full list of changes check the list of `Git commits <https://github.c
 * :ref:`changelog_1_x`
 
 .. changelog end
+
+.. _changelog_2_4_1:
+
+pgRouting 2.4.1 Release Notes
+-------------------------------------------------------------------------------
+
+.. rubric:: Bug fix
+
+* fixed compiling error on macOS
 
 .. _changelog_2_4_0:
 

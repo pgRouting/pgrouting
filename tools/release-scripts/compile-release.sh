@@ -17,7 +17,7 @@ cd build/
 cmake  -DWITH_DOC=ON -DBUILD_DOXY=ON -DCMAKE_BUILD_TYPE=Release .. > tmp_cmake.txt
 make > tmp_make.txt 2>tmp_make_err.txt
 sudo make install > tmp_make_install.txt
-cp lib/pgrouting--2.4.0.sig  ../tools/curr-sig/
+cp lib/pgrouting--2.4.1.sig  ../tools/curr-sig/
 cd ..
 
 echo "  - [x] Compilation OK"
@@ -44,7 +44,7 @@ fi
 }
 
 sudo rm -f /usr/lib/postgresql/9.3/lib/libpgrouting-2.4.so
-sudo rm -f /usr/share/postgresql/9.3/extension/pgrouting*2.4.0*
+sudo rm -f /usr/share/postgresql/9.3/extension/pgrouting*2.4.1*
 rm -rf build/*
 test_compile $CPPVERSION
 
