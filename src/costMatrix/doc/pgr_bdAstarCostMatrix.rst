@@ -18,16 +18,16 @@ Name
 ``pgr_bdAstarCostMatrix`` - Calculates the a cost matrix using :ref:`pgr_bdAstar`.
 
 
-.. include:: ../../proposedNext.rst
-   :start-after: begin-warning
-   :end-before: end-warning
-
-
-
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph
 
    Boost Graph Inside
+
+.. rubric:: Availability: 2.5.0
+   
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
 Synopsis
 -------------------------------------------------------------------------------
@@ -106,15 +106,15 @@ This example returns a symmetric cost matrix.
 Description of the Signatures
 -------------------------------------------------------------------------------
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: xy_edges_sql_start
     :end-before: xy_edges_sql_end
 
-.. include:: ./../../bdAstar/doc/bdAstar.rst
+.. include:: bdAstar-family.rst
     :start-after: parameters_begin
     :end-before: parameters_end
 
-.. include:: ../../../doc/src/tutorial/custom_query.rst
+.. include:: pgRouting-concepts.rst
     :start-after: return_cost_start
     :end-before: return_cost_end
 

@@ -168,7 +168,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     /*
      * check the (S, P, D, E) order on all vehicles
-     * stop when a feasable truck is found
+     * stop when a feasible truck is found
      */
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {

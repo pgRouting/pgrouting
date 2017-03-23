@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -25,14 +25,14 @@ Synopsis
 The function returns:
 
   - ``OK`` after the analysis has finished.
-  - ``FAIL`` when the analysis was not completed due to an error. 
+  - ``FAIL`` when the analysis was not completed due to an error.
 
-.. index:: 
+.. index::
 	single: analyzeGraph(Complete Signature)
 
 .. code-block:: sql
 
-	varchar pgr_analyzeGraph(text edge_table, double precision tolerance, 
+	varchar pgr_analyzeGraph(text edge_table, double precision tolerance,
                            text the_geom:='the_geom', text id:='id',
                            text source:='source',text target:='target',text rows_where:='true')
 
@@ -44,7 +44,7 @@ Description
 The  edge table to be analyzed must contain a source column and a target column filled with id's of the vertices of the segments and the corresponding vertices table <edge_table>_vertices_pgr that stores the vertices information.
 
   - Use :ref:`pgr_createVerticesTable <pgr_create_vert_table>` to create the vertices table.
-  - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table. 
+  - Use :ref:`pgr_createTopology <pgr_create_topology>` to create the topology and the vertices table.
 
 .. rubric:: Parameters
 
@@ -52,10 +52,10 @@ The analyze graph function accepts the following parameters:
 
 :edge_table: ``text`` Network table name. (may contain the schema name as well)
 :tolerance: ``float8`` Snapping tolerance of disconnected edges. (in projection unit)
-:the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.  
-:id: ``text``  Primary key column name of the network table. Default value is ``id``. 
+:the_geom: ``text``  Geometry column name of the network table. Default value is ``the_geom``.
+:id: ``text``  Primary key column name of the network table. Default value is ``id``.
 :source: ``text`` Source column name of the network table. Default value is ``source``.
-:target: ``text``  Target column name of the network table.  Default value is ``target``. 
+:target: ``text``  Target column name of the network table.  Default value is ``target``.
 :rows_where: ``text``   Condition to select  a subset or rows.  Default value is ``true`` to indicate all rows.
 
 The function returns:
@@ -66,7 +66,7 @@ The function returns:
     * Fills completely the ``cnt`` and ``chk`` columns of the vertices table.
     * Returns the analysis of the section of the network defined by  ``rows_where``
 
-  - ``FAIL`` when the analysis was not completed due to an error. 
+  - ``FAIL`` when the analysis was not completed due to an error.
 
     * The vertices table is not found.
     * A required column of the Network table is not found or is not of the appropriate type.
@@ -82,10 +82,10 @@ The vertices table can be created with :ref:`pgr_createVerticesTable <pgr_create
 The structure of the vertices table is:
 
 :id: ``bigint`` Identifier of the vertex.
-:cnt: ``integer`` Number of vertices in the edge_table that reference this vertex. 
-:chk: ``integer``  Indicator that the vertex might have a problem. 
+:cnt: ``integer`` Number of vertices in the edge_table that reference this vertex.
+:chk: ``integer``  Indicator that the vertex might have a problem.
 :ein: ``integer`` Number of vertices in the edge_table that reference this vertex as incoming. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
-:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`. 
+:eout: ``integer`` Number of vertices in the edge_table that reference this vertex as outgoing. See :ref:`pgr_analyzeOneway <pgr_analyze_oneway>`.
 :the_geom: ``geometry`` Point geometry of the vertex.
 
 .. rubric:: History
@@ -94,8 +94,8 @@ The structure of the vertices table is:
 
 Usage when the edge table's columns MATCH the default values:
 -------------------------------------------------------------------------------
- 
-.. rubric:: The simplest way to use pgr_analyzeGraph is: 
+
+.. rubric:: The simplest way to use pgr_analyzeGraph is:
 
 .. code-block:: sql
 
@@ -110,7 +110,7 @@ Usage when the edge table's columns MATCH the default values:
 
 We get the same result as the simplest way to use the function.
 
-.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column. 
+.. warning::  | An error would occur when the arguments are not given in the appropriate order: In this example, the column ``id`` of the table ``mytable`` is passed to the function as the geometry column, and the geometry column ``the_geom`` is passed to the function as the id column.
  | ``SELECT  pgr_analyzeGraph('edge_table',0.001,'id','the_geom','source','target');``
  | ERROR: Can not determine the srid of the geometry "id" in table public.edge_table
 
@@ -158,7 +158,7 @@ Selecting the rows where the geometry is near the geometry of the row with ``gid
 
 Usage when the edge table's columns DO NOT MATCH the default values:
 -------------------------------------------------------------------------------
- 
+
 For the following table
 
 .. code-block:: sql
@@ -167,7 +167,7 @@ For the following table
 	CREATE TABLE mytable AS (SELECT id AS gid, source AS src ,target AS tgt , the_geom AS mygeom FROM edge_table);
 	SELECT pgr_createTopology('mytable',0.001,'mygeom','gid','src','tgt');
 
-.. rubric:: Using positional notation: 
+.. rubric:: Using positional notation:
 
 The arguments need to be given in the order described in the parameters:
 
@@ -256,7 +256,7 @@ Examples
 	NOTICE:  Potential gaps found near dead ends: 1
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
-	
+
 	 pgr_analyzeGraph
 	--------------------
 	 OK
@@ -298,7 +298,7 @@ Examples
 	NOTICE:  Potential gaps found near dead ends: 1
 	NOTICE:               Intersections detected: 1
 	NOTICE:                      Ring geometries: 0
-	
+
 	 pgr_analyzeGraph
 	--------------------
 	 OK
@@ -321,7 +321,7 @@ Examples
 	NOTICE:  Potential gaps found near dead ends: 0
 	NOTICE:               Intersections detected: 0
 	NOTICE:                      Ring geometries: 0
-	
+
 	 pgr_analyzeGraph
 	--------------------
 	 OK
@@ -335,7 +335,7 @@ Examples
     NOTICE:  Rows with NULL geometry or NULL id: 0
     NOTICE:  Vertices table for table public.edge_table is: public.edge_table_vertices_pgr
     NOTICE:  ----------------------------------------------
-	
+
 	 pgr_analyzeGraph
 	--------------------
 	 OK
@@ -356,12 +356,12 @@ Examples
     NOTICE:  Potential gaps found near dead ends: 0
     NOTICE:               Intersections detected: 0
     NOTICE:                      Ring geometries: 0
-	
+
 	 pgr_analyzeGraph
 	--------------------
 	 OK
 	(1 row)
-                         
+
 
 The examples use the :ref:`sampledata` network.
 

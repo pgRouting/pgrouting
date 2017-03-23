@@ -36,13 +36,4 @@ SELECT * FROM pgr_bdAstar(
     factor := 0.5
 );
 \echo -- q6
-SELECT * FROM pgr_bdAstar(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT,
-        x1::FLOAT, y1::FLOAT, x2::FLOAT, y2::FLOAT
-     FROM edge_table',
-    2, 3,
-    false, -- undirected
-    false  -- no reverse_cost
-);
-\echo -- q7
 

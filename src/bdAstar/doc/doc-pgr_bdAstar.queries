@@ -108,23 +108,5 @@ SELECT * FROM pgr_bdAstar(
 (22 rows)
 
 -- q6
-SELECT * FROM pgr_bdAstar(
-    'SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost::FLOAT,
-        x1::FLOAT, y1::FLOAT, x2::FLOAT, y2::FLOAT
-     FROM edge_table',
-    2, 3,
-    false, 
-    false  
-);
-NOTICE:  Deprecated Signature of pgr_bdAstar
- seq | id1 | id2 | cost 
------+-----+-----+------
-   0 |   2 |   4 |    1
-   1 |   5 |   8 |    1
-   2 |   6 |   5 |    1
-   3 |   3 |  -1 |    0
-(4 rows)
-
--- q7
 ROLLBACK;
 ROLLBACK
