@@ -108,9 +108,8 @@ do_pgr_many_to_many_withPoints(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
-        pgassert(edges);
+        pgassert(edges || edges_of_points);
         pgassert(points_p);
-        pgassert(edges_of_points);
         pgassert(start_pidsArr);
         pgassert(end_pidsArr);
 
