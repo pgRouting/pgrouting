@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
--- Legacy functions that were ment to be used by 
+-- Legacy FUNCTIONs that were ment to be used by 
 -- pgRouting developers
--- These functions wer used on the plpgsql functions
+-- These FUNCTIONs wer used on the plpgsql functions
 
 
 -- FILE intended to be used on 3.0
@@ -78,7 +78,7 @@ $BODY$
 
 
 -- deprecated on 2.1.0
-CREATE OR REPLACE function pgr_quote_ident(idname text)
+CREATE OR REPLACE FUNCTION pgr_quote_ident(idname text)
 returns text as
 $BODY$
     SELECT  quote_ident($1);
@@ -101,7 +101,7 @@ LANGUAGE sql VOLATILE STRICT;
 
 
 -- deprecated on 2.1.0
-CREATE OR REPLACE function pgr_startPoint(g geometry)
+CREATE OR REPLACE FUNCTION pgr_startPoint(g geometry)
     returns geometry as
 $BODY$
     SELECT  ST_startPoint($1);
@@ -112,7 +112,7 @@ LANGUAGE sql IMMUTABLE;
 
 
 -- deprecated on 2.1.0
-CREATE OR REPLACE function pgr_endPoint(g geometry)
+CREATE OR REPLACE FUNCTION pgr_endPoint(g geometry)
     returns geometry as
 $BODY$
     SELECT  ST_endPoint($1);
