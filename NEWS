@@ -38,6 +38,13 @@ Changes for 2.5.0
   * pgr_maxFlowBoykovKolmogorov - use pgr_boykovKolmogorov instead
   * pgr_maximumCardinalityMatching - use pgr_maxCardinalityMatch instead
 
+Changes for 2.4.1
+-------------------------------------------------------------------------------
+
+* Bug fixes
+  * fixed compiling error on macOS
+  * Condition error on pgr_withPoints
+
 Changes for 2.4.0
 -------------------------------------------------------------------------------
 
