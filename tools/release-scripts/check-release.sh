@@ -5,53 +5,60 @@ set -e
 if [[ -z  $1 ]]; then
     echo "Mayor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last [branch]";
     exit 1;
 fi
 if [[ -z  $2 ]]; then
     echo "Minor missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last [branch]";
     exit 1;
 fi
 
 if [[ -z  $3 ]]; then
     echo "Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last [branch]";
     exit 1;
 fi
 
 if [[ -z  $4 ]]; then
     echo "Last Micro missing";
     echo "Usage"
-    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last";
+    echo "tools/release-scripts/release-check.sh Mayor Minor Micro Last [branch]";
     exit 1;
 fi
 
-MAYOR=2
-MINOR=5
-MICRO=0
-PREV_REL="2.4.0"
+
+MAYOR=$1
+MINOR=$2
+MICRO=$3
+PREV_REL=$4
 RC="-dev"
 
+if [[ -z  $5 ]]; then
+    BRANCH="release/$MAYOR.$MINOR"
+else
+    BRANCH=$5
+fi
+
 #---------------------------------------------------------------------
-echo "### Verify branch to be release/$MAYOR.$MINOR"
+echo "### Verify branch to be $BRANCH"
 echo
 #---------------------------------------------------------------------
 
-BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-echo "- [x] Working Branch: release/$MAYOR.$MINOR";
+GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+echo "- [x] Working Branch: $BRANCH";
+echo
 
-if [[ "release/$MAYOR.$MINOR" == "$BRANCH" ]]; then
+if [[ "$GIT_BRANCH" == "$BRANCH" ]]; then
    echo "  - [x] Already in branch $BRANCH";
 else
    echo "  - Current Branch: $BRANCH";
-   echo "  - [x] Changing to branch $BRANCH";
    echo "\`\`\`"
-   echo git checkout release/$MAYOR.$MINOR
+   echo git checkout $BRANCH
    echo "\`\`\`"
-   #git checkout release/$MAYOR.$MINOR
+   exit 1
 fi
 
 #---------------------------------------------------------------------
@@ -171,7 +178,7 @@ fi
 
 echo "- [x] Check patch information"
 echo "\`\`\`"
-echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH \"0\")'"
+echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH \"$MICRO\")'"
 echo "\`\`\`"
 if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_PATCH' | grep $MICRO) !=  "set(PGROUTING_VERSION_PATCH \"$MICRO\")" ]]; then
     echo "FATAL: PGROUTING_VERSION_PATCH is not $MICRO"
@@ -180,7 +187,6 @@ else
     echo
 fi
 
-echo "- [x] Check dev information"
 echo "\`\`\`"
 echo "cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_DEV \"$RC\")'"
 echo "\`\`\`"
@@ -188,6 +194,7 @@ if [[ $(cat CMakeLists.txt | grep 'set(PGROUTING_VERSION_DEV' ) !=  "set(PGROUTI
     echo "FATAL: PGROUTING_VERSION_DEV is not $RC"
     exit 1
 else
+    echo "- [x] Check dev information"
     echo 
 fi
 
@@ -206,6 +213,7 @@ if [[ $(cat doc/test/utilities-any.result | grep "$MAYOR.$MINOR.$MICRO") != "$MA
     exit 1
 else
     echo "- [x] pgr_version result: OK"
+    echo 
 fi
 
 echo "\`\`\`"
@@ -213,9 +221,10 @@ echo "cat VERSION | grep \"release/$MAYOR.$MINOR\""
 echo "\`\`\`"
 if [[ $(cat VERSION | grep "release/$MAYOR.$MINOR") != *"release/$MAYOR.$MINOR" ]]; then
     echo "FATAL: VERSION branch should be release/$MAYOR.$MINOR"
-    #exit 1
+    exit 1
 else
     echo "  -[x] VERSION file branch: OK"
+    echo 
 fi
 
 #---------------------------------------------------------------------
@@ -248,32 +257,39 @@ test_file 2.0.0
 #---------------------------------------------------------------------
 echo "### Locally make a clean build as Release"
 #---------------------------------------------------------------------
+echo "\`\`\`"
+echo "bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO"
+echo "bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO"
+echo "bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO"
+echo "bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO"
+echo "\`\`\`"
+
+
+bash tools/release-scripts/compile-release.sh 5   $MAYOR.$MINOR $MICRO
+bash tools/release-scripts/compile-release.sh 4.9 $MAYOR.$MINOR $MICRO
+bash tools/release-scripts/compile-release.sh 4.6 $MAYOR.$MINOR $MICRO
+bash tools/release-scripts/compile-release.sh 4.8 $MAYOR.$MINOR $MICRO
 
 echo - [x] completed local builds
-
-#bash tools/release-scripts/compile-release.sh 5
-#bash tools/release-scripts/compile-release.sh 4.9
-#bash tools/release-scripts/compile-release.sh 4.6
-bash tools/release-scripts/compile-release.sh 4.8
 
 #---------------------------------------------------------------------
 echo "### checking the signature files dont change"
 #---------------------------------------------------------------------
 
-sh tools/release-scripts/get_signatures.sh 2.5.0 ___sig_generate___ curr-sig 
-sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sigs 
-sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sigs 
-sh tools/release-scripts/get_signatures.sh 2.3.1 ___sig_generate___ sigs 
-sh tools/release-scripts/get_signatures.sh 2.3.0 ___sig_generate___ sigs
-sh tools/release-scripts/get_signatures.sh 2.2.4 ___sig_generate___ sigs
-sh tools/release-scripts/get_signatures.sh 2.2.3 ___sig_generate___ sigs
-sh tools/release-scripts/get_signatures.sh 2.2.2 ___sig_generate___ sigs
-sh tools/release-scripts/get_signatures.sh 2.2.1 ___sig_generate___ sigs
-sh tools/release-scripts/get_signatures.sh 2.2.0 ___sig_generate___ sigs 
-sh tools/release-scripts/get_signatures.sh 2.1.0 ___sig_generate___ sigs
+sh tools/release-scripts/get_signatures.sh 2.4.1 ___sig_generate___ curr-sig >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.4.0 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.3.2 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.3.1 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.3.0 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.2.4 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.2.3 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.2.2 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.2.1 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.2.0 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.1.0 ___sig_generate___ sigs >> build/tmp_sigs.txt
 #version 2.0.1 can not be upgraded
-#sh tools/release-scripts/get_signatures.sh 2.0.1 ___sig_generate___ sigs > build/tmp_sigs.txt
-sh tools/release-scripts/get_signatures.sh 2.0.0 ___sig_generate___ sigs
+#sh tools/release-scripts/get_signatures.sh 2.0.1 ___sig_generate___ sigs >> build/tmp_sigs.txt
+sh tools/release-scripts/get_signatures.sh 2.0.0 ___sig_generate___ sigs >> build/tmp_sigs.txt
 
 echo
 echo - [x] completed check: OK
