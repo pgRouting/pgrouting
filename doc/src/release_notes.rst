@@ -19,6 +19,7 @@ To see the full list of changes check the list of `Git commits <https://github.c
 .. changelog start
 
 * :ref:`changelog_2_5_0`
+* :ref:`changelog_2_4_1`
 * :ref:`changelog_2_4_0`
 * :ref:`changelog_2_3_2`
 * :ref:`changelog_2_3_1`
@@ -88,6 +89,15 @@ To see the issues closed by this release see the `Git closed issues for 2.5.0 <h
 
 * pgr_pointToEdgeNode
 
+.. _changelog_2_4_1:
+
+pgRouting 2.4.1 Release Notes
+-------------------------------------------------------------------------------
+
+.. rubric:: Bug fix
+
+* Fixed compiling error on macOS
+* Condition error on pgr_withPoints
 
 .. _changelog_2_4_0:
 
