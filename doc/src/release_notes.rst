@@ -42,7 +42,8 @@ pgRouting 2.4.1 Release Notes
 
 .. rubric:: Bug fix
 
-* fixed compiling error on macOS
+* Fixed compiling error on macOS
+* Condition error on pgr_withPoints
 
 .. _changelog_2_4_0:
 
