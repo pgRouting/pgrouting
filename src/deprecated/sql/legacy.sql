@@ -80,3 +80,38 @@ LANGUAGE plpgsql VOLATILE
 COST 100
 ROWS 1000;
 
+
+-- Deprecated on 2.2.0
+CREATE OR REPLACE FUNCTION pgr_kdijkstraPath(
+    sql text,
+    source INTEGER,
+    targets INTEGER ARRAY,
+    directed BOOLEAN,
+    has_rcost BOOLEAN)
+RETURNS SETOF pgr_costResult3 AS
+$BODY$
+    SELECT (row_number() over () -1)::integer, end_vid::INTEGER, node::INTEGER, edge::INTEGER, cost
+    FROM pgr_dijkstra($1, $2, $3, $4);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+
+-- Deprecated on 2.2.0
+CREATE OR REPLACE FUNCTION pgr_kdijkstracost(
+    sql text,
+    source INTEGER,
+    targets INTEGER array,
+    directed BOOLEAN,
+    has_rcost BOOLEAN)
+RETURNS SETOF pgr_costResult AS
+$BODY$
+    SELECT (row_number() over () -1)::integer, start_vid::integer, end_vid::INTEGER, agg_cost
+    FROM pgr_dijkstraCost($1, $2, $3, $4);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+
