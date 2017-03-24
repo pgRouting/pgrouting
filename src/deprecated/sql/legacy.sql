@@ -53,3 +53,30 @@ LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000
 
+
+
+-- Deprecated on 2.2.0
+CREATE OR REPLACE FUNCTION pgr_apspJohnson(edges_sql text)
+RETURNS SETOF pgr_costResult AS
+$BODY$
+    SELECT (row_number() over () - 1)::integer, start_vid::integer, end_vid::integer, agg_cost 
+    FROM  pgr_johnson($1, TRUE);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+
+
+
+-- Deprecated on 2.2.0
+CREATE OR REPLACE FUNCTION pgr_apspWarshall(edges_sql text, directed boolean, has_rcost boolean)
+    RETURNS SETOF pgr_costResult AS
+$BODY$
+    SELECT (row_number() over () -1)::integer, start_vid::integer, end_vid::integer, agg_cost
+    FROM  pgr_floydWarshall($1, $2);
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
