@@ -35,7 +35,21 @@ $BODY$
     SELECT seq - 1, node::integer, edge::integer, agg_cost
     FROM pgr_drivingDistance($1, ARRAY[$2]::BIGINT[], $3, $4);
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
+
+
+
+
+-- Deprecated signature on 2.1.0
+CREATE OR REPLACE FUNCTION pgr_ksp(edges_sql text, start_vid integer, end_vid integer, k integer, has_rcost boolean)
+RETURNS SETOF pgr_costresult3 AS
+$BODY$
+    SELECT ((row_number() over()) -1)::integer,  (path_id - 1)::integer, node::integer, edge::integer, cost
+    FROM _pgr_ksp($1::text, $2, $3, $4, TRUE, FALSE) WHERE path_id <= k;
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000
 
