@@ -27,11 +27,24 @@ CREATE OR REPLACE FUNCTION pgr_getColumnName(tab text, col text)
 RETURNS text AS
 $BODY$
 DECLARE
-    table_oid regclass;
+    sname text;
+    tname text;
+    table_name text;
 BEGIN
-    table_oid := $1::regclass;
-    EXECUTE 'SELECT ' || quote_ident(col) || ' FROM ' || tab || ' LIMIT 1';
+    IF pgr_isColumnInTable(tab, col) THEN RETURN NULL;
+    END IF;
+    SELECT pgr_getTableName($1) into sname, tname;
+    table_name := sname || '.' || tname;
+    EXECUTE 'SELECT ' || quote_ident(col) || ' FROM ' || table_name || ' LIMIT 1';
     RETURN col;
+    EXCEPTION WHEN others THEN
+    BEGIN 
+        EXECUTE 'SELECT ' || quote_ident(lower(col)) || ' FROM ' || table_name || ' LIMIT 1';
+        RETURN lower(col); 
+        EXCEPTION WHEN others THEN
+            RETURN NULL;
+    END;
+
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -43,11 +56,21 @@ LANGUAGE plpgsql VOLATILE STRICT;
 CREATE OR REPLACE FUNCTION pgr_getTableName(IN tab text,OUT sname text,OUT tname text)
 RETURNS RECORD AS
 $BODY$ 
-DECLARE table_oid regclass;
+DECLARE
+    table_oid regclass;
+    table_name text;
 BEGIN
     table_oid := $1::regclass;
-    $1 := replace($1, '"', '');
+    -- $1 := replace($1, '"', '');
     SELECT * FROM _pgr_getTableName($1, 0, 'pgr_getTableName') into sname,tname;
+    EXCEPTION WHEN others THEN
+    BEGIN 
+        table_oid := lower($1)::regclass;
+        SELECT * FROM _pgr_getTableName(lower($1), 0, 'pgr_getTableName') into sname,tname;
+        EXCEPTION WHEN others THEN
+        sname = 'public';
+        tname = NULL;
+    END;
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
@@ -78,13 +101,21 @@ RETURNS boolean AS
 $BODY$
 DECLARE
     cname text;
-    table_oid regclass;
+    sname text;
+    tname text;
+    table_name text;
 BEGIN
-    table_oid := $1::regclass;
-    EXECUTE 'SELECT ' || quote_ident(col) || ' FROM ' || tab || ' LIMIT 1';
+    SELECT pgr_getTableName($1) into sname, tname;
+    table_name := sname || '.' || tname;
+    EXECUTE 'SELECT ' || quote_ident(col) || ' FROM ' || table_name || ' LIMIT 1';
     RETURN true;
     EXCEPTION WHEN others THEN
-        RETURN false;
+        BEGIN
+            EXECUTE 'SELECT ' || quote_ident(lower(col)) || ' FROM ' || table_name || ' LIMIT 1';
+            RETURN true;
+            EXCEPTION WHEN others THEN
+            RETURN false;
+        END;
 END;
 $BODY$
   LANGUAGE plpgsql VOLATILE STRICT;

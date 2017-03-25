@@ -42,6 +42,8 @@ then
     echo "MADE TEST **********************"
 fi
 
+pg_prove ../../src/deprecated/test/pgtap/* -d $PGDATABASE  -U $PGUSER
+
 pg_prove ../../src/allpairs/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/alpha_shape/test/pgtap/* -d $PGDATABASE  -U $PGUSER
 pg_prove ../../src/astar/test/pgtap/* -d $PGDATABASE  -U $PGUSER
