@@ -18,7 +18,7 @@
 -- pgr_versionless
 -- pgr_startPoint
 -- pgr_endPoint
--- pgr_pointToid
+-- pgr_pointToid RENAMED and deprecated and never announced no one has complained
 ------------------------------------------------------------------------------
 
 
@@ -167,6 +167,7 @@ LANGUAGE sql IMMUTABLE;
 
 
 
+/* RENAMED and deprecated and never announced no one has complained
 -- deprecated on 2.1.0
 CREATE OR REPLACE FUNCTION pgr_pointToId(point geometry, tolerance double precision, vertname text, srid integer)
 RETURNS bigint AS
@@ -174,7 +175,7 @@ $BODY$
     SELECT _pgr_pointToId($1, $2, $3, $4);
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
-
+*/
 
 ------------------------------------------------------------------------------
 -- Deprecated on 2.3
