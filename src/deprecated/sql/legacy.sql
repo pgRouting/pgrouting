@@ -116,3 +116,323 @@ COST 100
 ROWS 1000;
 
 
+
+
+-- Deprecated on 2.3.0
+CREATE OR REPLACE FUNCTION pgr_astar(edges_sql TEXT, source_id INTEGER, target_id INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
+RETURNS SETOF pgr_costresult AS
+$BODY$
+    SELECT seq - 1, node::INTEGER, edge::INTEGER, cost 
+    FROM pgr_astar($1, ARRAY[$2], ARRAY[$3], $4);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
+
+
+-- Deprecated on 2.4.0
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
+RETURNS SETOF pgr_costresult AS
+$BODY$
+DECLARE
+has_reverse BOOLEAN;
+sql TEXT;
+BEGIN
+    SELECT seq - 1 AS seq, node::integer AS id1, edge::integer AS id2, cost
+    FROM pgr_bdDijkstra($1, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4);
+  END
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100
+ROWS 1000;
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_PushRelabel($1, $2, $3);
+  $BODY$
+  LANGUAGE sql VOLATILE;
+
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_boykovKolmogorov($1, $2, $3);
+  $BODY$
+  LANGUAGE sql VOLATILE;
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_edmondsKarp($1, $2, $3);
+  $BODY$
+  LANGUAGE sql VOLATILE;
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_PushRelabel($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_boykovKolmogorov($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+    edges_sql TEXT,
+    source_vertex BIGINT,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+       SELECT * FROM pgr_edmondsKarp($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_PushRelabel($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_boykovKolmogorov($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertex BIGINT,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_edmondsKarp($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowPushRelabel(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_PushRelabel($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowBoykovKolmogorov(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_boykovKolmogorov($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maxFlowEdmondsKarp(
+    edges_sql TEXT,
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT,
+    OUT flow BIGINT,
+    OUT residual_capacity BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_edmondsKarp($1, $2, $3);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+-- included on 2.3.0
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
+    edges_sql TEXT,
+    directed BOOLEAN DEFAULT TRUE,
+    OUT seq INTEGER,
+    OUT edge_id BIGINT,
+    OUT source BIGINT,
+    OUT target BIGINT
+    )
+  RETURNS SETOF RECORD AS
+  $BODY$
+        SELECT * FROM pgr_pgr_maxCardinalityMatch($1, $2);
+  $BODY$
+  LANGUAGE SQL VOLATILE;
+
+
+
+-- Deprecated on 2.5.0
+CREATE OR REPLACE FUNCTION pgr_bdAstar(
+    edges_sql TEXT,
+    start_vid INTEGER,
+    end_vid INTEGER,
+    directed BOOLEAN,
+    has_rcost BOOLEAN)
+RETURNS SETOF pgr_costresult AS
+$BODY$
+    SELECT seq - 1 AS seq, node::integer AS id1, edge::integer AS id2, cost
+    FROM _pgr_bdAstar($1, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], $4);
+$BODY$
+LANGUAGE sql VOLATILE
+COST 100
+ROWS 1000;
+
