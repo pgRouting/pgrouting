@@ -213,19 +213,9 @@ Parameter        Type                   Description
 
 
 
-
-Description of the return values
-.................................................
-
-Returns set of ``(start_vid, end_vid, agg_cost)``
-
-============= ============= =================================================
-Column        Type          Description
-============= ============= =================================================
-**start_vid** ``BIGINT``    Identifier of the starting vertex.
-**end_vid**   ``BIGINT``    Identifier of the ending vertex.
-**agg_cost**  ``FLOAT``     Aggregate cost of the shortest path from ``start_vid`` to ``end_vid``.
-============= ============= =================================================
+.. include:: pgRouting-concepts.rst
+    :start-after: return_cost_start
+    :end-before: return_cost_end
 
 
 

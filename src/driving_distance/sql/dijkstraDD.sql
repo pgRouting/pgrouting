@@ -59,37 +59,3 @@ ROWS 1000;
 
 
 
--- OLD SIGNATURE
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
-  RETURNS SETOF pgr_costresult AS
-  $BODY$
-  DECLARE
-  has_reverse BOOLEAN;
-  sql TEXT;
-  BEGIN
-      RAISE NOTICE 'Deprecated function';
-
-      has_reverse =_pgr_parameter_check('dijkstra', edges_sql, FALSE);
-
-      sql = edges_sql;
-      IF (has_reverse != has_rcost) THEN
-         IF (has_reverse) THEN 
-             -- the user says it doesn't have reverse cost but its false
-             -- removing from query
-             RAISE NOTICE 'Contradiction found: has_rcost set to false but reverse_cost column found';
-             sql = 'SELECT id, source, target, cost, -1 as reverse_cost FROM (' || edges_sql || ') __q ';
-         ELSE
-             -- the user says it has reverse cost but its false
-             -- can't do anything
-             RAISE EXCEPTION 'has_rcost set to true but reverse_cost not found';
-         END IF;
-      END IF;
-
-      RETURN query SELECT seq - 1 AS seq, node::integer AS id1, edge::integer AS id2, agg_cost AS cost
-                FROM pgr_drivingDistance($1, ARRAY[$2]::BIGINT[], $3, $4, false);
-  END
-  $BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100
-  ROWS 1000;
-
