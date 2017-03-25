@@ -18,7 +18,7 @@
 -- pgr_versionless
 -- pgr_startPoint
 -- pgr_endPoint
--- pgr_pointoid
+-- pgr_pointToid
 ------------------------------------------------------------------------------
 
 
@@ -137,10 +137,10 @@ LANGUAGE sql IMMUTABLE;
 
 
 -- deprecated on 2.1.0
-CREATE OR REPLACE FUNCTION pgr_pointoid(point geometry, tolerance double precision, vertname text, srid integer)
+CREATE OR REPLACE FUNCTION pgr_pointToId(point geometry, tolerance double precision, vertname text, srid integer)
 RETURNS bigint AS
 $BODY$
-    SELECT _pgr_pointoid(i$1, $2, $3, $4);
+    SELECT _pgr_pointToId($1, $2, $3, $4);
 $BODY$
 LANGUAGE sql VOLATILE STRICT;
 
@@ -275,6 +275,7 @@ CREATE OR REPLACE FUNCTION pgr_vidstodmatrix(
     RETURNS record as
 $BODY$
 DECLARE
+    dmatrix_row float8[];
     nn integer;
     rr record;
     t float8[];
@@ -342,7 +343,7 @@ BEGIN
     END LOOP;
 end;
 $BODY$
-laguage plpgsql STABLE;
+LANGUAGE plpgsql STABLE;
 
 -----------------------------------------------------------------------
 
@@ -389,11 +390,11 @@ BEGIN
             rr.the_geom := ST_GeometryN(rr.the_geom, 1);
         END IF;
 
-        IF _pgr_versionless(postgis_version(), '2.0')
+        IF _pgr_versionless(postgis_version(), '2.0') THEN
             pct := ST_line_locate_point(rr.the_geom, pnt);
         ELSE
             pct := ST_lineLocatePoint(rr.the_geom, pnt);
-        END IF
+        END IF;
         
         IF pct < 0.5 THEN
             RETURN rr.source;

@@ -51,7 +51,7 @@ $BODY$
 $BODY$
 LANGUAGE sql VOLATILE
 COST 100
-ROWS 1000
+ROWS 1000;
 
 
 ------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ $BODY$
     SELECT (row_number() over () -1)::integer, start_vid::integer, end_vid::integer, agg_cost
     FROM  pgr_floydWarshall($1, $2);
 $BODY$
-LANGUAGE plpgsql VOLATILE
+LANGUAGE sql VOLATILE
 COST 100
 ROWS 1000;
 
@@ -414,7 +414,7 @@ CREATE OR REPLACE FUNCTION pgr_maximumcardinalitymatching(
     )
   RETURNS SETOF RECORD AS
   $BODY$
-        SELECT * FROM pgr_pgr_maxCardinalityMatch($1, $2);
+        SELECT * FROM pgr_maxCardinalityMatch($1, $2);
   $BODY$
   LANGUAGE SQL VOLATILE;
 

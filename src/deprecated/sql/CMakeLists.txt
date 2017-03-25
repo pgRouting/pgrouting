@@ -15,6 +15,8 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/maximum_cardinality_matching.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/max_flow-deprecated.sql
 
+    #${CMAKE_CURRENT_SOURCE_DIR}/legacy-developers.sql
+    #${CMAKE_CURRENT_SOURCE_DIR}/legacy.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/deprecated-comments.sql
     )
 
