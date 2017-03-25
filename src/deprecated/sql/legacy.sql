@@ -196,28 +196,13 @@ RETURNS float8[] AS
 $BODY$
 DECLARE
 directed BOOLEAN;
-has_reverse BOOLEAN;
-edges_sql TEXT;
 dmatrix_row float8[];
 dmatrix float8[];
-cell RECORD;
-unique_vids INTEGER[];
+rr RECORD;
+ids INTEGER[];
 total BIGINT;
-from_v BIGINT;
-to_v BIGINT;
 BEGIN
-    RAISE NOTICE 'Deprecated function pgr_vidsToDMatrix';
-    has_reverse =_pgr_parameter_check('dijkstra', sql, false);
-    edges_sql = sql;
-    IF (has_reverse != has_rcost) THEN
-        IF (has_reverse) THEN
-            sql = 'SELECT id, source, target, cost FROM (' || sql || ') a';
-        ELSE
-            raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
-        END IF;
-    END IF;
-
-    unique_vids :=  ARRAY(SELECT DISTINCT UNNEST(vids) ORDER BY 1);
+    ids :=  ARRAY(SELECT DISTINCT UNNEST(vids) ORDER BY 1);
 
     IF want_symmetric THEN
         directed = false;
@@ -225,36 +210,27 @@ BEGIN
         directed = dir;
     END IF;
 
-    total := array_length(unique_vids, 1);
+    total := array_length(ids, 1);
 
-    -- initializing dmatrix
     FOR i in 1 .. total LOOP
         dmatrix_row := dmatrix_row || '+Infinity'::float8;
     END LOOP;
+
     FOR i in 1 .. total LOOP
     dmatrix := dmatrix || ARRAY[dmatrix_row];
     dmatrix[i][i] = 0;
     END LOOP;
 
-    CREATE TEMP TABLE __x___y____temp AS
-        WITH result AS
-            (SELECT unnest(unique_vids) AS vid)
-        SELECT row_number() OVER() AS idx, vid FROM result;
-
-    FOR cell IN SELECT * FROM pgr_dijkstraCostMatrix(sql, unique_vids, directed) LOOP
-        SELECT idx INTO from_v FROM __x___y____temp WHERE vid =  cell.start_vid;
-        SELECT idx INTO to_v FROM __x___y____temp WHERE vid =  cell.end_vid;
-
-        dmatrix[from_v][to_v] = cell.agg_cost;
-        dmatrix[to_v][from_v] = cell.agg_cost;
+    FOR rr IN EXECUTE
+        'SELECT start_vid, end_vid, agg_cost FROM pgr_dijkstraCostMatrix($1, $2, $3)'
+        USING 
+            sql, ids, directed
+    LOOP
+        dmatrix[(SELECT idx FROM generate_subscripts(ids, 1) AS idx WHERE ids[idx] = rr.start_vid)]
+            [(SELECT idx FROM generate_subscripts(ids, 1) AS idx WHERE ids[idx] = rr.end_vid)] := rr.agg_cost;
     END LOOP;
 
-    DROP TABLE IF EXISTS __x___y____temp;
     RETURN dmatrix;
-
-    EXCEPTION WHEN others THEN 
-       DROP TABLE IF EXISTS __x___y____temp;
-       raise exception '% %', SQLERRM, SQLSTATE;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
@@ -273,67 +249,43 @@ create or replace function pgr_vidstodmatrix(
     returns record as
 $body$
 declare
-    i integer;
-    j integer;
     nn integer;
     rr record;
-    bbox geometry;
     t float8[];
 
 begin
-    -- TODO convert pgr_dijkstraCost(many to many) to a matrix
-    RAISE NOTICE 'Deprecated function pgr_vidsToDMatrix';
-    -- check if the input arrays has any -1 values, maybe this whould be a raise exception
-    if vids @> ARRAY[-1] then
-    raise notice 'Some vids are undefined (-1)!';
-    dmatrix := null;
-    ids := null;
-    return;
-    end if;
+    ids := array(SELECT DISTINCT unnest(vids::integer[]) ORDER BY 1);
 
-    ids := vids;
+    nn := array_length(ids, 1);
 
-    -- get the count of nodes
-    nn := array_length(vids,1);
+    FOR i in 1 .. nn LOOP
+        dmatrix_row := dmatrix_row || '+Infinity'::float8;
+    END LOOP;
 
-    -- zero out a dummy row
+    FOR i in 1 .. nn LOOP
+    dmatrix := dmatrix || ARRAY[dmatrix_row];
+    dmatrix[i][i] = 0;
+    END LOOP;
+
     for i in 1 .. nn loop
-        t := t || 0.0::float8;
+        dmatrix := dmatrix || ARRAY[t];
     end loop;
 
-    -- using the dummy row, zero out the whole matrix
-    for i in 1 .. nn loop
-    dmatrix := dmatrix || ARRAY[t];
-    end loop;
+    FOR rr IN EXECUTE
+        'SELECT start_vid, end_vid, agg_cost FROM pgr_dijkstraCostMatrix($1, $2, false)'
+        USING 
+            'SELECT id, source, target, cost FROM ' || edges,
+            ids
+    LOOP
+        dmatrix[(SELECT idx FROM generate_subscripts(ids, 1) AS idx WHERE ids[idx] = rr.start_vid)]
+            [(SELECT idx FROM generate_subscripts(ids, 1) AS idx WHERE ids[idx] = rr.end_vid)] := rr.agg_cost;
+    END LOOP;
 
-    for i in 1 .. nn-1 loop
-        j := i;
-        -- compute the bbox for the point needed for this row
-        select st_expand(st_collect(pnts[id]), tol) into bbox
-          from (select generate_series as id from generate_series(i, nn)) as foo;
-
-        -- compute kdijkstra() for this row
-        for rr in execute 'select * from pgr_dijkstracost($1, $2, $3, false)'
-                  using 'select id, source, target, cost from ' || edges || 
-                        ' where the_geom && ''' || bbox::text || '''::geometry'::text, vids[i], vids[i+1:nn] loop
-
-            -- TODO need to check that all node were reachable from source
-            -- I think unreachable paths between nodes returns cost=-1.0
-
-            -- populate the matrix with the cost values, remember this is symmetric
-            j := j + 1;
-            -- raise notice 'cost(%,%)=%', i, j, rr.agg_cost;
-            dmatrix[i][j] := rr.agg_cost;
-            dmatrix[j][i] := rr.agg_cost;
-        end loop;
-    end loop;
-
+    RETURN;
 end;
 $body$
-    language plpgsql stable cost 200;
-
-
-
+language plpgsql stable cost 200;
+           
 
 
 -- Added on 2.1.0
@@ -364,7 +316,7 @@ begin
     end loop;
 end;
 $body$
-    language plpgsql stable;
+laguage plpgsql stable;
 
 -----------------------------------------------------------------------
 
@@ -377,7 +329,6 @@ declare
     v integer[];
     g geometry;
 begin
-    RAISE NOTICE 'Deperecated function: pgr_pointsToVids';
     for g in select unnest(pnts) loop
         v := v || pgr_pointtoedgenode(edges, g, tol);
     end loop;
@@ -402,7 +353,7 @@ declare
     debuglevel text;
     
 begin
-    execute 'select * from ' || _pgr_quote_ident(edges) || 
+    execute 'select * from ' || quote_ident(edges) || 
             ' where st_dwithin(''' || pnt::text ||
             '''::geometry, the_geom, ' || tol || ') order by st_distance(''' || pnt::text ||
             '''::geometry, the_geom) asc limit 1' into rr;
@@ -412,11 +363,12 @@ begin
             rr.the_geom := ST_GeometryN(rr.the_geom, 1);
         end if;
 
-        execute 'show client_min_messages' into debuglevel;
-        SET client_min_messages='ERROR';
-        pct := st_line_locate_point(rr.the_geom, pnt);
-        execute 'set client_min_messages  to '|| debuglevel;
-
+        if _pgr_versionless(postgis_version(), '2.0')
+            pct := st_line_locate_point(rr.the_geom, pnt);
+        else
+            pct := ST_lineLocatePoint(rr.the_geom, pnt);
+        end if
+        
         if pct < 0.5 then
             return rr.source;
         else
