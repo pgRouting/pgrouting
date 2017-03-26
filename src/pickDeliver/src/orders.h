@@ -41,10 +41,10 @@ class Pgr_pickDeliver;
 class Order;
 
 class PD_Orders : public Pgr_messages , public PD_problem {
-     typedef typename std::vector<Order> Orders;
+     typedef std::vector<Order> Orders;
  public:
-     typedef typename Orders::iterator o_iterator;
-     typedef typename Orders::const_iterator o_const_iterator;
+     typedef Orders::iterator o_iterator;
+     typedef Orders::const_iterator o_const_iterator;
      typedef size_t OID;
      typedef Identifiers<OID> setof_OID;
  protected:

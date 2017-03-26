@@ -23,9 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 \i setup.sql
 
-SELECT plan(1734);
-
-SET client_min_messages TO ERROR;
+SELECT plan(612);
 
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
@@ -36,64 +34,53 @@ DECLARE
 inner_sql TEXT;
 dijkstra_sql TEXT;
 astar_sql TEXT;
+result_columns TEXT;
 BEGIN
+    result_columns := ' seq, path_seq, cost::TEXT, agg_cost::TEXT ';
 
-    FOR i IN 1.. cant LOOP
+    FOR i IN 1.. cant BY 2 LOOP
         FOR j IN 1.. cant LOOP
 
-            -- DIRECTED
+            -- DIRECTED WITH REVERSE COST
             inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            dijkstra_sql := 'SELECT ' || result_columns || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
-            RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
-
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
-
-            astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
+            astar_sql := 'SELECT ' || result_columns || ' FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
+                || ', true, heuristic:=0)';
             RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
 
 
-
+            -- DIRECTED WITHOUT REVERSE COST
             inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            dijkstra_sql := 'SELECT ' || result_columns || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', true)';
 
-            astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', true)';
+            astar_sql := 'SELECT ' || result_columns || ' FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
+                || ', true, heuristic:=0)';
             RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
 
 
-
-            -- UNDIRECTED
+            -- UNDIRECTED WITH REVERSE COST
             inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            dijkstra_sql := 'SELECT ' || result_columns || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-            RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
-
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
-
-            astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
+            astar_sql := 'SELECT ' || result_columns || ' FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
+                || ', false, heuristic:=0)';
             RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
 
 
-
+            -- UNDIRECTED WITHOUT REVERSE COST
             inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edge_table';
-            dijkstra_sql := 'SELECT * FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
+            dijkstra_sql := 'SELECT ' || result_columns || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || i || ', ' || j
                 || ', false)';
 
-            astar_sql := 'SELECT * FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
-                || ', false)';
+            astar_sql := 'SELECT ' || result_columns || ' FROM pgr_astar($$' || inner_sql || '$$, ' || i || ', ' || j
+                || ', false, heuristic:=0)';
             RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
+
+
 
 
         END LOOP;

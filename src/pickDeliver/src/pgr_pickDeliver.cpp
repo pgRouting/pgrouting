@@ -149,6 +149,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     log << "\n *** Constructor of problem ***\n";
 
+    log << "\n Building fleet";
     size_t node_id(0);
     if (!m_trucks.build_fleet(vehicles, node_id)
             || !m_trucks.is_fleet_ok()) {
@@ -157,18 +158,27 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         return;
     };
 
-#if 1
-    m_speed = m_trucks.m_trucks[0].speed();
+    log << " ---> OK\n";
+
+#ifdef MAX_DEBUG
+    for (const auto t : m_trucks) {
+        log << t << "\n";
+    }
 #endif
 
-#if 0
-    PD_Orders m_orders;
-#endif
+
+    log << "\n Building orders";
     m_orders.build_orders(pd_orders, node_id);
+
+#ifdef MAX_DEBUG
+    for (const auto &o : m_orders) {
+        log << o << "\n";
+    }
+#endif
 
     /*
      * check the (S, P, D, E) order on all vehicles
-     * stop when a feasable truck is found
+     * stop when a feasible truck is found
      */
     for (const auto &o : m_orders) {
         if (!m_trucks.is_order_ok(o)) {
@@ -176,6 +186,9 @@ Pgr_pickDeliver::Pgr_pickDeliver(
                 << o.pickup().original_id()
                 << " is not feasible on any truck"
                 << "\n" << o;
+            error << "START LOG";
+            error << m_trucks.get_log();
+            error << "END LOG";
             err = error.str();
             return;
         }

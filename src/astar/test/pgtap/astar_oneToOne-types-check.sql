@@ -29,34 +29,34 @@ SET client_min_messages TO ERROR;
 
 SELECT has_function('pgr_astar',
     ARRAY['text', 'anyarray', 'bigint', 'boolean',
-        'integer', 'double precision', 'double precision']);
+        'integer', 'numeric', 'numeric']);
 SELECT function_returns('pgr_astar',
     ARRAY['text', 'anyarray', 'bigint', 'boolean',
-        'integer', 'double precision', 'double precision'],
+        'integer', 'numeric', 'numeric'],
     'setof record');
 
 SELECT has_function('pgr_astar',
     ARRAY['text', 'bigint', 'anyarray', 'boolean',
-        'integer', 'double precision', 'double precision']);
+        'integer', 'numeric', 'numeric']);
 SELECT function_returns('pgr_astar',
     ARRAY['text', 'bigint', 'anyarray', 'boolean',
-        'integer', 'double precision', 'double precision'],
+        'integer', 'numeric', 'numeric'],
     'setof record');
 
 SELECT has_function('pgr_astar',
     ARRAY['text', 'anyarray', 'anyarray', 'boolean',
-        'integer', 'double precision', 'double precision']);
+        'integer', 'numeric', 'numeric']);
 SELECT function_returns('pgr_astar',
     ARRAY['text', 'anyarray', 'anyarray', 'boolean',
-        'integer', 'double precision', 'double precision'],
+        'integer', 'numeric', 'numeric'],
     'setof record');
 
 SELECT has_function('pgr_astar',
     ARRAY['text', 'bigint', 'bigint', 'boolean',
-        'integer', 'double precision', 'double precision']);
+        'integer', 'numeric', 'numeric']);
 SELECT function_returns('pgr_astar',
     ARRAY['text', 'bigint', 'bigint', 'boolean',
-        'integer', 'double precision', 'double precision'],
+        'integer', 'numeric', 'numeric'],
     'setof record');
 
 CREATE OR REPLACE FUNCTION test_anyInteger(fn TEXT, params TEXT[], parameter TEXT) 

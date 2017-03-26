@@ -496,10 +496,15 @@ std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** TRUCK " << v.id() << "***************";
+    log << "\n\n****************** TRUCK " << v.id() << "***************\n";
+    log << "id" << v.m_id
+        << "\tkind" <<  v.m_kind
+        << "\t capacity" << v.m_capacity
+        << "\t speed" << v.m_speed << "\n";
+
     for (const auto &path_stop : v.path()) {
-        log << "\nPath_stop" << ++i << "\n";
-        log << path_stop;
+        log << "Path_stop" << ++i << "\n";
+        log << path_stop << "\n";
     }
     return log;
 }

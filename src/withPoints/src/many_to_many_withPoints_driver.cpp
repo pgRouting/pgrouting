@@ -39,9 +39,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_dijkstra.hpp"
 #include "./pgr_withPoints.hpp"
 
-#include "./../../common/src/pgr_types.h"
-#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
+#include "./../../common/src/pgr_types.h"
 
 template < class G >
 std::deque< Path >
@@ -108,9 +108,8 @@ do_pgr_many_to_many_withPoints(
         pgassert(!(*err_msg));
         pgassert(!(*return_tuples));
         pgassert((*return_count) == 0);
-        pgassert(edges);
+        pgassert(edges || edges_of_points);
         pgassert(points_p);
-        pgassert(edges_of_points);
         pgassert(start_pidsArr);
         pgassert(end_pidsArr);
 
@@ -210,9 +209,11 @@ do_pgr_many_to_many_withPoints(
         if (count == 0) {
             (*return_tuples) = NULL;
             (*return_count) = 0;
+#if 0
             log <<
                 "No paths found";
             *err_msg = pgr_msg(log.str().c_str());
+#endif
             return;
         }
 

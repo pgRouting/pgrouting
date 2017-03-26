@@ -38,8 +38,8 @@
 #include "./pgr_tsp.hpp"
 #include "./eucledianDmatrix.h"
 
-#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
 
 void
 do_pgr_eucledianTSP(
@@ -90,7 +90,7 @@ do_pgr_eucledianTSP(
              */
             real_cost = costs.distance(idx_start, idx_end);
             /*
-             * Temporarly setting the cost between the start_vid and end_vid to 0
+             * Temporarily setting the cost between the start_vid and end_vid to 0
              */
             costs.set(idx_start, idx_end, 0);
         }

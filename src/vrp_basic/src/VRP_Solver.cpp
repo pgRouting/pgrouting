@@ -47,12 +47,7 @@ bool operator == (const CTourInfo& cur, const CTourInfo& that) {
         return false;
     if (cur.m_viOrderIds.size() != that.m_viOrderIds.size())
         return false;
-    auto tot = cur.m_viOrderIds.size();
-    for (size_t i = 0; i < tot; i++) {
-        if (cur.m_viOrderIds[i] != that.m_viOrderIds[i])
-            return false;
-    }
-    return true;
+    return std::equal(cur.m_viOrderIds.begin(), cur.m_viOrderIds.end(), that.m_viOrderIds.begin());
 }
 
 bool operator == (const CMoveInfo& cur, const CMoveInfo& that) {
@@ -163,8 +158,8 @@ bool CSolutionInfo::addTour(CTourInfo& tour) {
 
     m_iOrdersServed += static_cast<int>(vecOrders.size());
 
-    for (unsigned int i = 0; i < vecOrders.size(); i++) {
-        int oid = vecOrders[i];
+    for (const auto &order : vecOrders) {
+        int oid = order;
         it = std::find(m_vUnservedOrderId.begin(), m_vUnservedOrderId.end(), oid);
         if (it != m_vUnservedOrderId.end()) {
             m_vUnservedOrderId.erase(it);
@@ -233,12 +228,14 @@ bool CVRPSolver::solveVRP(std::string& strError) {
     // }
     PGR_LOG("Inside Solve VRP");
     std::vector<int> vecOrders, vecVehicles;
-    for (unsigned int i = 0; i < m_vOrderInfos.size(); i++) {
-        vecOrders.push_back(m_vOrderInfos[i].getOrderId());
+
+    for(auto &rule:m_vOrderInfos)
+    {
+      vecOrders.push_back(rule.getOrderId());
     }
 
-    for (unsigned int i = 0; i < m_vVehicleInfos.size(); i++) {
-        vecVehicles.push_back(m_vVehicleInfos[i].getId());
+    for (auto &rule:m_vVehicleInfos) {
+        vecVehicles.push_back(rule.getId());
     }
 
     m_solutionFinal.init(vecOrders, static_cast<int>(vecOrders.size()), vecVehicles);
@@ -888,5 +885,3 @@ bool CVRPSolver::isTabuMove(CMoveInfo& curMove) {
     }
     return false;
 }
-
-

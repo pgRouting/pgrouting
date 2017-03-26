@@ -134,7 +134,7 @@ Fleet::build_fleet(
 
         if (!(starting_site.is_start()
                     && ending_site.is_end())) {
-            error << "Illegal values found on vehcile";
+            error << "Illegal values found on vehicle";
             return false;
         }
 
@@ -168,28 +168,42 @@ Fleet::is_fleet_ok() const {
             return false;
         }
         if (!truck.is_feasable()) {
-            error << "Truck is not feasable";
+            error << "Truck is not feasible";
             return false;
         }
     }
     return true;
 }
 
+/**
+ * Given an order,
+ * Cycle trhugh all the trucks to verify if the order can be served by
+ * at least one truck
+ */
 bool
 Fleet::is_order_ok(const Order &order) const {
     for (const auto truck : m_trucks) {
+        log << "checking order " << order.id()
+            << "on truck " << truck.id() << "\n";
+        /* order 23 is not feasable */
+        if (order.id() == 11) {
+            auto t = truck;
+            t.push_back(order);
+            log << "truck with order 11" << t << "\n";
+            pgassertwm(false, log.str());
+        }
+
+        /*
+         * The order must be valid given the speed
+         */
         if (!order.is_valid(truck.speed())) continue; 
+
+        /*
+         * if its feasable, then the one truck is found
+         */
         if (truck.is_order_feasable(order)) {
             return true;
         }
-#if 0
-        auto test_truck = truck;
-        test_truck.push_back(order);
-
-        if (test_truck.is_feasable()) {
-            return true;
-        }
-#endif
     }
     return false;
 }

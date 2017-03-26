@@ -32,8 +32,8 @@ CREATE OR REPLACE FUNCTION pgr_astarCostMatrix(
     vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor FLOAT DEFAULT 1.0,
-    epsilon FLOAT DEFAULT 1.0,
+    factor NUMERIC DEFAULT 1.0,
+    epsilon NUMERIC DEFAULT 1.0,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
@@ -42,7 +42,7 @@ RETURNS SETOF RECORD AS
 $BODY$
 BEGIN
     RETURN query SELECT a.start_vid, a.end_vid, a.agg_cost
-    FROM _pgr_astar(_pgr_get_statement($1), $2, $2, $3, $4, $5, $6, true) a;
+    FROM _pgr_astar(_pgr_get_statement($1), $2, $2, $3, $4, $5::FLOAT, $6::FLOAT, true) a;
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE

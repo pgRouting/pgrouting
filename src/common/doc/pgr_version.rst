@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -9,10 +9,10 @@
 
 .. _pgr_version:
 
-pgr_version 
+pgr_version
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: version()
 
 Name
@@ -70,13 +70,9 @@ Examples
 
     SELECT version, boost FROM pgr_version();
 
-      version  | boost  
+      version  | boost
     -----------+--------
      2.2.0-dev | 1.49.0
     (1 row)
 
 
-See Also
--------------------------------------------------------------------------------
-
-* :ref:`pgr_versionless` to compare two version numbers

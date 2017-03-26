@@ -37,8 +37,8 @@
 #include "./Dmatrix.h"
 #include "./pgr_tsp.hpp"
 
-#include "./../../common/src/pgr_assert.h"
 #include "./../../common/src/pgr_alloc.hpp"
+#include "./../../common/src/pgr_assert.h"
 
 void
 do_pgr_tsp(

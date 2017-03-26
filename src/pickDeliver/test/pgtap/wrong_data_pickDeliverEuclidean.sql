@@ -46,6 +46,7 @@ UPDATE orders SET deliver_close = 967 WHERE id =11;
 -- testing wrong data on DEPOT 
 --------------------------------------
 UPDATE vehicles SET start_open = 3000  WHERE id = 0;
+UPDATE vehicles SET start_open = 3000;
 
 SELECT throws_ok('q5',
     'XX000',
@@ -53,6 +54,7 @@ SELECT throws_ok('q5',
     'Should fail: Opens(DEPOT) > closes(DEPOT)');
 
 UPDATE vehicles SET start_open = 0 WHERE id =0;
+UPDATE vehicles SET start_open = 0;
 
 
 --------------------------------------
@@ -83,8 +85,6 @@ SELECT throws_ok('q5',
     'XX000',
     'The order 11 is not feasible on any truck',
     'Should fail: Opens(DELIVERY) > closes(DELIVERY)');
-/*
-*/
 
 
 SELECT finish();

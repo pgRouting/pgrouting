@@ -11,6 +11,12 @@ if(POLICY CMP0046)
     cmake_policy(SET CMP0046 OLD)
 endif()
 
+if ( ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR} )
+        message(FATAL_ERROR "In-source builds not allowed.
+        Please make a new directory (called a build directory) and run CMake from there.
+        You may need to remove CMakeCache.txt." )
+endif()
+
 #---------------------------------------------
 # Setting kind of build
 #---------------------------------------------
@@ -72,16 +78,16 @@ set(PgRouting_SOURCE_NAMES
     # "dijkstra" can not be removed 
     #   Has the command needed to link with prostgresl
     #----------------------
-    "dijkstra" 
+    "dijkstra" #2.1
 
     #----------------------
     # Directories that have being rewritten
     #----------------------
-    "allpairs"
-    "astar"
-    "driving_distance"
-    "ksp"
-    "tsp"
+    "allpairs" # 2.2
+    "astar"    # 2.4
+    "driving_distance" # 2.1
+    "ksp" # 2.1
+    "tsp" # 2.3
 
     #----------------------
     # Code needs to be rewritten
@@ -120,25 +126,20 @@ set(PgRouting_SQL_DIRECTORIES
     # Proposed
     #  Not officially on the release
     #----------------------
-    "convenience"  # most are deprecated
     "label_graph"  # needs to be rewritten using Boost
     "costMatrix"   # proposed on 2.3
 
     #----------------------
     # Wrappers for backwards compatibility 
     #----------------------
-    "bd_dijkstra"   # 2.0 wrap of pgr_bdDijkstra
-    "apsp_johnson"  # 2.0 wrap of pgr_johnson
-    "apsp_warshall" # 2.0 wrap of pgr_warshall
-    "kdijkstra"     # 2.0 wrap of pgr_dijkstra & pgr_dijkstraCost
     "vrppdtw"       # 2.1 wraps of _pgr_pickDeliver
-    "bd_astar"      # 2.5  wrap of pgr_bdAstar
+    "deprecated"
     )
 
 #---------------------------------------------
 # minimum versions
 #---------------------------------------------
-set(DOXYGEN_MINIMUM_VERSION "1.8.6")
+set(DOXYGEN_MINIMUM_VERSION "1.7")
 set(SPHINX_MINIMUM_VERSION "1.1")
 set(POSTGRESQL_MINIMUM_VERSION "9.2.0")
 set(BOOST_MINIMUM_VERSION "1.46")
@@ -486,8 +487,9 @@ if(CXX_COMPILER_SUPPORTS_ROUNDING_MATH)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -frounding-math ")
 endif()
 
-set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}  -Werror -Wall -Wconversion -pedantic -fmax-errors=10 -Wmissing-prototypes -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Werror -Wall -fno-implicit-inline-templates -Wconversion -pedantic -fmax-errors=10 -Wunused -Wuninitialized -Wextra -Wdouble-promotion -Werror")
+# TODO use -Werror when TRSP gets rewritten
+set(CMAKE_C_FLAGS_DEBUG   "${CMAKE_C_FLAGS_DEBUG}   -Wall -Wconversion -pedantic -Wmissing-prototypes -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -fno-implicit-inline-templates -Wconversion -pedantic -W -Wunused -Wuninitialized -Wextra -Wdouble-promotion")
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -665,7 +667,8 @@ message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 # create the signature file for this release
 message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
 execute_process(
-    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file.pl ${PGROUTING_VERSION}
+    COMMAND cp ${PGROUTING_SOURCE_DIR}/tools/curr-sig/pgrouting--${PGROUTING_VERSION}.sig ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sig
+    #COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file.pl ${PGROUTING_VERSION}
     WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
     RESULT_VARIABLE SIG_RESULT
     )

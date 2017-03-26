@@ -6,6 +6,7 @@ SELECT * FROM _pgr_pickDeliverEuclidean(
         0 AS start_open, 1236 AS start_close,
         200 AS capacity, 25 AS number',
     30);
+/*
 \echo --q2
 SELECT * FROM _pgr_pickDeliverEuclidean(
     'SELECT * FROM orders ORDER BY id',
@@ -15,3 +16,4 @@ SELECT * FROM _pgr_pickDeliverEuclidean(
         200 AS capacity, 25 AS number, 10 AS speed',
     30);
 \echo --q3
+*/

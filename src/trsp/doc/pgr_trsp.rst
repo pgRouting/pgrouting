@@ -1,4 +1,4 @@
-.. 
+..
    ****************************************************************************
     pgRouting Manual
     Copyright(c) pgRouting Contributors
@@ -12,7 +12,7 @@
 pgr_trsp - Turn Restriction Shortest Path (TRSP)
 ===============================================================================
 
-.. index:: 
+.. index::
 	single: trsp(text,integer,integer,boolean,boolean)
 	single: trsp(text,integer,integer,boolean,boolean,text)
 	single: trspViaVertices(text,integer,double precision,integer,double precision,boolean,boolean)
@@ -27,7 +27,7 @@ Name
 Synopsis
 -------------------------------------------------------------------------------
 
-The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real work navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
+The turn restricted shorthest path (TRSP) is a shortest path algorithm that can optionally take into account complicated turn restrictions like those found in real world navigable road networks. Performamnce wise it is nearly as fast as the A* search but has many additional features like it works with edges rather than the nodes of the network. Returns a set of :ref:`pgr_costResult <type_cost_result>` (seq, id1, id2, cost) rows, that make up a path.
 
 .. code-block:: sql
 
@@ -37,7 +37,7 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 
 .. code-block:: sql
 
-	pgr_costResult[] pgr_trsp(sql text, source_edge integer, source_pos float8, 
+	pgr_costResult[] pgr_trsp(sql text, source_edge integer, source_pos float8,
 	                target_edge integer, target_pos float8,
                     directed boolean, has_rcost boolean [,restrict_sql text]);
 
@@ -56,7 +56,7 @@ The turn restricted shorthest path (TRSP) is a shortest path algorithm that can 
 Description
 -------------------------------------------------------------------------------
 
-The Turn Restricted Shortest Path algorithm (TRSP) is similar to the :ref:`shooting_star` in that you can specify turn restrictions.
+The Turn Restricted Shortest Path algorithm (TRSP) is similar to the shooting star in that you can specify turn restrictions.
 
 The TRSP setup is mostly the same as :ref:`Dijkstra shortest path <pgr_dijkstra>` with the addition of an optional turn restriction table. This provides an easy way of adding turn restrictions to a road network by placing them in a separate table.
 
@@ -93,7 +93,7 @@ Another variant of TRSP allows to specify **EDGE id** of source and target toget
 
 :source_edge: ``int4`` **EDGE id** of the start edge
 :source_pos: ``float8`` fraction of 1 defines the position on the start edge
-:target_edge: ``int4`` **EDGE id** of the end edge 
+:target_edge: ``int4`` **EDGE id** of the end edge
 :target_pos: ``float8`` fraction of 1 defines the position on the end edge
 
 Returns set of :ref:`type_cost_result`:

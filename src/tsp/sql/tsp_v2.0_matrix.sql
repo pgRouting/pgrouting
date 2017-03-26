@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _unnest_matrix(matrix float8[][], OUT start_vid integer, OUT end_vid integer, out agg_cost float8)
+CREATE OR REPLACE FUNCTION _pgr_unnest_matrix(matrix float8[][], OUT start_vid integer, OUT end_vid integer, out agg_cost float8)
 RETURNS SETOF record AS 
 
 $body$
@@ -64,7 +64,7 @@ debuglevel TEXT;
 BEGIN
     RAISE NOTICE 'Deprecated Signature pgr_tsp(float8[][], integer, integer)';
 
-    CREATE TEMP TABLE ___tmp2 ON COMMIT DROP AS SELECT * FROM _unnest_matrix( matrix );
+    CREATE TEMP TABLE ___tmp2 ON COMMIT DROP AS SELECT * FROM _pgr_unnest_matrix( matrix );
 
 
     startpt := startpt + 1;

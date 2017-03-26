@@ -14,62 +14,39 @@ pgr_bdDijkstra
 
 ``pgr_bdDijkstra`` — Returns the shortest path(s) using Bidirectional Dijkstra algorithm.
 
-.. figure:: ../../../doc/src/introduction/images/boost-inside.jpeg
+.. figure:: images/boost-inside.jpeg
    :target: http://www.boost.org/libs/graph/doc
 
    Boost Graph Inside
 
+.. rubric:: Availability:
 
-Synopsis
--------------------------------------------------------------------------------
-
-Based on Dijkstra's algorithm, the bidirectional search finds a shortest path
-a starting vertex (``start_vid``) to an ending vertex (``end_vid``).
-It runs two simultaneous searches: one forward from the source, and one backward from the target,
-stopping when the two meet in the middle.
-This implementation can be used with a directed graph and an undirected graph.
-
-Characteristics
--------------------------------------------------------------------------------
-
-The main Characteristics are:
-
-- Process is done only on edges with positive costs.
-- Values are returned when there is a path.
-
-- When the starting vertex and ending vertex are the same, there is no path.
-
-  - The `agg_cost` the non included values `(v, v)` is `0`
-
-- When the starting vertex and ending vertex are the different and there is no path:
-
-  - The `agg_cost` the non included values `(u, v)` is :math:`\infty`
-
-- Running time (worse case scenario): :math:`O((V \log V + E))`
-- For large graphs where there is a path bewtween the starting vertex and ending vertex:
-
-  - It is expected to terminate faster than pgr_dijkstra (one to one)
-
+* pgr_bdDijkstra(one to one) 2.0.0, Signature changed 2.4.0
+* pgr_bdDijkstra(other signatures) 2.5.0
 
 Signature Summary
 -----------------
 
 .. code-block:: none
 
-    pgr_dijkstra(edges_sql, start_vid,  end_vid)
+    pgr_bdDijkstra(edges_sql, start_vid,  end_vid)
     pgr_bdDijkstra(edges_sql, start_vid, end_vid, directed)
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost)
-        OR EMPTY SET
+    OR EMPTY SET
 
-.. NOTE:: This signature is deprecated
+.. include:: proposed.rst
+   :start-after: begin-warn-expr
+   :end-before: end-warn-expr
 
-    .. code-block:: sql
+.. code-block:: none
 
-        pgr_bdDijkstra(sql, source integer, target integer, directed boolean, has_rcost boolean)
-        RETURNS SET OF pgr_costResult
+    pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
+    pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
+    pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
 
-    - See :ref:`pgr_costResult <type_cost_result>`
-    - See :ref:`bd_dijkstra_v2`
+    RETURNS SET OF (seq, path_seq [, start_vid] [, end_vid], node, edge, cost, agg_cost)
+    OR EMPTY SET
+
 
 
 
@@ -97,9 +74,9 @@ The minimal signature is for a **directed** graph from one ``start_vid`` to one 
 
 
 .. index::
-    single: bdDijkstra(Complete signature)
+    single: bdDijkstra(One to One)
 
-Complete Signature
+pgr_bdDijkstra One to One
 .......................................
 
 .. code-block:: none
@@ -108,8 +85,9 @@ Complete Signature
     RETURNS SET OF (seq, path_seq, node, edge, cost, agg_cost) or EMPTY SET
 
 This signature finds the shortest path from one ``start_vid`` to one ``end_vid``:
-  -  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
-  -  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+-  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+-  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
 :Example:
 
@@ -118,46 +96,111 @@ This signature finds the shortest path from one ``start_vid`` to one ``end_vid``
    :end-before: -- q3
 
 
+.. index::
+    single: bdDijkstra(One to Many) - Proposed
 
-Description of the Signatures
--------------------------------------------------------------------------------
+pgr_bdDijkstra One to many
+.......................................
 
-.. include:: ../../common/src/edges_input.h
-    :start-after: basic_edges_sql_start
-    :end-before: basic_edges_sql_end
+.. code-block:: none
 
-.. include:: ../../dijkstra/sql/dijkstra.sql
-    :start-after: pgr_dijkstra_parameters_start
-    :end-before: pgr_dijkstra_parameters_end
+    pgr_bdDijkstra(edges_sql, start_vid, end_vids, directed)
+    RETURNS SET OF (seq, path_seq, end_vid, node, edge, cost, agg_cost) or EMPTY SET
 
+This signature finds the shortest path from one ``start_vid`` to each ``end_vid`` in ``end_vids``:
 
-Description of the return values
-...............................................................................
+-  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+-  on an **undirected** graph when ``directed`` flag is set to ``false``.
 
-Returns set of ``(seq, path_seq, node, edge, cost, agg_cost)``
+Using this signature, will load once the graph and perform a one to one `pgr_dijkstra`
+where the starting vertex is fixed, and stop when all ``end_vids`` are reached.
 
-============== ========== =================================================
-Column         Type       Description
-============== ========== =================================================
-**seq**        ``INT``    Sequential value starting from **1**.
-**path_seq**   ``INT``    Relative position in the path. Has value **1** for the beginning of a path.
-**node**       ``BIGINT`` Identifier of the node in the path from ``start_vid`` to ``end_vid``.
-**edge**       ``BIGINT`` Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path.
-**cost**       ``FLOAT``  Cost to traverse from ``node`` using ``edge`` to the next node in the path sequence.
-**agg_cost**   ``FLOAT``  Aggregate cost from ``start_v`` to ``node``.
-============== ========== =================================================
+- The result is equivalent to the union of the results of the one to one `pgr_dijkstra`.
+- The extra ``end_vid`` in the result is used to distinguish to which path it belongs.
 
-
-Deprecated Signature
--------------------------------------------------------------------------------
-
-:Example: Using the deprecated signature
-
-The deprecated signature does not auto detects the existence of :code:`reverse_cost`
+:Example:
 
 .. literalinclude:: doc-pgr_bdDijkstra.queries
    :start-after: -- q3
    :end-before: -- q4
+
+.. index::
+    single: bdDijkstra(Many to One) - Proposed
+
+
+pgr_bdDijkstra Many to One
+.......................................
+
+.. code-block:: none
+
+    pgr_bdDijkstra(edges_sql, start_vids, end_vid, directed)
+    RETURNS SET OF (seq, path_seq, start_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to one ``end_vid``:
+
+-  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+-  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to one `pgr_dijkstra`
+where the ending vertex is fixed.
+
+- The result is the union of the results of the one to one `pgr_dijkstra`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+   :start-after: -- q4
+   :end-before: -- q5
+
+
+.. index::
+    single: bdDijkstra(Many to Many) - Proposed
+
+pgr_bdDijkstra Many to Many
+.......................................
+
+.. code-block:: none
+
+    pgr_bdDijkstra(edges_sql, start_vids, end_vids, directed)
+    RETURNS SET OF (seq, path_seq, start_vid, end_vid, node, edge, cost, agg_cost) or EMPTY SET
+
+This signature finds the shortest path from each ``start_vid`` in  ``start_vids`` to each ``end_vid`` in ``end_vids``:
+
+-  on a **directed** graph when ``directed`` flag is missing or is set to ``true``.
+-  on an **undirected** graph when ``directed`` flag is set to ``false``.
+
+Using this signature, will load once the graph and perform several one to Many `pgr_dijkstra`
+for all ``start_vids``.
+
+- The result is the union of the results of the one to one `pgr_dijkstra`.
+- The extra ``start_vid`` in the result is used to distinguish to which path it belongs.
+
+The extra ``start_vid`` and ``end_vid`` in the result is used to distinguish to which path it belongs.
+
+:Example:
+
+.. literalinclude:: doc-pgr_bdDijkstra.queries
+   :start-after: -- q5
+   :end-before: -- q6
+
+
+
+Description of the Signatures
+-------------------------------------------------------------------------------
+
+.. include:: pgRouting-concepts.rst
+    :start-after: basic_edges_sql_start
+    :end-before: basic_edges_sql_end
+
+.. include:: pgr_dijkstra.rst
+    :start-after: pgr_dijkstra_parameters_start
+    :end-before: pgr_dijkstra_parameters_end
+
+.. include:: pgRouting-concepts.rst
+    :start-after: return_path_start
+    :end-before: return_path_end
+
 
 
 
@@ -165,7 +208,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * The queries use the :ref:`sampledata` network.
-* :ref:`pgr_dijkstra`
+* :ref:`bdDijkstra`
 * http://www.cs.princeton.edu/courses/archive/spr06/cos423/Handouts/EPP%20shortest%20path%20algorithms.pdf
 * https://en.wikipedia.org/wiki/Bidirectional_search
 

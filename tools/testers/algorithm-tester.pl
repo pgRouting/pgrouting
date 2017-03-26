@@ -149,7 +149,7 @@ if (length($psql)) {
         $psql = "\"$psql\"";
     }
 }
-print "Operative system found: $OS";
+print "Operative system found: $OS\n";
 
 
 # Traverse desired filesystems
@@ -244,7 +244,7 @@ sub run_test {
         for my $x (@{$t->{tests}}) {
             process_single_test($x, $dir,, $DBNAME, \%res)
         }
-        if ($OS =~ /msys/ || $OS=~/MSW/ || $OS =~ /cygwin/) {
+        if ($OS =~/msys/ || $OS=~/MSW/ || $OS =~/cygwin/) {
             for my $x (@{$t->{windows}}) {
                 process_single_test($x, $dir,, $DBNAME, \%res)
             }
@@ -280,7 +280,7 @@ sub process_single_test{
 
     my $level = "NOTICE";
     $level = "WARNING" if $ignore;
-    $level = "DEBUG1" if $DEBUG1;
+    $level = "DEBUG3" if $DEBUG1;
 
 
     if ($DOCUMENTATION) {

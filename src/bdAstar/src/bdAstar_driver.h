@@ -46,24 +46,26 @@ extern "C" {
      ********************************************************/
 
 
-    void
-        do_pgr_bdAstar(
-                Pgr_edge_xy_t  *data_edges,
-                size_t total_edges,
-                int64_t start_vid,
-                int64_t end_vid,
-                bool directed,
-                int heuristic,
-                double factor,
-                double epsilon,
-                bool only_cost,
+    void do_pgr_bdAstar(
+            Pgr_edge_xy_t  *data_edges,
+            size_t total_edges,
+            int64_t  *start_vidsArr,
+            size_t size_start_vidsArr,
+            int64_t  *end_vidsArr,
+            size_t size_end_vidsArr,
 
-                General_path_element_t **return_tuples,
-                size_t *return_count,
+            bool directed,
+            int heuristic,
+            double factor,
+            double epsilon,
+            bool only_cost,
 
-                char** log_msg,
-                char** notice_msg,
-                char** err_msg);
+            General_path_element_t **return_tuples,
+            size_t *return_count,
+
+            char** log_msg,
+            char** notice_msg,
+            char** err_msg);
 
 
 #ifdef __cplusplus

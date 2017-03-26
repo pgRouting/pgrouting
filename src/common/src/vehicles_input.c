@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"
 #include "./get_check_data.h"
 #include "./vehicles_input.h"
+#include "./time_msg.h"
 
 
 static
@@ -142,6 +143,8 @@ void pgr_get_vehicles_general(
         Vehicle_t **vehicles,
         size_t *total_vehicles,
         bool with_id) {
+    clock_t start_t = clock();
+
     const int tuple_limit = 1000000;
 
     PGR_DBG("pgr_get_vehicles");
@@ -252,7 +255,9 @@ void pgr_get_vehicles_general(
     }
 
     (*total_vehicles) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_vehicles));
+    PGR_DBG("Finish reading %ld vehicles for eucledian", (*total_vehicles));
+    time_msg("reading edges", start_t, clock());
+
 }
 
 void

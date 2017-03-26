@@ -28,14 +28,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 #include "./../../common/src/postgres_connection.h"
+#include "utils/array.h"
 
 #include "./../../common/src/debug_macro.h"
 #include "./../../common/src/e_report.h"
 #include "./../../common/src/time_msg.h"
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/edges_input.h"
+#include "./../../common/src/arrays_input.h"
 
-#include "./../../astar/src/astar_many_to_many_driver.h"
+
+#include "./../../astar/src/astar_driver.h" // for check_parameters
 #include "./bdAstar_driver.h"
 
 PGDLLEXPORT Datum bd_astar(PG_FUNCTION_ARGS);
@@ -45,8 +48,8 @@ PG_FUNCTION_INFO_V1(bd_astar);
 static
 void
 process(char* edges_sql,
-        int64_t start_vid,
-        int64_t end_vid,
+        ArrayType *starts,
+        ArrayType *ends,
         bool directed,
         int heuristic,
         double factor,
@@ -57,6 +60,16 @@ process(char* edges_sql,
     check_parameters(heuristic, factor, epsilon);
 
     pgr_SPI_connect();
+
+    int64_t* start_vidsArr = NULL;
+    size_t size_start_vidsArr = 0;
+    start_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_start_vidsArr, starts);
+
+    int64_t* end_vidsArr = NULL;
+    size_t size_end_vidsArr = 0;
+    end_vidsArr = (int64_t*)
+        pgr_get_bigIntArray(&size_end_vidsArr, ends);
 
     PGR_DBG("Load data");
     Pgr_edge_xy_t *edges = NULL;
@@ -80,10 +93,10 @@ process(char* edges_sql,
     clock_t start_t = clock();
     do_pgr_bdAstar(
             edges, total_edges,
-            start_vid,
-            end_vid,
-            directed,
+            start_vidsArr, size_start_vidsArr,
+            end_vidsArr, size_end_vidsArr,
 
+            directed,
             heuristic,
             factor,
             epsilon,
@@ -145,8 +158,9 @@ bd_astar(PG_FUNCTION_ARGS) {
         PGR_DBG("Calling process");
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
-                PG_GETARG_INT64(1),
-                PG_GETARG_INT64(2),
+                PG_GETARG_ARRAYTYPE_P(1),
+                PG_GETARG_ARRAYTYPE_P(2),
+
                 PG_GETARG_BOOL(3),
                 PG_GETARG_INT32(4),
                 PG_GETARG_FLOAT8(5),
@@ -182,6 +196,8 @@ bd_astar(PG_FUNCTION_ARGS) {
         Datum        result;
         Datum        *values;
         bool*        nulls;
+        size_t       call_cntr = funcctx->call_cntr;
+
 
         /**********************************************************************
           OUT seq INTEGER,
@@ -192,21 +208,24 @@ bd_astar(PG_FUNCTION_ARGS) {
           OUT agg_cost FLOAT
          *********************************************************************/
 
+        size_t numb = 8;
+        values = palloc(numb * sizeof(Datum));
+        nulls = palloc(numb * sizeof(bool));
 
-        values = palloc(6 * sizeof(Datum));
-        nulls = palloc(6 * sizeof(bool));
 
         size_t i;
-        for (i = 0; i < 6; ++i) {
+        for (i = 0; i < numb; ++i) {
             nulls[i] = false;
         }
 
-        values[0] = Int32GetDatum(funcctx->call_cntr + 1);
-        values[1] = Int32GetDatum(result_tuples[funcctx->call_cntr].seq);
-        values[2] = Int64GetDatum(result_tuples[funcctx->call_cntr].node);
-        values[3] = Int64GetDatum(result_tuples[funcctx->call_cntr].edge);
-        values[4] = Float8GetDatum(result_tuples[funcctx->call_cntr].cost);
-        values[5] = Float8GetDatum(result_tuples[funcctx->call_cntr].agg_cost);
+        values[0] = Int32GetDatum(call_cntr + 1);
+        values[1] = Int32GetDatum(result_tuples[call_cntr].seq);
+        values[2] = Int64GetDatum(result_tuples[call_cntr].start_id);
+        values[3] = Int64GetDatum(result_tuples[call_cntr].end_id);
+        values[4] = Int64GetDatum(result_tuples[call_cntr].node);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].edge);
+        values[6] = Float8GetDatum(result_tuples[call_cntr].cost);
+        values[7] = Float8GetDatum(result_tuples[call_cntr].agg_cost);
 
 
         tuple = heap_form_tuple(tuple_desc, values, nulls);

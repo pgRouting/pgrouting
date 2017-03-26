@@ -25,8 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 SELECT plan(4);
 
-SET client_min_messages TO ERROR;
-
 UPDATE edge_table SET cost = cost + 0.001 * id * id, reverse_cost = reverse_cost + 0.001 * id * id;
 
 CREATE or REPLACE FUNCTION astarCompareDijkstra(cant INTEGER default 17)
@@ -39,7 +37,7 @@ astar_sql TEXT;
 vids TEXT;
 data TEXT;
 BEGIN
-    data := ' seq, start_vid, cost::text, agg_cost::text ';
+    data := ' path_seq, start_vid, end_vid, cost::text, agg_cost::text ';
     vids := ' ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18] ';
 
 
@@ -82,7 +80,6 @@ BEGIN
         astar_sql := 'SELECT ' || data || ' FROM pgr_astar($$' || inner_sql || '$$,  ' || vids
             || ', ' || vids || ', false, heuristic := 0)';
         RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
-
 
     RETURN;
 END

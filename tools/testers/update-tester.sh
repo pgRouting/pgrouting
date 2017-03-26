@@ -3,7 +3,7 @@
 
 # FILE: update_tester.sh
 
-# Copyright (c) 2015 pgRouting developers
+# Copyright (c) 2016 pgRouting developers
 # Mail: project@pgrouting.org
 #
 # ------
@@ -39,10 +39,9 @@ echo -
 #  bash tools/testers/update-tester.sh
 #
 
-CURRENT=2.4.0
+CURRENT=2.5.0
 
 function update_test {
-set -e
 
 echo ------------------------------------
 echo ------------------------------------
@@ -56,7 +55,7 @@ then
     echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql found"
 else
     echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
-#    exit 1
+    exit 1
 fi
 
 createdb  ___test_update
@@ -72,9 +71,23 @@ dropdb   ___test_update
 } 
 
 #------------------------------------
+### updates from 2.4
+#------------------------------------
+
+update_test 2.4.1 $CURRENT
+update_test 2.4.0 $CURRENT
+
+#------------------------------------
 ### updates from 2.3.0
 #------------------------------------
 
+update_test 2.4.0 $CURRENT
+
+#------------------------------------
+### updates from 2.3.0
+#------------------------------------
+
+update_test 2.3.2 $CURRENT
 update_test 2.3.1 $CURRENT
 update_test 2.3.0 $CURRENT
 
@@ -104,4 +117,4 @@ update_test 2.0.0 $CURRENT
 echo Reached end of test, all tests passed
 # CAN NOT BE Update test from 2.0.1  to $CURRENT;
 
-
+exit 0

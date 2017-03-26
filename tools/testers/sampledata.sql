@@ -24,6 +24,8 @@ CREATE TABLE edge_table (
     target BIGINT,
     cost FLOAT,
     reverse_cost FLOAT,
+    capacity BIGINT,
+    reverse_capacity BIGINT,
     category_id INTEGER,
     reverse_category_id INTEGER,
     x1 FLOAT,
@@ -36,26 +38,27 @@ CREATE TABLE edge_table (
 INSERT INTO edge_table (
     category_id, reverse_category_id,
     cost, reverse_cost,
+    capacity, reverse_capacity,
     x1, y1,
     x2, y2) VALUES 
-(3, 1,    1,  1,  2,   0,    2, 1),
-(3, 2,   -1,  1,  2,   1,    3, 1),
-(2, 1,   -1,  1,  3,   1,    4, 1),
-(2, 4,    1,  1,  2,   1,    2, 2),
-(1, 4,    1, -1,  3,   1,    3, 2),
-(4, 2,    1,  1,  0,   2,    1, 2),
-(4, 1,    1,  1,  1,   2,    2, 2),
-(2, 1,    1,  1,  2,   2,    3, 2),
-(1, 3,    1,  1,  3,   2,    4, 2),
-(1, 4,    1,  1,  2,   2,    2, 3),
-(1, 2,    1, -1,  3,   2,    3, 3),
-(2, 3,    1, -1,  2,   3,    3, 3),
-(2, 4,    1, -1,  3,   3,    4, 3),
-(3, 1,    1,  1,  2,   3,    2, 4),
-(3, 4,    1,  1,  4,   2,    4, 3),
-(3, 3,    1,  1,  4,   1,    4, 2),
-(1, 2,    1,  1,  0.5, 3.5,  1.999999999999,3.5),
-(4, 1,    1,  1,  3.5, 2.3,  3.5,4);
+(3, 1,    1,  1,  80, 130,   2,   0,    2, 1),
+(3, 2,   -1,  1,  -1, 100,   2,   1,    3, 1),
+(2, 1,   -1,  1,  -1, 130,   3,   1,    4, 1),
+(2, 4,    1,  1, 100,  50,   2,   1,    2, 2),
+(1, 4,    1, -1, 130,  -1,   3,   1,    3, 2),
+(4, 2,    1,  1,  50, 100,   0,   2,    1, 2),
+(4, 1,    1,  1,  50, 130,   1,   2,    2, 2),
+(2, 1,    1,  1, 100, 130,   2,   2,    3, 2),
+(1, 3,    1,  1, 130,  80,   3,   2,    4, 2),
+(1, 4,    1,  1, 130,  50,   2,   2,    2, 3),
+(1, 2,    1, -1, 130,  -1,   3,   2,    3, 3),
+(2, 3,    1, -1, 100,  -1,   2,   3,    3, 3),
+(2, 4,    1, -1, 100,  -1,   3,   3,    4, 3),
+(3, 1,    1,  1,  80, 130,   2,   3,    2, 4),
+(3, 4,    1,  1,  80,  50,   4,   2,    4, 3),
+(3, 3,    1,  1,  80,  80,   4,   1,    4, 2),
+(1, 2,    1,  1, 130, 100,   0.5, 3.5,  1.999999999999,3.5),
+(4, 1,    1,  1,  50, 130,   3.5, 2.3,  3.5,4);
 
 UPDATE edge_table SET the_geom = st_makeline(st_point(x1,y1),st_point(x2,y2)),
 dir = CASE WHEN (cost>0 AND reverse_cost>0) THEN 'B'   -- both ways
@@ -108,7 +111,7 @@ INSERT INTO restrictions (rid, to_cost, target_id, from_edge, via_path) VALUES
 (3, 100,  9, 16, NULL);
 
 --RESTRICTIONS END
-
+/*
 CREATE TABLE categories (
     category_id INTEGER,
     category text,
@@ -120,7 +123,7 @@ INSERT INTO categories VALUES
 (2, 'Category 2', 100),
 (3, 'Category 3',  80),
 (4, 'Category 4',  50);
-
+*/
 --CATEGORIES END
 
 CREATE TABLE vertex_table (

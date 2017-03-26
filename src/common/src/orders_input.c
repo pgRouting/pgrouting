@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./pgr_types.h"
 #include "./get_check_data.h"
 #include "./orders_input.h"
+#include "./time_msg.h"
 
 
 static
@@ -112,6 +113,8 @@ pgr_get_pd_orders_general(
         PickDeliveryOrders_t **pd_orders,
         size_t *total_pd_orders,
         bool with_id) {
+    clock_t start_t = clock();
+
     const int tuple_limit = 1000000;
 
     PGR_DBG("pgr_get_pd_orders_data");
@@ -224,7 +227,13 @@ pgr_get_pd_orders_general(
     }
 
     (*total_pd_orders) = total_tuples;
-    PGR_DBG("Finish reading %ld data, %ld", total_tuples, (*total_pd_orders));
+    if (with_id) {
+        PGR_DBG("Finish reading %ld orders for matrix", (*total_pd_orders));
+    } else {
+        PGR_DBG("Finish reading %ld orders for eucledian", (*total_pd_orders));
+    }
+    time_msg("reading edges", start_t, clock());
+
 }
 
 void

@@ -24,21 +24,21 @@
 
 #define MAX_RULE_LENGTH 5
 
-#include <stdint.h>
+#include "postgres.h"
 
 typedef struct edge
 {
-    long id;
+    int id;
     long source;
     long target;
-    double cost;
-    double reverse_cost;
+    float8 cost;
+    float8 reverse_cost;
 } edge_t;
 
 typedef struct restrict_struct
 {
 		int target_id;
-		double to_cost;
+		float8 to_cost;
         int via[MAX_RULE_LENGTH];
 } 
 restrict_t;
@@ -47,45 +47,45 @@ typedef struct path_element
 {
     long vertex_id;
     long edge_id;
-    double cost;
+    float8 cost;
 } path_element_t;
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
 #endif
 
 int trsp_node_wrapper(
 			edge_t *edges, 
-			uint32_t edge_count, 
+			unsigned int edge_count, 
 			restrict_t *restricts, 
-			uint32_t restrict_count,
-			long start_vertex, 
-			long end_vertex,
+			int restrict_count,
+			int start_vertex, 
+			int end_vertex,
 		    bool directed, 
 		    bool has_reverse_cost,
             path_element_t **path, 
-            uint32_t *path_count, 
+            int *path_count, 
             char **err_msg
             );
 
+#ifdef __cplusplus
+extern "C"
+#endif
+
 int trsp_edge_wrapper(
 			edge_t *edges, 
-			uint32_t edge_count, 
+			unsigned int edge_count, 
 			restrict_t *restricts, 
-			uint32_t restrict_count,
-			long start_edge, 
+			int restrict_count,
+			int start_edge, 
             double start_pos,
-			long end_edge,
+			int end_edge,
             double end_pos,
 		    bool directed, 
 		    bool has_reverse_cost,
             path_element_t **path, 
-            uint32_t *path_count, 
+            int *path_count, 
             char **err_msg
             );
-#ifdef __cplusplus
-}
-#endif
-
 
 #endif

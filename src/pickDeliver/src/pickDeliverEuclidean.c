@@ -44,8 +44,6 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS);
 PG_FUNCTION_INFO_V1(pickDeliverEuclidean);
 
 
-/*********************************************************************/
-/*                MODIFY AS NEEDED                                   */
 static
 void
 process(
@@ -77,7 +75,7 @@ process(
     PGR_DBG("total vehicles %ld", total_vehicles);
 
     for (size_t i = 0; i < total_vehicles; i++) {
-        PGR_DBG("%ld %f %f / %f %f %f %f %f / %f %f %f %f %f / %ld ",
+        PGR_DBG("%ld %f %f , start %f %f %f %f %f end %f %f %f %f %f number %ld ",
                vehicles_arr[i].id,
                vehicles_arr[i].capacity,
                vehicles_arr[i].speed,
@@ -111,6 +109,7 @@ process(
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
+#if 1
     do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
@@ -122,8 +121,8 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
-
-    time_msg("_pgr_ipickDeliver", start_t, clock());
+#endif
+    time_msg("_pgr_pickDeliverEuclidean", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);

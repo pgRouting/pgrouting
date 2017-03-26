@@ -45,11 +45,11 @@ class Pgr_pickDeliver;
 class PD_Orders;
 
 class Fleet : public Pgr_messages, public PD_problem {
-     typedef typename std::vector<Vehicle_pickDeliver> Trucks;
+     typedef std::vector<Vehicle_pickDeliver> Trucks;
 
  public:
      // static Pgr_pickDeliver* problem;
-     typedef typename Trucks::iterator iterator;
+     typedef Trucks::iterator iterator;
      Trucks m_trucks;
 
  protected:
