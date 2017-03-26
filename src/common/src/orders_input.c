@@ -62,7 +62,7 @@ void fetch_pd_orders(
         0 : pgr_SPI_getFloat8(tuple, tupdesc, info[8]);
     pd_order->deliver_open_t = pgr_SPI_getFloat8(tuple, tupdesc, info[9]);
     pd_order->deliver_close_t = pgr_SPI_getFloat8(tuple, tupdesc, info[10]);
-    pd_order->pick_service_t = column_found(info[11].colNumber) ?
+    pd_order->deliver_service_t = column_found(info[11].colNumber) ?
         pgr_SPI_getFloat8(tuple, tupdesc, info[11]) : 0;
 
     pd_order->pick_node_id = with_id ? 

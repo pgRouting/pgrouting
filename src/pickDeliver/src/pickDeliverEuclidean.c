@@ -74,6 +74,31 @@ process(
            &vehicles_arr, &total_vehicles);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
+    for (size_t i = 0; i < total_pd_orders; i++) {
+        PGR_DBG("%ld %f pick %f %f %ld - %f %f %f deliver %f %f %ld - %f %f %f ",
+                pd_orders_arr[i].id,
+                pd_orders_arr[i].demand,
+
+                pd_orders_arr[i].pick_x,
+                pd_orders_arr[i].pick_y,
+                pd_orders_arr[i].pick_node_id,
+
+                pd_orders_arr[i].pick_open_t,
+                pd_orders_arr[i].pick_close_t,
+                pd_orders_arr[i].pick_service_t,
+
+                pd_orders_arr[i].deliver_x,
+                pd_orders_arr[i].deliver_y,
+                pd_orders_arr[i].deliver_node_id,
+
+                pd_orders_arr[i].deliver_open_t,
+                pd_orders_arr[i].deliver_close_t,
+                pd_orders_arr[i].deliver_service_t
+               );
+    }
+
+
+
     for (size_t i = 0; i < total_vehicles; i++) {
         PGR_DBG("%ld %f %f , start %f %f %f %f %f end %f %f %f %f %f number %ld ",
                vehicles_arr[i].id,

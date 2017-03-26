@@ -1,16 +1,16 @@
 
 DROP TABLE IF EXISTS customer CASCADE;
 CREATE table customer (
-                id BIGINT not null primary key,
-                x DOUBLE PRECISION,
-                y DOUBLE PRECISION,
-                demand INTEGER,
-                opentime INTEGER,
-                closetime INTEGER, 
-                servicetime INTEGER, 
-                pindex BIGINT,
-                dindex BIGINT 
-                );
+    id BIGINT not null primary key,
+    x DOUBLE PRECISION,
+    y DOUBLE PRECISION,
+    demand INTEGER,
+    opentime INTEGER,
+    closetime INTEGER, 
+    servicetime INTEGER, 
+    pindex BIGINT,
+    dindex BIGINT 
+);
 
 
 COPY customer (id, x, y, demand, opentime, closetime, servicetime, pindex, dindex) FROM stdin;  

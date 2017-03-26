@@ -1,17 +1,7 @@
 
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS vehicles CASCADE;
-CREATE table customer (
-                id BIGINT not null primary key,
-                x DOUBLE PRECISION,
-                y DOUBLE PRECISION,
-                demand INTEGER,
-                opentime INTEGER,
-                closetime INTEGER, 
-                servicetime INTEGER, 
-                pindex BIGINT,
-                dindex BIGINT 
-                );
+DROP TABLE IF EXISTS dist_matrix CASCADE;
 
 CREATE TABLE orders (
       id BIGINT PRIMARY KEY, 
@@ -26,6 +16,16 @@ CREATE TABLE orders (
       deliver_open FLOAT, 
       deliver_close FLOAT, 
       deliver_service FLOAT
+);
+
+CREATE TABLE vehicles (
+  id BIGSERIAL PRIMARY KEY, 
+  start_x FLOAT, 
+  start_y FLOAT, 
+  start_open FLOAT, 
+  start_close FLOAT, 
+  "number" integer, 
+  capacity FLOAT
 );
 
 INSERT INTO orders (id,  demand, 
@@ -86,25 +86,8 @@ VALUES
 (98, 20, 58, 75,   30,   84, 90, 62, 80, 196,  239, 90), 
 (100,20, 55, 85,  647,  726, 90, 55, 80, 743,  820, 90);
 
-WITH
-pickups AS (
-    SELECT id, demand, x AS pick_x, y AS pick_y, opentime AS pick_open, closetime AS pick_close, servicetime AS pick_service
-    FROM  customer WHERE pindex = 0 AND id != 0
-),
-deliveries AS (
-    SELECT pindex AS id, x AS deliver_x, y AS deliver_y, opentime AS deliver_open, closetime AS deliver_close, servicetime AS deliver_service
-    FROM  customer WHERE dindex = 0 AND id != 0
-)
-SELECT *, pickups.id AS pick_node_id, deliveries.id AS deliver_node_id INTO orders
-FROM pickups JOIN deliveries USING(id)
-ORDER BY pickups.id;
-
-SELECT id,
-    x AS start_x, y AS start_y, id AS start_node_id,
-    opentime AS start_open, closetime AS start_close, 
-    25  AS number, 200 AS capacity
-INTO vehicles
-FROM customer WHERE id = 0;
+INSERT INTO vehicles (start_x,  start_y,  start_open,  start_close,  "number",  capacity)
+VALUES (40,  50,  0,  1236,  25,  200);
 
 WITH
 A AS (SELECT id AS start_vid, x, y FROM customer),
@@ -113,18 +96,4 @@ SELECT start_vid, end_vid, sqrt( (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y 
 INTO dist_matrix
 FROM A, B;
 
-/*
->>>>>>> release/2.5
-CREATE TABLE vehicles (
-  id BIGSERIAL PRIMARY KEY, 
-  start_x FLOAT, 
-  start_y FLOAT, 
-  start_open FLOAT, 
-  start_close FLOAT, 
-  "number" integer, 
-  capacity FLOAT
-);
 
-INSERT INTO vehicles (start_x,  start_y,  start_open,  start_close,  "number",  capacity)
-VALUES (40,  50,  0,  1236,  25,  200);
-*/

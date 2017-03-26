@@ -185,6 +185,7 @@ Fleet::is_order_ok(const Order &order) const {
     for (const auto truck : m_trucks) {
         log << "checking order " << order.id()
             << "on truck " << truck.id() << "\n";
+#if 0
         /* order 23 is not feasable */
         if (order.id() == 11) {
             auto t = truck;
@@ -192,7 +193,7 @@ Fleet::is_order_ok(const Order &order) const {
             log << "truck with order 11" << t << "\n";
             pgassertwm(false, log.str());
         }
-
+#endif
         /*
          * The order must be valid given the speed
          */

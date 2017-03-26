@@ -1,8 +1,8 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver.sql
+File: reginabook.sql
 
 Generated with Template by:
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2017 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer: 
@@ -76,7 +76,7 @@ BEGIN
 
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
-        pick_deliver AS (SELECT * FROM _pgr_pickDeliverEucledian('$$ || first_sql || $$',  '$$ || second_sql || $$',  $$ || max_cycles || $$)),
+        pick_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || first_sql || $$',  '$$ || second_sql || $$',  $$ || max_cycles || $$ )),
         picks AS (SELECT pick_deliver.*, pindex, dindex, id AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 1)),
         delivers AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
         depots AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND order_id = 0)),
@@ -89,31 +89,4 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql VOLATILE STRICT;
-
-
--- LATEST signature
-CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
-    orders_sql TEXT,
-    vehicles_sql TEXT,
-    matrix_cell_sql TEXT,
-    max_cycles INTEGER DEFAULT 10, 
-
-    OUT seq INTEGER,
-    OUT vehicle_number INTEGER,
-    OUT vehicle_id BIGINT,
-    OUT vehicle_seq INTEGER,
-    OUT order_id BIGINT,
-    OUT stop_type INT,
-    OUT cargo FLOAT,
-    OUT travel_time FLOAT,
-    OUT arrival_time FLOAT,
-    OUT wait_time FLOAT,
-    OUT service_time FLOAT,
-    OUT departure_time FLOAT
-)
-
-RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliver'
-LANGUAGE c IMMUTABLE STRICT;
-
 

@@ -160,7 +160,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
 
     log << " ---> OK\n";
 
-#ifdef MAX_DEBUG
+#if 0
     for (const auto t : m_trucks) {
         log << t << "\n";
     }
@@ -170,7 +170,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     log << "\n Building orders";
     m_orders.build_orders(pd_orders, node_id);
 
-#ifdef MAX_DEBUG
+#if 0
     for (const auto &o : m_orders) {
         log << o << "\n";
     }
