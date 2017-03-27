@@ -49,11 +49,11 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
 RETURNS SETOF RECORD AS
 $BODY$
 DECLARE
-    first_sql TEXT;
-    second_sql TEXT;
+    orders_sql TEXT;
+    vehicles_sql TEXT;
     final_sql TEXT;
 BEGIN
-    first_sql = $$WITH
+    orders_sql = $$WITH
         customer_data AS ($$ || customers_sql || $$ ),
         pickups AS (
             SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
@@ -66,17 +66,17 @@ BEGIN
         SELECT * FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id
     $$;
 
-    second_sql = $$WITH
+    vehicles_sql = $$WITH
         customer_data AS ($$ || customers_sql || $$ )
         SELECT id, x AS start_x, y AS start_y,
             opentime AS start_open, closetime AS start_close, $$ ||
-            capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number 
+            capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number, $$ || speed || $$ AS speed
             FROM customer_data WHERE id = 0 LIMIT 1
         $$;
 
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
-        pick_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || first_sql || $$',  '$$ || second_sql || $$',  $$ || max_cycles || $$ )),
+        pick_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  $$ || max_cycles || $$ )),
         picks AS (SELECT pick_deliver.*, pindex, dindex, id AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 1)),
         delivers AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
         depots AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND order_id = 0)),
