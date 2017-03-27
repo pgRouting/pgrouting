@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS jet_stops;
+DROP TABLE IF EXISTS jet_flyers;
 DROP TABLE IF EXISTS jet_orders;
+DROP TABLE IF EXISTS jet_airplane;
 
 CREATE TABLE jet_stops (
     id SERIAL,
@@ -27,31 +29,61 @@ x = ST_X(ST_Transform(ST_SetSRID(ST_point(longitude, latitude)::geometry,4326),2
 y = ST_Y(ST_Transform(ST_SetSRID(ST_point(longitude, longitude)::geometry,4326),2163));
 
 
--- Listing  Create jet_customers table --page 190
--- create dummy customers for pick and deliver
-CREATE TABLE jet_orders AS
-WITH
-stops AS (select * from stops)
-,
-pairs AS (
+CREATE TABLE jet_flyers AS
     SELECT
-    ((row_number() OVER())::integer * 2 - 1) AS pid,
-    ((row_number() OVER())::integer * 2) AS did,
-    s1.iata_faa AS d_airport,
-    s2.iata_faa AS a_airport,
-    s1.x AS p_x, s1.y AS p_y, s2.x AS d_x, s2.y AS d_y,
-    (1 + mod(s1.id,5))::integer AS num_passengers,
-    mod(s1.id,7)*60 AS openTime,
-    (
-        (mod(s1.id,7) + 2) * 60
-    )::float AS closeTime,
-    0 AS serviceTime
+    row_number() over() AS id,
+    s1.iata_faa  AS from_airport,
+    s2.iata_faa  AS to_airport,
+    (1 + mod(s1.id, 5))::integer AS num_passengers,
+    -- the passengers dont want to depart before this time
+    mod(s1.id,7)*60 AS departureFromTime,
+    -- the passengers dont want to arrive after this time
+    (mod(s1.id,7) + 4) * 60 AS arrivalToTime
     FROM
     (SELECT * FROM jet_stops) AS s1 ,
     (SELECT * FROM jet_stops) AS s2
-    WHERE s1.id <> s2.id
-)
-SELECT * FROM pairs;
+    WHERE s1.id <> s2.id;
+
+
+-- Listing Create jet_orders table to be used in pgr_pickDeliverEuclidean
+CREATE TABLE jet_orders AS
+    SELECT
+    id,
+    num_passengers AS demand,
+    (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS pick_x,
+    (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS pick_y,
+    
+    departureFromTime AS pick_open,
+    arrivalToTime AS pick_close,
+
+    (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS deliver_x,
+    (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS deliver_y,
+
+    departureFromTime AS deliver_open,
+    arrivalToTime AS deliver_close
+
+    FROM jet_flyers;
+
+ 
+--
+CREATE TABLE jet_airplane AS
+SELECT
+    1 AS id,
+    0 AS capacity,
+    272 AS speed, -- mts/min
+    20 as "number",
+    x AS start_x, y AS start_y,
+    0 AS start_open,
+    100000 AS start_close,
+    0 AS start_service
+    FROM jet_stops
+    WHERE iata_faa = 'TEB';
+
+SELECT * FROM _pgr_pickDeliverEuclidean(
+    $$ SELECT * FROM jet_orders $$,
+    $$ SELECT * FROM jet_airplane $$
+);
+
 
 /*
 SELECT
