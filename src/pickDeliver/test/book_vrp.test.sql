@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS jet_customers;
+
+
+/*
 CREATE TABLE trucks(id integer primary key, truck_name varchar(75), capacity integer );
 INSERT INTO trucks(id, truck_name, capacity)
 VALUES (1, 'Hardy Truck', 800),
@@ -17,7 +21,7 @@ VALUES (1, 'Bristol, CT', -72.8924, 41.66892),
      (10, 'Torrington, CT',  -73.12131, 41.79984),
      (11, 'Vernon, CT', -72.49305, 41.82647),
      (12, 'Wallingford, CT', -72.8092, 41.4835);
-     
+*/   
      
 CREATE TABLE jet_customers (
     airport character varying,
@@ -33,7 +37,7 @@ CREATE TABLE jet_customers (
 );
 
 
-
+/*
 --
 -- TOC entry 290 (class 1259 OID 6616043)
 -- Name: vrp1_cost; Type: TABLE; Schema: public; Owner: postgres
@@ -48,7 +52,6 @@ CREATE TABLE vrp1_cost (
 );
 
 
-ALTER TABLE vrp1_cost OWNER TO postgres;
 
 --
 -- TOC entry 291 (class 1259 OID 6616046)
@@ -80,7 +83,6 @@ CREATE TABLE vrp1_orders (
 );
 
 
-ALTER TABLE vrp1_orders OWNER TO postgres;
 
 --
 -- TOC entry 289 (class 1259 OID 6616034)
@@ -114,7 +116,7 @@ CREATE TABLE vrpdtw_beer (
     pindex integer,
     dindex integer
 );
-
+*/
 
 --
 
@@ -192,7 +194,7 @@ INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, 
 INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('ABE', 72, 2035310.7411768832, -176076.78362264115, 71, 0, -1, 4355, 6904355, 450000);
 INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, closetime, servicetime) VALUES ('TEB', 0, 2138409.5568088419, -119451.50568778868, 0, 0, 0, 0, 7200000, 0);
 
-
+/*
 --
 -- TOC entry 4292 (class 0 OID 6616043)
 -- Dependencies: 290
@@ -594,4 +596,69 @@ INSERT INTO vrpdtw_beer (rid, id, x, y, opentime, closetime, servicetime, demand
 INSERT INTO vrpdtw_beer (rid, id, x, y, opentime, closetime, servicetime, demand, pindex, dindex) VALUES (10, 20, 2179348.5807632855, 7268.5531586333609, 0, 780, 0, -50, 19, 0);
 INSERT INTO vrpdtw_beer (rid, id, x, y, opentime, closetime, servicetime, demand, pindex, dindex) VALUES (11, 22, 2226924.5635206043, 27207.476487862386, 0, 780, 0, -200, 21, 0);
 INSERT INTO vrpdtw_beer (rid, id, x, y, opentime, closetime, servicetime, demand, pindex, dindex) VALUES (12, 24, 2214670.8347013257, -18087.138344661518, 0, 780, 0, -50, 23, 0);
-    
+*/    
+
+/*
+SELECT * FROM pgr_gsoc_vrppdtw(
+    $$ SELECT * FROM jet_customers $$,
+    2, 5);
+
+SELECT * FROM _pgr_pickDeliver(
+    $$ SELECT * FROM jet_customers $$,
+    2, 5);
+
+SELECT * FROM _pgr_pickDeliver(
+    $$ SELECT * FROM jet_customers $$,
+    max_vehicles := 2, capacity :=5, speed := 1);
+*/
+
+/*
+-- converting data to use euclidean
+UPDATE jet_customers SET opentime = 9*60 WHERE opentime = 3448;
+UPDATE jet_customers SET opentime = 9.5*60 WHERE opentime = 3463;
+UPDATE jet_customers SET opentime = 10*60 WHERE opentime = 3576;
+UPDATE jet_customers SET opentime = 10.5*60 WHERE opentime = 3624;
+UPDATE jet_customers SET opentime = 11*60 WHERE opentime = 4265;
+UPDATE jet_customers SET opentime = 11.5*60 WHERE opentime = 4355;
+
+UPDATE jet_customers SET closetime = 11*60 WHERE closetime = 2853448;
+UPDATE jet_customers SET closetime = 11.5*60 WHERE closetime = 2853463;
+UPDATE jet_customers SET closetime = 12*60 WHERE closetime = 2853576;
+UPDATE jet_customers SET closetime = 12.5*60 WHERE closetime = 2853624;
+UPDATE jet_customers SET closetime = 13*60 WHERE closetime = 2854265;
+UPDATE jet_customers SET closetime = 13.5*60 WHERE closetime = 2854355;
+UPDATE jet_customers SET closetime = 14*60 WHERE closetime = 6903448;
+UPDATE jet_customers SET closetime = 14.5*60 WHERE closetime = 6903463;
+UPDATE jet_customers SET closetime = 15*60 WHERE closetime = 6903576;
+UPDATE jet_customers SET closetime = 15.5*60 WHERE closetime = 6903624;
+UPDATE jet_customers SET closetime = 16*60 WHERE closetime = 6904265;
+UPDATE jet_customers SET closetime = 16.5*60 WHERE closetime = 6904355;
+
+UPDATE jet_customers SET servicetime = 2 WHERE servicetime != 0;
+
+WITH
+customer_data AS (SELECT * FROM jet_customers),
+pickups AS (
+    SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
+    FROM  customer_data WHERE pindex = 0 AND id != 0
+),
+deliveries AS (
+    SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
+    FROM  customer_data WHERE dindex = 0 AND id != 0
+)
+SELECT * INTO jet_orders FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
+
+WITH
+customer_data AS (select * from jet_customers)
+SELECT id, x AS start_x, y AS start_y,
+opentime AS start_open, closetime AS start_close,
+2 AS capacity,  5  AS number INTO jet_vehicles
+FROM customer_data WHERE id = 0 LIMIT 1;
+
+SELECT *
+FROM _pgr_pickDeliverEuclidean(
+    $$ SELECT * from jet_orders $$,
+    $$ SELECT * FROM jet_vehicles$$
+);
+*/
+
