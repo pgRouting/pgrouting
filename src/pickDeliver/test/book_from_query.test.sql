@@ -108,4 +108,8 @@ LEFT JOIN jet_airplane on (vehicle_id = jet_airplane.id)
 SELECT *, ST_SetSRID(ST_MakeLine(geom, lead(geom) over(order by seq)),2163) AS lines from the_results;
 
 
-SELECT * FROM jet_stops;
+SELECT * FROM jet_orders;
+
+SELECT * FROM jet_trips;
+
+
