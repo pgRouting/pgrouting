@@ -1,10 +1,25 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
 DROP TABLE IF EXISTS jet_stops;
+NOTICE:  table "jet_stops" does not exist, skipping
+DROP TABLE
 DROP TABLE IF EXISTS jet_flyers;
+NOTICE:  table "jet_flyers" does not exist, skipping
+DROP TABLE
 DROP TABLE IF EXISTS jet_orders;
+NOTICE:  table "jet_orders" does not exist, skipping
+DROP TABLE
 DROP TABLE IF EXISTS jet_airplane;
+NOTICE:  table "jet_airplane" does not exist, skipping
+DROP TABLE
 DROP TABLE IF EXISTS jet_trips;
+NOTICE:  table "jet_trips" does not exist, skipping
+DROP TABLE
 DROP TABLE IF EXISTS vrp_solution;
-
+NOTICE:  table "vrp_solution" does not exist, skipping
+DROP TABLE
 CREATE TABLE jet_stops (
     id SERIAL,
     iata_faa TEXT,
@@ -14,8 +29,7 @@ CREATE TABLE jet_stops (
     longitude double precision,
     latitude double precision
 );
-
-
+CREATE TABLE
 INSERT INTO jet_stops (iata_faa, city, longitude, latitude) VALUES
 ('BOS',  'Boston', -71.005180999999993, 42.364347000000002),
 ('BGR',  'Bangor', -68.828138999999993, 44.807443999999997),
@@ -25,32 +39,28 @@ INSERT INTO jet_stops (iata_faa, city, longitude, latitude) VALUES
 ('ABE',  'Lehigh Valley', -75.440805999999995, 40.652082999999998),
 ('BKW',  'Raleigh County Memorial', -81.124200000000002, 37.787300000000002),
 ('BGE',  'Decatur County Industrial', -84.636927799999995, 30.971598100000001);
-
-
+INSERT 0 8
 UPDATE jet_stops SET
 x = ST_X(ST_Transform(ST_SetSRID(ST_point(longitude, latitude)::geometry,4326),2163)),
 y = ST_Y(ST_Transform(ST_SetSRID(ST_point(longitude, longitude)::geometry,4326),2163));
-
-
+UPDATE 8
 CREATE TABLE jet_flyers AS
     SELECT
     row_number() over() AS id,
     s1.iata_faa  AS from_airport,
     s2.iata_faa  AS to_airport,
     (1 + mod(s1.id, 5))::integer AS num_passengers,
-    -- the passengers dont want to depart before this time
+    
     mod(s1.id,7)*60 AS departureFromTime,
-    -- the passengers dont want to arrive after this time
+    
     (mod(s1.id,7) + 4) * 60 AS arrivalToTime
     FROM
-    -- people departing from BOS BGR MIA TEB
+    
     (SELECT * FROM jet_stops WHERE id < 4) AS s1,
-    -- people want to go to MVY ABE BKW BGE
+    
     (SELECT * FROM jet_stops WHERE id >= 4) AS s2
     WHERE s1.id <> s2.id;
-
-
--- Listing Create jet_orders table to be used in pgr_pickDeliverEuclidean
+SELECT 15
 CREATE TABLE jet_orders AS
     SELECT
     id,
@@ -60,26 +70,20 @@ CREATE TABLE jet_orders AS
     
     departureFromTime AS pick_open,
     arrivalToTime AS pick_close,
-
     (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS deliver_x,
     (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS deliver_y,
-
     departureFromTime AS deliver_open,
     arrivalToTime AS deliver_close,
-
     from_airport, to_airport
-
     FROM jet_flyers;
-
- 
---
+SELECT 15
 CREATE TABLE jet_airplane AS
 SELECT
     1 AS id,
-    -- small plane
+    
     5 AS capacity,
-    -- not so fast
-    10000 AS speed, -- mts/min
+    
+    10000 AS speed, 
     20 as "number",
     x AS start_x, y AS start_y,
     0 AS start_open,
@@ -87,14 +91,13 @@ SELECT
     0 AS start_service
     FROM jet_stops
     WHERE iata_faa = 'TEB';
-
+SELECT 1
 CREATE TABLE vrp_solution AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
     $$ SELECT * FROM jet_orders $$,
     $$ SELECT * FROM jet_airplane $$
 );
-
-
+SELECT 47
 CREATE TABLE jet_trips AS
 WITH the_results AS (
 SELECT vrp_solution.*,  from_airport, to_airport,
@@ -106,6 +109,19 @@ FROM vrp_solution LEFT JOIN  jet_orders on (order_id = jet_orders.id)
 LEFT JOIN jet_airplane on (vehicle_id = jet_airplane.id)
 )
 SELECT *, ST_SetSRID(ST_MakeLine(geom, lead(geom) over(order by seq)),2163) AS lines from the_results;
-
-
+SELECT 47
 SELECT * FROM jet_stops;
+ id | iata_faa |           city            |    x    |     y     |  longitude  |  latitude  
+----+----------+---------------------------+---------+-----------+-------------+------------
+  1 | BOS      | Boston                    | 2320738 | -10738754 |  -71.005181 |  42.364347
+  2 | BGR      | Bangor                    | 2383186 | -10578021 |  -68.828139 |  44.807444
+  3 | MIA      | Miami                     | 1981145 | -11314287 |  -80.290556 |   25.79325
+  4 | TEB      | Teterboro NJ              | 2138410 | -10946747 |  -74.060837 |  40.850103
+  5 | MVY      | Martha's Vineyard         | 2387491 | -10710759 |  -70.615278 |  41.391667
+  6 | ABE      | Lehigh Valley             | 2035311 | -11034361 |  -75.440806 |  40.652083
+  7 | BKW      | Raleigh County Memorial   | 1644577 | -11358423 |    -81.1242 |    37.7873
+  8 | BGE      | Decatur County Industrial | 1466239 | -11533361 | -84.6369278 | 30.9715981
+(8 rows)
+
+ROLLBACK;
+ROLLBACK

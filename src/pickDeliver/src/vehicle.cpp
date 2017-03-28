@@ -140,7 +140,10 @@ Vehicle::get_postgres_result(
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data =
                 {vid, m_kind, vehicle_seq,
-                p_stop.original_id(),
+                /*
+                 * The original_id is invalid for stops type 0 and 5
+                 */
+                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.original_id(),
                 p_stop.type(),
                 p_stop.cargo(),
                 p_stop.travel_time(),
