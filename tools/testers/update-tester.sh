@@ -62,8 +62,8 @@ createdb  ___test_update
 psql  ___test_update  <<EOF
 CREATE extension postgis;
 CREATE extension pgrouting with version '$1';
-\i tools/testers/sampledata.sql
 CREATE VIEW theview AS SELECT * from pgr_dijkstra('SELECT * from edge_table', 2, 3);
+CREATE VIEW theview1 AS SELECT * from pgr_maxflow('SELECT * from edge_table', 2, 3);
 SELECT pgr_version();
 alter extension pgrouting update to '$2';
 SELECT pgr_version();
@@ -77,6 +77,7 @@ dropdb   ___test_update
 #------------------------------------
 
 update_test 2.4.1 $CURRENT
+exit 0
 update_test 2.4.0 $CURRENT
 
 #------------------------------------
