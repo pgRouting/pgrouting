@@ -140,7 +140,10 @@ Vehicle::get_postgres_result(
     for (const auto p_stop : m_path) {
         General_vehicle_orders_t data =
                 {vid, m_kind, vehicle_seq,
-                p_stop.original_id(),
+                /*
+                 * The original_id is invalid for stops type 0 and 5
+                 */
+                (p_stop.type() == 0 || p_stop.type() == 5)? -1 : p_stop.original_id(),
                 p_stop.type(),
                 p_stop.cargo(),
                 p_stop.travel_time(),
@@ -496,10 +499,15 @@ std::ostream&
 operator << (std::ostream &log, const Vehicle &v) {
     v.invariant();
     int i(0);
-    log << "\n\n****************** TRUCK " << v.id() << "***************";
+    log << "\n\n****************** TRUCK " << v.id() << "***************\n";
+    log << "id" << v.m_id
+        << "\tkind" <<  v.m_kind
+        << "\t capacity" << v.m_capacity
+        << "\t speed" << v.m_speed << "\n";
+
     for (const auto &path_stop : v.path()) {
-        log << "\nPath_stop" << ++i << "\n";
-        log << path_stop;
+        log << "Path_stop" << ++i << "\n";
+        log << path_stop << "\n";
     }
     return log;
 }

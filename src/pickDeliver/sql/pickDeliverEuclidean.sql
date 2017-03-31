@@ -2,11 +2,11 @@
 File: pickDeliver.sql
 
 Generated with Template by:
-Copyright (c) 2016 pgRouting developers
+Copyright (c) 2015 pgRouting developers
 Mail: project@pgrouting.org
 
 Function's developer: 
-Copyright (c) 2017 Celia Virginia Vergara Castillo
+Copyright (c) 2015 Celia Virginia Vergara Castillo
 Mail: 
 
 ------
@@ -27,10 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ********************************************************************PGR-GNU*/
 
-CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
+CREATE OR REPLACE FUNCTION _pgr_pickDeliverEuclidean (
     orders_sql TEXT,
     vehicles_sql TEXT,
-    matrix_cell_sql TEXT,
     max_cycles INTEGER DEFAULT 10, 
 
     OUT seq INTEGER,
@@ -47,8 +46,7 @@ CREATE OR REPLACE FUNCTION _pgr_pickDeliver(
     OUT departure_time FLOAT
 )
 
-RETURNS SETOF RECORD AS
- '$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliver'
-LANGUAGE c IMMUTABLE STRICT;
-
+  RETURNS SETOF RECORD AS
+ '$libdir/${PGROUTING_LIBRARY_NAME}', 'pickDeliverEuclidean'
+    LANGUAGE c IMMUTABLE STRICT;
 

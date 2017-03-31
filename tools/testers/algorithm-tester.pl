@@ -280,7 +280,7 @@ sub process_single_test{
 
     my $level = "NOTICE";
     $level = "WARNING" if $ignore;
-    $level = "DEBUG1" if $DEBUG1;
+    $level = "DEBUG3" if $DEBUG1;
 
 
     if ($DOCUMENTATION) {

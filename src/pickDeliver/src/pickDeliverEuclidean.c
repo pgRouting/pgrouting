@@ -36,26 +36,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/orders_input.h"
 #include "./../../common/src/vehicles_input.h"
-#include "./../../common/src/matrixRows_input.h"
 
-
-#if 0
-#include "./pickDeliver_driver.h"
-#endif
+#include "./pickDeliverEuclidean_driver.h"
 
 PGDLLEXPORT Datum
-pickDeliver(PG_FUNCTION_ARGS);
-PG_FUNCTION_INFO_V1(pickDeliver);
+pickDeliverEuclidean(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(pickDeliverEuclidean);
 
 
-/*********************************************************************/
-/*                MODIFY AS NEEDED                                   */
 static
 void
 process(
         char* pd_orders_sql,
         char* vehicles_sql,
-        char* matrix_sql,
         int max_cycles,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
@@ -71,18 +64,43 @@ process(
     PGR_DBG("Load orders");
     PickDeliveryOrders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
-    pgr_get_pd_orders_with_id(pd_orders_sql,
+    pgr_get_pd_orders(pd_orders_sql,
            &pd_orders_arr, &total_pd_orders);
 
     PGR_DBG("Load vehicles");
     Vehicle_t *vehicles_arr = NULL;
     size_t total_vehicles = 0;
-    pgr_get_vehicles_with_id(vehicles_sql,
+    pgr_get_vehicles(vehicles_sql,
            &vehicles_arr, &total_vehicles);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
+    for (size_t i = 0; i < total_pd_orders; i++) {
+        PGR_DBG("%ld %f pick %f %f %ld - %f %f %f deliver %f %f %ld - %f %f %f ",
+                pd_orders_arr[i].id,
+                pd_orders_arr[i].demand,
+
+                pd_orders_arr[i].pick_x,
+                pd_orders_arr[i].pick_y,
+                pd_orders_arr[i].pick_node_id,
+
+                pd_orders_arr[i].pick_open_t,
+                pd_orders_arr[i].pick_close_t,
+                pd_orders_arr[i].pick_service_t,
+
+                pd_orders_arr[i].deliver_x,
+                pd_orders_arr[i].deliver_y,
+                pd_orders_arr[i].deliver_node_id,
+
+                pd_orders_arr[i].deliver_open_t,
+                pd_orders_arr[i].deliver_close_t,
+                pd_orders_arr[i].deliver_service_t
+               );
+    }
+
+
+
     for (size_t i = 0; i < total_vehicles; i++) {
-        PGR_DBG("%ld %f %f / %f %f %f %f %f / %f %f %f %f %f / %ld ",
+        PGR_DBG("%ld %f %f , start %f %f %f %f %f end %f %f %f %f %f number %ld ",
                vehicles_arr[i].id,
                vehicles_arr[i].capacity,
                vehicles_arr[i].speed,
@@ -103,30 +121,21 @@ process(
                );
     }
 
-    PGR_DBG("load matrix");
-    Matrix_cell_t *matrix_cells_arr = NULL;
-    size_t total_cells = 0;
-    pgr_get_matrixRows(matrix_sql, &matrix_cells_arr, &total_cells);
-
-
-    if (total_pd_orders == 0 || total_vehicles == 0 || total_cells == 0) {
+    if (total_pd_orders == 0 || total_vehicles == 0) {
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
     PGR_DBG("Total %ld orders in query:", total_pd_orders);
-    PGR_DBG("Total %ld vehicles in query:", total_vehicles);
-    PGR_DBG("Total %ld matrix cells in query:", total_cells);
-
 
     PGR_DBG("Starting processing");
             clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
-#if 0
-    do_pgr_pickDeliver(
+#if 1
+    do_pgr_pickDeliverEuclidean(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
             max_cycles,
@@ -138,8 +147,7 @@ process(
             &notice_msg,
             &err_msg);
 #endif
-
-    time_msg("_pgr_ipickDeliver", start_t, clock());
+    time_msg("_pgr_pickDeliverEuclidean", start_t, clock());
 
     if (err_msg && (*result_tuples)) {
         pfree(*result_tuples);
@@ -154,7 +162,6 @@ process(
     if (err_msg) pfree(err_msg);
     if (pd_orders_arr) pfree(pd_orders_arr);
     if (vehicles_arr) pfree(vehicles_arr);
-    if (matrix_cells_arr) pfree(matrix_cells_arr);
 
     pgr_SPI_finish();
 
@@ -163,7 +170,7 @@ process(
 /******************************************************************************/
 
 PGDLLEXPORT Datum
-pickDeliver(PG_FUNCTION_ARGS) {
+pickDeliverEuclidean(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
     TupleDesc            tuple_desc;
 
@@ -194,8 +201,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                text_to_cstring(PG_GETARG_TEXT_P(2)),
-                PG_GETARG_INT32(3),
+                PG_GETARG_INT32(2),
                 &result_tuples,
                 &result_count);
 
@@ -260,7 +266,7 @@ pickDeliver(PG_FUNCTION_ARGS) {
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
         values[3] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[4] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[5] = Int32GetDatum(result_tuples[call_cntr].stop_type);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].stop_type);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cargo);
         values[7] = Float8GetDatum(result_tuples[call_cntr].travelTime);
         values[8] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);

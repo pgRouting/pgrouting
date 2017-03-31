@@ -66,6 +66,13 @@ Pgr_pickDeliver::optimize(const Solution init_solution) {
 
 void
 Pgr_pickDeliver::solve() {
+    solutions.push_back(Initial_solution(4, m_orders.size()));
+#if 1
+    // optimization pending
+    solutions.push_back(Optimize(solutions.back()));
+#endif
+
+#if 0 
     auto initial_sols = solutions;
 
     int j = 6;
@@ -74,19 +81,22 @@ Pgr_pickDeliver::solve() {
         log << "solution " << i << "\n" << initial_sols.back().tau();
     }
     log << "one order per truck duration = " << initial_sols[0].duration();
+#endif
 
     /*
      * Sorting solutions: the best is at the back
      */
-    pgassert(!initial_sols.empty());
-    std::sort(initial_sols.begin(), initial_sols.end(), []
+    pgassert(!solutions.empty());
+    std::sort(solutions.begin(), solutions.end(), []
             (const Solution &lhs, const Solution &rhs) -> bool {
             return rhs < lhs;
             });
 
+#if 0
     solutions.push_back(Optimize(initial_sols.back()));
-
     pgassert(solutions.size() == 1);
+#endif
+
     log << "best solution duration = " << solutions.back().duration();
 }
 
@@ -134,8 +144,7 @@ Pgr_pickDeliver::get_postgres_result() const {
 Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
-        size_t p_max_cycles,
-        std::string &err) 
+        size_t p_max_cycles) 
 {
     PD_problem(this);
     pgassert(!pd_orders.empty());
@@ -145,26 +154,34 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_max_cycles = p_max_cycles;
     pgassert(m_max_cycles > 0);
     std::ostringstream tmplog;
-    err = "";
 
     log << "\n *** Constructor of problem ***\n";
 
+    log << "\n Building fleet";
     size_t node_id(0);
     if (!m_trucks.build_fleet(vehicles, node_id)
             || !m_trucks.is_fleet_ok()) {
         error << m_trucks.get_error();
-        err = error.str();
         return;
     };
 
-#if 1
-    m_speed = m_trucks.m_trucks[0].speed();
-#endif
+    log << " ---> OK\n";
 
 #if 0
-    PD_Orders m_orders;
+    for (const auto t : m_trucks) {
+        log << t << "\n";
+    }
 #endif
+
+
+    log << "\n Building orders";
     m_orders.build_orders(pd_orders, node_id);
+
+#if 0
+    for (const auto &o : m_orders) {
+        log << o << "\n";
+    }
+#endif
 
     /*
      * check the (S, P, D, E) order on all vehicles
@@ -175,7 +192,7 @@ Pgr_pickDeliver::Pgr_pickDeliver(
             error << "The order "
                 << o.pickup().original_id()
                 << " is not feasible on any truck";
-            err = error.str();
+            log << "\n" << o;
             return;
         }
     }
