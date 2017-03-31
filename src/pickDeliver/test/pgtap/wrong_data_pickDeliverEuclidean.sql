@@ -27,7 +27,7 @@ SELECT throws_ok('q2',
     $$Column 'capacity' not Found$$,
     'Should fail: depot is not included in data');
 
-UPDATE orders SET deliver_close = 500 WHERE id =11;
+UPDATE orders SET d_close = 500 WHERE id =11;
 
 PREPARE q5 AS
 SELECT * FROM _pgr_pickDeliverEuclidean(
@@ -40,7 +40,7 @@ SELECT throws_ok('q5',
     'The order 11 is not feasible on any truck',
     'Should fail: Closing time of depot is too small and (pick,deliver) pair generates TWV');
 
-UPDATE orders SET deliver_close = 967 WHERE id =11;
+UPDATE orders SET d_close = 967 WHERE id =11;
 
 --------------------------------------
 -- testing wrong data on DEPOT 
@@ -50,7 +50,7 @@ UPDATE vehicles SET start_open = 3000;
 
 SELECT throws_ok('q5',
     'XX000',
-    'Illegal values found on vehcile',
+    'Illegal values found on vehicle',
     'Should fail: Opens(DEPOT) > closes(DEPOT)');
 
 UPDATE vehicles SET start_open = 0 WHERE id =0;
@@ -60,14 +60,14 @@ UPDATE vehicles SET start_open = 0;
 --------------------------------------
 -- testing wrong data on pickup 
 --------------------------------------
-UPDATE orders SET pick_open = 600 WHERE id =11;
+UPDATE orders SET p_open = 600 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',
     'The order 11 is not feasible on any truck',
     'Should fail: Opens(PICKUP) > closes(PICKUP)');
 
-UPDATE orders SET pick_open = 448, demand= -20 WHERE id =11;
+UPDATE orders SET p_open = 448, demand= -20 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',
@@ -79,7 +79,7 @@ UPDATE orders SET demand= 10 WHERE id =11;
 --------------------------------------
 -- testing wrong data on delivery 
 --------------------------------------
-UPDATE orders SET deliver_open = 1000 WHERE id =11;
+UPDATE orders SET d_open = 1000 WHERE id =11;
 
 SELECT throws_ok('q5',
     'XX000',

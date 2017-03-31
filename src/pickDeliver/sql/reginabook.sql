@@ -56,11 +56,11 @@ BEGIN
     orders_sql = $$WITH
         customer_data AS ($$ || customers_sql || $$ ),
         pickups AS (
-            SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
+            SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
             FROM  customer_data WHERE pindex = 0 AND id != 0
         ),
         deliveries AS (
-            SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
+            SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
             FROM  customer_data WHERE dindex = 0 AND id != 0
         )
         SELECT * FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id
@@ -76,13 +76,13 @@ BEGIN
 
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
-        pick_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  $$ || max_cycles || $$ )),
-        picks AS (SELECT pick_deliver.*, pindex, dindex, id AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 1)),
-        delivers AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
-        depots AS (SELECT pick_deliver.*, pindex, dindex, dindex AS the_id FROM pick_deliver JOIN customer_data ON (id = order_id AND order_id = 0)),
+        p_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  $$ || max_cycles || $$ )),
+        picks AS (SELECT p_deliver.*, pindex, dindex, id AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 1)),
+        delivers AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
+        depots AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND order_id = 0)),
         the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
 
-        SELECT a.seq, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
+        SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
         FROM (SELECT * FROM the_union) AS a ORDER BY a.seq
         $$;
     RETURN QUERY EXECUTE final_sql;

@@ -2,6 +2,7 @@
 
 SELECT plan(122);
 
+SELECT todo_start('not ready yet');
 
 /* A call looks like this
 SELECT * INTO pickDeliverResults FROM _pgr_pickdeliver(
@@ -384,6 +385,7 @@ SELECT test_anyNumerical_matrix('_pgr_pickdeliver',
     ARRAY['start_vid', 'end_vid', 'agg_cost'],
     'agg_cost');
 
+SELECT todo_end();
 
 SELECT finish();
 ROLLBACK;

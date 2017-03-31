@@ -92,11 +92,11 @@ INSERT INTO jet_customers (airport, id, x, y, pindex, dindex, demand, opentime, 
 WITH                      
 customer_data AS (SELECT * FROM jet_customers),
 pickups AS (
-    SELECT id, demand, x as pick_x, y as pick_y, opentime as pick_open, closetime as pick_close, servicetime as pick_service
+    SELECT id, demand, x as p_x, y as p_y, opentime as p_open, closetime as p_close, servicetime as p_service
     FROM  customer_data WHERE pindex = 0 AND id != 0
 ),
 deliveries AS (
-    SELECT pindex AS id, x as deliver_x, y as deliver_y, opentime as deliver_open, closetime as deliver_close, servicetime as deliver_service
+    SELECT pindex AS id, x as d_x, y as d_y, opentime as d_open, closetime as d_close, servicetime as d_service
     FROM  customer_data WHERE dindex = 0 AND id != 0
 )
 SELECT * INTO jet_orders FROM pickups JOIN deliveries USING(id) ORDER BY pickups.id;
