@@ -6,16 +6,16 @@ DROP TABLE IF EXISTS dist_matrix CASCADE;
 CREATE TABLE orders (
       id BIGINT PRIMARY KEY, 
       demand FLOAT, 
-      pick_x FLOAT, 
-      pick_y FLOAT, 
-      pick_open FLOAT, 
-      pick_close FLOAT, 
-      pick_service FLOAT, 
-      deliver_x FLOAT, 
-      deliver_y FLOAT, 
-      deliver_open FLOAT, 
-      deliver_close FLOAT, 
-      deliver_service FLOAT
+      p_x FLOAT, 
+      p_y FLOAT, 
+      p_open FLOAT, 
+      p_close FLOAT, 
+      p_service FLOAT, 
+      d_x FLOAT, 
+      d_y FLOAT, 
+      d_open FLOAT, 
+      d_close FLOAT, 
+      d_service FLOAT
 );
 
 CREATE TABLE vehicles (
@@ -29,8 +29,8 @@ CREATE TABLE vehicles (
 );
 
 INSERT INTO orders (id,  demand, 
-pick_x,  pick_y ,  pick_open,  pick_close,  pick_service, 
-deliver_x,  deliver_y ,  deliver_open,  deliver_close,  deliver_service)
+p_x,  p_y ,  p_open,  p_close,  p_service, 
+d_x,  d_y ,  d_open,  d_close,  d_service)
 VALUES
 (3,  10, 42, 66,   65,  146, 90, 45, 65, 997, 1068, 90), 
 (5,  10, 42, 65,   15,   67, 90, 40, 66, 170,  225, 90), 

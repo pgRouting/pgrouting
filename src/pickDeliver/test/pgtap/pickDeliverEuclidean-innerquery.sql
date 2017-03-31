@@ -165,67 +165,67 @@ $BODY$ LANGUAGE plpgsql;
 
 SELECT test_anyInteger_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'id');
 
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
     'demand');
 
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'pick_x');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'p_x');
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'pick_y');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'p_y');
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'pick_open');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'p_open');
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'pick_close');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'p_close');
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'pick_service');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'p_service');
 
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'deliver_x');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'd_x');
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'deliver_y');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'd_y');
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'deliver_open');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'd_open');
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'deliver_close');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'd_close');
 SELECT test_anynumerical_orders('_pgr_pickdelivereuclidean',
     ARRAY['id', 'demand',
-    'pick_x', 'pick_y', 'pick_open', 'pick_close', 'pick_service',
-    'deliver_x', 'deliver_y', 'deliver_open', 'deliver_close', 'deliver_service'],
-    'deliver_service');
+    'p_x', 'p_y', 'p_open', 'p_close', 'p_service',
+    'd_x', 'd_y', 'd_open', 'd_close', 'd_service'],
+    'd_service');
 
 /* Currently this are not used TODO add when they are used
     'end_x', 'end_y', 'end_open', 'end_close', 'end_service'],

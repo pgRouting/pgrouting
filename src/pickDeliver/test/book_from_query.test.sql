@@ -55,17 +55,17 @@ CREATE TABLE jet_orders AS
     SELECT
     id,
     num_passengers AS demand,
-    (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS pick_x,
-    (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS pick_y,
+    (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS p_x,
+    (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.from_airport) AS p_y,
     
-    departureFromTime AS pick_open,
-    arrivalToTime AS pick_close,
+    departureFromTime AS p_open,
+    arrivalToTime AS p_close,
 
-    (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS deliver_x,
-    (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS deliver_y,
+    (SELECT x FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS d_x,
+    (SELECT y FROM jet_stops WHERE iata_faa = jet_flyers.to_airport) AS d_y,
 
-    departureFromTime AS deliver_open,
-    arrivalToTime AS deliver_close,
+    departureFromTime AS d_open,
+    arrivalToTime AS d_close,
 
     from_airport, to_airport
 
@@ -98,8 +98,8 @@ SELECT * FROM _pgr_pickDeliverEuclidean(
 CREATE TABLE jet_trips AS
 WITH the_results AS (
 SELECT vrp_solution.*,  from_airport, to_airport,
-CASE WHEN stop_type = 1 THEN ST_POINT(pick_x, pick_y) 
-        WHEN stop_type = 2 THEN ST_POINT(deliver_x, deliver_y)
+CASE WHEN stop_type = 1 THEN ST_POINT(p_x, p_y) 
+        WHEN stop_type = 2 THEN ST_POINT(d_x, d_y)
         WHEN stop_type = 0 THEN  ST_POINT(start_x, start_y)
     END AS geom
 FROM vrp_solution LEFT JOIN  jet_orders on (order_id = jet_orders.id)
