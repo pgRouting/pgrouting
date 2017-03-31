@@ -98,7 +98,7 @@ DECLARE
 BEGIN
     RETURN QUERY SELECT '2.5.0'::varchar AS version, 
     					'v2.5.0-dev'::varchar AS tag, 
-                        '69d5a988f'::varchar AS hash, 
+                        'd0763e285'::varchar AS hash, 
                         'fix/update-scripts'::varchar AS branch, 
                         '1.54.0'::varchar AS boost;
 END;
