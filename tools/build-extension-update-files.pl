@@ -51,38 +51,32 @@ use vars qw/*name *dir *prune/;
 
 
 sub Usage {
-    die "Usage:\nFrom the root of the repository:
-    build-extension-update-files <version> [<pgrouting-src-dir>]\n";
+    die "Usage: build-extension-update-files <version> [<pgrouting-src-dir>]\n";
 }
 
-# Get the commandline options
+print "Building the updating files\n";
+# get the commandline options
 # these are typically set by cmake
 my $version = shift @ARGV || Usage();
 my $src_dir = shift @ARGV || '.';
 
-my $input_directory = 'tools/sigs';
-my $output_directory = 'tools/sql-update-scripts';
-
-die "ERROR: Failed to find directory: $input_directory\n" unless -d $input_directory;
-die "ERROR: Failed to find directory: $output_directory\n" unless -d $output_directory;
-
-my $sig_dir = "$input_directory/" if -d $input_directory;
-
-print "Building the updating files\n";
-
 # define the input file names and verify they exist.
-my $curr_sig_file = "$input_directory/pgrouting--$version.sig";
-my $curr_sql_file = "$output_directory/pgrouting--$version.sql";
-
-die "ERROR: Failed to find '$curr_sig_file'\n" unless -f $curr_sig_file;
-die "ERROR: Failed to find '$curr_sql_file'\n" unless -f $curr_sql_file;
-
-# Read and parse the current version signature file
-my $curr_signature = read_sig_file($curr_sig_file);
+my $SIG = "lib/pgrouting--$version.sig";
+my $SQL = "lib/pgrouting--$version.sql";
+die "ERROR: Failed to find '$SIG'\n" unless -f $SIG;
+die "ERROR: Failed to find '$SQL'\n" unless -f $SQL;
 
 # collect a list of the old version .sig files
 my @old_files = ();
 
+# read and parse the current version .sig file
+my $new_hash = read_sig_file( $SIG );
+
+# assume we are in the build dir, but we might be up one level
+# if we are somewhere else we will fail to find the files
+my $sig_dir = 'tools/sigs/';
+$sig_dir = '../tools/sigs/' if  -d '../tools/sigs';
+$sig_dir = $src_dir . '/tools/sigs/' if  -d $src_dir . '/tools/sigs';
 
 # search for the old version .sig files in $sig_dir
 # and save the /path/file.sig into @old_files
@@ -94,7 +88,7 @@ for my $old_file ( sort @old_files ) {
     # read and parse the .sig
     my $old_hash = read_sig_file( $old_file );
     # and generate and write the update script file
-    generate_upgrade_script( $curr_signature, $old_hash);
+    generate_upgrade_script( $new_hash, $old_hash);
 }
 
 exit 0;
@@ -226,8 +220,8 @@ sub write_script {
     my ($o_ver, $n_ver, $types, $cmds) = @_;
 
     # open the extension update script or die if we can't
-    open(OUT, ">$output_directory/pgrouting--$o_ver--$n_ver.sql")
-        || die "ERROR: failed to create '$output_directory/pgrouting-pgrouting--$o_ver--$n_ver.sql' : $!\n";
+    open(OUT, ">lib/pgrouting--$o_ver--$n_ver.sql")
+        || die "ERROR: failed to create 'lib/pgrouting-pgrouting--$o_ver--$n_ver.sql' : $!\n";
 
     # write out the header and the commands to clean up the old extension
     print OUT <<EOF;
@@ -244,8 +238,8 @@ EOF
 
     # open the new extension.sql file
     # and load it into an array
-    open(IN, $curr_sql_file) ||
-        die "ERROR: Failed to find '$curr_sql_file' : $!\n";
+    open(IN, $SQL) ||
+        die "ERROR: Failed to find '$SQL' : $!\n";
     my @file = <IN>;
     close(IN);
 
