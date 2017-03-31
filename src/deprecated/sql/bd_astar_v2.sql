@@ -27,30 +27,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 -- V2 signature
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vid INTEGER,
-    end_vid INTEGER,
+    sql TEXT,
+    source_vid INTEGER,
+    target_vid INTEGER,
     directed BOOLEAN,
-    has_rcost BOOLEAN)
+    has_reverse_cost BOOLEAN)
 RETURNS SETOF pgr_costresult AS
 $BODY$
 DECLARE
 has_reverse BOOLEAN;
-sql TEXT;
+new_sql TEXT;
 BEGIN
     RAISE NOTICE 'Deprecated Signature of pgr_bdAstar';
-    has_reverse =_pgr_parameter_check('astar', edges_sql, false);
-    sql = edges_sql;
+    has_reverse =_pgr_parameter_check('astar', $1, false);
+    new_sql = $1;
     IF (has_reverse != has_rcost) THEN
         IF (has_reverse) THEN
-            sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
+            new_sql = 'SELECT id, source, target, cost FROM (' || $1 || ') a';
         ELSE
             raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
         END IF;
     END IF;
 
     RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
-    FROM _pgr_bdAstar(sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed);
+    FROM _pgr_bdAstar(new_sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed);
   END
 $BODY$
 LANGUAGE plpgsql VOLATILE

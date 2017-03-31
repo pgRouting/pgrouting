@@ -257,8 +257,8 @@ DECLARE
 BEGIN
     RETURN QUERY SELECT '2.5.0'::varchar AS version, 
     					'v2.5.0-dev'::varchar AS tag, 
-                        'f5c50e20b'::varchar AS hash, 
-                        'pickDeliver/nameChange'::varchar AS branch, 
+                        '69d5a988f'::varchar AS hash, 
+                        'fix/update-scripts'::varchar AS branch, 
                         '1.54.0'::varchar AS boost;
 END;
 $BODY$
@@ -2335,9 +2335,9 @@ CREATE OR REPLACE FUNCTION pgr_pointsAsPolygon(query varchar, alpha float8 DEFAU
 
 
 CREATE OR REPLACE FUNCTION _pgr_bdAstar(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor FLOAT DEFAULT 1.0,
@@ -2362,9 +2362,9 @@ LANGUAGE C IMMUTABLE STRICT;
 
 -- V3
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
+    TEXT,
+    BIGINT,
+    BIGINT,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
@@ -2383,10 +2383,10 @@ ROWS 1000;
 
 -- V3
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN,
+    TEXT,
+    BIGINT,
+    BIGINT,
+    BOOLEAN,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
     epsilon NUMERIC DEFAULT 1.0,
@@ -2407,9 +2407,9 @@ ROWS 1000;
 
 -- one to many
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vids ANYARRAY,
+    TEXT,
+    BIGINT,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
@@ -2432,9 +2432,9 @@ ROWS 1000;
 
 -- many to one
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vid BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
@@ -2457,9 +2457,9 @@ ROWS 1000;
 
 -- many to many
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
@@ -2494,7 +2494,7 @@ COMMENT ON FUNCTION pgr_bdAstar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, NUME
 
 -- one to one
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
-    edges_sql TEXT,
+    TEXT,
     BIGINT,
     BIGINT,
     directed BOOLEAN DEFAULT true,
@@ -2515,9 +2515,9 @@ ROWS 1000;
 
 -- one to many
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
-    edges_sql TEXT,
+    TEXT,
     BIGINT,
-    end_vids ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
@@ -2536,8 +2536,8 @@ ROWS 1000;
 
 -- many to one
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
+    TEXT,
+    ANYARRAY,
     BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
@@ -2557,9 +2557,9 @@ ROWS 1000;
 
 -- many to many
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
@@ -3218,9 +3218,9 @@ CREATE OR REPLACE FUNCTION _pgr_maxflow(
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    edges_sql TEXT,
-    source BIGINT,
-    target BIGINT,
+    TEXT,
+    BIGINT,
+    BIGINT,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3238,9 +3238,9 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    edges_sql TEXT,
-    source  BIGINT,
-    targets ANYARRAY,
+    TEXT,
+    BIGINT,
+    ANYARRAY,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3258,9 +3258,9 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    edges_sql TEXT,
-    sources ANYARRAY,
-    target  BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3277,9 +3277,9 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 
 CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
-    edges_sql TEXT,
-    sources  ANYARRAY,
-    targets  ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3302,9 +3302,9 @@ CREATE OR REPLACE FUNCTION pgr_edmondsKarp(
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    edges_sql TEXT,
-    source BIGINT,
-    target BIGINT,
+    TEXT,
+    BIGINT,
+    BIGINT,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3322,9 +3322,9 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    edges_sql TEXT,
-    source  BIGINT,
-    targets ANYARRAY,
+    TEXT,
+    BIGINT,
+    ANYARRAY,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3342,9 +3342,9 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    edges_sql TEXT,
-    sources ANYARRAY,
-    target  BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3361,9 +3361,9 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    edges_sql TEXT,
-    sources  ANYARRAY,
-    targets  ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3386,9 +3386,9 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
-    edges_sql TEXT,
-    source BIGINT,
-    target BIGINT,
+    TEXT,
+    BIGINT,
+    BIGINT,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3406,9 +3406,9 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
 
 
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
-    edges_sql TEXT,
-    source  BIGINT,
-    targets ANYARRAY,
+    TEXT,
+    BIGINT,
+    ANYARRAY,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3426,9 +3426,9 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
 
 
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
-    edges_sql TEXT,
-    sources ANYARRAY,
-    target  BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3445,9 +3445,9 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
 
 
 CREATE OR REPLACE FUNCTION pgr_pushRelabel(
-    edges_sql TEXT,
-    sources  ANYARRAY,
-    targets  ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -3467,11 +3467,12 @@ CREATE OR REPLACE FUNCTION pgr_pushRelabel(
 /***********************************
         MANY TO MANY
 ***********************************/
+edges_sql, source_vertex,  sink_vertex
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    sources ANYARRAY,
-    targets ANYARRAY
+    source_vertices ANYARRAY,
+    target_vertices ANYARRAY
     )
   RETURNS BIGINT AS
   $BODY$
@@ -3486,8 +3487,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    source BIGINT,
-    target BIGINT
+    source_vertex BIGINT,
+    target_vertex BIGINT
     )
   RETURNS BIGINT AS
   $BODY$
@@ -3502,8 +3503,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    source  BIGINT,
-    targets ANYARRAY
+    source_vertex BIGINT,
+    target_vertices ANYARRAY
     )
   RETURNS BIGINT AS
   $BODY$
@@ -3518,8 +3519,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    sources ANYARRAY,
-    target  BIGINT
+    source_vertices ANYARRAY,
+    target_vertex BIGINT
     )
   RETURNS BIGINT AS
   $BODY$
@@ -3552,10 +3553,10 @@ CREATE OR REPLACE FUNCTION pgr_maxCardinalityMatch(
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN start_vids ANYARRAY,
-    IN end_vids ANYARRAY,
-    IN directed BOOLEAN DEFAULT TRUE,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,
     OUT path_seq INTEGER,
@@ -3575,10 +3576,10 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN start_vid bigint,
-    IN end_vid bigint,
-    IN directed BOOLEAN DEFAULT TRUE,
+    TEXT,
+    bigint,
+    bigint,
+    directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,
     OUT path_seq INTEGER,
@@ -3599,10 +3600,10 @@ LANGUAGE sql VOLATILE;
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN start_vid bigint,
-    IN end_vids ANYARRAY,
-    IN directed BOOLEAN DEFAULT TRUE,
+    TEXT,
+    bigint,
+    ANYARRAY,
+    BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,
     OUT path_seq INTEGER,
@@ -3624,9 +3625,9 @@ LANGUAGE sql VOLATILE;
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN start_vids ANYARRAY,
-    IN end_vid BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,

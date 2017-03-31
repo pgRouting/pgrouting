@@ -677,7 +677,7 @@ message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
     #endif(SIG_RESULT)
 
 # create the extension update scripts
-file(GLOB THE_VERSION_UPDATE_FILES "${PGROUTING_SOURCE_DIR}/tools/sql-update-scripts/*.sql")
+file(GLOB THE_VERSION_UPDATE_FILES "${PGROUTING_SOURCE_DIR}/tools/sql-update-scripts/*--*--*.sql")
 
 foreach (f ${THE_VERSION_UPDATE_FILES})
     message("${f}")

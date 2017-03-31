@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    sources ANYARRAY,
-    targets ANYARRAY
+    source_vertices ANYARRAY,
+    sink_vertices ANYARRAY
     )
   RETURNS BIGINT AS
   $BODY$
@@ -43,8 +43,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    source BIGINT,
-    target BIGINT
+    source_vertices BIGINT,
+    sink_vertices BIGINT
     )
   RETURNS BIGINT AS
   $BODY$
@@ -59,8 +59,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    source  BIGINT,
-    targets ANYARRAY
+    source_vertices BIGINT,
+    sink_vertices ANYARRAY
     )
   RETURNS BIGINT AS
   $BODY$
@@ -75,8 +75,8 @@ CREATE OR REPLACE FUNCTION pgr_maxFlow(
 
 CREATE OR REPLACE FUNCTION pgr_maxFlow(
     edges_sql TEXT,
-    sources ANYARRAY,
-    target  BIGINT
+    source_vertices ANYARRAY,
+    sink_vertices BIGINT
     )
   RETURNS BIGINT AS
   $BODY$

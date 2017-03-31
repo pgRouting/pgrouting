@@ -58,14 +58,29 @@ else
     exit 1
 fi
 
+
 createdb  ___test_update
 psql  ___test_update  <<EOF
 CREATE extension postgis;
 CREATE extension pgrouting with version '$1';
-CREATE VIEW theview AS SELECT * from pgr_dijkstra('SELECT * from edge_table', 2, 3);
-CREATE VIEW theview1 AS SELECT * from pgr_maxflow('SELECT * from edge_table', 2, 3);
+EOF
+
+psql -d ___test_update -a -f tools/testers/$1-test.sql
+
+psql  ___test_update  <<EOF
 SELECT pgr_version();
-alter extension pgrouting update to '$2';
+
+ALTER extension pgrouting update to '$2';
+
+-- CREATE VIEW bdastar2 AS SELECT * from pgr_bdastar('SELECT * from edge_table', ARRAY[2], 3);
+-- CREATE VIEW bdastar3 AS SELECT * from pgr_bdastar('SELECT * from edge_table', 2, ARRAY[3]);
+-- CREATE VIEW bdastar4 AS SELECT * from pgr_bdastar('SELECT * from edge_table', ARRAY[2], ARRAY[3]);
+
+-- CREATE VIEW bdastarC1 AS SELECT * from pgr_bdastarCost('SELECT * from edge_table', 2, 3);
+-- CREATE VIEW bdastarC2 AS SELECT * from pgr_bdastarCost('SELECT * from edge_table', ARRAY[2], 3);
+-- CREATE VIEW bdastarC3 AS SELECT * from pgr_bdastarCost('SELECT * from edge_table', 2, ARRAY[3]);
+-- CREATE VIEW bdastarC4 AS SELECT * from pgr_bdastarCost('SELECT * from edge_table', ARRAY[2], ARRAY[3]);
+
 SELECT pgr_version();
 EOF
 
