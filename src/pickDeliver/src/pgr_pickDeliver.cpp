@@ -144,8 +144,7 @@ Pgr_pickDeliver::get_postgres_result() const {
 Pgr_pickDeliver::Pgr_pickDeliver(
         const std::vector<PickDeliveryOrders_t> &pd_orders,
         const std::vector<Vehicle_t> &vehicles,
-        size_t p_max_cycles,
-        std::string &err) 
+        size_t p_max_cycles) 
 {
     PD_problem(this);
     pgassert(!pd_orders.empty());
@@ -155,7 +154,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     m_max_cycles = p_max_cycles;
     pgassert(m_max_cycles > 0);
     std::ostringstream tmplog;
-    err = "";
 
     log << "\n *** Constructor of problem ***\n";
 
@@ -164,7 +162,6 @@ Pgr_pickDeliver::Pgr_pickDeliver(
     if (!m_trucks.build_fleet(vehicles, node_id)
             || !m_trucks.is_fleet_ok()) {
         error << m_trucks.get_error();
-        err = error.str();
         return;
     };
 
@@ -194,12 +191,8 @@ Pgr_pickDeliver::Pgr_pickDeliver(
         if (!m_trucks.is_order_ok(o)) {
             error << "The order "
                 << o.pickup().original_id()
-                << " is not feasible on any truck"
-                << "\n" << o;
-            error << "START LOG";
-            error << m_trucks.get_log();
-            error << "END LOG";
-            err = error.str();
+                << " is not feasible on any truck";
+            log << "\n" << o;
             return;
         }
     }

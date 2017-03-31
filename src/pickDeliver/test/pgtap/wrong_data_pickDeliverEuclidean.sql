@@ -50,7 +50,7 @@ UPDATE vehicles SET start_open = 3000;
 
 SELECT throws_ok('q5',
     'XX000',
-    'Illegal values found on vehcile',
+    'Illegal values found on vehicle',
     'Should fail: Opens(DEPOT) > closes(DEPOT)');
 
 UPDATE vehicles SET start_open = 0 WHERE id =0;
