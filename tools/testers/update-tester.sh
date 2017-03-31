@@ -60,11 +60,13 @@ fi
 
 createdb  ___test_update
 psql  ___test_update  <<EOF
-create extension postgis;
-create extension pgrouting with version '$1';
-select pgr_version();
+CREATE extension postgis;
+CREATE extension pgrouting with version '$1';
+\i tools/testers/sampledata.sql
+CREATE VIEW theview AS SELECT * from pgr_dijkstra('SELECT * from edge_table', 2, 3);
+SELECT pgr_version();
 alter extension pgrouting update to '$2';
-select pgr_version();
+SELECT pgr_version();
 EOF
 
 dropdb   ___test_update
