@@ -98,7 +98,7 @@ DECLARE
 BEGIN
     RETURN QUERY SELECT '2.5.0'::varchar AS version, 
     					'v2.5.0-dev'::varchar AS tag, 
-                        '9ff9e7498'::varchar AS hash, 
+                        '83c353a23'::varchar AS hash, 
                         'fix/update-scripts'::varchar AS branch, 
                         '1.54.0'::varchar AS boost;
 END;
@@ -1511,8 +1511,8 @@ CREATE OR REPLACE FUNCTION pgr_astar(
     end_vid BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
 
     OUT seq INTEGER,
     OUT path_seq INTEGER,
@@ -1536,8 +1536,8 @@ CREATE OR REPLACE FUNCTION pgr_astar(
     end_vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT end_vid BIGINT,
@@ -1561,8 +1561,8 @@ CREATE OR REPLACE FUNCTION pgr_astar(
     end_vid BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
@@ -1586,8 +1586,8 @@ CREATE OR REPLACE FUNCTION pgr_astar(
     end_vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT start_vid BIGINT,
@@ -1609,10 +1609,10 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_astar(One to One)';
-COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_astar(One to Many)';
-COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_astar(Many to One)';
-COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_astar(Many to Many)';
+COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(One to One)';
+COMMENT ON FUNCTION pgr_astar(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(One to Many)';
+COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(Many to One)';
+COMMENT ON FUNCTION pgr_astar(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_astar(Many to Many)';
 
 
 CREATE OR REPLACE FUNCTION pgr_aStarCost(
@@ -1621,8 +1621,8 @@ CREATE OR REPLACE FUNCTION pgr_aStarCost(
     end_vid BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -1644,8 +1644,8 @@ CREATE OR REPLACE FUNCTION pgr_aStarCost(
     end_vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -1666,8 +1666,8 @@ CREATE OR REPLACE FUNCTION pgr_aStarCost(
     end_vid BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -1688,8 +1688,8 @@ CREATE OR REPLACE FUNCTION pgr_aStarCost(
     end_vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
@@ -1708,10 +1708,10 @@ ROWS 1000;
 
 -- COMMENTS
 
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_aStarCost(One to One)';
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_aStarCost(One to Many)';
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_aStarCost(Many to One)';
-COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, NUMERIC, NUMERIC) IS 'pgr_aStarCost(Many to Many)';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_aStarCost(One to One)';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, BIGINT, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_aStarCost(One to Many)';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, BIGINT, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_aStarCost(Many to One)';
+COMMENT ON FUNCTION pgr_aStarCost(TEXT, ANYARRAY, ANYARRAY, BOOLEAN, INTEGER, FLOAT, FLOAT) IS 'pgr_aStarCost(Many to Many)';
 
 
 CREATE OR REPLACE FUNCTION pgr_withPointsDD(
@@ -5716,8 +5716,8 @@ CREATE OR REPLACE FUNCTION pgr_astarCostMatrix(
     vids ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
     OUT agg_cost FLOAT)
