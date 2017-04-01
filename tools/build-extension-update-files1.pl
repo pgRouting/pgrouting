@@ -211,7 +211,7 @@ sub generate_upgrade_script {
     # Special cases
     #------------------------------------
     
-    if ($old_version =~ /2.0.0/) {
+    if ($old_version =~ /2.[10].0/) {
         push @commands, drop_special_case_function("pgr_version()",  "Row type defined by OUT parameters is different");
         push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "cannot change name of input parameter sql");
         push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  "cannot change name of input parameter sql");
@@ -219,19 +219,14 @@ sub generate_upgrade_script {
         push @commands, drop_special_case_function("pgr_apspwarshall(text,boolean,boolean)",  "cannot change name of input parameter sql");
         push @commands, drop_special_case_function("pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
         push @commands, drop_special_case_function("pgr_kdijkstracost(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
+    }
+
+    if ($old_version =~ /2.0.0/) {
         push @commands, drop_special_case_function("pgr_dijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
         push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
     }
      
     if ($old_version =~ /2.1.0/) {
-        push @commands, drop_special_case_function("pgr_version()",  "Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_apspjohnson(text)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_apspwarshall(text,boolean,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
-        push @commands, drop_special_case_function("pgr_kdijkstracost(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
-
         push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", "cannot change name of input parameter has_reverse_cost");
 
 
