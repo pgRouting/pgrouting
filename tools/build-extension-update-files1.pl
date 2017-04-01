@@ -203,13 +203,64 @@ sub generate_upgrade_script {
 
         # The function does NOT exist in the current version
         # -- Remove from the extension
-        print "\n\nALTER EXTENSION pgrouting DROP FUNCTION $old_function;\n" if $DEBUG;
         push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION $old_function;\n";
-
-        print "DROP FUNCTION IF EXISTS $old_function;\n" if $DEBUG;
         push @commands, "DROP FUNCTION IF EXISTS $old_function;\n";
     }
 
+    #------------------------------------
+    # Special cases
+    #------------------------------------
+    
+    if ($old_version =~ /2.0.0/) {
+        push @commands, "\n\n -- out parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_version();\n";
+        push @commands, "DROP FUNCTION IF EXISTS pgr_version();\n";
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);\n";
+        push @commands, "DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);\n";
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_trsp(text,integer,integer,boolean,boolean,text);\n";
+        push @commands, "DROP FUNCTION IF EXISTS pgr_trsp(text,integer,integer,boolean,boolean,text);\n";
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_apspjohnson(text);\n";
+        push @commands, "DROP FUNCTION IF EXISTS  pgr_apspjohnson(text);\n";
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_apspwarshall(text,boolean,boolean);\n";
+        push @commands, "DROP FUNCTION IF EXISTS  pgr_apspwarshall(text,boolean,boolean);\n";
+
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);\n";
+        push @commands, "DROP FUNCTION IF EXISTS  pgr_astar(text,integer,integer,boolean,boolean);\n";
+
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);\n";
+        push @commands, "DROP FUNCTION IF EXISTS  pgr_bddijkstra(text,integer,integer,boolean,boolean);\n";
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION  pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);\n";
+        push @commands, "DROP FUNCTION IF EXISTS   pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);\n";
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION  pgr_dijkstra(text,integer,integer,boolean,boolean);\n";
+        push @commands, "DROP FUNCTION IF EXISTS   pgr_dijkstra(text,integer,integer,boolean,boolean);\n";
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION  pgr_kdijkstracost(text,integer,integer[],boolean,boolean);\n";
+        push @commands, "DROP FUNCTION IF EXISTS   pgr_kdijkstracost(text,integer,integer[],boolean,boolean);\n";
+
+        push @commands, "\n\n -- parameter name changed";
+        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);\n";
+        push @commands, "DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);\n";
+
+        
+    }
+     
     # analyze types
 
     my $ntype = $new->{types};
@@ -242,7 +293,6 @@ sub generate_upgrade_script {
 
     write_script($old_version, $new_version, \@types2remove, join('', @commands));
 }
-
 
 
 
