@@ -33,8 +33,8 @@ CREATE OR REPLACE FUNCTION pgr_aStarCost(
     end_vid BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
-    factor NUMERIC DEFAULT 1.0,
-    epsilon NUMERIC DEFAULT 1.0,
+    factor FLOAT DEFAULT 1.0,
+    epsilon FLOAT DEFAULT 1.0,
 
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
