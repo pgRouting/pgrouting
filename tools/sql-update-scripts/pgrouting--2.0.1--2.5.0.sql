@@ -141,7 +141,7 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  BEGIN
      RETURN QUERY SELECT '2.5.0'::varchar AS version, 
      					'v2.5.0-dev'::varchar AS tag, 
-                         '783ea360c'::varchar AS hash, 
+                         'efbf77d83'::varchar AS hash, 
                          'fix/update-scripts'::varchar AS branch, 
                          '1.54.0'::varchar AS boost;
  END;
@@ -6036,26 +6036,26 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  
  
  -- V2 signature
- CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
  RETURNS SETOF pgr_costresult AS
  $BODY$
  DECLARE
  has_reverse BOOLEAN;
- sql TEXT;
+ new_sql TEXT;
  BEGIN
      RAISE NOTICE 'Deprecated Signature of pgr_bdDijkstra';
-     has_reverse =_pgr_parameter_check('dijkstra', edges_sql, false);
-     sql = edges_sql;
-     IF (has_reverse != has_rcost) THEN
+     has_reverse =_pgr_parameter_check('dijkstra', $1, false);
+     new_sql = $1;
+     IF (has_reverse != $5) THEN
          IF (has_reverse) THEN
-             sql = 'SELECT id, source, target, cost FROM (' || edges_sql || ') a';
+             new_sql = 'SELECT id, source, target, cost FROM (' || $1 || ') a';
          ELSE
              raise EXCEPTION 'has_rcost set to true but reverse_cost not found';
          END IF;
      END IF;
  
      RETURN query SELECT seq-1 AS seq, node::integer AS id1, edge::integer AS id2, cost
-     FROM _pgr_bdDijkstra(sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
+     FROM _pgr_bdDijkstra(new_sql, ARRAY[$2]::BIGINT[], ARRAY[$3]::BIGINT[], directed, false);
    END
  $BODY$
  LANGUAGE plpgsql VOLATILE
