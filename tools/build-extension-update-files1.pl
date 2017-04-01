@@ -233,7 +233,6 @@ sub generate_upgrade_script {
         push @commands, drop_special_case_function("_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
         push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
 
-
         push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter sql");
     }
 
@@ -243,9 +242,6 @@ sub generate_upgrade_script {
 
     if ($old_version =~ /(2.2.[01234])|(2.1.0)|(2.0.0)/) {
         push @commands, drop_special_case_function("pgr_astar(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
-    }
-
-    if ($old_version =~ /(2.3.[012])|(2.2.[01234])/) {
     }
 
     if ($old_version =~ /(2.4.[01])/) {

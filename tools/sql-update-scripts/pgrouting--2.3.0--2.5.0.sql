@@ -195,7 +195,7 @@ DROP TYPE contraction_vertex;
  BEGIN
      RETURN QUERY SELECT '2.5.0'::varchar AS version, 
      					'v2.5.0-dev'::varchar AS tag, 
-                         '1b1f9b12e'::varchar AS hash, 
+                         'df6e12b4a'::varchar AS hash, 
                          'fix/update-scripts'::varchar AS branch, 
                          '1.54.0'::varchar AS boost;
  END;
