@@ -39,67 +39,67 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_pointtoid(geometry,double precision,
 DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
 
 
- -- out parameter name changed
+ -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
 DROP FUNCTION IF EXISTS pgr_version();
 
 
- -- parameter name changed
+ -- cannot change name of input parameter sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
 DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
 
 
- -- parameter name changed
+ -- cannot change name of input parameter sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_trsp(text,integer,integer,boolean,boolean,text);
 DROP FUNCTION IF EXISTS pgr_trsp(text,integer,integer,boolean,boolean,text);
 
 
- -- parameter name changed
+ -- cannot change name of input parameter sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspjohnson(text);
-DROP FUNCTION IF EXISTS  pgr_apspjohnson(text);
+DROP FUNCTION IF EXISTS pgr_apspjohnson(text);
 
 
- -- parameter name changed
+ -- cannot change name of input parameter sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspwarshall(text,boolean,boolean);
-DROP FUNCTION IF EXISTS  pgr_apspwarshall(text,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_apspwarshall(text,boolean,boolean);
 
 
- -- parameter name changed
+ -- cannot change name of input parameter sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS  pgr_astar(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
- -- parameter name changed
+ -- cannot change name of input parameter sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS  pgr_bddijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
 
 
- -- parameter name changed
+ -- cannot change name of input parameter source_vid
 
-ALTER EXTENSION pgrouting DROP FUNCTION  pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
-DROP FUNCTION IF EXISTS   pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
-
-
- -- parameter name changed
-
-ALTER EXTENSION pgrouting DROP FUNCTION  pgr_dijkstra(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS   pgr_dijkstra(text,integer,integer,boolean,boolean);
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
 
 
- -- parameter name changed
+ -- cannot change name of input parameter source_vid
 
-ALTER EXTENSION pgrouting DROP FUNCTION  pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
-DROP FUNCTION IF EXISTS   pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
 
 
- -- parameter name changed
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
+
+
+ -- cannot change name of input parameter sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);
@@ -207,7 +207,7 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolea
  BEGIN
      RETURN QUERY SELECT '2.5.0'::varchar AS version, 
      					'v2.5.0-dev'::varchar AS tag, 
-                         'ff622e308'::varchar AS hash, 
+                         'cda69becb'::varchar AS hash, 
                          'fix/update-scripts'::varchar AS branch, 
                          '1.54.0'::varchar AS boost;
  END;
@@ -1873,8 +1873,8 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolea
  
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-     edges_sql text,
-     start_vids anyarray,
+     sql text,
+     start_v anyarray,
      distance FLOAT,
      directed BOOLEAN DEFAULT TRUE,
      equicost BOOLEAN DEFAULT FALSE,
@@ -1891,7 +1891,7 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolea
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
      edges_sql text,
-     start_vid bigint,
+     start_v bigint,
      distance FLOAT8,
      directed BOOLEAN DEFAULT TRUE,
      OUT seq integer,

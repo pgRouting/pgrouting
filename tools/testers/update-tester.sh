@@ -63,23 +63,10 @@ createdb  ___test_update
 psql  ___test_update  <<EOF
 CREATE extension postgis;
 CREATE extension pgrouting with version '$1';
-EOF
 
-psql -d ___test_update -a -f tools/testers/$1-test.sql
-
-psql  ___test_update  <<EOF
 SELECT pgr_version();
 
 ALTER extension pgrouting update to '$2';
-
--- CREATE VIEW bdastar2 AS SELECT * from pgr_bdastar('SELECT * from edge_table', ARRAY[2], 3);
--- CREATE VIEW bdastar3 AS SELECT * from pgr_bdastar('SELECT * from edge_table', 2, ARRAY[3]);
--- CREATE VIEW bdastar4 AS SELECT * from pgr_bdastar('SELECT * from edge_table', ARRAY[2], ARRAY[3]);
-
--- CREATE VIEW bdastarC1 AS SELECT * from pgr_bdastarCost('SELECT * from edge_table', 2, 3);
--- CREATE VIEW bdastarC2 AS SELECT * from pgr_bdastarCost('SELECT * from edge_table', ARRAY[2], 3);
--- CREATE VIEW bdastarC3 AS SELECT * from pgr_bdastarCost('SELECT * from edge_table', 2, ARRAY[3]);
--- CREATE VIEW bdastarC4 AS SELECT * from pgr_bdastarCost('SELECT * from edge_table', ARRAY[2], ARRAY[3]);
 
 SELECT pgr_version();
 EOF
@@ -91,46 +78,40 @@ dropdb   ___test_update
 ### updates from 2.4
 #------------------------------------
 
-update_test 2.4.1 $CURRENT
-exit 0
-update_test 2.4.0 $CURRENT
+#update_test 2.4.1 $CURRENT
+#update_test 2.4.0 $CURRENT
+
 
 #------------------------------------
 ### updates from 2.3.0
 #------------------------------------
 
-update_test 2.4.0 $CURRENT
-
-#------------------------------------
-### updates from 2.3.0
-#------------------------------------
-
-update_test 2.3.2 $CURRENT
-update_test 2.3.1 $CURRENT
-update_test 2.3.0 $CURRENT
+#update_test 2.3.2 $CURRENT
+#update_test 2.3.1 $CURRENT
+#update_test 2.3.0 $CURRENT
 
 #------------------------------------
 ### updates from 2.2.x
 #------------------------------------
 
 #update_test 2.2.4 $CURRENT
-update_test 2.2.3 $CURRENT
-update_test 2.2.2 $CURRENT
-update_test 2.2.1 $CURRENT
-update_test 2.2.0 $CURRENT
+#update_test 2.2.3 $CURRENT
+#update_test 2.2.2 $CURRENT
+#update_test 2.2.1 $CURRENT
+#update_test 2.2.0 $CURRENT
 
 
 #------------------------------------
 ### updates from 2.1.x
 #------------------------------------
 
-update_test 2.1.0 $CURRENT
+#update_test 2.1.0 $CURRENT
 
 #------------------------------------
 ### updates from 2.0.x
 #------------------------------------
 
-update_test 2.0.0 $CURRENT
+update_test 2.0.1 $CURRENT
 
 echo Reached end of test, all tests passed
 # CAN NOT BE Update test from 2.0.1  to $CURRENT;

@@ -212,55 +212,57 @@ sub generate_upgrade_script {
     #------------------------------------
     
     if ($old_version =~ /2.0.0/) {
-        push @commands, "\n\n -- out parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_version();\n";
-        push @commands, "DROP FUNCTION IF EXISTS pgr_version();\n";
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);\n";
-        push @commands, "DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);\n";
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_trsp(text,integer,integer,boolean,boolean,text);\n";
-        push @commands, "DROP FUNCTION IF EXISTS pgr_trsp(text,integer,integer,boolean,boolean,text);\n";
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_apspjohnson(text);\n";
-        push @commands, "DROP FUNCTION IF EXISTS  pgr_apspjohnson(text);\n";
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_apspwarshall(text,boolean,boolean);\n";
-        push @commands, "DROP FUNCTION IF EXISTS  pgr_apspwarshall(text,boolean,boolean);\n";
-
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);\n";
-        push @commands, "DROP FUNCTION IF EXISTS  pgr_astar(text,integer,integer,boolean,boolean);\n";
-
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);\n";
-        push @commands, "DROP FUNCTION IF EXISTS  pgr_bddijkstra(text,integer,integer,boolean,boolean);\n";
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION  pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);\n";
-        push @commands, "DROP FUNCTION IF EXISTS   pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);\n";
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION  pgr_dijkstra(text,integer,integer,boolean,boolean);\n";
-        push @commands, "DROP FUNCTION IF EXISTS   pgr_dijkstra(text,integer,integer,boolean,boolean);\n";
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION  pgr_kdijkstracost(text,integer,integer[],boolean,boolean);\n";
-        push @commands, "DROP FUNCTION IF EXISTS   pgr_kdijkstracost(text,integer,integer[],boolean,boolean);\n";
-
-        push @commands, "\n\n -- parameter name changed";
-        push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);\n";
-        push @commands, "DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);\n";
-
-        
+        push @commands, drop_special_case_function("pgr_version()",  "Row type defined by OUT parameters is different");
+        push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_apspjohnson(text)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_apspwarshall(text,boolean,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_astar(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
+        push @commands, drop_special_case_function("pgr_kdijkstracost(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
+        push @commands, drop_special_case_function("pgr_dijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
     }
      
+    if ($old_version =~ /2.1.0/) {
+
+        push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", "cannot change name of input parameter has_reverse_cost");
+
+        push @commands, drop_special_case_function("pgr_gsoc_vrppdtw(text,integer,integer)", "cannot change return type of existing function name");
+
+        push @commands, drop_special_case_function("_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+
+        push @commands, drop_special_case_function("pgr_version()",  "Row type defined by OUT parameters is different");
+        push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_apspjohnson(text)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_apspwarshall(text,boolean,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_astar(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        push @commands, drop_special_case_function("pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
+        push @commands, drop_special_case_function("pgr_kdijkstracost(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter sql");
+
+        push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+    }
+
+    if ($old_version =~ /2.2.[01234]/) {
+        push @commands, drop_special_case_function("pgr_gsoc_vrppdtw(text,integer,integer)", "cannot change return type of existing function name");
+        push @commands, drop_special_case_function("pgr_astar(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+    }
+
+    if ($old_version =~ /(2.3.[012])|(2.2.[01234])/) {
+        push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+    }
+
+    if ($old_version =~ /(2.4.[01])|(2.3.[012])/) {
+        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     "Row type defined by OUT parameters is different");
+        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)",   "Row type defined by OUT parameters is different");
+        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)",   "Row type defined by OUT parameters is different");
+        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,anyarray,boolean)", "Row type defined by OUT parameters is different");
+    }
+
     # analyze types
 
     my $ntype = $new->{types};
@@ -295,7 +297,14 @@ sub generate_upgrade_script {
 }
 
 
-
+sub drop_special_case_function {
+    my ($function, $reason) = @_;
+    my @commands = ();
+    push @commands, "\n\n -- $reason";
+    push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION $function;\n";
+    push @commands, "DROP FUNCTION IF EXISTS $function;\n";
+    return @commands;
+}
 
 
 # we have all the data we need, so write the extension update script

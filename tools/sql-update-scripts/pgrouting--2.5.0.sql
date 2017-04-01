@@ -98,7 +98,7 @@ DECLARE
 BEGIN
     RETURN QUERY SELECT '2.5.0'::varchar AS version, 
     					'v2.5.0-dev'::varchar AS tag, 
-                        '83c353a23'::varchar AS hash, 
+                        'cda69becb'::varchar AS hash, 
                         'fix/update-scripts'::varchar AS branch, 
                         '1.54.0'::varchar AS boost;
 END;
@@ -1764,8 +1764,8 @@ ROWS 1000;
 
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-    edges_sql text,
-    start_vids anyarray,
+    sql text,
+    start_v anyarray,
     distance FLOAT,
     directed BOOLEAN DEFAULT TRUE,
     equicost BOOLEAN DEFAULT FALSE,
@@ -1782,7 +1782,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
     edges_sql text,
-    start_vid bigint,
+    start_v bigint,
     distance FLOAT8,
     directed BOOLEAN DEFAULT TRUE,
     OUT seq integer,
