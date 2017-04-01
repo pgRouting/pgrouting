@@ -75,12 +75,6 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,b
 DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
-
-
  -- cannot change name of input parameter source_vid
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
@@ -103,6 +97,12 @@ DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
 
 
 -- now install the new extension
@@ -207,7 +207,7 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolea
  BEGIN
      RETURN QUERY SELECT '2.5.0'::varchar AS version, 
      					'v2.5.0-dev'::varchar AS tag, 
-                         'cda69becb'::varchar AS hash, 
+                         '783ea360c'::varchar AS hash, 
                          'fix/update-scripts'::varchar AS branch, 
                          '1.54.0'::varchar AS boost;
  END;
