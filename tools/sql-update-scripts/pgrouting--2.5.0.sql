@@ -85,7 +85,7 @@ CREATE TYPE pgr_geomResult AS
 
 CREATE OR REPLACE FUNCTION pgr_version()
 RETURNS TABLE(
-		"version" varchar, 
+		"version" varchar,
 		tag varchar,
 		hash varchar,
 		branch varchar,
@@ -96,10 +96,10 @@ $BODY$
 DECLARE
 
 BEGIN
-    RETURN QUERY SELECT '2.5.0'::varchar AS version, 
-    					'v2.5.0-dev'::varchar AS tag, 
-                        'ce3fb2f6f'::varchar AS hash, 
-                        'fix/update-scripts'::varchar AS branch, 
+    RETURN QUERY SELECT '2.5.0'::varchar AS version,
+    					'v2.5.0-dev'::varchar AS tag,
+                        ''::varchar AS hash,
+                        'fix/update-scripts'::varchar AS branch,
                         '1.54.0'::varchar AS boost;
 END;
 $BODY$
