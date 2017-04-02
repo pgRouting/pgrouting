@@ -292,7 +292,7 @@ sub process_single_test{
         };
     }
     else {
-        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
+        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -e $database > $TMP 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             if (!$INTERNAL_TESTS) {
                $stats{z_fail}++;
