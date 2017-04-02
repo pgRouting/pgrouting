@@ -316,6 +316,7 @@ sub process_single_test{
     #closes the input file  /TIN = test input
     close(TIN);
 
+    print "\n" if $DOCUMENTATION;
     return if $DOCUMENTATION;
 
     my $dfile;
