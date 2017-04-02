@@ -266,7 +266,7 @@ pickDeliverEuclidean(PG_FUNCTION_ARGS) {
         values[2] = Int64GetDatum(result_tuples[call_cntr].vehicle_id);
         values[3] = Int32GetDatum(result_tuples[call_cntr].vehicle_seq);
         values[4] = Int64GetDatum(result_tuples[call_cntr].order_id);
-        values[5] = Int64GetDatum(result_tuples[call_cntr].stop_type);
+        values[5] = Int64GetDatum(result_tuples[call_cntr].stop_type + 1);
         values[6] = Float8GetDatum(result_tuples[call_cntr].cargo);
         values[7] = Float8GetDatum(result_tuples[call_cntr].travelTime);
         values[8] = Float8GetDatum(result_tuples[call_cntr].arrivalTime);
