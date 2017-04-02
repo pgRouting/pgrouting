@@ -269,7 +269,7 @@ sub process_single_test{
     my $res = shift;
     #each tests will use clean data
 
-    print "Processing test: $dir/$x\n";
+    print "Processing test: $dir/$x";
     my $t0 = [gettimeofday];
     #TIN = test_input_file
     open(TIN, "$dir/$x.test.sql") || do {
@@ -360,10 +360,12 @@ sub process_single_test{
     elsif (length($r)) {
         $res->{"$dir/$x.test.sql"} = "FAILED: $r";
         $stats{z_fail}++ unless $DEBUG1;
+        print "\t FAIL\n";
     }
     else {
         $res->{"$dir/$x.test.sql"} = "Passed";
         $stats{z_pass}++;
+        print "\t PASS\n";
     }
     print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
 }

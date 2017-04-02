@@ -3604,13 +3604,13 @@ BEGIN
             capacity || $$ AS capacity, $$ || max_vehicles || $$ AS number, $$ || speed || $$ AS speed
             FROM customer_data WHERE id = 0 LIMIT 1
         $$;
-
+--  seq | vehicle_id | vehicle_seq | stop_id | travel_time | arrival_time | wait_time | service_time | departure_time 
     final_sql = $$ WITH
         customer_data AS ($$ || customers_sql || $$ ),
         p_deliver AS (SELECT * FROM _pgr_pickDeliverEuclidean('$$ || orders_sql || $$',  '$$ || vehicles_sql || $$',  $$ || max_cycles || $$ )),
-        picks AS (SELECT p_deliver.*, pindex, dindex, id AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 1)),
-        delivers AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
-        depots AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND order_id = 0)),
+        picks AS (SELECT p_deliver.*, pindex, dindex, id AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 2)),
+        delivers AS (SELECT p_deliver.*, pindex, dindex, dindex AS the_id FROM p_deliver JOIN customer_data ON (id = order_id AND stop_type = 3)),
+        depots AS (SELECT p_deliver.*, 0 as pindex, 0 as dindex, 0 AS the_id FROM p_deliver WHERE (stop_type IN (0,1,6))),
         the_union AS (SELECT * FROM picks UNION SELECT * FROM delivers UNION SELECT * from depots)
 
         SELECT (row_number() over(ORDER BY a.seq))::INTEGER, vehicle_number, a.vehicle_seq, the_id::BIGINT, a.travel_time, a.arrival_time, a.wait_time, a.service_time, a.departure_time
@@ -5775,7 +5775,7 @@ customers_sql TEXT;
 BEGIN
     RETURN query
          SELECT a.seq, vehicle_id::INTEGER AS id1, stop_id::INTEGER AS id2, departure_time AS cost
-        FROM _pgr_pickDeliver($1, $2, $3, 1, 30) AS a WHERE vehicle_id != -1;
+        FROM _pgr_pickDeliver($1, $2, $3, 1, 30) AS a WHERE vehicle_id NOT IN (-2);
 END
 $BODY$
 LANGUAGE plpgsql VOLATILE
