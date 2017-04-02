@@ -195,7 +195,7 @@ DROP TYPE contraction_vertex;
  BEGIN
      RETURN QUERY SELECT '2.5.0'::varchar AS version, 
      					'v2.5.0-dev'::varchar AS tag, 
-                         'df6e12b4a'::varchar AS hash, 
+                         'ce3fb2f6f'::varchar AS hash, 
                          'fix/update-scripts'::varchar AS branch, 
                          '1.54.0'::varchar AS boost;
  END;
@@ -3540,7 +3540,7 @@ DROP TYPE contraction_vertex;
      TEXT,
      bigint,
      ANYARRAY,
-     BOOLEAN DEFAULT TRUE,
+     directed BOOLEAN DEFAULT TRUE,
      OUT seq INTEGER,
      OUT path_id INTEGER,
      OUT path_seq INTEGER,
@@ -6070,7 +6070,7 @@ DROP TYPE contraction_vertex;
      RAISE NOTICE 'Deprecated Signature of pgr_bdAstar';
      has_reverse =_pgr_parameter_check('astar', $1, false);
      new_sql = $1;
-     IF (has_reverse != has_rcost) THEN
+     IF (has_reverse != $5) THEN
          IF (has_reverse) THEN
              new_sql = 'SELECT id, source, target, cost FROM (' || $1 || ') a';
          ELSE

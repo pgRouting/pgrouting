@@ -41,7 +41,7 @@ BEGIN
     RAISE NOTICE 'Deprecated Signature of pgr_bdAstar';
     has_reverse =_pgr_parameter_check('astar', $1, false);
     new_sql = $1;
-    IF (has_reverse != has_rcost) THEN
+    IF (has_reverse != $5) THEN
         IF (has_reverse) THEN
             new_sql = 'SELECT id, source, target, cost FROM (' || $1 || ') a';
         ELSE

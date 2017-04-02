@@ -54,7 +54,7 @@ if [ "$INSTALLED" == "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql" ]
 then
     echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql found"
 else
-    echo "/usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
+    echo "FATAL: /usr/share/postgresql/9.3/extension/pgrouting--$1.sql Not found"
     exit 1
 fi
 
@@ -63,16 +63,37 @@ createdb  ___test_update
 psql  ___test_update  <<EOF
 CREATE extension postgis;
 CREATE extension pgrouting with version '$1';
-
-SELECT pgr_version();
-
-ALTER extension pgrouting update to '$2';
-
-SELECT pgr_version();
 EOF
 
-dropdb   ___test_update
-} 
+OLD_VERSION=$(psql ___test_update -t -c 'SELECT version FROM pgr_version()')
+
+
+if [ "b$OLD_VERSION" != "b $1" ]
+then
+    echo "ERROR: Version $1 not found on the system"
+    dropdb ___test_update
+    exit 1
+fi
+
+
+
+psql ___test_update -c "ALTER extension pgrouting update to '$2'"
+
+
+NEW_VERSION=$(psql ___test_update -t -c 'SELECT version FROM pgr_version()')
+
+echo "$OLD_VERSION ->> $NEW_VERSION"
+
+if [ "b$NEW_VERSION" != "b $2" ]
+then
+    echo "FAIL: Could not update from version $1 to version $2"
+    dropdb ___test_update
+    exit 1
+fi
+
+dropdb ___test_update
+
+} # end of function
 
 #------------------------------------
 ### updates from 2.4
@@ -110,7 +131,7 @@ update_test 2.1.0 $CURRENT
 ### updates from 2.0.x
 #------------------------------------
 
-update_test 2.0.1 $CURRENT
+update_test 2.0.0 $CURRENT
 
 echo Reached end of test, all tests passed
 # CAN NOT BE Update test from 2.0.1  to $CURRENT;

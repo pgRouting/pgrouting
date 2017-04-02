@@ -81,7 +81,7 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
     TEXT,
     bigint,
     ANYARRAY,
-    BOOLEAN DEFAULT TRUE,
+    directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,
     OUT path_seq INTEGER,
