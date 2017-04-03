@@ -269,7 +269,7 @@ sub process_single_test{
     my $res = shift;
     #each tests will use clean data
 
-    print "Processing test: $dir/$x\n";
+    print "Processing test: $dir/$x";
     my $t0 = [gettimeofday];
     #TIN = test_input_file
     open(TIN, "$dir/$x.test.sql") || do {
@@ -292,7 +292,13 @@ sub process_single_test{
         };
     }
     else {
-        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -A -t -q $database > $TMP 2>\&1 ") || do {
+        #open(PSQL, "|$psql $connopts --set='VERBOSITY terse' -e $database > $dir/$x.result 2>\&1 ") || do {
+        #    $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
+        #    $stats{z_fail}++;
+        #    next;
+        #};
+
+        open(PSQL, "|$psql $connopts  --set='VERBOSITY terse' -e $database > $TMP 2>\&1 ") || do {
             $res->{"$dir/$x.test.sql"} = "FAILED: could not open connection to db : $!";
             if (!$INTERNAL_TESTS) {
                $stats{z_fail}++;
@@ -316,6 +322,7 @@ sub process_single_test{
     #closes the input file  /TIN = test input
     close(TIN);
 
+    print "\n" if $DOCUMENTATION;
     return if $DOCUMENTATION;
 
     my $dfile;
@@ -360,10 +367,12 @@ sub process_single_test{
     elsif (length($r)) {
         $res->{"$dir/$x.test.sql"} = "FAILED: $r";
         $stats{z_fail}++ unless $DEBUG1;
+        print "\t FAIL\n";
     }
     else {
         $res->{"$dir/$x.test.sql"} = "Passed";
         $stats{z_pass}++;
+        print "\t PASS\n";
     }
     print "    test run time: " . tv_interval($t0, [gettimeofday]) . "\n";
 }

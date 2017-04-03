@@ -27,9 +27,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 -- V3
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
+    TEXT,
+    BIGINT,
+    BIGINT,
     OUT seq INTEGER,
     OUT path_seq INTEGER,
     OUT node BIGINT,
@@ -48,10 +48,10 @@ ROWS 1000;
 
 -- V3
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vid BIGINT,
-    directed BOOLEAN,
+    TEXT,
+    BIGINT,
+    BIGINT,
+    BOOLEAN,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
     epsilon NUMERIC DEFAULT 1.0,
@@ -72,9 +72,9 @@ ROWS 1000;
 
 -- one to many
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vid BIGINT,
-    end_vids ANYARRAY,
+    TEXT,
+    BIGINT,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
@@ -97,9 +97,9 @@ ROWS 1000;
 
 -- many to one
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vid BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
@@ -122,9 +122,9 @@ ROWS 1000;
 
 -- many to many
 CREATE OR REPLACE FUNCTION pgr_bdAstar(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,

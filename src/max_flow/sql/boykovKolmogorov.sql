@@ -30,9 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    edges_sql TEXT,
-    source BIGINT,
-    target BIGINT,
+    TEXT,
+    BIGINT,
+    BIGINT,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -50,9 +50,9 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    edges_sql TEXT,
-    source  BIGINT,
-    targets ANYARRAY,
+    TEXT,
+    BIGINT,
+    ANYARRAY,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -70,9 +70,9 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    edges_sql TEXT,
-    sources ANYARRAY,
-    target  BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,
@@ -89,9 +89,9 @@ CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
 
 
 CREATE OR REPLACE FUNCTION pgr_boykovKolmogorov(
-    edges_sql TEXT,
-    sources  ANYARRAY,
-    targets  ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     OUT seq INTEGER,
     OUT edge BIGINT,
     OUT start_vid BIGINT,

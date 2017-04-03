@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 -- one to one
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
-    edges_sql TEXT,
+    TEXT,
     BIGINT,
     BIGINT,
     directed BOOLEAN DEFAULT true,
@@ -48,9 +48,9 @@ ROWS 1000;
 
 -- one to many
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
-    edges_sql TEXT,
+    TEXT,
     BIGINT,
-    end_vids ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,
@@ -69,8 +69,8 @@ ROWS 1000;
 
 -- many to one
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
+    TEXT,
+    ANYARRAY,
     BIGINT,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
@@ -90,9 +90,9 @@ ROWS 1000;
 
 -- many to many
 CREATE OR REPLACE FUNCTION pgr_bdAstarCost(
-    edges_sql TEXT,
-    start_vids ANYARRAY,
-    end_vids ANYARRAY,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
     directed BOOLEAN DEFAULT true,
     heuristic INTEGER DEFAULT 5,
     factor NUMERIC DEFAULT 1.0,

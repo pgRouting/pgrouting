@@ -221,8 +221,8 @@ set(PGROUTING_FULL_VERSION "v${PGROUTING_VERSION}${PGROUTING_VERSION_DEV}")
 #---------------------------------------------
 file(STRINGS "${PGROUTING_SOURCE_DIR}/VERSION" PGROUTING_BUILD_STRING)
 
-#string(REGEX REPLACE "^(.+)-([^-]+)-[0-9]+-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_BUILD ${PGROUTING_BUILD_STRING})
-string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
+set(PGROUTING_GIT_HASH "")
+#string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\2" PGROUTING_GIT_HASH ${PGROUTING_BUILD_STRING})
 string(REGEX REPLACE "^([0-9]+)-([0-9a-f]+) (.*)$" "\\3" PGROUTING_GIT_BRANCH ${PGROUTING_BUILD_STRING})
 
 
@@ -665,26 +665,31 @@ message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
 
 # create the signature file for this release
-message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
-execute_process(
-    COMMAND cp ${PGROUTING_SOURCE_DIR}/tools/curr-sig/pgrouting--${PGROUTING_VERSION}.sig ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sig
+#message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
+#execute_process(
+#COMMAND cp ${PGROUTING_SOURCE_DIR}/tools/curr-sig/pgrouting--${PGROUTING_VERSION}.sig ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sig
     #COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file.pl ${PGROUTING_VERSION}
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-    RESULT_VARIABLE SIG_RESULT
-    )
-if(SIG_RESULT)
-    message(FATAL_ERROR "SIG_RESULT: ${SIG_RESULT}")
-endif(SIG_RESULT)
+    #WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+    #RESULT_VARIABLE SIG_RESULT
+    #)
+    #if(SIG_RESULT)
+    #message(FATAL_ERROR "SIG_RESULT: ${SIG_RESULT}")
+    #endif(SIG_RESULT)
 
 # create the extension update scripts
-execute_process(
-    COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/build-extension-update-files.pl ${PGROUTING_VERSION} ${PGROUTING_SOURCE_DIR}
-    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-    RESULT_VARIABLE UPDATE_RESULT
-    )
-if(UPDATE_RESULT)
-    message(FATAL_ERROR "UPDATE_RESULT: ${UPDATE_RESULT}")
-endif()
+file(GLOB THE_VERSION_UPDATE_FILES "${PGROUTING_SOURCE_DIR}/tools/sql-update-scripts/*--*--*.sql")
+
+foreach (f ${THE_VERSION_UPDATE_FILES})
+    message("${f}")
+    execute_process(
+        COMMAND cp ${f} ${CMAKE_BINARY_DIR}/lib/
+        WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+        RESULT_VARIABLE UPDATE_RESULT
+        )
+    if(UPDATE_RESULT)
+        message(FATAL_ERROR "UPDATE_RESULT: ${UPDATE_RESULT}")
+    endif()
+endforeach()
 
 # make a list of the files we need to install for version updates
 file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
