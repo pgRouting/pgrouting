@@ -1,3 +1,9 @@
+BEGIN;
+BEGIN
+SET client_min_messages TO NOTICE;
+SET
+ROLLBACK;
+ROLLBACK
 # Notes on pgr_trsp for version 2.5.0
 Table of contents
 * [Introduction](#introduction)
@@ -53,111 +59,230 @@ Original function code
 
 Calls to the original function of is no longer allowed without restrictions
 ```
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 15, true, true
+);
 ERROR:  Error computing path: Path Not Found
 ```
 dijkstra returns EMPTY SET to represent no path found
 ```
+SELECT * FROM pgr_dijkstra(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 15
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+(0 rows)
+
 ```
 pgr_trsp use the pgr_dijkstra when there are no restrictions
 therefore returns EMPTY SET to represent no path found
 ```
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 15, true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+(0 rows)
+
 ```
 pgr_trsp use the original code when there are restrictions
 therefore throws Error to represent no path found
 ```
+SELECT * FROM pgr_trsp(
+     $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+     1, 15, true, true,
+     $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
 ERROR:  Error computing path: Path Not Found
 CONTEXT:  PL/pgSQL function pgr_trsp(text,integer,integer,boolean,boolean,text) line 29 at RETURN QUERY
 ```
 ## routing from/to same location
 using dijkstra to verify (1 to 1)
 ```
+SELECT * FROM pgr_dijkstra(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 1
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+(0 rows)
+
 ```
 This call uses the replacement function because there are no restrictions (1 to 1)
 therefore is expected to return EMPTY SET to represent no path found
 ```
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    1, 1,  true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+(0 rows)
+
 ```
 call forcing the use of the original code (1 to 1)
 * not longer allowed without restrictions
 
 ```
-0|1|1|1
-1|2|4|1
-2|5|8|1
-3|6|9|1
-4|9|16|1
-5|4|3|1
-6|3|2|1
-7|2|1|1
-8|1|-1|0
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    1, 1,  true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   1 |   1 |    1
+   1 |   2 |   4 |    1
+   2 |   5 |   8 |    1
+   3 |   6 |   9 |    1
+   4 |   9 |  16 |    1
+   5 |   4 |   3 |    1
+   6 |   3 |   2 |    1
+   7 |   2 |   1 |    1
+   8 |   1 |  -1 |    0
+(9 rows)
+
 ```
 trsp with restrictions (1 to 1) use the original code
 is expected to return Error to represent no path found
 ```
-0|1|1|1
-1|2|4|1
-2|5|8|1
-3|6|9|1
-4|9|16|1
-5|4|3|1
-6|3|2|1
-7|2|1|1
-8|1|-1|0
+SELECT * FROM pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    1, 1,  
+    true, 
+    true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   1 |   1 |    1
+   1 |   2 |   4 |    1
+   2 |   5 |   8 |    1
+   3 |   6 |   9 |    1
+   4 |   9 |  16 |    1
+   5 |   4 |   3 |    1
+   6 |   3 |   2 |    1
+   7 |   2 |   1 |    1
+   8 |   1 |  -1 |    0
+(9 rows)
+
 ```
 trsp calling the original code with restrictions (1 to 1)
 is expected to return Error to represent no path found
 but "finds" a path when there should be no path.
 ```
-0|1|1|1
-1|2|4|1
-2|5|8|1
-3|6|9|1
-4|9|16|1
-5|4|3|1
-6|3|2|1
-7|2|1|1
-8|1|-1|0
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    1, 1,  
+    true, 
+    true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   1 |   1 |    1
+   1 |   2 |   4 |    1
+   2 |   5 |   8 |    1
+   3 |   6 |   9 |    1
+   4 |   9 |  16 |    1
+   5 |   4 |   3 |    1
+   6 |   3 |   2 |    1
+   7 |   2 |   1 |    1
+   8 |   1 |  -1 |    0
+(9 rows)
+
 ```
 ## (vertices) Undirected graph
 using Dijkstra to verify the shortest path from (2 to 3) on undirected graph
 ```
-1|1|2|2|1|0
-2|2|3|-1|0|1
+SELECT * FROM pgr_dijkstra(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    2, 3, false
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    2 |    2 |    1 |        0
+   2 |        2 |    3 |   -1 |    0 |        1
+(2 rows)
+
 ```
 using the replacement function because there are no restrictions (2 to 3)
 ```
-0|2|2|1
-1|3|-1|0
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    2, 3,
+    false, 
+    true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   2 |   2 |    1
+   1 |   3 |  -1 |    0
+(2 rows)
+
 ```
 call forcing the use of the original code
 * not longer allowed without restrictions
 
 ```
-0|2|4|1
-1|5|8|1
-2|6|9|1
-3|9|16|1
-4|4|3|1
-5|3|-1|0
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    2, 3,
+    false, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   2 |   4 |    1
+   1 |   5 |   8 |    1
+   2 |   6 |   9 |    1
+   3 |   9 |  16 |    1
+   4 |   4 |   3 |    1
+   5 |   3 |  -1 |    0
+(6 rows)
+
 ```
 trsp with restrictions (2 to 3)
 does not find the shortest path
 ```
-0|2|4|1
-1|5|8|1
-2|6|9|1
-3|9|16|1
-4|4|3|1
-5|3|-1|0
+SELECT * FROM pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    2, 3,
+    false, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   2 |   4 |    1
+   1 |   5 |   8 |    1
+   2 |   6 |   9 |    1
+   3 |   9 |  16 |    1
+   4 |   4 |   3 |    1
+   5 |   3 |  -1 |    0
+(6 rows)
+
 ```
 calling the original code with restrictions (2 to 3)
 does not find the shortest path
 ```
-0|2|4|1
-1|5|8|1
-2|6|9|1
-3|9|16|1
-4|4|3|1
-5|3|-1|0
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    2, 3,
+    false, 
+    true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |   2 |   4 |    1
+   1 |   5 |   8 |    1
+   2 |   6 |   9 |    1
+   3 |   9 |  16 |    1
+   4 |   4 |   3 |    1
+   5 |   3 |  -1 |    0
+(6 rows)
+
 ```
 # The Edges signature version
 ## (Edges) No path representation differences
@@ -168,10 +293,25 @@ Original function code
 
 Calls to the original function of is no longer allowed without restrictions
 ```
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 0.5, 17, 0.5, true, true
+);
 ERROR:  Error computing path: Path Not Found
 ```
 pgr_withPoints returns EMPTY SET to represent no path found
 ```
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$(SELECT 1 as pid, 1 as edge_id, 0.5::float as fraction)
+    UNION
+    (SELECT 2, 17, 0.5)$$,
+    -1, -2
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+(0 rows)
+
 ```
 ## Definition of a path
 Remember that one characteristic of a path is that for a path of N edges it has N+1 vertices.
@@ -183,76 +323,182 @@ calls forcing the use of the original code
 * not longer allowed without restrictions
 
 ```
-0|-1|1|0
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 0.5, 1, 0.5, true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |    0
+(1 row)
+
 ```
 * with restrictions
 ```
-0|-1|1|0
+SELECT * FROM _pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 0.5, 1, 0.5, true, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |    0
+(1 row)
+
 ```
 Using the *pgr_withPoints* it returns a path of N edge and N+1 vertices
 ```
-1|1|-1|1|0|0
-2|2|-2|-1|0|0
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$(SELECT 1 as pid, 1 as edge_id, 0.5::float as fraction)
+    UNION
+    (SELECT 2, 1, 0.5)$$,
+    -1, -2
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |    0 |        0
+   2 |        2 |   -2 |   -1 |    0 |        0
+(2 rows)
+
 ```
 The *pgr_withPoints* is used when there are no restrictions
 ```
-0|-1|1|0
-1|-2|-1|0
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 0.5, 1, 0.5, true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |    0
+   1 |  -2 |  -1 |    0
+(2 rows)
+
 ```
 The original *_pgr_trsp* code is used when there are restrictions
 ```
-0|-1|1|0
+SELECT * FROM pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 0.5, 1, 0.5, true, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |    0
+(1 row)
+
 ```
 note that pgr_withPoints returns an EMPTY SET when the point is the same
 ```
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$(SELECT 1 as pid, 1 as edge_id, 0.5::float as fraction)
+    UNION
+    (SELECT 2, 1, 0.5)$$,
+    -1, -1
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+(0 rows)
+
 ```
 ## Points on the same edge
 The *pgr_withPoints* is used when there are no restrictions
 * it returns a path of N edges and N+1 vertices
 ```
-0|-1|1|0.3
-1|-2|-1|0
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 0.5, 1, 0.8, true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |  0.3
+   1 |  -2 |  -1 |    0
+(2 rows)
+
 ```
 The original *_pgr_trsp* is used when there are restrictions
 * it returns a path of N edges and N vertex instead of N edge and N+1 vertices
 ```
-0|-1|1|0.3
+SELECT * FROM pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    1, 0.5, 1, 0.8, true, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |  0.3
+(1 row)
+
 ```
 ## (Edges) Undirected graph
 the shortest path obtained with *pgr_withPoints*
 ```
-1|1|-1|4|0.5|0
-2|2|2|2|0.8|0.5
-3|3|-2|-1|0|1.3
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$(SELECT 1 as pid, 4 as edge_id, 0.5::float as fraction)
+    UNION
+    (SELECT 2, 2, 0.8)$$,
+    -1, -2, directed:=false
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    4 |  0.5 |        0
+   2 |        2 |    2 |    2 |  0.8 |      0.5
+   3 |        3 |   -2 |   -1 |    0 |      1.3
+(3 rows)
+
 ```
 The original *_pgr_trsp* is used when there are restrictions
 
 ```
-0|-1|4|0.5
-1|2|2|0.8
-2|-2|-1|0
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    4, 0.5, 2, 0.8, false, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   4 |  0.5
+   1 |   2 |   2 |  0.8
+   2 |  -2 |  -1 |    0
+(3 rows)
+
 ```
 when using restrictions the original *_pgr_trsp* is used internally
 * it returns a path of N edges and N vertex instead of N edge and N+1 vertices
 * it does not return the shortest path.
 
 ```
-0|-1|4|0.5
-1|5|8|1
-2|6|9|1
-3|9|16|1
-4|4|3|1
-5|3|2|0.2
+SELECT * FROM pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    4, 0.5, 2, 0.8, false, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   4 |  0.5
+   1 |   5 |   8 |    1
+   2 |   6 |   9 |    1
+   3 |   9 |  16 |    1
+   4 |   4 |   3 |    1
+   5 |   3 |   2 |  0.2
+(6 rows)
+
 ```
 ## Using a points of interest table
 The points of interest
 ```
-1|1.8|0.4|1|l|0.4|0101000000CDCCCCCCCCCCFC3F9A9999999999D93F|010100000000000000000000409A9999999999D93F
-2|4.2|2.4|15|r|0.4|0101000000CDCCCCCCCCCC10403333333333330340|010100000000000000000010403333333333330340
-3|2.6|3.2|12|l|0.6|0101000000CDCCCCCCCCCC04409A99999999990940|0101000000CDCCCCCCCCCC04400000000000000840
-4|0.3|1.8|6|r|0.3|0101000000333333333333D33FCDCCCCCCCCCCFC3F|0101000000333333333333D33F0000000000000040
-5|2.9|1.8|5|l|0.8|01010000003333333333330740CDCCCCCCCCCCFC3F|01010000000000000000000840CDCCCCCCCCCCFC3F
-6|2.2|1.7|4|b|0.7|01010000009A99999999990140333333333333FB3F|01010000000000000000000040333333333333FB3F
+SELECT * FROM pointsOfInterest;
+ pid |  x  |  y  | edge_id | side | fraction |                  the_geom                  |                  newpoint                  
+-----+-----+-----+---------+------+----------+--------------------------------------------+--------------------------------------------
+   1 | 1.8 | 0.4 |       1 | l    |      0.4 | 0101000000CDCCCCCCCCCCFC3F9A9999999999D93F | 010100000000000000000000409A9999999999D93F
+   2 | 4.2 | 2.4 |      15 | r    |      0.4 | 0101000000CDCCCCCCCCCC10403333333333330340 | 010100000000000000000010403333333333330340
+   3 | 2.6 | 3.2 |      12 | l    |      0.6 | 0101000000CDCCCCCCCCCC04409A99999999990940 | 0101000000CDCCCCCCCCCC04400000000000000840
+   4 | 0.3 | 1.8 |       6 | r    |      0.3 | 0101000000333333333333D33FCDCCCCCCCCCCFC3F | 0101000000333333333333D33F0000000000000040
+   5 | 2.9 | 1.8 |       5 | l    |      0.8 | 01010000003333333333330740CDCCCCCCCCCCFC3F | 01010000000000000000000840CDCCCCCCCCCCFC3F
+   6 | 2.2 | 1.7 |       4 | b    |      0.7 | 01010000009A99999999990140333333333333FB3F | 01010000000000000000000040333333333333FB3F
+(6 rows)
+
 ```
 On *pgr_trsp*, to be able to use the table information:
 * Each parameter has to be extracted explicitly from the table
@@ -260,9 +506,21 @@ On *pgr_trsp*, to be able to use the table information:
   * will always be -1 for the first point
   * will always be -2 for the second point
 ```
-0|-1|1|0.6
-1|2|4|0.7
-2|-2|-1|0
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 6),
+    true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |  0.6
+   1 |   2 |   4 |  0.7
+   2 |  -2 |  -1 |    0
+(3 rows)
+
 ```
 On *pgr_withPoints*, to be able to use the table information:
 * select statement on the *pointsOfInterest* table
@@ -270,70 +528,174 @@ On *pgr_withPoints*, to be able to use the table information:
 * The points pids in the result are not renumbered
 * The points pids in the result are represented with negative sign
 ```
-1|1|-1|1|0.6|0
-2|2|2|4|0.7|0.6
-3|3|-6|-1|0|1.3
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+    -1, -6
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |  0.6 |        0
+   2 |        2 |    2 |    4 |  0.7 |      0.6
+   3 |        3 |   -6 |   -1 |    0 |      1.3
+(3 rows)
+
 ```
 ## routing from/to the same point
 using pgr_withPoints to check results
 expecting EMPTY SET to represent no path found
 ```
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+    -1, -1
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+(0 rows)
+
 ```
 This call uses the replacement function because there are no restrictions
 * Because the pid is not involved the points are considered different
 * it returns a path
 
 ```
-0|-1|1|0
-1|-2|-1|0
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+    true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |    0
+   1 |  -2 |  -1 |    0
+(2 rows)
+
 ```
 pgr_trsp with restrictions use the original code
 * it returns a path of N edges and N vertex instead of N edge and N+1 vertices
 
 ```
-0|-1|1|0
+SELECT * FROM pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+    true, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |    0
+(1 row)
+
 ```
 ## passing in front of other points
 using pgr_withPoints to verify the shortest path from pids (1 to 3)
 ```
-1|1|-1|1|0.6|0
-2|2|2|4|1|0.6
-3|3|5|10|1|1.6
-4|4|10|12|0.6|2.6
-5|5|-3|-1|0|3.2
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+    -1, -3
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |  0.6 |        0
+   2 |        2 |    2 |    4 |    1 |      0.6
+   3 |        3 |    5 |   10 |    1 |      1.6
+   4 |        4 |   10 |   12 |  0.6 |      2.6
+   5 |        5 |   -3 |   -1 |    0 |      3.2
+(5 rows)
+
 ```
 **pgr_withPoints** can be used to see when the route passes in front of other points
 In this example point pid=6 is passed in front of
 ```
-1|1|-1|1|0.6|0
-2|2|2|4|0.7|0.6
-3|3|-6|4|0.3|1.3
-4|4|5|10|1|1.6
-5|5|10|12|0.6|2.6
-6|6|-3|-1|0|3.2
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+    -1, -3, details:=true
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |   -1 |    1 |  0.6 |        0
+   2 |        2 |    2 |    4 |  0.7 |      0.6
+   3 |        3 |   -6 |    4 |  0.3 |      1.3
+   4 |        4 |    5 |   10 |    1 |      1.6
+   5 |        5 |   10 |   12 |  0.6 |      2.6
+   6 |        6 |   -3 |   -1 |    0 |      3.2
+(6 rows)
+
 ```
 Can not be used to see if other points are passed in front of.
 The pointsOfInterest table is not part of the parameter
 ```
-0|-1|1|0.6
-1|2|4|1
-2|5|10|1
-3|10|12|0.6
-4|-2|-1|0
+SELECT * FROM pgr_TRSP(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 3),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
+    true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+   0 |  -1 |   1 |  0.6
+   1 |   2 |   4 |    1
+   2 |   5 |  10 |    1
+   3 |  10 |  12 |  0.6
+   4 |  -2 |  -1 |    0
+(5 rows)
+
 ```
 ## (edges) Routing from a vertex to a point
 Showing *pgr_withPoints* results of the shortest path from vid 6 to pid 1
 ```
-1|1|6|8|1|0
-2|2|5|4|1|1
-3|3|2|1|0.6|2
-4|4|-1|-1|0|2.6
+SELECT * FROM pgr_withPoints(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost  FROM edge_table$$,
+    $$SELECT pid, edge_id, fraction FROM pointsOfInterest$$,
+    6, -1
+);
+ seq | path_seq | node | edge | cost | agg_cost 
+-----+----------+------+------+------+----------
+   1 |        1 |    6 |    8 |    1 |        0
+   2 |        2 |    5 |    4 |    1 |        1
+   3 |        3 |    2 |    1 |  0.6 |        2
+   4 |        4 |   -1 |   -1 |    0 |      2.6
+(4 rows)
+
 ```
 * Vertex 6 is on edge 8 at 1 fraction
 * Vertex 6 is also edge 11 at 0 fraction
 * Undefined behaviour when at least one of the "points" is an actual vertex
 
 ```
+SELECT * FROM pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    8, 1,
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+    true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+(0 rows)
+
+SELECT * FROM pgr_trsp(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    11, 0,
+    (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+    (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+    true, true
+);
+ seq | id1 | id2 | cost 
+-----+-----+-----+------
+(0 rows)
+
 ```
 # pgr_trspViaVertices
 ## pgr_trspViaVertices No path representation differences
@@ -344,92 +706,197 @@ pgr_trspViaVertices uses _pgr_trsp which as mentioned before
 
 Calls to the original function of is no longer allowed without restrictions
 ```
+SELECT * FROM _pgr_trspViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 15, 2],
+    false, true
+);
 ERROR:  Error computing path: Path Not Found
 CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
+SELECT * FROM _pgr_trspViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 15, 2, 1],
+    false, true
+);
 ERROR:  Error computing path: Path Not Found
 CONTEXT:  PL/pgSQL function _pgr_trspviavertices(text,integer[],boolean,boolean,text) line 23 at FOR over SELECT rows
 ```
 **pgr_dijkstraVia** returning what paths of the route it finds or EMPTY SET when non is found
 this case none is found
 ```
+SELECT * FROM pgr_dijkstraVia(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 15, 2],
+    false
+);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+(0 rows)
+
 ```
 this case only from 2 to 1 is found
 ```
-1|3|1|2|1|2|1|1|0|0
-2|3|2|2|1|1|-2|0|1|1
+SELECT * FROM pgr_dijkstraVia(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 15, 2, 1],
+    false
+);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+   1 |       3 |        1 |         2 |       1 |    2 |    1 |    1 |        0 |              0
+   2 |       3 |        2 |         2 |       1 |    1 |   -2 |    0 |        1 |              1
+(2 rows)
+
 ```
 the **pgr_dijkstraVia** used are for complete routes so its marked as **strict:=true**
 therefore the expected result is EMPTY SET to represent no route was found
 ```
+SELECT * FROM pgr_dijkstraVia(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 1, 2],
+    false,
+    strict := true
+);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+(0 rows)
+
 ```
 ## when a path does not exist on the route
 pgr_TRSPViaVertices using the *pgr_dijkstraVia* when there are no restrictions.
 Because there is no path from 1 to 1 then there is no complete route 1 to 1 to 2
 therefore the expected result is EMPTY SET to represent no route was found
 ```
+SELECT * FROM pgr_TRSPViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 1, 2],
+    false, true
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+(0 rows)
+
 ```
 Calls to the original function of is no longer allowed without restrictions
 ```
-1|1|1|1|1
-2|1|2|4|1
-3|1|5|8|1
-4|1|6|9|1
-5|1|9|16|1
-6|1|4|3|1
-7|1|3|2|1
-8|1|2|1|1
-9|2|1|1|1
-10|2|2|-1|0
+SELECT * FROM _pgr_trspViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 1, 2],
+    false, true
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   1 |   1 |    1
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |   9 |    1
+   5 |   1 |   9 |  16 |    1
+   6 |   1 |   4 |   3 |    1
+   7 |   1 |   3 |   2 |    1
+   8 |   1 |   2 |   1 |    1
+   9 |   2 |   1 |   1 |    1
+  10 |   2 |   2 |  -1 |    0
+(10 rows)
+
 ```
 with restrictions the original code is used
 ```
-1|1|1|1|1
-2|1|2|4|1
-3|1|5|8|1
-4|1|6|9|1
-5|1|9|16|1
-6|1|4|3|1
-7|1|3|2|1
-8|1|2|1|1
-9|2|1|1|1
-10|2|2|-1|0
+SELECT * FROM pgr_trspViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 1, 2],
+    false, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   1 |   1 |    1
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |   9 |    1
+   5 |   1 |   9 |  16 |    1
+   6 |   1 |   4 |   3 |    1
+   7 |   1 |   3 |   2 |    1
+   8 |   1 |   2 |   1 |    1
+   9 |   2 |   1 |   1 |    1
+  10 |   2 |   2 |  -1 |    0
+(10 rows)
+
 ```
 Using explicitly the original code
 ```
-1|1|1|1|1
-2|1|2|4|1
-3|1|5|8|1
-4|1|6|9|1
-5|1|9|16|1
-6|1|4|3|1
-7|1|3|2|1
-8|1|2|1|1
-9|2|1|1|1
-10|2|2|-1|0
+SELECT * FROM _pgr_trspViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 1, 2],
+    false, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   1 |   1 |    1
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |   9 |    1
+   5 |   1 |   9 |  16 |    1
+   6 |   1 |   4 |   3 |    1
+   7 |   1 |   3 |   2 |    1
+   8 |   1 |   2 |   1 |    1
+   9 |   2 |   1 |   1 |    1
+  10 |   2 |   2 |  -1 |    0
+(10 rows)
+
 ```
 ## from 2 to 3 to 2
 dijkstra via shows the shortest route on the two paths
 ```
-1|1|1|2|3|2|2|1|0|0
-2|1|2|2|3|3|-1|0|1|1
-3|2|1|3|2|3|2|1|0|1
-4|2|2|3|2|2|-2|0|1|2
+SELECT * FROM pgr_dijkstraVia(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[2, 3, 2],
+    false 
+);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+   1 |       1 |        1 |         2 |       3 |    2 |    2 |    1 |        0 |              0
+   2 |       1 |        2 |         2 |       3 |    3 |   -1 |    0 |        1 |              1
+   3 |       2 |        1 |         3 |       2 |    3 |    2 |    1 |        0 |              1
+   4 |       2 |        2 |         3 |       2 |    2 |   -2 |    0 |        1 |              2
+(4 rows)
+
 ```
 the replacement function **pgr_dijkstraVia** is used because there are no restrictions
 ```
-1|1|2|2|1
-2|2|3|2|1
-3|2|2|-1|0
+SELECT * FROM pgr_TRSPViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[2, 3, 2],
+    false, 
+    true
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   2 |    1
+   2 |   2 |   3 |   2 |    1
+   3 |   2 |   2 |  -1 |    0
+(3 rows)
+
 ```
 Calls to the original function of is no longer allowed without restrictions
 ```
-1|1|2|4|1
-2|1|5|8|1
-3|1|6|9|1
-4|1|9|16|1
-5|1|4|3|1
-6|2|3|2|1
-7|2|2|-1|0
+SELECT * FROM _pgr_trspViaVertices(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[2, 3, 2],
+    false, 
+    true
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |   2 |   4 |    1
+   2 |   1 |   5 |   8 |    1
+   3 |   1 |   6 |   9 |    1
+   4 |   1 |   9 |  16 |    1
+   5 |   1 |   4 |   3 |    1
+   6 |   2 |   3 |   2 |    1
+   7 |   2 |   2 |  -1 |    0
+(7 rows)
+
 ```
 # pgr_trspViaEdges
 *pgr_trspViaEdges* will use the original code when
@@ -443,14 +910,24 @@ What it returns
 
 Exaple execution
 ```
-1|1|-1|1|0.9
-2|1|2|4|1
-3|1|5|8|1
-4|1|6|9|1
-5|1|9|16|1
-6|1|4|3|1
-7|1|3|2|1
-8|2|2|1|0.5
+SELECT * FROM pgr_trspViaEdges(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 2, 1], ARRAY[0.1,0.5,0.5],
+    false, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.9
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |   8 |    1
+   4 |   1 |   6 |   9 |    1
+   5 |   1 |   9 |  16 |    1
+   6 |   1 |   4 |   3 |    1
+   7 |   1 |   3 |   2 |    1
+   8 |   2 |   2 |   1 |  0.5
+(8 rows)
+
 ```
 A temporay wraper function is used when:
 * There are no restrictions
@@ -471,12 +948,21 @@ Note: I do not mention the wrapper name due to the fact that this is not officia
 Note: I will use *_pgr_withPointsVia* as the wrapper name just for sake of this notes
 Example excution
 ```
-1|1|1|-1|-2|-1|1|0.1|0|0
-2|1|2|-1|-2|2|2|0.5|0.1|0.1
-3|1|3|-1|-2|-2|-1|0|0.6|0.6
-4|2|1|-2|-3|-2|2|0.5|0|0.6
-5|2|2|-2|-3|2|1|0.5|0.5|1.1
-6|2|3|-2|-3|-3|-2|0|1|1.6
+SELECT * FROM _pgr_withPointsVia(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 2, 1], ARRAY[0.1,0.5,0.5],
+    directed := false
+);
+ seq | path_id | path_seq | start_vid | end_vid | node | edge | cost | agg_cost | route_agg_cost 
+-----+---------+----------+-----------+---------+------+------+------+----------+----------------
+   1 |       1 |        1 |        -1 |      -2 |   -1 |    1 |  0.1 |        0 |              0
+   2 |       1 |        2 |        -1 |      -2 |    2 |    2 |  0.5 |      0.1 |            0.1
+   3 |       1 |        3 |        -1 |      -2 |   -2 |   -1 |    0 |      0.6 |            0.6
+   4 |       2 |        1 |        -2 |      -3 |   -2 |    2 |  0.5 |        0 |            0.6
+   5 |       2 |        2 |        -2 |      -3 |    2 |    1 |  0.5 |      0.5 |            1.1
+   6 |       2 |        3 |        -2 |      -3 |   -3 |   -2 |    0 |        1 |            1.6
+(6 rows)
+
 ```
 ## pgr_trspViaEdges No path representation differences
 This example no path is found (edge 17 is disconnected) from the big graph.
@@ -484,7 +970,16 @@ This example no path is found (edge 17 is disconnected) from the big graph.
 * Undefined behaviour
 
 ```
-1||||
+SELECT * FROM pgr_trspViaEdges(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 17, 1], ARRAY[0,0.5,0.5],
+    false, true
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |     |     |     |     
+(1 row)
+
 ```
 This example no path is found (edge 17 is disconnected) from the big graph.
 * Has a restriction
@@ -508,6 +1003,16 @@ This example no path is found (edge 17 is disconnected) from the big graph.
 * returns EMPTY SET to represent no route
 
 ```
+SELECT * FROM pgr_trspViaEdges(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[1, 17, 1], ARRAY[0.1,0.5,0.5],
+    false, 
+    true
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+(0 rows)
+
 ```
 ## (pgr_trspViaEdges) Using the pointsOfInterest table
 Only routing points
@@ -515,38 +1020,93 @@ when *_pgr_withPointsVia* is used
 * the renumbering still takes place
 
 ```
-1|1|-1|1|0.4
-2|1|2|4|0.3
-3|1|-3|4|0.3
-4|1|5|10|1
-5|1|10|12|0.6
-6|1|-2|-1|0
-7|2|-2|12|0.6
-8|2|10|10|1
-9|2|5|4|0.3
-10|2|-3|-2|0
+SELECT * FROM pgr_trspViaEdges(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[
+        (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+        (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 3),
+        (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6)],
+    ARRAY[
+        (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+        (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
+        (SELECT fraction  FROM pointsOfInterest WHERE pid = 6)],
+    false, 
+    true
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.4
+   2 |   1 |   2 |   4 |  0.3
+   3 |   1 |  -3 |   4 |  0.3
+   4 |   1 |   5 |  10 |    1
+   5 |   1 |  10 |  12 |  0.6
+   6 |   1 |  -2 |  -1 |    0
+   7 |   2 |  -2 |  12 |  0.6
+   8 |   2 |  10 |  10 |    1
+   9 |   2 |   5 |   4 |  0.3
+  10 |   2 |  -3 |  -2 |    0
+(10 rows)
+
 ```
 Only routing points
 when originalcode is used (because there is a restriction)
 
 ```
-1|1|-1|1|0.6
-2|1|2|4|1
-3|1|5|10|1
-4|1|10|12|1
-5|2|11|13|1
-6|2|12|15|1
-7|2|9|9|1
-8|2|6|8|1
-9|2|5|4|0.3
+SELECT * FROM pgr_trspViaEdges(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[
+        (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+        (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 3),
+        (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 6)],
+    ARRAY[
+        (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+        (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
+        (SELECT fraction  FROM pointsOfInterest WHERE pid = 6)],
+    false, true,
+    $$SELECT 100::float AS to_cost, 25::INTEGER AS target_id, '32, 33'::TEXT AS via_path$$
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.6
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |  10 |    1
+   4 |   1 |  10 |  12 |    1
+   5 |   2 |  11 |  13 |    1
+   6 |   2 |  12 |  15 |    1
+   7 |   2 |   9 |   9 |    1
+   8 |   2 |   6 |   8 |    1
+   9 |   2 |   5 |   4 |  0.3
+(9 rows)
+
 ```
 Routing points & vertices
 * vertex 6 is on edge 11 with fraction 0
 * Undefined behavior
 ```
-1|1|-1|1|0.6
-2|1|2|4|1
-3|1|5|10|1
-4|1|10|12|0.6
-5|1|-2|-1|0
+SELECT * FROM pgr_trspViaEdges(
+    $$SELECT id::INTEGER, source::INTEGER, target::INTEGER, cost, reverse_cost FROM edge_table$$,
+    ARRAY[
+        (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 1),
+        (SELECT edge_id::INTEGER  FROM pointsOfInterest WHERE pid = 3),
+        11],
+    ARRAY[
+        (SELECT fraction  FROM pointsOfInterest WHERE pid = 1),
+        (SELECT fraction  FROM pointsOfInterest WHERE pid = 3),
+        0],
+    false, 
+    true
+);
+ seq | id1 | id2 | id3 | cost 
+-----+-----+-----+-----+------
+   1 |   1 |  -1 |   1 |  0.6
+   2 |   1 |   2 |   4 |    1
+   3 |   1 |   5 |  10 |    1
+   4 |   1 |  10 |  12 |  0.6
+   5 |   1 |  -2 |  -1 |    0
+(5 rows)
+
 ```
+BEGIN;
+BEGIN
+ROLLBACK;
+ROLLBACK
