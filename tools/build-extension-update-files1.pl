@@ -211,50 +211,89 @@ sub generate_upgrade_script {
     # Special cases
     #------------------------------------
     
-    if ($old_version =~ /2.[10].0/) {
-        push @commands, drop_special_case_function("pgr_version()",  "Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_apspjohnson(text)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_apspwarshall(text,boolean,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
-        push @commands, drop_special_case_function("pgr_kdijkstracost(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
+
+    if ($new_version =~ /(2.4.[01])|(2.5.0)/) {
+
+
+        if ($old_version =~ /2.0.0/) {
+            push @commands, drop_special_case_function("pgr_dijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        }
+
+
+        if ($old_version =~ /2.1.0/) {
+            push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", "cannot change name of input parameter has_reverse_cost");
+            push @commands, drop_special_case_function("_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+            push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
+        }
+
+        if ($old_version =~ /2.[01].0/) {
+            push @commands, drop_special_case_function("pgr_version()",  "v2.2 Change: Row type defined by OUT parameters is different");
+            push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "cannot change name of input parameter sql");
+            push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  "cannot change name of input parameter sql");
+            push @commands, drop_special_case_function("pgr_apspjohnson(text)",  "cannot change name of input parameter sql");
+            push @commands, drop_special_case_function("pgr_apspwarshall(text,boolean,boolean)",  "cannot change name of input parameter sql");
+            push @commands, drop_special_case_function("pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
+            push @commands, drop_special_case_function("pgr_kdijkstracost(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
+        }
+
+
+        if ($old_version =~ /(2.1.0)|(2.2.[01234])/) {
+            push @commands, drop_special_case_function("pgr_gsoc_vrppdtw(text,integer,integer)", "cannot change return type of existing function name");
+        }
+
+        if ($old_version =~ /(2.[01].0)|(2.2.[01234])/) {
+            push @commands, drop_special_case_function("pgr_astar(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        }
+
+        if ($old_version =~ /(2.[01].0)|(2.2.[01234])|(2.3.[012])/) {
+            push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        }
+
     }
 
-    if ($old_version =~ /2.0.0/) {
-        push @commands, drop_special_case_function("pgr_dijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
-    }
-     
-    if ($old_version =~ /2.1.0/) {
-        push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", "cannot change name of input parameter has_reverse_cost");
+    if ($new_version =~ /(2.4.[01])/) {
+
+        if ($old_version =~ /(2.1.0)|(2.2.[01234])/) {
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_v");
+        }
+
+        if ($old_version =~ /(2.1.0)/) {
+            push @commands, drop_special_case_function("_pgr_dijkstra(text,bigint,bigint,boolean,boolean)",  "cannot change name of input parameter has_rcost");
+            push @commands, drop_special_case_function("_pgr_dijkstra(text,bigint,anyarray,boolean,boolean)",  "cannot change name of input parameter has_rcost");
+            push @commands, drop_special_case_function("_pgr_dijkstra(text,anyarray,bigint,boolean,boolean)",  "cannot change name of input parameter end_vids");
+            push @commands, drop_special_case_function("_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean)",  "cannot change name of input parameter has_rcost");
+        }
 
 
-        push @commands, drop_special_case_function("_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
 
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter sql");
-    }
-
-    if ($old_version =~ /(2.2.[01234])|(2.1.0)/) {
-        push @commands, drop_special_case_function("pgr_gsoc_vrppdtw(text,integer,integer)", "cannot change return type of existing function name");
-    }
-
-    if ($old_version =~ /(2.2.[01234])|(2.1.0)|(2.0.0)/) {
-        push @commands, drop_special_case_function("pgr_astar(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
-    }
-
-    if ($old_version =~ /(2.4.[01])/) {
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter edges_sql");
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_vid");
-        push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        if ($old_version =~ /(2.3.[012])/) {
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_v");
+        }
     }
 
-    if ($old_version =~ /(2.4.[01])|(2.3.[012])/) {
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     "Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)",   "Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)",   "Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,anyarray,boolean)", "Row type defined by OUT parameters is different");
+
+    if ( $new_version =~ /2.5.0/) {
+        if ($old_version =~ /2.1.0/) {
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
+        }
+
+        if ($old_version =~ /(2.4.[01])/) {
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter edges_sql");
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_vid");
+            push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+        }
+
+        # New functions on 2.3
+        # Changes signatrue on 2.5 
+        if ($old_version =~ /(2.3.[013])|(2.4.[01])/) {
+            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     "Row type defined by OUT parameters is different");
+            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)",   "Row type defined by OUT parameters is different");
+            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)",   "Row type defined by OUT parameters is different");
+            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,anyarray,boolean)", "Row type defined by OUT parameters is different");
+        }
     }
 
     # analyze types
@@ -307,7 +346,7 @@ sub write_script {
 
     # open the extension update script or die if we can't
     open(OUT, ">$output_directory/pgrouting--$old_version--$new_version.sql")
-        || die "ERROR: failed to create '$output_directory/pgrouting-pgrouting--$old_version--$new_version.sql' : $!\n";
+    || die "ERROR: failed to create '$output_directory/pgrouting-pgrouting--$old_version--$new_version.sql' : $!\n";
 
     # write out the header and the commands to clean up the old extension
     print OUT <<EOF;
@@ -332,22 +371,22 @@ sub write_script {
 
 EOF
 
-    # open the new extension.sql file
-    # and load it into an array
-    open(IN, $curr_sql_file_name) ||
-        die "ERROR: Failed to find '$curr_sql_file_name' : $!\n";
-    my @file = <IN>;
-    close(IN);
+# open the new extension.sql file
+# and load it into an array
+open(IN, $curr_sql_file_name) ||
+die "ERROR: Failed to find '$curr_sql_file_name' : $!\n";
+my @file = <IN>;
+close(IN);
 
-    # comment out the TYPEs that the new extension defines
-    # that already existed in the old extension
-    # so they will not abort the script
-    remove_types(\@file, $types);
+# comment out the TYPEs that the new extension defines
+# that already existed in the old extension
+# so they will not abort the script
+remove_types(\@file, $types);
 
-    # append the new extension SQL to the update script
-    print OUT "-- @file";
-    close(OUT);
-    print "  -- Created lib/pgrouting--$old_version--$new_version.sql\n";
+# append the new extension SQL to the update script
+print OUT "-- @file";
+close(OUT);
+print "  -- Created lib/pgrouting--$old_version--$new_version.sql\n";
 }
 
 
@@ -361,7 +400,7 @@ sub remove_types {
                 next unless $x =~ m/create\s+type\s+$type\b/i;
                 $x = "-- $x";
                 $state = 2
-                    unless $x =~ m/create\s+type\s+$type\s+as\s*\([^\)]+\)/i;
+                unless $x =~ m/create\s+type\s+$type\s+as\s*\([^\)]+\)/i;
             }
             elsif ($state == 2) {
                 $x = "-- $x";
