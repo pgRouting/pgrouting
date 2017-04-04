@@ -39,7 +39,13 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_pointtoid(geometry,double precision,
 DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
 
 
- -- Row type defined by OUT parameters is different
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
+
+
+ -- v2.2 Change: Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
 DROP FUNCTION IF EXISTS pgr_version();
@@ -83,20 +89,20 @@ DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean
 
  -- cannot change name of input parameter sql
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
  -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
+
+
+ -- cannot change name of input parameter edges_sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
 -- now install the new extension
@@ -202,7 +208,7 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
      RETURN QUERY SELECT '2.5.0'::varchar AS version,
                          'v2.5.0-dev'::varchar AS tag,
                          ''::varchar AS hash,
-                         'fix/update-scripts'::varchar AS branch,
+                         ''::varchar AS branch,
                          '1.54.0'::varchar AS boost;
  END;
  $BODY$

@@ -46,10 +46,13 @@ if [ ! -f build/lib/pgrouting--$CURRENT.sql ]; then
    exit 1
 fi
 
+dropdb --if-exists ___test_update
+
 cp build/lib/pgrouting--$CURRENT.sql tools/sql-update-scripts/pgrouting--$CURRENT.sql
 sh tools/release-scripts/get_signatures.sh $CURRENT ____sigs_routing____ sigs
 sh tools/build-extension-update-files1.pl $CURRENT
 cp tools/sql-update-scripts/* build/lib
+
 cd build
 sudo make install
 cd ..

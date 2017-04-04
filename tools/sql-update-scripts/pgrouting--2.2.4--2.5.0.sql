@@ -55,6 +55,12 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,b
 DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
+
+
 -- now install the new extension
 
 -- \echo Use "CREATE EXTENSION pgrouting" to load this file. \quit
@@ -158,7 +164,7 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
      RETURN QUERY SELECT '2.5.0'::varchar AS version,
                          'v2.5.0-dev'::varchar AS tag,
                          ''::varchar AS hash,
-                         'fix/update-scripts'::varchar AS branch,
+                         ''::varchar AS branch,
                          '1.54.0'::varchar AS boost;
  END;
  $BODY$

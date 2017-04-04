@@ -71,7 +71,25 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_trspviavertices(text,integer[],boole
 DROP FUNCTION IF EXISTS pgr_trspviavertices(text,integer[],boolean,boolean,text);
 
 
- -- Row type defined by OUT parameters is different
+ -- cannot change name of input parameter has_reverse_cost
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
+DROP FUNCTION IF EXISTS pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+
+
+ -- v2.2 Change: Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
 DROP FUNCTION IF EXISTS pgr_version();
@@ -113,30 +131,6 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstracost(text,integer,integer[]
 DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
 
 
- -- cannot change name of input parameter has_reverse_cost
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
-DROP FUNCTION IF EXISTS pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
-
-
  -- cannot change return type of existing function name
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_gsoc_vrppdtw(text,integer,integer);
@@ -147,6 +141,18 @@ DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
+
+
+ -- cannot change name of input parameter start_v
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
 
 
 -- now install the new extension
@@ -252,7 +258,7 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
      RETURN QUERY SELECT '2.5.0'::varchar AS version,
                          'v2.5.0-dev'::varchar AS tag,
                          ''::varchar AS hash,
-                         'fix/update-scripts'::varchar AS branch,
+                         ''::varchar AS branch,
                          '1.54.0'::varchar AS boost;
  END;
  $BODY$

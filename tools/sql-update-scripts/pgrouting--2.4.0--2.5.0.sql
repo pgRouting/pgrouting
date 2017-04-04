@@ -87,13 +87,12 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
-
-
- -- Row type defined by OUT parameters is different
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,bigint,boolean);
-DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,bigint,boolean);
-
+ UPDATE pg_proc set
+            proallargtypes = '{25,20,20,16,23,23,23,20,20,701,701}',
+             proargmodes = '{i,i,i,i,o,o,o,o,o,o,o}',
+             proargnames = '{"","","","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'  
+         WHERE proallargtypes = '{25,20,20,16,23,23,20,20}'
+             and proname = 'pgr_edgedisjointpaths';
 
  -- Row type defined by OUT parameters is different
 
@@ -216,7 +215,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
      RETURN QUERY SELECT '2.5.0'::varchar AS version,
                          'v2.5.0-dev'::varchar AS tag,
                          ''::varchar AS hash,
-                         'fix/update-scripts'::varchar AS branch,
+                         ''::varchar AS branch,
                          '1.54.0'::varchar AS boost;
  END;
  $BODY$

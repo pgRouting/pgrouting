@@ -224,7 +224,6 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", "cannot change name of input parameter has_reverse_cost");
             push @commands, drop_special_case_function("_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
             push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
-            push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
         }
 
         if ($old_version =~ /2.[01].0/) {
@@ -264,6 +263,7 @@ sub generate_upgrade_script {
             push @commands, drop_special_case_function("_pgr_dijkstra(text,bigint,anyarray,boolean,boolean)",  "cannot change name of input parameter has_rcost");
             push @commands, drop_special_case_function("_pgr_dijkstra(text,anyarray,bigint,boolean,boolean)",  "cannot change name of input parameter end_vids");
             push @commands, drop_special_case_function("_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean)",  "cannot change name of input parameter has_rcost");
+            push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
         }
 
 
@@ -276,24 +276,7 @@ sub generate_upgrade_script {
 
 
     if ( $new_version =~ /2.5.0/) {
-        if ($old_version =~ /2.1.0/) {
-            push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
-        }
-
-        if ($old_version =~ /(2.4.[01])/) {
-            push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter edges_sql");
-            push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_vid");
-            push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
-        }
-
-        # New functions on 2.3
-        # Changes signatrue on 2.5 
-        if ($old_version =~ /(2.3.[013])|(2.4.[01])/) {
-            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     "Row type defined by OUT parameters is different");
-            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)",   "Row type defined by OUT parameters is different");
-            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)",   "Row type defined by OUT parameters is different");
-            push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,anyarray,boolean)", "Row type defined by OUT parameters is different");
-        }
+        push @commands, version_2_5_x($old_version);
     }
 
     # analyze types
@@ -328,6 +311,47 @@ sub generate_upgrade_script {
 
     write_script($old_version, $new_version, \@types2remove, join('', @commands));
 }
+
+sub version_2_5_x {
+    my ($old_version) = @_;
+    my @commands = ();
+
+    if ($old_version =~ /2.0.0/) {
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "cannot change name of input parameter edges_sql");
+    }
+
+    if ($old_version =~ /2.1.0/) {
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_v");
+    }
+
+    if ($old_version =~ /(2.4.[01])/) {
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter edges_sql");
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_vid");
+        push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+    }
+
+    # New functions on 2.3
+    # Changes signatrue on 2.5 
+    if ($old_version =~ /(2.3.[012])|(2.4.[01])/) {
+
+
+        # pgr_edgedisjointpaths(text,bigint,bigint,boolean)
+        my $edgedisjointpaths_one_to_one = " UPDATE pg_proc set
+            proallargtypes = '{25,20,20,16,23,23,23,20,20,701,701}',
+             proargmodes = '{i,i,i,i,o,o,o,o,o,o,o}',
+             proargnames = '{\"\",\"\",\"\",\"directed\",\"seq\",\"path_id\",\"path_seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'  
+         WHERE proallargtypes = '{25,20,20,16,23,23,20,20}'
+             and proname = 'pgr_edgedisjointpaths';";
+
+        #push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     "Row type defined by OUT parameters is different");
+        push @commands, $edgedisjointpaths_one_to_one;
+        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)",   "Row type defined by OUT parameters is different");
+        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)",   "Row type defined by OUT parameters is different");
+        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,anyarray,boolean)", "Row type defined by OUT parameters is different");
+    }
+    return @commands;
+}
+
 
 
 sub drop_special_case_function {
