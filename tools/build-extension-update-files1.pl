@@ -337,12 +337,12 @@ sub version_2_5_x {
 
         # pgr_edgedisjointpaths(text,bigint,bigint,boolean)
         my $edgedisjointpaths_one_to_one = "
-        UPDATE pg_proc set
-            proallargtypes = '{25,20,20,16,23,23,23,20,20,701,701}',
-             proargmodes = '{i,i,i,i,o,o,o,o,o,o,o}',
-             proargnames = '{\"\",\"\",\"\",\"directed\",\"seq\",\"path_id\",\"path_seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'  
-        WHERE proallargtypes = '{25,20,20,16,23,23,20,20}'
-             and proname = 'pgr_edgedisjointpaths';\n";
+UPDATE pg_proc set
+    proallargtypes = '{25,20,20,16,23,23,23,20,20,701,701}',
+     proargmodes = '{i,i,i,i,o,o,o,o,o,o,o}',
+     proargnames = '{\"\",\"\",\"\",\"directed\",\"seq\",\"path_id\",\"path_seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'  
+WHERE proallargtypes = '{25,20,20,16,23,23,20,20}'
+     and proname = 'pgr_edgedisjointpaths';\n";
 
         #push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     "Row type defined by OUT parameters is different");
         push @commands, $edgedisjointpaths_one_to_one;
