@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ********************************************************************PGR-GNU*/
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-    sql text,
-    start_v anyarray,
+    edges_sql text,
+    start_vids anyarray,
     distance FLOAT,
     directed BOOLEAN DEFAULT TRUE,
     equicost BOOLEAN DEFAULT FALSE,
@@ -40,7 +40,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
     edges_sql text,
-    start_v bigint,
+    start_vid bigint,
     distance FLOAT8,
     directed BOOLEAN DEFAULT TRUE,
     OUT seq integer,

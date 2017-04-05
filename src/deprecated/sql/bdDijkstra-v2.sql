@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- V2 signature
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
 RETURNS SETOF pgr_costresult AS
 $BODY$
 DECLARE

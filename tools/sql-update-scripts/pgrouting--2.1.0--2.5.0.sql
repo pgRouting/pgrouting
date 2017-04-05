@@ -71,24 +71,6 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_trspviavertices(text,integer[],boole
 DROP FUNCTION IF EXISTS pgr_trspviavertices(text,integer[],boolean,boolean,text);
 
 
- -- cannot change name of input parameter has_reverse_cost
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
-DROP FUNCTION IF EXISTS pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-
-
  -- v2.2 Change: Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
@@ -131,10 +113,41 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstracost(text,integer,integer[]
 DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
 
 
+ -- cannot change name of input parameter has_reverse_cost
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
+DROP FUNCTION IF EXISTS pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+
+
+ ------------------------------------------
+-- New functions on 2.1
+-- Signature change on 2.3
+------------------------------------------
+
+
  -- cannot change return type of existing function name
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_gsoc_vrppdtw(text,integer,integer);
 DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
+
+
+ ------------------------------------------
+-- New functions on 2.0
+-- Signature change on 2.3
+-- Deprecated on 2.4
+------------------------------------------
 
 
  -- cannot change name of input parameter sql
@@ -143,16 +156,35 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,b
 DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
+ ------------------------------------------
+-- New functions on 2.1
+-- Signature change on 2.4
+------------------------------------------
+
+
  -- cannot change name of input parameter sql
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
 
 
  -- cannot change name of input parameter start_v
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
 DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
+
+
+ ------------------------------------------
+-- New functions on 2.0
+-- Signature change on 2.4
+-- Also Deprecated on 2.4
+------------------------------------------
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
 
 
 -- now install the new extension
@@ -1923,8 +1955,8 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean
  
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-     sql text,
-     start_v anyarray,
+     edges_sql text,
+     start_vids anyarray,
      distance FLOAT,
      directed BOOLEAN DEFAULT TRUE,
      equicost BOOLEAN DEFAULT FALSE,
@@ -1941,7 +1973,7 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
      edges_sql text,
-     start_v bigint,
+     start_vid bigint,
      distance FLOAT8,
      directed BOOLEAN DEFAULT TRUE,
      OUT seq integer,
@@ -6152,7 +6184,7 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean
  
  
  -- V2 signature
- CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
  RETURNS SETOF pgr_costresult AS
  $BODY$
  DECLARE

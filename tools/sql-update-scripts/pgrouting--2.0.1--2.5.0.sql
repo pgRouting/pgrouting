@@ -39,6 +39,93 @@ ALTER EXTENSION pgrouting DROP FUNCTION pgr_pointtoid(geometry,double precision,
 DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
 
 
+ ------------------------------------------
+-- New functions on 2.0
+-- Signature change on 2.1
+-- Deprecated on 2.1
+------------------------------------------
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);
+
+
+ -- v2.2 Change: Row type defined by OUT parameters is different
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
+DROP FUNCTION IF EXISTS pgr_version();
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
+DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_trsp(text,integer,integer,boolean,boolean,text);
+DROP FUNCTION IF EXISTS pgr_trsp(text,integer,integer,boolean,boolean,text);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspjohnson(text);
+DROP FUNCTION IF EXISTS pgr_apspjohnson(text);
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspwarshall(text,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_apspwarshall(text,boolean,boolean);
+
+
+ -- cannot change name of input parameter source_vid
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
+
+
+ -- cannot change name of input parameter source_vid
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
+
+
+ ------------------------------------------
+-- New functions on 2.0
+-- Signature change on 2.3
+-- Deprecated on 2.4
+------------------------------------------
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
+
+
+ ------------------------------------------
+-- New functions on 2.0
+-- Signature change on 2.4
+-- Also Deprecated on 2.4
+------------------------------------------
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
+
+
 -- now install the new extension
 
 -- \echo Use "CREATE EXTENSION pgrouting" to load this file. \quit
@@ -1807,8 +1894,8 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-     sql text,
-     start_v anyarray,
+     edges_sql text,
+     start_vids anyarray,
      distance FLOAT,
      directed BOOLEAN DEFAULT TRUE,
      equicost BOOLEAN DEFAULT FALSE,
@@ -1825,7 +1912,7 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
      edges_sql text,
-     start_v bigint,
+     start_vid bigint,
      distance FLOAT8,
      directed BOOLEAN DEFAULT TRUE,
      OUT seq integer,
@@ -6036,7 +6123,7 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
  
  
  -- V2 signature
- CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
  RETURNS SETOF pgr_costresult AS
  $BODY$
  DECLARE

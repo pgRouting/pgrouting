@@ -71,22 +71,10 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,bigint,bigint,text,boo
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text,boolean);
 
 
- -- cannot change name of input parameter edges_sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
-
-
- -- cannot change name of input parameter start_vid
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
+ ------------------------------------------
+-- New functions on 2.3
+-- Signature change on 2.5
+------------------------------------------
 
 
  -- Row type defined by OUT parameters is different
@@ -1881,8 +1869,8 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-     sql text,
-     start_v anyarray,
+     edges_sql text,
+     start_vids anyarray,
      distance FLOAT,
      directed BOOLEAN DEFAULT TRUE,
      equicost BOOLEAN DEFAULT FALSE,
@@ -1899,7 +1887,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
      edges_sql text,
-     start_v bigint,
+     start_vid bigint,
      distance FLOAT8,
      directed BOOLEAN DEFAULT TRUE,
      OUT seq integer,
@@ -6110,7 +6098,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  
  -- V2 signature
- CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
  RETURNS SETOF pgr_costresult AS
  $BODY$
  DECLARE
