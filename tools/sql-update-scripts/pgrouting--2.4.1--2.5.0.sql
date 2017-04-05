@@ -71,9 +71,10 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,bigint,bigint,text,boo
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text,boolean);
 
 
- ------------------------------------------
--- New functions on 2.3
--- Signature change on 2.5
+------------------------------------------
+--    New functions:  2.3
+-- Signature change:  2.5
+-- Inner query changed: 2.5
 ------------------------------------------
 
 
@@ -6696,7 +6697,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
  
  
  -- OLD SIGNATURE
- CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id INTEGER, distance FLOAT, directed BOOLEAN, has_reverse_cost BOOLEAN)
    RETURNS SETOF pgr_costresult AS
    $BODY$
    DECLARE

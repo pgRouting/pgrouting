@@ -125,18 +125,18 @@ update_test 2.4.0 $CURRENT
 #------------------------------------
 
 update_test 2.3.2 $CURRENT
-update_test 2.3.1 $CURRENT
-update_test 2.3.0 $CURRENT
+#update_test 2.3.1 $CURRENT
+#update_test 2.3.0 $CURRENT
 
 #------------------------------------
 ### updates from 2.2.x
 #------------------------------------
 
 update_test 2.2.4 $CURRENT
-update_test 2.2.3 $CURRENT
-update_test 2.2.2 $CURRENT
-update_test 2.2.1 $CURRENT
-update_test 2.2.0 $CURRENT
+#update_test 2.2.3 $CURRENT
+#update_test 2.2.2 $CURRENT
+#update_test 2.2.1 $CURRENT
+#update_test 2.2.0 $CURRENT
 
 
 #------------------------------------

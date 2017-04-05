@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
 -- OLD SIGNATURE
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id INTEGER, distance FLOAT, directed BOOLEAN, has_reverse_cost BOOLEAN)
   RETURNS SETOF pgr_costresult AS
   $BODY$
   DECLARE

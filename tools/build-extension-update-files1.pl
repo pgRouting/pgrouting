@@ -49,6 +49,13 @@ use vars qw/*name *dir *prune/;
 *dir    = *File::Find::dir;
 *prune  = *File::Find::prune;
 
+my $version_2_0 = qr/(2.0.[\d+])/;
+my $version_2_1 = qr/(2.1.[\d+])/;
+my $version_2_2 = qr/(2.2.[\d+])/;
+my $version_2_3 = qr/(2.3.[\d+])/;
+my $version_2_4 = qr/(2.4.[\d+])/;
+my $version_2_5 = qr/(2.5.[\d+])/;
+
 
 sub Usage {
     die "Usage:\nFrom the root of the repository:
@@ -212,30 +219,25 @@ sub generate_upgrade_script {
     # Special cases
     #------------------------------------
     
-    my $version_2_0 = qr/(2.0.[\d+])/;
-    my $version_2_1 = qr/(2.1.[\d+])/;
-    my $version_2_2 = qr/(2.2.[\d+])/;
-    my $version_2_3 = qr/(2.3.[\d+])/;
-    my $version_2_4 = qr/(2.4.[\d+])/;
-    my $version_2_5 = qr/(2.5.[\d+])/;
 
-
-
-    if ($old_version =~ /$version_2_0/) {
+    # file tested for 2.4 & 2.5
+    if ($old_version =~ /$version_2_0/ and $new_version !~ /$version_2_0/) {
         push @commands,  "\n\n ------------------------------------------\n";
-        push @commands,  "-- New functions on 2.0\n";
-        push @commands,  "-- Signature change on 2.1\n";
-        push @commands,  "-- Deprecated on 2.1\n";
+        push @commands,  "--    New functions:  2.0\n";
+        push @commands,  "-- Signature change:  2.1\n";
+        push @commands,  "--       Deprecated:  2.1\n";
         push @commands,  "------------------------------------------\n";
 
         push @commands, drop_special_case_function("pgr_dijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
     }
 
-    if ($old_version =~ /$version_2_0|$version_2_1/) {
-        push @commands, drop_special_case_function("pgr_version()",  "v2.2 Change: Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  "cannot change name of input parameter sql");
+    if ($old_version =~ /$version_2_0|$version_2_1/ and $new_version !~ /$version_2_0|$version_2_1/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--    New functions:  2.0\n";
+        push @commands,  "-- Signature change:  2.2\n";
+        push @commands,  "--       Deprecated:  2.2\n";
+        push @commands,  "------------------------------------------\n";
+
         push @commands, drop_special_case_function("pgr_apspjohnson(text)",  "cannot change name of input parameter sql");
         push @commands, drop_special_case_function("pgr_apspwarshall(text,boolean,boolean)",  "cannot change name of input parameter sql");
         push @commands, drop_special_case_function("pgr_kdijkstrapath(text,integer,integer[],boolean,boolean)",  "cannot change name of input parameter source_vid");
@@ -243,17 +245,66 @@ sub generate_upgrade_script {
     }
 
 
+    if ($old_version =~ /$version_2_0|$version_2_1/ and $new_version !~ /$version_2_0|$version_2_1/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--    New functions:  2.0\n";
+        push @commands,  "--       Deprecated:  2.1\n";
+        push @commands,  "-- Signature change:  2.2\n";
+        push @commands,  "------------------------------------------\n";
 
-    if ($old_version =~ /$version_2_1/) {
+        push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "cannot change name of input parameter sql");
+    }
+
+    if ($old_version =~ /$version_2_0|$version_2_1/ and $new_version !~ /$version_2_0|$version_2_1/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--    New functions:  2.0\n";
+        push @commands,  "-- Signature change:  2.2\n";
+        push @commands,  "------------------------------------------\n";
+
+        push @commands, drop_special_case_function("pgr_version()",  "Change: Row type defined by OUT parameters is different");
+        push @commands, drop_special_case_function("pgr_trsp(text,integer,integer,boolean,boolean,text)",  "cannot change name of input parameter sql");
+    }
+
+
+    if ($old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3/
+            and $new_version !~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--    New functions:  2.0\n";
+        push @commands,  "-- Signature change:  2.4\n";
+        push @commands,  "--       Deprecated:  2.4\n";
+        push @commands,  "------------------------------------------\n";
+
+        push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+    }
+    
+
+
+    if ($old_version =~ /$version_2_1/ and $new_version !~ /$version_2_1/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--    New functions:  2.1\n";
+        push @commands,  "-- Signature change:  2.2\n";
+        push @commands,  "------------------------------------------\n";
+
         push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", "cannot change name of input parameter has_reverse_cost");
         push @commands, drop_special_case_function("_pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
         push @commands, drop_special_case_function("pgr_ksp(text,bigint,bigint,integer,boolean,boolean)",  "cannot change name of input parameter sql");
     }
 
+    if ($old_version =~ /$version_2_1/ and $new_version =~ /$version_2_4/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--    New functions:  2.1\n";
+        push @commands,  "-- Signature change:  2.4\n";
+        push @commands,  "------------------------------------------\n";
+        push @commands, drop_special_case_function("_pgr_dijkstra(text,bigint,bigint,boolean,boolean)",    "cannot change name of input parameter has_rcost");
+        push @commands, drop_special_case_function("_pgr_dijkstra(text,bigint,anyarray,boolean,boolean)",  "cannot change name of input parameter has_rcost");
+        push @commands, drop_special_case_function("_pgr_dijkstra(text,anyarray,bigint,boolean,boolean)",  "cannot change name of input parameter end_vids");
+        push @commands, drop_special_case_function("_pgr_dijkstra(text,anyarray,anyarray,boolean,boolean)","cannot change name of input parameter has_rcost");
+    }
+
 
 
     if ($old_version =~ /$version_2_1|$version_2_2/) {
-        push @commands,  "\n\n ------------------------------------------\n";
+        push @commands,  "\n\n------------------------------------------\n";
         push @commands,  "-- New functions on 2.1\n";
         push @commands,  "-- Signature change on 2.3\n";
         push @commands,  "------------------------------------------\n";
@@ -262,7 +313,7 @@ sub generate_upgrade_script {
     }
 
     if ($old_version =~ /$version_2_0|$version_2_1|$version_2_2/) {
-        push @commands,  "\n\n ------------------------------------------\n";
+        push @commands,  "\n\n------------------------------------------\n";
         push @commands,  "-- New functions on 2.0\n";
         push @commands,  "-- Signature change on 2.3\n";
         push @commands,  "-- Deprecated on 2.4\n";
@@ -271,38 +322,9 @@ sub generate_upgrade_script {
         push @commands, drop_special_case_function("pgr_astar(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
     }
 
-    if ($old_version =~ /$version_2_1|$version_2_2|$version_2_3/) {
-        push @commands,  "\n\n ------------------------------------------\n";
-        push @commands,  "-- New functions on 2.1\n";
-        push @commands,  "-- Signature change on 2.4\n";
-        push @commands,  "------------------------------------------\n";
 
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_v");
-    }
-
-    if ($old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3/) {
-        push @commands,  "\n\n ------------------------------------------\n";
-        push @commands,  "-- New functions on 2.0\n";
-        push @commands,  "-- Signature change on 2.4\n";
-        push @commands,  "-- Also Deprecated on 2.4\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
-    }
-    
-
-    if ($old_version =~ /$version_2_3|$version_2_4/) {
-        push @commands,  "\n\n ------------------------------------------\n";
-        push @commands,  "-- New functions on 2.3\n";
-        push @commands,  "-- Signature change on 2.5\n";
-        push @commands,  "------------------------------------------\n";
-
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     "Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)",   "Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)",   "Row type defined by OUT parameters is different");
-        push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,anyarray,boolean)", "Row type defined by OUT parameters is different");
-    }
+    push @commands, pgr_drivingdistance($old_version, $new_version);
+    push @commands, pgr_edgedisjointpaths($old_version, $new_version);
 
 
     # analyze types
@@ -339,36 +361,108 @@ sub generate_upgrade_script {
 }
 
 
-
-
-sub version_2_5_x {
-    my ($old_version) = @_;
+sub pgr_drivingdistance {
+    my ($old_version, $new_version) = @_;
     my @commands = ();
 
-    if ($old_version =~ /2.0.0/) {
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "cannot change name of input parameter edges_sql");
+    
+    if ($old_version =~ /$version_2_1|$version_2_2|$version_2_3/
+            and $new_version =~ /$version_2_5/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--    New functions:  2.1\n";
+        push @commands,  "-- Signature change:  2.4\n";
+        push @commands,  "------------------------------------------\n";
+
+        # OLD: {sql,start_v,         distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+        # NEW: {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+
+        my $pgr_drivingdistance_1 = "
+UPDATE pg_proc SET
+proargnames = '{\"edges_sql\",\"start_vids\",\"distance\",\"directed\",\"equicost\",\"seq\",\"from_v\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{\"sql\",\"start_v\",\"distance\",\"directed\",\"equicost\",\"seq\",\"from_v\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';
+";
+
+        push @commands, $pgr_drivingdistance_1;
+        #push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter sql");
     }
 
-    if ($old_version =~ /2.1.0/) {
-        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_v");
+
+
+
+
+    if ($old_version =~ /$version_2_1/
+            and $new_version =~ /$version_2_5/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--     New function:  2.1\n";
+        push @commands,  "-- Signature change:  2.2\n";
+        push @commands,  "------------------------------------------\n";
+
+
+        # OLD: {sql,      start_v,  distance,directed,seq,node,edge,cost,agg_cost}
+        # NEW: {edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost}
+        my $pgr_drivingdistance_2 = "
+        UPDATE pg_proc SET
+        proargnames = '{\"edges_sql\",\"start_vid\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'
+        WHERE proname = 'pgr_drivingdistance'
+            AND proargnames = '{\"sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';
+        ";
+
+        push @commands, $pgr_drivingdistance_2;
+        #push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_v");
     }
 
-    if ($old_version =~ /(2.4.[01])/) {
-        #push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "cannot change name of input parameter edges_sql");
-        #push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_vid");
-        push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
+
+
+
+
+    if ($old_version =~ /$version_2_2|$version_2_3/
+            and $new_version =~ /$version_2_5/) {
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "-- Signature change:  2.2\n";
+        push @commands,  "-- Signature change:  2.4\n";
+        push @commands,  "------------------------------------------\n";
+
+        # OLD: {edges_sql,start_v,  distance,directed,seq,node,edge,cost,agg_cost}
+        # NEW: {edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost}
+
+        my $pgr_drivingdistance_2 = "
+        UPDATE pg_proc SET
+        proargnames = '{\"edges_sql\",\"start_vid\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'
+        WHERE proname = 'pgr_drivingdistance'
+            AND proargnames = '{\"edges_sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';
+        ";
+
+        push @commands, $pgr_drivingdistance_2;
+        #push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "cannot change name of input parameter start_v");
     }
 
-    # New functions on 2.3
-    # Changes signatrue on 2.5 
-    if ($old_version =~ /(2.3.[012])|(2.4.[01])/) {
 
+    return @commands;
+}
+
+
+
+
+sub pgr_edgedisjointpaths {
+    my ($old_version, $new_version) = @_;
+    my @commands = ();
+
+    if ($old_version =~ /$version_2_3|$version_2_4/
+            and $new_version =~ /$version_2_5/) {
+
+        push @commands,  "\n\n------------------------------------------\n";
+        push @commands,  "--    New functions:  2.3\n";
+        push @commands,  "-- Signature change:  2.5\n";
+        push @commands,  "-- Inner query changed: 2.5\n";
+        push @commands,  "------------------------------------------\n";
 
         push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,bigint,boolean)",     "Row type defined by OUT parameters is different");
         push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,bigint,anyarray,boolean)",   "Row type defined by OUT parameters is different");
         push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,bigint,boolean)",   "Row type defined by OUT parameters is different");
         push @commands, drop_special_case_function("pgr_edgedisjointpaths(text,anyarray,anyarray,boolean)", "Row type defined by OUT parameters is different");
     }
+
     return @commands;
 }
 
