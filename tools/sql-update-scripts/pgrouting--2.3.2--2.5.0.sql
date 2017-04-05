@@ -72,12 +72,11 @@ DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text);
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
 
-UPDATE pg_proc set
-    proallargtypes = '{25,20,20,16,23,23,23,20,20,701,701}',
-     proargmodes = '{i,i,i,i,o,o,o,o,o,o,o}',
-     proargnames = '{"","","","directed","seq","path_id","path_seq","node","edge","cost","agg_cost"}'  
-WHERE proallargtypes = '{25,20,20,16,23,23,20,20}'
-     and proname = 'pgr_edgedisjointpaths';
+
+ -- Row type defined by OUT parameters is different
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,bigint,boolean);
+DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 
 
  -- Row type defined by OUT parameters is different
