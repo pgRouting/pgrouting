@@ -72,9 +72,9 @@ DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text,boolean);
 
 
 ------------------------------------------
---    New functions:  2.3
--- Signature change:  2.5
--- Inner query changed: 2.5
+--       New functions:  2.3
+--    Signature change:  2.5
+-- Inner query changed:  2.5
 ------------------------------------------
 
 
