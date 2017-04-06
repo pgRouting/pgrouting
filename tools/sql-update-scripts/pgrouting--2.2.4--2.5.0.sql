@@ -74,34 +74,33 @@ DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
 -- Deprecated on 2.4
 ------------------------------------------
 
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
-
+        UPDATE pg_proc SET
+        proargnames = '{"edges_sql","source_id","target_id","directed","has_rcost"}'
+        WHERE proname = 'pgr_astar'
+        AND proargnames = '{"sql","source_id","target_id","directed","has_reverse_cost"}';
+        
 
 ------------------------------------------
 --    New functions:  2.1
 -- Signature change:  2.4
 ------------------------------------------
 
-UPDATE pg_proc SET
-proargnames = '{"edges_sql","start_vids","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}'
-WHERE proname = 'pgr_drivingdistance'
-    AND proargnames = '{"sql","start_v","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}';
-
+            UPDATE pg_proc SET
+            proargnames = '{"edges_sql","start_vids","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}'
+            WHERE proname = 'pgr_drivingdistance'
+            AND proargnames = '{"sql","start_v","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}';
+            
 
 ------------------------------------------
+--     New function:  2.1
 -- Signature change:  2.2
--- Signature change:  2.4
 ------------------------------------------
 
-        UPDATE pg_proc SET
-        proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
-        WHERE proname = 'pgr_drivingdistance'
+            UPDATE pg_proc SET
+            proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
+            WHERE proname = 'pgr_drivingdistance'
             AND proargnames = '{"edges_sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}';
-        
+            
 
 -- now install the new extension
 
@@ -6698,7 +6697,7 @@ WHERE proname = 'pgr_drivingdistance'
  
  
  -- OLD SIGNATURE
- CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id INTEGER, distance FLOAT, directed BOOLEAN, has_reverse_cost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
    RETURNS SETOF pgr_costresult AS
    $BODY$
    DECLARE

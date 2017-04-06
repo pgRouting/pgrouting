@@ -6591,7 +6591,7 @@ COMMENT ON FUNCTION pgr_dijkstra( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN) IS '
 
 
 -- OLD SIGNATURE
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(sql text, source_id INTEGER, distance FLOAT, directed BOOLEAN, has_reverse_cost BOOLEAN)
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
   RETURNS SETOF pgr_costresult AS
   $BODY$
   DECLARE
