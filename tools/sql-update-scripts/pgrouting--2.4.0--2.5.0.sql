@@ -77,29 +77,25 @@ DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text,boolean);
 -- Inner query changed:  2.5
 ------------------------------------------
 
-
- -- Row type defined by OUT parameters is different
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,anyarray,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,anyarray,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,anyarray,bigint,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,bigint,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
+
+
 
 
 -- now install the new extension

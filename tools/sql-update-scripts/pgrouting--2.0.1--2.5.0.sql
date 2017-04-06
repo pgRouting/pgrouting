@@ -48,11 +48,10 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
 -- 2.0.1: {      sql, source_id, target_id, directed, has_reverse_cost}
 -- 2.5.0: {edges_sql, start_vid,   end_vid, directed, has_rcost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
+
+
 
 
 ------------------------------------------
@@ -64,11 +63,10 @@ DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
 -- 2.0.1: {      sql, source_id, target_id, no_paths,has_reverse_cost}
 -- 2.5.0: {edges_sql, start_vid,   end_vid, k,       has_rcost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
 DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
+
+
 
 
 ------------------------------------------
@@ -76,15 +74,14 @@ DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
 -- Signature change:  2.1
 --       Deprecated:  2.1 & 2.2
 ------------------------------------------
--- pgr_bddijkstra
+-- pgr_pgr_drivingdistance
 -- 2.0.1: {      sql, source_id, distance, has_reverse_cost}   
 -- 2.5.0: {edges_sql,  source,    distance, directed, has_rcost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);
+
+
 
 
 ------------------------------------------
@@ -96,38 +93,34 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolea
 -- 2.0.1: {      sql}
 -- 2.5.0: {edges_sql}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspjohnson(text);
 DROP FUNCTION IF EXISTS pgr_apspjohnson(text);
+
+
 -- pgr_apspwarshall
 -- 2.0.1: {      sql, directed, has_reverse_cost}
 -- 2.5.0: {edges_sql, directed, has_rcost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspwarshall(text,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_apspwarshall(text,boolean,boolean);
+
+
 -- pgr_kdijkstrapath
 -- 2.0.1: {sql,source_vid, target_vid, directed, has_reverse_cost}
 -- 2.5.0: {sql,    source,    targets, directed, has_rcost} 
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
+
+
 -- pgr_kdijkstracost
 -- 2.0.1: {sql,source_vid, target_vid, directed, has_reverse_cost}
 -- 2.5.0: {sql,    source,    targets, directed, has_rcost} 
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
+
+
 
 
 ------------------------------------------
@@ -138,11 +131,10 @@ DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean
 -- 2.0.1:  {version,tag,build,hash,branch,boost}
 -- 2.5.0:  {version,tag,hash,branch,boost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
 DROP FUNCTION IF EXISTS pgr_version();
+
+
 
 
 ------------------------------------------
@@ -180,11 +172,10 @@ WHERE proname = 'pgr_bddijkstra'
 -- Deprecated on 2.4
 ------------------------------------------
 
-
- -- cannot change name of input parameter sql
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
+
+
 
 
 -- now install the new extension

@@ -107,8 +107,7 @@ WHERE proname = 'pgr_bddijkstra'
         UPDATE pg_proc SET
         proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
         WHERE proname = 'pgr_drivingdistance'
-
-            AND proargnames = '{"edges_sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}'
+            AND proargnames = '{"edges_sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}';
 
 
 ------------------------------------------
@@ -117,29 +116,25 @@ WHERE proname = 'pgr_bddijkstra'
 -- Inner query changed:  2.5
 ------------------------------------------
 
-
- -- Row type defined by OUT parameters is different
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,anyarray,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,anyarray,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,anyarray,bigint,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,bigint,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
+
+
 ALTER EXTENSION pgrouting DROP TYPE contraction_vertex;
 DROP TYPE contraction_vertex;
 

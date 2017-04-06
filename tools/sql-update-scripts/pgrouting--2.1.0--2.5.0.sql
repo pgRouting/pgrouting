@@ -76,11 +76,10 @@ DROP FUNCTION IF EXISTS pgr_trspviavertices(text,integer[],boolean,boolean,text)
 -- Signature change:  2.2
 ------------------------------------------
 
-
- -- cannot change name of input parameter sql
-
 ALTER EXTENSION pgrouting DROP FUNCTION _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+
+
 
 
 ------------------------------------------
@@ -92,27 +91,10 @@ DROP FUNCTION IF EXISTS _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
 -- 2.1.0: {      sql, start_vid,   end_vid, k,       has_rcost}
 -- 2.5.0: {edges_sql, start_vid,   end_vid, k,       has_rcost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
 DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
 
 
-------------------------------------------
---    New functions:  2.0
--- Signature change:  2.1
---       Deprecated:  2.1 & 2.2
-------------------------------------------
--- pgr_bddijkstra
--- 2.1.0: {      sql, source, distance, has_rcost}   
--- 2.5.0: {edges_sql,  source,    distance, directed, has_rcost}
-
-
- -- 
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,integer,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolean,boolean);
 
 
 ------------------------------------------
@@ -124,38 +106,34 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,integer,double precision,boolea
 -- 2.1.0: {      sql}
 -- 2.5.0: {edges_sql}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspjohnson(text);
 DROP FUNCTION IF EXISTS pgr_apspjohnson(text);
+
+
 -- pgr_apspwarshall
 -- 2.1.0: {      sql, directed, has_reverse_cost}
 -- 2.5.0: {edges_sql, directed, has_rcost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_apspwarshall(text,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_apspwarshall(text,boolean,boolean);
+
+
 -- pgr_kdijkstrapath
 -- 2.1.0: {sql,source_vid, target_vid, directed, has_reverse_cost}
 -- 2.5.0: {sql,    source,    targets, directed, has_rcost} 
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_kdijkstrapath(text,integer,integer[],boolean,boolean);
+
+
 -- pgr_kdijkstracost
 -- 2.1.0: {sql,source_vid, target_vid, directed, has_reverse_cost}
 -- 2.5.0: {sql,    source,    targets, directed, has_rcost} 
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean);
+
+
 
 
 ------------------------------------------
@@ -166,11 +144,10 @@ DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean
 -- 2.1.0:  {version,tag,build,hash,branch,boost}
 -- 2.5.0:  {version,tag,hash,branch,boost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
 DROP FUNCTION IF EXISTS pgr_version();
+
+
 
 
 ------------------------------------------
@@ -189,16 +166,16 @@ WHERE proname = 'pgr_trsp'
 
 ------------------------------------------
 --    New functions:  2.0
--- Signature change:  2.2
+-- Signature (types) change:  2.2
 ------------------------------------------
 -- pgr_trspviaedges
 -- 2.1.0:  {sql, eids, pcts, directed, has_reverse_cost,turn_restrict_sql} 
 -- 2.5.0:  {sql, eids, pcts, directed, has_rcost,       turn_restrict_sql}
 
-UPDATE pg_proc SET
-proargnames = '{"edges_sql","eids","pcts","directed","has_rcost","turn_restrict_sql"}'
-WHERE proname = 'pgr_trspviaedges'
-    AND proargnames = '{"sql","eids","pcts","directed","has_reverse_cost","turn_restrict_sql"}';
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
+DROP FUNCTION IF EXISTS pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
+
+
 
 
 ------------------------------------------
@@ -221,11 +198,10 @@ WHERE proname = 'pgr_bddijkstra'
 -- Signature change on 2.3
 ------------------------------------------
 
-
- -- cannot change return type of existing function name
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_gsoc_vrppdtw(text,integer,integer);
 DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
+
+
 
 
 ------------------------------------------
@@ -234,11 +210,10 @@ DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
 -- Deprecated on 2.4
 ------------------------------------------
 
-
- -- cannot change name of input parameter sql
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
+
+
 
 
 ------------------------------------------
@@ -249,11 +224,10 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 -- 2.1.0:  {      sql, start_vid, end_vid, k, directed, heap_paths, seq, path_id, path_seq, node,edge, cost, agg_cost}
 -- 2.5.0:  {edges_sql, start_vid, end_vid, k, directed, heap_paths, seq, path_id, path_seq, node,edge, cost, agg_cost}
 
-
- -- 
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+
+
 
 
 ------------------------------------------
@@ -281,8 +255,7 @@ DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
         UPDATE pg_proc SET
         proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
         WHERE proname = 'pgr_drivingdistance'
-
-            AND proargnames = '{"sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}'
+            AND proargnames = '{"sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}';
 
 
 -- now install the new extension

@@ -63,11 +63,10 @@ WHERE proname = 'pgr_bddijkstra'
 -- Signature change on 2.3
 ------------------------------------------
 
-
- -- cannot change return type of existing function name
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_gsoc_vrppdtw(text,integer,integer);
 DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
+
+
 
 
 ------------------------------------------
@@ -76,11 +75,10 @@ DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
 -- Deprecated on 2.4
 ------------------------------------------
 
-
- -- cannot change name of input parameter sql
-
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
+
+
 
 
 ------------------------------------------
@@ -108,8 +106,7 @@ DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
         UPDATE pg_proc SET
         proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
         WHERE proname = 'pgr_drivingdistance'
-
-            AND proargnames = '{"edges_sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}'
+            AND proargnames = '{"edges_sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}';
 
 
 -- now install the new extension

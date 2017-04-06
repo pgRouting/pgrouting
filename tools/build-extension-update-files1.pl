@@ -307,7 +307,7 @@ sub deprecated_on_2_1 {
         push @commands, drop_special_case_function("pgr_ksp(text,integer,integer,integer,boolean)",  "");
     }
 
-    if ($old_version =~ /$version_2_0|$version_2_1/
+    if ($old_version =~ /$version_2_0/
             and $new_version !~ /$version_2_0|$version_2_1/
             and $new_version =~ /$version_2/) {
         push @commands,  "\n\n------------------------------------------\n";
@@ -316,7 +316,7 @@ sub deprecated_on_2_1 {
         push @commands,  "--       Deprecated:  2.1 & 2.2\n";
         push @commands,  "------------------------------------------\n";
 
-        push @commands, "-- pgr_bddijkstra\n";
+        push @commands, "-- pgr_pgr_drivingdistance\n";
         push @commands, "-- $old_version: {      sql, source_id, distance, has_reverse_cost}   \n" if $old_version =~ /$version_2_0/;
         push @commands, "-- $old_version: {      sql, source, distance, has_rcost}   \n"           if $old_version =~ /$version_2_1/;
         push @commands, "-- $new_version: {edges_sql,  source,    distance, directed, has_rcost}\n"; 
@@ -425,21 +425,13 @@ WHERE proname = 'pgr_trsp'
             and $new_version =~ /$version_2/) {
         push @commands,  "\n\n------------------------------------------\n";
         push @commands,  "--    New functions:  2.0\n";
-        push @commands,  "-- Signature change:  2.2\n";
+        push @commands,  "-- Signature (types) change:  2.2\n";
         push @commands,  "------------------------------------------\n";
 
         push @commands, "-- pgr_trspviaedges\n";
         push @commands, "-- $old_version:  {sql, eids, pcts, directed, has_reverse_cost,turn_restrict_sql} \n";
         push @commands, "-- $new_version:  {sql, eids, pcts, directed, has_rcost,       turn_restrict_sql}\n"; 
-        my $update_command = "
-UPDATE pg_proc SET
-proargnames = '{\"edges_sql\",\"eids\",\"pcts\",\"directed\",\"has_rcost\",\"turn_restrict_sql\"}'
-WHERE proname = 'pgr_trspviaedges'
-    AND proargnames = '{\"sql\",\"eids\",\"pcts\",\"directed\",\"has_reverse_cost\",\"turn_restrict_sql\"}';
-";
-
-        push @commands, $update_command;
-        #push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", "cannot change name of input parameter has_reverse_cost");
+        push @commands, drop_special_case_function("pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text)", "");
     }
 
     return @commands;
@@ -616,11 +608,11 @@ sub pgr_drivingdistance {
         my $update_command = "
         UPDATE pg_proc SET
         proargnames = '{\"edges_sql\",\"start_vid\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'
-        WHERE proname = 'pgr_drivingdistance'\n";
+        WHERE proname = 'pgr_drivingdistance'";
         $update_command = "$update_command
-            AND proargnames = '{\"sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'\n" if $old_version =~ /$version_2_1/;
+            AND proargnames = '{\"sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';\n" if $old_version =~ /$version_2_1/;
         $update_command = "$update_command
-            AND proargnames = '{\"edges_sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'\n" if $old_version =~ /$version_2_2|$version_2_3/;
+            AND proargnames = '{\"edges_sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';\n" if $old_version =~ /$version_2_2|$version_2_3/;
 
         push @commands, $update_command;
     }
@@ -658,9 +650,8 @@ sub pgr_edgedisjointpaths {
 sub drop_special_case_function {
     my ($function, $reason) = @_;
     my @commands = ();
-    push @commands, "\n\n -- $reason";
-    push @commands, "\n\nALTER EXTENSION pgrouting DROP FUNCTION $function;\n";
-    push @commands, "DROP FUNCTION IF EXISTS $function;\n";
+    push @commands, "\nALTER EXTENSION pgrouting DROP FUNCTION $function;\n";
+    push @commands, "DROP FUNCTION IF EXISTS $function;\n\n\n";
     return @commands;
 }
 
