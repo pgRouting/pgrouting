@@ -85,22 +85,22 @@ DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
 -- Signature change:  2.4
 ------------------------------------------
 
-            UPDATE pg_proc SET
-            proargnames = '{"edges_sql","start_vids","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}'
-            WHERE proname = 'pgr_drivingdistance'
-            AND proargnames = '{"sql","start_v","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}';
-            
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vids","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}'
+WHERE proname = 'pgr_drivingdistance'
+    AND proargnames = '{"sql","start_v","distance","directed","equicost","seq","from_v","node","edge","cost","agg_cost"}';
+
 
 ------------------------------------------
---     New function:  2.1
 -- Signature change:  2.2
+-- Signature change:  2.4
 ------------------------------------------
 
-            UPDATE pg_proc SET
-            proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
-            WHERE proname = 'pgr_drivingdistance'
+        UPDATE pg_proc SET
+        proargnames = '{"edges_sql","start_vid","distance","directed","seq","node","edge","cost","agg_cost"}'
+        WHERE proname = 'pgr_drivingdistance'
             AND proargnames = '{"edges_sql","start_v","distance","directed","seq","node","edge","cost","agg_cost"}';
-            
+        
 
 ------------------------------------------
 --    New functions:  2.3

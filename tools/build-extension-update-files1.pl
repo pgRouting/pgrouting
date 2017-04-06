@@ -98,7 +98,7 @@ File::Find::find({wanted => \&wanted}, $sig_dir);
 
 # Generate the upgrade SQL script needed for all signatures
 for my $old_file (sort @old_signatures_file_names) {
-    print "\ngenerating $old_file upgrade file\n" if $DEBUG; 
+    print "\ngenerating $old_file upgrade file\n" if $DEBUG;
 
     my $old_signatures = read_signature_file($old_file);
 
@@ -218,7 +218,7 @@ sub generate_upgrade_script {
     #------------------------------------
     # Special cases
     #------------------------------------
-    
+
 
     # file tested for 2.4 & 2.5
     if ($old_version =~ /$version_2_0/ and $new_version !~ /$version_2_0/) {
@@ -276,7 +276,7 @@ sub generate_upgrade_script {
 
         push @commands, drop_special_case_function("pgr_bddijkstra(text,integer,integer,boolean,boolean)",  "cannot change name of input parameter sql");
     }
-    
+
 
 
     if ($old_version =~ /$version_2_1/ and $new_version !~ /$version_2_1/) {
@@ -377,7 +377,7 @@ sub pgr_drivingdistance {
     # V2.5 | {sql,      source_id,distance,directed,has_reverse_cost}
     # V2.4 | {edges_sql,source,   distance,directed,has_rcost}
     # V2.3 | {edges_sql,source,   distance,directed,has_rcost}
-    
+
     if ($old_version =~ /$version_2_1|$version_2_2|$version_2_3/
             and $new_version =~ /$version_2_5/) {
         push @commands,  "\n\n------------------------------------------\n";
