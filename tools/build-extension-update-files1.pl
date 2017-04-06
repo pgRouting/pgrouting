@@ -365,6 +365,18 @@ sub pgr_drivingdistance {
     my ($old_version, $new_version) = @_;
     my @commands = ();
 
+    # V2.5 | {edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost}
+    # V2.4 | {edges_sql,start_vid,distance,directed,seq,node,edge,cost,agg_cost}
+    # V2.3 | {edges_sql,start_v,distance,directed,seq,node,edge,cost,agg_cost}
+
+    # V2.5 | {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+    # V2.4 | {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+    # V2.3 | {sql,start_v,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+
+
+    # V2.5 | {sql,      source_id,distance,directed,has_reverse_cost}
+    # V2.4 | {edges_sql,source,   distance,directed,has_rcost}
+    # V2.3 | {edges_sql,source,   distance,directed,has_rcost}
     
     if ($old_version =~ /$version_2_1|$version_2_2|$version_2_3/
             and $new_version =~ /$version_2_5/) {
@@ -373,8 +385,8 @@ sub pgr_drivingdistance {
         push @commands,  "-- Signature change:  2.4\n";
         push @commands,  "------------------------------------------\n";
 
-        # OLD: {sql,start_v,         distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
-        # NEW: {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+        # V2.5: {sql,      start_v,   distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+        # V2.3: {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
 
         my $pgr_drivingdistance_1 = "
 UPDATE pg_proc SET
