@@ -308,7 +308,7 @@ sub deprecated_on_2_1 {
     }
 
     if ($old_version =~ /$version_2_0/
-            and $new_version !~ /$version_2_0|$version_2_1/
+            and $new_version !~ /$version_2_0|$version_2_1|$version_2_4/
             and $new_version =~ /$version_2/) {
         push @commands,  "\n\n------------------------------------------\n";
         push @commands,  "--    New functions:  2.0\n";
@@ -322,6 +322,7 @@ sub deprecated_on_2_1 {
         push @commands, "-- $new_version: {edges_sql,  source,    distance, directed, has_rcost}\n"; 
         push @commands, drop_special_case_function("pgr_drivingdistance(text,integer,double precision,boolean,boolean)",  "");
     }
+    push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean,boolean)",  "") if $old_version =~ /$version_2_1/ and $new_version =~ /$version_2_4/;
     return @commands;
 }
 
@@ -579,14 +580,7 @@ sub pgr_drivingdistance {
         push @commands, "-- $old_version:  {sql,start_v,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}\n";
         push @commands, "-- $new_version:  {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}\n"; 
 
-        my $update_command = "
-        UPDATE pg_proc SET
-        proargnames = '{\"edges_sql\",\"start_vids\",\"distance\",\"directed\",\"equicost\",\"seq\",\"from_v\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'
-        WHERE proname = 'pgr_drivingdistance'
-        AND proargnames = '{\"sql\",\"start_v\",\"distance\",\"directed\",\"equicost\",\"seq\",\"from_v\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';
-        ";
-
-        push @commands, $update_command;
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,anyarray,double precision,boolean,boolean)",  "");
     }
 
 
@@ -605,16 +599,7 @@ sub pgr_drivingdistance {
         push @commands, "-- $old_version:  {edges_sql, start_v,   distance, directed, seq, node, edge, cost, agg_cost}\n" if $old_version =~ /$version_2_2|$version_2_3/;
         push @commands, "-- $new_version:  {edges_sql, start_vid, distance, directed, seq, node, edge, cost, agg_cost}\n"; 
 
-        my $update_command = "
-        UPDATE pg_proc SET
-        proargnames = '{\"edges_sql\",\"start_vid\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}'
-        WHERE proname = 'pgr_drivingdistance'";
-        $update_command = "$update_command
-            AND proargnames = '{\"sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';\n" if $old_version =~ /$version_2_1/;
-        $update_command = "$update_command
-            AND proargnames = '{\"edges_sql\",\"start_v\",\"distance\",\"directed\",\"seq\",\"node\",\"edge\",\"cost\",\"agg_cost\"}';\n" if $old_version =~ /$version_2_2|$version_2_3/;
-
-        push @commands, $update_command;
+        push @commands, drop_special_case_function("pgr_drivingdistance(text,bigint,double precision,boolean)",  "");
     }
 
     return @commands;
