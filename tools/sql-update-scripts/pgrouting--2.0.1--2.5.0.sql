@@ -44,12 +44,25 @@ DROP FUNCTION IF EXISTS pgr_pointtoid(geometry,double precision,text,integer);
 -- Signature change:  2.1
 --       Deprecated:  2.1
 ------------------------------------------
-
+(?^:(2.0.[\d+])): {sql,source_id,target_id,directed,has_reverse_cost}2.5.0: {edges_sql,start_vid,end_vid,directed,has_rcost}
 
  -- cannot change name of input parameter sql
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_dijkstra(text,integer,integer,boolean,boolean);
+
+
+------------------------------------------
+--    New functions:  2.0
+--       Deprecated:  2.1
+-- Signature change:  2.2
+------------------------------------------
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
+DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
 
 
 ------------------------------------------
@@ -85,15 +98,14 @@ DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean
 
 ------------------------------------------
 --    New functions:  2.0
---       Deprecated:  2.1
 -- Signature change:  2.2
 ------------------------------------------
 
 
- -- cannot change name of input parameter sql
+ -- Change: Row type defined by OUT parameters is different
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
-DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
+DROP FUNCTION IF EXISTS pgr_version();
 
 
 ------------------------------------------
@@ -125,19 +137,6 @@ DROP FUNCTION IF EXISTS pgr_trsp(text,integer,integer,boolean,boolean,text);
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_bddijkstra(text,integer,integer,boolean,boolean);
 DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
-
-
-------------------------------------------
--- New functions on 2.0
--- Signature change on 2.3
--- Deprecated on 2.4
-------------------------------------------
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
 -- now install the new extension

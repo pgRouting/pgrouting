@@ -72,6 +72,31 @@ DROP FUNCTION IF EXISTS pgr_trspviavertices(text,integer[],boolean,boolean,text)
 
 
 ------------------------------------------
+--    New functions:  2.1
+-- Signature change:  2.2
+------------------------------------------
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+DROP FUNCTION IF EXISTS _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
+
+
+------------------------------------------
+--    New functions:  2.0
+--       Deprecated:  2.1
+-- Signature change:  2.2
+------------------------------------------
+
+
+ -- cannot change name of input parameter sql
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
+DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
+
+
+------------------------------------------
 --    New functions:  2.0
 -- Signature change:  2.2
 --       Deprecated:  2.2
@@ -104,15 +129,14 @@ DROP FUNCTION IF EXISTS pgr_kdijkstracost(text,integer,integer[],boolean,boolean
 
 ------------------------------------------
 --    New functions:  2.0
---       Deprecated:  2.1
 -- Signature change:  2.2
 ------------------------------------------
 
 
- -- cannot change name of input parameter sql
+ -- Change: Row type defined by OUT parameters is different
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,integer,integer,integer,boolean);
-DROP FUNCTION IF EXISTS pgr_ksp(text,integer,integer,integer,boolean);
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_version();
+DROP FUNCTION IF EXISTS pgr_version();
 
 
 ------------------------------------------
@@ -147,30 +171,6 @@ DROP FUNCTION IF EXISTS pgr_bddijkstra(text,integer,integer,boolean,boolean);
 
 
 ------------------------------------------
---    New functions:  2.1
--- Signature change:  2.2
-------------------------------------------
-
-
- -- cannot change name of input parameter has_reverse_cost
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
-DROP FUNCTION IF EXISTS pgr_trspviaedges(text,integer[],double precision[],boolean,boolean,text);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS _pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
-
-
-------------------------------------------
 -- New functions on 2.1
 -- Signature change on 2.3
 ------------------------------------------
@@ -180,19 +180,6 @@ DROP FUNCTION IF EXISTS pgr_ksp(text,bigint,bigint,integer,boolean,boolean);
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_gsoc_vrppdtw(text,integer,integer);
 DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
-
-
-------------------------------------------
--- New functions on 2.0
--- Signature change on 2.3
--- Deprecated on 2.4
-------------------------------------------
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
 
 
 ------------------------------------------

@@ -69,19 +69,6 @@ DROP FUNCTION IF EXISTS pgr_gsoc_vrppdtw(text,integer,integer);
 
 
 ------------------------------------------
--- New functions on 2.0
--- Signature change on 2.3
--- Deprecated on 2.4
-------------------------------------------
-
-
- -- cannot change name of input parameter sql
-
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_astar(text,integer,integer,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_astar(text,integer,integer,boolean,boolean);
-
-
-------------------------------------------
 --    New functions:  2.1
 -- Signature change:  2.4
 ------------------------------------------
