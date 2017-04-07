@@ -31,10 +31,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN start_vids ANYARRAY,
-    IN end_vids ANYARRAY,
-    IN directed BOOLEAN DEFAULT TRUE,
+    TEXT,
+    ANYARRAY,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,
     OUT path_seq INTEGER,
@@ -54,10 +54,10 @@ CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN start_vid bigint,
-    IN end_vid bigint,
-    IN directed BOOLEAN DEFAULT TRUE,
+    TEXT,
+    bigint,
+    bigint,
+    directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,
     OUT path_seq INTEGER,
@@ -78,10 +78,10 @@ LANGUAGE sql VOLATILE;
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN start_vid bigint,
-    IN end_vids ANYARRAY,
-    IN directed BOOLEAN DEFAULT TRUE,
+    TEXT,
+    bigint,
+    ANYARRAY,
+    directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,
     OUT path_seq INTEGER,
@@ -103,9 +103,9 @@ LANGUAGE sql VOLATILE;
 ***********************************/
 
 CREATE OR REPLACE FUNCTION pgr_edgeDisjointPaths(
-    IN edges_sql TEXT,
-    IN start_vids ANYARRAY,
-    IN end_vid BIGINT,
+    TEXT,
+    ANYARRAY,
+    BIGINT,
     IN directed BOOLEAN DEFAULT TRUE,
     OUT seq INTEGER,
     OUT path_id INTEGER,

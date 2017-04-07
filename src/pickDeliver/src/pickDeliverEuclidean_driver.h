@@ -41,7 +41,7 @@ extern "C" {
       capacity FLOAT,
       max_cycles INTEGER,
      ********************************************************/
-    void do_pgr_pickDeliver(
+    void do_pgr_pickDeliverEuclidean(
             PickDeliveryOrders_t *pd_orders_arr, size_t total_pd_orders,
             Vehicle_t *vehicles_arr, size_t total_vehicles,
 

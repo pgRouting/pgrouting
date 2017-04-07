@@ -4,10 +4,10 @@ SELECT plan(87);
 
 
 SELECT has_function('pgr_astarcostmatrix',
-    ARRAY['text', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
+    ARRAY['text', 'anyarray', 'boolean', 'integer', 'double precision', 'double precision']);
 
 SELECT function_returns('pgr_astarcostmatrix',
-    ARRAY['text', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric'],
+    ARRAY['text', 'anyarray', 'boolean', 'integer', 'double precision', 'double precision'],
     'setof record');
 
 

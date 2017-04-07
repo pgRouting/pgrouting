@@ -9,12 +9,12 @@ SET client_min_messages = WARNING;
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 
-    DROP TABLE IF EXISTS edge_table;
-    DROP TABLE IF EXISTS edge_table_vertices_pgr;
-    DROP table if exists pointsOfInterest;
-    DROP TABLE IF EXISTS restrictions;
-    DROP TABLE IF EXISTS vertex_table;
-    DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS edge_table;
+DROP TABLE IF EXISTS edge_table_vertices_pgr;
+DROP table if exists pointsOfInterest;
+DROP TABLE IF EXISTS restrictions;
+DROP TABLE IF EXISTS vertex_table;
+DROP TABLE IF EXISTS categories;
 
 --EDGE TABLE CREATE
 CREATE TABLE edge_table (
@@ -126,6 +126,7 @@ INSERT INTO categories VALUES
 */
 --CATEGORIES END
 
+-- TODO check if this table is still used
 CREATE TABLE vertex_table (
     id SERIAL,
     x FLOAT,

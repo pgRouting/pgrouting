@@ -81,17 +81,17 @@ SELECT has_function('pgr_bddijkstracostmatrix', ARRAY['text', 'anyarray', 'boole
 -- Astar based
 
 -- ASTAR
-SELECT has_function('pgr_astar', ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'numeric', 'numeric']);
-SELECT has_function('pgr_astar', ARRAY['text', 'anyarray', 'bigint', 'boolean', 'integer', 'numeric', 'numeric']);
-SELECT has_function('pgr_astar', ARRAY['text', 'bigint', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
-SELECT has_function('pgr_astar', ARRAY['text', 'anyarray', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
+SELECT has_function('pgr_astar', ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'double precision', 'double precision']);
+SELECT has_function('pgr_astar', ARRAY['text', 'anyarray', 'bigint', 'boolean', 'integer', 'double precision', 'double precision']);
+SELECT has_function('pgr_astar', ARRAY['text', 'bigint', 'anyarray', 'boolean', 'integer', 'double precision', 'double precision']);
+SELECT has_function('pgr_astar', ARRAY['text', 'anyarray', 'anyarray', 'boolean', 'integer', 'double precision', 'double precision']);
 
-SELECT has_function('pgr_astarcost', ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'numeric', 'numeric']);
-SELECT has_function('pgr_astarcost', ARRAY['text', 'anyarray', 'bigint', 'boolean', 'integer', 'numeric', 'numeric']);
-SELECT has_function('pgr_astarcost', ARRAY['text', 'bigint', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
-SELECT has_function('pgr_astarcost', ARRAY['text', 'anyarray', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
+SELECT has_function('pgr_astarcost', ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'double precision', 'double precision']);
+SELECT has_function('pgr_astarcost', ARRAY['text', 'anyarray', 'bigint', 'boolean', 'integer', 'double precision', 'double precision']);
+SELECT has_function('pgr_astarcost', ARRAY['text', 'bigint', 'anyarray', 'boolean', 'integer', 'double precision', 'double precision']);
+SELECT has_function('pgr_astarcost', ARRAY['text', 'anyarray', 'anyarray', 'boolean', 'integer', 'double precision', 'double precision']);
 
-SELECT has_function('pgr_astarcostmatrix', ARRAY['text', 'anyarray', 'boolean', 'integer', 'numeric', 'numeric']);
+SELECT has_function('pgr_astarcostmatrix', ARRAY['text', 'anyarray', 'boolean', 'integer', 'double precision', 'double precision']);
 
 -- bd ASTAR
 SELECT has_function('pgr_bdastar', ARRAY['text', 'bigint', 'bigint', 'boolean', 'integer', 'numeric', 'numeric']);

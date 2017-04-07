@@ -1,5 +1,5 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver.c
+File: pickDeliverEuclidean.c
 
 Generated with Template by:
 Copyright (c) 2015 pgRouting developers
@@ -36,11 +36,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include "./../../common/src/pgr_types.h"
 #include "./../../common/src/orders_input.h"
 #include "./../../common/src/vehicles_input.h"
+#include "./../../common/src/matrixRows_input.h"
 
+
+#if 0
 #include "./pickDeliver_driver.h"
+#endif
 
 PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS);
+PG_FUNCTION_INFO_V1(pickDeliver);
 
 
 /*********************************************************************/
@@ -50,6 +55,7 @@ void
 process(
         char* pd_orders_sql,
         char* vehicles_sql,
+        char* matrix_sql,
         int max_cycles,
         General_vehicle_orders_t **result_tuples,
         size_t *result_count) {
@@ -65,15 +71,13 @@ process(
     PGR_DBG("Load orders");
     PickDeliveryOrders_t *pd_orders_arr = NULL;
     size_t total_pd_orders = 0;
-    pgr_get_pd_orders(pd_orders_sql,
-           1, 1,
-           0, 0,
+    pgr_get_pd_orders_with_id(pd_orders_sql,
            &pd_orders_arr, &total_pd_orders);
 
     PGR_DBG("Load vehicles");
     Vehicle_t *vehicles_arr = NULL;
     size_t total_vehicles = 0;
-    pgr_get_vehicles(vehicles_sql,
+    pgr_get_vehicles_with_id(vehicles_sql,
            &vehicles_arr, &total_vehicles);
     PGR_DBG("total vehicles %ld", total_vehicles);
 
@@ -99,19 +103,29 @@ process(
                );
     }
 
-    if (total_pd_orders == 0 || total_vehicles == 0) {
+    PGR_DBG("load matrix");
+    Matrix_cell_t *matrix_cells_arr = NULL;
+    size_t total_cells = 0;
+    pgr_get_matrixRows(matrix_sql, &matrix_cells_arr, &total_cells);
+
+
+    if (total_pd_orders == 0 || total_vehicles == 0 || total_cells == 0) {
         (*result_count) = 0;
         (*result_tuples) = NULL;
         pgr_SPI_finish();
         return;
     }
     PGR_DBG("Total %ld orders in query:", total_pd_orders);
+    PGR_DBG("Total %ld vehicles in query:", total_vehicles);
+    PGR_DBG("Total %ld matrix cells in query:", total_cells);
+
 
     PGR_DBG("Starting processing");
             clock_t start_t = clock();
     char *log_msg = NULL;
     char *notice_msg = NULL;
     char *err_msg = NULL;
+#if 0
     do_pgr_pickDeliver(
             pd_orders_arr, total_pd_orders,
             vehicles_arr, total_vehicles,
@@ -123,6 +137,7 @@ process(
             &log_msg,
             &notice_msg,
             &err_msg);
+#endif
 
     time_msg("_pgr_ipickDeliver", start_t, clock());
 
@@ -139,6 +154,7 @@ process(
     if (err_msg) pfree(err_msg);
     if (pd_orders_arr) pfree(pd_orders_arr);
     if (vehicles_arr) pfree(vehicles_arr);
+    if (matrix_cells_arr) pfree(matrix_cells_arr);
 
     pgr_SPI_finish();
 
@@ -146,7 +162,6 @@ process(
 /*                                                                            */
 /******************************************************************************/
 
-PG_FUNCTION_INFO_V1(pickDeliver);
 PGDLLEXPORT Datum
 pickDeliver(PG_FUNCTION_ARGS) {
     FuncCallContext     *funcctx;
@@ -179,7 +194,8 @@ pickDeliver(PG_FUNCTION_ARGS) {
         process(
                 text_to_cstring(PG_GETARG_TEXT_P(0)),
                 text_to_cstring(PG_GETARG_TEXT_P(1)),
-                PG_GETARG_INT32(2),
+                text_to_cstring(PG_GETARG_TEXT_P(2)),
+                PG_GETARG_INT32(3),
                 &result_tuples,
                 &result_count);
 
