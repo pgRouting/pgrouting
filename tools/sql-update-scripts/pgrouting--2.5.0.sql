@@ -99,7 +99,7 @@ BEGIN
     RETURN QUERY SELECT '2.5.0'::varchar AS version,
                         'v2.5.0-dev'::varchar AS tag,
                         ''::varchar AS hash,
-                        'fix/update-scripts'::varchar AS branch,
+                        ''::varchar AS branch,
                         '1.54.0'::varchar AS boost;
 END;
 $BODY$
@@ -1764,8 +1764,8 @@ ROWS 1000;
 
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-    sql text,
-    start_v anyarray,
+    edges_sql text,
+    start_vids anyarray,
     distance FLOAT,
     directed BOOLEAN DEFAULT TRUE,
     equicost BOOLEAN DEFAULT FALSE,
@@ -1782,7 +1782,7 @@ CREATE OR REPLACE FUNCTION pgr_drivingDistance(
 
 CREATE OR REPLACE FUNCTION pgr_drivingDistance(
     edges_sql text,
-    start_v bigint,
+    start_vid bigint,
     distance FLOAT8,
     directed BOOLEAN DEFAULT TRUE,
     OUT seq integer,
@@ -5993,7 +5993,7 @@ ROWS 1000;
 
 
 -- V2 signature
-CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
+CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
 RETURNS SETOF pgr_costresult AS
 $BODY$
 DECLARE
@@ -6591,7 +6591,7 @@ COMMENT ON FUNCTION pgr_dijkstra( TEXT, INTEGER, INTEGER, BOOLEAN, BOOLEAN) IS '
 
 
 -- OLD SIGNATURE
-CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
   RETURNS SETOF pgr_costresult AS
   $BODY$
   DECLARE

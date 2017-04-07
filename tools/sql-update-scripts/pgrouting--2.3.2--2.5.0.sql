@@ -67,28 +67,74 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,bigint,bigint,text);
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text);
 
 
- -- Row type defined by OUT parameters is different
+------------------------------------------
+--    New functions:  2.0
+-- Signature change:  2.4
+--       Deprecated:  2.4
+------------------------------------------
+-- pgr_bddijkstra
+-- 2.3.2: {      sql, source_vid, target_vid, directed, has_reverse_cost}   
+-- 2.5.0: {edges_sql,  start_vid,    end_vid, directed, has_rcost}
+
+UPDATE pg_proc SET
+proargnames = '{"edges_sql","start_vid","end_vid","directed","has_rcost"}'
+WHERE proname = 'pgr_bddijkstra'
+    AND proargnames = '{"sql","source_vid","target_vid","directed","has_reverse_cost"}';
+
+
+------------------------------------------
+--    New functions:  2.1
+-- Signature change:  2.4
+------------------------------------------
+-- pgr_drivingdistance
+-- 2.3.2:  {sql,start_v,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+-- 2.5.0:  {edges_sql,start_vids,distance,directed,equicost,seq,from_v,node,edge,cost,agg_cost}
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,anyarray,double precision,boolean,boolean);
+
+
+
+
+------------------------------------------
+--     New function:  2.1
+-- Signature change:  2.2
+------------------------------------------
+-- pgr_drivingdistance
+-- 2.3.2:  {edges_sql, start_v,   distance, directed, seq, node, edge, cost, agg_cost}
+-- 2.5.0:  {edges_sql, start_vid, distance, directed, seq, node, edge, cost, agg_cost}
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean);
+
+
+
+
+------------------------------------------
+--       New functions:  2.3
+--    Signature change:  2.5
+-- Inner query changed:  2.5
+------------------------------------------
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,bigint,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,bigint,anyarray,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,bigint,anyarray,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,anyarray,bigint,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,bigint,boolean);
 
 
- -- Row type defined by OUT parameters is different
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
 DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
+
+
 ALTER EXTENSION pgrouting DROP TYPE contraction_vertex;
 DROP TYPE contraction_vertex;
 
@@ -196,7 +242,7 @@ DROP TYPE contraction_vertex;
      RETURN QUERY SELECT '2.5.0'::varchar AS version,
                          'v2.5.0-dev'::varchar AS tag,
                          ''::varchar AS hash,
-                         'fix/update-scripts'::varchar AS branch,
+                         ''::varchar AS branch,
                          '1.54.0'::varchar AS boost;
  END;
  $BODY$
@@ -1861,8 +1907,8 @@ DROP TYPE contraction_vertex;
  
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
-     sql text,
-     start_v anyarray,
+     edges_sql text,
+     start_vids anyarray,
      distance FLOAT,
      directed BOOLEAN DEFAULT TRUE,
      equicost BOOLEAN DEFAULT FALSE,
@@ -1879,7 +1925,7 @@ DROP TYPE contraction_vertex;
  
  CREATE OR REPLACE FUNCTION pgr_drivingDistance(
      edges_sql text,
-     start_v bigint,
+     start_vid bigint,
      distance FLOAT8,
      directed BOOLEAN DEFAULT TRUE,
      OUT seq integer,
@@ -6090,7 +6136,7 @@ DROP TYPE contraction_vertex;
  
  
  -- V2 signature
- CREATE OR REPLACE FUNCTION pgr_bdDijkstra(sql TEXT, source_vid INTEGER, target_vid INTEGER, directed BOOLEAN, has_reverse_cost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_bdDijkstra(edges_sql TEXT, start_vid INTEGER, end_vid INTEGER, directed BOOLEAN, has_rcost BOOLEAN)
  RETURNS SETOF pgr_costresult AS
  $BODY$
  DECLARE
@@ -6688,7 +6734,7 @@ DROP TYPE contraction_vertex;
  
  
  -- OLD SIGNATURE
- CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT8, directed BOOLEAN, has_rcost BOOLEAN)
+ CREATE OR REPLACE FUNCTION pgr_drivingDistance(edges_sql text, source INTEGER, distance FLOAT, directed BOOLEAN, has_rcost BOOLEAN)
    RETURNS SETOF pgr_costresult AS
    $BODY$
    DECLARE
