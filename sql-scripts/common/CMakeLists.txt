@@ -1,6 +1,22 @@
 
+SET(LOCAL_FILES
+    pgrouting.control
+    pgRouting-header.sql
+    pgrouting-types.sql
+    pgrouting_version.sql
+    pgrouting_utilities.sql
+    pgr_parameter_check.sql
+    utilities_pgr.sql
+    createIndex.sql
+    _point_toId.sql
+    )
+
+foreach (f ${LOCAL_FILES}) 
+    configure_file(${f} ${f})
+endforeach()
+
 # Append in local scope
-LIST(APPEND PACKAGE_SQL_FILES
+SET(COMMON_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgRouting-header.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting-types.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_version.sql
@@ -8,10 +24,9 @@ LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgr_parameter_check.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/utilities_pgr.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/createIndex.sql
-    #${CMAKE_CURRENT_SOURCE_DIR}/findClosestEdge.sql
     ${CMAKE_CURRENT_SOURCE_DIR}/_point_toId.sql
     
 )
 
 # set in parent scope
-SET(PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}" PARENT_SCOPE)
+SET(PACKAGE_SQL_FILES ${PACKAGE_SQL_FILES} ${COMMON_SQL_FILES} PARENT_SCOPE)

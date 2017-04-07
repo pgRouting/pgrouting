@@ -1,3 +1,14 @@
+
+SET(LOCAL_FILES
+    pickDeliverEuclidean.sql
+    pickDeliver.sql
+    reginabook.sql
+    )
+
+foreach (f ${LOCAL_FILES}) 
+    configure_file(${f} ${f})
+endforeach()
+
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pickDeliverEuclidean.sql

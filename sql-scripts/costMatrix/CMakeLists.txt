@@ -1,3 +1,16 @@
+
+SET(LOCAL_FILES
+    withPointsCostMatrix.sql
+    dijkstraCostMatrix.sql
+    bdDijkstraCostMatrix.sql
+    astarCostMatrix.sql
+    bdAstarCostMatrix.sql
+    )
+
+foreach (f ${LOCAL_FILES}) 
+    configure_file(${f} ${f})
+endforeach()
+
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/withPointsCostMatrix.sql

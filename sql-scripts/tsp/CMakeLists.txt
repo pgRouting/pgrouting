@@ -1,9 +1,24 @@
+
+SET(LOCAL_FILES
+    tsp_v2.0_matrix.sql
+    tsp_v2.0_coordinates.sql
+    routing_tsp_wrappers.sql
+    TSP.sql
+    eucledianTSP.sql
+    )
+
+foreach (f ${LOCAL_FILES}) 
+    configure_file(${f} ${f})
+endforeach()
+
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     # This are the old signature
     ${CMAKE_CURRENT_SOURCE_DIR}/tsp_v2.0_matrix.sql
+
     # this file wrap pgr_tsp with pgr_eucledianTSP
     ${CMAKE_CURRENT_SOURCE_DIR}/tsp_v2.0_coordinates.sql
+
     # This file has vidstodmatrix
     ${CMAKE_CURRENT_SOURCE_DIR}/routing_tsp_wrappers.sql
 

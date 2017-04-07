@@ -1,3 +1,13 @@
+
+SET(LOCAL_FILES
+    withPoints_dd.sql
+    dijkstraDD.sql
+    )
+
+foreach (f ${LOCAL_FILES}) 
+    configure_file(${f} ${f})
+endforeach()
+
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/withPoints_dd.sql

@@ -1,3 +1,15 @@
+
+SET(LOCAL_FILES
+    pgrouting_topology.sql
+    pgrouting_analytics.sql
+    create_vertices_table.sql
+    nodeNetwork.sql
+    )
+
+foreach (f ${LOCAL_FILES}) 
+    configure_file(${f} ${f})
+endforeach()
+
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_topology.sql

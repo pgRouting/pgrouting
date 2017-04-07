@@ -1,3 +1,18 @@
+
+SET(LOCAL_FILES
+    _max_flow.sql
+    edmondsKarp.sql
+    boykovKolmogorov.sql
+    pushRelabel.sql
+    maxFlow.sql
+    maxCardinalityMatch.sql
+    edge_disjoint_paths.sql
+    )
+
+foreach (f ${LOCAL_FILES}) 
+    configure_file(${f} ${f})
+endforeach()
+
 # Append in local scope
 LIST(APPEND PACKAGE_SQL_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/_max_flow.sql

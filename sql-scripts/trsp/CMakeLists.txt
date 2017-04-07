@@ -1,3 +1,13 @@
+
+SET(LOCAL_FILES
+    trsp_V2.2.sql
+    vias_trsp_V2.2.sql
+    )
+
+foreach (f ${LOCAL_FILES}) 
+    configure_file(${f} ${f})
+endforeach()
+
 # Append in local scope
 list(APPEND PACKAGE_SQL_FILES
     #${CMAKE_CURRENT_SOURCE_DIR}/routing_trsp.sql
