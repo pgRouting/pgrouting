@@ -22,16 +22,12 @@ RETURNS TABLE(
         boost varchar
     ) AS
 $BODY$
+    SELECT '${PGROUTING_VERSION}'::varchar AS version, 
+        '${PGROUTING_FULL_VERSION}'::varchar AS tag, 
+        '${PGROUTING_GIT_HASH}'::varchar AS hash, 
+        '${PGROUTING_GIT_BRANCH}'::varchar AS branch, 
+        '${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}'::varchar AS boost;
 
-DECLARE
-
-BEGIN
-    RETURN QUERY SELECT '${PGROUTING_VERSION}'::varchar AS version,
-                        '${PGROUTING_FULL_VERSION}'::varchar AS tag,
-                        '${PGROUTING_GIT_HASH}'::varchar AS hash,
-                        '${PGROUTING_GIT_BRANCH}'::varchar AS branch,
-                        '${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}'::varchar AS boost;
-END;
 $BODY$
-LANGUAGE plpgsql IMMUTABLE;
+LANGUAGE sql IMMUTABLE;
 
