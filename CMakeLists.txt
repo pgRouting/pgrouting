@@ -243,7 +243,7 @@ if (PGROUTING_DEBUG)
     message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 endif()
 
-
+add_subdirectory(sql-scripts)
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 # Windows compiler flags
