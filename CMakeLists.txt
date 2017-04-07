@@ -685,7 +685,9 @@ message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 file(GLOB THE_VERSION_UPDATE_FILES "${PGROUTING_SOURCE_DIR}/tools/sql-update-scripts/*--*--*.sql")
 
 foreach (f ${THE_VERSION_UPDATE_FILES})
-    message("${f}")
+    if (PGROUTING_DEBUG)
+        message(STATUS "${f}")
+    endif()
     execute_process(
         COMMAND cp ${f} ${CMAKE_BINARY_DIR}/lib/
         WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
