@@ -12,6 +12,7 @@ use strict;
 use Data::Dumper;
 use File::Find();
 
+my $DEBUG=0;
 
 # only directories with sql directory
 my @directories = qw(
@@ -57,11 +58,12 @@ use vars qw/*name *dir *prune/;
 
 sub Usage {
     die "Usage:\nFrom the root of the repository:
-    build-extension-file.pl\n";
+    build-extension-file.pli version \n";
 }
 
 
 my $version = shift @ARGV || Usage();
+$DEBUG = shift @ARGV || 0;
 
 
 my $out_file_name = "sql-scripts/pgrouting--$version.sql";
@@ -74,7 +76,7 @@ foreach  my $dir (@directories) {
     print "Processing $dir\n";
     my @sql_files = get_sql_files($dir);
     foreach my $file (@sql_files) {
-        print "$file";
+        print "--  $file" if $DEBUG;
         my $contents = get_contents($file);
         $contents = eliminate_license($contents);
         print OUT "$contents";
