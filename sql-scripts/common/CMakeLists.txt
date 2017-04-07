@@ -11,22 +11,13 @@ SET(LOCAL_FILES
     _point_toId.sql
     )
 
+add_custom_target (common_sql DEPENDS ${LOCAL_FILES})
+
 foreach (f ${LOCAL_FILES}) 
     configure_file(${f} ${f})
+    LIST(APPEND PACKAGE_SQL_FILES  ${CMAKE_CURRENT_BINARY_DIR}/${f})
 endforeach()
 
-# Append in local scope
-SET(COMMON_SQL_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/pgRouting-header.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting-types.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_version.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/pgrouting_utilities.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/pgr_parameter_check.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/utilities_pgr.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/createIndex.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/_point_toId.sql
-    
-)
 
 # set in parent scope
-SET(PACKAGE_SQL_FILES ${PACKAGE_SQL_FILES} ${COMMON_SQL_FILES} PARENT_SCOPE)
+SET(PACKAGE_SQL_FILES ${PACKAGE_SQL_FILES} PARENT_SCOPE)

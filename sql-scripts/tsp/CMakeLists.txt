@@ -9,24 +9,8 @@ SET(LOCAL_FILES
 
 foreach (f ${LOCAL_FILES}) 
     configure_file(${f} ${f})
+    LIST(APPEND PACKAGE_SQL_FILES  ${CMAKE_CURRENT_BINARY_DIR}/${f})
 endforeach()
-
-# Append in local scope
-LIST(APPEND PACKAGE_SQL_FILES
-    # This are the old signature
-    ${CMAKE_CURRENT_SOURCE_DIR}/tsp_v2.0_matrix.sql
-
-    # this file wrap pgr_tsp with pgr_eucledianTSP
-    ${CMAKE_CURRENT_SOURCE_DIR}/tsp_v2.0_coordinates.sql
-
-    # This file has vidstodmatrix
-    ${CMAKE_CURRENT_SOURCE_DIR}/routing_tsp_wrappers.sql
-
-    #this one implements the new tsp
-    ${CMAKE_CURRENT_SOURCE_DIR}/TSP.sql
-    ${CMAKE_CURRENT_SOURCE_DIR}/eucledianTSP.sql
-
-)
 
 # set in parent scope
 SET(PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}" PARENT_SCOPE)

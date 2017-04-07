@@ -243,6 +243,12 @@ if (PGROUTING_DEBUG)
     message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
 endif()
 
+#----------------------
+# PGROUTING library name used in the pgr_functions
+#  '$libdir/${PGROUTING_LIBRARY_NAME}'
+#----------------------
+set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
+
 add_subdirectory(sql-scripts)
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
@@ -570,11 +576,6 @@ message("Building the library names")
 set(PGROUTING_LIB_NAME "pgrouting-${PGROUTING_SHORT_VERSION}")
 
 
-#----------------------
-# PGROUTING library name used in the pgr_functions
-#  '$libdir/${PGROUTING_LIBRARY_NAME}'
-#----------------------
-set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
 
 add_library(${PGROUTING_LIB_NAME}
     ${LIBRARY_MODE_TARGET}
