@@ -1,6 +1,5 @@
 
 SET(LOCAL_FILES
-    pgrouting.control
     pgRouting-header.sql
     pgrouting-types.sql
     pgrouting_version.sql
@@ -12,6 +11,7 @@ SET(LOCAL_FILES
     )
 
 add_custom_target (common_sql DEPENDS ${LOCAL_FILES})
+configure_file(pgrouting.control pgrouting.control)
 
 foreach (f ${LOCAL_FILES}) 
     configure_file(${f} ${f})

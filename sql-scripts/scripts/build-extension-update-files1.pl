@@ -2,47 +2,11 @@
 eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
     if 0; #$running_under_some_shell
 
-# -------------------------------------------------------------
-# Usage: build-extension-update-files <version> [<pgrouting-src-dir>]
-#
-# Author: Stephen Woodbridge
-# Date: 2015-07-25
-# License: MIT-X
-# -------------------------------------------------------------
-# Description
-#
-# This script read a file from lib/pgrouting--<version>.sig
-# that should be the .sig for the current version of the extension.
-# lib/pgrouting--<version>.sig
-#
-# It then looks in tools/sigs/pgrouting--<old_version>.sig and
-# creates an update script for each version found. The update scripts
-# are written to:
-#   build/lib/pgrouting--<old_version>--<current_version>.sql
-# and "sudo make install" will install them as part of the extension.
-#
-# Algorithm
-# 1. check if lib/pgrouting--<version>.sig exists and load it
-# 2. get a list of version signatures from tools/sigs/*
-# 3. foreach old version sig file
-# 4.   generate an update file in lib/
-#
-# This is part of the automated pgRouting extension update
-# system that PostgreSQL require a collection of files that define
-# how to update an old version of pgRouting to the current version
-# using "ALTER EXTENSION pgrouting UPDATE TO <version>;"
-# The lib/pgrouting--<current_version>.sig and the update scripts
-# are automatically generated when when cmake is run. You don't
-# need to run this script manually.
-#
-# See also tools/mk-signature-file
-# ------------------------------------------------------------
 
 use strict;
 use Data::Dumper;
 use File::Find ();
 
-my $DEBUG = 0;
 
 use vars qw/*name *dir *prune/;
 *name   = *File::Find::name;
@@ -63,71 +27,46 @@ sub Usage {
     build-extension-update-files";
 }
 
-# Get the commandline options
-# these are typically set by cmake
-# my $src_dir = shift @ARGV || '.';
-
+my $old_version = shift @ARGV || die "Missing: old version to convert";
+my $DEBUG = shift @ARGV || 0;
 my $version = "@PGROUTING_VERSION@";
 
-my $input_directory = '@PGROUTING_SOURCE_DIR@/tools/sigs';
+die "ERROR: Expected old version: 2.0.x ~~ 2.5.x"
+unless $old_version =~ /$version_2_0|$version_2_1|$version_2_2|$version_2_3|$version_2_4|$version_2_5/;
+die "ERROR: Expected version: 2.4.x ~~ 2.5.x"
+unless $version =~ /$version_2_4|$version_2_5/;
+die "ERROR: can not upgrade from $old_version to $version" unless $version !~ $old_version;
+
+
+my $signature_dir = '@CMAKE_CURRENT_BINARY_DIR@/../sigs';
 my $output_directory = '@PGROUTING_SOURCE_DIR@/sql-scripts';
+die "ERROR: Failed to find: input directory: '$signature_dir'\n" unless -d $signature_dir;
+die "ERROR: Failed to find: output directory: '$output_directory'\n" unless -d $output_directory;
 
-# my $output_directory = 'sql-scripts';
-# my $input_directory = 'tools/sigs';
-# my $output_directory = 'tools/sql-update-scripts';
-# my $output_directory = 'sql-scripts';
 
-die "ERROR: Failed to find input directory: $input_directory\n" unless -d $input_directory;
-die "ERROR: Failed to find output directory: $output_directory\n" unless -d $output_directory;
+# Verify current $version files exist.
+my $curr_signature_file_name = "$signature_dir/pgrouting--$version.sig";
+my $old_signature_file_name = "$signature_dir/pgrouting--$old_version.sig";
+my $curr_sql_file_name = "$output_directory/pgrouting--$version.sql.in";
+die "ERROR: Failed to find: old signature file: '$old_signature_file_name'\n" unless -f $old_signature_file_name;
+die "ERROR: Failed to find: current signature file: '$curr_signature_file_name'\n" unless -f $curr_signature_file_name;
+die "ERROR: Failed to find: current sql file: '$curr_sql_file_name'\n" unless -f $curr_sql_file_name;
 
-my $sig_dir = "$input_directory/" if -d $input_directory;
 
 print "Building the updating files\n";
 
-# Verify current $version files exist.
-my $curr_signature_file_name = "$input_directory/pgrouting--$version.sig";
-my $curr_sql_file_name = "$output_directory/pgrouting--$version.sql.in";
-
-
-die "ERROR: Failed to find '$curr_signature_file_name'\n" unless -f $curr_signature_file_name;
-die "ERROR: Failed to find '$curr_sql_file_name'\n" unless -f $curr_sql_file_name;
-
 # Read and parse the current version signature file
-my $curr_signature = read_signature_file($curr_signature_file_name);
-
-# collect a list of the old version .sig files
-my @old_signatures_file_names = ();
-
-
-# search for the old version .sig files in $sig_dir
-# and save the /path/file.sig into old_signatures_file_names
-File::Find::find({wanted => \&wanted}, $sig_dir);
-
-# Generate the upgrade SQL script needed for all signatures
-for my $old_file (sort @old_signatures_file_names) {
-    print "\ngenerating $old_file upgrade file\n" if $DEBUG;
-
-    my $old_signatures = read_signature_file($old_file);
-
-    generate_upgrade_script($curr_signature, $old_signatures);
-
-    #last;
-}
+my $curr_signature = read__and_parse_signature_file($curr_signature_file_name);
+my $old_signatures = read__and_parse_signature_file($old_signature_file_name);
+print "\ngenerating $old_version upgrade file\n" if $DEBUG;
+generate_upgrade_script($curr_signature, $old_signatures);
 
 exit 0;
 
 
-# Processing files with .sig extension
-# But not including the current signature file
-sub wanted {
-    /^.*\.sig\z/s &&
-    ! /^pgrouting--$version.sig\z/s &&
-
-    push @old_signatures_file_names, $name;
-}
 
 # read and parse the .sig file and store the results in a hash
-sub read_signature_file {
+sub read__and_parse_signature_file {
     my $file = shift;
 
     my %hash = ();
@@ -138,7 +77,7 @@ sub read_signature_file {
     # 0 - starting proces
     # 1 - processing types
     # 2 - processing functions
-    # Other kinds of postgresobjcts are not used in 2.x version of pgRouting
+    # Other kinds of postgres objctes are not used in 2.x version of pgRouting
     my $state = 0;
     while (my $line = <IN>) {
         if ($line =~ /^#VERSION pgrouting (\d+\.\d+\.\d+)\s*$/i) {
@@ -176,6 +115,8 @@ sub read_signature_file {
     return \%hash;
 }
 
+
+
 # analyze the old signatures compared to the new signatures hash
 # and create an update script file for its version.
 sub generate_upgrade_script {
@@ -189,8 +130,6 @@ sub generate_upgrade_script {
     my $new_version = $new->{VERSION};
     my $old_version = $old->{VERSION};
 
-    die "ERROR: can not upgrade from $old_version to n_ver" unless $new_version !~ $old_version;
-
     #------------------------------------
     # analyze function signatures
     #------------------------------------
@@ -203,11 +142,15 @@ sub generate_upgrade_script {
     # in the new signatures.
     my %function_map = map { $_ => 1 } @{$new_signatures};
 
-    for my $old_function (@{$old_signatures}) {
+
+    for my $old_function (sort @{$old_signatures}) {
 
         # check if the old signature is in the new signature map
         my $exists = $function_map{$old_function} || '0';
-        print "$exists\t$old_function\n" if $DEBUG;
+        print "$old_version WARNING: DROP $old_function (does not exists on $new_version)\n"
+              if $DEBUG and not $exists and $old_function !~ /^_/;
+        print "$old_version    INFO: DROP $old_function (does not exists on $new_version)\n"
+              if $DEBUG and not $exists and $old_function =~ /^_/;
 
         # Nothing to do, the signature is valid on the current version
         # Might not be the case because signature changes include
