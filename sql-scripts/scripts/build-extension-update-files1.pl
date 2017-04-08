@@ -65,7 +65,7 @@ sub Usage {
 
 # Get the commandline options
 # these are typically set by cmake
-my $src_dir = shift @ARGV || '.';
+# my $src_dir = shift @ARGV || '.';
 
 my $version = "@PGROUTING_VERSION@";
 
