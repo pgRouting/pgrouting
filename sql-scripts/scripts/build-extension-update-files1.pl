@@ -59,21 +59,26 @@ my $version_2 = qr/(2.[\d+].[\d+])/;
 
 
 sub Usage {
-    die "Usage:\nFrom the root of the repository:
-    build-extension-update-files <version> [<pgrouting-src-dir>]\n";
+    die "Usage:\nFrom the cmake:
+    build-extension-update-files";
 }
 
 # Get the commandline options
 # these are typically set by cmake
-my $version = shift @ARGV || Usage();
 my $src_dir = shift @ARGV || '.';
 
-my $input_directory = 'tools/sigs';
-my $output_directory = 'tools/sql-update-scripts';
+my $version = "@PGROUTING_VERSION@";
+
+my $input_directory = '@PGROUTING_SOURCE_DIR@/tools/sigs';
+my $output_directory = '@PGROUTING_SOURCE_DIR@/sql-scripts';
+
+# my $output_directory = 'sql-scripts';
+# my $input_directory = 'tools/sigs';
+# my $output_directory = 'tools/sql-update-scripts';
 # my $output_directory = 'sql-scripts';
 
-die "ERROR: Failed to find directory: $input_directory\n" unless -d $input_directory;
-die "ERROR: Failed to find directory: $output_directory\n" unless -d $output_directory;
+die "ERROR: Failed to find input directory: $input_directory\n" unless -d $input_directory;
+die "ERROR: Failed to find output directory: $output_directory\n" unless -d $output_directory;
 
 my $sig_dir = "$input_directory/" if -d $input_directory;
 
@@ -81,7 +86,8 @@ print "Building the updating files\n";
 
 # Verify current $version files exist.
 my $curr_signature_file_name = "$input_directory/pgrouting--$version.sig";
-my $curr_sql_file_name = "$output_directory/pgrouting--$version.sql";
+my $curr_sql_file_name = "$output_directory/pgrouting--$version.sql.in";
+
 
 die "ERROR: Failed to find '$curr_signature_file_name'\n" unless -f $curr_signature_file_name;
 die "ERROR: Failed to find '$curr_sql_file_name'\n" unless -f $curr_sql_file_name;
@@ -94,7 +100,7 @@ my @old_signatures_file_names = ();
 
 
 # search for the old version .sig files in $sig_dir
-# and save the /path/file.sig into @old_signatures_file_names
+# and save the /path/file.sig into old_signatures_file_names
 File::Find::find({wanted => \&wanted}, $sig_dir);
 
 # Generate the upgrade SQL script needed for all signatures
@@ -646,8 +652,8 @@ sub write_script {
     my ($old_version, $new_version, $types, $cmds) = @_;
 
     # open the extension update script or die if we can't
-    open(OUT, ">$output_directory/pgrouting--$old_version--$new_version.sql")
-    || die "ERROR: failed to create '$output_directory/pgrouting-pgrouting--$old_version--$new_version.sql' : $!\n";
+    open(OUT, ">$output_directory/pgrouting--$old_version--$new_version.sql.in")
+    || die "ERROR: failed to create '$output_directory/pgrouting-pgrouting--$old_version--$new_version.sql.in' : $!\n";
 
     # write out the header and the commands to clean up the old extension
     print OUT <<EOF;
@@ -687,7 +693,7 @@ remove_types(\@file, $types);
 # append the new extension SQL to the update script
 print OUT "-- @file";
 close(OUT);
-print "  -- Created lib/pgrouting--$old_version--$new_version.sql\n";
+print "  -- Created lib/pgrouting--$old_version--$new_version.sql.in\n";
 }
 
 
