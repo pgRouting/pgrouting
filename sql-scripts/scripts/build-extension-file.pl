@@ -58,29 +58,36 @@ use vars qw/*name *dir *prune/;
 
 sub Usage {
     die "Usage:\nFrom the root of the repository:
-    build-extension-file.pli version \n";
+    build-extension-file.pl version \n";
 }
 
 
-my $version = shift @ARGV || Usage();
-$DEBUG = shift @ARGV || 0;
+my $version = "@PGROUTING_VERSION@";
+my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
+my $PgRouting_SQL_FILES =  shift @ARGV || 0;
+$DEBUG = 1 || shift @ARGV || 0;
+
+print "debug status= $DEBUG\n";
+print "working_directory $working_directory\n" if $DEBUG;
+print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
+
+my @sql_file = split(' ', $PgRouting_SQL_FILES);
+
 
 
 #my $out_file_name = "sql-scripts/pgrouting--$version.sql";
-my $out_file_name = "tools/sql-update-scripts/pgrouting--$version.sql";
+my $out_file_name = "@CMAKE_CURRENT_BINARY_DIR@/../pgrouting--$version.sql";
 open(OUT, ">$out_file_name")
     || die "ERROR: failed to create '$out_file_name' : $!\n";
 
+print "Generating $out_file_name\n" if $DEBUG;
 
-foreach  my $dir (@directories) {
-    print "Processing $dir\n";
-    my @sql_files = get_sql_files($dir);
-    foreach my $file (@sql_files) {
-        print "--  $file" if $DEBUG;
-        my $contents = get_contents($file);
-        $contents = eliminate_license($contents);
-        print OUT "$contents";
-    }
+
+foreach my $f (@sql_file) {
+    print "--  $f\n" if $DEBUG;
+    my $contents = get_contents($f);
+    $contents = eliminate_license($contents);
+    print OUT "$contents";
 }
 
 close (OUT);
@@ -89,7 +96,7 @@ exit 0;
 
 sub get_sql_files {
     my ($directory) = @_;
-    my $cmake_file = "src/$directory/sql/CMakeLists.txt";
+    my $cmake_file = "$directory/CMakeLists.txt";
     die "ERROR: Failed to find CMakeList.txt: $cmake_file\n" unless -e $cmake_file;
 
     # open the file
