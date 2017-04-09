@@ -619,7 +619,6 @@ set(PACKAGE_SQL_FILES "")
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
 endforeach()
-endif()
 
 
 if (PGROUTING_DEBUG)
@@ -645,9 +644,33 @@ configure_file("${TEMP_LIB_FILENAME}"
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
     )
 message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql")
+endif()
 #
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+# INSTALLATION
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+
+if (UNIX)
+    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/libpgrouting-2.5.so")
+else()
+    SET (LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/libpgrouting-2.5.dll")
+endif()
+
+message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
+
+install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
+
+
+install(FILES
+    ${PgRouting_SQL_FILES}
+    ${CMAKE_BINARY_DIR}/sql-scripts/common/pgrouting.control
+    DESTINATION "${SHARE_DIR}"
+    )
 
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
@@ -658,66 +681,9 @@ add_subdirectory(doxygen)
 add_subdirectory(doc)
 
 
-if (false)
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Handling pgrouting.control.in files
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
-
-message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
-#
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-# create the signature file for this release
-#message(STATUS "Creating lib/pgrouting--${PGROUTING_VERSION}.sig")
-#execute_process(
-#COMMAND cp ${PGROUTING_SOURCE_DIR}/tools/curr-sig/pgrouting--${PGROUTING_VERSION}.sig ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sig
-    #COMMAND ${PERL_EXECUTABLE} ${PGROUTING_SOURCE_DIR}/tools/mk-signature-file.pl ${PGROUTING_VERSION}
-    #WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-    #RESULT_VARIABLE SIG_RESULT
-    #)
-    #if(SIG_RESULT)
-    #message(FATAL_ERROR "SIG_RESULT: ${SIG_RESULT}")
-    #endif(SIG_RESULT)
-
-# create the extension update scripts
-file(GLOB THE_VERSION_UPDATE_FILES "${PGROUTING_SOURCE_DIR}/tools/sql-update-scripts/*--*--*.sql")
-
-foreach (f ${THE_VERSION_UPDATE_FILES})
-    if (PGROUTING_DEBUG)
-        message(STATUS "${f}")
-    endif()
-    execute_process(
-        COMMAND cp ${f} ${CMAKE_BINARY_DIR}/lib/
-        WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
-        RESULT_VARIABLE UPDATE_RESULT
-        )
-    if(UPDATE_RESULT)
-        message(FATAL_ERROR "UPDATE_RESULT: ${UPDATE_RESULT}")
-    endif()
-endforeach()
+if (PGROUTING_DEBUG)
+    foreach (f ${PgRouting_SQL_FILES})
+        message(STATUS ${f})
+    endforeach()
 endif()
-
-# make a list of the files we need to install for version updates
-file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
-
-# this will create the commands in the makefile under the install target
-if(UNIX)
-    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.so")
-else()
-    file(GLOB_RECURSE LIBS_TO_INSTALL "${CMAKE_BINARY_DIR}/lib/*.dll")
-endif()
-
-message(STATUS "LIBS_TO_INSTALL=${LIBS_TO_INSTALL}")
-
-install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
-
-install(FILES
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
-    "${CMAKE_BINARY_DIR}/sql-scripts/common/pgrouting.control"
-    ${VERSION_UPDATE_FILES}
-    DESTINATION "${SHARE_DIR}")
 

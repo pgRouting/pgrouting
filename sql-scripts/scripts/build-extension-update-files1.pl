@@ -39,7 +39,7 @@ die "ERROR: can not upgrade from $old_version to $version" unless $version !~ $o
 
 
 my $signature_dir = '@CMAKE_CURRENT_BINARY_DIR@/../sigs';
-my $output_directory = '@PGROUTING_SOURCE_DIR@/sql-scripts';
+my $output_directory = '@CMAKE_CURRENT_BINARY_DIR@/..';
 die "ERROR: Failed to find: input directory: '$signature_dir'\n" unless -d $signature_dir;
 die "ERROR: Failed to find: output directory: '$output_directory'\n" unless -d $output_directory;
 
@@ -595,8 +595,8 @@ sub write_script {
     my ($old_version, $new_version, $types, $cmds) = @_;
 
     # open the extension update script or die if we can't
-    open(OUT, ">$output_directory/pgrouting--$old_version--$new_version.sql.in")
-    || die "ERROR: failed to create '$output_directory/pgrouting-pgrouting--$old_version--$new_version.sql.in' : $!\n";
+    open(OUT, ">$output_directory/pgrouting--$old_version--$new_version.sql")
+    || die "ERROR: failed to create '$output_directory/pgrouting-pgrouting--$old_version--$new_version.sql' : $!\n";
 
     # write out the header and the commands to clean up the old extension
     print OUT <<EOF;

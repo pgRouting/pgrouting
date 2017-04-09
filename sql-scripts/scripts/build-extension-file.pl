@@ -65,7 +65,7 @@ sub Usage {
 my $version = "@PGROUTING_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
 my $PgRouting_SQL_FILES =  shift @ARGV || 0;
-$DEBUG = 1 || shift @ARGV || 0;
+$DEBUG = shift @ARGV || 0;
 
 print "debug status= $DEBUG\n";
 print "working_directory $working_directory\n" if $DEBUG;
