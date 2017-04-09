@@ -47,7 +47,7 @@ die "ERROR: Failed to find: output directory: '$output_directory'\n" unless -d $
 # Verify current $version files exist.
 my $curr_signature_file_name = "$signature_dir/pgrouting--$version.sig";
 my $old_signature_file_name = "$signature_dir/pgrouting--$old_version.sig";
-my $curr_sql_file_name = "$output_directory/pgrouting--$version.sql.in";
+my $curr_sql_file_name = "$output_directory/pgrouting--$version.sql";
 die "ERROR: Failed to find: old signature file: '$old_signature_file_name'\n" unless -f $old_signature_file_name;
 die "ERROR: Failed to find: current signature file: '$curr_signature_file_name'\n" unless -f $curr_signature_file_name;
 die "ERROR: Failed to find: current sql file: '$curr_sql_file_name'\n" unless -f $curr_sql_file_name;

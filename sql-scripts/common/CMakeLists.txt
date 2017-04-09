@@ -11,6 +11,7 @@ SET(LOCAL_FILES
     )
 
 add_custom_target (common_sql DEPENDS ${LOCAL_FILES})
+add_custom_target (pgrouting_control DEPENDS pgrouting.control)
 configure_file(pgrouting.control pgrouting.control)
 
 foreach (f ${LOCAL_FILES}) 

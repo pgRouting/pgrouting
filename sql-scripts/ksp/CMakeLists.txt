@@ -9,6 +9,8 @@ foreach (f ${LOCAL_FILES})
     LIST(APPEND PACKAGE_SQL_FILES  ${CMAKE_CURRENT_BINARY_DIR}/${f})
 endforeach()
 
+add_custom_target(ksp_sql DEPENDS ${LOCAL_FILES})
+
 # set in parent scope
 SET(PACKAGE_SQL_FILES "${PACKAGE_SQL_FILES}" PARENT_SCOPE)
 

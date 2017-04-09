@@ -609,7 +609,7 @@ file(WRITE ${TEMP_LIB_FILENAME} "")
 #-------------------
 # add the subdirectories that have the SQL files
 #-------------------
-
+if (false)
 set(PgRouting_SQL_DIRECTORIES
     ${PgRouting_SOURCE_NAMES}
     ${PgRouting_SQL_DIRECTORIES})
@@ -619,9 +619,10 @@ set(PACKAGE_SQL_FILES "")
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
 endforeach()
+endif()
 
 
-if (CDEBUG)
+if (PGROUTING_DEBUG)
     foreach (files ${PACKAGE_SQL_FILES})
         message("${files}")
     endforeach()
@@ -657,17 +658,17 @@ add_subdirectory(doxygen)
 add_subdirectory(doc)
 
 
+if (false)
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Handling pgrouting.control.in files
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#
+
 configure_file("${PGROUTING_SOURCE_DIR}/src/common/sql/pgrouting.control.in"
     "${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 
 message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting.control")
 #
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
 
 # create the signature file for this release
@@ -698,6 +699,7 @@ foreach (f ${THE_VERSION_UPDATE_FILES})
         message(FATAL_ERROR "UPDATE_RESULT: ${UPDATE_RESULT}")
     endif()
 endforeach()
+endif()
 
 # make a list of the files we need to install for version updates
 file(GLOB VERSION_UPDATE_FILES "${CMAKE_BINARY_DIR}/lib/pgrouting--*--*.sql")
@@ -715,7 +717,7 @@ install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 install(FILES
     "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting.control"
+    "${CMAKE_BINARY_DIR}/sql-scripts/common/pgrouting.control"
     ${VERSION_UPDATE_FILES}
     DESTINATION "${SHARE_DIR}")
 
