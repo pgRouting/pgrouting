@@ -51,10 +51,6 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_dijkstra(text,bigint,bigint,boolean
 DROP FUNCTION IF EXISTS _pgr_dijkstra(text,bigint,bigint,boolean,boolean);
 
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
-
-
 ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,anyarray,anyarray,text,boolean);
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,anyarray,anyarray,text,boolean);
 
@@ -69,6 +65,10 @@ DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,anyarray,text,boolean);
 
 ALTER EXTENSION pgrouting DROP FUNCTION _pgr_maxflow(text,bigint,bigint,text,boolean);
 DROP FUNCTION IF EXISTS _pgr_maxflow(text,bigint,bigint,text,boolean);
+
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
 
 
 ------------------------------------------
@@ -198,7 +198,7 @@ DROP FUNCTION IF EXISTS pgr_edgedisjointpaths(text,anyarray,anyarray,boolean);
          'v2.5.0-dev'::varchar AS tag,
          ''::varchar AS hash,
          ''::varchar AS branch,
-         '1.54.0'::varchar AS boost;
+         '..'::varchar AS boost;
  
  $BODY$
  LANGUAGE sql IMMUTABLE;

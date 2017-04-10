@@ -31,20 +31,20 @@ ALTER EXTENSION pgrouting DROP FUNCTION _pgr_dijkstra(text,bigint,bigint,boolean
 DROP FUNCTION IF EXISTS _pgr_dijkstra(text,bigint,bigint,boolean,boolean);
 
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,bigint,bigint,boolean,boolean);
-DROP FUNCTION IF EXISTS pgr_dijkstra(text,bigint,bigint,boolean,boolean);
-
-
 ALTER EXTENSION pgrouting DROP FUNCTION _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean,boolean);
 DROP FUNCTION IF EXISTS _pgr_drivingdistance(text,anyarray,double precision,boolean,boolean,boolean);
 
 
-ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision);
-DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision);
-
-
 ALTER EXTENSION pgrouting DROP FUNCTION _pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
 DROP FUNCTION IF EXISTS _pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
+
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_dijkstra(text,bigint,bigint,boolean,boolean);
+DROP FUNCTION IF EXISTS pgr_dijkstra(text,bigint,bigint,boolean,boolean);
+
+
+ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision);
+DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision);
 
 
 ALTER EXTENSION pgrouting DROP FUNCTION pgr_drivingdistance(text,bigint,double precision,boolean,boolean);
@@ -358,7 +358,7 @@ DROP FUNCTION IF EXISTS pgr_drivingdistance(text,bigint,double precision,boolean
          'v2.5.0-dev'::varchar AS tag,
          ''::varchar AS hash,
          ''::varchar AS branch,
-         '1.54.0'::varchar AS boost;
+         '..'::varchar AS boost;
  
  $BODY$
  LANGUAGE sql IMMUTABLE;
