@@ -28,7 +28,7 @@ sub Usage {
 }
 
 my $old_version = shift @ARGV || die "Missing: old version to convert";
-my $DEBUG = shift @ARGV || 0;
+my $DEBUG = "@PgRouting_DEBUG@";
 my $version = "@PGROUTING_VERSION@";
 
 die "ERROR: Expected old version: 2.0.x ~~ 2.5.x"
@@ -53,7 +53,7 @@ die "ERROR: Failed to find: current signature file: '$curr_signature_file_name'\
 die "ERROR: Failed to find: current sql file: '$curr_sql_file_name'\n" unless -f $curr_sql_file_name;
 
 
-print "Building the updating files\n";
+print "Building the updating files\n" if $DEBUG;
 
 # Read and parse the current version signature file
 my $curr_signature = read__and_parse_signature_file($curr_signature_file_name);
@@ -636,7 +636,7 @@ remove_types(\@file, $types);
 # append the new extension SQL to the update script
 print OUT "-- @file";
 close(OUT);
-print "  -- Created lib/pgrouting--$old_version--$new_version.sql.in\n";
+print "  -- Created lib/pgrouting--$old_version--$new_version.sql.in\n" if $DEBUG;
 }
 
 

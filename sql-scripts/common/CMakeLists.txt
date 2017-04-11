@@ -14,7 +14,7 @@ SET(LOCAL_FILES
 
 foreach (f ${LOCAL_FILES})
     LIST(APPEND PACKAGE_SQL_FILES  ${CMAKE_CURRENT_BINARY_DIR}/${f})
-    configure_file(${f} ${f})
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${f} ${CMAKE_CURRENT_BINARY_DIR}/${f})
 endforeach()
 
 configure_file(pgrouting.control pgrouting.control)

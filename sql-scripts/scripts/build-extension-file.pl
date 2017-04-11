@@ -66,7 +66,7 @@ my $version = "@PGROUTING_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
 my $PgRouting_SQL_FILES =  shift @ARGV || 0;
 
-print "debug status= $DEBUG\n";
+print "debug status= $DEBUG\n" if $DEBUG;
 print "working_directory $working_directory\n" if $DEBUG;
 print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
 
