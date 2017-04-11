@@ -12,7 +12,7 @@ use strict;
 use Data::Dumper;
 use File::Find();
 
-my $DEBUG=0;
+my $DEBUG="@PgRouting_DEBUG@";
 
 # only directories with sql directory
 my @directories = qw(
@@ -65,7 +65,6 @@ sub Usage {
 my $version = "@PGROUTING_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
 my $PgRouting_SQL_FILES =  shift @ARGV || 0;
-$DEBUG = shift @ARGV || 0;
 
 print "debug status= $DEBUG\n";
 print "working_directory $working_directory\n" if $DEBUG;
@@ -77,8 +76,8 @@ my @sql_file = split(' ', $PgRouting_SQL_FILES);
 
 #my $out_file_name = "sql-scripts/pgrouting--$version.sql";
 my $out_file_name = "@CMAKE_CURRENT_BINARY_DIR@/../pgrouting--$version.sql";
-open(OUT, ">$out_file_name")
-    || die "ERROR: failed to create '$out_file_name' : $!\n";
+open(OUT, ">", "$out_file_name")
+    || die "pgrouting--$version.sql ERROR: failed to create '$out_file_name' : $!\n";
 
 print "Generating $out_file_name\n" if $DEBUG;
 
@@ -97,10 +96,10 @@ exit 0;
 sub get_sql_files {
     my ($directory) = @_;
     my $cmake_file = "$directory/CMakeLists.txt";
-    die "ERROR: Failed to find CMakeList.txt: $cmake_file\n" unless -e $cmake_file;
+    die "pgrouting--$version.sql ERROR: Failed to find CMakeList.txt: $cmake_file\n" unless -e $cmake_file;
 
     # open the file
-    open(IN, $cmake_file) || die "ERROR: Failed to open '$cmake_file'\n";
+    open(IN, $cmake_file) || die "pgrouting--$version.sql ERROR: Failed to open '$cmake_file'\n";
 
     my @sql_files = ();
     while (my $line = <IN>) {
@@ -117,7 +116,7 @@ sub get_sql_files {
 sub get_contents {
     my ($file) = @_;
     local $/=undef;
-    open(IN, $file) || die "ERROR: Failed to open '$file'\n";
+    open(IN, $file) || die "pgrouting--$version.sql ERROR: Failed to open '$file'\n";
     my @contents = <IN>;
     close(IN);
     my $contents = join('', @contents);

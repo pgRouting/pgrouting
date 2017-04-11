@@ -5,18 +5,9 @@ SET(LOCAL_FILES
 
 # Do not modify bellow this line
 
-string(REGEX REPLACE "([^;]+)" "${CMAKE_CURRENT_SOURCE_DIR}/\\1" LOCAL_FILES_LIST "${LOCAL_FILES}")
-message(STATUS "LOCAL_FILES_LIST ${LOCAL_FILES_LIST}")
-
-
-add_custom_command(
-    OUTPUT ${LOCAL_FILES}
-    COMMAND  ${CMAKE_COMMAND} -E copy ${LOCAL_FILES_LIST} ${CMAKE_CURRENT_BINARY_DIR}/.
-    DEPENDS ${LOCAL_FILES_LIST}
-)    
-
 foreach (f ${LOCAL_FILES})
     LIST(APPEND PACKAGE_SQL_FILES  ${CMAKE_CURRENT_BINARY_DIR}/${f})
+    configure_file(${f} ${f})
 endforeach()
 
 add_custom_target(MY_FUNCTION_NAME_sql DEPENDS ${LOCAL_FILES})

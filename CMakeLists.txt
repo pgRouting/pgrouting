@@ -46,8 +46,8 @@ project(PGROUTING)
 #---------------------------------------------
 #---------------------------------------------
 
-if(POLICY CMP0046)
-   cmake_policy(SET CMP0046 OLD)
+if(POLICY CMP0054)
+   cmake_policy(SET CMP0054 OLD)
 endif()
 
 if(MSVC)

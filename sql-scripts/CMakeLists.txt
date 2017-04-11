@@ -75,6 +75,7 @@ endif()
 
 set(file_out "pgrouting--${PGROUTING_VERSION}.sql")
 
+
 if (PgRouting_DEBUG)
     message(STATUS "PACKAGE_SQL_FILES=")
     foreach (f ${PACKAGE_SQL_FILES})
@@ -84,15 +85,14 @@ endif()
 
 add_custom_command(
     OUTPUT ${file_out}
-    COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-file.pl '${PACKAGE_SQL_FILES}' ${PgRouting_DEBUG}
-    DEPENDS ${SCRIPT_DEPENDENCIES} build_update_script
+    COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-file.pl '${PACKAGE_SQL_FILES}'
+    DEPENDS ${SCRIPT_DEPENDENCIES} build_update_script ${PACKAGE_SQL_FILES}
     )
 
 add_custom_target(current_script ALL
     DEPENDS
     ${file_out}
     )
-
 
 #-------------------
 # Target update_files
@@ -116,6 +116,7 @@ foreach (old_s ${OLD_SIGNATURES})
         OUTPUT pgrouting--${old_s}--${PGROUTING_VERSION}.sql
         COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl ${old_s} ${PgRouting_DEBUG}
         DEPENDS ${SCRIPT_DEPENDENCIES}
+        ${file_out}
         build_update_script
         signatures_sigs
         current_script

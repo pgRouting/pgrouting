@@ -10,15 +10,18 @@ SET(LOCAL_FILES
     _point_toId.sql
     )
 
-add_custom_target (common_sql DEPENDS ${LOCAL_FILES})
-add_custom_target (pgrouting_control DEPENDS pgrouting.control)
-configure_file(pgrouting.control pgrouting.control)
+# Do not modify bellow this line
 
-foreach (f ${LOCAL_FILES}) 
-    configure_file(${f} ${f})
+foreach (f ${LOCAL_FILES})
     LIST(APPEND PACKAGE_SQL_FILES  ${CMAKE_CURRENT_BINARY_DIR}/${f})
+    configure_file(${f} ${f})
 endforeach()
 
+configure_file(pgrouting.control pgrouting.control)
 
-# set in parent scope
+add_custom_target (common_sql DEPENDS ${LOCAL_FILES})
+add_custom_target (pgrouting_control DEPENDS pgrouting.control)
+
+
 SET(PACKAGE_SQL_FILES ${PACKAGE_SQL_FILES} PARENT_SCOPE)
+
