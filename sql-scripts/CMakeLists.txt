@@ -86,7 +86,11 @@ endif()
 add_custom_command(
     OUTPUT ${file_out}
     COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-file.pl '${PACKAGE_SQL_FILES}'
-    DEPENDS ${SCRIPT_DEPENDENCIES} build_update_script ${PACKAGE_SQL_FILES}
+    DEPENDS
+    ${SCRIPT_DEPENDENCIES}
+    scripts/build-extension-file.pl
+    build_update_script
+    ${PACKAGE_SQL_FILES}
     )
 
 add_custom_target(current_script ALL

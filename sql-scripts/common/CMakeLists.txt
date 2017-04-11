@@ -19,7 +19,7 @@ endforeach()
 
 configure_file(pgrouting.control pgrouting.control)
 
-add_custom_target (common_sql DEPENDS ${LOCAL_FILES})
+add_custom_target (common_sql DEPENDS ${LOCAL_FILES} SOURCES ${LOCAL_FILES})
 add_custom_target (pgrouting_control DEPENDS pgrouting.control)
 
 
