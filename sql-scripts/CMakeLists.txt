@@ -34,7 +34,7 @@ if (PgRouting_DEBUG)
 endif()
 endif()
 
-set (PgRouting_DEBUG "0")
+set (PgRouting_DEBUG "1")
 #-------------------
 # add the scripts subdirectory
 # has the perl for building the update files
@@ -82,6 +82,12 @@ if (PgRouting_DEBUG)
         message(STATUS ${f})
     endforeach()
 endif()
+
+file(GLOB common_contents  ${CMAKE_CURRENT_BINARY_DIR}/common/*.sql)
+foreach (f ${common_contents})
+    message(STATUS "file in common ${f}")
+endforeach()
+
 
 add_custom_command(
     OUTPUT ${file_out}
