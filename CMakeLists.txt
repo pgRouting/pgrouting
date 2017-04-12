@@ -600,51 +600,51 @@ endif(WIN32 AND MSVC)
 #
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #
-add_custom_target(build-time-sql-directory ALL
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/sql_queries")
+#add_custom_target(build-time-sql-directory ALL
+#    COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/sql_queries")
 
-set(TEMP_LIB_FILENAME "${CMAKE_BINARY_DIR}/sql_queries/lib-pgrouting--version.sql.in")
-file(WRITE ${TEMP_LIB_FILENAME} "")
+#set(TEMP_LIB_FILENAME "${CMAKE_BINARY_DIR}/sql_queries/lib-pgrouting--version.sql.in")
+#file(WRITE ${TEMP_LIB_FILENAME} "")
 
 #-------------------
 # add the subdirectories that have the SQL files
 #-------------------
-if (false)
-set(PgRouting_SQL_DIRECTORIES
-    ${PgRouting_SOURCE_NAMES}
-    ${PgRouting_SQL_DIRECTORIES})
+#if (false)
+#set(PgRouting_SQL_DIRECTORIES
+#    ${PgRouting_SOURCE_NAMES}
+#    ${PgRouting_SQL_DIRECTORIES})
 
-set(PACKAGE_SQL_FILES "")
+#set(PACKAGE_SQL_FILES "")
 
-foreach (subdir ${PgRouting_SQL_DIRECTORIES})
-    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
-endforeach()
+#foreach (subdir ${PgRouting_SQL_DIRECTORIES})
+#    add_subdirectory("${PGROUTING_SOURCE_DIR}/src/${subdir}/sql")
+#endforeach()
 
 
-if (PGROUTING_DEBUG)
-    foreach (files ${PACKAGE_SQL_FILES})
-        message("${files}")
-    endforeach()
-endif()
+#if (PGROUTING_DEBUG)
+#    foreach (files ${PACKAGE_SQL_FILES})
+#        message("${files}")
+#    endforeach()
+#endif()
 
-ADD_CUSTOM_TARGET(ProcessSQLFiles ALL)
-foreach(file_in ${PACKAGE_SQL_FILES})
-    get_filename_component(file_name ${file_in} NAME)
-    set(file_out "${CMAKE_BINARY_DIR}/sql_queries/${file_name}")
-    configure_file(${file_in} ${file_out})
+#ADD_CUSTOM_TARGET(ProcessSQLFiles ALL)
+#foreach(file_in ${PACKAGE_SQL_FILES})
+#    get_filename_component(file_name ${file_in} NAME)
+#    set(file_out "${CMAKE_BINARY_DIR}/sql_queries/${file_name}")
+#    configure_file(${file_in} ${file_out})
 
-    add_dependencies(ProcessSQLFiles ${file_in})
-    file(READ "${file_out}" CONTENTS)
-    string(REGEX REPLACE "/\\*PGR-(GNU|MIT).*PGR-(GNU|MIT)\\*/" "" STRIP_CONTENTS "${CONTENTS}")
-    string(REGEX REPLACE "/\\*FOR.*USER\\*/" "" CONTENTS "${STRIP_CONTENTS}")
-    file(APPEND ${TEMP_LIB_FILENAME} "${CONTENTS}")
-endforeach()
+#    add_dependencies(ProcessSQLFiles ${file_in})
+#    file(READ "${file_out}" CONTENTS)
+#    string(REGEX REPLACE "/\\*PGR-(GNU|MIT).*PGR-(GNU|MIT)\\*/" "" STRIP_CONTENTS "${CONTENTS}")
+#    string(REGEX REPLACE "/\\*FOR.*USER\\*/" "" CONTENTS "${STRIP_CONTENTS}")
+#    file(APPEND ${TEMP_LIB_FILENAME} "${CONTENTS}")
+#endforeach()
 
-configure_file("${TEMP_LIB_FILENAME}"
-    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
-    )
-message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql")
-endif()
+#configure_file("${TEMP_LIB_FILENAME}"
+#    "${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql"
+#    )
+#message(STATUS "Created ${CMAKE_BINARY_DIR}/lib/pgrouting--${PGROUTING_VERSION}.sql")
+#endif()
 #
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

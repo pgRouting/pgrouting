@@ -97,6 +97,7 @@ add_custom_command(
     scripts/build-extension-file.pl
     build_update_script
     ${PACKAGE_SQL_FILES}
+    COMMENT "dependencies:  ${PACKAGE_SQL_FILES}"
     )
 
 add_custom_target(current_script ALL
