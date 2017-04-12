@@ -64,13 +64,18 @@ sub Usage {
 
 my $version = "@PGROUTING_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
-my $PgRouting_SQL_FILES =  shift @ARGV || 0;
+my $PgRouting_SQL_FILES =  "@PACKAGE_SQL_FILES@";
 
 print "debug status= $DEBUG\n" if $DEBUG;
 print "working_directory $working_directory\n" if $DEBUG;
 print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
 
 my @sql_file = split(/ /, $PgRouting_SQL_FILES);
+
+ 
+foreach my $f (@sql_file) {
+
+}
 
 
 
@@ -99,7 +104,7 @@ sub get_contents {
     my ($file) = @_;
     local $/=undef;
     print "trying ro open $file\n";
-    die "ERROR: Failed to find: $file'\n" unless -f $file;
+    die "ERROR: Failed to find: $file\n" unless -f $file;
     open(IN, $file) || die "pgrouting--$version.sql ERROR: Failed to open $file\n";
     my @contents = <IN>;
     close(IN);
