@@ -93,30 +93,14 @@ close (OUT);
 
 exit 0;
 
-sub get_sql_files {
-    my ($directory) = @_;
-    my $cmake_file = "$directory/CMakeLists.txt";
-    die "pgrouting--$version.sql ERROR: Failed to find CMakeList.txt: $cmake_file\n" unless -e $cmake_file;
-
-    # open the file
-    open(IN, $cmake_file) || die "pgrouting--$version.sql ERROR: Failed to open '$cmake_file'\n";
-
-    my @sql_files = ();
-    while (my $line = <IN>) {
-        if ($line =~ /^\s*\$\{CMAKE_CURRENT_SOURCE_DIR\}\//) {
-            my $sql_filename = (split /\//, $line)[1];
-            push @sql_files, "src/$directory/sql/$sql_filename";
-        }
-    }
-    close(IN);
-    return @sql_files;
-}
 
 
 sub get_contents {
     my ($file) = @_;
     local $/=undef;
-    open(IN, $file) || die "pgrouting--$version.sql ERROR: Failed to open '$file'\n";
+    print "trying ro open $file\n";
+    die "ERROR: Failed to find: $file'\n" unless -f $file;
+    open(IN, $file) || die "pgrouting--$version.sql ERROR: Failed to open $file\n";
     my @contents = <IN>;
     close(IN);
     my $contents = join('', @contents);
