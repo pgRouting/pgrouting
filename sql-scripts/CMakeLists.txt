@@ -5,42 +5,13 @@
 # (http://www.cmake.org/cmake/help/v2.8.12/cmake.html)
 #
 
-if (false)
-if(POLICY CMP0046)
-    cmake_policy(SET CMP0046 OLD)
-endif()
 
-
-if(POLICY CMP0046)
-   cmake_policy(SET CMP0046 OLD)
-endif()
-
-if(MSVC)
-    cmake_policy(SET CMP0046 OLD)
-endif()
-
-#=============================================
-
-if (PgRouting_DEBUG)
-    message(STATUS "PGROUTING_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "PGROUTING_SHORT_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "PGROUTING_FULL_VERSION: ${PGROUTING_FULL_VERSION}")
-    message(STATUS "VERSION file contents: ${PGROUTING_BUILD_STRING}")
-    message(STATUS "PGROUTING_GIT_HASH: ${PGROUTING_GIT_HASH}")
-    message(STATUS "PGROUTING_GIT_BRANCH: ${PGROUTING_GIT_BRANCH}")
-    message(STATUS "CMAKE_VERSION: ${CMAKE_VERSION}")
-    message(STATUS "PGROUTING_SOURCE_DIR: ${PGROUTING_SOURCE_DIR}")
-    message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
-endif()
-endif()
 
 set (PgRouting_DEBUG "1")
 #-------------------
-# add the scripts subdirectory
-# has the perl for building the update files
+# add the signatrues subdirectory
 #-------------------
 
-add_subdirectory(scripts)
 add_subdirectory(sigs)
 
 
@@ -88,6 +59,15 @@ foreach (f ${common_contents})
     message(STATUS "file in common ${f}")
 endforeach()
 
+#-------------------
+# add the scripts subdirectory
+# the variable ${PACKAGE_SQL_FILES} should already be set at this point
+#
+# has the perl for building the current sql file
+# has the perl for building the update files
+#-------------------
+
+add_subdirectory(scripts)
 
 add_custom_command(
     OUTPUT ${file_out}

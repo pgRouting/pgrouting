@@ -34,6 +34,8 @@ print "debug status= $DEBUG\n" if $DEBUG;
 print "working_directory $working_directory\n" if $DEBUG;
 print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
 
+print "PACKAGE_SQL_FILES:\n @PACKAGE_SQL_FILES@";
+
 $PgRouting_SQL_FILES =~ s/'//gms;
 print "PgRouting_SQL_FILES $PgRouting_SQL_FILES\n" if $DEBUG;
 my @sql_file = split(/ /, $PgRouting_SQL_FILES);
