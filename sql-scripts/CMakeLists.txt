@@ -7,7 +7,7 @@
 
 
 
-set (PgRouting_DEBUG "1")
+#set (PgRouting_DEBUG "1")
 
 #-------------------
 # add the signatrues subdirectory
@@ -52,10 +52,11 @@ endif()
 # has the perl for building the update files
 #-------------------
 
+set(PgRouting_CURRENT_SQL_FILE "pgrouting--${PGROUTING_VERSION}.sql")
+
 # subdirectory that has the perl files
 add_subdirectory(scripts)
 
-set(PgRouting_CURRENT_SQL_FILE "pgrouting--${PGROUTING_VERSION}.sql")
 
 
 add_custom_command(
@@ -72,9 +73,7 @@ add_custom_target(PgRouting_SQL_FILE ALL
     )
 
 #-------------------
-# Target update_files
-#
-#
+# TARGET: update_files
 #-------------------
 
 if (PgRouting_DEBUG)
