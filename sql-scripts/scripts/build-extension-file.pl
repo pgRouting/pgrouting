@@ -28,7 +28,7 @@ sub Usage {
 
 my $version = "@PGROUTING_VERSION@";
 my $working_directory = "@CMAKE_CURRENT_BINARY_DIR@/..";
-my $PgRouting_SQL_FILES =  "@PACKAGE_SQL_FILES@";
+my $PgRouting_SQL_FILES =  "@PgRouting_SQL_FILES@";
 
 print "debug status= $DEBUG\n" if $DEBUG;
 print "working_directory $working_directory\n" if $DEBUG;

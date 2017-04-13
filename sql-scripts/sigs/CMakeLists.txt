@@ -14,13 +14,12 @@ SET(OLD_SIGNATURES
     2.4.1
     )
 
-foreach (f ${OLD_SIGNATURES}) 
+foreach (f ${OLD_SIGNATURES})
     configure_file(pgrouting--${f}.sig pgrouting--${f}.sig COPYONLY)
-    LIST(APPEND SIGNATURE_FILES pgrouting--${f}.sig)
+    list(APPEND SIGNATURE_FILES pgrouting--${f}.sig)
 endforeach()
 configure_file(pgrouting--${PGROUTING_VERSION}.sig pgrouting--${PGROUTING_VERSION}.sig COPYONLY)
 
 add_custom_target(signatures_sigs DEPENDS ${SIGNATURE_FILES} pgrouting--${PGROUTING_VERSION}.sig)
 
-# set in parent scope
-SET(OLD_SIGNATURES "${OLD_SIGNATURES}" PARENT_SCOPE)
+set(OLD_SIGNATURES ${OLD_SIGNATURES} PARENT_SCOPE)

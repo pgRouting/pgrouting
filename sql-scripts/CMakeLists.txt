@@ -8,6 +8,7 @@
 
 
 set (PgRouting_DEBUG "1")
+
 #-------------------
 # add the signatrues subdirectory
 #-------------------
@@ -23,11 +24,11 @@ set(PgRouting_SQL_DIRECTORIES
     ${PgRouting_SOURCE_NAMES}
     ${PgRouting_SQL_DIRECTORIES})
 
-set(PACKAGE_SQL_FILES "")
+#set(PgRouting_SQL_FILES "")
 
 foreach (subdir ${PgRouting_SQL_DIRECTORIES})
     add_subdirectory(${subdir})
-    LIST(APPEND SCRIPT_DEPENDENCIES ${subdir}/${subdir}_sql)
+    list(APPEND SCRIPT_DEPENDENCIES ${subdir}/${subdir}_sql)
 endforeach()
 
 if (PgRouting_DEBUG)
@@ -48,8 +49,8 @@ set(file_out "pgrouting--${PGROUTING_VERSION}.sql")
 
 
 if (PgRouting_DEBUG)
-    message(STATUS "PACKAGE_SQL_FILES=")
-    foreach (f ${PACKAGE_SQL_FILES})
+    message(STATUS "PgRouting_SQL_FILES=")
+    foreach (f ${PgRouting_SQL_FILES})
         message(STATUS ${f})
     endforeach()
 endif()
@@ -61,7 +62,7 @@ endforeach()
 
 #-------------------
 # add the scripts subdirectory
-# the variable ${PACKAGE_SQL_FILES} should already be set at this point
+# the variable ${PgRouting_SQL_FILES} should already be set at this point
 #
 # has the perl for building the current sql file
 # has the perl for building the update files
@@ -71,13 +72,13 @@ add_subdirectory(scripts)
 
 add_custom_command(
     OUTPUT ${file_out}
-    COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-file.pl '${PACKAGE_SQL_FILES}'
+    COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-file.pl '${PgRouting_SQL_FILES}'
     DEPENDS
     ${SCRIPT_DEPENDENCIES}
     scripts/build-extension-file.pl
     build_update_script
-    ${PACKAGE_SQL_FILES}
-    COMMENT "dependencies:  ${PACKAGE_SQL_FILES}"
+    ${PgRouting_SQL_FILES}
+    COMMENT "dependencies:  ${PgRouting_SQL_FILES}"
     )
 
 add_custom_target(current_script ALL
