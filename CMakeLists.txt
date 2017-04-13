@@ -249,7 +249,7 @@ endif()
 #----------------------
 set(PGROUTING_LIBRARY_NAME "libpgrouting-${PGROUTING_SHORT_VERSION}")
 
-add_subdirectory(sql-scripts)
+add_subdirectory(sql)
 #-----------------------------------------------------------------------------
 #-----------------------------------------------------------------------------
 # Windows compiler flags
