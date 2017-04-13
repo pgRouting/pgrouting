@@ -85,7 +85,7 @@ endif()
 
 foreach (old_s ${OLD_SIGNATURES})
     SET (UPDATE_FILES ${UPDATE_FILES} pgrouting--${old_s}--${PGROUTING_VERSION}.sql)
-    SET (PgRouting_SQL_FILES_TO_INSTALL ${PgRouting_SQL_FILES_TO_INSTALL} "${CMAKE_BINARY_DIR}/sql-scripts/pgrouting--${old_s}--${PGROUTING_VERSION}.sql")
+    SET (PgRouting_SQL_FILES_TO_INSTALL ${PgRouting_SQL_FILES_TO_INSTALL} "${CMAKE_CURRENT_BINARY_DIR}/pgrouting--${old_s}--${PGROUTING_VERSION}.sql")
     add_custom_command(
         OUTPUT pgrouting--${old_s}--${PGROUTING_VERSION}.sql
         COMMAND ${PERL_EXECUTABLE} ./scripts/build-extension-update-files1.pl ${old_s} ${PgRouting_DEBUG}
@@ -102,4 +102,4 @@ add_custom_target(update_files ALL
     ${UPDATE_FILES}
     )
 
-SET(PgRouting_SQL_FILES_TO_INSTALL  ${PgRouting_SQL_FILES_TO_INSTALL} ${CMAKE_BINARY_DIR}/sql-scripts/${PgRouting_CURRENT_SQL_FILE} PARENT_SCOPE)
+SET(PgRouting_SQL_FILES_TO_INSTALL  ${PgRouting_SQL_FILES_TO_INSTALL} ${CMAKE_CURRENT_BINARY_DIR}/${PgRouting_CURRENT_SQL_FILE} "${CMAKE_CURRENT_BINARY_DIR}/common/pgrouting.control" PARENT_SCOPE)

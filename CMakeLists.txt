@@ -621,7 +621,6 @@ install(FILES ${LIBS_TO_INSTALL}  DESTINATION ${LIB_DIR})
 
 install(FILES
     ${PgRouting_SQL_FILES_TO_INSTALL}
-    ${CMAKE_BINARY_DIR}/sql-scripts/common/pgrouting.control
     DESTINATION "${SHARE_DIR}"
     )
 
